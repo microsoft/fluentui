@@ -12,6 +12,15 @@ import type {
 } from './types';
 import { groupByAnnotation, type AnnotationGroup } from './annotation-groups';
 
+function escapeMarkdownTableCell(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\r?\n|\r/g, ' ')
+    .replace(/\|/g, '\\|');
+}
+
 /**
  * Format MetadataOutput as a structured Markdown document.
  */
@@ -28,7 +37,7 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
   lines.push('| Category | Description |');
   lines.push('| -------- | ----------- |');
   for (const entry of Object.values(legend)) {
-    lines.push(`| **${entry.name}** | ${entry.description} |`);
+    lines.push(`| **${escapeMarkdownTableCell(entry.name)}** | ${escapeMarkdownTableCell(entry.description)} |`);
   }
   lines.push('');
 
@@ -110,8 +119,8 @@ export function formatMetadataAsMarkdown(data: MetadataOutput): string {
       lines.push('| Symbol | Reference |');
       lines.push('| ------ | --------- |');
       for (const [name, ref] of Object.entries(pkgRef.symbols).sort(([a], [b]) => a.localeCompare(b))) {
-        const refDisplay = '$ref' in ref ? `\`${ref.$ref}\`` : `\`${ref.inline}\``;
-        lines.push(`| \`${name}\` | ${refDisplay} |`);
+        const refValue = '$ref' in ref ? ref.$ref : ref.inline;
+        lines.push(`| \`${escapeMarkdownTableCell(name)}\` | \`${escapeMarkdownTableCell(refValue)}\` |`);
       }
       lines.push('');
     }
@@ -238,7 +247,11 @@ function formatParametersTable(params: ParameterDoc[], title: string = 'Argument
   lines.push('| Name | Type | Required | Description |');
   lines.push('| ---- | ---- | -------- | ----------- |');
   for (const p of params) {
-    lines.push(`| \`${p.name}\` | \`${p.type}\` | ${p.required ? 'Yes' : 'No'} | ${p.description} |`);
+    lines.push(
+      `| \`${escapeMarkdownTableCell(p.name)}\` | \`${escapeMarkdownTableCell(p.type)}\` | ${
+        p.required ? 'Yes' : 'No'
+      } | ${escapeMarkdownTableCell(p.description)} |`,
+    );
   }
   lines.push('');
   return lines;
@@ -252,9 +265,11 @@ function formatMembersTable(members: MemberDoc[]): string[] {
   lines.push('| ---- | ---- | -------- | ------- | ----------- |');
   for (const m of members) {
     lines.push(
-      `| \`${m.name}\` | \`${m.type}\` | ${m.required ? 'Yes' : 'No'} | ${
-        m.defaultValue ? `\`${m.defaultValue}\`` : '—'
-      } | ${m.description} |`,
+      `| \`${escapeMarkdownTableCell(m.name)}\` | \`${escapeMarkdownTableCell(m.type)}\` | ${
+        m.required ? 'Yes' : 'No'
+      } | ${m.defaultValue ? `\`${escapeMarkdownTableCell(m.defaultValue)}\`` : '—'} | ${escapeMarkdownTableCell(
+        m.description,
+      )} |`,
     );
   }
   lines.push('');

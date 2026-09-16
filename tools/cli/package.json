@@ -2,8 +2,8 @@
   "name": "@fluentui/cli",
   "version": "0.0.1",
   "type": "commonjs",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "bin": {
     "cli": "./bin/fluentui-cli.js",
     "fluentui-cli": "./bin/fluentui-cli.js"

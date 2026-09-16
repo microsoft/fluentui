@@ -68,6 +68,43 @@ function createMockParser(
 }
 
 describe('usage-report', () => {
+  it('should classify an aliased import by its local name and report its exported name', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            moduleSpecifier: '@proj/react-components',
+            namedImports: ['Button'],
+            localNames: { Button: 'FluentButton' },
+            isTypeOnly: false,
+          },
+        ],
+      },
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            componentName: 'Button',
+            props: {},
+            moduleSpecifier: '@proj/react-components',
+          },
+        ],
+      },
+      {},
+      { FluentButton: 'component' },
+    );
+
+    const result = collectUsageReportData('/mock/root', parser);
+
+    expect(parser.classifySymbol).toHaveBeenCalledWith(
+      '/mock/root/src/App.tsx',
+      'FluentButton',
+      '@proj/react-components',
+    );
+    expect(result.packages['@proj/react-components'].components.Button.count).toBe(1);
+    expect(result.packages['@proj/react-components'].unknowns).not.toHaveProperty('Button');
+    expect(result.packages['@proj/react-components'].components).not.toHaveProperty('FluentButton');
+  });
+
   it('should collect metadata for component usages', () => {
     const parser = createMockParser(
       {

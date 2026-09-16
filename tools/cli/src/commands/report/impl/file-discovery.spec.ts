@@ -189,5 +189,14 @@ describe('file-discovery', () => {
       expect(result).toHaveLength(4);
       expect(result.every(f => f.endsWith('.tsx'))).toBe(true);
     });
+
+    it('should compare Windows paths using glob-style separators', () => {
+      const windowsStyleFiles = ['/project/src\\App.tsx', '/project/test\\App.test.tsx'];
+      mockGlobSync.mockReturnValueOnce(['src/App.tsx']);
+
+      const result = filterSourceFiles(windowsStyleFiles, ROOT, ['src/**']);
+
+      expect(result).toEqual(['/project/src\\App.tsx']);
+    });
   });
 });

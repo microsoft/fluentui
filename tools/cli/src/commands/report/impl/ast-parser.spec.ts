@@ -74,6 +74,24 @@ describe('TsMorphAstParser', () => {
       const imports = parser.getImportDeclarations('/nonexistent/file.ts');
       expect(imports).toEqual([]);
     });
+
+    it('should preserve exported and local names for aliased imports', () => {
+      const filePath = path.join(FIXTURES_DIR, 'aliased-imports.tsx');
+      const aliasParser = new TsMorphAstParser();
+      aliasParser.createProject([filePath], TSCONFIG_PATH);
+
+      const imports = aliasParser.getImportDeclarations(filePath);
+      const fluentImport = imports.find(i => i.moduleSpecifier === '@proj/react-components' && !i.isTypeOnly);
+      const typeImport = imports.find(i => i.moduleSpecifier === '@proj/react-components' && i.isTypeOnly);
+
+      expect(fluentImport?.namedImports).toEqual(['Button', 'useToastController']);
+      expect(fluentImport?.localNames).toEqual({ Button: 'FluentButton', useToastController: 'useToast' });
+      expect(typeImport?.namedImports).toEqual(['ButtonProps', 'ColumnDef']);
+      expect(typeImport?.localNames).toEqual({ ButtonProps: 'FluentButtonProps', ColumnDef: 'FluentColumnDef' });
+      expect(aliasParser.getJsxElementUsages(filePath)[0].componentName).toBe('Button');
+      expect(aliasParser.getCallExpressionUsages(filePath)[0].functionName).toBe('useToastController');
+      expect(aliasParser.getTypeReferenceUsages(filePath)[0].symbolName).toBe('ColumnDef');
+    });
   });
 
   describe('getJsxElementUsages', () => {

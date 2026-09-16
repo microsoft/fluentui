@@ -61,8 +61,10 @@ function registerCommand(tree: Tree, options: NormalizedSchema) {
 
   const importName = `${options.propertyName}Command`;
   const importPath = `./commands/${options.name}`;
+  const escapedImportPath = importPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const commandImportPattern = new RegExp(`from\\s+['"]${escapedImportPath}['"]`);
 
-  if (content.includes(importPath)) {
+  if (commandImportPattern.test(content)) {
     return;
   }
 

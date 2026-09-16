@@ -103,4 +103,16 @@ describe('cli-command generator', () => {
 
     expect(importMatches).toHaveLength(1);
   });
+
+  it('should register a command whose name is a prefix of an existing command', async () => {
+    await generator(tree, { name: 'report', skipFormat: true });
+    await generator(tree, { name: 'rep', skipFormat: true });
+
+    const content = tree.read('tools/cli/src/cli.ts', 'utf-8')!;
+
+    expect(content).toContain("import reportCommand from './commands/report'");
+    expect(content).toContain("import repCommand from './commands/rep'");
+    expect(content).toContain('.command(reportCommand)');
+    expect(content).toContain('.command(repCommand)');
+  });
 });

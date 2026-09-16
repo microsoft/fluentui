@@ -97,7 +97,15 @@ export class TsMorphAstParser implements AstParser {
     }
 
     return sourceFile.getImportDeclarations().map(decl => {
-      const namedImports = decl.getNamedImports().map(ni => ni.getName());
+      const localNames: Record<string, string> = {};
+      const namedImports = decl.getNamedImports().map(namedImport => {
+        const importedName = namedImport.getName();
+        const localName = namedImport.getAliasNode()?.getText();
+        if (localName) {
+          localNames[importedName] = localName;
+        }
+        return importedName;
+      });
       const defaultImport = decl.getDefaultImport();
       if (defaultImport) {
         namedImports.unshift(defaultImport.getText());
@@ -106,6 +114,7 @@ export class TsMorphAstParser implements AstParser {
       return {
         moduleSpecifier: decl.getModuleSpecifierValue(),
         namedImports,
+        localNames: Object.keys(localNames).length > 0 ? localNames : undefined,
         isTypeOnly: decl.isTypeOnly(),
       };
     });
@@ -126,12 +135,16 @@ export class TsMorphAstParser implements AstParser {
 
     for (const element of [...openingElements, ...selfClosingElements]) {
       const tagName = element.getTagNameNode().getText();
-      const moduleSpecifier = importMap.get(tagName);
+      const importedSymbol = importMap.get(tagName);
 
       // Only track components that come from tracked imports (PascalCase)
-      if (moduleSpecifier && /^[A-Z]/.test(tagName)) {
+      if (importedSymbol && /^[A-Z]/.test(tagName)) {
         const props = this._extractJsxProps(element);
-        usages.push({ componentName: tagName, props, moduleSpecifier });
+        usages.push({
+          componentName: importedSymbol.importedName,
+          props,
+          moduleSpecifier: importedSymbol.moduleSpecifier,
+        });
       }
     }
 
@@ -152,11 +165,15 @@ export class TsMorphAstParser implements AstParser {
     for (const call of callExpressions) {
       const expression = call.getExpression();
       const functionName = expression.getText();
-      const moduleSpecifier = importMap.get(functionName);
+      const importedSymbol = importMap.get(functionName);
 
-      if (moduleSpecifier) {
+      if (importedSymbol) {
         const args = this._extractCallArgs(call);
-        usages.push({ functionName, args, moduleSpecifier });
+        usages.push({
+          functionName: importedSymbol.importedName,
+          args,
+          moduleSpecifier: importedSymbol.moduleSpecifier,
+        });
       }
     }
 
@@ -176,9 +193,13 @@ export class TsMorphAstParser implements AstParser {
     const typeQueries = sourceFile.getDescendantsOfKind(SyntaxKind.TypeQuery);
     for (const tq of typeQueries) {
       const exprName = tq.getExprName().getText();
-      const moduleSpecifier = importMap.get(exprName);
-      if (moduleSpecifier) {
-        usages.push({ symbolName: exprName, moduleSpecifier, kind: 'typeof' });
+      const importedSymbol = importMap.get(exprName);
+      if (importedSymbol) {
+        usages.push({
+          symbolName: importedSymbol.importedName,
+          moduleSpecifier: importedSymbol.moduleSpecifier,
+          kind: 'typeof',
+        });
       }
     }
 
@@ -186,11 +207,16 @@ export class TsMorphAstParser implements AstParser {
     const typeRefs = sourceFile.getDescendantsOfKind(SyntaxKind.TypeReference);
     for (const tr of typeRefs) {
       const typeName = tr.getTypeName().getText();
-      const moduleSpecifier = importMap.get(typeName);
-      if (moduleSpecifier) {
+      const importedSymbol = importMap.get(typeName);
+      if (importedSymbol) {
         const typeArgs = tr.getTypeArguments().map(ta => ta.getText());
         if (typeArgs.length > 0) {
-          usages.push({ symbolName: typeName, moduleSpecifier, kind: 'generic', typeArgs });
+          usages.push({
+            symbolName: importedSymbol.importedName,
+            moduleSpecifier: importedSymbol.moduleSpecifier,
+            kind: 'generic',
+            typeArgs,
+          });
         }
       }
     }
@@ -211,8 +237,8 @@ export class TsMorphAstParser implements AstParser {
 
     for (const ident of identifiers) {
       const name = ident.getText();
-      const moduleSpecifier = importMap.get(name);
-      if (!moduleSpecifier) {
+      const importedSymbol = importMap.get(name);
+      if (!importedSymbol) {
         continue;
       }
 
@@ -252,7 +278,7 @@ export class TsMorphAstParser implements AstParser {
         continue;
       }
 
-      usages.push({ symbolName: name, moduleSpecifier });
+      usages.push({ symbolName: importedSymbol.importedName, moduleSpecifier: importedSymbol.moduleSpecifier });
     }
 
     return usages;
@@ -481,20 +507,24 @@ export class TsMorphAstParser implements AstParser {
   /**
    * Build a map from imported identifier name to its module specifier.
    */
-  private _buildImportMap(sourceFile: SourceFile): Map<string, string> {
-    const map = new Map<string, string>();
+  private _buildImportMap(sourceFile: SourceFile): Map<string, { importedName: string; moduleSpecifier: string }> {
+    const map = new Map<string, { importedName: string; moduleSpecifier: string }>();
 
     for (const decl of sourceFile.getImportDeclarations()) {
       const moduleSpec = decl.getModuleSpecifierValue();
 
       const defaultImport = decl.getDefaultImport();
       if (defaultImport) {
-        map.set(defaultImport.getText(), moduleSpec);
+        const localName = defaultImport.getText();
+        map.set(localName, { importedName: localName, moduleSpecifier: moduleSpec });
       }
 
       for (const named of decl.getNamedImports()) {
         const alias = named.getAliasNode();
-        map.set(alias ? alias.getText() : named.getName(), moduleSpec);
+        map.set(alias ? alias.getText() : named.getName(), {
+          importedName: named.getName(),
+          moduleSpecifier: moduleSpec,
+        });
       }
     }
 

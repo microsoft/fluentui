@@ -2,12 +2,12 @@
 
 Command-line tool for Fluent UI usage reporting and API metadata extraction.
 
-> **⚠️ Experimental** — This package is published under the `experimental` npm tag. APIs and commands may change without notice.
+> **Preview** — APIs and commands may change without notice.
 
 ## Usage
 
 ```sh
-npx @fluentui/cli@experimental <command> [options]
+npx @fluentui/cli <command> [options]
 ```
 
 > Run any command with `--help` for detailed options.

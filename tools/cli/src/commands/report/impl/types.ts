@@ -179,7 +179,10 @@ export interface UsageReportOutput {
  */
 export interface ImportInfo {
   moduleSpecifier: string;
+  /** Names exported by the imported module. */
   namedImports: string[];
+  /** Exported name to local binding for aliased imports. */
+  localNames?: Record<string, string>;
   isTypeOnly: boolean;
 }
 

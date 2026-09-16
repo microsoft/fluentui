@@ -116,7 +116,8 @@ export function collectUsageReportData(
         }
 
         // Use the AST parser to classify the symbol by its actual type definition
-        const classification = astParser.classifySymbol(filePath, name, moduleSpec);
+        const localName = importDecl.localNames?.[name] ?? name;
+        const classification = astParser.classifySymbol(filePath, localName, moduleSpec);
 
         switch (classification) {
           case 'component':

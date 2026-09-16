@@ -3,6 +3,10 @@ import * as path from 'node:path';
 
 import * as fg from 'fast-glob';
 
+function normalizeGlobPath(filePath: string): string {
+  return filePath.replace(/\\/g, '/');
+}
+
 /**
  * Discover `.ts` and `.tsx` source files under the given root path,
  * respecting `.gitignore` rules by using `git ls-files`.
@@ -59,12 +63,14 @@ export function filterSourceFiles(
   }
 
   const absoluteRoot = path.resolve(rootPath);
-  const relativeSet = new Set(filePaths.map(fp => path.relative(absoluteRoot, fp)));
+  const relativeSet = new Set(filePaths.map(fp => normalizeGlobPath(path.relative(absoluteRoot, fp))));
 
   let selected: Set<string>;
 
   if (include?.length) {
-    const matched = new Set(fg.globSync(include, { cwd: absoluteRoot, dot: true, onlyFiles: true }));
+    const matched = new Set(
+      fg.globSync(include, { cwd: absoluteRoot, dot: true, onlyFiles: true }).map(normalizeGlobPath),
+    );
     // Intersect fast-glob results with our discovered file list
     selected = new Set([...relativeSet].filter(rel => matched.has(rel)));
   } else {
@@ -72,11 +78,13 @@ export function filterSourceFiles(
   }
 
   if (exclude?.length) {
-    const excluded = new Set<string>(fg.globSync(exclude, { cwd: absoluteRoot, dot: true, onlyFiles: true }));
+    const excluded = new Set(
+      fg.globSync(exclude, { cwd: absoluteRoot, dot: true, onlyFiles: true }).map(normalizeGlobPath),
+    );
     for (const ex of excluded) {
       selected.delete(ex);
     }
   }
 
-  return filePaths.filter(fp => selected.has(path.relative(absoluteRoot, fp)));
+  return filePaths.filter(fp => selected.has(normalizeGlobPath(path.relative(absoluteRoot, fp))));
 }
