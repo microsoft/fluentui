@@ -21,5 +21,11 @@
   },
   "devDependencies": {
     "@types/yargs": "^17.0.33"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   }
 }
