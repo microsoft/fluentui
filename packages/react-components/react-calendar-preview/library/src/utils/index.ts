@@ -5,7 +5,6 @@ export type { AnimationDirection, DateRangeType, DayOfWeek, FirstWeekOfYear, Mon
 export type {
   CalendarDateLabelData,
   CalendarDateTimeFormat,
-  CalendarDateTimeFormatterOptions,
   CalendarFormatters,
   CalendarYearRangeLabelData,
 } from './formatters';
