@@ -4,6 +4,16 @@ import { calendarFormatters, createCalendarDateTimeFormatter } from './formatter
 const date = new Date(2016, getMonthIndex('april'), 1);
 
 describe('createCalendarDateTimeFormatter', () => {
+  it('supports a locale preference list', () => {
+    expect(createCalendarDateTimeFormatter(['en-GB', 'en-US'])({ date, format: 'monthDayYear' })).toBe('1 April 2016');
+  });
+
+  it('surfaces invalid locale, timezone and date errors', () => {
+    expect(() => createCalendarDateTimeFormatter('invalid_locale')).toThrow(RangeError);
+    expect(() => createCalendarDateTimeFormatter('en-US', { timeZone: 'Invalid/Timezone' })).toThrow(RangeError);
+    expect(() => createCalendarDateTimeFormatter()({ date: new Date(NaN), format: 'day' })).toThrow(RangeError);
+  });
+
   it.each(['monthDayYear', 'dayMonthYear'] as const)('uses locale ordering for %s', format => {
     const formatter = createCalendarDateTimeFormatter('en-GB');
 

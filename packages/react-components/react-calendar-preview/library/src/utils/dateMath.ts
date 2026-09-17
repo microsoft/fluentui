@@ -156,7 +156,7 @@ export function compareDatePart(date1: Date, date2: Date): number {
  * @param date - The input date
  * @param dateRangeType - The desired date range type, i.e., day, week, month, etc.
  * @param firstDayOfWeek - The first day of the week.
- * @param workWeekDays - The allowed days in work week. If not provided, assumes all days are allowed.
+ * @param workWeekDays - The allowed days in work week. Defaults to Monday through Friday.
  * @param daysToSelectInDayView - The number of days to include when using dateRangeType === 'day'
  * for multiday view. Defaults to 1
  * @returns An array of dates representing the date range containing the specified date.
@@ -263,6 +263,7 @@ export function isDateInRange(date: Date, dateRange: Date[]): boolean {
 /**
  * Returns the week number in a year for a date.
  *
+ * @param weeksInMonth - The number of weeks to include; must be a non-negative finite integer.
  * @param navigatedDate - A date to find the week number for.
  * @param firstDayOfWeek - The named day that starts each week.
  * @param firstWeekOfYear - The convention that determines which week is the first week of the year.
@@ -274,6 +275,10 @@ export function getWeekNumbersInMonth(
   firstWeekOfYear: FirstWeekOfYear,
   navigatedDate: Date,
 ): number[] {
+  if (!Number.isFinite(weeksInMonth) || !Number.isInteger(weeksInMonth) || weeksInMonth < 0) {
+    throw new RangeError('weeksInMonth must be a non-negative finite integer.');
+  }
+
   const selectedYear = navigatedDate.getFullYear();
   const selectedMonth = navigatedDate.getMonth();
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);

@@ -29,6 +29,21 @@ module.exports = {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },
   coverageDirectory: './coverage',
+  collectCoverage: true,
+  collectCoverageFrom: [
+    'src/utils/**/*.ts',
+    '!src/utils/**/*.test.ts',
+    '!src/utils/**/*.types.ts',
+    '!src/utils/**/index.ts',
+  ],
+  coverageThreshold: {
+    './src/utils/**/*.ts': {
+      statements: 100,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+    },
+  },
   setupFilesAfterEnv: ['./config/tests.cjs'],
   snapshotSerializers: ['@griffel/jest-serializer'],
 };

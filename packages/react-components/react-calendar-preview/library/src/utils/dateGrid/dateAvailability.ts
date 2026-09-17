@@ -34,10 +34,19 @@ export const isRestrictedDate = (date: Date, options: RestrictedDatesOptions): b
 /**
  * Returns closest available date given the restriction `options`, or undefined otherwise
  * @param options - list of search options
+ * @throws RangeError if the direction is not 1 or -1, or search dates cannot be represented.
  */
 export const findAvailableDate = (options: AvailableDateOptions): Date | undefined => {
   const { targetDate, initialDate, direction, ...restrictionOptions } = options;
+  if (direction !== 1 && direction !== -1) {
+    throw new RangeError('direction must be 1 or -1.');
+  }
+  if (!Number.isFinite(targetDate.getTime()) || !Number.isFinite(initialDate.getTime())) {
+    throw new RangeError('targetDate and initialDate must be valid.');
+  }
+
   let availableDate = targetDate;
+  let daysOffset = 0;
   // if the target date is available, return it immediately
   if (!isRestrictedDate(targetDate, restrictionOptions)) {
     return targetDate;
@@ -49,7 +58,12 @@ export const findAvailableDate = (options: AvailableDateOptions): Date | undefin
     !isAfterMaxDate(availableDate, restrictionOptions) &&
     !isBeforeMinDate(availableDate, restrictionOptions)
   ) {
-    availableDate = addDays(availableDate, direction);
+    // A skipped local date may normalize back to the previous candidate.
+    daysOffset += direction;
+    availableDate = addDays(targetDate, daysOffset);
+    if (!Number.isFinite(availableDate.getTime())) {
+      throw new RangeError('Cannot search for an out-of-range date.');
+    }
   }
 
   if (compareDatePart(initialDate, availableDate) !== 0 && !isRestrictedDate(availableDate, restrictionOptions)) {
