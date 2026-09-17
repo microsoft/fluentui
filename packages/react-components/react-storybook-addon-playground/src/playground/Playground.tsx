@@ -177,8 +177,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState<string>();
   const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
-  const [hasSuccessfulRun, setHasSuccessfulRun] = React.useState(false);
-
   const runCounter = React.useRef(0);
   const hasSuccessfulRunRef = React.useRef(false);
   const defaultCodeApplied = React.useRef(initialCode !== null);
@@ -349,7 +347,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     setRunId(currentRunId => {
       if (successfulRunId === currentRunId) {
         setStatus('ready');
-        setHasSuccessfulRun(true);
         hasSuccessfulRunRef.current = true;
       }
       return currentRunId;
