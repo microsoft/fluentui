@@ -24,6 +24,8 @@ describe('runner', () => {
         /* require('block-comment') */
         const text = "require('string')";
         const template = \`require('template')\`;
+        const regex = /require("regex-literal")/;
+        const regexWithCharacterClass = /[/]require('character-class')/gi;
         object.require('method');
         const actual = require(/* webpack comment */ 'react');
       `;

@@ -36,6 +36,7 @@ function isNotRootSandboxOrPlaygroundAddon(addon) {
 function getHeadlessPlaygroundModules() {
   /** @type {Record<string, string>} */
   const modules = {
+    '@ctrl/tinycolor': '@ctrl/tinycolor',
     '@fluentui/react-icons': '@fluentui/react-icons',
   };
 

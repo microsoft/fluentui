@@ -58,6 +58,7 @@ export interface PlaygroundProps {
 interface PlaygroundErrorState {
   title: string;
   message: string;
+  previewRetained?: boolean;
 }
 
 type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
@@ -179,6 +180,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [hasSuccessfulRun, setHasSuccessfulRun] = React.useState(false);
 
   const runCounter = React.useRef(0);
+  const hasSuccessfulRunRef = React.useRef(false);
   const defaultCodeApplied = React.useRef(initialCode !== null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const mainRef = React.useRef<HTMLElement | null>(null);
@@ -302,7 +304,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       setError(null);
     } catch (err) {
       if (!isStale()) {
-        setError(toErrorState(err));
+        setError({ ...toErrorState(err), previewRetained: hasSuccessfulRunRef.current });
         setStatus('error');
       }
     }
@@ -318,7 +320,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, [code, model, run, runtimeReady, targetWindow, typingsStatus]);
 
   React.useEffect(() => {
-    if (!targetWindow || !code) {
+    if (!targetWindow) {
       return;
     }
 
@@ -348,6 +350,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       if (successfulRunId === currentRunId) {
         setStatus('ready');
         setHasSuccessfulRun(true);
+        hasSuccessfulRunRef.current = true;
       }
       return currentRunId;
     });
@@ -357,7 +360,11 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number }) => {
       setRunId(currentRunId => {
         if (runtimeError.runId === currentRunId) {
-          setError({ title: runtimeErrorTitle(runtimeError.kind), message: runtimeError.message });
+          setError({
+            title: runtimeErrorTitle(runtimeError.kind),
+            message: runtimeError.message,
+            previewRetained: false,
+          });
           setStatus('error');
         }
         return currentRunId;
@@ -670,7 +677,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 <div>
                   <p className={styles.errorTitle}>{error.title}</p>
                   <pre className={styles.errorMessage}>{error.message}</pre>
-                  {hasSuccessfulRun ? (
+                  {error.previewRetained ? (
                     <Text size={200} className={styles.errorHint}>
                       The preview shows the last successful render.
                     </Text>

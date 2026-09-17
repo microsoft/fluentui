@@ -40,6 +40,13 @@ describe('url', () => {
       expect(decodeCode('')).toBeNull();
       expect(decodeCode('not-a-valid-payload!!!')).toBeNull();
     });
+
+    it('round trips empty source through playground state hashes', () => {
+      const hash = createPlaygroundHash({ code: '' });
+
+      expect(decodePlaygroundStateFromHash(hash)).toEqual({ code: '', cssModules: [] });
+      expect(decodeCodeFromHash(hash)).toBe('');
+    });
   });
 
   describe('createCodeHash / decodeCodeFromHash', () => {

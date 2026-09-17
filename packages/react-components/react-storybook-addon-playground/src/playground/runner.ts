@@ -41,6 +41,54 @@ function skipTrivia(code: string, start: number): number {
   return index;
 }
 
+function isRegexLiteralStart(code: string, start: number): boolean {
+  if (code[start] !== '/' || code.startsWith('//', start) || code.startsWith('/*', start)) {
+    return false;
+  }
+
+  let previous = start - 1;
+  while (previous >= 0 && /\s/.test(code[previous])) {
+    previous -= 1;
+  }
+
+  if (previous < 0) {
+    return true;
+  }
+
+  const previousCharacter = code[previous];
+  if ('([{!?:;,=+-*%&|^~<>'.includes(previousCharacter)) {
+    return true;
+  }
+
+  const token = code.slice(0, previous + 1).match(/[$\w]+$/)?.[0];
+  return Boolean(token && /^(?:await|case|delete|do|else|in|instanceof|return|throw|typeof|void|yield)$/.test(token));
+}
+
+function skipRegexLiteral(code: string, start: number): number {
+  let inCharacterClass = false;
+
+  for (let index = start + 1; index < code.length; index += 1) {
+    const character = code[index];
+    if (character === '\\') {
+      index += 1;
+    } else if (character === '[') {
+      inCharacterClass = true;
+    } else if (character === ']') {
+      inCharacterClass = false;
+    } else if (character === '/' && !inCharacterClass) {
+      index += 1;
+      while (/[$\w]/.test(code[index] ?? '')) {
+        index += 1;
+      }
+      return index;
+    } else if ((character === '\n' || character === '\r') && !inCharacterClass) {
+      return start + 1;
+    }
+  }
+
+  return code.length;
+}
+
 function readString(code: string, start: number): { end: number; value: string } | undefined {
   const quote = code[start];
   if (quote !== '"' && quote !== "'") {
@@ -88,6 +136,10 @@ export function getRequiredModules(code: string): string[] {
     }
     if (code.startsWith('//', index) || code.startsWith('/*', index)) {
       index = skipTrivia(code, index);
+      continue;
+    }
+    if (isRegexLiteralStart(code, index)) {
+      index = skipRegexLiteral(code, index);
       continue;
     }
     if (

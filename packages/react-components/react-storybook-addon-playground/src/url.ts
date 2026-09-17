@@ -32,7 +32,7 @@ export function decodeCode(encoded: string): string | null {
 
   const decoded = decompressFromEncodedURIComponent(encoded);
 
-  return typeof decoded === 'string' && decoded.length > 0 ? decoded : null;
+  return typeof decoded === 'string' ? decoded : null;
 }
 
 function parseCssModulesPayload(encoded: string | null): CssModuleSource[] {
@@ -66,9 +66,9 @@ function parseCssModulesPayload(encoded: string | null): CssModuleSource[] {
 export function decodePlaygroundStateFromHash(hash: string): PlaygroundUrlState | null {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
   const encoded = params.get(CODE_HASH_PARAM);
-  const code = encoded ? decodeCode(encoded) : null;
+  const code = encoded === null ? null : encoded === '' ? '' : decodeCode(encoded);
 
-  if (!code) {
+  if (code === null) {
     return null;
   }
 
