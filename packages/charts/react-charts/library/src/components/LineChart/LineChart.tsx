@@ -538,6 +538,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         const pointsForLine: JSXElement[] = [];
 
         const legendVal: string = _points[i].legend;
+        const seriesAriaLabel = `${legendVal}, line ${i + 1} of ${_points.length} with ${
+          _points[i].data.length
+        } data points.`;
         const lineColor: string = _points[i].color!;
         const verticaLineHeight = containerHeight - margins.bottom! + 6;
         const useSecondaryYScale = !!(_points[i].useSecondaryYScale && _yScaleSecondary);
@@ -731,6 +734,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
                 tabIndex={isLegendSelected ? 0 : undefined}
+                role={props.optimizeLargeData ? 'option' : undefined}
+                aria-label={props.optimizeLargeData ? seriesAriaLabel : undefined}
               />,
             );
           } else if (shouldDrawLines) {
@@ -1358,7 +1363,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           <g
             key={`line_${i}`}
             role="listbox"
-            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
+            aria-label={props.optimizeLargeData ? `${legendVal} data series` : seriesAriaLabel}
           >
             {bordersForLine}
             {linesForLine}

@@ -660,11 +660,12 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       d: string,
       layerOpacity: number,
     ): JSXElement {
+      const groupAriaLabel = `${points[index].legend} data series`;
       const ariaLabel = `${points[index].legend}, series ${index + 1} of ${points.length} with ${
         points[index].data.length
       } data points.`;
       return (
-        <g role="listbox" aria-label={ariaLabel}>
+        <g role="listbox" aria-label={groupAriaLabel}>
           <path
             id={`${index}-graph-${_uniqueIdForGraph}`}
             d={d}

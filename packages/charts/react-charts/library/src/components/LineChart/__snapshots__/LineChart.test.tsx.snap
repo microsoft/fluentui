@@ -1634,7 +1634,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         </g>
         <g>
           <line
-            id="verticalLine_r_cd_"
+            id="verticalLine_r_co_"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(630, 185.1086956521739)"
@@ -1650,7 +1650,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="listbox"
             >
               <line
-                id="lineID_r_cb__2_1"
+                id="lineID_r_cm__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -1668,7 +1668,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
                 fill="var(--colorNeutralBackground1)"
-                id="circle_r_ca__2_1"
+                id="circle_r_cl__2_1"
                 opacity="1"
                 role="option"
                 stroke="yellow"
@@ -1683,7 +1683,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 fill="yellow"
-                id="circle_r_ca__2_11L"
+                id="circle_r_cl__2_11L"
                 opacity="1"
                 role="option"
                 stroke="yellow"
@@ -1694,7 +1694,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_ca__2_11D"
+                id="circle_r_cl__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1706,7 +1706,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="listbox"
             >
               <line
-                id="lineID_r_cb__1_1"
+                id="lineID_r_cm__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -1724,7 +1724,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                 fill="green"
-                id="circle_r_ca__1_1"
+                id="circle_r_cl__1_1"
                 opacity="1"
                 role="option"
                 stroke="green"
@@ -1739,7 +1739,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                 fill="green"
-                id="circle_r_ca__1_11L"
+                id="circle_r_cl__1_11L"
                 opacity="1"
                 role="option"
                 stroke="green"
@@ -1750,7 +1750,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_ca__1_11D"
+                id="circle_r_cl__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1762,7 +1762,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               role="listbox"
             >
               <line
-                id="lineID_r_cb__0_1"
+                id="lineID_r_cm__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -1780,7 +1780,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                 fill="red"
-                id="circle_r_ca__0_1"
+                id="circle_r_cl__0_1"
                 opacity="1"
                 role="option"
                 stroke="red"
@@ -1795,7 +1795,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 fill="red"
-                id="circle_r_ca__0_11L"
+                id="circle_r_cl__0_11L"
                 opacity="1"
                 role="option"
                 stroke="red"
@@ -1806,7 +1806,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_ca__0_11D"
+                id="circle_r_cl__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -1903,7 +1903,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_cl_"
+      id="callout_r_d0_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2319,7 +2319,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         </g>
         <g>
           <line
-            id="verticalLine_r_dk_"
+            id="verticalLine_r_dv_"
             stroke="#323130"
             stroke-dasharray="5,5"
             transform="translate(630, 185.1086956521739)"
@@ -2335,7 +2335,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="listbox"
             >
               <line
-                id="lineID_r_di__2_1"
+                id="lineID_r_dt__2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -2353,7 +2353,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 5.5 5.5 0 1 1 635.5 185.1086956521739
      "
                 fill="var(--colorNeutralBackground1)"
-                id="circle_r_dh__2_1"
+                id="circle_r_ds__2_1"
                 opacity="1"
                 role="option"
                 stroke="yellow"
@@ -2368,7 +2368,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 fill="yellow"
-                id="circle_r_dh__2_11L"
+                id="circle_r_ds__2_11L"
                 opacity="1"
                 role="option"
                 stroke="yellow"
@@ -2379,7 +2379,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_dh__2_11D"
+                id="circle_r_ds__2_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2391,7 +2391,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="listbox"
             >
               <line
-                id="lineID_r_di__1_1"
+                id="lineID_r_dt__1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -2409,7 +2409,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                 fill="green"
-                id="circle_r_dh__1_1"
+                id="circle_r_ds__1_1"
                 opacity="1"
                 role="option"
                 stroke="green"
@@ -2424,7 +2424,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                 fill="green"
-                id="circle_r_dh__1_11L"
+                id="circle_r_ds__1_11L"
                 opacity="1"
                 role="option"
                 stroke="green"
@@ -2435,7 +2435,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="394"
                 cy="25.326086956521735"
                 focusable="false"
-                id="circle_r_dh__1_11D"
+                id="circle_r_ds__1_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2447,7 +2447,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               role="listbox"
             >
               <line
-                id="lineID_r_di__0_1"
+                id="lineID_r_dt__0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -2465,7 +2465,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                 fill="red"
-                id="circle_r_dh__0_1"
+                id="circle_r_ds__0_1"
                 opacity="1"
                 role="option"
                 stroke="red"
@@ -2480,7 +2480,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                 fill="red"
-                id="circle_r_dh__0_11L"
+                id="circle_r_ds__0_11L"
                 opacity="1"
                 role="option"
                 stroke="red"
@@ -2491,7 +2491,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                 cx="276"
                 cy="51.95652173913044"
                 focusable="false"
-                id="circle_r_dh__0_11D"
+                id="circle_r_ds__0_11D"
                 opacity="0"
                 r="8"
                 stroke-width="0"
@@ -2588,7 +2588,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout_r_ds_"
+      id="callout_r_e7_"
     >
       <div
         class="fui-PopoverSurface"
@@ -2977,7 +2977,7 @@ Object {
             </g>
             <g>
               <line
-                id="verticalLine_r_8c_"
+                id="verticalLine_r_8n_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -2992,7 +2992,7 @@ Object {
                   role="listbox"
                 >
                   <line
-                    id="lineID_r_8a__2_1"
+                    id="lineID_r_8l__2_1"
                     opacity="1"
                     stroke="yellow"
                     stroke-linecap="round"
@@ -3010,7 +3010,7 @@ Object {
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
                     fill="yellow"
-                    id="circle_r_89__2_1"
+                    id="circle_r_8k__2_1"
                     opacity="1"
                     role="option"
                     stroke="yellow"
@@ -3025,7 +3025,7 @@ Object {
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                     fill="yellow"
-                    id="circle_r_89__2_11L"
+                    id="circle_r_8k__2_11L"
                     opacity="1"
                     role="option"
                     stroke="yellow"
@@ -3036,7 +3036,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_89__2_11D"
+                    id="circle_r_8k__2_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3048,7 +3048,7 @@ Object {
                   role="listbox"
                 >
                   <line
-                    id="lineID_r_8a__1_1"
+                    id="lineID_r_8l__1_1"
                     opacity="1"
                     stroke="green"
                     stroke-linecap="round"
@@ -3066,7 +3066,7 @@ Object {
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                     fill="green"
-                    id="circle_r_89__1_1"
+                    id="circle_r_8k__1_1"
                     opacity="1"
                     role="option"
                     stroke="green"
@@ -3081,7 +3081,7 @@ Object {
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                     fill="green"
-                    id="circle_r_89__1_11L"
+                    id="circle_r_8k__1_11L"
                     opacity="1"
                     role="option"
                     stroke="green"
@@ -3092,7 +3092,7 @@ Object {
                     cx="394"
                     cy="25.326086956521735"
                     focusable="false"
-                    id="circle_r_89__1_11D"
+                    id="circle_r_8k__1_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3104,7 +3104,7 @@ Object {
                   role="listbox"
                 >
                   <line
-                    id="lineID_r_8a__0_1"
+                    id="lineID_r_8l__0_1"
                     opacity="1"
                     stroke="red"
                     stroke-linecap="round"
@@ -3122,7 +3122,7 @@ Object {
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                     fill="red"
-                    id="circle_r_89__0_1"
+                    id="circle_r_8k__0_1"
                     opacity="1"
                     role="option"
                     stroke="red"
@@ -3137,7 +3137,7 @@ Object {
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                     fill="red"
-                    id="circle_r_89__0_11L"
+                    id="circle_r_8k__0_11L"
                     opacity="1"
                     role="option"
                     stroke="red"
@@ -3148,7 +3148,7 @@ Object {
                     cx="276"
                     cy="51.95652173913044"
                     focusable="false"
-                    id="circle_r_89__0_11D"
+                    id="circle_r_8k__0_11D"
                     opacity="0"
                     r="8"
                     stroke-width="0"
@@ -3600,7 +3600,7 @@ Object {
           </g>
           <g>
             <line
-              id="verticalLine_r_8c_"
+              id="verticalLine_r_8n_"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3615,7 +3615,7 @@ Object {
                 role="listbox"
               >
                 <line
-                  id="lineID_r_8a__2_1"
+                  id="lineID_r_8l__2_1"
                   opacity="1"
                   stroke="yellow"
                   stroke-linecap="round"
@@ -3633,7 +3633,7 @@ Object {
      A 0.5 0.5 0 1 1 630.5 185.1086956521739
      "
                   fill="yellow"
-                  id="circle_r_89__2_1"
+                  id="circle_r_8k__2_1"
                   opacity="1"
                   role="option"
                   stroke="yellow"
@@ -3648,7 +3648,7 @@ Object {
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                   fill="yellow"
-                  id="circle_r_89__2_11L"
+                  id="circle_r_8k__2_11L"
                   opacity="1"
                   role="option"
                   stroke="yellow"
@@ -3659,7 +3659,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_89__2_11D"
+                  id="circle_r_8k__2_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3671,7 +3671,7 @@ Object {
                 role="listbox"
               >
                 <line
-                  id="lineID_r_8a__1_1"
+                  id="lineID_r_8l__1_1"
                   opacity="1"
                   stroke="green"
                   stroke-linecap="round"
@@ -3689,7 +3689,7 @@ Object {
      A 0.5 0.5 0 1 1 158.5 105.21739130434783
      "
                   fill="green"
-                  id="circle_r_89__1_1"
+                  id="circle_r_8k__1_1"
                   opacity="1"
                   role="option"
                   stroke="green"
@@ -3704,7 +3704,7 @@ Object {
      A 0.5 0.5 0 1 1 394.5 25.326086956521735
      "
                   fill="green"
-                  id="circle_r_89__1_11L"
+                  id="circle_r_8k__1_11L"
                   opacity="1"
                   role="option"
                   stroke="green"
@@ -3715,7 +3715,7 @@ Object {
                   cx="394"
                   cy="25.326086956521735"
                   focusable="false"
-                  id="circle_r_89__1_11D"
+                  id="circle_r_8k__1_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"
@@ -3727,7 +3727,7 @@ Object {
                 role="listbox"
               >
                 <line
-                  id="lineID_r_8a__0_1"
+                  id="lineID_r_8l__0_1"
                   opacity="1"
                   stroke="red"
                   stroke-linecap="round"
@@ -3745,7 +3745,7 @@ Object {
      A 0.5 0.5 0 1 1 40.5 131.84782608695653
      "
                   fill="red"
-                  id="circle_r_89__0_1"
+                  id="circle_r_8k__0_1"
                   opacity="1"
                   role="option"
                   stroke="red"
@@ -3760,7 +3760,7 @@ Object {
      A 0.5 0.5 0 1 1 276.5 51.95652173913044
      "
                   fill="red"
-                  id="circle_r_89__0_11L"
+                  id="circle_r_8k__0_11L"
                   opacity="1"
                   role="option"
                   stroke="red"
@@ -3771,7 +3771,7 @@ Object {
                   cx="276"
                   cy="51.95652173913044"
                   focusable="false"
-                  id="circle_r_89__0_11D"
+                  id="circle_r_8k__0_11D"
                   opacity="0"
                   r="8"
                   stroke-width="0"

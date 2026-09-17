@@ -10175,7 +10175,7 @@ Object {
                 stroke-width="3"
               />
               <g
-                aria-label="legend1, series 1 of 3 with 10 data points."
+                aria-label="legend1 data series"
                 role="listbox"
               >
                 <path
@@ -10198,7 +10198,7 @@ Object {
                 stroke-width="3"
               />
               <g
-                aria-label="legend2, series 2 of 3 with 10 data points."
+                aria-label="legend2 data series"
                 role="listbox"
               >
                 <path
@@ -10221,7 +10221,7 @@ Object {
                 stroke-width="3"
               />
               <g
-                aria-label="legend3, series 3 of 3 with 10 data points."
+                aria-label="legend3 data series"
                 role="listbox"
               >
                 <path
@@ -10687,7 +10687,7 @@ Object {
               stroke-width="3"
             />
             <g
-              aria-label="legend1, series 1 of 3 with 10 data points."
+              aria-label="legend1 data series"
               role="listbox"
             >
               <path
@@ -10710,7 +10710,7 @@ Object {
               stroke-width="3"
             />
             <g
-              aria-label="legend2, series 2 of 3 with 10 data points."
+              aria-label="legend2 data series"
               role="listbox"
             >
               <path
@@ -10733,7 +10733,7 @@ Object {
               stroke-width="3"
             />
             <g
-              aria-label="legend3, series 3 of 3 with 10 data points."
+              aria-label="legend3 data series"
               role="listbox"
             >
               <path
