@@ -1,4 +1,4 @@
-import { getDayFromIndex, getDayIndex } from '../constants';
+import { getDayFromIndex, getDayIndex } from '../dateUtils';
 import type { DateRangeType, DayOfWeek } from '../constants';
 
 /**

@@ -1,4 +1,4 @@
-import { getMonthIndex } from './constants';
+import { getMonthIndex } from './dateUtils';
 import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
 const date = new Date(2016, getMonthIndex('april'), 1);

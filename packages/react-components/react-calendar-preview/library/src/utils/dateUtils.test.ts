@@ -1,4 +1,5 @@
-import { DAYS_IN_WEEK, daysOfWeek, monthsOfYear, getDayIndex, getDayFromIndex, getMonthIndex } from './constants';
+import { DAYS_IN_WEEK, daysOfWeek, monthsOfYear } from './constants';
+import { getDayIndex, getDayFromIndex, getMonthIndex } from './dateUtils';
 
 describe('calendar constants', () => {
   it('orders weekdays to match local Date indices', () => {
