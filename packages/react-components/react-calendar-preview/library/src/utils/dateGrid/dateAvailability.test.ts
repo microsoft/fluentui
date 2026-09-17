@@ -1,5 +1,6 @@
 import { findAvailableDate, getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import * as dateMath from '../dateMath';
+import type { AvailableDateOptions } from './dateGrid.types';
 
 jest.mock('../dateMath', () => ({
   __esModule: true,
@@ -32,14 +33,14 @@ describe('findAvailableDate', () => {
   afterEach(() => jest.restoreAllMocks());
 
   const targetDate = new Date(2020, 8, 18);
-  const options = { targetDate, initialDate: new Date(2020, 8, 15), direction: 1 };
+  const options: AvailableDateOptions = { targetDate, initialDate: new Date(2020, 8, 15), direction: 1 };
 
   it('returns the available target unchanged, including the initial date', () => {
     expect(findAvailableDate(options)).toBe(targetDate);
     expect(findAvailableDate({ ...options, initialDate: targetDate })).toBe(targetDate);
   });
 
-  it.each([1, -1])('skips consecutive restricted dates in direction %s', direction => {
+  it.each([1, -1] as const)('skips consecutive restricted dates in direction %s', direction => {
     expect(
       findAvailableDate({
         ...options,
@@ -50,7 +51,7 @@ describe('findAvailableDate', () => {
     expect(targetDate).toEqual(new Date(2020, 8, 18));
   });
 
-  it.each([1, -1])('stops when reaching the initial date in direction %s', direction => {
+  it.each([1, -1] as const)('stops when reaching the initial date in direction %s', direction => {
     expect(
       findAvailableDate({
         ...options,
@@ -75,7 +76,10 @@ describe('findAvailableDate', () => {
   });
 
   it.each([0, 2, -2, 0.5, NaN, Infinity, -Infinity])('rejects direction %s even for an available target', direction => {
-    expect(() => findAvailableDate({ ...options, direction })).toThrow(new RangeError('direction must be 1 or -1.'));
+    expect(() =>
+      // @ts-expect-error Verify the runtime contract for JavaScript callers.
+      findAvailableDate({ ...options, direction }),
+    ).toThrow(new RangeError('direction must be 1 or -1.'));
   });
 
   it.each(['targetDate', 'initialDate'] as const)('rejects an invalid %s', field => {
