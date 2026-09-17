@@ -580,6 +580,11 @@ describe('DateMath', () => {
     result = getWeekNumber(date1, 'monday', 'firstFourDayWeek');
     expected = 53;
     expect(result).toEqual(expected);
+
+    date1 = new Date(2018, 11, 31);
+    result = getWeekNumber(date1, 'monday', 'firstFourDayWeek');
+    expected = 1;
+    expect(result).toEqual(expected);
   });
 
   it('can get the month start and end', () => {

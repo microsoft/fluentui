@@ -383,6 +383,14 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
     num3 = daysInYear - num2;
   }
 
+  const nextYearFirstWeekStart = getStartDateOfWeek(createDate(date.getFullYear() + 1, 0, 1), firstDayOfWeek);
+  const nextYearFirstWeekDays = Array.from({ length: DAYS_IN_WEEK }, (_, index) =>
+    addDays(nextYearFirstWeekStart, index),
+  ).filter(nextYearDate => nextYearDate.getFullYear() === date.getFullYear() + 1).length;
+  if (nextYearFirstWeekDays >= numberOfFullDays && compareDatePart(date, nextYearFirstWeekStart) >= 0) {
+    return 1;
+  }
+
   return Math.floor(num3 / DAYS_IN_WEEK + 1);
 }
 

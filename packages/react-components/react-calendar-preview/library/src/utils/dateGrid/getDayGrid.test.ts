@@ -82,7 +82,18 @@ describe('getDayGrid', () => {
       isInMonth: true,
       isMarked: true,
     });
+
     expect(days.filter(day => day.isMarked)).toHaveLength(1);
+  });
+
+  it('does not mark the same month in a different year as in-month', () => {
+    const gridDays = getDayGrid({
+      ...defaultOptions,
+      navigatedDate: new Date(2020, 11, 1),
+      weeksToShow: 53,
+    }).flat();
+
+    expect(gridDays.find(day => day.key === '2021-11-1')).toMatchObject({ isInMonth: false });
   });
 
   it('defaults today to the current date', () => {

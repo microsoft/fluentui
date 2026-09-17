@@ -93,7 +93,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         key: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
         date: date.getDate().toString(),
         originalDate,
-        isInMonth: date.getMonth() === navigatedDate.getMonth(),
+        isInMonth: date.getFullYear() === navigatedDate.getFullYear() && date.getMonth() === navigatedDate.getMonth(),
         isToday: areDatesEqual(todaysDate, date),
         isSelected: isDateInRange(date, selectedDates),
         isSingleSelected: !!selectedDate && selectedDates.length === 1 && areDatesEqual(date, selectedDate),
