@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: render filled Dropdown boundaries in high contrast themes",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
