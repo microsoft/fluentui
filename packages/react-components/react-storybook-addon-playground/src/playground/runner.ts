@@ -126,6 +126,8 @@ export function isCssSpecifier(name: string): boolean {
 
 /**
  * Collects module specifiers from real `require()` calls in transpiled CommonJS code.
+ * Unlike tools/collect-typings.js, this scans executable JavaScript instead of declarations, so it skips strings,
+ * comments, and regex literals before preloading modules for the iframe runtime.
  * This is an early preload list; the sandboxed `require` shim also enforces the allowlist at execution time.
  */
 export function getRequiredModules(code: string): string[] {

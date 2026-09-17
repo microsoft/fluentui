@@ -27,6 +27,7 @@ function hashString(input: string): string {
   let hash = 0;
   for (let i = 0; i < input.length; i += 1) {
     // Arbitrary non-cryptographic constants; the large prime modulus keeps deterministic class names short.
+    // Collisions are possible but unlikely for story-scoped CSS module class names.
     hash = (hash * HASH_MULTIPLIER + input.charCodeAt(i)) % HASH_MODULUS;
   }
   return hash.toString(36);

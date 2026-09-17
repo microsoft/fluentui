@@ -186,6 +186,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         return modules.get(name);
       };
       const sandboxModule = { exports: Object.create(null) };
+      // User code runs with sandbox-global access; isolation depends on Preview's opaque-origin iframe sandbox.
       const evaluate = new Function('require', 'exports', 'module', message.code);
       evaluate(sandboxRequire, sandboxModule.exports, sandboxModule);
 

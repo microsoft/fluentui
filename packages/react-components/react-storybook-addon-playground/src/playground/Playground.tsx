@@ -333,7 +333,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       targetWindow.history.replaceState(
         null,
         '',
-        `${targetWindow.location.search}${createPlaygroundHash({ code, cssModules })}`,
+        `${targetWindow.location.pathname}${targetWindow.location.search}${createPlaygroundHash({ code, cssModules })}`,
       );
     }, HASH_SYNC_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
