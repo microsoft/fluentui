@@ -1,12 +1,13 @@
 import { getProjects, stripIndents, Tree } from '@nx/devkit';
-import { execSync, spawnSync } from 'child_process';
+import { execFileSync, spawnSync } from 'child_process';
 import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';
 
 const placeholderMessage = '*Description to be added*';
+const repositoryNamePattern = /^[A-Za-z0-9](?:[A-Za-z0-9_-]{0,37}[A-Za-z0-9])?\/[A-Za-z0-9._-]+$/;
 
 function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
-  if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
+  if (schema.repository !== undefined && !repositoryNamePattern.test(schema.repository)) {
     throw new Error(stripIndents`
      You provided "${schema.repository}", which is an invalid repository name.
      Please follow the format {owner}/{repositoryName}.
@@ -108,7 +109,16 @@ function getPackages(tree: Tree) {
 }
 
 function createEpic(repo: string, title: string) {
-  const issueUrl = execSync(`gh issue create --repo "${repo}" --title "${title}" --body "${placeholderMessage}"`)
+  const issueUrl = execFileSync('gh', [
+    'issue',
+    'create',
+    '--repo',
+    repo,
+    '--title',
+    title,
+    '--body',
+    placeholderMessage,
+  ])
     .toString()
     .trim();
 
@@ -124,9 +134,9 @@ function createIssue(repo: string, issue: MigrationIssue, templateTitle: string)
     ${issue.packages.map(pkg => `- ${pkg.name}`).join('\n')}
   `;
 
-  const command = `gh issue create --repo "${repo}" --title "${title}" --body "${message}"`;
-
-  const issueUrl = execSync(command).toString().trim();
+  const issueUrl = execFileSync('gh', ['issue', 'create', '--repo', repo, '--title', title, '--body', message])
+    .toString()
+    .trim();
 
   return issueUrl;
 }
@@ -173,9 +183,7 @@ function updateEpicWithIssues(epicUrl: string, issueMap: MigrationIssues) {
   ${packageList}
 `;
 
-  const command = `gh issue edit ${epicUrl} --body "${updatedMessage}"`;
-
-  execSync(command);
+  execFileSync('gh', ['issue', 'edit', epicUrl, '--body', updatedMessage]);
 }
 
 export default function (tree: Tree, schema: EpicGenerator) {
