@@ -1,6 +1,6 @@
 export { stringifyDataAttribute } from './dataAttributes';
 export { DAYS_IN_WEEK } from './constants';
-export { getDayFromIndex, getDayIndex, getMonthIndex } from './constants';
+export { getDayFromIndex, getDayIndex, getMonthIndex } from './dateUtils';
 export type { AnimationDirection, DateRangeType, DayOfWeek, FirstWeekOfYear, MonthOfYear } from './constants';
 export type {
   CalendarDateLabelData,

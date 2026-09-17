@@ -1,4 +1,5 @@
-import { DAYS_IN_WEEK, getDayIndex, getMonthIndex } from './constants';
+import { DAYS_IN_WEEK } from './constants';
+import { getDayIndex, getMonthIndex } from './dateUtils';
 import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from './constants';
 
 /**

@@ -1,5 +1,6 @@
 import { areDatesEqual, createDate, getDateRange, isDateInRange } from '../dateMath';
-import { DAYS_IN_WEEK, getDayIndex } from '../constants';
+import { DAYS_IN_WEEK } from '../constants';
+import { getDayIndex } from '../dateUtils';
 import type { Day, DayGridOptions } from './dateGrid.types';
 import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import { getDateRangeTypeToUse } from './workWeek';
