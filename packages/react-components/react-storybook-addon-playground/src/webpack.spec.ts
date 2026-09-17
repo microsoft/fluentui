@@ -69,6 +69,8 @@ describe('buildRuntimeEntrySource', () => {
     expect(source).toContain('import * as __pg_mod_1 from "@fluentui/react-icons";');
     expect(source).toContain('"@fluentui/react-components": () => Promise.resolve(__pg_mod_0)');
     expect(source).toContain('"@fluentui/react-icons": () => Promise.resolve(__pg_mod_1)');
+    expect(source).toContain('const allowedModules = Object.freeze(Object.keys(moduleLoaders));');
+    expect(source).toContain('allowedModules,');
     expect(source).not.toMatch(/\bimport\(/);
   });
 });

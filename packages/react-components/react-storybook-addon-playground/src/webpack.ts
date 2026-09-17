@@ -168,11 +168,13 @@ const moduleLoaders = {
   'react-dom/client': () => Promise.resolve(ReactDOMClient),
   ${moduleLoaders}
 };
+const allowedModules = Object.freeze(Object.keys(moduleLoaders));
 
 const register = globalThis[${JSON.stringify(REGISTER_CALLBACK)}];
 if (typeof register === 'function') {
   register({
     React,
+    allowedModules,
     createRoot: ReactDOMClient.createRoot,
     moduleLoaders,
     setup,

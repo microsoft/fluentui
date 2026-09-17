@@ -140,7 +140,10 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         return undefined;
       };
       const requested = message.requiredModules || [];
-      const unavailable = requested.filter(name => !runtime.moduleLoaders[name] && !findCssModule(name));
+      const allowedModules = runtime.allowedModules || Object.keys(runtime.moduleLoaders);
+      const isAllowedModule = name =>
+        allowedModules.includes(name) && Object.prototype.hasOwnProperty.call(runtime.moduleLoaders, name);
+      const unavailable = requested.filter(name => !isAllowedModule(name) && !findCssModule(name));
       if (unavailable.length > 0) {
         const error = new Error('Cannot import ' + unavailable.map(name => '"' + name + '"').join(', ') + '.');
         error.kind = 'import';
@@ -175,7 +178,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
           error.kind = 'import';
           throw error;
         }
-        if (!modules.has(name)) {
+        if (!isAllowedModule(name) || !modules.has(name)) {
           const error = new Error('Module "' + name + '" is not available.');
           error.kind = 'import';
           throw error;

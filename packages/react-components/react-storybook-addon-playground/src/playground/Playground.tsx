@@ -32,7 +32,7 @@ import {
 } from '@fluentui/react-icons';
 
 import type { PlaygroundSetupMetadata } from '../setup';
-import { createPlaygroundHash, type CssModuleSource } from '../url';
+import { createPlaygroundHash, createPlaygroundUrl, type CssModuleSource } from '../url';
 import { compile, formatDiagnostics } from './compiler';
 import { compileCssModules, cssModuleBasename, updateCssModuleSource } from './cssModules';
 import { Editor, TSX_FILE_PATH, type EditorFile } from './Editor';
@@ -416,9 +416,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       return;
     }
 
-    const url = `${targetWindow.location.origin}${targetWindow.location.pathname}${
-      targetWindow.location.search
-    }${createPlaygroundHash({ code, cssModules })}`;
+    const baseUrl = `${targetWindow.location.origin}${targetWindow.location.pathname}${targetWindow.location.search}`;
+    const url = createPlaygroundUrl(code, baseUrl, cssModules);
 
     try {
       if (!targetWindow.navigator.clipboard?.writeText) {

@@ -61,7 +61,9 @@ function isRegexLiteralStart(code: string, start: number): boolean {
   }
 
   const token = code.slice(0, previous + 1).match(/[$\w]+$/)?.[0];
-  return Boolean(token && /^(?:await|case|delete|do|else|in|instanceof|return|throw|typeof|void|yield)$/.test(token));
+  return Boolean(
+    token && /^(?:async|await|case|delete|do|else|in|instanceof|new|of|return|throw|typeof|void|yield)$/.test(token),
+  );
 }
 
 function skipRegexLiteral(code: string, start: number): number {
@@ -124,6 +126,7 @@ export function isCssSpecifier(name: string): boolean {
 
 /**
  * Collects module specifiers from real `require()` calls in transpiled CommonJS code.
+ * This is an early preload list; the sandboxed `require` shim also enforces the allowlist at execution time.
  */
 export function getRequiredModules(code: string): string[] {
   const modules = new Set<string>();
