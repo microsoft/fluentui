@@ -438,6 +438,16 @@ describe('DateMath', () => {
     expect(getWeekNumbersInMonth(0, 'monday', 'firstFullWeek', new Date(2020, 8, 18))).toEqual([]);
   });
 
+  it('rejects an invalid navigated date when calculating week numbers', () => {
+    expect(() => getWeekNumbersInMonth(1, 'monday', 'firstFullWeek', new Date(NaN))).toThrow(
+      new RangeError('navigatedDate must be valid.'),
+    );
+  });
+
+  it('continues week numbers across a month boundary', () => {
+    expect(getWeekNumbersInMonth(6, 'sunday', 'firstDay', new Date(2020, 8, 1))).toEqual([36, 37, 38, 39, 40, 41]);
+  });
+
   // Generating week numbers array per month
   it('can calculate week numbers from selected date', () => {
     // firstDayOfWeek is Monday, firstWeekOfYear is firstFullWeek
