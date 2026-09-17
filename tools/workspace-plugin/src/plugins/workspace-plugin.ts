@@ -140,7 +140,7 @@ function createNodesInternal(
 
   const normalizedOptions = normalizeOptions(options);
 
-  const taskBuilderConfig = getTaskBuilderConfig(projectRoot, globalConfig.pmc);
+  const taskBuilderConfig = getTaskBuilderConfig(projectRoot, context, globalConfig.pmc);
 
   const workspaceConfig = buildWorkspaceProjectConfiguration(
     projectRoot,
@@ -173,6 +173,7 @@ function createNodesInternal(
 }
 
 interface TaskBuilderConfig {
+  absoluteProjectRoot: string;
   projectJSON: ProjectConfiguration;
   packageJSON: PackageJson;
   pmc: ReturnType<typeof getPackageManagerCommand>;
@@ -181,12 +182,17 @@ interface TaskBuilderConfig {
 
 type WorkspaceTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
 
-function getTaskBuilderConfig(projectRoot: string, pmc: TaskBuilderConfig['pmc']): TaskBuilderConfig {
-  const projectJSON: ProjectConfiguration = readJsonFile(join(projectRoot, 'project.json'));
-  const packageJSON: PackageJson = readJsonFile(join(projectRoot, 'package.json'));
+function getTaskBuilderConfig(
+  projectRoot: string,
+  context: CreateNodesContextV2,
+  pmc: TaskBuilderConfig['pmc'],
+): TaskBuilderConfig {
+  const absoluteProjectRoot = join(context.workspaceRoot, projectRoot);
+  const projectJSON: ProjectConfiguration = readJsonFile(join(absoluteProjectRoot, 'project.json'));
+  const packageJSON: PackageJson = readJsonFile(join(absoluteProjectRoot, 'package.json'));
 
   const tags = projectJSON.tags ?? [];
-  const config = { projectJSON, packageJSON, pmc, tags };
+  const config = { absoluteProjectRoot, projectJSON, packageJSON, pmc, tags };
   return config;
 }
 
@@ -296,7 +302,7 @@ function buildWorkspaceProjectConfiguration(
       },
     };
 
-    if (existsSync(join(projectRoot, '../stories/project.json'))) {
+    if (existsSync(join(config.absoluteProjectRoot, '../stories/project.json'))) {
       const storybookTarget = { command: `nx run ${config.projectJSON.name}-stories:storybook`, cache: true };
 
       targets.storybook = storybookTarget;
@@ -448,9 +454,9 @@ function buildTestTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
   if (
-    !existsSync(join(projectRoot, 'jest.config.js')) &&
-    !existsSync(join(projectRoot, 'jest.config.cjs')) &&
-    !existsSync(join(projectRoot, 'jest.config.ts'))
+    !existsSync(join(config.absoluteProjectRoot, 'jest.config.js')) &&
+    !existsSync(join(config.absoluteProjectRoot, 'jest.config.cjs')) &&
+    !existsSync(join(config.absoluteProjectRoot, 'jest.config.ts'))
   ) {
     return null;
   }
@@ -505,9 +511,9 @@ function buildLintTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasEslintConfig =
-    existsSync(join(projectRoot, 'eslint.config.js')) ||
-    existsSync(join(projectRoot, 'eslint.config.cjs')) ||
-    existsSync(join(projectRoot, 'eslint.config.mjs'));
+    existsSync(join(config.absoluteProjectRoot, 'eslint.config.js')) ||
+    existsSync(join(config.absoluteProjectRoot, 'eslint.config.cjs')) ||
+    existsSync(join(config.absoluteProjectRoot, 'eslint.config.mjs'));
 
   if (!hasEslintConfig) {
     return null;
@@ -568,7 +574,8 @@ function buildBundleSizeTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasMonosize =
-    existsSync(join(projectRoot, 'bundle-size')) || existsSync(join(projectRoot, 'monosize.config.mjs'));
+    existsSync(join(config.absoluteProjectRoot, 'bundle-size')) ||
+    existsSync(join(config.absoluteProjectRoot, 'monosize.config.mjs'));
 
   if (!hasMonosize) {
     return null;
@@ -602,7 +609,7 @@ function buildVerifyBundleIsolationTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, 'bundle-isolation.config.json'))) {
+  if (!existsSync(join(config.absoluteProjectRoot, 'bundle-isolation.config.json'))) {
     return null;
   }
 
@@ -634,12 +641,13 @@ function buildE2eTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasCypress =
-    existsSync(join(projectRoot, 'cypress.config.ts')) && existsSync(join(projectRoot, 'tsconfig.cy.json'));
+    existsSync(join(config.absoluteProjectRoot, 'cypress.config.ts')) &&
+    existsSync(join(config.absoluteProjectRoot, 'tsconfig.cy.json'));
   const hasPlaywright =
-    existsSync(join(projectRoot, 'playwright.config.ts')) &&
-    (existsSync(join(projectRoot, 'tsconfig.e2e.json')) ||
+    existsSync(join(config.absoluteProjectRoot, 'playwright.config.ts')) &&
+    (existsSync(join(config.absoluteProjectRoot, 'tsconfig.e2e.json')) ||
       // web-components uses playwright only for all kinds of testing
-      existsSync(join(projectRoot, 'tsconfig.spec.json')));
+      existsSync(join(config.absoluteProjectRoot, 'tsconfig.spec.json')));
 
   if (hasCypress) {
     return {
@@ -734,7 +742,7 @@ function buildStorybookTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(projectRoot, '.storybook/main.js'))) {
+  if (!existsSync(join(config.absoluteProjectRoot, '.storybook/main.js'))) {
     return null;
   }
 
@@ -788,10 +796,10 @@ function buildReactIntegrationTesterProjectConfiguration(
     return {};
   }
 
-  const storiesAdjacentLibraryPath = resolve(projectRoot, '../library/project.json');
+  const storiesAdjacentLibraryPath = resolve(config.absoluteProjectRoot, '../library/project.json');
   const isStorybookAdjacentProject = isV9StoriesProject && existsSync(storiesAdjacentLibraryPath);
   const isLibraryWithStorybookAdjacentProject =
-    basename(projectRoot) === 'library' && existsSync(resolve(projectRoot, '../stories/project.json'));
+    basename(projectRoot) === 'library' && existsSync(resolve(config.absoluteProjectRoot, '../stories/project.json'));
 
   const reactVersions = options.reactIntegrationTesting.reactVersions;
   if (reactVersions.length === 0) {
@@ -818,7 +826,7 @@ function buildReactIntegrationTesterProjectConfiguration(
   // creates atomized targets (per react version)
   for (const reactVersion of reactVersions) {
     const { hasTypeCheck, hasE2E, hasTest } = detectRitTargetsForVersion(
-      projectRoot,
+      config.absoluteProjectRoot,
       reactVersion,
       isStorybookAdjacentProject,
       isLibraryWithStorybookAdjacentProject,
