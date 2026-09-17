@@ -193,6 +193,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const shellDark = Boolean(selectedThemeMeta?.dark);
   const shellTheme = getThemeOption(shellDark ? 'web-dark' : 'web-light');
 
+  const applyRuntimeDefaultCode = React.useCallback((nextMetadata: PlaygroundSetupMetadata) => {
+    if (!defaultCodeApplied.current && nextMetadata.defaultCode) {
+      defaultCodeApplied.current = true;
+      setCode(nextMetadata.defaultCode);
+    }
+  }, []);
+
   const notify = React.useCallback(
     (title: string, intent: 'success' | 'error', body?: string) => {
       dispatchToast(
@@ -332,16 +339,15 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     return () => targetWindow.clearTimeout(timeout);
   }, [code, cssModules, targetWindow]);
 
-  const handleMetadata = React.useCallback((nextMetadata: PlaygroundSetupMetadata) => {
-    setMetadata(nextMetadata);
-    setRuntimeReady(true);
-    setThemeId(current => current ?? nextMetadata.themes[0]?.id);
-
-    if (!defaultCodeApplied.current && nextMetadata.defaultCode) {
-      defaultCodeApplied.current = true;
-      setCode(nextMetadata.defaultCode);
-    }
-  }, []);
+  const handleMetadata = React.useCallback(
+    (nextMetadata: PlaygroundSetupMetadata) => {
+      setMetadata(nextMetadata);
+      setRuntimeReady(true);
+      setThemeId(current => current ?? nextMetadata.themes[0]?.id);
+      applyRuntimeDefaultCode(nextMetadata);
+    },
+    [applyRuntimeDefaultCode],
+  );
 
   const handleRuntimeSuccess = React.useCallback((successfulRunId: number) => {
     setRunId(currentRunId => {

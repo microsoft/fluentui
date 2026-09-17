@@ -10,6 +10,8 @@ import type {
 import { createSandboxDocument } from './sandbox';
 import { usePreviewStyles } from './Preview.styles';
 
+export const PREVIEW_SANDBOX = 'allow-scripts';
+
 export interface PreviewProps {
   code: string | null;
   requiredModules?: string[];
@@ -112,7 +114,8 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
         key={token}
         ref={frameRef}
         title="Playground preview"
-        sandbox="allow-scripts"
+        // User code is evaluated with `new Function` inside this opaque-origin iframe. Do not add `allow-same-origin`.
+        sandbox={PREVIEW_SANDBOX}
         srcDoc={source}
         className={styles.frame}
       />
