@@ -19,11 +19,11 @@ export type DropdownState = DropdownBaseHookState & {
      */
     'data-open'?: string;
     /**
-     * Whether the trigger element is currently disabled.
+     * Present when the trigger is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
     /**
-     * Whether the trigger element is currently displaying a placeholder.
+     * Present when a placeholder is displayed; omitted when a value is present.
      */
     'data-placeholder'?: string;
     /**

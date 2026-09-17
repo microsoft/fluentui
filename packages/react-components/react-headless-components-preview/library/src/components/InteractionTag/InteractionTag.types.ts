@@ -5,12 +5,12 @@ export type { InteractionTagSlots, InteractionTagBaseProps as InteractionTagProp
 export type InteractionTagState = InteractionTagBaseState & {
   root: {
     /**
-     * Data attribute set when the interaction tag is disabled.
+     * Present when the interaction tag is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the interaction tag is selected.
+     * Present when the interaction tag is selected; omitted otherwise.
      */
     'data-selected'?: string;
   };

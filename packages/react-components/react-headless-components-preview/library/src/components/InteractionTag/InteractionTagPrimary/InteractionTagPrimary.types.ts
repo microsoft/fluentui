@@ -9,17 +9,17 @@ export type {
 export type InteractionTagPrimaryState = InteractionTagPrimaryBaseState & {
   root: {
     /**
-     * Data attribute set when the primary action is disabled.
+     * Present when the primary action is disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the interaction tag is selected.
+     * Present when the interaction tag is selected; omitted otherwise.
      */
     'data-selected'?: string;
 
     /**
-     * Data attribute set when the interaction tag has a secondary action.
+     * Present when the interaction tag has a secondary action; omitted otherwise.
      */
     'data-has-secondary-action'?: string;
   };

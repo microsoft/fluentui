@@ -8,7 +8,7 @@ export type { LabelSlots, LabelBaseProps as LabelProps } from '@fluentui/react-l
 export type LabelState = LabelBaseState & {
   root: {
     /**
-     * Data attribute set when the label is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
