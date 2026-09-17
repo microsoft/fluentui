@@ -1,6 +1,6 @@
-import { relative } from 'node:path';
-
 import type { Formatter } from './formatter';
+import { compareText } from './ordering';
+import { toWorkspacePath } from './path-utils';
 import type { DirectiveAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
@@ -8,12 +8,7 @@ const TABLE_REASON_MAX_LEN = 80;
 /**
  * Print a report of all directive analyses, grouped by package and status.
  */
-export function printReport(
-  f: Formatter,
-  results: DirectiveAnalysis[],
-  workspaceRoot: string,
-  fullReasons: boolean,
-): void {
+export function printReport(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, verbose: boolean): void {
   if (results.length === 0) {
     f.blank();
     f.line('No directives found.');
@@ -21,7 +16,7 @@ export function printReport(
   }
 
   // Group by package
-  const byPackage = new Map<string, DirectiveAnalysis[]>();
+  const byPackage = new Map<string | null, DirectiveAnalysis[]>();
   for (const r of results) {
     const existing = byPackage.get(r.packageName) ?? [];
     existing.push(r);
@@ -29,7 +24,7 @@ export function printReport(
   }
 
   // Sort packages alphabetically
-  const sortedPackages = [...byPackage.keys()].sort();
+  const sortedPackages = [...byPackage.keys()].sort((a, b) => compareText(a ?? '', b ?? ''));
 
   for (const pkg of sortedPackages) {
     const pkgResults = byPackage.get(pkg)!;
@@ -41,7 +36,8 @@ export function printReport(
     const conflicting = pkgResults.filter(r => r.status === 'conflicting');
 
     f.blank();
-    f.heading(2, pkg);
+    const packageLabel = pkg ?? '(unpackaged)';
+    f.heading(2, packageLabel);
     f.blank();
 
     if (activeNoMemo.length > 0) {
@@ -51,16 +47,16 @@ export function printReport(
           status: 'warning',
           count: activeNoMemo.length,
           level: 3,
-          group: pkg,
+          group: packageLabel,
         },
-        () => printTable(f, activeNoMemo, workspaceRoot, fullReasons),
+        () => printTable(f, activeNoMemo, workspaceRoot, verbose),
       );
     }
 
     if (activeMemo.length > 0) {
       f.foldableSection(
-        { title: 'Active (compilable)', status: 'success', count: activeMemo.length, level: 3, group: pkg },
-        () => printTable(f, activeMemo, workspaceRoot, fullReasons),
+        { title: 'Active (compilable)', status: 'success', count: activeMemo.length, level: 3, group: packageLabel },
+        () => printTable(f, activeMemo, workspaceRoot, verbose),
       );
     }
 
@@ -71,9 +67,9 @@ export function printReport(
           status: 'error',
           count: broken.length,
           level: 3,
-          group: pkg,
+          group: packageLabel,
         },
-        () => printTable(f, broken, workspaceRoot, fullReasons),
+        () => printTable(f, broken, workspaceRoot, verbose),
       );
     }
 
@@ -84,52 +80,59 @@ export function printReport(
           status: 'error',
           count: conflicting.length,
           level: 3,
-          group: pkg,
+          group: packageLabel,
         },
-        () => printTable(f, conflicting, workspaceRoot, fullReasons),
+        () => printTable(f, conflicting, workspaceRoot, verbose),
       );
     }
 
     if (redundant.length > 0) {
       f.foldableSection(
-        { title: 'Redundant (removable)', status: 'warning', count: redundant.length, level: 3, group: pkg },
-        () => printTable(f, redundant, workspaceRoot, fullReasons),
+        {
+          title: 'Redundant (removable)',
+          status: 'warning',
+          count: redundant.length,
+          level: 3,
+          group: packageLabel,
+        },
+        () => printTable(f, redundant, workspaceRoot, verbose),
       );
     }
 
     if (skipped.length > 0) {
       f.foldableSection(
-        { title: 'Skipped (already justified)', status: 'info', count: skipped.length, level: 3, group: pkg },
-        () => printTable(f, skipped, workspaceRoot, fullReasons),
+        {
+          title: 'Skipped (already justified)',
+          status: 'info',
+          count: skipped.length,
+          level: 3,
+          group: packageLabel,
+        },
+        () => printTable(f, skipped, workspaceRoot, verbose),
       );
     }
   }
 }
 
-function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
+function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, verbose: boolean): void {
   const rows = results.map(r => {
-    const relPath = relative(workspaceRoot, r.filePath);
+    const relPath = toWorkspacePath(workspaceRoot, r.filePath);
     const fn = r.functionName ?? '(unknown)';
-    // With --full-reasons, keep the full reason (collapse newlines so the table stays valid);
-    // otherwise truncate to keep the column compact.
-    const reason = r.reason
-      ? fullReasons
-        ? r.reason.replace(/\n/g, ' ')
-        : truncate(r.reason, TABLE_REASON_MAX_LEN)
-      : '';
+    // In verbose output, keep the full reason while collapsing newlines so the table stays valid.
+    const reason = r.reason ? (verbose ? r.reason.replace(/\n/g, ' ') : truncate(r.reason, TABLE_REASON_MAX_LEN)) : '';
     return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
   });
 
   f.table(['Location', 'Function', 'Compiler Event', 'Reason'], rows);
   f.blank();
 
-  if (fullReasons) {
+  if (verbose) {
     // Print the full code-framed diagnostics as details blocks below the table for readability
     const withFull = results.filter(r => r.fullReason);
     if (withFull.length > 0) {
       f.details('Full compiler output', () => {
         for (const r of withFull) {
-          const relPath = relative(workspaceRoot, r.filePath);
+          const relPath = toWorkspacePath(workspaceRoot, r.filePath);
           const fn = r.functionName ?? '(unknown)';
           f.heading(4, `${relPath}:${r.line} — ${fn}`);
           f.blank();

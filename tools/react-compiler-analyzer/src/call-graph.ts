@@ -2,9 +2,11 @@ import { readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 
 import { parseSync, traverse } from '@babel/core';
-import type { File, Node, CallExpression, Function as BabelFunction } from '@babel/types';
+import type { NodePath, TransformOptions } from '@babel/core';
+import type { File, Node, Function as BabelFunction } from '@babel/types';
 
 import type { ModuleResolver, ResolverStats } from './module-resolver';
+import { locationKey } from './identity';
 import {
   buildLeafConfig,
   hasAnyLeafRule,
@@ -29,7 +31,7 @@ interface BindingRead {
 interface FnInfo {
   key: string;
   node: BabelFunction;
-  calls: { node: CallExpression; parent: Node | null }[];
+  calls: { node: AnyCall; parent: Node | null }[];
   bindingReads: BindingRead[];
 }
 
@@ -60,8 +62,9 @@ export interface IndirectRisk {
 
 /** An indirect risk located in source: which enclosing function, and the offending call site. */
 export interface IndirectFinding {
-  /** `line:column` key of the enclosing function start (matches the compiler-event key). */
+  /** Legacy location key; callers resolve it through the canonical source-function index. */
   fnKey: string;
+  declarationStart: { line: number; column: number };
   /** 1-based line of the wrapper call site. */
   line: number;
   /** 0-based column of the wrapper call site. */
@@ -77,10 +80,6 @@ const MAX_DEPTH = 12;
  * not bounded: it stores plain results, not ASTs, and keeps evictions from costing repeat work.
  */
 const MAX_CACHED_MODULES = 2000;
-
-function fnKey(loc: { line: number; column: number }): string {
-  return `${loc.line}:${loc.column}`;
-}
 
 function isUserFunction(node: Node): node is BabelFunction {
   return (
@@ -122,7 +121,13 @@ export function createCallGraphAnalyzer(
         filename: filePath,
         babelrc: false,
         configFile: false,
-        ...(parserPlugins.length ? { parserOpts: { plugins: [...parserPlugins] } } : {}),
+        ...(parserPlugins.length
+          ? {
+              parserOpts: {
+                plugins: [...parserPlugins] as NonNullable<NonNullable<TransformOptions['parserOpts']>['plugins']>,
+              },
+            }
+          : {}),
         presets: [
           [
             require.resolve('@babel/preset-typescript'),
@@ -153,11 +158,7 @@ export function createCallGraphAnalyzer(
   }
 
   /** Resolve a call's callee to a first-party user function, following imports + re-exports. */
-  function resolveCallee(
-    call: CallExpression,
-    model: ModuleModel,
-    depth: number,
-  ): { model: ModuleModel; fn: FnInfo } | null {
+  function resolveCallee(call: AnyCall, model: ModuleModel, depth: number): { model: ModuleModel; fn: FnInfo } | null {
     const callee = call.callee;
     if (callee.type !== 'Identifier') {
       return null; // member calls / dynamic dispatch — out of syntactic reach
@@ -276,11 +277,8 @@ export function createCallGraphAnalyzer(
    * through a first-party wrapper call (the direct-leaf cases are already handled by the in-file
    * plugin, so those are skipped here). Each finding carries the resolution chain for the message.
    */
-  function analyzeFunctionCalls(
-    entryModel: ModuleModel,
-    entryFn: FnInfo,
-  ): { call: CallExpression; risk: IndirectRisk }[] {
-    const out: { call: CallExpression; risk: IndirectRisk }[] = [];
+  function analyzeFunctionCalls(entryModel: ModuleModel, entryFn: FnInfo): { call: AnyCall; risk: IndirectRisk }[] {
+    const out: { call: AnyCall; risk: IndirectRisk }[] = [];
     for (const { node } of entryFn.calls) {
       // Skip calls that are themselves a direct leaf — the plugin reports those already.
       if (matchRiskyCall(node, null, leafConfig)) {
@@ -321,7 +319,17 @@ export function createCallGraphAnalyzer(
           if (!loc) {
             continue;
           }
-          findings.push({ fnKey: fn.key, line: loc.line, column: loc.column, risk });
+          const declarationStart = fn.node.loc?.start;
+          if (!declarationStart) {
+            continue;
+          }
+          findings.push({
+            fnKey: fn.key,
+            declarationStart: { line: declarationStart.line, column: declarationStart.column },
+            line: loc.line,
+            column: loc.column,
+            risk,
+          });
         }
       }
       return findings;
@@ -342,7 +350,7 @@ function buildModuleModel(filePath: string, ast: File, leafConfig: LeafRiskConfi
   const fnStack: FnInfo[] = [];
 
   function infoFor(node: BabelFunction): FnInfo {
-    const key = node.loc ? fnKey(node.loc.start) : `anon-${fnByKey.size}`;
+    const key = node.loc ? locationKey(node.loc.start) : `anon-${fnByKey.size}`;
     let info = fnByKey.get(key);
     if (!info) {
       info = { key, node, calls: [], bindingReads: [] };
@@ -360,10 +368,11 @@ function buildModuleModel(filePath: string, ast: File, leafConfig: LeafRiskConfi
         fnStack.pop();
       },
     },
-    'CallExpression|OptionalCallExpression'(path: NodePath<AnyCall>) {
+    'CallExpression|OptionalCallExpression'(path: NodePath) {
       const top = fnStack[fnStack.length - 1];
       if (top) {
-        top.calls.push({ node: path.node, parent: path.parent });
+        const callPath = path as NodePath<AnyCall>;
+        top.calls.push({ node: callPath.node, parent: callPath.parent });
       }
     },
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -425,7 +434,7 @@ function indexTopLevel(
     if (!isUserFunction(fnNode) || !fnNode.loc) {
       return;
     }
-    const info = fnByKey.get(fnKey(fnNode.loc.start));
+    const info = fnByKey.get(locationKey(fnNode.loc.start));
     if (info) {
       localFns.set(name, info);
     }

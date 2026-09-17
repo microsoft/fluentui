@@ -1,0 +1,286 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/microsoft/fluentui/blob/experimental/rc-analyzer/tools/react-compiler-analyzer/rca.analyze.schema.json",
+  "title": "React Compiler Analyzer analyze output",
+  "description": "Compact schemaVersion 2 document emitted by analyze --format json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "tool", "command", "mode", "summary", "functions", "findings", "unparseable"],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "tool": {
+      "const": "react-compiler-analyzer"
+    },
+    "command": {
+      "const": "analyze"
+    },
+    "mode": {
+      "enum": ["infer", "annotation", "all"]
+    },
+    "summary": {
+      "$ref": "#/definitions/summary"
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/function"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/finding"
+      }
+    },
+    "unparseable": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/unparseable"
+      }
+    },
+    "annotate": {
+      "$ref": "#/definitions/annotate"
+    }
+  },
+  "definitions": {
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nullableString": {
+      "type": ["string", "null"]
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "functions",
+        "compiled",
+        "memoCacheEmitted",
+        "skipped",
+        "errors",
+        "findings",
+        "findingsOnCompiled",
+        "findingsSuppressed",
+        "unparseableFiles"
+      ],
+      "properties": {
+        "functions": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "compiled": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "memoCacheEmitted": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "skipped": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "errors": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "findings": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "findingsOnCompiled": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "findingsSuppressed": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "unparseableFiles": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        }
+      }
+    },
+    "memoStats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["memoSlots", "memoBlocks", "memoValues", "prunedMemoBlocks", "prunedMemoValues"],
+      "properties": {
+        "memoSlots": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "memoBlocks": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "memoValues": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "prunedMemoBlocks": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "prunedMemoValues": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        }
+      }
+    },
+    "manualMemo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["useMemo", "useCallback", "reactMemo", "reactMemoHasComparator"],
+      "properties": {
+        "useMemo": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "useCallback": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "reactMemo": {
+          "type": "boolean"
+        },
+        "reactMemoHasComparator": {
+          "type": "boolean"
+        }
+      }
+    },
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "package", "line", "column", "function", "status", "compilerEvent"],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package": {
+          "$ref": "#/definitions/nullableString"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "function": {
+          "$ref": "#/definitions/nullableString"
+        },
+        "status": {
+          "enum": ["compiled", "skipped", "error"]
+        },
+        "compilerEvent": {
+          "enum": ["CompileSuccess", "CompileError", "CompileSkip", "PipelineError"]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "errorLine": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "errorColumn": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "memoStats": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/memoStats"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "manualMemo": {
+          "$ref": "#/definitions/manualMemo"
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "package",
+        "line",
+        "column",
+        "function",
+        "ruleId",
+        "severity",
+        "symbol",
+        "message",
+        "compiled"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package": {
+          "$ref": "#/definitions/nullableString"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "function": {
+          "$ref": "#/definitions/nullableString"
+        },
+        "ruleId": {
+          "enum": ["nonreactive-store-read", "hidden-selector-hook"]
+        },
+        "severity": {
+          "enum": ["high", "medium"]
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "compiled": {
+          "type": "boolean"
+        },
+        "suppressed": {
+          "const": true
+        }
+      }
+    },
+    "unparseable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "error"],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "error": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "annotate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "filesModified", "functionsAnnotated", "functionsBailedOut"],
+      "properties": {
+        "mode": {
+          "enum": ["manual-memo", "all", "all-safe", "bailout-only"]
+        },
+        "filesModified": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "functionsAnnotated": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "functionsBailedOut": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        }
+      }
+    }
+  }
+}

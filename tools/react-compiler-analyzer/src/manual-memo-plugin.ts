@@ -1,7 +1,8 @@
 import type { PluginObj, NodePath } from '@babel/core';
 import type { Function as BabelFunction, CallExpression } from '@babel/types';
 
-import type { ManualMemoization } from './types';
+import { locationKey } from './identity';
+import type { SourceFunctionIndex } from './source-functions';
 
 export interface ManualMemoEntry {
   useMemo: number;
@@ -12,8 +13,10 @@ export interface ManualMemoEntry {
 }
 
 export interface ManualMemoPluginOptions {
+  /** Canonical function inventory used by the analyzer pipeline. */
+  sourceFunctions?: SourceFunctionIndex;
   /** Shared map keyed by `line:column` of the enclosing function start */
-  results: Map<string, ManualMemoEntry>;
+  results?: Map<string, ManualMemoEntry>;
   /** Body insertion lines for ALL functions, keyed by `line:column` */
   bodyInsertionLines?: Map<string, number>;
   /** Directives already present on each function, keyed by `line:column`. */
@@ -30,10 +33,6 @@ export interface ManualMemoPluginOptions {
 export interface ExistingDirectives {
   useMemo: boolean;
   useNoMemo: boolean;
-}
-
-function fnKey(loc: { line: number; column: number }): string {
-  return `${loc.line}:${loc.column}`;
 }
 
 function getBodyInsertionLine(fnPath: NodePath<BabelFunction>): number {
@@ -63,10 +62,6 @@ function readDirectives(fnPath: NodePath<BabelFunction>): ExistingDirectives {
     }
   }
   return found;
-}
-
-function hasUseMemoDirective(fnPath: NodePath<BabelFunction>): boolean {
-  return readDirectives(fnPath).useMemo;
 }
 
 /**
@@ -127,7 +122,8 @@ export function manualMemoPlugin(): PluginObj {
         if (!fnNode.loc) {
           return;
         }
-        const key = fnKey(fnNode.loc.start);
+        const key = locationKey(fnNode.loc.start);
+        opts.sourceFunctions?.addFunction(path as NodePath<BabelFunction>);
         const insertionLine = getBodyInsertionLine(path as NodePath<BabelFunction>);
         if (insertionLine > 0) {
           opts.bodyInsertionLines?.set(key, insertionLine);
@@ -135,7 +131,7 @@ export function manualMemoPlugin(): PluginObj {
         opts.existingDirectives?.set(key, readDirectives(path as NodePath<BabelFunction>));
         const bodyLoc = fnNode.body.loc;
         if (bodyLoc) {
-          opts.keyAliases?.set(fnKey(bodyLoc.start), key);
+          opts.keyAliases?.set(locationKey(bodyLoc.start), key);
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -189,8 +185,15 @@ export function manualMemoPlugin(): PluginObj {
             return;
           }
 
-          const key = fnKey(targetFnPath.node.loc.start);
-          let entry = opts.results.get(key);
+          const sourceFunction =
+            opts.sourceFunctions?.findByNode(targetFnPath.node) ??
+            opts.sourceFunctions?.addFunction(targetFnPath as NodePath<BabelFunction>);
+          if (sourceFunction) {
+            opts.sourceFunctions!.recordManualMemo(sourceFunction.id, 'react-memo', path.node.arguments.length > 1);
+          }
+
+          const key = locationKey(targetFnPath.node.loc.start);
+          let entry = opts.results?.get(key);
           if (!entry) {
             entry = {
               useMemo: 0,
@@ -199,7 +202,7 @@ export function manualMemoPlugin(): PluginObj {
               reactMemoHasComparator: false,
               bodyInsertionLine: getBodyInsertionLine(targetFnPath),
             };
-            opts.results.set(key, entry);
+            opts.results?.set(key, entry);
           }
           entry.reactMemo = true;
           entry.reactMemoHasComparator = path.node.arguments.length > 1;
@@ -214,14 +217,14 @@ export function manualMemoPlugin(): PluginObj {
         if (!fnPath || !fnPath.node.loc) {
           return;
         }
-
-        // Skip functions that already have 'use memo' directive
-        if (hasUseMemoDirective(fnPath)) {
-          return;
+        const sourceFunction = opts.sourceFunctions?.findByNode(fnPath.node);
+        const siteKind = hookName === 'useMemo' ? 'use-memo' : 'use-callback';
+        if (sourceFunction) {
+          opts.sourceFunctions!.recordManualMemo(sourceFunction.id, siteKind);
         }
 
-        const key = fnKey(fnPath.node.loc.start);
-        let entry = opts.results.get(key);
+        const key = locationKey(fnPath.node.loc.start);
+        let entry = opts.results?.get(key);
 
         if (!entry) {
           entry = {
@@ -231,7 +234,7 @@ export function manualMemoPlugin(): PluginObj {
             reactMemoHasComparator: false,
             bodyInsertionLine: getBodyInsertionLine(fnPath),
           };
-          opts.results.set(key, entry);
+          opts.results?.set(key, entry);
         }
 
         if (hookName === 'useMemo') {

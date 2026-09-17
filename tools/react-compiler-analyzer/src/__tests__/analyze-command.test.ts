@@ -10,28 +10,13 @@ import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+import { normalizeCliOutput } from './helpers/output';
 
 const analyzeCommand = createAnalyzeCommand({});
 
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);
   return deriveCoverage(compiled);
-}
-
-/**
- * Normalize captured CLI output for snapshotting:
- * - replace the temp dir with `<TEMP>` so absolute scan-log paths are stable
- * - rewrite the `Scanning:` heading underline, whose length tracks the (machine-dependent)
- *   absolute path, to match the normalized heading text length
- */
-function normalizeCliOutput(captured: string[], tempDir: string): string {
-  const lines = captured.map(line => line.split(tempDir).join('<TEMP>'));
-  for (let i = 0; i < lines.length - 1; i++) {
-    if (lines[i].startsWith('Scanning: ') && /^─+$/.test(lines[i + 1])) {
-      lines[i + 1] = '─'.repeat(lines[i].length);
-    }
-  }
-  return lines.join('\n');
 }
 
 describe('coverage command integration', () => {
@@ -252,6 +237,94 @@ describe('multi-path analyze', () => {
     expect(coverageResults.length).toBeGreaterThanOrEqual(2);
   });
 
+  it('renders package-scoped candidate sections in HTML output', async () => {
+    const captured: string[] = [];
+    const originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    try {
+      await analyzeCommand.handler!({
+        paths: [pkgB.srcDir, pkgA.srcDir],
+        verbose: true,
+        concurrency: 2,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'html',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      console.log = originalLog;
+    }
+
+    expect(captured).toHaveLength(1);
+    const html = captured[0];
+    expect(html.match(/data-title="Candidate Legend"/g)).toHaveLength(1);
+    expect(html.match(/data-title="Manual Memo Migration Candidates"/g)).toHaveLength(2);
+    expect(html).toContain(
+      'id="pkg-alpha--manual-memo-migration-candidates" data-title="Manual Memo Migration Candidates" data-group="pkg-alpha"',
+    );
+    expect(html).toContain(
+      'id="pkg-beta--manual-memo-migration-candidates" data-title="Manual Memo Migration Candidates" data-group="pkg-beta"',
+    );
+    expect(html).toContain(
+      '<h2 class="toc-group-heading" id="package-pkg-alpha" data-title="pkg-alpha">pkg-alpha</h2>',
+    );
+    expect(html).toContain('<h2 class="toc-group-heading" id="package-pkg-beta" data-title="pkg-beta">pkg-beta</h2>');
+
+    const legend = html.indexOf('id="candidate-legend"');
+    const alphaPackage = html.indexOf('id="package-pkg-alpha"');
+    const alphaCandidates = html.indexOf('id="pkg-alpha--manual-memo-migration-candidates"');
+    const betaPackage = html.indexOf('id="package-pkg-beta"');
+    const betaCandidates = html.indexOf('id="pkg-beta--manual-memo-migration-candidates"');
+    expect(legend).toBeLessThan(alphaPackage);
+    expect(alphaPackage).toBeLessThan(alphaCandidates);
+    expect(alphaCandidates).toBeLessThan(betaPackage);
+    expect(betaPackage).toBeLessThan(betaCandidates);
+  });
+
+  it('renders only package and overall summary tables without verbose details', async () => {
+    writeComponent(pkgA, 'A.tsx', 'export function A() { return <div />; }\n');
+
+    const captured: string[] = [];
+    const originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    try {
+      await analyzeCommand.handler!({
+        paths: [pkgA.srcDir, pkgB.srcDir],
+        verbose: false,
+        concurrency: 2,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'html',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      console.log = originalLog;
+    }
+
+    const html = captured.join('\n');
+    expect(html).not.toContain('data-title="Candidate Legend"');
+    expect(html).toContain(
+      '<h2 class="toc-group-heading" id="package-pkg-alpha" data-title="pkg-alpha">pkg-alpha</h2>',
+    );
+    expect(html).toContain('<h2 class="toc-group-heading" id="package-pkg-beta" data-title="pkg-beta">pkg-beta</h2>');
+    expect(html).not.toContain('id="pkg-alpha--manual-memo-migration-candidates"');
+    expect(html).not.toContain('id="pkg-beta--manual-memo-migration-candidates"');
+    expect(html).not.toContain('<details class="fold');
+    expect(html).not.toContain('Candidate Legend');
+    expect(html).not.toContain('Compiler accepted (memo cache emitted)</span>');
+    expect(html.match(/<table>/g)).toHaveLength(3);
+  });
+
   it('applies annotations across files from multiple paths', async () => {
     const fileA = writeComponent(pkgA, 'Annotatable.tsx', COMPILABLE_COMPONENT);
     const fileB = writeComponent(pkgB, 'Annotatable.tsx', COMPILABLE_COMPONENT);
@@ -289,7 +362,7 @@ describe('single-file path analyze', () => {
 
     const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
 
-    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
   });
 
   it('ignores exclude patterns when the path points directly at a file', async () => {
@@ -299,7 +372,7 @@ describe('single-file path analyze', () => {
     // file path must bypass excludes.
     const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
 
-    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
   });
 });
 
@@ -353,7 +426,6 @@ describe('mixed directory + file path analyze', () => {
       paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'Bar.styles.ts'), join(tempDir, 'src', 'Baz.tsx')],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer',
       format: 'md',
@@ -372,7 +444,6 @@ describe('mixed directory + file path analyze', () => {
       paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'comp', 'Foo.tsx')],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer',
       format: 'md',
@@ -417,7 +488,6 @@ describe('analyze command — scan log wrapping', () => {
       paths: [tempDir],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer',
       format: 'md',
@@ -474,7 +544,6 @@ describe('analyze command — scan log wrapping', () => {
         paths: [tempDir],
         verbose: true,
         concurrency: 1,
-        'full-reasons': false,
         exclude: DEFAULT_EXCLUDE,
         mode: 'infer',
         format: 'cli',
@@ -514,14 +583,16 @@ describe('analyze command — scan log wrapping', () => {
       wrap-test-pkg
       ─────────────
 
-      Status    Count  Percentage
-      ────────  ─────  ──────────
-      Compiled  1      100.0%
-      Skipped   0      0.0%
-      Errors    0      0.0%
-      Total     1
+      Status                                     Count  Percentage
+      ─────────────────────────────────────────  ─────  ────────────────
+      Compiler accepted (memo cache emitted)     1      100.0%
+      Compiler accepted (no memo cache emitted)  0      0.0%
+      Manual Memo Migration Candidates           0      0.0% of accepted
+      Skipped                                    0      0.0%
+      Errors                                     0      0.0%
+      Total                                      1
 
-      ▸ Compiled (will be memoized) (1)
+      ▸ Compiler accepted (memo cache emitted) (1)
 
       Location     Function  Memo Slots  Memo Blocks  Memo Values
       ───────────  ────────  ──────────  ───────────  ───────────
@@ -531,21 +602,24 @@ describe('analyze command — scan log wrapping', () => {
       ───────
 
       - Total functions analyzed: 1
-      - Compiled (will be memoized): 1 (100.0%)
-        - Migration candidates (has manual memoization): 0
-        - Compiler-ready (no manual memoization): 1
+      - Compiler accepted: 1 (100.0%)
+        - Memo cache emitted: 1 (100.0% of total)
+        - No memo cache emitted: 0 (0.0% of total)
       - Skipped (opted out or not a component/hook): 0 (0.0%)
       - Errors (compiler bailout): 0 (0.0%)
+      - Manual memo migration candidates: 0
 
-        All recognized functions compile successfully.
+        No compiler errors were reported.
 
       ▸ Legend
 
       Term         Meaning
-      ───────────  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-      Memo Slots   Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot.
-      Memo Blocks  Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks.
-      Memo Values  Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders.
+      ───────────  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      Memo Slots   Number of retained runtime cache slots reported by the compiler. Zero means the function was accepted without emitting a memo cache.
+      Memo Blocks  Number of retained code blocks (JSX elements, conditional branches, etc.) wrapped with cache checks.
+      Memo Values  Number of retained values (variables, expressions, hook results) cached between renders.
+
+        Memo counters describe emitted compiler output; they do not rank expected performance benefit.
 
 
         Tip: Run lint <path> for directive health checks."
@@ -557,7 +631,6 @@ describe('analyze command — scan log wrapping', () => {
       paths: [tempDir],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer',
       format: 'html',

@@ -1,16 +1,16 @@
 import type { CommandModule, Argv } from 'yargs';
-
+import { deriveCandidates, isRiskAnalysisConfigured } from '../candidates';
 import { compileFilesStreaming } from '../compiler';
-import { deriveCoverage } from '../coverage-analyzer';
+import { deriveCompilerAnalysis } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import {
   printCoverageReport,
   printCoverageSummary,
-  printMigrationCandidates,
   printRuntimeRisks,
   printUnparseableFiles,
 } from '../coverage-reporter';
 import { discoverAllFiles } from '../discovery';
+import { compareText } from '../ordering';
 import type { ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
 import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RcaConfig, RiskConfig } from '../types';
@@ -42,7 +42,7 @@ function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['
   if (hits.length > 0) {
     const used = hits.filter(([, n]) => n > 0).length;
     console.log(`  aliases: ${used}/${hits.length} matched at least one import`);
-    for (const [prefix, n] of hits.sort((a, b) => b[1] - a[1])) {
+    for (const [prefix, n] of hits.sort((a, b) => b[1] - a[1] || compareText(a[0], b[0]))) {
       console.log(`    ${prefix.padEnd(24)} ${String(n).padStart(6)}${n === 0 ? '   ← never matched' : ''}`);
     }
   }
@@ -58,7 +58,8 @@ function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['
 
 /** Command body, separated from the yargs wiring so tests can assert on the exit code. */
 export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
-  const riskConfig = argv.riskConfig ?? {};
+  const configuredRisk = argv.riskConfig;
+  const riskConfig = configuredRisk ?? {};
 
   if (argv.annotate && argv.mode === 'annotation') {
     // In annotation mode the compiler only reports functions that already carry 'use memo', so
@@ -85,6 +86,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           concurrency: argv.concurrency,
           verbose: argv.verbose,
           compilationMode: argv.mode,
+          workspaceRoot: process.cwd(),
           riskConfig,
           parserPlugins: argv['parser-plugin'],
           onResolverStats: stats => {
@@ -97,15 +99,21 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           if (result.error) {
             unparseable.push({ file: result.filePath, error: result.error.message });
           }
-          coverageResults.push(...deriveCoverage(result, { fullReasons: argv['full-reasons'] }));
+          const normalized = deriveCompilerAnalysis(result, {
+            includeFullDiagnostics: argv.verbose,
+            includeMutationMetadata: Boolean(argv.annotate),
+          });
+          coverageResults.push(...normalized.analyses);
         },
       );
 
       endScanLog();
 
       sortByLocation(coverageResults);
+      unparseable.sort((a, b) => compareText(a.file, b.file) || compareText(a.error, b.error));
 
       const workspaceRoot = process.cwd();
+      const candidates = deriveCandidates(coverageResults, isRiskAnalysisConfigured(configuredRisk));
 
       // Annotation writes to disk and is independent of how the report is rendered, so it must
       // run before the format branches — otherwise `--format json --annotate` silently does nothing.
@@ -114,13 +122,21 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         : undefined;
 
       if (argv.format === 'json') {
-        writeDocument(toAnalysisDocument(coverageResults, { mode: argv.mode, workspaceRoot, unparseable, annotate }));
+        writeDocument(
+          toAnalysisDocument(coverageResults, {
+            mode: argv.mode,
+            workspaceRoot,
+            unparseable,
+            annotate,
+          }),
+        );
         return 0;
       }
-      printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, argv['full-reasons']);
-      printRuntimeRisks(f, coverageResults, workspaceRoot);
-      printUnparseableFiles(f, unparseable, workspaceRoot);
-      printMigrationCandidates(f, coverageResults, workspaceRoot);
+      printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, candidates);
+      if (argv.verbose) {
+        printRuntimeRisks(f, coverageResults, workspaceRoot);
+        printUnparseableFiles(f, unparseable, workspaceRoot);
+      }
       printCoverageSummary(f, coverageResults, argv.verbose, unparseable.length);
 
       if (annotate) {
@@ -140,8 +156,10 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         }
       }
 
-      f.blank();
-      f.line('> **Tip:** Run `lint <path>` for directive health checks.');
+      if (argv.verbose) {
+        f.blank();
+        f.line('> **Tip:** Run `lint <path>` for directive health checks.');
+      }
 
       return 0;
     },

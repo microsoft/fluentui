@@ -31,7 +31,7 @@ export function isAnyMember(node: Node | null | undefined): node is AnyMember {
  * Shared with the call-graph so both halves agree on what a hook is.
  */
 export function isHookName(name: string): boolean {
-  return /^use[A-Z]/.test(name);
+  return /^use[A-Z0-9]/.test(name);
 }
 
 /** Resolved, ready-to-use form of the leaf-detection knobs from {@link RiskConfig}. */

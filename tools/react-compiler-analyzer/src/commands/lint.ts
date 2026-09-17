@@ -11,6 +11,34 @@ import { runReport, sharedOptions, sortByLocation, type SharedArgv } from './sha
 
 type LintArgv = SharedArgv & { fix: boolean };
 
+async function analyzeDirectiveFiles(
+  files: Parameters<typeof compileFilesStreaming>[0],
+  argv: LintArgv,
+  verbose = argv.verbose,
+): Promise<DirectiveAnalysis[]> {
+  const results: DirectiveAnalysis[] = [];
+  await compileFilesStreaming(
+    files,
+    {
+      concurrency: argv.concurrency,
+      verbose,
+      compilationMode: argv.mode,
+      workspaceRoot: process.cwd(),
+      parserPlugins: argv['parser-plugin'],
+    },
+    async compiled => {
+      results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));
+      results.push(
+        ...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, {
+          parserPlugins: argv['parser-plugin'],
+        })),
+      );
+    },
+  );
+  sortByLocation(results);
+  return results;
+}
+
 /**
  * `--fix` rewrites redundant and conflicting directives, so those stop being failures. A broken
  * `'use memo'` has no automated repair and must still fail the run.
@@ -32,40 +60,22 @@ export async function runLint(argv: LintArgv): Promise<number> {
     emptyMessage: 'No files with directives found.',
     countLabel: 'Files with directives',
     run: async ({ f, files, endScanLog }) => {
-      const results: DirectiveAnalysis[] = [];
-
-      await compileFilesStreaming(
-        files,
-        {
-          concurrency: argv.concurrency,
-          verbose: argv.verbose,
-          compilationMode: argv.mode,
-          parserPlugins: argv['parser-plugin'],
-        },
-        async compiled => {
-          // 'use memo' statuses come directly from first compilation (no recompile)
-          results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode, { fullReasons: argv['full-reasons'] }));
-          // 'use no memo' requires strip + recompile, which needs the source still in hand
-          results.push(
-            ...(await analyzeNoMemoDirectives(compiled, argv.mode, argv.verbose, {
-              fullReasons: argv['full-reasons'],
-            })),
-          );
-        },
-      );
+      const results = await analyzeDirectiveFiles(files, argv);
 
       endScanLog();
 
-      sortByLocation(results);
-
       const workspaceRoot = process.cwd();
+      const fixResult = argv.fix ? await applyFixes(results) : undefined;
+      const validationResults =
+        argv.fix && fixResult!.filesModified > 0 ? await analyzeDirectiveFiles(files, argv, false) : results;
+      const exitCode = lintExitCode(validationResults, false);
 
       if (argv.format === 'json') {
         writeDocument(toLintDocument(results, { mode: argv.mode, workspaceRoot }));
-        return lintExitCode(results, argv.fix);
+        return exitCode;
       }
 
-      printReport(f, results, workspaceRoot, argv['full-reasons']);
+      printReport(f, results, workspaceRoot, argv.verbose);
       printSummary(f, results);
 
       if (argv.fix) {
@@ -77,15 +87,14 @@ export async function runLint(argv: LintArgv): Promise<number> {
         );
         if (fixable.length > 0) {
           f.line('Applying fixes...');
-          const fixResult = await applyFixes(results);
           const parts: string[] = [];
-          if (fixResult.directivesRemoved > 0) {
-            parts.push(`${fixResult.directivesRemoved} redundant directive(s) removed`);
+          if (fixResult!.directivesRemoved > 0) {
+            parts.push(`${fixResult!.directivesRemoved} redundant directive(s) removed`);
           }
-          if (fixResult.directivesJustified > 0) {
-            parts.push(`${fixResult.directivesJustified} active directive(s) annotated with // justified:`);
+          if (fixResult!.directivesJustified > 0) {
+            parts.push(`${fixResult!.directivesJustified} active directive(s) annotated with // justified:`);
           }
-          f.line(`Fixed: ${parts.join(', ')} across ${fixResult.filesModified} file(s).`);
+          f.line(`Fixed: ${parts.join(', ')} across ${fixResult!.filesModified} file(s).`);
           f.blank();
         } else {
           f.line('Nothing to fix.');
@@ -93,7 +102,7 @@ export async function runLint(argv: LintArgv): Promise<number> {
         }
       }
 
-      return lintExitCode(results, argv.fix);
+      return exitCode;
     },
   });
 }

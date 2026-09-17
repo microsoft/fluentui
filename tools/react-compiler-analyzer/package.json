@@ -7,6 +7,7 @@
   "files": [
     "bin",
     "*.md",
+    "rca.analyze.schema.json",
     "rca.config.schema.json",
     "dist"
   ],

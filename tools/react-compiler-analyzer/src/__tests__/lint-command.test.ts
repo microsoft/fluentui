@@ -10,24 +10,9 @@ import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+import { normalizeCliOutput } from './helpers/output';
 
 const lintCommand = createLintCommand({});
-
-/**
- * Normalize captured CLI output for snapshotting:
- * - replace the temp dir with `<TEMP>` so absolute scan-log paths are stable
- * - rewrite the `Scanning:` heading underline, whose length tracks the (machine-dependent)
- *   absolute path, to match the normalized heading text length
- */
-function normalizeCliOutput(captured: string[], tempDir: string): string {
-  const lines = captured.map(line => line.split(tempDir).join('<TEMP>'));
-  for (let i = 0; i < lines.length - 1; i++) {
-    if (lines[i].startsWith('Scanning: ') && /^─+$/.test(lines[i + 1])) {
-      lines[i + 1] = '─'.repeat(lines[i].length);
-    }
-  }
-  return lines.join('\n');
-}
 
 async function lintFile(entry: FileEntry, compilationMode: CompilationMode = 'infer'): Promise<DirectiveAnalysis[]> {
   const compiled = await compileFile(entry, compilationMode, false);
@@ -135,6 +120,25 @@ export function useUncompilable() {
     expect(modified).not.toContain("'use no memo'");
   });
 
+  it('removes only the directive when it shares a line with valid source', async () => {
+    const componentFile = join(tempDir, 'src', 'CompactRedundant.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useRef } from 'react';
+
+export function useUncompilable() { 'use no memo'; const ref = useRef<number>(null); ref.current = 42; return ref; }
+`,
+    );
+
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
+    await applyFixes(results);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).not.toContain("'use no memo'");
+    expect(modified).toContain('export function useUncompilable()');
+    expect(modified).toContain('return ref;');
+  });
+
   it('annotates active directives with justification on --fix', async () => {
     const componentFile = join(tempDir, 'src', 'FixActive.tsx');
     writeFileSync(
@@ -157,6 +161,50 @@ export function MyComponent({ label }: { label: string }) {
 
     const modified = readFileSync(componentFile, 'utf-8');
     expect(modified).toContain('// justified:');
+  });
+
+  it('uses a block justification when source follows the directive on the same line', async () => {
+    const componentFile = join(tempDir, 'src', 'CompactActive.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useState } from 'react';
+
+export function MyComponent() { 'use no memo'; const [count] = useState(0); return <div>{count}</div>; }
+`,
+    );
+
+    const entry = { filePath: componentFile, packageName: 'test-lint-pkg' };
+    const results = await lintFile(entry);
+    await applyFixes(results);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain("'use no memo'; /* justified:");
+    expect(modified).toContain('return <div>{count}</div>;');
+    expect((await lintFile(entry))[0].status).toBe('skipped');
+  });
+
+  it('preserves CRLF endings and trailing comments when adding justification', async () => {
+    const componentFile = join(tempDir, 'src', 'CrlfActive.tsx');
+    writeFileSync(
+      componentFile,
+      [
+        "import { useState } from 'react';",
+        '',
+        'export function MyComponent() {',
+        "  'use no memo'; // existing context",
+        '  const [count] = useState(0);',
+        '  return <div>{count}</div>;',
+        '}',
+        '',
+      ].join('\r\n'),
+    );
+
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
+    await applyFixes(results);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain('// existing context; justified:');
+    expect(modified.replace(/\r\n/g, '')).not.toContain('\n');
   });
 
   it('is idempotent — second fix does not modify already-justified directives', async () => {
@@ -232,6 +280,38 @@ export function MyComponent({ label }: { label: string }) {
 
       const conflicting = results.filter(r => r.status === 'conflicting');
       expect(conflicting.length).toBe(2); // both directives marked as conflicting
+    });
+
+    it("keeps a broken 'use memo' failure after resolving the conflict", async () => {
+      const componentFile = join(tempDir, 'src', 'BrokenConflict.tsx');
+      writeFileSync(
+        componentFile,
+        `import { useRef } from 'react';
+
+export function useUncompilable() {
+  'use memo';
+  'use no memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+      );
+
+      const exitCode = await runLint({
+        paths: [componentFile],
+        verbose: false,
+        concurrency: 1,
+        exclude: DEFAULT_EXCLUDE,
+        fix: true,
+        mode: 'infer',
+        format: 'md',
+      } as never);
+
+      expect(exitCode).toBe(1);
+      const modified = readFileSync(componentFile, 'utf-8');
+      expect(modified).toContain("'use memo'");
+      expect(modified).not.toContain("'use no memo'");
     });
   });
 
@@ -404,7 +484,7 @@ describe('single-file path lint', () => {
 
     const files = await discoverFilesWithDirectives(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
 
-    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
   });
 
   it('ignores exclude patterns when the path points directly at a file', async () => {
@@ -414,7 +494,7 @@ describe('single-file path lint', () => {
     // file path must bypass excludes.
     const files = await discoverFilesWithDirectives(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
 
-    expect(files).toEqual([{ filePath, packageName: pkg.packageName }]);
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
   });
 });
 
@@ -439,7 +519,6 @@ describe('lint exit codes', () => {
       paths: [tempDir],
       verbose: false,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       fix: false,
       mode: 'infer' as const,
@@ -541,7 +620,6 @@ describe('lint command — scan log wrapping', () => {
       paths: [tempDir],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       fix: false,
       mode: 'infer',
@@ -596,7 +674,6 @@ describe('lint command — scan log wrapping', () => {
         paths: [tempDir],
         verbose: true,
         concurrency: 1,
-        'full-reasons': false,
         exclude: DEFAULT_EXCLUDE,
         fix: false,
         mode: 'infer',
@@ -658,7 +735,6 @@ describe('lint command — scan log wrapping', () => {
       paths: [tempDir],
       verbose: true,
       concurrency: 1,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       fix: false,
       mode: 'infer',

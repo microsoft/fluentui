@@ -3,22 +3,23 @@
 Analyzes React Compiler behavior on TypeScript source files. Two commands:
 
 - **`lint`** — CI gate: validates `'use no memo'` and `'use memo'` directives for correctness. Exits 1 on issues.
-- **`analyze`** — Health report: compiler coverage stats, directive breakdown, migration candidates, and opt-in runtime-risk detection ("Compiled but Risky").
+- **`analyze`** — Health report: compiler coverage stats, directive breakdown, manual-memo migration candidates, and opt-in runtime-risk detection ("Compiled but Risky").
 
 ## User Flows
 
 ### Flow 1: Initial migration assessment
 
 ```bash
-# See what compiler can optimize across a package
+# See which functions the compiler accepts and where it emits memo caches
 react-compiler-analyzer analyze ./library/src --mode infer --verbose
 
 # Analyze multiple directories at once
 react-compiler-analyzer analyze packages/pkg-a/src packages/pkg-b/src --mode infer --verbose
-# Output: coverage stats + directive health breakdown + migration candidates
+# Output: coverage stats + directive health breakdown + manual-memo migration candidates
 ```
 
-Team reviews output — identifies which components compile, which error out, which have manual memo the compiler can replace.
+Team reviews output — identifies which components compile, which error out, and which manual memo
+sites need migration review. Compiler acceptance is not a performance-value estimate.
 
 ### Flow 2: Gradual opt-in (annotation mode build)
 
@@ -35,7 +36,7 @@ react-compiler-analyzer analyze ./library/src --mode infer --annotate all
 # 3. Verify — run tests, check bundle size
 yarn nx run react-button:test
 
-# 4. (Optional) Remove now-redundant useMemo/useCallback — compiler handles it
+# 4. Review manual hook removal after behavior tests; review React.memo wrappers separately
 ```
 
 ### Flow 3: CI enforcement
@@ -92,11 +93,14 @@ directories. When no implicit config exists, the built-in defaults apply.
 
 The shipped `rca.config.schema.json` provides editor validation and is also used for runtime
 validation. Unknown keys and invalid nested values fail the run. Explicit CLI options override
-config values. JSON uses camelCase (`fullReasons`, `strictPaths`, `parserPlugins`), while CLI flags
-retain kebab-case (`--full-reasons`, `--strict-paths`, `--parser-plugin`).
+config values. JSON uses camelCase (`strictPaths`, `parserPlugins`), while CLI flags retain
+kebab-case (`--strict-paths`, `--parser-plugin`).
 
 Scan paths remain required positional arguments. Source-writing operations are intentionally not
 persistent configuration: use `--annotate` and `--fix` explicitly on each run.
+
+If you previously used `analyze --risk-config ./risk.config.json`, see the dated
+[configuration migration](MIGRATION.md#2026-09-03--unified-rca-configuration).
 
 ## Commands
 
@@ -156,8 +160,8 @@ react-compiler-analyzer lint ./library/src/components/Button/Button.tsx --mode a
 # Auto-fix
 react-compiler-analyzer lint ./library/src --fix
 
-# Show full compiler error reasons
-react-compiler-analyzer lint ./src --full-reasons
+# Show detailed compiler events and full code-framed diagnostics
+react-compiler-analyzer lint ./src --verbose
 ```
 
 #### Retiring a `'use no memo'` directive
@@ -167,25 +171,25 @@ finding** — that is the point of the opt-out. So "the analyzer reports nothing
 evidence that a directive is safe to delete, and bulk-removing on that basis will silently
 re-introduce every hazard the directives were holding back.
 
-`analyze` reports the risks inside opted-out functions rather than hiding them. Use the
-`suppressed` field to tell the two cases apart without touching the source:
+`analyze` reports the risks inside opted-out functions rather than hiding them. In JSON, a
+load-bearing finding has `suppressed: true`:
 
 ```bash
 # Load-bearing: removing the directive makes these live.
 react-compiler-analyzer analyze ./src --format json \
-  | jq -r '.findings[] | select(.suppressed) | "\(.file):\(.line)"' | sort -u
+  | jq -r '.findings[] | select(.suppressed == true) | "\(.file):\(.line)"' | sort -u
 
 # Files that contain at least one load-bearing directive — exclude these from bulk removal.
 react-compiler-analyzer analyze ./src --format json \
-  | jq -r '.findings[] | select(.suppressed) | .file' | sort -u
+  | jq -r '.findings[] | select(.suppressed == true) | .file' | sort -u
 ```
 
 Note the two lists key on different lines: a finding is reported where the **risk** is, not where
 the directive is, so subtract at file granularity rather than by line. A `'use no memo'` whose file
-never appears above is a safe removal candidate; `lint` enumerates the full directive set to
-subtract from.
+never appears above still requires review: risk analysis is configurable and cannot prove that an
+opt-out is behaviorally redundant. `lint` enumerates the full directive set to inspect.
 
-`suppressed` covers indirectly-reached risks too, so the audit stays valid under
+The `suppressed` marker covers indirectly-reached risks too, so the audit stays valid under
 `resolveWrappers: true` — a directive guarding only a hazard several calls away is still reported
 as load-bearing, with the `reached via` chain in the message. Run the audit with the **same risk
 config** the bail-out set was generated under; a narrower config finds fewer risks and will
@@ -200,7 +204,20 @@ The human-readable report splits the same way, under **Suppressed by 'use no mem
 react-compiler-analyzer analyze <paths..> [options]
 ```
 
-Reports which functions the React Compiler will memoize, skip, or bail out on across one or more files or directories. Also shows a directive breakdown summary. Always exits 0.
+Reports which functions the React Compiler accepts, skips, or bails out on across one or more files
+or directories. Accepted functions are separated by whether the compiler reports an emitted memo
+cache. Also shows a directive breakdown summary. Always exits 0.
+
+Without `--verbose`, human-readable output contains only package summary tables and one aggregate
+summary table. Candidate lists, candidate and memo-counter legends, per-function compiler outcomes,
+runtime-risk details, unparseable-file details, explanatory notes, and the lint tip require
+`--verbose`.
+
+Each package summary partitions all analyzed functions into emitted memo caches, accepted functions
+with no emitted cache, unavailable memo-cache statistics, skips, and errors. The row percentages
+therefore use the same package total and do not treat compiler acceptance alone as an optimization
+signal. A separate **Manual Memo Migration Candidates** row reports its percentage of
+compiler-accepted functions because it is an overlapping migration subset, not another outcome.
 
 #### Options
 
@@ -209,6 +226,35 @@ Reports which functions the React Compiler will memoize, skip, or bail out on ac
 | `--mode`     | `string` | `"infer"`  | Compilation mode used to **discover** functions: `infer`, `annotation`, `all`      |
 | `--annotate` | `string` | —          | Insert directives: `manual-memo`, `all`, `all-safe`, or `bailout-only` (see below) |
 | `--quote`    | `string` | `"single"` | Quote style for directives written by `--annotate`: `single` or `double`           |
+
+#### Manual memo migration candidates
+
+Candidate output is an unscored migration inventory, not a performance ranking. A function is a
+candidate only when:
+
+- its canonical compiler outcome is `compiled`;
+- it is not opted out with `'use no memo'`; and
+- it contains at least one detected `useMemo`, `useCallback`, or `React.memo` site.
+
+Human-readable reports render a separate candidate section inside each package. Candidates are
+intentionally not part of the JSON contract: they are review guidance rather than stable
+machine-ranked evidence. Compiler-accepted components and hooks without detected manual memo APIs
+are not candidates.
+
+The verbose report renders this legend once before the package sections. In HTML, the `Action` and
+`Readiness` headers and values also expose the same meanings as native `title` tooltips.
+
+| Column    | Value                      | Meaning                                                                                     |
+| --------- | -------------------------- | ------------------------------------------------------------------------------------------- |
+| Action    | `hook-lowering-review`     | Review detected `useMemo`/`useCallback` behavior before removing or lowering it.            |
+| Action    | `default-wrapper-review`   | Review a comparator-free `React.memo` separately from its compiler-accepted inner function. |
+| Action    | `custom-comparator-retain` | Retain a custom `React.memo` comparator unless behavior proves it redundant.                |
+| Readiness | `reviewable`               | Risk analysis ran, no known risk was found, and the function kind is known.                 |
+| Readiness | `risk-unassessed`          | Runtime-risk analysis was not configured for this run.                                      |
+| Readiness | `needs-kind-review`        | The source function kind is unknown and needs manual classification.                        |
+| Readiness | `blocked-known-risk`       | A known runtime-risk finding blocks migration until addressed.                              |
+
+Manual call counts and compiler memo counters are descriptive only and never influence ordering.
 
 #### `--annotate`
 
@@ -455,11 +501,13 @@ config behaves identically wherever it is run from.
 > where real crashes originate — the lazy, demand-driven Babel approach was chosen deliberately.
 
 Risk findings are advisory — they never change the exit code. Treat them as a review queue
-for sites that compile cleanly but may need a justified `'use no memo'` opt-out.
+for compiler-accepted sites that may need a justified `'use no memo'` opt-out.
 
 Findings are reported in two sections:
 
-- **Compiled but Risky** — the function compiles, so the compiler _will_ memoize it. Hazardous today.
+- **Compiled but Risky** — the compiler accepts the function and it contains a pattern that is
+  unsafe when retained memoization is emitted. A zero memo-slot count means the current compiler
+  output did not retain a memo cache; acceptance alone is not proof of memoization.
 - **Risky but Not Compiled** — the same patterns in a function the compiler errored on or skipped
   (e.g. an existing `'use no memo'`). Not hazardous yet, but becomes live the moment the error is
   fixed or the opt-out is removed. `--annotate all-safe` ignores these — it only bails out functions
@@ -514,8 +562,7 @@ react-compiler-analyzer analyze ./library/src --annotate all-safe
 | ----------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `<paths..>`       | `string[]` | —       | **Required.** One or more files or directories to scan for `.ts`/`.tsx` files. Excludes are not applied to explicitly passed files |
 | `--format`        | `string`   | `"cli"` | Output format: `cli`, `md`, `html`, or `json` (machine-readable)                                                                   |
-| `--verbose`       | `boolean`  | `false` | Print per-function detail tables                                                                                                   |
-| `--full-reasons`  | `boolean`  | `false` | Show the compiler's full code-framed diagnostics instead of one-line summaries                                                     |
+| `--verbose`       | `boolean`  | `false` | Print detailed compiler events and full code-framed diagnostics                                                                    |
 | `--concurrency`   | `number`   | `10`    | Max parallel file processing                                                                                                       |
 | `--exclude`       | `string[]` | _(1)_   | Glob patterns to exclude                                                                                                           |
 | `--strict-paths`  | `boolean`  | `false` | Fail instead of warning when a given path does not exist                                                                           |
@@ -587,25 +634,30 @@ Emits a versioned document so results can be diffed, tracked, or fed to a dashbo
 scraping text. **stdout carries only the document** — the scan log and per-file diagnostics are
 redirected to stderr — so it pipes straight into a parser:
 
+`summary.memoCacheEmitted` is the direct machine-readable equivalent of the human
+**Compiler accepted (memo cache emitted)** metric. It counts only canonical `compiled` function
+rows whose reported `memoStats.memoSlots` is greater than zero.
+
 ```bash
 react-compiler-analyzer analyze ./src --format json \
-  | jq '.findings[] | select(.compiled) | {file, line, rule, severity}'
+  | jq '.findings[] | select(.compiled and (.suppressed != true)) | {file, line, rule: .ruleId, severity}'
 ```
 
 ```jsonc
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "tool": "react-compiler-analyzer",
   "command": "analyze",
   "mode": "infer",
   "summary": {
-    "functions": 22,
-    "compiled": 20,
-    "skipped": 1,
-    "errors": 1,
-    "findings": 21,
-    "findingsOnCompiled": 19,
-    "findingsSuppressed": 1,
+    "functions": 1,
+    "compiled": 1,
+    "memoCacheEmitted": 1,
+    "skipped": 0,
+    "errors": 0,
+    "findings": 1,
+    "findingsOnCompiled": 1,
+    "findingsSuppressed": 0,
     "unparseableFiles": 0
   },
   "functions": [
@@ -614,46 +666,65 @@ react-compiler-analyzer analyze ./src --format json \
       "package": "app",
       "line": 6,
       "column": 7,
-      "name": "Widget",
+      "function": "Widget",
       "status": "compiled",
-      "compilerEvent": "CompileSuccess"
+      "compilerEvent": "CompileSuccess",
+      "memoStats": {
+        "memoSlots": 2,
+        "memoBlocks": null,
+        "memoValues": 1,
+        "prunedMemoBlocks": null,
+        "prunedMemoValues": null
+      }
     }
   ],
   "findings": [
     {
       "file": "src/Widget.tsx",
+      "package": "app",
       "line": 7,
-      "rule": "nonreactive-store-read",
+      "column": 13,
+      "function": "Widget",
+      "ruleId": "nonreactive-store-read",
       "severity": "medium",
-      "compiled": true,
       "symbol": "getAppStore",
-      "function": "Widget"
+      "message": "...",
+      "compiled": true
     }
   ],
   "unparseable": []
 }
 ```
 
-- `compiled` on a finding distinguishes a **live** hazard from a latent one — see
-  **Risky but Not Compiled** above.
-- `suppressed` is present (`"use no memo"`) when the enclosing function opted out, so the directive
-  is the only thing keeping the finding latent. `compiled: false` alone cannot tell you that: it is
-  equally true of a function that failed to compile. See
-  [Retiring a `'use no memo'` directive](#retiring-a-use-no-memo-directive).
+- Findings use `compiled` to distinguish risks on compiler-accepted functions from latent risks on
+  failed/skipped functions. `suppressed: true` marks risks held back by `'use no memo'`; the key is
+  omitted for other findings.
+- Memo counters preserve compiler absence as `null`; a reported zero remains `0`.
 - `unparseable` lists files the parser rejected outright. They contribute nothing to the other
   counts, so a shrinking `functions` total is never silently caused by a parse failure.
 - Paths are workspace-relative and POSIX-separated.
-- Output is **ordered deterministically** (package → file → line → column), so two runs over
-  unchanged sources produce byte-identical documents and `diff` shows only real changes.
+- Output is deterministically ordered, so equivalent runs produce byte-identical documents.
 - `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array) and
-  keeps its usual exit code.
+  keeps its usual exit code. `lint --format json --fix` performs the requested write before
+  serializing.
+- Full code-framed compiler diagnostics remain available in human reports with `--verbose`; JSON
+  stays compact and includes the terminal reason and location only.
 - `--annotate` still writes directives to disk under `--format json`; the outcome is reported in an
   `annotate` key (`{ mode, filesModified, functionsAnnotated, functionsBailedOut }`).
+- [`rca.analyze.schema.json`](rca.analyze.schema.json) validates the compact `analyze` document.
+  It is a package artifact only and adds nothing to the emitted payload or analyzer hot path. See
+  [MIGRATION.md](MIGRATION.md) for the v1-to-v2 field and behavior changes.
 
-Section headings are color-coded by compiler state — **Compiled** (green), **Errors** (red), **Skipped** (yellow),
-and **Migration Candidates** (blue). In `cli` format, colors use ANSI and are emitted only when stdout is an
-interactive terminal; honors `NO_COLOR` / `FORCE_COLOR`. In `html` format, colors are applied via CSS. `md` output
-is left plain (markdown has no native text color).
+Section headings are color-coded by compiler state — accepted functions with emitted memo caches
+are green, accepted functions without emitted caches use muted neutral styling, unavailable cache
+statistics and skipped functions are yellow, errors are red, and manual memo migration candidates
+are blue. In `cli` format, colors use ANSI and are emitted only when stdout is an interactive
+terminal; honors `NO_COLOR` / `FORCE_COLOR`. In `html` format, colors are applied via CSS. `md`
+output is left plain (markdown has no native text color).
+
+HTML navigation always includes every analyzed package. Verbose compiler sections and candidate
+chapters appear as nested links beneath their package, but a package remains navigable even when
+it has no foldable sections.
 
 ## Nx integration
 
@@ -695,8 +766,10 @@ src/
 │   ├── lint.ts           — 'lint' command (directive health CI gate)
 │   └── analyze.ts        — 'analyze' command (coverage + migration)
 ├── compiler.ts           — Unified compilation: compileFile, compileFiles, compileSource
+├── source-functions.ts   — Canonical function inventory and span resolver
+├── compiler-events.ts    — Occurrence normalization and terminal-outcome reduction
 ├── concurrency.ts        — Generic concurrent file processor
-├── discovery.ts          — File discovery (findPackageName, discoverFilesWithDirectives, discoverAllFiles)
+├── discovery.ts          — File discovery and nearest-package attribution
 ├── analyzer.ts           — Pure derivation: deriveMemoDirectiveStatuses, analyzeNoMemoDirectives
 ├── coverage-analyzer.ts  — Pure derivation: deriveCoverage (from FileCompilationResult)
 ├── manual-memo-plugin.ts — Babel plugin detecting useMemo/useCallback/React.memo
@@ -708,6 +781,9 @@ src/
 ├── coverage-fixer.ts     — Insert 'use memo' annotations (manual-memo or all compilable)
 ├── reporter.ts           — Directive reporting (full report + compact summary for analyze)
 ├── coverage-reporter.ts  — Coverage reporting (stats, per-function, migration candidates)
+├── candidates.ts         — Manual-memo candidate actions, readiness, and ordering
+├── stable-json.ts        — Stable event comparison and source fingerprint helpers
+├── serializer.ts         — Compact machine-readable document projection
 ├── formatter.ts          — Output rendering abstraction (cli plain text / md markdown / html document)
 ├── patterns.ts           — Shared regex patterns for directive detection
 ├── types.ts              — Shared TypeScript interfaces
@@ -717,18 +793,23 @@ src/
 ### Data flow
 
 ```
-discoverFiles → compileFiles(entries) → FileCompilationResult[]
-                                            │
-                          ┌─────────────────┼─────────────────┐
-                          ▼                 ▼                  ▼
-                  deriveCoverage   deriveMemoDirective   analyzeNoMemo
-                                   Statuses              Directives
-                          │                 │                  │
-                          ▼                 ▼                  ▼
-                   FunctionAnalysis[]  DirectiveAnalysis[]  DirectiveAnalysis[]
+discoverFiles → nearest package → compileFilesStreaming
+                                        │
+                      source-function index + compiler occurrences
+                                        │
+                     ┌──────────────────┴──────────────────┐
+                     ▼                                     ▼
+         canonical FunctionAnalysis[]           canonical DirectiveAnalysis[]
+                     │                                     │
+                     └───────────────┬─────────────────────┘
+                                     ▼
+                         deterministic v2 / v1 projection
 ```
 
-Each file is compiled **once** via `compileFile()`. Downstream analysis functions are pure derivations over the `FileCompilationResult` (except `analyzeNoMemoDirectives` which requires a second stripped-directive compilation).
+Each file is compiled once via `compileFile()`, and compact results are consumed as workers finish
+without retaining every source or AST. Directive lint performs a second probe for `'use no memo'`,
+neutralizing the directive in place so parser settings, lines, columns, and offsets are preserved.
+All producers resolve through the same canonical function index.
 
 Key dependencies:
 

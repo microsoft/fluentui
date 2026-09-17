@@ -5,17 +5,24 @@ import {
   printRuntimeRisks as printRuntimeRisksImpl,
   printUnparseableFiles as printUnparseableFilesImpl,
 } from '../coverage-reporter';
+import { deriveCandidates, type CandidateEntry } from '../candidates';
 import { createFormatter } from '../formatter';
 import type { FunctionAnalysis, RiskFinding } from '../types';
+import { captureConsole } from './helpers/output';
+
+function candidatesFromAnalyses(results: FunctionAnalysis[], riskConfigured: boolean): CandidateEntry[] {
+  return deriveCandidates(results, riskConfigured);
+}
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
-function printCoverageReport(
-  results: FunctionAnalysis[],
-  workspaceRoot: string,
-  verbose: boolean,
-  fullReasons: boolean,
-): void {
-  printCoverageReportImpl(createFormatter('md'), results, workspaceRoot, verbose, fullReasons);
+function printCoverageReport(results: FunctionAnalysis[], workspaceRoot: string, verbose: boolean): void {
+  printCoverageReportImpl(
+    createFormatter('md'),
+    results,
+    workspaceRoot,
+    verbose,
+    candidatesFromAnalyses(results, false),
+  );
 }
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
@@ -24,8 +31,8 @@ function printCoverageSummary(results: FunctionAnalysis[], verbose: boolean): vo
 }
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
-function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string): void {
-  printMigrationCandidatesImpl(createFormatter('md'), results, workspaceRoot);
+function printMigrationCandidates(results: FunctionAnalysis[], workspaceRoot: string, riskConfigured = false): void {
+  printMigrationCandidatesImpl(createFormatter('md'), candidatesFromAnalyses(results, riskConfigured), workspaceRoot);
 }
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
@@ -62,20 +69,18 @@ function makeFunctionAnalysis(overrides: Partial<FunctionAnalysis>): FunctionAna
 
 describe('printMigrationCandidates', () => {
   let logOutput: string[];
-  const originalLog = console.log;
+  let logSpy: ReturnType<typeof captureConsole>;
 
   beforeEach(() => {
     logOutput = [];
-    console.log = (...args: unknown[]) => {
-      logOutput.push(args.join(' '));
-    };
+    logSpy = captureConsole('log', logOutput);
   });
 
   afterEach(() => {
-    console.log = originalLog;
+    logSpy.mockRestore();
   });
 
-  it('prints safe-to-remove candidates in a table', () => {
+  it('prints manual-memo candidates without claiming automatic safety', () => {
     const results: FunctionAnalysis[] = [
       {
         filePath: '/workspace/src/Component.tsx',
@@ -106,15 +111,19 @@ describe('printMigrationCandidates', () => {
     printMigrationCandidates(results, '/workspace');
 
     const output = logOutput.join('\n');
-    expect(output).toContain('## Migration Candidates');
-    expect(output).toContain('### Safe to Remove');
-    expect(output).toContain('| src/Component.tsx:5 | MyComponent | 2 | 1 | no | 3 |');
-    expect(output).toContain('| src/Other.tsx:10 | OtherComponent | 0 | 0 | yes | 1 |');
-    expect(output).toContain('**2** migration candidate(s) found');
-    expect(output).not.toContain('### Needs Manual Review');
+    expect(output).toContain('## Manual Memo Migration Candidates');
+    expect(output).toContain(
+      '| src/Component.tsx:5 | MyComponent | hook-lowering-review | risk-unassessed | 2 | 1 | no |',
+    );
+    expect(output).toContain(
+      '| src/Other.tsx:10 | OtherComponent | default-wrapper-review | risk-unassessed | 0 | 0 | yes |',
+    );
+    expect(output).not.toContain('Candidate Legend');
+    expect(output).toContain('**2** manual memo migration candidate(s) found');
+    expect(output).not.toContain('Safe to Remove');
   });
 
-  it('prints needs-review candidates separately when comparator is present', () => {
+  it('marks comparator-bearing wrappers for retention', () => {
     const results: FunctionAnalysis[] = [
       {
         filePath: '/workspace/src/Safe.tsx',
@@ -145,12 +154,39 @@ describe('printMigrationCandidates', () => {
     printMigrationCandidates(results, '/workspace');
 
     const output = logOutput.join('\n');
-    expect(output).toContain('### Safe to Remove');
-    expect(output).toContain('| src/Safe.tsx:5 | SafeComponent | 1 | 0 | no | 2 |');
-    expect(output).toContain('### Needs Manual Review');
-    expect(output).toContain('| src/Comparator.tsx:8 | ComparatorComponent | 0 | 0 | yes (comparator) | 1 |');
-    expect(output).toContain('**2** migration candidate(s) found');
-    expect(output).toContain('**1** need manual review due to custom comparator');
+    expect(output).toContain(
+      '| src/Safe.tsx:5 | SafeComponent | hook-lowering-review | risk-unassessed | 1 | 0 | no |',
+    );
+    expect(output).toContain(
+      '| src/Comparator.tsx:8 | ComparatorComponent | custom-comparator-retain | risk-unassessed | 0 | 0 | yes (comparator) |',
+    );
+    expect(output).toContain('Retain custom comparators by default');
+  });
+
+  it('uses canonical readiness ordering and blockers', () => {
+    const results = [
+      makeFunctionAnalysis({
+        filePath: '/workspace/src/Risky.tsx',
+        functionName: 'Risky',
+        functionKind: 'component',
+        line: 10,
+        manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false, reactMemoHasComparator: false },
+        risks: [makeRisk()],
+      }),
+      makeFunctionAnalysis({
+        filePath: '/workspace/src/Ready.tsx',
+        functionName: 'Ready',
+        functionKind: 'component',
+        manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false, reactMemoHasComparator: false },
+      }),
+    ];
+
+    printMigrationCandidates(results, '/workspace', true);
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('| src/Ready.tsx:5 | Ready | hook-lowering-review | reviewable |');
+    expect(output).toContain('| src/Risky.tsx:10 | Risky | hook-lowering-review | blocked-known-risk |');
+    expect(output.indexOf('src/Ready.tsx')).toBeLessThan(output.indexOf('src/Risky.tsx'));
   });
 
   it('prints nothing when no candidates exist', () => {
@@ -196,17 +232,15 @@ describe('printMigrationCandidates', () => {
 
 describe('multi-path coverage reporting', () => {
   let logOutput: string[];
-  const originalLog = console.log;
+  let logSpy: ReturnType<typeof captureConsole>;
 
   beforeEach(() => {
     logOutput = [];
-    console.log = (...args: unknown[]) => {
-      logOutput.push(args.join(' '));
-    };
+    logSpy = captureConsole('log', logOutput);
   });
 
   afterEach(() => {
-    console.log = originalLog;
+    logSpy.mockRestore();
   });
 
   it('printCoverageReport groups results by package in alphabetical order', () => {
@@ -223,7 +257,7 @@ describe('multi-path coverage reporting', () => {
       }),
     ];
 
-    printCoverageReport(results, '/workspace', false, false);
+    printCoverageReport(results, '/workspace', false);
 
     const output = logOutput.join('\n');
     expect(output).toMatchInlineSnapshot(`
@@ -232,7 +266,9 @@ describe('multi-path coverage reporting', () => {
 
       | Status | Count | Percentage |
       |--------|-------|------------|
-      | Compiled | 1 | 100.0% |
+      | Compiler accepted (memo cache emitted) | 1 | 100.0% |
+      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
       | **Total** | **1** |  |
@@ -242,12 +278,70 @@ describe('multi-path coverage reporting', () => {
 
       | Status | Count | Percentage |
       |--------|-------|------------|
-      | Compiled | 1 | 100.0% |
+      | Compiler accepted (memo cache emitted) | 1 | 100.0% |
+      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
       | Skipped | 0 | 0.0% |
       | Errors | 0 | 0.0% |
       | **Total** | **1** |  |
       "
     `);
+  });
+
+  it('separates accepted functions by whether a memo cache is emitted', () => {
+    const results: FunctionAnalysis[] = [
+      makeFunctionAnalysis({
+        functionName: 'Cached',
+        memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+      }),
+      makeFunctionAnalysis({
+        functionName: 'Pruned',
+        line: 10,
+        memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+      }),
+      makeFunctionAnalysis({
+        functionName: 'Unreported',
+        line: 15,
+        memoStats: undefined,
+      }),
+    ];
+
+    printCoverageReport(results, '/workspace', true);
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('### Compiler accepted (memo cache emitted) (1)');
+    expect(output).toContain('### Compiler accepted (no memo cache emitted) (1)');
+    expect(output).toContain('### Compiler accepted (memo cache not reported) (1)');
+    expect(output).toContain('| Compiler accepted (memo cache emitted) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (no memo cache emitted) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (memo cache not reported) | 1 | 33.3% |');
+    expect(output).toContain('| Manual Memo Migration Candidates | 0 | 0.0% of accepted |');
+    expect(output).toContain('| src/Component.tsx:5 | Cached | 2 | 1 | 1 |');
+    expect(output).toContain('| src/Component.tsx:10 | Pruned | 0 | 0 | 0 |');
+    expect(output).toContain('| src/Component.tsx:15 | Unreported | unknown | unknown | unknown |');
+  });
+
+  it('uses muted HTML styling for accepted functions without emitted memo caches', () => {
+    const output: string[] = [];
+    printCoverageReportImpl(
+      createFormatter('html', line => output.push(line)),
+      [
+        makeFunctionAnalysis({
+          functionName: 'Pruned',
+          memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+        }),
+      ],
+      '/workspace',
+      true,
+    );
+
+    const html = output.join('\n');
+    expect(html).toContain(
+      '<details class="fold" id="test-pkg--compiler-accepted-no-memo-cache-emitted" data-title="Compiler accepted (no memo cache emitted)"',
+    );
+    expect(html).not.toContain(
+      '<details class="fold status-success" id="test-pkg--compiler-accepted-no-memo-cache-emitted"',
+    );
   });
 
   it('printCoverageSummary aggregates counts across multiple packages', () => {
@@ -273,18 +367,42 @@ describe('multi-path coverage reporting', () => {
     expect(output).toMatchInlineSnapshot(`
       "## Summary
 
-      - **Total functions analyzed:** 3
-      - **Compiled** (will be memoized): 2 (66.7%)
-        - Migration candidates (has manual memoization): 0
-        - Compiler-ready (no manual memoization): 2
-      - **Skipped** (opted out or not a component/hook): 0 (0.0%)
-      - **Errors** (compiler bailout): 1 (33.3%)
-
-      > **1** function(s) caused compiler errors — these won't be optimized until the patterns are refactored.
-      > Run with \`--verbose\` to see per-function details.
+      | Status | Count | Percentage |
+      |--------|-------|------------|
+      | Compiler accepted (memo cache emitted) | 2 | 66.7% |
+      | Compiler accepted (no memo cache emitted) | 0 | 0.0% |
+      | Manual Memo Migration Candidates | 0 | 0.0% of accepted |
+      | Skipped | 0 | 0.0% |
+      | Errors | 1 | 33.3% |
+      | **Total functions** | **3** |  |
       "
     `);
-    expect(output).not.toContain('All recognized functions compile successfully');
+    expect(output).not.toContain('No compiler errors were reported');
+  });
+
+  it('summarizes accepted functions by emitted memo-cache outcome', () => {
+    const results: FunctionAnalysis[] = [
+      makeFunctionAnalysis({
+        functionName: 'Cached',
+        memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+      }),
+      makeFunctionAnalysis({
+        functionName: 'Pruned',
+        memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+      }),
+      makeFunctionAnalysis({
+        functionName: 'Unreported',
+        memoStats: undefined,
+      }),
+    ];
+
+    printCoverageSummary(results, false);
+
+    const output = logOutput.join('\n');
+    expect(output).toContain('| Compiler accepted (memo cache emitted) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (no memo cache emitted) | 1 | 33.3% |');
+    expect(output).toContain('| Compiler accepted (memo cache not reported) | 1 | 33.3% |');
+    expect(output).not.toContain('will be memoized');
   });
 
   it('omits the "--verbose" hint in the error summary when already verbose', () => {
@@ -304,7 +422,7 @@ describe('multi-path coverage reporting', () => {
     expect(output).not.toContain('Run with `--verbose`');
   });
 
-  it('printMigrationCandidates includes candidates from multiple packages', () => {
+  it('renders one package-scoped candidate section per package', () => {
     const results: FunctionAnalysis[] = [
       makeFunctionAnalysis({
         packageName: 'pkg-a',
@@ -321,43 +439,71 @@ describe('multi-path coverage reporting', () => {
       }),
     ];
 
-    printMigrationCandidates(results, '/workspace');
+    printCoverageReport(results, '/workspace', true);
 
     const output = logOutput.join('\n');
-    expect(output).toMatchInlineSnapshot(`
-      "## Migration Candidates (2)
+    const legend = output.indexOf('## Candidate Legend');
+    const packageA = output.indexOf('## pkg-a');
+    const candidateA = output.indexOf('### Manual Memo Migration Candidates (1)', packageA);
+    const packageB = output.indexOf('## pkg-b');
+    const candidateB = output.indexOf('### Manual Memo Migration Candidates (1)', packageB);
 
-      Functions that compile successfully and contain manual memoization. These can safely use \`'use memo'\` and may have their manual hooks removed.
+    expect(legend).toBeGreaterThanOrEqual(0);
+    expect(legend).toBeLessThan(packageA);
+    expect(output.match(/Candidate Legend/g)).toHaveLength(1);
+    expect(output).toContain('| Action | hook-lowering-review | Manual useMemo/useCallback detected;');
+    expect(output).toContain(
+      '| Readiness | risk-unassessed | Runtime-risk analysis was not configured for this run. |',
+    );
+    expect(packageA).toBeGreaterThanOrEqual(0);
+    expect(candidateA).toBeGreaterThan(packageA);
+    expect(packageB).toBeGreaterThan(candidateA);
+    expect(candidateB).toBeGreaterThan(packageB);
+    expect(output.slice(candidateA, packageB)).toContain('| a/src/A.tsx:5 | CompA |');
+    expect(output.slice(packageA, packageB)).toContain('| Manual Memo Migration Candidates | 1 | 100.0% of accepted |');
+    expect(output.slice(candidateA, packageB)).not.toContain('b/src/B.tsx');
+    expect(output.slice(candidateB)).toContain('| b/src/B.tsx:10 | CompB |');
+    expect(output.slice(packageB)).toContain('| Manual Memo Migration Candidates | 1 | 100.0% of accepted |');
+    expect(output.match(/Manual Memo Migration Candidates \(1\)/g)).toHaveLength(2);
+  });
 
-      ### Safe to Remove
+  it('adds HTML titles to candidate Action and Readiness columns and values', () => {
+    const analysis = makeFunctionAnalysis({
+      manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false, reactMemoHasComparator: false },
+    });
+    const output: string[] = [];
 
-      \`useMemo\`/\`useCallback\` hooks and \`React.memo\` wrappers (without comparator) are redundant after compiler adoption and can be removed.
+    printCoverageReportImpl(
+      createFormatter('html', line => output.push(line)),
+      [analysis],
+      '/workspace',
+      true,
+      candidatesFromAnalyses([analysis], false),
+    );
 
-      | Location | Function | useMemo | useCallback | React.memo | Memo Slots |
-      |----------|----------|---------|-------------|------------|------------|
-      | a/src/A.tsx:5 | CompA | 1 | 0 | no | 2 |
-      | b/src/B.tsx:10 | CompB | 0 | 1 | no | 2 |
-
-      > **2** migration candidate(s) found
-      "
-    `);
-    expect(output).not.toContain('Needs Manual Review');
+    const html = output.join('\n');
+    expect(html).toContain('<th title="Recommended review treatment for the detected manual memoization.">Action</th>');
+    expect(html).toContain(
+      '<th title="Whether configured risk analysis and source classification allow review to proceed.">Readiness</th>',
+    );
+    expect(html).toContain(
+      '<td title="Manual useMemo/useCallback detected; verify behavior before removing or lowering it.">hook-lowering-review</td>',
+    );
+    expect(html).toContain('<td title="Runtime-risk analysis was not configured for this run.">risk-unassessed</td>');
   });
 });
 
 describe('printCoverageReport — error grouping', () => {
   let logOutput: string[];
-  const originalLog = console.log;
+  let logSpy: ReturnType<typeof captureConsole>;
 
   beforeEach(() => {
     logOutput = [];
-    console.log = (...args: unknown[]) => {
-      logOutput.push(args.join(' '));
-    };
+    logSpy = captureConsole('log', logOutput);
   });
 
   afterEach(() => {
-    console.log = originalLog;
+    logSpy.mockRestore();
   });
 
   it('groups multiple errors for the same function under one heading', () => {
@@ -388,7 +534,7 @@ describe('printCoverageReport — error grouping', () => {
       }),
     ];
 
-    printCoverageReport(results, '/workspace', true, false);
+    printCoverageReport(results, '/workspace', true);
 
     const output = logOutput.join('\n');
     // The function heading appears exactly once with the error count.
@@ -400,7 +546,7 @@ describe('printCoverageReport — error grouping', () => {
     expect(output).toContain('| 18:2 | CompileError | second problem |');
   });
 
-  it('inlines full code-framed diagnostics under the error group with --full-reasons', () => {
+  it('inlines full code-framed diagnostics under the error group with --verbose', () => {
     const results: FunctionAnalysis[] = [
       makeFunctionAnalysis({
         functionName: 'useThing',
@@ -415,7 +561,7 @@ describe('printCoverageReport — error grouping', () => {
       }),
     ];
 
-    printCoverageReport(results, '/workspace', true, true);
+    printCoverageReport(results, '/workspace', true);
 
     const output = logOutput.join('\n');
     expect(output).toContain('#### src/useThing.ts:10 — useThing (1 error)');
@@ -459,7 +605,7 @@ describe('printCoverageReport — error grouping', () => {
     const results: FunctionAnalysis[] = [...erroredTwice, compiledOne];
 
     // Package table: 1 compiled + 1 errored function = 2 total (not 3 rows).
-    printCoverageReport(results, '/workspace', false, false);
+    printCoverageReport(results, '/workspace', false);
     const reportOutput = logOutput.join('\n');
     expect(reportOutput).toContain('| Errors | 1 | 50.0% |');
     expect(reportOutput).toContain('| **Total** | **2** |  |');
@@ -468,24 +614,22 @@ describe('printCoverageReport — error grouping', () => {
     logOutput.length = 0;
     printCoverageSummary(results, false);
     const summaryOutput = logOutput.join('\n');
-    expect(summaryOutput).toContain('- **Errors** (compiler bailout): 1 (50.0%)');
-    expect(summaryOutput).toContain('**1** function(s) caused compiler errors');
+    expect(summaryOutput).toContain('| Errors | 1 | 50.0% |');
+    expect(summaryOutput).not.toContain('function(s) caused compiler errors');
   });
 });
 
 describe('printUnparseableFiles', () => {
   let logOutput: string[];
-  const originalLog = console.log;
+  let logSpy: ReturnType<typeof captureConsole>;
 
   beforeEach(() => {
     logOutput = [];
-    console.log = (...args: unknown[]) => {
-      logOutput.push(args.join(' '));
-    };
+    logSpy = captureConsole('log', logOutput);
   });
 
   afterEach(() => {
-    console.log = originalLog;
+    logSpy.mockRestore();
   });
 
   it('prints nothing when every file parsed', () => {
@@ -515,7 +659,7 @@ describe('printUnparseableFiles', () => {
 
   it('reports the count in the summary so it is visible without expanding', () => {
     printCoverageSummaryImpl(createFormatter('md'), [makeFunctionAnalysis({})], false, 3);
-    expect(logOutput.join('\n')).toContain('**Not analyzed** (file could not be parsed): 3 file(s)');
+    expect(logOutput.join('\n')).toContain('| Not analyzed | 3 file(s) | n/a |');
   });
 
   it('omits the summary line when nothing was skipped', () => {
@@ -526,17 +670,15 @@ describe('printUnparseableFiles', () => {
 
 describe('printRuntimeRisks', () => {
   let logOutput: string[];
-  const originalLog = console.log;
+  let logSpy: ReturnType<typeof captureConsole>;
 
   beforeEach(() => {
     logOutput = [];
-    console.log = (...args: unknown[]) => {
-      logOutput.push(args.join(' '));
-    };
+    logSpy = captureConsole('log', logOutput);
   });
 
   afterEach(() => {
-    console.log = originalLog;
+    logSpy.mockRestore();
   });
 
   it('prints nothing when no result carries a risk', () => {

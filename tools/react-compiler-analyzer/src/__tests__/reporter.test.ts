@@ -3,8 +3,8 @@ import { printReport as printReportImpl, printSummary as printSummaryImpl } from
 import type { DirectiveAnalysis } from '../types';
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
-function printReport(results: DirectiveAnalysis[], workspaceRoot: string, fullReasons: boolean): void {
-  printReportImpl(createFormatter('md'), results, workspaceRoot, fullReasons);
+function printReport(results: DirectiveAnalysis[], workspaceRoot: string, verbose: boolean): void {
+  printReportImpl(createFormatter('md'), results, workspaceRoot, verbose);
 }
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
@@ -185,7 +185,7 @@ describe('printReport', () => {
     expect(output).not.toContain(longReason);
   });
 
-  it('keeps the full reason in the table column with --full-reasons (broken/redundant)', () => {
+  it('keeps the full reason in the table column with --verbose (broken/redundant)', () => {
     const longReason =
       'Cannot access refs during render. React refs are values that are not needed for rendering and must not be read during render.';
     const results: DirectiveAnalysis[] = [

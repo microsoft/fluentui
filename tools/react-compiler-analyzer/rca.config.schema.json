@@ -23,10 +23,6 @@
       "minimum": 1,
       "description": "Maximum number of files processed in parallel."
     },
-    "fullReasons": {
-      "type": "boolean",
-      "description": "Show full compiler error reasons instead of truncated summaries."
-    },
     "exclude": {
       "type": "array",
       "items": { "type": "string" },

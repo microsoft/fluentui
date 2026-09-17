@@ -79,9 +79,10 @@ describe('manualMemoPlugin', () => {
       expect(inner).toEqual(expect.objectContaining({ useMemo: 0, useCallback: 1 }));
     });
 
-    it('skips functions that already have "use memo" directive', async () => {
+    it('records cleanup inventory inside functions that already have "use memo"', async () => {
       const { results } = await runPlugin('already-annotated.tsx');
-      expect(results.size).toBe(0);
+      expect(results.size).toBe(1);
+      expect([...results.values()][0].useMemo).toBeGreaterThan(0);
     });
 
     it('returns empty map when no memoization is present', async () => {

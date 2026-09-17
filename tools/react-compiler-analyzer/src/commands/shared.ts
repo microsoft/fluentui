@@ -5,6 +5,7 @@ import type { Argv } from 'yargs';
 
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import { dedupeFileEntries, findPackageName } from '../discovery';
+import { compareText } from '../ordering';
 import type { CompilationMode, FileEntry, OutputFormat, RcaConfig } from '../types';
 
 /**
@@ -34,7 +35,6 @@ export interface SharedArgv {
   paths: string[];
   verbose: boolean;
   concurrency: number;
-  'full-reasons': boolean;
   exclude: string[];
   mode: CompilationMode;
   format: OutputFormat;
@@ -65,18 +65,13 @@ export function sharedOptions<T>(yarg: Argv<T>, config: RcaConfig = {}) {
     })
     .option('verbose', {
       type: 'boolean' as const,
-      describe: 'Show per-function compiler events in the output',
+      describe: 'Show detailed compiler events and full code-framed diagnostics',
       default: config.verbose ?? false,
     })
     .option('concurrency', {
       type: 'number' as const,
       describe: 'Max parallel file processing',
       default: config.concurrency ?? 10,
-    })
-    .option('full-reasons', {
-      type: 'boolean' as const,
-      describe: 'Show full compiler error reasons instead of truncated summaries',
-      default: config.fullReasons ?? false,
     })
     .option('exclude', {
       type: 'string' as const,
@@ -218,7 +213,7 @@ export function validateParserPlugins(plugins: string[] = []): void {
 
 /** A result located in source, as produced by both the coverage and directive analyses. */
 interface Located {
-  packageName: string;
+  packageName: string | null;
   filePath: string;
   line: number;
   column?: number;
@@ -231,8 +226,8 @@ interface Located {
 export function sortByLocation<T extends Located>(results: T[]): T[] {
   return results.sort(
     (a, b) =>
-      a.packageName.localeCompare(b.packageName) ||
-      a.filePath.localeCompare(b.filePath) ||
+      compareText(a.packageName ?? '', b.packageName ?? '') ||
+      compareText(a.filePath, b.filePath) ||
       a.line - b.line ||
       (a.column ?? 0) - (b.column ?? 0),
   );
@@ -340,9 +335,10 @@ export async function withReportOutput(
 /** Discovers the files a command operates on, given one scan root. */
 export type DiscoverFiles = (
   scanDir: string,
-  packageName: string,
+  packageName: string | null,
   exclude: string[],
   verbose: boolean,
+  concurrency: number,
 ) => Promise<FileEntry[]>;
 
 export interface ReportSpec {
@@ -364,7 +360,7 @@ export interface ReportSpec {
  * dedupes files across every path, then hands off to the command body. Returns the exit code.
  */
 export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<number> {
-  const resolvedPaths = validatePaths(argv.paths, { strict: argv['strict-paths'] });
+  const resolvedPaths = validatePaths(argv.paths, { strict: argv['strict-paths'] }).sort(compareText);
   validateConcurrency(argv.concurrency);
   validateParserPlugins(argv['parser-plugin']);
 
@@ -383,7 +379,9 @@ export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<num
         f.line(`   Mode: ${argv.mode}`);
         f.blank();
 
-        collected.push(...(await spec.discover(resolvedPath, packageName, argv.exclude, argv.verbose)));
+        collected.push(
+          ...(await spec.discover(resolvedPath, packageName, argv.exclude, argv.verbose, argv.concurrency)),
+        );
       }
 
       // Overlapping path arguments (a directory plus a file inside it) can surface the same

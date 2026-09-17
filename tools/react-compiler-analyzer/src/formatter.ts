@@ -1,11 +1,17 @@
 import type { RenderedFormat } from './types';
 
+/** A table cell with an optional native HTML tooltip. */
+export interface TitledCell {
+  value: string | number;
+  title: string;
+}
+
 /** A single table cell value. Numbers are stringified during rendering. */
-export type Cell = string | number;
+export type Cell = string | number | TitledCell;
 
 /**
  * Semantic color for a compiler state, used to colorize section headings:
- * - `success` (green) — compiled functions
+ * - `success` (green) — compiler-accepted functions
  * - `error` (red) — compiler bailouts
  * - `warning` (yellow) — skipped functions / needs review
  * - `info` (blue) — migration candidates
@@ -50,6 +56,10 @@ export interface Formatter {
    */
   heading(level: number, text: string, status?: StatusKind): void;
   /**
+   * Top-level report group heading. Renders as an `h2` and becomes a navigation target in HTML.
+   */
+  groupHeading(text: string): void;
+  /**
    * Wrap a related block of output in a status-colored section. In `html` this renders a
    * container with a light tinted background for the whole block; in `cli`/`md` it is a
    * transparent passthrough that simply invokes `body` (no extra markup).
@@ -68,7 +78,7 @@ export interface Formatter {
   /** A blank separator line. */
   blank(): void;
   /** A table with header cells and row cells. */
-  table(headers: string[], rows: Cell[][]): void;
+  table(headers: Cell[], rows: Cell[][]): void;
   /** A collapsible details block. `body` is invoked to emit its contents. */
   details(summary: string, body: () => void): void;
   /** A fenced/pre code block. `text` may span multiple lines. */
@@ -146,6 +156,14 @@ function inlineHtml(text: string): string {
     .replace(/`([^`]+)`/g, '<code>$1</code>');
 }
 
+function cellText(cell: Cell): string {
+  return typeof cell === 'object' ? String(cell.value) : String(cell);
+}
+
+function cellTitleAttribute(cell: Cell): string {
+  return typeof cell === 'object' ? ` title="${escapeHtml(cell.title)}"` : '';
+}
+
 class MarkdownFormatter implements Formatter {
   public readonly format = 'md' as const;
 
@@ -157,6 +175,10 @@ class MarkdownFormatter implements Formatter {
 
   public heading(level: number, text: string, _status?: StatusKind): void {
     this.write('#'.repeat(level) + ' ' + text);
+  }
+
+  public groupHeading(text: string): void {
+    this.heading(2, text);
   }
 
   public section(_status: StatusKind, body: () => void): void {
@@ -177,11 +199,12 @@ class MarkdownFormatter implements Formatter {
     this.write('');
   }
 
-  public table(headers: string[], rows: Cell[][]): void {
-    this.write('| ' + headers.join(' | ') + ' |');
-    this.write('|' + headers.map(h => '-'.repeat(h.length + 2)).join('|') + '|');
+  public table(headers: Cell[], rows: Cell[][]): void {
+    const headerCells = headers.map(cellText);
+    this.write('| ' + headerCells.join(' | ') + ' |');
+    this.write('|' + headerCells.map(h => '-'.repeat(h.length + 2)).join('|') + '|');
     for (const row of rows) {
-      this.write('| ' + row.map(String).join(' | ') + ' |');
+      this.write('| ' + row.map(cellText).join(' | ') + ' |');
     }
   }
 
@@ -225,6 +248,10 @@ class CliFormatter implements Formatter {
     }
   }
 
+  public groupHeading(text: string): void {
+    this.heading(2, text);
+  }
+
   public section(_status: StatusKind, body: () => void): void {
     body();
   }
@@ -245,9 +272,9 @@ class CliFormatter implements Formatter {
     this.write('');
   }
 
-  public table(headers: string[], rows: Cell[][]): void {
-    const cells = (row: Cell[]): string[] => row.map(c => stripInline(String(c)));
-    const headerCells = headers.map(stripInline);
+  public table(headers: Cell[], rows: Cell[][]): void {
+    const cells = (row: Cell[]): string[] => row.map(c => stripInline(cellText(c)));
+    const headerCells = headers.map(cell => stripInline(cellText(cell)));
     const bodyRows = rows.map(cells);
 
     const widths = headerCells.map((h, i) => Math.max(h.length, ...bodyRows.map(r => (r[i] ?? '').length), 0));
@@ -295,6 +322,15 @@ class HtmlFormatter implements Formatter {
     const l = Math.min(Math.max(level, 1), 4);
     const cls = status ? ` class="${statusClass(status)}"` : '';
     this.write(`<h${l}${cls}>${inlineHtml(text)}</h${l}>`);
+  }
+
+  public groupHeading(text: string): void {
+    const title = stripInline(text);
+    this.write(
+      `<h2 class="toc-group-heading" id="package-${slugify(title)}" data-title="${escapeHtml(title)}">${inlineHtml(
+        text,
+      )}</h2>`,
+    );
   }
 
   public section(status: StatusKind, body: () => void): void {
@@ -347,9 +383,14 @@ class HtmlFormatter implements Formatter {
     // No-op: HTML block elements provide their own spacing.
   }
 
-  public table(headers: string[], rows: Cell[][]): void {
-    const head = headers.map(h => `<th>${inlineHtml(h)}</th>`).join('');
-    const body = rows.map(r => `<tr>${r.map(c => `<td>${inlineHtml(String(c))}</td>`).join('')}</tr>`).join('');
+  public table(headers: Cell[], rows: Cell[][]): void {
+    const head = headers.map(cell => `<th${cellTitleAttribute(cell)}>${inlineHtml(cellText(cell))}</th>`).join('');
+    const body = rows
+      .map(
+        row =>
+          `<tr>${row.map(cell => `<td${cellTitleAttribute(cell)}>${inlineHtml(cellText(cell))}</td>`).join('')}</tr>`,
+      )
+      .join('');
     // Wrap in a horizontal-scroll container so a wide table never forces the whole
     // document to overflow — it scrolls within its own bounds as a last resort.
     this.write(`<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`);
@@ -400,6 +441,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 table{border-collapse:collapse;width:100%;font-size:.9rem;}
 th,td{text-align:left;padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:anywhere;vertical-align:top;}
 th{background:#faf9ff;font-weight:650;border-bottom:2px solid var(--border);white-space:nowrap;}
+th[title],td[title]{cursor:help;text-decoration:underline dotted var(--muted);text-underline-offset:.18em;}
 tbody tr:nth-child(even){background:#fafafe;}
 tbody tr:hover{background:var(--note);}
 .note{background:var(--note);border-left:3px solid var(--accent);padding:.6rem .9rem;border-radius:0 6px 6px 0;margin:.75rem 0;overflow-wrap:anywhere;}
@@ -455,8 +497,9 @@ details.fold .table-wrap table{background:rgba(255,255,255,.55);}
 .toc.collapsed .toc-acts,.toc.collapsed .toc-list,.toc.collapsed .toc-title{display:none;}
 .toc.collapsed .toc-header{border-bottom:none;}
 .toc-list{overflow-y:auto;padding:.4rem 0;}
-.toc-group{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);padding:.5rem .8rem .2rem;overflow-wrap:anywhere;}
 .toc-row{display:flex;align-items:center;gap:.5rem;padding:.3rem .8rem;font-size:.82rem;color:var(--fg);text-decoration:none;border-left:2px solid transparent;cursor:pointer;}
+.toc-row.toc-package{font-weight:700;padding-top:.55rem;padding-bottom:.4rem;}
+.toc-row.toc-child{padding-left:1.55rem;font-size:.78rem;}
 .toc-row:hover{background:var(--note);}
 .toc-row.active{background:var(--note);border-left-color:var(--accent);font-weight:650;}
 .toc-dot{flex:none;width:.5rem;height:.5rem;border-radius:999px;background:var(--muted);}
@@ -515,18 +558,22 @@ export function renderHtmlDocument(title: string, body: string, meta: ReportMeta
 
 /**
  * Inline, dependency-free script that builds the sticky right-side table of contents at runtime
- * from the rendered `details.fold` chapters. It lists one row per chapter (status dot + title +
- * entry count), groups rows under their package label (`data-group`), adds Expand/Collapse-all
- * controls, jumps to (and opens) a chapter when its row is clicked, highlights the chapter
- * currently in view (scrollspy), and can collapse the whole rail to a compact pill. Hidden on
- * narrow viewports via CSS. Runs from `file://` with no external dependencies.
+ * from package group headings and rendered `details.fold` chapters. It lists every package even
+ * when the report is non-verbose and the package has no foldable chapters, nests grouped chapters
+ * under their package, adds Expand/Collapse-all controls, jumps to (and opens) a chapter when its
+ * row is clicked, highlights the section currently in view (scrollspy), and can collapse the whole
+ * rail to a compact pill. Hidden on narrow viewports via CSS. Runs from `file://` with no external
+ * dependencies.
  */
 const HTML_NAV_SCRIPT = `
 (function(){
   var toc = document.querySelector('.toc');
   if (!toc) return;
   var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
-  if (!folds.length) return;
+  var targets = Array.prototype.slice.call(
+    document.querySelectorAll('main.report > h2.toc-group-heading, main.report > details.fold')
+  );
+  if (!targets.length) return;
 
   var STATUS = ['status-success','status-error','status-warning','status-info'];
 
@@ -550,39 +597,34 @@ const HTML_NAV_SCRIPT = `
   header.appendChild(toggle);
   toc.appendChild(header);
 
-  var acts = document.createElement('div');
-  acts.className = 'toc-acts';
-  function mkAct(label, open){
-    var b = document.createElement('button');
-    b.className = 'toc-act';
-    b.textContent = label;
-    b.addEventListener('click', function(){ folds.forEach(function(d){ d.open = open; }); });
-    acts.appendChild(b);
+  if (folds.length) {
+    var acts = document.createElement('div');
+    acts.className = 'toc-acts';
+    function mkAct(label, open){
+      var b = document.createElement('button');
+      b.className = 'toc-act';
+      b.textContent = label;
+      b.addEventListener('click', function(){ folds.forEach(function(d){ d.open = open; }); });
+      acts.appendChild(b);
+    }
+    mkAct('Expand all', true);
+    mkAct('Collapse all', false);
+    toc.appendChild(acts);
   }
-  mkAct('Expand all', true);
-  mkAct('Collapse all', false);
-  toc.appendChild(acts);
 
   var list = document.createElement('div');
   list.className = 'toc-list';
   toc.appendChild(list);
 
   var rows = [];
-  var lastGroup = null;
-  folds.forEach(function(d){
-    var group = d.getAttribute('data-group');
-    if (group && group !== lastGroup) {
-      var label = document.createElement('div');
-      label.className = 'toc-group';
-      label.textContent = group;
-      list.appendChild(label);
-      lastGroup = group;
-    }
-
+  targets.forEach(function(target){
+    var isPackage = target.classList.contains('toc-group-heading');
     var row = document.createElement('a');
     row.className = 'toc-row';
-    row.href = '#' + d.id;
-    STATUS.forEach(function(s){ if (d.classList.contains(s)) { row.classList.add(s); } });
+    if (isPackage) row.classList.add('toc-package');
+    else if (target.getAttribute('data-group')) row.classList.add('toc-child');
+    row.href = '#' + target.id;
+    STATUS.forEach(function(s){ if (target.classList.contains(s)) { row.classList.add(s); } });
 
     var dot = document.createElement('span');
     dot.className = 'toc-dot';
@@ -590,10 +632,10 @@ const HTML_NAV_SCRIPT = `
 
     var label2 = document.createElement('span');
     label2.className = 'toc-label';
-    label2.textContent = d.getAttribute('data-title') || 'Section';
+    label2.textContent = target.getAttribute('data-title') || 'Section';
     row.appendChild(label2);
 
-    var count = d.getAttribute('data-count');
+    var count = target.getAttribute('data-count');
     if (count !== null) {
       var c = document.createElement('span');
       c.className = 'toc-count';
@@ -603,11 +645,11 @@ const HTML_NAV_SCRIPT = `
 
     row.addEventListener('click', function(e){
       e.preventDefault();
-      d.open = true;
-      d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target.tagName === 'DETAILS') target.open = true;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     list.appendChild(row);
-    rows.push({ row: row, fold: d });
+    rows.push({ row: row, target: target });
   });
 
   // Scrollspy: highlight the chapter whose top is nearest above the viewport's upper third.
@@ -615,7 +657,7 @@ const HTML_NAV_SCRIPT = `
     var marker = window.scrollY + window.innerHeight * 0.3;
     var activeIdx = 0;
     for (var i = 0; i < rows.length; i++){
-      if (rows[i].fold.offsetTop <= marker) { activeIdx = i; }
+      if (rows[i].target.offsetTop <= marker) { activeIdx = i; }
     }
     rows.forEach(function(r, i){
       if (i === activeIdx) { r.row.classList.add('active'); }

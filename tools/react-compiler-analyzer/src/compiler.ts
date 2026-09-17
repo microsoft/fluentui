@@ -2,15 +2,18 @@ import { extname } from 'node:path';
 import { readFile } from 'node:fs/promises';
 
 import { transformAsync } from '@babel/core';
-import type { PluginItem } from '@babel/core';
+import type { PluginItem, TransformOptions } from '@babel/core';
 
-import { forEachFileConcurrently } from './concurrency';
+import { forEachConcurrently } from './concurrency';
+import { compareText } from './ordering';
 import { manualMemoPlugin } from './manual-memo-plugin';
 import type { ExistingDirectives, ManualMemoEntry, ManualMemoPluginOptions } from './manual-memo-plugin';
 import { riskPlugin } from './risk-plugin';
 import type { RiskPluginOptions } from './risk-plugin';
 import { createCallGraphAnalyzer, type CallGraphAnalyzer } from './call-graph';
 import { createModuleResolver, compilePathAliases, createResolverStats } from './module-resolver';
+import { sourceFunctionPlugin, SourceFunctionIndex } from './source-functions';
+import { fingerprintText } from './stable-json';
 import type { CompilationMode, CompileFilesOptions, FileEntry, RiskConfig, RiskFinding } from './types';
 
 export interface CompilerEvent {
@@ -222,7 +225,15 @@ export async function compileSource(
       code: false,
       babelrc: false,
       configFile: false,
-      ...(options.parserPlugins?.length ? { parserOpts: { plugins: [...options.parserPlugins] } } : {}),
+      ...(options.parserPlugins?.length
+        ? {
+            parserOpts: {
+              plugins: [...options.parserPlugins] as NonNullable<
+                NonNullable<TransformOptions['parserOpts']>['plugins']
+              >,
+            },
+          }
+        : {}),
       presets: [
         [
           require.resolve('@babel/preset-typescript'),
@@ -247,8 +258,11 @@ export async function compileSource(
 
 export interface FileCompilationResult {
   filePath: string;
-  packageName: string;
+  packageName: string | null;
+  packageRoot: string | null;
   source: string;
+  sourceHash: string;
+  sourceFunctions: SourceFunctionIndex;
   events: CompilerEvent[];
   error?: Error;
   manualMemo: Map<string, ManualMemoEntry>;
@@ -263,6 +277,8 @@ export interface FileCompilationResult {
    * same way an in-file one does.
    */
   fnKeyAliases: Map<string, string>;
+  parserPlugins: string[];
+  verboseLogs: string[];
 }
 
 /**
@@ -276,8 +292,11 @@ export async function compileFile(
   riskConfig: RiskConfig = {},
   callGraph?: CallGraphAnalyzer,
   parserPlugins: string[] = [],
+  workspaceRoot = process.cwd(),
 ): Promise<FileCompilationResult> {
   const source = await readFile(entry.filePath, 'utf-8');
+  const sourceHash = fingerprintText(source);
+  const sourceFunctions = new SourceFunctionIndex(source, entry, workspaceRoot);
   const manualMemo = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
   const risks = new Map<string, RiskFinding[]>();
@@ -288,16 +307,18 @@ export async function compileFile(
     compilationMode,
     parserPlugins,
     plugins: [
+      [sourceFunctionPlugin, { index: sourceFunctions }],
       [
         manualMemoPlugin,
         {
+          sourceFunctions,
           results: manualMemo,
           bodyInsertionLines,
           existingDirectives,
           keyAliases: fnKeyAliases,
         } as ManualMemoPluginOptions,
       ],
-      [riskPlugin, { ...riskConfig, results: risks, keyAliases: fnKeyAliases } as RiskPluginOptions],
+      [riskPlugin, { ...riskConfig, sourceFunctions, results: risks, keyAliases: fnKeyAliases } as RiskPluginOptions],
     ],
   });
 
@@ -307,31 +328,55 @@ export async function compileFile(
     for (const finding of callGraph.analyzeFile(entry.filePath)) {
       const { leaf, chain } = finding.risk;
       const via = chain.join(' → ');
-      const list = risks.get(finding.fnKey) ?? [];
-      list.push({
+      const sourceFunction = sourceFunctions.resolveStart(
+        finding.declarationStart.line,
+        finding.declarationStart.column,
+      );
+      if (!sourceFunction) {
+        continue;
+      }
+      const list = risks.get(sourceFunction.id) ?? [];
+      const risk: RiskFinding = {
         ruleId: leaf.ruleId,
         severity: leaf.severity,
         line: finding.line,
         column: finding.column,
         symbol: leaf.symbol,
         message: `reached via \`${via}\`: ${leaf.message}`,
-      });
-      risks.set(finding.fnKey, list);
+      };
+      if (
+        !list.some(
+          current =>
+            current.ruleId === risk.ruleId &&
+            current.line === risk.line &&
+            current.column === risk.column &&
+            current.symbol === risk.symbol &&
+            current.message === risk.message,
+        )
+      ) {
+        list.push(risk);
+      }
+      risks.set(sourceFunction.id, list);
+      sourceFunctions.recordFinding(sourceFunction.id, risk);
     }
   }
 
-  if (verbose && !error) {
-    for (const ev of events) {
-      const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
-      const name = ev.fnName ?? '';
-      console.log(`  [${ev.kind}] ${entry.filePath} fn@${loc} ${name}`);
-    }
-  }
+  const verboseLogs =
+    verbose && !error
+      ? events.map(ev => {
+          const loc = ev.fnLoc ? `${ev.fnLoc.start.line}:${ev.fnLoc.start.column}` : '?';
+          const name = ev.fnName ?? '';
+          return `  [${ev.kind}] ${entry.filePath} fn@${loc} ${name}`;
+        })
+      : [];
 
   return {
     filePath: entry.filePath,
     packageName: entry.packageName,
+    packageRoot: entry.packageRoot ?? null,
     source,
+    sourceHash,
+    sourceFunctions,
     events,
     error,
     manualMemo,
@@ -339,6 +384,8 @@ export async function compileFile(
     existingDirectives,
     risks,
     fnKeyAliases,
+    parserPlugins,
+    verboseLogs,
   };
 }
 
@@ -362,8 +409,9 @@ export async function compileFilesStreaming(
   // One shared call-graph analyzer per run, so its module + reaches-risk caches are reused
   // across files. Only built when wrapper resolution is opted into.
   const callGraph = buildCallGraph(options.riskConfig, options.parserPlugins);
+  const verboseLogs = new Map<string, string[]>();
 
-  await forEachFileConcurrently(
+  await forEachConcurrently(
     files,
     async entry => {
       const result = await compileFile(
@@ -373,12 +421,21 @@ export async function compileFilesStreaming(
         options.riskConfig,
         callGraph,
         options.parserPlugins,
+        options.workspaceRoot,
       );
+      if (options.verbose) {
+        verboseLogs.set(result.filePath, [`Analyzing: ${result.filePath}`, ...result.verboseLogs]);
+      }
       await onResult(result);
     },
     { concurrency: options.concurrency, verbose: options.verbose },
   );
 
+  for (const [, logs] of [...verboseLogs.entries()].sort(([a], [b]) => compareText(a, b))) {
+    for (const log of logs) {
+      console.log(log);
+    }
+  }
   options.onResolverStats?.(callGraph?.stats);
 }
 

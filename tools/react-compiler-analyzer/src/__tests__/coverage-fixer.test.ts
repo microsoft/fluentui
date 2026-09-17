@@ -38,6 +38,13 @@ function makeAnalysis(filePath: string, line: number, bodyInsertionLine: number)
 }
 
 describe('applyAnnotations', () => {
+  it('aborts when source changed after analysis', async () => {
+    const filePath = createTempFixture('single-function');
+    const results = await analyzeReal(filePath);
+    writeFileSync(filePath, `${readFileSync(filePath, 'utf-8')}\n// changed`);
+    await expect(applyAnnotations(results, 'all')).rejects.toThrow('stale source');
+  });
+
   it('inserts use memo into a single function', async () => {
     const filePath = createTempFixture('single-function');
     const results: FunctionAnalysis[] = [makeAnalysis(filePath, 3, 4)];

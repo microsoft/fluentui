@@ -1,8 +1,8 @@
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter } from '../formatter';
-import type { OutputFormat } from '../types';
+import type { RenderedFormat } from '../types';
 
 /** Render a fixed sequence of formatter calls and capture the emitted lines. */
-function render(format: OutputFormat, body: (f: Formatter) => void): string {
+function render(format: RenderedFormat, body: (f: Formatter) => void): string {
   const lines: string[] = [];
   const f = createFormatter(format, line => lines.push(line));
   body(f);
@@ -85,6 +85,23 @@ describe('HtmlFormatter', () => {
     `);
   });
 
+  it('renders HTML group headings as package navigation targets', () => {
+    const out = render('html', f => f.groupHeading('@scope/pkg-a'));
+
+    expect(out).toBe(
+      '<h2 class="toc-group-heading" id="package-scope-pkg-a" data-title="@scope/pkg-a">@scope/pkg-a</h2>',
+    );
+  });
+
+  it('renders titled table headers and cells as native HTML tooltips', () => {
+    const out = render('html', f =>
+      f.table([{ value: 'Action', title: 'Recommended action' }], [[{ value: 'review', title: 'Review this value' }]]),
+    );
+
+    expect(out).toContain('<th title="Recommended action">Action</th>');
+    expect(out).toContain('<td title="Review this value">review</td>');
+  });
+
   it('renders details blocks', () => {
     const out = render('html', f => {
       f.details('More', () => {
@@ -101,13 +118,13 @@ describe('HtmlFormatter', () => {
 
   it('adds a status class to colored headings', () => {
     const out = render('html', f => {
-      f.heading(3, 'Compiled (will be memoized)', 'success');
+      f.heading(3, 'Compiler accepted (memo cache emitted)', 'success');
       f.heading(3, 'Errors (compiler bailout)', 'error');
       f.heading(3, 'Skipped (not a component/hook)', 'warning');
       f.heading(2, 'Migration Candidates', 'info');
     });
 
-    expect(out).toContain('<h3 class="status-success">Compiled (will be memoized)</h3>');
+    expect(out).toContain('<h3 class="status-success">Compiler accepted (memo cache emitted)</h3>');
     expect(out).toContain('<h3 class="status-error">Errors (compiler bailout)</h3>');
     expect(out).toContain('<h3 class="status-warning">Skipped (not a component/hook)</h3>');
     expect(out).toContain('<h2 class="status-info">Migration Candidates</h2>');
@@ -204,16 +221,17 @@ describe('html table of contents', () => {
   it('injects the sticky TOC element and builder script into the document', () => {
     const doc = renderHtmlDocument('Report', '<details class="fold" id="x" data-title="X" data-count="1"></details>');
     expect(doc).toContain('<nav class="toc" aria-label="Report sections"></nav>');
-    expect(doc).toContain("querySelectorAll('details.fold')");
+    expect(doc).toContain("querySelectorAll('main.report > h2.toc-group-heading, main.report > details.fold')");
     expect(doc).toContain('On this page');
     expect(doc).toContain('Expand all');
     expect(doc).toContain('Collapse all');
   });
 
-  it('builder script renders a group label when data-group changes and supports scrollspy', () => {
+  it('builder script renders package and child rows and supports scrollspy', () => {
     const doc = renderHtmlDocument('Report', '');
     expect(doc).toContain("getAttribute('data-group')");
-    expect(doc).toContain("'toc-group'");
+    expect(doc).toContain("'toc-package'");
+    expect(doc).toContain("'toc-child'");
     expect(doc).toContain("'toc-row'");
     expect(doc).toContain("classList.add('active')");
   });

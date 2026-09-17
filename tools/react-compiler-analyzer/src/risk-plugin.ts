@@ -1,6 +1,7 @@
 import type { PluginObj, NodePath } from '@babel/core';
 import type { Function as BabelFunction } from '@babel/types';
 
+import { locationKey } from './identity';
 import {
   buildLeafConfig,
   hasAnyLeafRule,
@@ -12,9 +13,12 @@ import {
   type AnyMember,
   type LeafRiskConfig,
 } from './risk-patterns';
+import type { SourceFunctionIndex } from './source-functions';
 import type { RiskConfig, RiskFinding } from './types';
 
 export interface RiskPluginOptions extends RiskConfig {
+  /** Canonical source-function inventory shared by every metadata producer. */
+  sourceFunctions?: SourceFunctionIndex;
   /**
    * Shared map of findings keyed by `line:column` of the *enclosing* function's start,
    * matching the keys used by {@link manualMemoPlugin} and the compiler events so the
@@ -32,10 +36,6 @@ export interface RiskPluginOptions extends RiskConfig {
 interface RiskPluginState {
   opts: RiskPluginOptions;
   leafConfig?: LeafRiskConfig;
-}
-
-function fnKey(loc: { line: number; column: number }): string {
-  return `${loc.line}:${loc.column}`;
 }
 
 /** Find the nearest enclosing function (the one the compiler memoizes). */
@@ -111,15 +111,16 @@ export function riskPlugin(): PluginObj {
         const s = state as unknown as RiskPluginState;
         s.leafConfig = buildLeafConfig(s.opts);
       },
-      'CallExpression|OptionalCallExpression'(path: NodePath<AnyCall>, state: unknown) {
+      'CallExpression|OptionalCallExpression'(path: NodePath, state: unknown) {
         const { opts, leafConfig } = state as RiskPluginState;
         if (!leafConfig || !hasAnyLeafRule(leafConfig)) {
           return;
         }
 
-        const match = matchRiskyCall(path.node, path.parent, leafConfig);
+        const callPath = path as NodePath<AnyCall>;
+        const match = matchRiskyCall(callPath.node, callPath.parent, leafConfig);
         if (match) {
-          record(path, opts, match);
+          record(callPath, opts, match);
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -162,13 +163,33 @@ function record(path: NodePath, opts: RiskPluginOptions, finding: Omit<RiskFindi
     return;
   }
   const callLoc = path.node.loc?.start ?? fnPath.node.loc.start;
-  const key = fnKey(fnPath.node.loc.start);
+  const sourceFunction = opts.sourceFunctions?.findByNode(fnPath.node);
+  const key = sourceFunction?.id ?? locationKey(fnPath.node.loc.start);
   const list = opts.results.get(key) ?? [];
-  list.push({ ...finding, line: callLoc.line, column: callLoc.column });
+  const recorded: RiskFinding = {
+    ...finding,
+    line: callLoc.line,
+    column: callLoc.column,
+  };
+  if (
+    !list.some(
+      current =>
+        current.ruleId === recorded.ruleId &&
+        current.line === recorded.line &&
+        current.column === recorded.column &&
+        current.symbol === recorded.symbol &&
+        current.message === recorded.message,
+    )
+  ) {
+    list.push(recorded);
+  }
   opts.results.set(key, list);
+  if (sourceFunction) {
+    opts.sourceFunctions?.recordFinding(sourceFunction.id, recorded);
+  }
 
   const bodyLoc = fnPath.node.body.loc;
-  if (bodyLoc) {
-    opts.keyAliases?.set(fnKey(bodyLoc.start), key);
+  if (!sourceFunction && bodyLoc) {
+    opts.keyAliases?.set(locationKey(bodyLoc.start), key);
   }
 }

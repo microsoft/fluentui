@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Harden compiler event attribution, package discovery, directive fixes, compact JSON reporting, and manual-memo migration candidates.",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

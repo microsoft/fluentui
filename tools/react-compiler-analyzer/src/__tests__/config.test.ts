@@ -211,9 +211,9 @@ describe('rca.config.schema.json', () => {
 
   it('documents every named property', () => {
     const visit = (definition: Record<string, unknown>) => {
-      const properties = definition.properties as Record<string, Record<string, unknown>> | undefined;
+      const properties = definition['properties'] as Record<string, Record<string, unknown>> | undefined;
       for (const property of Object.values(properties ?? {})) {
-        expect(typeof property.description).toBe('string');
+        expect(typeof property['description']).toBe('string');
         visit(property);
       }
     };

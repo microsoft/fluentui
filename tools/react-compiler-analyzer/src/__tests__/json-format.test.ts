@@ -8,6 +8,10 @@ import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { toAnalysisDocument, toLintDocument } from '../serializer';
 import type { AnalysisDocument, FunctionAnalysis, LintDocument } from '../types';
 
+function allFindings(doc: AnalysisDocument) {
+  return doc.findings;
+}
+
 /** Run a command with stdout captured, returning the parsed document plus anything on stderr. */
 async function captureJson<T>(run: () => Promise<number>): Promise<{ doc: T; code: number; stderr: string[] }> {
   const chunks: string[] = [];
@@ -47,11 +51,11 @@ describe('--format json', () => {
       paths: [tempDir],
       verbose: false,
       concurrency: 2,
-      'full-reasons': false,
       exclude: DEFAULT_EXCLUDE,
       mode: 'infer' as const,
       format: 'json' as const,
       'strict-paths': false,
+      'parser-plugin': [],
       annotate: undefined,
       riskConfig: undefined,
       fix: false,
@@ -82,7 +86,7 @@ export function Risky({ label }: { label: string }) {
       );
 
       expect(code).toBe(0);
-      expect(doc.schemaVersion).toBe(1);
+      expect(doc.schemaVersion).toBe(2);
       expect(doc.tool).toBe('react-compiler-analyzer');
       expect(doc.command).toBe('analyze');
       expect(doc.mode).toBe('infer');
@@ -93,11 +97,12 @@ export function Risky({ label }: { label: string }) {
         runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
       );
 
-      expect(doc.findings).toHaveLength(1);
-      expect(doc.findings[0]).toMatchObject({
+      const findings = allFindings(doc);
+      expect(findings).toHaveLength(1);
+      expect(findings[0]).toMatchObject({
         file: expect.stringContaining('Risky.tsx'),
         line: expect.any(Number),
-        rule: 'nonreactive-store-read',
+        ruleId: 'nonreactive-store-read',
         severity: 'medium',
         compiled: true,
       });
@@ -132,9 +137,9 @@ export function Guarded() {
           runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
-        const suppressed = doc.findings.filter(finding => finding.file.includes('Suppressed.tsx'));
+        const suppressed = allFindings(doc).filter(finding => finding.file.includes('Suppressed.tsx'));
         expect(suppressed).toHaveLength(1);
-        expect(suppressed[0]).toMatchObject({ compiled: false, suppressed: 'use no memo' });
+        expect(suppressed[0]).toMatchObject({ suppressed: true });
       });
 
       it('omits the suppressed key for a live finding', async () => {
@@ -142,9 +147,9 @@ export function Guarded() {
           runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
-        const live = doc.findings.find(finding => finding.file.includes('Risky.tsx'));
+        const live = allFindings(doc).find(finding => finding.file.includes('Risky.tsx'));
         expect(live).toMatchObject({ compiled: true });
-        expect(live!.suppressed).toBeUndefined();
+        expect(live?.suppressed).toBeUndefined();
       });
 
       it('counts suppressed findings separately in the summary', async () => {
@@ -177,9 +182,10 @@ export function Bail() {
           runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),
         );
 
-        const bail = doc.findings.find(finding => finding.file.includes('Bail.tsx'));
+        const bail = allFindings(doc).find(finding => finding.file.includes('Bail.tsx'));
         expect(bail).toBeDefined();
-        expect(bail!.suppressed).toBeUndefined();
+        expect(bail).toMatchObject({ compiled: false });
+        expect(bail?.suppressed).toBeUndefined();
       });
 
       /**
@@ -220,10 +226,9 @@ export function LiveWrapper() {
             runAnalyze(argv({ riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never),
           );
 
-          const guarded = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && !f.compiled);
+          const guarded = allFindings(doc).filter(f => f.file.includes('Wrapped.tsx') && f.suppressed);
           expect(guarded).toHaveLength(1);
           expect(guarded[0].message).toContain('reached via');
-          expect(guarded[0].suppressed).toBe('use no memo');
         });
 
         it('still reports the equivalent risk when no directive is present', async () => {
@@ -231,9 +236,8 @@ export function LiveWrapper() {
             runAnalyze(argv({ riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never),
           );
 
-          const live = doc.findings.filter(f => f.file.includes('Wrapped.tsx') && f.compiled);
+          const live = allFindings(doc).filter(f => f.file.includes('Wrapped.tsx') && f.compiled && !f.suppressed);
           expect(live).toHaveLength(1);
-          expect(live[0].suppressed).toBeUndefined();
         });
 
         it('counts the suppressed wrapper finding in the summary', async () => {
@@ -250,6 +254,12 @@ export function LiveWrapper() {
       const first = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));
       const second = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));
       expect(JSON.stringify(first.doc)).toBe(JSON.stringify(second.doc));
+    });
+
+    it('produces the same document at concurrency 1 and 8', async () => {
+      const serial = await captureJson<AnalysisDocument>(() => runAnalyze(argv({ concurrency: 1 }) as never));
+      const parallel = await captureJson<AnalysisDocument>(() => runAnalyze(argv({ concurrency: 8 }) as never));
+      expect(parallel.doc).toEqual(serial.doc);
     });
 
     it('routes scan diagnostics to stderr so stdout stays parseable', async () => {
@@ -317,6 +327,23 @@ export function useUncompilable() {
       expect(doc.summary.redundant).toBe(1);
       expect(doc.directives[0]).toMatchObject({ directive: 'use-no-memo', status: 'redundant' });
     });
+
+    it('applies --fix before emitting JSON', async () => {
+      const filePath = join(tempDir, 'src', 'Fixable.tsx');
+      writeFileSync(
+        filePath,
+        `import { useRef } from 'react';
+export function useUncompilable() {
+  'use no memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+      );
+      await captureJson<LintDocument>(() => runLint(argv({ fix: true }) as never));
+      expect(readFileSync(filePath, 'utf-8')).not.toContain('use no memo');
+    });
   });
 });
 
@@ -331,38 +358,71 @@ describe('serializers', () => {
     compilerEvent: 'CompileSuccess',
   };
 
-  it('marks findings on non-compiled functions as not compiled', () => {
+  it('marks findings on non-compiled functions as latent', () => {
+    const results: FunctionAnalysis[] = [
+      {
+        ...base,
+        status: 'error',
+        compilerEvent: 'CompileError',
+        risks: [
+          {
+            ruleId: 'nonreactive-store-read',
+            severity: 'high',
+            line: 4,
+            column: 2,
+            symbol: 'getAppStore',
+            message: 'x',
+          },
+        ],
+      },
+    ];
+    const doc = toAnalysisDocument(results, { mode: 'infer', workspaceRoot: '/ws' });
+
+    expect(allFindings(doc)[0].compiled).toBe(false);
+    expect(doc.summary.findings).toBe(1);
+    expect(doc.summary.findingsOnCompiled).toBe(0);
+  });
+
+  it('uses explicit nulls for unknown analysis fields', () => {
+    const doc = toAnalysisDocument([{ ...base, memoStats: null }], {
+      mode: 'infer',
+      workspaceRoot: '/ws',
+    });
+    expect(doc.functions[0].memoStats).toBeNull();
+    expect(allFindings(doc)).toHaveLength(0);
+  });
+
+  it('summarizes compiler-accepted functions that emit memo caches', () => {
     const doc = toAnalysisDocument(
       [
         {
           ...base,
+          functionName: 'Cached',
+          memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        },
+        {
+          ...base,
+          functionName: 'Pruned',
+          memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+        },
+        {
+          ...base,
+          functionName: 'Unknown',
+          memoStats: null,
+        },
+        {
+          ...base,
+          functionName: 'ErroredWithStats',
           status: 'error',
           compilerEvent: 'CompileError',
-          risks: [
-            {
-              ruleId: 'nonreactive-store-read',
-              severity: 'high',
-              line: 4,
-              column: 2,
-              symbol: 'getAppStore',
-              message: 'x',
-            },
-          ],
+          memoStats: { memoSlots: 3, memoBlocks: 1, memoValues: 2, prunedMemoBlocks: 0, prunedMemoValues: 0 },
         },
       ],
       { mode: 'infer', workspaceRoot: '/ws' },
     );
 
-    expect(doc.findings[0].compiled).toBe(false);
-    expect(doc.summary.findings).toBe(1);
-    expect(doc.summary.findingsOnCompiled).toBe(0);
-  });
-
-  it('omits optional fields rather than emitting nulls', () => {
-    const doc = toAnalysisDocument([base], { mode: 'infer', workspaceRoot: '/ws' });
-    expect(doc.functions[0]).not.toHaveProperty('reason');
-    expect(doc.functions[0]).not.toHaveProperty('memoStats');
-    expect(doc.findings).toHaveLength(0);
+    expect(doc.summary.compiled).toBe(3);
+    expect(doc.summary.memoCacheEmitted).toBe(1);
   });
 
   it('summarizes lint directives by status', () => {

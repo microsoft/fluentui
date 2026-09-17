@@ -1,9 +1,26 @@
-import { relative } from 'node:path';
-
-import type { Cell, Formatter } from './formatter';
-import type { FunctionAnalysis } from './types';
+import type { CandidateEntry } from './candidates';
+import type { Cell, Formatter, StatusKind } from './formatter';
+import { memoCacheOutcome } from './memo-cache-outcome';
+import { compareRiskFindings, compareText } from './ordering';
+import { toWorkspacePath } from './path-utils';
+import type { CandidateAction, CandidateReadiness, FunctionAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
+
+const CANDIDATE_ACTION_DESCRIPTIONS: Record<CandidateAction, string> = {
+  'hook-lowering-review': 'Manual useMemo/useCallback detected; verify behavior before removing or lowering it.',
+  'default-wrapper-review':
+    'React.memo has no comparator; review the wrapper separately from the accepted inner function.',
+  'custom-comparator-retain':
+    'React.memo has a custom comparator; retain it by default unless behavior proves it redundant.',
+};
+
+const CANDIDATE_READINESS_DESCRIPTIONS: Record<CandidateReadiness, string> = {
+  reviewable: 'Risk analysis ran, no known risk was found, and function kind is known.',
+  'risk-unassessed': 'Runtime-risk analysis was not configured for this run.',
+  'needs-kind-review': 'The source function kind is unknown and needs manual classification.',
+  'blocked-known-risk': 'A known runtime-risk finding blocks migration until addressed.',
+};
 
 /**
  * Print a coverage report of all function analyses, grouped by package.
@@ -14,7 +31,7 @@ export function printCoverageReport(
   results: FunctionAnalysis[],
   workspaceRoot: string,
   verbose: boolean,
-  fullReasons: boolean,
+  candidates: CandidateEntry[] = [],
 ): void {
   if (results.length === 0) {
     f.blank();
@@ -22,35 +39,67 @@ export function printCoverageReport(
     return;
   }
 
+  if (verbose && candidates.length > 0) {
+    f.blank();
+    printCandidateLegend(f);
+  }
+
   // Group by package
-  const byPackage = new Map<string, FunctionAnalysis[]>();
+  const byPackage = new Map<string | null, FunctionAnalysis[]>();
   for (const r of results) {
     const existing = byPackage.get(r.packageName) ?? [];
     existing.push(r);
     byPackage.set(r.packageName, existing);
   }
 
-  const sortedPackages = [...byPackage.keys()].sort();
+  const sortedPackages = [...byPackage.keys()].sort((a, b) => compareText(a ?? '', b ?? ''));
 
   for (const pkg of sortedPackages) {
     const pkgResults = byPackage.get(pkg)!;
+    const packageCandidates = candidates.filter(candidate => candidate.analysis.packageName === pkg);
     f.blank();
-    f.heading(2, pkg);
+    const packageLabel = pkg ?? '(unpackaged)';
+    f.groupHeading(packageLabel);
     f.blank();
-    printPackageSummaryTable(f, pkgResults);
+    printPackageSummaryTable(f, pkgResults, packageCandidates.length);
 
     if (verbose) {
-      const compiled = pkgResults.filter(r => r.status === 'compiled');
+      const accepted = pkgResults.filter(r => r.status === 'compiled');
       const skipped = pkgResults.filter(r => r.status === 'skipped');
       const errored = pkgResults.filter(r => r.status === 'error');
 
-      if (compiled.length > 0) {
-        f.foldableSection(
-          { title: 'Compiled (will be memoized)', status: 'success', count: compiled.length, level: 3, group: pkg },
-          () => {
-            printFunctionTable(f, compiled, workspaceRoot, true);
-          },
-        );
+      const acceptedSections: Array<{ title: string; results: FunctionAnalysis[]; status?: StatusKind }> = [
+        {
+          title: 'Compiler accepted (memo cache emitted)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'emitted'),
+          status: 'success',
+        },
+        {
+          title: 'Compiler accepted (no memo cache emitted)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'not-emitted'),
+        },
+        {
+          title: 'Compiler accepted (memo cache not reported)',
+          results: accepted.filter(result => memoCacheOutcome(result) === 'unknown'),
+          status: 'warning',
+        },
+      ];
+
+      for (const section of acceptedSections) {
+        if (section.results.length > 0) {
+          f.foldableSection(
+            {
+              title: section.title,
+              status: section.status,
+              count: section.results.length,
+              level: 3,
+              group: packageLabel,
+            },
+            () => {
+              printFunctionTable(f, section.results, workspaceRoot, true);
+            },
+          );
+        }
       }
       if (skipped.length > 0) {
         f.foldableSection(
@@ -59,7 +108,7 @@ export function printCoverageReport(
             status: 'warning',
             count: skipped.length,
             level: 3,
-            group: pkg,
+            group: packageLabel,
           },
           () => {
             printFunctionTable(f, skipped, workspaceRoot, false);
@@ -73,34 +122,50 @@ export function printCoverageReport(
             status: 'error',
             count: countErroredFunctions(errored),
             level: 3,
-            group: pkg,
+            group: packageLabel,
           },
           () => {
-            printErrorGroups(f, errored, workspaceRoot, fullReasons);
+            printErrorGroups(f, errored, workspaceRoot);
           },
         );
       }
     }
+
+    if (verbose) {
+      printMigrationCandidates(f, packageCandidates, workspaceRoot, packageLabel);
+    }
   }
 }
 
-function printPackageSummaryTable(f: Formatter, results: FunctionAnalysis[]): void {
-  const compiled = results.filter(r => r.status === 'compiled').length;
+function printPackageSummaryTable(f: Formatter, results: FunctionAnalysis[], migrationCandidateCount: number): void {
+  const accepted = results.filter(r => r.status === 'compiled');
+  const memoCacheEmitted = accepted.filter(r => memoCacheOutcome(r) === 'emitted').length;
+  const noMemoCacheEmitted = accepted.filter(r => memoCacheOutcome(r) === 'not-emitted').length;
+  const memoCacheUnknown = accepted.filter(r => memoCacheOutcome(r) === 'unknown').length;
   const skipped = results.filter(r => r.status === 'skipped').length;
   // The compiler emits one event per error, so a function can appear in several error
   // rows. Count distinct functions so the totals reflect functions, not error occurrences.
   const errored = countErroredFunctions(results);
-  const total = compiled + skipped + errored;
-
-  f.table(
-    ['Status', 'Count', 'Percentage'],
-    [
-      ['Compiled', compiled, pct(compiled, total)],
-      ['Skipped', skipped, pct(skipped, total)],
-      ['Errors', errored, pct(errored, total)],
-      ['**Total**', `**${total}**`, ''],
-    ],
+  const total = accepted.length + skipped + errored;
+  const rows: Cell[][] = [
+    ['Compiler accepted (memo cache emitted)', memoCacheEmitted, pct(memoCacheEmitted, total)],
+    ['Compiler accepted (no memo cache emitted)', noMemoCacheEmitted, pct(noMemoCacheEmitted, total)],
+  ];
+  if (memoCacheUnknown > 0) {
+    rows.push(['Compiler accepted (memo cache not reported)', memoCacheUnknown, pct(memoCacheUnknown, total)]);
+  }
+  rows.push([
+    'Manual Memo Migration Candidates',
+    migrationCandidateCount,
+    accepted.length === 0 ? 'n/a' : `${pct(migrationCandidateCount, accepted.length)} of accepted`,
+  ]);
+  rows.push(
+    ['Skipped', skipped, pct(skipped, total)],
+    ['Errors', errored, pct(errored, total)],
+    ['**Total**', `**${total}**`, ''],
   );
+
+  f.table(['Status', 'Count', 'Percentage'], rows);
   f.blank();
 }
 
@@ -112,15 +177,21 @@ function printFunctionTable(
 ): void {
   if (showMemoStats) {
     const rows = results.map(r => {
-      const relPath = relative(workspaceRoot, r.filePath);
+      const relPath = toWorkspacePath(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const stats = r.memoStats;
-      return [`${relPath}:${r.line}`, fn, stats?.memoSlots ?? 0, stats?.memoBlocks ?? 0, stats?.memoValues ?? 0];
+      return [
+        `${relPath}:${r.line}`,
+        fn,
+        stats?.memoSlots ?? 'unknown',
+        stats?.memoBlocks ?? 'unknown',
+        stats?.memoValues ?? 'unknown',
+      ];
     });
     f.table(['Location', 'Function', 'Memo Slots', 'Memo Blocks', 'Memo Values'], rows);
   } else {
     const rows = results.map(r => {
-      const relPath = relative(workspaceRoot, r.filePath);
+      const relPath = toWorkspacePath(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const reason = r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : '';
       return [`${relPath}:${r.line}`, fn, r.compilerEvent, reason];
@@ -135,15 +206,10 @@ function printFunctionTable(
  *
  * The React Compiler emits one event per error, so a single function can produce
  * several rows. Grouping keeps all errors for a function together under one heading,
- * making it clear which functions fail and where. When `fullReasons` is set, each
- * function's full code-framed diagnostics are printed right below its summary table.
+ * making it clear which functions fail and where. In verbose reports, each function's
+ * full code-framed diagnostics are printed right below its summary table.
  */
-function printErrorGroups(
-  f: Formatter,
-  errored: FunctionAnalysis[],
-  workspaceRoot: string,
-  fullReasons: boolean,
-): void {
+function printErrorGroups(f: Formatter, errored: FunctionAnalysis[], workspaceRoot: string): void {
   // Group by function location (file + line + column + name), preserving first-seen order.
   const groups = new Map<string, FunctionAnalysis[]>();
   for (const r of errored) {
@@ -158,26 +224,34 @@ function printErrorGroups(
 
   for (const group of groups.values()) {
     const first = group[0];
-    const relPath = relative(workspaceRoot, first.filePath);
+    const relPath = toWorkspacePath(workspaceRoot, first.filePath);
     const fn = first.functionName ?? '(anonymous)';
-    const count = group.length;
+    const diagnostics = group.flatMap(result => result.diagnostics ?? []);
+    const count = diagnostics.length || group.length;
 
     f.heading(4, `${relPath}:${first.line} — ${fn} (${count} ${count === 1 ? 'error' : 'errors'})`, 'error');
     f.blank();
 
-    const rows = group.map(r => {
-      const at = r.errorLine !== undefined ? `${r.errorLine}:${r.errorColumn ?? 0}` : '';
-      return [at, r.compilerEvent, r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : ''];
-    });
+    const rows =
+      diagnostics.length > 0
+        ? diagnostics.map(diagnostic => [
+            diagnostic.span ? `${diagnostic.span.start.line}:${diagnostic.span.start.column}` : '',
+            diagnostic.kind,
+            truncate(diagnostic.reason, TABLE_REASON_MAX_LEN),
+          ])
+        : group.map(r => {
+            const at = r.errorLine !== undefined ? `${r.errorLine}:${r.errorColumn ?? 0}` : '';
+            return [at, r.compilerEvent, r.reason ? truncate(r.reason, TABLE_REASON_MAX_LEN) : ''];
+          });
     f.table(['Line', 'Compiler Event', 'Reason'], rows);
     f.blank();
 
-    if (fullReasons) {
-      for (const r of group) {
-        if (r.fullReason) {
-          f.code(r.fullReason);
-          f.blank();
-        }
+    const fullDiagnostics =
+      diagnostics.length > 0 ? diagnostics.map(diagnostic => diagnostic.fullReason) : group.map(r => r.fullReason);
+    for (const fullReason of fullDiagnostics) {
+      if (fullReason) {
+        f.code(fullReason);
+        f.blank();
       }
     }
   }
@@ -192,33 +266,65 @@ export function printCoverageSummary(
   verbose: boolean,
   unparseableCount = 0,
 ): void {
-  const compiledResults = results.filter(r => r.status === 'compiled');
-  const compiled = compiledResults.length;
-  const migrationCandidates = compiledResults.filter(r => r.manualMemo).length;
-  const compilerReady = compiled - migrationCandidates;
+  const acceptedResults = results.filter(r => r.status === 'compiled');
+  const accepted = acceptedResults.length;
+  const memoCacheEmitted = acceptedResults.filter(r => memoCacheOutcome(r) === 'emitted').length;
+  const noMemoCacheEmitted = acceptedResults.filter(r => memoCacheOutcome(r) === 'not-emitted').length;
+  const memoCacheUnknown = acceptedResults.filter(r => memoCacheOutcome(r) === 'unknown').length;
+  const migrationCandidates = acceptedResults.filter(r => r.manualMemo && !r.existingDirectives?.useNoMemo).length;
   const skipped = results.filter(r => r.status === 'skipped').length;
   // The compiler emits one event per error, so a function can appear in several error
   // rows. Count distinct functions so the totals reflect functions, not error occurrences.
   const errored = countErroredFunctions(results);
-  const total = compiled + skipped + errored;
+  const total = accepted + skipped + errored;
 
   f.heading(2, 'Summary');
   f.blank();
+  if (!verbose) {
+    const rows: Cell[][] = [
+      ['Compiler accepted (memo cache emitted)', memoCacheEmitted, pct(memoCacheEmitted, total)],
+      ['Compiler accepted (no memo cache emitted)', noMemoCacheEmitted, pct(noMemoCacheEmitted, total)],
+    ];
+    if (memoCacheUnknown > 0) {
+      rows.push(['Compiler accepted (memo cache not reported)', memoCacheUnknown, pct(memoCacheUnknown, total)]);
+    }
+    rows.push(
+      [
+        'Manual Memo Migration Candidates',
+        migrationCandidates,
+        accepted === 0 ? 'n/a' : `${pct(migrationCandidates, accepted)} of accepted`,
+      ],
+      ['Skipped', skipped, pct(skipped, total)],
+      ['Errors', errored, pct(errored, total)],
+      ['**Total functions**', `**${total}**`, ''],
+    );
+    if (unparseableCount > 0) {
+      rows.push(['Not analyzed', `${unparseableCount} file(s)`, 'n/a']);
+    }
+    f.table(['Status', 'Count', 'Percentage'], rows);
+    f.blank();
+    return;
+  }
+
   f.line(`- **Total functions analyzed:** ${total}`);
-  f.line(`- **Compiled** (will be memoized): ${compiled} (${pct(compiled, total)})`);
-  f.line(`  - Migration candidates (has manual memoization): ${migrationCandidates}`);
-  f.line(`  - Compiler-ready (no manual memoization): ${compilerReady}`);
+  f.line(`- **Compiler accepted:** ${accepted} (${pct(accepted, total)})`);
+  f.line(`  - Memo cache emitted: ${memoCacheEmitted} (${pct(memoCacheEmitted, total)} of total)`);
+  f.line(`  - No memo cache emitted: ${noMemoCacheEmitted} (${pct(noMemoCacheEmitted, total)} of total)`);
+  if (memoCacheUnknown > 0) {
+    f.line(`  - Memo cache not reported: ${memoCacheUnknown} (${pct(memoCacheUnknown, total)} of total)`);
+  }
   f.line(`- **Skipped** (opted out or not a component/hook): ${skipped} (${pct(skipped, total)})`);
   f.line(`- **Errors** (compiler bailout): ${errored} (${pct(errored, total)})`);
+  f.line(`- **Manual memo migration candidates:** ${migrationCandidates}`);
   if (unparseableCount > 0) {
     f.line(`- **Not analyzed** (file could not be parsed): ${unparseableCount} file(s)`);
   }
   f.blank();
 
-  const riskyFunctions = compiledResults.filter(r => r.risks && r.risks.length > 0).length;
+  const riskyFunctions = acceptedResults.filter(r => r.risks && r.risks.length > 0).length;
   if (riskyFunctions > 0) {
     f.line(
-      `> ⚠️ **${riskyFunctions}** compiled function(s) contain runtime-risk patterns that are unsafe to memoize ` +
+      `> ⚠️ **${riskyFunctions}** compiler-accepted function(s) contain runtime-risk patterns that are unsafe if memoized ` +
         '(see **Compiled but Risky**).',
     );
     f.blank();
@@ -228,110 +334,133 @@ export function printCoverageSummary(
     f.line('> No functions were analyzed. The directory may not contain React components or hooks.');
     f.blank();
   } else if (errored > 0) {
-    f.line(
-      `> **${errored}** function(s) caused compiler errors — these won't be optimized until the patterns are refactored.`,
-    );
+    f.line(`> **${errored}** function(s) caused compiler errors and were not accepted by the compiler.`);
     if (!verbose) {
       f.line('> Run with `--verbose` to see per-function details.');
     }
     f.blank();
   } else {
-    f.line('> All recognized functions compile successfully.');
+    f.line('> No compiler errors were reported.');
     f.blank();
   }
 
-  if (verbose) {
-    f.heading(3, 'Legend');
-    f.blank();
-    f.table(
-      ['Term', 'Meaning'],
+  f.heading(3, 'Legend');
+  f.blank();
+  f.table(
+    ['Term', 'Meaning'],
+    [
       [
-        [
-          '**Memo Slots**',
-          'Total number of cache slots the compiler allocates for a function. Each memoized value or block occupies one slot.',
-        ],
-        [
-          '**Memo Blocks**',
-          'Number of memoized code blocks (JSX elements, conditional branches, etc.) that the compiler wraps with cache checks.',
-        ],
-        [
-          '**Memo Values**',
-          'Number of individual memoized values (variables, expressions, hook results) that the compiler caches between renders.',
-        ],
+        '**Memo Slots**',
+        'Number of retained runtime cache slots reported by the compiler. Zero means the function was accepted without emitting a memo cache.',
       ],
-    );
-    f.blank();
-  }
+      [
+        '**Memo Blocks**',
+        'Number of retained code blocks (JSX elements, conditional branches, etc.) wrapped with cache checks.',
+      ],
+      ['**Memo Values**', 'Number of retained values (variables, expressions, hook results) cached between renders.'],
+    ],
+  );
+  f.blank();
+  f.line('> Memo counters describe emitted compiler output; they do not rank expected performance benefit.');
+  f.blank();
 }
 
-/**
- * Print a "Migration Candidates" section — functions that compile successfully
- * and also use manual memoization (useMemo, useCallback, React.memo).
- * These are candidates for adding 'use memo' and removing manual hooks.
- *
- * Buckets:
- * 1. **Safe to remove** — useMemo/useCallback hooks and React.memo without comparator
- * 2. **Needs manual review** — React.memo with custom comparator (custom equality logic)
- */
-export function printMigrationCandidates(f: Formatter, results: FunctionAnalysis[], workspaceRoot: string): void {
-  const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
-
+/** Print the unscored manual-memo migration candidates for one package. */
+export function printMigrationCandidates(
+  f: Formatter,
+  candidates: CandidateEntry[],
+  workspaceRoot: string,
+  packageLabel?: string,
+): void {
   if (candidates.length === 0) {
     return;
   }
 
-  const safeToRemove = candidates.filter(r => !r.manualMemo!.reactMemoHasComparator);
-  const needsReview = candidates.filter(r => r.manualMemo!.reactMemoHasComparator);
-
-  f.foldableSection({ title: 'Migration Candidates', status: 'info', count: candidates.length }, () => {
-    f.line(
-      'Functions that compile successfully and contain manual memoization. ' +
-        "These can safely use `'use memo'` and may have their manual hooks removed.",
-    );
-    f.blank();
-
-    if (safeToRemove.length > 0) {
-      f.heading(3, 'Safe to Remove', 'info');
-      f.blank();
+  f.foldableSection(
+    {
+      title: 'Manual Memo Migration Candidates',
+      status: 'info',
+      count: candidates.length,
+      ...(packageLabel ? { level: 3, group: packageLabel } : {}),
+    },
+    () => {
       f.line(
-        '`useMemo`/`useCallback` hooks and `React.memo` wrappers (without comparator) are redundant ' +
-          'after compiler adoption and can be removed.',
+        'Compiler-accepted functions with detected useMemo, useCallback, or React.memo usage. ' +
+          'This is an unscored migration review list, not a performance ranking; compiler acceptance does not ' +
+          'prove that a React.memo wrapper is redundant.',
       );
       f.blank();
-      printMigrationTable(f, safeToRemove, workspaceRoot);
-    }
 
-    if (needsReview.length > 0) {
-      f.heading(3, 'Needs Manual Review', 'warning');
-      f.blank();
+      printMigrationTable(f, candidates, workspaceRoot);
       f.line(
-        '`React.memo` with a custom comparator cannot be automatically removed — the comparator ' +
-          'provides custom equality logic not replicated by the compiler. The function body is still ' +
-          'optimized, but the wrapper requires human judgment.',
+        `> **${candidates.length}** manual memo migration candidate(s) found. ` +
+          'Retain custom comparators by default; default wrappers and hook APIs require review.',
       );
       f.blank();
-      printMigrationTable(f, needsReview, workspaceRoot);
-    }
-
-    f.line(`> **${candidates.length}** migration candidate(s) found`);
-    if (needsReview.length > 0) {
-      f.line(`> (**${needsReview.length}** need manual review due to custom comparator).`);
-    }
-    f.blank();
-  });
+    },
+  );
 }
 
-function printMigrationTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot: string): void {
-  const rows = entries.map(r => {
-    const relPath = relative(workspaceRoot, r.filePath);
-    const fn = r.functionName ?? '(anonymous)';
-    const memo = r.manualMemo!;
-    const slots = r.memoStats?.memoSlots ?? 0;
-    const memoLabel = memo.reactMemo ? (memo.reactMemoHasComparator ? 'yes (comparator)' : 'yes') : 'no';
-    return [`${relPath}:${r.line}`, fn, memo.useMemo, memo.useCallback, memoLabel, slots];
+function printCandidateLegend(f: Formatter): void {
+  f.foldableSection(
+    {
+      title: 'Candidate Legend',
+      status: 'info',
+      defaultOpen: true,
+    },
+    () => {
+      f.table(
+        ['Column', 'Value', 'Meaning'],
+        [
+          ...Object.entries(CANDIDATE_ACTION_DESCRIPTIONS).map(([value, meaning]) => ['Action', value, meaning]),
+          ...Object.entries(CANDIDATE_READINESS_DESCRIPTIONS).map(([value, meaning]) => ['Readiness', value, meaning]),
+        ],
+      );
+      f.blank();
+    },
+  );
+}
+
+function printMigrationTable(f: Formatter, entries: CandidateEntry[], workspaceRoot: string): void {
+  const rows = entries.map(({ analysis, candidate }) => {
+    const relPath = toWorkspacePath(workspaceRoot, analysis.filePath);
+    const memo = analysis.manualMemo;
+    const memoLabel = memo?.reactMemo ? (memo.reactMemoHasComparator ? 'yes (comparator)' : 'yes') : 'no';
+    return [
+      `${relPath}:${analysis.line}`,
+      analysis.functionName ?? '(anonymous)',
+      {
+        value: candidate.action,
+        title: CANDIDATE_ACTION_DESCRIPTIONS[candidate.action],
+      },
+      {
+        value: candidate.readiness,
+        title: CANDIDATE_READINESS_DESCRIPTIONS[candidate.readiness],
+      },
+      memo?.useMemo ?? 0,
+      memo?.useCallback ?? 0,
+      memoLabel,
+    ];
   });
 
-  f.table(['Location', 'Function', 'useMemo', 'useCallback', 'React.memo', 'Memo Slots'], rows);
+  f.table(
+    [
+      'Location',
+      'Function',
+      {
+        value: 'Action',
+        title: 'Recommended review treatment for the detected manual memoization.',
+      },
+      {
+        value: 'Readiness',
+        title: 'Whether configured risk analysis and source classification allow review to proceed.',
+      },
+      'useMemo',
+      'useCallback',
+      'React.memo',
+    ],
+    rows,
+  );
   f.blank();
 }
 
@@ -362,7 +491,7 @@ export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], wo
     f.blank();
 
     const rows: Cell[][] = files.map(u => [
-      relative(workspaceRoot, u.file),
+      toWorkspacePath(workspaceRoot, u.file),
       // Babel prefixes the absolute path onto the message; the location suffix is the useful part.
       u.error.split('\n')[0].replace(/^.*?:\s*/, ''),
     ]);
@@ -446,10 +575,11 @@ function printRiskTable(f: Formatter, entries: FunctionAnalysis[], workspaceRoot
 
     const rows: Cell[][] = [];
     for (const r of entries) {
-      const relPath = relative(workspaceRoot, r.filePath);
+      const relPath = toWorkspacePath(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const sorted = [...r.risks!].sort(
-        (a, b) => (RISK_SEVERITY_ORDER[a.severity] ?? 9) - (RISK_SEVERITY_ORDER[b.severity] ?? 9),
+        (a, b) =>
+          (RISK_SEVERITY_ORDER[a.severity] ?? 9) - (RISK_SEVERITY_ORDER[b.severity] ?? 9) || compareRiskFindings(a, b),
       );
       for (const risk of sorted) {
         rows.push([
@@ -487,7 +617,7 @@ function countErroredFunctions(results: FunctionAnalysis[]): number {
   const seen = new Set<string>();
   for (const r of results) {
     if (r.status === 'error') {
-      seen.add(`${r.filePath}:${r.line}:${r.column}:${r.functionName ?? ''}`);
+      seen.add(r.sourceFunctionId ?? `${r.filePath}:${r.line}:${r.column}:${r.functionName ?? ''}`);
     }
   }
   return seen.size;

@@ -1,117 +1,157 @@
 import { existsSync, globSync, statSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
-import { basename, dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, parse, relative, resolve } from 'node:path';
 
-import type { FileEntry } from './types';
+import { mapConcurrently } from './concurrency';
+import { compareText } from './ordering';
 import { USE_NO_MEMO_CONTENT_RE, USE_MEMO_CONTENT_RE } from './patterns';
+import type { FileEntry } from './types';
 
-/**
- * Glob all TypeScript files in a directory, respecting exclude patterns.
- *
- * When `scanPath` points directly at a file, it is returned as-is — excludes are
- * not applied because the file was selected explicitly.
- */
+interface LocatedPackage {
+  packageName: string | null;
+  packageRoot: string | null;
+}
+
+const manifestCache = new Map<string, Promise<LocatedPackage | null>>();
+const directoryCache = new Map<string, LocatedPackage>();
+
 function globTypeScriptFiles(scanPath: string, exclude: string[]): string[] {
   if (statSync(scanPath).isFile()) {
     return [scanPath];
   }
-  return globSync('**/*.{ts,tsx}', { cwd: scanPath, exclude }).map(relative => join(scanPath, relative));
+  return globSync('**/*.{ts,tsx}', { cwd: scanPath, exclude })
+    .map(path => join(scanPath, path))
+    .sort(compareText);
+}
+
+function isWithin(boundary: string, path: string): boolean {
+  const rel = relative(boundary, path);
+  return rel === '' || (!rel.startsWith('..') && !rel.startsWith('/'));
+}
+
+async function readNamedManifest(directory: string): Promise<LocatedPackage | null> {
+  const manifestPath = join(directory, 'package.json');
+  const cached = manifestCache.get(manifestPath);
+  if (cached) {
+    return cached;
+  }
+  const pending = (async () => {
+    if (!existsSync(manifestPath)) {
+      return null;
+    }
+    try {
+      const manifest = JSON.parse(await readFile(manifestPath, 'utf-8')) as { name?: unknown };
+      return typeof manifest.name === 'string' && manifest.name.length > 0
+        ? { packageName: manifest.name, packageRoot: directory }
+        : null;
+    } catch {
+      return null;
+    }
+  })();
+  manifestCache.set(manifestPath, pending);
+  return pending;
+}
+
+/** Resolve ownership from the file upward to the nearest named package manifest. */
+export async function locatePackage(filePath: string, workspaceBoundary = process.cwd()): Promise<LocatedPackage> {
+  const absoluteFile = resolve(filePath);
+  const boundary = resolve(workspaceBoundary);
+  const stop = isWithin(boundary, absoluteFile) ? boundary : parse(absoluteFile).root;
+  let directory = statSync(absoluteFile).isDirectory() ? absoluteFile : dirname(absoluteFile);
+  const visited: string[] = [];
+
+  while (true) {
+    const cacheKey = `${stop}\0${directory}`;
+    const cached = directoryCache.get(cacheKey);
+    if (cached) {
+      for (const seen of visited) {
+        directoryCache.set(`${stop}\0${seen}`, cached);
+      }
+      return cached;
+    }
+    visited.push(directory);
+    const located = await readNamedManifest(directory);
+    if (located) {
+      for (const seen of visited) {
+        directoryCache.set(`${stop}\0${seen}`, located);
+      }
+      return located;
+    }
+    if (directory === stop || directory === dirname(directory)) {
+      const unpackaged = { packageName: null, packageRoot: null };
+      for (const seen of visited) {
+        directoryCache.set(`${stop}\0${seen}`, unpackaged);
+      }
+      return unpackaged;
+    }
+    directory = dirname(directory);
+  }
 }
 
 /**
- * Remove duplicate file entries by absolute file path, preserving first-seen order.
- *
- * Lets callers safely combine overlapping path arguments — e.g. a directory plus a
- * file that lives inside it — without processing (or annotating/fixing) a file twice.
+ * Deduplicate after package ownership has been resolved, then impose a code-point total order.
  */
 export function dedupeFileEntries(entries: FileEntry[]): FileEntry[] {
-  const seen = new Set<string>();
-  const result: FileEntry[] = [];
+  const byPath = new Map<string, FileEntry>();
   for (const entry of entries) {
-    if (!seen.has(entry.filePath)) {
-      seen.add(entry.filePath);
-      result.push(entry);
-    }
+    byPath.set(entry.filePath, entry);
   }
-  return result;
+  return [...byPath.values()].sort((a, b) => compareText(a.filePath, b.filePath));
 }
 
-/**
- * Walk up from `startDir` to find the nearest package.json and return its `name` field.
- * Falls back to the basename of `startDir`.
- */
-export async function findPackageName(startDir: string): Promise<string> {
-  let dir = resolve(startDir);
-  const root = resolve('/');
-
-  while (dir !== root) {
-    const pkgJsonPath = join(dir, 'package.json');
-    if (existsSync(pkgJsonPath)) {
-      try {
-        const content = await readFile(pkgJsonPath, 'utf-8');
-        const pkg = JSON.parse(content);
-        if (typeof pkg.name === 'string') {
-          return pkg.name;
-        }
-      } catch {
-        // ignore parse errors, keep walking
-      }
-    }
-    dir = dirname(dir);
-  }
-
-  return basename(startDir);
+/** Compatibility helper used by scan headings and tests. */
+export async function findPackageName(startPath: string): Promise<string> {
+  const located = await locatePackage(startPath, parse(resolve(startPath)).root);
+  return located.packageName ?? basename(startPath);
 }
 
-/**
- * Filter a file list to only those containing directives.
- */
-export async function filterFilesWithDirectives(files: FileEntry[]): Promise<FileEntry[]> {
-  const result: FileEntry[] = [];
-
-  for (const entry of files) {
-    const content = await readFile(entry.filePath, 'utf-8');
-    if (USE_NO_MEMO_CONTENT_RE.test(content) || USE_MEMO_CONTENT_RE.test(content)) {
-      result.push(entry);
-    }
-  }
-
-  return result;
+export async function filterFilesWithDirectives(files: FileEntry[], concurrency = 10): Promise<FileEntry[]> {
+  const matches = await mapConcurrently(
+    files,
+    async entry => {
+      const content = await readFile(entry.filePath, 'utf-8');
+      return USE_NO_MEMO_CONTENT_RE.test(content) || USE_MEMO_CONTENT_RE.test(content) ? entry : null;
+    },
+    { concurrency, verbose: false },
+  );
+  return matches.filter((entry): entry is FileEntry => entry !== null);
 }
 
-/**
- * Discover files containing 'use no memo' or 'use memo' directives in the given directory.
- */
 export async function discoverFilesWithDirectives(
   scanDir: string,
-  packageName: string,
+  packageName: string | null,
   exclude: string[],
   verbose: boolean,
+  concurrency = 10,
 ): Promise<FileEntry[]> {
-  const allFiles = await discoverAllFiles(scanDir, packageName, exclude, false);
-  const files = await filterFilesWithDirectives(allFiles);
-
+  const allFiles = await discoverAllFiles(scanDir, packageName, exclude, false, concurrency);
+  const files = await filterFilesWithDirectives(allFiles, concurrency);
   if (verbose && files.length === 0) {
     console.log(`  No directive files found in ${scanDir}`);
   }
-
   return files;
 }
 
-/**
- * Discover all TypeScript files in the given directory (for coverage analysis).
- */
 export async function discoverAllFiles(
   scanDir: string,
-  packageName: string,
+  _packageName: string | null,
   exclude: string[],
   verbose: boolean,
+  concurrency = 10,
 ): Promise<FileEntry[]> {
   const tsFiles = globTypeScriptFiles(scanDir, exclude);
-
+  const scanRoot = resolve(scanDir);
+  const scanOwner = await locatePackage(scanRoot, parse(scanRoot).root);
+  const packageBoundary = scanOwner.packageRoot ?? parse(scanRoot).root;
   if (verbose) {
     console.log(`  Found ${tsFiles.length} TypeScript files in ${scanDir}`);
   }
-
-  return tsFiles.map(filePath => ({ filePath, packageName }));
+  return mapConcurrently(
+    tsFiles,
+    async filePath => {
+      const located = await locatePackage(filePath, packageBoundary);
+      return { filePath, ...located };
+    },
+    { concurrency, verbose },
+  );
 }

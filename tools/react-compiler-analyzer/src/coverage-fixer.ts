@@ -1,56 +1,65 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
-import type { FunctionAnalysis, AnnotateResult, AnnotateMode, QuoteStyle, RiskFinding } from './types';
+import { compareText } from './ordering';
+import { fingerprintText } from './stable-json';
+import type { AnnotateMode, AnnotateResult, FunctionAnalysis, QuoteStyle, RiskFinding } from './types';
 
-/** Severity ranking so the most serious risk drives the bailout justification. */
 const RISK_SEVERITY_ORDER: Record<string, number> = { high: 0, medium: 1 };
 
 function quoted(text: string, quote: QuoteStyle): string {
   return quote === 'double' ? `"${text}"` : `'${text}'`;
 }
 
-/**
- * Build the `'use no memo'; // justified: …` bailout line for a risky function. Picks the
- * highest-severity finding for the justification and keeps the reason compact (rule + symbol),
- * matching the repo's `// justified:` opt-out convention.
- */
 function bailoutDirective(indent: string, risks: RiskFinding[], quote: QuoteStyle): string {
   const top = [...risks].sort(
-    (a, b) => (RISK_SEVERITY_ORDER[a.severity] ?? 9) - (RISK_SEVERITY_ORDER[b.severity] ?? 9),
+    (a, b) =>
+      (RISK_SEVERITY_ORDER[a.severity] ?? 9) - (RISK_SEVERITY_ORDER[b.severity] ?? 9) ||
+      a.line - b.line ||
+      a.column - b.column,
   )[0];
   const extra = risks.length > 1 ? ` (+${risks.length - 1} more)` : '';
   return `${indent}${quoted('use no memo', quote)}; // justified: ${top.ruleId} risk via ${
     top.symbol
-  }${extra} — unsafe to memoize`;
+  }${extra} - unsafe to memoize`;
 }
 
 export interface AnnotateOptions {
-  /** Quote style for emitted directives. Defaults to single. */
   quote?: QuoteStyle;
 }
 
-function hasRisks(r: FunctionAnalysis): boolean {
-  return !!r.risks && r.risks.length > 0;
+function hasRisks(result: FunctionAnalysis): boolean {
+  return (result.risks?.length ?? 0) > 0;
+}
+
+function indentationAt(source: string, insertionOffset: number): string {
+  const lineStart = source.lastIndexOf('\n', Math.max(0, insertionOffset - 1)) + 1;
+  const openingIndent = source.slice(lineStart, insertionOffset).match(/^\s*/)?.[0] ?? '';
+  const after = source.slice(insertionOffset);
+  const nextLine = after.match(/^\r?\n([ \t]+)\S/);
+  if (nextLine && nextLine[1].length > openingIndent.length) {
+    return nextLine[1];
+  }
+  return `${openingIndent}  `;
+}
+
+function lineOffset(source: string, line: number): number {
+  if (line <= 1) {
+    return 0;
+  }
+  let offset = 0;
+  for (let currentLine = 1; currentLine < line; currentLine++) {
+    const next = source.indexOf('\n', offset);
+    if (next === -1) {
+      return source.length;
+    }
+    offset = next + 1;
+  }
+  return offset;
 }
 
 /**
- * Apply directive annotations to compilable functions.
- *
- * Modes:
- * - `manual-memo` — `'use memo'` only on functions that compile **and** have manual
- *   memoization (useMemo/useCallback/React.memo).
- * - `all` — `'use memo'` on every function that compiles.
- * - `all-safe` — like `all`, but functions carrying runtime-risk findings get a justified
- *   `'use no memo'` bailout instead of the opt-in.
- * - `bailout-only` — **only** the justified `'use no memo'` bailouts; no opt-ins are written.
- *
- * Which one you want depends on the compilation mode your **build** will run, not the `--mode`
- * used to discover these functions. A build running `infer` or `all` compiles them regardless, so
- * `'use memo'` is redundant there and `bailout-only` is the right choice; a build running
- * `annotation` compiles nothing without the opt-in, so it needs `all-safe`.
- *
- * All modes require a valid `bodyInsertionLine`, skip functions that already declare either memo
- * directive, insert bottom-to-top within each file to preserve line numbers, and are idempotent.
+ * Apply annotations once per canonical function, after preflighting every source hash.
+ * Writes are ordered by file and descending insertion offset, so offsets never drift.
  */
 export async function applyAnnotations(
   results: FunctionAnalysis[],
@@ -58,83 +67,79 @@ export async function applyAnnotations(
   options: AnnotateOptions = {},
 ): Promise<AnnotateResult> {
   const quote = options.quote ?? 'single';
-
-  const candidates = results.filter(r => {
-    if (r.status !== 'compiled' || !r.bodyInsertionLine || r.bodyInsertionLine <= 0) {
-      return false;
+  const byIdentity = new Map<string, FunctionAnalysis>();
+  for (const result of results) {
+    const id = result.sourceFunctionId ?? `${result.filePath}:${result.line}:${result.column}`;
+    if (
+      result.status === 'compiled' &&
+      ((result.bodyInsertionOffset !== undefined && result.bodyInsertionOffset >= 0) ||
+        (result.bodyInsertionLine !== undefined && result.bodyInsertionLine > 0)) &&
+      !result.existingDirectives?.useMemo &&
+      !result.existingDirectives?.useNoMemo &&
+      (mode !== 'manual-memo' || result.manualMemo) &&
+      (mode !== 'bailout-only' || hasRisks(result))
+    ) {
+      byIdentity.set(id, result);
     }
-    // A function that already declares either directive is left alone — adding the other one
-    // would leave contradictory directives on a single function.
-    if (r.existingDirectives?.useMemo || r.existingDirectives?.useNoMemo) {
-      return false;
-    }
-    if (mode === 'manual-memo') {
-      return !!r.manualMemo;
-    }
-    if (mode === 'bailout-only') {
-      return hasRisks(r);
-    }
-    return true;
-  });
-
+  }
+  const candidates = [...byIdentity.values()];
   if (candidates.length === 0) {
     return { filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 };
   }
 
-  // Group by file
   const byFile = new Map<string, FunctionAnalysis[]>();
-  for (const c of candidates) {
-    const existing = byFile.get(c.filePath) ?? [];
-    existing.push(c);
-    byFile.set(c.filePath, existing);
+  for (const candidate of candidates) {
+    const list = byFile.get(candidate.filePath) ?? [];
+    list.push(candidate);
+    byFile.set(candidate.filePath, list);
+  }
+
+  const sourceByFile = new Map<string, string>();
+  for (const [filePath, fileCandidates] of [...byFile.entries()].sort(([a], [b]) => compareText(a, b))) {
+    const source = await readFile(filePath, 'utf-8');
+    const expectedHashes = new Set(fileCandidates.map(candidate => candidate.sourceHash).filter(Boolean));
+    if (expectedHashes.size > 1 || (expectedHashes.size === 1 && !expectedHashes.has(fingerprintText(source)))) {
+      throw new Error(`stale source: '${filePath}' changed after analysis; rerun before annotating`);
+    }
+    sourceByFile.set(filePath, source);
   }
 
   let filesModified = 0;
   let functionsAnnotated = 0;
   let functionsBailedOut = 0;
-
-  for (const [filePath, fileCandidates] of byFile) {
-    const source = await readFile(filePath, 'utf-8');
-    const lines = source.split('\n');
-
-    // Sort by bodyInsertionLine descending to insert bottom-to-top
-    const sorted = [...fileCandidates].sort((a, b) => b.bodyInsertionLine! - a.bodyInsertionLine!);
-
-    let modified = false;
+  for (const [filePath, fileCandidates] of [...byFile.entries()].sort(([a], [b]) => compareText(a, b))) {
+    let source = sourceByFile.get(filePath)!;
+    const eol = source.includes('\r\n') ? '\r\n' : '\n';
+    const sorted = [...fileCandidates].sort(
+      (a, b) =>
+        (b.bodyInsertionOffset ?? lineOffset(source, b.bodyInsertionLine!)) -
+          (a.bodyInsertionOffset ?? lineOffset(source, a.bodyInsertionLine!)) ||
+        compareText(a.sourceFunctionId ?? '', b.sourceFunctionId ?? ''),
+    );
     for (const candidate of sorted) {
-      const insertLine = candidate.bodyInsertionLine!;
-      // insertLine is 1-based, array is 0-based
-      const insertIndex = insertLine - 1;
-
-      if (insertIndex < 0 || insertIndex > lines.length) {
-        continue;
+      const canonicalOffset = candidate.bodyInsertionOffset;
+      const offset = canonicalOffset ?? lineOffset(source, candidate.bodyInsertionLine!);
+      if (offset < 0 || offset > source.length) {
+        throw new Error(`invalid annotation offset ${offset} for '${candidate.filePath}'`);
       }
-
+      const indent =
+        canonicalOffset === undefined
+          ? source.slice(offset).match(/^([ \t]*)/)?.[1] ?? '  '
+          : indentationAt(source, offset);
       const isBailout = (mode === 'all-safe' || mode === 'bailout-only') && hasRisks(candidate);
-
-      // Detect indentation from the line at insertion point (or next non-empty line)
-      let indent = '  ';
-      if (insertIndex < lines.length) {
-        const match = lines[insertIndex].match(/^(\s+)/);
-        if (match) {
-          indent = match[1];
-        }
-      }
-
+      const directive = isBailout
+        ? bailoutDirective(indent, candidate.risks!, quote)
+        : `${indent}${quoted('use memo', quote)};`;
+      const insertion = canonicalOffset === undefined ? `${directive}${eol}` : `${eol}${directive}`;
+      source = source.slice(0, offset) + insertion + source.slice(offset);
       if (isBailout) {
-        lines.splice(insertIndex, 0, bailoutDirective(indent, candidate.risks!, quote));
         functionsBailedOut++;
       } else {
-        lines.splice(insertIndex, 0, `${indent}${quoted('use memo', quote)};`);
         functionsAnnotated++;
       }
-      modified = true;
     }
-
-    if (modified) {
-      await writeFile(filePath, lines.join('\n'), 'utf-8');
-      filesModified++;
-    }
+    await writeFile(filePath, source, 'utf-8');
+    filesModified++;
   }
 
   return { filesModified, functionsAnnotated, functionsBailedOut };
