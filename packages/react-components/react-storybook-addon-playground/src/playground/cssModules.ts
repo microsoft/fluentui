@@ -26,7 +26,7 @@ const HASH_MODULUS = 1_000_000_003;
 function hashString(input: string): string {
   let hash = 0;
   for (let i = 0; i < input.length; i += 1) {
-    // Arbitrary non-cryptographic constants for short, deterministic scoped class names.
+    // Arbitrary non-cryptographic constants; the large prime modulus keeps deterministic class names short.
     hash = (hash * HASH_MULTIPLIER + input.charCodeAt(i)) % HASH_MODULUS;
   }
   return hash.toString(36);
