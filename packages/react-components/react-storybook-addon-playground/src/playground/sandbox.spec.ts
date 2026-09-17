@@ -128,4 +128,15 @@ describe('sandbox bootstrap', () => {
 
     expect(postMessage).toHaveBeenCalledWith(expect.objectContaining({ type: 'error', kind: 'export', runId: 7 }), '*');
   });
+
+  it('reports asynchronous errors for the active run', async () => {
+    await runSandbox('async-token', 'exports.default = () => null;', jest.fn());
+
+    window.dispatchEvent(new ErrorEvent('error', { error: new Error('async failed') }));
+
+    expect(postMessage).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'error', kind: 'runtime', message: 'Error: async failed', runId: 7 }),
+      '*',
+    );
+  });
 });

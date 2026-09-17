@@ -272,7 +272,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [activeFileId],
   );
 
-  const run = React.useCallback(async () => {
+  const compileAndRun = React.useCallback(async () => {
     if (!model || !runtimeReady) {
       return;
     }
@@ -313,9 +313,9 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       return;
     }
 
-    const timeout = targetWindow.setTimeout(run, RUN_DEBOUNCE_MS);
+    const timeout = targetWindow.setTimeout(compileAndRun, RUN_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
-  }, [code, model, run, runtimeReady, targetWindow, typingsStatus]);
+  }, [code, compileAndRun, model, runtimeReady, targetWindow, typingsStatus]);
 
   React.useEffect(() => {
     if (!targetWindow) {
@@ -522,7 +522,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               tooltip={`Run the code (${runShortcut})`}
               appearance="primary"
               compact={compactToolbar}
-              onClick={run}
+              onClick={compileAndRun}
             />
             <ToolbarAction
               icon={<TextGrammarWandRegular />}
@@ -635,7 +635,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               onChange={handleEditorChange}
               onModelReady={setModel}
               onEditorReady={handleEditorReady}
-              onRun={run}
+              onRun={compileAndRun}
               themeOption={shellTheme}
             />
           </section>

@@ -18,6 +18,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
   let runtime;
   let root;
   let RenderBoundary;
+  let activeRunId = 0;
 
   const send = message => parent.postMessage({
     source: 'fluentui-playground',
@@ -31,6 +32,18 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
     kind: error && error.kind ? error.kind : 'runtime',
     message: error instanceof Error ? error.name + ': ' + error.message : String(error),
   });
+
+  const reportAsyncError = event => {
+    if (!activeRunId) {
+      return;
+    }
+
+    const error = 'reason' in event ? event.reason : event.error || event.message;
+    sendError(error, activeRunId);
+  };
+
+  window.addEventListener('error', reportAsyncError);
+  window.addEventListener('unhandledrejection', reportAsyncError);
 
   const isComponentLike = value =>
     typeof value === 'function' ||
@@ -111,6 +124,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
     }
 
     try {
+      activeRunId = message.runId;
       const isCssSpecifier = name => /\\.css$/i.test(name);
       const cssModules = new Map((message.cssModules || []).map(mod => [mod.specifier, mod]));
       const findCssModule = name => {
