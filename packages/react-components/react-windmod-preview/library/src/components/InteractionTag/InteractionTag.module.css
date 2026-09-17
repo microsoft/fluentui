@@ -1,0 +1,23 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-flex w-fit items-center rounded-medium;
+
+    @variant size-medium {
+      @apply h-32;
+    }
+
+    @variant size-small {
+      @apply h-24;
+    }
+
+    @variant size-extra-small {
+      @apply h-20;
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+  }
+}

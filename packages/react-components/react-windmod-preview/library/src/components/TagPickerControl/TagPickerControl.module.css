@@ -1,0 +1,156 @@
+@reference '#theme';
+
+/* Block order is the cascade: every selector here is :where()-flat, so source order alone
+   arbitrates. `.disabled` sits BEFORE the two invalid blocks — Griffel's invalid buckets carry a
+   `:not(:focus-within)` clause that makes them (0,2,0) against the plain (0,1,0) disabled bucket,
+   so a disabled invalid control paints red on both sides. The size blocks nest inside `.root` and
+   therefore precede every appearance block, which is Griffel's merge order too (root, size,
+   appearance); the two sets share no declaration in either case — sizes author min-height only,
+   appearances author background-color, the border longhands and border-radius.
+
+   The bottom focus border carries no transition-delay and no timing function: Griffel writes a
+   curve token into transition-delay, which is not a <time> and is dropped at computed-value time.
+   Reduced motion is suppressed house-wide by the theme, not here. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative flex min-w-250 flex-wrap items-center gap-x-horizontal-xxs rounded-medium ps-horizontal-m;
+
+    /* The aside is absolutely positioned over this padding. The custom property is written inline
+       by the headless control hook and its name is fixed by that hook, camel segment included. */
+    padding-inline-end: calc(var(--spacing-horizontal-m) + var(--fui-TagPickerControl-aside-width, 0px));
+
+    @variant size-medium {
+      @apply min-h-32;
+    }
+
+    @variant size-large {
+      @apply min-h-40;
+    }
+
+    @variant size-extra-large {
+      @apply min-h-44;
+    }
+
+    /* Underline geometry — see Input.module.css. */
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  .outline {
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .underline {
+    @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
+  }
+
+  /* border-transparent-stroke, NOT the literal keyword: Griffel's TagPickerControl writes the token
+     where its Dropdown writes `transparent`, and the two resolve differently in
+     teams-high-contrast, which the web-light pixel gate cannot see. */
+  .filled-lighter {
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-1;
+  }
+
+  .filled-darker {
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-3;
+  }
+
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active, focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+  }
+
+  .disabled {
+    @apply cursor-not-allowed border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .invalid-underline {
+    @variant not-focus-within {
+      @apply border-b-palette-red-border-2;
+    }
+  }
+
+  /* end-horizontal-m is logical, reproducing Griffel's RTL-twinned right/left atom pair exactly. */
+  .aside {
+    @apply absolute end-horizontal-m top-0 flex h-full cursor-text;
+
+    @variant group-size-medium/fui-tag-picker-control {
+      @apply min-h-32;
+    }
+
+    @variant group-size-large/fui-tag-picker-control {
+      @apply min-h-40;
+    }
+
+    @variant group-size-extra-large/fui-tag-picker-control {
+      @apply min-h-44;
+    }
+  }
+
+  .expand-icon {
+    @apply flex cursor-pointer items-center justify-center self-start text-neutral-stroke-accessible;
+
+    @variant icon {
+      @apply block;
+    }
+
+    @variant group-size-medium/fui-tag-picker-control {
+      @apply ms-horizontal-xxs min-h-32 text-icon-16 leading-125;
+    }
+
+    @variant group-size-large/fui-tag-picker-control {
+      @apply ms-horizontal-xxs min-h-40 text-icon-20 leading-100;
+    }
+
+    @variant group-size-extra-large/fui-tag-picker-control {
+      @apply ms-horizontal-s-nudge min-h-44 text-icon-24 leading-20/24;
+    }
+
+    @variant group-disabled/fui-tag-picker-control {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+    }
+  }
+
+  .secondary-action {
+    @apply flex;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: use DistributiveOmit in BreadcrumbButtonBaseProps so the anchor variant of the root slot survives, restoring href",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

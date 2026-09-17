@@ -17,13 +17,13 @@ function slice(source: string, targetStory: string): string {
  * Formats sliced output the same way the downstream pipeline does. Doubles as a
  * syntax guard: prettier throws on invalid output (e.g. `const args = {} = {}`).
  */
-function format(code: string): string {
+async function format(code: string): Promise<string> {
   return prettier.format(code, { parser: 'babel-ts' });
 }
 
 describe('sliceStorySource', () => {
   describe('CSF3 render function with non-plain args parameter', () => {
-    it('unwraps a defaulted args parameter into a valid `const args` declaration', () => {
+    it('unwraps a defaulted args parameter into a valid `const args` declaration', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -40,7 +40,7 @@ describe('sliceStorySource', () => {
 
       // Regression: raw AssignmentPattern id produced `const args = {…} = {…}`,
       // invalid syntax that prettier would reject.
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const WithDefault = () => {
@@ -51,7 +51,7 @@ describe('sliceStorySource', () => {
       `);
     });
 
-    it('unwraps a rest args parameter into a valid `const args` declaration', () => {
+    it('unwraps a rest args parameter into a valid `const args` declaration', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -66,7 +66,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'WithRest');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const WithRest = () => {
@@ -77,7 +77,7 @@ describe('sliceStorySource', () => {
       `);
     });
 
-    it('prefers merged meta/story args over the render param default', () => {
+    it('prefers merged meta/story args over the render param default', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -93,7 +93,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'Overrides');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const Overrides = () => {
@@ -106,7 +106,7 @@ describe('sliceStorySource', () => {
   });
 
   describe('CSF3 render method shorthand', () => {
-    it('normalizes a render method shorthand without args', () => {
+    it('normalizes a render method shorthand without args', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -123,7 +123,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'Base');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const Base = () => {
@@ -133,7 +133,7 @@ describe('sliceStorySource', () => {
       `);
     });
 
-    it('normalizes a render method shorthand with an args parameter', () => {
+    it('normalizes a render method shorthand with an args parameter', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -151,7 +151,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'WithArgs');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const WithArgs = () => {
@@ -164,7 +164,7 @@ describe('sliceStorySource', () => {
   });
 
   describe('meta-level render fallback', () => {
-    it('uses the meta render for a render-less story (arrow form)', () => {
+    it('uses the meta render for a render-less story (arrow form)', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -183,7 +183,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'Basic');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const Basic = () => {
@@ -194,7 +194,7 @@ describe('sliceStorySource', () => {
       `);
     });
 
-    it('uses the meta render for a render-less story (method shorthand)', () => {
+    it('uses the meta render for a render-less story (method shorthand)', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -215,7 +215,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'Basic');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const Basic = () => {
@@ -226,7 +226,7 @@ describe('sliceStorySource', () => {
       `);
     });
 
-    it('prefers a story-level render over the meta render', () => {
+    it('prefers a story-level render over the meta render', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -246,7 +246,7 @@ describe('sliceStorySource', () => {
 
       const sliced = slice(source, 'Custom');
 
-      expect(format(sliced)).toMatchInlineSnapshot(`
+      expect(await format(sliced)).toMatchInlineSnapshot(`
         "import * as React from \\"react\\";
         import { Button } from \\"@fluentui/react-button\\";
         export const Custom = () => {
@@ -259,7 +259,7 @@ describe('sliceStorySource', () => {
   });
 
   describe('module-level member assignment pruning', () => {
-    it('keeps non-CSF member assignments on reachable helpers (e.g. `Card.displayName`)', () => {
+    it('keeps non-CSF member assignments on reachable helpers (e.g. `Card.displayName`)', async () => {
       const source = [
         `import * as React from 'react';`,
         ``,
@@ -279,7 +279,7 @@ describe('sliceStorySource', () => {
       expect(sliced).toContain(`Card.displayName = 'Card'`);
     });
 
-    it('keeps member assignments on non-component (lowercase) identifiers', () => {
+    it('keeps member assignments on non-component (lowercase) identifiers', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -298,7 +298,7 @@ describe('sliceStorySource', () => {
       expect(sliced).toContain(`config.foo = 'bar'`);
     });
 
-    it('still removes CSF2 story annotation assignments on the target story', () => {
+    it('still removes CSF2 story annotation assignments on the target story', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -319,7 +319,7 @@ describe('sliceStorySource', () => {
   });
 
   describe('dangling reference pruning', () => {
-    it('drops a member assignment when its target declaration is pruned', () => {
+    it('drops a member assignment when its target declaration is pruned', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -342,7 +342,7 @@ describe('sliceStorySource', () => {
       expect(sliced).not.toContain('<div');
     });
 
-    it('keeps a member assignment when its target declaration survives', () => {
+    it('keeps a member assignment when its target declaration survives', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -362,7 +362,7 @@ describe('sliceStorySource', () => {
       expect(sliced).toContain(`Card.displayName = 'Card'`);
     });
 
-    it('drops an identifier re-assignment when its declaration is pruned', () => {
+    it('drops an identifier re-assignment when its declaration is pruned', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,
@@ -381,7 +381,7 @@ describe('sliceStorySource', () => {
       expect(sliced).not.toContain('counter');
     });
 
-    it('keeps a side-effect statement referencing a global and a surviving binding', () => {
+    it('keeps a side-effect statement referencing a global and a surviving binding', async () => {
       const source = [
         `import * as React from 'react';`,
         `import { Button } from '@fluentui/react-button';`,

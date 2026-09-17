@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: merge the popover attribute default before the base state in useMenuPopover and useListbox so a consumer value is no longer overwritten",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

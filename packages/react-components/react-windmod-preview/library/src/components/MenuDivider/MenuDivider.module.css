@@ -1,0 +1,14 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* The negative inline margin bleeds the rule past MenuPopover's 4px padding and 1px border, so
+     the divider spans the full surface width. */
+  /* The shorthand is authored raw: Griffel's `borderBottom` leaves the other three sides at
+     `none`, whereas border-solid and a border colour utility set style and colour on all four,
+     which computes the other sides to a 3px medium border. */
+  .root {
+    @apply -mx-5 my-4 w-auto;
+
+    border-bottom: var(--spacing-thin) solid var(--color-neutral-stroke-2);
+  }
+}

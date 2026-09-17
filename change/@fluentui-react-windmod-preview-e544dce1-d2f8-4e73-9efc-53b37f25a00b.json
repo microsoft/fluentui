@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: support bundled icon swaps with the published headless icon class selectors",
+  "packageName": "@fluentui/react-windmod-preview",
+  "email": "array.knight+github@gmail.com"
+}
