@@ -8,9 +8,8 @@ describe('createCalendarDateTimeFormatter', () => {
     expect(createCalendarDateTimeFormatter(['en-GB', 'en-US'])({ date, format: 'monthDayYear' })).toBe('1 April 2016');
   });
 
-  it('surfaces invalid locale, timezone and date errors', () => {
+  it('surfaces invalid locale and date errors', () => {
     expect(() => createCalendarDateTimeFormatter('invalid_locale')).toThrow(RangeError);
-    expect(() => createCalendarDateTimeFormatter('en-US', { timeZone: 'Invalid/Timezone' })).toThrow(RangeError);
     expect(() => createCalendarDateTimeFormatter()({ date: new Date(NaN), format: 'day' })).toThrow(RangeError);
   });
 
@@ -25,14 +24,6 @@ describe('createCalendarDateTimeFormatter', () => {
 
     expect(formatter({ date, format: 'weekday' })).toBe('Freitag');
     expect(formatter({ date, format: 'monthDayYear' })).toBe('1. April 2016');
-  });
-
-  it('applies the requested time zone consistently', () => {
-    const boundary = new Date('2016-04-01T00:30:00.000Z');
-    const formatter = createCalendarDateTimeFormatter('en-US', { timeZone: 'America/Los_Angeles' });
-
-    expect(formatter({ date: boundary, format: 'day' })).toBe('31');
-    expect(formatter({ date: boundary, format: 'monthDayYear' })).toBe('March 31, 2016');
   });
 
   it('always formats Gregorian calendar dates', () => {

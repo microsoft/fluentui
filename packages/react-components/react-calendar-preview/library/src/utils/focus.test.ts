@@ -42,6 +42,34 @@ describe('focusAsync', () => {
     expect(latest.focus).toHaveBeenCalledTimes(1);
   });
 
+  it('schedules focus independently for each window', () => {
+    const createWindow = () => {
+      let callback: FrameRequestCallback | undefined;
+      return {
+        requestAnimationFrame: jest.fn(nextCallback => {
+          callback = nextCallback;
+          return 0;
+        }),
+        runFrame: () => callback?.(0),
+      };
+    };
+    const firstWindow = createWindow();
+    const secondWindow = createWindow();
+    const first = { focus: jest.fn() };
+    const second = { focus: jest.fn() };
+
+    focusAsync(first, firstWindow);
+    focusAsync(second, secondWindow);
+
+    expect(firstWindow.requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(secondWindow.requestAnimationFrame).toHaveBeenCalledTimes(1);
+    secondWindow.runFrame();
+    expect(second.focus).toHaveBeenCalledTimes(1);
+    expect(first.focus).not.toHaveBeenCalled();
+    firstWindow.runFrame();
+    expect(first.focus).toHaveBeenCalledTimes(1);
+  });
+
   it('can schedule another target after the previous frame', () => {
     const win = getWindow();
     const first = { focus: jest.fn() };
