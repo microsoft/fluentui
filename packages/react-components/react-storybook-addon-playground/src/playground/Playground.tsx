@@ -349,32 +349,29 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [applyRuntimeDefaultCode],
   );
 
-  const handleRuntimeSuccess = React.useCallback((successfulRunId: number) => {
-    setRunId(currentRunId => {
-      if (successfulRunId === currentRunId) {
+  const handleRuntimeSuccess = React.useCallback(
+    (successfulRunId: number) => {
+      if (successfulRunId === runId) {
         setStatus('ready');
         hasSuccessfulRunRef.current = true;
       }
-      return currentRunId;
-    });
-  }, []);
+    },
+    [runId],
+  );
 
   const handleRuntimeError = React.useCallback(
     (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number }) => {
-      setRunId(currentRunId => {
-        if (runtimeError.runId === currentRunId) {
-          hasSuccessfulRunRef.current = false;
-          setError({
-            title: runtimeErrorTitle(runtimeError.kind),
-            message: runtimeError.message,
-            previewRetained: false,
-          });
-          setStatus('error');
-        }
-        return currentRunId;
-      });
+      if (runtimeError.runId === runId) {
+        hasSuccessfulRunRef.current = false;
+        setError({
+          title: runtimeErrorTitle(runtimeError.kind),
+          message: runtimeError.message,
+          previewRetained: false,
+        });
+        setStatus('error');
+      }
     },
-    [],
+    [runId],
   );
 
   const editorFiles = React.useMemo(

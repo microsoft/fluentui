@@ -27,8 +27,8 @@ export interface PreviewProps {
 }
 
 /**
- * Sandboxed preview iframe. The iframe document is created once per manifest (opaque origin via
- * `sandbox="allow-scripts"`); subsequent runs postMessage compiled code without remounting.
+ * Sandboxed preview iframe. A distinct opaque-origin iframe (`sandbox="allow-scripts"`) is created for every run,
+ * preventing asynchronous work from a previous run from affecting the current preview.
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, ref) => {
   const {
@@ -106,7 +106,7 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
     return () => targetWindow.removeEventListener('message', handleMessage);
   }, [onError, onMetadata, onSuccess, postRun, targetDocument, token]);
 
-  // When code or theme change after the sandbox is ready, send another run without remounting.
+  // Send the current run once its sandbox is ready.
   React.useEffect(() => {
     postRun();
   }, [postRun]);
