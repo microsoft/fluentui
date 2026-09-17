@@ -188,7 +188,7 @@ export class BaseCheckbox extends FASTElement {
    *
    * @internal
    */
-  private dirtyChecked: boolean = false;
+  protected dirtyChecked: boolean = false;
 
   /**
    * The associated `<form>` element.
