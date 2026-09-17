@@ -7,6 +7,9 @@ import { TeachingPopoverHeader } from './TeachingPopoverHeader';
 import { TeachingPopoverTrigger } from './TeachingPopoverTrigger';
 import { TeachingPopoverSurface } from './TeachingPopoverSurface';
 import { TeachingPopoverTitle } from './TeachingPopoverTitle';
+import { TeachingPopoverCarousel } from './TeachingPopoverCarousel';
+import { TeachingPopoverCarouselCard } from './TeachingPopoverCarouselCard';
+import { TeachingPopoverCarouselFooter } from './TeachingPopoverCarouselFooter';
 
 describe('TeachingPopover', () => {
   isConformant({
@@ -161,5 +164,47 @@ describe('TeachingPopover', () => {
 
     expect(getByText('Surface')).toBeInTheDocument();
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+  });
+
+  it('restores focus when a controlled open prop closes an initially open surface', () => {
+    const Example = ({ open }: { open: boolean }) => (
+      <TeachingPopover open={open}>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <button>Inner</button>
+        </TeachingPopoverSurface>
+      </TeachingPopover>
+    );
+    const { getByText, rerender } = render(<Example open />);
+    getByText('Inner').focus();
+
+    rerender(<Example open={false} />);
+
+    expect(getByText('Trigger')).toHaveFocus();
+  });
+
+  it('does not restore focus when a consumer rejects a controlled close request', () => {
+    const onOpenChange = jest.fn();
+    const { getByRole, getByText } = render(
+      <TeachingPopover open onOpenChange={onOpenChange}>
+        <TeachingPopoverTrigger>
+          <button>Trigger</button>
+        </TeachingPopoverTrigger>
+        <TeachingPopoverSurface>
+          <TeachingPopoverCarousel defaultValue="one">
+            <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+            <TeachingPopoverCarouselFooter next={{ navType: 'next', altText: 'Got it', children: 'Next' }} />
+          </TeachingPopoverCarousel>
+        </TeachingPopoverSurface>
+      </TeachingPopover>,
+    );
+
+    userEvent.click(getByRole('button', { name: 'Got it', hidden: true }));
+
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
+    expect(getByText('Trigger')).not.toHaveFocus();
   });
 });
