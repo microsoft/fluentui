@@ -39,7 +39,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           cache: 'yarn'
           node-version: '22'
@@ -99,7 +99,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           cache: 'yarn'
           node-version: '22'
@@ -123,7 +123,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           cache: 'yarn'
           node-version: '22'
@@ -181,7 +181,7 @@ jobs:
         with:
           main-branch-name: 'master'
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           cache: 'yarn'
           node-version: '22'
