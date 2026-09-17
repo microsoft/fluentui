@@ -580,6 +580,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   whiteboard: {
     extensions: ['whiteboard', 'wbtx'],
   },
+  wikipage: {},
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
   },
