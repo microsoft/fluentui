@@ -6,8 +6,7 @@
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
-import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
-import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
 import type { TooltipBaseState } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
