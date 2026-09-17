@@ -87,7 +87,7 @@ describe('usePositioning', () => {
     expect(node).toHaveStyle({ positionArea: 'block-end span-inline-end' });
   });
 
-  it('containerRef writes position: absolute by default and clears the UA inset/margin defaults', () => {
+  it('containerRef writes position: fixed by default and clears the UA inset/margin defaults', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
