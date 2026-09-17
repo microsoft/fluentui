@@ -21,10 +21,9 @@ export function focusAsync(
 
     // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
     win.requestAnimationFrame(() => {
-      targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
-
-      // We are done focusing for this frame, so reset the queued focus element
+      const target = targetToFocusOnNextRepaint;
       targetToFocusOnNextRepaint = undefined;
+      target?.focus();
     });
   }
 }

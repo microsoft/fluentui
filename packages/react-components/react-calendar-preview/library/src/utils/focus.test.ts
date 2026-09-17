@@ -55,6 +55,39 @@ describe('focusAsync', () => {
     expect(second.focus).toHaveBeenCalledTimes(1);
   });
 
+  it('allows a focus handler to queue the next target', () => {
+    const win = getWindow();
+    const next = { focus: jest.fn() };
+    const first = {
+      focus: jest.fn(() => {
+        focusAsync(next, win);
+      }),
+    };
+
+    focusAsync(first, win);
+    jest.advanceTimersToNextFrame();
+    expect(first.focus).toHaveBeenCalledTimes(1);
+    expect(next.focus).not.toHaveBeenCalled();
+    jest.advanceTimersToNextFrame();
+    expect(next.focus).toHaveBeenCalledTimes(1);
+  });
+
+  it('clears the queue when focus throws', () => {
+    const win = getWindow();
+    const first = {
+      focus: jest.fn(() => {
+        throw new Error('focus failed');
+      }),
+    };
+    const next = { focus: jest.fn() };
+
+    focusAsync(first, win);
+    expect(() => jest.advanceTimersToNextFrame()).toThrow('focus failed');
+    focusAsync(next, win);
+    jest.advanceTimersToNextFrame();
+    expect(next.focus).toHaveBeenCalledTimes(1);
+  });
+
   it.each([null, undefined])('ignores a missing target or window (%s)', missing => {
     const win = getWindow();
     const requestFrame = jest.spyOn(win, 'requestAnimationFrame');

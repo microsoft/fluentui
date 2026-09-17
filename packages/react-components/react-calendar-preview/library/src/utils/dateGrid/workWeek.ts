@@ -7,7 +7,7 @@ import type { DateRangeType, DayOfWeek } from '../constants';
 const isContiguous = (days: DayOfWeek[], isSingleWeek: boolean, firstDayOfWeek: DayOfWeek): boolean => {
   const daySet = new Set(days);
   let amountOfNoNeighbors = 0;
-  for (const day of days) {
+  for (const day of daySet) {
     const nextDay = getDayFromIndex(getDayIndex(day) + 1);
     if (!(daySet.has(nextDay) && (!isSingleWeek || firstDayOfWeek !== nextDay))) {
       amountOfNoNeighbors++;
@@ -34,7 +34,7 @@ export const getDateRangeTypeToUse = (
   firstDayOfWeek: DayOfWeek,
 ): DateRangeType => {
   if (workWeekDays && dateRangeType === 'workWeek') {
-    if (!isContiguous(workWeekDays, true, firstDayOfWeek) || workWeekDays.length === 0) {
+    if (!isContiguous(workWeekDays, true, firstDayOfWeek) || new Set(workWeekDays).size === 0) {
       return 'week';
     }
   }
