@@ -20,6 +20,7 @@
   "dependencies": {
     "@fluentui/react": "*",
     "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-calendar-preview": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-icons-compat": "*",
