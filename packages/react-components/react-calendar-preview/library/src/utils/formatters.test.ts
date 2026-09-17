@@ -35,6 +35,15 @@ describe('createCalendarDateTimeFormatter', () => {
     expect(formatter({ date: boundary, format: 'monthDayYear' })).toBe('March 31, 2016');
   });
 
+  it('always formats Gregorian calendar dates', () => {
+    const formatter = createCalendarDateTimeFormatter('ar-SA');
+    expect(formatter({ date, format: 'monthDayYear' })).toBe(
+      new Intl.DateTimeFormat('ar-SA', { calendar: 'gregory', day: 'numeric', month: 'long', year: 'numeric' }).format(
+        date,
+      ),
+    );
+  });
+
   it('supports locale numbering-system extensions', () => {
     const formatter = createCalendarDateTimeFormatter('en-US-u-nu-arab');
 

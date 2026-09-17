@@ -333,12 +333,22 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
  * @returns A new date object representing the first day of the week containing the input date.
  */
 export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
-  let daysOffset = getDayIndex(firstDayOfWeek) - date.getDay();
-  if (daysOffset > 0) {
-    // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
-    daysOffset -= DAYS_IN_WEEK;
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
+
+  for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
+    const candidate = createDate(year, month, day - daysBack);
+    if (!Number.isFinite(candidate.getTime())) {
+      throw new RangeError('Cannot align an invalid or out-of-range date.');
+    }
+    if (candidate.getDay() === firstDayOfWeekIndex) {
+      return candidate;
+    }
   }
-  return addDays(date, daysOffset);
+
+  throw new RangeError('Could not find a representable week start within two weeks.');
 }
 
 /**

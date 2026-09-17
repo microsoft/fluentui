@@ -7,6 +7,7 @@ describe('getDateRangeTypeToUse', () => {
     { days: undefined, firstDay: 'sunday', expected: 'workWeek' },
     { days: [], firstDay: 'sunday', expected: 'week' },
     { days: ['monday'], firstDay: 'sunday', expected: 'workWeek' },
+    { days: ['monday', 'tuesday', 'tuesday'], firstDay: 'sunday', expected: 'workWeek' },
     { days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'], firstDay: 'sunday', expected: 'workWeek' },
     { days: ['wednesday', 'monday', 'tuesday'], firstDay: 'sunday', expected: 'workWeek' },
     { days: ['monday', 'wednesday'], firstDay: 'sunday', expected: 'week' },

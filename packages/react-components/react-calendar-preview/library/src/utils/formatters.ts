@@ -140,7 +140,11 @@ export function createCalendarDateTimeFormatter(
   const formatters = Object.fromEntries(
     Object.entries(dateTimeFormatters).map(([key, fields]) => [
       key,
-      new Intl.DateTimeFormat(locales, { ...options, ...fields }),
+      new Intl.DateTimeFormat(locales, {
+        ...options,
+        ...fields,
+        ...({ calendar: 'gregory' } as Intl.DateTimeFormatOptions),
+      }),
     ]),
   );
 

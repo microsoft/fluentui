@@ -1,28 +1,8 @@
-import { areDatesEqual, createDate, getDateRange, isDateInRange } from '../dateMath';
+import { areDatesEqual, createDate, getDateRange, getStartDateOfWeek, isDateInRange } from '../dateMath';
 import { DAYS_IN_WEEK } from '../constants';
-import { getDayIndex } from '../dateUtils';
 import type { Day, DayGridOptions } from './dateGrid.types';
 import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import { getDateRangeTypeToUse } from './workWeek';
-
-const alignToWeekStart = (date: Date, firstDayOfWeekIndex: number): Date => {
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-
-  // Advance independently of Date normalization, allowing for a skipped weekday.
-  for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
-    const candidate = createDate(year, month, day - daysBack);
-    if (!Number.isFinite(candidate.getTime())) {
-      throw new RangeError('Cannot align an invalid or out-of-range date.');
-    }
-    if (candidate.getDay() === firstDayOfWeekIndex) {
-      return candidate;
-    }
-  }
-
-  throw new RangeError('Could not find a representable week start within two weeks.');
-};
 
 /**
  * Generates a grid of days, given the `options`.
@@ -72,8 +52,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   }
   const weeks: Day[][] = [];
 
-  const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  date = alignToWeekStart(date, firstDayOfWeekIndex);
+  date = getStartDateOfWeek(date, firstDayOfWeek);
 
   // add the transition week as last week of previous range
   date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);

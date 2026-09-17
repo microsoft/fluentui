@@ -606,4 +606,11 @@ describe('DateMath', () => {
     const date = new Date('Aug 2 2020');
     expect(areDatesEqual(new Date('Jul 28 2020'), getStartDateOfWeek(date, 'tuesday'))).toBe(true);
   });
+
+  it('finds a representable week start when local date normalization skips a day', () => {
+    const date = new Date(2012, 0, 1);
+    const start = getStartDateOfWeek(date, 'friday');
+    expect(start.getDay()).toBe(5);
+    expect(start.getDate()).toBe(new Date(2011, 11, 30).getDate() === 30 ? 30 : 23);
+  });
 });

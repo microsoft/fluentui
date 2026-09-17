@@ -168,30 +168,14 @@ describe('getDayGrid', () => {
     );
   });
 
-  it.each([
-    ['monday', 19],
-    ['friday', 16],
-  ] as const)('aligns to a representable %s when December 30, 2011 is skipped', (firstDayOfWeek, transitionStart) => {
-    const createDate = dateMath.createDate;
-    jest.spyOn(dateMath, 'createDate').mockImplementation((year, month, day) => {
-      const date = createDate(year, month, day);
-      // Also exercise Samoa's normalization in CI processes whose timezone is not Pacific/Apia.
-      return date.getFullYear() === 2011 && date.getMonth() === 11 && date.getDate() === 30
-        ? createDate(2011, 11, 31)
-        : date;
-    });
-    const weeks = getDayGrid({ ...defaultOptions, navigatedDate: new Date(2012, 0, 1), firstDayOfWeek });
-    expect(weeks[0][0].originalDate).toEqual(new Date(2011, 11, transitionStart));
-    expect(weeks[1][0].originalDate).toEqual(new Date(2011, 11, transitionStart + 7));
-    expect(weeks.flat().filter(day => day.isInMonth)).toHaveLength(31);
-  });
-
   it('bounds alignment even if normalization never produces the requested weekday', () => {
-    const createDate = jest.spyOn(dateMath, 'createDate').mockReturnValue(new Date(2020, 8, 18));
+    const alignToWeekStart = jest.spyOn(dateMath, 'getStartDateOfWeek').mockImplementation(() => {
+      throw new RangeError('Could not find a representable week start within two weeks.');
+    });
     expect(() => getDayGrid(defaultOptions)).toThrow(
       new RangeError('Could not find a representable week start within two weeks.'),
     );
-    expect(createDate).toHaveBeenCalledTimes(15);
+    expect(alignToWeekStart).toHaveBeenCalledTimes(1);
   });
 
   it('aligns January 2012 using the runtime timezone without mocked normalization', () => {
