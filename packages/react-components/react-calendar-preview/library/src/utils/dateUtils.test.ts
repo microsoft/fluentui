@@ -20,6 +20,10 @@ describe('calendar constants', () => {
     expect(getDayFromIndex(index)).toBe(expected);
   });
 
+  it.each([NaN, Infinity, -Infinity, 1.5])('rejects an invalid weekday index of %s', index => {
+    expect(() => getDayFromIndex(index)).toThrow(new RangeError('index must be a finite integer.'));
+  });
+
   it('orders months to match local Date indices', () => {
     expect(monthsOfYear).toHaveLength(12);
     monthsOfYear.forEach((month, index) => {

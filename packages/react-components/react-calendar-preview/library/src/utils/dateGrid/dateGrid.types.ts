@@ -51,7 +51,7 @@ export interface AvailableDateOptions extends RestrictedDatesOptions {
   /**
    * Direction of search (`1` - search in future / `-1` search in past)
    */
-  direction: number;
+  direction: 1 | -1;
 }
 
 export interface RestrictedDatesOptions {

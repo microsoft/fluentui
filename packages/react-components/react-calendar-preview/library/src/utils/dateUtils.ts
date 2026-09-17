@@ -12,6 +12,10 @@ export function getDayIndex(day: DayOfWeek): number {
  * Converts an index used by `Date.prototype.getDay()` to a day of the week, wrapping out-of-range values.
  */
 export function getDayFromIndex(index: number): DayOfWeek {
+  if (!Number.isFinite(index) || !Number.isInteger(index)) {
+    throw new RangeError('index must be a finite integer.');
+  }
+
   return daysOfWeek[((index % DAYS_IN_WEEK) + DAYS_IN_WEEK) % DAYS_IN_WEEK];
 }
 
