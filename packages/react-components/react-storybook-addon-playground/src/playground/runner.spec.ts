@@ -43,6 +43,11 @@ describe('runner', () => {
       expect(() => assertAllowedModules(['react', './styles/button.module.css'], ['react', 'react-dom'])).not.toThrow();
     });
 
+    it('requires exact allowlist matches for scoped package subpaths', () => {
+      expect(() => assertAllowedModules(['@scope/pkg/sub'], ['@scope/pkg'])).toThrow(PlaygroundError);
+      expect(() => assertAllowedModules(['@scope/pkg/sub'], ['@scope/pkg/sub'])).not.toThrow();
+    });
+
     it('throws an import error listing offending and allowed modules', () => {
       const actual = () => assertAllowedModules(['react', 'lodash', 'moment'], ['react', 'react-dom']);
 

@@ -25,10 +25,10 @@ const HASH_MODULUS = 1_000_000_003;
 
 function hashString(input: string): string {
   let hash = 0;
-  for (let i = 0; i < input.length; i += 1) {
+  for (let charIndex = 0; charIndex < input.length; charIndex += 1) {
     // Arbitrary non-cryptographic constants; the large prime modulus keeps deterministic class names short.
     // Collisions are possible but unlikely for story-scoped CSS module class names.
-    hash = (hash * HASH_MULTIPLIER + input.charCodeAt(i)) % HASH_MODULUS;
+    hash = (hash * HASH_MULTIPLIER + input.charCodeAt(charIndex)) % HASH_MODULUS;
   }
   return hash.toString(36);
 }
