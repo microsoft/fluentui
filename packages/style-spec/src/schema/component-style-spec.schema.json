@@ -1,0 +1,245 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fluentui.dev/schemas/component-style-spec/v1.json",
+  "title": "Fluent UI Component Style Spec",
+  "description": "Framework-agnostic, target-agnostic description of a component's styles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "version", "slots", "rules"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "version": {
+      "const": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "contains": {
+        "const": "root"
+      },
+      "items": {
+        "$ref": "#/definitions/identifier"
+      }
+    },
+    "variants": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/definitions/identifier"
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/variantAxis"
+      }
+    },
+    "states": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/definitions/identifier"
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/stateDefinition"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/styleRule"
+      }
+    }
+  },
+  "definitions": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][A-Za-z0-9-]*$"
+    },
+    "variantAxis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "default"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "default": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "stateDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "const": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "styleRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slot", "declarations"],
+      "properties": {
+        "slot": {
+          "$ref": "#/definitions/identifier"
+        },
+        "when": {
+          "$ref": "#/definitions/styleCondition"
+        },
+        "declarations": {
+          "$ref": "#/definitions/declarations"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "styleCondition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "variants": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "states": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "pseudo": {
+          "type": "string",
+          "pattern": "^\\s*:"
+        },
+        "rootPseudo": {
+          "type": "string",
+          "pattern": "^\\s*:"
+        },
+        "media": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supports": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "declarations": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^(--[A-Za-z0-9_-]+|[a-z][A-Za-z0-9]*)$"
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/styleValue"
+      }
+    },
+    "primitiveValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    },
+    "tokenReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token"],
+      "properties": {
+        "token": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "varReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["var"],
+      "properties": {
+        "var": {
+          "type": "string",
+          "pattern": "^--[A-Za-z0-9_-]+$"
+        },
+        "fallback": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/primitiveValue"
+            },
+            {
+              "$ref": "#/definitions/tokenReference"
+            }
+          ]
+        }
+      }
+    },
+    "concatValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["concat"],
+      "properties": {
+        "concat": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/primitiveValue"
+              },
+              {
+                "$ref": "#/definitions/tokenReference"
+              },
+              {
+                "$ref": "#/definitions/varReference"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "styleValue": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/primitiveValue"
+        },
+        {
+          "$ref": "#/definitions/tokenReference"
+        },
+        {
+          "$ref": "#/definitions/varReference"
+        },
+        {
+          "$ref": "#/definitions/concatValue"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "name": "@fluentui/style-spec-compilers",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Deterministic compilers that turn @fluentui/style-spec IR into Griffel styles, web-component CSS, and CSS Modules",
+  "main": "lib-commonjs/index.cjs",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "bin": {
+    "style-spec-compile": "./bin/style-spec-compile.js"
+  },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/component-style-specs": "0.0.0",
+    "@fluentui/style-spec": "0.0.0",
+    "@swc/helpers": "^0.5.1",
+    "prettier": "2.8.8",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.33"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./lib-commonjs/index.cjs"
+      }
+    },
+    "./griffel": {
+      "import": {
+        "types": "./dist/emitters/griffel.d.ts",
+        "default": "./lib/emitters/griffel.js"
+      },
+      "require": {
+        "types": "./dist/emitters/griffel.d.cts",
+        "default": "./lib-commonjs/emitters/griffel.cjs"
+      }
+    },
+    "./css": {
+      "import": {
+        "types": "./dist/emitters/webComponents.d.ts",
+        "default": "./lib/emitters/webComponents.js"
+      },
+      "require": {
+        "types": "./dist/emitters/webComponents.d.cts",
+        "default": "./lib-commonjs/emitters/webComponents.cjs"
+      }
+    },
+    "./css-modules": {
+      "import": {
+        "types": "./dist/emitters/cssModules.d.ts",
+        "default": "./lib/emitters/cssModules.js"
+      },
+      "require": {
+        "types": "./dist/emitters/cssModules.d.cts",
+        "default": "./lib-commonjs/emitters/cssModules.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "bin",
+    "dist/*.d.ts",
+    "dist/*.d.cts",
+    "lib",
+    "lib-commonjs"
+  ],
+  "type": "module"
+}

@@ -24,6 +24,9 @@
       "@fluentui/component-selector-preview-stories": [
         "packages/react-components/component-selector-preview/stories/src/index.ts"
       ],
+      "@fluentui/component-style-specs": ["packages/component-style-specs/library/src/index.ts"],
+      "@fluentui/component-style-specs-stories": ["packages/component-style-specs/stories/src/index.ts"],
+      "@fluentui/component-style-specs/*": ["packages/component-style-specs/library/src/*.ts"],
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
       ],
@@ -220,6 +223,9 @@
       ],
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/storybook-llms-extractor": ["tools/storybook-llms-extractor/src/index.ts"],
+      "@fluentui/style-spec": ["packages/style-spec/src/index.ts"],
+      "@fluentui/style-spec-compilers": ["packages/style-spec-compilers/src/index.ts"],
+      "@fluentui/style-spec-compilers/*": ["packages/style-spec-compilers/src/*.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],

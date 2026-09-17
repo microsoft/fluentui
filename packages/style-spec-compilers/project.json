@@ -1,0 +1,8 @@
+{
+  "name": "style-spec-compilers",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/style-spec-compilers/src",
+  "tags": ["vNext", "platform:node", "tools"]
+}
