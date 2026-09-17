@@ -1,4 +1,5 @@
 import { expect, test } from '../../test/playwright/index.js';
+import type { TreeItem } from '../tree-item/tree-item.js';
 import { tagName as TreeItemTagName } from '../tree-item/tree-item.options.js';
 import { tagName } from './tree.options.js';
 
@@ -62,6 +63,8 @@ test.describe('Tree', () => {
     await expect(treeItems).toHaveCount(4);
     const nestedItems = treeItems.nth(0).locator(TreeItemTagName);
     await expect(nestedItems).toHaveCount(1);
+    await expect(nestedItems).toHaveAttribute('slot', 'item');
+    await expect.poll(() => treeItems.nth(0).evaluate((node: TreeItem) => node.childTreeItems?.length ?? 0)).toBe(1);
   });
 
   test('works with size variants - small', async ({ fastPage }) => {
@@ -422,5 +425,29 @@ test.describe('Tree', () => {
 
     await page.keyboard.press('End');
     await expect(treeItems.nth(2)).toBeFocused();
+  });
+});
+
+test.describe('Tree upgrade order', () => {
+  test('should apply tree state when tree items upgrade after the tree', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () => {
+      return (
+        window as unknown as {
+          runTreeUpgradeOrderTest(): Promise<{
+            childTreeItemsLength: number;
+            currentSelectedLocalName: string | undefined;
+            firstItemSize: string;
+            hasOwnSize: boolean;
+          }>;
+        }
+      ).runTreeUpgradeOrderTest();
+    });
+
+    expect(result.childTreeItemsLength).toBe(2);
+    expect(result.currentSelectedLocalName).toContain('tree-item');
+    expect(result.firstItemSize).toBe('medium');
+    expect(result.hasOwnSize).toBe(false);
   });
 });
