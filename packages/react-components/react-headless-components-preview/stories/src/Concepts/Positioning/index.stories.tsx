@@ -17,6 +17,9 @@ export default {
   title: 'Concepts/Positioning',
   component: Positioning,
   parameters: {
+    playground: {
+      disable: true,
+    },
     docs: {
       description: {
         component: [descriptionMd, bestPracticesMd].join('\n'),
