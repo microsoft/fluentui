@@ -48,8 +48,11 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
   const { targetDocument } = useFluent();
   const frameRef = React.useRef<HTMLIFrameElement | null>(null);
   const readyRef = React.useRef(false);
-  // Stable for the lifetime of this manifest so recompiles don't tear down the sandbox
-  const token = React.useMemo(() => `${manifest.buildId}:${Math.random().toString(36).slice(2)}`, [manifest.buildId]);
+  // Each run gets an isolated iframe so asynchronous work from a previous run cannot affect the current preview.
+  const token = React.useMemo(
+    () => `${manifest.buildId}:${runId}:${Math.random().toString(36).slice(2)}`,
+    [manifest.buildId, runId],
+  );
   const source = React.useMemo(() => createSandboxDocument(manifest, token), [manifest, token]);
 
   React.useEffect(() => {
@@ -103,7 +106,7 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
     return () => targetWindow.removeEventListener('message', handleMessage);
   }, [onError, onMetadata, onSuccess, postRun, targetDocument, token]);
 
-  // When code / theme / runId change after the sandbox is ready, send another run without remounting
+  // When code or theme change after the sandbox is ready, send another run without remounting.
   React.useEffect(() => {
     postRun();
   }, [postRun]);

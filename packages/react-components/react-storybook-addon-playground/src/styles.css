@@ -27,3 +27,7 @@
   outline: none;
   box-shadow: #1ea7fd 0 -3px 0 0 inset;
 }
+
+.docs-story .with-open-in-playground-button:focus-visible {
+  outline: auto;
+}

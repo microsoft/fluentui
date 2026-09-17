@@ -213,7 +213,9 @@ function collectConfiguredTypings(options: PresetConfig, storybookOptions: Webpa
       continue;
     }
 
-    result.files[`file:///node_modules/${publicName}/index.d.ts`] = `export * from ${JSON.stringify(request)};`;
+    result.files[`file:///node_modules/${publicName}/index.d.ts`] = `export * from ${JSON.stringify(
+      request,
+    )};\nexport { default } from ${JSON.stringify(request)};`;
     result.files[`file:///node_modules/${publicName}/package.json`] = JSON.stringify({
       name: publicName,
       types: './index.d.ts',

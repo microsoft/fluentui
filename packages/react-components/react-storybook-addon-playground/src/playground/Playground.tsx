@@ -363,6 +363,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number }) => {
       setRunId(currentRunId => {
         if (runtimeError.runId === currentRunId) {
+          hasSuccessfulRunRef.current = false;
           setError({
             title: runtimeErrorTitle(runtimeError.kind),
             message: runtimeError.message,
@@ -405,7 +406,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   );
 
   const handleReset = React.useCallback(() => {
-    const nextCode = metadata.defaultCode ?? initialCode ?? '';
+    const nextCode = initialCode ?? metadata.defaultCode ?? '';
     const nextCssModules = initialCssModules.map(mod => ({ ...mod }));
     setCode(nextCode);
     setCssModules(nextCssModules);

@@ -145,7 +145,13 @@ describe('Playground compile transaction', () => {
 
   it('does not claim the last successful preview is retained after runtime errors', async () => {
     compileMock.mockResolvedValue({ code: 'exports.default = Current;', diagnostics: [] });
-    render(<Playground initialCode="export default Current;" manifest={manifest} />);
+    render(
+      <Playground
+        initialCode="export default Current;"
+        initialCssModules={[{ name: 'styles.module.css', source: '.root {}' }]}
+        manifest={manifest}
+      />,
+    );
 
     await flushEffects();
     await runDebouncedCompile();
@@ -154,6 +160,13 @@ describe('Playground compile transaction', () => {
     act(() => mockPreviewProps.onError({ kind: 'runtime', message: 'Boom', runId: mockPreviewProps.runId }));
 
     expect(screen.getByRole('alert').textContent).toContain('Boom');
+    expect(screen.getByRole('alert').textContent).not.toContain('The preview shows the last successful render.');
+
+    fireEvent.click(screen.getByRole('tab', { name: 'styles.module.css' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Edit current file' }));
+    await runDebouncedCompile();
+
+    expect(screen.getByRole('alert').textContent).toContain('CSS syntax error');
     expect(screen.getByRole('alert').textContent).not.toContain('The preview shows the last successful render.');
   });
 

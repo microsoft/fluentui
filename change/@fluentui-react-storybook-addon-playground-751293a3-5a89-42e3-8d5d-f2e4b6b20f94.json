@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add initial playground implementation",
   "packageName": "@fluentui/react-storybook-addon-playground",
   "email": "dmytrokirpa@microsoft.com"
