@@ -134,7 +134,7 @@ const dateTimeFormatters = {
  * field ordering, so `monthDayYear` and `dayMonthYear` produce the same locale-appropriate label.
  */
 export function createCalendarDateTimeFormatter(
-  locales?: string | string[],
+  locales: string | string[] = 'en-US',
   options?: CalendarDateTimeFormatterOptions,
 ): CalendarFormatters['dateTime'] {
   const formatters = Object.fromEntries(

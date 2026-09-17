@@ -181,8 +181,14 @@ export const useCalendarMonthBase_unstable = (
        */
       if (maxDate && compareDatePart(newNavigationDate, maxDate) > 0) {
         newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+        if (compareDatePart(newNavigationDate, maxDate) > 0) {
+          newNavigationDate = maxDate;
+        }
       } else if (minDate && compareDatePart(newNavigationDate, minDate) < 0) {
         newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+        if (compareDatePart(newNavigationDate, minDate) < 0) {
+          newNavigationDate = minDate;
+        }
       }
       onNavigateDate(ev, {
         ...data,
@@ -222,7 +228,6 @@ export const useCalendarMonthBase_unstable = (
           today.getFullYear() === navigatedDate.getFullYear() &&
           today.getMonth() === monthIndex,
         isSelected:
-          !!highlightSelectedMonth &&
           !!selectedDate &&
           selectedDate.getMonth() === monthIndex &&
           selectedDate.getFullYear() === navigatedDate.getFullYear(),

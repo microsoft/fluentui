@@ -24,7 +24,7 @@ export const useCalendarMonthGridRowBase_unstable = (
   const monthRows = useCalendarMonthContext_unstable(ctx => ctx.monthRows);
 
   return {
-    cells: monthRows[rowIndex],
+    cells: monthRows[rowIndex] ?? [],
     components: {
       root: 'div',
     },

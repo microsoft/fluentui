@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { motionSlot } from '@fluentui/react-motion';
-import { compareDatePart, getWeekNumbersInMonth } from '../../utils';
+import { compareDatePart, getWeekNumber } from '../../utils';
 import { DirectionalSlideIn, DirectionalSlideOut } from '../../utils/calendarMotions';
 import { CalendarDayGridCell } from '../CalendarDayGridCell/CalendarDayGridCell';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
@@ -31,11 +31,12 @@ export const useCalendarDayGridRowBase_unstable = (
   const navigatedDate = useCalendarDayContext_unstable(ctx => ctx.navigatedDate);
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
 
-  const weekNumbers = showWeekNumbers
-    ? getWeekNumbersInMonth(weeks.length, firstDayOfWeek, firstWeekOfYear, navigatedDate)
-    : null;
+  const weekNumber =
+    showWeekNumbers && props.week.length
+      ? getWeekNumber(props.week[props.week.length - 1].originalDate, firstDayOfWeek, firstWeekOfYear)
+      : undefined;
 
-  const titleString = weekNumbers ? formatters.weekNumberLabel({ weekNumber: weekNumbers[weekIndex] }) : '';
+  const titleString = weekNumber !== undefined ? formatters.weekNumberLabel({ weekNumber: weekNumber }) : '';
 
   return {
     transition,
@@ -53,10 +54,10 @@ export const useCalendarDayGridRowBase_unstable = (
       }),
       { elementType: 'tr' },
     ),
-    weekNumberCell: slot.optional(weekNumbers ? props.weekNumberCell ?? {} : undefined, {
+    weekNumberCell: slot.optional(weekNumber !== undefined ? props.weekNumberCell ?? {} : undefined, {
       defaultProps: {
         'aria-label': titleString,
-        children: <span>{weekNumbers?.[weekIndex]}</span>,
+        children: <span>{weekNumber}</span>,
         scope: 'row',
         title: titleString,
       },

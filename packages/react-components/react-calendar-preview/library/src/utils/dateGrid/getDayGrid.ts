@@ -1,4 +1,4 @@
-import { areDatesEqual, getDateRange, isDateInRange } from '../dateMath';
+import { areDatesEqual, createDate, getDateRange, isDateInRange } from '../dateMath';
 import { DAYS_IN_WEEK, getDayIndex } from '../constants';
 import type { Day, DayGridOptions } from './dateGrid.types';
 import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
@@ -41,20 +41,20 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   let date;
   if (weeksToShow && weeksToShow <= 4) {
     // if showing less than a full month, just use date == navigatedDate
-    date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), navigatedDate.getDate());
+    date = createDate(navigatedDate.getFullYear(), navigatedDate.getMonth(), navigatedDate.getDate());
   } else {
-    date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
+    date = createDate(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
   }
   const weeks: Day[][] = [];
 
   // Cycle the date backwards to get to the first day of the week.
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
   while (date.getDay() !== firstDayOfWeekIndex) {
-    date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+    date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - 1);
   }
 
   // add the transition week as last week of previous range
-  date = new Date(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
+  date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
 
   // a flag to indicate whether all days of the week are outside the month
   let isAllDaysOfWeekOutOfMonth = false;
@@ -83,7 +83,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     isAllDaysOfWeekOutOfMonth = true;
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-      const originalDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      const originalDate = createDate(date.getFullYear(), date.getMonth(), date.getDate());
       const dayInfo: Day = {
         key: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
         date: date.getDate().toString(),
@@ -102,7 +102,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         isAllDaysOfWeekOutOfMonth = false;
       }
 
-      date = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+      date = createDate(date.getFullYear(), date.getMonth(), date.getDate() + 1);
     }
 
     // A fixed week count includes one additional row for the transition state.

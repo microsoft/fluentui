@@ -14,21 +14,23 @@ export const renderCalendarMonth_unstable = (
 ): JSXElement => {
   assertSlots<CalendarMonthSlots>(state);
 
-  if (state.isYearPickerVisible) {
-    return <state.yearPicker />;
-  }
-
   return (
     <CalendarMonthProvider value={contextValues.calendarMonth}>
       <state.root>
-        <state.header>
-          <state.heading />
-          <state.navigation>
-            <state.previousYearButton />
-            <state.nextYearButton />
-          </state.navigation>
-        </state.header>
-        <state.grid />
+        {state.isYearPickerVisible ? (
+          <state.yearPicker />
+        ) : (
+          <>
+            <state.header>
+              <state.heading />
+              <state.navigation>
+                <state.previousYearButton />
+                <state.nextYearButton />
+              </state.navigation>
+            </state.header>
+            <state.grid />
+          </>
+        )}
       </state.root>
     </CalendarMonthProvider>
   );

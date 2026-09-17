@@ -157,7 +157,25 @@ export const useCalendarDayBase_unstable = (
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
   let focusTargetDate: Date | undefined = navigatedDate;
   if (isRestrictedDate(navigatedDate, restrictedDatesOptions)) {
-    focusTargetDate = findAvailableDate({
+    const visibleDates = weeks.slice(1, -1).flatMap(week => week.map(dayInfo => dayInfo.originalDate));
+    const sameMonthDates = visibleDates.filter(
+      date =>
+        compareDatePart(date, getMonthStart(navigatedDate)) >= 0 &&
+        compareDatePart(date, getMonthEnd(navigatedDate)) <= 0,
+    );
+    const searchDirection = (direction: 1 | -1) => {
+      const currentIndex = sameMonthDates.findIndex(date => compareDatePart(date, navigatedDate) === 0);
+      for (let index = currentIndex + direction; index >= 0 && index < sameMonthDates.length; index += direction) {
+        const candidate = sameMonthDates[index];
+        if (!isRestrictedDate(candidate, restrictedDatesOptions)) {
+          return candidate;
+        }
+      }
+      return undefined;
+    };
+
+    focusTargetDate = searchDirection(1) ?? searchDirection(-1);
+    focusTargetDate ??= findAvailableDate({
       ...restrictedDatesOptions,
       initialDate: addDays(getMonthEnd(navigatedDate), 1),
       targetDate: navigatedDate,

@@ -77,7 +77,7 @@ export const DirectionalSlideIn = React.forwardRef<HTMLElement, DirectionalSlide
 
   let outX = '0px';
   let outY = '0px';
-  const distance = animateBackwards ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
+  const distance = animateBackwards ? `calc(-1 * ${SLIDE_DISTANCE})` : SLIDE_DISTANCE;
   if (animationDirection === 'horizontal') {
     outX = distance;
   } else {
@@ -171,7 +171,7 @@ export const DirectionalSlideOut = React.forwardRef<HTMLElement, DirectionalSlid
   }
 
   // First (top) row slides up and out; last (bottom) row slides down and out.
-  const outY = edge === 'first' ? `-${SLIDE_DISTANCE}` : SLIDE_DISTANCE;
+  const outY = edge === 'first' ? `calc(-1 * ${SLIDE_DISTANCE})` : SLIDE_DISTANCE;
 
   return (
     <TransitionRowSlideOut outY={outY} replayKey={replayKey} {...motionProps}>

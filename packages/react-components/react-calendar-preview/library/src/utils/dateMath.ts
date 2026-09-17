@@ -4,7 +4,7 @@ import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from './constants';
 /**
  * Creates a new Date object with the specified year, month, and day, with the time set to midnight.
  */
-function createDate(year: number, month: number, day: number): Date {
+export function createDate(year: number, month: number, day: number): Date {
   const date = new Date(0);
   date.setHours(0, 0, 0, 0);
   date.setFullYear(year, month, day);
