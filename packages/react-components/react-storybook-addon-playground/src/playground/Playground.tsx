@@ -415,6 +415,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }${createPlaygroundHash({ code, cssModules })}`;
 
     try {
+      if (!targetWindow.navigator.clipboard?.writeText) {
+        throw new Error('Clipboard API is not available in this browser context.');
+      }
+
       await targetWindow.navigator.clipboard.writeText(url);
       notify('Link copied to clipboard', 'success');
     } catch (err) {

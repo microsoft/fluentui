@@ -161,9 +161,14 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
       });
 
       const require = name => {
+        if (typeof name !== 'string') {
+          const error = new Error('Module specifier must be a string.');
+          error.kind = 'import';
+          throw error;
+        }
         const cssModule = findCssModule(name);
         if (cssModule) {
-          return Object.assign({ __esModule: true, default: cssModule.locals }, cssModule.locals);
+          return Object.assign(Object.create(null), { __esModule: true, default: cssModule.locals }, cssModule.locals);
         }
         if (isCssSpecifier(name)) {
           const error = new Error('CSS module "' + name + '" is not available in this playground session.');
@@ -177,7 +182,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         }
         return modules.get(name);
       };
-      const module = { exports: {} };
+      const module = { exports: Object.create(null) };
       const evaluate = new Function('require', 'exports', 'module', message.code);
       evaluate(require, module.exports, module);
 

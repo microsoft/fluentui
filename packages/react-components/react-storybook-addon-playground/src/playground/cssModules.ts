@@ -20,11 +20,14 @@ export function toCssModuleSpecifier(name: string): string {
   return `./styles/${cssModuleBasename(name)}`;
 }
 
+const HASH_MULTIPLIER = 31;
+const HASH_MODULUS = 1_000_000_003;
+
 function hashString(input: string): string {
   let hash = 0;
   for (let i = 0; i < input.length; i += 1) {
     // Keep scoped class names deterministic with a small classic string hash and a large prime modulus.
-    hash = (hash * 31 + input.charCodeAt(i)) % 1_000_000_003;
+    hash = (hash * HASH_MULTIPLIER + input.charCodeAt(i)) % HASH_MODULUS;
   }
   return hash.toString(36);
 }
