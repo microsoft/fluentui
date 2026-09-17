@@ -735,6 +735,8 @@ describe('AreaChart snapShot testing', () => {
 
   it('Should not render circles when optimizeLargeData is true', async () => {
     const wrapper = render(<AreaChart data={chartData} optimizeLargeData />);
+    expect(screen.getByRole('listbox', { name: 'legend1 data series' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'legend1, series 1 of 3 with 10 data points.' })).toBeInTheDocument();
     expect(wrapper).toMatchSnapshot();
   });
 
