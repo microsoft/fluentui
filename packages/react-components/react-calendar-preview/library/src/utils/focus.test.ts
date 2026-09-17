@@ -1,0 +1,68 @@
+import { renderHook } from '@testing-library/react-hooks';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { focusAsync } from './focus';
+
+describe('focusAsync', () => {
+  const getWindow = () => {
+    const { result, unmount } = renderHook(() => useFluent_unstable());
+    const win = result.current.targetDocument?.defaultView;
+    unmount();
+    if (!win) {
+      throw new Error('The focus tests require a DOM window.');
+    }
+    return win;
+  };
+
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('defers focus until the next animation frame', () => {
+    const element = { focus: jest.fn() };
+    focusAsync(element, getWindow());
+    expect(element.focus).not.toHaveBeenCalled();
+    jest.advanceTimersToNextFrame();
+    expect(element.focus).toHaveBeenCalledTimes(1);
+  });
+
+  it('schedules one frame and focuses only the latest target', () => {
+    const win = getWindow();
+    const requestFrame = jest.spyOn(win, 'requestAnimationFrame');
+    const first = { focus: jest.fn() };
+    const latest = { focus: jest.fn() };
+    focusAsync(first, win);
+    focusAsync(latest, win);
+    expect(requestFrame).toHaveBeenCalledTimes(1);
+    expect(latest.focus).not.toHaveBeenCalled();
+    jest.advanceTimersToNextFrame();
+    expect(first.focus).not.toHaveBeenCalled();
+    expect(latest.focus).toHaveBeenCalledTimes(1);
+  });
+
+  it('can schedule another target after the previous frame', () => {
+    const win = getWindow();
+    const first = { focus: jest.fn() };
+    const second = { focus: jest.fn() };
+    focusAsync(first, win);
+    jest.advanceTimersToNextFrame();
+    focusAsync(second, win);
+    expect(second.focus).not.toHaveBeenCalled();
+    jest.advanceTimersToNextFrame();
+    expect(first.focus).toHaveBeenCalledTimes(1);
+    expect(second.focus).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([null, undefined])('ignores a missing target or window (%s)', missing => {
+    const win = getWindow();
+    const requestFrame = jest.spyOn(win, 'requestAnimationFrame');
+    const element = { focus: jest.fn() };
+    focusAsync(missing, win);
+    focusAsync(element, missing);
+    expect(requestFrame).not.toHaveBeenCalled();
+    jest.advanceTimersToNextFrame();
+    expect(element.focus).not.toHaveBeenCalled();
+  });
+});

@@ -2,7 +2,7 @@ import type { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
 
 export interface Day {
   /**
-   * `Date.toString()` value of current date
+   * Local year, zero-based month, and day joined with hyphens (`year-month-day`)
    */
   key: string;
   /**
@@ -14,7 +14,7 @@ export interface Day {
    */
   originalDate: Date;
   /**
-   * Is current date is in the same month as "today" date
+   * Whether the current date is in the same month as the navigated date
    */
   isInMonth: boolean;
   /**

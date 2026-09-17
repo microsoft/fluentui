@@ -4,11 +4,31 @@ import type { Day, DayGridOptions } from './dateGrid.types';
 import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import { getDateRangeTypeToUse } from './workWeek';
 
+const alignToWeekStart = (date: Date, firstDayOfWeekIndex: number): Date => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+
+  // Advance independently of Date normalization, allowing for a skipped weekday.
+  for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
+    const candidate = createDate(year, month, day - daysBack);
+    if (!Number.isFinite(candidate.getTime())) {
+      throw new RangeError('Cannot align an invalid or out-of-range date.');
+    }
+    if (candidate.getDay() === firstDayOfWeekIndex) {
+      return candidate;
+    }
+  }
+
+  throw new RangeError('Could not find a representable week start within two weeks.');
+};
+
 /**
  * Generates a grid of days, given the `options`.
  * Returns one additional week at the beginning from the previous range
  * and one at the end from the future range
  * @param options - parameters to specify date related restrictions for the resulting grid
+ * @throws RangeError if the week count is invalid or grid dates cannot be represented.
  */
 export const getDayGrid = (options: DayGridOptions): Day[][] => {
   const {
@@ -38,6 +58,10 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
 
   const navigatedDate = options.navigatedDate ? options.navigatedDate : todaysDate;
 
+  if (!Number.isFinite(navigatedDate.getTime())) {
+    throw new RangeError('navigatedDate must be valid.');
+  }
+
   let date;
   if (weeksToShow && weeksToShow <= 4) {
     // if showing less than a full month, just use date == navigatedDate
@@ -47,17 +71,15 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   }
   const weeks: Day[][] = [];
 
-  // Cycle the date backwards to get to the first day of the week.
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  while (date.getDay() !== firstDayOfWeekIndex) {
-    date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - 1);
-  }
+  date = alignToWeekStart(date, firstDayOfWeekIndex);
 
   // add the transition week as last week of previous range
   date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
 
   // a flag to indicate whether all days of the week are outside the month
   let isAllDaysOfWeekOutOfMonth = false;
+  let hasReachedNavigatedMonth = false;
 
   // in work week view if the days aren't contiguous we use week view instead
   const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
@@ -84,6 +106,9 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
       const originalDate = createDate(date.getFullYear(), date.getMonth(), date.getDate());
+      if (!Number.isFinite(originalDate.getTime())) {
+        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
+      }
       const dayInfo: Day = {
         key: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
         date: date.getDate().toString(),
@@ -100,13 +125,16 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
 
       if (dayInfo.isInMonth) {
         isAllDaysOfWeekOutOfMonth = false;
+        hasReachedNavigatedMonth = true;
       }
 
       date = createDate(date.getFullYear(), date.getMonth(), date.getDate() + 1);
     }
 
-    // A fixed week count includes one additional row for the transition state.
-    shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow + 1 : !isAllDaysOfWeekOutOfMonth || weekIndex === 0;
+    // A fixed week count includes both transition rows; a skipped weekday may add leading rows in month view.
+    shouldGetWeeks = weeksToShow
+      ? weekIndex < weeksToShow + 1
+      : !isAllDaysOfWeekOutOfMonth || !hasReachedNavigatedMonth;
 
     // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
     weeks.push(week);
