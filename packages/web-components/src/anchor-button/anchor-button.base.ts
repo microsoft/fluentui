@@ -184,6 +184,23 @@ export class BaseAnchor extends FASTElement {
   }
 
   /**
+   * Handles the anchor auxclick event (middle mouse button).
+   * Opens the link in a new tab when the middle mouse button is clicked.
+   *
+   * @param e - The event object
+   * @internal
+   */
+  public auxclickHandler(e: PointerEvent): boolean {
+    if (e.button !== 1 || !this.href) {
+      return true;
+    }
+
+    e.preventDefault();
+    window.open(this.href, '_blank');
+    return true;
+  }
+
+  /**
    * Handles keydown events for the anchor.
    *
    * @param e - the keyboard event
