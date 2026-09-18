@@ -227,6 +227,10 @@ export function getDateRange(
       throw new Error('Unexpected object: ' + dateRangeType);
   }
 
+  if (!Number.isFinite(endDate.getTime())) {
+    throw new RangeError('Date range end is outside the representable date range');
+  }
+
   // Populate the dates array with a range-specific bound so a faulty adapter cannot hang rendering.
   let nextDate = startDate;
   for (let index = 0; index < maximumRangeLength && compareDatePart(nextDate, endDate) !== 0; index++) {

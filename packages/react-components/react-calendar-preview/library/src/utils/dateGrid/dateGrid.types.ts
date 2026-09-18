@@ -12,7 +12,11 @@ export interface Day {
   /**
    * `Date` object of current date
    */
-  originalDate: Date;
+  originalDate: Date | null;
+  /**
+   * Whether this cell represents a civil date that does not exist in the local timezone.
+   */
+  isPlaceholder: boolean;
   /**
    * Whether the current date is in the same month as the navigated date
    */
@@ -22,11 +26,11 @@ export interface Day {
    */
   isToday: boolean;
   /**
-   * Is current date is selected in range
+   * Whether the current date is selected in a range
    */
   isSelected: boolean;
   /**
-   * Is current date is selected
+   * Whether the current date is selected without a range
    */
   isSingleSelected: boolean;
   /**

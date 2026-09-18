@@ -56,6 +56,11 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
 
   // add the transition week as last week of previous range
   date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
+  let civilDate = {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+    day: date.getDate(),
+  };
 
   // a flag to indicate whether all days of the week are outside the month
   let isAllDaysOfWeekOutOfMonth = false;
@@ -85,20 +90,31 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     isAllDaysOfWeekOutOfMonth = true;
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-      const originalDate = createDate(date.getFullYear(), date.getMonth(), date.getDate());
-      if (!Number.isFinite(originalDate.getTime())) {
+      const { year: civilYear, month: civilMonth, day: civilDay } = civilDate;
+      if (!Number.isFinite(civilYear) || !Number.isFinite(civilMonth) || !Number.isFinite(civilDay)) {
+        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
+      }
+      const originalDate = createDate(civilYear, civilMonth, civilDay);
+      const isPlaceholder =
+        originalDate.getFullYear() !== civilYear ||
+        originalDate.getMonth() !== civilMonth ||
+        originalDate.getDate() !== civilDay;
+      if (!isPlaceholder && !Number.isFinite(originalDate.getTime())) {
         throw new RangeError('Cannot generate a grid containing an out-of-range date.');
       }
       const dayInfo: Day = {
-        key: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
-        date: date.getDate().toString(),
-        originalDate,
-        isInMonth: date.getFullYear() === navigatedDate.getFullYear() && date.getMonth() === navigatedDate.getMonth(),
-        isToday: areDatesEqual(todaysDate, date),
-        isSelected: isDateInRange(date, selectedDates),
-        isSingleSelected: !!selectedDate && selectedDates.length === 1 && areDatesEqual(date, selectedDate),
-        isInBounds: !isRestrictedDate(date, restrictedDateOptions),
-        isMarked: markedDays?.some((markedDay: Date) => areDatesEqual(originalDate, markedDay)) || false,
+        key: `${civilYear}-${civilMonth}-${civilDay}`,
+        date: civilDay.toString(),
+        originalDate: isPlaceholder ? null : originalDate,
+        isPlaceholder,
+        isInMonth: civilYear === navigatedDate.getFullYear() && civilMonth === navigatedDate.getMonth(),
+        isToday: !isPlaceholder && areDatesEqual(todaysDate, originalDate),
+        isSelected: !isPlaceholder && isDateInRange(originalDate, selectedDates),
+        isSingleSelected:
+          !isPlaceholder && !!selectedDate && selectedDates.length === 1 && areDatesEqual(originalDate, selectedDate),
+        isInBounds: !isPlaceholder && !isRestrictedDate(originalDate, restrictedDateOptions),
+        isMarked:
+          (!isPlaceholder && markedDays?.some((markedDay: Date) => areDatesEqual(originalDate, markedDay))) || false,
       };
 
       week.push(dayInfo);
@@ -108,7 +124,13 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         hasReachedNavigatedMonth = true;
       }
 
-      date = createDate(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+      const nextCivilDate = new Date(Date.UTC(civilYear, civilMonth, civilDay + 1));
+      civilDate = {
+        year: nextCivilDate.getUTCFullYear(),
+        month: nextCivilDate.getUTCMonth(),
+        day: nextCivilDate.getUTCDate(),
+      };
+      date = createDate(civilDate.year, civilDate.month, civilDate.day);
     }
 
     // A fixed week count includes both transition rows; a skipped weekday may add leading rows in month view.

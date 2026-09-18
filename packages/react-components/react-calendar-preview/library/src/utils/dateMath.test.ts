@@ -415,7 +415,7 @@ describe('DateMath', () => {
 
     it('fails explicitly when the requested range exceeds representable dates', () => {
       expect(() => getDateRange(new Date(8640000000000000), 'day', 'sunday')).toThrow(
-        'Date range iteration did not reach the end of the requested range',
+        'Date range end is outside the representable date range',
       );
     });
 

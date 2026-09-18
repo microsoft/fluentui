@@ -36,6 +36,7 @@ describe('getDayGrid', () => {
           key: `${expected.getFullYear()}-${expected.getMonth()}-${expected.getDate()}`,
           date: String(expected.getDate()),
           originalDate: expected,
+          isPlaceholder: false,
           isInMonth: expected.getMonth() === 8,
           isToday: expected.getTime() === defaultOptions.today?.getTime(),
           isSelected: false,
@@ -49,7 +50,7 @@ describe('getDayGrid', () => {
 
   it.each(daysOfWeek)('aligns ordinary weeks to %s', firstDayOfWeek => {
     const weeks = getDayGrid({ ...defaultOptions, firstDayOfWeek });
-    weeks.forEach(week => expect(week[0].originalDate.getDay()).toBe(daysOfWeek.indexOf(firstDayOfWeek)));
+    weeks.forEach(week => expect(week[0].originalDate!.getDay()).toBe(daysOfWeek.indexOf(firstDayOfWeek)));
   });
 
   it.each([1, 2, 3, 4, 5, 6])('includes two transition rows for %s visible weeks', weeksToShow => {
@@ -65,7 +66,7 @@ describe('getDayGrid', () => {
     const weeks = getDayGrid({ ...defaultOptions, navigatedDate: new Date(year, month, 15), firstDayOfWeek: 'monday' });
     const inMonth = weeks.flat().filter(day => day.isInMonth);
     expect(weeks).toHaveLength(rowCount);
-    expect(inMonth.map(day => day.originalDate.getDate())).toEqual(
+    expect(inMonth.map(day => day.originalDate!.getDate())).toEqual(
       Array.from({ length: new Date(year, month + 1, 0).getDate() }, (_, index) => index + 1),
     );
   });
@@ -133,7 +134,7 @@ describe('getDayGrid', () => {
       selectedDate: new Date(2020, 8, 18),
       daysToSelectInDayView: 3,
     }).flat();
-    expect(days.filter(day => day.isSelected).map(day => day.originalDate.getDate())).toEqual(expected);
+    expect(days.filter(day => day.isSelected).map(day => day.originalDate!.getDate())).toEqual(expected);
     expect(days.some(day => day.isSingleSelected)).toBe(false);
   });
 
@@ -162,7 +163,7 @@ describe('getDayGrid', () => {
       selectedDate: new Date(2020, 8, 18),
       workWeekDays: ['monday', 'wednesday', 'friday'],
     }).flat();
-    expect(days.filter(day => day.isSelected).map(day => day.originalDate.getDate())).toEqual([
+    expect(days.filter(day => day.isSelected).map(day => day.originalDate!.getDate())).toEqual([
       13, 14, 15, 16, 17, 18, 19,
     ]);
   });
@@ -200,7 +201,19 @@ describe('getDayGrid', () => {
       fridayWeeks
         .flat()
         .filter(day => day.isInMonth)
-        .map(day => day.originalDate.getDate()),
+        .filter(day => day.originalDate)
+        .map(day => day.originalDate!.getDate()),
     ).toEqual(Array.from({ length: 31 }, (_, index) => index + 1));
+    if (skippedFriday) {
+      const placeholder = fridayWeeks.flatMap(week => week).find(day => day.isPlaceholder);
+      expect(placeholder).toMatchObject({ key: '2011-11-30', originalDate: null, isPlaceholder: true });
+      fridayWeeks.forEach(week =>
+        week.forEach((day, index) => {
+          if (!day.isPlaceholder) {
+            expect(day.originalDate!.getDay()).toBe((5 + index) % 7);
+          }
+        }),
+      );
+    }
   });
 });
