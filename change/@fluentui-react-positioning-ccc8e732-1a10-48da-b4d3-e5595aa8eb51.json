@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add flipBoundaryPadding positioning prop",
+  "packageName": "@fluentui/react-positioning",
+  "email": "198982749+Copilot@users.noreply.github.com"
+}
