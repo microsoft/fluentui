@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: apply CAP visual refresh and add 'brand' appearance variant",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "egianoglio@microsoft.com",
+  "dependentChangeType": "patch"
+}
