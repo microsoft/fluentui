@@ -4397,6 +4397,7 @@ __metadata:
     "@fluentui/react-badge": "npm:^9.5.5"
     "@fluentui/react-breadcrumb": "npm:^9.4.5"
     "@fluentui/react-button": "npm:^9.11.0"
+    "@fluentui/react-calendar-preview": "npm:*"
     "@fluentui/react-card": "npm:^9.7.2"
     "@fluentui/react-checkbox": "npm:^9.6.4"
     "@fluentui/react-color-picker": "npm:^9.3.0"
