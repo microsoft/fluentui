@@ -83,23 +83,36 @@ export const getChartValueLabel = (
   chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string),
   forCallout: boolean = false,
 ): string => {
-  if (forCallout) {
-    // When displaying the chart value as a percentage, use fractions in the callout, and vice versa.
-    // This helps clarify the actual value and avoid repetition.
-    return minValue !== 0
-      ? chartValue.toString()
-      : chartValueFormat === 'fraction'
-      ? `${((chartValue / maxValue) * 100).toFixed()}%`
-      : `${chartValue}/${maxValue}`;
+  if (typeof chartValueFormat === 'function') {
+    return chartValueFormat([chartValue - minValue, maxValue - minValue]);
   }
 
-  return typeof chartValueFormat === 'function'
-    ? chartValueFormat([chartValue - minValue, maxValue - minValue])
-    : minValue !== 0
-    ? chartValue.toString()
-    : chartValueFormat === 'fraction'
-    ? `${chartValue}/${maxValue}`
-    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+  if (chartValueFormat === 'percentage') {
+    return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
+  }
+
+  if (chartValueFormat === 'fraction') {
+    return `${chartValue - minValue}/${maxValue - minValue}`;
+  }
+
+  return minValue !== 0 ? chartValue.toString() : `${((chartValue / maxValue) * 100).toFixed()}%`;
+};
+
+const getCalloutSegmentLabel = (
+  segment: ExtendedSegment,
+  minValue: number,
+  maxValue: number,
+  variant: GaugeChartVariant | undefined,
+  chartValueFormat: GaugeChartProps['chartValueFormat'],
+): string => {
+  if (chartValueFormat === 'percentage' || (!chartValueFormat && minValue === 0)) {
+    const range = maxValue - minValue;
+    const startPercentage = (((segment.start - minValue) / range) * 100).toFixed();
+    const endPercentage = (((segment.end - minValue) / range) * 100).toFixed();
+    return `${startPercentage}% - ${endPercentage}%`;
+  }
+
+  return getSegmentLabel(segment, minValue, maxValue, variant);
 };
 
 interface YValue extends Omit<YValueHover, 'y'> {
@@ -396,7 +409,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         .map(segment => {
           const yValue: YValue = {
             legend: segment.legend,
-            y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
+            y: getCalloutSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
             color: segment.color,
           };
           return yValue;
@@ -726,6 +739,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                 (() => {
                   const calloutData: GaugeChartCalloutData = {
                     legend: calloutLegend,
+                    chartTitle: props.chartTitle,
                     chartValue: props.chartValue,
                     minValue: _minValue,
                     maxValue: _maxValue,
@@ -736,6 +750,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       props.chartValueFormat,
                       true,
                     ),
+                    segments: _segments.slice(0, props.segments.length).map(segment => ({ ...segment })),
                     segmentValues: hoverYValues,
                   };
 

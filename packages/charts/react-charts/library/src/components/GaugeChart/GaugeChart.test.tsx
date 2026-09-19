@@ -392,19 +392,27 @@ describe('GaugeChart custom callout', () => {
     {
       segments,
       chartValue: 30,
+      chartTitle: 'Server tick time',
       minValue: 10,
-      maxValue: 110,
-      onRenderCallout: (calloutData?: GaugeChartCalloutData) => (
-        <div data-testid="custom-gauge-callout">
-          {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-{calloutData?.maxValue})
-        </div>
-      ),
+      maxValue: 120,
+      onRenderCallout: (calloutData?: GaugeChartCalloutData) => {
+        const lastSegment = calloutData?.segments?.at(-1);
+        return (
+          <div data-testid="custom-gauge-callout">
+            {calloutData?.chartTitle}: {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-
+            {calloutData?.maxValue}); last range {lastSegment?.start}-{lastSegment?.end}
+          </div>
+        );
+      },
     },
     () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(chartSegments[0]);
 
-      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent('Low Risk: 30 blocks (10-110)');
+      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent(
+        'Server tick time: Low Risk: 30 blocks (10-120); last range 77-110',
+      );
+      expect(screen.getByTestId('custom-gauge-callout')).not.toHaveTextContent('Unknown');
     },
   );
 
@@ -414,13 +422,14 @@ describe('GaugeChart custom callout', () => {
     {
       segments,
       chartValue: 30,
+      chartValueFormat: ([value]: [number, number]) => `${value}ms`,
       onRenderCallout: renderDefaultCallout,
     },
     () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(chartSegments[0]);
 
-      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Current value is 30/100');
+      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Current value is 30ms');
       expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Low Risk');
     },
   );
@@ -504,30 +513,33 @@ describe('GaugeChart rendering and behavior tests', () => {
 
   it('should render the chart value correctly', () => {
     const customChartValue = 'Custom chart value';
+    const formatMilliseconds = ([value]: [number, number]) => (value === 0 ? 'offline' : `${value}ms`);
 
     expect(getChartValueLabel(25, 0, 100)).toBe('25%');
-    expect(getChartValueLabel(25, 0, 100, undefined, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, undefined, true)).toBe('25%');
 
     expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage)).toBe('25%');
-    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Percentage, true)).toBe('25%');
 
     expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction)).toBe('25/100');
-    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction, true)).toBe('25%');
+    expect(getChartValueLabel(25, 0, 100, GaugeValueFormat.Fraction, true)).toBe('25/100');
 
     expect(getChartValueLabel(25, 0, 100, () => customChartValue)).toBe(customChartValue);
-    expect(getChartValueLabel(25, 0, 100, () => customChartValue, true)).toBe('25/100');
+    expect(getChartValueLabel(25, 0, 100, () => customChartValue, true)).toBe(customChartValue);
+    expect(getChartValueLabel(50, 0, 200, formatMilliseconds, true)).toBe('50ms');
+    expect(getChartValueLabel(0, 0, 200, formatMilliseconds, true)).toBe('offline');
 
     expect(getChartValueLabel(125, 100, 200)).toBe('125');
     expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('125');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('25%');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('25%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('25/100');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('25/100');
 
     expect(getChartValueLabel(125, 100, 200, () => customChartValue)).toBe(customChartValue);
-    expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe(customChartValue);
   });
 });
 
