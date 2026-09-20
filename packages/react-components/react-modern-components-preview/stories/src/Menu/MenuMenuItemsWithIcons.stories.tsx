@@ -1,0 +1,33 @@
+import * as React from 'react';
+
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-modern-components-preview/menu';
+import { Button } from '@fluentui/react-components';
+import {
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
+} from '@fluentui/react-icons';
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+
+export const MenuItemsWithIcons = (): React.ReactNode => (
+  <Menu>
+    <MenuTrigger disableButtonEnhancement>
+      <Button>Toggle menu</Button>
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);

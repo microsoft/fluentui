@@ -1,0 +1,32 @@
+import * as React from 'react';
+
+import type { Meta } from '@storybook/react-webpack5';
+import { Badge } from '@fluentui/react-modern-components-preview/badge';
+import descriptionMd from './BadgeDescription.md';
+import bestPracticesMd from './BadgeBestPractices.md';
+export { Default } from './BadgeDefault.stories';
+export { Appearance } from './BadgeAppearance.stories';
+export { Sizes } from './BadgeSizes.stories';
+export { Shapes } from './BadgeShapes.stories';
+export { Color } from './BadgeColor.stories';
+export { Icon } from './BadgeIcon.stories';
+export { ColorAndAppearance } from './BadgeColorVsAppearance.stories';
+
+export default {
+  title: 'Components/Badge/Badge',
+  component: Badge,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      },
+    },
+  },
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <Story />
+      </div>
+    ),
+  ],
+} as Meta;

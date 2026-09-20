@@ -1,0 +1,38 @@
+import * as React from 'react';
+import type { Meta } from '@storybook/react-webpack5';
+import { Label } from '@fluentui/react-modern-components-preview/label';
+
+import descriptionMd from './LabelDescription.md';
+export { Default } from './LabelDefault.stories';
+export { Size } from './LabelSize.stories';
+export { Weight } from './LabelWeight.stories';
+export { Disabled } from './LabelDisabled.stories';
+export { Required } from './LabelRequired.stories';
+
+const meta = {
+  title: 'Components/Label/Label',
+  component: Label,
+  parameters: {
+    docs: {
+      description: {
+        component: descriptionMd,
+      },
+    },
+  },
+  argTypes: {
+    required: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
+  decorators: [
+    Story => (
+      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof Label>;
+
+export default meta;
