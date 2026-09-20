@@ -1,0 +1,99 @@
+.root {
+  display: inline-flex;
+  box-sizing: border-box;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid var(--colorTransparentStroke);
+
+  &[data-size='extra-small'] {
+    block-size: 20px;
+    inline-size: 20px;
+  }
+
+  &[data-size='small'] {
+    block-size: 24px;
+    inline-size: 24px;
+  }
+
+  &[data-size='medium'] {
+    block-size: 28px;
+    inline-size: 28px;
+  }
+
+  &[data-size='large'] {
+    block-size: 32px;
+    inline-size: 32px;
+  }
+
+  &[data-shape='rounded'] {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  &[data-shape='circular'] {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  &[data-shape='square'] {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  &:focus,
+  &[data-fui-focus-visible] {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border: none;
+    box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorStrokeFocus2),
+      inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: none;
+    box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorBrandStroke1),
+      inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+  }
+
+  &:hover:active {
+    box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorCompoundBrandStrokePressed),
+      inset 0 0 0 var(--strokeWidthThickest) var(--colorStrokeFocus1);
+  }
+
+  &[data-selected] {
+    border: none;
+    box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorBrandStroke1), inset 0 0 0 5px var(--colorStrokeFocus1);
+
+    &[data-fui-focus-visible] {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus2),
+        inset 0 0 0 5px var(--colorStrokeFocus1);
+    }
+
+    &:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThickest) var(--colorCompoundBrandStrokeHover),
+        inset 0 0 0 6px var(--colorStrokeFocus1);
+    }
+
+    &:hover:active {
+      box-shadow: inset 0 0 0 var(--strokeWidthThickest) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 7px var(--colorStrokeFocus1);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .root {
+    forced-color-adjust: none;
+
+    &:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorBrandStroke2Hover),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+
+    &[data-selected] {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorBrandStroke2Pressed),
+        inset 0 0 0 5px var(--colorStrokeFocus1);
+    }
+  }
+}

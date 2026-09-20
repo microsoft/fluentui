@@ -1,0 +1,13 @@
+.root {
+  align-items: center;
+  column-gap: var(--spacingHorizontalXS);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &:focus-visible {
+    border-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusMedium);
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+  }
+}

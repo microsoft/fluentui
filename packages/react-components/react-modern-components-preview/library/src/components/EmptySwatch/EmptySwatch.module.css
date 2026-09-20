@@ -1,0 +1,36 @@
+.root {
+  background-color: var(--colorTransparentBackground);
+  border: 1px dashed var(--colorNeutralForeground4);
+
+  &[data-size='extra-small'] {
+    block-size: 20px;
+    inline-size: 20px;
+  }
+
+  &[data-size='small'] {
+    block-size: 24px;
+    inline-size: 24px;
+  }
+
+  &[data-size='medium'] {
+    block-size: 28px;
+    inline-size: 28px;
+  }
+
+  &[data-size='large'] {
+    block-size: 32px;
+    inline-size: 32px;
+  }
+
+  &[data-shape='rounded'] {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  &[data-shape='circular'] {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  &[data-shape='square'] {
+    border-radius: var(--borderRadiusNone);
+  }
+}

@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  font-size: 16px;
+
+  &[data-size='small'] {
+    font-size: 12px;
+  }
+
+  &[data-size='large'] {
+    font-size: 20px;
+  }
+
+  [data-default-icon] {
+    box-sizing: border-box;
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    border-inline-end: var(--strokeWidthThin) solid currentcolor;
+    border-block-end: var(--strokeWidthThin) solid currentcolor;
+    transform: rotate(-45deg);
+  }
+
+  &:dir(rtl) [data-default-icon] {
+    transform: rotate(45deg);
+  }
+}

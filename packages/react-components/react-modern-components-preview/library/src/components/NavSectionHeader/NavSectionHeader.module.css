@@ -1,0 +1,8 @@
+.root {
+  margin-block: var(--spacingVerticalS);
+  margin-inline-start: 10px;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+}

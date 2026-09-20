@@ -1,0 +1,35 @@
+.content {
+  display: none;
+  box-sizing: border-box;
+  max-inline-size: 240px;
+  padding: 4px 11px 6px;
+  overflow-wrap: break-word;
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase200);
+  cursor: default;
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+  filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey));
+}
+
+.content[data-open] {
+  display: block;
+}
+
+.content[data-appearance='inverted'] {
+  color: var(--colorNeutralForegroundStaticInverted);
+  background-color: var(--colorNeutralBackgroundStatic);
+}
+
+.arrow {
+  position: absolute;
+  inline-size: 8.4853px;
+  block-size: 8.4853px;
+  background-color: inherit;
+  border-inline-end: inherit;
+  border-block-end: inherit;
+  transform: rotate(45deg);
+}

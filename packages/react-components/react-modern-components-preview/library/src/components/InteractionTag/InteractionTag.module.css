@@ -1,0 +1,26 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  inline-size: fit-content;
+
+  &[data-shape='rounded'] {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  &[data-shape='circular'] {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  &[data-size='medium'] {
+    block-size: 32px;
+  }
+
+  &[data-size='small'] {
+    block-size: 24px;
+  }
+
+  &[data-size='extra-small'] {
+    block-size: 20px;
+  }
+}

@@ -1,0 +1,274 @@
+.root {
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  grid-template-columns: 1fr 24px;
+  grid-template-rows: 1fr 1fr;
+  gap: 0 var(--spacingHorizontalXS);
+  min-block-size: 32px;
+  padding-block: 0;
+  padding-inline: var(--spacingHorizontalMNudge) 0;
+  vertical-align: middle;
+  background-color: var(--colorNeutralBackground1);
+  border-radius: var(--borderRadiusMedium);
+
+  &::before {
+    position: absolute;
+    z-index: 10;
+    inset: 0;
+    box-sizing: border-box;
+    content: '';
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-block-end-color: var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusMedium);
+    pointer-events: none;
+  }
+
+  &::after {
+    position: absolute;
+    z-index: 20;
+    inset-inline: 0;
+    inset-block-end: 0;
+    box-sizing: border-box;
+    block-size: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+    content: '';
+    border-block-end: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    border-end-start-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+    clip-path: inset(calc(100% - var(--strokeWidthThick)) 0 0 0);
+    transform: scaleX(0);
+    transition-delay: var(--curveAccelerateMid);
+    transition-duration: var(--durationUltraFast);
+    transition-property: transform;
+  }
+
+  &:focus-within {
+    outline: var(--strokeWidthThick) solid transparent;
+
+    &::after {
+      transform: scaleX(1);
+      transition-delay: var(--curveDecelerateMid);
+      transition-duration: var(--durationNormal);
+    }
+  }
+
+  &:focus-within:active::after {
+    border-block-end-color: var(--colorCompoundBrandStrokePressed);
+  }
+
+  &[data-size='small'] {
+    min-block-size: 24px;
+    padding-inline-start: var(--spacingHorizontalS);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  &[data-appearance='outline']:not([data-disabled]):hover::before {
+    border-color: var(--colorNeutralStroke1Hover);
+    border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  &[data-appearance='outline']:not([data-disabled]):is(:active, :focus-within)::before {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-block-end-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  &[data-appearance='underline'] {
+    &::before {
+      border-width: 0;
+      border-block-end-width: var(--strokeWidthThin);
+      border-radius: var(--borderRadiusNone);
+    }
+
+    &::after {
+      border-radius: var(--borderRadiusNone);
+    }
+
+    &:not([data-disabled]):hover::before {
+      border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+    }
+
+    &:not([data-disabled]):is(:active, :focus-within)::before {
+      border-block-end-color: var(--colorNeutralStrokeAccessiblePressed);
+    }
+  }
+
+  &[data-appearance^='filled'] {
+    &::before {
+      border-color: var(--colorTransparentStroke);
+    }
+
+    &:not([data-disabled]):is(:hover, :focus-within)::before {
+      border-color: var(--colorTransparentStrokeInteractive);
+    }
+  }
+
+  &[data-appearance='filled-darker'] {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  &[data-appearance='filled-lighter'] {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  &[data-invalid]:not([data-disabled], :focus-within)::before,
+  &[data-invalid]:hover:not([data-disabled], :focus-within)::before {
+    border-color: var(--colorPaletteRedBorder2);
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+
+    &::before {
+      border-color: var(--colorNeutralStrokeDisabled);
+    }
+  }
+}
+
+.input {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  inline-size: 100%;
+  padding: 0;
+  color: var(--colorNeutralForeground1);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  background-color: var(--colorTransparentBackground);
+  border: 0;
+  outline-style: none;
+
+  &::placeholder {
+    color: var(--colorNeutralForeground4);
+    opacity: 1;
+  }
+
+  &:disabled {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+
+    &::placeholder {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+  }
+}
+
+.button {
+  position: absolute;
+  display: inline-flex;
+  grid-column-start: 2;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  block-size: 16px;
+  inline-size: 24px;
+  padding-block: 0;
+  padding-inline: 5px;
+  color: var(--colorNeutralForeground3);
+  background-color: var(--colorTransparentBackground);
+  border: 0;
+  border-radius: 0;
+  outline-style: none;
+
+  &:active {
+    outline-style: none;
+  }
+
+  &:disabled {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  &:enabled {
+    &:hover {
+      color: var(--colorNeutralForeground3Hover);
+      cursor: pointer;
+      background-color: var(--colorSubtleBackgroundHover);
+    }
+
+    &:is(:active, :global(.fui-SpinButton__button_active)) {
+      color: var(--colorNeutralForeground3Pressed);
+      background-color: var(--colorSubtleBackgroundPressed);
+    }
+  }
+
+  &:empty::before {
+    box-sizing: border-box;
+    block-size: 6px;
+    inline-size: 6px;
+    content: '';
+    border-block-start: var(--strokeWidthThin) solid currentcolor;
+    border-inline-start: var(--strokeWidthThin) solid currentcolor;
+  }
+
+  .root[data-appearance='filled-darker'] &:enabled {
+    &:hover {
+      background-color: var(--colorNeutralBackground3Hover);
+    }
+
+    &:is(:active, :global(.fui-SpinButton__button_active)) {
+      background-color: var(--colorNeutralBackground3Pressed);
+    }
+  }
+
+  .root[data-appearance='filled-lighter'] &:enabled {
+    &:hover {
+      background-color: var(--colorNeutralBackground1Hover);
+    }
+
+    &:is(:active, :global(.fui-SpinButton__button_active)) {
+      background-color: var(--colorNeutralBackground1Pressed);
+    }
+  }
+}
+
+.incrementButton {
+  grid-row-start: 1;
+  padding-block: 4px 1px;
+  border-start-end-radius: var(--borderRadiusMedium);
+
+  &:empty::before {
+    transform: translateY(2px) rotate(45deg);
+  }
+
+  .root[data-size='small'] & {
+    block-size: 12px;
+    padding-block: 3px 0;
+    padding-inline: 4px 6px;
+  }
+}
+
+.decrementButton {
+  grid-row-start: 2;
+  padding-block: 1px 4px;
+  border-end-end-radius: var(--borderRadiusMedium);
+
+  &:empty::before {
+    transform: translateY(-2px) rotate(225deg);
+  }
+
+  .root[data-size='small'] & {
+    block-size: 12px;
+    padding-block: 0 3px;
+    padding-inline: 4px 6px;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .root::after,
+  .root:focus-within::after {
+    transition-delay: 0.01ms;
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-disabled]::before {
+    border-color: GrayText;
+  }
+}

@@ -1,0 +1,7 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--spacingVerticalXXS);
+  padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+  row-gap: var(--spacingVerticalXXS);
+}

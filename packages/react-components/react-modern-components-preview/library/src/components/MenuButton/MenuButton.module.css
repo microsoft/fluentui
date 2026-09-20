@@ -1,0 +1,80 @@
+.root[data-open] {
+  :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  :global(.fui-Icon-regular) {
+    display: none;
+  }
+
+  &[data-appearance='outline'] {
+    border-color: var(--colorNeutralStroke1Selected);
+    border-width: var(--strokeWidthThicker);
+    color: var(--colorNeutralForeground1Selected);
+  }
+
+  &[data-appearance='primary'] {
+    background-color: var(--colorBrandBackgroundSelected);
+  }
+
+  &[data-appearance='secondary'] {
+    background-color: var(--colorNeutralBackground1Selected);
+    border-color: var(--colorNeutralStroke1Selected);
+    color: var(--colorNeutralForeground1Selected);
+  }
+
+  &[data-appearance='subtle'] {
+    background-color: var(--colorSubtleBackgroundSelected);
+    color: var(--colorNeutralForeground2Selected);
+  }
+
+  &[data-appearance='transparent'] {
+    background-color: var(--colorTransparentBackgroundSelected);
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+
+  &:is([data-appearance='outline'], [data-appearance='secondary']) .icon {
+    color: var(--colorNeutralForeground1Selected);
+  }
+
+  &:is([data-appearance='subtle'], [data-appearance='transparent']) .icon {
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+}
+
+.menuIcon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  inline-size: 12px;
+  block-size: 12px;
+  margin-inline-start: var(--spacingHorizontalXS);
+  font-size: 12px;
+  line-height: var(--lineHeightBase200);
+
+  [data-default-icon] {
+    box-sizing: border-box;
+    inline-size: 7px;
+    block-size: 7px;
+    border-inline-end: var(--strokeWidthThin) solid currentcolor;
+    border-block-end: var(--strokeWidthThin) solid currentcolor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+
+  .root[data-icon-only] & {
+    margin-inline-start: 0;
+  }
+
+  .root[data-size='large'] & {
+    inline-size: 16px;
+    block-size: 16px;
+    font-size: 16px;
+    line-height: var(--lineHeightBase400);
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-open] .icon:hover {
+    color: Highlight;
+  }
+}

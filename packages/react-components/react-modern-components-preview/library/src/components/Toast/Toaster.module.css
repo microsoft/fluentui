@@ -1,0 +1,13 @@
+.root {
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  inline-size: 292px;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  pointer-events: none;
+  background-color: var(--colorTransparentBackground);
+  border: 0;
+}

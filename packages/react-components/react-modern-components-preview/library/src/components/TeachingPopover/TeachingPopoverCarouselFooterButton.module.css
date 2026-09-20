@@ -1,0 +1,33 @@
+.root {
+  min-inline-size: 96px;
+
+  &[data-popover-appearance='brand'][data-nav-type='next'] {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorTransparentBackground);
+    color: var(--colorBrandForeground1);
+  }
+
+  &[data-popover-appearance='brand'][data-nav-type='next']:hover {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+
+  &[data-popover-appearance='brand'][data-nav-type='next']:hover:active {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorCompoundBrandForeground1Pressed);
+  }
+
+  &[data-popover-appearance='brand'][data-nav-type='prev'] {
+    background-color: var(--colorBrandBackground);
+    border-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  &[data-popover-appearance='brand'][data-nav-type='prev']:hover {
+    background-color: var(--colorBrandBackgroundHover);
+  }
+
+  &[data-popover-appearance='brand'][data-nav-type='prev']:hover:active {
+    background-color: var(--colorBrandBackgroundPressed);
+  }
+}

@@ -1,0 +1,127 @@
+.root {
+  position: relative;
+
+  &:focus,
+  &:focus-visible {
+    outline-style: none;
+  }
+
+  &[data-fui-focus-within]:focus-within {
+    border-color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: -2px;
+      border: 2px solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+      pointer-events: none;
+    }
+  }
+
+  :global(.fui-Rating)[data-size='small'] &,
+  :global(.fui-RatingDisplay)[data-size='small'] & {
+    block-size: 12px;
+    inline-size: 12px;
+    font-size: 12px;
+  }
+
+  :global(.fui-Rating)[data-size='medium'] &,
+  :global(.fui-RatingDisplay)[data-size='medium'] & {
+    block-size: 16px;
+    inline-size: 16px;
+    font-size: 16px;
+  }
+
+  :global(.fui-Rating)[data-size='large'] &,
+  :global(.fui-RatingDisplay)[data-size='large'] & {
+    block-size: 20px;
+    inline-size: 20px;
+    font-size: 20px;
+  }
+
+  :global(.fui-Rating)[data-size='extra-large'] &,
+  :global(.fui-RatingDisplay)[data-size='extra-large'] & {
+    block-size: 28px;
+    inline-size: 28px;
+    font-size: 28px;
+  }
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  block-size: 100%;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.halfValueInput {
+  inset-inline-end: 50%;
+}
+
+.fullValueInput {
+  inset-inline-start: 50%;
+}
+
+.indicator {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  color: var(--colorNeutralForeground1);
+  fill: currentcolor;
+  pointer-events: none;
+
+  :global(.fui-Rating)[data-color='brand'] & {
+    color: var(--colorBrandForeground1);
+  }
+
+  :global(.fui-Rating)[data-color='marigold'] & {
+    color: var(--colorPaletteMarigoldBorderActive);
+  }
+}
+
+.unselectedIcon {
+  :global(.fui-RatingDisplay) & {
+    color: var(--colorNeutralBackground6);
+    stroke: var(--colorTransparentStroke);
+  }
+
+  :global(.fui-RatingDisplay)[data-color='brand'] & {
+    color: var(--colorBrandBackground2);
+  }
+
+  :global(.fui-RatingDisplay)[data-color='marigold'] & {
+    color: var(--colorPaletteMarigoldBackground2);
+  }
+}
+
+.upperHalf {
+  inset-inline-start: 50%;
+  margin-inline-start: -50%;
+}
+
+.lowerHalf {
+  inset-inline-end: 50%;
+
+  & > :first-child {
+    flex: 0 0 auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-fui-focus-within]:focus-within::after {
+    border-color: Highlight;
+  }
+
+  .unselectedIcon {
+    :global(.fui-RatingDisplay) & {
+      color: Canvas;
+      stroke: CanvasText;
+    }
+  }
+}

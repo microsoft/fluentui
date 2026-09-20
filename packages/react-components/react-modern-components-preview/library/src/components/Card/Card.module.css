@@ -1,0 +1,270 @@
+.root {
+  --fui-Card--size: 12px;
+  --fui-Card--border-radius: var(--borderRadiusMedium);
+
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground1);
+  display: flex;
+  gap: var(--fui-Card--size);
+  overflow: hidden;
+  padding: var(--fui-Card--size);
+  position: relative;
+  border-radius: var(--fui-Card--border-radius);
+
+  &::after {
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    border-radius: var(--fui-Card--border-radius);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  & > :is(:global(.fui-CardHeader), :global(.fui-CardFooter)) {
+    flex-shrink: 0;
+  }
+
+  &[data-size='small'] {
+    --fui-Card--size: 8px;
+    --fui-Card--border-radius: var(--borderRadiusSmall);
+  }
+
+  &[data-size='large'] {
+    --fui-Card--size: 16px;
+    --fui-Card--border-radius: var(--borderRadiusLarge);
+  }
+
+  &[data-orientation='horizontal'] {
+    align-items: center;
+    flex-direction: row;
+
+    & > :global(.fui-CardPreview) {
+      margin-block: calc(var(--fui-Card--size) * -1);
+    }
+
+    & > :global(.fui-CardPreview):first-of-type {
+      margin-inline-start: calc(var(--fui-Card--size) * -1);
+    }
+
+    & > :global(.fui-CardPreview):last-of-type {
+      margin-inline-end: calc(var(--fui-Card--size) * -1);
+    }
+
+    & > :is(:global(.fui-CardHeader), :global(.fui-CardFooter)):last-of-type {
+      flex-grow: 1;
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+
+    & > :global(.fui-CardPreview) {
+      margin-inline: calc(var(--fui-Card--size) * -1);
+    }
+
+    & > :global(.fui-CardPreview):first-of-type,
+    &[data-has-floating-action] > :global(.fui-CardPreview) {
+      margin-block-start: calc(var(--fui-Card--size) * -1);
+    }
+
+    & > :global(.fui-CardPreview):last-of-type {
+      margin-block-end: calc(var(--fui-Card--size) * -1);
+    }
+  }
+
+  &[data-appearance='filled'] {
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: var(--shadow4);
+  }
+
+  &[data-appearance='filled-alternative'] {
+    background-color: var(--colorNeutralBackground2);
+    box-shadow: var(--shadow4);
+  }
+
+  &[data-appearance='outline'] {
+    background-color: var(--colorTransparentBackground);
+    box-shadow: none;
+
+    &::after {
+      border-color: var(--colorNeutralStroke1);
+    }
+  }
+
+  &[data-appearance='subtle'] {
+    background-color: var(--colorSubtleBackground);
+    box-shadow: none;
+  }
+
+  &:not([data-disabled], [data-selectable]):focus,
+  &[data-selectable][data-select-focused]:focus-within {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: -2px;
+  }
+
+  &[data-interactive] {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: var(--shadow8);
+    }
+
+    &[data-appearance='filled'] {
+      &:hover {
+        background-color: var(--colorNeutralBackground1Hover);
+        color: var(--colorNeutralForeground1Hover);
+      }
+
+      &:active {
+        background-color: var(--colorNeutralBackground1Pressed);
+      }
+
+      &[data-selected] {
+        background-color: var(--colorNeutralBackground1Selected);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Selected);
+        }
+
+        &:hover {
+          color: var(--colorNeutralForeground1Selected);
+        }
+      }
+    }
+
+    &[data-appearance='filled-alternative'] {
+      &:hover {
+        background-color: var(--colorNeutralBackground2Hover);
+        color: var(--colorNeutralForeground2Hover);
+      }
+
+      &:active {
+        background-color: var(--colorNeutralBackground2Pressed);
+      }
+
+      &[data-selected] {
+        background-color: var(--colorNeutralBackground2Selected);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Selected);
+        }
+
+        &:hover {
+          color: var(--colorNeutralForeground2Selected);
+        }
+      }
+    }
+
+    &[data-appearance='outline'] {
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+        color: var(--colorNeutralForeground1Hover);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Hover);
+        }
+      }
+
+      &:active {
+        background-color: var(--colorTransparentBackgroundPressed);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Pressed);
+        }
+      }
+
+      &[data-selected] {
+        background-color: var(--colorTransparentBackgroundSelected);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Selected);
+        }
+
+        &:hover {
+          color: var(--colorNeutralForeground1Selected);
+        }
+      }
+    }
+
+    &[data-appearance='subtle'] {
+      &:hover {
+        background-color: var(--colorSubtleBackgroundHover);
+        color: var(--colorNeutralForeground1Hover);
+        box-shadow: none;
+      }
+
+      &:active {
+        background-color: var(--colorSubtleBackgroundPressed);
+      }
+
+      &[data-selected] {
+        background-color: var(--colorSubtleBackgroundSelected);
+
+        &::after {
+          border-color: var(--colorNeutralStroke1Selected);
+        }
+
+        &:hover {
+          color: var(--colorNeutralForeground1Selected);
+        }
+      }
+    }
+  }
+
+  &[data-disabled] {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    user-select: none;
+    box-shadow: var(--shadow2);
+
+    &::before {
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: 2;
+    }
+
+    &::after {
+      border-color: var(--colorNeutralStrokeDisabled);
+    }
+
+    &[data-appearance='outline'] {
+      background-color: var(--colorTransparentBackground);
+      box-shadow: none;
+    }
+  }
+}
+
+.floatingAction {
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  position: absolute;
+  z-index: 1;
+}
+
+.checkbox {
+  block-size: 1px;
+  clip-path: inset(50%);
+  inline-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  .root[data-interactive]:is(:hover, :active),
+  .root[data-selected] {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+
+    &::after {
+      border-color: Highlight;
+    }
+
+    & > :is(:global(.fui-CardPreview), :global(.fui-CardFooter)) {
+      forced-color-adjust: auto;
+    }
+  }
+}

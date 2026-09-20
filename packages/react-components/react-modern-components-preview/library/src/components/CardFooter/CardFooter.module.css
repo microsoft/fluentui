@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.action {
+  margin-inline-start: auto;
+}
+
+@media (forced-colors: active) {
+  .action :is(:global(.fui-Button), :global(.fui-Link)) {
+    border-color: currentcolor;
+    color: currentcolor;
+    outline-color: currentcolor;
+  }
+}

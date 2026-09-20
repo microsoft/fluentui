@@ -1,0 +1,4 @@
+.root {
+  margin-block: 0;
+  margin-inline: var(--spacingHorizontalM);
+}

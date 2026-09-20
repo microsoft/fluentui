@@ -1,0 +1,49 @@
+.root {
+  display: flex;
+  gap: 8px;
+  padding-block-start: 12px;
+
+  &[data-footer-layout='vertical'] {
+    flex-direction: column;
+  }
+
+  &[data-footer-layout='horizontal'] {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.button {
+  border-radius: 4px;
+
+  .root[data-footer-layout='vertical'] & {
+    inline-size: auto;
+  }
+
+  .root[data-footer-layout='horizontal'] & {
+    min-inline-size: 96px;
+  }
+}
+
+.secondary {
+  .root[data-appearance='brand'] & {
+    border-color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+.primary {
+  .root[data-appearance='brand'] & {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorBrandForeground1);
+  }
+
+  .root[data-appearance='brand'] &:hover {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+
+  .root[data-appearance='brand'] &:hover:active {
+    background-color: var(--colorNeutralForegroundOnBrand);
+    color: var(--colorCompoundBrandForeground1Pressed);
+  }
+}

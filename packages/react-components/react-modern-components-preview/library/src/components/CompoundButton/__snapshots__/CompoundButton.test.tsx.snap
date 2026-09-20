@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CompoundButton renders a default state 1`] = `
+<div>
+  <button
+    class="fui-CompoundButton"
+    data-appearance="secondary"
+    data-has-secondary-content=""
+    data-shape="rounded"
+    data-size="medium"
+    type="button"
+  >
+    <span
+      class="fui-CompoundButton__contentContainer"
+    >
+      Default CompoundButton
+      <span
+        class="fui-CompoundButton__secondaryContent"
+      >
+        Secondary content
+      </span>
+    </span>
+  </button>
+</div>
+`;

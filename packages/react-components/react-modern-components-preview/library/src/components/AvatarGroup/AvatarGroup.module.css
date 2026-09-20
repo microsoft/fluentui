@@ -1,0 +1,84 @@
+.root {
+  display: inline-flex;
+  position: relative;
+
+  &[data-layout='pie'] {
+    background-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusCircular);
+    clip-path: circle(50%);
+
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
+  }
+
+  &[data-size='16'] {
+    inline-size: 16px;
+    block-size: 16px;
+  }
+
+  &[data-size='20'] {
+    inline-size: 20px;
+    block-size: 20px;
+  }
+
+  &[data-size='24'] {
+    inline-size: 24px;
+    block-size: 24px;
+  }
+
+  &[data-size='28'] {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+
+  &[data-size='32'] {
+    inline-size: 32px;
+    block-size: 32px;
+  }
+
+  &[data-size='36'] {
+    inline-size: 36px;
+    block-size: 36px;
+  }
+
+  &[data-size='40'] {
+    inline-size: 40px;
+    block-size: 40px;
+  }
+
+  &[data-size='48'] {
+    inline-size: 48px;
+    block-size: 48px;
+  }
+
+  &[data-size='56'] {
+    inline-size: 56px;
+    block-size: 56px;
+  }
+
+  &[data-size='64'] {
+    inline-size: 64px;
+    block-size: 64px;
+  }
+
+  &[data-size='72'] {
+    inline-size: 72px;
+    block-size: 72px;
+  }
+
+  &[data-size='96'] {
+    inline-size: 96px;
+    block-size: 96px;
+  }
+
+  &[data-size='120'] {
+    inline-size: 120px;
+    block-size: 120px;
+  }
+
+  &[data-size='128'] {
+    inline-size: 128px;
+    block-size: 128px;
+  }
+}

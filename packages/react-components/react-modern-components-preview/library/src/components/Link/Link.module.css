@@ -1,0 +1,76 @@
+.root {
+  box-sizing: border-box;
+  display: inline;
+  margin: 0;
+  overflow: inherit;
+  padding: 0;
+  color: var(--colorBrandForegroundLink);
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  outline-style: none;
+  text-align: start;
+  text-decoration-line: none;
+  text-decoration-thickness: var(--strokeWidthThin);
+  text-overflow: inherit;
+  user-select: text;
+
+  &[data-href] {
+    font-size: inherit;
+  }
+
+  &:hover {
+    color: var(--colorBrandForegroundLinkHover);
+    text-decoration-line: underline;
+  }
+
+  &:active {
+    color: var(--colorBrandForegroundLinkPressed);
+    text-decoration-line: underline;
+  }
+
+  &:focus-visible {
+    outline-style: none;
+    text-decoration-color: var(--colorStrokeFocus2);
+    text-decoration-line: underline;
+    text-decoration-style: double;
+  }
+
+  &[data-appearance='subtle'] {
+    color: var(--colorNeutralForeground2Link);
+
+    &:hover {
+      color: var(--colorNeutralForeground2LinkHover);
+    }
+
+    &:active {
+      color: var(--colorNeutralForeground2LinkPressed);
+    }
+  }
+
+  &[data-inline] {
+    text-decoration-line: underline;
+  }
+
+  &[data-disabled] {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    text-decoration-line: none;
+
+    &:is(:hover, :active) {
+      color: var(--colorNeutralForegroundDisabled);
+      text-decoration-line: none;
+    }
+
+    @media (forced-colors: active) {
+      color: GrayText;
+
+      &:is(:hover, :active) {
+        color: GrayText;
+      }
+    }
+  }
+}

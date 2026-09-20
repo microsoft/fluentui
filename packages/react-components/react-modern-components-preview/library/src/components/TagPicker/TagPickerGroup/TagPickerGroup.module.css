@@ -1,0 +1,16 @@
+.root {
+  display: inline-flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  cursor: text;
+
+  &[data-picker-size='medium'] {
+    gap: var(--spacingHorizontalXS);
+    padding-block: var(--spacingVerticalSNudge);
+  }
+
+  &:is([data-picker-size='large'], [data-picker-size='extra-large']) {
+    gap: var(--spacingHorizontalSNudge);
+    padding-block: var(--spacingVerticalS);
+  }
+}

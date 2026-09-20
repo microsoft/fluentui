@@ -1,0 +1,136 @@
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.secondaryContent {
+  color: var(--colorNeutralForeground2);
+  font-weight: var(--fontWeightRegular);
+  line-height: 100%;
+}
+
+.icon {
+  inline-size: 40px;
+  block-size: 40px;
+  font-size: 40px;
+}
+
+.root {
+  block-size: auto;
+
+  &:is([data-size='small'], [data-size='medium']) .secondaryContent {
+    font-size: var(--fontSizeBase200);
+  }
+
+  &[data-size='large'] .secondaryContent {
+    font-size: var(--fontSizeBase300);
+  }
+
+  &:hover .secondaryContent {
+    color: var(--colorNeutralForeground2Hover);
+  }
+
+  &:is(:hover:active, :active:focus-visible) .secondaryContent {
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  &[data-appearance='primary'] .secondaryContent,
+  &[data-appearance='primary']:hover .secondaryContent,
+  &[data-appearance='primary']:hover:active .secondaryContent,
+  &[data-appearance='primary']:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  &[data-appearance='transparent']:hover .secondaryContent {
+    color: var(--colorNeutralForeground2BrandHover);
+  }
+
+  &[data-appearance='transparent']:is(:hover:active, :active:focus-visible) .secondaryContent {
+    color: var(--colorNeutralForeground2BrandPressed);
+  }
+
+  &[data-size='small'] {
+    padding: var(--spacingHorizontalS) var(--spacingHorizontalS) var(--spacingHorizontalMNudge);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  &[data-size='medium'] {
+    padding: 14px var(--spacingHorizontalM) var(--spacingHorizontalL);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  &[data-size='large'] {
+    padding: 18px var(--spacingHorizontalL) var(--spacingHorizontalXL);
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  &[data-icon-only][data-size='small'] {
+    min-inline-size: 48px;
+    max-inline-size: 48px;
+    padding: var(--spacingHorizontalXS);
+  }
+
+  &[data-icon-only][data-size='medium'] {
+    min-inline-size: 52px;
+    max-inline-size: 52px;
+    padding: var(--spacingHorizontalSNudge);
+  }
+
+  &[data-icon-only][data-size='large'] {
+    min-inline-size: 56px;
+    max-inline-size: 56px;
+    padding: var(--spacingHorizontalS);
+  }
+
+  &[data-icon-position='before']:not([data-icon-only]) .icon {
+    margin-inline-end: var(--spacingHorizontalM);
+  }
+
+  &[data-icon-position='after']:not([data-icon-only]) .icon {
+    margin-inline-start: var(--spacingHorizontalM);
+  }
+
+  &[data-disabled] .secondaryContent,
+  &[data-disabled-focusable] .secondaryContent,
+  &[data-disabled]:hover .secondaryContent,
+  &[data-disabled-focusable]:hover .secondaryContent,
+  &[data-disabled]:hover:active .secondaryContent,
+  &[data-disabled-focusable]:hover:active .secondaryContent,
+  &[data-disabled]:active:focus-visible .secondaryContent,
+  &[data-disabled-focusable]:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+}
+
+@media (forced-colors: active) {
+  .root:hover .secondaryContent,
+  .root:hover:active .secondaryContent,
+  .root:active:focus-visible .secondaryContent {
+    color: Highlight;
+  }
+
+  .root[data-appearance='primary'] .secondaryContent {
+    color: HighlightText;
+  }
+
+  .root[data-appearance='subtle']:hover .secondaryContent,
+  .root[data-appearance='subtle']:hover:active .secondaryContent,
+  .root[data-appearance='subtle']:active:focus-visible .secondaryContent {
+    color: Canvas;
+  }
+
+  .root[data-disabled] .secondaryContent,
+  .root[data-disabled-focusable] .secondaryContent,
+  .root[data-disabled]:hover .secondaryContent,
+  .root[data-disabled-focusable]:hover .secondaryContent,
+  .root[data-disabled]:hover:active .secondaryContent,
+  .root[data-disabled-focusable]:hover:active .secondaryContent,
+  .root[data-disabled]:active:focus-visible .secondaryContent,
+  .root[data-disabled-focusable]:active:focus-visible .secondaryContent {
+    color: GrayText;
+  }
+}

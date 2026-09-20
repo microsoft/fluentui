@@ -1,0 +1,68 @@
+.root {
+  display: block;
+  inline-size: 100%;
+  overflow: hidden;
+  background-color: var(--colorNeutralBackground6);
+  border-radius: var(--borderRadiusMedium);
+
+  &[data-shape='square'] {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  &[data-thickness='medium'] {
+    block-size: 2px;
+  }
+
+  &[data-thickness='large'] {
+    block-size: 4px;
+  }
+
+  @media screen and (forced-colors: active) {
+    background-color: CanvasText;
+  }
+}
+
+.bar {
+  block-size: 100%;
+  border-radius: inherit;
+  background-color: var(--colorCompoundBrandBackground);
+
+  .root[data-transition] & {
+    transition-property: inline-size;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+
+  .root[data-indeterminate] & {
+    position: relative;
+    max-inline-size: 33%;
+    background-image: linear-gradient(
+      to right,
+      var(--colorNeutralBackground6) 0%,
+      var(--colorTransparentBackground) 50%,
+      var(--colorNeutralBackground6) 100%
+    );
+  }
+
+  .root:not([data-indeterminate])[data-color='error'] & {
+    background-color: var(--colorPaletteRedBackground3);
+  }
+
+  .root:not([data-indeterminate])[data-color='warning'] & {
+    background-color: var(--colorPaletteDarkOrangeBackground3);
+  }
+
+  .root:not([data-indeterminate])[data-color='success'] & {
+    background-color: var(--colorPaletteGreenBackground3);
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root[data-indeterminate] & {
+      max-inline-size: 100%;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    background-color: Highlight;
+  }
+}

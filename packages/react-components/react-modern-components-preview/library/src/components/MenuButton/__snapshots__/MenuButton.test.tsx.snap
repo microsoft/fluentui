@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`MenuButton renders a default state 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    class="fui-MenuButton"
+    data-appearance="secondary"
+    data-shape="rounded"
+    data-size="medium"
+    type="button"
+  >
+    Default MenuButton
+    <span
+      class="fui-MenuButton__menuIcon"
+    >
+      <span
+        aria-hidden="true"
+        data-default-icon=""
+      />
+    </span>
+  </button>
+</div>
+`;

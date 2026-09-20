@@ -1,0 +1,11 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 160px;
+  overflow-y: auto;
+  outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  padding: var(--spacingHorizontalXS);
+  row-gap: var(--spacingHorizontalXXS);
+  background-color: var(--colorNeutralBackground1);
+}
