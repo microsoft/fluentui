@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Developer/Accessibility/Components/SplitButton" />
+
+# SplitButton Accessibility Spec
+
+`SplitButton` is a composite control: it pairs a primary action `Button` with a secondary `MenuButton` that opens a menu of related variations on that action. The two buttons are visually joined but are independently focusable and independently activatable.
+
+`SplitButton` is composed of `Button` and `MenuButton`, and inherits all of their accessibility behavior. This spec only covers what is **specific** to the composite. For label requirements, the difference between `disabled` and `disabledFocusable`, anchor (`as="a"`) rendering, contrast considerations, target size, motion, and base keyboard activation, see the [Button Accessibility Spec](?path=/docs/concepts-developer-accessibility-components-button--docs) and the [MenuButton Accessibility Spec](?path=/docs/concepts-developer-accessibility-components-menubutton--docs).
+
+## Usage
+
+### When to choose SplitButton
+
+Use `SplitButton` when there is a single primary action that the user is most likely to take, **and** a set of related variations on that action that should be available without taking up additional space at rest. The classic example is a "Send" button with a chevron that opens "Send later", "Schedule send", etc.
+
+If there is no clear primary action — only a set of equally-weighted choices — use `MenuButton` instead. If there is a primary action with no associated menu, use `Button`.
+
+### Implementing SplitButton
+
+#### Use with Menu and MenuTrigger
+
+The recommended pattern is to use `SplitButton` with a `Menu` and `MenuTrigger`, passing the `MenuTrigger` props onto the `menuButton` slot:
+
+```tsx
+<Menu positioning="below-end">
+  <MenuTrigger disableButtonEnhancement>
+    {(triggerProps: MenuButtonProps) => (
+      <SplitButton
+        menuButton={{ ...triggerProps, 'aria-label': 'More send options' }}
+        primaryActionButton={{ onClick: send }}
+      >
+        Send
+      </SplitButton>
+    )}
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem>Send later</MenuItem>
+      <MenuItem>Schedule send</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+This wires the menu half to the popup correctly (`aria-haspopup`, `aria-expanded`, `aria-controls`) and leaves the primary half as a plain action button.
+
+#### Label
+
+The two halves of `SplitButton` need separate accessible names because they are separate focusable controls.
+
+- The **primary action button** is labelled the same way any `Button` is labelled — usually by its visible text content, or by `aria-label` if there is none.
+- The **menu button** is labelled by the primary action button by default. `useSplitButton_unstable` assigns `id` to the primary action button and sets `aria-labelledby` on the menu button to point at it, **only** if the consumer has not already provided `aria-label` or `aria-labelledby` on the `menuButton` slot ([useSplitButton.ts:62-69](packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L62-L69)).
+
+This default produces a useful fallback announcement: a screen reader announces the menu half with the primary action's text plus the role ("menu button") and the `aria-expanded` state. For the "Send" example, without an `aria-label` the menu button would be announced as "Send, menu button, collapsed".
+
+It is good practice to provide a more descriptive, localized, custom accessible name to the `menuButton` slot such as "More send options" in the earlier example.
+
+#### Disabled state
+
+Setting `disabled` or `disabledFocusable` on `SplitButton` cascades down to both the primary action button and the menu button via the slot default props ([useSplitButton.ts:32-58](packages/react-components/react-button/library/src/components/SplitButton/useSplitButton.ts#L32-L58)). The two halves cannot be independently disabled at the top level — to disable only one, pass `disabled` directly on the `primaryActionButton` or `menuButton` slot.
+
+The visual disabled styling is applied to both halves, plus a disabled border color on the inner seam between them so the visual joinery still reads as disabled.
+
+#### Target size
+
+The menu half of `SplitButton` is narrower than a standalone `MenuButton` because it does not render text. To meet [WCAG 2.5.8 Target Size (Minimum)](https://w3c.github.io/wcag/understanding/target-size-minimum.html), the styles enforce a minimum width of 24px on the menu button via the `MIN_TARGET_SIZE` constant ([useSplitButtonStyles.styles.ts:17](packages/react-components/react-button/library/src/components/SplitButton/useSplitButtonStyles.styles.ts#L17)).
+
+When overriding layout styles, authors must verify that **both** halves remain at least 24×24 CSS pixels. This is especially relevant for the menu half at the `small` size, where it is closest to the minimum.
+
+## Semantics
+
+`SplitButton` renders a non-interactive `<div>` wrapper around two independently-focusable buttons:
+
+| Slot                | Role   | States and properties                                                                                                        |
+| ------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| root                | none   | A plain `<div>` with no role.                                                                                                |
+| primaryActionButton | button | All `Button` semantics. Carries an internal `id` used for menu button labelling.                                             |
+| menuButton          | button | All `MenuButton` semantics. `aria-expanded` is always set; `aria-labelledby` points at the primary action button by default. |
+
+The wrapper does not have a group role or any composite role. `SplitButton` is two independent buttons that happen to be visually adjacent; assistive tech treats them as two separate tab stops and announces each individually.
+
+When customizing the SplitButton or placing it into arrow-navigation regions like Toolbar, it is important to ensure that the root slot is never focusable and does not get an interactive role.
+
+## Keyboard interaction
+
+`SplitButton` produces **two tab stops**: the primary action button and the menu button, in that DOM order. When used within arrow-navigation groups like Toolbar, `SplitButton` has two arrow stops. This behavior should not be overridden -- for robust cross-platform screen reader accessibility, it is important that each button is independently exposed and focused.
+
+## Focus indicator
+
+Each half has its own visually distinct focus indicator.
+
+## Windows contrast themes (high contrast mode)
+
+The inner seam between the primary action button and the menu button has its own forced-colors handling in `useSplitButtonStyles.styles.ts`:
+
+- For `primary`, the inner border uses `HighlightText` at rest and `Highlight` on hover and active — opposite of the outer border — so the visual division between the two halves stays visible against the highlighted background.
+- For `subtle` and `transparent`, the inner border uses transparent background tokens, matching the rest of the button.
+- When disabled, the inner border uses `GrayText` to match the rest of the disabled border.
+
+All other forced-colors behavior is inherited from `Button` and `MenuButton`.

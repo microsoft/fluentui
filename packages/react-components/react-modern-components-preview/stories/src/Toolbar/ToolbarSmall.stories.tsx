@@ -1,0 +1,32 @@
+import * as React from 'react';
+
+import { FontIncrease24Regular, FontDecrease24Regular, TextFont24Regular } from '@fluentui/react-icons';
+import { Toolbar, ToolbarButton } from '@fluentui/react-modern-components-preview/toolbar';
+import type { ToolbarProps } from '@fluentui/react-modern-components-preview/toolbar';
+
+export const Small = (props: Partial<ToolbarProps>): React.ReactNode => (
+  <Toolbar
+    {...props}
+    aria-label="Small"
+    size="small"
+    style={{
+      border: '2px solid black',
+      borderRadius: '8px',
+    }}
+  >
+    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
+    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
+    <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
+  </Toolbar>
+);
+
+Small.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The size determines the spacing around the toolbar controls.',
+        'A small sized toolbar has no vertical padding and uses 4px for horizontal padding.',
+      ].join('\n'),
+    },
+  },
+};
