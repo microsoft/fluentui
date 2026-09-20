@@ -1,0 +1,9 @@
+.root {
+  & [data-overflow-menu] {
+    flex-shrink: 0;
+  }
+
+  & [data-overflowing] {
+    display: none;
+  }
+}

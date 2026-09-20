@@ -1,0 +1,87 @@
+.primaryActionButton {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+
+  &:focus-visible {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+}
+
+.menuButton {
+  min-inline-size: 24px;
+  border-inline-start-width: 0;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+
+  &:focus-visible {
+    min-inline-size: 24px;
+    border-inline-start-width: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+}
+
+.root {
+  display: inline-flex;
+  justify-content: stretch;
+  position: relative;
+  vertical-align: middle;
+
+  &:is([data-appearance='subtle'], [data-appearance='transparent']) {
+    .primaryActionButton {
+      border-inline-end-color: var(--colorTransparentBackground);
+    }
+
+    &:hover .primaryActionButton {
+      border-inline-end-color: var(--colorTransparentBackgroundHover);
+    }
+
+    &:is(:hover:active, :active:focus-visible) .primaryActionButton {
+      border-inline-end-color: var(--colorTransparentBackgroundPressed);
+    }
+  }
+
+  &[data-appearance='primary'],
+  &[data-appearance='primary']:hover,
+  &[data-appearance='primary']:hover:active,
+  &[data-appearance='primary']:active:focus-visible {
+    .primaryActionButton {
+      border-inline-end-color: var(--colorNeutralStrokeOnBrand);
+    }
+  }
+
+  &[data-disabled] .primaryActionButton,
+  &[data-disabled-focusable] .primaryActionButton,
+  &[data-disabled]:hover .primaryActionButton,
+  &[data-disabled-focusable]:hover .primaryActionButton,
+  &[data-disabled]:hover:active .primaryActionButton,
+  &[data-disabled-focusable]:hover:active .primaryActionButton,
+  &[data-disabled]:active:focus-visible .primaryActionButton,
+  &[data-disabled-focusable]:active:focus-visible .primaryActionButton {
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-appearance='primary'] .primaryActionButton {
+    border-inline-end-color: HighlightText;
+  }
+
+  .root[data-appearance='primary']:hover .primaryActionButton,
+  .root[data-appearance='primary']:hover:active .primaryActionButton,
+  .root[data-appearance='primary']:active:focus-visible .primaryActionButton {
+    border-inline-end-color: Highlight;
+  }
+
+  .root[data-disabled] .primaryActionButton,
+  .root[data-disabled-focusable] .primaryActionButton,
+  .root[data-disabled]:hover .primaryActionButton,
+  .root[data-disabled-focusable]:hover .primaryActionButton,
+  .root[data-disabled]:hover:active .primaryActionButton,
+  .root[data-disabled-focusable]:hover:active .primaryActionButton,
+  .root[data-disabled]:active:focus-visible .primaryActionButton,
+  .root[data-disabled-focusable]:active:focus-visible .primaryActionButton {
+    border-inline-end-color: GrayText;
+  }
+}

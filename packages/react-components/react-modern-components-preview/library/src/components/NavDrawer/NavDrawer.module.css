@@ -1,0 +1,8 @@
+.root {
+  align-items: unset;
+  background-color: var(--colorNeutralBackground4);
+
+  &[data-nav-default-size] {
+    --fui-Drawer--size: 260px;
+  }
+}

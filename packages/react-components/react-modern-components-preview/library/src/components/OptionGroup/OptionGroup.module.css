@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacingHorizontalXXS);
+
+  &:not(:last-child)::after {
+    display: block;
+    margin: 0 calc(var(--spacingHorizontalXS) * -1) var(--spacingVerticalXS);
+    padding-block-end: var(--spacingHorizontalXS);
+    border-block-end: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+    content: '';
+  }
+}
+
+.label {
+  display: block;
+  padding: var(--spacingHorizontalS) var(--spacingHorizontalSNudge);
+  border-radius: var(--borderRadiusMedium);
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+}

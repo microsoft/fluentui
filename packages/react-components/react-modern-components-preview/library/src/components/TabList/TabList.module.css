@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+  align-items: stretch;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+  }
+
+  &:is([data-appearance='subtle-circular'], [data-appearance='filled-circular']) {
+    gap: var(--spacingHorizontalS);
+  }
+
+  &:is([data-appearance='subtle-circular'], [data-appearance='filled-circular'])[data-size='small'] {
+    gap: var(--spacingHorizontalSNudge);
+  }
+}

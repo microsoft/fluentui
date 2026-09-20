@@ -1,0 +1,9 @@
+.root {
+  display: inline-flex;
+  max-inline-size: 1px;
+  padding: 0 12px;
+
+  &:not([data-vertical]) {
+    max-inline-size: initial;
+  }
+}

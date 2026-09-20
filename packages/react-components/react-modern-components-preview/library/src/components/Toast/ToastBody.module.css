@@ -1,0 +1,18 @@
+.root {
+  grid-column: 2 / 3;
+  padding-block-start: var(--spacingVerticalSNudge);
+  color: var(--colorNeutralForeground1);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  overflow-wrap: break-word;
+}
+
+.subtitle {
+  grid-column: 2 / 3;
+  padding-block-start: var(--spacingVerticalXS);
+  color: var(--colorNeutralForeground2);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+}

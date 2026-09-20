@@ -1,0 +1,637 @@
+.root {
+  --fui-Avatar-badgeAlign: right;
+  --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  --fui-Avatar-badgeRadius: 8px;
+  --fui-Avatar-ringWidth: 0px;
+
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  vertical-align: middle;
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: var(--borderRadiusCircular);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.root::before,
+.root::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: calc(-2 * var(--fui-Avatar-ringWidth));
+  border-radius: inherit;
+  transition-duration: var(--durationUltraSlow), var(--durationSlower);
+  transition-property: margin, opacity;
+  transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+}
+
+.root::before {
+  border: var(--fui-Avatar-ringWidth) solid;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  vertical-align: top;
+}
+
+.initials,
+.icon {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  border-radius: inherit;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+  vertical-align: center;
+}
+
+.badge {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+}
+
+.root[data-size='16'] {
+  inline-size: 16px;
+  block-size: 16px;
+}
+
+.root[data-size='20'] {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.root[data-size='24'] {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.root[data-size='28'] {
+  inline-size: 28px;
+  block-size: 28px;
+  font-size: var(--fontSizeBase200);
+}
+
+.root[data-size='32'] {
+  inline-size: 32px;
+  block-size: 32px;
+}
+
+.root[data-size='36'] {
+  inline-size: 36px;
+  block-size: 36px;
+}
+
+.root[data-size='40'] {
+  inline-size: 40px;
+  block-size: 40px;
+}
+
+.root[data-size='48'] {
+  inline-size: 48px;
+  block-size: 48px;
+}
+
+.root[data-size='56'] {
+  inline-size: 56px;
+  block-size: 56px;
+}
+
+.root[data-size='64'] {
+  inline-size: 64px;
+  block-size: 64px;
+}
+
+.root[data-size='72'] {
+  inline-size: 72px;
+  block-size: 72px;
+}
+
+.root[data-size='96'] {
+  inline-size: 96px;
+  block-size: 96px;
+}
+
+.root[data-size='120'] {
+  inline-size: 120px;
+  block-size: 120px;
+}
+
+.root[data-size='128'] {
+  inline-size: 128px;
+  block-size: 128px;
+}
+
+.root:is([data-size='16'], [data-size='20'], [data-size='24']) {
+  font-size: var(--fontSizeBase100);
+}
+
+.root:is([data-size='48'], [data-size='56']) {
+  font-size: var(--fontSizeBase400);
+}
+
+.root:is([data-size='64'], [data-size='72'], [data-size='96']) {
+  font-size: var(--fontSizeBase500);
+}
+
+.root:is([data-size='120'], [data-size='128']) {
+  font-size: var(--fontSizeBase600);
+}
+
+.root[data-shape='square']:is([data-size='16'], [data-size='20'], [data-size='24']) {
+  border-radius: var(--borderRadiusSmall);
+}
+
+.root[data-shape='square']:is(
+    [data-size='28'],
+    [data-size='32'],
+    [data-size='36'],
+    [data-size='40'],
+    [data-size='48']
+  ) {
+  border-radius: var(--borderRadiusMedium);
+}
+
+.root[data-shape='square']:is([data-size='56'], [data-size='64'], [data-size='72']) {
+  border-radius: var(--borderRadiusLarge);
+}
+
+.root[data-shape='square']:is([data-size='96'], [data-size='120'], [data-size='128']) {
+  border-radius: var(--borderRadiusXLarge);
+}
+
+.root[data-has-badge][data-badge-size='tiny'] {
+  --fui-Avatar-badgeRadius: 3px;
+}
+
+.root[data-has-badge][data-badge-size='extra-small'] {
+  --fui-Avatar-badgeRadius: 5px;
+}
+
+.root[data-has-badge][data-badge-size='small'] {
+  --fui-Avatar-badgeRadius: 6px;
+}
+
+.root[data-has-badge][data-badge-size='medium'] {
+  --fui-Avatar-badgeRadius: 8px;
+}
+
+.root[data-has-badge][data-badge-size='large'] {
+  --fui-Avatar-badgeRadius: 10px;
+  --fui-Avatar-badgeGap: var(--strokeWidthThick);
+}
+
+.root[data-has-badge][data-badge-size='extra-large'] {
+  --fui-Avatar-badgeRadius: 14px;
+  --fui-Avatar-badgeGap: var(--strokeWidthThick);
+}
+
+.root[data-has-badge] :is(.image, .initials, .icon) {
+  mask-image: radial-gradient(
+    circle at bottom var(--fui-Avatar-badgeRadius) var(--fui-Avatar-badgeAlign) var(--fui-Avatar-badgeRadius),
+    transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+    var(--colorNeutralBackgroundStatic) calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+  );
+}
+
+.root:is([data-active='active'], [data-active='inactive']) {
+  transform: perspective(1px);
+  transition-duration: var(--durationUltraSlow), var(--durationFaster);
+  transition-property: transform, opacity;
+  transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+}
+
+.root:is([data-active='active'], [data-active='inactive']):is(
+    [data-active-appearance='ring'],
+    [data-active-appearance='ring-shadow']
+  )::before {
+  content: '';
+}
+
+.root:is([data-active='active'], [data-active='inactive']):is(
+    [data-active-appearance='shadow'],
+    [data-active-appearance='ring-shadow']
+  )::after {
+  content: '';
+}
+
+.root:is([data-active-appearance='ring'], [data-active-appearance='ring-shadow']):is(
+    [data-size='16'],
+    [data-size='20'],
+    [data-size='24'],
+    [data-size='28'],
+    [data-size='32'],
+    [data-size='36'],
+    [data-size='40'],
+    [data-size='48']
+  ) {
+  --fui-Avatar-ringWidth: var(--strokeWidthThick);
+}
+
+.root:is([data-active-appearance='ring'], [data-active-appearance='ring-shadow']):is(
+    [data-size='56'],
+    [data-size='64']
+  ) {
+  --fui-Avatar-ringWidth: var(--strokeWidthThicker);
+}
+
+.root:is([data-active-appearance='ring'], [data-active-appearance='ring-shadow']):is(
+    [data-size='72'],
+    [data-size='96'],
+    [data-size='120'],
+    [data-size='128']
+  ) {
+  --fui-Avatar-ringWidth: var(--strokeWidthThickest);
+}
+
+.root[data-has-badge]:is([data-active-appearance='ring'], [data-active-appearance='ring-shadow'])::before {
+  mask-image: radial-gradient(
+    circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth)) var(--fui-Avatar-badgeAlign)
+      calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth)),
+    transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+    var(--colorNeutralBackgroundStatic) calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+  );
+}
+
+.root:is([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']):is(
+    [data-size='16'],
+    [data-size='20'],
+    [data-size='24'],
+    [data-size='28']
+  )::after {
+  box-shadow: var(--shadow4);
+}
+
+.root:is([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']):is(
+    [data-size='32'],
+    [data-size='36'],
+    [data-size='40'],
+    [data-size='48']
+  )::after {
+  box-shadow: var(--shadow8);
+}
+
+.root:is([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']):is(
+    [data-size='56'],
+    [data-size='64']
+  )::after {
+  box-shadow: var(--shadow16);
+}
+
+.root:is([data-active-appearance='shadow'], [data-active-appearance='ring-shadow']):is(
+    [data-size='72'],
+    [data-size='96'],
+    [data-size='120'],
+    [data-size='128']
+  )::after {
+  box-shadow: var(--shadow28);
+}
+
+.root[data-active='inactive'] {
+  opacity: 0.8;
+  transform: scale(0.875);
+  transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+}
+
+.root[data-active='inactive']::before,
+.root[data-active='inactive']::after {
+  margin: 0;
+  opacity: 0;
+  transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+}
+
+.root[data-color='neutral'] :is(.image, .initials, .icon) {
+  color: var(--colorNeutralForeground3);
+  background-color: var(--colorNeutralBackground6);
+}
+
+.root[data-color='brand'] :is(.image, .initials, .icon) {
+  color: var(--colorNeutralForegroundStaticInverted);
+  background-color: var(--colorBrandBackgroundStatic);
+}
+
+.root[data-color='dark-red'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteDarkRedForeground2);
+  background-color: var(--colorPaletteDarkRedBackground2);
+}
+
+.root[data-color='cranberry'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteCranberryForeground2);
+  background-color: var(--colorPaletteCranberryBackground2);
+}
+
+.root[data-color='red'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteRedForeground2);
+  background-color: var(--colorPaletteRedBackground2);
+}
+
+.root[data-color='pumpkin'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePumpkinForeground2);
+  background-color: var(--colorPalettePumpkinBackground2);
+}
+
+.root[data-color='peach'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePeachForeground2);
+  background-color: var(--colorPalettePeachBackground2);
+}
+
+.root[data-color='marigold'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteMarigoldForeground2);
+  background-color: var(--colorPaletteMarigoldBackground2);
+}
+
+.root[data-color='gold'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteGoldForeground2);
+  background-color: var(--colorPaletteGoldBackground2);
+}
+
+.root[data-color='brass'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteBrassForeground2);
+  background-color: var(--colorPaletteBrassBackground2);
+}
+
+.root[data-color='brown'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteBrownForeground2);
+  background-color: var(--colorPaletteBrownBackground2);
+}
+
+.root[data-color='forest'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteForestForeground2);
+  background-color: var(--colorPaletteForestBackground2);
+}
+
+.root[data-color='seafoam'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteSeafoamForeground2);
+  background-color: var(--colorPaletteSeafoamBackground2);
+}
+
+.root[data-color='dark-green'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteDarkGreenForeground2);
+  background-color: var(--colorPaletteDarkGreenBackground2);
+}
+
+.root[data-color='light-teal'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteLightTealForeground2);
+  background-color: var(--colorPaletteLightTealBackground2);
+}
+
+.root[data-color='teal'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteTealForeground2);
+  background-color: var(--colorPaletteTealBackground2);
+}
+
+.root[data-color='steel'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteSteelForeground2);
+  background-color: var(--colorPaletteSteelBackground2);
+}
+
+.root[data-color='blue'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteBlueForeground2);
+  background-color: var(--colorPaletteBlueBackground2);
+}
+
+.root[data-color='royal-blue'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteRoyalBlueForeground2);
+  background-color: var(--colorPaletteRoyalBlueBackground2);
+}
+
+.root[data-color='cornflower'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteCornflowerForeground2);
+  background-color: var(--colorPaletteCornflowerBackground2);
+}
+
+.root[data-color='navy'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteNavyForeground2);
+  background-color: var(--colorPaletteNavyBackground2);
+}
+
+.root[data-color='lavender'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteLavenderForeground2);
+  background-color: var(--colorPaletteLavenderBackground2);
+}
+
+.root[data-color='purple'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePurpleForeground2);
+  background-color: var(--colorPalettePurpleBackground2);
+}
+
+.root[data-color='grape'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteGrapeForeground2);
+  background-color: var(--colorPaletteGrapeBackground2);
+}
+
+.root[data-color='lilac'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteLilacForeground2);
+  background-color: var(--colorPaletteLilacBackground2);
+}
+
+.root[data-color='pink'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePinkForeground2);
+  background-color: var(--colorPalettePinkBackground2);
+}
+
+.root[data-color='magenta'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteMagentaForeground2);
+  background-color: var(--colorPaletteMagentaBackground2);
+}
+
+.root[data-color='plum'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePlumForeground2);
+  background-color: var(--colorPalettePlumBackground2);
+}
+
+.root[data-color='beige'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteBeigeForeground2);
+  background-color: var(--colorPaletteBeigeBackground2);
+}
+
+.root[data-color='mink'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteMinkForeground2);
+  background-color: var(--colorPaletteMinkBackground2);
+}
+
+.root[data-color='platinum'] :is(.image, .initials, .icon) {
+  color: var(--colorPalettePlatinumForeground2);
+  background-color: var(--colorPalettePlatinumBackground2);
+}
+
+.root[data-color='anchor'] :is(.image, .initials, .icon) {
+  color: var(--colorPaletteAnchorForeground2);
+  background-color: var(--colorPaletteAnchorBackground2);
+}
+
+.root[data-color='neutral']::before,
+.root[data-color='brand']::before {
+  color: var(--colorBrandStroke1);
+}
+
+.root[data-color='dark-red']::before {
+  color: var(--colorPaletteDarkRedBorderActive);
+}
+
+.root[data-color='cranberry']::before {
+  color: var(--colorPaletteCranberryBorderActive);
+}
+
+.root[data-color='red']::before {
+  color: var(--colorPaletteRedBorderActive);
+}
+
+.root[data-color='pumpkin']::before {
+  color: var(--colorPalettePumpkinBorderActive);
+}
+
+.root[data-color='peach']::before {
+  color: var(--colorPalettePeachBorderActive);
+}
+
+.root[data-color='marigold']::before {
+  color: var(--colorPaletteMarigoldBorderActive);
+}
+
+.root[data-color='gold']::before {
+  color: var(--colorPaletteGoldBorderActive);
+}
+
+.root[data-color='brass']::before {
+  color: var(--colorPaletteBrassBorderActive);
+}
+
+.root[data-color='brown']::before {
+  color: var(--colorPaletteBrownBorderActive);
+}
+
+.root[data-color='forest']::before {
+  color: var(--colorPaletteForestBorderActive);
+}
+
+.root[data-color='seafoam']::before {
+  color: var(--colorPaletteSeafoamBorderActive);
+}
+
+.root[data-color='dark-green']::before {
+  color: var(--colorPaletteDarkGreenBorderActive);
+}
+
+.root[data-color='light-teal']::before {
+  color: var(--colorPaletteLightTealBorderActive);
+}
+
+.root[data-color='teal']::before {
+  color: var(--colorPaletteTealBorderActive);
+}
+
+.root[data-color='steel']::before {
+  color: var(--colorPaletteSteelBorderActive);
+}
+
+.root[data-color='blue']::before {
+  color: var(--colorPaletteBlueBorderActive);
+}
+
+.root[data-color='royal-blue']::before {
+  color: var(--colorPaletteRoyalBlueBorderActive);
+}
+
+.root[data-color='cornflower']::before {
+  color: var(--colorPaletteCornflowerBorderActive);
+}
+
+.root[data-color='navy']::before {
+  color: var(--colorPaletteNavyBorderActive);
+}
+
+.root[data-color='lavender']::before {
+  color: var(--colorPaletteLavenderBorderActive);
+}
+
+.root[data-color='purple']::before {
+  color: var(--colorPalettePurpleBorderActive);
+}
+
+.root[data-color='grape']::before {
+  color: var(--colorPaletteGrapeBorderActive);
+}
+
+.root[data-color='lilac']::before {
+  color: var(--colorPaletteLilacBorderActive);
+}
+
+.root[data-color='pink']::before {
+  color: var(--colorPalettePinkBorderActive);
+}
+
+.root[data-color='magenta']::before {
+  color: var(--colorPaletteMagentaBorderActive);
+}
+
+.root[data-color='plum']::before {
+  color: var(--colorPalettePlumBorderActive);
+}
+
+.root[data-color='beige']::before {
+  color: var(--colorPaletteBeigeBorderActive);
+}
+
+.root[data-color='mink']::before {
+  color: var(--colorPaletteMinkBorderActive);
+}
+
+.root[data-color='platinum']::before {
+  color: var(--colorPalettePlatinumBorderActive);
+}
+
+.root[data-color='anchor']::before {
+  color: var(--colorPaletteAnchorBorderActive);
+}
+
+.root[data-size='16'] .icon {
+  font-size: 12px;
+}
+
+.root:is([data-size='20'], [data-size='24']) .icon {
+  font-size: 16px;
+}
+
+.root:is([data-size='28'], [data-size='32'], [data-size='36'], [data-size='40']) .icon {
+  font-size: 20px;
+}
+
+.root[data-size='48'] .icon {
+  font-size: 24px;
+}
+
+.root[data-size='56'] .icon {
+  font-size: 28px;
+}
+
+.root:is([data-size='64'], [data-size='72']) .icon {
+  font-size: 32px;
+}
+
+.root:is([data-size='96'], [data-size='120'], [data-size='128']) .icon {
+  font-size: 48px;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .root,
+  .root::before,
+  .root::after {
+    transition-duration: 0.01ms;
+  }
+}

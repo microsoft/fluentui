@@ -1,0 +1,266 @@
+.root {
+  box-sizing: border-box;
+  display: inline-grid;
+  align-items: center;
+  grid-template-areas:
+    'media primary dismissIcon'
+    'media secondary dismissIcon';
+  inline-size: fit-content;
+  padding: 0;
+  color: var(--colorNeutralForeground2);
+  font-family: inherit;
+  text-align: unset;
+  appearance: auto;
+  background-color: var(--colorNeutralBackground3);
+  border-color: var(--colorTransparentStroke);
+  border-style: solid;
+  border-width: var(--strokeWidthThin);
+
+  &[data-shape='rounded'] {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  &[data-shape='circular'] {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  &:focus-visible {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: var(--strokeWidthThick);
+  }
+
+  &[data-appearance='outline'] {
+    background-color: var(--colorSubtleBackground);
+    border-color: var(--colorNeutralStroke1);
+  }
+
+  &[data-appearance='brand'] {
+    color: var(--colorBrandForeground2);
+    background-color: var(--colorBrandBackground2);
+  }
+
+  &[data-selected]:not([data-disabled]) {
+    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackground);
+    border-color: var(--colorBrandStroke1);
+  }
+
+  &[data-disabled] {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorTransparentStrokeDisabled);
+
+    &[data-appearance='outline'] {
+      background-color: var(--colorSubtleBackground);
+      border-color: var(--colorNeutralStrokeDisabled);
+    }
+  }
+
+  &[data-size='medium'] {
+    block-size: 32px;
+  }
+
+  &[data-size='small'] {
+    block-size: 24px;
+  }
+
+  &[data-size='extra-small'] {
+    position: relative;
+    block-size: 20px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 2px;
+      content: '';
+    }
+
+    &::before {
+      inset-block-end: 100%;
+    }
+
+    &::after {
+      inset-block-start: 100%;
+    }
+  }
+
+  &:not([data-has-media])[data-size='medium'] {
+    padding-inline-start: 7px;
+  }
+
+  &:not([data-has-media]):is([data-size='small'], [data-size='extra-small']) {
+    padding-inline-start: 5px;
+  }
+
+  &:not([data-has-dismiss-icon])[data-size='medium'] {
+    padding-inline-end: 7px;
+  }
+
+  &:not([data-has-dismiss-icon]):is([data-size='small'], [data-size='extra-small']) {
+    padding-inline-end: 5px;
+  }
+}
+
+.media {
+  grid-area: media;
+  display: flex;
+  padding-inline-start: 1px;
+
+  .root[data-size='medium'] & {
+    padding-inline-end: var(--spacingHorizontalS);
+  }
+
+  .root:is([data-size='small'], [data-size='extra-small']) & {
+    padding-inline-end: var(--spacingHorizontalSNudge);
+  }
+}
+
+.icon {
+  grid-area: media;
+  display: flex;
+  box-sizing: content-box;
+
+  .root[data-size='medium'] & {
+    inline-size: 20px;
+    padding-inline: 7px var(--spacingHorizontalXS);
+    font-size: 20px;
+  }
+
+  .root[data-size='small'] & {
+    inline-size: 16px;
+    padding-inline: 5px var(--spacingHorizontalXXS);
+    font-size: 16px;
+  }
+
+  .root[data-size='extra-small'] & {
+    inline-size: 12px;
+    padding-inline: 5px var(--spacingHorizontalXXS);
+    font-size: 12px;
+  }
+}
+
+.primaryText {
+  padding-inline: var(--spacingHorizontalXXS);
+  white-space: nowrap;
+
+  .root[data-size='medium'] & {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .root:is([data-size='small'], [data-size='extra-small']) & {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .root:not(:has(.secondaryText)) & {
+    grid-row: primary / secondary;
+    grid-column-start: primary;
+    padding-block-end: var(--spacingHorizontalXXS);
+  }
+
+  .root:has(.secondaryText) & {
+    grid-area: primary;
+    margin-block-start: -2px;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+}
+
+.secondaryText {
+  grid-area: secondary;
+  padding-inline: var(--spacingHorizontalXXS);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase100);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase100);
+  white-space: nowrap;
+}
+
+.dismissIcon {
+  grid-area: dismissIcon;
+  display: flex;
+
+  .root[data-size='medium'] & {
+    padding-inline: var(--spacingHorizontalXS) 7px;
+    font-size: 20px;
+  }
+
+  .root[data-size='small'] & {
+    padding-inline: var(--spacingHorizontalXXS) 5px;
+    font-size: 16px;
+  }
+
+  .root[data-size='extra-small'] & {
+    padding-inline: var(--spacingHorizontalXXS) 5px;
+    font-size: 12px;
+  }
+
+  .root:not([data-disabled]) &:is(:hover, :active) {
+    cursor: pointer;
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+
+  .root:not([data-disabled]) &:active {
+    color: var(--colorCompoundBrandForeground1Pressed);
+  }
+
+  .root[data-selected]:not([data-disabled]) &:is(:hover, :active) {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  [data-default-icon] {
+    position: relative;
+    display: inline-block;
+    inline-size: 1em;
+    block-size: 1em;
+
+    &::before,
+    &::after {
+      position: absolute;
+      inset-block-start: calc(50% - var(--strokeWidthThin) / 2);
+      inset-inline-start: 20%;
+      inline-size: 60%;
+      block-size: var(--strokeWidthThin);
+      content: '';
+      background-color: currentcolor;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-selected]:not([data-disabled]) {
+    color: HighlightText;
+    forced-color-adjust: none;
+    background-color: Highlight;
+  }
+
+  .dismissIcon:hover,
+  .dismissIcon:active {
+    color: Highlight;
+  }
+}
+
+@media (forced-colors: none) {
+  .root[data-size='extra-small']::before,
+  .root[data-size='extra-small']::after {
+    pointer-events: none;
+  }
+}

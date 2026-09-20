@@ -1,0 +1,45 @@
+.root {
+  background-color: var(--colorBrandBackground);
+  border: 0;
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  inline-size: 8px;
+  block-size: 8px;
+  outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  padding: 0;
+
+  &:focus-visible {
+    border-radius: var(--borderRadiusMedium);
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+  }
+
+  &:not([data-selected]) {
+    background-color: color-mix(in srgb, var(--colorBrandBackground) 30%, transparent);
+  }
+
+  &[data-selected] {
+    border-radius: 4px;
+    inline-size: 16px;
+
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
+  }
+
+  &[data-appearance='brand'][data-selected] {
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  &[data-appearance='brand']:not([data-selected]) {
+    background-color: color-mix(in srgb, var(--colorNeutralForegroundOnBrand) 30%, transparent);
+  }
+
+  @supports not (color: color-mix(in srgb, white, black)) {
+    &:not([data-selected]) {
+      background-color: var(--colorBrandBackground);
+      opacity: 0.3;
+    }
+  }
+}

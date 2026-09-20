@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  align-items: center;
+  padding: var(--spacingVerticalXS) var(--spacingHorizontalS);
+
+  &[data-vertical] {
+    flex-direction: column;
+    inline-size: fit-content;
+  }
+
+  &[data-size='small']:not([data-vertical]) {
+    padding: 0 var(--spacingHorizontalXS);
+  }
+
+  &[data-size='large']:not([data-vertical]) {
+    padding: var(--spacingVerticalXS) var(--spacingHorizontalXXL);
+  }
+}

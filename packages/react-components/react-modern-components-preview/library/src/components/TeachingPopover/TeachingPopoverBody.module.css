@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 12px;
+}
+
+.media {
+  align-items: center;
+  display: flex;
+  grid-area: media;
+  inline-size: auto;
+  justify-content: center;
+  margin-block-end: 12px;
+  overflow: hidden;
+  vertical-align: middle;
+
+  &[data-media-length='short'] {
+    aspect-ratio: 288 / 117;
+  }
+
+  &[data-media-length='medium'] {
+    aspect-ratio: 288 / 176;
+  }
+
+  &[data-media-length='tall'] {
+    aspect-ratio: 1;
+  }
+
+  @supports not (aspect-ratio: 1) {
+    &[data-media-length='short'] {
+      block-size: 117px;
+    }
+
+    &[data-media-length='medium'] {
+      block-size: 176px;
+    }
+
+    &[data-media-length='tall'] {
+      block-size: 288px;
+    }
+  }
+}

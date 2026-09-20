@@ -1,0 +1,11 @@
+.root {
+  box-sizing: border-box;
+  margin-block-start: var(--spacingVerticalL);
+  pointer-events: all;
+  border-radius: var(--borderRadiusMedium);
+
+  &:focus-visible {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: calc(-1 * var(--strokeWidthThick));
+  }
+}

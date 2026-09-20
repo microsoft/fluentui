@@ -1,0 +1,39 @@
+.root {
+  display: flex;
+  grid-column-end: 3;
+  color: var(--colorNeutralForeground1);
+  overflow-wrap: break-word;
+}
+
+.media {
+  display: flex;
+  grid-column-end: 2;
+  padding-block-start: var(--spacingVerticalXXS);
+  padding-inline-end: var(--spacingHorizontalS);
+  color: var(--colorNeutralForeground1);
+  font-size: var(--fontSizeBase400);
+
+  &[data-intent='success'] {
+    color: var(--colorStatusSuccessForeground1);
+  }
+
+  &[data-intent='error'] {
+    color: var(--colorStatusDangerForeground1);
+  }
+
+  &[data-intent='warning'] {
+    color: var(--colorStatusWarningForeground1);
+  }
+
+  &[data-intent='info'] {
+    color: var(--colorNeutralForeground2);
+  }
+}
+
+.action {
+  display: flex;
+  grid-column-end: -1;
+  align-items: start;
+  padding-inline-start: var(--spacingHorizontalM);
+  color: var(--colorBrandForeground1);
+}

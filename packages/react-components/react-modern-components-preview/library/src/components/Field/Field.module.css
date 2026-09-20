@@ -1,0 +1,86 @@
+.root {
+  display: grid;
+
+  &[data-orientation='horizontal'] {
+    grid-template-columns: 33% 1fr;
+    grid-template-rows: auto auto auto 1fr;
+
+    &:not([data-has-label]) {
+      grid-template-columns: 1fr;
+      padding-inline-start: 33%;
+    }
+  }
+}
+
+.label {
+  max-block-size: max-content;
+  max-inline-size: max-content;
+  padding-block: var(--spacingVerticalXXS);
+  margin-block-end: var(--spacingVerticalXXS);
+
+  .root[data-size='large'] & {
+    padding-block: 1px;
+    margin-block-end: var(--spacingVerticalXS);
+  }
+
+  .root[data-orientation='horizontal'] & {
+    grid-row: 1 / -1;
+    margin-block-end: 0;
+    margin-inline-end: var(--spacingHorizontalM);
+    padding-block: var(--spacingVerticalSNudge);
+  }
+
+  .root[data-orientation='horizontal'][data-size='small'] & {
+    padding-block: var(--spacingVerticalXS);
+  }
+
+  .root[data-orientation='horizontal'][data-size='large'] & {
+    padding-block: 9px;
+  }
+}
+
+.validationMessage,
+.hint {
+  color: var(--colorNeutralForeground3);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+  margin-block-start: var(--spacingVerticalXXS);
+}
+
+.validationMessage {
+  .root[data-validate-state='error'] & {
+    color: var(--colorPaletteRedForeground1);
+  }
+
+  .root[data-has-validation-icon] & {
+    padding-inline-start: calc(12px + var(--spacingHorizontalXS));
+  }
+}
+
+.validationMessageIcon {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 0;
+  margin-inline: calc(-12px - var(--spacingHorizontalXS)) var(--spacingHorizontalXS);
+  vertical-align: -1px;
+
+  .root[data-validate-state='error'] & {
+    color: var(--colorPaletteRedForeground1);
+  }
+
+  .root[data-validate-state='warning'] & {
+    color: var(--colorPaletteDarkOrangeForeground1);
+  }
+
+  .root[data-validate-state='success'] & {
+    color: var(--colorPaletteGreenForeground1);
+  }
+}
+
+.validationIconGlyph {
+  block-size: 12px;
+  fill: currentcolor;
+  inline-size: 12px;
+}

@@ -1,0 +1,92 @@
+.root {
+  --fui-AreaX--progress: 0%;
+  --fui-AreaY--progress: 0%;
+  --fui-Area__thumb--color: var(--colorNeutralForeground1Static);
+  --fui-Area--main-color: var(--colorPaletteRedBackground3);
+  --fui-Slider__thumb--size: 20px;
+
+  position: relative;
+  display: inline-grid;
+  place-items: start;
+  box-sizing: border-box;
+  min-block-size: 300px;
+  min-inline-size: 300px;
+  margin-block-end: var(--spacingVerticalSNudge);
+  background: linear-gradient(to bottom, transparent, var(--colorNeutralForeground1Static)),
+    linear-gradient(to right, var(--colorNeutralBackgroundStatic), transparent), var(--fui-Area--main-color);
+  border: 1px solid var(--colorNeutralStroke1);
+  touch-action: none;
+  forced-color-adjust: none;
+
+  &[data-shape='rounded'] {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  &[data-shape='square'] {
+    border-radius: var(--borderRadiusNone);
+  }
+}
+
+.thumb {
+  position: absolute;
+  inset-block-end: var(--fui-AreaY--progress);
+  inset-inline-start: var(--fui-AreaX--progress);
+  box-sizing: border-box;
+  block-size: var(--fui-Slider__thumb--size);
+  inline-size: var(--fui-Slider__thumb--size);
+  background-color: var(--fui-Area__thumb--color);
+  border: var(--strokeWidthThin) solid var(--colorNeutralForeground4);
+  border-radius: var(--borderRadiusCircular);
+  box-shadow: var(--shadow4);
+  outline-style: none;
+  transform: translate(-50%, 50%);
+  pointer-events: none;
+  forced-color-adjust: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    border: var(--strokeWidthThick) solid var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline-style: none;
+  }
+
+  &[data-fui-focus-within]:focus-within {
+    border-color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: calc(var(--strokeWidthThick) * -1);
+      border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusCircular);
+      pointer-events: none;
+    }
+  }
+}
+
+.input {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  block-size: 100%;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  .thumb[data-fui-focus-within]:focus-within::after {
+    border-color: Highlight;
+  }
+}

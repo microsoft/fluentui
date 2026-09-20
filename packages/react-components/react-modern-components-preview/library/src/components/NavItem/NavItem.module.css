@@ -1,0 +1,166 @@
+@keyframes indicator-enter {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: var(--colorCompoundBrandForeground1);
+  }
+}
+
+@keyframes icon-filled-enter {
+  from {
+    color: transparent;
+    opacity: 0;
+  }
+
+  to {
+    color: var(--colorNeutralForeground2BrandSelected);
+    opacity: 1;
+  }
+}
+
+@keyframes icon-regular-exit {
+  from {
+    color: var(--colorNeutralForeground2);
+    opacity: 1;
+  }
+
+  to {
+    color: transparent;
+    opacity: 0;
+  }
+}
+
+.root {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: var(--spacingVerticalMNudge) var(--spacingHorizontalS) var(--spacingVerticalMNudge)
+    var(--spacingHorizontalMNudge);
+  gap: var(--spacingVerticalL);
+  color: var(--colorNeutralForeground2);
+  background-color: var(--colorNeutralBackground4);
+  border: none;
+  border-radius: var(--borderRadiusMedium);
+  cursor: pointer;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  text-align: start;
+  text-decoration-line: none;
+  text-transform: none;
+  transition-duration: var(--durationFaster);
+  transition-property: background-color;
+  transition-timing-function: var(--curveLinear);
+
+  &:hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+
+  &:focus-visible {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: calc(var(--strokeWidthThick) * -1);
+  }
+
+  &[data-density='small'] {
+    padding: var(--spacingVerticalXS) var(--spacingHorizontalS) var(--spacingVerticalXS) var(--spacingHorizontalMNudge);
+  }
+
+  &[data-selected] {
+    font-weight: var(--fontWeightSemibold);
+
+    &::after {
+      position: absolute;
+      inline-size: 4px;
+      block-size: 20px;
+      margin-inline-start: -16px;
+      content: '';
+      background-color: var(--colorCompoundBrandForeground1);
+      border-radius: var(--borderRadiusCircular);
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-name: indicator-enter;
+      animation-timing-function: var(--curveLinear);
+    }
+  }
+}
+
+.icon {
+  display: grid;
+  grid-template-areas: 'overlay-area';
+  align-items: start;
+  justify-content: center;
+  min-inline-size: 20px;
+  min-block-size: 20px;
+  overflow: hidden;
+
+  :global(.fui-Icon-filled),
+  :global(.fui-Icon-regular) {
+    grid-area: overlay-area;
+  }
+
+  :global(.fui-Icon-filled) {
+    display: none;
+    color: transparent;
+  }
+
+  .root[data-selected] & {
+    :global(.fui-Icon-filled) {
+      display: inline;
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-name: icon-filled-enter;
+      animation-timing-function: var(--curveLinear);
+    }
+
+    :global(.fui-Icon-regular) {
+      animation-duration: var(--durationFaster);
+      animation-fill-mode: both;
+      animation-name: icon-regular-exit;
+      animation-timing-function: var(--curveLinear);
+    }
+  }
+}
+
+.subItem {
+  padding-inline-start: 46px;
+
+  &[data-density='small'] {
+    padding-inline-start: 40px;
+  }
+
+  &[data-selected]::after {
+    margin-inline-start: -52px;
+  }
+}
+
+.expandIcon {
+  block-size: 20px;
+  margin-inline-start: auto;
+}
+
+.root[data-selected] .expandIcon {
+  font-weight: var(--fontWeightSemibold);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .root,
+  .root[data-selected]::after,
+  .icon :global(.fui-Icon-filled),
+  .icon :global(.fui-Icon-regular) {
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-selected]::after {
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+}

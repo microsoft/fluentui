@@ -1,0 +1,42 @@
+.root {
+  color: var(--colorNeutralForeground1);
+  display: flex;
+  flex-direction: row;
+  font-size: var(--fontSizeBase400);
+  font-weight: var(--fontWeightSemibold);
+  justify-content: space-between;
+  line-height: var(--lineHeightBase400);
+  margin-block: 0;
+  padding-block-end: var(--spacingVerticalS);
+
+  &[data-appearance='brand'] {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+.dismissButton {
+  align-items: center;
+  background-color: var(--colorTransparentBackground);
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  border-inline-end-style: none;
+  border-radius: var(--borderRadiusNone);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  margin-inline-start: auto;
+  position: relative;
+
+  &:focus-visible {
+    border-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusMedium);
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+  }
+
+  .root[data-appearance='brand'] & {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}

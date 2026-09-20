@@ -1,0 +1,175 @@
+.root {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+  min-inline-size: 250px;
+  padding-inline: var(--spacingHorizontalM)
+    calc(var(--spacingHorizontalM) + var(--fui-TagPickerControl-aside-width, 0px));
+  column-gap: var(--spacingHorizontalXXS);
+  background-color: var(--colorNeutralBackground1);
+  border-color: var(--colorNeutralStroke1);
+  border-block-end-color: var(--colorNeutralStrokeAccessible);
+  border-style: solid;
+  border-width: var(--strokeWidthThin);
+  border-radius: var(--borderRadiusMedium);
+
+  &::after {
+    position: absolute;
+    inset-block-end: -1px;
+    inset-inline: -1px;
+    box-sizing: border-box;
+    block-size: max(2px, var(--borderRadiusMedium));
+    content: '';
+    border-block-end: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    border-end-start-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+    clip-path: inset(calc(100% - 2px) 0 0);
+    transform: scaleX(0);
+    transition-delay: var(--curveAccelerateMid);
+    transition-duration: var(--durationUltraFast);
+    transition-property: transform;
+  }
+
+  &:focus-within {
+    outline: 2px solid transparent;
+
+    &::after {
+      transform: scaleX(1);
+      transition-delay: var(--curveDecelerateMid);
+      transition-duration: var(--durationNormal);
+    }
+  }
+
+  &:focus-within:active::after {
+    border-block-end-color: var(--colorCompoundBrandStrokePressed);
+  }
+
+  &:not([data-disabled]):is(:hover, :active, :focus-within) {
+    border-color: var(--colorNeutralStroke1Hover);
+    border-block-end-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  &[data-size='medium'] {
+    min-block-size: 32px;
+  }
+
+  &[data-size='large'] {
+    min-block-size: 40px;
+  }
+
+  &[data-size='extra-large'] {
+    min-block-size: 44px;
+  }
+
+  &[data-appearance='underline'] {
+    background-color: var(--colorTransparentBackground);
+    border-color: transparent;
+    border-block-end-color: var(--colorNeutralStrokeAccessible);
+    border-radius: 0;
+  }
+
+  &[data-appearance='filled-lighter'] {
+    border-color: var(--colorTransparentStroke);
+  }
+
+  &[data-appearance='filled-darker'] {
+    background-color: var(--colorNeutralBackground3);
+    border-color: var(--colorTransparentStroke);
+  }
+
+  &[data-invalid]:not(:focus-within) {
+    border-color: var(--colorPaletteRedBorder2);
+  }
+
+  &[data-invalid][data-appearance='underline']:not(:focus-within) {
+    border-block-end-color: var(--colorPaletteRedBorder2);
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+    border-color: var(--colorNeutralStrokeDisabled);
+  }
+}
+
+.aside {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: var(--spacingHorizontalM);
+  display: flex;
+  block-size: 100%;
+  cursor: text;
+
+  .root[data-size='medium'] & {
+    min-block-size: 32px;
+  }
+
+  .root[data-size='large'] & {
+    min-block-size: 40px;
+  }
+
+  .root[data-size='extra-large'] & {
+    min-block-size: 44px;
+  }
+}
+
+.expandIcon {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: var(--colorNeutralStrokeAccessible);
+  cursor: pointer;
+
+  .root[data-size='medium'] & {
+    min-block-size: 32px;
+    margin-inline-start: var(--spacingHorizontalXXS);
+    font-size: 16px;
+  }
+
+  .root[data-size='large'] & {
+    min-block-size: 40px;
+    margin-inline-start: var(--spacingHorizontalXXS);
+    font-size: 20px;
+  }
+
+  .root[data-size='extra-large'] & {
+    min-block-size: 44px;
+    margin-inline-start: var(--spacingHorizontalSNudge);
+    font-size: 24px;
+  }
+
+  .root[data-disabled] & {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  [data-default-icon] {
+    inline-size: 0.45em;
+    block-size: 0.45em;
+    border-inline-end: var(--strokeWidthThin) solid currentcolor;
+    border-block-end: var(--strokeWidthThin) solid currentcolor;
+    transform: rotate(45deg) translate(-15%, -15%);
+  }
+}
+
+.secondaryAction {
+  display: flex;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .root::after,
+  .root:focus-within::after {
+    transition-delay: 0.01ms;
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-disabled] {
+    border-color: GrayText;
+  }
+}

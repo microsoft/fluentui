@@ -1,0 +1,125 @@
+.root {
+  --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-rows: max-content;
+  grid-template-columns: max-content [middle] auto;
+  justify-items: start;
+
+  &[data-size='extra-small'] {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+  }
+
+  &:is([data-size='large'], [data-size='extra-large']) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+  }
+
+  &[data-size='huge'] {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalM);
+  }
+
+  &[data-text-position='before'] {
+    grid-template-columns: auto [middle] max-content;
+    justify-items: end;
+  }
+
+  &[data-text-position='below'] {
+    grid-auto-flow: unset;
+    grid-template-columns: unset;
+    justify-items: center;
+  }
+
+  &[data-text-alignment='center']:not([data-text-position='below']) {
+    grid-template-rows: 1fr [primary] max-content [secondary] max-content [tertiary] max-content [quaternary] max-content 1fr;
+  }
+}
+
+.avatar {
+  .root:not([data-text-position='below']) & {
+    grid-row: span 5;
+  }
+
+  .root[data-text-alignment='start'] & {
+    align-self: start;
+  }
+
+  .root[data-text-alignment='center'] & {
+    align-self: center;
+  }
+
+  .root[data-text-position='after'] & {
+    margin-inline-end: var(--fui-Persona__avatar--spacing);
+  }
+
+  .root[data-text-position='before'] & {
+    margin-inline-start: var(--fui-Persona__avatar--spacing);
+  }
+
+  .root[data-text-position='below'] & {
+    margin-block-end: var(--fui-Persona__avatar--spacing);
+  }
+
+  .root[data-text-alignment='center']:not([data-text-position='below']) & {
+    grid-row: span 6;
+  }
+}
+
+.primaryText,
+.secondaryText,
+.tertiaryText,
+.quaternaryText {
+  display: block;
+  font-family: var(--fontFamilyBase);
+}
+
+.primaryText {
+  color: var(--colorNeutralForeground1);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+
+  .root:is([data-size='extra-large'], [data-size='huge']) & {
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .root[data-text-alignment='center']:not([data-text-position='below']) & {
+    grid-row-start: primary;
+  }
+}
+
+.secondaryText,
+.tertiaryText,
+.quaternaryText {
+  color: var(--colorNeutralForeground2);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+
+  .root[data-size='huge'] & {
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+}
+
+.secondaryText {
+  margin-block-start: -2px;
+
+  .root[data-text-alignment='center']:not([data-text-position='below']) & {
+    grid-row-start: secondary;
+  }
+}
+
+.tertiaryText {
+  .root[data-text-alignment='center']:not([data-text-position='below']) & {
+    grid-row-start: tertiary;
+  }
+}
+
+.quaternaryText {
+  .root[data-text-alignment='center']:not([data-text-position='below']) & {
+    grid-row-start: quaternary;
+  }
+}

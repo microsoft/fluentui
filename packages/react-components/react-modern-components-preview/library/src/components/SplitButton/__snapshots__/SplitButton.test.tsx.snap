@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`SplitButton renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SplitButton"
+    data-appearance="secondary"
+    data-shape="rounded"
+    data-size="medium"
+  >
+    <button
+      class="fui-Button fui-SplitButton__primaryActionButton"
+      data-appearance="secondary"
+      data-shape="rounded"
+      data-size="medium"
+      id="splitButton-_r_7___primaryActionButton"
+      type="button"
+    >
+      Default SplitButton
+    </button>
+    <button
+      aria-expanded="false"
+      aria-labelledby="splitButton-_r_7___primaryActionButton"
+      class="fui-MenuButton fui-SplitButton__menuButton"
+      data-appearance="secondary"
+      data-icon-only=""
+      data-shape="rounded"
+      data-size="medium"
+      type="button"
+    >
+      <span
+        class="fui-MenuButton__menuIcon"
+      >
+        <span
+          aria-hidden="true"
+          data-default-icon=""
+        />
+      </span>
+    </button>
+  </div>
+</div>
+`;

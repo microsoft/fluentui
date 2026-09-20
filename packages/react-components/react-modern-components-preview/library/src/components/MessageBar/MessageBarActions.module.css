@@ -1,0 +1,22 @@
+.root {
+  column-gap: var(--spacingHorizontalM);
+  display: flex;
+  grid-area: secondaryActions;
+  padding-inline-end: var(--spacingHorizontalM);
+
+  &[data-layout='multiline'] {
+    justify-content: end;
+    margin-block: var(--spacingVerticalMNudge) var(--spacingVerticalS);
+    margin-inline-end: 0;
+    padding-inline-end: var(--spacingVerticalM);
+  }
+
+  &[data-layout='multiline']:not([data-has-actions]) {
+    display: none;
+  }
+}
+
+.containerAction {
+  grid-area: actions;
+  padding-inline-end: var(--spacingHorizontalM);
+}

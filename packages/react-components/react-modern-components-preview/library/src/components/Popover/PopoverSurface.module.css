@@ -1,0 +1,87 @@
+.root {
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  background-color: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+  filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 8px 16px var(--colorNeutralShadowKey));
+
+  &[data-size='small'] {
+    padding: 12px;
+  }
+
+  &[data-size='medium'] {
+    padding: 16px;
+  }
+
+  &[data-size='large'] {
+    padding: 20px;
+  }
+
+  &[data-appearance='inverted'] {
+    color: var(--colorNeutralForegroundStaticInverted);
+    background-color: var(--colorNeutralBackgroundStatic);
+  }
+
+  &[data-appearance='brand'] {
+    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackground);
+  }
+
+  > [data-arrow] {
+    position: absolute;
+    z-index: -1;
+    box-sizing: border-box;
+    inline-size: var(--fui-positioning-arrow-height);
+    block-size: var(--fui-positioning-arrow-height);
+    background-color: inherit;
+    background-clip: content-box;
+    border-end-start-radius: var(--borderRadiusSmall);
+    transform: rotate(var(--fui-positioning-arrow-angle));
+
+    &::before {
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+      margin: -1px;
+      content: '';
+      background-color: inherit;
+      border: 1px solid var(--colorTransparentStroke);
+      border-end-start-radius: var(--borderRadiusSmall);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
+  }
+
+  &[data-size='small'] > [data-arrow] {
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+  }
+
+  &:is([data-size='medium'], [data-size='large']) > [data-arrow] {
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+
+  &[data-popper-placement^='top'] > [data-arrow] {
+    inset-block-end: var(--fui-positioning-arrow-offset);
+    --fui-positioning-arrow-angle: -45deg;
+  }
+
+  &[data-popper-placement^='right'] > [data-arrow] {
+    inset-inline-start: var(--fui-positioning-arrow-offset);
+    --fui-positioning-arrow-angle: 45deg;
+  }
+
+  &[data-popper-placement^='bottom'] > [data-arrow] {
+    inset-block-start: var(--fui-positioning-arrow-offset);
+    --fui-positioning-arrow-angle: 135deg;
+  }
+
+  &[data-popper-placement^='left'] > [data-arrow] {
+    inset-inline-end: var(--fui-positioning-arrow-offset);
+    --fui-positioning-arrow-angle: 225deg;
+  }
+}

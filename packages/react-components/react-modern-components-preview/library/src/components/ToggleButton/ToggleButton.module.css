@@ -1,0 +1,204 @@
+.root {
+  &[data-checked] {
+    background-color: var(--colorNeutralBackground1Selected);
+    border-color: var(--colorNeutralStroke1);
+    border-width: var(--strokeWidthThin);
+    color: var(--colorNeutralForeground1Selected);
+
+    :global(.fui-Icon-filled) {
+      display: inline;
+    }
+
+    :global(.fui-Icon-regular) {
+      display: none;
+    }
+
+    &:hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      border-color: var(--colorNeutralStroke1Hover);
+      color: var(--colorNeutralForeground1Hover);
+    }
+
+    &:is(:hover:active, :active:focus-visible) {
+      background-color: var(--colorNeutralBackground1Pressed);
+      border-color: var(--colorNeutralStroke1Pressed);
+      color: var(--colorNeutralForeground1Pressed);
+    }
+
+    &[data-appearance='outline'] {
+      background-color: var(--colorTransparentBackgroundSelected);
+      border-color: var(--colorNeutralStroke1);
+      border-width: var(--strokeWidthThicker);
+
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorTransparentBackgroundPressed);
+      }
+    }
+
+    &[data-appearance='primary'] {
+      background-color: var(--colorBrandBackgroundSelected);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+
+      &:hover {
+        background-color: var(--colorBrandBackgroundHover);
+        border-color: transparent;
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorBrandBackgroundPressed);
+        border-color: transparent;
+      }
+    }
+
+    &[data-appearance='subtle'] {
+      background-color: var(--colorSubtleBackgroundSelected);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2Selected);
+
+      &:hover {
+        background-color: var(--colorSubtleBackgroundHover);
+        color: var(--colorNeutralForeground2Hover);
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorSubtleBackgroundPressed);
+        color: var(--colorNeutralForeground2Pressed);
+      }
+    }
+
+    &[data-appearance='transparent'] {
+      background-color: var(--colorTransparentBackgroundSelected);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2BrandSelected);
+
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+        color: var(--colorNeutralForeground2BrandHover);
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorTransparentBackgroundPressed);
+        color: var(--colorNeutralForeground2BrandPressed);
+      }
+    }
+
+    &:not([data-accessible]):is([data-appearance='subtle'], [data-appearance='transparent']) .icon {
+      color: var(--colorNeutralForeground2BrandSelected);
+    }
+
+    &[data-accessible] {
+      background-color: var(--colorBrandBackground);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+
+      &:hover {
+        background-color: var(--colorBrandBackgroundHover);
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorBrandBackgroundPressed);
+      }
+
+      &[data-appearance='outline'] {
+        border-width: var(--strokeWidthThin);
+      }
+
+      &[data-appearance='primary'] {
+        outline: var(--strokeWidthThin) solid var(--colorNeutralForegroundOnBrand);
+        outline-offset: calc(var(--strokeWidthThicker) * -1);
+
+        &:focus-visible {
+          outline: var(--strokeWidthThin) solid var(--colorNeutralForegroundOnBrand);
+          outline-offset: calc(var(--strokeWidthThickest) * -1);
+        }
+      }
+
+      &[data-appearance='subtle']:hover .icon {
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+    }
+  }
+
+  &[data-disabled][data-checked],
+  &[data-disabled-focusable][data-checked] {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+
+    &:is(:hover, :hover:active, :active:focus-visible) {
+      background-color: var(--colorNeutralBackgroundDisabled);
+      border-color: var(--colorNeutralStrokeDisabled);
+      color: var(--colorNeutralForegroundDisabled);
+    }
+
+    &[data-appearance='primary'] {
+      border-color: transparent;
+    }
+
+    &:is([data-appearance='subtle'], [data-appearance='transparent']) {
+      background-color: var(--colorTransparentBackground);
+      border-color: transparent;
+    }
+  }
+
+  &[data-disabled],
+  &[data-disabled-focusable] {
+    &:is([data-appearance='subtle'], [data-appearance='transparent']) {
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+        border-color: transparent;
+      }
+
+      &:is(:hover:active, :active:focus-visible) {
+        background-color: var(--colorTransparentBackgroundPressed);
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .root[data-appearance='primary'] {
+    background-color: ButtonFace;
+    border-color: ButtonBorder;
+    color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .root[data-checked] {
+    background-color: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .root[data-checked]:hover,
+  .root[data-checked]:hover:active,
+  .root[data-checked]:active:focus-visible {
+    background-color: HighlightText;
+    border-color: Highlight;
+    color: Highlight;
+  }
+
+  .root[data-checked][data-appearance='primary'] {
+    background-color: ButtonFace;
+    border-color: ButtonBorder;
+    color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .root[data-disabled][data-appearance='primary'],
+  .root[data-disabled-focusable][data-appearance='primary'] {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  .root[data-checked] .icon {
+    forced-color-adjust: auto;
+  }
+}

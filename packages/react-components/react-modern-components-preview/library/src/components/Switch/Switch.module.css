@@ -1,0 +1,237 @@
+.root {
+  --fui-Switch__track--height: 20px;
+  --fui-Switch__track--width: 40px;
+  --fui-Switch__thumb--size: 18px;
+  --fui-Switch__thumb--translate: 20px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+
+  &[data-size='small'] {
+    --fui-Switch__track--height: 16px;
+    --fui-Switch__track--width: 32px;
+    --fui-Switch__thumb--size: 14px;
+    --fui-Switch__thumb--translate: 16px;
+  }
+
+  &[data-label-position='above'] {
+    flex-direction: column;
+  }
+
+  &[data-fui-focus-within]:focus-within {
+    outline-style: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: -2px;
+      border: 2px solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+      pointer-events: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    &[data-fui-focus-within]:focus-within::after {
+      border-color: Highlight;
+    }
+  }
+}
+
+.indicator {
+  --fui-Switch__thumb--transform: translateX(0);
+
+  display: flex;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  inline-size: var(--fui-Switch__track--width);
+  block-size: var(--fui-Switch__track--height);
+  margin: var(--spacingVerticalS) var(--spacingHorizontalS);
+  color: var(--colorNeutralStrokeAccessible);
+  fill: currentcolor;
+  font-size: var(--fui-Switch__thumb--size);
+  line-height: 0;
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  border-radius: var(--borderRadiusCircular);
+  pointer-events: none;
+  transition-property: background-color, border-color, color;
+  transition-duration: var(--durationNormal);
+  transition-timing-function: var(--curveEasyEase);
+
+  &:empty::before {
+    content: '';
+    display: block;
+    inline-size: var(--fui-Switch__thumb--size);
+    block-size: var(--fui-Switch__thumb--size);
+    flex-shrink: 0;
+    background-color: currentcolor;
+    border-radius: var(--borderRadiusCircular);
+    transform: var(--fui-Switch__thumb--transform);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-timing-function: var(--curveEasyEase);
+  }
+
+  & > :first-child {
+    flex-shrink: 0;
+    transform: var(--fui-Switch__thumb--transform);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-timing-function: var(--curveEasyEase);
+  }
+
+  .root[data-label-position='above'] & {
+    margin-block-start: 0;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+
+    &:empty::before,
+    & > :first-child {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    color: CanvasText;
+
+    &:empty::before,
+    & > :first-child {
+      forced-color-adjust: none;
+    }
+  }
+}
+
+.label {
+  margin-block: calc((var(--fui-Switch__track--height) - var(--lineHeightBase300)) / 2);
+  padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+  cursor: pointer;
+
+  .root[data-size='small'] & {
+    margin-block: calc((var(--fui-Switch__track--height) - var(--lineHeightBase200)) / 2);
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .root[data-label-position='above'] & {
+    inline-size: 100%;
+    padding-block: var(--spacingVerticalXS);
+  }
+
+  .root[data-label-position='after'] & {
+    padding-inline-start: var(--spacingHorizontalXS);
+  }
+
+  .root[data-label-position='before'] & {
+    padding-inline-end: var(--spacingHorizontalXS);
+  }
+}
+
+.input {
+  position: absolute;
+  box-sizing: border-box;
+  inline-size: calc(var(--fui-Switch__track--width) + 2 * var(--spacingHorizontalS));
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+
+  &:is(:disabled, [aria-disabled='true']) {
+    cursor: default;
+  }
+
+  .root[data-label-position='before'] & {
+    inset-block-start: 0;
+    inset-inline-end: 0;
+  }
+
+  .root[data-label-position='after'] & {
+    inset-block-start: 0;
+    inset-inline-start: 0;
+  }
+
+  .root[data-label-position='above'] & {
+    inset-block-end: 0;
+    inline-size: 100%;
+    block-size: calc(var(--fui-Switch__track--height) + var(--spacingVerticalS));
+  }
+
+  &:checked ~ .indicator {
+    --fui-Switch__thumb--transform: translateX(var(--fui-Switch__thumb--translate));
+  }
+
+  &:is(:disabled, [aria-disabled='true']) ~ .indicator {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  &:is(:disabled, [aria-disabled='true']) ~ .label {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: default;
+  }
+
+  &:not(:checked, :disabled, [aria-disabled='true']) ~ .indicator {
+    color: var(--colorNeutralStrokeAccessible);
+    border-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  &:is(:disabled, [aria-disabled='true']):not(:checked) ~ .indicator {
+    border-color: var(--colorNeutralStrokeDisabled);
+  }
+
+  &:is(:disabled, [aria-disabled='true']):checked ~ .indicator {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorTransparentStrokeDisabled);
+  }
+
+  &:checked:not(:disabled, [aria-disabled='true']) ~ .indicator {
+    color: var(--colorNeutralForegroundInverted);
+    background-color: var(--colorCompoundBrandBackground);
+    border-color: var(--colorTransparentStroke);
+  }
+
+  &:not(:checked, :disabled, [aria-disabled='true']):hover ~ .indicator {
+    color: var(--colorNeutralStrokeAccessibleHover);
+    border-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  &:checked:not(:disabled, [aria-disabled='true']):hover ~ .indicator {
+    background-color: var(--colorCompoundBrandBackgroundHover);
+    border-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  &:not(:checked, :disabled, [aria-disabled='true']):hover:active ~ .indicator {
+    color: var(--colorNeutralStrokeAccessiblePressed);
+    border-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  &:checked:not(:disabled, [aria-disabled='true']):hover:active ~ .indicator {
+    background-color: var(--colorCompoundBrandBackgroundPressed);
+    border-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  @media (forced-colors: active) {
+    &:is(:disabled, [aria-disabled='true']) {
+      & ~ .indicator,
+      & ~ .label {
+        color: GrayText;
+      }
+
+      & ~ .indicator {
+        border-color: GrayText;
+      }
+    }
+
+    &:checked:not(:disabled, [aria-disabled='true']) ~ .indicator {
+      color: Canvas;
+      background-color: Highlight;
+    }
+  }
+}

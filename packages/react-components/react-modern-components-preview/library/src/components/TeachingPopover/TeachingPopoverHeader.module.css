@@ -1,0 +1,65 @@
+.root {
+  align-items: center;
+  color: var(--colorNeutralForeground3);
+  display: flex;
+  flex-direction: row;
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase200);
+  margin-block: 0;
+  padding-block-end: var(--spacingVerticalXS);
+
+  &[data-appearance='brand'] {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+.dismissButton {
+  align-items: center;
+  background-color: var(--colorTransparentBackground);
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  border-inline-end-style: none;
+  border-radius: var(--borderRadiusNone);
+  box-sizing: border-box;
+  color: var(--colorNeutralForeground2);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase300);
+  margin-inline-start: auto;
+  padding: var(--spacingVerticalXS) var(--spacingHorizontalXS);
+  position: relative;
+
+  &:focus-visible {
+    border-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusMedium);
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+  }
+
+  .root[data-appearance='brand'] & {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}
+
+.icon {
+  align-items: center;
+  background-color: var(--colorTransparentBackground);
+  box-sizing: content-box;
+  color: var(--colorNeutralForeground2);
+  display: inline-flex;
+  font-size: var(--fontSizeBase200);
+  inline-size: var(--fontSizeBase200);
+  block-size: var(--fontSizeBase200);
+  justify-content: center;
+  line-height: var(--lineHeightBase200);
+  margin-inline-end: var(--spacingHorizontalXS);
+  position: relative;
+  text-decoration-line: none;
+  vertical-align: middle;
+
+  .root[data-appearance='brand'] & {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+}

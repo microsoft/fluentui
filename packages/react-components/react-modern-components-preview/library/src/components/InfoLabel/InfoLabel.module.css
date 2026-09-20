@@ -1,0 +1,18 @@
+.root {
+  color: inherit;
+}
+
+.label {
+  color: inherit;
+  cursor: inherit;
+  vertical-align: top;
+}
+
+.infoButton {
+  margin-block: calc(0px - var(--spacingVerticalXXS));
+  vertical-align: top;
+
+  .root[data-size='large'] & {
+    margin-block: -1px;
+  }
+}
