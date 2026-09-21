@@ -41,7 +41,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
-        ...resolvePositioningOptions(containerRef.current, target, arrowRef.current),
+        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
   }, [enabled, resolvePositioningOptions]);

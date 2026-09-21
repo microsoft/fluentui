@@ -48,6 +48,131 @@ describe('Tooltip', () => {
           cy.wrap($tooltip).should('be.visible');
         });
     });
+
+    it('keeps partially clipped triggers visible and hides only after full clipping', () => {
+      mount(
+        <div id="scroll-container" style={{ height: '100px', overflow: 'auto', position: 'relative' }}>
+          <div style={{ height: '400px', paddingTop: '8px' }}>
+            <Tooltip content="Partially clipped trigger" relationship="label" visible>
+              <Button id="trigger">Trigger</Button>
+            </Tooltip>
+          </div>
+        </div>,
+      );
+
+      cy.get('[role="tooltip"]')
+        .should('be.visible')
+        .then($tooltip => {
+          cy.get('#scroll-container').scrollTo(0, 20);
+          cy.get('#trigger').should($trigger => {
+            const triggerRect = $trigger[0].getBoundingClientRect();
+            const containerRect = $trigger[0].closest('#scroll-container')!.getBoundingClientRect();
+
+            expect(triggerRect.top).to.be.lessThan(containerRect.top);
+            expect(triggerRect.bottom).to.be.greaterThan(containerRect.top);
+          });
+          cy.wrap($tooltip).should('be.visible');
+
+          cy.get('#scroll-container').scrollTo(0, 300);
+          cy.wrap($tooltip).should('not.be.visible');
+          cy.get('#scroll-container').scrollTo(0, 0);
+          cy.wrap($tooltip).should('be.visible');
+        });
+    });
+  });
+
+  describe('viewport boundaries', () => {
+    [
+      { position: 'above' as const, top: 0, left: 300 },
+      { position: 'below' as const, bottom: 0, left: 300 },
+      { position: 'before' as const, top: 200, left: 0 },
+      { position: 'after' as const, top: 200, right: 0 },
+    ].forEach(({ position, ...style }) => {
+      it(`keeps the tooltip in view at the ${position} viewport edge`, () => {
+        cy.viewport(800, 600);
+        mount(
+          <div style={{ position: 'fixed', ...style }}>
+            <Tooltip content="Viewport tooltip" relationship="label" visible positioning={position}>
+              <Button id="trigger">Trigger</Button>
+            </Tooltip>
+          </div>,
+        );
+
+        cy.get('[role="tooltip"]')
+          .should($tooltip => expect($tooltip).to.have.attr('data-popper-placement'))
+          .should('be.visible')
+          .should($tooltip => {
+            const rect = $tooltip[0].getBoundingClientRect();
+
+            expect(rect.top).to.be.at.least(0);
+            expect(rect.left).to.be.at.least(0);
+            expect(rect.bottom).to.be.at.most(600);
+            expect(rect.right).to.be.at.most(800);
+          });
+      });
+    });
+
+    it('does not hide escaped content for a visible trigger with a pinned large offset', () => {
+      const Example = () => {
+        const [offset, setOffset] = React.useState(1000);
+
+        return (
+          <>
+            <Button onClick={() => setOffset(4)}>Reset offset</Button>
+            <div style={{ position: 'fixed', top: '200px', left: '300px' }}>
+              <Tooltip content="Offset tooltip" relationship="label" visible positioning={{ pinned: true, offset }}>
+                <Button id="trigger">Trigger</Button>
+              </Tooltip>
+            </div>
+          </>
+        );
+      };
+
+      cy.viewport(800, 600);
+      mount(<Example />);
+
+      cy.get('#trigger').should('be.visible');
+      cy.get('[role="tooltip"]')
+        .should($tooltip => {
+          expect($tooltip).to.have.attr('data-popper-escaped');
+          expect($tooltip).not.to.have.attr('data-popper-reference-hidden');
+          expect($tooltip.css('visibility')).to.equal('visible');
+          expect($tooltip[0].getBoundingClientRect().bottom).to.be.lessThan(0);
+        })
+        .then($tooltip => {
+          cy.contains('button', 'Reset offset').click();
+          cy.wrap($tooltip).should($element => {
+            expect($element).not.to.have.attr('data-popper-escaped');
+            expect($element).to.be.visible;
+          });
+        });
+    });
+
+    it('does not hide oversized content while its trigger remains visible', () => {
+      cy.viewport(800, 600);
+      mount(
+        <div style={{ position: 'fixed', top: '200px', left: '300px' }}>
+          <Tooltip
+            content={{ children: 'Oversized tooltip', style: { width: '1000px', height: '800px', maxWidth: 'none' } }}
+            relationship="label"
+            visible
+          >
+            <Button id="trigger">Trigger</Button>
+          </Tooltip>
+        </div>,
+      );
+
+      cy.get('#trigger').should('be.visible');
+      cy.get('[role="tooltip"]')
+        .should($tooltip => expect($tooltip).to.have.attr('data-popper-placement'))
+        .should('be.visible')
+        .should($tooltip => {
+          const rect = $tooltip[0].getBoundingClientRect();
+
+          expect(rect.width).to.be.greaterThan(800);
+          expect(rect.height).to.be.greaterThan(600);
+        });
+    });
   });
 
   // Verifies the fix for regression reported in https://github.com/microsoft/fluentui/issues/36604

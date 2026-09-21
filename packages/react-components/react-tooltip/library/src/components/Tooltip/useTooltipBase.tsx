@@ -29,8 +29,6 @@ import { Escape } from '@fluentui/keyboard-keys';
 
 type OnPositioningEndEvent = Parameters<Exclude<PositioningProps['onPositioningEnd'], undefined>>[0];
 
-const tooltipHideBoundaryDefault = { escaped: [] };
-
 /**
  * Create the state required to render Tooltip.
  *
@@ -85,9 +83,8 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   const resolvedPositioning = resolvePositioningShorthand(state.positioning);
   const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => {
-    const { escaped, referenceHidden } = event.detail;
-
-    setHidden(escaped || referenceHidden);
+    // Portaled tooltips can escape the trigger's clipping ancestors while the trigger is still visible.
+    setHidden(event.detail.referenceHidden);
     resolvedPositioning.onPositioningEnd?.(event);
   });
 
@@ -97,7 +94,6 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
     position: 'above' as const,
     align: 'center' as const,
     offset: 4,
-    hideBoundaryDefault: tooltipHideBoundaryDefault,
     ...resolvedPositioning,
     onPositioningEnd,
   };
