@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/cli",
+  "entries": [
+    {
+      "date": "Mon, 21 Sep 2026 15:07:55 GMT",
+      "version": "0.0.1",
+      "tag": "@fluentui/cli_v0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cli",
+            "commit": "b3b5a9ced4da76b9a9162c57606853188de26e5c",
+            "comment": "initial release"
+          }
+        ]
+      }
+    }
+  ]
+}
