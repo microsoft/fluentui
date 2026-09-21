@@ -10,7 +10,7 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { PresenceBadgeStatus } from '@fluentui/react-modern-components-preview/badge';
 import type { TableProps, TableRowProps, TableColumnDefinition } from '@fluentui/react-table';
 import {
   Table,
