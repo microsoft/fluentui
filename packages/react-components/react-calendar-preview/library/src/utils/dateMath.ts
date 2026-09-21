@@ -214,6 +214,10 @@ export function getDateRange(
     case 'workWeek':
       startDate = getStartDateOfWeek(date, firstDayOfWeek);
       endDate = addDays(startDate, DAYS_IN_WEEK);
+      if (compareDatePart(date, endDate) >= 0) {
+        startDate = addDays(startDate, DAYS_IN_WEEK);
+        endDate = addDays(endDate, DAYS_IN_WEEK);
+      }
       maximumRangeLength = DAYS_IN_WEEK;
       break;
 

@@ -124,7 +124,8 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
         hasReachedNavigatedMonth = true;
       }
 
-      const nextCivilDate = new Date(Date.UTC(civilYear, civilMonth, civilDay + 1));
+      const nextCivilDate = new Date(0);
+      nextCivilDate.setUTCFullYear(civilYear, civilMonth, civilDay + 1);
       civilDate = {
         year: nextCivilDate.getUTCFullYear(),
         month: nextCivilDate.getUTCMonth(),

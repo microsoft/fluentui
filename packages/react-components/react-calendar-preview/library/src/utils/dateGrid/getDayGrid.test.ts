@@ -97,6 +97,13 @@ describe('getDayGrid', () => {
     expect(gridDays.find(day => day.key === '2021-11-1')).toMatchObject({ isInMonth: false });
   });
 
+  it('preserves years below 100 when advancing the civil date cursor', () => {
+    const navigatedDate = dateMath.createDate(5, 0, 15);
+    const grid = getDayGrid({ ...defaultOptions, navigatedDate, weeksToShow: 1 });
+    expect(grid.flat().map(day => day.originalDate?.getFullYear())).toContain(5);
+    expect(grid.flat().some(day => day.originalDate?.getFullYear() === 1905)).toBe(false);
+  });
+
   it('defaults today to the current date', () => {
     jest.useFakeTimers().setSystemTime(new Date(2020, 8, 20, 12));
     try {
