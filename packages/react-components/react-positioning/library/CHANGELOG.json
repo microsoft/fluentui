@@ -2,6 +2,37 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 21 Sep 2026 16:16:16 GMT",
+      "version": "9.23.2",
+      "tag": "@fluentui/react-positioning_v9.23.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "a51547435d0a5c4a0fb15c2996c3d3efea5b49dd",
+            "comment": "Treat unavailable positioning geometry as indeterminate when reporting visibility flags."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.23.1",
       "tag": "@fluentui/react-positioning_v9.23.1",
