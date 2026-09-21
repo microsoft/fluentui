@@ -5023,6 +5023,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-modern-components-preview-stories@workspace:packages/react-components/react-modern-components-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-modern-components-preview-stories@workspace:packages/react-components/react-modern-components-preview/stories"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library"
