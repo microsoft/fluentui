@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-avatar): avoid repeated scanning of unmatched name enclosures when generating initials",
+  "comment": "fix: avoid repeated scanning of unmatched name enclosures when generating initials",
   "packageName": "@fluentui/react-avatar",
   "email": "223556219+Copilot@users.noreply.github.com",
   "dependentChangeType": "patch"
