@@ -27,6 +27,7 @@
     "@fluentui/react-menu-grid-preview": "*",
     "@fluentui/react-migration-v0-v9": "*",
     "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-modern-components-preview": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-northstar": "*",
     "@fluentui/react-storybook-addon": "*",
