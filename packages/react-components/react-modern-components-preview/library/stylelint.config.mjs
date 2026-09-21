@@ -1,4 +1,6 @@
-import { tokens } from '@fluentui/tokens';
+import tokensPackage from '@fluentui/tokens';
+
+const { tokens } = tokensPackage;
 
 const customProperties = Object.fromEntries(
   Object.values(tokens).map(value => [value.slice('var('.length, -1), 'initial']),
