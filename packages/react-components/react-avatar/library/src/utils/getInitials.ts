@@ -79,7 +79,7 @@ function removeEnclosures(displayName: string): string {
     const charCode = displayName.charCodeAt(index);
     if (openingIndex === -1) {
       // (, [, {
-      if (char === ',' || char === '[' || char === '{') {
+      if (char === '(' || char === '[' || char === '{') {
         openingIndex = index;
       }
     } else if (charCode === 41 || charCode === 93 || charCode === 125) {
