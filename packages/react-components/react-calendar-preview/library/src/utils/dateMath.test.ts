@@ -419,6 +419,15 @@ describe('DateMath', () => {
       );
     });
 
+    it('keeps the selected date inside a week when the local week start date is skipped', () => {
+      const selectedDate = new Date(2012, 0, 1);
+      if (selectedDate.getDate() === 1 && new Date(2011, 11, 30).getDate() !== 30) {
+        const range = getDateRange(selectedDate, 'week', 'friday');
+        expect(range.map(day => day.getDate())).toEqual([31, 1, 2, 3, 4, 5, 6]);
+        expect(range.some(day => areDatesEqual(day, selectedDate))).toBe(true);
+      }
+    });
+
     it('returns an empty work-week range when no working days are specified', () => {
       expect(getDateRange(date, 'workWeek', 'sunday', [])).toEqual([]);
     });
