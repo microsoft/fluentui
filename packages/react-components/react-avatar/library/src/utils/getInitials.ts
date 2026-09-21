@@ -1,6 +1,7 @@
 /**
- * Regular expressions matching characters to ignore when calculating the initials.
+ * Regular expression matching complete enclosures or an unmatched enclosure tail.
  */
+const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*([\)\]\}]|$)/g;
 
 /**
  * Regular expression matching special ASCII characters except space, plus some unicode special characters.
@@ -66,45 +67,8 @@ function getInitialsLatin(displayName: string, isRtl: boolean, firstInitialOnly?
   return initials;
 }
 
-/**
- * Removes each span from the first opening delimiter through the next closing delimiter,
- * regardless of nesting or delimiter type. Unterminated spans are retained.
- */
-function removeEnclosures(displayName: string): string {
-  let openingIndex = -1;
-  let segmentStart = 0;
-  let segments: string[] | undefined;
-
-  for (let index = 0; index < displayName.length; index++) {
-    const charCode = displayName.charCodeAt(index);
-    if (openingIndex === -1) {
-      // (, [, {
-      if (char === '(' || char === '[' || char === '{') {
-        openingIndex = index;
-      }
-    } else if (charCode === 41 || charCode === 93 || charCode === 125) {
-      // ), ], }
-      segments ??= [];
-      if (segmentStart < openingIndex) {
-        segments.push(displayName.slice(segmentStart, openingIndex));
-      }
-      segmentStart = index + 1;
-      openingIndex = -1;
-    }
-  }
-
-  if (!segments) {
-    return displayName;
-  }
-
-  if (segmentStart < displayName.length) {
-    segments.push(displayName.slice(segmentStart));
-  }
-  return segments.join('');
-}
-
 function cleanupDisplayName(displayName: string): string {
-  displayName = removeEnclosures(displayName);
+  displayName = displayName.replace(UNWANTED_ENCLOSURES_REGEX, (match, closing: string) => (closing ? '' : match));
   displayName = displayName.replace(UNWANTED_CHARS_REGEX, '');
   displayName = displayName.replace(MULTIPLE_WHITESPACES_REGEX, ' ');
   displayName = displayName.trim();
