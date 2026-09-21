@@ -639,7 +639,9 @@ describe('calloutData', () => {
       },
     ] as unknown as ILineChartPoints[];
 
-    expect(utils.calloutData(values)['__proto__']).toEqual([expect.objectContaining({ legend: 'Line 1', y: 10 })]);
+    expect(Object.getOwnPropertyDescriptor(utils.calloutData(values), '__proto__')?.value).toEqual([
+      expect.objectContaining({ legend: 'Line 1', y: 10 }),
+    ]);
   });
 });
 
