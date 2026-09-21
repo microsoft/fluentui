@@ -194,7 +194,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  */
 // This is exported for unit tests.
 export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
-  const nodesInColumn: NodesInColumns = {};
+  const nodesInColumn: NodesInColumns = Object.create(null);
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
