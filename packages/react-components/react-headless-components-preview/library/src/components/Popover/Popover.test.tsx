@@ -6,6 +6,79 @@ import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 
 describe('Popover', () => {
+  describe('focus restoration', () => {
+    const Example = ({ open, withButton = true }: { open: boolean; withButton?: boolean }) => (
+      <>
+        <Popover open={open}>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>{withButton ? <button>Inside</button> : 'Content'}</PopoverSurface>
+        </Popover>
+        <button>Outside</button>
+      </>
+    );
+
+    it('restores focus lost when a controlled surface unmounts', () => {
+      const { getByText, rerender } = render(<Example open />);
+      getByText('Inside').focus();
+
+      rerender(<Example open={false} />);
+
+      expect(getByText('Trigger')).toHaveFocus();
+    });
+
+    it('does not acquire focus when an unfocused surface closes', () => {
+      const { getByText, rerender } = render(<Example open withButton={false} />);
+      const targetDocument = getByText('Trigger').ownerDocument;
+      expect(targetDocument.activeElement).toBe(targetDocument.body);
+
+      rerender(<Example open={false} />);
+
+      expect(targetDocument.activeElement).toBe(targetDocument.body);
+    });
+
+    it('does not acquire focus on an initially closed mount', () => {
+      const { getByText } = render(<Example open={false} />);
+
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
+    it('preserves focus moved outside before closure', () => {
+      const { getByText, rerender } = render(<Example open />);
+      getByText('Inside').focus();
+      getByText('Outside').focus();
+
+      rerender(<Example open={false} />);
+
+      expect(getByText('Outside')).toHaveFocus();
+    });
+
+    it('does not reclaim focus after an outside control loses focus', () => {
+      const { getByText, rerender } = render(<Example open />);
+      getByText('Inside').focus();
+      getByText('Outside').focus();
+      getByText('Outside').blur();
+
+      rerender(<Example open={false} />);
+
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
+    it('does not retain focus ownership across open cycles', () => {
+      const { getByText, rerender } = render(<Example open />);
+      getByText('Inside').focus();
+      rerender(<Example open={false} />);
+      expect(getByText('Trigger')).toHaveFocus();
+      getByText('Trigger').blur();
+
+      rerender(<Example open withButton={false} />);
+      rerender(<Example open={false} />);
+
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+  });
+
   it('renders trigger and surface children', () => {
     const { getByText } = render(
       <Popover defaultOpen>

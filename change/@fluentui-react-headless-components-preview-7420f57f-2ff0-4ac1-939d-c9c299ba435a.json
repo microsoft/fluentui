@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore popover trigger focus only when focus was lost from its surface",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "paulmardling@microsoft.com"
+}

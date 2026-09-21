@@ -75,14 +75,31 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const arrowRef = React.useRef<HTMLDivElement>(null);
   const { targetDocument } = useFluent();
   const wasOpen = React.useRef(open);
+  const hadFocusWithin = React.useRef(false);
 
   React.useEffect(() => {
     // React removes the surface before the native hide algorithm can restore focus.
-    // Restore only after an actual close, without taking focus from an outside control.
-    if (wasOpen.current && !open && targetDocument?.activeElement === targetDocument?.body) {
+    // Only restore focus that belonged to this surface, not unrelated body focus.
+    if (wasOpen.current && !open && hadFocusWithin.current && targetDocument?.activeElement === targetDocument?.body) {
       triggerRef.current?.focus();
     }
     wasOpen.current = open;
+    hadFocusWithin.current = false;
+
+    if (!open || !targetDocument) {
+      return;
+    }
+
+    const onFocusIn = () => {
+      // Closing a modal can emit focusin before focus actually leaves the body.
+      // Only an actual focus destination should replace the last surface owner.
+      if (contentRef.current && targetDocument.activeElement !== targetDocument.body) {
+        hadFocusWithin.current = contentRef.current.contains(targetDocument.activeElement);
+      }
+    };
+    onFocusIn();
+    targetDocument.addEventListener('focusin', onFocusIn);
+    return () => targetDocument.removeEventListener('focusin', onFocusIn);
   }, [open, targetDocument]);
 
   const generatedSurfaceId = useId('fui-popover-surface-');

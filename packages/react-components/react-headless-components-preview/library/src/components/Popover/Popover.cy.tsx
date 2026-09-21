@@ -15,6 +15,32 @@ const mount = (element: JSXElement) => {
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
 
+/**
+ * Marks a focus-restoration scenario as a known gap of the native
+ * `popover="auto"` model.
+ *
+ * Two distinct gaps originally put scenarios in this bucket:
+ *
+ * 1. Programmatic close: when React state flips `open: true -> false`, the
+ *    surface unmounts before any close-side effect can call `hidePopover()`,
+ *    so the spec hide algorithm never runs. The component now restores focus
+ *    lost from the surface; intentional focus on an outside Close button is
+ *    preserved. Both cases have active regressions below.
+ *
+ * 2. Hover and contextmenu opens: the spec hide algorithm restores focus to
+ *    the element that was focused when `showPopover()` ran. These paths do
+ *    not necessarily focus the trigger, so the snapshot may point elsewhere.
+ *    The original trigger-return scenarios remain below as executable
+ *    documentation of that gap, rather than being removed by this fix.
+ *
+ * The skipped scenarios are not a policy to focus the trigger after every
+ * non-click open: if the surface never receives focus, closing it must not
+ * acquire focus. Active tests below cover that distinction.
+ */
+const itSkipUnsupportedFocusRestore = (description: string, fn: () => void): void => {
+  it.skip(description, fn);
+};
+
 describe('Popover', () => {
   ['uncontrolled', 'controlled'].forEach(scenario => {
     const UncontrolledExample = () => (
@@ -215,6 +241,76 @@ describe('Popover', () => {
   });
 
   describe('Focus restoration for controlled and non-click opens', () => {
+    it('programmatic close: restores focus lost from inside the surface', () => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="surface">
+              <button data-testid="close" onClick={() => setOpen(false)}>
+                Close
+              </button>
+            </PopoverSurface>
+          </Popover>
+        );
+      };
+      mount(<Example />);
+      cy.get('[data-testid=close]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.get('[data-testid=trigger]').should('have.focus');
+    });
+
+    it('programmatic close: does not reclaim focus after an outside control loses focus', () => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <>
+            <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+              <PopoverTrigger disableButtonEnhancement>
+                <button data-testid="trigger">Trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface data-testid="surface">Content</PopoverSurface>
+            </Popover>
+            <button data-testid="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </>
+        );
+      };
+      mount(<Example />);
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=close]').focus().blur();
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+      // Dispatch the close without moving focus, as with a controlled prop update.
+      cy.get('[data-testid=close]').trigger('click');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+    });
+
+    it('hover-leave close: does not reclaim focus after an outside control loses focus', () => {
+      mount(
+        <>
+          <Popover openOnHover mouseLeaveDelay={0}>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="surface">Content</PopoverSurface>
+          </Popover>
+          <button data-testid="outside">Outside</button>
+        </>,
+      );
+      cy.get('[data-testid=trigger]').trigger('mouseover');
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=outside]').focus().blur();
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+      cy.get('[data-testid=trigger]').trigger('mouseout');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+    });
+
     it('programmatic close: preserves intentional focus on an outside control', () => {
       const Example = () => {
         const [open, setOpen] = React.useState(false);
@@ -240,8 +336,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'close');
     });
 
-    // Keep the existing non-click-open scenarios skipped: native hover/dismissal timing is a separate gap.
-    it.skip('hover-leave close: should restore focus to trigger', () => {
+    itSkipUnsupportedFocusRestore('hover-leave close: should restore focus to trigger', () => {
       mount(
         <Popover openOnHover mouseLeaveDelay={0}>
           <PopoverTrigger disableButtonEnhancement>
@@ -257,7 +352,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    it.skip('hover-open + Esc: should restore focus to trigger', () => {
+    itSkipUnsupportedFocusRestore('hover-open + Esc: should restore focus to trigger', () => {
       mount(
         <Popover openOnHover>
           <PopoverTrigger disableButtonEnhancement>
@@ -272,7 +367,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    it.skip('context-open + Esc: should restore focus to trigger', () => {
+    itSkipUnsupportedFocusRestore('context-open + Esc: should restore focus to trigger', () => {
       mount(
         <Popover openOnContext>
           <PopoverTrigger disableButtonEnhancement>
