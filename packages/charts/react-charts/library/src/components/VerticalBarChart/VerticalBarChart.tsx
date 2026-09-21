@@ -825,7 +825,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);

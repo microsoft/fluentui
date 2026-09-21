@@ -7,15 +7,12 @@ parameters:
     type: boolean
     default: true
 
-# Customize build number to include tools experimental prefix
 # Example: tools_experimental_20201022.1
-name: 'tools_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "tools_experimental_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -106,7 +103,6 @@ extends:
 
               - script: |
                   yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-tools.config.js
-                  git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:

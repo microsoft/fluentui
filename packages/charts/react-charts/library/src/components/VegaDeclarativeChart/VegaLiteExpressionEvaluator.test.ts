@@ -158,6 +158,12 @@ describe('VegaLiteExpressionEvaluator', () => {
       expect(safeEvaluateExpression('datum.constructor', { constructor: 'safe-value' })).toBe('safe-value');
     });
 
+    it('rejects calling a function supplied through an own datum property', () => {
+      expect(() => safeEvaluateExpression("datum.constructor('return 1337')()", { constructor: Function })).toThrow(
+        'function calls are only allowed for built-in functions',
+      );
+    });
+
     it('rejects access to window', () => {
       expect(() => safeEvaluateExpression('window.location', {})).toThrow();
     });

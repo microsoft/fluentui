@@ -102,7 +102,8 @@ export type NavCategoryItemSlots = {
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
     selected: boolean;
     root: {
-        'data-open'?: string;
+        'data-disabled'?: string;
+        'data-expanded'?: string;
         'data-selected'?: string;
     };
 };
@@ -176,7 +177,11 @@ export type NavDrawerHeaderState = DrawerHeaderState & {
 export type NavDrawerProps = DrawerProps & NavProps;
 
 // @public
-export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'>;
+export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'> & {
+    root: {
+        'data-type'?: 'inline' | 'overlay';
+    };
+};
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
@@ -190,6 +195,7 @@ export { NavItemSlots }
 // @public (undocumented)
 export type NavItemState = NavItemBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-selected'?: string;
     };
 };
@@ -244,6 +250,7 @@ export { NavSubItemSlots }
 // @public (undocumented)
 export type NavSubItemState = NavSubItemBaseState & {
     root: {
+        'data-disabled'?: string;
         'data-selected'?: string;
     };
 };
