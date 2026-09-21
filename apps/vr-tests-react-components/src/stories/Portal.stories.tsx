@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { tokens } from '@fluentui/react-theme';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-modern-components-preview/popover';
 import { makeStyles, shorthands } from '@griffel/react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';

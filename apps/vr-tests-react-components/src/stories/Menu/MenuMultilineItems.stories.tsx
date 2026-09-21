@@ -13,7 +13,7 @@ import {
   MenuSplitGroup,
   MenuItemSwitch,
   MenuItemCheckbox,
-} from '@fluentui/react-menu';
+} from '@fluentui/react-modern-components-preview/menu';
 import { EditFilled, EditRegular, bundleIcon } from '@fluentui/react-icons';
 import { getStoryVariant, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';

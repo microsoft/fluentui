@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { AirplaneFilled } from '@fluentui/react-icons';
-import { Radio } from '@fluentui/react-radio';
+import { Radio } from '@fluentui/react-modern-components-preview/radio-group';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecoratorFixedWidth } from '../../utilities';
 

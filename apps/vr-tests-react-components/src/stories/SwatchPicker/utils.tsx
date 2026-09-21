@@ -6,7 +6,7 @@ import {
   ImageSwatch,
   EmptySwatch,
   SwatchPickerRow,
-} from '@fluentui/react-swatch-picker';
+} from '@fluentui/react-modern-components-preview/swatch-picker';
 import { HeartRegular } from '@fluentui/react-icons';
 
 export const SampleSwatchPickerColors = (props: SwatchPickerProps) => (

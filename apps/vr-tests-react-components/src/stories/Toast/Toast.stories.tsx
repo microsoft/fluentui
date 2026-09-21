@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
+import type { ToastStatus } from '@fluentui/react-modern-components-preview/toast';
 import {
   Toast,
   ToastTitle,
@@ -7,9 +8,8 @@ import {
   ToastFooter,
   Toaster,
   useToastController,
-  ToastStatus,
-} from '@fluentui/react-toast';
-import { Link } from '@fluentui/react-link';
+} from '@fluentui/react-modern-components-preview/toast';
+import { Link } from '@fluentui/react-modern-components-preview/link';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../../utilities/getStoryVariant';

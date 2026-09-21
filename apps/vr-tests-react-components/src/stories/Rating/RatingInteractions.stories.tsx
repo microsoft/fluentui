@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { Rating } from '@fluentui/react-rating';
+import { Rating } from '@fluentui/react-modern-components-preview/rating';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
 

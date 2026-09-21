@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb } from '@fluentui/react-breadcrumb';
+import type { Breadcrumb } from '@fluentui/react-modern-components-preview/breadcrumb';
 import { SampleBreadcrumbButtons, steps } from './utils';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';

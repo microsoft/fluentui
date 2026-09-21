@@ -11,7 +11,7 @@ import {
   MenuGroup,
   MenuGroupHeader,
   MenuDivider,
-} from '@fluentui/react-menu';
+} from '@fluentui/react-modern-components-preview/menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
 import { getStoryVariant, RTL } from '../../utilities';

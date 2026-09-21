@@ -1,7 +1,7 @@
 import { makeStyles, shorthands } from '@griffel/react';
-import { Avatar } from '@fluentui/react-avatar';
-import { Button } from '@fluentui/react-button';
-import { Input } from '@fluentui/react-input';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
+import { Button } from '@fluentui/react-modern-components-preview/button';
+import { Input } from '@fluentui/react-modern-components-preview/input';
 import * as React from 'react';
 
 import { ShadowRoot } from './utils';

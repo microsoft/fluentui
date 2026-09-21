@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 
+import type { OverlayDrawerProps, InlineDrawerProps } from '@fluentui/react-modern-components-preview/drawer';
 import {
   Drawer,
   DrawerHeader,
@@ -8,13 +9,11 @@ import {
   DrawerBody,
   DrawerHeaderNavigation,
   OverlayDrawer,
-  OverlayDrawerProps,
   InlineDrawer,
-  InlineDrawerProps,
   DrawerFooter,
-} from '@fluentui/react-drawer';
-import { Toolbar, ToolbarButton, ToolbarGroup } from '@fluentui/react-toolbar';
-import { Button } from '@fluentui/react-button';
+} from '@fluentui/react-modern-components-preview/drawer';
+import { Toolbar, ToolbarButton, ToolbarGroup } from '@fluentui/react-modern-components-preview/toolbar';
+import { Button } from '@fluentui/react-modern-components-preview/button';
 import {
   ArrowLeft24Regular,
   ArrowClockwise24Regular,

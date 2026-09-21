@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { PresenceBadgeStatus } from '@fluentui/react-badge';
-import { createTableColumn, TableColumnDefinition } from '@fluentui/react-table';
+import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { TableColumnDefinition } from '@fluentui/react-table';
+import { createTableColumn } from '@fluentui/react-table';
 import {
   DocumentPdfRegular,
   DocumentRegular,
@@ -11,7 +12,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { TableCellLayout } from '@fluentui/react-table';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {

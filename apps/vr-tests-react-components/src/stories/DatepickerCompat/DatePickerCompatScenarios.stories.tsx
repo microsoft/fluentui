@@ -4,7 +4,7 @@ import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
-import { Field } from '@fluentui/react-field';
+import { Field } from '@fluentui/react-modern-components-preview/field';
 import { TestWrapperDecorator } from '../../utilities';
 
 const DatePicker = (props: DatePickerProps & { renderRelativeElement?: boolean }) => {

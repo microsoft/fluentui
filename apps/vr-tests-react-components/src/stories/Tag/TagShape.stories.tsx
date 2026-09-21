@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Tag } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-modern-components-preview/tag';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import { Steps, type StoryParameters } from 'storywright';
 
 const tagId = 'tag-id';

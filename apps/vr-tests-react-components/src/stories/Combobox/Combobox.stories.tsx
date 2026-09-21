@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import type { Meta } from '@storybook/react-webpack5';
-import { Combobox, Option } from '@fluentui/react-combobox';
+import { Combobox, Option } from '@fluentui/react-modern-components-preview/combobox';
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {

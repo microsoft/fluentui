@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
+import type { TagPickerProps } from '@fluentui/react-modern-components-preview/tag-picker';
 import {
   TagPicker,
   TagPickerControl,
@@ -8,15 +9,14 @@ import {
   TagPickerList,
   TagPickerOption,
   TagPickerOptionGroup,
-  TagPickerProps,
-} from '@fluentui/react-tag-picker';
-import { Tag } from '@fluentui/react-tags';
-import { Avatar } from '@fluentui/react-avatar';
+} from '@fluentui/react-modern-components-preview/tag-picker';
+import { Tag } from '@fluentui/react-modern-components-preview/tag';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, type StoryParameters } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-modern-components-preview/button';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 

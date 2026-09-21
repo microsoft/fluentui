@@ -1,7 +1,14 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuSplitGroup } from '@fluentui/react-menu';
+import {
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+  MenuSplitGroup,
+} from '@fluentui/react-modern-components-preview/menu';
 
 import { getStoryVariant, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Tag } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-modern-components-preview/tag';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import { Steps } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);

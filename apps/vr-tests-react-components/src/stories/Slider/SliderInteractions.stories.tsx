@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { Slider } from '@fluentui/react-slider';
+import { Slider } from '@fluentui/react-modern-components-preview/slider';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
 
 export default {

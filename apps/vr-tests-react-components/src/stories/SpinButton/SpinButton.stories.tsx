@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { SpinButton } from '@fluentui/react-spinbutton';
+import { SpinButton } from '@fluentui/react-modern-components-preview/spin-button';
 import { FluentProvider } from '@fluentui/react-provider';
 import { makeStyles } from '@griffel/react';
 

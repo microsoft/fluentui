@@ -1,8 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { Persona } from '@fluentui/react-persona';
-import type { PersonaProps } from '@fluentui/react-persona';
+import { Persona } from '@fluentui/react-modern-components-preview/persona';
+import type { PersonaProps } from '@fluentui/react-modern-components-preview/persona';
 import { getStoryVariant, RTL, HIGH_CONTRAST, DARK_MODE } from '../utilities';
 import type { StoryParameters } from 'storywright';
 

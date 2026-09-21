@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { Label } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-modern-components-preview/label';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 
 export default {

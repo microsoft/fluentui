@@ -1,5 +1,5 @@
-import { Button } from '@fluentui/react-button';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
+import { Button } from '@fluentui/react-modern-components-preview/button';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-modern-components-preview/menu';
 import * as React from 'react';
 import type { StoryFn } from '@storybook/react-webpack5';
 

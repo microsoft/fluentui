@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { TabList, Tab } from '@fluentui/react-tabs';
+import { TabList, Tab } from '@fluentui/react-modern-components-preview/tab-list';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 import type { StoryParameters } from 'storywright';

@@ -1,15 +1,15 @@
 import * as React from 'react';
+import type { MessageBarIntent } from '@fluentui/react-modern-components-preview/message-bar';
 import {
   MessageBar,
   MessageBarActions,
   MessageBarBody,
-  MessageBarIntent,
   MessageBarTitle,
-} from '@fluentui/react-message-bar';
+} from '@fluentui/react-modern-components-preview/message-bar';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { Button } from '@fluentui/react-button';
-import { Link } from '@fluentui/react-link';
+import { Button } from '@fluentui/react-modern-components-preview/button';
+import { Link } from '@fluentui/react-modern-components-preview/link';
 import { DismissRegular } from '@fluentui/react-icons';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import type { StoryParameters } from 'storywright';

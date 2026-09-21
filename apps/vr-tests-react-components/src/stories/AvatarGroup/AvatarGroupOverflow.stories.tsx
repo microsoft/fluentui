@@ -2,7 +2,12 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupPopover,
+  partitionAvatarGroupItems,
+} from '@fluentui/react-modern-components-preview/avatar-group';
 
 import { names } from './utils';
 import { DARK_MODE, HIGH_CONTRAST, getStoryVariant } from '../../utilities';

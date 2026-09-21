@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-modern-components-preview/card';
 import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-icons';
 import { Body1, Caption1, Text } from '@fluentui/react-text';
-import { Button } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-modern-components-preview/button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { SearchBox } from '@fluentui/react-search';
+import { SearchBox } from '@fluentui/react-modern-components-preview/search-box';
 
 import { TestWrapperDecorator } from '../../utilities';
 

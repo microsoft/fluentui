@@ -1,4 +1,4 @@
-import { BadgeProps } from '@fluentui/react-badge';
+import type { BadgeProps } from '@fluentui/react-modern-components-preview/badge';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { Popover, PopoverSurface } from '@fluentui/react-popover';
+import { Popover, PopoverSurface } from '@fluentui/react-modern-components-preview/popover';
 import { tokens } from '@fluentui/react-theme';
 import { getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
 import type { StoryParameters } from 'storywright';

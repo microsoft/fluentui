@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-modern-components-preview/interaction-tag';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 

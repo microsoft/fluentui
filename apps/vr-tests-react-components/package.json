@@ -74,6 +74,7 @@
     "@fluentui/react-tooltip": "*",
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
+    "@fluentui/react-modern-components-preview": "*",
     "@griffel/react": "^1.5.32",
     "react": "19.2.0",
     "react-dom": "19.2.0",

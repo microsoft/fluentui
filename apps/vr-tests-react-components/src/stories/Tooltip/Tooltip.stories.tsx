@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip } from '@fluentui/react-modern-components-preview/tooltip';
 
 import { useStyles } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';

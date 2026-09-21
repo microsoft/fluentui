@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
-import { Badge, BadgeProps } from '@fluentui/react-badge';
+import type { BadgeProps } from '@fluentui/react-modern-components-preview/badge';
+import { Badge } from '@fluentui/react-modern-components-preview/badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import type { Meta } from '@storybook/react-webpack5';

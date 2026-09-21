@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { Steps, StoryParameters } from 'storywright';
-import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
+import type { StoryParameters } from 'storywright';
+import { Steps } from 'storywright';
+import { SpinButton, spinButtonClassNames } from '@fluentui/react-modern-components-preview/spin-button';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, DARK_MODE, RTL, HIGH_CONTRAST } from '../../utilities';
 

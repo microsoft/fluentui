@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-modern-components-preview/interaction-tag';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 import { Steps, type StoryParameters } from 'storywright';
 
 const contentId = 'content-id';

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-modern-components-preview/tag-group';
+import { Tag } from '@fluentui/react-modern-components-preview/tag';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-modern-components-preview/interaction-tag';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';

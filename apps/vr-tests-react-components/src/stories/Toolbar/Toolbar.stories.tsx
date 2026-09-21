@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
+import type { ToolbarProps } from '@fluentui/react-modern-components-preview/toolbar';
 import {
   Toolbar,
-  ToolbarProps,
   ToolbarButton,
   ToolbarDivider,
   ToolbarToggleButton,
   ToolbarGroup,
-} from '@fluentui/react-toolbar';
+} from '@fluentui/react-modern-components-preview/toolbar';
 import {
   TextBold24Regular,
   TextItalic24Regular,

@@ -1,14 +1,17 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { Button, CompoundButton, MenuButton, SplitButton, ToggleButton } from '@fluentui/react-button';
-import type {
-  ButtonState,
-  CompoundButtonState,
-  MenuButtonState,
-  SplitButtonState,
-  ToggleButtonState,
-} from '@fluentui/react-button';
-import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import { Button } from '@fluentui/react-modern-components-preview/button';
+import type { ButtonState } from '@fluentui/react-modern-components-preview/button';
+import { CompoundButton } from '@fluentui/react-modern-components-preview/compound-button';
+import type { CompoundButtonState } from '@fluentui/react-modern-components-preview/compound-button';
+import { MenuButton } from '@fluentui/react-modern-components-preview/menu-button';
+import type { MenuButtonState } from '@fluentui/react-modern-components-preview/menu-button';
+import { SplitButton } from '@fluentui/react-modern-components-preview/split-button';
+import type { SplitButtonState } from '@fluentui/react-modern-components-preview/split-button';
+import { ToggleButton } from '@fluentui/react-modern-components-preview/toggle-button';
+import type { ToggleButtonState } from '@fluentui/react-modern-components-preview/toggle-button';
+import type { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
+import { FluentProvider } from '@fluentui/react-provider';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';

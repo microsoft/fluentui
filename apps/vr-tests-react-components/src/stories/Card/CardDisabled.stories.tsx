@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { Card } from '@fluentui/react-card';
+import { Card } from '@fluentui/react-modern-components-preview/card';
 import { SampleCardContent } from './utils';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
