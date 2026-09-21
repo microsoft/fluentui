@@ -1,8 +1,6 @@
-export type { MenuItemSlots } from '@fluentui/react-menu';
+export type { MenuItemSlots, MenuItemProps } from '@fluentui/react-menu';
 
-import type { MenuItemProps as MenuItemBaseProps, MenuItemState as MenuItemBaseState } from '@fluentui/react-menu';
-
-export type MenuItemProps = MenuItemBaseProps;
+import type { MenuItemState as MenuItemBaseState } from '@fluentui/react-menu';
 
 export type MenuItemState = MenuItemBaseState & {
   root: {

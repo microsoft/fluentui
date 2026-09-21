@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
+import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Toaster, Toast, ToastTitle, useToastController } from '.';
@@ -8,10 +9,11 @@ import { Provider } from '../Provider';
 /**
  * Selectors used by the headless tests. Unlike the styled v9 layer, the headless
  * Toast does not emit Griffel class names — we target structural roles and the
- * `data-intent` attribute the headless `Toast` adds to its root.
+ * structural roles on the headless `ToastContainer` root.
  */
 const TOAST_CONTAINER = '[role="listitem"]';
-const TOAST = '[data-intent]';
+
+polyfillBodyAndObserve();
 
 const mount = (element: JSXElement) =>
   mountBase(
@@ -43,7 +45,7 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('button').click().get(TOAST).should('exist');
+    cy.get('button').click().get(TOAST_CONTAINER).should('exist');
   });
 
   it('should dismiss toast', () => {
@@ -73,8 +75,8 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
-    cy.get('#dismiss').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
+    cy.get('#dismiss').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should dismiss all toasts', () => {
@@ -105,8 +107,8 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('have.length', 5);
-    cy.get('#dismiss').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('have.length', 5);
+    cy.get('#dismiss').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should play and pause toast', () => {
@@ -138,9 +140,9 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
-    cy.get('#pause').click().wait(1000).get(TOAST).should('exist');
-    cy.get('#play').click().get(TOAST).should('not.exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
+    cy.get('#pause').click().wait(1000).get(TOAST_CONTAINER).should('exist');
+    cy.get('#play').click().get(TOAST_CONTAINER).should('not.exist');
   });
 
   it('should update toast content', () => {
@@ -178,7 +180,7 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).should('exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).should('exist');
     cy.get('#update').click().get('body').contains('Foo');
   });
 
@@ -204,7 +206,150 @@ describe('Toast (headless)', () => {
     };
 
     mount(<Example />);
-    cy.get('#make').click().get(TOAST).trigger('mouseenter').wait(700).get(TOAST).should('exist');
+    cy.get('#make').click().get(TOAST_CONTAINER).trigger('mouseenter').wait(700).get(TOAST_CONTAINER).should('exist');
+  });
+
+  it('should pause all toasts while focus is in the toaster', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is another toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click().get(TOAST_CONTAINER).first().focus().wait(700);
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
+    cy.get('#make').focus().wait(700);
+    cy.get(TOAST_CONTAINER).should('not.exist');
+  });
+
+  it('should keep toasts dispatched while focus is in the toaster paused', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const dispatchSecondToast = () =>
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is another toast</ToastTitle>
+          </Toast>,
+          { timeout: 500 },
+        );
+      const dispatchFirstToast = () =>
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+            <button id="dispatch-second" onClick={dispatchSecondToast}>
+              Dispatch another toast
+            </button>
+          </Toast>,
+          { timeout: 500 },
+        );
+
+      return (
+        <>
+          <button id="make" onClick={dispatchFirstToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get(TOAST_CONTAINER).focus();
+    cy.get('#dispatch-second').click().wait(700);
+    cy.get(TOAST_CONTAINER).should('have.length', 2);
+    cy.get('#make').focus().wait(700);
+    cy.get(TOAST_CONTAINER).should('not.exist');
+  });
+
+  it('should keep a toast paused on hover after focus leaves the toaster', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () =>
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+          { timeout: 1000, pauseOnHover: true },
+        );
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get(TOAST_CONTAINER)
+      .realHover()
+      .then(toast => toast[0].focus());
+    cy.get('#make')
+      .then(button => button[0].focus())
+      .wait(1200);
+    cy.get(TOAST_CONTAINER).should('exist');
+    cy.get('#make').realHover().wait(1200);
+    cy.get(TOAST_CONTAINER).should('not.exist');
+  });
+
+  it('should move focus between toasts with ArrowDown', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>First toast</ToastTitle>
+          </Toast>,
+          { timeout: -1 },
+        );
+        dispatchToast(
+          <Toast>
+            <ToastTitle>Second toast</ToastTitle>
+          </Toast>,
+          { timeout: -1 },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get(TOAST_CONTAINER).first().focus().realPress('ArrowDown');
+    cy.get(TOAST_CONTAINER).eq(1).should('be.focused');
   });
 
   it('should follow lifecycle', () => {

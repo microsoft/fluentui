@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tag-picker
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tag-picker_v9.10.2..@fluentui/react-tag-picker_v9.10.3)
+
+### Patches
+
+- fix: remove no-op `supportsSize` field control option from `TagPickerInput` ([PR #36468](https://github.com/microsoft/fluentui/pull/36468) by martinhochel@microsoft.com)
+- Bump @fluentui/react-tags to v9.9.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tag-picker_v9.10.2)
 

@@ -1,11 +1,10 @@
-import type { NavItemBaseProps, NavItemBaseState } from '@fluentui/react-nav';
+import type { NavItemBaseState } from '@fluentui/react-nav';
 
-export type { NavItemSlots } from '@fluentui/react-nav';
-
-export type NavItemProps = NavItemBaseProps;
+export type { NavItemSlots, NavItemBaseProps as NavItemProps } from '@fluentui/react-nav';
 
 export type NavItemState = NavItemBaseState & {
   root: {
+    'data-disabled'?: string;
     'data-selected'?: string;
   };
 };

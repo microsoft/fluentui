@@ -5,7 +5,14 @@
 import { join } from 'node:path';
 
 import type { Leak } from './bundle-isolation-plugin';
-import { type Config, fixtureOutputPath, relativeToWorkspace } from './config';
+import {
+  type Config,
+  type FixtureSelection,
+  allowedFor,
+  fixtureOutputPath,
+  forbiddenFor,
+  relativeToWorkspace,
+} from './config';
 
 export interface RuntimeOptions {
   configPath: string;
@@ -29,6 +36,7 @@ export type FixtureStatus = 'error' | 'regression' | 'stale' | 'allowed' | 'clea
 
 export interface Outcome extends FixtureResult {
   status: FixtureStatus;
+  forbidden: string[];
   allowed: string[];
   tolerated: string[];
   regressions: string[];
@@ -51,6 +59,7 @@ export interface Report {
   packageName: string;
   options: RuntimeOptions;
   outcomes: Outcome[];
+  skipped: string[];
   orphans: Orphan[];
   totals: Totals;
   failed: boolean;
@@ -66,16 +75,21 @@ const MAX_IMPORTERS = 2;
 export function createReport({
   packageName,
   results,
-  fixtures,
+  selection,
   options,
 }: {
   packageName: string;
   results: FixtureResult[];
-  fixtures: string[];
+  selection: FixtureSelection;
   options: RuntimeOptions;
 }): Report {
-  const outcomes = results.map(result => classify(result, options.config.allowedViolations[result.fixture] ?? []));
-  const orphans = orphanedAllowlistEntries(fixtures, options.config.allowedViolations);
+  const outcomes = results.map(result =>
+    classify(result, allowedFor(result.fixture, options.config), forbiddenFor(result.fixture, options.config)),
+  );
+  const orphans = selection.orphans.map(fixture => ({
+    fixture,
+    packages: allowedFor(fixture, options.config),
+  }));
   const totals: Totals = {
     errors: outcomes.filter(outcome => outcome.status === 'error').length,
     regressions: sumBy(outcomes, outcome => outcome.regressions.length),
@@ -94,6 +108,7 @@ export function createReport({
     packageName,
     options,
     outcomes,
+    skipped: selection.skipped,
     orphans,
     totals,
     failed,
@@ -101,7 +116,7 @@ export function createReport({
   };
 }
 
-export function classify(result: FixtureResult, allowed: string[]): Outcome {
+export function classify(result: FixtureResult, allowed: string[], forbidden: string[] = []): Outcome {
   const regressions = result.found.filter(name => !allowed.includes(name));
   const stale = allowed.filter(name => !result.found.includes(name));
   const tolerated = allowed.filter(name => result.found.includes(name));
@@ -117,13 +132,7 @@ export function classify(result: FixtureResult, allowed: string[]): Outcome {
     status = 'allowed';
   }
 
-  return { ...result, status, allowed, tolerated, regressions, stale };
-}
-
-export function orphanedAllowlistEntries(fixtures: string[], allowedViolations: Record<string, string[]>): Orphan[] {
-  return Object.entries(allowedViolations)
-    .filter(([fixture]) => !fixtures.includes(fixture))
-    .map(([fixture, packages]) => ({ fixture, packages }));
+  return { ...result, status, forbidden, allowed, tolerated, regressions, stale };
 }
 
 export function formatReport(report: Report, summaryPath: string): string {
@@ -138,10 +147,23 @@ export function formatReport(report: Report, summaryPath: string): string {
     lines.push(...formatFixture(outcome, options), '');
   }
 
+  if (report.skipped.length > 0) {
+    lines.push(
+      `${badge('SKIPPED')}${count(report.skipped.length, 'fixture')} not listed under "fixtures" in ${configLabel(
+        options,
+      )}`,
+      ...report.skipped.map(fixture => `    ${fixture}`),
+      '',
+    );
+  }
+
   for (const orphan of report.orphans) {
     lines.push(
-      `${badge('ORPHAN')}${orphan.fixture} - allowlisted (${orphan.packages.join(', ')}) but not a bundle-size fixture`,
-      `    remove the entry from allowedViolations in ${configLabel(options)}`,
+      `${badge('ORPHAN')}${orphan.fixture} - listed under "fixtures" but not found in ${relativeToWorkspace(
+        options.fixturesRoot,
+        options.workspaceRoot,
+      )}`,
+      `    remove the entry from ${configLabel(options)}`,
       '',
     );
   }
@@ -152,12 +174,18 @@ export function formatReport(report: Report, summaryPath: string): string {
 }
 
 function formatFixture(outcome: Outcome, options: RuntimeOptions): string[] {
+  // Only worth printing when the fixture narrowed or widened the package-level intent.
+  const override =
+    outcome.forbidden.join() === options.config.forbiddenPackages.join()
+      ? []
+      : [`    forbidden: ${outcome.forbidden.join(', ')}`];
+
   if (outcome.status === 'error') {
-    return [`${badge('ERROR')}${outcome.fixture}`, ...formatError(outcome, options.workspaceRoot)];
+    return [`${badge('ERROR')}${outcome.fixture}`, ...override, ...formatError(outcome, options.workspaceRoot)];
   }
 
   if (outcome.status === 'clean') {
-    return [`${badge('CLEAN')}${outcome.fixture}`];
+    return [`${badge('CLEAN')}${outcome.fixture}`, ...override];
   }
 
   const lines: string[] = [];
@@ -270,14 +298,15 @@ function originsOf(leak: Leak, workspaceRoot: string): string[] {
 
 function formatVerdict(report: Report): string[] {
   const { options, totals, orphans } = report;
-  const fixtures = count(report.outcomes.length, 'fixture');
+  const verified = count(report.outcomes.length, 'fixture');
+  const fixtures = report.skipped.length > 0 ? `${verified}, ${report.skipped.length} skipped` : verified;
 
   if (report.failed) {
     const parts = [
       totals.errors > 0 && `${count(totals.errors, 'fixture')} failed to bundle`,
       totals.regressions > 0 && count(totals.regressions, 'regression'),
       totals.stale > 0 && count(totals.stale, 'stale allowlist entry', 'stale allowlist entries'),
-      orphans.length > 0 && count(orphans.length, 'orphaned allowlist entry', 'orphaned allowlist entries'),
+      orphans.length > 0 && count(orphans.length, 'orphaned fixture entry', 'orphaned fixture entries'),
       options.strict && totals.tolerated > 0 && `${count(totals.tolerated, 'allowed violation')} rejected by --strict`,
     ].filter(Boolean);
 
@@ -324,10 +353,12 @@ export function createSummary(report: Report) {
     strict: options.strict,
     status: report.status,
     forbiddenPackages: options.config.forbiddenPackages,
-    orphanedAllowlistEntries: report.orphans,
+    skippedFixtures: report.skipped,
+    orphanedFixtureEntries: report.orphans,
     fixtures: report.outcomes.map(outcome => ({
       fixture: outcome.fixture,
       status: outcome.status,
+      forbiddenPackages: outcome.forbidden,
       analyzerReport: options.analyze
         ? toWorkspacePath(join(fixtureOutputPath(outcome.fixture, options.packageRoot), 'report.json'))
         : null,

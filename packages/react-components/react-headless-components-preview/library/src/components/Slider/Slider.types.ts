@@ -1,14 +1,6 @@
-import type { SliderSlots as SliderBaseSlots, SliderBaseProps, SliderBaseState } from '@fluentui/react-slider';
+import type { SliderBaseState } from '@fluentui/react-slider';
 
-/**
- * Slider component slots
- */
-export type SliderSlots = SliderBaseSlots;
-
-/**
- * Slider component props
- */
-export type SliderProps = SliderBaseProps;
+export type { SliderSlots, SliderBaseProps as SliderProps } from '@fluentui/react-slider';
 
 /**
  * Slider component state

@@ -3,6 +3,7 @@ export {
   renderCombobox,
   useCombobox,
   useComboboxContextValues,
+  useComboboxFilter,
   Listbox,
   renderListbox,
   useListbox,

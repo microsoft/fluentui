@@ -13,6 +13,7 @@ import { MenuItemSwitch } from './MenuItemSwitch/MenuItemSwitch';
 import { MenuDivider } from './MenuDivider/MenuDivider';
 import { MenuGroup } from './MenuGroup/MenuGroup';
 import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
+import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 
 describe('Menu', () => {
   it('renders trigger and surface children when open', () => {
@@ -306,6 +307,40 @@ describe('Menu', () => {
     expect(container.contains(getByRole('menu'))).toBe(true);
   });
 
+  it('promotes the MenuPopover with popover="auto" by default', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'auto');
+  });
+
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover popover="manual">
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'manual');
+  });
+
   // Arrow navigation is handled by Tabster (useArrowNavigationGroup).
   // Tabster's behavior is comprehensively tested in @fluentui/react-tabster.
   // E2E and integration tests should verify arrow navigation works correctly in the browser.
@@ -500,6 +535,41 @@ describe('Menu', () => {
       const header = getByText('Document');
       expect(header).toBeInTheDocument();
       expect(header.getAttribute('id')).toBeTruthy();
+    });
+  });
+
+  describe('MenuSplitGroup', () => {
+    // Regression test for https://github.com/microsoft/fluentui/issues/36651 — MenuSplitGroup
+    // rendered without a contexts argument, so `useIsInMenuSplitGroup` could never return true and
+    // descendants kept the icon gutter that a split-group trigger is supposed to drop.
+    it('provides split group context so the trigger half drops the icon gutter', () => {
+      const { getByTestId } = render(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList hasIcons>
+              <MenuItem hasSubmenu data-testid="outside-item">
+                Outside
+              </MenuItem>
+              <MenuSplitGroup data-testid="split-group">
+                <MenuItem hasSubmenu data-testid="split-trigger">
+                  Split main
+                </MenuItem>
+                <MenuItem data-testid="split-chevron">Chevron</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      expect(getByTestId('split-group')).toHaveAttribute('role', 'group');
+
+      // Outside the split group: default icon gutter + submenu indicator + content = 3 spans.
+      expect(getByTestId('outside-item').querySelectorAll('span')).toHaveLength(3);
+      // Inside the split group the trigger half suppresses the icon gutter: indicator + content.
+      expect(getByTestId('split-trigger').querySelectorAll('span')).toHaveLength(2);
     });
   });
 });

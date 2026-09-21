@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support",
+  "packageName": "@fluentui/react-positioning",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

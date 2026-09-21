@@ -3,5 +3,7 @@
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
   "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
-  "allowedViolations": {}
+  "fixtures": {
+    "AllComponents.fixture.js": {}
+  }
 }

@@ -177,6 +177,200 @@ describe('overflowManager', () => {
     expect(onUpdateOverflow).toHaveBeenCalled();
   });
 
+  it('should synchronously update once when the overflow menu attaches to an overflowing manager', async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const manager = createOverflowManager(createObserveOptions());
+    process.env.NODE_ENV = previousNodeEnv;
+
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+
+    await Promise.resolve();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+  });
+
+  it('should batch the update when the overflow menu attaches without hidden items', async () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const manager = createOverflowManager(createObserveOptions());
+    process.env.NODE_ENV = previousNodeEnv;
+
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 40), id: 'a', priority: 1 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    expect(getClientWidth).not.toHaveBeenCalled();
+
+    await Promise.resolve();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not recompute when the same overflow menu is added twice', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+    const menu = createElementWithSize('button', 30);
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    manager.addOverflowMenu(menu);
+    getClientWidth.mockClear();
+
+    const listener = jest.fn();
+    manager.subscribe(listener);
+    manager.addOverflowMenu(menu);
+
+    expect(listener).not.toHaveBeenCalled();
+    expect(getClientWidth).not.toHaveBeenCalled();
+  });
+
+  it('should not recompute when no overflow menu is registered', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(100);
+    const getClientWidth = jest.fn(() => 100);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    getClientWidth.mockClear();
+
+    const listener = jest.fn();
+    manager.subscribe(listener);
+    manager.removeOverflowMenu();
+
+    expect(listener).not.toHaveBeenCalled();
+    expect(getClientWidth).not.toHaveBeenCalled();
+  });
+
+  it('should not recompute when the overflow menu is removed after all items become visible', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(110);
+    const getClientWidth = jest.fn(() => 110);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+    const menu = createElementWithSize('button', 30);
+    let menuAttached = false;
+
+    const createResponsiveItem = () => {
+      const item = document.createElement('button');
+      Object.defineProperty(item, 'offsetWidth', {
+        configurable: true,
+        get: () => (menuAttached ? 35 : 60),
+      });
+      return item;
+    };
+
+    manager.addItem({ element: createResponsiveItem(), id: 'a', priority: 1 });
+    manager.addItem({ element: createResponsiveItem(), id: 'b', priority: 0 });
+    manager.observe(container);
+    manager.forceUpdate();
+    expect(getInvisibleIds(manager)).toEqual(['b']);
+
+    menuAttached = true;
+    manager.addOverflowMenu(menu);
+    expect(getInvisibleIds(manager)).toEqual([]);
+    getClientWidth.mockClear();
+
+    const listener = jest.fn();
+    manager.subscribe(listener);
+    menuAttached = false;
+    manager.removeOverflowMenu();
+
+    expect(listener).not.toHaveBeenCalled();
+    expect(getClientWidth).not.toHaveBeenCalled();
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+  });
+
+  it('should converge when a conditional overflow menu changes item widths', () => {
+    const container = createContainer(110);
+    const menu = createElementWithSize('button', 30);
+    const invisibleItemCounts: number[] = [];
+    let menuAttached = false;
+
+    const manager = createOverflowManager(
+      createObserveOptions({
+        onUpdateOverflow: () => {
+          const invisibleItemCount = manager.getSnapshot().invisibleItemCount;
+          invisibleItemCounts.push(invisibleItemCount);
+
+          // Cap a regression so this test fails with the oscillating states instead of recursing indefinitely.
+          if (invisibleItemCounts.length >= 6) {
+            return;
+          }
+
+          if (invisibleItemCount > 0 && !menuAttached) {
+            menuAttached = true;
+            manager.addOverflowMenu(menu);
+          } else if (invisibleItemCount === 0 && menuAttached) {
+            menuAttached = false;
+            manager.removeOverflowMenu();
+          }
+        },
+      }),
+    );
+
+    const createResponsiveItem = () => {
+      const item = document.createElement('button');
+      Object.defineProperty(item, 'offsetWidth', {
+        configurable: true,
+        get: () => (menuAttached ? 35 : 60),
+      });
+      return item;
+    };
+
+    manager.addItem({ element: createResponsiveItem(), id: 'a', priority: 1 });
+    manager.addItem({ element: createResponsiveItem(), id: 'b', priority: 0 });
+    manager.observe(container, { forceUpdate: true });
+
+    expect(invisibleItemCounts).toEqual([1, 0]);
+    expect(getVisibleIds(manager)).toEqual(['a', 'b']);
+  });
+
+  it('should recompute when the overflow menu is removed with hidden items', () => {
+    const manager = createOverflowManager(createObserveOptions());
+    const container = createContainer(140);
+    const getClientWidth = jest.fn(() => 140);
+    Object.defineProperty(container, 'clientWidth', { configurable: true, get: getClientWidth });
+
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'a', priority: 1 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'b', priority: 0 });
+    manager.addItem({ element: createElementWithSize('button', 60), id: 'c', priority: -1 });
+    manager.addOverflowMenu(createElementWithSize('button', 30));
+    manager.observe(container);
+    manager.forceUpdate();
+    expect(getInvisibleIds(manager)).toHaveLength(2);
+    getClientWidth.mockClear();
+
+    manager.removeOverflowMenu();
+
+    expect(getClientWidth).toHaveBeenCalledTimes(1);
+    expect(getVisibleIds(manager)).toHaveLength(2);
+    expect(getInvisibleIds(manager)).toHaveLength(1);
+  });
+
   it('should remove items through removeItem', () => {
     const manager = createOverflowManager(createObserveOptions());
     const container = createContainer(100);

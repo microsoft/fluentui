@@ -269,6 +269,7 @@ export const styles: ElementStyles = css`
     field-sizing: content;
     max-block-size: 100%;
     outline: 0;
+    overflow: auto;
     resize: none;
     text-align: inherit;
   }

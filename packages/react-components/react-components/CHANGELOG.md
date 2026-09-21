@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.74.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.7)
+
+Mon, 24 Aug 2026 16:40:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.6..@fluentui/react-components_v9.74.7)
+
+### Patches
+
+- `@fluentui/react-migration-v8-v9`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: avoid redundant overflow work during menu teardown and unchanged visibility updates ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-rating`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: remove no-op `supportsSize` field control option from `TagPickerInput` ([PR #36468](https://github.com/microsoft/fluentui/pull/36468) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+  - Keep motion ref handling out of the headless MessageBar base hook. ([PR #36549](https://github.com/microsoft/fluentui/pull/36549) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: synchronously measure overflowing managers when the overflow menu attaches ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+  - fix: avoid redundant overflow recomputation after conditional menu removal ([PR #36602](https://github.com/microsoft/fluentui/pull/36602) by bsunderhus@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
 
 ## [9.74.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.6)
 

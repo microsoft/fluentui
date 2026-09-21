@@ -19,13 +19,16 @@
     "@fluentui/react-utilities": "^9.26.6",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
-    "use-sync-external-store": "^1.2.0"
+    "use-sync-external-store": "^1.4.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",
-    "@types/react-dom": ">=16.9.0 <20.0.0",
-    "react": ">=16.14.0 <20.0.0",
-    "react-dom": ">=16.14.0 <20.0.0"
+    "react": ">=16.14.0 <20.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "beachball": {
     "disallowedChangeTypes": [

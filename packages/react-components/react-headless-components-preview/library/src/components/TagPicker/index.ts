@@ -1,7 +1,7 @@
 export { TagPicker } from './TagPicker';
 export { renderTagPicker } from './renderTagPicker';
 export { useTagPicker } from './useTagPicker';
-export { useTagPickerFilter } from './useTagPickerFilter';
+export { useComboboxFilter as useTagPickerFilter } from '../Combobox/useComboboxFilter';
 export { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 export type {
   TagPickerProps,

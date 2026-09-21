@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: infer verify-bundle-isolation target from workspace plugin",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

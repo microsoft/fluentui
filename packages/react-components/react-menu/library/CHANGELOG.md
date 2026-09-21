@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.25.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.4)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.25.3..@fluentui/react-menu_v9.25.4)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.16.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.15.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.25.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.25.3)
 

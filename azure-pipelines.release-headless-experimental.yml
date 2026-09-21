@@ -7,17 +7,12 @@ parameters:
     type: boolean
     default: true
 
-# Customize build number to include package prefix
 # Example: headless_experimental_20201022.1
-name: 'headless_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "headless_experimental_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -49,15 +44,6 @@ extends:
                   targetPath: $(System.DefaultWorkingDirectory)
                   artifactName: output
             steps:
-              - template: .devops/templates/tools.yml@self
-                parameters:
-                  dryRun: ${{ parameters.dryRun }}
-
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
               - task: Bash@3
                 name: validation
                 inputs:
@@ -76,10 +62,9 @@ extends:
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
 
-              - script: |
-                  corepack enable
-                  yarn install --immutable
-                displayName: Install dependencies
+              - template: .devops/templates/tools.yml@self
+                parameters:
+                  dryRun: ${{ parameters.dryRun }}
 
                 # Deletes all existing changefiles so that only the experimental bump happens
               - script: |
@@ -126,12 +111,7 @@ extends:
 
               - script: |
                   yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-headless.config.js
-                  git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
-                  NPM_TOKEN: $(npmToken)
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
+                  BEACHBALL_NPM_TOKEN: $(npmToken)

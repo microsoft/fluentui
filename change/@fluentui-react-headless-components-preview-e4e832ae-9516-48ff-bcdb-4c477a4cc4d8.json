@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: default aria-hidden on NavCategoryItem's expandIcon slot",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

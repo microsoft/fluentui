@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: renderTooltip applies state.arrowClassName to the arrow element instead of silently discarding it",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useSearchBoxBase_unstable } from '@fluentui/react-search';
 
 import type { SearchBoxProps, SearchBoxState } from './Search.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a SearchBox component, given its props and ref.
@@ -15,9 +15,9 @@ export const useSearchBox = (props: SearchBoxProps, ref: React.Ref<HTMLInputElem
 
   // Set data attributes for disabled and focused states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-focused'] = stringifyDataAttribute(state.focused);
+  state.root['data-focused'] = toDataAttributeValue(state.focused);
 
   return state;
 };

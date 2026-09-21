@@ -3,9 +3,21 @@ import { CodeComparison, CodeExample } from './utils.stories';
 
 <Meta title="Concepts/Migration/from v8/Components/Flex/Stack" />
 
-# @fluentui/react - Stack
+# Stack Migration
 
-## Default state
+## Overview
+
+Fluent UI v9 does not provide a native `Stack` component. Migrate v8 `Stack`
+layouts to CSS flexbox with `makeStyles`. For an incremental migration,
+`StackShim` from `@fluentui/react-migration-v8-v9` accepts the v8 `Stack` props
+while rendering equivalent flexbox styles.
+
+## Prop Mapping
+
+The sections below map each v8 `Stack` prop to CSS flexbox or the corresponding
+v9 migration approach; there is no native v9 `Stack` prop API.
+
+### Default state
 
 Stack's approach to layout is slightly different from Northstar's Flex, and CSS Flexbox, and a column layout is the default arrangement. For a clean usage scenario of Stack, these are the required CSS properties to achieve the same result:
 
@@ -93,13 +105,13 @@ MDN documentation:
 
 ---
 
-## as
+### as
 
 The `as` property strictly replaces which element type will be rendered as the root node. The default value for this is `div`.
 
 ---
 
-## disableShrink
+### disableShrink
 
 <CodeComparison>
   <CodeExample>
@@ -132,7 +144,7 @@ MDN documentation:
 
 ---
 
-## gap
+### gap
 
 _`10px` is used below as an example value_
 
@@ -202,8 +214,9 @@ _`10px` is used below as an example value_
   </CodeExample>
 </CodeComparison>
 
-As an alternative to this implementation, you can also use the CSS `gap` property. However, keep in mind that this is not the implementation in Stack, given that CSS `gap` is not supported by Internet Explorer 11, and might produce different results.
-If you do not have this limitation, you can use the following CSS:
+As an alternative to reproducing v8's margin-based implementation, use the CSS
+`gap` property when the intended spacing does not depend on v8's exact margin
+behavior:
 
 _`10px` is used below as an example value_
 
@@ -243,7 +256,7 @@ MDN documentation:
 
 ---
 
-## grow
+### grow
 
 <CodeComparison>
   <CodeExample>
@@ -276,7 +289,7 @@ MDN documentation:
 
 ---
 
-## horizontal
+### horizontal
 
 <CodeComparison>
   <CodeExample>
@@ -307,7 +320,7 @@ MDN documentation:
 
 ---
 
-## horizontalAlign / verticalAlign
+### horizontalAlign / verticalAlign
 
 horizontalAlign/verticalAlign change which props they affect depending on your `flex-direction`.
 
@@ -328,7 +341,7 @@ MDN documentation:
 
 ---
 
-## maxHeight
+### maxHeight
 
 _`10px` is used below as an example value_
 
@@ -363,7 +376,7 @@ MDN documentation:
 
 ---
 
-## maxWidth
+### maxWidth
 
 _`10px` is used below as an example value_
 
@@ -398,7 +411,7 @@ MDN documentation:
 
 ---
 
-## padding
+### padding
 
 _`10px` is used below as an example value_
 
@@ -431,7 +444,7 @@ MDN documentation:
 
 ---
 
-## reversed
+### reversed
 
 `reversed` will append "reverse" to your `flex-direction` CSS prop. Below is a table to reflect what you should use:
 
@@ -471,7 +484,7 @@ MDN documentation:
 
 ---
 
-## verticalFill
+### verticalFill
 
 <CodeComparison>
   <CodeExample>
@@ -502,7 +515,7 @@ MDN documentation:
 
 ---
 
-## wrap
+### wrap
 
 The `wrap` prop will also change the rendering. As such find below the styles and rendering being applied:
 

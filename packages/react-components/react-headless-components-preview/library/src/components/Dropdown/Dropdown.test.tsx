@@ -10,6 +10,7 @@ describe('Dropdown', () => {
     displayName: 'Dropdown',
     primarySlot: 'button',
     requiredProps: {
+      'aria-label': 'Options',
       open: true,
       children: (
         <>
@@ -36,6 +37,17 @@ describe('Dropdown', () => {
     expect(listbox).not.toHaveAttribute('hidden');
 
     expect(getAllByRole('option')).toHaveLength(3);
+  });
+
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Dropdown open listbox={{ popover: 'manual' }} placeholder="Select an option">
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+      </Dropdown>,
+    );
+
+    expect(getByRole('listbox')).toHaveAttribute('popover', 'manual');
   });
 
   it('sets data-selected="true" on the selected option', () => {

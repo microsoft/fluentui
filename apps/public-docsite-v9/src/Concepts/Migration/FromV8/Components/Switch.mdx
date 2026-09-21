@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Toggle Migration" />
+
+# Toggle → Switch Migration
+
+## Overview
+
+`Toggle` (v8) → `Switch` (v9). The name change is the biggest difference; the core API is similar.
+
+- `onText` / `offText` removed — keep a stable label and render optional status text separately
+- `onChange` signature changed: `(ev, checked?) => void` → `(ev: ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void`
+- `inlineLabel` removed — use `labelPosition`; preserve whether state text made the v8 label appear before or after the control
+- `label` is now a **slot** (accepts `string` or shorthand object)
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { Toggle } from '@fluentui/react';
+const [on, setOn] = React.useState(false);
+
+<Toggle label="Wi-Fi" onText="On" offText="Off" checked={on} onChange={(_, checked) => setOn(checked ?? false)} />;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { Switch } from '@fluentui/react-components';
+const [on, setOn] = React.useState(false);
+
+<>
+  <Switch label="Wi-Fi" labelPosition="above" checked={on} onChange={(_, data) => setOn(data.checked)} />
+  <span aria-hidden="true">{on ? 'On' : 'Off'}</span>
+</>;
+```
+
+### Label Position
+
+```tsx
+<>
+  {/* v8 inlineLabel with onText/offText places the main label before the control */}
+  <Switch label="Dark mode" labelPosition="before" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
+
+  {/* v8 inlineLabel without onText/offText places the label after the control */}
+  <Switch label="Dark mode" labelPosition="after" checked={checked} onChange={(_, data) => setChecked(data.checked)} />
+</>
+```
+
+## Prop Mapping
+
+| v8 `IToggleProps` | v9 `SwitchProps` | Notes                                                                                                     |
+| ----------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
+| `checked`         | `checked`        |                                                                                                           |
+| `defaultChecked`  | `defaultChecked` |                                                                                                           |
+| `label`           | `label` slot     | Now a slot — accepts string or shorthand                                                                  |
+| `onText`          | —                | Removed; render optional status text next to the component                                                |
+| `offText`         | —                | Removed; keep the switch label stable                                                                     |
+| `inlineLabel`     | `labelPosition`  | Default v8 layout → `"above"`; `true` with state text → `"before"`; `true` without state text → `"after"` |
+| `onChange`        | `onChange`       | Type changed: `(ev, data: { checked: boolean }) => void`                                                  |
+| `disabled`        | `disabled`       |                                                                                                           |
+| `componentRef`    | `ref`            |                                                                                                           |
+| `styles`          | `className`      | Use `makeStyles`                                                                                          |
+| `theme`           | —                | Use `FluentProvider`                                                                                      |

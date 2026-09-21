@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add missing root export map entry",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

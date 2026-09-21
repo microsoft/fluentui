@@ -7,11 +7,23 @@ import { dirname, isAbsolute, join, sep } from 'node:path';
 
 import Ajv, { type ErrorObject } from 'ajv';
 
+export interface FixtureConfig {
+  forbiddenPackages?: string[];
+  allowedViolations?: string[];
+}
+
 export interface Config {
   fixturesRoot: string;
   externals: string[];
   forbiddenPackages: string[];
-  allowedViolations: Record<string, string[]>;
+  fixtures: Record<string, FixtureConfig>;
+}
+
+/** Discovered fixtures split against the ones the configuration opted in to. */
+export interface FixtureSelection {
+  verified: string[];
+  skipped: string[];
+  orphans: string[];
 }
 
 const schemaPath = join(__dirname, '..', 'schema.json');
@@ -51,6 +63,29 @@ export function findFixtures(fixturesRoot: string): string[] {
       )
       .sort()
   );
+}
+
+/**
+ * Fixture directories are shared with monosize, so discovery alone would drag in fixtures that were
+ * never meant to carry an isolation guarantee. Only what the configuration names is verified.
+ */
+export function selectFixtures(discovered: string[], config: Config): FixtureSelection {
+  const listed = Object.keys(config.fixtures);
+
+  return {
+    verified: discovered.filter(fixture => listed.includes(fixture)),
+    skipped: discovered.filter(fixture => !listed.includes(fixture)),
+    orphans: listed.filter(fixture => !discovered.includes(fixture)).sort(),
+  };
+}
+
+/** Overrides rather than extends, so a fixture can narrow the forbidden set and not only widen it. */
+export function forbiddenFor(fixture: string, config: Config): string[] {
+  return config.fixtures[fixture]?.forbiddenPackages ?? config.forbiddenPackages;
+}
+
+export function allowedFor(fixture: string, config: Config): string[] {
+  return config.fixtures[fixture]?.allowedViolations ?? [];
 }
 
 export function findWorkspaceRoot(startDir: string): string {

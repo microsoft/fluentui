@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useMenuItemCheckboxBase_unstable } from '@fluentui/react-menu';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
 export const useMenuItemCheckbox = (
@@ -13,13 +13,13 @@ export const useMenuItemCheckbox = (
   const state: MenuItemCheckboxState = useMenuItemCheckboxBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-has-submenu'] = stringifyDataAttribute(state.hasSubmenu);
+  state.root['data-has-submenu'] = toDataAttributeValue(state.hasSubmenu);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-submenu-open'] = stringifyDataAttribute(state.submenuOpen);
+  state.root['data-submenu-open'] = toDataAttributeValue(state.submenuOpen);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-checked'] = stringifyDataAttribute(state.checked);
+  state.root['data-checked'] = toDataAttributeValue(state.checked);
 
   return state;
 };

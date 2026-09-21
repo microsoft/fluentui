@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make BreadcrumbButtonBaseProps distribute over the ARIA button union so the anchor arm's href stays assignable",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

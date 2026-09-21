@@ -125,15 +125,17 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
         }
 
         // Check if it's a variable declaration
-        if (
-          t.isVariableDeclaration(declaration) &&
-          declaration.declarations.length === 1 &&
-          t.isIdentifier(declaration.declarations[0].id) &&
-          isComponentLikeName(declaration.declarations[0].id.name)
-        ) {
-          storyName = declaration.declarations[0].id.name;
-          storyNames.push(declaration.declarations[0].id.name);
-          return;
+        if (t.isVariableDeclaration(declaration) && declaration.declarations.length === 1) {
+          const declarator = declaration.declarations[0];
+          const id = declarator.id;
+          if (t.isIdentifier(id) && isComponentLikeName(id.name)) {
+            storyName = id.name;
+            storyNames.push(id.name);
+            if (declarator.init && hasObjectProperty(t, unwrapExpression(t, declarator.init), 'parameters')) {
+              storiesWithParameters.add(id.name);
+            }
+            return;
+          }
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -232,6 +234,31 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
  */
 function isComponentLikeName(name: string) {
   return name.charAt(0) === name.charAt(0).toUpperCase();
+}
+
+/** Unwraps TS `as`/`satisfies` and parenthesized expressions. */
+function unwrapExpression<T extends Babel.types.Node>(t: typeof Babel.types, node: T): Babel.types.Node {
+  let current: Babel.types.Node = node;
+  while (t.isTSAsExpression(current) || t.isTSSatisfiesExpression(current) || t.isParenthesizedExpression(current)) {
+    current = current.expression;
+  }
+  return current;
+}
+
+function hasObjectProperty(t: typeof Babel.types, node: Babel.types.Node, propertyName: string): boolean {
+  if (!t.isObjectExpression(node)) {
+    return false;
+  }
+
+  return node.properties.some(property => {
+    if ((t.isObjectProperty(property) || t.isObjectMethod(property)) && !property.computed) {
+      const key = property.key;
+      const name = t.isIdentifier(key) ? key.name : t.isStringLiteral(key) ? key.value : undefined;
+      return name === propertyName;
+    }
+
+    return false;
+  });
 }
 
 /**

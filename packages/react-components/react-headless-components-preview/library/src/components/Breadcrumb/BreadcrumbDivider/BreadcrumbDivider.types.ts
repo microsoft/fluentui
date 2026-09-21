@@ -1,20 +1,5 @@
-import type {
-  BreadcrumbDividerSlots as BreadcrumbDividerBaseSlots,
-  BreadcrumbDividerBaseProps,
-  BreadcrumbDividerBaseState,
+export type {
+  BreadcrumbDividerSlots,
+  BreadcrumbDividerBaseProps as BreadcrumbDividerProps,
+  BreadcrumbDividerBaseState as BreadcrumbDividerState,
 } from '@fluentui/react-breadcrumb';
-
-/**
- * BreadcrumbDivider component slots
- */
-export type BreadcrumbDividerSlots = BreadcrumbDividerBaseSlots;
-
-/**
- * BreadcrumbDivider component props
- */
-export type BreadcrumbDividerProps = BreadcrumbDividerBaseProps;
-
-/**
- * BreadcrumbDivider component state
- */
-export type BreadcrumbDividerState = BreadcrumbDividerBaseState;

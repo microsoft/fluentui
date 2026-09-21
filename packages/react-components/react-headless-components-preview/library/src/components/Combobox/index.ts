@@ -3,6 +3,7 @@ export type { ComboboxSlots, ComboboxProps, ComboboxState } from './Combobox.typ
 export { renderCombobox } from './renderCombobox';
 export { useCombobox } from './useCombobox';
 export { useComboboxContextValues } from './useComboboxContextValues';
+export { useComboboxFilter } from './useComboboxFilter';
 
 export { Listbox, renderListbox, useListbox, useListboxContextValues } from '../Dropdown/Listbox';
 export type { ListboxSlots, ListboxProps, ListboxState, ListboxContextValues } from '../Dropdown/Listbox';

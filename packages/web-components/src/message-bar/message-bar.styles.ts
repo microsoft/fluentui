@@ -117,7 +117,6 @@ export const styles: ElementStyles = css`
   :host([layout='multiline']) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
-    padding-block-start: ${spacingVerticalS};
   }
 
   ::slotted(*) {

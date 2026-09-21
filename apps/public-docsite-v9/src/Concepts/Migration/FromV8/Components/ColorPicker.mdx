@@ -2,7 +2,11 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Concepts/Migration/from v8/Components/ColorPicker Migration" />
 
-# ColorPicker migration
+# ColorPicker Migration
+
+## Overview
+
+This guide covers migrating the v8 `ColorPicker` to the v9 API, including usage examples and prop mapping.
 
 ## Examples
 
@@ -10,136 +14,224 @@ Basic usage of `ColorPicker` v8
 
 ```jsx
 import * as React from 'react';
-import {
-  ColorPicker,
-  ChoiceGroup,
-  IChoiceGroupOption,
-  getColorFromString,
-  IColor,
-  IColorPickerStyles,
-  IColorPickerProps,
-} from '@fluentui/react';
+import { ColorPicker, getColorFromString, IColor } from '@fluentui/react';
 
 const white = getColorFromString('#ffffff')!;
 
 const ColorPickerBasicExample: React.FunctionComponent = () => {
   const [color, setColor] = React.useState(white);
-  const [showPreview, setShowPreview] = React.useState(true);
-  const [alphaType, setAlphaType] = React.useState<IColorPickerProps['alphaType']>('alpha');
-
   const updateColor = React.useCallback((ev: any, colorObj: IColor) => setColor(colorObj), []);
 
   return (
-    <>
-      <ColorPicker
-        color={color}
-        onChange={updateColor}
-        alphaType={alphaType}
-        showPreview={showPreview}
-        styles={colorPickerStyles}
-        strings={{
-          hueAriaLabel: 'Hue',
-        }}
-      />
-    </>
+    <ColorPicker
+      color={color}
+      onChange={updateColor}
+      alphaType="alpha"
+      showPreview
+      strings={{
+        hueAriaLabel: 'Hue',
+      }}
+    />
   );
 };
 ```
 
 An equivalent `ColorPicker` in v9 is
 
-```jsx
-import {
-  ColorPicker,
-  ColorArea,
-  ColorSliderProps,
-  AlphaSlider,
-  ColorSlider,
-  ColorPickerOnSelectEventHandler,
-} from '@fluentui/react-color-picker-preview';
+```tsx
+import * as React from 'react';
+import { tinycolor } from '@ctrl/tinycolor';
+import { AlphaSlider, ColorArea, ColorPicker, ColorSlider, type ColorPickerProps } from '@fluentui/react-color-picker';
 
-export const Default = () => {
-  const [selectedColor, setSelectedColor] = React.useState({ h: 109, s: 1, v: 0.9, a: 1 });
-  const handleChange: ColorPickerProps['onChange'] = (_, data) => setSelectedColor(data.selectedColorHex);
+type HsvaColor = { h: number; s: number; v: number; a?: number };
+
+export const ColorPickerV9BasicExample = () => {
+  const initialColor: HsvaColor = { h: 109, s: 1, v: 0.9, a: 1 };
+  const [color, setColor] = React.useState<HsvaColor>(initialColor);
+  const [hexText, setHexText] = React.useState(() => tinycolor(initialColor).toHex8String());
+  const rgb = tinycolor(color).toRgb();
+  const hex = tinycolor(color).toHex8String();
+
+  const applyColor = (nextColor: HsvaColor) => {
+    const normalized = { ...nextColor, a: nextColor.a ?? 1 };
+    setColor(normalized);
+    setHexText(tinycolor(normalized).toHex8String());
+  };
+
+  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
+    applyColor(data.color);
+  };
+
+  const updateRgb = (channel: 'r' | 'g' | 'b', value: number) => {
+    applyColor(tinycolor({ ...rgb, [channel]: value, a: color.a }).toHsv());
+  };
+
+  const updateHex = (value: string) => {
+    setHexText(value);
+    if (!/^#[0-9a-f]{6}([0-9a-f]{2})?$/i.test(value)) {
+      return;
+    }
+    const next = tinycolor(value);
+    if (next.isValid) {
+      const parsed = next.toHsv();
+      applyColor({ ...parsed, a: value.length === 7 ? color.a : parsed.a });
+    }
+  };
 
   return (
     <>
-      <ColorPicker color={selectedColor} onChange={handleChange}>
-        <ColorArea />
-        <AlphaSlider />
-        <ColorSlider />
+      <ColorPicker role="group" aria-label={`Color picker, ${hex} selected`} color={color} onColorChange={handleChange}>
+        <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
+        <ColorSlider channel="hue" aria-label="Hue" />
+        <AlphaSlider aria-label="Alpha" />
       </ColorPicker>
-      <div style={{ backgroundColor: tinycolor(color).toRgbString() }} />
+
+      <label>
+        Hex
+        <input
+          value={hexText}
+          onChange={event => updateHex(event.currentTarget.value)}
+          onBlur={() => setHexText(hex)}
+        />
+      </label>
+      {(['r', 'g', 'b'] as const).map(channel => (
+        <label key={channel}>
+          {{ r: 'Red', g: 'Green', b: 'Blue' }[channel]}
+          <input
+            type="number"
+            min={0}
+            max={255}
+            value={rgb[channel]}
+            onChange={event => updateRgb(channel, Number(event.currentTarget.value))}
+          />
+        </label>
+      ))}
+      <label>
+        Alpha
+        <input
+          type="number"
+          min={0}
+          max={1}
+          step={0.01}
+          value={color.a ?? 1}
+          onChange={event => applyColor({ ...color, a: Number(event.currentTarget.value) })}
+        />
+      </label>
+
+      <output aria-live="polite">
+        {hex}; rgb({rgb.r}, {rgb.g}, {rgb.b}); alpha {color.a ?? 1}
+        <span
+          aria-hidden="true"
+          style={{ display: 'inline-block', width: 32, height: 32, backgroundColor: tinycolor(color).toRgbString() }}
+        />
+      </output>
     </>
   );
 };
 ```
 
-## Props mapping
+The picker is controlled by one HSV value. The RGB, alpha, and hex fields are
+equivalent app-owned controls derived from that value; validate and clamp
+production input as appropriate. `ColorArea` exposes two native input slots, so
+label both `inputX` and `inputY`. They implement the two axes of one composite
+control and use roving tab focus, so do not force both inputs into the tab
+sequence. The preview is passive output rather than a `ColorSwatch`, which is
+an interactive selection control.
+
+V8 `IColor` and v9 HSV values use different units. Keep hue in the `0`-`360`
+range, but divide v8 `s`, `v`, and `a` percentage values by `100` when creating
+the v9 color. Multiply those v9 fractions by `100` when adapting back to code
+that still expects v8 percentages. If the v8 value originated from an
+eight-digit hex color, parse it rather than treating the byte alpha (`0`-`255`)
+as either API's alpha unit.
+
+V9 `color.a` always stores opacity as a `0`-`1` fraction, even when
+`<AlphaSlider transparency />` displays the inverse transparency percentage.
+Convert v8 `IColor.a` with `a / 100`, or convert `IColor.t` with
+`1 - t / 100`; do not store `t / 100` in `color.a`. When a six-digit hex edit
+omits alpha, preserve the current `color.a` instead of resetting transparency
+to fully opaque. An eight-digit hex edit may replace alpha explicitly. Keep
+partial text while the field is being edited, then restore the committed color
+string on blur if the text never became valid.
+
+The `ColorPicker` root is a `div` without a default landmark role. When
+preserving `strings.rootAriaLabelFormat`, add an appropriate role such as
+`group` together with the localized `aria-label`; an `aria-label` on an
+unclassified `div` alone does not create a named container.
+
+Color callbacks should read the next color from the callback data, not assume a
+specific React event target. Pointer interaction in `ColorArea` can originate
+from native pointer events while input and keyboard changes use React events.
+
+## Prop Mapping
 
 ### ColorPicker
 
 This table maps v8 `ColorPicker` component props to their v9 equivalents.
 
-| v8                  | v9              | Notes                                                                                                                              |
-| ------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `alphaType`         | `not supported` | Use `AlphaSlider` component.                                                                                                       |
-| `alphaSliderHidden` | `not supported` |                                                                                                                                    |
-| `color`             | `color`         | Type changed `IColor, string`->`HSV`                                                                                               |
-| `className`         | `not supported` | Slot system supports it by default. We don't need to provide it explicitly.                                                        |
-| `componentRef`      | `not supported` |                                                                                                                                    |
-| `hexLabel`          | `not supported` |                                                                                                                                    |
-| `redLabel`          | `not supported` |                                                                                                                                    |
-| `greenLabel`        | `not supported` |                                                                                                                                    |
-| `blueLabel`         | `not supported` |                                                                                                                                    |
-| `alphaLabel`        | `not supported` |                                                                                                                                    |
-| `onChange`          | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>` |
-| `no equivalent`     | `shape`         | New prop, `shape` of the ColorPicker.                                                                                              |
-| `showPreview`       | `not supported` | Use `ColorSwatch` instead.                                                                                                         |
-| `strings`           | `not supported` |                                                                                                                                    |
-| `styles`            | `not supported` | Use style customization through `className` instead.                                                                               |
-| `theme`             | `not supported` |                                                                                                                                    |
-| `tooltipProps`      | `not supported` | Use `Tooltip` component instead.                                                                                                   |
+| v8                  | v9               | Notes                                                                                                                                           |
+| ------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `alphaType`         | `AlphaSlider`    | Render it for `"alpha"`; set `transparency` for `"transparency"`; omit it for `"none"`.                                                         |
+| `alphaSliderHidden` | Remove           | Deprecated in v8. Omit `AlphaSlider` when no alpha control is wanted.                                                                           |
+| `color`             | `color`          | Type changed `IColor, string`->`HSV`; convert `s`, `v`, and `a` from 0-100 percentages to 0-1 fractions                                         |
+| `className`         | `className`      | Applied to the root slot.                                                                                                                       |
+| `componentRef`      | `not supported`  |                                                                                                                                                 |
+| `hexLabel`          | App-owned input  | Deprecated in v8; label the replacement hex input.                                                                                              |
+| `redLabel`          | App-owned input  | Deprecated in v8; label the replacement red input.                                                                                              |
+| `greenLabel`        | App-owned input  | Deprecated in v8; label the replacement green input.                                                                                            |
+| `blueLabel`         | App-owned input  | Deprecated in v8; label the replacement blue input.                                                                                             |
+| `alphaLabel`        | App-owned input  | Deprecated in v8; label the replacement alpha input.                                                                                            |
+| `onChange`          | `onColorChange`  | Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>`              |
+| `no equivalent`     | `shape`          | New prop, `shape` of the ColorPicker.                                                                                                           |
+| `showPreview`       | App-owned output | Render a passive preview; do not use interactive `ColorSwatch` solely as a preview.                                                             |
+| `strings`           | Native labels    | Apply localized visible labels and ARIA attributes to the composed controls and input slots; preserve `rootAriaLabelFormat` with a named group. |
+| `styles`            | `not supported`  | Use style customization through `className` instead.                                                                                            |
+| `theme`             | `not supported`  |                                                                                                                                                 |
+| `tooltipProps`      | `not supported`  | Use `Tooltip` component instead.                                                                                                                |
 
 ### ColorRectangle -> ColorArea
 
 This table maps changes between `ColorRectangle` and `ColorArea` equivalent in v9.
 
-| v8                | v9              | Notes                                                                                                                              |
-| ----------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `ariaLabel`       | `not supported` | Use native `aria-attributes`                                                                                                       |
-| `ariaValueFormat` | `not supported` |                                                                                                                                    |
-| `ariaDescription` | `not supported` |                                                                                                                                    |
-| `color`           | `color`         | Type changed `IColor`->`HSV`                                                                                                       |
-| `no equivalent`   | `defaultColor`  | Default color for uncontrollable ColorArea                                                                                         |
-| `minSize`         | `not supported` |                                                                                                                                    |
-| `onChange`        | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>` |
-| `no equivalent`   | `shape`         | New prop, `shape` of the ColorPicker.                                                                                              |
+| v8                | v9                 | Notes                                                                      |
+| ----------------- | ------------------ | -------------------------------------------------------------------------- |
+| `ariaLabel`       | `inputX`, `inputY` | Set native `aria-label` values on both input slots.                        |
+| `ariaValueFormat` | Native ARIA        | Compute `aria-valuetext` for both input slots if needed.                   |
+| `ariaDescription` | Native ARIA        | Use `aria-describedby` on both input slots.                                |
+| `color`           | `color`            | Type changed `IColor`->`HSV`; convert percentage channels to 0-1 fractions |
+| `no equivalent`   | `defaultColor`     | Default color for an uncontrolled `ColorArea`                              |
+| `minSize`         | `not supported`    |                                                                            |
+| `onChange`        | `onChange`         | Type changed to `EventHandler<ColorAreaOnColorChangeData>`.                |
+| `no equivalent`   | `shape`            | New prop, `shape` of the ColorPicker.                                      |
 
 ### ColorSlider
 
-| v8              | v9              | Notes                                                                                                                              |
-| --------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `type`          | `channel`       | Color channel. Currently supported `hue`, `saturation` and `brightness`. For alpha channel use `AlphaSlider`                       |
-| `color`         | `color`         | Type changed `IColor`->`HSV`                                                                                                       |
-| `no equivalent` | `defaultColor`  | Default color for uncontrollable ColorArea                                                                                         |
-| `minValue`      | `not supported` | Use native input `min` prop                                                                                                        |
-| `maxValue`      | `not supported` | Use native input `max` prop                                                                                                        |
-| `isAlpha`       | `not supported` |                                                                                                                                    |
-| `overlayColor`  | `not supported` |                                                                                                                                    |
-| `thumbColor`    | `not supported` | Use native input `max` prop                                                                                                        |
-| `overlayStyle`  | `not supported` | Use native input `max` prop                                                                                                        |
-| `onChange`      | `onColorChange` | Renamed. Type changed `(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;` => `EventHandler<ColorPickerOnChangeData>` |
-| `no equivalent` | `shape`         | New prop, `shape` of the ColorPicker.                                                                                              |
-| `no equivalent` | `vertical`      | Vertical slider.                                                                                                                   |
+| v8              | v9               | Notes                                                                                               |
+| --------------- | ---------------- | --------------------------------------------------------------------------------------------------- |
+| `type`          | `channel`        | Color channel. Supported values are `hue`, `saturation`, and `value`. For alpha, use `AlphaSlider`. |
+| `value`         | `color[channel]` | Control the slider with the relevant field of the HSV `color`; updates return the complete color.   |
+| `color`         | `color`          | Type changed `IColor`->`HSV`; convert percentage channels to 0-1 fractions                          |
+| `no equivalent` | `defaultColor`   | Default color for an uncontrolled `ColorSlider`                                                     |
+| `minValue`      | Remove           | Deprecated in v8; v9 derives the range from `channel`.                                              |
+| `maxValue`      | Remove           | Deprecated in v8; v9 derives the range from `channel`.                                              |
+| `isAlpha`       | `AlphaSlider`    | Deprecated in v8. Compose `AlphaSlider` instead.                                                    |
+| `overlayColor`  | `not supported`  |                                                                                                     |
+| `thumbColor`    | `not supported`  |                                                                                                     |
+| `overlayStyle`  | `not supported`  |                                                                                                     |
+| `onChange`      | `onChange`       | Type changed to `EventHandler<SliderOnChangeData>`.                                                 |
+| `no equivalent` | `shape`          | New prop, `shape` of the ColorPicker.                                                               |
+| `no equivalent` | `vertical`       | Vertical slider.                                                                                    |
 
-### No equivalent in V8 -> AlphaSlider
+### v8 alpha/transparency → AlphaSlider
 
-For aplha channel, use `AlphaSlider` component.
-It has all the props of the `ColorSlider`.
+Use the dedicated `AlphaSlider` for v8 `ColorSlider type="alpha"` or
+`type="transparency"`, and for the slider implied by `ColorPicker.alphaType`.
+It has the `ColorSlider` props except `channel`.
 
-| v8              | v9             | Notes                                                                        |
-| --------------- | -------------- | ---------------------------------------------------------------------------- |
-| `no equivalent` | `transparency` | The `transparency` property determines how the alpha channel is interpreted. |
+| v8                                                 | v9                             | Notes                                                                |
+| -------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------- |
+| `type="alpha"` / `alphaType="alpha"`               | `<AlphaSlider />`              | `transparency` defaults to `false`, so the value represents opacity. |
+| `type="transparency"` / `alphaType="transparency"` | `<AlphaSlider transparency />` | The displayed value represents transparency rather than opacity.     |
+| `alphaType="none"`                                 | Omit `AlphaSlider`             | Do not render an alpha control.                                      |
 
 For more examples, please refer to the [ColorPicker documentation](https://react.fluentui.dev/?path=/docs/preview-components-colorpicker--docs).

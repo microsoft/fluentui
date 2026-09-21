@@ -23,14 +23,50 @@ const SUPPORTS_POPOVER_OPEN_SELECTOR =
  * Create the state required to render the Toaster.
  */
 export const useToaster = (props: ToasterProps): ToasterState => {
-  const { toasterId, offset, shortcuts, announce: announceProp, ...rest } = props;
-
-  const { toastsToRender, isToastVisible, tryRestoreFocus, closeAllToasts } = useToasterState<HTMLDivElement>({
+  const {
     toasterId,
+    position,
+    timeout,
+    pauseOnWindowBlur,
+    pauseOnHover,
+    priority,
     offset,
     shortcuts,
-    pauseOnHover: true,
-  });
+    limit,
+    announce: announceProp,
+    ...rest
+  } = props;
+
+  const playAllToastsRef = React.useRef<() => void>(() => undefined);
+  const toasterShortcuts = React.useMemo(
+    () =>
+      shortcuts
+        ? {
+            focus: (e: KeyboardEvent) => {
+              const isFocusShortcut = shortcuts.focus(e);
+              if (isFocusShortcut) {
+                Promise.resolve().then(() => playAllToastsRef.current());
+              }
+              return isFocusShortcut;
+            },
+          }
+        : undefined,
+    [shortcuts],
+  );
+  const { toastsToRender, isToastVisible, playAllToasts, tryRestoreFocus, closeAllToasts } =
+    useToasterState<HTMLDivElement>({
+      toasterId,
+      position,
+      timeout,
+      pauseOnWindowBlur,
+      pauseOnHover,
+      priority,
+      shortcuts: toasterShortcuts,
+      limit,
+    });
+  useIsomorphicLayoutEffect(() => {
+    playAllToastsRef.current = playAllToasts;
+  }, [playAllToasts]);
 
   const announceRef = React.useRef<ToastAnnounce>(() => null);
   const announce = React.useCallback<ToastAnnounce>((message, options) => announceRef.current(message, options), []);
@@ -88,6 +124,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
+        focusgroup: 'toolbar block itemcontrols',
         onKeyDown,
         popover: 'manual' as const,
         'data-toaster-position': toastPosition,

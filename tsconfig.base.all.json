@@ -62,6 +62,7 @@
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
+      "@fluentui/cli": ["tools/cli/src/index.ts"],
       "@fluentui/component-selector-preview": [
         "packages/react-components/component-selector-preview/library/src/index.ts"
       ],
@@ -90,6 +91,10 @@
       "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/library/src/index.ts"],
       "@fluentui/react-calendar-compat-stories": [
         "packages/react-components/react-calendar-compat/stories/src/index.ts"
+      ],
+      "@fluentui/react-calendar-preview": ["packages/react-components/react-calendar-preview/library/src/index.ts"],
+      "@fluentui/react-calendar-preview-stories": [
+        "packages/react-components/react-calendar-preview/stories/src/index.ts"
       ],
       "@fluentui/react-card": ["packages/react-components/react-card/library/src/index.ts"],
       "@fluentui/react-card-stories": ["packages/react-components/react-card/stories/src/index.ts"],
@@ -122,11 +127,11 @@
       "@fluentui/react-field": ["packages/react-components/react-field/library/src/index.ts"],
       "@fluentui/react-field-stories": ["packages/react-components/react-field/stories/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
-      "@fluentui/react-headless-components-preview/*": [
-        "packages/react-components/react-headless-components-preview/library/src/*.ts"
-      ],
       "@fluentui/react-headless-components-preview-stories": [
         "packages/react-components/react-headless-components-preview/stories/src/index.ts"
+      ],
+      "@fluentui/react-headless-components-preview/*": [
+        "packages/react-components/react-headless-components-preview/library/src/*.ts"
       ],
       "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/library/src/index.ts"],
       "@fluentui/react-icons-compat-stories": ["packages/react-components/react-icons-compat/stories/src/index.ts"],
@@ -212,6 +217,9 @@
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
+      ],
+      "@fluentui/react-storybook-addon-playground": [
+        "packages/react-components/react-storybook-addon-playground/src/index.ts"
       ],
       "@fluentui/react-swatch-picker": ["packages/react-components/react-swatch-picker/library/src/index.ts"],
       "@fluentui/react-swatch-picker-stories": ["packages/react-components/react-swatch-picker/stories/src/index.ts"],

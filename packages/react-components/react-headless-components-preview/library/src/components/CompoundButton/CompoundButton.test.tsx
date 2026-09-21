@@ -8,6 +8,7 @@ describe('CompoundButton', () => {
   isConformant({
     Component: CompoundButton,
     displayName: 'CompoundButton',
+    requiredProps: { children: 'Action' },
   });
 
   it('renders a button with primary and secondary text in its accessible name', () => {

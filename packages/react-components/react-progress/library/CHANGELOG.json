@@ -2,6 +2,20 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.5.5",
+      "tag": "@fluentui/react-progress_v9.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-motion to v9.16.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.5.4",
       "tag": "@fluentui/react-progress_v9.5.4",

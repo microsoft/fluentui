@@ -7,19 +7,14 @@ parameters:
     type: boolean
     default: true
 
-# Customize build number to include major version
-# Example: v9_20201022.1
-name: 'v9_experimental_$(Date:yyyyMMdd)$(Rev:.r)'
+# Example: v9_experimental_20201022.1
+name: "v9_experimental_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -55,11 +50,6 @@ extends:
                 parameters:
                   dryRun: ${{ parameters.dryRun }}
 
-              - script: |
-                  git config user.name "Fluent UI Build"
-                  git config user.email "fluentui-internal@service.microsoft.com"
-                displayName: Configure git user (used by beachball)
-
               - task: Bash@3
                 name: validation
                 inputs:
@@ -77,11 +67,6 @@ extends:
                     echo "Branch path: $BRANCH_PATH"
                     echo "Feature name: $FEATURE_NAME"
                 displayName: Validate branch and extract feature name
-
-              - script: |
-                  corepack enable
-                  yarn install --immutable
-                displayName: Install dependencies
 
                 # Deletes all existing changefiles so that only bump that happens is for nightly
               - script: |
@@ -119,12 +104,7 @@ extends:
 
               - script: |
                   yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-vNext.config.js
-                  git reset --hard origin/$(validation.branchPath)
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
-                  NPM_TOKEN: $(npmToken)
-
-              - template: .devops/templates/cleanup.yml@self
-                parameters:
-                  checkForModifiedFiles: false
+                  BEACHBALL_NPM_TOKEN: $(npmToken)

@@ -2,6 +2,26 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.9.3",
+      "tag": "@fluentui/react-overflow_v9.9.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e7a4695d76211fc7ccb525f2cc7d51343aba6c4e",
+            "comment": "fix: avoid redundant overflow work during menu teardown and unchanged visibility updates"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.4.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.9.2",
       "tag": "@fluentui/react-overflow_v9.9.2",

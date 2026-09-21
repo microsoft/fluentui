@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-infolabel
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.4.25)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infolabel_v9.4.24..@fluentui/react-infolabel_v9.4.25)
+
+### Patches
+
+- fix: align react/react-dom/@types peerDependencies with the react/jsx-runtime 16.14.0 floor ([PR #36551](https://github.com/microsoft/fluentui/pull/36551) by martinhochel@microsoft.com)
+- Bump @fluentui/react-popover to v9.14.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.4.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.4.24)
 

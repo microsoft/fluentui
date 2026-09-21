@@ -18,8 +18,8 @@
     "@typescript-eslint/utils": "^8.46.2"
   },
   "peerDependencies": {
-    "eslint": ">= 8.0.0",
-    "typescript": ">= 5.0.0",
+    "eslint": "^8.57.0 || ^9.0.0",
+    "typescript": ">=5.0.0 <6.0.0",
     "typescript-eslint": ">= 8.46.2"
   },
   "exports": {

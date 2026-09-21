@@ -7,20 +7,18 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderSwitch_unstable as renderSwitch } from '@fluentui/react-switch';
-import type { SwitchBaseProps } from '@fluentui/react-switch';
 import type { SwitchBaseState } from '@fluentui/react-switch';
-import type { SwitchSlots as SwitchSlots_2 } from '@fluentui/react-switch';
+import { SwitchBaseProps as SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
 
 export { renderSwitch }
 
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
-// @public
-export type SwitchProps = SwitchBaseProps;
+export { SwitchProps }
 
-// @public
-export type SwitchSlots = SwitchSlots_2;
+export { SwitchSlots }
 
 // @public
 export type SwitchState = SwitchBaseState & {

@@ -2,6 +2,27 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Mon, 24 Aug 2026 16:40:04 GMT",
+      "version": "9.4.3",
+      "tag": "@fluentui/priority-overflow_v9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "e7a4695d76211fc7ccb525f2cc7d51343aba6c4e",
+            "comment": "fix: synchronously measure overflowing managers when the overflow menu attaches"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b5ec47fc035849b21b35d6f6054d60c0a64ff3db",
+            "comment": "fix: avoid redundant overflow recomputation after conditional menu removal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.4.2",
       "tag": "@fluentui/priority-overflow_v9.4.2",

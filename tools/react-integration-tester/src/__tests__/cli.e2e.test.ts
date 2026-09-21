@@ -156,6 +156,11 @@ describe('rit CLI e2e', () => {
           "tslib": "^2.8.0",
           "typescript": "5.7.3",
         },
+        "dependenciesMeta": Object {
+          "cypress": Object {
+            "built": true,
+          },
+        },
         "license": "UNLICENSED",
         "name": "@rit/react-18-root",
         "private": true,

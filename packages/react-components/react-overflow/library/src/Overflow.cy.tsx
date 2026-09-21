@@ -108,7 +108,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, minWidth: width, height: 50 }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -252,6 +252,87 @@ describe('Overflow', () => {
       setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
+  });
+
+  it('should keep the menu visible when one phone number overflows next to a divider', () => {
+    cy.on('uncaught:exception', error => {
+      if (error.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+        return false;
+      }
+    });
+
+    const PhoneNumbers = () => {
+      const [width, setWidth] = React.useState(280);
+
+      return (
+        <>
+          {[40, 180, 250, 280].map(nextWidth => (
+            <button key={nextWidth} data-test-width={nextWidth} onClick={() => setWidth(nextWidth)}>
+              {nextWidth}
+            </button>
+          ))}
+          <Container size={width} padding={10}>
+            <OverflowItem id="primary-phone" groupId="primary-phone-group" priority={1}>
+              <a
+                {...{ [selectors.item]: 'primary-phone' }}
+                href="tel:+4790981948"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 120 }}
+              >
+                +4790981948
+              </a>
+            </OverflowItem>
+            <OverflowDivider groupId="primary-phone-group">
+              <div
+                {...{ [selectors.divider]: 'primary-phone-group' }}
+                style={{ flexShrink: 0, width: 8 }}
+                aria-hidden="true"
+              >
+                •
+              </div>
+            </OverflowDivider>
+            <OverflowItem id="secondary-phone" priority={0}>
+              <a
+                {...{ [selectors.item]: 'secondary-phone' }}
+                href="tel:+47 (2) 3011302"
+                style={{ display: 'block', flexShrink: 0, overflow: 'hidden', width: 140 }}
+              >
+                +47 (2) 3011302
+              </a>
+            </OverflowItem>
+            <Menu width={36} />
+          </Container>
+        </>
+      );
+    };
+
+    const setPhoneContainerWidth = (width: number) => {
+      cy.get(`[data-test-width="${width}"]`).click();
+    };
+
+    mount(<PhoneNumbers />);
+    cy.get(`[${selectors.container}]`).should('have.css', 'width', '280px');
+    cy.window().then(win => new Cypress.Promise(resolve => win.requestAnimationFrame(() => resolve())));
+
+    setPhoneContainerWidth(40);
+    cy.get(`[${selectors.menu}]`).should('have.text', '+2');
+
+    setPhoneContainerWidth(180);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(250);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('have.text', '+1');
+
+    setPhoneContainerWidth(280);
+    cy.get(`[${selectors.item}="primary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.divider}="primary-phone-group"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.item}="secondary-phone"]`).should('not.have.attr', 'data-overflowing');
+    cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
   it(`should overflow items when there's more than one child element`, () => {

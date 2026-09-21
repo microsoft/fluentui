@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: let a consumer-supplied popover attribute win over the default on the PopoverSurface, MenuPopover and Listbox slots",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: adjust re-exports after direct re-exports workspace rule",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

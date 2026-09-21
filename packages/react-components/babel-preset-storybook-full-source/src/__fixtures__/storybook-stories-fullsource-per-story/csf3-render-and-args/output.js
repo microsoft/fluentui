@@ -38,6 +38,5 @@ Default.parameters.fullSource =
 WithArgs.parameters = {};
 WithArgs.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const WithArgs = () => {\n  const args = { appearance: "outline" };\n  return <Button {...args}>With args</Button>;\n};\n';
-ArgsOnly.parameters = {};
 ArgsOnly.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const ArgsOnly = () => {\n  const args = { appearance: "primary", children: "Args only" };\n  return <Button {...args} />;\n};\n';

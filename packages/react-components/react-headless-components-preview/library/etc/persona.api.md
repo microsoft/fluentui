@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { AvatarBaseProps } from '@fluentui/react-avatar';
+import { AvatarBaseProps } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

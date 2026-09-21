@@ -327,8 +327,8 @@ const RenderPrimaryStory = ({
   );
 };
 
-const RenderStories = ({ skipPrimaryStory }: { stories: PrimaryStory[]; skipPrimaryStory?: boolean }) => (
-  <Stories includePrimary={!skipPrimaryStory} />
+const RenderStories = (_props: { stories: PrimaryStory[]; skipPrimaryStory?: boolean }) => (
+  <Stories includePrimary={false} />
 );
 
 export type FluentDocsPageProps = {

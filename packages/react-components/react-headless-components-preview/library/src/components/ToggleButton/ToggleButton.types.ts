@@ -1,15 +1,7 @@
-import type { ButtonSlots as ButtonBaseSlots } from '../Button/Button.types';
-import type { ToggleButtonBaseProps, ToggleButtonBaseState } from '@fluentui/react-button';
+import type { ToggleButtonBaseState } from '@fluentui/react-button';
 
-/**
- * ToggleButton component slots
- */
-export type ToggleButtonSlots = ButtonBaseSlots;
-
-/**
- * ToggleButton component props
- */
-export type ToggleButtonProps = ToggleButtonBaseProps;
+export type { ButtonSlots as ToggleButtonSlots } from '../Button/Button.types';
+export type { ToggleButtonBaseProps as ToggleButtonProps } from '@fluentui/react-button';
 
 /**
  * ToggleButton component state
