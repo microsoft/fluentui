@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AlphaSliderSlots, AlphaSliderState } from './AlphaSlider.types';
 import { colorSliderClassNames, useColorSliderStyles } from '../ColorSlider/useColorSliderStyles.styles';
-import styles from './AlphaSlider.module.css';
+import * as styles from './AlphaSlider.module.css';
 
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots> = {
   root: 'fui-AlphaSlider',

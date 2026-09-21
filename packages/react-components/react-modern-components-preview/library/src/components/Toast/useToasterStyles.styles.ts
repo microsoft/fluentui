@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToastPosition } from '@fluentui/react-headless-components-preview/toast';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
-import styles from './Toaster.module.css';
+import * as styles from './Toaster.module.css';
 
 export const toasterClassNames: SlotClassNames<ToasterSlots> = {
   root: 'fui-Toaster',

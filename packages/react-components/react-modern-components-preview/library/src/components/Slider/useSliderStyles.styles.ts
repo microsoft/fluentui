@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SliderSlots, SliderState } from './Slider.types';
-import styles from './Slider.module.css';
+import * as styles from './Slider.module.css';
 
 export const sliderClassNames: SlotClassNames<SliderSlots> = {
   root: 'fui-Slider',

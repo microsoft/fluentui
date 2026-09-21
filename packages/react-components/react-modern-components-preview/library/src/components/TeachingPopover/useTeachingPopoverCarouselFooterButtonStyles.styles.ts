@@ -7,7 +7,7 @@ import type {
   TeachingPopoverCarouselFooterButtonSlots,
   TeachingPopoverCarouselFooterButtonState,
 } from './TeachingPopoverCarouselFooterButton.types';
-import styles from './TeachingPopoverCarouselFooterButton.module.css';
+import * as styles from './TeachingPopoverCarouselFooterButton.module.css';
 
 export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<TeachingPopoverCarouselFooterButtonSlots> = {
   root: 'fui-TeachingPopoverCarouselFooterButton',

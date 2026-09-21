@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
-import styles from './ColorArea.module.css';
+import * as styles from './ColorArea.module.css';
 
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
   root: 'fui-ColorArea',

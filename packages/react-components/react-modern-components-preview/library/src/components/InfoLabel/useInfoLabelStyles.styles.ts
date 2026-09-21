@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
-import styles from './InfoLabel.module.css';
+import * as styles from './InfoLabel.module.css';
 
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots> = {
   root: 'fui-InfoLabel',

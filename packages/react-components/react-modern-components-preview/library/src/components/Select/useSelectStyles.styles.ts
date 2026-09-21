@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SelectSlots, SelectState } from './Select.types';
-import styles from './Select.module.css';
+import * as styles from './Select.module.css';
 
 export const selectClassNames: SlotClassNames<SelectSlots> = {
   root: 'fui-Select',

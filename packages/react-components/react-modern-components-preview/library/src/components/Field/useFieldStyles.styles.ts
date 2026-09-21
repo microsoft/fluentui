@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { FieldSlots, FieldState } from './Field.types';
-import styles from './Field.module.css';
+import * as styles from './Field.module.css';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: 'fui-Field',

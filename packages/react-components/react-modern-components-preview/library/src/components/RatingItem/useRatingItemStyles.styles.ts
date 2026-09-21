@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
-import styles from './RatingItem.module.css';
+import * as styles from './RatingItem.module.css';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',

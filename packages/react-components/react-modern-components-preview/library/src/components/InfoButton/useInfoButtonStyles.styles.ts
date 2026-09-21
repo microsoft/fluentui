@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
-import styles from './InfoButton.module.css';
+import * as styles from './InfoButton.module.css';
 
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',

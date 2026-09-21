@@ -4,7 +4,7 @@ import type {
   TeachingPopoverCarouselNavSlots,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
-import styles from './TeachingPopoverCarouselNav.module.css';
+import * as styles from './TeachingPopoverCarouselNav.module.css';
 
 export const teachingPopoverCarouselNavClassNames: SlotClassNames<TeachingPopoverCarouselNavSlots> = {
   root: 'fui-TeachingPopoverCarouselNav',

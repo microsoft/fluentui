@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagSlots, TagState } from './Tag.types';
-import styles from './Tag.module.css';
+import * as styles from './Tag.module.css';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',

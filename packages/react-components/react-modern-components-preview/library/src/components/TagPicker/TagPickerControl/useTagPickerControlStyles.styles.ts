@@ -5,7 +5,7 @@ import type {
   TagPickerControlSlots,
   TagPickerControlState,
 } from './TagPickerControl.types';
-import styles from './TagPickerControl.module.css';
+import * as styles from './TagPickerControl.module.css';
 
 export const tagPickerControlClassNames: SlotClassNames<TagPickerControlSlots & TagPickerControlInternalSlots> = {
   root: 'fui-TagPickerControl',

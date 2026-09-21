@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToolbarGroupSlots, ToolbarGroupState } from './ToolbarGroup.types';
-import styles from './ToolbarGroup.module.css';
+import * as styles from './ToolbarGroup.module.css';
 
 export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
   root: 'fui-ToolbarGroup',

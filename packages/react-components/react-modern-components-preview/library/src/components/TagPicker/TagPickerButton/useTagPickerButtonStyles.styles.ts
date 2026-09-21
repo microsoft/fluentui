@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton.types';
-import styles from './TagPickerButton.module.css';
+import * as styles from './TagPickerButton.module.css';
 
 export const tagPickerButtonClassNames: SlotClassNames<TagPickerButtonSlots> = { root: 'fui-TagPickerButton' };
 

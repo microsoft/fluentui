@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { LinkSlots, LinkState } from './Link.types';
-import styles from './Link.module.css';
+import * as styles from './Link.module.css';
 
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',

@@ -22,7 +22,7 @@ import type {
   MenuSplitGroupSlots,
   MenuSplitGroupState,
 } from './Menu.types';
-import styles from './Menu.module.css';
+import * as styles from './Menu.module.css';
 
 export const menuListClassNames: SlotClassNames<MenuListSlots> = { root: 'fui-MenuList' };
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {

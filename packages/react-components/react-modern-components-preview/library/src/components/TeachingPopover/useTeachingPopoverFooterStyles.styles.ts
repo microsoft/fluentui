@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
-import styles from './TeachingPopoverFooter.module.css';
+import * as styles from './TeachingPopoverFooter.module.css';
 
 export const teachingPopoverFooterClassNames = {
   root: 'fui-TeachingPopoverFooter',

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TeachingPopoverTitleSlots, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
-import styles from './TeachingPopoverTitle.module.css';
+import * as styles from './TeachingPopoverTitle.module.css';
 
 export const teachingPopoverTitleClassNames: SlotClassNames<TeachingPopoverTitleSlots> = {
   root: 'fui-TeachingPopoverTitle',

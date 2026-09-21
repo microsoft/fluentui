@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useInputStyles } from '../Input/useInputStyles.styles';
 import type { SearchBoxSlots, SearchBoxState } from './SearchBox.types';
-import styles from './SearchBox.module.css';
+import * as styles from './SearchBox.module.css';
 
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
   root: 'fui-SearchBox',

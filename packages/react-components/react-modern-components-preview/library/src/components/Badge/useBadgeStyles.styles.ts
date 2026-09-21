@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots, BadgeState } from './Badge.types';
-import styles from './Badge.module.css';
+import * as styles from './Badge.module.css';
 
 export const badgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-Badge',

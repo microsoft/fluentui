@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BreadcrumbSlots, BreadcrumbState } from './Breadcrumb.types';
-import styles from './Breadcrumb.module.css';
+import * as styles from './Breadcrumb.module.css';
 
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots> = {
   root: 'fui-Breadcrumb',

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
-import styles from './Tooltip.module.css';
+import * as styles from './Tooltip.module.css';
 
 export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
   content: 'fui-Tooltip__content',

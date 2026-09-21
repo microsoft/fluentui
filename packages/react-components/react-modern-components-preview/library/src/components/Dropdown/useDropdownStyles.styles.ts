@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { DropdownState } from './Dropdown.types';
-import styles from './Dropdown.module.css';
+import * as styles from './Dropdown.module.css';
 
 export const dropdownClassNames: Record<keyof DropdownState['components'], string> = {
   root: 'fui-Dropdown',

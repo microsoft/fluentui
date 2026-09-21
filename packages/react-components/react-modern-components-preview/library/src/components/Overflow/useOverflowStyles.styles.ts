@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { getTriggerChild } from '@fluentui/react-utilities';
 import type { OverflowComponentState } from './Overflow.types';
-import styles from './Overflow.module.css';
+import * as styles from './Overflow.module.css';
 
 export const overflowClassNames = {
   root: 'fui-Overflow',

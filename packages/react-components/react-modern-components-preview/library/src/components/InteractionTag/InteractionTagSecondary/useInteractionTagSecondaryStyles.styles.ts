@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { InteractionTagSecondarySlots, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
-import styles from './InteractionTagSecondary.module.css';
+import * as styles from './InteractionTagSecondary.module.css';
 
 export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots> = {
   root: 'fui-InteractionTagSecondary',

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ProgressBarSlots, ProgressBarState } from './ProgressBar.types';
-import styles from './ProgressBar.module.css';
+import * as styles from './ProgressBar.module.css';
 
 export const progressBarClassNames: SlotClassNames<Omit<ProgressBarSlots, 'indeterminateMotion'>> = {
   root: 'fui-ProgressBar',

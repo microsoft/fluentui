@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CheckboxSlots, CheckboxState } from './Checkbox.types';
-import styles from './Checkbox.module.css';
+import * as styles from './Checkbox.module.css';
 
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',

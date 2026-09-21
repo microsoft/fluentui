@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { InputSlots, InputState } from './Input.types';
-import styles from './Input.module.css';
+import * as styles from './Input.module.css';
 
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',

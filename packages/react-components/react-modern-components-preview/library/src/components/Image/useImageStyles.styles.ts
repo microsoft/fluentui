@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ImageSlots, ImageState } from './Image.types';
-import styles from './Image.module.css';
+import * as styles from './Image.module.css';
 
 export const imageClassNames: SlotClassNames<ImageSlots> = {
   root: 'fui-Image',

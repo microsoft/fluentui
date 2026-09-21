@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
-import styles from './ColorSlider.module.css';
+import * as styles from './ColorSlider.module.css';
 
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
   root: 'fui-ColorSlider',

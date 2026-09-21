@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Field.module.css';
+import * as styles from './Field.module.css';
 
 export const ErrorValidationIcon = (): React.ReactElement => (
   <svg aria-hidden="true" className={styles.validationIconGlyph} focusable="false" viewBox="0 0 12 12">

@@ -18,7 +18,7 @@ import type {
   OverlayDrawerSlots,
   OverlayDrawerState,
 } from './Drawer.types';
-import styles from './Drawer.module.css';
+import * as styles from './Drawer.module.css';
 
 export const drawerClassNames: SlotClassNames<DrawerSlots> = {
   root: 'fui-Drawer',

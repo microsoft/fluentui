@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
-import styles from './AvatarGroupPopover.module.css';
+import * as styles from './AvatarGroupPopover.module.css';
 
 export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots> = {
   triggerButton: 'fui-AvatarGroupPopover__triggerButton',
