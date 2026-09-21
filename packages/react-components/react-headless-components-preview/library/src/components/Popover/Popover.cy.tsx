@@ -241,6 +241,52 @@ describe('Popover', () => {
   });
 
   describe('Focus restoration for controlled and non-click opens', () => {
+    (['inside', 'outside'] as const).forEach(stoppedFocus => {
+      it(`tracks ${stoppedFocus} focus when its handler stops propagation`, () => {
+        const Example = () => {
+          const [open, setOpen] = React.useState(true);
+          const stopPropagation = (event: React.FocusEvent<HTMLButtonElement>) => event.stopPropagation();
+          return (
+            <>
+              <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+                <PopoverTrigger disableButtonEnhancement>
+                  <button data-testid="trigger">Trigger</button>
+                </PopoverTrigger>
+                <PopoverSurface data-testid="surface">
+                  <button data-testid="inside" onFocus={stoppedFocus === 'inside' ? stopPropagation : undefined}>
+                    Inside
+                  </button>
+                </PopoverSurface>
+              </Popover>
+              <button
+                data-testid="outside"
+                onFocus={stoppedFocus === 'outside' ? stopPropagation : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Close
+              </button>
+            </>
+          );
+        };
+        mount(<Example />);
+        cy.get('[data-testid=surface]').should('be.visible');
+        if (stoppedFocus === 'inside') {
+          cy.get('[data-testid=outside]').focus();
+          cy.get('[data-testid=inside]').focus();
+        } else {
+          cy.get('[data-testid=inside]').focus();
+          cy.get('[data-testid=outside]').focus().blur();
+        }
+        cy.get('[data-testid=outside]').trigger('click');
+        cy.get('[data-testid=surface]').should('not.exist');
+        if (stoppedFocus === 'inside') {
+          cy.get('[data-testid=trigger]').should('have.focus');
+        } else {
+          cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+        }
+      });
+    });
+
     it('programmatic close: restores focus lost from inside the surface', () => {
       const Example = () => {
         const [open, setOpen] = React.useState(true);

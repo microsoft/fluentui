@@ -38,9 +38,10 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     initialState: null,
   });
   const rootRef = React.useRef<HTMLDivElement>(null);
-  const previousButtonRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const nextButtonRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const footerButtonRefs = React.useMemo(() => ({ prev: previousButtonRef, next: nextButtonRef }), []);
+  const [footerButtonRefs] = React.useState<NonNullable<CarouselContextValue['footerButtonRefs']>>(() => ({
+    prev: new Set(),
+    next: new Set(),
+  }));
 
   const { announce } = useAnnounce();
 

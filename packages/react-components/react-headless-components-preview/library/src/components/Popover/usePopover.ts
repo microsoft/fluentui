@@ -98,8 +98,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       }
     };
     onFocusIn();
-    targetDocument.addEventListener('focusin', onFocusIn);
-    return () => targetDocument.removeEventListener('focusin', onFocusIn);
+    targetDocument.addEventListener('focusin', onFocusIn, true);
+    return () => targetDocument.removeEventListener('focusin', onFocusIn, true);
   }, [open, targetDocument]);
 
   const generatedSurfaceId = useId('fui-popover-surface-');

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve carousel mount-time focus and handle duplicate navigation button registration",
+  "packageName": "@fluentui/react-teaching-popover",
+  "email": "paulmardling@microsoft.com"
+}

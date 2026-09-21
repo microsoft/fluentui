@@ -7,15 +7,25 @@ import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 
 describe('Popover', () => {
   describe('focus restoration', () => {
-    const Example = ({ open, withButton = true }: { open: boolean; withButton?: boolean }) => (
+    const Example = ({
+      open,
+      withButton = true,
+      onInsideFocus,
+      onOutsideFocus,
+    }: {
+      open: boolean;
+      withButton?: boolean;
+      onInsideFocus?: React.FocusEventHandler<HTMLButtonElement>;
+      onOutsideFocus?: React.FocusEventHandler<HTMLButtonElement>;
+    }) => (
       <>
         <Popover open={open}>
           <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
-          <PopoverSurface>{withButton ? <button>Inside</button> : 'Content'}</PopoverSurface>
+          <PopoverSurface>{withButton ? <button onFocus={onInsideFocus}>Inside</button> : 'Content'}</PopoverSurface>
         </Popover>
-        <button>Outside</button>
+        <button onFocus={onOutsideFocus}>Outside</button>
       </>
     );
 
@@ -74,6 +84,29 @@ describe('Popover', () => {
 
       rerender(<Example open withButton={false} />);
       rerender(<Example open={false} />);
+
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
+    it('tracks inside focus when a consumer stops propagation', () => {
+      const onInsideFocus = (event: React.FocusEvent<HTMLButtonElement>) => event.stopPropagation();
+      const { getByText, rerender } = render(<Example open onInsideFocus={onInsideFocus} />);
+      getByText('Outside').focus();
+      getByText('Inside').focus();
+
+      rerender(<Example open={false} onInsideFocus={onInsideFocus} />);
+
+      expect(getByText('Trigger')).toHaveFocus();
+    });
+
+    it('tracks outside focus when a consumer stops propagation', () => {
+      const onOutsideFocus = (event: React.FocusEvent<HTMLButtonElement>) => event.stopPropagation();
+      const { getByText, rerender } = render(<Example open onOutsideFocus={onOutsideFocus} />);
+      getByText('Inside').focus();
+      getByText('Outside').focus();
+      getByText('Outside').blur();
+
+      rerender(<Example open={false} onOutsideFocus={onOutsideFocus} />);
 
       expect(getByText('Trigger')).not.toHaveFocus();
     });

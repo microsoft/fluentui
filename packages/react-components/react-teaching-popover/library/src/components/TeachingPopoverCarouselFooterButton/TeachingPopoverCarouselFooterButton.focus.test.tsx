@@ -47,6 +47,98 @@ const Example = ({
 );
 
 describe('TeachingPopoverCarouselFooterButton focus', () => {
+  it.each(['autoFocus', 'callback ref'])('does not hide Next before registration with %s', source => {
+    const onFocus = jest.fn();
+    const nextRef = jest.fn((button: HTMLButtonElement | HTMLAnchorElement | null) => {
+      if (button) {
+        expect(button).not.toHaveAttribute('hidden');
+        if (source === 'callback ref') {
+          button.focus();
+        }
+      }
+    });
+    const { getByRole } = render(
+      <TeachingPopoverCarousel defaultValue="one">
+        <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselFooterButton
+          navType="next"
+          altText={null}
+          autoFocus={source === 'autoFocus'}
+          ref={nextRef}
+          onFocus={onFocus}
+        >
+          Next
+        </TeachingPopoverCarouselFooterButton>
+      </TeachingPopoverCarousel>,
+    );
+
+    expect(getByRole('button', { name: 'Next' })).toHaveFocus();
+    expect(onFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(['disabled', 'unmounted', 'changed direction'])('retains Next when a duplicate is %s', scenario => {
+    const DuplicateExample = ({ duplicate, navType = 'next' }: { duplicate: boolean; navType?: 'prev' | 'next' }) => (
+      <React.StrictMode>
+        <TeachingPopoverCarousel defaultValue="two">
+          <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooterButton navType="prev" altText={null}>
+            Previous
+          </TeachingPopoverCarouselFooterButton>
+          <TeachingPopoverCarouselFooterButton navType="next" altText="Got it">
+            Next
+          </TeachingPopoverCarouselFooterButton>
+          {duplicate && (
+            <TeachingPopoverCarouselFooterButton navType={navType} altText="Finish" disabled>
+              Duplicate
+            </TeachingPopoverCarouselFooterButton>
+          )}
+        </TeachingPopoverCarousel>
+      </React.StrictMode>
+    );
+    const { getByRole, rerender } = render(<DuplicateExample duplicate />);
+    if (scenario === 'unmounted') {
+      rerender(<DuplicateExample duplicate={false} />);
+    } else if (scenario === 'changed direction') {
+      rerender(<DuplicateExample duplicate navType="prev" />);
+    }
+
+    userEvent.click(getByRole('button', { name: 'Previous' }));
+
+    expect(getByRole('button', { name: 'Next' })).toHaveFocus();
+  });
+
+  it('preserves deliberate focus redirection instead of trying another Next button', () => {
+    const outsideRef = React.createRef<HTMLButtonElement>();
+    const { getByRole } = render(
+      <>
+        <button ref={outsideRef}>Outside</button>
+        <TeachingPopoverCarousel defaultValue="two">
+          <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooterButton navType="prev" altText={null}>
+            Previous
+          </TeachingPopoverCarouselFooterButton>
+          <TeachingPopoverCarouselFooterButton
+            navType="next"
+            altText="Got it"
+            onFocus={() => outsideRef.current?.focus()}
+          >
+            Next
+          </TeachingPopoverCarouselFooterButton>
+          <TeachingPopoverCarouselFooterButton navType="next" altText="Finish">
+            Duplicate
+          </TeachingPopoverCarouselFooterButton>
+        </TeachingPopoverCarousel>
+      </>,
+    );
+
+    userEvent.click(getByRole('button', { name: 'Previous' }));
+
+    expect(getByRole('button', { name: 'Outside' })).toHaveFocus();
+  });
+
   it.each(['autoFocus', 'callback ref'])('tracks mount-time focus from %s and forwards focus handlers', source => {
     const onFocus = jest.fn();
     const onBlur = jest.fn();

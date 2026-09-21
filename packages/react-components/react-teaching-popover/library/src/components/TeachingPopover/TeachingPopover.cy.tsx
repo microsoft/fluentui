@@ -28,6 +28,77 @@ const surfaceSelector = '[role="dialog"]';
 
 describe('TeachingPopover', () => {
   (['autoFocus', 'callback ref'] as const).forEach(source => {
+    it(`focuses Next with ${source} before carousel pages register`, () => {
+      mount(
+        <TeachingPopoverCarousel defaultValue="one">
+          <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooterButton navType="prev" altText="Start" id="previous">
+            Previous
+          </TeachingPopoverCarouselFooterButton>
+          <TeachingPopoverCarouselFooterButton
+            navType="next"
+            altText={null}
+            autoFocus={source === 'autoFocus'}
+            ref={source === 'callback ref' ? button => button?.focus() : undefined}
+            id="next"
+          >
+            Next
+          </TeachingPopoverCarouselFooterButton>
+        </TeachingPopoverCarousel>,
+      );
+
+      cy.get('#next').should('have.focus').realPress('Enter');
+      cy.get('#next').should('not.be.visible');
+      cy.get('#previous').should('have.focus');
+    });
+  });
+
+  (['hidden', 'disabled', 'unmounted'] as const).forEach(scenario => {
+    (['before', 'after'] as const).forEach(order => {
+      it(`retains a focusable Next with a ${scenario} duplicate ${order} it`, () => {
+        const Example = () => {
+          const [duplicate, setDuplicate] = React.useState(true);
+          const extraNext = duplicate && (
+            <div hidden={scenario === 'hidden'}>
+              <TeachingPopoverCarouselFooterButton navType="next" altText="Finish" disabled={scenario === 'disabled'}>
+                Duplicate
+              </TeachingPopoverCarouselFooterButton>
+            </div>
+          );
+          return (
+            <>
+              <button data-testid="remove" onClick={() => setDuplicate(false)}>
+                Remove duplicate
+              </button>
+              <TeachingPopoverCarousel defaultValue="two">
+                <TeachingPopoverCarouselCard value="one">First</TeachingPopoverCarouselCard>
+                <TeachingPopoverCarouselCard value="two">Second</TeachingPopoverCarouselCard>
+                <TeachingPopoverCarouselFooterButton navType="prev" altText={null} id="previous">
+                  Previous
+                </TeachingPopoverCarouselFooterButton>
+                {order === 'before' && extraNext}
+                <TeachingPopoverCarouselFooterButton navType="next" altText="Got it" id="next">
+                  Next
+                </TeachingPopoverCarouselFooterButton>
+                {order === 'after' && extraNext}
+              </TeachingPopoverCarousel>
+            </>
+          );
+        };
+        mount(<Example />);
+        if (scenario === 'unmounted') {
+          cy.get('[data-testid=remove]').realClick();
+        }
+
+        cy.get('#previous').focus().realPress('Enter');
+        cy.get('#previous').should('not.be.visible');
+        cy.get('#next').should('have.focus');
+      });
+    });
+  });
+
+  (['autoFocus', 'callback ref'] as const).forEach(source => {
     it(`tracks footer focus established by ${source} during mounting`, () => {
       const onFocus = cy.stub().as('onFocus');
       mount(
