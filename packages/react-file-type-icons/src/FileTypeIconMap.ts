@@ -1,22 +1,14 @@
-/**
- * Enumeration of icon file names, and what extensions they map to.
- * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
- * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
- */
+// Generated from @fluentui/react-icons-file-type JSON metadata. Do not edit.
+// Run yarn generate-metadata in this package to regenerate.
+
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
-  accdb: {
-    extensions: ['accdb', 'mdb'],
-  },
-  agentwork: {
-    extensions: ['work'],
-  },
-  aipage: {
-    extensions: ['page'],
-  },
+  accdb: { extensions: ['accdb', 'mdb'] },
+  agentwork: { extensions: ['work'] },
+  aipage: { extensions: ['page'] },
+  album: {},
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
-  album: {},
   audio: {
     extensions: [
       'aif',
@@ -45,18 +37,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'wv',
     ],
   },
-  calendar: {
-    extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs'],
-  },
-  classifier: {
-    extensions: ['classifier'],
-  },
-  clipchamp: {
-    extensions: ['clipchamp', 'clpx'],
-  },
-  cliptemplate: {
-    extensions: ['cliptemplate'],
-  },
+  calendar: { extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs'] },
+  classifier: { extensions: ['classifier'] },
+  clipchamp: { extensions: ['clipchamp', 'clpx'] },
+  cliptemplate: { extensions: ['cliptemplate'] },
   code: {
     extensions: [
       'abap',
@@ -260,74 +244,35 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'zsh',
     ],
   },
-  contact: {
-    extensions: ['vcf'],
-  },
-  copilot: {
-    extensions: ['copilot'],
-  },
-  /*  css: {},  not broken out yet, snapping to 'code' for now */
-  csv: {
-    extensions: ['csv'],
-  },
   companyfolder: {},
-  designer: {
-    extensions: ['design'],
-  },
+  contact: { extensions: ['vcf'] },
+  copilot: { extensions: ['copilot'] },
+  csv: { extensions: ['csv'] },
+  designer: { extensions: ['design'] },
   desktopfolder: {},
   docset: {},
   documentsfolder: {},
-  docx: {
-    extensions: ['doc', 'docm', 'docx', 'docb'],
-  },
-  dotx: {
-    extensions: ['dot', 'dotm', 'dotx'],
-  },
-  email: {
-    extensions: ['eml', 'msg', 'oft', 'ost', 'pst'],
-  },
-  exe: {
-    extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
-  },
+  docx: { extensions: ['doc', 'docm', 'docx', 'docb'] },
+  dotx: { extensions: ['dot', 'dotm', 'dotx'] },
+  email: { extensions: ['eml', 'msg', 'oft', 'ost', 'pst'] },
+  exe: { extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'] },
   favoritesfolder: {},
   folder: {},
-  font: {
-    extensions: ['ttf', 'otf', 'woff'],
-  },
+  font: { extensions: ['ttf', 'otf', 'woff'] },
   form: {},
   genericfile: {},
-  html: {
-    extensions: ['htm', 'html', 'mht', 'mhtml'],
-  },
-  ipynb: {
-    extensions: ['nnb', 'ipynb'],
-  },
-  inkcanvas: {
-    extensions: ['canvas'],
-  },
-  link: {
-    extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
-  },
+  html: { extensions: ['htm', 'html', 'mht', 'mhtml'] },
+  inkcanvas: { extensions: ['canvas'] },
+  ipynb: { extensions: ['nnb', 'ipynb'] },
+  link: { extensions: ['lnk', 'link', 'url', 'website', 'webloc'] },
   linkedfolder: {},
   listform: {},
   listitem: {},
-  loop: {
-    extensions: ['fluid', 'loop', 'note'],
-  },
+  loop: { extensions: ['fluid', 'loop', 'note'] },
   loopworkspace: {},
-  officescript: {
-    extensions: ['osts'],
-  },
-  splist: {},
-  mcworld: {
-    extensions: ['mcworld'],
-  },
-  md: {
-    extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'],
-  },
-  mctemplate: {
-    extensions: ['mctemplate'],
-  },
+  mctemplate: { extensions: ['mctemplate'] },
+  mcworld: { extensions: ['mcworld'] },
+  md: { extensions: ['md', 'markdn', 'markdown', 'mdown', 'mkdn'] },
   model: {
     extensions: [
       '3ds',
@@ -358,32 +303,19 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'x',
     ],
   },
-  mpp: {
-    extensions: ['mpp'],
-  },
-  mpt: {
-    extensions: ['mpt'],
-  },
+  mpp: { extensions: ['mpp'] },
+  mpt: { extensions: ['mpt'] },
   multiple: {},
-  one: {
-    // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
-    extensions: ['one', 'onepart'],
-  },
-  onepage: {
-    extensions: ['onepage'],
-  },
-  onetoc: {
-    // This is an entire OneNote notebook.
-    extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
-  },
+  officescript: { extensions: ['osts'] },
+  one: { extensions: ['one', 'onepart'] },
+  onepage: { extensions: ['onepage'] },
+  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] },
   pbiapp: {},
   pbidashboard: {},
   pbipagereport: {},
   pbiscorecard: {},
   pbisemmodel: {},
-  pdf: {
-    extensions: ['pdf'],
-  },
+  pdf: { extensions: ['pdf'] },
   photo: {
     extensions: [
       'arw',
@@ -430,38 +362,21 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   photo360: {},
   picturesfolder: {},
   planner: {},
+  playlist: {},
   portfolio: {},
-  potx: {
-    extensions: ['pot', 'potm', 'potx'],
-  },
-  powerbi: {
-    extensions: ['pbids', 'pbix'],
-  },
-  ppsx: {
-    extensions: ['pps', 'ppsm', 'ppsx'],
-  },
-  pptx: {
-    extensions: ['ppt', 'pptm', 'pptx', 'sldx', 'sldm'],
-  },
-  presentation: {
-    extensions: ['odp', 'gslides', 'key'],
-  },
-  pub: {
-    extensions: ['pub'],
-  },
-  spo: {
-    extensions: ['aspx'],
-  },
+  potx: { extensions: ['pot', 'potm', 'potx'] },
+  powerbi: { extensions: ['pbids', 'pbix'] },
+  ppsx: { extensions: ['pps', 'ppsm', 'ppsx'] },
+  pptx: { extensions: ['ppt', 'pptm', 'pptx', 'sldx', 'sldm'] },
+  presentation: { extensions: ['odp', 'gslides', 'key'] },
+  pub: { extensions: ['pub'] },
+  rtf: { extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'] },
+  sharedfolder: {},
+  splist: {},
+  spo: { extensions: ['aspx'] },
   spocampaign: {},
   sponews: {},
-  spreadsheet: {
-    extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
-  },
-  rtf: {
-    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
-  },
-  sharedfolder: {},
-  playlist: {},
+  spreadsheet: { extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'] },
   sway: {},
   sysfile: {
     extensions: [
@@ -497,9 +412,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   todoitem: {},
-  txt: {
-    extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],
-  },
+  txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
   vaultclosed: {},
   vaultopen: {},
   vector: {
@@ -568,31 +481,13 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ],
   },
   video360: {},
-  vsdx: {
-    extensions: ['vdx', 'vsd', 'vsdm', 'vsdx', 'vsw', 'vdw'],
-  },
-  vssx: {
-    extensions: ['vss', 'vssm', 'vssx'],
-  },
-  vstx: {
-    extensions: ['vst', 'vstm', 'vstx', 'vsx'],
-  },
-  whiteboard: {
-    extensions: ['whiteboard', 'wbtx'],
-  },
-  xlsx: {
-    extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
-  },
-  xltx: {
-    extensions: ['xlt', 'xltm', 'xltx'],
-  },
-  xml: {
-    extensions: ['xaml', 'xml', 'xsl'],
-  },
-  xsn: {
-    extensions: ['xsn'],
-  },
-  zip: {
-    extensions: ['zip'],
-  },
+  vsdx: { extensions: ['vdx', 'vsd', 'vsdm', 'vsdx', 'vsw', 'vdw'] },
+  vssx: { extensions: ['vss', 'vssm', 'vssx'] },
+  vstx: { extensions: ['vst', 'vstm', 'vstx', 'vsx'] },
+  whiteboard: { extensions: ['whiteboard', 'wbtx'] },
+  xlsx: { extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'] },
+  xltx: { extensions: ['xlt', 'xltm', 'xltx'] },
+  xml: { extensions: ['xaml', 'xml', 'xsl'] },
+  xsn: { extensions: ['xsn'] },
+  zip: { extensions: ['zip'] },
 };

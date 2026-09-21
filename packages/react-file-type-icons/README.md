@@ -34,4 +34,20 @@ import { getFileTypeIconProps } from '@fluentui/react-file-type-icons';
 
 ## Notes
 
+The enum, icon map and type-name lookup are generated from the `metadata.json` export of
+[`@fluentui/react-icons-file-type`](https://github.com/microsoft/fluentui-system-icons/tree/main/packages/react-icons-file-type),
+a package-local dev dependency, not a runtime dependency. The generator runs during
+builds; extension lookup, density selection, URLs, HTML, and registration remain local.
+
+Until the metadata export is released, the dev dependency points to the checked-in
+[temporary fixture](scripts/fixtures/react-icons-file-type/README.md). Replace that `file:`
+dependency with the released version and delete the fixture when adopting the upstream release.
+
+Add icons or update the CDN in fluentui-system-icons, release it, and update this package's dev
+dependency and the lockfile here. Run `yarn nx run react-file-type-icons:generate-metadata` and
+`yarn nx run style-utilities:generate-metadata`, then include the generated source changes.
+Append `--check` to either command to detect stale output without writing files.
+Do not edit generated sources manually. `style-utilities` generates the CDN constant from
+the same metadata for both file-type and MDL2 consumers. Existing application APIs are unchanged.
+
 See [GitHub](https://github.com/microsoft/fluentui) for more details on the Fluent UI React project and packages within.

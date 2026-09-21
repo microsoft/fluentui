@@ -4355,6 +4355,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-file-type-icons@workspace:packages/react-file-type-icons"
   dependencies:
+    "@fluentui/react-icons-file-type": "file:./scripts/fixtures/react-icons-file-type"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/style-utilities": "npm:^8.15.2"
     tslib: "npm:^2.1.0"
@@ -4506,6 +4507,13 @@ __metadata:
       optional: true
   languageName: unknown
   linkType: soft
+
+"@fluentui/react-icons-file-type@file:./scripts/fixtures/react-icons-file-type::locator=%40fluentui%2Freact-file-type-icons%40workspace%3Apackages%2Freact-file-type-icons":
+  version: 0.0.0-metadata-fixture
+  resolution: "@fluentui/react-icons-file-type@file:./scripts/fixtures/react-icons-file-type#./scripts/fixtures/react-icons-file-type::hash=260840&locator=%40fluentui%2Freact-file-type-icons%40workspace%3Apackages%2Freact-file-type-icons"
+  checksum: 10c0/256d5355169c2ec8b90f64da897cb4443dab77dccab6ed3027a1de9343ae3b84d7278de4172eba23c434221a7ac1b70c0ff723d150410d15004c371f094063f3
+  languageName: node
+  linkType: hard
 
 "@fluentui/react-icons-mdl2-branded@npm:*, @fluentui/react-icons-mdl2-branded@workspace:packages/react-icons-mdl2-branded":
   version: 0.0.0-use.local

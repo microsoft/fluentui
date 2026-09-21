@@ -5,9 +5,18 @@
   "sourceRoot": "packages/react-file-type-icons/src",
   "tags": ["v8"],
   "implicitDependencies": [],
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals",
+      "{workspaceRoot}/.github/workflows/pr.yml",
+      "{projectRoot}/scripts/generate-file-type-metadata.cjs",
+      "{workspaceRoot}/yarn.lock"
+    ]
+  },
   "targets": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["generate-metadata", "^build"]
     }
   }
 }

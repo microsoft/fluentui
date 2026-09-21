@@ -15,7 +15,8 @@
   ],
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "yarn run -T just-scripts build",
+    "build": "yarn generate-metadata && yarn run -T just-scripts build",
+    "generate-metadata": "node ../react-file-type-icons/scripts/generate-file-type-metadata.cjs --project style-utilities",
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",
     "just": "yarn run -T just-scripts",

@@ -1,0 +1,12 @@
+{
+  "name": "@fluentui/react-icons-file-type",
+  "version": "0.0.0-metadata-fixture",
+  "private": true,
+  "description": "Temporary metadata fixture pending the upstream metadata.json release.",
+  "files": [
+    "metadata.json"
+  ],
+  "exports": {
+    "./metadata.json": "./metadata.json"
+  }
+}

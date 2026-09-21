@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Generate file-type icon metadata from fluentui-system-icons JSON at build time, preserving v8 APIs without a runtime dependency.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "martinhochel@microsoft.com"
+}

@@ -16,3 +16,11 @@ npm install --save @fluentui/style-utilities
 ```
 
 This gives you access to styling-related constants, utilities, and Fabric Core style classes through JavaScript.
+
+`FLUENT_CDN_BASE_URL` is generated from `cdnBaseUrl` in `@fluentui/react-icons-file-type/metadata.json`
+during builds through the generator owned by `react-file-type-icons`. The metadata package is
+a dev dependency of `react-file-type-icons` only; no dependency is added here.
+Update the CDN in fluentui-system-icons, update that package-local dev dependency and the lockfile, then run
+`yarn nx run style-utilities:generate-metadata` and include the generated source change.
+Use `--check` to detect stale output. Do not edit the generated CDN constant manually.
+Existing imports are unchanged.

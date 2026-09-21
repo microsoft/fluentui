@@ -5,9 +5,19 @@
   "sourceRoot": "packages/style-utilities/src",
   "tags": ["v8"],
   "implicitDependencies": [],
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals",
+      "{workspaceRoot}/.github/workflows/pr.yml",
+      "{workspaceRoot}/packages/react-file-type-icons/scripts/**",
+      "{workspaceRoot}/packages/react-file-type-icons/package.json",
+      "{workspaceRoot}/yarn.lock"
+    ]
+  },
   "targets": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["generate-metadata", "^build"]
     }
   }
 }

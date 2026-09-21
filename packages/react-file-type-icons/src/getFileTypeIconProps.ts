@@ -1,39 +1,10 @@
+import { TYPE_TO_ICON_NAME } from './fileIconTypeNames.generated';
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { FileIconType } from './FileIconType';
-import type { FileIconTypeInput } from './FileIconType';
+import type { FileIconType, FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
 const GENERIC_FILE = 'genericfile';
-const FOLDER = 'folder';
-const SHARED_FOLDER = 'sharedfolder';
-const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'listitem';
-const LIST = 'splist';
-const MULTIPLE_ITEMS = 'multiple';
-const NEWS = 'sponews';
-const STREAM = 'video';
-const DESKTOP_FOLDER = 'desktopfolder';
-const DOCUMENTS_FOLDER = 'documentsfolder';
-const PICTURES_FOLDER = 'picturesfolder';
-const LINKED_FOLDER = 'linkedfolder';
-const FORM = 'form';
-const SWAY = 'sway';
-const PLAYLIST = 'playlist';
-const LOOP_WORKSPACE = 'loopworkspace';
-const TODOITEM = 'todoitem';
-const PLANNER = 'planner';
-const PORTFOLIO = 'portfolio';
-const ALBUM = 'album';
-const LIST_FORM = 'listform';
-const CAMPAIGN = 'spocampaign';
-const SHORTCUTS_DEFAULT_FOLDER = 'companyfolder';
-const PBI_APP = 'pbiapp';
-const PBI_DASHBOARD = 'pbidashboard';
-const PBI_PAGINATED_REPORT = 'pbipagereport';
-const PBI_SCORECARD = 'pbiscorecard';
-const PBI_SEMANTIC_MODEL = 'pbisemmodel';
-const PBI_REPORT = 'powerbi';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -72,16 +43,9 @@ export interface IFileTypeIconOptions {
  * @param options
  */
 export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string; 'aria-label'?: string } {
-  // First, obtain the base name of the icon using the extension or type.
-  let iconBaseName: string;
   const { extension, type, size, imageFileType } = options;
-
-  iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
-  // Next, obtain the suffix using the icon size, user's device pixel ration, and
-  // preference for svg or png
-  const _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
-  const suffix: string = getFileTypeIconSuffix(_size, imageFileType);
-
+  const iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
+  const suffix = getFileTypeIconSuffix(size || DEFAULT_ICON_SIZE, imageFileType);
   return { iconName: iconBaseName + suffix, 'aria-label': extension };
 }
 
@@ -89,119 +53,19 @@ export function getFileTypeIconNameFromExtensionOrType(
   extension: string | undefined,
   type: FileIconType | undefined,
 ): string {
-  let iconBaseName: string | undefined;
   if (extension) {
     if (!_extensionToIconName) {
       _extensionToIconName = {};
-
-      for (const iconName in FileTypeIconMap) {
-        if (FileTypeIconMap.hasOwnProperty(iconName)) {
-          const extensions = FileTypeIconMap[iconName].extensions;
-
-          if (extensions) {
-            for (let i = 0; i < extensions.length; i++) {
-              _extensionToIconName[extensions[i]] = iconName;
-            }
-          }
+      for (const iconName of Object.keys(FileTypeIconMap)) {
+        for (const mappedExtension of FileTypeIconMap[iconName].extensions || []) {
+          _extensionToIconName[mappedExtension] = iconName;
         }
       }
     }
-
-    // Strip periods, force lowercase.
     extension = extension.replace('.', '').toLowerCase();
     return _extensionToIconName[extension] || GENERIC_FILE;
-  } else if (type) {
-    switch (type) {
-      case FileIconType.docset:
-        iconBaseName = DOCSET_FOLDER;
-        break;
-      case FileIconType.folder:
-        iconBaseName = FOLDER;
-        break;
-      case FileIconType.listItem:
-        iconBaseName = LIST_ITEM;
-        break;
-      case FileIconType.sharedFolder:
-        iconBaseName = SHARED_FOLDER;
-        break;
-      case FileIconType.stream:
-        iconBaseName = STREAM;
-        break;
-      case FileIconType.multiple:
-        iconBaseName = MULTIPLE_ITEMS;
-        break;
-      case FileIconType.news:
-        iconBaseName = NEWS;
-        break;
-      case FileIconType.desktopFolder:
-        iconBaseName = DESKTOP_FOLDER;
-        break;
-      case FileIconType.documentsFolder:
-        iconBaseName = DOCUMENTS_FOLDER;
-        break;
-      case FileIconType.picturesFolder:
-        iconBaseName = PICTURES_FOLDER;
-        break;
-      case FileIconType.linkedFolder:
-        iconBaseName = LINKED_FOLDER;
-        break;
-      case FileIconType.list:
-        iconBaseName = LIST;
-        break;
-      case FileIconType.form:
-        iconBaseName = FORM;
-        break;
-      case FileIconType.sway:
-        iconBaseName = SWAY;
-        break;
-      case FileIconType.playlist:
-        iconBaseName = PLAYLIST;
-        break;
-      case FileIconType.loopworkspace:
-        iconBaseName = LOOP_WORKSPACE;
-        break;
-      case FileIconType.planner:
-        iconBaseName = PLANNER;
-        break;
-      case FileIconType.todoItem:
-        iconBaseName = TODOITEM;
-        break;
-      case FileIconType.portfolio:
-        iconBaseName = PORTFOLIO;
-        break;
-      case FileIconType.album:
-        iconBaseName = ALBUM;
-        break;
-      case FileIconType.listForm:
-        iconBaseName = LIST_FORM;
-        break;
-      case FileIconType.campaign:
-        iconBaseName = CAMPAIGN;
-        break;
-      case FileIconType.shortcutsdefaultfolder:
-        iconBaseName = SHORTCUTS_DEFAULT_FOLDER;
-        break;
-      case FileIconType.pbiApp:
-        iconBaseName = PBI_APP;
-        break;
-      case FileIconType.pbiDashboard:
-        iconBaseName = PBI_DASHBOARD;
-        break;
-      case FileIconType.pbiPaginatedReport:
-        iconBaseName = PBI_PAGINATED_REPORT;
-        break;
-      case FileIconType.pbiScorecard:
-        iconBaseName = PBI_SCORECARD;
-        break;
-      case FileIconType.pbiSemanticModel:
-        iconBaseName = PBI_SEMANTIC_MODEL;
-        break;
-      case FileIconType.pbiReport:
-        iconBaseName = PBI_REPORT;
-        break;
-    }
   }
-  return iconBaseName || GENERIC_FILE;
+  return (type && TYPE_TO_ICON_NAME[type]) || GENERIC_FILE;
 }
 
 export function getFileTypeIconSuffix(
@@ -212,19 +76,14 @@ export function getFileTypeIconSuffix(
   // eslint-disable-next-line no-restricted-globals
   win ??= window;
   const devicePixelRatio: number = win.devicePixelRatio;
-  let devicePixelRatioSuffix = ''; // Default is 1x
+  let devicePixelRatioSuffix = '';
 
-  // SVGs scale well, so you can generally use the default image.
-  // 1.5x is a special case where SVGs need a different image.
   if (imageFileType === 'svg' && devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
-    // Currently missing 1.5x SVGs at size 20, snap to 1x for now
     if (size !== 20) {
       devicePixelRatioSuffix = '_1.5x';
     }
   } else if (imageFileType === 'png') {
-    // To look good, PNGs should use a different image for higher device pixel ratios
     if (devicePixelRatio > 1 && devicePixelRatio <= 1.5) {
-      // Currently missing 1.5x icons for size 20, snap to 2x for now
       devicePixelRatioSuffix = size === 20 ? '_2x' : '_1.5x';
     } else if (devicePixelRatio > 1.5 && devicePixelRatio <= 2) {
       devicePixelRatioSuffix = '_2x';

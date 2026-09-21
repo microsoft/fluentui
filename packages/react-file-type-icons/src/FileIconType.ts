@@ -1,12 +1,8 @@
-/**
- * Enumerates special file type icons that do not map to any file extensions.
- * For example, the 'pptx' icon maps to the extensions 'ppt', 'pptm', 'pptx',
- * but the 'folder' icon does not map to any extensions and should be obtained
- * via this enum.
- */
+// Generated from @fluentui/react-icons-file-type JSON metadata. Do not edit.
+// Run yarn generate-metadata in this package to regenerate.
 
 export enum FileIconType {
-  docset = 1, // Start at 1 so it will evaluate as "truthy"
+  docset = 1,
   folder = 2,
   genericFile = 3,
   listItem = 4,
@@ -37,7 +33,6 @@ export enum FileIconType {
   pbiSemanticModel = 29,
   pbiReport = 30,
 }
-
 export type FileIconTypeInput =
   | 1
   | 2
