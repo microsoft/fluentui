@@ -24,7 +24,7 @@
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@fluentui/react-icons-file-type": "file:./scripts/fixtures/react-icons-file-type"
+    "@fluentui/react-icons-file-type": "0.0.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",

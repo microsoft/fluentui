@@ -4355,7 +4355,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-file-type-icons@workspace:packages/react-file-type-icons"
   dependencies:
-    "@fluentui/react-icons-file-type": "file:./scripts/fixtures/react-icons-file-type"
+    "@fluentui/react-icons-file-type": "npm:0.0.3"
     "@fluentui/set-version": "npm:^8.2.24"
     "@fluentui/style-utilities": "npm:^8.15.2"
     tslib: "npm:^2.1.0"
@@ -4508,10 +4508,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-icons-file-type@file:./scripts/fixtures/react-icons-file-type::locator=%40fluentui%2Freact-file-type-icons%40workspace%3Apackages%2Freact-file-type-icons":
-  version: 0.0.0-metadata-fixture
-  resolution: "@fluentui/react-icons-file-type@file:./scripts/fixtures/react-icons-file-type#./scripts/fixtures/react-icons-file-type::hash=260840&locator=%40fluentui%2Freact-file-type-icons%40workspace%3Apackages%2Freact-file-type-icons"
-  checksum: 10c0/256d5355169c2ec8b90f64da897cb4443dab77dccab6ed3027a1de9343ae3b84d7278de4172eba23c434221a7ac1b70c0ff723d150410d15004c371f094063f3
+"@fluentui/react-icons-file-type@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@fluentui/react-icons-file-type@npm:0.0.3"
+  dependencies:
+    "@griffel/react": "npm:^1.6.1"
+    tslib: "npm:^2.1.0"
+  peerDependencies:
+    "@types/react": ">=16.8.0 <20.0.0"
+    react: ">=16.8.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/d15542db9db932a9f4c56fbcf763f6cbff2dc7d665bfe3a5abd9ed0ef94f2be3f6b7efebee2dc6ec38b317719939992b8547e7ee6ababba1bff33f3855067724
   languageName: node
   linkType: hard
 
@@ -6889,6 +6898,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@griffel/core@npm:^1.21.3":
+  version: 1.21.3
+  resolution: "@griffel/core@npm:1.21.3"
+  dependencies:
+    "@emotion/hash": "npm:^0.9.0"
+    "@griffel/style-types": "npm:^1.4.2"
+    csstype: "npm:^3.2.3"
+    rtl-css-js: "npm:^1.16.1"
+    stylis: "npm:^4.4.0"
+    tslib: "npm:^2.1.0"
+  checksum: 10c0/9bfa315a90b2351e3292798cf7aeaa64709aa6acf29c6dd8b9c1fc3e4805dae4c81e1c0d1b4767a3a4772c66dd55a10788e36ac472f2e7ca08db43ec14f15c11
+  languageName: node
+  linkType: hard
+
 "@griffel/eslint-plugin@npm:^2.0.0":
   version: 2.0.0
   resolution: "@griffel/eslint-plugin@npm:2.0.0"
@@ -6924,6 +6947,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@griffel/react@npm:^1.6.1":
+  version: 1.7.7
+  resolution: "@griffel/react@npm:1.7.7"
+  dependencies:
+    "@griffel/core": "npm:^1.21.3"
+    tslib: "npm:^2.1.0"
+  peerDependencies:
+    react: ">=16.14.0 <20.0.0"
+  checksum: 10c0/6b2a81b3965efb4850efefbbb141dbe5a25331c22a2c0a567b909388e31f8f859148951d92010e36eac414ebc494969b0d2d6e2820b40413022ec6a3f5e9a276
+  languageName: node
+  linkType: hard
+
 "@griffel/shadow-dom@npm:0.2.2":
   version: 0.2.2
   resolution: "@griffel/shadow-dom@npm:0.2.2"
@@ -6940,6 +6975,15 @@ __metadata:
   dependencies:
     csstype: "npm:^3.1.3"
   checksum: 10c0/94c63ed89398e154f5ced769b25ff7e14471c991672f32f69ac27daa463f880650cb2d7d5ef7e00811e3cd3a6cd2694b9ef861d9bc294cf72838e31761d72ef8
+  languageName: node
+  linkType: hard
+
+"@griffel/style-types@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@griffel/style-types@npm:1.4.2"
+  dependencies:
+    csstype: "npm:^3.2.3"
+  checksum: 10c0/5049b59d5f978c7d34774e49da6824c9f44178bc0261f38f5359512661a5cb6da827ecb855cc6237bc9ffdf2e584e6cbe8b622f2bcac347eb1307920ce583652
   languageName: node
   linkType: hard
 
@@ -15624,6 +15668,13 @@ __metadata:
   version: 3.1.3
   resolution: "csstype@npm:3.1.3"
   checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
   languageName: node
   linkType: hard
 
@@ -30192,6 +30243,13 @@ __metadata:
   version: 4.3.0
   resolution: "stylis@npm:4.3.0"
   checksum: 10c0/5a9f7e0cf2a15591efaacc1c6416a8785d2b57522cd38bb8e0a81a03c23d3bea2363659fa5f9d486a73d1b6ebaf1d32826ce1c1974c95afdb5b495d98acb25c0
+  languageName: node
+  linkType: hard
+
+"stylis@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "stylis@npm:4.4.0"
+  checksum: 10c0/259be096d90dfbfe903c8656dcb7591e52a421e577e950ef42ebd9ca02f387623a1165dd08761492fb6e92a7a562d62a53a694a10b0a2f6dcd7a0db107b4bf55
   languageName: node
   linkType: hard
 

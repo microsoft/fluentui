@@ -29,7 +29,7 @@ async function main() {
     throw new Error('--project must be react-file-type-icons or style-utilities');
   }
 
-  const { fileIconTypes, fileTypeIconMap, cdnBaseUrl } = require('@fluentui/react-icons-file-type/metadata.json');
+  const { fileIconTypes, fileTypeIconMap, cdnBaseUrl } = require('./fixtures/react-icons-file-type/metadata.json');
   const types = [...fileIconTypes].sort((left, right) => left.value - right.value);
   const names = new Set();
   types.forEach((entry, index) => {

@@ -3,14 +3,14 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 import { getFileTypeIconNameFromExtensionOrType } from './getFileTypeIconProps';
 
 describe('return valid icon name', () => {
-  it('generates the enum, lookup and complete catalog from published JSON metadata', () => {
+  it('generates the enum, lookup and complete catalog from the metadata fixture', () => {
     const {
       fileIconTypes: types,
       fileTypeIconMap: catalog,
     }: {
       fileIconTypes: { name: string; value: number; icon: string | null }[];
       fileTypeIconMap: { [name: string]: string[] | null };
-    } = jest.requireActual('@fluentui/react-icons-file-type/metadata.json');
+    } = jest.requireActual('../scripts/fixtures/react-icons-file-type/metadata.json');
     for (const { name, value, icon } of types) {
       expect(FileIconType[name as keyof typeof FileIconType]).toBe(value);
       expect(FileIconType[value]).toBe(name);
