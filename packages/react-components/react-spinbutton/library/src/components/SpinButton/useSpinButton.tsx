@@ -33,6 +33,7 @@ type InternalState = {
   atBound: SpinButtonBounds;
 };
 
+const INITIAL_SPIN_DELAY_MS = 500;
 const DEFAULT_SPIN_DELAY_MS = 150;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
@@ -98,7 +99,7 @@ export const useSpinButtonBase_unstable = (
     value: currentValue,
     spinState: 'rest',
     spinTime: 0,
-    spinDelay: DEFAULT_SPIN_DELAY_MS,
+    spinDelay: INITIAL_SPIN_DELAY_MS,
     atBound: currentValue !== null ? getBound(precisionRound(currentValue, precision), min, max) : 'none',
   });
 
@@ -162,12 +163,20 @@ export const useSpinButtonBase_unstable = (
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (internalState.current.spinState !== 'rest') {
+      return;
+    }
+
     commit(e, currentValue, textValue);
     internalState.current.spinState = 'up';
     stepValue(e, 'up');
   };
 
   const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (internalState.current.spinState !== 'rest') {
+      return;
+    }
+
     commit(e, currentValue, textValue);
     internalState.current.spinState = 'down';
     stepValue(e, 'down');
@@ -176,7 +185,7 @@ export const useSpinButtonBase_unstable = (
   const handleStepMouseUpOrLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     clearStepTimeout();
     internalState.current.spinState = 'rest';
-    internalState.current.spinDelay = DEFAULT_SPIN_DELAY_MS;
+    internalState.current.spinDelay = INITIAL_SPIN_DELAY_MS;
     internalState.current.spinTime = 0;
   };
 

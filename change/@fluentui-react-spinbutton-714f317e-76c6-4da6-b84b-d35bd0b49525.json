@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent duplicate spin button steps during a single press",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "martinhochel@microsoft.com"
+}

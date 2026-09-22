@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { SpinButton } from './SpinButton';
@@ -414,6 +414,46 @@ describe('SpinButton', () => {
       expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
 
       expect(onChange).toHaveBeenCalledTimes(2);
+    });
+
+    it.each([
+      ['increment', 0, '1'],
+      ['decrement', 1, '-1'],
+    ])('ignores duplicate mouse down events during the same %s press', (_name, buttonIndex, expectedValue) => {
+      const onChange = jest.fn();
+      const { getAllByRole } = render(<SpinButton defaultValue={0} onChange={onChange} />);
+      const button = getAllByRole('button')[buttonIndex];
+
+      fireEvent.mouseDown(button);
+      fireEvent.mouseDown(button);
+      fireEvent.mouseUp(button);
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(getSpinButtonInput().value).toEqual(expectedValue);
+    });
+
+    it('starts repeating after the initial hold delay', () => {
+      jest.useFakeTimers();
+      const onChange = jest.fn();
+      const { getAllByRole } = render(<SpinButton defaultValue={0} onChange={onChange} />);
+      const [incrementButton] = getAllByRole('button');
+
+      fireEvent.mouseDown(incrementButton);
+      act(() => jest.advanceTimersByTime(499));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(getSpinButtonInput().value).toEqual('1');
+
+      act(() => jest.advanceTimersByTime(1));
+
+      expect(onChange).toHaveBeenCalledTimes(2);
+      expect(getSpinButtonInput().value).toEqual('2');
+
+      fireEvent.mouseUp(incrementButton);
+      act(() => jest.runOnlyPendingTimers());
+
+      expect(onChange).toHaveBeenCalledTimes(2);
+      jest.useRealTimers();
     });
 
     it('changes value by `step` via hotkeys when uncontrolled', () => {
