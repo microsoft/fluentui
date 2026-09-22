@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { StarFilled } from '@fluentui/react-icons';
 import { useRatingDisplay as useRatingDisplayBase } from '@fluentui/react-headless-components-preview/rating-display';
-import { RatingItem } from '../RatingItem/RatingItem';
+import { RatingItem } from '../Rating/RatingItem/RatingItem';
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
 
 export const useRatingDisplay = (props: RatingDisplayProps, ref: React.Ref<HTMLDivElement>): RatingDisplayState => {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { TagPicker } from '../TagPicker';
+import { TagPicker } from '../TagPicker/TagPicker';
 import { TagPickerButton } from '../TagPickerButton';
-import { TagPickerList, tagPickerListClassNames } from './index';
+import { TagPickerList, tagPickerListClassNames } from './';
 
 describe('TagPickerList', () => {
   it('renders stable classes while open', () => {

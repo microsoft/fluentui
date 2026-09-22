@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { Option } from '../Option/Option';
+import { Option } from '../Dropdown/Option/Option';
 import { Combobox } from './Combobox';
 
 describe('Combobox', () => {

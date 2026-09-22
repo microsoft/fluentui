@@ -2,7 +2,7 @@ import type {
   SkeletonItemProps as SkeletonItemBaseProps,
   SkeletonItemState as SkeletonItemBaseState,
 } from '@fluentui/react-headless-components-preview/skeleton';
-import type { SkeletonProps } from '../Skeleton.types';
+import type { SkeletonProps } from '../Skeleton/Skeleton.types';
 export type { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
 
 export type SkeletonItemProps = SkeletonItemBaseProps &

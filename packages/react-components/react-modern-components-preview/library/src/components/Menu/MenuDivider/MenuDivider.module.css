@@ -1,0 +1,5 @@
+.menuDivider {
+  inline-size: auto;
+  margin: 4px -5px;
+  border-block-end: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+}

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Tag } from '../../Tag';
-import { TagPicker } from '../TagPicker';
-import { TagPickerGroup, tagPickerGroupClassNames } from './index';
+import { TagPicker } from '../TagPicker/TagPicker';
+import { TagPickerGroup, tagPickerGroupClassNames } from './';
 
 describe('TagPickerGroup', () => {
   it('maps picker visuals to its group and child tags', () => {

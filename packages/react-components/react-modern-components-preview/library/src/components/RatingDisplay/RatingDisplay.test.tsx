@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { RatingDisplay } from './RatingDisplay';
 import { ratingDisplayClassNames } from './useRatingDisplayStyles.styles';
-import { ratingItemClassNames } from '../RatingItem/useRatingItemStyles.styles';
+import { ratingItemClassNames } from '../Rating/RatingItem/useRatingItemStyles.styles';
 
 expect.extend(toHaveNoViolations);
 

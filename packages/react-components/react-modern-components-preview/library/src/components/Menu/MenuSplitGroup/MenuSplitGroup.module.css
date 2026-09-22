@@ -1,0 +1,24 @@
+.menuSplitGroup {
+  display: flex;
+
+  & > :global(.fui-MenuItem):first-child {
+    flex: 1;
+  }
+
+  & > :global(.fui-MenuItem):nth-child(2) {
+    padding-inline-start: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  & > :global(.fui-MenuItem):nth-child(2)::before {
+    inline-size: var(--strokeWidthThin);
+    block-size: 20px;
+    background-color: var(--colorNeutralStroke1);
+    content: '';
+  }
+
+  &[data-multiline] > :global(.fui-MenuItem):nth-child(2) {
+    align-self: center;
+  }
+}

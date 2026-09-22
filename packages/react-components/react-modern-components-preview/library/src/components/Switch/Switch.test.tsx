@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Switch, switchClassNames } from './index';
+import { Switch, switchClassNames } from './';
 
 describe('Switch', () => {
   it('renders visual defaults and stable class names', () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Spinner, spinnerClassNames } from './index';
+import { Spinner, spinnerClassNames } from './';
 
 describe('Spinner', () => {
   it('renders with default visual state and accessible label', () => {

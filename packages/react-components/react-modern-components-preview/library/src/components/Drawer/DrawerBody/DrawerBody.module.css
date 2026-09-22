@@ -1,0 +1,16 @@
+.drawerBody {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  align-self: stretch;
+  padding: 0 var(--spacingHorizontalXXL);
+  overflow: auto;
+
+  &:last-child {
+    padding-block-end: calc(var(--spacingHorizontalXXL) + 1px);
+  }
+
+  &:first-child {
+    padding-block-start: calc(var(--spacingHorizontalXXL) + 1px);
+  }
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Image, imageClassNames } from './index';
+import { Image, imageClassNames } from './';
 
 describe('Image', () => {
   it('renders with default visual state', () => {

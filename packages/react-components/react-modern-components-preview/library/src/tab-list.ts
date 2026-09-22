@@ -5,14 +5,14 @@ export {
   useTabList,
   useTabListContextValues,
   useTabListStyles,
-} from './components/TabList/index';
+} from './components/TabList/TabList/index';
 export type {
   TabListAppearance,
   TabListProps,
   TabListSize,
   TabListSlots,
   TabListState,
-} from './components/TabList/index';
+} from './components/TabList/TabList/index';
 
 export {
   Tab,
@@ -21,5 +21,5 @@ export {
   tabReservedSpaceClassNames,
   useTab,
   useTabStyles,
-} from './components/Tab/index';
-export type { TabProps, TabSlots, TabState, TabValue } from './components/Tab/index';
+} from './components/TabList/Tab/index';
+export type { TabProps, TabSlots, TabState, TabValue } from './components/TabList/Tab/index';

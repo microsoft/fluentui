@@ -1,0 +1,27 @@
+.drawerHeaderTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--spacingHorizontalS);
+}
+
+.drawerHeaderTitleHeading {
+  grid-row: 1;
+  grid-column: 1 / 3;
+  margin: 0;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase500);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase500);
+}
+
+.drawerHeaderTitleHeading:only-child {
+  grid-column-end: 4;
+}
+
+.drawerHeaderTitleAction {
+  grid-row: 1;
+  grid-column-start: 3;
+  place-self: start end;
+  margin-inline-end: calc(var(--spacingHorizontalS) * -1);
+}

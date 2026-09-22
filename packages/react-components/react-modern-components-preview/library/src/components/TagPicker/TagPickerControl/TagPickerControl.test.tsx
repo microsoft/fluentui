@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { TagPicker } from '../TagPicker';
+import { TagPicker } from '../TagPicker/TagPicker';
 import { TagPickerInput } from '../TagPickerInput';
-import { TagPickerControl, tagPickerControlClassNames } from './index';
+import { TagPickerControl, tagPickerControlClassNames } from './';
 
 describe('TagPickerControl', () => {
   it('renders inherited visual state and stable classes', () => {

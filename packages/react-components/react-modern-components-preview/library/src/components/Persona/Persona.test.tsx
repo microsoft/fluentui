@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Persona, personaClassNames } from './index';
+import { Persona, personaClassNames } from './';
 
 expect.extend(toHaveNoViolations);
 

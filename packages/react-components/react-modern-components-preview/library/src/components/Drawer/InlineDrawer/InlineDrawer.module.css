@@ -1,0 +1,30 @@
+.inlineDrawer {
+  position: relative;
+
+  &[data-position='bottom'] {
+    inline-size: 100%;
+    block-size: var(--fui-Drawer--size, 320px);
+  }
+
+  &[data-separator][data-position='start'] {
+    border-inline-end: 1px solid var(--colorNeutralBackground3);
+  }
+
+  &[data-separator][data-position='end'] {
+    border-inline-start: 1px solid var(--colorNeutralBackground3);
+  }
+
+  &[data-separator][data-position='bottom'] {
+    border-block-start: 1px solid var(--colorNeutralBackground3);
+  }
+
+  &:not([data-open]):is([data-position='start'], [data-position='end']) {
+    inline-size: 0;
+    border: none;
+  }
+
+  &:not([data-open])[data-position='bottom'] {
+    block-size: 0;
+    border: none;
+  }
+}

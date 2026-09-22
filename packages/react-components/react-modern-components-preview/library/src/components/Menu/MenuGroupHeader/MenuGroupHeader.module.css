@@ -1,0 +1,9 @@
+.menuGroupHeader {
+  display: flex;
+  align-items: center;
+  block-size: 32px;
+  padding-inline: 8px;
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase200);
+  font-weight: var(--fontWeightSemibold);
+}

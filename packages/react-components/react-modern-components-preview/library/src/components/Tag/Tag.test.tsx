@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Tag, tagClassNames } from './index';
+import { Tag, tagClassNames } from './';
 
 expect.extend(toHaveNoViolations);
 

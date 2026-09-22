@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { InteractionTag } from '../InteractionTag';
+import { InteractionTag } from '../InteractionTag/InteractionTag';
 import { InteractionTagPrimary } from '../InteractionTagPrimary';
-import { InteractionTagSecondary, interactionTagSecondaryClassNames } from './index';
+import { InteractionTagSecondary, interactionTagSecondaryClassNames } from './';
 
 describe('InteractionTagSecondary', () => {
   it('renders inherited visual state, a default icon, and consumer classes', () => {
