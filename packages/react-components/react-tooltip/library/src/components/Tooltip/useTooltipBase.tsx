@@ -83,9 +83,8 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
 
   const resolvedPositioning = resolvePositioningShorthand(state.positioning);
   const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => {
-    const { escaped, referenceHidden } = event.detail;
-
-    setHidden(escaped || referenceHidden);
+    // Portaled tooltips can escape the trigger's clipping ancestors while the trigger is still visible.
+    setHidden(event.detail.referenceHidden);
     resolvedPositioning.onPositioningEnd?.(event);
   });
 

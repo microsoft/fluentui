@@ -237,7 +237,7 @@ export interface CartesianChartProps {
     strokeWidth?: number;
     styles?: CartesianChartStyles;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
-    tickFormat?: string;
+    tickFormat?: string | ((value: number | Date) => string);
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
@@ -896,6 +896,16 @@ export interface GanttChartStyles extends CartesianChartStyles {
 export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 
 // @public
+export interface GaugeChartCalloutData {
+    chartValue: number;
+    chartValueLabel: string;
+    legend: string;
+    maxValue: number;
+    minValue: number;
+    segmentValues: YValueHover[];
+}
+
+// @public
 export interface GaugeChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     chartTitle?: string;
@@ -912,6 +922,7 @@ export interface GaugeChartProps {
     legendProps?: Partial<LegendsProps>;
     maxValue?: number;
     minValue?: number;
+    onRenderCallout?: RenderFunction<GaugeChartCalloutData>;
     roundCorners?: boolean;
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
@@ -1496,7 +1507,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
         tickValues?: number[] | Date[] | string[];
-        tickFormat?: string;
+        tickFormat?: string | ((value: number | Date) => string);
     };
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;

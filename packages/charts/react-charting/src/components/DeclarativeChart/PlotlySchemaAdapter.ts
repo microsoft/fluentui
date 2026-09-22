@@ -525,7 +525,7 @@ const shouldIgnoreKey = (key: string): boolean => {
  * @returns Flattened object
  */
 const flattenObject = (obj: Record<string, unknown>, prefix: string = ''): Record<string, unknown> => {
-  const flattened: Record<string, unknown> = {};
+  const flattened: Record<string, unknown> = Object.create(null);
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -1192,7 +1192,7 @@ export const normalizeObjectArrayForGVBC = (
     if (typeof item === 'object' && item !== null) {
       const flattened = flattenObject(item);
       // Only keep keys where the value is numeric (number or numeric string) and not a style key
-      const filtered: Record<string, unknown> = {};
+      const filtered: Record<string, unknown> = Object.create(null);
       Object.keys(flattened).forEach(key => {
         const value = flattened[key];
         if (!shouldIgnoreKey(key) && (typeof value === 'number' || (typeof value === 'string' && isNumber(value)))) {
@@ -1311,7 +1311,7 @@ export const transformPlotlyJsonToDonutProps = (
     true,
   );
 
-  const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
+  const mapLegendToDataPoint: Record<string, IChartDataPoint> = Object.create(null);
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
   colorMap.current.clear();
@@ -1406,7 +1406,7 @@ export const transformPlotlyJsonToVSBCProps = (
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
 ): IVerticalStackedBarChartProps => {
-  const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
+  const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = Object.create(null);
   let yMaxValue = 0;
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
@@ -3105,7 +3105,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
   if (isStacked) {
     // Assign a color per series/category and use it for all subValues of that category
-    const seriesColors: Record<string, string> = {};
+    const seriesColors: Record<string, string> = Object.create(null);
     input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages
@@ -3685,7 +3685,7 @@ export const getGridProperties = (
     xAnnotation?: string;
     yAnnotation?: string;
   };
-  const annotations: Record<number, AnnotationProps> = {};
+  const annotations: Record<number, AnnotationProps> = Object.create(null);
   let templateRows = '1fr';
   let templateColumns = '1fr';
   const gridLayout: GridAxisProperties = {};
@@ -4171,7 +4171,7 @@ interface IAxisObject extends Partial<LayoutAxis> {
   _id: string;
 }
 
-const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
+export const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined): Record<string, IAxisObject> => {
   // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
   // are called with the corresponding filtered data. As a result, all traces passed to an adapter
   // function share the same xaxis.
@@ -4188,7 +4188,7 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
 
-  const axisObjects: Record<string, IAxisObject> = {};
+  const axisObjects: Record<string, IAxisObject> = Object.create(null);
 
   if (typeof xAxisId === 'number') {
     axisObjects.x = makeAxisObject('x', xAxisId);
