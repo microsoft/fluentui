@@ -149,13 +149,13 @@ describe('TeachingPopover', () => {
     (['escape', 'dismiss'] as const).forEach(action => {
       it(`restores trigger focus on modal ${action} when initially open`, () => {
         mount(<FocusExample controlled initiallyOpen trapFocus />);
-        cy.get('[role="dialog"]').should('be.visible');
+        cy.get('dialog').should('be.visible');
         if (action === 'escape') {
           cy.realPress('Escape');
         } else {
           cy.get('[aria-label="dismiss"]').realClick();
         }
-        cy.get('[role="dialog"]').should('not.exist');
+        cy.get('dialog').should('not.exist');
         cy.get(triggerSelector).should('have.focus');
       });
     });
