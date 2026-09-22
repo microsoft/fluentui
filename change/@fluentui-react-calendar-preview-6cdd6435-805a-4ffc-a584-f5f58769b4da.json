@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: initial release",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
