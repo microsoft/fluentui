@@ -4171,7 +4171,7 @@ interface IAxisObject extends Partial<LayoutAxis> {
   _id: string;
 }
 
-export const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
+export const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined): Record<string, IAxisObject> => {
   // Traces are grouped by their xaxis property, and for each group/subplot, the adapter functions
   // are called with the corresponding filtered data. As a result, all traces passed to an adapter
   // function share the same xaxis.
