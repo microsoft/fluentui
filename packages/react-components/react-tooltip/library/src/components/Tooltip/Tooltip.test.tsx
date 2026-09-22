@@ -3,7 +3,7 @@ import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import type { RenderResult } from '@testing-library/react';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -169,6 +169,23 @@ describe('Tooltip', () => {
     expect(onVisibleChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ visible: false }));
 
     visibilityStateSpy.mockRestore();
+  });
+
+  it('remains visible when positioning geometry is unavailable', async () => {
+    const onPositioningEnd = jest.fn();
+    const result = render(
+      <Tooltip content="Tooltip content" relationship="label" visible positioning={{ onPositioningEnd }}>
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+
+    await waitFor(() => expect(onPositioningEnd).toHaveBeenCalled());
+
+    expect(onPositioningEnd.mock.calls.at(-1)?.[0].detail).toEqual(
+      expect.objectContaining({ escaped: false, referenceHidden: false }),
+    );
+    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
   });
 
   it.each([
