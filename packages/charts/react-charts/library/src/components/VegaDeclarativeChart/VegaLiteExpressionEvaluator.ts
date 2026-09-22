@@ -64,6 +64,7 @@ const SAFE_FUNCTIONS: Record<string, (...args: unknown[]) => unknown> = {
   toString: (x: unknown) => String(x),
   toBoolean: (x: unknown) => Boolean(x),
 };
+const SAFE_FUNCTION_VALUES = new Set(Object.values(SAFE_FUNCTIONS));
 
 // ---------------------------------------------------------------------------
 // Whitelisted constants
@@ -437,7 +438,7 @@ class ExpressionParser {
         }
       } else if (this._peek().type === '(') {
         // Function call — only safe built-in functions are callable
-        if (typeof value !== 'function') {
+        if (typeof value !== 'function' || !SAFE_FUNCTION_VALUES.has(value as (...args: unknown[]) => unknown)) {
           throw new Error('Safe expression evaluator: function calls are only allowed for built-in functions');
         }
         this._advance();

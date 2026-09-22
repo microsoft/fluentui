@@ -1,9 +1,8 @@
 pr: none
 trigger: none
 
-# Customize build number to include major version
 # Example: v9_20201022.1
-name: 'v9_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v9_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -14,10 +13,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-  - name: release.vnext # Used to scope beachball to release only vnext packages
-    value: true
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -68,6 +63,7 @@ extends:
               - template: .devops/templates/run-with-token.yml@self
                 parameters:
                   steps:
+                    # Publish, then reset to the updated origin/master state so manifest versions are correct.
                     - script: |
                         yarn beachball publish --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
                         git reset --hard origin/master
@@ -78,12 +74,9 @@ extends:
                       condition: not(${{ parameters.dryRun }})
 
               - script: |
-                  node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
+                  node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
                 condition: not(${{ parameters.dryRun }})
-
-              # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
-              - script: |
-                  yarn syncpack list-mismatches
-                displayName: Check for dependency mismatches
+                env:
+                  TOKEN: $(npmToken)

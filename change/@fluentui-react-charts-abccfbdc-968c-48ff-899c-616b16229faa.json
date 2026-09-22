@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Added test cases prototype pollution fix",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
