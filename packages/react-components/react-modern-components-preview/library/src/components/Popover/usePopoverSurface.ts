@@ -1,6 +1,5 @@
 'use client';
 
-import type * as React from 'react';
 import { usePopoverSurface as usePopoverSurfaceBase } from '@fluentui/react-headless-components-preview/popover';
 import { useMotionForwardedRef } from '@fluentui/react-motion';
 import { useMergedRefs } from '@fluentui/react-utilities';
@@ -10,7 +9,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
 /** Create the state required to render PopoverSurface. */
 export const usePopoverSurface = (
   props: PopoverSurfaceProps,
-  ref: React.Ref<HTMLDialogElement | HTMLDivElement>,
+  ref: Parameters<typeof usePopoverSurfaceBase>[1],
 ): PopoverSurfaceState => {
   const state = usePopoverSurfaceBase(props, ref);
   const { appearance, size } = usePopoverAppearanceContext();
