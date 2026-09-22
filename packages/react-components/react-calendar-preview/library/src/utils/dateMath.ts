@@ -1,4 +1,4 @@
-import { DAYS_IN_WEEK } from './constants';
+import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from './constants';
 import { getDayIndex, getMonthIndex } from './dateUtils';
 import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from './constants';
 
@@ -187,7 +187,7 @@ export function getDateRange(
   let maximumRangeLength: number;
 
   if (!workWeekDays) {
-    workWeekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+    workWeekDays = [...DEFAULT_WORK_WEEK_DAYS];
   }
 
   const workWeekDayIndices = workWeekDays.map(getDayIndex);

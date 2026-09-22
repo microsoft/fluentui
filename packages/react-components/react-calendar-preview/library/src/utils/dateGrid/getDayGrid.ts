@@ -1,5 +1,6 @@
 import { areDatesEqual, createDate, getDateRange, getStartDateOfWeek, isDateInRange } from '../dateMath';
-import { DAYS_IN_WEEK } from '../constants';
+import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from '../constants';
+import type { DayOfWeek } from '../constants';
 import type { Day, DayGridOptions } from './dateGrid.types';
 import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import { getDateRangeTypeToUse } from './workWeek';
@@ -34,6 +35,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   }
 
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
+  const effectiveWorkWeekDays: DayOfWeek[] = workWeekDays ?? [...DEFAULT_WORK_WEEK_DAYS];
 
   const todaysDate = today || new Date();
 
@@ -67,7 +69,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   let hasReachedNavigatedMonth = false;
 
   // in work week view if the days aren't contiguous we use week view instead
-  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
+  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, effectiveWorkWeekDays, firstDayOfWeek);
 
   let selectedDates: Date[] = [];
 
@@ -76,7 +78,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
       selectedDate,
       selectedDateRangeType,
       firstDayOfWeek,
-      workWeekDays,
+      effectiveWorkWeekDays,
       daysToSelectInDayView,
     );
     selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);

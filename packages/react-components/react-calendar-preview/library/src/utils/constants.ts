@@ -17,6 +17,17 @@ export const daysOfWeek = [
 ] as const satisfies readonly DayOfWeek[];
 
 /**
+ * Default working days used by work-week ranges.
+ */
+export const DEFAULT_WORK_WEEK_DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+] as const satisfies readonly DayOfWeek[];
+
+/**
  * The months of the year.
  */
 export type MonthOfYear =
