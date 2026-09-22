@@ -4775,7 +4775,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-jsx-runtime@npm:^9.4.5, @fluentui/react-jsx-runtime@npm:^9.4.6, @fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime":
+"@fluentui/react-jsx-runtime@npm:^9.4.6, @fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime"
   dependencies:
@@ -5029,17 +5029,17 @@ __metadata:
   dependencies:
     "@fluentui/react-headless-components-preview": "npm:^0.2.5"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-jsx-runtime": "npm:^9.4.5"
-    "@fluentui/react-motion": "workspace:^"
-    "@fluentui/react-motion-components-preview": "workspace:^"
-    "@fluentui/react-utilities": "npm:^9.26.6"
-    "@fluentui/tokens": "npm:*"
+    "@fluentui/react-jsx-runtime": "npm:^9.4.6"
+    "@fluentui/react-motion": "npm:^9.16.4"
+    "@fluentui/react-motion-components-preview": "npm:^0.15.9"
+    "@fluentui/react-utilities": "npm:^9.26.7"
+    "@fluentui/tokens": "npm:1.0.0-alpha.24"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^1.2.1"
     stylelint: "npm:17.15.0"
     stylelint-config-standard: "npm:40.0.0"
     stylelint-use-logical: "npm:2.1.3"
-    stylelint-value-no-unknown-custom-properties: "npm:6.1.1"
+    stylelint-value-no-unknown-custom-properties: "npm:^6.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -5084,7 +5084,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-motion-components-preview@npm:*, @fluentui/react-motion-components-preview@npm:^0.15.9, @fluentui/react-motion-components-preview@workspace:^, @fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library":
+"@fluentui/react-motion-components-preview@npm:*, @fluentui/react-motion-components-preview@npm:^0.15.9, @fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-motion-components-preview@workspace:packages/react-components/react-motion-components-preview/library"
   dependencies:
@@ -5106,7 +5106,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-motion@npm:*, @fluentui/react-motion@npm:^9.16.4, @fluentui/react-motion@workspace:^, @fluentui/react-motion@workspace:packages/react-components/react-motion/library":
+"@fluentui/react-motion@npm:*, @fluentui/react-motion@npm:^9.16.4, @fluentui/react-motion@workspace:packages/react-components/react-motion/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-motion@workspace:packages/react-components/react-motion/library"
   dependencies:
@@ -6251,7 +6251,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.6, @fluentui/react-utilities@npm:^9.26.7, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
+"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.7, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-utilities@workspace:packages/react-components/react-utilities"
   dependencies:
@@ -6710,15 +6710,6 @@ __metadata:
     tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
-
-"@fluentui/tokens@npm:*":
-  version: 9.74.5-experimental.tabster-v9.20260804-bb909442fe.0
-  resolution: "@fluentui/tokens@npm:9.74.5-experimental.tabster-v9.20260804-bb909442fe.0"
-  dependencies:
-    "@swc/helpers": "npm:^0.5.1"
-  checksum: 10c0/bd175008e9488b0e2f0234037c20ae0c7f8cfdc44d152a02179d5b8676eb14673e6ebd861e6cdaf55118471fee0a430bcd5c343f8298a41b2aa0138241b8bfd6
-  languageName: node
-  linkType: hard
 
 "@fluentui/tokens@npm:1.0.0-alpha.24, @fluentui/tokens@npm:>=1.0.0-alpha, @fluentui/tokens@npm:^1.0.0-alpha.24, @fluentui/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
@@ -31172,7 +31163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-value-no-unknown-custom-properties@npm:6.1.1":
+"stylelint-value-no-unknown-custom-properties@npm:^6.1.1":
   version: 6.1.1
   resolution: "stylelint-value-no-unknown-custom-properties@npm:6.1.1"
   dependencies:

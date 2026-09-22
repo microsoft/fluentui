@@ -23,10 +23,10 @@
   "dependencies": {
     "@fluentui/react-headless-components-preview": "^0.2.5",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.4.5",
-    "@fluentui/react-motion": "workspace:^",
-    "@fluentui/react-motion-components-preview": "workspace:^",
-    "@fluentui/react-utilities": "^9.26.6",
+    "@fluentui/react-jsx-runtime": "^9.4.6",
+    "@fluentui/react-motion": "^9.16.4",
+    "@fluentui/react-motion-components-preview": "^0.15.9",
+    "@fluentui/react-utilities": "^9.26.7",
     "@swc/helpers": "^0.5.1",
     "clsx": "^1.2.1"
   },
@@ -579,10 +579,10 @@
     ]
   },
   "devDependencies": {
-    "@fluentui/tokens": "*",
+    "@fluentui/tokens": "1.0.0-alpha.24",
     "stylelint": "17.15.0",
     "stylelint-config-standard": "40.0.0",
     "stylelint-use-logical": "2.1.3",
-    "stylelint-value-no-unknown-custom-properties": "6.1.1"
+    "stylelint-value-no-unknown-custom-properties": "^6.1.1"
   }
 }
