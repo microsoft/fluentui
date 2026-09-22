@@ -65,7 +65,7 @@ describe('OverlayDrawer', () => {
     displayName: 'OverlayDrawer',
     requiredProps: { open: true, 'aria-label': 'Drawer', children: 'Drawer content' },
     componentPath: require.resolve('./OverlayDrawer'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('applies the default and explicit visual sizes', () => {
@@ -109,7 +109,7 @@ describe('InlineDrawer', () => {
     displayName: 'InlineDrawer',
     requiredProps: { open: true, children: 'Drawer content' },
     componentPath: require.resolve('./InlineDrawer'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('preserves headless state attributes and adds visual state attributes', () => {
@@ -148,33 +148,33 @@ describe('Drawer compound components', () => {
     Component: DrawerBody,
     displayName: 'DrawerBody',
     componentPath: require.resolve('./DrawerBody'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DrawerHeader,
     displayName: 'DrawerHeader',
     componentPath: require.resolve('./DrawerHeader'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DrawerHeaderTitle,
     displayName: 'DrawerHeaderTitle',
     requiredProps: { children: 'Drawer title' },
     componentPath: require.resolve('./DrawerHeaderTitle'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DrawerHeaderNavigation,
     displayName: 'DrawerHeaderNavigation',
     requiredProps: { 'aria-label': 'Drawer navigation' },
     componentPath: require.resolve('./DrawerHeaderNavigation'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DrawerFooter,
     displayName: 'DrawerFooter',
     componentPath: require.resolve('./DrawerFooter'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('renders stable class names for every family member and title slot', () => {

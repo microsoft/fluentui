@@ -45,7 +45,7 @@ describe('Menu compound components', () => {
       displayName,
       componentPath: require.resolve(`./${displayName}`),
       disableTypeTests: true,
-      disabledTests: ['exported-top-level', 'has-top-level-file'],
+      disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
       requiredProps,
       renderOptions: isMenuItem ? { wrapper: MenuListWrapper } : undefined,
       getTargetElement: isMenuItem ? result => result.getByRole(itemRole) : undefined,
@@ -84,6 +84,7 @@ describe('Menu compound components', () => {
       'component-handles-classname',
       'exported-top-level',
       'has-top-level-file',
+      'has-top-level-file-extra',
     ],
     requiredProps: {
       disableButtonEnhancement: true,

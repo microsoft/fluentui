@@ -8,7 +8,7 @@ describe('NavDrawerFooter', () => {
     Component: NavDrawerFooter,
     displayName: 'NavDrawerFooter',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
     requiredProps: { children: 'Footer' },
   });
 

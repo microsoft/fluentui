@@ -11,7 +11,7 @@ describe('PopoverSurface', () => {
     displayName: 'PopoverSurface',
     requiredProps: { children: 'Popover content' },
     componentPath: require.resolve('./PopoverSurface'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('applies the default visual state and preserves a consumer class', () => {

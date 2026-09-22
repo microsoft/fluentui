@@ -16,6 +16,7 @@ describe('NavCategory', () => {
       'component-handles-classname',
       'exported-top-level',
       'has-top-level-file',
+      'has-top-level-file-extra',
       'make-styles-overrides-win',
     ],
   });

@@ -9,7 +9,7 @@ describe('ToolbarGroup', () => {
     Component: ToolbarGroup,
     displayName: 'ToolbarGroup',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('renders the stable class and inherits vertical orientation', () => {

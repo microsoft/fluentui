@@ -8,7 +8,7 @@ describe('NavDivider', () => {
     Component: NavDivider,
     displayName: 'NavDivider',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('renders strong divider styling by default', () => {

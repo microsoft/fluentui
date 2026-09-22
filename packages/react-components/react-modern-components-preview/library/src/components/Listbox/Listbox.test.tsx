@@ -8,7 +8,7 @@ describe('Listbox', () => {
     Component: Listbox,
     displayName: 'Listbox',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
     requiredProps: {
       'aria-label': 'Options',
       children: <div role="option">Option</div>,

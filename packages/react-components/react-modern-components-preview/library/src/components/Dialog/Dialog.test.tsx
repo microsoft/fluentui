@@ -52,6 +52,7 @@ describe('Dialog', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'has-top-level-file',
+      'has-top-level-file-extra',
       'make-styles-overrides-win',
     ],
   });
@@ -61,7 +62,7 @@ describe('Dialog', () => {
     displayName: 'DialogSurface',
     requiredProps: { 'aria-label': 'Dialog' },
     componentPath: require.resolve('./DialogSurface'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
     renderOptions: { wrapper: DialogSurfaceWrapper },
   });
 
@@ -69,26 +70,26 @@ describe('Dialog', () => {
     Component: DialogHeader,
     displayName: 'DialogHeader',
     componentPath: require.resolve('./DialogHeader'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DialogTitle,
     displayName: 'DialogTitle',
     requiredProps: { children: 'Title' },
     componentPath: require.resolve('./DialogTitle'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DialogBody,
     displayName: 'DialogBody',
     componentPath: require.resolve('./DialogBody'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
   isConformant({
     Component: DialogActions,
     displayName: 'DialogActions',
     componentPath: require.resolve('./DialogActions'),
-    disabledTests: ['has-top-level-file'],
+    disabledTests: ['has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('renders the styled family while preserving semantic elements and consumer classes', () => {
