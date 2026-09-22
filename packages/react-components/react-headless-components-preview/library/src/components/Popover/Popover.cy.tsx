@@ -348,11 +348,14 @@ describe('Popover', () => {
           <button data-testid="outside">Outside</button>
         </>,
       );
-      cy.get('[data-testid=trigger]').trigger('mouseover');
+      // Clear the native pointer left by earlier tests so closing cannot immediately reopen the popover.
+      cy.get('body').realHover({ position: 'bottomRight' });
+      // The open surface can cover the trigger; dispatch hover events without hit-testing or moving focus.
+      cy.get('[data-testid=trigger]').trigger('mouseover', { force: true });
       cy.get('[data-testid=surface]').should('be.visible');
       cy.get('[data-testid=outside]').focus().blur();
       cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
-      cy.get('[data-testid=trigger]').trigger('mouseout');
+      cy.get('[data-testid=trigger]').trigger('mouseout', { force: true });
       cy.get('[data-testid=surface]').should('not.exist');
       cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
     });
