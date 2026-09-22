@@ -19,6 +19,7 @@ import {
   getAllupLegendsProps,
   isNonPlotType,
   getGridProperties,
+  getAxisObjects,
   _getGaugeAxisColor,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
@@ -284,6 +285,18 @@ describe('transform Plotly Json To chart Props', () => {
       ]),
     );
     expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
+  });
+
+  test('normalizeObjectArrayForGVBC - creates null-prototype intermediate dictionaries', () => {
+    const createSpy = jest.spyOn(Object, 'create');
+
+    try {
+      normalizeObjectArrayForGVBC([{ value: 1 }]);
+
+      expect(createSpy).toHaveBeenCalledWith(null);
+    } finally {
+      createSpy.mockRestore();
+    }
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
@@ -1663,6 +1676,18 @@ describe('getAllupLegendsProps', () => {
 });
 
 describe('getGridProperties', () => {
+  test('Should create a null-prototype annotations dictionary', () => {
+    const createSpy = jest.spyOn(Object, 'create');
+
+    try {
+      getGridProperties(undefined, false, []);
+
+      expect(createSpy).toHaveBeenCalledWith(null);
+    } finally {
+      createSpy.mockRestore();
+    }
+  });
+
   test('Should return default grid properties for single plot', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const schema: any = {
@@ -1812,6 +1837,29 @@ describe('getGridProperties', () => {
     const traceInfo: any = [{ type: 'line', index: 0 }];
 
     expect(() => getGridProperties(invalidAxisSchema, true, traceInfo)).not.toThrow();
+  });
+});
+
+describe('getAxisObjects', () => {
+  test('Should return selected axes in a null-prototype dictionary', () => {
+    const data = [
+      { type: 'scatter', xaxis: 'x2', yaxis: 'y3', x: [1], y: [2] },
+      { type: 'scatter', xaxis: 'x2', yaxis: 'y2', x: [1], y: [3] },
+    ] as PlotlySchema['data'];
+    const layout = {
+      xaxis2: { type: 'log' as const },
+      yaxis2: { type: 'linear' as const },
+      yaxis3: { type: 'log' as const },
+    };
+
+    const result = getAxisObjects(data, layout);
+
+    expect(Object.getPrototypeOf(result)).toBeNull();
+    expect(result).toEqual({
+      x: { type: 'log', _id: 'x2' },
+      y: { type: 'linear', _id: 'y2' },
+      y2: { type: 'log', _id: 'y3' },
+    });
   });
 });
 
