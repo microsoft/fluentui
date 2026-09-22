@@ -71,6 +71,7 @@ import { TeachingPopoverTrigger } from '@fluentui/react-headless-components-prev
 import { TeachingPopoverTriggerChildProps } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { TeachingPopoverTriggerProps } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { TeachingPopoverTriggerState } from '@fluentui/react-headless-components-preview/teaching-popover';
+import { usePopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import { useTeachingPopoverCarouselCard } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverCarouselContextValues } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { useTeachingPopoverCarouselNav } from '@fluentui/react-headless-components-preview/teaching-popover';
@@ -432,7 +433,7 @@ export const useTeachingPopoverHeader: (props: TeachingPopoverHeaderProps, ref: 
 export const useTeachingPopoverHeaderStyles: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
 
 // @public
-export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => TeachingPopoverSurfaceState;
+export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: Parameters<typeof usePopoverSurface>[1]) => TeachingPopoverSurfaceState;
 
 // @public (undocumented)
 export const useTeachingPopoverSurfaceStyles: (state: TeachingPopoverSurfaceState) => TeachingPopoverSurfaceState;

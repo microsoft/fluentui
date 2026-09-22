@@ -25,6 +25,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { usePopoverContext } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverContextValues } from '@fluentui/react-headless-components-preview/popover';
+import { usePopoverSurface as usePopoverSurface_2 } from '@fluentui/react-headless-components-preview/popover';
 import { usePopoverTrigger } from '@fluentui/react-headless-components-preview/popover';
 
 // @public (undocumented)
@@ -114,7 +115,7 @@ export { usePopoverContext }
 export { usePopoverContextValues }
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: Parameters<typeof usePopoverSurface_2>[1]) => PopoverSurfaceState;
 
 // @public
 export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;
