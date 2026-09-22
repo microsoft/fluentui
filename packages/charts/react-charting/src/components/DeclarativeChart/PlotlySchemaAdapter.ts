@@ -3685,7 +3685,7 @@ export const getGridProperties = (
     xAnnotation?: string;
     yAnnotation?: string;
   };
-  const annotations: Record<number, AnnotationProps> = {};
+  const annotations: Record<number, AnnotationProps> = Object.create(null);
   let templateRows = '1fr';
   let templateColumns = '1fr';
   const gridLayout: GridAxisProperties = {};
@@ -4188,7 +4188,7 @@ const getAxisObjects = (data: Data[], layout: Partial<Layout> | undefined) => {
     _id: `${axLetter}${axId > 1 ? axId : ''}`,
   });
 
-  const axisObjects: Record<string, IAxisObject> = {};
+  const axisObjects: Record<string, IAxisObject> = Object.create(null);
 
   if (typeof xAxisId === 'number') {
     axisObjects.x = makeAxisObject('x', xAxisId);
