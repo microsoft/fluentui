@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: improve safe zone hit testing and avoid rerenders during pointer movement",
+  "packageName": "@fluentui/react-positioning",
+  "email": "jakubmiskech@microsoft.com",
+  "dependentChangeType": "patch"
+}
