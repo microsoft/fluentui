@@ -32,7 +32,7 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent = ({ onPositioningEnd }: { onPositioningEnd?: PositioningProps['onPositioningEnd'] }) => {
+const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioningEnd'] }> = ({ onPositioningEnd }) => {
   const { targetRef, containerRef } = usePositioning({ onPositioningEnd });
 
   return (
