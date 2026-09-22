@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixed prototypr issue in vegalite adapter",
-  "packageName": "@fluentui/react-charts",
-  "email": "v-baambati@microsoft.com"
-}

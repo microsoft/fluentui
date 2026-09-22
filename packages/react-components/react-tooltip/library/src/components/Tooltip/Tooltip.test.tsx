@@ -189,9 +189,11 @@ describe('Tooltip', () => {
   });
 
   it.each([
+    { escaped: false, referenceHidden: false },
     { escaped: true, referenceHidden: false },
     { escaped: false, referenceHidden: true },
-  ])('hides and restores the tooltip based on positioning visibility flags', flags => {
+    { escaped: true, referenceHidden: true },
+  ])('follows reference visibility for positioning flags %o', flags => {
     const onPositioningEnd = jest.fn();
     const result = render(
       <Tooltip content="Tooltip content" relationship="label" visible positioning={{ onPositioningEnd }}>
@@ -200,23 +202,27 @@ describe('Tooltip', () => {
     );
     const tooltip = getByRoleTooltip(result);
 
-    const hiddenEvent = new CustomEvent('fui-positioningend', {
+    const positioningEvent = new CustomEvent('fui-positioningend', {
       detail: { placement: 'top', ...flags },
     });
-    act(() => tooltip.dispatchEvent(hiddenEvent));
+    act(() => tooltip.dispatchEvent(positioningEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
-    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
-    expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
-    expect(onPositioningEnd).toHaveBeenCalledWith(hiddenEvent);
+    expect(getComputedStyle(tooltip).visibility === 'hidden').toBe(flags.referenceHidden);
+    if (flags.referenceHidden) {
+      expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
+    }
+    expect(onPositioningEnd).toHaveBeenCalledTimes(1);
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
 
     const visibleEvent = new CustomEvent('fui-positioningend', {
-      detail: { placement: 'top', escaped: false, referenceHidden: false },
+      detail: { placement: 'top', escaped: flags.escaped, referenceHidden: false },
     });
     act(() => tooltip.dispatchEvent(visibleEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
     expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
-    expect(onPositioningEnd).toHaveBeenCalledWith(visibleEvent);
+    expect(onPositioningEnd).toHaveBeenCalledTimes(2);
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(visibleEvent);
   });
 });
