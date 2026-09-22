@@ -47,6 +47,12 @@ describe('getInitials', () => {
     expect(result).toEqual('DG');
   });
 
+  it('handles unmatched enclosure characters', () => {
+    expect(getInitials(`${'('.repeat(1000)} David Goff`, false)).toEqual('DG');
+    expect(getInitials(`${'['.repeat(1000)} David Goff`, false)).toEqual('DG');
+    expect(getInitials(`${'{'.repeat(1000)} David Goff`, false)).toEqual('DG');
+  });
+
   it('calculates an expected initials in LTR with multiple parentheses, extra spaces, and unwanted characters', () => {
     const result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ', false);
     expect(result).toEqual('DG');
