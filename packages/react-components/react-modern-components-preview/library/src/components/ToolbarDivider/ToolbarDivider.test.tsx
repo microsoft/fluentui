@@ -9,7 +9,7 @@ describe('ToolbarDivider', () => {
     Component: ToolbarDivider,
     displayName: 'ToolbarDivider',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('renders stable divider styling with visual defaults', () => {

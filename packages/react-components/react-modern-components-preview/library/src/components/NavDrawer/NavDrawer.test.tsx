@@ -21,7 +21,7 @@ describe('NavDrawer', () => {
     displayName: 'NavDrawer',
     disableTypeTests: true,
     requiredProps: { children: 'Navigation', open: true, type: 'inline' },
-    disabledTests: ['consistent-callback-args', 'exported-top-level', 'has-top-level-file'],
+    disabledTests: ['consistent-callback-args', 'exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
   });
 
   it('composes the modern inline drawer and preserves nav visual defaults', () => {

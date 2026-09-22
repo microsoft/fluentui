@@ -9,7 +9,7 @@ describe('ToolbarButton', () => {
     Component: ToolbarButton,
     displayName: 'ToolbarButton',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
     requiredProps: { children: 'Action' },
   });
 

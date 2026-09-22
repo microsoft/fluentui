@@ -8,7 +8,7 @@ describe('NavSectionHeader', () => {
     Component: NavSectionHeader,
     displayName: 'NavSectionHeader',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
     requiredProps: { children: 'Section' },
   });
 

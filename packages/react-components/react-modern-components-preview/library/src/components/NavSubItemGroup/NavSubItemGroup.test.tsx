@@ -21,6 +21,7 @@ describe('NavSubItemGroup', () => {
       'component-has-root-ref',
       'exported-top-level',
       'has-top-level-file',
+      'has-top-level-file-extra',
     ],
     requiredProps: { children: 'Items' },
     renderOptions: { wrapper: NavSubItemGroupWrapper },

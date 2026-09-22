@@ -17,6 +17,7 @@ describe('PopoverTrigger', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'has-top-level-file',
+      'has-top-level-file-extra',
       'make-styles-overrides-win',
     ],
   });

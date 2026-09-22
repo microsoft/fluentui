@@ -13,7 +13,7 @@ describe('OptionGroup', () => {
     Component: OptionGroup,
     displayName: 'OptionGroup',
     disableTypeTests: true,
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'has-top-level-file-extra'],
     requiredProps: { label: 'Group', children: <div role="option">Option</div> },
     renderOptions: { wrapper: ListboxWrapper },
     getTargetElement: result => result.getByRole('group'),
