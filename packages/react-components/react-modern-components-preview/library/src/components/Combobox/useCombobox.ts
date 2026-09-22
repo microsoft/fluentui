@@ -7,7 +7,7 @@ import {
   useComboboxContextValues,
   useComboboxFilter,
 } from '@fluentui/react-headless-components-preview/combobox';
-import { Listbox } from '../Listbox/Listbox';
+import { Listbox } from '../Dropdown/Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
 export { useComboboxContextValues, useComboboxFilter };

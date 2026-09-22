@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU, Overflow, overflowClassNames } from './index';
+import { DATA_OVERFLOWING, DATA_OVERFLOW_MENU, Overflow, overflowClassNames } from './';
 
 describe('Overflow', () => {
   isConformant({

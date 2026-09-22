@@ -1,0 +1,29 @@
+.drawerHeader {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  padding: var(--spacingVerticalXXL) var(--spacingHorizontalXXL) var(--spacingVerticalS);
+  gap: var(--spacingHorizontalS);
+}
+
+.drawerHeader[data-scroll-state]:not([data-scroll-state='none'])::after {
+  position: absolute;
+  inset-inline: 0;
+  block-size: 1px;
+  content: '';
+  background-color: var(--colorNeutralStroke1);
+  opacity: 0;
+  transition-duration: var(--durationNormal);
+  transition-property: opacity;
+  transition-timing-function: var(--curveEasyEase);
+  inset-block-end: 0;
+}
+
+.drawerHeader:is([data-scroll-state='middle'], [data-scroll-state='bottom'])::after {
+  opacity: 1;
+}

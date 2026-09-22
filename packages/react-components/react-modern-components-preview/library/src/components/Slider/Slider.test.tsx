@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Slider, sliderClassNames } from './index';
+import { Slider, sliderClassNames } from './';
 
 describe('Slider', () => {
   it('renders visual defaults and stable class names', () => {

@@ -1,0 +1,153 @@
+.menuItem {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: start;
+  box-sizing: border-box;
+  min-block-size: 32px;
+  max-inline-size: 290px;
+  padding: var(--spacingVerticalSNudge);
+  border-radius: var(--borderRadiusMedium);
+  color: var(--colorNeutralForeground2);
+  background-color: var(--colorNeutralBackground1);
+  cursor: pointer;
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  gap: 4px;
+  user-select: none;
+
+  &:focus-visible {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: -2px;
+  }
+
+  &:not([data-disabled]):is(:hover, [data-submenu-open]) {
+    color: var(--colorNeutralForeground2Hover);
+    background-color: var(--colorNeutralBackground1Hover);
+  }
+
+  &:not([data-disabled]):hover:active {
+    color: var(--colorNeutralForeground2Pressed);
+    background-color: var(--colorNeutralBackground1Pressed);
+  }
+
+  &:not([data-disabled]):is(:hover, [data-submenu-open]) :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  &:not([data-disabled]):is(:hover, [data-submenu-open]) :global(.fui-Icon-regular) {
+    display: none;
+  }
+
+  &:not([data-disabled]):is(:hover, [data-submenu-open]) .icon {
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+
+  &[data-disabled] {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  &[data-disabled]:hover {
+    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--colorNeutralBackground1);
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding-inline: 2px;
+  background-color: var(--colorTransparentBackground);
+}
+
+.multilineContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondaryContent {
+  padding-inline: 2px;
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase200);
+  line-height: var(--lineHeightBase300);
+}
+
+.icon,
+.submenuIndicator {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  inline-size: 20px;
+  block-size: 20px;
+  font-size: 20px;
+  line-height: 0;
+}
+
+.submenuIndicator [data-default-submenu-indicator] {
+  inline-size: 7px;
+  block-size: 7px;
+  border-inline-end: var(--strokeWidthThin) solid currentcolor;
+  border-block-end: var(--strokeWidthThin) solid currentcolor;
+  transform: rotate(-45deg);
+}
+
+.checkmark {
+  position: relative;
+  flex-shrink: 0;
+  inline-size: 16px;
+  block-size: 16px;
+  margin-block-start: 2px;
+  visibility: hidden;
+
+  .menuItem[data-checked] & {
+    visibility: visible;
+  }
+
+  .menuItem[data-checked] [data-default-checkmark]::before {
+    position: absolute;
+    inset-block-start: 1px;
+    inset-inline-start: 4px;
+    inline-size: 6px;
+    block-size: 10px;
+    border-inline-end: var(--strokeWidthThick) solid currentcolor;
+    border-block-end: var(--strokeWidthThick) solid currentcolor;
+    content: '';
+    transform: rotate(45deg);
+  }
+}
+
+.subText {
+  color: var(--colorNeutralForeground3);
+  font-size: var(--fontSizeBase100);
+  line-height: var(--lineHeightBase100);
+}
+
+.menuItem:not([data-disabled]):is(:hover, [data-submenu-open]) .subText {
+  color: var(--colorNeutralForeground3Hover);
+}
+
+.menuItem:not([data-disabled]):hover:active .subText {
+  color: var(--colorNeutralForeground3Pressed);
+}
+
+.menuItem[data-disabled] :is(.secondaryContent, .subText) {
+  color: var(--colorNeutralForegroundDisabled);
+}
+
+.centeredSlot {
+  align-self: center;
+}
+
+@media (forced-colors: active) {
+  .menuItem:not([data-disabled]):is(:hover, [data-submenu-open]) {
+    color: Highlight;
+    background-color: Canvas;
+    outline-color: Highlight;
+  }
+
+  .menuItem[data-disabled],
+  .menuItem[data-disabled] :is(.icon, .secondaryContent, .subText) {
+    color: GrayText;
+  }
+}

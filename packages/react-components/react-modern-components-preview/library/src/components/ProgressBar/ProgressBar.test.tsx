@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, renderHook } from '@testing-library/react';
-import { ProgressBar, progressBarClassNames } from './index';
+import { ProgressBar, progressBarClassNames } from './';
 import { useProgressBar } from './useProgressBar';
 
 describe('ProgressBar', () => {

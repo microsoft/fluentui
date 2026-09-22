@@ -6,14 +6,14 @@ export {
   useBreadcrumbContext,
   useBreadcrumbContextValues,
   useBreadcrumbStyles,
-} from './components/Breadcrumb/index';
+} from './components/Breadcrumb/Breadcrumb/index';
 export type {
   BreadcrumbContextValues,
   BreadcrumbProps,
   BreadcrumbSize,
   BreadcrumbSlots,
   BreadcrumbState,
-} from './components/Breadcrumb/index';
+} from './components/Breadcrumb/Breadcrumb/index';
 
 export {
   BreadcrumbItem,
@@ -21,8 +21,12 @@ export {
   renderBreadcrumbItem,
   useBreadcrumbItem,
   useBreadcrumbItemStyles,
-} from './components/BreadcrumbItem/index';
-export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './components/BreadcrumbItem/index';
+} from './components/Breadcrumb/BreadcrumbItem/index';
+export type {
+  BreadcrumbItemProps,
+  BreadcrumbItemSlots,
+  BreadcrumbItemState,
+} from './components/Breadcrumb/BreadcrumbItem/index';
 
 export {
   BreadcrumbButton,
@@ -30,12 +34,12 @@ export {
   renderBreadcrumbButton,
   useBreadcrumbButton,
   useBreadcrumbButtonStyles,
-} from './components/BreadcrumbButton/index';
+} from './components/Breadcrumb/BreadcrumbButton/index';
 export type {
   BreadcrumbButtonProps,
   BreadcrumbButtonSlots,
   BreadcrumbButtonState,
-} from './components/BreadcrumbButton/index';
+} from './components/Breadcrumb/BreadcrumbButton/index';
 
 export {
   BreadcrumbDivider,
@@ -43,9 +47,9 @@ export {
   renderBreadcrumbDivider,
   useBreadcrumbDivider,
   useBreadcrumbDividerStyles,
-} from './components/BreadcrumbDivider/index';
+} from './components/Breadcrumb/BreadcrumbDivider/index';
 export type {
   BreadcrumbDividerProps,
   BreadcrumbDividerSlots,
   BreadcrumbDividerState,
-} from './components/BreadcrumbDivider/index';
+} from './components/Breadcrumb/BreadcrumbDivider/index';

@@ -1,0 +1,9 @@
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menuListWithContext {
+  block-size: 100%;
+}

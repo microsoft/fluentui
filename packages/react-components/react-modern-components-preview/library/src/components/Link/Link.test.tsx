@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Link, LinkContextProvider, linkClassNames } from './index';
+import { Link, LinkContextProvider, linkClassNames } from './';
 
 describe('Link', () => {
   it('renders as a button with default visual state', () => {

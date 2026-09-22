@@ -1,0 +1,16 @@
+.menuPopover {
+  box-sizing: border-box;
+  inline-size: max-content;
+  min-inline-size: 138px;
+  max-inline-size: 300px;
+  padding: 4px;
+  overflow-x: hidden;
+  border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  border-radius: var(--borderRadiusMedium);
+  color: var(--colorNeutralForeground1);
+  background-color: var(--colorNeutralBackground1);
+  box-shadow: var(--shadow16);
+  font-family: var(--fontFamilyBase);
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+}

@@ -7,5 +7,5 @@ export {
   useFieldContextValues,
   useFieldControlProps,
   useFieldStyles,
-} from './components/Field';
-export type { FieldProps, FieldSlots, FieldState } from './components/Field';
+} from './components/Field/index';
+export type { FieldProps, FieldSlots, FieldState } from './components/Field/index';

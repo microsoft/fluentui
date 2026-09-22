@@ -1,51 +1,14 @@
 export {
   Dialog,
-  dialogActionsClassNames,
-  DialogActions,
-  dialogBodyClassNames,
-  DialogBody,
-  dialogHeaderClassNames,
-  DialogHeader,
-  dialogSurfaceClassNames,
-  DialogSurface,
-  dialogTitleClassNames,
-  DialogTitle,
-  DialogTrigger,
   renderDialog,
-  renderDialogActions,
-  renderDialogBody,
-  renderDialogHeader,
-  renderDialogSurface,
-  renderDialogTitle,
   useDialog,
-  useDialogActions,
-  useDialogActionsStyles,
-  useDialogBody,
-  useDialogBodyStyles,
-  useDialogContext,
   useDialogContextValues,
-  useDialogHeader,
-  useDialogHeaderStyles,
-  useDialogSurface,
+  useDialogContext,
   useDialogSurfaceContext,
-  useDialogSurfaceStyles,
-  useDialogTitle,
-  useDialogTitleStyles,
-  useDialogTrigger,
-} from './components/Dialog';
+} from './components/Dialog/Dialog/index';
 export type {
-  DialogActionsPosition,
-  DialogActionsProps,
-  DialogActionsSlots,
-  DialogActionsState,
-  DialogBodyProps,
-  DialogBodySlots,
-  DialogBodyState,
   DialogContextValue,
   DialogContextValues,
-  DialogHeaderProps,
-  DialogHeaderSlots,
-  DialogHeaderState,
   DialogModalType,
   DialogOpenChangeData,
   DialogOpenChangeEvent,
@@ -54,13 +17,65 @@ export type {
   DialogSlots,
   DialogState,
   DialogSurfaceContextValue,
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-  DialogTitleProps,
-  DialogTitleSlots,
-  DialogTitleState,
+} from './components/Dialog/Dialog/index';
+
+export { DialogTrigger, useDialogTrigger } from './components/Dialog/DialogTrigger/index';
+export type {
   DialogTriggerAction,
   DialogTriggerProps,
   DialogTriggerState,
-} from './components/Dialog';
+} from './components/Dialog/DialogTrigger/index';
+
+export {
+  DialogSurface,
+  renderDialogSurface,
+  useDialogSurface,
+  dialogSurfaceClassNames,
+  useDialogSurfaceStyles,
+} from './components/Dialog/DialogSurface/index';
+export type {
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+} from './components/Dialog/DialogSurface/index';
+
+export {
+  DialogTitle,
+  renderDialogTitle,
+  useDialogTitle,
+  dialogTitleClassNames,
+  useDialogTitleStyles,
+} from './components/Dialog/DialogTitle/index';
+export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './components/Dialog/DialogTitle/index';
+
+export {
+  DialogHeader,
+  renderDialogHeader,
+  useDialogHeader,
+  dialogHeaderClassNames,
+  useDialogHeaderStyles,
+} from './components/Dialog/DialogHeader/index';
+export type { DialogHeaderProps, DialogHeaderSlots, DialogHeaderState } from './components/Dialog/DialogHeader/index';
+
+export {
+  DialogBody,
+  renderDialogBody,
+  useDialogBody,
+  dialogBodyClassNames,
+  useDialogBodyStyles,
+} from './components/Dialog/DialogBody/index';
+export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './components/Dialog/DialogBody/index';
+
+export {
+  DialogActions,
+  renderDialogActions,
+  useDialogActions,
+  dialogActionsClassNames,
+  useDialogActionsStyles,
+} from './components/Dialog/DialogActions/index';
+export type {
+  DialogActionsPosition,
+  DialogActionsProps,
+  DialogActionsSlots,
+  DialogActionsState,
+} from './components/Dialog/DialogActions/index';

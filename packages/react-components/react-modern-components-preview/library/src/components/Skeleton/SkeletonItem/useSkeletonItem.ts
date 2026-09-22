@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useSkeletonItem as useSkeletonItemBase } from '@fluentui/react-headless-components-preview/skeleton';
-import { useSkeletonVisualContext } from '../SkeletonContext';
+import { useSkeletonVisualContext } from '../Skeleton/SkeletonContext';
 import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
 
 /**

@@ -1,0 +1,65 @@
+.switchIndicator {
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  inline-size: 40px;
+  block-size: 20px;
+  margin-inline-end: var(--spacingHorizontalXS);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  border-radius: var(--borderRadiusCircular);
+  color: var(--colorNeutralStrokeAccessible);
+  line-height: 0;
+  transition-duration: var(--durationNormal);
+  transition-property: background-color, border-color, color;
+  transition-timing-function: var(--curveEasyEase);
+
+  &:hover {
+    color: var(--colorNeutralStrokeAccessibleHover);
+    border-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  &:hover:active {
+    color: var(--colorNeutralStrokeAccessiblePressed);
+    border-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  [data-default-switch-thumb] {
+    position: absolute;
+    inset-block-start: 1px;
+    inset-inline-start: 1px;
+    inline-size: 16px;
+    block-size: 16px;
+    border-radius: var(--borderRadiusCircular);
+    background-color: currentcolor;
+    transition-duration: var(--durationNormal);
+    transition-property: transform;
+    transition-timing-function: var(--curveEasyEase);
+  }
+}
+
+.switchIndicatorChecked {
+  color: var(--colorNeutralForegroundInverted);
+  border-color: var(--colorTransparentStroke);
+  background-color: var(--colorCompoundBrandBackground);
+
+  &:hover {
+    color: var(--colorNeutralForegroundInverted);
+    border-color: var(--colorTransparentStrokeInteractive);
+    background-color: var(--colorCompoundBrandBackgroundHover);
+  }
+
+  &:hover:active {
+    background-color: var(--colorCompoundBrandBackgroundPressed);
+  }
+
+  & [data-default-switch-thumb] {
+    transform: translateX(20px);
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .switchIndicator,
+  .switchIndicator [data-default-switch-thumb] {
+    transition-duration: 0.01ms;
+  }
+}

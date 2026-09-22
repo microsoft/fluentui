@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Label, labelClassNames } from './index';
+import { Label, labelClassNames } from './';
 
 describe('Label', () => {
   it('renders with default visual state', () => {

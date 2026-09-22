@@ -1,0 +1,30 @@
+.drawerFooter {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  padding: var(--spacingVerticalL) var(--spacingHorizontalXXL) var(--spacingVerticalXXL);
+  column-gap: var(--spacingHorizontalS);
+}
+
+.drawerFooter[data-scroll-state]:not([data-scroll-state='none'])::before {
+  position: absolute;
+  inset-inline: 0;
+  block-size: 1px;
+  content: '';
+  background-color: var(--colorNeutralStroke1);
+  opacity: 0;
+  transition-duration: var(--durationNormal);
+  transition-property: opacity;
+  transition-timing-function: var(--curveEasyEase);
+  inset-block-start: 0;
+}
+
+.drawerFooter:is([data-scroll-state='middle'], [data-scroll-state='top'])::before {
+  opacity: 1;
+}

@@ -1,21 +1,18 @@
 export {
   Skeleton,
-  SkeletonItem,
   renderSkeleton,
-  renderSkeletonItem,
-  skeletonClassNames,
-  skeletonItemClassNames,
   useSkeleton,
   useSkeletonContextValues,
-  useSkeletonItem,
-  useSkeletonItemStyles,
+  skeletonClassNames,
   useSkeletonStyles,
-} from './components/Skeleton/index';
-export type {
-  SkeletonSlots,
-  SkeletonProps,
-  SkeletonState,
-  SkeletonItemSlots,
-  SkeletonItemProps,
-  SkeletonItemState,
-} from './components/Skeleton/index';
+} from './components/Skeleton/Skeleton/index';
+export type { SkeletonSlots, SkeletonProps, SkeletonState } from './components/Skeleton/Skeleton/index';
+
+export {
+  SkeletonItem,
+  renderSkeletonItem,
+  useSkeletonItem,
+  skeletonItemClassNames,
+  useSkeletonItemStyles,
+} from './components/Skeleton/SkeletonItem/index';
+export type { SkeletonItemSlots, SkeletonItemProps, SkeletonItemState } from './components/Skeleton/SkeletonItem/index';

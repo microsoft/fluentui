@@ -1,0 +1,47 @@
+.overlayDrawer {
+  position: fixed;
+  inset-block: 0;
+  padding: 0;
+  margin: 0;
+  border-block-start: 0;
+  border-block-end: 0;
+  border-radius: 0;
+  outline-style: none;
+
+  &[data-position='bottom'] {
+    inset-block-start: auto;
+    inline-size: 100vw;
+    block-size: var(--fui-Drawer--size, 320px);
+  }
+
+  &:not([data-open]) {
+    display: none;
+    pointer-events: none;
+  }
+
+  &::backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: var(--colorBackgroundOverlay);
+  }
+
+  &:is(:focus, :focus-visible) {
+    outline-style: none;
+  }
+
+  &[data-fui-focus-visible]::after {
+    position: absolute;
+    z-index: 1;
+    inset: -2px;
+    pointer-events: none;
+    content: '';
+    border: 2px solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+}
+
+@media (forced-colors: active) {
+  .overlayDrawer[data-fui-focus-visible]::after {
+    border-color: Highlight;
+  }
+}

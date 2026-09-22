@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Tag } from '../Tag';
-import { TagGroup, tagGroupClassNames } from './index';
+import { TagGroup, tagGroupClassNames } from './';
 
 describe('TagGroup', () => {
   it('has the expected display name and forwards its ref', () => {

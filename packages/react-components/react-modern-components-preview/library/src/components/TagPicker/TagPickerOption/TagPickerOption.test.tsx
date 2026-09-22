@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { TagPicker } from '../TagPicker';
+import { TagPicker } from '../TagPicker/TagPicker';
 import { TagPickerButton } from '../TagPickerButton';
 import { TagPickerList } from '../TagPickerList';
-import { TagPickerOption, tagPickerOptionClassNames } from './index';
+import { TagPickerOption, tagPickerOptionClassNames } from './';
 
 describe('TagPickerOption', () => {
   it('renders slots, stable classes, and consumer classes', () => {

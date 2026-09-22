@@ -6,29 +6,35 @@ export {
   useCardContext,
   useCardContextValue,
   useCardStyles,
-} from './components/Card';
-export type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots, CardState } from './components/Card';
+} from './components/Card/Card/index';
+export type {
+  CardContextValue,
+  CardOnSelectionChangeEvent,
+  CardProps,
+  CardSlots,
+  CardState,
+} from './components/Card/Card/index';
 export {
   CardHeader,
   cardHeaderClassNames,
   renderCardHeader,
   useCardHeader,
   useCardHeaderStyles,
-} from './components/CardHeader';
-export type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './components/CardHeader';
+} from './components/Card/CardHeader/index';
+export type { CardHeaderProps, CardHeaderSlots, CardHeaderState } from './components/Card/CardHeader/index';
 export {
   CardFooter,
   cardFooterClassNames,
   renderCardFooter,
   useCardFooter,
   useCardFooterStyles,
-} from './components/CardFooter';
-export type { CardFooterProps, CardFooterSlots, CardFooterState } from './components/CardFooter';
+} from './components/Card/CardFooter/index';
+export type { CardFooterProps, CardFooterSlots, CardFooterState } from './components/Card/CardFooter/index';
 export {
   CardPreview,
   cardPreviewClassNames,
   renderCardPreview,
   useCardPreview,
   useCardPreviewStyles,
-} from './components/CardPreview';
-export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './components/CardPreview';
+} from './components/Card/CardPreview/index';
+export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './components/Card/CardPreview/index';

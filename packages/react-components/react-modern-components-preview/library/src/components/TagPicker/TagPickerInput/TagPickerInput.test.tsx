@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { TagPicker } from '../TagPicker';
-import { TagPickerInput, tagPickerInputClassNames } from './index';
+import { TagPicker } from '../TagPicker/TagPicker';
+import { TagPickerInput, tagPickerInputClassNames } from './';
 
 describe('TagPickerInput', () => {
   it('renders inherited size, stable classes, and forwards its ref', () => {
