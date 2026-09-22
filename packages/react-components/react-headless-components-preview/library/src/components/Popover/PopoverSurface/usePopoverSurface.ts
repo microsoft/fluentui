@@ -2,6 +2,7 @@
 
 import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -11,7 +12,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
  */
 export const usePopoverSurface = (
   props: PopoverSurfaceProps,
-  ref: React.Ref<HTMLDialogElement>,
+  ref: React.Ref<HTMLDialogElement | HTMLDivElement>,
 ): PopoverSurfaceState => {
   const contentRef = usePopoverContext(context => context.contentRef);
   const openOnHover = usePopoverContext(context => context.openOnHover);
@@ -22,16 +23,24 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const { as, ...surfaceProps } = props as PopoverSurfaceProps & { as?: 'dialog' | 'div' };
+
+  if (process.env.NODE_ENV !== 'production' && as !== undefined) {
+    // eslint-disable-next-line no-console
+    console.warn('PopoverSurface does not support `as`. Its root element is determined by Popover `trapFocus`.');
+  }
+
+  const elementType = trapFocus ? 'dialog' : 'div';
 
   const state: PopoverSurfaceState = {
     withArrow,
     arrowRef,
-    components: { root: 'dialog' },
+    components: { root: elementType },
     root: slot.always(
       {
-        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef) as React.Ref<HTMLDialogElement>,
-        role: trapFocus ? 'dialog' : 'group',
-        ...props,
+        ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
+        role: trapFocus ? undefined : 'group',
+        ...surfaceProps,
         id: surfaceId,
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),
@@ -40,22 +49,22 @@ export const usePopoverSurface = (
         defaultProps: {
           popover: trapFocus ? undefined : 'auto',
         },
-        elementType: 'dialog',
+        elementType,
       },
-    ),
-    'data-open': open ? 'true' : 'false',
+    ) as ExtractSlotProps<PopoverSurfaceState['root']>,
   };
 
-  const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
+  const onMouseEnterOriginal = state.root.onMouseEnter as React.MouseEventHandler<HTMLElement> | undefined;
+  const onMouseLeaveOriginal = state.root.onMouseLeave as React.MouseEventHandler<HTMLElement> | undefined;
 
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
+  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
     onMouseEnterOriginal?.(e);
   });
 
-  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDialogElement>) => {
+  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }

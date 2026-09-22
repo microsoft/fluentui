@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
+import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 describe('PopoverSurface', () => {
   it('renders surface content', () => {
@@ -28,7 +29,39 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group', { hidden: true })).toBeInTheDocument();
+    expect(getByRole('group', { hidden: true }).tagName).toBe('DIV');
+  });
+
+  it('renders a dialog when focus trapping is enabled', () => {
+    const { getByRole } = render(
+      <Popover defaultOpen trapFocus>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
+  });
+
+  it('does not allow the root element to conflict with focus trapping', () => {
+    const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+
+    const { getByRole } = render(
+      <Popover defaultOpen trapFocus>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface {...({ as: 'div' } as PopoverSurfaceProps)}>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
+    expect(consoleWarn).toHaveBeenCalledWith(
+      'PopoverSurface does not support `as`. Its root element is determined by Popover `trapFocus`.',
+    );
+    consoleWarn.mockRestore();
   });
 
   it('has data-open attribute when open', () => {

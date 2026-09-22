@@ -4,18 +4,33 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 /**
  * PopoverSurface Slots.
  *
- * The root renders as a native `<dialog popover="auto">` so a single element
- * supports both show modes: `showPopover()` for non-modal (default) and
- * `showModal()` for the modal/focus-trap path.
+ * The root renders as a native `<div popover="auto">` for non-modal surfaces
+ * and as a `<dialog>` for the modal/focus-trap path.
  */
 export type PopoverSurfaceSlots = {
-  root: Slot<'dialog'>;
+  root: Slot<'dialog', 'div'>;
 };
 
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
+export type PopoverSurfaceProps = Omit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
 
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
+  /**
+   * Indicates whether the popover surface has an arrow.
+   */
   withArrow: boolean | undefined;
+  /**
+   * A ref pointing to the popover surface arrow element.
+   */
   arrowRef: React.RefObject<HTMLDivElement | null>;
-  'data-open': string;
+  root: {
+    /**
+     * Indicates whether the popover surface is open.
+     */
+    'data-open'?: string;
+
+    /**
+     * Indicates that the element is a popover surface.
+     */
+    'data-popover-surface'?: string;
+  };
 };
