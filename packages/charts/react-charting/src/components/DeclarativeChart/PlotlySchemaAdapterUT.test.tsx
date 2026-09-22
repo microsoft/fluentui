@@ -286,6 +286,18 @@ describe('transform Plotly Json To chart Props', () => {
     expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
   });
 
+  test('normalizeObjectArrayForGVBC - creates null-prototype intermediate dictionaries', () => {
+    const createSpy = jest.spyOn(Object, 'create');
+
+    try {
+      normalizeObjectArrayForGVBC([{ value: 1 }]);
+
+      expect(createSpy).toHaveBeenCalledWith(null);
+    } finally {
+      createSpy.mockRestore();
+    }
+  });
+
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {

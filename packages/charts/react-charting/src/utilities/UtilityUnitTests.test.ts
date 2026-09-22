@@ -645,6 +645,12 @@ describe('calloutData', () => {
   });
 });
 
+it('should return a null-prototype grouping object', () => {
+  const result = utils.calloutData([{ legend: 'Line 1', data: [{ x: 10, y: 20 }] }]);
+
+  expect(Object.getPrototypeOf(result)).toBeNull();
+});
+
 test(`getUnique should return an array of data points with unique values
 determined by the provided comparison key`, () => {
   const arr = [
