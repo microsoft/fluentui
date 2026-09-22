@@ -432,7 +432,7 @@ export const useTeachingPopoverHeader: (props: TeachingPopoverHeaderProps, ref: 
 export const useTeachingPopoverHeaderStyles: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
 
 // @public
-export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => TeachingPopoverSurfaceState;
+export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => TeachingPopoverSurfaceState;
 
 // @public (undocumented)
 export const useTeachingPopoverSurfaceStyles: (state: TeachingPopoverSurfaceState) => TeachingPopoverSurfaceState;

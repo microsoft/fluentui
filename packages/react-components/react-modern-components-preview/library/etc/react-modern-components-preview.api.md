@@ -4922,7 +4922,7 @@ export { usePopoverContext }
 export { usePopoverContextValues }
 
 // @public
-const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => PopoverSurfaceState;
+const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;
 export { usePopoverSurface }
 export { usePopoverSurface as useTeachingPopoverSurface }
 

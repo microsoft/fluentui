@@ -114,7 +114,7 @@ export { usePopoverContext }
 export { usePopoverContextValues }
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => PopoverSurfaceState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;
 
 // @public
 export const usePopoverSurfaceStyles: (state: PopoverSurfaceState) => PopoverSurfaceState;

@@ -10,7 +10,7 @@ import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.
 /** Create the state required to render PopoverSurface. */
 export const usePopoverSurface = (
   props: PopoverSurfaceProps,
-  ref: React.Ref<HTMLDialogElement>,
+  ref: React.Ref<HTMLDialogElement | HTMLDivElement>,
 ): PopoverSurfaceState => {
   const state = usePopoverSurfaceBase(props, ref);
   const { appearance, size } = usePopoverAppearanceContext();

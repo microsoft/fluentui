@@ -64,6 +64,21 @@ describe('PopoverSurface', () => {
   it('forwards its ref to the native dialog surface', () => {
     const ref = React.createRef<HTMLDialogElement>();
     const { getByRole } = render(
+      <Popover defaultOpen trapFocus>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface ref={ref}>Popover content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(ref.current).toBe(getByRole('dialog', { hidden: true }));
+    expect(ref.current?.tagName).toBe('DIALOG');
+  });
+
+  it('forwards its ref to the native div surface when focus trapping is disabled', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByRole } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
           <button>Trigger</button>
@@ -73,6 +88,6 @@ describe('PopoverSurface', () => {
     );
 
     expect(ref.current).toBe(getByRole('group', { hidden: true }));
-    expect(ref.current?.tagName).toBe('DIALOG');
+    expect(ref.current?.tagName).toBe('DIV');
   });
 });
