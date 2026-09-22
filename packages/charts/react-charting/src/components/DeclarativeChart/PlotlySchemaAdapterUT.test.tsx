@@ -23,6 +23,7 @@ import {
   getNumberAtIndexOrDefault,
   getValidXYRanges,
   resolveXAxisPoint,
+  normalizeObjectArrayForGVBC,
   NON_PLOT_KEY_PREFIX,
   SINGLE_REPEAT,
 } from './PlotlySchemaAdapter';
@@ -214,6 +215,33 @@ describe('transform Plotly Json To chart Props', () => {
     ).toMatchSnapshot();
   });
 
+  test('transformPlotlyJsonToDonutProps - treats prototype field names as ordinary legends', () => {
+    const plotlySchema: PlotlySchema = {
+      data: [
+        {
+          type: 'pie',
+          labels: ['__proto__', 'constructor', 'prototype'],
+          values: [30, 20, 10],
+        },
+      ],
+      layout: {},
+    };
+
+    const objectConstructor = Object as unknown as Record<string, unknown>;
+    expect(objectConstructor.data).toBeUndefined();
+
+    const result = transformPlotlyJsonToDonutProps(plotlySchema, false, { current: colorMap }, 'default', true);
+
+    expect(result.data?.chartData).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ legend: '__proto__', data: 30 }),
+        expect.objectContaining({ legend: 'constructor', data: 20 }),
+        expect.objectContaining({ legend: 'prototype', data: 10 }),
+      ]),
+    );
+    expect(objectConstructor.data).toBeUndefined();
+  });
+
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
     expect(
@@ -237,6 +265,25 @@ describe('transform Plotly Json To chart Props', () => {
     expect(
       transformPlotlyJsonToGVBCProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
+  });
+
+  test('normalizeObjectArrayForGVBC - treats prototype field names as ordinary properties', () => {
+    const data = JSON.parse('{"__proto__":7,"constructor":8,"prototype":9,"nested":{"__proto__":10}}') as Record<
+      string,
+      unknown
+    >;
+
+    const result = normalizeObjectArrayForGVBC([data]);
+
+    expect(result.traces).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: '__proto__', y: [7] }),
+        expect.objectContaining({ name: 'constructor', y: [8] }),
+        expect.objectContaining({ name: 'prototype', y: [9] }),
+        expect.objectContaining({ name: 'nested.__proto__', y: [10] }),
+      ]),
+    );
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, 'data')).toBe(false);
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
