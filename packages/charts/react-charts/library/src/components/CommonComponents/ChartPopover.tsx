@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
@@ -32,12 +33,11 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
       height: 0,
     }),
   };
-  const target =
-    typeof props.positioning === 'object' && 'target' in props.positioning
-      ? props.positioning.target !== null
-        ? props.positioning.target
-        : virtualElement
-      : virtualElement;
+  const callerPositioning = {
+    ...resolvePositioningShorthand(props.positioning),
+    ...resolvePositioningShorthand(props.customCallout?.customCalloutProps?.positioning),
+  };
+  const target = callerPositioning.target ?? virtualElement;
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
@@ -45,7 +45,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   return (
     <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
-        positioning={{ target, autoSize: 'always', offset: 20, coverTarget: false }}
+        positioning={{ autoSize: 'always', offset: 20, coverTarget: false, ...callerPositioning, target }}
         open={props.isPopoverOpen}
         inline
       >

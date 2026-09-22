@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: ChartPopover honors caller positioning and DonutChart forwards calloutProps",
+  "packageName": "@fluentui/react-charts",
+  "email": "cam.w.bloomfield@gmail.com"
+}
