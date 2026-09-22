@@ -7,6 +7,7 @@
 import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -264,7 +265,7 @@ export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps>;
 
 // @public (undocumented)
-export type TeachingPopoverSurfaceProps = Omit<ComponentProps<TeachingPopoverSurfaceSlots>, 'as'>;
+export type TeachingPopoverSurfaceProps = DistributiveOmit<ComponentProps<TeachingPopoverSurfaceSlots>, 'as'>;
 
 // @public
 export type TeachingPopoverSurfaceSlots = {

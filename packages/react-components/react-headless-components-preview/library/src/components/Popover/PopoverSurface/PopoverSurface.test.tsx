@@ -46,8 +46,6 @@ describe('PopoverSurface', () => {
   });
 
   it('does not allow the root element to conflict with focus trapping', () => {
-    const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
-
     const { getByRole } = render(
       <Popover defaultOpen trapFocus>
         <PopoverTrigger>
@@ -58,10 +56,6 @@ describe('PopoverSurface', () => {
     );
 
     expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
-    expect(consoleWarn).toHaveBeenCalledWith(
-      'PopoverSurface does not support `as`. Its root element is determined by Popover `trapFocus`.',
-    );
-    consoleWarn.mockRestore();
   });
 
   it('has data-open attribute when open', () => {

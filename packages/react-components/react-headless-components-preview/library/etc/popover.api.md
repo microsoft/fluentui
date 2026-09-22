@@ -8,6 +8,7 @@ import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -81,7 +82,7 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & 
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
 // @public (undocumented)
-export type PopoverSurfaceProps = Omit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
+export type PopoverSurfaceProps = DistributiveOmit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
 
 // @public
 export type PopoverSurfaceSlots = {

@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributiveOmit, Slot } from '@fluentui/react-utilities';
 
 /**
  * PopoverSurface Slots.
@@ -11,7 +11,7 @@ export type PopoverSurfaceSlots = {
   root: Slot<'dialog', 'div'>;
 };
 
-export type PopoverSurfaceProps = Omit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
+export type PopoverSurfaceProps = DistributiveOmit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
 
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
   /**
@@ -22,6 +22,7 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
    * A ref pointing to the popover surface arrow element.
    */
   arrowRef: React.RefObject<HTMLDivElement | null>;
+
   root: {
     /**
      * Indicates whether the popover surface is open.

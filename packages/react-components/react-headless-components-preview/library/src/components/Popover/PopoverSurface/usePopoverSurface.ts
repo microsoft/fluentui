@@ -2,7 +2,6 @@
 
 import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -23,12 +22,6 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
-  const { as, ...surfaceProps } = props as PopoverSurfaceProps & { as?: 'dialog' | 'div' };
-
-  if (process.env.NODE_ENV !== 'production' && as !== undefined) {
-    // eslint-disable-next-line no-console
-    console.warn('PopoverSurface does not support `as`. Its root element is determined by Popover `trapFocus`.');
-  }
 
   const elementType = trapFocus ? 'dialog' : 'div';
 
@@ -40,7 +33,8 @@ export const usePopoverSurface = (
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
         role: trapFocus ? undefined : 'group',
-        ...surfaceProps,
+        ...props,
+        as: undefined,
         id: surfaceId,
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),
@@ -51,20 +45,19 @@ export const usePopoverSurface = (
         },
         elementType,
       },
-    ) as ExtractSlotProps<PopoverSurfaceState['root']>,
+    ) as PopoverSurfaceState['root'],
   };
 
-  const onMouseEnterOriginal = state.root.onMouseEnter as React.MouseEventHandler<HTMLElement> | undefined;
-  const onMouseLeaveOriginal = state.root.onMouseLeave as React.MouseEventHandler<HTMLElement> | undefined;
+  const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
 
-  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
     onMouseEnterOriginal?.(e);
   });
 
-  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  state.root.onMouseLeave = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, false);
     }
