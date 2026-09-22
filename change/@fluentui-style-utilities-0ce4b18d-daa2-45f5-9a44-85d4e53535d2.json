@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Generate the Fluent CDN default from fluentui-system-icons JSON metadata instead of maintaining it independently.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "martinhochel@microsoft.com"
+}

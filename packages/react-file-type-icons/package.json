@@ -14,13 +14,17 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "yarn run -T just-scripts build",
+    "build": "yarn generate-metadata && yarn run -T just-scripts build",
+    "generate-metadata": "node scripts/generate-file-type-metadata.cjs --project react-file-type-icons",
     "clean": "yarn run -T just-scripts clean"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/style-utilities": "^8.15.2",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/react-icons-file-type": "0.0.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <20.0.0",

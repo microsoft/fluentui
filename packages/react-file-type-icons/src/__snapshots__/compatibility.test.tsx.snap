@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`preserves complete registration keys, image props, subset styles and options 1`] = `"f35e9bb26839b70aefe79473946bc52a1d1b0a2836fa901e0c23de27ad375f79"`;
+
+exports[`preserves props, URLs and exact HTML across the full catalog and density boundaries 1`] = `"685a757010d9f3177831e27622ab4e22ca86e7f040aa3f33ea12ce05ef6320d1"`;
+
+exports[`preserves the enum runtime and member-type contract 1`] = `"3e65b3675c0ab7e0aeb1c3919e91df63481fa2ae684ad5fa576041b5288fd201"`;
