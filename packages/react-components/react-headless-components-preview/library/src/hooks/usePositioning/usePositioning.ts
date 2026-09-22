@@ -1,191 +1,260 @@
 'use client';
 
 import * as React from 'react';
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   PositioningImperativeRef,
-  PositioningShorthandValue,
+  PositioningProps,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type { PositioningProps, PositioningReturn } from './types';
-import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
-import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
-import { usePlacementObserver } from './usePlacementObserver';
+import type { PositioningReturn } from './types';
+import { applyAnchorPositioning } from './applyAnchorPositioning';
+import { preloadFloatingImpl, scheduleApply } from './lazyApply';
 
-export type TargetElement = HTMLElement | PositioningVirtualElement;
+let supportsAnchorCached: boolean | undefined;
 
-const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
+type TargetElement = HTMLElement | PositioningVirtualElement;
 
-const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
+// Set to `true` to force the floating-ui fallback path even in browsers that
+// support CSS Anchor Positioning. Native detection runs when this is `false`.
+const FORCE_FALLBACK_FOR_DEBUG = false;
 
 /**
- * Reads the current anchor-name property from an element and parses it into an array of names.
- * Handles comma-separated values and trimming.
+ * Detects support for CSS Anchor Positioning. The result is stable per page
+ * session, so the first call is memoized at module level.
  */
-const readAnchorNames = (element: HTMLElement): string[] => {
-  return element.style
-    .getPropertyValue('anchor-name')
-    .split(',')
-    .map(name => name.trim())
-    .filter(Boolean);
-};
+function supportsAnchorPositioning(): boolean {
+  if (FORCE_FALLBACK_FOR_DEBUG && process.env.NODE_ENV !== 'test') {
+    return false;
+  }
 
+  if (supportsAnchorCached !== undefined) {
+    return supportsAnchorCached;
+  }
+
+  if (typeof CSS === 'undefined' || typeof CSS.supports !== 'function') {
+    supportsAnchorCached = false;
+  } else {
+    supportsAnchorCached = CSS.supports('anchor-name', '--x');
+  }
+
+  return supportsAnchorCached;
+}
+
+function isHTMLElement(target: TargetElement): target is HTMLElement {
+  return 'nodeType' in target;
+}
+
+/**
+ * CSS Anchor Positioning is the default. These options require information or
+ * behavior that the native API does not currently expose, so they opt into the
+ * lazy floating-ui implementation.
+ */
+function requiresFloatingUI(options: PositioningProps, target?: TargetElement | null): boolean {
+  return Boolean(
+    (target && !isHTMLElement(target)) ||
+      typeof options.offset === 'function' ||
+      options.autoSize ||
+      options.flipBoundary ||
+      options.overflowBoundary ||
+      options.overflowBoundaryPadding !== undefined ||
+      options.useTransform ||
+      options.arrowPadding !== undefined ||
+      options.onPositioningEnd ||
+      options.disableUpdateOnResize ||
+      options.shiftToCoverTarget,
+  );
+}
+
+function getPositioningMode(options: PositioningProps, target?: TargetElement | null): 'anchor' | 'floating' {
+  return supportsAnchorPositioning() && !requiresFloatingUI(options, target) ? 'anchor' : 'floating';
+}
+
+/**
+ * Eagerly loads floating-ui when the browser or requested options require the
+ * fallback. The default CSS Anchor implementation is already available.
+ * Safe to call during SSR.
+ */
+export function preloadPositioning(options: PositioningProps = {}): Promise<unknown> {
+  if (!canUseDOM()) {
+    return Promise.resolve();
+  }
+
+  return getPositioningMode(options, options.target) === 'anchor' ? Promise.resolve() : preloadFloatingImpl();
+}
+
+/**
+ * Resets module-level caches. For tests only.
+ *
+ * @internal
+ */
+export function resetPositioningForTests(): void {
+  supportsAnchorCached = undefined;
+}
+
+/**
+ * Anchors a surface to a target element. Prefers CSS Anchor Positioning when
+ * supported and falls back to a dynamically imported floating-ui implementation.
+ */
 export function usePositioning(options: PositioningProps): PositioningReturn {
-  const {
-    pinned,
-    target: customTarget = null,
-    align: alignInput = ALIGNMENTS.center,
-    position = POSITIONS.above,
-    fallbackPositions = EMPTY_FALLBACK_POSITIONS,
-    offset,
-    coverTarget = false,
-    strategy = 'fixed',
-    matchTargetSize,
-    positioningRef,
-  } = options;
+  'use no memo';
 
-  const align = normalizeAlign(alignInput);
-
-  const { mainAxis, crossAxis } = resolveOffset(offset);
-  const coverAlignment = React.useMemo(
-    () => (coverTarget ? getCoverSelfAlignment(position, align) : null),
-    [coverTarget, position, align],
-  );
-
-  const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
-  const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
-
+  const { dir, targetDocument } = useFluent();
   const anchorName = `--${useId('popover-anchor-')}`;
-  const positionArea = POSITION_AREA_MAP[position][align];
-  const placement = getPlacementString(position, align);
 
-  const { targetDocument } = useFluent();
+  const triggerElRef = React.useRef<HTMLElement | null>(null);
+  const containerElRef = React.useRef<HTMLElement | null>(null);
+  const arrowElRef = React.useRef<HTMLElement | null>(null);
+  const imperativeTargetRef = React.useRef<TargetElement | null>(null);
 
-  const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
-
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
-
-  React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
-    positioningRef,
-    () => ({
-      setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
-      },
-      updatePosition: requestPlacementUpdate,
-    }),
-    [requestPlacementUpdate],
-  );
-
-  useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
-      return;
-    }
-
-    // `anchor-name` is a comma-separated list. Append this instance's name
-    // instead of overwriting so that multiple positioned popovers can share a
-    // single trigger (e.g. a Tooltip on hover and a Menu on click attached to
-    // the same button) without clobbering each other's anchor. On cleanup we
-    // remove only our own name, preserving any others still in use.
-    if (anchorName) {
-      const names = readAnchorNames(effectiveTarget);
-      if (!names.includes(anchorName)) {
-        effectiveTarget.style.setProperty('anchor-name', [...names, anchorName].join(', '));
-      }
-    }
-
-    return () => {
-      if (anchorName) {
-        const remaining = readAnchorNames(effectiveTarget).filter(name => name !== anchorName);
-        if (remaining.length > 0) {
-          effectiveTarget.style.setProperty('anchor-name', remaining.join(', '));
-        } else {
-          effectiveTarget.style.removeProperty('anchor-name');
-        }
-      }
-    };
-  }, [effectiveTarget, anchorName]);
-
-  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
+  // Bumped whenever a ref changes or an imperative update is requested.
+  const [refsVersion, setRefsVersion] = React.useState(0);
+  const bumpRefsVersion = React.useCallback(() => {
+    setRefsVersion(version => version + 1);
   }, []);
 
-  const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
+  const targetRef = React.useCallback<React.RefCallback<HTMLElement>>(
     node => {
-      setContainerEl(node);
-
-      if (!node) {
-        return;
-      }
-
-      node.style.setProperty('position', strategy);
-      node.style.setProperty('inset', 'auto');
-      node.style.setProperty('margin', '0');
-
-      applyOffset(node, position, mainAxis, crossAxis);
-
-      if (matchTargetSize === 'width') {
-        node.style.setProperty('width', 'anchor-size(width)');
-      } else {
-        node.style.removeProperty('width');
-      }
-
-      node.style.setProperty('position-anchor', anchorName);
-      node.setAttribute('data-placement', placement);
-
-      if (coverAlignment) {
-        node.style.setProperty('position-area', 'center');
-        node.style.setProperty('align-self', coverAlignment.alignSelf);
-        node.style.setProperty('justify-self', coverAlignment.justifySelf);
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      node.style.setProperty('position-area', positionArea);
-
-      /*
-       * Workaround for https://crbug.com/438334710: Chromium (<=130-ish) doesn't
-         apply the implicit `anchor-center` self-alignment that the spec defines
-         for single-keyword `position-area` values (`block-start`, `block-end`,
-    `    inline-start`, `inline-end`) or `span-all`.
-      */
-      if (align === ALIGNMENTS.center) {
-        node.style.setProperty('place-self', 'anchor-center');
-      } else {
-        node.style.removeProperty('place-self');
-        node.style.removeProperty('align-self');
-        node.style.removeProperty('justify-self');
-      }
-
-      if (pinned) {
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      if (fallbackAreas.length > 0) {
-        node.style.setProperty('position-try-fallbacks', fallbackAreas.join(', '));
-      } else {
-        node.style.setProperty('position-try-fallbacks', DEFAULT_FLIP.join(', '));
+      if (triggerElRef.current !== node) {
+        triggerElRef.current = node;
+        bumpRefsVersion();
       }
     },
-    [
-      anchorName,
-      positionArea,
-      placement,
-      fallbackAreas,
-      pinned,
+    [bumpRefsVersion],
+  );
+
+  const containerRef = React.useCallback<React.RefCallback<HTMLElement>>(
+    node => {
+      if (containerElRef.current !== node) {
+        containerElRef.current = node;
+        bumpRefsVersion();
+      }
+    },
+    [bumpRefsVersion],
+  );
+
+  const arrowRef = React.useCallback<React.RefCallback<HTMLElement>>(
+    node => {
+      if (arrowElRef.current !== node) {
+        arrowElRef.current = node;
+        bumpRefsVersion();
+      }
+    },
+    [bumpRefsVersion],
+  );
+
+  React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
+    options.positioningRef,
+    () => ({
+      setTarget: (element: HTMLElement | PositioningVirtualElement | null) => {
+        if (imperativeTargetRef.current !== element) {
+          imperativeTargetRef.current = element;
+          bumpRefsVersion();
+        }
+      },
+      updatePosition: bumpRefsVersion,
+    }),
+    [bumpRefsVersion],
+  );
+
+  const customTarget = options.target ?? null;
+  const {
+    position,
+    align,
+    fallbackPositions,
+    offset,
+    coverTarget,
+    strategy,
+    matchTargetSize,
+    pinned,
+    arrowPadding,
+    autoSize,
+    flipBoundary,
+    overflowBoundary,
+    overflowBoundaryPadding,
+    useTransform,
+    onPositioningEnd,
+    disableUpdateOnResize,
+    shiftToCoverTarget,
+  } = options;
+
+  // Snapshot only fields that affect positioning so unrelated options object
+  // identity changes do not re-run the layout effect.
+  const positioningOptions = React.useMemo<PositioningProps>(
+    () => ({
       position,
       align,
-      mainAxis,
-      crossAxis,
-      coverAlignment,
+      fallbackPositions,
+      offset,
+      coverTarget,
       strategy,
       matchTargetSize,
+      pinned,
+      arrowPadding,
+      autoSize,
+      flipBoundary,
+      overflowBoundary,
+      overflowBoundaryPadding,
+      useTransform,
+      onPositioningEnd,
+      disableUpdateOnResize,
+      shiftToCoverTarget,
+    }),
+    [
+      position,
+      align,
+      fallbackPositions,
+      offset,
+      coverTarget,
+      strategy,
+      matchTargetSize,
+      pinned,
+      arrowPadding,
+      autoSize,
+      flipBoundary,
+      overflowBoundary,
+      overflowBoundaryPadding,
+      useTransform,
+      onPositioningEnd,
+      disableUpdateOnResize,
+      shiftToCoverTarget,
     ],
   );
 
-  return { targetRef, containerRef };
+  useIsomorphicLayoutEffect(() => {
+    const container = containerElRef.current;
+    const target = imperativeTargetRef.current ?? customTarget ?? triggerElRef.current;
+
+    if (!container || !target) {
+      return;
+    }
+
+    const arrow = arrowElRef.current;
+    const mode = getPositioningMode(positioningOptions, target);
+    const dispose =
+      mode === 'anchor' && isHTMLElement(target)
+        ? applyAnchorPositioning({
+            target,
+            container,
+            arrow,
+            anchorName,
+            options: positioningOptions,
+            targetDocument,
+            isRtl: dir === 'rtl',
+          })
+        : scheduleApply({
+            target,
+            container,
+            arrow,
+            options: positioningOptions,
+            isRtl: dir === 'rtl',
+          });
+
+    return () => {
+      dispose();
+    };
+  }, [refsVersion, customTarget, anchorName, dir, targetDocument, positioningOptions]);
+
+  return { targetRef, containerRef, arrowRef };
 }
