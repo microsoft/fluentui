@@ -12,6 +12,10 @@ parameters:
 
 variables:
   - template: /.devops/templates/variables/variables.yml@self
+  # Used in the beachball config to trigger logging packages which need prerelease tags
+  - name: RELEASE_VNEXT_OFFICIAL
+    value: 'true'
+    readonly: true
 
 resources:
   repositories:
@@ -28,10 +32,3 @@ extends:
     beachballConfig: scripts/beachball/src/release-vNext.config.js
     nxScope: -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**'
     dryRun: ${{ parameters.dryRun }}
-    # TODO fix post-tagging and verify that the versions used are correct
-    # postPushSteps:
-    # - script: |
-    #     node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
-    #   displayName: Tag prelease packages with prerelease tag
-    #   continueOnError: true
-    #   condition: not(${{ parameters.dryRun }})
