@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tooltip
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.7)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.10.6..@fluentui/react-tooltip_v9.10.7)
+
+### Patches
+
+- fix: hide tooltips only when their trigger is fully clipped, not when portaled content escapes the trigger's clipping boundary ([PR #36605](https://github.com/microsoft/fluentui/pull/36605) by paulmardling@microsoft.com)
+- Bump @fluentui/react-positioning to v9.23.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.6)
 

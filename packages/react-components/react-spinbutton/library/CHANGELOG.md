@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinbutton
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.6.7)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.6.6..@fluentui/react-spinbutton_v9.6.7)
+
+### Patches
+
+- fix(react-spinbutton): prevent double-step on trackpad tap by raising initial spin repeat delay ([PR #36777](https://github.com/microsoft/fluentui/pull/36777) by bernardo.sunderhus@gmail.com)
 
 ## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.6.6)
 

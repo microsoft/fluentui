@@ -2,6 +2,29 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.23.3",
+      "tag": "@fluentui/react-positioning_v9.23.3",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jakubmiskech@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "1c7519b64a7698bee84194a55fa7e79246d6a5c4",
+            "comment": "fix: improve safe zone hit testing and avoid rerenders during pointer movement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2026 11:25:39 GMT",
       "version": "9.23.2",
       "tag": "@fluentui/react-positioning_v9.23.2",

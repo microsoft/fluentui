@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-avatar": "^9.11.7",
+    "@fluentui/react-avatar": "^9.11.8",
     "@fluentui/react-button": "^9.11.1",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-jsx-runtime": "^9.4.6",
