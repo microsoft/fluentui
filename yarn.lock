@@ -5033,7 +5033,7 @@ __metadata:
     "@fluentui/react-motion": "npm:^9.16.4"
     "@fluentui/react-motion-components-preview": "npm:^0.15.9"
     "@fluentui/react-utilities": "npm:^9.26.7"
-    "@fluentui/tokens": "npm:1.0.0-alpha.24"
+    "@fluentui/tokens": "npm:>=1.0.0-alpha"
     "@swc/helpers": "npm:^0.5.1"
     clsx: "npm:^1.2.1"
     stylelint: "npm:17.15.0"
