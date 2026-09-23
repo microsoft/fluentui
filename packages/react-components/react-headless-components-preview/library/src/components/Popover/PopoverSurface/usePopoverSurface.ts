@@ -23,18 +23,15 @@ export const usePopoverSurface = (
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
 
-  const elementType = trapFocus ? 'dialog' : 'div';
-
   const state: PopoverSurfaceState = {
     withArrow,
     arrowRef,
-    components: { root: elementType },
+    components: { root: 'dialog' },
     root: slot.always(
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
-        role: trapFocus ? undefined : 'group',
+        role: trapFocus ? 'dialog' : 'group',
         ...props,
-        as: undefined,
         id: surfaceId,
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),
@@ -43,7 +40,7 @@ export const usePopoverSurface = (
         defaultProps: {
           popover: trapFocus ? undefined : 'auto',
         },
-        elementType,
+        elementType: 'dialog',
       },
     ) as PopoverSurfaceState['root'],
   };

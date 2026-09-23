@@ -3,7 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
-import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 describe('PopoverSurface', () => {
   it('renders surface content', () => {
@@ -29,7 +28,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group', { hidden: true }).tagName).toBe('DIV');
+    expect(getByRole('group', { hidden: true }).tagName).toBe('DIALOG');
   });
 
   it('renders a dialog when focus trapping is enabled', () => {
@@ -45,17 +44,17 @@ describe('PopoverSurface', () => {
     expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
   });
 
-  it('does not allow the root element to conflict with focus trapping', () => {
+  it('allow the root element to be a div', () => {
     const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
-        <PopoverSurface {...({ as: 'div' } as PopoverSurfaceProps)}>Content</PopoverSurface>
+        <PopoverSurface as="div">Content</PopoverSurface>
       </Popover>,
     );
 
-    expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
+    expect(getByRole('group', { hidden: true }).tagName).toBe('DIV');
   });
 
   it('has data-open attribute when open', () => {
