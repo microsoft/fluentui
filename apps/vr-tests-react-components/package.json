@@ -41,6 +41,7 @@
     "@fluentui/react-list": "*",
     "@fluentui/react-menu": "*",
     "@fluentui/react-message-bar": "*",
+    "@fluentui/react-modern-components-preview": "*",
     "@fluentui/react-nav": "*",
     "@fluentui/react-persona": "*",
     "@fluentui/react-popover": "*",

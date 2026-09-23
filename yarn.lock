@@ -5029,7 +5029,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library":
+"@fluentui/react-modern-components-preview@npm:*, @fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library"
   dependencies:
@@ -6839,6 +6839,7 @@ __metadata:
     "@fluentui/react-list": "npm:*"
     "@fluentui/react-menu": "npm:*"
     "@fluentui/react-message-bar": "npm:*"
+    "@fluentui/react-modern-components-preview": "npm:*"
     "@fluentui/react-nav": "npm:*"
     "@fluentui/react-persona": "npm:*"
     "@fluentui/react-popover": "npm:*"
