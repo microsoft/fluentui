@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TagPickerSize } from '../components/TagPicker/TagPicker.types';
+import type { SelectionMode } from '@fluentui/react-utilities';
 import type { ComboboxBaseState } from '@fluentui/react-combobox';
 
 export interface TagPickerContextValue
@@ -28,6 +29,7 @@ export interface TagPickerContextValue
   secondaryActionRef: React.RefObject<HTMLSpanElement | null>;
   tagPickerGroupRef: React.RefObject<HTMLDivElement | null>;
   size: TagPickerSize;
+  selectionMode?: SelectionMode;
   noPopover?: boolean;
 }
 
@@ -51,6 +53,7 @@ export const tagPickerContextDefaultValue: TagPickerContextValue = {
   value: undefined,
   popoverId: '',
   size: 'medium',
+  selectionMode: 'multiselect',
   appearance: 'outline',
   disabled: false,
 };

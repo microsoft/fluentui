@@ -6,6 +6,7 @@ import type {
   EventData,
   EventHandler,
   JSXElement,
+  SelectionMode,
 } from '@fluentui/react-utilities';
 import type { ComboboxProps, ComboboxState, ListboxContextValue } from '@fluentui/react-combobox';
 import type { TagPickerContextValue } from '../../contexts/TagPickerContext';
@@ -53,6 +54,12 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
      * @default false
      */
     noPopover?: boolean;
+    /**
+     * Controls whether selecting an option replaces the current selection or adds to it.
+     *
+     * @default 'multiselect'
+     */
+    selectionMode?: SelectionMode;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
 
@@ -106,6 +113,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
     trigger: React.ReactNode;
     popover?: React.ReactNode;
     inline: boolean;
+    selectionMode?: SelectionMode;
   };
 
 export type TagPickerContextValues = {

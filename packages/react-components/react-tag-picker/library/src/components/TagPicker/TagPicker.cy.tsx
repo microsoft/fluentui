@@ -32,13 +32,17 @@ const options = [
   'Maria Rossi',
 ];
 
-type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover'>;
+type TagPickerControlledProps = Pick<
+  TagPickerProps,
+  'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover' | 'selectionMode'
+>;
 
 const TagPickerControlled = ({
   open,
   defaultOpen,
   defaultSelectedOptions = [],
   noPopover = false,
+  selectionMode,
 }: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => setSelectedOptions(data.selectedOptions);
@@ -50,6 +54,7 @@ const TagPickerControlled = ({
 
       <TagPicker
         noPopover={noPopover}
+        selectionMode={selectionMode}
         onOptionSelect={onOptionSelect}
         selectedOptions={selectedOptions}
         open={open}
@@ -289,6 +294,37 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
       }),
     );
+
+    it('should select the active option when tabbing from a single-select input', () => {
+      mount(<TagPickerControlled defaultOpen selectionMode="single" />);
+
+      cy.get('[data-testid="tag-picker-input"]').focus().realPress('Tab');
+
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
+      cy.get('[data-testid="tag-picker-input"]').should('have.value', '');
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('[data-testid="tag-picker-control__secondaryAction"]').should('be.focused');
+    });
+
+    it('should not select the active option when tabbing away from the input', () => {
+      mount(<TagPickerControlled defaultOpen />);
+
+      cy.get('[data-testid="tag-picker-input"]').focus().realPress('Tab');
+
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('not.exist');
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('[data-testid="tag-picker-control__secondaryAction"]').should('be.focused');
+    });
+
+    it('should not select the active option when reverse-tabbing away from the input', () => {
+      mount(<TagPickerControlled defaultOpen />);
+
+      cy.get('[data-testid="tag-picker-input"]').focus().realPress(['Shift', 'Tab']);
+
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('not.exist');
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('#before-button').should('be.focused');
+    });
 
     describe('Tags', () => {
       it('should focus on last tag on Shift + Tab', () => {

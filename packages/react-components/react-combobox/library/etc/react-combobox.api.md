@@ -287,6 +287,7 @@ export const useComboboxBaseState: (props: ComboboxBaseProps & {
     disabled?: boolean;
     freeform?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
+    valueFromSelectedOptions?: boolean;
 }) => ComboboxBaseState;
 
 // @public (undocumented)

@@ -26,6 +26,7 @@ export const useTagPickerList_unstable = (
   const popoverRef = useTagPickerContext_unstable(ctx => ctx.popoverRef);
   const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const selectionMode = useTagPickerContext_unstable(ctx => ctx.selectionMode ?? 'multiselect');
 
   return {
     open,
@@ -35,7 +36,7 @@ export const useTagPickerList_unstable = (
     root: slot.always(
       {
         ...useListboxSlot(props, useMergedRefs(popoverRef, ref), {
-          state: { multiselect: true },
+          state: { multiselect: (selectionMode ?? 'multiselect') === 'multiselect' },
           triggerRef,
           defaultProps: { id: popoverId },
         }),

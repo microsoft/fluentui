@@ -10,7 +10,7 @@ import type {
 } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
-import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
+import { useTabsterKeydownIgnore } from '../../utils/useTabsterKeydownIgnore';
 
 /**
  * Create the base state required to render TagPickerButton, without design-only props.
@@ -32,6 +32,7 @@ export const useTagPickerButtonBase_unstable = (
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
   const setOpen = useTagPickerContext_unstable(ctx => ctx.setOpen);
+  const selectionMode = useTagPickerContext_unstable(ctx => ctx.selectionMode ?? 'multiselect');
 
   // casting is required here as triggerRef can either be button or input,
   // but in this case we can assure it's a button
@@ -53,7 +54,7 @@ export const useTagPickerButtonBase_unstable = (
       selectOption,
       setHasFocus,
       setOpen,
-      multiselect: true,
+      multiselect: (selectionMode ?? 'multiselect') === 'multiselect',
     },
   });
 
@@ -81,13 +82,17 @@ export const useTagPickerButton_unstable = (
 ): TagPickerButtonState => {
   const baseState = useTagPickerButtonBase_unstable(props, ref);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const selectionMode = useTagPickerContext_unstable(ctx => ctx.selectionMode ?? 'multiselect');
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
   return {
     ...baseState,
     size,
     root: {
-      ...useTabsterEscapeIgnore(baseState.root, open),
+      ...useTabsterKeydownIgnore(baseState.root, {
+        Escape: open,
+        Tab: open && selectionMode === 'single' ? true : undefined,
+      }),
       ...baseState.root,
     },
   };

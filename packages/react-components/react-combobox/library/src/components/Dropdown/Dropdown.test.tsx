@@ -379,21 +379,6 @@ describe('Dropdown', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
-  it('selects an option when tabbing away from an open combobox', () => {
-    const { getByTestId, getByRole } = render(
-      <Dropdown defaultOpen data-testid="combobox">
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Dropdown>,
-    );
-
-    const combobox = getByTestId('combobox');
-    fireEvent.keyDown(combobox, { key: 'Tab' });
-
-    expect(getByRole('combobox').textContent).toEqual('Red');
-  });
-
   it('adds to selection for multiselect', () => {
     const { getByText } = render(
       <Dropdown open multiselect defaultSelectedOptions={['Red']}>

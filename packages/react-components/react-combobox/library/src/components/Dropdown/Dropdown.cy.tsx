@@ -149,4 +149,230 @@ describe('Dropdown - tab navigation', () => {
     cy.realPress(['Shift', 'Tab']);
     cy.focused().should('have.id', 'first');
   });
+
+  it('selects the active option after keyboard-opening a single-select dropdown', () => {
+    const KeyboardOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      const [selectionCount, setSelectionCount] = React.useState(0);
+      return (
+        <>
+          <button id="before-button">Before</button>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => {
+              setSelectedOptions(data.selectedOptions);
+              setSelectionCount(count => count + 1);
+            }}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <output data-testid="selection-count">{selectionCount}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<KeyboardOpenedDropdown />);
+
+    cy.get('#before-button').click().realPress('Tab');
+    cy.get('#dropdown').should('be.focused').realPress('Enter');
+    cy.get(listboxSelector).should('be.visible');
+    cy.get('#dropdown').should('be.focused');
+    cy.get('#dropdown').should('have.attr', 'aria-activedescendant').and('not.be.empty');
+    cy.realPress('Tab');
+
+    cy.get('[data-testid="selected-options"]').should('have.text', 'Cat');
+    cy.get('[data-testid="selection-count"]').should('have.text', '1');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('selects the active option after reverse-tabbing from a keyboard-opened single-select dropdown', () => {
+    const KeyboardOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <button id="before-button">Before</button>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<KeyboardOpenedDropdown />);
+
+    cy.get('#after-button').click().realPress(['Shift', 'Tab']);
+    cy.get('#dropdown').should('be.focused').realPress('Enter');
+    cy.get(listboxSelector).should('be.visible');
+    cy.get('#dropdown').should('have.attr', 'aria-activedescendant').and('not.be.empty');
+    cy.get('#dropdown').realPress(['Shift', 'Tab']);
+
+    cy.get('[data-testid="selected-options"]').should('have.text', 'Cat');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#before-button').should('be.focused');
+  });
+
+  it('selects the active option when tabbing from a mouse-opened single-select dropdown', () => {
+    const MouseOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<MouseOpenedDropdown />);
+
+    cy.get('#dropdown').realClick();
+    cy.get(listboxSelector).should('be.visible');
+    cy.get('#dropdown').should('have.attr', 'aria-activedescendant').and('not.be.empty');
+    cy.realPress('Tab');
+
+    cy.get('[data-testid="selected-options"]').should('have.text', 'Cat');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('does not select the active option when light-dismissing a single-select dropdown', () => {
+    const MouseOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<MouseOpenedDropdown />);
+
+    cy.get('#dropdown').realClick();
+    cy.get(listboxSelector).should('be.visible');
+    cy.get('#after-button').realClick();
+
+    cy.get('[data-testid="selected-options"]').should('be.empty');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('does not select after keyboard navigation when light-dismissing with a pointer', () => {
+    const MouseOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<MouseOpenedDropdown />);
+
+    cy.get('#dropdown').realClick().realPress('ArrowDown');
+    cy.get('#dropdown').should('have.attr', 'aria-activedescendant').and('not.be.empty');
+    cy.get('#after-button').realClick();
+
+    cy.get('[data-testid="selected-options"]').should('be.empty');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('does not select when focus is moved programmatically after keyboard opening', () => {
+    const KeyboardOpenedDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <Dropdown
+            id="dropdown"
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<KeyboardOpenedDropdown />);
+
+    cy.get('#dropdown').focus().realPress('Enter');
+    cy.get(listboxSelector).should('be.visible');
+    cy.get('#after-button').focus();
+
+    cy.get('[data-testid="selected-options"]').should('be.empty');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('does not select the active option when tabbing from a multiselect dropdown', () => {
+    const MultiselectDropdown = () => {
+      const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+      return (
+        <>
+          <Dropdown
+            defaultOpen
+            inlinePopup
+            id="dropdown"
+            multiselect
+            selectedOptions={selectedOptions}
+            onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+          </Dropdown>
+          <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+          <button id="after-button">After</button>
+        </>
+      );
+    };
+
+    mount(<MultiselectDropdown />);
+
+    cy.get('#dropdown').focus();
+    cy.realPress('Tab');
+
+    cy.get('[data-testid="selected-options"]').should('be.empty');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
 });

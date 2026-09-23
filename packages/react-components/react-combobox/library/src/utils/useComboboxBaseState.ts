@@ -22,6 +22,7 @@ export const useComboboxBaseState = (
     disabled?: boolean;
     freeform?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
+    valueFromSelectedOptions?: boolean;
   },
 ): ComboboxBaseState => {
   const {
@@ -39,6 +40,7 @@ export const useComboboxBaseState = (
     freeform = false,
     disabled = false,
     onActiveOptionChange = null,
+    valueFromSelectedOptions = true,
   } = props;
 
   const optionCollection = useOptionCollection();
@@ -112,6 +114,10 @@ export const useComboboxBaseState = (
       return props.defaultValue;
     }
 
+    if (!valueFromSelectedOptions) {
+      return '';
+    }
+
     const selectedOptionsText = getOptionsMatchingValue(optionValue => {
       return selectedOptions.includes(optionValue);
     }).map(option => option.text);
@@ -127,7 +133,7 @@ export const useComboboxBaseState = (
     // we do not want to accidentally override defaultValue on a second render
     // unless another value is intentionally set
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, selectedOptions]);
+  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, selectedOptions, valueFromSelectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({

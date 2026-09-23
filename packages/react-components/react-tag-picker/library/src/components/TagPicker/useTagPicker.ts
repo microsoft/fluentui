@@ -29,7 +29,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const passiveTargetRef = React.useRef<HTMLDivElement>(null);
-  const { noPopover = false, disableAutoFocus } = props;
+  const { noPopover = false, disableAutoFocus, selectionMode = 'multiselect' } = props;
 
   const {
     controller: activeDescendantController,
@@ -59,7 +59,8 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     activeDescendantController,
     disableAutoFocus,
     editable: true,
-    multiselect: true,
+    multiselect: selectionMode === 'multiselect',
+    valueFromSelectedOptions: false,
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
@@ -69,6 +70,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     trigger,
     popover: comboboxState.open || comboboxState.hasFocus ? popover : undefined,
     popoverId,
+    selectionMode,
     noPopover,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),

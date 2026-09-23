@@ -58,3 +58,48 @@ describe('Combobox controlling open/close state', () => {
     cy.get(listboxSelector).should('not.exist');
   });
 });
+
+describe('Combobox tab selection', () => {
+  const ControlledCombobox = ({ multiselect = false }: { multiselect?: boolean }) => {
+    const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+
+    return (
+      <>
+        <button id="before-button">Before</button>
+        <Combobox
+          defaultOpen
+          inlinePopup
+          id="combobox"
+          multiselect={multiselect}
+          selectedOptions={selectedOptions}
+          onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+        >
+          <Option>Cat</Option>
+          <Option>Dog</Option>
+        </Combobox>
+        <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+        <button id="after-button">After</button>
+      </>
+    );
+  };
+
+  it('selects the active option when tabbing from a single-select combobox', () => {
+    mount(<ControlledCombobox />);
+
+    cy.get('#combobox').focus().realPress('Tab');
+
+    cy.get('[data-testid="selected-options"]').should('have.text', 'Cat');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+
+  it('does not select the active option when tabbing from a multiselect combobox', () => {
+    mount(<ControlledCombobox multiselect />);
+
+    cy.get('#combobox').focus().realPress('Tab');
+
+    cy.get('[data-testid="selected-options"]').should('be.empty');
+    cy.get(listboxSelector).should('not.exist');
+    cy.get('#after-button').should('be.focused');
+  });
+});

@@ -30,7 +30,7 @@ export const SingleSelect = (): JSXElement => {
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker selectionMode="single" onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           {selectedOption && (
             <TagPickerGroup aria-label="Selected Employees">
@@ -69,7 +69,7 @@ SingleSelect.parameters = {
   docs: {
     description: {
       story: `
-By default, the \`TagPicker\` allows you to have multiple tags selected . To enable single selection, you can manage the selected options state yourself and pass only one selected option to the \`TagPicker\` component.
+By default, the \`TagPicker\` allows multiple selected tags. Set \`selectionMode="single"\` and control \`selectedOptions\` to enable single selection.
       `,
     },
   },

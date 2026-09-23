@@ -27,6 +27,7 @@ import type { OptionGroupState } from '@fluentui/react-combobox';
 import type { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState } from '@fluentui/react-combobox';
 import * as React_2 from 'react';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagGroupBaseState } from '@fluentui/react-tags';
@@ -107,6 +108,8 @@ export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 
     popoverRef: React_2.RefObject<HTMLDivElement | null>;
     // (undocumented)
     secondaryActionRef: React_2.RefObject<HTMLSpanElement | null>;
+    // (undocumented)
+    selectionMode?: SelectionMode_2;
     // (undocumented)
     size: TagPickerSize;
     // (undocumented)
@@ -276,6 +279,7 @@ export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<O
 // @public
 export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open' | 'disableAutoFocus'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
     noPopover?: boolean;
+    selectionMode?: SelectionMode_2;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSXElement, JSXElement | undefined | false] | JSXElement;
@@ -293,6 +297,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
+    selectionMode?: SelectionMode_2;
 };
 
 // @public
