@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 
-import type {
-  OverlayDrawerProps,
-  InlineDrawerProps} from '@fluentui/react-drawer';
 import {
   Drawer,
   DrawerHeader,
@@ -11,7 +8,9 @@ import {
   DrawerBody,
   DrawerHeaderNavigation,
   OverlayDrawer,
+  OverlayDrawerProps,
   InlineDrawer,
+  InlineDrawerProps,
   DrawerFooter,
 } from '@fluentui/react-drawer';
 import { Toolbar, ToolbarButton, ToolbarGroup } from '@fluentui/react-toolbar';

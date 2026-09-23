@@ -8,8 +8,7 @@ import type {
   SplitButtonState,
   ToggleButtonState,
 } from '@fluentui/react-button';
-import type { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { FluentProvider } from '@fluentui/react-provider';
+import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import type {
-  MessageBarIntent} from '@fluentui/react-message-bar';
 import {
   MessageBar,
   MessageBarActions,
   MessageBarBody,
+  MessageBarIntent,
   MessageBarTitle,
 } from '@fluentui/react-message-bar';
 import type { Meta } from '@storybook/react-webpack5';

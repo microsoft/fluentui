@@ -10,11 +10,7 @@ import {
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
-import type {
-  TableProps,
-  TableRowProps,
-  TableColumnDefinition} from '@fluentui/react-table';
+import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import {
   Table,
   TableHeader,
@@ -25,8 +21,11 @@ import {
   TableCellLayout,
   TableSelectionCell,
   TableCellActions,
+  TableProps,
+  TableRowProps,
   useTableColumnSizing_unstable,
   useTableFeatures,
+  TableColumnDefinition,
   createTableColumn,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';

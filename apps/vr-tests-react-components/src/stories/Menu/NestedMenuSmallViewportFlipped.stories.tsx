@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 import { makeStyles, shorthands } from '@griffel/react';
-import type { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { Steps } from 'storywright';
 
 import type { StoryParameters } from 'storywright';

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import type {
-  BreadcrumbProps} from '@fluentui/react-breadcrumb';
 import {
   Breadcrumb,
   BreadcrumbButton,
+  BreadcrumbProps,
   BreadcrumbItem,
   BreadcrumbDivider,
 } from '@fluentui/react-breadcrumb';

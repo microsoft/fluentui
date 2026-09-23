@@ -1,7 +1,5 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import type {
-  TagPickerProps} from '@fluentui/react-tag-picker';
 import {
   TagPicker,
   TagPickerControl,
@@ -9,7 +7,8 @@ import {
   TagPickerInput,
   TagPickerList,
   TagPickerOption,
-  TagPickerOptionGroup
+  TagPickerOptionGroup,
+  TagPickerProps,
 } from '@fluentui/react-tag-picker';
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';

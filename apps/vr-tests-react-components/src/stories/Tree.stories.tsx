@@ -1,15 +1,14 @@
 import * as React from 'react';
-import type {
-  HeadlessFlatTreeItemProps,
-  TreeItemValue,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent} from '@fluentui/react-tree';
 import {
   FlatTree,
+  HeadlessFlatTreeItemProps,
   Tree,
   TreeItem,
   TreeItemLayout,
   TreeItemPersonaLayout,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { tokens } from '@fluentui/react-theme';

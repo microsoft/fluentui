@@ -1,7 +1,6 @@
 import * as React from 'react';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
-import type { TableColumnDefinition } from '@fluentui/react-table';
-import { createTableColumn } from '@fluentui/react-table';
+import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { createTableColumn, TableColumnDefinition } from '@fluentui/react-table';
 import {
   DocumentPdfRegular,
   DocumentRegular,

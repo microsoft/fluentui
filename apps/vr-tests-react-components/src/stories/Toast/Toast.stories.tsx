@@ -1,14 +1,13 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import type {
-  ToastStatus} from '@fluentui/react-toast';
 import {
   Toast,
   ToastTitle,
   ToastBody,
   ToastFooter,
   Toaster,
-  useToastController
+  useToastController,
+  ToastStatus,
 } from '@fluentui/react-toast';
 import { Link } from '@fluentui/react-link';
 import { Steps } from 'storywright';

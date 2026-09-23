@@ -1,11 +1,10 @@
 import * as React from 'react';
-import type {
-  AvatarGroupPopoverProps,
-  AvatarGroupProps} from '@fluentui/react-avatar';
 import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
+  AvatarGroupPopoverProps,
+  AvatarGroupProps,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
 
