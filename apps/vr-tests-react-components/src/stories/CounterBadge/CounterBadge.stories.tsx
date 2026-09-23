@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CounterBadge } from '@fluentui/react-modern-components-preview/badge';
+import { CounterBadge } from '@fluentui/react-badge';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';
 

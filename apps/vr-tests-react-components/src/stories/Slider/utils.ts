@@ -1,4 +1,4 @@
-import { sliderCSSVars } from '@fluentui/react-modern-components-preview/slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
 import { makeStyles } from '@griffel/react';
 const { sliderProgressColorVar, sliderRailColorVar, sliderThumbColorVar, sliderThumbSizeVar } = sliderCSSVars;
 

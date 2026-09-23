@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { PresenceBadge } from '@fluentui/react-modern-components-preview/badge';
+import { PresenceBadge } from '@fluentui/react-badge';
 import { getStoryVariant, RTL } from '../../utilities';
 
 const sizes = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as const;

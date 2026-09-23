@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { PresenceBadge } from '@fluentui/react-modern-components-preview/badge';
+import { PresenceBadge } from '@fluentui/react-badge';
 import { getStoryVariant, RTL } from '../../utilities';
 
 const statuses = ['available', 'away', 'busy', 'do-not-disturb', 'offline', 'out-of-office', 'unknown'] as const;
