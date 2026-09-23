@@ -1,0 +1,160 @@
+---
+title: Component Mapping
+---
+
+- [Getting Started](#getting-started)
+- [Component Mapping](#component-mapping)
+- [Deprecated Components](#deprecated-components)
+- [New Components in v9](#new-components-in-v9)
+- [Additional Resources](#additional-resources)
+
+---
+
+## Getting Started
+
+1. **Install Fluent UI v9**:
+   To begin migration, install the latest Fluent UI React v9 package.
+
+   ```bash
+   npm install @fluentui/react-components
+   ```
+
+2. **Update Imports**:
+   Update your component imports to use the v9 components. Use the component mapping table below to assist.
+
+3. **Refactor Code**:
+   Refactor your code to accommodate changes in API, props, and new functionalities provided by v9 components.
+
+---
+
+## Component Mapping
+
+Here is the mapping of v8 components to their v9 component replacement or equivalent. This table provides a side-by-side comparison of React v8 components and their corresponding counterparts in React v9. Where a direct v9 equivalent doesn't exist, an alternative or note is provided.
+
+- Blank cells mean that there is not a v9 component (yet) or the component did not exist in v8.
+- A (🔁) means the v9 component is currently being developed. It may be in preview or not exported from react-components yet.
+  Check out the latest schedule information on the [v9 Component Roadmap](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-v9-Component-Roadmap)
+
+| **React v8 Component** | **React v9 Component**                                                             | **Notes**                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| ActionButton           | [Button](/react/components/button/button)                                          | Use `Button` with `iconPosition="before"` for similar functionality.         |
+| ActivityItem           | Not available                                                                      | No direct equivalent in v9; custom implementation needed.                    |
+| Announced              | Not available                                                                      | No direct equivalent in v9.                                                  |
+| Breadcrumb             | [Breadcrumb](/react/components/breadcrumb)                                         | No major changes; available in v9.                                           |
+| Button                 | [Button](/react/components/button/button)                                          | Unified button API; use `appearance` prop for variants like `PrimaryButton`. |
+| Callout                | [Popover](/react/components/popover)                                               | Replaced by `Popover`, with enhanced accessibility and customization.        |
+| Calendar               | [CalendarCompat](/react/components/compat-components/calendar)                     | Use the compact variant in v9.                                               |
+| CommandBar             | [Toolbar](/react/components/toolbar)                                               | Similar functionality in v9.                                                 |
+| CommandBarButton       | [Toolbar](/react/components/toolbar)                                               | Similar functionality in v9.                                                 |
+| CommandButton          | [MenuButton](/react/components/button/menu-button)                                 | Similar functionality in v9.                                                 |
+| CompoundButton         | [CompoundButton](/react/components/button/compound-button)                         | Similar functionality in v9.                                                 |
+| Charts                 | [Migration Guide](/react/migration/from-v8/components/charts-migration)            | No direct equivalent in v9.                                                  |
+| Checkbox               | [Checkbox](/react/components/checkbox)                                             | API remains mostly the same in v9.                                           |
+| ChoiceGroup            | [RadioGroup](/react/components/radio-group)                                        | Renamed to `RadioGroup` with similar functionality.                          |
+| Coachmark              | [TeachingPopover](/react/components/teaching-popover)                              | Use `TeachingPopover` in v9 for the same functionality.                      |
+| ColorPicker            | [ColorPicker](/react/components/color-picker)                                      | No major changes in v9.                                                      |
+| ComboBox               | [Combobox](/react/components/combobox)                                             | Renamed to `Combobox` with API improvements.                                 |
+| CommandBar             | [Toolbar](/react/components/toolbar)                                               | CommandBar replaced by `Toolbar` for managing actions.                       |
+| ContextualMenu         | [Menu](/react/components/menu/menu) with Button as the `MenuTrigger`               | Use `Menu` in v9 with `MenuTrigger`.                                         |
+| DefaultButton (anchor) | [Button](/react/components/button/button)                                          | Use `Button` in v9.                                                          |
+| DefaultButton (menu)   | [MenuButton](/react/components/button/menu-button)                                 | Use `Button` in v9.                                                          |
+| DatePicker             | [DatePickerCompat](/react/components/compat-components/date-picker)                | API remains similar with enhanced theming options.                           |
+| DetailsList            | [DataGrid](/react/components/data-grid)                                            | Experimental `DataGrid` in v9 could be a substitute.                         |
+| Dialog                 | [Dialog](/react/components/dialog)                                                 | Refined API, using `open` and `onOpenChange` props.                          |
+| DocumentCard           | [Card](/react/components/card/card)                                                | Use `Card` in v9.                                                            |
+| Dropdown               | [Dropdown](/react/components/dropdown)                                             | API and performance enhancements.                                            |
+| Fabric                 | FluentProvider                                                                     | Use `FluentProvider` for managing themes and global context.                 |
+| Facepile               | [AvatarGroup](/react/components/avatar-group)                                      | Replaced by `AvatarGroup` in v9.                                             |
+| FocusTrapZone          | [Tabster](https://tabster.io/)                                                     | Use `Tabster`.                                                               |
+| FocusZone              | [Tabster](https://tabster.io/)                                                     | Use `Tabster`.                                                               |
+| GroupedList            | [Tree](/react/components/tree)                                                     | Use `Tree` in v9.                                                            |
+| HoverCard              | Not available                                                                      | No direct equivalent; could use `Popover` with custom behavior.              |
+| Icon                   | @fluentui/react-icons package                                                      | v9 provides more customization options.                                      |
+| IconButton             | [Button](/react/components/button/button)                                          | v9 provides more customization options.                                      |
+| Image                  | [Image](/react/components/image)                                                   | No major changes in v9.                                                      |
+| Keytips                | Keytips                                                                            | No major changes in v9.                                                      |
+| Label                  | [Label](/react/components/label)                                                   | Similar functionality in v9.                                                 |
+| Layer                  | [Portal](/react/components/portal/portal)                                          | Use `Portal` for similar layering behavior.                                  |
+| Link                   | [Link](/react/components/link)                                                     | Available in v9, with better accessibility handling.                         |
+| List                   | [List](/react/components/list)                                                     | Enhanced performance in v9.                                                  |
+| MarqueeSelection       | Not available                                                                      | No direct equivalent in v9.                                                  |
+| MessageBar             | [MessageBar](/react/components/message-bar)                                        | Available in v9, with better accessibility handling.                         |
+| Modal                  | [Dialog](/react/components/dialog)                                                 | Dialog in v9 serves the modal role with updated API.                         |
+| Nav                    | [Nav](/react/components/nav)                                                       | No major changes; available in v9 with improvements.                         |
+| OverflowSet            | [Dialog](/react/components/overflow)                                               | No direct equivalent; consider `Dialog` for overflow menus.                  |
+| Overlay                | [Portal](/react/components/portal/portal)                                          | Replaced with `Dialog` in v9.                                                |
+| Panel                  | [Drawer](/react/components/drawer)                                                 | Replaced by `Drawer` for side panel navigation.                              |
+| Popup                  | [Dialog](/react/components/dialog)                                                 | Replaced by `Dialog`                                                         |
+| PeoplePicker           | [TagPicker](/react/components/tag-picker)                                          | Replaced by `TagPicker` for improved functionality.                          |
+| Persona                | [Persona](/react/components/persona)                                               | No major changes; available in v9 with improvements.                         |
+| Pickers                | Not available                                                                      | No direct equivalent in v9.                                                  |
+| Pivot, PivotItem       | [TabList, Tab](/react/components/tab-list)                                         | Replaced by `TabList` in v9.                                                 |
+| ProgressIndicator      | [ProgressBar](/react/components/progress-bar)                                      | Renamed to `ProgressBar` in v9; similar functionality.                       |
+| Rating                 | [Rating](/react/components/rating)                                                 | Available in v9 with slight API refinements.                                 |
+| ResizeGroup            | Not available                                                                      | No direct equivalent in v9.                                                  |
+| ScrollablePane         | Not available                                                                      | No direct equivalent in v9.                                                  |
+| SearchBox              | [SearchBox](/react/components/search-box)                                          | Available in v9 with updated API and better accessibility.                   |
+| Separator              | [Divider](/react/components/divider)                                               | Replaced by `Divider` in v9.                                                 |
+| Shimmer                | [Skeleton](/react/components/skeleton)                                             | Updated to `Skeleton` in v9 for loading states.                              |
+| Slider                 | [Slider](/react/components/slider)                                                 | API enhancements for better customization.                                   |
+| SplitButton            | [Menu with SplitButton as the Menu Trigger](/react/components/button/split-button) | Various updates done in v9.                                                  |
+| SpinButton             | [SpinButton](/react/components/spin-button)                                        | Available in v9 with improved API.                                           |
+| Spinner                | [Spinner](/react/components/spinner)                                               | Available in v9 with better control over animations.                         |
+| Stack                  | [Migration Guide](/react/migration/from-v8/components/flex/stack), StackShim       | Various changes in v9.                                                       |
+| SwatchColorPicker      | [SwatchPicker](/react/components/swatch-picker)                                    | Replaced by `SwatchPicker` in v9 for color selection.                        |
+| TagPicker              | [TagPicker](/react/components/tag-picker)                                          | No major changes; retained as `TagPicker`.                                   |
+| TeachingBubble         | [TeachingPopover](/react/components/teaching-popover)                              | Replaced by `TeachingPopover` in v9.                                         |
+| Text                   | [Text](/react/components/text)                                                     | Similar functionality in v9.                                                 |
+| TextField              | [Input](/react/components/input)                                                   | Replaced by `Input` in v9 for text input functionality.                      |
+| ThemeProvider          | [FluentProvider](/react/components/fluent-provider)                                | Replaced by `FluentProvider` in v9; similar behavior.                        |
+| TimePicker             | [TimePickerCompat](/react/components/compat-components/time-picker)                | Replaced by `TimePickerCompat` in v9; similar behavior.                      |
+| ToggleButton           | [ToggleButton](/react/components/button/toggle-button)                             | No major changes in v9.                                                      |
+| Toggle                 | [Switch](/react/components/switch)                                                 | Renamed to `Switch` in v9; similar behavior.                                 |
+| Tooltip                | [Tooltip](/react/components/tooltip)                                               | No major changes in v9.                                                      |
+
+## New Components in v9
+
+React v9 introduces several new components that were not present in v8:
+
+- [**Accordion**](/react/components/accordion): Allowing to toggle the display of content by expanding or collapsing sections.
+- [**Avatar**](/react/components/avatar): Replaces `Persona` for rendering user images.
+- [**AvatarGroup**](/react/components/avatar-group): Replaces `Facepile`.
+- [**Badge**](/react/components/badge/badge): Displays text and/or an icon.
+- [**CounterBadge**](/react/components/badge/counter-badge): Displays Badge numerical values.
+- [**PresenceBadge**](/react/components/badge/presence-badge): Displays Badge status.
+- [**Carousel**](/react/components/carousel/carousel): Sliding window of elements controlled by previous, next, and direct pagination buttons.
+- [**Drawer**](/react/components/drawer): Replaces `Panel` for side-drawer navigation.
+- [**InfoLabel**](/react/components/badge/presence-badge):An InfoLabel is a Label with an InfoButton at the end.
+- [**Popover**](/react/components/popover): Enhanced version of `Callout` with improved accessibility.
+- [**TabList**](/react/components/tab-list): Replaces `Pivot` for tabbed navigation.
+- [**ProgressBar**](/react/components/progress-bar): Renamed from `ProgressIndicator`, with similar functionality but refined API.
+- [**Input**](/react/components/input): A new input component replacing `TextField` for simpler text input handling.
+- [**Skeleton**](/react/components/skeleton): A new input component replacing `Shimmer`.
+- [**Switch**](/react/components/switch): A new component replacing `Toggle` for binary options.
+- [**SwatchPicker**](/react/components/swatch-picker): A new component replacing `SwatchColorPicker` with added functionality.
+- [**Toast**](/react/components/badge/presence-badge):A Toasts displays temporary content to the user.
+- [**TeachingPopover**](/react/components/teaching-popover): A new component in v9 that replaces `TeachingBubble` and `Coachmark` in v8.
+
+## Deprecated Components
+
+Some components in React v8 are not present in v9 or been replaced. Here’s a list of deprecated components:
+
+- **`Coachmark`**
+- **`ActivityItem`**
+- **`Hovercard`**
+- **`MarqueeSelection`**
+- **`ResizeGroup`**
+- **`ScrollablePane`**
+- **`DetailsList`**
+- **`Pickers`**
+- **`Popup`**
+
+## Additional Resources
+
+For more information on Fluent UI v9, consult these resources:
+
+- [Fluent UI Extensions Packages](https://github.com/microsoft/fluentui-contrib)
+- [Fluent 2 Design System Website](https://fluent2.microsoft.design/)
+- [Fluent UI GitHub](https://github.com/microsoft/fluentui)
+
+---

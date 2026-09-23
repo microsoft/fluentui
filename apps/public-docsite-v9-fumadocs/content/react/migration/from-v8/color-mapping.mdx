@@ -1,0 +1,210 @@
+---
+title: Color Mapping
+---
+
+The global and alias colors in v9 differ from those in the default v8 palette and theme.
+Here is our recommended mapping between v8 and v9 colors.
+
+The team of designers and engineers considered several for each color choice:
+
+- The closest color match in HSL (e.g. v8 neutralPrimaryAlt matches v9 grey[22])
+- The semantic name match (e.g. v8 yellow matches v9 sharedColors.yellow.primary)
+- The best intermediate colors in a ramp (e.g. v8 themeTertiary matches v9 brand[120])
+- The best color and contrast perception (e.g. the choices for magenta of shade30, primary, and tint30)
+- The holistic global colors defined in v9 (i.e. v9 colors are more neutral or cooler compared to v8)
+
+We applied this mapping in the theme shim methods.
+
+- The createV8Theme shim creates a v8 theme that closely matches v9.
+- The createV9Theme shim creates v9 theme that closely matches v8.
+
+v8 themes include an isInverted boolean to indicate they are a dark theme rather than a light theme, but v9 themes do not.
+The createV8Theme supports passing isDarkTheme to use inverted colors in the v8 palette.
+
+## Neutral colors
+
+| v8 palette             | v9 global        | Notes |
+| ---------------------- | ---------------- | ----- |
+| `black`                | `black`          |       |
+| `blackTranslucent40`   | `blackAlpha[40]` |       |
+| `neutralDark`          | `grey[8]`        |       |
+| `neutralPrimary`       | `grey[14]`       |       |
+| `neutralPrimaryAlt`    | `grey[22]`       |       |
+| `neutralSecondary`     | `grey[36]`       |       |
+| `neutralSecondaryAlt`  | `grey[52]`       |       |
+| `neutralTertiary`      | `grey[62]`       |       |
+| `neutralTertiaryAlt`   | `grey[78]`       |       |
+| `neutralQuaternary`    | `grey[82]`       |       |
+| `neutralQuaternaryAlt` | `grey[88]`       |       |
+| `neutralLight`         | `grey[92]`       |       |
+| `neutralLighter`       | `grey[96]`       |       |
+| `neutralLighterAlt`    | `grey[98]`       |       |
+| `accent`               | `brand[80]`      |       |
+| `white`                | `white`          |       |
+| `whiteTranslucent40`   | `whiteAlpha[40]` |       |
+
+## Neutral colors (inverted)
+
+| v8 palette             | v9 global        | Notes |
+| ---------------------- | ---------------- | ----- |
+| `black`                | `white`          |       |
+| `blackTranslucent40`   | `whieAlpha[40]`  |       |
+| `neutralDark`          | `grey[98]`       |       |
+| `neutralPrimary`       | `grey[96]`       |       |
+| `neutralPrimaryAlt`    | `grey[94]`       |       |
+| `neutralSecondary`     | `grey[82]`       |       |
+| `neutralSecondaryAlt`  | `grey[74]`       |       |
+| `neutralTertiary`      | `grey[44]`       |       |
+| `neutralTertiaryAlt`   | `grey[26]`       |       |
+| `neutralQuaternary`    | `grey[24]`       |       |
+| `neutralQuaternaryAlt` | `grey[18]`       |       |
+| `neutralLight`         | `grey[16]`       |       |
+| `neutralLighter`       | `grey[14]`       |       |
+| `neutralLighterAlt`    | `grey[10]`       |       |
+| `accent`               | `brand[90]`      |       |
+| `white`                | `black`          |       |
+| `whiteTranslucent40`   | `blackAlpha[40]` |       |
+
+## Brand colors
+
+| v8 palette        | v9 global    | Notes |
+| ----------------- | ------------ | ----- |
+| `themeDarker`     | `brand[40]`  |       |
+| `themeDark`       | `brand[60]`  |       |
+| `themeDarkAlt`    | `brand[70]`  |       |
+| `themePrimary`    | `brand[80]`  |       |
+| `themeSecondary`  | `brand[90]`  |       |
+| `themeTertiary`   | `brand[120]` |       |
+| `themeLight`      | `brand[140]` |       |
+| `themeLighter`    | `brand[150]` |       |
+| `themeLighterAlt` | `brand[160]` |       |
+
+## Brand colors (inverted)
+
+| v8 palette        | v9 global    | Notes |
+| ----------------- | ------------ | ----- |
+| `themeDarker`     | `brand[110]` |       |
+| `themeDark`       | `brand[100]` |       |
+| `themeDarkAlt`    | `brand[100]` |       |
+| `themePrimary`    | `brand[90]`  |       |
+| `themeSecondary`  | `brand[90]`  |       |
+| `themeTertiary`   | `brand[60]`  |       |
+| `themeLight`      | `brand[50]`  |       |
+| `themeLighter`    | `brand[40]`  |       |
+| `themeLighterAlt` | `brand[30]`  |       |
+
+## Semantic colors
+
+| v8 semantic                         | v9 alias                               | Notes                                                                                                                                                                                                                                                         |
+| ----------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accentButtonBackground`            | `colorBrandBackground`                 | Used by Button when appearance=primary.                                                                                                                                                                                                                       |
+| `accentButtonText`                  | `colorNeutralForegroundOnBrand`        | Used by Button when appearance=primary.                                                                                                                                                                                                                       |
+| `actionLink`                        | `colorNeutralForeground1`              |                                                                                                                                                                                                                                                               |
+| `actionLinkHovered`                 | `colorNeutralForeground1Hover`         |                                                                                                                                                                                                                                                               |
+| `bodyBackground`                    | `colorNeutralBackground1`              |                                                                                                                                                                                                                                                               |
+| `bodyBackgroundChecked`             | `colorNeutralBackground1Selected`      | Used by ToggleButton when checked.                                                                                                                                                                                                                            |
+| `bodyBackgroundHovered`             | `colorNeutralBackground1Hover`         | Used by ToggleButton when hovered.                                                                                                                                                                                                                            |
+| `bodyDivider`                       | `colorNeutralStroke2`                  | Used by Divider for the line; also considered `colorNeutralBackground5` (Closest color match)                                                                                                                                                                 |
+| `bodyFrameBackground`               | `colorNeutralBackground1`              |                                                                                                                                                                                                                                                               |
+| `bodyFrameDivider`                  | `colorNeutralStroke2`                  | Used by Divider for the line; also considered `colorNeutralBackground5` (Closest color match)                                                                                                                                                                 |
+| `bodyStandoutBackground`            | `colorNeutralBackground2`              | Closest color match                                                                                                                                                                                                                                           |
+| `bodySubtext`                       | `colorNeutralForeground2`              | Used by CompoundButton for secondary content.; also considered `colorNeutralForeground3` (Closest color match)                                                                                                                                                |
+| `bodyText`                          | `colorNeutralForeground1`              |                                                                                                                                                                                                                                                               |
+| `bodyTextChecked`                   | `colorNeutralForeground1Selected`      | Not used in v9 yet, but seems like best name match.; also considered `colorNeutralForeground1` (Used by ToggleButton when checked)                                                                                                                            |
+| `buttonBackground`                  | `colorNeutralBackground1`              | Used by Button                                                                                                                                                                                                                                                |
+| `buttonBackgroundChecked`           | `colorNeutralBackground1Selected`      | Used by ToggleButton when checked                                                                                                                                                                                                                             |
+| `buttonBackgroundCheckedHovered`    | `colorNeutralBackground1Hover`         | Used by ToggleButton when hovered. No hover+selected color in v9.                                                                                                                                                                                             |
+| `buttonBackgroundDisabled`          | `colorNeutralBackgroundDisabled`       | Used by Button when disabled                                                                                                                                                                                                                                  |
+| `buttonBackgroundHovered`           | `colorNeutralBackground1Hover`         | Used by Button when hovered                                                                                                                                                                                                                                   |
+| `buttonBackgroundPressed`           | `colorNeutralBackground1Pressed`       | Used by Button when active                                                                                                                                                                                                                                    |
+| `buttonBorder`                      | `colorNeutralStroke1`                  | Used by Button                                                                                                                                                                                                                                                |
+| `buttonBorderDisabled`              | `colorNeutralStrokeDisabled`           | Used by Button when disabled                                                                                                                                                                                                                                  |
+| `buttonText`                        | `colorNeutralForeground1`              | Used by Button                                                                                                                                                                                                                                                |
+| `buttonTextChecked`                 | `colorNeutralForeground1`              | Used by ToggleButton when checked                                                                                                                                                                                                                             |
+| `buttonTextCheckedHovered`          | `colorNeutralForeground1`              | Used by ToggleButton when hovered. No hover+selected color in v9.                                                                                                                                                                                             |
+| `buttonTextDisabled`                | `colorNeutralForegroundDisabled`       | Used by Button when disabled                                                                                                                                                                                                                                  |
+| `buttonTextHovered`                 | `colorNeutralForeground1`              | Used by Button when hovered                                                                                                                                                                                                                                   |
+| `buttonTextPressed`                 | `colorNeutralForeground1`              | Used by Button when active                                                                                                                                                                                                                                    |
+| `cardStandoutBackground`            | `colorNeutralBackground1`              | Used by Card.                                                                                                                                                                                                                                                 |
+| `defaultStateBackground`            | `colorNeutralBackground2`              | Closest color match.                                                                                                                                                                                                                                          |
+| `disabledBackground`                | `colorNeutralBackgroundDisabled`       | Used by multiple components when disabled.                                                                                                                                                                                                                    |
+| `disabledBodySubtext`               | `colorNeutralForegroundDisabled`       | Used by multiple components when disabled. No secondary disabled color in v9.                                                                                                                                                                                 |
+| `disabledBodyText`                  | `colorNeutralForegroundDisabled`       | Used by multiple components when disabled.                                                                                                                                                                                                                    |
+| `disabledBorder`                    | `colorNeutralStrokeDisabled`           | Used by multiple components when disabled.                                                                                                                                                                                                                    |
+| `disabledSubtext`                   | `colorNeutralForegroundDisabled`       | Used by multiple components when disabled. No secondary disabled color in v9.                                                                                                                                                                                 |
+| `disabledText`                      | `colorNeutralForegroundDisabled`       | Used by multiple components when disabled.                                                                                                                                                                                                                    |
+| `focusBorder`                       | `colorStrokeFocus2`                    | Used by multiple components for outline.; also considered `colorNeutralStrokeAccessible` (Closest color match.); also considered `colorNeutralForeground3` (Closest color match.)                                                                             |
+| `inputBackground`                   | `colorNeutralBackground1`              | Used by Input.                                                                                                                                                                                                                                                |
+| `inputBackgroundChecked`            | `colorCompoundBrandBackground`         | Used by Checkbox when checked.                                                                                                                                                                                                                                |
+| `inputBackgroundCheckedHovered`     | `colorCompoundBrandBackgroundHover`    | Used by Checkbox when checked and hovered.                                                                                                                                                                                                                    |
+| `inputBorder`                       | `colorNeutralStrokeAccessible`         | Used by Input.                                                                                                                                                                                                                                                |
+| `inputBorderHovered`                | `colorNeutralStrokeAccessibleHover`    | Used by Input when hovered.; also considered `colorNeutralForeground1` (Closest color match.)                                                                                                                                                                 |
+| `inputFocusBorderAlt`               | `colorCompoundBrandStroke`             | Used by input when interactive.                                                                                                                                                                                                                               |
+| `inputForegroundChecked`            | `colorNeutralForegroundOnBrand`        | Used by Checkbox when checked.                                                                                                                                                                                                                                |
+| `inputIcon`                         | `colorNeutralForeground3`              | Used by Input for content (includes icon).; also considered `colorCompoundBrandForeground1` (Color match.)                                                                                                                                                    |
+| `inputIconDisabled`                 | `colorNeutralForegroundDisabled`       | Used by Input for content (includes icon).; also considered `colorNeutralForegroundDisabled` (Closest color and name match.)                                                                                                                                  |
+| `inputIconHovered`                  | `colorNeutralForeground3`              | Used by Input for content (includes icon). v9 does not apply a specific style for content when hovered.; also considered `colorCompoundBrandForeground1Hover` (Closest name and color match.); also considered `colorBrandForegroundLinkHover` (Color match.) |
+| `inputPlaceholderBackgroundChecked` | `colorBrandBackgroundInvertedSelected` | Color match.                                                                                                                                                                                                                                                  |
+| `inputPlaceholderText`              | `colorNeutralForeground4`              | Used by Input.; also considered `colorNeutralStrokeAccessible` (Closest color match.)                                                                                                                                                                         |
+| `inputText`                         | `colorNeutralForeground1`              | Used by Input.                                                                                                                                                                                                                                                |
+| `inputTextHovered`                  | `colorNeutralForeground1Hover`         | Closest name match. v9 Input does not apply a specific style to text when hovered.                                                                                                                                                                            |
+| `link`                              | `colorBrandForegroundLink`             | Used by Link.                                                                                                                                                                                                                                                 |
+| `linkHovered`                       | `colorBrandForegroundLinkHover`        | Used by Link when hovered.                                                                                                                                                                                                                                    |
+| `listBackground`                    | `colorNeutralBackground1`              | Closest color match                                                                                                                                                                                                                                           |
+| `listHeaderBackgroundHovered`       | `colorNeutralBackground1Hover`         | Closest name and color match.                                                                                                                                                                                                                                 |
+| `listHeaderBackgroundPressed`       | `colorNeutralBackground1Pressed`       | Closest name and color match.; also considered `colorNeutralBackground1Selected` (Closest color match.)                                                                                                                                                       |
+| `listItemBackgroundChecked`         | `colorNeutralBackground1Selected`      | Closest name and color match.                                                                                                                                                                                                                                 |
+| `listItemBackgroundCheckedHovered`  | `colorNeutralBackground1Selected`      | Closest name match.; also considered `colorNeutralBackground1Pressed` (Closest color match.)                                                                                                                                                                  |
+| `listItemBackgroundHovered`         | `colorNeutralBackground1Hover`         | Closest name and color match.                                                                                                                                                                                                                                 |
+| `listText`                          | `colorNeutralForeground1`              | Closest color match.                                                                                                                                                                                                                                          |
+| `listTextColor`                     | `colorNeutralForeground1`              | Closest color match.                                                                                                                                                                                                                                          |
+| `menuBackground`                    | `colorNeutralBackground1`              | Used by MenuItem. v9 does not apply a background for Menu or MenuList.                                                                                                                                                                                        |
+| `menuDivider`                       | `colorNeutralStroke2`                  | Used by MenuItem.                                                                                                                                                                                                                                             |
+| `menuHeader`                        | `colorNeutralForeground3`              | Used by MenuItem. v9 does not apply brand color to menu group headers.; also considered `colorBrandForeground1` (Color match.)                                                                                                                                |
+| `menuIcon`                          | `colorNeutralForeground1`              | Used by MenuItem. v9 does not apply brand color to icons.; also considered `colorBrandForeground1` (Color match.)                                                                                                                                             |
+| `menuItemBackgroundChecked`         | `colorNeutralBackground1`              | Used by MenuItemCheckbox when check. v9 does not change the background when checked.                                                                                                                                                                          |
+| `menuItemBackgroundHovered`         | `colorNeutralBackground1Hover`         | Used by MenuItem.                                                                                                                                                                                                                                             |
+| `menuItemBackgroundPressed`         | `colorNeutralBackground1Hover`         | Used by MenuItem when active. v9 does not change the background when active and uses the hover color.; also considered `colorNeutralBackground1` (Menu item has this color when keyboard pressed but not hovered.)                                            |
+| `menuItemText`                      | `colorNeutralForeground1`              | Used by MenuItem.                                                                                                                                                                                                                                             |
+| `menuItemTextHovered`               | `colorNeutralForeground2Hover`         | Used by MenuItem when hovered.                                                                                                                                                                                                                                |
+| `messageLink`                       | `colorBrandForegroundLink`             | Used by Link.                                                                                                                                                                                                                                                 |
+| `messageLinkHovered`                | `colorBrandForegroundLinkHover`        | Used by Link.                                                                                                                                                                                                                                                 |
+| `messageText`                       | `colorNeutralForeground1`              | Closest color match.                                                                                                                                                                                                                                          |
+| `primaryButtonBackground`           | `colorBrandBackground`                 | Used by Button when appearance=primary.                                                                                                                                                                                                                       |
+| `primaryButtonBackgroundDisabled`   | `colorNeutralBackgroundDisabled`       | Used by Button when disabled. v9 does not specifically style appearance=primary and disabled.                                                                                                                                                                 |
+| `primaryButtonBackgroundHovered`    | `colorBrandBackgroundHover`            | Used by Button when appearance=primary and hovered.                                                                                                                                                                                                           |
+| `primaryButtonBackgroundPressed`    | `colorBrandBackgroundPressed`          | Used by Button when appearance=primary and active.                                                                                                                                                                                                            |
+| `primaryButtonBorder`               | `colorTransparentStroke`               | Used by Button when appearance=primary.                                                                                                                                                                                                                       |
+| `primaryButtonText`                 | `colorNeutralForegroundOnBrand`        | Used by Button when appearance=primary.                                                                                                                                                                                                                       |
+| `primaryButtonTextDisabled`         | `colorNeutralForegroundDisabled`       | Used by Button when disabled. v9 does not specifically style appearance=primary and disabled.                                                                                                                                                                 |
+| `primaryButtonTextHovered`          | `colorNeutralForegroundOnBrand`        | Used by Button when appearance=primary and hovered.                                                                                                                                                                                                           |
+| `primaryButtonTextPressed`          | `colorNeutralForegroundOnBrand`        | Used by Button when appearance=primary and active.                                                                                                                                                                                                            |
+
+## Named colors
+
+| v8 palette      | v9 global                         | Notes                                                                                                                                                                                                    |
+| --------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `yellowDark`    | `sharedColors.marigold.shade10`   | Closest color match. Marigold is darker yellow moving toward orange.; also considered `sharedColors.gold.primary` (Gold is darker yellow moving toward brown.)                                           |
+| `yellow`        | `sharedColors.yellow.primary`     | Name match; also considered `sharedColors.marigold.primary` (Closest color match given v8 yellow is tinted orange.)                                                                                      |
+| `yellowLight`   | `sharedColors.yellow.tint40`      | Name match tinted light.; also considered `sharedColors.yellow.tint20` (Closest color match given v8 light yellow is saturated.)                                                                         |
+| `orange`        | `sharedColors.orange.primary`     | Name match.; also considered `sharedColors.darkOrange.primary` (Closest color match.); also considered `sharedColors.peach.primary` (Traditional orange)                                                 |
+| `orangeLight`   | `sharedColors.orange.tint20`      | Name match tinted light.; also considered `sharedColors.darkOrange.tint10` (Closest color match.); also considered `sharedColors.peach.tint30` (Traditional light orange.)                               |
+| `orangeLighter` | `sharedColors.orange.tint40`      | Name match tinted lighter.; also considered `sharedColors.peach.primary` (Color match.); also considered `sharedColors.peach.tint40` (Traditional lighter orange.)                                       |
+| `redDark`       | `sharedColors.darkRed.primary`    | Name match; also considered `sharedColors.burgundy.primary` (Color match.); also considered `sharedColors.red.shade30` (Red shaded. Equivalent to darkRed.primary)                                       |
+| `red`           | `sharedColors.red.primary`        | Name match. v9 does not have a closer color match.                                                                                                                                                       |
+| `magentaDark`   | `sharedColors.magenta.shade30`    | Magenta shaded dark.; also considered `sharedColors.berry.shade30` (Closest color match.); also considered `sharedColors.plum.primary` (Plum is the darker version of magenta.)                          |
+| `magenta`       | `sharedColors.magenta.primary`    | Name match.; also considered `sharedColors.berry.primary` (Closest color match.); also considered `sharedColors.lilac.primary` (Lilac is a more purple version of berry.)                                |
+| `magentaLight`  | `sharedColors.magenta.tint30`     | Magenta tinted light.; also considered `sharedColors.hotPink.primary` (Color match.); also considered `sharedColors.pink.primary` (Pink is what some folks would think of as magenta light.)             |
+| `purpleDark`    | `sharedColors.darkPurple.primary` | Name match.                                                                                                                                                                                              |
+| `purple`        | `sharedColors.purple.primary`     | Name and color match.; also considered `sharedColors.orchid.primary` (Orchid is a lighter verison of purple.)                                                                                            |
+| `purpleLight`   | `sharedColors.purple.tint40`      | Name match tinted light.; also considered `sharedColors.orchid.tint40` (Orchid tinted is what some would consider light purple. ); also considered `sharedColors.lavender.tint30` (Closest color match.) |
+| `blueDark`      | `sharedColors.darkBlue.primary`   | Name match.; also considered `sharedColors.darkBlue.shade30` (Closest color match)                                                                                                                       |
+| `blueMid`       | `sharedColors.royalBlue.primary`  | Closest match between darkBlue and blue.; also considered `sharedColors.navy.shade10` (Closest color match.)                                                                                             |
+| `blue`          | `sharedColors.blue.primary`       | Name and color match.                                                                                                                                                                                    |
+| `blueLight`     | `sharedColors.lightBlue.primary`  | Name match.; also considered `sharedColors.blue.tint40` (Closest name match that is visibly lighter.)                                                                                                    |
+| `tealDark`      | `sharedColors.darkTeal.primary`   | Name match.; also considered `sharedColors.darkTeal.shade20` (Closest color match.)                                                                                                                      |
+| `teal`          | `sharedColors.teal.primary`       | Name match; also considered `sharedColors.darkTeal.tint10` (Closest color match.)                                                                                                                        |
+| `tealLight`     | `sharedColors.lightTeal.primary`  | Name match; also considered `sharedColors.seafoam.shade10` (Closest color match.)                                                                                                                        |
+| `greenDark`     | `sharedColors.darkGreen.primary`  | Name match.; also considered `sharedColors.darkGreen.shade20` (Closest color match)                                                                                                                      |
+| `green`         | `sharedColors.green.primary`      | Name and color match.                                                                                                                                                                                    |
+| `greenLight`    | `sharedColors.lightGreen.primary` | Name match.; also considered `sharedColors.lime.tint10` (Closest color match.); also considered `sharedColors.green.tint30` (Green tinted.)                                                              |

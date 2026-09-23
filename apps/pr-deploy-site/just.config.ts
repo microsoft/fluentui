@@ -59,6 +59,11 @@ repoDeps.forEach(dep => {
   }
 });
 
+// The docsite's Nx preparation target stages its root-mounted routes before this task starts.
+if (['react', 'headless'].every(tree => fs.existsSync(path.join('dist', 'docs', tree, 'index.html')))) {
+  deployedPackages.add('@fluentui/public-docsite-v9-fumadocs');
+}
+
 /**
  * Sets the list of tiles to render based on which packages were actually built
  */

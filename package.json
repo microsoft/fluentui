@@ -319,7 +319,7 @@
     "turndown-plugin-gfm": "1.0.2",
     "typescript": "5.7.3",
     "typescript-eslint": "8.46.2",
-    "vite": "6.4.2",
+    "vite": "7.3.6",
     "web-features": "3.30.0",
     "webpack": "5.108.4",
     "webpack-bundle-analyzer": "4.10.1",
@@ -361,6 +361,11 @@
     }
   },
   "resolutions": {
+    "@floating-ui/core@npm:1.6.8/@floating-ui/utils": "0.2.8",
+    "@floating-ui/dom@npm:1.6.12/@floating-ui/core": "1.6.8",
+    "@floating-ui/dom@npm:1.6.12/@floating-ui/utils": "0.2.8",
+    "@fluentui/react-positioning/@floating-ui/dom": "1.6.12",
+    "@oddbird/css-anchor-positioning/@floating-ui/dom": "1.6.12",
     "@nx/devkit/minimatch": "^9.0.7",
     "@nx/jest/minimatch": "^9.0.7",
     "@phenomnomnominal/tsquery": "6.1.3",

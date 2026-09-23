@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "!index",
+    "getting-started",
+    "guide",
+    "migration",
+    "foundations",
+    "components",
+    "motion",
+    "utilities",
+    "..."
+  ]
+}

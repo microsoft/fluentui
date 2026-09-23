@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "types": ["node", "jest"], "verbatimModuleSyntax": false },
+  "include": ["src/**/*.test.ts", "vite-plugins/**/*.test.ts"]
+}

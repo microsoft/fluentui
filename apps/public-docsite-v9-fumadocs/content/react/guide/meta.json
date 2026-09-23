@@ -1,0 +1,22 @@
+{
+  "title": "Guide",
+  "pages": [
+    "accessibility",
+    "advanced-configuration",
+    "advanced-styling-techniques",
+    "browser-support-matrix",
+    "build-time-styles",
+    "building-custom-controls",
+    "customizing-components-with-slots",
+    "package-maturity-levels",
+    "positioning-components",
+    "react-version-support",
+    "server-side-rendering",
+    "styling-components",
+    "supported-platforms",
+    "theming",
+    "unprocessed-styles",
+    "web-components-interop",
+    "..."
+  ]
+}

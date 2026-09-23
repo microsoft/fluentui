@@ -9,7 +9,8 @@ import type {
   PresenceMotionSlotProps,
   Slot,
 } from '@fluentui/react-components';
-import { Fade, type FadeParams } from '../../../../react-motion-components-preview/library/src/index';
+import { Fade } from '@fluentui/react-motion-components-preview';
+import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 
 import description from './PresenceMotionSlotDefault.stories.md';
