@@ -26,7 +26,7 @@
     cursor: default;
   }
 
-  [data-activedescendant-focusvisible] &::after {
+  &[data-activedescendant-focusvisible]::after {
     position: absolute;
     z-index: 1;
     inset: -2px;

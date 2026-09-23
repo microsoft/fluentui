@@ -1,11 +1,12 @@
 'use client';
 
 import { useTagPicker as useTagPickerBase } from '@fluentui/react-headless-components-preview/tag-picker';
+import { getListboxPositioning } from '../../Dropdown/getListboxPositioning';
 import type { TagPickerProps, TagPickerState } from './TagPicker.types';
 
 export const useTagPicker = (props: TagPickerProps): TagPickerState => {
-  const { appearance = 'outline', size = 'medium', ...rest } = props;
-  const state = useTagPickerBase(rest);
+  const { appearance = 'outline', positioning, size = 'medium', ...rest } = props;
+  const state = useTagPickerBase({ ...rest, positioning: getListboxPositioning(positioning) });
 
   return { ...state, appearance, size };
 };

@@ -190,13 +190,19 @@
   }
 }
 
-.expandIcon [data-default-icon] {
-  display: block;
-  inline-size: 7px;
-  block-size: 7px;
-  border-inline-end: var(--strokeWidthThin) solid currentcolor;
-  border-block-end: var(--strokeWidthThin) solid currentcolor;
-  transform: translateY(-2px) rotate(45deg);
+.expandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  [data-default-icon] {
+    display: block;
+    inline-size: 7px;
+    block-size: 7px;
+    border-inline-end: var(--strokeWidthThin) solid currentcolor;
+    border-block-end: var(--strokeWidthThin) solid currentcolor;
+    transform: translateY(-2px) rotate(45deg);
+  }
 }
 
 .clearIcon {
