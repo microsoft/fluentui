@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { PresenceBadge } from '@fluentui/react-badge';
+import { PresenceBadge } from '@fluentui/react-modern-components-preview/badge';
 import { tokens } from '@fluentui/react-theme';
 import { Steps } from 'storywright';
 import { getStoryVariant, TestWrapperDecorator, HIGH_CONTRAST, DARK_MODE } from '../../utilities';

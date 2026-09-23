@@ -29,7 +29,7 @@ import {
   MoreHorizontal20Regular,
   SquareMultiple20Regular,
 } from '@fluentui/react-icons';
-import { CounterBadge } from '@fluentui/react-badge';
+import { CounterBadge } from '@fluentui/react-modern-components-preview/badge';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type { PresenceBadgeStatus } from '@fluentui/react-modern-components-preview/badge';
 import type { TableColumnDefinition } from '@fluentui/react-table';
 import { createTableColumn } from '@fluentui/react-table';
 import {
