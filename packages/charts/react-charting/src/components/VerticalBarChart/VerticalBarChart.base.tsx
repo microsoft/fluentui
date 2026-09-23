@@ -1074,7 +1074,7 @@ export class VerticalBarChartBase
     const { theme, useSingleColor } = this.props;
     const { lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const actions: ILegend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
@@ -1240,7 +1240,7 @@ export class VerticalBarChartBase
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
-    const mapX: Record<string, number | string | Date> = {};
+    const mapX: Record<string, number | string | Date> = Object.create(null);
     this.props.data?.forEach(point => {
       if (point.x instanceof Date) {
         mapX[point.x.getTime()] = point.x;
@@ -1349,7 +1349,7 @@ export class VerticalBarChartBase
   };
 
   private _mapCategoryToValues = () => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this._points.forEach(point => {
       const xValue = point.x as string;
       if (!categoryToValues[xValue]) {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: render the primary story only once on docs pages",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

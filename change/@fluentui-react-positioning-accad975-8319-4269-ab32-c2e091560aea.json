@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Treat unavailable positioning geometry as indeterminate when reporting visibility flags.",
-  "packageName": "@fluentui/react-positioning",
-  "email": "bernardo.sunderhus@gmail.com"
-}

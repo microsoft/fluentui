@@ -372,7 +372,7 @@ export class VerticalStackedBarChartBase
 
   private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {
     const linesData: LinePoint[] = [];
-    const formattedLineData: LineObject = {};
+    const formattedLineData: LineObject = Object.create(null);
     data.forEach((item: IVerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         // injecting corresponding x data point in each of the line data
@@ -1514,7 +1514,7 @@ export class VerticalStackedBarChartBase
   };
 
   private _mapCategoryToValues = (isYAxis = false) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this._points.forEach(point => {
       point.chartData.forEach(bar => {
         const category = (isYAxis ? bar.data : point.xAxisPoint) as string;

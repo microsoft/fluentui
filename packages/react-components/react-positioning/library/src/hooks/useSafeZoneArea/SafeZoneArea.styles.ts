@@ -20,10 +20,10 @@ export const useStyles = makeStyles({
     top: 0,
     left: 0,
   },
-  triangle: {
+  safeZone: {
     pointerEvents: 'auto',
   },
-  triangleDebug: {
+  safeZoneDebug: {
     cursor: 'crosshair',
     fill: `color-mix(in srgb, ${tokens.colorPaletteGreenBackground3} 20%, transparent)`,
   },
