@@ -20,12 +20,6 @@ parameters:
   - name: nxScope
     type: string
 
-  # npm distribution tag override.
-  # Defaults to 'latest' for official releases and ${{ parameters.releaseType }} otherwise.
-  - name: npmTag
-    type: string
-    default: ''
-
   # Required for experimental/nightly: this script should invoke @fluentui/workspace-plugin:version-bump
   # with arguments to bump the appropriate packages to the desired version.
   # For releaseType: 'experimental', the environment variable `EXPERIMENTAL_FEATURE_NAME` will be available.
@@ -284,11 +278,9 @@ extends:
                 env:
                   PACKED_PACKAGES_PATH: $(PACKAGES_ARTIFACT_PATH)
                   ESRP_PRODUCT_NAME: fluentui - ${{ parameters.label }}
-                  ${{ if ne(parameters.npmTag, '') }}:
-                    ESRP_NPM_TAG: ${{ parameters.npmTag }}
-                  ${{ elseif eq(parameters.releaseType, 'official') }}:
-                    ESRP_NPM_TAG: latest
-                  ${{ else }}:
+                  # For non-official releases, use the npm tag "experimental" or "nightly".
+                  # ESRP also respects publishConfig.tag in package.json for an individual package.
+                  ${{ if ne(parameters.releaseType, 'official') }}:
                     ESRP_NPM_TAG: ${{ parameters.releaseType }}
                   # The release is auto-approved (this only controls owners in the ESRP release UI).
                   # TODO figure out who should be listed as owners/approvers (it's not very important since it's auto-approved)
