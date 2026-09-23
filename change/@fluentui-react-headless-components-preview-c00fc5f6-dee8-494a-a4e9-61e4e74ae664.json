@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: expose Dropdown invalid and clear button visibility data attributes",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

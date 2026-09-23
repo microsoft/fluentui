@@ -1,6 +1,0 @@
-{
-  "type": "none",
-  "comment": "release recovery: versions already published to npm by the failed pipeline",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "bernardo.sunderhus@gmail.com"
-}
