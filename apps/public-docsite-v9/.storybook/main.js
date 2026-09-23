@@ -32,12 +32,19 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
         '@fluentui/react-storybook-addon',
         '@fluentui/react-storybook-addon-export-to-sandbox',
         '@fluentui/theme-designer',
+        // Include these stories below with a prefix to avoid IDs shared with the stable components.
+        '@fluentui/react-modern-components-preview',
         // Exclude non v9 stories
         '@fluentui/react',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
         '@fluentui/react-nav',
       ],
     }),
+    {
+      directory: '../../../packages/react-components/react-modern-components-preview/stories/src',
+      files: '**/@(index.stories.@(ts|tsx)|*.mdx)',
+      titlePrefix: 'Modern Components',
+    },
     // This is a workaround to include only the Nav component stories from react-nav package
     // as the package has a lot of broken stories that are causing the build to fail.
     //
