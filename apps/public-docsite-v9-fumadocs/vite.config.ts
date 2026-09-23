@@ -44,6 +44,16 @@ export default defineConfig(
     build: {
       assetsDir: 'docs/assets',
       rollupOptions: {
+        output: {
+          // Calendar's internal barrels form a cycle. Keep that library together rather
+          // than splitting its implementation and re-exports between lazy page chunks.
+          manualChunks(id) {
+            if (id.replace(/\\/g, '/').includes('/react-calendar-compat/library/src/')) {
+              return 'calendar-compat';
+            }
+          },
+          onlyExplicitManualChunks: true,
+        },
         onwarn(warning, defaultHandler) {
           if (warning.code === 'MODULE_LEVEL_DIRECTIVE' || warning.code === 'SOURCEMAP_ERROR') {
             return;

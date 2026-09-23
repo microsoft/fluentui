@@ -13,20 +13,6 @@
         "command": "node scripts/prepare-pr-deploy.cjs"
       }
     },
-    "test-pr-deploy": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "apps/public-docsite-v9-fumadocs",
-        "command": "node --test scripts/prepare-pr-deploy.test.cjs"
-      }
-    },
-    "test": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "apps/public-docsite-v9-fumadocs",
-        "command": "yarn run -T jest --config jest.config.cjs --runInBand"
-      }
-    },
     "build": {
       "outputs": ["{projectRoot}/dist", "{projectRoot}/.source", "{projectRoot}/.react-router"],
       "inputs": [
@@ -58,8 +44,7 @@
       "dependsOn": ["build"],
       "inputs": ["default", "{workspaceRoot}/eslint.config.js"],
       "options": {
-        "command": "yarn run -T eslint .",
-        "cwd": "apps/public-docsite-v9-fumadocs"
+        "command": "yarn run -T eslint ."
       }
     },
     "clean": {

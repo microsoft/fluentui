@@ -1,6 +1,10 @@
+/**
+ * Generates Markdown text exports in Node during development and build-time static prerendering.
+ * The .server.ts suffix keeps this code out of browser bundles; production serves the generated text files.
+ */
 import { llms } from 'fumadocs-core/source/llms';
 import { renderPlaceholder } from 'fumadocs-core/mdx-plugins/remark-llms.runtime';
-import { sources } from './source';
+import { sources } from './source.server';
 import type { DocsTree } from './source';
 import { createDocsTree } from './utils/createDocsTree';
 import { getOverviewLinks } from './utils/getOverviewLinks';

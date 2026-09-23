@@ -1,6 +1,10 @@
+/**
+ * Generates the search index in Node during development and build-time static prerendering.
+ * The .server.ts suffix keeps this code out of browser bundles; production serves the generated index file.
+ */
 import { createSearchAPI } from 'fumadocs-core/search/server';
 import type { AdvancedIndex } from 'fumadocs-core/search/server';
-import { sources } from './source';
+import { sources } from './source.server';
 import { createDocsTree } from './utils/createDocsTree';
 import type { Root } from 'fumadocs-core/page-tree';
 

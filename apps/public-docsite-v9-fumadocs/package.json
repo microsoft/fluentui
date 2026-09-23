@@ -6,7 +6,7 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "react-router typegen && react-router build",
+    "build": "react-router typegen && NODE_OPTIONS=--max-old-space-size=4096 react-router build",
     "dev": "react-router dev",
     "preview": "vite preview",
     "start": "react-router dev"
