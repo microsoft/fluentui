@@ -2,7 +2,7 @@ import type {
   PresenceBadgeProps as PresenceBadgeBaseProps,
   PresenceBadgeState as PresenceBadgeBaseState,
 } from '@fluentui/react-headless-components-preview/badge';
-import type { BadgeProps } from './Badge.types';
+import type { BadgeProps } from '../Badge/Badge.types';
 
 export type {
   BadgeSlots as PresenceBadgeSlots,

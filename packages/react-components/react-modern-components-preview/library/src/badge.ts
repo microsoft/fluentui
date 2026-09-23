@@ -1,29 +1,25 @@
+export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './components/Badge/index';
+export type { BadgeProps, BadgeSlots, BadgeState } from './components/Badge/index';
+
 export {
-  Badge,
-  badgeClassNames,
   CounterBadge,
   counterBadgeClassNames,
-  PresenceBadge,
-  presenceBadgeClassNames,
-  renderBadge,
   renderCounterBadge,
-  renderPresenceBadge,
-  useBadge,
-  useBadgeStyles,
   useCounterBadge,
   useCounterBadgeStyles,
+} from './components/CounterBadge/index';
+export type { CounterBadgeProps, CounterBadgeSlots, CounterBadgeState } from './components/CounterBadge/index';
+
+export {
+  PresenceBadge,
+  presenceBadgeClassNames,
+  renderPresenceBadge,
   usePresenceBadge,
   usePresenceBadgeStyles,
-} from './components/Badge/index';
+} from './components/PresenceBadge/index';
 export type {
-  BadgeProps,
-  BadgeSlots,
-  BadgeState,
-  CounterBadgeProps,
-  CounterBadgeSlots,
-  CounterBadgeState,
   PresenceBadgeProps,
   PresenceBadgeSlots,
   PresenceBadgeState,
   PresenceBadgeStatus,
-} from './components/Badge/index';
+} from './components/PresenceBadge/index';

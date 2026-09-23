@@ -1,0 +1,10 @@
+.root[data-dot] {
+  inline-size: 6px;
+  block-size: 6px;
+  min-inline-size: auto;
+  padding: 0;
+}
+
+.root[data-hidden] {
+  display: none;
+}
