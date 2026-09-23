@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const babel = require('@babel/core');
 const parser = require('@babel/parser');
 
 const modernPackageName = '@fluentui/react-modern-components-preview';
@@ -102,7 +103,13 @@ function createModernExportMap() {
 
 const modernExportMap = createModernExportMap();
 
-module.exports = function rewriteModernImports({ types: t }) {
+function rewriteModernImports(babelApi, options = {}) {
+  if (options.fullSource) {
+    return rewriteModernFullSource(babelApi);
+  }
+
+  const { types: t } = babelApi;
+
   return {
     name: 'rewrite-fluent-modern-component-imports',
     visitor: {
@@ -160,4 +167,47 @@ module.exports = function rewriteModernImports({ types: t }) {
       },
     },
   };
-};
+}
+
+function transformModernImports(source) {
+  return (
+    babel.transformSync(source, {
+      babelrc: false,
+      configFile: false,
+      filename: 'modern-story-source.tsx',
+      parserOpts: {
+        plugins: ['classProperties', 'jsx', 'objectRestSpread', 'typescript'],
+      },
+      plugins: [rewriteModernImports],
+    })?.code ?? source
+  );
+}
+
+function rewriteModernFullSource({ types: t }) {
+  return {
+    name: 'rewrite-fluent-modern-full-source',
+    visitor: {
+      Program: {
+        exit(programPath) {
+          programPath.traverse({
+            AssignmentExpression(assignmentPath) {
+              const { left, right } = assignmentPath.node;
+              const isFullSourceAssignment =
+                t.isMemberExpression(left) &&
+                ((t.isIdentifier(left.property) && left.property.name === 'fullSource') ||
+                  (left.computed && t.isStringLiteral(left.property, { value: 'fullSource' })));
+
+              if (isFullSourceAssignment && t.isStringLiteral(right)) {
+                right.value = transformModernImports(right.value);
+              }
+            },
+          });
+        },
+      },
+    },
+  };
+}
+
+module.exports = rewriteModernImports;
+module.exports.rewriteModernFullSource = rewriteModernFullSource;
+module.exports.transformModernImports = transformModernImports;

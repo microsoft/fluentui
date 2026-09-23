@@ -1,5 +1,9 @@
 const rootMain = require('../../../../../.storybook/main');
-const { registerModernComponentImportTransform, storySourceDirectories } = require('../config/modernStorybook');
+const {
+  registerModernComponentImportTransform,
+  registerModernFullSourceTransform,
+  storySourceDirectories,
+} = require('../config/modernStorybook');
 
 module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -7,7 +11,7 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
     directory,
     files: '**/@(index.stories.@(ts|tsx)|*.mdx)',
   })),
-  addons: [...rootMain.addons],
+  addons: registerModernFullSourceTransform(rootMain.addons),
   webpackFinal: async (config, options) => {
     const localConfig = { ...(await rootMain.webpackFinal(config, options)) };
 
