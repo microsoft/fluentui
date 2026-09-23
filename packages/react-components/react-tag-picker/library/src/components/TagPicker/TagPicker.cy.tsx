@@ -8,6 +8,7 @@ import { TagPickerControl } from '../TagPickerControl/TagPickerControl';
 import { TagPickerGroup } from '../TagPickerGroup/TagPickerGroup';
 import { Tag } from '@fluentui/react-tags';
 import { TagPickerInput } from '../TagPickerInput/TagPickerInput';
+import { TagPickerButton } from '../TagPickerButton/TagPickerButton';
 import { TagPickerList } from '../TagPickerList/TagPickerList';
 import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
@@ -304,6 +305,39 @@ describe('TagPicker', () => {
       cy.get('[data-testid="tag-picker-input"]').should('have.value', '');
       cy.get('[data-testid="tag-picker-list"]').should('not.exist');
       cy.get('[data-testid="tag-picker-control__secondaryAction"]').should('be.focused');
+    });
+
+    it('should select the active option when tabbing from a single-select button', () => {
+      const SingleSelectButton = () => {
+        const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+        return (
+          <>
+            <TagPicker
+              defaultOpen
+              inline
+              selectionMode="single"
+              selectedOptions={selectedOptions}
+              onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
+            >
+              <TagPickerButton data-testid="tag-picker-button">Select employee</TagPickerButton>
+              <TagPickerList data-testid="tag-picker-list">
+                <TagPickerOption value={options[0]}>{options[0]}</TagPickerOption>
+                <TagPickerOption value={options[1]}>{options[1]}</TagPickerOption>
+              </TagPickerList>
+            </TagPicker>
+            <output data-testid="selected-options">{selectedOptions.join(',')}</output>
+            <button id="after-button">After</button>
+          </>
+        );
+      };
+
+      mount(<SingleSelectButton />);
+
+      cy.get('[data-testid="tag-picker-button"]').focus().realPress('Tab');
+
+      cy.get('[data-testid="selected-options"]').should('have.text', options[0]);
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get('#after-button').should('be.focused');
     });
 
     it('should not select the active option when tabbing away from the input', () => {

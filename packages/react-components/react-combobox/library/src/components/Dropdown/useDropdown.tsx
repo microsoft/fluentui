@@ -21,7 +21,8 @@ import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
-import { useTabsterKeydownIgnore } from '../../hooks/useTabsterKeydownIgnore';
+import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
+import { useTabsterMoveFocusSelection } from '../../hooks/useTabsterMoveFocusSelection';
 
 /**
  * Create the base state required to render Dropdown, without design-only props.
@@ -166,6 +167,13 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const fieldContext = useFieldContext_unstable();
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useDropdownBase_unstable(baseProps, ref);
+  const tabsterMoveFocusRef = useTabsterMoveFocusSelection({
+    activeDescendantController: baseState.activeDescendantController,
+    getOptionById: baseState.getOptionById,
+    multiselect: baseState.multiselect,
+    open: baseState.open,
+    selectOption: baseState.selectOption,
+  });
 
   if (baseState.clearButton) {
     baseState.clearButton.children ??= <DismissIcon />;
@@ -180,8 +188,9 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     appearance,
     size,
     button: {
-      ...useTabsterKeydownIgnore(baseState.button, { Escape: baseState.open, Tab: baseState.open || undefined }),
+      ...useTabsterEscapeIgnore(baseState.button, baseState.open),
       ...baseState.button,
+      ref: useMergedRefs(baseState.button.ref, tabsterMoveFocusRef),
     },
   };
 };
