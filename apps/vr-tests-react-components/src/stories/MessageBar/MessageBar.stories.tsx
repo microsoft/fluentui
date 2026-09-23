@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { MessageBarIntent } from '@fluentui/react-modern-components-preview/message-bar';
+import type {
+  MessageBarIntent} from '@fluentui/react-modern-components-preview/message-bar';
 import {
   MessageBar,
   MessageBarActions,

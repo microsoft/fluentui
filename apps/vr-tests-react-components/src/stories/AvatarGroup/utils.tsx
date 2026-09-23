@@ -1,5 +1,7 @@
 import * as React from 'react';
-import type { AvatarGroupPopoverProps, AvatarGroupProps } from '@fluentui/react-modern-components-preview/avatar-group';
+import type {
+  AvatarGroupPopoverProps,
+  AvatarGroupProps} from '@fluentui/react-modern-components-preview/avatar-group';
 import {
   AvatarGroup,
   AvatarGroupItem,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import type { BreadcrumbProps } from '@fluentui/react-modern-components-preview/breadcrumb';
+import type {
+  BreadcrumbProps} from '@fluentui/react-modern-components-preview/breadcrumb';
 import {
   Breadcrumb,
   BreadcrumbButton,
