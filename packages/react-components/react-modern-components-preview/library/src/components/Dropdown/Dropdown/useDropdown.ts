@@ -6,14 +6,15 @@ import {
   useDropdown as useDropdownBase,
   useDropdownContextValues,
 } from '@fluentui/react-headless-components-preview/dropdown';
+import { getListboxPositioning } from '../getListboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 
 export { useDropdownContextValues };
 
 export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
-  const { appearance = 'outline', size = 'medium', ...rest } = props;
-  const state = useDropdownBase(rest, ref);
+  const { appearance = 'outline', positioning, size = 'medium', ...rest } = props;
+  const state = useDropdownBase({ ...rest, positioning: getListboxPositioning(positioning) }, ref);
 
   return {
     ...state,

@@ -25,6 +25,16 @@
     color: var(--colorNeutralForegroundDisabled);
     cursor: default;
   }
+
+  &[data-activedescendant-focusvisible]::after {
+    position: absolute;
+    z-index: 1;
+    inset: -2px;
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    content: '';
+    pointer-events: none;
+  }
 }
 
 .withSecondaryContent {

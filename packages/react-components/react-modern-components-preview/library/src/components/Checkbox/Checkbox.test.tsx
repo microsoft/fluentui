@@ -24,6 +24,7 @@ describe('Checkbox', () => {
     expect(root).toHaveClass(checkboxClassNames.root);
     expect(input).toHaveClass(checkboxClassNames.input);
     expect(getByText('Checkbox')).toHaveClass(checkboxClassNames.label);
+    expect(root?.querySelector(`.${checkboxClassNames.indicator} svg`)).toBeInTheDocument();
   });
 
   it('preserves consumer class names', () => {
@@ -32,5 +33,26 @@ describe('Checkbox', () => {
 
     expect(input.parentElement).toHaveClass('custom-root');
     expect(input).toHaveClass('custom-input');
+  });
+
+  it.each([
+    ['mixed', 'square', 'medium'],
+    ['mixed', 'square', 'large'],
+    ['mixed', 'circular', 'medium'],
+    [true, 'square', 'large'],
+  ] as const)('renders a default indicator for checked=%s shape=%s size=%s', (checked, shape, size) => {
+    const { getByRole } = render(<Checkbox checked={checked} shape={shape} size={size} aria-label="Checkbox" />);
+    const indicator = getByRole('checkbox').parentElement?.querySelector(`.${checkboxClassNames.indicator}`);
+
+    expect(indicator?.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('preserves a custom indicator', () => {
+    const { getByTestId } = render(
+      <Checkbox defaultChecked aria-label="Checkbox" indicator={<span data-testid="custom-indicator">Custom</span>} />,
+    );
+
+    expect(getByTestId('custom-indicator')).toHaveTextContent('Custom');
+    expect(getByTestId('custom-indicator').querySelector('svg')).not.toBeInTheDocument();
   });
 });

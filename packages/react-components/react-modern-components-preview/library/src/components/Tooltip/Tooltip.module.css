@@ -25,11 +25,39 @@
 }
 
 .arrow {
+  /* Matches createArrowHeightStyles(6): rotated-square edge (6 * 1.414) and its negative half-offset. */
+  --fui-positioning-arrow-height: 8.484px;
+  --fui-positioning-arrow-offset: -4.242px;
+
   position: absolute;
-  inline-size: 8.4853px;
-  block-size: 8.4853px;
+  z-index: -1;
+  box-sizing: border-box;
+  inline-size: var(--fui-positioning-arrow-height);
+  block-size: var(--fui-positioning-arrow-height);
   background-color: inherit;
+  background-clip: content-box;
   border-inline-end: inherit;
   border-block-end: inherit;
-  transform: rotate(45deg);
+  border-end-start-radius: var(--borderRadiusSmall);
+  transform: rotate(var(--fui-positioning-arrow-angle));
+}
+
+.content[data-placement^='above'] > .arrow {
+  inset-block-end: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: -45deg;
+}
+
+.content[data-placement^='after'] > .arrow {
+  inset-inline-start: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 45deg;
+}
+
+.content[data-placement^='below'] > .arrow {
+  inset-block-start: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 135deg;
+}
+
+.content[data-placement^='before'] > .arrow {
+  inset-inline-end: var(--fui-positioning-arrow-offset);
+  --fui-positioning-arrow-angle: 225deg;
 }

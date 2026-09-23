@@ -8,7 +8,7 @@ import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-headless-
 import { CheckboxSlots } from '@fluentui/react-headless-components-preview/checkbox';
 import type { CheckboxState as CheckboxState_2 } from '@fluentui/react-headless-components-preview/checkbox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 

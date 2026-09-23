@@ -8,13 +8,14 @@ import {
   useComboboxFilter,
 } from '@fluentui/react-headless-components-preview/combobox';
 import { Listbox } from '../Dropdown/Listbox/Listbox';
+import { getListboxPositioning } from '../Dropdown/getListboxPositioning';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
 export { useComboboxContextValues, useComboboxFilter };
 
 export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const { appearance = 'outline', size = 'medium', ...rest } = props;
-  const state = useComboboxBase(rest, ref);
+  const { appearance = 'outline', positioning, size = 'medium', ...rest } = props;
+  const state = useComboboxBase({ ...rest, positioning: getListboxPositioning(positioning) }, ref);
 
   return {
     ...state,
