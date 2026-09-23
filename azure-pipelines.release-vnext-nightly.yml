@@ -1,14 +1,14 @@
 pr: none
 trigger: none
 
+# Example: v9_nightly_20201022.1
+name: "v9_nightly_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
+
 parameters:
   - name: dryRun
     displayName: Dry Run Mode
     type: boolean
     default: false
-
-# Example: v9_nightly_20201022.1
-name: "v9_nightly_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - template: /.devops/templates/variables/variables.yml@self
