@@ -1,7 +1,7 @@
 'use client';
 
 import { openInStackBlitz } from '../utils/sandbox';
-import type { Data } from '../utils/sandbox';
+import type { SandboxData } from '../utils/sandbox';
 import * as React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { DocsButton } from './DocsControls';
@@ -20,10 +20,10 @@ const SANDBOX_CONFIG = {
     '@types/react-dom': '^19',
     typescript: '~5.7.0',
   },
-} satisfies Pick<Data, 'requiredDependencies' | 'optionalDependencies' | 'devDependencies'>;
+} satisfies Pick<SandboxData, 'requiredDependencies' | 'optionalDependencies' | 'devDependencies'>;
 
 export interface OpenInSandboxProps {
-  story: { parameters?: { fullSource?: string; cssModuleSources?: Data['cssModuleSources'] } };
+  story: { parameters?: { fullSource?: string; cssModuleSources?: SandboxData['cssModuleSources'] } };
   exportToken: string;
   description: string;
 }

@@ -2,7 +2,7 @@
 title: Build time styles
 ---
 
-import imageFile from '@repo/apps/public-docsite-v9/public/style-resolution.png';
+import imageFile from '../../../src/assets/react/style-resolution.png';
 
 ## Optimize runtime cost of styles
 
@@ -216,8 +216,8 @@ export const commonStyles = () => ({
 
 // styles.ts
 import { makeStyles } from '@fluentui/react-components';
-import { PADDING_TOKEN } from '@repo/apps/public-docsite-v9/src/Concepts/constants';
-import { commonStyles } from '@repo/apps/public-docsite-v9/src/Concepts/common';
+import { PADDING_TOKEN } from './constants';
+import { commonStyles } from './common';
 
 const useStyles = makeStyles({
   root: { paddingLeft: PADDING_TOKEN, ...commonStyles() },

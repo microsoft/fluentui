@@ -9,6 +9,8 @@ import type { DocsTree } from './source';
 import { createDocsTree } from './utils/createDocsTree';
 import { getOverviewLinks } from './utils/getOverviewLinks';
 import { docsBasename } from './utils/paths';
+import { rewriteMarkdownLinks } from './utils/rewriteMarkdownLinks';
+import type { GuideDemo } from './components/GuideExamples';
 
 type Story = (() => unknown) & {
   parameters?: { fullSource?: string; docs?: { description?: { story?: string } } };
@@ -64,6 +66,19 @@ export async function pageMarkdown(collection: DocsTree, slugs: string[]): Promi
   const components = loaded._exports._componentPages as ComponentContent[];
   const body = await renderPlaceholder(markdown, {
     // eslint-disable-next-line @typescript-eslint/naming-convention
+    GuideExamples({ attributes }) {
+      const guide = (loaded._exports._componentPages as unknown[])[Number(attributes['data-llms-id'])] as {
+        description?: string;
+        examples: GuideDemo[];
+      };
+      return [
+        guide.description,
+        ...guide.examples.map(example => [`## ${example.name}`, example.description].filter(Boolean).join('\n\n')),
+      ]
+        .filter(Boolean)
+        .join('\n\n');
+    },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     ComponentPage({ attributes, children }) {
       const component = components[Number(attributes['data-llms-id'])];
       if (!component) {
@@ -110,7 +125,8 @@ export async function pageMarkdown(collection: DocsTree, slugs: string[]): Promi
     throw new Error(`Unresolved Markdown placeholder in ${page.url}`);
   }
 
-  return [`# ${page.data.title}`, components.length === 0 ? page.data.description : undefined, body.trim()]
+  const result = [`# ${page.data.title}`, components.length === 0 ? page.data.description : undefined, body.trim()]
     .filter(Boolean)
     .join('\n\n');
+  return rewriteMarkdownLinks(result, page.url, docsBasename);
 }

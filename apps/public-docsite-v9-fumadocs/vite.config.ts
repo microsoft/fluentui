@@ -6,12 +6,12 @@ import mdx from 'fumadocs-mdx/vite';
 import { createLogger, defineConfig } from 'vite';
 import type { UserConfig } from 'vite';
 
-import * as MdxConfig from './source.config.js';
-import { fullSource } from './vite-plugins/full-source.js';
-import { markdownAsString } from './vite-plugins/markdown-as-string.js';
-import { scopeStoryGlobals } from './vite-plugins/scope-story-globals.js';
-import { storyOrder } from './vite-plugins/story-order.js';
-import { tsconfigAliases } from './vite-plugins/tsconfig-aliases.js';
+import * as MdxConfig from './source.config.ts';
+import { fullSource } from './vite-plugins/full-source.ts';
+import { markdownAsString } from './vite-plugins/markdown-as-string.ts';
+import { scopeStoryGlobals } from './vite-plugins/scope-story-globals.ts';
+import { storyOrder } from './vite-plugins/story-order.ts';
+import { tsconfigAliases } from './vite-plugins/tsconfig-aliases.ts';
 
 const require = (await import('node:module')).createRequire(import.meta.url);
 const { getImportMappingsForExportToSandboxAddon } = require('@fluentui/scripts-storybook');
@@ -41,6 +41,10 @@ export default defineConfig(
   async (): Promise<UserConfig> => ({
     base: hostingBase,
     customLogger: logger,
+    optimizeDeps: {
+      // Fumadocs Story loads this CommonJS entry through its form controls.
+      include: ['use-sync-external-store/shim/with-selector'],
+    },
     build: {
       assetsDir: 'docs/assets',
       rollupOptions: {
@@ -52,7 +56,6 @@ export default defineConfig(
               return 'calendar-compat';
             }
           },
-          onlyExplicitManualChunks: true,
         },
         onwarn(warning, defaultHandler) {
           if (warning.code === 'MODULE_LEVEL_DIRECTIVE' || warning.code === 'SOURCEMAP_ERROR') {

@@ -4,8 +4,8 @@ import type { Generator } from 'fumadocs-typescript';
 
 import type { Nodes } from 'mdast';
 import type { MdxJsxAttribute } from 'mdast-util-mdx-jsx';
-import { componentApiSource } from './component-api-source';
-import { toKebabCase } from '../src/utils/toKebabCase';
+import { componentApiSource } from './component-api-source.ts';
+import { toKebabCase } from '../src/utils/toKebabCase.ts';
 
 function walk(node: Nodes, callback: (node: Nodes) => void): void {
   callback(node);

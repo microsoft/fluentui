@@ -7,6 +7,7 @@ import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/page';
 import * as React from 'react';
+import { hasComponentPage } from '../utils/hasComponentPage';
 import browserCollections from '../../.source/browser';
 import type { TOCItemType } from 'fumadocs-core/toc';
 import type { MDXProps } from 'mdx/types';
@@ -43,7 +44,8 @@ const contentLoaders = {
         data={{
           body: data.default,
           toc: data.toc,
-          hasComponentPage: Array.isArray(data._componentPages) && data._componentPages.length > 0,
+          hasComponentPage: hasComponentPage(data._componentPages),
+          components: data.components as MDXProps['components'],
         }}
       />
     ),
@@ -55,7 +57,8 @@ const contentLoaders = {
         data={{
           body: data.default,
           toc: data.toc,
-          hasComponentPage: Array.isArray(data._componentPages) && data._componentPages.length > 0,
+          hasComponentPage: hasComponentPage(data._componentPages),
+          components: data.components as MDXProps['components'],
         }}
       />
     ),
@@ -77,7 +80,12 @@ const LoadedContent = ({
   home = false,
   data,
 }: ContentProps & {
-  data: { body: React.ComponentType<MDXProps>; toc?: TOCItemType[]; hasComponentPage: boolean };
+  data: {
+    body: React.ComponentType<MDXProps>;
+    toc?: TOCItemType[];
+    hasComponentPage: boolean;
+    components?: MDXProps['components'];
+  };
 }) => {
   const bodyRef = React.useRef<HTMLDivElement>(null);
   const [renderedToc, setRenderedToc] = React.useState<TOCItemType[]>();
@@ -118,7 +126,7 @@ const LoadedContent = ({
         description={page.data.description}
         tree={page.url.startsWith('/headless') ? 'headless' : 'react'}
       >
-        <MDX components={mdxComponents} />
+        <MDX components={{ ...mdxComponents, ...data.components }} />
       </DocsHome>
     );
   }
@@ -148,7 +156,7 @@ const LoadedContent = ({
               : undefined
           }
         >
-          <MDX components={mdxComponents} />
+          <MDX components={{ ...mdxComponents, ...data.components }} />
         </ComponentPageHeaderProvider>
       </DocsBody>
     </DocsPage>

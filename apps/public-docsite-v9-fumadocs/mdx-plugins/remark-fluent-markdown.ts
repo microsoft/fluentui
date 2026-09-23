@@ -33,8 +33,10 @@ export function remarkFluentMarkdown(): Transformer<Root, Root> {
         node.data = { ...node.data, _stringify: 'children-only' };
       }
 
-      if (node.type === 'mdxJsxFlowElement' && node.name === 'ComponentPage') {
-        const properties = ['meta', 'stories', 'order', 'wrapper'].flatMap((name): Property[] => {
+      if (node.type === 'mdxJsxFlowElement' && (node.name === 'ComponentPage' || node.name === 'GuideExamples')) {
+        const names =
+          node.name === 'GuideExamples' ? ['description', 'examples'] : ['meta', 'stories', 'order', 'wrapper'];
+        const properties = names.flatMap((name): Property[] => {
           const attribute = node.attributes.find(
             (item): item is MdxJsxAttribute => item.type === 'mdxJsxAttribute' && item.name === name,
           );

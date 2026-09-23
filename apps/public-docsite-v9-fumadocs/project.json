@@ -14,6 +14,7 @@
       }
     },
     "build": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }],
       "outputs": ["{projectRoot}/dist", "{projectRoot}/.source", "{projectRoot}/.react-router"],
       "inputs": [
         "default",
@@ -21,24 +22,19 @@
         "{workspaceRoot}/tsconfig.base.json",
         "{workspaceRoot}/tsconfig.base.all.json",
         { "env": "DOCSITE_BASE_PATH" }
-      ],
-      "dependsOn": [
-        {
-          "projects": ["babel-preset-storybook-full-source"],
-          "target": "build"
-        }
-      ]
-    },
-    "start": {
-      "dependsOn": [
-        {
-          "projects": ["babel-preset-storybook-full-source"],
-          "target": "build"
-        }
       ]
     },
     "type-check": {
       "dependsOn": ["build", "^build"]
+    },
+    "dev": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
+    },
+    "start": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
+    },
+    "test": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
     },
     "lint": {
       "dependsOn": ["build"],
@@ -52,6 +48,5 @@
         "paths": ["dist", ".source", ".react-router", ".eslintcache", "node_modules/.vite"]
       }
     }
-  },
-  "implicitDependencies": ["tag:type:stories", "public-docsite-v9", "public-docsite-v9-headless"]
+  }
 }

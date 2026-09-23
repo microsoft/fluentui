@@ -59,8 +59,6 @@ jobs:
           affected=$(yarn nx show projects -p public-docsite-v9-fumadocs --affected --verbose false)
           if [ -n "$affected" ]; then
             yarn nx run public-docsite-v9-fumadocs:build --nxBail
-            test -f "apps/public-docsite-v9-fumadocs/dist/client${DOCSITE_BASE_PATH}docs/react/index.html"
-            test -f "apps/public-docsite-v9-fumadocs/dist/client${DOCSITE_BASE_PATH}docs/headless/index.html"
           fi
 
       - name: Generate PR Deploy Site

@@ -14,7 +14,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['*.config.{js,ts}', 'mdx-plugins/**/*.ts', 'vite-plugins/**/*.ts', 'src/routes.ts'],
+    files: ['*.config.{js,ts}', 'mdx-plugins/**/*.ts', 'vite-plugins/**/*.ts', 'scripts/**/*.mjs', 'src/routes.ts'],
     rules: {
       'import/no-extraneous-dependencies': ['error', { packageDir: ['.', '../..'], devDependencies: true }],
     },

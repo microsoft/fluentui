@@ -1,12 +1,17 @@
 import * as babel from '@babel/core';
 import { readFileSync } from 'node:fs';
 import * as prettier from 'prettier';
-// Workspace-source helpers keep slicing and import rewriting consistent with Storybook.
-import { sliceStorySource } from '../../../packages/react-components/babel-preset-storybook-full-source/src/sliceStory';
-import { modifyImportsPlugin } from '../../../packages/react-components/babel-preset-storybook-full-source/src/modifyImports';
-import { removeStorybookParameters } from '../../../packages/react-components/babel-preset-storybook-full-source/src/removeStorybookParameters';
-import { inlineLocalImports } from './inlineLocalImports';
-import type { FullSourceOptions } from './full-source';
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
+import { inlineLocalImports } from './inlineLocalImports.ts';
+import type { FullSourceOptions } from './full-source.ts';
+
+// Load the tool package's compiled CommonJS helpers rather than interpreting its TS as ESM.
+const require = createRequire(import.meta.url);
+const sourcePluginDirectory = dirname(require.resolve('@fluentui/babel-preset-storybook-full-source'));
+const { sliceStorySource } = require(join(sourcePluginDirectory, 'sliceStory.js'));
+const { modifyImportsPlugin } = require(join(sourcePluginDirectory, 'modifyImports.js'));
+const { removeStorybookParameters } = require(join(sourcePluginDirectory, 'removeStorybookParameters.js'));
 
 /** Attach enriched source metadata without replacing the imports/declarations executed by Vite. */
 export function localStorySource(options: FullSourceOptions): babel.PluginObj {

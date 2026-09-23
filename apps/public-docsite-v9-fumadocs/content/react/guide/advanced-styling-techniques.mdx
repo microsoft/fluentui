@@ -35,7 +35,7 @@ For example, an `App.tsx` might look like:
 ```tsx
 import { Button, FluentProvider, webLightTheme, CustomStyleHooksProvider_unstable } from '@fluentui/react-components';
 import { AlertRegular } from '@fluentui/react-icons';
-import { FANCY_CUSTOM_STYLE_HOOKS } from '@repo/apps/public-docsite-v9/src/Concepts/FancyAppCustomStyleHooksValue.ts';
+import { FANCY_CUSTOM_STYLE_HOOKS } from './FancyAppCustomStyleHooksValue';
 
 export function App() {
   return (
@@ -92,7 +92,7 @@ Define the value for `CustomStyleHooksProvider_unstable` in `FancyAppCustomStyle
 
 ```ts
 import { type CustomStyleHooksContextValue } from '@fluentui/react-components';
-import { useFancyButtonStyles } from '@repo/apps/public-docsite-v9/src/Concepts/useFancyButtonStyles';
+import { useFancyButtonStyles } from './useFancyButtonStyles';
 
 export const FANCY_CUSTOM_STYLE_HOOKS: CustomStyleHooksContextValue = {
   useButtonStyles_unstable: useFancyButtonStyles,
@@ -104,7 +104,7 @@ Finally use the `CustomStyleHooksProvider_unstable` in your app:
 
 ```diff
 // App.tsx
-+ import { FANCY_CUSTOM_STYLE_HOOKS } from '@repo/apps/public-docsite-v9/src/Concepts/FancyAppCustomStyleHooksValue';
++ import { FANCY_CUSTOM_STYLE_HOOKS } from './FancyAppCustomStyleHooksValue';
 
 <FluentProvider theme={webLightTheme}>
 + <CustomStyleHooksProvider_unstable value={FANCY_CUSTOM_STYLE_HOOKS}>

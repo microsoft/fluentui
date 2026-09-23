@@ -2,7 +2,7 @@ import type { Plugin } from 'vite';
 import { createRequire } from 'node:module';
 
 import * as babel from '@babel/core';
-import { localStorySource } from './local-story-source';
+import { localStorySource } from './local-story-source.ts';
 
 const require = createRequire(import.meta.url);
 const sourcePlugin = require.resolve('@fluentui/babel-preset-storybook-full-source');
@@ -31,15 +31,17 @@ export function fullSource(options: FullSourceOptions): Plugin {
     async transform(code, id) {
       const [filename] = id.split('?');
 
-      if (!STORY_FILE.test(filename)) {
+      if (
+        !STORY_FILE.test(filename) ||
+        filename.replace(/\\/g, '/').includes('/public-docsite-v9-fumadocs/src/examples/')
+      ) {
         return null;
       }
 
       const normalizedFilename = filename.replace(/\\/g, '/');
       const inlineLocalImports =
         normalizedFilename.includes('/react-headless-components-preview/stories/') ||
-        normalizedFilename.endsWith('/react-tree/stories/src/Tree/TreeLazyLoading.stories.tsx') ||
-        normalizedFilename.includes('/apps/public-docsite-v9/src/Concepts/Accessibility/LabellingExamples/');
+        normalizedFilename.endsWith('/react-tree/stories/src/Tree/TreeLazyLoading.stories.tsx');
 
       const result = await babel.transformAsync(code, {
         filename,

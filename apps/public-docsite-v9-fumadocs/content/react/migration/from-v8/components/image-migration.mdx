@@ -2,6 +2,8 @@
 title: Image Migration
 ---
 
+import { FitDifferences } from '../../../../../src/examples/image/FitDifferences.example';
+
 **v8 -> v9**
 
 - **Removed v8 behaviors**: `shouldFadeIn`, `shouldStartVisible`, and `onLoadingStateChange` are not in v9.
@@ -47,6 +49,8 @@ because of this:
 | 500×500 (larger than the box)  | The image is centred and cropped by the container, producing a circle.                     | `object-fit: none` crops to the box and the circular shape encloses it.                       |
 
 Use `fit="cover"` when the image has to fill the box for the shape to read as a circle.
+
+<FitDifferences />
 
 ## Replacing removed features
 

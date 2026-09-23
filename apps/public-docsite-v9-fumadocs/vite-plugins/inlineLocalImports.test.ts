@@ -75,7 +75,6 @@ describe('inlineLocalImports', () => {
     ['TagPicker/TagPickerNoPopover.stories.tsx', 'SelectedTag'],
     ['Concepts/Positioning/PositioningFallbackPositions.stories.tsx', 'InlineAnchored'],
     ['../../../react-tree/stories/src/Tree/TreeLazyLoading.stories.tsx', 'mockFetch'],
-    ['../../../../../apps/public-docsite-v9/src/Concepts/Accessibility/LabellingExamples/Examples.stories.tsx', ''],
   ])('attaches complete source metadata for %s without inlining the live module', (file, helper) => {
     const filename = path.join(stories, file);
     const warnings = jest.spyOn(console, 'warn').mockImplementation(() => undefined);

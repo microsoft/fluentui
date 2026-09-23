@@ -1,12 +1,15 @@
 import { fileURLToPath } from 'node:url';
 
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
-import { createFluentTypeTableGenerator } from './mdx-plugins/fluent-type-table';
-import { remarkComponentApi } from './mdx-plugins/remark-component-api';
-import { remarkFluentMarkdown, stringifyFluent } from './mdx-plugins/remark-fluent-markdown';
+import { createFluentTypeTableGenerator } from './mdx-plugins/fluent-type-table.ts';
+import { remarkComponentApi } from './mdx-plugins/remark-component-api.ts';
+import { remarkFluentMarkdown, stringifyFluent } from './mdx-plugins/remark-fluent-markdown.ts';
 
 const postprocess = {
-  includeProcessedMarkdown: { mdxAsPlaceholder: ['ComponentPage', 'SectionOverview'], stringify: stringifyFluent },
+  includeProcessedMarkdown: {
+    mdxAsPlaceholder: ['ComponentPage', 'SectionOverview', 'GuideExamples'],
+    stringify: stringifyFluent,
+  },
 };
 
 const generator = createFluentTypeTableGenerator({

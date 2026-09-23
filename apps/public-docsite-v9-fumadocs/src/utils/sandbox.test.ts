@@ -1,7 +1,7 @@
-import { openInStackBlitz } from './sandbox';
-import type { Data } from './sandbox';
+import { getDependencies, openInStackBlitz, scaffoldVite } from './sandbox';
+import type { SandboxData } from './sandbox';
 
-function example(): Omit<Data, 'dependencies' | 'provider' | 'bundler'> {
+function example(): SandboxData {
   return {
     storyFile: `import { Button } from '@fluentui/react-headless-components-preview/button';
 import { AddRegular } from '@fluentui/react-icons';
@@ -21,6 +21,40 @@ export const Default = () => <Button className={styles.button} icon={<AddRegular
 }
 
 describe('docsite sandbox export', () => {
+  it('detects package names from static and dynamic imports while ignoring local and React subpaths', () => {
+    const data = example();
+    data.storyFile += `\nimport('lodash/debounce');\nimport('./local');\nimport 'react/jsx-runtime';`;
+    expect(getDependencies(data)).toEqual({
+      react: '^19',
+      'react-dom': '^19',
+      '@fluentui/react-components': '^9.0.0',
+      '@fluentui/react-headless-components-preview': 'latest',
+      '@fluentui/react-icons': '^2.0.0',
+      lodash: 'latest',
+    });
+  });
+
+  it('generates a standalone Vite project without depending on the Storybook addon scaffold', () => {
+    const files = scaffoldVite(example());
+    expect(Object.keys(files)).toEqual(
+      expect.arrayContaining([
+        'index.html',
+        'src/index.tsx',
+        'src/App.tsx',
+        'src/example.tsx',
+        'vite.config.ts',
+        'tsconfig.json',
+        'tsconfig.node.json',
+        'package.json',
+        '.stackblitzrc',
+      ]),
+    );
+    expect(files['src/index.tsx']).toContain("from 'react-dom/client'");
+    expect(files['src/App.tsx']).toContain('FluentProvider');
+    expect(JSON.parse(files['tsconfig.json']).compilerOptions.moduleResolution).toBe('bundler');
+    expect(JSON.parse(files['package.json']).scripts.build).toBe('tsc && vite build');
+  });
+
   it('submits shared scaffold output, React overrides and headless CSS through the supplied document', () => {
     const host = document.implementation.createHTMLDocument('sandbox host');
     let fields: Record<string, string> = {};

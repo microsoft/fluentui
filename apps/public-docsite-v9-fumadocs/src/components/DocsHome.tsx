@@ -7,8 +7,8 @@ import { version } from '@fluentui/react-components/package.json';
 import { Link } from 'react-router';
 import { ArrowRight } from 'lucide-react';
 import { DocsBody } from 'fumadocs-ui/page';
-import reactHero from '../../../public-docsite-v9/public/fluentui-wide-banner.webp';
-import headlessHero from '../../../public-docsite-v9-headless/src/assets/images/hero.svg';
+import reactHero from '../assets/react/fluentui-wide-banner.webp';
+import headlessHero from '../assets/headless/hero.svg';
 
 const homeAction =
   'inline-flex items-center justify-center gap-md py-md text-body font-semibold no-underline rounded-control hover:underline underline-offset-inset focus-visible:outline focus-visible:outline-focus focus-visible:outline-foreground focus-visible:outline-offset-focus [&_svg]:size-lg [&_svg]:shrink-0';

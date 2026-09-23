@@ -9,6 +9,9 @@ import rehypeRaw from 'rehype-raw';
 import { highlight } from './highlighter';
 import { toKebabCase } from '../utils/toKebabCase';
 import { docsBasename } from '../utils/paths';
+import { documentationLink } from '../utils/documentationLinks';
+import { useLocation } from 'react-router';
+import type { Root, Nodes } from 'hast';
 
 const DescriptionCode: ForwardRefComponent<React.ComponentProps<'div'>> = React.forwardRef(({ children }, ref) => {
   const code = React.Children.toArray(children)[0];
@@ -31,6 +34,7 @@ DescriptionCode.displayName = 'DescriptionCode';
 
 export const Description: ForwardRefComponent<{ children: string }> = React.forwardRef(({ children }, ref) => {
   const prefix = React.useId().replace(/[^a-zA-Z0-9_-]/g, '');
+  const { pathname } = useLocation();
   const { Markdown } = React.useMemo(
     () =>
       createMarkdownRenderer({
@@ -54,19 +58,27 @@ export const Description: ForwardRefComponent<{ children: string }> = React.forw
           ],
         ],
         remarkRehypeOptions: { allowDangerousHtml: true },
-        rehypePlugins: [rehypeRaw],
+        rehypePlugins: [
+          rehypeRaw,
+          () => (tree: Root) => {
+            function walk(node: Nodes): void {
+              if (node.type === 'element' && node.tagName === 'a' && typeof node.properties.href === 'string') {
+                node.properties.href = documentationLink(node.properties.href, pathname, docsBasename, 'html');
+              }
+              if ('children' in node) {
+                node.children.forEach(walk);
+              }
+            }
+            walk(tree);
+          },
+        ],
       }),
-    [prefix],
-  );
-
-  const source = children.replace(
-    /href=(["'])\/?\?path=\/docs\/overview-browser-support--docs(#[^"']*)?\1/g,
-    `href=$1${docsBasename}/headless/guide/browser-support$2$1`,
+    [prefix, pathname],
   );
 
   return (
     <div ref={ref}>
-      <Markdown components={{ pre: DescriptionCode }}>{source}</Markdown>
+      <Markdown components={{ pre: DescriptionCode }}>{children}</Markdown>
     </div>
   );
 });

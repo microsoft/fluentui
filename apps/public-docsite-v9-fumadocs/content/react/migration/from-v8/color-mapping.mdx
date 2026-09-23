@@ -2,6 +2,10 @@
 title: Color Mapping
 ---
 
+import { ColorMappingTable } from '../../../../src/components/ColorMappingTable';
+
+export const components = { table: ColorMappingTable };
+
 The global and alias colors in v9 differ from those in the default v8 palette and theme.
 Here is our recommended mapping between v8 and v9 colors.
 
@@ -48,7 +52,7 @@ The createV8Theme supports passing isDarkTheme to use inverted colors in the v8 
 | v8 palette             | v9 global        | Notes |
 | ---------------------- | ---------------- | ----- |
 | `black`                | `white`          |       |
-| `blackTranslucent40`   | `whieAlpha[40]`  |       |
+| `blackTranslucent40`   | `whiteAlpha[40]` |       |
 | `neutralDark`          | `grey[98]`       |       |
 | `neutralPrimary`       | `grey[96]`       |       |
 | `neutralPrimaryAlt`    | `grey[94]`       |       |
