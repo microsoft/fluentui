@@ -3395,7 +3395,6 @@ __metadata:
     "@fluentui/react-menu-grid-preview": "npm:*"
     "@fluentui/react-migration-v0-v9": "npm:*"
     "@fluentui/react-migration-v8-v9": "npm:*"
-    "@fluentui/react-modern-components-preview": "npm:*"
     "@fluentui/react-motion-components-preview": "npm:*"
     "@fluentui/react-northstar": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
@@ -5030,7 +5029,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-modern-components-preview@npm:*, @fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library":
+"@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-modern-components-preview@workspace:packages/react-components/react-modern-components-preview/library"
   dependencies:
