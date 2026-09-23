@@ -47,9 +47,51 @@ const storyPackageNames = [
 ];
 
 const reactComponentsRoot = path.resolve(__dirname, '../../..');
+const exportToSandboxAddonPattern = /react-storybook-addon-export-to-sandbox/;
+const modernImportPluginPath = path.resolve(__dirname, 'babelPluginRewriteModernImports.js');
 const storySourceDirectories = storyPackageNames.map(packageName =>
   path.join(reactComponentsRoot, packageName, 'stories/src'),
 );
+
+/**
+ * @typedef {import('@babel/core').TransformOptions} BabelTransformOptions
+ * @typedef {{
+ *   name: string;
+ *   options?: Record<string, unknown> & {
+ *     babelLoaderOptionsUpdater?: (options: BabelTransformOptions) => BabelTransformOptions;
+ *   };
+ * }} StorybookAddonConfig
+ */
+
+/**
+ * @param {(string | StorybookAddonConfig)[]} addons
+ */
+function registerModernFullSourceTransform(addons) {
+  return addons.map(addon => {
+    if (typeof addon === 'string' || !exportToSandboxAddonPattern.test(addon.name)) {
+      return addon;
+    }
+
+    const originalOptionsUpdater = addon.options?.babelLoaderOptionsUpdater ?? (options => options);
+    /** @param {BabelTransformOptions} options */
+    const babelLoaderOptionsUpdater = options => {
+      const updatedOptions = originalOptionsUpdater(options);
+
+      return {
+        ...updatedOptions,
+        plugins: [...(updatedOptions.plugins ?? []), [modernImportPluginPath, { fullSource: true }]],
+      };
+    };
+
+    return {
+      ...addon,
+      options: {
+        ...addon.options,
+        babelLoaderOptionsUpdater,
+      },
+    };
+  });
+}
 
 /**
  * @param {import('webpack').Configuration} config
@@ -71,7 +113,7 @@ function registerModernComponentImportTransform(config, include) {
         parserOpts: {
           plugins: ['jsx', 'typescript'],
         },
-        plugins: [path.resolve(__dirname, 'babelPluginRewriteModernImports.js')],
+        plugins: [modernImportPluginPath],
       },
     },
   });
@@ -81,5 +123,6 @@ function registerModernComponentImportTransform(config, include) {
 
 module.exports = {
   registerModernComponentImportTransform,
+  registerModernFullSourceTransform,
   storySourceDirectories,
 };
