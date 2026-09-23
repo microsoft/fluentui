@@ -266,3 +266,98 @@
     margin-inline-start: calc(var(--spacingHorizontalXS) + var(--fui-Badge__text-padding));
   }
 }
+
+.counterRoot[data-dot] {
+  inline-size: 6px;
+  block-size: 6px;
+  min-inline-size: auto;
+  padding: 0;
+}
+
+.counterRoot[data-hidden] {
+  display: none;
+}
+
+.presenceRoot {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: var(--strokeWidthThin);
+  color: var(--colorPaletteLightGreenForeground3);
+  background-color: var(--colorNeutralBackground1);
+  background-clip: content-box;
+  border-radius: var(--borderRadiusCircular);
+}
+
+.presenceRoot:is([data-status='busy'], [data-status='do-not-disturb'], [data-status='blocked']) {
+  color: var(--colorPaletteRedBackground3);
+}
+
+.presenceRoot[data-status='away'] {
+  color: var(--colorPaletteMarigoldBackground3);
+}
+
+.presenceRoot:is([data-status='offline'], [data-status='unknown']) {
+  color: var(--colorNeutralForeground3);
+}
+
+.presenceRoot[data-status='out-of-office'] {
+  color: var(--colorPaletteBerryForeground3);
+}
+
+.presenceRoot[data-out-of-office] {
+  color: var(--colorNeutralBackground1);
+}
+
+.presenceRoot[data-out-of-office][data-status='available'] {
+  color: var(--colorPaletteLightGreenForeground3);
+}
+
+.presenceRoot[data-out-of-office]:is([data-status='busy'], [data-status='do-not-disturb'], [data-status='blocked']) {
+  color: var(--colorPaletteRedBackground3);
+}
+
+.presenceRoot[data-out-of-office]:is([data-status='out-of-office'], [data-status='away'], [data-status='offline']) {
+  color: var(--colorPaletteBerryForeground3);
+}
+
+.presenceRoot[data-out-of-office][data-status='unknown'] {
+  color: var(--colorNeutralForeground3);
+}
+
+.presenceRoot[data-size='tiny'] {
+  inline-size: 6px;
+  aspect-ratio: 1;
+  background-clip: unset;
+}
+
+.presenceRoot[data-size='large'] {
+  inline-size: 20px;
+  aspect-ratio: 1;
+}
+
+.presenceRoot[data-size='extra-large'] {
+  inline-size: 28px;
+  aspect-ratio: 1;
+}
+
+.presenceIcon {
+  display: flex;
+  margin: calc(-1 * var(--strokeWidthThin));
+}
+
+.presenceRoot[data-size='tiny'] .presenceIcon svg {
+  inline-size: 6px !important;
+  block-size: 6px !important;
+}
+
+.presenceRoot[data-size='large'] .presenceIcon svg {
+  inline-size: 20px !important;
+  block-size: 20px !important;
+}
+
+.presenceRoot[data-size='extra-large'] .presenceIcon svg {
+  inline-size: 28px !important;
+  block-size: 28px !important;
+}

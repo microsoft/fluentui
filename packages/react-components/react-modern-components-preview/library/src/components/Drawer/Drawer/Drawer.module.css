@@ -16,6 +16,10 @@
   color: var(--colorNeutralForeground1);
   background-color: var(--colorNeutralBackground1);
 
+  &[data-open] {
+    display: flex;
+  }
+
   &[data-position='start'] {
     --fui-Drawer--motion-x: -100%;
 

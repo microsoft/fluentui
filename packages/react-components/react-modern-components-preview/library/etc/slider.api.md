@@ -21,6 +21,19 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
+export const sliderCSSVars: {
+    sliderDirectionVar: string;
+    sliderInnerThumbRadiusVar: string;
+    sliderProgressVar: string;
+    sliderProgressColorVar: string;
+    sliderRailSizeVar: string;
+    sliderRailColorVar: string;
+    sliderStepsPercentVar: string;
+    sliderThumbColorVar: string;
+    sliderThumbSizeVar: string;
+};
+
+// @public (undocumented)
 export type SliderProps = SliderProps_2 & {
     size?: 'small' | 'medium';
 };
