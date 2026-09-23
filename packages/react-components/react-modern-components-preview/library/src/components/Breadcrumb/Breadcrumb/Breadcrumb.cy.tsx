@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
-import { Breadcrumb } from './index';
+import type { JSXElement } from '@fluentui/react-utilities';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
+import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbItem } from '../BreadcrumbItem';
 import { BreadcrumbButton } from '../BreadcrumbButton';
-import type { BreadcrumbProps } from './index';
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { BreadcrumbProps } from './Breadcrumb.types';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 const BreadcrumbSampleWithButton = (props: BreadcrumbProps) => (

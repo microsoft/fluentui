@@ -1,7 +1,8 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { useSearchBox as useSearchBoxBase } from '@fluentui/react-headless-components-preview/search-box';
+import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
 import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
 
 /**
@@ -13,6 +14,14 @@ export const useSearchBox = (props: SearchBoxProps, ref: React.Ref<HTMLInputElem
 
   return {
     ...state,
+    contentBefore: state.contentBefore && {
+      ...state.contentBefore,
+      children: state.contentBefore.children ?? React.createElement(SearchRegular),
+    },
+    dismiss: state.dismiss && {
+      ...state.dismiss,
+      children: state.dismiss.children ?? React.createElement(DismissRegular),
+    },
     root: {
       ...state.root,
       'data-appearance': appearance,

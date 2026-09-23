@@ -1,50 +1,53 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from './index';
-import { DialogContent } from '@fluentui/react-dialog';
-import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
-import { Tooltip } from '@fluentui/react-tooltip';
-import { Button } from '@fluentui/react-button';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import {
-  dialogSurfaceSelector,
-  dialogTriggerCloseId,
-  dialogTriggerCloseSelector,
-  dialogTriggerOpenId,
-  dialogTriggerOpenSelector,
-} from '../../../../../react-dialog/library/src/testing/selectors';
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  dialogSurfaceClassNames,
+} from '@fluentui/react-modern-components-preview/dialog';
+import { Popover, PopoverSurface, PopoverTrigger } from '../../Popover';
+import { Tooltip } from '../../Tooltip';
+import { Button } from '../../Button';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '../../menu';
 
-const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const dialogTriggerOpenId = 'open-btn';
+const dialogTriggerCloseId = 'close-btn';
+const dialogSurfaceSelector = `.${dialogSurfaceClassNames.root}`;
+const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
+const dialogTriggerCloseSelector = `#${dialogTriggerCloseId}`;
+
+const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('Dialog', () => {
   it('should be closed by default', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id={dialogTriggerCloseId} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -54,26 +57,24 @@ describe('Dialog', () => {
   it('should open when trigger is clicked', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id={dialogTriggerCloseId} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -83,26 +84,24 @@ describe('Dialog', () => {
   it('should focus on first focusabled element when opened', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id={dialogTriggerCloseId} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -112,17 +111,15 @@ describe('Dialog', () => {
   it('should focus on dialog surface if no focusable element in dialog', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface id="dialog-surface">
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
         </DialogSurface>
       </Dialog>,
@@ -133,26 +130,24 @@ describe('Dialog', () => {
   it('should focus back on trigger when dialog closed', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id={dialogTriggerCloseId} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -164,26 +159,24 @@ describe('Dialog', () => {
   it('should remain mounted after close when unmountOnClose is false', () => {
     mount(
       <Dialog unmountOnClose={false}>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-              cumque eaque?
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id={dialogTriggerCloseId} appearance="secondary">
-                  Close
-                </Button>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id={dialogTriggerCloseId} appearance="secondary">
+                Close
+              </Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -207,25 +200,23 @@ describe('Dialog', () => {
       }, [open]);
       return (
         <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
-            <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>This dialog focus on the second button instead of the first</DialogContent>
-              <DialogActions position="start">
-                <Button appearance="outline">Third Action</Button>
-              </DialogActions>
-              <DialogActions position="end">
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
-            </DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
+            <DialogActions position="start">
+              <Button appearance="outline">Third Action</Button>
+            </DialogActions>
+            <DialogActions position="end">
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} ref={buttonRef} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogSurface>
         </Dialog>
       );
@@ -237,42 +228,40 @@ describe('Dialog', () => {
   it('should not close with Escape keydown while focusing other elements that control Escape', () => {
     mount(
       <Dialog modalType="non-modal">
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id={dialogTriggerOpenId}>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogContent>
-              <Menu>
-                <MenuTrigger disableButtonEnhancement>
-                  <Button id="open-menu-btn">Toggle menu</Button>
-                </MenuTrigger>
+            <Menu>
+              <MenuTrigger>
+                <Button id="open-menu-btn">Toggle menu</Button>
+              </MenuTrigger>
 
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem>Item</MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-              <Popover>
-                <PopoverTrigger disableButtonEnhancement>
-                  <Button id="open-popover-btn">Popover trigger</Button>
-                </PopoverTrigger>
-                <PopoverSurface aria-label="label">Content</PopoverSurface>
-              </Popover>
-            </DialogContent>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </Tooltip>
-              </DialogTrigger>
-              <Button appearance="primary">Do Something</Button>
-            </DialogActions>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Item</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+            <Popover>
+              <PopoverTrigger>
+                <Button id="open-popover-btn">Popover trigger</Button>
+              </PopoverTrigger>
+              <PopoverSurface aria-label="label">Content</PopoverSurface>
+            </Popover>
           </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Tooltip hideDelay={0} showDelay={0} content="Test tooltip" relationship="label">
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </Tooltip>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );
@@ -297,26 +286,24 @@ describe('Dialog', () => {
     it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
             </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -328,7 +315,7 @@ describe('Dialog', () => {
       mount(
         <>
           <Dialog modalType="modal">
-            <DialogTrigger disableButtonEnhancement>
+            <DialogTrigger>
               <Button id={dialogTriggerOpenId}>Open dialog</Button>
             </DialogTrigger>
             <DialogSurface>
@@ -339,7 +326,7 @@ describe('Dialog', () => {
                 natus iure cumque eaque?
               </DialogBody>
               <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
+                <DialogTrigger>
                   <Button id={dialogTriggerCloseId} appearance="secondary">
                     Close
                   </Button>
@@ -358,7 +345,7 @@ describe('Dialog', () => {
     it('should focus trap by default', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -369,7 +356,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogBody>
             <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
+              <DialogTrigger>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -389,7 +376,7 @@ describe('Dialog', () => {
     it('should focus on window after last element when inertTrapFocus=true', () => {
       mount(
         <Dialog inertTrapFocus modalType="modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -400,7 +387,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogBody>
             <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
+              <DialogTrigger>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -422,26 +409,24 @@ describe('Dialog', () => {
     it('should close with escape keydown and return focus to trigger', () => {
       mount(
         <Dialog modalType="non-modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
             </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -454,26 +439,24 @@ describe('Dialog', () => {
       mount(
         <>
           <Dialog modalType="non-modal">
-            <DialogTrigger disableButtonEnhancement>
+            <DialogTrigger>
               <Button id={dialogTriggerOpenId}>Open dialog</Button>
             </DialogTrigger>
             <DialogSurface>
+              <DialogTitle>Dialog title</DialogTitle>
               <DialogBody>
-                <DialogTitle>Dialog title</DialogTitle>
-                <DialogContent>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                  eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                  natus iure cumque eaque?
-                </DialogContent>
-                <DialogActions>
-                  <DialogTrigger disableButtonEnhancement>
-                    <Button id={dialogTriggerCloseId} appearance="secondary">
-                      Close
-                    </Button>
-                  </DialogTrigger>
-                  <Button appearance="primary">Do Something</Button>
-                </DialogActions>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
               </DialogBody>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogSurface>
           </Dialog>
           {lorem}
@@ -486,22 +469,20 @@ describe('Dialog', () => {
       mount(
         <>
           <Dialog modalType="non-modal">
-            <DialogTrigger disableButtonEnhancement>
+            <DialogTrigger>
               <Button id={dialogTriggerOpenId}>Open dialog</Button>
             </DialogTrigger>
             <DialogSurface>
-              <DialogBody>
-                <DialogActions>
-                  <DialogTrigger disableButtonEnhancement>
-                    <Button id={dialogTriggerCloseId} appearance="secondary">
-                      Close
-                    </Button>
-                  </DialogTrigger>
-                  <Button id="extra-btn-inside" appearance="primary">
-                    Do Something
+              <DialogActions>
+                <DialogTrigger>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
                   </Button>
-                </DialogActions>
-              </DialogBody>
+                </DialogTrigger>
+                <Button id="extra-btn-inside" appearance="primary">
+                  Do Something
+                </Button>
+              </DialogActions>
             </DialogSurface>
           </Dialog>
           <Button id="extra-btn-outside">Button outside dialog</Button>
@@ -518,26 +499,24 @@ describe('Dialog', () => {
     it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id={dialogTriggerCloseId} appearance="secondary">
-                    Close
-                  </Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
             </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -549,26 +528,24 @@ describe('Dialog', () => {
       mount(
         <>
           <Dialog modalType="alert">
-            <DialogTrigger disableButtonEnhancement>
+            <DialogTrigger>
               <Button id={dialogTriggerOpenId}>Open dialog</Button>
             </DialogTrigger>
             <DialogSurface>
+              <DialogTitle>Dialog title</DialogTitle>
               <DialogBody>
-                <DialogTitle>Dialog title</DialogTitle>
-                <DialogContent>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                  eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                  natus iure cumque eaque?
-                </DialogContent>
-                <DialogActions>
-                  <DialogTrigger disableButtonEnhancement>
-                    <Button id={dialogTriggerCloseId} appearance="secondary">
-                      Close
-                    </Button>
-                  </DialogTrigger>
-                  <Button appearance="primary">Do Something</Button>
-                </DialogActions>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
+                natus iure cumque eaque?
               </DialogBody>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button id={dialogTriggerCloseId} appearance="secondary">
+                    Close
+                  </Button>
+                </DialogTrigger>
+                <Button appearance="primary">Do Something</Button>
+              </DialogActions>
             </DialogSurface>
           </Dialog>
           {lorem}
@@ -580,7 +557,7 @@ describe('Dialog', () => {
     it('should focus trap by default', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -591,7 +568,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogBody>
             <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
+              <DialogTrigger>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -611,7 +588,7 @@ describe('Dialog', () => {
     it('should focus on window after last element when inertTrapFocus=true', () => {
       mount(
         <Dialog inertTrapFocus modalType="alert">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
@@ -622,7 +599,7 @@ describe('Dialog', () => {
               cumque eaque?
             </DialogBody>
             <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
+              <DialogTrigger>
                 <Button id={dialogTriggerCloseId} appearance="secondary">
                   Close
                 </Button>
@@ -644,40 +621,34 @@ describe('Dialog', () => {
   it('should allow nested dialogs', () => {
     mount(
       <Dialog>
-        <DialogTrigger disableButtonEnhancement>
+        <DialogTrigger>
           <Button id="open-first-dialog-btn">Open nested dialog</Button>
         </DialogTrigger>
         <DialogSurface id="first-dialog">
-          <DialogBody>
-            <DialogTitle>Dialog title</DialogTitle>
-            <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button id="close-first-dialog-btn">Close</Button>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogActions>
+            <DialogTrigger>
+              <Button id="close-first-dialog-btn">Close</Button>
+            </DialogTrigger>
+            <Dialog>
+              <DialogTrigger>
+                <Button id="open-second-dialog-btn" appearance="primary">
+                  Open inner dialog
+                </Button>
               </DialogTrigger>
-              <Dialog>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button id="open-second-dialog-btn" appearance="primary">
-                    Open inner dialog
-                  </Button>
-                </DialogTrigger>
-                <DialogSurface id="second-dialog">
-                  <DialogBody>
-                    <DialogTitle>Inner dialog title</DialogTitle>
-                    <DialogContent>
-                      ⛔️ just because you can doesn't mean you should have nested dialogs ⛔️
-                    </DialogContent>
-                    <DialogActions>
-                      <DialogTrigger disableButtonEnhancement>
-                        <Button id="close-second-dialog-btn" appearance="primary">
-                          Close
-                        </Button>
-                      </DialogTrigger>
-                    </DialogActions>
-                  </DialogBody>
-                </DialogSurface>
-              </Dialog>
-            </DialogActions>
-          </DialogBody>
+              <DialogSurface id="second-dialog">
+                <DialogTitle>Inner dialog title</DialogTitle>
+                <DialogBody>⛔️ just because you can doesn't mean you should have nested dialogs ⛔️</DialogBody>
+                <DialogActions>
+                  <DialogTrigger>
+                    <Button id="close-second-dialog-btn" appearance="primary">
+                      Close
+                    </Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogSurface>
+            </Dialog>
+          </DialogActions>
         </DialogSurface>
       </Dialog>,
     );

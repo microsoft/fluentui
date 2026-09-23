@@ -1,13 +1,12 @@
 import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
-import { Button } from '@fluentui/react-button';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+import { Button } from '../Button';
 import { Tooltip } from './index';
 
 const mount = (element: React.ReactElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 describe('Tooltip', () => {

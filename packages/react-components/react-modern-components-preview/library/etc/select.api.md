@@ -5,7 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderSelect } from '@fluentui/react-headless-components-preview/select';
 import type { SelectProps as SelectProps_2 } from '@fluentui/react-headless-components-preview/select';
 import { SelectSlots } from '@fluentui/react-headless-components-preview/select';

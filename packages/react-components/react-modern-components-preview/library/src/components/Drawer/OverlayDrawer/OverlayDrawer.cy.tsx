@@ -1,16 +1,65 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
-import { testDrawerBaseScenarios } from '../../../../../react-drawer/library/src/e2e/DrawerShared';
-import { OverlayDrawer, overlayDrawerClassNames } from './index';
-import type { OverlayDrawerProps } from './index';
 import type { JSXElement } from '@fluentui/react-utilities';
 
+import { OverlayDrawer, overlayDrawerClassNames } from './index';
+import type { OverlayDrawerProps } from './index';
+import { Drawer } from '../Drawer';
+import { InlineDrawer } from '../InlineDrawer';
+
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
+
+function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer): void {
+  describe('basic functionality', () => {
+    it('should not render any element when closed', () => {
+      mountFluent(<Component id="drawer" />);
+
+      cy.get('#drawer').should('not.exist');
+    });
+
+    it('should render an element when opened', () => {
+      mountFluent(<Component id="drawer" open />);
+
+      cy.get('#drawer').should('exist');
+    });
+
+    it('should render children content', () => {
+      const content = 'Test the renderization';
+      mountFluent(
+        <Component id="drawer" open>
+          {content}
+        </Component>,
+      );
+
+      cy.get('#drawer').contains(content);
+    });
+
+    it('should toggle visibility on open prop change', () => {
+      const ExampleDrawer = () => {
+        const [open, setOpen] = React.useState(false);
+
+        return (
+          <>
+            <Component id="drawer" open={open} />
+            <button id="button" onClick={() => setOpen(true)}>
+              Open
+            </button>
+          </>
+        );
+      };
+
+      mountFluent(<ExampleDrawer />);
+
+      cy.get('#drawer').should('not.exist');
+      cy.get('#button').click();
+      cy.get('#drawer').should('exist');
+    });
+  });
+}
 
 const LongPageContent = ({ children }: { children?: React.ReactNode }) => (
   <>

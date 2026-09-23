@@ -31,6 +31,7 @@ describe('Select', () => {
     expect(root).toHaveClass(selectClassNames.root);
     expect(select).toHaveClass(selectClassNames.select);
     expect(root?.lastElementChild).toHaveClass(selectClassNames.icon);
+    expect(root?.lastElementChild?.querySelector('svg')).toBeInTheDocument();
   });
 
   it('maps visual props to data attributes', () => {
@@ -55,5 +56,16 @@ describe('Select', () => {
 
     expect(select.parentElement).toHaveClass('custom-root');
     expect(select).toHaveClass('custom-select');
+  });
+
+  it('preserves a custom icon', () => {
+    const { getByTestId } = render(
+      <Select aria-label="Select" icon={<span data-testid="custom-icon">Custom</span>}>
+        <option>Option</option>
+      </Select>,
+    );
+
+    expect(getByTestId('custom-icon')).toHaveTextContent('Custom');
+    expect(getByTestId('custom-icon').querySelector('svg')).not.toBeInTheDocument();
   });
 });

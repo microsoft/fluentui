@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
-import { Toaster, ToastTitle, Toast, useToastController, toastClassNames, toastContainerClassNames } from './index';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+import { Toast, useToastController, toastClassNames } from './index';
+import { ToastTitle } from '../ToastTitle';
+import { Toaster } from '../Toaster';
+import { toastContainerClassNames } from '../ToastContainer';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
+  mountBase(<Provider>{element}</Provider>, {
     strict: false, // TODO: Disable strict mode for toast tests until it gets fixed
   });
 };

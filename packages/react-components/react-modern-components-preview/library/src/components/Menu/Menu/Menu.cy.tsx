@@ -15,9 +15,7 @@ import {
   type MenuProps,
   menuItemClassNames,
 } from './index';
-import { FluentProvider } from '@fluentui/react-provider';
-import { Portal } from '@fluentui/react-portal';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import * as React from 'react';
 
 const menuTriggerId = 'menu-trigger';
@@ -36,14 +34,14 @@ const useStyles = makeStyles({
 });
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 describe('MenuTrigger', () => {
   it('should open menu and focus first item when clicked', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -64,7 +62,7 @@ describe('MenuTrigger', () => {
   it('should open menu on hover if openOnHover is set', () => {
     mount(
       <Menu openOnHover hoverDelay={1}>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -86,7 +84,7 @@ describe('MenuTrigger', () => {
   it('should close menu on escape when focus is on the trigger', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -110,7 +108,7 @@ describe('MenuTrigger', () => {
     it(`should open menu with ${key} and focus first menuitem`, () => {
       mount(
         <Menu>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -129,7 +127,7 @@ describe('MenuTrigger', () => {
   it('should not automatically focus itself when mounted', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -157,7 +155,7 @@ describe('MenuTrigger', () => {
       return (
         <>
           <Menu>
-            <MenuTrigger disableButtonEnhancement>
+            <MenuTrigger>
               <button data-status={count < 2 ? 'incomplete' : 'complete'} id={menuTriggerId}>
                 Menu
               </button>
@@ -195,7 +193,7 @@ describe('Custom Trigger', () => {
 
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <CustomMenuTrigger />
         </MenuTrigger>
 
@@ -224,7 +222,7 @@ describe('MenuItem', () => {
   it('should close the menu when clicked', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -246,7 +244,7 @@ describe('MenuItem', () => {
   it('should not close the menu when disabled on click', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -268,7 +266,7 @@ describe('MenuItem', () => {
   it('should focus on hover', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -291,7 +289,7 @@ describe('MenuItemCheckbox', () => {
   it('should be selected on click', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -315,7 +313,7 @@ describe('MenuItemCheckbox', () => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
       mount(
         <Menu>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -341,7 +339,7 @@ describe('MenuItemRadio', () => {
   it('should be selected on', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -366,7 +364,7 @@ describe('MenuItemRadio', () => {
     it(`should be selected on ${key === ' ' ? 'space' : key} key`, () => {
       mount(
         <Menu>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -394,7 +392,7 @@ describe('MenuItemRadio', () => {
   it('should only have one item selected', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -439,7 +437,7 @@ describe('Menu', () => {
     mount(
       <>
         <Menu>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -459,7 +457,7 @@ describe('Menu', () => {
   it('should be dismissed with Escape', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -482,7 +480,7 @@ describe('Menu', () => {
   it('should be dismissed on outside click', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -498,7 +496,7 @@ describe('Menu', () => {
   it('should be dismissed on with {leftarrow} when not a submenu', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -514,7 +512,7 @@ describe('Menu', () => {
   it('should dismiss when clicking a menu item', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -530,7 +528,7 @@ describe('Menu', () => {
   it('should not dismiss when clicking a group header', () => {
     mount(
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -555,7 +553,7 @@ describe('Menu', () => {
   it('should close on scroll when closeOnScroll is set', () => {
     mount(
       <Menu closeOnScroll>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Menu</button>
         </MenuTrigger>
         <MenuPopover>
@@ -579,7 +577,7 @@ describe('Menu', () => {
     mount(
       <>
         <Menu closeOnScroll>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -601,7 +599,7 @@ describe('Menu', () => {
       <>
         <button>Before</button>
         <Menu closeOnScroll>
-          <MenuTrigger disableButtonEnhancement>
+          <MenuTrigger>
             <button id={menuTriggerId}>Menu</button>
           </MenuTrigger>
           <MenuPopover>
@@ -641,7 +639,7 @@ describe('Menu', () => {
 describe('SplitMenuItem', () => {
   const example = (
     <Menu>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <button id={menuTriggerId}>Menu</button>
       </MenuTrigger>
       <MenuPopover>
@@ -650,7 +648,7 @@ describe('SplitMenuItem', () => {
           <MenuSplitGroup>
             <MenuItem>Split item</MenuItem>
             <Menu>
-              <MenuTrigger disableButtonEnhancement>
+              <MenuTrigger>
                 <MenuItem />
               </MenuTrigger>
               <MenuPopover>
@@ -704,7 +702,7 @@ describe('SplitMenuItem', () => {
 describe(`Nested Menus`, () => {
   const MenuL22Uncontrolled = () => (
     <Menu>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <MenuItem id="menu-l2-2-trigger">Editor Layout</MenuItem>
       </MenuTrigger>
 
@@ -720,7 +718,7 @@ describe(`Nested Menus`, () => {
 
   const MenuL21Uncontrolled = () => (
     <Menu>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <MenuItem id="menu-l2-1-trigger">Appearance</MenuItem>
       </MenuTrigger>
 
@@ -737,7 +735,7 @@ describe(`Nested Menus`, () => {
 
   const MenuL1Uncontrolled = () => (
     <Menu>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <MenuItem id="menu-l1-trigger">Preferences</MenuItem>
       </MenuTrigger>
 
@@ -755,7 +753,7 @@ describe(`Nested Menus`, () => {
 
   const UncontrolledExample = () => (
     <Menu>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <button id={menuTriggerId}>Toggle menu</button>
       </MenuTrigger>
 
@@ -779,7 +777,7 @@ describe(`Nested Menus`, () => {
 
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <MenuItem id="menu-l2-1-trigger">Editor Layout</MenuItem>
         </MenuTrigger>
 
@@ -802,7 +800,7 @@ describe(`Nested Menus`, () => {
 
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <MenuItem id="menu-l2-2-trigger">Appearance</MenuItem>
         </MenuTrigger>
 
@@ -826,7 +824,7 @@ describe(`Nested Menus`, () => {
 
     return (
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <MenuItem id="menu-l1-trigger">Preferences</MenuItem>
         </MenuTrigger>
 
@@ -846,7 +844,7 @@ describe(`Nested Menus`, () => {
   const ControlledExample = () => {
     return (
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <button id={menuTriggerId}>Toggle menu</button>
         </MenuTrigger>
 
@@ -1062,7 +1060,7 @@ describe(`Nested Menus`, () => {
 describe('Context menu', () => {
   const ContextMenuExample = () => (
     <Menu openOnContext>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <button id={menuTriggerId}>trigger</button>
       </MenuTrigger>
       <MenuPopover>
@@ -1154,19 +1152,17 @@ const DebugPointer = () => {
   }, []);
 
   return (
-    <Portal mountNode={{ className: styles.pointerPortal }}>
-      <div
-        style={{
-          borderRadius: '4px',
-          pointerEvents: 'none',
-          background: 'red',
-          height: '4px',
-          width: '4px',
-          position: 'fixed',
-        }}
-        ref={pointerRef}
-      />
-    </Portal>
+    <div
+      style={{
+        borderRadius: '4px',
+        pointerEvents: 'none',
+        background: 'red',
+        height: '4px',
+        width: '4px',
+        position: 'fixed',
+      }}
+      ref={pointerRef}
+    />
   );
 };
 
@@ -1176,7 +1172,7 @@ const MenuWithSafeZoneExample = () => {
 
   return (
     <Menu {...menuProps} open>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <button>root trigger</button>
       </MenuTrigger>
       <MenuPopover>

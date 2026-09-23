@@ -1,23 +1,28 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
-import { Breadcrumb } from './index';
+import { Breadcrumb, partitionBreadcrumbItems } from './index';
 import { BreadcrumbItem } from '../BreadcrumbItem';
 import { BreadcrumbButton } from '../BreadcrumbButton';
 import { BreadcrumbDivider } from '../BreadcrumbDivider';
-import { partitionBreadcrumbItems } from '@fluentui/react-components';
-import type { BreadcrumbProps } from './index';
-import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-button';
-import { Menu, MenuList, MenuItemLink, MenuPopover, MenuTrigger, MenuItem } from '@fluentui/react-menu';
-import { useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
+import type { BreadcrumbProps, PartitionBreadcrumbItems } from './index';
+import { Button } from '../../Button';
+import {
+  Menu,
+  MenuList,
+  MenuItemLink,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
+} from '@fluentui/react-modern-components-preview/menu';
+import { useIsOverflowItemVisible, useOverflowMenu } from '../../Overflow';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 const mapHelper = new Array(7).fill(0).map((_, i) => i);
@@ -69,7 +74,7 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
 
   return (
     <Menu hasIcons>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <Button
           id="menu"
           appearance="transparent"

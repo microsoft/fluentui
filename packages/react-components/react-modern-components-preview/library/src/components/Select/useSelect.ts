@@ -1,7 +1,8 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { useSelect as useSelectBase } from '@fluentui/react-headless-components-preview/select';
+import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
 
 /**
@@ -13,6 +14,10 @@ export const useSelect = (props: SelectProps, ref: React.Ref<HTMLSelectElement>)
 
   return {
     ...state,
+    icon: state.icon && {
+      ...state.icon,
+      children: state.icon.children ?? React.createElement(ChevronDownRegular),
+    },
     root: {
       ...state.root,
       'data-appearance': appearance,

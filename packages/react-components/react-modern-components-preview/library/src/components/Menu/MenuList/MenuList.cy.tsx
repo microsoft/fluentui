@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
 import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from './index';
 import type { JSXElement } from '@fluentui/react-utilities';
@@ -11,7 +10,7 @@ const menuItemSelector = '[role="menuitem"]';
 const menuSelector = '[role="menu"]';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 describe('MenuList', () => {
   it('should focus each menu item on hover', () => {
@@ -38,7 +37,7 @@ describe('MenuList', () => {
             <MenuItem>Paste</MenuItem>
             <MenuItem>Edit</MenuItem>
             <Menu>
-              <MenuTrigger disableButtonEnhancement>
+              <MenuTrigger>
                 <MenuItem>Preferences</MenuItem>
               </MenuTrigger>
               <MenuPopover>

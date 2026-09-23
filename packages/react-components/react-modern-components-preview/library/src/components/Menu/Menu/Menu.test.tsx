@@ -87,7 +87,6 @@ describe('Menu compound components', () => {
       'has-top-level-file-extra',
     ],
     requiredProps: {
-      disableButtonEnhancement: true,
       children: <button>Open menu</button>,
     },
     renderOptions: {

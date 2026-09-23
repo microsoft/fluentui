@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
 import { Combobox } from './index';
 import type { ComboboxProps } from './index';
-import { Option } from '../Option';
+import { Option } from '../Dropdown/Option';
 
 import type { JSXElement } from '@fluentui/react-utilities';
 
@@ -15,7 +14,7 @@ const triggerSelector = `#${triggerId}`;
 const listboxSelector = '[role="listbox"]';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 describe('Combobox controlling open/close state', () => {
