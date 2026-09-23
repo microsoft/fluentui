@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
 import { AlphaSlider } from './index';
 import type { AlphaSliderProps } from './index';
-import { calculateTransparencyValue } from '@fluentui/react-color-picker/lib/components/AlphaSlider/alphaSliderUtils';
-import { INITIAL_COLOR_HSV } from '@fluentui/react-color-picker/lib/utils/constants';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 const AlphaSliderExample = (props: AlphaSliderProps) => {
   const { transparency = false } = props;
-  const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
+  const [color, setColor] = React.useState(props.color ?? { h: 0, s: 0, v: 1, a: 1 });
   return (
     <AlphaSlider
       color={color}
@@ -190,4 +188,12 @@ describe('AlphaSlider', () => {
 function assertSliderValue(value: string) {
   cy.get('#alpha-slider').should('have.attr', 'aria-valuetext', `${value}%`);
   cy.get('#alpha-slider').should('have.attr', 'value', value);
+}
+
+function calculateTransparencyValue(transparency: boolean, value?: number): number | undefined {
+  return value !== undefined ? adjustToTransparency(value * 100, transparency) : undefined;
+}
+
+function adjustToTransparency(value: number, transparency: boolean): number {
+  return transparency ? 100 - value : value;
 }

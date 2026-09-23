@@ -25,6 +25,8 @@ describe('SearchBox', () => {
     expect(input).toHaveClass(searchBoxClassNames.input, inputClassNames.input);
     expect(root?.firstElementChild).toHaveClass(searchBoxClassNames.contentBefore, inputClassNames.contentBefore);
     expect(getByRole('button', { name: 'clear' })).toHaveClass(searchBoxClassNames.dismiss);
+    expect(root?.firstElementChild?.querySelector('svg')).toBeInTheDocument();
+    expect(getByRole('button', { name: 'clear' }).querySelector('svg')).toBeInTheDocument();
   });
 
   it('maps visual props and focus state to data attributes', () => {
@@ -48,5 +50,18 @@ describe('SearchBox', () => {
 
     expect(input.parentElement).toHaveClass('custom-root');
     expect(input).toHaveClass('custom-input');
+  });
+
+  it('preserves custom search and dismiss icons', () => {
+    const { getByTestId } = render(
+      <SearchBox
+        aria-label="Search"
+        contentBefore={<span data-testid="custom-search">Search</span>}
+        dismiss={<span data-testid="custom-dismiss">Dismiss</span>}
+      />,
+    );
+
+    expect(getByTestId('custom-search')).toHaveTextContent('Search');
+    expect(getByTestId('custom-dismiss')).toHaveTextContent('Dismiss');
   });
 });

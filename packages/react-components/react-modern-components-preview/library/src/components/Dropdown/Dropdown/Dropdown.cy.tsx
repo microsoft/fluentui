@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 import { Dropdown } from './index';
@@ -16,7 +15,7 @@ const triggerSelector = `#${triggerId}`;
 const listboxSelector = '[role="listbox"]';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 describe('Dropdown - controlling open/close state', () => {

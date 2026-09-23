@@ -1,8 +1,10 @@
-import { baseConfig } from '@fluentui/scripts-cypress';
+import { baseConfig, baseWebpackConfig } from '@fluentui/scripts-cypress';
 
-baseConfig.component.devServer.webpackConfig.module?.rules?.push({
+const config = { ...baseConfig };
+
+config.component.devServer.webpackConfig.module?.rules?.push({
   test: /\.module\.css$/,
   use: ['style-loader', { loader: 'css-loader', options: { modules: true } }],
 });
 
-export default baseConfig;
+export default config;

@@ -2,6 +2,7 @@
   "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2019",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
@@ -17,6 +18,9 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
     }
   ]
 }

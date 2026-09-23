@@ -2,7 +2,10 @@ import type {
   SwatchPickerProps as SwatchPickerBaseProps,
   SwatchPickerState as SwatchPickerBaseState,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
-export type { SwatchPickerSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
+export type {
+  SwatchPickerSlots,
+  SwatchPickerOnSelectEventHandler,
+} from '@fluentui/react-headless-components-preview/swatch-picker';
 
 export type SwatchPickerProps = SwatchPickerBaseProps & {
   /** @default 'medium' */

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
 import { SwatchPicker } from './index';
-import type { SwatchPickerProps } from './index';
-import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker';
+import type { SwatchPickerProps, SwatchPickerOnSelectEventHandler } from './index';
 import { ColorSwatch } from '../ColorSwatch';
 import type { ColorSwatchProps } from '../ColorSwatch';
 import { ImageSwatch } from '../ImageSwatch';
@@ -13,7 +12,7 @@ import { SwatchPickerRow } from '../SwatchPickerRow';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 type SwatchProps = ColorSwatchProps | ImageSwatchProps;

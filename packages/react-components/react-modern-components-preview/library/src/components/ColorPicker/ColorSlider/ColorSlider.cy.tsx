@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
 import { ColorSlider } from './index';
 import type { ColorSliderProps } from './index';
-import { INITIAL_COLOR_HSV } from '@fluentui/react-color-picker/lib/utils/constants';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 const ColorSliderExample = (props: ColorSliderProps) => {
-  const [color, setColor] = React.useState(props.color ?? INITIAL_COLOR_HSV);
+  const [color, setColor] = React.useState(props.color ?? { h: 0, s: 0, v: 1, a: 1 });
   return (
     <ColorSlider
       color={color}

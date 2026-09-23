@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
 import { Popover, PopoverTrigger, PopoverSurface } from './index';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '../../Menu';
 import type { PopoverProps } from './index';
 import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 const popoverTriggerSelector = '[aria-expanded]';
@@ -20,7 +19,7 @@ describe('Popover', () => {
   ['uncontrolled', 'controlled'].forEach(scenario => {
     const UncontrolledExample = () => (
       <Popover>
-        <PopoverTrigger disableButtonEnhancement>
+        <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
         <PopoverSurface>This is a popover</PopoverSurface>
@@ -32,7 +31,7 @@ describe('Popover', () => {
 
       return (
         <Popover open={open} onOpenChange={(e, data) => setOpen(data.open)}>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -85,7 +84,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover openOnHover>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -112,7 +111,7 @@ describe('Popover', () => {
     it('should dismiss on click outside', () => {
       mount(
         <Popover>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <CustomTrigger />
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -126,7 +125,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover openOnContext>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -153,7 +152,7 @@ describe('Popover', () => {
     beforeEach(() => {
       mount(
         <Popover closeOnScroll>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
           <PopoverSurface>This is a popover</PopoverSurface>
@@ -173,7 +172,7 @@ describe('Popover', () => {
       const id = 'first';
       return (
         <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>First nested trigger</button>
           </PopoverTrigger>
 
@@ -190,7 +189,7 @@ describe('Popover', () => {
       const id = 'second';
       return (
         <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Second nested trigger</button>
           </PopoverTrigger>
 
@@ -204,7 +203,7 @@ describe('Popover', () => {
     const Example = () => {
       return (
         <Popover trapFocus>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Root trigger</button>
           </PopoverTrigger>
 
@@ -299,7 +298,7 @@ describe('Popover', () => {
 
       return (
         <Popover onOpenChange={onOpenChange}>
-          <PopoverTrigger disableButtonEnhancement>
+          <PopoverTrigger>
             <button>Popover trigger</button>
           </PopoverTrigger>
 
@@ -335,7 +334,7 @@ describe('Popover', () => {
         <>
           <div>
             <Popover inline>
-              <PopoverTrigger disableButtonEnhancement>
+              <PopoverTrigger>
                 <button>Popover trigger</button>
               </PopoverTrigger>
 
@@ -361,7 +360,7 @@ describe('Popover', () => {
       it('Tab should not go to the window', () => {
         mount(
           <Popover trapFocus>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -387,7 +386,7 @@ describe('Popover', () => {
             legacyTrapFocus={false}
             trapFocus
           >
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -410,7 +409,7 @@ describe('Popover', () => {
       it('Tab should go to the window', () => {
         mount(
           <Popover inertTrapFocus trapFocus>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -433,7 +432,7 @@ describe('Popover', () => {
       it('should focus on PopoverSurface when its tabIndex is a number', () => {
         mount(
           <Popover trapFocus>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -460,7 +459,7 @@ describe('Popover', () => {
           <>
             <button id="outside">Outside</button>
             <Popover trapFocus>
-              <PopoverTrigger disableButtonEnhancement>
+              <PopoverTrigger>
                 <button>Popover trigger</button>
               </PopoverTrigger>
               <PopoverSurface>
@@ -481,7 +480,7 @@ describe('Popover', () => {
           <>
             <button id="outside">Outside</button>
             <Popover trapFocus inertTrapFocus>
-              <PopoverTrigger disableButtonEnhancement>
+              <PopoverTrigger>
                 <button>Popover trigger</button>
               </PopoverTrigger>
               <PopoverSurface>
@@ -502,7 +501,7 @@ describe('Popover', () => {
           <>
             <button id="outside">Outside</button>
             <Popover>
-              <PopoverTrigger disableButtonEnhancement>
+              <PopoverTrigger>
                 <button>Popover trigger</button>
               </PopoverTrigger>
               <PopoverSurface>This is a popover</PopoverSurface>
@@ -521,7 +520,7 @@ describe('Popover', () => {
           <>
             <button id="outside">Outside</button>
             <Popover trapFocus {...({ closeOnFocusOutside: false } as unknown as PopoverProps)}>
-              <PopoverTrigger disableButtonEnhancement>
+              <PopoverTrigger>
                 <button>Popover trigger</button>
               </PopoverTrigger>
               <PopoverSurface>
@@ -553,7 +552,7 @@ describe('Popover', () => {
                 trapFocus
                 unstable_disableAutoFocus
               >
-                <PopoverTrigger disableButtonEnhancement>
+                <PopoverTrigger>
                   <button>Popover anchor</button>
                 </PopoverTrigger>
                 <PopoverSurface>
@@ -589,7 +588,7 @@ describe('Popover', () => {
                 trapFocus
                 unstable_disableAutoFocus
               >
-                <PopoverTrigger disableButtonEnhancement>
+                <PopoverTrigger>
                   <button>Popover anchor</button>
                 </PopoverTrigger>
                 <PopoverSurface>
@@ -612,7 +611,7 @@ describe('Popover', () => {
       it('should not close when focus moves to the trigger', () => {
         mount(
           <Popover trapFocus>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
             <PopoverSurface>
@@ -644,7 +643,7 @@ describe('Popover', () => {
           <ExampleFrame />
           <div />
           <Popover>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -660,7 +659,7 @@ describe('Popover', () => {
       mount(
         <>
           <Popover>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
 
@@ -687,7 +686,7 @@ describe('Popover', () => {
       mount(
         <>
           <Popover>
-            <PopoverTrigger disableButtonEnhancement>
+            <PopoverTrigger>
               <button>First</button>
             </PopoverTrigger>
 
@@ -758,7 +757,7 @@ describe('Popover', () => {
           </PopoverTrigger>
           <PopoverSurface>
             <Menu>
-              <MenuTrigger disableButtonEnhancement>
+              <MenuTrigger>
                 <button id="menu-trigger">Menu trigger</button>
               </MenuTrigger>
 
@@ -795,7 +794,7 @@ describe('Popover', () => {
           </PopoverTrigger>
           <PopoverSurface>
             <Menu>
-              <MenuTrigger disableButtonEnhancement>
+              <MenuTrigger>
                 <button id="menu-trigger">Menu trigger</button>
               </MenuTrigger>
 

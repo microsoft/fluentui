@@ -5,7 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderSearchBox } from '@fluentui/react-headless-components-preview/search-box';
 import type { SearchBoxProps as SearchBoxProps_2 } from '@fluentui/react-headless-components-preview/search-box';
 import { SearchBoxSlots } from '@fluentui/react-headless-components-preview/search-box';

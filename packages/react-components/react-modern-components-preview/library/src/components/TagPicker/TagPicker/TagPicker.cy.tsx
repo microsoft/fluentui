@@ -1,26 +1,22 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import type { TagPickerProps } from './index';
-import {
-  TagPicker,
-  TagPickerControl,
-  TagPickerGroup,
-  TagPickerInput,
-  TagPickerList,
-  TagPickerOption,
-  tagPickerControlClassNames,
-} from './index';
-import { Tag } from '../Tag';
-import { Avatar } from '@fluentui/react-avatar';
-import { Button } from '@fluentui/react-button';
+import { TagPicker } from './index';
+import { TagPickerControl, tagPickerControlClassNames } from '../TagPickerControl';
+import { TagPickerGroup } from '../TagPickerGroup';
+import { TagPickerInput } from '../TagPickerInput';
+import { TagPickerList } from '../TagPickerList';
+import { TagPickerOption } from '../TagPickerOption';
+import { Tag } from '../../Tag';
+import { Avatar } from '../../Avatar';
+import { Button } from '../../Button';
 
 import 'cypress-real-events';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 const options = [

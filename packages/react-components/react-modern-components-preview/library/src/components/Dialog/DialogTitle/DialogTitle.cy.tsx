@@ -1,44 +1,47 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from './index';
-import { DialogContent } from '@fluentui/react-dialog';
-import { Button } from '@fluentui/react-button';
 import {
-  dialogActionSelector,
-  dialogTriggerOpenId,
-  dialogTriggerOpenSelector,
-} from '../../../../../react-dialog/library/src/testing/selectors';
+  Dialog,
+  DialogActions,
+  DialogBody,
+  DialogSurface,
+  DialogTitle,
+  DialogTrigger,
+  dialogTitleClassNames,
+} from '../../dialog';
+import { Button } from '../../Button';
 
-const mount = (element: JSXElement) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+const dialogTriggerOpenId = 'open-btn';
+const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
+const dialogActionSelector = `.${dialogTitleClassNames.action}`;
+
+const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('DialogTitle', () => {
   describe('modalType = modal', () => {
     it('should not have closeButton by default', () => {
       mount(
         <Dialog modalType="modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogContent>
-              <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
-                  <Button appearance="secondary">Close</Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
             </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
@@ -50,19 +53,19 @@ describe('DialogTitle', () => {
     it('should have closeButton by default', () => {
       mount(
         <Dialog modalType="non-modal">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
+              <DialogBody>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
-              </DialogContent>
+              </DialogBody>
               <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
+                <DialogTrigger>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>
@@ -79,19 +82,19 @@ describe('DialogTitle', () => {
     it('should not have closeButton by default', () => {
       mount(
         <Dialog modalType="alert">
-          <DialogTrigger disableButtonEnhancement>
+          <DialogTrigger>
             <Button id={dialogTriggerOpenId}>Open dialog</Button>
           </DialogTrigger>
           <DialogSurface>
             <DialogBody>
               <DialogTitle>Dialog title</DialogTitle>
-              <DialogContent>
+              <DialogBody>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
                 eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
                 natus iure cumque eaque?
-              </DialogContent>
+              </DialogBody>
               <DialogActions>
-                <DialogTrigger disableButtonEnhancement>
+                <DialogTrigger>
                   <Button appearance="secondary">Close</Button>
                 </DialogTrigger>
                 <Button appearance="primary">Do Something</Button>

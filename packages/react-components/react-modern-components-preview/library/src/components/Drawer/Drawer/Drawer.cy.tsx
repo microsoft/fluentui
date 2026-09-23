@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
-import { testDrawerBaseScenarios } from '../../../../../react-drawer/library/src/e2e/DrawerShared';
-import { Drawer, inlineDrawerClassNames, overlayDrawerClassNames } from './index';
+import { testDrawerBaseScenarios } from '../../../../../../react-drawer/library/src/e2e/DrawerShared';
+import { Drawer } from './index';
+import { inlineDrawerClassNames } from '../InlineDrawer';
+import { overlayDrawerClassNames } from '../OverlayDrawer';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 describe('Drawer', () => {

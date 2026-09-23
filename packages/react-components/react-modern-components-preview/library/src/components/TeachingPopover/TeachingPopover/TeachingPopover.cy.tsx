@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
-import { FluentProvider } from '@fluentui/react-provider';
-import { teamsLightTheme } from '@fluentui/react-theme';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
-import {
-  TeachingPopover,
-  TeachingPopoverTrigger,
-  TeachingPopoverSurface,
-  TeachingPopoverBody,
-  TeachingPopoverTitle,
-} from './index';
+import { TeachingPopover } from './index';
 import type { TeachingPopoverProps } from './index';
+import { TeachingPopoverTrigger } from '../TeachingPopoverTrigger';
+import { TeachingPopoverSurface } from '../TeachingPopoverSurface';
+import { TeachingPopoverBody } from '../TeachingPopoverBody';
+import { TeachingPopoverTitle } from '../TeachingPopoverTitle';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mount = (element: JSXElement) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<Provider>{element}</Provider>);
 };
 
 const triggerSelector = '[aria-expanded]';
@@ -26,7 +23,7 @@ describe('TeachingPopover', () => {
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
     const UncontrolledExample = () => (
       <TeachingPopover>
-        <TeachingPopoverTrigger disableButtonEnhancement>
+        <TeachingPopoverTrigger>
           <button>Trigger</button>
         </TeachingPopoverTrigger>
         <TeachingPopoverSurface>
@@ -43,7 +40,7 @@ describe('TeachingPopover', () => {
 
       return (
         <TeachingPopover open={open} onOpenChange={(e, data) => setOpen(data.open)}>
-          <TeachingPopoverTrigger disableButtonEnhancement>
+          <TeachingPopoverTrigger>
             <button>Trigger</button>
           </TeachingPopoverTrigger>
           <TeachingPopoverSurface>
@@ -90,7 +87,7 @@ describe('TeachingPopover', () => {
     it('should trap focus by default', () => {
       mount(
         <TeachingPopover>
-          <TeachingPopoverTrigger disableButtonEnhancement>
+          <TeachingPopoverTrigger>
             <button>Trigger</button>
           </TeachingPopoverTrigger>
           <TeachingPopoverSurface>
@@ -120,7 +117,7 @@ describe('TeachingPopover', () => {
 
       return (
         <TeachingPopover onOpenChange={onOpenChange}>
-          <TeachingPopoverTrigger disableButtonEnhancement>
+          <TeachingPopoverTrigger>
             <button>Trigger</button>
           </TeachingPopoverTrigger>
           <TeachingPopoverSurface>

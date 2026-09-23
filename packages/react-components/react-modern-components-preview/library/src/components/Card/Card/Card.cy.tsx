@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
-import { Button } from '@fluentui/react-button';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+
+import { Button } from '../../Button';
 import { Card, cardClassNames } from './index';
 import { CardFooter } from '../CardFooter';
 import { CardHeader, cardHeaderClassNames } from '../CardHeader';
@@ -11,7 +11,7 @@ import { CardPreview, cardPreviewClassNames } from '../CardPreview';
 import type { CardProps, CardOnSelectionChangeEvent } from './index';
 
 const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+  mount(<Provider>{element}</Provider>);
 };
 
 const resolveAsset = (asset: string) => {
