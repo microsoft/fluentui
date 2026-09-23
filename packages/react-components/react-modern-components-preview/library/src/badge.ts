@@ -1,2 +1,29 @@
-export { Badge, badgeClassNames, renderBadge, useBadge, useBadgeStyles } from './components/Badge/index';
-export type { BadgeSlots, BadgeProps, BadgeState } from './components/Badge/index';
+export {
+  Badge,
+  badgeClassNames,
+  CounterBadge,
+  counterBadgeClassNames,
+  PresenceBadge,
+  presenceBadgeClassNames,
+  renderBadge,
+  renderCounterBadge,
+  renderPresenceBadge,
+  useBadge,
+  useBadgeStyles,
+  useCounterBadge,
+  useCounterBadgeStyles,
+  usePresenceBadge,
+  usePresenceBadgeStyles,
+} from './components/Badge/index';
+export type {
+  BadgeProps,
+  BadgeSlots,
+  BadgeState,
+  CounterBadgeProps,
+  CounterBadgeSlots,
+  CounterBadgeState,
+  PresenceBadgeProps,
+  PresenceBadgeSlots,
+  PresenceBadgeState,
+  PresenceBadgeStatus,
+} from './components/Badge/index';

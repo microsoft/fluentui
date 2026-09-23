@@ -7,9 +7,16 @@
 import type { BadgeProps as BadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
 import { BadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 import type { BadgeState as BadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeProps as CounterBadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { CounterBadgeState as CounterBadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import type { PresenceBadgeProps as PresenceBadgeProps_2 } from '@fluentui/react-headless-components-preview/badge';
+import type { PresenceBadgeState as PresenceBadgeState_2 } from '@fluentui/react-headless-components-preview/badge';
+import { PresenceBadgeStatus } from '@fluentui/react-headless-components-preview/badge';
+import * as React_2 from 'react';
 import { renderBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderCounterBadge } from '@fluentui/react-headless-components-preview/badge';
+import { renderPresenceBadge } from '@fluentui/react-headless-components-preview/badge';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
@@ -27,6 +34,8 @@ export type BadgeProps = BadgeProps_2 & {
 };
 
 export { BadgeSlots }
+export { BadgeSlots as CounterBadgeSlots }
+export { BadgeSlots as PresenceBadgeSlots }
 
 // @public (undocumented)
 export type BadgeState = BadgeState_2 & {
@@ -42,13 +51,78 @@ export type BadgeState = BadgeState_2 & {
     };
 };
 
+// @public (undocumented)
+export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+// @public (undocumented)
+export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
+
+// @public (undocumented)
+export type CounterBadgeProps = CounterBadgeProps_2 & {
+    appearance?: 'filled' | 'ghost';
+    color?: Extract<BadgeProps['color'], 'brand' | 'danger' | 'important' | 'informative'>;
+    shape?: 'circular' | 'rounded';
+    size?: BadgeProps['size'];
+};
+
+// @public (undocumented)
+export type CounterBadgeState = CounterBadgeState_2 & {
+    appearance: NonNullable<CounterBadgeProps['appearance']>;
+    color: NonNullable<CounterBadgeProps['color']>;
+    shape: NonNullable<CounterBadgeProps['shape']>;
+    size: NonNullable<CounterBadgeProps['size']>;
+    root: CounterBadgeState_2['root'] & {
+        'data-appearance': NonNullable<CounterBadgeProps['appearance']>;
+        'data-color': NonNullable<CounterBadgeProps['color']>;
+        'data-shape': NonNullable<CounterBadgeProps['shape']>;
+        'data-size': NonNullable<CounterBadgeProps['size']>;
+    };
+};
+
+// @public (undocumented)
+export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public (undocumented)
+export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
+
+// @public (undocumented)
+export type PresenceBadgeProps = PresenceBadgeProps_2 & {
+    size?: BadgeProps['size'];
+};
+
+// @public (undocumented)
+export type PresenceBadgeState = PresenceBadgeState_2 & {
+    size: NonNullable<PresenceBadgeProps['size']>;
+    root: PresenceBadgeState_2['root'] & {
+        'data-size': NonNullable<PresenceBadgeProps['size']>;
+    };
+};
+
+export { PresenceBadgeStatus }
+
 export { renderBadge }
+
+export { renderCounterBadge }
+
+export { renderPresenceBadge }
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React_2.Ref<HTMLDivElement>) => BadgeState;
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+// @public (undocumented)
+export const useCounterBadge: (props: CounterBadgeProps, ref: React_2.Ref<HTMLDivElement>) => CounterBadgeState;
+
+// @public (undocumented)
+export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
+
+// @public (undocumented)
+export const usePresenceBadge: (props: PresenceBadgeProps, ref: React_2.Ref<HTMLDivElement>) => PresenceBadgeState;
+
+// @public (undocumented)
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Slider, sliderClassNames } from './';
+import { Slider, sliderClassNames, sliderCSSVars } from './index';
 
 describe('Slider', () => {
   it('renders visual defaults and stable class names', () => {
@@ -38,5 +38,19 @@ describe('Slider', () => {
     fireEvent.change(input, { target: { value: '40' } });
     expect(input).toHaveValue('40');
     expect(onChange).toHaveBeenCalledWith(expect.anything(), { value: 40 });
+  });
+
+  it('exports the CSS custom properties used to customize Slider', () => {
+    expect(sliderCSSVars).toEqual({
+      sliderDirectionVar: '--fui-Slider--direction',
+      sliderInnerThumbRadiusVar: '--fui-Slider__inner-thumb--radius',
+      sliderProgressVar: '--fui-Slider--progress',
+      sliderProgressColorVar: '--fui-Slider__progress--color',
+      sliderRailSizeVar: '--fui-Slider__rail--size',
+      sliderRailColorVar: '--fui-Slider__rail--color',
+      sliderStepsPercentVar: '--fui-Slider--steps-percent',
+      sliderThumbColorVar: '--fui-Slider__thumb--color',
+      sliderThumbSizeVar: '--fui-Slider__thumb--size',
+    });
   });
 });
