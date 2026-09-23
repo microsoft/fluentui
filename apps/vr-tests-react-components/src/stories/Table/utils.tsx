@@ -9,9 +9,12 @@ import {
   VideoRegular,
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
-import type { PresenceBadgeStatus } from '@fluentui/react-modern-components-preview/badge';
-import type { TableProps, TableRowProps, TableColumnDefinition } from '@fluentui/react-table';
+import { Avatar } from '@fluentui/react-avatar';
+import type { PresenceBadgeStatus } from '@fluentui/react-badge';
+import type {
+  TableProps,
+  TableRowProps,
+  TableColumnDefinition} from '@fluentui/react-table';
 import {
   Table,
   TableHeader,
@@ -26,7 +29,7 @@ import {
   useTableFeatures,
   createTableColumn,
 } from '@fluentui/react-table';
-import { Button } from '@fluentui/react-modern-components-preview/button';
+import { Button } from '@fluentui/react-button';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {

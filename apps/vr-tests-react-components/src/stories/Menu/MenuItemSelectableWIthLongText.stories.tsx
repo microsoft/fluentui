@@ -1,13 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import {
-  Menu,
-  MenuTrigger,
-  MenuPopover,
-  MenuList,
-  MenuItemCheckbox,
-  MenuItem,
-} from '@fluentui/react-modern-components-preview/menu';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemCheckbox, MenuItem } from '@fluentui/react-menu';
 import { CutRegular, CutFilled, bundleIcon } from '@fluentui/react-icons';
 
 const CutIcon = bundleIcon(CutFilled, CutRegular);

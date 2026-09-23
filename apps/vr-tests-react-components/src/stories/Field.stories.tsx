@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { Checkbox } from '@fluentui/react-modern-components-preview/checkbox';
-import { Combobox } from '@fluentui/react-modern-components-preview/combobox';
-import { Dropdown } from '@fluentui/react-modern-components-preview/dropdown';
-import { Field } from '@fluentui/react-modern-components-preview/field';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { Combobox, Dropdown } from '@fluentui/react-combobox';
+import { Field } from '@fluentui/react-field';
 import { Dismiss12Filled } from '@fluentui/react-icons';
-import { Input } from '@fluentui/react-modern-components-preview/input';
-import { ProgressBar } from '@fluentui/react-modern-components-preview/progress-bar';
-import { Radio, RadioGroup } from '@fluentui/react-modern-components-preview/radio-group';
-import { Select } from '@fluentui/react-modern-components-preview/select';
-import { Slider } from '@fluentui/react-modern-components-preview/slider';
-import { SpinButton } from '@fluentui/react-modern-components-preview/spin-button';
-import { Switch } from '@fluentui/react-modern-components-preview/switch';
-import { Textarea } from '@fluentui/react-modern-components-preview/textarea';
+import { Input } from '@fluentui/react-input';
+import { ProgressBar } from '@fluentui/react-progress';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
+import { Select } from '@fluentui/react-select';
+import { Slider } from '@fluentui/react-slider';
+import { SpinButton } from '@fluentui/react-spinbutton';
+import { Switch } from '@fluentui/react-switch';
+import { Textarea } from '@fluentui/react-textarea';
 import type { Meta, Decorator } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 

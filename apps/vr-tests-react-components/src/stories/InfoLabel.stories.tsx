@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { InfoLabel } from '@fluentui/react-modern-components-preview/info-label';
+import { InfoLabel } from '@fluentui/react-infolabel';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecoratorFixedWidth } from '../utilities';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CardHeader, CardFooter } from '@fluentui/react-modern-components-preview/card';
+import { CardHeader, CardFooter } from '@fluentui/react-card';
 import { Body1, Caption1 } from '@fluentui/react-text';
-import { Button } from '@fluentui/react-modern-components-preview/button';
+import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 
 const ASSET_URL =

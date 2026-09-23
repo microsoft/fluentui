@@ -1,13 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import {
-  Menu,
-  MenuTrigger,
-  MenuPopover,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-} from '@fluentui/react-modern-components-preview/menu';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuDivider } from '@fluentui/react-menu';
 import { CutRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 import { getStoryVariant, RTL } from '../../utilities';
 

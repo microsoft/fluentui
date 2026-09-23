@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { Tooltip } from '@fluentui/react-modern-components-preview/tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useStyles } from './utils';

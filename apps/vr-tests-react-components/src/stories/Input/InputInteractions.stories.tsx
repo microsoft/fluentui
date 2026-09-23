@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
-import { Input } from '@fluentui/react-modern-components-preview/input';
+import { Input } from '@fluentui/react-input';
 
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 import type { StoryParameters } from 'storywright';

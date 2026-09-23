@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
-import { Switch } from '@fluentui/react-modern-components-preview/switch';
+import { Switch } from '@fluentui/react-switch';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../utilities';
 

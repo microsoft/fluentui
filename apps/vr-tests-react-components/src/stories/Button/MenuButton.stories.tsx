@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuButton } from '@fluentui/react-modern-components-preview/menu-button';
+import { MenuButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';

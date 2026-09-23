@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PresenceBadgeStatus } from '@fluentui/react-modern-components-preview/badge';
+import type { PresenceBadgeStatus } from '@fluentui/react-badge';
 import type { TableColumnDefinition } from '@fluentui/react-table';
 import { createTableColumn } from '@fluentui/react-table';
 import {
@@ -12,7 +12,7 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { TableCellLayout } from '@fluentui/react-table';
-import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 type FileCell = {

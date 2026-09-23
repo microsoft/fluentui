@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-modern-components-preview/toggle-button';
+import { ToggleButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';

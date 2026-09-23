@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
 import type {
-  BreadcrumbProps} from '@fluentui/react-modern-components-preview/breadcrumb';
+  BreadcrumbProps} from '@fluentui/react-breadcrumb';
 import {
   Breadcrumb,
   BreadcrumbButton,
   BreadcrumbItem,
   BreadcrumbDivider,
-} from '@fluentui/react-modern-components-preview/breadcrumb';
+} from '@fluentui/react-breadcrumb';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 

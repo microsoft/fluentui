@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
-import { CompoundButton } from '@fluentui/react-modern-components-preview/compound-button';
+import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, RTL } from '../../utilities';

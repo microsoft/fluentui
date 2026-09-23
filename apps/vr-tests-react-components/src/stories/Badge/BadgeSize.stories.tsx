@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { BadgeProps } from '@fluentui/react-modern-components-preview/badge';
-import { Badge } from '@fluentui/react-modern-components-preview/badge';
+import type { BadgeProps } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
 import type { Meta } from '@storybook/react-webpack5';

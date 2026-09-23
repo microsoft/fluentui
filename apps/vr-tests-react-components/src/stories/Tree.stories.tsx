@@ -3,8 +3,7 @@ import type {
   HeadlessFlatTreeItemProps,
   TreeItemValue,
   TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-tree';
+  TreeOpenChangeEvent} from '@fluentui/react-tree';
 import {
   FlatTree,
   Tree,
@@ -14,8 +13,8 @@ import {
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { tokens } from '@fluentui/react-theme';
-import { Button } from '@fluentui/react-modern-components-preview/button';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-modern-components-preview/menu';
+import { Button } from '@fluentui/react-button';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import type { Meta } from '@storybook/react-webpack5';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 import { Steps, type StoryParameters } from 'storywright';
@@ -31,7 +30,7 @@ import {
 } from '@fluentui/react-icons';
 import { CounterBadge } from '@fluentui/react-modern-components-preview/badge';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Avatar } from '@fluentui/react-modern-components-preview/avatar';
+import { Avatar } from '@fluentui/react-avatar';
 
 export default {
   title: 'Tree',

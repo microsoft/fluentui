@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import type { Meta } from '@storybook/react-webpack5';
-import { Checkbox } from '@fluentui/react-modern-components-preview/checkbox';
+import { Checkbox } from '@fluentui/react-checkbox';
 import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {

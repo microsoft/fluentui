@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { Divider } from '@fluentui/react-modern-components-preview/divider';
+import { Divider } from '@fluentui/react-divider';
 
 import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL, HIGH_CONTRAST, DARK_MODE } from '../../utilities';
 

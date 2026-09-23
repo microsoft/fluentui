@@ -1,13 +1,13 @@
 import * as React from 'react';
 import type {
   AvatarGroupPopoverProps,
-  AvatarGroupProps} from '@fluentui/react-modern-components-preview/avatar-group';
+  AvatarGroupProps} from '@fluentui/react-avatar';
 import {
   AvatarGroup,
   AvatarGroupItem,
   AvatarGroupPopover,
   partitionAvatarGroupItems,
-} from '@fluentui/react-modern-components-preview/avatar-group';
+} from '@fluentui/react-avatar';
 
 export const names = [
   'Katri Athokas',

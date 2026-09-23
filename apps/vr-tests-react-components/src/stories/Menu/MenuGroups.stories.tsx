@@ -9,7 +9,7 @@ import {
   MenuGroup,
   MenuGroupHeader,
   MenuDivider,
-} from '@fluentui/react-modern-components-preview/menu';
+} from '@fluentui/react-menu';
 import { CutRegular, EditRegular, ClipboardPasteRegular } from '@fluentui/react-icons';
 
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities';

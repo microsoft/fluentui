@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
-import { Divider } from '@fluentui/react-modern-components-preview/divider';
+import { Divider } from '@fluentui/react-divider';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 

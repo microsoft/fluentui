@@ -3,19 +3,14 @@ import {
   Dialog,
   DialogActions,
   DialogBody,
+  DialogContent,
   DialogSurface,
   DialogTitle,
   DialogTrigger,
-} from '@fluentui/react-modern-components-preview/dialog';
-import { DialogContent } from '@fluentui/react-dialog';
-import {
-  OverlayDrawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
-} from '@fluentui/react-modern-components-preview/drawer';
-import { Button } from '@fluentui/react-modern-components-preview/button';
-import { Combobox, Option } from '@fluentui/react-modern-components-preview/combobox';
+} from '@fluentui/react-dialog';
+import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { Button } from '@fluentui/react-button';
+import { Combobox, Option } from '@fluentui/react-combobox';
 import { Rocket24Regular, Dismiss24Regular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react-webpack5';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';

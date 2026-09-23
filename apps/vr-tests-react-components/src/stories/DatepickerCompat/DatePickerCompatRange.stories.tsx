@@ -5,7 +5,7 @@ import type { StoryParameters } from 'storywright';
 import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { DateRangeType } from '@fluentui/react-calendar-compat';
-import { Field } from '@fluentui/react-modern-components-preview/field';
+import { Field } from '@fluentui/react-field';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST } from '../../utilities';
 
 const DatePicker = (props: DatePickerProps & { renderRelativeElement?: boolean }) => {
