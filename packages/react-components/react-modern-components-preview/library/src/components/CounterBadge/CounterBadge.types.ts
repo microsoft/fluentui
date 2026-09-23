@@ -2,7 +2,7 @@ import type {
   CounterBadgeProps as CounterBadgeBaseProps,
   CounterBadgeState as CounterBadgeBaseState,
 } from '@fluentui/react-headless-components-preview/badge';
-import type { BadgeProps } from './Badge.types';
+import type { BadgeProps } from '../Badge/Badge.types';
 
 export type { BadgeSlots as CounterBadgeSlots } from '@fluentui/react-headless-components-preview/badge';
 
