@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-menu-grid-preview
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.8)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.5.7..@fluentui/react-menu-grid-preview_v0.5.8)
+
+### Patches
+
+- Bump @fluentui/react-menu to v9.25.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-table to v9.19.22 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [0.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.7)
+
+Tue, 22 Sep 2026 11:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu-grid-preview_v0.5.6..@fluentui/react-menu-grid-preview_v0.5.7)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-menu to v9.25.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-table to v9.19.21 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [0.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu-grid-preview_v0.5.6)
 

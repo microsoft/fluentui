@@ -8,6 +8,7 @@ import type { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -81,18 +82,21 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & 
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
 // @public (undocumented)
-export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
+export type PopoverSurfaceProps = DistributiveOmit<ComponentProps<PopoverSurfaceSlots>, 'as'>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: Slot<'dialog'>;
+    root: Slot<'dialog', 'div'>;
 };
 
 // @public (undocumented)
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
-    'data-open': string;
+    root: {
+        'data-open'?: string;
+        'data-popover-surface'?: string;
+    };
 };
 
 // @public
@@ -132,7 +136,7 @@ export const usePopoverContextValues: (state: PopoverState) => {
 };
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => PopoverSurfaceState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps) => PopoverTriggerState;

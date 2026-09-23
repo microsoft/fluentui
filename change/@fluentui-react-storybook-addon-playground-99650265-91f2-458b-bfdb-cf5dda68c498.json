@@ -1,6 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add an in-browser TSX playground for Storybook stories",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}

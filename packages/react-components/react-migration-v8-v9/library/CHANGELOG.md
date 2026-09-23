@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.20)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.19..@fluentui/react-migration-v8-v9_v9.10.20)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.74.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.10.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.19)
+
+Tue, 22 Sep 2026 11:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.10.18..@fluentui/react-migration-v8-v9_v9.10.19)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-components to v9.74.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.10.18)
 
