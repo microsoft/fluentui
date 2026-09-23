@@ -1,1 +1,0 @@
-`DialogHeader` composes `DialogTitle` with an optional action. This example adds a [Fluent UI Button](./?path=/docs/components-button-button--default) with a close icon and wraps it in `DialogTrigger`.
