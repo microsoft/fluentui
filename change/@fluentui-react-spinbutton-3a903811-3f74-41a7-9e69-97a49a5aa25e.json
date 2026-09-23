@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-spinbutton): prevent double-step on trackpad tap by raising initial spin repeat delay",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "bernardo.sunderhus@gmail.com"
+}
