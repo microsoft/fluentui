@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.14.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.9)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.14.8..@fluentui/react-popover_v9.14.9)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.23.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.14.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.14.8)
 

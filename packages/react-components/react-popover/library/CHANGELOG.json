@@ -2,6 +2,28 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.14.9",
+      "tag": "@fluentui/react-popover_v9.14.9",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.23.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Sep 2026 11:25:39 GMT",
       "version": "9.14.8",
       "tag": "@fluentui/react-popover_v9.14.8",

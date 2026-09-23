@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-combobox
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.7)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.17.6..@fluentui/react-combobox_v9.17.7)
+
+### Patches
+
+- fix: render filled Dropdown boundaries in high contrast themes ([PR #36637](https://github.com/microsoft/fluentui/pull/36637) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-positioning to v9.23.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.17.6)
 
