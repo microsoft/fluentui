@@ -8,11 +8,12 @@ an optional setup module, and Monaco declarations. User code runs inside a sandb
 
 ## Features
 
-- Consumer-controlled import map (`options.modules`) eagerly compiled into the sandbox runtime by Storybook Webpack
+- Consumer-controlled import map (`options.modules`) compiled by Storybook Webpack and loaded on demand in production
 - Private registry and workspace packages without a runtime CDN
 - Build-time declaration collection for Monaco IntelliSense (from `modules` + optional `typings`)
 - Optional TSX `setup` module for branding, themes and provider/render behavior (Fluent defaults when omitted)
 - Sandboxed preview (`sandbox="allow-scripts"`), Prettier formatting, error reporting and shareable URL state
+- The last successful preview stays visible while a fresh sandbox prepares the next run, including when an edit fails
 
 ## Installation
 
@@ -51,6 +52,11 @@ import '@fluentui/react-storybook-addon-playground/styles.css';
 
 `modules` maps public imports accepted by the editor to package requests resolved by the consumer's Webpack
 configuration. React runtime entries are provided automatically. `typings` adds declaration-only entries.
+Production builds load configured modules only when the example imports them. Development includes the modules in eager
+chunks, but defers their evaluation until imported, avoiding Storybook's separate-origin lazy-compilation server.
+Setup imports and React are always loaded at startup.
+Typings load independently and do not block the first preview; declaration collection excludes JavaScript implementations
+and falls back to `@types` packages when a runtime package does not ship declarations.
 
 The optional setup module default-exports a value created with `definePlaygroundSetup`:
 

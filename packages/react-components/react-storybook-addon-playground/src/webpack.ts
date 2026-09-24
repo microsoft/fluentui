@@ -47,7 +47,11 @@ const { collectTypings } = require('../tools/collect-typings') as {
  */
 export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOptions): WebpackFinalConfig {
   const addonOptions = getAddonOptions(options);
-  const runtimeEntry = writeRuntimeEntry(addonOptions, options.configDir ?? process.cwd());
+  const runtimeEntry = writeRuntimeEntry(
+    addonOptions,
+    options.configDir ?? process.cwd(),
+    options.configType === 'PRODUCTION',
+  );
   const typings = collectConfiguredTypings(addonOptions, options);
   const originalEntry = config.entry;
 
@@ -139,18 +143,22 @@ function getDefaultSetupPath(): string {
 /**
  * Builds the playground runtime entry source.
  *
- * Configured modules are **static** imports (not `import()`). Dynamic imports become async chunks that Storybook's
- * webpack lazy-compilation serves from a separate origin — which fails inside `sandbox="allow-scripts"` (opaque
- * origin) iframes. Static imports stay on the entrypoint graph and ship via the manifest `<script>` tags.
+ * Production loads configured modules on demand so large packages (such as icons) do not execute on every run.
+ * Development uses eager import() chunks: evaluation is still deferred until requested, but Webpack does not
+ * create lazy-compilation proxies that need the separate-origin development server.
  */
-export function buildRuntimeEntrySource(options: PresetConfig): string {
+export function buildRuntimeEntrySource(options: PresetConfig, lazyModules = false): string {
   const modules = Object.entries(options.modules);
   const setupPath = options.setup ?? getDefaultSetupPath();
-  const moduleImports = modules
-    .map(([, request], index) => `import * as __pg_mod_${index} from ${JSON.stringify(request)};`)
-    .join('\n');
   const moduleLoaders = modules
-    .map(([publicName], index) => `${JSON.stringify(publicName)}: () => Promise.resolve(__pg_mod_${index})`)
+    .map(
+      ([publicName, request], index) =>
+        `${JSON.stringify(publicName)}: () => ${
+          lazyModules
+            ? `import(/* webpackChunkName: "playground-module-${index}" */ ${JSON.stringify(request)})`
+            : `import(/* webpackMode: "eager" */ ${JSON.stringify(request)})`
+        }`,
+    )
     .join(',\n  ');
 
   return `
@@ -159,8 +167,6 @@ import * as ReactDOM from 'react-dom';
 import * as ReactDOMClient from 'react-dom/client';
 import * as ReactJsxRuntime from 'react/jsx-runtime';
 import setup from ${JSON.stringify(setupPath)};
-${moduleImports}
-
 const moduleLoaders = {
   react: () => Promise.resolve(React),
   'react/jsx-runtime': () => Promise.resolve(ReactJsxRuntime),
@@ -183,8 +189,8 @@ if (typeof register === 'function') {
 `.trimStart();
 }
 
-function writeRuntimeEntry(options: PresetConfig, configDir: string): string {
-  const source = buildRuntimeEntrySource(options);
+function writeRuntimeEntry(options: PresetConfig, configDir: string, lazyModules: boolean): string {
+  const source = buildRuntimeEntrySource(options, lazyModules);
   const hash = crypto.createHash('sha256').update(source).digest('hex').slice(0, 12);
   const directory = path.join(configDir, '.cache', 'fluentui-playground-runtime');
   const filePath = path.join(directory, `runtime-${hash}.mjs`);

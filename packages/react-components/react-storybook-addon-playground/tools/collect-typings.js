@@ -114,25 +114,33 @@ function getExportTypesPath(packageJson, subpath) {
   }
 
   const key = subpath ? `./${subpath}` : '.';
-  const typesPath = getTypesFromExportEntry(exportsField[key]);
+  const typesPath = getTypesFromExportEntry(
+    exportsField[key] ??
+      (!subpath && !Object.keys(exportsField).some(exportKey => exportKey.startsWith('.')) ? exportsField : null),
+  );
   return typesPath ? typesPath.replace(/^\.\//, '') : null;
 }
 
 /**
- * Turns an exports target (often a `.js` file) into an existing `.d.ts` / `.d.cts` file.
+ * Resolves declarations only, never JavaScript implementations from runtime exports.
  *
  * @param {string} packageDir
  * @param {string} typesPath
  * @returns {string | null}
  */
 function resolveTypesFile(packageDir, typesPath) {
-  const absolute = path.join(packageDir, typesPath);
+  if (/\.d\.[cm]?ts$/.test(typesPath)) {
+    return existingFile(path.join(packageDir, typesPath));
+  }
+
   const withoutExt = typesPath.replace(/\.(d\.)?[cm]?[jt]sx?$/, '');
+  const declarationExt = typesPath.endsWith('.mjs') ? '.d.mts' : typesPath.endsWith('.cjs') ? '.d.cts' : '.d.ts';
 
   return (
-    existingFile(absolute) ||
+    existingFile(path.join(packageDir, `${withoutExt}${declarationExt}`)) ||
     existingFile(path.join(packageDir, `${withoutExt}.d.ts`)) ||
     existingFile(path.join(packageDir, `${withoutExt}.d.cts`)) ||
+    existingFile(path.join(packageDir, `${withoutExt}.d.mts`)) ||
     existingFile(path.join(packageDir, withoutExt, 'index.d.ts'))
   );
 }
@@ -348,7 +356,7 @@ function collectTypings(options) {
       const entry = subPackageJson.types || subPackageJson.typings;
       if (entry) {
         addPackageJson(pkg, subPackageJsonPath);
-        return existingFile(path.join(pkg.dir, mapped, entry));
+        return resolveTypesFile(path.join(pkg.dir, mapped), entry);
       }
     }
 
@@ -365,7 +373,7 @@ function collectTypings(options) {
    */
   function addSubpathShim(pkg, subpath, entryFile) {
     const relativeEntry = path.relative(pkg.dir, entryFile).split(path.sep).join('/');
-    const shimRelativePath = `${subpath}.d.ts`;
+    const shimRelativePath = subpath ? `${subpath}.d.ts` : 'index.d.ts';
     if (relativeEntry === shimRelativePath || relativeEntry === `${subpath}/index.d.ts`) {
       return;
     }
@@ -375,7 +383,7 @@ function collectTypings(options) {
       return;
     }
 
-    const importPath = relativeEntry.replace(/\.d\.cts$/, '').replace(/\.d\.ts$/, '');
+    const importPath = relativeEntry.replace(/\.d\.[cm]?ts$/, '');
     const fromDir = path.posix.dirname(shimRelativePath);
     let relImport = path.posix.relative(fromDir, importPath);
     if (!relImport.startsWith('.')) {
@@ -407,7 +415,7 @@ function collectTypings(options) {
     const entryFile = resolveEntryFile(pkg, subpath);
     if (entryFile) {
       addFile(pkg, entryFile);
-      if (subpath) {
+      if (subpath || (!pkg.packageJson.types && !pkg.packageJson.typings)) {
         addSubpathShim(pkg, subpath, entryFile);
       }
     } else {
@@ -434,11 +442,7 @@ function collectTypings(options) {
       if (specifier.kind === 'types') {
         addModule(specifier.value, dir);
       } else if (specifier.kind === 'path' || specifier.value.startsWith('.')) {
-        const target =
-          existingFile(path.join(dir, specifier.value)) ||
-          existingFile(path.join(dir, `${specifier.value}.d.ts`)) ||
-          existingFile(path.join(dir, specifier.value.replace(/\.js$/, '.d.ts'))) ||
-          existingFile(path.join(dir, specifier.value, 'index.d.ts'));
+        const target = resolveTypesFile(dir, specifier.value);
 
         if (target) {
           addFile(pkg, target);

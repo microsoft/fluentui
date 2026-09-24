@@ -219,6 +219,7 @@ describe('collect-typings', () => {
 
         expect(result.missing).toEqual([]);
         expect(result.files['file:///node_modules/exports-only/dist/index.d.ts']).toContain(`source: 'package'`);
+        expect(result.files['file:///node_modules/exports-only/index.d.ts']).toBe(`export * from "./dist/index";\n`);
         expect(result.files['file:///node_modules/@types/exports-only/index.d.ts']).toBeUndefined();
       } finally {
         fs.rmSync(root, { recursive: true, force: true });
@@ -250,7 +251,13 @@ describe('collect-typings', () => {
         `,
         'node_modules/@types/react/ts5.0/global.d.ts': `declare namespace JSX {}`,
         'node_modules/@types/react/ts5.0/jsx-runtime.d.ts': `export declare const legacyJsx: true;`,
-        'node_modules/react/package.json': JSON.stringify({ name: 'react' }),
+        'node_modules/react/package.json': JSON.stringify({
+          name: 'react',
+          exports: { '.': './index.js', './jsx-runtime': './jsx-runtime.js' },
+        }),
+        'node_modules/react/index.js': `module.exports = require('./cjs/react.development.js');`,
+        'node_modules/react/cjs/react.development.js': `exports.createElement = () => {};`,
+        'node_modules/react/jsx-runtime.js': `exports.jsx = () => {};`,
       });
 
       const result = collectTypings({
@@ -267,8 +274,53 @@ describe('collect-typings', () => {
         `export * from "./ts5.0/jsx-runtime";\n`,
       );
       expect(result.files['file:///node_modules/@types/react/index.d.ts']).toBeUndefined();
+      expect(Object.keys(result.files).some(file => file.endsWith('.js'))).toBe(false);
+      expect(result.files['file:///node_modules/react/package.json']).toBeUndefined();
 
       fs.rmSync(root, { recursive: true, force: true });
+    });
+
+    it('prefers declarations beside JavaScript exports and relative imports', () => {
+      const root = createFixture({
+        'node_modules/adjacent/package.json': JSON.stringify({
+          name: 'adjacent',
+          exports: { types: './dist/index.d.ts', default: './dist/index.js' },
+        }),
+        'node_modules/adjacent/dist/index.js': `exports.runtime = true;`,
+        'node_modules/adjacent/dist/index.d.ts': `
+          export * from './button.js';
+          export * from './common.cjs';
+          export * from './module.mjs';
+        `,
+        'node_modules/adjacent/dist/button.js': `exports.Button = () => null;`,
+        'node_modules/adjacent/dist/button.d.ts': `export declare const Button: () => null;`,
+        'node_modules/adjacent/dist/common.cjs': `exports.common = true;`,
+        'node_modules/adjacent/dist/common.d.cts': `export declare const common: true;`,
+        'node_modules/adjacent/dist/module.mjs': `export const module = true;`,
+        'node_modules/adjacent/dist/module.d.mts': `export declare const module: true;`,
+        'node_modules/js-export/package.json': JSON.stringify({ name: 'js-export', exports: './index.js' }),
+        'node_modules/js-export/index.js': `exports.runtime = true;`,
+        'node_modules/js-export/index.d.ts': `export declare const typed: true;`,
+        'node_modules/js-only/package.json': JSON.stringify({ name: 'js-only', exports: './index.js' }),
+        'node_modules/js-only/index.js': `exports.runtime = true;`,
+      });
+
+      try {
+        const result = collectTypings({
+          packageRoot: root,
+          entries: ['adjacent', 'js-export', 'js-only'],
+          typescriptVersion: '4.5.5',
+        });
+
+        expect(result.missing).toEqual(['js-only']);
+        expect(result.files['file:///node_modules/adjacent/dist/button.d.ts']).toContain('Button');
+        expect(result.files['file:///node_modules/adjacent/dist/common.d.cts']).toContain('common');
+        expect(result.files['file:///node_modules/adjacent/dist/module.d.mts']).toContain('module');
+        expect(result.files['file:///node_modules/js-export/index.d.ts']).toContain('typed');
+        expect(Object.keys(result.files).every(file => /\.d\.[cm]?ts$|\/package\.json$/.test(file))).toBe(true);
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
     });
   });
 });

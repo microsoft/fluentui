@@ -1,6 +1,13 @@
 import type * as monacoApi from 'monaco-editor/esm/vs/editor/editor.api';
 
-type Monaco = typeof monacoApi;
+type Monaco = {
+  languages: {
+    typescript: {
+      getTypeScriptWorker: typeof monacoApi.languages.typescript.getTypeScriptWorker;
+      typescriptDefaults: Pick<monacoApi.languages.typescript.LanguageServiceDefaults, 'getDiagnosticsOptions'>;
+    };
+  };
+};
 type Diagnostic = monacoApi.languages.typescript.Diagnostic;
 
 export const COMPILER_OPTIONS: monacoApi.languages.typescript.CompilerOptions = {
@@ -59,6 +66,21 @@ function toCompileDiagnostic(model: monacoApi.editor.ITextModel, diagnostic: Dia
  * Transpiles the TSX content of provided model to CommonJS. Work happens inside Monaco's TypeScript web worker.
  */
 export async function compile(monaco: Monaco, model: monacoApi.editor.ITextModel): Promise<CompileResult> {
+  const defaults = monaco.languages.typescript.typescriptDefaults;
+  const diagnosticsOptions = defaults.getDiagnosticsOptions();
+
+  try {
+    return await compileModel(monaco, model);
+  } catch (error) {
+    // Enabling semantic diagnostics when typings arrive disposes Monaco's worker, including pending emits.
+    if (diagnosticsOptions === defaults.getDiagnosticsOptions()) {
+      throw error;
+    }
+    return compileModel(monaco, model);
+  }
+}
+
+async function compileModel(monaco: Monaco, model: monacoApi.editor.ITextModel): Promise<CompileResult> {
   const getWorker = await monaco.languages.typescript.getTypeScriptWorker();
   const worker = await getWorker(model.uri);
   const fileName = model.uri.toString();

@@ -5,6 +5,7 @@ import type { CompileResult } from './compiler';
 import { compile } from './compiler';
 import type { PreviewProps } from './Preview';
 import type { ResolvedPlaygroundRuntimeManifest } from './runtime';
+import { registerTypings } from './typings';
 
 const mockModel = {};
 let mockPreviewProps: PreviewProps;
@@ -55,7 +56,7 @@ jest.mock('./formatter', () => ({
 jest.mock('./monaco', () => ({ monaco: {} }));
 
 jest.mock('./typings', () => ({
-  registerTypings: () => Promise.resolve(),
+  registerTypings: jest.fn(),
 }));
 
 jest.mock('./useMediaQuery', () => ({ useMediaQuery: () => false }));
@@ -82,6 +83,7 @@ const manifest: ResolvedPlaygroundRuntimeManifest = {
 };
 
 const compileMock = compile as jest.MockedFunction<typeof compile>;
+const registerTypingsMock = registerTypings as jest.MockedFunction<typeof registerTypings>;
 
 function deferredCompile() {
   let resolve!: (result: CompileResult) => void;
@@ -109,10 +111,50 @@ describe('Playground compile transaction', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     compileMock.mockReset();
+    registerTypingsMock.mockReset().mockResolvedValue(1);
   });
 
   afterEach(() => {
     jest.useRealTimers();
+  });
+
+  it('runs while typings are loading and does not rerun when they arrive', async () => {
+    let resolveTypings!: (count: number) => void;
+    registerTypingsMock.mockReturnValue(
+      new Promise(resolve => {
+        resolveTypings = resolve;
+      }),
+    );
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(<Playground initialCode="export default First;" manifest={manifest} />);
+    await flushEffects();
+    await runDebouncedCompile();
+    expect(compileMock).toHaveBeenCalledTimes(1);
+    expect(mockPreviewProps.code).toBe('exports.default = First;');
+
+    await act(async () => resolveTypings(1));
+    await runDebouncedCompile();
+    expect(compileMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('reports a retained preview after a replacement runtime fails', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(<Playground initialCode="export default First;" manifest={manifest} />);
+    await flushEffects();
+    await runDebouncedCompile();
+    act(() => mockPreviewProps.onSuccess(mockPreviewProps.runId));
+    fireEvent.click(screen.getByRole('button', { name: 'Edit current file' }));
+    await runDebouncedCompile();
+    act(() =>
+      mockPreviewProps.onError({
+        kind: 'runtime',
+        message: 'Broken replacement',
+        runId: mockPreviewProps.runId,
+        previewRetained: true,
+      }),
+    );
+    expect(screen.getByRole('alert').textContent).toContain('Broken replacement');
+    expect(screen.getByRole('alert').textContent).toContain('The preview shows the last successful render.');
   });
 
   it('retains the last successful preview when a CSS compile fails', async () => {

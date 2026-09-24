@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix playground declaration resolution, defer unused runtime modules, and retain the last preview while the next sandbox renders.",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "dmytrokirpa@microsoft.com"
+}

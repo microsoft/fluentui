@@ -316,13 +316,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, [cssModules, manifest.allowedModules, model, runtimeReady]);
 
   React.useEffect(() => {
-    if (!model || !targetWindow || typingsStatus === 'loading' || !runtimeReady) {
+    if (!model || !targetWindow || !runtimeReady) {
       return;
     }
 
     const timeout = targetWindow.setTimeout(compileAndRun, RUN_DEBOUNCE_MS);
     return () => targetWindow.clearTimeout(timeout);
-  }, [code, compileAndRun, model, runtimeReady, targetWindow, typingsStatus]);
+  }, [code, compileAndRun, model, runtimeReady, targetWindow]);
 
   React.useEffect(() => {
     if (!targetWindow) {
@@ -360,13 +360,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   );
 
   const handleRuntimeError = React.useCallback(
-    (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number }) => {
+    (runtimeError: { kind: PlaygroundRuntimeErrorKind; message: string; runId: number; previewRetained?: boolean }) => {
       if (runtimeError.runId === runId) {
-        hasSuccessfulRunRef.current = false;
+        hasSuccessfulRunRef.current = Boolean(runtimeError.previewRetained);
         setError({
           title: runtimeErrorTitle(runtimeError.kind),
           message: runtimeError.message,
-          previewRetained: false,
+          previewRetained: runtimeError.previewRetained,
         });
         setStatus('error');
       }
