@@ -68,17 +68,26 @@ function containThemeTokenValue(value: string): string {
       continue;
     }
 
+    if (character === '\\') {
+      const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
+      if (!quote && !urlState) {
+        identifier = escape ? identifier + escape : '';
+      }
+      if (escape) {
+        i += escape.length - 1;
+      } else if (nextCharacter === undefined) {
+        result[i] = '\\\n';
+      } else if (quote) {
+        i += nextCharacter === '\r' && value[i + 2] === '\n' ? 2 : 1;
+      }
+      if (urlState) {
+        urlState = 2;
+      }
+      continue;
+    }
+
     if (quote) {
-      if (character === '\\') {
-        const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
-        if (escape) {
-          i += escape.length - 1;
-        } else if (nextCharacter === undefined) {
-          result[i] = '\\\n';
-        } else {
-          i += nextCharacter === '\r' && value[i + 2] === '\n' ? 2 : 1;
-        }
-      } else if (character === quote) {
+      if (character === quote) {
         quote = '';
       } else if (/[\n\r\f]/.test(character)) {
         result[i] = quote + character;
@@ -105,34 +114,12 @@ function containThemeTokenValue(value: string): string {
       if (character === '"' || character === "'") {
         result[i] = character === '"' ? '\\22 ' : '\\27 ';
       }
-      if (character === '\\') {
-        const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
-        if (escape) {
-          i += escape.length - 1;
-        } else if (nextCharacter === undefined) {
-          result[i] = '\\\n';
-        }
-      }
       urlState = 2;
       continue;
     }
 
     if (NAME_CHARACTER_PATTERN.test(character)) {
       identifier += character;
-      continue;
-    }
-
-    if (character === '\\') {
-      const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
-      if (escape) {
-        identifier += escape;
-        i += escape.length - 1;
-      } else {
-        identifier = '';
-        if (nextCharacter === undefined) {
-          result[i] = '\\\n';
-        }
-      }
       continue;
     }
 
