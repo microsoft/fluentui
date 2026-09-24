@@ -17,7 +17,7 @@ Example Card usage:
 ![example of a Card component in usage](./docs/assets/card-example.png)
 
 ```jsx
-import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';
+import { ShareRegular, ArrowReplyRegular } from '@fluentui/react-icons';
 import { Button, Body1, Caption1 } from '@fluentui/react-components';
 import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
 
@@ -52,8 +52,8 @@ const App = () => (
         />
       </CardPreview>
       <CardFooter>
-        <Button icon={<ArrowReply16Regular />}>Reply</Button>
-        <Button icon={<Share16Regular />}>Share</Button>
+        <Button icon={<ArrowReplyRegular />}>Reply</Button>
+        <Button icon={<ShareRegular />}>Share</Button>
       </CardFooter>
     </Card>
   </>

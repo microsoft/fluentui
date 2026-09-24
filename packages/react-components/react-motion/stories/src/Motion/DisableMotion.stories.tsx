@@ -18,7 +18,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 
 import description from './DisableMotion.stories.md';
 
@@ -156,7 +156,7 @@ const DrawerExample = () => {
                 <Button
                   appearance="subtle"
                   aria-label="Close"
-                  icon={<Dismiss24Regular />}
+                  icon={<DismissRegular />}
                   onClick={() => setIsOpen(false)}
                 />
               }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
+import { DismissRegular, LightbulbRegular } from '@fluentui/react-icons';
 import { PopoverProvider } from '@fluentui/react-popover';
 import type { PopoverContextValue } from '@fluentui/react-popover';
 import { useTeachingPopoverHeader_unstable } from './useTeachingPopoverHeader';
@@ -43,7 +43,7 @@ describe('useTeachingPopoverHeader_unstable', () => {
     expect(result.current.icon).toBeDefined();
     const iconChildren = result.current.icon?.children as React.ReactElement | undefined;
     expect(iconChildren).toBeDefined();
-    expect((iconChildren as React.ReactElement).type).toBe(Lightbulb16Regular);
+    expect((iconChildren as React.ReactElement).type).toBe(LightbulbRegular);
     expect(result.current.icon?.['aria-hidden']).toBe(true);
   });
 
@@ -62,7 +62,7 @@ describe('useTeachingPopoverHeader_unstable', () => {
     const { result } = renderHook(() => useTeachingPopoverHeader_unstable({}, ref), { wrapper: makeWrapper() });
     expect(result.current.dismissButton).toBeDefined();
     const btnChildren = result.current.dismissButton?.children as React.ReactElement | undefined;
-    expect((btnChildren as React.ReactElement).type).toBe(Dismiss12Regular);
+    expect((btnChildren as React.ReactElement).type).toBe(DismissRegular);
     expect(result.current.dismissButton?.role).toBe('button');
     expect(result.current.dismissButton?.['aria-label']).toBe('dismiss');
     expect(typeof result.current.dismissButton?.onClick).toBe('function');

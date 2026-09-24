@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 
 import { Field, makeStyles } from '@fluentui/react-components';
-import { AnimalCat24Regular } from '@fluentui/react-icons';
+import { AnimalCatRegular } from '@fluentui/react-icons';
 
 const useCatInputStyles = makeStyles({
   root: {
@@ -16,7 +16,7 @@ const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props =>
   const styles = useCatInputStyles();
   return (
     <div className={styles.root}>
-      <AnimalCat24Regular />
+      <AnimalCatRegular fontSize={24} />
       <input {...props} />
     </div>
   );

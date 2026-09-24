@@ -14,12 +14,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import {
-  Dismiss24Regular,
-  ArrowClockwise24Regular,
-  Settings24Regular,
-  ArrowLeft24Regular,
-} from '@fluentui/react-icons';
+import { DismissRegular, ArrowClockwiseRegular, SettingsRegular, ArrowLeftRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   header: {
@@ -48,15 +43,15 @@ export const WithNavigation = (): JSXElement => {
       >
         <DrawerHeader>
           <DrawerHeaderNavigation className={styles.header}>
-            <Button aria-label="Back" appearance="subtle" icon={<ArrowLeft24Regular />} />
+            <Button aria-label="Back" appearance="subtle" icon={<ArrowLeftRegular />} />
             <Toolbar>
               <ToolbarGroup>
-                <ToolbarButton aria-label="Reload content" appearance="subtle" icon={<ArrowClockwise24Regular />} />
-                <ToolbarButton aria-label="Settings" appearance="subtle" icon={<Settings24Regular />} />
+                <ToolbarButton aria-label="Reload content" appearance="subtle" icon={<ArrowClockwiseRegular />} />
+                <ToolbarButton aria-label="Settings" appearance="subtle" icon={<SettingsRegular />} />
                 <ToolbarButton
                   aria-label="Close panel"
                   appearance="subtle"
-                  icon={<Dismiss24Regular />}
+                  icon={<DismissRegular />}
                   onClick={() => setIsOpen(false)}
                 />
               </ToolbarGroup>

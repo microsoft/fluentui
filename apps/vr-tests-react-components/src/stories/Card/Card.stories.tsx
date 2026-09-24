@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps, type StoryParameters } from 'storywright';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontalFilled } from '@fluentui/react-icons';
 import { Body1, Caption1, Text } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
@@ -137,7 +137,7 @@ export const Orientation = () => {
           <CardHeader
             header={<Text weight="semibold">App Name</Text>}
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalFilled />} aria-label="More options" />}
           />
         </Card>
       </div>
@@ -157,7 +157,7 @@ export const _CardHeader = () => (
         </Body1>
       }
       description={<Caption1>Developer</Caption1>}
-      action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      action={<Button appearance="transparent" icon={<MoreHorizontalFilled />} />}
     />
     <CardHeader
       header={
@@ -166,7 +166,7 @@ export const _CardHeader = () => (
         </Body1>
       }
       description={<Caption1>Developer</Caption1>}
-      action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      action={<Button appearance="transparent" icon={<MoreHorizontalFilled />} />}
     />
     <CardHeader
       image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
@@ -175,7 +175,7 @@ export const _CardHeader = () => (
           <b>App Name</b>
         </Body1>
       }
-      action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      action={<Button appearance="transparent" icon={<MoreHorizontalFilled />} />}
     />
     <CardHeader
       image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
@@ -192,7 +192,7 @@ export const _CardHeader = () => (
           <b>App Name</b>
         </Body1>
       }
-      action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      action={<Button appearance="transparent" icon={<MoreHorizontalFilled />} />}
     />
     <CardHeader
       image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}

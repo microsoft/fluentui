@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InfoLabel } from '@fluentui/react-headless-components-preview/info-label';
-import { Info16Regular } from '@fluentui/react-icons';
+import { InfoRegular } from '@fluentui/react-icons';
 
 import styles from './info-label.module.css';
 
@@ -18,7 +18,7 @@ export const Default = (): React.ReactNode => (
     }}
     infoButton={{
       className: styles.infoButton,
-      children: <Info16Regular />,
+      children: <InfoRegular fontSize={16} />,
     }}
   >
     Example label

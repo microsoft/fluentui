@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, AccordionToggleEventHandler } from '@fluentui/react-components';
-import { Add20Filled, Subtract20Filled } from '@fluentui/react-icons';
+import { AddFilled, SubtractFilled } from '@fluentui/react-icons';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
 export const ExpandIcon = (): JSXElement => {
@@ -11,7 +11,7 @@ export const ExpandIcon = (): JSXElement => {
   return (
     <Accordion onToggle={handleToggle} openItems={openItem}>
       <AccordionItem value={1}>
-        <AccordionHeader expandIcon={openItem === 1 ? <Subtract20Filled /> : <Add20Filled />}>
+        <AccordionHeader expandIcon={openItem === 1 ? <SubtractFilled fontSize={20} /> : <AddFilled fontSize={20} />}>
           Accordion Header 1
         </AccordionHeader>
         <AccordionPanel>
@@ -19,7 +19,7 @@ export const ExpandIcon = (): JSXElement => {
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value={2}>
-        <AccordionHeader expandIcon={openItem === 2 ? <Subtract20Filled /> : <Add20Filled />}>
+        <AccordionHeader expandIcon={openItem === 2 ? <SubtractFilled fontSize={20} /> : <AddFilled fontSize={20} />}>
           Accordion Header 2
         </AccordionHeader>
         <AccordionPanel>
@@ -27,7 +27,7 @@ export const ExpandIcon = (): JSXElement => {
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value={3}>
-        <AccordionHeader expandIcon={openItem === 3 ? <Subtract20Filled /> : <Add20Filled />}>
+        <AccordionHeader expandIcon={openItem === 3 ? <SubtractFilled fontSize={20} /> : <AddFilled fontSize={20} />}>
           Accordion Header 3
         </AccordionHeader>
         <AccordionPanel>

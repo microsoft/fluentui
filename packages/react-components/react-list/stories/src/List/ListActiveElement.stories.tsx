@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, mergeClasses, Text, tokens } from '@fluentui/react-components';
-import { Mic16Regular } from '@fluentui/react-icons';
+import { MicRegular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
 import * as React from 'react';
 import type { JSXElement, SelectionItemId } from '@fluentui/react-components';
@@ -105,7 +105,7 @@ export const ListActiveElement = (): JSXElement => {
               <Button
                 aria-label={`Mute ${name}`}
                 size="small"
-                icon={<Mic16Regular />}
+                icon={<MicRegular />}
                 onClick={e => {
                   e.stopPropagation();
                   alert(`Muting ${name}`);

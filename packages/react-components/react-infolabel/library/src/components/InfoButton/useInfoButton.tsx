@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
+import { DefaultInfoButtonIcon } from './DefaultInfoButtonIcons';
 import {
   getIntrinsicElementProps,
   mergeCallbacks,
@@ -15,10 +15,10 @@ import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
 
-const infoButtonIconMap = {
-  small: <DefaultInfoButtonIcon12 />,
-  medium: <DefaultInfoButtonIcon16 />,
-  large: <DefaultInfoButtonIcon20 />,
+const infoButtonIconSizeMap = {
+  small: 12,
+  medium: 16,
+  large: 20,
 } as const;
 
 const popoverSizeMap = {
@@ -54,7 +54,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     root: slot.always(
       // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('button', {
-        children: infoButtonIconMap[size],
+        children: <DefaultInfoButtonIcon fontSize={infoButtonIconSizeMap[size]} />,
         type: 'button',
         'aria-label': 'information',
         ...rest,

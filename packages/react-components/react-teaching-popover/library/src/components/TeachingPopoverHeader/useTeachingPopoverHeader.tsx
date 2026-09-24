@@ -9,7 +9,7 @@ import type {
   TeachingPopoverHeaderState,
 } from './TeachingPopoverHeader.types';
 
-import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
+import { DismissRegular, LightbulbRegular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 /**
@@ -83,11 +83,11 @@ export const useTeachingPopoverHeader_unstable = (
 
   const icon =
     baseState.icon && baseState.icon.children === undefined
-      ? { ...baseState.icon, children: <Lightbulb16Regular /> }
+      ? { ...baseState.icon, children: <LightbulbRegular fontSize={16} /> }
       : baseState.icon;
   const dismissButton =
     baseState.dismissButton && baseState.dismissButton.children === undefined
-      ? { ...baseState.dismissButton, children: <Dismiss12Regular /> }
+      ? { ...baseState.dismissButton, children: <DismissRegular fontSize={12} /> }
       : baseState.dismissButton;
 
   return {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { makeStyles, Button, Caption1, tokens, Checkbox, Text, useId } from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -126,7 +126,7 @@ export const SelectableIndicator = (): JSXElement => {
               </Text>
             }
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More actions" />}
           />
         </Card>
 
@@ -152,7 +152,7 @@ export const SelectableIndicator = (): JSXElement => {
               </Text>
             }
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontalRegular />} aria-label="More actions" />}
           />
         </Card>
       </div>

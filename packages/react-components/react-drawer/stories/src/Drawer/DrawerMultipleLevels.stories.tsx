@@ -18,7 +18,7 @@ import {
   useRestoreFocusSource,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
+import { DismissRegular, CalendarRegular, SettingsRegular, ArrowLeftRegular } from '@fluentui/react-icons';
 import { fadeAtom, Scale, slideAtom } from '@fluentui/react-motion-components-preview';
 
 const useStyles = makeStyles({
@@ -100,7 +100,7 @@ export const MultipleLevels = (): JSXElement => {
                   <ToolbarButton
                     aria-label="Back"
                     appearance="subtle"
-                    icon={<ArrowLeft24Regular />}
+                    icon={<ArrowLeftRegular />}
                     onClick={() => setLevel(1)}
                   />
                 </IconPresenceMotion>
@@ -111,15 +111,15 @@ export const MultipleLevels = (): JSXElement => {
                   <ToolbarButton
                     aria-label="Go to calendar"
                     appearance="subtle"
-                    icon={<Calendar24Regular />}
+                    icon={<CalendarRegular />}
                     onClick={() => setLevel(2)}
                   />
                 </IconPresenceMotion>
-                <ToolbarButton aria-label="Settings" appearance="subtle" icon={<Settings24Regular />} />
+                <ToolbarButton aria-label="Settings" appearance="subtle" icon={<SettingsRegular />} />
                 <ToolbarButton
                   aria-label="Close panel"
                   appearance="subtle"
-                  icon={<Dismiss24Regular />}
+                  icon={<DismissRegular />}
                   onClick={() => setIsOpen(false)}
                 />
               </ToolbarGroup>

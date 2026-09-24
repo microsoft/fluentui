@@ -15,7 +15,7 @@ import {
   Divider,
   makeStyles,
 } from '@fluentui/react-components';
-import { Send24Regular, Mic24Regular, PeopleRegular, PersonDelete24Regular } from '@fluentui/react-icons';
+import { SendRegular, MicRegular, PeopleRegular, PersonDeleteRegular } from '@fluentui/react-icons';
 import { FluentWapper } from './FluentUiWrapper.stories';
 
 const useStyles = makeStyles({
@@ -33,23 +33,23 @@ const useStyles = makeStyles({
 
 export const ActionAvoidBad = () => (
   <FluentWapper>
-    <Button aria-label="Click here to send message " size="small" icon={<Send24Regular />} />
+    <Button aria-label="Click here to send message " size="small" icon={<SendRegular />} />
   </FluentWapper>
 );
 export const ActionAvoidGood = () => (
   <FluentWapper>
-    <Button aria-label="Send message" size="small" icon={<Send24Regular />} />
+    <Button aria-label="Send message" size="small" icon={<SendRegular />} />
   </FluentWapper>
 );
 
 export const ComponentTypeAvoidBad = () => (
   <FluentWapper>
-    <Button aria-label="Mute microphone button" size="small" icon={<Mic24Regular />} />
+    <Button aria-label="Mute microphone button" size="small" icon={<MicRegular />} />
   </FluentWapper>
 );
 export const ComponentTypeAvoidGood = () => (
   <FluentWapper>
-    <Button aria-label="Mute microphone" size="small" icon={<Mic24Regular />} />
+    <Button aria-label="Mute microphone" size="small" icon={<MicRegular />} />
   </FluentWapper>
 );
 
@@ -205,7 +205,7 @@ export const ReuseVisibleTextBad = () => {
       <div className={styles.visibleTextContainer}>
         <Avatar />
         <span>Robert Tolbert</span>
-        <Button icon={<PersonDelete24Regular />} aria-label="Remove Robert Tolbert" />
+        <Button icon={<PersonDeleteRegular />} aria-label="Remove Robert Tolbert" />
       </div>
     </FluentWapper>
   );
@@ -220,7 +220,7 @@ export const ReuseVisibleTextGood = () => {
         <Avatar />
         <span id="userNameId">Robert Tolbert</span>
         <Button
-          icon={<PersonDelete24Regular />}
+          icon={<PersonDeleteRegular />}
           aria-label="Remove"
           id="removeButtonId"
           aria-labelledby="removeButtonId userNameId"

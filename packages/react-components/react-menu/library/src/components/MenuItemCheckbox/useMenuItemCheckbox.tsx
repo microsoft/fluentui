@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
-import { Checkmark16Filled } from '@fluentui/react-icons';
+import { CheckmarkFilled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItemBase_unstable } from '../MenuItem/useMenuItemBase';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
@@ -17,7 +17,7 @@ export const useMenuItemCheckbox_unstable = (
 
   // Set default checkmark icon
   if (state.checkmark) {
-    state.checkmark.children ??= <Checkmark16Filled />;
+    state.checkmark.children ??= <CheckmarkFilled fontSize={16} />;
   }
 
   return state;

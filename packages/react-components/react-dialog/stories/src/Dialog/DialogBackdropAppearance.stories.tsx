@@ -21,7 +21,7 @@ import {
   makeStyles,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import story from './DialogBackdropAppearance.md';
 
 const useStyles = makeStyles({
@@ -57,7 +57,7 @@ export const BackdropAppearance = (): JSXElement => {
               <Button
                 appearance="subtle"
                 aria-label="Close"
-                icon={<Dismiss24Regular />}
+                icon={<DismissRegular />}
                 onClick={() => setDrawerOpen(false)}
               />
             }

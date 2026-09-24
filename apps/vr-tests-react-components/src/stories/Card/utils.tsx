@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CardHeader, CardFooter } from '@fluentui/react-card';
 import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
-import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { OpenRegular, ShareRegular } from '@fluentui/react-icons';
 
 const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/src/assets/';
@@ -26,10 +26,10 @@ export const SampleCardContent = ({ controlsDisabled }: { controlsDisabled?: boo
       Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
     </div>
     <CardFooter>
-      <Button disabled={controlsDisabled} appearance="primary" icon={<Open16Regular />}>
+      <Button disabled={controlsDisabled} appearance="primary" icon={<OpenRegular />}>
         Open
       </Button>
-      <Button disabled={controlsDisabled} icon={<Share16Regular />}>
+      <Button disabled={controlsDisabled} icon={<ShareRegular />}>
         Share
       </Button>
     </CardFooter>
