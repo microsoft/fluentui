@@ -70,7 +70,7 @@ function foo() {
 
 ES6 and TypeScript both introduce the `class` keyword which allows for developers to use more familiar OO paradigms. However, JavaScript supports functions as first class citizens, so you often don't need to use classes. Instead, you can often just create a file (effectively, a module) that exports a bunch of functions. We feel this encourages developers to favor composition over inheritance. State can still be stored as a file-scoped variable if necessary. `class` is also unavailable in ES5, so TypeScript will actually generate a fair bit of boilerplate code to provide support for classes in older browsers.
 
-The main difference between classes and files/modules is that classes can be instantiated. As a general guideline, if you are planning to have multiple instances of something with state associated with each instance (and/or planning to leverage inheritance), classes should be favored. However, if you are grouping logically-connected sets of stateless functions together or just need a singleton, a module is more appropiate.
+The main difference between classes and files/modules is that classes can be instantiated. As a general guideline, if you are planning to have multiple instances of something with state associated with each instance (and/or planning to leverage inheritance), classes should be favored. However, if you are grouping logically-connected sets of stateless functions together or just need a singleton, a module is more appropriate.
 
 The exception to this rule is React components, which can be defined as either classes or functions. See the [React guidelines page](react-guidelines) for more info about choosing between them.
 
