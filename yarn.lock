@@ -3962,7 +3962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.74.7, @fluentui/react-components@npm:^9.74.9, @fluentui/react-components@workspace:packages/react-components/react-components":
+"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.74.9, @fluentui/react-components@workspace:packages/react-components/react-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
@@ -5595,9 +5595,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
   dependencies:
-    "@fluentui/react-components": "npm:^9.74.7"
+    "@fluentui/react-components": "npm:^9.74.9"
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-utilities": "npm:^9.26.6"
+    "@fluentui/react-utilities": "npm:^9.26.7"
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
     monaco-editor: "npm:^0.33.0"
@@ -6137,7 +6137,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.6, @fluentui/react-utilities@npm:^9.26.7, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
+"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.7, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-utilities@workspace:packages/react-components/react-utilities"
   dependencies:
