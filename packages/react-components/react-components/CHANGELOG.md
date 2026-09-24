@@ -1,8 +1,194 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.74.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.9)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.8..@fluentui/react-components_v9.74.9)
+
+### Patches
+
+- `@fluentui/react-tooltip`
+  - fix: hide tooltips only when their trigger is fully clipped, not when portaled content escapes the trigger's clipping boundary ([PR #36605](https://github.com/microsoft/fluentui/pull/36605) by paulmardling@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: improve safe zone hit testing and avoid rerenders during pointer movement ([PR #36708](https://github.com/microsoft/fluentui/pull/36708) by jakubmiskech@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix(react-spinbutton): prevent double-step on trackpad tap by raising initial spin repeat delay ([PR #36777](https://github.com/microsoft/fluentui/pull/36777) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: render filled Dropdown boundaries in high contrast themes ([PR #36637](https://github.com/microsoft/fluentui/pull/36637) by bernardo.sunderhus@gmail.com)
+
+## [9.74.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.8)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.7..@fluentui/react-components_v9.74.8)
+
+### Patches
+
+- `@fluentui/react-nav`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: remove unused @types/react-dom peer dependency, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+  - Treat unavailable positioning geometry as indeterminate when reporting visibility flags. ([PR #36758](https://github.com/microsoft/fluentui/pull/36758) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-rating`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-search`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: remove unused @types/react-dom peer dependency, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: remove unused @types/react-dom peer dependency, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+  - fix: Add loading to img element property whitelist ([PR #36639](https://github.com/microsoft/fluentui/pull/36639) by 84954628+lukiod@users.noreply.github.com)
+- `@fluentui/react-accordion`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: add badge support for Avatar base hooks ([PR #36694](https://github.com/microsoft/fluentui/pull/36694) by dmytrokirpa@microsoft.com)
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: make BreadcrumbButtonBaseProps distribute over the ARIA button union so the anchor arm's href stays assignable ([PR #36663](https://github.com/microsoft/fluentui/pull/36663) by array.knight@gmail.com)
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-carousel`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-charts`
+  - feat: add custom callout rendering to GaugeChart ([PR #36730](https://github.com/microsoft/fluentui/pull/36730) by atisjai@microsoft.com)
+  - fix(react-charts): prevent prototype pollution in chart data grouping ([PR #36715](https://github.com/microsoft/fluentui/pull/36715) by v-baambati@microsoft.com)
+  - fixed prototypr issue in vegalite adapter ([PR #36743](https://github.com/microsoft/fluentui/pull/36743) by v-baambati@microsoft.com)
+  - Added test cases prototype pollution fix ([PR #36737](https://github.com/microsoft/fluentui/pull/36737) by v-baambati@microsoft.com)
+  - feat: allow a function for the cartesian tickFormat so the numeric value axis can render a literal % or route through an app/i18n formatter (string behavior unchanged) ([PR #36369](https://github.com/microsoft/fluentui/pull/36369) by michael@xerilium.com)
+- `@fluentui/react-checkbox`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+  - fix: use nullish fallback in adjustChannel so a channel whose value is 0 resolves to its own action instead of hue's ([PR #36664](https://github.com/microsoft/fluentui/pull/36664) by array.knight@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: remove unused @types/react-dom peer dependency, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-list`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-menu-grid-preview`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: remove unused @types/react-dom peer dependency, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- `@fluentui/react-alert`
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+  - fix: restore named beta prerelease line (9.0.x-0 was published by mistake) ([PR #36627](https://github.com/microsoft/fluentui/pull/36627) by martinhochel@microsoft.com)
+- `@fluentui/react-infobutton`
+  - fix: restore named beta prerelease line (9.0.x-0 was published by mistake) ([PR #36627](https://github.com/microsoft/fluentui/pull/36627) by martinhochel@microsoft.com)
+  - fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [9.74.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.7)
 

@@ -145,7 +145,7 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
 # packages/jest-serializer-merge-styles
 
-packages/merge-styles @dzearing @microsoft/cxe-red
+packages/merge-styles @microsoft/cxe-red
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
@@ -181,17 +181,17 @@ packages/react-components/react-theme/stories @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg @microsoft/cxe-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/style-utilities @bigbadcapers @microsoft/cxe-red
-packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red
-packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red
-packages/theme @dzearing @microsoft/cxe-red
+packages/style-utilities/src/interfaces @microsoft/cxe-red
+packages/style-utilities/src/styles @microsoft/cxe-red
+packages/theme @microsoft/cxe-red
 packages/utilities @microsoft/cxe-red
 
 ### Fabric
 # common/
-packages/common-styles/src @microsoft/cxe-red @phkuo
-common/_semanticSlots.scss @microsoft/cxe-red @phkuo
-common/_themeOverrides.scss @microsoft/cxe-red @phkuo
-common/_common.scss @microsoft/cxe-red @phkuo
+packages/common-styles/src @microsoft/cxe-red
+common/_semanticSlots.scss @microsoft/cxe-red
+common/_themeOverrides.scss @microsoft/cxe-red
+common/_common.scss @microsoft/cxe-red
 
 ## vNext packages
 packages/react-components/eslint-plugin-react-components @microsoft/fluentui-react-build @microsoft/cxe-prg
@@ -248,14 +248,14 @@ packages/react-components/react-switch/library @microsoft/cxe-prg @ValentinaKozl
 packages/react-components/react-switch/stories @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-tabs/library @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-tabs/stories @microsoft/cxe-prg @dmytrokirpa
-packages/react-components/react-text/library @microsoft/cxe-prg @maifnramev
+packages/react-components/react-text/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-text/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-textarea/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-textarea/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-tooltip/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-tooltip/stories @microsoft/cxe-prg @mainframev
-packages/react-components/react-toolbar/library @microsoft/teams-prg @chpalac
-packages/react-components/react-toolbar/stories @microsoft/teams-prg @chpalac
+packages/react-components/react-toolbar/library @microsoft/teams-prg
+packages/react-components/react-toolbar/stories @microsoft/teams-prg
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
@@ -288,6 +288,7 @@ packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg
 packages/react-components/react-drawer/library @microsoft/cxe-prg @mainframev
 packages/react-components/react-drawer/stories @microsoft/cxe-prg @mainframev
 packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
+packages/react-components/react-storybook-addon-playground @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast/library @microsoft/teams-prg
@@ -351,27 +352,27 @@ packages/react/src/components/Breadcrumb @microsoft/cxe-red @khmakoto
 packages/react/src/components/Button @microsoft/cxe-red @khmakoto
 packages/react/src/components/Calendar @microsoft/cxe-red
 packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
-packages/react/src/components/Check @microsoft/cxe-red @ThomasMichon @khmakoto
+packages/react/src/components/Check @microsoft/cxe-red @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red
 packages/react/src/components/Coachmark @microsoft/cxe-red
 packages/react/src/components/ColorPicker @microsoft/cxe-red
 packages/react/src/components/DatePicker @microsoft/cxe-red
-packages/react/src/components/DetailsList @microsoft/cxe-red @spmonahan @ThomasMichon
+packages/react/src/components/DetailsList @microsoft/cxe-red @spmonahan
 packages/react/src/components/DocumentCard @microsoft/cxe-red
-packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
+packages/react/src/components/Fabric @microsoft/cxe-red
 packages/react/src/components/Facepile @microsoft/cxe-red
-packages/react/src/components/FolderCover @microsoft/cxe-red @ThomasMichon @bigbadcapers
+packages/react/src/components/FolderCover @microsoft/cxe-red @bigbadcapers
 packages/react/src/components/FocusTrapZone @microsoft/cxe-red @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @spmonahan @ThomasMichon
+packages/react/src/components/GroupedList @microsoft/cxe-red @spmonahan
 packages/react/src/components/HoverCard @microsoft/cxe-red @Jahnp
-packages/react/src/components/Icon @microsoft/cxe-red @dzearing
-packages/react/src/components/Image @microsoft/cxe-red @dzearing
+packages/react/src/components/Icon @microsoft/cxe-red
+packages/react/src/components/Image @microsoft/cxe-red
 packages/react/src/components/Label @microsoft/cxe-red @khmakoto
-packages/react/src/components/Layer @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/Layer @microsoft/cxe-red
 packages/react/src/components/Link @microsoft/cxe-red @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @spmonahan  @ThomasMichon
-packages/react/src/components/MarqueeSelection @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/List @microsoft/cxe-red @spmonahan
+packages/react/src/components/MarqueeSelection @microsoft/cxe-red
 packages/react/src/components/MessageBar @microsoft/cxe-red
 packages/react/src/components/Nav @microsoft/cxe-red
 packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
@@ -391,13 +392,10 @@ packages/react/src/components/Tooltip @microsoft/cxe-red
 packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
-packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
+packages/react/src/utilities/ThemeProvider @microsoft/cxe-red
 packages/fluent2-theme @microsoft/cxe-red
 ## Experiments
 packages/react-experiments @microsoft/cxe-red
-packages/react-experiments/src/components/Signals @ThomasMichon
-packages/react-experiments/src/components/Tile @ThomasMichon
-packages/react-experiments/src/components/TileList @ThomasMichon
 
 ### generic rules for v-build. Might be tweaked based on needs.
 **/project.json @microsoft/fluentui-react-build

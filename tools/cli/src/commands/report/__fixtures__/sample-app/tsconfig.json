@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@sample/azure-theme": ["packages/azure-theme/src/index.ts"],
+      "@proj/react-components": ["_mock_node_modules/@proj/react-components/index.d.ts"],
+      "react": ["_mock_node_modules/@types/react/index.d.ts"]
+    },
+    "typeRoots": []
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fixed prototype issue in v8 charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "132879294+v-baambati@users.noreply.github.com"
+}

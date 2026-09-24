@@ -66,7 +66,7 @@ const SAFE_FUNCTIONS: Record<string, (...args: unknown[]) => unknown> = {
 };
 
 // Data transforms can materialize functions as own properties; ownership does not make them safe to call.
-const SAFE_CALLABLES = new Set<unknown>(Object.values(SAFE_FUNCTIONS));
+const SAFE_FUNCTION_VALUES = new Set<unknown>(Object.values(SAFE_FUNCTIONS));
 
 // ---------------------------------------------------------------------------
 // Whitelisted constants
@@ -440,7 +440,7 @@ class ExpressionParser {
         }
       } else if (this._peek().type === '(') {
         // Function call — only safe built-in functions are callable
-        if (typeof value !== 'function' || !SAFE_CALLABLES.has(value)) {
+        if (typeof value !== 'function' || !SAFE_FUNCTION_VALUES.has(value)) {
           throw new Error('Safe expression evaluator: function calls are only allowed for built-in functions');
         }
         this._advance();
