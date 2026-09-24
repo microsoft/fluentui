@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Added dynamic data example in line chart-v9 stories",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
