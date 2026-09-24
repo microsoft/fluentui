@@ -29,6 +29,10 @@ export const withOpenInPlaygroundButton = (
 export function addOpenInPlaygroundButton(context: StoryContext): void {
   const source = context.parameters.fullSource;
 
+  if (context.parameters.fullSourceUnsupportedImports?.length) {
+    return;
+  }
+
   if (!source) {
     // eslint-disable-next-line no-console
     console.warn(

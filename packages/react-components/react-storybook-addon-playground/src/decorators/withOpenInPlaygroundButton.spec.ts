@@ -145,6 +145,17 @@ describe('withOpenInPlaygroundButton', () => {
     expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
   });
 
+  it('does nothing when the generated source depends on unsupported relative imports', () => {
+    const context = createContext({
+      parameters: { fullSource, fullSourceUnsupportedImports: ['./utils'] },
+    });
+    renderDocsPage(context.id);
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
+  });
+
   it('warns and does nothing when story source is missing', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     const context = createContext({ parameters: {} });

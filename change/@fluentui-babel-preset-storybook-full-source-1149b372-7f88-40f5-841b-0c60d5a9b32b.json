@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: hide playground actions for stories with unsupported local imports",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "dmytrokirpa@microsoft.com"
+}

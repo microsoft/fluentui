@@ -25,9 +25,6 @@ export default {
   component: TagPicker,
   subcomponents: { TagPickerControl, TagPickerGroup, TagPickerInput, TagPickerButton, TagPickerList, TagPickerOption },
   parameters: {
-    playground: {
-      disable: true,
-    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('TagPicker')].join('\n'),
