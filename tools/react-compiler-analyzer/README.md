@@ -1,11 +1,26 @@
 # @fluentui/react-compiler-analyzer
 
-Analyzes React Compiler behavior on TypeScript source files. Two commands:
+Analyzes React Compiler behavior on TypeScript source files. Three commands:
 
+- **`init`** — Creates a minimal `rca.config.json` and installs the packaged Agent Skill into the repository.
 - **`lint`** — CI gate: validates `'use no memo'` and `'use memo'` directives for correctness. Exits 1 on issues.
 - **`analyze`** — Health report: compiler coverage stats, directive breakdown, manual-memo migration candidates, and opt-in runtime-risk detection ("Compiled but Risky").
 
 ## User Flows
+
+### Flow 0: Initialize a repository
+
+```bash
+# Interactive; infer is the recommended default
+react-compiler-analyzer init
+
+# Scripted setup with recommended infer, CLI, and scan-exclude defaults
+react-compiler-analyzer init --yes
+```
+
+Initialization creates `rca.config.json` in the current directory and copies the skill bundled
+with the installed package to `.agents/skills/react-compiler-analyzer` at the nearest Git root.
+Review and commit both so configuration and agent guidance stay versioned with the repository.
 
 ### Flow 1: Initial migration assessment
 
@@ -69,9 +84,36 @@ react-compiler-analyzer lint ./library/src --mode infer
 
 ## Configuration
 
-Both commands read stable defaults from an optional `rca.config.json` in the current working
+`analyze` and `lint` read stable defaults from an optional `rca.config.json` in the current working
 directory. Use `--config <path>` to select a different file. RCA does not search parent
 directories. When no implicit config exists, the built-in defaults apply.
+
+Use `init` for the minimal first-time config:
+
+```json
+{
+  "$schema": "./node_modules/@fluentui/react-compiler-analyzer/rca.config.schema.json",
+  "mode": "infer",
+  "format": "cli",
+  "exclude": [
+    "**/__tests__/**",
+    "**/testing/**",
+    "**/__mocks__/**",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "**/*.stories.*",
+    "**/*.cy.*",
+    "**/*.e2e.*",
+    "**/e2e/**"
+  ]
+}
+```
+
+`init` offers `infer` and `annotation`, with `infer` selected by default because `analyze` is the
+primary workflow. It also persists the analyzer's current default excludes, including Cypress and
+E2E files and directories. It does not offer `all`. Re-running it preserves custom excludes and other valid
+advanced settings already present in the file. An invalid existing config requires confirmation,
+or `--yes --force` in a non-interactive environment.
 
 ```jsonc
 {
@@ -102,7 +144,47 @@ persistent configuration: use `--annotate` and `--fix` explicitly on each run.
 If you previously used `analyze --risk-config ./risk.config.json`, see the dated
 [configuration migration](MIGRATION.md#2026-09-03--unified-rca-configuration).
 
+### Agent Skill
+
+The npm package ships the canonical skill at `skills/react-compiler-analyzer`. By default, `init`
+copies it to the consuming repository's `.agents/skills/react-compiler-analyzer` directory.
+Copilot and other Agent Skills-compatible tools can then discover it from the repository rather
+than from `node_modules`.
+
+The skill keeps first-time init small. On its first analyzer task it inspects the actual compiler
+build mode, parser syntax, store APIs, wrapper indirection, and applicable inherited tsconfig
+aliases before proposing advanced `rca.config.json` settings. Agent-driven runs explicitly use
+`--format json`; the persisted default remains human-friendly `cli`.
+
+The repository copy is never silently overwritten. Identical content is a no-op; a different copy
+requires interactive confirmation or `--force`. Use `--no-skill` to initialize only the config:
+
+```bash
+react-compiler-analyzer init --no-skill
+```
+
+After adding or updating the skill, reload active agent sessions (for GitHub Copilot CLI,
+`/skills reload`).
+
 ## Commands
+
+### `init` — Repository setup
+
+```bash
+react-compiler-analyzer init [options]
+```
+
+| Flag          | Type      | Default | Description                                                               |
+| ------------- | --------- | ------- | ------------------------------------------------------------------------- |
+| `--config`    | `string`  | _(1)_   | Config file to create or update                                           |
+| `--yes`, `-y` | `boolean` | `false` | Accept recommended defaults without prompting                             |
+| `--force`     | `boolean` | `false` | Replace an invalid config or a differing installed skill                  |
+| `--skill`     | `boolean` | `true`  | Copy the packaged skill to the repository; use `--no-skill` to disable it |
+
+_(1)_ Defaults to `./rca.config.json`.
+
+Without `--yes`, init requires an interactive terminal. The config is replaced atomically, and
+cancelling the final confirmation leaves both config and skill unchanged.
 
 ### `lint` — Directive health gate
 
@@ -556,7 +638,7 @@ react-compiler-analyzer analyze ./library/src --annotate all
 react-compiler-analyzer analyze ./library/src --annotate all-safe
 ```
 
-## Shared options
+## Analyze/lint shared options
 
 | Argument / Flag   | Type       | Default | Description                                                                                                                        |
 | ----------------- | ---------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -569,7 +651,7 @@ react-compiler-analyzer analyze ./library/src --annotate all-safe
 | `--parser-plugin` | `string[]` | `[]`    | Extra Babel parser plugins, e.g. `decorators-legacy`. Match your build's parser config — see **Not Analyzed**                      |
 | `--config`        | `string`   | —       | Use this RCA config instead of an optional `./rca.config.json`                                                                     |
 
-_(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`
+_(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`, `**/*.e2e.*`, `**/e2e/**`
 
 ### `--parser-plugin`
 
@@ -759,10 +841,12 @@ Each write-up carries a minimal reproduction and the exact versions it was verif
 
 ```
 src/
-├── cli.ts                — CLI entry: yargs with lint + analyze commands
-├── config.ts             — rca.config.json lookup, schema validation, path normalization
+├── cli.ts                — CLI entry: yargs with init + lint + analyze commands
+├── config.ts             — Raw/runtime rca.config.json validation and path normalization
+├── prompts.ts            — Lazy Enquirer adapter used only by init
 ├── commands/
 │   ├── shared.ts         — Shared options, validation, DEFAULT_EXCLUDE
+│   ├── init.ts           — Minimal config setup + repository Agent Skill installation
 │   ├── lint.ts           — 'lint' command (directive health CI gate)
 │   └── analyze.ts        — 'analyze' command (coverage + migration)
 ├── compiler.ts           — Unified compilation: compileFile, compileFiles, compileSource
@@ -788,6 +872,10 @@ src/
 ├── patterns.ts           — Shared regex patterns for directive detection
 ├── types.ts              — Shared TypeScript interfaces
 └── index.ts              — Package entry (CLI-only, no public API)
+
+skills/react-compiler-analyzer/
+├── SKILL.md              — Agent Skills entry point
+└── references/           — CLI and evidence-based config-discovery guidance
 ```
 
 ### Data flow

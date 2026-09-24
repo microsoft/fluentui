@@ -17,15 +17,12 @@ export interface LoadedRcaConfig {
   path: string | undefined;
 }
 
-/** Load an explicit config, or an optional `rca.config.json` in the current working directory. */
-export function loadRcaConfig(configPath: string | undefined, cwd = process.cwd()): LoadedRcaConfig {
-  const explicit = configPath !== undefined;
-  const resolvedPath = explicit ? resolve(cwd, configPath) : join(cwd, DEFAULT_CONFIG_FILE);
+export function resolveRcaConfigPath(configPath: string | undefined, cwd = process.cwd()): string {
+  return configPath === undefined ? join(cwd, DEFAULT_CONFIG_FILE) : resolve(cwd, configPath);
+}
 
-  if (!existsSync(resolvedPath) && !explicit) {
-    return { config: {}, path: undefined };
-  }
-
+/** Read and schema-validate a config without normalizing config-relative values. */
+export function readRcaConfigFile(resolvedPath: string): RcaConfig {
   let parsed: unknown;
   try {
     parsed = JSON.parse(readFileSync(resolvedPath, 'utf-8'));
@@ -33,14 +30,33 @@ export function loadRcaConfig(configPath: string | undefined, cwd = process.cwd(
     throw new CliError(`could not read RCA config '${resolvedPath}': ${(error as Error).message}`);
   }
 
-  if (!validateConfig(parsed)) {
+  return validateRcaConfig(parsed, `'${resolvedPath}'`);
+}
+
+/** Validate an in-memory config against the same schema used at runtime. */
+export function validateRcaConfig(config: unknown, source: string): RcaConfig {
+  const valid = validateConfig(config);
+
+  if (!valid) {
     const errors = (validateConfig.errors ?? [])
       .map((error: ErrorObject) => `${error.instancePath || '/'} ${error.message}`)
       .join('\n    ');
-    throw new CliError(`invalid RCA config '${resolvedPath}':\n    ${errors}`);
+    throw new CliError(`invalid RCA config ${source}:\n    ${errors}`);
   }
 
-  const { $schema, ...config } = parsed as RcaConfig;
+  return config as RcaConfig;
+}
+
+/** Load an explicit config, or an optional `rca.config.json` in the current working directory. */
+export function loadRcaConfig(configPath: string | undefined, cwd = process.cwd()): LoadedRcaConfig {
+  const explicit = configPath !== undefined;
+  const resolvedPath = resolveRcaConfigPath(configPath, cwd);
+
+  if (!existsSync(resolvedPath) && !explicit) {
+    return { config: {}, path: undefined };
+  }
+
+  const { $schema, ...config } = readRcaConfigFile(resolvedPath);
   const risks = normalizeRiskConfig(config.analyze?.risks, resolvedPath);
   const normalized: RcaConfig = {
     ...config,

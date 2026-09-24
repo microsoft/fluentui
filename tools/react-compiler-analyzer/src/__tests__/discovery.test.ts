@@ -2,6 +2,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
+import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { dedupeFileEntries, discoverAllFiles, locatePackage } from '../discovery';
 
 describe('nearest package discovery', () => {
@@ -56,6 +57,24 @@ describe('nearest package discovery', () => {
     } finally {
       process.chdir(previous);
     }
+  });
+
+  it('excludes e2e files and directories by default', async () => {
+    const root = mkdtempSync(join(tmpdir(), 'rca-discovery-'));
+    const e2eDirectory = join(root, 'e2e');
+    mkdirSync(e2eDirectory);
+    writeFileSync(join(root, 'package.json'), JSON.stringify({ name: 'e2e-defaults' }));
+    writeFileSync(join(root, 'Component.tsx'), 'export function Component() { return <div />; }');
+    writeFileSync(join(root, 'Component.e2e.tsx'), 'export function ComponentE2E() { return <div />; }');
+    writeFileSync(join(e2eDirectory, 'Component.tsx'), 'export function DirectoryE2E() { return <div />; }');
+
+    await expect(discoverAllFiles(root, 'e2e-defaults', DEFAULT_EXCLUDE, false)).resolves.toEqual([
+      {
+        filePath: join(root, 'Component.tsx'),
+        packageName: 'e2e-defaults',
+        packageRoot: root,
+      },
+    ]);
   });
 
   it('deduplicates overlapping inputs with a stable file order', () => {

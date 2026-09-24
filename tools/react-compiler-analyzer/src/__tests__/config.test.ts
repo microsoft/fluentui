@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 
 import yargs from 'yargs';
 
-import { parseConfigPath } from '../cli';
+import { parseBootstrapArgs, parseConfigPath } from '../cli';
 import { loadRcaConfig } from '../config';
 import { createAnalyzeCommand } from '../commands/analyze';
 import { createLintCommand } from '../commands/lint';
@@ -142,6 +142,17 @@ describe('--config parsing', () => {
 
   it('ignores config-like values after the option terminator', () => {
     expect(parseConfigPath(['analyze', 'src', '--', '--config', 'ignored.json'])).toBeUndefined();
+  });
+
+  it('identifies init when global options appear before or after the command', () => {
+    expect(parseBootstrapArgs(['init', '--config', 'new.json', '--yes'])).toEqual({
+      command: 'init',
+      configPath: 'new.json',
+    });
+    expect(parseBootstrapArgs(['--config=other.json', 'init'])).toEqual({
+      command: 'init',
+      configPath: 'other.json',
+    });
   });
 });
 

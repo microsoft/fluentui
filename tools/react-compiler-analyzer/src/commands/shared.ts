@@ -50,6 +50,8 @@ export const DEFAULT_EXCLUDE = [
   '**/*.test.*',
   '**/*.stories.*',
   '**/*.cy.*',
+  '**/*.e2e.*',
+  '**/e2e/**',
 ];
 
 /**

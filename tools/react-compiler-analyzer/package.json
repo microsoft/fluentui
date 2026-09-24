@@ -9,6 +9,7 @@
     "*.md",
     "rca.analyze.schema.json",
     "rca.config.schema.json",
+    "skills",
     "dist"
   ],
   "bin": "./bin/react-compiler-analyzer.js",
@@ -17,6 +18,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "ajv": "^8.13.0",
     "babel-plugin-react-compiler": "^1.0.0",
+    "enquirer": "^2.3.6",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
