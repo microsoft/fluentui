@@ -11,9 +11,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.7",
+    "@fluentui/react-components": "^9.74.9",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-utilities": "^9.26.6",
+    "@fluentui/react-utilities": "^9.26.7",
     "@swc/helpers": "^0.5.1",
     "lz-string": "^1.5.0",
     "monaco-editor": "^0.33.0",
