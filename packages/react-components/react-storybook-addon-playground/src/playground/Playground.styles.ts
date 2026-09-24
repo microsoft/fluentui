@@ -102,6 +102,12 @@ export const usePlaygroundStyles = makeStyles({
   previewPane: {
     gridTemplateRows: 'auto minmax(0, 1fr) auto',
   },
+  previewHeader: {
+    flexWrap: 'wrap',
+    height: 'auto',
+    paddingTop: tokens.spacingVerticalXS,
+    paddingBottom: tokens.spacingVerticalXS,
+  },
   paneHeader: {
     display: 'flex',
     alignItems: 'center',

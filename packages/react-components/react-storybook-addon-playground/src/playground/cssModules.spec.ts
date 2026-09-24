@@ -47,6 +47,15 @@ describe('cssModules', () => {
       expect(first.cssText).toBe(second.cssText);
     });
 
+    it('keeps class names stable across declaration edits, scoped to each file', () => {
+      const first = compileCssModule({ name: 'button.module.css', source: '.root { display: block; }' });
+      const second = compileCssModule({ name: 'button.module.css', source: '.root { display: flex; }' });
+      const other = compileCssModule({ name: 'card.module.css', source: '.root { display: flex; }' });
+      expect(first.locals).toEqual(second.locals);
+      expect(first.cssText).not.toEqual(second.cssText);
+      expect(other.locals.root).not.toEqual(second.locals.root);
+    });
+
     it('does not rewrite comments or declaration values and supports nested globals', () => {
       const compiled = compileCssModule({
         name: 'content.module.css',

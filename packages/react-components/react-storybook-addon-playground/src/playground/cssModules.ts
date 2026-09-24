@@ -115,7 +115,8 @@ function transformSelector(selector: string, getLocalClassName: (local: string) 
 export function compileCssModule(mod: CssModuleSource): CompiledCssModule {
   const basename = cssModuleBasename(mod.name);
   const id = basename.replace(/\.module\.css$/i, '').replace(/[^\w-]+/g, '_') || 'css';
-  const suffix = hashString(`${basename}\0${mod.source}`);
+  // File-scoped names survive declaration edits so live CSS updates need not remount React.
+  const suffix = hashString(basename);
   const locals: Record<string, string> = {};
   const getLocalClassName = (local: string) => {
     if (!locals[local]) {

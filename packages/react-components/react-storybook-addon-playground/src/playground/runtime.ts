@@ -29,6 +29,7 @@ export type PlaygroundRuntimeMessage =
       runId: number;
       kind: PlaygroundRuntimeErrorKind;
       message: string;
+      previewRetained?: boolean;
     };
 
 /**

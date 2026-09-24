@@ -21,6 +21,7 @@ import {
   type SelectionEvents,
 } from '@fluentui/react-components';
 import {
+  ArrowClockwiseRegular,
   ArrowResetRegular,
   CodeRegular,
   DocumentRegular,
@@ -33,8 +34,8 @@ import {
 
 import type { PlaygroundSetupMetadata } from '../setup';
 import { createPlaygroundHash, createPlaygroundUrl, type CssModuleSource } from '../url';
-import { compile, formatDiagnostics } from './compiler';
-import { compileCssModules, cssModuleBasename, updateCssModuleSource } from './cssModules';
+import { compile, formatDiagnostics, type CompileResult } from './compiler';
+import { compileCssModule, cssModuleBasename, updateCssModuleSource, type CompiledCssModule } from './cssModules';
 import { Editor, TSX_FILE_PATH, type EditorFile } from './Editor';
 import { getNextFileTabIndex } from './fileTabs';
 import { registerFormatter } from './formatter';
@@ -65,6 +66,7 @@ type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
 type TypingsStatus = 'loading' | 'ready' | 'error';
 
 const RUN_DEBOUNCE_MS = 400;
+const LIVE_RUN_DEBOUNCE_MS = 150;
 const HASH_SYNC_DEBOUNCE_MS = 500;
 const EMPTY_METADATA: PlaygroundSetupMetadata = { themes: [] };
 const EMPTY_CSS_MODULES: CssModuleSource[] = [];
@@ -168,16 +170,29 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [code, setCode] = React.useState(initialCode ?? '');
   const [cssModules, setCssModules] = React.useState(initialCssModules);
   const [activeFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
-  const [previewCssModules, setPreviewCssModules] = React.useState<ReturnType<typeof compileCssModules>>([]);
+  const [previewCssModules, setPreviewCssModules] = React.useState<CompiledCssModule[]>([]);
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
   const [requiredModules, setRequiredModules] = React.useState<string[]>([]);
   const [runId, setRunId] = React.useState(0);
+  const [liveUpdate, setLiveUpdate] = React.useState(false);
+  const [restartId, setRestartId] = React.useState(0);
+  const [preserveState, setPreserveState] = React.useState(false);
+  const [paused, setPaused] = React.useState(false);
   const [status, setStatus] = React.useState<RunStatus>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState<string>();
   const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
   const runCounter = React.useRef(0);
+  const emitCache = React.useRef<
+    | {
+        model: monaco.editor.ITextModel;
+        version: number;
+        result: Promise<CompileResult>;
+      }
+    | undefined
+  >(undefined);
+  const cssCache = React.useRef(new Map<string, { source: string; result: CompiledCssModule }>());
   const hasSuccessfulRunRef = React.useRef(false);
   const defaultCodeApplied = React.useRef(initialCode !== null);
   const editorRef = React.useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
@@ -269,6 +284,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   const handleEditorChange = React.useCallback(
     (value: string) => {
+      // Invalidate in-flight work immediately, not only after the debounce for the next edit.
+      ++runCounter.current;
+      setPaused(true);
+      setStatus('compiling');
       if (activeFileId === TSX_FILE_PATH) {
         setCode(value);
         return;
@@ -279,50 +298,86 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [activeFileId],
   );
 
-  const compileAndRun = React.useCallback(async () => {
-    if (!model || !runtimeReady) {
-      return;
-    }
-
-    const currentRun = ++runCounter.current;
-    const isStale = () => currentRun !== runCounter.current;
-
-    setStatus('compiling');
-
-    try {
-      const result = await compile(monaco, model);
-      if (isStale()) {
+  const compileAndRun = React.useCallback(
+    async (keepState: boolean) => {
+      if (!model || !runtimeReady) {
         return;
       }
 
-      if (result.diagnostics.length > 0) {
-        throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics));
-      }
+      const currentRun = ++runCounter.current;
+      const version = model.getVersionId();
+      const isStale = () => currentRun !== runCounter.current || version !== model.getVersionId();
 
-      const nextRequiredModules = getRequiredModules(result.code);
-      assertAllowedModules(nextRequiredModules, manifest.allowedModules);
-      const nextCssModules = compileCssModules(cssModules);
-      setCompiledCode(result.code);
-      setRequiredModules(nextRequiredModules);
-      setPreviewCssModules(nextCssModules);
-      setRunId(id => id + 1);
-      setError(null);
-    } catch (err) {
-      if (!isStale()) {
-        setError({ ...toErrorState(err), previewRetained: hasSuccessfulRunRef.current });
-        setStatus('error');
+      setStatus('compiling');
+
+      try {
+        let entry = emitCache.current;
+        if (!entry || entry.model !== model || entry.version !== version) {
+          entry = { model, version, result: compile(monaco, model) };
+          emitCache.current = entry;
+        }
+        const result = await entry.result;
+        if (isStale()) {
+          return;
+        }
+
+        if (result.diagnostics.length > 0) {
+          throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics));
+        }
+
+        const nextRequiredModules = getRequiredModules(result.code);
+        assertAllowedModules(nextRequiredModules, manifest.allowedModules);
+        const nextCache = new Map(
+          cssModules.map(mod => {
+            const cached = cssCache.current.get(mod.name);
+            return [
+              mod.name,
+              cached?.source === mod.source ? cached : { source: mod.source, result: compileCssModule(mod) },
+            ];
+          }),
+        );
+        cssCache.current = nextCache;
+        const nextCssModules = Array.from(nextCache.values(), cached => cached.result);
+        setCompiledCode(result.code);
+        setRequiredModules(nextRequiredModules);
+        setPreviewCssModules(nextCssModules);
+        setPreserveState(keepState);
+        setPaused(false);
+        setRunId(id => id + 1);
+        setError(null);
+      } catch (err) {
+        if (!isStale()) {
+          // Failed worker requests must be retried, not kept in the emit cache.
+          emitCache.current = undefined;
+          setError({ ...toErrorState(err), previewRetained: hasSuccessfulRunRef.current });
+          setStatus('error');
+        }
       }
-    }
-  }, [cssModules, manifest.allowedModules, model, runtimeReady]);
+    },
+    [cssModules, manifest.allowedModules, model, runtimeReady],
+  );
+
+  const handleRun = React.useCallback(() => {
+    compileAndRun(false);
+  }, [compileAndRun]);
 
   React.useEffect(() => {
     if (!model || !targetWindow || !runtimeReady) {
       return;
     }
 
-    const timeout = targetWindow.setTimeout(compileAndRun, RUN_DEBOUNCE_MS);
-    return () => targetWindow.clearTimeout(timeout);
-  }, [code, compileAndRun, model, runtimeReady, targetWindow]);
+    const counter = runCounter;
+    const timeout = targetWindow.setTimeout(
+      () => {
+        compileAndRun(true);
+      },
+      liveUpdate ? LIVE_RUN_DEBOUNCE_MS : RUN_DEBOUNCE_MS,
+    );
+    return () => {
+      targetWindow.clearTimeout(timeout);
+      ++counter.current;
+    };
+  }, [code, compileAndRun, liveUpdate, model, runtimeReady, targetWindow]);
 
   React.useEffect(() => {
     if (!targetWindow) {
@@ -353,6 +408,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     (successfulRunId: number) => {
       if (successfulRunId === runId) {
         setStatus('ready');
+        setError(null);
         hasSuccessfulRunRef.current = true;
       }
     },
@@ -403,11 +459,35 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   );
 
   const handleReset = React.useCallback(() => {
+    ++runCounter.current;
+    setPaused(true);
     const nextCode = initialCode ?? metadata.defaultCode ?? '';
     const nextCssModules = initialCssModules.map(mod => ({ ...mod }));
     setCode(nextCode);
     setCssModules(nextCssModules);
   }, [initialCode, initialCssModules, metadata.defaultCode]);
+
+  const handleRestart = React.useCallback(() => {
+    ++runCounter.current;
+    hasSuccessfulRunRef.current = false;
+    setRuntimeReady(false);
+    setCompiledCode(null);
+    setError(null);
+    setStatus('idle');
+    setPaused(false);
+    setRestartId(id => id + 1);
+    setRunId(id => id + 1);
+  }, []);
+
+  const handleModeSelect = React.useCallback(
+    (_event: SelectionEvents, data: OptionOnSelectData) => {
+      if (data.optionValue && (data.optionValue === 'live') !== liveUpdate) {
+        setLiveUpdate(data.optionValue === 'live');
+        handleRestart();
+      }
+    },
+    [handleRestart, liveUpdate],
+  );
 
   const handleCopyLink = React.useCallback(async () => {
     if (!targetWindow) {
@@ -436,12 +516,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       }
 
       setThemeId(data.optionValue);
-      if (compiledCode) {
+      if (compiledCode && !paused) {
+        setPreserveState(true);
         setStatus('compiling');
         setRunId(id => id + 1);
       }
     },
-    [compiledCode],
+    [compiledCode, paused],
   );
 
   const selectedThemeLabel = selectedThemeMeta?.label ?? '';
@@ -529,7 +610,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               tooltip={`Run the code (${runShortcut})`}
               appearance="primary"
               compact={compactToolbar}
-              onClick={compileAndRun}
+              onClick={handleRun}
             />
             <ToolbarAction
               icon={<TextGrammarWandRegular />}
@@ -642,7 +723,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               onChange={handleEditorChange}
               onModelReady={setModel}
               onEditorReady={handleEditorReady}
-              onRun={compileAndRun}
+              onRun={handleRun}
               themeOption={shellTheme}
             />
           </section>
@@ -654,11 +735,36 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           />
 
           <section className={mergeClasses(styles.pane, styles.previewPane)} aria-label="Preview">
-            <div className={styles.paneHeader}>
+            <div className={mergeClasses(styles.paneHeader, styles.previewHeader)}>
               <span className={styles.paneTitle}>
                 <EyeRegular />
                 Preview
               </span>
+              <Toolbar aria-label="Preview actions" className={styles.toolbar}>
+                <Tooltip
+                  content="Live update reuses loaded packages. Code edits reset component state, but global side effects remain until Restart preview."
+                  relationship="description"
+                >
+                  <Dropdown
+                    aria-label="Preview mode"
+                    size="small"
+                    className={styles.themePicker}
+                    value={liveUpdate ? 'Live update' : 'Isolated'}
+                    selectedOptions={[liveUpdate ? 'live' : 'isolated']}
+                    onOptionSelect={handleModeSelect}
+                  >
+                    <Option value="isolated">Isolated</Option>
+                    <Option value="live">Live update</Option>
+                  </Dropdown>
+                </Tooltip>
+                <ToolbarAction
+                  icon={<ArrowClockwiseRegular />}
+                  label="Restart preview"
+                  tooltip="Restart the sandbox and dispose previous timers, listeners and global side effects"
+                  compact
+                  onClick={handleRestart}
+                />
+              </Toolbar>
               <span className={styles.paneMeta} aria-live="polite">
                 {renderRunStatus()}
               </span>
@@ -667,6 +773,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               code={compiledCode}
               requiredModules={requiredModules}
               runId={runId}
+              liveUpdate={liveUpdate}
+              restartId={restartId}
+              preserveState={preserveState}
+              paused={paused}
               themeId={themeId}
               cssModules={previewCssModules}
               manifest={manifest}

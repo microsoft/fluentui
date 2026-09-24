@@ -16,6 +16,10 @@ export interface PreviewProps {
   code: string | null;
   requiredModules?: string[];
   runId: number;
+  liveUpdate?: boolean;
+  restartId?: number;
+  preserveState?: boolean;
+  paused?: boolean;
   themeId?: string;
   cssModules?: Array<{ name: string; specifier: string; locals: Record<string, string>; cssText: string }>;
   manifest: ResolvedPlaygroundRuntimeManifest;
@@ -40,6 +44,9 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
     code,
     requiredModules,
     runId,
+    liveUpdate,
+    preserveState,
+    paused,
     themeId,
     cssModules,
     manifest,
@@ -53,7 +60,8 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
   const frameRef = React.useRef<HTMLIFrameElement | null>(null);
   const mergedRef = useMergedRefs(ref, frameRef);
   const readyRef = React.useRef(false);
-  // Each run gets an isolated iframe so asynchronous work from a previous run cannot affect the current preview.
+  const postedRunRef = React.useRef<number | undefined>(undefined);
+  // Live updates reuse this token; only replacing the iframe resets its environment.
   const [token] = React.useState(() => `${manifest.buildId}:${runId}:${Math.random().toString(36).slice(2)}`);
   const source = React.useMemo(() => createSandboxDocument(manifest, token), [manifest, token]);
 
@@ -62,10 +70,18 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
   }, [token]);
 
   const postRun = React.useCallback(() => {
-    if (!readyRef.current || code === null || !frameRef.current?.contentWindow) {
+    if (!readyRef.current || !frameRef.current?.contentWindow) {
       return;
     }
 
+    if (paused) {
+      frameRef.current.contentWindow.postMessage({ source: 'fluentui-playground', token, type: 'invalidate' }, '*');
+      return;
+    }
+    if (code === null || postedRunRef.current === runId) {
+      return;
+    }
+    postedRunRef.current = runId;
     frameRef.current.contentWindow.postMessage(
       {
         source: 'fluentui-playground',
@@ -76,10 +92,11 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
         cssModules,
         themeId,
         runId,
+        preserveState: liveUpdate && preserveState,
       },
       '*',
     );
-  }, [code, cssModules, requiredModules, runId, themeId, token]);
+  }, [code, cssModules, liveUpdate, paused, preserveState, requiredModules, runId, themeId, token]);
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
@@ -89,7 +106,11 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
 
     const handleMessage = (event: MessageEvent<PlaygroundRuntimeMessage>) => {
       const message = event.data;
-      if (event.source !== frameRef.current?.contentWindow || message?.token !== token) {
+      if (
+        event.source !== frameRef.current?.contentWindow ||
+        message?.source !== 'fluentui-playground' ||
+        message.token !== token
+      ) {
         return;
       }
 
@@ -97,16 +118,16 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
         readyRef.current = true;
         onMetadata(message.metadata);
         postRun();
-      } else if (message.type === 'success' && message.runId === runId) {
+      } else if (message.type === 'success' && message.runId === runId && !paused) {
         onSuccess(message.runId);
-      } else if (message.type === 'error' && message.runId === runId) {
+      } else if (message.type === 'error' && message.runId === runId && !paused) {
         onError(message);
       }
     };
 
     targetWindow.addEventListener('message', handleMessage);
     return () => targetWindow.removeEventListener('message', handleMessage);
-  }, [onError, onMetadata, onSuccess, postRun, runId, targetDocument, token]);
+  }, [onError, onMetadata, onSuccess, paused, postRun, runId, targetDocument, token]);
 
   // Send the current run once its sandbox is ready.
   React.useEffect(() => {
@@ -130,17 +151,28 @@ SandboxFrame.displayName = 'SandboxFrame';
 
 const ignoreMetadata = () => undefined;
 
+function frameKey(props: PreviewProps): string {
+  return `${props.manifest.buildId}:${props.restartId ?? 0}:${props.liveUpdate ? 'live' : props.runId}`;
+}
+
 /**
  * Prepare each run in a fresh opaque-origin iframe, keeping the previous successful frame visible until the
  * replacement renders. Once swapped, removing the old iframe also disposes its timers and other asynchronous work.
+ * Opt-in live updates reuse one iframe until the mode, runtime build or explicit restart ID changes.
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, ref) => {
   const styles = usePreviewStyles();
   const [successful, setSuccessful] = React.useState<PreviewProps | null>(null);
   const [failedKey, setFailedKey] = React.useState<string | null>(null);
-  const currentKey = `${props.manifest.buildId}:${props.runId}`;
-  const successfulKey = successful && `${successful.manifest.buildId}:${successful.runId}`;
-  const retained = successful && successfulKey !== currentKey && successful.manifest === props.manifest;
+  const currentKey = frameKey(props);
+  const successfulKey = successful && frameKey(successful);
+  const retained =
+    !props.liveUpdate &&
+    successful &&
+    !successful.liveUpdate &&
+    successfulKey !== currentKey &&
+    successful.manifest === props.manifest &&
+    successful.restartId === props.restartId;
   const frames = retained ? [successful, props] : [props];
   const handleSuccess = React.useCallback(
     (runId: number) => {
@@ -155,10 +187,11 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
     (error: Parameters<PreviewProps['onError']>[0]) => {
       if (error.runId === props.runId) {
         setFailedKey(currentKey);
-        if (!retained) {
+        const previewRetained = Boolean(retained || (props.liveUpdate && error.previewRetained));
+        if (!previewRetained) {
           setSuccessful(null);
         }
-        props.onError({ ...error, previewRetained: Boolean(retained) });
+        props.onError({ ...error, previewRetained });
       }
     },
     [currentKey, props, retained],
@@ -167,7 +200,7 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
   return (
     <div ref={ref} className={mergeClasses(styles.root, props.className)}>
       {frames.map(frame => {
-        const key = `${frame.manifest.buildId}:${frame.runId}`;
+        const key = frameKey(frame);
         if (key === failedKey && retained) {
           return null;
         }

@@ -19,6 +19,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
   let root;
   let RenderBoundary;
   let activeRunId = 0;
+  let successfulRun;
 
   const send = message => parent.postMessage({
     source: 'fluentui-playground',
@@ -26,12 +27,18 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
     ...message,
   }, '*');
 
-  const sendError = (error, runId) => send({
-    type: 'error',
-    runId,
-    kind: error && error.kind ? error.kind : 'runtime',
-    message: error instanceof Error ? error.name + ': ' + error.message : String(error),
-  });
+  const sendError = (error, runId, previewRetained = false) => {
+    if (runId !== activeRunId) {
+      return;
+    }
+    send({
+      type: 'error',
+      runId,
+      previewRetained,
+      kind: error && error.kind ? error.kind : 'runtime',
+      message: error instanceof Error ? error.name + ': ' + error.message : String(error),
+    });
+  };
 
   const reportAsyncError = event => {
     if (!activeRunId) {
@@ -39,6 +46,7 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
     }
 
     const error = 'reason' in event ? event.reason : event.error || event.message;
+    successfulRun = undefined;
     sendError(error, activeRunId);
   };
 
@@ -79,11 +87,21 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
       }
 
       componentDidCatch(error) {
+        successfulRun = undefined;
         sendError(error, this.props.runId);
       }
 
       componentDidMount() {
-        if (!this.state.error) {
+        this.reportSuccess();
+      }
+
+      componentDidUpdate() {
+        this.reportSuccess();
+      }
+
+      reportSuccess() {
+        if (!this.state.error && this.props.runId === activeRunId) {
+          successfulRun = this.props.run;
           send({ type: 'success', runId: this.props.runId });
         }
       }
@@ -117,14 +135,25 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
       !message ||
       message.source !== 'fluentui-playground' ||
       message.token !== token ||
-      message.type !== 'run' ||
       !runtime
     ) {
       return;
     }
 
+    if (message.type === 'invalidate') {
+      activeRunId = 0;
+      return;
+    }
+    if (message.type !== 'run') {
+      return;
+    }
+
     try {
       activeRunId = message.runId;
+      const previous = successfulRun;
+      const cssLocals = JSON.stringify((message.cssModules || []).map(mod => [mod.specifier, mod.locals]));
+      const reuseComponent = message.preserveState && previous &&
+        previous.code === message.code && previous.cssLocals === cssLocals;
       const isCssSpecifier = name => /\\.css$/i.test(name);
       const cssModules = new Map((message.cssModules || []).map(mod => [mod.specifier, mod]));
       const findCssModule = name => {
@@ -150,18 +179,14 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         throw error;
       }
 
-      const loaded = await Promise.all(
+      const loaded = reuseComponent ? [] : await Promise.all(
         requested.filter(name => !findCssModule(name)).map(async name => [name, await runtime.moduleLoaders[name]()])
       );
+      // A later edit can supersede a slow lazy import in the same iframe.
+      if (message.runId !== activeRunId) {
+        return;
+      }
       const modules = new Map(loaded);
-
-      document.querySelectorAll('style[data-playground-css]').forEach(node => node.remove());
-      (message.cssModules || []).forEach(mod => {
-        const style = document.createElement('style');
-        style.setAttribute('data-playground-css', mod.specifier);
-        style.textContent = mod.cssText;
-        document.head.appendChild(style);
-      });
 
       const sandboxRequire = name => {
         if (typeof name !== 'string') {
@@ -185,27 +210,46 @@ export function createSandboxDocument(manifest: ResolvedPlaygroundRuntimeManifes
         }
         return modules.get(name);
       };
-      const sandboxModule = { exports: Object.create(null) };
-      // User code runs with sandbox-global access; isolation depends on Preview's opaque-origin iframe sandbox.
-      const evaluate = new Function('require', 'exports', 'module', message.code);
-      evaluate(sandboxRequire, sandboxModule.exports, sandboxModule);
+      let Component;
+      if (reuseComponent) {
+        Component = previous.Component;
+      } else {
+        const sandboxModule = { exports: Object.create(null) };
+        // User code runs with sandbox-global access; isolation depends on Preview's opaque-origin iframe sandbox.
+        const evaluate = new Function('require', 'exports', 'module', message.code);
+        evaluate(sandboxRequire, sandboxModule.exports, sandboxModule);
+        Component = pickComponent(sandboxModule.exports);
+      }
 
-      const Component = pickComponent(sandboxModule.exports);
       const setup = runtime.setup || {};
       const selectedTheme = (setup.themes || []).find(theme => theme.id === message.themeId);
       const element = setup.render
         ? setup.render({ Component, theme: selectedTheme && selectedTheme.value })
         : runtime.React.createElement(Component);
+      const nextRun = {
+        Component,
+        code: message.code,
+        cssLocals,
+        componentKey: reuseComponent ? previous.componentKey : message.runId,
+      };
       const guardedElement = runtime.React.createElement(
         RenderBoundary,
-        { key: message.runId, runId: message.runId },
+        { key: nextRun.componentKey, runId: message.runId, run: nextRun },
         element,
       );
 
+      // Evaluation/import errors leave the last successful DOM and styles untouched.
+      document.querySelectorAll('style[data-playground-css]').forEach(node => node.remove());
+      (message.cssModules || []).forEach(mod => {
+        const style = document.createElement('style');
+        style.setAttribute('data-playground-css', mod.specifier);
+        style.textContent = mod.cssText;
+        document.head.appendChild(style);
+      });
       root = root || runtime.createRoot(document.getElementById('root'));
       root.render(guardedElement);
     } catch (error) {
-      sendError(error, message.runId);
+      sendError(error, message.runId, Boolean(successfulRun));
     }
   });
 })();

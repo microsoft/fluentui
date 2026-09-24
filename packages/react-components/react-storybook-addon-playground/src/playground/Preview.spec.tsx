@@ -109,4 +109,64 @@ describe('Preview sandbox permissions', () => {
     expect(container.querySelector('iframe')).toBe(recovery);
     expect(firstFrame.isConnected).toBe(false);
   });
+
+  it('reuses the live iframe and posts each run only once, recreating it for restart or mode changes', () => {
+    const props = {
+      code: 'exports.default = () => null;',
+      runId: 1,
+      liveUpdate: true,
+      restartId: 0,
+      manifest,
+      onMetadata: jest.fn(),
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    };
+    const { container, rerender } = render(<Preview {...props} />);
+    const first = container.querySelector('iframe')!;
+    const post = jest.spyOn(first.contentWindow!, 'postMessage');
+    sendMessage(first, { type: 'ready', metadata: { themes: [] } });
+    expect(post).toHaveBeenCalledTimes(1);
+    sendMessage(first, { type: 'success', runId: 1 });
+    expect(post).toHaveBeenCalledTimes(1);
+
+    rerender(<Preview {...props} runId={2} preserveState />);
+    expect(container.querySelector('iframe')).toBe(first);
+    expect(container.querySelectorAll('iframe')).toHaveLength(1);
+    expect(post).toHaveBeenLastCalledWith(expect.objectContaining({ type: 'run', runId: 2, preserveState: true }), '*');
+    sendMessage(first, { type: 'error', runId: 2, kind: 'runtime', message: 'Oops', previewRetained: true });
+    expect(props.onError).toHaveBeenCalledWith(expect.objectContaining({ previewRetained: true }));
+    expect(container.querySelector('iframe')).toBe(first);
+
+    rerender(<Preview {...props} runId={3} restartId={1} />);
+    const restarted = container.querySelector('iframe');
+    expect(restarted).not.toBe(first);
+    rerender(<Preview {...props} runId={4} restartId={1} liveUpdate={false} />);
+    expect(container.querySelector('iframe')).not.toBe(restarted);
+    post.mockRestore();
+  });
+
+  it('invalidates pending live imports on edits and ignores their responses', () => {
+    const props = {
+      code: 'exports.default = () => null;',
+      runId: 1,
+      liveUpdate: true,
+      manifest,
+      onMetadata: jest.fn(),
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    };
+    const { container, rerender } = render(<Preview {...props} />);
+    const frame = container.querySelector('iframe')!;
+    const post = jest.spyOn(frame.contentWindow!, 'postMessage');
+    sendMessage(frame, { type: 'ready', metadata: { themes: [] } });
+    rerender(<Preview {...props} paused />);
+    expect(post).toHaveBeenLastCalledWith(expect.objectContaining({ type: 'invalidate' }), '*');
+    sendMessage(frame, { type: 'success', runId: 1 });
+    sendMessage(frame, { type: 'error', runId: 1, kind: 'runtime', message: 'stale' });
+    expect(props.onSuccess).not.toHaveBeenCalled();
+    expect(props.onError).not.toHaveBeenCalled();
+    rerender(<Preview {...props} runId={2} />);
+    expect(post).toHaveBeenLastCalledWith(expect.objectContaining({ type: 'run', runId: 2 }), '*');
+    post.mockRestore();
+  });
 });
