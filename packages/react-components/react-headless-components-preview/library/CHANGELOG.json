@@ -2,6 +2,21 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2026 09:53:10 GMT",
+      "version": "0.3.1",
+      "tag": "@fluentui/react-headless-components-preview_v0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "862a351e288aaaf2c63da00efb0caaa0873c6edf",
+            "comment": "fix: allow changing the root element for PopoverSurface"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 11:35:06 GMT",
       "version": "0.3.0",
       "tag": "@fluentui/react-headless-components-preview_v0.3.0",
