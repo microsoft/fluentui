@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "dropdown",
+  "packageName": "@fluentui/web-components",
+  "email": "ajcolombi@dps.ohio.gov",
+  "dependentChangeType": "patch"
+}
