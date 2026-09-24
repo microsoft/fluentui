@@ -87,15 +87,11 @@ export const getChartValueLabel = (
     return chartValueFormat([chartValue - minValue, maxValue - minValue]);
   }
 
-  if (chartValueFormat === 'percentage') {
-    return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
-  }
-
   if (chartValueFormat === 'fraction') {
     return `${chartValue - minValue}/${maxValue - minValue}`;
   }
 
-  return minValue !== 0 ? chartValue.toString() : `${((chartValue / maxValue) * 100).toFixed()}%`;
+  return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
 };
 
 const getCalloutSegmentLabel = (
@@ -105,7 +101,7 @@ const getCalloutSegmentLabel = (
   variant: GaugeChartVariant | undefined,
   chartValueFormat: GaugeChartProps['chartValueFormat'],
 ): string => {
-  if (chartValueFormat === 'percentage' || (!chartValueFormat && minValue === 0)) {
+  if (!chartValueFormat || chartValueFormat === 'percentage') {
     const range = maxValue - minValue;
     const startPercentage = (((segment.start - minValue) / range) * 100).toFixed();
     const endPercentage = (((segment.end - minValue) / range) * 100).toFixed();

@@ -433,6 +433,24 @@ describe('GaugeChart custom callout', () => {
       expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Low Risk');
     },
   );
+
+  testWithoutWait(
+    'Should use percentage formatting by default with a nonzero minimum',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 125,
+      minValue: 100,
+      maxValue: 200,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('Current value is 25%')).toBeInTheDocument();
+      expect(screen.getByText('0% - 33%')).toBeInTheDocument();
+    },
+  );
 });
 
 describe('GaugeChart rendering and behavior tests', () => {
@@ -529,8 +547,8 @@ describe('GaugeChart rendering and behavior tests', () => {
     expect(getChartValueLabel(50, 0, 200, formatMilliseconds, true)).toBe('50ms');
     expect(getChartValueLabel(0, 0, 200, formatMilliseconds, true)).toBe('offline');
 
-    expect(getChartValueLabel(125, 100, 200)).toBe('125');
-    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('125');
+    expect(getChartValueLabel(125, 100, 200)).toBe('25%');
+    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('25%');
 
     expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('25%');
     expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('25%');
