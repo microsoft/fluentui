@@ -3,7 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
-import type { PopoverSurfaceProps } from './PopoverSurface.types';
 
 describe('PopoverSurface', () => {
   it('renders surface content', () => {
@@ -29,7 +28,7 @@ describe('PopoverSurface', () => {
       </Popover>,
     );
 
-    expect(getByRole('group', { hidden: true }).tagName).toBe('DIV');
+    expect(getByRole('group', { hidden: true }).tagName).toBe('DIALOG');
   });
 
   it('renders a dialog when focus trapping is enabled', () => {
@@ -45,17 +44,55 @@ describe('PopoverSurface', () => {
     expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
   });
 
-  it('does not allow the root element to conflict with focus trapping', () => {
+  it('allows the root element to be a div', () => {
     const { getByRole } = render(
+      <Popover defaultOpen>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface as="div">Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('group', { hidden: true }).tagName).toBe('DIV');
+  });
+
+  it('warns when a div root is used with focus trapping', () => {
+    const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+
+    render(
       <Popover defaultOpen trapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
-        <PopoverSurface {...({ as: 'div' } as PopoverSurfaceProps)}>Content</PopoverSurface>
+        <PopoverSurface as="div">Content</PopoverSurface>
       </Popover>,
     );
 
-    expect(getByRole('dialog', { hidden: true }).tagName).toBe('DIALOG');
+    expect(consoleWarn).toHaveBeenCalledWith(
+      '@fluentui/react-headless-components-preview [PopoverSurface]: ' +
+        '`as="div"` is incompatible with `Popover trapFocus`. ' +
+        'Use the default `dialog` element when focus trapping is enabled.',
+    );
+
+    consoleWarn.mockRestore();
+  });
+
+  it('does not warn when the default dialog root is used with focus trapping', () => {
+    const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+
+    render(
+      <Popover defaultOpen trapFocus>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(consoleWarn).not.toHaveBeenCalled();
+
+    consoleWarn.mockRestore();
   });
 
   it('has data-open attribute when open', () => {

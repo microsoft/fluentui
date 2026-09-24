@@ -9,9 +9,9 @@ import { renderPopoverSurface } from './renderPopoverSurface';
 /**
  * Headless PopoverSurface component.
  *
- * Renders the popover content area as a native `<div popover="auto">` for
- * non-modal surfaces and as a `<dialog>` for modal surfaces. The choice is
- * driven by the parent `Popover`'s `trapFocus` prop.
+ * Renders the popover content area as a native `<dialog>` by default. Consumers
+ * can render a `<div>` for non-modal surfaces with `as="div"`. A `<dialog>` is
+ * required when the parent `Popover` has `trapFocus` enabled.
  */
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef((props, ref) => {
   const state = usePopoverSurface(props, ref);
