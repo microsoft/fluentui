@@ -5,6 +5,7 @@ const {
   loadWorkspaceAddon,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  registerReactIconsAtomicConfiguration,
 } = require('@fluentui/scripts-storybook');
 const { registerCssModuleRules } = require('./css-modules-webpack');
 
@@ -42,6 +43,8 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
     const localConfig = /** @type {any} */ ({ ...rootMain.webpackFinal(config, options) });
 
     registerCssModuleRules({ config: localConfig });
+
+    registerReactIconsAtomicConfiguration({ config: localConfig, headless: true });
 
     return localConfig;
   },

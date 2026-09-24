@@ -6,6 +6,7 @@ export {
   overrideDefaultBabelLoader,
   processBabelLoaderOptions,
   getImportMappingsForExportToSandboxAddon,
+  registerReactIconsAtomicConfiguration,
 } from './utils';
 
 export * as rules from './rules';

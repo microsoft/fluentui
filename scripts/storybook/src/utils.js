@@ -439,6 +439,38 @@ function normalizeProjectName(/** @type {string} */ value, npmScope = 'fluentui'
   return value.replace(`@${npmScope}/`, '');
 }
 
+/**
+ * Registers the React Icons Atomic webpack loader and optionally the font subsetting plugin.
+ *
+ * @param {Object} options
+ * @param {import("webpack").Configuration} options.config
+ * @param {"fonts" | "svg"} [options.iconVariant="fonts"]
+ * @param {Boolean} [options.headless=false]
+ * @returns {void}
+ */
+function registerReactIconsAtomicConfiguration({ config, iconVariant = 'fonts', headless = false }) {
+  config.module = config.module ?? {};
+  config.module.rules = config.module.rules ?? [];
+  config.module.rules.unshift({
+    test: /\.[mc]?[jt]sx?$/,
+    enforce: 'pre',
+    use: [
+      {
+        loader: '@fluentui/react-icons-atomic-webpack-loader',
+        options: { iconVariant, headless },
+      },
+    ],
+  });
+
+  if (iconVariant === 'fonts') {
+    const FluentUIReactIconsFontSubsettingPlugin =
+      require('@fluentui/react-icons-font-subsetting-webpack-plugin').default;
+
+    config.plugins ??= [];
+    config.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
+  }
+}
+
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
@@ -446,3 +478,4 @@ exports.registerRules = registerRules;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
 exports.processBabelLoaderOptions = processBabelLoaderOptions;
 exports.getImportMappingsForExportToSandboxAddon = getImportMappingsForExportToSandboxAddon;
+exports.registerReactIconsAtomicConfiguration = registerReactIconsAtomicConfiguration;

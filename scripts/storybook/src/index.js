@@ -6,6 +6,7 @@ const {
   registerTsPaths,
   processBabelLoaderOptions,
   getImportMappingsForExportToSandboxAddon,
+  registerReactIconsAtomicConfiguration,
 } = require('./utils');
 
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   rules,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  registerReactIconsAtomicConfiguration,
 };

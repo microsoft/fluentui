@@ -1,5 +1,11 @@
 const path = require('path');
-const { getPackageStoriesGlob, registerTsPaths, rules, registerRules } = require('@fluentui/scripts-storybook');
+const {
+  getPackageStoriesGlob,
+  registerTsPaths,
+  registerReactIconsAtomicConfiguration,
+  rules,
+  registerRules,
+} = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
 
@@ -59,6 +65,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
       config: localConfig,
     });
+    registerReactIconsAtomicConfiguration({ config: localConfig });
 
     return localConfig;
   },

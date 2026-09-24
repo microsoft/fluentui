@@ -12,6 +12,7 @@ const {
   getPackageStoriesGlob,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  registerReactIconsAtomicConfiguration,
 } = require('./utils');
 
 tmp.setGracefulCleanup();
@@ -291,6 +292,39 @@ describe(`utils`, () => {
           ],
         ],
       });
+    });
+  });
+
+  describe(`#registerReactIconsAtomicConfiguration`, () => {
+    it(`should register the atomic loader with the requested icon options`, () => {
+      const config = /** @type {import('webpack').Configuration} */ ({});
+
+      registerReactIconsAtomicConfiguration({ config, iconVariant: 'svg', headless: true });
+
+      expect(config.module?.rules).toEqual([
+        {
+          test: /\.[mc]?[jt]sx?$/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: '@fluentui/react-icons-atomic-webpack-loader',
+              options: { iconVariant: 'svg', headless: true },
+            },
+          ],
+        },
+      ]);
+      expect(config.plugins).toBeUndefined();
+    });
+
+    it(`should register the font subsetting plugin for font icons`, () => {
+      const config = /** @type {import('webpack').Configuration} */ ({ module: { rules: [] }, plugins: [] });
+      const FluentUIReactIconsFontSubsettingPlugin =
+        require('@fluentui/react-icons-font-subsetting-webpack-plugin').default;
+
+      registerReactIconsAtomicConfiguration({ config });
+
+      expect(config.plugins).toHaveLength(1);
+      expect(config.plugins?.[0]).toBeInstanceOf(FluentUIReactIconsFontSubsettingPlugin);
     });
   });
 
