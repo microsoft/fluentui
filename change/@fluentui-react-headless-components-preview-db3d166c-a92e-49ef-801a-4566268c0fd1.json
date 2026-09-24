@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: allow changing the root element for PopoverSurface",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com"
-}
