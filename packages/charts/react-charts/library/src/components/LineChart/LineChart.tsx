@@ -204,6 +204,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
+    const previousCalloutDataRef = React.useRef(props.data);
+    const calloutDataVersionRef = React.useRef(0);
+    if (previousCalloutDataRef.current !== props.data) {
+      previousCalloutDataRef.current = props.data;
+      calloutDataVersionRef.current++;
+    }
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
@@ -1611,7 +1617,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       x: number | Date,
       xAxisCalloutData: string | undefined,
       circleId: string,
-      targetElement: HTMLElement | null,
+      _targetElement: HTMLElement | null,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
       _uniqueCallOutID = circleId;
@@ -1628,7 +1634,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             setPopoverOpen(true);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
-            setRefSelected(targetElement);
+            setRefSelected(event.currentTarget as unknown as HTMLElement);
             setStackCalloutProps(found!);
             setDataPointCalloutProps(found!);
             setActivePoint(circleId);
@@ -1861,8 +1867,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
-      calloutPointsRef.current = calloutData(points);
     }
+    calloutPointsRef.current = calloutData(points);
 
     let legendBars = null;
     // reduce computation cost by only creating legendBars
@@ -1872,6 +1878,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
     const calloutProps = {
+      key: calloutDataVersionRef.current,
       YValueHover: yValueHover,
       hoverXValue,
       YValue,
