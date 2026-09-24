@@ -325,7 +325,7 @@ describe('Popover', () => {
             <PopoverTrigger disableButtonEnhancement>
               <button data-testid="trigger">Hover trigger</button>
             </PopoverTrigger>
-            <PopoverSurface data-testid="surface" tabIndex={-1}>
+            <PopoverSurface as="div" data-testid="surface" tabIndex={-1}>
               Hover disclosure
             </PopoverSurface>
           </Popover>
