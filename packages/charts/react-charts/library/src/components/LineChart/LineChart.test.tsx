@@ -965,6 +965,60 @@ describe('LineChart - mouse events', () => {
     expect(html1).not.toBe(html2);
   });
 
+  it('Should render updated callout data when focus is restored after a data change', () => {
+    let calloutMountCount = 0;
+    const CalloutContent = ({ calloutProps }: { calloutProps: any }) => {
+      React.useEffect(() => {
+        calloutMountCount++;
+      }, []);
+      return <pre>{JSON.stringify(calloutProps)}</pre>;
+    };
+    const renderCallout = (props: any) => <CalloutContent calloutProps={props} />;
+    const FocusRestoringLineChart = ({ data }: { data: typeof basicChartPoints }) => {
+      const containerRef = React.useRef<HTMLDivElement>(null);
+      const focusedElementId = React.useRef<string | undefined>(undefined);
+
+      React.useLayoutEffect(() => {
+        const container = containerRef.current;
+        const element = focusedElementId.current
+          ? container?.ownerDocument.getElementById(focusedElementId.current)
+          : undefined;
+        if (element && container?.contains(element)) {
+          element.focus();
+        }
+      }, [data]);
+
+      return (
+        <div ref={containerRef} onFocusCapture={event => (focusedElementId.current = event.target.id)}>
+          <LineChart data={data} onRenderCalloutPerStack={renderCallout} />
+        </div>
+      );
+    };
+    const updatedChartPoints = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map((line, lineIndex) => ({
+        ...line,
+        data: line.data.map((point, pointIndex) =>
+          lineIndex === 0 && pointIndex === 0 ? { ...point, y: 987654 } : point,
+        ),
+      })),
+    };
+    const { container, rerender } = render(<FocusRestoringLineChart data={basicChartPoints} />, { container: root! });
+    const point = container.querySelector<SVGElement>('[aria-label="20. metaData1, 50."]');
+
+    expect(point).toBeDefined();
+    fireEvent.focus(point!);
+    expect(calloutMountCount).toBe(1);
+    rerender(<FocusRestoringLineChart data={updatedChartPoints} />);
+
+    const updatedPoint = container.querySelector<SVGElement>('[aria-label="20. metaData1, 987654."]');
+    expect(updatedPoint).toBeDefined();
+    expect(updatedPoint).toBe(point);
+    expect(container.ownerDocument.activeElement).toBe(updatedPoint);
+    expect(container.querySelector('pre')).toHaveTextContent('987654');
+    expect(calloutMountCount).toBe(2);
+  });
+
   // @FIXME: this tests is failing with jest 29.7.0
   it('Should render customized callout on mouseover', () => {
     // Render the LineChart with a custom callout renderer using React Testing Library
