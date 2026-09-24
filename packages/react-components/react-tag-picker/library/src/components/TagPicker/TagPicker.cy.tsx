@@ -12,6 +12,7 @@ import { TagPickerList } from '../TagPickerList/TagPickerList';
 import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
@@ -32,16 +33,23 @@ const options = [
   'Maria Rossi',
 ];
 
-type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover'>;
+type TagPickerControlledProps = Pick<
+  TagPickerProps,
+  'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover' | 'onOptionSelect'
+>;
 
 const TagPickerControlled = ({
   open,
   defaultOpen,
   defaultSelectedOptions = [],
   noPopover = false,
+  onOptionSelect: onOptionSelectProp,
 }: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => setSelectedOptions(data.selectedOptions);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
+    setSelectedOptions(data.selectedOptions);
+    onOptionSelectProp?.(event, data);
+  };
   const handleAllClear: React.MouseEventHandler = _ => setSelectedOptions([]);
 
   return (
@@ -108,6 +116,11 @@ const TagPickerControlled = ({
       <button id="after-button">After</button>
     </div>
   );
+};
+
+const TabsterRoot = (props: { children?: React.ReactNode }) => {
+  const tabsterAttrs = useTabsterAttributes({ root: {} });
+  return <div {...tabsterAttrs}>{props.children}</div>;
 };
 
 describe('TagPicker', () => {
@@ -289,6 +302,26 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
       }),
     );
+
+    it('should close the listbox without selecting the active option on Tab', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TabsterRoot>
+          <TagPickerControlled onOptionSelect={onOptionSelect} />
+        </TabsterRoot>,
+      );
+
+      cy.get('#before-button').realClick().realPress('Tab');
+      cy.get('[data-testid="tag-picker-input"]').should('be.focused').realPress('Enter');
+      cy.get('[data-testid="tag-picker-input"]')
+        .should('have.attr', 'aria-activedescendant', 'tag-picker-option--0')
+        .realPress('Tab');
+
+      cy.get('@onOptionSelect').should('not.have.been.called');
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('not.exist');
+    });
 
     describe('Tags', () => {
       it('should focus on last tag on Shift + Tab', () => {
