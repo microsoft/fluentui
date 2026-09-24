@@ -123,6 +123,48 @@ describe('buildRuntimeEntrySource', () => {
     }
   });
 
+  it.each([
+    [
+      'CommonJS',
+      'setup.js',
+      'Object.defineProperty(exports, "__esModule", { value: true }); exports.default = { title: "Setup" };',
+    ],
+    ['ES module', 'setup.mjs', 'export default { title: "Setup" };'],
+  ])('registers the default export of a %s setup module', async (_kind, setupFile, setupSource) => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-setup-'));
+    const setup = path.join(root, setupFile);
+    const entry = path.join(root, 'entry.mjs');
+    fs.writeFileSync(setup, setupSource);
+    fs.writeFileSync(entry, buildRuntimeEntrySource({ modules: {}, setup }, true));
+
+    try {
+      await new Promise<void>((resolve, reject) => {
+        webpack({
+          mode: 'production',
+          devtool: false,
+          optimization: { minimize: false },
+          entry,
+          output: { path: path.join(root, 'out'), filename: 'runtime.js' },
+          externals: Object.fromEntries(
+            ['react', 'react-dom', 'react-dom/client', 'react/jsx-runtime'].map(name => [name, `commonjs ${name}`]),
+          ),
+        }).run((error, stats) => {
+          if (error || stats?.hasErrors()) {
+            reject(error ?? new Error(stats?.toString('errors-only')));
+          } else {
+            resolve();
+          }
+        });
+      });
+      const context = { require: () => ({}), __FLUENTUI_PLAYGROUND_REGISTER_V1__: jest.fn() };
+      vm.runInNewContext(fs.readFileSync(path.join(root, 'out/runtime.js'), 'utf8'), context);
+
+      expect(context.__FLUENTUI_PLAYGROUND_REGISTER_V1__.mock.calls[0][0].setup).toEqual({ title: 'Setup' });
+    } finally {
+      fs.rmSync(root, { recursive: true, force: true });
+    }
+  });
+
   it('loads production modules on demand without changing public import names', () => {
     const source = buildRuntimeEntrySource(
       {

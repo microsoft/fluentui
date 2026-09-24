@@ -29,6 +29,15 @@
         ]
       }
     },
+    "e2e": {
+      "dependsOn": ["build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/playwright.config.ts",
+        { "externalDependencies": ["@playwright/test", "webpack"] }
+      ]
+    },
     "build-playground": {
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],

@@ -126,6 +126,14 @@ yarn nx run react-storybook-addon-playground:build-playground
 The **runtime** (configured modules, setup, typings, `manifest.json`) is emitted by Storybook's Webpack build into
 `playground/runtime/`. The shell is served at `playground/app/playground.html`.
 
+Browser tests (Playwright) build a small fixture runtime with the addon's real `webpackFinal` hook, serve it next to the
+prebuilt shell and cover the default setup, shared links, live CSS/theme updates, error recovery, Restart and lazy
+modules:
+
+```sh
+yarn nx run react-storybook-addon-playground:e2e
+```
+
 ## Limitations
 
 - Only configured packages, the built-in React entries, and CSS modules shipped with a story (via

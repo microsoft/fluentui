@@ -166,7 +166,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactDOMClient from 'react-dom/client';
 import * as ReactJsxRuntime from 'react/jsx-runtime';
-import setup from ${JSON.stringify(setupPath)};
+import * as setupModule from ${JSON.stringify(setupPath)};
+// This entry is \`.mjs\`: a default import of a CommonJS setup (such as the compiled default setup) would yield
+// \`module.exports\` rather than its \`default\` export.
+const setupExports = setupModule.default;
+const setup = setupExports && setupExports.__esModule ? setupExports.default : setupExports;
 const moduleLoaders = {
   react: () => Promise.resolve(React),
   'react/jsx-runtime': () => Promise.resolve(ReactJsxRuntime),
