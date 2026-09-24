@@ -5,7 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import type { LineChartPoints } from './index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
-
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import {
   getByClass,
   getById,
@@ -978,7 +978,7 @@ describe('LineChart - mouse events', () => {
       const containerRef = React.useRef<HTMLDivElement>(null);
       const focusedElementId = React.useRef<string | undefined>(undefined);
 
-      React.useLayoutEffect(() => {
+      useIsomorphicLayoutEffect(() => {
         const container = containerRef.current;
         const element = focusedElementId.current
           ? container?.ownerDocument.getElementById(focusedElementId.current)
