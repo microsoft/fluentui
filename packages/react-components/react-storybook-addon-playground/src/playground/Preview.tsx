@@ -16,7 +16,6 @@ export interface PreviewProps {
   code: string | null;
   requiredModules?: string[];
   runId: number;
-  liveUpdate?: boolean;
   restartId?: number;
   preserveState?: boolean;
   paused?: boolean;
@@ -35,16 +34,11 @@ export interface PreviewProps {
   className?: string;
 }
 
-interface SandboxFrameProps extends PreviewProps {
-  hidden: boolean;
-}
-
-const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((props, ref) => {
+const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props, ref) => {
   const {
     code,
     requiredModules,
     runId,
-    liveUpdate,
     preserveState,
     paused,
     themeId,
@@ -53,7 +47,6 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
     onMetadata,
     onSuccess,
     onError,
-    hidden,
     className,
   } = props;
   const { targetDocument } = useFluent();
@@ -92,11 +85,11 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
         cssModules,
         themeId,
         runId,
-        preserveState: liveUpdate && preserveState,
+        preserveState,
       },
       '*',
     );
-  }, [code, cssModules, liveUpdate, paused, preserveState, requiredModules, runId, themeId, token]);
+  }, [code, cssModules, paused, preserveState, requiredModules, runId, themeId, token]);
 
   React.useEffect(() => {
     const targetWindow = targetDocument?.defaultView;
@@ -142,82 +135,20 @@ const SandboxFrame: ForwardRefComponent<SandboxFrameProps> = React.forwardRef((p
       sandbox={PREVIEW_SANDBOX}
       srcDoc={source}
       className={className}
-      aria-hidden={hidden || undefined}
-      tabIndex={hidden ? -1 : undefined}
     />
   );
 });
 SandboxFrame.displayName = 'SandboxFrame';
 
-const ignoreMetadata = () => undefined;
-
-function frameKey(props: PreviewProps): string {
-  return `${props.manifest.buildId}:${props.restartId ?? 0}:${props.liveUpdate ? 'live' : props.runId}`;
-}
-
 /**
- * Prepare each run in a fresh opaque-origin iframe, keeping the previous successful frame visible until the
- * replacement renders. Once swapped, removing the old iframe also disposes its timers and other asynchronous work.
- * Opt-in live updates reuse one iframe until the mode, runtime build or explicit restart ID changes.
+ * Reuse the opaque-origin sandbox and its loaded packages until the runtime build or explicit restart ID changes.
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, ref) => {
   const styles = usePreviewStyles();
-  const [successful, setSuccessful] = React.useState<PreviewProps | null>(null);
-  const [failedKey, setFailedKey] = React.useState<string | null>(null);
-  const currentKey = frameKey(props);
-  const successfulKey = successful && frameKey(successful);
-  const retained =
-    !props.liveUpdate &&
-    successful &&
-    !successful.liveUpdate &&
-    successfulKey !== currentKey &&
-    successful.manifest === props.manifest &&
-    successful.restartId === props.restartId;
-  const frames = retained ? [successful, props] : [props];
-  const handleSuccess = React.useCallback(
-    (runId: number) => {
-      if (runId === props.runId) {
-        setSuccessful(props);
-        props.onSuccess(runId);
-      }
-    },
-    [props],
-  );
-  const handleError = React.useCallback(
-    (error: Parameters<PreviewProps['onError']>[0]) => {
-      if (error.runId === props.runId) {
-        setFailedKey(currentKey);
-        const previewRetained = Boolean(retained || (props.liveUpdate && error.previewRetained));
-        if (!previewRetained) {
-          setSuccessful(null);
-        }
-        props.onError({ ...error, previewRetained });
-      }
-    },
-    [currentKey, props, retained],
-  );
 
   return (
     <div ref={ref} className={mergeClasses(styles.root, props.className)}>
-      {frames.map(frame => {
-        const key = frameKey(frame);
-        if (key === failedKey && retained) {
-          return null;
-        }
-        const isCurrent = key === currentKey;
-        const hidden = Boolean(retained && isCurrent);
-        return (
-          <SandboxFrame
-            {...frame}
-            key={key}
-            hidden={hidden}
-            className={mergeClasses(styles.frame, hidden && styles.pendingFrame)}
-            onMetadata={isCurrent ? props.onMetadata : ignoreMetadata}
-            onSuccess={handleSuccess}
-            onError={handleError}
-          />
-        );
-      })}
+      <SandboxFrame {...props} key={`${props.manifest.buildId}:${props.restartId ?? 0}`} className={styles.frame} />
       {props.code === null && props.placeholder ? <div className={styles.placeholder}>{props.placeholder}</div> : null}
     </div>
   );

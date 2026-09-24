@@ -26,13 +26,13 @@ function sendMessage(frame: HTMLIFrameElement, message: Record<string, unknown>)
   });
 }
 
-describe('Preview sandbox permissions', () => {
+describe('Preview sandbox', () => {
   it('keeps evaluated user code in an opaque-origin iframe', () => {
     expect(PREVIEW_SANDBOX.split(/\s+/)).toEqual(['allow-scripts']);
     expect(PREVIEW_SANDBOX.split(/\s+/)).not.toContain('allow-same-origin');
   });
 
-  it('creates a new sandbox iframe for every run', () => {
+  it('reuses one visible sandbox iframe across runs without an opt-in', () => {
     const props = {
       code: 'exports.default = () => null;',
       runId: 1,
@@ -46,10 +46,12 @@ describe('Preview sandbox permissions', () => {
 
     rerender(<Preview {...props} runId={2} />);
 
-    expect(container.querySelector('iframe')).not.toBe(firstFrame);
+    expect(container.querySelector('iframe')).toBe(firstFrame);
+    expect(container.querySelectorAll('iframe')).toHaveLength(1);
+    expect(firstFrame?.getAttribute('aria-hidden')).toBeNull();
   });
 
-  it('keeps the successful frame visible while a replacement renders, then disposes it', () => {
+  it('disposes the old sandbox immediately on restart while the current source is compiling', () => {
     const props = {
       code: 'exports.default = () => null;',
       runId: 1,
@@ -62,22 +64,26 @@ describe('Preview sandbox permissions', () => {
     const firstFrame = container.querySelector('iframe')!;
     sendMessage(firstFrame, { type: 'success', runId: 1 });
 
-    rerender(<Preview {...props} runId={2} />);
-    const pending = container.querySelectorAll('iframe')[1];
-    expect(firstFrame.isConnected).toBe(true);
-    expect(firstFrame.getAttribute('aria-hidden')).toBeNull();
-    expect(pending.getAttribute('aria-hidden')).toBe('true');
-    expect(pending.tabIndex).toBe(-1);
-    expect(pending.sandbox).toBe(firstFrame.sandbox);
-
-    sendMessage(pending, { type: 'success', runId: 2 });
+    rerender(<Preview {...props} runId={2} restartId={1} code={null} placeholder="Preparing preview" />);
+    const restarted = container.querySelector('iframe')!;
     expect(firstFrame.isConnected).toBe(false);
-    expect(container.querySelector('iframe')).toBe(pending);
-    expect(pending.getAttribute('aria-hidden')).toBeNull();
+    expect(restarted).not.toBe(firstFrame);
+    expect(container.querySelectorAll('iframe')).toHaveLength(1);
+    expect(container.textContent).toContain('Preparing preview');
+    expect(restarted.sandbox).toBe(firstFrame.sandbox);
+
+    sendMessage(firstFrame, { type: 'success', runId: 2 });
+    sendMessage(firstFrame, { type: 'error', runId: 2, kind: 'runtime', message: 'obsolete' });
+    expect(props.onSuccess).toHaveBeenCalledTimes(1);
+    expect(props.onError).not.toHaveBeenCalled();
+
+    rerender(<Preview {...props} runId={2} restartId={1} />);
+    expect(container.querySelector('iframe')).toBe(restarted);
+    sendMessage(restarted, { type: 'success', runId: 2 });
     expect(props.onSuccess).toHaveBeenLastCalledWith(2);
   });
 
-  it('retains the successful frame on replacement errors and ignores superseded frames', () => {
+  it('forwards current error retention, ignores stale runs and recovers in the same iframe', () => {
     const props = {
       code: 'exports.default = () => null;',
       runId: 1,
@@ -87,34 +93,34 @@ describe('Preview sandbox permissions', () => {
       onError: jest.fn(),
     };
     const { container, rerender } = render(<Preview {...props} />);
-    const firstFrame = container.querySelector('iframe')!;
-    sendMessage(firstFrame, { type: 'success', runId: 1 });
+    const frame = container.querySelector('iframe')!;
+    sendMessage(frame, { type: 'success', runId: 1 });
     rerender(<Preview {...props} runId={2} />);
-    const stale = container.querySelectorAll('iframe')[1];
     rerender(<Preview {...props} runId={3} />);
-    const pending = container.querySelectorAll('iframe')[1];
-    expect(stale.isConnected).toBe(false);
-    sendMessage(firstFrame, { type: 'success', runId: 1 });
-    sendMessage(pending, { type: 'success', runId: 2 });
+    sendMessage(frame, { type: 'success', runId: 1 });
+    sendMessage(frame, { type: 'error', runId: 2, kind: 'runtime', message: 'obsolete' });
     expect(props.onSuccess).toHaveBeenCalledTimes(1);
+    expect(props.onError).not.toHaveBeenCalled();
 
-    sendMessage(pending, { type: 'error', runId: 3, kind: 'runtime', message: 'Broken' });
+    sendMessage(frame, { type: 'error', runId: 3, kind: 'runtime', message: 'Broken', previewRetained: true });
     expect(container.querySelectorAll('iframe')).toHaveLength(1);
-    expect(container.querySelector('iframe')).toBe(firstFrame);
+    expect(container.querySelector('iframe')).toBe(frame);
     expect(props.onError).toHaveBeenCalledWith(expect.objectContaining({ runId: 3, previewRetained: true }));
 
     rerender(<Preview {...props} runId={4} />);
-    const recovery = container.querySelectorAll('iframe')[1];
-    sendMessage(recovery, { type: 'success', runId: 4 });
-    expect(container.querySelector('iframe')).toBe(recovery);
-    expect(firstFrame.isConnected).toBe(false);
+    sendMessage(frame, { type: 'error', runId: 4, kind: 'runtime', message: 'Render failed', previewRetained: false });
+    expect(props.onError).toHaveBeenLastCalledWith(expect.objectContaining({ runId: 4, previewRetained: false }));
+
+    rerender(<Preview {...props} runId={5} />);
+    sendMessage(frame, { type: 'success', runId: 5 });
+    expect(container.querySelector('iframe')).toBe(frame);
+    expect(props.onSuccess).toHaveBeenLastCalledWith(5);
   });
 
-  it('reuses the live iframe and posts each run only once, recreating it for restart or mode changes', () => {
+  it('posts each run only once and recreates the iframe for restart or runtime build changes', () => {
     const props = {
       code: 'exports.default = () => null;',
       runId: 1,
-      liveUpdate: true,
       restartId: 0,
       manifest,
       onMetadata: jest.fn(),
@@ -140,7 +146,7 @@ describe('Preview sandbox permissions', () => {
     rerender(<Preview {...props} runId={3} restartId={1} />);
     const restarted = container.querySelector('iframe');
     expect(restarted).not.toBe(first);
-    rerender(<Preview {...props} runId={4} restartId={1} liveUpdate={false} />);
+    rerender(<Preview {...props} runId={4} restartId={1} manifest={{ ...manifest, buildId: 'next-build' }} />);
     expect(container.querySelector('iframe')).not.toBe(restarted);
     post.mockRestore();
   });
@@ -149,7 +155,6 @@ describe('Preview sandbox permissions', () => {
     const props = {
       code: 'exports.default = () => null;',
       runId: 1,
-      liveUpdate: true,
       manifest,
       onMetadata: jest.fn(),
       onSuccess: jest.fn(),

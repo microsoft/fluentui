@@ -65,8 +65,7 @@ interface PlaygroundErrorState {
 type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
 type TypingsStatus = 'loading' | 'ready' | 'error';
 
-const RUN_DEBOUNCE_MS = 400;
-const LIVE_RUN_DEBOUNCE_MS = 150;
+const RUN_DEBOUNCE_MS = 150;
 const HASH_SYNC_DEBOUNCE_MS = 500;
 const EMPTY_METADATA: PlaygroundSetupMetadata = { themes: [] };
 const EMPTY_CSS_MODULES: CssModuleSource[] = [];
@@ -175,7 +174,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
   const [requiredModules, setRequiredModules] = React.useState<string[]>([]);
   const [runId, setRunId] = React.useState(0);
-  const [liveUpdate, setLiveUpdate] = React.useState(false);
   const [restartId, setRestartId] = React.useState(0);
   const [preserveState, setPreserveState] = React.useState(false);
   const [paused, setPaused] = React.useState(false);
@@ -367,17 +365,14 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }
 
     const counter = runCounter;
-    const timeout = targetWindow.setTimeout(
-      () => {
-        compileAndRun(true);
-      },
-      liveUpdate ? LIVE_RUN_DEBOUNCE_MS : RUN_DEBOUNCE_MS,
-    );
+    const timeout = targetWindow.setTimeout(() => {
+      compileAndRun(true);
+    }, RUN_DEBOUNCE_MS);
     return () => {
       targetWindow.clearTimeout(timeout);
       ++counter.current;
     };
-  }, [code, compileAndRun, liveUpdate, model, runtimeReady, targetWindow]);
+  }, [code, compileAndRun, model, runtimeReady, targetWindow]);
 
   React.useEffect(() => {
     if (!targetWindow) {
@@ -478,16 +473,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     setRestartId(id => id + 1);
     setRunId(id => id + 1);
   }, []);
-
-  const handleModeSelect = React.useCallback(
-    (_event: SelectionEvents, data: OptionOnSelectData) => {
-      if (data.optionValue && (data.optionValue === 'live') !== liveUpdate) {
-        setLiveUpdate(data.optionValue === 'live');
-        handleRestart();
-      }
-    },
-    [handleRestart, liveUpdate],
-  );
 
   const handleCopyLink = React.useCallback(async () => {
     if (!targetWindow) {
@@ -607,7 +592,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             <ToolbarAction
               icon={<PlayRegular />}
               label="Run"
-              tooltip={`Run the code (${runShortcut})`}
+              tooltip={`Reevaluate the code and remount the example (${runShortcut})`}
               appearance="primary"
               compact={compactToolbar}
               onClick={handleRun}
@@ -741,26 +726,10 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 Preview
               </span>
               <Toolbar aria-label="Preview actions" className={styles.toolbar}>
-                <Tooltip
-                  content="Live update reuses loaded packages. Code edits reset component state, but global side effects remain until Restart preview."
-                  relationship="description"
-                >
-                  <Dropdown
-                    aria-label="Preview mode"
-                    size="small"
-                    className={styles.themePicker}
-                    value={liveUpdate ? 'Live update' : 'Isolated'}
-                    selectedOptions={[liveUpdate ? 'live' : 'isolated']}
-                    onOptionSelect={handleModeSelect}
-                  >
-                    <Option value="isolated">Isolated</Option>
-                    <Option value="live">Live update</Option>
-                  </Dropdown>
-                </Tooltip>
                 <ToolbarAction
                   icon={<ArrowClockwiseRegular />}
                   label="Restart preview"
-                  tooltip="Restart the sandbox and dispose previous timers, listeners and global side effects"
+                  tooltip="Start in a fresh sandbox, clearing previous timers, listeners and global side effects"
                   compact
                   onClick={handleRestart}
                 />
@@ -773,7 +742,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               code={compiledCode}
               requiredModules={requiredModules}
               runId={runId}
-              liveUpdate={liveUpdate}
               restartId={restartId}
               preserveState={preserveState}
               paused={paused}

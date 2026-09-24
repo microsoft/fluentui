@@ -16,13 +16,6 @@ export const usePreviewStyles = makeStyles({
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground1,
   },
-  pendingFrame: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    visibility: 'hidden',
-    pointerEvents: 'none',
-  },
   placeholder: {
     position: 'absolute',
     top: 0,

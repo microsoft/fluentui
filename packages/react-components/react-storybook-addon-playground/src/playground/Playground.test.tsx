@@ -108,7 +108,7 @@ async function flushEffects(): Promise<void> {
 
 async function runDebouncedCompile(): Promise<void> {
   await act(async () => {
-    jest.advanceTimersByTime(400);
+    jest.advanceTimersByTime(150);
     await Promise.resolve();
   });
 }
@@ -144,7 +144,7 @@ describe('Playground compile transaction', () => {
     expect(compileMock).toHaveBeenCalledTimes(1);
   });
 
-  it('reports a retained preview after a replacement runtime fails', async () => {
+  it('reports a retained preview after a live update fails', async () => {
     compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
     render(<Playground initialCode="export default First;" manifest={manifest} />);
     await flushEffects();
@@ -167,10 +167,6 @@ describe('Playground compile transaction', () => {
   it('clears a runtime error when a theme-only update recovers without compiling again', async () => {
     compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
     render(<Playground initialCode="export default First;" manifest={manifest} />);
-    await flushEffects();
-    await runDebouncedCompile();
-    fireEvent.click(screen.getByRole('combobox', { name: 'Preview mode' }));
-    fireEvent.click(screen.getByRole('option', { name: 'Live update' }));
     await flushEffects();
     await runDebouncedCompile();
     act(() =>
@@ -306,28 +302,26 @@ describe('Playground compile transaction', () => {
     expect(screen.getByRole('alert').textContent).toContain('CSS syntax error');
   });
 
-  it('keeps isolated mode as the default and opts into a shorter live-update debounce', async () => {
+  it('always uses the live-update debounce with no mode picker and restarts only on request', async () => {
     compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
     render(<Playground initialCode="export default First;" manifest={manifest} />);
     await flushEffects();
-    await runDebouncedCompile();
-    expect(mockPreviewProps.liveUpdate).toBe(false);
-
-    fireEvent.click(screen.getByRole('combobox', { name: 'Preview mode' }));
-    fireEvent.click(screen.getByRole('option', { name: 'Live update' }));
-    await flushEffects();
-    expect(mockPreviewProps.liveUpdate).toBe(true);
-    expect(mockPreviewProps.restartId).toBe(1);
-    await act(async () => jest.advanceTimersByTime(150));
+    expect(screen.queryByRole('combobox', { name: 'Preview mode' })).toBeNull();
+    expect(mockPreviewProps.restartId).toBe(0);
+    await act(async () => jest.advanceTimersByTime(149));
+    expect(compileMock).not.toHaveBeenCalled();
+    await act(async () => jest.advanceTimersByTime(1));
+    expect(compileMock).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole('button', { name: 'Edit current file' }));
     await act(async () => jest.advanceTimersByTime(149));
     expect(compileMock).toHaveBeenCalledTimes(1);
     await act(async () => jest.advanceTimersByTime(1));
     expect(compileMock).toHaveBeenCalledTimes(2);
     expect(mockPreviewProps.preserveState).toBe(true);
+    expect(mockPreviewProps.restartId).toBe(0);
 
     fireEvent.click(screen.getByRole('button', { name: 'Restart preview' }));
-    expect(mockPreviewProps.restartId).toBe(2);
+    expect(mockPreviewProps.restartId).toBe(1);
     expect(mockPreviewProps.code).toBeNull();
     await flushEffects();
     await act(async () => jest.advanceTimersByTime(150));
