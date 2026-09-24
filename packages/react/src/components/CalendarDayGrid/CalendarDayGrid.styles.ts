@@ -103,6 +103,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       {
         margin: 0,
         padding: 0,
+        boxSizing: 'border-box',
         width: 28,
         height: 28,
         lineHeight: 28,
@@ -112,6 +113,9 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         cursor: 'pointer',
         position: 'relative',
         selectors: {
+          '&&': {
+            padding: 0,
+          },
           [HighContrastSelector]: {
             color: 'WindowText',
             backgroundColor: 'transparent',
