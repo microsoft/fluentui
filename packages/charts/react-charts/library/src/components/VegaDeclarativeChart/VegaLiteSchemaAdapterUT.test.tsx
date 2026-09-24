@@ -82,6 +82,19 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(points[0]).toMatchObject({ x: 1, y: 2 });
     });
 
+    it.each(['count', '__proto__'])('preserves aggregate row coercion with the %s output field', field => {
+      const points = transformData(
+        [{ x: 1 }, { x: 1 }],
+        [
+          { aggregate: [{ op: 'count', as: field }], groupby: ['x'] },
+          { calculate: `length(toString(datum)) + datum['${field}']`, as: 'y' },
+        ],
+      );
+
+      expect(points).toHaveLength(1);
+      expect(points[0]).toMatchObject({ x: 1, y: 17 });
+    });
+
     it('preserves ordinary fold, calculate and aggregate results', () => {
       const points = transformData(
         [

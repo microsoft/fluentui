@@ -301,7 +301,8 @@ function applyTransforms(
               baseRow[spec.as] = rows.length;
           }
         });
-        return baseRow;
+        // Preserve ordinary row coercion without invoking setters for data keys.
+        return { ...baseRow };
       });
     }
 
