@@ -2,13 +2,12 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES2022", "dom"],
     "declaration": true,
     "declarationDir": "../../../../dist/out-tsc/types",
     "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"],
-    "isolatedModules": true
+    "types": ["static-assets", "environment"]
   },
   "exclude": [
     "./src/testing/**",
