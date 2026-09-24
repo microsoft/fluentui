@@ -42,6 +42,15 @@ export interface OverflowItemEntry {
    * @default false
    */
   pinned?: boolean;
+
+  /**
+   * Optional pre-declared size hint in pixels along the configured overflow axis.
+   * When provided, the flat overflow manager will use this value instead of reading
+   * `offsetWidth`/`offsetHeight` from the DOM, eliminating a layout read on first
+   * compute. Only set this when the item has a known, stable size (e.g. fixed-width
+   * tab buttons). An incorrect hint will produce a wrong overflow cutoff.
+   */
+  sizeHint?: number;
 }
 
 /**
