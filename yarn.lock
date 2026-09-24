@@ -2153,7 +2153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/core@npm:1.9.2":
+"@emnapi/core@npm:1.9.2, @emnapi/core@npm:^1.1.0, @emnapi/core@npm:^1.4.3":
   version: 1.9.2
   resolution: "@emnapi/core@npm:1.9.2"
   dependencies:
@@ -2163,40 +2163,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/core@npm:^1.1.0, @emnapi/core@npm:^1.4.3":
-  version: 1.6.0
-  resolution: "@emnapi/core@npm:1.6.0"
-  dependencies:
-    "@emnapi/wasi-threads": "npm:1.1.0"
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/40e384f39104a9f8260e671c0110f8618961afc564afb2e626af79175717a8b5e2d8b2ae3d30194d318a71247e0fc833601666233adfeb244c46cadc06c58a51
-  languageName: node
-  linkType: hard
-
-"@emnapi/runtime@npm:1.9.2":
+"@emnapi/runtime@npm:1.9.2, @emnapi/runtime@npm:^1.1.0, @emnapi/runtime@npm:^1.4.3":
   version: 1.9.2
   resolution: "@emnapi/runtime@npm:1.9.2"
   dependencies:
     tslib: "npm:^2.4.0"
   checksum: 10c0/61c3a59e0c36784558b8d58eb02bd04815aa5fb0dbfbaf84d1b3050a78aa0cc63ea129ae806bd1e48062bfeb7fc36eb0e5431740d62f64ea51bdf426404b8caa
-  languageName: node
-  linkType: hard
-
-"@emnapi/runtime@npm:^1.1.0, @emnapi/runtime@npm:^1.4.3":
-  version: 1.6.0
-  resolution: "@emnapi/runtime@npm:1.6.0"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/e3d2452a8fb83bb59fe60dfcf4cff99f9680c13c07dff8ad28639ccc8790151841ef626a67014bde132939bad73dfacc440ade8c3db2ab12693ea9c8ba4d37fb
-  languageName: node
-  linkType: hard
-
-"@emnapi/wasi-threads@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@emnapi/wasi-threads@npm:1.1.0"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/e6d54bf2b1e64cdd83d2916411e44e579b6ae35d5def0dea61a3c452d9921373044dff32a8b8473ae60c80692bdc39323e98b96a3f3d87ba6886b24dd0ef7ca1
   languageName: node
   linkType: hard
 
@@ -6932,21 +6904,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.19.2":
-  version: 1.19.2
-  resolution: "@griffel/core@npm:1.19.2"
-  dependencies:
-    "@emotion/hash": "npm:^0.9.0"
-    "@griffel/style-types": "npm:^1.3.0"
-    csstype: "npm:^3.1.3"
-    rtl-css-js: "npm:^1.16.1"
-    stylis: "npm:^4.2.0"
-    tslib: "npm:^2.1.0"
-  checksum: 10c0/6e086ba2132e130360e14d1ab0493f6b7e34e3dba82c928a0a438ac7f48628555845ba5366a8dfaaf163ee67b3bca1776906347d02dc0ab32c03ef85bd113ba2
-  languageName: node
-  linkType: hard
-
-"@griffel/core@npm:^1.21.3":
+"@griffel/core@npm:^1.16.0, @griffel/core@npm:^1.21.3":
   version: 1.21.3
   resolution: "@griffel/core@npm:1.21.3"
   dependencies:
@@ -6983,19 +6941,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@griffel/react@npm:^1.5.32":
-  version: 1.5.32
-  resolution: "@griffel/react@npm:1.5.32"
-  dependencies:
-    "@griffel/core": "npm:^1.19.2"
-    tslib: "npm:^2.1.0"
-  peerDependencies:
-    react: ">=16.8.0 <20.0.0"
-  checksum: 10c0/ae451721830808dc9868d496869d38096905554f13c8a3cbc7bbbe6c235fc23b6ef39a294ee005b77a5af687634672899eb8855c302aa1dd6f08bc24e1072c60
-  languageName: node
-  linkType: hard
-
-"@griffel/react@npm:^1.6.1":
+"@griffel/react@npm:^1.5.32, @griffel/react@npm:^1.6.1":
   version: 1.7.7
   resolution: "@griffel/react@npm:1.7.7"
   dependencies:
@@ -7014,15 +6960,6 @@ __metadata:
     "@griffel/core": "npm:^1.16.0"
     tslib: "npm:^2.1.0"
   checksum: 10c0/a1cdc46d7a5c9e151744389b5552439bb2bcfa9def81f45d0e92e3c2d6e984df641c8e878cc6022b993ac81632ea505d00c5e72369c0fcb91b10312ceb6c7f7f
-  languageName: node
-  linkType: hard
-
-"@griffel/style-types@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@griffel/style-types@npm:1.3.0"
-  dependencies:
-    csstype: "npm:^3.1.3"
-  checksum: 10c0/94c63ed89398e154f5ced769b25ff7e14471c991672f32f69ac27daa463f880650cb2d7d5ef7e00811e3cd3a6cd2694b9ef861d9bc294cf72838e31761d72ef8
   languageName: node
   linkType: hard
 
@@ -10374,16 +10311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tybys/wasm-util@npm:^0.10.0":
-  version: 0.10.1
-  resolution: "@tybys/wasm-util@npm:0.10.1"
-  dependencies:
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/b255094f293794c6d2289300c5fbcafbb5532a3aed3a5ffd2f8dc1828e639b88d75f6a376dd8f94347a44813fd7a7149d8463477a9a49525c8b2dcaa38c2d1e8
-  languageName: node
-  linkType: hard
-
-"@tybys/wasm-util@npm:^0.10.3":
+"@tybys/wasm-util@npm:^0.10.0, @tybys/wasm-util@npm:^0.10.3":
   version: 0.10.4
   resolution: "@tybys/wasm-util@npm:0.10.4"
   dependencies:
@@ -15884,14 +15812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2, csstype@npm:^3.1.3":
-  version: 3.1.3
-  resolution: "csstype@npm:3.1.3"
-  checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
-  languageName: node
-  linkType: hard
-
-"csstype@npm:^3.2.3":
+"csstype@npm:^3.0.2, csstype@npm:^3.1.3, csstype@npm:^3.2.3":
   version: 3.2.3
   resolution: "csstype@npm:3.2.3"
   checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
@@ -30546,14 +30467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylis@npm:^4.2.0":
-  version: 4.3.0
-  resolution: "stylis@npm:4.3.0"
-  checksum: 10c0/5a9f7e0cf2a15591efaacc1c6416a8785d2b57522cd38bb8e0a81a03c23d3bea2363659fa5f9d486a73d1b6ebaf1d32826ce1c1974c95afdb5b495d98acb25c0
-  languageName: node
-  linkType: hard
-
-"stylis@npm:^4.4.0":
+"stylis@npm:^4.2.0, stylis@npm:^4.4.0":
   version: 4.4.0
   resolution: "stylis@npm:4.4.0"
   checksum: 10c0/259be096d90dfbfe903c8656dcb7591e52a421e577e950ef42ebd9ca02f387623a1165dd08761492fb6e92a7a562d62a53a694a10b0a2f6dcd7a0db107b4bf55
