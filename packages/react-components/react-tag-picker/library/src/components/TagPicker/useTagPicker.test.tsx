@@ -11,11 +11,12 @@ const renderRoot = (props: Partial<TagPickerProps> = {}) =>
   renderHook(() => useTagPicker_unstable({ children: [trigger, popover], ...props } as TagPickerProps));
 
 describe('useTagPicker_unstable', () => {
-  it('defaults size to "medium", inline to false, and noPopover to false', () => {
+  it('defaults size to "medium", inline to false, noPopover to false, and selectionMode to "multiselect"', () => {
     const { result } = renderRoot();
     expect(result.current.size).toBe('medium');
     expect(result.current.inline).toBe(false);
     expect(result.current.noPopover).toBe(false);
+    expect(result.current.selectionMode).toBe('multiselect');
   });
 
   it('defaults appearance to "outline"', () => {
@@ -32,6 +33,11 @@ describe('useTagPicker_unstable', () => {
   it('honors an explicit appearance prop', () => {
     const { result } = renderRoot({ appearance: 'filled-darker' });
     expect(result.current.appearance).toBe('filled-darker');
+  });
+
+  it('honors an explicit selectionMode prop', () => {
+    const { result } = renderRoot({ selectionMode: 'single' });
+    expect(result.current.selectionMode).toBe('single');
   });
 
   it('generates a non-empty popoverId', () => {

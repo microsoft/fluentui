@@ -22,6 +22,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
+import { useTabsterMoveFocusSelection } from '../../utils/useTabsterMoveFocusSelection';
 
 /**
  * Create the base state required to render TagPickerInput, without design-only props.
@@ -55,6 +56,7 @@ export const useTagPickerInputBase_unstable = (
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const contextValue = useTagPickerContext_unstable(ctx => ctx.value);
+  const multiselect = useTagPickerContext_unstable(ctx => (ctx.selectionMode ?? 'multiselect') === 'multiselect');
 
   useIsomorphicLayoutEffect(() => {
     if (!triggerRef.current) {
@@ -118,7 +120,7 @@ export const useTagPickerInputBase_unstable = (
         setHasFocus,
         setOpen,
         setValue,
-        multiselect: true,
+        multiselect,
         value: fieldProps.value,
       },
     },
@@ -162,6 +164,7 @@ export const useTagPickerInput_unstable = (
   });
 
   const baseState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
+  const tabsterMoveFocusSelectionRef = useTabsterMoveFocusSelection();
   const open = useTagPickerContext_unstable(ctx => ctx.open);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
@@ -171,6 +174,7 @@ export const useTagPickerInput_unstable = (
     root: {
       ...useTabsterEscapeIgnore(baseState.root, open),
       ...baseState.root,
+      ref: useMergedRefs(baseState.root.ref, tabsterMoveFocusSelectionRef),
     },
   };
 };
