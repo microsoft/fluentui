@@ -6,6 +6,8 @@
 
 - **Inform the user about the [deletion interaction](https://github.com/microsoft/fluentui/issues/31165) of tags when pressing Backspace:** When `TagPickerInput` is focused, pressing the Backspace key will remove the last tag. This behavior should be communicated to the user to avoid confusion.
 
+- **Use `aria-roledescription` on `TagPickerGroup` to provide additional context:** This attribute helps screen readers to understand the role of the element, making it more accessible and inclusive. By default `TagPickerGroup` has a role of `toolbar` which may not be clear to all users, so providing additional context can help.
+
 ### Don't
 
 - **Don't use `InteractionTag` with `TagPicker`** as it is not supported at the moment. This combination may lead to unexpected behavior.
