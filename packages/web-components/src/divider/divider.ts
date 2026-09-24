@@ -23,9 +23,11 @@ export class Divider extends BaseDivider {
 
   /** @internal */
   public handleSlotChange(): void {
-    const hasContent = this.defaultSlot.assignedNodes().some(
-      node => node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
-    );
+    const hasContent = this.defaultSlot
+      .assignedNodes()
+      .some(
+        node => node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
+      );
     toggleState(this.elementInternals, 'empty', !hasContent);
   }
 
