@@ -173,7 +173,7 @@ export interface ColumnWidthState {
   width: number;
   minWidth: number;
   idealWidth: number;
-  padding: number;
+  padding?: number;
 }
 
 export type ColumnSizingTableProps = TableProps;
@@ -219,6 +219,28 @@ export type UseTableColumnSizingParams = {
     e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
     data: { columnId: TableColumnId; width: number },
   ) => void;
+
+  /**
+   * Allows for a container size to be adjusted by a number of pixels, to make
+   * sure the columns don't overflow the table.
+   * By default, this value is calculated internally based on other props, but can be overriden.
+   */
   containerWidthOffset?: number;
+
+  /**
+   * If true, columns will be auto-fitted to the container width.
+   * @default true
+   * */
   autoFitColumns?: boolean;
+
+  /**
+   * In pixels. Default padding value used when calculating the total width of the columns.
+   * This is used when adjusting the column widths to fit the container.
+   *
+   * Change this value to total horizontal padding of your cells when you have
+   * custom padding set on the cells or set to 0 if the cells have box-sizing: border-box.
+   *
+   * Specify this value in columnSizingOptions for per-column padding.
+   * */
+  defaultColumnPadding?: number;
 };
