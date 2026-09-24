@@ -100,4 +100,13 @@ describe('FluentProvider (node)', () => {
     `);
     expect(html.match(/<style/g)).toHaveLength(1);
   });
+
+  it('normalizes NUL characters in server-rendered theme values', () => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={{ fontFamilyBase: '"font\0family"', colorBrandBackground: 'blue' }} />,
+    );
+
+    expect(html).toContain('--fontFamilyBase: "font\uFFFDfamily"; --colorBrandBackground: blue;');
+    expect(html).not.toContain('\0');
+  });
 });

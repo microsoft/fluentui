@@ -7,12 +7,27 @@ const CSS_ESCAPE_MAP = {
   '{': '\\7B ',
   '}': '\\7D ',
 };
-const THEME_TOKEN_NAME_PATTERN =
-  /^(?:[-_a-z0-9\u0080-\uFFFF]|\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^0-9a-f\n\r\f]))+$/i;
 const NAME_CHARACTER_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]$/i;
 const ESCAPE_AT_START_PATTERN = /^\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^\n\r\f])/i;
 const URL_FUNCTION_PATTERN =
   /^(?:u|\\(?:u|0{0,4}[57]5(?:\r\n|[ \t\n\r\f])?))(?:r|\\(?:r|0{0,4}[57]2(?:\r\n|[ \t\n\r\f])?))(?:l|\\(?:l|0{0,4}[46]c(?:\r\n|[ \t\n\r\f])?))$/i;
+
+function isValidThemeTokenName(name: string): boolean {
+  for (let i = 0; i < name.length; i++) {
+    if (NAME_CHARACTER_PATTERN.test(name[i])) {
+      continue;
+    }
+
+    // A CSS escape contains at most a backslash, six hex digits, and a CRLF terminator.
+    const escape = name.slice(i, i + 9).match(ESCAPE_AT_START_PATTERN)?.[0];
+    if (!escape) {
+      return false;
+    }
+    i += escape.length - 1;
+  }
+
+  return name.length > 0;
+}
 
 /**
  * Escapes characters that could break out of a <style> tag during SSR.
@@ -31,6 +46,8 @@ function escapeForStyleTag(value: string): string {
 }
 
 function containThemeTokenValue(value: string): string {
+  // CSS preprocessing replaces NUL before tokenization, including in identifiers.
+  value = value.replace(/\0/g, '\uFFFD');
   const result = value.split('');
   const blocks: string[] = [];
   const blockIndexes: Record<string, number[]> = { ')': [], ']': [], '}': [] };
@@ -180,7 +197,7 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
       const tokenName = String(cssVar);
       const tokenValue: unknown = theme[cssVar];
 
-      if (!THEME_TOKEN_NAME_PATTERN.test(tokenName)) {
+      if (!isValidThemeTokenName(tokenName)) {
         warnInvalidThemeToken(tokenName, 'name');
         return cssVarRule;
       }

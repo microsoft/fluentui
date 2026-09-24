@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: structurally validate serialized theme tokens",
+  "comment": "fix: structurally validate serialized theme tokens, normalize CSS NUL characters, and scan escaped token names without backtracking",
   "packageName": "@fluentui/react-provider",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"

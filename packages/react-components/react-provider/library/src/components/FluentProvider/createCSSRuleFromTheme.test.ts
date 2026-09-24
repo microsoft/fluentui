@@ -166,13 +166,53 @@ describe('createCSSRuleFromTheme', () => {
     expect(themeToTokensObject(escapedAngleTheme)['custom\\<token']).toBe('var(--custom\\<token)');
   });
 
-  it.each(['', 'token name', 'token:name', 'token;name', 'token\\', 'token\\\nname'])(
-    'omits unsupported custom token name %j',
-    tokenName => {
-      const result = createCSSRuleFromTheme('.selector', { [tokenName]: 'red' } as PartialTheme);
+  it.each([
+    String.raw`custom\31\32`,
+    String.raw`custom\000031`,
+    String.raw`custom\000031a`,
+    'custom\\000031 token',
+    'custom\\000031\r\ntoken',
+    'custom\\31\ttoken',
+    'custom\\31\ftoken',
+    String.raw`custom\\token`,
+  ])('preserves complete CSS escapes in custom token name %j', tokenName => {
+    expect(createCSSRuleFromTheme('.selector', { [tokenName]: 'red' } as PartialTheme)).toBe(
+      `.selector { --${tokenName}: red;  }`,
+    );
+    expect(logWarnSpy).not.toHaveBeenCalled();
+  });
 
-      expect(result).toBe('.selector {  }');
-      expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining(JSON.stringify(tokenName)));
+  it.each([
+    '',
+    'token name',
+    'token:name',
+    'token;name',
+    'token\\',
+    'token\\\nname',
+    'token\\\rname',
+    'token\\\fname',
+    'token\n',
+    'token\\000031  name',
+    'token\\000031a name',
+  ])('omits unsupported custom token name %j', tokenName => {
+    const result = createCSSRuleFromTheme('.selector', { [tokenName]: 'red' } as PartialTheme);
+
+    expect(result).toBe('.selector {  }');
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining(JSON.stringify(tokenName)));
+  });
+
+  it.each(['\0url(image.png)', 'u\0rl(image.png)', 'url\0(image.png)', '"font\0family"', '\0'])(
+    'normalizes NUL characters using CSS preprocessing for %j',
+    value => {
+      const normalizedValue = value.replace(/\0/g, '\uFFFD');
+
+      expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: value })).toBe(
+        `.selector { --fontFamilyBase: ${normalizedValue};  }`,
+      );
+      expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: normalizedValue })).toBe(
+        `.selector { --fontFamilyBase: ${normalizedValue};  }`,
+      );
+      expect(logWarnSpy).not.toHaveBeenCalled();
     },
   );
 
