@@ -1,4 +1,5 @@
-import { attr } from '@microsoft/fast-element';
+import { attr, observable } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import { DividerAlignContent, DividerAppearance } from './divider.options.js';
 import { BaseDivider } from './divider.base.js';
 
@@ -11,6 +12,23 @@ import { BaseDivider } from './divider.base.js';
  * @public
  */
 export class Divider extends BaseDivider {
+  /** @internal */
+  @observable
+  public defaultSlot!: HTMLSlotElement;
+
+  /** @internal */
+  public defaultSlotChanged(): void {
+    this.handleSlotChange();
+  }
+
+  /** @internal */
+  public handleSlotChange(): void {
+    const hasContent = this.defaultSlot.assignedNodes().some(
+      node => node.nodeType === Node.ELEMENT_NODE || (node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim()),
+    );
+    toggleState(this.elementInternals, 'empty', !hasContent);
+  }
+
   /**
    * @public
    * @remarks
