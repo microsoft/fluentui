@@ -21,6 +21,7 @@ import {
   useEventCallback,
   slot,
   getReactElementRef,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 import type { TooltipBaseProps, TooltipBaseState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -82,9 +83,11 @@ export const useTooltipBase_unstable = (props: TooltipBaseProps): TooltipBaseSta
   state.content.id = useId('tooltip-', state.content.id);
 
   const resolvedPositioning = resolvePositioningShorthand(state.positioning);
+  const isVirtualTarget = resolvedPositioning.target !== undefined && !isHTMLElement(resolvedPositioning.target);
   const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => {
     // Portaled tooltips can escape the trigger's clipping ancestors while the trigger is still visible.
-    setHidden(event.detail.referenceHidden);
+    // Virtual targets can be reported as hidden based on synthetic geometry.
+    setHidden(!isVirtualTarget && event.detail.referenceHidden);
     resolvedPositioning.onPositioningEnd?.(event);
   });
 
