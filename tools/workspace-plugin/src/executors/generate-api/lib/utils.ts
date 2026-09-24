@@ -154,12 +154,10 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
 
     const indexDtsSuffix = '/index.d.ts';
     if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
-      verboseLog(
+      throw new Error(
         `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${indexDtsSuffix}". ` +
-          `Skipping export subpath expansion.`,
-        'warn',
+          `Failed to resolve declaration base for export subpaths.`,
       );
-      return null;
     }
 
     return resolvedPrimaryEntry.slice(0, -indexDtsSuffix.length);
