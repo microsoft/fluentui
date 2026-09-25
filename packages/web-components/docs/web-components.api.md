@@ -4008,18 +4008,8 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 
 // @public
 class Text_2 extends FASTElement {
-    align?: TextAlign;
-    block: boolean;
     // @internal
     elementInternals: ElementInternals;
-    font?: TextFont;
-    italic: boolean;
-    nowrap: boolean;
-    size?: TextSize;
-    strikethrough: boolean;
-    truncate: boolean;
-    underline: boolean;
-    weight?: TextWeight;
 }
 export { Text_2 as Text }
 
