@@ -84,7 +84,9 @@
     "disallowedChangeTypes": [
       "major",
       "minor"
-    ],
+    ]
+  },
+  "publishConfig": {
     "tag": "alpha"
   }
 }

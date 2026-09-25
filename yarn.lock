@@ -2845,7 +2845,7 @@ __metadata:
     "@microsoft/api-extractor": "npm:7.51.0"
     "@microsoft/api-extractor-model": "npm:7.31.2"
     "@microsoft/eslint-plugin-sdl": "npm:1.0.1"
-    "@microsoft/esrp-npm-release": "npm:^0.1.3"
+    "@microsoft/esrp-npm-release": "npm:^0.1.4"
     "@microsoft/fast-build": "npm:0.9.0"
     "@microsoft/fast-element": "npm:3.0.0"
     "@microsoft/fast-test-harness": "npm:0.4.0"
@@ -7807,12 +7807,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/esrp-npm-release@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@microsoft/esrp-npm-release@npm:0.1.3"
+"@microsoft/esrp-npm-release@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@microsoft/esrp-npm-release@npm:0.1.4"
   bin:
     esrp-npm-release: bin/esrp-npm-release.js
-  checksum: 10c0/7502d7a71d3b09e95f2f2435f90b474566cd1fe5b8ffc54dd3c6b17d82cba2c2b84277803aeb96cb3efabd2b079a087bc3ee840eb9a678d2044f05d9cded5e7a
+  checksum: 10c0/337fac00720eeb83e62992b1dab3a2221360dfa2d7292f8e6e0c5e02e33f27629d57ffcb205a79bca9475e00d40c50fb3b4f3558b5f331cdd9abf8acec8025b3
   languageName: node
   linkType: hard
 
