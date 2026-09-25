@@ -36,16 +36,25 @@ const onRenderHeader = (props?: IGroupHeaderProps): JSXElement | null => {
       props.onToggleCollapse!(props.group!);
     };
     return (
-      <div className={classNames.header}>
-        This is a custom header for {props.group!.name}
-        &nbsp; (
-        <Link
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={toggleCollapse}
-        >
-          {props.group!.isCollapsed ? 'Expand' : 'Collapse'}
-        </Link>
-        )
+      <div
+        className={classNames.header}
+        role="row"
+        aria-level={props.ariaLevel}
+        aria-setsize={props.ariaSetSize}
+        aria-posinset={props.ariaPosInSet}
+        aria-expanded={!props.group!.isCollapsed}
+      >
+        <div role="gridcell">
+          This is a custom header for {props.group!.name}
+          &nbsp; (
+          <Link
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={toggleCollapse}
+          >
+            {props.group!.isCollapsed ? 'Expand' : 'Collapse'}
+          </Link>
+          )
+        </div>
       </div>
     );
   }
@@ -64,7 +73,11 @@ const onRenderCell = (nestingDepth?: number, item?: IExampleItem, itemIndex?: nu
 };
 
 const onRenderFooter = (props?: IGroupFooterProps): JSXElement | null => {
-  return props ? <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div> : null;
+  return props ? (
+    <div className={classNames.footer} role="row">
+      <div role="gridcell">This is a custom footer for {props.group!.name}</div>
+    </div>
+  ) : null;
 };
 
 const groupedListProps = {
