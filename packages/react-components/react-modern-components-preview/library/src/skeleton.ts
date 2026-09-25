@@ -5,8 +5,8 @@ export {
   useSkeletonContextValues,
   skeletonClassNames,
   useSkeletonStyles,
-} from './components/Skeleton/Skeleton/index';
-export type { SkeletonSlots, SkeletonProps, SkeletonState } from './components/Skeleton/Skeleton/index';
+} from './components/Skeleton/index';
+export type { SkeletonSlots, SkeletonProps, SkeletonState } from './components/Skeleton/index';
 
 export {
   SkeletonItem,
@@ -14,5 +14,5 @@ export {
   useSkeletonItem,
   skeletonItemClassNames,
   useSkeletonItemStyles,
-} from './components/Skeleton/SkeletonItem/index';
-export type { SkeletonItemSlots, SkeletonItemProps, SkeletonItemState } from './components/Skeleton/SkeletonItem/index';
+} from './components/Skeleton/index';
+export type { SkeletonItemSlots, SkeletonItemProps, SkeletonItemState } from './components/Skeleton/index';

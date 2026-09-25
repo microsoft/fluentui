@@ -2,7 +2,7 @@ import type {
   PopoverSurfaceProps as PopoverSurfaceBaseProps,
   PopoverSurfaceState as PopoverSurfaceBaseState,
 } from '@fluentui/react-headless-components-preview/popover';
-import type { PopoverProps, PopoverSize } from '../Popover/Popover.types';
+import type { PopoverProps, PopoverSize } from '../Popover.types';
 
 export type { PopoverSurfaceSlots } from '@fluentui/react-headless-components-preview/popover';
 

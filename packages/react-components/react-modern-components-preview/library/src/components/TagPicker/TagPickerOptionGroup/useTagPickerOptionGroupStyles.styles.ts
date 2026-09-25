@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerOptionGroupSlots, TagPickerOptionGroupState } from './TagPickerOptionGroup.types';
-import styles from './TagPickerOptionGroup.module.css';
+import * as styles from './TagPickerOptionGroup.module.css';
 
 export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroupSlots> = {
   root: 'fui-TagPickerOptionGroup',

@@ -1,5 +1,5 @@
-export { Radio, radioClassNames, renderRadio, useRadio, useRadioStyles } from './components/RadioGroup/Radio/index';
-export type { RadioProps, RadioSlots, RadioState } from './components/RadioGroup/Radio/index';
+export { Radio, radioClassNames, renderRadio, useRadio, useRadioStyles } from './components/RadioGroup/index';
+export type { RadioProps, RadioSlots, RadioState } from './components/RadioGroup/index';
 export {
   RadioGroup,
   radioGroupClassNames,
@@ -7,5 +7,5 @@ export {
   useRadioGroup,
   useRadioGroupContextValues,
   useRadioGroupStyles,
-} from './components/RadioGroup/RadioGroup/index';
-export type { RadioGroupProps, RadioGroupSlots, RadioGroupState } from './components/RadioGroup/RadioGroup/index';
+} from './components/RadioGroup/index';
+export type { RadioGroupProps, RadioGroupSlots, RadioGroupState } from './components/RadioGroup/index';

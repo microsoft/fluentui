@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles } from '../../Button/useButtonStyles.styles';
 import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
-import styles from './BreadcrumbButton.module.css';
+import * as styles from './BreadcrumbButton.module.css';
 
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
   root: 'fui-BreadcrumbButton',

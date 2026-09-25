@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { NavDrawerProps } from './NavDrawer.types';
 import { renderNavDrawer } from './renderNavDrawer';
 import { useNavDrawer } from './useNavDrawer';
-import { useNavContextValues } from '../Nav/useNav';
+import { useNavContextValues } from '../useNav';
 import { useNavDrawerStyles } from './useNavDrawerStyles.styles';
 
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef((props, ref) => {

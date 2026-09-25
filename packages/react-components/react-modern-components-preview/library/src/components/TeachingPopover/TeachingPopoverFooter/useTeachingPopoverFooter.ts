@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { mergeCallbacks, slot } from '@fluentui/react-utilities';
 import { useTeachingPopoverFooter as useTeachingPopoverFooterBase } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { Button } from '../../Button/Button';
-import { usePopoverAppearanceContext } from '../../Popover/Popover/popoverAppearanceContext';
+import { usePopoverAppearanceContext } from '../../Popover/popoverAppearanceContext';
 import type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
 
 export const useTeachingPopoverFooter = (

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
-import styles from './MenuSplitGroup.module.css';
+import * as styles from './MenuSplitGroup.module.css';
 
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = { root: 'fui-MenuSplitGroup' };
 export const menuSplitGroupMultilineAttr = 'data-multiline';

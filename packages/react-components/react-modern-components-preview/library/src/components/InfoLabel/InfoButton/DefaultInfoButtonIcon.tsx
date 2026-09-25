@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './InfoButton.module.css';
+import * as styles from './InfoButton.module.css';
 
 export const DefaultInfoButtonIcon = (): React.ReactElement => (
   <svg aria-hidden="true" className={styles.icon} focusable="false" viewBox="0 0 20 20">

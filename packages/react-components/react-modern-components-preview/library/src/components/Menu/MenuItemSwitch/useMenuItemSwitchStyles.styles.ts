@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { styleMenuItemSlots } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuItemState } from '../MenuItem/MenuItem.types';
-import menuItemStyles from '../MenuItem/MenuItem.module.css';
+import * as menuItemStyles from '../MenuItem/MenuItem.module.css';
 import type { MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
-import styles from './MenuItemSwitch.module.css';
+import * as styles from './MenuItemSwitch.module.css';
 
 export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
   root: 'fui-MenuItemSwitch',

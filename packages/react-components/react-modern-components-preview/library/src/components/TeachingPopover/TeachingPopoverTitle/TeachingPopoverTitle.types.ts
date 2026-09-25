@@ -2,7 +2,7 @@ import type {
   TeachingPopoverTitleProps as TeachingPopoverTitleBaseProps,
   TeachingPopoverTitleState as TeachingPopoverTitleBaseState,
 } from '@fluentui/react-headless-components-preview/teaching-popover';
-import type { PopoverState } from '../../Popover/Popover/Popover.types';
+import type { PopoverState } from '../../Popover/Popover.types';
 export type { TeachingPopoverTitleSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 export type TeachingPopoverTitleProps = TeachingPopoverTitleBaseProps;

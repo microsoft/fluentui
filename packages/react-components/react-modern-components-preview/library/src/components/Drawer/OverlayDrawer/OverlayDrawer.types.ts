@@ -4,8 +4,8 @@ import type {
   OverlayDrawerState as OverlayDrawerBaseState,
 } from '@fluentui/react-headless-components-preview/drawer';
 import type { ComponentState, Slot } from '@fluentui/react-utilities';
-import type { DialogProps } from '../../Dialog/Dialog/Dialog.types';
-import type { DrawerInternalSurfaceMotionSlots, DrawerSize, DrawerSurfaceMotionSlots } from '../Drawer/Drawer.types';
+import type { DialogProps } from '../../Dialog/Dialog.types';
+import type { DrawerInternalSurfaceMotionSlots, DrawerSize, DrawerSurfaceMotionSlots } from '../Drawer.types';
 
 export type OverlayDrawerInternalSlots = OverlayDrawerSlots &
   DrawerInternalSurfaceMotionSlots & {

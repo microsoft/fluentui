@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ComboboxSlots, ComboboxState } from './Combobox.types';
-import styles from './Combobox.module.css';
+import * as styles from './Combobox.module.css';
 
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',

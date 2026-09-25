@@ -5,7 +5,7 @@ import type {
   TeachingPopoverFooterState as TeachingPopoverFooterBaseState,
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import type { Button } from '../../Button/Button';
-import type { PopoverState } from '../../Popover/Popover/Popover.types';
+import type { PopoverState } from '../../Popover/Popover.types';
 
 export type TeachingPopoverFooterSlots = {
   root: NonNullable<Slot<'div'>>;

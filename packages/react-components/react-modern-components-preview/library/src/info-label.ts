@@ -4,13 +4,13 @@ export {
   renderInfoLabel,
   useInfoLabel,
   useInfoLabelStyles,
-} from './components/InfoLabel/InfoLabel/index';
-export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from './components/InfoLabel/InfoLabel/index';
+} from './components/InfoLabel/index';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from './components/InfoLabel/index';
 export {
   InfoButton,
   infoButtonClassNames,
   renderInfoButton,
   useInfoButton,
   useInfoButtonStyles,
-} from './components/InfoLabel/InfoButton/index';
-export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from './components/InfoLabel/InfoButton/index';
+} from './components/InfoLabel/index';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from './components/InfoLabel/index';

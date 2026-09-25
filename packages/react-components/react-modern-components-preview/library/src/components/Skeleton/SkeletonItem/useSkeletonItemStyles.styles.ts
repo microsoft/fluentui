@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SkeletonItemSlots, SkeletonItemState } from './SkeletonItem.types';
-import styles from './SkeletonItem.module.css';
+import * as styles from './SkeletonItem.module.css';
 
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
   root: 'fui-SkeletonItem',

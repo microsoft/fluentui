@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { usePopoverSurfaceStyles } from '../../Popover/PopoverSurface/usePopoverSurfaceStyles.styles';
 import type { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
-import styles from './TeachingPopoverSurface.module.css';
+import * as styles from './TeachingPopoverSurface.module.css';
 
 export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSurfaceSlots> = {
   root: 'fui-TeachingPopoverSurface',

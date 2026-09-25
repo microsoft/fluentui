@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { EmptySwatchSlots, EmptySwatchState } from './EmptySwatch.types';
-import styles from './EmptySwatch.module.css';
+import * as styles from './EmptySwatch.module.css';
 
 export const emptySwatchClassNames: SlotClassNames<EmptySwatchSlots> = {
   root: 'fui-EmptySwatch',

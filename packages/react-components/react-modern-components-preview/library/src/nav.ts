@@ -7,7 +7,7 @@ export {
   useNavContext,
   useNavContextValues,
   useNavStyles,
-} from './components/Nav/Nav/index';
+} from './components/Nav/index';
 export type {
   NavContextValue,
   NavContextValues,
@@ -19,16 +19,10 @@ export type {
   NavState,
   OnNavItemSelectData,
   RegisterNavItemEventHandler,
-} from './components/Nav/Nav/index';
+} from './components/Nav/index';
 
-export {
-  NavItem,
-  navItemClassNames,
-  renderNavItem,
-  useNavItem,
-  useNavItemStyles,
-} from './components/Nav/NavItem/index';
-export type { NavItemProps, NavItemSlots, NavItemState } from './components/Nav/NavItem/index';
+export { NavItem, navItemClassNames, renderNavItem, useNavItem, useNavItemStyles } from './components/Nav/index';
+export type { NavItemProps, NavItemSlots, NavItemState } from './components/Nav/index';
 
 export {
   NavSubItem,
@@ -36,8 +30,8 @@ export {
   renderNavSubItem,
   useNavSubItem,
   useNavSubItemStyles,
-} from './components/Nav/NavSubItem/index';
-export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './components/Nav/NavSubItem/index';
+} from './components/Nav/index';
+export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './components/Nav/index';
 
 export {
   NavCategory,
@@ -46,13 +40,13 @@ export {
   useNavCategory,
   useNavCategoryContext,
   useNavCategoryContextValues,
-} from './components/Nav/NavCategory/index';
+} from './components/Nav/index';
 export type {
   NavCategoryContextValue,
   NavCategoryContextValues,
   NavCategoryProps,
   NavCategoryState,
-} from './components/Nav/NavCategory/index';
+} from './components/Nav/index';
 
 export {
   NavCategoryItem,
@@ -63,14 +57,14 @@ export {
   useNavCategoryItemContext,
   useNavCategoryItemContextValues,
   useNavCategoryItemStyles,
-} from './components/Nav/NavCategoryItem/index';
+} from './components/Nav/index';
 export type {
   NavCategoryItemContextValue,
   NavCategoryItemContextValues,
   NavCategoryItemProps,
   NavCategoryItemSlots,
   NavCategoryItemState,
-} from './components/Nav/NavCategoryItem/index';
+} from './components/Nav/index';
 
 export {
   NavSubItemGroup,
@@ -78,12 +72,8 @@ export {
   renderNavSubItemGroup,
   useNavSubItemGroup,
   useNavSubItemGroupStyles,
-} from './components/Nav/NavSubItemGroup/index';
-export type {
-  NavSubItemGroupProps,
-  NavSubItemGroupSlots,
-  NavSubItemGroupState,
-} from './components/Nav/NavSubItemGroup/index';
+} from './components/Nav/index';
+export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './components/Nav/index';
 
 export {
   NavDivider,
@@ -91,8 +81,8 @@ export {
   renderNavDivider,
   useNavDivider,
   useNavDividerStyles,
-} from './components/Nav/NavDivider/index';
-export type { NavDividerProps, NavDividerSlots, NavDividerState } from './components/Nav/NavDivider/index';
+} from './components/Nav/index';
+export type { NavDividerProps, NavDividerSlots, NavDividerState } from './components/Nav/index';
 
 export {
   NavSectionHeader,
@@ -100,12 +90,8 @@ export {
   renderNavSectionHeader,
   useNavSectionHeader,
   useNavSectionHeaderStyles,
-} from './components/Nav/NavSectionHeader/index';
-export type {
-  NavSectionHeaderProps,
-  NavSectionHeaderSlots,
-  NavSectionHeaderState,
-} from './components/Nav/NavSectionHeader/index';
+} from './components/Nav/index';
+export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderState } from './components/Nav/index';
 
 export {
   NavDrawer,
@@ -113,8 +99,8 @@ export {
   renderNavDrawer,
   useNavDrawer,
   useNavDrawerStyles,
-} from './components/Nav/NavDrawer/index';
-export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './components/Nav/NavDrawer/index';
+} from './components/Nav/index';
+export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './components/Nav/index';
 
 export {
   NavDrawerBody,
@@ -122,8 +108,8 @@ export {
   renderNavDrawerBody,
   useNavDrawerBody,
   useNavDrawerBodyStyles,
-} from './components/Nav/NavDrawerBody/index';
-export type { NavDrawerBodyProps, NavDrawerBodySlots, NavDrawerBodyState } from './components/Nav/NavDrawerBody/index';
+} from './components/Nav/index';
+export type { NavDrawerBodyProps, NavDrawerBodySlots, NavDrawerBodyState } from './components/Nav/index';
 
 export {
   NavDrawerHeader,
@@ -131,12 +117,8 @@ export {
   renderNavDrawerHeader,
   useNavDrawerHeader,
   useNavDrawerHeaderStyles,
-} from './components/Nav/NavDrawerHeader/index';
-export type {
-  NavDrawerHeaderProps,
-  NavDrawerHeaderSlots,
-  NavDrawerHeaderState,
-} from './components/Nav/NavDrawerHeader/index';
+} from './components/Nav/index';
+export type { NavDrawerHeaderProps, NavDrawerHeaderSlots, NavDrawerHeaderState } from './components/Nav/index';
 
 export {
   NavDrawerFooter,
@@ -144,9 +126,5 @@ export {
   renderNavDrawerFooter,
   useNavDrawerFooter,
   useNavDrawerFooterStyles,
-} from './components/Nav/NavDrawerFooter/index';
-export type {
-  NavDrawerFooterProps,
-  NavDrawerFooterSlots,
-  NavDrawerFooterState,
-} from './components/Nav/NavDrawerFooter/index';
+} from './components/Nav/index';
+export type { NavDrawerFooterProps, NavDrawerFooterSlots, NavDrawerFooterState } from './components/Nav/index';

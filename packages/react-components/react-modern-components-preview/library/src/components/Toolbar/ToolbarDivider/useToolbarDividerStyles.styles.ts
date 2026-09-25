@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { dividerClassNames, useDividerStyles } from '../../Divider/useDividerStyles.styles';
 import type { ToolbarDividerState } from './ToolbarDivider.types';
-import styles from './ToolbarDivider.module.css';
+import * as styles from './ToolbarDivider.module.css';
 
 export const toolbarDividerClassNames = dividerClassNames;
 

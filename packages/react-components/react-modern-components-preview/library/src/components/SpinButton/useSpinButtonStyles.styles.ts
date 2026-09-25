@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
-import styles from './SpinButton.module.css';
+import * as styles from './SpinButton.module.css';
 
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots> = {
   root: 'fui-SpinButton',

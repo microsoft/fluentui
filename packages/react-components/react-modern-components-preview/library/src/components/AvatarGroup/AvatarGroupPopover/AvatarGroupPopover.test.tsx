@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { AvatarGroup } from '../AvatarGroup/AvatarGroup';
+import { AvatarGroup } from '../AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { AvatarGroupPopover } from './AvatarGroupPopover';
 import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles.styles';

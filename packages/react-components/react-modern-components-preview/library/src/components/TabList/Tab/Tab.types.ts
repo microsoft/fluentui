@@ -2,7 +2,7 @@ import type {
   TabProps as TabBaseProps,
   TabState as TabBaseState,
 } from '@fluentui/react-headless-components-preview/tab-list';
-import type { TabListAppearance, TabListSize } from '../TabList/TabList.types';
+import type { TabListAppearance, TabListSize } from '../TabList.types';
 
 export type { TabSlots, TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 

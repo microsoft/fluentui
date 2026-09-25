@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { toggleButtonClassNames, useToggleButtonStyles } from '../../ToggleButton/useToggleButtonStyles.styles';
 import type { ToolbarToggleButtonState } from './ToolbarToggleButton.types';
-import styles from './ToolbarToggleButton.module.css';
+import * as styles from './ToolbarToggleButton.module.css';
 
 export const toolbarToggleButtonClassNames = toggleButtonClassNames;
 

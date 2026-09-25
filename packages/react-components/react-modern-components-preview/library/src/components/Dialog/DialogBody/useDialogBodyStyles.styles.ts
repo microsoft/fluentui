@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
-import styles from '../Dialog/Dialog.module.css';
+import * as styles from '../Dialog.module.css';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
   root: 'fui-DialogBody',

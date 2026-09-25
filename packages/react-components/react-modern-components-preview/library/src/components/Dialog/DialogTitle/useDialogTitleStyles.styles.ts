@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
-import styles from '../Dialog/Dialog.module.css';
+import * as styles from '../Dialog.module.css';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
   root: 'fui-DialogTitle',

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
-import navItemStyles from '../NavItem/NavItem.module.css';
-import styles from './NavSubItem.module.css';
+import * as navItemStyles from '../NavItem/NavItem.module.css';
+import * as styles from './NavSubItem.module.css';
 
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
   root: 'fui-NavSubItem',

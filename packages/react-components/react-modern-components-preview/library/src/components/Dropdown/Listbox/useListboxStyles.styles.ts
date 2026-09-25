@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ListboxSlots, ListboxState } from './Listbox.types';
-import styles from './Listbox.module.css';
+import * as styles from './Listbox.module.css';
 
 export const listboxClassNames: SlotClassNames<ListboxSlots> = {
   root: 'fui-Listbox',

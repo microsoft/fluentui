@@ -7,7 +7,7 @@ import type {
   NavCategoryItemSlots as NavCategoryItemBaseSlots,
   NavCategoryItemState as NavCategoryItemBaseState,
 } from '@fluentui/react-headless-components-preview/nav';
-import type { NavDensity } from '../Nav/Nav.types';
+import type { NavDensity } from '../Nav.types';
 
 export type { NavCategoryItemContextValue, NavCategoryItemContextValues };
 

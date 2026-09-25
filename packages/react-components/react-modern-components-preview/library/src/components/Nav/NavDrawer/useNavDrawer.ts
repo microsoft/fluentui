@@ -2,9 +2,9 @@
 
 import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
-import { Drawer } from '../../Drawer/Drawer/Drawer';
-import type { NavProps } from '../Nav/Nav.types';
-import { useNav } from '../Nav/useNav';
+import { Drawer } from '../../Drawer/Drawer';
+import type { NavProps } from '../Nav.types';
+import { useNav } from '../useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
 
 export const useNavDrawer = (props: NavDrawerProps, ref: React.Ref<HTMLElement>): NavDrawerState => {

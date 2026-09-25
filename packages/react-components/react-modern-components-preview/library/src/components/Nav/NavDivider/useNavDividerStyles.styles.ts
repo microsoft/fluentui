@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useDividerStyles } from '../../Divider/useDividerStyles.styles';
 import type { NavDividerSlots, NavDividerState } from './NavDivider.types';
-import styles from './NavDivider.module.css';
+import * as styles from './NavDivider.module.css';
 
 export const navDividerClassNames: SlotClassNames<NavDividerSlots> = {
   root: 'fui-NavDivider',

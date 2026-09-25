@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RadioSlots, RadioState } from './Radio.types';
-import styles from './Radio.module.css';
+import * as styles from './Radio.module.css';
 
 export const radioClassNames: SlotClassNames<RadioSlots> = {
   root: 'fui-Radio',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { InteractionTag } from '../InteractionTag/InteractionTag';
+import { InteractionTag } from '../InteractionTag';
 import { InteractionTagPrimary } from '../InteractionTagPrimary';
 import { InteractionTagSecondary, interactionTagSecondaryClassNames } from './';
 

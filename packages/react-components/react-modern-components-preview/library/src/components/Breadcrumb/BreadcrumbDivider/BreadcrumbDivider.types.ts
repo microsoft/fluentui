@@ -1,5 +1,5 @@
 import type { BreadcrumbDividerState as BreadcrumbDividerBaseState } from '@fluentui/react-headless-components-preview/breadcrumb';
-import type { BreadcrumbSize } from '../Breadcrumb/Breadcrumb.types';
+import type { BreadcrumbSize } from '../Breadcrumb.types';
 
 export type {
   BreadcrumbDividerProps,

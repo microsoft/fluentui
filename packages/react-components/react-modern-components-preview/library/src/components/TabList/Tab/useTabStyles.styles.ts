@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabSlots, TabState } from './Tab.types';
-import styles from './Tab.module.css';
+import * as styles from './Tab.module.css';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
   root: 'fui-Tab',

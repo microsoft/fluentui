@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToggleButtonSlots, ToggleButtonState } from './ToggleButton.types';
-import buttonStyles from '../Button/Button.module.css';
-import styles from './ToggleButton.module.css';
+import * as buttonStyles from '../Button/Button.module.css';
+import * as styles from './ToggleButton.module.css';
 
 export const toggleButtonClassNames: SlotClassNames<ToggleButtonSlots> = {
   root: 'fui-ToggleButton',

@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useTeachingPopoverCarouselNavButton as useTeachingPopoverCarouselNavButtonBase } from '@fluentui/react-headless-components-preview/teaching-popover';
-import { usePopoverAppearanceContext } from '../../Popover/Popover/popoverAppearanceContext';
+import { usePopoverAppearanceContext } from '../../Popover/popoverAppearanceContext';
 import type {
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonState,

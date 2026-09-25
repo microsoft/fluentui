@@ -8,14 +8,14 @@ export {
   useMessageBarBodyContextValues,
   useMessageBarContext,
   useMessageBarContextValues,
-} from './components/MessageBar/MessageBar/index';
+} from './components/MessageBar/index';
 export type {
   MessageBarContextValues,
   MessageBarIntent,
   MessageBarProps,
   MessageBarSlots,
   MessageBarState,
-} from './components/MessageBar/MessageBar/index';
+} from './components/MessageBar/index';
 
 export {
   MessageBarBody,
@@ -23,13 +23,13 @@ export {
   useMessageBarBody,
   messageBarBodyClassNames,
   useMessageBarBodyStyles,
-} from './components/MessageBar/MessageBarBody/index';
+} from './components/MessageBar/index';
 export type {
   MessageBarBodyContextValues,
   MessageBarBodyProps,
   MessageBarBodySlots,
   MessageBarBodyState,
-} from './components/MessageBar/MessageBarBody/index';
+} from './components/MessageBar/index';
 
 export {
   MessageBarTitle,
@@ -37,12 +37,8 @@ export {
   useMessageBarTitle,
   messageBarTitleClassNames,
   useMessageBarTitleStyles,
-} from './components/MessageBar/MessageBarTitle/index';
-export type {
-  MessageBarTitleProps,
-  MessageBarTitleSlots,
-  MessageBarTitleState,
-} from './components/MessageBar/MessageBarTitle/index';
+} from './components/MessageBar/index';
+export type { MessageBarTitleProps, MessageBarTitleSlots, MessageBarTitleState } from './components/MessageBar/index';
 
 export {
   MessageBarActions,
@@ -50,10 +46,10 @@ export {
   useMessageBarActions,
   messageBarActionsClassNames,
   useMessageBarActionsStyles,
-} from './components/MessageBar/MessageBarActions/index';
+} from './components/MessageBar/index';
 export type {
   MessageBarActionsContextValues,
   MessageBarActionsProps,
   MessageBarActionsSlots,
   MessageBarActionsState,
-} from './components/MessageBar/MessageBarActions/index';
+} from './components/MessageBar/index';

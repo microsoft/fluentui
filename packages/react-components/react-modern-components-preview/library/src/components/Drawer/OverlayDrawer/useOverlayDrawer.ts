@@ -5,8 +5,8 @@ import { useOverlayDrawer as useOverlayDrawerBase } from '@fluentui/react-headle
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { Slide } from '@fluentui/react-motion-components-preview';
 import { slot } from '@fluentui/react-utilities';
-import { Dialog } from '../../Dialog/Dialog/Dialog';
-import type { DialogProps } from '../../Dialog/Dialog/Dialog.types';
+import { Dialog } from '../../Dialog/Dialog';
+import type { DialogProps } from '../../Dialog/Dialog.types';
 import { DialogSurface } from '../../Dialog/DialogSurface/DialogSurface';
 import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Tag } from '../../Tag';
-import { TagPicker } from '../TagPicker/TagPicker';
+import { TagPicker } from '../TagPicker';
 import { TagPickerGroup, tagPickerGroupClassNames } from './';
 
 describe('TagPickerGroup', () => {

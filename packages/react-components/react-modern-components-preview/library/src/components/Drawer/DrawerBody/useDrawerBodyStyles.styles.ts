@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DrawerBodySlots, DrawerBodyState } from './DrawerBody.types';
-import styles from './DrawerBody.module.css';
+import * as styles from './DrawerBody.module.css';
 
 export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots> = {
   root: 'fui-DrawerBody',

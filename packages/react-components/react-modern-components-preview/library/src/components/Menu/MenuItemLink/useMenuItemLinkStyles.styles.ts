@@ -3,7 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { styleMenuItemSlots } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuItemState } from '../MenuItem/MenuItem.types';
 import type { MenuItemLinkSlots, MenuItemLinkState } from './MenuItemLink.types';
-import styles from './MenuItemLink.module.css';
+import * as styles from './MenuItemLink.module.css';
 
 export const menuItemLinkClassNames: SlotClassNames<MenuItemLinkSlots> = {
   root: 'fui-MenuItemLink',

@@ -5046,6 +5046,7 @@ __metadata:
     stylelint-config-standard: "npm:40.0.0"
     stylelint-use-logical: "npm:2.1.3"
     stylelint-value-no-unknown-custom-properties: "npm:^6.1.1"
+    typed-css-modules: "npm:^0.9.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -14645,7 +14646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.5.2, chokidar@npm:^3.5.3, chokidar@npm:^3.6.0":
+"chokidar@npm:^3.4.0, chokidar@npm:^3.5.2, chokidar@npm:^3.5.3, chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -21939,6 +21940,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-there@npm:^4.4.2":
+  version: 4.5.2
+  resolution: "is-there@npm:4.5.2"
+  checksum: 10c0/39e6fc543e583c488c64ae9761b4eeb945b359ef5f684d9d42f50d368885dcc5e6c5e767f98de5a48a5ae2df2bfac46784167b58384b44ddbf578e5507c2e0bd
+  languageName: node
+  linkType: hard
+
 "is-typed-array@npm:^1.1.13, is-typed-array@npm:^1.1.14, is-typed-array@npm:^1.1.15":
   version: 1.1.15
   resolution: "is-typed-array@npm:1.1.15"
@@ -25627,7 +25635,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:^3.0.1":
+"mkdirp@npm:^3.0.0, mkdirp@npm:^3.0.1":
   version: 3.0.1
   resolution: "mkdirp@npm:3.0.1"
   bin:
@@ -27924,7 +27932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.4.40, postcss@npm:^8.5.26, postcss@npm:^8.5.3":
+"postcss@npm:^8.0.0, postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.4.40, postcss@npm:^8.5.26, postcss@npm:^8.5.3":
   version: 8.5.28
   resolution: "postcss@npm:8.5.28"
   dependencies:
@@ -32391,6 +32399,29 @@ __metadata:
     possible-typed-array-names: "npm:^1.0.0"
     reflect.getprototypeof: "npm:^1.0.6"
   checksum: 10c0/e38f2ae3779584c138a2d8adfa8ecf749f494af3cd3cdafe4e688ce51418c7d2c5c88df1bd6be2bbea099c3f7cea58c02ca02ed438119e91f162a9de23f61295
+  languageName: node
+  linkType: hard
+
+"typed-css-modules@npm:^0.9.1":
+  version: 0.9.1
+  resolution: "typed-css-modules@npm:0.9.1"
+  dependencies:
+    camelcase: "npm:^6.0.0"
+    chalk: "npm:^4.0.0"
+    chokidar: "npm:^3.4.0"
+    glob: "npm:^10.3.10"
+    icss-replace-symbols: "npm:^1.1.0"
+    is-there: "npm:^4.4.2"
+    mkdirp: "npm:^3.0.0"
+    postcss: "npm:^8.0.0"
+    postcss-modules-extract-imports: "npm:^3.0.0"
+    postcss-modules-local-by-default: "npm:^4.0.0"
+    postcss-modules-scope: "npm:^3.0.0"
+    postcss-modules-values: "npm:^4.0.0"
+    yargs: "npm:^17.7.2"
+  bin:
+    tcm: lib/cli.js
+  checksum: 10c0/c8e15e79f85f0906d391a562c3f686ac7c00125aa96631456762e2dabc1118ca2f475be7718b924e3f9fe3d86b5fde58fe381aa0217d5481df1f80f2ee29d1a4
   languageName: node
   linkType: hard
 

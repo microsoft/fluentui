@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useDrawerBodyStyles } from '../../Drawer/DrawerBody/useDrawerBodyStyles.styles';
 import type { NavDrawerBodySlots, NavDrawerBodyState } from './NavDrawerBody.types';
-import styles from './NavDrawerBody.module.css';
+import * as styles from './NavDrawerBody.module.css';
 
 export const navDrawerBodyClassNames: SlotClassNames<NavDrawerBodySlots> = {
   root: 'fui-NavDrawerBody',

@@ -5,7 +5,7 @@ export {
   useDialogContextValues,
   useDialogContext,
   useDialogSurfaceContext,
-} from './components/Dialog/Dialog/index';
+} from './components/Dialog/index';
 export type {
   DialogContextValue,
   DialogContextValues,
@@ -17,14 +17,10 @@ export type {
   DialogSlots,
   DialogState,
   DialogSurfaceContextValue,
-} from './components/Dialog/Dialog/index';
+} from './components/Dialog/index';
 
-export { DialogTrigger, useDialogTrigger } from './components/Dialog/DialogTrigger/index';
-export type {
-  DialogTriggerAction,
-  DialogTriggerProps,
-  DialogTriggerState,
-} from './components/Dialog/DialogTrigger/index';
+export { DialogTrigger, useDialogTrigger } from './components/Dialog/index';
+export type { DialogTriggerAction, DialogTriggerProps, DialogTriggerState } from './components/Dialog/index';
 
 export {
   DialogSurface,
@@ -32,12 +28,8 @@ export {
   useDialogSurface,
   dialogSurfaceClassNames,
   useDialogSurfaceStyles,
-} from './components/Dialog/DialogSurface/index';
-export type {
-  DialogSurfaceProps,
-  DialogSurfaceSlots,
-  DialogSurfaceState,
-} from './components/Dialog/DialogSurface/index';
+} from './components/Dialog/index';
+export type { DialogSurfaceProps, DialogSurfaceSlots, DialogSurfaceState } from './components/Dialog/index';
 
 export {
   DialogTitle,
@@ -45,8 +37,8 @@ export {
   useDialogTitle,
   dialogTitleClassNames,
   useDialogTitleStyles,
-} from './components/Dialog/DialogTitle/index';
-export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './components/Dialog/DialogTitle/index';
+} from './components/Dialog/index';
+export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './components/Dialog/index';
 
 export {
   DialogHeader,
@@ -54,8 +46,8 @@ export {
   useDialogHeader,
   dialogHeaderClassNames,
   useDialogHeaderStyles,
-} from './components/Dialog/DialogHeader/index';
-export type { DialogHeaderProps, DialogHeaderSlots, DialogHeaderState } from './components/Dialog/DialogHeader/index';
+} from './components/Dialog/index';
+export type { DialogHeaderProps, DialogHeaderSlots, DialogHeaderState } from './components/Dialog/index';
 
 export {
   DialogBody,
@@ -63,8 +55,8 @@ export {
   useDialogBody,
   dialogBodyClassNames,
   useDialogBodyStyles,
-} from './components/Dialog/DialogBody/index';
-export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './components/Dialog/DialogBody/index';
+} from './components/Dialog/index';
+export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './components/Dialog/index';
 
 export {
   DialogActions,
@@ -72,10 +64,10 @@ export {
   useDialogActions,
   dialogActionsClassNames,
   useDialogActionsStyles,
-} from './components/Dialog/DialogActions/index';
+} from './components/Dialog/index';
 export type {
   DialogActionsPosition,
   DialogActionsProps,
   DialogActionsSlots,
   DialogActionsState,
-} from './components/Dialog/DialogActions/index';
+} from './components/Dialog/index';

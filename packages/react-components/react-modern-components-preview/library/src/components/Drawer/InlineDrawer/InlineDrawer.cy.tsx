@@ -2,9 +2,9 @@ import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
-import { testDrawerBaseScenarios } from '../../../../../../react-drawer/library/src/e2e/DrawerShared';
 import { InlineDrawer } from './index';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { testDrawerBaseScenarios } from '../Drawer.cy';
 
 const mountFluent = (element: JSXElement) => {
   mount(<Provider>{element}</Provider>);

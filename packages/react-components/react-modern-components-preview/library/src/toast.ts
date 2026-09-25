@@ -5,7 +5,7 @@ export {
   toastClassNames,
   useToastStyles,
   useToastController,
-} from './components/Toast/Toast/index';
+} from './components/Toast/index';
 export type {
   ToastAppearance,
   ToastIntent,
@@ -18,7 +18,7 @@ export type {
   ToastImperativeRef,
   ToastPoliteness,
   ToastStatus,
-} from './components/Toast/Toast/index';
+} from './components/Toast/index';
 
 export {
   ToastTitle,
@@ -26,8 +26,8 @@ export {
   useToastTitle,
   toastTitleClassNames,
   useToastTitleStyles,
-} from './components/Toast/ToastTitle/index';
-export type { ToastTitleProps, ToastTitleSlots, ToastTitleState } from './components/Toast/ToastTitle/index';
+} from './components/Toast/index';
+export type { ToastTitleProps, ToastTitleSlots, ToastTitleState } from './components/Toast/index';
 
 export {
   ToastBody,
@@ -35,8 +35,8 @@ export {
   useToastBody,
   toastBodyClassNames,
   useToastBodyStyles,
-} from './components/Toast/ToastBody/index';
-export type { ToastBodyProps, ToastBodySlots, ToastBodyState } from './components/Toast/ToastBody/index';
+} from './components/Toast/index';
+export type { ToastBodyProps, ToastBodySlots, ToastBodyState } from './components/Toast/index';
 
 export {
   ToastFooter,
@@ -44,8 +44,8 @@ export {
   useToastFooter,
   toastFooterClassNames,
   useToastFooterStyles,
-} from './components/Toast/ToastFooter/index';
-export type { ToastFooterProps, ToastFooterSlots, ToastFooterState } from './components/Toast/ToastFooter/index';
+} from './components/Toast/index';
+export type { ToastFooterProps, ToastFooterSlots, ToastFooterState } from './components/Toast/index';
 
 export {
   ToastContainer,
@@ -55,26 +55,14 @@ export {
   useToastContainerStyles,
   useToastContainerContext,
   useToastContainerContextValues,
-} from './components/Toast/ToastContainer/index';
+} from './components/Toast/index';
 export type {
   ToastContainerContextValue,
   ToastContainerContextValues,
   ToastContainerProps,
   ToastContainerSlots,
   ToastContainerState,
-} from './components/Toast/ToastContainer/index';
+} from './components/Toast/index';
 
-export {
-  Toaster,
-  renderToaster,
-  useToaster,
-  toasterClassNames,
-  useToasterStyles,
-} from './components/Toast/Toaster/index';
-export type {
-  ToasterProps,
-  ToasterSlots,
-  ToasterState,
-  ToastPosition,
-  ToasterId,
-} from './components/Toast/Toaster/index';
+export { Toaster, renderToaster, useToaster, toasterClassNames, useToasterStyles } from './components/Toast/index';
+export type { ToasterProps, ToasterSlots, ToasterState, ToastPosition, ToasterId } from './components/Toast/index';

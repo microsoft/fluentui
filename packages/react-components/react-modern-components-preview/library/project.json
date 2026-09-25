@@ -34,7 +34,16 @@
         "command": "yarn run -T eslint src && yarn exec stylelint \"src/**/*.module.css\""
       }
     },
+    "generate-css-module-types": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "packages/react-components/react-modern-components-preview/library",
+        "command": "yarn exec tcm -p 'src/**/*.module.css' -e --silent"
+      }
+    },
     "build": {
+      "dependsOn": ["^build", "generate-css-module-types"],
       "options": {
         "assets": [
           {
@@ -49,6 +58,9 @@
           }
         ]
       }
+    },
+    "type-check": {
+      "dependsOn": ["^build", "generate-css-module-types"]
     },
     "generate-api": {
       "options": {

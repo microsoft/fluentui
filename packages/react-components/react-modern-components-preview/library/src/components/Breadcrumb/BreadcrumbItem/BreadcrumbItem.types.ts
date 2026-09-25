@@ -2,7 +2,7 @@ import type {
   BreadcrumbItemProps as BreadcrumbItemBaseProps,
   BreadcrumbItemState as BreadcrumbItemBaseState,
 } from '@fluentui/react-headless-components-preview/breadcrumb';
-import type { BreadcrumbSize } from '../Breadcrumb/Breadcrumb.types';
+import type { BreadcrumbSize } from '../Breadcrumb.types';
 
 export type { BreadcrumbItemSlots } from '@fluentui/react-headless-components-preview/breadcrumb';
 

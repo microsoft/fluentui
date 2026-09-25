@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { buttonClassNames, useButtonStyles } from '../../Button/useButtonStyles.styles';
 import type { ToolbarButtonState } from './ToolbarButton.types';
-import styles from './ToolbarButton.module.css';
+import * as styles from './ToolbarButton.module.css';
 
 export const toolbarButtonClassNames = buttonClassNames;
 

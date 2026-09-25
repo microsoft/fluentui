@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../../testing/isConformant';
-import { Popover } from '../Popover/Popover';
+import { Popover } from '../Popover';
 import { PopoverSurface } from '../PopoverSurface/PopoverSurface';
 import { PopoverTrigger } from './PopoverTrigger';
 

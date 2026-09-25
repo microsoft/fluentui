@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { PersonaSlots, PersonaState } from './Persona.types';
-import styles from './Persona.module.css';
+import * as styles from './Persona.module.css';
 
 export const personaClassNames: SlotClassNames<PersonaSlots> = {
   root: 'fui-Persona',

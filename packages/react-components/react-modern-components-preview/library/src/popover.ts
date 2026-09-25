@@ -4,7 +4,7 @@ export {
   usePopover,
   usePopoverContextValues,
   usePopoverContext,
-} from './components/Popover/Popover/index';
+} from './components/Popover/index';
 export type {
   OnOpenChangeData,
   OpenPopoverEvents,
@@ -13,10 +13,10 @@ export type {
   PopoverSize,
   PopoverSlots,
   PopoverState,
-} from './components/Popover/Popover/index';
+} from './components/Popover/index';
 
-export { PopoverTrigger, renderPopoverTrigger, usePopoverTrigger } from './components/Popover/PopoverTrigger/index';
-export type { PopoverTriggerProps, PopoverTriggerState } from './components/Popover/PopoverTrigger/index';
+export { PopoverTrigger, renderPopoverTrigger, usePopoverTrigger } from './components/Popover/index';
+export type { PopoverTriggerProps, PopoverTriggerState } from './components/Popover/index';
 
 export {
   PopoverSurface,
@@ -25,9 +25,5 @@ export {
   arrowHeights,
   popoverSurfaceClassNames,
   usePopoverSurfaceStyles,
-} from './components/Popover/PopoverSurface/index';
-export type {
-  PopoverSurfaceProps,
-  PopoverSurfaceSlots,
-  PopoverSurfaceState,
-} from './components/Popover/PopoverSurface/index';
+} from './components/Popover/index';
+export type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './components/Popover/index';

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
-
-import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from './index';
 import type { JSXElement } from '@fluentui/react-utilities';
+
+import { MenuList, MenuItem, Menu, MenuTrigger, MenuPopover } from '../index';
 
 const menuItemSelector = '[role="menuitem"]';
 const menuSelector = '[role="menu"]';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
-import styles from './CardHeader.module.css';
+import * as styles from './CardHeader.module.css';
 
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   root: 'fui-CardHeader',

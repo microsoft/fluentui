@@ -5,7 +5,7 @@ export {
   useTagPickerContext_unstable,
   useTagPickerContextValues,
   useTagPickerFilter,
-} from './components/TagPicker/TagPicker/index';
+} from './components/TagPicker/index';
 export type {
   TagPickerContextValue,
   TagPickerContextValues,
@@ -15,7 +15,7 @@ export type {
   TagPickerSize,
   TagPickerSlots,
   TagPickerState,
-} from './components/TagPicker/TagPicker/index';
+} from './components/TagPicker/index';
 
 export {
   TagPickerButton,
@@ -23,12 +23,8 @@ export {
   renderTagPickerButton,
   useTagPickerButton,
   useTagPickerButtonStyles,
-} from './components/TagPicker/TagPickerButton/index';
-export type {
-  TagPickerButtonProps,
-  TagPickerButtonSlots,
-  TagPickerButtonState,
-} from './components/TagPicker/TagPickerButton/index';
+} from './components/TagPicker/index';
+export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './components/TagPicker/index';
 
 export {
   TagPickerControl,
@@ -37,13 +33,13 @@ export {
   renderTagPickerControl,
   useTagPickerControl,
   useTagPickerControlStyles,
-} from './components/TagPicker/TagPickerControl/index';
+} from './components/TagPicker/index';
 export type {
   TagPickerControlInternalSlots,
   TagPickerControlProps,
   TagPickerControlSlots,
   TagPickerControlState,
-} from './components/TagPicker/TagPickerControl/index';
+} from './components/TagPicker/index';
 
 export {
   TagPickerGroup,
@@ -52,12 +48,8 @@ export {
   useTagPickerGroup,
   useTagPickerGroupStyles,
   useTagPickerGroupContextValues,
-} from './components/TagPicker/TagPickerGroup/index';
-export type {
-  TagPickerGroupProps,
-  TagPickerGroupSlots,
-  TagPickerGroupState,
-} from './components/TagPicker/TagPickerGroup/index';
+} from './components/TagPicker/index';
+export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './components/TagPicker/index';
 
 export {
   TagPickerInput,
@@ -65,12 +57,8 @@ export {
   renderTagPickerInput,
   useTagPickerInput,
   useTagPickerInputStyles,
-} from './components/TagPicker/TagPickerInput/index';
-export type {
-  TagPickerInputProps,
-  TagPickerInputSlots,
-  TagPickerInputState,
-} from './components/TagPicker/TagPickerInput/index';
+} from './components/TagPicker/index';
+export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } from './components/TagPicker/index';
 
 export {
   TagPickerList,
@@ -78,12 +66,8 @@ export {
   renderTagPickerList,
   useTagPickerList,
   useTagPickerListStyles,
-} from './components/TagPicker/TagPickerList/index';
-export type {
-  TagPickerListProps,
-  TagPickerListSlots,
-  TagPickerListState,
-} from './components/TagPicker/TagPickerList/index';
+} from './components/TagPicker/index';
+export type { TagPickerListProps, TagPickerListSlots, TagPickerListState } from './components/TagPicker/index';
 
 export {
   TagPickerOption,
@@ -91,12 +75,8 @@ export {
   renderTagPickerOption,
   useTagPickerOption,
   useTagPickerOptionStyles,
-} from './components/TagPicker/TagPickerOption/index';
-export type {
-  TagPickerOptionProps,
-  TagPickerOptionSlots,
-  TagPickerOptionState,
-} from './components/TagPicker/TagPickerOption/index';
+} from './components/TagPicker/index';
+export type { TagPickerOptionProps, TagPickerOptionSlots, TagPickerOptionState } from './components/TagPicker/index';
 
 export {
   TagPickerOptionGroup,
@@ -104,9 +84,9 @@ export {
   renderTagPickerOptionGroup,
   useTagPickerOptionGroup,
   useTagPickerOptionGroupStyles,
-} from './components/TagPicker/TagPickerOptionGroup/index';
+} from './components/TagPicker/index';
 export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
-} from './components/TagPicker/TagPickerOptionGroup/index';
+} from './components/TagPicker/index';

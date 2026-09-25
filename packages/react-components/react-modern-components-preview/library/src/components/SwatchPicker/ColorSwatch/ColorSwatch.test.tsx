@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { SwatchPicker } from '../SwatchPicker/SwatchPicker';
+import { SwatchPicker } from '../SwatchPicker';
 import { ColorSwatch } from './ColorSwatch';
 import { colorSwatchClassNames } from './useColorSwatchStyles.styles';
 

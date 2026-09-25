@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
-import styles from './CardFooter.module.css';
+import * as styles from './CardFooter.module.css';
 
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {
   root: 'fui-CardFooter',

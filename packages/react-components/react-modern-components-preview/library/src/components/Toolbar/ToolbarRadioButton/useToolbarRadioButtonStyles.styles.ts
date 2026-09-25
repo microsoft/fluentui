@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { toggleButtonClassNames, useToggleButtonStyles } from '../../ToggleButton/useToggleButtonStyles.styles';
 import type { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
-import styles from './ToolbarRadioButton.module.css';
+import * as styles from './ToolbarRadioButton.module.css';
 
 export const toolbarRadioButtonClassNames = toggleButtonClassNames;
 
