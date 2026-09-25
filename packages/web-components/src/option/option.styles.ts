@@ -1,12 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { typographyBody1Styles, typographyCaption1Styles } from '../styles/partials/typography.partials.js';
-import {
-  activeState,
-  descriptionState,
-  multipleState,
-  nativeDisabledState,
-  selectedState,
-} from '../styles/states/index.js';
+import { descriptionState, multipleState, nativeDisabledState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -131,7 +125,7 @@ export const styles = css`
     background-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host(${activeState}) {
+  :host([active]) {
     border: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
