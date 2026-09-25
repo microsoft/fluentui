@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
 import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
-// Headless consumers import the engine from `@fluentui/react-positioning` directly; pulling the whole
-// `@fluentui/react-components` barrel for one export would defeat the purpose of the headless package.
 // eslint-disable-next-line @fluentui/no-restricted-imports
 import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
 
