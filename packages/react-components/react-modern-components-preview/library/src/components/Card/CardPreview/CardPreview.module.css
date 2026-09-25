@@ -1,17 +1,19 @@
-.root {
-  position: relative;
+@layer fluent {
+  .root {
+    position: relative;
 
-  & > :not(.logo) {
-    block-size: 100%;
-    display: block;
-    inline-size: 100%;
+    & > :not(.logo) {
+      block-size: 100%;
+      display: block;
+      inline-size: 100%;
+    }
   }
-}
 
-.logo {
-  block-size: 32px;
-  inline-size: 32px;
-  inset-block-end: 12px;
-  inset-inline-start: 12px;
-  position: absolute;
+  .logo {
+    block-size: 32px;
+    inline-size: 32px;
+    inset-block-end: 12px;
+    inset-inline-start: 12px;
+    position: absolute;
+  }
 }

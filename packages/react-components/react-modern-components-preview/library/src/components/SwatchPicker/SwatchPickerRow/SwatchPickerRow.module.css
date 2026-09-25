@@ -1,12 +1,14 @@
-.root {
-  display: flex;
-  flex-direction: row;
+@layer fluent {
+  .root {
+    display: flex;
+    flex-direction: row;
 
-  &[data-spacing='small'] {
-    column-gap: var(--spacingHorizontalXXS);
-  }
+    &[data-spacing='small'] {
+      column-gap: var(--spacingHorizontalXXS);
+    }
 
-  &[data-spacing='medium'] {
-    column-gap: var(--spacingHorizontalXS);
+    &[data-spacing='medium'] {
+      column-gap: var(--spacingHorizontalXS);
+    }
   }
 }

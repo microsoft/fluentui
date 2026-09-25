@@ -1,15 +1,17 @@
-.root {
-  display: inline-flex;
+@layer fluent {
+  .root {
+    display: inline-flex;
 
-  &[data-size='medium'] {
-    column-gap: var(--spacingHorizontalS);
-  }
+    &[data-size='medium'] {
+      column-gap: var(--spacingHorizontalS);
+    }
 
-  &[data-size='small'] {
-    column-gap: var(--spacingHorizontalSNudge);
-  }
+    &[data-size='small'] {
+      column-gap: var(--spacingHorizontalSNudge);
+    }
 
-  &[data-size='extra-small'] {
-    column-gap: var(--spacingHorizontalXS);
+    &[data-size='extra-small'] {
+      column-gap: var(--spacingHorizontalXS);
+    }
   }
 }

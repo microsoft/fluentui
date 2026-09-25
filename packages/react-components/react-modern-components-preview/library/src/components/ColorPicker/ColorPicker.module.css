@@ -1,5 +1,7 @@
-.root {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacingVerticalXS);
+@layer fluent {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingVerticalXS);
+  }
 }

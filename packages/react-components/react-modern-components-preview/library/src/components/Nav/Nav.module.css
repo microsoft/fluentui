@@ -1,4 +1,6 @@
-.root {
-  display: flex;
-  flex-direction: column;
+@layer fluent {
+  .root {
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -1,3 +1,5 @@
-.root {
-  inline-size: 100%;
+@layer fluent {
+  .root {
+    inline-size: 100%;
+  }
 }

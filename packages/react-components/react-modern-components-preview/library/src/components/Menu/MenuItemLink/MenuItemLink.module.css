@@ -1,3 +1,5 @@
-.menuItemLink {
-  text-decoration: none;
+@layer fluent {
+  .menuItemLink {
+    text-decoration: none;
+  }
 }
