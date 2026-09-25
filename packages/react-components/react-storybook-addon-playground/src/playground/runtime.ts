@@ -43,6 +43,25 @@ export type PlaygroundRuntimeMessage =
     };
 
 /**
+ * Resolves the `?manifest=` override (used to point a standalone shell at a Storybook runtime). Only same-origin
+ * manifests are accepted, so a crafted link cannot load scripts and typings from another site.
+ */
+export function resolveManifestPath(requested: string | null, pageUrl: string, fallback: string): string {
+  if (!requested) {
+    return fallback;
+  }
+
+  try {
+    const page = new URL(pageUrl);
+    const resolved = new URL(requested, page);
+
+    return resolved.origin === page.origin ? resolved.href : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+/**
  * Fetches the Storybook-emitted playground runtime manifest and resolves asset URLs against the Storybook root.
  */
 export async function loadRuntimeManifest(

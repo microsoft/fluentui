@@ -30,8 +30,11 @@ import {
 import {
   AddRegular,
   ArrowClockwiseRegular,
+  ArrowMaximizeRegular,
+  ArrowMinimizeRegular,
   ArrowResetRegular,
   CodeRegular,
+  CopyRegular,
   DeleteRegular,
   DocumentRegular,
   ErrorCircleRegular,
@@ -49,7 +52,7 @@ import {
   type CssModuleSource,
   type PlaygroundHashIssue,
 } from '../url';
-import { compile, formatDiagnostics, type CompileResult } from './compiler';
+import { compile, formatDiagnostics, type CompileDiagnostic, type CompileResult } from './compiler';
 import { ConsolePanel } from './ConsolePanel';
 import { appendConsoleEntry, type ConsoleEntry } from './consoleEntries';
 import {
@@ -70,7 +73,7 @@ import { COMPACT_TOOLBAR_QUERY, usePlaygroundStyles } from './Playground.styles'
 import { Preview } from './Preview';
 import { PlaygroundError, assertAllowedModules, getRequiredModules } from './runner';
 import type { PlaygroundRuntimeErrorKind, ResolvedPlaygroundRuntimeManifest } from './runtime';
-import { getFormatShortcutLabel, getRunShortcutLabel } from './shortcuts';
+import { getFormatShortcutLabel, getRunShortcutLabel, getSaveShortcutLabel, isSaveShortcut } from './shortcuts';
 import { getThemeOption } from './themes';
 import { enableSemanticValidation, getImportedModules, TypingsLoader } from './typings';
 import type { TypingsStatus } from './typings';
@@ -83,14 +86,21 @@ export interface PlaygroundProps {
   initialCssModules?: CssModuleSource[];
   /** Problems found while reading the shared link, shown once on start. */
   initialIssues?: readonly PlaygroundHashIssue[];
+  /** Name of the example, e.g. the story it was opened from; shown in the header and the document title. */
+  initialTitle?: string;
   manifest: ResolvedPlaygroundRuntimeManifest;
 }
 
 interface PlaygroundErrorState {
   title: string;
   message: string;
+  /** Compiler diagnostics with editor locations, rendered as links that jump to the code. */
+  diagnostics?: CompileDiagnostic[];
   previewRetained?: boolean;
 }
+
+/** Which panes are visible: both side by side, or one of them maximized. */
+type PaneLayout = 'split' | 'editor' | 'preview';
 
 type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
 
@@ -115,7 +125,9 @@ function toErrorState(error: unknown): PlaygroundErrorState {
       runtime: 'Runtime error',
       export: 'Nothing to render',
     };
-    return { title: titles[error.kind], message: error.message };
+    return error.diagnostics?.length
+      ? { title: titles[error.kind], message: error.message, diagnostics: error.diagnostics }
+      : { title: titles[error.kind], message: error.message };
   }
 
   if (error instanceof Error) {
@@ -195,11 +207,29 @@ const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>(
 });
 StatusIndicator.displayName = 'StatusIndicator';
 
+interface DiagnosticLocationProps {
+  diagnostic: CompileDiagnostic;
+  onSelect: (diagnostic: CompileDiagnostic) => void;
+}
+
+const DiagnosticLocation = React.forwardRef<HTMLButtonElement, DiagnosticLocationProps>((props, ref) => {
+  const { diagnostic, onSelect } = props;
+  const styles = usePlaygroundStyles();
+  const handleClick = React.useCallback(() => onSelect(diagnostic), [diagnostic, onSelect]);
+
+  return (
+    <Link ref={ref} as="button" className={styles.diagnosticLocation} onClick={handleClick}>
+      {TSX_FILE_PATH}:{diagnostic.line}:{diagnostic.column ?? 1}
+    </Link>
+  );
+});
+DiagnosticLocation.displayName = 'DiagnosticLocation';
+
 const noopSubscribe = () => () => undefined;
 const getLoadingStatus = (): TypingsStatus => 'loading';
 
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
-  const { initialCode, initialCssModules = EMPTY_CSS_MODULES, initialIssues, manifest } = props;
+  const { initialCode, initialCssModules = EMPTY_CSS_MODULES, initialIssues, initialTitle, manifest } = props;
   const styles = usePlaygroundStyles();
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView;
@@ -225,6 +255,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [consoleExpanded, setConsoleExpanded] = React.useState(false);
   const [newCssOpen, setNewCssOpen] = React.useState(false);
   const [newCssName, setNewCssName] = React.useState('');
+  const [paneLayout, setPaneLayout] = React.useState<PaneLayout>('split');
   const runCounter = React.useRef(0);
   const runIdRef = React.useRef(runId);
   runIdRef.current = runId;
@@ -252,7 +283,19 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const split = useSplitPane(mainRef);
   const typeErrorCount = useModelErrorCount(monaco, model);
 
+  const [saveCount, setSaveCount] = React.useState(0);
+  const savedCount = React.useRef(0);
+  const pendingReveal = React.useRef<{ line: number; column: number } | null>(null);
+  const [revealCount, setRevealCount] = React.useState(0);
+
   const selectedThemeMeta = metadata.themes.find(theme => theme.id === themeId);
+  const playgroundTitle = metadata.title ?? 'React Playground';
+
+  React.useEffect(() => {
+    if (targetDocument) {
+      targetDocument.title = initialTitle ? `${initialTitle} · ${playgroundTitle}` : playgroundTitle;
+    }
+  }, [initialTitle, playgroundTitle, targetDocument]);
   const shellDark = Boolean(selectedThemeMeta?.dark);
   const shellTheme = getThemeOption(shellDark ? 'web-dark' : 'web-light');
 
@@ -334,6 +377,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   const userAgent = targetWindow?.navigator.userAgent ?? '';
   const formatShortcut = getFormatShortcutLabel(userAgent);
+  const saveShortcut = getSaveShortcutLabel(userAgent);
   const runShortcut = getRunShortcutLabel(userAgent);
 
   const handleFormat = React.useCallback(() => {
@@ -401,7 +445,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         }
 
         if (result.diagnostics.length > 0) {
-          throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics));
+          throw new PlaygroundError('compile', formatDiagnostics(result.diagnostics), result.diagnostics);
         }
 
         const nextRequiredModules = getRequiredModules(result.code);
@@ -466,15 +510,25 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       return;
     }
 
-    const timeout = targetWindow.setTimeout(() => {
-      targetWindow.history.replaceState(
-        null,
-        '',
-        `${targetWindow.location.pathname}${targetWindow.location.search}${createPlaygroundHash({ code, cssModules })}`,
-      );
-    }, HASH_SYNC_DEBOUNCE_MS);
+    // Saving (Cmd/Ctrl+S) writes the link right away instead of after the typing debounce.
+    const saved = saveCount !== savedCount.current;
+    savedCount.current = saveCount;
+    const timeout = targetWindow.setTimeout(
+      () => {
+        targetWindow.history.replaceState(
+          null,
+          '',
+          `${targetWindow.location.pathname}${targetWindow.location.search}${createPlaygroundHash({
+            code,
+            cssModules,
+            title: initialTitle,
+          })}`,
+        );
+      },
+      saved ? 0 : HASH_SYNC_DEBOUNCE_MS,
+    );
     return () => targetWindow.clearTimeout(timeout);
-  }, [code, cssModules, targetWindow]);
+  }, [code, cssModules, initialTitle, saveCount, targetWindow]);
 
   const handleMetadata = React.useCallback(
     (nextMetadata: PlaygroundSetupMetadata) => {
@@ -671,7 +725,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     }
 
     const baseUrl = `${targetWindow.location.origin}${targetWindow.location.pathname}${targetWindow.location.search}`;
-    const url = createPlaygroundUrl(code, baseUrl, cssModules);
+    const url = createPlaygroundUrl(code, baseUrl, cssModules, initialTitle);
 
     try {
       if (!targetWindow.navigator.clipboard?.writeText) {
@@ -691,7 +745,95 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     } catch (err) {
       notify('Could not copy link', 'error', err instanceof Error ? err.message : String(err));
     }
-  }, [code, cssModules, notify, targetWindow]);
+  }, [code, cssModules, initialTitle, notify, targetWindow]);
+
+  const handleCopyCode = React.useCallback(async () => {
+    try {
+      if (!targetWindow?.navigator.clipboard?.writeText) {
+        throw new Error('Clipboard API is not available in this browser context.');
+      }
+
+      await targetWindow.navigator.clipboard.writeText(activeFile.value);
+      notify(`Copied ${activeFile.path}`, 'success');
+    } catch (err) {
+      notify('Could not copy code', 'error', err instanceof Error ? err.message : String(err));
+    }
+  }, [activeFile, notify, targetWindow]);
+
+  const handleSave = React.useCallback(async () => {
+    try {
+      await editorRef.current?.getAction('editor.action.formatDocument')?.run();
+    } finally {
+      setSaveCount(count => count + 1);
+      dispatchToast(
+        <Toast>
+          <ToastTitle
+            action={
+              <Link as="button" onClick={handleCopyLink}>
+                Copy link
+              </Link>
+            }
+          >
+            Saved to the link
+          </ToastTitle>
+          <ToastBody>The address bar has a shareable link with your current code.</ToastBody>
+        </Toast>,
+        { intent: 'success' },
+      );
+    }
+  }, [dispatchToast, handleCopyLink]);
+
+  React.useEffect(() => {
+    if (!targetWindow) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isSaveShortcut(event, targetWindow.navigator.userAgent)) {
+        // Replaces the browser "Save page" dialog, which is not useful for the playground.
+        event.preventDefault();
+        if (!event.repeat) {
+          handleSave();
+        }
+      }
+    };
+
+    targetWindow.addEventListener('keydown', handleKeyDown);
+    return () => targetWindow.removeEventListener('keydown', handleKeyDown);
+  }, [handleSave, targetWindow]);
+
+  const handleGoToDiagnostic = React.useCallback((diagnostic: CompileDiagnostic) => {
+    if (!diagnostic.line) {
+      return;
+    }
+
+    pendingReveal.current = { line: diagnostic.line, column: diagnostic.column ?? 1 };
+    setActiveFileId(TSX_FILE_PATH);
+    setPaneLayout(layout => (layout === 'preview' ? 'split' : layout));
+    setRevealCount(count => count + 1);
+  }, []);
+
+  React.useEffect(() => {
+    const editor = editorRef.current;
+    const target = pendingReveal.current;
+    if (!editor || !target || activeFileId !== TSX_FILE_PATH) {
+      return;
+    }
+
+    pendingReveal.current = null;
+    editor.setPosition({ lineNumber: target.line, column: target.column });
+    editor.revealPositionInCenterIfOutsideViewport({ lineNumber: target.line, column: target.column });
+    editor.focus();
+  }, [activeFileId, revealCount]);
+
+  const handleToggleEditorMaximized = React.useCallback(
+    () => setPaneLayout(layout => (layout === 'editor' ? 'split' : 'editor')),
+    [],
+  );
+  const handleTogglePreviewMaximized = React.useCallback(
+    () => setPaneLayout(layout => (layout === 'preview' ? 'split' : 'preview')),
+    [],
+  );
 
   const handleThemeSelect = React.useCallback(
     (_event: SelectionEvents, data: OptionOnSelectData) => {
@@ -797,8 +939,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             <span className={styles.brandIcon} aria-hidden="true">
               <CodeRegular />
             </span>
-            <h1 className={styles.title}>{metadata.title ?? 'React Playground'}</h1>
-            {metadata.subtitle ? <span className={styles.subtitle}>{metadata.subtitle}</span> : null}
+            <h1 className={styles.title}>{playgroundTitle}</h1>
+            {initialTitle ? (
+              <span className={styles.exampleTitle} title={initialTitle}>
+                {initialTitle}
+              </span>
+            ) : null}
+            {metadata.subtitle && !initialTitle ? <span className={styles.subtitle}>{metadata.subtitle}</span> : null}
           </div>
 
           <Toolbar aria-label="Playground actions" className={styles.toolbar}>
@@ -828,7 +975,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
             <ToolbarAction
               icon={<LinkRegular />}
               label="Copy link"
-              tooltip="Copy a shareable link with the current code and styles"
+              tooltip={`Copy a shareable link with the current code and styles (${saveShortcut} formats and updates the link in the address bar)`}
               compact={compactToolbar}
               onClick={handleCopyLink}
             />
@@ -854,9 +1001,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           </Toolbar>
         </header>
 
-        <main ref={mainRef} className={styles.main} style={splitStyle}>
+        <main
+          ref={mainRef}
+          className={mergeClasses(styles.main, paneLayout !== 'split' && styles.mainMaximized)}
+          style={splitStyle}
+        >
           <section
-            className={styles.pane}
+            className={mergeClasses(styles.pane, paneLayout === 'preview' && styles.paneHidden)}
             aria-label={cssModules.length === 0 ? 'Code editor' : undefined}
             aria-labelledby={cssModules.length > 0 ? `${fileTabId}-${activeFileIndex}` : undefined}
             id={cssModules.length > 0 ? editorPanelId : undefined}
@@ -950,6 +1101,18 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 ) : (
                   renderTypingsStatus()
                 )}
+                <Tooltip content={`Copy ${activeFile.path}`} relationship="label">
+                  <Button appearance="subtle" size="small" icon={<CopyRegular />} onClick={handleCopyCode} />
+                </Tooltip>
+                <Tooltip content={paneLayout === 'editor' ? 'Show preview' : 'Maximize editor'} relationship="label">
+                  <Button
+                    appearance="subtle"
+                    size="small"
+                    aria-pressed={paneLayout === 'editor'}
+                    icon={paneLayout === 'editor' ? <ArrowMinimizeRegular /> : <ArrowMaximizeRegular />}
+                    onClick={handleToggleEditorMaximized}
+                  />
+                </Tooltip>
               </span>
             </div>
             <Editor
@@ -966,10 +1129,17 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           <div
             {...split.separatorProps}
             aria-label="Resize editor and preview"
-            className={mergeClasses(styles.separator, split.dragging && styles.separatorActive)}
+            className={mergeClasses(
+              styles.separator,
+              split.dragging && styles.separatorActive,
+              paneLayout !== 'split' && styles.paneHidden,
+            )}
           />
 
-          <section className={mergeClasses(styles.pane, styles.previewPane)} aria-label="Preview">
+          <section
+            className={mergeClasses(styles.pane, styles.previewPane, paneLayout === 'editor' && styles.paneHidden)}
+            aria-label="Preview"
+          >
             <div className={mergeClasses(styles.paneHeader, styles.previewHeader)}>
               <span className={styles.paneTitle}>
                 <EyeRegular />
@@ -998,6 +1168,13 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                   compact
                   onClick={handleRestart}
                 />
+                <ToolbarAction
+                  icon={paneLayout === 'preview' ? <ArrowMinimizeRegular /> : <ArrowMaximizeRegular />}
+                  label={paneLayout === 'preview' ? 'Show editor' : 'Maximize preview'}
+                  tooltip={paneLayout === 'preview' ? 'Show the editor next to the preview' : 'Hide the editor'}
+                  compact
+                  onClick={handleTogglePreviewMaximized}
+                />
               </Toolbar>
               <span className={styles.paneMeta} aria-live="polite">
                 {renderRunStatus()}
@@ -1025,7 +1202,20 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 <span className={styles.errorDot} aria-hidden="true" />
                 <div>
                   <p className={styles.errorTitle}>{error.title}</p>
-                  <pre className={styles.errorMessage}>{error.message}</pre>
+                  {error.diagnostics ? (
+                    <ul className={styles.diagnostics}>
+                      {error.diagnostics.map((diagnostic, index) => (
+                        <li key={index} className={styles.errorMessage}>
+                          {diagnostic.line ? (
+                            <DiagnosticLocation diagnostic={diagnostic} onSelect={handleGoToDiagnostic} />
+                          ) : null}
+                          {diagnostic.message}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <pre className={styles.errorMessage}>{error.message}</pre>
+                  )}
                   {error.previewRetained ? (
                     <Text size={200} className={styles.errorHint}>
                       The preview shows the last successful render.

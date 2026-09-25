@@ -16,6 +16,8 @@ an optional setup module, and Monaco declarations. User code runs inside a sandb
 - Sandboxed preview (`sandbox="allow-scripts"`), Prettier formatting, error reporting and shareable URL state
 - Live preview updates reuse the sandbox and loaded packages, with an explicit restart for a clean environment
 - Console panel, type-error count, CSS module tabs you can add and remove, and preview width presets
+- Compile errors link to their line in the editor; either pane can be maximized; `Cmd/Ctrl+S` formats the code and
+  writes it to the link in the address bar; the active file can be copied from the editor header
 
 ## Installation
 
@@ -102,10 +104,15 @@ The sandbox remains `allow-scripts` only; live updates never add `allow-same-ori
 
 ### Shared links
 
-Links store the code and CSS modules in the URL hash (`#code=…&css=…&v=1`), compressed with lz-string. `v` is the
-format version; links without it are read as version 1. The playground warns when a link cannot be fully read (for
+Links store the code and CSS modules in the URL hash (`#code=…&css=…&title=…&v=1`), compressed with lz-string. `v` is
+the format version; links without it are read as version 1. The optional `title` names the example (the **Open in
+Playground** button sets it to `Component: Story`) and is shown in the header and the browser tab. Payloads longer than
+200,000 characters are not decompressed. The playground warns when a link cannot be fully read (for
 example when a chat app truncated it) and when **Copy link** produces a URL longer than 8,000 characters.
 `readPlaygroundHash` exposes the same parser for tools that create or inspect links.
+
+The shell loads `../runtime/manifest.json` by default. A `?manifest=` query parameter can point it at another runtime
+on the same origin (cross-origin manifests are ignored).
 
 The optional setup module default-exports a value created with `definePlaygroundSetup`:
 
@@ -135,7 +142,8 @@ When `setup` is omitted, the addon's built-in Fluent UI default setup is used.
 The button reads the story source from `parameters.fullSource`, which is injected at build time by
 `@fluentui/babel-preset-storybook-full-source` (registered by `@fluentui/react-storybook-addon-export-to-sandbox`).
 Other consumers can populate the same parameter with their own Storybook source transform. The button is not rendered
-when `parameters.fullSource` is unavailable.
+when `parameters.fullSource` is unavailable, or when the story imports a package that is not listed in
+`options.modules` (type-only and relative imports are ignored), since the playground could not run it.
 
 ### Disabling per story
 

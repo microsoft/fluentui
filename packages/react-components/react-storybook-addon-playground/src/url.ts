@@ -3,6 +3,7 @@ import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from
 export const CODE_HASH_PARAM = 'code';
 export const CSS_HASH_PARAM = 'css';
 export const VERSION_HASH_PARAM = 'v';
+export const TITLE_HASH_PARAM = 'title';
 /**
  * Version of the hash payload format. Links without `v` predate versioning and are read as version 1. Bump it only for
  * changes that older playgrounds cannot read, and keep decoding every earlier version.
@@ -10,6 +11,13 @@ export const VERSION_HASH_PARAM = 'v';
 export const PLAYGROUND_HASH_VERSION = 1;
 /** Links longer than this may be truncated by chat apps, email clients, or browsers. */
 export const RECOMMENDED_MAX_URL_LENGTH = 8000;
+/**
+ * Compressed payloads longer than this are not decompressed, so a crafted link cannot make the playground expand a
+ * decompression bomb. It is far above {@link RECOMMENDED_MAX_URL_LENGTH}, which links should stay under anyway.
+ */
+export const MAX_ENCODED_PAYLOAD_LENGTH = 200_000;
+/** Longer titles are truncated. */
+export const MAX_TITLE_LENGTH = 120;
 /** Relative to Storybook's `iframe.html`: shell under `/playground/app`, runtime under `/playground/runtime`. */
 export const PLAYGROUND_PATH = 'playground/app/playground.html';
 
@@ -21,10 +29,12 @@ export interface CssModuleSource {
 export interface PlaygroundUrlState {
   code: string;
   cssModules: CssModuleSource[];
+  /** Optional name of the example, e.g. the story it was opened from. */
+  title?: string;
 }
 
 export interface PlaygroundHashIssue {
-  kind: 'invalid-code' | 'invalid-css' | 'unsupported-version';
+  kind: 'invalid-code' | 'invalid-css' | 'payload-too-large' | 'unsupported-version';
   message: string;
   version?: string;
 }
@@ -100,6 +110,11 @@ export function readPlaygroundHash(hash: string): PlaygroundHashReadResult {
     return { state: null, issues };
   }
 
+  if (encoded.length > MAX_ENCODED_PAYLOAD_LENGTH) {
+    issues.push({ kind: 'payload-too-large', message: 'The code in this link is too large to open.' });
+    return { state: null, issues };
+  }
+
   const code = encoded === '' ? '' : decodeCode(encoded);
   if (code === null) {
     issues.push({ kind: 'invalid-code', message: 'The code in this link could not be read. It may be truncated.' });
@@ -108,7 +123,9 @@ export function readPlaygroundHash(hash: string): PlaygroundHashReadResult {
 
   const encodedCss = params.get(CSS_HASH_PARAM);
   let cssModules: CssModuleSource[] = [];
-  if (encodedCss) {
+  if (encodedCss && encodedCss.length > MAX_ENCODED_PAYLOAD_LENGTH) {
+    issues.push({ kind: 'payload-too-large', message: 'The styles in this link are too large to open.' });
+  } else if (encodedCss) {
     const parsed = parseCssModulesPayload(encodedCss);
     if (parsed === null) {
       issues.push({ kind: 'invalid-css', message: 'The styles in this link could not be read. It may be truncated.' });
@@ -117,7 +134,16 @@ export function readPlaygroundHash(hash: string): PlaygroundHashReadResult {
     }
   }
 
-  return { state: { code, cssModules }, issues };
+  const title = normalizeTitle(params.get(TITLE_HASH_PARAM));
+
+  return { state: title ? { code, cssModules, title } : { code, cssModules }, issues };
+}
+
+function normalizeTitle(title: string | null | undefined): string | undefined {
+  // Strip control characters from untrusted link data.
+  const normalized = title?.replace(/[\u0000-\u001f\u007f]+/g, ' ').trim();
+
+  return normalized ? normalized.slice(0, MAX_TITLE_LENGTH) : undefined;
 }
 
 /**
@@ -137,11 +163,20 @@ export function decodeCodeFromHash(hash: string): string | null {
 /**
  * Creates a `location.hash` value for provided playground state.
  */
-export function createPlaygroundHash(state: { code: string; cssModules?: readonly CssModuleSource[] }): string {
+export function createPlaygroundHash(state: {
+  code: string;
+  cssModules?: readonly CssModuleSource[];
+  title?: string;
+}): string {
   let hash = `#${CODE_HASH_PARAM}=${encodeCode(state.code)}`;
 
   if (state.cssModules && state.cssModules.length > 0) {
     hash += `&${CSS_HASH_PARAM}=${encodeCode(JSON.stringify(state.cssModules))}`;
+  }
+
+  const title = normalizeTitle(state.title);
+  if (title) {
+    hash += `&${TITLE_HASH_PARAM}=${encodeURIComponent(title)}`;
   }
 
   return `${hash}&${VERSION_HASH_PARAM}=${PLAYGROUND_HASH_VERSION}`;
@@ -164,6 +199,7 @@ export function createPlaygroundUrl(
   code: string,
   baseUrl = `./${PLAYGROUND_PATH}`,
   cssModules?: readonly CssModuleSource[],
+  title?: string,
 ): string {
-  return `${baseUrl}${createPlaygroundHash({ code, cssModules })}`;
+  return `${baseUrl}${createPlaygroundHash({ code, cssModules, title })}`;
 }

@@ -282,4 +282,53 @@ export default () => <Button>Logged</Button>;`,
 
     expect(pageErrors).toEqual([]);
   });
+
+  test('names the example, jumps to compile errors, saves with Ctrl+S and maximizes panes', async ({ page }) => {
+    const { pageErrors, previewButton, replaceActiveFile, errorAlert } = setupPage(page);
+
+    await page.goto(
+      `${PLAYGROUND_URL}${createPlaygroundHash({
+        code: `${IMPORTS}export default () => <Button>Titled</Button>;`,
+        title: 'Button: Default',
+      })}`,
+    );
+    await expect(previewButton('Titled')).toBeVisible();
+    await expect(page.getByRole('banner').getByText('Button: Default')).toBeVisible();
+    await expect(page).toHaveTitle(/^Button: Default · /);
+
+    await replaceActiveFile(`${IMPORTS}\nexport default () => <Button>{</Button>;`);
+    await expect(errorAlert('Compilation error')).toBeVisible();
+    const location = errorAlert('Compilation error').getByRole('button', { name: /^example\.tsx:4:\d+$/ });
+    await expect(location).toBeVisible();
+    await page.keyboard.press('Control+Home');
+    await location.click();
+    await expect(page.locator('.monaco-editor .current-line').first()).toBeVisible();
+    await expect
+      .poll(() => page.locator('.monaco-editor .line-numbers.active-line-number').first().textContent())
+      .toBe('4');
+
+    await replaceActiveFile(`${IMPORTS}export default () => <Button   >Saved</Button>;`);
+    await expect(previewButton('Saved')).toBeVisible();
+    await page.keyboard.press('Control+S');
+    // The toaster also mirrors the text into a live region, so match the toast itself.
+    await expect(page.locator('.fui-ToastTitle', { hasText: 'Saved to the link' })).toHaveCount(1);
+    await expect
+      .poll(async () => decodePlaygroundStateFromHash(new URL(page.url()).hash))
+      .toEqual({
+        code: `${IMPORTS}export default () => <Button>Saved</Button>;\n`,
+        cssModules: [],
+        title: 'Button: Default',
+      });
+
+    await page.getByRole('button', { name: 'Maximize editor' }).click();
+    await expect(page.getByRole('region', { name: 'Preview' })).toBeHidden();
+    await page.getByRole('button', { name: 'Show preview' }).click();
+    await page.getByRole('button', { name: 'Maximize preview' }).click();
+    await expect(page.getByRole('region', { name: 'Code editor' })).toBeHidden();
+    await expect(previewButton('Saved')).toBeVisible();
+    await page.getByRole('button', { name: 'Show editor' }).click();
+    await expect(page.getByRole('region', { name: 'Code editor' })).toBeVisible();
+
+    expect(pageErrors).toEqual([]);
+  });
 });

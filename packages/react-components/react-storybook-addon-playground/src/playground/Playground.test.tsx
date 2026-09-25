@@ -82,6 +82,7 @@ const { Playground } = require('./Playground') as {
   Playground: React.ComponentType<{
     initialCode: string | null;
     initialCssModules?: Array<{ name: string; source: string }>;
+    initialTitle?: string;
     manifest: ResolvedPlaygroundRuntimeManifest;
   }>;
 };
@@ -362,5 +363,67 @@ describe('Playground compile transaction', () => {
     await act(async () => jest.advanceTimersByTime(150));
     expect(mockPreviewProps.code).toBe('exports.default = First;');
     expect(compileMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('shows the example title in the header, document title and shared link', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(<Playground initialCode="export default First;" initialTitle="Button: Default" manifest={manifest} />);
+    await flushEffects();
+
+    expect(screen.getByText('Button: Default')).toBeTruthy();
+    expect(document.title).toBe('Button: Default · React Playground');
+    await act(async () => jest.advanceTimersByTime(500));
+    expect(window.location.hash).toContain('title=Button%3A%20Default');
+  });
+
+  it('lists compile diagnostics as links to the code', async () => {
+    compileMock.mockResolvedValue({
+      code: '',
+      diagnostics: [{ message: "')' expected.", line: 3, column: 7 }, { message: 'Unknown problem.' }],
+    });
+    render(<Playground initialCode="export default First;" manifest={manifest} />);
+    await flushEffects();
+    await runDebouncedCompile();
+    await flushEffects();
+
+    expect(screen.getByText('Compilation error')).toBeTruthy();
+    const location = screen.getByRole('button', { name: 'example.tsx:3:7' });
+    expect(screen.getByText('Unknown problem.')).toBeTruthy();
+    fireEvent.click(location);
+  });
+
+  it('maximizes and restores the editor and preview panes', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(<Playground initialCode="export default First;" manifest={manifest} />);
+    await flushEffects();
+    const previewPane = screen.getByRole('region', { name: 'Preview' });
+    const previewClassName = previewPane.className;
+
+    fireEvent.click(screen.getByRole('button', { name: 'Maximize editor' }));
+    expect(screen.getByRole('button', { name: 'Show preview' }).getAttribute('aria-pressed')).toBe('true');
+    expect(previewPane.className).not.toBe(previewClassName);
+    fireEvent.click(screen.getByRole('button', { name: 'Show preview' }));
+    expect(previewPane.className).toBe(previewClassName);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Maximize preview' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Show editor' }));
+    expect(screen.getByRole('button', { name: 'Maximize preview' })).toBeTruthy();
+  });
+
+  it('saves the link immediately on Ctrl+S instead of opening the browser save dialog', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    window.history.replaceState(null, '', '/');
+    render(<Playground initialCode="export default Saved;" manifest={manifest} />);
+    await flushEffects();
+
+    const event = new KeyboardEvent('keydown', { key: 's', ctrlKey: true, bubbles: true, cancelable: true });
+    await act(async () => {
+      window.dispatchEvent(event);
+      await Promise.resolve();
+    });
+    expect(event.defaultPrevented).toBe(true);
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(window.location.hash).toContain('code=');
+    expect(screen.getByText('Saved to the link')).toBeTruthy();
   });
 });

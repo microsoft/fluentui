@@ -10,7 +10,7 @@ import type * as React_2 from 'react';
 import type { StoryContext as StoryContext_2 } from '@storybook/react-webpack5';
 
 // @public
-export function createPlaygroundUrl(code: string, baseUrl?: string, cssModules?: readonly CssModuleSource[]): string;
+export function createPlaygroundUrl(code: string, baseUrl?: string, cssModules?: readonly CssModuleSource[], title?: string): string;
 
 // @public (undocumented)
 export interface CssModuleSource {
@@ -42,7 +42,7 @@ export { Parameters_2 as Parameters }
 // @public (undocumented)
 export interface PlaygroundHashIssue {
     // (undocumented)
-    kind: 'invalid-code' | 'invalid-css' | 'unsupported-version';
+    kind: 'invalid-code' | 'invalid-css' | 'payload-too-large' | 'unsupported-version';
     // (undocumented)
     message: string;
     // (undocumented)
@@ -124,6 +124,7 @@ export interface PlaygroundUrlState {
     code: string;
     // (undocumented)
     cssModules: CssModuleSource[];
+    title?: string;
 }
 
 // @public

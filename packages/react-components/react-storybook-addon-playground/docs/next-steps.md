@@ -89,6 +89,13 @@ Implemented on `experimental/storybook-playground`:
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
 - A Playwright e2e suite that covers the production runtime and shell.
 - Monaco 0.52 with TypeScript 5.4 (the last release before Monaco's AMD deprecation and the move of the TypeScript API to a top-level namespace).
+- Enabled on the public v9 docsite (`apps/public-docsite-v9`) with `@fluentui/react-components` (and `/unstable`), icons, motion components and the calendar, date picker and time picker compat packages. Stories that import any other package do not get the **Open in Playground** button.
+- Editor and shell ergonomics: the story name travels in the link and names the tab, compile errors link to their location, `Cmd/Ctrl+S` formats and writes the link, either pane can be maximized, and the active file can be copied.
+- Security review of the shell, sandbox, messaging and build integration found no exploitable issues. As hardening, the `?manifest=` override only accepts same-origin URLs, and oversized link payloads are not decompressed.
+
+Follow-ups:
+
+- An accessibility pass over the shell (keyboard access to the split handle, focus management when panes are maximized, and screen reader announcements for compile status).
 
 Deferred:
 

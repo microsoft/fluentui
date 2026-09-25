@@ -21,3 +21,18 @@ export function getFormatShortcutLabel(userAgent: string): string {
 export function getRunShortcutLabel(userAgent: string): string {
   return isAppleDevice(userAgent) ? 'Cmd+Enter' : 'Ctrl+Enter';
 }
+
+/** Keyboard shortcut of the playground "Save" action (`CtrlCmd+S`), which formats the code and updates the link. */
+export function getSaveShortcutLabel(userAgent: string): string {
+  return isAppleDevice(userAgent) ? 'Cmd+S' : 'Ctrl+S';
+}
+
+/** `true` for `Cmd+S` on Apple devices and `Ctrl+S` elsewhere, without other modifiers. */
+export function isSaveShortcut(
+  event: Pick<KeyboardEvent, 'key' | 'ctrlKey' | 'metaKey' | 'altKey' | 'shiftKey'>,
+  userAgent: string,
+): boolean {
+  const primary = isAppleDevice(userAgent) ? event.metaKey && !event.ctrlKey : event.ctrlKey && !event.metaKey;
+
+  return primary && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 's';
+}

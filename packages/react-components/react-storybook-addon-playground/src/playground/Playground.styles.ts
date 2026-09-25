@@ -60,6 +60,16 @@ export const usePlaygroundStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     whiteSpace: 'nowrap',
   },
+  exampleTitle: {
+    minWidth: 0,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    paddingLeft: tokens.spacingHorizontalMNudge,
+    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground2,
+  },
   subtitle: {
     fontSize: tokens.fontSizeBase200,
     color: tokens.colorNeutralForeground3,
@@ -101,6 +111,15 @@ export const usePlaygroundStyles = makeStyles({
       gridTemplateRows: 'minmax(0, 1fr) minmax(0, 1fr)',
       rowGap: tokens.spacingVerticalM,
     },
+  },
+  mainMaximized: {
+    gridTemplateColumns: 'minmax(0, 1fr)',
+    [NARROW_LAYOUT]: {
+      gridTemplateRows: 'minmax(0, 1fr)',
+    },
+  },
+  paneHidden: {
+    display: 'none',
   },
   pane: {
     display: 'grid',
@@ -313,6 +332,16 @@ export const usePlaygroundStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase300,
     color: tokens.colorNeutralForeground1,
+  },
+  diagnostics: {
+    margin: 0,
+    padding: 0,
+    listStyleType: 'none',
+  },
+  diagnosticLocation: {
+    marginRight: tokens.spacingHorizontalS,
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
   },
   errorHint: {
     display: 'block',

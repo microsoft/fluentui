@@ -1,10 +1,19 @@
+export interface PlaygroundErrorDiagnostic {
+  message: string;
+  line?: number;
+  column?: number;
+}
+
 export class PlaygroundError extends Error {
   public kind: 'compile' | 'import' | 'runtime' | 'export';
+  /** Source locations of compile errors. */
+  public diagnostics?: PlaygroundErrorDiagnostic[];
 
-  constructor(kind: PlaygroundError['kind'], message: string) {
+  constructor(kind: PlaygroundError['kind'], message: string, diagnostics?: PlaygroundErrorDiagnostic[]) {
     super(message);
     this.name = 'PlaygroundError';
     this.kind = kind;
+    this.diagnostics = diagnostics;
   }
 }
 

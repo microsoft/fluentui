@@ -1,8 +1,11 @@
 import {
   CODE_HASH_PARAM,
   CSS_HASH_PARAM,
+  MAX_ENCODED_PAYLOAD_LENGTH,
+  MAX_TITLE_LENGTH,
   PLAYGROUND_HASH_VERSION,
   PLAYGROUND_PATH,
+  TITLE_HASH_PARAM,
   VERSION_HASH_PARAM,
   createCodeHash,
   createPlaygroundHash,
@@ -137,6 +140,45 @@ describe('url', () => {
 
       expect(result.state?.code).toBe(sampleCode);
       expect(result.issues).toEqual([expect.objectContaining({ kind: 'unsupported-version' })]);
+    });
+
+    it('round trips the example title', () => {
+      const hash = createPlaygroundHash({ code: sampleCode, title: 'Button: Appearance & size' });
+
+      expect(readPlaygroundHash(hash).state).toEqual({
+        code: sampleCode,
+        cssModules: [],
+        title: 'Button: Appearance & size',
+      });
+    });
+
+    it('normalizes untrusted titles', () => {
+      const long = 'x'.repeat(MAX_TITLE_LENGTH + 10);
+      const hash = `#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${TITLE_HASH_PARAM}=${encodeURIComponent(
+        `  Line\nbreak ${long}`,
+      )}`;
+      const title = readPlaygroundHash(hash).state?.title;
+
+      expect(title?.startsWith('Line break x')).toBe(true);
+      expect(title).toHaveLength(MAX_TITLE_LENGTH);
+      expect(readPlaygroundHash(`#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${TITLE_HASH_PARAM}=%20`).state).toEqual(
+        {
+          code: sampleCode,
+          cssModules: [],
+        },
+      );
+    });
+
+    it('refuses to decompress oversized payloads', () => {
+      const oversized = 'A'.repeat(MAX_ENCODED_PAYLOAD_LENGTH + 1);
+      const code = readPlaygroundHash(`#${CODE_HASH_PARAM}=${oversized}`);
+
+      expect(code.state).toBeNull();
+      expect(code.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
+
+      const css = readPlaygroundHash(`#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${CSS_HASH_PARAM}=${oversized}`);
+      expect(css.state).toEqual({ code: sampleCode, cssModules: [] });
+      expect(css.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
     });
   });
 });

@@ -31,6 +31,9 @@ export type HtmlWebpackPluginConstructor = {
 
 export const ENTRY_NAME = 'playground-runtime';
 export const REGISTER_CALLBACK = '__FLUENTUI_PLAYGROUND_REGISTER_V1__';
+/** Global replaced at build time with the modules playground code can import, see `withOpenInPlaygroundButton`. */
+export const ALLOWED_MODULES_DEFINE = '__FLUENTUI_PLAYGROUND_ALLOWED_MODULES__';
+export const BUILT_IN_MODULES = ['react', 'react/jsx-runtime', 'react-dom', 'react-dom/client'];
 const STALE_RUNTIME_ENTRY_MS = 24 * 60 * 60 * 1000;
 
 const addonFilePattern = /react-storybook-addon-playground[\\/][a-z\\/]+\.[jt]s$/;
@@ -76,8 +79,31 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
   config.plugins = config.plugins ?? [];
   config.plugins.push(new ExcludeRuntimeEntryFromHtmlPlugin());
   config.plugins.push(new PlaygroundRuntimeManifestPlugin(addonOptions, typings));
+  config.plugins.push(new AllowedModulesDefinePlugin(getAllowedModules(addonOptions)));
 
   return config;
+}
+
+export function getAllowedModules(options: PresetConfig): string[] {
+  return [...BUILT_IN_MODULES, ...Object.keys(options.modules)];
+}
+
+/**
+ * Exposes the allowed modules to the Storybook preview, so the "Open in Playground" button is only shown for stories
+ * that the playground can run.
+ */
+class AllowedModulesDefinePlugin {
+  private readonly _allowedModules: string[];
+
+  constructor(allowedModules: string[]) {
+    this._allowedModules = allowedModules;
+  }
+
+  public apply(compiler: import('webpack').Compiler): void {
+    new compiler.webpack.DefinePlugin({ [ALLOWED_MODULES_DEFINE]: JSON.stringify(this._allowedModules) }).apply(
+      compiler,
+    );
+  }
 }
 
 /**
@@ -298,7 +324,7 @@ export function collectConfiguredTypings(
   const packageRoot = storybookOptions.configDir ?? process.cwd();
   const base = collectTypings({
     packageRoot,
-    entries: ['react', 'react/jsx-runtime', 'react-dom', 'react-dom/client', ...(options.typings ?? [])],
+    entries: [...BUILT_IN_MODULES, ...(options.typings ?? [])],
     typescriptVersion,
   });
   const sources = new Set(base.sources);
@@ -417,7 +443,11 @@ class PlaygroundRuntimeManifestPlugin {
           const moduleTypings = Object.fromEntries(
             Object.entries(this.typings.modules).map(([publicName, { files: declarations, usesShared }]) => [
               publicName,
-              [...(usesShared && sharedFile ? [sharedFile] : []), emitTypings(declarations)],
+              [
+                ...(usesShared && sharedFile ? [sharedFile] : []),
+                // Modules whose declarations are all shared (e.g. packages re-exported by a suite) need no own file
+                ...(Object.keys(declarations).length > 0 ? [emitTypings(declarations)] : []),
+              ],
             ]),
           );
           const buildId = crypto
@@ -435,13 +465,7 @@ class PlaygroundRuntimeManifestPlugin {
                   styles,
                   typings: typingsFile,
                   moduleTypings,
-                  allowedModules: [
-                    'react',
-                    'react/jsx-runtime',
-                    'react-dom',
-                    'react-dom/client',
-                    ...Object.keys(this.options.modules),
-                  ],
+                  allowedModules: getAllowedModules(this.options),
                   buildId,
                 },
                 null,

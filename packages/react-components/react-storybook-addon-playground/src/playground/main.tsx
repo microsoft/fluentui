@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 
 import { readPlaygroundHash } from '../url';
 import { Playground } from './Playground';
-import { loadRuntimeManifest } from './runtime';
+import { loadRuntimeManifest, resolveManifestPath } from './runtime';
 
 if (!canUseDOM()) {
   throw new Error('Playground requires a browser environment');
@@ -21,7 +21,11 @@ if (!container || !targetWindow) {
 /** Path to the Storybook-emitted runtime, relative to `playground/app/playground.html`. */
 const DEFAULT_MANIFEST_PATH = '../runtime/manifest.json';
 
-const manifestPath = new URLSearchParams(targetWindow.location.search).get('manifest') ?? DEFAULT_MANIFEST_PATH;
+const manifestPath = resolveManifestPath(
+  new URLSearchParams(targetWindow.location.search).get('manifest'),
+  targetWindow.location.href,
+  DEFAULT_MANIFEST_PATH,
+);
 const { state: initialState, issues: initialIssues } = readPlaygroundHash(targetWindow.location.hash);
 
 loadRuntimeManifest(targetWindow, manifestPath).then(
@@ -32,6 +36,7 @@ loadRuntimeManifest(targetWindow, manifestPath).then(
           initialCode={initialState?.code ?? null}
           initialCssModules={initialState?.cssModules}
           initialIssues={initialIssues}
+          initialTitle={initialState?.title}
           manifest={manifest}
         />
       </React.StrictMode>,
