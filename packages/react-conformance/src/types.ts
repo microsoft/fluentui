@@ -27,6 +27,10 @@ export interface TestOptions {
     /** Prefix for the classname, if not `fui-` */
     prefix?: string;
   };
+  'component-calls-custom-style-hook'?: {
+    /** Custom style hook name, if it does not follow the component display name. */
+    hookName?: string;
+  };
 }
 
 export interface IsConformantOptions<TProps = {}> {
