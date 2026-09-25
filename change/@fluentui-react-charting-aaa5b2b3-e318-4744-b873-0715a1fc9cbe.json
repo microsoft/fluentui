@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: dismiss HorizontalBarChart callout when keyboard focus leaves the chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
