@@ -3944,10 +3944,8 @@ export const TabDefinition: PartialFASTElementDefinition;
 
 // @public
 export class Tablist extends BaseTablist {
-    appearance?: TablistAppearance;
     // (undocumented)
     disconnectedCallback(): void;
-    size?: TablistSize;
     // (undocumented)
     tabsChanged(prev: Tab[] | undefined, next: Tab[] | undefined): void;
 }
