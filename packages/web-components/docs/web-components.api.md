@@ -3189,7 +3189,6 @@ export class Menu extends FASTElement {
     slottedTriggers: HTMLElement[];
     // @internal
     slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void;
-    split?: boolean;
     toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     // @internal
