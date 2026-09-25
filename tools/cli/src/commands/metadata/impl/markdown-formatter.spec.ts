@@ -17,7 +17,7 @@ describe('formatMetadataAsMarkdown', () => {
             typeSignature: '() => void',
             tags: {},
             parameters: [
-              { name: 'value', type: 'string | undefined', required: false, description: 'First | second\nline' },
+              { name: 'value', type: 'string | undefined', required: false, description: 'First \\| second\nline' },
             ],
             returnType: 'void',
           },
@@ -55,7 +55,7 @@ describe('formatMetadataAsMarkdown', () => {
     expect(output).toContain('Type \\| API');
     expect(output).toContain('A &lt;type&gt; category');
     expect(output).toContain('`string \\| undefined`');
-    expect(output).toContain('First \\| second line');
+    expect(output).toContain('First \\\\\\| second line');
     expect(output).toContain('`&lt;default&gt; \\| none`');
     expect(output).toContain('A &lt;script&gt;value&lt;/script&gt; \\| fallback');
     expect(output).toContain('`External\\|Type`');
