@@ -67,11 +67,17 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     return !props.points.some((point: { y: number }) => point.y % 1 !== 0);
   }, [props.points]);
   const _tooltipId: string = useId('tooltip_');
+  const showXAxisLabelsTooltip = props.showXAxisLabelsTooltip ?? props.showXAxisLablesTooltip;
+  const wrapXAxisLabels = props.wrapXAxisLabels ?? props.wrapXAxisLables;
+  const rotateXAxisLabelsProp = props.rotateXAxisLabels ?? props.rotateXAxisLables;
+  const showYAxisLabels = props.showYAxisLabels ?? props.showYAxisLables;
+  const showYAxisLabelsTooltip = props.showYAxisLabelsTooltip ?? props.showYAxisLablesTooltip;
+
   /* Used for when WrapXAxisLabels props appeared.
    * To display the total word (space separated words), Need to have more space than usual.
    * This height will get total height need to disaply total word.
    * These value need to be removed from actual svg height/graph height.
-   * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
+   * Defalut value is 0. And this values calculted when 'wrapXAxisLabels' or 'showXAxisLabelsTooltip' is true.
    */
   let _removalValueForTextTuncate: number = 0;
   const _yAxisTickText = React.useRef<string[]>([]);
@@ -88,7 +94,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   // ComponentdidMount and Componentwillunmount logic
   React.useEffect(() => {
     _fitParentContainer();
-    if (props.showYAxisLables) {
+    if (showYAxisLabels) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -117,7 +123,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     prevWidthRef.current = props.width;
     prevHeightRef.current = props.height;
 
-    if (props.showYAxisLables) {
+    if (showYAxisLabels) {
       const maxYAxisLabelLength = calculateMaxYAxisLabelLength(classes.yAxis!);
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
@@ -125,7 +131,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     } else if (startFromX !== 0) {
       setStartFromX(0);
     }
-  }, [props.width, props.height, props.chartType, props.showYAxisLables, props.yAxisType]);
+  }, [props.width, props.height, props.chartType, showYAxisLabels, props.yAxisType]);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -149,7 +155,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
   function calculateMaxYAxisLabelLength(className: string): number {
     const formatTickLabel = (str: string) => {
-      if (props.showYAxisLablesTooltip) {
+      if (showYAxisLabelsTooltip) {
         return truncateString(str, props.noOfCharsToTruncate || 4);
       }
 
@@ -212,12 +218,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       showRoundOffXTickValues: props.showRoundOffXTickValues ?? true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
-      tickPadding: props.tickPadding || props.showXAxisLablesTooltip ? 5 : 10,
+      tickPadding: props.tickPadding || showXAxisLabelsTooltip ? 5 : 10,
       xAxisPadding: props.xAxisPadding,
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
       containerWidth,
-      hideTickOverlap: props.rotateXAxisLables || props.xAxis?.tickLayout === 'auto' ? false : hideTickOverlap,
+      hideTickOverlap: rotateXAxisLabelsProp || props.xAxis?.tickLayout === 'auto' ? false : hideTickOverlap,
       calcMaxLabelWidth: _calcMaxLabelWidthWithTransform,
       xMinValue: props.xMinValue,
       xMaxValue: props.xMaxValue,
@@ -382,7 +388,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       // eslint-disable-next-line no-empty
     } catch (e) {}
     // Used to display tooltip at x axis labels.
-    if (props.showXAxisLablesTooltip || props.xAxis?.tickLayout === 'auto') {
+    if (showXAxisLabelsTooltip || props.xAxis?.tickLayout === 'auto') {
       const _xAxisElement = xAxisElement.current ? d3Select(xAxisElement.current).call(xScale) : null;
       const tooltipProps = {
         tooltipCls: classes.tooltip!,
@@ -393,7 +399,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       _xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     // Used to display tooltip at y axis labels.
-    if (props.showYAxisLablesTooltip) {
+    if (showYAxisLabelsTooltip) {
       // To create y axis tick values by if specified truncating the rest of the text
       // and showing elipsis or showing the whole string,
       yScalePrimary &&
@@ -401,7 +407,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           yAxisElement.current!,
           yScalePrimary,
           props.noOfCharsToTruncate || 4,
-          props.showYAxisLablesTooltip || false,
+          showYAxisLabelsTooltip || false,
           _useRtl,
         );
 
@@ -575,13 +581,13 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
   function _calcMaxLabelWidthWithTransform(x: (string | number)[]) {
     // Case: rotated labels
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+    if (!wrapXAxisLabels && rotateXAxisLabelsProp && props.xAxisType! === XAxisTypes.StringAxis) {
       const longestLabelWidth = calculateLongestLabelWidth(x, `.${classes.xAxis} text`);
       return Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
     }
 
     // Case: truncated labels
-    if (props.showXAxisLablesTooltip) {
+    if (showXAxisLabelsTooltip) {
       const tickLabels = x.map(val => {
         const numChars = props.noOfCharsToTruncate || 4;
         return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
@@ -592,7 +598,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     }
 
     // Case: wrapped labels
-    if (props.wrapXAxisLables) {
+    if (wrapXAxisLabels) {
       // FIXME: Calculate the max width of lines instead of words. This requires applying
       // the wrapping transformation earlier to obtain the actual rendered lines.
       const words: string[] = [];
@@ -620,7 +626,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
      * */
-    if (props.wrapXAxisLables || props.showXAxisLablesTooltip) {
+    if (wrapXAxisLabels || showXAxisLabelsTooltip) {
       let maxXAxisLabelWidth: number | undefined;
       if (props.xAxisType === XAxisTypes.StringAxis) {
         if ((props.datasetForXAxisDomain?.length || 0) > 1) {
@@ -633,7 +639,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       const wrapLabelProps = {
         node: xAxisElement.current!,
         xAxis: _xScale,
-        showXAxisLablesTooltip: props.showXAxisLablesTooltip || false,
+        showXAxisLablesTooltip: showXAxisLabelsTooltip || false,
         noOfCharsToTruncate: props.noOfCharsToTruncate || 4,
         width: maxXAxisLabelWidth,
         container: chartContainer.current,
@@ -641,7 +647,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
       _removalValueForTextTuncate = createWrapOfXLabels(wrapLabelProps) ?? 0;
     }
 
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+    if (!wrapXAxisLabels && rotateXAxisLabelsProp && props.xAxisType! === XAxisTypes.StringAxis) {
       const rotateLabelProps = {
         node: xAxisElement.current!,
         xAxis: _xScale,

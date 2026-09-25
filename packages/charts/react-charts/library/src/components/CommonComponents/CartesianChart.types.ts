@@ -350,27 +350,48 @@ export interface CartesianChartProps {
   legendProps?: Partial<LegendsProps>;
 
   /**
-   *@default false
-   *Used for to elipse x axis labes and show tooltip on x axis labels
+   * @default false
+   * Used to ellipse x-axis labels and show a tooltip on x-axis labels.
+   */
+  showXAxisLabelsTooltip?: boolean;
+
+  /**
+   * @deprecated Use `showXAxisLabelsTooltip` instead.
+   * @default false
+   * Used to ellipse x-axis labels and show a tooltip on x-axis labels.
    */
   showXAxisLablesTooltip?: boolean;
 
   /**
    * @default 4
-   * Used for X axis labels
-   * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
+   * Used for X axis labels.
+   * When setting `showXAxisLabelsTooltip`, defines after how many chars the word should be truncated.
    */
   noOfCharsToTruncate?: number;
 
   /**
    * @default false
-   * Used to wrap x axis labels values (whole value)
+   * Used to wrap x-axis label values (whole value).
+   */
+  wrapXAxisLabels?: boolean;
+
+  /**
+   * @deprecated Use `wrapXAxisLabels` instead.
+   * @default false
+   * Used to wrap x-axis label values (whole value).
    */
   wrapXAxisLables?: boolean;
 
   /**
    * @default false
-   * Used to rotate x axis labels by 45 degrees
+   * Used to rotate x-axis labels by 45 degrees.
+   */
+  rotateXAxisLabels?: boolean;
+
+  /**
+   * @deprecated Use `rotateXAxisLabels` instead.
+   * @default false
+   * Used to rotate x-axis labels by 45 degrees.
    */
   rotateXAxisLables?: boolean;
 
@@ -549,13 +570,28 @@ export interface CartesianChartProps {
   yAxis?: AxisProps;
 
   /**
-   *@default false
-   *Used for showing complete y axis lables   */
+   * @default false
+   * Used for showing complete y-axis labels.
+   */
+  showYAxisLabels?: boolean;
+
+  /**
+   * @deprecated Use `showYAxisLabels` instead.
+   * @default false
+   * Used for showing complete y-axis labels.
+   */
   showYAxisLables?: boolean;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
+   * @default false
+   * Used to ellipse y-axis labels and show a tooltip on y-axis labels.
+   */
+  showYAxisLabelsTooltip?: boolean;
+
+  /**
+   * @deprecated Use `showYAxisLabelsTooltip` instead.
+   * @default false
+   * Used to ellipse y-axis labels and show a tooltip on y-axis labels.
    */
   showYAxisLablesTooltip?: boolean;
 }
@@ -715,14 +751,29 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   xAxisOuterPadding?: number;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
+   * @default false
+   * Used to ellipse y-axis labels and show a tooltip on y-axis labels.
+   */
+  showYAxisLabelsTooltip?: boolean;
+
+  /**
+   * @deprecated Use `showYAxisLabelsTooltip` instead.
+   * @default false
+   * Used to ellipse y-axis labels and show a tooltip on y-axis labels.
    */
   showYAxisLablesTooltip?: boolean;
 
   /**
-   *@default false
-   *Used for showing complete y axis lables   */
+   * @default false
+   * Used for showing complete y-axis labels.
+   */
+  showYAxisLabels?: boolean;
+
+  /**
+   * @deprecated Use `showYAxisLabels` instead.
+   * @default false
+   * Used for showing complete y-axis labels.
+   */
   showYAxisLables?: boolean;
 
   /**
