@@ -31,7 +31,7 @@ The v9 API does not support many of the features offered in v0. Some could poten
 |                | `design`        |            |
 | `disabled`     |                 | `disabled` |
 |                | `fluid`         |            |
-|                | `icon`          |            |
+|                | `icon`          | `icon`     |
 |                | `iconPosition`  |            |
 |                | `image`         |            |
 |                | `imagePosition` |            |
