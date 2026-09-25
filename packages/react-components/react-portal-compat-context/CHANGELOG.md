@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.17)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.16..@fluentui/react-portal-compat-context_v9.0.17)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.16)
 

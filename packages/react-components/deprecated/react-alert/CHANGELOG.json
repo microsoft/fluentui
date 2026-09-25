@@ -2,6 +2,79 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.0.2-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.11.8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.0.2-beta.1",
+      "tag": "@fluentui/react-alert_v9.0.2-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "b64fd7d4e996b6551ff37e3ef3d6e5e0835aba96",
+            "comment": "fix: restore named beta prerelease line (9.0.x-0 was published by mistake)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-avatar to v9.11.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.11.1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-tabster to v9.26.18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "a03842ae491e89168bbb76f338409f286fd66e74",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Aug 2026 16:40:04 GMT",
       "version": "9.0.2-0",
       "tag": "@fluentui/react-alert_v9.0.2-0",

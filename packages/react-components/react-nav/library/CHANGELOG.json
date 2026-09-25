@@ -2,6 +2,111 @@
   "name": "@fluentui/react-nav",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.4.7",
+      "tag": "@fluentui/react-nav_v9.4.7",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.4.6",
+      "tag": "@fluentui/react-nav_v9.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-aria to v9.17.15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-button to v9.11.1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.20"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-divider to v9.7.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-drawer to v9.13.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-motion to v9.16.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-tabster to v9.26.18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav",
+            "commit": "a03842ae491e89168bbb76f338409f286fd66e74",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Aug 2026 16:40:04 GMT",
       "version": "9.4.5",
       "tag": "@fluentui/react-nav_v9.4.5",

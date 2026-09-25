@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Tue, 03 Mar 2026 13:16:23 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 21 Sep 2026 15:07:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.1.4)
+
+Mon, 21 Sep 2026 15:07:56 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.1.3..@fluentui/react-conformance-griffel_v9.1.4)
+
+### Patches
+
+- fix: declare react-dom peer dependency (used at runtime), remove unused @types/react-dom, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.1.3)
 

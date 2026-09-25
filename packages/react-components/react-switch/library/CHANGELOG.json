@@ -2,6 +2,65 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.7.6",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.7.6",
+      "tag": "@fluentui/react-switch_v9.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.5.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.4.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-tabster to v9.26.18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:14 GMT",
       "version": "9.7.5",
       "tag": "@fluentui/react-switch_v9.7.5",
