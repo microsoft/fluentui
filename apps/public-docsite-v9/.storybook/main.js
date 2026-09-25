@@ -21,7 +21,6 @@ const tsConfigPath = path.join(__dirname, '../../../tsconfig.base.json');
 const playgroundModules = Object.fromEntries(
   [
     '@fluentui/react-components',
-    '@fluentui/react-components/unstable',
     '@fluentui/react-icons',
     '@fluentui/react-motion-components-preview',
     '@fluentui/react-calendar-compat',

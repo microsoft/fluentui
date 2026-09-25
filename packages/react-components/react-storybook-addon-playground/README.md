@@ -38,7 +38,6 @@ module.exports = {
       options: {
         modules: {
           '@fluentui/react-components': '@fluentui/react-components',
-          '@fluentui/react-components/unstable': '@fluentui/react-components/unstable',
           '@fluentui/react-icons': '@fluentui/react-icons',
         },
         setup: path.resolve(__dirname, './playground.setup.tsx'), // optional
