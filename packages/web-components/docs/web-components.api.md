@@ -3507,9 +3507,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
 export class RatingDisplay extends BaseRatingDisplay {
-    color?: RatingDisplayColor;
-    compact: boolean;
-    size?: RatingDisplaySize;
 }
 
 // @public
