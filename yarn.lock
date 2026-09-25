@@ -3279,6 +3279,7 @@ __metadata:
     "@fluentui/react-headless-components-preview": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    "@fluentui/react-storybook-addon-playground": "npm:*"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     tslib: "npm:^2.1.0"
@@ -3302,6 +3303,7 @@ __metadata:
     "@fluentui/react-northstar": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    "@fluentui/react-storybook-addon-playground": "npm:*"
     "@fluentui/react-timepicker-compat": "npm:*"
     "@fluentui/recipes": "npm:*"
     "@fluentui/theme-designer": "npm:*"
@@ -5590,18 +5592,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground":
+"@fluentui/react-storybook-addon-playground@npm:*, @fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
   dependencies:
+    "@fluentui/react-components": "npm:^9.74.9"
+    "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-utilities": "npm:^9.26.7"
     "@swc/helpers": "npm:^0.5.1"
+    lz-string: "npm:^1.5.0"
+    monaco-editor: "npm:0.52.2"
+    postcss: "npm:8.5.18"
+    prettier: "npm:^2.8.8"
+    semver: "npm:^6.2.0"
   peerDependencies:
     "@storybook/react": ">=9.1.17"
     "@types/react": ">=16.14.0 <20.0.0"
-    react: ">=16.14.0 <20.0.0"
-    react-dom: ">=16.14.0 <20.0.0"
+    react: ">=18.0.0 <20.0.0"
+    react-dom: ">=18.0.0 <20.0.0"
+    typescript: ">=4.5.0"
   peerDependenciesMeta:
     "@types/react":
+      optional: true
+    typescript:
       optional: true
   languageName: unknown
   linkType: soft
@@ -25097,6 +25110,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"monaco-editor@npm:0.52.2":
+  version: 0.52.2
+  resolution: "monaco-editor@npm:0.52.2"
+  checksum: 10c0/5a92da64f1e2ab375c0ce99364137f794d057c97bed10ecc65a08d6e6846804b8ecbd377eacf01e498f7dfbe1b21e8be64f728256681448f0484df90e767b435
+  languageName: node
+  linkType: hard
+
 "monosize-bundler-webpack@npm:0.4.1":
   version: 0.4.1
   resolution: "monosize-bundler-webpack@npm:0.4.1"
@@ -25239,12 +25259,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.12":
-  version: 3.3.16
-  resolution: "nanoid@npm:3.3.16"
+"nanoid@npm:^3.3.12, nanoid@npm:^3.3.18":
+  version: 3.3.18
+  resolution: "nanoid@npm:3.3.18"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 10c0/bbf2dcffe22d2b62d16de2711752070b539c0f644c7916f823ad6521986b2078cbe524f2d6240f58c46e9141ea0c7b87a029e100c0f7f175228cacaf30e41bba
+  checksum: 10c0/b994b4e396730f8be2520923284e2040d61eaee55cc6d4935ef6d38d34bafdc46133eda4d3faea5073bda545aa6079d82b886caeac5c731cf9ac18bcc1301425
   languageName: node
   linkType: hard
 
@@ -27001,7 +27021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.5.18, postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.3":
+"postcss@npm:8.5.18":
   version: 8.5.18
   resolution: "postcss@npm:8.5.18"
   dependencies:
@@ -27009,6 +27029,17 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/6fbab24a457ca5b90d423c333d0bab13e6646fda646e83235eed892f9e4f2dc6c50689ddc5ac1632fc085be2e096d2e8e03779ac092de6353e1cfcbbc3681685
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.1.4, postcss@npm:^8.4.33, postcss@npm:^8.5.3":
+  version: 8.5.28
+  resolution: "postcss@npm:8.5.28"
+  dependencies:
+    nanoid: "npm:^3.3.18"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/9fe44215a6628d89c8a75184b92f5b2f77e16f9e5b13b39b9009bb7e8e6eccddf82c8854bae922db1f17ace6ef3445073fe38abff513caeb03e5285b1b55620a
   languageName: node
   linkType: hard
 

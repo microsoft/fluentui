@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/react-storybook-addon-playground, an in-browser TSX playground for Storybook with a sandboxed live preview, shareable links and on-demand editor typings",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -1,0 +1,132 @@
+import {
+  compileCssModule,
+  findCompiledCssModule,
+  getUniqueCssModuleName,
+  normalizeCssModuleName,
+  toCssModuleSpecifier,
+  updateCssModuleSource,
+  validateCssModuleName,
+} from './cssModules';
+
+const buttonCss = `
+.button {
+  background: var(--accent);
+}
+.button:hover {
+  background: var(--accent-strong);
+}
+.demo .icon {
+  width: 14px;
+}
+:global(.sr-only) {
+  position: absolute;
+}
+`;
+
+describe('cssModules', () => {
+  describe('toCssModuleSpecifier', () => {
+    it('maps a basename or path to the transformed story import', () => {
+      expect(toCssModuleSpecifier('button.module.css')).toBe('./styles/button.module.css');
+      expect(toCssModuleSpecifier('./toggle-button.module.css')).toBe('./styles/toggle-button.module.css');
+    });
+  });
+
+  describe('compileCssModule', () => {
+    it('hashes local classes and unwraps :global() selectors for injection', () => {
+      const compiled = compileCssModule({ name: 'button.module.css', source: buttonCss });
+
+      expect(compiled.specifier).toBe('./styles/button.module.css');
+      expect(compiled.locals.button).toMatch(/^button__button--/);
+      expect(compiled.locals.demo).toMatch(/^button__demo--/);
+      expect(compiled.locals.icon).toMatch(/^button__icon--/);
+      expect(compiled.cssText).toContain(`.${compiled.locals.button} {`);
+      expect(compiled.cssText).toContain(`.${compiled.locals.button}:hover {`);
+      expect(compiled.cssText).toContain(`.${compiled.locals.demo} .${compiled.locals.icon} {`);
+      expect(compiled.cssText).toContain('.sr-only');
+      expect(compiled.cssText).not.toContain(':global(');
+      expect(compiled.cssText).not.toContain('.__PG_GLOBAL_');
+    });
+
+    it('is stable for the same source', () => {
+      const first = compileCssModule({ name: 'button.module.css', source: buttonCss });
+      const second = compileCssModule({ name: 'button.module.css', source: buttonCss });
+
+      expect(first.locals).toEqual(second.locals);
+      expect(first.cssText).toBe(second.cssText);
+    });
+
+    it('keeps class names stable across declaration edits, scoped to each file', () => {
+      const first = compileCssModule({ name: 'button.module.css', source: '.root { display: block; }' });
+      const second = compileCssModule({ name: 'button.module.css', source: '.root { display: flex; }' });
+      const other = compileCssModule({ name: 'card.module.css', source: '.root { display: flex; }' });
+      expect(first.locals).toEqual(second.locals);
+      expect(first.cssText).not.toEqual(second.cssText);
+      expect(other.locals.root).not.toEqual(second.locals.root);
+    });
+
+    it('does not rewrite comments or declaration values and supports nested globals', () => {
+      const compiled = compileCssModule({
+        name: 'content.module.css',
+        source: `
+          /* .comment */
+          .root::before { content: ".value"; }
+          :global(.outer :global(.inner)) .local { color: red; }
+        `,
+      });
+
+      expect(compiled.cssText).toContain('/* .comment */');
+      expect(compiled.cssText).toContain('content: ".value"');
+      expect(compiled.cssText).toContain(`.outer .inner .${compiled.locals.local}`);
+      expect(compiled.locals).toEqual({ root: expect.any(String), local: expect.any(String) });
+    });
+  });
+
+  describe('findCompiledCssModule', () => {
+    it('matches the transformed specifier or a relative basename', () => {
+      const compiled = compileCssModule({ name: 'button.module.css', source: '.root {}' });
+
+      expect(findCompiledCssModule('./styles/button.module.css', [compiled])).toBe(compiled);
+      expect(findCompiledCssModule('./button.module.css', [compiled])).toBe(compiled);
+      expect(findCompiledCssModule('./missing.module.css', [compiled])).toBeUndefined();
+    });
+  });
+
+  describe('updateCssModuleSource', () => {
+    it('replaces the source of the named module', () => {
+      const next = updateCssModuleSource(
+        [
+          { name: 'button.module.css', source: '.root { color: red; }' },
+          { name: 'icon.module.css', source: '.icon {}' },
+        ],
+        'button.module.css',
+        '.root { color: blue; }',
+      );
+
+      expect(next).toEqual([
+        { name: 'button.module.css', source: '.root { color: blue; }' },
+        { name: 'icon.module.css', source: '.icon {}' },
+      ]);
+    });
+  });
+
+  describe('adding CSS modules', () => {
+    const modules = [{ name: 'styles.module.css', source: '' }];
+
+    it('normalizes file names to CSS modules', () => {
+      expect(normalizeCssModuleName(' card ')).toBe('card.module.css');
+      expect(normalizeCssModuleName('card.css')).toBe('card.module.css');
+      expect(normalizeCssModuleName('./styles/card.module.css')).toBe('card.module.css');
+    });
+
+    it('rejects invalid and duplicate names', () => {
+      expect(validateCssModuleName('card.module.css', modules)).toBeUndefined();
+      expect(validateCssModuleName('Styles.module.css', modules)).toMatch(/already exists/);
+      expect(validateCssModuleName('my card.module.css', modules)).toMatch(/letters/);
+    });
+
+    it('suggests a unique name', () => {
+      expect(getUniqueCssModuleName([])).toBe('styles.module.css');
+      expect(getUniqueCssModuleName(modules)).toBe('styles2.module.css');
+    });
+  });
+});

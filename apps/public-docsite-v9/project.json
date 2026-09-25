@@ -14,7 +14,13 @@
             "storybook-llms-extractor",
             "react-alert",
             "react-infobutton",
-            "react-virtualizer"
+            "react-virtualizer",
+            "react-storybook-addon-playground",
+            "react-components",
+            "react-motion-components-preview",
+            "react-calendar-compat",
+            "react-datepicker-compat",
+            "react-timepicker-compat"
           ],
           "target": "build"
         }

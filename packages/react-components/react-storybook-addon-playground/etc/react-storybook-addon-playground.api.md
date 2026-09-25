@@ -4,14 +4,141 @@
 
 ```ts
 
+import type { JSXElement } from '@fluentui/react-utilities';
+import type { Parameters as Parameters_3 } from '@storybook/react-webpack5';
+import type * as React_2 from 'react';
+import type { StoryContext as StoryContext_2 } from '@storybook/react-webpack5';
+
+// @public
+export function createPlaygroundUrl(code: string, baseUrl?: string, cssModules?: readonly CssModuleSource[], title?: string): string;
+
+// @public (undocumented)
+export interface CssModuleSource {
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    source: string;
+}
+
+// @public
+export function decodeCode(encoded: string): string | null;
+
+// @public
+export function decodeCodeFromHash(hash: string): string | null;
+
+// @public
+export function definePlaygroundSetup<TTheme>(setup: PlaygroundSetup<TTheme>): PlaygroundSetup<TTheme>;
+
+// @public
+export function encodeCode(code: string): string;
+
 // @public (undocumented)
 interface Parameters_2 {
+    // (undocumented)
+    playground?: PlaygroundParameters;
 }
 export { Parameters_2 as Parameters }
 
+// @public (undocumented)
+export interface PlaygroundHashIssue {
+    // (undocumented)
+    kind: 'invalid-code' | 'invalid-css' | 'payload-too-large' | 'unsupported-version';
+    // (undocumented)
+    message: string;
+    // (undocumented)
+    version?: string;
+}
+
+// @public (undocumented)
+export interface PlaygroundHashReadResult {
+    issues: PlaygroundHashIssue[];
+    state: PlaygroundUrlState | null;
+}
+
+// @public
+export interface PlaygroundParameters {
+    disable?: boolean;
+}
+
+// @public (undocumented)
+export interface PlaygroundRuntimeManifest {
+    // (undocumented)
+    allowedModules: string[];
+    // (undocumented)
+    buildId: string;
+    moduleTypings?: Record<string, string[]>;
+    // (undocumented)
+    scripts: string[];
+    // (undocumented)
+    styles: string[];
+    typings: string;
+}
+
+// @public (undocumented)
+export interface PlaygroundSetup<TTheme = unknown> {
+    // (undocumented)
+    defaultCode?: string;
+    // (undocumented)
+    render?: (context: {
+        Component: React_2.ComponentType;
+        theme: TTheme | undefined;
+    }) => React_2.ReactElement;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    themes?: PlaygroundTheme<TTheme>[];
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export interface PlaygroundSetupMetadata {
+    // (undocumented)
+    defaultCode?: string;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    themes: Array<{
+        id: string;
+        label: string;
+        dark?: boolean;
+    }>;
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export interface PlaygroundTheme<TTheme = unknown> {
+    dark?: boolean;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    value: TTheme;
+}
+
+// @public (undocumented)
+export interface PlaygroundUrlState {
+    // (undocumented)
+    code: string;
+    // (undocumented)
+    cssModules: CssModuleSource[];
+    title?: string;
+}
+
 // @public
 export interface PresetConfig {
+    modules: Record<string, string>;
+    setup?: string;
+    typings?: string[];
 }
+
+// @public
+export function readPlaygroundHash(hash: string): PlaygroundHashReadResult;
+
+// @public
+export const withOpenInPlaygroundButton: (storyFn: (context: StoryContext) => JSXElement, context: StoryContext) => JSXElement;
 
 // (No @packageDocumentation comment for this package)
 

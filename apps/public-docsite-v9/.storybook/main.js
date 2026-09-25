@@ -1,9 +1,33 @@
 const path = require('path');
-const { getPackageStoriesGlob, registerTsPaths, rules, registerRules } = require('@fluentui/scripts-storybook');
+const {
+  getPackageStoriesGlob,
+  loadWorkspaceAddon,
+  registerTsPaths,
+  rules,
+  registerRules,
+} = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
+const tsConfigPath = path.join(__dirname, '../../../tsconfig.base.json');
+
+/**
+ * Packages that playground examples can import. Story sources are rewritten to `@fluentui/react-components` by the
+ * export-to-sandbox addon, so the suite entries cover most stories; the remaining entries are the most common extras.
+ *
+ * @type {Record<string, string>}
+ */
+const playgroundModules = Object.fromEntries(
+  [
+    '@fluentui/react-components',
+    '@fluentui/react-icons',
+    '@fluentui/react-motion-components-preview',
+    '@fluentui/react-calendar-compat',
+    '@fluentui/react-datepicker-compat',
+    '@fluentui/react-timepicker-compat',
+  ].map(name => [name, name]),
+);
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -46,7 +70,15 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
+  addons: [
+    ...rootMain.addons,
+    /** {@link file://./../../../packages/react-components/react-storybook-addon-playground/package.json} */
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-playground', {
+      tsConfigPath,
+      /** @type {import('../../../packages/react-components/react-storybook-addon-playground/src/index').PresetConfig} */
+      options: { modules: playgroundModules },
+    }),
+  ],
   build: {
     previewUrl: process.env.DEPLOY_PATH,
   },
