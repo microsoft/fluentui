@@ -32,6 +32,17 @@ describe('runner', () => {
 
       expect(getRequiredModules(code)).toEqual(['react']);
     });
+
+    it('extracts require() calls inside template literal substitutions', () => {
+      const code = [
+        'const version = `React ${require("react").version}`;',
+        'const nested = `a ${`b ${require("react-dom").version} require("text")`} ${{ key: require(\'@scope/pkg\') }.key}`;',
+        'const escaped = `\\${require("escaped")}`;',
+        'const after = require("react/jsx-runtime");',
+      ].join('\n');
+
+      expect(getRequiredModules(code)).toEqual(['react', 'react-dom', '@scope/pkg', 'react/jsx-runtime']);
+    });
   });
 
   describe('assertAllowedModules', () => {

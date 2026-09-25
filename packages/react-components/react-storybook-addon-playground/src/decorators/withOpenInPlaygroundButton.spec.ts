@@ -268,4 +268,24 @@ import { Icon } from '@fluentui/react-icons/lib/icons';
 
     expect(getUnavailableImports(source, allowed)).toEqual(['@fluentui/react-icons/lib/icons']);
   });
+
+  it('ignores statements that only look like imports', () => {
+    const source = `export const Default = () => <Button>import</Button>;
+export default { title: 'from' };
+const text = 'import x from';
+myrequire('left-pad');
+export * from 'react-window';
+import typeface from 'typeface-lib';
+`;
+
+    expect(getUnavailableImports(source, allowed)).toEqual(['react-window', 'typeface-lib']);
+  });
+
+  it('scans pathological input in linear time', () => {
+    const source = `\timport ${'\t'.repeat(50_000)}${' import'.repeat(50_000)}`;
+    const start = Date.now();
+
+    expect(getUnavailableImports(source, allowed)).toEqual([]);
+    expect(Date.now() - start).toBeLessThan(1000);
+  });
 });

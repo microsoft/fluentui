@@ -141,11 +141,26 @@ export function isCssSpecifier(name: string): boolean {
  */
 export function getRequiredModules(code: string): string[] {
   const modules = new Set<string>();
+  scanCode(code, 0, modules, false);
 
-  for (let index = 0; index < code.length; ) {
+  return Array.from(modules);
+}
+
+/**
+ * Scans JavaScript from `start`. With `untilClosingBrace`, stops after the `}` that closes a template literal
+ * substitution and returns the index after it.
+ */
+function scanCode(code: string, start: number, modules: Set<string>, untilClosingBrace: boolean): number {
+  let braceDepth = 0;
+
+  for (let index = start; index < code.length; ) {
     const character = code[index];
-    if (character === '"' || character === "'" || character === '`') {
+    if (character === '"' || character === "'") {
       index = skipQuoted(code, index, character);
+      continue;
+    }
+    if (character === '`') {
+      index = scanTemplate(code, index, modules);
       continue;
     }
     if (code.startsWith('//', index) || code.startsWith('/*', index)) {
@@ -155,6 +170,14 @@ export function getRequiredModules(code: string): string[] {
     if (isRegexLiteralStart(code, index)) {
       index = skipRegexLiteral(code, index);
       continue;
+    }
+    if (untilClosingBrace && character === '{') {
+      braceDepth += 1;
+    } else if (untilClosingBrace && character === '}') {
+      if (braceDepth === 0) {
+        return index + 1;
+      }
+      braceDepth -= 1;
     }
     if (
       code.startsWith('require', index) &&
@@ -177,7 +200,25 @@ export function getRequiredModules(code: string): string[] {
     index += 1;
   }
 
-  return Array.from(modules);
+  return code.length;
+}
+
+/** Skips template literal text but scans `${…}` substitutions, which are executable code. */
+function scanTemplate(code: string, start: number, modules: Set<string>): number {
+  for (let index = start + 1; index < code.length; ) {
+    const character = code[index];
+    if (character === '\\') {
+      index += 2;
+    } else if (character === '`') {
+      return index + 1;
+    } else if (character === '$' && code[index + 1] === '{') {
+      index = scanCode(code, index + 2, modules, true);
+    } else {
+      index += 1;
+    }
+  }
+
+  return code.length;
 }
 
 /**

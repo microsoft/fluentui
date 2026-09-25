@@ -207,6 +207,22 @@ function getDefaultSetupPath(): string {
   return require.resolve('./defaultSetup');
 }
 
+const unsafeScriptCharacters: Record<string, string> = {
+  '<': '\\u003C',
+  '>': '\\u003E',
+  '/': '\\u002F',
+  '\u2028': '\\u2028',
+  '\u2029': '\\u2029',
+};
+
+/**
+ * Serializes a string as a JavaScript string literal for generated source. On top of `JSON.stringify`, escapes
+ * characters that could end a comment or script block, or a line in older engines.
+ */
+function toJsStringLiteral(value: string): string {
+  return JSON.stringify(value).replace(/[<>/\u2028\u2029]/g, character => unsafeScriptCharacters[character]);
+}
+
 /**
  * Builds the playground runtime entry source.
  *
@@ -220,10 +236,10 @@ export function buildRuntimeEntrySource(options: PresetConfig, lazyModules = fal
   const moduleLoaders = modules
     .map(
       ([publicName, request], index) =>
-        `${JSON.stringify(publicName)}: () => ${
+        `${toJsStringLiteral(publicName)}: () => ${
           lazyModules
-            ? `import(/* webpackChunkName: "playground-module-${index}" */ ${JSON.stringify(request)})`
-            : `import(/* webpackMode: "eager" */ ${JSON.stringify(request)})`
+            ? `import(/* webpackChunkName: "playground-module-${index}" */ ${toJsStringLiteral(request)})`
+            : `import(/* webpackMode: "eager" */ ${toJsStringLiteral(request)})`
         }`,
     )
     .join(',\n  ');
@@ -233,7 +249,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactDOMClient from 'react-dom/client';
 import * as ReactJsxRuntime from 'react/jsx-runtime';
-import * as setupModule from ${JSON.stringify(setupPath)};
+import * as setupModule from ${toJsStringLiteral(setupPath)};
 // This entry is \`.mjs\`: a default import of a CommonJS setup (such as the compiled default setup) would yield
 // \`module.exports\` rather than its \`default\` export.
 const setupExports = setupModule.default;
@@ -247,7 +263,7 @@ const moduleLoaders = {
 };
 const allowedModules = Object.freeze(Object.keys(moduleLoaders));
 
-const register = globalThis[${JSON.stringify(REGISTER_CALLBACK)}];
+const register = globalThis[${toJsStringLiteral(REGISTER_CALLBACK)}];
 if (typeof register === 'function') {
   register({
     React,

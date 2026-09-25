@@ -1,4 +1,5 @@
-import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
+import { compressToEncodedURIComponent } from 'lz-string';
+import { type BoundedDecompressResult, decompressFromEncodedURIComponentBounded } from './lzString';
 
 export const CODE_HASH_PARAM = 'code';
 export const CSS_HASH_PARAM = 'css';
@@ -12,10 +13,15 @@ export const PLAYGROUND_HASH_VERSION = 1;
 /** Links longer than this may be truncated by chat apps, email clients, or browsers. */
 export const RECOMMENDED_MAX_URL_LENGTH = 8000;
 /**
- * Compressed payloads longer than this are not decompressed, so a crafted link cannot make the playground expand a
- * decompression bomb. It is far above {@link RECOMMENDED_MAX_URL_LENGTH}, which links should stay under anyway.
+ * Compressed payloads longer than this are rejected before decoding. It is far above
+ * {@link RECOMMENDED_MAX_URL_LENGTH}, which links should stay under anyway.
  */
 export const MAX_ENCODED_PAYLOAD_LENGTH = 200_000;
+/**
+ * Decoding stops once the decompressed code or styles would exceed this many characters. LZ payloads can expand
+ * quadratically, so this, not {@link MAX_ENCODED_PAYLOAD_LENGTH}, bounds the work a crafted link can cause.
+ */
+export const MAX_DECODED_PAYLOAD_LENGTH = 1_000_000;
 /** Longer titles are truncated. */
 export const MAX_TITLE_LENGTH = 120;
 /** Relative to Storybook's `iframe.html`: shell under `/playground/app`, runtime under `/playground/runtime`. */
@@ -57,17 +63,17 @@ export function encodeCode(code: string): string {
  * Inverse of {@link encodeCode}. Returns `null` when the payload is missing or cannot be decoded.
  */
 export function decodeCode(encoded: string): string | null {
-  if (!encoded) {
-    return null;
-  }
+  const decoded = decompressFromEncodedURIComponentBounded(encoded, MAX_DECODED_PAYLOAD_LENGTH);
 
-  const decoded = decompressFromEncodedURIComponent(encoded);
-
-  return typeof decoded === 'string' ? decoded : null;
+  return decoded.ok ? decoded.value : null;
 }
 
-function parseCssModulesPayload(encoded: string): CssModuleSource[] | null {
-  const json = decodeCode(encoded);
+function parseCssModulesPayload(encoded: string): CssModuleSource[] | null | 'too-large' {
+  const decoded = decompressFromEncodedURIComponentBounded(encoded, MAX_DECODED_PAYLOAD_LENGTH);
+  if (!decoded.ok) {
+    return decoded.reason === 'too-large' ? 'too-large' : null;
+  }
+  const json = decoded.value;
   if (!json) {
     return null;
   }
@@ -115,7 +121,15 @@ export function readPlaygroundHash(hash: string): PlaygroundHashReadResult {
     return { state: null, issues };
   }
 
-  const code = encoded === '' ? '' : decodeCode(encoded);
+  const decodedCode: BoundedDecompressResult =
+    encoded === ''
+      ? { ok: true, value: '' }
+      : decompressFromEncodedURIComponentBounded(encoded, MAX_DECODED_PAYLOAD_LENGTH);
+  if (!decodedCode.ok && decodedCode.reason === 'too-large') {
+    issues.push({ kind: 'payload-too-large', message: 'The code in this link is too large to open.' });
+    return { state: null, issues };
+  }
+  const code = decodedCode.ok ? decodedCode.value : null;
   if (code === null) {
     issues.push({ kind: 'invalid-code', message: 'The code in this link could not be read. It may be truncated.' });
     return { state: null, issues };
@@ -127,7 +141,9 @@ export function readPlaygroundHash(hash: string): PlaygroundHashReadResult {
     issues.push({ kind: 'payload-too-large', message: 'The styles in this link are too large to open.' });
   } else if (encodedCss) {
     const parsed = parseCssModulesPayload(encodedCss);
-    if (parsed === null) {
+    if (parsed === 'too-large') {
+      issues.push({ kind: 'payload-too-large', message: 'The styles in this link are too large to open.' });
+    } else if (parsed === null) {
       issues.push({ kind: 'invalid-css', message: 'The styles in this link could not be read. It may be truncated.' });
     } else {
       cssModules = parsed;

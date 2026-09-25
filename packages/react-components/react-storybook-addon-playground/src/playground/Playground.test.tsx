@@ -426,4 +426,28 @@ describe('Playground compile transaction', () => {
     expect(window.location.hash).toContain('code=');
     expect(screen.getByText('Saved to the link')).toBeTruthy();
   });
+
+  it('selects the TSX tab when Reset removes the active CSS module', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(
+      <Playground
+        initialCode="export default First;"
+        initialCssModules={[{ name: 'styles.module.css', source: '.root {}' }]}
+        manifest={manifest}
+      />,
+    );
+    await flushEffects();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Add CSS module' }));
+    fireEvent.change(screen.getByRole('textbox', { name: 'CSS module name' }), { target: { value: 'extra' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getByRole('tab', { name: 'extra.module.css' }).getAttribute('aria-selected')).toBe('true');
+
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+
+    expect(screen.queryByRole('tab', { name: 'extra.module.css' })).toBeNull();
+    const tsxTab = screen.getByRole('tab', { name: 'example.tsx' });
+    expect(tsxTab.getAttribute('aria-selected')).toBe('true');
+    expect(tsxTab.getAttribute('tabindex')).toBe('0');
+  });
 });

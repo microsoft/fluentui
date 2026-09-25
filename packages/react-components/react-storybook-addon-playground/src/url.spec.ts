@@ -1,6 +1,7 @@
 import {
   CODE_HASH_PARAM,
   CSS_HASH_PARAM,
+  MAX_DECODED_PAYLOAD_LENGTH,
   MAX_ENCODED_PAYLOAD_LENGTH,
   MAX_TITLE_LENGTH,
   PLAYGROUND_HASH_VERSION,
@@ -177,6 +178,20 @@ describe('url', () => {
       expect(code.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
 
       const css = readPlaygroundHash(`#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${CSS_HASH_PARAM}=${oversized}`);
+      expect(css.state).toEqual({ code: sampleCode, cssModules: [] });
+      expect(css.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
+    });
+
+    it('refuses short payloads that decompress beyond the decoded limit', () => {
+      const bomb = encodeCode('a'.repeat(MAX_DECODED_PAYLOAD_LENGTH + 1));
+      expect(bomb.length).toBeLessThan(MAX_ENCODED_PAYLOAD_LENGTH);
+
+      const code = readPlaygroundHash(`#${CODE_HASH_PARAM}=${bomb}`);
+      expect(code.state).toBeNull();
+      expect(code.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
+      expect(decodeCode(bomb)).toBeNull();
+
+      const css = readPlaygroundHash(`#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${CSS_HASH_PARAM}=${bomb}`);
       expect(css.state).toEqual({ code: sampleCode, cssModules: [] });
       expect(css.issues).toEqual([expect.objectContaining({ kind: 'payload-too-large' })]);
     });

@@ -14,8 +14,78 @@ function getAllowedModules(): string[] | undefined {
     : __FLUENTUI_PLAYGROUND_ALLOWED_MODULES__;
 }
 
-const importSpecifierPattern =
-  /(?:^|[\s;])(?:import|export)\s+(type\s+)?(?:[\w*{}\s,$]+?\s+from\s+)?['"]([^'"]+)['"]|\brequire\(\s*['"]([^'"]+)['"]\s*\)/g;
+const moduleKeywordPattern = /(?<![\w$.])(import|export|require)(?![\w$])/g;
+const typeOnlyClausePattern = /^\s+type[\s{*]/;
+
+function isSpace(character: string | undefined): boolean {
+  return character !== undefined && /\s/.test(character);
+}
+
+function skipSpaces(source: string, start: number): number {
+  let index = start;
+  while (isSpace(source[index])) {
+    index += 1;
+  }
+  return index;
+}
+
+function readQuoted(source: string, start: number): { value: string; end: number } | undefined {
+  const quote = source[start];
+  if (quote !== '"' && quote !== "'") {
+    return undefined;
+  }
+
+  const end = source.indexOf(quote, start + 1);
+  const value = end === -1 ? '' : source.slice(start + 1, end);
+  return value && !/[\r\n]/.test(value) ? { value, end: end + 1 } : undefined;
+}
+
+/**
+ * Specifiers of `import`/`export … from` statements and `require()` calls. A linear scan (no backtracking regex), since
+ * the story source is arbitrary text.
+ */
+function getModuleReferences(source: string): Array<{ specifier: string; typeOnly: boolean }> {
+  const references: Array<{ specifier: string; typeOnly: boolean }> = [];
+  moduleKeywordPattern.lastIndex = 0;
+
+  for (let match = moduleKeywordPattern.exec(source); match; match = moduleKeywordPattern.exec(source)) {
+    const afterKeyword = match.index + match[1].length;
+
+    if (match[1] === 'require') {
+      const openParen = skipSpaces(source, afterKeyword);
+      const argument = source[openParen] === '(' ? readQuoted(source, skipSpaces(source, openParen + 1)) : undefined;
+      if (argument && source[skipSpaces(source, argument.end)] === ')') {
+        references.push({ specifier: argument.value, typeOnly: false });
+        moduleKeywordPattern.lastIndex = argument.end;
+      }
+      continue;
+    }
+
+    // The import clause ends at the specifier quote; statements without one (e.g. `export const`) end at `;`.
+    let clauseEnd = afterKeyword;
+    while (clauseEnd < source.length && !'\'";('.includes(source[clauseEnd])) {
+      clauseEnd += 1;
+    }
+    // Keywords inside the scanned clause cannot start another module reference, so skip past it.
+    moduleKeywordPattern.lastIndex = clauseEnd;
+
+    const clause = source.slice(afterKeyword, clauseEnd);
+    const trimmed = clause.trimEnd();
+    const sideEffectImport = match[1] === 'import' && trimmed === '';
+    const fromClause =
+      trimmed.endsWith('from') &&
+      trimmed.length > 4 &&
+      /[\s}*]/.test(trimmed[trimmed.length - 5]) &&
+      isSpace(clause[0]);
+    const specifier = sideEffectImport || fromClause ? readQuoted(source, clauseEnd) : undefined;
+    if (specifier) {
+      references.push({ specifier: specifier.value, typeOnly: typeOnlyClausePattern.test(clause) });
+      moduleKeywordPattern.lastIndex = specifier.end;
+    }
+  }
+
+  return references;
+}
 
 /**
  * Returns the packages imported by the story source that the playground cannot load. Type-only imports are erased
@@ -25,13 +95,8 @@ const importSpecifierPattern =
 export function getUnavailableImports(source: string, allowedModules: string[]): string[] {
   const unavailable = new Set<string>();
 
-  for (const match of source.matchAll(importSpecifierPattern)) {
-    const [, typeOnly, importSpecifier, requireSpecifier] = match;
-    const specifier = importSpecifier ?? requireSpecifier;
-    if (!specifier || typeOnly) {
-      continue;
-    }
-    if (!specifier.startsWith('.') && !allowedModules.includes(specifier)) {
+  for (const { specifier, typeOnly } of getModuleReferences(source)) {
+    if (!typeOnly && !specifier.startsWith('.') && !allowedModules.includes(specifier)) {
       unavailable.add(specifier);
     }
   }

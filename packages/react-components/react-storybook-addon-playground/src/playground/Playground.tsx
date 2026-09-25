@@ -238,7 +238,9 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [runtimeReady, setRuntimeReady] = React.useState(false);
   const [code, setCode] = React.useState(initialCode ?? '');
   const [cssModules, setCssModules] = React.useState(initialCssModules);
-  const [activeFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
+  const [selectedFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
+  // A removed module (e.g. by Reset) falls back to the TSX file, so exactly one tab stays selected and edits are kept.
+  const activeFileId = cssModules.some(mod => mod.name === selectedFileId) ? selectedFileId : TSX_FILE_PATH;
   const [previewCssModules, setPreviewCssModules] = React.useState<CompiledCssModule[]>([]);
   const [model, setModel] = React.useState<monaco.editor.ITextModel | null>(null);
   const [compiledCode, setCompiledCode] = React.useState<string | null>(null);
@@ -601,6 +603,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     const nextCssModules = initialCssModules.map(mod => ({ ...mod }));
     setCode(nextCode);
     setCssModules(nextCssModules);
+    setActiveFileId(current => (nextCssModules.some(mod => mod.name === current) ? current : TSX_FILE_PATH));
   }, [initialCode, initialCssModules, metadata.defaultCode]);
 
   const handleRestart = React.useCallback(() => {

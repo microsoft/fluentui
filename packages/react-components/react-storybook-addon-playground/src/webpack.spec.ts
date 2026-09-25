@@ -308,10 +308,10 @@ describe('buildRuntimeEntrySource', () => {
     );
 
     expect(source).toContain(
-      '"icons": () => import(/* webpackChunkName: "playground-module-0" */ "@fluentui/react-icons")',
+      '"icons": () => import(/* webpackChunkName: "playground-module-0" */ "@fluentui\\u002Freact-icons")',
     );
     expect(source).toContain(
-      '"button": () => import(/* webpackChunkName: "playground-module-1" */ "@fluentui/react-headless-components-preview/button")',
+      '"button": () => import(/* webpackChunkName: "playground-module-1" */ "@fluentui\\u002Freact-headless-components-preview\\u002Fbutton")',
     );
     expect(source).not.toContain('import * as __pg_mod_');
     expect(source).toContain("import * as React from 'react';");
@@ -328,13 +328,26 @@ describe('buildRuntimeEntrySource', () => {
     });
 
     expect(source).toContain(
-      '"@fluentui/react-components": () => import(/* webpackMode: "eager" */ "@fluentui/react-components")',
+      '"@fluentui\\u002Freact-components": () => import(/* webpackMode: "eager" */ "@fluentui\\u002Freact-components")',
     );
     expect(source).toContain(
-      '"@fluentui/react-icons": () => import(/* webpackMode: "eager" */ "@fluentui/react-icons")',
+      '"@fluentui\\u002Freact-icons": () => import(/* webpackMode: "eager" */ "@fluentui\\u002Freact-icons")',
     );
     expect(source).toContain('const allowedModules = Object.freeze(Object.keys(moduleLoaders));');
     expect(source).toContain('allowedModules,');
     expect(source).not.toContain('import * as __pg_mod_');
+  });
+
+  it('escapes configured values so they cannot break out of the generated source', () => {
+    const source = buildRuntimeEntrySource(
+      { modules: { 'evil*/</script>\u2028': 'pkg"*/\n' }, setup: '/abs/setup.tsx' },
+      true,
+    );
+
+    expect(source).toContain(
+      '"evil*\\u002F\\u003C\\u002Fscript\\u003E\\u2028": () => import(/* webpackChunkName: "playground-module-0" */ "pkg\\"*\\u002F\\n")',
+    );
+    expect(source).toContain('import * as setupModule from "\\u002Fabs\\u002Fsetup.tsx";');
+    expect(source).not.toMatch(/[\u2028\u2029]/);
   });
 });

@@ -107,7 +107,8 @@ The sandbox remains `allow-scripts` only; live updates never add `allow-same-ori
 Links store the code and CSS modules in the URL hash (`#code=…&css=…&title=…&v=1`), compressed with lz-string. `v` is
 the format version; links without it are read as version 1. The optional `title` names the example (the **Open in
 Playground** button sets it to `Component: Story`) and is shown in the header and the browser tab. Payloads longer than
-200,000 characters are not decompressed. The playground warns when a link cannot be fully read (for
+200,000 characters are rejected, and decoding stops once the code or styles would exceed 1,000,000 characters, so a
+small crafted link cannot expand into a huge document. The playground warns when a link cannot be fully read (for
 example when a chat app truncated it) and when **Copy link** produces a URL longer than 8,000 characters.
 `readPlaygroundHash` exposes the same parser for tools that create or inspect links.
 
