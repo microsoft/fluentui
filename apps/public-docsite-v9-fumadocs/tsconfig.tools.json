@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "verbatimModuleSyntax": false },
+  "include": ["*.config.ts", "mdx-plugins/**/*.ts", "vite-plugins/**/*.ts", "src/types/vite-env.d.ts"],
+  "exclude": ["node_modules", "dist", "vite-plugins/**/*.test.ts"]
+}

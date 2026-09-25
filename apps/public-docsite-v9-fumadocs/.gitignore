@@ -1,0 +1,5 @@
+# Generated React Router types and Fumadocs content modules.
+.react-router/
+.source/
+.fumadocs-typescript/
+.impeccable/

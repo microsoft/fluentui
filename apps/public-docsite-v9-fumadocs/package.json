@@ -1,0 +1,53 @@
+{
+  "name": "@fluentui/public-docsite-v9-fumadocs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fluent UI React v9 and Headless documentation site",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "react-router typegen && NODE_OPTIONS=--max-old-space-size=4096 react-router build",
+    "dev": "react-router dev",
+    "preview": "vite preview",
+    "start": "react-router dev",
+    "generate-browser-support": "node -r ../../scripts/ts-node/src/register ../../tools/web-features/src/generate.ts --output src/components/BrowserSupport/browser-support-data.generated.json --features popover,dialog,focusgroup,anchor-positioning=css.properties.anchor-name,anchor-name=anchor-positioning::css.properties.anchor-name,position-area=anchor-positioning::css.properties.position-area,position-try-fallbacks=anchor-positioning::css.properties.position-try-fallbacks,anchor-center=anchor-positioning::css.properties.place-self.anchor-center"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-headless-components-preview": "*",
+    "@fluentui/react-headless-components-preview-stories": "*",
+    "@fluentui/react-shared-contexts": "*",
+    "@fluentui/react-theme": "*",
+    "@fluentui/react-utilities": "*",
+    "@fluentui/theme": "*",
+    "@fumadocs/story": "1.2.0",
+    "@griffel/react": "^1.5.32",
+    "@react-router/node": "7.18.2",
+    "clsx": "^2.1.1",
+    "fumadocs-core": "16.14.4",
+    "fumadocs-mdx": "15.2.3",
+    "fumadocs-ui": "16.14.4",
+    "lucide-react": "^0.548.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-hook-form": "^6.15.8",
+    "react-router": "7.18.2",
+    "rehype-raw": "^7.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "shiki": "4.4.3"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@react-router/dev": "7.18.2",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "fumadocs-typescript": "5.3.0",
+    "jiti": "^2.6.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.7.3",
+    "vite": "8.3.0"
+  }
+}

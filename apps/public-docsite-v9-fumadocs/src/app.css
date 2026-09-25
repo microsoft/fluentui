@@ -1,0 +1,70 @@
+@layer theme, base, preview-reset, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import '@fumadocs/story/css/preset.css';
+
+@config '../tailwind.config.ts';
+
+button:is([data-search], [data-search-full], [data-theme-toggle]):not(:disabled),
+[data-theme-toggle] button:not(:disabled) {
+  cursor: pointer;
+}
+
+@layer preview-reset {
+  [data-fluent-preview] *:not(svg, svg *) {
+    all: revert;
+  }
+}
+
+:root {
+  --color-fd-muted-foreground: oklch(43% 0.02 264);
+}
+
+.dark {
+  --color-fd-muted-foreground: oklch(78% 0.02 264);
+}
+
+@theme {
+  --color-fd-destructive: oklch(45% 0.19 25);
+  --color-fd-destructive-border: oklch(80% 0.09 25);
+  --color-fd-destructive-surface: oklch(97% 0.02 25);
+}
+
+.dark {
+  --color-fd-destructive: oklch(78% 0.14 25);
+  --color-fd-destructive-border: oklch(45% 0.11 25);
+  --color-fd-destructive-surface: oklch(28% 0.06 25);
+}
+
+#nd-docs-layout > div[class*='grid-area:main'] {
+  align-self: start;
+}
+
+.docs-react :is(#nd-sidebar, #nd-sidebar-mobile) [data-radix-scroll-area-viewport] > * > a[href$='/docs/headless'],
+:is(#nd-sidebar, #nd-sidebar-mobile) [data-radix-scroll-area-viewport] > * > a[href='https://storybooks.fluentui.dev/charts/']
+{
+  order: 1;
+}
+
+.docs-react :is(#nd-sidebar, #nd-sidebar-mobile) [data-radix-scroll-area-viewport] > * > a[href$='/docs/headless'] {
+  @apply mt-lg;
+}
+
+.dark pre.shiki {
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+.shiki code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}

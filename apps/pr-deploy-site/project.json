@@ -2,6 +2,12 @@
   "name": "pr-deploy-site",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
+  "targets": {
+    "generate:site": {
+      "cache": false,
+      "dependsOn": [{ "projects": ["public-docsite-v9-fumadocs"], "target": "prepare-pr-deploy" }]
+    }
+  },
   "implicitDependencies": [],
   "tags": []
 }

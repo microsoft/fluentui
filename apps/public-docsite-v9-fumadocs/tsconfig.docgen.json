@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.all.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "noEmit": true
+  },
+  "files": []
+}

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "avatar-group-migration",
+    "button-migration",
+    "card-migration",
+    "charts-migration",
+    "checkbox-migration",
+    "choice-group-to-radio-group-migration",
+    "color-picker-migration",
+    "flex",
+    "grouped-list-migration",
+    "image-migration",
+    "keytips-migration",
+    "label-migration",
+    "menu-migration",
+    "separator-to-divider-migration",
+    "slider-migration",
+    "spin-button-migration",
+    "spinner-migration",
+    "tabs-pivot-migration",
+    "text-field-to-input-migration",
+    "textarea-migration",
+    "theme-migration",
+    "..."
+  ]
+}

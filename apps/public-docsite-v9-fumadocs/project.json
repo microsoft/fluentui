@@ -1,0 +1,52 @@
+{
+  "name": "public-docsite-v9-fumadocs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/public-docsite-v9-fumadocs/src",
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "prepare-pr-deploy": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "apps/public-docsite-v9-fumadocs",
+        "command": "node scripts/prepare-pr-deploy.cjs"
+      }
+    },
+    "build": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.source", "{projectRoot}/.react-router"],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/tsconfig.base.json",
+        "{workspaceRoot}/tsconfig.base.all.json",
+        { "env": "DOCSITE_BASE_PATH" }
+      ]
+    },
+    "type-check": {
+      "dependsOn": ["build", "^build"]
+    },
+    "dev": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
+    },
+    "start": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
+    },
+    "test": {
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }]
+    },
+    "lint": {
+      "dependsOn": ["build"],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.js"],
+      "options": {
+        "command": "yarn run -T eslint ."
+      }
+    },
+    "clean": {
+      "options": {
+        "paths": ["dist", ".source", ".react-router", ".eslintcache", "node_modules/.vite"]
+      }
+    }
+  }
+}

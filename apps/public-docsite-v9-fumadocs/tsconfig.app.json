@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx", ".react-router/types/**/*"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
+}

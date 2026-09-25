@@ -91,6 +91,18 @@ function main() {
       title: 'Headless Components',
     },
     {
+      package: '@fluentui/public-docsite-v9-fumadocs',
+      link: './docs/react/',
+      icon: 'Website',
+      title: 'React documentation (Fumadocs)',
+    },
+    {
+      package: '@fluentui/public-docsite-v9-fumadocs',
+      link: './docs/headless/',
+      icon: 'Code',
+      title: 'Headless documentation (Fumadocs)',
+    },
+    {
       package: '@fluentui/perf-test',
       link: './perf-test/index.html',
       icon: 'SpeedHigh',

@@ -52,7 +52,18 @@ jobs:
       - name: Build Storybooks
         run: yarn nx affected -t build-storybook --nxBail
 
+      - name: Build affected Fumadocs site
+        env:
+          DOCSITE_BASE_PATH: /pull/${{ github.event.number }}/
+        run: |
+          affected=$(yarn nx show projects -p public-docsite-v9-fumadocs --affected --verbose false)
+          if [ -n "$affected" ]; then
+            yarn nx run public-docsite-v9-fumadocs:build --nxBail
+          fi
+
       - name: Generate PR Deploy Site
+        env:
+          DOCSITE_BASE_PATH: /pull/${{ github.event.number }}/
         run: yarn nx run pr-deploy-site:generate:site
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
