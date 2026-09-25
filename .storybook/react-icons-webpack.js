@@ -82,6 +82,7 @@ function configureReactIcons(options) {
     config.plugins.push(new FluentUIReactIconsFontSubsettingPlugin());
   }
 
+  /** @type {string[]} */
   const styleImports = [];
   if (headless) {
     styleImports.push(headlessBaseStyles);
