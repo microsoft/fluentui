@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-nav): show selection indicator on selected NavSubItem",
+  "packageName": "@fluentui/react-nav",
+  "email": "geervan99@gmail.com"
+}
