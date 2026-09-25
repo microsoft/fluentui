@@ -71,6 +71,19 @@ export function parseArguments(args) {
   };
 }
 
+export function fingerprintPlan(snapshot, { reviewers, staleDays = 90 } = {}) {
+  const options = {
+    staleDays,
+    reviewers: snapshot.profiles.map(profile => ({
+      repo: profile.repo,
+      target: reviewers ?? profile.settings.reviewers,
+    })),
+  };
+  return createHash('sha256')
+    .update(JSON.stringify({ ...snapshot, options }))
+    .digest('hex');
+}
+
 export async function loadProfiles() {
   const schema = JSON.parse(await readFile(join(directory, 'reviewers.schema.json'), 'utf8'));
   const validator = new Ajv2020({ allErrors: true }).compile(schema);
@@ -229,7 +242,7 @@ async function main() {
     };
   });
   const snapshot = { account, profiles, rosters, repositories, queues, drift, issues, assignments };
-  const fingerprint = createHash('sha256').update(JSON.stringify(snapshot)).digest('hex');
+  const fingerprint = fingerprintPlan(snapshot, args);
   const load = {};
   for (const issue of issues) {
     for (const login of new Set(issue.requestedReviewers.map(login => login.toLowerCase()))) {

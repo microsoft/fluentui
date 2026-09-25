@@ -1,8 +1,17 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
-import { loadProfiles, parseArguments } from './plan.mjs';
+import { fingerprintPlan, loadProfiles, parseArguments } from './plan.mjs';
 import { dedupeQueue, detectArea, planAssignments, validateProfiles } from './planner.mjs';
+
+test('approval fingerprint includes effective reviewer target and stale threshold', () => {
+  const snapshot = { profiles: [{ repo: 'microsoft/fluentui', settings: { reviewers: 1 } }], assignments: [] };
+  const initial = fingerprintPlan(snapshot, {});
+
+  assert.equal(initial, fingerprintPlan(snapshot, { reviewers: 1, staleDays: 90 }));
+  assert.notEqual(initial, fingerprintPlan(snapshot, { reviewers: 2 }));
+  assert.notEqual(initial, fingerprintPlan(snapshot, { staleDays: 30 }));
+});
 
 test('validates all repository profiles against the shared schema', async () => {
   const profiles = await loadProfiles();
