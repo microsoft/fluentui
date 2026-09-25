@@ -7,7 +7,10 @@ import {
   usePositioning,
   useSafeZoneArea,
   usePositioningSlideDirection,
+  createVirtualElementFromClick,
   type PositioningShorthandValue,
+  type PositioningImperativeRef,
+  type SetVirtualMouseTarget,
 } from '@fluentui/react-positioning';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
@@ -102,9 +105,29 @@ export const useMenuBase_unstable = (
 
   const { targetDocument } = useFluent();
   const triggerId = useId('menu');
-  const [contextTarget, setContextTarget] = usePositioningMouseTarget();
+  const [contextTarget, setContextTargetState] = usePositioningMouseTarget();
 
   const resolvedPositioning = resolvePositioningShorthand(props.positioning);
+  const internalPositioningRef = React.useRef<PositioningImperativeRef>(null);
+  const positioningRef = useMergedRefs(internalPositioningRef, resolvedPositioning.positioningRef);
+
+  // Sets the context target imperatively so that a later user positioningRef.setTarget() call is not
+  // clobbered by a state-driven `target` option re-sync (https://github.com/microsoft/fluentui/issues/31727).
+  // The legacy contextTarget state is kept in sync for consumers of MenuState.contextTarget.
+  const setContextTarget: SetVirtualMouseTarget = useEventCallback(event => {
+    setContextTargetState(event);
+
+    // Preserve existing precedence: an explicit `positioning.target` from the user always wins
+    if (openOnContext && !('target' in resolvedPositioning)) {
+      if (event === undefined || event === null) {
+        internalPositioningRef.current?.setTarget(null);
+      } else {
+        const nativeEvent = event instanceof MouseEvent ? event : event.nativeEvent;
+        internalPositioningRef.current?.setTarget(createVirtualElementFromClick(nativeEvent));
+      }
+    }
+  });
+
   const handlePositionEnd = usePositioningSlideDirection({
     targetDocument,
     onPositioningEnd: resolvedPositioning.onPositioningEnd,
@@ -113,10 +136,10 @@ export const useMenuBase_unstable = (
   const positioningOptions = {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
-    target: props.openOnContext ? contextTarget : undefined,
     fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
     ...resolvedPositioning,
     onPositioningEnd: handlePositionEnd,
+    positioningRef,
   } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -286,7 +309,7 @@ const useMenuOpenState = (
 
   const trySetOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
-    onOpenChange?.(event, { ...data });
+
     if (data.open && e.type === 'contextmenu') {
       state.setContextTarget(e as React.MouseEvent);
     }
@@ -294,6 +317,11 @@ const useMenuOpenState = (
     if (!data.open) {
       state.setContextTarget(undefined);
     }
+
+    // Fire the user's onOpenChange only after the internal context target is set so that an
+    // imperative positioningRef.setTarget() call inside onOpenChange takes precedence
+    // (https://github.com/microsoft/fluentui/issues/31727).
+    onOpenChange?.(event, { ...data });
 
     if (data.bubble) {
       parentSetOpen(e, { ...data });
