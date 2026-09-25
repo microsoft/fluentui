@@ -763,8 +763,6 @@ export class BaseProgressBar extends FASTElement {
     protected minChanged(prev: number | undefined, next: number | undefined): void;
     // @internal
     protected setIndicatorWidth(): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     value?: number;
     // @internal
     protected valueChanged(prev: number | undefined, next: number | undefined): void;
@@ -3406,8 +3404,6 @@ export type Orientation = (typeof Orientation)[keyof typeof Orientation];
 
 // @public
 export class ProgressBar extends BaseProgressBar {
-    shape?: ProgressBarShape;
-    thickness?: ProgressBarThickness;
 }
 
 // @public
