@@ -166,6 +166,7 @@
     "@types/yargs": "13.0.11",
     "@typescript-eslint/eslint-plugin": "8.46.2",
     "@typescript-eslint/rule-tester": "^8.46.2",
+    "ajv": "^8.13.0",
     "autoprefixer": "10.2.1",
     "babel-jest": "30.4.1",
     "babel-loader": "9.1.3",

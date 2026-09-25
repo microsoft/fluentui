@@ -2936,6 +2936,7 @@ __metadata:
     "@types/yargs": "npm:13.0.11"
     "@typescript-eslint/eslint-plugin": "npm:8.46.2"
     "@typescript-eslint/rule-tester": "npm:^8.46.2"
+    ajv: "npm:^8.13.0"
     autoprefixer: "npm:10.2.1"
     babel-jest: "npm:30.4.1"
     babel-loader: "npm:9.1.3"
