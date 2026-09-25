@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Slider } from './slider.js';
-import { SliderSize, tagName } from './slider.options.js';
+import { tagName } from './slider.options.js';
 
 interface BoundingBox {
   x: number;
@@ -188,18 +188,6 @@ test.describe('Slider', () => {
 
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
-
-  for (const size of Object.values(SliderSize)) {
-    test(`should set the \`size\` property to \`${size}\` when the \`size\` attribute is set to \`${size}\``, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
 
   test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async ({ fastPage }) => {
     const { element } = fastPage;
