@@ -25,7 +25,7 @@ const createAtomMotion = (type: AtomType) => {
         rotateAtom({ direction: 'enter', duration: demoDuration, easing, axis: 'z', outAngle: -90 }),
       );
     case 'blur':
-      return createMotionComponent(blurAtom({ direction: 'enter', duration: demoDuration, easing, outRadius: '10px' }));
+      return createMotionComponent(blurAtom({ duration: demoDuration, easing, fromRadius: '10px', toRadius: '0px' }));
     default: {
       const _exhaustive: never = type;
       throw new Error(`Unhandled atom type: ${_exhaustive}`);
@@ -68,10 +68,9 @@ const atomCodeSnippets: Record<AtomType, string> = {
   inAngle: 0,
 })`,
   blur: `blurAtom({
-  direction: 'enter',
   duration: 600,
-  outRadius: '10px',
-  inRadius: '0px',
+  fromRadius: '10px',
+  toRadius: '0px',
 })`,
 };
 
