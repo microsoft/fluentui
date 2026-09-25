@@ -1,191 +1,96 @@
 'use client';
 
 import * as React from 'react';
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type {
-  PositioningImperativeRef,
-  PositioningShorthandValue,
-  PositioningVirtualElement,
-} from '@fluentui/react-positioning';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PositioningProps, PositioningReturn } from './types';
-import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
-import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
-import { usePlacementObserver } from './usePlacementObserver';
+import { useCssAnchorPositioning } from './useCssAnchorPositioning';
+import { useEnginePositioning } from './useEnginePositioning';
+import { usePositioningEngineContext } from './PositioningEngineContext';
 
-export type TargetElement = HTMLElement | PositioningVirtualElement;
-
-const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
-
-const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
+export type { TargetElement } from './useCssAnchorPositioning';
 
 /**
- * Reads the current anchor-name property from an element and parses it into an array of names.
- * Handles comma-separated values and trimming.
+ * Options that CSS anchor positioning cannot express. They only take effect with an engine.
  */
-const readAnchorNames = (element: HTMLElement): string[] => {
-  return element.style
-    .getPropertyValue('anchor-name')
-    .split(',')
-    .map(name => name.trim())
-    .filter(Boolean);
-};
+const ENGINE_ONLY_OPTIONS = [
+  'arrowPadding',
+  'autoSize',
+  'disableUpdateOnResize',
+  'flipBoundary',
+  'onPositioningEnd',
+  'overflowBoundary',
+  'overflowBoundaryPadding',
+  'shiftToCoverTarget',
+  'useTransform',
+] as const satisfies ReadonlyArray<keyof PositioningProps>;
 
+const noopRef: React.RefCallback<HTMLElement> = () => undefined;
+
+/**
+ * Positions a surface relative to a target.
+ *
+ * By default this uses native CSS anchor positioning. When an engine is supplied — inline through
+ * `options.engine` or app-wide through `PositioningEngineProvider` — the engine owns positioning
+ * entirely and the CSS path is not applied.
+ */
 export function usePositioning(options: PositioningProps): PositioningReturn {
-  const {
-    pinned,
-    target: customTarget = null,
-    align: alignInput = ALIGNMENTS.center,
-    position = POSITIONS.above,
-    fallbackPositions = EMPTY_FALLBACK_POSITIONS,
-    offset,
-    coverTarget = false,
-    strategy = 'fixed',
-    matchTargetSize,
-    positioningRef,
-  } = options;
+  const { engine: engineFromOptions, positioningRef, ...positioningOptions } = options;
+  const engineFromContext = usePositioningEngineContext();
+  const engine = engineFromOptions ?? engineFromContext;
+  const strategy = positioningOptions.strategy ?? 'fixed';
 
-  const align = normalizeAlign(alignInput);
+  const unsupportedOptions = engine
+    ? ''
+    : ENGINE_ONLY_OPTIONS.filter(key => positioningOptions[key] !== undefined)
+        .map(key => `"${key}"`)
+        .join(', ');
+  const warnedRef = React.useRef(false);
 
-  const { mainAxis, crossAxis } = resolveOffset(offset);
-  const coverAlignment = React.useMemo(
-    () => (coverTarget ? getCoverSelfAlignment(position, align) : null),
-    [coverTarget, position, align],
-  );
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && unsupportedOptions && !warnedRef.current) {
+      warnedRef.current = true;
+      // eslint-disable-next-line no-console
+      console.warn(
+        '@fluentui/react-headless-components-preview [usePositioning]: ' +
+          `${unsupportedOptions} require a JavaScript positioning engine and have no effect with CSS anchor ` +
+          'positioning. Pass `positioning={{ engine }}` or wrap the tree in `PositioningEngineProvider` ' +
+          '(for example with `floatingUIPositioningEngine` from `@fluentui/react-positioning`).',
+      );
+    }
+  }, [unsupportedOptions]);
 
-  const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
-  const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
+  const css = useCssAnchorPositioning({
+    enabled: engine === undefined,
+    align: positioningOptions.align,
+    coverTarget: positioningOptions.coverTarget,
+    fallbackPositions: positioningOptions.fallbackPositions,
+    matchTargetSize: positioningOptions.matchTargetSize,
+    offset: positioningOptions.offset,
+    pinned: positioningOptions.pinned,
+    position: positioningOptions.position,
+    strategy,
+    target: positioningOptions.target,
+  });
 
-  const anchorName = `--${useId('popover-anchor-')}`;
-  const positionArea = POSITION_AREA_MAP[position][align];
-  const placement = getPlacementString(position, align);
+  const delegated = useEnginePositioning({ ...positioningOptions, strategy, engine });
 
-  const { targetDocument } = useFluent();
-
-  const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
-
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  const active = engine ? delegated : css;
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
-      setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
-      },
-      updatePosition: requestPlacementUpdate,
+      setTarget: active.setTarget,
+      updatePosition: active.updatePosition,
     }),
-    [requestPlacementUpdate],
+    [active],
   );
 
-  useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
-      return;
-    }
-
-    // `anchor-name` is a comma-separated list. Append this instance's name
-    // instead of overwriting so that multiple positioned popovers can share a
-    // single trigger (e.g. a Tooltip on hover and a Menu on click attached to
-    // the same button) without clobbering each other's anchor. On cleanup we
-    // remove only our own name, preserving any others still in use.
-    if (anchorName) {
-      const names = readAnchorNames(effectiveTarget);
-      if (!names.includes(anchorName)) {
-        effectiveTarget.style.setProperty('anchor-name', [...names, anchorName].join(', '));
-      }
-    }
-
-    return () => {
-      if (anchorName) {
-        const remaining = readAnchorNames(effectiveTarget).filter(name => name !== anchorName);
-        if (remaining.length > 0) {
-          effectiveTarget.style.setProperty('anchor-name', remaining.join(', '));
-        } else {
-          effectiveTarget.style.removeProperty('anchor-name');
-        }
-      }
-    };
-  }, [effectiveTarget, anchorName]);
-
-  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
-  }, []);
-
-  const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
-    node => {
-      setContainerEl(node);
-
-      if (!node) {
-        return;
-      }
-
-      node.style.setProperty('position', strategy);
-      node.style.setProperty('inset', 'auto');
-      node.style.setProperty('margin', '0');
-
-      applyOffset(node, position, mainAxis, crossAxis);
-
-      if (matchTargetSize === 'width') {
-        node.style.setProperty('width', 'anchor-size(width)');
-      } else {
-        node.style.removeProperty('width');
-      }
-
-      node.style.setProperty('position-anchor', anchorName);
-      node.setAttribute('data-placement', placement);
-
-      if (coverAlignment) {
-        node.style.setProperty('position-area', 'center');
-        node.style.setProperty('align-self', coverAlignment.alignSelf);
-        node.style.setProperty('justify-self', coverAlignment.justifySelf);
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      node.style.setProperty('position-area', positionArea);
-
-      /*
-       * Workaround for https://crbug.com/438334710: Chromium (<=130-ish) doesn't
-         apply the implicit `anchor-center` self-alignment that the spec defines
-         for single-keyword `position-area` values (`block-start`, `block-end`,
-    `    inline-start`, `inline-end`) or `span-all`.
-      */
-      if (align === ALIGNMENTS.center) {
-        node.style.setProperty('place-self', 'anchor-center');
-      } else {
-        node.style.removeProperty('place-self');
-        node.style.removeProperty('align-self');
-        node.style.removeProperty('justify-self');
-      }
-
-      if (pinned) {
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      if (fallbackAreas.length > 0) {
-        node.style.setProperty('position-try-fallbacks', fallbackAreas.join(', '));
-      } else {
-        node.style.setProperty('position-try-fallbacks', DEFAULT_FLIP.join(', '));
-      }
-    },
-    [
-      anchorName,
-      positionArea,
-      placement,
-      fallbackAreas,
-      pinned,
-      position,
-      align,
-      mainAxis,
-      crossAxis,
-      coverAlignment,
-      strategy,
-      matchTargetSize,
-    ],
+  return React.useMemo(
+    () => ({
+      targetRef: active.targetRef,
+      containerRef: active.containerRef,
+      arrowRef: engine ? delegated.arrowRef : noopRef,
+    }),
+    [active, delegated.arrowRef, engine],
   );
-
-  return { targetRef, containerRef };
 }

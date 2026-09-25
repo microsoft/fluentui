@@ -1,6 +1,7 @@
 export type {
   Position,
   Alignment,
+  PositioningEngine,
   PositioningProps,
   PositioningReturn,
   PositioningImperativeRef,
@@ -9,6 +10,7 @@ export type {
 } from './hooks/usePositioning';
 export {
   usePositioning,
+  PositioningEngineProvider,
   POSITIONS,
   ALIGNMENTS,
   getPlacementString,

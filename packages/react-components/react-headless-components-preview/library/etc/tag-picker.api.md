@@ -11,6 +11,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
+import type { PositioningEngine } from '@fluentui/react-positioning';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';

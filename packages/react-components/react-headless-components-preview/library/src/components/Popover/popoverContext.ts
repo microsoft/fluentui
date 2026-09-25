@@ -22,6 +22,7 @@ const popoverContextDefaultValue: PopoverContextValue = {
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,
+    arrowRef: () => undefined,
   },
   surfaceId: '',
 };

@@ -207,10 +207,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnContext,
       withArrow,
       trapFocus,
-      positioning: {
-        targetRef: positioning.targetRef,
-        containerRef: positioning.containerRef,
-      },
+      positioning,
       surfaceId,
     },
   };
