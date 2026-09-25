@@ -2736,9 +2736,6 @@ export const dropdownInputTemplate: ViewTemplate<BaseDropdown, any>;
 // @public
 export class DropdownOption extends FASTElement implements Start {
     constructor();
-    active: boolean;
-    // @internal
-    protected activeChanged(prev: boolean, next: boolean): void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
