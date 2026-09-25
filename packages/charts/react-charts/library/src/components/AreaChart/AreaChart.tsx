@@ -651,38 +651,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       return fillColor;
     }
 
-    // Large-data mode: expose the whole series as a single listbox/option instead of per-point circles.
-    function _createLargeDataAreaSeries(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      singleStackedData: Array<any>,
-      index: number,
-      points: LineChartPoints[],
-      d: string,
-      layerOpacity: number,
-    ): JSXElement {
-      const groupAriaLabel = `${points[index].legend} data series`;
-      const ariaLabel = `${points[index].legend}, series ${index + 1} of ${points.length} with ${
-        points[index].data.length
-      } data points.`;
-      return (
-        <g role="listbox" aria-label={groupAriaLabel}>
-          <path
-            id={`${index}-graph-${_uniqueIdForGraph}`}
-            d={d}
-            fill={props.enableGradient ? `url(#gradient_${index})` : _colors[index]}
-            opacity={layerOpacity}
-            fillOpacity={_getOpacity(points[index]!.legend)}
-            onMouseMove={event => _onRectMouseMove(event)}
-            onMouseOut={_onRectMouseOut}
-            onMouseOver={event => _onRectMouseMove(event)}
-            tabIndex={_legendHighlighted(points[index]!.legend) || _noLegendHighlighted() ? 0 : undefined}
-            role="option"
-            aria-label={ariaLabel}
-          />
-        </g>
-      );
-    }
-
     function _drawGraph(
       containerHeight: number,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -755,8 +723,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 onMouseOut={_onRectMouseOut}
                 onMouseOver={event => _onRectMouseMove(event)}
               />
-            ) : props.optimizeLargeData ? (
-              _createLargeDataAreaSeries(singleStackedData, index, points, area(singleStackedData)!, layerOpacity)
             ) : (
               <path
                 id={`${index}-graph-${_uniqueIdForGraph}`}
@@ -767,6 +733,13 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 onMouseMove={event => _onRectMouseMove(event)}
                 onMouseOut={_onRectMouseOut}
                 onMouseOver={event => _onRectMouseMove(event)}
+                {...(props.optimizeLargeData && {
+                  tabIndex: _legendHighlighted(points[index]!.legend) || _noLegendHighlighted() ? 0 : undefined,
+                  role: 'img',
+                  'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
+                    points[index].data.length
+                  } data points.`,
+                })}
               />
             )}
           </React.Fragment>,
