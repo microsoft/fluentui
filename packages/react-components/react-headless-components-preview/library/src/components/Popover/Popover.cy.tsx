@@ -19,24 +19,23 @@ const popoverContentSelector = '[role="group"]';
  * Marks a focus-restoration scenario as a known gap of the native
  * `popover="auto"` model.
  *
- * Two distinct gaps put scenarios in this bucket:
+ * Two distinct gaps originally put scenarios in this bucket:
  *
- * 1. Programmatic close: when React state flips `open: true → false`, the
+ * 1. Programmatic close: when React state flips `open: true -> false`, the
  *    surface unmounts before any close-side effect can call `hidePopover()`,
- *    so the spec hide algorithm never runs and no focus restoration happens.
- *    The trailing pointer event from the close interaction (e.g. clicking a
- *    "Close" button) leaves focus on that button.
+ *    so the spec hide algorithm never runs. The component now restores focus
+ *    lost from the surface; intentional focus on an outside Close button is
+ *    preserved. Both cases have active regressions below.
  *
  * 2. Hover and contextmenu opens: the spec hide algorithm restores focus to
- *    the element that was focused when `showPopover()` ran. Hover and
- *    contextmenu paths never move focus to the trigger before opening, so
- *    the snapshot points at whatever was focused before — usually `<body>` —
- *    and restoration after close lands on the wrong element.
+ *    the element that was focused when `showPopover()` ran. These paths do
+ *    not necessarily focus the trigger, so the snapshot may point elsewhere.
+ *    The original trigger-return scenarios remain below as executable
+ *    documentation of that gap, rather than being removed by this fix.
  *
- * Both gaps require a manual focus snapshot taken at intent-to-open and
- * replayed when `open` transitions back to false. The tests below are kept
- * as executable documentation; un-skipping them is the canary that the
- * manual snapshot is in place.
+ * The skipped scenarios are not a policy to focus the trigger after every
+ * non-click open: if the surface never receives focus, closing it must not
+ * acquire focus. Active tests below cover that distinction.
  */
 const itSkipUnsupportedFocusRestore = (description: string, fn: () => void): void => {
   it.skip(description, fn);
@@ -241,8 +240,127 @@ describe('Popover', () => {
     });
   });
 
-  describe('Focus restore — unsupported scenarios', () => {
-    itSkipUnsupportedFocusRestore('programmatic close: should restore focus to trigger', () => {
+  describe('Focus restoration for controlled and non-click opens', () => {
+    (['inside', 'outside'] as const).forEach(stoppedFocus => {
+      it(`tracks ${stoppedFocus} focus when its handler stops propagation`, () => {
+        const Example = () => {
+          const [open, setOpen] = React.useState(true);
+          const stopPropagation = (event: React.FocusEvent<HTMLButtonElement>) => event.stopPropagation();
+          return (
+            <>
+              <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+                <PopoverTrigger disableButtonEnhancement>
+                  <button data-testid="trigger">Trigger</button>
+                </PopoverTrigger>
+                <PopoverSurface data-testid="surface">
+                  <button data-testid="inside" onFocus={stoppedFocus === 'inside' ? stopPropagation : undefined}>
+                    Inside
+                  </button>
+                </PopoverSurface>
+              </Popover>
+              <button
+                data-testid="outside"
+                onFocus={stoppedFocus === 'outside' ? stopPropagation : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Close
+              </button>
+            </>
+          );
+        };
+        mount(<Example />);
+        cy.get('[data-testid=surface]').should('be.visible');
+        if (stoppedFocus === 'inside') {
+          cy.get('[data-testid=outside]').focus();
+          cy.get('[data-testid=inside]').focus();
+        } else {
+          cy.get('[data-testid=inside]').focus();
+          cy.get('[data-testid=outside]').focus().blur();
+        }
+        cy.get('[data-testid=outside]').trigger('click');
+        cy.get('[data-testid=surface]').should('not.exist');
+        if (stoppedFocus === 'inside') {
+          cy.get('[data-testid=trigger]').should('have.focus');
+        } else {
+          cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+        }
+      });
+    });
+
+    it('programmatic close: restores focus lost from inside the surface', () => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="surface">
+              <button data-testid="close" onClick={() => setOpen(false)}>
+                Close
+              </button>
+            </PopoverSurface>
+          </Popover>
+        );
+      };
+      mount(<Example />);
+      cy.get('[data-testid=close]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.get('[data-testid=trigger]').should('have.focus');
+    });
+
+    it('programmatic close: does not reclaim focus after an outside control loses focus', () => {
+      const Example = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <>
+            <Popover open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+              <PopoverTrigger disableButtonEnhancement>
+                <button data-testid="trigger">Trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface data-testid="surface">Content</PopoverSurface>
+            </Popover>
+            <button data-testid="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </>
+        );
+      };
+      mount(<Example />);
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=close]').focus().blur();
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+      // Dispatch the close without moving focus, as with a controlled prop update.
+      cy.get('[data-testid=close]').trigger('click');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+    });
+
+    it('hover-leave close: does not reclaim focus after an outside control loses focus', () => {
+      mount(
+        <>
+          <Popover openOnHover mouseLeaveDelay={0}>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="surface">Content</PopoverSurface>
+          </Popover>
+          <button data-testid="outside">Outside</button>
+        </>,
+      );
+      // Clear the native pointer left by earlier tests so closing cannot immediately reopen the popover.
+      cy.get('body').realHover({ position: 'bottomRight' });
+      // The open surface can cover the trigger; dispatch hover events without hit-testing or moving focus.
+      cy.get('[data-testid=trigger]').trigger('mouseover', { force: true });
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=outside]').focus().blur();
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+      cy.get('[data-testid=trigger]').trigger('mouseout', { force: true });
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+    });
+
+    it('programmatic close: preserves intentional focus on an outside control', () => {
       const Example = () => {
         const [open, setOpen] = React.useState(false);
         return (
@@ -264,7 +382,7 @@ describe('Popover', () => {
       cy.get('[data-testid=surface]').should('be.visible');
       cy.get('[data-testid=close]').click();
       cy.get('[data-testid=surface]').should('not.exist');
-      cy.focused().should('have.attr', 'data-testid', 'trigger');
+      cy.focused().should('have.attr', 'data-testid', 'close');
     });
 
     itSkipUnsupportedFocusRestore('hover-leave close: should restore focus to trigger', () => {

@@ -16,6 +16,9 @@ export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<Teach
 const useStyles = makeStyles({
   root: {
     minWidth: '96px',
+    '&[hidden]': {
+      visibility: 'hidden',
+    },
   },
   brandNext: {
     color: tokens.colorBrandForeground1,

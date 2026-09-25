@@ -9,7 +9,7 @@ import type {
 export function useTeachingPopoverCarouselContextValues_unstable(
   state: TeachingPopoverCarouselState,
 ): TeachingPopoverCarouselContextValues {
-  const { store, value, selectPageByValue, selectPageByDirection } = state;
+  const { store, value, selectPageByValue, selectPageByDirection, footerButtonRefs } = state;
 
   const carousel = React.useMemo(
     () => ({
@@ -17,8 +17,9 @@ export function useTeachingPopoverCarouselContextValues_unstable(
       value,
       selectPageByDirection,
       selectPageByValue,
+      footerButtonRefs,
     }),
-    [store, value, selectPageByDirection, selectPageByValue],
+    [store, value, selectPageByDirection, selectPageByValue, footerButtonRefs],
   );
 
   return { carousel };
