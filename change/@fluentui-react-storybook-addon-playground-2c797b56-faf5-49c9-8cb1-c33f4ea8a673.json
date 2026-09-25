@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: upgrade the playground editor to monaco-editor 0.52 (TypeScript 5.4)",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}

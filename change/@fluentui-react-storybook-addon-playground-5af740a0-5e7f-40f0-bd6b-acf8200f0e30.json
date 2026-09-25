@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add opt-in live preview updates with cached compilation, state-preserving CSS and theme updates, and an explicit sandbox restart.",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}

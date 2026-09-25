@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use live preview updates for all playgrounds and remove the mode selector, keeping an explicit Restart preview action for a clean sandbox.",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}

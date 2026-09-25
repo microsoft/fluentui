@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: load editor typings per imported module, harden webpack integration and slim published package",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}
