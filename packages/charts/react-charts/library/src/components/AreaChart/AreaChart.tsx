@@ -759,7 +759,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
             <g
               key={`${index}-dots-${_uniqueIdForGraph}`}
               clipPath="url(#clip)"
-              role="region"
+              role="listbox"
               aria-label={`${points[index].legend}, series ${index + 1} of ${points.length} with ${
                 points[index].data.length
               } data points.`}
@@ -769,6 +769,12 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
                 lineColor = points[index]!.color!;
                 const legend = points[index]!.legend;
+                const { opacity: circleOpacity, radius: circleRadiusValue } = _getCircleOpacityAndRadius(
+                  xDataPoint,
+                  circleRadius,
+                  circleId,
+                  legend,
+                );
                 return (
                   <circle
                     key={circleId}
@@ -779,14 +785,16 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                     stroke={lineColor}
                     strokeWidth={3}
                     fill={_updateCircleFillColor(xDataPoint, lineColor, circleId)}
+                    // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
+                    opacity={circleOpacity}
                     onMouseOut={_onRectMouseOut}
                     onMouseOver={event => _onRectMouseMove(event)}
                     {..._getOnClickHandler(points, index, pointIndex)}
                     onFocus={event => _handleFocus(event, index, pointIndex, circleId)}
                     onBlur={_handleBlur}
                     {...getSecureProps(pointOptions)}
-                    r={_getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
-                    role="img"
+                    r={circleRadiusValue}
+                    role="option"
                     aria-label={
                       (!_hasDuplicateXValues && !_hasMissingXValues && _getAriaLabel(index, pointIndex)) || undefined
                     }
@@ -865,6 +873,26 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       } else {
         return 0;
       }
+    }
+
+    function _getCircleOpacityAndRadius(
+      xDataPoint: number,
+      circleRadius: number,
+      circleId: string,
+      legend: string,
+    ): { opacity: number; radius: number } {
+      // Hide points whose legend isn't highlighted.
+      if (!_noLegendHighlighted() && !_legendHighlighted(legend)) {
+        return { opacity: 0, radius: 0 };
+      }
+      if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
+        return { opacity: 1, radius: 1 };
+      } else if (nearestCircleToHighlight === xDataPoint || activePoint === circleId) {
+        return { opacity: 1, radius: circleRadius };
+      }
+      // Keep focusable points full-size but transparent (opacity:0, not visibility:hidden) so Voice Control
+      // can target them while they stay visually hidden and remain focusable.
+      return { opacity: 0, radius: circleRadius };
     }
 
     /**
