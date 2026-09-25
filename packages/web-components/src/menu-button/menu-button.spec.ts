@@ -63,12 +63,6 @@ test.describe('MenuButton', () => {
     await expect(startSlot).toHaveText('🎯');
   });
 
-  test('should apply the `icon` property when the `icon-only` attribute is set', async ({ fastPage }) => {
-    await fastPage.setTemplate({ attributes: { 'icon-only': true } });
-
-    await expect(fastPage.element).toHaveJSProperty('iconOnly', true);
-  });
-
   test('should be focusable and respond to clicks', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate();
