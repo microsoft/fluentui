@@ -13,6 +13,22 @@ import { COMPILER_OPTIONS } from './compiler';
 
 type MonacoGlobal = typeof globalThis & { MonacoEnvironment?: monaco.Environment };
 
+const CANCELED = 'Canceled';
+
+/**
+ * Monaco cancels in-flight language feature requests (e.g. occurrence highlighting) when the editor switches models,
+ * and some of those promises are never awaited. Such rejections are expected, so keep them out of the error console.
+ */
+export function isMonacoCancellation(reason: unknown): boolean {
+  return reason instanceof Error && reason.name === CANCELED && reason.message === CANCELED;
+}
+
+globalThis.addEventListener?.('unhandledrejection', event => {
+  if (isMonacoCancellation(event.reason)) {
+    event.preventDefault();
+  }
+});
+
 (globalThis as MonacoGlobal).MonacoEnvironment = {
   getWorker(_workerId: string, label: string) {
     // `name` doubles as the webpack chunk name, see `webpack.playground.config.js`
@@ -37,8 +53,8 @@ monaco.languages.typescript.typescriptDefaults.addExtraLib(
 `,
   'file:///playground/css-modules.d.ts',
 );
-// Type declarations of the dependency allowlist are loaded asynchronously by `registerTypings()` (see `typings.ts`),
-// which enables semantic validation once they are available - until then it would only report missing modules.
+// Type declarations of imported modules are loaded on demand by `TypingsLoader` (see `typings.ts`), which enables
+// semantic validation once they are available - until then it would only report missing modules.
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
   noSemanticValidation: true,
   noSyntaxValidation: false,

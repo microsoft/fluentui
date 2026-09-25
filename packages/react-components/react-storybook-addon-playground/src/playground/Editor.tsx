@@ -102,7 +102,7 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>((props, ref)
       scrollBeyondLastLine: false,
       smoothScrolling: true,
       cursorBlinking: 'smooth',
-      cursorSmoothCaretAnimation: true,
+      cursorSmoothCaretAnimation: 'on',
       renderLineHighlight: 'all',
       wordWrap: 'on',
       fixedOverflowWidgets: true,

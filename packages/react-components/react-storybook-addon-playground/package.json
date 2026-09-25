@@ -19,7 +19,7 @@
     "semver": "^6.2.0"
   },
   "devDependencies": {
-    "monaco-editor": "^0.33.0",
+    "monaco-editor": "0.52.2",
     "postcss": "8.5.18",
     "prettier": "^2.8.8"
   },

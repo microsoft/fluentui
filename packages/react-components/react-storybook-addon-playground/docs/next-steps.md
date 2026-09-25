@@ -88,6 +88,7 @@ Implemented on `experimental/storybook-playground`:
 - Webpack integration hardening: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache`.
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
 - A Playwright e2e suite that covers the production runtime and shell.
+- Monaco 0.52 with TypeScript 5.4 (the last release before Monaco's AMD deprecation and the move of the TypeScript API to a top-level namespace).
 
 Deferred:
 

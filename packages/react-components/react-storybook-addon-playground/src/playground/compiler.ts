@@ -17,8 +17,10 @@ export const COMPILER_OPTIONS: monacoApi.languages.typescript.CompilerOptions = 
   target: 6, // ScriptTarget.ES2019
   moduleResolution: 2, // ModuleResolutionKind.NodeJs -> resolves `file:///node_modules/**` extra libs, see `typings.ts`
   // ImportsNotUsedAsValues.Preserve -> unused value imports still emit `require()`, so importing a module that isn't
-  // allowlisted is reported immediately instead of being silently elided
+  // allowlisted is reported immediately instead of being silently elided. Its replacement, `verbatimModuleSyntax`,
+  // rejects ESM syntax when emitting CommonJS, so keep the deprecated option until the runner consumes ESM.
   importsNotUsedAsValues: 1,
+  ignoreDeprecations: '5.0',
   esModuleInterop: true,
   allowSyntheticDefaultImports: true,
   allowNonTsExtensions: true,

@@ -65,8 +65,9 @@ project's `typescript` (an optional peer; a regular-expression parser is used wi
 
 The addon reads its options from Storybook's preset options, generates its runtime entry in
 `node_modules/.cache/fluentui-playground-runtime/` (next to the Storybook config), and keeps the runtime out of Storybook
-pages through `html-webpack-plugin` hooks. The editor packages (`monaco-editor`, Prettier, PostCSS) are bundled into the
-prebuilt shell and are not installed with the addon.
+pages through `html-webpack-plugin` hooks. The editor packages (`monaco-editor` 0.52 with TypeScript 5.4, Prettier,
+PostCSS) are bundled into the prebuilt shell and are not installed with the addon. Declarations are collected for the
+TypeScript version bundled with Monaco, so packages with `typesVersions` resolve the matching declaration tree.
 
 ### Live preview updates
 

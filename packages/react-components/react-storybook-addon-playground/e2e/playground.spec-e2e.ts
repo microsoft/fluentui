@@ -103,7 +103,10 @@ test.describe('playground', () => {
     const { pageErrors, previewButton, previewFrame, replaceActiveFile, errorAlert } = setupPage(page);
 
     await page.goto(
-      `${PLAYGROUND_URL}${createPlaygroundHash({ code: `${IMPORTS}export default () => <Button>Start</Button>;` })}`,
+      `${PLAYGROUND_URL}${createPlaygroundHash({
+        // `satisfies` needs TypeScript 4.9+, so this also guards the TypeScript version bundled with Monaco
+        code: `${IMPORTS}export default () => <Button>{'Start' satisfies string}</Button>;`,
+      })}`,
     );
     await expect(previewButton('Start')).toBeVisible();
 
