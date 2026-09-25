@@ -63,6 +63,39 @@ describe('createFloatingUIPositioningEngine', () => {
     );
     expect(container.style.position).toBe('fixed');
     expect(container).toHaveAttribute('data-popper-placement', 'bottom-start');
+    expect(container).toHaveAttribute('data-placement', 'below-start');
+
+    manager.dispose();
+  });
+
+  it('releases the UA top-layer inset before positioning', () => {
+    const { container, target } = createTestElements();
+    container.style.inset = '0px';
+
+    const manager = floatingUIPositioningEngine.create({ container, target, arrow: null, options: {} });
+
+    expect(container.style.getPropertyValue('inset')).toBe('auto');
+
+    manager.dispose();
+  });
+
+  it('writes a logical data-placement in rtl', async () => {
+    const { container, target } = createTestElements();
+    computePositionMock.mockResolvedValue({
+      x: 0,
+      y: 0,
+      placement: 'left-start',
+      strategy: 'fixed',
+      middlewareData: {
+        intersectionObserver: { intersecting: false },
+        hide: { escaped: false, referenceHidden: false },
+      },
+    });
+
+    const manager = floatingUIPositioningEngine.create({ container, target, arrow: null, dir: 'rtl', options: {} });
+    await flushMicrotasks();
+
+    expect(container).toHaveAttribute('data-placement', 'after-top');
 
     manager.dispose();
   });
@@ -107,6 +140,7 @@ describe('createFloatingUIPositioningEngine', () => {
     container.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT, { detail: { placement: 'top' } }));
 
     expect(onPositioningEnd).toHaveBeenCalledTimes(1);
+    expect(container).toHaveAttribute('data-placement', 'below-start');
   });
 
   it('does nothing when enabled is false', async () => {

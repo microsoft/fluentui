@@ -1,6 +1,6 @@
-import { toHeadlessPlacement } from './toHeadlessPlacement';
+import { toPositioningShorthandValue } from './toPositioningShorthandValue';
 
-describe('toHeadlessPlacement', () => {
+describe('toPositioningShorthandValue', () => {
   it.each([
     ['top', 'above'],
     ['top-start', 'above-start'],
@@ -15,7 +15,7 @@ describe('toHeadlessPlacement', () => {
     ['right-start', 'after-top'],
     ['right-end', 'after-bottom'],
   ] as const)('maps %s to %s in ltr', (placement, expected) => {
-    expect(toHeadlessPlacement(placement, false)).toBe(expected);
+    expect(toPositioningShorthandValue(placement, false)).toBe(expected);
   });
 
   it.each([
@@ -25,6 +25,6 @@ describe('toHeadlessPlacement', () => {
     ['right-end', 'before-bottom'],
     ['top-start', 'above-start'],
   ] as const)('maps %s to %s in rtl', (placement, expected) => {
-    expect(toHeadlessPlacement(placement, true)).toBe(expected);
+    expect(toPositioningShorthandValue(placement, true)).toBe(expected);
   });
 });

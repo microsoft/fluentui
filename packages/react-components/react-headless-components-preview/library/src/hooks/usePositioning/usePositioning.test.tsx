@@ -290,31 +290,29 @@ describe('usePositioning', () => {
       expect(getByTestId('container').style.getPropertyValue('position-area')).toBe('');
     });
 
-    it('resets the UA top-layer inset and seeds data-placement before the engine runs', () => {
+    it('seeds data-placement with the requested placement before the engine runs', () => {
       const engine = createFakeEngine();
       const { getByTestId } = render(<Surface positioning={{ engine, position: 'after', align: 'top' }} />);
 
-      expect(getByTestId('container')).toHaveStyle({ inset: 'auto', margin: '0px' });
       expect(getByTestId('container')).toHaveAttribute('data-placement', 'after-top');
     });
 
-    it('mirrors the resolved placement into data-placement and forwards onPositioningEnd', () => {
+    it('forwards onPositioningEnd to the engine with a stable identity', () => {
       const engine = createFakeEngine();
-      const onPositioningEnd = jest.fn();
-      const { getByTestId } = render(<Surface positioning={{ engine, onPositioningEnd }} />);
+      const first = jest.fn();
+      const second = jest.fn();
+      const { rerender } = render(<Surface positioning={{ engine, onPositioningEnd: first }} />);
 
-      const container = getByTestId('container');
+      rerender(<Surface positioning={{ engine, onPositioningEnd: second }} />);
+      expect(engine.create).toHaveBeenCalledTimes(1);
+
       const event = new CustomEvent('fui-positioningend', {
         detail: { placement: 'top-end', escaped: false, referenceHidden: false },
       });
-      Object.defineProperty(event, 'currentTarget', { value: container });
+      engine.create.mock.calls[0][0].options.onPositioningEnd?.(event as never);
 
-      act(() => {
-        engine.create.mock.calls[0][0].options.onPositioningEnd?.(event as never);
-      });
-
-      expect(container).toHaveAttribute('data-placement', 'above-end');
-      expect(onPositioningEnd).toHaveBeenCalledWith(event);
+      expect(first).not.toHaveBeenCalled();
+      expect(second).toHaveBeenCalledWith(event);
     });
 
     it('disposes the manager on unmount', () => {

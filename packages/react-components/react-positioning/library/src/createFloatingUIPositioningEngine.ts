@@ -1,12 +1,14 @@
-import { POSITIONING_END_EVENT } from './constants';
+import { DATA_PLACEMENT, POSITIONING_END_EVENT } from './constants';
 import { createPositionManager } from './createPositionManager';
 import { resolvePositioningOptions } from './resolvePositioningOptions';
 import type {
+  OnPositioningEndEvent,
   PositioningConfigurationFn,
   PositioningEngine,
   PositioningEngineCreateParams,
   PositionManager,
 } from './types';
+import { toPositioningShorthandValue } from './utils';
 
 const NOOP_MANAGER: PositionManager = {
   updatePosition: () => undefined,
@@ -31,12 +33,6 @@ export type CreateFloatingUIPositioningEngineOptions = {
  * features that CSS anchor positioning cannot express (`autoSize`, `flipBoundary`,
  * `overflowBoundary`, virtual targets, etc.).
  *
- * @example
- * ```tsx
- * import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
- *
- * <Menu positioning={{ autoSize: true, engine: floatingUIPositioningEngine }} />
- * ```
  */
 export function createFloatingUIPositioningEngine(
   engineOptions: CreateFloatingUIPositioningEngineOptions = {},
@@ -47,10 +43,23 @@ export function createFloatingUIPositioningEngine(
     create: (params: PositioningEngineCreateParams): PositionManager => {
       const { container, target, arrow, options, dir = 'ltr', targetDocument = container.ownerDocument } = params;
       const { enabled = true, onPositioningEnd } = options;
+      const isRtl = dir === 'rtl';
 
       if (!enabled) {
         return NOOP_MANAGER;
       }
+
+      // Top-layer surfaces (`[popover]:popover-open`, `dialog:modal`) receive `inset: 0` from the UA
+      // stylesheet. The manager only writes `left`/`top`, so `right`/`bottom` must be released first or
+      // the surface stretches across the viewport.
+      container.style.setProperty('inset', 'auto');
+
+      const handlePositioningEnd = (event: Event) => {
+        const { placement } = (event as OnPositioningEndEvent).detail;
+        container.setAttribute(DATA_PLACEMENT, toPositioningShorthandValue(placement, isRtl));
+        onPositioningEnd?.(event as OnPositioningEndEvent);
+      };
+      container.addEventListener(POSITIONING_END_EVENT, handlePositioningEnd);
 
       const manager = createPositionManager({
         container,
@@ -60,24 +69,16 @@ export function createFloatingUIPositioningEngine(
           container,
           arrow,
           options,
-          isRtl: dir === 'rtl',
+          isRtl,
           targetDocument,
           configFn: configuration,
         }),
       });
 
-      // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
-      const onPositioningEndListener = onPositioningEnd as EventListener | undefined;
-      if (onPositioningEndListener) {
-        container.addEventListener(POSITIONING_END_EVENT, onPositioningEndListener);
-      }
-
       return {
         updatePosition: manager.updatePosition,
         dispose: () => {
-          if (onPositioningEndListener) {
-            container.removeEventListener(POSITIONING_END_EVENT, onPositioningEndListener);
-          }
+          container.removeEventListener(POSITIONING_END_EVENT, handlePositioningEnd);
           manager.dispose();
         },
       };
