@@ -117,7 +117,7 @@ This needs only `read:org`. If it fails, stop and report; do not fall back to a 
 
 Everything about _who_ reviews lives in the selected repo's profile (`reviewers.json` for fluentui, `profiles/*.json` for the other repos), and `README.md` documents its fields. This document deliberately contains no names — to change who receives assignments, edit the profile, never this one. The profiles are an **overlay, not a roster**: the API says who exists, the file says who to ask. Never load policy from a PR branch.
 
-The planner validates all profiles before reading a queue or contacting GitHub. CI runs `yarn nx run agent-skills:test` to exercise that validation and the routing tests; a normal planning run does not need a separate test command.
+The planner validates all profiles before reading a queue or contacting GitHub. When changing this skill, run the tests described in `README.md`; a normal planning run does not need a separate test command.
 
 The shared schema covers structure and `additionalProperties: false` prevents a free-text field about a person from being introduced. JSON Schema has no keyref, so the validator also checks that every entry in `primary` and `secondary` is a key of `areas`, that repos and queues are unique, and that logins are unique within a profile.
 

@@ -65,14 +65,16 @@ statistics and comparisons between people belong in that discussion, not in a pe
 
 ## Validating a change
 
+From the workspace root, run the skill tests and optionally inspect a read-only plan:
+
 ```bash
-yarn nx run agent-skills:test
+node --test .agents/skills/assign-prs/scripts/planner.test.mjs
 node ./.agents/skills/assign-prs/scripts/plan.mjs --repo microsoft/monosize --account LOGIN
 ```
 
-The CI test target checks every profile against the shared JSON Schema and runs the planner tests. Validation also checks that
-reviewer area names exist, repos and queues are unique, and logins are unique within a profile.
-The plan target is read-only. It verifies GitHub account and permissions, resolves live team
+The tests check every profile against the shared JSON Schema and exercise the planner. Validation also checks
+that reviewer area names exist, repos and queues are unique, and logins are unique within a profile.
+The plan command is read-only. It verifies GitHub account and permissions, resolves live team
 membership, and reports drift and uncovered PRs before anyone approves a review request.
 
 ## Adding another repository
