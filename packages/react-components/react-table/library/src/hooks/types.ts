@@ -176,6 +176,17 @@ export interface ColumnWidthState {
   padding: number;
 }
 
+/**
+ * Controls how auto-fit shares the container space that is left over once every column
+ * has reached its ideal width.
+ *
+ * - `last-column`: every column grows to its ideal width and the last column absorbs all
+ *   of the remaining space.
+ * - `even`: every column starts at its ideal width and the remaining space is shared
+ *   equally between all columns, so columns with equal ideal widths stay equally wide.
+ */
+export type AutoFitColumnsStrategy = 'last-column' | 'even';
+
 export type ColumnSizingTableProps = TableProps;
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
@@ -221,4 +232,11 @@ export type UseTableColumnSizingParams = {
   ) => void;
   containerWidthOffset?: number;
   autoFitColumns?: boolean;
+  /**
+   * Controls how `autoFitColumns` shares the space that is left over once every column has reached
+   * its ideal width. Use `even` to keep columns with equal ideal widths equally wide, the way they
+   * are laid out when column resizing is disabled.
+   * @default 'last-column'
+   */
+  autoFitColumnsStrategy?: AutoFitColumnsStrategy;
 };

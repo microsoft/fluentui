@@ -3,6 +3,7 @@ import type { SelectionHookParams, SelectionMode } from '@fluentui/react-utiliti
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
+  AutoFitColumnsStrategy,
   SortState,
   TableFeaturesState,
   UseTableSortOptions,
@@ -102,6 +103,13 @@ export type DataGridProps = TableProps &
        * @default true
        * */
       autoFitColumns?: boolean;
+      /**
+       * Controls how `autoFitColumns` shares the space that is left over once every column has
+       * reached its ideal width. `last-column` gives all of it to the last column, `even` shares it
+       * equally between the columns, keeping columns with equal ideal widths equally wide.
+       * @default 'last-column'
+       * */
+      autoFitColumnsStrategy?: AutoFitColumnsStrategy;
     };
   };
 
