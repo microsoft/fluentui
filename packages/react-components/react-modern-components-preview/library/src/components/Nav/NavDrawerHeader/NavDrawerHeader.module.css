@@ -1,0 +1,7 @@
+@layer fluent {
+  .root {
+    margin: 0;
+    padding-block: 5px;
+    padding-inline-start: 14px;
+  }
+}

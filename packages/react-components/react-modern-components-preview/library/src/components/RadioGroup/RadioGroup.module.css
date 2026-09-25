@@ -1,0 +1,10 @@
+@layer fluent {
+  .root {
+    display: flex;
+    align-items: flex-start;
+
+    &[data-layout='vertical'] {
+      flex-direction: column;
+    }
+  }
+}

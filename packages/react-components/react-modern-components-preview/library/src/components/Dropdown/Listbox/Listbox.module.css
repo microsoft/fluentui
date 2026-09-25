@@ -1,0 +1,15 @@
+@layer fluent {
+  .root {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 160px;
+    margin: 0;
+    overflow-y: auto;
+    border: 0;
+    outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    padding: var(--spacingHorizontalXS);
+    row-gap: var(--spacingHorizontalXXS);
+    background-color: var(--colorNeutralBackground1);
+  }
+}

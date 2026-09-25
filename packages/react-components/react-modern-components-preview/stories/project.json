@@ -1,0 +1,25 @@
+{
+  "name": "react-modern-components-preview-stories",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-modern-components-preview/stories",
+  "tags": ["vNext", "platform:web", "type:stories"],
+  "implicitDependencies": ["react-modern-components-preview"],
+  "targets": {
+    "build-storybook": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist/storybook"],
+      "options": {
+        "cwd": "packages/react-components/react-modern-components-preview/stories",
+        "command": "yarn run -T storybook build -o dist/storybook"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/react-components/react-modern-components-preview/stories",
+        "command": "yarn run -T eslint ."
+      }
+    }
+  }
+}

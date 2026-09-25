@@ -169,6 +169,9 @@
       "@fluentui/react-migration-v8-v9-stories": [
         "packages/react-components/react-migration-v8-v9/stories/src/index.ts"
       ],
+      "@fluentui/react-modern-components-preview/*": [
+        "packages/react-components/react-modern-components-preview/library/src/*"
+      ],
       "@fluentui/react-motion": ["packages/react-components/react-motion/library/src/index.ts"],
       "@fluentui/react-motion-components-preview": [
         "packages/react-components/react-motion-components-preview/library/src/index.ts"
@@ -268,7 +271,10 @@
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-modern-components-preview-stories": [
+        "packages/react-components/react-modern-components-preview/stories/src/index.ts"
+      ]
     }
   }
 }
