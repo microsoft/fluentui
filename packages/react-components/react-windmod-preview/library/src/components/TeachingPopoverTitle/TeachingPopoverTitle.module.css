@@ -1,0 +1,27 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex flex-row justify-between pb-vertical-s text-base-400 leading-11/8 font-semibold text-neutral-foreground-1;
+  }
+
+  .brand {
+    @apply text-neutral-foreground-on-brand;
+  }
+
+  /* Same button as the header's, minus its resting colour and its padding — see
+     TeachingPopoverHeader.module.css. */
+  .dismiss-button {
+    @apply relative ms-auto flex cursor-pointer items-center rounded-e-none border-thin border-solid border-transparent-stroke bg-transparent-background font-base text-base-300 leading-20/14 font-regular;
+
+    border-inline-end-style: none;
+
+    @variant focus-visible {
+      @apply rounded-medium border-transparent outline-thick outline-stroke-focus-2 outline-solid;
+    }
+  }
+
+  .dismiss-brand {
+    @apply text-neutral-foreground-on-brand;
+  }
+}

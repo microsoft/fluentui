@@ -1,0 +1,7 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex h-32 items-center px-8 text-base-200 leading-20/12 font-semibold text-neutral-foreground-3;
+  }
+}

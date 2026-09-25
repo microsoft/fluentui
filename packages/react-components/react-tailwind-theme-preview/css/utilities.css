@@ -1,0 +1,85 @@
+/*
+ * Focus-ring utilities (CSS replacement for react-tabster's Griffel focus factories).
+ *
+ * `@utility` on purpose: `@apply` inlines the declarations at the call site inside the
+ * caller's `fui.*` layer — nothing lands in Tailwind's `utilities` layer, which would
+ * outrank every component layer. Declarations only; the caller supplies the selector via
+ * the `focus-visible` / `focus-within` variants.
+ *
+ * Parameterisation: the `--fui-focus-*` custom properties are knobs with `var()`
+ * fallbacks reproducing the compiled Griffel defaults. Each utility resets its knobs to
+ * `initial` (guaranteed-invalid for unregistered properties) so an ancestor's knob never
+ * leaks into a nested component (SplitButton nests Buttons); override a knob AFTER the
+ * `@apply`, from a higher layer, or (for fui-focus-outline) on the ::after itself.
+ *
+ * Knobs are deliberately NOT `@property`-registered: the `initial` reset above only unsets
+ * an UNREGISTERED property (a registered one resets to its initial value), and the theme
+ * ships no registrations at all — build.js fails on any `@property`.
+ */
+
+/*
+ * Numeric font sizes on the base-scale axis: `text-18` → `calc(18px * var(--base-scale))`.
+ *
+ * The counterpart of the numeric SPACING axis. `p-12` compiles to `calc(var(--spacing) * 12)`
+ * and so reads as px while computing through `--base-scale`; font sizes had no such axis, so a
+ * size with no named Fluent token had to be written as a bracket escape
+ * (`text-[length:calc(18px*var(--base-scale))]`). Those spellings restate the scale mechanism at
+ * every call site, which is exactly where it drifts — a hand-written bracket form that forgets
+ * `var(--base-scale)` is invisible at the default root and silently freezes at every other.
+ *
+ * NAMESPACE, and why it does not collide. This is a FUNCTIONAL utility matching a bare integer
+ * only: `--value(integer)` rejects any candidate that is not one, so `text-base-300`,
+ * `text-icon-16` and `text-neutral-foreground-1` do not match it and fall through to the core
+ * `text-*` utility, which resolves them against `--text-*` / `--color-*` as before. Fluent
+ * registers no bare-numeric `--text-<n>` key, so the integer space is unclaimed — verified by
+ * building the windmod package and diffing the compiled declarations, not by reading the docs.
+ *
+ * Scope: sizes with no named token. A size that HAS one (`text-base-300`, `text-icon-16`) must
+ * still use it — the token carries the design intent, `text-14` merely carries a number.
+ */
+@utility text-* {
+  font-size: calc(--value(integer) * 1px * var(--base-scale));
+}
+
+/* Default ring (`createFocusOutlineStyle()`): a ::after inset by the outline width. */
+@utility fui-focus-outline {
+  --fui-focus-outline-width: initial;
+  --fui-focus-outline-color: initial;
+  --fui-focus-outline-radius: initial;
+  --fui-focus-outline-offset: initial;
+
+  @apply border-transparent;
+
+  @variant after {
+    @apply pointer-events-none absolute z-1;
+
+    border: var(--fui-focus-outline-width, var(--stroke-width-thick)) solid
+      var(--fui-focus-outline-color, var(--color-stroke-focus-2));
+    border-radius: var(--fui-focus-outline-radius, var(--radius-medium));
+    inset: calc(0px - var(--fui-focus-outline-width, var(--stroke-width-thick)) - var(--fui-focus-outline-offset, 0px));
+  }
+
+  @variant forced-colors {
+    @variant after {
+      @apply border-[Highlight];
+    }
+  }
+}
+
+/* Button-family ring (`createCustomFocusIndicatorStyle()`): own border + inset shadow.
+   Declaration order matters against a lower-layer `border:` shorthand. */
+@utility fui-focus-ring {
+  --fui-focus-ring-color: initial;
+  --fui-focus-ring-radius: initial;
+  --fui-focus-ring-width: initial;
+  --fui-focus-ring-inset-width: initial;
+
+  border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+  border-radius: var(--fui-focus-ring-radius, var(--radius-medium));
+  border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
+
+  @apply z-1 outline-thick outline-transparent-stroke outline-solid;
+
+  box-shadow: 0 0 0 var(--fui-focus-ring-inset-width, var(--spacing-thin))
+    var(--fui-focus-ring-color, var(--color-stroke-focus-2)) inset;
+}

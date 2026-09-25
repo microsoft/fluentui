@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: give MenuSplitGroup a stable contexts value so useIsInMenuSplitGroup resolves true for descendant halves",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

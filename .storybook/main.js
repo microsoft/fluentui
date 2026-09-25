@@ -51,7 +51,19 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
     }),
   ],
   webpackFinal: config => {
-    registerRules({ config, rules: [rules.swcRule] });
+    /**
+     * Narrow storybook's own implicit `/\.css$/` rule FIRST, then add ours — webpack applies
+     * every matching rule, so the builder's plain style-loader/css-loader pair has to stop
+     * matching `*.module.css` (it would hand back an empty class map) and the Tailwind theme
+     * entry (it would emit `@import … source(none)` verbatim) before these are registered.
+     *
+     * windmod-preview `*.module.css` files open with `@reference '#theme'` and use `@apply`,
+     * which are not valid CSS until Tailwind's PostCSS pass has run. Without this wiring
+     * this storybook — and the package storybooks and docsites that compose it — render
+     * windmod components unstyled.
+     */
+    rules.excludeTailwindCssFromDefaultCssRule(config);
+    registerRules({ config, rules: [rules.swcRule, rules.cssModulesRule, rules.tailwindThemeRule] });
     registerTsPaths({ config, configFile: tsConfigPath });
 
     if ((process.env.CI || process.env.TF_BUILD) && config.plugins) {

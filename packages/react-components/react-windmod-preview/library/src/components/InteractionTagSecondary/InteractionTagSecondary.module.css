@@ -1,0 +1,123 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex h-full items-center rounded-ss-none rounded-se-medium rounded-ee-medium rounded-es-none border-thin border-solid border-transparent-stroke border-s-neutral-stroke-1 bg-neutral-background-3 text-neutral-foreground-2;
+    appearance: button;
+    text-align: unset;
+
+    /* Griffel applies the appearance bucket OR the disabled bucket, never both, so `filled`'s
+       zero block borders do not survive into the disabled look — the reset's thin border does. */
+    @variant enabled {
+      @apply border-y-0;
+
+      @variant hover {
+        @apply cursor-pointer bg-neutral-background-3-hover text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant active {
+        @apply bg-neutral-background-3-pressed text-neutral-foreground-2-brand-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed border-transparent-stroke-disabled border-s-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+
+    @variant size-medium {
+      @apply px-5 text-icon-20 leading-100;
+    }
+
+    @variant size-small {
+      @apply px-3 text-icon-16 leading-125;
+    }
+
+    @variant size-extra-small {
+      @apply relative px-5 text-icon-12 leading-20/12;
+
+      @variant not-forced-colors {
+        @variant before, after {
+          @apply absolute start-0 h-2 w-full;
+        }
+
+        @variant before {
+          @apply bottom-full;
+        }
+
+        @variant after {
+          @apply top-full;
+        }
+      }
+    }
+
+    @variant focus-visible {
+      @apply outline-thick outline-stroke-focus-2 outline-solid;
+    }
+
+    @variant forced-colors {
+      @apply border-y-thin;
+
+      @variant enabled {
+        @variant hover, active {
+          @apply bg-[HighlightText];
+        }
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-se-circular rounded-ee-circular;
+  }
+
+  .outline {
+    @apply border-y-thin border-neutral-stroke-1 bg-subtle-background text-neutral-foreground-2;
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant active {
+        @apply bg-subtle-background-pressed text-neutral-foreground-2-brand-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
+    }
+  }
+
+  .brand {
+    @apply border-s-brand-stroke-2 bg-brand-background-2 text-brand-foreground-2;
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-brand-background-2-hover text-compound-brand-foreground-1-hover;
+      }
+
+      @variant active {
+        @apply bg-brand-background-2-pressed text-compound-brand-foreground-1-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply border-transparent-stroke-disabled border-s-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+    }
+  }
+
+  .selected {
+    @apply border-brand-stroke-1 border-s-neutral-stroke-on-brand-2 bg-brand-background text-neutral-foreground-on-brand;
+
+    @variant hover {
+      @apply bg-brand-background-hover;
+    }
+
+    @variant active {
+      @apply bg-brand-background-pressed;
+    }
+
+    @variant forced-colors {
+      @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+    }
+  }
+}

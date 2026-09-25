@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/postcss-tailwind-css-modules, a publishable PostCSS plugin keeping Tailwind group/peer markers global under CSS Modules; switch in-repo build/storybook tooling to consume it",
+  "packageName": "@fluentui/postcss-tailwind-css-modules",
+  "email": "array.knight+github@gmail.com"
+}
