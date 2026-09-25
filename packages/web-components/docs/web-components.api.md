@@ -2587,6 +2587,12 @@ export class Divider extends BaseDivider {
     alignContent?: DividerAlignContent;
     // (undocumented)
     appearance?: DividerAppearance;
+    // @internal (undocumented)
+    defaultSlot: HTMLSlotElement;
+    // @internal (undocumented)
+    defaultSlotChanged(): void;
+    // @internal (undocumented)
+    handleSlotChange(): void;
     // (undocumented)
     inset?: boolean;
 }
