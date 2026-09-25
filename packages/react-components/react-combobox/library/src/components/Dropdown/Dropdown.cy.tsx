@@ -131,7 +131,7 @@ describe('Dropdown - tab navigation', () => {
     cy.get('@onOptionSelect').should('have.been.calledOnce');
     cy.then(() => {
       const [event, data] = onOptionSelect.getCall(0).args;
-      expect(event).to.be.instanceOf(KeyboardEvent);
+      expect(event).to.not.equal(relatedEvent);
       expect(event.key).to.equal('Tab');
       expect(event.nativeEvent).to.equal(relatedEvent);
       expect(callbackNativeEvent).to.equal(relatedEvent);
@@ -139,6 +139,27 @@ describe('Dropdown - tab navigation', () => {
       expect(event.currentTarget).to.equal(null);
       expect(data).to.include({ optionValue: 'Cat' });
     });
+  });
+
+  it('prevents the Tabster movefocus event when onOptionSelect calls preventDefault', () => {
+    const onOptionSelect = cy
+      .stub()
+      .callsFake((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault())
+      .as('onOptionSelect');
+
+    mount(
+      <TabsterRoot>
+        <button id="before">Before</button>
+        <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+        <button id="after">After</button>
+      </TabsterRoot>,
+    );
+
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+    cy.get('#dropdown').realPress('Tab');
+
+    cy.get('@onOptionSelect').should('have.been.called');
+    cy.focused().should('have.id', 'dropdown');
   });
 
   it('does not select the active option when focus is moved with a pointer', () => {

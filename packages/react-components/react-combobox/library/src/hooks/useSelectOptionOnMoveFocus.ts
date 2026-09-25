@@ -24,7 +24,14 @@ export function useSelectOptionOnMoveFocus(
 
   const selectActiveOption = useEventCallback((relatedEvent: KeyboardEvent) => {
     const trigger = triggerRef.current;
-    if (!trigger || !open || multiselect || relatedEvent.key !== 'Tab' || relatedEvent.target !== trigger) {
+    if (
+      relatedEvent.defaultPrevented ||
+      !trigger ||
+      !open ||
+      multiselect ||
+      relatedEvent.key !== 'Tab' ||
+      relatedEvent.target !== trigger
+    ) {
       return;
     }
 
@@ -45,7 +52,14 @@ export function useSelectOptionOnMoveFocus(
   const onTabsterMoveFocus = useEventCallback((event: TabsterMoveFocusEvent) => {
     const relatedEvent = event.detail?.relatedEvent;
     if (relatedEvent) {
+      if (relatedEvent.defaultPrevented) {
+        return;
+      }
+
       selectActiveOption(relatedEvent);
+      if (relatedEvent.defaultPrevented) {
+        event.preventDefault();
+      }
     }
   });
 
