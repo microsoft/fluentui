@@ -3349,9 +3349,6 @@ export class MessageBar extends FASTElement {
     dismissMessageBar: () => void;
     // @internal
     elementInternals: ElementInternals;
-    intent?: MessageBarIntent;
-    layout?: MessageBarLayout;
-    shape?: MessageBarShape;
 }
 
 // @public
