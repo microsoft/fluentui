@@ -3812,8 +3812,6 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
 export class Spinner extends BaseSpinner {
-    appearance?: SpinnerAppearance;
-    size?: SpinnerSize;
 }
 
 // @public

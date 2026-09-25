@@ -1,6 +1,5 @@
-import { attr } from '@microsoft/fast-element';
 import { BaseSpinner } from './spinner.base.js';
-import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
+import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * A Spinner Custom HTML Element.
@@ -8,25 +7,9 @@ import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
  *
  * @tag fluent-spinner
  *
+ * @presentational {SpinnerAppearance | undefined} appearance - The appearance of the spinner.
+ * @presentational {SpinnerSize | undefined} size - The size of the spinner.
+ *
  * @public
  */
-export class Spinner extends BaseSpinner {
-  /**
-   * The size of the spinner
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: SpinnerSize;
-
-  /**
-   * The appearance of the spinner
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: SpinnerAppearance;
-}
+export class Spinner extends BaseSpinner {}
