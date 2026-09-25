@@ -25,7 +25,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     ?readonly="${x => x.readOnly}"
     ?required="${x => x.required}"
     size="${x => x.size}"
-    ?spellcheck="${x => x.spellcheck}"
+    spellcheck="${x => x.spellcheck}"
     resize="${x => x.resize}"
     value="${x => x.value}"
   >

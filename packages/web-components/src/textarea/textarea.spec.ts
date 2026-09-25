@@ -51,7 +51,6 @@ test.describe('TextArea', () => {
         required: true,
         disabled: true,
         readonly: true,
-        spellcheck: true,
         autocomplete: 'on',
         maxlength: '100',
         minlength: '10',
@@ -62,11 +61,109 @@ test.describe('TextArea', () => {
     await expect(control).toHaveJSProperty('required', true);
     await expect(control).toHaveJSProperty('disabled', true);
     await expect(control).toHaveJSProperty('readOnly', true);
-    await expect(control).toHaveJSProperty('spellcheck', true);
     await expect(control).toHaveJSProperty('autocomplete', 'on');
     await expect(control).toHaveJSProperty('maxLength', 100);
     await expect(control).toHaveJSProperty('minLength', 10);
     await expect(control).toHaveJSProperty('placeholder', 'Placeholder');
+  });
+
+  test.describe('spellcheck', () => {
+    const attributeCases = [
+      { value: 'true', expected: true },
+      { value: 'false', expected: false },
+      { value: '', expected: true },
+      { value: 'anything', expected: false },
+    ] as const;
+
+    for (const { value, expected } of attributeCases) {
+      test(`should propagate \`spellcheck="${value}"\` to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('textarea');
+
+        await fastPage.setTemplate(/* html */ `
+          <div spellcheck="false">
+            <${tagName}></${tagName}>
+          </div>
+        `);
+
+        await element.evaluate((node, attributeValue) => {
+          node.setAttribute('spellcheck', attributeValue);
+        }, value);
+
+        await expect(element).toHaveAttribute('spellcheck', value);
+        await expect(element).toHaveJSProperty('spellcheck', expected);
+        await expect(control).toHaveAttribute('spellcheck', expected.toString());
+        await expect(control).toHaveJSProperty('spellcheck', expected);
+      });
+    }
+
+    for (const spellcheck of [true, false]) {
+      test(`should propagate a ${spellcheck} \`spellcheck\` property to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('textarea');
+
+        await fastPage.setTemplate();
+
+        await element.evaluate((node: HTMLElement, value) => {
+          node.spellcheck = value;
+        }, spellcheck);
+
+        await expect(element).toHaveAttribute('spellcheck', spellcheck.toString());
+        await expect(element).toHaveJSProperty('spellcheck', spellcheck);
+        await expect(control).toHaveAttribute('spellcheck', spellcheck.toString());
+        await expect(control).toHaveJSProperty('spellcheck', spellcheck);
+      });
+    }
+
+    for (const value of ['null', 'undefined'] as const) {
+      test(`should propagate a ${value} \`spellcheck\` property to the internal control`, async ({ fastPage }) => {
+        const { element } = fastPage;
+        const control = element.locator('textarea');
+
+        await fastPage.setTemplate();
+
+        await element.evaluate((node, nullishValue) => {
+          Reflect.set(node, 'spellcheck', nullishValue === 'null' ? null : undefined);
+        }, value);
+
+        await expect(element).not.toHaveAttribute('spellcheck');
+        await expect(element).toHaveJSProperty('spellcheck', value === 'null' ? null : undefined);
+        await expect(control).not.toHaveAttribute('spellcheck');
+      });
+    }
+
+    test('should propagate removal of the host `spellcheck` attribute to the internal control', async ({
+      fastPage,
+    }) => {
+      const { element } = fastPage;
+      const control = element.locator('textarea');
+
+      await fastPage.setTemplate(/* html */ `
+        <div spellcheck="false">
+          <${tagName} spellcheck="true"></${tagName}>
+        </div>
+      `);
+
+      await element.evaluate(node => {
+        node.removeAttribute('spellcheck');
+      });
+
+      await expect(element).not.toHaveAttribute('spellcheck');
+      await expect(element).toHaveJSProperty('spellcheck', null);
+      await expect(control).not.toHaveAttribute('spellcheck');
+    });
+
+    test('should use the browser default when `spellcheck` is unset', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const control = element.locator('textarea');
+
+      await fastPage.setTemplate();
+
+      await expect(element).toHaveAttribute('spellcheck', 'false');
+      await expect(element).toHaveJSProperty('spellcheck', false);
+      await expect(control).toHaveAttribute('spellcheck', 'false');
+      await expect(control).toHaveJSProperty('spellcheck', false);
+    });
   });
 
   test('should be associated with the given external labels', async ({ fastPage, page }) => {
