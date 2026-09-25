@@ -2554,6 +2554,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/api-metadata@npm:*, @fluentui/api-metadata@workspace:tools/api-metadata":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/api-metadata@workspace:tools/api-metadata"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.1"
+    typescript: "npm:5.7.3"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/azure-themes@npm:*, @fluentui/azure-themes@npm:^8.6.150, @fluentui/azure-themes@workspace:packages/azure-themes":
   version: 0.0.0-use.local
   resolution: "@fluentui/azure-themes@workspace:packages/azure-themes"
@@ -2636,12 +2645,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/cli-prototype@workspace:tools/cli-prototype":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/cli-prototype@workspace:tools/cli-prototype"
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/cli@workspace:tools/cli":
   version: 0.0.0-use.local
   resolution: "@fluentui/cli@workspace:tools/cli"
   dependencies:
+    "@fluentui/api-metadata": "npm:*"
     "@swc/helpers": "npm:^0.5.1"
     "@types/yargs": "npm:^17.0.33"
+    ajv: "npm:^8.17.1"
     fast-glob: "npm:^3.3.3"
     ts-morph: "npm:^23.0.0"
     yargs: "npm:^17.7.2"
@@ -6245,6 +6262,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-beachball@workspace:scripts/beachball"
   dependencies:
+    "@fluentui/api-metadata": "npm:*"
     "@fluentui/scripts-github": "npm:*"
     "@fluentui/scripts-monorepo": "npm:*"
     "@fluentui/scripts-ts-node": "npm:*"
@@ -6830,6 +6848,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/workspace-plugin@workspace:tools/workspace-plugin"
   dependencies:
+    "@fluentui/api-metadata": "npm:*"
     "@nx/devkit": "npm:~20.8.1"
   languageName: unknown
   linkType: soft
@@ -12522,7 +12541,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^8.0.0, ajv@npm:^8.0.1, ajv@npm:^8.13.0, ajv@npm:^8.4.0, ajv@npm:^8.9.0":
+"ajv@npm:^8.0.0, ajv@npm:^8.0.1, ajv@npm:^8.13.0, ajv@npm:^8.17.1, ajv@npm:^8.4.0, ajv@npm:^8.9.0":
   version: 8.20.0
   resolution: "ajv@npm:8.20.0"
   dependencies:

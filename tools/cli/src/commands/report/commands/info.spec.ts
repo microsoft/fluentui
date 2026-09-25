@@ -13,7 +13,12 @@ describe('report info command', () => {
     await (infoCommand.handler as Function)({ _: ['report', 'info'], $0: 'fluentui-cli' });
 
     const { runInfoReport } = require('../impl/info-report');
-    expect(runInfoReport).toHaveBeenCalledWith(undefined);
+    expect(runInfoReport).toHaveBeenCalledWith(undefined, {
+      config: undefined,
+      system: undefined,
+      package: undefined,
+      metadataMode: undefined,
+    });
   });
 
   it('should pass output to runInfoReport', async () => {
@@ -22,6 +27,30 @@ describe('report info command', () => {
     await (infoCommand.handler as Function)({ _: ['report', 'info'], $0: 'fluentui-cli', output: 'info.txt' });
 
     const { runInfoReport } = require('../impl/info-report');
-    expect(runInfoReport).toHaveBeenCalledWith('info.txt');
+    expect(runInfoReport).toHaveBeenCalledWith('info.txt', {
+      config: undefined,
+      system: undefined,
+      package: undefined,
+      metadataMode: undefined,
+    });
+  });
+
+  it('should pass catalog selection options', async () => {
+    const infoCommand = (await import('./info')).default;
+
+    await (infoCommand.handler as Function)({
+      _: ['report', 'info'],
+      $0: 'fluentui-cli',
+      system: ['headless'],
+      metadataMode: 'off',
+    });
+
+    const { runInfoReport } = require('../impl/info-report');
+    expect(runInfoReport).toHaveBeenLastCalledWith(undefined, {
+      config: undefined,
+      system: ['headless'],
+      package: undefined,
+      metadataMode: 'off',
+    });
   });
 });

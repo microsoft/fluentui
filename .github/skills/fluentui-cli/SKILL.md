@@ -15,16 +15,18 @@ The `@fluentui/cli` package (`tools/cli/`) is the internal Fluent UI command-lin
 tools/cli/
 ├── bin/fluentui-cli.js              # Node entry point (requires compiled output)
 ├── src/
-│   ├── cli.ts                       # Main yargs setup, registers all commands
+│   ├── cli.ts                       # Main yargs setup, loops over the command registry
 │   ├── index.ts                     # Public API re-exports
 │   ├── utils/
+│   │   ├── command-spec.ts          # Command/option/response manifest contracts
 │   │   ├── index.ts                 # Barrel exports
 │   │   └── types.ts                 # Shared CommandHandler type
 │   └── commands/
+│       ├── registry.ts              # Command modules paired with command specs
 │       ├── metadata/                # API metadata command
 │       │   ├── index.ts             # CommandModule definition
-│       │   ├── handler.ts           # Lazy-loaded handler
-│       │   └── impl/                # Parsing and formatting
+│       │   ├── commands/            # generate and validate definitions
+│       │   └── *-handler.ts         # Lazy-loaded handlers
 │       └── report/                  # Reporting command group
 │           ├── index.ts             # Registers report subcommands
 │           ├── commands/            # info and usage definitions
@@ -56,25 +58,21 @@ import type { ArgumentsCamelCase } from 'yargs';
 export type CommandHandler<T = {}> = (argv: ArgumentsCamelCase<T>) => Promise<void>;
 ```
 
-### Command Registration in cli.ts
+### Command Registration
 
-Each command is imported and registered in `tools/cli/src/cli.ts`:
+Each command has a `CliCommandSpec` in `utils/command-spec.ts` and a module/spec pair in
+`commands/registry.ts`. `cli.ts` loops over `REGISTERED_COMMANDS`:
 
 ```typescript
 import yargs from 'yargs';
-import reportCommand from './commands/report';
-import metadataCommand from './commands/metadata';
+import { REGISTERED_COMMANDS } from './commands/registry';
 
 export async function main(argv: string[]): Promise<void> {
-  await yargs(argv)
-    .scriptName('fluentui-cli')
-    .usage('$0 <command> [options]')
-    .command(reportCommand)
-    .command(metadataCommand)
-    .demandCommand(1, 'You need to specify a command to run.')
-    .help()
-    .strict()
-    .parse();
+  let cli = yargs(argv).scriptName('fluentui-cli').usage('$0 <command> [options]');
+  for (const command of REGISTERED_COMMANDS) {
+    cli = cli.command(command.module);
+  }
+  await cli.demandCommand(1, 'You need to specify a command to run.').help().strict().parse();
 }
 ```
 
@@ -95,6 +93,7 @@ node tools/cli/bin/fluentui-cli.js <command-name> --help
 ## Conventions
 
 - **Always use the Nx generator** to scaffold new commands — do not create command files manually. See the [adding commands](references/adding-commands.md) reference.
+- Keep generated command definitions lightweight. Put filesystem, parser, and TypeScript work behind the dynamic handler import.
 - Place shared utilities in `tools/cli/src/utils/` and export through the barrel file.
 - Every command must support `--help` (handled by yargs `.help()` in the builder).
 - Handler files must export a named `handler` constant typed with `CommandHandler<T>`.

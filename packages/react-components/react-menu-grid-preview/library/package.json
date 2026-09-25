@@ -11,7 +11,8 @@
     "dist/*.d.ts",
     "dist/*.d.cts",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/metadata"
   ],
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./metadata.json": "./dist/metadata/index.json",
     "./package.json": "./package.json"
   },
   "beachball": {
@@ -59,5 +61,6 @@
       "prerelease"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "fluentuiCatalog": "./metadata.json"
 }

@@ -2,6 +2,7 @@
 
 // @ts-check
 
-const { main } = require('../dist/src/cli');
+const { handleFatalError, main } = require('../dist/src/cli');
 
-main(process.argv.slice(2));
+const argv = process.argv.slice(2);
+main(argv).catch(error => handleFatalError(error, argv));

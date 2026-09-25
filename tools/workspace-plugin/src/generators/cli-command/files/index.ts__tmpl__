@@ -1,12 +1,11 @@
 import type { CommandModule } from 'yargs';
 
+import { <%= constantName %>_COMMAND_SPEC, applyCommandOptions } from '../../utils/command-spec';
+
 const command: CommandModule = {
-  command: '<%= name %>',
-  describe: '<%= description %>',
-  builder: yargs =>
-    yargs
-      .version(false)
-      .help(),
+  command: <%= constantName %>_COMMAND_SPEC.command,
+  describe: <%= constantName %>_COMMAND_SPEC.description,
+  builder: yargs => applyCommandOptions(yargs, <%= constantName %>_COMMAND_SPEC).version(false).help(),
   handler: async argv => {
     const { handler } = await import('./handler');
     return handler(argv);

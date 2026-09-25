@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Recommend verified configured public imports in API output and JSON, retaining definition provenance in verbose output and documenting the selection flow.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

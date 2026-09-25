@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Publish complete API catalogs for the public v9 component and runtime surface.",
+  "packageName": "@fluentui/react-provider",
+  "email": "martinhochel@microsoft.com"
+}

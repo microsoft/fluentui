@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Expose instantiated component props and make API listings, import paths, and diagnostics readable.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@fixture/split-declarations",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./declarations/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  }
+}

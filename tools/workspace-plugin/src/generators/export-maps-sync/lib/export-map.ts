@@ -77,7 +77,11 @@ function toOutputPath(sourcePathFromSrc: string): string | null {
  * ESM-first packages (opt-in via `"type": "module"`) get the conditional import/require shape with no
  * `node` condition; every other package keeps the CommonJS-first shape.
  */
-export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): PackageJson['exports'] {
+export function buildExportMap(
+  json: PackageJson,
+  entryPoints: EntryPoint[],
+  options: { apiMetadata?: boolean } = {},
+): PackageJson['exports'] {
   const style = json.style ? normalizeEntryPointPath(json.style) : null;
   const exports: NonNullable<PackageJson['exports']> = {};
 
@@ -94,6 +98,9 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
       };
     }
 
+    if (options.apiMetadata) {
+      exports['./metadata.json'] = './dist/metadata/index.json';
+    }
     exports['./package.json'] = './package.json';
 
     return exports;
@@ -114,6 +121,9 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
     };
   }
 
+  if (options.apiMetadata) {
+    exports['./metadata.json'] = './dist/metadata/index.json';
+  }
   exports['./package.json'] = './package.json';
 
   return exports;

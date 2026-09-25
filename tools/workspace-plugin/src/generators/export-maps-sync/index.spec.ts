@@ -86,6 +86,21 @@ describe('export-maps-sync generator', () => {
     });
   });
 
+  it('owns the metadata marker, export and published directory for opted-in packages', async () => {
+    const project = setupProject({
+      name: 'react-button',
+      projectConfig: { metadata: { apiMetadata: { entrypoints: ['.'] } } },
+    });
+
+    await generator(tree);
+
+    expect(project.readPackageJson()).toMatchObject({
+      fluentuiCatalog: './metadata.json',
+      exports: { './metadata.json': './dist/metadata/index.json' },
+      files: ['dist/metadata'],
+    });
+  });
+
   it('reports every out of sync project', async () => {
     setupProject({ name: 'react-button', packageJson: { exports: undefined } });
     setupProject({ name: 'react-tooltip', packageJson: { exports: undefined } });

@@ -3,4 +3,5 @@ export interface GenerateApiExecutorSchema {
   local?: boolean;
   diagnostics?: boolean;
   exportSubpaths?: boolean | { apiReport?: boolean };
+  apiMetadata?: boolean | { system?: string; entrypoints?: string[]; rolloutPartialReasons?: string[] };
 }

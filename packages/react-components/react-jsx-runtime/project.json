@@ -5,6 +5,11 @@
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/react-jsx-runtime/src",
   "tags": ["vNext", "platform:any"],
+  "metadata": {
+    "apiMetadata": {
+      "system": "fluent-v9"
+    }
+  },
   "targets": {
     "build": {
       "options": {
@@ -44,7 +49,29 @@
             }
           }
         ]
-      }
+      },
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
+    "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
     }
   }
 }

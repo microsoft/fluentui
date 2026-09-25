@@ -1,0 +1,21 @@
+{
+  "name": "@fixture/semantic-package",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./declarations/import.d.ts",
+        "default": "./dist/import.js"
+      },
+      "require": {
+        "types": "./declarations/require.d.cts",
+        "default": "./dist/require.cjs"
+      }
+    },
+    "./namespace": {
+      "types": "./declarations/namespace.d.ts",
+      "default": "./dist/namespace.js"
+    }
+  }
+}

@@ -1,34 +1,20 @@
 import type { CommandModule } from 'yargs';
 
-import type { MetadataArgs } from './impl/types';
+import { METADATA_COMMAND_SPEC, applyCommandOptions } from '../../utils/command-spec';
+import { CliError } from '../../utils/diagnostics';
+import generateCommand from './commands/generate';
+import validateCommand from './commands/validate';
 
-const command: CommandModule<{}, MetadataArgs> = {
-  command: 'metadata',
-  describe: 'Extract API metadata from package .d.ts build output',
+const command: CommandModule = {
+  command: METADATA_COMMAND_SPEC.command,
+  describe: METADATA_COMMAND_SPEC.description,
   builder: yargs =>
-    yargs
-      .option('entry', {
-        alias: 'e',
-        type: 'string',
-        describe: 'Path to index.d.ts entry file (default: resolved from package.json "types" field)',
-      })
-      .option('reporter', {
-        alias: 'r',
-        type: 'string',
-        choices: ['json', 'markdown', 'html'] as const,
-        default: 'json' as const,
-        describe: 'Output format',
-      })
-      .option('output', {
-        alias: 'o',
-        type: 'string',
-        describe: 'Output file path (default: stdout)',
-      })
+    applyCommandOptions(yargs.command(generateCommand).command(validateCommand), METADATA_COMMAND_SPEC)
+      .demandCommand(1, 'Usage: fluentui-cli metadata <generate|validate> [options]')
       .version(false)
       .help(),
-  handler: async argv => {
-    const { handler } = await import('./handler');
-    return handler(argv);
+  handler: () => {
+    throw new CliError('CLI_USAGE', 'Usage: fluentui-cli metadata <generate|validate> [options]', 2);
   },
 };
 

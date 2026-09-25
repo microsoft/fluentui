@@ -37,6 +37,34 @@
       ],
       "description": "Whether to read non-root export map entries from package.json and run api-extractor for each resolved sub-path. When false or omitted, only the primary config is processed.",
       "default": false
+    },
+    "apiMetadata": {
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "properties": {
+            "system": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9._-]*$",
+              "description": "Catalog system identity embedded in the generated package index."
+            },
+            "entrypoints": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            },
+            "rolloutPartialReasons": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "Generate and publish API-only metadata from the final declaration outputs.",
+      "default": false
     }
   },
   "required": []

@@ -6,7 +6,18 @@
  * Parsed CLI arguments for the `report info` subcommand.
  */
 
-export interface InfoArgs {
+export interface CatalogReportArgs {
+  /** Path to a JSON catalog configuration file. */
+  config?: string;
+  /** Catalog systems to select. */
+  system?: string[];
+  /** Narrow selection to one npm package. */
+  package?: string;
+  /** Metadata loading and fallback policy. */
+  metadataMode?: 'prefer' | 'required' | 'off';
+}
+
+export interface InfoArgs extends CatalogReportArgs {
   /** Output file path. Defaults to stdout. */
   output?: string;
 }
@@ -14,7 +25,7 @@ export interface InfoArgs {
 /**
  * Parsed CLI arguments for the `report usage` subcommand.
  */
-export interface UsageArgs {
+export interface UsageArgs extends CatalogReportArgs {
   /** Root path for file traversal. Defaults to git root. */
   path?: string;
   /** Output format. Defaults to 'json'. */

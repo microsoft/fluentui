@@ -1,0 +1,12 @@
+{
+  "name": "@fixture/private-system",
+  "version": "3.2.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  }
+}

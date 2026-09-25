@@ -7,6 +7,7 @@ import type {
   SymbolClassification,
   TypeRefUsageInfo,
 } from './types';
+import type { CatalogInventory } from '../../../utils';
 
 jest.mock('./package-resolver', () => ({
   getGitRoot: jest.fn().mockReturnValue('/mock/root'),
@@ -16,6 +17,21 @@ jest.mock('./package-resolver', () => ({
 jest.mock('./file-discovery', () => ({
   discoverSourceFiles: jest.fn().mockReturnValue(['/mock/root/src/App.tsx', '/mock/root/src/types.ts']),
   filterSourceFiles: jest.fn().mockImplementation((files: string[]) => files),
+}));
+
+jest.mock('../../../utils', () => ({
+  ...jest.requireActual('../../../utils'),
+  findSelectedPackageRoot: jest.fn().mockReturnValue('/mock/root'),
+  getCatalogInventory: jest.fn().mockReturnValue({
+    workspaceRoot: '/mock/root',
+    roots: [],
+    diagnostics: [],
+    reader: {},
+    selection: {
+      matches: (name: string) => require('./package-resolver').isReportablePackageForLong(name),
+    },
+    metadataMode: 'off',
+  }),
 }));
 
 jest.mock('node:fs', () => ({
@@ -103,6 +119,227 @@ describe('usage-report', () => {
     expect(result.packages['@proj/react-components'].components.Button.count).toBe(1);
     expect(result.packages['@proj/react-components'].unknowns).not.toHaveProperty('Button');
     expect(result.packages['@proj/react-components'].components).not.toHaveProperty('FluentButton');
+  });
+
+  it('uses index classifications without loading API detail records', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            moduleSpecifier: '@company/ui/button',
+            namedImports: ['PrivateButton'],
+            isTypeOnly: false,
+          },
+        ],
+      },
+      {},
+      {},
+      { PrivateButton: 'unknown' },
+    );
+    const inventory = {
+      workspaceRoot: '/mock/root',
+      roots: [
+        {
+          packageName: '@company/ui',
+          requestedPackage: '@company/ui',
+          packageRoot: '/mock/root/node_modules/@company/ui',
+          importer: '/mock/root',
+          systems: ['product'],
+          source: 'config',
+          catalog: {
+            index: {
+              exports: [
+                {
+                  entrypoint: './button',
+                  export: 'PrivateButton',
+                  namespace: 'value',
+                  classifications: [{ facet: 'component' }],
+                },
+              ],
+            },
+          },
+        },
+      ],
+      diagnostics: [],
+      reader: {},
+      selection: { matches: () => true },
+      metadataMode: 'prefer',
+    } as unknown as CatalogInventory;
+
+    const result = collectUsageReportData('/mock/root', parser, undefined, undefined, { inventory });
+
+    expect(result.packages['@company/ui/button'].components).toHaveProperty('PrivateButton');
+    expect(parser.classifySymbol).not.toHaveBeenCalled();
+  });
+
+  it('requires metadata only for selected imports, not missing unused auto presets', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          { moduleSpecifier: '@fluentui/react-button', namedImports: ['Button'], isTypeOnly: false },
+        ],
+      },
+      {},
+      {},
+      { Button: 'unknown' },
+    );
+    const inventory = {
+      workspaceRoot: '/mock/root',
+      roots: [
+        {
+          packageName: '@fluentui/react-components',
+          requestedPackage: '@fluentui/react-components',
+          packageRoot: '/mock/root/node_modules/@fluentui/react-components',
+          importer: '/mock/root',
+          systems: ['fluent-v9'],
+          source: 'preset',
+        },
+        {
+          packageName: '@fluentui/react-headless-components-preview',
+          requestedPackage: '@fluentui/react-headless-components-preview',
+          packageRoot: '/mock/root/node_modules/@fluentui/react-headless-components-preview',
+          importer: '/mock/root',
+          systems: ['headless'],
+          source: 'preset',
+        },
+        {
+          packageName: '@fluentui/react-button',
+          requestedPackage: '@fluentui/react-button',
+          packageRoot: '/mock/root/node_modules/@fluentui/react-button',
+          importer: '/mock/root',
+          systems: ['fluent-v9'],
+          source: 'dependency',
+          catalog: {
+            index: {
+              exports: [
+                {
+                  entrypoint: '.',
+                  export: 'Button',
+                  namespace: 'value',
+                  classifications: [{ facet: 'component' }],
+                },
+              ],
+            },
+          },
+        },
+      ],
+      diagnostics: [
+        {
+          code: 'catalog.packageNotFound',
+          severity: 'error',
+          message: 'Unused suite is not installed',
+          package: '@fluentui/react-components',
+        },
+        {
+          code: 'catalog.packageNotFound',
+          severity: 'error',
+          message: 'Unused headless package is not installed',
+          package: '@fluentui/react-headless-components-preview',
+        },
+      ],
+      reader: {},
+      selection: {
+        explicitPackage: '@fluentui/react-button',
+        matches: (specifier: string) => specifier === '@fluentui/react-button',
+      },
+      metadataMode: 'required',
+    } as unknown as CatalogInventory;
+    const diagnostics: CatalogInventory['diagnostics'] = [];
+
+    const result = collectUsageReportData('/mock/root', parser, undefined, undefined, { inventory, diagnostics });
+
+    expect(result.packages['@fluentui/react-button'].components).toHaveProperty('Button');
+    expect(diagnostics).toHaveLength(2);
+    expect(parser.classifySymbol).not.toHaveBeenCalled();
+  });
+
+  it('consults type routes for ordinary imports and preserves value precedence for dual symbols', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          {
+            moduleSpecifier: '@fluentui/react-button',
+            namedImports: ['ButtonProps', 'Button'],
+            isTypeOnly: false,
+          },
+        ],
+      },
+      {},
+      {},
+      { ButtonProps: 'component', Button: 'type' },
+    );
+    const inventory = {
+      workspaceRoot: '/mock/root',
+      roots: [
+        {
+          packageName: '@fluentui/react-button',
+          requestedPackage: '@fluentui/react-button',
+          packageRoot: '/mock/root/node_modules/@fluentui/react-button',
+          importer: '/mock/root',
+          systems: ['fluent-v9'],
+          source: 'dependency',
+          catalog: {
+            index: {
+              exports: [
+                {
+                  entrypoint: '.',
+                  export: 'ButtonProps',
+                  namespace: 'type',
+                  classifications: [{ facet: 'props' }],
+                },
+                {
+                  entrypoint: '.',
+                  export: 'Button',
+                  namespace: 'value',
+                  classifications: [{ facet: 'component' }],
+                },
+                {
+                  entrypoint: '.',
+                  export: 'Button',
+                  namespace: 'type',
+                  classifications: [{ facet: 'component' }],
+                },
+              ],
+            },
+          },
+        },
+      ],
+      diagnostics: [],
+      reader: {},
+      selection: { matches: () => true },
+      metadataMode: 'required',
+    } as unknown as CatalogInventory;
+
+    const result = collectUsageReportData('/mock/root', parser, undefined, undefined, { inventory });
+    const usage = result.packages['@fluentui/react-button'];
+
+    expect(usage.types.ButtonProps.count).toBe(1);
+    expect(usage.components).toHaveProperty('Button');
+    expect(parser.classifySymbol).not.toHaveBeenCalled();
+  });
+
+  it('keeps package selection active but rejects classification fallback in required mode', () => {
+    const parser = createMockParser(
+      {
+        '/mock/root/src/App.tsx': [
+          { moduleSpecifier: '@company/ui/button', namedImports: ['PrivateButton'], isTypeOnly: false },
+        ],
+      },
+      {},
+      {},
+    );
+    const inventory = {
+      workspaceRoot: '/mock/root',
+      roots: [],
+      diagnostics: [],
+      reader: {},
+      selection: { matches: () => true },
+      metadataMode: 'required',
+    } as unknown as CatalogInventory;
+
+    expect(() => collectUsageReportData('/mock/root', parser, undefined, undefined, { inventory })).toThrow(
+      expect.objectContaining({ code: 'catalog.metadataRequired' }),
+    );
   });
 
   it('should collect metadata for component usages', () => {
@@ -269,6 +506,26 @@ describe('usage-report', () => {
     expect(result.legend.components).toBeDefined();
     expect(result.legend.types).toBeDefined();
   });
+
+  it.each(['catalog.configInvalid', 'catalog.systemUnknown'])(
+    'validates explicit catalog selection before returning an empty report (%s)',
+    code => {
+      const { discoverSourceFiles } = require('./file-discovery');
+      const { getCatalogInventory } = require('../../../utils');
+      discoverSourceFiles.mockReturnValue([]);
+      getCatalogInventory.mockImplementationOnce(() => {
+        throw Object.assign(new Error('invalid selection'), { code });
+      });
+
+      try {
+        expect(() =>
+          collectUsageReportData('/mock/root', undefined, undefined, undefined, { config: 'invalid.json' }),
+        ).toThrow(expect.objectContaining({ code }));
+      } finally {
+        discoverSourceFiles.mockReturnValue(['/mock/root/src/App.tsx', '/mock/root/src/types.ts']);
+      }
+    },
+  );
 
   it('should pass include/exclude to filterSourceFiles', () => {
     const { filterSourceFiles } = require('./file-discovery');

@@ -18,7 +18,7 @@ Outputs a copy-paste-friendly block with:
 - Installed Fluent UI and related packages with versions
 - Duplicate package warnings (multiple resolved versions)
 
-No flags — runs against the current project and prints to stdout.
+Runs against the current project and prints to stdout. Catalog selectors can add private or headless package roots while the legacy related-tool list remains included by default.
 
 #### Tracked packages
 
@@ -33,7 +33,7 @@ No flags — runs against the current project and prints to stdout.
 Deep codebase analysis of Fluent UI API usage intended for the **core team** to understand how consumers use the library.
 
 ```bash
-fluentui report usage [--path <dir>] [--reporter json|markdown|html] [--include <glob>...] [--exclude <glob>...]
+fluentui report usage [--path <dir>] [--reporter json|markdown|html] [--include <glob>...] [--exclude <glob>...] [--system <name>...]
 ```
 
 | Flag         | Alias | Default   | Description                                  |
@@ -42,6 +42,17 @@ fluentui report usage [--path <dir>] [--reporter json|markdown|html] [--include 
 | `--reporter` | `-r`  | `json`    | Output format: `json`, `markdown`, or `html` |
 | `--include`  | —     | all files | Glob patterns to include                     |
 | `--exclude`  | —     | none      | Glob patterns to exclude                     |
+
+Both report subcommands accept the shared catalog selectors:
+
+| Flag              | Default  | Description                                                          |
+| ----------------- | -------- | -------------------------------------------------------------------- |
+| `--config`        | nearest  | JSON-only `fluentui.config.json`                                     |
+| `--system`        | presets  | Selected catalog system; repeatable                                  |
+| `--package`       | all      | Narrow to one parsed npm package name; imported subpaths still match |
+| `--metadata-mode` | `prefer` | `prefer` metadata with declaration fallback, `required`, or `off`    |
+
+Configuration schema version 1 supports named systems with `catalogs` containing either a package name or a local path, plus independent `packages` and `exclusions` selectors. An explicitly configured system replaces its preset definition; `{ "disabled": true }` disables it. Local paths resolve from the config file and are read as static JSON. Config files and catalogs are never executed or downloaded.
 
 Traverses `.ts` and `.tsx` files (skipping gitignored files), resolves imports from tracked packages, and classifies every imported symbol into one of five categories.
 
@@ -86,15 +97,18 @@ report/
 
 ### How symbol classification works
 
-1. **Import scanning** — all `import` declarations from tracked packages are collected
-2. **Type resolution** — each symbol is resolved through its `.d.ts` declaration:
+1. **Import scanning** — parsed npm package names are matched against the effective systems, packages, and exclusions
+2. **Metadata classification** — compact package indexes classify symbols without loading API details or guidance
+3. **Type resolution fallback** — under `prefer` or `off`, unresolved classifications use the imported package's `.d.ts` declaration:
    - Functions returning JSX → `component`
    - `use*` naming or hook signatures → `hook`
    - Interfaces, type aliases, enums → `type`
    - Everything else with a resolved `.d.ts` → `other`
    - Unresolvable `.d.ts` → `unknown`
-3. **Usage enrichment** — JSX props, call arguments, `typeof` references, and generic type arguments are captured
-4. **Deduplication** — symbols appearing in multiple categories are reconciled (e.g., a component found via both JSX and value reference)
+4. **Usage enrichment** — JSX props, call arguments, `typeof` references, and generic type arguments are captured
+5. **Deduplication** — symbols appearing in multiple categories are reconciled (e.g., a component found via both JSX and value reference)
+
+Existing JSON, Markdown, and HTML report bodies retain their legacy shapes and count/value semantics. Discovery and fallback diagnostics are written to stderr so stdout remains a valid report document.
 
 ### Testing
 

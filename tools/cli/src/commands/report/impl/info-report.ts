@@ -3,6 +3,12 @@ import * as path from 'node:path';
 
 import type { InfoReportData } from './types';
 import {
+  getCatalogInventory,
+  getWorkspacePackageInventory,
+  type CatalogInventory,
+  type CatalogSelectionOptions,
+} from '../../../utils';
+import {
   getSystemInfo,
   getMatchingPackages,
   resolvePackageVersions,
@@ -14,11 +20,39 @@ import {
  * Generate the short report data by reading system info and installed packages.
  * Always operates from the git root directory.
  */
-export function collectInfoReportData(): InfoReportData {
-  const rootDir = getGitRoot();
+export function collectInfoReportData(
+  options: CatalogSelectionOptions = {},
+  providedInventory?: CatalogInventory,
+): InfoReportData {
+  const rootDir = options.cwd ?? getGitRoot();
+  const inventory = providedInventory ?? getCatalogInventory({ ...options, cwd: rootDir });
   const system = getSystemInfo(rootDir);
-  const matchingNames = getMatchingPackages(rootDir);
+  const workspacePackages = getWorkspacePackageInventory(rootDir).packages;
+  const matchingNames = [
+    ...new Set([
+      ...getMatchingPackages(rootDir),
+      ...inventory.roots.map(root => root.requestedPackage),
+      ...workspacePackages
+        .filter(installed => inventory.selection.matches(installed.requestedPackage))
+        .map(installed => installed.requestedPackage),
+    ]),
+  ].sort();
   const packages = resolvePackageVersions(matchingNames, rootDir);
+  for (const installed of workspacePackages) {
+    if (
+      installed.version &&
+      matchingNames.includes(installed.requestedPackage) &&
+      !packages.some(pkg => pkg.name === installed.requestedPackage)
+    ) {
+      packages.push({ name: installed.requestedPackage, version: installed.version });
+    }
+  }
+  for (const root of inventory.roots) {
+    if (root.catalog && !packages.some(pkg => pkg.name === root.requestedPackage)) {
+      packages.push({ name: root.requestedPackage, version: root.catalog.index.package.version });
+    }
+  }
+  packages.sort((left, right) => left.name.localeCompare(right.name));
   const duplicates = findDuplicatePackages(matchingNames, rootDir);
 
   return { system, packages, duplicates };
@@ -75,8 +109,9 @@ export function formatInfoReport(data: InfoReportData): string {
  *
  * @param output - Output file path. When provided, writes to file instead of stdout.
  */
-export async function runInfoReport(output?: string): Promise<void> {
-  const data = collectInfoReportData();
+export async function runInfoReport(output?: string, options: CatalogSelectionOptions = {}): Promise<void> {
+  const inventory = getCatalogInventory({ ...options, cwd: options.cwd ?? getGitRoot() });
+  const data = collectInfoReportData(options, inventory);
   const formatted = formatInfoReport(data);
 
   if (output) {
@@ -86,5 +121,8 @@ export async function runInfoReport(output?: string): Promise<void> {
     console.log(`Report written to ${outputPath}`);
   } else {
     console.log(formatted);
+  }
+  for (const diagnostic of inventory.diagnostics) {
+    console.error(`[${diagnostic.code}] ${diagnostic.message}`);
   }
 }

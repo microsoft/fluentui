@@ -12,17 +12,29 @@ jest.mock('child_process', () => ({
   execSync: jest.fn(),
 }));
 
+const mockRefreshGeneratedApiMetadata = jest.fn();
+
+jest.mock('@fluentui/api-metadata/generator', () => ({
+  refreshGeneratedApiMetadata: mockRefreshGeneratedApiMetadata,
+}));
+
 describe(`beachball configs`, () => {
   const execSyncMock = jest.mocked(execSync);
   const precommit = sharedConfig.hooks.precommit;
+  const prepublish = sharedConfig.hooks.prepublish;
 
   if (!precommit) {
     throw new Error('Expected the shared Beachball config to define a precommit hook');
+  }
+  if (!prepublish) {
+    throw new Error('Expected the shared Beachball config to define a prepublish hook');
   }
 
   beforeEach(() => {
     execSyncMock.mockReset();
     execSyncMock.mockReturnValue(Buffer.from(''));
+    mockRefreshGeneratedApiMetadata.mockReset();
+    mockRefreshGeneratedApiMetadata.mockResolvedValue(true);
   });
 
   it(`should generate shared config`, () => {
@@ -35,6 +47,7 @@ describe(`beachball configs`, () => {
       generateChangelog: true,
       hooks: {
         precommit: expect.any(Function),
+        prepublish: expect.any(Function),
       },
       ignorePatterns: [
         '**/*.{shot,snap}',
@@ -92,6 +105,17 @@ describe(`beachball configs`, () => {
     expect(execSyncMock).toHaveBeenCalledTimes(1);
 
     consoleErrorSpy.mockRestore();
+  });
+
+  it('should refresh API metadata before publishing and propagate failures', async () => {
+    await prepublish('packages/react-components/react-button/library', '@fluentui/react-button', '9.12.0', {});
+    expect(mockRefreshGeneratedApiMetadata).toHaveBeenCalledWith('packages/react-components/react-button/library');
+
+    const error = new Error('metadata refresh failed');
+    mockRefreshGeneratedApiMetadata.mockRejectedValue(error);
+    await expect(
+      prepublish('packages/react-components/react-button/library', '@fluentui/react-button', '9.12.0', {}),
+    ).rejects.toBe(error);
   });
 
   it(`should generate v8 release config`, () => {

@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Render human catalog reports as Markdown and expose declaration-authored member defaults.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

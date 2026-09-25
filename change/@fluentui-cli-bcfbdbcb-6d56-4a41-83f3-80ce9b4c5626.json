@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add explicitly approved declarative package guidance, headless styling preferences, and published CLI configuration schemas",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

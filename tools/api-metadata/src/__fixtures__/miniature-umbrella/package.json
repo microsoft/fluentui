@@ -1,0 +1,19 @@
+{
+  "name": "@fixture/miniature-umbrella",
+  "version": "1.5.0",
+  "type": "module",
+  "dependencies": {
+    "@fixture/private-system": "3.2.1",
+    "@fixture/semantic-package": "1.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./unstable": {
+      "types": "./declarations/unstable.d.ts",
+      "default": "./dist/unstable.js"
+    }
+  }
+}

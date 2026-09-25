@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "systems": {
+    "fluent-v9": {
+      "catalogs": [
+        {
+          "package": "@fluentui/react-components"
+        }
+      ]
+    },
+    "headless": {
+      "catalogs": [
+        {
+          "package": "@fluentui/react-headless-components-preview"
+        }
+      ]
+    }
+  }
+}

@@ -24,6 +24,7 @@ import { buildCleanTarget } from './clean-plugin';
 import { buildFormatTarget } from './format-plugin';
 import { buildTypeCheckTarget } from './type-check-plugin';
 import { measureStart, measureEnd } from '../utils';
+import { readApiMetadataConfig } from '../api-metadata';
 
 export interface WorkspacePluginOptions {
   testSSR?: TargetPluginOption;
@@ -248,6 +249,7 @@ function buildWorkspaceProjectConfiguration(
     targets['generate-api'] = buildGenerateApiTarget(projectRoot, config);
 
     const { value: userExportSubpaths, enabled: userEnabledExportSubpaths } = resolveExportSubpathsOption(config);
+    const apiMetadata = readApiMetadataConfig(config.projectJSON);
 
     const isReactProject = Boolean(config.packageJSON.peerDependencies?.react);
 
@@ -263,7 +265,14 @@ function buildWorkspaceProjectConfiguration(
           config.tags.includes('ships-amd') ? { module: 'amd', outputPath: 'lib-amd' } : null,
         ].filter(Boolean) as BuildExecutorSchema['moduleOutput'],
         enableGriffelRawStyles: true,
-        ...(userEnabledExportSubpaths ? { generateApi: { exportSubpaths: userExportSubpaths } } : null),
+        ...(userEnabledExportSubpaths || apiMetadata
+          ? {
+              generateApi: {
+                ...(userEnabledExportSubpaths ? { exportSubpaths: userExportSubpaths } : null),
+                ...(apiMetadata ? { apiMetadata } : null),
+              },
+            }
+          : null),
         // NOTE: assets should be set per project needs
         // assets: [],
       } satisfies BuildExecutorSchema,
@@ -287,6 +296,17 @@ function buildWorkspaceProjectConfiguration(
         // only spread etc/ outputs from generate-api (dist/ is already covered by {projectRoot}/dist above)
         ...targets['generate-api'].outputs!.filter(outputPath => !outputPath.startsWith('{projectRoot}/dist')),
       ].filter(Boolean) as string[],
+      ...(apiMetadata
+        ? {
+            dependsOn: [
+              '^build',
+              {
+                projects: ['api-metadata'],
+                target: 'build',
+              },
+            ],
+          }
+        : null),
       metadata: {
         technologies: ['swc', 'typescript', 'api-extractor'],
         help: {
@@ -413,6 +433,7 @@ function resolveExportSubpathsOption(config: TaskBuilderConfig): {
 
 function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig): TargetConfiguration {
   const { enabled: hasExportSubpaths } = resolveExportSubpathsOption(config);
+  const apiMetadata = readApiMetadataConfig(config.projectJSON);
 
   return {
     cache: true,
@@ -424,13 +445,33 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
       '{projectRoot}/src/**/*.tsx?',
       // trigger affected or cache invalidation on generate-api target if scripts-api-extractor changed
       '{workspaceRoot}/scripts/api-extractor/api-extractor.*.json',
+      ...(apiMetadata ? ['{projectRoot}/package.json'] : []),
+      ...(apiMetadata ? ['^production'] : []),
+      ...(apiMetadata ? ['apiMetadataGenerator'] : []),
       { externalDependencies: ['@microsoft/api-extractor', 'typescript'] },
     ],
     // When exportSubpaths is enabled, use broad globs for outputs
     // — the executor resolves exact paths at runtime.
-    outputs: hasExportSubpaths
-      ? ['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']
-      : [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`],
+    outputs: [
+      ...(hasExportSubpaths
+        ? ['{projectRoot}/dist/**/*.d.ts', '{projectRoot}/etc/*.api.md']
+        : [`{projectRoot}/dist/index.d.ts`, `{projectRoot}/etc/${config.projectJSON.name}.api.md`]),
+      ...(apiMetadata
+        ? ['{projectRoot}/dist/**/*.d.cts', '{projectRoot}/dist/**/*.d.mts', '{projectRoot}/dist/metadata']
+        : []),
+    ],
+    ...(apiMetadata
+      ? {
+          options: { apiMetadata },
+          dependsOn: [
+            '^generate-api',
+            {
+              projects: ['api-metadata'],
+              target: 'build',
+            },
+          ],
+        }
+      : null),
     metadata: {
       technologies: ['typescript', 'api-extractor'],
       help: {
@@ -558,6 +599,7 @@ function buildVerifyPackagingTarget(
 
   return {
     executor: '@fluentui/workspace-plugin:verify-packaging',
+    ...(readApiMetadataConfig(config.projectJSON) ? { dependsOn: ['build'] } : null),
   };
 }
 

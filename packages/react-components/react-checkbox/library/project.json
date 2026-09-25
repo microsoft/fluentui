@@ -4,5 +4,36 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-checkbox/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "metadata": {
+    "apiMetadata": {
+      "system": "fluent-v9"
+    }
+  },
+  "targets": {
+    "build": {
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
+    "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    }
+  }
 }

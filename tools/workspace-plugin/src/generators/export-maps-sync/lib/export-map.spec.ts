@@ -144,6 +144,17 @@ describe('buildExportMap', () => {
       });
     });
 
+    it('adds the public metadata marker without changing runtime entry points', () => {
+      expect(buildExportMap(esmPackage, [rootEntry], { apiMetadata: true })).toEqual({
+        '.': {
+          import: { types: './dist/index.d.ts', default: './lib/index.js' },
+          require: { types: './dist/index.d.cts', default: './lib-commonjs/index.cjs' },
+        },
+        './metadata.json': './dist/metadata/index.json',
+        './package.json': './package.json',
+      });
+    });
+
     it('points require types at a .d.cts so node16 CJS consumers resolve a CommonJS declaration', () => {
       const exports = buildExportMap(esmPackage, [{ key: './badge', name: 'badge', outputPath: 'badge' }]);
 

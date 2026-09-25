@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Prioritize control-defined API members using declaration provenance and collapse inherited React and DOM detail behind --include-inherited.",
+  "packageName": "@fluentui/api-metadata",
+  "email": "martinhochel@microsoft.com"
+}

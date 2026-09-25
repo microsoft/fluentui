@@ -1,0 +1,158 @@
+{
+  "name": "cli-prototype",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/cli-prototype/template/src",
+  "projectType": "application",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "format": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "prettier --check --ignore-unknown tools/cli-prototype/README.md tools/cli-prototype/package.json tools/cli-prototype/project.json tools/cli-prototype/packages.mjs tools/cli-prototype/scripts tools/cli-prototype/template tools/cli-prototype/demo"
+      }
+    },
+    "prepare-demo": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/demo.mjs prepare"
+      }
+    },
+    "verify-demo": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/demo.mjs verify"
+      }
+    },
+    "start-demo": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/demo.mjs start"
+      }
+    },
+    "test-demo-harness": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node --test tools/cli-prototype/scripts/consumer-packages.test.mjs"
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs prepare"
+      }
+    },
+    "inventory": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs inventory"
+      }
+    },
+    "pack": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["build-catalogs"],
+      "outputs": [
+        "{projectRoot}/.artifacts/package-closure.json",
+        "{projectRoot}/.artifacts/tarballs",
+        "{projectRoot}/.artifacts/pack-manifest.json"
+      ],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs pack"
+      }
+    },
+    "build-catalogs": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs build-catalogs"
+      }
+    },
+    "refresh-metadata": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [{ "projects": ["api-metadata"], "target": "build" }],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs refresh-metadata"
+      }
+    },
+    "install": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["pack"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs install"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "syncGenerators": [],
+      "dependsOn": ["init"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs build"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs test"
+      }
+    },
+    "inspect-cli": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["install"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs inspect-cli"
+      }
+    },
+    "rollout": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["test", "coverage", "extensions"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/rollout.mjs"
+      }
+    },
+    "coverage": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["init"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/coverage.mjs"
+      }
+    },
+    "init": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["install"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/init.mjs"
+      }
+    },
+    "extensions": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["init"],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/extensions.mjs"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/playground.mjs start"
+      }
+    }
+  }
+}

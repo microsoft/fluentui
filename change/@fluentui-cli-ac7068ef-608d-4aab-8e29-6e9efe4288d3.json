@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Clarify doctor catalogue selection and show npm alias identities in human output",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

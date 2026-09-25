@@ -125,6 +125,14 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals", "{workspaceRoot}/.github/workflows/pr.yml"],
     "sharedGlobals": [],
+    "apiMetadataGenerator": [
+      "{workspaceRoot}/tools/api-metadata/src/**/*",
+      "{workspaceRoot}/tools/api-metadata/package.json",
+      "{workspaceRoot}/tools/api-metadata/project.json",
+      "{workspaceRoot}/tools/api-metadata/tsconfig*.json",
+      "{workspaceRoot}/tools/api-metadata/.swcrc",
+      "{workspaceRoot}/yarn.lock"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -154,7 +162,18 @@
           "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
         },
         "verifyPackaging": {
-          "include": ["react-text", "react-components"]
+          "include": [
+            "react-text",
+            "react-button",
+            "react-accordion",
+            "react-components",
+            "react-headless-components-preview",
+            "react-aria",
+            "react-context-selector",
+            "react-motion",
+            "react-motion-components-preview",
+            "react-utilities"
+          ]
         },
         "reactIntegrationTesting": {
           "targetName": "test-rit",

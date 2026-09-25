@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add the API metadata foundation with versioned contracts, validation, bounded readers, declaration generation, deterministic artifacts, and real Fluent UI pilot coverage.",
+  "packageName": "@fluentui/api-metadata",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

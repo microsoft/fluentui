@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Simplify API selection with exact --from import paths, inferred type/value bindings, and minimal contextual ambiguity suggestions.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

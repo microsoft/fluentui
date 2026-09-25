@@ -6,6 +6,7 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
+    "@fluentui/api-metadata": "*",
     "@nx/devkit": "~20.8.1"
   }
 }

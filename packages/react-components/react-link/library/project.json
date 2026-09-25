@@ -5,9 +5,38 @@
   "sourceRoot": "packages/react-components/react-link/library/src",
   "tags": ["vNext", "platform:web"],
   "implicitDependencies": [],
+  "metadata": {
+    "apiMetadata": {
+      "system": "fluent-v9"
+    }
+  },
   "targets": {
     "test": {
       "dependsOn": [{ "projects": "a11y-testing", "target": "build" }]
+    },
+    "build": {
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
+    "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
     }
   }
 }

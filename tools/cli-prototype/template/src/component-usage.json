@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "application": "Fluent Forum",
+  "countingRule": "One family per public component concept; subcomponents and variants do not increase totals.",
+  "evidenceContract": "jsxSymbols must occur as JSX elements in template source; testEvidence names the Playwright scenario that proves visibility or interaction where practical.",
+  "totals": {
+    "usageEntries": 33,
+    "distinctFamilies": 32,
+    "styledFamilies": 22,
+    "headlessFamilies": 11,
+    "familiesUsedInBothSystems": 1
+  },
+  "families": [
+    {
+      "family": "accordion",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Accordion", "AccordionHeader", "AccordionItem", "AccordionPanel"],
+      "jsxSymbols": ["Accordion", "AccordionHeader", "AccordionItem", "AccordionPanel"],
+      "sourceFiles": ["src/components/CommunityNavigation.tsx"],
+      "testEvidence": ["baseline component families are rendered and usable"],
+      "purpose": "Expandable joined-community and discovery navigation sections.",
+      "interactionContract": ["Joined communities can be collapsed and expanded."]
+    },
+    {
+      "family": "avatar",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Avatar"],
+      "jsxSymbols": ["Avatar"],
+      "sourceFiles": ["src/components/Header.tsx"],
+      "testEvidence": ["profile menu supports keyboard navigation and notifications can be cleared"],
+      "purpose": "Signed-in member identity in the global header.",
+      "interactionContract": ["Avatar opens the profile menu through its trigger button."]
+    },
+    {
+      "family": "badge",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Badge"],
+      "jsxSymbols": ["Badge"],
+      "sourceFiles": ["src/components/Header.tsx", "src/components/CommunityNavigation.tsx"],
+      "testEvidence": ["profile menu supports keyboard navigation and notifications can be cleared"],
+      "purpose": "Unread notification and community counters.",
+      "interactionContract": ["Counters update when notifications are marked read."]
+    },
+    {
+      "family": "breadcrumb",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Breadcrumb", "BreadcrumbButton", "BreadcrumbDivider", "BreadcrumbItem"],
+      "jsxSymbols": ["Breadcrumb", "BreadcrumbButton", "BreadcrumbDivider", "BreadcrumbItem"],
+      "sourceFiles": ["src/components/Feed.tsx"],
+      "testEvidence": ["search, community filter, saved filter, and sort produce deterministic feed results"],
+      "purpose": "Current home/community location above the feed.",
+      "interactionContract": ["Community selection updates the current breadcrumb."]
+    },
+    {
+      "family": "button",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Button"],
+      "jsxSymbols": ["Button"],
+      "sourceFiles": ["src/components/Header.tsx", "src/components/Feed.tsx", "src/components/PostComposer.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Primary application actions including create, refresh, retry, and drawer completion.",
+      "interactionContract": ["Create opens the composer.", "Retry refreshes the error state."]
+    },
+    {
+      "family": "card",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Card"],
+      "jsxSymbols": ["Card"],
+      "sourceFiles": [
+        "src/components/PostCard.tsx",
+        "src/components/CommunityNavigation.tsx",
+        "src/components/ForumSidebar.tsx"
+      ],
+      "testEvidence": ["baseline component families are rendered and usable"],
+      "purpose": "Post, navigation, information, and community-pulse surfaces.",
+      "interactionContract": ["Post cards reflect voting, save, reply, and compact preference state."]
+    },
+    {
+      "family": "divider",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Divider"],
+      "jsxSymbols": ["Divider"],
+      "sourceFiles": ["src/components/CommunityNavigation.tsx", "src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Separates navigation and preference groups.",
+      "interactionContract": ["Visual grouping follows the currently available preference sections."]
+    },
+    {
+      "family": "field",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Field"],
+      "jsxSymbols": ["Field"],
+      "sourceFiles": ["src/components/PostComposer.tsx", "src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Labels, hints, and validation messages for composer and preferences controls.",
+      "interactionContract": ["Invalid composer submission reveals field-level errors."]
+    },
+    {
+      "family": "info-label",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["InfoLabel"],
+      "jsxSymbols": ["InfoLabel"],
+      "sourceFiles": ["src/components/ForumSidebar.tsx"],
+      "testEvidence": ["baseline component families are rendered and usable"],
+      "purpose": "Explains the local-only nature of the forum.",
+      "interactionContract": ["Information affordance exposes explanatory content."]
+    },
+    {
+      "family": "link",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Link"],
+      "jsxSymbols": ["Link"],
+      "sourceFiles": ["src/components/PostCard.tsx", "src/components/ForumSidebar.tsx"],
+      "testEvidence": ["baseline component families are rendered and usable"],
+      "purpose": "Community references and the guidelines anchor.",
+      "interactionContract": ["Guidelines link navigates to the in-page section."]
+    },
+    {
+      "family": "message-bar",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["MessageBar", "MessageBarActions", "MessageBarBody", "MessageBarTitle"],
+      "jsxSymbols": ["MessageBar", "MessageBarActions", "MessageBarBody", "MessageBarTitle"],
+      "sourceFiles": ["src/components/Feed.tsx", "src/components/PostCard.tsx"],
+      "testEvidence": [
+        "loading, empty, and error states are recoverable without fixed waits",
+        "post overflow menu actions produce moderation feedback"
+      ],
+      "purpose": "Recoverable feed errors and post moderation feedback.",
+      "interactionContract": ["Retry leaves the error state.", "Post overflow actions show feedback."]
+    },
+    {
+      "family": "persona",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Persona"],
+      "jsxSymbols": ["Persona"],
+      "sourceFiles": ["src/components/CommunityNavigation.tsx"],
+      "testEvidence": ["search, community filter, saved filter, and sort produce deterministic feed results"],
+      "purpose": "Community identities and activity presence in navigation.",
+      "interactionContract": ["Selecting a persona row filters the feed."]
+    },
+    {
+      "family": "progress-bar",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["ProgressBar"],
+      "jsxSymbols": ["ProgressBar"],
+      "sourceFiles": ["src/components/Feed.tsx", "src/components/PostComposer.tsx"],
+      "testEvidence": [
+        "loading, empty, and error states are recoverable without fixed waits",
+        "post composer validates, publishes local content, and restores focus on escape"
+      ],
+      "purpose": "Feed refresh and composer completion progress.",
+      "interactionContract": ["Composer progress advances as required fields are completed."]
+    },
+    {
+      "family": "provider",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["FluentProvider"],
+      "jsxSymbols": ["FluentProvider"],
+      "sourceFiles": ["src/App.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Shared light/dark theme and document context for the mixed application.",
+      "interactionContract": ["Theme controls swap the provider theme."]
+    },
+    {
+      "family": "search-box",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["SearchBox"],
+      "jsxSymbols": ["SearchBox"],
+      "sourceFiles": ["src/components/Header.tsx"],
+      "testEvidence": ["search, community filter, saved filter, and sort produce deterministic feed results"],
+      "purpose": "Live text search over post title, body, author, and flair.",
+      "interactionContract": ["Search filters the feed and can produce an empty state."]
+    },
+    {
+      "family": "select",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Select"],
+      "jsxSymbols": ["Select"],
+      "sourceFiles": ["src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Content-language preference.",
+      "interactionContract": ["Language selection remains visible for the session."]
+    },
+    {
+      "family": "skeleton",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Skeleton", "SkeletonItem"],
+      "jsxSymbols": ["Skeleton", "SkeletonItem"],
+      "sourceFiles": ["src/components/Feed.tsx"],
+      "testEvidence": ["loading, empty, and error states are recoverable without fixed waits"],
+      "purpose": "Structured placeholders during deterministic feed refresh.",
+      "interactionContract": ["Refresh shows and then removes loading placeholders."]
+    },
+    {
+      "family": "spinner",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Spinner"],
+      "jsxSymbols": ["Spinner"],
+      "sourceFiles": ["src/components/Feed.tsx"],
+      "testEvidence": ["loading, empty, and error states are recoverable without fixed waits"],
+      "purpose": "Accessible loading announcement for feed refresh.",
+      "interactionContract": ["Refresh exposes a labelled loading indicator."]
+    },
+    {
+      "family": "tab-list",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Tab", "TabList"],
+      "jsxSymbols": ["Tab", "TabList"],
+      "sourceFiles": ["src/components/Feed.tsx"],
+      "testEvidence": ["search, community filter, saved filter, and sort produce deterministic feed results"],
+      "purpose": "Hot, new, and top feed sorting.",
+      "interactionContract": ["Selecting a tab deterministically reorders posts."]
+    },
+    {
+      "family": "tag",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Tag"],
+      "jsxSymbols": ["Tag"],
+      "sourceFiles": ["src/components/PostCard.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Post flair displayed on every discussion.",
+      "interactionContract": ["Newly composed flair appears on the published post."]
+    },
+    {
+      "family": "toast",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Toast", "ToastBody", "ToastTitle", "Toaster", "useToastController"],
+      "jsxSymbols": ["Toast", "ToastBody", "ToastTitle", "Toaster"],
+      "sourceFiles": ["src/App.tsx"],
+      "testEvidence": [
+        "voting and saving update only the selected post",
+        "threaded replies can be added and collapsed"
+      ],
+      "purpose": "Non-blocking confirmation for saves, replies, publishing, and notification cleanup.",
+      "interactionContract": ["Completed actions dispatch a visible confirmation."]
+    },
+    {
+      "family": "tooltip",
+      "system": "styled",
+      "package": "@fluentui/react-components",
+      "entrypoint": ".",
+      "symbols": ["Tooltip"],
+      "jsxSymbols": ["Tooltip"],
+      "sourceFiles": ["src/components/Header.tsx", "src/components/CommunityNavigation.tsx"],
+      "testEvidence": ["baseline component families are rendered and usable"],
+      "purpose": "Create-action label and community descriptions.",
+      "interactionContract": ["Hover or keyboard focus exposes descriptive content."]
+    },
+    {
+      "family": "button",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./button",
+      "symbols": ["Button"],
+      "jsxSymbols": ["HeadlessButton"],
+      "sourceFiles": [
+        "src/components/PostCard.tsx",
+        "src/components/CommentThread.tsx",
+        "src/components/CommunityNavigation.tsx",
+        "src/components/PreferencesDrawer.tsx"
+      ],
+      "testEvidence": [
+        "voting and saving update only the selected post",
+        "threaded replies can be added and collapsed"
+      ],
+      "purpose": "Custom token-styled voting, saving, community selection, reply, collapse, and drawer actions.",
+      "interactionContract": ["Votes change score once.", "Save toggles state.", "Reply and collapse controls work."]
+    },
+    {
+      "family": "checkbox",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./checkbox",
+      "symbols": ["Checkbox"],
+      "jsxSymbols": ["Checkbox"],
+      "sourceFiles": ["src/components/Feed.tsx"],
+      "testEvidence": ["search, community filter, saved filter, and sort produce deterministic feed results"],
+      "purpose": "Saved-only feed filtering with a custom indicator.",
+      "interactionContract": ["Checking limits the feed to saved posts."]
+    },
+    {
+      "family": "dialog",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./dialog",
+      "symbols": ["Dialog", "DialogActions", "DialogBody", "DialogHeader", "DialogSurface", "DialogTitle"],
+      "jsxSymbols": ["Dialog", "DialogActions", "DialogBody", "DialogHeader", "DialogSurface", "DialogTitle"],
+      "sourceFiles": ["src/components/PostComposer.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Accessible native-dialog post composer with escape and focus restoration.",
+      "interactionContract": ["Create opens the modal.", "Escape closes it and returns focus."]
+    },
+    {
+      "family": "drawer",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./drawer",
+      "symbols": ["DrawerBody", "DrawerFooter", "DrawerHeader", "DrawerHeaderTitle", "OverlayDrawer"],
+      "jsxSymbols": ["DrawerBody", "DrawerFooter", "DrawerHeader", "DrawerHeaderTitle", "OverlayDrawer"],
+      "sourceFiles": ["src/components/CommunityNavigation.tsx", "src/components/PreferencesDrawer.tsx"],
+      "testEvidence": [
+        "mobile navigation and composer remain usable with keyboard focus",
+        "preferences update theme, density, language, and feed length"
+      ],
+      "purpose": "Responsive community navigation and preferences overlays.",
+      "interactionContract": ["Mobile navigation and preferences open, close, and return focus."]
+    },
+    {
+      "family": "dropdown",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./dropdown",
+      "symbols": ["Dropdown", "Option"],
+      "jsxSymbols": ["Dropdown", "Option"],
+      "sourceFiles": ["src/components/PostComposer.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Custom community and flair selection in the composer.",
+      "interactionContract": ["Keyboard or pointer selection updates required composer values."]
+    },
+    {
+      "family": "input",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./input",
+      "symbols": ["Input"],
+      "jsxSymbols": ["Input"],
+      "sourceFiles": ["src/components/PostComposer.tsx"],
+      "testEvidence": ["post composer validates, publishes local content, and restores focus on escape"],
+      "purpose": "Custom token-styled composer title input.",
+      "interactionContract": ["Title updates completion and validation state."]
+    },
+    {
+      "family": "menu",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./menu",
+      "symbols": ["Menu", "MenuItem", "MenuList", "MenuPopover", "MenuTrigger"],
+      "jsxSymbols": ["Menu", "MenuItem", "MenuList", "MenuPopover", "MenuTrigger"],
+      "sourceFiles": ["src/components/Header.tsx", "src/components/PostCard.tsx"],
+      "testEvidence": [
+        "profile menu supports keyboard navigation and notifications can be cleared",
+        "post overflow menu actions produce moderation feedback"
+      ],
+      "purpose": "Profile, notifications, and per-post overflow actions.",
+      "interactionContract": ["Menus support keyboard navigation and execute selected actions."]
+    },
+    {
+      "family": "radio-group",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./radio-group",
+      "symbols": ["Radio", "RadioGroup"],
+      "jsxSymbols": ["Radio", "RadioGroup"],
+      "sourceFiles": ["src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Cozy or compact threaded-comment density preference.",
+      "interactionContract": ["Selection changes nested comment spacing."]
+    },
+    {
+      "family": "slider",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./slider",
+      "symbols": ["Slider"],
+      "jsxSymbols": ["Slider"],
+      "sourceFiles": ["src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Feed length preference.",
+      "interactionContract": ["Keyboard or pointer adjustment changes the displayed page size."]
+    },
+    {
+      "family": "switch",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./switch",
+      "symbols": ["Switch"],
+      "jsxSymbols": ["Switch"],
+      "sourceFiles": ["src/components/PreferencesDrawer.tsx"],
+      "testEvidence": ["preferences update theme, density, language, and feed length"],
+      "purpose": "Theme, density, motion, digest, and mature-content preferences.",
+      "interactionContract": ["Dark theme and compact feed switches immediately update the app."]
+    },
+    {
+      "family": "textarea",
+      "system": "headless",
+      "package": "@fluentui/react-headless-components-preview",
+      "entrypoint": "./textarea",
+      "symbols": ["Textarea"],
+      "jsxSymbols": ["Textarea"],
+      "sourceFiles": ["src/components/PostComposer.tsx", "src/components/CommentThread.tsx"],
+      "testEvidence": [
+        "post composer validates, publishes local content, and restores focus on escape",
+        "threaded replies can be added and collapsed"
+      ],
+      "purpose": "Composer body and threaded reply editors.",
+      "interactionContract": ["Validated post content and replies are submitted into local state."]
+    }
+  ]
+}

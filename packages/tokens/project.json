@@ -5,6 +5,11 @@
   "implicitDependencies": [],
   "sourceRoot": "packages/tokens/src",
   "tags": ["vNext", "platform:web"],
+  "metadata": {
+    "apiMetadata": {
+      "system": "fluent-v9"
+    }
+  },
   "targets": {
     "e2e": {
       "dependsOn": ["build"]
@@ -14,6 +19,30 @@
       "options": {
         "cwd": "{projectRoot}"
       }
+    },
+    "build": {
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
+    "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
     }
   }
 }

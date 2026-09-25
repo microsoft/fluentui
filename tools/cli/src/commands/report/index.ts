@@ -1,10 +1,11 @@
 import type { CommandModule } from 'yargs';
+import { REPORT_COMMAND_SPEC } from '../../utils/command-spec';
 import infoCommand from './commands/info';
 import usageCommand from './commands/usage';
 
 const command: CommandModule = {
-  command: 'report',
-  describe: 'Generate reports (info for issue reporting, usage for codebase analysis)',
+  command: REPORT_COMMAND_SPEC.command,
+  describe: REPORT_COMMAND_SPEC.description,
   builder: yargs =>
     yargs
       .command(infoCommand)

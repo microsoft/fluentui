@@ -5,5 +5,35 @@
   "sourceRoot": "packages/react-components/react-utilities/src",
   "tags": ["vNext", "platform:web"],
   "implicitDependencies": [],
-  "targets": {}
+  "metadata": {
+    "apiMetadata": {
+      "system": "fluent-v9"
+    }
+  },
+  "targets": {
+    "build": {
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
+    "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    }
+  }
 }

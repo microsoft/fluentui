@@ -1,0 +1,22 @@
+{
+  "name": "@fixture/subpath-only",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./button": {
+      "types": "./declarations/button.d.ts",
+      "default": "./dist/button.js"
+    },
+    "./features/*": {
+      "types": "./declarations/features/*.d.ts",
+      "default": "./dist/features/*.js"
+    },
+    "./features/private/*": null,
+    "./metadata.json": "./metadata.json",
+    "./package.json": "./package.json"
+  }
+}

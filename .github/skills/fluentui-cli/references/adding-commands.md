@@ -23,10 +23,12 @@ tools/cli/src/commands/<command-name>/
 └── handler.spec.ts   # Jest unit tests for the handler
 ```
 
-The generator also **automatically registers** the new command in `tools/cli/src/cli.ts` by:
+The generator also **automatically registers** the new command by:
 
-1. Adding an import statement for the command module
-2. Adding a `.command()` registration call
+1. Adding a `CliCommandSpec` to `tools/cli/src/utils/command-spec.ts`
+2. Pairing the command module and spec in `tools/cli/src/commands/registry.ts`
+
+Do not inject imports or `.command()` calls into `cli.ts`; the entrypoint loops over `REGISTERED_COMMANDS`.
 
 Preview what will be generated without writing to disk:
 
@@ -57,28 +59,17 @@ export const handler: CommandHandler<AnalyzeArgs> = async argv => {
 
 ## Step 3 — Add Options and Arguments
 
-Edit `tools/cli/src/commands/<command-name>/index.ts` to add yargs options in the `builder`:
+Add options to the generated spec in `tools/cli/src/utils/command-spec.ts`. The generated command definition applies
+that spec:
 
 ```typescript
 import type { CommandModule } from 'yargs';
+import { ANALYZE_COMMAND_SPEC, applyCommandOptions } from '../../utils/command-spec';
 
 const command: CommandModule = {
-  command: 'analyze',
-  describe: 'Analyze bundle sizes',
-  builder: yargs =>
-    yargs
-      .option('project', {
-        alias: 'p',
-        type: 'string',
-        describe: 'Project name to analyze',
-      })
-      .option('verbose', {
-        type: 'boolean',
-        default: false,
-        describe: 'Show detailed output',
-      })
-      .version(false)
-      .help(),
+  command: ANALYZE_COMMAND_SPEC.command,
+  describe: ANALYZE_COMMAND_SPEC.description,
+  builder: yargs => applyCommandOptions(yargs, ANALYZE_COMMAND_SPEC).version(false).help(),
   handler: async argv => {
     const { handler } = await import('./handler');
     return handler(argv);

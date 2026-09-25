@@ -8,8 +8,9 @@ import { cjsRenameTransforms, copyCjsTypes } from './lib/cjs-extension';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue, runInParallel, runSerially } from './lib/shared';
 
 import { measureEnd, measureStart } from '../../utils';
-import generateApiExecutor from '../generate-api/executor';
+import { runGenerateApiExecutor } from '../generate-api/executor';
 import { type GenerateApiExecutorSchema } from '../generate-api/schema';
+import { finalizeApiMetadata } from '../generate-api/lib/api-metadata';
 
 import { type BuildExecutorSchema } from './schema';
 
@@ -18,6 +19,11 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
 
   const options = normalizeOptions(schema, context);
   const assetFiles = assetGlobsToFiles(options.assets ?? [], context.root, options.outputPathRoot);
+
+  let generateApiSchema: GenerateApiExecutorSchema | undefined;
+  if (options.generateApi) {
+    generateApiSchema = typeof options.generateApi === 'object' ? options.generateApi : {};
+  }
 
   const success = await runSerially(
     () => cleanOutput(options, assetFiles),
@@ -28,13 +34,19 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
           if (!options.generateApi) {
             return Promise.resolve(true);
           }
-          const generateApiSchema: GenerateApiExecutorSchema =
-            typeof options.generateApi === 'object' ? options.generateApi : {};
-          return generateApiExecutor(generateApiSchema, context).then(res => res.success);
+          return runGenerateApiExecutor(generateApiSchema!, context, { finalizeMetadata: false }).then(
+            res => res.success,
+          );
         },
       ),
     () => copyAssets(assetFiles),
     () => copyCjsTypes(options),
+    () =>
+      generateApiSchema?.apiMetadata
+        ? finalizeApiMetadata(generateApiSchema.apiMetadata === true ? {} : generateApiSchema.apiMetadata, context, {
+            declarationsFinalized: true,
+          })
+        : Promise.resolve(true),
   );
 
   measureEnd('BuildExecutor');

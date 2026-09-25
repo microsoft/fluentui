@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add API catalog generation, validation, inspection, doctor, and manifest commands.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

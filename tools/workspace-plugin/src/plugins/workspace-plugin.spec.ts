@@ -999,6 +999,10 @@ describe(`workspace-plugin`, () => {
               },
             },
           } satisfies ProjectConfiguration),
+          'proj/package.json': serializeJson({
+            name: '@proj/proj',
+            private: false,
+          } satisfies Partial<PackageJson>),
         };
         await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
         const results = await createNodesFunction(['proj/project.json'], options, context);
@@ -1015,6 +1019,45 @@ describe(`workspace-plugin`, () => {
           '{projectRoot}/dist',
           '{projectRoot}/etc/*.api.md',
         ]);
+      });
+
+      it('should wire opted-in metadata into standalone and normal builds', async () => {
+        const extraFiles = {
+          'proj/project.json': serializeJson({
+            root: 'proj',
+            name: 'proj',
+            projectType: 'library',
+            tags: ['vNext'],
+            metadata: {
+              apiMetadata: {
+                system: 'fluent-v9',
+              },
+            },
+          } satisfies ProjectConfiguration),
+          'proj/package.json': serializeJson({
+            name: '@proj/proj',
+            private: false,
+          } satisfies Partial<PackageJson>),
+        };
+        await tempFs.createFiles({ ...v9LibFiles, ...extraFiles });
+        const results = await createNodesFunction(['proj/project.json'], options, context);
+        const targets = getTargets(results);
+        const apiMetadata = {
+          system: 'fluent-v9',
+        };
+
+        expect(targets?.['generate-api']).toMatchObject({
+          options: { apiMetadata },
+          outputs: expect.arrayContaining([
+            '{projectRoot}/dist/**/*.d.cts',
+            '{projectRoot}/dist/**/*.d.mts',
+            '{projectRoot}/dist/metadata',
+          ]),
+          inputs: expect.arrayContaining(['{projectRoot}/package.json', '^production', 'apiMetadataGenerator']),
+        });
+        expect(targets?.build?.options?.generateApi).toEqual({ apiMetadata });
+        expect(targets?.build?.inputs).toEqual(expect.arrayContaining(['apiMetadataGenerator']));
+        expect(targets?.['verify-packaging']?.dependsOn).toEqual(['build']);
       });
     });
 

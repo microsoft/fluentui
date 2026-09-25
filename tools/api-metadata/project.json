@@ -1,0 +1,36 @@
+{
+  "name": "api-metadata",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/api-metadata/src",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "tools/api-metadata/src/index.ts",
+        "tsConfig": "tools/api-metadata/tsconfig.lib.json"
+      }
+    },
+    "test-real-pilots": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [
+        {
+          "projects": ["react-components"],
+          "target": "build"
+        },
+        {
+          "projects": ["react-headless-components-preview"],
+          "target": "generate-api"
+        }
+      ],
+      "options": {
+        "cwd": "tools/api-metadata",
+        "command": "FLUENTUI_API_METADATA_REAL_PILOTS=1 yarn run -T jest --runTestsByPath src/generate.real.test.ts --runInBand"
+      }
+    }
+  }
+}

@@ -3,38 +3,20 @@ import * as path from 'node:path';
 import { execSync } from 'node:child_process';
 
 import type { SystemInfo, ResolvedPackage, DuplicatePackage } from './types';
-
-/**
- * Package name patterns we're interested in for reporting.
- */
-const FLUENT_SCOPED_PATTERNS = ['@fluentui/', '@fluentui-contrib/'];
-const FLUENT_RELATED_PATTERNS = ['@griffel/'];
-const FLUENT_RELATED_EXACT = ['tabster', 'keyborg'];
-const THIRD_PARTY_PATTERNS = ['@floating-ui/'];
-const THIRD_PARTY_EXACT = ['react', '@types/react', 'typescript'];
+import { LEGACY_INFO_PACKAGE_PATTERNS, LEGACY_USAGE_PACKAGE_PATTERNS, matchesPackagePattern } from '../../../utils';
 
 /**
  * Checks if a package name matches our reporting criteria (short report — includes 3rd-party).
  */
 export function isReportablePackage(name: string): boolean {
-  for (const pattern of [...FLUENT_SCOPED_PATTERNS, ...FLUENT_RELATED_PATTERNS, ...THIRD_PARTY_PATTERNS]) {
-    if (name.startsWith(pattern)) {
-      return true;
-    }
-  }
-  return [...FLUENT_RELATED_EXACT, ...THIRD_PARTY_EXACT].includes(name);
+  return LEGACY_INFO_PACKAGE_PATTERNS.some(pattern => matchesPackagePattern(name, pattern));
 }
 
 /**
  * Checks if a package name matches long report criteria (excludes generic 3rd-party like react/typescript).
  */
 export function isReportablePackageForLong(name: string): boolean {
-  for (const pattern of [...FLUENT_SCOPED_PATTERNS, ...FLUENT_RELATED_PATTERNS]) {
-    if (name.startsWith(pattern)) {
-      return true;
-    }
-  }
-  return FLUENT_RELATED_EXACT.includes(name);
+  return LEGACY_USAGE_PACKAGE_PATTERNS.some(pattern => matchesPackagePattern(name, pattern));
 }
 
 /**

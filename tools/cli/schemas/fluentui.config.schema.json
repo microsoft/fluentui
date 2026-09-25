@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fluent UI CLI project configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "systems"],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schemaVersion": { "const": 1 },
+    "systems": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+      "additionalProperties": { "$ref": "#/definitions/system" },
+      "description": "Named public catalogues. Custom system names are supported."
+    },
+    "extensions": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/packageName" },
+      "description": "Explicit approval to install declarative guidance from these installed catalogue packages. Discovery alone never approves guidance."
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "headlessStyling": {
+          "enum": ["css-modules", "tailwind"],
+          "description": "The user's choice for headless styling. The agent must ask before recording a choice."
+        }
+      }
+    }
+  },
+  "definitions": {
+    "packageName": {
+      "type": "string",
+      "pattern": "^(?:@[a-zA-Z0-9][a-zA-Z0-9._-]*/)?[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+    },
+    "packagePattern": {
+      "type": "string",
+      "pattern": "^(?:@[a-zA-Z0-9][a-zA-Z0-9._-]*/)?[a-zA-Z0-9*][a-zA-Z0-9._*-]*$"
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "package": { "$ref": "#/definitions/packageName" },
+        "path": { "type": "string", "minLength": 1 }
+      },
+      "oneOf": [
+        { "required": ["package"], "not": { "required": ["path"] } },
+        { "required": ["path"], "not": { "required": ["package"] } }
+      ]
+    },
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "disabled": { "type": "boolean" },
+        "catalogs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/catalog" }
+        },
+        "packages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/packagePattern" }
+        },
+        "exclusions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/packagePattern" }
+        }
+      },
+      "if": { "required": ["disabled"], "properties": { "disabled": { "const": true } } },
+      "then": {
+        "properties": {
+          "catalogs": { "maxItems": 0 },
+          "packages": { "maxItems": 0 },
+          "exclusions": { "maxItems": 0 }
+        }
+      },
+      "else": {
+        "anyOf": [
+          { "required": ["catalogs"], "properties": { "catalogs": { "minItems": 1 } } },
+          { "required": ["packages"], "properties": { "packages": { "minItems": 1 } } }
+        ]
+      }
+    }
+  }
+}

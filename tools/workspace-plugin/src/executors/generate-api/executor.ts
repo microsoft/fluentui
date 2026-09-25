@@ -16,18 +16,30 @@ import type { PackageJson, TsConfig } from '../../types';
 import { measureEnd, measureStart } from '../../utils';
 import { isCI, verboseLog } from './lib/shared';
 import { getExportSubpathConfigs } from './lib/utils';
+import { finalizeApiMetadata } from './lib/api-metadata';
+import type { ApiMetadataConfig } from '../../api-metadata';
 
-const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
+const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = (schema, context) =>
+  runGenerateApiExecutor(schema, context);
+
+export async function runGenerateApiExecutor(
+  schema: GenerateApiExecutorSchema,
+  context: ExecutorContext,
+  internal: { finalizeMetadata?: boolean } = {},
+) {
   measureStart('GenerateApiExecutor');
 
   const options = normalizeOptions(schema, context);
 
-  const success = await runGenerateApi(options, context);
+  let success = await runGenerateApi(options, context);
+  if (success && options.apiMetadata && internal.finalizeMetadata !== false) {
+    success = await finalizeApiMetadata(options.apiMetadata, context, { declarationsFinalized: false });
+  }
 
   measureEnd('GenerateApiExecutor');
 
   return { success };
-};
+}
 
 export default runExecutor;
 
@@ -145,6 +157,7 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
   return {
     ...resolvedSchema,
     exportSubpaths,
+    apiMetadata: normalizeApiMetadataConfig(resolvedSchema.apiMetadata),
     local: resolveLocalFlag,
     config: resolveConfig.result!,
     project,
@@ -152,6 +165,16 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
     tsConfigPathForCompilation: tsConfigPathForCompilation.result!,
     packageJsonPath,
   };
+}
+
+function normalizeApiMetadataConfig(value: GenerateApiExecutorSchema['apiMetadata']): ApiMetadataConfig | undefined {
+  if (value === true) {
+    return {};
+  }
+  if (!value) {
+    return undefined;
+  }
+  return value;
 }
 
 function generateTypeDeclarations(options: NormalizedOptions) {

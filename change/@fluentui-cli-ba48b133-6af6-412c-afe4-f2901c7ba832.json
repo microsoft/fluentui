@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Generate verified slot presentation metadata and render compact CLI slot types with an --expand-types escape hatch.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

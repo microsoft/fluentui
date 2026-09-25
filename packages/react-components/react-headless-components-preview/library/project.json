@@ -6,13 +6,38 @@
   "tags": ["vNext", "platform:web", "react-headless"],
   "implicitDependencies": [],
   "metadata": {
+    "apiMetadata": {
+      "system": "headless"
+    },
     "exportMap": {
       "root": true,
       "subpathEntryPoints": ["src/*.ts"]
     }
   },
   "targets": {
+    "build": {
+      "inputs": [
+        "production",
+        "^production",
+        "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json",
+        "apiMetadataGenerator"
+      ],
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ]
+    },
     "generate-api": {
+      "dependsOn": [
+        "^generate-api",
+        {
+          "projects": ["api-metadata"],
+          "target": "build"
+        }
+      ],
       "options": {
         "exportSubpaths": true
       }

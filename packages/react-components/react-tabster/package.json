@@ -46,6 +46,7 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./metadata.json": "./dist/metadata/index.json",
     "./package.json": "./package.json"
   },
   "files": [
@@ -53,7 +54,9 @@
     "dist/*.d.ts",
     "dist/*.d.cts",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/metadata"
   ],
-  "type": "module"
+  "type": "module",
+  "fluentuiCatalog": "./metadata.json"
 }

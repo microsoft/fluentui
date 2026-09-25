@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Expose reader-safe public export-map matching for import recommendations, including wildcard precedence and blocked subpaths.",
+  "packageName": "@fluentui/api-metadata",
+  "email": "martinhochel@microsoft.com"
+}

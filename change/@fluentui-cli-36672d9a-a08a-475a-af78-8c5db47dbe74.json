@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add opt-in dense API JSON for agent lookups while preserving full metadata responses and refresh consumer skill guidance.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

@@ -2,8 +2,9 @@ import { execSync } from 'child_process';
 
 import type { BeachballConfig } from 'beachball';
 
-import { renderEntry, renderHeader } from './customRenderers';
 import baseConfig from '../base.config';
+
+import { renderEntry, renderHeader } from './customRenderers';
 
 type SharedConfig = typeof baseConfig & Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>>;
 
@@ -26,6 +27,13 @@ export const config: SharedConfig = {
     },
   },
   hooks: {
+    prepublish: async packageRoot => {
+      const generatorEntryPoint = '@fluentui/api-metadata/generator';
+      const { refreshGeneratedApiMetadata } = (await import(generatorEntryPoint)) as {
+        refreshGeneratedApiMetadata(packageRoot: string): Promise<boolean>;
+      };
+      await refreshGeneratedApiMetadata(packageRoot);
+    },
     precommit: () => {
       try {
         const generators = [

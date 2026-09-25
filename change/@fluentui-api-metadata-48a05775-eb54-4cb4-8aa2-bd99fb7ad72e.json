@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Share equivalent ESM and CommonJS API payloads while preserving condition-specific routing and validation",
+  "packageName": "@fluentui/api-metadata",
+  "email": "martinhochel@microsoft.com"
+}

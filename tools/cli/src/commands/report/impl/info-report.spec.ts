@@ -22,6 +22,15 @@ jest.mock('./package-resolver', () => ({
   findDuplicatePackages: jest.fn().mockReturnValue([{ name: '@proj/react-icons', versions: ['2.0.200', '2.0.195'] }]),
 }));
 
+jest.mock('../../../utils', () => ({
+  getCatalogInventory: jest.fn().mockReturnValue({
+    roots: [],
+    diagnostics: [],
+    selection: { matches: () => false },
+  }),
+  getWorkspacePackageInventory: jest.fn().mockReturnValue({ packages: [] }),
+}));
+
 describe('info-report', () => {
   describe('collectInfoReportData', () => {
     it('should collect system info, packages, and duplicates', () => {

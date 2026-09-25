@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "systems": {
+    "missing": {
+      "catalogs": [
+        {
+          "package": "@fluentui/missing-catalog"
+        }
+      ]
+    }
+  }
+}

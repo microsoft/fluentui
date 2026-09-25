@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Ship API-only Fluent UI metadata through the public metadata.json export.",
+  "packageName": "@fluentui/react-accordion",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

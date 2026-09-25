@@ -1,11 +1,16 @@
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { type ExecutorContext, type PromiseExecutor, logger, serializeJson } from '@nx/devkit';
+import { assertValidApiRecord, assertValidPackageIndex, validateCatalog } from '@fluentui/api-metadata';
 import { spawnSync } from 'node:child_process';
 
 import micromatch from 'micromatch';
 
 import { type VerifyPackagingExecutorSchema } from './schema';
-import { join } from 'node:path';
 import { measureEnd, measureStart } from '../../utils';
+import type { PackageJson } from '../../types';
 
 const runExecutor: PromiseExecutor<VerifyPackagingExecutorSchema> = async (schema, context) => {
   measureStart('VerifyTargetExecutor');
@@ -36,7 +41,10 @@ async function runVerifyPackaging(options: NormalizedOptions, context: ExecutorC
 
   const packOutput = npmPackOutput(options, context);
 
-  const issues = assertions(packOutput, options, tags);
+  const issues = [
+    ...assertions(packOutput, options, tags),
+    ...metadataAssertions(packOutput, join(context.root, options.project.root)),
+  ];
 
   if (issues.length === 0) {
     return true;
@@ -74,13 +82,104 @@ function normalizeOptions(schema: VerifyPackagingExecutorSchema, context: Execut
 }
 
 function npmPackOutput(options: NormalizedOptions, context: ExecutorContext) {
-  const npmPackResult = spawnSync('npm', ['pack', '--dry-run'], { cwd: join(context.root, options.project.root) });
+  const packDirectory = join(context.root, '.nx/verify-packaging', context.projectName!);
+  rmSync(packDirectory, { recursive: true, force: true });
+  mkdirSync(packDirectory, { recursive: true });
+  const npmPackResult = spawnSync('npm', ['pack', '--json', '--pack-destination', packDirectory], {
+    cwd: join(context.root, options.project.root),
+    encoding: 'utf8',
+  });
+  rmSync(packDirectory, { recursive: true, force: true });
+
+  if (npmPackResult.status && npmPackResult.status !== 0) {
+    throw new Error(npmPackResult.stderr || `npm pack failed with exit code ${npmPackResult.status}`);
+  }
+
+  try {
+    const output = JSON.parse(npmPackResult.stdout || '') as Array<{ files?: Array<{ path: string }> }>;
+    if (output[0]?.files) {
+      return output[0].files.map(file => file.path);
+    }
+  } catch {
+    // Older npm output and unit fixtures use the human-readable notice format.
+  }
 
   const processedResult = npmPackResult.output
     .toString()
     .replace(/\bnpm notice\b\s+[\d.]+[MkB]+\s+/gi, '')
     .replace(/[ ]+/g, '');
-  return processedResult.split('\n');
+  return processedResult.split('\n').filter(Boolean);
+}
+
+function metadataAssertions(
+  npmPackResult: string[],
+  packageRoot: string,
+): Array<{ matches?: string[]; pattern?: string | string[]; message: string }> {
+  const packageJsonPath = join(packageRoot, 'package.json');
+  if (!existsSync(packageJsonPath)) {
+    return [];
+  }
+  const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8')) as PackageJson;
+  if (!packageJson.fluentuiCatalog) {
+    return [];
+  }
+
+  const issues: Array<{ matches?: string[]; pattern?: string | string[]; message: string }> = [];
+  if (packageJson.fluentuiCatalog !== './metadata.json') {
+    issues.push({ message: 'fluentuiCatalog must point to the public ./metadata.json export' });
+  }
+  if (packageJson.exports?.['./metadata.json'] !== './dist/metadata/index.json') {
+    issues.push({ message: 'exports ./metadata.json from dist/metadata/index.json' });
+  }
+  if (!packageJson.files?.includes('dist/metadata')) {
+    issues.push({ message: 'includes dist/metadata in published files' });
+  }
+
+  try {
+    const index = assertValidPackageIndex(
+      JSON.parse(readFileSync(join(packageRoot, 'dist/metadata/index.json'), 'utf8')),
+    );
+    const records = index.records.map(descriptor =>
+      assertValidApiRecord(JSON.parse(readFileSync(join(packageRoot, 'dist/metadata', descriptor.path), 'utf8'))),
+    );
+    const validation = validateCatalog(index, records);
+    if (!validation.valid) {
+      issues.push({
+        message: `ships valid metadata records: ${validation.diagnostics
+          .map(diagnostic => `${diagnostic.path}: ${diagnostic.message}`)
+          .join('; ')}`,
+      });
+    }
+    if (index.package.name !== packageJson.name || index.package.version !== packageJson.version) {
+      issues.push({ message: 'metadata package identity matches the packed package.json' });
+    }
+
+    for (const input of index.declarationInputs) {
+      const declaration = readFileSync(join(packageRoot, input.path));
+      const fingerprint = createHash('sha256').update(declaration).digest('hex');
+      if (fingerprint !== input.fingerprint.value) {
+        issues.push({ message: `metadata declaration fingerprint matches ${input.path}` });
+      }
+    }
+
+    const expectedFiles = [
+      'dist/metadata/index.json',
+      ...index.records.map(record => `dist/metadata/${record.path}`),
+    ].sort();
+    const packedFiles = micromatch(npmPackResult, 'dist/metadata/**').sort();
+    if (JSON.stringify(packedFiles) !== JSON.stringify(expectedFiles)) {
+      issues.push({
+        matches: packedFiles,
+        message: `ships exactly the indexed metadata files (${expectedFiles.join(', ')})`,
+      });
+    }
+  } catch (error) {
+    issues.push({
+      message: `ships readable, valid metadata: ${error instanceof Error ? error.message : String(error)}`,
+    });
+  }
+
+  return issues;
 }
 
 function assertions(

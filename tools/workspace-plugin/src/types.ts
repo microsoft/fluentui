@@ -53,6 +53,7 @@ export interface PackageJson {
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   peerDependenciesMeta?: Record<string, { optional?: boolean }>;
+  fluentuiCatalog?: string;
   exports?: Record<
     string,
     | string

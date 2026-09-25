@@ -1,0 +1,32 @@
+{
+  "name": "@fluentui/api-metadata",
+  "version": "0.0.0",
+  "description": "Versioned contracts and readers for Fluent UI API metadata.",
+  "type": "commonjs",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./generator": {
+      "types": "./dist/src/generator.d.ts",
+      "default": "./dist/src/generator.js"
+    }
+  },
+  "files": [
+    "*.md",
+    "dist"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.5.1",
+    "typescript": "5.7.3"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  }
+}

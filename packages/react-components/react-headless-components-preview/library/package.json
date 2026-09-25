@@ -11,7 +11,8 @@
     "dist/*.d.ts",
     "dist/*.d.cts",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/metadata"
   ],
   "repository": {
     "type": "git",
@@ -642,6 +643,7 @@
         "default": "./lib-commonjs/utils.cjs"
       }
     },
+    "./metadata.json": "./dist/metadata/index.json",
     "./package.json": "./package.json"
   },
   "beachball": {
@@ -654,5 +656,6 @@
     "@fluentui/scripts-cypress": "*",
     "@oddbird/popover-polyfill": "^0.6.1"
   },
-  "type": "module"
+  "type": "module",
+  "fluentuiCatalog": "./metadata.json"
 }

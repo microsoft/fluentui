@@ -10,17 +10,21 @@
   },
   "files": [
     "*.md",
+    "assets",
     "bin",
-    "dist"
+    "dist",
+    "schemas"
   ],
   "dependencies": {
+    "@fluentui/api-metadata": "*",
     "@swc/helpers": "^0.5.1",
     "fast-glob": "^3.3.3",
     "ts-morph": "^23.0.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.33"
+    "@types/yargs": "^17.0.33",
+    "ajv": "^8.17.1"
   },
   "beachball": {
     "disallowedChangeTypes": [

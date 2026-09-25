@@ -32,7 +32,8 @@ function normalizeOptions(options: CliCommandGeneratorSchema) {
     description: options.description ?? 'TODO: Add description',
     skipFormat: options.skipFormat ?? false,
     commandDir: path.join(CLI_PROJECT_ROOT, COMMANDS_DIR, options.name),
-    cliEntryPath: path.join(CLI_PROJECT_ROOT, 'src/cli.ts'),
+    commandSpecPath: path.join(CLI_PROJECT_ROOT, 'src/utils/command-spec.ts'),
+    registryPath: path.join(CLI_PROJECT_ROOT, 'src/commands/registry.ts'),
   };
 }
 
@@ -52,33 +53,104 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 }
 
 function registerCommand(tree: Tree, options: NormalizedSchema) {
-  const cliPath = options.cliEntryPath;
-  const content = tree.read(cliPath, 'utf-8');
+  registerCommandSpec(tree, options);
+  registerCommandModule(tree, options);
+}
+
+function registerCommandSpec(tree: Tree, options: NormalizedSchema) {
+  const content = tree.read(options.commandSpecPath, 'utf-8');
 
   if (!content) {
-    throw new Error(`CLI entry file not found at ${cliPath}`);
+    throw new Error(`Command spec file not found at ${options.commandSpecPath}`);
   }
 
-  const importName = `${options.propertyName}Command`;
-  const importPath = `./commands/${options.name}`;
-  const escapedImportPath = importPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const commandImportPattern = new RegExp(`from\\s+['"]${escapedImportPath}['"]`);
-
-  if (commandImportPattern.test(content)) {
+  const specName = commandSpecName(options);
+  if (content.includes(`export const ${specName}:`)) {
     return;
   }
 
-  // Add import after the last existing command import
-  const importStatement = `import ${importName} from '${importPath}';\n`;
-  const lastImportIndex = content.lastIndexOf('import ');
-  const lastImportEnd = content.indexOf('\n', lastImportIndex) + 1;
-  const withImport = content.slice(0, lastImportEnd) + importStatement + content.slice(lastImportEnd);
+  const commandSpecsAnchor = 'export const COMMAND_SPECS: readonly CliCommandSpec[] = [';
+  const commandSpecsIndex = content.indexOf(commandSpecsAnchor);
+  if (commandSpecsIndex === -1) {
+    throw new Error(`COMMAND_SPECS registry not found in ${options.commandSpecPath}`);
+  }
 
-  // Add .command() registration before .demandCommand()
-  const commandRegistration = `    .command(${importName})\n`;
-  const demandCommandIndex = withImport.indexOf('.demandCommand(');
-  const insertPoint = withImport.lastIndexOf('\n', demandCommandIndex) + 1;
-  const withCommand = withImport.slice(0, insertPoint) + commandRegistration + withImport.slice(insertPoint);
+  const spec = [
+    `export const ${specName}: CliCommandSpec = {`,
+    `  command: '${options.name}',`,
+    `  description: '${escapeSingleQuoted(options.description)}',`,
+    '  options: {},',
+    `  responses: ['fluentui.${options.name}'],`,
+    '  exits: {',
+    "    0: 'Command completed',",
+    "    1: 'Command failed',",
+    "    2: 'Invalid command input',",
+    '  },',
+    '};',
+    '',
+  ].join('\n');
+  let updated = content.slice(0, commandSpecsIndex) + spec + content.slice(commandSpecsIndex);
 
-  tree.write(cliPath, withCommand);
+  const arrayStart = updated.indexOf(commandSpecsAnchor) + commandSpecsAnchor.length;
+  const arrayEnd = updated.indexOf('];', arrayStart);
+  if (arrayEnd === -1) {
+    throw new Error(`COMMAND_SPECS registry is malformed in ${options.commandSpecPath}`);
+  }
+  updated = updated.slice(0, arrayEnd) + `  ${specName},\n` + updated.slice(arrayEnd);
+  tree.write(options.commandSpecPath, updated);
+}
+
+function registerCommandModule(tree: Tree, options: NormalizedSchema) {
+  const content = tree.read(options.registryPath, 'utf-8');
+  if (!content) {
+    throw new Error(`Command registry not found at ${options.registryPath}`);
+  }
+
+  const moduleName = `${options.propertyName}Command`;
+  const specName = commandSpecName(options);
+  const moduleImport = `import ${moduleName} from './${options.name}';`;
+  let updated = content;
+
+  if (!updated.includes(moduleImport)) {
+    const lastCommandImport = [...updated.matchAll(/^import .* from '\.\/[^']+';$/gm)].at(-1);
+    if (!lastCommandImport?.index && lastCommandImport?.index !== 0) {
+      throw new Error(`Command module imports not found in ${options.registryPath}`);
+    }
+    const insertAt = lastCommandImport.index + lastCommandImport[0].length;
+    updated = `${updated.slice(0, insertAt)}\n${moduleImport}${updated.slice(insertAt)}`;
+  }
+
+  if (!updated.includes(`{ module: ${moduleName}, spec: ${specName} }`)) {
+    const registryAnchor = 'export const REGISTERED_COMMANDS: readonly RegisteredCommand[] = [';
+    const registryStart = updated.indexOf(registryAnchor);
+    const registryEnd = updated.indexOf('];', registryStart + registryAnchor.length);
+    if (registryStart === -1 || registryEnd === -1) {
+      throw new Error(`REGISTERED_COMMANDS registry not found in ${options.registryPath}`);
+    }
+    updated =
+      updated.slice(0, registryEnd) + `  { module: ${moduleName}, spec: ${specName} },\n` + updated.slice(registryEnd);
+  }
+
+  const specImportPattern = /import \{\n?([\s\S]*?)\} from '\.\.\/utils\/command-spec';/;
+  const match = updated.match(specImportPattern);
+  if (!match) {
+    throw new Error(`Command spec import not found in ${options.registryPath}`);
+  }
+  if (!match[1].includes(specName)) {
+    const existingImports = match[1].trimEnd();
+    const replacement = `import {\n${existingImports}${
+      existingImports ? '\n' : ''
+    }  ${specName},\n} from '../utils/command-spec';`;
+    updated = updated.replace(specImportPattern, replacement);
+  }
+
+  tree.write(options.registryPath, updated);
+}
+
+function commandSpecName(options: NormalizedSchema): string {
+  return `${options.constantName}_COMMAND_SPEC`;
+}
+
+function escapeSingleQuoted(value: string): string {
+  return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }

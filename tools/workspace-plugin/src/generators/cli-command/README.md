@@ -29,7 +29,8 @@ tools/cli/src/commands/analyze/
 └── handler.spec.ts   # Handler tests
 ```
 
-And registers the command in `tools/cli/src/cli.ts`.
+And registers the command spec and module in `tools/cli/src/utils/command-spec.ts` and
+`tools/cli/src/commands/registry.ts`. The CLI entrypoint reads that registry.
 
 ## Options
 

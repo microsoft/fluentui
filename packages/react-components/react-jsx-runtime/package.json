@@ -61,6 +61,7 @@
         "default": "./lib-commonjs/jsx-runtime.cjs"
       }
     },
+    "./metadata.json": "./dist/metadata/index.json",
     "./package.json": "./package.json"
   },
   "files": [
@@ -70,7 +71,9 @@
     "jsx-dev-runtime",
     "jsx-runtime",
     "lib",
-    "lib-commonjs"
+    "lib-commonjs",
+    "dist/metadata"
   ],
-  "type": "module"
+  "type": "module",
+  "fluentuiCatalog": "./metadata.json"
 }

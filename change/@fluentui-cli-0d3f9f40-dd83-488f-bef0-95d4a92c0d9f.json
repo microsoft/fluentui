@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Ship full API metadata ownership and skill-first CLI initialization; remove the legacy metadata extractor.",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

@@ -1,5 +1,6 @@
 import { readFile, writeFile, rm, readdir, access, copyFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { readJsonFile } from '@nx/devkit';
 
 import { logger } from '@nx/devkit';
 
@@ -86,9 +87,21 @@ export async function copyCjsTypes(options: NormalizedOptions): Promise<boolean>
     return true;
   }
 
-  const distDir = join(options.absoluteProjectRoot, 'dist');
+  await copyCjsTypesForPackage(options.absoluteProjectRoot, { force: options.isEsmPackage });
+  return true;
+}
+
+export async function copyCjsTypesForPackage(packageRoot: string, options: { force?: boolean } = {}): Promise<void> {
+  if (!options.force) {
+    const packageJson = readJsonFile<{ type?: string }>(join(packageRoot, 'package.json'));
+    if (packageJson.type !== 'module') {
+      return;
+    }
+  }
+
+  const distDir = join(packageRoot, 'dist');
   if (!(await exists(distDir))) {
-    return true;
+    return;
   }
 
   let copied = 0;
@@ -103,6 +116,4 @@ export async function copyCjsTypes(options: NormalizedOptions): Promise<boolean>
   if (copied > 0) {
     logger.log(`📦 CJS types: ${copied} *.d.ts → *.d.cts in dist`);
   }
-
-  return true;
 }
