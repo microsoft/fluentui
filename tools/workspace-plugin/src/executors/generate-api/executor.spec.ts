@@ -18,6 +18,7 @@ import { type TsConfig } from '../../types';
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
 import { isCI } from './lib/shared';
+import { getExportSubpathConfigs } from './lib/utils';
 
 const fixturesRootDir = join(__dirname, '__fixtures__');
 
@@ -347,6 +348,62 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       expect(cfg.reportTempFilePath).toBe(join(paths.projRoot, 'temp', `${name}.api.md`));
     }
+  });
+
+  it('resolves declaration base correctly when path.resolve returns Windows-style backslashes', async () => {
+    const subDirs = ['alpha'];
+    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs });
+
+    const nodePath = require('node:path');
+    const nativeResolve = nodePath.resolve.bind(nodePath);
+    const resolveSpy = jest
+      .spyOn(nodePath, 'resolve')
+      .mockImplementation((...args: Parameters<typeof nodePath.resolve>) => {
+        const posixPath = nativeResolve(...args);
+        const stack = new Error().stack || '';
+        if (stack.includes('utils.ts') || stack.includes('resolveDeclarationBase')) {
+          return posixPath.replace(/\//g, '\\');
+        }
+        return posixPath;
+      });
+
+    const capturedConfigs: ExtractorConfig[] = [];
+    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
+      capturedConfigs.push(cfg);
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    try {
+      const output = await executor({ ...options, exportSubpaths: true }, context);
+
+      expect(capturedConfigs).toHaveLength(1 + subDirs.length);
+      expect(output.success).toBe(true);
+    } finally {
+      resolveSpy.mockRestore();
+    }
+  });
+
+  it('throws a descriptive error when primary mainEntryPointFilePath does not end with /index.d.ts', async () => {
+    const { paths, context } = prepareExportFixture({ wildcardSubDirs: ['alpha'] });
+
+    writeFileSync(
+      join(paths.projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/custom-entry.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    await expect(executor({ ...options, exportSubpaths: true }, context)).rejects.toThrow(
+      'Primary mainEntryPointFilePath',
+    );
+    await expect(executor({ ...options, exportSubpaths: true }, context)).rejects.toThrow(
+      'does not end with "/index.d.ts". Failed to resolve declaration base for export subpaths.',
+    );
   });
 
   it('skips wildcard exports with no types field', async () => {
