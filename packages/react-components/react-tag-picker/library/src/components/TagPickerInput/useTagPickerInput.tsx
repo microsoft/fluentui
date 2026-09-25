@@ -17,12 +17,11 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
-import { useInputTriggerSlot } from '@fluentui/react-combobox';
+import { useInputTriggerSlot, useSelectOptionOnMoveFocus } from '@fluentui/react-combobox';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
-import { useTabsterMoveFocusSelection } from '../../utils/useTabsterMoveFocusSelection';
 
 /**
  * Create the base state required to render TagPickerInput, without design-only props.
@@ -164,8 +163,18 @@ export const useTagPickerInput_unstable = (
   });
 
   const baseState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
-  const tabsterMoveFocusSelectionRef = useTabsterMoveFocusSelection();
+  const { controller: activeDescendantController } = useActiveDescendantContext();
+  const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
+  const multiselect = useTagPickerContext_unstable(ctx => (ctx.selectionMode ?? 'multiselect') === 'multiselect');
   const open = useTagPickerContext_unstable(ctx => ctx.open);
+  const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus({
+    activeDescendantController,
+    getOptionById,
+    multiselect,
+    open,
+    selectOption,
+  });
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
   return {
@@ -174,7 +183,7 @@ export const useTagPickerInput_unstable = (
     root: {
       ...useTabsterEscapeIgnore(baseState.root, open),
       ...baseState.root,
-      ref: useMergedRefs(baseState.root.ref, tabsterMoveFocusSelectionRef),
+      ref: useMergedRefs(baseState.root.ref, selectOptionOnMoveFocusRef),
     },
   };
 };

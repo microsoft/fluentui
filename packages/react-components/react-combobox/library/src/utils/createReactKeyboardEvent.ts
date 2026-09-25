@@ -5,14 +5,11 @@ type ReactKeyboardEventAdapter = {
   release: () => void;
 };
 
-const syntheticProperties = new Set([
-  'nativeEvent',
-  'currentTarget',
-  'isDefaultPrevented',
-  'isPropagationStopped',
-  'persist',
-]);
-
+/**
+ * Creates a React-compatible keyboard event wrapper for native Tabster-driven keyboard interactions.
+ * Mirrors the subset of React's synthetic event contract that our selection callbacks rely on.
+ * @internal
+ */
 export function createReactKeyboardEvent(
   nativeEvent: KeyboardEvent,
   currentTarget: HTMLElement,
@@ -20,41 +17,47 @@ export function createReactKeyboardEvent(
   let callbackCurrentTarget: HTMLElement | null = currentTarget;
   let propagationStopped = false;
 
-  const event = new Proxy(nativeEvent, {
-    has(target, property) {
-      return syntheticProperties.has(property as string) || Reflect.has(target, property);
+  const event = {
+    nativeEvent,
+    target: nativeEvent.target,
+    currentTarget: callbackCurrentTarget,
+    bubbles: nativeEvent.bubbles,
+    cancelable: nativeEvent.cancelable,
+    defaultPrevented: nativeEvent.defaultPrevented,
+    eventPhase: nativeEvent.eventPhase,
+    isTrusted: nativeEvent.isTrusted,
+    preventDefault: () => nativeEvent.preventDefault(),
+    isDefaultPrevented: () => nativeEvent.defaultPrevented,
+    stopPropagation: () => {
+      propagationStopped = true;
+      nativeEvent.stopPropagation();
     },
-    get(target, property) {
-      switch (property) {
-        case 'nativeEvent':
-          return target;
-        case 'currentTarget':
-          return callbackCurrentTarget;
-        case 'isDefaultPrevented':
-          return () => target.defaultPrevented;
-        case 'isPropagationStopped':
-          return () => propagationStopped;
-        case 'persist':
-          return () => undefined;
-        case 'preventDefault':
-          return () => target.preventDefault();
-        case 'stopPropagation':
-          return () => {
-            propagationStopped = true;
-            target.stopPropagation();
-          };
-        default: {
-          const value = Reflect.get(target, property, target);
-          return typeof value === 'function' ? value.bind(target) : value;
-        }
-      }
-    },
-  }) as unknown as React.KeyboardEvent<HTMLElement>;
+    isPropagationStopped: () => propagationStopped,
+    persist: () => undefined,
+    timeStamp: nativeEvent.timeStamp,
+    type: nativeEvent.type,
+    key: nativeEvent.key,
+    code: nativeEvent.code,
+    location: nativeEvent.location,
+    ctrlKey: nativeEvent.ctrlKey,
+    shiftKey: nativeEvent.shiftKey,
+    altKey: nativeEvent.altKey,
+    metaKey: nativeEvent.metaKey,
+    repeat: nativeEvent.repeat,
+    getModifierState: (key: string) => nativeEvent.getModifierState(key),
+    view: nativeEvent.view,
+    detail: nativeEvent.detail,
+    which: nativeEvent.which,
+    charCode: nativeEvent.charCode,
+    keyCode: nativeEvent.keyCode,
+    sourceCapabilities: (nativeEvent as any).sourceCapabilities,
+  } as unknown as React.KeyboardEvent<HTMLElement>;
 
   return {
     event,
     release: () => {
       callbackCurrentTarget = null;
+      (event as any).currentTarget = null;
     },
   };
 }
