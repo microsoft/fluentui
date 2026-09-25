@@ -3644,7 +3644,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    size?: SliderSize;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
