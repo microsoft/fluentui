@@ -2,7 +2,7 @@ import type {
   TeachingPopoverCarouselNavButtonProps as TeachingPopoverCarouselNavButtonBaseProps,
   TeachingPopoverCarouselNavButtonState as TeachingPopoverCarouselNavButtonBaseState,
 } from '@fluentui/react-headless-components-preview/teaching-popover';
-import type { PopoverState } from '../../Popover/Popover/Popover.types';
+import type { PopoverState } from '../../Popover/Popover.types';
 export type { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-headless-components-preview/teaching-popover';
 
 export type TeachingPopoverCarouselNavButtonProps = TeachingPopoverCarouselNavButtonBaseProps;

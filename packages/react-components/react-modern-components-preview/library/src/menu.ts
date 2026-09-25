@@ -1,4 +1,4 @@
-export { Menu, renderMenu, useMenu, useMenuContext, useMenuContextValues } from './components/Menu/Menu/index';
+export { Menu, renderMenu, useMenu, useMenuContext, useMenuContextValues } from './components/Menu/index';
 export type {
   MenuContextValue,
   MenuContextValues,
@@ -6,7 +6,7 @@ export type {
   MenuOpenEvent,
   MenuProps,
   MenuState,
-} from './components/Menu/Menu/index';
+} from './components/Menu/index';
 
 export {
   MenuList,
@@ -15,17 +15,11 @@ export {
   useMenuList,
   useMenuListContextValues,
   useMenuListStyles,
-} from './components/Menu/MenuList/index';
-export type { MenuListProps, MenuListSlots, MenuListState } from './components/Menu/MenuList/index';
+} from './components/Menu/index';
+export type { MenuListProps, MenuListSlots, MenuListState } from './components/Menu/index';
 
-export {
-  MenuItem,
-  menuItemClassNames,
-  renderMenuItem,
-  useMenuItem,
-  useMenuItemStyles,
-} from './components/Menu/MenuItem/index';
-export type { MenuItemProps, MenuItemSlots, MenuItemState } from './components/Menu/MenuItem/index';
+export { MenuItem, menuItemClassNames, renderMenuItem, useMenuItem, useMenuItemStyles } from './components/Menu/index';
+export type { MenuItemProps, MenuItemSlots, MenuItemState } from './components/Menu/index';
 
 export {
   MenuItemCheckbox,
@@ -33,8 +27,8 @@ export {
   renderMenuItemCheckbox,
   useMenuItemCheckbox,
   useMenuItemCheckboxStyles,
-} from './components/Menu/MenuItemCheckbox/index';
-export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './components/Menu/MenuItemCheckbox/index';
+} from './components/Menu/index';
+export type { MenuItemCheckboxProps, MenuItemCheckboxState } from './components/Menu/index';
 
 export {
   MenuItemLink,
@@ -42,8 +36,8 @@ export {
   renderMenuItemLink,
   useMenuItemLink,
   useMenuItemLinkStyles,
-} from './components/Menu/MenuItemLink/index';
-export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './components/Menu/MenuItemLink/index';
+} from './components/Menu/index';
+export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from './components/Menu/index';
 
 export {
   MenuItemRadio,
@@ -51,8 +45,8 @@ export {
   renderMenuItemRadio,
   useMenuItemRadio,
   useMenuItemRadioStyles,
-} from './components/Menu/MenuItemRadio/index';
-export type { MenuItemRadioProps, MenuItemRadioState } from './components/Menu/MenuItemRadio/index';
+} from './components/Menu/index';
+export type { MenuItemRadioProps, MenuItemRadioState } from './components/Menu/index';
 
 export {
   MenuItemSwitch,
@@ -60,12 +54,8 @@ export {
   renderMenuItemSwitch,
   useMenuItemSwitch,
   useMenuItemSwitchStyles,
-} from './components/Menu/MenuItemSwitch/index';
-export type {
-  MenuItemSwitchProps,
-  MenuItemSwitchSlots,
-  MenuItemSwitchState,
-} from './components/Menu/MenuItemSwitch/index';
+} from './components/Menu/index';
+export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } from './components/Menu/index';
 
 export {
   MenuDivider,
@@ -73,8 +63,8 @@ export {
   renderMenuDivider,
   useMenuDivider,
   useMenuDividerStyles,
-} from './components/Menu/MenuDivider/index';
-export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './components/Menu/MenuDivider/index';
+} from './components/Menu/index';
+export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './components/Menu/index';
 
 export {
   MenuPopover,
@@ -82,8 +72,8 @@ export {
   renderMenuPopover,
   useMenuPopover,
   useMenuPopoverStyles,
-} from './components/Menu/MenuPopover/index';
-export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './components/Menu/MenuPopover/index';
+} from './components/Menu/index';
+export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './components/Menu/index';
 
 export {
   MenuGroup,
@@ -92,13 +82,8 @@ export {
   useMenuGroup,
   useMenuGroupContextValues,
   useMenuGroupStyles,
-} from './components/Menu/MenuGroup/index';
-export type {
-  MenuGroupContextValues,
-  MenuGroupProps,
-  MenuGroupSlots,
-  MenuGroupState,
-} from './components/Menu/MenuGroup/index';
+} from './components/Menu/index';
+export type { MenuGroupContextValues, MenuGroupProps, MenuGroupSlots, MenuGroupState } from './components/Menu/index';
 
 export {
   MenuGroupHeader,
@@ -106,12 +91,8 @@ export {
   renderMenuGroupHeader,
   useMenuGroupHeader,
   useMenuGroupHeaderStyles,
-} from './components/Menu/MenuGroupHeader/index';
-export type {
-  MenuGroupHeaderProps,
-  MenuGroupHeaderSlots,
-  MenuGroupHeaderState,
-} from './components/Menu/MenuGroupHeader/index';
+} from './components/Menu/index';
+export type { MenuGroupHeaderProps, MenuGroupHeaderSlots, MenuGroupHeaderState } from './components/Menu/index';
 
 export {
   MenuSplitGroup,
@@ -121,13 +102,13 @@ export {
   useMenuSplitGroup,
   useMenuSplitGroupContextValues,
   useMenuSplitGroupStyles,
-} from './components/Menu/MenuSplitGroup/index';
+} from './components/Menu/index';
 export type {
   MenuSplitGroupContextValues,
   MenuSplitGroupProps,
   MenuSplitGroupSlots,
   MenuSplitGroupState,
-} from './components/Menu/MenuSplitGroup/index';
+} from './components/Menu/index';
 
-export { MenuTrigger, renderMenuTrigger, useMenuTrigger } from './components/Menu/MenuTrigger/index';
-export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './components/Menu/MenuTrigger/index';
+export { MenuTrigger, renderMenuTrigger, useMenuTrigger } from './components/Menu/index';
+export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './components/Menu/index';

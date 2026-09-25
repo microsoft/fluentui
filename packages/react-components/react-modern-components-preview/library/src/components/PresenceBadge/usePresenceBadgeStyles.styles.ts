@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { PresenceBadgeSlots, PresenceBadgeState } from './PresenceBadge.types';
-import styles from './PresenceBadge.module.css';
+import * as styles from './PresenceBadge.module.css';
 
 export const presenceBadgeClassNames: SlotClassNames<PresenceBadgeSlots> = {
   root: 'fui-PresenceBadge',

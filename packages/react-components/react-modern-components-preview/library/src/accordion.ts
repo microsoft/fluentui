@@ -6,13 +6,13 @@ export {
   useAccordionContext,
   useAccordionContextValues,
   useAccordionStyles,
-} from './components/Accordion/Accordion/index';
+} from './components/Accordion/index';
 export type {
   AccordionContextValues,
   AccordionProps,
   AccordionSlots,
   AccordionState,
-} from './components/Accordion/Accordion/index';
+} from './components/Accordion/index';
 
 export {
   AccordionHeader,
@@ -21,14 +21,14 @@ export {
   useAccordionHeader,
   useAccordionHeaderContextValues,
   useAccordionHeaderStyles,
-} from './components/Accordion/AccordionHeader/index';
+} from './components/Accordion/index';
 export type {
   AccordionHeaderExpandIconPosition,
   AccordionHeaderProps,
   AccordionHeaderSize,
   AccordionHeaderSlots,
   AccordionHeaderState,
-} from './components/Accordion/AccordionHeader/index';
+} from './components/Accordion/index';
 
 export {
   AccordionItem,
@@ -37,12 +37,8 @@ export {
   useAccordionItem,
   useAccordionItemContextValues,
   useAccordionItemStyles,
-} from './components/Accordion/AccordionItem/index';
-export type {
-  AccordionItemProps,
-  AccordionItemSlots,
-  AccordionItemState,
-} from './components/Accordion/AccordionItem/index';
+} from './components/Accordion/index';
+export type { AccordionItemProps, AccordionItemSlots, AccordionItemState } from './components/Accordion/index';
 
 export {
   AccordionPanel,
@@ -50,10 +46,10 @@ export {
   renderAccordionPanel,
   useAccordionPanel,
   useAccordionPanelStyles,
-} from './components/Accordion/AccordionPanel/index';
+} from './components/Accordion/index';
 export type {
   AccordionPanelInternalSlots,
   AccordionPanelProps,
   AccordionPanelSlots,
   AccordionPanelState,
-} from './components/Accordion/AccordionPanel/index';
+} from './components/Accordion/index';

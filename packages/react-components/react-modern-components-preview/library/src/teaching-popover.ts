@@ -3,24 +3,24 @@ export {
   renderTeachingPopover,
   useTeachingPopover,
   useTeachingPopoverContextValues,
-} from './components/TeachingPopover/TeachingPopover/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverBaseBridgedContextValue,
   TeachingPopoverContextValues,
   TeachingPopoverProps,
   TeachingPopoverState,
-} from './components/TeachingPopover/TeachingPopover/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverTrigger,
   renderTeachingPopoverTrigger,
   useTeachingPopoverTrigger,
-} from './components/TeachingPopover/TeachingPopoverTrigger/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverTriggerChildProps,
   TeachingPopoverTriggerProps,
   TeachingPopoverTriggerState,
-} from './components/TeachingPopover/TeachingPopoverTrigger/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverSurface,
@@ -28,12 +28,12 @@ export {
   useTeachingPopoverSurface,
   teachingPopoverSurfaceClassNames,
   useTeachingPopoverSurfaceStyles,
-} from './components/TeachingPopover/TeachingPopoverSurface/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverSurfaceProps,
   TeachingPopoverSurfaceSlots,
   TeachingPopoverSurfaceState,
-} from './components/TeachingPopover/TeachingPopoverSurface/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverBody,
@@ -41,12 +41,12 @@ export {
   useTeachingPopoverBody,
   teachingPopoverBodyClassNames,
   useTeachingPopoverBodyStyles,
-} from './components/TeachingPopover/TeachingPopoverBody/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverBodyProps,
   TeachingPopoverBodySlots,
   TeachingPopoverBodyState,
-} from './components/TeachingPopover/TeachingPopoverBody/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverHeader,
@@ -54,12 +54,12 @@ export {
   useTeachingPopoverHeader,
   teachingPopoverHeaderClassNames,
   useTeachingPopoverHeaderStyles,
-} from './components/TeachingPopover/TeachingPopoverHeader/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverHeaderProps,
   TeachingPopoverHeaderSlots,
   TeachingPopoverHeaderState,
-} from './components/TeachingPopover/TeachingPopoverHeader/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverTitle,
@@ -67,12 +67,12 @@ export {
   useTeachingPopoverTitle,
   teachingPopoverTitleClassNames,
   useTeachingPopoverTitleStyles,
-} from './components/TeachingPopover/TeachingPopoverTitle/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverTitleProps,
   TeachingPopoverTitleSlots,
   TeachingPopoverTitleState,
-} from './components/TeachingPopover/TeachingPopoverTitle/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverFooter,
@@ -80,12 +80,12 @@ export {
   useTeachingPopoverFooter,
   teachingPopoverFooterClassNames,
   useTeachingPopoverFooterStyles,
-} from './components/TeachingPopover/TeachingPopoverFooter/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverFooterProps,
   TeachingPopoverFooterSlots,
   TeachingPopoverFooterState,
-} from './components/TeachingPopover/TeachingPopoverFooter/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarousel,
@@ -94,13 +94,13 @@ export {
   useTeachingPopoverCarouselContextValues,
   teachingPopoverCarouselClassNames,
   useTeachingPopoverCarouselStyles,
-} from './components/TeachingPopover/TeachingPopoverCarousel/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselContextValues,
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselState,
-} from './components/TeachingPopover/TeachingPopoverCarousel/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselCard,
@@ -108,12 +108,12 @@ export {
   useTeachingPopoverCarouselCard,
   teachingPopoverCarouselCardClassNames,
   useTeachingPopoverCarouselCardStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselCard/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselCardProps,
   TeachingPopoverCarouselCardSlots,
   TeachingPopoverCarouselCardState,
-} from './components/TeachingPopover/TeachingPopoverCarouselCard/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselFooter,
@@ -121,12 +121,12 @@ export {
   useTeachingPopoverCarouselFooter,
   teachingPopoverCarouselFooterClassNames,
   useTeachingPopoverCarouselFooterStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselFooter/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselFooterProps,
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
-} from './components/TeachingPopover/TeachingPopoverCarouselFooter/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselFooterButton,
@@ -134,12 +134,12 @@ export {
   useTeachingPopoverCarouselFooterButton,
   teachingPopoverCarouselFooterButtonClassNames,
   useTeachingPopoverCarouselFooterButtonStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselFooterButton/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselFooterButtonProps,
   TeachingPopoverCarouselFooterButtonSlots,
   TeachingPopoverCarouselFooterButtonState,
-} from './components/TeachingPopover/TeachingPopoverCarouselFooterButton/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselNav,
@@ -147,13 +147,13 @@ export {
   useTeachingPopoverCarouselNav,
   teachingPopoverCarouselNavClassNames,
   useTeachingPopoverCarouselNavStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselNav/index';
+} from './components/TeachingPopover/index';
 export type {
   NavButtonRenderFunction,
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavSlots,
   TeachingPopoverCarouselNavState,
-} from './components/TeachingPopover/TeachingPopoverCarouselNav/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselNavButton,
@@ -161,12 +161,12 @@ export {
   useTeachingPopoverCarouselNavButton,
   teachingPopoverCarouselNavButtonClassNames,
   useTeachingPopoverCarouselNavButtonStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselNavButton/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonSlots,
   TeachingPopoverCarouselNavButtonState,
-} from './components/TeachingPopover/TeachingPopoverCarouselNavButton/index';
+} from './components/TeachingPopover/index';
 
 export {
   TeachingPopoverCarouselPageCount,
@@ -174,10 +174,10 @@ export {
   useTeachingPopoverCarouselPageCount,
   teachingPopoverCarouselPageCountClassNames,
   useTeachingPopoverCarouselPageCountStyles,
-} from './components/TeachingPopover/TeachingPopoverCarouselPageCount/index';
+} from './components/TeachingPopover/index';
 export type {
   TeachingPopoverCarouselPageCountProps,
   TeachingPopoverCarouselPageCountRenderFunction,
   TeachingPopoverCarouselPageCountSlots,
   TeachingPopoverCarouselPageCountState,
-} from './components/TeachingPopover/TeachingPopoverCarouselPageCount/index';
+} from './components/TeachingPopover/index';

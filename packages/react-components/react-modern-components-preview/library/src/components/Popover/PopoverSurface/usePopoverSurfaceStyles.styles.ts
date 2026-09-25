@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { PopoverSize } from '../Popover/Popover.types';
+import type { PopoverSize } from '../Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 import * as styles from './PopoverSurface.module.css';
 

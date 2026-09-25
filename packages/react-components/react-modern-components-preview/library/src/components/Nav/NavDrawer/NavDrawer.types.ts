@@ -3,9 +3,9 @@ import type {
   NavDrawerProps as NavDrawerBaseProps,
   NavDrawerState as NavDrawerBaseState,
 } from '@fluentui/react-headless-components-preview/nav';
-import type { Drawer } from '../../Drawer/Drawer/Drawer';
-import type { DrawerSize, DrawerSurfaceMotionSlots } from '../../Drawer/Drawer/Drawer.types';
-import type { NavDensity, NavState } from '../Nav/Nav.types';
+import type { Drawer } from '../../Drawer/Drawer';
+import type { DrawerSize, DrawerSurfaceMotionSlots } from '../../Drawer/Drawer.types';
+import type { NavDensity, NavState } from '../Nav.types';
 
 export type NavDrawerSlots = {
   root: Slot<typeof Drawer>;

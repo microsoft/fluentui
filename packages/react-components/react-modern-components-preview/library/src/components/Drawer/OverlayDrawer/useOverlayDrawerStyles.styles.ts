@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import drawerBaseStyles from '../Drawer/Drawer.module.css';
+import * as drawerBaseStyles from '../Drawer.module.css';
 import type { OverlayDrawerSlots, OverlayDrawerState } from './OverlayDrawer.types';
 import * as styles from './OverlayDrawer.module.css';
 

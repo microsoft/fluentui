@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Rating } from '../Rating/Rating';
+import { Rating } from '../Rating';
 import { ratingItemClassNames } from './useRatingItemStyles.styles';
 
 describe('RatingItem', () => {

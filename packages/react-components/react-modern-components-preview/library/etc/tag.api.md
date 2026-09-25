@@ -5,13 +5,109 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { InteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryProps as InteractionTagPrimaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagPrimarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagPrimaryState as InteractionTagPrimaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagProps as InteractionTagProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryProps as InteractionTagSecondaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagSecondarySlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagSecondaryState as InteractionTagSecondaryState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { InteractionTagSlots } from '@fluentui/react-headless-components-preview/interaction-tag';
+import type { InteractionTagState as InteractionTagState_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
 import * as React_2 from 'react';
+import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderTag } from '@fluentui/react-headless-components-preview/tag';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagProps as TagProps_2 } from '@fluentui/react-headless-components-preview/tag';
 import { TagSlots } from '@fluentui/react-headless-components-preview/tag';
 import type { TagState as TagState_2 } from '@fluentui/react-headless-components-preview/tag';
+import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
+
+// @public (undocumented)
+export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
+
+// @public (undocumented)
+export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
+
+// @public (undocumented)
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
+
+// @public (undocumented)
+export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots>;
+
+// @public (undocumented)
+export type InteractionTagPrimaryProps = InteractionTagPrimaryProps_2;
+
+export { InteractionTagPrimarySlots }
+
+// @public (undocumented)
+export type InteractionTagPrimaryState = InteractionTagPrimaryState_2 & {
+    appearance: 'brand' | 'filled' | 'outline';
+    avatarShape: 'circular' | 'square';
+    avatarSize: 16 | 20 | 28;
+    shape: 'circular' | 'rounded';
+    size: 'extra-small' | 'small' | 'medium';
+    root: InteractionTagPrimaryState_2['root'] & {
+        'data-appearance': 'brand' | 'filled' | 'outline';
+        'data-has-media'?: string;
+        'data-shape': 'circular' | 'rounded';
+        'data-size': 'extra-small' | 'small' | 'medium';
+    };
+};
+
+// @public (undocumented)
+export type InteractionTagProps = InteractionTagProps_2 & {
+    appearance?: 'brand' | 'filled' | 'outline';
+    shape?: 'circular' | 'rounded';
+    size?: 'extra-small' | 'small' | 'medium';
+};
+
+// @public (undocumented)
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public (undocumented)
+export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots>;
+
+// @public (undocumented)
+export type InteractionTagSecondaryProps = InteractionTagSecondaryProps_2;
+
+export { InteractionTagSecondarySlots }
+
+// @public (undocumented)
+export type InteractionTagSecondaryState = InteractionTagSecondaryState_2 & {
+    appearance: 'brand' | 'filled' | 'outline';
+    shape: 'circular' | 'rounded';
+    size: 'extra-small' | 'small' | 'medium';
+    root: InteractionTagSecondaryState_2['root'] & {
+        'data-appearance': 'brand' | 'filled' | 'outline';
+        'data-shape': 'circular' | 'rounded';
+        'data-size': 'extra-small' | 'small' | 'medium';
+    };
+};
+
+export { InteractionTagSlots }
+
+// @public (undocumented)
+export type InteractionTagState = InteractionTagState_2 & {
+    appearance: NonNullable<InteractionTagProps['appearance']>;
+    shape: NonNullable<InteractionTagProps['shape']>;
+    size: NonNullable<InteractionTagProps['size']>;
+    root: InteractionTagState_2['root'] & {
+        'data-appearance': NonNullable<InteractionTagProps['appearance']>;
+        'data-shape': NonNullable<InteractionTagProps['shape']>;
+        'data-size': NonNullable<InteractionTagProps['size']>;
+    };
+};
+
+// @public (undocumented)
+export const renderInteractionTag: (state: InteractionTagState, contextValues: InteractionTagContextValues) => React_2.ReactElement;
+
+export { renderInteractionTagPrimary }
+
+export { renderInteractionTagSecondary }
 
 export { renderTag }
 
@@ -45,6 +141,26 @@ export type TagState = TagState_2 & {
         'data-size': NonNullable<TagProps['size']>;
     };
 };
+
+// @public (undocumented)
+export const useInteractionTag: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
+
+export { useInteractionTagContextValues }
+
+// @public (undocumented)
+export const useInteractionTagPrimary: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
+
+// @public (undocumented)
+export const useInteractionTagPrimaryStyles: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
+
+// @public (undocumented)
+export const useInteractionTagSecondary: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;
+
+// @public (undocumented)
+export const useInteractionTagSecondaryStyles: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
+
+// @public (undocumented)
+export const useInteractionTagStyles: (state: InteractionTagState) => InteractionTagState;
 
 // @public
 export const useTag: (props: TagProps, ref: React_2.Ref<HTMLSpanElement | HTMLButtonElement>) => TagState;

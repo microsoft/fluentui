@@ -21,7 +21,7 @@ export const useSpinnerStyles = (state: SpinnerState): SpinnerState => {
   }
 
   if (state.spinnerTail) {
-    state.spinnerTail.className = clsx(spinnerClassNames.spinnerTail, styles.spinnerTail, state.spinnerTail.className);
+    state.spinnerTail.className = clsx(spinnerClassNames.spinnerTail, styles.tail, state.spinnerTail.className);
   }
 
   if (state.label) {

@@ -46,7 +46,6 @@ export const useRatingItemStyles = (state: RatingItemState): RatingItemState => 
     state.selectedIcon.className = clsx(
       ratingItemClassNames.selectedIcon,
       styles.indicator,
-      styles.selectedIcon,
       state.iconFillWidth === 0.5 && styles.lowerHalf,
       state.selectedIcon.className,
     );

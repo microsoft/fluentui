@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { TagPicker } from '../TagPicker/TagPicker';
+import { TagPicker } from '../TagPicker';
 import { TagPickerButton } from '../TagPickerButton';
 import { TagPickerList } from '../TagPickerList';
 import { TagPickerOptionGroup, tagPickerOptionGroupClassNames } from './';

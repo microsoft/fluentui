@@ -4,16 +4,16 @@ export {
   renderAlphaSlider,
   useAlphaSlider,
   useAlphaSliderStyles,
-} from './components/ColorPicker/AlphaSlider/index';
-export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './components/ColorPicker/AlphaSlider/index';
+} from './components/ColorPicker/index';
+export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './components/ColorPicker/index';
 export {
   ColorArea,
   colorAreaClassNames,
   renderColorArea,
   useColorArea,
   useColorAreaStyles,
-} from './components/ColorPicker/ColorArea/index';
-export type { ColorAreaProps, ColorAreaSlots, ColorAreaState } from './components/ColorPicker/ColorArea/index';
+} from './components/ColorPicker/index';
+export type { ColorAreaProps, ColorAreaSlots, ColorAreaState } from './components/ColorPicker/index';
 export {
   ColorPicker,
   colorPickerClassNames,
@@ -22,13 +22,13 @@ export {
   useColorPickerContextValue,
   useColorPickerContextValues,
   useColorPickerStyles,
-} from './components/ColorPicker/ColorPicker/index';
-export type { ColorPickerProps, ColorPickerSlots, ColorPickerState } from './components/ColorPicker/ColorPicker/index';
+} from './components/ColorPicker/index';
+export type { ColorPickerProps, ColorPickerSlots, ColorPickerState } from './components/ColorPicker/index';
 export {
   ColorSlider,
   colorSliderClassNames,
   renderColorSlider,
   useColorSlider,
   useColorSliderStyles,
-} from './components/ColorPicker/ColorSlider/index';
-export type { ColorSliderProps, ColorSliderSlots, ColorSliderState } from './components/ColorPicker/ColorSlider/index';
+} from './components/ColorPicker/index';
+export type { ColorSliderProps, ColorSliderSlots, ColorSliderState } from './components/ColorPicker/index';

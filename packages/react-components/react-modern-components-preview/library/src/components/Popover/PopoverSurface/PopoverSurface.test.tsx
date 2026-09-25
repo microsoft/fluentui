@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../../testing/isConformant';
-import { Popover } from '../Popover/Popover';
+import { Popover } from '../Popover';
 import { PopoverSurface } from './PopoverSurface';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 

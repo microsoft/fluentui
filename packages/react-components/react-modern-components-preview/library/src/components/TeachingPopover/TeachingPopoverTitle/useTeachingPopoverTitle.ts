@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useTeachingPopoverTitle as useTeachingPopoverTitleBase } from '@fluentui/react-headless-components-preview/teaching-popover';
-import { usePopoverAppearanceContext } from '../../Popover/Popover/popoverAppearanceContext';
+import { usePopoverAppearanceContext } from '../../Popover/popoverAppearanceContext';
 import type { TeachingPopoverTitleProps, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 
 export const useTeachingPopoverTitle = (

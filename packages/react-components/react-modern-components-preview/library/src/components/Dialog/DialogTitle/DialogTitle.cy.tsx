@@ -4,26 +4,18 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import {
-  Dialog,
-  DialogActions,
-  DialogBody,
-  DialogSurface,
-  DialogTitle,
-  DialogTrigger,
-  dialogTitleClassNames,
-} from '../../dialog';
+import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '../../Dialog';
 import { Button } from '../../Button';
 
 const dialogTriggerOpenId = 'open-btn';
 const dialogTriggerOpenSelector = `#${dialogTriggerOpenId}`;
-const dialogActionSelector = `.${dialogTitleClassNames.action}`;
+const dialogTitleSelector = 'h2';
 
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('DialogTitle', () => {
   describe('modalType = modal', () => {
-    it('should not have closeButton by default', () => {
+    it('should render the dialog title', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger>
@@ -46,11 +38,11 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('not.exist');
+      cy.get(dialogTitleSelector).should('have.text', 'Dialog title');
     });
   });
   describe('modalType = non-modal', () => {
-    it('should have closeButton by default', () => {
+    it('should render the dialog title', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger>
@@ -75,11 +67,11 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('exist');
+      cy.get(dialogTitleSelector).should('have.text', 'Dialog title');
     });
   });
   describe('modalType = alert', () => {
-    it('should not have closeButton by default', () => {
+    it('should render the dialog title', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger>
@@ -104,7 +96,7 @@ describe('DialogTitle', () => {
         </Dialog>,
       );
       cy.get(dialogTriggerOpenSelector).realClick();
-      cy.get(dialogActionSelector).should('not.exist');
+      cy.get(dialogTitleSelector).should('have.text', 'Dialog title');
     });
   });
 });

@@ -6,12 +6,8 @@ export {
   useInteractionTagStyles,
   useInteractionTagContextValues,
   useInteractionTagPrimaryContextValues,
-} from './components/InteractionTag/InteractionTag/index';
-export type {
-  InteractionTagProps,
-  InteractionTagSlots,
-  InteractionTagState,
-} from './components/InteractionTag/InteractionTag/index';
+} from './components/InteractionTag/index';
+export type { InteractionTagProps, InteractionTagSlots, InteractionTagState } from './components/InteractionTag/index';
 
 export {
   InteractionTagPrimary,
@@ -19,13 +15,13 @@ export {
   renderInteractionTagPrimary,
   useInteractionTagPrimary,
   useInteractionTagPrimaryStyles,
-} from './components/InteractionTag/InteractionTagPrimary/index';
+} from './components/InteractionTag/index';
 export type {
   InteractionTagPrimaryContextValues,
   InteractionTagPrimaryProps,
   InteractionTagPrimarySlots,
   InteractionTagPrimaryState,
-} from './components/InteractionTag/InteractionTagPrimary/index';
+} from './components/InteractionTag/index';
 
 export {
   InteractionTagSecondary,
@@ -33,9 +29,9 @@ export {
   renderInteractionTagSecondary,
   useInteractionTagSecondary,
   useInteractionTagSecondaryStyles,
-} from './components/InteractionTag/InteractionTagSecondary/index';
+} from './components/InteractionTag/index';
 export type {
   InteractionTagSecondaryProps,
   InteractionTagSecondarySlots,
   InteractionTagSecondaryState,
-} from './components/InteractionTag/InteractionTagSecondary/index';
+} from './components/InteractionTag/index';

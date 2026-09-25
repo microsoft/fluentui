@@ -4,7 +4,7 @@ import type {
   InlineDrawerState as InlineDrawerBaseState,
 } from '@fluentui/react-headless-components-preview/drawer';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { DrawerInternalSurfaceMotionSlots, DrawerSize, DrawerSurfaceMotionSlots } from '../Drawer/Drawer.types';
+import type { DrawerInternalSurfaceMotionSlots, DrawerSize, DrawerSurfaceMotionSlots } from '../Drawer.types';
 
 export type InlineDrawerInternalSlots = Pick<InlineDrawerBaseSlots, 'root'> & DrawerInternalSurfaceMotionSlots;
 

@@ -6,13 +6,8 @@ export {
   useToolbarContext,
   useToolbarContextValues,
   useToolbarStyles,
-} from './components/Toolbar/Toolbar/index';
-export type {
-  ToolbarContextValues,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-} from './components/Toolbar/Toolbar/index';
+} from './components/Toolbar/index';
+export type { ToolbarContextValues, ToolbarProps, ToolbarSlots, ToolbarState } from './components/Toolbar/index';
 
 export {
   ToolbarButton,
@@ -20,8 +15,8 @@ export {
   toolbarButtonClassNames,
   useToolbarButton,
   useToolbarButtonStyles,
-} from './components/Toolbar/ToolbarButton/index';
-export type { ToolbarButtonProps, ToolbarButtonState } from './components/Toolbar/ToolbarButton/index';
+} from './components/Toolbar/index';
+export type { ToolbarButtonProps, ToolbarButtonState } from './components/Toolbar/index';
 
 export {
   ToolbarDivider,
@@ -29,12 +24,8 @@ export {
   toolbarDividerClassNames,
   useToolbarDivider,
   useToolbarDividerStyles,
-} from './components/Toolbar/ToolbarDivider/index';
-export type {
-  ToolbarDividerProps,
-  ToolbarDividerSlots,
-  ToolbarDividerState,
-} from './components/Toolbar/ToolbarDivider/index';
+} from './components/Toolbar/index';
+export type { ToolbarDividerProps, ToolbarDividerSlots, ToolbarDividerState } from './components/Toolbar/index';
 
 export {
   ToolbarGroup,
@@ -42,8 +33,8 @@ export {
   toolbarGroupClassNames,
   useToolbarGroup,
   useToolbarGroupStyles,
-} from './components/Toolbar/ToolbarGroup/index';
-export type { ToolbarGroupProps, ToolbarGroupSlots, ToolbarGroupState } from './components/Toolbar/ToolbarGroup/index';
+} from './components/Toolbar/index';
+export type { ToolbarGroupProps, ToolbarGroupSlots, ToolbarGroupState } from './components/Toolbar/index';
 
 export {
   ToolbarRadioButton,
@@ -51,8 +42,8 @@ export {
   toolbarRadioButtonClassNames,
   useToolbarRadioButton,
   useToolbarRadioButtonStyles,
-} from './components/Toolbar/ToolbarRadioButton/index';
-export type { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './components/Toolbar/ToolbarRadioButton/index';
+} from './components/Toolbar/index';
+export type { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './components/Toolbar/index';
 
 export {
   ToolbarRadioGroup,
@@ -60,12 +51,12 @@ export {
   toolbarRadioGroupClassNames,
   useToolbarRadioGroup,
   useToolbarRadioGroupStyles,
-} from './components/Toolbar/ToolbarRadioGroup/index';
+} from './components/Toolbar/index';
 export type {
   ToolbarRadioGroupProps,
   ToolbarRadioGroupSlots,
   ToolbarRadioGroupState,
-} from './components/Toolbar/ToolbarRadioGroup/index';
+} from './components/Toolbar/index';
 
 export {
   ToolbarToggleButton,
@@ -73,8 +64,5 @@ export {
   toolbarToggleButtonClassNames,
   useToolbarToggleButton,
   useToolbarToggleButtonStyles,
-} from './components/Toolbar/ToolbarToggleButton/index';
-export type {
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-} from './components/Toolbar/ToolbarToggleButton/index';
+} from './components/Toolbar/index';
+export type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './components/Toolbar/index';

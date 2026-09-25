@@ -10,6 +10,7 @@ apps/**/version.ts
 api-report.md
 *.scss.ts
 _*.scss
+*.module.css.d.ts
 yarn.lock
 
 # generated folders

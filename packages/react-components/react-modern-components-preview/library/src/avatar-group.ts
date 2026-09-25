@@ -9,7 +9,7 @@ export {
   useAvatarGroupContext,
   useAvatarGroupContextValues,
   useAvatarGroupPopoverContextValues,
-} from './components/AvatarGroup/AvatarGroup/index';
+} from './components/AvatarGroup/index';
 export type {
   AvatarGroupContextValue,
   AvatarGroupContextValues,
@@ -18,7 +18,7 @@ export type {
   AvatarGroupState,
   PartitionAvatarGroupItems,
   PartitionAvatarGroupItemsOptions,
-} from './components/AvatarGroup/AvatarGroup/index';
+} from './components/AvatarGroup/index';
 
 export {
   AvatarGroupItem,
@@ -26,12 +26,8 @@ export {
   useAvatarGroupItem,
   avatarGroupItemClassNames,
   useAvatarGroupItemStyles,
-} from './components/AvatarGroup/AvatarGroupItem/index';
-export type {
-  AvatarGroupItemProps,
-  AvatarGroupItemSlots,
-  AvatarGroupItemState,
-} from './components/AvatarGroup/AvatarGroupItem/index';
+} from './components/AvatarGroup/index';
+export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './components/AvatarGroup/index';
 
 export {
   AvatarGroupPopover,
@@ -39,10 +35,10 @@ export {
   useAvatarGroupPopover,
   avatarGroupPopoverClassNames,
   useAvatarGroupPopoverStyles,
-} from './components/AvatarGroup/AvatarGroupPopover/index';
+} from './components/AvatarGroup/index';
 export type {
   AvatarGroupPopoverPopoverProps,
   AvatarGroupPopoverProps,
   AvatarGroupPopoverSlots,
   AvatarGroupPopoverState,
-} from './components/AvatarGroup/AvatarGroupPopover/index';
+} from './components/AvatarGroup/index';

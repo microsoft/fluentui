@@ -3,7 +3,7 @@ import { mount } from '@fluentui/scripts-cypress';
 import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
 import { DrawerBody } from './index';
-import { DrawerProvider, useDrawerContextValue } from '../Drawer';
+import { DrawerProvider, useDrawerContextValue } from '@fluentui/react-drawer';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 const mountFluent = (element: JSXElement) => {

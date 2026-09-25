@@ -3,7 +3,7 @@
 import { usePopoverSurface as usePopoverSurfaceBase } from '@fluentui/react-headless-components-preview/popover';
 import { useMotionForwardedRef } from '@fluentui/react-motion';
 import { useMergedRefs } from '@fluentui/react-utilities';
-import { usePopoverAppearanceContext } from '../Popover/popoverAppearanceContext';
+import { usePopoverAppearanceContext } from '../popoverAppearanceContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /** Create the state required to render PopoverSurface. */

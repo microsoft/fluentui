@@ -7,7 +7,7 @@ export {
   useDrawerContext,
   useDrawerContextValue,
   useDrawerStyles,
-} from './components/Drawer/Drawer/index';
+} from './components/Drawer/index';
 export type {
   DrawerContextValue,
   DrawerProps,
@@ -15,7 +15,7 @@ export type {
   DrawerSlots,
   DrawerState,
   DrawerSurfaceMotionSlots,
-} from './components/Drawer/Drawer/index';
+} from './components/Drawer/index';
 
 export {
   OverlayDrawer,
@@ -23,12 +23,8 @@ export {
   renderOverlayDrawer,
   useOverlayDrawer,
   useOverlayDrawerStyles,
-} from './components/Drawer/OverlayDrawer/index';
-export type {
-  OverlayDrawerProps,
-  OverlayDrawerSlots,
-  OverlayDrawerState,
-} from './components/Drawer/OverlayDrawer/index';
+} from './components/Drawer/index';
+export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from './components/Drawer/index';
 
 export {
   InlineDrawer,
@@ -36,8 +32,8 @@ export {
   renderInlineDrawer,
   useInlineDrawer,
   useInlineDrawerStyles,
-} from './components/Drawer/InlineDrawer/index';
-export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './components/Drawer/InlineDrawer/index';
+} from './components/Drawer/index';
+export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './components/Drawer/index';
 
 export {
   DrawerBody,
@@ -45,8 +41,8 @@ export {
   renderDrawerBody,
   useDrawerBody,
   useDrawerBodyStyles,
-} from './components/Drawer/DrawerBody/index';
-export type { DrawerBodyProps, DrawerBodySlots, DrawerBodyState } from './components/Drawer/DrawerBody/index';
+} from './components/Drawer/index';
+export type { DrawerBodyProps, DrawerBodySlots, DrawerBodyState } from './components/Drawer/index';
 
 export {
   DrawerHeader,
@@ -54,8 +50,8 @@ export {
   renderDrawerHeader,
   useDrawerHeader,
   useDrawerHeaderStyles,
-} from './components/Drawer/DrawerHeader/index';
-export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './components/Drawer/DrawerHeader/index';
+} from './components/Drawer/index';
+export type { DrawerHeaderProps, DrawerHeaderSlots, DrawerHeaderState } from './components/Drawer/index';
 
 export {
   DrawerHeaderTitle,
@@ -63,12 +59,8 @@ export {
   renderDrawerHeaderTitle,
   useDrawerHeaderTitle,
   useDrawerHeaderTitleStyles,
-} from './components/Drawer/DrawerHeaderTitle/index';
-export type {
-  DrawerHeaderTitleProps,
-  DrawerHeaderTitleSlots,
-  DrawerHeaderTitleState,
-} from './components/Drawer/DrawerHeaderTitle/index';
+} from './components/Drawer/index';
+export type { DrawerHeaderTitleProps, DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './components/Drawer/index';
 
 export {
   DrawerHeaderNavigation,
@@ -76,12 +68,12 @@ export {
   renderDrawerHeaderNavigation,
   useDrawerHeaderNavigation,
   useDrawerHeaderNavigationStyles,
-} from './components/Drawer/DrawerHeaderNavigation/index';
+} from './components/Drawer/index';
 export type {
   DrawerHeaderNavigationProps,
   DrawerHeaderNavigationSlots,
   DrawerHeaderNavigationState,
-} from './components/Drawer/DrawerHeaderNavigation/index';
+} from './components/Drawer/index';
 
 export {
   DrawerFooter,
@@ -89,5 +81,5 @@ export {
   renderDrawerFooter,
   useDrawerFooter,
   useDrawerFooterStyles,
-} from './components/Drawer/DrawerFooter/index';
-export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './components/Drawer/DrawerFooter/index';
+} from './components/Drawer/index';
+export type { DrawerFooterProps, DrawerFooterSlots, DrawerFooterState } from './components/Drawer/index';

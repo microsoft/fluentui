@@ -4,62 +4,13 @@ import { Provider } from '@fluentui/react-headless-components-preview/provider';
 
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import { OverlayDrawer, overlayDrawerClassNames } from './index';
+import { OverlayDrawer } from './index';
 import type { OverlayDrawerProps } from './index';
-import { Drawer } from '../Drawer';
-import { InlineDrawer } from '../InlineDrawer';
+import { testDrawerBaseScenarios } from '../Drawer.cy';
 
 const mountFluent = (element: JSXElement) => {
   mount(<Provider>{element}</Provider>);
 };
-
-function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer): void {
-  describe('basic functionality', () => {
-    it('should not render any element when closed', () => {
-      mountFluent(<Component id="drawer" />);
-
-      cy.get('#drawer').should('not.exist');
-    });
-
-    it('should render an element when opened', () => {
-      mountFluent(<Component id="drawer" open />);
-
-      cy.get('#drawer').should('exist');
-    });
-
-    it('should render children content', () => {
-      const content = 'Test the renderization';
-      mountFluent(
-        <Component id="drawer" open>
-          {content}
-        </Component>,
-      );
-
-      cy.get('#drawer').contains(content);
-    });
-
-    it('should toggle visibility on open prop change', () => {
-      const ExampleDrawer = () => {
-        const [open, setOpen] = React.useState(false);
-
-        return (
-          <>
-            <Component id="drawer" open={open} />
-            <button id="button" onClick={() => setOpen(true)}>
-              Open
-            </button>
-          </>
-        );
-      };
-
-      mountFluent(<ExampleDrawer />);
-
-      cy.get('#drawer').should('not.exist');
-      cy.get('#button').click();
-      cy.get('#drawer').should('exist');
-    });
-  });
-}
 
 const LongPageContent = ({ children }: { children?: React.ReactNode }) => (
   <>
@@ -86,47 +37,56 @@ describe('OverlayDrawer', () => {
       const [open, setOpen] = React.useState(true);
 
       return (
-        <OverlayDrawer id="drawer" open={open} onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)} {...props} />
+        <OverlayDrawer
+          id="drawer"
+          open={open}
+          onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)}
+          style={{ width: 200, height: 100 }}
+          {...props}
+        />
       );
     };
 
     describe('modalType="modal" prop', () => {
-      it('should render backdrop', () => {
+      it('should render as a modal dialog', () => {
         mountFluent(<ExampleDrawer />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get('#drawer').should('have.attr', 'open').and('have.attr', 'aria-modal', 'true');
       });
 
       it('should close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get('#drawer').realClick({ x: -10, y: -10 });
         cy.get('#drawer').should('not.exist');
       });
     });
 
     describe('modalType="alert" prop', () => {
-      it('should render backdrop', () => {
+      it('should render as an alert dialog', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get('#drawer')
+          .should('have.attr', 'open')
+          .and('have.attr', 'aria-modal', 'true')
+          .and('have.attr', 'role', 'alertdialog');
       });
 
       it('should not close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get('#drawer').realClick({ x: -10, y: -10 });
         cy.get('#drawer').should('exist');
       });
     });
 
     describe('modalType="mon-modal" prop', () => {
-      it('should not render backdrop when modalType is default', () => {
+      it('should render as a non-modal dialog', () => {
         mountFluent(<ExampleDrawer modalType="non-modal" />);
 
-        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('not.exist');
+        cy.get('#drawer').should('not.have.attr', 'aria-modal');
       });
     });
   });

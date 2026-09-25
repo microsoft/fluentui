@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useTab as useTabBase } from '@fluentui/react-headless-components-preview/tab-list';
 import { omit, slot, useAnimationFrame } from '@fluentui/react-utilities';
-import { useTabListVisualContext } from '../TabList/TabListContext';
+import { useTabListVisualContext } from '../TabListContext';
 import type { TabProps, TabState, TabValue } from './Tab.types';
 
 const indicatorOffsetVar = '--fui-Tab__indicator--offset';
