@@ -45,6 +45,9 @@ const useRootExpandedStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     color: tokens.colorNeutralForeground2BrandSelected,
   },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
+  },
 });
 
 const useIconExpandedStyles = makeStyles({
@@ -63,6 +66,9 @@ const useIconExpandedStyles = makeStyles({
   },
   transparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
+  },
+  tint: {
+    /* Styles provided by consumer via custom hooks */
   },
   highContrast: {
     // High contrast styles
