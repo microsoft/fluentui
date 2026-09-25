@@ -1,4 +1,6 @@
-.root {
-  display: flex;
-  flex-wrap: wrap;
+@layer fluent {
+  .root {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

@@ -1,20 +1,22 @@
-.root {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  min-inline-size: 160px;
-  max-block-size: 80vh;
-  margin: 0;
-  padding: var(--spacingHorizontalXS);
-  overflow-y: auto;
-  background-color: var(--colorNeutralBackground1);
-  border: 0;
-  border-radius: var(--borderRadiusMedium);
-  outline: 1px solid var(--colorTransparentStroke);
-  box-shadow: var(--shadow16);
-  row-gap: var(--spacingHorizontalXXS);
-}
+@layer fluent {
+  .root {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-inline-size: 160px;
+    max-block-size: 80vh;
+    margin: 0;
+    padding: var(--spacingHorizontalXS);
+    overflow-y: auto;
+    background-color: var(--colorNeutralBackground1);
+    border: 0;
+    border-radius: var(--borderRadiusMedium);
+    outline: 1px solid var(--colorTransparentStroke);
+    box-shadow: var(--shadow16);
+    row-gap: var(--spacingHorizontalXXS);
+  }
 
-.collapsed {
-  display: none;
+  .collapsed {
+    display: none;
+  }
 }

@@ -1,9 +1,11 @@
-.root {
-  & [data-overflow-menu] {
-    flex-shrink: 0;
-  }
+@layer fluent {
+  .root {
+    & [data-overflow-menu] {
+      flex-shrink: 0;
+    }
 
-  & [data-overflowing] {
-    display: none;
+    & [data-overflowing] {
+      display: none;
+    }
   }
 }

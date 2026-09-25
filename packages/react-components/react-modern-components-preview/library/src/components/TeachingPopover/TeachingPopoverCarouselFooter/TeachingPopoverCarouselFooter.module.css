@@ -1,13 +1,15 @@
-.root {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
+@layer fluent {
+  .root {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 
-  &[data-layout='centered'] {
-    justify-content: space-between;
-  }
+    &[data-layout='centered'] {
+      justify-content: space-between;
+    }
 
-  &[data-layout='offset'] > :first-child {
-    margin-inline-end: auto;
+    &[data-layout='offset'] > :first-child {
+      margin-inline-end: auto;
+    }
   }
 }

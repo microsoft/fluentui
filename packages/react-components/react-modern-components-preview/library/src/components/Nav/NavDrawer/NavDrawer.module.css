@@ -1,8 +1,10 @@
-.root {
-  align-items: unset;
-  background-color: var(--colorNeutralBackground4);
+@layer fluent {
+  .root {
+    align-items: unset;
+    background-color: var(--colorNeutralBackground4);
 
-  &[data-nav-default-size] {
-    --fui-Drawer--size: 260px;
+    &[data-nav-default-size] {
+      --fui-Drawer--size: 260px;
+    }
   }
 }

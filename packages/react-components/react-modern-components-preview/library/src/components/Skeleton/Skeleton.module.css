@@ -1,3 +1,5 @@
-.block {
-  display: block;
+@layer fluent {
+  .block {
+    display: block;
+  }
 }

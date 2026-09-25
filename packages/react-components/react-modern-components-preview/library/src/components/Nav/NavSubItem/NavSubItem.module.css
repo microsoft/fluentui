@@ -1,11 +1,13 @@
-.root {
-  padding-inline-start: 46px;
+@layer fluent {
+  .root {
+    padding-inline-start: 46px;
 
-  &[data-density='small'] {
-    padding-inline-start: 40px;
-  }
+    &[data-density='small'] {
+      padding-inline-start: 40px;
+    }
 
-  &[data-selected]::after {
-    margin-inline-start: -52px;
+    &[data-selected]::after {
+      margin-inline-start: -52px;
+    }
   }
 }

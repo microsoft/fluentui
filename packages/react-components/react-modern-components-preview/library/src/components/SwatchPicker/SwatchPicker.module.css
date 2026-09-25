@@ -1,21 +1,23 @@
-.root {
-  display: flex;
-  margin: 0;
-  padding: 0;
+@layer fluent {
+  .root {
+    display: flex;
+    margin: 0;
+    padding: 0;
 
-  &[data-layout='row'] {
-    flex-direction: row;
-  }
+    &[data-layout='row'] {
+      flex-direction: row;
+    }
 
-  &[data-layout='grid'] {
-    flex-direction: column;
-  }
+    &[data-layout='grid'] {
+      flex-direction: column;
+    }
 
-  &[data-spacing='small'] {
-    gap: var(--spacingHorizontalXXS);
-  }
+    &[data-spacing='small'] {
+      gap: var(--spacingHorizontalXXS);
+    }
 
-  &[data-spacing='medium'] {
-    gap: var(--spacingHorizontalXS);
+    &[data-spacing='medium'] {
+      gap: var(--spacingHorizontalXS);
+    }
   }
 }

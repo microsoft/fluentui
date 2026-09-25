@@ -1,10 +1,12 @@
-.root[data-vertical] {
-  flex-direction: column;
-}
+@layer fluent {
+  .root[data-vertical] {
+    flex-direction: column;
+  }
 
-.icon {
-  .root[data-vertical] & {
-    margin: 0;
-    font-size: 24px;
+  .icon {
+    .root[data-vertical] & {
+      margin: 0;
+      font-size: 24px;
+    }
   }
 }

@@ -1,10 +1,12 @@
-.root[data-checked] {
-  background-color: var(--colorSubtleBackgroundSelected);
-  color: var(--colorNeutralForeground2Selected);
-}
+@layer fluent {
+  .root[data-checked] {
+    background-color: var(--colorSubtleBackgroundSelected);
+    color: var(--colorNeutralForeground2Selected);
+  }
 
-.icon {
-  .root[data-checked] & {
-    color: var(--colorNeutralForeground2BrandSelected);
+  .icon {
+    .root[data-checked] & {
+      color: var(--colorNeutralForeground2BrandSelected);
+    }
   }
 }
