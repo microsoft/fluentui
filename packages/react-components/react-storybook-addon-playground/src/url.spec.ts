@@ -1,7 +1,9 @@
 import {
   CODE_HASH_PARAM,
   CSS_HASH_PARAM,
+  PLAYGROUND_HASH_VERSION,
   PLAYGROUND_PATH,
+  VERSION_HASH_PARAM,
   createCodeHash,
   createPlaygroundHash,
   createPlaygroundUrl,
@@ -9,6 +11,7 @@ import {
   decodeCodeFromHash,
   decodePlaygroundStateFromHash,
   encodeCode,
+  readPlaygroundHash,
 } from './url';
 
 const sampleCode = `import * as React from 'react';
@@ -93,6 +96,47 @@ describe('url', () => {
       expect(hash).toContain(`${CSS_HASH_PARAM}=`);
       expect(decodePlaygroundStateFromHash(hash)).toEqual({ code: sampleCode, cssModules });
       expect(createPlaygroundHash({ code: sampleCode, cssModules }).startsWith('#')).toBe(true);
+    });
+  });
+
+  describe('readPlaygroundHash', () => {
+    it('stamps created hashes with the format version', () => {
+      const params = new URLSearchParams(createPlaygroundHash({ code: sampleCode }).slice(1));
+
+      expect(params.get(VERSION_HASH_PARAM)).toBe(String(PLAYGROUND_HASH_VERSION));
+    });
+
+    it('reads links created before versioning', () => {
+      const legacyHash = `#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}`;
+
+      expect(readPlaygroundHash(legacyHash)).toEqual({ state: { code: sampleCode, cssModules: [] }, issues: [] });
+    });
+
+    it('reports unreadable code instead of opening an empty playground silently', () => {
+      const result = readPlaygroundHash(`#${CODE_HASH_PARAM}=not-a-valid-payload!!!`);
+
+      expect(result.state).toBeNull();
+      expect(result.issues).toEqual([expect.objectContaining({ kind: 'invalid-code' })]);
+    });
+
+    it('keeps the code but reports truncated CSS modules', () => {
+      const cssModules = [{ name: 'button.module.css', source: '.root { color: red; }' }];
+      const hash = createPlaygroundHash({ code: sampleCode, cssModules });
+      const params = new URLSearchParams(hash.slice(1));
+      params.set(CSS_HASH_PARAM, params.get(CSS_HASH_PARAM)!.slice(0, 10));
+
+      const result = readPlaygroundHash(`#${params.toString()}`);
+
+      expect(result.state).toEqual({ code: sampleCode, cssModules: [] });
+      expect(result.issues).toEqual([expect.objectContaining({ kind: 'invalid-css' })]);
+    });
+
+    it('warns about links from a newer format version but still reads them', () => {
+      const hash = `#${CODE_HASH_PARAM}=${encodeCode(sampleCode)}&${VERSION_HASH_PARAM}=${PLAYGROUND_HASH_VERSION + 1}`;
+      const result = readPlaygroundHash(hash);
+
+      expect(result.state?.code).toBe(sampleCode);
+      expect(result.issues).toEqual([expect.objectContaining({ kind: 'unsupported-version' })]);
     });
   });
 });

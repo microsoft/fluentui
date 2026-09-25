@@ -2,7 +2,7 @@ import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { createRoot } from 'react-dom/client';
 
-import { decodePlaygroundStateFromHash } from '../url';
+import { readPlaygroundHash } from '../url';
 import { Playground } from './Playground';
 import { loadRuntimeManifest } from './runtime';
 
@@ -22,7 +22,7 @@ if (!container || !targetWindow) {
 const DEFAULT_MANIFEST_PATH = '../runtime/manifest.json';
 
 const manifestPath = new URLSearchParams(targetWindow.location.search).get('manifest') ?? DEFAULT_MANIFEST_PATH;
-const initialState = decodePlaygroundStateFromHash(targetWindow.location.hash);
+const { state: initialState, issues: initialIssues } = readPlaygroundHash(targetWindow.location.hash);
 
 loadRuntimeManifest(targetWindow, manifestPath).then(
   manifest => {
@@ -31,6 +31,7 @@ loadRuntimeManifest(targetWindow, manifestPath).then(
         <Playground
           initialCode={initialState?.code ?? null}
           initialCssModules={initialState?.cssModules}
+          initialIssues={initialIssues}
           manifest={manifest}
         />
       </React.StrictMode>,

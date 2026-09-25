@@ -175,4 +175,91 @@ test.describe('playground', () => {
 
     expect(pageErrors).toEqual([]);
   });
+
+  test('forwards console output and blocks network access from the sandbox', async ({ page }) => {
+    const { pageErrors, previewButton, replaceActiveFile } = setupPage(page);
+    const externalRequests: string[] = [];
+    page.on('request', request => {
+      if (new URL(request.url()).hostname === 'example.org') {
+        externalRequests.push(request.url());
+      }
+    });
+
+    await page.goto(
+      `${PLAYGROUND_URL}${createPlaygroundHash({
+        code: `${IMPORTS}console.log('hello', { answer: 42 });
+fetch('https://example.org/collect').then(
+  () => console.log('network allowed'),
+  error => console.error('network blocked', error.name),
+);
+export default () => <Button>Logged</Button>;`,
+      })}`,
+    );
+    await expect(previewButton('Logged')).toBeVisible();
+
+    const consoleToggle = page.getByRole('button', { name: /^Console/ });
+    await expect(consoleToggle).toContainText('1 error');
+    await consoleToggle.click();
+    const output = page.getByRole('log', { name: 'Console output' });
+    await expect(output).toContainText('hello { answer: 42 }');
+    await expect(output).toContainText('network blocked TypeError');
+    await expect(output).not.toContainText('network allowed');
+    expect(externalRequests).toEqual([]);
+
+    // A remount starts a fresh log.
+    await replaceActiveFile(`${IMPORTS}console.info('second version');\nexport default () => <Button>Second</Button>;`);
+    await expect(previewButton('Second')).toBeVisible();
+    await expect(output).toContainText('second version');
+    await expect(output).not.toContainText('hello');
+
+    expect(pageErrors).toEqual([]);
+  });
+
+  test('reports type errors without blocking, manages CSS modules and emulates viewports', async ({ page }) => {
+    const { pageErrors, previewButton, previewFrame, replaceActiveFile, errorAlert } = setupPage(page);
+
+    await page.goto(
+      `${PLAYGROUND_URL}${createPlaygroundHash({ code: `${IMPORTS}export default () => <Button>Start</Button>;` })}`,
+    );
+    await expect(previewButton('Start')).toBeVisible();
+
+    await replaceActiveFile(`${IMPORTS}const label: number = 'Typed';\nexport default () => <Button>{label}</Button>;`);
+    await expect(previewButton('Typed')).toBeVisible();
+    await expect(page.getByRole('button', { name: '1 type error' })).toBeVisible();
+
+    await page.getByRole('button', { name: 'Add CSS module' }).click();
+    const nameInput = page.getByRole('textbox', { name: 'CSS module name' });
+    await expect(nameInput).toHaveValue('styles.module.css');
+    await nameInput.fill('card');
+    await expect(page.getByText("import styles from './card.module.css'")).toBeVisible();
+    await page.getByRole('button', { name: 'Add', exact: true }).click();
+    await expect(page.getByRole('tab', { name: 'card.module.css', selected: true })).toBeVisible();
+    await replaceActiveFile('.root { border-radius: 7px; }');
+
+    await page.getByRole('tab', { name: 'example.tsx', exact: true }).click();
+    await replaceActiveFile(
+      `${IMPORTS}import styles from './card.module.css';\nexport default () => <Button className={styles.root}>Styled</Button>;`,
+    );
+    await expect(previewButton('Styled')).toBeVisible();
+    await expect(page.getByRole('button', { name: /type error/ })).toHaveCount(0);
+    await expect
+      .poll(() => previewFrame().evaluate(() => getComputedStyle(document.querySelector('button')!).borderRadius))
+      .toBe('7px');
+
+    await page.getByRole('tab', { name: 'card.module.css', exact: true }).click();
+    await page.getByRole('button', { name: 'Remove card.module.css' }).click();
+    await expect(page.getByRole('tab', { name: 'card.module.css' })).toHaveCount(0);
+    await expect(errorAlert('card.module.css')).toBeVisible();
+    await page.getByRole('button', { name: 'Undo' }).click();
+    await expect(page.getByRole('tab', { name: 'card.module.css', selected: true })).toBeVisible();
+    await expect(previewButton('Styled')).toBeVisible();
+    await expect(errorAlert('card.module.css')).toHaveCount(0);
+
+    await page.getByRole('combobox', { name: 'Preview width' }).click();
+    await page.getByRole('option', { name: 'Mobile · 375' }).click();
+    await expect.poll(() => previewFrame().evaluate(() => window.innerWidth)).toBe(375);
+    await expect(previewButton('Styled')).toBeVisible();
+
+    expect(pageErrors).toEqual([]);
+  });
 });

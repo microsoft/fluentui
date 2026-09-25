@@ -1,4 +1,12 @@
-import { compileCssModule, findCompiledCssModule, toCssModuleSpecifier, updateCssModuleSource } from './cssModules';
+import {
+  compileCssModule,
+  findCompiledCssModule,
+  getUniqueCssModuleName,
+  normalizeCssModuleName,
+  toCssModuleSpecifier,
+  updateCssModuleSource,
+  validateCssModuleName,
+} from './cssModules';
 
 const buttonCss = `
 .button {
@@ -98,6 +106,27 @@ describe('cssModules', () => {
         { name: 'button.module.css', source: '.root { color: blue; }' },
         { name: 'icon.module.css', source: '.icon {}' },
       ]);
+    });
+  });
+
+  describe('adding CSS modules', () => {
+    const modules = [{ name: 'styles.module.css', source: '' }];
+
+    it('normalizes file names to CSS modules', () => {
+      expect(normalizeCssModuleName(' card ')).toBe('card.module.css');
+      expect(normalizeCssModuleName('card.css')).toBe('card.module.css');
+      expect(normalizeCssModuleName('./styles/card.module.css')).toBe('card.module.css');
+    });
+
+    it('rejects invalid and duplicate names', () => {
+      expect(validateCssModuleName('card.module.css', modules)).toBeUndefined();
+      expect(validateCssModuleName('Styles.module.css', modules)).toMatch(/already exists/);
+      expect(validateCssModuleName('my card.module.css', modules)).toMatch(/letters/);
+    });
+
+    it('suggests a unique name', () => {
+      expect(getUniqueCssModuleName([])).toBe('styles.module.css');
+      expect(getUniqueCssModuleName(modules)).toBe('styles2.module.css');
     });
   });
 });

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat(playground): versioned share links, sandbox CSP and console panel, type-error count, CSS module management, preview widths and module side-effect disposal",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "dmytrokirpa@microsoft.com"
+}

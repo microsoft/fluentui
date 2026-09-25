@@ -39,6 +39,22 @@ interface Parameters_2 {
 }
 export { Parameters_2 as Parameters }
 
+// @public (undocumented)
+export interface PlaygroundHashIssue {
+    // (undocumented)
+    kind: 'invalid-code' | 'invalid-css' | 'unsupported-version';
+    // (undocumented)
+    message: string;
+    // (undocumented)
+    version?: string;
+}
+
+// @public (undocumented)
+export interface PlaygroundHashReadResult {
+    issues: PlaygroundHashIssue[];
+    state: PlaygroundUrlState | null;
+}
+
 // @public
 export interface PlaygroundParameters {
     disable?: boolean;
@@ -102,12 +118,23 @@ export interface PlaygroundTheme<TTheme = unknown> {
     value: TTheme;
 }
 
+// @public (undocumented)
+export interface PlaygroundUrlState {
+    // (undocumented)
+    code: string;
+    // (undocumented)
+    cssModules: CssModuleSource[];
+}
+
 // @public
 export interface PresetConfig {
     modules: Record<string, string>;
     setup?: string;
     typings?: string[];
 }
+
+// @public
+export function readPlaygroundHash(hash: string): PlaygroundHashReadResult;
 
 // @public
 export const withOpenInPlaygroundButton: (storyFn: (context: StoryContext) => JSXElement, context: StoryContext) => JSXElement;

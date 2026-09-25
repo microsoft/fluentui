@@ -1,8 +1,15 @@
 import * as React from 'react';
 import {
+  Button,
   Dropdown,
+  Field,
   FluentProvider,
+  Input,
+  Link,
   Option,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
   Spinner,
   Text,
   Toast,
@@ -21,9 +28,11 @@ import {
   type SelectionEvents,
 } from '@fluentui/react-components';
 import {
+  AddRegular,
   ArrowClockwiseRegular,
   ArrowResetRegular,
   CodeRegular,
+  DeleteRegular,
   DocumentRegular,
   ErrorCircleRegular,
   EyeRegular,
@@ -33,9 +42,26 @@ import {
 } from '@fluentui/react-icons';
 
 import type { PlaygroundSetupMetadata } from '../setup';
-import { createPlaygroundHash, createPlaygroundUrl, type CssModuleSource } from '../url';
+import {
+  RECOMMENDED_MAX_URL_LENGTH,
+  createPlaygroundHash,
+  createPlaygroundUrl,
+  type CssModuleSource,
+  type PlaygroundHashIssue,
+} from '../url';
 import { compile, formatDiagnostics, type CompileResult } from './compiler';
-import { compileCssModule, cssModuleBasename, updateCssModuleSource, type CompiledCssModule } from './cssModules';
+import { ConsolePanel } from './ConsolePanel';
+import { appendConsoleEntry, type ConsoleEntry } from './consoleEntries';
+import {
+  compileCssModule,
+  createCssModuleSource,
+  cssModuleBasename,
+  getUniqueCssModuleName,
+  normalizeCssModuleName,
+  updateCssModuleSource,
+  validateCssModuleName,
+  type CompiledCssModule,
+} from './cssModules';
 import { Editor, TSX_FILE_PATH, type EditorFile } from './Editor';
 import { getNextFileTabIndex } from './fileTabs';
 import { registerFormatter } from './formatter';
@@ -48,11 +74,14 @@ import { getFormatShortcutLabel, getRunShortcutLabel } from './shortcuts';
 import { getThemeOption } from './themes';
 import { registerTypings } from './typings';
 import { useMediaQuery } from './useMediaQuery';
+import { useModelErrorCount } from './useModelErrorCount';
 import { useSplitPane } from './useSplitPane';
 
 export interface PlaygroundProps {
   initialCode: string | null;
   initialCssModules?: CssModuleSource[];
+  /** Problems found while reading the shared link, shown once on start. */
+  initialIssues?: readonly PlaygroundHashIssue[];
   manifest: ResolvedPlaygroundRuntimeManifest;
 }
 
@@ -69,6 +98,14 @@ const RUN_DEBOUNCE_MS = 150;
 const HASH_SYNC_DEBOUNCE_MS = 500;
 const EMPTY_METADATA: PlaygroundSetupMetadata = { themes: [] };
 const EMPTY_CSS_MODULES: CssModuleSource[] = [];
+
+export const VIEWPORT_PRESETS = [
+  { id: 'fill', label: 'Fill', width: undefined },
+  { id: 'mobile', label: 'Mobile · 375', width: 375 },
+  { id: 'tablet', label: 'Tablet · 768', width: 768 },
+  { id: 'desktop', label: 'Desktop · 1280', width: 1280 },
+] as const;
+type ViewportId = (typeof VIEWPORT_PRESETS)[number]['id'];
 
 function toErrorState(error: unknown): PlaygroundErrorState {
   if (error instanceof PlaygroundError) {
@@ -159,7 +196,7 @@ const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>(
 StatusIndicator.displayName = 'StatusIndicator';
 
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
-  const { initialCode, initialCssModules = EMPTY_CSS_MODULES, manifest } = props;
+  const { initialCode, initialCssModules = EMPTY_CSS_MODULES, initialIssues, manifest } = props;
   const styles = usePlaygroundStyles();
   const { targetDocument } = useFluent();
   const targetWindow = targetDocument?.defaultView;
@@ -181,7 +218,17 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState<string>();
   const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
+  const [viewportId, setViewportId] = React.useState<ViewportId>('fill');
+  const [consoleEntries, setConsoleEntries] = React.useState<ConsoleEntry[]>([]);
+  const [consoleExpanded, setConsoleExpanded] = React.useState(false);
+  const [newCssOpen, setNewCssOpen] = React.useState(false);
+  const [newCssName, setNewCssName] = React.useState('');
   const runCounter = React.useRef(0);
+  const runIdRef = React.useRef(runId);
+  runIdRef.current = runId;
+  const consoleEntryId = React.useRef(0);
+  const consoleMinRunId = React.useRef(0);
+  const lastCompiledCode = React.useRef<string | null>(null);
   const emitCache = React.useRef<
     | {
         model: monaco.editor.ITextModel;
@@ -201,6 +248,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const { dispatchToast } = useToastController(toasterId);
   const compactToolbar = useMediaQuery(COMPACT_TOOLBAR_QUERY);
   const split = useSplitPane(mainRef);
+  const typeErrorCount = useModelErrorCount(monaco, model);
 
   const selectedThemeMeta = metadata.themes.find(theme => theme.id === themeId);
   const shellDark = Boolean(selectedThemeMeta?.dark);
@@ -214,7 +262,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   }, []);
 
   const notify = React.useCallback(
-    (title: string, intent: 'success' | 'error', body?: string) => {
+    (title: string, intent: 'success' | 'warning' | 'error', body?: string) => {
       dispatchToast(
         <Toast>
           <ToastTitle>{title}</ToastTitle>
@@ -249,6 +297,16 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     };
   }, [manifest.typings, targetWindow]);
 
+  const reportedInitialIssues = React.useRef(false);
+  React.useEffect(() => {
+    if (reportedInitialIssues.current || !initialIssues?.length) {
+      return;
+    }
+
+    reportedInitialIssues.current = true;
+    notify('This link could not be opened completely', 'warning', initialIssues.map(issue => issue.message).join(' '));
+  }, [initialIssues, notify]);
+
   React.useEffect(() => {
     const disposable = registerFormatter(monaco, {
       onError: err => notify('Cannot format code', 'error', err.message.split('\n')[0]),
@@ -263,6 +321,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   const handleFormat = React.useCallback(() => {
     editorRef.current?.getAction('editor.action.formatDocument')?.run();
+  }, []);
+
+  const handleNextTypeError = React.useCallback(() => {
+    const editor = editorRef.current;
+    editor?.focus();
+    editor?.getAction('editor.action.marker.next')?.run();
   }, []);
 
   const handleEditorReady = React.useCallback((editor: monaco.editor.IStandaloneCodeEditor | null) => {
@@ -336,6 +400,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
         );
         cssCache.current = nextCache;
         const nextCssModules = Array.from(nextCache.values(), cached => cached.result);
+        if (!keepState || result.code !== lastCompiledCode.current) {
+          // Each remount starts a fresh log, like a page reload; output of the replaced version is dropped.
+          consoleMinRunId.current = runIdRef.current + 1;
+          setConsoleEntries([]);
+        }
+        lastCompiledCode.current = result.code;
         setCompiledCode(result.code);
         setRequiredModules(nextRequiredModules);
         setPreviewCssModules(nextCssModules);
@@ -470,8 +540,112 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     setError(null);
     setStatus('idle');
     setPaused(false);
+    lastCompiledCode.current = null;
+    setConsoleEntries([]);
     setRestartId(id => id + 1);
     setRunId(id => id + 1);
+  }, []);
+
+  const handleConsole = React.useCallback((entry: { level: ConsoleEntry['level']; message: string; runId: number }) => {
+    if (entry.runId !== 0 && entry.runId < consoleMinRunId.current) {
+      return;
+    }
+    setConsoleEntries(entries => appendConsoleEntry(entries, entry, ++consoleEntryId.current));
+  }, []);
+  const handleClearConsole = React.useCallback(() => setConsoleEntries([]), []);
+
+  const newCssModuleName = normalizeCssModuleName(newCssName);
+  const newCssError = newCssName.trim() ? validateCssModuleName(newCssModuleName, cssModules) : undefined;
+
+  const handleNewCssOpenChange = React.useCallback(
+    (_event: unknown, data: { open: boolean }) => {
+      setNewCssOpen(data.open);
+      if (data.open) {
+        setNewCssName(getUniqueCssModuleName(cssModules));
+      }
+    },
+    [cssModules],
+  );
+  const handleNewCssNameChange = React.useCallback(
+    (_event: unknown, data: { value: string }) => setNewCssName(data.value),
+    [],
+  );
+
+  const handleAddCssModule = React.useCallback(
+    (event?: React.FormEvent) => {
+      event?.preventDefault();
+      if (!newCssName.trim() || validateCssModuleName(newCssModuleName, cssModules)) {
+        return;
+      }
+
+      setCssModules(modules => [
+        ...modules,
+        { name: newCssModuleName, source: createCssModuleSource(newCssModuleName) },
+      ]);
+      setActiveFileId(newCssModuleName);
+      setNewCssOpen(false);
+    },
+    [cssModules, newCssModuleName, newCssName],
+  );
+
+  const lastRemovedCss = React.useRef<{ module: CssModuleSource; index: number } | null>(null);
+  const handleUndoRemoveCss = React.useCallback(() => {
+    const removed = lastRemovedCss.current;
+    if (!removed) {
+      return;
+    }
+
+    lastRemovedCss.current = null;
+    setCssModules(modules => {
+      if (modules.some(mod => mod.name === removed.module.name)) {
+        return modules;
+      }
+      const next = [...modules];
+      next.splice(Math.min(removed.index, next.length), 0, removed.module);
+      return next;
+    });
+    setActiveFileId(removed.module.name);
+  }, []);
+
+  const handleRemoveCssModule = React.useCallback(
+    (name: string) => {
+      const index = cssModules.findIndex(mod => mod.name === name);
+      if (index === -1) {
+        return;
+      }
+
+      const removed = cssModules[index];
+      lastRemovedCss.current = { module: removed, index };
+      ++runCounter.current;
+      setPaused(true);
+      setCssModules(modules => modules.filter(mod => mod.name !== name));
+      setActiveFileId(TSX_FILE_PATH);
+      dispatchToast(
+        <Toast>
+          <ToastTitle
+            action={
+              <Link as="button" onClick={handleUndoRemoveCss}>
+                Undo
+              </Link>
+            }
+          >
+            Removed {cssModuleBasename(removed.name)}
+          </ToastTitle>
+        </Toast>,
+        { intent: 'info' },
+      );
+    },
+    [cssModules, dispatchToast, handleUndoRemoveCss],
+  );
+  const handleRemoveActiveCssModule = React.useCallback(
+    () => handleRemoveCssModule(activeFileId),
+    [activeFileId, handleRemoveCssModule],
+  );
+  const handleViewportSelect = React.useCallback((_event: SelectionEvents, data: OptionOnSelectData) => {
+    const preset = VIEWPORT_PRESETS.find(candidate => candidate.id === data.optionValue);
+    if (preset) {
+      setViewportId(preset.id);
+    }
   }, []);
 
   const handleCopyLink = React.useCallback(async () => {
@@ -488,7 +662,15 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
       }
 
       await targetWindow.navigator.clipboard.writeText(url);
-      notify('Link copied to clipboard', 'success');
+      if (url.length > RECOMMENDED_MAX_URL_LENGTH) {
+        notify(
+          'Link copied, but it is long',
+          'warning',
+          `The link has ${url.length.toLocaleString()} characters. Some apps truncate links over ${RECOMMENDED_MAX_URL_LENGTH.toLocaleString()} characters, so consider trimming the example.`,
+        );
+      } else {
+        notify('Link copied to clipboard', 'success');
+      }
     } catch (err) {
       notify('Could not copy link', 'error', err instanceof Error ? err.message : String(err));
     }
@@ -542,6 +724,20 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
           </StatusIndicator>
         );
       case 'ready':
+        if (typeErrorCount > 0) {
+          return (
+            <Tooltip
+              content="Type errors do not block the preview. Select to jump to the next one."
+              relationship="description"
+            >
+              <Button appearance="transparent" size="small" className={styles.typeErrors} onClick={handleNextTypeError}>
+                <StatusIndicator tone="warning">
+                  {typeErrorCount} {typeErrorCount === 1 ? 'type error' : 'type errors'}
+                </StatusIndicator>
+              </Button>
+            </Tooltip>
+          );
+        }
         return (
           <Tooltip content="Auto-completion and type checking for the configured packages" relationship="description">
             <StatusIndicator tone="neutral">TypeScript</StatusIndicator>
@@ -693,10 +889,47 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 ) : (
                   <span className={styles.fileName}>{TSX_FILE_PATH}</span>
                 )}
+                <Popover open={newCssOpen} onOpenChange={handleNewCssOpenChange} trapFocus positioning="below-start">
+                  <PopoverTrigger disableButtonEnhancement>
+                    <Tooltip content="Add CSS module" relationship="label">
+                      <Button appearance="subtle" size="small" icon={<AddRegular />} />
+                    </Tooltip>
+                  </PopoverTrigger>
+                  <PopoverSurface aria-label="Add CSS module">
+                    <form className={styles.newFileForm} onSubmit={handleAddCssModule}>
+                      <Field
+                        label="CSS module name"
+                        size="small"
+                        validationState={newCssError ? 'error' : 'none'}
+                        validationMessage={newCssError ?? `Import it with: import styles from './${newCssModuleName}';`}
+                      >
+                        <Input size="small" value={newCssName} onChange={handleNewCssNameChange} />
+                      </Field>
+                      <Button
+                        type="submit"
+                        appearance="primary"
+                        size="small"
+                        disabled={Boolean(newCssError) || !newCssName.trim()}
+                      >
+                        Add
+                      </Button>
+                    </form>
+                  </PopoverSurface>
+                </Popover>
               </span>
               <span className={styles.paneMeta}>
                 {activeFile.language === 'css' ? (
-                  <StatusIndicator tone="neutral">CSS</StatusIndicator>
+                  <>
+                    <StatusIndicator tone="neutral">CSS</StatusIndicator>
+                    <Tooltip content={`Remove ${activeFile.path}`} relationship="label">
+                      <Button
+                        appearance="subtle"
+                        size="small"
+                        icon={<DeleteRegular />}
+                        onClick={handleRemoveActiveCssModule}
+                      />
+                    </Tooltip>
+                  </>
                 ) : (
                   renderTypingsStatus()
                 )}
@@ -726,6 +959,21 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 Preview
               </span>
               <Toolbar aria-label="Preview actions" className={styles.toolbar}>
+                <Dropdown
+                  aria-label="Preview width"
+                  className={styles.viewportPicker}
+                  size="small"
+                  appearance="underline"
+                  value={VIEWPORT_PRESETS.find(preset => preset.id === viewportId)?.label}
+                  selectedOptions={[viewportId]}
+                  onOptionSelect={handleViewportSelect}
+                >
+                  {VIEWPORT_PRESETS.map(preset => (
+                    <Option key={preset.id} value={preset.id}>
+                      {preset.label}
+                    </Option>
+                  ))}
+                </Dropdown>
                 <ToolbarAction
                   icon={<ArrowClockwiseRegular />}
                   label="Restart preview"
@@ -751,6 +999,8 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               onMetadata={handleMetadata}
               onSuccess={handleRuntimeSuccess}
               onError={handleRuntimeError}
+              onConsole={handleConsole}
+              frameWidth={VIEWPORT_PRESETS.find(preset => preset.id === viewportId)?.width}
               placeholder={renderPlaceholder()}
             />
             {error ? (
@@ -767,6 +1017,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
                 </div>
               </div>
             ) : null}
+            <ConsolePanel
+              entries={consoleEntries}
+              expanded={consoleExpanded}
+              onExpandedChange={setConsoleExpanded}
+              onClear={handleClearConsole}
+            />
           </section>
         </main>
 

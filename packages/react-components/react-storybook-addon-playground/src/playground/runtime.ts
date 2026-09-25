@@ -1,4 +1,5 @@
 import type { PlaygroundRuntimeManifest, PlaygroundSetupMetadata } from '../setup';
+import type { PlaygroundConsoleLevel } from './sandbox';
 
 export interface ResolvedPlaygroundRuntimeManifest extends PlaygroundRuntimeManifest {
   baseUrl: string;
@@ -30,6 +31,15 @@ export type PlaygroundRuntimeMessage =
       kind: PlaygroundRuntimeErrorKind;
       message: string;
       previewRetained?: boolean;
+    }
+  | {
+      source: 'fluentui-playground';
+      token: string;
+      type: 'console';
+      level: PlaygroundConsoleLevel;
+      /** Run that was active when the message was logged, `0` before the first run. */
+      runId: number;
+      message: string;
     };
 
 /**

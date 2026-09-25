@@ -76,6 +76,19 @@ export const usePlaygroundStyles = makeStyles({
   themePicker: {
     minWidth: '140px',
   },
+  viewportPicker: {
+    minWidth: '132px',
+  },
+  typeErrors: {
+    minWidth: 0,
+    padding: 0,
+  },
+  newFileForm: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    gap: tokens.spacingHorizontalS,
+    maxWidth: '320px',
+  },
 
   main: {
     display: 'grid',
@@ -100,7 +113,7 @@ export const usePlaygroundStyles = makeStyles({
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
   },
   previewPane: {
-    gridTemplateRows: 'auto minmax(0, 1fr) auto',
+    gridTemplateRows: 'auto minmax(0, 1fr) auto auto',
   },
   previewHeader: {
     flexWrap: 'wrap',

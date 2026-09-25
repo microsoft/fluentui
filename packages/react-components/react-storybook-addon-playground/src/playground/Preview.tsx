@@ -7,7 +7,7 @@ import type {
   PlaygroundRuntimeMessage,
   ResolvedPlaygroundRuntimeManifest,
 } from './runtime';
-import { createSandboxDocument } from './sandbox';
+import { createSandboxDocument, type PlaygroundConsoleLevel } from './sandbox';
 import { usePreviewStyles } from './Preview.styles';
 
 export const PREVIEW_SANDBOX = 'allow-scripts';
@@ -30,8 +30,12 @@ export interface PreviewProps {
     runId: number;
     previewRetained?: boolean;
   }) => void;
+  /** Fixed preview width in CSS pixels, e.g. to emulate a phone. Fills the pane when omitted. */
+  frameWidth?: number;
+  onConsole?: (entry: { level: PlaygroundConsoleLevel; message: string; runId: number }) => void;
   placeholder?: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props, ref) => {
@@ -47,7 +51,9 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
     onMetadata,
     onSuccess,
     onError,
+    onConsole,
     className,
+    style,
   } = props;
   const { targetDocument } = useFluent();
   const frameRef = React.useRef<HTMLIFrameElement | null>(null);
@@ -56,7 +62,12 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
   const postedRunRef = React.useRef<number | undefined>(undefined);
   // Live updates reuse this token; only replacing the iframe resets its environment.
   const [token] = React.useState(() => `${manifest.buildId}:${runId}:${Math.random().toString(36).slice(2)}`);
-  const source = React.useMemo(() => createSandboxDocument(manifest, token), [manifest, token]);
+  const parentOrigin = targetDocument?.defaultView?.location.origin;
+  const source = React.useMemo(
+    // Opaque parents (e.g. `file:` URLs) report the origin "null", which cannot be targeted.
+    () => createSandboxDocument(manifest, token, parentOrigin && parentOrigin !== 'null' ? parentOrigin : '*'),
+    [manifest, parentOrigin, token],
+  );
 
   React.useEffect(() => {
     readyRef.current = false;
@@ -115,12 +126,14 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
         onSuccess(message.runId);
       } else if (message.type === 'error' && message.runId === runId && !paused) {
         onError(message);
+      } else if (message.type === 'console') {
+        onConsole?.({ level: message.level, message: message.message, runId: message.runId });
       }
     };
 
     targetWindow.addEventListener('message', handleMessage);
     return () => targetWindow.removeEventListener('message', handleMessage);
-  }, [onError, onMetadata, onSuccess, paused, postRun, runId, targetDocument, token]);
+  }, [onConsole, onError, onMetadata, onSuccess, paused, postRun, runId, targetDocument, token]);
 
   // Send the current run once its sandbox is ready.
   React.useEffect(() => {
@@ -135,6 +148,7 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
       sandbox={PREVIEW_SANDBOX}
       srcDoc={source}
       className={className}
+      style={style}
     />
   );
 });
@@ -147,8 +161,16 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>((props, re
   const styles = usePreviewStyles();
 
   return (
-    <div ref={ref} className={mergeClasses(styles.root, props.className)}>
-      <SandboxFrame {...props} key={`${props.manifest.buildId}:${props.restartId ?? 0}`} className={styles.frame} />
+    <div
+      ref={ref}
+      className={mergeClasses(styles.root, props.frameWidth !== undefined && styles.rootFixedWidth, props.className)}
+    >
+      <SandboxFrame
+        {...props}
+        key={`${props.manifest.buildId}:${props.restartId ?? 0}`}
+        className={mergeClasses(styles.frame, props.frameWidth !== undefined && styles.frameFixedWidth)}
+        style={props.frameWidth ? { width: `${props.frameWidth}px` } : undefined}
+      />
       {props.code === null && props.placeholder ? <div className={styles.placeholder}>{props.placeholder}</div> : null}
     </div>
   );

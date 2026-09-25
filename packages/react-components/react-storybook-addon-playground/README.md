@@ -14,6 +14,7 @@ an optional setup module, and Monaco declarations. User code runs inside a sandb
 - Optional TSX `setup` module for branding, themes and provider/render behavior (Fluent defaults when omitted)
 - Sandboxed preview (`sandbox="allow-scripts"`), Prettier formatting, error reporting and shareable URL state
 - Live preview updates reuse the sandbox and loaded packages, with an explicit restart for a clean environment
+- Console panel, type-error count, CSS module tabs you can add and remove, and preview width presets
 
 ## Installation
 
@@ -70,13 +71,31 @@ links use the same live-update behavior.
 - Theme changes reuse the component; a custom setup's render tree can still cause a remount.
 - **Run** explicitly reevaluates and remounts the example. **Restart preview** creates a clean sandbox without changing the
   editor code.
-- Live updates do **not** dispose arbitrary module-level side effects from older runs. Effect cleanup runs when React
-  unmounts a component, but global timers, listeners, pending callbacks and mutations may remain. Use Restart preview
-  when debugging lifecycle behavior or whenever a clean environment is needed.
+- Timers (`setTimeout`, `setInterval`, `requestAnimationFrame`) and `window`/`document` listeners created while the
+  example module is evaluated are disposed when a newer version renders. React effect cleanup runs when the component
+  unmounts. Other global mutations, and timers or listeners created later (for example inside callbacks), may remain;
+  use Restart preview when debugging lifecycle behavior or whenever a clean environment is needed.
 - Syntax/import/module-evaluation errors leave the previous preview visible. A component render error can clear the live
   preview; the next valid edit renders again, and Restart preview is available to reset a broken environment.
 
 The sandbox remains `allow-scripts` only; live updates never add `allow-same-origin`.
+
+### Preview sandbox
+
+- The preview is an opaque-origin `srcdoc` iframe with `sandbox="allow-scripts"`. Messages to the shell target the
+  shell's origin; messages from the shell are authenticated by source window and a per-sandbox token.
+- A Content Security Policy only allows scripts, styles, fonts and network requests from the origins that serve the
+  Storybook runtime. `fetch`/XHR/WebSocket to other origins, nested frames and form submissions are blocked. Images and
+  media can load from any HTTPS URL.
+- `console.*` output is forwarded to the **Console** panel below the preview (rate limited to 100 messages per second).
+  It is cleared whenever the example remounts, on **Run** and on **Restart preview**.
+
+### Shared links
+
+Links store the code and CSS modules in the URL hash (`#code=…&css=…&v=1`), compressed with lz-string. `v` is the
+format version; links without it are read as version 1. The playground warns when a link cannot be fully read (for
+example when a chat app truncated it) and when **Copy link** produces a URL longer than 8,000 characters.
+`readPlaygroundHash` exposes the same parser for tools that create or inspect links.
 
 The optional setup module default-exports a value created with `definePlaygroundSetup`:
 
@@ -127,8 +146,8 @@ The **runtime** (configured modules, setup, typings, `manifest.json`) is emitted
 `playground/runtime/`. The shell is served at `playground/app/playground.html`.
 
 Browser tests (Playwright) build a small fixture runtime with the addon's real `webpackFinal` hook, serve it next to the
-prebuilt shell and cover the default setup, shared links, live CSS/theme updates, error recovery, Restart and lazy
-modules:
+prebuilt shell and cover the default setup, shared links, live CSS/theme updates, error recovery, Restart, lazy
+modules, the console panel and CSP, type-error count, CSS module management and preview widths:
 
 ```sh
 yarn nx run react-storybook-addon-playground:e2e
@@ -136,7 +155,7 @@ yarn nx run react-storybook-addon-playground:e2e
 
 ## Limitations
 
-- Only configured packages, the built-in React entries, and CSS modules shipped with a story (via
-  `parameters.cssModuleSources`) can be imported. Those CSS modules appear as extra editor tabs, compile on edit, and
+- Only configured packages, the built-in React entries, and CSS modules can be imported. CSS modules shipped with a
+  story (via `parameters.cssModuleSources`) or added with the **+** button appear as editor tabs, compile on edit, and
   are injected into the sandbox as hashed class maps plus a `<style>` tag. Other relative imports are not supported.
-- Type errors are shown in the editor but do not block running the code.
+- Type errors are shown in the editor and counted in the editor header, but do not block running the code.

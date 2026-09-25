@@ -16,6 +16,14 @@ export const usePreviewStyles = makeStyles({
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  rootFixedWidth: {
+    overflowX: 'auto',
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+  frameFixedWidth: {
+    margin: '0 auto',
+    boxShadow: tokens.shadow4,
+  },
   placeholder: {
     position: 'absolute',
     top: 0,

@@ -161,3 +161,42 @@ export function findCompiledCssModule(
   const basename = cssModuleBasename(specifier);
   return modules.find(mod => cssModuleBasename(mod.specifier) === basename || mod.name === basename);
 }
+
+/**
+ * Turns user input into a CSS module file name, e.g. `card` or `card.css` -> `card.module.css`.
+ */
+export function normalizeCssModuleName(input: string): string {
+  const name = cssModuleBasename(input.trim());
+  if (/\.module\.css$/i.test(name)) {
+    return name;
+  }
+
+  return `${name.replace(/\.css$/i, '')}.module.css`;
+}
+
+/**
+ * Returns why provided (normalized) CSS module name cannot be added, or `undefined` when it is valid.
+ */
+export function validateCssModuleName(name: string, modules: readonly CssModuleSource[]): string | undefined {
+  if (!/^[\w-]+\.module\.css$/i.test(name)) {
+    return 'Use letters, digits, "-" or "_", ending with .module.css.';
+  }
+  if (modules.some(mod => cssModuleBasename(mod.name).toLowerCase() === name.toLowerCase())) {
+    return `${name} already exists.`;
+  }
+
+  return undefined;
+}
+
+export function getUniqueCssModuleName(modules: readonly CssModuleSource[], base = 'styles'): string {
+  for (let index = 1; ; index++) {
+    const name = `${base}${index === 1 ? '' : index}.module.css`;
+    if (!validateCssModuleName(name, modules)) {
+      return name;
+    }
+  }
+}
+
+export function createCssModuleSource(name: string): string {
+  return `/* import styles from './${name}'; */\n.root {\n}\n`;
+}
