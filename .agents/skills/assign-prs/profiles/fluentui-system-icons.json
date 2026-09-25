@@ -1,0 +1,47 @@
+{
+  "$schema": "../reviewers.schema.json",
+  "version": 1,
+  "repo": "microsoft/fluentui-system-icons",
+  "queues": ["microsoft/cxe-prg"],
+  "team": { "org": "microsoft", "slug": "cxe-prg" },
+  "settings": { "reviewers": 1, "areaMatch": "hard", "unknownMemberPolicy": "exclude-and-report" },
+  "areas": {
+    "react-icons": {
+      "label": "React icon packages",
+      "scopes": ["react-icons*"],
+      "paths": ["packages/react-icons*/**", "packages/svg-icons/**", "packages/svg-sprites/**"]
+    },
+    "build": {
+      "label": "Icon tooling",
+      "scopes": ["tooling", "build", "ci"],
+      "paths": ["importer/**", "scripts/**", ".github/**", "package.json", "yarn.lock"]
+    },
+    "docs": {
+      "label": "Icon documentation",
+      "scopes": ["docsite", "docs"],
+      "paths": ["packages/docsite/**", "docs/**"]
+    },
+    "assets": { "label": "Icon assets", "scopes": ["icons", "assets"], "paths": ["assets/**"] },
+    "platforms": {
+      "label": "Native platform packages",
+      "scopes": ["android", "ios", "flutter"],
+      "paths": ["android/**", "ios/**", "flutter/**", "packages/react-native-icons/**"]
+    }
+  },
+  "reviewers": [
+    {
+      "login": "Hotell",
+      "eligible": true,
+      "fallbackEligible": false,
+      "primary": ["react-icons", "build"],
+      "secondary": []
+    },
+    { "login": "dmytrokirpa", "eligible": true, "primary": [], "secondary": ["react-icons", "docs"] },
+    { "login": "ValentinaKozlova", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "mainframev", "eligible": true, "primary": [], "secondary": ["react-icons", "build", "docs"] },
+    { "login": "paolo-aliprandi", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "gouttierre", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "tudorpopams", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "PaulGMardling", "eligible": false, "primary": [], "secondary": [] }
+  ]
+}

@@ -1,7 +1,10 @@
 # Reviewer configuration
 
-`reviewers.json` decides who receives review requests from the `/assign-prs` skill. Edit that file to
-change assignment; never edit `SKILL.md`, which deliberately contains no names.
+The `/assign-prs` skill reads `reviewers.json` for `microsoft/fluentui` and one JSON file per
+additional repository in `profiles/`. Edit the appropriate profile to change assignment;
+`SKILL.md` contains no reviewer names. A default run plans across every configured repository,
+while repeatable `--repo owner/repo` selects a subset. The skill is only invoked from this
+Fluent UI workspace; other repositories need no copy.
 
 ## It is an overlay, not a roster
 
@@ -9,9 +12,11 @@ Team membership is resolved at run time from the GitHub team API. This file only
 those members are eligible for automatic assignment, and which areas each one owns. Both halves are
 required: the API says who exists, the file says who to ask.
 
-The `team` field names the team the roster is drawn from. It is deliberately independent of the
-`--team` queues the skill reads: this repository grooms two queues but draws every reviewer from one
-team, so a build-queue PR can be routed to a component reviewer.
+Each profile's `repo` names its target repository. `queues` lists teams with a pending review
+request on an open, non-draft PR; `team` names the one live team the reviewer roster is drawn from. These
+are deliberately independent. The Fluent UI profile grooms two queues but draws every reviewer
+from one team. `--team` selects a subset of configured queues for a single-repo run, never a
+different team's work or reviewer roster.
 
 The two are reconciled on every run and drift is reported in both directions:
 
@@ -51,7 +56,7 @@ validation error, it simply never matches anything.
 
 ## This file is public
 
-`microsoft/fluentui` is a public repository and this config is committed to it. An entry carries a
+`microsoft/fluentui` is a public repository and these profiles are committed to it. An entry carries a
 login, an eligibility flag and areas — deliberately no free-text notes about anyone. The schema sets
 `additionalProperties: false` so a commentary field cannot be reintroduced by accident.
 
@@ -61,6 +66,31 @@ statistics and comparisons between people belong in that discussion, not in a pe
 ## Validating a change
 
 ```bash
-jq empty reviewers.json
-npx ajv-cli validate -s reviewers.schema.json -d reviewers.json --spec=draft2020
+yarn nx run agent-skills:test
+node ./.agents/skills/assign-prs/scripts/plan.mjs --repo microsoft/monosize --account LOGIN
 ```
+
+The CI test target checks every profile against the shared JSON Schema and runs the planner tests. Validation also checks that
+reviewer area names exist, repos and queues are unique, and logins are unique within a profile.
+The plan target is read-only. It verifies GitHub account and permissions, resolves live team
+membership, and reports drift and uncovered PRs before anyone approves a review request.
+
+## Adding another repository
+
+1. Add a JSON file to `profiles/` using the same schema. Set a unique `repo`, the specific team
+   review queues to groom, and the live `team` whose members may be asked to review. Check the
+   queue with GitHub search first; an empty queue may mean the wrong team rather than no work.
+2. Define `areas` from that repository's paths and title scopes. Use CODEOWNERS as evidence of
+   ownership, not as an automatic eligibility list. PRs without the configured team requests,
+   including another team's packages, remain outside this skill's scope.
+3. List all live roster members, marking only confirmed reviewers `eligible`. For new areas with
+   no confirmed owner, use `areaMatch: "hard"` and let the plan report under-coverage; do not
+   silently hand work to a different team. A login may appear in several profiles with different
+   eligibility, while its open review load is balanced across the selected repositories.
+4. Validate and run a read-only `--repo` plan. Confirm representative PR paths, requested teams,
+   permission to request reviews, and the effective reviewer pool with the repository maintainers
+   before approving any requests. New or changed plans require a fresh approval.
+
+The initial icons, contrib and monosize profiles intentionally keep eligibility narrow pending
+maintainer confirmation. In particular, assets and native platforms in icons and independently
+owned contrib packages are not reassigned by a convenient fallback.
