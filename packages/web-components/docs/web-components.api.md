@@ -1203,8 +1203,6 @@ export class Checkbox extends BaseCheckbox {
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
-    shape?: CheckboxShape;
-    size?: CheckboxSize;
     toggleChecked(force?: boolean): void;
 }
 
@@ -2562,12 +2560,6 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 
 // @public
 export class Divider extends BaseDivider {
-    // (undocumented)
-    alignContent?: DividerAlignContent;
-    // (undocumented)
-    appearance?: DividerAppearance;
-    // (undocumented)
-    inset?: boolean;
 }
 
 // @public
@@ -2642,12 +2634,9 @@ export class Drawer extends FASTElement {
     emitBeforeToggle: () => void;
     emitToggle: () => void;
     hide(): void;
-    position: DrawerPosition;
     // (undocumented)
     role: string | null;
     show(): void;
-    // (undocumented)
-    size: DrawerSize;
     type: DrawerType;
 }
 
@@ -2719,16 +2708,14 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
-    appearance: DropdownAppearance;
-    size?: DropdownSize;
 }
 
 // @public
 export const DropdownAppearance: {
-    filledDarker: string;
-    filledLighter: string;
-    outline: string;
-    transparent: string;
+    readonly filledDarker: "filled-darker";
+    readonly filledLighter: "filled-lighter";
+    readonly outline: "outline";
+    readonly transparent: "transparent";
 };
 
 // @public (undocumented)
@@ -2879,7 +2866,6 @@ export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = a
 
 // @public
 export class Field extends BaseField {
-    labelPosition: FieldLabelPosition;
 }
 
 // @public
@@ -2966,11 +2952,6 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
 class Image_2 extends FASTElement {
-    block?: boolean;
-    bordered?: boolean;
-    fit?: ImageFit;
-    shadow?: boolean;
-    shape?: ImageShape;
 }
 export { Image_2 as Image }
 
@@ -3026,10 +3007,7 @@ export function isTreeItem(element?: Node | null, tagName?: string): element is 
 
 // @public
 export class Label extends FASTElement {
-    disabled: boolean;
     required: boolean;
-    size?: LabelSize;
-    weight?: LabelWeight;
 }
 
 // @public
@@ -3098,8 +3076,6 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 
 // @public
 export class Link extends BaseAnchor {
-    appearance?: LinkAppearance | undefined;
-    inline: boolean;
 }
 
 // @public
