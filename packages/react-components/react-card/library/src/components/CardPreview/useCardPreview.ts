@@ -35,10 +35,12 @@ export const useCardPreviewBase_unstable = (
   props: CardPreviewBaseProps,
   ref: React.Ref<HTMLElement>,
 ): CardPreviewBaseState => {
-  const { logo } = props;
+  const { logo, layout = 'full', ...rest } = props;
 
   const {
     selectableA11yProps: { referenceLabel, referenceId, setReferenceLabel, setReferenceId },
+    orientation,
+    size,
   } = useCardContext_unstable();
   // FIXME:
   // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
@@ -73,12 +75,14 @@ export const useCardPreviewBase_unstable = (
       root: 'div',
       logo: 'div',
     },
-
+    layout,
+    orientation,
+    size,
     root: slot.always(
       // eslint-disable-next-line react-hooks/refs
       getIntrinsicElementProps('div', {
         ref: previewRef,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
