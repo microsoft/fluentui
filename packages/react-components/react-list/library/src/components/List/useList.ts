@@ -6,15 +6,16 @@ import { getIntrinsicElementProps, slot, useControllableState, useEventCallback 
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
-import {
-  calculateListItemRoleForListRole,
-  calculateListRole,
-  validateGridCellsArePresent,
-  validateProperElementTypes,
-  validateProperRolesAreUsed,
-} from '../../utils';
+import { calculateListItemRoleForListRole, calculateListRole, validateListItemElement } from '../../utils';
 
 const DEFAULT_ROOT_EL_TYPE = 'ul';
+
+/**
+ * Plain DOM approximation of Tabster's focus finders, used by the base hook which must stay free of
+ * any Tabster runtime.
+ */
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
  * Create the state required to render List.
@@ -29,14 +30,53 @@ export const useList_unstable = (
   props: ListProps,
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
 ): ListState => {
-  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
+  const state = useListBase_unstable(props, ref);
 
+  const { navigationMode, selectionMode } = props;
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
     memorizeCurrent: true,
   });
+
+  const { findAllFocusable } = useFocusFinders();
+
+  // Tabster aware validation, superseding the plain DOM detection used by the base hook.
+  const validateListItem = useEventCallback((listItemEl: HTMLElement) =>
+    validateListItemElement(listItemEl, {
+      listRenderedAs: as,
+      listRole,
+      hasSelection: !!selectionMode,
+      hasFocusableChildren: findAllFocusable(listItemEl).length > 0,
+    }),
+  );
+
+  return {
+    ...state,
+    validateListItem,
+    // Consumer props keep winning over the navigation attributes, matching the base slot ordering.
+    root: { ...arrowNavigationAttributes, ...state.root },
+  };
+};
+
+/**
+ * Base state hook for List, free of any focus or keyboard navigation runtime.
+ *
+ * Arrow key navigation is layered on by the wrapping `useList_unstable` hook, so consumers of this
+ * hook are expected to bring their own focus management.
+ *
+ * @param props - props from this instance of List
+ * @param ref - reference to root HTMLElement of List
+ */
+export const useListBase_unstable = (
+  props: ListProps,
+  ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
+): ListState => {
+  const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
+
+  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,
@@ -59,18 +99,14 @@ export const useList_unstable = (
   const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
   const listItemRole = calculateListItemRoleForListRole(listRole);
 
-  const { findAllFocusable } = useFocusFinders();
-
-  const validateListItem = useEventCallback((listItemEl: HTMLElement) => {
-    if (process.env.NODE_ENV === 'production') {
-      return;
-    }
-    const itemRole = listItemEl.getAttribute('role') || '';
-    const focusable = findAllFocusable(listItemEl);
-    validateProperElementTypes(as, listItemEl.tagName.toLocaleLowerCase());
-    validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
-    validateGridCellsArePresent(listRole, listItemEl);
-  });
+  const validateListItem = useEventCallback((listItemEl: HTMLElement) =>
+    validateListItemElement(listItemEl, {
+      listRenderedAs: as,
+      listRole,
+      hasSelection: !!selectionMode,
+      hasFocusableChildren: listItemEl.querySelectorAll(FOCUSABLE_SELECTOR).length > 0,
+    }),
+  );
 
   return {
     components: {
@@ -83,7 +119,6 @@ export const useList_unstable = (
         ...(selectionMode && {
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
-        ...arrowNavigationAttributes,
         ...props,
       }),
       { elementType: as },
