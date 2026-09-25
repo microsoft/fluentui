@@ -7,7 +7,7 @@ import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
 import { maybeSetAutoFocus } from '../utils/autofocus.js';
 import { convertPixelToPercent } from './slider-utilities.js';
-import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
+import { type SliderConfiguration, SliderMode, SliderOrientation, type SliderSize } from './slider.options.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
@@ -18,6 +18,7 @@ import { type SliderConfiguration, SliderMode, SliderOrientation, SliderSize } f
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
  * @fires { Event } change - Fires a custom 'change' event when the value changes.
+ * @presentational {SliderSize | undefined} size - The size of the slider.
  *
  * @public
  */
@@ -45,15 +46,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public get labels(): ReadonlyArray<Node> {
     return Object.freeze(Array.from(this.elementInternals.labels));
   }
-
-  /**
-   * The size of the slider
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: SliderSize;
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
