@@ -1318,6 +1318,7 @@ import { TagPickerOptionProps } from '@fluentui/react-tag-picker';
 import { TagPickerOptionSlots } from '@fluentui/react-tag-picker';
 import { TagPickerOptionState } from '@fluentui/react-tag-picker';
 import { TagPickerProps } from '@fluentui/react-tag-picker';
+import { TagPickerSelectionMode } from '@fluentui/react-tag-picker';
 import { TagPickerSize } from '@fluentui/react-tag-picker';
 import { TagPickerSlots } from '@fluentui/react-tag-picker';
 import { TagPickerState } from '@fluentui/react-tag-picker';
@@ -4659,6 +4660,8 @@ export { TagPickerOptionSlots }
 export { TagPickerOptionState }
 
 export { TagPickerProps }
+
+export { TagPickerSelectionMode }
 
 export { TagPickerSize }
 

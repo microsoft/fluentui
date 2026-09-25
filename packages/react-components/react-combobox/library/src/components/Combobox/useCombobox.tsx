@@ -28,6 +28,7 @@ import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
 import { useTabsterEscapeIgnore } from '../../hooks/useTabsterEscapeIgnore';
+import { useSelectOptionOnMoveFocus } from '../../hooks/useSelectOptionOnMoveFocus';
 
 /**
  * Create the base state required to render Combobox, without design-only props.
@@ -217,6 +218,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const fieldContext = useFieldContext_unstable();
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus(baseState);
 
   if (baseState.clearIcon) {
     baseState.clearIcon.children ??= <DismissIcon />;
@@ -233,6 +235,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     input: {
       ...useTabsterEscapeIgnore(baseState.input, baseState.open),
       ...baseState.input,
+      ref: useMergedRefs(baseState.input.ref, selectOptionOnMoveFocusRef),
     },
   };
 };

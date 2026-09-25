@@ -27,6 +27,8 @@ export const useTagPickerGroup_unstable = (
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
+  const clearSelection = useTagPickerContext_unstable(ctx => ctx.clearSelection);
+  const selectionMode = useTagPickerContext_unstable(ctx => ctx.selectionMode ?? 'multiselect');
   const size = useTagPickerContext_unstable(ctx => tagPickerSizeToTagSize(ctx.size));
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
@@ -53,13 +55,17 @@ export const useTagPickerGroup_unstable = (
         }
       }),
       onDismiss: useEventCallback((event, data) => {
-        selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
-          value: data.value,
-          // These values no longer exist because the option has unregistered itself
-          // for the purposes of selection - these values aren't actually used
-          id: 'ERROR_DO_NOT_USE',
-          text: 'ERROR_DO_NOT_USE',
-        });
+        if (selectionMode === 'single') {
+          clearSelection(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>);
+        } else {
+          selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
+            value: data.value,
+            // These values no longer exist because the option has unregistered itself
+            // for the purposes of selection - these values aren't actually used
+            id: 'ERROR_DO_NOT_USE',
+            text: 'ERROR_DO_NOT_USE',
+          });
+        }
         if (hasOneSelectedOption && !event.isDefaultPrevented()) {
           triggerRef.current?.focus();
         }

@@ -286,6 +286,7 @@ export const useComboboxBaseState: (props: ComboboxBaseProps & {
     editable?: boolean;
     disabled?: boolean;
     freeform?: boolean;
+    valueFromSelectedOptions?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
 }) => ComboboxBaseState;
 
@@ -342,6 +343,11 @@ export const useOptionGroupStyles_unstable: (state: OptionGroupState) => OptionG
 
 // @public
 export const useOptionStyles_unstable: (state: OptionState) => OptionState;
+
+// @internal
+export function useSelectOptionOnMoveFocus(state: Pick<ComboboxBaseState, 'getOptionById' | 'multiselect' | 'open' | 'selectOption'> & {
+    activeDescendantController: ActiveDescendantImperativeRef;
+}): React_2.RefObject<HTMLElement | null>;
 
 // (No @packageDocumentation comment for this package)
 

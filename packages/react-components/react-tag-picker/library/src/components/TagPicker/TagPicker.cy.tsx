@@ -8,10 +8,12 @@ import { TagPickerControl } from '../TagPickerControl/TagPickerControl';
 import { TagPickerGroup } from '../TagPickerGroup/TagPickerGroup';
 import { Tag } from '@fluentui/react-tags';
 import { TagPickerInput } from '../TagPickerInput/TagPickerInput';
+import { TagPickerButton } from '../TagPickerButton/TagPickerButton';
 import { TagPickerList } from '../TagPickerList/TagPickerList';
 import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
@@ -32,16 +34,25 @@ const options = [
   'Maria Rossi',
 ];
 
-type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover'>;
+type TagPickerControlledProps = Pick<
+  TagPickerProps,
+  'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover' | 'onOptionSelect' | 'selectionMode'
+> & { trigger?: 'input' | 'button' };
 
 const TagPickerControlled = ({
   open,
   defaultOpen,
   defaultSelectedOptions = [],
   noPopover = false,
+  onOptionSelect: onOptionSelectProp,
+  selectionMode,
+  trigger = 'input',
 }: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => setSelectedOptions(data.selectedOptions);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (event, data) => {
+    setSelectedOptions(data.selectedOptions);
+    onOptionSelectProp?.(event, data);
+  };
   const handleAllClear: React.MouseEventHandler = _ => setSelectedOptions([]);
 
   return (
@@ -54,6 +65,7 @@ const TagPickerControlled = ({
         selectedOptions={selectedOptions}
         open={open}
         defaultOpen={defaultOpen}
+        selectionMode={selectionMode}
         inline
       >
         <TagPickerControl
@@ -83,7 +95,11 @@ const TagPickerControlled = ({
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput data-testid="tag-picker-input" aria-labelledby="Selected Employees" />
+          {trigger === 'input' ? (
+            <TagPickerInput data-testid="tag-picker-input" aria-labelledby="Selected Employees" />
+          ) : (
+            <TagPickerButton data-testid="tag-picker-button" aria-label="Selected Employees" />
+          )}
         </TagPickerControl>
         {noPopover ? undefined : (
           <TagPickerList data-testid="tag-picker-list">
@@ -108,6 +124,11 @@ const TagPickerControlled = ({
       <button id="after-button">After</button>
     </div>
   );
+};
+
+const TabsterRoot = (props: { children?: React.ReactNode }) => {
+  const tabsterAttrs = useTabsterAttributes({ root: {} });
+  return <div {...tabsterAttrs}>{props.children}</div>;
 };
 
 describe('TagPicker', () => {
@@ -289,6 +310,120 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
       }),
     );
+
+    it('should close the listbox without selecting the active option on Tab', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TabsterRoot>
+          <TagPickerControlled onOptionSelect={onOptionSelect} />
+        </TabsterRoot>,
+      );
+
+      cy.get('#before-button').realClick().realPress('Tab');
+      cy.get('[data-testid="tag-picker-input"]').should('be.focused').realPress('Enter');
+      cy.get('[data-testid="tag-picker-input"]')
+        .should('have.attr', 'aria-activedescendant', 'tag-picker-option--0')
+        .realPress('Tab');
+
+      cy.get('@onOptionSelect').should('not.have.been.called');
+      cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('not.exist');
+    });
+
+    (['input', 'button'] as const).forEach(trigger => {
+      (['Tab', ['Shift', 'Tab'] as ['Shift', 'Tab']] as const).forEach(keypress => {
+        it(`should select the active option on ${keypress.toString()} in single mode with ${trigger} trigger`, () => {
+          const triggerSelector = `[data-testid="tag-picker-${trigger}"]`;
+
+          mount(
+            <TabsterRoot>
+              <TagPickerControlled selectionMode="single" trigger={trigger} />
+            </TabsterRoot>,
+          );
+
+          cy.get('#before-button').realClick().realPress('Tab');
+          cy.get(triggerSelector).should('be.focused').realPress('Enter');
+          cy.get(triggerSelector)
+            .should('have.attr', 'aria-activedescendant', 'tag-picker-option--0')
+            .realPress(keypress);
+
+          cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
+          cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+          if (keypress === 'Tab') {
+            cy.focused().should('have.attr', 'data-testid', 'tag-picker-control__secondaryAction');
+          } else {
+            cy.get(`[data-testid="tag--${options[0]}"]`).should('be.focused');
+          }
+          if (trigger === 'input') {
+            cy.get(triggerSelector).should('have.value', '');
+          }
+        });
+      });
+
+      it(`should select the active option when Tabster moves focus from the ${trigger} trigger`, () => {
+        const triggerSelector = `[data-testid="tag-picker-${trigger}"]`;
+
+        mount(<TagPickerControlled defaultOpen selectionMode="single" trigger={trigger} />);
+
+        cy.get(triggerSelector).should('have.attr', 'aria-activedescendant', 'tag-picker-option--0');
+        cy.get(triggerSelector).then($trigger => {
+          const triggerElement = $trigger[0];
+          const relatedEvent = new KeyboardEvent('keydown', { key: 'Tab' });
+          Object.defineProperty(relatedEvent, 'target', { value: triggerElement });
+
+          triggerElement.dispatchEvent(
+            new CustomEvent('tabster:movefocus', {
+              bubbles: true,
+              detail: { by: 'root', owner: triggerElement, next: null, relatedEvent },
+            }),
+          );
+        });
+
+        cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
+      });
+    });
+
+    it('should replace the selected option in single mode', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TagPickerControlled
+          defaultOpen
+          defaultSelectedOptions={[options[0]]}
+          selectionMode="single"
+          onOptionSelect={onOptionSelect}
+        />,
+      );
+
+      cy.get(`[data-testid="tag-picker-option--${options[1]}"]`).realClick();
+
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('not.exist');
+      cy.get(`[data-testid="tag--${options[1]}"]`).should('exist');
+      cy.get('@onOptionSelect').should('have.been.calledOnce');
+      cy.then(() => {
+        expect(onOptionSelect.getCall(0).args[1].selectedOptions).to.deep.equal([options[1]]);
+      });
+    });
+
+    it('should clear the selected option when dismissing a tag in single mode', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TagPickerControlled
+          defaultSelectedOptions={[options[0]]}
+          selectionMode="single"
+          onOptionSelect={onOptionSelect}
+        />,
+      );
+
+      cy.get(`[data-testid="tag--${options[0]}"]`).realClick().should('not.exist');
+      cy.get('@onOptionSelect').should('have.been.calledOnce');
+      cy.then(() => {
+        expect(onOptionSelect.getCall(0).args[1]).to.include({ value: options[0] });
+        expect(onOptionSelect.getCall(0).args[1].selectedOptions).to.deep.equal([]);
+      });
+    });
 
     describe('Tags', () => {
       it('should focus on last tag on Shift + Tab', () => {

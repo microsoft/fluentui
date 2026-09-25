@@ -29,7 +29,9 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const passiveTargetRef = React.useRef<HTMLDivElement>(null);
-  const { noPopover = false, disableAutoFocus } = props;
+  const clearedOptionValueRef = React.useRef<string | undefined>(undefined);
+  const { noPopover = false, disableAutoFocus, selectionMode = 'multiselect' } = props;
+  const multiselect = selectionMode === 'multiselect';
 
   const {
     controller: activeDescendantController,
@@ -44,7 +46,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     onOptionSelect: useEventCallback((event, data) =>
       props.onOptionSelect?.(event, {
         selectedOptions: data.selectedOptions,
-        value: data.optionValue,
+        value: data.optionValue ?? clearedOptionValueRef.current,
         type: event.type,
         event,
       } as TagPickerOnOptionSelectData),
@@ -59,7 +61,8 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     activeDescendantController,
     disableAutoFocus,
     editable: true,
-    multiselect: true,
+    multiselect,
+    valueFromSelectedOptions: false,
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
@@ -70,6 +73,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     popover: comboboxState.open || comboboxState.hasFocus ? popover : undefined,
     popoverId,
     noPopover,
+    selectionMode,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef),
@@ -82,7 +86,19 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    clearSelection: comboboxState.clearSelection,
+    clearSelection: useEventCallback(event => {
+      const selectedOption = comboboxState.selectedOptions[0];
+      if (selectedOption === undefined) {
+        return;
+      }
+
+      clearedOptionValueRef.current = selectedOption;
+      try {
+        comboboxState.clearSelection(event);
+      } finally {
+        clearedOptionValueRef.current = undefined;
+      }
+    }),
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
