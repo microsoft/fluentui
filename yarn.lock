@@ -3303,6 +3303,7 @@ __metadata:
     "@fluentui/react-northstar": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    "@fluentui/react-storybook-addon-playground": "npm:*"
     "@fluentui/react-timepicker-compat": "npm:*"
     "@fluentui/recipes": "npm:*"
     "@fluentui/theme-designer": "npm:*"
