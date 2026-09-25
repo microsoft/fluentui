@@ -8,17 +8,17 @@ export type { ButtonSlots, ButtonBaseProps as ButtonProps } from '@fluentui/reac
 export type ButtonState = ButtonBaseState & {
   root: {
     /**
-     * Data attribute set when the button is disabled.
+     * Present when disabled; omitted otherwise.
      */
     'data-disabled'?: string;
 
     /**
-     * Data attribute set when the button is disabled but still focusable.
+     * Present when disabled but still focusable; omitted otherwise.
      */
     'data-disabled-focusable'?: string;
 
     /**
-     * Data attribute set when the button renders only an icon.
+     * Present when the button renders only an icon; omitted otherwise.
      */
     'data-icon-only'?: string;
 

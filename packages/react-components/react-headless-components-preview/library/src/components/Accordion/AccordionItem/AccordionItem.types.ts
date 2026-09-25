@@ -9,11 +9,11 @@ export type {
 export type AccordionItemState = AccordionItemBaseState & {
   root: {
     /**
-     * Data attribute set to indicate whether the accordion item is disabled.
+     * Present when the accordion item is disabled; omitted when enabled.
      */
     'data-disabled'?: string;
     /**
-     * Data attribute set to indicate whether the accordion item is open.
+     * Present when the accordion item is open; omitted when the accordion item is closed.
      */
     'data-open'?: string;
   };
