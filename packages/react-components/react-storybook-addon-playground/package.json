@@ -16,19 +16,25 @@
     "@fluentui/react-utilities": "^9.26.7",
     "@swc/helpers": "^0.5.1",
     "lz-string": "^1.5.0",
+    "semver": "^6.2.0"
+  },
+  "devDependencies": {
     "monaco-editor": "^0.33.0",
     "postcss": "8.5.18",
-    "prettier": "^2.8.8",
-    "semver": "^6.2.0"
+    "prettier": "^2.8.8"
   },
   "peerDependencies": {
     "@storybook/react": ">=9.1.17",
     "@types/react": ">=16.14.0 <20.0.0",
     "react": ">=18.0.0 <20.0.0",
-    "react-dom": ">=18.0.0 <20.0.0"
+    "react-dom": ">=18.0.0 <20.0.0",
+    "typescript": ">=4.5.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
+      "optional": true
+    },
+    "typescript": {
       "optional": true
     }
   },
@@ -73,6 +79,6 @@
     "lib",
     "lib-commonjs",
     "preset.js",
-    "tools"
+    "tools/collect-typings.js"
   ]
 }

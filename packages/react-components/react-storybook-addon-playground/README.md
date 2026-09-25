@@ -10,7 +10,8 @@ an optional setup module, and Monaco declarations. User code runs inside a sandb
 
 - Consumer-controlled import map (`options.modules`) compiled by Storybook Webpack and loaded on demand in production
 - Private registry and workspace packages without a runtime CDN
-- Build-time declaration collection for Monaco IntelliSense (from `modules` + optional `typings`)
+- Build-time declaration collection for Monaco IntelliSense (from `modules` + optional `typings`), split per module and
+  fetched when the code imports it
 - Optional TSX `setup` module for branding, themes and provider/render behavior (Fluent defaults when omitted)
 - Sandboxed preview (`sandbox="allow-scripts"`), Prettier formatting, error reporting and shareable URL state
 - Live preview updates reuse the sandbox and loaded packages, with an explicit restart for a clean environment
@@ -56,8 +57,16 @@ configuration. React runtime entries are provided automatically. `typings` adds 
 Production builds load configured modules only when the example imports them. Development includes the modules in eager
 chunks, but defers their evaluation until imported, avoiding Storybook's separate-origin lazy-compilation server.
 Setup imports and React are always loaded at startup.
-Typings load independently and do not block the first preview; declaration collection excludes JavaScript implementations
-and falls back to `@types` packages when a runtime package does not ship declarations.
+Typings load independently and do not block the first preview. React and `typings` declarations always load; each
+configured module's declarations are a separate file fetched once the code imports that module, so examples that do not
+use `@fluentui/react-icons` skip its large declarations. Declaration collection excludes JavaScript implementations,
+falls back to `@types` packages when a runtime package does not ship declarations, and parses imports with the
+project's `typescript` (an optional peer; a regular-expression parser is used without it).
+
+The addon reads its options from Storybook's preset options, generates its runtime entry in
+`node_modules/.cache/fluentui-playground-runtime/` (next to the Storybook config), and keeps the runtime out of Storybook
+pages through `html-webpack-plugin` hooks. The editor packages (`monaco-editor`, Prettier, PostCSS) are bundled into the
+prebuilt shell and are not installed with the addon.
 
 ### Live preview updates
 

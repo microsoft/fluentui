@@ -5609,8 +5609,11 @@ __metadata:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=18.0.0 <20.0.0"
     react-dom: ">=18.0.0 <20.0.0"
+    typescript: ">=4.5.0"
   peerDependenciesMeta:
     "@types/react":
+      optional: true
+    typescript:
       optional: true
   languageName: unknown
   linkType: soft

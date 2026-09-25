@@ -15,11 +15,11 @@ export interface PlaygroundRuntimeManifest {
     allowedModules: string[];
     // (undocumented)
     buildId: string;
+    moduleTypings?: Record<string, string[]>;
     // (undocumented)
     scripts: string[];
     // (undocumented)
     styles: string[];
-    // (undocumented)
     typings: string;
 }
 

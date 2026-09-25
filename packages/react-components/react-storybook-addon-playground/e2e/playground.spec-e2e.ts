@@ -137,6 +137,16 @@ test.describe('playground', () => {
 
   test('loads configured modules lazily and ignores stale results', async ({ page }) => {
     const { pageErrors, previewButton, replaceActiveFile } = setupPage(page);
+    const manifest: { typings: string; moduleTypings: Record<string, string[]> } = await (
+      await page.request.get('/playground/runtime/manifest.json')
+    ).json();
+    const requestedTypings = new Set<string>();
+    page.on('request', request => {
+      const { pathname } = new URL(request.url());
+      if (pathname.includes('/typings.')) {
+        requestedTypings.add(pathname.slice(1));
+      }
+    });
     const withLazyModule = (label: string) =>
       `${IMPORTS}import { compressToBase64 } from 'lz-string';\nexport default () => <Button data-value={compressToBase64('x')}>${label}</Button>;`;
     let release!: () => void;
@@ -159,6 +169,11 @@ test.describe('playground', () => {
       `${PLAYGROUND_URL}${createPlaygroundHash({ code: `${IMPORTS}export default () => <Button>Start</Button>;` })}`,
     );
     await expect(previewButton('Start')).toBeVisible();
+    // Declarations are split per configured module and fetched once the code imports that module.
+    await expect(page.getByText('Ready', { exact: true })).toBeVisible();
+    expect(Array.from(requestedTypings).sort()).toEqual(
+      [manifest.typings, ...manifest.moduleTypings['@fluentui/react-components']].sort(),
+    );
 
     await replaceActiveFile(withLazyModule('Stale import'));
     await lazyChunkRequested;
@@ -172,6 +187,8 @@ test.describe('playground', () => {
 
     await replaceActiveFile(withLazyModule('Lazy ready'));
     await expect(previewButton('Lazy ready')).toBeVisible();
+    expect(manifest.moduleTypings['lz-string'].every(url => requestedTypings.has(url))).toBe(true);
+    expect(requestedTypings.has(manifest.moduleTypings['@fluentui/react-icons'].at(-1)!)).toBe(false);
 
     expect(pageErrors).toEqual([]);
   });

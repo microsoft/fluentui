@@ -72,7 +72,8 @@ import { PlaygroundError, assertAllowedModules, getRequiredModules } from './run
 import type { PlaygroundRuntimeErrorKind, ResolvedPlaygroundRuntimeManifest } from './runtime';
 import { getFormatShortcutLabel, getRunShortcutLabel } from './shortcuts';
 import { getThemeOption } from './themes';
-import { registerTypings } from './typings';
+import { enableSemanticValidation, getImportedModules, TypingsLoader } from './typings';
+import type { TypingsStatus } from './typings';
 import { useMediaQuery } from './useMediaQuery';
 import { useModelErrorCount } from './useModelErrorCount';
 import { useSplitPane } from './useSplitPane';
@@ -92,7 +93,6 @@ interface PlaygroundErrorState {
 }
 
 type RunStatus = 'idle' | 'compiling' | 'ready' | 'error';
-type TypingsStatus = 'loading' | 'ready' | 'error';
 
 const RUN_DEBOUNCE_MS = 150;
 const HASH_SYNC_DEBOUNCE_MS = 500;
@@ -195,6 +195,9 @@ const StatusIndicator = React.forwardRef<HTMLSpanElement, StatusIndicatorProps>(
 });
 StatusIndicator.displayName = 'StatusIndicator';
 
+const noopSubscribe = () => () => undefined;
+const getLoadingStatus = (): TypingsStatus => 'loading';
+
 export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((props, ref) => {
   const { initialCode, initialCssModules = EMPTY_CSS_MODULES, initialIssues, manifest } = props;
   const styles = usePlaygroundStyles();
@@ -217,7 +220,6 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   const [status, setStatus] = React.useState<RunStatus>('idle');
   const [error, setError] = React.useState<PlaygroundErrorState | null>(null);
   const [themeId, setThemeId] = React.useState<string>();
-  const [typingsStatus, setTypingsStatus] = React.useState<TypingsStatus>('loading');
   const [viewportId, setViewportId] = React.useState<ViewportId>('fill');
   const [consoleEntries, setConsoleEntries] = React.useState<ConsoleEntry[]>([]);
   const [consoleExpanded, setConsoleExpanded] = React.useState(false);
@@ -274,28 +276,43 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [dispatchToast],
   );
 
+  const typingsLoader = React.useMemo(
+    () => (targetWindow ? new TypingsLoader(monaco, targetWindow) : null),
+    [targetWindow],
+  );
+  const typingsStatus = React.useSyncExternalStore(
+    typingsLoader?.subscribe ?? noopSubscribe,
+    typingsLoader?.getStatus ?? getLoadingStatus,
+    getLoadingStatus,
+  );
+  // Declarations of configured modules are fetched once the code imports them (older manifests bundle everything).
+  const requiredTypings = React.useMemo(() => {
+    const urls = new Set([manifest.typings]);
+    getImportedModules(code).forEach(moduleName => {
+      manifest.moduleTypings?.[moduleName]?.forEach(url => urls.add(url));
+    });
+
+    return Array.from(urls).join('\n');
+  }, [code, manifest.moduleTypings, manifest.typings]);
+
   React.useEffect(() => {
-    if (!targetWindow) {
+    if (!typingsLoader) {
       return;
     }
 
-    let cancelled = false;
+    requiredTypings.split('\n').forEach(url => {
+      typingsLoader.load(url).catch((err: unknown) => {
+        // eslint-disable-next-line no-console
+        console.warn('Playground: failed to load type declarations, IntelliSense is limited.', err);
+      });
+    });
+  }, [requiredTypings, typingsLoader]);
 
-    registerTypings(monaco, targetWindow, manifest.typings).then(
-      () => !cancelled && setTypingsStatus('ready'),
-      (err: unknown) => {
-        if (!cancelled) {
-          setTypingsStatus('error');
-          // eslint-disable-next-line no-console
-          console.warn('Playground: failed to load type declarations, IntelliSense is limited.', err);
-        }
-      },
-    );
-
-    return () => {
-      cancelled = true;
-    };
-  }, [manifest.typings, targetWindow]);
+  React.useEffect(() => {
+    if (typingsStatus === 'ready') {
+      enableSemanticValidation(monaco);
+    }
+  }, [typingsStatus]);
 
   const reportedInitialIssues = React.useRef(false);
   React.useEffect(() => {

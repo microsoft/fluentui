@@ -19,4 +19,12 @@ module.exports = defineConfig([
       '@nx/workspace-no-restricted-globals': 'off',
     },
   },
+  {
+    // The playground shell is pre-bundled into `dist/playground`, so its editor/formatter packages are devDependencies.
+    files: ['src/playground/**'],
+    ignores: ['**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
+    rules: {
+      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    },
+  },
 ]);

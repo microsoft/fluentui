@@ -3,11 +3,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+const { getMonacoTypeScriptVersion } = require('./tools/collect-typings');
 
 const workspaceRoot = path.resolve(__dirname, '../../..');
 const outputPath = path.resolve(__dirname, 'dist/playground');
 // worker names used in `src/playground/monaco.ts`
 const WORKER_CHUNKS = ['ts.worker', 'editor.worker'];
+// read by the Storybook preset (`src/webpack.ts`), so consumers do not need `monaco-editor` installed
+const SHELL_METADATA_FILE = 'playground-shell.json';
+
+class ShellMetadataPlugin {
+  /** @param {import('webpack').Compiler} compiler */
+  apply(compiler) {
+    compiler.hooks.thisCompilation.tap('ShellMetadataPlugin', compilation => {
+      compilation.hooks.processAssets.tap(
+        { name: 'ShellMetadataPlugin', stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL },
+        () => {
+          const metadata = { typescriptVersion: getMonacoTypeScriptVersion() };
+          compilation.emitAsset(SHELL_METADATA_FILE, new compiler.webpack.sources.RawSource(JSON.stringify(metadata)));
+        },
+      );
+    });
+  }
+}
 
 const swcLoaderOptions = {
   jsc: {
@@ -102,6 +120,7 @@ module.exports = {
       chunks: ['playground'],
       scriptLoading: 'defer',
     }),
+    new ShellMetadataPlugin(),
   ],
   optimization: {
     splitChunks: {

@@ -26,7 +26,13 @@ export interface PlaygroundSetupMetadata {
 export interface PlaygroundRuntimeManifest {
   scripts: string[];
   styles: string[];
+  /** Declarations that are always loaded (React and the `typings` addon option). */
   typings: string;
+  /**
+   * Declaration files per configured module (including a file shared by several modules), loaded when the code imports
+   * that module. Older manifests omit it and include every module's declarations in `typings`.
+   */
+  moduleTypings?: Record<string, string[]>;
   allowedModules: string[];
   buildId: string;
 }

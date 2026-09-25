@@ -8,7 +8,9 @@ const {
   applyTypesVersions,
   collectTypings,
   getExportTypesPath,
+  getMonacoTypeScriptVersion,
   getSpecifiers,
+  getSpecifiersWithRegex,
   parseSpecifier,
 } = require('./collect-typings');
 
@@ -41,7 +43,7 @@ describe('collect-typings', () => {
         import x = require('./legacy');
       `;
 
-      expect(getSpecifiers(content)).toEqual([
+      const expected = [
         { kind: 'path', value: './global.d.ts' },
         { kind: 'types', value: 'node' },
         { kind: 'module', value: 'react' },
@@ -50,7 +52,38 @@ describe('collect-typings', () => {
         { kind: 'module', value: '@scope/baz' },
         { kind: 'module', value: 'csstype' },
         { kind: 'module', value: './legacy' },
-      ]);
+      ];
+
+      expect(getSpecifiers(content)).toEqual(expect.arrayContaining(expected));
+      expect(getSpecifiers(content)).toHaveLength(expected.length);
+      expect(getSpecifiersWithRegex(content)).toEqual(expected);
+      expect(getSpecifiers(content, null)).toEqual(expected);
+    });
+
+    it('ignores specifier-like text in comments and strings when TypeScript is available', () => {
+      const content = `
+        /**
+         * @example
+         * import { Button } from '@fluentui/react-button';
+         */
+        export declare const example = "export * from 'not-a-module'";
+        export { Foo } from './foo';
+      `;
+
+      expect(getSpecifiers(content)).toEqual([{ kind: 'module', value: './foo' }]);
+    });
+  });
+
+  describe('getMonacoTypeScriptVersion', () => {
+    it('reads the TypeScript version bundled with monaco-editor', () => {
+      expect(getMonacoTypeScriptVersion()).toMatch(/^\d+\.\d+\.\d+$/);
+    });
+
+    it('throws when the version cannot be detected', () => {
+      const root = createFixture({ 'contribution.js': 'export {};' });
+
+      expect(() => getMonacoTypeScriptVersion(path.join(root, 'contribution.js'))).toThrow(/Unable to detect/);
+      fs.rmSync(root, { recursive: true, force: true });
     });
   });
 

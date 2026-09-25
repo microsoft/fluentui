@@ -16,7 +16,7 @@ const webpack = require('webpack');
 const packageRoot = path.resolve(__dirname, '..');
 const shellDir = path.join(packageRoot, 'dist/playground');
 const siteDir = path.join(packageRoot, 'dist/e2e-site');
-// Stands in for Storybook's config dir: the addon writes its generated runtime entry to `<configDir>/.cache`.
+// Stands in for Storybook's config dir: the addon scopes its generated runtime entry (in `node_modules/.cache`) by it.
 const configDir = path.join(packageRoot, 'dist/e2e-config');
 
 /**
@@ -105,7 +105,8 @@ async function buildRuntime() {
   const config = webpackFinal(baseConfig, {
     configDir,
     configType: 'PRODUCTION',
-    // Storybook passes resolved preset registrations; the addon finds its options by preset file path.
+    // Storybook merges the addon's registration options into its preset hook options (and lists the registration).
+    ...ADDON_OPTIONS,
     presetsList: [{ name: path.join(packageRoot, 'preset.js'), options: ADDON_OPTIONS }],
   });
 

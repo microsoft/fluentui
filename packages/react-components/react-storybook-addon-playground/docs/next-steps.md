@@ -77,6 +77,29 @@ The first milestone is a reliable browser experience.
 - Compilation and runtime errors are shown without breaking the playground shell.
 - The playground works in both local Storybook and its deployed static output.
 
+### Status
+
+Implemented on `experimental/storybook-playground`:
+
+- Live-only preview with retained last good render, stale-result protection, and automatic sandbox recycling when effects leak.
+- Opaque-origin sandbox with a restrictive CSP (no network access), console forwarding to a console panel, and viewport presets.
+- Multiple CSS modules that can be added, renamed and removed; CSS edits apply without remounting the preview.
+- Non-blocking type diagnostics with an error badge.
+- Webpack integration hardening: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache`.
+- Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
+- A Playwright e2e suite that covers the production runtime and shell.
+
+Deferred:
+
+- **Per-icon chunks for `@fluentui/react-icons`.** The icons module is loaded only when imported, but as a whole namespace (about 15 MB unminified). `@fluentui/react-icons` has an `exports` map that blocks `lib/icons/chunk-*` subpath imports. Its entry re-exports 6 icon chunks and 40 sized-icon chunks. Splitting the module would need all of the following:
+
+  - a build-time map from export names to chunks;
+  - parsing of named imports in the runner;
+  - partial-namespace support in the runner and sandbox protocol;
+  - a full-module fallback for `import * as Icons`.
+
+  `webpackExports` magic comments cannot help, because the list must be static. Until this is implemented, consumers can configure a custom module that re-exports only the icons they need.
+
 ## Phase 2: Stabilize the Playground Protocol
 
 The URL state is currently an implementation detail. CLI and agent integrations require a supported, environment-neutral protocol.
@@ -128,12 +151,12 @@ For an initial prototype, the addon could instead expose a Node-safe `./url` sub
 
 ### Compatibility
 
-- Add an explicit protocol version before making the format public.
-- Decode previous versions where practical.
-- Reject unsupported future versions with a clear error.
+- [x] Add an explicit protocol version before making the format public (`v=1` hash parameter; unversioned links are read as version 1).
+- [x] Decode previous versions where practical.
+- [x] Warn about unsupported future versions with a clear message (the link is still opened on a best-effort basis).
 - Preserve unknown fields only when doing so is safe.
-- Define maximum source and URL sizes.
-- Test empty, malformed, truncated, and unexpectedly large payloads.
+- [x] Define a recommended maximum URL size (`RECOMMENDED_MAX_URL_LENGTH`, 8000 characters); the shell warns when a link exceeds it. A hard source-size limit is still open.
+- [x] Test empty, malformed, and truncated payloads (reported as `invalid-code` / `invalid-css` issues). Unexpectedly large payloads are still untested.
 
 ## Phase 3: Integrate with `@fluentui/cli`
 

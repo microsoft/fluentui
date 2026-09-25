@@ -66,5 +66,13 @@ export async function loadRuntimeManifest(
     scripts: manifest.scripts.map(script => new URL(script, storybookRoot).href),
     styles: manifest.styles.map(style => new URL(style, storybookRoot).href),
     typings: new URL(manifest.typings, storybookRoot).href,
+    moduleTypings: manifest.moduleTypings
+      ? Object.fromEntries(
+          Object.entries(manifest.moduleTypings).map(([moduleName, urls]) => [
+            moduleName,
+            urls.map(url => new URL(url, storybookRoot).href),
+          ]),
+        )
+      : undefined,
   };
 }

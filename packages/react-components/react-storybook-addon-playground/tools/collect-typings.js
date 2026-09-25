@@ -18,13 +18,54 @@ const SPECIFIER_REGEX =
 // bare package specifier, optionally scoped and with a sub path
 const PACKAGE_SPECIFIER_REGEX = /^(@[\w.-]+\/)?[\w.-]+(\/[\w.-]+)*$/;
 
+/** @type {typeof import('typescript') | null | undefined} */
+let typescriptModule;
+
 /**
- * Extracts module specifiers and triple-slash references from a `.d.ts` file.
+ * TypeScript is an optional peer: Storybook projects almost always have it, but typings collection must not fail
+ * without it.
  *
+ * @returns {typeof import('typescript') | null}
+ */
+function getTypeScript() {
+  if (typescriptModule === undefined) {
+    try {
+      typescriptModule = require('typescript');
+    } catch {
+      typescriptModule = null;
+    }
+  }
+
+  return typescriptModule ?? null;
+}
+
+/**
+ * Extracts module specifiers and triple-slash references from a `.d.ts` file. Uses the TypeScript scanner when it
+ * is available (it ignores specifier-like text in comments and strings, such as JSDoc examples) and falls back to a
+ * regular expression.
+ *
+ * @param {string} content
+ * @param {typeof import('typescript') | null} [ts]
+ * @returns {Specifier[]}
+ */
+function getSpecifiers(content, ts = getTypeScript()) {
+  if (ts) {
+    const info = ts.preProcessFile(content, true, true);
+    return [
+      ...info.importedFiles.map(file => ({ kind: /** @type {const} */ ('module'), value: file.fileName })),
+      ...info.referencedFiles.map(file => ({ kind: /** @type {const} */ ('path'), value: file.fileName })),
+      ...info.typeReferenceDirectives.map(file => ({ kind: /** @type {const} */ ('types'), value: file.fileName })),
+    ];
+  }
+
+  return getSpecifiersWithRegex(content);
+}
+
+/**
  * @param {string} content
  * @returns {Specifier[]}
  */
-function getSpecifiers(content) {
+function getSpecifiersWithRegex(content) {
   /** @type {Specifier[]} */
   const result = [];
 
@@ -459,9 +500,28 @@ function collectTypings(options) {
   return { files, sources: Array.from(sources), missing: Array.from(missing) };
 }
 
+/**
+ * Reads the TypeScript version bundled with `monaco-editor`, which decides the `typesVersions` branch to collect.
+ *
+ * @param {string} [contributionPath]
+ * @returns {string}
+ */
+function getMonacoTypeScriptVersion(
+  contributionPath = require.resolve('monaco-editor/esm/vs/language/typescript/monaco.contribution.js'),
+) {
+  const match = fs.readFileSync(contributionPath, 'utf8').match(/typescriptVersion\s*=\s*["'](\d+\.\d+\.\d+)["']/);
+  if (!match) {
+    throw new Error('Unable to detect the TypeScript version bundled with monaco-editor');
+  }
+
+  return match[1];
+}
+
 module.exports = {
   collectTypings,
+  getMonacoTypeScriptVersion,
   getSpecifiers,
+  getSpecifiersWithRegex,
   parseSpecifier,
   applyTypesVersions,
   getExportTypesPath,

@@ -5,7 +5,6 @@ import type { CompileResult } from './compiler';
 import { compile } from './compiler';
 import type { PreviewProps } from './Preview';
 import type { ResolvedPlaygroundRuntimeManifest } from './runtime';
-import { registerTypings } from './typings';
 
 let mockVersion = 1;
 const mockModel = { getVersionId: () => mockVersion };
@@ -59,10 +58,18 @@ jest.mock('./formatter', () => ({
   registerFormatter: () => ({ dispose: jest.fn() }),
 }));
 
-jest.mock('./monaco', () => ({ monaco: {} }));
-
-jest.mock('./typings', () => ({
-  registerTypings: jest.fn(),
+jest.mock('./monaco', () => ({
+  monaco: {
+    languages: {
+      typescript: {
+        typescriptDefaults: {
+          addExtraLib: jest.fn(),
+          getDiagnosticsOptions: () => ({}),
+          setDiagnosticsOptions: jest.fn(),
+        },
+      },
+    },
+  },
 }));
 
 jest.mock('./useMediaQuery', () => ({ useMediaQuery: () => false }));
@@ -89,7 +96,11 @@ const manifest: ResolvedPlaygroundRuntimeManifest = {
 };
 
 const compileMock = compile as jest.MockedFunction<typeof compile>;
-const registerTypingsMock = registerTypings as jest.MockedFunction<typeof registerTypings>;
+const fetchMock = jest.fn<Promise<Pick<Response, 'ok' | 'json'>>, [string]>();
+
+function typingsResponse(): Promise<Pick<Response, 'ok' | 'json'>> {
+  return Promise.resolve({ ok: true, json: async () => ({}) });
+}
 
 function deferredCompile() {
   let resolve!: (result: CompileResult) => void;
@@ -118,7 +129,8 @@ describe('Playground compile transaction', () => {
     jest.useFakeTimers();
     mockVersion = 1;
     compileMock.mockReset();
-    registerTypingsMock.mockReset().mockResolvedValue(1);
+    fetchMock.mockReset().mockImplementation(typingsResponse);
+    window.fetch = fetchMock as unknown as typeof window.fetch;
   });
 
   afterEach(() => {
@@ -126,8 +138,8 @@ describe('Playground compile transaction', () => {
   });
 
   it('runs while typings are loading and does not rerun when they arrive', async () => {
-    let resolveTypings!: (count: number) => void;
-    registerTypingsMock.mockReturnValue(
+    let resolveTypings!: (response: Pick<Response, 'ok' | 'json'>) => void;
+    fetchMock.mockReturnValue(
       new Promise(resolve => {
         resolveTypings = resolve;
       }),
@@ -139,9 +151,32 @@ describe('Playground compile transaction', () => {
     expect(compileMock).toHaveBeenCalledTimes(1);
     expect(mockPreviewProps.code).toBe('exports.default = First;');
 
-    await act(async () => resolveTypings(1));
+    await act(async () => resolveTypings({ ok: true, json: async () => ({}) }));
     await runDebouncedCompile();
     expect(compileMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('fetches declarations of configured modules only once the code imports them', async () => {
+    compileMock.mockResolvedValue({ code: 'exports.default = First;', diagnostics: [] });
+    render(
+      <Playground
+        initialCode="import { Button } from '@fluentui/react-components';"
+        manifest={{
+          ...manifest,
+          moduleTypings: {
+            '@fluentui/react-components': ['https://example.com/shared.json', 'https://example.com/components.json'],
+            '@fluentui/react-icons': ['https://example.com/shared.json', 'https://example.com/icons.json'],
+          },
+        }}
+      />,
+    );
+    await flushEffects();
+
+    expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([
+      'https://example.com/typings.json',
+      'https://example.com/shared.json',
+      'https://example.com/components.json',
+    ]);
   });
 
   it('reports a retained preview after a live update fails', async () => {
