@@ -48,7 +48,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -60,7 +60,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -72,7 +72,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -356,7 +356,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -368,7 +368,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -379,7 +379,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               stroke-width="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -564,7 +564,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -576,7 +576,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -587,7 +587,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
               stroke-width="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -772,7 +772,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -784,7 +784,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -796,7 +796,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1087,7 +1087,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1099,7 +1099,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1111,7 +1111,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1295,7 +1295,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1307,7 +1307,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1319,7 +1319,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1503,7 +1503,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1515,7 +1515,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1527,7 +1527,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1818,7 +1818,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1830,7 +1830,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -1842,7 +1842,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2155,7 +2155,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2167,7 +2167,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2179,7 +2179,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2363,7 +2363,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2375,7 +2375,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2387,7 +2387,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2571,7 +2571,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2583,7 +2583,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2595,7 +2595,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2779,7 +2779,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2791,7 +2791,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2803,7 +2803,7 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M0,0Z"
               data-is-focusable="true"
@@ -2972,7 +2972,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Low Risk, 0 to 33"
+                  aria-label="Low Risk, 0% to 33%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -2984,7 +2984,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Medium Risk, 33 to 67"
+                  aria-label="Medium Risk, 33% to 67%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -2996,7 +2996,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="High Risk, 67 to 100"
+                  aria-label="High Risk, 67% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3177,7 +3177,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3189,7 +3189,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3201,7 +3201,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3442,7 +3442,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Low Risk, 0 to 33"
+                  aria-label="Low Risk, 0% to 33%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3454,7 +3454,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Medium Risk, 33 to 67"
+                  aria-label="Medium Risk, 33% to 67%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3466,7 +3466,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="High Risk, 67 to 100"
+                  aria-label="High Risk, 67% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3583,7 +3583,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3595,7 +3595,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3607,7 +3607,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -3764,7 +3764,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Low Risk, 0 to 33"
+                  aria-label="Low Risk, 0% to 33%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3776,7 +3776,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Medium Risk, 33 to 67"
+                  aria-label="Medium Risk, 33% to 67%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3788,7 +3788,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="High Risk, 67 to 100"
+                  aria-label="High Risk, 67% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -3989,7 +3989,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4001,7 +4001,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4013,7 +4013,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4254,7 +4254,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Used, 0 to 60"
+                  aria-label="Used, 0% to 60%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -4266,7 +4266,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Unknown, 60 to 100"
+                  aria-label="Unknown, 60% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -4446,7 +4446,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Used, 0 to 60"
+                aria-label="Used, 0% to 60%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4458,7 +4458,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Unknown, 60 to 100"
+                aria-label="Unknown, 60% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4700,7 +4700,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Low Risk, 0 to 33"
+                  aria-label="Low Risk, 0% to 33%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -4712,7 +4712,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Medium Risk, 33 to 67"
+                  aria-label="Medium Risk, 33% to 67%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -4724,7 +4724,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="High Risk, 67 to 100"
+                  aria-label="High Risk, 67% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -4966,7 +4966,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4978,7 +4978,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -4990,7 +4990,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -5721,7 +5721,7 @@ Object {
                 role="listbox"
               >
                 <path
-                  aria-label="Low Risk, 0 to 33"
+                  aria-label="Low Risk, 0% to 33%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -5733,7 +5733,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="Medium Risk, 33 to 67"
+                  aria-label="Medium Risk, 33% to 67%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -5745,7 +5745,7 @@ Object {
                   tabindex="0"
                 />
                 <path
-                  aria-label="High Risk, 67 to 100"
+                  aria-label="High Risk, 67% to 100%"
                   class="fui-gc__segment"
                   d="M0,0Z"
                   data-is-focusable="true"
@@ -5979,7 +5979,7 @@ Object {
               role="listbox"
             >
               <path
-                aria-label="Low Risk, 0 to 33"
+                aria-label="Low Risk, 0% to 33%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -5991,7 +5991,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="Medium Risk, 33 to 67"
+                aria-label="Medium Risk, 33% to 67%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -6003,7 +6003,7 @@ Object {
                 tabindex="0"
               />
               <path
-                aria-label="High Risk, 67 to 100"
+                aria-label="High Risk, 67% to 100%"
                 class="fui-gc__segment"
                 d="M0,0Z"
                 data-is-focusable="true"
@@ -6253,7 +6253,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
               data-is-focusable="true"
@@ -6265,7 +6265,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
               data-is-focusable="true"
@@ -6277,7 +6277,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
               data-is-focusable="true"
@@ -6461,7 +6461,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             role="listbox"
           >
             <path
-              aria-label="Low Risk, 0 to 33"
+              aria-label="Low Risk, 0% to 33%"
               class="fui-gc__segment"
               d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
               data-is-focusable="true"
@@ -6473,7 +6473,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="Medium Risk, 33 to 67"
+              aria-label="Medium Risk, 33% to 67%"
               class="fui-gc__segment"
               d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
               data-is-focusable="true"
@@ -6485,7 +6485,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="0"
             />
             <path
-              aria-label="High Risk, 67 to 100"
+              aria-label="High Risk, 67% to 100%"
               class="fui-gc__segment"
               d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
               data-is-focusable="true"

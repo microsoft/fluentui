@@ -94,21 +94,30 @@ export const getChartValueLabel = (
   return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
 };
 
-const getCalloutSegmentLabel = (
+const getFormattedSegmentLabel = (
   segment: ExtendedSegment,
   minValue: number,
   maxValue: number,
   variant: GaugeChartVariant | undefined,
   chartValueFormat: GaugeChartProps['chartValueFormat'],
+  isAriaLabel: boolean = false,
 ): string => {
+  if ((minValue === 0 && variant === 'single-segment') || typeof chartValueFormat === 'function') {
+    return getSegmentLabel(segment, minValue, maxValue, variant, isAriaLabel);
+  }
+
   if (!chartValueFormat || chartValueFormat === 'percentage') {
     const range = maxValue - minValue;
     const startPercentage = (((segment.start - minValue) / range) * 100).toFixed();
     const endPercentage = (((segment.end - minValue) / range) * 100).toFixed();
-    return `${startPercentage}% - ${endPercentage}%`;
+    return isAriaLabel
+      ? `${segment.legend}, ${startPercentage}% to ${endPercentage}%`
+      : `${startPercentage}% - ${endPercentage}%`;
   }
 
-  return getSegmentLabel(segment, minValue, maxValue, variant);
+  const start = segment.start - minValue;
+  const end = segment.end - minValue;
+  return isAriaLabel ? `${segment.legend}, ${start} to ${end}` : `${start} - ${end}`;
 };
 
 interface YValue extends Omit<YValueHover, 'y'> {
@@ -405,7 +414,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         .map(segment => {
           const yValue: YValue = {
             legend: segment.legend,
-            y: getCalloutSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
+            y: getFormattedSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
             color: segment.color,
           };
           return yValue;
@@ -669,7 +678,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                         opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
                         {...getAccessibleDataObject(
                           {
-                            ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
+                            ariaLabel: getFormattedSegmentLabel(
+                              segment,
+                              _minValue,
+                              _maxValue,
+                              props.variant,
+                              props.chartValueFormat,
+                              true,
+                            ),
                             ...segment.accessibilityData,
                           },
                           'option',

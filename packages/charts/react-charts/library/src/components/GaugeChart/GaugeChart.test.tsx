@@ -449,6 +449,45 @@ describe('GaugeChart custom callout', () => {
 
       expect(screen.getByText('Current value is 25%')).toBeInTheDocument();
       expect(screen.getByText('0% - 33%')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 0% to 33%' })).toBeInTheDocument();
+    },
+  );
+
+  testWithoutWait(
+    'Should normalize fraction segment ranges with a nonzero minimum',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 125,
+      minValue: 100,
+      maxValue: 200,
+      chartValueFormat: GaugeValueFormat.Fraction,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('Current value is 25/100')).toBeInTheDocument();
+      expect(screen.getByText('0 - 33')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 0 to 33' })).toBeInTheDocument();
+    },
+  );
+
+  testWithoutWait(
+    'Should preserve single-segment labels in the callout and accessible name',
+    GaugeChart,
+    {
+      segments: [segments[0]],
+      chartValue: 25,
+      maxValue: 100,
+      variant: GaugeChartVariant.SingleSegment,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByText('33 (33%)')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 33 out of 100 or 33%' })).toBeInTheDocument();
     },
   );
 });
