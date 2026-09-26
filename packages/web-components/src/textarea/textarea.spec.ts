@@ -1,7 +1,7 @@
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName as LabelTagName } from '../label/label.options.js';
 import type { TextArea } from './textarea.js';
-import { tagName, TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
+import { tagName, TextAreaSize } from './textarea.options.js';
 
 test.describe('TextArea', () => {
   test.use({
@@ -115,22 +115,6 @@ test.describe('TextArea', () => {
   });
 
   test.describe('visual styles', () => {
-    test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate();
-
-      for (const appearance of Object.values(TextAreaAppearance)) {
-        await test.step(appearance, async () => {
-          await fastPage.updateTemplate(element, { attributes: { appearance } });
-
-          await expect(element).toHaveJSProperty('appearance', appearance);
-
-          await expect(element).toHaveAttribute('appearance', appearance);
-        });
-      }
-    });
-
     test('should toggle auto-resize attribute', async ({ fastPage }) => {
       const { element } = fastPage;
 
@@ -173,36 +157,6 @@ test.describe('TextArea', () => {
       });
 
       expect(autoSizerIsInsideRoot).toBe(true);
-    });
-
-    test('should toggle block attribute', async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { block: true } });
-
-      await expect(element).toHaveJSProperty('block', true);
-
-      await element.evaluate((node: TextArea) => {
-        node.block = false;
-      });
-
-      await expect(element).not.toHaveAttribute('block');
-    });
-
-    test('should set the `resize` property to match the `resize` attribute', async ({ fastPage }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate();
-
-      for (const resize of Object.values(TextAreaResize)) {
-        await test.step(resize, async () => {
-          await fastPage.updateTemplate(element, { attributes: { resize } });
-
-          await expect(element).toHaveJSProperty('resize', resize);
-
-          await expect(element).toHaveAttribute('resize', resize);
-        });
-      }
     });
 
     test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {

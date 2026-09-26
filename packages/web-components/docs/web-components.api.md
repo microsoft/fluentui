@@ -932,7 +932,6 @@ export class BaseTextArea extends FASTElement {
     protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
     // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
@@ -966,9 +965,6 @@ export class BaseTextArea extends FASTElement {
     required: boolean;
     // (undocumented)
     protected requiredChanged(): void;
-    resize: TextAreaResize;
-    // (undocumented)
-    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
     // @internal
     rootEl: HTMLDivElement;
     select(): void;
@@ -4022,8 +4018,6 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 //
 // @public
 export class TextArea extends BaseTextArea {
-    appearance: TextAreaAppearance;
-    block: boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
