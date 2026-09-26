@@ -7,6 +7,7 @@ export { mergeArrowOffset } from './mergeArrowOffset';
 export { toFloatingUIPadding } from './toFloatingUIPadding';
 export { toFloatingUIPlacement } from './toFloatingUIPlacement';
 export { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
+export { toPositioningShorthandValue } from './toPositioningShorthandValue';
 export { resolvePositioningShorthand } from './resolvePositioningShorthand';
 export { useCallbackRef } from './useCallbackRef';
 export { debounce } from './debounce';

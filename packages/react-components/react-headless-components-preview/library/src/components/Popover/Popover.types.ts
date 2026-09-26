@@ -132,8 +132,5 @@ export type PopoverContextValue = Pick<
   | 'surfaceId'
   | 'trapFocus'
 > & {
-  positioning: {
-    targetRef: React.RefCallback<HTMLElement>;
-    containerRef: React.RefCallback<HTMLElement>;
-  };
+  positioning: PositioningReturn;
 };

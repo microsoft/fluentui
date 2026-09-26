@@ -327,6 +327,166 @@
   font-size: 13px;
 }
 
+/* ===== Engine stories (mirror the v9 positioning docs) ===== */
+
+/* 300×300 boundary box, as in the v9 docsite. Modifiers arrange the triggers inside it. */
+.boundary {
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+  padding: var(--space-5);
+  border: var(--stroke-thick) dashed var(--danger);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.boundarySpaceBetween {
+  justify-content: space-between;
+}
+
+.boundaryAlignEnd {
+  align-items: flex-end;
+}
+
+.boundaryCenter {
+  align-items: center;
+}
+
+.boundaryScroll {
+  padding: 0;
+  overflow: auto;
+  resize: both;
+}
+
+.boundaryScrollInner {
+  height: 600px;
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.triggerBlock {
+  width: 150px;
+}
+
+.triggerPushed {
+  margin-top: 60px;
+}
+
+/* Overlay outline used by the `Rect` boundary demo: not an element boundary, just something to look at */
+.rectArea {
+  position: relative;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+  padding: 60px var(--space-5) var(--space-5);
+  border: var(--stroke-thick) solid var(--danger);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.rectAreaLabel,
+.rectBoundaryLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px var(--space-2);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rectAreaLabel {
+  color: var(--text-on-accent);
+  background: var(--danger);
+}
+
+.rectBoundary {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  width: 320px;
+  height: 320px;
+  outline: var(--stroke-thick) solid var(--accent);
+  pointer-events: none;
+}
+
+.rectBoundaryLabel {
+  color: var(--text-on-accent);
+  background: var(--accent);
+}
+
+.badge {
+  display: inline-block;
+  margin-inline-end: var(--space-2);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.log {
+  min-width: 320px;
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: var(--stroke-thin) dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  list-style: none;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--text);
+  white-space: pre;
+}
+
+.logEmpty {
+  color: var(--text-muted);
+  white-space: normal;
+}
+
+/*
+  Arrow for engine-positioned surfaces. The engine writes the arrow's inline `left`/`top` along the
+  anchored edge, so CSS only paints the square and pushes it half-way out of the side named by
+  `data-placement`. Unlike the CSS-anchored arrow, no `margin: auto` centering must be applied.
+*/
+.surfaceEngineArrow {
+  overflow: visible;
+  border: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+}
+
+.surfaceEngineArrow [data-arrow] {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-elev);
+  transform: rotate(45deg);
+}
+
+.surfaceEngineArrow[data-placement^='above'] [data-arrow] {
+  bottom: -6px;
+}
+
+.surfaceEngineArrow[data-placement^='below'] [data-arrow] {
+  top: -6px;
+}
+
+.surfaceEngineArrow[data-placement^='before'] [data-arrow] {
+  right: -6px;
+}
+
+.surfaceEngineArrow[data-placement^='after'] [data-arrow] {
+  left: -6px;
+}
+
 /* Adds the "Actual: <data-placement>" readout under any surface */
 .flipReadout::after {
   content: 'Actual: ' attr(data-placement);

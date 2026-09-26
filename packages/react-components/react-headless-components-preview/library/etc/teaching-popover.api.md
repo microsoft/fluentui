@@ -13,6 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
+import type { PositioningEngine } from '@fluentui/react-positioning';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';

@@ -45,6 +45,9 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     hideDelay = 250,
   } = props;
 
+  const positioningOptions = resolvePositioningShorthand(positioning);
+  const { targetRef, containerRef, arrowRef } = usePositioning(positioningOptions);
+
   const state: TooltipState = {
     positioning,
     showDelay,
@@ -53,6 +56,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     visible,
     shouldRenderTooltip: visible,
     withArrow,
+    arrowRef,
     // Slots
     components: {
       content: 'div',
@@ -65,9 +69,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
       elementType: 'div',
     }),
   };
-
-  const positioningOptions = resolvePositioningShorthand(positioning);
-  const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
   state.content['data-open'] = toDataAttributeValue(state.visible);

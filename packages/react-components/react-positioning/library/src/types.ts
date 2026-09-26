@@ -66,11 +66,49 @@ export type OffsetFunctionParam = {
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 /**
- * @internal
+ * Handle to a running positioning instance that lives outside of the React lifecycle.
  */
 export interface PositionManager {
   updatePosition: () => void;
   dispose: () => void;
+}
+
+/**
+ * Arguments a {@link PositioningEngine} receives when it is asked to start positioning a surface.
+ */
+export type PositioningEngineCreateParams = {
+  /** The positioned element */
+  container: HTMLElement;
+  /** Element (or virtual element) that the container is anchored to */
+  target: TargetElement;
+  /** Arrow that points from the container to the target */
+  arrow: HTMLElement | null;
+  /** Fully merged positioning options */
+  options: PositioningOptions;
+  /** Text direction of the surface; defaults to `ltr` */
+  dir?: 'ltr' | 'rtl';
+  /** Document the surface is rendered into; defaults to `container.ownerDocument` */
+  targetDocument?: Document;
+};
+
+/**
+ * A pluggable positioning implementation.
+ *
+ * Engines are plain objects, not hooks: `create` is invoked imperatively (typically from a layout
+ * effect) once the container and target elements are known, and the returned {@link PositionManager}
+ * is disposed when they change or unmount. Because no React hook is involved, an engine can be
+ * supplied through props or context without any rules-of-hooks constraints.
+ *
+ * Contract for engine authors — `create` must:
+ * - leave the container fully positioned, including releasing any UA-provided `inset` when the
+ *   surface is in the top layer (`[popover]`, `dialog:modal`);
+ * - keep the container's `data-placement` attribute current with the resolved logical placement, as
+ *   a {@link PositioningShorthandValue} (e.g. `above-start`, `after-top`);
+ * - invoke `options.onPositioningEnd` after each update, if provided;
+ * - undo all of the above in `dispose`.
+ */
+export interface PositioningEngine {
+  create: (params: PositioningEngineCreateParams) => PositionManager;
 }
 
 export interface UsePositioningReturn {

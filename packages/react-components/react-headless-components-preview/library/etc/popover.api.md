@@ -13,6 +13,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverTriggerChildProps as PopoverTriggerChildProps_2 } from '@fluentui/react-popover';
+import type { PositioningEngine } from '@fluentui/react-positioning';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -35,10 +36,7 @@ export const Popover: {
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'trapFocus'> & {
-    positioning: {
-        targetRef: React_2.RefCallback<HTMLElement>;
-        containerRef: React_2.RefCallback<HTMLElement>;
-    };
+    positioning: PositioningReturn;
 };
 
 // @public
