@@ -385,6 +385,29 @@ test.describe('Checkbox', () => {
     await expect(page).toHaveURL(/foo\?submitter=default$/);
   });
 
+  test('should not submit the form when Enter is pressed without a submit button', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <${tagName} name="checkbox"></${tagName}>
+        <button type="button">not a submit button</button>
+      </form>
+    `);
+
+    await form.evaluate(node => {
+      node.addEventListener('submit', event => {
+        event.preventDefault();
+        node.dataset.submitted = 'true';
+      });
+    });
+
+    await element.press('Enter');
+
+    await expect(form).not.toHaveAttribute('data-submitted', 'true');
+  });
+
   test('should submit the values of multiple checkboxes when checked', async ({ fastPage, page }) => {
     const { element: checkboxes } = fastPage;
     const element1 = checkboxes.nth(0);
