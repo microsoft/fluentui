@@ -24,12 +24,23 @@ describe('Popover positioning engine', () => {
       </Popover>,
     );
 
-    cy.get(surfaceSelector)
-      .should('have.attr', 'data-placement', 'below-start')
-      .and($el => {
-        expect($el[0].style.getPropertyValue('position-anchor')).to.match(/^--popover-anchor-/);
-        expect($el[0]).not.to.have.attr('data-popper-placement');
-      });
+    cy.get(surfaceSelector).should($el => {
+      expect($el[0]).not.to.have.attr('data-popper-placement');
+      expect($el[0].style.transform).to.equal('');
+    });
+
+    // `position-anchor` and the resolved placement only exist when the browser supports CSS anchor
+    // positioning (Chromium 125+). The React 17 integration run uses Cypress 13 / Electron 118, which
+    // drops the unknown property and leaves the surface at the UA's centred top-layer position.
+    cy.window().then(win => {
+      if (win.CSS?.supports?.('anchor-name: --x')) {
+        cy.get(surfaceSelector)
+          .should('have.attr', 'data-placement', 'below-start')
+          .and($el => {
+            expect($el[0].style.getPropertyValue('position-anchor')).to.match(/^--popover-anchor-/);
+          });
+      }
+    });
   });
 
   it('delegates to an inline engine, which replaces CSS anchor positioning', () => {
