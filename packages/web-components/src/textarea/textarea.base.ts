@@ -1,9 +1,9 @@
 import { attr, FASTElement, nullableNumberConverter, observable, Updates } from '@microsoft/fast-element';
 import { whitespaceFilter } from '../utils/whitespace-filter.js';
 import type { Label } from '../label/label.js';
-import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { toggleState } from '../utils/element-internals.js';
 import { maybeSetAutoFocus } from '../utils/autofocus.js';
-import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
+import type { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
 
 /**
  * A Text Area Custom HTML Element.
@@ -16,6 +16,8 @@ import { TextAreaAutocomplete, TextAreaResize } from './textarea.options.js';
  * @csspart control - The internal `<textarea>` element.
  * @fires { Event } change - Fires after the control loses focus, if the content has changed.
  * @fires { Event } select - Fires when the `select()` method is called.
+ * @presentational {boolean} display-shadow - Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
+ * @presentational {TextAreaResize} [resize=none] - Indicates whether the element can be resized by end users.
  *
  * @public
  */
@@ -174,16 +176,6 @@ export class BaseTextArea extends FASTElement {
   }
 
   /**
-   * Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `display-shadow`
-   */
-  @attr({ attribute: 'display-shadow', mode: 'boolean' })
-  public displayShadow = false;
-
-  /**
    * The id of a form to associate the element to.
    *
    * @public
@@ -287,25 +279,6 @@ export class BaseTextArea extends FASTElement {
     if (this.filteredLabelSlottedNodes?.length) {
       this.filteredLabelSlottedNodes.forEach(node => (node.required = this.required));
     }
-  }
-
-  /**
-   * Indicates whether the element can be resized by end users.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `resize`
-   */
-  @attr({ mode: 'fromView' })
-  public resize: TextAreaResize = TextAreaResize.none;
-  protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
-    swapStates(this.elementInternals, prev, next, TextAreaResize, 'resize-');
-
-    toggleState(
-      this.elementInternals,
-      'resize',
-      hasMatchingState(TextAreaResize, next) && next !== TextAreaResize.none,
-    );
   }
 
   /**
