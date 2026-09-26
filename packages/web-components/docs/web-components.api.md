@@ -4116,8 +4116,6 @@ export type TextFont = ValuesOf<typeof TextFont>;
 //
 // @public
 export class TextInput extends BaseTextInput {
-    appearance?: TextInputAppearance;
-    controlSize?: TextInputControlSize;
 }
 
 // @internal (undocumented)
