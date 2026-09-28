@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { isConformant } from '../../common/isConformant';
@@ -548,6 +548,46 @@ describe('ComboBox', () => {
     // arrow down
     userEvent.keyboard('{arrowdown}');
     expect(combobox.getAttribute('aria-activedescendant')).toEqual('two');
+  });
+
+  it('does not call select() on the input more than once when re-focusing after a keyboard interaction', () => {
+    // Regression test for https://github.com/microsoft/fluentui/issues/35858
+    // When _focusInputAfterClose is left as true after a keyboard open/close cycle,
+    // componentDidUpdate was calling _onFocus() (and thus input.select()) on every render
+    // while the combobox was focused. This caused screen readers (e.g. Narrator) to
+    // announce the selected value twice.
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
+    const combobox = getByRole('combobox') as HTMLInputElement;
+
+    // Spy before any interaction to capture all select() calls
+    const selectSpy = jest.spyOn(combobox, 'select');
+
+    // 1. Focus the combobox and open it with keyboard (sets _focusInputAfterClose = true)
+    act(() => {
+      combobox.focus();
+    });
+    userEvent.keyboard('{enter}');
+
+    // 2. Select an option to close the dropdown
+    userEvent.keyboard('{enter}');
+    selectSpy.mockClear();
+
+    // 3. Navigate away
+    act(() => {
+      fireEvent.blur(combobox);
+    });
+    selectSpy.mockClear();
+
+    // 4. Navigate back
+    act(() => {
+      fireEvent.focus(combobox);
+    });
+
+    // select() should be called at most once (from _onFocus via the focus handler),
+    // NOT a second time from componentDidUpdate.
+    expect(selectSpy.mock.calls.length).toBeLessThanOrEqual(1);
+
+    selectSpy.mockRestore();
   });
 
   it('Cannot insert text while disabled', () => {
