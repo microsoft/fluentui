@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.4)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.3..@fluentui/react-shared-contexts_v9.26.4)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.3)
 

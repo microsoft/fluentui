@@ -272,7 +272,7 @@ function applyTransforms(
       });
 
       result = Array.from(groups.entries()).map(([key, rows]) => {
-        const baseRow: Record<string, unknown> = {};
+        const baseRow: Record<string, unknown> = Object.create(null);
         groupby.forEach((g, i) => {
           baseRow[g] = rows[0][g];
         });
