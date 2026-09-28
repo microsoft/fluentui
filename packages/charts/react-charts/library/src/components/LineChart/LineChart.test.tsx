@@ -788,6 +788,13 @@ describe('LineChart snapShot testing', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('exposes optimized large-data lines as labeled options', () => {
+    render(<LineChart data={basicChartPoints} optimizeLargeData />);
+
+    expect(screen.getByRole('listbox', { name: 'metaData1 data series' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'metaData1, line 1 of 3 with 2 data points.' })).toBeInTheDocument();
+  });
+
   it('Should render with default colors when line color is not provided', async () => {
     const points: LineChartPoints[] = [
       {
