@@ -6,9 +6,6 @@ Contributors: [@mainframev](https://github.com/mainframev)
 
 Stakeholders: `@fluentui/react-headless-components-preview` maintainers, `@fluentui/react-positioning` maintainers, headless component consumers
 
-Authored: 2026-09-29
-Feedback until: 2026-10-13
-
 ## Summary
 
 Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces with CSS anchor positioning. That covers the `positioning` API only partially: the geometry-dependent options are not implemented, and not every browser supports CSS anchor positioning. Two PRs propose different ways to close the gap:
