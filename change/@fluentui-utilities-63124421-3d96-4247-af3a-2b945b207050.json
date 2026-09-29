@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "[Fix]: DetailsList group “Unselect All” checkbox does not clear selection when group contains unselectable items (canSelectItem returns false)",
+  "packageName": "@fluentui/utilities",
+  "email": "sheetalsinghnew@gmail.com",
+  "dependentChangeType": "patch"
+}
