@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: support TagPicker single-select tag dismissal",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
