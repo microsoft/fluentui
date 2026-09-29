@@ -13,7 +13,7 @@ Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces 
 - [#36800](https://github.com/microsoft/fluentui/pull/36800): the consumer passes a JavaScript engine explicitly (`positioning={{ engine }}` or `PositioningEngineProvider`).
 - [#36124](https://github.com/microsoft/fluentui/pull/36124): the library decides at runtime and lazy-loads a floating-ui fallback when the browser or the requested options need it.
 
-This RFC compares four options (explicit engine, automatic fallback, extend the CSS path, limit the API) on bundle impact, browser behaviour, API complexity, parity with `react-positioning`, and maintenance cost, and recommends one.
+This RFC compares four options (explicit engine, automatic fallback with a lazy import, automatic fallback with floating-ui bundled, extend the CSS path) on bundle impact, browser behaviour, API complexity, parity with `react-positioning`, and maintenance cost, and recommends one.
 
 ## Background
 
@@ -95,15 +95,40 @@ mode = CSS.supports('anchor-name: --x') && !requiresFloatingUI(options) ? 'ancho
 
 #### Cons
 
-- First paint: the fallback path has a cold-start problem. On the first open the surface is already in the DOM and shown before the chunk has arrived, so unless the implementation hides it (or places it synchronously) the user sees it unpositioned and then jumping into place. How long depends on the network: a frame or two locally, seconds on a slow connection, and two sequential round trips if the helper and `@floating-ui/dom` are separate chunks. Warm opens and opens after `preloadPositioning()` do not have this problem, but the first open is the one users see.
-- Load timing: because the decision runs at mount, when the chunk is fetched depends on whether a component keeps its closed surface mounted. Components that unmount the surface (Popover) load on first open and show the cold-start flash; components that keep it mounted (Menu) start the download at page load, which on a page with several such surfaces amounts to an eager load with worse timing than a static import. Neither behaviour is visible to the consumer.
-- Browsers without anchor support pay the download and the cold-start cost for every surface, not just the ones with engine-only options.
+- Cold start: the fallback is fetched only after the library decides it is needed, and the surface is already shown while that happens, so the first open can flash unpositioned — a frame or two locally, seconds on a slow connection, two round trips if the helper and `@floating-ui/dom` are separate chunks. Warm opens and `preloadPositioning()` avoid it. When the download starts depends on whether the closed surface stays mounted (Menu starts at page load; Popover starts on first open), and browsers without anchor support take this path for every surface, not only those with engine-only options. None of that is visible to the consumer.
 - Predictability: consumers cannot tell which path a given user got, and cannot force one.
 - Maintenance: support detection, lazy loading, caching, cancellation on unmount, the preload API, and two implementations that must stay behaviourally aligned (placement names, arrow handling, `onPositioningEnd` semantics) all live in the library and need cross-browser and cross-bundler testing, including SSR.
 
-### Option C: Extend CSS-based positioning
+### Option C: Automatic fallback, floating-ui bundled
 
-Implement more of the option set in the CSS path: `autoSize` via `position-area` + `max-height: calc(anchor-size(...))`/`stretch`, boundaries via `position-visibility` and containing-block tricks, `onPositioningEnd` via `ResizeObserver`/`IntersectionObserver` heuristics.
+Same runtime decision as Option B: CSS when the browser supports it and the options do not need a JS engine, floating-ui otherwise. The difference is there is no `import()`. Floating-ui is a static dependency of the headless package and is always in the bundle; `mode` only turns that engine on or off.
+
+```ts
+mode = CSS.supports('anchor-name: --x') && !requiresFloatingUI(options) ? 'anchor' : 'floating';
+```
+
+#### Pros
+
+- Bundle timing: no extra request, no `preloadPositioning()`, no mount-vs-unmount fetch policy. The engine is already in memory when the surface opens.
+- First paint: the floating-ui path can position synchronously, like Option A. There is no cold-start flash.
+- Browser behaviour: consumers write nothing browser-specific. Browsers with anchor support use CSS for eligible surfaces; the rest use the engine that already shipped.
+- API: nothing to configure.
+- Parity: every `react-positioning` option works in every browser on the first open.
+- Maintenance: simpler than B — no lazy loading, chunk caching, in-flight cancellation, or preload API. Still two implementations plus support detection.
+
+#### Cons
+
+- Bundle: every headless page pays the full engine (~29 kB minified / ~10 kB gzip for `usePositioning`, of which ~21 kB / ~8 kB is `@floating-ui/dom`), including pages that only ever use CSS-eligible options in browsers with anchor support. That undercuts the lightweight goal in the problem statement.
+- Predictability: consumers cannot tell which path a given user got, and cannot force one or opt out of shipping floating-ui.
+- Maintenance: two code paths still have to stay aligned; the unused engine is dead weight on the CSS path rather than a loading-state machine.
+
+### Option D: Extend CSS-based positioning
+
+Keep CSS as the only positioning path and add more of the option set there.
+
+Today CSS covers placement (`position`, `align`, `offset`, `coverTarget`, `matchTargetSize`, `pinned`, `fallbackPositions`, `strategy`, `target`). Geometry-dependent options are ignored: `autoSize`, `overflowBoundary`, `flipBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `onPositioningEnd`, and function-form `offset`.
+
+This option would add `autoSize` and overflow/flip boundaries (`overflowBoundary`, `flipBoundary`, `overflowBoundaryPadding`).
 
 #### Pros
 
@@ -114,41 +139,25 @@ Implement more of the option set in the CSS path: `autoSize` via `position-area`
 #### Cons
 
 - Browser behaviour: does nothing for browsers without anchor support; surfaces there stay unpositioned.
-- Parity: partial at best. `flipBoundary`/`overflowBoundary` with arbitrary elements, `shiftToCoverTarget`, arrow coordinates and `onPositioningEnd` with a placement all require measured geometry. Implementing them in script on top of CSS (observers, `getBoundingClientRect`) means writing a second positioning engine, without floating-ui's collision handling.
-- Maintenance: high and open-ended; CSS anchor semantics are still moving (`position-try-order`, `anchor-scope` shipped recently).
-- Risk: this is a re-implementation of floating-ui's problem space without floating-ui. The hard cases (nested scroll containers, transformed ancestors, `overflow: clip`, RTL, zoom, virtual targets, boundaries that move) are exactly where floating-ui has years of bug fixes, and each one would have to be rediscovered here. Mixing CSS-driven placement with script-driven adjustments also creates two sources of truth for the same layout, which is a recurring source of flicker and fighting-updates bugs. The result would still behave differently from `react-positioning`, so consumers would face subtle inconsistencies rather than a clear "engine or not" boundary.
-
-### Option D: Limit the API
-
-Keep CSS anchor positioning only. Remove the engine-only options from the headless `PositioningProps` type and document that boundaries, auto-sizing and positioning callbacks are the consumer's concern (wrap the surface, use `position-visibility`, size the content).
-
-#### Pros
-
-- Bundle: smallest possible.
-- API: smaller and honest about what the CSS path can do.
-- Maintenance: one code path, lowest cost.
-
-#### Cons
-
-- Browser behaviour: browsers without anchor support stay unpositioned unless the consumer solves it outside the library.
-- Parity: explicitly none for the removed options; migrating v9 code to headless means rewriting positioning props.
-- Consumer effort: `autoSize` and boundaries are among the most requested positioning features in v9; every headless consumer that needs them writes their own engine.
+- Parity: remaining options can be added as analogues of floating-ui. That is still a second implementation to keep aligned with `react-positioning`.
+- Maintenance: high and open-ended; CSS anchor semantics are still moving.
+- Risk: every extra option on the CSS path is another behaviour to keep aligned with `react-positioning` without sharing its engine, so consumers would still see a different positioning model rather than a clear "engine or not" boundary.
 
 ## Comparison
 
-| Criterion                       | A: Explicit engine                   | B: Automatic fallback                                    | C: Extend CSS               | D: Limit API                   |
-| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | --------------------------- | ------------------------------ |
-| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Never                       | Never                          |
-| Unsupported browser             | Consumer's choice (provider)         | Handled, with cold-open flash                            | Unpositioned                | Unpositioned                   |
-| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | n/a                         | n/a                            |
-| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | Yes                         | Yes                            |
-| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                        | Options removed                |
-| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Partial, growing            | Reduced                        |
-| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Second engine in CSS+script | One path                       |
-| Consumer effort                 | Must opt in where needed             | None                                                     | None                        | Must solve outside the library |
+| Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS        |
+| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | -------------------- |
+| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                        | Never                |
+| Unsupported browser             | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                      | Unpositioned         |
+| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                | n/a                  |
+| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                           | Yes                  |
+| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                   | None                 |
+| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                   | Partial, growing     |
+| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                  | Growing CSS surface  |
+| Consumer effort                 | Must opt in where needed             | None                                                     | None                                   | None                 |
 
 ## Proposal
 
 Adopt **Option A**: land [#36800](https://github.com/microsoft/fluentui/pull/36800)'s `engine` option and `PositioningEngineProvider`. CSS by default; an engine owns positioning when the consumer supplies one. `floatingUIPositioningEngine` stays in `@fluentui/react-positioning`.
 
-Automatic fallback can still be added later on top of this contract (a provider that supplies an engine only when CSS is not enough) without changing the public `engine` API. Building that in from the start as Option B would hide the choice and make it harder to opt out of.
+Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Automatic fallback (lazy as B, or static as C) can still be added later on top of A's contract — a provider that supplies an engine only when CSS is not enough — without changing the public `engine` API. Building either in from the start would hide the choice and make it harder to opt out of.
