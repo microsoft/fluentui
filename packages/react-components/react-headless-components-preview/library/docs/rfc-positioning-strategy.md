@@ -145,16 +145,16 @@ This option would add `autoSize` and overflow/flip boundaries (`overflowBoundary
 
 ## Comparison
 
-| Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS        |
-| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | -------------------- |
-| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                        | Never                |
-| Unsupported browser             | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                      | Unpositioned         |
-| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                | n/a                  |
-| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                           | Yes                  |
-| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                   | None                 |
-| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                   | Partial, growing     |
-| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                  | Growing CSS surface  |
-| Consumer effort                 | Must opt in where needed             | None                                                     | None                                   | None                 |
+| Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS       |
+| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | ------------------- |
+| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                             | Never               |
+| Unsupported browser             | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                           | Unpositioned        |
+| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                     | n/a                 |
+| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                                | Yes                 |
+| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                        | None                |
+| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                        | Partial, growing    |
+| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                       | Growing CSS surface |
+| Consumer effort                 | Must opt in where needed             | None                                                     | None                                        | None                |
 
 ## Proposal
 
