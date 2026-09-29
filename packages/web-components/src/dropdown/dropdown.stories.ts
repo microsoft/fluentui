@@ -2,6 +2,7 @@ import { html, ref, repeat } from '@microsoft/fast-element';
 
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { DropdownOption as FluentOption } from '../option/option.js';
+import { uniqueId } from '../utils/unique-id.js';
 import { getStorybookHelpers } from '../../.storybook/wc-toolkit-helpers.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
@@ -526,6 +527,36 @@ export const InsideDialogWithScrollingContent: Story = {
     </fluent-dialog>
   `),
   args: { ...Default.args },
+};
+
+export const Tooltip: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <fluent-dropdown id="dropdown-tooltip-target" placeholder="Select a fruit">
+      <fluent-tooltip anchor="dropdown-tooltip-target" positioning="after">
+        Tooltip anchored to the dropdown
+      </fluent-tooltip>
+      <fluent-listbox>
+        <fluent-option value="apple">Apple</fluent-option>
+        <fluent-option value="banana">Banana</fluent-option>
+        <fluent-option value="orange">Orange</fluent-option>
+      </fluent-listbox>
+    </fluent-dropdown>
+  `),
+  decorators: [
+    Story => {
+      const story = Story() as DocumentFragment;
+      const id = uniqueId('dropdown-tooltip-');
+      const dropdown = story.querySelector<FluentDropdown>('fluent-dropdown');
+      const tooltip = story.querySelector('fluent-tooltip');
+
+      if (dropdown && tooltip) {
+        dropdown.id = id;
+        tooltip.setAttribute('anchor', id);
+      }
+
+      return story;
+    },
+  ],
 };
 
 export const InsideNonModalDialog: Story = {
