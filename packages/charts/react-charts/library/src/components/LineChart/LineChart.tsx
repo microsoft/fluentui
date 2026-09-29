@@ -544,6 +544,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         const pointsForLine: JSXElement[] = [];
 
         const legendVal: string = _points[i].legend;
+        const seriesAriaLabel = `${legendVal}, line ${i + 1} of ${_points.length} with ${
+          _points[i].data.length
+        } data points.`;
         const lineColor: string = _points[i].color!;
         const verticaLineHeight = containerHeight - margins.bottom! + 6;
         const useSecondaryYScale = !!(_points[i].useSecondaryYScale && _yScaleSecondary);
@@ -629,7 +632,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     onMouseOut={_handleMouseOut}
                     strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
                     stroke={activePoint === circleId ? lineColor : ''}
-                    role="img"
+                    role="option"
                     aria-label={_points[i].data[0].text ?? _getAriaLabel(i, 0)}
                     ref={(e: SVGCircleElement | null) => {
                       _refCallback(e!, circleId);
@@ -737,6 +740,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
                 tabIndex={isLegendSelected ? 0 : undefined}
+                role={props.optimizeLargeData ? 'option' : undefined}
+                aria-label={props.optimizeLargeData ? seriesAriaLabel : undefined}
               />,
             );
           } else if (shouldDrawLines) {
@@ -812,7 +817,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                     onFocus={event => _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k)}
                     onMouseOut={_handleMouseOut}
-                    role="img"
+                    role="option"
                     aria-label={_points[i].data[k].text ?? _getAriaLabel(i, k)}
                   />,
                 );
@@ -916,7 +921,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       fill={_points[i].data[j - 1]?.markerColor || _getPointFill(lineColor, circleId, j, false)}
                       stroke={_points[i].data[j - 1]?.markerColor || lineColor}
                       strokeWidth={strokeWidth}
-                      role="img"
+                      role="option"
                       aria-label={_points[i].data[j - 1].text ?? _getAriaLabel(i, j - 1)}
                     />
                     {!_isScatterPolar && supportsTextMode && text && (
@@ -994,7 +999,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     fill={_points[i].data[j - 1]?.markerColor || _getPointFill(lineColor, circleId, j, false)}
                     stroke={_points[i].data[j - 1]?.markerColor || lineColor}
                     strokeWidth={strokeWidth}
-                    role="img"
+                    role="option"
                     aria-label={_getAriaLabel(i, j - 1)}
                     tabIndex={isLegendSelected ? 0 : undefined}
                   />
@@ -1082,7 +1087,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           fill={_getPointFill(lineColor, lastCircleId, j, true)}
                           stroke={lineColor}
                           strokeWidth={strokeWidth}
-                          role="img"
+                          role="option"
                           aria-label={_points[i].data[j].text ?? _getAriaLabel(i, j)}
                         />
                         {!_isScatterPolar && lastSupportsTextMode && lastText && (
@@ -1159,7 +1164,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         fill={_points[i].data[j]?.markerColor || _getPointFill(lineColor, lastCircleId, j, true)}
                         stroke={_points[i].data[j]?.markerColor || lineColor}
                         strokeWidth={strokeWidth}
-                        role="img"
+                        role="option"
                         aria-label={_getAriaLabel(i, j)}
                         tabIndex={isLegendSelected ? 0 : undefined}
                       />
@@ -1363,8 +1368,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         lines.push(
           <g
             key={`line_${i}`}
-            role="region"
-            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
+            role="listbox"
+            aria-label={props.optimizeLargeData ? `${legendVal} data series` : seriesAriaLabel}
           >
             {bordersForLine}
             {linesForLine}
