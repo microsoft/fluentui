@@ -99,46 +99,24 @@ describe('Dropdown - tab navigation', () => {
     });
   });
 
-  it('passes the original native keyboard event when Tabster moves focus', () => {
-    let callbackCurrentTarget: EventTarget | null = null;
-    let callbackNativeEvent: Event | undefined;
-    let trigger: HTMLElement;
-    let relatedEvent: KeyboardEvent;
-    const onOptionSelect = cy
-      .stub()
-      .callsFake((event: React.KeyboardEvent<HTMLElement>) => {
-        callbackCurrentTarget = event.currentTarget;
-        callbackNativeEvent = event.nativeEvent;
-      })
-      .as('onOptionSelect');
+  it('selects the active option once when tabbing from the end of a Tabster root', () => {
+    const onOptionSelect = cy.stub().as('onOptionSelect');
 
-    mount(<DropdownComponent id="dropdown" defaultOpen onOptionSelect={onOptionSelect} />);
+    mount(
+      <>
+        <TabsterRoot>
+          <DropdownComponent id="dropdown" onOptionSelect={onOptionSelect} />
+        </TabsterRoot>
+        <button id="after">After</button>
+      </>,
+    );
 
-    cy.get('#dropdown').should('have.attr', 'aria-activedescendant');
-    cy.get('#dropdown').then($dropdown => {
-      trigger = $dropdown[0];
-      relatedEvent = new KeyboardEvent('keydown', { key: 'Tab' });
-      Object.defineProperty(relatedEvent, 'target', { value: trigger });
-
-      trigger.dispatchEvent(
-        new CustomEvent('tabster:movefocus', {
-          bubbles: true,
-          detail: { by: 'root', owner: trigger, next: null, relatedEvent },
-        }),
-      );
-    });
+    cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
+    cy.get('#dropdown').realPress('Tab');
 
     cy.get('@onOptionSelect').should('have.been.calledOnce');
-    cy.then(() => {
-      const [event, data] = onOptionSelect.getCall(0).args;
-      expect(event).to.not.equal(relatedEvent);
-      expect(event.key).to.equal('Tab');
-      expect(event.nativeEvent).to.equal(relatedEvent);
-      expect(callbackNativeEvent).to.equal(relatedEvent);
-      expect(callbackCurrentTarget).to.equal(trigger);
-      expect(event.currentTarget).to.equal(null);
-      expect(data).to.include({ optionValue: 'Cat' });
-    });
+    cy.get('#dropdown').should('contain.text', 'Cat').and('have.attr', 'aria-expanded', 'false');
+    cy.focused().should('have.id', 'after');
   });
 
   it('prevents the Tabster movefocus event when onOptionSelect calls preventDefault', () => {
@@ -158,7 +136,7 @@ describe('Dropdown - tab navigation', () => {
     cy.get('#dropdown').realClick().should('have.attr', 'aria-activedescendant');
     cy.get('#dropdown').realPress('Tab');
 
-    cy.get('@onOptionSelect').should('have.been.called');
+    cy.get('@onOptionSelect').should('have.been.calledOnce');
     cy.focused().should('have.id', 'dropdown');
   });
 

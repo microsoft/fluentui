@@ -14,13 +14,12 @@ export function createReactKeyboardEvent(
   nativeEvent: KeyboardEvent,
   currentTarget: HTMLElement,
 ): ReactKeyboardEventAdapter {
-  let callbackCurrentTarget: HTMLElement | null = currentTarget;
   let propagationStopped = false;
 
   const event = {
     nativeEvent,
     target: nativeEvent.target,
-    currentTarget: callbackCurrentTarget,
+    currentTarget,
     bubbles: nativeEvent.bubbles,
     cancelable: nativeEvent.cancelable,
     defaultPrevented: nativeEvent.defaultPrevented,
@@ -47,17 +46,12 @@ export function createReactKeyboardEvent(
     getModifierState: (key: string) => nativeEvent.getModifierState(key),
     view: nativeEvent.view,
     detail: nativeEvent.detail,
-    which: nativeEvent.which,
-    charCode: nativeEvent.charCode,
-    keyCode: nativeEvent.keyCode,
-    sourceCapabilities: (nativeEvent as any).sourceCapabilities,
   } as unknown as React.KeyboardEvent<HTMLElement>;
 
   return {
     event,
     release: () => {
-      callbackCurrentTarget = null;
-      (event as any).currentTarget = null;
+      Object.defineProperty(event, 'currentTarget', { value: null });
     },
   };
 }

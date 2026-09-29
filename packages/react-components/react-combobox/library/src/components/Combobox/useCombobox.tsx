@@ -218,7 +218,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const fieldContext = useFieldContext_unstable();
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useComboboxBase_unstable(baseProps, ref);
-  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus(baseState);
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus<HTMLInputElement>(baseState);
 
   if (baseState.clearIcon) {
     baseState.clearIcon.children ??= <DismissIcon />;

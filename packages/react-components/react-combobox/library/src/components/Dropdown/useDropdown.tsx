@@ -167,7 +167,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const fieldContext = useFieldContext_unstable();
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useDropdownBase_unstable(baseProps, ref);
-  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus(baseState);
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus<HTMLButtonElement>(baseState);
 
   if (baseState.clearButton) {
     baseState.clearButton.children ??= <DismissIcon />;

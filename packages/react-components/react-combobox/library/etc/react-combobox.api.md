@@ -345,9 +345,7 @@ export const useOptionGroupStyles_unstable: (state: OptionGroupState) => OptionG
 export const useOptionStyles_unstable: (state: OptionState) => OptionState;
 
 // @internal
-export function useSelectOptionOnMoveFocus(state: Pick<ComboboxBaseState, 'getOptionById' | 'multiselect' | 'open' | 'selectOption'> & {
-    activeDescendantController: ActiveDescendantImperativeRef;
-}): React_2.RefObject<HTMLElement | null>;
+export function useSelectOptionOnMoveFocus<Trigger extends HTMLElement>(options: UseSelectOptionOnMoveFocusOptions): React_2.Ref<Trigger>;
 
 // (No @packageDocumentation comment for this package)
 

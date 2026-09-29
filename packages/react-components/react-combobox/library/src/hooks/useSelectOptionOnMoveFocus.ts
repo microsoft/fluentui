@@ -2,73 +2,79 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { TabsterMoveFocusEventName, type TabsterMoveFocusEvent } from '@fluentui/react-tabster';
 import { useEventCallback } from '@fluentui/react-utilities';
 import type { ComboboxBaseState } from '../utils/ComboboxBase.types';
 import { createReactKeyboardEvent } from '../utils/createReactKeyboardEvent';
+import { isTabKeyEventHandled, markTabKeyEventHandled } from '../utils/handledTabKeyEvents';
+
+type UseSelectOptionOnMoveFocusOptions = Pick<
+  ComboboxBaseState,
+  'getOptionById' | 'multiselect' | 'open' | 'selectOption'
+> & {
+  activeDescendantController: ActiveDescendantImperativeRef;
+};
+
+const isKeyboardEventTargetingTrigger = (event: KeyboardEvent, trigger: HTMLElement) => {
+  return event.target === trigger || !!event.composedPath?.().includes(trigger);
+};
 
 /**
- * Selects the active option when focus moves away from the trigger during Tabster-managed navigation.
+ * Selects the active option before Tabster moves focus away from an open single-select trigger.
  * @internal
  */
-export function useSelectOptionOnMoveFocus(
-  state: Pick<ComboboxBaseState, 'getOptionById' | 'multiselect' | 'open' | 'selectOption'> & {
-    activeDescendantController: ActiveDescendantImperativeRef;
-  },
-): React.RefObject<HTMLElement | null> {
-  const { activeDescendantController, getOptionById, multiselect, open, selectOption } = state;
-  const triggerRef = React.useRef<HTMLElement>(null);
+export function useSelectOptionOnMoveFocus<Trigger extends HTMLElement>(
+  options: UseSelectOptionOnMoveFocusOptions,
+): React.Ref<Trigger> {
+  const { activeDescendantController, getOptionById, multiselect, open, selectOption } = options;
+  const triggerRef = React.useRef<Trigger>(null);
   const { targetDocument } = useFluent();
 
-  const selectActiveOption = useEventCallback((relatedEvent: KeyboardEvent) => {
+  const onTabsterMoveFocus = useEventCallback((event: TabsterMoveFocusEvent) => {
+    const relatedEvent = event.detail?.relatedEvent;
+
+    if (!relatedEvent || relatedEvent.defaultPrevented || isTabKeyEventHandled(relatedEvent)) {
+      return;
+    }
+
     const trigger = triggerRef.current;
-    if (
-      relatedEvent.defaultPrevented ||
-      !trigger ||
-      !open ||
-      multiselect ||
-      relatedEvent.key !== 'Tab' ||
-      relatedEvent.target !== trigger
-    ) {
+    if (!trigger || relatedEvent.key !== 'Tab' || !isKeyboardEventTargetingTrigger(relatedEvent, trigger)) {
       return;
     }
 
     const activeOptionId = activeDescendantController.active();
     const activeOption = activeOptionId ? getOptionById(activeOptionId) : undefined;
-    if (activeOption) {
-      const syntheticEvent = createReactKeyboardEvent(relatedEvent, trigger);
-      try {
-        // FIXME: Tabster moves focus before React has a chance to commit this state update in React 18.
-        // Flush synchronously so the active option is selected before focus leaves the trigger.
-        ReactDOM.flushSync(() => selectOption(syntheticEvent.event, activeOption));
-      } finally {
-        syntheticEvent.release();
-      }
+
+    if (!activeOption) {
+      return;
     }
-  });
 
-  const onTabsterMoveFocus = useEventCallback((event: TabsterMoveFocusEvent) => {
-    const relatedEvent = event.detail?.relatedEvent;
-    if (relatedEvent) {
-      if (relatedEvent.defaultPrevented) {
-        return;
-      }
+    markTabKeyEventHandled(relatedEvent);
+    const syntheticEvent = createReactKeyboardEvent(relatedEvent, trigger);
 
-      selectActiveOption(relatedEvent);
-      if (relatedEvent.defaultPrevented) {
-        event.preventDefault();
-      }
+    try {
+      ReactDOM.flushSync(() => selectOption(syntheticEvent.event, activeOption));
+    } finally {
+      syntheticEvent.release();
+    }
+
+    if (relatedEvent.defaultPrevented) {
+      event.preventDefault();
     }
   });
 
   React.useEffect(() => {
-    targetDocument?.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus, true);
+    if (!targetDocument || !open || multiselect) {
+      return;
+    }
+
+    targetDocument.addEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus, true);
     return () => {
-      targetDocument?.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus, true);
+      targetDocument.removeEventListener(TabsterMoveFocusEventName, onTabsterMoveFocus, true);
     };
-  }, [onTabsterMoveFocus, targetDocument]);
+  }, [multiselect, onTabsterMoveFocus, open, targetDocument]);
 
   return triggerRef;
 }

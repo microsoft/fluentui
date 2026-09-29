@@ -8,6 +8,7 @@ import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 import type { OptionValue } from './OptionCollection.types';
+import { isTabKeyEventHandled, markTabKeyEventHandled } from './handledTabKeyEvents';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
@@ -59,8 +60,10 @@ export function useTriggerSlot(
   });
 
   // handle trigger focus/blur
-  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
-  trigger.ref = useMergedRefs(triggerRef, trigger.ref, ref) as React.Ref<HTMLButtonElement & HTMLInputElement>;
+  trigger.ref = useMergedRefs(
+    trigger.ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
+    ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
+  );
 
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
@@ -142,6 +145,10 @@ function useTriggerKeydown(
 
   const setKeyboardNavigation = useSetKeyboardNavigation();
   return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.defaultPrevented) {
+      return;
+    }
+
     const action = getDropdownActionFromKey(e, { open, multiselect });
     const activeOption = getActiveOption();
 
@@ -196,7 +203,15 @@ function useTriggerKeydown(
         activeOption && selectOption(e, activeOption);
         break;
       case 'Tab':
-        !multiselect && activeOption && selectOption(e, activeOption);
+        if (!multiselect && activeOption) {
+          const nativeEvent = e.nativeEvent;
+          if (isTabKeyEventHandled(nativeEvent)) {
+            return;
+          }
+
+          markTabKeyEventHandled(nativeEvent);
+          selectOption(e, activeOption);
+        }
         break;
     }
   });
