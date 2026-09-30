@@ -8,6 +8,7 @@ const {
 } = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
+const { configureReactIcons } = require('../../../.storybook/react-icons-webpack');
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 const tsConfigPath = path.join(__dirname, '../../../tsconfig.base.json');
@@ -91,6 +92,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       rules: [rules.scssRule, ...(process.env.REACT_COMPILER ? rules.reactCompilerRule : [])],
       config: localConfig,
     });
+    configureReactIcons({ config: localConfig });
 
     return localConfig;
   },
