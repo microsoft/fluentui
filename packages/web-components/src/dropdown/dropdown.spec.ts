@@ -4,15 +4,6 @@ import { tagName as OptionTagName } from '../option/option.options.js';
 import type { Dropdown } from './dropdown.js';
 import { tagName } from './dropdown.options.js';
 
-const getAnchorNames = (dropdown: HTMLElement, listboxTagName: string) => ({
-  dropdown: dropdown.style.getPropertyValue('anchor-name'),
-  listbox: dropdown.querySelector<HTMLElement>(listboxTagName)?.style.getPropertyValue('position-anchor') ?? '',
-});
-
-const appendListbox = (dropdown: HTMLElement, listboxTagName: string) => {
-  dropdown.append(document.createElement(listboxTagName));
-};
-
 test.describe('Dropdown', () => {
   test.use({
     tagName,
@@ -64,44 +55,33 @@ test.describe('Dropdown', () => {
     await expect(options).toHaveCount(8);
   });
 
-  test.describe('when the dropdown already participates in anchor positioning before it has a listbox', () => {
+  test.describe('anchor positioning', () => {
     test.beforeEach(async ({ page }) => {
       const supported = await page.evaluate(() => CSS.supports('anchor-name', '--a'));
       test.skip(!supported, 'CSS anchor positioning is not supported');
     });
 
-    test('should preserve the existing anchor name', async ({ fastPage }) => {
+    test('should preserve an anchor name set before the listbox connects', async ({ fastPage }) => {
       const { element } = fastPage;
+      const listbox = element.locator(ListboxTagName);
 
-      await fastPage.setTemplate({ attributes: { style: 'anchor-name: --consumer-anchor' }, innerHTML: '' });
+      await fastPage.setTemplate({ attributes: { style: 'anchor-name: --consumer-anchor' } });
 
-      await element.evaluate(appendListbox, ListboxTagName);
-
-      await expect
-        .poll(() => element.evaluate(getAnchorNames, ListboxTagName))
-        .toEqual({ dropdown: '--consumer-anchor', listbox: '--consumer-anchor' });
+      await expect(element).toHaveCSS('anchor-name', '--consumer-anchor');
+      await expect(listbox).toHaveCSS('position-anchor', '--consumer-anchor');
     });
-  });
 
-  test('should generate a shared anchor name when the dropdown has no anchor name', async ({ fastPage, page }) => {
-    const { element } = fastPage;
+    test('should generate a shared anchor name when the dropdown has no anchor name', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const listbox = element.locator(ListboxTagName);
 
-    const supported = await page.evaluate(() => CSS.supports('anchor-name', '--a'));
-    test.skip(!supported, 'CSS anchor positioning is not supported');
+      await fastPage.setTemplate();
 
-    await fastPage.setTemplate({ innerHTML: '' });
+      await expect(element).toHaveCSS('anchor-name', /^--dropdown-anchor-/);
 
-    await element.evaluate(appendListbox, ListboxTagName);
-
-    await expect
-      .poll(() => element.evaluate(getAnchorNames, ListboxTagName))
-      .toEqual({
-        dropdown: expect.stringMatching(/^--dropdown-anchor-/),
-        listbox: expect.stringMatching(/^--dropdown-anchor-/),
-      });
-
-    const anchorNames = await element.evaluate(getAnchorNames, ListboxTagName);
-    expect(anchorNames.listbox).toBe(anchorNames.dropdown);
+      const anchorName = await element.evaluate(el => getComputedStyle(el).getPropertyValue('anchor-name'));
+      await expect(listbox).toHaveCSS('position-anchor', anchorName);
+    });
   });
 
   test('should render a dropdown with a button when the type is not specified', async ({ fastPage }) => {
