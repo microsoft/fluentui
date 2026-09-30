@@ -271,6 +271,8 @@ extends:
               # Release packages using the ESRP API. If this stage fails or times out, it's safe to
               # manually re-run the stage unless the result in the logs is failDoNotRetry.
               # https://github.com/microsoft/beachball/blob/main/packages/esrp-npm-release/README.md
+              #
+              # Fluent-specific docs: https://aka.ms/fluentui-esrp
               - script: node "$RELEASE_TOOL_ARTIFACT_PATH/index.mjs"
                 displayName: Publish npm packages using ESRP Release API
                 # For a dry run, skip only the publish step (still verify that getting creds worked).
@@ -282,10 +284,12 @@ extends:
                   # ESRP also respects publishConfig.tag in package.json for an individual package.
                   ${{ if ne(parameters.releaseType, 'official') }}:
                     ESRP_NPM_TAG: ${{ parameters.releaseType }}
-                  # The release is auto-approved (this only controls owners in the ESRP release UI).
-                  # TODO figure out who should be listed as owners/approvers (it's not very important since it's auto-approved)
-                  ESRP_USER: TODO_EMAIL_HERE@microsoft.com
-                  ESRP_APPROVERS: TODO_EMAIL_HERE@microsoft.com
+                  # This controls who can access the releases and add tags in the ESRP release UI.
+                  # The first email is the release "creator" and the others are also owners.
+                  # Only supports individual emails (not DL/SG).
+                  ESRP_USER: martinhochel@microsoft.com,twatanabe@microsoft.com,popatudor@microsoft.com,dmytrokirpa@microsoft.com,elcraig@microsoft.com
+                  # The release is auto-approved, so the "approvers" don't really matter.
+                  ESRP_APPROVERS: jslone@microsoft.com
                   # Standard Fluent/OGX team ESRP setup:
                   # "OGX JSHost" ESRP client ID
                   ESRP_CLIENT_ID: 0a35e01f-eadf-420a-a2bf-def002ba898d

@@ -11,6 +11,10 @@ const { getConfig } = require('./utils');
 
 const { scope, groupConfig } = getConfig({ version: 'vNext' });
 
+/** @type {{ name: string, version: string, prereleaseTag: string }[]} */
+const packagesToTag = [];
+let isExitHookRegistered = false;
+
 /**
  * @type {import('./shared.config').ScopedConfig}
  */
@@ -41,13 +45,28 @@ const config = {
         return;
       }
 
-      // Validate that it's a vnext package, then log that the tag should be added.
       const projectJsonPath = path.join(packageRoot, 'project.json');
       try {
         /** @type {import('@nx/devkit').ProjectConfiguration} */
         const project = readJsonFile(projectJsonPath);
         if (isConvergedPackage({ project, packageJson: { name, version } })) {
-          console.log(`${warningPrefix} after publish, use https://aka.ms/ReleaseUI to add the tag "${prereleaseTag}"`);
+          packagesToTag.push({ name, version, prereleaseTag });
+
+          // Use a process exit hook to log the complete list of packages to tag.
+          // This should be replaced with a repo-level postpublish hook once supported in beachball.
+          if (!isExitHookRegistered) {
+            isExitHookRegistered = true;
+            process.once('exit', () => {
+              const packageList = packagesToTag
+                .map(packageToTag => `- ${packageToTag.name}@${packageToTag.version}: ${packageToTag.prereleaseTag}`)
+                .join('\n');
+              console.log(
+                '##vso[task.logissue type=warning]After ESRP publishing completes, npm tags must be manually ' +
+                  'added for the following package versions (see https://aka.ms/fluentui-esrp for instructions):\n' +
+                  packageList,
+              );
+            });
+          }
         }
       } catch (error) {
         console.log(`${warningPrefix} Failed to read ${projectJsonPath}:`, error);
