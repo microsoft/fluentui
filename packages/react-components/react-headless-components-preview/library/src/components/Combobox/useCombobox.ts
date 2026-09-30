@@ -30,6 +30,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
 
   const { appearance: _appearance, size: _size, ...baseState } = internalState;
   const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions } = baseState;
+  const expandIconRef = React.useRef<HTMLSpanElement>(null);
 
   const triggerSlot = useInputTriggerSlot(mergedProps.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: internalState,
@@ -41,6 +42,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       ...triggerNativeProps,
     },
     activeDescendantController,
+    shouldCloseOnBlur: event => event.relatedTarget !== expandIconRef.current,
   });
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
@@ -119,12 +121,20 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       }
     }),
   );
+  const expandIconSlotRef = useMergedRefs(state.expandIcon?.ref, expandIconRef);
 
   if (state.expandIcon) {
+    state.expandIcon.ref = expandIconSlotRef;
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
     state.expandIcon.onClick = onExpandIconClick;
     state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
+
+  state.root.onBlur = mergeCallbacks(state.root.onBlur, event => {
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+      internalState.setOpen(event as unknown as React.FocusEvent<HTMLInputElement>, false);
+    }
+  });
 
   const onClearIconMouseDown = useEventCallback(
     mergeCallbacks(state.clearIcon?.onMouseDown, (ev: React.MouseEvent<HTMLSpanElement>) => {

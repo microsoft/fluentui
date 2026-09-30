@@ -7,6 +7,7 @@ import type { ComboboxProps } from '.';
 // ---- Selectors ----
 // The Combobox `id` prop maps to the trigger <input> element.
 const trigger = '#combobox';
+const expandIcon = '#expand-icon';
 const listbox = '[role="listbox"]';
 const option = '[role="option"]';
 const multiselectPopup = '[role="menu"]';
@@ -17,7 +18,12 @@ const groupLabel = '[role="presentation"]';
 // ---- Fixtures ----
 
 const BasicCombobox = (props: Partial<ComboboxProps>) => (
-  <Combobox id="combobox" placeholder="Select an animal" {...props}>
+  <Combobox
+    id="combobox"
+    placeholder="Select an animal"
+    expandIcon={{ id: 'expand-icon', children: 'Open' }}
+    {...props}
+  >
     <Option>Cat</Option>
     <Option>Dog</Option>
     <Option disabled>Ferret</Option>
@@ -44,30 +50,31 @@ describe('Combobox', () => {
     it('toggles on click-only expand icon activation', () => {
       mount(<BasicCombobox />);
 
-      cy.get('[role="button"]').trigger('click');
-      cy.get(listbox).should('exist');
-      cy.get('[role="button"]').trigger('click');
-      cy.get(listbox).should('not.exist');
+      cy.get(expandIcon).trigger('click');
+      cy.get('[data-open]').should('exist');
+      cy.get(expandIcon).trigger('click');
+      cy.get('[data-open]').should('not.exist');
     });
 
     it('toggles on expand icon keyboard activation', () => {
       mount(<BasicCombobox />);
 
-      cy.get('[role="button"]').focus().realPress('Enter');
-      cy.get(listbox).should('exist');
-      cy.get('[role="button"]').focus().realPress('Space');
-      cy.get(listbox).should('not.exist');
+      cy.get(expandIcon).focus().realPress('Enter');
+      cy.get('[data-open]').should('exist');
+      cy.get(expandIcon).focus().realPress('Space');
+      cy.get('[data-open]').should('not.exist');
+      cy.get(trigger).should('be.focused');
     });
 
     it('notifies of a close only once when the expand icon is clicked', () => {
       const onOpenChange = cy.stub().as('onOpenChange');
       mount(<BasicCombobox onOpenChange={onOpenChange} />);
 
-      cy.get('[role="button"]').realClick();
+      cy.get(expandIcon).realClick();
       cy.get(listbox).should('exist');
       cy.get('@onOpenChange').should('have.been.calledOnce');
-      cy.get('[role="button"]').realClick();
-      cy.get(listbox).should('not.exist');
+      cy.get(expandIcon).realClick();
+      cy.get('[data-open]').should('not.exist');
       cy.get('@onOpenChange').should('have.been.calledTwice');
     });
 

@@ -945,6 +945,7 @@ describe('Combobox', () => {
     userEvent.tab();
     userEvent.keyboard('xyz');
     userEvent.tab();
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
@@ -960,6 +961,7 @@ describe('Combobox', () => {
 
     userEvent.tab();
     userEvent.keyboard('blue');
+    userEvent.tab();
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Blue');

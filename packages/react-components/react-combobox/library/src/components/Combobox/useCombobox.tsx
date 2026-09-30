@@ -55,6 +55,7 @@ export const useComboboxBase_unstable = (
     baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disableAutoFocus = false, freeform, inlinePopup } = props;
+  const expandIconRef = React.useRef<HTMLSpanElement>(null);
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -83,6 +84,7 @@ export const useComboboxBase_unstable = (
       ...triggerNativeProps,
     },
     activeDescendantController,
+    shouldCloseOnBlur: event => event.relatedTarget !== expandIconRef.current,
   });
 
   const rootSlot = slot.always(props.root, {
@@ -93,6 +95,11 @@ export const useComboboxBase_unstable = (
     elementType: 'div',
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+  rootSlot.onBlur = mergeCallbacks(rootSlot.onBlur, event => {
+    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+      comboboxInternalState.setOpen(event as unknown as ComboboxOpenEvents, false);
+    }
+  });
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: BaseComboboxState = {
@@ -152,8 +159,10 @@ export const useComboboxBase_unstable = (
       }
     }),
   );
+  const expandIconSlotRef = useMergedRefs(state.expandIcon?.ref, expandIconRef);
 
   if (state.expandIcon) {
+    state.expandIcon.ref = expandIconSlotRef;
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
     state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
