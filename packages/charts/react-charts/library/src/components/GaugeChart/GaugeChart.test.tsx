@@ -435,7 +435,7 @@ describe('GaugeChart custom callout', () => {
   );
 
   testWithoutWait(
-    'Should use percentage formatting by default with a nonzero minimum',
+    'Should use actual values for default percentage formatting with a nonzero minimum',
     GaugeChart,
     {
       segments,
@@ -447,14 +447,14 @@ describe('GaugeChart custom callout', () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(chartSegments[0]);
 
-      expect(screen.getByText('Current value is 25%')).toBeInTheDocument();
-      expect(screen.getByText('0% - 33%')).toBeInTheDocument();
-      expect(screen.getByRole('option', { name: 'Low Risk, 0% to 33%' })).toBeInTheDocument();
+      expect(screen.getByText('Current value is 63%')).toBeInTheDocument();
+      expect(screen.getByText('50% - 67%')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 50% to 67%' })).toBeInTheDocument();
     },
   );
 
   testWithoutWait(
-    'Should normalize fraction segment ranges with a nonzero minimum',
+    'Should use actual values for fraction formatting with a nonzero minimum',
     GaugeChart,
     {
       segments,
@@ -467,9 +467,9 @@ describe('GaugeChart custom callout', () => {
       const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(chartSegments[0]);
 
-      expect(screen.getByText('Current value is 25/100')).toBeInTheDocument();
-      expect(screen.getByText('0 - 33')).toBeInTheDocument();
-      expect(screen.getByRole('option', { name: 'Low Risk, 0 to 33' })).toBeInTheDocument();
+      expect(screen.getByText('Current value is 125/200')).toBeInTheDocument();
+      expect(screen.getByText('100 - 133')).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Low Risk, 100 to 133' })).toBeInTheDocument();
     },
   );
 
@@ -586,14 +586,14 @@ describe('GaugeChart rendering and behavior tests', () => {
     expect(getChartValueLabel(50, 0, 200, formatMilliseconds, true)).toBe('50ms');
     expect(getChartValueLabel(0, 0, 200, formatMilliseconds, true)).toBe('offline');
 
-    expect(getChartValueLabel(125, 100, 200)).toBe('25%');
-    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('25%');
+    expect(getChartValueLabel(125, 100, 200)).toBe('63%');
+    expect(getChartValueLabel(125, 100, 200, undefined, true)).toBe('63%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('25%');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('25%');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage)).toBe('63%');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Percentage, true)).toBe('63%');
 
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('25/100');
-    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('25/100');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction)).toBe('125/200');
+    expect(getChartValueLabel(125, 100, 200, GaugeValueFormat.Fraction, true)).toBe('125/200');
 
     expect(getChartValueLabel(125, 100, 200, () => customChartValue)).toBe(customChartValue);
     expect(getChartValueLabel(125, 100, 200, () => customChartValue, true)).toBe(customChartValue);

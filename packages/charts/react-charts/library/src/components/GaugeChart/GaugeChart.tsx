@@ -88,10 +88,10 @@ export const getChartValueLabel = (
   }
 
   if (chartValueFormat === 'fraction') {
-    return `${chartValue - minValue}/${maxValue - minValue}`;
+    return `${chartValue}/${maxValue}`;
   }
 
-  return `${(((chartValue - minValue) / (maxValue - minValue)) * 100).toFixed()}%`;
+  return `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
 
 const getFormattedSegmentLabel = (
@@ -107,17 +107,14 @@ const getFormattedSegmentLabel = (
   }
 
   if (!chartValueFormat || chartValueFormat === 'percentage') {
-    const range = maxValue - minValue;
-    const startPercentage = (((segment.start - minValue) / range) * 100).toFixed();
-    const endPercentage = (((segment.end - minValue) / range) * 100).toFixed();
+    const startPercentage = ((segment.start / maxValue) * 100).toFixed();
+    const endPercentage = ((segment.end / maxValue) * 100).toFixed();
     return isAriaLabel
       ? `${segment.legend}, ${startPercentage}% to ${endPercentage}%`
       : `${startPercentage}% - ${endPercentage}%`;
   }
 
-  const start = segment.start - minValue;
-  const end = segment.end - minValue;
-  return isAriaLabel ? `${segment.legend}, ${start} to ${end}` : `${start} - ${end}`;
+  return isAriaLabel ? `${segment.legend}, ${segment.start} to ${segment.end}` : `${segment.start} - ${segment.end}`;
 };
 
 interface YValue extends Omit<YValueHover, 'y'> {
