@@ -25,8 +25,8 @@ const useStyles = makeStyles({
 
 export const GaugeChartBasic = (): JSXElement => {
   const styles = useStyles();
-  const [width, setWidth] = React.useState<number>(300);
-  const [height, setHeight] = React.useState<number>(180);
+  const [width, setWidth] = React.useState<number>(400);
+  const [height, setHeight] = React.useState<number>(240);
   const [chartValue, setChartValue] = React.useState<number>(50);
   const [hideMinMax, setHideMinMax] = React.useState<boolean>(false);
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
