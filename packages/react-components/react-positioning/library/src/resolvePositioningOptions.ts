@@ -159,7 +159,7 @@ export function resolvePositioningOptions(params: ResolvePositioningOptionsParam
   return {
     placement,
     middleware,
-    strategy: strategy ?? positionFixed ? ('fixed' as const) : ('absolute' as const),
+    strategy: strategy ?? (positionFixed ? 'fixed' : 'absolute'),
 
     disableUpdateOnResize,
     useTransform,

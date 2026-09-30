@@ -105,7 +105,10 @@ export type PositioningEngineCreateParams = {
  * - keep the container's `data-placement` attribute current with the resolved logical placement, as
  *   a {@link PositioningShorthandValue} (e.g. `above-start`, `after-top`);
  * - invoke `options.onPositioningEnd` after each update, if provided;
- * - undo all of the above in `dispose`.
+ * - undo all of the above in `dispose`: release listeners and observers, and restore the inline styles
+ *   and attributes it wrote on the container and arrow to their previous values, so that another
+ *   positioner (e.g. CSS anchor positioning) can take over a clean element. `dispose` also runs right
+ *   before `create` is called again with new options, so both must be synchronous.
  */
 export interface PositioningEngine {
   create: (params: PositioningEngineCreateParams) => PositionManager;

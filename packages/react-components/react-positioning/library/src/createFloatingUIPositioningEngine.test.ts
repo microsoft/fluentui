@@ -140,7 +140,57 @@ describe('createFloatingUIPositioningEngine', () => {
     container.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT, { detail: { placement: 'top' } }));
 
     expect(onPositioningEnd).toHaveBeenCalledTimes(1);
+    expect(container).not.toHaveAttribute('data-placement');
+  });
+
+  it('restores the container and arrow to their previous state on dispose', async () => {
+    const { container, target } = createTestElements();
+    const arrow = document.createElement('div');
+    container.appendChild(arrow);
+    container.style.left = '5px';
+    container.setAttribute('data-placement', 'below');
+
+    const manager = floatingUIPositioningEngine.create({
+      container,
+      target,
+      arrow,
+      options: { position: 'above' },
+    });
+    await flushMicrotasks();
+
+    expect(container.style.transform).not.toBe('');
     expect(container).toHaveAttribute('data-placement', 'below-start');
+    expect(container).toHaveAttribute('data-popper-placement', 'bottom-start');
+
+    manager.dispose();
+
+    expect(container.style.left).toBe('5px');
+    expect(container.style.top).toBe('');
+    expect(container.style.position).toBe('');
+    expect(container.style.transform).toBe('');
+    expect(container.style.getPropertyValue('inset')).toBe('');
+    expect(container).toHaveAttribute('data-placement', 'below');
+    expect(container).not.toHaveAttribute('data-popper-placement');
+  });
+
+  it('honors an explicit strategy: "absolute"', async () => {
+    const { container, target } = createTestElements();
+
+    const manager = floatingUIPositioningEngine.create({
+      container,
+      target,
+      arrow: null,
+      options: { strategy: 'absolute' },
+    });
+    await flushMicrotasks();
+
+    expect(computePositionMock).toHaveBeenCalledWith(
+      target,
+      container,
+      expect.objectContaining({ strategy: 'absolute' }),
+    );
+
+    manager.dispose();
   });
 
   it('does nothing when enabled is false', async () => {
