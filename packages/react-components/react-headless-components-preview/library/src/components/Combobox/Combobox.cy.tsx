@@ -66,6 +66,17 @@ describe('Combobox', () => {
       cy.get(trigger).should('be.focused');
     });
 
+    it('clears focus state when focus leaves from the expand icon', () => {
+      mount(<BasicCombobox />);
+
+      cy.get(trigger).realClick();
+      cy.get(listbox).should('exist');
+      cy.get(expandIcon).focus();
+      cy.get(listbox).should('exist');
+      cy.realPress('Tab');
+      cy.get(listbox).should('not.exist');
+    });
+
     it('notifies of a close only once when the expand icon is clicked', () => {
       const onOpenChange = cy.stub().as('onOpenChange');
       mount(<BasicCombobox onOpenChange={onOpenChange} />);

@@ -98,6 +98,7 @@ export const useComboboxBase_unstable = (
   rootSlot.onBlur = mergeCallbacks(rootSlot.onBlur, event => {
     if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
       comboboxInternalState.setOpen(event as unknown as ComboboxOpenEvents, false);
+      comboboxInternalState.setHasFocus(false);
     }
   });
 

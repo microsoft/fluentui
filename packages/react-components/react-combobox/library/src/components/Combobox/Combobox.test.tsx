@@ -82,6 +82,31 @@ describe('Combobox', () => {
     expect(window.getComputedStyle(listbox!).display).toEqual('none');
   });
 
+  it('unmounts the hidden listbox when focus leaves from the expand icon', () => {
+    const result = render(
+      <Combobox inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    act(() => {
+      result.getByRole('combobox').focus();
+    });
+    const expandIcon = result.container.querySelector<HTMLElement>('[role="button"]');
+    expect(result.container.querySelector('[role="listbox"]')).not.toBeNull();
+
+    act(() => {
+      expandIcon?.focus();
+    });
+    act(() => {
+      expandIcon?.blur();
+    });
+
+    expect(result.container.querySelector('[role="listbox"]')).toBeNull();
+  });
+
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>

@@ -133,6 +133,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   state.root.onBlur = mergeCallbacks(state.root.onBlur, event => {
     if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
       internalState.setOpen(event as unknown as React.FocusEvent<HTMLInputElement>, false);
+      internalState.setHasFocus(false);
     }
   });
 
