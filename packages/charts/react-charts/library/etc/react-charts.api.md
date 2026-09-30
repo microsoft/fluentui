@@ -795,11 +795,9 @@ export interface EventsAnnotationProps {
     strokeColor?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface ExtendedSegment extends GaugeChartSegment {
-    // (undocumented)
     end: number;
-    // (undocumented)
     start: number;
 }
 
@@ -907,11 +905,8 @@ export interface GaugeChartCalloutData {
     segmentValues: YValueHover[];
 }
 
-// @public
-export interface GaugeChartCalloutSegment extends GaugeChartSegment {
-    end: number;
-    start: number;
-}
+// @public @deprecated
+export type GaugeChartCalloutSegment = ExtendedSegment;
 
 // @public
 export interface GaugeChartProps {
@@ -991,6 +986,9 @@ export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string
 
 // @public (undocumented)
 export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
+
+// @public
+export const getGaugeChartSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant: GaugeChartVariant | undefined, chartValueFormat: GaugeChartProps["chartValueFormat"], isAriaLabel?: boolean) => string;
 
 // @public (undocumented)
 export const getInvertedTextColor: (color: string, isDarkTheme?: boolean) => string;

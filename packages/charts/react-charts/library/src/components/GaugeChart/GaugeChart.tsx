@@ -25,7 +25,7 @@ import type {
   GaugeChartVariant,
   GaugeValueFormat,
   GaugeChartProps,
-  GaugeChartSegment,
+  ExtendedSegment,
 } from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
@@ -94,7 +94,11 @@ export const getChartValueLabel = (
   return `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
 
-const getFormattedSegmentLabel = (
+/**
+ * Returns a GaugeChart segment label formatted for the chart's value format.
+ * {@docCategory GaugeChart}
+ */
+export const getGaugeChartSegmentLabel = (
   segment: ExtendedSegment,
   minValue: number,
   maxValue: number,
@@ -120,10 +124,7 @@ const getFormattedSegmentLabel = (
 interface YValue extends Omit<YValueHover, 'y'> {
   y?: string | number;
 }
-export interface ExtendedSegment extends GaugeChartSegment {
-  start: number;
-  end: number;
-}
+export type { ExtendedSegment } from './GaugeChart.types';
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
@@ -411,7 +412,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         .map(segment => {
           const yValue: YValue = {
             legend: segment.legend,
-            y: getFormattedSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
+            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
             color: segment.color,
           };
           return yValue;
@@ -675,7 +676,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                         opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
                         {...getAccessibleDataObject(
                           {
-                            ariaLabel: getFormattedSegmentLabel(
+                            ariaLabel: getGaugeChartSegmentLabel(
                               segment,
                               _minValue,
                               _maxValue,

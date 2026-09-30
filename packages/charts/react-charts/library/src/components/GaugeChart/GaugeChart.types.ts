@@ -50,7 +50,7 @@ export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
  * GaugeChart segment data with its calculated range.
  * {@docCategory GaugeChart}
  */
-export interface GaugeChartCalloutSegment extends GaugeChartSegment {
+export interface ExtendedSegment extends GaugeChartSegment {
   /**
    * Start of the segment range.
    */
@@ -61,6 +61,13 @@ export interface GaugeChartCalloutSegment extends GaugeChartSegment {
    */
   end: number;
 }
+
+/**
+ * GaugeChart segment data provided to a custom callout renderer.
+ * @deprecated Use `ExtendedSegment` instead.
+ * {@docCategory GaugeChart}
+ */
+export type GaugeChartCalloutSegment = ExtendedSegment;
 
 /**
  * Data provided to a custom GaugeChart callout renderer.
@@ -100,6 +107,7 @@ export interface GaugeChartCalloutData {
   /**
    * Gauge segments with their calculated ranges.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the public type name for compatibility.
   segments?: GaugeChartCalloutSegment[];
 
   /**
