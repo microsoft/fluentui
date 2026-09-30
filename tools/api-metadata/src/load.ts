@@ -307,6 +307,9 @@ export class MetadataLoader {
       this.stats.cacheHits++;
       return cached.instance;
     }
+    if (cached) {
+      this._invalidatePackageCaches(cached.instance);
+    }
     this.resolutionCache.delete(cacheKey);
 
     let metadataFile: string;
@@ -802,6 +805,21 @@ export class MetadataLoader {
         `Reader operation exceeded ${this.limits.maxFanout} artifacts`,
         path,
       );
+    }
+  }
+
+  private _invalidatePackageCaches(instance: ResolvedPackageInstance): void {
+    this.indexCache.delete(instance.identity);
+    for (const key of this.recordCache.keys()) {
+      if (key.startsWith(`${instance.identity}\0`)) {
+        this.recordCache.delete(key);
+      }
+    }
+    for (const path of this.fileCache.keys()) {
+      const relation = relative(instance.packageRoot, path);
+      if (relation !== '..' && !relation.startsWith(`..${sep}`) && !isAbsolute(relation)) {
+        this.fileCache.delete(path);
+      }
     }
   }
 

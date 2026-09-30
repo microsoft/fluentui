@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Invalidate cached metadata artifacts when an installed package manifest changes.",
+  "packageName": "@fluentui/api-metadata",
+  "email": "martinhochel@microsoft.com"
+}
