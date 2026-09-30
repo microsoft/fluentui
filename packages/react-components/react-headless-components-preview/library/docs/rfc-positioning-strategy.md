@@ -77,6 +77,8 @@ Default is CSS anchor positioning. If an engine is present it owns positioning e
 - Consumer effort: positioning becomes something they control manually. They have to read the documentation to learn which options need an engine and where native positioning falls short, and they have to configure it themselves.
 - Silent gaps: a dev-time warning covers engine-only options without an engine, but nothing warns about a missing engine in a browser without anchor support; the surface is simply unpositioned there.
 - Over-correction risk: the simplest safe choice is to put the floating-ui engine in the provider for the whole app, which silently gives up native positioning (and its bundle and first-paint benefits) everywhere.
+- Public commitment: `engine`, `PositioningEngine` and `PositioningEngineProvider` become consumer-facing API. Once consumers wire engines into their apps, deprecating or replacing them (for example when native anchor positioning covers enough browsers and options to make the engine unnecessary) is a breaking change, so the library no longer controls that decision.
+- Migration: moving from v9 components means adding an engine wherever the product relies on engine-only options or on browsers without anchor support; the `positioning` props alone no longer describe the behaviour.
 
 ### Option B: Automatic fallback (#36124)
 
@@ -92,6 +94,8 @@ mode = CSS.supports('anchor-name: --x') && !requiresFloatingUI(options) ? 'ancho
 - Browser behaviour: consumers write nothing browser-specific. Browsers with anchor support use CSS for eligible surfaces; the rest transparently take the fallback.
 - API: nothing to configure; `preloadPositioning()` as an escape hatch.
 - Parity: every `react-positioning` option works in every browser, once the chunk has loaded.
+- Migration: the `positioning` API is the same as in `react-positioning`, with no new concepts, so moving from v9 components needs no positioning changes.
+- Evolvability: the fallback is an implementation detail, not consumer API. The library can deprecate or replace it later (for example as browsers ship more of CSS anchor positioning) without a breaking change.
 
 #### Cons
 
@@ -114,6 +118,7 @@ mode = CSS.supports('anchor-name: --x') && !requiresFloatingUI(options) ? 'ancho
 - Browser behaviour: consumers write nothing browser-specific. Browsers with anchor support use CSS for eligible surfaces; the rest use the engine that already shipped.
 - API: nothing to configure.
 - Parity: every `react-positioning` option works in every browser on the first open.
+- Migration and evolvability: same as Option B — the `positioning` API matches `react-positioning`, and the fallback stays an implementation detail the library can replace without a breaking change.
 - Maintenance: simpler than B — no lazy loading, chunk caching, in-flight cancellation, or preload API. Still two implementations plus support detection.
 
 #### Cons
@@ -155,9 +160,13 @@ This option would add `autoSize` and overflow/flip boundaries (`overflowBoundary
 | Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                        | Partial, growing    |
 | Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                       | Growing CSS surface |
 | Consumer effort                 | Must opt in where needed             | None                                                     | None                                        | None                |
+| Migration from v9               | Add engine where needed              | Same API                                                 | Same API                                    | Same API, subset    |
+| Can change without breaking     | No (engine is public API)            | Yes (implementation detail)                              | Yes (implementation detail)                 | Yes                 |
 
 ## Proposal
 
 Adopt **Option A**: land [#36800](https://github.com/microsoft/fluentui/pull/36800)'s `engine` option and `PositioningEngineProvider`. CSS by default; an engine owns positioning when the consumer supplies one. `floatingUIPositioningEngine` stays in `@fluentui/react-positioning`.
 
 Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Automatic fallback (lazy as B, or static as C) can still be added later on top of A's contract — a provider that supplies an engine only when CSS is not enough — without changing the public `engine` API. Building either in from the start would hide the choice and make it harder to opt out of.
+
+The trade-off is that A's API is a long-term commitment: B and C keep the fallback private and could drop it later without a breaking change, whereas `engine` and the provider can only be deprecated through a major version. A keeps that commitment small by making `PositioningEngine` a minimal interface that any engine can implement, so a future engine can be added without changing the public API.
