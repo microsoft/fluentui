@@ -19,7 +19,6 @@
       "type": "string",
       "description": "Team owning the library. Will be written in CODEOWNERS",
       "enum": [
-        "@microsoft/cxe-red",
         "@microsoft/cxe-prg",
         "@microsoft/fluentui-react-build",
         "@microsoft/teams-prg",
