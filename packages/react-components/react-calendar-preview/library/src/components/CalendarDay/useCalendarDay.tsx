@@ -157,7 +157,10 @@ export const useCalendarDayBase_unstable = (
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
   let focusTargetDate: Date | undefined = navigatedDate;
   if (isRestrictedDate(navigatedDate, restrictedDatesOptions)) {
-    const visibleDates = weeks.slice(1, -1).flatMap(week => week.map(dayInfo => dayInfo.originalDate));
+    const visibleDates = weeks
+      .slice(1, -1)
+      .flatMap(week => week.map(dayInfo => dayInfo.originalDate))
+      .filter((date): date is Date => date !== null);
     const sameMonthDates = visibleDates.filter(
       date =>
         compareDatePart(date, getMonthStart(navigatedDate)) >= 0 &&
@@ -175,6 +178,21 @@ export const useCalendarDayBase_unstable = (
     };
 
     focusTargetDate = searchDirection(1) ?? searchDirection(-1);
+
+    const remainingVisibleDates = visibleDates.filter(
+      date =>
+        compareDatePart(date, getMonthStart(navigatedDate)) < 0 ||
+        compareDatePart(date, getMonthEnd(navigatedDate)) > 0,
+    );
+    focusTargetDate ??=
+      remainingVisibleDates.find(
+        date => compareDatePart(date, navigatedDate) > 0 && !isRestrictedDate(date, restrictedDatesOptions),
+      ) ??
+      remainingVisibleDates
+        .slice()
+        .reverse()
+        .find(date => compareDatePart(date, navigatedDate) < 0 && !isRestrictedDate(date, restrictedDatesOptions));
+
     focusTargetDate ??= findAvailableDate({
       ...restrictedDatesOptions,
       initialDate: addDays(getMonthEnd(navigatedDate), 1),
@@ -198,6 +216,10 @@ export const useCalendarDayBase_unstable = (
    * every relevant child ref instead, so the grid has to be able to resolve a day to its peers.
    */
   const getDayInfosInRangeOfDay = (dayToCompare: DayInfo): DayInfo[] => {
+    if (!dayToCompare.originalDate) {
+      return [];
+    }
+
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
     const dateRangeHoverType = getDateRangeTypeToUse(dateRangeType, workWeekDays, firstDayOfWeek);
 
@@ -213,9 +235,10 @@ export const useCalendarDayBase_unstable = (
     // gets all the day refs for the given dates
     return weeks.reduce((accumulatedValue: DayInfo[], currentWeek: DayInfo[]) => {
       return accumulatedValue.concat(
-        currentWeek.filter((weekDay: DayInfo) =>
-          dateRange.some((date: Date) => compareDatePart(date, weekDay.originalDate) === 0),
-        ),
+        currentWeek.filter((weekDay: DayInfo) => {
+          const date = weekDay.originalDate;
+          return date !== null && dateRange.some((rangeDate: Date) => compareDatePart(rangeDate, date) === 0);
+        }),
       );
     }, []);
   };
@@ -347,7 +370,7 @@ export const useCalendarDayBase_unstable = (
         role: 'grid',
         'aria-activedescendant': activeDescendantId,
         'aria-label': monthAndYear,
-        'aria-multiselectable': false,
+        'aria-multiselectable': dateRangeType !== 'day' || (daysToSelectInDayView ?? 1) > 1,
       },
       elementType: 'table',
     }),

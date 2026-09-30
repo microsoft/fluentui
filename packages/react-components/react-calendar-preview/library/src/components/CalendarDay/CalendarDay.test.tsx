@@ -282,6 +282,53 @@ describe('CalendarDay', () => {
     expect(document.activeElement).toBe(findDayCellByLabel(container, 17, 'September', 2020));
   });
 
+  it('focuses the next available visible date when the entire displayed month is restricted', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const restrictedDates = Array.from({ length: 30 }, (_, index) => new Date(2020, 8, index + 1));
+    const { container } = render(<CalendarDay {...defaultProps} ref={ref} />, { restrictedDates });
+
+    ref.current!.focus();
+
+    expect(document.activeElement).toBe(findDayCellByLabel(container, 1, 'October', 2020));
+  });
+
+  it.each(['week', 'month', 'workWeek'] as const)('sets aria-multiselectable for %s selection', dateRangeType => {
+    const { container } = render(<CalendarDay {...defaultProps} />, { dateRangeType });
+
+    expect(container.querySelector('[role="grid"]')).toHaveAttribute('aria-multiselectable', 'true');
+    expect(container.querySelectorAll('td[aria-selected="true"]').length).toBeGreaterThan(1);
+  });
+
+  it('sets aria-multiselectable when day selection covers multiple days', () => {
+    const { container } = render(<CalendarDay {...defaultProps} daysToSelectInDayView={2} />);
+
+    expect(container.querySelector('[role="grid"]')).toHaveAttribute('aria-multiselectable', 'true');
+  });
+
+  it('preserves focus when marked-day data changes within the displayed month', () => {
+    const initialProps = {
+      ...defaultProps,
+      navigatedDate: new Date(2020, 8, 18),
+      getMarkedDays: () => [],
+    };
+    const { container, rerender } = render(<CalendarDay {...initialProps} />);
+
+    rerender(<CalendarDay {...initialProps} navigatedDate={new Date(2020, 7, 18)} />);
+    const focusedCell = findDayCellByLabel(container, 18, 'August', 2020);
+    focusedCell.focus();
+
+    rerender(
+      <CalendarDay
+        {...initialProps}
+        navigatedDate={new Date(2020, 7, 18)}
+        getMarkedDays={() => [new Date(2020, 7, 1)]}
+      />,
+    );
+
+    expect(container.querySelector('td[data-marked]')).toHaveAttribute('data-marked');
+    expect(document.activeElement).toBe(focusedCell);
+  });
+
   it('does not select a restricted day with Enter when disabled days are focusable', () => {
     const setValue = jest.fn();
     const onNavigateDate = jest.fn();

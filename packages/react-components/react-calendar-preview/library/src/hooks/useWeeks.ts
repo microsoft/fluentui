@@ -32,9 +32,14 @@ export function useWeeks(
   const weeks = React.useMemo((): DayInfo[][] => {
     const weeksGrid = getDayGrid(props);
 
-    const firstVisibleDay = weeksGrid[1][0].originalDate;
-    const lastVisibleDay = weeksGrid[weeksGrid.length - 2][DAYS_IN_WEEK - 1].originalDate;
-    const markedDays = props.getMarkedDays?.(firstVisibleDay, lastVisibleDay) || [];
+    const visibleDates = weeksGrid
+      .slice(1, -1)
+      .flatMap(week => week.map(day => day.originalDate))
+      .filter((date): date is Date => date !== null);
+    const markedDays =
+      visibleDates.length > 0
+        ? props.getMarkedDays?.(visibleDates[0], visibleDates[visibleDates.length - 1]) || []
+        : [];
 
     /**
      * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
@@ -47,11 +52,17 @@ export function useWeeks(
       const week: DayInfo[] = [];
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
         const day = weeksGrid[weekIndex][dayIndex];
+        const dayDate = day.originalDate;
         const dayInfo: DayInfo = {
-          onSelected: ev => onSelectDate(ev, day.originalDate),
+          onSelected: ev => {
+            if (dayDate) {
+              onSelectDate(ev, dayDate);
+            }
+          },
           setRef: getSetRefCallback(day.key),
           ...day,
-          isMarked: day.isMarked || markedDays?.some(markedDay => compareDatePart(day.originalDate, markedDay) === 0),
+          isMarked:
+            day.isMarked || (!!dayDate && markedDays?.some(markedDay => compareDatePart(dayDate, markedDay) === 0)),
         };
 
         week.push(dayInfo);

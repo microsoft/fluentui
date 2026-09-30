@@ -32,17 +32,18 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
   let firstOfMonthIndex = -1;
   const firstWeekOfMonth = weeks[1];
   for (let i = 0; i < firstWeekOfMonth.length; i++) {
-    if (firstWeekOfMonth[i].originalDate.getDate() === 1) {
+    if (firstWeekOfMonth[i].originalDate?.getDate() === 1) {
       firstOfMonthIndex = i;
       break;
     }
   }
 
-  if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+  const firstOfMonthDate = firstOfMonthIndex >= 0 ? firstWeekOfMonth[firstOfMonthIndex].originalDate : null;
+  if (weeksToShow === 1 && firstOfMonthDate) {
     // if we only show one week, replace the header with short month name
     const firstOfMonthIndexOffset = (firstOfMonthIndex + firstDayOfWeekIndex) % DAYS_IN_WEEK;
     shortDays[firstOfMonthIndexOffset] = formatters.dateTime({
-      date: firstWeekOfMonth[firstOfMonthIndex].originalDate,
+      date: firstOfMonthDate,
       format: 'shortMonth',
     });
   }

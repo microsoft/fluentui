@@ -62,16 +62,18 @@ export const useCalendarDayGridCell_unstable = (
   const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
   const weekCorners = useCalendarDayContext_unstable(ctx => ctx.weekCorners);
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
-  const cellProps = { ...(!ariaHidden ? getDayCellProps?.(day.originalDate) : undefined), ...rest };
+  const originalDate = day.originalDate;
+  const cellProps = { ...(!ariaHidden && originalDate ? getDayCellProps?.(originalDate) : undefined), ...rest };
 
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
-  const isFocusTargetDate = focusTargetDate ? compareDatePart(focusTargetDate, day.originalDate) === 0 : false;
+  const isFocusTargetDate =
+    focusTargetDate && originalDate ? compareDatePart(focusTargetDate, originalDate) === 0 : false;
 
   const { dir } = useFluent_unstable();
 
   const navigateMonthEdge = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
     let targetDate: Date | undefined = undefined;
-    let direction = 1; // by default search forward
+    let direction: 1 | -1 = 1; // by default search forward
 
     if (ev.key === ArrowUp) {
       targetDate = addWeeks(date, -1);
@@ -107,7 +109,7 @@ export const useCalendarDayGridCell_unstable = (
 
     if (!nextDate) {
       // if no dates available in initial direction, try going backwards
-      findAvailableDateOptions.direction = -direction;
+      findAvailableDateOptions.direction = direction === 1 ? -1 : 1;
       nextDate = findAvailableDate(findAvailableDateOptions);
     }
 
@@ -120,7 +122,8 @@ export const useCalendarDayGridCell_unstable = (
       nextDate &&
       weeks.slice(1, weeks.length - 1).some((week: DayInfo[]) => {
         return week.some((dayToCompare: DayInfo) => {
-          return compareDatePart(dayToCompare.originalDate, nextDate!) === 0;
+          const dayDate = dayToCompare.originalDate;
+          return dayDate !== null && compareDatePart(dayDate, nextDate) === 0;
         });
       });
     if (isInCurrentView) {
@@ -196,6 +199,10 @@ export const useCalendarDayGridCell_unstable = (
   };
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (!originalDate) {
+      return;
+    }
+
     if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
       ev.preventDefault();
       /*
@@ -204,15 +211,15 @@ export const useCalendarDayGridCell_unstable = (
        */
       day.onSelected(ev);
     } else {
-      navigateMonthEdge(ev, day.originalDate);
+      navigateMonthEdge(ev, originalDate);
     }
   };
 
-  const formattedDate = formatters.dateTime({ date: day.originalDate, format: 'dayMonthYear' });
+  const formattedDate = originalDate ? formatters.dateTime({ date: originalDate, format: 'dayMonthYear' }) : day.date;
   let ariaLabel = formattedDate;
 
-  if (day.isMarked) {
-    ariaLabel = formatters.dayMarkedLabel({ date: day.originalDate, formattedDate });
+  if (day.isMarked && originalDate) {
+    ariaLabel = formatters.dayMarkedLabel({ date: originalDate, formattedDate });
   }
 
   const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
@@ -295,7 +302,9 @@ export const useCalendarDayGridCell_unstable = (
       elementType: 'button',
     }),
     dayLabel: slot.always(cellProps.dayLabel, {
-      defaultProps: { children: formatters.dateTime({ date: day.originalDate, format: 'day' }) },
+      defaultProps: {
+        children: originalDate ? formatters.dateTime({ date: originalDate, format: 'day' }) : day.date,
+      },
       elementType: 'span',
     }),
     marker: slot.optional(cellProps.marker, {
