@@ -1,9 +1,9 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { mergeCallbacks, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useComboboxExpandIconSlot, useInputTriggerSlot } from '@fluentui/react-combobox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
-import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { Listbox } from '../Dropdown/Listbox';
 import { toDataAttributeValue } from '../../utils';
 import { useListboxPopupState } from '../Dropdown/useListboxPopupState';
@@ -64,13 +64,67 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       elementType: 'span',
       renderByDefault: true,
     }),
-    expandIcon: slot.optional(mergedProps.expandIcon, {
-      renderByDefault: true,
-      elementType: 'span',
+    expandIcon: useComboboxExpandIconSlot(mergedProps.expandIcon, {
+      disabled,
+      open,
+      'aria-label': mergedProps['aria-label'],
+      'aria-labelledby': mergedProps['aria-labelledby'],
+      triggerLabelledBy: triggerSlot['aria-labelledby'],
     }),
     showClearIcon,
     activeDescendantController,
   };
+
+  const openOnPointerDownRef = React.useRef(open);
+  const hasExpandIconMouseDownRef = React.useRef(false);
+  React.useEffect(() => {
+    openOnPointerDownRef.current = open;
+  }, [open]);
+
+  const onExpandIconMouseDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
+      event.preventDefault();
+      hasExpandIconMouseDownRef.current = true;
+      openOnPointerDownRef.current = open;
+    }),
+  );
+
+  const onExpandIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      event.preventDefault();
+      const wasOpenOnPointerDown = hasExpandIconMouseDownRef.current && openOnPointerDownRef.current;
+      const nextOpen = hasExpandIconMouseDownRef.current ? !openOnPointerDownRef.current : !open;
+      hasExpandIconMouseDownRef.current = false;
+      openOnPointerDownRef.current = nextOpen;
+      // A pointer interaction that starts while open light-dismisses the native popover on pointerup.
+      // Let the popover's toggle event issue the close notification so onOpenChange fires only once.
+      if (!disabled && !wasOpenOnPointerDown) {
+        internalState.setOpen(event, nextOpen);
+      }
+      triggerRef.current?.focus();
+    }),
+  );
+
+  const onExpandIconKeyDown = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        const nextOpen = !open;
+        openOnPointerDownRef.current = nextOpen;
+        internalState.setOpen(event, nextOpen);
+        triggerRef.current?.focus();
+      }
+    }),
+  );
+
+  if (state.expandIcon) {
+    state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
+    state.expandIcon.onKeyDown = onExpandIconKeyDown;
+  }
 
   const onClearIconMouseDown = useEventCallback(
     mergeCallbacks(state.clearIcon?.onMouseDown, (ev: React.MouseEvent<HTMLSpanElement>) => {
