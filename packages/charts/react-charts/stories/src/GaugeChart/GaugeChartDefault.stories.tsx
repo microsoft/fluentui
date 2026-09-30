@@ -32,7 +32,7 @@ export const GaugeChartBasic = (): JSXElement => {
   const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
   const [roundedCorners, setRoundedCorners] = React.useState<boolean>(false);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState<boolean>(false);
-  const [useCustomCallout, setUseCustomCallout] = React.useState<boolean>(false);
+  const [useMilliseconds, setUseMilliseconds] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -59,8 +59,8 @@ export const GaugeChartBasic = (): JSXElement => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
 
-  const _onSwitchCustomCallout = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
-    setUseCustomCallout(ev.currentTarget.checked);
+  const _onSwitchValueFormat = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+    setUseMilliseconds(ev.currentTarget.checked);
   }, []);
 
   const _renderCallout = (data?: GaugeChartCalloutData): JSXElement | null => {
@@ -153,9 +153,9 @@ export const GaugeChartBasic = (): JSXElement => {
         />
         &nbsp;&nbsp;
         <Switch
-          label={useCustomCallout ? 'Custom callout ON' : 'Custom callout OFF'}
-          checked={useCustomCallout}
-          onChange={_onSwitchCustomCallout}
+          label={useMilliseconds ? 'Value format: milliseconds' : 'Value format: percentage'}
+          checked={useMilliseconds}
+          onChange={_onSwitchValueFormat}
         />
       </div>
 
@@ -181,7 +181,7 @@ export const GaugeChartBasic = (): JSXElement => {
         ]}
         chartTitle="Server tick time"
         chartValue={chartValue}
-        chartValueFormat={useCustomCallout ? ([value]) => (value === 0 ? 'offline' : `${value}ms`) : 'percentage'}
+        chartValueFormat={useMilliseconds ? ([value]) => (value === 0 ? 'offline' : `${value}ms`) : 'percentage'}
         hideMinMax={hideMinMax}
         variant={'multiple-segments'}
         enableGradient={enableGradient}
@@ -189,7 +189,7 @@ export const GaugeChartBasic = (): JSXElement => {
         legendProps={{
           canSelectMultipleLegends: legendMultiSelect,
         }}
-        onRenderCallout={useCustomCallout ? _renderCallout : undefined}
+        onRenderCallout={useMilliseconds ? _renderCallout : undefined}
       />
     </>
   );
