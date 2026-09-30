@@ -1,9 +1,17 @@
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName as ListboxTagName } from '../listbox/listbox.options.js';
 import { tagName as OptionTagName } from '../option/option.options.js';
-import { tagName as TooltipTagName } from '../tooltip/tooltip.options.js';
 import type { Dropdown } from './dropdown.js';
 import { tagName } from './dropdown.options.js';
+
+const getAnchorNames = (dropdown: HTMLElement, listboxTagName: string) => ({
+  dropdown: dropdown.style.getPropertyValue('anchor-name'),
+  listbox: dropdown.querySelector<HTMLElement>(listboxTagName)?.style.getPropertyValue('position-anchor') ?? '',
+});
+
+const appendListbox = (dropdown: HTMLElement, listboxTagName: string) => {
+  dropdown.append(document.createElement(listboxTagName));
+};
 
 test.describe('Dropdown', () => {
   test.use({
@@ -20,7 +28,7 @@ test.describe('Dropdown', () => {
         <${OptionTagName} value="papaya">Papaya</${OptionTagName}>
       </${ListboxTagName}>
     `,
-    waitFor: [ListboxTagName, OptionTagName, TooltipTagName],
+    waitFor: [ListboxTagName, OptionTagName],
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -56,46 +64,44 @@ test.describe('Dropdown', () => {
     await expect(options).toHaveCount(8);
   });
 
-  test('should preserve the tooltip anchor when the listbox connects later', async ({ fastPage }) => {
+  test.describe('when the dropdown already participates in anchor positioning before it has a listbox', () => {
+    test.beforeEach(async ({ page }) => {
+      const supported = await page.evaluate(() => CSS.supports('anchor-name', '--a'));
+      test.skip(!supported, 'CSS anchor positioning is not supported');
+    });
+
+    test('should preserve the existing anchor name', async ({ fastPage }) => {
+      const { element } = fastPage;
+
+      await fastPage.setTemplate({ attributes: { style: 'anchor-name: --consumer-anchor' }, innerHTML: '' });
+
+      await element.evaluate(appendListbox, ListboxTagName);
+
+      await expect
+        .poll(() => element.evaluate(getAnchorNames, ListboxTagName))
+        .toEqual({ dropdown: '--consumer-anchor', listbox: '--consumer-anchor' });
+    });
+  });
+
+  test('should generate a shared anchor name when the dropdown has no anchor name', async ({ fastPage, page }) => {
     const { element } = fastPage;
-    const tooltip = element.locator(TooltipTagName);
 
-    await fastPage.setTemplate(/* html */ `
-      <${tagName} id="target">
-        <${TooltipTagName} anchor="target">Tooltip content</${TooltipTagName}>
-      </${tagName}>
-    `);
+    const supported = await page.evaluate(() => CSS.supports('anchor-name', '--a'));
+    test.skip(!supported, 'CSS anchor positioning is not supported');
 
-    await element.evaluate((dropdown, listboxTagName) => {
-      dropdown.append(document.createElement(listboxTagName));
-    }, ListboxTagName);
+    await fastPage.setTemplate({ innerHTML: '' });
 
-    await expect(tooltip).toHaveCount(1);
-    await expect(element.locator(ListboxTagName)).toHaveCount(1);
+    await element.evaluate(appendListbox, ListboxTagName);
 
-    const anchorNames = await element.evaluate(
-      (dropdown: HTMLElement, [tooltipTagName, listboxTagName]: [string, string]) => {
-        const tooltipElement = dropdown.querySelector<HTMLElement>(tooltipTagName);
-        const listboxElement = dropdown.querySelector<HTMLElement>(listboxTagName);
+    await expect
+      .poll(() => element.evaluate(getAnchorNames, ListboxTagName))
+      .toEqual({
+        dropdown: expect.stringMatching(/^--dropdown-anchor-/),
+        listbox: expect.stringMatching(/^--dropdown-anchor-/),
+      });
 
-        if (!tooltipElement || !listboxElement) {
-          throw new Error('Expected the tooltip and listbox to be connected to the dropdown');
-        }
-
-        return {
-          dropdownAnchorName: dropdown.style.getPropertyValue('anchor-name'),
-          listboxPositionAnchor: listboxElement.style.getPropertyValue('position-anchor'),
-          tooltipPositionAnchor: tooltipElement.style.getPropertyValue('position-anchor'),
-          tooltipAnchor: tooltipElement.getAttribute('anchor'),
-          dropdownId: dropdown.id,
-        };
-      },
-      [TooltipTagName, ListboxTagName],
-    );
-
-    expect(anchorNames.listboxPositionAnchor).toBe(anchorNames.dropdownAnchorName);
-    expect([anchorNames.dropdownAnchorName, '']).toContain(anchorNames.tooltipPositionAnchor);
-    expect(anchorNames.tooltipAnchor).toBe(anchorNames.dropdownId);
+    const anchorNames = await element.evaluate(getAnchorNames, ListboxTagName);
+    expect(anchorNames.listbox).toBe(anchorNames.dropdown);
   });
 
   test('should render a dropdown with a button when the type is not specified', async ({ fastPage }) => {

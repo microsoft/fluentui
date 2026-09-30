@@ -210,12 +210,6 @@ export class BaseDropdown extends FASTElement {
   @observable
   public listbox!: Listbox;
 
-  private anchorPositioningName?: string;
-
-  private getAnchorPositioningName(): string {
-    return (this.anchorPositioningName ??= uniqueId('--dropdown-anchor-'));
-  }
-
   /**
    * Updates properties on the listbox element when the listbox reference changes.
    *
@@ -257,7 +251,9 @@ export class BaseDropdown extends FASTElement {
       });
 
       if (AnchorPositioningCSSSupported) {
-        const anchorName = this.getAnchorPositioningName();
+        // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
+        // It's unclear if the spec requires the `anchor-name` to be unique when styled on the `:host`.
+        const anchorName = this.style.getPropertyValue('anchor-name') || uniqueId('--dropdown-anchor-');
         this.style.setProperty('anchor-name', anchorName);
         this.listbox.style.setProperty('position-anchor', anchorName);
       }
@@ -1108,11 +1104,6 @@ export class BaseDropdown extends FASTElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    if (AnchorPositioningCSSSupported) {
-      // Keep the host's anchor name stable and available before the slotted listbox connects.
-      this.style.setProperty('anchor-name', this.getAnchorPositioningName());
-    }
 
     Updates.enqueue(() => {
       this.insertControl();
