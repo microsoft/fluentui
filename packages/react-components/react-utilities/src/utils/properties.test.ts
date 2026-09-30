@@ -104,15 +104,12 @@ describe('getNativeProps', () => {
     expect(getNativeProps({ allowed: 'safe', inherited: 'unsafe' }, allowedPropNames)).toEqual({ allowed: 'safe' });
   });
 
-  it('does not change the result prototype when __proto__ is explicitly allowed', () => {
-    const prototype = { inherited: true };
-    const props = JSON.parse(`{"__proto__":${JSON.stringify(prototype)}}`) as Record<string, unknown>;
+  it('rejects __proto__ even when it is explicitly allowed', () => {
+    const props = JSON.parse('{"__proto__":{"inherited":true}}') as Record<string, unknown>;
     const result = getNativeProps<Record<string, unknown>>(props, ['__proto__']);
 
+    expect(result).toEqual({});
     expect(Object.getPrototypeOf(result)).toBe(Object.prototype);
-    expect(Object.prototype.hasOwnProperty.call(result, '__proto__')).toBe(true);
-    expect(Object.getOwnPropertyDescriptor(result, '__proto__')?.value).toEqual(prototype);
-    expect(({} as { inherited?: boolean }).inherited).toBeUndefined();
   });
 
   it('can pass through anchor props including referrerPolicy', () => {

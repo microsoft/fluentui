@@ -477,18 +477,9 @@ export function getNativeProps<T extends Record<string, any>>(
       key.indexOf('data-') === 0 ||
       key.indexOf('aria-') === 0;
 
-    if (isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
-      if (key === '__proto__') {
-        Object.defineProperty(result, key, {
-          configurable: true,
-          enumerable: true,
-          value: props[key],
-          writable: true,
-        });
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        result[key] = props[key] as any;
-      }
+    if (key !== '__proto__' && isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      result[key] = props[key] as any;
     }
   }
 
