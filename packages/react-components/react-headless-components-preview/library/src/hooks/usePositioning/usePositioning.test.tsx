@@ -89,7 +89,7 @@ describe('usePositioning', () => {
     expect(node).toHaveStyle({ positionArea: 'block-end span-inline-end' });
   });
 
-  it('containerRef writes position: absolute by default and clears the UA inset/margin defaults', () => {
+  it('containerRef writes position: fixed by default and clears the UA inset/margin defaults', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
@@ -391,6 +391,25 @@ describe('usePositioning', () => {
 
       expect(engine.create).toHaveBeenCalledTimes(1);
       expect(getByTestId('target').style.getPropertyValue('anchor-name')).toBe('');
+
+      const container = getByTestId('container');
+      expect(container.style.getPropertyValue('position-anchor')).toBe('');
+      expect(container.style.getPropertyValue('position-area')).toBe('');
+      expect(container.style.getPropertyValue('position-try-fallbacks')).toBe('');
+      expect(container.style.getPropertyValue('place-self')).toBe('');
+      expect(container.style.position).toBe('');
+      expect(container).toHaveAttribute('data-placement', 'below');
+    });
+
+    it('switches back to CSS anchor positioning when the engine is removed', () => {
+      const engine = createFakeEngine();
+      const { rerender, getByTestId } = render(<Surface positioning={{ position: 'below', engine }} />);
+
+      rerender(<Surface positioning={{ position: 'below' }} />);
+
+      expect(engine.manager.dispose).toHaveBeenCalledTimes(1);
+      expect(getByTestId('target').style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+      expect(getByTestId('container').style.getPropertyValue('position-anchor')).toMatch(/^--popover-anchor-/);
     });
 
     it('warns in development when engine-only options are used without an engine', () => {

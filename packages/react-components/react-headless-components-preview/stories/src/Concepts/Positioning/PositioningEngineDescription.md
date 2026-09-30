@@ -36,4 +36,8 @@ interface PositioningEngine {
 
 `create()` is called from a layout effect once the elements exist and disposed when they change or unmount. It is a plain object, never a hook, so it can come from props or context and change identity freely. An engine **replaces** CSS anchor positioning entirely: it owns every option, including the ones CSS also supports, so two positioners never mix.
 
-The engine keeps the container positioned (including releasing the UA top-layer `inset: 0; margin: auto` that `[popover]` and `dialog:modal` receive) and keeps the container's `data-placement` current with the resolved **logical** placement (`above-start`, `after-top`, …), so placement-keyed CSS and arrows work the same way as with CSS anchor positioning.
+The engine keeps the container positioned (including releasing the UA top-layer `inset: 0; margin: auto` that `[popover]` and `dialog:modal` receive) and keeps the container's `data-placement` current with the resolved **logical** placement (`above-start`, `after-top`, …), so placement-keyed CSS and arrows work the same way as with CSS anchor positioning. On `dispose` it restores the inline styles and attributes it wrote, so switching between an engine and CSS anchor positioning at runtime hands over a clean element.
+
+### Arrows
+
+With `withArrow`, the engine positions the arrow along the surface edge (`arrowPadding` keeps it away from rounded corners), but headless components have no built-in arrow size, so the gap between the surface and the target is not adjusted for it. Set `offset` to at least the arrow's protruding size, e.g. `positioning={{ offset: 8 }}` for an 8px arrow.

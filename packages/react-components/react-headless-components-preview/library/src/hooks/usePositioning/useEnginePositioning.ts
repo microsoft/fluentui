@@ -120,7 +120,15 @@ export function useEnginePositioning(options: UseEnginePositioningOptions): UseE
   const onPositioningEnd = useEventCallback((event: OnPositioningEndEvent) => options.onPositioningEnd?.(event));
 
   useIsomorphicLayoutEffect(() => {
-    if (!engine || !containerEl || !effectiveTarget || !canUseDOM()) {
+    if (!engine || !containerEl || !canUseDOM()) {
+      return;
+    }
+
+    // Seed the requested placement so placement-keyed styling is right before the engine's first
+    // (asynchronous) update reports the resolved one. The engine snapshots it and restores it on dispose.
+    containerEl.setAttribute('data-placement', initialPlacement);
+
+    if (!effectiveTarget) {
       return;
     }
 
@@ -138,7 +146,17 @@ export function useEnginePositioning(options: UseEnginePositioningOptions): UseE
       manager.dispose();
       managerRef.current = null;
     };
-  }, [engine, containerEl, effectiveTarget, arrowEl, stableOptions, onPositioningEnd, dir, targetDocument]);
+  }, [
+    engine,
+    containerEl,
+    effectiveTarget,
+    arrowEl,
+    stableOptions,
+    onPositioningEnd,
+    dir,
+    targetDocument,
+    initialPlacement,
+  ]);
 
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
@@ -148,18 +166,9 @@ export function useEnginePositioning(options: UseEnginePositioningOptions): UseE
     setArrowEl(node);
   }, []);
 
-  const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
-    node => {
-      setContainerEl(node);
-
-      // Seed the requested placement so placement-keyed styling is right before the engine's first
-      // (asynchronous) update reports the resolved one.
-      if (node && enabled) {
-        node.setAttribute('data-placement', initialPlacement);
-      }
-    },
-    [enabled, initialPlacement],
-  );
+  const containerRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
+    setContainerEl(node);
+  }, []);
 
   const setTarget = React.useCallback((el: TargetElement | null) => {
     setImperativeTarget(el);

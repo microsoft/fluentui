@@ -28,6 +28,36 @@ const readAnchorNames = (element: HTMLElement): string[] => {
     .filter(Boolean);
 };
 
+/**
+ * Inline styles written by `containerRef`, removed when CSS anchor positioning stops owning the
+ * container so that a positioning engine takes over a clean element.
+ */
+const CONTAINER_STYLE_PROPERTIES = [
+  'position',
+  'inset',
+  'margin',
+  'margin-block-start',
+  'margin-block-end',
+  'margin-inline-start',
+  'margin-inline-end',
+  'position-anchor',
+  'position-area',
+  'position-try-fallbacks',
+  'place-self',
+  'align-self',
+  'justify-self',
+];
+
+const MATCH_TARGET_WIDTH = 'anchor-size(width)';
+
+const clearAnchorStyles = (container: HTMLElement): void => {
+  CONTAINER_STYLE_PROPERTIES.forEach(property => container.style.removeProperty(property));
+  if (container.style.getPropertyValue('width') === MATCH_TARGET_WIDTH) {
+    container.style.removeProperty('width');
+  }
+  container.removeAttribute('data-placement');
+};
+
 export type UseCssAnchorPositioningOptions = Pick<
   PositioningProps,
   | 'align'
@@ -124,6 +154,17 @@ export function useCssAnchorPositioning(options: UseCssAnchorPositioningOptions)
     };
   }, [effectiveTarget, anchorName]);
 
+  // Styles are written from `containerRef`; release them when this hook stops owning the container
+  // (an engine took over, or the container changed). Layout-effect cleanups run before the next
+  // positioner's layout effects, so the handover happens within a single commit.
+  useIsomorphicLayoutEffect(() => {
+    if (!enabled || !containerEl) {
+      return;
+    }
+
+    return () => clearAnchorStyles(containerEl);
+  }, [enabled, containerEl]);
+
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
   }, []);
@@ -143,7 +184,7 @@ export function useCssAnchorPositioning(options: UseCssAnchorPositioningOptions)
       applyOffset(node, position, mainAxis, crossAxis);
 
       if (matchTargetSize === 'width') {
-        node.style.setProperty('width', 'anchor-size(width)');
+        node.style.setProperty('width', MATCH_TARGET_WIDTH);
       } else {
         node.style.removeProperty('width');
       }

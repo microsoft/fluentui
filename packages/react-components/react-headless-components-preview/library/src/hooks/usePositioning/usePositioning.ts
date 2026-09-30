@@ -37,6 +37,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const { engine: engineFromOptions, positioningRef, ...positioningOptions } = options;
   const engineFromContext = usePositioningEngineContext();
   const engine = engineFromOptions ?? engineFromContext;
+  // Headless surfaces render in the top layer, so both positioners default to `fixed` (the v9 engine
+  // default would otherwise be `absolute`).
   const strategy = positioningOptions.strategy ?? 'fixed';
 
   const unsupportedOptions = engine
