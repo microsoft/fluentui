@@ -16,7 +16,7 @@ const avatarData = [
 const renderAvatarsWithTransition = () => {
   return avatarData.map(avatar => (
     <Scale
-      outScale={0}
+      fromScale={0}
       duration={600}
       exitDuration={300}
       easing={curveOvershootFirmOut}

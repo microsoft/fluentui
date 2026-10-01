@@ -13,10 +13,12 @@ import type { SlideParams } from './slide-types';
  * @param exitDuration - Time (ms) for the exit transition (slide-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (slide-out). Defaults to the `curveAccelerateMid` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outX - X translate for the out pose. Defaults to `'0px'`.
- * @param outY - Y translate for the out pose. Defaults to `'0px'`.
+ * @param fromX - X translate before entering. Defaults to `'0px'`.
+ * @param fromY - Y translate before entering. Defaults to `'0px'`.
  * @param inX - X translate for the in pose. Defaults to `'0px'`.
  * @param inY - Y translate for the in pose. Defaults to `'0px'`.
+ * @param toX - X translate after exiting. Defaults to `fromX` when no destination is authored.
+ * @param toY - Y translate after exiting. Defaults to `fromY` when no destination is authored.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
@@ -26,19 +28,22 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMid,
   exitDelay = delay,
-  outX = '0px',
-  outY = '0px',
+  fromX = '0px',
+  fromY = '0px',
   inX = '0px',
   inY = '0px',
+  toX = fromX,
+  toY = fromY,
   animateOpacity = true,
 }: SlideParams) => {
-  const outPose = { x: outX, y: outY };
+  const fromPose = { x: fromX, y: fromY };
   const inPose = { x: inX, y: inY };
-  const enterAtoms = [slide({ from: outPose, to: inPose, duration, easing, delay })];
+  const toPose = { x: toX, y: toY };
+  const enterAtoms = [slide({ from: fromPose, to: inPose, duration, easing, delay })];
   const exitAtoms = [
     slide({
       from: inPose,
-      to: outPose,
+      to: toPose,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
@@ -58,7 +63,12 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
 };
 
 /** A React component that applies slide in/out transitions to its children. */
-export const Slide = createPresenceComponent(slidePresenceFn);
+export const Slide = createPresenceComponent(slidePresenceFn, {
+  poses: [
+    { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+    { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+  ],
+});
 
 export const SlideSnappy = createPresenceComponentVariant(Slide, {
   easing: motionTokens.curveDecelerateMax,

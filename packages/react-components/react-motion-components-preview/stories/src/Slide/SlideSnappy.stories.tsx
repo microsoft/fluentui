@@ -55,7 +55,7 @@ export const Snappy = (): JSXElement => {
         </Field>
       </div>
 
-      <SlideSnappy visible={visible} outY="20px">
+      <SlideSnappy visible={visible} fromY="20px">
         <Card className={classes.card}>
           <CardHeader
             header={

@@ -13,8 +13,9 @@ import type { ScaleParams } from './scale-types';
  * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
  * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outScale - Scale for the out pose. Defaults to `0.9`.
+ * @param fromScale - Scale before entering. Defaults to `0.9`.
  * @param inScale - Scale for the in pose. Defaults to `1`.
+ * @param toScale - Scale after exiting. Defaults to `fromScale`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
@@ -24,15 +25,16 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   exitDuration = motionTokens.durationNormal,
   exitEasing = motionTokens.curveAccelerateMax,
   exitDelay = delay,
-  outScale = 0.9,
+  fromScale = 0.9,
   inScale = 1,
+  toScale = fromScale,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [scale({ from: outScale, to: inScale, duration, easing, delay })];
+  const enterAtoms = [scale({ from: fromScale, to: inScale, duration, easing, delay })];
   const exitAtoms = [
     scale({
       from: inScale,
-      to: outScale,
+      to: toScale,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
@@ -52,7 +54,9 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
 };
 
 /** A React component that applies scale in/out transitions to its children. */
-export const Scale = createPresenceComponent(scalePresenceFn);
+export const Scale = createPresenceComponent(scalePresenceFn, {
+  poses: [{ from: 'fromScale', in: 'inScale', to: 'toScale' }],
+});
 
 export const ScaleSnappy = createPresenceComponentVariant(Scale, {
   duration: motionTokens.durationNormal,

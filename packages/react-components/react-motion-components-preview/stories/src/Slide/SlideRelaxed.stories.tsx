@@ -55,7 +55,7 @@ export const Relaxed = (): JSXElement => {
         </Field>
       </div>
 
-      <SlideRelaxed visible={visible} outY="20px">
+      <SlideRelaxed visible={visible} fromY="20px">
         <Card className={classes.card}>
           <CardHeader
             header={

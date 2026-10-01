@@ -69,7 +69,7 @@ export const Text = (): JSXElement => {
           {/* Create a list of items, each wrapped with a presence transition */}
           {Array.from({ length: 4 }, (_, i) => (
             <Scale
-              outScale={outScale}
+              fromScale={outScale}
               duration={1200}
               exitDuration={1200}
               easing={motionTokens.curveDecelerateMax}

@@ -47,7 +47,7 @@ describe('Fade motion component', () => {
 
   it('preserves custom opacity poses and independent exit timing', () => {
     const params = {
-      outOpacity: 0.2,
+      fromOpacity: 0.2,
       inOpacity: 0.7,
       duration: 300,
       easing: 'ease-out',
@@ -80,6 +80,42 @@ describe('Fade motion component', () => {
       expect.objectContaining({ duration: 150, easing: 'ease-in', delay: 25, fill: 'both' }),
     );
   });
+
+  it('enters from the source pose and exits toward an independent destination', () => {
+    const params = { fromOpacity: 0.2, inOpacity: 0.7, toOpacity: 0.4 };
+    const { rerender } = render(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    rerender(
+      <Fade {...params} visible>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith([{ opacity: 0.2 }, { opacity: 0.7 }], expect.any(Object));
+    rerender(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith([{ opacity: 0.7 }, { opacity: 0.4 }], expect.any(Object));
+  });
+
+  it.each([Fade.In, Fade.Out, FadeSnappy.In, FadeRelaxed.Out])(
+    'plays both authored endpoints with ordinary timing on directional components',
+    Motion => {
+      render(
+        <Motion fromOpacity={0.7} toOpacity={0} duration={123} easing="ease-in" delay={25}>
+          {testElement}
+        </Motion>,
+      );
+      expect(animateSpy).toHaveBeenLastCalledWith(
+        [{ opacity: 0.7 }, { opacity: 0 }],
+        expect.objectContaining({ duration: 123, easing: 'ease-in', delay: 25 }),
+      );
+    },
+  );
 
   it('should render Snappy variant of Fade component with correct opacity keyframes, duration and easing', () => {
     const { rerender } = render(<FadeSnappy visible={false}>{testElement}</FadeSnappy>);

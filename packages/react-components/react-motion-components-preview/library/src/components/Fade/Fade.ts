@@ -12,8 +12,9 @@ import type { FadeParams } from './fade-types';
  * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outOpacity - Opacity for the out pose. Defaults to 0.
+ * @param fromOpacity - Opacity before entering. Defaults to 0.
  * @param inOpacity - Opacity for the in pose. Defaults to 1.
+ * @param toOpacity - Opacity after exiting. Defaults to `fromOpacity`.
  */
 export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
@@ -22,14 +23,15 @@ export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   exitDuration = duration,
   exitEasing = easing,
   exitDelay = delay,
-  outOpacity = 0,
+  fromOpacity = 0,
   inOpacity = 1,
+  toOpacity = fromOpacity,
 }) => {
   return {
-    enter: fade({ from: outOpacity, to: inOpacity, duration, easing, delay }),
+    enter: fade({ from: fromOpacity, to: inOpacity, duration, easing, delay }),
     exit: fade({
       from: inOpacity,
-      to: outOpacity,
+      to: toOpacity,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
@@ -38,7 +40,9 @@ export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
 };
 
 /** A React component that applies fade in/out transitions to its children. */
-export const Fade = createPresenceComponent(fadePresenceFn);
+export const Fade = createPresenceComponent(fadePresenceFn, {
+  poses: [{ from: 'fromOpacity', in: 'inOpacity', to: 'toOpacity' }],
+});
 
 export const FadeSnappy = createPresenceComponentVariant(Fade, { duration: motionTokens.durationFast });
 

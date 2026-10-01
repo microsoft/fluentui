@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Update internal presence motions to use the renamed temporal endpoint props.",
+  "packageName": "@fluentui/react-dialog",
+  "email": "robert@robertpenner.com"
+}
