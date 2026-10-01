@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render as testingRender, fireEvent } from '@testing-library/react';
+import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarDay } from './CalendarDay';
 import { CalendarProvider, calendarContextDefaultValue } from '../../index';
 import { calendarDayClassNames } from './useCalendarDayStyles.styles';
@@ -15,19 +16,25 @@ const defaultProps: CalendarDayProps = {
   onNavigateDate: jest.fn(),
 };
 
-const render = (element: React.ReactElement, contextValue: Partial<CalendarContextValue> = {}) =>
+const render = (
+  element: React.ReactElement,
+  contextValue: Partial<CalendarContextValue> = {},
+  dir: 'ltr' | 'rtl' = 'ltr',
+) =>
   testingRender(element, {
     wrapper: ({ children }) => (
-      <CalendarProvider
-        value={{
-          ...calendarContextDefaultValue,
-          firstWeekOfYear: 'firstFullWeek',
-          value: new Date(2020, 8, 18),
-          ...contextValue,
-        }}
-      >
-        {children}
-      </CalendarProvider>
+      <Provider_unstable value={{ dir }}>
+        <CalendarProvider
+          value={{
+            ...calendarContextDefaultValue,
+            firstWeekOfYear: 'firstFullWeek',
+            value: new Date(2020, 8, 18),
+            ...contextValue,
+          }}
+        >
+          {children}
+        </CalendarProvider>
+      </Provider_unstable>
     ),
   });
 
@@ -530,6 +537,160 @@ describe('CalendarDay', () => {
         );
       },
     );
+
+    it('moves repeatedly backward and forward across a skipped local date', () => {
+      const skippedDecember30 = new Date(2011, 11, 30).getDate() !== 30;
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(2011, 11, 31)} onNavigateDate={jest.fn()} />,
+        { value: new Date(2011, 11, 31) },
+      );
+      const december31 = findDayCellByLabel(container, 31, 'December', 2011);
+      const firstEarlierDate = findDayCellByLabel(container, skippedDecember30 ? 29 : 30, 'December', 2011);
+      const secondEarlierDate = findDayCellByLabel(container, skippedDecember30 ? 28 : 29, 'December', 2011);
+      december31.focus();
+
+      fireEvent.keyDown(december31, { key: 'ArrowLeft' });
+      expect(document.activeElement).toBe(firstEarlierDate);
+      fireEvent.keyDown(firstEarlierDate, { key: 'ArrowLeft' });
+      expect(document.activeElement).toBe(secondEarlierDate);
+      fireEvent.keyDown(secondEarlierDate, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(firstEarlierDate);
+      fireEvent.keyDown(firstEarlierDate, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(december31);
+    });
+
+    it('moves backward across a skipped local date with RTL ArrowRight', () => {
+      const skippedDecember30 = new Date(2011, 11, 30).getDate() !== 30;
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(2011, 11, 31)} onNavigateDate={jest.fn()} />,
+        { value: new Date(2011, 11, 31) },
+        'rtl',
+      );
+      const dayCell = findDayCellByLabel(container, 31, 'December', 2011);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(findDayCellByLabel(container, skippedDecember30 ? 29 : 30, 'December', 2011));
+    });
+
+    it('does not move backward from minDate across a skipped local date', () => {
+      const onNavigateDate = jest.fn();
+      const minDate = new Date(2011, 11, 31);
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={minDate} onNavigateDate={onNavigateDate} />,
+        { minDate, value: minDate },
+      );
+      const dayCell = findDayCellByLabel(container, 31, 'December', 2011);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
+
+      expect(document.activeElement).toBe(dayCell);
+      expect(onNavigateDate).not.toHaveBeenCalled();
+    });
+
+    it.each([false, true])('moves backward across Kiritimati’s skipped date with allFocusable=%s', allFocusable => {
+      const skippedDecember31 = new Date(1994, 11, 31).getDate() !== 31;
+      if (process.env.TZ === 'Pacific/Kiritimati') {
+        expect(skippedDecember31).toBe(true);
+      }
+      const onNavigateDate = jest.fn();
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(1995, 0, 1)} onNavigateDate={onNavigateDate} />,
+        { allFocusable, value: new Date(1995, 0, 1) },
+      );
+      const dayCell = findDayCellByLabel(container, 1, 'January', 1995);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
+
+      expect(onNavigateDate).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: new Date(1994, 11, skippedDecember31 ? 30 : 31),
+          focusOnNavigatedDay: true,
+        }),
+      );
+    });
+
+    it('keeps skipped-date placeholders out of the tab order with allFocusable', () => {
+      const skippedDecember31 = new Date(1994, 11, 31).getDate() !== 31;
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(1994, 11, 1)} onNavigateDate={jest.fn()} />,
+        { allFocusable: true, value: new Date(1994, 11, 1) },
+      );
+
+      if (skippedDecember31) {
+        expect(
+          container.querySelector('tr:not([aria-hidden="true"]) button[aria-label="31"]')?.closest('td'),
+        ).not.toHaveAttribute('tabindex');
+      } else {
+        expect(findDayCellByLabel(container, 31, 'December', 1994)).toHaveAttribute('tabindex', '0');
+      }
+    });
+
+    it('navigates off-view when vertical movement crosses Kiritimati’s skipped date', () => {
+      const skippedDecember31 = new Date(1994, 11, 31).getDate() !== 31;
+      const onNavigateDate = jest.fn();
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(1995, 0, 7)} onNavigateDate={onNavigateDate} />,
+        { value: new Date(1995, 0, 7) },
+      );
+      const dayCell = findDayCellByLabel(container, 7, 'January', 1995);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowUp' });
+
+      expect(onNavigateDate).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: new Date(1994, 11, skippedDecember31 ? 30 : 31),
+          focusOnNavigatedDay: true,
+        }),
+      );
+    });
+
+    it('navigates off-view when vertical movement crosses a skipped local date', () => {
+      const skippedDecember30 = new Date(2011, 11, 30).getDate() !== 30;
+      const onNavigateDate = jest.fn();
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(2012, 0, 6)} onNavigateDate={onNavigateDate} />,
+        { value: new Date(2012, 0, 6) },
+      );
+      const dayCell = findDayCellByLabel(container, 6, 'January', 2012);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowUp' });
+
+      expect(onNavigateDate).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: new Date(2011, 11, skippedDecember30 ? 29 : 30),
+          focusOnNavigatedDay: true,
+        }),
+      );
+    });
+
+    it('uses the next representable civil date for vertical movement after a skipped date', () => {
+      const onNavigateDate = jest.fn();
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(2011, 11, 29)} onNavigateDate={onNavigateDate} />,
+        { value: new Date(2011, 11, 29) },
+      );
+      const dayCell = findDayCellByLabel(container, 29, 'December', 2011);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowDown' });
+
+      expect(onNavigateDate).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: new Date(2012, 0, 5),
+          focusOnNavigatedDay: true,
+        }),
+      );
+    });
 
     it('should call onNavigateDate when arrowing up past the beginning of the month view', () => {
       // September 1, 2020 is in the first visible row. Arrowing up goes to August 25 (transition row).

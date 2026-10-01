@@ -10,7 +10,8 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { addDays, compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
+import { compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
+import { createDate } from '../../utils/dateMath';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
 import type { AvailableDateOptions } from '../../utils';
@@ -37,12 +38,26 @@ const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
 
 const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 1 | -1): Date | undefined => {
   for (let offset = initialOffset; ; offset += direction) {
-    const candidate = addDays(date, offset);
+    const civilDate = new Date(0);
+    civilDate.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate() + offset);
+    if (!Number.isFinite(civilDate.getTime())) {
+      return undefined;
+    }
+
+    const expectedYear = civilDate.getUTCFullYear();
+    const expectedMonth = civilDate.getUTCMonth();
+    const expectedDay = civilDate.getUTCDate();
+    const candidate = createDate(expectedYear, expectedMonth, expectedDay);
     if (!Number.isFinite(candidate.getTime())) {
       return undefined;
     }
 
-    if (compareDatePart(candidate, date) * direction > 0) {
+    if (
+      candidate.getFullYear() === expectedYear &&
+      candidate.getMonth() === expectedMonth &&
+      candidate.getDate() === expectedDay &&
+      compareDatePart(candidate, date) * direction > 0
+    ) {
       return candidate;
     }
   }
@@ -250,7 +265,7 @@ export const useCalendarDayGridCell_unstable = (
     ariaLabel = formatters.dayMarkedLabel({ date: originalDate, formattedDate });
   }
 
-  const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
+  const isFocusable = !ariaHidden && !!originalDate && (allFocusable || (day.isInBounds ? true : undefined));
 
   const setCellRef = (element: HTMLTableCellElement) => {
     day.setRef(element);
