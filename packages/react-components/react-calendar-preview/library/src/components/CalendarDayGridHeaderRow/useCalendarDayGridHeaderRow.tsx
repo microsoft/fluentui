@@ -27,6 +27,7 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
 
   const weekdayDates = Array.from({ length: DAYS_IN_WEEK }, (_, index) => new Date(2020, 0, 5 + index));
   const shortDays = weekdayDates.map(date => formatters.dateTime({ date, format: 'shortWeekday' }));
+  const dayNames = weekdayDates.map(date => formatters.dateTime({ date, format: 'weekday' }));
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
 
   let firstOfMonthIndex = -1;
@@ -46,6 +47,10 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
       date: firstOfMonthDate,
       format: 'shortMonth',
     });
+    dayNames[firstOfMonthIndexOffset] = formatters.dateTime({
+      date: firstOfMonthDate,
+      format: 'month',
+    });
   }
 
   const dayLabels: CalendarWeekDayLabel[] = shortDays.map((_, index: number) => {
@@ -53,7 +58,7 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
 
     return {
       content: shortDays[i],
-      label: formatters.dateTime({ date: weekdayDates[i], format: 'weekday' }),
+      label: dayNames[i],
       key: shortDays[i] + ' ' + index,
     };
   });

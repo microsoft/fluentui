@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Enter } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
@@ -370,7 +370,7 @@ export const useCalendarDayBase_unstable = (
         role: 'grid',
         'aria-activedescendant': activeDescendantId,
         'aria-label': monthAndYear,
-        'aria-multiselectable': dateRangeType !== 'day' || (daysToSelectInDayView ?? 1) > 1,
+        'aria-multiselectable': dateRangeType !== 'day' || Math.abs(daysToSelectInDayView ?? 1) > 1,
       },
       elementType: 'table',
     }),
@@ -388,7 +388,14 @@ export const useCalendarDay_unstable = (
   const state = useCalendarDayBase_unstable(props, ref);
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'grid-linear',
-    ignoreDefaultKeydown: { PageUp: true, PageDown: true },
+    ignoreDefaultKeydown: {
+      [ArrowDown]: true,
+      [ArrowLeft]: true,
+      [ArrowRight]: true,
+      [ArrowUp]: true,
+      PageUp: true,
+      PageDown: true,
+    },
   });
 
   const { weeks } = state;

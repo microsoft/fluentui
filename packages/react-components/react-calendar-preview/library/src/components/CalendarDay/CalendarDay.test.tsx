@@ -239,6 +239,15 @@ describe('CalendarDay', () => {
     expect(container.querySelectorAll('tbody > tr')).toHaveLength(9);
   });
 
+  it('uses the month as the accessible header label in one-week view', () => {
+    const { getByRole } = render(
+      <CalendarDay {...defaultProps} navigatedDate={new Date(2020, 8, 1)} weeksToShow={1} />,
+    );
+
+    expect(getByRole('columnheader', { name: 'September' })).toHaveTextContent('Sep');
+    expect(getByRole('columnheader', { name: 'September' })).toHaveAttribute('title', 'September');
+  });
+
   it('requests marked days only for the visible date range', () => {
     const getMarkedDays = jest.fn(() => []);
 
@@ -306,6 +315,15 @@ describe('CalendarDay', () => {
     expect(container.querySelector('[role="grid"]')).toHaveAttribute('aria-multiselectable', 'true');
   });
 
+  it('sets aria-multiselectable when day selection covers multiple preceding days', () => {
+    const { container } = render(<CalendarDay {...defaultProps} daysToSelectInDayView={-3} />);
+
+    expect(container.querySelector('[role="grid"]')).toHaveAttribute('aria-multiselectable', 'true');
+    expect(container.querySelectorAll('td[aria-selected="true"]')).toHaveLength(3);
+    expect(findDayCellByLabel(container, 16, 'September', 2020)).toHaveAttribute('aria-selected', 'true');
+    expect(findDayCellByLabel(container, 18, 'September', 2020)).toHaveAttribute('aria-selected', 'true');
+  });
+
   it('preserves focus when marked-day data changes within the displayed month', () => {
     const initialProps = {
       ...defaultProps,
@@ -357,8 +375,28 @@ describe('CalendarDay', () => {
 
       const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
       expect(dayCell).toBeTruthy();
+      dayCell.focus();
 
       fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
+      expect(onNavigateDate).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 19, 'September', 2020));
+    });
+
+    it('lets a custom cell handler cancel arrow navigation within the current view', () => {
+      const onNavigateDate = jest.fn();
+      const { container } = render(
+        <CalendarDay
+          {...defaultProps}
+          getDayCellProps={() => ({ onKeyDown: event => event.preventDefault() })}
+          onNavigateDate={onNavigateDate}
+        />,
+      );
+      const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(dayCell);
       expect(onNavigateDate).not.toHaveBeenCalled();
     });
 
@@ -375,9 +413,11 @@ describe('CalendarDay', () => {
 
       const dayCell = findDayCellByLabel(container, 5, 'September', 2020);
       expect(dayCell).toBeTruthy();
+      dayCell.focus();
 
       fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
       expect(onNavigateDate).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 6, 'September', 2020));
     });
 
     it('should not call onNavigateDate when arrowing left from the beginning of a row to the previous row', () => {
@@ -393,9 +433,11 @@ describe('CalendarDay', () => {
 
       const dayCell = findDayCellByLabel(container, 6, 'September', 2020);
       expect(dayCell).toBeTruthy();
+      dayCell.focus();
 
       fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
       expect(onNavigateDate).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 5, 'September', 2020));
     });
 
     it('should not call onNavigateDate when arrowing left within the current month view', () => {
@@ -404,8 +446,10 @@ describe('CalendarDay', () => {
       const { container } = render(<CalendarDay {...defaultProps} onNavigateDate={onNavigateDate} />);
 
       const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+      dayCell.focus();
       fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
       expect(onNavigateDate).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 17, 'September', 2020));
     });
 
     it('should not call onNavigateDate when arrowing down within the current month view', () => {
@@ -414,8 +458,36 @@ describe('CalendarDay', () => {
       const { container } = render(<CalendarDay {...defaultProps} onNavigateDate={onNavigateDate} />);
 
       const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+      dayCell.focus();
       fireEvent.keyDown(dayCell, { key: 'ArrowDown' });
       expect(onNavigateDate).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 25, 'September', 2020));
+    });
+
+    it('skips restricted dates when arrowing within the current view', () => {
+      const { container } = render(<CalendarDay {...defaultProps} />, {
+        restrictedDates: [new Date(2020, 8, 19)],
+      });
+      const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 20, 'September', 2020));
+    });
+
+    it('focuses restricted dates when arrowing within the current view with allFocusable', () => {
+      const { container } = render(<CalendarDay {...defaultProps} />, {
+        allFocusable: true,
+        restrictedDates: [new Date(2020, 8, 19)],
+      });
+      const dayCell = findDayCellByLabel(container, 18, 'September', 2020);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(findDayCellByLabel(container, 19, 'September', 2020));
+      expect(document.activeElement).toHaveAttribute('aria-disabled', 'true');
     });
 
     it('should call onNavigateDate when arrowing up past the beginning of the month view', () => {

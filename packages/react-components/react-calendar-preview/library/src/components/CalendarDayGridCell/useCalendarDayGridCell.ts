@@ -92,6 +92,30 @@ export const useCalendarDayGridCell_unstable = (
       return;
     }
 
+    const findDayInCurrentView = (dateToFind: Date): DayInfo | undefined =>
+      weeks
+        ?.slice(1, weeks.length - 1)
+        .flat()
+        .find(dayToCompare => {
+          const dayDate = dayToCompare.originalDate;
+          return dayDate !== null && compareDatePart(dayDate, dateToFind) === 0;
+        });
+    const focusDay = (dayToFocus: DayInfo): boolean => {
+      const dayRef = getRefsFromDayInfos([dayToFocus])[0];
+      if (!dayRef) {
+        return false;
+      }
+
+      dayRef.focus();
+      ev.preventDefault();
+      return true;
+    };
+
+    const directTargetDay = findDayInCurrentView(targetDate);
+    if (allFocusable && directTargetDay && focusDay(directTargetDay)) {
+      return;
+    }
+
     const findAvailableDateOptions: AvailableDateOptions = {
       initialDate: date,
       targetDate,
@@ -114,19 +138,10 @@ export const useCalendarDayGridCell_unstable = (
     }
 
     /*
-     * if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
-     * don't jump the view unnecessarily
+     * If the next date is still inside the current view, focus it without navigating the displayed month.
      */
-    const isInCurrentView =
-      weeks &&
-      nextDate &&
-      weeks.slice(1, weeks.length - 1).some((week: DayInfo[]) => {
-        return week.some((dayToCompare: DayInfo) => {
-          const dayDate = dayToCompare.originalDate;
-          return dayDate !== null && compareDatePart(dayDate, nextDate) === 0;
-        });
-      });
-    if (isInCurrentView) {
+    const nextDay = nextDate ? findDayInCurrentView(nextDate) : undefined;
+    if (nextDay && focusDay(nextDay)) {
       return;
     }
 
@@ -148,7 +163,7 @@ export const useCalendarDayGridCell_unstable = (
           !dayInfos[index].isSelected &&
           dateRangeType === 'day' &&
           daysToSelectInDayView &&
-          daysToSelectInDayView > 1
+          Math.abs(daysToSelectInDayView) > 1
         ) {
           applyCorners(dayRef, calculateRoundedCorners(false, false, index > 0, index < dayRefs.length - 1));
         }
@@ -190,7 +205,7 @@ export const useCalendarDayGridCell_unstable = (
           !dayInfos[index].isSelected &&
           dateRangeType === 'day' &&
           daysToSelectInDayView &&
-          daysToSelectInDayView > 1
+          Math.abs(daysToSelectInDayView) > 1
         ) {
           applyCorners(dayRef, NO_CORNERS);
         }
