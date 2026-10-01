@@ -20,8 +20,6 @@ export const useSwatchPicker = (props: SwatchPickerProps, ref: React.Ref<HTMLDiv
   if (focusMode === 'arrow') {
     const behavior = baseState.isGrid ? 'grid manual rowflow' : 'radiogroup';
 
-    // While a value is selected, re-entry must land on the selected swatch (marked with
-    // `focusgroupstart`) rather than the last focused one, so focus memory is turned off.
     // eslint-disable-next-line react-hooks/immutability
     baseState.root.focusgroup = baseState.selectedValue ? `${behavior} nomemory` : behavior;
   }
