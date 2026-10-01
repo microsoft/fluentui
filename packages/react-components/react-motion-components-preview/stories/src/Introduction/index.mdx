@@ -163,28 +163,76 @@ function MyComponent() {
 
 ### The `.In` and `.Out` Pattern
 
-Every presence component includes **one-way motion sub-components** that play just the enter or exit animation:
+The root component, such as `Scale`, always manages presence: `visible` selects its enter or exit motion. Its `.In` and `.Out` components play one-way motions on mount, without a `visible` prop.
 
 <InOutDemo />
 
 ```tsx
 import { Fade, Scale, Slide } from '@fluentui/react-motion-components-preview';
 
-// Full presence (two-way, controlled by visible prop)
-<Fade visible={isVisible}>
+// Presence: enter from the left and exit to the right
+<Slide visible={isVisible} fromX="-24px" inX="0px" toX="24px">
   <Content />
-</Fade>
+</Slide>
 
-// Just the enter animation (one-way, plays on mount)
-<Fade.In>
+// One-way enter: opacity 0.2 to 0.7
+<Fade.In fromOpacity={0.2} toOpacity={0.7}>
   <Content />
 </Fade.In>
 
-// Just the exit animation (one-way, plays on mount)
-<Fade.Out>
+// One-way exit: scale 1.2 to 0.8, without a fade
+<Scale.Out fromScale={1.2} toScale={0.8} animateOpacity={false}>
   <Content />
-</Fade.Out>
+</Scale.Out>
 ```
+
+#### Endpoint Props
+
+For `Fade`, `Scale`, and `Slide`, `from*` and `to*` always describe the playback source and destination on both `.In` and `.Out`. The present-pose props (`inOpacity`, `inScale`, `inX`, and `inY`) belong only to the root presence component.
+
+| Component | Presence enter               | Presence exit              | `.In` and `.Out` playback    |
+| --------- | ---------------------------- | -------------------------- | ---------------------------- |
+| `Fade`    | `fromOpacity` to `inOpacity` | `inOpacity` to `toOpacity` | `fromOpacity` to `toOpacity` |
+| `Scale`   | `fromScale` to `inScale`     | `inScale` to `toScale`     | `fromScale` to `toScale`     |
+| `Slide`   | `fromX/fromY` to `inX/inY`   | `inX/inY` to `toX/toY`     | `fromX/fromY` to `toX/toY`   |
+
+Omitted directional endpoints use the preset's enter or exit defaults:
+
+| Component | `.In` defaults                           | `.Out` defaults                          |
+| --------- | ---------------------------------------- | ---------------------------------------- |
+| `Fade`    | Opacity 0 to 1                           | Opacity 1 to 0                           |
+| `Scale`   | Scale 0.9 to 1                           | Scale 1 to 0.9                           |
+| `Slide`   | Translation `(0px, 0px)` to `(0px, 0px)` | Translation `(0px, 0px)` to `(0px, 0px)` |
+
+Slide needs an authored offset to produce translation. If either axis of a source or destination is supplied, its omitted axis is `0px`. For example, `<Slide.Out fromX="4px" toY="-8px">` moves from `(4px, 0px)` to `(0px, -8px)`.
+
+Scale and Slide include directional fades by default: `.In` fades from 0 to 1, while `.Out` fades from 1 to 0, regardless of the authored scale or translation endpoints. Set `animateOpacity={false}` for scale-only or translation-only playback.
+
+#### Timing, Variants, and Replay
+
+For Fade, Scale, and Slide, use `duration`, `easing`, and `delay` to customize a one-way motion, including `.Out`. Explicit `.Out` timing overrides variant defaults. The `exitDuration`, `exitEasing`, and `exitDelay` aliases remain supported on `.Out` and take precedence over their ordinary counterparts when both are supplied.
+
+Snappy, Relaxed, and custom variants retain `.In` and `.Out`. For example:
+
+```tsx
+import { ScaleRelaxed } from '@fluentui/react-motion-components-preview';
+
+<ScaleRelaxed.Out fromScale={1.2} toScale={0.8} duration={150}>
+  <Content />
+</ScaleRelaxed.Out>;
+```
+
+One-way motions play once on mount. Change `replayKey` to replay without remounting the child, preserving its DOM and component state:
+
+```tsx
+<Slide.In fromX="-24px" replayKey={animationVersion}>
+  <Content />
+</Slide.In>
+```
+
+`replayKey` replays the existing animation; it does not rebuild keyframes from changed motion parameters. Use a new React `key` to remount when a new set of endpoints is needed.
+
+Finishing `.Out` does not unmount the child. Use a root presence component with `unmountOnExit` when visibility should control mounting.
 
 **Use cases for `.In` and `.Out`:**
 
@@ -224,12 +272,12 @@ All components accept parameters to customize their behavior:
 
 ```tsx
 // Custom opacity range (e.g. fade to semi-transparent instead of invisible)
-<Fade visible={isVisible} outOpacity={0.5} inOpacity={1}>
+<Fade visible={isVisible} fromOpacity={0.5} inOpacity={1}>
   <Content />
 </Fade>
 
 // Slide from a specific direction
-<Slide visible={isVisible} outX="100px">
+<Slide visible={isVisible} fromX="100px">
   <Content />
 </Slide>
 
@@ -263,15 +311,15 @@ function List({ items, visible }) {
 
 ### Component Reference
 
-| Component  | Variants                                               | Key Parameters                                      |
-| ---------- | ------------------------------------------------------ | --------------------------------------------------- |
-| `Fade`     | `FadeSnappy`, `FadeRelaxed`                            | `outOpacity`, `inOpacity`, `duration`, `easing`     |
-| `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `outScale`, `inScale`, `duration`, `easing`         |
-| `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `outSize`, `duration`, `easing`      |
-| `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `outX`, `outY`, `inX`, `inY`, `duration`, `easing`  |
-| `Blur`     | —                                                      | `outRadius`, `inRadius`, `duration`, `easing`       |
-| `Rotate`   | —                                                      | `axis`, `outAngle`, `inAngle`, `duration`, `easing` |
-| `Stagger`  | —                                                      | `itemDelay`, `itemDuration`, `reversed`, `hideMode` |
+| Component  | Variants                                               | Key Parameters                                                     |
+| ---------- | ------------------------------------------------------ | ------------------------------------------------------------------ |
+| `Fade`     | `FadeSnappy`, `FadeRelaxed`                            | `fromOpacity`, `inOpacity`, `toOpacity`, `duration`, `easing`      |
+| `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `fromScale`, `inScale`, `toScale`, `duration`, `easing`            |
+| `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `outSize`, `duration`, `easing`                     |
+| `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `fromX`, `fromY`, `inX`, `inY`, `toX`, `toY`, `duration`, `easing` |
+| `Blur`     | —                                                      | `outRadius`, `inRadius`, `duration`, `easing`                      |
+| `Rotate`   | —                                                      | `axis`, `outAngle`, `inAngle`, `duration`, `easing`                |
+| `Stagger`  | —                                                      | `itemDelay`, `itemDuration`, `reversed`, `hideMode`                |
 
 </div>
 
