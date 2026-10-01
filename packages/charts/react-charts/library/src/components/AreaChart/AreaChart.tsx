@@ -1145,6 +1145,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           createStringYAxis={createStringYAxis}
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          onChartBlur={_handleChartMouseLeave}
           getMinMaxOfYAxis={_getMinMaxOfYAxis}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
           componentRef={cartesianChartRef}
