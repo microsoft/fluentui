@@ -241,6 +241,9 @@ export const useCalendarDayGridCell_unstable = (
       ...cellProps,
       ref: cellRef,
       onClick: (ev: React.MouseEvent<HTMLTableCellElement>) => {
+        if (!ariaHidden) {
+          ev.currentTarget.focus();
+        }
         cellProps.onClick?.(ev);
         if (!ev.isDefaultPrevented() && day.isInBounds && !ariaHidden) {
           day.onSelected(ev);

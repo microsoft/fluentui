@@ -219,9 +219,9 @@ describe('CalendarDay', () => {
     expect(cellRef.current).toHaveFocus();
   });
 
-  it('lets a custom cell handler prevent selection', () => {
+  it('keeps focus on the cell when a custom cell handler prevents selection', () => {
     const setValue = jest.fn();
-    const { getByRole } = render(
+    const { container, getByRole } = render(
       <CalendarDay {...defaultProps} getDayCellProps={() => ({ onClick: event => event.preventDefault() })} />,
       { setValue },
     );
@@ -229,6 +229,7 @@ describe('CalendarDay', () => {
     fireEvent.click(getByRole('button', { name: 'September 18, 2020' }));
 
     expect(setValue).not.toHaveBeenCalled();
+    expect(document.activeElement).toBe(findDayCellByLabel(container, 18, 'September', 2020));
   });
 
   it('shows the requested number of weeks', () => {
@@ -554,6 +555,21 @@ describe('CalendarDay', () => {
       expect(container.querySelector('th[scope="row"]')!.className).toContain(
         calendarDayGridRowClassNames.weekNumberCell,
       );
+    });
+
+    it('keeps selected outside-month dates from using the lightened foreground', () => {
+      const navigatedDate = new Date(2020, 8, 1);
+      const { container } = render(<CalendarDay {...defaultProps} navigatedDate={navigatedDate} />, {
+        dateRangeType: 'week',
+        value: navigatedDate,
+      });
+
+      const outsideMonthCell = findDayCellByLabel(container, 31, 'August', 2020);
+      const inMonthCell = findDayCellByLabel(container, 1, 'September', 2020);
+
+      expect(outsideMonthCell).toHaveAttribute('aria-selected', 'true');
+      expect(inMonthCell).toHaveAttribute('aria-selected', 'true');
+      expect(outsideMonthCell.className).toBe(inMonthCell.className);
     });
   });
 });
