@@ -2,6 +2,20 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.1.29",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:07 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.29",
       "version": "8.1.29",
