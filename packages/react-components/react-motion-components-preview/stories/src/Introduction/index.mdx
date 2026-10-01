@@ -111,13 +111,15 @@ The Motion Components package provides six **presence components** that handle t
 
 ### Timing Variants
 
-Each component (except Blur and Rotate) comes with pre-configured timing variants:
+Fade, Scale, and Slide each provide `Snappy` and `Relaxed` variants. Their default enter and exit durations are:
 
-| Variant     | Duration                 | Feel              | Use Case                           |
-| ----------- | ------------------------ | ----------------- | ---------------------------------- |
-| **Default** | 200ms (`durationNormal`) | Balanced          | General purpose                    |
-| **Snappy**  | 150ms (`durationFast`)   | Quick, responsive | Small elements, micro-interactions |
-| **Relaxed** | 250ms (`durationGentle`) | Smooth, calm      | Large elements, important content  |
+| Component | Default (enter / exit) | Snappy (enter / exit) | Relaxed (enter / exit) |
+| --------- | ---------------------- | --------------------- | ---------------------- |
+| **Fade**  | 200 / 200 ms           | 150 / 150 ms          | 250 / 250 ms           |
+| **Scale** | 250 / 200 ms           | 200 / 150 ms          | 300 / 250 ms           |
+| **Slide** | 200 / 200 ms           | 200 / 200 ms          | 250 / 250 ms           |
+
+`SlideSnappy` changes the enter easing to `curveDecelerateMax` and the exit easing to `curveAccelerateMax`, keeping Slide's default durations.
 
 **Collapse** also has a **Delayed** variant that adds a delay before the collapse begins, useful for accordions where you want the content to be readable briefly before collapsing.
 
@@ -287,7 +289,7 @@ All components accept parameters to customize their behavior:
 </Collapse>
 ```
 
-See the Component Reference table below for all available parameters.
+See the Component Reference table below for key parameters.
 
 ### Choreography with Stagger
 

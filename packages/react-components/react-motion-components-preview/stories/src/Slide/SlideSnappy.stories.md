@@ -1,1 +1,1 @@
-The snappy variant of `Scale` is available as the `ScaleSnappy` component.
+The snappy variant of `Slide` is available as the `SlideSnappy` component. It uses `curveDecelerateMax` for enter and `curveAccelerateMax` for exit, retaining Slide's default 200 ms duration.
