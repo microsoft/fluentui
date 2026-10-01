@@ -424,10 +424,12 @@ describe('CalendarDay', () => {
       const navigatedDate = new Date(2020, 8, 1);
       const { container } = render(
         <CalendarDay {...defaultProps} navigatedDate={navigatedDate} onNavigateDate={onNavigateDate} />,
+        { allFocusable: true },
       );
 
       const dayCell = findDayCellByLabel(container, 1, 'September', 2020);
       expect(dayCell).toBeTruthy();
+      expect(container.querySelectorAll('th[scope="col"][tabindex]')).toHaveLength(0);
 
       fireEvent.keyDown(dayCell, { key: 'ArrowUp' });
       expect(onNavigateDate).toHaveBeenCalledTimes(1);
