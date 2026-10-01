@@ -1161,6 +1161,7 @@ describe('Combobox', () => {
 
       expect(clearButton).toHaveStyle({ display: 'none' });
       expect(combobox).toHaveValue('');
+      expect(getByRole('button')).toHaveAttribute('tabindex', '0');
     });
 
     it('is not visible when there is no selection', () => {
