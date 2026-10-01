@@ -1,7 +1,7 @@
 import type { CommandModule, Argv } from 'yargs';
 import { deriveCandidates, isRiskAnalysisConfigured } from '../candidates';
 import { compileFilesStreaming } from '../compiler';
-import { deriveCompilerAnalysis } from '../coverage-analyzer';
+import { deriveCompilerAnalysis, isParseError } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import {
   printCoverageReport,
@@ -14,7 +14,7 @@ import { compareText } from '../ordering';
 import type { ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
 import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RcaConfig, RiskConfig } from '../types';
-import { runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
+import { CliError, runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
 
 type AnalyzeArgv = SharedArgv & {
   annotate: AnnotateMode | undefined;
@@ -80,6 +80,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
       // compileFilesStreaming for why retaining them does not scale.
       const coverageResults: FunctionAnalysis[] = [];
       const unparseable: { file: string; error: string }[] = [];
+      const compilerFailures: { file: string; error: string }[] = [];
       await compileFilesStreaming(
         files,
         {
@@ -97,17 +98,38 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         },
         result => {
           if (result.error) {
-            unparseable.push({ file: result.filePath, error: result.error.message });
+            if (isParseError(result.error)) {
+              unparseable.push({ file: result.filePath, error: result.error.message });
+            } else {
+              compilerFailures.push({ file: result.filePath, error: result.error.message });
+            }
+            return;
           }
           const normalized = deriveCompilerAnalysis(result, {
             includeFullDiagnostics: argv.verbose,
             includeMutationMetadata: Boolean(argv.annotate),
           });
+          if (normalized.unattributedErrors.length > 0) {
+            compilerFailures.push({
+              file: result.filePath,
+              error: normalized.unattributedErrors.map(error => `${error.kind}: ${error.reason}`).join('; '),
+            });
+            return;
+          }
           coverageResults.push(...normalized.analyses);
         },
       );
 
       endScanLog();
+
+      if (compilerFailures.length > 0) {
+        compilerFailures.sort((a, b) => compareText(a.file, b.file) || compareText(a.error, b.error));
+        throw new CliError(
+          `Compiler failed for ${compilerFailures.length} file(s):\n${compilerFailures
+            .map(({ file, error }) => `  ${file}: ${error}`)
+            .join('\n')}`,
+        );
+      }
 
       sortByLocation(coverageResults);
       unparseable.sort((a, b) => compareText(a.file, b.file) || compareText(a.error, b.error));
@@ -130,7 +152,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
             annotate,
           }),
         );
-        return 0;
+        return unparseable.length > 0 ? 1 : 0;
       }
       printCoverageReport(f, coverageResults, workspaceRoot, argv.verbose, candidates);
       if (argv.verbose) {
@@ -161,7 +183,7 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         f.line('> **Tip:** Run `lint <path>` for directive health checks.');
       }
 
-      return 0;
+      return unparseable.length > 0 ? 1 : 0;
     },
   });
 }

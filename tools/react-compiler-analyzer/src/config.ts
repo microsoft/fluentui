@@ -44,7 +44,21 @@ export function validateRcaConfig(config: unknown, source: string): RcaConfig {
     throw new CliError(`invalid RCA config ${source}:\n    ${errors}`);
   }
 
-  return config as RcaConfig;
+  const validated = config as RcaConfig;
+  const pattern = validated.analyze?.risks?.storeAccessorPattern;
+  if (pattern !== undefined) {
+    try {
+      RegExp(pattern);
+    } catch (error) {
+      throw new CliError(
+        `invalid RCA config ${source}: analyze.risks.storeAccessorPattern is not a valid regex: ${
+          (error as Error).message
+        }`,
+      );
+    }
+  }
+
+  return validated;
 }
 
 /** Load an explicit config, or an optional `rca.config.json` in the current working directory. */
@@ -119,7 +133,11 @@ function warnOnNoOpRiskConfig(config: RiskConfig, configPath: string): void {
   if (dead.length > 0) {
     console.warn(
       `Warning: RCA config '${configPath}' has ${dead.length} pathAlias(es) whose target directories do not exist, ` +
-        `so they can never resolve: ${dead.map(alias => `${alias.prefix}* -> ${alias.targets.join(', ')}`).join('; ')}`,
+        `so they can never resolve: ${dead
+          .map(
+            alias => `${alias.prefix}${alias.wildcard ? `*${alias.suffix ?? ''}` : ''} -> ${alias.targets.join(', ')}`,
+          )
+          .join('; ')}`,
     );
   }
 }

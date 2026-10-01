@@ -25,6 +25,8 @@ export interface NormalizeCompilerEventsOptions {
 
 export interface NormalizedCompilerEvents {
   analyses: FunctionAnalysis[];
+  /** Compiler failures without a canonical source function; not part of the function count. */
+  unattributedErrors: CompilerDiagnostic[];
 }
 
 function nullableMemoStats(event: CompilerEvent): NullableMemoStats {
@@ -141,6 +143,7 @@ export function normalizeCompilerEvents(
     .map(({ event, ordinal }) => occurrenceFor(event, ordinal, source, index, includeFullDiagnostics));
   const occurrences = dedupeOccurrences(rawOccurrences);
   const grouped = new Map<string, CompilerOccurrence[]>();
+  const unattributedErrors = diagnosticsFor(occurrences.filter(occurrence => !occurrence.functionId));
 
   for (const occurrence of occurrences) {
     if (!occurrence.functionId) {
@@ -223,5 +226,5 @@ export function normalizeCompilerEvents(
   analyses.sort(
     (a, b) => a.line - b.line || a.column - b.column || compareText(a.sourceFunctionId ?? '', b.sourceFunctionId ?? ''),
   );
-  return { analyses };
+  return { analyses, unattributedErrors };
 }

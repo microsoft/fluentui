@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/microsoft/fluentui/blob/experimental/rc-analyzer/tools/react-compiler-analyzer/rca.analyze.schema.json",
+  "$id": "https://raw.githubusercontent.com/microsoft/fluentui/master/tools/react-compiler-analyzer/rca.analyze.schema.json",
   "title": "React Compiler Analyzer analyze output",
   "description": "Compact schemaVersion 2 document emitted by analyze --format json.",
   "type": "object",

@@ -1,19 +1,21 @@
 import { existsSync, statSync } from 'node:fs';
 import { dirname, resolve, isAbsolute, join } from 'node:path';
 
-/** A single tsconfig-style path alias: a prefix (minus any trailing `*`) → candidate base dirs. */
+/** A tsconfig-style path alias with at most one wildcard in its pattern and each target. */
 export interface PathAlias {
-  /** The alias prefix, e.g. `@app/` (the `*` is stripped). Empty string matches exact, non-`*` aliases. */
+  /** Text before `*`, or the entire specifier for an exact alias. */
   prefix: string;
-  /** Absolute candidate directories the alias maps to (the `*` target dirs). */
+  /** Text after `*`, if any. */
+  suffix?: string;
+  /** Absolute target patterns, preserving `*` for substitution with the matched text. */
   targets: string[];
-  /** Whether the original alias ended in `*` (a wildcard prefix match) vs. an exact specifier. */
+  /** Whether the original alias contains a wildcard. */
   wildcard: boolean;
 }
 
 export interface ResolverOptions {
   /**
-   * tsconfig `compilerOptions.paths`, already resolved to absolute target directories.
+   * tsconfig `compilerOptions.paths`, already resolved to absolute target patterns.
    * Build with {@link compilePathAliases}. Used to resolve workspace aliases like `@app/foo`.
    */
   aliases?: PathAlias[];
@@ -37,6 +39,7 @@ export interface ResolverStats {
   /**
    * Imports matched per alias prefix, seeded with `0` for every configured alias. An alias sitting
    * at zero resolved nothing all run, which is the signature of a misconfigured `pathAliases`.
+   * Patterns with a suffix use the full pattern so distinct suffixes do not share a counter.
    */
   aliasHits: Map<string, number>;
 }
@@ -45,29 +48,48 @@ export function createResolverStats(): ResolverStats {
   return { resolved: 0, unresolvedRelative: 0, unresolvedBare: 0, aliasHits: new Map() };
 }
 
-/** Alias entries whose every target directory is absent, so they can never resolve anything. */
+/** Aliases whose static target prefixes are all absent, so they cannot resolve source. */
 export function findDeadAliases(aliases: PathAlias[]): PathAlias[] {
-  return aliases.filter(alias => alias.targets.every(target => !existsSync(target)));
+  return aliases.filter(alias =>
+    alias.targets.every(target => {
+      const wildcard = target.indexOf('*');
+      if (wildcard !== -1) {
+        return !existsSync(dirname(target.slice(0, wildcard + 1)));
+      }
+      return !existsSync(target) && !DEFAULT_EXTENSIONS.some(extension => isFile(target + extension));
+    }),
+  );
 }
 
 const DEFAULT_EXTENSIONS = ['.ts', '.tsx'];
+
+function aliasStatsKey(alias: PathAlias): string {
+  return alias.suffix ? `${alias.prefix}*${alias.suffix}` : alias.prefix;
+}
 
 /**
  * Turn a raw tsconfig `paths` map + its `baseUrl` into absolute {@link PathAlias} entries.
  *
  * Example: `{ "@app/*": ["src/app/*"] }` with baseUrl `/repo` →
- * `{ prefix: "@app/", targets: ["/repo/src/app"], wildcard: true }`.
+ * `{ prefix: "@app/", targets: ["/repo/src/app/*"], wildcard: true }`.
+ * An interior target wildcard substitutes the match in place, not at the end.
  */
 export function compilePathAliases(paths: Record<string, string[]>, baseUrl: string): PathAlias[] {
   const aliases: PathAlias[] = [];
   for (const [pattern, targets] of Object.entries(paths)) {
-    const wildcard = pattern.endsWith('/*') || pattern.endsWith('*');
-    const prefix = pattern.replace(/\*$/, '');
-    const absTargets = targets.map(t => resolve(baseUrl, t.replace(/\*$/, '').replace(/\/$/, '')));
-    aliases.push({ prefix, targets: absTargets, wildcard });
+    const wildcardIndex = pattern.indexOf('*');
+    const wildcard = wildcardIndex !== -1;
+    const prefix = wildcard ? pattern.slice(0, wildcardIndex) : pattern;
+    const suffix = wildcard ? pattern.slice(wildcardIndex + 1) : '';
+    aliases.push({
+      prefix,
+      ...(suffix ? { suffix } : {}),
+      targets: targets.map(target => resolve(baseUrl, target)),
+      wildcard,
+    });
   }
-  // Longest prefix first so the most specific alias wins.
-  return aliases.sort((a, b) => b.prefix.length - a.prefix.length);
+  // TypeScript prefers exact matches, then the longest wildcard prefix (ties keep declaration order).
+  return aliases.sort((a, b) => Number(a.wildcard) - Number(b.wildcard) || b.prefix.length - a.prefix.length);
 }
 
 /**
@@ -88,7 +110,7 @@ export function createModuleResolver(options: ResolverOptions = {}) {
 
   // Seed every alias so one that never matches is reported as 0 rather than being absent.
   for (const alias of aliases) {
-    options.stats?.aliasHits.set(alias.prefix, 0);
+    options.stats?.aliasHits.set(aliasStatsKey(alias), 0);
   }
 
   function recordAliasHit(prefix: string): void {
@@ -120,27 +142,29 @@ export function createModuleResolver(options: ResolverOptions = {}) {
 
   function resolveAlias(specifier: string): string | null {
     for (const alias of aliases) {
+      let match = '';
       if (alias.wildcard) {
-        if (!specifier.startsWith(alias.prefix)) {
+        const suffix = alias.suffix ?? '';
+        if (
+          !specifier.startsWith(alias.prefix) ||
+          !specifier.endsWith(suffix) ||
+          specifier.length < alias.prefix.length + suffix.length
+        ) {
           continue;
         }
-        const rest = specifier.slice(alias.prefix.length);
-        for (const target of alias.targets) {
-          const hit = resolveFileCandidate(rest ? join(target, rest) : target);
-          if (hit) {
-            recordAliasHit(alias.prefix);
-            return hit;
-          }
-        }
-      } else if (specifier === alias.prefix) {
-        for (const target of alias.targets) {
-          const hit = resolveFileCandidate(target);
-          if (hit) {
-            recordAliasHit(alias.prefix);
-            return hit;
-          }
+        match = specifier.slice(alias.prefix.length, specifier.length - suffix.length);
+      } else if (specifier !== alias.prefix) {
+        continue;
+      }
+      for (const target of alias.targets) {
+        const candidate = alias.wildcard ? resolve(target.replace('*', () => match)) : target;
+        const hit = resolveFileCandidate(candidate);
+        if (hit) {
+          recordAliasHit(aliasStatsKey(alias));
+          return hit;
         }
       }
+      return null;
     }
     return null;
   }

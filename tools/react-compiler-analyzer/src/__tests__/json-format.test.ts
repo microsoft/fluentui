@@ -341,8 +341,45 @@ export function useUncompilable() {
 }
 `,
       );
-      await captureJson<LintDocument>(() => runLint(argv({ fix: true }) as never));
+      const { doc, code } = await captureJson<LintDocument>(() => runLint(argv({ fix: true }) as never));
       expect(readFileSync(filePath, 'utf-8')).not.toContain('use no memo');
+      expect(code).toBe(0);
+      expect(doc.summary).toMatchObject({ directives: 0, redundant: 0, unparseableFiles: 0 });
+      expect(doc.directives).toEqual([]);
+      expect(doc.unparseable).toEqual([]);
+    });
+
+    it('reports failures that remain after --fix, not the original conflicts', async () => {
+      writeFileSync(
+        join(tempDir, 'src', 'Conflicting.tsx'),
+        `import { useRef } from 'react';
+export function useUncompilable() {
+  'use memo';
+  'use no memo';
+  const ref = useRef<number>(null);
+  ref.current = 42;
+  return ref;
+}
+`,
+      );
+      const { doc, code } = await captureJson<LintDocument>(() => runLint(argv({ fix: true }) as never));
+      expect(code).toBe(1);
+      expect(doc.summary).toMatchObject({ directives: 1, conflicting: 0, broken: 1 });
+      expect(doc.directives).toMatchObject([{ directive: 'use-memo', status: 'broken' }]);
+    });
+
+    it.each([false, true])('reports a selected file with a parse failure and fails (fix: %s)', async fix => {
+      const filePath = join(tempDir, 'src', 'Unparseable.tsx');
+      writeFileSync(filePath, "export function Broken() {\n  'use no memo';\n  const = ;\n}\n");
+
+      const { doc, code } = await captureJson<LintDocument>(() => runLint(argv({ fix }) as never));
+      expect(code).toBe(1);
+      expect(doc.summary).toMatchObject({ directives: 0, unparseableFiles: 1 });
+      expect(doc.unparseable).toEqual([
+        { file: expect.stringContaining('Unparseable.tsx'), error: expect.any(String) },
+      ]);
+      expect(doc.unparseable[0].error).toBeTruthy();
+      expect(readFileSync(filePath, 'utf-8')).toContain("'use no memo'");
     });
   });
 });

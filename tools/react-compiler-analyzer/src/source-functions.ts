@@ -1,5 +1,5 @@
 import type { NodePath, PluginObj } from '@babel/core';
-import type { Directive, Function as BabelFunction, Node, Program } from '@babel/types';
+import type { CallExpression, Directive, Function as BabelFunction, Node, Program } from '@babel/types';
 
 import { compareRiskFindings, compareSpans, compareText } from './ordering';
 import { toWorkspacePath } from './path-utils';
@@ -27,6 +27,42 @@ type RawLocation = {
 
 const JUSTIFIED_RE = /(?:^|;)\s*justified\s*:/;
 
+/** Resolve a React API call through its import binding, including renamed imports. */
+export function getReactCallName(path: NodePath<CallExpression>): string | null {
+  const callee = path.node.callee;
+  if (callee.type === 'Identifier') {
+    const binding = path.scope.getBinding(callee.name);
+    if (
+      binding?.path.isImportSpecifier() &&
+      binding.path.parentPath.isImportDeclaration() &&
+      binding.path.parentPath.node.source.value === 'react'
+    ) {
+      const imported = binding.path.node.imported;
+      return imported.type === 'Identifier' ? imported.name : imported.value;
+    }
+  } else if (
+    callee.type === 'MemberExpression' &&
+    !callee.computed &&
+    callee.object.type === 'Identifier' &&
+    callee.property.type === 'Identifier'
+  ) {
+    const binding = path.scope.getBinding(callee.object.name);
+    if (
+      (binding?.path.isImportDefaultSpecifier() || binding?.path.isImportNamespaceSpecifier()) &&
+      binding.path.parentPath.isImportDeclaration() &&
+      binding.path.parentPath.node.source.value === 'react'
+    ) {
+      return callee.property.name;
+    }
+  }
+  return null;
+}
+
+function isReactWrapper(path: NodePath<CallExpression>): boolean {
+  const name = getReactCallName(path);
+  return name === 'memo' || name === 'forwardRef';
+}
+
 function syntaxOf(node: BabelFunction): SourceFunctionSyntax | null {
   if (node.type === 'FunctionDeclaration') {
     return 'declaration';
@@ -46,38 +82,29 @@ function identifierName(path: NodePath<BabelFunction>): string | null {
     return node.id.name;
   }
 
-  const parent = path.parentPath;
+  let parent = path.parentPath;
   if (parent?.isVariableDeclarator() && parent.node.init === node && parent.node.id.type === 'Identifier') {
     return parent.node.id.name;
   }
-  if (parent?.isCallExpression() && parent.node.arguments[0] === node) {
+  let value: Node = node;
+  while (parent?.isCallExpression() && parent.node.arguments[0] === value) {
     const declarator = parent.parentPath;
     if (declarator?.isVariableDeclarator() && declarator.node.id.type === 'Identifier') {
       return declarator.node.id.name;
     }
+    if (!isReactWrapper(parent)) {
+      break;
+    }
+    value = parent.node;
+    parent = parent.parentPath;
   }
 
   return null;
 }
 
-function wrapperName(path: NodePath<BabelFunction>): 'memo' | 'forwardRef' | null {
-  const call = path.findParent(parent => parent.isCallExpression());
-  if (!call?.isCallExpression() || call.node.arguments[0] !== path.node) {
-    return null;
-  }
-  const callee = call.node.callee;
-  if (callee.type === 'Identifier' && (callee.name === 'memo' || callee.name === 'forwardRef')) {
-    return callee.name;
-  }
-  if (
-    callee.type === 'MemberExpression' &&
-    !callee.computed &&
-    callee.property.type === 'Identifier' &&
-    (callee.property.name === 'memo' || callee.property.name === 'forwardRef')
-  ) {
-    return callee.property.name;
-  }
-  return null;
+function isInlineReactWrapper(path: NodePath<BabelFunction>): boolean {
+  const call = path.parentPath;
+  return Boolean(call?.isCallExpression() && call.node.arguments[0] === path.node && isReactWrapper(call));
 }
 
 function classify(name: string | null, inlineWrapper: boolean): SourceFunctionKind {
@@ -140,7 +167,7 @@ export class SourceFunctionIndex {
       packageName: this.entry.packageName,
       packageRoot: this.entry.packageRoot ?? null,
       name,
-      kind: classify(name, wrapperName(path) !== null),
+      kind: classify(name, isInlineReactWrapper(path)),
       syntax,
       declarationSpan,
       bodySpan,

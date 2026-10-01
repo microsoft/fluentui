@@ -3,14 +3,20 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 import { compileFile, compileFiles } from '../compiler';
-import { createAnalyzeCommand } from '../commands/analyze';
-import { DEFAULT_EXCLUDE } from '../commands/shared';
+import * as compiler from '../compiler';
+import { createAnalyzeCommand, runAnalyze } from '../commands/analyze';
+import { CliError, DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 import { normalizeCliOutput } from './helpers/output';
+
+jest.mock('../compiler', () => {
+  const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
+  return { ...actual, compileFilesStreaming: jest.fn(actual.compileFilesStreaming) };
+});
 
 const analyzeCommand = createAnalyzeCommand({});
 
@@ -187,6 +193,124 @@ export function NoMemoSkipped() {
 
     const content = readFileSync(componentFile, 'utf-8');
     expect(content).not.toContain("'use memo'");
+  });
+});
+
+describe('analyze command — file-level failures', () => {
+  let tempDir: string;
+  let filePath: string;
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'analyze-failure-'));
+    filePath = join(tempDir, 'Component.tsx');
+    writeFileSync(filePath, 'export function Component() { return <div />; }\n');
+  });
+
+  function argv(overrides: Record<string, unknown> = {}) {
+    return {
+      paths: [filePath],
+      verbose: false,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'json',
+      'strict-paths': false,
+      'parser-plugin': [],
+      annotate: undefined,
+      quote: 'single',
+      ...overrides,
+    } as never;
+  }
+
+  it('fails instead of emitting a clean JSON report for an unattributed pipeline error', async () => {
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({
+        ...result,
+        events: [...result.events, { kind: 'PipelineError', fnLoc: null, data: 'pipeline crashed' }],
+      });
+    });
+    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+    try {
+      await expect(runAnalyze(argv({ annotate: 'all' }))).rejects.toThrow(
+        new CliError(`Compiler failed for 1 file(s):\n  ${filePath}: PipelineError: pipeline crashed`),
+      );
+      expect(output).not.toHaveBeenCalled();
+      expect(readFileSync(filePath, 'utf-8')).not.toContain('use memo');
+    } finally {
+      output.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('fails on a transform error rather than labeling it unparseable', async () => {
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({ ...result, error: new Error('plugin crashed') });
+    });
+    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+    try {
+      await expect(runAnalyze(argv())).rejects.toThrow(`Compiler failed for 1 file(s):\n  ${filePath}: plugin crashed`);
+      expect(output).not.toHaveBeenCalled();
+    } finally {
+      output.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('reports genuine parser failures in JSON with a failing exit code', async () => {
+    writeFileSync(filePath, 'export function Broken( { return <div />;\n');
+    const output: string[] = [];
+    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+      output.push(String(chunk));
+      return true;
+    });
+
+    try {
+      expect(await runAnalyze(argv())).toBe(1);
+      const doc = JSON.parse(output.join(''));
+      expect(doc.summary.unparseableFiles).toBe(1);
+      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringContaining('Unexpected') }]);
+      expect(doc.functions).toEqual([]);
+    } finally {
+      write.mockRestore();
+    }
+  });
+
+  it('reports a parser failure and exits nonzero in human-readable output', async () => {
+    writeFileSync(filePath, 'export function Broken( { return <div />;\n');
+    const output: string[] = [];
+    const log = jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => {
+      output.push(args.map(String).join(' '));
+    });
+
+    try {
+      expect(await runAnalyze(argv({ format: 'cli' }))).toBe(1);
+      expect(output.join('\n')).toContain('Not analyzed');
+      expect(output.join('\n')).toContain('1 file(s)');
+    } finally {
+      log.mockRestore();
+    }
+  });
+
+  it('keeps genuinely empty source successful with zero functions', async () => {
+    writeFileSync(filePath, '');
+    const output: string[] = [];
+    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+      output.push(String(chunk));
+      return true;
+    });
+
+    try {
+      expect(await runAnalyze(argv())).toBe(0);
+      const doc = JSON.parse(output.join(''));
+      expect(doc.summary).toMatchObject({ functions: 0, errors: 0, unparseableFiles: 0 });
+      expect(doc.unparseable).toEqual([]);
+    } finally {
+      write.mockRestore();
+    }
   });
 });
 

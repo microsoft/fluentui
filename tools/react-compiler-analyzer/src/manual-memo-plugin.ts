@@ -1,8 +1,8 @@
 import type { PluginObj, NodePath } from '@babel/core';
-import type { Function as BabelFunction, CallExpression } from '@babel/types';
+import type { Function as BabelFunction, CallExpression, Node } from '@babel/types';
 
 import { locationKey } from './identity';
-import type { SourceFunctionIndex } from './source-functions';
+import { getReactCallName, type SourceFunctionIndex } from './source-functions';
 
 export interface ManualMemoEntry {
   useMemo: number;
@@ -66,38 +66,39 @@ function readDirectives(fnPath: NodePath<BabelFunction>): ExistingDirectives {
 
 /**
  * Resolve the target function wrapped by React.memo(fn).
- * Handles: identifiers referencing functions, inline function expressions, and arrow functions.
+ * Follow immutable local bindings and React memo/forwardRef wrappers to the render function.
  */
 function resolveReactMemoTarget(callPath: NodePath<CallExpression>): NodePath<BabelFunction> | null {
-  const args = callPath.node.arguments;
-  if (args.length === 0) {
-    return null;
-  }
-  const firstArg = args[0];
-
-  if (firstArg.type === 'Identifier') {
-    // React.memo(InnerComponent) — resolve binding to find the function
-    const binding = callPath.scope.getBinding(firstArg.name);
-    if (!binding) {
-      return null;
+  let target = callPath.get('arguments')[0];
+  const visited = new Set<Node>();
+  while (target?.node && !visited.has(target.node)) {
+    visited.add(target.node);
+    if (target.isFunctionDeclaration() || target.isFunctionExpression() || target.isArrowFunctionExpression()) {
+      return target;
     }
-    const bindingPath = binding.path;
-    if (bindingPath.isFunctionDeclaration()) {
-      return bindingPath as NodePath<BabelFunction>;
-    }
-    if (bindingPath.isVariableDeclarator()) {
-      const init = bindingPath.get('init') as NodePath;
-      if (init.isFunctionExpression() || init.isArrowFunctionExpression()) {
-        return init as NodePath<BabelFunction>;
+    if (target.isIdentifier()) {
+      const binding = target.scope.getBinding(target.node.name);
+      if (!binding?.constant) {
+        return null;
+      }
+      if (binding.path.isFunctionDeclaration()) {
+        return binding.path;
+      }
+      if (binding.path.isVariableDeclarator()) {
+        const init = binding.path.get('init');
+        if (init.isExpression()) {
+          target = init;
+          continue;
+        }
+      }
+    } else if (target.isCallExpression()) {
+      const name = getReactCallName(target);
+      if (name === 'memo' || name === 'forwardRef') {
+        target = target.get('arguments')[0];
+        continue;
       }
     }
-    return null;
-  }
-
-  if (firstArg.type === 'FunctionExpression' || firstArg.type === 'ArrowFunctionExpression') {
-    // React.memo(function() {...}) or React.memo(() => {...})
-    const argPath = callPath.get('arguments.0') as NodePath<BabelFunction>;
-    return argPath;
+    break;
   }
 
   return null;
@@ -137,49 +138,14 @@ export function manualMemoPlugin(): PluginObj {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(path, state) {
         const opts = state.opts as unknown as ManualMemoPluginOptions;
-        const callee = path.node.callee;
-
-        let hookName: 'useMemo' | 'useCallback' | 'reactMemo' | null = null;
-
-        // Direct call: memo(...), useMemo(...), useCallback(...)
-        if (callee.type === 'Identifier') {
-          const binding = path.scope.getBinding(callee.name);
-          if (binding?.path.parent?.type === 'ImportDeclaration' && binding.path.parent.source.value === 'react') {
-            if (callee.name === 'useMemo') {
-              hookName = 'useMemo';
-            } else if (callee.name === 'useCallback') {
-              hookName = 'useCallback';
-            } else if (callee.name === 'memo') {
-              hookName = 'reactMemo';
-            }
-          }
-        }
-
-        // Member expression: React.memo(...), React.useMemo(...), React.useCallback(...)
-        if (
-          callee.type === 'MemberExpression' &&
-          callee.object.type === 'Identifier' &&
-          callee.property.type === 'Identifier'
-        ) {
-          const binding = path.scope.getBinding(callee.object.name);
-          if (binding?.path.parent?.type === 'ImportDeclaration' && binding.path.parent.source.value === 'react') {
-            if (callee.property.name === 'memo') {
-              hookName = 'reactMemo';
-            } else if (callee.property.name === 'useMemo') {
-              hookName = 'useMemo';
-            } else if (callee.property.name === 'useCallback') {
-              hookName = 'useCallback';
-            }
-          }
-        }
-
-        if (!hookName) {
+        const hookName = getReactCallName(path);
+        if (hookName !== 'memo' && hookName !== 'useMemo' && hookName !== 'useCallback') {
           return;
         }
 
         // For reactMemo, resolve the *wrapped* function (the argument to React.memo())
         // rather than the enclosing function, since React.memo() is typically at module level.
-        if (hookName === 'reactMemo') {
+        if (hookName === 'memo') {
           const targetFnPath = resolveReactMemoTarget(path);
           if (!targetFnPath || !targetFnPath.node.loc) {
             return;
@@ -205,7 +171,7 @@ export function manualMemoPlugin(): PluginObj {
             opts.results?.set(key, entry);
           }
           entry.reactMemo = true;
-          entry.reactMemoHasComparator = path.node.arguments.length > 1;
+          entry.reactMemoHasComparator ||= path.node.arguments.length > 1;
           return;
         }
 

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Harden compiler event attribution, package discovery, directive fixes, compact JSON reporting, and manual-memo migration candidates.",
+  "comment": "Harden compiler event attribution and failure exits, package discovery, directive fixes, compact JSON reporting, and manual-memo migration candidates, including nested memo/forwardRef wrappers, comparator preservation, and wildcard path-alias resolution.",
   "packageName": "@fluentui/react-compiler-analyzer",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"

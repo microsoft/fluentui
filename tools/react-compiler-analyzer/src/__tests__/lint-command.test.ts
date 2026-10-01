@@ -590,6 +590,19 @@ export function useUncompilable() {
     );
     await expect(runLint(baseArgv({ fix: true }) as never)).resolves.toBe(1);
   });
+
+  it('shows parse failures in the human report and exits 1', async () => {
+    const filePath = join(tempDir, 'src', 'Unparseable.tsx');
+    writeFileSync(filePath, "export function Broken() {\n  'use no memo';\n  const = ;\n}\n");
+    const output: string[] = [];
+    console.log = (...args: unknown[]) => {
+      output.push(args.map(String).join(' '));
+    };
+
+    await expect(runLint(baseArgv() as never)).resolves.toBe(1);
+    expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
+    expect(output.join('\n')).toContain('Unparseable.tsx');
+  });
 });
 
 describe('lint command — scan log wrapping', () => {

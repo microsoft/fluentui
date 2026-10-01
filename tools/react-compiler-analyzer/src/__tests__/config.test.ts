@@ -4,8 +4,8 @@ import { tmpdir } from 'node:os';
 
 import yargs from 'yargs';
 
-import { parseBootstrapArgs, parseConfigPath } from '../cli';
-import { loadRcaConfig } from '../config';
+import { cli, parseBootstrapArgs, parseConfigPath } from '../cli';
+import { loadRcaConfig, validateRcaConfig } from '../config';
 import { createAnalyzeCommand } from '../commands/analyze';
 import { createLintCommand } from '../commands/lint';
 import { CliError } from '../commands/shared';
@@ -60,6 +60,51 @@ describe('rca.config.json', () => {
   it('reports nested schema validation errors', () => {
     writeConfig({ analyze: { risks: { resolveWrappers: 'yes' } } });
     expect(() => loadRcaConfig(undefined, tempDir)).toThrow(/analyze\/risks\/resolveWrappers.*boolean/);
+  });
+
+  it('rejects malformed store-accessor regexes at config load, before scanning', () => {
+    const configPath = writeConfig({ analyze: { risks: { storeAccessorPattern: '[' } } });
+    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(CliError);
+    expect(() => loadRcaConfig(undefined, tempDir)).toThrow(
+      `invalid RCA config '${configPath}': analyze.risks.storeAccessorPattern is not a valid regex`,
+    );
+    expect(() => validateRcaConfig({ analyze: { risks: { storeAccessorPattern: '[' } } }, 'in-memory')).toThrow(
+      /invalid RCA config in-memory: analyze\.risks\.storeAccessorPattern is not a valid regex/,
+    );
+  });
+
+  it('accepts valid store-accessor regexes', () => {
+    writeConfig({ analyze: { risks: { storeAccessorPattern: 'Store$' } } });
+    expect(loadRcaConfig(undefined, tempDir).config.analyze?.risks?.storeAccessorPattern).toBe('Store$');
+  });
+
+  it('exits with a config error instead of reporting analysis success for a bad regex', async () => {
+    const configPath = writeConfig({ analyze: { risks: { storeAccessorPattern: '[' } } });
+    const originalArgv = process.argv;
+    const originalExitCode = process.exitCode;
+    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+    try {
+      process.argv = [
+        'node',
+        'react-compiler-analyzer',
+        'analyze',
+        tempDir,
+        '--config',
+        configPath,
+        '--format',
+        'json',
+      ];
+      process.exitCode = undefined;
+      await cli();
+      expect(process.exitCode).toBe(1);
+      expect(error).toHaveBeenCalledWith(
+        expect.stringContaining('analyze.risks.storeAccessorPattern is not a valid regex'),
+      );
+    } finally {
+      process.argv = originalArgv;
+      process.exitCode = originalExitCode;
+      error.mockRestore();
+    }
   });
 
   it('rejects CLI-only and unknown options', () => {
@@ -126,6 +171,32 @@ describe('rca.config.json', () => {
     loadRcaConfig(undefined, tempDir);
 
     expect(warn).toHaveBeenCalledWith(expect.stringContaining('@ghost/'));
+    warn.mockRestore();
+  });
+
+  it('prints exact and suffixed alias names accurately in dead-target warnings', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    mkdirSync(join(tempDir, 'src'));
+    writeConfig({
+      analyze: {
+        risks: {
+          detectGetStateReads: true,
+          resolveWrappers: true,
+          pathAliases: {
+            baseUrl: './src',
+            paths: { '@missing': ['missing'], '@ui/*.js': ['missing/*.tsx'], '@ghost/*': ['ghost/*'] },
+          },
+        },
+      },
+    });
+
+    loadRcaConfig(undefined, tempDir);
+
+    const message = warn.mock.calls.map(([text]) => text).join('\n');
+    expect(message).toContain('@missing ->');
+    expect(message).not.toContain('@missing* ->');
+    expect(message).toContain('@ui/*.js ->');
+    expect(message).toContain('@ghost/* ->');
     warn.mockRestore();
   });
 });

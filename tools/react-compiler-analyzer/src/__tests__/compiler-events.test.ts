@@ -143,10 +143,27 @@ describe('normalizeCompilerEvents', () => {
     expect(normalize([{ kind: 'CompileSuccess', fnLoc, memoSlots: 0 }]).analyses[0].memoStats?.memoSlots).toBe(0);
   });
 
-  it('ignores terminal events that cannot be attributed to a source function', async () => {
+  it('retains file-level pipeline errors without inventing function rows', async () => {
+    const { fnLoc, normalize } = await setup();
+    const result = normalize([
+      { kind: 'CompileSuccess', fnLoc },
+      { kind: 'PipelineError', fnLoc: null, data: 'file failure' },
+    ]);
+    expect(result.analyses).toHaveLength(1);
+    expect(result.analyses[0].status).toBe('compiled');
+    expect(result.unattributedErrors).toEqual([{ kind: 'PipelineError', span: null, reason: 'file failure' }]);
+  });
+
+  it('retains unattributed compile errors without miscounting functions', async () => {
     const { normalize } = await setup();
-    const result = normalize([{ kind: 'PipelineError', fnLoc: null, data: 'file failure' }]);
+    const result = normalize([{ kind: 'CompileError', fnLoc: null, detail: { reason: 'compiler failure' } }]);
     expect(result.analyses).toHaveLength(0);
+    expect(result.unattributedErrors).toEqual([{ kind: 'CompileError', span: null, reason: 'compiler failure' }]);
+  });
+
+  it('treats a file with no terminal events as empty rather than failed', async () => {
+    const { normalize } = await setup();
+    expect(normalize([])).toEqual({ analyses: [], unattributedErrors: [] });
   });
 
   it('omits full diagnostics when the caller does not need them', async () => {

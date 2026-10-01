@@ -6,6 +6,18 @@ Analyzes React Compiler behavior on TypeScript source files. Three commands:
 - **`lint`** — CI gate: validates `'use no memo'` and `'use memo'` directives for correctness. Exits 1 on issues.
 - **`analyze`** — Health report: compiler coverage stats, directive breakdown, manual-memo migration candidates, and opt-in runtime-risk detection ("Compiled but Risky").
 
+## Installation and releases
+
+Requires Node.js 22 or 24. Install `@fluentui/react-compiler-analyzer` as a development
+dependency and invoke the `react-compiler-analyzer` binary; this is a CLI-only package with
+no public JavaScript API. The package includes the schemas and Agent Skill described below.
+
+In this repository, the root development dependency resolves to the local workspace package,
+not the previously published experimental build. Build it with
+`yarn nx run react-compiler-analyzer:build` before invoking the root binary. The first
+published version is intended to be `0.0.1`: all pending Beachball changes are patches
+against `0.0.0`. Do not promote a change to minor before that first release.
+
 ## User Flows
 
 ### Flow 0: Initialize a repository
@@ -134,7 +146,8 @@ or `--yes --force` in a non-interactive environment.
 ```
 
 The shipped `rca.config.schema.json` provides editor validation and is also used for runtime
-validation. Unknown keys and invalid nested values fail the run. Explicit CLI options override
+validation. Unknown keys, invalid nested values, and malformed `storeAccessorPattern` regexes
+fail at config load before scanning. Explicit CLI options override
 config values. JSON uses camelCase (`strictPaths`, `parserPlugins`), while CLI flags retain
 kebab-case (`--strict-paths`, `--parser-plugin`).
 
@@ -203,6 +216,9 @@ Scans one or more files or directories for both `'use no memo'` and `'use memo'`
 | `broken`      | `'use memo'` requests compilation that errors              | **1**     |
 | `conflicting` | Both `'use no memo'` and `'use memo'` on same function     | **1**     |
 | `skipped`     | Has `// justified:` comment                                | 0         |
+
+Files that cannot be parsed or compiled are reported separately and fail the lint gate,
+even if no directive status could be derived. `--fix` does not modify these files.
 
 #### Classification matrix
 
@@ -288,7 +304,9 @@ react-compiler-analyzer analyze <paths..> [options]
 
 Reports which functions the React Compiler accepts, skips, or bails out on across one or more files
 or directories. Accepted functions are separated by whether the compiler reports an emitted memo
-cache. Also shows a directive breakdown summary. Always exits 0.
+cache. Also shows a directive breakdown summary. Exits 0 for a completed scan with no parse
+failures (including empty files). Parser failures produce a report but exit 1; unattributed compiler
+failures and non-parse transform errors fail with exit 1 before reporting or annotating.
 
 Without `--verbose`, human-readable output contains only package summary tables and one aggregate
 summary table. Candidate lists, candidate and memo-counter legends, per-function compiler outcomes,
@@ -317,6 +335,10 @@ candidate only when:
 - its canonical compiler outcome is `compiled`;
 - it is not opted out with `'use no memo'`; and
 - it contains at least one detected `useMemo`, `useCallback`, or `React.memo` site.
+
+Detection includes `memo(forwardRef(...))` and `memo(ForwardRefIdentifier)` wrappers, including
+anonymous inner components. Custom comparators remain separate review items, not automatic
+removal candidates.
 
 Human-readable reports render a separate candidate section inside each package. Candidates are
 intentionally not part of the JSON contract: they are review guidance rather than stable
@@ -519,6 +541,10 @@ to the leaf, reporting the finding at the call site with the resolution chain:
 }
 ```
 
+Wildcard path aliases substitute the captured segment wherever `*` appears in a target:
+`"@app/*": ["packages/*/src/index.tsx"]` resolves `@app/button` to
+`packages/button/src/index.tsx`.
+
 The finding reads e.g. `reached via \`readActiveIdIndirect → readActiveId\`: imperative store
 snapshot via .getState()…`. Resolution is **demand-driven and memoized** (files are parsed only
 when a call path reaches them), so it's far cheaper than a full TypeScript `Program`. It is
@@ -528,9 +554,9 @@ recognizes those as hooks and they're flagged at their own definition), and it s
 
 ##### Verifying that resolution actually worked
 
-A misconfigured `pathAliases` resolves nothing and still exits 0, so an empty risk section would be
-indistinguishable from clean code. Every run therefore prints what resolution reached — on **stderr**,
-so it survives `--format json`:
+A misconfigured `pathAliases` resolves nothing and does not itself fail the run, so an empty risk
+section would be indistinguishable from clean code. Every run therefore prints what resolution
+reached — on **stderr**, so it survives `--format json`:
 
 ```text
 Wrapper resolution: 812 import(s) resolved, 5140 stopped at the package boundary, 12 unresolvable.
@@ -599,7 +625,12 @@ Findings are reported in two sections:
 
 A file the parser rejects yields no functions, so without a signal the totals would quietly shrink
 and the report would look clean because nothing was read. Such files are listed in a **Not Analyzed**
-section, counted in the summary, and exposed as `unparseable` in `--format json`.
+section, counted in the summary, and exposed as `unparseable` in `--format json`. Even though the
+report is emitted, the command exits 1 when any file cannot be parsed.
+
+Unattributed compiler `PipelineError`/`CompileError` events and non-parse transform errors are
+different: they fail the command before a JSON document or `--annotate` writes are produced, rather
+than yielding a report that could be mistaken for complete analysis.
 
 **If your build compiles these files, fix it with `--parser-plugin`.** The analyzer parses with
 `typescript` + `jsx` only; a build whose loader enables a wider grammar (commonly
@@ -713,8 +744,9 @@ react-compiler-analyzer analyze ./library/src --format html > coverage-report.ht
 #### `--format json`
 
 Emits a versioned document so results can be diffed, tracked, or fed to a dashboard without
-scraping text. **stdout carries only the document** — the scan log and per-file diagnostics are
-redirected to stderr — so it pipes straight into a parser:
+scraping text. When a report is produced, **stdout carries only the document** — the scan log and
+per-file diagnostics are redirected to stderr — so it pipes straight into a parser. A parse error
+is still represented in the document but exits 1; a fatal compiler/transform error emits no JSON:
 
 `summary.memoCacheEmitted` is the direct machine-readable equivalent of the human
 **Compiler accepted (memo cache emitted)** metric. It counts only canonical `compiled` function
@@ -783,16 +815,18 @@ react-compiler-analyzer analyze ./src --format json \
   omitted for other findings.
 - Memo counters preserve compiler absence as `null`; a reported zero remains `0`.
 - `unparseable` lists files the parser rejected outright. They contribute nothing to the other
-  counts, so a shrinking `functions` total is never silently caused by a parse failure.
+  counts, so a shrinking `functions` total is never silently caused by a parse failure; a nonempty
+  array also sets exit code 1.
 - Paths are workspace-relative and POSIX-separated.
 - Output is deterministically ordered, so equivalent runs produce byte-identical documents.
-- `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array) and
-  keeps its usual exit code. `lint --format json --fix` performs the requested write before
-  serializing.
+- `lint --format json` emits the directive equivalent (`command: "lint"`, a `directives` array,
+  `summary.unparseableFiles`, and an `unparseable` array) and keeps its usual exit code.
+  `lint --format json --fix` reports the post-fix directive statuses and failures.
 - Full code-framed compiler diagnostics remain available in human reports with `--verbose`; JSON
   stays compact and includes the terminal reason and location only.
-- `--annotate` still writes directives to disk under `--format json`; the outcome is reported in an
-  `annotate` key (`{ mode, filesModified, functionsAnnotated, functionsBailedOut }`).
+- `--annotate` still writes directives to disk under `--format json` when processing completes
+  without a fatal compiler/transform error; the outcome is reported in an `annotate` key
+  (`{ mode, filesModified, functionsAnnotated, functionsBailedOut }`).
 - [`rca.analyze.schema.json`](rca.analyze.schema.json) validates the compact `analyze` document.
   It is a package artifact only and adds nothing to the emitted payload or analyzer hot path. See
   [MIGRATION.md](MIGRATION.md) for the v1-to-v2 field and behavior changes.

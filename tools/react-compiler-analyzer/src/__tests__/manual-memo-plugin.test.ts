@@ -4,6 +4,7 @@ import { join } from 'path';
 import { transformAsync } from '@babel/core';
 
 import { manualMemoPlugin, ManualMemoEntry, ManualMemoPluginOptions } from '../manual-memo-plugin';
+import { SourceFunctionIndex } from '../source-functions';
 
 const FIXTURES_DIR = join(__dirname, '__fixtures__', 'manual-memo');
 
@@ -12,8 +13,13 @@ async function runPlugin(
 ): Promise<{ results: Map<string, ManualMemoEntry>; bodyInsertionLines: Map<string, number> }> {
   const filePath = join(FIXTURES_DIR, fixtureName);
   const source = readFileSync(filePath, 'utf-8');
+  return runSource(source, filePath);
+}
+
+async function runSource(source: string, filePath = join(FIXTURES_DIR, 'wrapped.tsx')) {
   const results = new Map<string, ManualMemoEntry>();
   const bodyInsertionLines = new Map<string, number>();
+  const sourceFunctions = new SourceFunctionIndex(source, { filePath, packageName: 'fixture' }, FIXTURES_DIR);
 
   await transformAsync(source, {
     filename: filePath,
@@ -22,13 +28,91 @@ async function runPlugin(
     babelrc: false,
     configFile: false,
     presets: [[require.resolve('@babel/preset-typescript'), { isTSX: true, allExtensions: true }]],
-    plugins: [[manualMemoPlugin, { results, bodyInsertionLines } as ManualMemoPluginOptions]],
+    plugins: [[manualMemoPlugin, { results, bodyInsertionLines, sourceFunctions } as ManualMemoPluginOptions]],
   });
 
-  return { results, bodyInsertionLines };
+  return { results, bodyInsertionLines, sourceFunctions };
 }
 
 describe('manualMemoPlugin', () => {
+  describe('memo and forwardRef wrappers', () => {
+    it.each([
+      ["import React from 'react';", 'React.memo', 'React.forwardRef'],
+      ["import * as React from 'react';", 'React.memo', 'React.forwardRef'],
+      ["import { memo, forwardRef } from 'react';", 'memo', 'forwardRef'],
+      ["import { memo as cache, forwardRef as withRef } from 'react';", 'cache', 'withRef'],
+    ])('resolves inline and identifier wrappers with %s', async (imports, memo, forwardRef) => {
+      for (const inline of [true, false]) {
+        for (const comparator of [false, true]) {
+          const render = '(props, ref) => { return <div ref={ref}>{props.value}</div>; }';
+          const wrapped = `${forwardRef}(${render})`;
+          const source = `${imports}
+${inline ? '' : `const Inner = ${wrapped};`}
+export const Wrapped = ${memo}(${inline ? wrapped : 'Inner'}${comparator ? ', (a, b) => a.value === b.value' : ''});
+`;
+          const { results, bodyInsertionLines, sourceFunctions } = await runSource(source);
+          const fn = sourceFunctions.values().find(candidate => candidate.name === (inline ? 'Wrapped' : 'Inner'))!;
+          expect(fn).toBeDefined();
+          expect(fn.kind).toBe('component');
+          const expectedMemo = {
+            useMemo: 0,
+            useCallback: 0,
+            reactMemo: true,
+            reactMemoHasComparator: comparator,
+          };
+          const key = `${fn.declarationSpan.start.line}:${fn.declarationSpan.start.column}`;
+          expect([...results]).toEqual([[key, { ...expectedMemo, bodyInsertionLine: fn.bodyInsertionLine }]]);
+          expect(bodyInsertionLines.get(key)).toBe(fn.bodyInsertionLine);
+          expect(sourceFunctions.values().filter(candidate => candidate.manualMemo)).toEqual([
+            expect.objectContaining({ id: fn.id, manualMemo: expectedMemo }),
+          ]);
+        }
+      }
+    });
+
+    it('follows identifier aliases to a separately declared render function', async () => {
+      const { results, sourceFunctions } = await runSource(`
+import { memo, forwardRef } from 'react';
+function Render(props, ref) { return <div ref={ref}>{props.value}</div>; }
+const Inner = forwardRef(Render);
+const Alias = Inner;
+export const Wrapped = memo(Alias);
+`);
+      expect(results.size).toBe(1);
+      expect(sourceFunctions.values()).toEqual([
+        expect.objectContaining({ name: 'Render', manualMemo: expect.objectContaining({ reactMemo: true }) }),
+      ]);
+    });
+
+    it('retains comparator flags across nested and repeated memo wrappers', async () => {
+      const { results, sourceFunctions } = await runSource(`
+import { memo, forwardRef } from 'react';
+const Inner = forwardRef(function Render(props, ref) { return <div ref={ref}>{props.value}</div>; });
+const Compared = memo(Inner, (a, b) => a.value === b.value);
+export const Wrapped = memo(memo(Compared));
+export const Other = memo(Inner);
+`);
+      expect([...results.values()]).toEqual([
+        expect.objectContaining({ reactMemo: true, reactMemoHasComparator: true }),
+      ]);
+      expect(sourceFunctions.values().find(fn => fn.name === 'Render')?.manualMemo).toEqual(
+        expect.objectContaining({ reactMemo: true, reactMemoHasComparator: true }),
+      );
+    });
+
+    it.each([
+      `import { forwardRef } from 'other'; const Inner = forwardRef(() => { return <div />; }); React.memo(Inner);`,
+      `const forwardRef = fn => fn; React.memo(forwardRef(() => { return <div />; }));`,
+      `const Inner = React.forwardRef(() => { return <div />; }); const memo = 'memo'; React[memo](Inner);`,
+      `const First = Second; const Second = First; React.memo(First);`,
+      `let Inner = React.forwardRef(() => { return <div />; }); Inner = other; React.memo(Inner);`,
+    ])('does not infer a target from unrelated, dynamic, cyclic or reassigned wrappers: %s', async source => {
+      const { results, sourceFunctions } = await runSource(`import React from 'react';\n${source}`);
+      expect(results.size).toBe(0);
+      expect(sourceFunctions.values().some(fn => fn.manualMemo)).toBe(false);
+    });
+  });
+
   describe('import styles', () => {
     it.each(['named-import.tsx', 'namespace-import.tsx', 'default-import.tsx'])(
       'detects useMemo, useCallback, and memo in %s',

@@ -4,6 +4,8 @@ import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyze
 import { compileFilesStreaming } from '../compiler';
 import { discoverFilesWithDirectives } from '../discovery';
 import { applyFixes } from '../fixer';
+import { compareText } from '../ordering';
+import { toWorkspacePath } from '../path-utils';
 import { printReport, printSummary } from '../reporter';
 import { toLintDocument, writeDocument } from '../serializer';
 import type { DirectiveAnalysis, RcaConfig } from '../types';
@@ -15,8 +17,9 @@ async function analyzeDirectiveFiles(
   files: Parameters<typeof compileFilesStreaming>[0],
   argv: LintArgv,
   verbose = argv.verbose,
-): Promise<DirectiveAnalysis[]> {
+): Promise<{ results: DirectiveAnalysis[]; unparseable: { file: string; error: string }[] }> {
   const results: DirectiveAnalysis[] = [];
+  const unparseable: { file: string; error: string }[] = [];
   await compileFilesStreaming(
     files,
     {
@@ -27,6 +30,10 @@ async function analyzeDirectiveFiles(
       parserPlugins: argv['parser-plugin'],
     },
     async compiled => {
+      if (compiled.error) {
+        unparseable.push({ file: compiled.filePath, error: compiled.error.message });
+        return;
+      }
       results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));
       results.push(
         ...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, {
@@ -36,20 +43,18 @@ async function analyzeDirectiveFiles(
     },
   );
   sortByLocation(results);
-  return results;
+  unparseable.sort((a, b) => compareText(a.file, b.file) || compareText(a.error, b.error));
+  return { results, unparseable };
 }
 
-/**
- * `--fix` rewrites redundant and conflicting directives, so those stop being failures. A broken
- * `'use memo'` has no automated repair and must still fail the run.
- */
-function lintExitCode(results: DirectiveAnalysis[], fixed: boolean): number {
+/** Check the final directive statuses and any files that could not be analyzed. */
+function lintExitCode(results: DirectiveAnalysis[], unparseableCount: number): number {
   const fixableFailures =
     results.some(r => r.status === 'redundant' && r.directiveType === 'use-no-memo') ||
     results.some(r => r.status === 'conflicting');
   const unfixableFailures = results.some(r => r.status === 'broken');
 
-  return unfixableFailures || (fixableFailures && !fixed) ? 1 : 0;
+  return unfixableFailures || fixableFailures || unparseableCount > 0 ? 1 : 0;
 }
 
 /** Command body, separated from the yargs wiring so tests can assert on the exit code. */
@@ -60,23 +65,35 @@ export async function runLint(argv: LintArgv): Promise<number> {
     emptyMessage: 'No files with directives found.',
     countLabel: 'Files with directives',
     run: async ({ f, files, endScanLog }) => {
-      const results = await analyzeDirectiveFiles(files, argv);
+      const { results, unparseable } = await analyzeDirectiveFiles(files, argv);
 
       endScanLog();
 
       const workspaceRoot = process.cwd();
       const fixResult = argv.fix ? await applyFixes(results) : undefined;
-      const validationResults =
-        argv.fix && fixResult!.filesModified > 0 ? await analyzeDirectiveFiles(files, argv, false) : results;
-      const exitCode = lintExitCode(validationResults, false);
+      const validation =
+        argv.fix && fixResult!.filesModified > 0
+          ? await analyzeDirectiveFiles(files, argv, false)
+          : { results, unparseable };
+      const exitCode = lintExitCode(validation.results, validation.unparseable.length);
 
       if (argv.format === 'json') {
-        writeDocument(toLintDocument(results, { mode: argv.mode, workspaceRoot }));
+        writeDocument(
+          toLintDocument(validation.results, { mode: argv.mode, workspaceRoot, unparseable: validation.unparseable }),
+        );
         return exitCode;
       }
 
       printReport(f, results, workspaceRoot, argv.verbose);
       printSummary(f, results);
+      if (validation.unparseable.length > 0) {
+        f.heading(2, 'Files not analyzed (parse/compile errors)');
+        f.blank();
+        for (const { file, error } of validation.unparseable) {
+          f.line(`${toWorkspacePath(workspaceRoot, file)}: ${error}`);
+        }
+        f.blank();
+      }
 
       if (argv.fix) {
         const fixable = results.filter(

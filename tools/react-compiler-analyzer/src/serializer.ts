@@ -96,7 +96,10 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
 }
 
 /** Convert directive lint results into the compact JSON contract. */
-export function toLintDocument(results: DirectiveAnalysis[], meta: DocumentMeta): LintDocument {
+export function toLintDocument(
+  results: DirectiveAnalysis[],
+  meta: DocumentMeta & { unparseable?: { file: string; error: string }[] },
+): LintDocument {
   const directives: JsonDirective[] = results.map(result => ({
     file: toRelative(result.filePath, meta.workspaceRoot),
     package: result.packageName,
@@ -121,8 +124,13 @@ export function toLintDocument(results: DirectiveAnalysis[], meta: DocumentMeta)
       broken: directives.filter(directive => directive.status === 'broken').length,
       conflicting: directives.filter(directive => directive.status === 'conflicting').length,
       skipped: directives.filter(directive => directive.status === 'skipped').length,
+      unparseableFiles: meta.unparseable?.length ?? 0,
     },
     directives,
+    unparseable: (meta.unparseable ?? []).map(item => ({
+      file: toRelative(item.file, meta.workspaceRoot),
+      error: item.error,
+    })),
   };
 }
 

@@ -29,7 +29,7 @@ export function parseBootstrapArgs(args: string[]): BootstrapArgs {
       throw error ?? new CliError(message);
     });
 
-  const parsed = parser.parse();
+  const parsed = parser.parseSync();
   const command = typeof parsed._[0] === 'string' ? parsed._[0] : undefined;
 
   return { command, configPath: parsed.config };
@@ -67,8 +67,7 @@ export async function cli(): Promise<void> {
       })
       .help();
 
-    // `@types/yargs` is pinned at v13 repo-wide; `parseAsync` exists in the yargs v17 runtime.
-    await (parser as unknown as { parseAsync(): Promise<unknown> }).parseAsync();
+    await parser.parseAsync();
   } catch (err) {
     // Backstop for rejections yargs does not route through `.fail()`.
     if (err instanceof CliError) {

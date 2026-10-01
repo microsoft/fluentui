@@ -321,6 +321,8 @@ export interface LintDocument extends DocumentEnvelope {
     broken: number;
     conflicting: number;
     skipped: number;
+    unparseableFiles: number;
   };
   directives: JsonDirective[];
+  unparseable: { file: string; error: string }[];
 }
