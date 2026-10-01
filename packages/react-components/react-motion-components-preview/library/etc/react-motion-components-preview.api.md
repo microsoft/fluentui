@@ -5,6 +5,7 @@
 ```ts
 
 import type { AtomMotion } from '@fluentui/react-motion';
+import { BasePresenceParams } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
 import type { PresenceComponentProps } from '@fluentui/react-motion';
 import type { PresenceDirection } from '@fluentui/react-motion';

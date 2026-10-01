@@ -21,6 +21,9 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 } & MotionParams) => AtomMotion | AtomMotion[];
 
 // @public
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
+
+// @public
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): MotionComponent<MotionParams>;
 
 // @public
@@ -173,8 +176,26 @@ export type PresenceComponentProps = {
     unmountOnExit?: boolean;
 };
 
+// @public
+export type PresenceDelay = {
+    delay?: EffectTiming['delay'];
+    exitDelay?: EffectTiming['delay'];
+};
+
 // @public (undocumented)
 export type PresenceDirection = 'enter' | 'exit';
+
+// @public
+export type PresenceDuration = {
+    duration?: number;
+    exitDuration?: number;
+};
+
+// @public
+export type PresenceEasing = {
+    easing?: string;
+    exitEasing?: string;
+};
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {

@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Export shared presence timing types and check directional timing aliases against them.",
+  "packageName": "@fluentui/react-motion",
+  "email": "robert@robertpenner.com"
+}

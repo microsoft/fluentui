@@ -16,6 +16,44 @@ export type PresenceDirection = 'enter' | 'exit';
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 /**
+ * Common duration parameters for presence motion components.
+ */
+export type PresenceDuration = {
+  /** Time (ms) for the enter transition. */
+  duration?: number;
+
+  /** Time (ms) for the exit transition. Defaults to the `duration` param for symmetry. */
+  exitDuration?: number;
+};
+
+/**
+ * Common easing parameters for presence motion components.
+ */
+export type PresenceEasing = {
+  /** Easing curve for the enter transition. */
+  easing?: string;
+
+  /** Easing curve for the exit transition. Defaults to the `easing` param for symmetry. */
+  exitEasing?: string;
+};
+
+/**
+ * Common delay parameters for presence motion components.
+ */
+export type PresenceDelay = {
+  /** Time (ms) to delay the enter transition. */
+  delay?: EffectTiming['delay'];
+
+  /** Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry. */
+  exitDelay?: EffectTiming['delay'];
+};
+
+/**
+ * Base presence parameters combining duration, easing, and delay for motion components.
+ */
+export type BasePresenceParams = PresenceDuration & PresenceEasing & PresenceDelay;
+
+/**
  * A motion param should be a primitive value that can be serialized to JSON and could be potentially used a plain
  * dependency for React hooks.
  */

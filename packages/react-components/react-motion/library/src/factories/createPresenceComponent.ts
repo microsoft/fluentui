@@ -13,6 +13,7 @@ import { useChildElement } from '../utils/useChildElement';
 import type {
   MotionParam,
   PresenceMotion,
+  BasePresenceParams,
   MotionImperativeRef,
   PresenceMotionFn,
   PresenceDirection,
@@ -115,6 +116,17 @@ export type PresenceComponent<
 
 const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
 
+const exitTimingProps = {
+  duration: 'exitDuration',
+  easing: 'exitEasing',
+  delay: 'exitDelay',
+} satisfies {
+  [Key in keyof BasePresenceParams as Key extends `exit${string}` ? never : Key]-?: Extract<
+    keyof BasePresenceParams,
+    `exit${Capitalize<Key>}`
+  >;
+};
+
 export function createPresenceComponent<
   MotionParams extends Record<string, MotionParam> = {},
   PresentKeys extends keyof MotionParams = never,
@@ -167,11 +179,7 @@ export function createPresenceComponent<
           // Let .Out use ordinary timing props. Translate explicit values before variant defaults are merged,
           // preserving an explicit exit-prefixed value when both forms are supplied.
           if (options && direction === 'exit') {
-            for (const [ordinary, exit] of [
-              ['duration', 'exitDuration'],
-              ['easing', 'exitEasing'],
-              ['delay', 'exitDelay'],
-            ] as const) {
+            for (const [ordinary, exit] of Object.entries(exitTimingProps)) {
               const source = ordinary as keyof MotionParams;
               const destination = exit as keyof MotionParams;
               if (normalized[destination] === undefined && normalized[source] !== undefined) {

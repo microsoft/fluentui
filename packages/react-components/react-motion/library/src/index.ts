@@ -29,9 +29,13 @@ export {
 export type {
   AtomMotion,
   AtomMotionFn,
+  BasePresenceParams,
   PresenceMotion,
   PresenceMotionFn,
   PresenceDirection,
+  PresenceDuration,
+  PresenceEasing,
+  PresenceDelay,
   MotionImperativeRef,
   MotionParam,
 } from './types';
