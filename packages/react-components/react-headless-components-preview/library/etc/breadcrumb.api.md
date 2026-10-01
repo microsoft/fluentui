@@ -18,11 +18,17 @@ import { BreadcrumbBaseProps as BreadcrumbProps } from '@fluentui/react-breadcru
 import { BreadcrumbSlots } from '@fluentui/react-breadcrumb';
 import { BreadcrumbBaseState as BreadcrumbState } from '@fluentui/react-breadcrumb';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
+import { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { partitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { PartitionBreadcrumbItemsOptions } from '@fluentui/react-breadcrumb';
 import type * as React_2 from 'react';
 import { renderBreadcrumb_unstable as renderBreadcrumb } from '@fluentui/react-breadcrumb';
 import { renderBreadcrumbButton_unstable as renderBreadcrumbButton } from '@fluentui/react-breadcrumb';
 import { renderBreadcrumbDivider_unstable as renderBreadcrumbDivider } from '@fluentui/react-breadcrumb';
 import { renderBreadcrumbItem_unstable as renderBreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { truncateBreadcrumbLongName } from '@fluentui/react-breadcrumb';
+import { truncateBreadcrumLongTooltip } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbBase_unstable as useBreadcrumb } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbContext_unstable as useBreadcrumbContext } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbDividerBase_unstable as useBreadcrumbDivider } from '@fluentui/react-breadcrumb';
@@ -71,6 +77,14 @@ export { BreadcrumbSlots }
 
 export { BreadcrumbState }
 
+export { isTruncatableBreadcrumbContent }
+
+export { PartitionBreadcrumbItems }
+
+export { partitionBreadcrumbItems }
+
+export { PartitionBreadcrumbItemsOptions }
+
 export { renderBreadcrumb }
 
 export { renderBreadcrumbButton }
@@ -78,6 +92,10 @@ export { renderBreadcrumbButton }
 export { renderBreadcrumbDivider }
 
 export { renderBreadcrumbItem }
+
+export { truncateBreadcrumbLongName }
+
+export { truncateBreadcrumLongTooltip }
 
 export { useBreadcrumb }
 

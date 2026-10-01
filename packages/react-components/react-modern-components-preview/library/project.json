@@ -1,0 +1,71 @@
+{
+  "name": "react-modern-components-preview",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-modern-components-preview/library/src",
+  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/*.ts"]
+    }
+  },
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/eslint.config.{js,cjs,mjs}",
+        "{projectRoot}/stylelint.config.mjs",
+        {
+          "externalDependencies": [
+            "eslint",
+            "stylelint",
+            "stylelint-config-standard",
+            "stylelint-use-logical",
+            "stylelint-value-no-unknown-custom-properties"
+          ]
+        }
+      ],
+      "options": {
+        "cwd": "packages/react-components/react-modern-components-preview/library",
+        "command": "yarn run -T eslint src && yarn exec stylelint \"src/**/*.module.css\""
+      }
+    },
+    "generate-css-module-types": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "cwd": "packages/react-components/react-modern-components-preview/library",
+        "command": "yarn exec tcm -p 'src/**/*.module.css' -e --silent"
+      }
+    },
+    "build": {
+      "dependsOn": ["^build", "generate-css-module-types"],
+      "options": {
+        "assets": [
+          {
+            "glob": "**/*.module.css",
+            "input": "packages/react-components/react-modern-components-preview/library/src",
+            "output": "lib"
+          },
+          {
+            "glob": "**/*.module.css",
+            "input": "packages/react-components/react-modern-components-preview/library/src",
+            "output": "lib-commonjs"
+          }
+        ]
+      }
+    },
+    "type-check": {
+      "dependsOn": ["^build", "generate-css-module-types"]
+    },
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
+}

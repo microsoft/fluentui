@@ -20,3 +20,11 @@ export type { BreadcrumbItemSlots, BreadcrumbItemProps, BreadcrumbItemState } fr
 
 export { BreadcrumbButton, renderBreadcrumbButton, useBreadcrumbButton } from './components/Breadcrumb';
 export type { BreadcrumbButtonSlots, BreadcrumbButtonProps, BreadcrumbButtonState } from './components/Breadcrumb';
+
+export {
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+} from '@fluentui/react-breadcrumb';
+export type { PartitionBreadcrumbItemsOptions, PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';

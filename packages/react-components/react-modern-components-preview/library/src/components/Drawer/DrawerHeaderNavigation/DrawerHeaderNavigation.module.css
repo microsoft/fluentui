@@ -1,0 +1,5 @@
+@layer fluent {
+  .drawerHeaderNavigation {
+    margin: calc(var(--spacingVerticalS) * -1) calc(var(--spacingHorizontalL) * -1);
+  }
+}
