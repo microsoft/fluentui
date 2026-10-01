@@ -3,7 +3,7 @@ import type { CollapseOrientation } from './collapse-types';
 
 // ----- SIZE -----
 
-const sizeValuesForOrientation = (orientation: CollapseOrientation) => {
+const sizePropertyNamesForOrientation = (orientation: CollapseOrientation) => {
   const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
   const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
   return { sizeName, overflowName };
@@ -19,7 +19,7 @@ interface SizeAtomParams {
 }
 
 export const sizeEnterAtom = ({ orientation, duration, easing, from, to, delay = 0 }: SizeAtomParams): AtomMotion => {
-  const { sizeName, overflowName } = sizeValuesForOrientation(orientation);
+  const { sizeName, overflowName } = sizePropertyNamesForOrientation(orientation);
 
   return {
     keyframes: [
@@ -35,7 +35,7 @@ export const sizeEnterAtom = ({ orientation, duration, easing, from, to, delay =
 };
 
 export const sizeExitAtom = ({ orientation, duration, easing, from, to, delay = 0 }: SizeAtomParams): AtomMotion => {
-  const { sizeName, overflowName } = sizeValuesForOrientation(orientation);
+  const { sizeName, overflowName } = sizePropertyNamesForOrientation(orientation);
 
   return {
     keyframes: [
