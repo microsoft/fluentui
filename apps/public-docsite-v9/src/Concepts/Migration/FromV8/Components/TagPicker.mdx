@@ -1,0 +1,290 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/PeoplePicker and TagPicker Migration" />
+
+# TagPicker / PeoplePicker Migration
+
+## Overview
+
+v8 `TagPicker` and `PeoplePicker` used async `onResolveSuggestions` callbacks with data-driven items. v9 `TagPicker` is a composable component with declarative `<TagPickerOption>` children.
+
+The v8 `NormalPeoplePicker`, `CompactPeoplePicker`, and `ListPeoplePicker`
+variants all migrate to the same v9 `TagPicker` primitives. Recreate their
+layout differences with composition and styling rather than a variant-specific
+component.
+
+**v8:**
+
+```
+<TagPicker>           — monolithic, async-suggestion-driven
+```
+
+**v9:**
+
+```
+<TagPicker>
+  <TagPickerControl>
+    <TagPickerGroup>  — renders the selected Tag chips
+      <Tag />         — one per selected item
+    </TagPickerGroup>
+    <TagPickerInput>  — the text input
+  </TagPickerControl>
+  <TagPickerList>
+    <TagPickerOption> — one per option (like <Option> in Combobox/Dropdown)
+  </TagPickerList>
+</TagPicker>
+```
+
+## Examples
+
+### Async suggestions and object identity
+
+v9 does not run `onResolveSuggestions`. Own the query lifecycle: debounce by
+the old `resolveDelay`, expose loading and error states, cancel obsolete work
+where the data source supports cancellation, and use a request sequence so a
+slow older response cannot replace newer results. Decide explicitly whether an
+empty query loads recent items (the v8 `onEmptyInputFocus` behavior) or clears
+the list. If v8 suggestions exposed "more results", keep the page/cursor in app
+state and append only results for the current query/request.
+
+`selectedOptions`, `TagPickerOption value`, and callback selection values are
+strings. Convert domain objects to canonical stable IDs and maintain an
+ID-to-object registry. Do not use display text as identity: text can be
+duplicated or changed. Put the stable ID in `value`, and put the display text
+in the `TagPickerOption` children (and in each selected `Tag`). Reconstruct
+objects from the registry before calling existing v8-style consumers. The v8
+`getTextFromItem` callback supplied display/input text; it did not define a
+stable selection value.
+
+```tsx
+// v8
+<TagPicker
+  onResolveSuggestions={filter => allPeople.filter(p => p.text.includes(filter))}
+  selectedItems={selected}
+  onChange={items => setSelected(items ?? [])}
+/>;
+
+// v9
+import * as React from 'react';
+import {
+  Tag,
+  TagPicker,
+  TagPickerControl,
+  TagPickerGroup,
+  TagPickerInput,
+  TagPickerList,
+  TagPickerOption,
+} from '@fluentui/react-components';
+import type { TagPickerProps } from '@fluentui/react-components';
+
+type Person = { id: string; name: string };
+
+const PeoplePicker = ({
+  resolvePeople,
+  resolveEmptyPeople,
+  validateAndTransform,
+  onSelectedPeopleChange,
+  onSuggestionError,
+  itemLimit = 5,
+}: {
+  resolvePeople: (query: string, signal: AbortSignal) => Promise<Person[]>;
+  resolveEmptyPeople: (selectedPeople: Person[], signal: AbortSignal) => Promise<Person[]>;
+  validateAndTransform: (person: Person) => Promise<Person | null>;
+  onSelectedPeopleChange: (people: Person[]) => void;
+  onSuggestionError: (error: unknown) => void;
+  itemLimit?: number;
+}) => {
+  const [query, setQuery] = React.useState('');
+  const [options, setOptions] = React.useState<Person[]>([]);
+  const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
+  const registry = React.useRef(new Map<string, Person>());
+  const requestSequence = React.useRef(0);
+  const pendingSelections = React.useRef(new Set<string>());
+
+  React.useEffect(() => {
+    const sequence = ++requestSequence.current;
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      try {
+        const selectedPeople = selectedIds.flatMap(id => {
+          const person = registry.current.get(id);
+          return person ? [person] : [];
+        });
+        const people = query
+          ? await resolvePeople(query, controller.signal)
+          : await resolveEmptyPeople(selectedPeople, controller.signal);
+        if (sequence !== requestSequence.current) {
+          return;
+        }
+        people.forEach(person => registry.current.set(person.id, person));
+        setOptions(people);
+      } catch (reason) {
+        if (!controller.signal.aborted && sequence === requestSequence.current) {
+          setOptions([]);
+          onSuggestionError(reason);
+        }
+      }
+    }, 300);
+
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [onSuggestionError, query, resolveEmptyPeople, resolvePeople, selectedIds]);
+
+  const onSelectedPeopleChangeRef = React.useRef(onSelectedPeopleChange);
+  React.useEffect(() => {
+    onSelectedPeopleChangeRef.current = onSelectedPeopleChange;
+  }, [onSelectedPeopleChange]);
+
+  const lastNotifiedSelection = React.useRef(selectedIds);
+  React.useEffect(() => {
+    if (lastNotifiedSelection.current === selectedIds) {
+      return;
+    }
+    lastNotifiedSelection.current = selectedIds;
+    onSelectedPeopleChangeRef.current(
+      selectedIds.flatMap(id => {
+        const person = registry.current.get(id);
+        return person ? [person] : [];
+      }),
+    );
+  }, [selectedIds]);
+
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = async (_, data) => {
+    const addedId = data.selectedOptions.find(id => !selectedIds.includes(id));
+    if (!addedId) {
+      setSelectedIds(data.selectedOptions);
+      return;
+    }
+    if (selectedIds.length >= itemLimit) {
+      return;
+    }
+
+    const candidate = registry.current.get(addedId);
+    if (!candidate || pendingSelections.current.has(addedId)) {
+      return;
+    }
+    pendingSelections.current.add(addedId);
+    let accepted: Person | null;
+    try {
+      accepted = await validateAndTransform(candidate);
+    } finally {
+      pendingSelections.current.delete(addedId);
+    }
+    if (!accepted) {
+      return;
+    }
+    const acceptedPerson = accepted;
+    registry.current.set(acceptedPerson.id, acceptedPerson);
+    setSelectedIds(ids => {
+      if (ids.includes(acceptedPerson.id) || ids.length >= itemLimit) {
+        return ids;
+      }
+      return [...ids, acceptedPerson.id];
+    });
+    setQuery('');
+  };
+
+  const atItemLimit = selectedIds.length >= itemLimit;
+
+  return (
+    <TagPicker selectedOptions={selectedIds} onOptionSelect={onOptionSelect}>
+      <TagPickerControl>
+        <TagPickerGroup aria-label="Selected people">
+          {selectedIds.map(id => {
+            const person = registry.current.get(id);
+            return person ? (
+              <Tag key={id} value={id} dismissible dismissIcon={{ 'aria-label': `Remove ${person.name}` }}>
+                {person.name}
+              </Tag>
+            ) : null;
+          })}
+        </TagPickerGroup>
+        {!atItemLimit && (
+          <TagPickerInput aria-label="Select people" value={query} onChange={event => setQuery(event.target.value)} />
+        )}
+      </TagPickerControl>
+      {!atItemLimit && (
+        <TagPickerList>
+          {options
+            .filter(person => !selectedIds.includes(person.id))
+            .map(person => (
+              <TagPickerOption key={person.id} value={person.id}>
+                {person.name}
+              </TagPickerOption>
+            ))}
+        </TagPickerList>
+      )}
+    </TagPicker>
+  );
+};
+```
+
+v8 `onEmptyResolveSuggestions(selectedItems)` was the async-capable empty-input
+resolver; `onEmptyInputFocus` is its deprecated predecessor. Call a separate
+empty-query resolver with the current selected domain objects, as above,
+instead of treating it as a boolean "show all" switch.
+
+For `itemLimit`, preserve all of the v8 behavior: once the current selection
+reaches the limit, reject further additions and stop rendering the input and
+suggestions. Keep existing tags (even if controlled input starts above a newly
+lowered limit) and keep them dismissible; render the input and list again after
+the selection drops below the limit. A limit of `0` therefore renders no input
+and permits no additions. Guard the callback as well as the UI so stale or
+programmatic selection events cannot exceed the limit.
+
+`TagPickerOption` has no `disabled` prop. Filter unavailable domain items out
+of the option list, and render loading or error status next to the picker
+rather than as a selectable option.
+
+v8 `onItemSelected` could synchronously or asynchronously transform an item,
+or reject it by returning `null`. Preserve that policy before updating
+`selectedOptions`, as `validateAndTransform` does above. Validate each
+candidate independently; do not use one global latest-request-wins sequence,
+because a later independent selection must not discard an earlier accepted
+candidate. Reconcile accepted candidates with a functional state update that
+checks duplicates and `itemLimit`. Surface a validation error in the
+surrounding `Field` when rejection needs explanation.
+
+## Prop Mapping
+
+### TagPicker Props (v9)
+
+| Prop                     | Notes                                                                   |
+| ------------------------ | ----------------------------------------------------------------------- |
+| `open` / `defaultOpen`   | Controlled / uncontrolled dropdown visibility                           |
+| `selectedOptions`        | Controlled selected values (`string[]`)                                 |
+| `defaultSelectedOptions` | Uncontrolled initial selection                                          |
+| `onOptionSelect`         | `EventHandler<TagPickerOnOptionSelectData>`                             |
+| `onOpenChange`           | `EventHandler<TagPickerOnOpenChangeData>`                               |
+| `appearance`             | `"outline"` \| `"underline"` \| `"filled-darker"` \| `"filled-lighter"` |
+| `size`                   | `"medium"` \| `"large"` \| `"extra-large"`                              |
+| `inline`                 | Render popover inline in DOM order (not on `document.body`)             |
+
+| v8 `IBasePickerProps`       | v9 `TagPickerProps`                                   | Notes                                                                      |
+| --------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| `onResolveSuggestions`      | App-owned debounced async query                       | Cancel/sequence requests and render resulting `<TagPickerOption>` children |
+| `resolveDelay`              | App-owned debounce                                    | Preserve the v8 delay policy                                               |
+| `selectedItems`             | `selectedOptions`                                     | Stable string IDs plus an ID-to-object registry                            |
+| `onChange`                  | `onOptionSelect`                                      | Reconstruct domain objects from `data.selectedOptions`                     |
+| `onItemSelected`            | App-owned validation/transformation                   | Await before changing selection; `null` still rejects                      |
+| `inputProps`                | Props on `<TagPickerInput>`                           |                                                                            |
+| `itemLimit`                 | App-owned limit plus conditional input/list rendering | Reject additions at the limit; preserve and allow removal of existing tags |
+| `getTextFromItem`           | Option/Tag children (display text)                    | Keep a separate stable ID in `value`                                       |
+| `pickerSuggestionsProps`    | Compose your own `<TagPickerList>` content            |                                                                            |
+| `onEmptyResolveSuggestions` | App-owned async empty-query resolver                  | Pass current selected domain items; cancel/sequence it like normal queries |
+| `onEmptyInputFocus`         | App-owned empty-query resolver                        | Deprecated v8 predecessor to `onEmptyResolveSuggestions`                   |
+| `disabled`                  | `disabled`                                            |                                                                            |
+| `styles`                    | `className` on sub-components                         |                                                                            |
+| `theme`                     | —                                                     | Use `FluentProvider`                                                       |
+
+## Accessibility
+
+- Add `aria-label` to `<TagPickerInput>` — screen readers need an accessible name
+- Preserve the two-stage Backspace behavior. At input position zero, Backspace
+  moves focus to the last tag; it does not remove that tag. A subsequent
+  Backspace while the tag is focused dismisses it. When input text or a text
+  selection is being edited away from position zero, Backspace edits the text
+  normally.
+- Known VoiceOver/Safari bug: dropdown items not navigable on iOS (same issue as `Combobox`)

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-alert
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.0.2-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.2-beta.1)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.2-0..@fluentui/react-alert_v9.0.2-beta.1)
+
+### Changes
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- fix: restore named beta prerelease line (9.0.x-0 was published by mistake) ([PR #36627](https://github.com/microsoft/fluentui/pull/36627) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.11.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.0.2-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.2-0)
 

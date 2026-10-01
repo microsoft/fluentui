@@ -1,6 +1,7 @@
 ---
 name: review-pr
 description: Review a PR for correctness, pattern compliance, testing, accessibility, and safety. Produces a confidence score for merge readiness.
+disable-model-invocation: true
 argument-hint: <PR-number-or-branch>
 allowed-tools: Bash Read Grep Glob
 ---

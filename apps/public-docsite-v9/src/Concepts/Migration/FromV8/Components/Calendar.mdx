@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/Calendar Migration" />
+
+# Calendar Migration
+
+## Overview
+
+Fluent UI React v9 does not currently have a native replacement for the v8
+`Calendar`. Use `Calendar` from `@fluentui/react-calendar-compat` as a migration
+bridge. Its API intentionally remains close to v8, while its implementation and
+styling integrate with v9.
+
+```tsx
+// v8
+import { Calendar } from '@fluentui/react';
+
+// v9 compatibility package
+import { Calendar } from '@fluentui/react-calendar-compat';
+```
+
+Do not import the compatibility component from `@fluentui/react-components`.
+
+## Examples
+
+### Basic Migration
+
+```tsx
+// v8
+import { Calendar, DayOfWeek } from '@fluentui/react';
+
+<Calendar
+  value={selectedDate}
+  firstDayOfWeek={DayOfWeek.Monday}
+  minDate={minimumDate}
+  maxDate={maximumDate}
+  onSelectDate={date => setSelectedDate(date)}
+/>;
+```
+
+```tsx
+// v9
+import { Calendar, DayOfWeek } from '@fluentui/react-calendar-compat';
+
+<Calendar
+  value={selectedDate}
+  firstDayOfWeek={DayOfWeek.Monday}
+  minDate={minimumDate}
+  maxDate={maximumDate}
+  onSelectDate={date => setSelectedDate(date)}
+/>;
+```
+
+### Migration boundary
+
+`CalendarCompat` is the supported bridge for existing calendar experiences, not
+a signal to copy v8 styling APIs into new code. Keep app-owned wrappers narrow so
+they can be replaced when a native v9 calendar becomes available.
+
+## Prop Mapping
+
+### API mapping
+
+Most behavioral props remain available in the compatibility package.
+
+| v8 `Calendar`                                     | v9 `CalendarCompat`                                                                                                                 |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `value`, `today`                                  | Same props                                                                                                                          |
+| `minDate`, `maxDate`, `restrictedDates`           | Same props                                                                                                                          |
+| `dateRangeType`, `workWeekDays`                   | Same props                                                                                                                          |
+| `firstDayOfWeek`, `firstWeekOfYear`               | Same props                                                                                                                          |
+| `strings`, `dateTimeFormatter`                    | Same localization hooks                                                                                                             |
+| `isMonthPickerVisible`, `isDayPickerVisible`      | Same props                                                                                                                          |
+| `showMonthPickerAsOverlay`                        | Same legacy overlay behavior                                                                                                        |
+| `showGoToToday`, `showWeekNumbers`                | Same props                                                                                                                          |
+| `showSixWeeksByDefault`                           | Same prop                                                                                                                           |
+| `highlightCurrentMonth`, `highlightSelectedMonth` | Same props                                                                                                                          |
+| `showCloseButton`                                 | Same prop; defaults to `false`                                                                                                      |
+| `allFocusable`                                    | Same prop; defaults to `false`                                                                                                      |
+| `id`, `className`                                 | Same root-element props                                                                                                             |
+| `calendarDayProps`                                | Same nested day/grid customization props; nested values override matching top-level values                                          |
+| `calendarMonthProps`                              | Same nested month/year customization props; nested values override matching top-level values                                        |
+| `navigationIcons`                                 | Move to `calendarDayProps.navigationIcons` and `calendarMonthProps.navigationIcons`; values are JSX elements, not icon-name strings |
+| `componentRef`                                    | Still exposes `ICalendar.focus()`                                                                                                   |
+| `onSelectDate`                                    | Still receives the selected `Date` and optional selected range                                                                      |
+| `onDismiss`                                       | Same callback                                                                                                                       |
+| `styles`, `theme`                                 | Replace with `className`, `makeStyles`, and v9 design tokens                                                                        |
+
+The compatibility component keeps the v8 defaults for the main behavioral
+props: day and month pickers are visible, "Go to today" is shown,
+`dateRangeType` is `Day`, the week starts on Sunday, and overlay, week-number,
+six-week, highlight, close-button, and `allFocusable` options default to
+`false`.
+
+v8 navigation icons were Fabric icon-name strings. `CalendarNavigationIcons`
+accepts `upNavigation`, `downNavigation`, and `dismiss`. In the day picker,
+`upNavigation` controls previous-month navigation and `downNavigation`
+controls next-month navigation. Map v8 `leftNavigation` and
+`rightNavigation` to those slots, and map `closeIcon` to `dismiss`. Do not
+carry the v8 key names into the compatibility object. The compatibility
+package accepts JSX for each nested picker:
+
+```tsx
+import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';
+
+const navigationIcons = {
+  upNavigation: <ArrowUpRegular />,
+  downNavigation: <ArrowDownRegular />,
+  dismiss: <DismissRegular />,
+};
+
+<Calendar calendarDayProps={{ navigationIcons }} calendarMonthProps={{ navigationIcons }} />;
+```
+
+`calendarDayProps` can also override day-specific values such as
+`showCloseButton`, `allFocusable`, `showWeekNumbers`, date limits, and
+formatting. `calendarMonthProps` can override month-specific values such as
+`highlightCurrentMonth`, `highlightSelectedMonth`, `allFocusable`, date limits,
+and formatting. Prefer the top-level prop when both pickers should share the
+same behavior, and use a nested prop only for a deliberate per-picker
+override.
+
+## Accessibility
+
+Continue to provide localized `strings` and `dateTimeFormatter` values. Set
+`firstDayOfWeek` and `firstWeekOfYear` according to the user's locale.
+
+`allFocusable` allows disabled dates and buttons to receive focus; it does not
+make them actionable. Preserve it only when the existing experience
+specifically depends on that behavior. If `showCloseButton` is enabled, provide
+the localized `strings.closeButtonAriaLabel` and an `onDismiss` callback.

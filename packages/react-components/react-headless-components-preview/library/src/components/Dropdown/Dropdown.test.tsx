@@ -10,6 +10,7 @@ describe('Dropdown', () => {
     displayName: 'Dropdown',
     primarySlot: 'button',
     requiredProps: {
+      'aria-label': 'Options',
       open: true,
       children: (
         <>
