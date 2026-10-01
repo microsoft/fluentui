@@ -6,6 +6,7 @@ import {
   type CreateNodesContextV2,
   type CreateNodesResult,
   type CreateNodesV2,
+  type PostTasksExecution,
   type ProjectConfiguration,
   type TargetConfiguration,
   createNodesFromFiles,
@@ -43,6 +44,30 @@ interface TargetPluginOption {
    */
   include?: string[];
 }
+
+/**
+ * With `--nxBail`, if the task that failed is running around the same time as another task with
+ * very noisy logs, the task failure might get lost in the output. This hook will print a
+ * CI error message for each failed task, which will be visible in the CI provider's UI.
+ */
+export const postTasksExecution: PostTasksExecution<WorkspacePluginOptions> = (_options, context) => {
+  const errorPrefix =
+    process.env.GITHUB_ACTIONS === 'true'
+      ? '::error::'
+      : process.env.TF_BUILD?.toLowerCase() === 'true'
+      ? '##vso[task.logissue type=error]'
+      : undefined;
+
+  if (!errorPrefix) {
+    return;
+  }
+
+  for (const result of Object.values(context.taskResults)) {
+    if (result.status === 'failure') {
+      console.log(`${errorPrefix}Nx task failed: ${result.task.id}`);
+    }
+  }
+};
 
 export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
   projectConfigGlob,

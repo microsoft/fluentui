@@ -20,7 +20,13 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import type { Legend, LegendShape } from '../Legends/index';
 import { Legends, Shape } from '../Legends/index';
-import type { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
+import type {
+  GaugeChartCalloutData,
+  GaugeChartVariant,
+  GaugeValueFormat,
+  GaugeChartProps,
+  GaugeChartSegment,
+} from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
@@ -129,7 +135,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-    const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
+    const [calloutLegend, setCalloutLegend] = React.useState('');
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
@@ -380,11 +386,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       if (_calloutAnchor === legend) {
         return;
       }
-      const targetElement = document.getElementById(elementId!);
+      const targetElement = elementId
+        ? document.getElementById(elementId)
+        : (event.currentTarget as unknown as HTMLElement);
       _calloutAnchor = legend;
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const hoverXValue: string =
-        'Current value is ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat, true);
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const hoverYValues: YValue[] = _segments
         .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
@@ -400,7 +405,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
       setRefSelected(targetElement);
-      setHoverXValue(hoverXValue);
+      setCalloutLegend(legend);
       setHoverYValues(hoverYValues);
       if (isFocusEvent) {
         setFocusedElement(legend);
@@ -410,7 +415,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     function _hideCallout(isBlurEvent?: boolean) {
       _calloutAnchor = '';
       setPopoverOpen(false);
-      setHoverXValue('');
+      setCalloutLegend('');
       setHoverYValues([]);
       if (isBlurEvent) {
         setFocusedElement('');
@@ -486,6 +491,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
           </div>
         </div>
       );
+    }
+
+    function _renderCallout(calloutData?: GaugeChartCalloutData): React.ReactElement | null {
+      return calloutData
+        ? _multiValueCallout({
+            hoverXValue: `Current value is ${calloutData.chartValueLabel}`,
+            YValueHover: calloutData.segmentValues,
+          })
+        : null;
     }
 
     function _yValueHoverSubCountsExists(yValueHover?: YValueHover[]) {
@@ -708,7 +722,27 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             }}
             isPopoverOpen={isPopoverOpen}
             customCallout={{
-              customizedCallout: _multiValueCallout({ hoverXValue, YValueHover: hoverYValues }),
+              customizedCallout:
+                (() => {
+                  const calloutData: GaugeChartCalloutData = {
+                    legend: calloutLegend,
+                    chartValue: props.chartValue,
+                    minValue: _minValue,
+                    maxValue: _maxValue,
+                    chartValueLabel: getChartValueLabel(
+                      props.chartValue,
+                      _minValue,
+                      _maxValue,
+                      props.chartValueFormat,
+                      true,
+                    ),
+                    segmentValues: hoverYValues,
+                  };
+
+                  return props.onRenderCallout
+                    ? props.onRenderCallout(calloutData, _renderCallout)
+                    : _renderCallout(calloutData);
+                })() ?? undefined,
             }}
           />
         )}

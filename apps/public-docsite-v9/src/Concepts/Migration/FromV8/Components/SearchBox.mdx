@@ -1,0 +1,136 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v8/Components/SearchBox Migration" />
+
+# SearchBox Migration
+
+## Overview
+
+v9 `SearchBox` is in `@fluentui/react-components`. The API is similar to v9 `Input` with a built-in dismiss button and search icon. Wrap in `<Field>` for labels.
+
+## Examples
+
+### Basic Migration
+
+Basic v8 usage:
+
+```tsx
+import { SearchBox } from '@fluentui/react';
+<SearchBox
+  placeholder="Search"
+  value={query}
+  onChange={(_, v) => setQuery(v ?? '')}
+  onSearch={v => doSearch(v)}
+  onClear={() => setQuery('')}
+/>;
+```
+
+The equivalent v9 usage is:
+
+```tsx
+import { SearchBox } from '@fluentui/react-components';
+<SearchBox
+  placeholder="Search"
+  value={query}
+  onChange={(_, data) => setQuery(data.value)}
+  onKeyDown={e => e.key === 'Enter' && doSearch(query)}
+/>;
+```
+
+### Escape and clear behavior
+
+v8 calls `onEscape` for every Escape press. It only clears a non-empty value,
+calls `onClear` for that clear, and lets either callback cancel the clear with
+`preventDefault()`. v9 has no `onEscape`; recreate the policy on the native
+input `onKeyDown`:
+
+```tsx
+import * as React from 'react';
+import { SearchBox } from '@fluentui/react-components';
+
+const MigratedSearch = ({
+  onEscape,
+  onClear,
+}: {
+  onEscape: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClear: (event: React.SyntheticEvent<HTMLElement>) => void;
+}) => {
+  const [query, setQuery] = React.useState('');
+
+  return (
+    <SearchBox
+      value={query}
+      dismiss={{ onClick: onClear }}
+      onChange={(event, data) => {
+        if (!event.defaultPrevented) {
+          setQuery(data.value);
+        }
+      }}
+      onKeyDown={event => {
+        if (event.key !== 'Escape') {
+          return;
+        }
+        onEscape(event);
+        if (event.defaultPrevented || query === '') {
+          return;
+        }
+        onClear(event);
+        if (!event.defaultPrevented) {
+          setQuery('');
+          event.stopPropagation();
+        }
+      }}
+    />
+  );
+};
+```
+
+Use the `dismiss` slot to preserve the explicit clear-button callback.
+The dismiss slot runs before v9 reports the empty value through `onChange`, so
+the controlled handler must honor `defaultPrevented` to preserve cancellation.
+Do not infer a clear action from `onChange` receiving an empty value, because
+ordinary typing also produces an empty value when the user deletes the final
+character.
+
+### With Field (label + validation)
+
+```tsx
+import { Field, SearchBox } from '@fluentui/react-components';
+<Field label="Search products">
+  <SearchBox placeholder="Type to search..." />
+</Field>;
+```
+
+## Prop Mapping
+
+### Appearance Values
+
+| v8                  | v9                    |
+| ------------------- | --------------------- |
+| Default             | `"outline"` (default) |
+| `underlined={true}` | `"underline"`         |
+| —                   | `"filled-darker"`     |
+| —                   | `"filled-lighter"`    |
+
+| v8 `ISearchBoxProps` | v9 `SearchBoxProps`                | Notes                                                                                        |
+| -------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| `value`              | `value`                            |                                                                                              |
+| `defaultValue`       | `defaultValue`                     |                                                                                              |
+| `placeholder`        | `placeholder`                      |                                                                                              |
+| `onChange`           | `onChange`                         | Type changed: `(_, data: InputOnChangeData) => void`; dismiss fires with `data.value === ''` |
+| `onSearch`           | —                                  | Use native `onKeyDown` checking `event.key === 'Enter'`                                      |
+| `onClear`            | `dismiss.onClick` + Escape handler | Preserve explicit clear actions; do not infer from an empty `onChange` value                 |
+| `onEscape`           | Native input `onKeyDown`           | Call the app callback first; clear only a non-empty value and honor `preventDefault()`       |
+| `iconProps`          | `contentBefore` slot               | Pass `<SearchRegular />` or custom icon                                                      |
+| `underlined`         | `appearance="underline"`           |                                                                                              |
+| `disableAnimation`   | —                                  | Not supported                                                                                |
+| `disabled`           | `disabled`                         |                                                                                              |
+| `className`          | `className`                        | Applies to the outer wrapper                                                                 |
+| `styles`             | `className` + `makeStyles`         |                                                                                              |
+| `theme`              | —                                  | Use `FluentProvider`                                                                         |
+| `componentRef`       | `ref`                              |                                                                                              |
+
+## Accessibility
+
+- For a top-level site search area, wrap `SearchBox` in a `<div role="search">` element
+- Use `underline` or `outline` appearance when the surrounding background has low contrast

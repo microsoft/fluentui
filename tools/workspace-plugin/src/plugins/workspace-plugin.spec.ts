@@ -1,11 +1,38 @@
-import { CreateNodesContext, CreateNodesResultV2, ProjectConfiguration, serializeJson } from '@nx/devkit';
+import {
+  CreateNodesContext,
+  CreateNodesResultV2,
+  PostTasksExecutionContext,
+  ProjectConfiguration,
+  TaskResult,
+  serializeJson,
+} from '@nx/devkit';
 
 import { TempFs } from './testing-utils/index';
-import { WorkspacePluginOptions, createNodesV2 } from './workspace-plugin';
+import { WorkspacePluginOptions, createNodesV2, postTasksExecution } from './workspace-plugin';
 import { PackageJson } from '../types';
+
+const createTaskResult = (id: string, status: TaskResult['status']): TaskResult => ({
+  task: { id } as TaskResult['task'],
+  status,
+  code: status === 'failure' ? 1 : 0,
+});
+
+const postTasksExecutionContext: PostTasksExecutionContext = {
+  id: 'test-run',
+  workspaceRoot: '/test',
+  nxJsonConfiguration: {},
+  argv: [],
+  startTime: 0,
+  endTime: 1,
+  taskResults: {
+    'successful-project:build': createTaskResult('successful-project:build', 'success'),
+    'failed-project:type-check': createTaskResult('failed-project:type-check', 'failure'),
+  },
+};
 
 describe(`workspace-plugin`, () => {
   const [, createNodesFunction] = createNodesV2;
+  const originalEnv = process.env;
   let context: CreateNodesContext;
   let tempFs: TempFs;
   let cwd: string;
@@ -19,6 +46,9 @@ describe(`workspace-plugin`, () => {
     tempFs = new TempFs('test');
     cwd = process.cwd();
     process.chdir(tempFs.tempDir);
+    process.env = { ...originalEnv };
+    delete process.env.GITHUB_ACTIONS;
+    delete process.env.TF_BUILD;
 
     context = {
       nxJsonConfiguration: {
@@ -34,9 +64,39 @@ describe(`workspace-plugin`, () => {
   });
 
   afterEach(() => {
+    process.env = originalEnv;
+    jest.restoreAllMocks();
     jest.resetModules();
     tempFs.cleanup();
     process.chdir(cwd);
+  });
+
+  it('should report failed tasks as GitHub Actions errors', async () => {
+    process.env.GITHUB_ACTIONS = 'true';
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).toHaveBeenCalledTimes(1);
+    expect(consoleLog).toHaveBeenCalledWith('::error::Nx task failed: failed-project:type-check');
+  });
+
+  it('should report failed tasks as Azure Pipelines errors', async () => {
+    process.env.TF_BUILD = 'true';
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).toHaveBeenCalledTimes(1);
+    expect(consoleLog).toHaveBeenCalledWith('##vso[task.logissue type=error]Nx task failed: failed-project:type-check');
+  });
+
+  it('should not report failed tasks outside CI', async () => {
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation();
+
+    await postTasksExecution(undefined, postTasksExecutionContext);
+
+    expect(consoleLog).not.toHaveBeenCalled();
   });
 
   it('should create nodes with clean,format targets for any project', async () => {

@@ -8,6 +8,11 @@ describe('ColorSwatch', () => {
   isConformant({
     Component: ColorSwatch,
     displayName: 'ColorSwatch',
+    requiredProps: { color: '#f09', value: 'pink', 'aria-label': 'Pink' },
+    renderOptions: {
+      wrapper: ({ children }) => <SwatchPicker aria-label="Colors">{children}</SwatchPicker>,
+    },
+    getTargetElement: result => result.getByRole('radio'),
     disabledTests: ['has-top-level-file-extra'],
   });
 

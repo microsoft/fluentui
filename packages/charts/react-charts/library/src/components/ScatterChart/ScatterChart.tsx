@@ -253,7 +253,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = {};
+    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = Object.create(null);
     data.forEach((point: ScatterChartDataWithIndex) => {
       if (point.legend) {
         if (!mapLegendToPoints[point.legend]) {

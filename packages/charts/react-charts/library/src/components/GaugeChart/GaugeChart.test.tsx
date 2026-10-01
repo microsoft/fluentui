@@ -2,8 +2,10 @@ import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../utilities/TestUtility.test';
+import type { RenderFunction } from '../../utilities/index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import type { ExtendedSegment } from './GaugeChart';
+import type { GaugeChartCalloutData } from './GaugeChart.types';
 import { GaugeChart, calcNeedleRotation, getSegmentLabel, getChartValueLabel, ARC_PADDING } from './GaugeChart';
 expect.extend(toHaveNoViolations);
 
@@ -377,6 +379,51 @@ describe('GaugeChart snapshot tests', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+});
+
+describe('GaugeChart custom callout', () => {
+  const renderDefaultCallout: RenderFunction<GaugeChartCalloutData> = (calloutData, defaultRender) => (
+    <div data-testid="wrapped-gauge-callout">{defaultRender?.(calloutData)}</div>
+  );
+
+  testWithoutWait(
+    'Should render a custom callout',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 30,
+      minValue: 10,
+      maxValue: 110,
+      onRenderCallout: (calloutData?: GaugeChartCalloutData) => (
+        <div data-testid="custom-gauge-callout">
+          {calloutData?.legend}: {calloutData?.chartValue} blocks ({calloutData?.minValue}-{calloutData?.maxValue})
+        </div>
+      ),
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByTestId('custom-gauge-callout')).toHaveTextContent('Low Risk: 30 blocks (10-110)');
+    },
+  );
+
+  testWithoutWait(
+    'Should provide the default callout renderer to a custom renderer',
+    GaugeChart,
+    {
+      segments,
+      chartValue: 30,
+      onRenderCallout: renderDefaultCallout,
+    },
+    () => {
+      const chartSegments = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(chartSegments[0]);
+
+      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Current value is 30/100');
+      expect(screen.getByTestId('wrapped-gauge-callout')).toHaveTextContent('Low Risk');
+    },
+  );
 });
 
 describe('GaugeChart rendering and behavior tests', () => {

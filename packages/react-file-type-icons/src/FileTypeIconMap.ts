@@ -289,6 +289,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  fabricontology: {},
   favoritesfolder: {},
   folder: {},
   font: {

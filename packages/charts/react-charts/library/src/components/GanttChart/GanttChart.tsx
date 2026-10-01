@@ -135,7 +135,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     }, [useUTC, _points, _xAxisType]);
 
     const _mapYValueToXValues = React.useCallback(() => {
-      const yValueToXValues: Record<string, number[]> = {};
+      const yValueToXValues: Record<string, number[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToXValues[point.y]) {
           yValueToXValues[point.y] = [];
@@ -350,7 +350,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
     const _getOrderedDataPoints = React.useCallback(() => {
       const result: GanttChartDataPoint[] = [];
 
-      const yValueToPoints: Record<string, GanttChartDataPoint[]> = {};
+      const yValueToPoints: Record<string, GanttChartDataPoint[]> = Object.create(null);
       _points.forEach(point => {
         if (!yValueToPoints[point.y]) {
           yValueToPoints[point.y] = [];

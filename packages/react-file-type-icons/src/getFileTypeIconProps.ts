@@ -34,6 +34,7 @@ const PBI_PAGINATED_REPORT = 'pbipagereport';
 const PBI_SCORECARD = 'pbiscorecard';
 const PBI_SEMANTIC_MODEL = 'pbisemmodel';
 const PBI_REPORT = 'powerbi';
+const FABRIC_ONTOLOGY = 'fabricontology';
 const WIKI_PAGE = 'wikipage';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
@@ -199,6 +200,9 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.pbiReport:
         iconBaseName = PBI_REPORT;
+        break;
+      case FileIconType.fabricOntology:
+        iconBaseName = FABRIC_ONTOLOGY;
         break;
       case FileIconType.wikiPage:
         iconBaseName = WIKI_PAGE;

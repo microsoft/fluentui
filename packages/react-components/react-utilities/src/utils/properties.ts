@@ -416,6 +416,7 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
   'alt', // area, img, input
   'crossOrigin', // img
   'height', // canvas, embed, iframe, img, input, object, video
+  'loading', // img, iframe
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcSet', // img, source
   'useMap', // img, object,

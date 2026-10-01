@@ -4,7 +4,11 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # CardPreview Migration
 
-Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview`, with a complete different API.
+## Overview
+
+Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview` with a completely different API.
+
+## Prop Mapping
 
 This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
 
@@ -14,13 +18,25 @@ This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
 | componentRef                 | ref       |                                                                  |
 | previewImages                | n/a       | see Migrate `previewImages` prop in this document                |
 | getOverflowDocumentCountText | n/a       | see Migrate `getOverflowDocumentCountText` prop in this document |
-| maxDisplayCount              | n/a       | see Migrate `getOverflowDocumentCountText` prop in this document |
+| maxDisplayCount              | n/a       | Slice the rendered list and calculate overflow                   |
 | styles                       | className |                                                                  |
 | theme                        | n/a       | Use `FluentProvider` to customize themes                         |
 
-## Migrate `previewImages` prop
+### Migrate `previewImages` prop
 
-The `previewImages` prop is no longer supported and has no other alternatives. The new CardPreview component accepts any element as children and can be used to render images.
+The `previewImages` prop is no longer supported as a data API. The v9
+`CardPreview` accepts elements as children, so the application must map each
+v8 preview field deliberately:
+
+- use `previewImageSrc` for the preview image and `name` for its `alt` text;
+- use `iconSrc` (or an equivalent v9 icon) in the `logo` slot;
+- preserve `linkProps.href`, `linkProps.target`, and the link's accessible name;
+- preserve `width`, `height`, and the intended `imageFit` with image attributes
+  or styles;
+- replace `previewIconProps` with the matching v9 icon component.
+
+Decorative file-type logos should use `alt=""`; the document preview should
+have useful alternative text based on `name`.
 
 Before:
 
@@ -44,24 +60,53 @@ const Component = () => (
 
 After:
 
-```jsx
+```tsx
 import * as React from 'react';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+import { Card, CardPreview, Link } from '@fluentui/react-components';
 
 export const Component = () => {
+  const preview = {
+    name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+    previewImageSrc: 'document-preview.png',
+    iconSrc: 'powerpoint-logo.svg',
+    width: 288,
+    height: 160,
+    linkProps: {
+      href: 'https://example.com/revenue-proposal',
+      target: '_blank',
+    },
+  };
+
   return (
-    <Card size="small" orientation="horizontal">
-      <CardPreview logo={<img className="sbdocs-img" src="word_logo.svg" alt="Microsoft Word logo" />}>
-        <img className="sbdocs-img" src="doc_template.png" alt="Preview of a Word document " />
+    <Card size="small">
+      <CardPreview logo={<img src={preview.iconSrc} alt="" width={24} height={24} />}>
+        <Link
+          href={preview.linkProps.href}
+          target={preview.linkProps.target}
+          rel="noreferrer"
+          aria-label={`Open ${preview.name}`}
+        >
+          <img
+            src={preview.previewImageSrc}
+            alt={`Preview of ${preview.name}`}
+            width={preview.width}
+            height={preview.height}
+            style={{ objectFit: 'cover', maxWidth: '100%' }}
+          />
+        </Link>
       </CardPreview>
     </Card>
   );
 };
 ```
 
-## Migrate `getOverflowDocumentCountText` prop
+### Migrate `getOverflowDocumentCountText` prop
 
-The `getOverflowDocumentCountText` and `maxDisplayCount` prop are no longer supported. The main `Card` can be used to implement a similar functionality.
+The `getOverflowDocumentCountText` and `maxDisplayCount` props are no longer
+supported. Render a semantic list, slice it to `maxDisplayCount`, and calculate
+overflow from the same sliced array. Do not render all previews and then add an
+overflow label: that duplicates the hidden count. Keep each document as a real
+link when the v8 item supplied `linkProps`.
 
 Before:
 
@@ -100,34 +145,65 @@ const Component = () => (
 
 After:
 
-```jsx
+```tsx
 import * as React from 'react';
-import { Text } from '@fluentui/react-components';
-import { Card } from '@fluentui/react-card/unstable';
+import { Card, Link, makeStyles, Text } from '@fluentui/react-components';
+
+const previewImages = [
+  {
+    name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+    iconSrc: 'powerpoint-logo.svg',
+    href: 'https://example.com/revenue-proposal',
+  },
+  {
+    name: 'New Contoso Collaboration for Conference Presentation Draft',
+    iconSrc: 'powerpoint-logo.svg',
+    href: 'https://example.com/contoso-collaboration',
+  },
+  {
+    name: 'Spec Sheet for design',
+    iconSrc: 'powerpoint-logo.svg',
+    href: 'https://example.com/spec-sheet',
+  },
+];
+
+const maxDisplayCount = 2;
+
+const useStyles = makeStyles({
+  list: {
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    minWidth: 0,
+  },
+  name: {
+    minWidth: 0,
+  },
+});
 
 export const Default = () => {
+  const styles = useStyles();
+  const visiblePreviews = previewImages.slice(0, maxDisplayCount);
+  const overflowCount = Math.max(0, previewImages.length - visiblePreviews.length);
+
   return (
-    <Card orientation="horizontal">
-      <div>
-        <div>
-          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
-          <Text truncate>Revenue stream proposal fiscal year 2016 version02</Text>
-        </div>
-
-        <div>
-          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
-          <Text truncate>New Contoso Collaboration for Conference Presentation Draft</Text>
-        </div>
-
-        <div>
-          <img className="sbdocs-img" src="powerpoint_logo.svg" alt="Powerpoint logo" />
-          <Text truncate>Spec Sheet for design</Text>
-        </div>
-
-        <div>
-          <Text>+1 more</Text>
-        </div>
-      </div>
+    <Card>
+      <ul className={styles.list}>
+        {visiblePreviews.map(preview => (
+          <li key={preview.href} className={styles.item}>
+            <img src={preview.iconSrc} alt="" width={24} height={24} />
+            <Link href={preview.href} title={preview.name} className={styles.name}>
+              <Text truncate>{preview.name}</Text>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {overflowCount > 0 ? <Text aria-label={`${overflowCount} more documents`}>+{overflowCount} more</Text> : null}
     </Card>
   );
 };

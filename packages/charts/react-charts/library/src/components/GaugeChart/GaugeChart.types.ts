@@ -1,7 +1,9 @@
 import type { LegendsProps } from '../Legends/index';
 import type { AccessibilityProps, Chart } from '../../types/index';
 import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { YValueHover } from '../CommonComponents/CartesianChart.types';
 import type { TitleStyles } from '../../utilities/Common.styles';
+import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Gauge Chart segment interface.
@@ -43,6 +45,42 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
  * {@docCategory GaugeChart}
  */
 export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
+
+/**
+ * Data provided to a custom GaugeChart callout renderer.
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartCalloutData {
+  /**
+   * Legend of the segment or gauge element that opened the callout.
+   */
+  legend: string;
+
+  /**
+   * Current value of the gauge.
+   */
+  chartValue: number;
+
+  /**
+   * Minimum value of the gauge.
+   */
+  minValue: number;
+
+  /**
+   * Maximum value of the gauge.
+   */
+  maxValue: number;
+
+  /**
+   * Formatted current value displayed in the default callout.
+   */
+  chartValueLabel: string;
+
+  /**
+   * Segment values displayed in the default callout.
+   */
+  segmentValues: YValueHover[];
+}
 
 /**
  * Gauge Chart properties
@@ -138,6 +176,11 @@ export interface GaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ChartPopoverProps>;
+
+  /**
+   * Defines a custom callout renderer. The second argument can be used to render the default callout content.
+   */
+  onRenderCallout?: RenderFunction<GaugeChartCalloutData>;
 
   /**
    * Specifies the variant of GaugeChart to be rendered

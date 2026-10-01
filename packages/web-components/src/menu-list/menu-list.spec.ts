@@ -78,6 +78,28 @@ test.describe('MenuList', () => {
     await expect(firstItem).toBeFocused();
   });
 
+  test('should focus before the queued item refresh completes', async ({ fastPage, page }) => {
+    await fastPage.setTemplate('');
+    await page.evaluate(
+      ({ menuItemTagName, menuListTagName }) => {
+        const menuList = document.createElement(menuListTagName);
+        menuList.dataset.immediateFocus = '';
+        for (const label of ['Menu item 1', 'Menu item 2']) {
+          const menuItem = document.createElement(menuItemTagName);
+          menuItem.textContent = label;
+          menuList.append(menuItem);
+        }
+        document.body.append(menuList);
+        menuList.focus();
+      },
+      { menuItemTagName: MenuItemTagName, menuListTagName: tagName },
+    );
+    const menuItems = page.locator(`${tagName}[data-immediate-focus]`).locator(MenuItemTagName);
+    await expect(menuItems.first()).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(menuItems.nth(1)).toBeFocused();
+  });
+
   test('should not throw when `focus()` is called with no items', async ({ fastPage }) => {
     const { element } = fastPage;
 
