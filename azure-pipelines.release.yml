@@ -100,10 +100,10 @@ extends:
                         BEACHBALL_NPM_TOKEN: $(npmToken)
                       displayName: Publish changes and bump versions
 
-                    # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+                    # create-site-manifests is a binary defined in @fluentui/public-docsite-setup.
                     # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
                     - script: |
-                        yarn create-site-manifests ./packages/react
+                        node ./packages/public-docsite-setup/bin/create-site-manifests.js ./packages/react
                       displayName: 'Generate website manifests'
 
                     # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
