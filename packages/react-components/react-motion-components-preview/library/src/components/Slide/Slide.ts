@@ -5,7 +5,7 @@ import { slide } from '../../atoms/slide-atom';
 import type { SlideParams } from './slide-types';
 
 /**
- * Define a presence motion for slide in/out
+ * Defines enter translation from `(fromX, fromY)` to `(inX, inY)` and exit translation to `(toX, toY)`.
  *
  * @param duration - Time (ms) for the enter transition (slide-in). Defaults to the `durationNormal` value (200 ms).
  * @param easing - Easing curve for the enter transition (slide-in). Defaults to the `curveDecelerateMid` value.
@@ -19,7 +19,7 @@ import type { SlideParams } from './slide-types';
  * @param inY - Y translate for the in pose. Defaults to `'0px'`.
  * @param toX - X translate after exiting. Defaults to `fromX` when no destination is authored.
  * @param toY - Y translate after exiting. Defaults to `fromY` when no destination is authored.
- * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ * @param animateOpacity - Adds opacity from 0 to 1 on enter and 1 to 0 on exit. Defaults to `true`.
  */
 const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   duration = motionTokens.durationNormal,
@@ -62,19 +62,27 @@ const slidePresenceFn: PresenceMotionFn<SlideParams> = ({
   };
 };
 
-/** A React component that applies slide in/out transitions to its children. */
+/**
+ * Animates a child's presence from `(fromX, fromY)` to `(inX, inY)` on enter and to `(toX, toY)` on exit.
+ * Omitted exit endpoints return to the entrance position; omitted axes within an authored endpoint use `'0px'`.
+ * All axes default to zero translation. Opacity animates from 0 to 1 on enter and 1 to 0 on exit,
+ * unless `animateOpacity` is false.
+ * `Slide.In` and `Slide.Out` play once on mount from `(fromX, fromY)` to `(toX, toY)`; `inX`/`inY` are root-only.
+ */
 export const Slide = createPresenceComponent(slidePresenceFn, {
-  poses: [
+  poseProps: [
     { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
     { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
   ],
 });
 
+/** Slide with `curveDecelerateMax` for enter and `curveAccelerateMax` for exit; durations remain 200 ms. */
 export const SlideSnappy = createPresenceComponentVariant(Slide, {
   easing: motionTokens.curveDecelerateMax,
   exitEasing: motionTokens.curveAccelerateMax,
 });
 
+/** Slide with `durationGentle` (250 ms) for both enter and exit. */
 export const SlideRelaxed = createPresenceComponentVariant(Slide, {
   duration: motionTokens.durationGentle,
 });

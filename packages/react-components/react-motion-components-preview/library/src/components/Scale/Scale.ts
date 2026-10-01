@@ -5,7 +5,7 @@ import { scale } from '../../atoms/scale-atom';
 import type { ScaleParams } from './scale-types';
 
 /**
- * Define a presence motion for scale in/out
+ * Defines enter scale from `fromScale` to `inScale` and exit scale from `inScale` to `toScale`.
  *
  * @param duration - Time (ms) for the enter transition (scale-in). Defaults to the `durationGentle` value (250 ms).
  * @param easing - Easing curve for the enter transition (scale-in). Defaults to the `curveDecelerateMax` value.
@@ -16,7 +16,7 @@ import type { ScaleParams } from './scale-types';
  * @param fromScale - Scale before entering. Defaults to `0.9`.
  * @param inScale - Scale for the in pose. Defaults to `1`.
  * @param toScale - Scale after exiting. Defaults to `fromScale`.
- * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ * @param animateOpacity - Adds opacity from 0 to 1 on enter and 1 to 0 on exit. Defaults to `true`.
  */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   duration = motionTokens.durationGentle,
@@ -53,16 +53,23 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   };
 };
 
-/** A React component that applies scale in/out transitions to its children. */
+/**
+ * Animates a child's presence from `fromScale` to `inScale` on enter and from `inScale` to `toScale` on exit.
+ * The default exit returns to `fromScale`. Opacity also animates from 0 to 1 on enter and 1 to 0 on exit,
+ * unless `animateOpacity` is false.
+ * `Scale.In` and `Scale.Out` play once on mount from `fromScale` to `toScale`; `inScale` is root-only.
+ */
 export const Scale = createPresenceComponent(scalePresenceFn, {
-  poses: [{ from: 'fromScale', in: 'inScale', to: 'toScale' }],
+  poseProps: [{ from: 'fromScale', in: 'inScale', to: 'toScale' }],
 });
 
+/** Scale with `durationNormal` (200 ms) for enter and `durationFast` (150 ms) for exit. */
 export const ScaleSnappy = createPresenceComponentVariant(Scale, {
   duration: motionTokens.durationNormal,
   exitDuration: motionTokens.durationFast,
 });
 
+/** Scale with `durationSlow` (300 ms) for enter and `durationGentle` (250 ms) for exit. */
 export const ScaleRelaxed = createPresenceComponentVariant(Scale, {
   duration: motionTokens.durationSlow,
   exitDuration: motionTokens.durationGentle,

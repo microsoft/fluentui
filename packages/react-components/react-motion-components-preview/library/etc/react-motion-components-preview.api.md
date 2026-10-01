@@ -79,10 +79,10 @@ export type FadeParams = BasePresenceParams & {
 // @public
 export type FadePose = number;
 
-// @public (undocumented)
+// @public
 export const FadeRelaxed: PresenceComponent<FadeParams, "inOpacity">;
 
-// @public (undocumented)
+// @public
 export const FadeSnappy: PresenceComponent<FadeParams, "inOpacity">;
 
 // @public
@@ -141,10 +141,10 @@ export type ScaleParams = BasePresenceParams & AnimateOpacity & {
 // @public
 export type ScalePose = number;
 
-// @public (undocumented)
+// @public
 export const ScaleRelaxed: PresenceComponent<ScaleParams, "inScale">;
 
-// @public (undocumented)
+// @public
 export const ScaleSnappy: PresenceComponent<ScaleParams, "inScale">;
 
 // @public
@@ -196,10 +196,10 @@ export type SlidePose = {
     y: string;
 };
 
-// @public (undocumented)
+// @public
 export const SlideRelaxed: PresenceComponent<SlideParams, "inX" | "inY">;
 
-// @public (undocumented)
+// @public
 export const SlideSnappy: PresenceComponent<SlideParams, "inX" | "inY">;
 
 // @public

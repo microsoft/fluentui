@@ -137,7 +137,7 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
     [PRESENCE_COMPONENT_OPTIONS]?: {
-        poses: readonly {
+        poseProps: readonly {
             from: PropertyKey;
             in: PropertyKey;
             to: PropertyKey;
@@ -150,12 +150,16 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
 
 // @public
 export type PresenceComponentOptions<MotionParams extends Record<string, MotionParam>, PresentKeys extends keyof MotionParams = never> = {
-    poses: readonly {
-        from: keyof MotionParams;
+    poseProps: readonly ({
         in: PresentKeys;
-        to: keyof MotionParams;
-        neutral?: MotionParams[keyof MotionParams];
-    }[];
+    } & {
+        [Present in keyof MotionParams]-?: {
+            from: CompatiblePoseKeys<MotionParams, Present>;
+            in: Present;
+            to: CompatiblePoseKeys<MotionParams, Present>;
+            neutral?: MotionParams[Present];
+        };
+    }[keyof MotionParams])[];
 };
 
 // @public (undocumented)

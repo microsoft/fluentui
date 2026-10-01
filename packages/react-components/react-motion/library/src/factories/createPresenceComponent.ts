@@ -33,19 +33,71 @@ export const PRESENCE_MOTION_DEFINITION = Symbol('PRESENCE_MOTION_DEFINITION');
 /** Retains pose mappings on the component so variants can reuse directional normalization. */
 export const PRESENCE_COMPONENT_OPTIONS = Symbol('PRESENCE_COMPONENT_OPTIONS');
 
-/** Maps temporal endpoint props to the present pose used by directional components. */
+/**
+ * Selects props whose defined value types are assignable in both directions with the present-pose prop.
+ * Each prop maps to its key or never; the final indexed access collects the compatible keys into a union.
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromScale?: number;
+ *   inScale?: number;
+ *   toScale?: number;
+ *   fromX?: string;
+ *   limitedScale?: 0 | 1;
+ * };
+ * type ScaleKeys = CompatiblePoseKeys<Params, 'inScale'>;
+ * // 'fromScale' | 'inScale' | 'toScale'
+ * // fromX has a different value type; limitedScale cannot accept every number.
+ * ```
+ */
+type CompatiblePoseKeys<MotionParams, Present extends keyof MotionParams> = {
+  // -? prevents optional props from adding undefined to the resulting key union.
+  // NonNullable ignores absent values; tuple wrappers compare whole types, including union-valued props.
+  [Key in keyof MotionParams]-?: [NonNullable<MotionParams[Key]>] extends [NonNullable<MotionParams[Present]>]
+    ? // Check the reverse assignment too: a narrower type such as 0 | 1 must not match number.
+      [NonNullable<MotionParams[Present]>] extends [NonNullable<MotionParams[Key]>]
+      ? Key
+      : never
+    : never;
+}[keyof MotionParams];
+
+/**
+ * Maps temporal endpoint props to the present pose used by directional components.
+ *
+ * @example
+ * ```ts
+ * type Params = {
+ *   fromX?: string;
+ *   inX?: string;
+ *   toX?: string;
+ *   fromY?: string;
+ *   inY?: string;
+ *   toY?: string;
+ * };
+ * const options: PresenceComponentOptions<Params, 'inX' | 'inY'> = {
+ *   poseProps: [
+ *     { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
+ *     { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
+ *   ],
+ * };
+ * // If fromX is authored without fromY, axis completion supplies fromY = '0px'.
+ * ```
+ */
 export type PresenceComponentOptions<
   MotionParams extends Record<string, MotionParam>,
   PresentKeys extends keyof MotionParams = never,
 > = {
   /** One mapping per primitive pose value, such as scale or a translation axis. */
-  poses: readonly {
-    from: keyof MotionParams;
-    in: PresentKeys;
-    to: keyof MotionParams;
-    /** Value for omitted axes when any axis of this pose is authored. */
-    neutral?: MotionParams[keyof MotionParams];
-  }[];
+  poseProps: readonly ({ in: PresentKeys } & {
+    [Present in keyof MotionParams]-?: {
+      from: CompatiblePoseKeys<MotionParams, Present>;
+      in: Present;
+      to: CompatiblePoseKeys<MotionParams, Present>;
+      /** Value for omitted axes when any axis of this pose is authored. */
+      neutral?: MotionParams[Present];
+    };
+  }[keyof MotionParams])[];
 };
 
 export type PresenceComponentProps = {
@@ -107,7 +159,7 @@ export type PresenceComponent<
   (props: PresenceComponentProps & MotionParams): JSXElement | null;
   [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
   [PRESENCE_COMPONENT_OPTIONS]?: {
-    poses: readonly { from: PropertyKey; in: PropertyKey; to: PropertyKey; neutral?: MotionParam }[];
+    poseProps: readonly { from: PropertyKey; in: PropertyKey; to: PropertyKey; neutral?: MotionParam }[];
   };
   // Present-pose props belong to the visibility-controlled root, not the one-way components.
   In: MotionComponent<Omit<MotionParams, PresentKeys>>;
@@ -137,14 +189,14 @@ export function createPresenceComponent<
   // An authored endpoint uses neutral values for omitted axes. For example, fromX alone implies fromY = '0px'.
   // Leave wholly omitted endpoints untouched so the motion function or variant can supply its defaults.
   const completePoses = (params: MotionParams): MotionParams => {
-    if (!options) {
-      return params;
-    }
     // Normalize a copy: completing poses and remapping directional props must not mutate the caller's parameters.
     const normalized = { ...params };
+    if (!options) {
+      return normalized;
+    }
     for (const endpoint of ['from', 'in', 'to'] as const) {
-      if (options.poses.some(pose => normalized[pose[endpoint]] !== undefined)) {
-        for (const pose of options.poses) {
+      if (options.poseProps.some(pose => normalized[pose[endpoint]] !== undefined)) {
+        for (const pose of options.poseProps) {
           const key: keyof MotionParams = pose[endpoint];
           if (normalized[key] === undefined && pose.neutral !== undefined) {
             normalized[key] = pose.neutral;
@@ -167,7 +219,7 @@ export function createPresenceComponent<
           const normalized = completePoses(params as { element: HTMLElement } & MotionParams);
           // Presence definitions enter from -> in and exit in -> to. One-way components always play from -> to,
           // so .In maps its destination to in, while .Out maps its source to in before selecting the definition.
-          for (const pose of options?.poses ?? []) {
+          for (const pose of options?.poseProps ?? []) {
             const endpoint: keyof MotionParams = direction === 'enter' ? pose.to : pose.from;
             const present: keyof MotionParams = pose.in;
             if (normalized[endpoint] !== undefined) {
@@ -178,7 +230,7 @@ export function createPresenceComponent<
           }
           // Let .Out use ordinary timing props. Translate explicit values before variant defaults are merged,
           // preserving an explicit exit-prefixed value when both forms are supplied.
-          if (options && direction === 'exit') {
+          if (direction === 'exit') {
             for (const [ordinary, exit] of Object.entries(exitTimingProps)) {
               const source = ordinary as keyof MotionParams;
               const destination = exit as keyof MotionParams;

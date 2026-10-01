@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { PresenceMotion, PresenceMotionFn } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { createPresenceComponentVariant } from './createPresenceComponentVariant';
+import { MOTION_DEFINITION } from './createMotionComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
@@ -102,7 +103,97 @@ describe('createPresenceComponent', () => {
       },
     });
     const TestPresence = createPresenceComponent(posedMotion, {
-      poses: [{ from: 'from', in: 'present', to: 'to' }],
+      poseProps: [{ from: 'from', in: 'present', to: 'to' }],
+    });
+
+    it.each([undefined, { poseProps: [] }])('normalizes exit timing independently of pose mappings', configuration => {
+      const Plain = createPresenceComponent(posedMotion, configuration);
+      const Variant = createPresenceComponentVariant(Plain, {
+        exitDuration: 150,
+        exitEasing: 'ease-out',
+        exitDelay: 7,
+      });
+      const { animateMock, ElementMock } = createElementMock();
+      render(
+        <Variant.Out duration={123} easing="linear" delay={25}>
+          <ElementMock />
+        </Variant.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        exitKeyframes,
+        expect.objectContaining({ duration: 123, easing: 'linear', delay: 25 }),
+      );
+    });
+
+    it('preserves explicit exit timing without pose mappings', () => {
+      const Plain = createPresenceComponent(posedMotion);
+      const { animateMock, ElementMock } = createElementMock();
+      render(
+        <Plain.Out duration={123} easing="linear" delay={25} exitDuration={0} exitEasing="ease-in" exitDelay={0}>
+          <ElementMock />
+        </Plain.Out>,
+      );
+      expect(animateMock).toHaveBeenLastCalledWith(
+        exitKeyframes,
+        expect.objectContaining({ duration: 0, easing: 'ease-in', delay: 0 }),
+      );
+    });
+
+    it('does not mutate timing parameters without pose mappings', () => {
+      const Plain = createPresenceComponent(posedMotion);
+      const { container } = render(<div />);
+      const params = Object.freeze({ element: container, duration: 123, easing: 'linear', delay: 25 });
+      expect(Plain.Out[MOTION_DEFINITION](params)).toEqual(
+        expect.objectContaining({ duration: 123, easing: 'linear', delay: 25 }),
+      );
+      expect(params).not.toHaveProperty('exitDuration');
+      expect(params).not.toHaveProperty('exitEasing');
+      expect(params).not.toHaveProperty('exitDelay');
+    });
+
+    it('rejects incompatible pose property values', () => {
+      const mixedMotion: PresenceMotionFn<{
+        from?: number;
+        present?: number;
+        to?: number;
+        fromText?: string;
+        presentText?: string;
+        toText?: string;
+        enabled?: boolean;
+      }> = () => ({
+        enter: { ...options, keyframes: enterKeyframes },
+        exit: { ...options, keyframes: exitKeyframes },
+      });
+      const Mixed = createPresenceComponent(mixedMotion, {
+        poseProps: [
+          { from: 'from', in: 'present', to: 'to', neutral: 0 },
+          { from: 'fromText', in: 'presentText', to: 'toText', neutral: '0px' },
+        ],
+      });
+      // @ts-expect-error all mapped present props are excluded from directional components
+      <Mixed.In present={1}>
+        <div />
+      </Mixed.In>;
+      // @ts-expect-error all mapped present props are excluded from directional components
+      <Mixed.Out presentText="0px">
+        <div />
+      </Mixed.Out>;
+      createPresenceComponent(mixedMotion, {
+        poseProps: [
+          // @ts-expect-error a string source cannot map to a numeric present prop
+          { from: 'fromText', in: 'present', to: 'to' },
+          // @ts-expect-error numeric endpoints cannot map to a string present prop
+          { from: 'from', in: 'presentText', to: 'to' },
+          // @ts-expect-error a string destination cannot map to a numeric present prop
+          { from: 'from', in: 'present', to: 'toText' },
+          // @ts-expect-error a boolean source cannot map to a numeric present prop
+          { from: 'enabled', in: 'present', to: 'to' },
+          // @ts-expect-error a numeric mapping requires a numeric neutral value
+          { from: 'from', in: 'present', to: 'to', neutral: '0px' },
+          // @ts-expect-error a string mapping requires a string neutral value
+          { from: 'fromText', in: 'presentText', to: 'toText', neutral: 0 },
+        ],
+      });
     });
 
     it('excludes presence-only props from directional components and rejects unknown variant params', () => {
@@ -207,7 +298,7 @@ describe('createPresenceComponent', () => {
         exit: { ...options, keyframes: [{ translate: `${inX} ${inY}` }, { translate: `${toX} ${toY}` }] },
       });
       const Axis = createPresenceComponent(axisMotion, {
-        poses: [
+        poseProps: [
           { from: 'fromX', in: 'inX', to: 'toX', neutral: '0px' },
           { from: 'fromY', in: 'inY', to: 'toY', neutral: '0px' },
         ],

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(motion): use typed poseProps mappings and normalize directional exit timing independently",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com"
+}
