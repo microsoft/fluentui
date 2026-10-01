@@ -76,13 +76,14 @@ Every presence component includes one-way sub-components:
 
 ## Pose-Based Helpers
 
-`fade`, `fadeIn`, `fadeOut`, `slide`, `slideIn`, and `slideOut` return ordinary
+`fade`, `fadeIn`, `fadeOut`, `slide`, `slideIn`, `slideOut`, `scale`, `scaleIn`,
+and `scaleOut` return ordinary
 motion atoms accepted by `createPresenceComponent` and `createMotionComponent`.
 They produce absolute keyframes, without Prism scene binding or runtime state.
 
 ```ts
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { fadeIn, fadeOut, slideIn, slideOut } from '@fluentui/react-motion-components-preview';
+import { fadeIn, fadeOut, slideIn, slideOut, scaleIn, scaleOut } from '@fluentui/react-motion-components-preview';
 
 const duration = motionTokens.durationNormal;
 const CustomFade = createPresenceComponent({
@@ -93,19 +94,25 @@ const CustomSlide = createPresenceComponent({
   enter: slideIn({ from: { y: '24px' }, duration }),
   exit: slideOut({ to: { y: '-12px' }, duration }),
 });
+const CustomScale = createPresenceComponent({
+  enter: scaleIn({ from: 0.9, duration }),
+  exit: scaleOut({ to: 0.9, duration }),
+});
 ```
 
-General `fade` and `slide` accept `from`, `to`, or both to describe their starting
-and ending poses. Omitted opacity poses default to 1; omitted translation poses
-and axes default to zero. Translation
-uses CSS length strings, including percentages, and does not add opacity. All
-helpers require duration; easing defaults to linear and delay to zero. Fade
+General `fade`, `slide`, and `scale` accept `from`, `to`, or both to describe
+their starting and ending poses. Omitted opacity and scale poses default to 1;
+omitted translation poses and axes default to zero. Translation uses CSS length
+strings, including percentages, and does not add opacity. All helpers require
+duration; easing defaults to linear and delay to zero. Fade
 helpers use `fill: 'both'` so delayed entrances remain hidden. Directional fades
 always use 0-to-1 or 1-to-0 opacity; directional slides require an authored outer
-pose and use zero translation as the present pose.
+pose and use zero translation as the present pose; directional scales require an
+authored outer pose and use scale 1 as the present pose.
 
-Existing `fadeAtom` and `slideAtom` exports remain available. The pre-built Fade
-and Slide components retain their existing pose, timing, and variant defaults.
+The `fadeAtom`, `slideAtom`, and `scaleAtom` exports are deprecated but remain
+available for compatibility. The pre-built Fade, Slide, and Scale components
+retain their existing pose, timing, and variant defaults.
 
 ## Documentation
 

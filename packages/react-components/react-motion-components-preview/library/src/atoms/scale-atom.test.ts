@@ -1,4 +1,5 @@
-import { scaleAtom } from './scale-atom';
+/* eslint-disable @typescript-eslint/no-deprecated -- These tests preserve coverage for the deprecated compatibility API. */
+import { scale, scaleIn, scaleOut, scaleAtom } from './scale-atom';
 import {
   expectValidAtomMotion,
   expectReversedKeyframes,
@@ -23,6 +24,32 @@ function expectScaleAtom(
     expectKeyframeProperty(atom, 'scale', [inScale, outScale]);
   }
 }
+
+describe('scale', () => {
+  it('resolves an omitted endpoint to neutral scale', () => {
+    expect(scale({ from: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 0.9 }, { scale: 1 }]);
+    expect(scale({ to: 0.9, duration: 300 }).keyframes).toEqual([{ scale: 1 }, { scale: 0.9 }]);
+  });
+
+  it('preserves custom poses and timing', () => {
+    const motion = scale({ from: 0.5, to: 1.2, duration: 300, easing: 'ease-out', delay: 50 });
+
+    expect(motion).toMatchObject({
+      keyframes: [{ scale: 0.5 }, { scale: 1.2 }],
+      duration: 300,
+      easing: 'ease-out',
+      delay: 50,
+    });
+    expect(motion.fill).toBeUndefined();
+  });
+
+  it('creates directional scales using the general helper', () => {
+    expect(scaleIn({ from: 0.9, duration: 300 })).toEqual(scale({ from: 0.9, duration: 300 }));
+    expect(scaleOut({ to: 0.9, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      scale({ to: 0.9, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+  });
+});
 
 describe('scaleAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {

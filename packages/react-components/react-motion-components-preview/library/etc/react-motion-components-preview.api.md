@@ -103,13 +103,40 @@ export type RotateParams = BasePresenceParams & AnimateOpacity & {
 export const Scale: PresenceComponent<ScaleParams>;
 
 // @public
+export const scale: ({ from, to, duration, easing, delay, }: ScaleOptions) => AtomMotion;
+
+// @public @deprecated
 export const scaleAtom: ({ direction, duration, easing, delay, outScale, inScale, }: ScaleAtomParams) => AtomMotion;
+
+// @public
+export const scaleIn: ({ from, duration, easing, delay }: ScaleInOptions) => AtomMotion;
+
+// @public
+export type ScaleInOptions = MotionTiming & {
+    from: ScalePose;
+    to?: never;
+};
+
+// @public
+export type ScaleOptions = MotionTiming & PoseEndpoints<ScalePose>;
+
+// @public
+export const scaleOut: ({ to, duration, easing, delay }: ScaleOutOptions) => AtomMotion;
+
+// @public
+export type ScaleOutOptions = MotionTiming & {
+    from?: never;
+    to: ScalePose;
+};
 
 // @public (undocumented)
 export type ScaleParams = BasePresenceParams & AnimateOpacity & {
-    outScale?: number;
-    inScale?: number;
+    outScale?: ScalePose;
+    inScale?: ScalePose;
 };
+
+// @public
+export type ScalePose = number;
 
 // @public (undocumented)
 export const ScaleRelaxed: PresenceComponent<ScaleParams>;

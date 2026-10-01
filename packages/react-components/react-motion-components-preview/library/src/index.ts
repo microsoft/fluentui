@@ -18,7 +18,17 @@ export { blurAtom } from './atoms/blur-atom';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
 export { fade, fadeIn, fadeOut, fadeAtom, type FadeOptions, type FadePose } from './atoms/fade-atom';
 export { rotateAtom } from './atoms/rotate-atom';
-export { scaleAtom } from './atoms/scale-atom';
+export {
+  scale,
+  scaleIn,
+  scaleOut,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
+  scaleAtom,
+  type ScaleInOptions,
+  type ScaleOptions,
+  type ScaleOutOptions,
+  type ScalePose,
+} from './atoms/scale-atom';
 export {
   slide,
   slideIn,

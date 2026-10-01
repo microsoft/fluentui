@@ -1,7 +1,7 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
 import { fadeIn, fadeOut } from '../../atoms/fade-atom';
-import { scaleAtom } from '../../atoms/scale-atom';
+import { scale } from '../../atoms/scale-atom';
 import type { ScaleParams } from './scale-types';
 
 /**
@@ -13,8 +13,8 @@ import type { ScaleParams } from './scale-types';
  * @param exitDuration - Time (ms) for the exit transition (scale-out). Defaults to the `durationNormal` value (200 ms).
  * @param exitEasing - Easing curve for the exit transition (scale-out). Defaults to the `curveAccelerateMax` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outScale - Scale for the out state (exited). Defaults to `0.9`.
- * @param inScale - Scale for the in state (entered). Defaults to `1`.
+ * @param outScale - Scale for the out pose. Defaults to `0.9`.
+ * @param inScale - Scale for the in pose. Defaults to `1`.
  * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
  */
 const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
@@ -28,15 +28,14 @@ const scalePresenceFn: PresenceMotionFn<ScaleParams> = ({
   inScale = 1,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [scaleAtom({ direction: 'enter', duration, easing, delay, outScale, inScale })];
+  const enterAtoms = [scale({ from: outScale, to: inScale, duration, easing, delay })];
   const exitAtoms = [
-    scaleAtom({
-      direction: 'exit',
+    scale({
+      from: inScale,
+      to: outScale,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outScale,
-      inScale,
     }),
   ];
 
