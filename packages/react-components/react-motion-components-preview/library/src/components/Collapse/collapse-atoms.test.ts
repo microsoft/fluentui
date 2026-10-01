@@ -2,29 +2,31 @@ import { motionTokens } from '@fluentui/react-motion';
 import { sizeEnterAtom, sizeExitAtom, whitespaceAtom } from './collapse-atoms';
 import { expectValidAtomMotion, expectCustomParameters, expectKeyframeProperty } from '../../testing/atomTestUtils';
 
-// Mock element for testing
-const createMockElement = (scrollWidth = 200, scrollHeight = 100): HTMLElement => {
-  const element = document.createElement('div');
-  Object.defineProperty(element, 'scrollWidth', { value: scrollWidth, configurable: true });
-  Object.defineProperty(element, 'scrollHeight', { value: scrollHeight, configurable: true });
-  return element;
-};
-
 describe('collapse atoms', () => {
-  let mockElement: HTMLElement;
-
-  beforeEach(() => {
-    mockElement = createMockElement();
-  });
-
   describe('sizeEnterAtom', () => {
+    it('uses explicit size poses without measuring an element', () => {
+      const atom = sizeEnterAtom({
+        orientation: 'vertical',
+        from: '8px',
+        to: '120px',
+        duration: 300,
+        easing: 'ease-out',
+      });
+
+      expect(atom.keyframes).toEqual([
+        { maxHeight: '8px', overflowY: 'hidden' },
+        { maxHeight: '120px', offset: 0.9999, overflowY: 'hidden' },
+        { maxHeight: 'unset', overflowY: 'unset' },
+      ]);
+    });
+
     it('creates proper keyframes for vertical orientation', () => {
       const atom = sizeEnterAtom({
         orientation: 'vertical',
         duration: 300,
         easing: 'ease-out',
-        element: mockElement,
-        outSize: '0px',
+        from: '0px',
+        to: '100px',
       });
 
       // Should expand from 0px to measured height (100px), then to unset
@@ -46,8 +48,8 @@ describe('collapse atoms', () => {
         orientation: 'horizontal',
         duration: 250,
         easing: 'ease-in',
-        element: mockElement,
-        outSize: '5px',
+        from: '5px',
+        to: '200px',
       });
 
       // Should expand from 5px to measured width (200px), then to unset
@@ -69,8 +71,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: mockElement,
-        outSize: '10px',
+        from: '10px',
+        to: '100px',
       });
 
       expect(atom.keyframes[0]).toMatchObject({ maxHeight: '10px' });
@@ -81,7 +83,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: mockElement,
+        from: '0',
+        to: '100px',
         delay: 150,
       });
 
@@ -93,7 +96,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 300,
         easing: 'ease-out',
-        element: mockElement,
+        from: '0',
+        to: '100px',
       });
 
       expectValidAtomMotion(atom);
@@ -104,7 +108,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 400,
         easing: 'ease-in-out',
-        element: mockElement,
+        from: '0',
+        to: '100px',
         delay: 100,
       });
 
@@ -122,8 +127,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 300,
         easing: 'ease-in',
-        element: mockElement,
-        outSize: '0px',
+        from: '100px',
+        to: '0px',
       });
 
       // Should collapse from measured height (100px) to 0px
@@ -145,8 +150,8 @@ describe('collapse atoms', () => {
         orientation: 'horizontal',
         duration: 250,
         easing: 'ease-out',
-        element: mockElement,
-        outSize: '5px',
+        from: '200px',
+        to: '5px',
       });
 
       // Should collapse from measured width (200px) to 5px
@@ -168,8 +173,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: mockElement,
-        outSize: '10px',
+        from: '100px',
+        to: '10px',
       });
 
       expect(atom.keyframes[1]).toMatchObject({ maxHeight: '10px' });
@@ -180,7 +185,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: mockElement,
+        from: '100px',
+        to: '0',
         delay: 75,
       });
 
@@ -192,7 +198,8 @@ describe('collapse atoms', () => {
         orientation: 'horizontal',
         duration: 300,
         easing: 'ease-in',
-        element: mockElement,
+        from: '200px',
+        to: '0',
       });
 
       expectValidAtomMotion(atom);
@@ -203,7 +210,8 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 350,
         easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        element: mockElement,
+        from: '100px',
+        to: '0',
         delay: 50,
       });
 
@@ -389,22 +397,21 @@ describe('collapse atoms', () => {
   });
 
   describe('integration scenarios', () => {
-    it('size atoms work with different element dimensions', () => {
-      const tallElement = createMockElement(150, 300);
-      const wideElement = createMockElement(500, 80);
-
+    it('size atoms work with different resolved size poses', () => {
       const verticalAtom = sizeEnterAtom({
         orientation: 'vertical',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: tallElement,
+        from: '0',
+        to: '300px',
       });
 
       const horizontalAtom = sizeEnterAtom({
         orientation: 'horizontal',
         duration: 200,
         easing: motionTokens.curveLinear,
-        element: wideElement,
+        from: '0',
+        to: '500px',
       });
 
       expect(verticalAtom.keyframes[1]).toMatchObject({ maxHeight: '300px' });
@@ -416,16 +423,16 @@ describe('collapse atoms', () => {
         orientation: 'vertical',
         duration: 300,
         easing: 'ease-out',
-        element: mockElement,
-        outSize: '5px',
+        from: '5px',
+        to: '100px',
       });
 
       const exitAtom = sizeExitAtom({
         orientation: 'vertical',
         duration: 300,
         easing: 'ease-out',
-        element: mockElement,
-        outSize: '5px',
+        from: '100px',
+        to: '5px',
       });
 
       // Enter expands from 5px to 100px

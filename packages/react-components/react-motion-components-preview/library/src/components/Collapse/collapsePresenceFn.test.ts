@@ -197,6 +197,39 @@ describe('collapsePresenceFn', () => {
   });
 
   describe('orientation handling', () => {
+    it.each<[string, string, string, number, number, string]>([
+      ['vertical', 'maxHeight', 'overflowY', 200, 100, '100px'],
+      ['horizontal', 'maxWidth', 'overflowX', 200, 100, '200px'],
+      ['vertical', 'maxHeight', 'overflowY', 0, 0, '0px'],
+    ])('resolves %s size poses from the element (%s)', (orientation, sizeName, overflowName, width, height, inSize) => {
+      const motion = collapsePresenceFn({
+        element: createMockElement(width, height),
+        orientation,
+        outSize: '8px',
+        animateOpacity: false,
+      });
+
+      expect(motion.enter[0].keyframes).toEqual([
+        { [sizeName]: '8px', [overflowName]: 'hidden' },
+        { [sizeName]: inSize, offset: 0.9999, [overflowName]: 'hidden' },
+        { [sizeName]: 'unset', [overflowName]: 'unset' },
+      ]);
+      expect(motion.exit[0].keyframes).toEqual([
+        { [sizeName]: inSize, [overflowName]: 'hidden' },
+        { [sizeName]: '8px', [overflowName]: 'hidden' },
+      ]);
+    });
+
+    it('remeasures the expanded pose when the presence function is invoked again', () => {
+      const first = collapsePresenceFn({ element: mockElement });
+      Object.defineProperty(mockElement, 'scrollHeight', { value: 240, configurable: true });
+      const second = collapsePresenceFn({ element: mockElement });
+
+      expect(first.enter[0].keyframes[1]).toHaveProperty('maxHeight', '100px');
+      expect(second.enter[0].keyframes[1]).toHaveProperty('maxHeight', '240px');
+      expect(second.exit[1].keyframes[0]).toHaveProperty('maxHeight', '240px');
+    });
+
     it('applies vertical orientation by default', () => {
       const motion = collapsePresenceFn({
         element: mockElement,

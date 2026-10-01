@@ -3,38 +3,28 @@ import type { CollapseOrientation } from './collapse-types';
 
 // ----- SIZE -----
 
-const sizeValuesForOrientation = (orientation: CollapseOrientation, element: Element) => {
+const sizeValuesForOrientation = (orientation: CollapseOrientation) => {
   const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
   const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
-  const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
-  const toSize = `${measuredSize}px`;
-  return { sizeName, overflowName, toSize };
+  return { sizeName, overflowName };
 };
 
-interface SizeEnterAtomParams {
+interface SizeAtomParams {
   orientation: CollapseOrientation;
   duration: number;
   easing: string;
-  element: HTMLElement;
-  /** Size for the out state (collapsed). Defaults to '0'. */
-  outSize?: string;
+  from: string;
+  to: string;
   delay?: number;
 }
 
-export const sizeEnterAtom = ({
-  orientation,
-  duration,
-  easing,
-  element,
-  outSize = '0',
-  delay = 0,
-}: SizeEnterAtomParams): AtomMotion => {
-  const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
+export const sizeEnterAtom = ({ orientation, duration, easing, from, to, delay = 0 }: SizeAtomParams): AtomMotion => {
+  const { sizeName, overflowName } = sizeValuesForOrientation(orientation);
 
   return {
     keyframes: [
-      { [sizeName]: outSize, [overflowName]: 'hidden' },
-      { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
+      { [sizeName]: from, [overflowName]: 'hidden' },
+      { [sizeName]: to, offset: 0.9999, [overflowName]: 'hidden' },
       { [sizeName]: 'unset', [overflowName]: 'unset' },
     ],
     duration,
@@ -44,24 +34,13 @@ export const sizeEnterAtom = ({
   };
 };
 
-interface SizeExitAtomParams extends SizeEnterAtomParams {
-  delay?: number;
-}
-
-export const sizeExitAtom = ({
-  orientation,
-  duration,
-  easing,
-  element,
-  delay = 0,
-  outSize = '0',
-}: SizeExitAtomParams): AtomMotion => {
-  const { sizeName, overflowName, toSize } = sizeValuesForOrientation(orientation, element);
+export const sizeExitAtom = ({ orientation, duration, easing, from, to, delay = 0 }: SizeAtomParams): AtomMotion => {
+  const { sizeName, overflowName } = sizeValuesForOrientation(orientation);
 
   return {
     keyframes: [
-      { [sizeName]: toSize, [overflowName]: 'hidden' },
-      { [sizeName]: outSize, [overflowName]: 'hidden' },
+      { [sizeName]: from, [overflowName]: 'hidden' },
+      { [sizeName]: to, [overflowName]: 'hidden' },
     ],
     duration,
     easing,

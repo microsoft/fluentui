@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "refactor(react-motion-components-preview): resolve Collapse size poses before generating size atoms",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com"
+}
