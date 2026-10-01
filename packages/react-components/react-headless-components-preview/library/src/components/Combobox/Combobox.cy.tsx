@@ -66,6 +66,20 @@ describe('Combobox', () => {
       cy.get(trigger).should('be.focused');
     });
 
+    it('closes on Escape from the expand icon without bubbling to a parent dialog', () => {
+      const onDialogKeyDown = cy.stub().as('onDialogKeyDown');
+      mount(
+        <div role="dialog" onKeyDown={onDialogKeyDown}>
+          <BasicCombobox defaultOpen />
+        </div>,
+      );
+
+      cy.get(expandIcon).focus().realPress('Escape');
+      cy.get(listbox).should('not.exist');
+      cy.get(trigger).should('be.focused');
+      cy.get('@onDialogKeyDown').should('not.have.been.called');
+    });
+
     it('clears focus state when focus leaves from the expand icon', () => {
       mount(<BasicCombobox />);
 

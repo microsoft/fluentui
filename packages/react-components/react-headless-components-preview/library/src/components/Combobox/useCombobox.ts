@@ -112,6 +112,14 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   const onExpandIconKeyDown = useEventCallback(
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (open && event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        internalState.setOpen(event, false);
+        triggerRef.current?.focus();
+        return;
+      }
+
       if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
         const nextOpen = !open;

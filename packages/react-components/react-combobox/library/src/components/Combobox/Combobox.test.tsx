@@ -107,6 +107,27 @@ describe('Combobox', () => {
     expect(result.container.querySelector('[role="listbox"]')).toBeNull();
   });
 
+  it('closes on Escape from the expand icon without bubbling to a parent dialog', () => {
+    const onDialogKeyDown = jest.fn();
+    const result = render(
+      <div role="dialog" onKeyDown={onDialogKeyDown}>
+        <Combobox defaultOpen inlinePopup>
+          <Option>Red</Option>
+        </Combobox>
+      </div>,
+    );
+    const expandIcon = result.getByRole('button');
+
+    act(() => {
+      expandIcon.focus();
+    });
+    userEvent.keyboard('{Escape}');
+
+    expect(result.queryByRole('listbox')).toBeNull();
+    expect(onDialogKeyDown).not.toHaveBeenCalled();
+    expect(result.getByRole('combobox')).toHaveFocus();
+  });
+
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>

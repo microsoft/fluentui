@@ -153,6 +153,14 @@ export const useComboboxBase_unstable = (
   const onExpandIconKeyDown = useEventCallback(
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onKeyDown, event => {
+      if (state.open && event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        state.setOpen(event, false);
+        triggerRef.current?.focus();
+        return;
+      }
+
       if (!state.disabled && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
         state.setOpen(event, !state.open);
