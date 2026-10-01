@@ -66,6 +66,7 @@ interface FadeAtomParams extends BaseAtomParams {
  * @param outOpacity - Opacity for the out pose. Defaults to 0.
  * @param inOpacity - Opacity for the in pose. Defaults to 1.
  * @returns A motion atom object with opacity keyframes and the supplied duration and easing.
+ * @deprecated Use `fade` with explicit `from` and `to` poses, or `fadeIn`/`fadeOut` for a 0-to-1 or 1-to-0 fade.
  */
 export const fadeAtom = ({
   direction,

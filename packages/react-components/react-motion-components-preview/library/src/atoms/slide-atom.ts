@@ -75,6 +75,7 @@ interface SlideAtomParams extends BaseAtomParams {
  * @param inY - Y translate for the in pose with units (e.g., '5px', '10%'). Defaults to '0px'.
  * @param delay - Time (ms) to delay the animation. Defaults to 0.
  * @returns A motion atom object with translate keyframes and the supplied duration and easing.
+ * @deprecated Use `slide` with explicit `from` and `to` poses, or `slideIn`/`slideOut` when one pose is zero translation.
  */
 export const slideAtom = ({
   direction,

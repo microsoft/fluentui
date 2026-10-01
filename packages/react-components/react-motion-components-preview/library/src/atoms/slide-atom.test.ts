@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- These tests preserve coverage for the deprecated compatibility API. */
 import { slide, slideIn, slideOut, slideAtom } from './slide-atom';
 import {
   expectValidAtomMotion,

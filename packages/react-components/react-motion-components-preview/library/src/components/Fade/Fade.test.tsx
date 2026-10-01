@@ -45,6 +45,42 @@ describe('Fade motion component', () => {
     );
   });
 
+  it('preserves custom opacity poses and independent exit timing', () => {
+    const params = {
+      outOpacity: 0.2,
+      inOpacity: 0.7,
+      duration: 300,
+      easing: 'ease-out',
+      delay: 50,
+      exitDuration: 150,
+      exitEasing: 'ease-in',
+      exitDelay: 25,
+    };
+    const { rerender } = render(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    rerender(
+      <Fade {...params} visible>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0.2 }, { opacity: 0.7 }],
+      expect.objectContaining({ duration: 300, easing: 'ease-out', delay: 50, fill: 'both' }),
+    );
+    rerender(
+      <Fade {...params} visible={false}>
+        {testElement}
+      </Fade>,
+    );
+    expect(animateSpy).toHaveBeenLastCalledWith(
+      [{ opacity: 0.7 }, { opacity: 0.2 }],
+      expect.objectContaining({ duration: 150, easing: 'ease-in', delay: 25, fill: 'both' }),
+    );
+  });
+
   it('should render Snappy variant of Fade component with correct opacity keyframes, duration and easing', () => {
     const { rerender } = render(<FadeSnappy visible={false}>{testElement}</FadeSnappy>);
 

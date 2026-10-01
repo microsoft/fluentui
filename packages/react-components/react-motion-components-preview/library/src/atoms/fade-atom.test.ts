@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- These tests preserve coverage for the deprecated compatibility API. */
 import { fade, fadeIn, fadeOut, fadeAtom } from './fade-atom';
 import {
   expectValidAtomMotion,

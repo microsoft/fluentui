@@ -1,6 +1,6 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent, createPresenceComponentVariant } from '@fluentui/react-motion';
-import { fadeAtom } from '../../atoms/fade-atom';
+import { fade } from '../../atoms/fade-atom';
 import type { FadeParams } from './fade-types';
 
 /**
@@ -12,8 +12,8 @@ import type { FadeParams } from './fade-types';
  * @param exitDuration - Time (ms) for the exit transition (fade-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (fade-out). Defaults to the `easing` param for symmetry.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outOpacity - Opacity for the out state (exited). Defaults to 0.
- * @param inOpacity - Opacity for the in state (entered). Defaults to 1.
+ * @param outOpacity - Opacity for the out pose. Defaults to 0.
+ * @param inOpacity - Opacity for the in pose. Defaults to 1.
  */
 export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   duration = motionTokens.durationNormal,
@@ -26,14 +26,13 @@ export const fadePresenceFn: PresenceMotionFn<FadeParams> = ({
   inOpacity = 1,
 }) => {
   return {
-    enter: fadeAtom({ direction: 'enter', duration, easing, delay, outOpacity, inOpacity }),
-    exit: fadeAtom({
-      direction: 'exit',
+    enter: fade({ from: outOpacity, to: inOpacity, duration, easing, delay }),
+    exit: fade({
+      from: inOpacity,
+      to: outOpacity,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outOpacity,
-      inOpacity,
     }),
   };
 };

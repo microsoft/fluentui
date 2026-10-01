@@ -56,7 +56,7 @@ export const Fade: PresenceComponent<FadeParams>;
 // @public
 export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => AtomMotion;
 
-// @public
+// @public @deprecated
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
 
 // @public
@@ -123,7 +123,7 @@ export const Slide: PresenceComponent<SlideParams>;
 // @public
 export const slide: ({ from, to, duration, easing, delay, }: SlideOptions) => AtomMotion;
 
-// @public
+// @public @deprecated
 export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
 
 // @public
