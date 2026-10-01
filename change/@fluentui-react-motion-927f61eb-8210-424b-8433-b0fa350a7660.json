@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motion): normalize temporal endpoints for directional presence components",
+  "packageName": "@fluentui/react-motion",
+  "email": "robert@robertpenner.com"
+}

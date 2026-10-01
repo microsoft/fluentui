@@ -10,6 +10,7 @@ export {
   createPresenceComponent,
   type PresenceComponentProps,
   type PresenceComponent,
+  type PresenceComponentOptions,
 } from './factories/createPresenceComponent';
 export { createPresenceComponentVariant } from './factories/createPresenceComponentVariant';
 

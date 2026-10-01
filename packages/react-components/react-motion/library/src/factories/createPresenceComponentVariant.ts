@@ -1,6 +1,10 @@
 import type { MotionParam, PresenceMotionFn } from '../types';
-import type { PresenceComponent } from './createPresenceComponent';
-import { PRESENCE_MOTION_DEFINITION, createPresenceComponent } from './createPresenceComponent';
+import type { PresenceComponent, PresenceComponentOptions } from './createPresenceComponent';
+import {
+  PRESENCE_MOTION_DEFINITION,
+  PRESENCE_COMPONENT_OPTIONS,
+  createPresenceComponent,
+} from './createPresenceComponent';
 
 /**
  * Create a variant function that wraps a presence function to customize it.
@@ -27,12 +31,20 @@ export function createPresenceFnVariant<MotionParams extends Record<string, Moti
  * @returns A new presence component that uses the provided variant parameters as defaults.
  * The new component can still accept runtime parameters that override the defaults.
  */
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(
-  component: PresenceComponent<MotionParams>,
-  variantParams: Partial<MotionParams>,
-): PresenceComponent<MotionParams> {
+export function createPresenceComponentVariant<
+  MotionParams extends Record<string, MotionParam> = {},
+  PresentKeys extends keyof MotionParams = never,
+>(
+  component: PresenceComponent<MotionParams, PresentKeys>,
+  variantParams: Partial<NoInfer<MotionParams>>,
+): PresenceComponent<MotionParams, PresentKeys> {
   const originalFn = component[PRESENCE_MOTION_DEFINITION];
   // The variant params become new defaults, but they can still be overridden by runtime params.
   const variantFn = createPresenceFnVariant(originalFn, variantParams);
-  return createPresenceComponent(variantFn);
+  const options = component[PRESENCE_COMPONENT_OPTIONS] as
+    | PresenceComponentOptions<MotionParams, PresentKeys>
+    | undefined;
+  return options
+    ? createPresenceComponent<MotionParams, PresentKeys>(variantFn, options)
+    : createPresenceComponent<MotionParams, PresentKeys>(variantFn);
 }

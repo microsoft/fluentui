@@ -27,10 +27,10 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 export function createMotionComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: MotionComponent<MotionParams>, variantParams: Partial<MotionParams>): MotionComponent<MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never>(value: PresenceMotion | PresenceMotionFn<MotionParams>, options?: PresenceComponentOptions<NoInfer<MotionParams>, PresentKeys>): PresenceComponent<MotionParams, PresentKeys>;
 
 // @public
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never>(component: PresenceComponent<MotionParams, PresentKeys>, variantParams: Partial<NoInfer<MotionParams>>): PresenceComponent<MotionParams, PresentKeys>;
 
 // @public (undocumented)
 export const curves: {
@@ -130,11 +130,29 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}, PresentKeys extends keyof MotionParams = never> = React_2.FC<PresenceComponentProps & MotionParams> & {
     (props: PresenceComponentProps & MotionParams): JSXElement | null;
     [PRESENCE_MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
-    In: MotionComponent<MotionParams>;
-    Out: MotionComponent<MotionParams>;
+    [PRESENCE_COMPONENT_OPTIONS]?: {
+        poses: readonly {
+            from: PropertyKey;
+            in: PropertyKey;
+            to: PropertyKey;
+            neutral?: MotionParam;
+        }[];
+    };
+    In: MotionComponent<Omit<MotionParams, PresentKeys>>;
+    Out: MotionComponent<Omit<MotionParams, PresentKeys>>;
+};
+
+// @public
+export type PresenceComponentOptions<MotionParams extends Record<string, MotionParam>, PresentKeys extends keyof MotionParams = never> = {
+    poses: readonly {
+        from: keyof MotionParams;
+        in: PresentKeys;
+        to: keyof MotionParams;
+        neutral?: MotionParams[keyof MotionParams];
+    }[];
 };
 
 // @public (undocumented)
