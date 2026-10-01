@@ -1505,6 +1505,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     legendBars: JSXElement | null;
     maxOfYVal?: number;
+    onChartBlur?: () => void;
     onChartMouseLeave?: () => void;
     points: any;
     showRoundOffXTickValues?: boolean;

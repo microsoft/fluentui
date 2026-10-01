@@ -533,7 +533,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
 
   function _onChartBlur(event: React.FocusEvent<HTMLDivElement>): void {
     if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) {
-      _onChartLeave();
+      props.onChartBlur && props.onChartBlur();
     }
   }
 

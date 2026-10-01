@@ -697,6 +697,11 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
    */
   onChartMouseLeave?: () => void;
 
+  /**
+   * Callback method used when focus leaves the chart boundary.
+   */
+  onChartBlur?: () => void;
+
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => Margins;
 
