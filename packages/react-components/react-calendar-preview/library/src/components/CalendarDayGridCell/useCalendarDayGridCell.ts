@@ -10,7 +10,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { addDays, addWeeks, compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
+import { addDays, compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
 import type { AvailableDateOptions } from '../../utils';
@@ -33,6 +33,19 @@ const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
   element.toggleAttribute('data-corner-top-right', corners.topRight);
   element.toggleAttribute('data-corner-bottom-left', corners.bottomLeft);
   element.toggleAttribute('data-corner-bottom-right', corners.bottomRight);
+};
+
+const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 1 | -1): Date | undefined => {
+  for (let offset = initialOffset; ; offset += direction) {
+    const candidate = addDays(date, offset);
+    if (!Number.isFinite(candidate.getTime())) {
+      return undefined;
+    }
+
+    if (compareDatePart(candidate, date) * direction > 0) {
+      return candidate;
+    }
+  }
 };
 
 /**
@@ -76,15 +89,15 @@ export const useCalendarDayGridCell_unstable = (
     let direction: 1 | -1 = 1; // by default search forward
 
     if (ev.key === ArrowUp) {
-      targetDate = addWeeks(date, -1);
       direction = -1;
+      targetDate = getDirectionalTargetDate(date, -7, direction);
     } else if (ev.key === ArrowDown) {
-      targetDate = addWeeks(date, 1);
+      targetDate = getDirectionalTargetDate(date, 7, direction);
     } else if (ev.key === getRTLSafeKey(ArrowLeft, dir)) {
-      targetDate = addDays(date, -1);
       direction = -1;
+      targetDate = getDirectionalTargetDate(date, -1, direction);
     } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
-      targetDate = addDays(date, 1);
+      targetDate = getDirectionalTargetDate(date, 1, direction);
     }
 
     if (!targetDate) {

@@ -490,6 +490,47 @@ describe('CalendarDay', () => {
       expect(document.activeElement).toHaveAttribute('aria-disabled', 'true');
     });
 
+    it.each([false, true])('moves backward across a skipped local date with allFocusable=%s', allFocusable => {
+      const skippedDecember30 = new Date(2011, 11, 30).getDate() !== 30;
+      if (process.env.TZ === 'Pacific/Apia') {
+        expect(skippedDecember30).toBe(true);
+      }
+      const { container } = render(
+        <CalendarDay {...defaultProps} navigatedDate={new Date(2011, 11, 31)} onNavigateDate={jest.fn()} />,
+        { allFocusable, value: new Date(2011, 11, 31) },
+      );
+      const dayCell = findDayCellByLabel(container, 31, 'December', 2011);
+      dayCell.focus();
+
+      fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
+
+      expect(document.activeElement).toBe(findDayCellByLabel(container, skippedDecember30 ? 29 : 30, 'December', 2011));
+    });
+
+    it.each([false, true])(
+      'preserves restricted-date behavior across a skipped local date with allFocusable=%s',
+      allFocusable => {
+        const skippedDecember30 = new Date(2011, 11, 30).getDate() !== 30;
+        const firstEarlierDate = skippedDecember30 ? 29 : 30;
+        const { container } = render(
+          <CalendarDay {...defaultProps} navigatedDate={new Date(2011, 11, 31)} onNavigateDate={jest.fn()} />,
+          {
+            allFocusable,
+            restrictedDates: [new Date(2011, 11, firstEarlierDate)],
+            value: new Date(2011, 11, 31),
+          },
+        );
+        const dayCell = findDayCellByLabel(container, 31, 'December', 2011);
+        dayCell.focus();
+
+        fireEvent.keyDown(dayCell, { key: 'ArrowLeft' });
+
+        expect(document.activeElement).toBe(
+          findDayCellByLabel(container, allFocusable ? firstEarlierDate : firstEarlierDate - 1, 'December', 2011),
+        );
+      },
+    );
+
     it('should call onNavigateDate when arrowing up past the beginning of the month view', () => {
       // September 1, 2020 is in the first visible row. Arrowing up goes to August 25 (transition row).
       const onNavigateDate = jest.fn();
