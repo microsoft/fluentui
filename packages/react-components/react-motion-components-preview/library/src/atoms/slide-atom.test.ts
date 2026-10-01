@@ -1,4 +1,4 @@
-import { slideAtom } from './slide-atom';
+import { slide, slideIn, slideOut, slideAtom } from './slide-atom';
 import {
   expectValidAtomMotion,
   expectReversedKeyframes,
@@ -23,6 +23,49 @@ function expectSlideAtom(
     expectKeyframeProperty(atom, 'translate', [toTranslate, fromTranslate]);
   }
 }
+
+describe('slide', () => {
+  it('resolves omitted poses and axes to neutral translation', () => {
+    expect(slide({ from: { y: '24px' }, duration: 300 }).keyframes).toEqual([
+      { translate: '0px 24px' },
+      { translate: '0px 0px' },
+    ]);
+    expect(slide({ to: { x: '100%' }, duration: 300 }).keyframes).toEqual([
+      { translate: '0px 0px' },
+      { translate: '100% 0px' },
+    ]);
+  });
+
+  it('preserves custom CSS poses and timing without adding opacity or fill', () => {
+    expect(
+      slide({
+        from: { x: '100%', y: '-50px' },
+        to: { x: '20px', y: '25%' },
+        duration: 300,
+        easing: 'ease-out',
+        delay: 50,
+      }),
+    ).toEqual(
+      slideAtom({
+        direction: 'enter',
+        outX: '100%',
+        outY: '-50px',
+        inX: '20px',
+        inY: '25%',
+        duration: 300,
+        easing: 'ease-out',
+        delay: 50,
+      }),
+    );
+  });
+
+  it('creates directional slides using the general helper', () => {
+    expect(slideIn({ from: { y: '24px' }, duration: 300 })).toEqual(slide({ from: { y: '24px' }, duration: 300 }));
+    expect(slideOut({ to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      slide({ to: { x: '100%' }, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+  });
+});
 
 describe('slideAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {

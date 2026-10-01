@@ -87,3 +87,27 @@ export type BaseAtomParams = {
   /** Time (ms) to delay the animation. */
   delay?: EffectTiming['delay'];
 };
+
+/** Timing shared by pose-based motion helpers. */
+export type MotionTiming = Omit<BaseAtomParams, 'direction'>;
+
+/**
+ * At least one endpoint pose is required; authors may provide either endpoint or both.
+ *
+ * This type only describes which endpoint fields must be authored. A motion helper determines the meaning and default
+ * value of an omitted endpoint.
+ *
+ * @example
+ * ```ts
+ * type Point = { x: number; y: number };
+ * const fromOnly: PoseEndpoints<Point> = { from: { x: 0, y: 24 } };
+ * const toOnly: PoseEndpoints<Point> = { to: { x: 0, y: 0 } };
+ * const both: PoseEndpoints<Point> = {
+ *   from: { x: 0, y: 24 },
+ *   to: { x: 0, y: 0 },
+ * };
+ * // @ts-expect-error At least one endpoint is required.
+ * const neither: PoseEndpoints<Point> = {};
+ * ```
+ */
+export type PoseEndpoints<TPose> = { from: TPose; to?: TPose } | { from?: TPose; to: TPose };

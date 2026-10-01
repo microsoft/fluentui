@@ -15,8 +15,18 @@ export { Stagger, type StaggerProps } from './choreography/Stagger';
 
 // Motion Atoms
 export { blurAtom } from './atoms/blur-atom';
-export { fadeAtom } from './atoms/fade-atom';
+export { fade, fadeIn, fadeOut, fadeAtom, type FadeOptions, type FadePose } from './atoms/fade-atom';
 export { rotateAtom } from './atoms/rotate-atom';
 export { scaleAtom } from './atoms/scale-atom';
-export { slideAtom } from './atoms/slide-atom';
+export {
+  slide,
+  slideIn,
+  slideOut,
+  slideAtom,
+  type SlidePose,
+  type SlideOptions,
+  type SlideInOptions,
+  type SlideOutOptions,
+} from './atoms/slide-atom';
+export type { MotionTiming } from './types';
 // TODO: consider whether to export some or all collapse atoms

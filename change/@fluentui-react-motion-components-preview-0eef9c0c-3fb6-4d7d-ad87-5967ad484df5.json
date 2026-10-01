@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-motion-components-preview): add pose-based fade and slide helpers and use them in presence components",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com"
+}

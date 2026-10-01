@@ -1,4 +1,4 @@
-import { fadeAtom } from './fade-atom';
+import { fade, fadeIn, fadeOut, fadeAtom } from './fade-atom';
 import {
   expectValidAtomMotion,
   expectReversedKeyframes,
@@ -23,6 +23,26 @@ function expectFadeAtom(
     expectKeyframeProperty(atom, 'opacity', [inOpacity, outOpacity]);
   }
 }
+
+describe('fade', () => {
+  it('resolves omitted poses to neutral opacity', () => {
+    expect(fade({ from: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 0.3 }, { opacity: 1 }]);
+    expect(fade({ to: 0.3, duration: 300 }).keyframes).toEqual([{ opacity: 1 }, { opacity: 0.3 }]);
+  });
+
+  it('preserves custom poses and timing with backwards fill', () => {
+    expect(fade({ from: 0.2, to: 0.7, duration: 300, easing: 'ease-out', delay: 50 })).toEqual(
+      fadeAtom({ direction: 'enter', outOpacity: 0.2, inOpacity: 0.7, duration: 300, easing: 'ease-out', delay: 50 }),
+    );
+  });
+
+  it('creates directional fades using the general helper', () => {
+    expect(fadeIn({ duration: 300 })).toEqual(fade({ from: 0, to: 1, duration: 300 }));
+    expect(fadeOut({ duration: 300, easing: 'ease-in', delay: 50 })).toEqual(
+      fade({ from: 1, to: 0, duration: 300, easing: 'ease-in', delay: 50 }),
+    );
+  });
+});
 
 describe('fadeAtom', () => {
   it('creates proper keyframes for enter and exit directions', () => {

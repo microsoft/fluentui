@@ -54,19 +54,37 @@ export const CollapseSnappy: PresenceComponent<CollapseParams>;
 export const Fade: PresenceComponent<FadeParams>;
 
 // @public
+export const fade: ({ from, to, duration, easing, delay, }: FadeOptions) => AtomMotion;
+
+// @public
 export const fadeAtom: ({ direction, duration, easing, delay, outOpacity, inOpacity, }: FadeAtomParams) => AtomMotion;
+
+// @public
+export const fadeIn: (timing: MotionTiming) => AtomMotion;
+
+// @public
+export type FadeOptions = MotionTiming & PoseEndpoints<FadePose>;
+
+// @public
+export const fadeOut: (timing: MotionTiming) => AtomMotion;
 
 // @public (undocumented)
 export type FadeParams = BasePresenceParams & {
-    outOpacity?: number;
-    inOpacity?: number;
+    outOpacity?: FadePose;
+    inOpacity?: FadePose;
 };
+
+// @public
+export type FadePose = number;
 
 // @public (undocumented)
 export const FadeRelaxed: PresenceComponent<FadeParams>;
 
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<FadeParams>;
+
+// @public
+export type MotionTiming = Omit<BaseAtomParams, 'direction'>;
 
 // @public (undocumented)
 export const Rotate: PresenceComponent<RotateParams>;
@@ -103,7 +121,31 @@ export const ScaleSnappy: PresenceComponent<ScaleParams>;
 export const Slide: PresenceComponent<SlideParams>;
 
 // @public
+export const slide: ({ from, to, duration, easing, delay, }: SlideOptions) => AtomMotion;
+
+// @public
 export const slideAtom: ({ direction, duration, easing, delay, outX, outY, inX, inY, }: SlideAtomParams) => AtomMotion;
+
+// @public
+export const slideIn: ({ from, duration, easing, delay }: SlideInOptions) => AtomMotion;
+
+// @public
+export type SlideInOptions = MotionTiming & {
+    from: SlidePose;
+    to?: never;
+};
+
+// @public
+export type SlideOptions = MotionTiming & PoseEndpoints<SlidePose>;
+
+// @public
+export const slideOut: ({ to, duration, easing, delay }: SlideOutOptions) => AtomMotion;
+
+// @public
+export type SlideOutOptions = MotionTiming & {
+    from?: never;
+    to: SlidePose;
+};
 
 // @public (undocumented)
 export type SlideParams = BasePresenceParams & AnimateOpacity & {
@@ -111,6 +153,15 @@ export type SlideParams = BasePresenceParams & AnimateOpacity & {
     outY?: string;
     inX?: string;
     inY?: string;
+};
+
+// @public
+export type SlidePose = {
+    x: string;
+    y?: string;
+} | {
+    x?: string;
+    y: string;
 };
 
 // @public (undocumented)
