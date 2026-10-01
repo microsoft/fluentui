@@ -128,6 +128,20 @@ describe('Combobox', () => {
     expect(result.getByRole('combobox')).toHaveFocus();
   });
 
+  it('notifies of an input blur close only once', () => {
+    const onOpenChange = jest.fn();
+    const result = render(
+      <Combobox defaultOpen inlinePopup onOpenChange={onOpenChange}>
+        <Option>Red</Option>
+      </Combobox>,
+    );
+
+    fireEvent.blur(result.getByRole('combobox'));
+
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+  });
+
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>
@@ -1111,6 +1125,16 @@ describe('Combobox', () => {
   });
 
   describe('clearable', () => {
+    it('removes the visually hidden expand icon from the tab order', () => {
+      const { getByRole } = render(
+        <Combobox clearable defaultSelectedOptions={['Red']} defaultValue="Red">
+          <Option>Red</Option>
+        </Combobox>,
+      );
+
+      expect(getByRole('button')).toHaveAttribute('tabindex', '-1');
+    });
+
     it('clears the selection on a button click', () => {
       const { getByText, getByRole } = render(
         <Combobox

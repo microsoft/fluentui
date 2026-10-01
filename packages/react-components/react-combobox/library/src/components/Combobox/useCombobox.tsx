@@ -97,7 +97,9 @@ export const useComboboxBase_unstable = (
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
   rootSlot.onBlur = mergeCallbacks(rootSlot.onBlur, event => {
     if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
-      comboboxInternalState.setOpen(event as unknown as ComboboxOpenEvents, false);
+      if (event.target !== event.currentTarget.querySelector('input')) {
+        comboboxInternalState.setOpen(event as unknown as ComboboxOpenEvents, false);
+      }
       comboboxInternalState.setHasFocus(false);
     }
   });
@@ -117,6 +119,7 @@ export const useComboboxBase_unstable = (
     }),
     expandIcon: useComboboxExpandIconSlot(props.expandIcon, {
       disabled,
+      hideFromTabOrder: showClearIcon,
       open,
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],

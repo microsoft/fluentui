@@ -103,6 +103,21 @@ describe('Combobox', () => {
       cy.get('@onOpenChange').should('have.been.calledTwice');
     });
 
+    it('notifies of an input blur close only once', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(<BasicCombobox defaultOpen onOpenChange={onOpenChange} />);
+
+      cy.get(trigger).focus().blur();
+      cy.get('[data-open]').should('not.exist');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+    });
+
+    it('removes the visually hidden expand icon from the tab order', () => {
+      mount(<BasicCombobox clearable defaultSelectedOptions={['Cat']} defaultValue="Cat" />);
+
+      cy.get(expandIcon).should('have.attr', 'tabindex', '-1');
+    });
+
     it('opens on ArrowDown key', () => {
       mount(<BasicCombobox />);
       cy.get(trigger).focus().realPress('ArrowDown');

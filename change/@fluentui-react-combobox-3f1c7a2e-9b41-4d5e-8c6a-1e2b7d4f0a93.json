@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: make the Combobox expand icon keyboard-operable while keeping its slot behavior internal",
+  "comment": "fix: make the Combobox expand icon keyboard-operable and prevent hidden or duplicate blur interactions",
   "packageName": "@fluentui/react-combobox",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

@@ -4,6 +4,8 @@ import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-
 type UseComboboxExpandIconSlotOptions = {
   /** Whether the combobox trigger is disabled. */
   disabled?: boolean;
+  /** Whether the expand icon is visually hidden by the clear icon. */
+  hideFromTabOrder?: boolean;
   /** Whether the listbox is currently open. */
   open: boolean;
   /** `aria-label` passed to the combobox. */
@@ -24,7 +26,14 @@ export function useComboboxExpandIconSlot(
   options: UseComboboxExpandIconSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'span'>>> | undefined {
   const defaultExpandIconId = useId('combobox-chevron-');
-  const { disabled, open, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledBy, triggerLabelledBy } = options;
+  const {
+    disabled,
+    hideFromTabOrder,
+    open,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
+    triggerLabelledBy,
+  } = options;
   const expandIcon = slot.optional(expandIconFromProps, {
     renderByDefault: true,
     defaultProps: {
@@ -38,6 +47,10 @@ export function useComboboxExpandIconSlot(
 
   if (!expandIcon) {
     return undefined;
+  }
+
+  if (disabled || hideFromTabOrder) {
+    expandIcon.tabIndex = -1;
   }
 
   const hasExpandLabel = expandIcon['aria-label'] || expandIcon['aria-labelledby'];
