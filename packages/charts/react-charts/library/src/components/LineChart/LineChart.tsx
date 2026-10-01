@@ -28,6 +28,7 @@ import type {
   YValueHover,
 } from '../../index';
 import { CartesianChart } from '../../index';
+import { getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -1639,7 +1640,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             setPopoverOpen(true);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
-            setRefSelected(event.currentTarget as unknown as HTMLElement);
+            setRefSelected(getChartEventTarget(event) as unknown as HTMLElement);
             setStackCalloutProps(found!);
             setDataPointCalloutProps(found!);
             setActivePoint(circleId);

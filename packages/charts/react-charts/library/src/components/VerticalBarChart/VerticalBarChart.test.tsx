@@ -880,6 +880,41 @@ describe('VerticalBarChart - mouse events', () => {
   );
 });
 
+describe('VerticalBarChart - focus events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render updated callout data when focus is restored after a data change', async () => {
+    const renderCallout = (props: VerticalBarChartDataPoint) =>
+      props ? <div data-testid="vertical-bar-callout">{props.y}</div> : null;
+    const { container, rerender } = render(
+      <VerticalBarChart
+        data={chartPointsVBC}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={renderCallout}
+      />,
+    );
+    const bar = getById(container, /_VBC_bar/i)[0];
+
+    fireEvent.focus(bar);
+    expect(screen.getByTestId('vertical-bar-callout')).toHaveTextContent(String(chartPointsVBC[0].y));
+
+    const updatedPoints = chartPointsVBC.map((point, index) => (index === 0 ? { ...point, y: 987654 } : point));
+    rerender(
+      <VerticalBarChart
+        data={updatedPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={renderCallout}
+      />,
+    );
+    fireEvent.focus(bar);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('vertical-bar-callout')).toHaveTextContent('987654');
+    });
+  });
+});
+
 describe('VerticalBarChart - accessibility', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<VerticalBarChart data={chartPointsVBC} />);

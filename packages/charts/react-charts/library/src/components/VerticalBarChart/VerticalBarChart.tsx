@@ -21,6 +21,7 @@ import type {
   DataPoint,
 } from '../../index';
 import { CartesianChart, Legends, ChartPopover } from '../../index';
+import { getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -254,7 +255,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               circleRef.refElement = e;
             }}
             onFocus={event => _lineFocus(event, item.point, circleRef)}
-            onBlur={_handleChartMouseLeave}
             tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
           />
         );
@@ -514,7 +514,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     let x = 0;
     let y = 0;
 
-    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    const targetRect = getChartEventTarget(event).getBoundingClientRect();
     x = targetRect.left + targetRect.width / 2;
     y = targetRect.top + targetRect.height / 2;
     updatePosition(x, y);
