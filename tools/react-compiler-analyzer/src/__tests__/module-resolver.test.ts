@@ -44,6 +44,15 @@ describe('createModuleResolver', () => {
       expect(stats.aliasHits.get('@app/')).toBe(1);
     });
 
+    it.each(['button', '$&'])('substitutes %s literally at every target wildcard', name => {
+      const filePath = sourceFile(`packages/${name}/generated/${name}/src/index.tsx`);
+      const resolve = createModuleResolver({
+        aliases: compilePathAliases({ '@app/*': ['packages/*/generated/*/src'] }, root),
+      });
+
+      expect(resolve(`@app/${name}`, COMPONENT)).toBe(filePath);
+    });
+
     it('matches the whole alias pattern and substitutes only its wildcard', () => {
       const filePath = sourceFile('packages/button/src/index.ts');
       const resolve = createModuleResolver({

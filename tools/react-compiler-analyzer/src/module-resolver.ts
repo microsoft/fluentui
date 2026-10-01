@@ -157,7 +157,7 @@ export function createModuleResolver(options: ResolverOptions = {}) {
         continue;
       }
       for (const target of alias.targets) {
-        const candidate = alias.wildcard ? resolve(target.replace('*', () => match)) : target;
+        const candidate = alias.wildcard ? resolve(target.replace(/\*/g, () => match)) : target;
         const hit = resolveFileCandidate(candidate);
         if (hit) {
           recordAliasHit(aliasStatsKey(alias));
