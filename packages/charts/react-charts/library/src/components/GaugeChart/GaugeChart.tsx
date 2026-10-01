@@ -28,6 +28,7 @@ import type {
   ExtendedSegment,
 } from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useId } from '@fluentui/react-utilities';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -128,6 +129,7 @@ export type { ExtendedSegment } from './GaugeChart.types';
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
+    const _gaugeChartId = useId('gauge-chart');
     const _getMargins = () => {
       const { hideMinMax, chartTitle, sublabel } = props;
       return {
@@ -273,7 +275,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const strokeWidth = 2;
       const halfStrokeWidth = strokeWidth / 2;
       const needleLength = _outerRadius - _innerRadius + EXTRA_NEEDLE_LENGTH;
-      const needleId = `gauge-chart-needle`;
+      const needleId = `${_gaugeChartId}-needle`;
       return (
         <g transform={`rotate(${rtlSafeNeedleRotation}, 0, 0)`}>
           <path
@@ -664,7 +666,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               <g role="listbox" aria-label={`${_segments.length} ${_segments.length === 1 ? 'segment' : 'segments'}`}>
                 {arcs.map((arc, index) => {
                   const segment = _segments[arc.segmentIndex];
-                  const arcId = `gauge-chart-arc-${index}`;
+                  const arcId = `${_gaugeChartId}-arc-${index}`;
                   return (
                     <React.Fragment key={index}>
                       <path

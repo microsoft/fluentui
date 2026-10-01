@@ -695,6 +695,29 @@ describe('GaugeChart interaction and accessibility tests', () => {
 });
 
 describe('Gauge Chart - Callout', () => {
+  it('should use unique callout anchor ids across multiple gauges', () => {
+    const { container } = render(
+      <>
+        <GaugeChart segments={segments} chartValue={25} />
+        <GaugeChart segments={segments} chartValue={50} />
+      </>,
+    );
+    const getElementById = jest.spyOn(document, 'getElementById');
+    const segmentPaths = container.querySelectorAll<SVGPathElement>('path[role="option"]');
+    const needlePaths = container.querySelectorAll<SVGPathElement>('path[id$="-needle"]');
+    const firstGaugeSegment = segmentPaths[0];
+    const secondGaugeSegment = segmentPaths[segments.length];
+
+    expect(segmentPaths).toHaveLength(segments.length * 2);
+    expect(needlePaths).toHaveLength(2);
+    expect(firstGaugeSegment.id).not.toBe(secondGaugeSegment.id);
+    expect(needlePaths[0].id).not.toBe(needlePaths[1].id);
+    fireEvent.focus(secondGaugeSegment);
+
+    expect(getElementById).toHaveBeenCalledWith(secondGaugeSegment.id);
+    getElementById.mockRestore();
+  });
+
   it('should show a callout when the needle is focused and hide it when blurred', () => {
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
 
