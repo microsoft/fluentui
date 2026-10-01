@@ -531,7 +531,7 @@ export const InsideDialogWithScrollingContent: Story = {
 export const Tooltip: Story = {
   render: renderComponent(html<StoryArgs<FluentDropdown>>`
     <fluent-dropdown id="dropdown-tooltip-target" placeholder="Select a fruit"> </fluent-dropdown>
-    <fluent-tooltip anchor="dropdown-tooltip-target" positioning="after">
+    <fluent-tooltip anchor="dropdown-tooltip-target" positioning="below-start">
       Tooltip anchored to the dropdown
     </fluent-tooltip>
   `),
