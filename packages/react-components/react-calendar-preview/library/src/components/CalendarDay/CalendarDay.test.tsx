@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { spawnSync } from 'node:child_process';
 import { render as testingRender, fireEvent } from '@testing-library/react';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarDay } from './CalendarDay';
@@ -50,6 +51,33 @@ function findDayCellByLabel(container: HTMLElement, day: number, month: string, 
 type FormatDateTime = typeof calendarFormatters.dateTime;
 
 describe('CalendarDay', () => {
+  if (!process.env.CALENDAR_PREVIEW_TIMEZONE_CHILD) {
+    it.each(['Pacific/Apia', 'Pacific/Kiritimati'])(
+      'passes skipped-date navigation in an isolated %s process',
+      timezone => {
+        const result = spawnSync(
+          process.execPath,
+          [require.resolve('jest/bin/jest'), '--runInBand', '--runTestsByPath', __filename],
+          {
+            cwd: process.cwd(),
+            encoding: 'utf8',
+            env: {
+              ...process.env,
+              CALENDAR_PREVIEW_TIMEZONE_CHILD: '1',
+              TZ: timezone,
+            },
+          },
+        );
+
+        if (result.status !== 0) {
+          throw new Error(
+            [`CalendarDay tests failed in ${timezone}.`, result.stdout, result.stderr].filter(Boolean).join('\n'),
+          );
+        }
+      },
+    );
+  }
+
   describe('header', () => {
     it('renders the header, title, navigation and the day grid', () => {
       const { container } = render(<CalendarDay {...defaultProps} />);
