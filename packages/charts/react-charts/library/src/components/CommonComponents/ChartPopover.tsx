@@ -84,6 +84,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                     style={{
                       color: props.color ? props.color : tokens.colorNeutralForeground1,
                       fontSize: tokens.fontSizeHero700,
+                      lineHeight: tokens.lineHeightHero700,
                     }}
                   >
                     {formatToLocaleString(YValue, props.culture) as React.ReactNode}

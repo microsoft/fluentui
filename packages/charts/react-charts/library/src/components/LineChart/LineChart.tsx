@@ -413,7 +413,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             setActiveLegend('');
           },
           hoverAction: () => {
-            _handleChartMouseLeave();
+            _dismissCallout();
             setActiveLegend(legendTitle);
           },
           ...(representativePoint.legendShape && {
@@ -444,7 +444,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 setActiveLegend('');
               },
               hoverAction: () => {
-                _handleChartMouseLeave();
+                _dismissCallout();
                 setActiveLegend(title);
               },
               opacity: _getColorFillBarOpacity(colorFillBar),
@@ -1722,7 +1722,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       d3Select(`#${_verticalLine}`).attr('visibility', 'hidden');
     }
 
-    function _handleChartMouseLeave() {
+    function _dismissCallout() {
       _uniqueCallOutID = null;
       setActivePoint('');
       if (isPopoverOpen) {
@@ -1934,7 +1934,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         {...(_isScatterPolar ? { yMaxValue: 1, yMinValue: -1 } : {})}
         getDomainNRangeValues={_getDomainNRangeValues}
         createStringYAxis={createStringYAxis}
-        onChartMouseLeave={_handleChartMouseLeave}
+        onChartMouseLeave={_dismissCallout}
+        onChartBlur={_dismissCallout}
         enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         componentRef={cartesianChartRef}
         children={(props: ChildProps) => {
