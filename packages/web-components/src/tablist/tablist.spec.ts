@@ -31,6 +31,75 @@ test.describe('Tablist', () => {
     expect(hasError).toBe(false);
   });
 
+  test.describe('custom state fallback', () => {
+    test.use({ ssr: false });
+
+    test.beforeEach(async ({ page, fastPage }) => {
+      await page.addInitScript(() => {
+        const supports = CSS.supports.bind(CSS);
+        CSS.supports = (property: string, value?: string): boolean => {
+          if (property === 'selector(:state(g))') {
+            return false;
+          }
+          return value === undefined ? supports(property) : supports(property, value);
+        };
+      });
+      await fastPage.goto();
+    });
+
+    test('should construct without adding host attributes', async ({ page }) => {
+      const errors: Error[] = [];
+      page.on('pageerror', error => errors.push(error));
+
+      const result = await page.evaluate(tagName => {
+        const element = document.createElement(tagName);
+        return {
+          upgraded: element instanceof customElements.get(tagName)!,
+          attributes: element.getAttributeNames(),
+        };
+      }, tagName);
+
+      expect(result).toEqual({ upgraded: true, attributes: [] });
+      expect(errors).toEqual([]);
+    });
+
+    test('should apply default states after construction', async ({ page }) => {
+      await page.evaluate(tagName => {
+        document.body.append(document.createElement(tagName));
+      }, tagName);
+
+      await expect(page.locator(tagName)).toHaveAttribute('state--horizontal');
+      await expect(page.locator(tagName)).not.toHaveAttribute('state--vertical');
+      await expect(page.locator(tagName)).not.toHaveAttribute('state--disabled');
+    });
+
+    test('should retain the latest states when updated before connection', async ({ page }) => {
+      await page.evaluate(tagName => {
+        const element = document.createElement(tagName) as Tablist;
+        element.orientation = 'vertical';
+        element.orientation = 'horizontal';
+        element.orientation = 'vertical';
+        element.disabled = true;
+        element.disabled = false;
+        element.disabled = true;
+        document.body.append(element);
+      }, tagName);
+
+      const element = page.locator(tagName);
+      await expect(element).toHaveAttribute('state--vertical');
+      await expect(element).not.toHaveAttribute('state--horizontal');
+      await expect(element).toHaveAttribute('state--disabled');
+
+      await element.evaluate((node: Tablist) => {
+        node.disabled = false;
+        node.orientation = 'horizontal';
+      });
+      await expect(element).not.toHaveAttribute('state--disabled');
+      await expect(element).not.toHaveAttribute('state--vertical');
+      await expect(element).toHaveAttribute('state--horizontal');
+    });
+  });
+
   test('should have reflect disabled attribute on control', async ({ fastPage }) => {
     const { element } = fastPage;
 
