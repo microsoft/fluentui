@@ -1,9 +1,40 @@
-import { getMonthIndex } from './constants';
+import { getMonthIndex } from './dateUtils';
+import { createDate } from './dateMath';
 import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
 const date = new Date(2016, getMonthIndex('april'), 1);
 
 describe('createCalendarDateTimeFormatter', () => {
+  it.each(['en-US', 'de-DE', 'ar-SA'])('localizes the era for non-positive years in %s', locale => {
+    const formatter = createCalendarDateTimeFormatter(locale);
+    const zero = createDate(0, 0, 1);
+    for (const format of ['year', 'monthYear', 'monthDayYear', 'dayMonthYear'] as const) {
+      const fields =
+        format === 'year'
+          ? { year: 'numeric' as const }
+          : {
+              year: 'numeric' as const,
+              month: 'long' as const,
+              ...(format === 'monthYear' ? {} : { day: 'numeric' as const }),
+            };
+      expect(formatter({ date: zero, format })).toBe(
+        new Intl.DateTimeFormat(locale, { calendar: 'gregory', era: 'short', ...fields }).format(zero),
+      );
+    }
+    expect(formatter({ date: zero, format: 'year' })).not.toBe(
+      formatter({ date: createDate(1, 0, 1), format: 'year' }),
+    );
+  });
+
+  it('supports a locale preference list', () => {
+    expect(createCalendarDateTimeFormatter(['en-GB', 'en-US'])({ date, format: 'monthDayYear' })).toBe('1 April 2016');
+  });
+
+  it('surfaces invalid locale and date errors', () => {
+    expect(() => createCalendarDateTimeFormatter('invalid_locale')).toThrow(RangeError);
+    expect(() => createCalendarDateTimeFormatter()({ date: new Date(NaN), format: 'day' })).toThrow(RangeError);
+  });
+
   it.each(['monthDayYear', 'dayMonthYear'] as const)('uses locale ordering for %s', format => {
     const formatter = createCalendarDateTimeFormatter('en-GB');
 
@@ -17,12 +48,13 @@ describe('createCalendarDateTimeFormatter', () => {
     expect(formatter({ date, format: 'monthDayYear' })).toBe('1. April 2016');
   });
 
-  it('applies the requested time zone consistently', () => {
-    const boundary = new Date('2016-04-01T00:30:00.000Z');
-    const formatter = createCalendarDateTimeFormatter('en-US', { timeZone: 'America/Los_Angeles' });
-
-    expect(formatter({ date: boundary, format: 'day' })).toBe('31');
-    expect(formatter({ date: boundary, format: 'monthDayYear' })).toBe('March 31, 2016');
+  it('always formats Gregorian calendar dates', () => {
+    const formatter = createCalendarDateTimeFormatter('ar-SA');
+    expect(formatter({ date, format: 'monthDayYear' })).toBe(
+      new Intl.DateTimeFormat('ar-SA', { calendar: 'gregory', day: 'numeric', month: 'long', year: 'numeric' }).format(
+        date,
+      ),
+    );
   });
 
   it('supports locale numbering-system extensions', () => {

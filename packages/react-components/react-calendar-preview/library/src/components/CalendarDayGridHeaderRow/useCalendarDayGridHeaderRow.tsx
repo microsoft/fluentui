@@ -27,23 +27,29 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
 
   const weekdayDates = Array.from({ length: DAYS_IN_WEEK }, (_, index) => new Date(2020, 0, 5 + index));
   const shortDays = weekdayDates.map(date => formatters.dateTime({ date, format: 'shortWeekday' }));
+  const dayNames = weekdayDates.map(date => formatters.dateTime({ date, format: 'weekday' }));
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
 
   let firstOfMonthIndex = -1;
   const firstWeekOfMonth = weeks[1];
   for (let i = 0; i < firstWeekOfMonth.length; i++) {
-    if (firstWeekOfMonth[i].originalDate.getDate() === 1) {
+    if (firstWeekOfMonth[i].originalDate?.getDate() === 1) {
       firstOfMonthIndex = i;
       break;
     }
   }
 
-  if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+  const firstOfMonthDate = firstOfMonthIndex >= 0 ? firstWeekOfMonth[firstOfMonthIndex].originalDate : null;
+  if (weeksToShow === 1 && firstOfMonthDate) {
     // if we only show one week, replace the header with short month name
     const firstOfMonthIndexOffset = (firstOfMonthIndex + firstDayOfWeekIndex) % DAYS_IN_WEEK;
     shortDays[firstOfMonthIndexOffset] = formatters.dateTime({
-      date: firstWeekOfMonth[firstOfMonthIndex].originalDate,
+      date: firstOfMonthDate,
       format: 'shortMonth',
+    });
+    dayNames[firstOfMonthIndexOffset] = formatters.dateTime({
+      date: firstOfMonthDate,
+      format: 'month',
     });
   }
 
@@ -52,7 +58,7 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
 
     return {
       content: shortDays[i],
-      label: formatters.dateTime({ date: weekdayDates[i], format: 'weekday' }),
+      label: dayNames[i],
       key: shortDays[i] + ' ' + index,
     };
   });

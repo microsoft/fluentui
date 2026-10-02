@@ -90,9 +90,9 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
 
   /**
    * The highlighted year. Initializes the displayed range and focus only when navigatedYear is omitted.
-   * Defaults to the year of the Calendar's selected value.
+   * Defaults to the year of the Calendar's selected value. Set to null for an empty selection.
    */
-  selectedYear?: number;
+  selectedYear?: number | null;
 
   /**
    * Renders the content of each year cell without replacing its selection and keyboard behavior.

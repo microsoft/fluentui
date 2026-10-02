@@ -30,7 +30,7 @@ export type CalendarWeekDayLabel = {
   content: string;
 
   /**
-   * The full weekday name, used as the cell's accessible name and tooltip.
+   * The full weekday or substituted month name, used as the cell's accessible name and tooltip.
    */
   label: string;
 

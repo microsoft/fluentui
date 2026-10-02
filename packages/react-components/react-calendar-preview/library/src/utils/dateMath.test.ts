@@ -1,5 +1,6 @@
 import {
   addDays,
+  addWeeks,
   addMonths,
   addYears,
   setMonth,
@@ -12,6 +13,9 @@ import {
   getYearStart,
   getYearEnd,
   getStartDateOfWeek,
+  createDate,
+  compareDatePart,
+  isDateInRange,
 } from './dateMath';
 
 enum Months {
@@ -29,6 +33,46 @@ enum Months {
   Dec = 11,
 }
 describe('DateMath', () => {
+  it.each([0, 1, 99, 2020])('creates local midnight dates without remapping year %s', year => {
+    const date = createDate(year, 1, 15);
+    expect([
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds(),
+    ]).toEqual([year, 1, 15, 0, 0, 0, 0]);
+  });
+
+  it('normalizes month/day overflow and underflow', () => {
+    expect(createDate(2020, 12, 1)).toEqual(new Date(2021, 0, 1));
+    expect(createDate(2020, 2, 0)).toEqual(new Date(2020, 1, 29));
+  });
+
+  it.each([-2, 0, 2])('adds %s weeks without changing the input or time of day', weeks => {
+    const date = new Date(2020, 11, 28, 12, 34);
+    expect(addWeeks(date, weeks)).toEqual(new Date(2020, 11, 28 + weeks * 7, 12, 34));
+    expect(date).toEqual(new Date(2020, 11, 28, 12, 34));
+  });
+
+  it('orders dates by year, month and day while ignoring time', () => {
+    const date = new Date(2020, 8, 18);
+    expect(compareDatePart(date, new Date(2020, 8, 18, 23))).toBe(0);
+    for (const later of [new Date(2021, 0, 1), new Date(2020, 9, 1), new Date(2020, 8, 19)]) {
+      expect(compareDatePart(date, later)).toBeLessThan(0);
+      expect(compareDatePart(later, date)).toBeGreaterThan(0);
+    }
+  });
+
+  it('finds dates in a range ignoring time, and handles absent dates and empty ranges', () => {
+    const date = new Date(2020, 8, 18);
+    expect(isDateInRange(date, [new Date(2020, 8, 17), new Date(2020, 8, 18, 23)])).toBe(true);
+    expect(isDateInRange(date, [new Date(2019, 8, 18)])).toBe(false);
+    expect(isDateInRange(date, [])).toBe(false);
+  });
+
   it('can add days', () => {
     const startDate = new Date(2016, Months.Apr, 1);
     const result = addDays(startDate, 5);
@@ -153,7 +197,7 @@ describe('DateMath', () => {
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
-  it('can subtract days across a month boundry', () => {
+  it('can subtract days across a month boundary', () => {
     const startDate = new Date(2016, Months.Apr, 1);
     const result = addDays(startDate, -5);
     const expected = new Date(2016, Months.Mar, 27);
@@ -287,6 +331,15 @@ describe('DateMath', () => {
     expect(areDatesEqual(date1, date2)).toBe(false);
   });
 
+  it('preserves the runtime equality behavior for missing dates', () => {
+    // @ts-expect-error Verify the existing JavaScript contract for two missing dates.
+    expect(areDatesEqual(undefined, undefined)).toBe(true);
+    // @ts-expect-error Verify the existing JavaScript contract for a missing first date.
+    expect(areDatesEqual(undefined, new Date(2020, 8, 18))).toBe(false);
+    // @ts-expect-error Verify the existing JavaScript contract for a missing second date.
+    expect(areDatesEqual(new Date(2020, 8, 18), undefined)).toBe(false);
+  });
+
   describe('Date range array', () => {
     const date = new Date(2017, 2, 16);
 
@@ -355,9 +408,53 @@ describe('DateMath', () => {
       expect(() => getDateRange(new Date(Number.NaN), 'day', 'sunday')).toThrow('date must be valid');
     });
 
+    it('rejects an unsupported range type at runtime', () => {
+      // @ts-expect-error Verify JavaScript callers receive an explicit error.
+      expect(() => getDateRange(date, 'invalid', 'sunday')).toThrow('Unexpected object: invalid');
+    });
+
+    it('fails explicitly when the requested range exceeds representable dates', () => {
+      expect(() => getDateRange(new Date(8640000000000000), 'day', 'sunday')).toThrow(
+        'Date range end is outside the representable date range',
+      );
+    });
+
+    it('keeps the selected date inside a week when the local week start date is skipped', () => {
+      const selectedDate = new Date(2012, 0, 1);
+      if (selectedDate.getDate() === 1 && new Date(2011, 11, 30).getDate() !== 30) {
+        const range = getDateRange(selectedDate, 'week', 'friday');
+        expect(range.map(day => day.getDate())).toEqual([31, 1, 2, 3, 4, 5, 6]);
+        expect(range.some(day => areDatesEqual(day, selectedDate))).toBe(true);
+      }
+    });
+
+    it('returns an empty work-week range when no working days are specified', () => {
+      expect(getDateRange(date, 'workWeek', 'sunday', [])).toEqual([]);
+    });
+
     it.each(testData)(`can get %s`, ({ testItems, expected }) => {
       expect(testItems).toEqual(expected);
     });
+  });
+
+  it.each([-1, 1.5, Infinity, -Infinity, NaN])('rejects an invalid weeksInMonth value of %s', weeksInMonth => {
+    expect(() => getWeekNumbersInMonth(weeksInMonth, 'monday', 'firstFullWeek', new Date(2020, 8, 18))).toThrow(
+      new RangeError('weeksInMonth must be a non-negative finite integer.'),
+    );
+  });
+
+  it('returns no week numbers when zero weeks are requested', () => {
+    expect(getWeekNumbersInMonth(0, 'monday', 'firstFullWeek', new Date(2020, 8, 18))).toEqual([]);
+  });
+
+  it('rejects an invalid navigated date when calculating week numbers', () => {
+    expect(() => getWeekNumbersInMonth(1, 'monday', 'firstFullWeek', new Date(NaN))).toThrow(
+      new RangeError('navigatedDate must be valid.'),
+    );
+  });
+
+  it('continues week numbers across a month boundary', () => {
+    expect(getWeekNumbersInMonth(6, 'sunday', 'firstDay', new Date(2020, 8, 1))).toEqual([36, 37, 38, 39, 40, 41]);
   });
 
   // Generating week numbers array per month
@@ -502,6 +599,11 @@ describe('DateMath', () => {
     result = getWeekNumber(date1, 'monday', 'firstFourDayWeek');
     expected = 53;
     expect(result).toEqual(expected);
+
+    date1 = new Date(2018, 11, 31);
+    result = getWeekNumber(date1, 'monday', 'firstFourDayWeek');
+    expected = 1;
+    expect(result).toEqual(expected);
   });
 
   it('can get the month start and end', () => {
@@ -527,5 +629,12 @@ describe('DateMath', () => {
   it('can get start date of week', () => {
     const date = new Date('Aug 2 2020');
     expect(areDatesEqual(new Date('Jul 28 2020'), getStartDateOfWeek(date, 'tuesday'))).toBe(true);
+  });
+
+  it('finds a representable week start when local date normalization skips a day', () => {
+    const date = new Date(2012, 0, 1);
+    const start = getStartDateOfWeek(date, 'friday');
+    expect(start.getDay()).toBe(5);
+    expect(start.getDate()).toBe(new Date(2011, 11, 30).getDate() === 30 ? 30 : 23);
   });
 });

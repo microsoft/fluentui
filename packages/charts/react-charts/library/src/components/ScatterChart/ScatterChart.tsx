@@ -736,6 +736,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       createYAxis={createNumericYAxis}
       createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}

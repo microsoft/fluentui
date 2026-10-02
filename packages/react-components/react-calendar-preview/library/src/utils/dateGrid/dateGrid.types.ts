@@ -2,7 +2,7 @@ import type { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
 
 export interface Day {
   /**
-   * `Date.toString()` value of current date
+   * Local year, zero-based month, and day joined with hyphens (`year-month-day`)
    */
   key: string;
   /**
@@ -12,9 +12,13 @@ export interface Day {
   /**
    * `Date` object of current date
    */
-  originalDate: Date;
+  originalDate: Date | null;
   /**
-   * Is current date is in the same month as "today" date
+   * Whether this cell represents a civil date that does not exist in the local timezone.
+   */
+  isPlaceholder: boolean;
+  /**
+   * Whether the current date is in the same month as the navigated date
    */
   isInMonth: boolean;
   /**
@@ -22,11 +26,11 @@ export interface Day {
    */
   isToday: boolean;
   /**
-   * Is current date is selected in range
+   * Whether the current date is selected in a range
    */
   isSelected: boolean;
   /**
-   * Is current date is selected
+   * Whether the current date is selected without a range
    */
   isSingleSelected: boolean;
   /**
@@ -51,7 +55,7 @@ export interface AvailableDateOptions extends RestrictedDatesOptions {
   /**
    * Direction of search (`1` - search in future / `-1` search in past)
    */
-  direction: number;
+  direction: 1 | -1;
 }
 
 export interface RestrictedDatesOptions {

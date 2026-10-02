@@ -1,4 +1,5 @@
-import { DAYS_IN_WEEK, getDayIndex, getMonthIndex } from './constants';
+import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from './constants';
+import { getDayIndex, getMonthIndex } from './dateUtils';
 import type { DateRangeType, DayOfWeek, FirstWeekOfYear } from './constants';
 
 /**
@@ -156,7 +157,7 @@ export function compareDatePart(date1: Date, date2: Date): number {
  * @param date - The input date
  * @param dateRangeType - The desired date range type, i.e., day, week, month, etc.
  * @param firstDayOfWeek - The first day of the week.
- * @param workWeekDays - The allowed days in work week. If not provided, assumes all days are allowed.
+ * @param workWeekDays - The allowed days in work week. Defaults to Monday through Friday.
  * @param daysToSelectInDayView - The number of days to include when using dateRangeType === 'day'
  * for multiday view. Defaults to 1
  * @returns An array of dates representing the date range containing the specified date.
@@ -186,7 +187,7 @@ export function getDateRange(
   let maximumRangeLength: number;
 
   if (!workWeekDays) {
-    workWeekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+    workWeekDays = [...DEFAULT_WORK_WEEK_DAYS];
   }
 
   const workWeekDayIndices = workWeekDays.map(getDayIndex);
@@ -213,6 +214,10 @@ export function getDateRange(
     case 'workWeek':
       startDate = getStartDateOfWeek(date, firstDayOfWeek);
       endDate = addDays(startDate, DAYS_IN_WEEK);
+      if (compareDatePart(date, endDate) >= 0) {
+        startDate = addDays(startDate, DAYS_IN_WEEK);
+        endDate = addDays(endDate, DAYS_IN_WEEK);
+      }
       maximumRangeLength = DAYS_IN_WEEK;
       break;
 
@@ -224,6 +229,10 @@ export function getDateRange(
 
     default:
       throw new Error('Unexpected object: ' + dateRangeType);
+  }
+
+  if (!Number.isFinite(endDate.getTime())) {
+    throw new RangeError('Date range end is outside the representable date range');
   }
 
   // Populate the dates array with a range-specific bound so a faulty adapter cannot hang rendering.
@@ -263,6 +272,7 @@ export function isDateInRange(date: Date, dateRange: Date[]): boolean {
 /**
  * Returns the week number in a year for a date.
  *
+ * @param weeksInMonth - The number of weeks to include; must be a non-negative finite integer.
  * @param navigatedDate - A date to find the week number for.
  * @param firstDayOfWeek - The named day that starts each week.
  * @param firstWeekOfYear - The convention that determines which week is the first week of the year.
@@ -274,24 +284,29 @@ export function getWeekNumbersInMonth(
   firstWeekOfYear: FirstWeekOfYear,
   navigatedDate: Date,
 ): number[] {
+  if (!Number.isFinite(weeksInMonth) || !Number.isInteger(weeksInMonth) || weeksInMonth < 0) {
+    throw new RangeError('weeksInMonth must be a non-negative finite integer.');
+  }
+  if (!Number.isFinite(navigatedDate.getTime())) {
+    throw new RangeError('navigatedDate must be valid.');
+  }
+
   const selectedYear = navigatedDate.getFullYear();
   const selectedMonth = navigatedDate.getMonth();
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  let dayOfMonth = 1;
+  const dayOfMonth = 1;
   const firstDayOfMonth = createDate(selectedYear, selectedMonth, dayOfMonth);
   const endOfFirstWeek =
     dayOfMonth +
     (firstDayOfWeekIndex + DAYS_IN_WEEK - 1) -
     adjustWeekDay(firstDayOfWeekIndex, firstDayOfMonth.getDay());
   let endOfWeekRange = createDate(selectedYear, selectedMonth, endOfFirstWeek);
-  dayOfMonth = endOfWeekRange.getDate();
 
   const weeksArray = [];
   for (let i = 0; i < weeksInMonth; i++) {
     // Get week number for end of week
     weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear));
-    dayOfMonth += DAYS_IN_WEEK;
-    endOfWeekRange = createDate(selectedYear, selectedMonth, dayOfMonth);
+    endOfWeekRange = addDays(endOfWeekRange, DAYS_IN_WEEK);
   }
   return weeksArray;
 }
@@ -327,12 +342,22 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
  * @returns A new date object representing the first day of the week containing the input date.
  */
 export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
-  let daysOffset = getDayIndex(firstDayOfWeek) - date.getDay();
-  if (daysOffset > 0) {
-    // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
-    daysOffset -= DAYS_IN_WEEK;
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
+  const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
+
+  for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
+    const candidate = createDate(year, month, day - daysBack);
+    if (!Number.isFinite(candidate.getTime())) {
+      throw new RangeError('Cannot align an invalid or out-of-range date.');
+    }
+    if (candidate.getDay() === firstDayOfWeekIndex) {
+      return candidate;
+    }
   }
-  return addDays(date, daysOffset);
+
+  throw new RangeError('Could not find a representable week start within two weeks.');
 }
 
 /**
@@ -365,6 +390,14 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
     }
 
     num3 = daysInYear - num2;
+  }
+
+  const nextYearFirstWeekStart = getStartDateOfWeek(createDate(date.getFullYear() + 1, 0, 1), firstDayOfWeek);
+  const nextYearFirstWeekDays = Array.from({ length: DAYS_IN_WEEK }, (_, index) =>
+    addDays(nextYearFirstWeekStart, index),
+  ).filter(nextYearDate => nextYearDate.getFullYear() === date.getFullYear() + 1).length;
+  if (nextYearFirstWeekDays >= numberOfFullDays && compareDatePart(date, nextYearFirstWeekStart) >= 0) {
+    return 1;
   }
 
   return Math.floor(num3 / DAYS_IN_WEEK + 1);

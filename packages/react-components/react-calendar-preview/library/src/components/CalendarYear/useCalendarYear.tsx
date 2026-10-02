@@ -6,6 +6,7 @@ import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
+import { createDate } from '../../utils/dateMath';
 import { CalendarYearGridRow } from '../CalendarYearGridRow/CalendarYearGridRow';
 import type {
   CalendarYearBaseProps,
@@ -25,7 +26,10 @@ function useYearRangeState({
   navigatedYear,
   onNavigateDate,
   currentYear,
-}: Pick<CalendarYearProps, 'navigatedYear' | 'onNavigateDate'> & { selectedYear?: number; currentYear: number }) {
+}: Pick<CalendarYearProps, 'navigatedYear' | 'onNavigateDate'> & {
+  selectedYear?: number | null;
+  currentYear: number;
+}) {
   const rangeYear = React.useMemo(
     () => navigatedYear ?? selectedYear ?? Math.floor(currentYear / 10) * 10,
     [currentYear, navigatedYear, selectedYear],
@@ -82,7 +86,7 @@ export const useCalendarYearBase_unstable = (
 
   const today = contextToday ?? new Date();
   const currentYear = today.getFullYear();
-  const selectedYear = props.selectedYear ?? (value ? value.getFullYear() : undefined);
+  const selectedYear = props.selectedYear !== undefined ? props.selectedYear : value?.getFullYear();
   const minYear = minDate ? minDate.getFullYear() : undefined;
   const maxYear = maxDate ? maxDate.getFullYear() : undefined;
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState({
@@ -107,7 +111,7 @@ export const useCalendarYearBase_unstable = (
     [],
   );
 
-  const formatYear = (year: number) => formatters.dateTime({ date: new Date(year, 0, 1), format: 'year' });
+  const formatYear = (year: number) => formatters.dateTime({ date: createDate(year, 0, 1), format: 'year' });
 
   const firstFocusableYear = allFocusable ? fromYear : Math.max(fromYear, minYear ?? fromYear);
   const lastFocusableYear = allFocusable ? toYear : Math.min(toYear, maxYear ?? toYear);

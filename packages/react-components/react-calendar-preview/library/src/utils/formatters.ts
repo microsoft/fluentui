@@ -111,12 +111,6 @@ export type CalendarFormatters = {
   dayMarkedLabel: (data: CalendarDateLabelData) => string;
 };
 
-/**
- * Intl options applied consistently to every date display format.
- * These affect labels only, not the calendar's Gregorian date arithmetic.
- */
-export type CalendarDateTimeFormatterOptions = Pick<Intl.DateTimeFormatOptions, 'timeZone'>;
-
 const dateTimeFormatters = {
   day: { day: 'numeric' },
   month: { month: 'long' },
@@ -132,19 +126,33 @@ const dateTimeFormatters = {
 /**
  * Creates reusable Intl formatters for every calendar date format. Full dates follow locale-specific
  * field ordering, so `monthDayYear` and `dayMonthYear` produce the same locale-appropriate label.
+ * Year-bearing formats include the localized era for astronomical years zero and earlier.
  */
-export function createCalendarDateTimeFormatter(
-  locales: string | string[] = 'en-US',
-  options?: CalendarDateTimeFormatterOptions,
-): CalendarFormatters['dateTime'] {
+export function createCalendarDateTimeFormatter(locales: string | string[] = 'en-US'): CalendarFormatters['dateTime'] {
   const formatters = Object.fromEntries(
     Object.entries(dateTimeFormatters).map(([key, fields]) => [
       key,
-      new Intl.DateTimeFormat(locales, { ...options, ...fields }),
+      new Intl.DateTimeFormat(locales, {
+        ...fields,
+        ...({ calendar: 'gregory' } as Intl.DateTimeFormatOptions),
+      }),
     ]),
   );
 
-  return data => formatters[data.format].format(data.date);
+  const eraFormatters = Object.fromEntries(
+    Object.entries(dateTimeFormatters).map(([key, fields]) => [
+      key,
+      'year' in fields
+        ? new Intl.DateTimeFormat(locales, {
+            ...fields,
+            era: 'short',
+            ...({ calendar: 'gregory' } as Intl.DateTimeFormatOptions),
+          })
+        : formatters[key],
+    ]),
+  );
+
+  return data => (data.date.getFullYear() <= 0 ? eraFormatters : formatters)[data.format].format(data.date);
 }
 
 /**

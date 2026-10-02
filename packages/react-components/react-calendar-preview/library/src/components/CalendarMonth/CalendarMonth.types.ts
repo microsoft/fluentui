@@ -17,7 +17,8 @@ export type {
  */
 export type CalendarMonthHandle = {
   /**
-   * Moves focus to the navigated month, or to the year picker while it is open.
+   * Moves focus to the navigated month (or the first available month if it is disabled),
+   * or to the year picker while it is open.
    */
   focus(): void;
 };

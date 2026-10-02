@@ -62,37 +62,13 @@ export function useWeekCorners(
         const above =
           weeks[weekIndex - 1] &&
           weeks[weekIndex - 1][dayIndex] &&
-          isInSameHoverRange(
-            weeks[weekIndex - 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex - 1][dayIndex].isSelected,
-            day.isSelected,
-          );
+          isInSameHoverRange(weeks[weekIndex - 1][dayIndex], day);
         const below =
           weeks[weekIndex + 1] &&
           weeks[weekIndex + 1][dayIndex] &&
-          isInSameHoverRange(
-            weeks[weekIndex + 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex + 1][dayIndex].isSelected,
-            day.isSelected,
-          );
-        const left =
-          weeks[weekIndex][dayIndex - 1] &&
-          isInSameHoverRange(
-            weeks[weekIndex][dayIndex - 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex - 1].isSelected,
-            day.isSelected,
-          );
-        const right =
-          weeks[weekIndex][dayIndex + 1] &&
-          isInSameHoverRange(
-            weeks[weekIndex][dayIndex + 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex + 1].isSelected,
-            day.isSelected,
-          );
+          isInSameHoverRange(weeks[weekIndex + 1][dayIndex], day);
+        const left = weeks[weekIndex][dayIndex - 1] && isInSameHoverRange(weeks[weekIndex][dayIndex - 1], day);
+        const right = weeks[weekIndex][dayIndex + 1] && isInSameHoverRange(weeks[weekIndex][dayIndex + 1], day);
 
         weekCorners[weekIndex + '_' + dayIndex] = calculateRoundedCorners(above, below, left, right);
       });
@@ -116,7 +92,13 @@ export function useWeekCorners(
     };
   };
 
-  const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
+  const isInSameHoverRange = (day1: DayInfo, day2: DayInfo): boolean => {
+    const { originalDate: date1, isSelected: date1Selected } = day1;
+    const { originalDate: date2, isSelected: date2Selected } = day2;
+    if (!date1 || !date2) {
+      return false;
+    }
+
     const { dateRangeType, firstDayOfWeek, workWeekDays } = props;
 
     // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state

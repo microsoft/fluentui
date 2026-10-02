@@ -282,7 +282,10 @@ export const useCalendarDayGridCellStyles_unstable = (state: CalendarDayGridCell
     day.isSelected && !day.isSingleSelected && selectedStyles.base,
     day.isSingleSelected && singleSelectedStyles.base,
     !day.isInBounds && outsideBoundsStyles.base,
-    !day.isInMonth && lightenDaysOutsideNavigatedMonth && outsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth,
+    !day.isSelected &&
+      !day.isInMonth &&
+      lightenDaysOutsideNavigatedMonth &&
+      outsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth,
     state.root.className,
   );
 

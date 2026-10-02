@@ -1,14 +1,13 @@
 'use client';
 
-import { mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { useCalendarItemStyles } from '../../hooks/useCalendarItemStyles.styles';
 import { useCalendarPickerStyles } from '../../hooks/useCalendarPickerStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarMonthSlots, CalendarMonthState } from './CalendarMonth.types';
 
 /**
- * The `yearPicker` and motion slots carry no class names of their own; the year picker owns its
- * own styles hook.
+ * The `yearPicker` slot uses CalendarYear's class names and removes its duplicate embedded chrome.
  */
 export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'yearPicker'>> = {
   root: 'fui-CalendarMonth',
@@ -20,12 +19,21 @@ export const calendarMonthClassNames: SlotClassNames<Omit<CalendarMonthSlots, 'y
   grid: 'fui-CalendarMonth__grid',
 };
 
+const useStyles = makeStyles({
+  embeddedYearPicker: {
+    overflow: 'visible',
+    padding: '0',
+    width: 'auto',
+  },
+});
+
 /**
  * Apply styling to the CalendarMonth slots based on the state.
  */
 export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): CalendarMonthState => {
   const pickerStyles = useCalendarPickerStyles();
   const itemStyles = useCalendarItemStyles();
+  const styles = useStyles();
 
   /* eslint-disable react-hooks/immutability */
   state.root.className = mergeClasses(
@@ -34,6 +42,8 @@ export const useCalendarMonthStyles_unstable = (state: CalendarMonthState): Cale
     pickerStyles.root,
     state.root.className,
   );
+
+  state.yearPicker.className = mergeClasses(styles.embeddedYearPicker, state.yearPicker.className);
 
   state.header.className = mergeClasses(calendarMonthClassNames.header, pickerStyles.header, state.header.className);
 

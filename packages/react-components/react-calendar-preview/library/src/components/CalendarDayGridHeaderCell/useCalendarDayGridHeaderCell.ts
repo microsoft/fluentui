@@ -4,7 +4,6 @@ import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { motionSlot, motionTokens } from '@fluentui/react-motion';
 import { Fade } from '@fluentui/react-motion-components-preview';
-import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import type { FadeParams } from '@fluentui/react-motion-components-preview';
 import type {
   CalendarDayGridHeaderCellBaseProps,
@@ -21,7 +20,6 @@ export const useCalendarDayGridHeaderCellBase_unstable = (
   ref: React.Ref<HTMLTableCellElement>,
 ): CalendarDayGridHeaderCellBaseState => {
   const { dayLabel } = props;
-  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
 
   return {
     components: {
@@ -32,7 +30,6 @@ export const useCalendarDayGridHeaderCellBase_unstable = (
         'aria-label': dayLabel.label,
         children: dayLabel.content,
         scope: 'col',
-        tabIndex: allFocusable ? 0 : undefined,
         title: dayLabel.label,
         ...props,
         ref,

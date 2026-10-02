@@ -24,4 +24,16 @@ describe('useAnimateBackwards', () => {
     rerender({ value: 3 });
     expect(result.current).toBe(false);
   });
+
+  it('preserves the direction while the value remains unchanged after navigation', () => {
+    const { result, rerender } = renderHook(({ value }) => useAnimateBackwards(value), {
+      initialProps: { value: 2 },
+    });
+
+    rerender({ value: 1 });
+    expect(result.current).toBe(true);
+
+    rerender({ value: 1 });
+    expect(result.current).toBe(true);
+  });
 });

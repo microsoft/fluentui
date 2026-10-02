@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon-playground",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Storybook addon that ships an in-browser TSX playground for Fluent UI React v9 stories",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
