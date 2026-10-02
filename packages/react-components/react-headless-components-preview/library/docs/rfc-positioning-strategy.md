@@ -34,7 +34,7 @@ The headless package reuses `PositioningProps` as its contract but implements it
 
 `@floating-ui/devtools` is compiled out of production. A page that already ships v9 positioning pays this once; a headless-only page pays it only if it imports the engine.
 
-Browser support: [CSS Anchor Positioning Module Level 1](https://drafts.csswg.org/css-anchor-position-1/) is Baseline newly available (2026) — Chromium 125, Safari 26, Firefox 147. The headless CSS path relies on `position-area`, which Chromium only supports from 129 (125–128 shipped it as `inset-area`), so the effective minimum is Chromium 129, Safari 26, Firefox 147. In older browser versions a headless surface today renders unpositioned.
+Browser support: [CSS Anchor Positioning Module Level 1](https://drafts.csswg.org/css-anchor-position-1/) is Baseline newly available (2026) — Chromium 125, Safari 26, Firefox 147. The headless CSS path relies on `position-area`, which Chromium only supports from 129 (125–128 shipped it as `inset-area`), so the effective minimum is Chromium 129, Safari 26, Firefox 147. In older browser versions a headless surface today renders unpositioned. Only placement is affected: the surface still opens and closes, moves focus, dismisses on Escape and outside click, and keeps its accessibility semantics; it just appears at its default position instead of next to its trigger.
 
 Feature detection has to test the properties the CSS path actually uses: `CSS.supports('anchor-name: --x')` is true in Chromium 125–128, where `position-area` is not supported, so the options below detect `position-area` instead.
 
@@ -81,6 +81,7 @@ Default is CSS anchor positioning. If an engine is present it owns positioning e
 - Consumer effort: positioning becomes something they control manually. They have to read the documentation to learn which options need an engine and where native positioning falls short, and they have to configure it themselves.
 - Silent gaps: a dev-time warning covers engine-only options without an engine, but nothing warns about a missing engine in a browser version without anchor support; the surface is simply unpositioned there.
 - Over-correction risk: the simplest safe choice is to put the floating-ui engine in the provider for the whole app, which silently gives up native positioning (and its bundle and first-paint benefits) everywhere.
+- Scale: the provider applies to its whole subtree. In an app built by many teams, one team that needs an engine-only option and adds the provider near the root opts every other surface out of native anchoring, and the teams below have no signal that it happened.
 - Public commitment: `engine`, `PositioningEngine` and `PositioningEngineProvider` become consumer-facing API. Once consumers wire engines into their apps, deprecating or replacing them (for example when native anchor positioning covers enough browsers and options to make the engine unnecessary) is a breaking change, so the library no longer controls that decision.
 - Migration: moving from v9 components means adding an engine wherever the product relies on engine-only options, virtual targets, or browser versions without anchor support; the `positioning` props alone no longer describe the behaviour.
 
@@ -140,25 +141,42 @@ Today CSS covers placement (`position`, `align`, `offset`, `coverTarget`, `match
 
 This option would add `autoSize` and overflow/flip boundaries (`overflowBoundary`, `flipBoundary`, `overflowBoundaryPadding`).
 
+This option only addresses feature parity. Browser versions without anchor support are left to the [`@oddbird/css-anchor-positioning`](https://github.com/oddbird/css-anchor-positioning) polyfill (already used by `@fluentui/web-components`), which consumers load when they need those browsers.
+
 #### Pros
 
-- Bundle: nothing beyond the CSS path.
+- Bundle: nothing beyond the CSS path; only consumers that load the polyfill pay for it.
 - API: unchanged; no new concepts for consumers.
 - First paint: CSS positions on first paint, no loading step.
 
 #### Cons
 
-- Browser behaviour: does nothing for browser versions without anchor support; surfaces there stay unpositioned. The `@oddbird/css-anchor-positioning` polyfill (already used by `@fluentui/web-components`) could cover them for the CSS path, but it is unverified whether it picks up the inline styles headless writes at runtime, and it adds none of the geometry-dependent options.
+- Browser behaviour: relies on the polyfill for browser versions without anchor support, and the polyfill does not fit the headless CSS path as it is today. A browser without anchor support drops the `anchor-name` and `position-area` inline styles headless sets, so the polyfill never sees them; dynamically added or removed anchors and targets are not supported, while headless surfaces mount on open; and `position-area` support differs from native behaviour. It also depends on `@floating-ui/dom`, so it does not avoid the floating-ui cost.
 - Parity: remaining options can be added as analogues of floating-ui. That is still a second implementation to keep aligned with `react-positioning`.
 - Maintenance: high and open-ended; CSS anchor semantics are still moving.
 - Risk: every extra option on the CSS path is another behaviour to keep aligned with `react-positioning` without sharing its engine, so consumers would still see a different positioning model rather than a clear "engine or not" boundary.
+
+## Platform gaps
+
+Every option above exists because CSS anchor positioning does not yet cover the whole `PositioningProps` contract. Part of this work is to push the remaining needs into the platform, so the engine path is needed less over time. Status of the geometry-dependent options against the specs:
+
+| Option                                                        | Platform status                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `autoSize`                                                    | Likely possible with Level 1: with `position-area` the inset-modified containing block is the chosen area, so `max-block-size` / `max-inline-size` can be capped to the available space. Not yet verified against `react-positioning` behaviour.                               |
+| Shifting into view (`shiftToCoverTarget`, default shift)      | Partial in Level 1: default alignment keeps the box within its original containing block when the chosen area overflows. No equivalent of `shiftToCoverTarget`.                                                                                                                |
+| `overflowBoundary`, `flipBoundary`, `overflowBoundaryPadding` | No proposal. Fallbacks are tested against the containing block (the viewport for top-layer surfaces); there is no way to name a custom boundary or add padding to it.                                                                                                          |
+| Virtual targets (`target` / `setTarget` with a non-element)   | No proposal. An anchor has to be an element with `anchor-name`; there is no way to anchor to coordinates such as the pointer position.                                                                                                                                         |
+| Arrow placement, styling by applied fallback                  | [Level 2](https://drafts.csswg.org/css-anchor-position-2/) adds anchored container queries (`container-type: anchored`, `@container anchored(fallback: …)`), which let the surface and its arrow be styled by the fallback that was applied. `arrowPadding` has no equivalent. |
+| `onPositioningEnd`, function-form `offset`                    | Script hooks; outside the scope of CSS.                                                                                                                                                                                                                                        |
+
+Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anchors, which are the two gaps with no spec work and the main reasons consumers would need an engine.
 
 ## Comparison
 
 | Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS       |
 | ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | ------------------- |
 | floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                             | Never               |
-| Browser without anchor support  | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                           | Unpositioned        |
+| Browser without anchor support  | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                           | Polyfill (consumer) |
 | First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                     | n/a                 |
 | Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                                | Yes                 |
 | API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                        | None                |
@@ -176,19 +194,20 @@ Full parity with `react-positioning` (geometry-dependent options, virtual target
 
 Option B is ruled out: the library does not lazy-load positioning code. Besides the cold-start flash, a library-owned `import()` leaves chunking to each consumer's bundler, where it can be split unpredictably or duplicated.
 
-Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Instead, C's behaviour is offered on top of A's contract as an opt-in engine in userland:
+Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Instead, C's behaviour is offered on top of A's contract as an opt-in fallback, with the engine supplied from userland:
 
-- `@fluentui/react-positioning` exports an "auto" engine alongside `floatingUIPositioningEngine`. It uses CSS anchor positioning when the browser supports `position-area` and the options and target are CSS-eligible, and floating-ui otherwise.
-- The consumer imports it statically, typically app-wide through `PositioningEngineProvider`, so floating-ui lands in the consumer's own bundle and chunking, and pages that do not import it do not pay for it.
+- The headless package exports a helper that marks an engine as a fallback. Headless `usePositioning` then uses CSS anchor positioning when the browser supports it and the options and target are CSS-eligible, and hands over to the wrapped engine otherwise.
+- The consumer still imports the engine (`floatingUIPositioningEngine`) statically from `@fluentui/react-positioning`, typically app-wide through `PositioningEngineProvider`.
 
 ```tsx
-import { autoPositioningEngine } from '@fluentui/react-positioning';
+import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningEngineProvider, fallbackPositioningEngine } from '@fluentui/react-headless-components-preview';
 
-<PositioningEngineProvider value={autoPositioningEngine}>
+<PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
   <App />
 </PositioningEngineProvider>;
 ```
 
-This is the recommended setup for apps that need full parity or older browser versions; apps that only use CSS-eligible options can use headless without any engine. The auto engine is an implementation of the public `PositioningEngine` interface, so it can be added in a follow-up without changing the `engine` API. Its name is a placeholder.
+This is the recommended setup for apps that need full parity or older browser versions; apps that only use CSS-eligible options can use headless without any engine. It also addresses the scale problem of a plain engine in the provider: with the fallback wrapper at the root, surfaces that CSS can handle still use native anchoring, and only the ones that need the engine hand over to it. The helper is a small addition to the headless API and can land in a follow-up without changing the `engine` option.
 
 The trade-off is that A's API is a long-term commitment: B and C keep the fallback private and could drop it later without a breaking change, whereas `engine` and the provider can only be deprecated through a major version. A keeps that commitment small by making `PositioningEngine` a minimal interface that any engine can implement, so a future engine can be added without changing the public API.
