@@ -24,6 +24,16 @@ describe('Calendar', () => {
     expect(container.querySelector('[role="grid"]')).not.toBeNull();
   });
 
+  it('does not expose the empty week-number spacer as an unnamed column header', async () => {
+    const { container } = render(<Calendar showWeekNumbers today={new Date(2020, 8, 18)} />);
+
+    expect(container.querySelector('.fui-CalendarDayGridHeaderRow__weekNumberSpacerCell')).toHaveAttribute(
+      'role',
+      'presentation',
+    );
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
   it('supports an explicitly empty controlled selection', () => {
     const { container } = render(<Calendar value={null} today={new Date(2020, 8, 18)} onChange={jest.fn()} />);
 
@@ -367,7 +377,14 @@ describe('Calendar', () => {
     const { container } = render(<Calendar defaultValue={new Date(2020, 8, 18)} />);
     const attributes = JSON.parse(container.querySelector('table[role="grid"]')!.getAttribute('data-tabster')!);
 
-    expect(attributes.focusable.ignoreKeydown).toEqual({ PageUp: true, PageDown: true });
+    expect(attributes.focusable.ignoreKeydown).toEqual({
+      ArrowDown: true,
+      ArrowLeft: true,
+      ArrowRight: true,
+      ArrowUp: true,
+      PageUp: true,
+      PageDown: true,
+    });
   });
 
   it.each([

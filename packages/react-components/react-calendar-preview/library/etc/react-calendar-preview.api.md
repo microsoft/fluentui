@@ -86,9 +86,6 @@ export type CalendarDateLabelData = {
 export type CalendarDateTimeFormat = 'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'dayMonthYear' | 'monthYear' | 'weekday' | 'shortWeekday';
 
 // @public
-export type CalendarDateTimeFormatterOptions = Pick<Intl.DateTimeFormatOptions, 'timeZone'>;
-
-// @public
 export const CalendarDay: React_2.ForwardRefExoticComponent<Omit<Partial<CalendarDaySlots>, "root"> & Omit<{
     as?: "div" | undefined;
 } & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> & {
@@ -557,7 +554,7 @@ export const CalendarYear: React_2.ForwardRefExoticComponent<Omit<Partial<Calend
     children?: any;
 }, "ref"> & {
     navigatedYear?: number;
-    selectedYear?: number;
+    selectedYear?: number | null;
     renderYear?: (year: number) => React_2.ReactNode;
     onSelectYear?: EventHandler<CalendarYearSelectData>;
     onNavigateDate?: EventHandler<CalendarYearNavigateData>;
@@ -661,7 +658,7 @@ export type CalendarYearNavigateData = EventData<'click' | 'keydown', React_2.Sy
 // @public
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
     navigatedYear?: number;
-    selectedYear?: number;
+    selectedYear?: number | null;
     renderYear?: (year: number) => React_2.ReactNode;
     onSelectYear?: EventHandler<CalendarYearSelectData>;
     onNavigateDate?: EventHandler<CalendarYearNavigateData>;
@@ -713,7 +710,7 @@ export type CalendarYearState = ComponentState<CalendarYearSlots> & {
 };
 
 // @public
-export function createCalendarDateTimeFormatter(locales?: string | string[], options?: CalendarDateTimeFormatterOptions): CalendarFormatters['dateTime'];
+export function createCalendarDateTimeFormatter(locales?: string | string[]): CalendarFormatters['dateTime'];
 
 // @public
 export type DateRangeType = 'day' | 'week' | 'month' | 'workWeek';
