@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioBaseProps, RadioBaseState, RadioProps, RadioState } from './Radio.types';
@@ -59,13 +59,14 @@ export const useRadioBase_unstable = (props: RadioBaseProps, ref: React.Ref<HTML
     excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
   });
 
+  const focusWithinRef = useFocusWithin<HTMLSpanElement>();
   const root = slot.always(props.root, {
     defaultProps: {
-      ref: useFocusWithin<HTMLSpanElement>(),
       ...nativeProps.root,
     },
     elementType: 'span',
   });
+  root.ref = useMergedRefs(focusWithinRef, root.ref);
   const input = slot.always(props.input, {
     defaultProps: {
       ref,
