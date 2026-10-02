@@ -1,0 +1,93 @@
+# Install tools and dependencies and set shared configuration.
+
+parameters:
+  - name: releaseType
+    type: string
+    values: ['official', 'experimental', 'nightly']
+
+  - name: installNodeOnly
+    type: boolean
+    default: false
+
+steps:
+  # BRANCH_PATH (variables.yml) is only valid if Build.SourceBranch is a branch, not a tag or PR.
+  - script: |
+      if [[ "$BUILD_SOURCEBRANCH" != refs/heads/* ]]; then
+        echo "##vso[task.logissue type=error]This pipeline can only run from a branch."
+        exit 1
+      fi
+    displayName: Validate release branch
+
+  - ${{ if eq(parameters.releaseType, 'experimental') }}:
+      - script: |
+          if [[ "$BRANCH_PATH" != experimental/* ]]; then
+            echo "##vso[task.logissue type=error]Branch $BRANCH_PATH must start with 'experimental/'"
+            exit 1
+          fi
+          if [[ ! "$EXPERIMENTAL_FEATURE_NAME" =~ ^[A-Za-z0-9-]+$ ]]; then
+            echo "##vso[task.logissue type=error]Experimental feature name must contain only letters, numbers, and hyphens."
+            exit 1
+          fi
+          echo "Feature name: $EXPERIMENTAL_FEATURE_NAME"
+        displayName: Validate experimental branch
+
+  # Skip git operations if installNodeOnly is true, since the repo isn't checked out in a releaseJob.
+  - ${{ if not(parameters.installNodeOnly) }}:
+      # Re-attach HEAD to ensure beachball works even with fetching disabled.
+      - script: |
+          git checkout -b "$BRANCH_PATH"
+          git branch --set-upstream-to="origin/$BRANCH_PATH" "$BRANCH_PATH"
+        displayName: Re-attach HEAD
+
+      - script: |
+          git config user.name "OGX bot"
+          git config user.email "257645319+office-ogx-auth-helper[bot]@users.noreply.github.com"
+        displayName: Configure git user
+
+      - script: echo "registry=$REGISTRY_URL" >> .npmrc
+        displayName: Configure npm registry
+
+  - task: UseNode@1
+    displayName: Install Node.js 22
+    retryCountOnTaskFailure: 1
+    inputs:
+      # 👉 NOTE: we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
+      # - as 1es bumps those versions within container automatically we need to use `<major>.x` to not run into issues once they bump the versions.
+      # - `checkLatest: true` is required because some dependencies (e.g. @microsoft/fast-build) require node >=22.18.0,
+      #   while the 1ES container may still ship an older 22.x (e.g. 22.14.0). This forces the task to install the latest 22.x.
+      # https://github.com/actions/runner-images/blob/ubuntu20/20230924.1/images/linux/Ubuntu2004-Readme.md#nodejs
+      version: 22.x
+      checkLatest: true
+
+  - script: |
+      echo "nodejs:" && node -v
+      echo "yarn:" && yarn -v
+      echo "npm:" && npm -v
+    displayName: Print Node.js and package manager versions
+
+  # Log all the environment variables since it can be useful for debugging.
+  - script: |
+      printenv | sort
+      echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+      set -x
+      git --no-pager config list
+      npm config list
+      yarn config --no-defaults || true
+    # ^ yarn v1 will be used in the releaseJob (since it skips checkout) and doesn't have this command
+    displayName: Log environment
+
+  - ${{ if not(parameters.installNodeOnly) }}:
+      - task: npmAuthenticate@0
+        displayName: npm authenticate
+        inputs:
+          workingFile: $(Build.SourcesDirectory)/.npmrc
+
+      # Do NOT run `corepack enable` - it's not needed since yarn is checked into the repo, and
+      # it causes a network request attempting to download yarn, which is not allowed.
+
+      # yarn install's auth errors can be very unclear, so do a quick check first.
+      - script: yarn npm info beachball
+        displayName: Verify registry authentication
+
+      - script: yarn install --immutable
+        displayName: yarn install

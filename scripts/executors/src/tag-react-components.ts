@@ -1,3 +1,7 @@
+// With ESRP, it's not possible to run this script automatically during release.
+// Instead, release-vNext.config.js logs packages that require manual tagging.
+// It would also be possible to run this script locally if you acquire an npm token.
+
 import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 import * as semver from 'semver';
 
