@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-table): stabilize inline sizing options and initialize added columns with current defaults",
+  "packageName": "@fluentui/react-table",
+  "email": "3682072+machineloop@users.noreply.github.com"
+}
