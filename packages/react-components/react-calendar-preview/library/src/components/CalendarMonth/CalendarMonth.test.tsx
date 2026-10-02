@@ -4,7 +4,7 @@ import { CalendarMonth } from './CalendarMonth';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
 import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
-import type { CalendarMonthProps } from './CalendarMonth.types';
+import type { CalendarMonthHandle, CalendarMonthProps } from './CalendarMonth.types';
 
 const defaultProps: CalendarMonthProps = {
   navigatedDate: new Date(2025, 0, 15),
@@ -26,6 +26,33 @@ describe('CalendarMonth', () => {
   it('should render without crashing', () => {
     expect(() => render(<CalendarMonth {...defaultProps} />)).not.toThrow();
   });
+
+  it('preserves an explicitly empty selection when opening the year picker', () => {
+    const { getByRole, getAllByRole } = render(<CalendarMonth {...defaultProps} selectedDate={null} />);
+
+    fireEvent.click(getByRole('button', { name: '2025, change year' }));
+
+    expect(getAllByRole('gridcell').every(cell => cell.getAttribute('aria-selected') === 'false')).toBe(true);
+  });
+
+  it.each([false, true])(
+    'restores focus to a focusable month after closing the year picker (allFocusable=%s)',
+    allFocusable => {
+      const ref = React.createRef<CalendarMonthHandle>();
+      const { getByRole } = render(<CalendarMonth {...defaultProps} ref={ref} />, {
+        allFocusable,
+        minDate: new Date(2025, 1, 1),
+      });
+
+      ref.current?.focus();
+      expect(getByRole('gridcell', { name: allFocusable ? 'January' : 'February' })).toHaveFocus();
+
+      fireEvent.click(getByRole('button', { name: '2025, change year' }));
+      fireEvent.click(getByRole('button', { name: '2025 - 2036, change year' }));
+
+      expect(getByRole('gridcell', { name: allFocusable ? 'January' : 'February' })).toHaveFocus();
+    },
+  );
 
   it('keeps unavailable months focusable but not selectable with allFocusable', () => {
     const onSelectDate = jest.fn();

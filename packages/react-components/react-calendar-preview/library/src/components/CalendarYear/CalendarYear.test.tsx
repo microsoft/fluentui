@@ -29,6 +29,26 @@ describe('CalendarYear', () => {
     expect(grid.getAttribute('aria-label')).toContain('2025');
   });
 
+  it('formats years below 100 without remapping them to the twentieth century', () => {
+    const onSelectYear = jest.fn();
+    const dateTime: typeof calendarFormatters.dateTime = ({ date }) => String(date.getFullYear());
+    const { getByRole } = render(<CalendarYear navigatedYear={90} onSelectYear={onSelectYear} />, {
+      formatters: { ...calendarFormatters, dateTime },
+    });
+
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '90 - 101');
+    fireEvent.click(getByRole('gridcell', { name: '99' }));
+    expect(onSelectYear.mock.calls[0][1].year).toBe(99);
+  });
+
+  it('preserves an explicitly empty selection instead of using the provider value', () => {
+    const { getAllByRole } = render(<CalendarYear navigatedYear={2025} selectedYear={null} />, {
+      value: new Date(2025, 0, 15),
+    });
+
+    expect(getAllByRole('gridcell').every(cell => cell.getAttribute('aria-selected') === 'false')).toBe(true);
+  });
+
   it('uses the provider today value and keeps unavailable years focusable without selecting them', () => {
     const onSelectYear = jest.fn();
     const { getByRole, getByTitle } = render(<CalendarYear navigatedYear={2025} onSelectYear={onSelectYear} />, {

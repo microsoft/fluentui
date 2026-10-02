@@ -244,11 +244,19 @@ export const useCalendarMonthBase_unstable = (
     monthRows.push(row);
   }
 
+  const months = monthRows.flat();
+  const focusableMonth =
+    months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
+    months.find(month => month.isInBounds);
+  for (const month of months) {
+    month.isNavigated = month === focusableMonth;
+  }
+
   let yearPickerProps: CalendarYearProps | undefined;
   if (isYearPickerVisible) {
     yearPickerProps = {
       navigatedYear: navigatedDate.getFullYear(),
-      selectedYear: selectedDate?.getFullYear(),
+      selectedYear: selectedDate === null ? null : selectedDate?.getFullYear(),
       onHeaderSelect: onYearPickerHeaderSelect,
       onSelectYear,
     };
