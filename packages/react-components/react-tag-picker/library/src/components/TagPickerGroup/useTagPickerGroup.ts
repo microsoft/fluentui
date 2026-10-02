@@ -55,8 +55,7 @@ export const useTagPickerGroup_unstable = (
       onDismiss: useEventCallback((event, data) => {
         selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
           value: data.value,
-          // These values no longer exist because the option has unregistered itself
-          // for the purposes of selection - these values aren't actually used
+          // These values no longer exist because the option has unregistered itself.
           id: 'ERROR_DO_NOT_USE',
           text: 'ERROR_DO_NOT_USE',
         });

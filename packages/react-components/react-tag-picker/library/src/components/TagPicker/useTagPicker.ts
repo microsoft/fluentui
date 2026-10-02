@@ -11,6 +11,7 @@ import type {
   TagPickerState,
 } from './TagPicker.types';
 import { optionClassNames } from '@fluentui/react-combobox';
+import type { SelectionEvents } from '@fluentui/react-combobox';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useActiveDescendant } from '@fluentui/react-aria';
@@ -29,7 +30,9 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const passiveTargetRef = React.useRef<HTMLDivElement>(null);
-  const { noPopover = false, disableAutoFocus } = props;
+  const clearedOptionValueRef = React.useRef<string | undefined>(undefined);
+  const { noPopover = false, disableAutoFocus, selectionMode = 'multiselect' } = props;
+  const multiselect = selectionMode === 'multiselect';
 
   const {
     controller: activeDescendantController,
@@ -44,7 +47,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     onOptionSelect: useEventCallback((event, data) =>
       props.onOptionSelect?.(event, {
         selectedOptions: data.selectedOptions,
-        value: data.optionValue,
+        value: data.optionValue ?? clearedOptionValueRef.current,
         type: event.type,
         event,
       } as TagPickerOnOptionSelectData),
@@ -59,7 +62,27 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     activeDescendantController,
     disableAutoFocus,
     editable: true,
-    multiselect: true,
+    multiselect,
+    valueFromSelectedOptions: false,
+  });
+
+  const clearSelection = useEventCallback((event: SelectionEvents) => {
+    if (multiselect) {
+      comboboxState.clearSelection(event);
+      return;
+    }
+
+    const selectedOption = comboboxState.selectedOptions[0];
+    if (selectedOption === undefined) {
+      return;
+    }
+
+    clearedOptionValueRef.current = selectedOption;
+    try {
+      comboboxState.clearSelection(event);
+    } finally {
+      clearedOptionValueRef.current = undefined;
+    }
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
@@ -70,6 +93,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
     popover: comboboxState.open || comboboxState.hasFocus ? popover : undefined,
     popoverId,
     noPopover,
+    selectionMode,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef),
@@ -82,18 +106,22 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerB
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    clearSelection: comboboxState.clearSelection,
+    clearSelection,
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
     registerOption: comboboxState.registerOption,
     selectedOptions: comboboxState.selectedOptions,
     selectOption: useEventCallback((event, data) => {
+      const isTagDismiss = elementContains(tagPickerGroupRef.current, event.target as Node);
+
+      if (!multiselect && isTagDismiss) {
+        clearSelection(event);
+        return;
+      }
+
       // if the option is already selected, invoke onOptionSelect callback with current selected values
       // the combobox state would unselect the option, which is not the behavior expected
-      if (
-        comboboxState.selectedOptions.includes(data.value) &&
-        !elementContains(tagPickerGroupRef.current, event.target as Node)
-      ) {
+      if (comboboxState.selectedOptions.includes(data.value) && !isTagDismiss) {
         props.onOptionSelect?.(event, {
           selectedOptions: comboboxState.selectedOptions,
           value: data.value,

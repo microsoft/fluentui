@@ -30,6 +30,7 @@ const makeContext = (overrides: Partial<TagPickerContextValue> = {}): TagPickerC
   value: undefined,
   popoverId: 'input-popover-id',
   size: 'medium',
+  selectionMode: 'multiselect',
   appearance: 'outline',
   disabled: false,
   ...overrides,
