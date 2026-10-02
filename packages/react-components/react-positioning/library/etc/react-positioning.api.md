@@ -32,11 +32,22 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
+// @public
+export function createFloatingUIPositioningEngine(engineOptions?: CreateFloatingUIPositioningEngineOptions): PositioningEngine;
+
+// @public (undocumented)
+export type CreateFloatingUIPositioningEngineOptions = {
+    configuration?: PositioningConfigurationFn;
+};
+
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
+
+// @public
+export const floatingUIPositioningEngine: PositioningEngine;
 
 // @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
@@ -64,6 +75,16 @@ export type OffsetObject = {
 // @public (undocumented)
 export type OffsetShorthand = number;
 
+// @public
+export type OnPositioningEndEvent = CustomEvent<OnPositioningEndEventDetail>;
+
+// @public
+export type OnPositioningEndEventDetail = {
+    placement: PositioningPlacement;
+    escaped: boolean;
+    referenceHidden: boolean;
+};
+
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
@@ -89,11 +110,60 @@ export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enable
 // @public
 export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
 
+// @public
+export interface PositioningEngine {
+    // (undocumented)
+    create: (params: PositioningEngineCreateParams) => PositionManager;
+}
+
+// @public
+export type PositioningEngineCreateParams = {
+    container: HTMLElement;
+    target: TargetElement;
+    arrow: HTMLElement | null;
+    options: PositioningOptions;
+    dir?: 'ltr' | 'rtl';
+    targetDocument?: Document;
+};
+
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
 };
+
+// @public
+export interface PositioningOptions {
+    align?: Alignment;
+    arrowPadding?: number;
+    autoSize?: AutoSize;
+    coverTarget?: boolean;
+    disableUpdateOnResize?: boolean;
+    enabled?: boolean;
+    fallbackPositions?: PositioningShorthandValue[];
+    flipBoundary?: PositioningBoundary | null;
+    matchTargetSize?: 'width';
+    offset?: Offset;
+    onPositioningEnd?: (e: OnPositioningEndEvent) => void;
+    overflowBoundary?: PositioningBoundary | null;
+    overflowBoundaryPadding?: number | Partial<{
+        top: number;
+        end: number;
+        bottom: number;
+        start: number;
+    }>;
+    pinned?: boolean;
+    position?: Position;
+    // @deprecated
+    positionFixed?: boolean;
+    shiftToCoverTarget?: boolean;
+    strategy?: 'absolute' | 'fixed';
+    unstable_disableTether?: boolean | 'all';
+    useTransform?: boolean;
+}
+
+// @public
+export type PositioningPlacement = 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
 
 // @public
 export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
@@ -129,6 +199,14 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @public
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
