@@ -224,7 +224,6 @@ export type {
   AnimationDirection,
   CalendarDateLabelData,
   CalendarDateTimeFormat,
-  CalendarDateTimeFormatterOptions,
   CalendarFormatters,
   CalendarYearRangeLabelData,
   DateRangeType,

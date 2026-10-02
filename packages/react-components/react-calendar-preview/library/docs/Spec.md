@@ -91,7 +91,7 @@ import { Calendar, createCalendarDateTimeFormatter } from '@fluentui/react-calen
 
 This example overrides only part of the label set. For a fully localized control, provide every `CalendarFormatters` label, `goToTodayButton.children`, and the close button's label when shown. The Localized Formatting story demonstrates a complete German configuration.
 
-`createCalendarDateTimeFormatter(locales, { timeZone })` creates reusable Intl formatters. Locale extensions can affect labels and numbering, but date arithmetic and grid layout remain Gregorian and use local `Date` fields. A formatting time zone does not change the selected date or calendar arithmetic; keep application dates and label formatting consistent.
+`createCalendarDateTimeFormatter(locales)` creates reusable Intl formatters using local `Date` fields. Locale extensions can affect labels and numbering, but date arithmetic and grid layout remain Gregorian. The formatting calendar is Gregorian and the formatting time zone matches the local date arithmetic.
 
 ## Variants
 
