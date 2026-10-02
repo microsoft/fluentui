@@ -121,7 +121,7 @@ export class BaseField extends FASTElement {
       this.setLabelProperties();
       this.slottedInputObserver.observe(next, {
         attributes: true,
-        attributeFilter: ['disabled', 'required', 'readonly'],
+        attributeFilter: ['disabled', 'required', 'readonly', 'type'],
         subtree: true,
       });
     }
@@ -214,18 +214,41 @@ export class BaseField extends FASTElement {
    *
    * @internal
    */
-  private setLabelProperties() {
+  private async setLabelProperties() {
     if (this.$fastController.isConnected) {
-      this.input.id = this.input.id || uniqueId('input');
+      const input = await this.getLabellableInput();
+
+      input.id ||= uniqueId('input');
 
       this.labelSlot?.forEach(label => {
         if (label instanceof HTMLLabelElement) {
-          label.htmlFor = label.htmlFor || this.input.id;
-          label.id = label.id || `${this.input.id}--label`;
-          this.input.setAttribute('aria-labelledby', label.id);
+          label.htmlFor ||= input.id;
+          label.id ||= `${input.id}--label`;
+          input.setAttribute('aria-labelledby', label.id);
         }
       });
     }
+  }
+
+  private getLabellableInput(): Promise<HTMLElement> {
+    return new Promise(resolve => {
+      if (this.input.constructor.elementIdentity === 'dropdown') {
+        if (!this.input.control) {
+          new MutationObserver((_, observer) => {
+            if (this.input.control) {
+              resolve(this.input.control);
+              observer.disconnect();
+            }
+          }).observe(this.input, {
+            childList: true,
+          });
+        } else {
+          resolve(this.input.control);
+        }
+      } else {
+        resolve(this.input);
+      }
+    });
   }
 
   /**

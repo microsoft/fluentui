@@ -40,6 +40,14 @@ export class BaseDropdown extends FASTElement {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
+   *
+   * @internal
+   */
+  static get elementIdentity() {
+    return 'dropdown';
+  }
+
+  /**
    * The ID of the current active descendant.
    *
    * @public
