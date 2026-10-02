@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: migrate category expand icon rotation to fromAngle",
+  "packageName": "@fluentui/react-nav",
+  "email": "robert@robertpenner.com"
+}
