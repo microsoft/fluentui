@@ -9,8 +9,7 @@ import type {
   TagPickerButtonState,
 } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
-import { useButtonTriggerSlot, useSelectOptionOnMoveFocus } from '@fluentui/react-combobox';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { useButtonTriggerSlot } from '@fluentui/react-combobox';
 import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
 
 /**
@@ -82,18 +81,7 @@ export const useTagPickerButton_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
   const baseState = useTagPickerButtonBase_unstable(props, ref);
-  const { controller: activeDescendantController } = useActiveDescendantContext();
-  const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
-  const multiselect = useTagPickerContext_unstable(ctx => (ctx.selectionMode ?? 'multiselect') === 'multiselect');
   const open = useTagPickerContext_unstable(ctx => ctx.open);
-  const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
-  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus({
-    activeDescendantController,
-    getOptionById,
-    multiselect,
-    open,
-    selectOption,
-  });
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
   return {
@@ -102,7 +90,6 @@ export const useTagPickerButton_unstable = (
     root: {
       ...useTabsterEscapeIgnore(baseState.root, open),
       ...baseState.root,
-      ref: useMergedRefs(baseState.root.ref, selectOptionOnMoveFocusRef),
     },
   };
 };

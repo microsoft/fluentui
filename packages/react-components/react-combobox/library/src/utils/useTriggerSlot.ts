@@ -9,6 +9,7 @@ import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 import type { OptionValue } from './OptionCollection.types';
 import { isTabKeyEventHandled, markTabKeyEventHandled } from './handledTabKeyEvents';
+import { useSelectOptionOnMoveFocus } from '../hooks/useSelectOptionOnMoveFocus';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
@@ -43,11 +44,18 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    state: { open, setOpen, setHasFocus },
+    state: { open, setOpen, setHasFocus, getOptionById, selectOption, multiselect },
     defaultProps,
     elementType,
     activeDescendantController,
   } = options;
+  const selectOptionOnMoveFocusRef = useSelectOptionOnMoveFocus({
+    activeDescendantController,
+    getOptionById,
+    multiselect,
+    open,
+    selectOption,
+  });
 
   const trigger = slot.always(triggerSlotFromProp, {
     defaultProps: {
@@ -61,6 +69,7 @@ export function useTriggerSlot(
 
   // handle trigger focus/blur
   trigger.ref = useMergedRefs(
+    selectOptionOnMoveFocusRef,
     trigger.ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
     ref as React.Ref<HTMLButtonElement & HTMLInputElement>,
   );

@@ -344,9 +344,6 @@ export const useOptionGroupStyles_unstable: (state: OptionGroupState) => OptionG
 // @public
 export const useOptionStyles_unstable: (state: OptionState) => OptionState;
 
-// @internal
-export function useSelectOptionOnMoveFocus<Trigger extends HTMLElement>(options: UseSelectOptionOnMoveFocusOptions): React_2.Ref<Trigger>;
-
 // (No @packageDocumentation comment for this package)
 
 ```
