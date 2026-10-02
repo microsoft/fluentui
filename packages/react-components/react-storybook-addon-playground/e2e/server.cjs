@@ -40,10 +40,43 @@ const CONTENT_TYPES = /** @type {Record<string, string>} */ ({
   '.ttf': 'font/ttf',
 });
 
-main().catch(error => {
-  console.error(error);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+/**
+ * Maps a request URL to a file inside `shellDir` or `siteDir`. Returns `undefined` for malformed URLs and for paths
+ * that escape their root (including sibling directories that share the root as a name prefix).
+ *
+ * @param {string} url - the request URL
+ * @param {{ shellDir: string; siteDir: string }} roots - directories served under `/playground/app/` and `/`
+ * @returns {string | undefined}
+ */
+function resolveRequestPath(url, roots) {
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(url, 'http://localhost').pathname);
+  } catch {
+    return undefined;
+  }
+  if (pathname.includes('\0')) {
+    return undefined;
+  }
+
+  const [root, relative] = pathname.startsWith('/playground/app/')
+    ? [roots.shellDir, pathname.slice('/playground/app/'.length)]
+    : [roots.siteDir, pathname.slice(1)];
+  const resolvedRoot = path.resolve(root);
+  const filePath = path.resolve(resolvedRoot, relative);
+  const fromRoot = path.relative(resolvedRoot, filePath);
+
+  return fromRoot && !fromRoot.startsWith('..') && !path.isAbsolute(fromRoot) ? filePath : undefined;
+}
+
+module.exports = { resolveRequestPath };
 
 async function main() {
   const { values } = parseArgs({ options: { port: { type: 'string', default: '4178' } } });
@@ -58,13 +91,9 @@ async function main() {
 
   http
     .createServer((request, response) => {
-      const pathname = decodeURIComponent(new URL(request.url ?? '/', 'http://localhost').pathname);
-      const [root, relative] = pathname.startsWith('/playground/app/')
-        ? [shellDir, pathname.slice('/playground/app/'.length)]
-        : [siteDir, pathname.slice(1)];
-      const filePath = path.join(root, relative);
+      const filePath = resolveRequestPath(request.url ?? '/', { shellDir, siteDir });
 
-      if (!filePath.startsWith(root) || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+      if (!filePath || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
         response.writeHead(404).end();
         return;
       }
