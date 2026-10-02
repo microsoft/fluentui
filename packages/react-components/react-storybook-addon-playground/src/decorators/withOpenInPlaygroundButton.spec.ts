@@ -281,6 +281,41 @@ import typeface from 'typeface-lib';
     expect(getUnavailableImports(source, allowed)).toEqual(['react-window', 'typeface-lib']);
   });
 
+  it('ignores import and require text inside strings, comments, templates, regexes and JSX text', () => {
+    const source = `const text = "import a from 'string-package'";
+// import b from 'line-comment-package';
+/* export * from 'block-comment-package'; */
+const template = \`import c from 'template-package' \${require('template-expression-package')}\`;
+if (ready) /import d from 'regex-package'/.test(text);
+export const Story = () => (
+  <Card title="import e from 'attribute-package'" render={() => import('dynamic-package')}>
+    <p>import f from 'jsx-text-package'</p>
+    {/* require('jsx-comment-package') */}
+    <>export * from 'fragment-text-package'</>
+  </Card>
+);
+const identity = <T,>(value: T) => value;
+import { useForm } from 'react-hook-form';
+`;
+
+    expect(getUnavailableImports(source, allowed)).toEqual([
+      'template-expression-package',
+      'dynamic-package',
+      'react-hook-form',
+    ]);
+  });
+
+  it('distinguishes type-only imports from imports of a binding named type', () => {
+    const source = `import type Default from 'type-default-package';
+import type * as Types from 'type-namespace-package';
+import type from 'type-binding-package';
+import type, { Other } from 'type-binding-with-named-package';
+export type { Props } from 'type-reexport-package';
+`;
+
+    expect(getUnavailableImports(source, allowed)).toEqual(['type-binding-package', 'type-binding-with-named-package']);
+  });
+
   it('scans pathological input in linear time', () => {
     const source = `\timport ${'\t'.repeat(50_000)}${' import'.repeat(50_000)}`;
     const start = Date.now();

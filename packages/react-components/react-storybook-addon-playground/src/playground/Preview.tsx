@@ -23,6 +23,8 @@ export interface PreviewProps {
   cssModules?: Array<{ name: string; specifier: string; locals: Record<string, string>; cssText: string }>;
   manifest: ResolvedPlaygroundRuntimeManifest;
   onMetadata: (metadata: PlaygroundSetupMetadata) => void;
+  /** Called when the sandbox runtime fails to initialize, so it will never become ready. */
+  onInitError?: (message: string) => void;
   onSuccess: (runId: number) => void;
   onError: (error: {
     kind: PlaygroundRuntimeErrorKind;
@@ -49,6 +51,7 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
     cssModules,
     manifest,
     onMetadata,
+    onInitError,
     onSuccess,
     onError,
     onConsole,
@@ -122,6 +125,8 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
         readyRef.current = true;
         onMetadata(message.metadata);
         postRun();
+      } else if (message.type === 'init-error') {
+        onInitError?.(message.message);
       } else if (message.type === 'success' && message.runId === runId && !paused) {
         onSuccess(message.runId);
       } else if (message.type === 'error' && message.runId === runId && !paused) {
@@ -133,7 +138,7 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
 
     targetWindow.addEventListener('message', handleMessage);
     return () => targetWindow.removeEventListener('message', handleMessage);
-  }, [onConsole, onError, onMetadata, onSuccess, paused, postRun, runId, targetDocument, token]);
+  }, [onConsole, onError, onInitError, onMetadata, onSuccess, paused, postRun, runId, targetDocument, token]);
 
   // Send the current run once its sandbox is ready.
   React.useEffect(() => {

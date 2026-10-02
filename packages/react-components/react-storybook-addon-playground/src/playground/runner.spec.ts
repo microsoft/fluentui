@@ -43,6 +43,28 @@ describe('runner', () => {
 
       expect(getRequiredModules(code)).toEqual(['react', 'react-dom', '@scope/pkg', 'react/jsx-runtime']);
     });
+
+    it('treats a slash after a control statement header or a block as a regex literal', () => {
+      const code = [
+        'if (enabled) /require("after-if")/.test(text);',
+        'while (next()) /require("after-while")/g.exec(text);',
+        'function run() {}',
+        '/require("after-block")/.test(text);',
+        'const ratio = (a + b) / require("divided-call").value / 2;',
+        'const object = {} / require("after-object").value;',
+        'const after = require("react");',
+      ].join('\n');
+
+      expect(getRequiredModules(code)).toEqual(['divided-call', 'after-object', 'react']);
+    });
+
+    it('scans unterminated regex-like input in linear time', () => {
+      const code = `${'x = (/'.repeat(50_000)}\nrequire('react');`;
+      const start = Date.now();
+
+      expect(getRequiredModules(code)).toEqual(['react']);
+      expect(Date.now() - start).toBeLessThan(1000);
+    });
   });
 
   describe('assertAllowedModules', () => {

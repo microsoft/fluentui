@@ -7,6 +7,7 @@ const path = require('path');
 const {
   applyTypesVersions,
   collectTypings,
+  getDefaultExportKind,
   getExportTypesPath,
   getMonacoTypeScriptVersion,
   getSpecifiers,
@@ -84,6 +85,24 @@ describe('collect-typings', () => {
 
       expect(() => getMonacoTypeScriptVersion(path.join(root, 'contribution.js'))).toThrow(/Unable to detect/);
       fs.rmSync(root, { recursive: true, force: true });
+    });
+  });
+
+  describe('getDefaultExportKind', () => {
+    it.each([
+      ['export default function Button(): null;', 'default'],
+      ['declare const Button: () => null;\nexport { Button as default };', 'default'],
+      ['export { default } from "./button";', 'default'],
+      ['export default interface Props {}', 'default'],
+      ['declare const button: () => null;\nexport = button;', 'equals'],
+      ['export { default as Button } from "./button";', null],
+      ['/** export default x */\n// export = y\nexport declare const value: "export default";', null],
+      ['export * from "./button";', null],
+    ])('detects %p with and without TypeScript', (content, expected) => {
+      expect(getDefaultExportKind(content)).toBe(expected);
+      if (!content.includes('"export default"')) {
+        expect(getDefaultExportKind(content, null)).toBe(expected);
+      }
     });
   });
 
@@ -227,6 +246,69 @@ describe('collect-typings', () => {
       expect(result.files['file:///node_modules/headless/button.d.ts']).toBe(`export * from "./dist/button";\n`);
 
       fs.rmSync(root, { recursive: true, force: true });
+    });
+
+    it('forwards default exports from subpath shims', () => {
+      const root = createFixture({
+        'node_modules/defaults/package.json': JSON.stringify({
+          name: 'defaults',
+          types: './dist/index.d.ts',
+          exports: {
+            '.': { types: './dist/index.d.ts' },
+            './button': { types: './dist/button.d.ts' },
+            './legacy': { types: './dist/legacy.d.ts' },
+          },
+        }),
+        'node_modules/defaults/dist/index.d.ts': `export {};`,
+        'node_modules/defaults/dist/button.d.ts': `export declare const size: number;\nexport default function Button(): null;`,
+        'node_modules/defaults/dist/legacy.d.ts': `declare function legacy(): void;\nexport = legacy;`,
+      });
+
+      try {
+        const result = collectTypings({
+          packageRoot: path.join(root, 'app'),
+          entries: ['defaults/button', 'defaults/legacy'],
+          typescriptVersion: '4.5.5',
+        });
+
+        expect(result.missing).toEqual([]);
+        expect(result.files['file:///node_modules/defaults/button.d.ts']).toBe(
+          `export * from "./dist/button";\nexport { default } from "./dist/button";\n`,
+        );
+        expect(result.files['file:///node_modules/defaults/legacy.d.ts']).toBe(
+          `import entry = require("./dist/legacy");\nexport = entry;\n`,
+        );
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
+    });
+
+    it('uses typed subpath exports of a package without root types instead of @types', () => {
+      const root = createFixture({
+        'node_modules/subpaths/package.json': JSON.stringify({
+          name: 'subpaths',
+          exports: { './button': { types: './dist/button.d.ts', default: './lib/button.js' } },
+        }),
+        'node_modules/subpaths/dist/button.d.ts': `export declare const source: 'package';`,
+        'node_modules/@types/subpaths/package.json': JSON.stringify({ name: '@types/subpaths', types: 'index.d.ts' }),
+        'node_modules/@types/subpaths/index.d.ts': `export declare const source: 'fallback';`,
+      });
+
+      try {
+        const result = collectTypings({
+          packageRoot: path.join(root, 'app'),
+          entries: ['subpaths/button', 'subpaths'],
+          typescriptVersion: '4.5.5',
+        });
+
+        expect(result.missing).toEqual([]);
+        expect(result.files['file:///node_modules/subpaths/dist/button.d.ts']).toContain(`source: 'package'`);
+        expect(result.files['file:///node_modules/subpaths/button.d.ts']).toBe(`export * from "./dist/button";\n`);
+        // the root has no own types, so it still falls back to @types
+        expect(result.files['file:///node_modules/@types/subpaths/index.d.ts']).toContain(`source: 'fallback'`);
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
     });
 
     it('uses a resolvable root exports target before falling back to @types', () => {

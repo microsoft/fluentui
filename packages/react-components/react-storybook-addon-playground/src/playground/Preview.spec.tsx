@@ -32,6 +32,28 @@ describe('Preview sandbox', () => {
     expect(PREVIEW_SANDBOX.split(/\s+/)).not.toContain('allow-same-origin');
   });
 
+  it('forwards runtime initialization failures and does not post runs', () => {
+    const onInitError = jest.fn();
+    const props = {
+      code: 'exports.default = () => null;',
+      runId: 1,
+      manifest,
+      onMetadata: jest.fn(),
+      onInitError,
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    };
+    const { container } = render(<Preview {...props} />);
+    const frame = container.querySelector('iframe')!;
+    const postMessage = jest.spyOn(frame.contentWindow!, 'postMessage');
+
+    sendMessage(frame, { type: 'init-error', message: 'Error: setup failed' });
+
+    expect(onInitError).toHaveBeenCalledWith('Error: setup failed');
+    expect(props.onMetadata).not.toHaveBeenCalled();
+    expect(postMessage).not.toHaveBeenCalled();
+  });
+
   it('reuses one visible sandbox iframe across runs without an opt-in', () => {
     const props = {
       code: 'exports.default = () => null;',

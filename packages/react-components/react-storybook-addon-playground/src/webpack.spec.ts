@@ -7,6 +7,8 @@ import * as vm from 'node:vm';
 import webpack from 'webpack';
 
 import {
+  ENTRY_NAME,
+  PlaygroundRuntimeManifestPlugin,
   buildRuntimeEntrySource,
   collectConfiguredTypings,
   filterRuntimeEntryAssets,
@@ -106,6 +108,107 @@ describe('collectConfiguredTypings', () => {
       'file:///node_modules/first/package.json',
     ]);
     expect(typings.modules.react.usesShared).toBe(false);
+  });
+});
+
+describe('PlaygroundRuntimeManifestPlugin', () => {
+  type Typings = ReturnType<typeof collectConfiguredTypings>;
+
+  const setup = () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-manifest-'));
+    const entry = path.join(root, 'entry.js');
+    const declaration = path.join(root, 'module.d.ts');
+    fs.writeFileSync(entry, 'export const value = 1;');
+    fs.writeFileSync(declaration, 'export declare const version: 1;');
+    // Watchers treat files written just before watching starts as changed; age the fixtures.
+    const past = new Date(Date.now() - 60_000);
+    [entry, declaration].forEach(file => fs.utimesSync(file, past, past));
+    const collect = jest.fn(
+      (): Typings => ({
+        base: { 'file:///node_modules/module/index.d.ts': fs.readFileSync(declaration, 'utf8') },
+        shared: {},
+        modules: {},
+        sources: [declaration],
+        missing: ['@types/react-dom'],
+      }),
+    );
+    const compiler = webpack({
+      mode: 'development',
+      devtool: false,
+      context: root,
+      entry: { [ENTRY_NAME]: entry },
+      output: { path: path.join(root, 'out') },
+      plugins: [new PlaygroundRuntimeManifestPlugin({ modules: {} }, collect)],
+    });
+    const readTypings = () => {
+      const manifest = JSON.parse(fs.readFileSync(path.join(root, 'out/playground/runtime/manifest.json'), 'utf8'));
+      return JSON.parse(fs.readFileSync(path.join(root, 'out', manifest.typings), 'utf8'));
+    };
+    const cleanup = async () => {
+      await new Promise<void>((resolve, reject) => {
+        compiler.close(error => (error ? reject(error) : resolve()));
+      });
+      fs.rmSync(root, { recursive: true, force: true });
+    };
+    return { compiler, collect, entry, declaration, readTypings, cleanup };
+  };
+
+  it('reports missing typings as a warning and still emits the manifest', async () => {
+    const { compiler, readTypings, cleanup } = setup();
+    try {
+      const stats = await new Promise<webpack.Stats>((resolve, reject) => {
+        compiler.run((error, result) => (error || !result ? reject(error) : resolve(result)));
+      });
+
+      expect(stats.hasErrors()).toBe(false);
+      expect(stats.compilation.warnings.map(warning => warning.message)).toEqual([
+        expect.stringContaining('Playground typings could not resolve: "@types/react-dom"'),
+      ]);
+      expect(readTypings()['file:///node_modules/module/index.d.ts']).toContain('version: 1');
+    } finally {
+      await cleanup();
+    }
+  });
+
+  it('recollects typings only when a watched declaration source changes', async () => {
+    const { compiler, collect, entry, declaration, readTypings, cleanup } = setup();
+    const builds: Array<() => void> = [];
+    const nextBuild = () =>
+      new Promise<void>(resolve => {
+        builds.push(resolve);
+      });
+    let watching: ReturnType<typeof compiler.watch> | undefined;
+    try {
+      let build = nextBuild();
+      watching = compiler.watch({ aggregateTimeout: 10 }, error => {
+        if (error) {
+          throw error;
+        }
+        builds.shift()?.();
+      });
+      await build;
+      expect(collect).toHaveBeenCalledTimes(1);
+
+      build = nextBuild();
+      fs.writeFileSync(entry, 'export const value = 2;');
+      await build;
+      expect(collect).toHaveBeenCalledTimes(1);
+
+      build = nextBuild();
+      fs.writeFileSync(declaration, 'export declare const version: 2;');
+      await build;
+      expect(collect).toHaveBeenCalledTimes(2);
+      expect(readTypings()['file:///node_modules/module/index.d.ts']).toContain('version: 2');
+    } finally {
+      await new Promise<void>(resolve => {
+        if (watching) {
+          watching.close(() => resolve());
+        } else {
+          resolve();
+        }
+      });
+      await cleanup();
+    }
   });
 });
 

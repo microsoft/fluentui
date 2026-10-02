@@ -20,6 +20,13 @@ export type PlaygroundRuntimeMessage =
   | {
       source: 'fluentui-playground';
       token: string;
+      /** The runtime failed before registering, e.g. a setup module threw or a runtime script did not load. */
+      type: 'init-error';
+      message: string;
+    }
+  | {
+      source: 'fluentui-playground';
+      token: string;
       type: 'success';
       runId: number;
     }

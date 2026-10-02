@@ -47,6 +47,21 @@ describe('cssModules', () => {
       expect(compiled.cssText).not.toContain('.__PG_GLOBAL_');
     });
 
+    it('maps class names that match Object.prototype members', () => {
+      const compiled = compileCssModule({
+        name: 'proto.module.css',
+        source: '.constructor { color: red; } .toString { color: blue; } .__proto__ { color: green; }',
+      });
+
+      expect(Object.keys(compiled.locals)).toEqual(['constructor', 'toString', '__proto__']);
+      expect(compiled.locals.constructor).toMatch(/^proto__constructor--/);
+      expect(compiled.locals.toString).toMatch(/^proto__toString--/);
+      expect(Object.getOwnPropertyDescriptor(compiled.locals, '__proto__')?.value).toMatch(/^proto____proto__--/);
+      expect(compiled.cssText).toContain(`.${compiled.locals.constructor} {`);
+      expect(compiled.cssText).toContain(`.${compiled.locals.toString} {`);
+      expect(compiled.locals.hasOwnProperty).toBeUndefined();
+    });
+
     it('is stable for the same source', () => {
       const first = compileCssModule({ name: 'button.module.css', source: buttonCss });
       const second = compileCssModule({ name: 'button.module.css', source: buttonCss });

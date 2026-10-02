@@ -81,6 +81,63 @@ function getSpecifiersWithRegex(content) {
 }
 
 /**
+ * Detects how a declaration file exposes a default export, so classic-resolution shims can forward it:
+ * `'equals'` for `export =`, `'default'` for ES default exports, `null` when there is none.
+ *
+ * @param {string} content
+ * @param {typeof import('typescript') | null} [ts]
+ * @returns {'equals' | 'default' | null}
+ */
+function getDefaultExportKind(content, ts = getTypeScript()) {
+  if (ts) {
+    const sourceFile = ts.createSourceFile('entry.d.ts', content, ts.ScriptTarget.Latest, false, ts.ScriptKind.TS);
+    /** @type {'equals' | 'default' | null} */
+    let kind = null;
+    for (const statement of sourceFile.statements) {
+      if (ts.isExportAssignment(statement)) {
+        if (statement.isExportEquals) {
+          return 'equals';
+        }
+        kind = 'default';
+      } else if (ts.isExportDeclaration(statement)) {
+        const clause = statement.exportClause;
+        if (clause && ts.isNamedExports(clause) && clause.elements.some(element => element.name.text === 'default')) {
+          kind = 'default';
+        }
+      } else {
+        // `getModifiers` was added in TypeScript 4.8, older versions expose `modifiers` directly.
+        /** @type {readonly import('typescript').ModifierLike[] | undefined} */
+        const modifiers = ts.getModifiers
+          ? ts.canHaveModifiers(statement)
+            ? ts.getModifiers(statement)
+            : undefined
+          : /** @type {any} */ (statement).modifiers;
+        const kinds = (modifiers ?? []).map(modifier => modifier.kind);
+        if (kinds.includes(ts.SyntaxKind.ExportKeyword) && kinds.includes(ts.SyntaxKind.DefaultKeyword)) {
+          kind = 'default';
+        }
+      }
+    }
+    return kind;
+  }
+
+  const code = content.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, '');
+  if (/\bexport\s*=/.test(code)) {
+    return 'equals';
+  }
+  if (/\bexport\s+default\b/.test(code)) {
+    return 'default';
+  }
+  for (const [, clause] of code.matchAll(/\bexport\s*\{([^}]*)\}/g)) {
+    // `default` or `local as default`; the exported name is the last word
+    if (clause.split(',').some(element => element.trim().split(/\s+/).pop() === 'default')) {
+      return 'default';
+    }
+  }
+  return null;
+}
+
+/**
  * Splits a module specifier into package name and sub path.
  *
  * @param {string} specifier
@@ -286,13 +343,16 @@ function collectTypings(options) {
   }
 
   /**
-   * Resolves the package providing types for `name`: the package itself when it ships types, `@types/*` otherwise.
+   * Resolves the package providing types for `name` (and `subpath`): the package itself when it ships types for the
+   * root or the requested subpath, `@types/*` otherwise.
    *
    * @param {string} name
    * @param {string} fromDir
+   * @param {string} [subpath]
    */
-  function getPackage(name, fromDir) {
-    const cached = packages.get(name);
+  function getPackage(name, fromDir, subpath = '') {
+    const cacheKey = `${name}\0${subpath}`;
+    const cached = packages.get(cacheKey);
     if (cached !== undefined) {
       return cached;
     }
@@ -310,7 +370,8 @@ function collectTypings(options) {
       (own.packageJson.types ||
         own.packageJson.typings ||
         existingFile(path.join(own.dir, 'index.d.ts')) ||
-        resolveEntryFile(own, ''));
+        resolveEntryFile(own, '') ||
+        (subpath && resolveEntryFile(own, subpath)));
 
     let result = hasOwnTypes ? own : null;
     if (!result && !name.startsWith('@types/')) {
@@ -318,7 +379,7 @@ function collectTypings(options) {
       result = typesDir ? load(typesDir) : null;
     }
 
-    packages.set(name, result);
+    packages.set(cacheKey, result);
     return result;
   }
 
@@ -431,7 +492,18 @@ function collectTypings(options) {
       relImport = `./${relImport}`;
     }
 
-    files[virtualPath] = `export * from ${JSON.stringify(relImport)};\n`;
+    const target = JSON.stringify(relImport);
+    // `export *` never re-exports a default export, forward it explicitly.
+    switch (getDefaultExportKind(files[toVirtualPath(pkg, entryFile)] ?? fs.readFileSync(entryFile, 'utf8'))) {
+      case 'equals':
+        files[virtualPath] = `import entry = require(${target});\nexport = entry;\n`;
+        break;
+      case 'default':
+        files[virtualPath] = `export * from ${target};\nexport { default } from ${target};\n`;
+        break;
+      default:
+        files[virtualPath] = `export * from ${target};\n`;
+    }
   }
 
   /**
@@ -445,7 +517,7 @@ function collectTypings(options) {
     }
 
     const { name, subpath } = parseSpecifier(specifier);
-    const pkg = getPackage(name, fromDir);
+    const pkg = getPackage(name, fromDir, subpath);
     if (!pkg) {
       missing.add(specifier);
       return;
@@ -522,6 +594,7 @@ module.exports = {
   getMonacoTypeScriptVersion,
   getSpecifiers,
   getSpecifiersWithRegex,
+  getDefaultExportKind,
   parseSpecifier,
   applyTypesVersions,
   getExportTypesPath,

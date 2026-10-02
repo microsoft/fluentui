@@ -52,18 +52,23 @@ function createRuntime(render: jest.Mock) {
   };
 }
 
+function loadBootstrap(token: string, parentOrigin?: string) {
+  document.body.innerHTML = '<div id="root"></div>';
+  // The production bootstrap is generated JavaScript that must execute inside the iframe global.
+  // eslint-disable-next-line no-eval
+  window.eval(getBootstrap(token, parentOrigin));
+  return (window as unknown as Record<string, (runtime: unknown) => void>)[PLAYGROUND_REGISTER_CALLBACK];
+}
+
 function startSandbox(
   token: string,
   render: jest.Mock,
   moduleLoaders: Record<string, () => Promise<unknown>> = {},
   parentOrigin?: string,
+  runtimeOverrides: Record<string, unknown> = {},
 ) {
-  document.body.innerHTML = '<div id="root"></div>';
-  // The production bootstrap is generated JavaScript that must execute inside the iframe global.
-  // eslint-disable-next-line no-eval
-  window.eval(getBootstrap(token, parentOrigin));
-  const register = (window as unknown as Record<string, (runtime: unknown) => void>)[PLAYGROUND_REGISTER_CALLBACK];
-  register({ ...createRuntime(render), moduleLoaders });
+  const register = loadBootstrap(token, parentOrigin);
+  register({ ...createRuntime(render), moduleLoaders, ...runtimeOverrides });
 }
 
 async function sendRun(token: string, code: string, runId = 7, extra: Record<string, unknown> = {}) {
@@ -242,6 +247,109 @@ describe('sandbox bootstrap', () => {
     } finally {
       jest.useRealTimers();
       delete (window as unknown as { probe?: unknown }).probe;
+    }
+  });
+
+  it('disposes effects of a module version whose render setup fails after evaluation', async () => {
+    const render = jest.fn();
+    const probe = { ticks: 0, resizes: 0 };
+    (window as unknown as { probe: typeof probe }).probe = probe;
+    startSandbox('setup-effects-token', render, {}, undefined, {
+      setup: {
+        render: () => {
+          throw new Error('setup render failed');
+        },
+      },
+    });
+    jest.useFakeTimers();
+    try {
+      await sendRun(
+        'setup-effects-token',
+        'setInterval(() => probe.ticks++, 10); window.addEventListener("resize", () => probe.resizes++); exports.default = () => null;',
+        1,
+      );
+      expect(postMessage).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'error', message: 'Error: setup render failed', runId: 1 }),
+        '*',
+      );
+
+      jest.advanceTimersByTime(30);
+      window.dispatchEvent(new Event('resize'));
+      expect(probe).toEqual({ ticks: 0, resizes: 0 });
+      expect(render).not.toHaveBeenCalled();
+    } finally {
+      jest.useRealTimers();
+      delete (window as unknown as { probe?: unknown }).probe;
+    }
+  });
+
+  describe('initialization errors', () => {
+    it('reports an error thrown before the runtime registers, e.g. by a setup module', () => {
+      loadBootstrap('init-throw-token');
+      window.dispatchEvent(new ErrorEvent('error', { error: new Error('setup failed') }));
+      window.dispatchEvent(new ErrorEvent('error', { error: new Error('second failure') }));
+
+      const initErrors = postMessage.mock.calls.filter(
+        ([message]) => message.type === 'init-error' && message.token === 'init-throw-token',
+      );
+      expect(initErrors).toEqual([[expect.objectContaining({ message: 'Error: setup failed' }), '*']]);
+    });
+
+    it('reports a runtime script that fails to load', () => {
+      loadBootstrap('init-script-token');
+      const script = document.createElement('script');
+      script.src = 'https://example.com/runtime.js';
+      document.body.appendChild(script);
+      script.dispatchEvent(new Event('error'));
+
+      expect(postMessage).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'init-error',
+          token: 'init-script-token',
+          message: 'Failed to load the playground runtime script "https://example.com/runtime.js".',
+        }),
+        '*',
+      );
+    });
+
+    it('reports a runtime that fails while registering instead of sending ready', () => {
+      const register = loadBootstrap('init-register-token');
+      register({ moduleLoaders: {}, setup: {} });
+
+      expect(postMessage).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'init-error', token: 'init-register-token' }),
+        '*',
+      );
+      expect(postMessage).not.toHaveBeenCalledWith(expect.objectContaining({ type: 'ready' }), '*');
+    });
+
+    it('does not report errors of a registered runtime as initialization errors', () => {
+      startSandbox('init-ready-token', jest.fn());
+      window.dispatchEvent(new ErrorEvent('error', { error: new Error('later failure') }));
+
+      expect(postMessage).not.toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'init-error', token: 'init-ready-token' }),
+        '*',
+      );
+    });
+  });
+
+  it('exposes CSS module classes without inherited object members', async () => {
+    const render = jest.fn();
+    const result: Record<string, unknown> = {};
+    (window as unknown as { result: typeof result }).result = result;
+    try {
+      startSandbox('css-proto-token', render);
+      await sendRun(
+        'css-proto-token',
+        'const styles = require("./styles/a.module.css"); result.defaultToString = styles.default.toString; result.constructorClass = styles.default.constructor; result.named = styles.root; exports.default = () => null;',
+        1,
+        { cssModules: [{ specifier: './styles/a.module.css', locals: { constructor: 'c', root: 'r' }, cssText: '' }] },
+      );
+
+      expect(result).toEqual({ defaultToString: undefined, constructorClass: 'c', named: 'r' });
+    } finally {
+      delete (window as unknown as { result?: unknown }).result;
     }
   });
 

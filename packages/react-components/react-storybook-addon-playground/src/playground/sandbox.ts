@@ -250,6 +250,8 @@ export function createSandboxDocument(
     return effects;
   };
 
+  const formatError = error => (error instanceof Error ? error.name + ': ' + error.message : String(error));
+
   const sendError = (error, runId, previewRetained = false) => {
     if (runId !== activeRunId) {
       return;
@@ -259,22 +261,48 @@ export function createSandboxDocument(
       runId,
       previewRetained,
       kind: error && error.kind ? error.kind : 'runtime',
-      message: error instanceof Error ? error.name + ': ' + error.message : String(error),
+      message: formatError(error),
     });
   };
 
+  // Failures before the runtime registers (a setup module throwing, a runtime script failing to load) cannot be
+  // attributed to a run; report the first one so the shell can stop waiting for "ready".
+  let initFailed = false;
+  const sendInitError = message => {
+    if (runtime || initFailed) {
+      return;
+    }
+    initFailed = true;
+    send({ type: 'init-error', message });
+  };
+
   const reportAsyncError = event => {
+    const error = 'reason' in event ? event.reason : event.error || event.message;
+    if (!runtime) {
+      sendInitError(formatError(error));
+      return;
+    }
     if (!activeRunId) {
       return;
     }
 
-    const error = 'reason' in event ? event.reason : event.error || event.message;
     successfulRun = undefined;
     sendError(error, activeRunId);
   };
 
   window.addEventListener('error', reportAsyncError);
   window.addEventListener('unhandledrejection', reportAsyncError);
+  // Resource load errors do not bubble, so listen in the capture phase.
+  window.addEventListener(
+    'error',
+    event => {
+      const target = event.target;
+      if (target && target !== window && target.tagName === 'SCRIPT') {
+        sendInitError('Failed to load the playground runtime script "' + target.src + '".');
+      }
+    },
+    true,
+  );
 
   const isComponentLike = value =>
     typeof value === 'function' ||
@@ -298,6 +326,15 @@ export function createSandboxDocument(
   };
 
   window[callbackName] = nextRuntime => {
+    try {
+      registerRuntime(nextRuntime);
+    } catch (error) {
+      runtime = undefined;
+      sendInitError(formatError(error));
+    }
+  };
+
+  const registerRuntime = nextRuntime => {
     runtime = nextRuntime;
     RenderBoundary = class extends runtime.React.Component {
       constructor(props) {
@@ -333,22 +370,19 @@ export function createSandboxDocument(
         return this.state.error ? null : this.props.children;
       }
     };
-    delete window[callbackName];
-
     const setup = runtime.setup || {};
-    send({
-      type: 'ready',
-      metadata: {
-        title: setup.title,
-        subtitle: setup.subtitle,
-        defaultCode: setup.defaultCode,
-        themes: (setup.themes || []).map(theme => ({
-          id: theme.id,
-          label: theme.label,
-          dark: theme.dark,
-        })),
-      },
-    });
+    const metadata = {
+      title: setup.title,
+      subtitle: setup.subtitle,
+      defaultCode: setup.defaultCode,
+      themes: (setup.themes || []).map(theme => ({
+        id: theme.id,
+        label: theme.label,
+        dark: theme.dark,
+      })),
+    };
+    delete window[callbackName];
+    send({ type: 'ready', metadata });
   };
 
   window.addEventListener('message', async event => {
@@ -371,6 +405,8 @@ export function createSandboxDocument(
       return;
     }
 
+    // Effects of a newly evaluated module version until they replace the current ones.
+    let pendingModuleEffects;
     try {
       activeRunId = message.runId;
       latestRunId = message.runId;
@@ -420,7 +456,11 @@ export function createSandboxDocument(
         }
         const cssModule = findCssModule(name);
         if (cssModule) {
-          return Object.assign(Object.create(null), { __esModule: true, default: cssModule.locals }, cssModule.locals);
+          return Object.assign(Object.create(null), {
+            __esModule: true,
+            // Structured cloning restores Object.prototype; class names like "constructor" must not inherit.
+            default: Object.assign(Object.create(null), cssModule.locals),
+          }, cssModule.locals);
         }
         if (isCssSpecifier(name)) {
           const error = new Error('CSS module "' + name + '" is not available in this playground session.');
@@ -435,20 +475,16 @@ export function createSandboxDocument(
         return modules.get(name);
       };
       let Component;
-      let nextModuleEffects;
       if (reuseComponent) {
         Component = previous.Component;
       } else {
         const sandboxModule = { exports: Object.create(null) };
         // User code runs with sandbox-global access; isolation depends on Preview's opaque-origin iframe sandbox.
         const evaluate = new Function('require', 'exports', 'module', message.code);
-        nextModuleEffects = collectModuleEffects(() => evaluate(sandboxRequire, sandboxModule.exports, sandboxModule));
-        try {
-          Component = pickComponent(sandboxModule.exports);
-        } catch (error) {
-          nextModuleEffects.forEach(dispose => dispose());
-          throw error;
-        }
+        pendingModuleEffects = collectModuleEffects(() =>
+          evaluate(sandboxRequire, sandboxModule.exports, sandboxModule),
+        );
+        Component = pickComponent(sandboxModule.exports);
       }
 
       const setup = runtime.setup || {};
@@ -478,11 +514,16 @@ export function createSandboxDocument(
       });
       root = root || runtime.createRoot(document.getElementById('root'));
       root.render(guardedElement);
-      if (nextModuleEffects) {
+      if (pendingModuleEffects) {
         moduleEffects.forEach(dispose => dispose());
-        moduleEffects = nextModuleEffects;
+        moduleEffects = pendingModuleEffects;
+        pendingModuleEffects = undefined;
       }
     } catch (error) {
+      // A version that failed to render must not leave its timers and listeners running.
+      if (pendingModuleEffects) {
+        pendingModuleEffects.forEach(dispose => dispose());
+      }
       sendError(error, message.runId, Boolean(successfulRun));
     }
   });

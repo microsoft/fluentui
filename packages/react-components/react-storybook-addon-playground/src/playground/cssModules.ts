@@ -117,9 +117,10 @@ export function compileCssModule(mod: CssModuleSource): CompiledCssModule {
   const id = basename.replace(/\.module\.css$/i, '').replace(/[^\w-]+/g, '_') || 'css';
   // File-scoped names survive declaration edits so live CSS updates need not remount React.
   const suffix = hashString(basename);
-  const locals: Record<string, string> = {};
+  // No prototype, so class names like `constructor` or `__proto__` are plain keys.
+  const locals: Record<string, string> = Object.create(null);
   const getLocalClassName = (local: string) => {
-    if (!locals[local]) {
+    if (!Object.prototype.hasOwnProperty.call(locals, local)) {
       locals[local] = `${id}__${local}--${suffix}`;
     }
     return locals[local];

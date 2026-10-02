@@ -236,6 +236,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
 
   const [metadata, setMetadata] = React.useState<PlaygroundSetupMetadata>(EMPTY_METADATA);
   const [runtimeReady, setRuntimeReady] = React.useState(false);
+  const [runtimeFailed, setRuntimeFailed] = React.useState(false);
   const [code, setCode] = React.useState(initialCode ?? '');
   const [cssModules, setCssModules] = React.useState(initialCssModules);
   const [selectedFileId, setActiveFileId] = React.useState(TSX_FILE_PATH);
@@ -542,6 +543,12 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     [applyRuntimeDefaultCode],
   );
 
+  const handleRuntimeInitError = React.useCallback((message: string) => {
+    setRuntimeFailed(true);
+    setError({ title: 'Playground runtime failed to load', message });
+    setStatus('error');
+  }, []);
+
   const handleRuntimeSuccess = React.useCallback(
     (successfulRunId: number) => {
       if (successfulRunId === runId) {
@@ -610,6 +617,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
     ++runCounter.current;
     hasSuccessfulRunRef.current = false;
     setRuntimeReady(false);
+    setRuntimeFailed(false);
     setCompiledCode(null);
     setError(null);
     setStatus('idle');
@@ -915,6 +923,16 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
   };
 
   const renderPlaceholder = () => {
+    if (runtimeFailed) {
+      return (
+        <div className={styles.placeholder} role="status">
+          <ErrorCircleRegular className={styles.placeholderIcon} aria-hidden="true" />
+          <span className={styles.placeholderTitle}>Preview unavailable</span>
+          <span>The playground runtime failed to load. Restart the preview to try again.</span>
+        </div>
+      );
+    }
+
     if (status === 'error') {
       return (
         <div className={styles.placeholder} role="status">
@@ -1194,6 +1212,7 @@ export const Playground = React.forwardRef<HTMLDivElement, PlaygroundProps>((pro
               cssModules={previewCssModules}
               manifest={manifest}
               onMetadata={handleMetadata}
+              onInitError={handleRuntimeInitError}
               onSuccess={handleRuntimeSuccess}
               onError={handleRuntimeError}
               onConsole={handleConsole}

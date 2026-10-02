@@ -62,7 +62,6 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
     options.configDir ?? process.cwd(),
     options.configType === 'PRODUCTION',
   );
-  const typings = collectConfiguredTypings(addonOptions, options);
   const originalEntry = config.entry;
 
   config.entry = async (): Promise<import('webpack').EntryObject> => {
@@ -78,7 +77,9 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
 
   config.plugins = config.plugins ?? [];
   config.plugins.push(new ExcludeRuntimeEntryFromHtmlPlugin());
-  config.plugins.push(new PlaygroundRuntimeManifestPlugin(addonOptions, typings));
+  config.plugins.push(
+    new PlaygroundRuntimeManifestPlugin(addonOptions, () => collectConfiguredTypings(addonOptions, options)),
+  );
   config.plugins.push(new AllowedModulesDefinePlugin(getAllowedModules(addonOptions)));
 
   return config;
@@ -411,15 +412,31 @@ export function getMonacoTypeScriptVersion(
   return readMonacoTypeScriptVersion();
 }
 
-class PlaygroundRuntimeManifestPlugin {
-  public constructor(private readonly options: PresetConfig, private readonly typings: ConfiguredTypings) {}
+/**
+ * Emits the runtime manifest and Monaco typings. Typings are collected on the first compilation and recollected when a
+ * watch rebuild reports one of their source declaration files as modified or removed.
+ */
+export class PlaygroundRuntimeManifestPlugin {
+  private _typings: ConfiguredTypings | undefined;
+  private _typingsSources = new Set<string>();
+
+  public constructor(
+    private readonly options: PresetConfig,
+    private readonly _collectTypings: () => ConfiguredTypings,
+  ) {}
 
   public apply(compiler: import('webpack').Compiler): void {
     const pluginName = 'PlaygroundRuntimeManifestPlugin';
     const { Compilation, sources } = compiler.webpack;
 
     compiler.hooks.thisCompilation.tap(pluginName, compilation => {
-      this.typings.sources.forEach(source => compilation.fileDependencies.add(source));
+      const changedFiles = [compiler.modifiedFiles, compiler.removedFiles];
+      if (!this._typings || changedFiles.some(files => files && hasAny(files, this._typingsSources))) {
+        this._typings = this._collectTypings();
+        this._typingsSources = new Set(this._typings.sources);
+      }
+      const typings = this._typings;
+      typings.sources.forEach(source => compilation.fileDependencies.add(source));
 
       compilation.hooks.processAssets.tap(
         {
@@ -427,15 +444,15 @@ class PlaygroundRuntimeManifestPlugin {
           stage: Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE,
         },
         () => {
-          if (this.typings.missing.length > 0) {
-            compilation.errors.push(
+          if (typings.missing.length > 0) {
+            // Missing declarations only limit editor IntelliSense; the runtime works without them.
+            compilation.warnings.push(
               new Error(
-                `Playground typings could not resolve: ${this.typings.missing
+                `Playground typings could not resolve: ${typings.missing
                   .map(value => JSON.stringify(value))
-                  .join(', ')}`,
+                  .join(', ')}. Install their declarations for full editor IntelliSense.`,
               ),
             );
-            return;
           }
 
           const entrypoint = compilation.entrypoints.get(ENTRY_NAME);
@@ -454,10 +471,10 @@ class PlaygroundRuntimeManifestPlugin {
             compilation.emitAsset(file, new sources.RawSource(json));
             return file;
           };
-          const typingsFile = emitTypings(this.typings.base);
-          const sharedFile = Object.keys(this.typings.shared).length > 0 ? emitTypings(this.typings.shared) : null;
+          const typingsFile = emitTypings(typings.base);
+          const sharedFile = Object.keys(typings.shared).length > 0 ? emitTypings(typings.shared) : null;
           const moduleTypings = Object.fromEntries(
-            Object.entries(this.typings.modules).map(([publicName, { files: declarations, usesShared }]) => [
+            Object.entries(typings.modules).map(([publicName, { files: declarations, usesShared }]) => [
               publicName,
               [
                 ...(usesShared && sharedFile ? [sharedFile] : []),
@@ -493,4 +510,14 @@ class PlaygroundRuntimeManifestPlugin {
       );
     });
   }
+}
+
+function hasAny(files: ReadonlySet<string>, candidates: ReadonlySet<string>): boolean {
+  const [smaller, larger] = files.size <= candidates.size ? [files, candidates] : [candidates, files];
+  for (const file of smaller) {
+    if (larger.has(file)) {
+      return true;
+    }
+  }
+  return false;
 }
