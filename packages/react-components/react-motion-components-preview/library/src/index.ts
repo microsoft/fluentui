@@ -14,10 +14,31 @@ export { Rotate, type RotateParams } from './components/Rotate';
 export { Stagger, type StaggerProps } from './choreography/Stagger';
 
 // Motion Atoms
-export { blurAtom } from './atoms/blur-atom';
+export {
+  blur,
+  blurIn,
+  blurOut,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
+  blurAtom,
+  type BlurPose,
+  type BlurOptions,
+  type BlurInOptions,
+  type BlurOutOptions,
+} from './atoms/blur-atom';
 // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
 export { fade, fadeIn, fadeOut, fadeAtom, type FadeOptions, type FadePose } from './atoms/fade-atom';
-export { rotateAtom } from './atoms/rotate-atom';
+export {
+  rotate,
+  rotateIn,
+  rotateOut,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the deprecated export for compatibility.
+  rotateAtom,
+  type RotateAxis,
+  type RotatePose,
+  type RotateOptions,
+  type RotateInOptions,
+  type RotateOutOptions,
+} from './atoms/rotate-atom';
 export {
   scale,
   scaleIn,

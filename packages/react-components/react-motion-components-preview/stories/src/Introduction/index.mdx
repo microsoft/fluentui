@@ -190,13 +190,15 @@ import { Fade, Scale, Slide } from '@fluentui/react-motion-components-preview';
 
 #### Endpoint Props
 
-For `Fade`, `Scale`, and `Slide`, `from*` and `to*` always describe the playback source and destination on both `.In` and `.Out`. The present-pose props (`inOpacity`, `inScale`, `inX`, and `inY`) belong only to the root presence component.
+For `Fade`, `Scale`, `Slide`, `Rotate`, and `Blur`, `from*` and `to*` always describe the playback source and destination on both `.In` and `.Out`. The present-pose props (`inOpacity`, `inScale`, `inX`, `inY`, `inAngle`, and `inRadius`) belong only to the root presence component. On a root, an omitted `to*` mirrors its corresponding `from*`.
 
 | Component | Presence enter               | Presence exit              | `.In` and `.Out` playback    |
 | --------- | ---------------------------- | -------------------------- | ---------------------------- |
 | `Fade`    | `fromOpacity` to `inOpacity` | `inOpacity` to `toOpacity` | `fromOpacity` to `toOpacity` |
 | `Scale`   | `fromScale` to `inScale`     | `inScale` to `toScale`     | `fromScale` to `toScale`     |
 | `Slide`   | `fromX/fromY` to `inX/inY`   | `inX/inY` to `toX/toY`     | `fromX/fromY` to `toX/toY`   |
+| `Rotate`  | `fromAngle` to `inAngle`     | `inAngle` to `toAngle`     | `fromAngle` to `toAngle`     |
+| `Blur`    | `fromRadius` to `inRadius`   | `inRadius` to `toRadius`   | `fromRadius` to `toRadius`   |
 
 Omitted directional endpoints use the preset's enter or exit defaults:
 
@@ -205,14 +207,16 @@ Omitted directional endpoints use the preset's enter or exit defaults:
 | `Fade`    | Opacity 0 to 1                           | Opacity 1 to 0                           |
 | `Scale`   | Scale 0.9 to 1                           | Scale 1 to 0.9                           |
 | `Slide`   | Translation `(0px, 0px)` to `(0px, 0px)` | Translation `(0px, 0px)` to `(0px, 0px)` |
+| `Rotate`  | Rotation -90 to 0 degrees                | Rotation 0 to -90 degrees                |
+| `Blur`    | Blur `10px` to `0px`                     | Blur `0px` to `10px`                     |
 
 Slide needs an authored offset to produce translation. If either axis of a source or destination is supplied, its omitted axis is `0px`. For example, `<Slide.Out fromX="4px" toY="-8px">` moves from `(4px, 0px)` to `(0px, -8px)`.
 
-Scale and Slide include directional fades by default: `.In` fades from 0 to 1, while `.Out` fades from 1 to 0, regardless of the authored scale or translation endpoints. Set `animateOpacity={false}` for scale-only or translation-only playback.
+Scale, Slide, Rotate, and Blur include directional fades by default: `.In` fades from 0 to 1, while `.Out` fades from 1 to 0, regardless of the authored pose endpoints. Set `animateOpacity={false}` to animate only scale, translation, rotation, or blur.
 
 #### Timing, Variants, and Replay
 
-For Fade, Scale, and Slide, use `duration`, `easing`, and `delay` to customize a one-way motion, including `.Out`. Explicit `.Out` timing overrides variant defaults. The `exitDuration`, `exitEasing`, and `exitDelay` aliases remain supported on `.Out` and take precedence over their ordinary counterparts when both are supplied.
+For Fade, Scale, Slide, Rotate, and Blur, use `duration`, `easing`, and `delay` to customize a one-way motion, including `.Out`. Explicit `.Out` timing overrides variant defaults. The `exitDuration`, `exitEasing`, and `exitDelay` aliases remain supported on `.Out` and take precedence over their ordinary counterparts when both are supplied.
 
 Snappy, Relaxed, and custom variants retain `.In` and `.Out`. For example:
 
@@ -319,8 +323,8 @@ function List({ items, visible }) {
 | `Scale`    | `ScaleSnappy`, `ScaleRelaxed`                          | `fromScale`, `inScale`, `toScale`, `duration`, `easing`            |
 | `Collapse` | `CollapseSnappy`, `CollapseRelaxed`, `CollapseDelayed` | `orientation`, `outSize`, `duration`, `easing`                     |
 | `Slide`    | `SlideSnappy`, `SlideRelaxed`                          | `fromX`, `fromY`, `inX`, `inY`, `toX`, `toY`, `duration`, `easing` |
-| `Blur`     | —                                                      | `outRadius`, `inRadius`, `duration`, `easing`                      |
-| `Rotate`   | —                                                      | `axis`, `outAngle`, `inAngle`, `duration`, `easing`                |
+| `Blur`     | —                                                      | `fromRadius`, `inRadius`, `toRadius`, `duration`, `easing`         |
+| `Rotate`   | —                                                      | `axis`, `fromAngle`, `inAngle`, `toAngle`, `duration`, `easing`    |
 | `Stagger`  | —                                                      | `itemDelay`, `itemDuration`, `reversed`, `hideMode`                |
 
 </div>

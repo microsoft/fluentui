@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Button, Select } from '@fluentui/react-components';
 import { createMotionComponent, motionTokens } from '@fluentui/react-motion';
-import { fadeAtom, scaleAtom, slideAtom, rotateAtom, blurAtom } from '@fluentui/react-motion-components-preview';
+import { fadeAtom, scaleAtom, slideAtom, rotate, blur } from '@fluentui/react-motion-components-preview';
 import { useClasses } from './AtomsDemo.styles';
 
 type AtomType = 'fade' | 'scale' | 'slide' | 'rotate' | 'blur';
@@ -21,11 +21,9 @@ const createAtomMotion = (type: AtomType) => {
     case 'slide':
       return createMotionComponent(slideAtom({ direction: 'enter', duration: demoDuration, easing, outY: '30px' }));
     case 'rotate':
-      return createMotionComponent(
-        rotateAtom({ direction: 'enter', duration: demoDuration, easing, axis: 'z', outAngle: -90 }),
-      );
+      return createMotionComponent(rotate({ duration: demoDuration, easing, axis: 'z', from: -90, to: 0 }));
     case 'blur':
-      return createMotionComponent(blurAtom({ direction: 'enter', duration: demoDuration, easing, outRadius: '10px' }));
+      return createMotionComponent(blur({ duration: demoDuration, easing, from: '10px', to: '0px' }));
     default: {
       const _exhaustive: never = type;
       throw new Error(`Unhandled atom type: ${_exhaustive}`);
@@ -37,8 +35,8 @@ const atomLabels: Record<AtomType, string> = {
   fade: 'fadeAtom',
   scale: 'scaleAtom',
   slide: 'slideAtom',
-  rotate: 'rotateAtom',
-  blur: 'blurAtom',
+  rotate: 'rotate',
+  blur: 'blur',
 };
 
 const atomCodeSnippets: Record<AtomType, string> = {
@@ -60,18 +58,16 @@ const atomCodeSnippets: Record<AtomType, string> = {
   outY: '30px',
   inY: '0px',
 })`,
-  rotate: `rotateAtom({
-  direction: 'enter',
+  rotate: `rotate({
   duration: 600,
   axis: 'z',
-  outAngle: -90,
-  inAngle: 0,
+  from: -90,
+  to: 0,
 })`,
-  blur: `blurAtom({
-  direction: 'enter',
+  blur: `blur({
   duration: 600,
-  outRadius: '10px',
-  inRadius: '0px',
+  from: '10px',
+  to: '0px',
 })`,
 };
 
@@ -95,8 +91,8 @@ export const AtomsDemo: React.FC = () => {
           <option value="fade">fadeAtom</option>
           <option value="scale">scaleAtom</option>
           <option value="slide">slideAtom</option>
-          <option value="rotate">rotateAtom</option>
-          <option value="blur">blurAtom</option>
+          <option value="rotate">rotate</option>
+          <option value="blur">blur</option>
         </Select>
         <Button appearance="primary" onClick={handleReplay}>
           Replay

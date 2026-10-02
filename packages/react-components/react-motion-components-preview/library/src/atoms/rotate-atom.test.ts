@@ -1,5 +1,33 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- These tests preserve coverage for the deprecated compatibility API. */
 import { motionTokens } from '@fluentui/react-motion';
-import { rotateAtom } from './rotate-atom';
+import { rotate, rotateIn, rotateOut, rotateAtom } from './rotate-atom';
+
+describe('rotate', () => {
+  it('uses neutral omitted endpoints and directional helpers', () => {
+    const enter = [{ rotate: 'z -45deg' }, { rotate: 'z 0deg' }];
+    const exit = [{ rotate: 'y 0deg' }, { rotate: 'y 30deg' }];
+    expect(rotate({ from: -45, duration: 123 }).keyframes).toEqual(enter);
+    expect(rotate({ to: 30, axis: 'y', duration: 123 }).keyframes).toEqual(exit);
+    expect(rotateIn({ from: -45, duration: 123 }).keyframes).toEqual(enter);
+    expect(rotateOut({ to: 30, axis: 'y', duration: 123 }).keyframes).toEqual(exit);
+    // @ts-expect-error at least one endpoint is required
+    rotate({ duration: 123 });
+    // @ts-expect-error entering uses only an authored source and a neutral destination
+    rotateIn({ from: -45, to: 30, duration: 123 });
+    // @ts-expect-error exiting uses only an authored destination and a neutral source
+    rotateOut({ from: -45, to: 30, duration: 123 });
+  });
+
+  it.each(['x', 'y', 'z'] as const)('creates temporal rotation endpoints on the %s axis', axis => {
+    const motion = rotate({ from: -45, to: 30, axis, duration: 123, easing: 'ease-in', delay: 25 });
+    expect(motion).toEqual({
+      keyframes: [{ rotate: `${axis} -45deg` }, { rotate: `${axis} 30deg` }],
+      duration: 123,
+      easing: 'ease-in',
+      delay: 25,
+    });
+  });
+});
 
 describe('rotateAtom', () => {
   it('creates enter keyframes with rotation from angle to 0', () => {

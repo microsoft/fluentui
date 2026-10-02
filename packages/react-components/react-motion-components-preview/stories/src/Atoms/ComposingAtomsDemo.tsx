@@ -5,7 +5,7 @@ import { Button } from '@fluentui/react-components';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { OpenRegular } from '@fluentui/react-icons';
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
-import { rotateAtom, blurAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { rotate, blur, scaleAtom } from '@fluentui/react-motion-components-preview';
 import { useClasses } from './ComposingAtomsDemo.styles';
 
 const duration = 1000;
@@ -15,25 +15,23 @@ const easing = motionTokens.curveDecelerateMid;
 // Custom "SpinBlur" — combines rotate + blur + scale
 const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration, easing, axis: 'z', outAngle: -20, inAngle: 0 }),
-    blurAtom({ direction: 'enter', duration, easing, outRadius: '8px', inRadius: '0px' }),
+    rotate({ duration, easing, axis: 'z', from: -20, to: 0 }),
+    blur({ duration, easing, from: '8px', to: '0px' }),
     scaleAtom({ direction: 'enter', duration, easing, outScale: 2 }),
   ],
   exit: [
-    rotateAtom({
-      direction: 'exit',
+    rotate({
       duration: exitDuration,
       easing: motionTokens.curveAccelerateMid,
       axis: 'z',
-      outAngle: 90,
-      inAngle: 0,
+      from: 0,
+      to: 90,
     }),
-    blurAtom({
-      direction: 'exit',
+    blur({
       duration: exitDuration,
       easing: motionTokens.curveLinear,
-      outRadius: '8px',
-      inRadius: '0px',
+      from: '0px',
+      to: '8px',
     }),
     scaleAtom({ direction: 'exit', duration: exitDuration, easing: motionTokens.curveLinear, outScale: 0 }),
   ],
@@ -41,13 +39,13 @@ const SpinBlur = createPresenceComponent({
 
 const codeSnippet = `const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration: 800, axis: 'z', outAngle: -20 }),
-    blurAtom({ direction: 'enter', duration: 800, outRadius: '8px' }),
+    rotate({ duration: 800, axis: 'z', from: -20, to: 0 }),
+    blur({ duration: 800, from: '8px', to: '0px' }),
     scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
   ],
   exit: [
-    rotateAtom({ direction: 'exit', duration: 600, axis: 'z', outAngle: -20 }),
-    blurAtom({ direction: 'exit', duration: 600, outRadius: '8px' }),
+    rotate({ duration: 600, axis: 'z', from: 0, to: -20 }),
+    blur({ duration: 600, from: '0px', to: '8px' }),
     scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
   ],
 });
@@ -60,7 +58,7 @@ const codeSnippet = `const SpinBlur = createPresenceComponent({
 const stackblitzExampleCode = `import * as React from 'react';
 import { makeStyles, tokens, Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { createPresenceComponent } from '@fluentui/react-motion';
-import { rotateAtom, blurAtom, scaleAtom } from '@fluentui/react-motion-components-preview';
+import { rotate, blur, scaleAtom } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -83,13 +81,13 @@ const useClasses = makeStyles({
 
 const SpinBlur = createPresenceComponent({
   enter: [
-    rotateAtom({ direction: 'enter', duration: 800, axis: 'z', outAngle: -20 }),
-    blurAtom({ direction: 'enter', duration: 800, outRadius: '8px' }),
+    rotate({ duration: 800, axis: 'z', from: -20, to: 0 }),
+    blur({ duration: 800, from: '8px', to: '0px' }),
     scaleAtom({ direction: 'enter', duration: 800, outScale: 0.8 }),
   ],
   exit: [
-    rotateAtom({ direction: 'exit', duration: 600, axis: 'z', outAngle: -20 }),
-    blurAtom({ direction: 'exit', duration: 600, outRadius: '8px' }),
+    rotate({ duration: 600, axis: 'z', from: 0, to: -20 }),
+    blur({ duration: 600, from: '0px', to: '8px' }),
     scaleAtom({ direction: 'exit', duration: 600, outScale: 0.8 }),
   ],
 });
@@ -203,7 +201,7 @@ function openInStackBlitz(doc: Document) {
 
   addField('project[template]', 'node');
   addField('project[title]', 'SpinBlur — Composing Motion Atoms');
-  addField('project[description]', '# Custom presence component composed from rotateAtom + blurAtom + scaleAtom');
+  addField('project[description]', '# Custom presence component composed from rotate + blur + scaleAtom');
 
   Object.entries(stackblitzFiles).forEach(([path, content]) => {
     addField(`project[files][${path}]`, content);

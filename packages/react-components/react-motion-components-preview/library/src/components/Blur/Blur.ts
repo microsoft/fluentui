@@ -1,11 +1,11 @@
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 import { motionTokens, createPresenceComponent } from '@fluentui/react-motion';
 import { fadeIn, fadeOut } from '../../atoms/fade-atom';
-import { blurAtom } from '../../atoms/blur-atom';
+import { blur } from '../../atoms/blur-atom';
 import type { BlurParams } from './blur-types';
 
 /**
- * Define a presence motion for blur in/out
+ * Defines enter blur from `fromRadius` to `inRadius` and exit blur from `inRadius` to `toRadius`.
  *
  * @param duration - Time (ms) for the enter transition (blur-in). Defaults to the `durationSlow` value (300 ms).
  * @param easing - Easing curve for the enter transition (blur-in). Defaults to the `curveDecelerateMin` value.
@@ -13,9 +13,10 @@ import type { BlurParams } from './blur-types';
  * @param exitDuration - Time (ms) for the exit transition (blur-out). Defaults to the `duration` param for symmetry.
  * @param exitEasing - Easing curve for the exit transition (blur-out). Defaults to the `curveAccelerateMin` value.
  * @param exitDelay - Time (ms) to delay the exit transition. Defaults to the `delay` param for symmetry.
- * @param outRadius - Blur radius for the out state (exited). Defaults to `'10px'`.
- * @param inRadius - Blur radius for the in state (entered). Defaults to `'0px'`.
- * @param animateOpacity - Whether to animate the opacity. Defaults to `true`.
+ * @param fromRadius - Blur before entering. Defaults to `'10px'`.
+ * @param inRadius - Blur while present. Defaults to `'0px'`.
+ * @param toRadius - Blur after exiting. Defaults to `fromRadius`.
+ * @param animateOpacity - Adds opacity from 0 to 1 on enter and 1 to 0 on exit. Defaults to `true`.
  */
 const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
   duration = motionTokens.durationSlow,
@@ -24,19 +25,19 @@ const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
   exitDuration = duration,
   exitEasing = motionTokens.curveAccelerateMin,
   exitDelay = delay,
-  outRadius = '10px',
+  fromRadius = '10px',
   inRadius = '0px',
+  toRadius = fromRadius,
   animateOpacity = true,
 }) => {
-  const enterAtoms = [blurAtom({ direction: 'enter', duration, easing, delay, outRadius, inRadius })];
+  const enterAtoms = [blur({ from: fromRadius, to: inRadius, duration, easing, delay })];
   const exitAtoms = [
-    blurAtom({
-      direction: 'exit',
+    blur({
+      from: inRadius,
+      to: toRadius,
       duration: exitDuration,
       easing: exitEasing,
       delay: exitDelay,
-      outRadius,
-      inRadius,
     }),
   ];
 
@@ -52,5 +53,12 @@ const blurPresenceFn: PresenceMotionFn<BlurParams> = ({
   };
 };
 
-/** A React component that applies blur in/out transitions to its children. */
-export const Blur = createPresenceComponent(blurPresenceFn);
+/**
+ * Animates presence from `fromRadius` to `inRadius` on enter and from `inRadius` to `toRadius` on exit.
+ * The default exit returns to `fromRadius`. Radii are CSS lengths.
+ * Opacity also animates from 0 to 1 on enter and 1 to 0 on exit unless `animateOpacity` is false.
+ * `Blur.In` and `Blur.Out` play once from `fromRadius` to `toRadius`; `inRadius` is root-only.
+ */
+export const Blur = createPresenceComponent(blurPresenceFn, {
+  poseProps: [{ from: 'fromRadius', in: 'inRadius', to: 'toRadius' }],
+});

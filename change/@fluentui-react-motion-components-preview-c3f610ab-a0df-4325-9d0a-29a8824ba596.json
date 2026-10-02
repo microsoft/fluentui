@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add temporal Rotate and Blur atoms and from-in-to presence endpoints",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robert@robertpenner.com"
+}

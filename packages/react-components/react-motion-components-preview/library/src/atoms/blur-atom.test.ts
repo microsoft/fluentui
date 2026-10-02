@@ -1,5 +1,32 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- These tests preserve coverage for the deprecated compatibility API. */
 import { motionTokens } from '@fluentui/react-motion';
-import { blurAtom } from './blur-atom';
+import { blur, blurIn, blurOut, blurAtom } from './blur-atom';
+
+describe('blur', () => {
+  it('uses neutral omitted endpoints and directional helpers', () => {
+    const enter = [{ filter: 'blur(1rem)' }, { filter: 'blur(0px)' }];
+    const exit = [{ filter: 'blur(0px)' }, { filter: 'blur(2px)' }];
+    expect(blur({ from: '1rem', duration: 123 }).keyframes).toEqual(enter);
+    expect(blur({ to: '2px', duration: 123 }).keyframes).toEqual(exit);
+    expect(blurIn({ from: '1rem', duration: 123 }).keyframes).toEqual(enter);
+    expect(blurOut({ to: '2px', duration: 123 }).keyframes).toEqual(exit);
+    // @ts-expect-error at least one endpoint is required
+    blur({ duration: 123 });
+    // @ts-expect-error entering uses only an authored source and a neutral destination
+    blurIn({ from: '1rem', to: '2px', duration: 123 });
+    // @ts-expect-error exiting uses only an authored destination and a neutral source
+    blurOut({ from: '1rem', to: '2px', duration: 123 });
+  });
+
+  it('creates temporal blur endpoints with CSS units and supplied timing', () => {
+    expect(blur({ from: '1rem', to: '2px', duration: 123, easing: 'ease-in', delay: 25 })).toEqual({
+      keyframes: [{ filter: 'blur(1rem)' }, { filter: 'blur(2px)' }],
+      duration: 123,
+      easing: 'ease-in',
+      delay: 25,
+    });
+  });
+});
 
 describe('blurAtom', () => {
   it('creates enter keyframes with blur from radius to 0', () => {

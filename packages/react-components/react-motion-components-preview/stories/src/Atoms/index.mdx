@@ -85,26 +85,27 @@ In the Fluent Motion System's <a href="?path=/docs/motion-introduction--docs#an-
 Each atom is a factory function that returns an `AtomMotion` object — a plain description of keyframes, duration, and easing that the browser can execute directly.
 
 ```ts
-import { fadeAtom } from '@fluentui/react-motion-components-preview';
+import { blur } from '@fluentui/react-motion-components-preview';
 
-const fadeIn = fadeAtom({
-  direction: 'enter',
+const blurMotion = blur({
   duration: 500,
-  outOpacity: 0,
-  inOpacity: 1,
+  from: '10px',
+  to: '0px',
 });
-// Returns: { keyframes: [{ opacity: 0 }, { opacity: 1 }], duration: 500, easing: '...', ... }
+// Returns: { keyframes: [{ filter: 'blur(10px)' }, { filter: 'blur(0px)' }], duration: 500, easing: '...', delay: 0 }
 ```
 
 ## Available Atoms
 
-| Atom         | Effect               | CSS Property             | Key Parameters                |
-| ------------ | -------------------- | ------------------------ | ----------------------------- |
-| `fadeAtom`   | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`     |
-| `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`         |
-| `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`  |
-| `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `outAngle`, `inAngle` |
-| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`       |
+| Atom        | Effect               | CSS Property             | Key Parameters               |
+| ----------- | -------------------- | ------------------------ | ---------------------------- |
+| `fadeAtom`  | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`    |
+| `scaleAtom` | Size scaling         | `transform: scale()`     | `outScale`, `inScale`        |
+| `slideAtom` | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY` |
+| `rotate`    | 3D rotation          | `rotate`                 | `axis`, `from`, `to`         |
+| `blur`      | Blur filter          | `filter: blur()`         | `from`, `to`                 |
+
+The `*Atom` helpers are deprecated compatibility APIs. `rotateAtom` and `blurAtom` remain available with their original `direction` and out/in parameters; new code should use temporal `rotate` and `blur` endpoints.
 
 <AtomsDemo />
 
@@ -114,19 +115,34 @@ const fadeIn = fadeAtom({
 
 All atoms accept these base parameters:
 
-| Parameter   | Type                | Default       | Description                             |
-| ----------- | ------------------- | ------------- | --------------------------------------- |
-| `direction` | `'enter' \| 'exit'` | —             | **Required.** Determines keyframe order |
-| `duration`  | `number`            | —             | **Required.** Animation duration in ms  |
-| `easing`    | `string`            | `curveLinear` | CSS easing function                     |
-| `delay`     | `number`            | `0`           | Delay before animation starts           |
+| Parameter  | Type     | Default       | Description                            |
+| ---------- | -------- | ------------- | -------------------------------------- |
+| `duration` | `number` | —             | **Required.** Animation duration in ms |
+| `easing`   | `string` | `curveLinear` | CSS easing function                    |
+| `delay`    | `number` | `0`           | Delay before animation starts          |
+
+`rotate` and `blur` animate `from` to `to`, with at least one endpoint required. They do not take `direction`, add a fade, or set fill. An omitted endpoint is neutral: `0` degrees for rotation or `'0px'` for blur. Rotation defaults to the `z` axis; blur radii include CSS units. These neutral atom defaults differ from the components' default entrance angles and radii.
+
+`rotateIn` and `blurIn` require only `from` and end at neutral. `rotateOut` and `blurOut` require only `to` and start at neutral. Supplying the other endpoint to these convenience helpers is a type error; use `rotate` or `blur` for two authored endpoints.
+
+Legacy `*Atom` helpers additionally require `direction: 'enter' | 'exit'`, which selects out-to-in or in-to-out keyframe order.
 
 ### Per-Atom Parameters
 
 In addition to the common parameters above, each atom has specific properties:
 
 ```ts
-import { fadeAtom, scaleAtom, slideAtom, rotateAtom, blurAtom } from '@fluentui/react-motion-components-preview';
+import {
+  fadeAtom,
+  scaleAtom,
+  slideAtom,
+  rotate,
+  rotateIn,
+  rotateOut,
+  blur,
+  blurIn,
+  blurOut,
+} from '@fluentui/react-motion-components-preview';
 
 // fadeAtom — opacity transition
 fadeAtom({ direction: 'enter', duration: 500, outOpacity: 0, inOpacity: 1 });
@@ -137,11 +153,15 @@ scaleAtom({ direction: 'enter', duration: 500, outScale: 0.9, inScale: 1 });
 // slideAtom — position translation
 slideAtom({ direction: 'enter', duration: 500, outX: '0px', outY: '20px', inX: '0px', inY: '0px' });
 
-// rotateAtom — rotation (axis: 'x' | 'y' | 'z')
-rotateAtom({ direction: 'enter', duration: 600, axis: 'z', outAngle: -90, inAngle: 0 });
+// Rotation in degrees (axis: 'x' | 'y' | 'z')
+rotate({ duration: 600, axis: 'y', from: -90, to: 45 });
+rotateIn({ duration: 600, from: -90 });
+rotateOut({ duration: 600, to: 90 });
 
-// blurAtom — blur filter
-blurAtom({ direction: 'enter', duration: 500, outRadius: '10px', inRadius: '0px' });
+// Blur with CSS lengths
+blur({ duration: 500, from: '1rem', to: '2px' });
+blurIn({ duration: 500, from: '10px' });
+blurOut({ duration: 500, to: '10px' });
 ```
 
 ## Creating Custom Presence Components

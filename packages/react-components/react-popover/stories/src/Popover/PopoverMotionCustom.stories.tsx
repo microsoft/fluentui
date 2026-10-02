@@ -1,11 +1,11 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
 import { Button, createPresenceComponent, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import { fadeAtom, blurAtom } from '@fluentui/react-motion-components-preview';
+import { fadeAtom, blurOut } from '@fluentui/react-motion-components-preview';
 
 const FadeInBlurOut = createPresenceComponent({
   enter: fadeAtom({ duration: 500, direction: 'enter' }),
-  exit: [fadeAtom({ duration: 500, direction: 'exit' }), blurAtom({ duration: 500, direction: 'exit' })],
+  exit: [fadeAtom({ duration: 500, direction: 'exit' }), blurOut({ duration: 500, to: '10px' })],
 });
 
 export const MotionCustom = (): JSXElement => (

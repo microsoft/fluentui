@@ -12,16 +12,45 @@ import type { PresenceDirection } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 
 // @public
-export const Blur: PresenceComponent<BlurParams, never>;
+export const Blur: PresenceComponent<BlurParams, "inRadius">;
 
 // @public
+const blur_2: ({ from, to, duration, easing, delay, }: BlurOptions) => AtomMotion;
+export { blur_2 as blur }
+
+// @public @deprecated
 export const blurAtom: ({ direction, duration, easing, delay, outRadius, inRadius, }: BlurAtomParams) => AtomMotion;
+
+// @public
+export const blurIn: ({ from, duration, easing, delay }: BlurInOptions) => AtomMotion;
+
+// @public
+export type BlurInOptions = MotionTiming & {
+    from: BlurPose;
+    to?: never;
+};
+
+// @public
+export type BlurOptions = MotionTiming & PoseEndpoints<BlurPose>;
+
+// @public
+export const blurOut: ({ to, duration, easing, delay }: BlurOutOptions) => AtomMotion;
+
+// @public
+export type BlurOutOptions = MotionTiming & {
+    from?: never;
+    to: BlurPose;
+};
 
 // @public (undocumented)
 export type BlurParams = BasePresenceParams & AnimateOpacity & {
-    outRadius?: string;
-    inRadius?: string;
+    fromRadius?: BlurPose;
+    inRadius?: BlurPose;
+    toRadius?: BlurPose;
 };
+
+// @public
+export type BlurPose = string;
 
 // @public
 export const Collapse: PresenceComponent<CollapseParams, never>;
@@ -88,18 +117,53 @@ export const FadeSnappy: PresenceComponent<FadeParams, "inOpacity">;
 // @public
 export type MotionTiming = Omit<BaseAtomParams, 'direction'>;
 
-// @public (undocumented)
-export const Rotate: PresenceComponent<RotateParams, never>;
+// @public
+export const Rotate: PresenceComponent<RotateParams, "inAngle">;
 
 // @public
+export const rotate: ({ from, to, axis, duration, easing, delay, }: RotateOptions) => AtomMotion;
+
+// @public @deprecated
 export const rotateAtom: ({ direction, duration, easing, delay, axis, outAngle, inAngle, }: RotateAtomParams) => AtomMotion;
+
+// @public
+export type RotateAxis = 'x' | 'y' | 'z';
+
+// @public
+export const rotateIn: ({ from, axis, duration, easing, delay }: RotateInOptions) => AtomMotion;
+
+// @public
+export type RotateInOptions = MotionTiming & {
+    axis?: RotateAxis;
+    from: RotatePose;
+    to?: never;
+};
+
+// @public
+export type RotateOptions = MotionTiming & PoseEndpoints<RotatePose> & {
+    axis?: RotateAxis;
+};
+
+// @public
+export const rotateOut: ({ to, axis, duration, easing, delay }: RotateOutOptions) => AtomMotion;
+
+// @public
+export type RotateOutOptions = MotionTiming & {
+    axis?: RotateAxis;
+    from?: never;
+    to: RotatePose;
+};
 
 // @public (undocumented)
 export type RotateParams = BasePresenceParams & AnimateOpacity & {
-    axis?: Axis3D;
-    outAngle?: number;
-    inAngle?: number;
+    axis?: RotateAxis;
+    fromAngle?: RotatePose;
+    inAngle?: RotatePose;
+    toAngle?: RotatePose;
 };
+
+// @public
+export type RotatePose = number;
 
 // @public
 export const Scale: PresenceComponent<ScaleParams, "inScale">;
