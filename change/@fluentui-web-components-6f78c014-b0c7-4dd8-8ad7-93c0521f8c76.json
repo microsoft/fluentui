@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): defer parent child collection until custom elements upgrade",
+  "packageName": "@fluentui/web-components",
+  "email": "kirtiar15502@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -368,9 +368,9 @@ test.describe('MenuList', () => {
 
     await fastPage.setTemplate({
       innerHTML: /* html */ `
-        <${MenuItemTagName}
+        <${MenuItemTagName} role="menuitem"
           >Menu item 1
-          <${tagName} slot="submenu">
+          <${tagName}>
             <${MenuItemTagName}>Menu item 1.1</${MenuItemTagName}>
             <${MenuItemTagName}>Menu item 1.2</${MenuItemTagName}>
             <${MenuItemTagName}>Menu item 1.3</${MenuItemTagName}>
@@ -378,6 +378,8 @@ test.describe('MenuList', () => {
         </${MenuItemTagName}>
       `,
     });
+
+    await expect(element.nth(1)).toHaveAttribute('slot', 'submenu');
 
     await element.first().evaluate(node => {
       node.focus();
