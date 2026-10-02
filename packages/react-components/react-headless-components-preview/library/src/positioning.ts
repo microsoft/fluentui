@@ -11,6 +11,7 @@ export type {
 export {
   usePositioning,
   PositioningEngineProvider,
+  fallbackPositioningEngine,
   POSITIONS,
   ALIGNMENTS,
   getPlacementString,

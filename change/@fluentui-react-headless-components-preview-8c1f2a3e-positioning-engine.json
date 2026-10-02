@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: support positioning engine injection",
+  "comment": "feat: support positioning engine injection and fallbackPositioningEngine",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

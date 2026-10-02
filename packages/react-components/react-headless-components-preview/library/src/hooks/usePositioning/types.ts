@@ -30,7 +30,9 @@ export type PositioningProps = CanonicalPositioningProps & {
   /**
    * A JavaScript positioning engine that replaces CSS anchor positioning for this surface entirely.
    * When set (or provided through `PositioningEngineProvider`), the engine owns every positioning
-   * option, including the ones the CSS engine also supports.
+   * option, including the ones the CSS engine also supports. An engine wrapped with
+   * `fallbackPositioningEngine` is only used when the browser lacks CSS anchor positioning or an
+   * option needs an engine.
    */
   engine?: PositioningEngine;
 };

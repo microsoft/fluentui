@@ -2,7 +2,15 @@ By default headless surfaces are positioned by the browser with native CSS ancho
 
 ```tsx
 import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
-import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
+import {
+  PositioningEngineProvider,
+  fallbackPositioningEngine,
+} from '@fluentui/react-headless-components-preview/positioning';
+
+// app-wide, recommended: CSS where it is enough, the engine where it is not
+<PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
+  <App />
+</PositioningEngineProvider>;
 
 // one surface
 <Popover positioning={{ autoSize: true, engine: floatingUIPositioningEngine }} />;
@@ -16,6 +24,15 @@ import { PositioningEngineProvider } from '@fluentui/react-headless-components-p
 ### When you need one
 
 Every option of the canonical `positioning` contract is accepted, but these have no CSS equivalent and only take effect with an engine: `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `useTransform`, `disableUpdateOnResize`, `onPositioningEnd`. Passing them without an engine logs a development warning and does nothing.
+
+### Fallback engine
+
+A plain engine in `PositioningEngineProvider` positions every surface below it, so one part of an app that needs `autoSize` would opt the whole subtree out of native anchoring. Wrap the engine with `fallbackPositioningEngine` instead: each surface keeps CSS anchor positioning and only hands over to the engine when
+
+- the browser does not support `position-area` (Chromium before 129, Safari before 26, Firefox before 147), or
+- it sets an option that needs an engine: `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `onPositioningEnd`, or a function `offset`.
+
+`useTransform` and `disableUpdateOnResize` only tune an engine, so they do not trigger the handover on their own. If the options change at runtime the surface switches between the two paths.
 
 `floatingUIPositioningEngine` is the Floating UI implementation that powers Fluent UI React v9, so a headless app that imports it gets full v9 parity; the `Engine…` stories below reproduce the corresponding v9 positioning examples. `@floating-ui/*` is only bundled if you import the engine; the headless package's bundle-isolation check forbids it.
 

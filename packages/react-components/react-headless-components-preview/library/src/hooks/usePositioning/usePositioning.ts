@@ -1,28 +1,38 @@
 'use client';
 
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PositioningProps, PositioningReturn } from './types';
 import { useCssAnchorPositioning } from './useCssAnchorPositioning';
 import { useEnginePositioning } from './useEnginePositioning';
 import { usePositioningEngineContext } from './PositioningEngineContext';
+import { isFallbackPositioningEngine } from './fallbackPositioningEngine';
+import { supportsCssAnchorPositioning } from './utils';
 
 export type { TargetElement } from './useCssAnchorPositioning';
 
 /**
- * Options that CSS anchor positioning cannot express. They only take effect with an engine.
+ * Options that CSS anchor positioning cannot express. A fallback engine takes over when any is set.
  */
-const ENGINE_ONLY_OPTIONS = [
+const REQUIRES_ENGINE_OPTIONS = [
   'arrowPadding',
   'autoSize',
-  'disableUpdateOnResize',
   'flipBoundary',
   'onPositioningEnd',
   'overflowBoundary',
   'overflowBoundaryPadding',
   'shiftToCoverTarget',
-  'useTransform',
 ] as const satisfies ReadonlyArray<keyof PositioningProps>;
+
+/**
+ * Options that only tune an engine. They have no effect on the CSS path, but do not need an engine.
+ */
+const ENGINE_TUNING_OPTIONS = ['disableUpdateOnResize', 'useTransform'] as const satisfies ReadonlyArray<
+  keyof PositioningProps
+>;
+
+const ENGINE_ONLY_OPTIONS = [...REQUIRES_ENGINE_OPTIONS, ...ENGINE_TUNING_OPTIONS].sort();
 
 const noopRef: React.RefCallback<HTMLElement> = () => undefined;
 
@@ -31,17 +41,30 @@ const noopRef: React.RefCallback<HTMLElement> = () => undefined;
  *
  * By default this uses native CSS anchor positioning. When an engine is supplied — inline through
  * `options.engine` or app-wide through `PositioningEngineProvider` — the engine owns positioning
- * entirely and the CSS path is not applied.
+ * entirely and the CSS path is not applied. An engine wrapped with `fallbackPositioningEngine` is only
+ * used when the browser lacks CSS anchor positioning or the options need an engine.
  */
 export function usePositioning(options: PositioningProps): PositioningReturn {
   const { engine: engineFromOptions, positioningRef, ...positioningOptions } = options;
   const engineFromContext = usePositioningEngineContext();
-  const engine = engineFromOptions ?? engineFromContext;
+  const requestedEngine = engineFromOptions ?? engineFromContext;
+  const { targetDocument } = useFluent();
+
+  const requiresEngine =
+    typeof positioningOptions.offset === 'function' ||
+    REQUIRES_ENGINE_OPTIONS.some(key => positioningOptions[key] !== undefined);
+  const engine =
+    isFallbackPositioningEngine(requestedEngine) &&
+    !requiresEngine &&
+    supportsCssAnchorPositioning(targetDocument?.defaultView)
+      ? undefined
+      : requestedEngine;
+
   // Headless surfaces render in the top layer, so both positioners default to `fixed` (the v9 engine
   // default would otherwise be `absolute`).
   const strategy = positioningOptions.strategy ?? 'fixed';
 
-  const unsupportedOptions = engine
+  const unsupportedOptions = requestedEngine
     ? ''
     : ENGINE_ONLY_OPTIONS.filter(key => positioningOptions[key] !== undefined)
         .map(key => `"${key}"`)

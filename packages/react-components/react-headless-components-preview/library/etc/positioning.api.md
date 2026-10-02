@@ -22,6 +22,9 @@ export const ALIGNMENTS: {
 };
 
 // @public
+export function fallbackPositioningEngine(engine: PositioningEngine): PositioningEngine;
+
+// @public
 export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue;
 
 export { Position }

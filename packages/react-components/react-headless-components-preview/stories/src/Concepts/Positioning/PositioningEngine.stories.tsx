@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
-import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
+import {
+  PositioningEngineProvider,
+  fallbackPositioningEngine,
+} from '@fluentui/react-headless-components-preview/positioning';
 // eslint-disable-next-line @fluentui/no-restricted-imports
 import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
 
@@ -35,6 +38,37 @@ export const Engine = (): React.ReactNode => (
           </PopoverSurface>
         </Popover>
       </div>
+    </section>
+
+    <section className={styles.section}>
+      <h3 className={styles.sectionTitle}>App-wide fallback: fallbackPositioningEngine</h3>
+      <p className={styles.sectionNote}>
+        The recommended app-wide setup. Wrapped with <code>fallbackPositioningEngine</code>, the provider's engine is
+        only used by surfaces that need it: the left surface keeps native CSS anchor positioning, the right one sets{' '}
+        <code>autoSize</code> and hands over to Floating UI. In a browser without <code>position-area</code> both use
+        the engine.
+      </p>
+      <PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
+        <div className={styles.row}>
+          <Popover positioning={{ position: 'below', align: 'start', offset: 8 }}>
+            <PopoverTrigger>
+              <button className={styles.trigger}>No engine-only options</button>
+            </PopoverTrigger>
+            <PopoverSurface className={`${styles.surfaceFallback} ${styles.flipReadout}`}>
+              <span className={styles.badge}>position-area</span> Positioned by the browser.
+            </PopoverSurface>
+          </Popover>
+
+          <Popover positioning={{ position: 'below', align: 'start', offset: 8, autoSize: true }}>
+            <PopoverTrigger>
+              <button className={styles.trigger}>autoSize</button>
+            </PopoverTrigger>
+            <PopoverSurface className={`${styles.surfaceFallback} ${styles.flipReadout}`}>
+              <span className={styles.badge}>engine</span> Positioned by Floating UI.
+            </PopoverSurface>
+          </Popover>
+        </div>
+      </PositioningEngineProvider>
     </section>
 
     <section className={styles.section}>

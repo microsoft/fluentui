@@ -5,7 +5,8 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
-import { PositioningEngineProvider } from '../../positioning';
+import { PositioningEngineProvider, fallbackPositioningEngine } from '../../positioning';
+import type { PositioningProps } from '../../positioning';
 
 const mount = (element: JSXElement) => {
   mountBase(element);
@@ -111,6 +112,49 @@ describe('Popover positioning engine', () => {
     cy.get(surfaceSelector).should('have.attr', 'data-popper-placement', 'right');
     cy.get('[data-arrow]').should($arrow => {
       expect($arrow[0].style.top).to.match(/px$/);
+    });
+  });
+
+  describe('fallbackPositioningEngine', () => {
+    const mountWithFallback = (positioning: PositioningProps) =>
+      mount(
+        <PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
+          <div style={{ padding: 200 }}>
+            <Popover defaultOpen positioning={positioning}>
+              <PopoverTrigger disableButtonEnhancement>
+                <button>Trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface>Surface</PopoverSurface>
+            </Popover>
+          </div>
+        </PositioningEngineProvider>,
+      );
+
+    it('keeps CSS anchor positioning for a surface that does not need the engine', () => {
+      mountWithFallback({ position: 'below' });
+
+      // Browsers without `position-area` (the React 17 run's Electron 118) take the engine for every surface.
+      cy.window().then(win => {
+        if (win.CSS?.supports?.('position-area', 'bottom')) {
+          cy.get(surfaceSelector).should($el => {
+            expect($el).to.have.length(1);
+            expect($el[0]).not.to.have.attr('data-popper-placement');
+            expect($el[0].style.getPropertyValue('position-anchor')).to.match(/^--popover-anchor-/);
+          });
+        } else {
+          cy.get(surfaceSelector).should('have.attr', 'data-popper-placement', 'bottom');
+        }
+      });
+    });
+
+    it('hands over to the engine for a surface with engine-only options', () => {
+      mountWithFallback({ position: 'below', autoSize: true });
+
+      cy.get(surfaceSelector)
+        .should('have.attr', 'data-popper-placement', 'bottom')
+        .and($el => {
+          expect($el[0].style.getPropertyValue('position-anchor')).to.equal('');
+        });
     });
   });
 });
