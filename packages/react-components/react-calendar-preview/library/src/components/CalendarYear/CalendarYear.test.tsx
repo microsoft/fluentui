@@ -49,6 +49,20 @@ describe('CalendarYear', () => {
     expect(getAllByRole('gridcell').every(cell => cell.getAttribute('aria-selected') === 'false')).toBe(true);
   });
 
+  it('distinguishes astronomical years zero and one with the default formatter', () => {
+    const onSelectYear = jest.fn();
+    const { getByRole, getByTitle } = render(
+      <CalendarYear navigatedYear={0} onSelectYear={onSelectYear} onHeaderSelect={jest.fn()} />,
+    );
+    expect(getByRole('grid')).toHaveAttribute('aria-label', '1 BC - 11');
+    expect(getByRole('button', { name: '1 BC - 11, change year' })).toBeTruthy();
+    expect(getByTitle('Previous year range 13 BC - 2 BC')).toBeTruthy();
+    expect(getByTitle('Next year range 12 - 23')).toBeTruthy();
+    fireEvent.click(getByRole('gridcell', { name: '1 BC' }));
+    fireEvent.click(getByRole('gridcell', { name: '1' }));
+    expect(onSelectYear.mock.calls.map(([, data]) => data.year)).toEqual([0, 1]);
+  });
+
   it('uses the provider today value and keeps unavailable years focusable without selecting them', () => {
     const onSelectYear = jest.fn();
     const { getByRole, getByTitle } = render(<CalendarYear navigatedYear={2025} onSelectYear={onSelectYear} />, {

@@ -35,6 +35,26 @@ describe('CalendarMonth', () => {
     expect(getAllByRole('gridcell').every(cell => cell.getAttribute('aria-selected') === 'false')).toBe(true);
   });
 
+  it('keeps only the outer picker chrome when showing the embedded year picker', () => {
+    const { container, getByRole } = render(<CalendarMonth {...defaultProps} />);
+    const root = container.querySelector('.fui-CalendarMonth')!;
+    const view = root.ownerDocument.defaultView!;
+    const monthStyle = view.getComputedStyle(root);
+
+    fireEvent.click(getByRole('button', { name: '2025, change year' }));
+
+    const year = container.querySelector('.fui-CalendarYear')!;
+    const yearStyle = view.getComputedStyle(year);
+    expect(yearStyle.paddingTop).toBe('0px');
+    expect(yearStyle.paddingRight).toBe('0px');
+    expect(yearStyle.paddingBottom).toBe('0px');
+    expect(yearStyle.paddingLeft).toBe('0px');
+    expect(yearStyle.overflow).toBe('visible');
+    expect(yearStyle.width).toBe('auto');
+    expect(view.getComputedStyle(root).padding).toBe(monthStyle.padding);
+    expect(view.getComputedStyle(root).overflow).toBe('hidden');
+  });
+
   it.each([false, true])(
     'restores focus to a focusable month after closing the year picker (allFocusable=%s)',
     allFocusable => {
