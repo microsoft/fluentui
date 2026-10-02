@@ -48,3 +48,13 @@ export type {
   AnnounceContextValue as AnnounceContextValue_unstable,
   AnnounceOptions,
 } from './AnnounceContext';
+
+export {
+  AncestorMotionProvider as AncestorMotionProvider_unstable,
+  createAncestorMotionController as createAncestorMotionController_unstable,
+  useAncestorMotionState as useAncestorMotionState_unstable,
+} from './AncestorMotionContext/AncestorMotionContext';
+export type {
+  AncestorMotionController as AncestorMotionController_unstable,
+  AncestorMotionState as AncestorMotionState_unstable,
+} from './AncestorMotionContext/AncestorMotionContext';

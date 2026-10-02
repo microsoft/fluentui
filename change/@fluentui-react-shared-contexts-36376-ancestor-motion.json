@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adds internal shared state for active ancestor motion.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}

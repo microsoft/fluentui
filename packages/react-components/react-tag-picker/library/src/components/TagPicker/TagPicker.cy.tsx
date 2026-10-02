@@ -12,6 +12,7 @@ import { TagPickerList } from '../TagPickerList/TagPickerList';
 import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
+import { Dialog, DialogActions, DialogBody, DialogSurface, type DialogProps } from '@fluentui/react-dialog';
 
 import 'cypress-real-events';
 import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
@@ -107,6 +108,109 @@ const TagPickerControlled = ({
 
       <button id="after-button">After</button>
     </div>
+  );
+};
+
+const TagPickerInAnimatedDialog = () => {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [loadedOptions, setLoadedOptions] = React.useState<string[]>([]);
+  const [dialogAnimating, setDialogAnimating] = React.useState(false);
+  const hasLoadedOnceRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!dialogOpen) {
+      return;
+    }
+
+    if (hasLoadedOnceRef.current) {
+      setLoadedOptions(options);
+      return;
+    }
+
+    setLoadedOptions([]);
+    const timeoutId = setTimeout(() => {
+      hasLoadedOnceRef.current = true;
+      setLoadedOptions(options);
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [dialogOpen]);
+
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
+
+    setSelectedOptions(data.selectedOptions);
+  };
+
+  const onOpenChange: DialogProps['onOpenChange'] = (_, data) => setDialogOpen(data.open);
+  const tagPickerOptions = loadedOptions.filter(option => !selectedOptions.includes(option));
+
+  return (
+    <>
+      <Button data-testid="open-dialog" onClick={() => setDialogOpen(true)}>
+        Open dialog
+      </Button>
+      <Button data-testid="close-dialog" onClick={() => setDialogOpen(false)}>
+        Close dialog
+      </Button>
+
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={onOpenChange}
+        surfaceMotion={{
+          onMotionStart: () => setDialogAnimating(true),
+          onMotionFinish: () => setDialogAnimating(false),
+        }}
+      >
+        <DialogSurface>
+          <DialogBody data-testid="dialog-body" data-animating={dialogAnimating}>
+            <div>
+              <TagPicker
+                onOptionSelect={onOptionSelect}
+                selectedOptions={selectedOptions}
+                open={tagPickerOptions.length > 0}
+              >
+                <TagPickerControl data-testid="dialog-tag-picker-control">
+                  <TagPickerGroup>
+                    {selectedOptions.map(option => (
+                      <Tag
+                        key={option}
+                        shape="rounded"
+                        media={<Avatar name={option} color="colorful" />}
+                        value={option}
+                      >
+                        {option}
+                      </Tag>
+                    ))}
+                  </TagPickerGroup>
+                  <TagPickerInput aria-label="Select Employees" />
+                </TagPickerControl>
+                <TagPickerList data-testid="dialog-tag-picker-list">
+                  {tagPickerOptions.length > 0 ? (
+                    tagPickerOptions.map(option => (
+                      <TagPickerOption media={<Avatar name={option} color="colorful" />} value={option} key={option}>
+                        {option}
+                      </TagPickerOption>
+                    ))
+                  ) : (
+                    <TagPickerOption value="no-options">No options available</TagPickerOption>
+                  )}
+                </TagPickerList>
+              </TagPicker>
+            </div>
+
+            <DialogActions>
+              <Button appearance="secondary" data-testid="dialog-internal-close" onClick={() => setDialogOpen(false)}>
+                Close
+              </Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>
+    </>
   );
 };
 
@@ -442,5 +546,71 @@ describe('TagPicker', () => {
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
     cy.get('[data-testid="tag-picker-input"]').realClick();
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+  });
+
+  describe('Dialog integration', () => {
+    it('keeps the dropdown aligned with the control when reopened during the dialog entry animation', () => {
+      cy.viewport(1024, 900);
+      mount(<TagPickerInAnimatedDialog />);
+
+      const assertDropdownAlignedToControl = () => {
+        cy.get('[data-testid="dialog-tag-picker-control"]').should('be.visible');
+        cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'true');
+        cy.get('[data-testid="dialog-tag-picker-list"]', { timeout: 200 })
+          .should('be.visible')
+          .then(
+            $list =>
+              new Cypress.Promise<void>((resolve, reject) => {
+                const list = $list[0];
+                const targetWindow = list.ownerDocument.defaultView!;
+                const control = list.ownerDocument.querySelector<HTMLElement>(
+                  '[data-testid="dialog-tag-picker-control"]',
+                )!;
+                const dialogBody = list.ownerDocument.querySelector<HTMLElement>('[data-testid="dialog-body"]')!;
+                const controlTopSamples: number[] = [];
+
+                const samplePosition = () => {
+                  try {
+                    const controlRect = control.getBoundingClientRect();
+                    const listRect = list.getBoundingClientRect();
+                    controlTopSamples.push(controlRect.top);
+
+                    expect(listRect.width, 'dropdown width matches control width').to.be.closeTo(controlRect.width, 4);
+                    expect(listRect.left, 'dropdown left aligns with control left').to.be.closeTo(controlRect.left, 6);
+                    expect(listRect.top, 'dropdown sits directly below control').to.be.closeTo(controlRect.bottom, 8);
+
+                    if (dialogBody.dataset.animating === 'true') {
+                      targetWindow.requestAnimationFrame(samplePosition);
+                      return;
+                    }
+
+                    expect(controlTopSamples.length, 'positions sampled during motion').to.be.greaterThan(1);
+                    expect(
+                      Math.max(...controlTopSamples) - Math.min(...controlTopSamples),
+                      'control geometry changed during motion',
+                    ).to.be.greaterThan(1);
+                    resolve();
+                  } catch (error) {
+                    reject(error);
+                  }
+                };
+
+                samplePosition();
+              }),
+          )
+          .then(() => {
+            cy.get('[data-testid="dialog-body"]').should('have.attr', 'data-animating', 'false');
+          });
+      };
+
+      cy.get('[data-testid="open-dialog"]').realClick();
+      assertDropdownAlignedToControl();
+
+      cy.get('[data-testid="close-dialog"]').realClick();
+      cy.get('[data-testid="dialog-tag-picker-control"]').should('not.exist');
+
+      cy.get('[data-testid="open-dialog"]').realClick();
+      assertDropdownAlignedToControl();
+    });
   });
 });

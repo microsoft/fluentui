@@ -22,40 +22,151 @@ const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
  * @param animations
  */
 function createHandle(animations: Animation[]): AnimationHandle {
+  let onfinish: (() => void) | undefined;
+  let oncancel: (() => void) | undefined;
+  let isSettled = true;
+  let callbackGeneration = 0;
+  let cancelDrainRemaining = 0;
+  let pendingReplay: (() => void) | undefined;
+  let isDisposed = false;
+
+  const setAnimationEndCallbacks = (generation: number) => {
+    let finishedAnimations = 0;
+
+    animations.forEach(animation => {
+      animation.onfinish = () => {
+        if (generation !== callbackGeneration || animation.playState === 'running') {
+          return;
+        }
+
+        finishedAnimations++;
+
+        if (!isSettled && finishedAnimations === animations.length) {
+          isSettled = true;
+          onfinish?.();
+        }
+      };
+      animation.oncancel = () => {
+        if (generation !== callbackGeneration || animation.playState !== 'idle') {
+          return;
+        }
+
+        if (!isSettled) {
+          isSettled = true;
+          oncancel?.();
+        }
+      };
+    });
+  };
+
   return {
     set playbackRate(rate: number) {
       animations.forEach(animation => {
         animation.playbackRate = rate;
       });
     },
-    setMotionEndCallbacks(onfinish: () => void, oncancel: () => void) {
+    setMotionEndCallbacks(nextOnfinish: () => void, nextOncancel: () => void) {
       // Heads up!
-      // This could use "Animation:finished", but it's causing a memory leak in Chromium.
+      // This could use "Animation.finished", but it causes a memory leak in Chromium.
       // See: https://issues.chromium.org/u/2/issues/383016426
-      const promises = animations.map(animation => {
-        return new Promise<void>((resolve, reject) => {
-          animation.onfinish = () => resolve();
-          animation.oncancel = () => reject();
-        });
-      });
+      onfinish = nextOnfinish;
+      oncancel = nextOncancel;
+      isSettled = false;
+      const generation = ++callbackGeneration;
+      setAnimationEndCallbacks(generation);
 
-      Promise.all(promises)
-        .then(() => {
-          onfinish();
-        })
-        .catch(() => {
-          oncancel();
+      if (animations.length === 0) {
+        Promise.resolve().then(() => {
+          if (!isDisposed && generation === callbackGeneration && !isSettled) {
+            isSettled = true;
+            onfinish?.();
+          }
         });
+      }
+    },
+    replay(onReplay: () => void) {
+      pendingReplay = onReplay;
+
+      const completeReplay = () => {
+        cancelDrainRemaining = 0;
+
+        if (isDisposed || !pendingReplay) {
+          return;
+        }
+
+        const replayCallback = pendingReplay;
+
+        if (!isSettled) {
+          isSettled = true;
+          oncancel?.();
+        }
+
+        if (isDisposed || pendingReplay !== replayCallback) {
+          return;
+        }
+
+        pendingReplay = undefined;
+        animations.forEach(animation => animation.play());
+        replayCallback();
+      };
+
+      if (cancelDrainRemaining > 0) {
+        return;
+      }
+
+      cancelDrainRemaining = animations.filter(animation => animation.playState !== 'idle').length;
+
+      if (cancelDrainRemaining === 0) {
+        animations.forEach(animation => animation.cancel());
+        completeReplay();
+        return;
+      }
+
+      animations.forEach(animation => {
+        if (animation.playState === 'idle') {
+          animation.cancel();
+          return;
+        }
+
+        animation.oncancel = () => {
+          if (cancelDrainRemaining === 0) {
+            return;
+          }
+
+          cancelDrainRemaining--;
+
+          if (cancelDrainRemaining === 0) {
+            completeReplay();
+          }
+        };
+        animation.cancel();
+      });
     },
     isRunning() {
       return animations.some(animation => isAnimationRunning(animation));
     },
 
     dispose: () => {
+      isDisposed = true;
+      callbackGeneration++;
+      cancelDrainRemaining = 0;
+      pendingReplay = undefined;
+      onfinish = undefined;
+      oncancel = undefined;
+      isSettled = true;
       animations.length = 0;
     },
 
     cancel: () => {
+      pendingReplay = undefined;
+      cancelDrainRemaining = 0;
+      callbackGeneration++;
+
+      if (!isSettled) {
+        isSettled = true;
+        oncancel?.();
+      }
+
       animations.forEach(animation => {
         animation.cancel();
       });
@@ -66,6 +177,8 @@ function createHandle(animations: Animation[]): AnimationHandle {
       });
     },
     play: () => {
+      pendingReplay = undefined;
+      cancelDrainRemaining = 0;
       animations.forEach(animation => {
         animation.play();
       });
@@ -186,6 +299,9 @@ function useAnimateAtomsInTestEnvironment() {
         setMotionEndCallbacks(onfinish: () => void) {
           callbackRef.current = onfinish;
           setCount(v => v + 1);
+        },
+        replay(onReplay: () => void) {
+          onReplay();
         },
 
         set playbackRate(rate: number) {

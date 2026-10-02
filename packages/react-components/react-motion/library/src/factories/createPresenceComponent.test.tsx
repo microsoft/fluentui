@@ -1,7 +1,9 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import { useAncestorMotionState_unstable } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
-import type { PresenceMotion } from '../types';
+import type { MotionImperativeRef, PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
@@ -45,6 +47,92 @@ function createElementMock() {
     finishMock,
   };
 }
+
+function createControllableElementMock() {
+  const animations: Array<{
+    animation: Animation;
+    emitCancel: () => void;
+    emitFinish: () => void;
+  }> = [];
+  const ElementMock = React.forwardRef<{ animate: () => Animation }, { onChange: (active: boolean) => void }>(
+    (props, ref) => {
+      const motionState = useAncestorMotionState_unstable();
+
+      React.useImperativeHandle(ref, () => ({
+        animate: () => {
+          let onfinish: Animation['onfinish'];
+          let oncancel: Animation['oncancel'];
+          let playState: AnimationPlayState = 'running';
+          const animation = {
+            cancel: jest.fn(() => {
+              playState = 'idle';
+            }),
+            finish: jest.fn(() => {
+              playState = 'finished';
+            }),
+            pause: jest.fn(() => {
+              playState = 'paused';
+            }),
+            play: jest.fn(() => {
+              playState = 'running';
+            }),
+            persist: jest.fn(),
+            get playState() {
+              return playState;
+            },
+            set onfinish(callback: Animation['onfinish']) {
+              onfinish = callback;
+            },
+            set oncancel(callback: Animation['oncancel']) {
+              oncancel = callback;
+            },
+          } as Partial<Animation> as Animation;
+
+          animations.push({
+            animation,
+            emitCancel: () => {
+              playState = 'idle';
+              oncancel?.call(animation, {} as AnimationPlaybackEvent);
+            },
+            emitFinish: () => {
+              playState = 'finished';
+              onfinish?.call(animation, {} as AnimationPlaybackEvent);
+            },
+          });
+
+          return animation;
+        },
+      }));
+      useIsomorphicLayoutEffect(() => {
+        const notify = () => props.onChange(motionState?.active ?? false);
+        notify();
+        motionState?.listeners.add(notify);
+        return () => {
+          motionState?.listeners.delete(notify);
+        };
+      }, [motionState, props]);
+
+      return <div>ControllableElementMock</div>;
+    },
+  );
+
+  return { animations, ElementMock };
+}
+
+const MotionStateObserver = React.forwardRef<HTMLDivElement, { onChange: (active: boolean) => void }>((props, ref) => {
+  const motionState = useAncestorMotionState_unstable();
+
+  useIsomorphicLayoutEffect(() => {
+    const notify = () => props.onChange(motionState?.active ?? false);
+    notify();
+    motionState?.listeners.add(notify);
+    return () => {
+      motionState?.listeners.delete(notify);
+    };
+  }, [motionState, props]);
+
+  return <div ref={ref}>MotionStateObserver</div>;
+});
 
 describe('createPresenceComponent', () => {
   let hasAnimation: boolean;
@@ -152,6 +240,58 @@ describe('createPresenceComponent', () => {
         expect(finishMock).toHaveBeenCalledTimes(1);
         expect(onMotionStart).toHaveBeenCalledTimes(1);
         expect(onMotionFinish).toHaveBeenCalledTimes(1);
+      });
+
+      it('publishes active motion until skipped presence motion finishes', () => {
+        const TestPresence = createPresenceComponent(motion);
+        const onChange = jest.fn();
+
+        render(
+          <MotionBehaviourProvider value="skip">
+            <TestPresence appear visible>
+              <MotionStateObserver onChange={onChange} />
+            </TestPresence>
+          </MotionBehaviourProvider>,
+        );
+
+        const transitions = onChange.mock.calls
+          .map(([active]) => active)
+          .filter((active, index, values) => index === 0 || active !== values[index - 1]);
+        expect(transitions).toEqual([false, true, false]);
+      });
+
+      it('keeps the replacement motion active when the previous cancellation arrives later', () => {
+        const TestPresence = createPresenceComponent(motion);
+        const onChange = jest.fn();
+        const onMotionCancel = jest.fn();
+        const onMotionFinish = jest.fn();
+        const { animations, ElementMock } = createControllableElementMock();
+
+        const { rerender } = render(
+          <TestPresence appear visible onMotionCancel={onMotionCancel} onMotionFinish={onMotionFinish}>
+            <ElementMock onChange={onChange} />
+          </TestPresence>,
+        );
+
+        expect(animations).toHaveLength(1);
+
+        rerender(
+          <TestPresence appear visible={false} onMotionCancel={onMotionCancel} onMotionFinish={onMotionFinish}>
+            <ElementMock onChange={onChange} />
+          </TestPresence>,
+        );
+
+        expect(animations).toHaveLength(2);
+
+        act(animations[0].emitCancel);
+
+        expect(onMotionCancel).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenLastCalledWith(true);
+
+        act(animations[1].emitFinish);
+
+        expect(onMotionFinish).toHaveBeenCalledTimes(1);
+        expect(onChange).toHaveBeenLastCalledWith(false);
       });
     });
   });
@@ -436,6 +576,51 @@ describe('createPresenceComponent', () => {
       expect(queryByText('ElementMock')).toBeTruthy();
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
       expect(onRender).toHaveBeenCalledTimes(1);
+    });
+
+    it('ignores imperative play after the exit handle is disposed', () => {
+      const TestPresence = createPresenceComponent(motion);
+      const imperativeRef = React.createRef<MotionImperativeRef>();
+      const onMotionStart = jest.fn();
+      const { animations, ElementMock } = createControllableElementMock();
+
+      const { rerender } = render(
+        <TestPresence appear visible unmountOnExit imperativeRef={imperativeRef} onMotionStart={onMotionStart}>
+          <ElementMock onChange={jest.fn()} />
+        </TestPresence>,
+      );
+
+      rerender(
+        <TestPresence appear visible={false} unmountOnExit imperativeRef={imperativeRef} onMotionStart={onMotionStart}>
+          <ElementMock onChange={jest.fn()} />
+        </TestPresence>,
+      );
+
+      act(animations[1].emitFinish);
+      act(() => imperativeRef.current?.setPlayState('running'));
+
+      expect(onMotionStart).toHaveBeenCalledTimes(2);
+      expect(animations[1].animation.play).not.toHaveBeenCalled();
+    });
+
+    it('cancels a running interruptible motion when the component unmounts', () => {
+      const interruptibleMotion = Object.assign({}, motion, {
+        [Symbol.for('interruptablePresence')]: true,
+      });
+      const TestPresence = createPresenceComponent(interruptibleMotion);
+      const onMotionCancel = jest.fn();
+      const { animations, ElementMock } = createControllableElementMock();
+
+      const { unmount } = render(
+        <TestPresence appear visible onMotionCancel={onMotionCancel}>
+          <ElementMock onChange={jest.fn()} />
+        </TestPresence>,
+      );
+
+      unmount();
+
+      expect(animations[0].animation.cancel).toHaveBeenCalledTimes(1);
+      expect(onMotionCancel).toHaveBeenCalledTimes(1);
     });
   });
 

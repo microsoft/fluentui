@@ -1,5 +1,10 @@
 'use client';
 
+import {
+  AncestorMotionProvider_unstable,
+  createAncestorMotionController_unstable,
+  useAncestorMotionState_unstable,
+} from '@fluentui/react-shared-contexts';
 import { useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React from 'react';
@@ -117,8 +122,15 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const [mounted, setMounted] = useMountedState(visible, unmountOnExit);
       const [child, childRef] = useChildElement(children, mounted);
+      const ancestorMotionState = useAncestorMotionState_unstable();
+      const motionController = React.useRef(createAncestorMotionController_unstable()).current;
 
-      const handleRef = useMotionImperativeRef(imperativeRef);
+      // Heads up!
+      // Link this presence motion to the nearest ancestor so nested motions participate in the same
+      // active-state tree and remain coordinated while enter/exit transitions overlap.
+      motionController.parent = ancestorMotionState;
+
+      const endMotionRef = React.useRef<(() => void) | undefined>(undefined);
       const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
         appear,
         params,
@@ -144,6 +156,39 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const handleMotionCancel = useEventCallback((direction: PresenceDirection) => {
         onMotionCancel?.(null, { direction });
       });
+
+      const imperativeCallbacks = React.useMemo(
+        () => ({
+          onPause: () => {
+            endMotionRef.current?.();
+            endMotionRef.current = undefined;
+          },
+          onPlay: (handle: AnimationHandle) => {
+            const direction: PresenceDirection = visible ? 'enter' : 'exit';
+            const endMotion = motionController.start();
+            endMotionRef.current = endMotion;
+            handleMotionStart(direction);
+            handle.setMotionEndCallbacks(
+              () => {
+                endMotion();
+                if (endMotionRef.current === endMotion) {
+                  endMotionRef.current = undefined;
+                }
+                handleMotionFinish(direction);
+              },
+              () => {
+                endMotion();
+                if (endMotionRef.current === endMotion) {
+                  endMotionRef.current = undefined;
+                }
+                handleMotionCancel(direction);
+              },
+            );
+          },
+        }),
+        [handleMotionCancel, handleMotionFinish, handleMotionStart, motionController, visible],
+      );
+      const handleRef = useMotionImperativeRef(imperativeRef, imperativeCallbacks);
 
       useIsomorphicLayoutEffect(() => {
         // Heads up!
@@ -202,7 +247,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           const applyInitialStyles = !optionsRef.current.appear && isFirstMount;
           const skipAnimationByConfig = optionsRef.current.skipMotions;
 
+          let endMotion: (() => void) | undefined;
           if (!applyInitialStyles) {
+            endMotion = motionController.start();
+            endMotionRef.current = endMotion;
             handleMotionStart(direction);
           }
 
@@ -218,8 +266,20 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
           handleRef.current = handle;
           handle.setMotionEndCallbacks(
-            () => handleMotionFinish(direction),
-            () => handleMotionCancel(direction),
+            () => {
+              endMotion?.();
+              if (endMotionRef.current === endMotion) {
+                endMotionRef.current = undefined;
+              }
+              handleMotionFinish(direction);
+            },
+            () => {
+              endMotion?.();
+              if (endMotionRef.current === endMotion) {
+                endMotionRef.current = undefined;
+              }
+              handleMotionCancel(direction);
+            },
           );
 
           if (skipAnimationByConfig) {
@@ -238,6 +298,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           handleMotionFinish,
           handleMotionStart,
           handleMotionCancel,
+          motionController,
           visible,
         ],
       );
@@ -250,11 +311,23 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
         if (unmountOnExit && !mounted) {
           handleRef.current?.dispose();
+          handleRef.current = undefined;
         }
       }, [handleRef, unmountOnExit, mounted]);
 
+      React.useEffect(
+        () => () => {
+          endMotionRef.current?.();
+          endMotionRef.current = undefined;
+          handleRef.current?.cancel();
+          handleRef.current?.dispose();
+          handleRef.current = undefined;
+        },
+        [handleRef],
+      );
+
       if (mounted) {
-        return child;
+        return React.createElement(AncestorMotionProvider_unstable, { value: motionController, children: child });
       }
 
       return null;

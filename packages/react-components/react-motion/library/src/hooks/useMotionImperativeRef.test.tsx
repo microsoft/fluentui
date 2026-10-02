@@ -41,4 +41,25 @@ describe('useMotionImperativeRef', () => {
     imperativeRef.current?.setPlaybackRate(0.5);
     expect(setPlaybackRate).toHaveBeenCalledWith(0.5);
   });
+
+  it('notifies lifecycle callbacks for imperative pause and play', () => {
+    const animationMock = {
+      play: jest.fn(),
+      pause: jest.fn(),
+    } as Partial<AnimationHandle> as AnimationHandle;
+    const onPause = jest.fn();
+    const onPlay = jest.fn();
+    const imperativeRef = React.createRef<MotionImperativeRef>();
+    const { result } = renderHook(() => useMotionImperativeRef(imperativeRef, { onPause, onPlay }));
+
+    result.current.current = animationMock;
+
+    imperativeRef.current?.setPlayState('paused');
+    expect(animationMock.pause).toHaveBeenCalledTimes(1);
+    expect(onPause).toHaveBeenCalledTimes(1);
+
+    imperativeRef.current?.setPlayState('running');
+    expect(animationMock.play).toHaveBeenCalledTimes(1);
+    expect(onPlay).toHaveBeenCalledWith(animationMock);
+  });
 });

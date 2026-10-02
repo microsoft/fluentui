@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Publishes active motion state to descendant Fluent components.",
+  "packageName": "@fluentui/react-motion",
+  "email": "paulmardling@microsoft.com",
+  "dependentChangeType": "patch"
+}
