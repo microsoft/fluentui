@@ -18,6 +18,12 @@ const config = {
     },
   ],
   versionGroups: [
+    // This package transforms Monaco assets at build time, so keep its upstream version exactly pinned.
+    {
+      packages: ['@fluentui/monaco-editor'],
+      dependencies: ['monaco-editor'],
+      isIgnored: true,
+    },
     // completely ignore all devDeps that specify inner workspace deps - as we enforce usage of `*` or `>9.0.0-alpha`
     {
       dependencyTypes: ['dev'],

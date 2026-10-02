@@ -58,6 +58,22 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
     );
   };
 
+  const createUnsupportedImportsAssignmentExpression = (
+    targetStoryName: string,
+    unsupportedImports: readonly string[],
+  ) => {
+    return t.expressionStatement(
+      t.assignmentExpression(
+        '=',
+        t.memberExpression(
+          t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
+          t.identifier('fullSourceUnsupportedImports'),
+        ),
+        t.arrayExpression(unsupportedImports.map(specifier => t.stringLiteral(specifier))),
+      ),
+    );
+  };
+
   /**
    * Builds an AST expression that merges auto-detected CSS module data into
    * `Story.parameters.cssModuleSources`:
@@ -170,27 +186,50 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           const cssModules = cssModulesEnabled ? collectCssModuleImports(path, t, state.filename) : [];
 
           // Runs the shared modify-imports + prettier pipeline over a source string.
-          const buildFullSource = (source: string): string => {
+          const buildFullSource = (source: string): { code: string; unsupportedRelativeImports: readonly string[] } => {
+            const unsupportedRelativeImports = new Set<string>();
             const transformed = babel.transformSync(source, {
               ...state.file.opts,
               compact: false,
               retainLines: true,
               comments: false,
-              plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+              plugins: [
+                [
+                  modifyImportsPlugin,
+                  {
+                    ...options,
+                    onUnsupportedRelativeImport: (specifier: string) => unsupportedRelativeImports.add(specifier),
+                  },
+                ],
+                removeStorybookParameters,
+              ],
             })?.code;
 
-            return prettier.format(transformed ?? '', { parser: 'babel-ts' });
+            return {
+              code: prettier.format(transformed ?? '', { parser: 'babel-ts' }),
+              unsupportedRelativeImports: [...unsupportedRelativeImports],
+            };
           };
 
           // Emits `<Story>.parameters` (when missing), `.fullSource` and, when
           // enabled, `.cssModuleSources` for a single story.
-          const emitStorySource = (currentStory: string, code: string): void => {
+          const emitStorySource = (
+            currentStory: string,
+            source: { code: string; unsupportedRelativeImports: readonly string[] },
+          ): void => {
             if (!storiesWithParameters.has(currentStory)) {
               path.pushContainer('body', createStoryParametersAssignmentExpression(currentStory));
               storiesWithParameters.add(currentStory);
             }
 
-            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, code));
+            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, source.code));
+
+            if (source.unsupportedRelativeImports.length > 0) {
+              path.pushContainer(
+                'body',
+                createUnsupportedImportsAssignmentExpression(currentStory, source.unsupportedRelativeImports),
+              );
+            }
 
             if (cssModulesEnabled && (cssModules.length > 0 || tokensSource)) {
               path.pushContainer('body', createCssModuleSourcesAssignment(currentStory, { cssModules, tokensSource }));

@@ -7,6 +7,10 @@ interface PluginState extends Babel.PluginPass {
   imports: Record<string, string[]>;
 }
 
+interface ModifyImportsPluginOptions extends BabelPluginOptions {
+  onUnsupportedRelativeImport?: (specifier: string) => void;
+}
+
 export const PLUGIN_NAME = 'storybook-stories-modifyImports';
 
 /**
@@ -15,9 +19,12 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  *
  * See test fixtures for usage examples
  */
-export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
+export function modifyImportsPlugin(
+  babel: typeof Babel,
+  options: ModifyImportsPluginOptions,
+): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
-  const { importMappings } = options;
+  const { importMappings, onUnsupportedRelativeImport } = options;
   const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
@@ -64,6 +71,8 @@ export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOpt
               return;
             }
           }
+
+          onUnsupportedRelativeImport?.(importSource.value);
 
           if (process.env.NODE_ENV !== 'production') {
             console.warn(
