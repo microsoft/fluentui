@@ -113,4 +113,58 @@ test.describe('Divider', () => {
       await expect(element).toHaveJSProperty('inset', true);
     });
   });
+
+  test('should use a 20px minimum height when a vertical divider has no slotted content', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { orientation: 'vertical' }, innerHTML: '' });
+
+    await expect(element).toHaveCSS('min-height', '20px');
+    await expect(element).toHaveCSS('height', '20px');
+    expect(await element.evaluate(node => getComputedStyle(node, '::before').minHeight)).toBe('10px');
+  });
+
+  test('should treat whitespace and comments as empty vertical divider content', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      attributes: { orientation: 'vertical' },
+      innerHTML: '\n  <!-- formatting -->\n  ',
+    });
+
+    await expect(element).toHaveCSS('min-height', '20px');
+    await expect(element).toHaveCSS('height', '20px');
+  });
+
+  test('should preserve the contentful vertical divider height and inset/alignment styles', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      attributes: { orientation: 'vertical', inset: true, 'align-content': 'start' },
+      innerHTML: '\n  <span>Section</span>\n',
+    });
+
+    await expect(element).toHaveCSS('min-height', '84px');
+    expect(await element.evaluate(node => node.getBoundingClientRect().height)).toBeGreaterThanOrEqual(84);
+    await expect(element).toHaveCSS('padding-left', '12px');
+    expect(
+      await element.evaluate(node => ({
+        beforeBasis: getComputedStyle(node, '::before').flexBasis,
+        beforeInset: getComputedStyle(node, '::before').marginTop,
+      })),
+    ).toEqual({ beforeBasis: '12px', beforeInset: '12px' });
+  });
+
+  test('should update the vertical divider height when slotted content changes', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { orientation: 'vertical' }, innerHTML: '\n  ' });
+    await expect(element).toHaveCSS('min-height', '20px');
+
+    await element.evaluate(node => node.append('Section'));
+    await expect(element).toHaveCSS('min-height', '84px');
+
+    await element.evaluate(node => node.replaceChildren('\n  '));
+    await expect(element).toHaveCSS('min-height', '20px');
+  });
 });
