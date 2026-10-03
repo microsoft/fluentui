@@ -22,6 +22,7 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
       direction: 'next' | 'prev',
     ) => void;
     selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => void;
+    footerButtonRefs: NonNullable<CarouselContextValue['footerButtonRefs']>;
   };
 } {
   const { announcement, onValueChange, onFinish } = options;
@@ -37,6 +38,10 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
     initialState: null,
   });
   const rootRef = React.useRef<HTMLDivElement>(null);
+  const [footerButtonRefs] = React.useState<NonNullable<CarouselContextValue['footerButtonRefs']>>(() => ({
+    prev: new Set(),
+    next: new Set(),
+  }));
 
   const { announce } = useAnnounce();
 
@@ -150,6 +155,7 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
       value,
       selectPageByDirection,
       selectPageByValue: updateSlide,
+      footerButtonRefs,
     },
   };
 }

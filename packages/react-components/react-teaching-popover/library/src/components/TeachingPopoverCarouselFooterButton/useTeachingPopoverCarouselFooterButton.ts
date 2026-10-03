@@ -1,7 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   TeachingPopoverCarouselFooterButtonBaseProps,
   TeachingPopoverCarouselFooterButtonBaseState,
@@ -26,11 +33,25 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
   props: TeachingPopoverCarouselFooterButtonBaseProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): TeachingPopoverCarouselFooterButtonBaseState => {
-  const { navType, altText } = props;
+  const { navType, altText, onFocus, onBlur } = props;
 
   const selectPageByDirection = useCarouselContext_unstable(c => c.selectPageByDirection);
   const values = useCarouselValues_unstable(snapshot => snapshot);
   const activeValue = useCarouselContext_unstable(c => c.value);
+  const footerButtonRefs = useCarouselContext_unstable(c => c.footerButtonRefs);
+  const buttonRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+  const mergedRef = useMergedRefs(ref, buttonRef);
+  const { targetDocument } = useFluent();
+  const hasFocus = React.useRef(false);
+  const shouldTransferFocus = React.useRef(false);
+
+  useIsomorphicLayoutEffect(() => {
+    const refs = footerButtonRefs?.[navType];
+    refs?.add(buttonRef);
+    return () => {
+      refs?.delete(buttonRef);
+    };
+  }, [footerButtonRefs, navType]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
@@ -41,17 +62,28 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
+  const handleFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+      hasFocus.current = true;
+      onFocus?.(event);
+    },
+    [onFocus],
+  );
+  const handleBlur = React.useCallback(
+    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+      hasFocus.current = false;
+      onBlur?.(event);
+    },
+    [onBlur],
+  );
 
   const isTrailing = React.useMemo(() => {
-    if (!activeValue) {
+    const activeIndex = activeValue === null ? -1 : values.indexOf(activeValue);
+    if (activeIndex < 0) {
       return false;
     }
 
-    if (navType === 'prev') {
-      return values.indexOf(activeValue) === 0;
-    }
-
-    return values.indexOf(activeValue) === values.length - 1;
+    return navType === 'prev' ? activeIndex === 0 : activeIndex === values.length - 1;
   }, [navType, activeValue, values]);
 
   /* Handle altText on trailing step */
@@ -60,21 +92,57 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
     buttonChild = altText;
   }
 
+  const hidden = isTrailing && (altText === null || altText === undefined);
+  useIsomorphicLayoutEffect(() => {
+    const activeElement = targetDocument?.activeElement;
+    shouldTransferFocus.current =
+      hidden && hasFocus.current && (activeElement === buttonRef.current || activeElement === targetDocument?.body);
+  }, [hidden, navType, footerButtonRefs, targetDocument]);
+
+  // Sibling refs may still be detached during our layout effect. Wait for all refs to attach,
+  // then check that another component has not deliberately moved focus in the meantime.
+  React.useEffect(() => {
+    const transferFocus = shouldTransferFocus.current;
+    shouldTransferFocus.current = false;
+    const activeElement = targetDocument?.activeElement;
+    if (transferFocus && hidden && (activeElement === buttonRef.current || activeElement === targetDocument?.body)) {
+      const oppositeButtonRefs = footerButtonRefs?.[navType === 'prev' ? 'next' : 'prev'];
+      for (const oppositeRef of oppositeButtonRefs ?? []) {
+        const button = oppositeRef.current;
+        if (!button?.isConnected) {
+          continue;
+        }
+        // Let the browser reject hidden, disabled, or inert destinations.
+        button.focus();
+        const focusedElement = targetDocument?.activeElement;
+        if (focusedElement !== buttonRef.current && focusedElement !== targetDocument?.body) {
+          // Preserve successful focus, including deliberate redirection by a focus handler.
+          break;
+        }
+      }
+    }
+  }, [hidden, navType, footerButtonRefs, targetDocument]);
+
+  const root = slot.always(
+    getIntrinsicElementProps('button', {
+      ...props,
+      ref: mergedRef,
+      hidden: hidden || props.hidden,
+      onClick: handleButtonClick,
+      children: buttonChild,
+    }),
+    { elementType: 'button' },
+  );
+  root.onFocus = handleFocus;
+  root.onBlur = handleBlur;
+
   return {
     navType,
     altText,
     components: {
       root: 'button',
     },
-    root: slot.always(
-      getIntrinsicElementProps('button', {
-        ref,
-        ...props,
-        onClick: handleButtonClick,
-        children: buttonChild,
-      }),
-      { elementType: 'button' },
-    ),
+    root,
   };
 };
 
