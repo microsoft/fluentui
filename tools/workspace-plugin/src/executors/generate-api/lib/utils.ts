@@ -146,19 +146,18 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
     // they act as literal path segments that the subsequent "../" chain traverses through.
     // path.resolve(configDir, "<projectRoot>/../../../../../../...") naturally normalizes to the correct path.
     const configDir = dirname(opts.config);
+    // Normalize to POSIX separators so the suffix check and slice work consistently across platforms (e.g. Windows).
     const resolvedPrimaryEntry = resolve(
       configDir,
       primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
-    );
+    ).replace(/\\/g, '/');
 
     const indexDtsSuffix = '/index.d.ts';
     if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
-      verboseLog(
+      throw new Error(
         `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${indexDtsSuffix}". ` +
-          `Skipping export subpath expansion.`,
-        'warn',
+          `Failed to resolve declaration base for export subpaths.`,
       );
-      return null;
     }
 
     return resolvedPrimaryEntry.slice(0, -indexDtsSuffix.length);
