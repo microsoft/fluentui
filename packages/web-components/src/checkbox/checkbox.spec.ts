@@ -153,6 +153,136 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('indeterminate', false);
   });
 
+  test('should initialize `defaultIndeterminate` and `indeterminate` from the `defaultindeterminate` attribute', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { defaultindeterminate: true } });
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', true);
+    await expect(element).toHaveJSProperty('indeterminate', true);
+  });
+
+  test('should reflect `defaultindeterminate` to `defaultIndeterminate`', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', undefined);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', true);
+    });
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', false);
+    });
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', false);
+  });
+
+  test('should update live `indeterminate` from `defaultindeterminate` before user interaction', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', true);
+    });
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', true);
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', false);
+    });
+
+    await expect(element).toHaveJSProperty('defaultIndeterminate', false);
+    await expect(element).toHaveJSProperty('indeterminate', false);
+  });
+
+  test('should preserve live `indeterminate` after user interaction when `defaultindeterminate` changes', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { defaultindeterminate: true } });
+
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await element.click();
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', false);
+    });
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', true);
+    });
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+  });
+
+  test.describe('dirty-state styling', () => {
+    test.skip(({ ssr }) => ssr === true, 'Dirty-state styling requires client-side user interaction.');
+
+    test('should stop applying declarative indeterminate styling after user interaction', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const indeterminateIndicator = element.locator('.indeterminate-indicator');
+      const transparent = 'rgba(0, 0, 0, 0)';
+
+      await fastPage.setTemplate({ attributes: { defaultindeterminate: true } });
+
+      await expect(indeterminateIndicator).not.toHaveCSS('background-color', transparent);
+
+      await element.click();
+
+      await expect(element).toHaveJSProperty('indeterminate', false);
+      await expect(indeterminateIndicator).toHaveCSS('background-color', transparent);
+    });
+  });
+
+  test('should reset live `indeterminate` to `true` when `defaultindeterminate` is present', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const form = page.locator('form');
+
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <${tagName} defaultindeterminate></${tagName}>
+      </form>
+    `);
+
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await element.click();
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await element.evaluate((node: Checkbox) => {
+      node.toggleAttribute('defaultindeterminate', false);
+    });
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+  });
+
   test('should NOT change the `indeterminate` property when the owning form is reset', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const form = page.locator('form');
@@ -186,6 +316,20 @@ test.describe('Checkbox', () => {
 
       await expect(element).toHaveJSProperty('indeterminate', false);
     });
+  });
+
+  test('should resolve `checked` and `defaultindeterminate` independently on activation', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { checked: true, defaultindeterminate: true } });
+
+    await expect(element).toHaveJSProperty('checked', true);
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await element.click();
+
+    await expect(element).toHaveJSProperty('indeterminate', false);
+    await expect(element).toHaveJSProperty('checked', false);
   });
 
   test('should initialize to the provided `value` attribute when set pre-connection', async ({ fastPage, page }) => {

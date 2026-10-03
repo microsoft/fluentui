@@ -18,6 +18,30 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  */
 export class Checkbox extends BaseCheckbox {
   /**
+   * The initial indeterminate state of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `defaultindeterminate`
+   */
+  @attr({ attribute: 'defaultindeterminate', mode: 'boolean' })
+  public defaultIndeterminate?: boolean;
+
+  /**
+   * Updates the indeterminate state when the `defaultindeterminate` attribute changes,
+   * unless the indeterminate state has been changed by the user.
+   *
+   * @param prev - The previous initial indeterminate state
+   * @param next - The current initial indeterminate state
+   * @internal
+   */
+  protected defaultIndeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
+    if (!this.dirtyChecked) {
+      this.indeterminate = !!next;
+    }
+  }
+
+  /**
    * Indicates that the element is in an indeterminate or mixed state.
    *
    * @public
@@ -60,6 +84,38 @@ export class Checkbox extends BaseCheckbox {
   constructor() {
     super();
     this.elementInternals.role = 'checkbox';
+  }
+
+  /**
+   * Toggles the checked state when the user clicks the element.
+   *
+   * @param e - the event object
+   * @internal
+   */
+  public clickHandler(e: MouseEvent): boolean | void {
+    if (this.disabled) {
+      return;
+    }
+
+    toggleState(this.elementInternals, 'dirty-indeterminate', true);
+    return super.clickHandler(e);
+  }
+
+  /**
+   * Resets the form value to its initial value when the form is reset.
+   *
+   * @internal
+   */
+  formResetCallback(): void {
+    const shouldResetIndeterminate = this.hasAttribute('defaultindeterminate');
+
+    super.formResetCallback();
+
+    if (shouldResetIndeterminate) {
+      this.indeterminate = !!this.defaultIndeterminate;
+    }
+
+    toggleState(this.elementInternals, 'dirty-indeterminate', false);
   }
 
   /**
