@@ -63,47 +63,6 @@ test.describe('MenuButton', () => {
     await expect(startSlot).toHaveText('🎯');
   });
 
-  test('should apply the `icon` property when the `icon-only` attribute is set', async ({ fastPage }) => {
-    await fastPage.setTemplate({ attributes: { 'icon-only': true } });
-
-    await expect(fastPage.element).toHaveJSProperty('iconOnly', true);
-  });
-
-  for (const size in MenuButtonSize) {
-    test(`should apply the \`${size}\` property when the \`size\` attribute is set to \`${size}\``, async ({
-      fastPage,
-    }) => {
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(fastPage.element).toHaveJSProperty('size', size);
-    });
-  }
-
-  test('should update the button size from large to medium', async ({ fastPage }) => {
-    const { element } = fastPage;
-    await fastPage.setTemplate({ attributes: { size: 'large' } });
-
-    await expect(element).toHaveJSProperty('size', 'large');
-
-    await fastPage.updateTemplate(element, {
-      attributes: { size: 'medium' },
-    });
-
-    await expect(element).toHaveJSProperty('size', 'medium');
-  });
-
-  for (const appearance in MenuButtonAppearance) {
-    test(`should set the "${appearance}" property when the \`appearance\` attribute is set to \`${appearance}\``, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { appearance } });
-
-      await expect(element).toHaveJSProperty('appearance', appearance);
-    });
-  }
-
   test('should be focusable and respond to clicks', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate();

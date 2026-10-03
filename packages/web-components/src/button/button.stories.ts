@@ -12,7 +12,7 @@ const storyTemplate = html<StoryArgs<FluentButton>>`
     ?disabled-focusable="${story => story.disabledFocusable}"
     ?disabled="${story => story.disabled}"
     ?formnovalidate="${story => story.formnovalidate}"
-    ?icon-only="${story => story.iconOnly}"
+    ?icon-only="${story => story['icon-only']}"
     appearance="${story => story.appearance}"
     form="${story => story.form}"
     formaction="${story => story.formaction}"

@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: removes imperative property assignment for attributes which are presentational only",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com"
+}
