@@ -48,17 +48,22 @@ export const VerticalBarDynamic = (): JSXElement => {
     ],
   ];
   const _colorIndex = React.useRef<number>(0);
+  const chartContainerRef = React.useRef<HTMLDivElement>(null);
+  const lastFocusedChartElementId = React.useRef<string | undefined>(undefined);
+  const focusedChartElementId = React.useRef<string | undefined>(undefined);
   let _prevBarWidth = 16;
   const initialXAxisType = 'number';
   const initialDataSize = 5;
 
   let _changeData = (): void => {
+    focusedChartElementId.current = lastFocusedChartElementId.current;
     setDynamicData(_getData(dataSize, xAxisType));
     setStatusKey(statusKey + 1);
     setStatusMessage('Vertical bar chart data changed');
   };
 
   let _changeColors = (): void => {
+    focusedChartElementId.current = lastFocusedChartElementId.current;
     _colorIndex.current = (_colorIndex.current + 1) % _colors.length;
     setColors(_colors[_colorIndex.current]);
     setStatusKey(statusKey + 1);
@@ -114,29 +119,22 @@ export const VerticalBarDynamic = (): JSXElement => {
     const dataSize = Number(e.target.value);
     setDataSize(dataSize);
     setDynamicData(_getData(dataSize, xAxisType));
-    setDynamicData(_getData(dataSize, xAxisType));
   };
 
   const _getData = (dataSize: number, xAxisType: string) => {
-    const data: VerticalBarChartDataPoint[] = [];
-    if (xAxisType === 'string') {
-      for (let i = 0; i < dataSize; i++) {
-        data.push({ x: `Label ${i + 1}`, y: _randomY() });
+    const date = new Date('2020-01-01');
+    return Array.from({ length: dataSize }, (_, index): VerticalBarChartDataPoint => {
+      const value = index + 1;
+      if (xAxisType === 'string') {
+        return { x: `Label ${value}`, y: _randomY() };
       }
-    } else {
-      const xPoints = new Set<number>();
-      const date = new Date('2020-01-01');
-      while (xPoints.size !== dataSize) {
-        const x = Math.floor(Math.random() * 75) + 1;
-        if (!xPoints.has(x)) {
-          xPoints.add(x);
-          const newDate = new Date(date);
-          newDate.setDate(date.getDate() + x);
-          data.push({ x: xAxisType === 'date' ? newDate : x, y: _randomY() });
-        }
+      if (xAxisType === 'date') {
+        const newDate = new Date(date);
+        newDate.setDate(date.getDate() + value);
+        return { x: newDate, y: _randomY() };
       }
-    }
-    return data;
+      return { x: value, y: _randomY() };
+    });
   };
 
   const [dynamicData, setDynamicData] = React.useState<VerticalBarChartDataPoint[]>(
@@ -154,6 +152,33 @@ export const VerticalBarDynamic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
+
+  React.useEffect(() => {
+    const container = chartContainerRef.current;
+    const elementId = focusedChartElementId.current;
+    if (!container || !elementId) {
+      return;
+    }
+
+    const targetWindow = container.ownerDocument.defaultView;
+    const restoreFocus = () => {
+      const element = container.ownerDocument.getElementById(elementId);
+      if (element && container.contains(element)) {
+        element.focus();
+      }
+      focusedChartElementId.current = undefined;
+    };
+    const animationFrame = targetWindow?.requestAnimationFrame(restoreFocus);
+    if (animationFrame === undefined) {
+      restoreFocus();
+    }
+
+    return () => {
+      if (animationFrame !== undefined) {
+        targetWindow?.cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [colors, dynamicData]);
 
   _changeData = _changeData.bind(this);
   _changeColors = _changeColors.bind(this);
@@ -270,7 +295,13 @@ export const VerticalBarDynamic = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
-      <div style={{ width: `${width}px`, height: '350px' }}>
+      <div
+        ref={chartContainerRef}
+        style={{ width: `${width}px`, height: '350px' }}
+        onFocusCapture={event => {
+          lastFocusedChartElementId.current = event.target.id || undefined;
+        }}
+      >
         <VerticalBarChart
           // Force rerender when any of the following states change
           key={xAxisType}
