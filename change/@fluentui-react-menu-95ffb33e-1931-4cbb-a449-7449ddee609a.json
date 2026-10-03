@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Menu with openOnContext no longer overrides an imperative positioningRef.setTarget() call made in onOpenChange; the internal context target is now set imperatively and onOpenChange fires after it",
+  "packageName": "@fluentui/react-menu",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
