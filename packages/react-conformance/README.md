@@ -64,6 +64,37 @@ describe('Foo', () => {
 });
 ```
 
+### Custom style hook pilot
+
+The `component-calls-custom-style-hook` test is opt-in during its pilot. Enable it for participating components:
+
+```jsx
+import { customStyleHookTests } from '@fluentui/react-conformance';
+
+isConformant({
+  Component: Foo,
+  displayName: 'Foo',
+  extraTests: customStyleHookTests(),
+});
+```
+
+If the custom style hook does not follow the component display name, configure the expected name separately:
+
+```jsx
+isConformant({
+  Component: Foo,
+  displayName: 'Foo',
+  extraTests: customStyleHookTests(),
+  testOptions: {
+    'component-calls-custom-style-hook': {
+      hookName: 'useFooCustomStyleHook_unstable',
+    },
+  },
+});
+```
+
+The `extraTests` entry will no longer be needed when the pilot is complete and the test becomes default-on.
+
 ### isConformant with React Portals
 
 By default `isConformant` inspects a component's immediate parent container. Because React Portals are typically rendered outside this container components using Portals will fail conformance. For example the `component-has-static-classnames-object` tests inspect the rendered DOM for certain class names but, with default settings, will fail for anything rendered into a Portal.
