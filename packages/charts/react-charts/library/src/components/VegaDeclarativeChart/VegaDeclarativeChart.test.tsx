@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -1246,6 +1247,32 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
 });
 
 describe('VegaDeclarativeChart - Security', () => {
+  it.each(['client', 'server'])('blocks a JSON-only cross-transform evaluator bypass during %s rendering', mode => {
+    const spec: VegaLiteSpec = JSON.parse(
+      JSON.stringify({
+        mark: 'line',
+        data: { values: [{ x: 1 }] },
+        transform: [
+          { fold: ['constructor'], as: ['firstKey', 'objectConstructor'] },
+          { calculate: 'datum.objectConstructor', as: '__proto__' },
+          { aggregate: [{ op: 'count', as: 'x' }], groupby: ['__proto__'] },
+          { fold: ['constructor'], as: ['secondKey', 'callable'] },
+          { calculate: "datum.callable('return 73')()", as: 'y' },
+        ],
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      }),
+    );
+    const chart = <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />;
+
+    // Only inherited fields were requested, so no data survives the first fold.
+    expect(() => (mode === 'client' ? render(chart) : renderToString(chart))).toThrow(
+      'VegaLiteSchemaAdapter: Empty data array for LineChart',
+    );
+  });
+
   it('blocks malicious calculate expression (MSRC PoC: globalThis assignment)', () => {
     // Exact payload from the MSRC vulnerability report
     const maliciousSpec: VegaLiteSpec = {
