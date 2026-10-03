@@ -49,6 +49,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement | null>;
   private _emptyChartId: string;
+  private _rootRef: React.RefObject<HTMLDivElement | null> = React.createRef<HTMLDivElement>();
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -65,7 +66,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-    this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
     this._emptyChartId = getId('_HBC_empty');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
@@ -87,7 +87,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     let datapoint: number | undefined = 0;
 
     return !this._isChartEmpty() ? (
-      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave} ref={this._rootRef}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
             datapoint = points.chartData![0].horizontalBarChartdata!.x;
@@ -229,9 +229,23 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
-  private _hoverOff(): void {
-    /**/
-  }
+  private _hoverOff = (event: React.FocusEvent<SVGRectElement> | React.MouseEvent<SVGRectElement>): void => {
+    const relatedTarget = event.relatedTarget as Element | null;
+    if (relatedTarget) {
+      // Keep the callout open when focus (or the pointer) moves to another element inside the
+      // chart, e.g. tabbing between bars. Dismissing here would reintroduce the callout
+      // flicker that PR #21750 fixed by emptying this handler.
+      if (this._rootRef.current?.contains(relatedTarget)) {
+        return;
+      }
+      // Also keep it open when focus moves into the callout itself (rendered in a Layer portal).
+      const calloutElement = relatedTarget.ownerDocument?.getElementById(this._calloutId);
+      if (calloutElement?.contains(relatedTarget)) {
+        return;
+      }
+    }
+    this._handleChartMouseLeave();
+  };
 
   private _handleChartMouseLeave = () => {
     this._calloutAnchorPoint = null;
