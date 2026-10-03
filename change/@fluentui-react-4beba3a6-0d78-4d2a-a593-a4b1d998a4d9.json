@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Shows TextField value as title attribute when disabled/read-only and truncated",
+  "packageName": "@fluentui/react",
+  "email": "tomas.blazek@brose.com",
+  "dependentChangeType": "none"
+}
