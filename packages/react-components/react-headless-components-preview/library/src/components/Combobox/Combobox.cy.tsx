@@ -91,16 +91,38 @@ describe('Combobox', () => {
       cy.get(listbox).should('not.exist');
     });
 
-    it('notifies of a close only once when the expand icon is clicked', () => {
-      const onOpenChange = cy.stub().as('onOpenChange');
-      mount(<BasicCombobox onOpenChange={onOpenChange} />);
+    (['auto', 'manual'] as const).forEach(popover => {
+      it(`toggles the ${popover} popover on pointer activation with one notification per change`, () => {
+        const onOpenChange = cy.stub().as('onOpenChange');
+        mount(<BasicCombobox listbox={{ popover }} onOpenChange={onOpenChange} />);
 
-      cy.get(expandIcon).realClick();
-      cy.get(listbox).should('exist');
-      cy.get('@onOpenChange').should('have.been.calledOnce');
-      cy.get(expandIcon).realClick();
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true').and('be.focused');
+        cy.get('@onOpenChange').should('have.been.calledOnce');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('not.exist');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+        cy.get('[data-open]').should('not.exist');
+        cy.get('@onOpenChange').should('have.been.calledTwice');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true');
+        cy.get('@onOpenChange').should('have.been.calledThrice');
+      });
+    });
+
+    it('closes on input blur with a null relatedTarget when the expand icon is absent', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(<BasicCombobox defaultOpen expandIcon={null} onOpenChange={onOpenChange} />);
+
+      cy.get(expandIcon).should('not.exist');
+      cy.get(listbox).should('be.visible');
+      cy.get(trigger).focus().should('be.focused').blur();
+      cy.get(listbox).should('not.exist');
+      cy.get(trigger).should('have.attr', 'aria-expanded', 'false');
       cy.get('[data-open]').should('not.exist');
-      cy.get('@onOpenChange').should('have.been.calledTwice');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
     });
 
     it('notifies of an input blur close only once', () => {

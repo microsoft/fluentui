@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: wire up the Combobox expandIcon with accessible keyboard, visibility, and blur behavior",
+  "comment": "fix: wire up the Combobox expandIcon with accessible keyboard, visibility, missing-icon blur, and manual-popover pointer toggling behavior",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

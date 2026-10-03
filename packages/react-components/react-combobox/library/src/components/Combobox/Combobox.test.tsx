@@ -142,6 +142,32 @@ describe('Combobox', () => {
     expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
   });
 
+  it('closes on input blur with a null relatedTarget when the expand icon is absent', () => {
+    const onOpenChange = jest.fn();
+    const result = render(
+      <Combobox defaultOpen inlinePopup expandIcon={null} onOpenChange={onOpenChange}>
+        <Option>Red</Option>
+      </Combobox>,
+    );
+    const input = result.getByRole('combobox');
+
+    act(() => {
+      input.focus();
+    });
+    expect(input).toHaveFocus();
+    expect(input).toHaveAttribute('aria-expanded', 'true');
+    expect(result.queryByRole('button')).toBeNull();
+
+    act(() => {
+      input.blur();
+    });
+
+    expect(result.queryByRole('listbox')).toBeNull();
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+  });
+
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>

@@ -84,7 +84,7 @@ export const useComboboxBase_unstable = (
       ...triggerNativeProps,
     },
     activeDescendantController,
-    shouldCloseOnBlur: event => event.relatedTarget !== expandIconRef.current,
+    shouldCloseOnBlur: event => !expandIconRef.current || event.relatedTarget !== expandIconRef.current,
   });
 
   const rootSlot = slot.always(props.root, {

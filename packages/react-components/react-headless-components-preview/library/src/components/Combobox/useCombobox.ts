@@ -42,7 +42,7 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       ...triggerNativeProps,
     },
     activeDescendantController,
-    shouldCloseOnBlur: event => event.relatedTarget !== expandIconRef.current,
+    shouldCloseOnBlur: event => !expandIconRef.current || event.relatedTarget !== expandIconRef.current,
   });
 
   const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
@@ -101,9 +101,9 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       const nextOpen = hasExpandIconMouseDownRef.current ? !openOnPointerDownRef.current : !open;
       hasExpandIconMouseDownRef.current = false;
       openOnPointerDownRef.current = nextOpen;
-      // A pointer interaction that starts while open light-dismisses the native popover on pointerup.
+      // A pointer interaction that starts while open light-dismisses an auto popover on pointerup.
       // Let the popover's toggle event issue the close notification so onOpenChange fires only once.
-      if (!disabled && !wasOpenOnPointerDown) {
+      if (!disabled && (!wasOpenOnPointerDown || listbox?.popover === 'manual')) {
         internalState.setOpen(event, nextOpen);
       }
       triggerRef.current?.focus();
