@@ -12,11 +12,12 @@ export { usePositioning } from './usePositioning';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
 export { useSafeZoneArea } from './hooks/useSafeZoneArea/useSafeZoneArea';
 export type { UseSafeZoneOptions } from './hooks/useSafeZoneArea/useSafeZoneArea';
-export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
+export { normalizeAutoSize, resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
 
 export type {
   Alignment,
   AutoSize,
+  NormalizedAutoSize,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   Boundary,
   Offset,
