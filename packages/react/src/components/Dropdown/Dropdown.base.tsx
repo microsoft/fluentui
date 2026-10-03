@@ -29,6 +29,7 @@ import { Icon } from '../../Icon';
 import { Label } from '../../Label';
 import { Panel } from '../../Panel';
 import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
+import { Announced } from '../../Announced';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
@@ -219,6 +220,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   private _gotMouseMove: boolean;
   /** Flag for tracking whether focus is triggered by click (alternatively triggered by keyboard nav) */
   private _isFocusedByClick: boolean;
+  private _wasOpen: boolean;
 
   constructor(props: IDropdownInternalProps) {
     super(props);
@@ -270,6 +272,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._hasBeenPositioned = false;
 
     this._sizePosCache.updateOptions(options);
+    this._wasOpen = false;
 
     this.state = {
       isOpen: false,
@@ -302,6 +305,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       if (this.props.onDismiss) {
         this.props.onDismiss();
       }
+    } else if (prevState.isOpen === false && this.state.isOpen === true) {
+      this._wasOpen = true;
     }
   }
 
@@ -418,6 +423,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             },
             this._onRenderContainer,
           )}
+        {!isOpen && this._wasOpen && <Announced message="collapsed" />}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}
