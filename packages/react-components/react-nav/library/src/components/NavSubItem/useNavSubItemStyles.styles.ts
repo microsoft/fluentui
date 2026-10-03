@@ -27,7 +27,12 @@ const useNavSubItemSpecificStyles = makeStyles({
   },
   selectedIndicator: {
     '::after': {
-      marginInlineStart: `-${navItemTokens.indicatorOffset + 36}px`,
+      marginInlineStart: `-${navItemTokens.indicatorOffset + 38}px`,
+    },
+  },
+  smallSelectedIndicator: {
+    '::after': {
+      marginInlineStart: `-${navItemTokens.indicatorOffset + 32}px`,
     },
   },
 });
@@ -54,7 +59,8 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
     navSubItemSpecificStyles.base,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
-    selected && navSubItemSpecificStyles.selectedIndicator,
+    selected &&
+      (isSmallDensity ? navSubItemSpecificStyles.smallSelectedIndicator : navSubItemSpecificStyles.selectedIndicator),
     state.root.className,
   );
 
