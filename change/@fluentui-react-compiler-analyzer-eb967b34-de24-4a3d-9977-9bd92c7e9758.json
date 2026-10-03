@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add --format flag (cli | md) to control output rendering; cli is the new default",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
