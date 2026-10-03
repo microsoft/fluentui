@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test: add real coverage for the Legends overflow scenario (overflow menu button count, hidden legends, menu contents)",
+  "packageName": "@fluentui/react-charts",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "none"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "test: add real coverage for the Legends overflow scenario (reducers, overflow button count, hover card contents)",
+  "packageName": "@fluentui/react-charting",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
