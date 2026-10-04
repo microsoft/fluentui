@@ -49,6 +49,14 @@ const getTotalOffsetTop = (element: HTMLElement, scrollParent: HTMLElement): num
     return scrollParent.offsetTop * -1;
   }
 
+  // Handle position: fixed elements where offsetTop is unreliable
+  const win = element.ownerDocument?.defaultView;
+  const isFixed = win && win.getComputedStyle(element).position === 'fixed';
+
+  if (isFixed) {
+    return element.getBoundingClientRect().top + getTotalOffsetTop(element.offsetParent as HTMLElement, scrollParent);
+  }
+
   return element.offsetTop + getTotalOffsetTop(element.offsetParent as HTMLElement, scrollParent);
 };
 
