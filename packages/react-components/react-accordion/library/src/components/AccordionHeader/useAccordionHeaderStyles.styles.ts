@@ -5,6 +5,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -83,6 +84,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
+    [`:hover .${iconFilledClassName}`]: { display: 'inline' },
+    [`:hover .${iconRegularClassName}`]: { display: 'none' },
   },
   expandIconStart: {
     paddingRight: tokens.spacingHorizontalS,
