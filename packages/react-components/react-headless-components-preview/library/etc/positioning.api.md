@@ -6,11 +6,10 @@
 
 import { Alignment } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
-import type { PositioningEngine } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 
 export { Alignment }
 
@@ -22,24 +21,13 @@ export const ALIGNMENTS: {
 };
 
 // @public
-export function fallbackPositioningEngine(engine: PositioningEngine): PositioningEngine;
-
-// @public
 export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue;
 
 export { Position }
 
-export { PositioningEngine }
-
-// @public
-export const PositioningEngineProvider: React_2.Provider<PositioningEngine | undefined>;
-
 export { PositioningImperativeRef }
 
-// @public
-export type PositioningProps = PositioningProps_2 & {
-    engine?: PositioningEngine;
-};
+export { PositioningProps }
 
 // @public (undocumented)
 export type PositioningReturn = {

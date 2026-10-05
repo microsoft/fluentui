@@ -4,8 +4,7 @@ import type {
   PositioningImperativeRef,
   PositioningProps,
 } from '@fluentui/react-headless-components-preview/positioning';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
 import styles from './positioning.module.css';
 
@@ -27,33 +26,35 @@ export const EngineListenToUpdates = (): React.ReactNode => {
   }, []);
 
   return (
-    <div className={styles.page}>
-      <div className={styles.row}>
-        <Popover
-          onOpenChange={(_, data) => !data.open && setStatusLog([])}
-          positioning={{ positioningRef, onPositioningEnd, position: 'below', engine: floatingUIPositioningEngine }}
-        >
-          <PopoverTrigger>
-            <button className={styles.trigger}>Open popover</button>
-          </PopoverTrigger>
-          <PopoverSurface className={styles.surfaceFallback}>
-            <button
-              className={`${styles.trigger} ${styles.triggerSm}`}
-              onClick={() => positioningRef.current?.updatePosition()}
-            >
-              Update position
-            </button>
-          </PopoverSurface>
-        </Popover>
-        <ol className={styles.log} role="log">
-          {statusLog.length === 0 ? (
-            <li className={styles.logEmpty}>Open the popover to see position updates.</li>
-          ) : (
-            statusLog.map((entry, i) => <li key={i}>{entry}</li>)
-          )}
-        </ol>
+    <PositioningProvider mode="floating-ui">
+      <div className={styles.page}>
+        <div className={styles.row}>
+          <Popover
+            onOpenChange={(_, data) => !data.open && setStatusLog([])}
+            positioning={{ positioningRef, onPositioningEnd, position: 'below' }}
+          >
+            <PopoverTrigger>
+              <button className={styles.trigger}>Open popover</button>
+            </PopoverTrigger>
+            <PopoverSurface className={styles.surfaceFallback}>
+              <button
+                className={`${styles.trigger} ${styles.triggerSm}`}
+                onClick={() => positioningRef.current?.updatePosition()}
+              >
+                Update position
+              </button>
+            </PopoverSurface>
+          </Popover>
+          <ol className={styles.log} role="log">
+            {statusLog.length === 0 ? (
+              <li className={styles.logEmpty}>Open the popover to see position updates.</li>
+            ) : (
+              statusLog.map((entry, i) => <li key={i}>{entry}</li>)
+            )}
+          </ol>
+        </div>
       </div>
-    </div>
+    </PositioningProvider>
   );
 };
 
@@ -67,7 +68,7 @@ EngineListenToUpdates.parameters = {
         '`referenceHidden`; the engine has already mirrored the logical placement into `data-placement` on the surface',
         'by the time the callback runs.',
         '',
-        'CSS anchor positioning has no positioning lifecycle, so this callback requires a positioning engine.',
+        'CSS anchor positioning has no positioning lifecycle, so this callback requires `PositioningProvider` in `floating-ui` or `fallback` mode.',
         '',
         '> ⚠️ _Very few use cases actually require listening to position updates. This is different from the_',
         '_**open/close state**, which is handled in React._',

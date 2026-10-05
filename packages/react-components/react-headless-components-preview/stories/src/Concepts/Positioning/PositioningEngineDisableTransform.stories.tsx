@@ -1,32 +1,33 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
 import styles from './positioning.module.css';
 
 export const EngineDisableTransform = (): React.ReactNode => (
-  <div className={styles.page}>
-    <div className={styles.row}>
-      <Popover positioning={{ engine: floatingUIPositioningEngine }}>
-        <PopoverTrigger>
-          <button className={styles.trigger}>useTransform: true (default)</button>
-        </PopoverTrigger>
-        <PopoverSurface className={styles.surfaceFallback}>
-          Positioned with <code>transform: translate3d()</code>
-        </PopoverSurface>
-      </Popover>
+  <PositioningProvider mode="floating-ui">
+    <div className={styles.page}>
+      <div className={styles.row}>
+        <Popover>
+          <PopoverTrigger>
+            <button className={styles.trigger}>useTransform: true (default)</button>
+          </PopoverTrigger>
+          <PopoverSurface className={styles.surfaceFallback}>
+            Positioned with <code>transform: translate3d()</code>
+          </PopoverSurface>
+        </Popover>
 
-      <Popover positioning={{ useTransform: false, engine: floatingUIPositioningEngine }}>
-        <PopoverTrigger>
-          <button className={styles.trigger}>useTransform: false</button>
-        </PopoverTrigger>
-        <PopoverSurface className={styles.surfaceFallback}>
-          Positioned with <code>left</code>/<code>top</code>
-        </PopoverSurface>
-      </Popover>
+        <Popover positioning={{ useTransform: false }}>
+          <PopoverTrigger>
+            <button className={styles.trigger}>useTransform: false</button>
+          </PopoverTrigger>
+          <PopoverSurface className={styles.surfaceFallback}>
+            Positioned with <code>left</code>/<code>top</code>
+          </PopoverSurface>
+        </Popover>
+      </div>
     </div>
-  </div>
+  </PositioningProvider>
 );
 
 EngineDisableTransform.parameters = {

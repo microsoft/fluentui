@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
-import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
 import styles from './positioning.module.css';
 
@@ -11,7 +9,7 @@ export const EngineOverflowBoundaryPadding = (): React.ReactNode => {
   const [padding, setPadding] = React.useState(8);
 
   return (
-    <PositioningEngineProvider value={floatingUIPositioningEngine}>
+    <PositioningProvider mode="floating-ui">
       <div className={styles.page}>
         <div className={styles.controls}>
           <label className={styles.row}>
@@ -62,7 +60,7 @@ export const EngineOverflowBoundaryPadding = (): React.ReactNode => {
           </Popover>
         </div>
       </div>
-    </PositioningEngineProvider>
+    </PositioningProvider>
   );
 };
 
@@ -72,7 +70,7 @@ EngineOverflowBoundaryPadding.parameters = {
       story: [
         'The `overflowBoundaryPadding` property sets the padding between the positioned element and the chosen',
         'boundary. The padding can be a shorthand number which applies to all sides, or an object that explicitly',
-        'sets the padding for each side. Requires a positioning engine.',
+        'sets the padding for each side. Requires `PositioningProvider` in `floating-ui` or `fallback` mode.',
         '',
         '> _Design guidance recommends using **8px** or **4px** if a padding is required. Custom values are also_',
         '_possible but should stay within a 4px grid._',

@@ -1,60 +1,45 @@
-By default headless surfaces are positioned by the browser with native CSS anchor positioning: no JavaScript positioner runs. A **positioning engine** swaps that for an imperative positioner, per surface or app-wide.
+By default headless surfaces are positioned by the browser with native CSS anchor positioning: no JavaScript positioner runs. `PositioningProvider` switches the surfaces below it to Floating UI, the positioner that powers Fluent UI React v9, either where CSS is not enough or everywhere.
 
 ```tsx
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
-import {
-  PositioningEngineProvider,
-  fallbackPositioningEngine,
-} from '@fluentui/react-headless-components-preview/positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
-// app-wide, recommended: CSS where it is enough, the engine where it is not
-<PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
+// recommended: CSS where it is enough, Floating UI where it is not
+<PositioningProvider mode="fallback">
   <App />
-</PositioningEngineProvider>;
+</PositioningProvider>;
 
-// one surface
-<Popover positioning={{ autoSize: true, engine: floatingUIPositioningEngine }} />;
-
-// every surface below the provider (a component-level `engine` still wins)
-<PositioningEngineProvider value={floatingUIPositioningEngine}>
+// Floating UI for every surface below
+<PositioningProvider mode="floating-ui">
   <App />
-</PositioningEngineProvider>;
+</PositioningProvider>;
+
+// back to CSS only for a subtree
+<PositioningProvider mode="css">
+  <Section />
+</PositioningProvider>;
 ```
 
-### When you need one
+The nearest provider wins, so a nested provider overrides the mode for its subtree, down to a single surface. `@floating-ui/*` is only bundled by apps that import the `positioning-floating-ui` entry; the rest of the headless package never includes it.
 
-Every option of the canonical `positioning` contract is accepted, but these have no CSS equivalent and only take effect with an engine: `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `useTransform`, `disableUpdateOnResize`, `onPositioningEnd`. Passing them without an engine logs a development warning and does nothing.
+### When you need it
 
-### Fallback engine
+Every option of the canonical `positioning` contract is accepted, but these have no CSS equivalent and only take effect under `PositioningProvider` (`fallback` or `floating-ui` mode): `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `useTransform`, `disableUpdateOnResize`, `onPositioningEnd`. Without it they log a development warning and do nothing. Browsers without CSS anchor positioning also need it, otherwise surfaces open unpositioned.
 
-A plain engine in `PositioningEngineProvider` positions every surface below it, so one part of an app that needs `autoSize` would opt the whole subtree out of native anchoring. Wrap the engine with `fallbackPositioningEngine` instead: each surface keeps CSS anchor positioning and only hands over to the engine when
+### `fallback` mode
+
+Each surface keeps CSS anchor positioning and only hands over to Floating UI when
 
 - the browser does not support `position-area` (Chromium before 129, Safari before 26, Firefox before 147), or
-- it sets an option that needs an engine: `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `onPositioningEnd`, or a function `offset`.
+- it sets an option CSS cannot express: `autoSize`, `flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `arrowPadding`, `onPositioningEnd`, or a function `offset`.
 
-`useTransform` and `disableUpdateOnResize` only tune an engine, so they do not trigger the handover on their own. If the options change at runtime the surface switches between the two paths.
+`useTransform` and `disableUpdateOnResize` only tune Floating UI, so they do not trigger the handover on their own. If the options change at runtime the surface switches between the two paths. One part of an app that needs `autoSize` therefore does not opt the rest of the app out of native anchoring.
 
-`floatingUIPositioningEngine` is the Floating UI implementation that powers Fluent UI React v9, so a headless app that imports it gets full v9 parity; the `Engine…` stories below reproduce the corresponding v9 positioning examples. `@floating-ui/*` is only bundled if you import the engine; the headless package's bundle-isolation check forbids it.
+### `floating-ui` mode
 
-### What an engine is
+Every surface below is positioned by Floating UI, including those CSS could handle, so the two positioners never mix on a surface. Use it to match v9 behaviour exactly or to work around a browser issue with native anchoring; the `Engine…` stories below use it to reproduce the corresponding v9 positioning examples.
 
-```ts
-interface PositioningEngine {
-  create(params: {
-    container: HTMLElement; // the surface
-    target: HTMLElement | PositioningVirtualElement; // trigger, or a virtual element for context menus
-    arrow: HTMLElement | null; // present when `withArrow`
-    options: PositioningOptions; // props merged with component-derived options (submenu side, pointer target…)
-    dir?: 'ltr' | 'rtl';
-    targetDocument?: Document;
-  }): { updatePosition(): void; dispose(): void };
-}
-```
-
-`create()` is called from a layout effect once the elements exist and disposed when they change or unmount. It is a plain object, never a hook, so it can come from props or context and change identity freely. An engine **replaces** CSS anchor positioning entirely: it owns every option, including the ones CSS also supports, so two positioners never mix.
-
-The engine keeps the container positioned (including releasing the UA top-layer `inset: 0; margin: auto` that `[popover]` and `dialog:modal` receive) and keeps the container's `data-placement` current with the resolved **logical** placement (`above-start`, `after-top`, …), so placement-keyed CSS and arrows work the same way as with CSS anchor positioning. On `dispose` it restores the inline styles and attributes it wrote, so switching between an engine and CSS anchor positioning at runtime hands over a clean element.
+Floating UI keeps the container positioned (including releasing the UA top-layer `inset: 0; margin: auto` that `[popover]` and `dialog:modal` receive) and keeps the container's `data-placement` current with the resolved **logical** placement (`above-start`, `after-top`, …), so placement-keyed CSS and arrows work the same way as with CSS anchor positioning. When a surface switches back to CSS it restores the inline styles and attributes it wrote.
 
 ### Arrows
 
-With `withArrow`, the engine positions the arrow along the surface edge (`arrowPadding` keeps it away from rounded corners), but headless components have no built-in arrow size, so the gap between the surface and the target is not adjusted for it. Set `offset` to at least the arrow's protruding size, e.g. `positioning={{ offset: 8 }}` for an 8px arrow.
+With `withArrow`, Floating UI positions the arrow along the surface edge (`arrowPadding` keeps it away from rounded corners), but headless components have no built-in arrow size, so the gap between the surface and the target is not adjusted for it. Set `offset` to at least the arrow's protruding size, e.g. `positioning={{ offset: 8 }}` for an 8px arrow.

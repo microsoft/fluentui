@@ -1,10 +1,8 @@
 export { resolvePositioningShorthand } from './resolvePositioningShorthand';
 export { usePositioning } from './usePositioning';
-export { PositioningEngineProvider } from './PositioningEngineContext';
-export { fallbackPositioningEngine } from './fallbackPositioningEngine';
 export { getPlacementString } from './utils';
 export { POSITIONS, ALIGNMENTS } from './constants';
-export type { PositioningEngine, PositioningProps, PositioningShorthand, PositioningReturn } from './types';
+export type { PositioningProps, PositioningShorthand, PositioningReturn } from './types';
 
 export type {
   Alignment,

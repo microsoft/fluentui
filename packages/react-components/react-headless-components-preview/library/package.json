@@ -392,6 +392,16 @@
         "default": "./lib-commonjs/positioning.cjs"
       }
     },
+    "./positioning-floating-ui": {
+      "import": {
+        "types": "./dist/positioning-floating-ui.d.ts",
+        "default": "./lib/positioning-floating-ui.js"
+      },
+      "require": {
+        "types": "./dist/positioning-floating-ui.d.cts",
+        "default": "./lib-commonjs/positioning-floating-ui.cjs"
+      }
+    },
     "./progress-bar": {
       "import": {
         "types": "./dist/progress-bar.d.ts",

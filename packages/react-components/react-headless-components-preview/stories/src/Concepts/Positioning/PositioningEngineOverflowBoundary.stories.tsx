@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
-import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
 import styles from './positioning.module.css';
 
@@ -10,7 +8,7 @@ export const EngineOverflowBoundary = (): React.ReactNode => {
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
 
   return (
-    <PositioningEngineProvider value={floatingUIPositioningEngine}>
+    <PositioningProvider mode="floating-ui">
       <div className={styles.page}>
         <div
           ref={setBoundary}
@@ -35,7 +33,7 @@ export const EngineOverflowBoundary = (): React.ReactNode => {
           </Popover>
         </div>
       </div>
-    </PositioningEngineProvider>
+    </PositioningProvider>
   );
 };
 
@@ -44,7 +42,7 @@ EngineOverflowBoundary.parameters = {
     description: {
       story: [
         'The overflow boundary can be configured manually so that the positioned element is shifted to stay within',
-        'bounds for different alignments. `overflowBoundary` requires a positioning engine.',
+        'bounds for different alignments. `overflowBoundary` requires `PositioningProvider` in `floating-ui` or `fallback` mode.',
       ].join('\n'),
     },
   },

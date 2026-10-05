@@ -39,15 +39,14 @@ const noopRef: React.RefCallback<HTMLElement> = () => undefined;
 /**
  * Positions a surface relative to a target.
  *
- * By default this uses native CSS anchor positioning. When an engine is supplied — inline through
- * `options.engine` or app-wide through `PositioningEngineProvider` — the engine owns positioning
- * entirely and the CSS path is not applied. An engine wrapped with `fallbackPositioningEngine` is only
- * used when the browser lacks CSS anchor positioning or the options need an engine.
+ * By default this uses native CSS anchor positioning. `PositioningProvider` (from the
+ * `positioning-floating-ui` entry) supplies an engine through context: in `floating-ui` mode the engine
+ * owns positioning entirely, in `fallback` mode it is only used when the browser lacks CSS anchor
+ * positioning or the options need an engine.
  */
 export function usePositioning(options: PositioningProps): PositioningReturn {
-  const { engine: engineFromOptions, positioningRef, ...positioningOptions } = options;
-  const engineFromContext = usePositioningEngineContext();
-  const requestedEngine = engineFromOptions ?? engineFromContext;
+  const { positioningRef, ...positioningOptions } = options;
+  const requestedEngine = usePositioningEngineContext();
   const { targetDocument } = useFluent();
 
   const requiresEngine =
@@ -78,8 +77,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       console.warn(
         '@fluentui/react-headless-components-preview [usePositioning]: ' +
           `${unsupportedOptions} require a JavaScript positioning engine and have no effect with CSS anchor ` +
-          'positioning. Pass `positioning={{ engine }}` or wrap the tree in `PositioningEngineProvider` ' +
-          '(for example with `floatingUIPositioningEngine` from `@fluentui/react-positioning`).',
+          'positioning. Wrap the tree in `<PositioningProvider mode="fallback">` from ' +
+          '`@fluentui/react-headless-components-preview/positioning-floating-ui`.',
       );
     }
   }, [unsupportedOptions]);

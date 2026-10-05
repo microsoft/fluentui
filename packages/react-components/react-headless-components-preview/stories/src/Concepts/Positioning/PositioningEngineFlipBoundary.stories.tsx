@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headless-components-preview/popover';
-import { PositioningEngineProvider } from '@fluentui/react-headless-components-preview/positioning';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
 import styles from './positioning.module.css';
 
@@ -10,7 +8,7 @@ export const EngineFlipBoundary = (): React.ReactNode => {
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
 
   return (
-    <PositioningEngineProvider value={floatingUIPositioningEngine}>
+    <PositioningProvider mode="floating-ui">
       <div className={styles.page}>
         <div ref={setBoundary} className={`${styles.boundary} ${styles.boundarySpaceBetween}`}>
           <Popover positioning={{ flipBoundary: boundary, position: 'above', align: 'start' }}>
@@ -32,7 +30,7 @@ export const EngineFlipBoundary = (): React.ReactNode => {
           </Popover>
         </div>
       </div>
-    </PositioningEngineProvider>
+    </PositioningProvider>
   );
 };
 
@@ -42,8 +40,8 @@ EngineFlipBoundary.parameters = {
       story: [
         'The flip boundary can be configured manually so that the positioned element stays within bounds for',
         'different positions. `flipBoundary` has no CSS anchor positioning equivalent (`position-try-fallbacks` always',
-        'flips against the containing block), so it requires a positioning engine — here supplied app-wide through',
-        '`PositioningEngineProvider`.',
+        'flips against the containing block), so it requires `PositioningProvider` in `floating-ui` or `fallback` mode — here supplied app-wide through',
+        '`<PositioningProvider mode="floating-ui">`.',
       ].join('\n'),
     },
   },

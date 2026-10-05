@@ -2,7 +2,7 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import type { PositioningEngine, PositioningImperativeRef, PositionManager } from '@fluentui/react-positioning';
 import { usePositioning } from './usePositioning';
-import { PositioningEngineProvider } from './PositioningEngineContext';
+import { PositioningEngineContextProvider, usePositioningEngineContext } from './PositioningEngineContext';
 import { fallbackPositioningEngine } from './fallbackPositioningEngine';
 import { getPlacementString } from './utils/placement';
 import type { PositioningProps, PositioningReturn } from './types';
@@ -246,7 +246,7 @@ describe('usePositioning', () => {
       return engine as unknown as FakeEngine;
     };
 
-    const Surface = (props: {
+    const Positioned = (props: {
       positioning: PositioningProps;
       withArrow?: boolean;
       onResult?: (result: PositioningReturn) => void;
@@ -264,10 +264,26 @@ describe('usePositioning', () => {
       );
     };
 
+    /**
+     * Supplies `engine` through context, the way `PositioningProvider` does. Without `engine` it keeps the
+     * outer context, so the tree shape stays the same when a test adds or removes the engine.
+     */
+    const Surface = ({
+      engine,
+      ...props
+    }: React.ComponentProps<typeof Positioned> & { engine?: PositioningEngine }) => {
+      const outerEngine = usePositioningEngineContext();
+      return (
+        <PositioningEngineContextProvider value={engine ?? outerEngine}>
+          <Positioned {...props} />
+        </PositioningEngineContextProvider>
+      );
+    };
+
     it('invokes engine.create with the merged options, target, container and arrow', () => {
       const engine = createFakeEngine();
       const { getByTestId } = render(
-        <Surface positioning={{ engine, position: 'below', align: 'start', autoSize: true }} withArrow />,
+        <Surface engine={engine} positioning={{ position: 'below', align: 'start', autoSize: true }} withArrow />,
       );
 
       expect(engine.create).toHaveBeenCalledTimes(1);
@@ -284,7 +300,7 @@ describe('usePositioning', () => {
 
     it('does not apply CSS anchor positioning when an engine owns placement', () => {
       const engine = createFakeEngine();
-      const { getByTestId } = render(<Surface positioning={{ engine, position: 'below' }} />);
+      const { getByTestId } = render(<Surface engine={engine} positioning={{ position: 'below' }} />);
 
       expect(getByTestId('target').style.getPropertyValue('anchor-name')).toBe('');
       expect(getByTestId('container').style.getPropertyValue('position-anchor')).toBe('');
@@ -293,7 +309,7 @@ describe('usePositioning', () => {
 
     it('seeds data-placement with the requested placement before the engine runs', () => {
       const engine = createFakeEngine();
-      const { getByTestId } = render(<Surface positioning={{ engine, position: 'after', align: 'top' }} />);
+      const { getByTestId } = render(<Surface engine={engine} positioning={{ position: 'after', align: 'top' }} />);
 
       expect(getByTestId('container')).toHaveAttribute('data-placement', 'after-top');
     });
@@ -302,9 +318,9 @@ describe('usePositioning', () => {
       const engine = createFakeEngine();
       const first = jest.fn();
       const second = jest.fn();
-      const { rerender } = render(<Surface positioning={{ engine, onPositioningEnd: first }} />);
+      const { rerender } = render(<Surface engine={engine} positioning={{ onPositioningEnd: first }} />);
 
-      rerender(<Surface positioning={{ engine, onPositioningEnd: second }} />);
+      rerender(<Surface engine={engine} positioning={{ onPositioningEnd: second }} />);
       expect(engine.create).toHaveBeenCalledTimes(1);
 
       const event = new CustomEvent('fui-positioningend', {
@@ -318,7 +334,7 @@ describe('usePositioning', () => {
 
     it('disposes the manager on unmount', () => {
       const engine = createFakeEngine();
-      const { unmount } = render(<Surface positioning={{ engine }} />);
+      const { unmount } = render(<Surface engine={engine} positioning={{}} />);
 
       unmount();
 
@@ -327,13 +343,13 @@ describe('usePositioning', () => {
 
     it('recreates the manager when an option changes and not when values are equal', () => {
       const engine = createFakeEngine();
-      const { rerender } = render(<Surface positioning={{ engine, offset: 4 }} />);
+      const { rerender } = render(<Surface engine={engine} positioning={{ offset: 4 }} />);
       expect(engine.create).toHaveBeenCalledTimes(1);
 
-      rerender(<Surface positioning={{ engine, offset: 4 }} />);
+      rerender(<Surface engine={engine} positioning={{ offset: 4 }} />);
       expect(engine.create).toHaveBeenCalledTimes(1);
 
-      rerender(<Surface positioning={{ engine, offset: 8 }} />);
+      rerender(<Surface engine={engine} positioning={{ offset: 8 }} />);
       expect(engine.manager.dispose).toHaveBeenCalledTimes(1);
       expect(engine.create).toHaveBeenCalledTimes(2);
       expect(engine.create.mock.calls[1][0].options.offset).toBe(8);
@@ -342,7 +358,7 @@ describe('usePositioning', () => {
     it('delegates the imperative ref to the manager', () => {
       const engine = createFakeEngine();
       const positioningRef = React.createRef<PositioningImperativeRef>();
-      render(<Surface positioning={{ engine, positioningRef }} />);
+      render(<Surface engine={engine} positioning={{ positioningRef }} />);
 
       act(() => {
         positioningRef.current?.updatePosition();
@@ -357,28 +373,17 @@ describe('usePositioning', () => {
       expect(engine.create.mock.calls[1][0].target).toBe(virtualTarget);
     });
 
-    it('falls back to the engine supplied by PositioningEngineProvider', () => {
-      const engine = createFakeEngine();
+    it('uses the engine from the nearest provider', () => {
+      const outerEngine = createFakeEngine();
+      const innerEngine = createFakeEngine();
       render(
-        <PositioningEngineProvider value={engine}>
-          <Surface positioning={{ position: 'below' }} />
-        </PositioningEngineProvider>,
+        <PositioningEngineContextProvider value={outerEngine}>
+          <Surface engine={innerEngine} positioning={{}} />
+        </PositioningEngineContextProvider>,
       );
 
-      expect(engine.create).toHaveBeenCalledTimes(1);
-    });
-
-    it('prefers an inline engine over the one from context', () => {
-      const contextEngine = createFakeEngine();
-      const inlineEngine = createFakeEngine();
-      render(
-        <PositioningEngineProvider value={contextEngine}>
-          <Surface positioning={{ engine: inlineEngine }} />
-        </PositioningEngineProvider>,
-      );
-
-      expect(inlineEngine.create).toHaveBeenCalledTimes(1);
-      expect(contextEngine.create).not.toHaveBeenCalled();
+      expect(innerEngine.create).toHaveBeenCalledTimes(1);
+      expect(outerEngine.create).not.toHaveBeenCalled();
     });
 
     it('switches from CSS anchor positioning to the engine when one is added later', () => {
@@ -388,7 +393,7 @@ describe('usePositioning', () => {
       expect(getByTestId('container').style.getPropertyValue('position-anchor')).toMatch(/^--popover-anchor-/);
       expect(engine.create).not.toHaveBeenCalled();
 
-      rerender(<Surface positioning={{ position: 'below', engine }} />);
+      rerender(<Surface engine={engine} positioning={{ position: 'below' }} />);
 
       expect(engine.create).toHaveBeenCalledTimes(1);
       expect(getByTestId('target').style.getPropertyValue('anchor-name')).toBe('');
@@ -404,7 +409,7 @@ describe('usePositioning', () => {
 
     it('switches back to CSS anchor positioning when the engine is removed', () => {
       const engine = createFakeEngine();
-      const { rerender, getByTestId } = render(<Surface positioning={{ position: 'below', engine }} />);
+      const { rerender, getByTestId } = render(<Surface engine={engine} positioning={{ position: 'below' }} />);
 
       rerender(<Surface positioning={{ position: 'below' }} />);
 
@@ -426,7 +431,7 @@ describe('usePositioning', () => {
     it('does not warn when the same options are used with an engine', () => {
       const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
 
-      render(<Surface positioning={{ engine: createFakeEngine(), autoSize: true }} />);
+      render(<Surface engine={createFakeEngine()} positioning={{ autoSize: true }} />);
 
       expect(warn).not.toHaveBeenCalled();
       warn.mockRestore();
@@ -451,9 +456,9 @@ describe('usePositioning', () => {
 
       const renderWithFallback = (engine: FakeEngine, positioning: PositioningProps) =>
         render(
-          <PositioningEngineProvider value={fallbackPositioningEngine(engine)}>
+          <PositioningEngineContextProvider value={fallbackPositioningEngine(engine)}>
             <Surface positioning={positioning} />
-          </PositioningEngineProvider>,
+          </PositioningEngineContextProvider>,
         );
 
       it('returns the same wrapper for the same engine', () => {
@@ -508,35 +513,39 @@ describe('usePositioning', () => {
         const engine = createFakeEngine();
         const fallback = fallbackPositioningEngine(engine);
         const { rerender, getByTestId } = render(
-          <PositioningEngineProvider value={fallback}>
+          <PositioningEngineContextProvider value={fallback}>
             <Surface positioning={{ position: 'below' }} />
-          </PositioningEngineProvider>,
+          </PositioningEngineContextProvider>,
         );
 
         rerender(
-          <PositioningEngineProvider value={fallback}>
+          <PositioningEngineContextProvider value={fallback}>
             <Surface positioning={{ position: 'below', autoSize: true }} />
-          </PositioningEngineProvider>,
+          </PositioningEngineContextProvider>,
         );
         expect(engine.create).toHaveBeenCalledTimes(1);
         expect(getByTestId('container').style.getPropertyValue('position-anchor')).toBe('');
 
         rerender(
-          <PositioningEngineProvider value={fallback}>
+          <PositioningEngineContextProvider value={fallback}>
             <Surface positioning={{ position: 'below' }} />
-          </PositioningEngineProvider>,
+          </PositioningEngineContextProvider>,
         );
         expect(engine.manager.dispose).toHaveBeenCalledTimes(1);
         expect(getByTestId('container').style.getPropertyValue('position-anchor')).toMatch(/^--popover-anchor-/);
       });
 
-      it('lets an inline engine override a fallback engine from context', () => {
-        const contextEngine = createFakeEngine();
-        const inlineEngine = createFakeEngine();
-        renderWithFallback(contextEngine, { engine: inlineEngine });
+      it('lets a nested plain engine override a fallback engine', () => {
+        const fallbackEngine = createFakeEngine();
+        const plainEngine = createFakeEngine();
+        render(
+          <PositioningEngineContextProvider value={fallbackPositioningEngine(fallbackEngine)}>
+            <Surface engine={plainEngine} positioning={{ position: 'below' }} />
+          </PositioningEngineContextProvider>,
+        );
 
-        expect(inlineEngine.create).toHaveBeenCalledTimes(1);
-        expect(contextEngine.create).not.toHaveBeenCalled();
+        expect(plainEngine.create).toHaveBeenCalledTimes(1);
+        expect(fallbackEngine.create).not.toHaveBeenCalled();
       });
 
       it('does not warn about engine-only options', () => {

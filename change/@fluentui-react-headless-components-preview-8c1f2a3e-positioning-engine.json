@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: support positioning engine injection and fallbackPositioningEngine",
+  "comment": "feat: add PositioningProvider (positioning-floating-ui entry) to position surfaces with Floating UI as a fallback or everywhere",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
