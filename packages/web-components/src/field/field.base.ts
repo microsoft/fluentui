@@ -161,6 +161,7 @@ export class BaseField extends FASTElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this.setLabelProperties();
     this.addEventListener('invalid', this.invalidHandler, { capture: true });
   }
 
