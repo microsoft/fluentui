@@ -1007,6 +1007,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       getGraphData={_getGraphData}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
       {...(_xAxisType === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,

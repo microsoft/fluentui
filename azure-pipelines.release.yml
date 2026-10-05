@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: v8_20201022.1
-name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "v8_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -90,6 +90,7 @@ extends:
               - template: .devops/templates/run-with-token.yml@self
                 parameters:
                   steps:
+                    # Publish, then reset to the updated origin/master state so manifest versions are correct.
                     - script: |
                         yarn beachball publish --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                         git reset --hard origin/master
@@ -99,10 +100,10 @@ extends:
                         BEACHBALL_NPM_TOKEN: $(npmToken)
                       displayName: Publish changes and bump versions
 
-                    # create-site-manifests is a script defined in @fluentui/public-docsite-setup.
+                    # create-site-manifests is a binary defined in @fluentui/public-docsite-setup.
                     # It generates manifest files used to load the current version on developer.microsoft.com/fluentui.
                     - script: |
-                        yarn create-site-manifests ./packages/react
+                        node ./packages/public-docsite-setup/bin/create-site-manifests.js ./packages/react
                       displayName: 'Generate website manifests'
 
                     # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the

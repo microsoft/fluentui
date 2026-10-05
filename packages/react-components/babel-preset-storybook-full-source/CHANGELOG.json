@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-storybook-full-source",
   "entries": [
     {
+      "date": "Mon, 21 Sep 2026 15:07:55 GMT",
+      "version": "0.1.4",
+      "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "5695ba9a88220b89b564d65bc10f0caf806b6610",
+            "comment": "fix: Preserve inline CSF3 story parameters when adding fullSource"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2026 14:23:07 GMT",
       "tag": "@fluentui/babel-preset-storybook-full-source_v0.1.3",
       "version": "0.1.3",

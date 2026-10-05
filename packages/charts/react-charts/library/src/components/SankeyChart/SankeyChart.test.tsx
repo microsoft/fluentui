@@ -3,8 +3,9 @@ import { webDarkTheme } from '@fluentui/react-theme';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { SankeyChart } from './SankeyChart';
+import { groupNodesByColumn, SankeyChart } from './SankeyChart';
 import type { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import type { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
@@ -134,6 +135,19 @@ describe('Sankey bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe('SankeyChart - prototype pollution hardening', () => {
+  it('groups a node with a __proto__ column without using Object.prototype', () => {
+    const node = { nodeId: 0, name: 'malicious', layer: '__proto__' };
+    const graph = { nodes: [node], links: [] } as unknown as Parameters<typeof groupNodesByColumn>[0];
+
+    const nodesByColumn = groupNodesByColumn(graph);
+
+    expect(Object.prototype.hasOwnProperty.call(nodesByColumn, '__proto__')).toBe(true);
+    expect(nodesByColumn['__proto__' as unknown as number]).toEqual([node]);
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, '0')).toBe(false);
+  });
 });
 
 describe('Sankey chart - Theme', () => {
@@ -601,5 +615,70 @@ describe('SankeyChart - Min Height of Node Test', () => {
     const component = render(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
     // ASSERT
     expect(component).toMatchSnapshot();
+  });
+});
+
+describe('SankeyChart - node ID prototype pollution hardening', () => {
+  const magicKeys = ['__proto__', 'constructor', 'prototype'];
+  const pollutionKey = 'sankeyPrototypePollutionTarget';
+
+  beforeEach(sharedBeforeEach);
+
+  afterEach(() => {
+    delete (Object.prototype as Record<string, unknown>)[pollutionKey];
+    delete (Object as unknown as Record<string, unknown>)[pollutionKey];
+  });
+
+  it.each(magicKeys)('renders safely when the source node ID is "%s"', sourceId => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: sourceId, name: 'Source' },
+          { nodeId: pollutionKey, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    expect(() => render(<SankeyChart data={maliciousData} width={820} height={412} />)).not.toThrow();
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, pollutionKey)).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(Object, pollutionKey)).toBe(false);
+  });
+
+  it.each(magicKeys)('renders safely when the target node ID is "%s"', targetId => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: 'source', name: 'Source' },
+          { nodeId: targetId, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    expect(() => render(<SankeyChart data={maliciousData} width={820} height={412} />)).not.toThrow();
+  });
+
+  it('does not pollute Object.prototype during server rendering', () => {
+    const maliciousData: ChartProps = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: '__proto__', name: 'Source' },
+          { nodeId: pollutionKey, name: 'Target' },
+        ],
+        links: [{ source: 0, target: 1, value: 1 }],
+      },
+    };
+
+    try {
+      renderToStaticMarkup(<SankeyChart data={maliciousData} width={820} height={412} />);
+    } catch {
+      // SankeyChart currently accesses browser-only APIs after processing link values.
+    }
+
+    expect(Object.prototype.hasOwnProperty.call(Object.prototype, pollutionKey)).toBe(false);
   });
 });

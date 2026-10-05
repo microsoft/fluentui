@@ -12,6 +12,8 @@ export const useNavSubItem = (
   const state: NavSubItemState = useNavSubItemBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
+  state.root['data-disabled'] = toDataAttributeValue(state.root.disabled || state.root['aria-disabled']);
+  // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = toDataAttributeValue(state.selected);
 
   return state;
