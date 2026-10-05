@@ -109,21 +109,21 @@
   border-radius: var(--borderRadiusCircular);
 }
 
-:host([disabled]),
-:host([disabled]:state(checked)) {
+:host(:is([disabled], :disabled)),
+:host(:is([disabled], :disabled):state(checked)) {
   background-color: var(--colorNeutralBackgroundDisabled);
   border-color: var(--colorNeutralStrokeDisabled);
 }
 
-:host([disabled]) {
+:host(:is([disabled], :disabled)) {
   cursor: unset;
 }
 
-:host([disabled]:state(indeterminate)) .indeterminate-indicator {
+:host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator {
   background-color: var(--colorNeutralStrokeDisabled);
 }
 
-:host([disabled]:state(checked)) .checked-indicator {
+:host(:is([disabled], :disabled):state(checked)) .checked-indicator {
   color: var(--colorNeutralStrokeDisabled);
 }
 
@@ -136,8 +136,8 @@
     border-color: Canvas;
   }
 
-  :host(:not([disabled]):hover),
-  :host(:state(checked):not([disabled]):hover),
+  :host(:not(:is([disabled], :disabled)):hover),
+  :host(:state(checked):not(:is([disabled], :disabled)):hover),
   :host(:not([slot='input']):focus-visible)::after {
     border-color: Highlight;
   }
@@ -152,21 +152,21 @@
     background-color: FieldText;
   }
 
-  :host(:state(checked):not([disabled]):hover),
-  :host(:state(indeterminate):not([disabled]):hover) .indeterminate-indicator {
+  :host(:state(checked):not(:is([disabled], :disabled)):hover),
+  :host(:state(indeterminate):not(:is([disabled], :disabled)):hover) .indeterminate-indicator {
     background-color: Highlight;
   }
 
-  :host([disabled]) {
+  :host(:is([disabled], :disabled)) {
     border-color: GrayText;
   }
 
-  :host([disabled]:state(indeterminate)) .indeterminate-indicator {
+  :host(:is([disabled], :disabled):state(indeterminate)) .indeterminate-indicator {
     background-color: GrayText;
   }
 
-  :host([disabled]),
-  :host([disabled]:state(checked)) .checked-indicator {
+  :host(:is([disabled], :disabled)),
+  :host(:is([disabled], :disabled):state(checked)) .checked-indicator {
     color: GrayText;
   }
 }

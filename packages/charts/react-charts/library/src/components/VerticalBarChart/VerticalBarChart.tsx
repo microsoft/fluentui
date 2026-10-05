@@ -661,7 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <g key={`${point.x}_${index}` as string} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -724,6 +724,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         <g
           key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
+          role="presentation"
         >
           <rect
             id={`${_vbcBarId}-${index}`}
@@ -782,7 +783,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`} role="presentation">
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -824,7 +825,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);
@@ -1172,6 +1173,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       getDomainNRangeValues={_getDomainNRangeValues}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
       {...(_xAxisType! === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,

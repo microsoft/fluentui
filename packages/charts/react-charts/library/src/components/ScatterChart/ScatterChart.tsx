@@ -253,7 +253,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _createLegends(data: ScatterChartDataWithIndex[]): JSXElement {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = {};
+    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = Object.create(null);
     data.forEach((point: ScatterChartDataWithIndex) => {
       if (point.legend) {
         if (!mapLegendToPoints[point.legend]) {
@@ -473,11 +473,10 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                 opacity={isLegendSelected && !currentPointHidden ? 1 : 0.1}
                 fill={_getPointFill(seriesColor, circleId, j, false)}
                 stroke={seriesColor}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(i, j)}
                 tabIndex={isLegendSelected ? 0 : undefined}
               />
-              ,
               {text && (
                 <text
                   key={`${circleId}-label`}
@@ -507,7 +506,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       series.push(
         <g
           key={`series_${i}`}
-          role="region"
+          role="listbox"
           aria-label={`${legendVal}, series ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
         >
           {pointsForSeries}
@@ -737,6 +736,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       createYAxis={createNumericYAxis}
       createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}

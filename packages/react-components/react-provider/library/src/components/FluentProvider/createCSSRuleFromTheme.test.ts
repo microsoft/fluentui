@@ -29,4 +29,12 @@ describe('createCSSRuleFromTheme', () => {
       `".selector { --colorBrandBackground: \\\\3C /style\\\\3E \\\\3C script\\\\3E alert(\\"xss\\")\\\\3C /script\\\\3E ;  }"`,
     );
   });
+
+  it('prevents XSS by replacing angle brackets in the selector', () => {
+    const result = createCSSRuleFromTheme('.selector</style><script>alert("xss")</script>', undefined);
+
+    expect(result).not.toContain('<');
+    expect(result).not.toContain('>');
+    expect(result).toContain('\\3C /style\\3E \\3C script\\3E alert("xss")\\3C /script\\3E ');
+  });
 });

@@ -55,7 +55,7 @@ function Consumer() {
 ```
 
 > ⚠️ The recommended solution to the above problem is to make sure that the affected dependency
-> only exists once in node_modules. You can do this by upgrading your dependencies or using [resolutions](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/).
+> only exists once in node_modules. You can do this by upgrading your dependencies or using [resolutions](https://yarnpkg.com/configuration/manifest#resolutions).
 
 This library should only be used as a workaround in the cases where it might not be feasible to deduplicate `node_modules`.
 

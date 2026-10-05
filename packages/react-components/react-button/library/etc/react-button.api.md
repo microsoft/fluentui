@@ -60,10 +60,16 @@ export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProp
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
 // @public (undocumented)
+export type CompoundButtonBaseProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonBaseProps, 'disabledFocusable' | 'disabled' | 'iconPosition'>;
+
+// @public (undocumented)
+export type CompoundButtonBaseState = ComponentState<CompoundButtonSlots> & Omit<ButtonBaseState, keyof ButtonSlots | 'components'>;
+
+// @public (undocumented)
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
+export type CompoundButtonProps = CompoundButtonBaseProps & Pick<ButtonProps, 'appearance' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
@@ -72,7 +78,7 @@ export type CompoundButtonSlots = ButtonSlots & {
 };
 
 // @public (undocumented)
-export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'>;
+export type CompoundButtonState = CompoundButtonBaseState & Pick<ButtonState, 'appearance' | 'shape' | 'size'>;
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
@@ -103,16 +109,29 @@ export { renderButton_unstable }
 export { renderButton_unstable as renderToggleButton_unstable }
 
 // @public
-export const renderCompoundButton_unstable: (state: CompoundButtonState) => JSXElement;
+export const renderCompoundButton_unstable: (state: CompoundButtonBaseState) => JSXElement;
 
 // @public
 export const renderMenuButton_unstable: (state: MenuButtonBaseState) => JSXElement;
 
 // @public
-export const renderSplitButton_unstable: (state: SplitButtonState) => JSXElement;
+export const renderSplitButton_unstable: (state: Pick<ComponentState<SplitButtonBaseSlots>, "root" | "menuButton" | "primaryActionButton">) => JSXElement;
 
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
+
+// @public
+export type SplitButtonBaseProps = ComponentProps<SplitButtonBaseSlots> & Pick<ButtonBaseProps, 'disabled' | 'disabledFocusable' | 'icon' | 'iconPosition'> & Pick<MenuButtonBaseProps, 'menuIcon'>;
+
+// @public (undocumented)
+export type SplitButtonBaseSlots = {
+    root: NonNullable<Slot<'div'>>;
+    menuButton?: Slot<MenuButtonBaseProps>;
+    primaryActionButton?: Slot<ButtonBaseProps>;
+};
+
+// @public
+export type SplitButtonBaseState = ComponentState<SplitButtonBaseSlots> & Required<Pick<SplitButtonBaseProps, 'disabled' | 'disabledFocusable' | 'iconPosition'>>;
 
 // @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
@@ -167,6 +186,9 @@ export const useButtonStyles_unstable: (state: ButtonState) => ButtonState;
 // @public
 export const useCompoundButton_unstable: (props: CompoundButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonState;
 
+// @public
+export const useCompoundButtonBase_unstable: (props: CompoundButtonBaseProps, ref?: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => CompoundButtonBaseState;
+
 // @public (undocumented)
 export const useCompoundButtonStyles_unstable: (state: CompoundButtonState) => CompoundButtonState;
 
@@ -180,7 +202,10 @@ export const useMenuButtonBase_unstable: (props: MenuButtonBaseProps, ref: React
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonState;
+
+// @public
+export const useSplitButtonBase_unstable: (props: SplitButtonBaseProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonBaseState;
 
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;

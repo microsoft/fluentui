@@ -31,7 +31,7 @@
 :host(:active) {
   border-color: var(--colorNeutralStrokeAccessiblePressed);
 }
-:host(:disabled),
+:host(:is([disabled], :disabled)),
 :host([readonly]) {
   border: 1px solid var(--colorNeutralStrokeDisabled);
   background-color: none;
@@ -49,7 +49,7 @@
   background: var(--colorCompoundBrandBackgroundPressed);
   border-color: var(--colorCompoundBrandBackgroundPressed);
 }
-:host(:state(checked):disabled) {
+:host(:state(checked):is([disabled], :disabled)) {
   background: var(--colorNeutralBackgroundDisabled);
   border-color: var(--colorNeutralStrokeDisabled);
 }
@@ -79,11 +79,11 @@
 :host(:active) .checked-indicator {
   background-color: var(--colorNeutralForeground3Pressed);
 }
-:host(:disabled) .checked-indicator,
+:host(:is([disabled], :disabled)) .checked-indicator,
 :host([readonly]) .checked-indicator {
   background: var(--colorNeutralForegroundDisabled);
 }
-:host(:state(checked):disabled) .checked-indicator {
+:host(:state(checked):is([disabled], :disabled)) .checked-indicator {
   background: var(--colorNeutralForegroundDisabled);
 }
 
@@ -118,8 +118,8 @@
   :host(:state(checked):active) .checked-indicator {
     background-color: ButtonFace;
   }
-  :host(:disabled) .checked-indicator,
-  :host(:state(checked):disabled) .checked-indicator {
+  :host(:is([disabled], :disabled)) .checked-indicator,
+  :host(:state(checked):is([disabled], :disabled)) .checked-indicator {
     background-color: GrayText;
   }
 }

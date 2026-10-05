@@ -1,0 +1,3 @@
+A color picker lets users choose a color by adjusting its hue, saturation, value, and alpha channels.
+
+Use `ColorPicker` to coordinate an HSV color across `ColorArea`, `ColorSlider`, and `AlphaSlider` — it supplies the current color and the change handler to every descendant control. Each of those controls also works on its own with its own controlled or uncontrolled color state, so you can compose only the parts an experience needs, such as a single hue slider. Every control renders a native range input, so give each one an accessible name and, where the raw number is not meaningful, an `aria-valuetext`.

@@ -9,7 +9,7 @@
     "test-ssr": {
       "options": {
         "cwd": "{projectRoot}",
-        "command": "yarn test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/UseSafeZoneArea/UseSafeZoneAreaDefault.stories.tsx\""
+        "command": "yarn run -T test-ssr \"./src/**/*.stories.tsx\" --exclude \"./src/UseSafeZoneArea/UseSafeZoneAreaDefault.stories.tsx\""
       }
     }
   }

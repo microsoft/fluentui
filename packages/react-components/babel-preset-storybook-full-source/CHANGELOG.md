@@ -1,8 +1,26 @@
 # Change Log - @fluentui/babel-preset-storybook-full-source
 
-This log was last generated on Tue, 16 Jun 2026 18:28:49 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 21 Sep 2026 15:07:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.4)
+
+Mon, 21 Sep 2026 15:07:55 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-storybook-full-source_v0.1.3..@fluentui/babel-preset-storybook-full-source_v0.1.4)
+
+### Patches
+
+- fix: Preserve inline CSF3 story parameters when adding fullSource ([PR #36661](https://github.com/microsoft/fluentui/pull/36661) by 198982749+Copilot@users.noreply.github.com)
+
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.3)
+
+Thu, 30 Jul 2026 14:23:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-storybook-full-source_v0.1.2..@fluentui/babel-preset-storybook-full-source_v0.1.3)
+
+### Patches
+
+- feat: add opt-in `storyGranularity: 'story'` mode that emits a per-story sliced `fullSource` for files with multiple story exports ([PR #36404](https://github.com/microsoft/fluentui/pull/36404) by martinhochel@microsoft.com)
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-storybook-full-source_v0.1.2)
 

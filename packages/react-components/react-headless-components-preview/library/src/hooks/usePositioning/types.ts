@@ -1,5 +1,8 @@
 import type * as React from 'react';
-import type { PositioningProps as CanonicalPositioningProps } from '@fluentui/react-positioning';
+import type {
+  PositioningProps as CanonicalPositioningProps,
+  PositioningShorthandValue,
+} from '@fluentui/react-positioning';
 
 export type LogicalAlignment = 'start' | 'center' | 'end';
 
@@ -21,3 +24,5 @@ export type PositioningProps = Pick<
   | 'strategy'
   | 'target'
 >;
+
+export type PositioningShorthand = PositioningProps | PositioningShorthandValue;

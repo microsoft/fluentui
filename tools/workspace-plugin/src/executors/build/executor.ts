@@ -4,6 +4,7 @@ import { compileSwc } from './lib/swc';
 import { compileWithGriffelStylesAOT, compileWithReactCompiler, hasStylesFilesToProcess } from './lib/babel';
 import { assetGlobsToFiles, copyAssets } from './lib/assets';
 import { cleanOutput } from './lib/clean';
+import { cjsRenameTransforms, copyCjsTypes } from './lib/cjs-extension';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue, runInParallel, runSerially } from './lib/shared';
 
 import { measureEnd, measureStart } from '../../utils';
@@ -33,6 +34,7 @@ const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context
         },
       ),
     () => copyAssets(assetFiles),
+    () => copyCjsTypes(options),
   );
 
   measureEnd('BuildExecutor');
@@ -54,7 +56,7 @@ async function runBuild(options: NormalizedOptions, _context: ExecutorContext): 
   }
 
   const compilationQueue = options.moduleOutput.map(outputConfig => {
-    return compileSwc(outputConfig, options);
+    return compileSwc(outputConfig, options, cjsRenameTransforms(outputConfig, options));
   });
 
   return processAsyncQueue(compilationQueue);

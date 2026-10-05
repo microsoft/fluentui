@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useSliderBase_unstable } from '@fluentui/react-slider';
 
 import type { SliderProps, SliderState } from './Slider.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Slider component, given its props and ref.
@@ -15,9 +15,9 @@ export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>):
 
   // Set data attributes for disabled and vertical states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
 
   return state;
 };

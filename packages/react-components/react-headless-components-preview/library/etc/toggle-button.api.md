@@ -4,25 +4,21 @@
 
 ```ts
 
-import { ButtonBaseState } from '@fluentui/react-button';
-import type { ButtonSlots as ButtonSlots_2 } from '@fluentui/react-button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import type { ToggleButtonBaseProps } from '@fluentui/react-button';
+import { renderToggleButton_unstable as renderToggleButton } from '@fluentui/react-button';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
+import { ToggleButtonBaseProps as ToggleButtonProps } from '@fluentui/react-button';
+import { ButtonSlots as ToggleButtonSlots } from '@fluentui/react-button';
 
-// @public
-export const renderToggleButton: (state: ButtonBaseState) => JSXElement;
+export { renderToggleButton }
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
-// @public
-export type ToggleButtonProps = ToggleButtonBaseProps;
+export { ToggleButtonProps }
 
-// @public
-export type ToggleButtonSlots = ButtonSlots;
+export { ToggleButtonSlots }
 
 // @public
 export type ToggleButtonState = ToggleButtonBaseState & {
@@ -31,6 +27,7 @@ export type ToggleButtonState = ToggleButtonBaseState & {
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
         'data-checked'?: string;
+        'data-icon-position'?: ToggleButtonBaseState['iconPosition'];
     };
 };
 

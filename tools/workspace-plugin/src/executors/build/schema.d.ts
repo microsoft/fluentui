@@ -45,6 +45,10 @@ export interface BuildExecutorSchema {
    */
   reactCompiler?: boolean;
   /**
+   * TEMPORARY/INTERNAL: opts this build into ESM-first postprocessing (.cjs extension rewrite + .d.cts types) ahead of the package's own package.json declaring "type": "module". Exists so the infra can be exercised on a package before it actually flips to ESM. Will be removed once the real migration lands and every opted-in package sets "type": "module" itself.
+   */
+  __esmFirst?: boolean;
+  /**
    * List of static assets.
    */
   assets?: (

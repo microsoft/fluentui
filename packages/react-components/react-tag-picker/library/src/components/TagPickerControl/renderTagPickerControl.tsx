@@ -4,7 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type {
-  TagPickerControlState,
+  TagPickerControlBaseState,
   TagPickerControlSlots,
   TagPickerControlInternalSlots,
 } from './TagPickerControl.types';
@@ -12,7 +12,7 @@ import type {
 /**
  * Render the final JSX of PickerControl
  */
-export const renderTagPickerControl_unstable = (state: TagPickerControlState): JSXElement => {
+export const renderTagPickerControl_unstable = (state: TagPickerControlBaseState): JSXElement => {
   assertSlots<TagPickerControlSlots & TagPickerControlInternalSlots>(state);
 
   return (

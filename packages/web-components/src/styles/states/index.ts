@@ -36,6 +36,16 @@ export const descriptionState = stateSelector('description');
 export const disabledState = stateSelector('disabled');
 
 /**
+ * Selector for the native `disabled` state for elements that are
+ * form-associated, which supports the native `:disabled` pseudo class when
+ * the `disabled` attribute is present. The `disabled` attribute selector is
+ * for SSR support because `:disabled` is not supported before the element is
+ * defined (as a form-associated custom element).
+ * @public
+ */
+export const nativeDisabledState = ':is([disabled], :disabled)';
+
+/**
  * Selector for the `error` state.
  * @public
  */

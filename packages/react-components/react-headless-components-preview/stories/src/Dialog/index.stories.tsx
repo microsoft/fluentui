@@ -8,6 +8,9 @@ import {
 } from '@fluentui/react-headless-components-preview/dialog';
 
 import descriptionMd from './DialogDescription.md';
+
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Alert } from './DialogAlert.stories';
@@ -24,7 +27,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('Dialog')].join('\n'),
       },
     },
   },

@@ -131,7 +131,10 @@ export function parseArgs(processArgs: string[]): Required<Args> {
   } satisfies Required<Args>;
 
   function resolveConfigPath(projectRoot: string): string | undefined {
-    const defaultConfigPath = resolve(projectRoot, 'rit.config.js');
+    // web packages ship as `type: module`, so their CommonJS rit config uses `.cjs`; fall back to `.js`
+    const defaultConfigPath = [resolve(projectRoot, 'rit.config.cjs'), resolve(projectRoot, 'rit.config.js')].find(
+      candidate => existsSync(candidate),
+    );
 
     if (argv.config) {
       const userProvidedConfigPath = resolve(projectRoot, argv.config);
@@ -141,6 +144,6 @@ export function parseArgs(processArgs: string[]): Required<Args> {
       return userProvidedConfigPath;
     }
 
-    return existsSync(defaultConfigPath) ? defaultConfigPath : undefined;
+    return defaultConfigPath;
   }
 }

@@ -109,7 +109,6 @@ export class BaseTablist extends FASTElement {
       return;
     }
 
-    const hasStartSlot = this.tabs.some(tab => !!tab.querySelector("[slot='start']"));
     const rootNode = this.getRootNode() as Document | ShadowRoot;
     let firstEnabledTabId = '';
 
@@ -133,9 +132,6 @@ export class BaseTablist extends FASTElement {
       tab.toggleAttribute('focusgroupstart', isSelected);
       tab.setAttribute('aria-selected', isSelected.toString());
 
-      // Only set the data-hasIndent attribute if the tab has a start slot and the orientation is vertical
-      tab.toggleAttribute('data-hasIndent', hasStartSlot && this.orientation === TablistOrientation.vertical);
-
       if (connectToPanel) {
         const ariaControls = tab.getAttribute('aria-controls') ?? '';
         const panel = rootNode.getElementById(ariaControls);
@@ -158,11 +154,20 @@ export class BaseTablist extends FASTElement {
 
   /** @internal */
   public handleFocusIn(event: FocusEvent) {
-    const target = event.target as Node;
-    if (!isTab(target) || target.disabled) {
+    this.activeid = (event.target as HTMLElement).id;
+  }
+
+  /** @internal */
+  public handleClick(event: PointerEvent) {
+    // We only need to handle click event when `tab.click()` is called, a user
+    // click will be handled by `focusin` event. And as per the DOM spec,
+    // calling `Element.click()` results in `isTrusted=false`:
+    // https://dom.spec.whatwg.org/#dom-event-istrusted
+    if (event.isTrusted) {
       return;
     }
-    this.activeid = target.id;
+
+    this.activeid = (event.target as HTMLElement).id;
   }
 
   private changeTab(oldId: undefined | string, newId: string) {
@@ -170,7 +175,7 @@ export class BaseTablist extends FASTElement {
     const prevTab = oldId ? rootNode.getElementById(oldId) : null;
     const nextTab = rootNode.getElementById(newId);
 
-    if (!isTab(nextTab) || !this.contains(nextTab)) {
+    if (!isTab(nextTab) || nextTab.disabled || !this.contains(nextTab)) {
       return;
     }
 

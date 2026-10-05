@@ -214,7 +214,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             rectElement = (
               <g
                 key={id}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(dataPointObject)}
                 tabIndex={_legendHighlighted(dataPointObject.legend) || _noLegendHighlighted() ? 0 : -1}
                 fillOpacity={_getOpacity(dataPointObject.legend)}
@@ -236,6 +236,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
                   dominantBaseline={'middle'}
                   textAnchor={'middle'}
                   className={classes.text}
+                  aria-hidden={true}
                   transform={`translate(${_xAxisScale.current.bandwidth() / 2}, ${
                     _yAxisScale.current.bandwidth() / 2
                   })`}
@@ -257,7 +258,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             rectElement = (
               <g
                 key={id}
-                role="img"
+                role="option"
                 aria-label={_getAriaLabel(dataPointObject)}
                 tabIndex={_noLegendHighlighted() ? 0 : -1}
                 transform={`translate(${_xAxisScale.current(dataPointObject.x)}, ${_yAxisScale.current(
@@ -279,7 +280,15 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
           rectangles.push(rectElement);
         });
       });
-      return <g {...arrowNavigationAttributes}>{rectangles}</g>;
+      return (
+        <g
+          role="listbox"
+          aria-label={`${rectangles.length} ${rectangles.length === 1 ? 'cell' : 'cells'}`}
+          {...arrowNavigationAttributes}
+        >
+          {rectangles}
+        </g>
+      );
     };
     /**
      * when the legend is hovered we need to highlight
@@ -479,9 +488,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
             flattenData.push({ ...point, legend: item.legend });
           });
         });
-        const yPoints: RectanglesGraphData = {};
-        const uniqueYPoints: { [key: string]: '1' } = {};
-        const uniqueXPoints: { [key: string]: '1' } = {};
+        const yPoints: RectanglesGraphData = Object.create(null);
+        const uniqueYPoints: { [key: string]: '1' } = Object.create(null);
+        const uniqueXPoints: { [key: string]: '1' } = Object.create(null);
         flattenData.forEach((item: FlattenData) => {
           const posX = _getXIndex(item.x);
           const posY = _getYIndex(item.y);
@@ -680,7 +689,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
 
       const result: FlattenData[] = [];
 
-      const xValueToPoints: Record<string, FlattenData[]> = {};
+      const xValueToPoints: Record<string, FlattenData[]> = Object.create(null);
       xPoints.forEach(point => {
         const xValue = point.x as string;
         if (!xValueToPoints[xValue]) {
@@ -708,7 +717,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     };
 
     const _mapCategoryToValues = (isYAxis = false) => {
-      const categoryToValues: Record<string, number[]> = {};
+      const categoryToValues: Record<string, number[]> = Object.create(null);
       props.data.forEach(item => {
         item.data.forEach(point => {
           const category = (isYAxis ? point.y : point.x) as string;
@@ -799,6 +808,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         yAxisPadding={0.02}
         legendBars={_createLegendBars()}
         onChartMouseLeave={_handleChartMouseLeave}
+        onChartBlur={_handleChartMouseLeave}
         componentRef={cartesianChartRef}
         tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */

@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
+import { Field } from '@fluentui/react-field';
 import * as React from 'react';
 
 import { TagPickerContextProvider } from '../../contexts/TagPickerContext';
@@ -57,6 +58,25 @@ describe('useTagPickerInput_unstable', () => {
 
     expect(result.current.size).toBe('large');
     expect(result.current.disabled).toBe(true);
+  });
+
+  // TagPicker sizes are `medium | large | extra-large`, which is not the Field size scale.
+  it('ignores the size of a surrounding Field', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const PickerContext = wrap({ size: 'large' });
+    const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+      <Field label="Tags" size="small">
+        <PickerContext>{children}</PickerContext>
+      </Field>
+    );
+
+    const { result } = renderHook(() => useTagPickerInput_unstable({}, ref), { wrapper });
+
+    // sanity check that the Field context is actually applied
+    expect(result.current.root.id).toBeTruthy();
+
+    expect(result.current.size).toBe('large');
+    expect(result.current.root.size).toBeUndefined();
   });
 
   it('binds aria-controls to popoverId only when open and a popover exists', () => {

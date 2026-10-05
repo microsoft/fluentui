@@ -8,7 +8,6 @@ const config = {
     'packages/*/package.json',
     'packages/web-components/package.json',
     'packages/react-components/*/package.json',
-    'packages/fluentui/!(e2e|docs|circulars-test|local-sandbox|perf-test-northstar|perf|projects-test)/package.json',
   ],
   semverGroups: [
     {

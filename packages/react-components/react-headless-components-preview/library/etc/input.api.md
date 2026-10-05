@@ -5,30 +5,28 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { InputBaseProps } from '@fluentui/react-input';
-import { InputBaseState } from '@fluentui/react-input';
-import type { InputSlots as InputSlots_2 } from '@fluentui/react-input';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { InputBaseState } from '@fluentui/react-input';
+import { InputBaseProps as InputProps } from '@fluentui/react-input';
+import { InputSlots } from '@fluentui/react-input';
 import type * as React_2 from 'react';
+import { renderInput_unstable as renderInput } from '@fluentui/react-input';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
-// @public
-export type InputProps = InputBaseProps;
+export { InputProps }
 
-// @public
-export type InputSlots = InputSlots_2;
+export { InputSlots }
 
 // @public
 export type InputState = InputBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-invalid'?: string;
     };
 };
 
-// @public
-export const renderInput: (state: InputBaseState) => JSXElement;
+export { renderInput }
 
 // @public
 export const useInput: (props: InputProps, ref: React_2.Ref<HTMLInputElement>) => InputState;

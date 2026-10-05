@@ -10,11 +10,11 @@ export const Default = (): React.ReactNode => (
 
     <p className={styles.paragraph}>
       By continuing you agree to our{' '}
-      <Link href="#" inline className={`${styles.link} ${styles.inline}`}>
+      <Link href="#" className={`${styles.link} ${styles.inline}`}>
         Terms of Service
       </Link>{' '}
       and{' '}
-      <Link href="#" inline className={`${styles.link} ${styles.inline}`}>
+      <Link href="#" className={`${styles.link} ${styles.inline}`}>
         Privacy Policy
       </Link>
       .

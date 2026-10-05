@@ -9,6 +9,7 @@ import { DrawerFooter } from './DrawerFooter';
 import { DrawerHeader } from './DrawerHeader';
 import { DrawerHeaderNavigation } from './DrawerHeaderNavigation';
 import { DrawerHeaderTitle } from './DrawerHeaderTitle';
+import { DrawerProvider, useDrawerContext } from './index';
 
 describe('Drawer', () => {
   isConformant({
@@ -41,6 +42,22 @@ describe('Drawer', () => {
     expect(drawer.tagName).toBe('DIV');
     expect(drawer).toHaveAttribute('data-open');
     expect(drawer).toHaveAttribute('data-position', 'end');
+  });
+
+  it('exposes the Drawer context through the headless API', () => {
+    const ContextConsumer = () => {
+      const { scrollState } = useDrawerContext();
+
+      return <div>{scrollState}</div>;
+    };
+
+    const result = render(
+      <DrawerProvider value={{ scrollState: 'middle', setScrollState: jest.fn() }}>
+        <ContextConsumer />
+      </DrawerProvider>,
+    );
+
+    expect(result.getByText('middle')).toBeInTheDocument();
   });
 });
 

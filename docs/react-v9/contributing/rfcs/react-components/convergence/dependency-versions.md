@@ -62,7 +62,7 @@ resolved "https://..."
 integrity sha512-...
 ```
 
-There are workaround that customers can use in this case ([`yarn resolutions`](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/), [webpack aliases](https://webpack.js.org/configuration/resolve/#resolvealias)) to use a proper version. But we should not create an additional walls for customers to properly consumer the library.
+There are workaround that customers can use in this case ([`yarn resolutions`](https://yarnpkg.com/configuration/manifest#resolutions), [webpack aliases](https://webpack.js.org/configuration/resolve/#resolvealias)) to use a proper version. But we should not create an additional walls for customers to properly consumer the library.
 
 There is a Webpack plugin (similar to [duplicate-package-checker-webpack-plugin](https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin)) that prevents imports of duplicate versions on Teams side.
 

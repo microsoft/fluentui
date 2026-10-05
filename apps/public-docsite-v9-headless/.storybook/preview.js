@@ -8,7 +8,20 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['Overview', ['Introduction', 'Getting Started', 'Accessibility'], 'Guides', 'Components', 'Concepts'],
+      order: [
+        'Overview',
+        [
+          'Introduction',
+          'Getting Started',
+          'Architecture',
+          'Accessibility',
+          'Browser support',
+          'Polyfills & fallbacks',
+        ],
+        'Guides',
+        'Components',
+        'Concepts',
+      ],
     },
   },
   reactStorybookAddon: {

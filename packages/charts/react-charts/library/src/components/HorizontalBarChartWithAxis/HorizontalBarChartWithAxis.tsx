@@ -466,7 +466,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             key={point.y}
             x={xStart}
@@ -644,7 +644,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const showLabel = shouldShowLabel(isPositiveBar, currPositiveCounter, currNegativeCounter);
 
       return (
-        <React.Fragment key={`${index}_${point.x}`}>
+        <React.Fragment key={`${index}_${point.x}_${point.y}`}>
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - _barHeight)})`}
             key={point.x}
@@ -693,7 +693,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _getLegendData(data: HorizontalBarChartWithAxisDataPoint[]): JSXElement {
     const { useSingleColor } = props;
     const actions: Legend[] = [];
-    const mapLegendToColor: Record<string, string> = {};
+    const mapLegendToColor: Record<string, string> = Object.create(null);
 
     data.forEach((point: HorizontalBarChartWithAxisDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -925,6 +925,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
+        onChartBlur={_handleChartMouseLeave}
         componentRef={cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line @typescript-eslint/no-shadow

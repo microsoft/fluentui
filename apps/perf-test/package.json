@@ -4,18 +4,18 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "bundle": "just-scripts perf-test:bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "type-check": "just-scripts type-check",
-    "test-perf": "just-scripts perf-test"
+    "bundle": "yarn run -T just-scripts perf-test:bundle",
+    "lint": "yarn run -T just-scripts lint",
+    "just": "yarn run -T just-scripts",
+    "clean": "yarn run -T just-scripts clean",
+    "code-style": "yarn run -T just-scripts code-style",
+    "type-check": "yarn run -T just-scripts type-check",
+    "test-perf": "yarn run -T just-scripts perf-test"
   },
   "dependencies": {
-    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@fluentui/example-data": "*",
     "@fluentui/react": "*",
+    "@fluentui/scripts-perf-test-flamegrill": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "19.2.0",
     "react-dom": "19.2.0",

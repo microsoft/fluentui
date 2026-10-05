@@ -1,4 +1,7 @@
 export type {
+  ColorChannel,
+  ColorSliderBaseProps,
+  ColorSliderBaseState,
   ColorSliderProps,
   ColorSliderSlots,
   ColorSliderState,
@@ -9,6 +12,7 @@ export {
   colorSliderCSSVars,
   colorSliderClassNames,
   renderColorSlider_unstable,
+  useColorSliderBase_unstable,
   useColorSliderStyles_unstable,
   useColorSlider_unstable,
 } from './components/ColorSlider/index';

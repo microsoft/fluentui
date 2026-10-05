@@ -10,6 +10,7 @@ import type {
 } from './TagPickerButton.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useButtonTriggerSlot } from '@fluentui/react-combobox';
+import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
 
 /**
  * Create the base state required to render TagPickerButton, without design-only props.
@@ -79,10 +80,15 @@ export const useTagPickerButton_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): TagPickerButtonState => {
   const baseState = useTagPickerButtonBase_unstable(props, ref);
+  const open = useTagPickerContext_unstable(ctx => ctx.open);
   const size = useTagPickerContext_unstable(ctx => ctx.size);
 
   return {
     ...baseState,
     size,
+    root: {
+      ...useTabsterEscapeIgnore(baseState.root, open),
+      ...baseState.root,
+    },
   };
 };

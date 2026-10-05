@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 24 Jun 2026 11:09:53 GMT and should not be manually modified.
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.3)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.2..@fluentui/react-positioning_v9.23.3)
+
+### Patches
+
+- fix: improve safe zone hit testing and avoid rerenders during pointer movement ([PR #36708](https://github.com/microsoft/fluentui/pull/36708) by jakubmiskech@microsoft.com)
+
+## [9.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.2)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.1..@fluentui/react-positioning_v9.23.2)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Treat unavailable positioning geometry as indeterminate when reporting visibility flags. ([PR #36758](https://github.com/microsoft/fluentui/pull/36758) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.1)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.0..@fluentui/react-positioning_v9.23.1)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.0)
+
+Tue, 04 Aug 2026 10:12:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.22.3..@fluentui/react-positioning_v9.23.0)
+
+### Minor changes
+
+- feat(react-positioning): add escaped/referenceHidden visibility flags to onPositioningEnd event detail ([PR #36432](https://github.com/microsoft/fluentui/pull/36432) by paulmardling@microsoft.com)
 
 ## [9.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.22.3)
 

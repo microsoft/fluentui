@@ -1,5 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/display.js';
+import { nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -54,12 +55,12 @@ export const styles = css`
     --rail-color: ${colorCompoundBrandBackgroundPressed};
   }
 
-  :host(:disabled) {
+  :host(${nativeDisabledState}) {
     --rail-color: ${colorNeutralForegroundDisabled};
     --track-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host(:not(:disabled)) {
+  :host(:not(${nativeDisabledState})) {
     cursor: pointer;
   }
 

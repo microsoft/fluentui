@@ -242,6 +242,15 @@ test.describe('TextArea', () => {
       await expect(element).not.toHaveCustomState('user-valid');
       await expect(element).toHaveCustomState('user-invalid');
     });
+
+    test('should allow the control to scroll overflowing content', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const control = element.locator('textarea');
+
+      await fastPage.setTemplate();
+
+      await expect(control).toHaveCSS('overflow', 'auto');
+    });
   });
 
   test.describe('internal label', () => {

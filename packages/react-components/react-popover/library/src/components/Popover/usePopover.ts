@@ -126,13 +126,16 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     disabled: !open || !closeOnScroll,
   });
 
-  // When trapFocus is enabled, close the popover if focus is programmatically moved outside
-  // (e.g. via element.focus()), which doesn't trigger click or scroll dismiss handlers.
+  // When trapFocus is enabled, dismiss the popover only on a genuine inside -> outside focus
+  // transition. Focus that was never inside - e.g. a consumer keeping focus on an external element
+  // via `unstable_disableAutoFocus` - must not dismiss it on an outside -> outside focus change.
   // Internal `closeOnFocusOutside` prop allows consumers to opt out during gradual rollout.
   const closeOnFocusOutside = (props as PopoverProps & { closeOnFocusOutside?: boolean }).closeOnFocusOutside ?? true;
 
+  const focusWasInsideRef = React.useRef(false);
+
   const closeOnFocusOutCallback = useEventCallback((ev: FocusEvent) => {
-    const target = (ev.composedPath()[0] ?? ev.target) as HTMLElement;
+    const target = (ev.composedPath()[0] ?? ev.target) as HTMLElement | null;
     const contentElement = positioningRefs.contentRef.current;
     const triggerElement = positioningRefs.triggerRef.current ?? null;
 
@@ -140,9 +143,16 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
       return;
     }
 
-    const isOutside = !elementContains(contentElement, target) && !elementContains(triggerElement, target);
+    const isInside = elementContains(contentElement, target) || elementContains(triggerElement, target);
 
-    if (isOutside) {
+    if (isInside) {
+      focusWasInsideRef.current = true;
+      return;
+    }
+
+    // Only dismiss if focus previously lived inside the popover.
+    if (focusWasInsideRef.current) {
+      focusWasInsideRef.current = false;
       setOpen(ev, false);
     }
   });
@@ -152,6 +162,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
       return;
     }
 
+    focusWasInsideRef.current = false;
     targetDocument?.addEventListener('focusin', closeOnFocusOutCallback, true);
     return () => {
       targetDocument?.removeEventListener('focusin', closeOnFocusOutCallback, true);
