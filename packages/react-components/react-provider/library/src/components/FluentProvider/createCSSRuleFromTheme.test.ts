@@ -225,17 +225,17 @@ describe('createCSSRuleFromTheme', () => {
   );
 
   it.each([
-    { description: 'top-level semicolon', value: 'red;blue', containedValue: 'red\\3B blue' },
-    { description: 'unmatched closing block delimiter', value: 'red}', containedValue: 'red\\7D ' },
+    { description: 'top-level semicolon', value: 'red;blue', containedValue: 'red\\3B  blue' },
+    { description: 'unmatched closing block delimiter', value: 'red}', containedValue: 'red\\7D  ' },
     {
       description: 'unquoted URL tokenization',
       value: 'url(resource/*);token/**/)',
-      containedValue: 'url(resource/*)\\3B token/**/)',
+      containedValue: 'url(resource/*)\\3B  token/**/)',
     },
     {
       description: 'escaped unquoted URL tokenization',
       value: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*);token/**/)',
-      containedValue: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*)\\3B token/**/)',
+      containedValue: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*)\\3B  token/**/)',
     },
     {
       description: 'malformed unquoted URL content',
@@ -282,6 +282,35 @@ describe('createCSSRuleFromTheme', () => {
     expect(logWarnSpy).not.toHaveBeenCalled();
 
     styleElement.remove();
+  });
+
+  it.each([
+    { value: ';url(a{)', containedValue: '\\3B  url(a{)' },
+    { value: '}url(a[)', containedValue: '\\7D  url(a[)' },
+    { value: 'red;url(a{)', containedValue: 'red\\3B  url(a{)' },
+    { value: String.raw`;\75rl(a{)`, containedValue: String.raw`\3B  \75rl(a{)` },
+  ])('preserves the URL boundary after repairing a delimiter in $value', ({ value, containedValue }) => {
+    const theme: PartialTheme & { customToken: string } = {
+      customToken: value,
+      colorBrandBackground: 'blue',
+    };
+    const ruleText = createCSSRuleFromTheme('.selector', theme);
+
+    expect(ruleText).toBe(`.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`);
+
+    const styleElement = document.createElement('style');
+    styleElement.textContent = ruleText;
+    document.head.appendChild(styleElement);
+
+    try {
+      const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
+      expect(rule.style.getPropertyValue('--customToken')).not.toBe('');
+      expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+      expect(rule.style.length).toBe(2);
+      expect(logWarnSpy).not.toHaveBeenCalled();
+    } finally {
+      styleElement.remove();
+    }
   });
 
   it.each([

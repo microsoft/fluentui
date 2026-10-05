@@ -85,10 +85,10 @@ describe('useFluentProviderThemeStyleTag', () => {
     const sheet = tag.sheet as CSSStyleSheet;
     const rule = sheet.cssRules[0] as CSSStyleRule;
 
-    expect(rule.style.getPropertyValue('--customToken')).toBe('red\\3B  color: red');
+    expect(rule.style.getPropertyValue('--customToken')).toBe('red\\3B   color: red');
     expect(rule.style.getPropertyValue('--validToken')).toBe('green');
     expect(rule.cssText).toMatchInlineSnapshot(
-      `".fui-FluentProvider1 {--customToken: red\\\\3B  color: red; --validToken: green;}"`,
+      `".fui-FluentProvider1 {--customToken: red\\\\3B   color: red; --validToken: green;}"`,
     );
   });
 
@@ -106,6 +106,31 @@ describe('useFluentProviderThemeStyleTag', () => {
     const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
 
     expect(rule.style.getPropertyValue('--validToken')).toBe('green');
+  });
+
+  it.each([
+    { value: ';url(a{)', containedValue: '\\3B  url(a{)' },
+    { value: '}url(a[)', containedValue: '\\7D  url(a[)' },
+    { value: 'red;url(a{)', containedValue: 'red\\3B  url(a{)' },
+    { value: String.raw`;\75rl(a{)`, containedValue: String.raw`\3B  \75rl(a{)` },
+  ])('should preserve later CSS variables after repairing a delimiter in $value', ({ value, containedValue }) => {
+    const theme = {
+      ...defaultTheme,
+      customToken: value,
+      colorBrandBackground: 'blue',
+    };
+
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+    const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
+
+    expect(result.current.rule).toContain(`--customToken: ${containedValue}; --colorBrandBackground: blue;`);
+    expect(rule.style.getPropertyValue('--customToken')).not.toBe('');
+    expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+    expect(rule.style.length).toBe(4);
   });
 
   it('should update style tag on theme change', () => {

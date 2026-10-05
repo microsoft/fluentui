@@ -109,4 +109,20 @@ describe('FluentProvider (node)', () => {
     expect(html).toContain('--fontFamilyBase: "font\uFFFDfamily"; --colorBrandBackground: blue;');
     expect(html).not.toContain('\0');
   });
+
+  it.each([
+    { value: ';url(a{)', containedValue: '\\3B  url(a{)' },
+    { value: '}url(a[)', containedValue: '\\7D  url(a[)' },
+    { value: 'red;url(a{)', containedValue: 'red\\3B  url(a{)' },
+    { value: String.raw`;\75rl(a{)`, containedValue: String.raw`\3B  \75rl(a{)` },
+  ])('preserves repaired delimiter boundaries in server-rendered values for $value', ({ value, containedValue }) => {
+    const theme: PartialTheme & { customToken: string } = {
+      customToken: value,
+      colorBrandBackground: 'blue',
+    };
+    const html = renderToStaticMarkup(<FluentProvider theme={theme} />);
+
+    expect(html).toContain(`--customToken: ${containedValue}; --colorBrandBackground: blue;`);
+    expect(html.match(/<style/g)).toHaveLength(1);
+  });
 });

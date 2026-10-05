@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-provider): preserve token boundaries after repaired CSS delimiters",
+  "packageName": "@fluentui/react-provider",
+  "email": "paulmardling@microsoft.com"
+}

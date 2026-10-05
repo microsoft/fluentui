@@ -147,10 +147,11 @@ function containThemeTokenValue(value: string): string {
         blocks.pop();
         result[i] = repairedBlocks.join('') + character;
       } else if (character === '}') {
-        result[i] = CSS_ESCAPE_MAP[character];
+        result[i] = CSS_ESCAPE_MAP[character] + ' ';
       }
     } else if (character === ';' && blocks.length === 0) {
-      result[i] = CSS_ESCAPE_MAP[character];
+      // The escape consumes its terminator; keep a separate whitespace token before the following identifier.
+      result[i] = CSS_ESCAPE_MAP[character] + ' ';
     }
   }
 
