@@ -188,26 +188,36 @@ Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anc
 
 ## Proposal
 
-Adopt **Option A**: land [#36800](https://github.com/microsoft/fluentui/pull/36800)'s `engine` option and `PositioningEngineProvider`. CSS by default; an engine owns positioning when the consumer supplies one. `floatingUIPositioningEngine` stays in `@fluentui/react-positioning`.
+Adopt **Option A's opt-in model with C's runtime behaviour**: CSS anchor positioning by default, and a single provider from a separate entry that switches the surfaces below it to Floating UI, either as a fallback or everywhere. The engine itself is not public API.
 
-Full parity with `react-positioning` (geometry-dependent options, virtual targets) requires a JS engine in every option; CSS alone cannot provide it. The question is only who pays for the engine and who decides when it loads.
+Full parity with `react-positioning` (geometry-dependent options) requires a JS engine in every option; CSS alone cannot provide it. The question is only who pays for the engine and who decides when it loads.
 
 Option B is ruled out: the library does not lazy-load positioning code. Besides the cold-start flash, a library-owned `import()` leaves chunking to each consumer's bundler, where it can be split unpredictably or duplicated.
 
-Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Instead, C's behaviour is offered on top of A's contract as an opt-in fallback, with the engine supplied from userland:
-
-- The headless package exports a helper that marks an engine as a fallback. Headless `usePositioning` then uses CSS anchor positioning when the browser supports it and the options and target are CSS-eligible, and hands over to the wrapped engine otherwise.
-- The consumer still imports the engine (`floatingUIPositioningEngine`) statically from `@fluentui/react-positioning`, typically app-wide through `PositioningEngineProvider`.
+Option C fixes B's cold start by shipping the engine always, but every headless consumer then pays the bundle whether they need it or not. Instead, C's behaviour is offered as an opt-in provider:
 
 ```tsx
-import { floatingUIPositioningEngine } from '@fluentui/react-positioning';
-import { PositioningEngineProvider, fallbackPositioningEngine } from '@fluentui/react-headless-components-preview';
+import { PositioningProvider } from '@fluentui/react-headless-components-preview/positioning-floating-ui';
 
-<PositioningEngineProvider value={fallbackPositioningEngine(floatingUIPositioningEngine)}>
+// recommended: CSS where it is enough, Floating UI where it is not
+<PositioningProvider mode="fallback">
   <App />
-</PositioningEngineProvider>;
+</PositioningProvider>;
+
+// Floating UI for every surface below (exact v9 behaviour, or a workaround for a native anchoring issue)
+<PositioningProvider mode="floating-ui">
+  <App />
+</PositioningProvider>;
+
+// back to CSS only for a subtree
+<PositioningProvider mode="css">
+  <Section />
+</PositioningProvider>;
 ```
 
-This is the recommended setup for apps that need full parity or older browser versions; apps that only use CSS-eligible options can use headless without any engine. It also addresses the scale problem of a plain engine in the provider: with the fallback wrapper at the root, surfaces that CSS can handle still use native anchoring, and only the ones that need the engine hand over to it. The helper is a small addition to the headless API and can land in a follow-up without changing the `engine` option.
+- Without a provider, headless surfaces use CSS anchor positioning only, as today.
+- In `fallback` mode each surface uses CSS anchor positioning when the browser supports `position-area` and its options are CSS-eligible, and Floating UI otherwise. One part of an app that needs `autoSize` therefore does not opt the rest of the app out of native anchoring.
+- The nearest provider wins, so a nested provider overrides the mode for its subtree, down to a single surface. There is no per-surface `engine` option.
+- The provider lives in its own entry (`positioning-floating-ui`), so `@floating-ui/*` is only bundled by apps that import it; the rest of the headless package stays free of it.
 
-The trade-off is that A's API is a long-term commitment: B and C keep the fallback private and could drop it later without a breaking change, whereas `engine` and the provider can only be deprecated through a major version. A keeps that commitment small by making `PositioningEngine` a minimal interface that any engine can implement, so a future engine can be added without changing the public API.
+Because consumers select a mode, not an engine, the engine stays an implementation detail: the library can replace Floating UI, or drop it as the platform covers more of the contract (see [Platform gaps](#platform-gaps)), without a breaking change. The public commitment is limited to `PositioningProvider` and its `mode` values.
