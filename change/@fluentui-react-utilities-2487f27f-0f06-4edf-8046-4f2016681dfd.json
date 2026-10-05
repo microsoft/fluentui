@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add loading to img element property whitelist",
-  "packageName": "@fluentui/react-utilities",
-  "email": "84954628+lukiod@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

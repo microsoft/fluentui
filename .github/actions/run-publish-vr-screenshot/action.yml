@@ -29,11 +29,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: nrwl/nx-set-shas@v4
+    - uses: nrwl/nx-set-shas@afb73a62d26e41464e9254689e1fd6122ee683c1 # v5
       with:
         main-branch-name: 'master'
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
       with:
         cache: 'yarn'
         node-version: '20'
@@ -77,7 +77,7 @@ runs:
 
     - name: Upload VR screenshots
       if: ${{ env.vrTestSkip == 'no' }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
       with:
         name: vrscreenshot${{ inputs.fluentVersion }}
         retention-days: 1
@@ -104,7 +104,7 @@ runs:
     # @TODO: will need azure/login@v2 to be added to the workflow {@link file://./../../workflows/pr-website-deploy-comment.yml#49}
     # - name: Run screenshotdiff
     #   if: ${{ env.isPR == 'true' && env.vrTestSkip == 'no' }}
-    #   uses: azure/cli@v2
+    #   uses: azure/cli@9f7ce6f37c31b777ec6c6b6d1dfe7db79f497956 # v2
     #   env:
     # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
     # TODO: not sure how this will be used on GHA cc @evancharlton @TristanWatanabe
@@ -131,7 +131,7 @@ runs:
     # @TODO: will need azure/login@v2 to be added to the workflow {@link file://./../../workflows/pr-website-deploy-comment.yml#49}
     # - name: Run screenshotdiff - update baseline (non PR)
     # if: ${{ github.event_name != 'pull_request' }}
-    # uses: azure/cli@v2
+    # uses: azure/cli@9f7ce6f37c31b777ec6c6b6d1dfe7db79f497956 # v2
     # env:
     # API_TOKEN: ${{ secrets.fabric-public-pipeline-access-PAT }}
     # GITHUB_API_TOKEN: ${{ secrets.githubRepoStatusPAT }}
