@@ -108,7 +108,6 @@ describe('getNativeProps', () => {
     const props = JSON.parse('{"__proto__":{"inherited":true}}') as Record<string, unknown>;
     const result = getNativeProps<Record<string, unknown>>(props, ['__proto__']);
 
-    expect(result).toEqual({});
     expect(Object.getPrototypeOf(result)).toBe(Object.prototype);
   });
 

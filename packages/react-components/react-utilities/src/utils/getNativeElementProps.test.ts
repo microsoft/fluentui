@@ -21,14 +21,8 @@ describe('getNativeElementProps', () => {
   });
 
   it('handles prototype-chain tag names without side effects', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(getNativeElementProps('__proto__', { as: 'span' })).toEqual({ as: 'span' });
     expect(Object.prototype).not.toHaveProperty('as');
-
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      expect(getNativeElementProps('__proto__', { as: 'span' })).toEqual({ as: 'span' });
-      expect(Object.prototype).not.toHaveProperty('as');
-    } finally {
-      delete (Object.prototype as { as?: unknown }).as;
-    }
   });
 });
