@@ -55,6 +55,35 @@ test.describe('Dropdown', () => {
     await expect(options).toHaveCount(8);
   });
 
+  test.describe('anchor positioning', () => {
+    test.beforeEach(async ({ page }) => {
+      const supported = await page.evaluate(() => CSS.supports('anchor-name', '--a'));
+      test.skip(!supported, 'CSS anchor positioning is not supported');
+    });
+
+    test('should preserve an anchor name set before the listbox connects', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const listbox = element.locator(ListboxTagName);
+
+      await fastPage.setTemplate({ attributes: { style: 'anchor-name: --consumer-anchor' } });
+
+      await expect(element).toHaveCSS('anchor-name', '--consumer-anchor');
+      await expect(listbox).toHaveCSS('position-anchor', '--consumer-anchor');
+    });
+
+    test('should generate a shared anchor name when the dropdown has no anchor name', async ({ fastPage }) => {
+      const { element } = fastPage;
+      const listbox = element.locator(ListboxTagName);
+
+      await fastPage.setTemplate();
+
+      await expect(element).toHaveCSS('anchor-name', /^--dropdown-anchor-/);
+
+      const anchorName = await element.evaluate(el => getComputedStyle(el).getPropertyValue('anchor-name'));
+      await expect(listbox).toHaveCSS('position-anchor', anchorName);
+    });
+  });
+
   test('should render a dropdown with a button when the type is not specified', async ({ fastPage }) => {
     const { element } = fastPage;
     const button = element.locator('button');
