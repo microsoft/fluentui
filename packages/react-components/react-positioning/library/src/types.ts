@@ -96,8 +96,8 @@ export type PositioningEngineCreateParams = {
  *
  * Engines are plain objects, not hooks: `create` is invoked imperatively (typically from a layout
  * effect) once the container and target elements are known, and the returned {@link PositionManager}
- * is disposed when they change or unmount. Because no React hook is involved, an engine can be
- * supplied through props or context without any rules-of-hooks constraints.
+ * is disposed when they change or unmount. An engine can therefore be supplied through props or
+ * context without breaking the rules of hooks.
  *
  * Contract for engine authors — `create` must:
  * - leave the container fully positioned, including releasing any UA-provided `inset` when the
@@ -105,8 +105,8 @@ export type PositioningEngineCreateParams = {
  * - keep the container's `data-placement` attribute current with the resolved logical placement, as
  *   a {@link PositioningShorthandValue} (e.g. `above-start`, `after-top`);
  * - invoke `options.onPositioningEnd` after each update, if provided;
- * - undo all of the above in `dispose`: release listeners and observers, and restore the inline styles
- *   and attributes it wrote on the container and arrow to their previous values, so that another
+ * - in `dispose`, release listeners and observers, and restore the inline styles and attributes it
+ *   wrote on the container and arrow to their previous values, so that another
  *   positioner (e.g. CSS anchor positioning) can take over a clean element. `dispose` also runs right
  *   before `create` is called again with new options, so both must be synchronous.
  */
