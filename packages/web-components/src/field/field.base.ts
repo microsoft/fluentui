@@ -232,22 +232,22 @@ export class BaseField extends FASTElement {
 
   private getLabellableInput(): Promise<HTMLElement> {
     return new Promise(resolve => {
-      if (this.input.constructor.elementIdentity === 'dropdown') {
-        if (!this.input.control) {
-          new MutationObserver((_, observer) => {
-            if (this.input.control) {
-              resolve(this.input.control);
-              observer.disconnect();
-            }
-          }).observe(this.input, {
-            childList: true,
-          });
-        } else {
-          resolve(this.input.control);
-        }
-      } else {
-        resolve(this.input);
+      if (this.input.constructor.elementIdentity !== 'dropdown') {
+        return resolve(this.input);
       }
+
+      if (this.input.control) {
+        return resolve(this.input.control);
+      }
+
+      new MutationObserver((_, observer) => {
+        if (this.input.control) {
+          resolve(this.input.control);
+          observer.disconnect();
+        }
+      }).observe(this.input, {
+        childList: true,
+      });
     });
   }
 
