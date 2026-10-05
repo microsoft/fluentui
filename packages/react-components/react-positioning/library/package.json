@@ -44,6 +44,16 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./modular": {
+      "import": {
+        "types": "./dist/modular.d.ts",
+        "default": "./lib/modular.js"
+      },
+      "require": {
+        "types": "./dist/modular.d.cts",
+        "default": "./lib-commonjs/modular.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "files": [

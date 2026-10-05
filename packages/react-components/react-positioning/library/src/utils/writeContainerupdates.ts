@@ -32,7 +32,7 @@ export function writeContainerUpdates(options: {
   const toggleAttribute = (name: string, enabled: boolean | undefined) =>
     enabled ? container.setAttribute(name, '') : container.removeAttribute(name);
 
-  toggleAttribute(DATA_POSITIONING_INTERSECTING, middlewareData.intersectionObserver.intersecting);
+  toggleAttribute(DATA_POSITIONING_INTERSECTING, middlewareData.intersectionObserver?.intersecting);
   toggleAttribute(DATA_POSITIONING_ESCAPED, middlewareData.hide?.escaped);
   toggleAttribute(DATA_POSITIONING_HIDDEN, middlewareData.hide?.referenceHidden);
 

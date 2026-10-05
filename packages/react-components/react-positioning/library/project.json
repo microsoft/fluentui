@@ -4,5 +4,18 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-positioning/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "metadata": {
+    "exportMap": {
+      "root": true,
+      "subpathEntryPoints": ["src/modular.ts"]
+    }
+  },
+  "targets": {
+    "generate-api": {
+      "options": {
+        "exportSubpaths": true
+      }
+    }
+  }
 }

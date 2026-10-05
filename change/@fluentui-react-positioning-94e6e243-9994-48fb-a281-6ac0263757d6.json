@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add usePositioningCore() and positioning plugins to the @fluentui/react-positioning/modular entry point",
+  "packageName": "@fluentui/react-positioning",
+  "email": "dmytrokirpa@microsoft.com"
+}
