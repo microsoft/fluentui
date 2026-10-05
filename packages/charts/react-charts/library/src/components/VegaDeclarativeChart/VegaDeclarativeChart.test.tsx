@@ -1374,6 +1374,17 @@ describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
       pollutionKey: undefined,
       values: groupedBarSpecialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
     },
+    {
+      name: 'mixed category and series',
+      pollutionKey: 'vegaMixedPrototypeProbe',
+      values: ['Ordinary', '__proto__', 'constructor', '10', '2'].flatMap((category, categoryIndex) =>
+        ['vegaMixedPrototypeProbe', '__proto__', 'groupSeries', '10', '2'].map((series, seriesIndex) => ({
+          category,
+          series,
+          value: categoryIndex * 5 + seriesIndex + 1,
+        })),
+      ),
+    },
   ])('should render special $name names as ordinary data', ({ values, pollutionKey }) => {
     const originalConstructor = Object.prototype.constructor;
     const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
