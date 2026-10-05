@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-provider): reduce theme serialization bundle size while preserving CSS token boundaries",
+  "packageName": "@fluentui/react-provider",
+  "email": "paulmardling@microsoft.com"
+}

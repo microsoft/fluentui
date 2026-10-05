@@ -133,6 +133,8 @@ describe('createCSSRuleFromTheme', () => {
       value: String.raw`u\52${'\r\n'}l(resource/*)`,
     },
     { description: 'zero-padded hexadecimal escaped URL name', value: String.raw`\000055rl(resource/*)` },
+    { description: 'uppercase URL name', value: 'URL(resource/*)' },
+    { description: 'simple escaped URL name', value: '\\u\\r\\l(resource/*)' },
     { description: 'hash token followed by a parenthesized block', value: '#url(/* ) */; x)' },
     { description: 'at-keyword followed by a parenthesized block', value: '@url(/* ) */; x)' },
     { description: 'escaped hash token followed by a parenthesized block', value: String.raw`#\75rl(/* ) */; x)` },
@@ -149,6 +151,22 @@ describe('createCSSRuleFromTheme', () => {
     expect(logWarnSpy).not.toHaveBeenCalled();
   });
 
+  it.each([
+    'xurl',
+    'urlx',
+    'urlurl',
+    String.raw`\100075rl`,
+    String.raw`\000000url`,
+    String.raw`\75arl`,
+    String.raw`\75  rl`,
+    'x'.repeat(100_000) + 'url',
+  ])('does not treat the generic function name %j as URL', name => {
+    const value = `${name}(a{)`;
+    expect(
+      createCSSRuleFromTheme('.selector', { customToken: value, colorBrandBackground: 'blue' } as PartialTheme),
+    ).toBe(`.selector { --customToken: ${name}(a{}); --colorBrandBackground: blue;  }`);
+  });
+
   it('preserves supported custom token names and finite numeric values', () => {
     const theme = {
       'custom-token_1': 0,
@@ -163,6 +181,16 @@ describe('createCSSRuleFromTheme', () => {
     );
     expect(logWarnSpy).not.toHaveBeenCalled();
   });
+
+  it.each(['x'.repeat(100_000), String.raw`\a`.repeat(50_000), String.raw`\aaaaaa`.repeat(20_000)])(
+    'validates long token names without changing their serialization',
+    name => {
+      expect(createCSSRuleFromTheme('.selector', { [name]: 'red' } as PartialTheme)).toBe(
+        `.selector { --${name}: red;  }`,
+      );
+      expect(createCSSRuleFromTheme('.selector', { [name + '!']: 'red' } as PartialTheme)).toBe('.selector {  }');
+    },
+  );
 
   it('serializes escaped custom token names consistently with themeToTokensObject', () => {
     const escapedColonTheme = { ...webLightTheme, 'custom\\3A token': 'red' };

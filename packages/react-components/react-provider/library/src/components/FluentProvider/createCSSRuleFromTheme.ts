@@ -1,32 +1,17 @@
 import type { PartialTheme } from '@fluentui/react-theme';
 
-const CSS_ESCAPE_MAP = {
-  '<': '\\3C ',
-  '>': '\\3E ',
-  ';': '\\3B ',
-  '{': '\\7B ',
-  '}': '\\7D ',
-};
-const NAME_CHARACTER_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]$/i;
 const ESCAPE_AT_START_PATTERN = /^\\(?:[0-9a-f]{1,6}(?:\r\n|[ \t\n\r\f])?|[^\n\r\f])/i;
-const URL_FUNCTION_PATTERN =
-  /^(?:u|\\(?:u|0{0,4}[57]5(?:\r\n|[ \t\n\r\f])?))(?:r|\\(?:r|0{0,4}[57]2(?:\r\n|[ \t\n\r\f])?))(?:l|\\(?:l|0{0,4}[46]c(?:\r\n|[ \t\n\r\f])?))$/i;
+// Disjoint escapes consume all available hex digits (up to six), preventing backtracking between token characters.
+const TOKEN_NAME_PATTERN =
+  /^(?:[-_a-z0-9\u0080-\uFFFF]|\\(?:(?:[0-9a-f]{6}|[0-9a-f]{1,5}(?![0-9a-f]))(?:\r\n|[ \t\n\r\f])?|[^0-9a-f\n\r\f]))+(?![\s\S])/i;
 
-function isValidThemeTokenName(name: string): boolean {
-  for (let i = 0; i < name.length; i++) {
-    if (NAME_CHARACTER_PATTERN.test(name[i])) {
-      continue;
-    }
+function advanceUrlName(length: number, characterCode: number): number {
+  const expected = 'url'.charCodeAt(length);
+  return characterCode === expected || characterCode + 32 === expected ? length + 1 : -1;
+}
 
-    // A CSS escape contains at most a backslash, six hex digits, and a CRLF terminator.
-    const escape = name.slice(i, i + 9).match(ESCAPE_AT_START_PATTERN)?.[0];
-    if (!escape) {
-      return false;
-    }
-    i += escape.length - 1;
-  }
-
-  return name.length > 0;
+function escapeCharacter(character: string): string {
+  return `\\${character.charCodeAt(0).toString(16).toUpperCase()} `;
 }
 
 /**
@@ -41,7 +26,7 @@ function escapeForStyleTag(value: string): string {
     const bracket = match[match.length - 1] as '<' | '>' | '\\';
     const runLength = bracket === '\\' ? match.length : match.length - 1;
 
-    return bracket === '\\' ? match : match.slice(runLength % 2, runLength) + CSS_ESCAPE_MAP[bracket];
+    return bracket === '\\' ? match : match.slice(runLength % 2, runLength) + escapeCharacter(bracket);
   });
 }
 
@@ -51,10 +36,11 @@ function containThemeTokenValue(value: string): string {
   const result = value.split('');
   const blocks: string[] = [];
   const blockIndexes: Record<string, number[]> = { ')': [], ']': [], '}': [] };
-  let identifier = '';
+  // -1 keeps a non-URL identifier invalid until its boundary, without accumulating its text.
+  let urlNameLength = 0;
   let quote = '';
   let comment = false;
-  let urlState = 0;
+  let unquotedUrl = false;
 
   for (let i = 0; i < value.length; i++) {
     const character = value[i];
@@ -69,9 +55,11 @@ function containThemeTokenValue(value: string): string {
     }
 
     if (character === '\\') {
-      const escape = value.slice(i).match(ESCAPE_AT_START_PATTERN)?.[0];
-      if (!quote && !urlState) {
-        identifier = escape ? identifier + escape : '';
+      const escape = value.slice(i, i + 9).match(ESCAPE_AT_START_PATTERN)?.[0];
+      if (!quote && !unquotedUrl) {
+        urlNameLength = escape
+          ? advanceUrlName(urlNameLength, parseInt(escape.slice(1), 16) || escape.charCodeAt(1))
+          : 0;
       }
       if (escape) {
         i += escape.length - 1;
@@ -79,9 +67,6 @@ function containThemeTokenValue(value: string): string {
         result[i] = '\\\n';
       } else if (quote) {
         i += nextCharacter === '\r' && value[i + 2] === '\n' ? 2 : 1;
-      }
-      if (urlState) {
-        urlState = 2;
       }
       continue;
     }
@@ -96,62 +81,54 @@ function containThemeTokenValue(value: string): string {
       continue;
     }
 
-    if (urlState) {
-      if (urlState === 1 && /[ \t\n\r\f]/.test(character)) {
-        continue;
-      }
-      if (urlState === 1 && (character === '"' || character === "'")) {
-        urlState = 0;
-        quote = character;
-        continue;
-      }
+    if (unquotedUrl) {
       if (character === ')') {
-        const closingBlock = blocks.pop()!;
-        blockIndexes[closingBlock].pop();
-        urlState = 0;
+        blocks.pop();
+        blockIndexes[')'].pop();
+        unquotedUrl = false;
         continue;
       }
       if (character === '"' || character === "'") {
-        result[i] = character === '"' ? '\\22 ' : '\\27 ';
+        result[i] = escapeCharacter(character);
       }
-      urlState = 2;
       continue;
     }
 
-    if (NAME_CHARACTER_PATTERN.test(character)) {
-      identifier += character;
+    if (TOKEN_NAME_PATTERN.test(character)) {
+      urlNameLength = advanceUrlName(urlNameLength, character.charCodeAt(0));
       continue;
     }
 
-    const functionNameIsUrl = URL_FUNCTION_PATTERN.test(identifier);
-    identifier = character === '#' || character === '@' ? character : '';
+    const functionNameIsUrl = urlNameLength === 3;
+    urlNameLength = character === '#' || character === '@' ? -1 : 0;
+    const closingBlock = ')]}'['([{'.indexOf(character)];
 
     if (character === '/' && nextCharacter === '*') {
       comment = true;
       i++;
     } else if (character === '"' || character === "'") {
       quote = character;
-    } else if (character === '(' || character === '[' || character === '{') {
-      const closingBlock = character === '(' ? ')' : character === '[' ? ']' : '}';
+    } else if (closingBlock) {
       blockIndexes[closingBlock].push(blocks.push(closingBlock) - 1);
       if (character === '(' && functionNameIsUrl) {
-        urlState = 1;
+        // Quoted URLs use normal string/block handling; only unquoted URLs consume delimiters as URL content.
+        unquotedUrl = !/^[ \t\n\r\f]*["']/.test(value.slice(i + 1));
       }
-    } else if (character === ')' || character === ']' || character === '}') {
+    } else if (character in blockIndexes) {
       const blockIndex = blockIndexes[character].pop();
       if (blockIndex !== undefined) {
         const repairedBlocks = blocks.splice(blockIndex + 1).reverse();
-        for (const closingBlock of repairedBlocks) {
-          blockIndexes[closingBlock].pop();
+        for (const repairedBlock of repairedBlocks) {
+          blockIndexes[repairedBlock].pop();
         }
         blocks.pop();
         result[i] = repairedBlocks.join('') + character;
       } else if (character === '}') {
-        result[i] = CSS_ESCAPE_MAP[character] + ' ';
+        result[i] = escapeCharacter(character) + ' ';
       }
     } else if (character === ';' && blocks.length === 0) {
       // The escape consumes its terminator; keep a separate whitespace token before the following identifier.
-      result[i] = CSS_ESCAPE_MAP[character] + ' ';
+      result[i] = escapeCharacter(character) + ' ';
     }
   }
 
@@ -182,10 +159,10 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
 
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      const tokenName = String(cssVar);
+      const tokenName = cssVar;
       const tokenValue: unknown = theme[cssVar];
 
-      if (!isValidThemeTokenName(tokenName)) {
+      if (!TOKEN_NAME_PATTERN.test(tokenName)) {
         warnInvalidThemeToken(tokenName, 'name');
         return cssVarRule;
       }
