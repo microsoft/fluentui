@@ -1,0 +1,30 @@
+{
+  "$schema": "../reviewers.schema.json",
+  "version": 1,
+  "repo": "microsoft/fluentui-contrib",
+  "queues": ["microsoft/fluentui-react-build"],
+  "team": { "org": "microsoft", "slug": "fluentui-react-build" },
+  "settings": { "reviewers": 1, "areaMatch": "hard", "unknownMemberPolicy": "exclude-and-report" },
+  "areas": {
+    "build": {
+      "label": "Build and infrastructure",
+      "scopes": ["build", "ci", "deps", "nx-plugin"],
+      "paths": [
+        "tools/**",
+        ".github/**",
+        "packages/nx-plugin/**",
+        "package.json",
+        "yarn.lock",
+        "nx.json",
+        "project.json"
+      ]
+    },
+    "components": { "label": "Contrib components", "scopes": ["react-*"], "paths": ["packages/react-*/**"] }
+  },
+  "reviewers": [
+    { "login": "Hotell", "eligible": true, "fallbackEligible": false, "primary": ["build"], "secondary": [] },
+    { "login": "dmytrokirpa", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "mainframev", "eligible": false, "primary": [], "secondary": [] },
+    { "login": "tudorpopams", "eligible": false, "primary": [], "secondary": [] }
+  ]
+}
