@@ -1,4 +1,4 @@
-import { mkdirSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
+import { mkdirSync, rmSync, symlinkSync, unlinkSync, utimesSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { fingerprintDeclarationContent, MetadataReaderError } from './load';
@@ -46,6 +46,7 @@ describe('metadata loading', () => {
   it('rejects declaration drift in the requested public route authority', () => {
     const app = createApp('drift');
     const catalog = writeLocalCatalog(app.nodeModules, '@scope/drift');
+    utimesSync(catalog.declarationPath!, new Date(0), new Date(0));
     const reader = createMetadataReader();
 
     expect(reader.resolveExport(query('@scope/drift', app.root)).status).toBe('complete');
