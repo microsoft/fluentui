@@ -6,7 +6,8 @@ import { ArrowLeft, Backspace } from '@fluentui/keyboard-keys';
 import { useTagPickerContext_unstable, useTagPickerInputBase_unstable } from '@fluentui/react-tag-picker';
 
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
-import { focusLastTag, stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
+import { focusLastTag } from '../../../utils/tagFocusUtils';
 
 /**
  * Returns the state for a headless TagPickerInput.
@@ -32,7 +33,7 @@ export const useTagPickerInput = (
   const state: TagPickerInputState = useTagPickerInputBase_unstable({ ...props, onKeyDown }, ref);
 
   // eslint-disable-next-line react-hooks/immutability -- decorate base state with data-* attribute
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
 
   return state;
 };

@@ -5,6 +5,7 @@ import descriptionMd from './ComboboxDescription.md';
 import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
 
 export { Default } from './ComboboxDefault.stories';
+export { Filtering } from './ComboboxFiltering.stories';
 export { Controlled } from './ComboboxControlled.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Grouped } from './ComboboxGrouped.stories';

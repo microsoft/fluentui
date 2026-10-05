@@ -16,7 +16,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production", "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json"],
-      "cache": true
+      "cache": true,
+      "syncGenerators": ["@fluentui/workspace-plugin:export-maps-sync"]
     },
     "build-storybook": {
       "dependsOn": [],
@@ -135,6 +136,9 @@
   },
   "release": {
     "projectsRelationship": "independent"
+  },
+  "sync": {
+    "globalGenerators": ["@fluentui/workspace-plugin:export-maps-sync"]
   },
   "parallel": 3,
   "useInferencePlugins": false,

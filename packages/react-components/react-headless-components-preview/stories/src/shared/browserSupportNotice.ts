@@ -21,7 +21,6 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   TagGroup: ['focusgroup'],
   Toolbar: ['focusgroup'],
   TabList: ['focusgroup'],
-  Nav: ['focusgroup'],
   SwatchPicker: ['focusgroup'],
 };
 

@@ -5,22 +5,23 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { RatingBaseProps } from '@fluentui/react-rating';
-import type { RatingBaseState } from '@fluentui/react-rating';
-import type { RatingContextValues as RatingContextValues_2 } from '@fluentui/react-rating';
-import type { RatingItemBaseProps } from '@fluentui/react-rating';
+import { RatingContextValues } from '@fluentui/react-rating';
 import type { RatingItemBaseState } from '@fluentui/react-rating';
-import { RatingItemSlots as RatingItemSlots_2 } from '@fluentui/react-rating';
-import type { RatingSlots as RatingSlots_2 } from '@fluentui/react-rating';
+import { RatingItemBaseProps as RatingItemProps } from '@fluentui/react-rating';
+import { RatingItemSlots } from '@fluentui/react-rating';
+import { RatingBaseProps as RatingProps } from '@fluentui/react-rating';
+import { RatingSlots } from '@fluentui/react-rating';
+import { RatingBaseState as RatingState } from '@fluentui/react-rating';
 import * as React_2 from 'react';
 import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
 import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
+import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
 
 // @public
-export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingItemSlots_2>, "root"> & Omit<{
+export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingItemSlots>, "root"> & Omit<{
     as?: "span" | undefined;
 } & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children"> & {
     children?: any;
@@ -28,11 +29,9 @@ export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingIt
     value?: number;
 } & React_2.RefAttributes<HTMLSpanElement>>;
 
-// @public
-export type RatingItemProps = RatingItemBaseProps;
+export { RatingItemProps }
 
-// @public
-export type RatingItemSlots = RatingItemSlots_2;
+export { RatingItemSlots }
 
 // @public
 export type RatingItemState = RatingItemBaseState & {
@@ -41,21 +40,17 @@ export type RatingItemState = RatingItemBaseState & {
     };
 };
 
-// @public
-export type RatingProps = RatingBaseProps;
+export { RatingProps }
 
-// @public
-export type RatingSlots = RatingSlots_2;
+export { RatingSlots }
 
-// @public
-export type RatingState = RatingBaseState;
+export { RatingState }
 
 export { renderRating }
 
 export { renderRatingItem }
 
-// @public
-export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
+export { useRating }
 
 // @public (undocumented)
 export const useRatingContextValues: (state: RatingState) => RatingContextValues;

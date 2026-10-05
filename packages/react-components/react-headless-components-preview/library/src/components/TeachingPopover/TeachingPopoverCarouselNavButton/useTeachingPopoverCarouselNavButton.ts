@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useTeachingPopoverCarouselNavButtonBase_unstable } from '@fluentui/react-teaching-popover';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type {
   TeachingPopoverCarouselNavButtonProps,
   TeachingPopoverCarouselNavButtonState,
@@ -15,7 +15,7 @@ export const useTeachingPopoverCarouselNavButton = (
   const state: TeachingPopoverCarouselNavButtonState = useTeachingPopoverCarouselNavButtonBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-selected'] = stringifyDataAttribute(state.isSelected);
+  state.root['data-selected'] = toDataAttributeValue(state.isSelected);
 
   return state;
 };

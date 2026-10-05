@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/microsoft/fluentui/.agents/skills/assign-prs/reviewers.schema.json",
+  "title": "assign-prs reviewer configuration",
+  "description": "Overlay declaring which members of the live GitHub team roster are eligible for automatic review assignment, and which areas each one owns. See README.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "team", "settings", "areas", "reviewers"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to this schema, for editor validation."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Config format version."
+    },
+    "team": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["org", "slug"],
+      "description": "GitHub team whose live membership is reconciled against this file.",
+      "properties": {
+        "org": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "minLength": 1 }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewers", "areaMatch", "unknownMemberPolicy"],
+      "properties": {
+        "reviewers": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Reviewers each PR should end up with. The skill requests only the shortfall."
+        },
+        "areaMatch": {
+          "enum": ["preference", "hard"],
+          "description": "preference degrades to the whole eligible pool when nobody owns an area; hard leaves the PR under-covered instead."
+        },
+        "unknownMemberPolicy": {
+          "enum": ["exclude-and-report"],
+          "description": "How to treat a live team member with no entry in this file."
+        }
+      }
+    },
+    "areas": {
+      "type": "object",
+      "minProperties": 1,
+      "description": "Area definitions. Every value in a reviewer's primary or secondary list must be a key of this map; that cross-reference is checked at run time, not by this schema.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "scopes", "paths"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable area name used in reports."
+          },
+          "scopes": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Conventional-commit scopes that identify this area, used only when paths are inconclusive."
+          },
+          "paths": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Glob patterns identifying this area. Paths are authoritative over scopes."
+          }
+        }
+      }
+    },
+    "reviewers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every member of the team, including ineligible ones, so nobody is silently absent.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["login", "eligible", "primary", "secondary"],
+        "properties": {
+          "login": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$",
+            "description": "GitHub login, matched against the live team roster."
+          },
+          "eligible": {
+            "type": "boolean",
+            "description": "Whether this person may receive automatic review requests."
+          },
+          "fallbackEligible": {
+            "type": "boolean",
+            "description": "Defaults to true. Set false to be selected only for declared areas, never for PRs that matched no area."
+          },
+          "primary": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Areas this person owns. Selection prefers a primary owner."
+          },
+          "secondary": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 },
+            "description": "Areas this person can cover when no primary owner is available."
+          }
+        }
+      }
+    }
+  }
+}

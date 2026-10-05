@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Create the state required to render Tooltip.
@@ -70,7 +70,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const { targetRef, containerRef } = usePositioning(positioningOptions);
 
   state.content.id = useId('tooltip-', state.content.id);
-  state.content['data-open'] = stringifyDataAttribute(state.visible);
+  state.content['data-open'] = toDataAttributeValue(state.visible);
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
   state.content.ref = contentRef;
@@ -204,6 +204,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.hideDelay, targetDocument],
   );
 
+  const onPointerUpTrigger = React.useCallback(
+    (ev: React.PointerEvent<HTMLElement>) => {
+      setVisible(ev, { visible: false });
+    },
+    [setVisible],
+  );
+
   // Cancel the hide timer when the mouse or focus enters the tooltip, and restart it when the mouse or focus leaves.
   // This keeps the tooltip visible when the mouse is moved over it, or it has focus within.
   // eslint-disable-next-line react-hooks/immutability
@@ -214,6 +221,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   state.content.onFocus = mergeCallbacks(state.content.onFocus, clearDelayTimeout);
   // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
   state.content.onBlur = mergeCallbacks(state.content.onBlur, onLeaveTrigger);
+  // eslint-disable-next-line react-hooks/immutability, react-hooks/refs
+  state.content.onPointerUp = mergeCallbacks(state.content.onPointerUp, onPointerUpTrigger);
 
   const child = getTriggerChild(children);
 
@@ -265,6 +274,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
     // eslint-disable-next-line react-hooks/refs
     onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
+    // eslint-disable-next-line react-hooks/refs
+    onPointerUp: useEventCallback(mergeCallbacks(child?.props?.onPointerUp, onPointerUpTrigger)),
   });
 
   return state;

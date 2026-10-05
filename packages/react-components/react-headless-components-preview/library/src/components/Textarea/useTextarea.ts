@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useTextareaBase_unstable } from '@fluentui/react-textarea';
 
 import type { TextareaProps, TextareaState } from './Textarea.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Textarea component, given its props and ref.
@@ -14,9 +14,9 @@ export const useTextarea = (props: TextareaProps, ref: React.Ref<HTMLTextAreaEle
   const state: TextareaState = useTextareaBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.textarea.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.textarea.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-invalid'] = stringifyDataAttribute(state.textarea['aria-invalid']);
+  state.root['data-invalid'] = toDataAttributeValue(state.textarea['aria-invalid']);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-resize'] = state.resize;
 

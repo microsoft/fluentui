@@ -1,12 +1,6 @@
-import type {
-  AccordionPanelSlots as AccordionPanelBaseSlots,
-  AccordionPanelBaseProps,
-  AccordionPanelBaseState,
-} from '@fluentui/react-accordion';
+import type { AccordionPanelBaseState } from '@fluentui/react-accordion';
 
-export type AccordionPanelSlots = AccordionPanelBaseSlots;
-
-export type AccordionPanelProps = AccordionPanelBaseProps;
+export type { AccordionPanelSlots, AccordionPanelBaseProps as AccordionPanelProps } from '@fluentui/react-accordion';
 
 export type AccordionPanelState = AccordionPanelBaseState & {
   root: {

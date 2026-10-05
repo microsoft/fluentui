@@ -1,6 +1,6 @@
 import type { ToolbarBaseState } from '@fluentui/react-toolbar';
 
-export type { ToolbarContextValues, ToolbarSlots, ToolbarBaseProps as ToolbarProps } from '@fluentui/react-toolbar';
+export type { ToolbarSlots, ToolbarBaseProps as ToolbarProps, ToolbarContextValues } from '@fluentui/react-toolbar';
 
 export type ToolbarState = ToolbarBaseState & {
   root: {

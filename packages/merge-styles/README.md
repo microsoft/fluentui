@@ -485,6 +485,20 @@ renderStatic(() => ReactDOM.renderToString(<App/>);
 
 - Rehydration on the client may result in mismatched rules. You can apply a namespace on the server side to ensure there aren't name collisions.
 
+### Untrusted data in style values
+
+The `css` returned by `renderStatic` (and by `Stylesheet.getRules`) is raw CSS text that is normally written into a `<style>` element. A `<style>` element is HTML raw text, so a declaration value containing `</style>` would otherwise terminate it and inject markup.
+
+To prevent that, `merge-styles` emits `<` and `>` inside declaration values as the CSS code point escapes `\3C ` and `\3E `. This is semantics-preserving - the escapes decode back to the same characters, including inside quoted strings and `url()`. Likewise, `Stylesheet.serialize` emits `<` as `\u003C` so its output can be embedded in an inline `<script>` for rehydration.
+
+This escaping is defense in depth, not a substitute for validating input. Applications remain responsible for:
+
+- Validating any untrusted data (user- or tenant-supplied brand colors, accents, background image URLs) before using it as a style value.
+- `Stylesheet.insertRule`, which is intentionally **not** escaped because it accepts complete rules including selectors, and selectors legitimately contain `<` and `>` adjacent characters such as the `>` child combinator. Never pass untrusted data to it.
+- Serving a Content Security Policy, which limits the impact of any injection.
+
+Note also that rules registered with `preserve` - which is what `fontFace` and `keyframes` do - are intentionally retained by `Stylesheet.reset`, so they are re-emitted by every later `getRules(true)` call in the same process. Do not derive font faces or keyframes from per-request untrusted data in a shared server process.
+
 ## Working with content security policy (CSP)
 
 Some content security policies prevent style injection without a nonce. To set the nonce used by `merge-styles`:

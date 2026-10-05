@@ -5,12 +5,12 @@ import type {
   TagPickerGroupSlots as TagPickerGroupBaseSlots,
 } from '@fluentui/react-tag-picker';
 
-export type TagPickerGroupSlots = TagPickerGroupBaseSlots;
+export type { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 
 /**
  * TagPickerGroup Props
  */
-export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> &
+export type TagPickerGroupProps = ComponentProps<TagPickerGroupBaseSlots> &
   Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
 /**

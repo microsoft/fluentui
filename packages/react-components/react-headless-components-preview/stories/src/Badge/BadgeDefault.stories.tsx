@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Badge } from '@fluentui/react-headless-components-preview/badge';
 
 import styles from './badge.module.css';
+
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <Badge className={styles.badge}>Default</Badge>

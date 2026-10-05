@@ -1,0 +1,31 @@
+{
+  "name": "@fluentui/cli",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "bin": {
+    "cli": "./bin/fluentui-cli.js",
+    "fluentui-cli": "./bin/fluentui-cli.js"
+  },
+  "files": [
+    "*.md",
+    "bin",
+    "dist"
+  ],
+  "dependencies": {
+    "@swc/helpers": "^0.5.1",
+    "fast-glob": "^3.3.3",
+    "ts-morph": "^23.0.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.33"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  }
+}

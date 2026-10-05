@@ -1,18 +1,9 @@
-import type {
-  BreadcrumbButtonSlots as BreadcrumbButtonBaseSlots,
-  BreadcrumbButtonBaseProps,
-  BreadcrumbButtonBaseState,
+import type { BreadcrumbButtonBaseState } from '@fluentui/react-breadcrumb';
+
+export type {
+  BreadcrumbButtonSlots,
+  BreadcrumbButtonBaseProps as BreadcrumbButtonProps,
 } from '@fluentui/react-breadcrumb';
-
-/**
- * BreadcrumbButton component slots
- */
-export type BreadcrumbButtonSlots = BreadcrumbButtonBaseSlots;
-
-/**
- * BreadcrumbButton component props
- */
-export type BreadcrumbButtonProps = BreadcrumbButtonBaseProps;
 
 /**
  * BreadcrumbButton component state

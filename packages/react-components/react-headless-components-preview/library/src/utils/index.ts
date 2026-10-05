@@ -1,2 +1,2 @@
-export { stringifyDataAttribute } from './stringifyDataAttribute';
+export { toDataAttributeValue } from './toDataAttributeValue';
 export { focusLastTag, isLastFocusableTag } from './tagFocusUtils';

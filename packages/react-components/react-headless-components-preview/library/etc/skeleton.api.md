@@ -7,50 +7,44 @@
 import * as React_2 from 'react';
 import { renderSkeleton_unstable as renderSkeleton } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable as renderSkeletonItem } from '@fluentui/react-skeleton';
-import { SkeletonBaseProps } from '@fluentui/react-skeleton';
-import type { SkeletonBaseState } from '@fluentui/react-skeleton';
-import type { SkeletonContextValues as SkeletonContextValues_2 } from '@fluentui/react-skeleton';
-import { SkeletonItemBaseProps } from '@fluentui/react-skeleton';
-import type { SkeletonItemBaseState } from '@fluentui/react-skeleton';
-import type { SkeletonItemSlots as SkeletonItemSlots_2 } from '@fluentui/react-skeleton';
-import type { SkeletonSlots as SkeletonSlots_2 } from '@fluentui/react-skeleton';
+import { SkeletonContextValues } from '@fluentui/react-skeleton';
+import { SkeletonItemBaseProps as SkeletonItemProps } from '@fluentui/react-skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-skeleton';
+import { SkeletonItemBaseState as SkeletonItemState } from '@fluentui/react-skeleton';
+import { SkeletonBaseProps as SkeletonProps } from '@fluentui/react-skeleton';
+import { SkeletonSlots } from '@fluentui/react-skeleton';
+import { SkeletonBaseState as SkeletonState } from '@fluentui/react-skeleton';
+import { useSkeletonBase_unstable as useSkeleton } from '@fluentui/react-skeleton';
+import { useSkeletonItemBase_unstable as useSkeletonItem } from '@fluentui/react-skeleton';
 
 export { renderSkeleton }
 
 export { renderSkeletonItem }
 
 // @public
-export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonBaseProps & React_2.RefAttributes<HTMLDivElement>>;
+export const Skeleton: React_2.ForwardRefExoticComponent<SkeletonProps & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public
-export const SkeletonItem: React_2.ForwardRefExoticComponent<SkeletonItemBaseProps & React_2.RefAttributes<HTMLDivElement>>;
+export const SkeletonItem: React_2.ForwardRefExoticComponent<SkeletonItemProps & React_2.RefAttributes<HTMLDivElement>>;
 
-// @public
-export type SkeletonItemProps = SkeletonItemBaseProps;
+export { SkeletonItemProps }
 
-// @public
-export type SkeletonItemSlots = SkeletonItemSlots_2;
+export { SkeletonItemSlots }
 
-// @public
-export type SkeletonItemState = SkeletonItemBaseState;
+export { SkeletonItemState }
 
-// @public
-export type SkeletonProps = SkeletonBaseProps;
+export { SkeletonProps }
 
-// @public
-export type SkeletonSlots = SkeletonSlots_2;
+export { SkeletonSlots }
 
-// @public
-export type SkeletonState = SkeletonBaseState;
+export { SkeletonState }
 
-// @public
-export const useSkeleton: (props: SkeletonProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonState;
+export { useSkeleton }
 
 // @public
 export const useSkeletonContextValues: (state: SkeletonState) => SkeletonContextValues;
 
-// @public
-export const useSkeletonItem: (props: SkeletonItemProps, ref: React_2.Ref<HTMLDivElement>) => SkeletonItemState;
+export { useSkeletonItem }
 
 // (No @packageDocumentation comment for this package)
 

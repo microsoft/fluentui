@@ -105,7 +105,7 @@ finds.
 | Radius    | `--radius-xs` 4 px → `--radius-3xl` 24 px, `--radius-pill` 999 px                      |
 | Stroke    | `--stroke-thin/thick/thicker` (1 / 2 / 3 px)                                           |
 | Spacing   | `--space-1` … `--space-16` on a 4 px grid                                              |
-| Type      | `--font-sans` (Segoe UI), `--font-mono`, `--font-display`                              |
+| Type      | `--font-sans` (Segoe UI), `--font-mono`, `--font-display`, `--font-weight-semibold`    |
 | Motion    | `--ease-standard`, `--ease-emphasized`, `--duration-fast/medium/slow`                  |
 
 Read the file directly when in doubt: `.storybook/tokens.css`.

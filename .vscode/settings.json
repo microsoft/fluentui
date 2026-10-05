@@ -35,7 +35,13 @@
     ".yarn/releases": true,
     "common/temp": true,
     "**/node_modules": true,
-    "**/lib": true,
+    // VS Code doesn't support un-excluding things, so this is the only workaround for some nx projects using "lib" for source
+    "apps/*/lib": true,
+    "packages/*/lib": true,
+    "packages/react-components/*/lib": true,
+    "packages/react-components/*/*/lib": true,
+    "packages/charts/*/lib": true,
+    "packages/charts/*/*/lib": true,
     "**/lib-amd": true,
     "**/lib-commonjs": true,
     "**/dist": true,
@@ -64,6 +70,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[handlebars]": {

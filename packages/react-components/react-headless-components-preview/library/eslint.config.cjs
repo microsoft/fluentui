@@ -12,4 +12,11 @@ module.exports = [
       'import/no-extraneous-dependencies': 'off',
     },
   },
+  {
+    files: ['**/src/**/*.{ts,tsx}'],
+    ignores: ['**/*.{test,cy,stories}.{ts,tsx}'],
+    rules: {
+      '@nx/workspace-prefer-direct-reexport': 'error',
+    },
+  },
 ];

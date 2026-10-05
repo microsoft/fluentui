@@ -1,14 +1,6 @@
-import type { InputSlots as InputBaseSlots, InputBaseProps, InputBaseState } from '@fluentui/react-input';
+import type { InputBaseState } from '@fluentui/react-input';
 
-/**
- * Input component slots
- */
-export type InputSlots = InputBaseSlots;
-
-/**
- * Input component props
- */
-export type InputProps = InputBaseProps;
+export type { InputSlots, InputBaseProps as InputProps } from '@fluentui/react-input';
 
 /**
  * Input component state

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [5.25.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.12)
+
+Thu, 01 Oct 2026 07:11:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.25.11..@fluentui/react-charting_v5.25.12)
+
+### Patches
+
+- Fixed prototype issue in plotly adopter ([PR #36771](https://github.com/microsoft/fluentui/pull/36771) by 132879294+v-baambati@users.noreply.github.com)
+- fixed prototype issue in v8 charts ([PR #36757](https://github.com/microsoft/fluentui/pull/36757) by 132879294+v-baambati@users.noreply.github.com)
+- docs: note that IChartDataPoint.color is rendered into generated CSS and should be validated when it comes from untrusted input ([PR #36582](https://github.com/microsoft/fluentui/pull/36582) by martinhochel@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.40 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-focus to v8.10.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme-samples to v8.7.227 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react to v8.125.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [5.25.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.25.11)
 

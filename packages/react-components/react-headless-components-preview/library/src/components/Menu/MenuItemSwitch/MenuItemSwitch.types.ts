@@ -1,12 +1,6 @@
-import type {
-  MenuItemSwitchProps as MenuItemSwitchBaseProps,
-  MenuItemSwitchState as MenuItemSwitchBaseState,
-  MenuItemSwitchSlots,
-} from '@fluentui/react-menu';
+import type { MenuItemSwitchState as MenuItemSwitchBaseState } from '@fluentui/react-menu';
 
-export type { MenuItemSwitchSlots };
-
-export type MenuItemSwitchProps = MenuItemSwitchBaseProps;
+export type { MenuItemSwitchSlots, MenuItemSwitchProps } from '@fluentui/react-menu';
 
 export type MenuItemSwitchState = MenuItemSwitchBaseState & {
   root: {

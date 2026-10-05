@@ -1,15 +1,6 @@
-import type {
-  ProgressBarSlots as ProgressBarBaseSlots,
-  ProgressBarBaseProps,
-  ProgressBarBaseState,
-} from '@fluentui/react-progress';
+import type { ProgressBarBaseState } from '@fluentui/react-progress';
 
-export type ProgressBarSlots = ProgressBarBaseSlots;
-
-/**
- * ProgressBar Props
- */
-export type ProgressBarProps = ProgressBarBaseProps;
+export type { ProgressBarSlots, ProgressBarBaseProps as ProgressBarProps } from '@fluentui/react-progress';
 
 /**
  * State used in rendering ProgressBar
