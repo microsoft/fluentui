@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: harden SSR theme style escaping",
+  "packageName": "@fluentui/react-provider",
+  "email": "paliprandi@microsoft.com",
+  "dependentChangeType": "patch"
+}
