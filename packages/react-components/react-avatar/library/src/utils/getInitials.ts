@@ -1,12 +1,7 @@
 /**
- * Regular expressions matching characters to ignore when calculating the initials.
+ * Regular expression matching complete enclosures or an unmatched enclosure tail.
  */
-
-/**
- * Regular expression matching characters within various types of enclosures, including the enclosures themselves
- *  so for example, (xyz) [xyz] {xyz} all would be ignored
- */
-const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]/g;
+const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*([\)\]\}]|$)/g;
 
 /**
  * Regular expression matching special ASCII characters except space, plus some unicode special characters.
@@ -73,7 +68,7 @@ function getInitialsLatin(displayName: string, isRtl: boolean, firstInitialOnly?
 }
 
 function cleanupDisplayName(displayName: string): string {
-  displayName = displayName.replace(UNWANTED_ENCLOSURES_REGEX, '');
+  displayName = displayName.replace(UNWANTED_ENCLOSURES_REGEX, (match, closing: string) => (closing ? '' : match));
   displayName = displayName.replace(UNWANTED_CHARS_REGEX, '');
   displayName = displayName.replace(MULTIPLE_WHITESPACES_REGEX, ' ');
   displayName = displayName.trim();

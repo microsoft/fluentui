@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-storybook-addon-playground",
+  "entries": [
+    {
+      "date": "Mon, 21 Sep 2026 15:07:55 GMT",
+      "version": "0.0.1",
+      "tag": "@fluentui/react-storybook-addon-playground_v0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "f836be2f3e9d61b7d7aa89b3e8689c9978b6b1c1",
+            "comment": "feat: add @fluentui/react-storybook-addon-playground package scaffold"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -268,14 +268,17 @@ export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceS
 
 // @public
 export type TeachingPopoverSurfaceSlots = {
-    root: Slot<'dialog'>;
+    root: Slot<'dialog', 'div'>;
 };
 
 // @public (undocumented)
 export type TeachingPopoverSurfaceState = ComponentState<TeachingPopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
-    'data-open': string;
+    root: {
+        'data-open'?: string;
+        'data-popover-surface'?: string;
+    };
 };
 
 // @public (undocumented)
@@ -336,7 +339,7 @@ export { useTeachingPopoverFooter }
 export { useTeachingPopoverHeader }
 
 // @public
-export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => TeachingPopoverSurfaceState;
+export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => TeachingPopoverSurfaceState;
 
 export { useTeachingPopoverTitle }
 
