@@ -7,17 +7,12 @@ parameters:
     type: boolean
     default: false
 
-# Customize build number to include major version
-# Example: v9_20201022.1
-name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
+# Example: v9_nightly_20201022.1
+name: "v9_nightly_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-  - name: release.vnext # Used to scope beachball to release only vnext packages
-    value: true
-  - name: tags
-    value: production,externalfacing
 
 schedules:
   # Triggers the nightly release
@@ -92,7 +87,6 @@ extends:
 
               - script: |
                   yarn beachball publish -b origin/$(Build.SourceBranchName) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
-                  git reset --hard origin/$(Build.SourceBranchName)
                 displayName: Publish changes and bump versions
                 condition: not(${{ parameters.dryRun }})
                 env:

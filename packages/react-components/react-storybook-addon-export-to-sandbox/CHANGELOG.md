@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Thu, 30 Jul 2026 14:23:06 GMT and should not be manually modified.
+<!-- This log was last generated on Mon, 21 Sep 2026 15:07:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2)
+
+Mon, 21 Sep 2026 15:07:56 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1..@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2)
+
+### Patches
+
+- Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1)
 

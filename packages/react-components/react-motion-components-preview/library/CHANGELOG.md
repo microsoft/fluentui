@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.15.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.15.9)
+
+Tue, 22 Sep 2026 11:25:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.15.7..@fluentui/react-motion-components-preview_v0.15.9)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
 
 ## [0.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.15.7)
 
