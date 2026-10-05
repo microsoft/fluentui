@@ -22,7 +22,9 @@ export function createReactKeyboardEvent(
     currentTarget,
     bubbles: nativeEvent.bubbles,
     cancelable: nativeEvent.cancelable,
-    defaultPrevented: nativeEvent.defaultPrevented,
+    get defaultPrevented() {
+      return nativeEvent.defaultPrevented;
+    },
     eventPhase: nativeEvent.eventPhase,
     isTrusted: nativeEvent.isTrusted,
     preventDefault: () => nativeEvent.preventDefault(),

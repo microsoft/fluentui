@@ -25,6 +25,7 @@ describe('createReactKeyboardEvent', () => {
     expect(event.code).toBe('Tab');
     expect(event.shiftKey).toBe(true);
     expect(event.getModifierState('Shift')).toBe(true);
+    expect(event.defaultPrevented).toBe(false);
     expect(event.isDefaultPrevented()).toBe(false);
     expect(event.isPropagationStopped()).toBe(false);
     expect(event.persist()).toBeUndefined();
@@ -33,6 +34,7 @@ describe('createReactKeyboardEvent', () => {
     event.stopPropagation();
 
     expect(nativeEvent.defaultPrevented).toBe(true);
+    expect(event.defaultPrevented).toBe(true);
     expect(event.isDefaultPrevented()).toBe(true);
     expect(event.isPropagationStopped()).toBe(true);
 
