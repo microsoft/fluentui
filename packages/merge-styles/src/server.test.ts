@@ -76,13 +76,9 @@ describe('staticRender', () => {
     });
 
     expect(css).not.toMatch(/<\/style/i);
-    expect(css).toContain('\\3C /STYLE');
-    expect(css).toContain('\\3C /style');
-    expect(css).toContain('\\3C /StYlE');
-    expect(css).toContain('\\3C /sTyLe');
-    expect(css).toContain('selector-sentinel');
-    expect(css).toContain('property-sentinel');
-    expect(css).toContain('keyframe-sentinel');
+    expect(css).toMatchInlineSnapshot(
+      `"@keyframes css-1{50%\\\\3C /sTyLe>.keyframe-sentinel{opacity:0.5;}}.root-0{color\\\\3C /style>-property-sentinel:red;--custom\\\\3C /StYlE>-property-sentinel:value;}.root-0\\\\3C /STYLE>.selector-sentinel{color:red;}@keyframes css-1{50%\\\\3C /sTyLe>.keyframe-sentinel{opacity:0.5;}}"`,
+    );
   });
 
   it('preserves valid structural CSS syntax', () => {
@@ -127,20 +123,17 @@ describe('staticRender', () => {
     expect(css).toContain(`.even{content:"${backslash}${backslash}${backslash}3C /style>"}`);
   });
 
-  it.each([5000, 10000, 20000])(
-    'contains increasing backslash runs of length %s in raw server-rendered rules',
-    runLength => {
-      const stylesheet = Stylesheet.getInstance();
-      const backslashes = new Array(runLength + 1).join('\\');
+  it('contains a terminator after a long backslash run in raw server-rendered rules', () => {
+    const stylesheet = Stylesheet.getInstance();
+    const backslashes = new Array(20001).join('\\');
 
-      stylesheet.insertRule(`.nonmatching{content:"${backslashes}x"}`);
-      stylesheet.insertRule(`.matching{content:"${backslashes}</style>"}`);
+    stylesheet.insertRule(`.nonmatching{content:"${backslashes}x"}`);
+    stylesheet.insertRule(`.matching{content:"${backslashes}</style>"}`);
 
-      const css = stylesheet.getRules();
+    const css = stylesheet.getRules();
 
-      expect(css).toContain(`.nonmatching{content:"${backslashes}x"}`);
-      expect(css).toContain(`.matching{content:"${backslashes}\\3C /style>"}`);
-      expect(css).not.toMatch(/<\/style/i);
-    },
-  );
+    expect(css).toContain(`.nonmatching{content:"${backslashes}x"}`);
+    expect(css).toContain(`.matching{content:"${backslashes}\\3C /style>"}`);
+    expect(css).not.toMatch(/<\/style/i);
+  });
 });

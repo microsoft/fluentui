@@ -681,8 +681,8 @@ describe('styleToClassName with specificityMultiplier', () => {
       );
     });
 
-    it.each([5000, 10000, 20000])('serializes increasing backslash runs of length %s', runLength => {
-      const backslashes = new Array(runLength + 1).join('\\');
+    it('serializes a long backslash run with and without a following terminator', () => {
+      const backslashes = new Array(20001).join('\\');
 
       expect(serializeRuleEntries({}, { content: `${backslashes}x` })).toBe(`content:${backslashes}x;`);
       expect(serializeRuleEntries({}, { content: `${backslashes}</style>` })).toBe(

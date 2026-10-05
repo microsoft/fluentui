@@ -3,9 +3,9 @@ const CSS_ESCAPE_MAP: Record<string, string> = {
   '>': '\\3E ',
 };
 
-type ShouldEscape = (value: string, index: number, character: string) => boolean;
+type EscapeMode = 'all-angle-brackets' | 'style-terminator';
 
-function escapeCssCharacters(value: string, shouldEscape: ShouldEscape): string {
+function escapeCssCharacters(value: string, mode: EscapeMode): string {
   let backslashCount = 0;
   let chunkStart = 0;
   let result: string[] | undefined;
@@ -18,7 +18,12 @@ function escapeCssCharacters(value: string, shouldEscape: ShouldEscape): string 
       continue;
     }
 
-    if (shouldEscape(value, i, character)) {
+    const shouldEscape =
+      mode === 'all-angle-brackets'
+        ? character === '<' || character === '>'
+        : character === '<' && value.slice(i + 1, i + 7).toLowerCase() === '/style';
+
+    if (shouldEscape) {
       result = result || [];
       // An odd final backslash already escapes this character, so omit that backslash before
       // emitting the equivalent code-point escape. Even runs represent literal backslashes.
@@ -38,12 +43,9 @@ function escapeCssCharacters(value: string, shouldEscape: ShouldEscape): string 
 }
 
 export function escapeForStyleTag(value: string): string {
-  return escapeCssCharacters(value, (_value, _index, character) => character === '<' || character === '>');
+  return escapeCssCharacters(value, 'all-angle-brackets');
 }
 
 export function escapeStyleTagTerminator(css: string): string {
-  return escapeCssCharacters(
-    css,
-    (value, index, character) => character === '<' && value.slice(index + 1, index + 7).toLowerCase() === '/style',
-  );
+  return escapeCssCharacters(css, 'style-terminator');
 }
