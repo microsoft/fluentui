@@ -1,20 +1,4 @@
-import type { PositioningShorthand, PositioningShorthandValue, PositioningProps } from '../types';
-
-// Look up table for shorthand to avoid parsing strings
-const shorthandLookup: Record<PositioningShorthandValue, Pick<PositioningProps, 'position' | 'align'>> = {
-  above: { position: 'above', align: 'center' },
-  'above-start': { position: 'above', align: 'start' },
-  'above-end': { position: 'above', align: 'end' },
-  below: { position: 'below', align: 'center' },
-  'below-start': { position: 'below', align: 'start' },
-  'below-end': { position: 'below', align: 'end' },
-  before: { position: 'before', align: 'center' },
-  'before-top': { position: 'before', align: 'top' },
-  'before-bottom': { position: 'before', align: 'bottom' },
-  after: { position: 'after', align: 'center' },
-  'after-top': { position: 'after', align: 'top' },
-  'after-bottom': { position: 'after', align: 'bottom' },
-};
+import type { PositioningShorthand, PositioningProps } from '../types';
 
 export function resolvePositioningShorthand(
   shorthand: PositioningShorthand | undefined | null,
@@ -24,7 +8,9 @@ export function resolvePositioningShorthand(
   }
 
   if (typeof shorthand === 'string') {
-    return shorthandLookup[shorthand];
+    // shorthands are `position` or `position-align`, e.g. `above-start`
+    const [position, align = 'center'] = shorthand.split('-');
+    return { position, align } as Pick<PositioningProps, 'position' | 'align'>;
   }
 
   return shorthand as Readonly<PositioningProps>;

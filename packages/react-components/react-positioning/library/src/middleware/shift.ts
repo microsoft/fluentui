@@ -1,5 +1,5 @@
-import type { Middleware } from '@floating-ui/dom';
-import { shift as baseShift, limitShift } from '@floating-ui/dom';
+import type { Middleware } from '../floating';
+import { shift as baseShift, limitShift } from '../floating';
 import type { PositioningOptions } from '../types';
 import { getBoundary, toFloatingUIPadding } from '../utils/index';
 
