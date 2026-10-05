@@ -5,3 +5,6 @@ an accessible name and give each swatch an accessible name.
 
 When `layout="grid"`, group swatches into `SwatchPickerRow` children. The row structure provides
 the grid semantics and coordinates used by arrow-key navigation; CSS controls only the visual layout.
+
+With the default `focusMode="arrow"`, the picker is a single tab stop: focus enters on the selected swatch, or on the
+first swatch when nothing is selected, and arrow keys move focus without changing the selection.
