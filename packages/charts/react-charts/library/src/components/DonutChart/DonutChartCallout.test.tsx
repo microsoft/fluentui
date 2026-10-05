@@ -54,4 +54,12 @@ describe('DonutChart calloutPropsPerDataPoint positioning', () => {
     expect(positioning).toMatchObject({ position: 'below' });
     expect(positioning.target).toBe(arc);
   });
+
+  it.each([null, undefined])('keeps the focused arc as the target when the per-point target is %s', perPointTarget => {
+    const arc = renderWithPerPointTarget(perPointTarget);
+    fireEvent.focus(arc);
+    const positioning = lastPositioning();
+    expect(positioning).toMatchObject({ position: 'below' });
+    expect(positioning.target).toBe(arc);
+  });
 });
