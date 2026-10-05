@@ -40,10 +40,10 @@ export class BaseDropdown extends FASTElement {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
-   *
+   * The element identity, this should not be overridden in subclasses.
    * @internal
    */
-  static get elementIdentity() {
+  static get elementIdentity(): 'dropdown' {
     return 'dropdown';
   }
 
