@@ -45,11 +45,21 @@ describe('createCSSRuleFromTheme', () => {
 
     const result = createCSSRuleFromTheme('.selector', theme);
     expect(result).toMatchInlineSnapshot(
-      `".selector { --colorBrandBackground: red; \\\\7D  .other \\\\7B  color: red;  }"`,
+      `".selector { --colorBrandBackground: red\\\\3B  \\\\7D  .other \\\\7B  color: red;  }"`,
     );
     // Only the rule's own wrapping braces should remain unescaped.
     expect(result.match(/{/g)).toHaveLength(1);
     expect(result.match(/}/g)).toHaveLength(1);
+  });
+
+  it('escapes semicolons in theme values so they cannot inject declarations', () => {
+    const theme = {
+      colorBrandBackground: 'red; color: transparent',
+    } as PartialTheme;
+
+    const result = createCSSRuleFromTheme('.selector', theme);
+    expect(result).toMatchInlineSnapshot(`".selector { --colorBrandBackground: red\\\\3B  color: transparent;  }"`);
+    expect(result.match(/;/g)).toHaveLength(1);
   });
 
   it('escapes curly braces in the selector so the generated rule stays a single, well-formed rule', () => {

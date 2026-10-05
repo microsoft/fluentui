@@ -22,6 +22,10 @@ function escapeForStyleTag(value: string): string {
   return value.replace(/[\\<>{}]/g, match => CSS_ESCAPE_MAP[match as keyof typeof CSS_ESCAPE_MAP]);
 }
 
+function escapeThemeValue(value: string): string {
+  return escapeForStyleTag(value).replace(/;/g, '\\3B ');
+}
+
 /**
  * Creates a CSS rule from a theme object.
  *
@@ -32,10 +36,10 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
 
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      return `${cssVarRule}--${cssVar}: ${theme[cssVar]}; `;
+      return `${cssVarRule}--${cssVar}: ${escapeThemeValue(`${theme[cssVar]}`)}; `;
     }, '');
 
-    return `${escapedSelector} { ${escapeForStyleTag(cssVarsAsString)} }`;
+    return `${escapedSelector} { ${cssVarsAsString} }`;
   }
 
   return `${escapedSelector} {}`;
