@@ -12,8 +12,9 @@ export type TableContextValue = {
   size: 'extra-small' | 'small' | 'medium';
 
   /**
-   * Render all table elements as divs instead of semantic table elements
+   * Render table elements as divs by default instead of semantic table elements.
    * Using divs no longer uses `display: table` layout but `display: flex`
+   * An explicit `as` prop overrides the element default for that component.
    * @default false
    */
   noNativeElements: boolean;
