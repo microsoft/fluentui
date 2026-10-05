@@ -86,7 +86,7 @@ extends:
                   yarn nx g @fluentui/workspace-plugin:version-bump --all --scope tools --versionSuffix "${VERSION_SUFFIX}"
                   git add .
                   git commit -m "bump tools experimental versions with suffix ${VERSION_SUFFIX}"
-                  yarn change --config scripts/beachball/src/release-tools.config.js --type prerelease --message "Release experimental tools ${VERSION_SUFFIX}" --dependent-change-type "prerelease"
+                  yarn change --type prerelease --message "Release experimental tools ${VERSION_SUFFIX}" --dependent-change-type "prerelease"
                 displayName: 'Bump and commit experimental versions'
 
               - script: |
