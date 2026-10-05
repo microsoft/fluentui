@@ -1,5 +1,21 @@
-export { usePositioning } from './usePositioning';
+export {
+  usePositioning,
+  arrowPlugin,
+  autoSizePlugin,
+  boundaryPlugin,
+  hidePlugin,
+  offsetPlugin,
+} from './usePositioning';
 export type {
+  FallbackInput,
+  FallbackPlacement,
+  FallbackRect,
+  PositioningTarget,
+  ExtendedPositioningProps,
+  ExtendedPositioningReturn,
+  PositioningPlugin,
+  PositioningPluginContext,
+  PositioningPluginUpdate,
   Position,
   Alignment,
   PositioningProps,

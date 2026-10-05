@@ -17,8 +17,10 @@ export interface FallbackPlacement {
 export interface FallbackInput {
   /** Rect of the anchor, in the same coordinate space as `bounds` */
   anchor: FallbackRect;
-  /** Rect of the containing block of the positioned element */
+  /** Rect of the containing block of the positioned element, the box is kept inside of it */
   bounds: FallbackRect;
+  /** Rect used to know if a placement fits, defaults to `bounds` */
+  flipBounds?: FallbackRect;
   width: number;
   height: number;
   /** Direction of the containing block */
@@ -31,6 +33,8 @@ export interface FallbackInput {
   /** Margin on the block axis (physical `top` and `bottom`) and on the inline axis (`left` and `right`) */
   marginBlock: number;
   marginInline: number;
+  /** Margins that depend on the placement, they replace `marginBlock` and `marginInline` */
+  getMargins?: (placement: FallbackPlacement) => { marginBlock: number; marginInline: number };
 }
 
 export interface FallbackOutput extends FallbackPlacement {
@@ -47,6 +51,8 @@ interface Axis {
   anchorEnd: number;
   /** The containing block */
   bounds: Region;
+  /** The bounds used to know if the box fits */
+  flipBounds: Region;
   /** The grid of `position-area` is extended when the anchor sticks out of the containing block */
   extended: Region;
   size: number;
@@ -58,6 +64,8 @@ const createAxis = (
   anchorSize: number,
   start: number,
   size: number,
+  flipStart: number,
+  flipSize: number,
   boxSize: number,
   margin: number,
 ): Axis => {
@@ -69,6 +77,7 @@ const createAxis = (
     anchorSize,
     anchorEnd,
     bounds: [start, end],
+    flipBounds: [flipStart, flipStart + flipSize],
     extended: [Math.min(start, anchorStart), Math.max(end, anchorEnd)],
     size: boxSize,
     margin,
@@ -116,8 +125,8 @@ const anchorCenter = ({ anchorStart, anchorSize, size, margin, extended }: Axis,
  * Position on the axis of the position (`above`, `before`, ...): next to the anchor, `low` is the side before the anchor.
  */
 function placeMain(axis: Axis, low: boolean, centerSelf: boolean): { start: number; area: Region } {
-  const { anchorStart, anchorEnd, bounds, extended, size, margin } = axis;
-  const area: Region = low ? [bounds[0], anchorStart] : [anchorEnd, bounds[1]];
+  const { anchorStart, anchorEnd, flipBounds, extended, size, margin } = axis;
+  const area: Region = low ? [flipBounds[0], anchorStart] : [anchorEnd, flipBounds[1]];
 
   return {
     area,
@@ -133,16 +142,16 @@ function placeMain(axis: Axis, low: boolean, centerSelf: boolean): { start: numb
  * Position on the other axis, aligned to the `low` or `high` edge of the anchor or centered.
  */
 function placeCross(axis: Axis, to: 'low' | 'high' | 'center', centerSelf: boolean): { start: number; area: Region } {
-  const { anchorStart, anchorSize, anchorEnd, bounds, extended, size, margin } = axis;
+  const { anchorStart, anchorSize, anchorEnd, flipBounds, extended, size, margin } = axis;
 
   if (to === 'center') {
     return {
-      area: bounds,
+      area: flipBounds,
       start: centerSelf ? anchorCenter(axis, extended) : anchorStart + anchorSize / 2 - size / 2,
     };
   }
 
-  const area: Region = to === 'low' ? [anchorStart, bounds[1]] : [bounds[0], anchorEnd];
+  const area: Region = to === 'low' ? [anchorStart, flipBounds[1]] : [flipBounds[0], anchorEnd];
 
   return {
     area,
@@ -228,12 +237,15 @@ function placeOverTarget(x: Axis, y: Axis, { position, align }: FallbackPlacemen
  * it's used when the browser doesn't support it.
  */
 export function computeFallbackPosition(input: FallbackInput): FallbackOutput {
-  const { anchor, bounds, width, height, rtl, placement, fallbacks, pinned, coverTarget, marginBlock, marginInline } =
-    input;
-  const x = createAxis(anchor.left, anchor.width, bounds.left, bounds.width, width, marginInline);
-  const y = createAxis(anchor.top, anchor.height, bounds.top, bounds.height, height, marginBlock);
+  const { anchor, bounds, width, height, rtl, placement, fallbacks, pinned, coverTarget, getMargins } = input;
+  const flip = input.flipBounds ?? bounds;
+  const createAxes = ({ marginBlock, marginInline }: Pick<FallbackInput, 'marginBlock' | 'marginInline'> = input) => [
+    createAxis(anchor.left, anchor.width, bounds.left, bounds.width, flip.left, flip.width, width, marginInline),
+    createAxis(anchor.top, anchor.height, bounds.top, bounds.height, flip.top, flip.height, height, marginBlock),
+  ];
 
   if (coverTarget) {
+    const [x, y] = createAxes(getMargins?.(placement));
     return { ...placement, ...placeOverTarget(x, y, placement, rtl) };
   }
 
@@ -246,6 +258,7 @@ export function computeFallbackPosition(input: FallbackInput): FallbackOutput {
   let first: FallbackOutput | undefined;
 
   for (const candidate of candidates) {
+    const [x, y] = createAxes(getMargins?.(candidate));
     const { left, top, fits } = place(x, y, candidate, rtl, centerSelf);
     const output = { ...candidate, left, top };
     first ??= output;

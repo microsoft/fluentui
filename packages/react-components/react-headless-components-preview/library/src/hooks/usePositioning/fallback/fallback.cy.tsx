@@ -2,7 +2,8 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import { usePositioning } from '../usePositioning';
-import type { PositioningProps } from '../types';
+import { arrowPlugin, autoSizePlugin, hidePlugin } from '../plugins';
+import type { ExtendedPositioningProps } from '../types';
 
 /**
  * The JavaScript fallback is compared with what the browser does with CSS anchor positioning: the same component is rendered
@@ -17,19 +18,24 @@ interface Rect {
 }
 
 interface Scenario {
-  options: PositioningProps;
+  options: ExtendedPositioningProps;
   anchor: Rect;
   popup: { width: number; height: number };
   dir?: 'ltr' | 'rtl';
   /** Wraps the content in an element that creates a containing block */
   wrapper?: React.CSSProperties;
+  /** Renders an arrow */
+  arrow?: boolean;
 }
+
+// The plugins can't change between renders
+const PLUGINS = [arrowPlugin, autoSizePlugin, hidePlugin];
 
 const POSITIONS: Position[] = ['above', 'below', 'before', 'after'];
 const ALIGNMENTS: Alignment[] = ['start', 'center', 'end'];
 
-const Content: React.FC<Scenario> = ({ options, anchor, popup, dir, wrapper }) => {
-  const { targetRef, containerRef } = usePositioning(options);
+const Content: React.FC<Scenario> = ({ options, anchor, popup, dir, wrapper, arrow }) => {
+  const { targetRef, containerRef, arrowRef } = usePositioning(options, PLUGINS);
 
   const content = (
     <>
@@ -37,6 +43,7 @@ const Content: React.FC<Scenario> = ({ options, anchor, popup, dir, wrapper }) =
       <div ref={containerRef} data-testid="popup" style={{ background: 'lightgray' }}>
         {/* The hook controls the width of the container, the size comes from the content */}
         <div style={{ width: options.matchTargetSize === 'width' ? '100%' : popup.width, height: popup.height }} />
+        {arrow && <div ref={arrowRef} data-testid="arrow" style={{ position: 'absolute', width: 10, height: 10 }} />}
       </div>
     </>
   );
@@ -53,7 +60,12 @@ const nextFrame = () =>
     requestAnimationFrame(() => resolve());
   });
 
-async function render(scenario: Scenario, fallback: boolean): Promise<{ rect: Rect; placement: string | null }> {
+interface Result {
+  rect: Rect;
+  details: { arrow: string | null; maxHeight: string; maxWidth: string; hidden: boolean; escaped: boolean };
+}
+
+async function render(scenario: Scenario, fallback: boolean): Promise<Result> {
   const win = window;
   const originalSupports = win.CSS.supports;
 
@@ -76,7 +88,18 @@ async function render(scenario: Scenario, fallback: boolean): Promise<{ rect: Re
     const popup = host.querySelector<HTMLElement>('[data-testid="popup"]') as HTMLElement;
     const { left, top, width, height } = popup.getBoundingClientRect();
 
-    return { rect: { left, top, width, height }, placement: popup.getAttribute('data-placement') };
+    const arrowElement = host.querySelector<HTMLElement>('[data-testid="arrow"]');
+
+    return {
+      rect: { left, top, width, height },
+      details: {
+        arrow: arrowElement && `${arrowElement.style.left}|${arrowElement.style.top}`,
+        maxHeight: popup.style.maxHeight,
+        maxWidth: popup.style.maxWidth,
+        hidden: popup.hasAttribute('data-positioning-hidden'),
+        escaped: popup.hasAttribute('data-positioning-escaped'),
+      },
+    };
   } finally {
     root.unmount();
     host.remove();
@@ -99,6 +122,8 @@ async function compare(scenarios: Array<[string, Scenario]>, tolerance = 1) {
       diff('height') > tolerance
     ) {
       mismatches.push(`${name}\n  css: ${JSON.stringify(css.rect)}\n  js:  ${JSON.stringify(js.rect)}`);
+    } else if (JSON.stringify(css.details) !== JSON.stringify(js.details)) {
+      mismatches.push(`${name}\n  css: ${JSON.stringify(css.details)}\n  js:  ${JSON.stringify(js.details)}`);
     }
   }
 
@@ -321,6 +346,50 @@ describe('usePositioning fallback', () => {
     return cy.wrap(compare(scenarios), { timeout: 20000 }).should('deep.equal', []);
   });
 
+  it('matches the plugins that work with both', () => {
+    const scenarios: Array<[string, Scenario]> = [];
+
+    for (const position of POSITIONS) {
+      for (const align of ALIGNMENTS) {
+        scenarios.push([
+          `${position}-${align} arrow`,
+          { options: { position, align, arrowPadding: 6, offset: 8 }, anchor, popup, arrow: true },
+        ]);
+        scenarios.push([
+          `${position}-${align} arrow at the edge`,
+          {
+            options: { position, align, arrowPadding: 6 },
+            anchor: { left: 880, top: 20, width: 100, height: 40 },
+            popup,
+            arrow: true,
+          },
+        ]);
+        scenarios.push([
+          `${position}-${align} autoSize`,
+          {
+            options: { position, align, autoSize: true, offset: 4, pinned: true },
+            anchor: { left: 450, top: 150, width: 100, height: 40 },
+            popup: { width: 300, height: 600 },
+          },
+        ]);
+      }
+    }
+
+    for (const top of [20, 220, 420]) {
+      scenarios.push([
+        `target at ${top} in a scrolled container`,
+        {
+          options: { position: 'below', align: 'center' },
+          anchor: { left: 40, top, width: 60, height: 30 },
+          popup: { width: 120, height: 60 },
+          wrapper: { position: 'relative', margin: '100px 0 0 100px', width: 300, height: 150, overflow: 'hidden' },
+        },
+      ]);
+    }
+
+    return cy.wrap(compare(scenarios), { timeout: 30000 }).should('deep.equal', []);
+  });
+
   it('matches random scenarios', () => {
     const random = createRandom(7);
     const scenarios: Array<[string, Scenario]> = [];
@@ -333,7 +402,7 @@ describe('usePositioning fallback', () => {
     };
 
     for (let index = 0; index < 300; index++) {
-      const options: PositioningProps = {
+      const options: ExtendedPositioningProps = {
         position: random.pick(POSITIONS),
         align: random.pick(ALIGNMENTS),
         offset: random.chance(0.4) ? { mainAxis: random.pick([0, 8]), crossAxis: random.pick([0, 4]) } : undefined,

@@ -9,6 +9,7 @@ import { Position } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 
 export { Alignment }
@@ -21,11 +22,110 @@ export const ALIGNMENTS: {
 };
 
 // @public
+export const arrowPlugin: PositioningPlugin;
+
+// @public
+export const autoSizePlugin: PositioningPlugin;
+
+// @public
+export const boundaryPlugin: PositioningPlugin;
+
+// @public
+export type ExtendedPositioningProps = PositioningProps & Pick<PositioningProps_2, 'arrowPadding' | 'autoSize' | 'disableUpdateOnResize' | 'flipBoundary' | 'onPositioningEnd' | 'overflowBoundary' | 'overflowBoundaryPadding'> & {
+    enabled?: boolean;
+};
+
+// @public (undocumented)
+export type ExtendedPositioningReturn = PositioningReturn & {
+    arrowRef: React_2.RefCallback<HTMLElement>;
+};
+
+// @public (undocumented)
+export interface FallbackInput {
+    anchor: FallbackRect;
+    bounds: FallbackRect;
+    // (undocumented)
+    coverTarget?: boolean;
+    fallbacks?: FallbackPlacement[];
+    flipBounds?: FallbackRect;
+    getMargins?: (placement: FallbackPlacement) => {
+        marginBlock: number;
+        marginInline: number;
+    };
+    // (undocumented)
+    height: number;
+    marginBlock: number;
+    // (undocumented)
+    marginInline: number;
+    // (undocumented)
+    pinned?: boolean;
+    // (undocumented)
+    placement: FallbackPlacement;
+    rtl: boolean;
+    // (undocumented)
+    width: number;
+}
+
+// @public (undocumented)
+export interface FallbackPlacement {
+    // (undocumented)
+    align: LogicalAlignment;
+    // (undocumented)
+    position: Position;
+}
+
+// @public (undocumented)
+export interface FallbackRect {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    left: number;
+    // (undocumented)
+    top: number;
+    // (undocumented)
+    width: number;
+}
+
+// @public
 export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue;
+
+// @public
+export const hidePlugin: PositioningPlugin;
+
+// @public
+export const offsetPlugin: PositioningPlugin;
 
 export { Position }
 
 export { PositioningImperativeRef }
+
+// @public
+export interface PositioningPlugin {
+    apply?: (update: PositioningPluginUpdate) => void;
+    prepare?: (input: FallbackInput, context: PositioningPluginContext) => FallbackInput;
+    requiresJs?: (options: ExtendedPositioningProps) => boolean;
+}
+
+// @public (undocumented)
+export interface PositioningPluginContext {
+    // (undocumented)
+    arrow: HTMLElement | null;
+    // (undocumented)
+    container: HTMLElement;
+    // (undocumented)
+    options: ExtendedPositioningProps;
+    rtl: boolean;
+    // (undocumented)
+    target: PositioningTarget;
+}
+
+// @public (undocumented)
+export interface PositioningPluginUpdate extends PositioningPluginContext {
+    anchor: FallbackRect;
+    bounds: FallbackRect;
+    placement: FallbackPlacement | null;
+    popup: FallbackRect;
+}
 
 // @public (undocumented)
 export type PositioningProps = Pick<PositioningProps_2, 'align' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
@@ -42,6 +142,9 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 export { PositioningShorthandValue }
 
 // @public (undocumented)
+export type PositioningTarget = HTMLElement | PositioningVirtualElement;
+
+// @public (undocumented)
 export const POSITIONS: {
     readonly above: "above";
     readonly below: "below";
@@ -52,8 +155,11 @@ export const POSITIONS: {
 // @public (undocumented)
 export const resolvePositioningShorthand: ResolvePositioningShorthand;
 
-// @public (undocumented)
+// @public
 export function usePositioning(options: PositioningProps): PositioningReturn;
+
+// @public (undocumented)
+export function usePositioning(options: ExtendedPositioningProps, plugins: readonly PositioningPlugin[]): ExtendedPositioningReturn;
 
 // (No @packageDocumentation comment for this package)
 

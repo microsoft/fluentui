@@ -2,7 +2,9 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
-import type { PositioningProps, PositioningReturn } from './types';
+import type { ExtendedPositioningProps, ExtendedPositioningReturn, PositioningProps, PositioningReturn } from './types';
+import { arrowPlugin, autoSizePlugin, boundaryPlugin, hidePlugin, offsetPlugin } from './plugins';
+import type { PositioningPlugin } from './plugins';
 
 // jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
 beforeAll(() => {
@@ -359,6 +361,139 @@ describe('usePositioning without CSS anchor positioning', () => {
     act(() => positioningRef.current?.updatePosition());
 
     expect(container).toHaveStyle({ top: '240px' });
+  });
+});
+
+describe('usePositioning with plugins', () => {
+  beforeAll(() => {
+    Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
+  });
+
+  afterAll(() => {
+    Reflect.deleteProperty(globalThis, 'CSS');
+  });
+
+  const mountWithPlugins = (options: ExtendedPositioningProps, plugins: readonly PositioningPlugin[]) => {
+    const resultRef = React.createRef<{ current: ExtendedPositioningReturn }>();
+    const Capture = () => {
+      const result = usePositioning(options, plugins);
+      (resultRef as unknown as { current: ExtendedPositioningReturn }).current = result;
+      return null;
+    };
+    render(<Capture />);
+    return resultRef as unknown as { current: ExtendedPositioningReturn };
+  };
+
+  const mockLayout = (target: { getBoundingClientRect: () => unknown }, container: HTMLElement) => {
+    target.getBoundingClientRect = () => ({ left: 450, top: 300, width: 100, height: 40 });
+    Object.defineProperty(container, 'offsetWidth', { value: 200, configurable: true });
+    Object.defineProperty(container, 'offsetHeight', { value: 100, configurable: true });
+    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000, configurable: true });
+    Object.defineProperty(document.documentElement, 'clientHeight', { value: 700, configurable: true });
+  };
+
+  it('returns an arrowRef', () => {
+    const result = mountWithPlugins({}, [arrowPlugin]);
+
+    expect(typeof result.current.arrowRef).toBe('function');
+  });
+
+  it('keeps using CSS for options that CSS can handle', () => {
+    const result = mountWithPlugins({ position: 'below', arrowPadding: 8, autoSize: true, offset: 4 }, [
+      arrowPlugin,
+      autoSizePlugin,
+      hidePlugin,
+      offsetPlugin,
+      boundaryPlugin,
+    ]);
+    const container = document.createElement('div');
+
+    act(() => {
+      result.current.containerRef(container);
+    });
+
+    expect(container).toHaveStyle({ positionArea: 'block-end' });
+    expect(container.style.getPropertyValue('left')).toBe('');
+  });
+
+  it.each([
+    ['a function offset', { offset: () => 4 }, 344],
+    ['a flip boundary', { flipBoundary: 'window' as const }, 340],
+    ['an overflow boundary', { overflowBoundary: 'window' as const }, 340],
+    ['an overflow padding', { overflowBoundaryPadding: 8 }, 340],
+  ])('positions in JavaScript with %s', (_name, extra, top) => {
+    const result = mountWithPlugins({ position: 'below', align: 'start', ...extra }, [offsetPlugin, boundaryPlugin]);
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container);
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(container.style.getPropertyValue('position-area')).toBe('');
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
+    expect(container).toHaveStyle({ left: '450px', top: `${top}px` });
+    expect(container).toHaveAttribute('data-placement', 'below-start');
+  });
+
+  it('positions next to a virtual element', () => {
+    const virtualElement = {
+      getBoundingClientRect: () =>
+        ({ left: 450, top: 300, width: 0, height: 0, x: 450, y: 300, right: 450, bottom: 300 } as DOMRect),
+    };
+    const result = mountWithPlugins({ position: 'below', align: 'start', target: virtualElement }, []);
+    const container = document.createElement('div');
+    document.body.append(container);
+    mockLayout({ getBoundingClientRect: () => undefined }, container);
+
+    act(() => {
+      result.current.containerRef(container);
+    });
+
+    // CSS can't anchor to a virtual element
+    expect(container.style.getPropertyValue('position-area')).toBe('');
+    expect(container).toHaveStyle({ left: '450px', top: '300px' });
+  });
+
+  it('runs the plugins after the container is positioned', () => {
+    const apply = jest.fn();
+    const result = mountWithPlugins({ position: 'below', align: 'start', flipBoundary: 'window' }, [
+      boundaryPlugin,
+      { apply },
+    ]);
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container);
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(apply).toHaveBeenCalledWith(
+      expect.objectContaining({
+        container,
+        target,
+        placement: { position: 'below', align: 'start' },
+        anchor: { left: 450, top: 300, width: 100, height: 40 },
+      }),
+    );
+  });
+
+  it('does not position when it is disabled', () => {
+    const result = mountWithPlugins({ position: 'below', enabled: false }, []);
+    const container = document.createElement('div');
+
+    act(() => {
+      result.current.containerRef(container);
+    });
+
+    expect(container.style.getPropertyValue('position-area')).toBe('');
+    expect(container.style.getPropertyValue('position')).toBe('');
   });
 });
 

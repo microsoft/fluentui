@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): add positioning plugins for arrow, autoSize, boundaries, function offsets and hidden state",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
