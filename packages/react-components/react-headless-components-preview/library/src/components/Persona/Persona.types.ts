@@ -18,4 +18,9 @@ export type PersonaProps = ComponentProps<PersonaSlots> & Pick<PersonaBaseProps,
 /**
  * State used in rendering Persona
  */
-export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaBaseState, 'textPosition' | 'numTextLines'>;
+export type PersonaState = ComponentState<PersonaSlots> &
+  Pick<PersonaBaseState, 'textPosition' | 'numTextLines'> & {
+    root: {
+      'data-text-position'?: PersonaBaseState['textPosition'];
+    };
+  };

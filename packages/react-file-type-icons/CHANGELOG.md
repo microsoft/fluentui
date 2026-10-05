@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.2)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.18.1..@fluentui/react-file-type-icons_v8.18.2)
+
+### Patches
+
+- Map clpx extension to the clipchamp filetype icon ([PR #36507](https://github.com/microsoft/fluentui/pull/36507) by danielhall@microsoft.com)
+- Add the Fabric Ontology file type icon. ([PR #36756](https://github.com/microsoft/fluentui/pull/36756) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.15.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [8.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.18.1)
 

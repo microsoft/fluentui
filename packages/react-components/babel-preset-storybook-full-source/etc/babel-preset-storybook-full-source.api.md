@@ -10,6 +10,7 @@ import * as Babel from '@babel/core';
 export interface BabelPluginOptions {
     cssModules?: boolean | CssModulesConfig;
     importMappings: Record<string, DependencyEntry>;
+    storyGranularity?: 'file' | 'story';
 }
 
 // @public

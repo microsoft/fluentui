@@ -152,6 +152,7 @@ describe('setup()', () => {
       join(fs.tempDir, 'tsconfig.lib.json'),
       JSON.stringify({ include: ['src/index.ts'], compilerOptions: { target: 'ES2020', lib: ['ES2020', 'DOM'] } }),
     );
+    writeFileSync(join(fs.tempDir, 'tsconfig.base.json'), JSON.stringify({ compilerOptions: { paths: {} } }));
     writeFileSync(join(fs.tempDir, 'jest.config.js'), 'module.exports = {};');
     writeFileSync(join(fs.tempDir, 'cypress.config.ts'), 'export default {};');
 
@@ -191,6 +192,7 @@ describe('setup()', () => {
       '.swcrc',
       'cypress.config.ts',
       'tsconfig.cy.json',
+      'tsconfig.base.json',
       'package.json',
     ];
     for (const f of expectedFiles) {

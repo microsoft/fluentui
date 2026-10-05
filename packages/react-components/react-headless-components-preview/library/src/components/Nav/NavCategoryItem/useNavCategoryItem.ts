@@ -5,6 +5,7 @@ import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from
 import { useNavContext_unstable, useNavCategoryContext_unstable, type OnNavItemSelectData } from '@fluentui/react-nav';
 
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Create the state required to render NavCategoryItem.
@@ -34,7 +35,7 @@ export const useNavCategoryItem = (
   const selected = selectedCategoryValue === value && !open;
   const validAriaCurrent: 'page' | 'false' = selected ? 'page' : 'false';
 
-  return {
+  const state: NavCategoryItemState = {
     open,
     value,
     selected,
@@ -52,6 +53,7 @@ export const useNavCategoryItem = (
       elementType: 'span',
     }),
     expandIcon: slot.optional(expandIcon, {
+      defaultProps: { 'aria-hidden': true },
       elementType: 'span',
     }),
     components: {
@@ -60,4 +62,10 @@ export const useNavCategoryItem = (
       expandIcon: 'span',
     },
   };
+
+  state.root['data-disabled'] = toDataAttributeValue(state.root.disabled || state.root['aria-disabled']);
+  state.root['data-expanded'] = toDataAttributeValue(state.open);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
+
+  return state;
 };

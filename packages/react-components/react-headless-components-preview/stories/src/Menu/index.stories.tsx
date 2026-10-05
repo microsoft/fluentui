@@ -17,6 +17,8 @@ import {
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './MenuDefault.stories';
 export { Controlled } from './MenuControlled.stories';
 export { WithDivider } from './MenuWithDivider.stories';
@@ -52,7 +54,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, getBrowserSupportNotice('Menu')].join('\n'),
       },
     },
   },

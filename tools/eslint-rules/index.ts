@@ -9,6 +9,7 @@ import {
   RULE_NAME as baseHookNoForbiddenRuntimeName,
   rule as baseHookNoForbiddenRuntime,
 } from './rules/base-hook-no-forbidden-runtime';
+import { RULE_NAME as preferDirectReexportName, rule as preferDirectReexport } from './rules/prefer-direct-reexport';
 
 /**
  * Import your custom workspace rules at the top of this file.
@@ -39,6 +40,7 @@ module.exports = {
     [consistentCallbackTypeName]: consistentCallbackType,
     [baseHookSignatureName]: baseHookSignature,
     [baseHookNoForbiddenRuntimeName]: baseHookNoForbiddenRuntime,
+    [preferDirectReexportName]: preferDirectReexport,
     [noRestrictedGlobalsName]: noRestrictedGlobals,
     [noMissingJsxPragmaName]: noMissingJsxPragma,
   },

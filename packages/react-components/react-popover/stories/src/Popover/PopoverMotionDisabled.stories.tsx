@@ -8,9 +8,10 @@ export const MotionDisabled = (): JSXElement => (
       <Button>Open popover</Button>
     </PopoverTrigger>
 
-    <PopoverSurface tabIndex={-1}>
+    <PopoverSurface>
       <h3 style={{ marginTop: 0 }}>Popover content</h3>
       <p>This popover has motion disabled</p>
+      <Button>Action</Button>
     </PopoverSurface>
   </Popover>
 );

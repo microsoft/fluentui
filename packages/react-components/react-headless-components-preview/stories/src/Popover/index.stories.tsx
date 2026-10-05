@@ -2,6 +2,9 @@ import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headles
 
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
+
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './PopoverDefault.stories';
 export { WithArrow } from './PopoverWithArrow.stories';
 export { Controlled } from './PopoverControlled.stories';
@@ -20,7 +23,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, getBrowserSupportNotice('Popover')].join('\n'),
       },
     },
   },

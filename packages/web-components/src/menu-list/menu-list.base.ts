@@ -92,18 +92,25 @@ export class BaseMenuList extends FASTElement {
    * @public
    */
   public focus(): void {
-    this.menuItems?.find(item => !item.disabled)?.focus();
-  }
-
-  private static elementIndent(el: HTMLElement): MenuItemColumnCount {
-    const role = el.role;
-    const startSlot = el.querySelector('[slot=start]');
-
-    if (role && role !== MenuItemRole.menuitem) {
-      return startSlot ? 2 : 1;
-    }
-
-    return startSlot ? 1 : 0;
+    // Queue the focus() call so that browesr gets enough time to execute
+    // `.setItems()` and set `.menuItems`.
+    //
+    // This is useful for:
+    //
+    // ```
+    // const list = document.createElement("fluent-menu-list");
+    // const option = document.createElement("fluent-menu-item");
+    // list.append(option);
+    // document.body.append(list);
+    // list.focus();
+    // ```
+    //
+    // Without `Updates.enqueu()`, the above `focus()` call would fail because
+    // in `connectedCallback()`, `.setItems()` is called in an
+    // `Updates.enqueue()`.
+    Updates.enqueue(() => {
+      this.menuItems?.find(item => !item.disabled)?.focus();
+    });
   }
 
   protected setItems(): void {
@@ -113,22 +120,7 @@ export class BaseMenuList extends FASTElement {
     });
 
     this.menuChildren = children.filter(child => !child.hasAttribute('hidden'));
-
-    /**
-     * Set the indent attribute on MenuItem elements based on their
-     * position in the MenuList. Each MenuItem element has a data-indent attribute that is
-     * used to set the indent of the element's start slot content.
-     */
     this.menuItems = this.menuChildren?.filter(this.isMenuItemElement);
-    const indent: MenuItemColumnCount = this.menuItems?.reduce<MenuItemColumnCount>((accum, current) => {
-      const elementValue = BaseMenuList.elementIndent(current as HTMLElement);
-
-      return Math.max(accum, elementValue as number) as MenuItemColumnCount;
-    }, 0);
-
-    this.menuItems?.forEach((item: HTMLElement) => {
-      item.dataset.indent = `${indent}`;
-    });
   }
 
   /**

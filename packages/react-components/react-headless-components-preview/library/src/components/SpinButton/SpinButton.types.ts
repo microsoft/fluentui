@@ -1,18 +1,6 @@
-import type {
-  SpinButtonSlots as SpinButtonBaseSlots,
-  SpinButtonBaseProps,
-  SpinButtonBaseState,
-} from '@fluentui/react-spinbutton';
+import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 
-/**
- * SpinButton component slots
- */
-export type SpinButtonSlots = SpinButtonBaseSlots;
-
-/**
- * SpinButton component props
- */
-export type SpinButtonProps = SpinButtonBaseProps;
+export type { SpinButtonSlots, SpinButtonBaseProps as SpinButtonProps } from '@fluentui/react-spinbutton';
 
 /**
  * SpinButton component state
@@ -33,5 +21,10 @@ export type SpinButtonState = SpinButtonBaseState & {
      * Data attribute set when the value is at a range boundary. Value is 'min', 'max', or 'both'.
      */
     'data-at-bound'?: string;
+
+    /**
+     * Data attribute set when the spin button is invalid.
+     */
+    'data-invalid'?: string;
   };
 };

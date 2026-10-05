@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "release recovery: versions already published to npm by the failed pipeline",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -6,41 +6,31 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 
-import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+import type {
+  SwatchPickerBaseProps,
+  SwatchPickerBaseState,
+  SwatchPickerProps,
+  SwatchPickerState,
+} from './SwatchPicker.types';
 
 /**
- * Create the state required to render SwatchPicker.
+ * Create the base state required to render unstyled SwatchPicker.
  *
- * The returned state can be modified with hooks such as useSwatchPickerStyles_unstable,
- * before being passed to renderSwatchPicker_unstable.
+ * The returned state can be modified with hooks before being passed to renderSwatchPicker_unstable.
  *
  * @param props - props from this instance of SwatchPicker
  * @param ref - reference to root HTMLElement of SwatchPicker
  */
-export const useSwatchPicker_unstable = (
-  props: SwatchPickerProps,
+export const useSwatchPickerBase_unstable = (
+  props: SwatchPickerBaseProps,
   ref: React.Ref<HTMLDivElement>,
-): SwatchPickerState => {
+): SwatchPickerBaseState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props);
 
-  const {
-    focusMode = 'arrow',
-    layout,
-    onSelectionChange,
-    size = 'medium',
-    shape,
-    spacing = 'medium',
-    style,
-    ...rest
-  } = props;
+  const { layout, onSelectionChange, style, ...rest } = props;
 
   const isGrid = layout === 'grid';
-  const focusAttributes = useArrowNavigationGroup({
-    circular: true,
-    axis: isGrid ? 'grid-linear' : 'both',
-    memorizeCurrent: true,
-  });
 
   const role = isGrid ? 'grid' : 'radiogroup';
 
@@ -68,7 +58,6 @@ export const useSwatchPicker_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         role,
-        ...(focusMode === 'arrow' ? focusAttributes : {}),
         ...rest,
       }),
       { elementType: 'div' },
@@ -76,6 +65,38 @@ export const useSwatchPicker_unstable = (
     isGrid,
     requestSelectionChange,
     selectedValue,
+  };
+};
+
+/**
+ * Create the state required to render SwatchPicker.
+ *
+ * The returned state can be modified with hooks such as useSwatchPickerStyles_unstable,
+ * before being passed to renderSwatchPicker_unstable.
+ *
+ * @param props - props from this instance of SwatchPicker
+ * @param ref - reference to root HTMLElement of SwatchPicker
+ */
+export const useSwatchPicker_unstable = (
+  props: SwatchPickerProps,
+  ref: React.Ref<HTMLDivElement>,
+): SwatchPickerState => {
+  const { focusMode = 'arrow', size = 'medium', shape, spacing = 'medium', ...rest } = props;
+
+  const baseState = useSwatchPickerBase_unstable(rest, ref);
+
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: baseState.isGrid ? 'grid-linear' : 'both',
+    memorizeCurrent: true,
+  });
+
+  return {
+    ...baseState,
+    root: {
+      ...baseState.root,
+      ...(focusMode === 'arrow' ? focusAttributes : {}),
+    },
     size,
     shape,
     spacing,

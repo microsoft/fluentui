@@ -1,4 +1,5 @@
 import type { DropdownBaseHookState, DropdownBaseHookProps } from '@fluentui/react-combobox';
+import type { PositioningShorthand } from '../../positioning';
 
 export type {
   DropdownSlots,
@@ -7,14 +8,16 @@ export type {
   DropdownOpenEvents,
 } from '@fluentui/react-combobox';
 
-export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode'>;
+export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
+  positioning?: PositioningShorthand;
+};
 
 export type DropdownState = DropdownBaseHookState & {
-  button: {
+  root: DropdownBaseHookState['root'] & {
     /**
      * Whether the dropdown is currently open.
      */
-    'data-state'?: 'open' | 'closed';
+    'data-open'?: string;
     /**
      * Whether the trigger element is currently disabled.
      */
@@ -23,5 +26,13 @@ export type DropdownState = DropdownBaseHookState & {
      * Whether the trigger element is currently displaying a placeholder.
      */
     'data-placeholder'?: string;
+    /**
+     * Whether the trigger element is currently invalid.
+     */
+    'data-invalid'?: string;
+    /**
+     * Wether the clear icon is visible.
+     */
+    'data-clearable'?: string;
   };
 };

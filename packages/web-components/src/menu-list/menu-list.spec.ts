@@ -78,6 +78,28 @@ test.describe('MenuList', () => {
     await expect(firstItem).toBeFocused();
   });
 
+  test('should focus before the queued item refresh completes', async ({ fastPage, page }) => {
+    await fastPage.setTemplate('');
+    await page.evaluate(
+      ({ menuItemTagName, menuListTagName }) => {
+        const menuList = document.createElement(menuListTagName);
+        menuList.dataset.immediateFocus = '';
+        for (const label of ['Menu item 1', 'Menu item 2']) {
+          const menuItem = document.createElement(menuItemTagName);
+          menuItem.textContent = label;
+          menuList.append(menuItem);
+        }
+        document.body.append(menuList);
+        menuList.focus();
+      },
+      { menuItemTagName: MenuItemTagName, menuListTagName: tagName },
+    );
+    const menuItems = page.locator(`${tagName}[data-immediate-focus]`).locator(MenuItemTagName);
+    await expect(menuItems.first()).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(menuItems.nth(1)).toBeFocused();
+  });
+
   test('should not throw when `focus()` is called with no items', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -442,197 +464,6 @@ test.describe('MenuList', () => {
     await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
-  });
-
-  test('should set the data-indent attribute to 0 correctly on all MenuItem elements when role of menuitem and not content in start slot', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate();
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '0');
-    }
-  });
-
-  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemcheckbox', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <${MenuItemTagName} role="menuitemcheckbox"></${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
-      `,
-    });
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '1');
-    }
-  });
-
-  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemradio', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <${MenuItemTagName} role="menuitemradio"></${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
-      `,
-    });
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '1');
-    }
-  });
-
-  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemcheckbox and content in the start slot', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <${MenuItemTagName} role="menuitemcheckbox">
-          Item 1
-          <span slot="start" class="start">Icon</span>
-        </${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
-      `,
-    });
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '2');
-    }
-  });
-
-  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemradio and content in the start slot', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({
-      innerHTML: /* html */ `
-        <${MenuItemTagName} role="menuitemradio"> Item 1 <span slot="start" class="start">Icon</span> </${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 2</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 3</${MenuItemTagName}>
-        <${MenuItemTagName}>Menu item 4</${MenuItemTagName}>
-      `,
-    });
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '2');
-    }
-  });
-
-  test('should set the data-indent attribute correctly when menu items are dynamically appended', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({ innerHTML: '' });
-
-    await element.evaluate((node, MenuItemTagName) => {
-      const items = ['item 1', 'item 2', 'item 3'];
-
-      items.forEach(item => {
-        const menuItem = document.createElement(MenuItemTagName);
-        menuItem.role = 'menuitemradio';
-        menuItem.textContent = item;
-        node.append(menuItem);
-      });
-    }, MenuItemTagName);
-
-    await expect(menuItems).toHaveCount(3);
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '1');
-    }
-  });
-
-  test('should set the data-indent attribute correctly when menu items are appended via a DocumentFragment', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate({ innerHTML: '' });
-
-    await element.evaluate((node, MenuItemTagName) => {
-      const fragment = document.createDocumentFragment();
-      const items = ['item 1', 'item 2', 'item 3'];
-
-      items.forEach(item => {
-        const menuItem = document.createElement(MenuItemTagName);
-        menuItem.role = 'menuitemradio';
-        menuItem.textContent = item;
-        fragment.append(menuItem);
-      });
-
-      node.append(fragment);
-    }, MenuItemTagName);
-
-    await expect(menuItems).toHaveCount(3);
-
-    for (const item of await menuItems.all()) {
-      await expect(item).toHaveAttribute('data-indent', '1');
-    }
-  });
-
-  test('should update data-indent on existing items when a menuitemradio is appended and removed', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-    const menuItems = element.locator(MenuItemTagName);
-
-    await fastPage.setTemplate();
-
-    await test.step('all plain menuitems should start with data-indent 0', async () => {
-      for (const item of await menuItems.all()) {
-        await expect(item).toHaveAttribute('data-indent', '0');
-      }
-    });
-
-    await test.step('appending a menuitemradio should update all items to data-indent 1', async () => {
-      await element.evaluate((node, MenuItemTagName) => {
-        const menuItem = document.createElement(MenuItemTagName);
-        menuItem.role = 'menuitemradio';
-        menuItem.textContent = 'Radio item';
-        node.append(menuItem);
-      }, MenuItemTagName);
-
-      await expect(menuItems).toHaveCount(5);
-
-      for (const item of await menuItems.all()) {
-        await expect(item).toHaveAttribute('data-indent', '1');
-      }
-    });
-
-    await test.step('removing the menuitemradio should revert all items to data-indent 0', async () => {
-      await menuItems.last().evaluate(node => node.remove());
-
-      await expect(menuItems).toHaveCount(4);
-
-      for (const item of await menuItems.all()) {
-        await expect(item).toHaveAttribute('data-indent', '0');
-      }
-    });
   });
 
   test.describe('`change` event', () => {

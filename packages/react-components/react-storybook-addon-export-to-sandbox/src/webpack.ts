@@ -4,10 +4,13 @@ type WebpackFinalFn = NonNullable<import('@storybook/react-webpack5').StorybookC
 export type WebpackFinalConfig = Parameters<WebpackFinalFn>[0];
 export type WebpackFinalOptions = Parameters<WebpackFinalFn>[1];
 
-export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions) {
+export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions): WebpackFinalConfig {
   const addonPresetConfig = getAddonOptions(options);
 
-  registerRules({ config, rules: [createBabelLoaderRule(addonPresetConfig)] });
+  registerRules({
+    config: config as import('webpack').Configuration,
+    rules: [createBabelLoaderRule(addonPresetConfig)],
+  });
 
   return config;
 }
@@ -34,17 +37,14 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
     test: /\.stories\.(jsx?$|tsx?$)/,
     ...webpackRule,
     /**
-     * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
-     * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
+     * Run before transpilers so this loader receives the original story source and does not depend on
+     * the format of sourcemaps emitted by subsequent loaders.
      */
-    enforce: 'post',
+    enforce: 'pre',
     use: {
-      /**
-       * Custom babel loader wraps the original babel-loader and fixes the incorrect `inputSourceMap` parameter
-       * that is passed to babel-loader.
-       **/
-      loader: require.resolve('./custom-babel-loader'),
+      loader: require.resolve('babel-loader'),
       options: babelLoaderOptionsUpdater({
+        parserOpts: { plugins: ['typescript', 'jsx'] },
         plugins: [plugin],
       }),
     },

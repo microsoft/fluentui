@@ -1,11 +1,14 @@
 import * as Accordion from '@fluentui/react-headless-components-preview/accordion';
 import * as Avatar from '@fluentui/react-headless-components-preview/avatar';
+import * as AvatarGroup from '@fluentui/react-headless-components-preview/avatar-group';
 import * as Badge from '@fluentui/react-headless-components-preview/badge';
 import * as Breadcrumb from '@fluentui/react-headless-components-preview/breadcrumb';
 import * as Button from '@fluentui/react-headless-components-preview/button';
 import * as Card from '@fluentui/react-headless-components-preview/card';
 import * as Checkbox from '@fluentui/react-headless-components-preview/checkbox';
+import * as ColorPicker from '@fluentui/react-headless-components-preview/color-picker';
 import * as Combobox from '@fluentui/react-headless-components-preview/combobox';
+import * as CompoundButton from '@fluentui/react-headless-components-preview/compound-button';
 import * as Dialog from '@fluentui/react-headless-components-preview/dialog';
 import * as Divider from '@fluentui/react-headless-components-preview/divider';
 import * as Drawer from '@fluentui/react-headless-components-preview/drawer';
@@ -34,10 +37,13 @@ import * as Skeleton from '@fluentui/react-headless-components-preview/skeleton'
 import * as Slider from '@fluentui/react-headless-components-preview/slider';
 import * as SpinButton from '@fluentui/react-headless-components-preview/spin-button';
 import * as Spinner from '@fluentui/react-headless-components-preview/spinner';
+import * as SplitButton from '@fluentui/react-headless-components-preview/split-button';
+import * as SwatchPicker from '@fluentui/react-headless-components-preview/swatch-picker';
 import * as Switch from '@fluentui/react-headless-components-preview/switch';
 import * as TabList from '@fluentui/react-headless-components-preview/tab-list';
 import * as Tag from '@fluentui/react-headless-components-preview/tag';
 import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group';
+import * as TagPicker from '@fluentui/react-headless-components-preview/tag-picker';
 import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
 import * as Toast from '@fluentui/react-headless-components-preview/toast';
@@ -48,12 +54,15 @@ import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
 console.log({
   Accordion,
   Avatar,
+  AvatarGroup,
   Badge,
   Breadcrumb,
   Button,
   Card,
   Checkbox,
+  ColorPicker,
   Combobox,
+  CompoundButton,
   Dialog,
   Divider,
   Drawer,
@@ -82,10 +91,13 @@ console.log({
   Slider,
   SpinButton,
   Spinner,
+  SplitButton,
+  SwatchPicker,
   Switch,
   TabList,
   Tag,
   TagGroup,
+  TagPicker,
   TeachingPopover,
   Textarea,
   Toast,

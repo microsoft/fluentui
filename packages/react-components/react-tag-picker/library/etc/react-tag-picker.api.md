@@ -29,6 +29,7 @@ import type { OptionState } from '@fluentui/react-combobox';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TagGroupBaseState } from '@fluentui/react-tags';
 import { TagGroupContextValues } from '@fluentui/react-tags';
 import type { TagGroupSlots } from '@fluentui/react-tags';
 import type { TagGroupState } from '@fluentui/react-tags';
@@ -37,16 +38,16 @@ import type { TagGroupState } from '@fluentui/react-tags';
 export const renderTagPicker_unstable: (state: TagPickerState, contexts: TagPickerContextValues) => JSXElement;
 
 // @public
-export const renderTagPickerButton_unstable: (state: TagPickerButtonState) => JSXElement;
+export const renderTagPickerButton_unstable: (state: TagPickerButtonBaseState) => JSXElement;
 
 // @public
-export const renderTagPickerControl_unstable: (state: TagPickerControlState) => JSXElement;
+export const renderTagPickerControl_unstable: (state: TagPickerControlBaseState) => JSXElement;
 
 // @public (undocumented)
-export function renderTagPickerGroup_unstable(state: TagPickerGroupState, contexts: TagGroupContextValues): JSXElement | null;
+export function renderTagPickerGroup_unstable(state: TagPickerGroupBaseState, contexts: TagGroupContextValues): JSXElement | null;
 
 // @public
-export const renderTagPickerInput_unstable: (state: TagPickerInputState) => JSXElement;
+export const renderTagPickerInput_unstable: (state: TagPickerInputBaseState) => JSXElement;
 
 // @public
 export const renderTagPickerList_unstable: (state: TagPickerListState) => JSXElement;
@@ -155,6 +156,11 @@ export type TagPickerControlState = ComponentState<TagPickerControlSlots & TagPi
 
 // @public
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
+
+// @public
+export type TagPickerGroupBaseState = TagGroupBaseState & {
+    hasSelectedOptions: boolean;
+};
 
 // @public (undocumented)
 export const tagPickerGroupClassNames: SlotClassNames<TagPickerGroupSlots>;

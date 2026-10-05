@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { checkedState, indeterminateState } from '../styles/states/index.js';
+import { checkedState, indeterminateState, nativeDisabledState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -135,21 +135,21 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
   }
 
-  :host([disabled]),
-  :host([disabled]${checkedState}) {
+  :host(${nativeDisabledState}),
+  :host(${nativeDisabledState}${checkedState}) {
     background-color: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host([disabled]) {
+  :host(${nativeDisabledState}) {
     cursor: unset;
   }
 
-  :host([disabled]${indeterminateState}) .indeterminate-indicator {
+  :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator {
     background-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host([disabled]${checkedState}) .checked-indicator {
+  :host(${nativeDisabledState}${checkedState}) .checked-indicator {
     color: ${colorNeutralStrokeDisabled};
   }
 
@@ -162,8 +162,8 @@ export const styles = css`
       border-color: Canvas;
     }
 
-    :host(:not([disabled]):hover),
-    :host(${checkedState}:not([disabled]):hover),
+    :host(:not(${nativeDisabledState}):hover),
+    :host(${checkedState}:not(${nativeDisabledState}):hover),
     :host(:not([slot='input']):focus-visible)::after {
       border-color: Highlight;
     }
@@ -178,21 +178,21 @@ export const styles = css`
       background-color: FieldText;
     }
 
-    :host(${checkedState}:not([disabled]):hover),
-    :host(${indeterminateState}:not([disabled]):hover) .indeterminate-indicator {
+    :host(${checkedState}:not(${nativeDisabledState}):hover),
+    :host(${indeterminateState}:not(${nativeDisabledState}):hover) .indeterminate-indicator {
       background-color: Highlight;
     }
 
-    :host([disabled]) {
+    :host(${nativeDisabledState}) {
       border-color: GrayText;
     }
 
-    :host([disabled]${indeterminateState}) .indeterminate-indicator {
+    :host(${nativeDisabledState}${indeterminateState}) .indeterminate-indicator {
       background-color: GrayText;
     }
 
-    :host([disabled]),
-    :host([disabled]${checkedState}) .checked-indicator {
+    :host(${nativeDisabledState}),
+    :host(${nativeDisabledState}${checkedState}) .checked-indicator {
       color: GrayText;
     }
   }

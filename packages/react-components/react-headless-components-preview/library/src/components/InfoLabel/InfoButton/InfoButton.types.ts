@@ -28,4 +28,8 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
 /**
  * State used in rendering InfoButton
  */
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & {
+  root: {
+    'data-open'?: string;
+  };
+};

@@ -57,7 +57,19 @@ export const styles = css`
   :host([orientation='vertical']) {
     --tabPaddingBlock: ${spacingVerticalS};
     --tabIndicatorInsetBlock: ${spacingVerticalS};
-    flex-direction: column;
+    --_col-start-width: 0px;
+    display: grid;
+    grid-template-columns: ${spacingHorizontalMNudge} var(--_col-start-width) 1fr auto ${spacingHorizontalMNudge};
+  }
+
+  :host(:has([slot='start'])) {
+    --_col-start-width: 24px;
+  }
+
+  @scope {
+    :scope:has([slot='start']) {
+      --_col-start-width: 24px;
+    }
   }
 
   :host([orientation='vertical'][size='small']) {
@@ -77,6 +89,12 @@ export const styles = css`
 
   :host([orientation='vertical']) ::slotted([role='tab']) {
     justify-content: flex-start;
+    display: grid;
+    gap: 0;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    grid-row: unset;
+    padding-inline: 0;
   }
 
   :host ::slotted([slot='tab'])::after {

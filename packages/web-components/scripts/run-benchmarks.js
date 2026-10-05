@@ -32,7 +32,9 @@ try {
   for (const file of benchFiles) {
     try {
       // eslint-disable-next-line no-undef
-      execSync(`tensile --file ./${file} --config ${tensileConfig} ${process.argv[2]}`, { stdio: 'inherit' });
+      execSync(`yarn run -T tensile --file ./${file} --config ${tensileConfig} ${process.argv[2]}`, {
+        stdio: 'inherit',
+      });
     } catch (error) {
       console.error(`Error executing command for file ${file}: ${error.message}`);
     }

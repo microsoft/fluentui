@@ -16,6 +16,14 @@
           }
         ]
       }
+    },
+    "test-integration": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node __tests__/integration/webpack.cjs"
+      }
     }
   }
 }

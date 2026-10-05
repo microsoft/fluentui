@@ -1,6 +1,1 @@
-import { renderDrawerFooter } from '../../Drawer/DrawerFooter';
-
-/**
- * Renders the final JSX of NavDrawerFooter.
- */
-export const renderNavDrawerFooter = renderDrawerFooter;
+export { renderDrawerFooter as renderNavDrawerFooter } from '../../Drawer/DrawerFooter';

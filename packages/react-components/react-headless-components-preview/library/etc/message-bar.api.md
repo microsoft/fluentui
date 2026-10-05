@@ -5,26 +5,30 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import { MessageBarActionsContextValues as MessageBarActionsContextValues_2 } from '@fluentui/react-message-bar';
-import type { MessageBarActionsProps as MessageBarActionsProps_2 } from '@fluentui/react-message-bar';
-import type { MessageBarActionsSlots as MessageBarActionsSlots_2 } from '@fluentui/react-message-bar';
-import { MessageBarActionsState as MessageBarActionsState_2 } from '@fluentui/react-message-bar';
-import type { MessageBarBaseProps } from '@fluentui/react-message-bar';
-import { MessageBarBaseState } from '@fluentui/react-message-bar';
-import { MessageBarBodyContextValues as MessageBarBodyContextValues_2 } from '@fluentui/react-message-bar';
-import type { MessageBarBodyProps as MessageBarBodyProps_2 } from '@fluentui/react-message-bar';
-import type { MessageBarBodySlots as MessageBarBodySlots_2 } from '@fluentui/react-message-bar';
-import { MessageBarBodyState as MessageBarBodyState_2 } from '@fluentui/react-message-bar';
-import { MessageBarContextValue } from '@fluentui/react-message-bar';
-import { MessageBarContextValues as MessageBarContextValues_2 } from '@fluentui/react-message-bar';
-import type { MessageBarIntent } from '@fluentui/react-message-bar';
-import type { MessageBarSlots as MessageBarSlots_2 } from '@fluentui/react-message-bar';
-import type { MessageBarTitleProps as MessageBarTitleProps_2 } from '@fluentui/react-message-bar';
-import type { MessageBarTitleSlots as MessageBarTitleSlots_2 } from '@fluentui/react-message-bar';
-import { MessageBarTitleState as MessageBarTitleState_2 } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
+import { MessageBarActionsProps } from '@fluentui/react-message-bar';
+import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
+import type { MessageBarActionsState as MessageBarActionsState_2 } from '@fluentui/react-message-bar';
+import type { MessageBarBaseState } from '@fluentui/react-message-bar';
+import { MessageBarBodyContextValues } from '@fluentui/react-message-bar';
+import { MessageBarBodyProps } from '@fluentui/react-message-bar';
+import { MessageBarBodySlots } from '@fluentui/react-message-bar';
+import { MessageBarBodyState } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
+import { MessageBarIntent } from '@fluentui/react-message-bar';
+import { MessageBarBaseProps as MessageBarProps } from '@fluentui/react-message-bar';
+import { MessageBarSlots } from '@fluentui/react-message-bar';
+import { MessageBarTitleProps } from '@fluentui/react-message-bar';
+import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
+import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import type * as React_2 from 'react';
-import { useMessageBarBodyContextValues_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBar_unstable as renderMessageBar } from '@fluentui/react-message-bar';
+import { renderMessageBarActions_unstable as renderMessageBarActions } from '@fluentui/react-message-bar';
+import { renderMessageBarBody_unstable as renderMessageBarBody } from '@fluentui/react-message-bar';
+import { renderMessageBarTitle_unstable as renderMessageBarTitle } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable as useMessageBarActionsContextValues } from '@fluentui/react-message-bar';
+import { useMessageBarBodyContextValues_unstable as useMessageBarBodyContextValues } from '@fluentui/react-message-bar';
+import { useMessageBarContext } from '@fluentui/react-message-bar';
 
 // @public
 export const MessageBar: ForwardRefComponent<MessageBarProps>;
@@ -32,14 +36,11 @@ export const MessageBar: ForwardRefComponent<MessageBarProps>;
 // @public
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 
-// @public (undocumented)
-export type MessageBarActionsContextValues = MessageBarActionsContextValues_2;
+export { MessageBarActionsContextValues }
 
-// @public (undocumented)
-export type MessageBarActionsProps = MessageBarActionsProps_2;
+export { MessageBarActionsProps }
 
-// @public (undocumented)
-export type MessageBarActionsSlots = MessageBarActionsSlots_2;
+export { MessageBarActionsSlots }
 
 // @public (undocumented)
 export type MessageBarActionsState = MessageBarActionsState_2 & {
@@ -52,28 +53,21 @@ export type MessageBarActionsState = MessageBarActionsState_2 & {
 // @public
 export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 
-// @public (undocumented)
-export type MessageBarBodyContextValues = MessageBarBodyContextValues_2;
+export { MessageBarBodyContextValues }
 
-// @public (undocumented)
-export type MessageBarBodyProps = MessageBarBodyProps_2;
+export { MessageBarBodyProps }
 
-// @public (undocumented)
-export type MessageBarBodySlots = MessageBarBodySlots_2;
+export { MessageBarBodySlots }
 
-// @public (undocumented)
-export type MessageBarBodyState = MessageBarBodyState_2;
+export { MessageBarBodyState }
 
-// @public (undocumented)
-export type MessageBarContextValues = MessageBarContextValues_2;
+export { MessageBarContextValues }
 
 export { MessageBarIntent }
 
-// @public (undocumented)
-export type MessageBarProps = MessageBarBaseProps;
+export { MessageBarProps }
 
-// @public (undocumented)
-export type MessageBarSlots = MessageBarSlots_2;
+export { MessageBarSlots }
 
 // @public (undocumented)
 export type MessageBarState = MessageBarBaseState & {
@@ -86,26 +80,19 @@ export type MessageBarState = MessageBarBaseState & {
 // @public
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
 
-// @public (undocumented)
-export type MessageBarTitleProps = MessageBarTitleProps_2;
+export { MessageBarTitleProps }
 
-// @public (undocumented)
-export type MessageBarTitleSlots = MessageBarTitleSlots_2;
+export { MessageBarTitleSlots }
 
-// @public (undocumented)
-export type MessageBarTitleState = MessageBarTitleState_2;
+export { MessageBarTitleState }
 
-// @public
-export const renderMessageBar: (state: MessageBarBaseState, contexts: MessageBarContextValues_2) => JSXElement;
+export { renderMessageBar }
 
-// @public
-export const renderMessageBarActions: (state: MessageBarActionsState_2, contexts: MessageBarActionsContextValues_2) => JSXElement;
+export { renderMessageBarActions }
 
-// @public
-export const renderMessageBarBody: (state: MessageBarBodyState_2, contextValues: MessageBarBodyContextValues_2) => JSXElement;
+export { renderMessageBarBody }
 
-// @public
-export const renderMessageBarTitle: (state: MessageBarTitleState_2) => JSXElement;
+export { renderMessageBarTitle }
 
 // @public
 export const useMessageBar: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;
@@ -113,17 +100,14 @@ export const useMessageBar: (props: MessageBarProps, ref: React_2.Ref<HTMLDivEle
 // @public
 export const useMessageBarActions: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
 
-// @public
-export const useMessageBarActionsContextValues: () => MessageBarActionsContextValues;
+export { useMessageBarActionsContextValues }
 
 // @public
 export const useMessageBarBody: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
 
-// @public
-export const useMessageBarBodyContextValues: typeof useMessageBarBodyContextValues_unstable;
+export { useMessageBarBodyContextValues }
 
-// @public
-export const useMessageBarContext: () => MessageBarContextValue;
+export { useMessageBarContext }
 
 // @public
 export const useMessageBarContextValues: (state: MessageBarState) => MessageBarContextValues;

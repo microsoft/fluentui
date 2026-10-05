@@ -22,13 +22,15 @@ function escapeForStyleTag(value: string): string {
  * Useful for scenarios when you want to apply theming statically to a top level elements like `body`.
  */
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
+  const escapedSelector = escapeForStyleTag(selector);
+
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
       return `${cssVarRule}--${cssVar}: ${theme[cssVar]}; `;
     }, '');
 
-    return `${selector} { ${escapeForStyleTag(cssVarsAsString)} }`;
+    return `${escapedSelector} { ${escapeForStyleTag(cssVarsAsString)} }`;
   }
 
-  return `${selector} {}`;
+  return `${escapedSelector} {}`;
 }

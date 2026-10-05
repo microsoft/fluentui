@@ -19,8 +19,18 @@ export type AlphaSliderProps = Omit<ColorSliderProps, 'channel'> & {
 };
 
 /**
+ * AlphaSlider Base Props
+ */
+export type AlphaSliderBaseProps = Omit<AlphaSliderProps, 'shape'>;
+
+/**
  * State used in rendering AlphaSlider
  */
 export type AlphaSliderState = ComponentState<AlphaSliderSlots> &
   Pick<AlphaSliderProps, 'vertical'> &
   Omit<ColorSliderState, keyof ColorSliderSlots | 'components'>;
+
+/**
+ * State used in rendering unstyled AlphaSlider
+ */
+export type AlphaSliderBaseState = Omit<AlphaSliderState, 'shape'>;

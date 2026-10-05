@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-storybook": "storybook build -o ./dist/storybook"
-  },
-  "devDependencies": {}
+    "build-storybook": "yarn run -T storybook build -o ./dist/storybook"
+  }
 }

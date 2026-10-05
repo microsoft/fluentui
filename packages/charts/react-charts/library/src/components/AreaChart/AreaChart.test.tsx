@@ -950,6 +950,29 @@ describe('Render empty chart aria label div when chart is empty', () => {
 describe('Area chart rendering with duplicate values', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
+
+  testWithoutWait(
+    'Should render duplicate "__proto__" x-axis values',
+    AreaChart,
+    {
+      data: {
+        chartTitle: 'Prototype pollution regression',
+        lineChartData: [
+          {
+            legend: 'Series 1',
+            data: [
+              { x: '__proto__', y: 10 },
+              { x: '__proto__', y: 20 },
+            ],
+          },
+        ],
+      },
+    },
+    container => {
+      expect(getById(container, /circle/i)).toHaveLength(2);
+    },
+  );
+
   testWithoutWait(
     'Should return the correct dataset for duplicate values',
     AreaChart,

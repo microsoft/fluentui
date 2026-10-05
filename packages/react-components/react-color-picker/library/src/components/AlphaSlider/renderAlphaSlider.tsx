@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { AlphaSliderState, AlphaSliderSlots } from './AlphaSlider.types';
+import type { AlphaSliderBaseState, AlphaSliderSlots } from './AlphaSlider.types';
 
 /**
  * Render the final JSX of AlphaSlider
  */
-export const renderAlphaSlider_unstable = (state: AlphaSliderState): JSXElement => {
+export const renderAlphaSlider_unstable = (state: AlphaSliderBaseState): JSXElement => {
   assertSlots<AlphaSliderSlots>(state);
 
   return (

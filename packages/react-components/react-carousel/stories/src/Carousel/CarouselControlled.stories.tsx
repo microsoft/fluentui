@@ -73,7 +73,7 @@ const useClasses = makeStyles({
     placeContent: 'center',
 
     padding: '40px',
-    height: '200px',
+    minHeight: '200px',
 
     position: 'relative',
   },

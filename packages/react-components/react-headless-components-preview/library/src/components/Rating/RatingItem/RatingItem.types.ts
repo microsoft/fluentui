@@ -1,18 +1,6 @@
-import type {
-  RatingItemSlots as RatingItemBaseSlots,
-  RatingItemBaseProps,
-  RatingItemBaseState,
-} from '@fluentui/react-rating';
+import type { RatingItemBaseState } from '@fluentui/react-rating';
 
-/**
- * RatingItem component slots
- */
-export type RatingItemSlots = RatingItemBaseSlots;
-
-/**
- * RatingItem component props
- */
-export type RatingItemProps = RatingItemBaseProps;
+export type { RatingItemSlots, RatingItemBaseProps as RatingItemProps } from '@fluentui/react-rating';
 
 /**
  * RatingItem component state

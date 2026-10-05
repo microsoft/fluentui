@@ -20,6 +20,18 @@ const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
 const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
 
+/**
+ * Reads the current anchor-name property from an element and parses it into an array of names.
+ * Handles comma-separated values and trimming.
+ */
+const readAnchorNames = (element: HTMLElement): string[] => {
+  return element.style
+    .getPropertyValue('anchor-name')
+    .split(',')
+    .map(name => name.trim())
+    .filter(Boolean);
+};
+
 export function usePositioning(options: PositioningProps): PositioningReturn {
   const {
     pinned,
@@ -72,9 +84,28 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     if (!effectiveTarget) {
       return;
     }
-    effectiveTarget.style.setProperty('anchor-name', anchorName);
+
+    // `anchor-name` is a comma-separated list. Append this instance's name
+    // instead of overwriting so that multiple positioned popovers can share a
+    // single trigger (e.g. a Tooltip on hover and a Menu on click attached to
+    // the same button) without clobbering each other's anchor. On cleanup we
+    // remove only our own name, preserving any others still in use.
+    if (anchorName) {
+      const names = readAnchorNames(effectiveTarget);
+      if (!names.includes(anchorName)) {
+        effectiveTarget.style.setProperty('anchor-name', [...names, anchorName].join(', '));
+      }
+    }
+
     return () => {
-      effectiveTarget.style.removeProperty('anchor-name');
+      if (anchorName) {
+        const remaining = readAnchorNames(effectiveTarget).filter(name => name !== anchorName);
+        if (remaining.length > 0) {
+          effectiveTarget.style.setProperty('anchor-name', remaining.join(', '));
+        } else {
+          effectiveTarget.style.removeProperty('anchor-name');
+        }
+      }
     };
   }, [effectiveTarget, anchorName]);
 

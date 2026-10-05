@@ -1,5 +1,13 @@
 export { ColorArea } from './ColorArea';
-export type { ColorAreaOnColorChangeData, ColorAreaProps, ColorAreaSlots, ColorAreaState } from './ColorArea.types';
+export type {
+  ColorAreaBaseProps,
+  ColorAreaBaseState,
+  ColorAreaOnColorChangeData,
+  ColorAreaProps,
+  ColorAreaSlots,
+  ColorAreaState,
+} from './ColorArea.types';
 export { renderColorArea_unstable } from './renderColorArea';
-export { useColorArea_unstable } from './useColorArea';
-export { colorAreaCSSVars, colorAreaClassNames, useColorAreaStyles_unstable } from './useColorAreaStyles.styles';
+export { useColorAreaBase_unstable, useColorArea_unstable } from './useColorArea';
+export { colorAreaClassNames, useColorAreaStyles_unstable } from './useColorAreaStyles.styles';
+export { colorAreaCSSVars } from './ColorArea.constants';

@@ -1,6 +1,9 @@
 import { TagGroup } from '@fluentui/react-headless-components-preview/tag-group';
 
 import descriptionMd from './TagGroupDescription.md';
+
+import { getBrowserSupportNotice } from '../../shared/browserSupportNotice';
+
 export { Default } from './TagGroupDefault.stories';
 export { Dismiss } from './TagGroupDismiss.stories';
 export { Disabled } from './TagGroupDisabled.stories';
@@ -12,7 +15,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('TagGroup')].join('\n'),
       },
     },
   },

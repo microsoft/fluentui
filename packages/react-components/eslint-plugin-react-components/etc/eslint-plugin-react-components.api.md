@@ -30,8 +30,12 @@ export const meta: {
 
 // @public (undocumented)
 export const rules: {
-    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener>;
-    "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener>;
+    "enforce-use-client": RuleModule<"missingUseClient" | "unnecessaryUseClient", [(RuleOptions | undefined)?], unknown, RuleListener> & {
+        name: string;
+    };
+    "prefer-fluentui-v9": RuleModule<"replaceFluent8With9" | "replaceIconWithJsx" | "replaceStackWithFlex" | "replaceFocusZoneWithTabster", {}[], unknown, RuleListener> & {
+        name: string;
+    };
 };
 
 // (No @packageDocumentation comment for this package)

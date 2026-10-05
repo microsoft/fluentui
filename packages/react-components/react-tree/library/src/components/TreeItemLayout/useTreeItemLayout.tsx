@@ -9,6 +9,7 @@ import {
   useEventCallback,
   elementContains,
   useControllableState,
+  useId,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type {
@@ -65,6 +66,32 @@ export const useTreeItemLayout_unstable = (
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
+
+  const mainShorthand = isResolvedShorthand(main) ? main : undefined;
+  const mainContentId = useId('fui-TreeItemLayout__main-', mainShorthand?.id);
+
+  // Link the selector to the main content unless the consumer provided an accessible name
+  const selectorShorthand = isResolvedShorthand(props.selector) ? props.selector : undefined;
+  const selectorAriaLabelledBy =
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainContentId;
+
+  const selector = slot.optional(props.selector, {
+    renderByDefault: selectionMode !== 'none',
+    defaultProps: {
+      checked,
+      tabIndex: -1,
+      ref: selectionRef,
+      'aria-labelledby': selectorAriaLabelledBy,
+      // casting here to a union between checkbox and radio
+      // since ref is not present on the selector signature
+      // FIXME: look into Slot type to see if we can make this work
+    } as CheckboxProps | RadioProps,
+    elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+  });
+  const mainSlot = slot.always(main, {
+    defaultProps: { id: selector ? mainContentId : undefined },
+    elementType: 'div',
+  });
 
   // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
   // eslint-disable-next-line react-hooks/refs
@@ -142,29 +169,18 @@ export const useTreeItemLayout_unstable = (
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
+  const expandIconRefs = useMergedRefs(expandIconRef);
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
       children: <TreeItemChevron />,
       'aria-hidden': true,
+      ref: expandIconRefs,
     },
     elementType: 'div',
   });
-  const expandIconRefs = useMergedRefs(expandIcon?.ref, expandIconRef);
-  if (expandIcon) {
-    expandIcon.ref = expandIconRefs;
-  }
   const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
-  const actions = isActionsVisible
-    ? slot.optional(props.actions, {
-        defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
-        elementType: 'div',
-      })
-    : undefined;
-  delete actions?.visible;
-  delete actions?.onVisibilityChange;
 
-  const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -177,10 +193,19 @@ export const useTreeItemLayout_unstable = (
     } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
     setIsActionsVisible(isRelatedTargetFromActions);
   });
-  if (actions) {
-    actions.ref = actionsRefs;
-    actions.onBlur = handleActionsBlur;
-  }
+
+  const actionsRefs = useMergedRefs(actionsRef, actionsRefInternal);
+  const actions = isActionsVisible
+    ? slot.optional(props.actions, {
+        defaultProps: {
+          ...arrowNavigationProps,
+          role: 'toolbar',
+          ref: actionsRefs,
+          onBlur: handleActionsBlur,
+        },
+        elementType: 'div',
+      })
+    : undefined;
 
   const hasActions = Boolean(props.actions);
 
@@ -233,26 +258,12 @@ export const useTreeItemLayout_unstable = (
       },
     ),
     iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
-    main: slot.always(main, { elementType: 'div' }),
+    main: mainSlot,
     iconAfter: slot.optional(iconAfter, { elementType: 'div' }),
     aside: !isActionsVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
     actions,
     expandIcon,
-    selector: slot.optional(props.selector, {
-      renderByDefault: selectionMode !== 'none',
-      defaultProps: {
-        checked,
-        tabIndex: -1,
-        'aria-hidden': true,
-        ref: selectionRef,
-        // casting here to a union between checkbox and radio
-        // since ref is not present on the selector signature
-        // FIXME: look into Slot type to see if we can make this work
-      } as CheckboxProps | RadioProps,
-      elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<
-        CheckboxProps | RadioProps
-      >,
-    }),
+    selector,
   };
 };
 

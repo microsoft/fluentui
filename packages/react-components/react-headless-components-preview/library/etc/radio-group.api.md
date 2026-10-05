@@ -6,19 +6,21 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import type { RadioBaseProps } from '@fluentui/react-radio';
-import { RadioBaseState } from '@fluentui/react-radio';
-import type { RadioGroupBaseProps } from '@fluentui/react-radio';
-import { RadioGroupBaseState } from '@fluentui/react-radio';
+import type { RadioBaseState } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
-import type { RadioGroupSlots as RadioGroupSlots_2 } from '@fluentui/react-radio';
+import { RadioGroupBaseProps as RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupSlots } from '@fluentui/react-radio';
+import { RadioGroupBaseState as RadioGroupState } from '@fluentui/react-radio';
 import { RadioOnChangeData } from '@fluentui/react-radio';
-import { RadioSlots as RadioSlots_2 } from '@fluentui/react-radio';
+import { RadioBaseProps as RadioProps } from '@fluentui/react-radio';
+import { RadioSlots } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { renderRadio_unstable as renderRadio } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable as renderRadioGroup } from '@fluentui/react-radio';
+import { useRadioGroupBase_unstable as useRadioGroup } from '@fluentui/react-radio';
 
 // @public
-export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots_2>, "input">, "onChange" | "size"> & {
+export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots>, "input">, "onChange" | "size"> & {
     value?: string;
     labelPosition?: "after" | "below";
     disabled?: boolean;
@@ -28,42 +30,35 @@ export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partia
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
-// @public
-export type RadioGroupProps = RadioGroupBaseProps;
+export { RadioGroupProps }
 
-// @public
-export type RadioGroupSlots = RadioGroupSlots_2;
+export { RadioGroupSlots }
 
-// @public
-export type RadioGroupState = RadioGroupBaseState;
+export { RadioGroupState }
 
-// @public
-export type RadioProps = RadioBaseProps;
+export { RadioProps }
 
-// @public
-export type RadioSlots = RadioSlots_2;
+export { RadioSlots }
 
 // @public
 export type RadioState = RadioBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-label-position'?: RadioBaseState['labelPosition'];
     };
 };
 
-// @public
-export const renderRadio: (state: RadioBaseState) => JSXElement;
+export { renderRadio }
 
-// @public
-export const renderRadioGroup: (state: RadioGroupBaseState, contextValues: RadioGroupContextValues) => JSXElement;
+export { renderRadioGroup }
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
-// @public
-export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
+export { useRadioGroup }
 
 // @public (undocumented)
-export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues_2;
+export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;
 
 // (No @packageDocumentation comment for this package)
 

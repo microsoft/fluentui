@@ -2,7 +2,12 @@
 
 import type * as React from 'react';
 import { getPartitionedNativeProps, useId, slot } from '@fluentui/react-utilities';
-import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
+import type {
+  AlphaSliderBaseProps,
+  AlphaSliderBaseState,
+  AlphaSliderProps,
+  AlphaSliderState,
+} from './AlphaSlider.types';
 import { useAlphaSliderState_unstable } from './useAlphaSliderState';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
@@ -20,6 +25,18 @@ export const useAlphaSlider_unstable = (
   ref: React.Ref<HTMLInputElement>,
 ): AlphaSliderState => {
   const shapeFromContext = useColorPickerContextValue_unstable(ctx => ctx.shape);
+  const { shape = shapeFromContext, ...baseProps } = props;
+
+  return {
+    ...useAlphaSliderBase_unstable(baseProps, ref),
+    shape,
+  };
+};
+
+export const useAlphaSliderBase_unstable = (
+  props: AlphaSliderBaseProps,
+  ref: React.Ref<HTMLInputElement>,
+): AlphaSliderBaseState => {
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -27,7 +44,6 @@ export const useAlphaSlider_unstable = (
   });
 
   const {
-    shape = shapeFromContext,
     vertical,
     // Slots
     root,
@@ -36,8 +52,7 @@ export const useAlphaSlider_unstable = (
     thumb,
   } = props;
 
-  const state: AlphaSliderState = {
-    shape,
+  const state: AlphaSliderBaseState = {
     vertical,
     components: {
       input: 'input',

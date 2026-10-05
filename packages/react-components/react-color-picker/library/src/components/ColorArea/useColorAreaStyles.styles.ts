@@ -5,19 +5,13 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { ColorAreaSlots, ColorAreaState } from './ColorArea.types';
+import { colorAreaCSSVars } from './ColorArea.constants';
 
 export const colorAreaClassNames: SlotClassNames<ColorAreaSlots> = {
   root: 'fui-ColorArea',
   thumb: 'fui-ColorArea__thumb',
   inputX: 'fui-ColorArea__inputX',
   inputY: 'fui-ColorArea__inputY',
-};
-
-export const colorAreaCSSVars = {
-  areaXProgressVar: `--fui-AreaX--progress`,
-  areaYProgressVar: `--fui-AreaY--progress`,
-  thumbColorVar: `--fui-Area__thumb--color`,
-  mainColorVar: `--fui-Area--main-color`,
 };
 
 // Internal CSS variables

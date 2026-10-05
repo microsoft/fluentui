@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { AvatarBaseProps } from '@fluentui/react-avatar';
+import { AvatarBaseProps } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -27,7 +27,11 @@ export type PersonaSlots = Omit<PersonaSlots_2, 'avatar' | 'presence'> & {
 };
 
 // @public
-export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'textPosition' | 'numTextLines'>;
+export type PersonaState = ComponentState<PersonaSlots> & Pick<PersonaState_2, 'textPosition' | 'numTextLines'> & {
+    root: {
+        'data-text-position'?: PersonaState_2['textPosition'];
+    };
+};
 
 // @public (undocumented)
 export const renderPersona: (state: PersonaState) => JSXElement;

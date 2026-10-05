@@ -39,9 +39,13 @@ describe('PositioningProps', () => {
 
   it('accepts (e: OnPositioningEndEvent) => void for onPositioningEnd', () => {
     const callback = (e: OnPositioningEndEvent) => {
-      // Access detail.placement to verify the type shape
+      // Access detail fields to verify the type shape
       const _placement: string = e.detail.placement;
+      const _escaped: boolean = e.detail.escaped;
+      const _referenceHidden: boolean = e.detail.referenceHidden;
       _placement;
+      _escaped;
+      _referenceHidden;
     };
 
     const props: PositioningProps = {
