@@ -50,12 +50,47 @@ function isLayoutViewportUnavailable(container: HTMLElement): boolean {
   return clientWidth === 0 && clientHeight === 0;
 }
 
+function hasActiveAncestorAnimation(target: TargetElement, container: HTMLElement): boolean {
+  const visited = new Set<Element>();
+
+  for (const start of [isHTMLElement(target) ? target : target.contextElement, container]) {
+    let element: Element | null | undefined = start;
+
+    while (element && !visited.has(element)) {
+      visited.add(element);
+
+      if (
+        element.getAnimations?.().some(animation => {
+          return (
+            animation.playState === 'running' &&
+            animation.playbackRate !== 0 &&
+            animation.effect !== null &&
+            Number.isFinite(animation.effect.getComputedTiming().endTime)
+          );
+        })
+      ) {
+        return true;
+      }
+
+      const root = element.getRootNode();
+      element =
+        element.assignedSlot ??
+        element.parentElement ??
+        ('host' in root && isHTMLElement(root.host) ? root.host : null);
+    }
+  }
+
+  return false;
+}
+
 /**
  * @internal
  * @returns manager that handles positioning out of the react lifecycle
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
+  let animationFrame: number | undefined;
+  let updateId = 0;
   const {
     container,
     target,
@@ -121,12 +156,27 @@ export function createPositionManager(options: PositionManagerOptions): Position
       isFirstUpdate = false;
     }
 
+    // The debounced initial update runs after ancestor layout effects have created their animations.
+    if (hasActiveAncestorAnimation(target, container)) {
+      if (animationFrame === undefined) {
+        animationFrame = targetWindow.requestAnimationFrame(() => {
+          animationFrame = undefined;
+          updatePosition();
+        });
+      }
+    } else if (animationFrame !== undefined) {
+      targetWindow.cancelAnimationFrame(animationFrame);
+      animationFrame = undefined;
+    }
+
+    // Always compute, including the first frame after motion finishes or is cancelled.
+    const currentUpdateId = ++updateId;
     Object.assign(container.style, { position: strategy });
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
-        if (isDestroyed) {
+        if (isDestroyed || currentUpdateId !== updateId) {
           return;
         }
 
@@ -180,6 +230,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   const dispose = () => {
     isDestroyed = true;
+
+    if (animationFrame !== undefined) {
+      targetWindow.cancelAnimationFrame(animationFrame);
+      animationFrame = undefined;
+    }
 
     if (targetWindow) {
       targetWindow.removeEventListener('scroll', updatePosition);

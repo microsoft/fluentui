@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fix popup alignment during finite ancestor animations, including immediately opened content inside Dialog on initial open and reopen.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "paulmardling@microsoft.com"
+}
