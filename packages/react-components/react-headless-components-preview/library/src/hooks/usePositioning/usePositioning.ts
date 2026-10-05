@@ -13,6 +13,8 @@ import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
+import { supportsAnchorPositioning } from './fallback/supportsAnchorPositioning';
+import { useFallbackPositioning } from './fallback/useFallbackPositioning';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
@@ -67,7 +69,30 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  // The result doesn't change during the lifetime of the component
+  const [useAnchors] = React.useState(supportsAnchorPositioning);
+
+  const requestPlacementUpdate = usePlacementObserver(
+    containerEl,
+    effectiveTarget,
+    targetDocument,
+    coverTarget || !useAnchors,
+  );
+
+  const requestFallbackUpdate = useFallbackPositioning({
+    disabled: useAnchors,
+    containerEl,
+    targetEl: effectiveTarget,
+    position,
+    align,
+    mainAxis,
+    crossAxis,
+    fallbackPositions,
+    pinned,
+    coverTarget,
+    matchTargetSize,
+    strategy,
+  });
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
@@ -75,13 +100,13 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       setTarget: (el: TargetElement | null) => {
         setImperativeTarget(resolveElementRef(el));
       },
-      updatePosition: requestPlacementUpdate,
+      updatePosition: useAnchors ? requestPlacementUpdate : requestFallbackUpdate,
     }),
-    [requestPlacementUpdate],
+    [useAnchors, requestPlacementUpdate, requestFallbackUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    if (!effectiveTarget || !useAnchors) {
       return;
     }
 
@@ -107,7 +132,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
+  }, [effectiveTarget, anchorName, useAnchors]);
 
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
@@ -124,6 +149,17 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       node.style.setProperty('position', strategy);
       node.style.setProperty('inset', 'auto');
       node.style.setProperty('margin', '0');
+
+      if (!useAnchors) {
+        // Positioned in JavaScript, see `useFallbackPositioning()`
+        node.style.setProperty('left', '0');
+        node.style.setProperty('top', '0');
+        if (matchTargetSize !== 'width') {
+          node.style.removeProperty('width');
+        }
+        node.setAttribute('data-placement', placement);
+        return;
+      }
 
       applyOffset(node, position, mainAxis, crossAxis);
 
@@ -172,6 +208,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       }
     },
     [
+      useAnchors,
       anchorName,
       positionArea,
       placement,

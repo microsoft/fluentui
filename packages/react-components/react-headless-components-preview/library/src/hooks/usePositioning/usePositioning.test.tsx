@@ -4,6 +4,15 @@ import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
 import type { PositioningProps, PositioningReturn } from './types';
 
+// jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
+beforeAll(() => {
+  Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
+});
+
+afterAll(() => {
+  Reflect.deleteProperty(globalThis, 'CSS');
+});
+
 function mountHook(options: PositioningProps = {}) {
   const resultRef = React.createRef<{ current: PositioningReturn }>();
   const Capture = () => {
@@ -229,6 +238,127 @@ describe('usePositioning', () => {
       expect(positioningRef.current).not.toBeNull();
       expect(() => positioningRef.current?.updatePosition()).not.toThrow();
     });
+  });
+});
+
+describe('usePositioning without CSS anchor positioning', () => {
+  let supports: jest.Mock;
+
+  beforeAll(() => {
+    // `anchor-name` and `position-area` are not supported
+    supports = jest.fn(() => false);
+    Object.defineProperty(globalThis, 'CSS', { value: { supports }, configurable: true, writable: true });
+  });
+
+  afterAll(() => {
+    Reflect.deleteProperty(globalThis, 'CSS');
+  });
+
+  const mockLayout = (
+    target: HTMLElement,
+    container: HTMLElement,
+    anchor: { left: number; top: number; width: number; height: number },
+    size: { width: number; height: number },
+  ) => {
+    target.getBoundingClientRect = () =>
+      ({
+        ...anchor,
+        x: anchor.left,
+        y: anchor.top,
+        right: anchor.left + anchor.width,
+        bottom: anchor.top + anchor.height,
+      } as DOMRect);
+    Object.defineProperty(container, 'offsetWidth', { value: size.width, configurable: true });
+    Object.defineProperty(container, 'offsetHeight', { value: size.height, configurable: true });
+    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000, configurable: true });
+    Object.defineProperty(document.documentElement, 'clientHeight', { value: 700, configurable: true });
+  };
+
+  it('does not write anchor positioning styles', () => {
+    const result = mountHook({ position: 'below', align: 'start' });
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
+    expect(container.style.getPropertyValue('position-anchor')).toBe('');
+    expect(container.style.getPropertyValue('position-area')).toBe('');
+    expect(container.style.getPropertyValue('position-try-fallbacks')).toBe('');
+    expect(container).toHaveStyle({ position: 'fixed', margin: '0px' });
+  });
+
+  it('positions the container next to the target', () => {
+    const result = mountHook({ position: 'below', align: 'start', offset: 8 });
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container, { left: 450, top: 300, width: 100, height: 40 }, { width: 200, height: 100 });
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(container).toHaveStyle({ position: 'fixed', left: '450px', top: '348px' });
+    expect(container).toHaveAttribute('data-placement', 'below-start');
+  });
+
+  it('flips when there is no room and mirrors the resolved placement in data-placement', () => {
+    const result = mountHook({ position: 'above', align: 'center' });
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container, { left: 450, top: 60, width: 100, height: 40 }, { width: 200, height: 100 });
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(container).toHaveStyle({ left: '400px', top: '100px' });
+    expect(container).toHaveAttribute('data-placement', 'below');
+  });
+
+  it('matches the width of the target', () => {
+    const result = mountHook({ position: 'below', align: 'start', matchTargetSize: 'width' });
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container, { left: 450, top: 300, width: 120, height: 40 }, { width: 120, height: 100 });
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    expect(container).toHaveStyle({ width: '120px' });
+  });
+
+  it('updates the position with updatePosition()', () => {
+    const positioningRef = React.createRef<{ updatePosition: () => void }>();
+    const result = mountHook({
+      position: 'below',
+      positioningRef: positioningRef as unknown as PositioningProps['positioningRef'],
+    });
+    const target = document.createElement('div');
+    const container = document.createElement('div');
+    document.body.append(target, container);
+    mockLayout(target, container, { left: 450, top: 300, width: 100, height: 40 }, { width: 100, height: 100 });
+
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+    expect(container).toHaveStyle({ top: '340px' });
+
+    mockLayout(target, container, { left: 450, top: 200, width: 100, height: 40 }, { width: 100, height: 100 });
+    act(() => positioningRef.current?.updatePosition());
+
+    expect(container).toHaveStyle({ top: '240px' });
   });
 });
 

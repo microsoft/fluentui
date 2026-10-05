@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): fall back to JavaScript positioning when CSS anchor positioning is not supported",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
