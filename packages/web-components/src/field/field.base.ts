@@ -161,7 +161,6 @@ export class BaseField extends FASTElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setLabelProperties();
     this.addEventListener('invalid', this.invalidHandler, { capture: true });
   }
 
@@ -216,23 +215,29 @@ export class BaseField extends FASTElement {
    * @internal
    */
   private async setLabelProperties() {
-    if (this.$fastController.isConnected) {
-      const input = await this.getLabellableInput();
+    const input = await this.getLabellableInput();
 
-      input.id ||= uniqueId('input');
-
-      this.labelSlot?.forEach(label => {
-        if (label instanceof HTMLLabelElement) {
-          label.htmlFor ||= input.id;
-          label.id ||= `${input.id}--label`;
-          input.setAttribute('aria-labelledby', label.id);
-        }
-      });
+    if (!input) {
+      return;
     }
+
+    input.id ||= uniqueId('input');
+
+    this.labelSlot?.forEach(label => {
+      if (label instanceof HTMLLabelElement) {
+        label.htmlFor ||= input.id;
+        label.id ||= `${input.id}--label`;
+        input.setAttribute('aria-labelledby', label.id);
+      }
+    });
   }
 
-  private getLabellableInput(): Promise<HTMLElement> {
+  private getLabellableInput(): Promise<HTMLElement | null> {
     return new Promise(resolve => {
+      if (!this.input) {
+        return resolve(null);
+      }
+
       if (this.input.constructor.elementIdentity !== 'dropdown') {
         return resolve(this.input);
       }
