@@ -121,7 +121,7 @@ export class BaseField extends FASTElement {
       this.setLabelProperties();
       this.slottedInputObserver.observe(next, {
         attributes: true,
-        attributeFilter: ['disabled', 'required', 'readonly', 'type'],
+        attributeFilter: ['disabled', 'required', 'readonly'],
         subtree: true,
       });
     }
