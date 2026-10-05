@@ -53,4 +53,41 @@ describe('ChartPopover positioning', () => {
     expect(positioningPassedToPopover()).toMatchObject({ position: 'after' });
     expect(positioningPassedToPopover().target).toBe(target);
   });
+
+  it.each([null, undefined])('keeps the chart target when the per-point target is %s', perPointTarget => {
+    const chartTarget = document.createElement('div');
+    render(
+      <ChartPopover
+        isPopoverOpen={true}
+        positioning={{ target: chartTarget }}
+        customCallout={{ customCalloutProps: { positioning: { position: 'below', target: perPointTarget } } }}
+      />,
+    );
+    expect(positioningPassedToPopover()).toMatchObject({ position: 'below' });
+    expect(positioningPassedToPopover().target).toBe(chartTarget);
+  });
+
+  it('uses a concrete per-point target over the chart target', () => {
+    const chartTarget = document.createElement('div');
+    const perPointTarget = document.createElement('div');
+    render(
+      <ChartPopover
+        isPopoverOpen={true}
+        positioning={{ target: chartTarget }}
+        customCallout={{ customCalloutProps: { positioning: { target: perPointTarget } } }}
+      />,
+    );
+    expect(positioningPassedToPopover().target).toBe(perPointTarget);
+  });
+
+  it('falls back to the click position when neither the chart nor the per-point positioning sets a target', () => {
+    render(
+      <ChartPopover
+        isPopoverOpen={true}
+        clickPosition={{ x: 1, y: 2 }}
+        customCallout={{ customCalloutProps: { positioning: { position: 'below', target: null } } }}
+      />,
+    );
+    expect(positioningPassedToPopover().target.getBoundingClientRect()).toMatchObject({ x: 1, y: 2 });
+  });
 });

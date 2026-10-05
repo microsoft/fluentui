@@ -3,6 +3,7 @@ import { render, queryAllByAttribute, fireEvent } from '@testing-library/react';
 import { Popover } from '@fluentui/react-popover';
 import { DonutChart } from './index';
 import { chartPointsDC } from '../../utilities/test-data';
+import type { ChartPopoverProps } from '../../index';
 
 // jsdom cannot position a popover. The mock records the positioning that the chart passes to Popover.
 // PopoverSurface is mocked too: without a real Popover around it, it has no context and loops.
@@ -12,6 +13,15 @@ jest.mock('@fluentui/react-popover', () => ({
   PopoverSurface: jest.fn(props => props.children),
 }));
 
+const lastPositioning = () => {
+  const calls = (Popover as jest.Mock).mock.calls;
+  return calls[calls.length - 1][0].positioning;
+};
+
+const perPointPositioning = (target: null | undefined) => (): ChartPopoverProps => ({
+  positioning: { position: 'below', target },
+});
+
 describe('DonutChart calloutProps', () => {
   it('forwards calloutProps.positioning and keeps the hovered arc as the target', () => {
     const wrapper = render(
@@ -19,9 +29,28 @@ describe('DonutChart calloutProps', () => {
     );
     const arc = queryAllByAttribute('id', wrapper.container, /Pie/i)[0];
     fireEvent.mouseOver(arc);
+    const positioning = lastPositioning();
+    expect(positioning).toMatchObject({ position: 'below' });
+    expect(positioning.target).toBe(arc);
+  });
+});
 
-    const calls = (Popover as jest.Mock).mock.calls;
-    const positioning = calls[calls.length - 1][0].positioning;
+describe('DonutChart calloutPropsPerDataPoint positioning', () => {
+  const renderWithPerPointTarget = (perPointTarget: null | undefined) => {
+    const wrapper = render(
+      <DonutChart
+        data={chartPointsDC}
+        innerRadius={55}
+        calloutPropsPerDataPoint={perPointPositioning(perPointTarget)}
+      />,
+    );
+    return queryAllByAttribute('id', wrapper.container, /Pie/i)[0];
+  };
+
+  it.each([null, undefined])('keeps the hovered arc as the target when the per-point target is %s', perPointTarget => {
+    const arc = renderWithPerPointTarget(perPointTarget);
+    fireEvent.mouseOver(arc);
+    const positioning = lastPositioning();
     expect(positioning).toMatchObject({ position: 'below' });
     expect(positioning.target).toBe(arc);
   });

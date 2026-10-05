@@ -33,11 +33,10 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
       height: 0,
     }),
   };
-  const callerPositioning = {
-    ...resolvePositioningShorthand(props.positioning),
-    ...resolvePositioningShorthand(props.customCallout?.customCalloutProps?.positioning),
-  };
-  const target = callerPositioning.target ?? virtualElement;
+  const chartPositioning = resolvePositioningShorthand(props.positioning);
+  const perPointPositioning = resolvePositioningShorthand(props.customCallout?.customCalloutProps?.positioning);
+  const callerPositioning = { ...chartPositioning, ...perPointPositioning };
+  const target = perPointPositioning.target ?? chartPositioning.target ?? virtualElement;
   props = { ...props, ...props.customCallout?.customCalloutProps };
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
