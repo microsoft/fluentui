@@ -6,5 +6,5 @@
     "checkJs": true,
     "types": ["static-assets", "environment"]
   },
-  "include": ["*.js"]
+  "include": ["*.js", "*.cjs"]
 }

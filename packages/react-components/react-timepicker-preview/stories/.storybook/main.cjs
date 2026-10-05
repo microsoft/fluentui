@@ -1,8 +1,8 @@
-const rootMain = require('../../../../.storybook/main');
+const rootMain = require('../../../../../.storybook/main');
 
-module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
-  stories: [...rootMain.stories, '../stories/**/*.mdx', '../stories/**/index.stories.@(ts|tsx)'],
+  stories: [...rootMain.stories, '../src/**/*.mdx', '../src/**/index.stories.@(ts|tsx)'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
