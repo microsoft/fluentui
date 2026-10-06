@@ -4,6 +4,47 @@
 
 ```ts
 
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
+import { FC } from 'react';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
+import type * as React_2 from 'react';
+
+// @public
+export const calendarContextDefaultValue: CalendarContextValue;
+
+// @public
+export type CalendarContextValue = {
+    allFocusable: boolean;
+    dateRangeType: DateRangeType;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    formatters: CalendarFormatters;
+    highlightCurrent: boolean;
+    highlightSelected: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    restrictedDates?: Date[];
+    setValue?: EventHandler<CalendarDaySelectData>;
+    showWeekNumbers: boolean;
+    today?: Date;
+    value?: Date | null;
+    workWeekDays?: DayOfWeek[];
+};
+
+// @public
+export type CalendarContextValues = {
+    calendar: CalendarContextValue;
+};
+
+// @public
+export const CalendarProvider: Provider<CalendarContextValue | undefined> & FC<ProviderProps<CalendarContextValue | undefined>>;
+
+// @public
+export const useCalendarContext_unstable: <T>(selector: ContextSelector<CalendarContextValue, T>) => T;
+
 // (No @packageDocumentation comment for this package)
 
 ```

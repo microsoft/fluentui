@@ -126,6 +126,7 @@ const dateTimeFormatters = {
 /**
  * Creates reusable Intl formatters for every calendar date format. Full dates follow locale-specific
  * field ordering, so `monthDayYear` and `dayMonthYear` produce the same locale-appropriate label.
+ * Year-bearing formats include the localized era for astronomical years zero and earlier.
  */
 export function createCalendarDateTimeFormatter(locales: string | string[] = 'en-US'): CalendarFormatters['dateTime'] {
   const formatters = Object.fromEntries(
@@ -138,7 +139,20 @@ export function createCalendarDateTimeFormatter(locales: string | string[] = 'en
     ]),
   );
 
-  return data => formatters[data.format].format(data.date);
+  const eraFormatters = Object.fromEntries(
+    Object.entries(dateTimeFormatters).map(([key, fields]) => [
+      key,
+      'year' in fields
+        ? new Intl.DateTimeFormat(locales, {
+            ...fields,
+            era: 'short',
+            ...({ calendar: 'gregory' } as Intl.DateTimeFormatOptions),
+          })
+        : formatters[key],
+    ]),
+  );
+
+  return data => (data.date.getFullYear() <= 0 ? eraFormatters : formatters)[data.format].format(data.date);
 }
 
 /**

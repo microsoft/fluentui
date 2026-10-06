@@ -8,7 +8,7 @@ The table below is a summary — when in doubt, check CODEOWNERS.
 | Area           | Team                            | Packages                             |
 | -------------- | ------------------------------- | ------------------------------------ |
 | v9 Components  | @microsoft/cxe-prg              | `packages/react-components/*`        |
-| v8 Components  | @microsoft/cxe-red              | `packages/react/*`                   |
+| v8 Components  | @microsoft/cxe-prg              | `packages/react/*`                   |
 | Web Components | @microsoft/fui-wc               | `packages/web-components/*`          |
 | Charting       | @microsoft/charting-team        | `packages/charts/*`                  |
 | Build/Tooling  | @microsoft/fluentui-react-build | `tools/*`, `.github/*`, root configs |

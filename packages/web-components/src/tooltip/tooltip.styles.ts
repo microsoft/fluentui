@@ -14,7 +14,6 @@ import {
   spacingHorizontalXS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
-import { TooltipPositioningOption } from './tooltip.options.js';
 
 /**
  * Styles for the tooltip component
@@ -71,39 +70,39 @@ export const styles = css`
   }
 
   :host([positioning='above-start']) {
-    --position-area: ${TooltipPositioningOption['above-start']};
+    --position-area: block-start span-inline-end;
   }
   :host([positioning='above']) {
-    --position-area: ${TooltipPositioningOption.above};
+    --position-area: block-start;
   }
   :host([positioning='above-end']) {
-    --position-area: ${TooltipPositioningOption['above-end']};
+    --position-area: block-start span-inline-start;
   }
   :host([positioning='below-start']) {
-    --position-area: ${TooltipPositioningOption['below-start']};
+    --position-area: block-end span-inline-end;
   }
   :host([positioning='below']) {
-    --position-area: ${TooltipPositioningOption.below};
+    --position-area: block-end;
   }
   :host([positioning='below-end']) {
-    --position-area: ${TooltipPositioningOption['below-end']};
+    --position-area: block-end span-inline-start;
   }
   :host([positioning='before-top']) {
-    --position-area: ${TooltipPositioningOption['before-top']};
+    --position-area: inline-start span-block-end;
   }
   :host([positioning='before']) {
-    --position-area: ${TooltipPositioningOption.before};
+    --position-area: inline-start;
   }
   :host([positioning='before-bottom']) {
-    --position-area: ${TooltipPositioningOption['before-bottom']};
+    --position-area: inline-start span-block-start;
   }
   :host([positioning='after-top']) {
-    --position-area: ${TooltipPositioningOption['after-top']};
+    --position-area: inline-end span-block-end;
   }
   :host([positioning='after']) {
-    --position-area: ${TooltipPositioningOption.after};
+    --position-area: inline-end;
   }
   :host([positioning='after-bottom']) {
-    --position-area: ${TooltipPositioningOption['after-bottom']};
+    --position-area: inline-end span-block-start;
   }
 `;
