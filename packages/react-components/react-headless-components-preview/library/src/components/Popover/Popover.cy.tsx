@@ -521,7 +521,7 @@ describe('positioning observer', () => {
 
     it('should dismiss on Escape even with tooltip wrapper', () => {
       mount(<TooltipWrappedPopoverExample />);
-      cy.get('#tooltip-wrapped-trigger').click({ force: true });
+      cy.get('#tooltip-wrapped-trigger').focus().realPress('Enter');
       cy.get(surfaceSelector).should('be.visible');
       cy.focused().realPress('Escape');
       cy.get(surfaceSelector).should('not.exist');
