@@ -60,12 +60,11 @@ const useGoTodayButtonStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     minWidth: 'auto',
-    height: '30px',
-    lineHeight: '30px',
+    lineHeight: tokens.lineHeightBase200,
     marginInlineEnd: tokens.spacingHorizontalL,
     marginBlockStart: tokens.spacingVerticalXXS,
     overflow: 'visible',
-    padding: `0 ${tokens.spacingHorizontalXS}`,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalXS}`,
     '&:hover': {
       backgroundColor: tokens.colorTransparentBackground,
       color: tokens.colorBrandForeground1,
@@ -79,7 +78,7 @@ const useGoTodayButtonStyles = makeStyles({
     '&:hover:active': {
       color: tokens.colorBrandForeground2,
     },
-    '&:disabled': {
+    '&:disabled, &[aria-disabled="true"]': {
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
     },

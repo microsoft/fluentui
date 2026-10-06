@@ -31,7 +31,7 @@
 
 - Localize every label formatter, the Go to today text, and the close-button label when shown. Overriding `dateTime` alone leaves English accessible labels. The Localized Formatting story shows a complete configuration.
 - Configure `firstDayOfWeek` and `firstWeekOfYear` for the locale; formatting does not infer week rules.
-- Locale extensions and the formatter's `timeZone` option affect labels only. The grid and selected `Date` values still use Gregorian local-date arithmetic.
+- Locale extensions affect labels and numbering, but `createCalendarDateTimeFormatter` uses the Gregorian calendar and local time zone to match the grid's date arithmetic. The factory accepts locales, not time-zone options. Custom formatters should preserve those local-date semantics.
 
   ```tsx
   import { createCalendarDateTimeFormatter } from '@fluentui/react-calendar-preview';

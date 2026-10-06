@@ -323,7 +323,7 @@ There is no compatibility layer. Map selected dates and callbacks to `value` and
 - **Picker view:** controlled by `view` when supplied; otherwise initialized from `defaultView` and owned internally while switching overlay views.
 - **Year picker visibility:** owned by `CalendarMonth`; selecting a year returns to the month grid.
 - **Unavailable dates:** dates outside `minDate`/`maxDate` and dates in `restrictedDates` cannot be selected. Month navigation is bounded but is not blocked by a restricted anchor date. Disabled dates remain unavailable even when `allFocusable` enables focus.
-- **Go to today:** enabled only when a picker is navigated away from today's month/year. It navigates and focuses today but does not commit a selection.
+- **Go to today:** enabled when a picker is navigated away from today's month/year. A shortened day grid (`weeksToShow` from 1 to 4) also enables the action when its navigated day differs from today, even within the same month. It navigates and focuses today but does not commit a selection. `allFocusable` preserves focusability when the action is unavailable, without enabling activation.
 
 ### Pointer and touch
 
@@ -331,21 +331,21 @@ Clicking or tapping an available day commits the configured range and moves navi
 
 ### Keyboard
 
-| Focus area          | Key                  | Behavior                                                                                                                                                                                                          |
-| ------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Calendar            | `Escape`             | Stops propagation and calls `onDismiss`, when provided.                                                                                                                                                           |
-| Calendar            | `PageUp`             | Navigates the day picker backward one month.                                                                                                                                                                      |
-| Calendar            | `PageDown`           | Navigates the day picker forward one month.                                                                                                                                                                       |
-| Calendar            | `Shift+PageUp`       | Navigates the day picker backward one year.                                                                                                                                                                       |
-| Calendar            | `Shift+PageDown`     | Navigates the day picker forward one year.                                                                                                                                                                        |
-| Calendar            | `Enter`, `Backspace` | Prevents the root browser default; focused descendants retain their own activation behavior.                                                                                                                      |
-| Day grid            | Arrow keys           | Moves by one day horizontally and one week vertically. Horizontal direction follows text direction. Crossing the rendered grid navigates to the adjacent month and restores focus. Unavailable dates are skipped. |
-| Day gridcell        | `Enter` or `Space`   | Selects the focused date and reports the configured range.                                                                                                                                                        |
-| Month/year grid     | Arrow keys           | Moves through the two-dimensional grid using roving focus.                                                                                                                                                        |
-| Month/year gridcell | `Enter`              | Selects the focused month or year.                                                                                                                                                                                |
-| Native button       | `Enter` or `Space`   | Activates navigation, heading, close, and Go to today actions using native button behavior.                                                                                                                       |
+| Focus area            | Key                               | Behavior                                                                                                                                                                                                          |
+| --------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Calendar              | `Escape`                          | Calls `onDismiss` and stops propagation when that callback is provided; otherwise bubbles so a surrounding popup can dismiss.                                                                                     |
+| Calendar              | `PageUp`                          | Navigates backward one month from the focused day, or the displayed date when focus is outside the day grid.                                                                                                      |
+| Calendar              | `PageDown`                        | Navigates forward one month from the focused day, or the displayed date when focus is outside the day grid.                                                                                                       |
+| Calendar              | `Shift+PageUp`                    | Navigates backward one year from the focused day, or the displayed date when focus is outside the day grid.                                                                                                       |
+| Calendar              | `Shift+PageDown`                  | Navigates forward one year from the focused day, or the displayed date when focus is outside the day grid.                                                                                                        |
+| Editable slot content | `Enter`, `Backspace`, paging keys | Retains native editing behavior. Calendar does not cancel these keys in input, textarea, select, or contenteditable descendants.                                                                                  |
+| Day grid              | Arrow keys                        | Moves by one day horizontally and one week vertically. Horizontal direction follows text direction. Crossing the rendered grid navigates to the adjacent month and restores focus. Unavailable dates are skipped. |
+| Day gridcell          | `Enter` or `Space`                | Selects the focused date and reports the configured range.                                                                                                                                                        |
+| Month/year grid       | Arrow keys                        | Moves through the two-dimensional grid using roving focus.                                                                                                                                                        |
+| Month/year gridcell   | `Enter`                           | Selects the focused month or year.                                                                                                                                                                                |
+| Native button         | `Enter` or `Space`                | Activates navigation, heading, close, and Go to today actions using native button behavior.                                                                                                                       |
 
-`Tab` follows DOM order through enabled header actions, the roving grid stop, and Go to today. Calendar does not trap focus. When a picker view changes, Calendar programmatically focuses the navigated cell in the newly visible view.
+`Tab` follows DOM order through enabled header actions, the roving grid stop, and Go to today. Calendar does not trap focus. A view change restores focus when it hides the picker that currently contains focus; changes after focus has left Calendar do not reclaim it.
 
 Consumer keyboard handlers run first. Calling `event.preventDefault()` prevents Calendar's root handler from performing its action.
 
@@ -377,6 +377,7 @@ Marked dates include the marked state in their accessible label. Visual range ho
 - Each grid uses roving focus so arrow navigation does not add every cell to the tab sequence.
 - Switching between overlaid day and month pickers moves focus to the navigated cell in the destination picker.
 - When responsive `auto` layout hides the picker that contains focus, focus moves to the navigated cell in the remaining picker.
+- After focus leaves Calendar, responsive or externally controlled view changes do not move it back inside.
 - Opening the year picker moves focus to its navigated year; selecting a year returns focus to the corresponding month.
 - Calendar's month/year paging shortcuts restore focus to the navigated cell in the visible picker.
 - Go to today moves focus to today's day cell but does not select it.

@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { Backspace, Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
+import { Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
+  isHTMLElement,
   slot,
   useControllableState,
   useEventCallback,
@@ -21,6 +22,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
+import { getCalendarNavigationDate } from '../../utils/calendarKeyboard';
 import type { DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
@@ -316,7 +318,7 @@ export const useCalendarBase_unstable = (
 
   const onGotoToday = useEventCallback((ev: React.SyntheticEvent): void => {
     const resolvedToday = resolveDate(today);
-    if (!resolvedToday) {
+    if (!goToTodayEnabled) {
       return;
     }
 
@@ -335,27 +337,28 @@ export const useCalendarBase_unstable = (
     }
 
     switch (ev.key) {
-      case Enter:
-      case Backspace:
-        ev.preventDefault();
-        break;
-
       case Escape:
-        ev.stopPropagation();
-        onDismiss?.(ev, { event: ev, type: 'keydown' });
+        if (onDismiss) {
+          ev.stopPropagation();
+          onDismiss(ev, { event: ev, type: 'keydown' });
+        }
         break;
 
       case PageUp:
-        navigate(ev.shiftKey ? addYears(navigatedDate, -1) : addMonths(navigatedDate, -1), ev);
+      case PageDown: {
+        if (
+          isHTMLElement(ev.target) &&
+          ev.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')
+        ) {
+          break;
+        }
+        const date = getCalendarNavigationDate(ev.nativeEvent) ?? navigatedDate;
+        const direction = ev.key === PageUp ? -1 : 1;
+        navigate(ev.shiftKey ? addYears(date, direction) : addMonths(date, direction), ev);
         focusOnNextUpdate();
         ev.preventDefault();
         break;
-
-      case PageDown:
-        navigate(ev.shiftKey ? addYears(navigatedDate, 1) : addMonths(navigatedDate, 1), ev);
-        focusOnNextUpdate();
-        ev.preventDefault();
-        break;
+      }
 
       default:
         break;
@@ -365,11 +368,21 @@ export const useCalendarBase_unstable = (
   const onRootFocusCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
     props.onFocusCapture?.(ev);
 
-    const target = ev.target as HTMLElement;
+    const target = ev.target;
     if (target.closest('.fui-CalendarDay')) {
       focusedPicker.current = 'day';
     } else if (target.closest('.fui-CalendarMonth')) {
       focusedPicker.current = 'month';
+    } else {
+      focusedPicker.current = undefined;
+    }
+  });
+
+  const onRootBlurCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
+    props.onBlurCapture?.(ev);
+    if (!ev.currentTarget.contains(ev.relatedTarget)) {
+      focusedPicker.current = undefined;
+      focusOnUpdate.current = false;
     }
   });
 
@@ -383,11 +396,29 @@ export const useCalendarBase_unstable = (
     : '';
   const isMonthOnly = props.dayPicker === null;
 
+  const dayPicker = slot.optional(props.dayPicker, {
+    renderByDefault: true,
+    defaultProps: {
+      grid: {
+        'aria-label': `${formatters.dateTime({
+          date: navigatedDate,
+          format: 'monthYear',
+        })}, ${selectedDateString}, ${todayDateString}`,
+      },
+      navigatedDate,
+      onDismiss: onDismiss ? onDayDismiss : undefined,
+      onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
+      onNavigateDate: onNavigateDayDate,
+    },
+    elementType: 'div',
+  });
   const resolvedToday = resolveDate(today);
   const goToTodayEnabled =
-    !!resolvedToday &&
-    (navigatedDate.getFullYear() !== resolvedToday.getFullYear() ||
-      navigatedDate.getMonth() !== resolvedToday.getMonth());
+    navigatedDate.getFullYear() !== resolvedToday.getFullYear() ||
+    navigatedDate.getMonth() !== resolvedToday.getMonth() ||
+    (dayPicker?.weeksToShow !== undefined &&
+      dayPicker.weeksToShow <= 4 &&
+      compareDatePart(dayPicker.navigatedDate ?? navigatedDate, resolvedToday) !== 0);
 
   return {
     allFocusable,
@@ -420,9 +451,17 @@ export const useCalendarBase_unstable = (
       monthPicker: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', { ref, ...props, onFocusCapture: onRootFocusCapture, onKeyDown: onRootKeyDown }, [
-        'defaultValue',
-      ]),
+      getIntrinsicElementProps(
+        'div',
+        {
+          ref,
+          ...props,
+          onBlurCapture: onRootBlurCapture,
+          onFocusCapture: onRootFocusCapture,
+          onKeyDown: onRootKeyDown,
+        },
+        ['defaultValue'],
+      ),
       {
         elementType: 'div',
       },
@@ -445,7 +484,8 @@ export const useCalendarBase_unstable = (
       renderByDefault: true,
       defaultProps: {
         children: 'Go to today',
-        disabled: !goToTodayEnabled,
+        'aria-disabled': !goToTodayEnabled,
+        disabled: !goToTodayEnabled && !allFocusable,
         onClick: onGotoToday,
         onKeyDown: (ev: React.KeyboardEvent<HTMLButtonElement>) => {
           if (ev.key === Enter) {
@@ -457,22 +497,7 @@ export const useCalendarBase_unstable = (
       },
       elementType: 'button',
     }),
-    dayPicker: slot.optional(props.dayPicker, {
-      renderByDefault: true,
-      defaultProps: {
-        grid: {
-          'aria-label': `${formatters.dateTime({
-            date: navigatedDate,
-            format: 'monthYear',
-          })}, ${selectedDateString}, ${todayDateString}`,
-        },
-        navigatedDate,
-        onDismiss: onDismiss ? onDayDismiss : undefined,
-        onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-        onNavigateDate: onNavigateDayDate,
-      },
-      elementType: 'div',
-    }),
+    dayPicker,
     monthPicker: slot.optional(props.monthPicker, {
       renderByDefault: true,
       defaultProps: {

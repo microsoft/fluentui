@@ -32,6 +32,32 @@ const goToToday = `.${calendarClassNames.goToTodayButton}`;
 
 describe('Calendar', () => {
   describe('day grid keyboard navigation', () => {
+    it('pages from the arrow-focused day rather than the original anchor', () => {
+      const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
+      mountFluent(<Calendar today={today} defaultValue={today} onDisplayedDateChange={onDisplayedDateChange} />);
+
+      cy.get(day('September 18, 2020')).focus().realPress('ArrowDown');
+      cy.focused().find('button').should('have.attr', 'aria-label', 'September 25, 2020');
+      cy.focused().realPress('PageDown');
+
+      cy.focused().find('button').should('have.attr', 'aria-label', 'October 25, 2020');
+      cy.get('@onDisplayedDateChange').should('have.been.calledOnce');
+      cy.get('@onDisplayedDateChange')
+        .its('firstCall.args.1.displayedDate')
+        .should('deep.equal', new Date(2020, 9, 25));
+    });
+
+    it('lets a surrounding container handle Escape when Calendar does not own dismissal', () => {
+      const onKeyDown = cy.stub().as('onParentKeyDown');
+      mountFluent(
+        <div onKeyDown={onKeyDown}>
+          <Calendar today={today} defaultValue={today} />
+        </div>,
+      );
+      cy.get(day('September 18, 2020')).focus().realPress('Escape');
+      cy.get('@onParentKeyDown').should('have.been.calledOnce');
+    });
+
     it('moves focus between days with the arrow keys', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
@@ -144,6 +170,32 @@ describe('Calendar', () => {
   });
 
   describe('go to today', () => {
+    it('is focusable but cannot activate when disabled with allFocusable', () => {
+      const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
+      mountFluent(
+        <Calendar today={today} defaultValue={today} allFocusable onDisplayedDateChange={onDisplayedDateChange} />,
+      );
+      cy.get(goToToday).should('be.enabled').and('have.attr', 'aria-disabled', 'true').focus().realPress('Enter');
+      cy.get(goToToday).should('be.focused').realPress('Space');
+      cy.get('@onDisplayedDateChange').should('not.have.been.called');
+    });
+
+    it('reaches today when only an earlier week of the same month is visible', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={null}
+          defaultDisplayedDate={new Date(2020, 8, 1)}
+          monthPicker={null}
+          dayPicker={{ weeksToShow: 1 }}
+        />,
+      );
+      cy.get(day('September 18, 2020')).should('not.exist');
+      cy.get(goToToday).should('be.enabled').click();
+      cy.focused().find('button').should('have.attr', 'aria-label', 'September 18, 2020');
+      cy.get(goToToday).should('be.disabled');
+    });
+
     it('navigates back to today and moves focus to it', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
@@ -239,6 +291,50 @@ describe('Calendar', () => {
       cy.get(day('September 9, 2020')).should('have.attr', 'data-outside-bounds');
       cy.get(day('September 10, 2020')).should('not.have.attr', 'data-outside-bounds');
       cy.get(day('September 19, 2020')).should('have.attr', 'data-outside-bounds');
+    });
+  });
+
+  describe('custom slot content and focus ownership', () => {
+    it('preserves input editing and native custom-button Enter activation', () => {
+      const onClick = cy.stub().as('onCustomClick');
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          layout="sideBySide"
+          dayPicker={{
+            heading: {
+              children: (
+                <>
+                  <input aria-label="Custom header" defaultValue="2020" />
+                  <button type="button" onClick={onClick}>
+                    Custom action
+                  </button>
+                </>
+              ),
+            },
+          }}
+        />,
+      );
+      cy.get('input[aria-label="Custom header"]').focus().realPress('End').realPress('Backspace');
+      cy.get('input[aria-label="Custom header"]').should('have.value', '202');
+      cy.contains('button', 'Custom action').focus().realPress('Enter');
+      cy.get('@onCustomClick').should('have.been.calledOnce');
+    });
+
+    it('does not reclaim outside focus when a responsive breakpoint hides the old picker', () => {
+      cy.viewport(1000, 800);
+      mountFluent(
+        <>
+          <Calendar today={today} defaultValue={today} layout="auto" />
+          <button type="button">Outside action</button>
+        </>,
+      );
+      cy.get(`.${calendarMonthGridCellClassNames.root}`).contains('Sep').focus();
+      cy.contains('button', 'Outside action').focus();
+      cy.viewport(360, 800);
+      cy.get(`.${calendarMonthClassNames.root}`).should('not.exist');
+      cy.contains('button', 'Outside action').should('be.focused');
     });
   });
 });
