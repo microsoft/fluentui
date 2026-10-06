@@ -11,14 +11,5 @@ import type {
 export const useTeachingPopoverCarouselFooter = (
   props: TeachingPopoverCarouselFooterProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselFooterState => {
-  const state = useTeachingPopoverCarouselFooterBase_unstable(props, ref);
-  return {
-    ...state,
-    components: {
-      root: 'div',
-      previous: TeachingPopoverCarouselFooterButton,
-      next: TeachingPopoverCarouselFooterButton,
-    },
-  };
-};
+): TeachingPopoverCarouselFooterState =>
+  useTeachingPopoverCarouselFooterBase_unstable({ ...props, footerButton: TeachingPopoverCarouselFooterButton }, ref);

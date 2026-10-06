@@ -128,7 +128,9 @@ export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCa
 export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
 
 // @public
-export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;
+export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
+    footerButton: typeof TeachingPopoverCarouselFooterButton;
+};
 
 // @public (undocumented)
 export type TeachingPopoverCarouselFooterBaseState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>>;
@@ -165,7 +167,7 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentSt
 export const teachingPopoverCarouselFooterClassNames: SlotClassNames<TeachingPopoverCarouselFooterSlots>;
 
 // @public (undocumented)
-export type TeachingPopoverCarouselFooterProps = TeachingPopoverCarouselFooterBaseProps & {
+export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
     layout?: TeachingPopoverCarouselFooterLayout;
     initialStepText: string;
     finalStepText: string;

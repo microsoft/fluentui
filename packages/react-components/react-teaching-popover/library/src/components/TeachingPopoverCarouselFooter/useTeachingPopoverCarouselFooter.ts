@@ -17,18 +17,20 @@ import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/
 /**
  * Builds footer slots and coordinates focus within this footer's navigation pair.
  * Previous is optional; text and presentation defaults are supplied by the styled hook.
+ * The caller supplies its button component to keep headless consumers free of styles.
  */
 export const useTeachingPopoverCarouselFooterBase_unstable = (
   props: TeachingPopoverCarouselFooterBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselFooterBaseState => {
+  const { footerButton, ...rest } = props;
   const previous = slot.optional(props.previous, {
     defaultProps: { navType: 'prev' },
-    elementType: TeachingPopoverCarouselFooterButton,
+    elementType: footerButton,
   });
   const next = slot.always(props.next, {
     defaultProps: { navType: 'next' },
-    elementType: TeachingPopoverCarouselFooterButton,
+    elementType: footerButton,
   });
   const previousRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const nextRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
@@ -63,7 +65,7 @@ export const useTeachingPopoverCarouselFooterBase_unstable = (
     }
   }, [previous?.hidden, next.hidden, targetDocument]);
 
-  const root = slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' });
+  const root = slot.always(getIntrinsicElementProps('div', { ref, ...rest }), { elementType: 'div' });
   root.onFocusCapture = event => {
     focusedButton.current = event.target;
     props.onFocusCapture?.(event);
@@ -76,8 +78,8 @@ export const useTeachingPopoverCarouselFooterBase_unstable = (
   return {
     components: {
       root: 'div',
-      next: TeachingPopoverCarouselFooterButton,
-      previous: TeachingPopoverCarouselFooterButton,
+      next: footerButton,
+      previous: footerButton,
     },
     root,
     previous,
@@ -109,7 +111,10 @@ export const useTeachingPopoverCarouselFooter_unstable = (
   });
 
   return {
-    ...useTeachingPopoverCarouselFooterBase_unstable({ ...props, previous: previous ?? null, next }, ref),
+    ...useTeachingPopoverCarouselFooterBase_unstable(
+      { ...props, previous: previous ?? null, next, footerButton: TeachingPopoverCarouselFooterButton },
+      ref,
+    ),
     layout,
   };
 };

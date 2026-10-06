@@ -85,8 +85,8 @@ describe('TeachingPopover', () => {
       describe(controlled ? 'controlled' : 'uncontrolled', () => {
         it('moves focus to Next when Previous becomes hidden on the first step', () => {
           mount(<FocusExample controlled={controlled} initiallyOpen />);
-          cy.get('#next').realClick();
-          cy.get('#previous').focus().realPress('Enter');
+          cy.get('#next').should('not.have.class', 'fui-Button').realClick();
+          cy.get('#previous').should('not.have.class', 'fui-Button').focus().realPress('Enter');
           cy.contains('Feature Step 1').should('be.visible');
           cy.get('#previous').should('not.be.visible');
           cy.get('#next').should('have.focus');

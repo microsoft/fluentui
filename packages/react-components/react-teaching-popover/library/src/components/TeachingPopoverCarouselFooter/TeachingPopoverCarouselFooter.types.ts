@@ -28,13 +28,16 @@ export type TeachingPopoverCarouselFooterLayout = 'offset' | 'centered';
 export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
 
 /**
- * TeachingPopoverCarouselFooter Props
+ * Shared footer hook props, including the caller's styled or headless button.
  */
-export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;
+export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
+  /** Button implementation used for both navigation slots. */
+  footerButton: typeof TeachingPopoverCarouselFooterButton;
+};
 
 export type TeachingPopoverCarouselFooterBaseState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>>;
 
-export type TeachingPopoverCarouselFooterProps = TeachingPopoverCarouselFooterBaseProps & {
+export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
   /**
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.
