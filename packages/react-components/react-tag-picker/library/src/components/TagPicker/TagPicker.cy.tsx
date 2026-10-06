@@ -425,6 +425,42 @@ describe('TagPicker', () => {
       });
     });
 
+    it('should keep the selected option when typing a query without a match in single mode', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TagPickerControlled
+          defaultSelectedOptions={[options[0]]}
+          selectionMode="single"
+          onOptionSelect={onOptionSelect}
+        />,
+      );
+
+      cy.get('[data-testid="tag-picker-input"]').realClick().realType('z');
+
+      cy.get('[data-testid="tag-picker-input"]').should('have.value', 'z');
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
+      cy.get('@onOptionSelect').should('not.have.been.called');
+    });
+
+    it('should keep the selected option when clearing the query in single mode', () => {
+      const onOptionSelect = cy.stub().as('onOptionSelect');
+
+      mount(
+        <TagPickerControlled
+          defaultSelectedOptions={[options[0]]}
+          selectionMode="single"
+          onOptionSelect={onOptionSelect}
+        />,
+      );
+
+      cy.get('[data-testid="tag-picker-input"]').realClick().realType('z').realPress('Backspace');
+
+      cy.get('[data-testid="tag-picker-input"]').should('have.value', '');
+      cy.get(`[data-testid="tag--${options[0]}"]`).should('exist');
+      cy.get('@onOptionSelect').should('not.have.been.called');
+    });
+
     describe('Tags', () => {
       it('should focus on last tag on Shift + Tab', () => {
         mount(<TagPickerControlled defaultSelectedOptions={options} />);
