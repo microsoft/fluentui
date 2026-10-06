@@ -8,12 +8,15 @@ Stakeholders: `@fluentui/react-headless-components-preview` maintainers, `@fluen
 
 ## Summary
 
-Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces with CSS anchor positioning. That covers the `positioning` API only partially: the geometry-dependent options are not implemented, and older browser versions do not support CSS anchor positioning. Two PRs propose different ways to close the gap:
+Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces with CSS anchor positioning. That covers the `positioning` API only partially: the geometry-dependent options are not implemented, and older browser versions do not support CSS anchor positioning. Five PRs propose different ways to close the gap, or to make the gap cheaper to close:
 
 - [#36800](https://github.com/microsoft/fluentui/pull/36800): the consumer passes a JavaScript engine explicitly (`positioning={{ engine }}` or `PositioningEngineProvider`).
 - [#36124](https://github.com/microsoft/fluentui/pull/36124): the library decides at runtime and lazy-loads a floating-ui fallback when the browser or the requested options need it.
+- [#36841](https://github.com/microsoft/fluentui/pull/36841) (Dmytro Kirpa, exploration): the headless hook ships its own small JavaScript fallback that follows the CSS anchor positioning rules, plus internal plugins for the options CSS cannot express. No floating-ui involved.
+- [#36839](https://github.com/microsoft/fluentui/pull/36839) (Dmytro Kirpa, exploration): `react-positioning` replaces its `@floating-ui/dom` dependency with a trimmed, synchronous inlined port, so any option that ships the engine ships less.
+- [#36840](https://github.com/microsoft/fluentui/pull/36840) (Dmytro Kirpa, exploration, builds on #36839): `react-positioning` gains a `/modular` entry with `usePositioningCore(options, plugins)`, so an engine consumer pays only for the plugins it passes.
 
-This RFC compares four options (explicit engine, automatic fallback with a lazy import, automatic fallback with floating-ui bundled, extend the CSS path) on bundle impact, browser behaviour, API complexity, parity with `react-positioning`, and maintenance cost, and recommends one.
+This RFC compares seven options (explicit engine, automatic fallback with a lazy import, automatic fallback with floating-ui bundled, extend the CSS path, a CSS-semantics JavaScript fallback inside headless, an inlined synchronous Floating UI port, a modular engine with plugins) on bundle impact, browser behaviour, API complexity, parity with `react-positioning`, and maintenance cost, and recommends one.
 
 ## Background
 
@@ -33,6 +36,15 @@ The headless package reuses `PositioningProps` as its contract but implements it
 | `floatingUIPositioningEngine` from [#36800](https://github.com/microsoft/fluentui/pull/36800) | 27.2 kB  | 9.8 kB  |
 
 `@floating-ui/devtools` is compiled out of production. A page that already ships v9 positioning pays this once; a headless-only page pays it only if it imports the engine.
+
+The exploration PRs change those numbers. The first three rows below come from the monosize bot on the PRs (same fixture setup as above); the last row is from the description of #36841, measured with an esbuild proxy and without gzip, so it is only indicative next to the fixture rows.
+
+| What                                                                                                                            | Minified          | Gzip         |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------ |
+| `usePositioning` with the inlined port from [#36839](https://github.com/microsoft/fluentui/pull/36839)                          | 24.5 kB           | 9.0 kB       |
+| `usePositioningCore` from [#36840](https://github.com/microsoft/fluentui/pull/36840), no plugins                                | 12.6 kB           | 4.9 kB       |
+| `usePositioningCore` + offset, flip, shift, arrow plugins                                                                       | 21.3 kB           | 8.0 kB       |
+| headless `usePositioning` today → with the fallback and plugins from [#36841](https://github.com/microsoft/fluentui/pull/36841) | 6.05 kB → 15.9 kB | not reported |
 
 Browser support: [CSS Anchor Positioning Module Level 1](https://drafts.csswg.org/css-anchor-position-1/) is Baseline newly available (2026) — Chromium 125, Safari 26, Firefox 147. The headless CSS path relies on `position-area`, which Chromium only supports from 129 (125–128 shipped it as `inset-area`), so the effective minimum is Chromium 129, Safari 26, Firefox 147. In older browser versions a headless surface today renders unpositioned. Only placement is affected: the surface still opens and closes, moves focus, dismisses on Escape and outside click, and keeps its accessibility semantics; it just appears at its default position instead of next to its trigger.
 
@@ -156,6 +168,132 @@ This option only addresses feature parity. Browser versions without anchor suppo
 - Maintenance: high and open-ended; CSS anchor semantics are still moving.
 - Risk: every extra option on the CSS path is another behaviour to keep aligned with `react-positioning` without sharing its engine, so consumers would still see a different positioning model rather than a clear "engine or not" boundary.
 
+### Option E: CSS-semantics JavaScript fallback inside headless (#36841)
+
+The headless `usePositioning` keeps CSS anchor positioning as the primary path and ships its own JavaScript fallback that re-implements the CSS rules rather than delegating to floating-ui. The decision is made per surface, in render:
+
+```ts
+// evaluated once per mount: CSS.supports('anchor-name: --a') && CSS.supports('position-area: top')
+const [useAnchors] = React.useState(supportsAnchorPositioning);
+
+const jsMode =
+  !useAnchors ||
+  (!!effectiveTarget && !('nodeType' in effectiveTarget)) || // virtual target
+  PLUGINS.some(plugin => plugin.requiresJs?.(options)); // boundaries, function offset
+
+// the hook takes the canonical PositioningProps plus `enabled`, and returns an arrow ref
+const { targetRef, containerRef, arrowRef } = usePositioning({
+  position: 'below',
+  autoSize: true,
+  overflowBoundary: scrollParent,
+  arrowPadding: 8,
+  onPositioningEnd: handlePositioned,
+});
+```
+
+On the JavaScript path `computeFallbackPosition()` follows what the browser would do with CSS: the `position-area` grid (extended when the anchor sticks out of its containing block), first-fit `position-try-fallbacks` (default `flip-block`, `flip-inline`, both), margin offsets, `anchor-center`, `coverTarget`, `matchTargetSize`, `absolute` and `fixed`, containing blocks created by positioned, transformed, filtered and scrolled ancestors, and RTL. It positions in a layout effect, before paint.
+
+Internal plugins handle the options CSS cannot express. A plugin can declare that an option forces the JavaScript path (`requiresJs`), adjust the input of the fallback (`prepare`), and run after every update on both paths (`apply`): `offsetPlugin` (function `offset`), `boundaryPlugin` (`flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`), `autoSizePlugin`, `arrowPlugin` (`arrowPadding`, `arrowRef`) and `hidePlugin` (`data-positioning-hidden`, `data-positioning-escaped`, `onPositioningEnd`). Because `apply` also runs on the CSS path, `autoSize`, the arrow and the hidden state work in browsers with anchor support too. The plugin list is a module constant, not consumer API. One update loop (capturing `scroll`, `resize`, a `ResizeObserver`, debounced) serves both paths and replaces the placement observer; on the CSS path the applied placement is detected from the rects and written to `data-placement`.
+
+The headless package stops keeping its own narrower copy of the positioning types: `PositioningProps`, `PositioningShorthand`, `Position`, `Alignment`, `Offset`, `PositioningBoundary`, `PositioningVirtualElement` and the rest are re-exports from `@fluentui/react-positioning`, with a compile-time test that fails if they diverge. `useTransform` and `shiftToCoverTarget` are accepted but have no effect. Fallback and plugins are always bundled: `usePositioning` grows from 6.05 kB to 15.9 kB minified (about 5 kB for the fallback and 4.5 kB for the plugins).
+
+The fallback is checked against the browser rather than against floating-ui: a Cypress spec renders the same hook twice, once on CSS and once with support forced off, and compares the rects for every position and alignment, RTL, viewport edges, custom `fallbackPositions`, `pinned`, `coverTarget`, `matchTargetSize`, five containing-block setups, arrow, `autoSize`, the hidden state, and 300 random scenarios. A separate run of 11,500 random cases against Chrome 154 and Chromium 141 had under 0.5 % mismatches, all with anchors sticking out of the viewport.
+
+#### Pros
+
+- Browser behaviour: browsers without anchor support and virtual targets are handled with no consumer configuration, which also fixes the `openOnContext` menu described in the background.
+- First paint: both paths position before paint. There is no cold-open flash (unlike B) and no chunk to preload.
+- Parity: near-full option coverage in every browser — `autoSize`, boundaries, `arrowPadding`, function `offset`, `onPositioningEnd`, hidden and escaped attributes, virtual targets, `enabled`, `disableUpdateOnResize`. The headless types are the canonical ones, so a drift between the packages is a compile error.
+- Bundle: no floating-ui in the headless bundle at all. The engine plus plugins cost about 10 kB minified, against about 25–29 kB for `usePositioning` from `react-positioning` (see the bundle tables).
+- Consistency between paths: the fallback follows the CSS rules, so flips, fallbacks and offsets agree between a browser with anchor support and one without, and the comparison spec checks that mechanically. Options B and C instead pair CSS with floating-ui, whose flip and shift rules differ from CSS.
+- API: nothing new to configure. Public additions are `arrowRef`, `enabled`, and the fuller `PositioningProps`; the CSS path gains `autoSize`, arrow and hidden state today.
+- Migration and evolvability: the `positioning` API matches `react-positioning`, so moving from v9 components needs no positioning changes. The fallback is an implementation detail that can be removed as browser support grows, without a breaking change.
+
+#### Cons
+
+- Bundle: every headless page pays the fallback and the plugins (6 kB → 16 kB minified), including pages that only ever use CSS-eligible options in browsers with anchor support. Smaller than C, but the same shape of cost.
+- Maintenance: a third positioning implementation in the repository (CSS, a CSS-mimicking engine, floating-ui in v9), with its own containing-block, clipping and geometry code. CSS anchor semantics are still moving, so the mimic has to track browser changes: Chrome 154 keeps boxes that overflow the viewport inside it, Chromium 141 does not, and the fallback follows 154 (the comparison spec skips itself in Electron 130).
+- Parity with v9: behaviour is "close to, not pixel identical with" the floating-ui-based `react-positioning`. A v9 → headless migration can move surfaces by a few pixels, and an app that depends on the exact v9 placement has no way to get it. `shiftToCoverTarget` and `useTransform` are silently no-ops.
+- Predictability: which path a user got is invisible and cannot be forced (same as B and C). In RTL the CSS path reports `data-placement` start/end physically and the JavaScript path logically, so styling by placement can differ between paths.
+- Verification: the visual regression suite and SSR tests were not run on the exploration.
+
+### Option F: Inline a trimmed, synchronous Floating UI port in `react-positioning` (#36839)
+
+Not a headless strategy on its own: it changes the price and the timing of the engine that Options A and C ship (and the provider in the proposal below). `@fluentui/react-positioning` drops `@floating-ui/dom` and `@floating-ui/devtools` and vendors the part of Floating UI it uses into `src/floating`:
+
+```ts
+/**
+ * A trimmed-down, synchronous port of the parts of Floating UI that `@fluentui/react-positioning` uses.
+ * Based on `@floating-ui/core@1.6.8`, `@floating-ui/dom@1.6.12` and `@floating-ui/utils@0.2.8` (MIT).
+ *
+ * Differences from upstream:
+ * - everything is synchronous (there is no pluggable async platform)
+ * - `autoUpdate`, `autoPlacement`, `inline`, custom platforms and `rootBoundary` are not included
+ * - middleware options are plain objects (only `offset` accepts a function)
+ */
+export { computePosition } from './computePosition';
+export { detectOverflow } from './detectOverflow';
+export { arrow, flip, hide, limitShift, offset, shift, size } from './middleware';
+```
+
+Clipping ancestors, rect boundaries, CSS scale and transforms, iframes, shadow DOM, top layer and the WebKit visual viewport handling are kept. Because `computePosition` is synchronous, `createPositionManager` computes and applies the position in the same microtask instead of one microtask later, and errors are caught with `try/catch` instead of `.catch`. A Cypress parity spec runs the old `@floating-ui/dom` implementation and the port side by side over 14 layouts (scroll containers, scale and transforms, iframes, shadow DOM, top layer, virtual elements), 5 middleware stacks, 12 placements, `absolute` and `fixed`, LTR and RTL; all 70 cases are identical in `x`, `y`, placement and middleware data. `usePositioning` goes from 29.2 kB / 10.3 kB gzip to 24.5 kB / 9.0 kB gzip; about 1–1.5 kB more is available by dropping iframe, WebKit and top-layer support, which the PR does not do.
+
+#### Pros
+
+- Bundle: about 4.7 kB minified / 1.2 kB gzip less for every `usePositioning` consumer, v9 components included, without touching their code. Headless entries that import utilities from `react-positioning` shrink by about 0.5 kB each.
+- First paint: synchronous positioning removes the one-microtask delay between mount and the first position.
+- Dependencies: one third-party runtime dependency fewer, which also simplifies native ESM and import-map setups where `@floating-ui/dom` had to be mapped.
+- Parity: identical to the current engine, verified by the side-by-side spec rather than assumed.
+- Composability: the engine stays internal, so A, C and the provider proposal work unchanged and simply cost less. Prerequisite for Option G.
+
+#### Cons
+
+- Maintenance: Fluent owns about 1.6 k lines of forked positioning code. Upstream Floating UI fixes no longer arrive through a dependency bump; they have to be ported by hand, with the MIT attribution kept current.
+- Lost features: `autoUpdate`, `autoPlacement`, `inline`, custom platforms and `rootBoundary` are gone and cannot be reintroduced by consumers; the `@floating-ui/devtools` integration is gone too.
+- Headless: does nothing for headless by itself. Browsers without anchor support still render unpositioned unless A, C or E is adopted as well.
+- Verification: the visual regression suite and SSR tests were not run on the exploration.
+
+### Option G: Modular engine with plugins (#36840, builds on F)
+
+`react-positioning` exposes a second entry, `@fluentui/react-positioning/modular`, with `usePositioningCore(options, plugins)`. A plugin is a function from `{ container, arrow, options, isRtl }` to a middleware with an `order`; an option is only honoured when its plugin is passed, and without plugins the element is placed next to the target with no collision handling.
+
+```tsx
+import {
+  usePositioningCore,
+  offsetPlugin,
+  flipPlugin,
+  shiftPlugin,
+  arrowPlugin,
+} from '@fluentui/react-positioning/modular';
+
+// must be a stable reference, i.e. a module level constant (a dev warning fires when the identity changes)
+const plugins = [offsetPlugin, flipPlugin, shiftPlugin, arrowPlugin];
+
+const Example = () => {
+  const { targetRef, containerRef, arrowRef } = usePositioningCore({ position: 'below', offset: 4 }, plugins);
+  // ...
+};
+```
+
+Built-in plugins and the options they own: `offsetPlugin` (`offset`), `flipPlugin` (`pinned`, `fallbackPositions`, `flipBoundary`), `shiftPlugin` (`overflowBoundary`, `overflowBoundaryPadding`, `shiftToCoverTarget`, `unstable_disableTether`), `arrowPlugin` (`arrowPadding`, the arrow element), `autoSizePlugin` (`autoSize`), `matchTargetSizePlugin`, `coverTargetPlugin`, `hidePlugin` (`data-positioning-hidden`, `data-positioning-escaped`) and `intersectingPlugin` (`data-positioning-intersecting`). `POSITIONING_PLUGIN_ORDER` publishes the slots the built-in plugins use so custom plugins can be mixed in. `usePositioning()` becomes `usePositioningCore(options, defaultPositioningPlugins)`, and a test checks that the middleware order is unchanged. No Fluent component is migrated in the PR.
+
+For headless, the relevant use is an engine path (Option C, or the provider in the proposal) that ships only the plugins headless needs instead of the full set, and a documented plugin-to-option table of the kind Option E keeps internally. Measured with the bot: `usePositioningCore` is 12.6 kB / 4.9 kB gzip with no plugins, 21.3 kB / 8.0 kB gzip with offset, flip, shift and arrow, and 25.2 kB / 9.2 kB gzip with every plugin. `usePositioning()` itself is about 0.7 kB bigger than with Option F alone, for the plugin layer.
+
+#### Pros
+
+- Bundle: the engine cost scales with the options used, from 12.6 kB bare to 25.2 kB with everything, instead of always 25–29 kB.
+- Predictability: per-option ownership is an explicit table (which plugin implements which option) instead of a `requiresFloatingUI` heuristic, and it is the same table whether the engine is used by headless or by a v9 component.
+- Extensibility: custom plugins slot into the published order; the middleware stack is no longer closed.
+- Parity: `usePositioning()` with the default plugins behaves exactly as before, verified by a test on the middleware order. Composes with A, C and the provider proposal.
+
+#### Cons
+
+- Public commitment: a second hook, nine plugins, the order slots and the plugin types become consumer-facing API of `react-positioning` to support and version.
+- Realised savings: `usePositioning()` grows by about 0.7 kB, and the saving only materialises for consumers that move to `usePositioningCore` with a subset. No Fluent component does yet, and a headless engine path would need its own plugin subset to benefit.
+- Silent gaps: an option whose plugin is not passed is ignored without a warning, the same class of gap as engine-only options without an engine in Option A.
+- Footgun: the `plugins` array must keep a stable identity; an inline array recreates the position manager on every render, with only a dev-time warning.
+- Sequencing: depends on Option F landing first. The visual regression suite and SSR tests were not run on the exploration.
+
 ## Platform gaps
 
 Every option above exists because CSS anchor positioning does not yet cover the whole `PositioningProps` contract. Part of this work is to push the remaining needs into the platform, so the engine path is needed less over time. Status of the geometry-dependent options against the specs:
@@ -173,18 +311,20 @@ Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anc
 
 ## Comparison
 
-| Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS       |
-| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | ------------------- |
-| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                             | Never               |
-| Browser without anchor support  | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                           | Polyfill (consumer) |
-| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                     | n/a                 |
-| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                                | Yes                 |
-| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                        | None                |
-| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                        | Partial, growing    |
-| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                       | Growing CSS surface |
-| Consumer effort                 | Must opt in where needed             | None                                                     | None                                        | None                |
-| Migration from v9               | Add engine where needed              | Same API                                                 | Same API                                    | Same API, subset    |
-| Can change without breaking     | No (engine is public API)            | Yes (implementation detail)                              | Yes (implementation detail)                 | Yes                 |
+Options E to G are of two kinds. E is a strategy for headless like A to D. F and G change the engine in `react-positioning` and compose with any option that ships it (A, C, the proposal); on their own they do not position a headless surface in a browser without anchor support, which is why several of their cells read "n/a".
+
+| Criterion                       | A: Explicit engine                   | B: Automatic fallback (lazy)                             | C: Automatic fallback (floating-ui bundled) | D: Extend CSS       | E: CSS-semantics JS fallback                      | F: Inlined Floating UI port                   | G: Modular engine                                             |
+| ------------------------------- | ------------------------------------ | -------------------------------------------------------- | ------------------------------------------- | ------------------- | ------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------- |
+| floating-ui in bundle           | Only if consumer imports it (static) | Split chunk, fetched on demand                           | Always (static)                             | Never               | Never; own ~10 kB engine, always (static)         | Inlined port, 24.5 kB, where the engine ships | Inlined port, 12.6–25.2 kB by plugins, where the engine ships |
+| Browser without anchor support  | Consumer's choice (provider)         | Handled, with cold-open flash                            | Handled, no flash                           | Polyfill (consumer) | Handled, no flash                                 | n/a (engine option)                           | n/a (engine option)                                           |
+| First paint, fallback path      | Positioned before paint              | Cold: unpositioned until chunk lands; warm/preloaded: ok | Positioned before paint                     | n/a                 | Positioned before paint                           | Positioned before paint, synchronous          | Positioned before paint, synchronous                          |
+| Which path runs is visible      | Yes (props)                          | No (runtime)                                             | No (runtime)                                | Yes                 | No (runtime)                                      | n/a                                           | n/a                                                           |
+| API surface added               | `engine`, provider                   | `preloadPositioning()`                                   | None                                        | None                | `arrowRef`, `enabled`, full `PositioningProps`    | None                                          | `usePositioningCore`, 9 plugins, order slots                  |
+| Parity with `react-positioning` | Full with engine; subset without     | Full                                                     | Full                                        | Partial, growing    | Near-full options; behaviour close, not identical | Identical (parity spec)                       | Identical with default plugins; subset otherwise              |
+| Library maintenance             | Two paths, engine external           | Two paths + detection, loading, caching, preload         | Two paths + detection                       | Growing CSS surface | Three implementations (CSS, CSS mimic, v9 engine) | Owned fork of Floating UI                     | Owned fork + plugin layer                                     |
+| Consumer effort                 | Must opt in where needed             | None                                                     | None                                        | None                | None                                              | None                                          | Choose plugins (opt-in)                                       |
+| Migration from v9               | Add engine where needed              | Same API                                                 | Same API                                    | Same API, subset    | Same API, small pixel drift                       | Same                                          | Same                                                          |
+| Can change without breaking     | No (engine is public API)            | Yes (implementation detail)                              | Yes (implementation detail)                 | Yes                 | Yes (implementation detail)                       | Yes (engine is internal)                      | No (plugins are public API)                                   |
 
 ## Proposal
 
