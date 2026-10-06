@@ -1,89 +1,96 @@
 'use client';
 
-import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { LogicalAlignment, PositioningTarget, UsePositioningOptions } from './types';
-import type { FallbackInput, FallbackPlacement, FallbackRect } from './fallback/computeFallbackPosition';
+import type { FallbackInput, FallbackPlacement } from './fallback/computeFallbackPosition';
 import { computeFallbackPosition } from './fallback/computeFallbackPosition';
-import { getContainingBlockElement, measureContainingBlock } from './fallback/containingBlock';
-import type { PositioningPlugin, PositioningPluginContext } from './plugins/types';
-import { POSITIONS } from './constants';
+import { getContainingBlock } from './fallback/containingBlock';
+import { ABOVE, BELOW } from './constants';
 import { computePosition, debounce, getPlacementString, resolveOffset } from './utils';
 import { normalizeAlign } from './utils/placement';
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand } from './resolvePositioningShorthand';
+import { applyArrow } from './plugins/arrowPlugin';
+import { applyAutoSize } from './plugins/autoSizePlugin';
+import { applyBoundary } from './plugins/boundaryPlugin';
+import { applyVisibility } from './plugins/hidePlugin';
+import { applyFunctionOffset } from './plugins/offsetPlugin';
 
-export interface PositionUpdatesOptions {
-  options: UsePositioningOptions;
-  plugins: readonly PositioningPlugin[];
-  containerEl: HTMLElement | null;
-  targetEl: PositioningTarget | null;
-  arrowEl: HTMLElement | null;
+export type PositionUpdatesOptions = [
+  options: UsePositioningOptions,
+  containerEl: HTMLElement | null,
+  targetEl: PositioningTarget | null,
+  arrowEl: HTMLElement | null,
   /** The position is computed in JavaScript, otherwise the browser does it with CSS */
-  jsMode: boolean;
-}
+  jsMode: boolean,
+];
 
 const toPlacement = (shorthand: PositioningShorthandValue): FallbackPlacement => {
-  const { position = POSITIONS.above, align } = resolvePositioningShorthand(shorthand);
+  const { position = ABOVE, align } = resolvePositioningShorthand(shorthand);
   return { position, align: normalizeAlign(align ?? 'center') };
 };
-
-const toRect = ({ left, top, width, height }: FallbackRect): FallbackRect => ({ left, top, width, height });
 
 /**
  * Keeps the container positioned, and runs the plugins after every update. The container is positioned with CSS when
  * the browser supports it, otherwise it's done here in JavaScript using the same rules as CSS.
  */
 export function usePositionUpdates(config: PositionUpdatesOptions): () => void {
-  const update = useEventCallback(() => {
-    const { options, plugins, containerEl: container, targetEl: target, arrowEl: arrow, jsMode } = config;
+  const configRef = React.useRef(config);
+  useIsomorphicLayoutEffect(() => {
+    configRef.current = config;
+  });
+
+  const update = React.useCallback(() => {
+    const [options, container, target, arrow, jsMode] = configRef.current;
     const win = container?.ownerDocument.defaultView;
 
     if (!container || !target || !win) {
       return;
     }
 
-    const { position = POSITIONS.above, strategy = 'fixed', coverTarget = false, matchTargetSize } = options;
+    const { position = ABOVE, strategy = 'fixed', coverTarget = false, matchTargetSize } = options;
     const align: LogicalAlignment = normalizeAlign(options.align ?? 'center');
-    const containingBlock = getContainingBlockElement(container, strategy);
-    const { bounds, originLeft, originTop } = measureContainingBlock(container, containingBlock, strategy);
+    const [containingBlock, bounds, originLeft, originTop] = getContainingBlock(container, strategy);
     // Logical directions of `position-area` are the ones of the containing block
     const rtl = win.getComputedStyle(containingBlock ?? container.ownerDocument.documentElement).direction === 'rtl';
-    const context: PositioningPluginContext = { options, container, target, arrow, rtl };
-    const anchor = toRect(target.getBoundingClientRect());
+    const anchor = target.getBoundingClientRect();
     let placement: FallbackPlacement | null = null;
     // Where the container can be, plugins can change it
     let appliedBounds = bounds;
 
     if (jsMode) {
-      const { mainAxis, crossAxis } = resolveOffset(options.offset);
-      const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
+      const [mainAxis, crossAxis] = resolveOffset(options.offset);
+      const isBlockMain = position === ABOVE || position === BELOW;
       const { fallbackPositions = [], pinned } = options;
 
       if (matchTargetSize === 'width') {
         container.style.setProperty('width', `${anchor.width}px`);
       }
 
-      let input: FallbackInput = {
+      const input: FallbackInput = [
         anchor,
         bounds,
-        width: container.offsetWidth,
-        height: container.offsetHeight,
+        container.offsetWidth,
+        container.offsetHeight,
         rtl,
-        placement: { position, align },
-        fallbacks: fallbackPositions.length ? fallbackPositions.map(toPlacement) : undefined,
+        { position, align },
+        isBlockMain ? mainAxis : crossAxis,
+        isBlockMain ? crossAxis : mainAxis,
+        undefined,
+        fallbackPositions.length ? fallbackPositions.map(toPlacement) : undefined,
         pinned,
         coverTarget,
-        marginBlock: isBlockMain ? mainAxis : crossAxis,
-        marginInline: isBlockMain ? crossAxis : mainAxis,
-      };
+      ];
 
-      plugins.forEach(plugin => {
-        input = plugin.prepare?.(input, context) ?? input;
-      });
+      applyFunctionOffset(input, options.offset);
+      if (options.flipBoundary || options.overflowBoundary || options.overflowBoundaryPadding) {
+        applyBoundary(input, container, rtl, options);
+      }
 
       const result = computeFallbackPosition(input);
-      placement = { position: result.position, align: result.align };
-      appliedBounds = input.bounds;
+      placement = result;
+      appliedBounds = input[1];
 
       container.style.setProperty('left', `${result.left - originLeft}px`);
       container.style.setProperty('top', `${result.top - originTop}px`);
@@ -93,7 +100,7 @@ export function usePositionUpdates(config: PositionUpdatesOptions): () => void {
       const detected = computePosition(target, container);
 
       if (detected) {
-        placement = { position: detected.position, align: detected.align };
+        placement = detected;
 
         if (container.getAttribute('data-placement') !== detected.placement) {
           container.setAttribute('data-placement', detected.placement);
@@ -101,14 +108,14 @@ export function usePositionUpdates(config: PositionUpdatesOptions): () => void {
       }
     }
 
-    const popup = toRect(container.getBoundingClientRect());
-    plugins.forEach(plugin => plugin.apply?.({ ...context, placement, anchor, popup, bounds: appliedBounds }));
-  });
+    const popup = container.getBoundingClientRect();
+    applyAutoSize(container, placement, anchor, appliedBounds, rtl, options);
+    applyArrow(arrow, placement, anchor, popup, options.arrowPadding);
+    applyVisibility(container, target, rtl, placement, anchor, popup, options.onPositioningEnd);
+  }, []);
 
-  const { options, plugins, containerEl, targetEl, jsMode } = config;
-  const active =
-    options.enabled !== false &&
-    (jsMode || plugins.length > 0 || (!options.coverTarget && !!targetEl && 'nodeType' in targetEl));
+  const [options, containerEl, targetEl, , jsMode] = config;
+  const active = options.enabled !== false;
 
   useIsomorphicLayoutEffect(() => {
     const win = containerEl?.ownerDocument.defaultView;

@@ -1,44 +1,30 @@
-import type { Alignment, Position } from '@fluentui/react-positioning';
-import { POSITIONS } from '../constants';
+import type { Alignment, Offset, Position } from '@fluentui/react-positioning';
+import type { FallbackInput } from '../fallback/computeFallbackPosition';
+import { ABOVE, BELOW } from '../constants';
 import { resolveOffset } from '../utils';
-import type { PositioningPlugin } from './types';
 
 /**
  * Handles `offset` when it's a function, a number or an object are handled by CSS.
  */
-export const offsetPlugin: PositioningPlugin = {
-  requiresJs: ({ offset }) => typeof offset === 'function',
-  prepare: (input, { options: { offset } }) => {
-    if (typeof offset !== 'function') {
-      return input;
-    }
+export function applyFunctionOffset(input: FallbackInput, offset: Offset | undefined): void {
+  if (typeof offset !== 'function') {
+    return;
+  }
 
-    const { anchor, width, height } = input;
+  const [anchor, , width, height] = input;
 
-    return {
-      ...input,
-      getMargins: ({ position, align }) => {
-        const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
-        const alignment: Alignment = isBlockMain
-          ? align
-          : align === 'start'
-          ? 'top'
-          : align === 'end'
-          ? 'bottom'
-          : align;
-        const { mainAxis, crossAxis } = resolveOffset(
-          offset({
-            positionedRect: { x: 0, y: 0, width, height },
-            targetRect: { x: anchor.left, y: anchor.top, width: anchor.width, height: anchor.height },
-            position: position as Position,
-            alignment,
-          }),
-        );
+  input[12] = ({ position, align }) => {
+    const isBlockMain = position === ABOVE || position === BELOW;
+    const alignment: Alignment = isBlockMain ? align : align === 'start' ? 'top' : align === 'end' ? 'bottom' : align;
+    const [mainAxis, crossAxis] = resolveOffset(
+      offset({
+        positionedRect: { x: 0, y: 0, width, height },
+        targetRect: { x: anchor.left, y: anchor.top, width: anchor.width, height: anchor.height },
+        position: position as Position,
+        alignment,
+      }),
+    );
 
-        return isBlockMain
-          ? { marginBlock: mainAxis, marginInline: crossAxis }
-          : { marginBlock: crossAxis, marginInline: mainAxis };
-      },
-    };
-  },
-};
+    return isBlockMain ? [mainAxis, crossAxis] : [crossAxis, mainAxis];
+  };
+}

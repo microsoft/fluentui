@@ -22,57 +22,41 @@ function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolute' | 'f
  * Finds the element that forms the containing block of the positioned element,
  * `null` is the viewport (`fixed`) or the initial containing block (`absolute`).
  */
-export function getContainingBlockElement(container: HTMLElement, strategy: 'absolute' | 'fixed'): HTMLElement | null {
+export function getContainingBlock(
+  container: HTMLElement,
+  strategy: 'absolute' | 'fixed',
+): [element: HTMLElement | null, bounds: FallbackRect, originLeft: number, originTop: number] {
   const win = container.ownerDocument.defaultView;
   const root = container.ownerDocument.documentElement;
   let node = container.parentElement;
 
   while (win && node && node !== root) {
     if (isContainingBlock(win.getComputedStyle(node), strategy)) {
-      return node;
+      break;
     }
     node = node.parentElement;
   }
 
-  return null;
-}
+  if (node && node !== root) {
+    const rect = node.getBoundingClientRect();
+    const originLeft = rect.left + node.clientLeft - node.scrollLeft;
+    const originTop = rect.top + node.clientTop - node.scrollTop;
 
-export interface ContainingBlock {
-  /** Padding box of the containing block, in the coordinates of the viewport */
-  bounds: FallbackRect;
-  /** The point where `left: 0; top: 0` is, in the coordinates of the viewport */
-  originLeft: number;
-  originTop: number;
-}
-
-export function measureContainingBlock(
-  container: HTMLElement,
-  element: HTMLElement | null,
-  strategy: 'absolute' | 'fixed',
-): ContainingBlock {
-  const doc = container.ownerDocument;
-  const root = doc.documentElement;
-
-  if (element) {
-    const rect = element.getBoundingClientRect();
-    // Positioned elements scroll together with the content of their containing block
-    const originLeft = rect.left + element.clientLeft - element.scrollLeft;
-    const originTop = rect.top + element.clientTop - element.scrollTop;
-
-    return {
-      bounds: { left: originLeft, top: originTop, width: element.clientWidth, height: element.clientHeight },
+    return [
+      node,
+      { left: originLeft, top: originTop, width: node.clientWidth, height: node.clientHeight },
       originLeft,
       originTop,
-    };
+    ];
   }
 
-  const win = doc.defaultView;
   const originLeft = strategy === 'fixed' ? 0 : -(win?.scrollX ?? 0);
   const originTop = strategy === 'fixed' ? 0 : -(win?.scrollY ?? 0);
 
-  return {
-    bounds: { left: originLeft, top: originTop, width: root.clientWidth, height: root.clientHeight },
+  return [
+    null,
+    { left: originLeft, top: originTop, width: root.clientWidth, height: root.clientHeight },
     originLeft,
     originTop,
-  };
+  ];
 }

@@ -1,8 +1,8 @@
 import type { PositioningProps } from '../types';
-import type { FallbackRect } from '../fallback/computeFallbackPosition';
-import { POSITIONS } from '../constants';
+import type { FallbackPlacement, FallbackRect } from '../fallback/computeFallbackPosition';
+import type { PositioningTarget } from '../types';
+import { ABOVE, BEFORE, BELOW } from '../constants';
 import { getClippingRect } from './geometry';
-import type { PositioningPlugin } from './types';
 
 type PositioningEndDetail = Parameters<NonNullable<PositioningProps['onPositioningEnd']>>[0]['detail'];
 
@@ -20,37 +20,37 @@ const isClipped = (rect: FallbackRect, clip: FallbackRect): boolean =>
  * Sets the `data-positioning-hidden` (the target is not visible) and `data-positioning-escaped` (the container is not
  * visible) attributes, and calls `onPositioningEnd`.
  */
-export const hidePlugin: PositioningPlugin = {
-  apply: ({ container, target, rtl, placement, anchor, popup, options: { onPositioningEnd } }) => {
-    // Virtual elements are clipped like the element that they are in
-    const element = 'nodeType' in target ? target : target.contextElement;
-    const clip = element ? getClippingRect(element) : getClippingRect(container);
-    const referenceHidden = isClipped(anchor, clip);
-    const escaped = isClipped(popup, clip);
+export function applyVisibility(
+  container: HTMLElement,
+  target: PositioningTarget,
+  rtl: boolean,
+  placement: FallbackPlacement | null,
+  anchor: FallbackRect,
+  popup: FallbackRect,
+  onPositioningEnd: PositioningProps['onPositioningEnd'],
+): void {
+  // Virtual elements are clipped like the element that they are in
+  const element = ('nodeType' in target ? target : target.contextElement) ?? container;
+  const clip = getClippingRect(element);
+  const referenceHidden = isClipped(anchor, clip);
+  const escaped = isClipped(popup, clip);
 
-    container.toggleAttribute(DATA_POSITIONING_HIDDEN, referenceHidden);
-    container.toggleAttribute(DATA_POSITIONING_ESCAPED, escaped);
+  container.toggleAttribute(DATA_POSITIONING_HIDDEN, referenceHidden);
+  container.toggleAttribute(DATA_POSITIONING_ESCAPED, escaped);
 
-    if (onPositioningEnd && placement) {
-      const { position, align } = placement;
-      const side =
-        position === POSITIONS.above
-          ? 'top'
-          : position === POSITIONS.below
-          ? 'bottom'
-          : (position === POSITIONS.before) !== rtl
-          ? 'left'
-          : 'right';
+  if (onPositioningEnd && placement) {
+    const { position, align } = placement;
+    const side =
+      position === ABOVE ? 'top' : position === BELOW ? 'bottom' : (position === BEFORE) !== rtl ? 'left' : 'right';
 
-      onPositioningEnd(
-        new CustomEvent<PositioningEndDetail>('fui-positioningend', {
-          detail: {
-            placement: (align === 'center' ? side : `${side}-${align}`) as PositioningEndDetail['placement'],
-            escaped,
-            referenceHidden,
-          },
-        }),
-      );
-    }
-  },
-};
+    onPositioningEnd(
+      new CustomEvent<PositioningEndDetail>('fui-positioningend', {
+        detail: {
+          placement: (align === 'center' ? side : `${side}-${align}`) as PositioningEndDetail['placement'],
+          escaped,
+          referenceHidden,
+        },
+      }),
+    );
+  }
+}

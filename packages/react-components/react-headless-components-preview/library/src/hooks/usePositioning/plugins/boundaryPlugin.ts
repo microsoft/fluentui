@@ -1,11 +1,9 @@
 import type { PositioningBoundary } from '@fluentui/react-positioning';
-import type { FallbackRect } from '../fallback/computeFallbackPosition';
+import type { FallbackInput, FallbackRect } from '../fallback/computeFallbackPosition';
+import type { PositioningProps } from '../types';
 import { getClippingRect, getPaddingBox, getScrollAncestors, getViewportRect, intersect } from './geometry';
-import type { PositioningPlugin } from './types';
 
-type Padding = NonNullable<
-  Parameters<PositioningPlugin['prepare'] & Function>[1]['options']['overflowBoundaryPadding']
->;
+type Padding = NonNullable<PositioningProps['overflowBoundaryPadding']>;
 
 function resolveBoundary(boundary: PositioningBoundary, container: HTMLElement): FallbackRect {
   if (boundary === 'window') {
@@ -55,23 +53,23 @@ const shrink = (rect: FallbackRect, padding: Padding, rtl: boolean): FallbackRec
  * Handles `flipBoundary`, `overflowBoundary` and `overflowBoundaryPadding`: placements are chosen to fit inside the
  * flip boundary, and the element is kept inside the overflow boundary.
  */
-export const boundaryPlugin: PositioningPlugin = {
-  requiresJs: ({ flipBoundary, overflowBoundary, overflowBoundaryPadding }) =>
-    !!(flipBoundary || overflowBoundary || overflowBoundaryPadding),
-  prepare: (input, { container, rtl, options: { flipBoundary, overflowBoundary, overflowBoundaryPadding } }) => {
-    const viewport = getViewportRect(container);
-    let bounds = overflowBoundary ? intersect(resolveBoundary(overflowBoundary, container), viewport) : input.bounds;
+export function applyBoundary(
+  input: FallbackInput,
+  container: HTMLElement,
+  rtl: boolean,
+  options: PositioningProps,
+): void {
+  const { flipBoundary, overflowBoundary, overflowBoundaryPadding } = options;
+  const viewport = getViewportRect(container);
+  let bounds = overflowBoundary ? intersect(resolveBoundary(overflowBoundary, container), viewport) : input[1];
 
-    if (overflowBoundaryPadding) {
-      bounds = shrink(bounds, overflowBoundaryPadding, rtl);
-    }
+  if (overflowBoundaryPadding) {
+    bounds = shrink(bounds, overflowBoundaryPadding, rtl);
+  }
 
-    return {
-      ...input,
-      bounds,
-      flipBounds: flipBoundary
-        ? intersect(resolveBoundary(flipBoundary, container), viewport)
-        : input.flipBounds ?? input.bounds,
-    };
-  },
-};
+  const flipBounds = flipBoundary
+    ? intersect(resolveBoundary(flipBoundary, container), viewport)
+    : input[8] ?? input[1];
+  input[1] = bounds;
+  input[8] = flipBounds;
+}

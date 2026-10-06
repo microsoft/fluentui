@@ -481,35 +481,36 @@ describe('computeFallbackPosition', () => {
     const { pos, align, anchor, popup, offset, rtl, fallbacks, pinned, matchWidth, cover, expected } = scenario;
     const isBlockMain = pos === 'above' || pos === 'below';
 
-    const { left, top } = computeFallbackPosition({
+    const { left, top } = computeFallbackPosition([
       anchor,
-      bounds: VIEWPORT,
-      width: matchWidth ? anchor.width : popup.width,
-      height: popup.height,
-      rtl: !!rtl,
-      placement: { position: pos, align },
-      fallbacks: fallbacks?.map(toPlacement),
+      VIEWPORT,
+      matchWidth ? anchor.width : popup.width,
+      popup.height,
+      !!rtl,
+      { position: pos, align },
+      (isBlockMain ? offset?.main : offset?.cross) ?? 0,
+      (isBlockMain ? offset?.cross : offset?.main) ?? 0,
+      undefined,
+      fallbacks?.map(toPlacement),
       pinned,
-      coverTarget: cover,
-      marginBlock: (isBlockMain ? offset?.main : offset?.cross) ?? 0,
-      marginInline: (isBlockMain ? offset?.cross : offset?.main) ?? 0,
-    });
+      cover,
+    ]);
 
     expect(left).toBeCloseTo(expected.left, 1);
     expect(top).toBeCloseTo(expected.top, 1);
   });
 
   it('returns the resolved placement', () => {
-    const result = computeFallbackPosition({
-      anchor: { left: 450, top: 60, width: 100, height: 40 },
-      bounds: VIEWPORT,
-      width: 200,
-      height: 100,
-      rtl: false,
-      placement: { position: 'above', align: 'center' },
-      marginBlock: 0,
-      marginInline: 0,
-    });
+    const result = computeFallbackPosition([
+      { left: 450, top: 60, width: 100, height: 40 },
+      VIEWPORT,
+      200,
+      100,
+      false,
+      { position: 'above', align: 'center' },
+      0,
+      0,
+    ]);
 
     expect(result).toMatchObject({ position: 'below', align: 'center' });
   });
