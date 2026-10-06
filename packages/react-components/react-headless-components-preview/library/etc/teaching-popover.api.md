@@ -156,8 +156,8 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
 // @public (undocumented)
 export type TeachingPopoverCarouselFooterSlots = {
     root: NonNullable<Slot<'div'>>;
-    previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
-    next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
+    previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
+    next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
 };
 
 // @public (undocumented)

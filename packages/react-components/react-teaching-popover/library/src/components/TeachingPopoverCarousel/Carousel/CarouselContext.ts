@@ -15,10 +15,6 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
-  footerButtonRefs?: {
-    prev: Set<React.RefObject<HTMLButtonElement | HTMLAnchorElement | null>>;
-    next: Set<React.RefObject<HTMLButtonElement | HTMLAnchorElement | null>>;
-  };
 };
 
 export const carouselContextDefaultValue: CarouselContextValue = {

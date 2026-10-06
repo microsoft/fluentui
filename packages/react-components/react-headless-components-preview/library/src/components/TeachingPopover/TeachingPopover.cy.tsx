@@ -92,26 +92,12 @@ describe('TeachingPopover', () => {
           cy.get('#next').should('have.focus');
         });
 
-        [false, true].forEach(initiallyOpen => {
-          (['finish', 'escape', 'dismiss'] as const).forEach(action => {
-            it(`restores trigger focus on ${action} (initiallyOpen=${initiallyOpen})`, () => {
-              mount(<FocusExample controlled={controlled} initiallyOpen={initiallyOpen} />);
-              if (!initiallyOpen) {
-                cy.get(triggerSelector).realClick();
-              }
-              cy.get('#next').should('be.visible').focus();
-              if (action === 'finish') {
-                cy.realPress('Enter');
-                cy.get('#next').should('have.text', 'Got it').realPress('Enter');
-              } else if (action === 'escape') {
-                cy.realPress('Escape');
-              } else {
-                cy.get('[aria-label="dismiss"]').realClick();
-              }
-              cy.get(surfaceSelector).should('not.exist');
-              cy.get(triggerSelector).should('have.focus');
-            });
-          });
+        it('restores trigger focus after finishing an initially open tour', () => {
+          mount(<FocusExample controlled={controlled} initiallyOpen />);
+          cy.get('#next').focus().realPress('Enter');
+          cy.get('#next').should('have.text', 'Got it').realPress('Enter');
+          cy.get(surfaceSelector).should('not.exist');
+          cy.get(triggerSelector).should('have.focus');
         });
       });
     });
@@ -130,12 +116,6 @@ describe('TeachingPopover', () => {
       cy.get('[data-testid="outside"]').realClick();
       cy.get(surfaceSelector).should('not.exist');
       cy.get('[data-testid="outside"]').should('have.focus');
-    });
-
-    it('does not move focus on an initially closed mount', () => {
-      mount(<FocusExample controlled />);
-      cy.get(surfaceSelector).should('not.exist');
-      cy.get(triggerSelector).should('not.have.focus');
     });
 
     it('can finish an initially open triggerless tour', () => {

@@ -128,6 +128,12 @@ export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCa
 export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps>;
 
 // @public
+export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;
+
+// @public (undocumented)
+export type TeachingPopoverCarouselFooterBaseState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>>;
+
+// @public
 export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps>;
 
 // @public (undocumented)
@@ -158,8 +164,8 @@ export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentSt
 // @public (undocumented)
 export const teachingPopoverCarouselFooterClassNames: SlotClassNames<TeachingPopoverCarouselFooterSlots>;
 
-// @public
-export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
+// @public (undocumented)
+export type TeachingPopoverCarouselFooterProps = TeachingPopoverCarouselFooterBaseProps & {
     layout?: TeachingPopoverCarouselFooterLayout;
     initialStepText: string;
     finalStepText: string;
@@ -168,8 +174,8 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
 // @public (undocumented)
 export type TeachingPopoverCarouselFooterSlots = {
     root: NonNullable<Slot<'div'>>;
-    previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
-    next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
+    previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
+    next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
 };
 
 // @public
@@ -396,6 +402,9 @@ export function useTeachingPopoverCarouselContextValues_unstable(state: Teaching
 
 // @public (undocumented)
 export const useTeachingPopoverCarouselFooter_unstable: (props: TeachingPopoverCarouselFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselFooterState;
+
+// @public
+export const useTeachingPopoverCarouselFooterBase_unstable: (props: TeachingPopoverCarouselFooterBaseProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselFooterBaseState;
 
 // @public
 export const useTeachingPopoverCarouselFooterButton_unstable: (props: TeachingPopoverCarouselFooterButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselFooterButtonState;

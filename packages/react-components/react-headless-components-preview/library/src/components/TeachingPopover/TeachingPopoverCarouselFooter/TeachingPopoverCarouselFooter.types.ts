@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
+import type { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -10,14 +10,17 @@ export type TeachingPopoverCarouselFooterSlots = {
   /**
    * Previous-page button. Defaults to `TeachingPopoverCarouselFooterButton`
    * with `navType: 'prev'`; consumers provide `altText` and content.
+   * Null or undefined alternate text hides it at its boundary and moves focus
+   * to the other footer button when that button is focusable.
    */
-  previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
+  previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
 
   /**
    * Next/finish-page button. Defaults to `TeachingPopoverCarouselFooterButton`
    * with `navType: 'next'`; consumers provide `altText` and content.
+   * Uses the same boundary hiding and focus behavior as the previous button.
    */
-  next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
+  next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
 };
 
 export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;

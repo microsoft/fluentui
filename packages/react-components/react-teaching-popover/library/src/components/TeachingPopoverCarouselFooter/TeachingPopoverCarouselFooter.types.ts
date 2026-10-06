@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
+import type { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -10,13 +10,16 @@ export type TeachingPopoverCarouselFooterSlots = {
 
   /**
    * The previous button slot.
+   * Null or undefined alternate text hides it at its boundary. Focus moves to the other footer button
+   * if the hidden button was focused and the other button is focusable.
    */
-  previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
+  previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
 
   /**
    * The next button slot.
+   * Uses the same boundary hiding and focus behavior as the previous button.
    */
-  next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
+  next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
 };
 
 export type TeachingPopoverCarouselFooterLayout = 'offset' | 'centered';
@@ -27,7 +30,11 @@ export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, 
 /**
  * TeachingPopoverCarouselFooter Props
  */
-export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots> & {
+export type TeachingPopoverCarouselFooterBaseProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;
+
+export type TeachingPopoverCarouselFooterBaseState = ComponentState<Required<TeachingPopoverCarouselFooterSlots>>;
+
+export type TeachingPopoverCarouselFooterProps = TeachingPopoverCarouselFooterBaseProps & {
   /**
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.

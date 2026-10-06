@@ -53,9 +53,12 @@ export {
   renderTeachingPopoverCarouselFooter_unstable,
   useTeachingPopoverCarouselFooterStyles_unstable,
   useTeachingPopoverCarouselFooter_unstable,
+  useTeachingPopoverCarouselFooterBase_unstable,
 } from './TeachingPopoverCarouselFooter';
 export type {
   TeachingPopoverCarouselFooterProps,
+  TeachingPopoverCarouselFooterBaseProps,
+  TeachingPopoverCarouselFooterBaseState,
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
 } from './TeachingPopoverCarouselFooter';

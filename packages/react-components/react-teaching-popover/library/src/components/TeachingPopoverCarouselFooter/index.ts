@@ -7,7 +7,14 @@ export type {
   TeachingPopoverPageCountChildRenderFunction,
 } from './TeachingPopoverCarouselFooter.types';
 export { renderTeachingPopoverCarouselFooter_unstable } from './renderTeachingPopoverCarouselFooter';
-export { useTeachingPopoverCarouselFooter_unstable } from './useTeachingPopoverCarouselFooter';
+export {
+  useTeachingPopoverCarouselFooter_unstable,
+  useTeachingPopoverCarouselFooterBase_unstable,
+} from './useTeachingPopoverCarouselFooter';
+export type {
+  TeachingPopoverCarouselFooterBaseProps,
+  TeachingPopoverCarouselFooterBaseState,
+} from './TeachingPopoverCarouselFooter.types';
 export {
   teachingPopoverCarouselFooterClassNames,
   useTeachingPopoverCarouselFooterStyles_unstable,
