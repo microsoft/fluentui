@@ -46,6 +46,10 @@ describe('SwatchPicker', () => {
       </>,
     );
 
+    cy.get('[aria-label="Green"]').should('have.attr', 'tabindex', '0');
+    cy.get('[aria-label="Red"]').should('have.attr', 'tabindex', '-1');
+    cy.get('[aria-label="Blue"]').should('have.attr', 'tabindex', '-1');
+
     cy.contains('button', 'Before').focus().realPress('Tab');
     cy.get('[aria-label="Green"]').should('be.focused').realPress('ArrowRight');
     cy.get('[aria-label="Blue"]').should('be.focused').realPress('Tab');

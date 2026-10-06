@@ -85,8 +85,22 @@ describe('positioning during Dialog motion', () => {
         }));
         const animations = surface.getAnimations().filter(animation => animation.playState === 'running');
         expect(animations.length, 'real Dialog entry animation').to.be.greaterThan(0);
+        const timings = animations.map(animation => {
+          const endTime = Number(animation.effect!.getComputedTiming().endTime);
+          expect(Number.isFinite(endTime), 'finite Dialog entry animation').to.equal(true);
+          expect(endTime, 'Dialog entry animation duration').to.be.greaterThan(0);
+          return { animation, endTime, playbackRate: animation.playbackRate };
+        });
+        // Keep native motion running, but seek it explicitly so slow CI frames cannot skip the movement.
+        for (const { animation } of timings) {
+          animation.playbackRate = 0.000001;
+          animation.currentTime = 0;
+        }
 
         return new Cypress.Promise<void>((resolve, reject) => {
+          const progressPoints = [0.25, 0.5, 0.75];
+          let nextProgress = 0;
+          let finishing = false;
           let movingSamples = 0;
           let previousLeft = pairs[0].target.getBoundingClientRect().left;
           let frame: number | undefined;
@@ -103,6 +117,9 @@ describe('positioning during Dialog motion', () => {
               targetWindow.clearTimeout(timer);
             }
             targetWindow.clearTimeout(deadline);
+            for (const { animation, playbackRate } of timings) {
+              animation.playbackRate = playbackRate;
+            }
           };
           cleanupMeasurement = cleanup;
           const finish = (error?: unknown) => {
@@ -137,8 +154,18 @@ describe('positioning during Dialog motion', () => {
                   }
                 }
                 if (active) {
+                  if (nextProgress < progressPoints.length) {
+                    const progress = progressPoints[nextProgress++];
+                    for (const { animation, endTime } of timings) {
+                      animation.currentTime = endTime * progress;
+                    }
+                  } else {
+                    finishing = true;
+                    animations.forEach(animation => animation.finish());
+                  }
                   frame = targetWindow.requestAnimationFrame(sample);
                 } else {
+                  expect(finishing, 'controlled entry completed before settlement').to.equal(true);
                   expect(movingSamples, 'samples of changing target geometry').to.be.greaterThan(1);
                   finish();
                 }
@@ -151,18 +178,26 @@ describe('positioning during Dialog motion', () => {
         });
       });
 
-    let alignment: ReturnType<typeof measureAlignment> | undefined;
     let entryPending = false;
+    // Capture failures immediately, then rethrow them when Cypress awaits the measurement.
+    const measureEntry = (surface: HTMLElement) =>
+      Cypress.Promise.resolve()
+        .then(() => {
+          entryPending = false;
+          return measureAlignment(surface);
+        })
+        .then(
+          () => undefined,
+          (error: unknown) => ({ error }),
+        );
+    let alignment: ReturnType<typeof measureEntry> | undefined;
     mount(
       <DialogWithPositionedContent
         onEnter={surface => {
           if (!entryPending) {
             entryPending = true;
             // Coalesce StrictMode callbacks and wait until native animations have been created.
-            alignment = Cypress.Promise.resolve().then(() => {
-              entryPending = false;
-              return measureAlignment(surface);
-            });
+            alignment = measureEntry(surface);
           }
         }}
       />,
@@ -170,7 +205,11 @@ describe('positioning during Dialog motion', () => {
     const checkAlignment = () =>
       cy.then(() => {
         expect(alignment, 'measurement started with Dialog entry').not.to.equal(undefined);
-        return alignment;
+        return alignment!.then(result => {
+          if (result) {
+            throw result.error;
+          }
+        });
       });
 
     cy.contains('button', 'Open dialog').click();
