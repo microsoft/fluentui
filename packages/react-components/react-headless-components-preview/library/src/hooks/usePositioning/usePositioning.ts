@@ -7,7 +7,7 @@ import type {
   PositioningShorthandValue,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type { PositioningProps, PositioningReturn, PositioningTarget } from './types';
+import type { PositioningReturn, PositioningTarget, UsePositioningOptions } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveOffset, shorthandToPositionArea } from './utils';
@@ -37,7 +37,7 @@ const readAnchorNames = (element: HTMLElement): string[] => {
  * Positions an element next to a target with CSS anchor positioning, or in JavaScript when the browser doesn't support it
  * or when an option can't be handled by CSS (function offsets, boundaries and virtual element targets).
  */
-export function usePositioning(options: PositioningProps): PositioningReturn {
+export function usePositioning(options: UsePositioningOptions): PositioningReturn {
   const {
     pinned,
     target: customTarget = null,

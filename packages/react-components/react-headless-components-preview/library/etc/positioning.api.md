@@ -5,11 +5,22 @@
 ```ts
 
 import { Alignment } from '@fluentui/react-positioning';
+import { AutoSize } from '@fluentui/react-positioning';
+import { Offset } from '@fluentui/react-positioning';
+import { OffsetFunction } from '@fluentui/react-positioning';
+import { OffsetFunctionParam } from '@fluentui/react-positioning';
+import { OffsetObject } from '@fluentui/react-positioning';
+import { OffsetShorthand } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
+import { PositioningBoundary } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
+import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
+import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 
 export { Alignment }
 
@@ -20,17 +31,30 @@ export const ALIGNMENTS: {
     readonly end: "end";
 };
 
+export { AutoSize }
+
 // @public
 export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue;
 
+export { Offset }
+
+export { OffsetFunction }
+
+export { OffsetFunctionParam }
+
+export { OffsetObject }
+
+export { OffsetShorthand }
+
 export { Position }
+
+export { PositioningBoundary }
 
 export { PositioningImperativeRef }
 
-// @public (undocumented)
-export type PositioningProps = Pick<PositioningProps_2, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'disableUpdateOnResize' | 'fallbackPositions' | 'flipBoundary' | 'matchTargetSize' | 'offset' | 'onPositioningEnd' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'> & {
-    enabled?: boolean;
-};
+export { PositioningProps }
+
+export { PositioningRect }
 
 // @public (undocumented)
 export type PositioningReturn = {
@@ -39,10 +63,11 @@ export type PositioningReturn = {
     arrowRef: React_2.RefCallback<HTMLElement>;
 };
 
-// @public (undocumented)
-export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+export { PositioningShorthand }
 
 export { PositioningShorthandValue }
+
+export { PositioningVirtualElement }
 
 // @public (undocumented)
 export const POSITIONS: {
@@ -55,8 +80,15 @@ export const POSITIONS: {
 // @public (undocumented)
 export const resolvePositioningShorthand: ResolvePositioningShorthand;
 
+export { SetVirtualMouseTarget }
+
 // @public
-export function usePositioning(options: PositioningProps): PositioningReturn;
+export function usePositioning(options: UsePositioningOptions): PositioningReturn;
+
+// @public
+export type UsePositioningOptions = PositioningProps & {
+    enabled?: boolean;
+};
 
 // (No @packageDocumentation comment for this package)
 

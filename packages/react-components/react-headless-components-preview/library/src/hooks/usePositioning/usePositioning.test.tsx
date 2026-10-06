@@ -2,7 +2,7 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
-import type { PositioningProps, PositioningReturn } from './types';
+import type { PositioningReturn, UsePositioningOptions } from './types';
 
 // jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
 beforeAll(() => {
@@ -13,7 +13,7 @@ afterAll(() => {
   Reflect.deleteProperty(globalThis, 'CSS');
 });
 
-function mountHook(options: PositioningProps = {}) {
+function mountHook(options: UsePositioningOptions = {}) {
   const resultRef = React.createRef<{ current: PositioningReturn }>();
   const Capture = () => {
     const result = usePositioning(options);
@@ -232,7 +232,7 @@ describe('usePositioning', () => {
         setTarget: (el: HTMLElement | null) => void;
       }>();
       mountHook({
-        positioningRef: positioningRef as unknown as PositioningProps['positioningRef'],
+        positioningRef: positioningRef as unknown as UsePositioningOptions['positioningRef'],
       });
 
       expect(positioningRef.current).not.toBeNull();
@@ -342,7 +342,7 @@ describe('usePositioning without CSS anchor positioning', () => {
     const positioningRef = React.createRef<{ updatePosition: () => void }>();
     const result = mountHook({
       position: 'below',
-      positioningRef: positioningRef as unknown as PositioningProps['positioningRef'],
+      positioningRef: positioningRef as unknown as UsePositioningOptions['positioningRef'],
     });
     const target = document.createElement('div');
     const container = document.createElement('div');
@@ -371,7 +371,7 @@ describe('usePositioning with options that need plugins', () => {
     Reflect.deleteProperty(globalThis, 'CSS');
   });
 
-  const mountWithPlugins = (options: PositioningProps) => {
+  const mountWithPlugins = (options: UsePositioningOptions) => {
     const resultRef = React.createRef<{ current: PositioningReturn }>();
     const Capture = () => {
       const result = usePositioning(options);
