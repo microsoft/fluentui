@@ -46,6 +46,14 @@ test.describe('Dropdown', () => {
     await expect(element).toHaveCount(1);
   });
 
+  test('should have element identity', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate();
+
+    await expect(element).toHaveJSProperty('constructor.elementIdentity', 'dropdown');
+  });
+
   test('should render a dropdown with options', async ({ fastPage }) => {
     const { element } = fastPage;
     const options = element.locator(OptionTagName);
