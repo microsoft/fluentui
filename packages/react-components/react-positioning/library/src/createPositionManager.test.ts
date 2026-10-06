@@ -469,6 +469,206 @@ describe('createPositionManager', () => {
       expect(frames.size).toBe(1);
     });
 
+    it('propagates updates and the final correction through nested positioned surfaces', async () => {
+      const animation = createAnimation();
+      const outer = createManager();
+      mockAnimations(outer.target, [animation]);
+      const middleTarget = document.createElement('button');
+      outer.container.appendChild(middleTarget);
+      const middle = createManager({ target: middleTarget });
+      const innerTarget = document.createElement('button');
+      middle.container.appendChild(innerTarget);
+      const inner = createManager({ target: innerTarget });
+      const listener = jest.fn();
+      inner.container.addEventListener(POSITIONING_END_EVENT, listener);
+
+      await flushMicrotasks();
+      expect(frames.size).toBe(1);
+      listener.mockClear();
+      await nextAnimationFrame();
+      expect(listener).toHaveBeenCalledTimes(1);
+
+      animation.playState = 'finished';
+      await nextAnimationFrame();
+      expect(listener).toHaveBeenCalledTimes(2);
+      expect(frames.size).toBe(0);
+      const computations = computePositionMock.mock.calls.length;
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(computations);
+    });
+
+    it('observes a positioned reference itself and removes subscriptions on disposal', async () => {
+      const outer = createManager();
+      const inner = createManager({ target: outer.container });
+      const removeListener = jest.spyOn(outer.container, 'removeEventListener');
+      await flushMicrotasks();
+      computePositionMock.mockClear();
+      outer.manager.updatePosition();
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(2);
+
+      inner.manager.dispose();
+      expect(removeListener).toHaveBeenCalledWith(POSITIONING_END_EVENT, expect.any(Function));
+      computePositionMock.mockClear();
+      outer.manager.updatePosition();
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('refreshes reference subscriptions after reparenting on an ordinary update', async () => {
+      const first = document.createElement('div');
+      const second = document.createElement('div');
+      document.body.append(first, second);
+      const { target, manager } = createManager();
+      first.appendChild(target);
+      const addListener = jest.spyOn(second, 'addEventListener');
+      await flushMicrotasks();
+      second.appendChild(target);
+      manager.updatePosition();
+      await flushMicrotasks();
+      manager.updatePosition();
+      await flushMicrotasks();
+      expect(addListener).toHaveBeenCalledTimes(1);
+      computePositionMock.mockClear();
+
+      first.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
+      await flushMicrotasks();
+      expect(computePositionMock).not.toHaveBeenCalled();
+      second.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not observe its own container or duplicate bubbling positioning events', async () => {
+      const { target, container } = createTestElements();
+      container.appendChild(target);
+      createManager({ target, container });
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+      computePositionMock.mockClear();
+      target.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT, { bubbles: true }));
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('bounds reciprocal positioning dependencies while preserving independent updates', async () => {
+      const first = createTestElements();
+      const second = createTestElements();
+      first.container.appendChild(second.target);
+      second.container.appendChild(first.target);
+      const a = createManager(first);
+      createManager(second);
+      const listener = jest.fn();
+      first.container.addEventListener(POSITIONING_END_EVENT, listener);
+      await flushMicrotasks();
+      const computations = computePositionMock.mock.calls.length;
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(computations);
+      expect(computations).toBeLessThanOrEqual(4);
+
+      listener.mockClear();
+      computePositionMock.mockClear();
+      a.manager.updatePosition();
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(2);
+      expect(listener).toHaveBeenCalledTimes(1);
+      expect(frames.size).toBe(0);
+    });
+
+    it.each([false, true])('follows motion across embedding frames: virtual=%s', async virtual => {
+      const ancestor = document.createElement('div');
+      const frame = document.createElement('iframe');
+      document.body.appendChild(ancestor);
+      ancestor.appendChild(frame);
+      const target = frame.contentDocument!.createElement('button');
+      frame.contentDocument!.body.appendChild(target);
+      const animation = createAnimation();
+      mockAnimations(ancestor, [animation]);
+      const { manager } = createManager({
+        target: virtual
+          ? { contextElement: target, getBoundingClientRect: () => target.getBoundingClientRect() }
+          : target,
+      });
+      await flushMicrotasks();
+      expect(frames.size).toBe(1);
+      animation.playState = 'finished';
+      await nextAnimationFrame();
+      expect(frames.size).toBe(0);
+      computePositionMock.mockClear();
+      ancestor.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
+      await flushMicrotasks();
+      expect(computePositionMock).toHaveBeenCalledTimes(1);
+      manager.dispose();
+    });
+
+    it('traverses nested frames and stops when an embedding frame is inaccessible', async () => {
+      const outerFrame = document.createElement('iframe');
+      document.body.appendChild(outerFrame);
+      const innerFrame = outerFrame.contentDocument!.createElement('iframe');
+      outerFrame.contentDocument!.body.appendChild(innerFrame);
+      const target = innerFrame.contentDocument!.createElement('button');
+      innerFrame.contentDocument!.body.appendChild(target);
+      mockAnimations(outerFrame, [createAnimation()]);
+      const { manager } = createManager({ target });
+      await flushMicrotasks();
+      expect(frames.size).toBe(1);
+
+      jest.spyOn(innerFrame.contentWindow!, 'frameElement', 'get').mockReturnValue(null);
+      manager.updatePosition();
+      await flushMicrotasks();
+      expect(frames.size).toBe(0);
+    });
+
+    it('propagates a parent correction after child polling stops and rejects older child results', async () => {
+      const pending: Array<(value: Awaited<ReturnType<typeof computePosition>>) => void> = [];
+      computePositionMock.mockImplementation(
+        () =>
+          new Promise(resolve => {
+            pending.push(resolve);
+          }),
+      );
+      const result = (x: number): Awaited<ReturnType<typeof computePosition>> => ({
+        x,
+        y: 20,
+        placement: 'bottom',
+        strategy: 'absolute',
+        middlewareData: mockMiddlewareData,
+      });
+      const parentAnimation = createAnimation();
+      const childAnimation = createAnimation();
+      const outer = createManager();
+      mockAnimations(outer.target, [parentAnimation]);
+      const target = document.createElement('button');
+      outer.container.appendChild(target);
+      mockAnimations(target, [childAnimation]);
+      const inner = createManager({ target });
+      const listener = jest.fn();
+      inner.container.addEventListener(POSITIONING_END_EVENT, listener);
+      await flushMicrotasks();
+      expect(frames.size).toBe(2);
+      pending[0](result(10));
+      await flushMicrotasks();
+      pending[2](result(10));
+      pending[1](result(99));
+      await flushMicrotasks();
+      expect(inner.container.style.transform).toBe('translate(10px, 20px)');
+
+      listener.mockClear();
+      parentAnimation.playState = 'finished';
+      childAnimation.playState = 'finished';
+      await nextAnimationFrame();
+      expect(frames.size).toBe(0);
+      pending[3](result(20));
+      await flushMicrotasks();
+      expect(pending).toHaveLength(6);
+      pending[5](result(20));
+      pending[4](result(99));
+      await flushMicrotasks();
+      expect(inner.container.style.transform).toBe('translate(20px, 20px)');
+      expect(listener).toHaveBeenCalledTimes(1);
+      expect(frames.size).toBe(0);
+    });
+
     it('ignores stale async results, including results preceding the final correction', async () => {
       const pending: Array<(value: Awaited<ReturnType<typeof computePosition>>) => void> = [];
       computePositionMock.mockImplementation(

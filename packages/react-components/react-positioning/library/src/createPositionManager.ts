@@ -50,33 +50,43 @@ function isLayoutViewportUnavailable(container: HTMLElement): boolean {
   return clientWidth === 0 && clientHeight === 0;
 }
 
-function hasActiveAncestorAnimation(target: TargetElement, container: HTMLElement): boolean {
+// Keep propagation provenance private so reciprocal references cannot create an update loop.
+const positioningUpdateSources = new WeakMap<Event, Set<object>>();
+
+function getAncestorElements(start: Element | undefined): Set<Element> {
   const visited = new Set<Element>();
+  let element: Element | null | undefined = start;
 
-  for (const start of [isHTMLElement(target) ? target : target.contextElement, container]) {
-    let element: Element | null | undefined = start;
+  while (element && !visited.has(element)) {
+    visited.add(element);
 
-    while (element && !visited.has(element)) {
-      visited.add(element);
+    const root = element.getRootNode();
+    element =
+      element.assignedSlot ??
+      element.parentElement ??
+      ('host' in root && isHTMLElement(root.host)
+        ? root.host
+        : root === element.ownerDocument
+        ? element.ownerDocument.defaultView?.frameElement
+        : null);
+  }
 
-      if (
-        element.getAnimations?.().some(animation => {
-          return (
-            animation.playState === 'running' &&
-            animation.playbackRate !== 0 &&
-            animation.effect !== null &&
-            Number.isFinite(animation.effect.getComputedTiming().endTime)
-          );
-        })
-      ) {
-        return true;
-      }
+  return visited;
+}
 
-      const root = element.getRootNode();
-      element =
-        element.assignedSlot ??
-        element.parentElement ??
-        ('host' in root && isHTMLElement(root.host) ? root.host : null);
+function hasActiveAncestorAnimation(ancestors: Set<Element>): boolean {
+  for (const element of ancestors) {
+    if (
+      element.getAnimations?.().some(animation => {
+        return (
+          animation.playState === 'running' &&
+          animation.playbackRate !== 0 &&
+          animation.effect !== null &&
+          Number.isFinite(animation.effect.getComputedTiming().endTime)
+        );
+      })
+    ) {
+      return true;
     }
   }
 
@@ -91,6 +101,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
   let isDestroyed = false;
   let animationFrame: number | undefined;
   let updateId = 0;
+  let pendingUpdateSources: Set<object> | undefined;
+  const propagationSource = {};
   const {
     container,
     target,
@@ -126,6 +138,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
+  const positioningParents = new Set<Element>();
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
@@ -137,6 +150,22 @@ export function createPositionManager(options: PositionManagerOptions): Position
     if (isDestroyed) {
       return;
     }
+
+    const updateSources = pendingUpdateSources;
+    pendingUpdateSources = undefined;
+    const referenceAncestors = getAncestorElements(isHTMLElement(target) ? target : target.contextElement);
+    positioningParents.forEach(element => {
+      if (!referenceAncestors.has(element)) {
+        element.removeEventListener(POSITIONING_END_EVENT, onAncestorPositioningEnd);
+        positioningParents.delete(element);
+      }
+    });
+    referenceAncestors.forEach(element => {
+      if (element !== container && !positioningParents.has(element)) {
+        element.addEventListener(POSITIONING_END_EVENT, onAncestorPositioningEnd);
+        positioningParents.add(element);
+      }
+    });
 
     if (isFirstUpdate) {
       listScrollParents(container).forEach(scrollParent => scrollParents.add(scrollParent));
@@ -157,7 +186,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     // The debounced initial update runs after ancestor layout effects have created their animations.
-    if (hasActiveAncestorAnimation(target, container)) {
+    if (hasActiveAncestorAnimation(new Set([...referenceAncestors, ...getAncestorElements(container)]))) {
       if (animationFrame === undefined) {
         animationFrame = targetWindow.requestAnimationFrame(() => {
           animationFrame = undefined;
@@ -198,18 +227,20 @@ export function createPositionManager(options: PositionManagerOptions): Position
           useTransform,
         });
 
-        container.dispatchEvent(
-          new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
-            detail: {
-              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
-              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
-              // types into the public API surface.
-              placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
-            },
-          }),
-        );
+        const event = new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+          detail: {
+            // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
+            // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
+            // types into the public API surface.
+            placement: computedPlacement satisfies PositioningPlacement,
+            escaped: positioningMiddlewareData.hide?.escaped ?? false,
+            referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+          },
+        });
+        const sources = new Set(updateSources);
+        sources.add(propagationSource);
+        positioningUpdateSources.set(event, sources);
+        container.dispatchEvent(event);
       })
       .catch(err => {
         // https://github.com/floating-ui/floating-ui/issues/1845
@@ -226,7 +257,23 @@ export function createPositionManager(options: PositionManagerOptions): Position
       });
   };
 
-  const updatePosition = debounce(() => forceUpdate());
+  const scheduleUpdate = debounce(() => forceUpdate());
+  const updatePosition = () => {
+    pendingUpdateSources = undefined;
+    scheduleUpdate();
+  };
+  const onAncestorPositioningEnd = (event: Event) => {
+    if (isDestroyed || event.target !== event.currentTarget) {
+      return;
+    }
+    const sources = positioningUpdateSources.get(event);
+    if (sources?.has(propagationSource)) {
+      return;
+    }
+    const pendingSources = (pendingUpdateSources ??= new Set<object>());
+    sources?.forEach(source => pendingSources.add(source));
+    scheduleUpdate();
+  };
 
   const dispose = () => {
     isDestroyed = true;
@@ -245,6 +292,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
       scrollParent.removeEventListener('scroll', updatePosition);
     });
     scrollParents.clear();
+    positioningParents.forEach(element => {
+      element.removeEventListener(POSITIONING_END_EVENT, onAncestorPositioningEnd);
+    });
+    positioningParents.clear();
+    pendingUpdateSources = undefined;
 
     resizeObserver?.disconnect();
   };
