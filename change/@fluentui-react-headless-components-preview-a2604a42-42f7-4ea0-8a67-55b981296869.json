@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: preserve focus when opening non-modal Popover surfaces",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

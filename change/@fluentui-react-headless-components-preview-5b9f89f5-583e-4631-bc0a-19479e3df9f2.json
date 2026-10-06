@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: allow overriding NavDrawerBody role",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com"
-}

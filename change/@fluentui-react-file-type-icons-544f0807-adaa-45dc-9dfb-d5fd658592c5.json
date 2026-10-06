@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Map clpx extension to the clipchamp filetype icon",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "danielhall@microsoft.com",
-  "dependentChangeType": "patch"
-}

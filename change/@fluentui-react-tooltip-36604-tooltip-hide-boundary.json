@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: hide tooltips only when their trigger is fully clipped, not when portaled content escapes the trigger's clipping boundary",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "paulmardling@microsoft.com",
-  "dependentChangeType": "patch"
-}

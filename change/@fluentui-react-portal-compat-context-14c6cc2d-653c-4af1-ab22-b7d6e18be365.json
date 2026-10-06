@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: mark @types/react peer dependency as optional",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
