@@ -85,6 +85,7 @@ describe('TeachingPopover', () => {
         cy.get(surfaceSelector).should('be.visible');
         cy.realPress('Escape');
         cy.get(surfaceSelector).should('not.exist');
+        cy.get(triggerSelector).should('have.focus');
       });
     });
   });
@@ -211,6 +212,101 @@ describe('TeachingPopover', () => {
       // On the trailing page the next button renders `altText` ("Done") instead of "Next".
       cy.contains('button', 'Done').realClick();
       cy.get(surfaceSelector).should('not.exist');
+    });
+  });
+
+  describe('initially open controlled tour', () => {
+    const Example = ({
+      trapFocus = false,
+      redirectFocus = false,
+    }: {
+      trapFocus?: boolean;
+      redirectFocus?: boolean;
+    }) => {
+      const [open, setOpen] = React.useState(true);
+      const [value, setValue] = React.useState('one');
+      const outsideRef = React.useRef<HTMLButtonElement>(null);
+
+      return (
+        <>
+          <button ref={outsideRef}>Outside</button>
+          <TeachingPopover
+            open={open}
+            trapFocus={trapFocus}
+            onOpenChange={(_, data) => {
+              setOpen(data.open);
+              if (data.open) {
+                setValue('one');
+              }
+            }}
+          >
+            <TeachingPopoverTrigger>
+              <button>Start feature tour</button>
+            </TeachingPopoverTrigger>
+            <TeachingPopoverSurface aria-label="Feature tour" role="dialog">
+              <button autoFocus>Tour help</button>
+              <TeachingPopoverCarousel
+                value={value}
+                onValueChange={(_, data) => {
+                  if (data.value) {
+                    setValue(data.value);
+                  }
+                }}
+                onFinish={() => {
+                  setValue('one');
+                  setOpen(false);
+                  if (redirectFocus) {
+                    outsideRef.current?.focus();
+                  }
+                }}
+              >
+                {['one', 'two', 'three'].map(page => (
+                  <TeachingPopoverCarouselCard key={page} value={page}>
+                    Feature step {page}
+                  </TeachingPopoverCarouselCard>
+                ))}
+                <TeachingPopoverCarouselFooter
+                  previous={{ navType: 'prev', children: 'Previous', altText: null }}
+                  next={{ navType: 'next', children: 'Next', altText: 'Got it' }}
+                />
+              </TeachingPopoverCarousel>
+            </TeachingPopoverSurface>
+          </TeachingPopover>
+        </>
+      );
+    };
+
+    ([false, true] as const).forEach(trapFocus => {
+      describe(trapFocus ? 'modal' : 'non-modal', () => {
+        beforeEach(() => mount(<Example trapFocus={trapFocus} />));
+
+        it('restores trigger focus after Got it closes the tour and resets its value', () => {
+          cy.contains('button', 'Tour help').should('have.focus');
+          cy.contains('button', 'Next').focus().realPress('Enter');
+          cy.contains('button', 'Next').should('have.focus').realPress('Enter');
+          cy.contains('button', 'Got it').should('have.focus').realPress('Enter');
+          cy.get('[aria-label="Feature tour"]').should('not.exist');
+          cy.get(triggerSelector).should('have.focus');
+          cy.focused().realPress('Enter');
+          cy.get('[aria-label="Feature tour"]').should('be.visible');
+          cy.get('[data-carousel-item="one"]').should('not.have.attr', 'hidden');
+        });
+
+        it('restores trigger focus after Escape dismisses the tour', () => {
+          cy.contains('button', 'Tour help').should('have.focus').realPress('Escape');
+          cy.get('[aria-label="Feature tour"]').should('not.exist');
+          cy.get(triggerSelector).should('have.focus');
+        });
+      });
+    });
+
+    it('preserves intentional focus movement on finish', () => {
+      mount(<Example redirectFocus />);
+      cy.contains('button', 'Next').focus().realPress('Enter');
+      cy.contains('button', 'Next').realPress('Enter');
+      cy.contains('button', 'Got it').realPress('Enter');
+      cy.get('[aria-label="Feature tour"]').should('not.exist');
+      cy.contains('button', 'Outside').should('have.focus');
     });
   });
 });
