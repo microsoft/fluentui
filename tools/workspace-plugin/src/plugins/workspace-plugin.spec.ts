@@ -875,6 +875,24 @@ describe(`workspace-plugin`, () => {
       `);
     });
 
+    it('should create storybook targets for v9 stories project with .storybook/main.cjs', async () => {
+      await tempFs.createFiles({
+        'proj/stories/.storybook/main.cjs': '',
+        'proj/stories/project.json': serializeJson({
+          root: 'proj/stories',
+          projectType: 'library',
+          tags: ['vNext', 'type:stories'],
+        } satisfies ProjectConfiguration),
+        'proj/stories/package.json': serializeJson({
+          name: '@proj/proj-stories',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      });
+      const results = await createNodesFunction(['proj/stories/project.json'], options, context);
+
+      expect(getTargetsNames(results, 'proj/stories')).toEqual(expect.arrayContaining(['storybook', 'start']));
+    });
+
     it('should create default nodes for v9 stories project', async () => {
       await tempFs.createFiles({
         'proj/stories/.storybook/main.js': '',
