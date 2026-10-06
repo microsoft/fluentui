@@ -2,9 +2,7 @@ import * as React from 'react';
 import { act, render } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
-import type { ExtendedPositioningProps, ExtendedPositioningReturn, PositioningProps, PositioningReturn } from './types';
-import { arrowPlugin, autoSizePlugin, boundaryPlugin, hidePlugin, offsetPlugin } from './plugins';
-import type { PositioningPlugin } from './plugins';
+import type { PositioningProps, PositioningReturn } from './types';
 
 // jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
 beforeAll(() => {
@@ -364,7 +362,7 @@ describe('usePositioning without CSS anchor positioning', () => {
   });
 });
 
-describe('usePositioning with plugins', () => {
+describe('usePositioning with options that need plugins', () => {
   beforeAll(() => {
     Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
   });
@@ -373,15 +371,15 @@ describe('usePositioning with plugins', () => {
     Reflect.deleteProperty(globalThis, 'CSS');
   });
 
-  const mountWithPlugins = (options: ExtendedPositioningProps, plugins: readonly PositioningPlugin[]) => {
-    const resultRef = React.createRef<{ current: ExtendedPositioningReturn }>();
+  const mountWithPlugins = (options: PositioningProps) => {
+    const resultRef = React.createRef<{ current: PositioningReturn }>();
     const Capture = () => {
-      const result = usePositioning(options, plugins);
-      (resultRef as unknown as { current: ExtendedPositioningReturn }).current = result;
+      const result = usePositioning(options);
+      (resultRef as unknown as { current: PositioningReturn }).current = result;
       return null;
     };
     render(<Capture />);
-    return resultRef as unknown as { current: ExtendedPositioningReturn };
+    return resultRef as unknown as { current: PositioningReturn };
   };
 
   const mockLayout = (target: { getBoundingClientRect: () => unknown }, container: HTMLElement) => {
@@ -393,19 +391,13 @@ describe('usePositioning with plugins', () => {
   };
 
   it('returns an arrowRef', () => {
-    const result = mountWithPlugins({}, [arrowPlugin]);
+    const result = mountWithPlugins({});
 
     expect(typeof result.current.arrowRef).toBe('function');
   });
 
   it('keeps using CSS for options that CSS can handle', () => {
-    const result = mountWithPlugins({ position: 'below', arrowPadding: 8, autoSize: true, offset: 4 }, [
-      arrowPlugin,
-      autoSizePlugin,
-      hidePlugin,
-      offsetPlugin,
-      boundaryPlugin,
-    ]);
+    const result = mountWithPlugins({ position: 'below', arrowPadding: 8, autoSize: true, offset: 4 });
     const container = document.createElement('div');
 
     act(() => {
@@ -422,7 +414,7 @@ describe('usePositioning with plugins', () => {
     ['an overflow boundary', { overflowBoundary: 'window' as const }, 340],
     ['an overflow padding', { overflowBoundaryPadding: 8 }, 340],
   ])('positions in JavaScript with %s', (_name, extra, top) => {
-    const result = mountWithPlugins({ position: 'below', align: 'start', ...extra }, [offsetPlugin, boundaryPlugin]);
+    const result = mountWithPlugins({ position: 'below', align: 'start', ...extra });
     const target = document.createElement('div');
     const container = document.createElement('div');
     document.body.append(target, container);
@@ -444,7 +436,7 @@ describe('usePositioning with plugins', () => {
       getBoundingClientRect: () =>
         ({ left: 450, top: 300, width: 0, height: 0, x: 450, y: 300, right: 450, bottom: 300 } as DOMRect),
     };
-    const result = mountWithPlugins({ position: 'below', align: 'start', target: virtualElement }, []);
+    const result = mountWithPlugins({ position: 'below', align: 'start', target: virtualElement });
     const container = document.createElement('div');
     document.body.append(container);
     mockLayout({ getBoundingClientRect: () => undefined }, container);
@@ -458,12 +450,9 @@ describe('usePositioning with plugins', () => {
     expect(container).toHaveStyle({ left: '450px', top: '300px' });
   });
 
-  it('runs the plugins after the container is positioned', () => {
-    const apply = jest.fn();
-    const result = mountWithPlugins({ position: 'below', align: 'start', flipBoundary: 'window' }, [
-      boundaryPlugin,
-      { apply },
-    ]);
+  it('calls onPositioningEnd after the container is positioned', () => {
+    const onPositioningEnd = jest.fn();
+    const result = mountWithPlugins({ position: 'below', align: 'start', flipBoundary: 'window', onPositioningEnd });
     const target = document.createElement('div');
     const container = document.createElement('div');
     document.body.append(target, container);
@@ -474,18 +463,13 @@ describe('usePositioning with plugins', () => {
       result.current.containerRef(container);
     });
 
-    expect(apply).toHaveBeenCalledWith(
-      expect.objectContaining({
-        container,
-        target,
-        placement: { position: 'below', align: 'start' },
-        anchor: { left: 450, top: 300, width: 100, height: 40 },
-      }),
+    expect(onPositioningEnd).toHaveBeenCalledWith(
+      expect.objectContaining({ detail: expect.objectContaining({ placement: 'bottom-start' }) }),
     );
   });
 
   it('does not position when it is disabled', () => {
-    const result = mountWithPlugins({ position: 'below', enabled: false }, []);
+    const result = mountWithPlugins({ position: 'below', enabled: false });
     const container = document.createElement('div');
 
     act(() => {

@@ -2,8 +2,7 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import { usePositioning } from '../usePositioning';
-import { arrowPlugin, autoSizePlugin, hidePlugin } from '../plugins';
-import type { ExtendedPositioningProps } from '../types';
+import type { PositioningProps } from '../types';
 
 /**
  * The JavaScript fallback is compared with what the browser does with CSS anchor positioning: the same component is rendered
@@ -18,7 +17,7 @@ interface Rect {
 }
 
 interface Scenario {
-  options: ExtendedPositioningProps;
+  options: PositioningProps;
   anchor: Rect;
   popup: { width: number; height: number };
   dir?: 'ltr' | 'rtl';
@@ -28,14 +27,11 @@ interface Scenario {
   arrow?: boolean;
 }
 
-// The plugins can't change between renders
-const PLUGINS = [arrowPlugin, autoSizePlugin, hidePlugin];
-
 const POSITIONS: Position[] = ['above', 'below', 'before', 'after'];
 const ALIGNMENTS: Alignment[] = ['start', 'center', 'end'];
 
 const Content: React.FC<Scenario> = ({ options, anchor, popup, dir, wrapper, arrow }) => {
-  const { targetRef, containerRef, arrowRef } = usePositioning(options, PLUGINS);
+  const { targetRef, containerRef, arrowRef } = usePositioning(options);
 
   const content = (
     <>
@@ -402,7 +398,7 @@ describe('usePositioning fallback', () => {
     };
 
     for (let index = 0; index < 300; index++) {
-      const options: ExtendedPositioningProps = {
+      const options: PositioningProps = {
         position: random.pick(POSITIONS),
         align: random.pick(ALIGNMENTS),
         offset: random.chance(0.4) ? { mainAxis: random.pick([0, 8]), crossAxis: random.pick([0, 4]) } : undefined,

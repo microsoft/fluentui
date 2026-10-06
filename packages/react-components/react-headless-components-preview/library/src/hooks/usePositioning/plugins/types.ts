@@ -1,8 +1,8 @@
 import type { FallbackInput, FallbackPlacement, FallbackRect } from '../fallback/computeFallbackPosition';
-import type { ExtendedPositioningProps, PositioningTarget } from '../types';
+import type { PositioningProps, PositioningTarget } from '../types';
 
 export interface PositioningPluginContext {
-  options: ExtendedPositioningProps;
+  options: PositioningProps;
   container: HTMLElement;
   target: PositioningTarget;
   arrow: HTMLElement | null;
@@ -28,7 +28,7 @@ export interface PositioningPlugin {
   /**
    * The browser can't position the element with CSS for these options, the position is computed in JavaScript.
    */
-  requiresJs?: (options: ExtendedPositioningProps) => boolean;
+  requiresJs?: (options: PositioningProps) => boolean;
   /**
    * Adjusts how the position is computed in JavaScript.
    */

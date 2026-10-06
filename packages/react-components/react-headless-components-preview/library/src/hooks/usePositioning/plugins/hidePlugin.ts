@@ -1,10 +1,10 @@
-import type { ExtendedPositioningProps } from '../types';
+import type { PositioningProps } from '../types';
 import type { FallbackRect } from '../fallback/computeFallbackPosition';
 import { POSITIONS } from '../constants';
 import { getClippingRect } from './geometry';
 import type { PositioningPlugin } from './types';
 
-type PositioningEndDetail = Parameters<NonNullable<ExtendedPositioningProps['onPositioningEnd']>>[0]['detail'];
+type PositioningEndDetail = Parameters<NonNullable<PositioningProps['onPositioningEnd']>>[0]['detail'];
 
 export const DATA_POSITIONING_HIDDEN = 'data-positioning-hidden';
 export const DATA_POSITIONING_ESCAPED = 'data-positioning-escaped';

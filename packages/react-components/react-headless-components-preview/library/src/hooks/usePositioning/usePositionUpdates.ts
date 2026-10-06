@@ -1,7 +1,7 @@
 'use client';
 
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import type { ExtendedPositioningProps, LogicalAlignment, PositioningTarget } from './types';
+import type { PositioningProps, LogicalAlignment, PositioningTarget } from './types';
 import type { FallbackInput, FallbackPlacement, FallbackRect } from './fallback/computeFallbackPosition';
 import { computeFallbackPosition } from './fallback/computeFallbackPosition';
 import { getContainingBlockElement, measureContainingBlock } from './fallback/containingBlock';
@@ -13,7 +13,7 @@ import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 
 export interface PositionUpdatesOptions {
-  options: ExtendedPositioningProps;
+  options: PositioningProps;
   plugins: readonly PositioningPlugin[];
   containerEl: HTMLElement | null;
   targetEl: PositioningTarget | null;

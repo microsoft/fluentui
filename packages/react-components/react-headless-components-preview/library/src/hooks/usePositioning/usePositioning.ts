@@ -7,23 +7,15 @@ import type {
   PositioningShorthandValue,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type {
-  ExtendedPositioningProps,
-  ExtendedPositioningReturn,
-  PositioningProps,
-  PositioningReturn,
-  PositioningTarget,
-} from './types';
+import type { PositioningProps, PositioningReturn, PositioningTarget } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePositionUpdates } from './usePositionUpdates';
 import { supportsAnchorPositioning } from './fallback/supportsAnchorPositioning';
-import type { PositioningPlugin } from './plugins/types';
+import { PLUGINS } from './plugins';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
-
-const NO_PLUGINS: readonly PositioningPlugin[] = [];
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
@@ -42,19 +34,10 @@ const readAnchorNames = (element: HTMLElement): string[] => {
 };
 
 /**
- * Positions an element next to a target with CSS anchor positioning, or in JavaScript when the browser doesn't support it.
- *
- * Options that CSS can't handle (arrow, auto size, boundaries, ...) require plugins, `plugins` must be a stable reference.
+ * Positions an element next to a target with CSS anchor positioning, or in JavaScript when the browser doesn't support it
+ * or when an option can't be handled by CSS (function offsets, boundaries and virtual element targets).
  */
-export function usePositioning(options: PositioningProps): PositioningReturn;
-export function usePositioning(
-  options: ExtendedPositioningProps,
-  plugins: readonly PositioningPlugin[],
-): ExtendedPositioningReturn;
-export function usePositioning(
-  options: ExtendedPositioningProps,
-  plugins: readonly PositioningPlugin[] = NO_PLUGINS,
-): ExtendedPositioningReturn {
+export function usePositioning(options: PositioningProps): PositioningReturn {
   const {
     pinned,
     target: customTarget = null,
@@ -95,11 +78,11 @@ export function usePositioning(
   const jsMode =
     !useAnchors ||
     (!!effectiveTarget && !('nodeType' in effectiveTarget)) ||
-    plugins.some(plugin => plugin.requiresJs?.(options));
+    PLUGINS.some(plugin => plugin.requiresJs?.(options));
 
   const requestUpdate = usePositionUpdates({
     options,
-    plugins,
+    plugins: PLUGINS,
     containerEl,
     targetEl: effectiveTarget,
     arrowEl,

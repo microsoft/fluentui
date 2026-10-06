@@ -1,13 +1,4 @@
 export type {
-  FallbackInput,
-  FallbackPlacement,
-  FallbackRect,
-  PositioningTarget,
-  ExtendedPositioningProps,
-  ExtendedPositioningReturn,
-  PositioningPlugin,
-  PositioningPluginContext,
-  PositioningPluginUpdate,
   Position,
   Alignment,
   PositioningProps,
@@ -18,11 +9,6 @@ export type {
 } from './hooks/usePositioning';
 export {
   usePositioning,
-  arrowPlugin,
-  autoSizePlugin,
-  boundaryPlugin,
-  hidePlugin,
-  offsetPlugin,
   POSITIONS,
   ALIGNMENTS,
   getPlacementString,

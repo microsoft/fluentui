@@ -10,47 +10,36 @@ export type LogicalAlignment = 'start' | 'center' | 'end';
 export type PositioningReturn = {
   targetRef: React.RefCallback<HTMLElement>;
   containerRef: React.RefCallback<HTMLElement>;
+  arrowRef: React.RefCallback<HTMLElement>;
 };
 
 export type PositioningProps = Pick<
   CanonicalPositioningProps,
   | 'align'
+  | 'arrowPadding'
+  | 'autoSize'
   | 'coverTarget'
+  | 'disableUpdateOnResize'
   | 'fallbackPositions'
+  | 'flipBoundary'
   | 'matchTargetSize'
   | 'offset'
+  | 'onPositioningEnd'
+  | 'overflowBoundary'
+  | 'overflowBoundaryPadding'
   | 'pinned'
   | 'position'
   | 'positioningRef'
   | 'strategy'
   | 'target'
->;
+> & {
+  /**
+   * Disables positioning.
+   * @default true
+   */
+  enabled?: boolean;
+};
 
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 export type PositioningTarget = HTMLElement | PositioningVirtualElement;
-
-/**
- * Options that are handled by plugins, they are ignored without them.
- */
-export type ExtendedPositioningProps = PositioningProps &
-  Pick<
-    CanonicalPositioningProps,
-    | 'arrowPadding'
-    | 'autoSize'
-    | 'disableUpdateOnResize'
-    | 'flipBoundary'
-    | 'onPositioningEnd'
-    | 'overflowBoundary'
-    | 'overflowBoundaryPadding'
-  > & {
-    /**
-     * Disables positioning.
-     * @default true
-     */
-    enabled?: boolean;
-  };
-
-export type ExtendedPositioningReturn = PositioningReturn & {
-  arrowRef: React.RefCallback<HTMLElement>;
-};
