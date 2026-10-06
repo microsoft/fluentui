@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): handle arrow, autoSize, boundaries, function offsets and hidden state, and return arrowRef",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

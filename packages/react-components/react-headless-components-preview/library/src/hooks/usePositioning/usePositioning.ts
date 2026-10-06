@@ -2,17 +2,18 @@
 
 import * as React from 'react';
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type {
   PositioningImperativeRef,
   PositioningShorthandValue,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type { PositioningProps, PositioningReturn } from './types';
+import type { PositioningReturn, PositioningTarget, UsePositioningOptions } from './types';
 import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
-import { usePlacementObserver } from './usePlacementObserver';
+import { applyOffset, getCoverSelfAlignment, resolveOffset, shorthandToPositionArea } from './utils';
+import { usePositionUpdates } from './usePositionUpdates';
+import { supportsAnchorPositioning } from './fallback/supportsAnchorPositioning';
+import { PLUGINS } from './plugins';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
@@ -32,7 +33,11 @@ const readAnchorNames = (element: HTMLElement): string[] => {
     .filter(Boolean);
 };
 
-export function usePositioning(options: PositioningProps): PositioningReturn {
+/**
+ * Positions an element next to a target with CSS anchor positioning, or in JavaScript when the browser doesn't support it
+ * or when an option can't be handled by CSS (function offsets, boundaries and virtual element targets).
+ */
+export function usePositioning(options: UsePositioningOptions): PositioningReturn {
   const {
     pinned,
     target: customTarget = null,
@@ -44,6 +49,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     strategy = 'fixed',
     matchTargetSize,
     positioningRef,
+    enabled,
   } = options;
 
   const align = normalizeAlign(alignInput);
@@ -56,32 +62,46 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
+  const [arrowEl, setArrowEl] = React.useState<HTMLElement | null>(null);
+  const [imperativeTarget, setImperativeTarget] = React.useState<PositioningTarget | null>(null);
+  const effectiveTarget: PositioningTarget | null = imperativeTarget ?? customTarget ?? triggerEl;
 
   const anchorName = `--${useId('popover-anchor-')}`;
   const positionArea = POSITION_AREA_MAP[position][align];
   const placement = getPlacementString(position, align);
 
-  const { targetDocument } = useFluent();
-
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  // The result doesn't change during the lifetime of the component
+  const [useAnchors] = React.useState(supportsAnchorPositioning);
+  // CSS needs an element to anchor to, and can't handle some of the options
+  const jsMode =
+    !useAnchors ||
+    (!!effectiveTarget && !('nodeType' in effectiveTarget)) ||
+    PLUGINS.some(plugin => plugin.requiresJs?.(options));
+
+  const requestUpdate = usePositionUpdates({
+    options,
+    plugins: PLUGINS,
+    containerEl,
+    targetEl: effectiveTarget,
+    arrowEl,
+    jsMode,
+  });
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
       setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
+        setImperativeTarget(el);
       },
-      updatePosition: requestPlacementUpdate,
+      updatePosition: requestUpdate,
     }),
-    [requestPlacementUpdate],
+    [requestUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    if (!effectiveTarget || !('nodeType' in effectiveTarget) || jsMode) {
       return;
     }
 
@@ -107,23 +127,46 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
+  }, [effectiveTarget, anchorName, jsMode]);
 
   const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
     setTriggerEl(node);
+  }, []);
+
+  const arrowRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
+    setArrowEl(node);
   }, []);
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
       setContainerEl(node);
 
-      if (!node) {
+      if (!node || enabled === false) {
         return;
       }
 
       node.style.setProperty('position', strategy);
       node.style.setProperty('inset', 'auto');
       node.style.setProperty('margin', '0');
+
+      if (jsMode) {
+        // Positioned in JavaScript, see `usePositionUpdates()`
+        [
+          'position-anchor',
+          'position-area',
+          'position-try-fallbacks',
+          'place-self',
+          'align-self',
+          'justify-self',
+        ].forEach(property => node.style.removeProperty(property));
+        node.style.setProperty('left', '0');
+        node.style.setProperty('top', '0');
+        if (matchTargetSize !== 'width') {
+          node.style.removeProperty('width');
+        }
+        node.setAttribute('data-placement', placement);
+        return;
+      }
 
       applyOffset(node, position, mainAxis, crossAxis);
 
@@ -172,6 +215,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       }
     },
     [
+      enabled,
+      jsMode,
       anchorName,
       positionArea,
       placement,
@@ -187,5 +232,5 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     ],
   );
 
-  return { targetRef, containerRef };
+  return { targetRef, containerRef, arrowRef };
 }
