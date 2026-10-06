@@ -635,7 +635,7 @@ export class BaseDropdown extends FASTElement {
     disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
-    static get elementIdentity(): 'dropdown';
+    static readonly elementIdentity = "dropdown";
     // @internal
     elementInternals: ElementInternals;
     get enabledOptions(): DropdownOption[];
