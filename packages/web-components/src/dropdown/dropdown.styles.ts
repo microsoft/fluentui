@@ -59,6 +59,8 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    --_indicator-size: 20px;
+
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     cursor: pointer;
@@ -77,7 +79,8 @@ export const styles = css`
     box-sizing: border-box;
     color: inherit;
     column-gap: ${spacingHorizontalXXS};
-    display: inline-flex;
+    display: inline-grid;
+    grid-template-columns: 1fr var(--_indicator-size);
     justify-content: space-between;
     min-width: 160px;
     overflow: hidden;
@@ -104,7 +107,6 @@ export const styles = css`
 
   ::slotted(:is(input, button)) {
     all: unset;
-    flex: 1 1 auto;
   }
 
   ::slotted(button) {
@@ -122,16 +124,17 @@ export const styles = css`
     aspect-ratio: 1;
     color: ${colorNeutralForeground3};
     display: inline-flex;
+    grid-column: 2;
     justify-content: center;
-    width: 20px;
+    width: var(--_indicator-size);
   }
 
   :host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-    width: 16px;
+    --_indicator-size: 16px;
   }
 
   :host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-    width: 24px;
+    --_indicator-size: 24px;
   }
 
   .control::after,
