@@ -30,6 +30,7 @@ describe('useMenuContextValues_unstable', () => {
         "setOpen": [Function],
         "triggerId": "menu_r_0_",
         "triggerRef": [Function],
+        "unstable_disableAutoFocus": false,
       }
     `);
   });

@@ -21,6 +21,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   const open = useMenuContext(ctx => ctx.open);
   const setOpen = useMenuContext(ctx => ctx.setOpen);
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
+  const disableAutoFocus = useMenuContext(ctx => ctx.unstable_disableAutoFocus);
 
   React.useEffect(() => {
     const surface = menuPopoverRef.current as HTMLElement | null;
@@ -46,7 +47,9 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
       ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])',
     );
 
-    firstFocusable?.setAttribute('autofocus', '');
+    if (!disableAutoFocus) {
+      firstFocusable?.setAttribute('autofocus', '');
+    }
 
     if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
       surface.showPopover();
@@ -70,8 +73,13 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     };
 
     surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [menuPopoverRef, open, setOpen]);
+    return () => {
+      surface.removeEventListener('toggle', onSurfaceToggle);
+      if (!disableAutoFocus) {
+        firstFocusable?.removeAttribute('autofocus');
+      }
+    };
+  }, [menuPopoverRef, open, setOpen, disableAutoFocus]);
 
   return state;
 };

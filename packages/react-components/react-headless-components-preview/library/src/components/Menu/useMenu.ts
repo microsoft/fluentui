@@ -32,6 +32,7 @@ export const useMenu = (props: MenuProps): MenuState => {
     closeOnScroll = false,
     openOnContext = false,
     persistOnItemClick = false,
+    unstable_disableAutoFocus: disableAutoFocus = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
     mountNode = null,
@@ -123,6 +124,8 @@ export const useMenu = (props: MenuProps): MenuState => {
     checkedValues,
     onCheckedValueChange,
     persistOnItemClick,
+    // eslint-disable-next-line @typescript-eslint/naming-convention -- matches the unstable Popover API
+    unstable_disableAutoFocus: disableAutoFocus,
   } as MenuState;
 };
 

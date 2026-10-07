@@ -21,6 +21,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     setOpen,
     triggerId,
     triggerRef,
+    unstable_disableAutoFocus: disableAutoFocus,
   } = state;
 
   const menu = React.useMemo(
@@ -41,6 +42,8 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
       setOpen,
       triggerId,
       triggerRef,
+      // eslint-disable-next-line @typescript-eslint/naming-convention -- matches the unstable Popover API
+      unstable_disableAutoFocus: disableAutoFocus,
     }),
     [
       checkedValues,
@@ -59,6 +62,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
       setOpen,
       triggerId,
       triggerRef,
+      disableAutoFocus,
     ],
   );
 

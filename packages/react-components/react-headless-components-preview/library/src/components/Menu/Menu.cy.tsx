@@ -7,6 +7,79 @@ import type { JSXElement } from '@fluentui/react-utilities';
 const mount = (element: JSXElement) => mountBase(element);
 
 describe('Menu', () => {
+  describe('autofocus opt-out', () => {
+    const Example = ({ disableAutoFocus = false }: { disableAutoFocus?: boolean }) => {
+      const [open, setOpen] = React.useState(false);
+      const [disabled, setDisabled] = React.useState(disableAutoFocus);
+      const [items, setItems] = React.useState(['Alpha', 'Beta']);
+      return (
+        <Menu open={open} onOpenChange={(_, data) => setOpen(data.open)} unstable_disableAutoFocus={disabled}>
+          <MenuTrigger disableButtonEnhancement>
+            <input
+              id="editor"
+              aria-label="Find actions"
+              defaultValue="abcdef"
+              onChange={() => setItems(['Gamma', 'Delta'])}
+              onKeyDown={event => {
+                if (event.key === 'F8') {
+                  setOpen(current => !current);
+                } else if (event.key === 'F2') {
+                  setDisabled(true);
+                }
+              }}
+            />
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              {items.map(item => (
+                <MenuItem key={item}>{item}</MenuItem>
+              ))}
+              <Menu>
+                <MenuTrigger disableButtonEnhancement>
+                  <MenuItem>More actions</MenuItem>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>Nested action</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      );
+    };
+
+    it('keeps default autofocus and removes stale native autofocus before a disabled reopen', () => {
+      mount(<Example />);
+      cy.get('#editor').focus().trigger('keydown', { key: 'F8' });
+      cy.contains('[role="menuitem"]', 'Alpha').should('be.focused').should('have.attr', 'autofocus');
+      cy.get('#editor').focus().trigger('keydown', { key: 'F8' }).trigger('keydown', { key: 'F2' });
+      cy.contains('[role="menuitem"]', 'Alpha').should('not.have.attr', 'autofocus');
+      cy.get<HTMLInputElement>('#editor').then(([input]) => input.setSelectionRange(1, 4, 'backward'));
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.contains('[role="menuitem"]', 'Alpha').should('be.visible');
+      cy.get<HTMLInputElement>('#editor')
+        .should('be.focused')
+        .should(([input]) => {
+          expect(input.selectionStart).to.equal(1);
+          expect(input.selectionEnd).to.equal(4);
+          expect(input.selectionDirection).to.equal('backward');
+        });
+      cy.realType('x');
+      cy.get('#editor').should('have.value', 'axef').should('be.focused');
+      cy.contains('[role="menuitem"]', 'Gamma').should('be.visible').should('not.have.attr', 'autofocus');
+    });
+
+    it('does not inherit the root opt-out in a submenu after deliberate entry', () => {
+      mount(<Example disableAutoFocus />);
+      cy.get('#editor').focus().trigger('keydown', { key: 'F8' }).should('be.focused');
+      cy.contains('[role="menuitem"]', 'More actions').focus().realPress('ArrowRight');
+      cy.contains('[role="menuitem"]', 'Nested action').should('be.focused').realPress('Escape');
+      cy.contains('[role="menuitem"]', 'More actions').should('be.focused');
+    });
+  });
+
   describe('with Tooltip wrapping MenuTrigger', () => {
     const TooltipWrappedMenuExample = () => (
       <Menu>

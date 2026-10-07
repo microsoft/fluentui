@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add an instance-local unstable_disableAutoFocus option to Menu while preserving close-time focus restoration",
+  "packageName": "@fluentui/react-menu",
+  "email": "paulmardling@microsoft.com"
+}

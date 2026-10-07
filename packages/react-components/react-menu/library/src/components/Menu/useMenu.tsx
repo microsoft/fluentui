@@ -94,6 +94,7 @@ export const useMenuBase_unstable = (
     closeOnScroll = false,
     openOnContext = false,
     persistOnItemClick = false,
+    unstable_disableAutoFocus: disableAutoFocus = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
     mountNode = null,
@@ -201,6 +202,7 @@ export const useMenuBase_unstable = (
     defaultOpen: props.defaultOpen,
     onOpenChange: props.onOpenChange,
     openOnContext,
+    disableAutoFocus,
   });
 
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
@@ -231,6 +233,8 @@ export const useMenuBase_unstable = (
     checkedValues,
     onCheckedValueChange,
     persistOnItemClick,
+    // eslint-disable-next-line @typescript-eslint/naming-convention -- matches the unstable Popover API
+    unstable_disableAutoFocus: disableAutoFocus,
     safeZone: safeZoneHandle.elementToRender,
   };
 };
@@ -269,8 +273,7 @@ const useMenuOpenState = (
     | 'openOnContext'
     | 'closeOnScroll'
     | 'hoverDelay'
-  > &
-    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
+  > & { disableAutoFocus: boolean } & Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
@@ -373,7 +376,9 @@ const useMenuOpenState = (
   const firstMount = useFirstMount();
   React.useEffect(() => {
     if (open) {
-      focusFirst();
+      if (!state.disableAutoFocus) {
+        focusFirst();
+      }
     } else {
       // Skip the initial render — focus should only be restored when the menu
       // transitions from open → closed, not on mount.
@@ -400,7 +405,15 @@ const useMenuOpenState = (
     }
     // firstMount change should not re-run this effect
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
+  }, [
+    state.triggerRef,
+    state.isSubmenu,
+    state.disableAutoFocus,
+    open,
+    focusFirst,
+    targetDocument,
+    state.menuPopoverRef,
+  ]);
 
   return [open, setOpen] as const;
 };

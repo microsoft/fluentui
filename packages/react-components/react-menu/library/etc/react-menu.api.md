@@ -48,7 +48,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & Pick<MenuProps, 'unstable_disableAutoFocus'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -361,6 +361,7 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> & Pick<PortalProps, '
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     open?: boolean;
     defaultOpen?: boolean;
+    unstable_disableAutoFocus?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
     persistOnItemClick?: boolean;
@@ -394,7 +395,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<MenuSplitGroupContextValue, 'setMultiline'>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick' | 'unstable_disableAutoFocus'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;

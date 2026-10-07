@@ -69,6 +69,17 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> &
     defaultOpen?: boolean;
 
     /**
+     * Disables automatically focusing the first item when this menu opens.
+     * Does not affect focus restoration on close or autofocus in nested menus.
+     * The consumer is responsible for accessible trigger semantics, deliberate
+     * keyboard entry, and dismissal while focus remains outside the menu.
+     *
+     * @default false
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention -- matches the unstable Popover API
+    unstable_disableAutoFocus?: boolean;
+
+    /**
      * Opens the menu on right click (context menu), removes all other menu open interactions
      *
      * @default false
@@ -118,6 +129,7 @@ export type MenuState = ComponentState<InternalMenuSlots> &
       | 'hoverDelay'
       | 'openOnContext'
       | 'persistOnItemClick'
+      | 'unstable_disableAutoFocus'
     >
   > & {
     /**

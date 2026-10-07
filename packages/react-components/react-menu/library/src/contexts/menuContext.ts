@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
-import type { MenuState } from '../components/Menu/index';
+import type { MenuProps, MenuState } from '../components/Menu/index';
 
 export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue | undefined>(
   undefined,
@@ -27,6 +27,8 @@ const menuContextDefaultValue: MenuContextValue = {
   hasCheckmarks: false,
   inline: false,
   persistOnItemClick: false,
+  // eslint-disable-next-line @typescript-eslint/naming-convention -- matches the unstable Popover API
+  unstable_disableAutoFocus: false,
 };
 
 /**
@@ -51,16 +53,17 @@ export type MenuContextValue = Pick<
   | 'checkedValues'
   | 'onCheckedValueChange'
   | 'safeZone'
-> & {
-  open: boolean;
-  triggerId: string;
-  /**
-   * Default values to be checked on mount
-   * @deprecated this property is not used internally anymore,
-   * the signature remains just to avoid breaking changes
-   */
-  defaultCheckedValues?: Record<string, string[]>;
-};
+> &
+  Pick<MenuProps, 'unstable_disableAutoFocus'> & {
+    open: boolean;
+    triggerId: string;
+    /**
+     * Default values to be checked on mount
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    defaultCheckedValues?: Record<string, string[]>;
+  };
 
 export const MenuProvider = MenuContext.Provider;
 

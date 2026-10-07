@@ -18,6 +18,7 @@ import {
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import * as React from 'react';
 
 import {
@@ -455,6 +456,246 @@ describe('Menu', () => {
     cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').get('input').realClick();
 
     cy.get('input').should('be.focused');
+  });
+
+  describe('Menu autofocus opt-out', () => {
+    it('supports an editable input-anchored menu without MenuTrigger', () => {
+      const AnchoredExample = () => {
+        const [input, setInput] = React.useState<HTMLInputElement | null>(null);
+        const [open, setOpen] = React.useState(false);
+        const restoreFocusTarget = useRestoreFocusTarget();
+        return (
+          <>
+            <input
+              ref={setInput}
+              {...restoreFocusTarget}
+              aria-label="Find actions"
+              aria-haspopup="menu"
+              aria-expanded={open}
+              onChange={() => setOpen(true)}
+              onKeyDown={event => {
+                if (event.key === 'Escape' || event.key === 'Tab') {
+                  setOpen(false);
+                }
+              }}
+            />
+            <Menu
+              open={open}
+              onOpenChange={(_, data) => setOpen(data.open)}
+              unstable_disableAutoFocus
+              positioning={{ target: input }}
+            >
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>New document</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </>
+        );
+      };
+      mount(<AnchoredExample />);
+      cy.get('input').focus();
+      cy.realType('new');
+      cy.get(menuSelector).should('be.visible');
+      cy.get('input').should('be.focused').should('have.value', 'new');
+      cy.contains('[role="menuitem"]', 'New document').focus().realPress('Escape');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('input').should('be.focused');
+      cy.realType('x');
+      cy.get(menuSelector).should('be.visible');
+      cy.get('input').should('be.focused').should('have.value', 'newx').realPress('Escape');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('input').should('be.focused');
+    });
+
+    const Example = ({
+      disableAutoFocus,
+      initiallyOpen = false,
+    }: {
+      disableAutoFocus?: boolean;
+      initiallyOpen?: boolean;
+    }) => {
+      const [open, setOpen] = React.useState(initiallyOpen);
+      const [items, setItems] = React.useState(['Alpha', 'Beta']);
+      return (
+        <>
+          <button id="before-editor">Before</button>
+          <Menu open={open} onOpenChange={(_, data) => setOpen(data.open)} unstable_disableAutoFocus={disableAutoFocus}>
+            <MenuTrigger disableButtonEnhancement>
+              <input
+                id="editor"
+                aria-label="Find actions"
+                defaultValue="abcdef"
+                autoFocus
+                onChange={() => setOpen(true)}
+                onKeyDown={event => {
+                  switch (event.key) {
+                    case 'F2':
+                      setItems(current => [...current].reverse());
+                      break;
+                    case 'F3':
+                      setItems(['Gamma', 'Delta']);
+                      break;
+                    case 'F4':
+                      setItems([]);
+                      break;
+                    case 'F5':
+                      setItems(['Alpha', 'Beta']);
+                      break;
+                    case 'F8':
+                      setOpen(current => !current);
+                      break;
+                    case 'Tab':
+                      // Dismissal while focus is outside MenuPopover is the consumer's responsibility.
+                      setOpen(false);
+                      break;
+                  }
+                }}
+              />
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                {items.map(item => (
+                  <MenuItem key={item}>{item}</MenuItem>
+                ))}
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <MenuItem>More actions</MenuItem>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem>Nested action</MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <input id="unrelated-control" aria-label="Unrelated control" />
+        </>
+      );
+    };
+
+    const assertSelection = (start: number, end: number, direction: string) => {
+      cy.get<HTMLInputElement>('#editor')
+        .should('be.focused')
+        .should(([input]) => {
+          expect(input.selectionStart).to.equal(start);
+          expect(input.selectionEnd).to.equal(end);
+          expect(input.selectionDirection).to.equal(direction);
+        });
+    };
+
+    [undefined, false].forEach(disableAutoFocus => {
+      it(`autofocuses when the option is ${String(disableAutoFocus)}`, () => {
+        mount(<Example disableAutoFocus={disableAutoFocus} />);
+        cy.get('#editor').trigger('keydown', { key: 'F8' });
+        cy.contains('[role="menuitem"]', 'Alpha').should('be.focused');
+      });
+    });
+
+    it('preserves backward selection through opening, result updates, closing and reopening, and permits typing', () => {
+      mount(<Example disableAutoFocus />);
+      cy.get<HTMLInputElement>('#editor').then(([input]) => input.setSelectionRange(1, 4, 'backward'));
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.get(menuSelector).should('be.visible');
+      assertSelection(1, 4, 'backward');
+
+      ['F2', 'F3', 'F4', 'F5'].forEach((key, index) => {
+        cy.get('#editor').trigger('keydown', { key });
+        cy.get('[role="menuitem"]').should('have.length', index === 2 ? 1 : 3);
+        cy.get('[role="menuitem"]').first().should('have.text', ['Beta', 'Gamma', 'More actions', 'Alpha'][index]);
+        assertSelection(1, 4, 'backward');
+      });
+
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.get(menuSelector).should('not.exist');
+      assertSelection(1, 4, 'backward');
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.get(menuSelector).should('be.visible');
+      assertSelection(1, 4, 'backward');
+      cy.realType('x');
+      cy.get('#editor').should('have.value', 'axef');
+      assertSelection(2, 2, 'forward');
+    });
+
+    it('preserves a collapsed caret when initially open and typing updates the controlled menu', () => {
+      mount(<Example disableAutoFocus initiallyOpen />);
+      cy.get(menuSelector).should('be.visible');
+      cy.get<HTMLInputElement>('#editor')
+        .should('be.focused')
+        .then(([input]) => input.setSelectionRange(3, 3, 'forward'));
+      cy.get('#editor').trigger('keydown', { key: 'F3' });
+      assertSelection(3, 3, 'forward');
+      cy.realType('x');
+      cy.get('#editor').should('have.value', 'abcxdef').should('be.focused');
+    });
+
+    it('supports navigation, typeahead, submenu autofocus, Escape restoration and selection after deliberate entry', () => {
+      mount(<Example disableAutoFocus />);
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.contains('[role="menuitem"]', 'Alpha').focus().realPress('ArrowDown');
+      cy.contains('[role="menuitem"]', 'Beta').should('be.focused');
+      cy.realPress('A');
+      cy.contains('[role="menuitem"]', 'Alpha').should('be.focused');
+      cy.contains('[role="menuitem"]', 'More actions').focus().realPress('ArrowRight');
+      cy.contains('[role="menuitem"]', 'Nested action').should('be.focused').realPress('Escape');
+      cy.contains('[role="menuitem"]', 'More actions').should('be.focused').realPress('Escape');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('#editor').should('be.focused').trigger('keydown', { key: 'F8' });
+      cy.contains('[role="menuitem"]', 'Alpha').focus().realPress('Enter');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('#editor').should('be.focused');
+    });
+
+    [false, true].forEach(shift => {
+      it(`preserves native ${shift ? 'Shift+Tab' : 'Tab'} after deliberate entry and from the textbox`, () => {
+        mount(<Example disableAutoFocus />);
+        const keys = shift ? ['Shift' as const, 'Tab' as const] : 'Tab';
+        const destination = shift ? '#before-editor' : '#unrelated-control';
+        cy.get('#editor').trigger('keydown', { key: 'F8' });
+        cy.contains('[role="menuitem"]', 'Alpha').focus().realPress(keys);
+        cy.get(destination).should('be.focused');
+        cy.get(menuSelector).should('not.exist');
+        cy.get('#editor').focus().trigger('keydown', { key: 'F8' }).realPress(keys);
+        cy.get(destination).should('be.focused');
+        cy.get(menuSelector).should('not.exist');
+      });
+    });
+
+    it('does not restore focus over an unrelated control on outside dismissal', () => {
+      mount(<Example disableAutoFocus />);
+      cy.get('#editor').trigger('keydown', { key: 'F8' });
+      cy.get(menuSelector).should('be.visible');
+      cy.get('#unrelated-control').realClick().should('be.focused');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('#unrelated-control').should('be.focused');
+    });
+
+    it('respects the option for an initially open uncontrolled menu and subsequent reopen', () => {
+      mount(
+        <Menu defaultOpen unstable_disableAutoFocus>
+          <MenuTrigger disableButtonEnhancement>
+            <input id="editor" aria-label="Find actions" defaultValue="abcdef" autoFocus />
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Alpha</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+      cy.get(menuSelector).should('be.visible');
+      cy.get<HTMLInputElement>('#editor')
+        .should('be.focused')
+        .then(([input]) => input.setSelectionRange(2, 2, 'forward'));
+      cy.get('#editor').realPress('Escape');
+      cy.get(menuSelector).should('not.exist');
+      cy.get('#editor').trigger('click');
+      cy.get(menuSelector).should('be.visible');
+      assertSelection(2, 2, 'forward');
+    });
   });
 
   it('should be dismissed with Escape', () => {
