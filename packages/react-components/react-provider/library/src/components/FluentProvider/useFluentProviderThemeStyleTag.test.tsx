@@ -90,6 +90,30 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-update: xxx;}"`);
   });
 
+  it.each(['"unfinished', 'red /* unfinished', 'calc(1px', 'red\\', 'red; color: transparent'])(
+    'keeps later theme declarations independent of %j',
+    value => {
+      const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const theme = { ...defaultTheme, fontFamilyBase: value, colorBrandBackground: 'blue' };
+        const { result, unmount } = renderHook(() =>
+          useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+        );
+        const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+        const sheet = tag.sheet as CSSStyleSheet;
+        const rule = sheet.cssRules[0] as CSSStyleRule;
+
+        expect(sheet.cssRules).toHaveLength(1);
+        expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+        expect(rule.style.getPropertyValue('color')).toBe('');
+        expect(logWarnSpy).toHaveBeenCalled();
+        unmount();
+      } finally {
+        logWarnSpy.mockRestore();
+      }
+    },
+  );
+
   it('should update style tag on theme change', () => {
     const { result } = renderHook(() =>
       useFluentProviderThemeStyleTag({

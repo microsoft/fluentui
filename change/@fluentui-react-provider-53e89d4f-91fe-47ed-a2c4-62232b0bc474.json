@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-provider): contain malformed theme tokens while preserving valid CSS syntax",
+  "packageName": "@fluentui/react-provider",
+  "email": "paliprandi@microsoft.com"
+}
