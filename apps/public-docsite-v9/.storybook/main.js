@@ -6,6 +6,21 @@ const { configureReactIcons } = require('../../../.storybook/react-icons-webpack
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
+/**
+ * Packages that playground examples can import. Story sources are rewritten to `@fluentui/react-components` by the
+ * export-to-sandbox addon, so the suite entries cover most stories; the remaining entries are the most common extras.
+ *
+ * @type {string[]}
+ */
+const playgroundModules = [
+  '@fluentui/react-components',
+  '@fluentui/react-icons',
+  '@fluentui/react-motion-components-preview',
+  '@fluentui/react-calendar-compat',
+  '@fluentui/react-datepicker-compat',
+  '@fluentui/react-timepicker-compat',
+];
+
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
   stories: [
@@ -47,7 +62,15 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
+  addons: [
+    ...rootMain.addons,
+    /** {@link file://./../../../packages/react-components/react-storybook-addon-playground/package.json} */
+    {
+      name: '@fluentui/react-storybook-addon-playground',
+      /** @type {import('@fluentui/react-storybook-addon-playground').PresetConfig} */
+      options: { modules: playgroundModules },
+    },
+  ],
   build: {
     previewUrl: process.env.DEPLOY_PATH,
   },

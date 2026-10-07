@@ -1,3 +1,4 @@
+import '@fluentui/react-storybook-addon-playground/styles.css';
 import * as rootPreview from '../../../.storybook/preview';
 
 /** @type {NonNullable<import('@storybook/react').Decorator[]>} */
