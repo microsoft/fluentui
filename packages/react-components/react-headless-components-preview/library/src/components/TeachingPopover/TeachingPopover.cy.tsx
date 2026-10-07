@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import {
@@ -276,6 +277,23 @@ describe('TeachingPopover', () => {
       );
     };
 
+    const ShadowRootExample = ({ trapFocus = false, redirectFocus = false }) => {
+      const hostRef = React.useRef<HTMLDivElement>(null);
+      const [shadowRoot, setShadowRoot] = React.useState<ShadowRoot | null>(null);
+
+      React.useEffect(() => {
+        const host = hostRef.current!;
+        setShadowRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
+      }, []);
+
+      return (
+        <>
+          <div ref={hostRef} data-testid="shadow-host" />
+          {shadowRoot && createPortal(<Example trapFocus={trapFocus} redirectFocus={redirectFocus} />, shadowRoot)}
+        </>
+      );
+    };
+
     ([false, true] as const).forEach(trapFocus => {
       describe(trapFocus ? 'modal' : 'non-modal', () => {
         beforeEach(() => mount(<Example trapFocus={trapFocus} />));
@@ -307,6 +325,40 @@ describe('TeachingPopover', () => {
       cy.contains('button', 'Got it').realPress('Enter');
       cy.get('[aria-label="Feature tour"]').should('not.exist');
       cy.contains('button', 'Outside').should('have.focus');
+    });
+
+    ([false, true] as const).forEach(trapFocus => {
+      describe(`shadow root ${trapFocus ? 'modal' : 'non-modal'}`, () => {
+        beforeEach(() => mount(<ShadowRootExample trapFocus={trapFocus} />));
+
+        it('restores trigger focus after Got it closes the tour', () => {
+          cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Tour help').should('have.focus');
+          cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Next').focus().realPress('Enter');
+          cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Next').realPress('Enter');
+          cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Got it').realPress('Enter');
+          cy.get('[data-testid="shadow-host"]').shadow().find('[aria-label="Feature tour"]').should('not.exist');
+          cy.get('[data-testid="shadow-host"]').shadow().find(triggerSelector).should('have.focus');
+        });
+
+        it('restores trigger focus after Escape dismisses the tour', () => {
+          cy.get('[data-testid="shadow-host"]')
+            .shadow()
+            .contains('button', 'Tour help')
+            .should('have.focus')
+            .realPress('Escape');
+          cy.get('[data-testid="shadow-host"]').shadow().find('[aria-label="Feature tour"]').should('not.exist');
+          cy.get('[data-testid="shadow-host"]').shadow().find(triggerSelector).should('have.focus');
+        });
+      });
+    });
+
+    it('preserves intentional focus movement within the shadow root on finish', () => {
+      mount(<ShadowRootExample redirectFocus />);
+      cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Next').focus().realPress('Enter');
+      cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Next').realPress('Enter');
+      cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Got it').realPress('Enter');
+      cy.get('[data-testid="shadow-host"]').shadow().find('[aria-label="Feature tour"]').should('not.exist');
+      cy.get('[data-testid="shadow-host"]').shadow().contains('button', 'Outside').should('have.focus');
     });
   });
 });

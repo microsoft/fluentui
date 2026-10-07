@@ -41,7 +41,15 @@ export const useTeachingPopover = (props: TeachingPopoverProps): TeachingPopover
     const trackFocus = () => {
       // Native close can emit focusin while focus is still on the body.
       if (targetDocument.activeElement !== targetDocument.body) {
-        focusWasInside.current = state.contentRef.current?.contains(targetDocument.activeElement) ?? false;
+        const surface = state.contentRef.current;
+        const root = surface?.getRootNode();
+        const ShadowRootConstructor = targetDocument.defaultView?.ShadowRoot;
+        // Document focus is retargeted to the host when the surface lives in a shadow root.
+        const activeElement =
+          ShadowRootConstructor && root instanceof ShadowRootConstructor
+            ? root.activeElement
+            : targetDocument.activeElement;
+        focusWasInside.current = surface?.contains(activeElement) ?? false;
       }
     };
     trackFocus();

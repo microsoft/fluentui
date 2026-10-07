@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
@@ -242,6 +243,20 @@ describe('TeachingPopover', () => {
       expect(getByText('Inside')).toHaveFocus();
       rerender(<Example open={false} withTrigger={false} />);
       expect(getByText('Outside')).not.toHaveFocus();
+    });
+
+    (['open', 'closed'] as const).forEach(mode => {
+      it(`restores focus owned by an initially open surface in a ${mode} shadow root`, () => {
+        const { container } = render(<div />);
+        const host = container.firstElementChild!;
+        const shadowRoot = host.attachShadow({ mode });
+        const { rerender } = render(createPortal(<Example open />, shadowRoot));
+
+        expect(shadowRoot.activeElement).toHaveTextContent('Inside');
+        expect(host.ownerDocument.activeElement).toBe(host);
+        rerender(createPortal(<Example open={false} />, shadowRoot));
+        expect(shadowRoot.activeElement).toHaveTextContent('Trigger');
+      });
     });
   });
 });
