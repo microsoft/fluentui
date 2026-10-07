@@ -91,17 +91,13 @@ the stories projects.
 
 ### 1. Three layers
 
-```
-styled      @fluentui/react-<name>, @fluentui/react-components
-                                                  design props, default slots (icons, Label, Listbox), motion,
-                                                  styles hooks, Fluent overlays (floating-ui, Portal, tabster)
-                 │ depends on
-headless    @fluentui/react-headless-components-preview
-                                                  base props/state types, base hooks, render functions, contexts,
-                                                  data-* state contract, its own Popover/Tooltip/Dialog
-                 │ depends on
-foundation  react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts, react-context-selector,
-            react-positioning, react-aria (once its tabster runtime is split out)
+```mermaid
+flowchart TB
+  styled["<b>styled</b><br/>@fluentui/react-&lt;name&gt;, @fluentui/react-components<br/><i>design props, default slots (icons, Label, Listbox), motion,<br/>styles hooks, Fluent overlays (floating-ui, Portal, tabster)</i>"]
+  headless["<b>headless</b><br/>@fluentui/react-headless-components-preview<br/><i>base props/state types, base hooks, render functions, contexts,<br/>data-* state contract, its own Popover/Tooltip/Dialog</i>"]
+  foundation["<b>foundation</b><br/>react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts,<br/>react-context-selector, react-positioning, react-aria (once its tabster runtime is split out)"]
+  styled -- depends on --> headless
+  headless -- depends on --> foundation
 ```
 
 Three rules:
