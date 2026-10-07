@@ -215,7 +215,7 @@ export class BaseField extends FASTElement {
    * @internal
    */
   private async setLabelProperties() {
-    const input = await this.getLabellableInput();
+    const input = await this.getLabelableInput();
 
     if (!input) {
       return;
@@ -232,7 +232,7 @@ export class BaseField extends FASTElement {
     });
   }
 
-  private getLabellableInput(): Promise<HTMLElement | null> {
+  private getLabelableInput(): Promise<HTMLElement | null> {
     return new Promise(resolve => {
       if (!this.input) {
         return resolve(null);
