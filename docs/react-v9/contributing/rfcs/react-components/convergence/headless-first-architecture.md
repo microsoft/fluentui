@@ -95,7 +95,7 @@ the stories projects.
 flowchart TB
   styled["<b>styled</b><br/>@fluentui/react-&lt;name&gt;, @fluentui/react-components<br/><i>design props, default slots (icons, Label, Listbox), motion,<br/>styles hooks, Fluent overlays (floating-ui, Portal, tabster)</i>"]
   headless["<b>headless</b><br/>@fluentui/react-headless-components-preview<br/><i>base props/state types, base hooks, render functions, contexts,<br/>data-* state contract, its own Popover/Tooltip/Dialog</i>"]
-  foundation["<b>foundation</b><br/>react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts,<br/>react-context-selector, react-positioning, react-aria (once its tabster runtime is split out)"]
+  foundation["<b>foundation</b><br/>react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts,<br/>react-context-selector, react-aria (once its tabster runtime is split out)"]
   styled -- depends on --> headless
   headless -- depends on --> foundation
 ```
@@ -103,8 +103,13 @@ flowchart TB
 Three rules:
 
 - Headless imports foundation only. It never imports `@griffel/*`, `@fluentui/react-theme` at runtime, `react-icons`,
-  `react-motion*`, `react-portal`, the `tabster` runtime, or a styled package. `react-positioning` is already a
-  headless dependency and stays one, because the Menu and TagPicker base hooks position their surfaces with it.
+  `react-motion*`, `react-portal`, `react-positioning`, the `tabster` runtime, or a styled package. Today
+  `react-positioning` is a headless dependency, but all headless takes from it is types (`Position`, `Alignment`,
+  `PositioningShorthandValue`, `PositioningVirtualElement`, `PositioningImperativeRef`) and one pure function,
+  `resolvePositioningShorthand`, used by its own CSS anchor `usePositioning`. None of the base hooks headless wraps
+  positions anything: `usePositioning` is called in `useMenu_unstable` and `useTagPicker_unstable`, the outer hooks,
+  and headless Menu has its own root `useMenu`. Step 1 moves the types and the parser out of the floating-ui runtime
+  so the dependency can be dropped.
 - Styled imports headless and foundation. When a styled package needs another component's behaviour it imports the
   headless subpath (`@fluentui/react-headless-components-preview/field`), never another styled package.
 - A styled package may still depend on another styled package to render it as a default slot (Checkbox renders `Label`,
@@ -156,17 +161,18 @@ Rules that fall out of this:
 
 Headless overlays fall into two groups and this RFC treats them differently.
 
-**Custom headless implementations: Popover, Tooltip, Dialog.** These do not call a v9 base hook. They are built on the
-HTML Popover API, `<dialog>`, the top layer and CSS anchor positioning, and import nothing from `react-popover`,
-`react-tooltip` or `react-dialog` beyond a type. They stay exactly as they are. v9 Popover, Tooltip and Dialog keep
-their floating-ui, `Portal` and tabster implementation and do not become dependent on the headless ones. Two
-implementations of these three families remain; whether and how to unify them is a separate decision, not part of
-this RFC.
+**Custom headless implementations: Popover, Tooltip, Dialog, and the Menu root.** These do not call a v9 base hook.
+They are built on the HTML Popover API, `<dialog>`, the top layer and CSS anchor positioning, and import nothing from
+`react-popover`, `react-tooltip` or `react-dialog` beyond a type. Headless `useMenu` is the same kind of thing: its
+own root hook on the headless `usePositioning`, not a wrapper of `useMenuBase_unstable`. They stay exactly as they
+are. v9 Popover, Tooltip, Dialog and the v9 Menu root keep their floating-ui, `Portal` and tabster implementation and
+do not become dependent on the headless ones. Two implementations of these families remain; whether and how to unify
+them is a separate decision, not part of this RFC.
 
-**v9-wrapping overlays: Menu, Drawer, Toast, the Combobox, Dropdown and TagPicker listboxes.** Their headless version
-calls a v9 base hook today, so they move in step 3 like every other component. Their base hooks bring
-`react-positioning` with them, which headless already depends on. Motion (`presenceMotionSlot`,
-`useMotionForwardedRef`) and `Portal` stay in the styled outer hooks.
+**v9-wrapping overlay parts: MenuItem, MenuList, MenuPopover, MenuTrigger, Drawer, Toast, the Combobox, Dropdown and
+TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in step 3 like every other
+component. None of those base hooks positions a surface; positioning (`usePositioning` from `react-positioning`),
+motion (`presenceMotionSlot`, `useMotionForwardedRef`) and `Portal` all live in the styled outer hooks and stay there.
 
 ### 4. Follow-ups (out of scope, keep in mind)
 
@@ -198,7 +204,7 @@ provide.
   package in `forbidden`. The rule already exists and the shared react config already uses it for stories. Warn only
   until step 3 is complete.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
-  runtime, `react-icons`, `react-motion*`, `react-portal`.
+  runtime, `react-icons`, `react-motion*`, `react-portal`, `react-positioning`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
   already has.
 - Add the styled-side lint rule that forbids importing `use<Name>` from a headless subpath.
@@ -215,6 +221,10 @@ provide.
   TagPickerControl: icons and `Label` live in the same file as the base hook. Move them into the outer hook where they
   are not there already, and split the file so the base hook's module imports nothing styled.
 - Carousel, TagGroup, TagPickerControl, MenuSplitGroup, MenuItemSwitch: remove `.styles` imports from hooks.
+- Positioning: move the shared positioning types and the pure `resolvePositioningShorthand` parser from
+  `react-positioning` into `react-utilities` (or a types-only entry that both packages import), then drop
+  `react-positioning` from the headless `package.json`. `react-positioning` re-exports them, so nothing changes for
+  its consumers.
 - Done when the `allowedViolations` list for `BaseHooks.fixture.js` in `react-components/bundle-isolation.config.json`
   (today `@fluentui/react-motion`, `@griffel/core`, `@griffel/react`, `tabster`) is empty for every component that
   moves in step 3.
