@@ -34,7 +34,7 @@ export const useList_unstable = (
   const state = useListBase_unstable(props, ref);
 
   const { navigationMode, selectionMode } = props;
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
   const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
@@ -80,7 +80,7 @@ export const useListBase_unstable = (
 ): ListState => {
   const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
 
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,

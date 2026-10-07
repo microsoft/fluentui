@@ -35,6 +35,17 @@ describe('useListItemBase_unstable', () => {
     resetIdsForTests();
   });
 
+  it('renders and validates explicit ordered-list and list-item roots', () => {
+    const { getByRole } = render(
+      <BaseList as="ol">
+        <BaseListItem as="li">Item</BaseListItem>
+      </BaseList>,
+    );
+
+    expect(getByRole('list').tagName).toBe('OL');
+    expect(getByRole('listitem').tagName).toBe('LI');
+  });
+
   it('renders an unstyled native checkbox and forwards both refs', () => {
     const rootRef = React.createRef<HTMLLIElement>();
     const checkmarkRef = React.createRef<HTMLInputElement>();

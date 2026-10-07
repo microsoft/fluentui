@@ -219,6 +219,7 @@ describe('List', () => {
       afterEach(() => {
         (console.error as jest.Mock).mockRestore();
       });
+
       it('div and li throws', () => {
         expectRenderToThrowWithMessage(
           <List as="div">
@@ -716,5 +717,16 @@ describe('List', () => {
         expectListboxItemSelected(listItem, false);
       });
     });
+  });
+
+  it('renders and validates an explicit ordered list with an explicit list item', () => {
+    const { getByRole } = render(
+      <List as="ol">
+        <ListItem as="li">Item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('list').tagName).toBe('OL');
+    expect(getByRole('listitem').tagName).toBe('LI');
   });
 });

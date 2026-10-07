@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import { List } from '../List/List';
-import { useListItem_unstable } from './useListItem';
+import { useListItem_unstable, useListItemBase_unstable } from './useListItem';
 
 describe('useListItem_unstable', () => {
   it('applies Tabster navigation to focusable list items', () => {
@@ -30,5 +30,15 @@ describe('useListItem_unstable', () => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components.checkmark).toBe(Checkbox);
     expect(result.current.checkmark?.tabIndex).toBe(-1);
+  });
+
+  it.each([
+    { name: 'styled', useHook: useListItem_unstable },
+    { name: 'base', useHook: useListItemBase_unstable },
+  ])('$name hook honors an explicit list-item root', ({ useHook }) => {
+    const { result } = renderHook(() => useHook({ as: 'li' }, React.createRef<HTMLLIElement>()));
+
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(result.current.components.root).toBe('li');
   });
 });

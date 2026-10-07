@@ -2,7 +2,7 @@ import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import { render } from '@testing-library/react';
-import { useList_unstable } from './useList';
+import { useList_unstable, useListBase_unstable } from './useList';
 
 const mockFindAllFocusable = jest.fn((): HTMLElement[] => []);
 
@@ -42,5 +42,15 @@ describe('useList_unstable', () => {
     } finally {
       process.env.NODE_ENV = originalEnvironment;
     }
+  });
+
+  it.each([
+    { name: 'styled', useHook: useList_unstable },
+    { name: 'base', useHook: useListBase_unstable },
+  ])('$name hook honors an explicit ordered-list root', ({ useHook }) => {
+    const { result } = renderHook(() => useHook({ as: 'ol' }, React.createRef<HTMLOListElement>()));
+
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(result.current.components.root).toBe('ol');
   });
 });

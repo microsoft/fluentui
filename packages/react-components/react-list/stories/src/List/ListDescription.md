@@ -92,6 +92,8 @@ In the most complex scenario, user will be navigating a **selectable** list with
 
 Import `useListBase_unstable` and `useListItemBase_unstable` from `@fluentui/react-list` to reuse List behavior without Fluent styling or Tabster focus management. The hooks retain selection state, inferred roles, development-time DOM validation, and ListItem click/Space/Enter actions. They do not add navigation attributes or implement arrow-key navigation; consumers must provide their own accessible focus management.
 
+Explicit `as` values take precedence over the default roots: `ul` for List and `li` for ListItem, or `div` for both in composite mode.
+
 Use `useListContextValues_unstable` with `renderList_unstable` to provide both List contexts to your items. `ListContextProvider` and `useListContext_unstable` expose the selection/validation context for custom descendants, but the selection context alone does not provide the synchronous role and navigation metadata.
 
 The base ListItem checkmark is a native `input[type="checkbox"]`, not a Fluent `Checkbox`. Give this slot an accessible label and use a native input `onChange` handler rather than the Fluent Checkbox `(event, data)` signature. Render it with `assertSlots<ListItemBaseSlots>` and the slot-aware `@fluentui/react-jsx-runtime`, as shown in the Headless example.
