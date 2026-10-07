@@ -89,7 +89,7 @@ the stories projects.
 flowchart TB
   styled["<b>styled</b><br/>@fluentui/react-&lt;name&gt;, @fluentui/react-components<br/><i>design props, default slots (icons, Label, Listbox), motion,<br/>styles hooks, Fluent overlays (floating-ui, Portal, tabster)</i>"]
   headless["<b>headless</b><br/>@fluentui/react-headless-components-preview<br/><i>base props/state types, base hooks, render functions, contexts,<br/>data-* state contract, its own Popover/Tooltip/Dialog</i>"]
-  foundation["<b>foundation</b><br/>react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts,<br/>react-context-selector, react-aria (once its tabster runtime is split out)"]
+  foundation["<b>foundation</b><br/>react-utilities, keyboard-keys, react-jsx-runtime, react-shared-contexts,<br/>react-context-selector, react-aria, react-tabster (keyborg-backed symbols only)"]
   styled -- depends on --> headless
   headless -- depends on --> foundation
 ```
@@ -103,7 +103,11 @@ Three rules:
   `resolvePositioningShorthand`, used by its own CSS anchor `usePositioning`. None of the base hooks headless wraps
   positions anything: `usePositioning` is called in `useMenu_unstable` and `useTagPicker_unstable`, the outer hooks,
   and headless Menu has its own root `useMenu`. Step 1 moves the types and the parser out of the floating-ui runtime
-  so the dependency can be dropped.
+  so the dependency can be dropped. `react-aria` and `react-tabster` are foundation: headless takes
+  `useActiveDescendant` and `ActiveDescendantContextProvider` (Combobox, Dropdown, TagPicker), `AriaLiveAnnouncer`
+  (Toaster), `useARIAButtonProps` (PopoverTrigger), `useIsNavigatingWithKeyboard` and `KEYBORG_FOCUSIN` from them, and
+  every one of those symbols bottoms out in keyborg or plain DOM. The `tabster` runtime is forbidden at the symbol
+  level, which is what `base-hook-no-forbidden-runtime` and `verify-bundle-isolation` already check today.
 - Styled imports headless and foundation. When a styled package needs another component's behaviour it imports the
   headless subpath (`@fluentui/react-headless-components-preview/field`), never another styled package.
 - A styled package may still depend on another styled package to render it as a default slot (Checkbox renders `Label`,
