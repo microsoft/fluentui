@@ -15,10 +15,10 @@ the styled v9 component packages and wraps their `use*Base_unstable` hooks. This
 2. **The `data-*` state contract stays in headless.** Styled v9 calls the headless base hooks, which emit no `data-*`
    attributes. No headless `data-*` attribute appears in a v9 type, in v9 DOM or in v9 SSR output, and a lint rule
    guarantees it.
-3. **Overlays with their own headless implementation stay as they are.** Headless Popover, Tooltip and Dialog are
-   independent implementations on top of the HTML Popover API, `<dialog>` and CSS anchor positioning. They do not wrap a
-   v9 base hook, so there is nothing to move, and v9 Popover, Tooltip and Dialog do not become dependent on them. Only
-   components whose headless version wraps a v9 base hook move.
+3. **Overlays with their own headless implementation stay as they are.** Headless Popover, Tooltip, Dialog and the
+   Menu root are independent implementations on top of the HTML Popover API, `<dialog>` and CSS anchor positioning.
+   They do not wrap a v9 base hook, so there is nothing to move, and v9 Popover, Tooltip, Dialog and Menu do not
+   become dependent on them. Only components whose headless version wraps a v9 base hook move.
 
 This RFC is about the direction of the dependency only. v9 package names, export maps and repository layout do not
 change. Aligning the v9 packaging with the headless one (one package, one subpath per component) is a separate
@@ -77,8 +77,8 @@ split.
   per-subpath `generate-api` and `export-maps-sync` already running on the headless project.
 
 Not in scope: visual changes, replacing Griffel or the `use<Name>Styles_unstable` hooks, new components, renaming or
-stabilising the headless preview package, unifying the custom headless overlays (Popover, Tooltip, Dialog) with their
-v9 counterparts, consolidating the v9 packages, subpath exports on `@fluentui/react-components`, shim packages, merging
+stabilising the headless preview package, unifying the custom headless overlays (Popover, Tooltip, Dialog, the Menu
+root) with their v9 counterparts, consolidating the v9 packages, subpath exports on `@fluentui/react-components`, shim packages, merging
 the stories projects.
 
 ## Proposal
@@ -317,5 +317,5 @@ of the move, and last the v9-wrapping overlays: menu, drawer, toast, the combobo
   per-component unit of work and by every step being shippable on its own.
 - Every v9 component package depends on a `0.x` preview package.
 - Two hooks per component in headless (`use<Name>Base` and `use<Name>`) so that the `data-*` contract stays out of v9.
-- Popover, Tooltip and Dialog keep two implementations. Dismissal, focus restore and keyboard handling for them are
-  still tested twice and can still drift.
+- Popover, Tooltip, Dialog and the Menu root keep two implementations. Open state, dismissal, focus restore and
+  keyboard handling for them are still tested twice and can still drift.
