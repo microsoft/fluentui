@@ -20,7 +20,15 @@ export type {
   ListSynchronousContextValue,
   OnListSelectionChangeData,
 } from './List';
-export * from './utils';
+export {
+  calculateListItemRoleForListRole,
+  calculateListRole,
+  validateGridCellsArePresent,
+  validateListItemElement,
+  validateProperElementTypes,
+  validateProperRolesAreUsed,
+} from './utils';
+export type { ValidateListItemElementOptions } from './utils';
 export {
   ListItem,
   listItemClassNames,

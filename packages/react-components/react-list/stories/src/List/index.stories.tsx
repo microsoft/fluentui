@@ -4,6 +4,7 @@ import descriptionMd from './ListDescription.md';
 import bestPracticesMd from './ListBestPractices.md';
 
 export { Default } from './ListDefault.stories';
+export { Headless } from './Headless.stories';
 export { SingleAction } from './SingleAction.stories';
 export { SingleActionSelection } from './SingleActionSelection.stories';
 export { SingleActionSelectionControlled } from './SingleActionSelectionControlled.stories';

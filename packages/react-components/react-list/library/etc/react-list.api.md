@@ -18,6 +18,12 @@ import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export const calculateListItemRoleForListRole: (listRole: string) => string;
+
+// @public
+export const calculateListRole: (navigationMode: ListNavigationMode | undefined, selectable: boolean) => "grid" | "listbox" | "list";
+
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
@@ -61,32 +67,6 @@ export type ListItemBaseState = ComponentState<ListItemBaseSlots> & ListItemOwnS
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
-
-// @public
-export const calculateListItemRoleForListRole: (listRole: string) => string;
-
-// @public
-export const calculateListRole: (navigationMode: ListNavigationMode | undefined, selectable: boolean) => "grid" | "listbox" | "list";
-
-// @public
-export const validateGridCellsArePresent: (listRole: string, listItemEl: HTMLElement) => void;
-
-// @public
-export const validateListItemElement: (listItemEl: HTMLElement, options: ValidateListItemElementOptions) => void;
-
-// @public
-export type ValidateListItemElementOptions = {
-    hasFocusableChildren: boolean;
-    hasSelection: boolean;
-    listRenderedAs: string;
-    listRole: string;
-};
-
-// @public
-export const validateProperElementTypes: (listRenderedAs?: string, listItemRenderedAs?: string) => void;
-
-// @public
-export const validateProperRolesAreUsed: (role: string, listItemRole: string, hasSelection: boolean, hasFocusableChildren: boolean) => void;
 
 // @public
 export type ListItemProps = ComponentProps<ListItemSlots> & ListItemOwnProps;
@@ -163,6 +143,26 @@ export const useListItemStyles_unstable: (state: ListItemState) => ListItemState
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
+
+// @public
+export const validateGridCellsArePresent: (listRole: string, listItemEl: HTMLElement) => void;
+
+// @public
+export const validateListItemElement: (listItemEl: HTMLElement, { listRenderedAs, listRole, hasSelection, hasFocusableChildren }: ValidateListItemElementOptions) => void;
+
+// @public (undocumented)
+export type ValidateListItemElementOptions = {
+    listRenderedAs: string;
+    listRole: string;
+    hasSelection: boolean;
+    hasFocusableChildren: boolean;
+};
+
+// @public
+export function validateProperElementTypes(listRenderedAs?: string, listItemRenderedAs?: string): void;
+
+// @public
+export const validateProperRolesAreUsed: (role: string, listItemRole: string, hasSelection: boolean, hasFocusableChildren: boolean) => void;
 
 // (No @packageDocumentation comment for this package)
 
