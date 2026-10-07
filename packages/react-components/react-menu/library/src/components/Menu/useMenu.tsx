@@ -18,7 +18,6 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
-  useFirstMount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -373,16 +372,17 @@ const useMenuOpenState = (
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
-  const firstMount = useFirstMount();
+  const previousOpenRef = React.useRef(open);
   React.useEffect(() => {
+    const wasOpen = previousOpenRef.current;
+    previousOpenRef.current = open;
     if (open) {
       if (!state.disableAutoFocus) {
         focusFirst();
       }
     } else {
-      // Skip the initial render — focus should only be restored when the menu
-      // transitions from open → closed, not on mount.
-      if (!firstMount) {
+      // Restore only on an open -> closed transition, not on unrelated option changes.
+      if (wasOpen) {
         if (
           // Focus landed on <body> after the popover was removed from the DOM,
           // meaning the user's focus has nowhere meaningful to go.
@@ -403,8 +403,6 @@ const useMenuOpenState = (
         }
       }
     }
-    // firstMount change should not re-run this effect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     state.triggerRef,
     state.isSubmenu,

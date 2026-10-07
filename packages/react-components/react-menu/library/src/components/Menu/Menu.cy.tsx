@@ -459,6 +459,46 @@ describe('Menu', () => {
   });
 
   describe('Menu autofocus opt-out', () => {
+    it('does not move body focus when toggling the option on a never-opened or already-closed menu', () => {
+      const Example = () => {
+        const [disableAutoFocus, setDisableAutoFocus] = React.useState(false);
+        return (
+          <>
+            <button id="toggle-autofocus" onClick={() => setDisableAutoFocus(value => !value)}>
+              Toggle autofocus
+            </button>
+            <Menu unstable_disableAutoFocus={disableAutoFocus}>
+              <MenuTrigger disableButtonEnhancement>
+                <button id={menuTriggerId}>Menu</button>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Item</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </>
+        );
+      };
+      const assertBodyFocus = () => {
+        cy.document().should(doc => expect(doc.activeElement).to.equal(doc.body));
+      };
+      mount(<Example />);
+      cy.get(menuTriggerSelector).focus().blur();
+      assertBodyFocus();
+      cy.get('#toggle-autofocus').trigger('click');
+      assertBodyFocus();
+      cy.get('#toggle-autofocus').trigger('click');
+      assertBodyFocus();
+      cy.get(menuTriggerSelector).click();
+      cy.contains('[role="menuitem"]', 'Item').should('be.focused').realPress('Escape');
+      cy.get(menuTriggerSelector).should('be.focused').blur();
+      assertBodyFocus();
+      cy.get('#toggle-autofocus').trigger('click');
+      assertBodyFocus();
+      cy.get(menuSelector).should('not.exist');
+    });
+
     it('supports an editable input-anchored menu without MenuTrigger', () => {
       const AnchoredExample = () => {
         const [input, setInput] = React.useState<HTMLInputElement | null>(null);

@@ -64,4 +64,27 @@ describe('Menu autofocus opt-out', () => {
     rerender(<Example open unstable_disableAutoFocus={false} />);
     expect(getByRole('menuitem')).toHaveFocus();
   });
+
+  it.each([false, true])('does not focus a never-opened menu when changing the opt-out from %s', disableAutoFocus => {
+    const { getByRole, rerender } = render(<Example open={false} unstable_disableAutoFocus={disableAutoFocus} />);
+    const trigger = getByRole('button');
+    trigger.focus();
+    trigger.blur();
+    expect(trigger.ownerDocument.body).toHaveFocus();
+
+    rerender(<Example open={false} unstable_disableAutoFocus={!disableAutoFocus} />);
+    expect(trigger.ownerDocument.body).toHaveFocus();
+  });
+
+  it('does not restore focus again when changing the opt-out after closing', () => {
+    const { getByRole, rerender } = render(<Example open />);
+    expect(getByRole('menuitem')).toHaveFocus();
+    rerender(<Example open={false} />);
+    const trigger = getByRole('button');
+    expect(trigger).toHaveFocus();
+    trigger.blur();
+
+    rerender(<Example open={false} unstable_disableAutoFocus />);
+    expect(trigger.ownerDocument.body).toHaveFocus();
+  });
 });
