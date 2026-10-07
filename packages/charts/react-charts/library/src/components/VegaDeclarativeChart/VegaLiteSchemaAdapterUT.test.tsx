@@ -98,6 +98,247 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(points[0]).toMatchObject({ x: 1, y: 17 });
     });
 
+    it.each(['constructor', 'toString', '__proto__'])('does not materialize an inherited %s grouping field', field => {
+      const points = transformData(
+        [{ x: 1 }, { x: 1, [field]: undefined }],
+        [
+          { aggregate: [{ op: 'count', as: 'count' }], groupby: ['x', field] },
+          { calculate: `isValid(datum['${field}']) ? -1 : datum.count`, as: 'y' },
+        ],
+      );
+
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 2 })]);
+    });
+
+    it.each(['constructor', 'toString', '__proto__'])('preserves an own %s grouping field', field => {
+      const points = transformData(
+        [{ x: 1, [field]: 42 }],
+        [
+          { aggregate: [{ op: 'count', as: 'count' }], groupby: ['x', field] },
+          { calculate: `datum['${field}']`, as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it.each(['window', 'joinaggregate', 'density'])('groups missing fields as undefined in %s', kind => {
+      const grouping: VegaLiteSpec['transform'] =
+        kind === 'window'
+          ? [{ window: [{ op: 'row_number', as: 'y' }], groupby: ['constructor'] }]
+          : kind === 'joinaggregate'
+          ? [{ joinaggregate: [{ op: 'count', as: 'y' }], groupby: ['constructor'] }]
+          : [
+              { density: 'value', groupby: ['constructor'] },
+              { calculate: 'datum.value', as: 'x' },
+              { calculate: 'isValid(datum.constructor) ? -1 : 1', as: 'y' },
+            ];
+      const points = transformData(
+        [
+          { x: 1, value: 0 },
+          { x: 2, value: 1, constructor: undefined },
+        ],
+        grouping,
+      );
+
+      if (kind === 'density') {
+        expect(points).toHaveLength(21);
+        expect(points.every(point => point.y === 1)).toBe(true);
+      } else {
+        expect(points.map(point => point.y)).toEqual(kind === 'window' ? [1, 2] : [2, 2]);
+      }
+    });
+
+    it.each(['window', 'joinaggregate'])('preserves __proto__ output and ordinary row coercion in %s', kind => {
+      const transform: VegaLiteSpec['transform'] =
+        kind === 'window'
+          ? [{ window: [{ op: 'count', as: '__proto__' }] }]
+          : [{ joinaggregate: [{ op: 'count', as: '__proto__' }] }];
+      const points = transformData(
+        [{ x: 1 }],
+        [...transform, { calculate: 'length(toString(datum)) + datum.__proto__', as: 'y' }],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 16 });
+    });
+
+    it.each(['window', 'joinaggregate'])('preserves separate groups for own special fields in %s', kind => {
+      const transform: VegaLiteSpec['transform'] =
+        kind === 'window'
+          ? [{ window: [{ op: 'row_number', as: 'y' }], groupby: ['constructor', 'toString', '__proto__'] }]
+          : [{ joinaggregate: [{ op: 'count', as: 'y' }], groupby: ['constructor', 'toString', '__proto__'] }];
+      const points = transformData(
+        [
+          { x: 1, constructor: 'A', toString: 'A', ['__proto__']: 'A' },
+          { x: 2, constructor: 'B', toString: 'B', ['__proto__']: 'B' },
+          { x: 3, constructor: 'A', toString: 'A', ['__proto__']: 'A' },
+        ],
+        transform,
+      );
+
+      expect(points).toHaveLength(3);
+      expect(points).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ x: 1, y: kind === 'window' ? 1 : 2 }),
+          expect.objectContaining({ x: 2, y: 1 }),
+          expect.objectContaining({ x: 3, y: 2 }),
+        ]),
+      );
+    });
+
+    it.each(['aggregate', 'window', 'joinaggregate'])('ignores inherited input values in %s', kind => {
+      const row: Record<string, unknown> = Object.assign(Object.create({ amount: 42 }), { x: 1 });
+      const transform: VegaLiteSpec['transform'] =
+        kind === 'aggregate'
+          ? [{ aggregate: [{ op: 'sum', field: 'amount', as: 'y' }], groupby: ['x'] }]
+          : kind === 'window'
+          ? [{ window: [{ op: 'sum', field: 'amount', as: 'y' }] }]
+          : [{ joinaggregate: [{ op: 'sum', field: 'amount', as: 'y' }] }];
+      const points = transformData([row], transform);
+
+      expect(points[0]).toMatchObject({ x: 1, y: 0 });
+    });
+
+    it('ignores inherited window sort values', () => {
+      const row: Record<string, unknown> = Object.assign(Object.create({ order: 42 }), { x: 1 });
+      const points = transformData(
+        [row, { x: 2, order: 0 }],
+        [{ window: [{ op: 'row_number', as: 'y' }], sort: [{ field: 'order' }] }],
+      );
+
+      expect(points.map(point => point.y)).toEqual([1, 2]);
+    });
+
+    it('preserves an own __proto__ grouping field and row coercion in density', () => {
+      const points = transformData(
+        [
+          { sample: 0, ['__proto__']: 42 },
+          { sample: 1, ['__proto__']: 42 },
+        ],
+        [
+          { density: 'sample', groupby: ['__proto__'] },
+          { calculate: 'datum.value', as: 'x' },
+          { calculate: 'datum.__proto__ + length(toString(datum))', as: 'y' },
+        ],
+      );
+
+      expect(points).toHaveLength(21);
+      expect(points.every(point => point.y === 57)).toBe(true);
+    });
+
+    it('preserves an imputed __proto__ field', () => {
+      const points = transformData(
+        [
+          { x: 1, ['__proto__']: 10 },
+          { x: 3, ['__proto__']: 30 },
+        ],
+        [
+          { impute: '__proto__', key: 'x', value: 42 },
+          { calculate: 'datum.__proto__ + length(toString(datum))', as: 'y' },
+        ],
+      );
+
+      expect(points.map(point => point.y)).toEqual([25, 57, 45]);
+    });
+
+    it('preserves impute overwrite order when the key and field coincide', () => {
+      const points = transformData(
+        [{ x: 1 }, { x: 3 }],
+        [
+          { impute: 'x', key: 'x', value: 2 },
+          { calculate: 'datum.x', as: 'y' },
+        ],
+      );
+
+      expect(points.map(point => point.x)).toEqual([1, 2, 3]);
+      expect(points.map(point => point.y)).toEqual([1, 2, 3]);
+    });
+
+    it('preserves __proto__ lookup fields without copying inherited fields', () => {
+      const points = transformData(
+        [{ x: 1 }],
+        [
+          {
+            lookup: 'x',
+            from: {
+              data: { values: [{ key: 1, ['__proto__']: 42 }] },
+              key: 'key',
+              fields: ['__proto__', 'constructor'],
+            },
+          },
+          { calculate: 'isValid(datum.constructor) ? -1 : datum.__proto__ + length(toString(datum))', as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 57 });
+    });
+
+    it('matches missing lookup keys as undefined rather than inherited values', () => {
+      const points = transformData(
+        [{ x: 1 }],
+        [
+          {
+            lookup: 'constructor',
+            from: { data: { values: [{ constructor: undefined, value: 42 }] }, key: 'constructor', fields: ['value'] },
+          },
+          { calculate: 'isValid(datum.value) ? datum.value : -1', as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it('matches missing secondary lookup keys as undefined', () => {
+      const points = transformData(
+        [{ x: 1, constructor: undefined }],
+        [
+          {
+            lookup: 'constructor',
+            from: { data: { values: [{ value: 42 }] }, key: 'constructor', fields: ['value'] },
+          },
+          { calculate: 'isValid(datum.value) ? datum.value : -1', as: 'y' },
+        ],
+      );
+
+      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+    });
+
+    it.each(['count', 'sum'] as const)('preserves a __proto__ timeUnit aggregate field for %s', aggregate => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { date: '2026-01-01', ['__proto__']: 20 },
+            { date: '2026-01-02', ['__proto__']: 22 },
+          ],
+        },
+        encoding: {
+          x: { field: 'date', timeUnit: 'month', type: 'temporal' },
+          y: { field: '__proto__', aggregate, type: 'quantitative' },
+        },
+      };
+      const result = transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(result.data).toEqual([expect.objectContaining({ x: 'Jan', y: aggregate === 'count' ? 2 : 42 })]);
+    });
+
+    it.each(['regression', 'loess', 'quantile'])('ignores inherited values in %s numeric transforms', kind => {
+      const row: Record<string, unknown> = Object.assign(Object.create({ y: 100 }), { x: 3 });
+      const transform: VegaLiteSpec['transform'] =
+        kind === 'quantile'
+          ? [
+              { quantile: 'y', probs: [1] },
+              { calculate: '1', as: 'x' },
+              { calculate: 'datum.value', as: 'y' },
+            ]
+          : [{ [kind]: 'y', on: 'x' }];
+      const points = transformData([{ x: 1, y: 10 }, { x: 2, y: 20 }, row], transform);
+
+      expect(points.map(point => point.y)).toEqual(
+        kind === 'regression' ? [10, 20] : kind === 'loess' ? [15, 15] : [20],
+      );
+    });
+
     it('preserves ordinary fold, calculate and aggregate results', () => {
       const points = transformData(
         [

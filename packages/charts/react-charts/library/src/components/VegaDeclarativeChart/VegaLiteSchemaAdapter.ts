@@ -162,6 +162,10 @@ function extractDataValues(data: VegaLiteData | undefined): Array<Record<string,
   return [];
 }
 
+function getOwnDataValue(row: Record<string, unknown>, field: string): unknown {
+  return Object.prototype.hasOwnProperty.call(row, field) ? row[field] : undefined;
+}
+
 /**
  * Applies a fold transform to convert wide-format data to long-format
  * The fold transform unpivots specified fields into key-value pairs
@@ -264,7 +268,7 @@ function applyTransforms(
       const groups = new Map<string, Array<Record<string, unknown>>>();
 
       result.forEach(row => {
-        const key = groupby.map(g => String(row[g])).join('|');
+        const key = groupby.map(g => String(getOwnDataValue(row, g))).join('|');
         if (!groups.has(key)) {
           groups.set(key, []);
         }
@@ -275,11 +279,13 @@ function applyTransforms(
         // Grouping fields and aggregate aliases are data keys, including "__proto__".
         const baseRow: Record<string, unknown> = Object.create(null);
         groupby.forEach((g, i) => {
-          baseRow[g] = rows[0][g];
+          baseRow[g] = getOwnDataValue(rows[0], g);
         });
 
         aggSpecs.forEach(spec => {
-          const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
+          const values = spec.field
+            ? rows.map(r => Number(getOwnDataValue(r, spec.field!))).filter(v => !isNaN(v))
+            : [];
           switch (spec.op) {
             case 'count':
               baseRow[spec.as] = rows.length;
@@ -315,7 +321,7 @@ function applyTransforms(
       // Group data
       const groups = new Map<string, Array<Record<string, unknown>>>();
       result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
         if (!groups.has(key)) {
           groups.set(key, []);
         }
@@ -328,8 +334,8 @@ function applyTransforms(
         if (sortFields.length > 0) {
           rows.sort((a, b) => {
             for (const sf of sortFields) {
-              const va = Number(a[sf.field]) || 0;
-              const vb = Number(b[sf.field]) || 0;
+              const va = Number(getOwnDataValue(a, sf.field)) || 0;
+              const vb = Number(getOwnDataValue(b, sf.field)) || 0;
               const cmp = sf.order === 'descending' ? vb - va : va - vb;
               if (cmp !== 0) {
                 return cmp;
@@ -341,11 +347,11 @@ function applyTransforms(
 
         let runningSum = 0;
         rows.forEach((row, idx) => {
-          const newRow = { ...row };
+          const newRow: Record<string, unknown> = Object.assign(Object.create(null), row);
           windowOps.forEach(op => {
             switch (op.op) {
               case 'sum':
-                runningSum += Number(row[op.field!]) || 0;
+                runningSum += Number(getOwnDataValue(row, op.field!)) || 0;
                 newRow[op.as] = runningSum;
                 break;
               case 'rank':
@@ -361,7 +367,7 @@ function applyTransforms(
                 newRow[op.as] = idx + 1;
             }
           });
-          newResult.push(newRow);
+          newResult.push({ ...newRow });
         });
       });
       result = newResult;
@@ -375,7 +381,7 @@ function applyTransforms(
       // Compute aggregates
       const groups = new Map<string, Array<Record<string, unknown>>>();
       result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
         if (!groups.has(key)) {
           groups.set(key, []);
         }
@@ -384,9 +390,11 @@ function applyTransforms(
 
       const aggResults = new Map<string, Record<string, number>>();
       groups.forEach((rows, key) => {
-        const aggs: Record<string, number> = {};
+        const aggs: Record<string, number> = Object.create(null);
         aggSpecs.forEach(spec => {
-          const values = spec.field ? rows.map(r => Number(r[spec.field!])).filter(v => !isNaN(v)) : [];
+          const values = spec.field
+            ? rows.map(r => Number(getOwnDataValue(r, spec.field!))).filter(v => !isNaN(v))
+            : [];
           switch (spec.op) {
             case 'mean':
             case 'average':
@@ -413,7 +421,7 @@ function applyTransforms(
 
       // Join back: add aggregate values to each row
       result = result.map(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
         return { ...row, ...(aggResults.get(key) || {}) };
       });
     }
@@ -423,7 +431,7 @@ function applyTransforms(
       const yField = transform.regression as string;
       const xField = transform.on as string;
       const points = result
-        .map(r => ({ x: Number(r[xField]), y: Number(r[yField]) }))
+        .map(r => ({ x: Number(getOwnDataValue(r, xField)), y: Number(getOwnDataValue(r, yField)) }))
         .filter(p => !isNaN(p.x) && !isNaN(p.y));
       if (points.length >= 2) {
         const n = points.length;
@@ -447,15 +455,16 @@ function applyTransforms(
       const yField = transform.loess as string;
       const xField = transform.on as string;
       const sorted = [...result]
-        .filter(r => !isNaN(Number(r[xField])) && !isNaN(Number(r[yField])))
-        .sort((a, b) => Number(a[xField]) - Number(b[xField]));
+        .filter(r => !isNaN(Number(getOwnDataValue(r, xField))) && !isNaN(Number(getOwnDataValue(r, yField))))
+        .sort((a, b) => Number(getOwnDataValue(a, xField)) - Number(getOwnDataValue(b, xField)));
       const windowSize = Math.max(3, Math.floor(sorted.length / 4));
       result = sorted.map((row, i) => {
         const start = Math.max(0, i - Math.floor(windowSize / 2));
         const end = Math.min(sorted.length, start + windowSize);
         const windowSlice = sorted.slice(start, end);
-        const avgY = d3Mean(windowSlice.map(r => Number(r[yField]))) ?? Number(row[yField]);
-        return { [xField]: row[xField], [yField]: avgY };
+        const avgY =
+          d3Mean(windowSlice.map(r => Number(getOwnDataValue(r, yField)))) ?? Number(getOwnDataValue(row, yField));
+        return { [xField]: getOwnDataValue(row, xField), [yField]: avgY };
       });
     }
 
@@ -466,11 +475,11 @@ function applyTransforms(
       const groups = new Map<string, number[]>();
 
       result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(row[g])).join('|') : '__all__';
+        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
         if (!groups.has(key)) {
           groups.set(key, []);
         }
-        groups.get(key)!.push(Number(row[field]));
+        groups.get(key)!.push(Number(getOwnDataValue(row, field)));
       });
 
       const densityResult: Array<Record<string, unknown>> = [];
@@ -480,11 +489,11 @@ function applyTransforms(
         const range = max - min || 1;
         const bins = 20;
         const bandwidth = range / bins;
-        const groupFields: Record<string, unknown> = {};
+        const groupFields: Record<string, unknown> = Object.create(null);
         if (groupby.length > 0) {
-          const sampleRow = result.find(r => groupby.map(g => String(r[g])).join('|') === key);
+          const sampleRow = result.find(r => groupby.map(g => String(getOwnDataValue(r, g))).join('|') === key);
           groupby.forEach(g => {
-            groupFields[g] = sampleRow?.[g];
+            groupFields[g] = sampleRow ? getOwnDataValue(sampleRow, g) : undefined;
           });
         }
         for (let i = 0; i <= bins; i++) {
@@ -502,7 +511,7 @@ function applyTransforms(
       const field = transform.quantile as string;
       const probs = (transform.probs as number[]) || [0.25, 0.5, 0.75];
       const values = result
-        .map(r => Number(r[field]))
+        .map(r => Number(getOwnDataValue(r, field)))
         .filter(v => !isNaN(v))
         .sort((a, b) => a - b);
       if (values.length > 0) {
@@ -520,19 +529,18 @@ function applyTransforms(
       const method = (transform.method as string) || 'value';
       const fillValue = transform.value ?? 0;
 
-      const existingKeys = new Set(result.map(r => r[keyField]));
-      const allKeyValues = result.map(r => Number(r[keyField])).filter(v => !isNaN(v));
+      const existingKeys = new Set(result.map(r => getOwnDataValue(r, keyField)));
+      const allKeyValues = result.map(r => Number(getOwnDataValue(r, keyField))).filter(v => !isNaN(v));
       if (allKeyValues.length > 0) {
         const minKey = d3Min(allKeyValues) ?? 0;
         const maxKey = d3Max(allKeyValues) ?? 0;
         for (let k = minKey; k <= maxKey; k++) {
           if (!existingKeys.has(k)) {
-            const imputed: Record<string, unknown> = { [keyField]: k };
-            imputed[field] = method === 'value' ? fillValue : 0;
+            const imputed: Record<string, unknown> = { [keyField]: k, [field]: method === 'value' ? fillValue : 0 };
             result.push(imputed);
           }
         }
-        result.sort((a, b) => Number(a[keyField]) - Number(b[keyField]));
+        result.sort((a, b) => Number(getOwnDataValue(a, keyField)) - Number(getOwnDataValue(b, keyField)));
       }
     }
 
@@ -547,14 +555,14 @@ function applyTransforms(
       if (fromSpec.data?.values && fromSpec.key && fromSpec.fields) {
         const lookupMap = new Map<string, Record<string, unknown>>();
         fromSpec.data.values.forEach(row => {
-          lookupMap.set(String(row[fromSpec.key!]), row);
+          lookupMap.set(String(getOwnDataValue(row, fromSpec.key!)), row);
         });
         result = result.map(row => {
-          const lookupRow = lookupMap.get(String(row[lookupField]));
+          const lookupRow = lookupMap.get(String(getOwnDataValue(row, lookupField)));
           if (lookupRow) {
-            const extra: Record<string, unknown> = {};
+            const extra: Record<string, unknown> = Object.create(null);
             fromSpec.fields!.forEach(f => {
-              extra[f] = lookupRow[f];
+              extra[f] = getOwnDataValue(lookupRow, f);
             });
             return { ...row, ...extra };
           }
@@ -1209,7 +1217,7 @@ function initializeTransformContext(spec: VegaLiteSpec) {
 
     const groups = new Map<string, Array<Record<string, unknown>>>();
     dataValues.forEach(row => {
-      const dateVal = new Date(row[field] as string | number);
+      const dateVal = new Date(getOwnDataValue(row, field) as string | number);
       if (isNaN(dateVal.getTime())) {
         return;
       }
@@ -1240,14 +1248,15 @@ function initializeTransformContext(spec: VegaLiteSpec) {
     });
 
     dataValues = Array.from(groups.entries()).map(([key, rows]) => {
-      const result: Record<string, unknown> = { [field]: key };
+      const result: Record<string, unknown> = Object.create(null);
+      result[field] = key;
       if (yField && yAgg !== 'count') {
-        const vals = rows.map(r => Number(r[yField])).filter(v => !isNaN(v));
+        const vals = rows.map(r => Number(getOwnDataValue(r, yField))).filter(v => !isNaN(v));
         result[yField] = yAgg === 'sum' ? d3Sum(vals) : d3Mean(vals) ?? 0;
       } else {
         result[yField || '__count'] = rows.length;
       }
-      return result;
+      return { ...result };
     });
 
     // Switch x from temporal to ordinal since we've aggregated

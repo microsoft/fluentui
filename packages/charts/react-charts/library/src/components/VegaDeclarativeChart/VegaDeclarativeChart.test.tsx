@@ -1247,7 +1247,7 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
 });
 
 describe('VegaDeclarativeChart - Security', () => {
-  it.each(['client', 'server'])('blocks a JSON-only cross-transform evaluator bypass during %s rendering', mode => {
+  it.each(['client', 'server'])('rejects folding inherited fields in a JSON-only spec during %s rendering', mode => {
     const spec: VegaLiteSpec = JSON.parse(
       JSON.stringify({
         mark: 'line',
