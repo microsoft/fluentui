@@ -71,7 +71,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
-  it('should contain theme entries without affecting later CSS variables', () => {
+  it('should omit malformed theme entries without affecting later CSS variables', () => {
     const theme = {
       customToken: 'red; color: red',
       validToken: 'green',
@@ -85,11 +85,9 @@ describe('useFluentProviderThemeStyleTag', () => {
     const sheet = tag.sheet as CSSStyleSheet;
     const rule = sheet.cssRules[0] as CSSStyleRule;
 
-    expect(rule.style.getPropertyValue('--customToken')).toBe('red\\3B   color: red');
+    expect(rule.style.getPropertyValue('--customToken')).toBe('');
     expect(rule.style.getPropertyValue('--validToken')).toBe('green');
-    expect(rule.cssText).toMatchInlineSnapshot(
-      `".fui-FluentProvider1 {--customToken: red\\\\3B   color: red; --validToken: green;}"`,
-    );
+    expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--validToken: green;}"`);
   });
 
   it('should isolate malformed URL content from later CSS variables', () => {
@@ -108,45 +106,40 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.style.getPropertyValue('--validToken')).toBe('green');
   });
 
-  it.each([
-    { value: ';url(a{)', containedValue: '\\3B  url(a{)' },
-    { value: '}url(a[)', containedValue: '\\7D  url(a[)' },
-    { value: 'red;url(a{)', containedValue: 'red\\3B  url(a{)' },
-    { value: String.raw`;\75rl(a{)`, containedValue: String.raw`\3B  \75rl(a{)` },
-  ])('should preserve later CSS variables after repairing a delimiter in $value', ({ value, containedValue }) => {
-    const theme = {
-      ...defaultTheme,
-      customToken: value,
-      colorBrandBackground: 'blue',
-    };
+  it.each([{ value: ';url(a{)' }, { value: '}url(a[)' }, { value: 'red;url(a{)' }, { value: String.raw`;\75rl(a{)` }])(
+    'should preserve later CSS variables after rejecting a malformed delimiter in $value',
+    ({ value }) => {
+      const theme = {
+        ...defaultTheme,
+        customToken: value,
+        colorBrandBackground: 'blue',
+      };
 
-    const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
-    );
+      const { result } = renderHook(() =>
+        useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+      );
 
-    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
-    const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
+      const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+      const rule = (tag.sheet as CSSStyleSheet).cssRules[0] as CSSStyleRule;
 
-    expect(result.current.rule).toContain(`--customToken: ${containedValue}; --colorBrandBackground: blue;`);
-    expect(rule.style.getPropertyValue('--customToken')).not.toBe('');
-    expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
-    expect(rule.style.length).toBe(4);
-  });
+      expect(result.current.rule).not.toContain('--customToken:');
+      expect(rule.style.getPropertyValue('--customToken')).toBe('');
+      expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+      expect(rule.style.length).toBe(3);
+    },
+  );
 
-  it.each([
-    { value: '<url(a{)', containedValue: '\\3C url(a{})' },
-    { value: '>url(a{)', containedValue: '\\3E url(a{})' },
-    { value: '<url(/*)', containedValue: '\\3C url(/*)*/)' },
-  ])('should contain final escaped syntax before client insertion for $value', ({ value, containedValue }) => {
-    const theme = { customToken: value, colorBrandBackground: 'blue' } as unknown as Theme;
-    const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
-    );
+  it.each([{ value: '<url(a{)' }, { value: '>url(a{)' }, { value: '<url(/*)' }])(
+    'should reject malformed final escaped syntax before client insertion for $value',
+    ({ value }) => {
+      const theme = { customToken: value, colorBrandBackground: 'blue' } as unknown as Theme;
+      const { result } = renderHook(() =>
+        useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+      );
 
-    expect(result.current.rule).toBe(
-      `.${result.current.styleTagId} { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`,
-    );
-  });
+      expect(result.current.rule).toBe(`.${result.current.styleTagId} { --colorBrandBackground: blue;  }`);
+    },
+  );
 
   it('should update style tag on theme change', () => {
     // Arrange

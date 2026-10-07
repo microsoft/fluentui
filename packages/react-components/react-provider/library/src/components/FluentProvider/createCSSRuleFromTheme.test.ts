@@ -90,11 +90,11 @@ describe('createCSSRuleFromTheme', () => {
     expect(createCSSRuleFromTheme('.selector', { customToken: matchingBlocks } as unknown as PartialTheme)).toContain(
       `--customToken: ${matchingBlocks};`,
     );
-    expect(
-      createCSSRuleFromTheme('.selector', { customToken: nonmatchingBlocks } as unknown as PartialTheme),
-    ).toContain(`--customToken: ${nonmatchingBlocks}${')'.repeat(depth)};`);
-    expect(createCSSRuleFromTheme('.selector', { customToken: mixedBlocks } as unknown as PartialTheme)).toContain(
-      `--customToken: ${'([{'.repeat(depth)}${'}])'.repeat(depth)};`,
+    expect(createCSSRuleFromTheme('.selector', { customToken: nonmatchingBlocks } as unknown as PartialTheme)).toBe(
+      '.selector {  }',
+    );
+    expect(createCSSRuleFromTheme('.selector', { customToken: mixedBlocks } as unknown as PartialTheme)).toBe(
+      '.selector {  }',
     );
   });
 
@@ -140,9 +140,10 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'escaped hash token followed by a parenthesized block', value: String.raw`#\75rl(/* ) */; x)` },
     { description: 'escaped generic function names', value: String.raw`f\6f o((x); y)` },
     { description: 'quoted URL functions with nested blocks', value: String.raw`url("image" (x); fallback)` },
-    { description: 'backslash and line feed', value: 'first\\\nsecond' },
-    { description: 'backslash and carriage return', value: 'first\\\rsecond' },
-    { description: 'backslash and form feed', value: 'first\\\fsecond' },
+    { description: 'leading and trailing URL whitespace', value: 'url( image.png )' },
+    { description: 'empty URL', value: 'url( )' },
+    { description: 'braces in unquoted URL content', value: 'url(a{)' },
+    { description: 'comment markers in unquoted URL content', value: 'url(/*)' },
     { description: 'multiline whitespace', value: 'calc(\n  1px + 2px\n)' },
   ])('preserves $description', ({ value }) => {
     const result = createCSSRuleFromTheme('.selector', { customToken: value } as unknown as PartialTheme);
@@ -164,7 +165,10 @@ describe('createCSSRuleFromTheme', () => {
     const value = `${name}(a{)`;
     expect(
       createCSSRuleFromTheme('.selector', { customToken: value, colorBrandBackground: 'blue' } as PartialTheme),
-    ).toBe(`.selector { --customToken: ${name}(a{}); --colorBrandBackground: blue;  }`);
+    ).toBe('.selector { --colorBrandBackground: blue;  }');
+    expect(createCSSRuleFromTheme('.selector', { customToken: `${name}(a{})` } as PartialTheme)).toBe(
+      `.selector { --customToken: ${name}(a{});  }`,
+    );
   });
 
   it('preserves supported custom token names and finite numeric values', () => {
@@ -253,33 +257,29 @@ describe('createCSSRuleFromTheme', () => {
   );
 
   it.each([
-    { description: 'top-level semicolon', value: 'red;blue', containedValue: 'red\\3B  blue' },
-    { description: 'unmatched closing block delimiter', value: 'red}', containedValue: 'red\\7D  ' },
+    { description: 'top-level semicolon', value: 'red;blue' },
+    { description: 'unmatched closing block delimiter', value: 'red}' },
     {
       description: 'unquoted URL tokenization',
       value: 'url(resource/*);token/**/)',
-      containedValue: 'url(resource/*)\\3B  token/**/)',
     },
     {
       description: 'escaped unquoted URL tokenization',
       value: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*);token/**/)',
-      containedValue: '\\000075\r\n\\000072\r\n\\00006c\r\n(resource/*)\\3B  token/**/)',
     },
     {
       description: 'malformed unquoted URL content',
       value: 'url(\\x")',
-      containedValue: 'url(\\x\\22 )',
     },
-  ])('contains a value with $description without affecting later tokens', ({ value, containedValue }) => {
+  ])('rejects a value with $description without affecting later tokens', ({ value }) => {
     const theme = {
       customToken: value,
       colorBrandBackground: 'blue',
     } as unknown as PartialTheme;
 
-    expect(createCSSRuleFromTheme('.selector', theme)).toBe(
-      `.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`,
-    );
-    expect(logWarnSpy).not.toHaveBeenCalled();
+    expect(createCSSRuleFromTheme('.selector', theme)).toBe('.selector { --colorBrandBackground: blue;  }');
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"customToken"'));
+    expect(logWarnSpy.mock.calls[0][0]).not.toContain(value);
   });
 
   it.each([
@@ -296,61 +296,67 @@ describe('createCSSRuleFromTheme', () => {
     { description: 'malformed unquoted URL content after an escaped delimiter', value: 'url(\\)")' },
     { description: 'unterminated unquoted URL', value: 'url(resource' },
     { description: 'unterminated escape in an unquoted URL', value: 'url(resource\\' },
-  ])('repairs a value with $description without affecting later tokens', ({ value }) => {
+    { description: 'URL content after trailing whitespace', value: 'url(image.png fallback)' },
+    { description: 'URL escape after trailing whitespace', value: String.raw`url(image.png \61)` },
+    { description: 'nested opening parenthesis in URL', value: 'url(image(.png)' },
+    { description: 'non-printable URL content', value: 'url(image\u000B.png)' },
+    { description: 'backslash and line feed', value: 'first\\\nsecond' },
+    { description: 'backslash and carriage return', value: 'first\\\rsecond' },
+    { description: 'backslash and form feed', value: 'first\\\fsecond' },
+  ])('rejects a value with $description without affecting later tokens', ({ value }) => {
     const ruleText = createCSSRuleFromTheme('.selector', {
       customToken: value,
       colorBrandBackground: 'blue',
     } as unknown as PartialTheme);
+    expect(ruleText).toBe('.selector { --colorBrandBackground: blue;  }');
     const styleElement = document.createElement('style');
     styleElement.textContent = ruleText;
     document.head.appendChild(styleElement);
 
     const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
     expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
-    expect(logWarnSpy).not.toHaveBeenCalled();
+    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"customToken"'));
 
     styleElement.remove();
   });
 
-  it.each([
-    { value: ';url(a{)', containedValue: '\\3B  url(a{)' },
-    { value: '}url(a[)', containedValue: '\\7D  url(a[)' },
-    { value: 'red;url(a{)', containedValue: 'red\\3B  url(a{)' },
-    { value: String.raw`;\75rl(a{)`, containedValue: String.raw`\3B  \75rl(a{)` },
-  ])('preserves the URL boundary after repairing a delimiter in $value', ({ value, containedValue }) => {
-    const theme: PartialTheme & { customToken: string } = {
-      customToken: value,
-      colorBrandBackground: 'blue',
-    };
-    const ruleText = createCSSRuleFromTheme('.selector', theme);
+  it.each([{ value: ';url(a{)' }, { value: '}url(a[)' }, { value: 'red;url(a{)' }, { value: String.raw`;\75rl(a{)` }])(
+    'rejects malformed delimiters before URL content in $value',
+    ({ value }) => {
+      const theme: PartialTheme & { customToken: string } = {
+        customToken: value,
+        colorBrandBackground: 'blue',
+      };
+      const ruleText = createCSSRuleFromTheme('.selector', theme);
 
-    expect(ruleText).toBe(`.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`);
+      expect(ruleText).toBe('.selector { --colorBrandBackground: blue;  }');
 
-    const styleElement = document.createElement('style');
-    styleElement.textContent = ruleText;
-    document.head.appendChild(styleElement);
+      const styleElement = document.createElement('style');
+      styleElement.textContent = ruleText;
+      document.head.appendChild(styleElement);
 
-    try {
-      const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
-      expect(rule.style.getPropertyValue('--customToken')).not.toBe('');
-      expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
-      expect(rule.style.length).toBe(2);
-      expect(logWarnSpy).not.toHaveBeenCalled();
-    } finally {
-      styleElement.remove();
-    }
-  });
+      try {
+        const rule = styleElement.sheet?.cssRules[0] as CSSStyleRule;
+        expect(rule.style.getPropertyValue('--customToken')).toBe('');
+        expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+        expect(rule.style.length).toBe(1);
+        expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"customToken"'));
+      } finally {
+        styleElement.remove();
+      }
+    },
+  );
 
   it.each([
-    { value: '<url(a{)', containedValue: '\\3C url(a{})' },
-    { value: '>url(a{)', containedValue: '\\3E url(a{})' },
-    { value: '<url(/*)', containedValue: '\\3C url(/*)*/)' },
-    { value: String.raw`\<url(a{)`, containedValue: '\\3C url(a{})' },
-    { value: String.raw`\\<url(a{)`, containedValue: String.raw`\\\3C url(a{})` },
-  ])('contains the final escaped syntax for $value', ({ value, containedValue }) => {
+    { value: '<url(a{)' },
+    { value: '>url(a{)' },
+    { value: '<url(/*)' },
+    { value: String.raw`\<url(a{)` },
+    { value: String.raw`\\<url(a{)` },
+  ])('rejects malformed final escaped syntax for $value', ({ value }) => {
     expect(
       createCSSRuleFromTheme('.selector', { customToken: value, colorBrandBackground: 'blue' } as PartialTheme),
-    ).toBe(`.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`);
+    ).toBe('.selector { --colorBrandBackground: blue;  }');
   });
 
   it.each([

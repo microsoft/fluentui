@@ -7,6 +7,6 @@ whether a valid CSS value or URL is appropriate for your application.
 CSS escapes in custom token names are supported. NUL characters in theme values are replaced with the Unicode
 replacement character before serialization, matching browser CSS preprocessing.
 
-The serializer repairs incomplete strings, comments, and blocks to contain malformed entries; it does not reject all
-malformed CSS or establish that a repaired value is meaningful. Applications should validate values before serialization
-rather than relying on these repairs.
+The serializer validates the final escaped text without repairing it. Structurally malformed entries, including
+incomplete strings, comments, and blocks, are omitted with a development warning identifying only the token name.
+Well-formed values are preserved, but applications must still validate their meaning and suitability.

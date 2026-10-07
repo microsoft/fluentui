@@ -6,6 +6,8 @@ It's often useful for an app to extend the base set of tokens from Fluent UI.
 
 Theme names and values are developer-authored CSS. Validate dynamic data against an application-specific schema before
 using it to construct or extend a theme.
+Structurally malformed values are omitted with a development warning rather than repaired; valid CSS still needs
+application-specific validation.
 
 ```tsx
 import { makeStyles, themeToTokensObject, webLightTheme, FluentProvider, Theme } from '@fluentui/react-components';

@@ -30,17 +30,14 @@ function escapeForStyleTag(value: string): string {
   });
 }
 
-function containThemeTokenValue(value: string): string {
-  // CSS preprocessing replaces NUL before tokenization, including in identifiers.
-  value = value.replace(/\0/g, '\uFFFD');
-  const result = value.split('');
+function isValidThemeTokenValue(value: string): boolean {
   const blocks: string[] = [];
-  const blockIndexes: Record<string, number[]> = { ')': [], ']': [], '}': [] };
   // -1 keeps a non-URL identifier invalid until its boundary, without accumulating its text.
   let urlNameLength = 0;
   let quote = '';
   let comment = false;
-  let unquotedUrl = false;
+  // Unquoted URL states: 1 = leading whitespace, 2 = content, 3 = trailing whitespace.
+  let urlState = 0;
 
   for (let i = 0; i < value.length; i++) {
     const character = value[i];
@@ -56,17 +53,23 @@ function containThemeTokenValue(value: string): string {
 
     if (character === '\\') {
       const escape = value.slice(i, i + 9).match(ESCAPE_AT_START_PATTERN)?.[0];
-      if (!quote && !unquotedUrl) {
+      if (urlState === 3) {
+        return false;
+      }
+      if (!quote && !urlState) {
         urlNameLength = escape
           ? advanceUrlName(urlNameLength, parseInt(escape.slice(1), 16) || escape.charCodeAt(1))
           : 0;
       }
       if (escape) {
         i += escape.length - 1;
-      } else if (nextCharacter === undefined) {
-        result[i] = '\\\n';
-      } else if (quote) {
+      } else if (quote && nextCharacter !== undefined) {
         i += nextCharacter === '\r' && value[i + 2] === '\n' ? 2 : 1;
+      } else {
+        return false;
+      }
+      if (urlState) {
+        urlState = 2;
       }
       continue;
     }
@@ -75,22 +78,27 @@ function containThemeTokenValue(value: string): string {
       if (character === quote) {
         quote = '';
       } else if (/[\n\r\f]/.test(character)) {
-        result[i] = quote + character;
-        quote = '';
+        return false;
       }
       continue;
     }
 
-    if (unquotedUrl) {
+    if (urlState) {
       if (character === ')') {
         blocks.pop();
-        blockIndexes[')'].pop();
-        unquotedUrl = false;
+        urlState = 0;
         continue;
       }
-      if (character === '"' || character === "'") {
-        result[i] = escapeCharacter(character);
+      if (/[ \t\n\r\f]/.test(character)) {
+        if (urlState === 2) {
+          urlState = 3;
+        }
+        continue;
       }
+      if (urlState === 3 || /["'(\u0000-\u0008\u000B\u000E-\u001F\u007F]/.test(character)) {
+        return false;
+      }
+      urlState = 2;
       continue;
     }
 
@@ -109,30 +117,21 @@ function containThemeTokenValue(value: string): string {
     } else if (character === '"' || character === "'") {
       quote = character;
     } else if (closingBlock) {
-      blockIndexes[closingBlock].push(blocks.push(closingBlock) - 1);
+      blocks.push(closingBlock);
       if (character === '(' && functionNameIsUrl) {
         // Quoted URLs use normal string/block handling; only unquoted URLs consume delimiters as URL content.
-        unquotedUrl = !/^[ \t\n\r\f]*["']/.test(value.slice(i + 1));
+        urlState = /^[ \t\n\r\f]*["']/.test(value.slice(i + 1)) ? 0 : 1;
       }
-    } else if (character in blockIndexes) {
-      const blockIndex = blockIndexes[character].pop();
-      if (blockIndex !== undefined) {
-        const repairedBlocks = blocks.splice(blockIndex + 1).reverse();
-        for (const repairedBlock of repairedBlocks) {
-          blockIndexes[repairedBlock].pop();
-        }
-        blocks.pop();
-        result[i] = repairedBlocks.join('') + character;
-      } else if (character === '}') {
-        result[i] = escapeCharacter(character) + ' ';
+    } else if (')]}'.includes(character)) {
+      if (blocks.pop() !== character) {
+        return false;
       }
     } else if (character === ';' && blocks.length === 0) {
-      // The escape consumes its terminator; keep a separate whitespace token before the following identifier.
-      result[i] = escapeCharacter(character) + ' ';
+      return false;
     }
   }
 
-  return result.join('') + quote + (comment ? '*/' : '') + blocks.reverse().join('');
+  return !quote && !comment && blocks.length === 0;
 }
 
 function warnInvalidThemeToken(tokenName: string, reason: 'name' | 'value'): void {
@@ -151,7 +150,7 @@ function warnInvalidThemeToken(tokenName: string, reason: 'name' | 'value'): voi
  *
  * Useful for scenarios when you want to apply theming statically to a top level elements like `body`.
  * Theme names, values, and the selector are developer-authored CSS and must not be populated directly from untrusted
- * data. This function structurally contains theme declarations, but does not validate whether CSS values are
+ * data. This function rejects structurally malformed theme declarations, but does not validate whether CSS values are
  * appropriate for a particular application.
  */
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
@@ -173,9 +172,12 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
       }
 
       // Scan the emitted syntax: escaping an angle bracket can change a URL token into a generic function.
-      return `${cssVarRule}--${escapeForStyleTag(tokenName)}: ${containThemeTokenValue(
-        escapeForStyleTag(String(tokenValue)),
-      )}; `;
+      const escapedValue = escapeForStyleTag(String(tokenValue).replace(/\0/g, '\uFFFD'));
+      if (!isValidThemeTokenValue(escapedValue)) {
+        warnInvalidThemeToken(tokenName, 'value');
+        return cssVarRule;
+      }
+      return `${cssVarRule}--${escapeForStyleTag(tokenName)}: ${escapedValue}; `;
     }, '');
 
     return `${escapedSelector} { ${cssVarsAsString} }`;
