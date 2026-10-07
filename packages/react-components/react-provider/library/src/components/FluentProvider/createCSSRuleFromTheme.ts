@@ -172,10 +172,13 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
         return cssVarRule;
       }
 
-      return `${cssVarRule}--${tokenName}: ${containThemeTokenValue(String(tokenValue))}; `;
+      // Scan the emitted syntax: escaping an angle bracket can change a URL token into a generic function.
+      return `${cssVarRule}--${escapeForStyleTag(tokenName)}: ${containThemeTokenValue(
+        escapeForStyleTag(String(tokenValue)),
+      )}; `;
     }, '');
 
-    return `${escapedSelector} { ${escapeForStyleTag(cssVarsAsString)} }`;
+    return `${escapedSelector} { ${cssVarsAsString} }`;
   }
 
   return `${escapedSelector} {}`;

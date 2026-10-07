@@ -133,6 +133,21 @@ describe('useFluentProviderThemeStyleTag', () => {
     expect(rule.style.length).toBe(4);
   });
 
+  it.each([
+    { value: '<url(a{)', containedValue: '\\3C url(a{})' },
+    { value: '>url(a{)', containedValue: '\\3E url(a{})' },
+    { value: '<url(/*)', containedValue: '\\3C url(/*)*/)' },
+  ])('should contain final escaped syntax before client insertion for $value', ({ value, containedValue }) => {
+    const theme = { customToken: value, colorBrandBackground: 'blue' } as unknown as Theme;
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+    );
+
+    expect(result.current.rule).toBe(
+      `.${result.current.styleTagId} { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`,
+    );
+  });
+
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;

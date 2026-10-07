@@ -101,6 +101,21 @@ describe('FluentProvider (node)', () => {
     expect(html.match(/<style/g)).toHaveLength(1);
   });
 
+  it.each([
+    { value: '<url(a{)', containedValue: '\\3C url(a{})' },
+    { value: '>url(a{)', containedValue: '\\3E url(a{})' },
+    { value: '<url(/*)', containedValue: '\\3C url(/*)*/)' },
+  ])('contains final escaped syntax in server style text for $value', ({ value, containedValue }) => {
+    const theme: PartialTheme & { customToken: string } = {
+      customToken: value,
+      colorBrandBackground: 'blue',
+    };
+    const html = renderToStaticMarkup(<FluentProvider theme={theme} />);
+
+    expect(html).toContain(`--customToken: ${containedValue}; --colorBrandBackground: blue;`);
+    expect(html.match(/<style/g)).toHaveLength(1);
+  });
+
   it('normalizes NUL characters in server-rendered theme values', () => {
     const html = renderToStaticMarkup(
       <FluentProvider theme={{ fontFamilyBase: '"font\0family"', colorBrandBackground: 'blue' }} />,

@@ -13,6 +13,14 @@
 
 ## Writing Unit Tests
 
+Theme serialization has browser-backed component tests for client stylesheet insertion and server style-text parsing:
+
+```bash
+yarn nx run react-provider:e2e
+```
+
+These complement the provider's Jest tests; jsdom CSSOM assertions alone do not establish browser tokenization.
+
 Tests live adjacent to the component they test:
 
 ```

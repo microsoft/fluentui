@@ -5311,6 +5311,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.17"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@fluentui/react-utilities": "npm:^9.26.6"
+    "@fluentui/scripts-cypress": "npm:*"
     "@griffel/core": "npm:^1.16.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"

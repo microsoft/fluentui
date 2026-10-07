@@ -57,5 +57,8 @@
     "lib",
     "lib-commonjs"
   ],
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@fluentui/scripts-cypress": "*"
+  }
 }

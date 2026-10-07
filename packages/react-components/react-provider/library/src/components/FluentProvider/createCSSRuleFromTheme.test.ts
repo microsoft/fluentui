@@ -342,6 +342,31 @@ describe('createCSSRuleFromTheme', () => {
   });
 
   it.each([
+    { value: '<url(a{)', containedValue: '\\3C url(a{})' },
+    { value: '>url(a{)', containedValue: '\\3E url(a{})' },
+    { value: '<url(/*)', containedValue: '\\3C url(/*)*/)' },
+    { value: String.raw`\<url(a{)`, containedValue: '\\3C url(a{})' },
+    { value: String.raw`\\<url(a{)`, containedValue: String.raw`\\\3C url(a{})` },
+  ])('contains the final escaped syntax for $value', ({ value, containedValue }) => {
+    expect(
+      createCSSRuleFromTheme('.selector', { customToken: value, colorBrandBackground: 'blue' } as PartialTheme),
+    ).toBe(`.selector { --customToken: ${containedValue}; --colorBrandBackground: blue;  }`);
+  });
+
+  it.each([
+    { value: '"<font>"', escapedValue: String.raw`"\3C font\3E "` },
+    { value: '/* <comment> */ red', escapedValue: String.raw`/* \3C comment\3E  */ red` },
+    { value: 'url("<image>")', escapedValue: String.raw`url("\3C image\3E ")` },
+    { value: 'url(<image>)', escapedValue: String.raw`url(\3C image\3E )` },
+    { value: '"\0<font>"', escapedValue: '"\uFFFD\\3C font\\3E "' },
+  ])('preserves supported lexical contexts after escaping $value', ({ value, escapedValue }) => {
+    expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: value })).toBe(
+      `.selector { --fontFamilyBase: ${escapedValue};  }`,
+    );
+    expect(logWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it.each([
     String.raw`\55rl(resource.png)`,
     String.raw`u\52l(resource.png)`,
     String.raw`ur\4c(resource.png)`,
