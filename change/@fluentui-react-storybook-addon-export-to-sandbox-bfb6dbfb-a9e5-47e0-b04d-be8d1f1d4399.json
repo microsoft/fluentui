@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: support per-story full source generation and playground addon buttons",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "dmytrokirpa@microsoft.com"
+}
