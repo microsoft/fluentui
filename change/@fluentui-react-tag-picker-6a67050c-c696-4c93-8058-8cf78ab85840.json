@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: expose selection state on grouped TagPicker options for assistive technology",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "paulmardling@microsoft.com"
+}
