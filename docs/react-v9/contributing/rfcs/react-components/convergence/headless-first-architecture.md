@@ -315,8 +315,7 @@ of the move, and last the v9-wrapping overlays: menu, drawer, toast, the combobo
 
 - A multi-quarter migration that touches every v9 package except Popover, Tooltip and Dialog. Mitigated by the
   per-component unit of work and by every step being shippable on its own.
-- Every v9 component package depends on a `0.x` preview package. A headless minor bumps all dependents through
-  beachball, so the headless release cadence becomes a v9 release concern.
+- Every v9 component package depends on a `0.x` preview package.
 - Two hooks per component in headless (`use<Name>Base` and `use<Name>`) so that the `data-*` contract stays out of v9.
 - Popover, Tooltip and Dialog keep two implementations. Dismissal, focus restore and keyboard handling for them are
   still tested twice and can still drift.
