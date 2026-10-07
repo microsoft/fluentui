@@ -33,6 +33,10 @@ const exitStyles = `
   ${surfaceSelector}:not([data-open]) {
     animation: surfaceExit ${exitDuration} linear;
   }
+  ${surfaceSelector}:not([data-open]),
+  ${surfaceSelector}:not([data-open])::backdrop {
+    pointer-events: none;
+  }
   ${surfaceSelector}::backdrop {
     background: ${webLightTheme.colorBackgroundOverlay};
     transition: overlay ${exitDuration} allow-discrete;
@@ -175,8 +179,18 @@ const finishExit = () =>
     expect(animations.length).to.be.greaterThan(0);
     animations.forEach(animation => animation.finish());
   });
+const setReducedMotionPreference = (value?: 'no-preference' | 'reduce') =>
+  cy.then(() =>
+    Cypress.automation('remote:debugger:protocol', {
+      command: 'Emulation.setEmulatedMedia',
+      params: { features: value ? [{ name: 'prefers-reduced-motion', value }] : [] },
+    }),
+  );
 
 describe('DialogSurface exit animations', () => {
+  beforeEach(() => setReducedMotionPreference('no-preference'));
+  afterEach(() => setReducedMotionPreference());
+
   (['modal', 'alert', 'non-modal'] as const).forEach(modalType => {
     it(`waits for exit keyframes while closing ${modalType} natively and restoring focus`, () => {
       mountBase(<Example modalType={modalType} />);
@@ -268,6 +282,10 @@ describe('DialogSurface exit animations', () => {
       exitFinished = exitAnimations.map(animation => animation.finished);
     });
     openSurface();
+    cy.get(surfaceSelector).should(([surface]) => {
+      expect(surface).to.have.attr('data-open');
+      expect(surface).to.have.attr('open');
+    });
     cy.then(() => {
       exitAnimations.forEach(animation => animation.cancel());
       return Promise.all(
@@ -316,22 +334,8 @@ describe('DialogSurface exit animations', () => {
   });
 
   describe('reduced motion', () => {
-    afterEach(() => {
-      cy.then(() =>
-        Cypress.automation('remote:debugger:protocol', {
-          command: 'Emulation.setEmulatedMedia',
-          params: { features: [] },
-        }),
-      );
-    });
-
     it('unmounts immediately when consumer styles honor prefers-reduced-motion', () => {
-      cy.then(() =>
-        Cypress.automation('remote:debugger:protocol', {
-          command: 'Emulation.setEmulatedMedia',
-          params: { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] },
-        }),
-      );
+      setReducedMotionPreference('reduce');
       mountBase(<Example className="with-backdrop" />);
       openSurface();
       closeSurface();
