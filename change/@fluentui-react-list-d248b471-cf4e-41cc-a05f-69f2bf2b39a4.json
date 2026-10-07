@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: expose design-free List base hooks, List context APIs, and DOM validation for headless composition while preserving explicit root elements",
+  "comment": "feat: expose design-free List base hooks and context APIs with complete public types, editable-child validation, and explicit root support",
   "packageName": "@fluentui/react-list",
   "email": "dmytrokirpa@microsoft.com"
 }

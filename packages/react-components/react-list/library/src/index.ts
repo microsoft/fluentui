@@ -20,6 +20,7 @@ export type {
   ListSynchronousContextValue,
   OnListSelectionChangeData,
 } from './List';
+export type { ListSelectionState } from './hooks/types';
 export {
   calculateListItemRoleForListRole,
   calculateListRole,

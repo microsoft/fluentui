@@ -94,7 +94,9 @@ Import `useListBase_unstable` and `useListItemBase_unstable` from `@fluentui/rea
 
 Explicit `as` values take precedence over the default roots: `ul` for List and `li` for ListItem, or `div` for both in composite mode.
 
-Use `useListContextValues_unstable` with `renderList_unstable` to provide both List contexts to your items. `ListContextProvider` and `useListContext_unstable` expose the selection/validation context for custom descendants, but the selection context alone does not provide the synchronous role and navigation metadata.
+Development validation recognizes bare `contenteditable` attributes and the `true` and `plaintext-only` values case-insensitively. Non-editing values do not make an element focusable unless it also has a tab stop; hidden elements and negative tab stops are excluded.
+
+Use `useListContextValues_unstable` with `renderList_unstable` to provide both List contexts to your items. `ListContextProvider` and `useListContext_unstable` expose the selection/validation context for custom descendants, but the selection context alone does not provide the synchronous role and navigation metadata. `ListSelectionState` is the public type for the state and methods at `ListContextValue.selection`.
 
 The base ListItem checkmark is a native `input[type="checkbox"]`, not a Fluent `Checkbox`. Give this slot an accessible label and use a native input `onChange` handler rather than the Fluent Checkbox `(event, data)` signature. Render it with `assertSlots<ListItemBaseSlots>` and the slot-aware `@fluentui/react-jsx-runtime`, as shown in the Headless example.
 

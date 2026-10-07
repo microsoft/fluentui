@@ -144,6 +144,79 @@ describe('List', () => {
       expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
     });
 
+    it.each(['', 'true', 'TRUE', 'plaintext-only', 'PLAINTEXT-ONLY'])(
+      'detects keyboard-focusable editing hosts (%s)',
+      contentEditable => {
+        const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+        const { getByRole, getByTestId } = render(
+          <ul role="listbox">
+            <li role="option">
+              <div data-testid="editor" />
+            </li>
+          </ul>,
+        );
+        getByTestId('editor').setAttribute('contenteditable', contentEditable);
+        consoleWarn.mockClear();
+
+        result.current.validateListItem(getByRole('option'));
+
+        expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
+      },
+    );
+
+    it.each(['false', 'FALSE', 'inherit', 'invalid'])(
+      'does not treat non-editing values as focusable hosts (%s)',
+      contentEditable => {
+        const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+        const { getByRole, getByTestId } = render(
+          <ul role="listbox">
+            <li role="option">
+              <div data-testid="editor" />
+            </li>
+          </ul>,
+        );
+        getByTestId('editor').setAttribute('contenteditable', contentEditable);
+        consoleWarn.mockClear();
+
+        result.current.validateListItem(getByRole('option'));
+
+        expect(consoleWarn).not.toHaveBeenCalled();
+      },
+    );
+
+    it.each([
+      <div key="negative-tabindex" contentEditable tabIndex={-1} />,
+      <div key="hidden" contentEditable="plaintext-only" hidden />,
+    ])('ignores non-tabbable editing hosts (%#)', child => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">{child}</li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).not.toHaveBeenCalled();
+    });
+
+    it('detects explicitly tabbed non-editing hosts', () => {
+      const { result } = renderHook(() => useListBase_unstable({ selectionMode: 'single' }, React.createRef()));
+      const { getByRole } = render(
+        <ul role="listbox">
+          <li role="option">
+            <div contentEditable={false} tabIndex={0} />
+          </li>
+        </ul>,
+      );
+      consoleWarn.mockClear();
+
+      result.current.validateListItem(getByRole('option'));
+
+      expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('expected role "grid"'));
+    });
+
     it('does not inspect the DOM when validating in production', () => {
       const { result } = renderHook(() => useListBase_unstable({}, React.createRef()));
       const { getByRole } = render(

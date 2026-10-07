@@ -1,6 +1,6 @@
+import type * as React from 'react';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { ListItemActionEvent, ListItemActionEventName } from '../../events/ListItemActionEvent';
 
 export type ListItemSlots = {
   root: NonNullable<Slot<'li', 'div'>>;
@@ -17,38 +17,39 @@ export type ListItemBaseSlots = {
 
 export type ListItemValue = string | number;
 
-export type ListItemActionEventData = EventData<typeof ListItemActionEventName, ListItemActionEvent> & {
+export type ListItemActionEventData = EventData<
+  'ListItemAction',
+  CustomEvent<{ originalEvent: React.MouseEvent | React.KeyboardEvent }>
+> & {
   value: ListItemValue;
 };
 
-type ListItemOwnProps = {
+/**
+ * ListItem Props
+ */
+export type ListItemProps = ComponentProps<ListItemSlots> & {
   value?: ListItemValue;
   onAction?: EventHandler<ListItemActionEventData>;
   disabledSelection?: boolean;
 };
 
 /**
- * ListItem Props
- */
-export type ListItemProps = ComponentProps<ListItemSlots> & ListItemOwnProps;
-
-/**
  * ListItem props accepted by `useListItemBase_unstable`.
  */
-export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> & ListItemOwnProps;
+export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> &
+  Pick<ListItemProps, 'value' | 'onAction' | 'disabledSelection'>;
 
-type ListItemOwnState = {
+/**
+ * State used in rendering ListItem
+ */
+export type ListItemState = ComponentState<ListItemSlots> & {
   selectable: boolean;
   navigable: boolean;
   disabled?: boolean;
 };
 
 /**
- * State used in rendering ListItem
- */
-export type ListItemState = ComponentState<ListItemSlots> & ListItemOwnState;
-
-/**
  * State returned by `useListItemBase_unstable`.
  */
-export type ListItemBaseState = ComponentState<ListItemBaseSlots> & ListItemOwnState;
+export type ListItemBaseState = ComponentState<ListItemBaseSlots> &
+  Pick<ListItemState, 'selectable' | 'navigable' | 'disabled'>;

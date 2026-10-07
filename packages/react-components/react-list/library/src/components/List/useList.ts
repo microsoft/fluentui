@@ -15,7 +15,8 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * any Tabster runtime.
  */
 const FOCUSABLE_SELECTOR =
-  'a[href], area[href], button, input, select, textarea, iframe, [contenteditable="true"], [tabindex]';
+  'a[href], area[href], button, input, select, textarea, iframe, ' +
+  '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], [tabindex]';
 const NON_FOCUSABLE_SELECTOR = ':disabled, [hidden], input[type="hidden"], [tabindex^="-"]';
 
 /**
