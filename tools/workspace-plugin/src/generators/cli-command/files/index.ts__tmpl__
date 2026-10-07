@@ -1,0 +1,16 @@
+import type { CommandModule } from 'yargs';
+
+const command: CommandModule = {
+  command: '<%= name %>',
+  describe: '<%= description %>',
+  builder: yargs =>
+    yargs
+      .version(false)
+      .help(),
+  handler: async argv => {
+    const { handler } = await import('./handler');
+    return handler(argv);
+  },
+};
+
+export default command;

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Mon, 21 Sep 2026 15:07:56 GMT",
+      "version": "9.1.4",
+      "tag": "@fluentui/react-conformance-griffel_v9.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: declare react-dom peer dependency (used at runtime), remove unused @types/react-dom, mark @types/react as optional"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2026 14:23:05 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.1.3",
       "version": "9.1.3",
