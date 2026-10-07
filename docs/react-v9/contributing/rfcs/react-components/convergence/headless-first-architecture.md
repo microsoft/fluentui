@@ -122,8 +122,7 @@ its component packages.
 
 ### 2. What each layer owns, per component
 
-Button is the template; every component follows the same shape. A proof of concept for Button, Checkbox (Field
-dependency) and Menu (compound, overlay) is linked from here before this RFC is accepted. <!-- TODO: PoC links -->
+The lists below use Button as the example; every component follows the same shape.
 
 **Headless exports, from `@fluentui/react-headless-components-preview/button`, under stable names:**
 
