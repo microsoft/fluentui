@@ -40,6 +40,14 @@ export class BaseDropdown extends FASTElement {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
+   * The element identity. This static property should NOT be overridden by subclasses. It’s designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'dropdown';
+
+  /**
    * The ID of the current active descendant.
    *
    * @public
