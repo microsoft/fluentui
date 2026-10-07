@@ -41,4 +41,15 @@ describe('useListItem_unstable', () => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components.root).toBe('li');
   });
+
+  it.each([
+    { name: 'styled', useHook: useListItem_unstable },
+    { name: 'base', useHook: useListItemBase_unstable },
+  ])('$name hook preserves the inherited role when role is explicitly undefined', ({ useHook }) => {
+    const { result } = renderHook(() => useHook({ role: undefined }, React.createRef()), {
+      wrapper: ({ children }: React.PropsWithChildren) => <List selectionMode="single">{children}</List>,
+    });
+
+    expect(result.current.root.role).toBe('option');
+  });
 });

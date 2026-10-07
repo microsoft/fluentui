@@ -258,13 +258,13 @@ export const useListItemBase_unstable = (
     getIntrinsicElementProps(as, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
-      role: finalListItemRole,
       id: String(value),
       ...(isSelectionModeEnabled && {
         'aria-selected': isSelected,
         'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
       ...props,
+      role: finalListItemRole,
       onKeyDown: handleKeyDown,
       onClick: isSelectionModeEnabled || onClick || onAction ? handleClick : undefined,
     }),

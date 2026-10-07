@@ -802,4 +802,15 @@ describe('List', () => {
     expect(getByRole('list').tagName).toBe('OL');
     expect(getByRole('listitem').tagName).toBe('LI');
   });
+
+  it('renders inferred selection roles when role props are explicitly undefined', () => {
+    const { getByRole } = render(
+      <List role={undefined} selectionMode="single">
+        <ListItem role={undefined}>Item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('listbox')).toBeDefined();
+    expect(getByRole('option')).toBeDefined();
+  });
 });

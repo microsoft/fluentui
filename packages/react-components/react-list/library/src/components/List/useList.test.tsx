@@ -53,4 +53,23 @@ describe('useList_unstable', () => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     expect(result.current.components.root).toBe('ol');
   });
+
+  describe.each([
+    { name: 'styled', useHook: useList_unstable },
+    { name: 'base', useHook: useListBase_unstable },
+  ])('$name inferred roles', ({ useHook }) => {
+    it('preserves the selection role when role is explicitly undefined', () => {
+      const { result } = renderHook(() => useHook({ role: undefined, selectionMode: 'single' }, React.createRef()));
+
+      expect(result.current.root.role).toBe('listbox');
+      expect(result.current.listItemRole).toBe('option');
+    });
+
+    it('preserves the composite role when role is explicitly undefined', () => {
+      const { result } = renderHook(() => useHook({ role: undefined, navigationMode: 'composite' }, React.createRef()));
+
+      expect(result.current.root.role).toBe('grid');
+      expect(result.current.listItemRole).toBe('row');
+    });
+  });
 });

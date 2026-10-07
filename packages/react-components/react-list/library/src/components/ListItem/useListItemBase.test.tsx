@@ -46,6 +46,19 @@ describe('useListItemBase_unstable', () => {
     expect(getByRole('listitem').tagName).toBe('LI');
   });
 
+  it('renders inferred selection roles when role props are explicitly undefined', () => {
+    const { getByRole } = render(
+      <BaseList role={undefined} selectionMode="single">
+        <BaseListItem role={undefined} checkmark={{ 'aria-label': 'Select item' }}>
+          Item
+        </BaseListItem>
+      </BaseList>,
+    );
+
+    expect(getByRole('listbox')).toBeDefined();
+    expect(getByRole('option')).toBeDefined();
+  });
+
   it('renders an unstyled native checkbox and forwards both refs', () => {
     const rootRef = React.createRef<HTMLLIElement>();
     const checkmarkRef = React.createRef<HTMLInputElement>();

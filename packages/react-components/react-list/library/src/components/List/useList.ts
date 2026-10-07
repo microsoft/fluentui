@@ -126,11 +126,11 @@ export const useListBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps(as, {
         ref,
-        role: listRole,
         ...(selectionMode && {
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
         ...props,
+        role: listRole,
       }),
       { elementType: as },
     ),
