@@ -8,8 +8,6 @@ _Stakeholders: cxe-prg_
 
 _Authored: 2026-10-04_
 
-_Feedback until: 2026-10-25_
-
 _Status: Draft_
 
 ## Summary
