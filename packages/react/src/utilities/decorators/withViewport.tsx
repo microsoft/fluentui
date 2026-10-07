@@ -82,6 +82,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _root = React.createRef<HTMLDivElement>();
     private _resizeAttempts: number;
     private _viewportResizeObserver: any;
+    private _resizeWindow?: Window;
     private _async: Async;
     private _events: EventGroup;
 
@@ -101,7 +102,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
-      const { delayFirstMeasure, disableResizeObserver, skipViewportMeasures } = this.props as IWithViewportProps;
+      const { delayFirstMeasure, skipViewportMeasures } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
@@ -109,11 +110,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       });
 
       if (!skipViewportMeasures) {
-        if (!disableResizeObserver && this._isResizeObserverAvailable()) {
-          this._registerResizeObserver();
-        } else {
-          this._events.on(win, 'resize', this._onAsyncResize);
-        }
+        this._registerResizeHandler(win);
 
         if (delayFirstMeasure) {
           this._async.setTimeout(() => {
@@ -127,31 +124,23 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentDidUpdate(previousProps: TProps) {
       const { skipViewportMeasures: previousSkipViewportMeasures } = previousProps as IWithViewportProps;
-      const { disableResizeObserver, skipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
+      const hasWindowChanged = win !== this._resizeWindow;
 
-      if (skipViewportMeasures !== previousSkipViewportMeasures) {
-        if (!skipViewportMeasures) {
-          if (!disableResizeObserver && this._isResizeObserverAvailable()) {
-            if (!this._viewportResizeObserver) {
-              this._registerResizeObserver();
-            }
-          } else {
-            this._events.on(win, 'resize', this._onAsyncResize);
-          }
-
-          this._updateViewport();
-        } else {
-          this._unregisterResizeObserver();
-          this._events.off(win, 'resize', this._onAsyncResize);
-        }
+      if (!skipViewportMeasures && (previousSkipViewportMeasures || hasWindowChanged)) {
+        this._unregisterResizeHandler();
+        this._registerResizeHandler(win);
+        this._updateViewport();
+      } else if (skipViewportMeasures && !previousSkipViewportMeasures) {
+        this._unregisterResizeHandler();
       }
     }
 
     public componentWillUnmount(): void {
+      this._unregisterResizeHandler();
       this._events.dispose();
       this._async.dispose();
-      this._unregisterResizeObserver();
     }
 
     public render(): JSXElement {
@@ -173,15 +162,35 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       this._updateViewport();
     }
 
-    private _isResizeObserverAvailable(): boolean {
-      const win = getWindow(this._root.current);
+    private _registerResizeHandler = (win: Window | undefined): void => {
+      if (!win) {
+        return;
+      }
 
-      return win && (win as any).ResizeObserver;
+      const { disableResizeObserver } = this.props as IWithViewportProps;
+      this._resizeWindow = win;
+
+      if (!disableResizeObserver && this._isResizeObserverAvailable(win)) {
+        this._registerResizeObserver(win);
+      } else {
+        this._events.on(win, 'resize', this._onAsyncResize);
+      }
+    };
+
+    private _unregisterResizeHandler = (): void => {
+      this._unregisterResizeObserver();
+
+      if (this._resizeWindow) {
+        this._events.off(this._resizeWindow, 'resize', this._onAsyncResize);
+        this._resizeWindow = undefined;
+      }
+    };
+
+    private _isResizeObserverAvailable(win: Window | undefined): boolean {
+      return !!win && !!(win as any).ResizeObserver;
     }
 
-    private _registerResizeObserver = () => {
-      const win = getWindow(this._root.current);
-
+    private _registerResizeObserver = (win: Window): void => {
       this._viewportResizeObserver = new (win as any).ResizeObserver(this._onAsyncResize);
       this._viewportResizeObserver.observe(this._root.current);
     };
