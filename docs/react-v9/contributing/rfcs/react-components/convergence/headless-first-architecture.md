@@ -113,10 +113,6 @@ Three rules:
   Avatar renders `Badge`). That is a rendering dependency, it stays explicit in `package.json`, and it never reaches a
   base hook.
 
-v9 depends on the preview package as it is. Caret ranges on `0.x` pin the minor, so a headless minor release bumps the
-dependent v9 packages through the normal beachball dependency bump. That is acceptable and already how the suite tracks
-its component packages.
-
 ### 2. What each layer owns, per component
 
 The lists below use Button as the example; every component follows the same shape.
