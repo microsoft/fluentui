@@ -379,17 +379,6 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
-   * The initial value of the control. When the control is a combobox, this value is used to set the value of the
-   * control when the dropdown is initialized.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `value`
-   */
-  @attr({ attribute: 'value' })
-  public valueAttribute: string = '';
-
-  /**
    * The slot element for the control.
    * @internal
    */

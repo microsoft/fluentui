@@ -6,6 +6,9 @@
 }
 
 :host {
+  --_indicator-size: 20px;
+  --_initial-display: attr(initial-display raw-string, none);
+
   box-sizing: border-box;
   color: var(--colorNeutralForeground1);
   cursor: pointer;
@@ -24,7 +27,8 @@
   box-sizing: border-box;
   color: inherit;
   column-gap: var(--spacingHorizontalXXS);
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-columns: 1fr var(--_indicator-size);
   justify-content: space-between;
   min-width: 160px;
   overflow: hidden;
@@ -61,9 +65,27 @@
   font-weight: var(--fontWeightRegular);
 }
 
+:host(:not(:has([slot='control']))) slot[name='control']::before {
+  content: var(--_initial-display);
+}
+
+@scope {
+  :scope:not(:has([slot='control'])) slot[name='control']::before {
+    content: var(--_initial-display);
+  }
+}
+
+:host(:is(:not([value]), [value=''])) slot[name='control']::before {
+  color: var(--colorNeutralForeground4);
+}
+
 ::slotted(:is(input, button)) {
   all: unset;
-  flex: 1 1 auto;
+}
+
+slot[name='control']::before,
+::slotted(:is(input, button)) {
+  grid-area: 1 / 1;
 }
 
 ::slotted(button) {
@@ -81,16 +103,17 @@
   aspect-ratio: 1;
   color: var(--colorNeutralForeground3);
   display: inline-flex;
+  grid-area: 1 / 2;
   justify-content: center;
-  width: 20px;
+  width: var(--_indicator-size);
 }
 
 :host([size='small']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-  width: 16px;
+  --_indicator-size: 16px;
 }
 
 :host([size='large']) :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
-  width: 24px;
+  --_indicator-size: 24px;
 }
 
 .control::after,

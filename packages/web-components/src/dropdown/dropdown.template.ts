@@ -34,7 +34,7 @@ export const dropdownInputTemplate = html<BaseDropdown>`
     role="combobox"
     ?disabled="${x => x.disabled}"
     type="${x => x.type}"
-    value="${x => x.valueAttribute}"
+    value="${x => x.initialValue}"
     slot="control"
     ${ref('control')}
   />

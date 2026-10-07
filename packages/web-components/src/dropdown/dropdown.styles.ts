@@ -53,6 +53,10 @@ import { display } from '../utils/display.js';
 /**
  * Styles for the {@link (Dropdown:class)} component.
  *
+ * NOTE: The `--_initial-display` CSS variable and the `initial-display`
+ * attribute are used to show the server defined display text in SSR context,
+ * before the custom element is defined and upgraded.
+ *
  * @public
  */
 export const styles = css`
@@ -60,6 +64,7 @@ export const styles = css`
 
   :host {
     --_indicator-size: 20px;
+    --_initial-display: attr(initial-display raw-string, none);
 
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
@@ -105,8 +110,27 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
+  :host(:not(:has([slot='control']))) slot[name='control']::before {
+    content: var(--_initial-display);
+  }
+
+  @scope {
+    :scope:not(:has([slot='control'])) slot[name='control']::before {
+      content: var(--_initial-display);
+    }
+  }
+
+  :host(:is(:not([value]), [value=''])) slot[name='control']::before {
+    color: ${colorNeutralForeground4};
+  }
+
   ::slotted(:is(input, button)) {
     all: unset;
+  }
+
+  slot[name='control']::before,
+  ::slotted(:is(input, button)) {
+    grid-area: 1 / 1;
   }
 
   ::slotted(button) {
@@ -124,7 +148,7 @@ export const styles = css`
     aspect-ratio: 1;
     color: ${colorNeutralForeground3};
     display: inline-flex;
-    grid-column: 2;
+    grid-area: 1 / 2;
     justify-content: center;
     width: var(--_indicator-size);
   }
