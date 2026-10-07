@@ -7,7 +7,7 @@
 
 :host {
   --_indicator-size: 20px;
-  --_initial-display: attr(initial-display raw-string, none);
+  --_initial-display: attr(initial-display raw-string, attr(placeholder raw-string, none));
 
   box-sizing: border-box;
   color: var(--colorNeutralForeground1);
