@@ -18,17 +18,12 @@
     "lz-string": "^1.5.0",
     "semver": "^6.2.0"
   },
-  "devDependencies": {
-    "monaco-editor": "0.52.2",
-    "postcss": "8.5.18",
-    "prettier": "^2.8.8"
-  },
   "peerDependencies": {
     "@storybook/react": ">=9.1.17",
     "@types/react": ">=16.14.0 <20.0.0",
     "react": ">=18.0.0 <20.0.0",
     "react-dom": ">=18.0.0 <20.0.0",
-    "typescript": ">=4.5.0"
+    "typescript": ">=5.0.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -68,8 +63,7 @@
     "./package.json": "./package.json"
   },
   "sideEffects": [
-    "./dist/styles.css",
-    "./src/playground/monaco.ts"
+    "./dist/styles.css"
   ],
   "files": [
     "*.md",

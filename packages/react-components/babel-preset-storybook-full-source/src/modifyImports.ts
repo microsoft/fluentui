@@ -8,6 +8,11 @@ interface PluginState extends Babel.PluginPass {
 }
 
 interface ModifyImportsPluginOptions extends BabelPluginOptions {
+  /**
+   * Reports a relative import removed from the extracted source because it cannot be included in the example.
+   * `fullSourcePlugin` uses these diagnostics to set `fullSourceIsRunnable` and `fullSourceUnsupportedImports`.
+   * This is not the playground's package allowlist or a request to load a runtime module.
+   */
   onUnsupportedRelativeImport?: (specifier: string) => void;
 }
 

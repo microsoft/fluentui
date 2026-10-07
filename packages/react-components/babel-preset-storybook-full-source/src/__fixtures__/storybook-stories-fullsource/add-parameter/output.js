@@ -7,5 +7,6 @@ Default.parameters = {
     },
   },
 };
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource =
   'import * as React from "react";\n\nexport const Default = () => <Button>Click me</Button>;\n';

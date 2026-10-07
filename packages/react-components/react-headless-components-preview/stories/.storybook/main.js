@@ -31,14 +31,10 @@ function isNotRootSandboxOrPlaygroundAddon(addon) {
  * Skips `.` — the barrel is empty, and Storybook only has a tsconfig path for `package/*` (source),
  * not the package root (built `lib/index.js`, which CI `build-storybook` does not produce).
  *
- * @returns {Record<string, string>}
+ * @returns {string[]}
  */
 function getHeadlessPlaygroundModules() {
-  /** @type {Record<string, string>} */
-  const modules = {
-    '@ctrl/tinycolor': '@ctrl/tinycolor',
-    '@fluentui/react-icons': '@fluentui/react-icons',
-  };
+  const modules = ['@ctrl/tinycolor', '@fluentui/react-icons'];
 
   for (const exportPath of Object.keys(headlessPackageJson.exports ?? {})) {
     if (exportPath === '.' || exportPath === './package.json') {
@@ -46,7 +42,7 @@ function getHeadlessPlaygroundModules() {
     }
 
     const specifier = `${HEADLESS_PACKAGE_NAME}${exportPath.slice(1)}`;
-    modules[specifier] = specifier;
+    modules.push(specifier);
   }
 
   return modules;
@@ -72,14 +68,14 @@ module.exports = /** @type {Omit<import('../../../../../.storybook/main'), 'type
       },
     }),
     /** {@link file://./../../../react-storybook-addon-playground/package.json} */
-    loadWorkspaceAddon('@fluentui/react-storybook-addon-playground', {
-      tsConfigPath,
-      /** @type {import('../../../react-storybook-addon-playground/src/index').PresetConfig} */
+    {
+      name: '@fluentui/react-storybook-addon-playground',
+      /** @type {import('@fluentui/react-storybook-addon-playground').PresetConfig} */
       options: {
         modules: getHeadlessPlaygroundModules(),
         setup: path.resolve(__dirname, './playground.setup.tsx'),
       },
-    }),
+    },
   ],
   webpackFinal: (config, options) => {
     const localConfig = /** @type {any} */ ({ ...rootMain.webpackFinal(config, options) });

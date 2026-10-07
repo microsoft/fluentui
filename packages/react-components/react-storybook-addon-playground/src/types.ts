@@ -4,6 +4,8 @@ import type { ParametersExtension } from './public-types';
 /** Parameters injected per-story at build time by `@fluentui/babel-preset-storybook-full-source`. */
 interface InjectedParameters {
   fullSource?: string;
+  /** False when source extraction removed imports; undefined for legacy or third-party source transforms. */
+  fullSourceIsRunnable?: boolean;
   fullSourceUnsupportedImports?: string[];
   cssModuleSources?: {
     cssModules?: Array<{ name: string; source: string }>;

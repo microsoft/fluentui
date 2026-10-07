@@ -255,6 +255,7 @@
     "markdown-table": "2.0.0",
     "memfs": "3.5.3",
     "micromatch": "4.0.8",
+    "monaco-editor": "^0.52.2",
     "monosize": "0.10.0",
     "monosize-bundler-webpack": "0.4.1",
     "monosize-storage-git": "0.3.5",

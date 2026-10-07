@@ -16,14 +16,15 @@ export interface PlaygroundParameters {
 
 /**
  * Options passed to the addon via Storybook's `addons` entry
- * (`loadWorkspaceAddon(..., { options })` or `{ name, options }`).
+ * (`{ name: '@fluentui/react-storybook-addon-playground', options }`).
  */
 export interface PresetConfig {
   /**
-   * Maps imports available in playground source to requests resolved by the consumer's Storybook Webpack build.
+   * Package imports available in playground source, resolved by the consumer's Storybook Webpack build.
+   * Use an array when import names and package requests match, or a map to alias an import to a different request.
    * React runtime entries (`react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`) are provided automatically.
    */
-  modules: Record<string, string>;
+  modules: string[] | Record<string, string>;
 
   /**
    * Optional setup module that default-exports a value from `definePlaygroundSetup`

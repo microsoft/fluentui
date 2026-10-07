@@ -85,8 +85,12 @@ export function webpackFinal(config: WebpackFinalConfig, options: WebpackFinalOp
   return config;
 }
 
+export function getModuleRequests(modules: PresetConfig['modules']): Record<string, string> {
+  return Array.isArray(modules) ? Object.fromEntries(modules.map(name => [name, name])) : modules;
+}
+
 export function getAllowedModules(options: PresetConfig): string[] {
-  return [...BUILT_IN_MODULES, ...Object.keys(options.modules)];
+  return [...BUILT_IN_MODULES, ...Object.keys(getModuleRequests(options.modules))];
 }
 
 /**
@@ -187,10 +191,11 @@ function matchesAnyAsset(assetUrl: string, assetFiles: string[]): boolean {
  * Storybook merges an addon's registration options into the options of its preset hooks. Older Storybook versions
  * only expose them through `presetsList`, which is used as a fallback.
  */
-export function getAddonOptions(options: WebpackFinalOptions): PresetConfig {
-  const direct = options as WebpackFinalOptions & Partial<PresetConfig>;
-  if (direct.modules && typeof direct.modules === 'object') {
-    return { ...defaultOptions, modules: direct.modules, setup: direct.setup, typings: direct.typings };
+export function getAddonOptions(
+  options: Pick<WebpackFinalOptions, 'presetsList'> & Partial<PresetConfig>,
+): PresetConfig {
+  if (options.modules && typeof options.modules === 'object') {
+    return { ...defaultOptions, modules: options.modules, setup: options.setup, typings: options.typings };
   }
 
   const presetRegistration = options.presetsList?.find(preset => isPlaygroundAddonFile(preset.name));
@@ -232,7 +237,7 @@ function toJsStringLiteral(value: string): string {
  * create lazy-compilation proxies that need the separate-origin development server.
  */
 export function buildRuntimeEntrySource(options: PresetConfig, lazyModules = false): string {
-  const modules = Object.entries(options.modules);
+  const modules = Object.entries(getModuleRequests(options.modules));
   const setupPath = options.setup ?? getDefaultSetupPath();
   const moduleLoaders = modules
     .map(
@@ -349,7 +354,7 @@ export function collectConfiguredTypings(
   const collected: Record<string, Record<string, string>> = {};
   const usage = new Map<string, number>();
 
-  for (const [publicName, request] of Object.entries(options.modules)) {
+  for (const [publicName, request] of Object.entries(getModuleRequests(options.modules))) {
     const result = collectTypings({ packageRoot, entries: [request], typescriptVersion });
     const files: Record<string, string> = {};
     result.sources.forEach(source => sources.add(source));
@@ -485,7 +490,15 @@ export class PlaygroundRuntimeManifestPlugin {
           );
           const buildId = crypto
             .createHash('sha256')
-            .update(JSON.stringify({ scripts, styles, modules: this.options.modules, typingsFile, moduleTypings }))
+            .update(
+              JSON.stringify({
+                scripts,
+                styles,
+                modules: getModuleRequests(this.options.modules),
+                typingsFile,
+                moduleTypings,
+              }),
+            )
             .digest('hex')
             .slice(0, 12);
 

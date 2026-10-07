@@ -101,6 +101,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /[\\/]playground[\\/]monaco\.ts$/,
+        include: path.join(__dirname, 'src'),
+        sideEffects: true,
+      },
       playgroundSwcRule,
       workspaceSwcRule,
       {

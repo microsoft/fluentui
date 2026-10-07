@@ -1,4 +1,10 @@
-# Fluent UI Playground: Proposed Next Steps
+# Fluent UI Storybook Playground Specification
+
+## Implementation Status
+
+The Storybook addon and browser workflow described below are implemented. The protocol, CLI, agent skill, and workflow
+extensions are proposed follow-ups unless a checklist explicitly marks an existing protocol feature as complete.
+The [README](../README.md) is the configuration and usage reference.
 
 ## Summary
 
@@ -56,19 +62,17 @@ The browser UI should remain the primary human experience. The CLI and agent int
 - Automatically committing generated code without developer review
 - Building an MCP server before the core protocol and CLI workflows are stable
 
-## Phase 1: Land and Harden the Manual Workflow
+## Implemented: Storybook and Browser Workflow
 
-The first milestone is a reliable browser experience.
+The current implementation provides the manual browser experience.
 
-### Work
+### Scope
 
-- Land the Storybook addon and initial headless Storybook integration.
-- Confirm development and static Storybook builds serve both the playground shell and runtime.
-- Verify behavior when Storybook is deployed under a URL subpath.
-- Verify configured workspace and private packages work without a runtime CDN.
-- Validate malformed source, CSS, URL payloads, and stale compile transactions.
-- Confirm the sandbox does not gain same-origin access.
-- Document package configuration, optional setup, limitations, and per-story disabling.
+- Serve both the playground shell and runtime in development and static Storybook builds, including URL subpaths.
+- Resolve configured workspace and private packages at build time without a runtime CDN.
+- Handle malformed source, CSS, URL payloads, and stale compile transactions.
+- Keep the sandbox isolated from its embedding page.
+- Provide package configuration, optional setup, and per-story disabling.
 
 ### Exit criteria
 
@@ -79,25 +83,53 @@ The first milestone is a reliable browser experience.
 
 ### Status
 
-Implemented on `experimental/storybook-playground`:
+Implemented behavior:
 
-- Live-only preview with retained last good render, stale-result protection, and automatic sandbox recycling when effects leak.
-- Opaque-origin sandbox with a restrictive CSP (no network access), console forwarding to a console panel, and viewport presets.
+- Live preview reuses the sandbox and loaded packages, retains the last good render after compile errors, and rejects
+  stale results. JavaScript edits remount the example, CSS-only edits preserve its state, and Restart creates a clean sandbox.
+- Opaque-origin sandbox with a restrictive CSP allowing runtime origins while blocking other application network
+  requests, console forwarding to a console panel, and viewport presets.
 - Multiple CSS modules that can be added, renamed and removed; CSS edits apply without remounting the preview.
 - Non-blocking type diagnostics with an error badge.
-- Webpack integration hardening: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache`.
+- Webpack integration: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped
+  (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache`. Packages can be
+  listed directly in `modules`; import maps remain available for aliases. Repository Storybooks load the compiled addon,
+  and the v9 docsite uses graph-driven Nx build prerequisites instead of a growing manual package list.
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
 - A Playwright e2e suite that covers the production runtime and shell.
 - Monaco 0.52 with TypeScript 5.4 (the last release before Monaco's AMD deprecation and the move of the TypeScript API to a top-level namespace).
-- Enabled on the public v9 docsite (`apps/public-docsite-v9`) with `@fluentui/react-components` (and `/unstable`), icons, motion components and the calendar, date picker and time picker compat packages. Stories that import any other package do not get the **Open in Playground** button.
+- Enabled on the public v9 docsite (`apps/public-docsite-v9`) with `@fluentui/react-components`, icons, motion components
+  and the calendar, date picker and time picker compat packages. Stories importing other runtime packages do not get
+  the **Open in Playground** button.
 - Editor and shell ergonomics: the story name travels in the link and names the tab, compile errors link to their location, `Cmd/Ctrl+S` formats and writes the link, either pane can be maximized, and the active file can be copied.
-- Security review of the shell, sandbox, messaging and build integration found no exploitable issues. As hardening, the `?manifest=` override only accepts same-origin URLs, and link payloads are rejected when encoded or decoded sizes exceed fixed limits (the decoder stops early instead of expanding a decompression bomb).
+- The `?manifest=` override only accepts same-origin URLs, and link payloads are rejected when encoded or decoded sizes
+  exceed fixed limits (the decoder stops early instead of expanding an oversized compressed payload).
 
-Follow-ups:
+### Source Extraction and Import Scanning
+
+`@fluentui/react-storybook-addon-export-to-sandbox` currently registers the shared
+`@fluentui/babel-preset-storybook-full-source` transform. Its `storyGranularity` and `cssModules` options produce
+per-story TSX, editable CSS files, and optional token CSS. The playground consumes that data; the external sandbox
+addon does not execute playground examples.
+
+Every extracted story gets `fullSource` and an explicit `fullSourceIsRunnable` boolean. Unsupported relative imports
+make only the affected source non-runnable; their specifiers remain in `fullSourceUnsupportedImports` for diagnostics.
+Source display and opening the original story in a new tab remain available, while execution and sandbox export
+actions are withheld. CSS modules preserved by the transform are supported.
+
+The shared [module scanner](../src/moduleScanner.ts) is used in two places:
+
+- The Docs decorator checks `getModuleReferences` against the configured package allowlist before offering an action.
+- The preview runner uses `scanTokens` and `getRequireSpecifier` to preload dependencies in transpiled CommonJS code.
+  The sandbox's require shim also enforces the runtime allowlist; the scanner is not the isolation boundary.
+
+### Follow-ups
 
 - An accessibility pass over the shell (keyboard access to the split handle, focus management when panes are maximized, and screen reader announcements for compile status).
+- Register shared source extraction independently of external sandbox export, so per-story and CSS module support do
+  not require consumers to enable an unrelated export addon.
 
-Deferred:
+### Deferred
 
 - **Per-icon chunks for `@fluentui/react-icons`.** The icons module is loaded only when imported, but as a whole namespace (about 15 MB unminified). `@fluentui/react-icons` has an `exports` map that blocks `lib/icons/chunk-*` subpath imports. Its entry re-exports 6 icon chunks and 40 sized-icon chunks. Splitting the module would need all of the following:
 
@@ -108,7 +140,7 @@ Deferred:
 
   `webpackExports` magic comments cannot help, because the list must be static. Until this is implemented, consumers can configure a custom module that re-exports only the icons they need.
 
-## Phase 2: Stabilize the Playground Protocol
+## Proposed Phase 2: Stabilize the Playground Protocol
 
 The URL state is currently an implementation detail. CLI and agent integrations require a supported, environment-neutral protocol.
 
@@ -163,10 +195,11 @@ For an initial prototype, the addon could instead expose a Node-safe `./url` sub
 - [x] Decode previous versions where practical.
 - [x] Warn about unsupported future versions with a clear message (the link is still opened on a best-effort basis).
 - Preserve unknown fields only when doing so is safe.
-- [x] Define a recommended maximum URL size (`RECOMMENDED_MAX_URL_LENGTH`, 8000 characters); the shell warns when a link exceeds it. A hard source-size limit is still open.
-- [x] Test empty, malformed, and truncated payloads (reported as `invalid-code` / `invalid-css` issues). Unexpectedly large payloads are still untested.
+- [x] Define a recommended maximum URL size (`RECOMMENDED_MAX_URL_LENGTH`, 8000 characters); the shell warns when a link
+      exceeds it. Reject encoded payloads over 200,000 characters and stop decoding at 1,000,000 characters.
+- [x] Test empty, malformed, truncated, and oversized payloads, including compressed input that exceeds the decoded limit.
 
-## Phase 3: Integrate with `@fluentui/cli`
+## Proposed Phase 3: Integrate with `@fluentui/cli`
 
 `@fluentui/cli` should be the supported automation surface. It is usable by developers, CI, Copilot skills, and future MCP integrations.
 
@@ -274,7 +307,7 @@ Every command should:
 - Avoid printing decoded source unless requested.
 - Produce actionable error codes for agent callers.
 
-## Phase 4: Add a Fluent Playground Agent Skill
+## Proposed Phase 4: Add a Fluent Playground Agent Skill
 
 The skill should contain workflow guidance, not URL implementation details. It should always call `@fluentui/cli` for encoding, decoding, and validation.
 
@@ -318,7 +351,7 @@ The skill should contain workflow guidance, not URL implementation details. It s
 - Report validation failures instead of returning a success-shaped response.
 - Do not claim a reproduction is fixed until the corrected URL is validated.
 
-## Phase 5: Workflow Extensions
+## Proposed Phase 5: Workflow Extensions
 
 These should follow only after create, inspect, and validate are reliable.
 

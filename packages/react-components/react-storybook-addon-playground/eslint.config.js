@@ -2,6 +2,7 @@
 
 const { defineConfig } = require('eslint/config');
 const fluentPlugin = require('@fluentui/eslint-plugin');
+const path = require('node:path');
 
 module.exports = defineConfig([
   ...fluentPlugin.configs['flat/react'],
@@ -20,11 +21,14 @@ module.exports = defineConfig([
     },
   },
   {
-    // The playground shell is pre-bundled into `dist/playground`, so its editor/formatter packages are devDependencies.
+    // The prebuilt shell's editor/formatter packages are root build-time dependencies, not published dependencies.
     files: ['src/playground/**'],
     ignores: ['**/*.spec.{ts,tsx}', '**/*.test.{ts,tsx}'],
     rules: {
-      'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: true, packageDir: [__dirname, path.resolve(__dirname, '../../..')] },
+      ],
     },
   },
 ]);

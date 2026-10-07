@@ -129,7 +129,7 @@ export interface PlaygroundUrlState {
 
 // @public
 export interface PresetConfig {
-    modules: Record<string, string>;
+    modules: string[] | Record<string, string>;
     setup?: string;
     typings?: string[];
 }

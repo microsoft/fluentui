@@ -18,7 +18,8 @@ function getAllowedModules(): string[] | undefined {
 /**
  * Returns the packages imported by the story source that the playground cannot load. Type-only imports are erased
  * before running. Relative imports are validated by `@fluentui/babel-preset-storybook-full-source`, which reports
- * them in `parameters.fullSourceUnsupportedImports`.
+ * incomplete extraction with `parameters.fullSourceIsRunnable: false`; `fullSourceUnsupportedImports` is retained
+ * for diagnostics and compatibility with earlier transforms.
  */
 export function getUnavailableImports(source: string, allowedModules: string[]): string[] {
   const unavailable = new Set<string>();
@@ -46,7 +47,7 @@ export const withOpenInPlaygroundButton = (
   storyFn: (context: StoryContext) => JSXElement,
   context: StoryContext,
 ): JSXElement => {
-  if (context.viewMode === 'docs' && !context.parameters.playground?.disable) {
+  if (context.viewMode === 'docs') {
     addOpenInPlaygroundButton(context);
   }
 
@@ -54,9 +55,14 @@ export const withOpenInPlaygroundButton = (
 };
 
 export function addOpenInPlaygroundButton(context: StoryContext): void {
+  const buttonContainers = getButtonContainers(context);
   const source = context.parameters.fullSource;
 
-  if (context.parameters.fullSourceUnsupportedImports?.length) {
+  if (
+    context.parameters.playground?.disable ||
+    context.parameters.fullSourceIsRunnable === false ||
+    context.parameters.fullSourceUnsupportedImports?.length
+  ) {
     return;
   }
 
@@ -74,7 +80,7 @@ export function addOpenInPlaygroundButton(context: StoryContext): void {
     return;
   }
 
-  getButtonContainers(context).forEach(({ container, cssClasses }) => {
+  buttonContainers.forEach(({ container, cssClasses }) => {
     const button = document.createElement('button');
     button.classList.add(...cssClasses);
     button.setAttribute('type', 'button');

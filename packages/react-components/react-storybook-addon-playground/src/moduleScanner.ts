@@ -3,6 +3,10 @@
  * statements) without matching text inside strings, comments, template text, regular expression literals or JSX text.
  * It is not a parser: it only tracks enough context (brace, parenthesis and JSX nesting) to tell where a regular
  * expression literal may start and which characters are code.
+ *
+ * The Docs decorator uses `getModuleReferences` to check source imports before offering the playground action.
+ * The preview runner uses `scanTokens` and `getRequireSpecifier` to preload transpiled CommonJS dependencies.
+ * The sandbox's require shim independently enforces the runtime allowlist.
  */
 
 export type ScannedToken =

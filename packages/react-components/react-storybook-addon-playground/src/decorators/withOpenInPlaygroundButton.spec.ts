@@ -171,6 +171,43 @@ describe('withOpenInPlaygroundButton', () => {
     expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
   });
 
+  it('does nothing when source extraction explicitly marks the source as non-runnable', () => {
+    const context = createContext({ parameters: { fullSource, fullSourceIsRunnable: false } });
+    renderDocsPage(context.id);
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
+    expect(storyFn).toHaveBeenCalledWith(context);
+    expect(context.parameters.fullSource).toBe(fullSource);
+  });
+
+  it('offers execution when source extraction explicitly marks the source as runnable', () => {
+    const context = createContext({ parameters: { fullSource, fullSourceIsRunnable: true } });
+    renderDocsPage(context.id);
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
+  });
+
+  it.each([
+    { fullSourceIsRunnable: false },
+    { fullSourceUnsupportedImports: ['./utils'] },
+    { playground: { disable: true } },
+  ])('removes an existing execution action when the source becomes unavailable: %j', metadata => {
+    const context = createContext();
+    renderDocsPage(context.id);
+    withOpenInPlaygroundButton(storyFn, context);
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
+
+    Object.assign(context.parameters, metadata);
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
+    expect(document.querySelector('.docblock-code-toggle')?.textContent).toBe('Show code');
+  });
+
   it('does nothing when the story imports packages that are not configured for the playground', () => {
     const globalScope = globalThis as GlobalWithAllowedModules;
     globalScope.__FLUENTUI_PLAYGROUND_ALLOWED_MODULES__ = ['react', '@fluentui/react-components'];

@@ -14,6 +14,8 @@ import {
   filterRuntimeEntryAssets,
   findHtmlWebpackPluginConstructors,
   getAddonOptions,
+  getAllowedModules,
+  getModuleRequests,
   getMonacoTypeScriptVersion,
   getRuntimeEntryDirectory,
   isPlaygroundAddonFile,
@@ -29,23 +31,70 @@ describe('isPlaygroundAddonFile', () => {
 });
 
 describe('getAddonOptions', () => {
-  type Options = Parameters<typeof getAddonOptions>[0];
-
   it('reads addon options passed directly to the preset hook', () => {
     const options = { modules: { icons: '@fluentui/react-icons' }, setup: './setup', typings: ['csstype'] };
 
-    expect(getAddonOptions(options as unknown as Options)).toEqual(expect.objectContaining(options));
+    expect(getAddonOptions(options)).toEqual(expect.objectContaining(options));
+  });
+
+  it('reads package-list options passed directly to the preset hook', () => {
+    const options = { modules: ['@fluentui/react-components', '@fluentui/react-icons'] };
+
+    expect(getAddonOptions(options).modules).toEqual(options.modules);
   });
 
   it('falls back to the registration in presetsList', () => {
     const options = {
       presetsList: [
-        { name: '/repo/other-addon/preset.js', options: { modules: { other: 'other' } } },
-        { name: '/repo/react-storybook-addon-playground/preset.js', options: { modules: { icons: 'icons' } } },
+        { name: '/repo/other-addon/preset.js', preset: {}, options: { modules: { other: 'other' } } },
+        {
+          name: '/repo/react-storybook-addon-playground/preset.js',
+          preset: {},
+          options: { modules: { icons: 'icons' } },
+        },
       ],
     };
 
-    expect(getAddonOptions(options as unknown as Options).modules).toEqual({ icons: 'icons' });
+    expect(getAddonOptions(options).modules).toEqual({ icons: 'icons' });
+  });
+
+  it('preserves package-list options from presetsList', () => {
+    const modules = ['@fluentui/react-components'];
+    const options = {
+      presetsList: [{ name: '/repo/react-storybook-addon-playground/preset.js', preset: {}, options: { modules } }],
+    };
+
+    expect(getAddonOptions(options).modules).toEqual(modules);
+  });
+});
+
+describe('getModuleRequests', () => {
+  it('maps a package list to matching import names and requests without duplicate entries', () => {
+    expect(getModuleRequests(['@fluentui/react-components', '@fluentui/react-icons', '@fluentui/react-icons'])).toEqual(
+      {
+        '@fluentui/react-components': '@fluentui/react-components',
+        '@fluentui/react-icons': '@fluentui/react-icons',
+      },
+    );
+  });
+
+  it('preserves aliases in an import map', () => {
+    expect(getModuleRequests({ icons: './playground-icons' })).toEqual({ icons: './playground-icons' });
+  });
+});
+
+describe('getAllowedModules', () => {
+  it('accepts package lists and import maps without exposing aliased requests', () => {
+    expect(getAllowedModules({ modules: ['icons'] })).toEqual([
+      'react',
+      'react/jsx-runtime',
+      'react-dom',
+      'react-dom/client',
+      'icons',
+    ]);
+    expect(getAllowedModules({ modules: { icons: './playground-icons' } })).toEqual(
+      getAllowedModules({ modules: ['icons'] }),
+    );
   });
 });
 
@@ -77,6 +126,14 @@ describe('findHtmlWebpackPluginConstructors', () => {
 });
 
 describe('collectConfiguredTypings', () => {
+  it('collects the same declarations for a package list and an equivalent import map', () => {
+    const storybookOptions = { configDir: path.resolve(__dirname, '..') };
+
+    expect(collectConfiguredTypings({ modules: ['lz-string'] }, storybookOptions, '5.4.5')).toEqual(
+      collectConfiguredTypings({ modules: { 'lz-string': 'lz-string' } }, storybookOptions, '5.4.5'),
+    );
+  });
+
   it('splits declarations into always-loaded React typings and per-module additions', () => {
     const typings = collectConfiguredTypings(
       { modules: { compression: 'lz-string', react: 'react' } },
@@ -300,6 +357,26 @@ describe('filterRuntimeEntryAssets', () => {
 });
 
 describe('buildRuntimeEntrySource', () => {
+  it.each([false, true])('accepts package lists with lazy modules set to %s', lazyModules => {
+    expect(
+      buildRuntimeEntrySource(
+        { modules: ['@fluentui/react-components', '@fluentui/react-icons'], setup: '/abs/setup.tsx' },
+        lazyModules,
+      ),
+    ).toBe(
+      buildRuntimeEntrySource(
+        {
+          modules: {
+            '@fluentui/react-components': '@fluentui/react-components',
+            '@fluentui/react-icons': '@fluentui/react-icons',
+          },
+          setup: '/abs/setup.tsx',
+        },
+        lazyModules,
+      ),
+    );
+  });
+
   it('defers development module evaluation without creating lazy-compilation proxies', async () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-runtime-'));
     const setup = path.join(root, 'setup.mjs');

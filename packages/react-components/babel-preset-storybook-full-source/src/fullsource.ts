@@ -16,7 +16,8 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
  *
  * Specifically, it finds this expression in a story file: Story.parameters = ...
  * In case Story.parameters doesn't exist, it creates it.
- * And adds the following expression after it: Story.parameters.fullSource = `...`;
+ * Adds `Story.parameters.fullSource` for source display and `Story.parameters.fullSourceIsRunnable` to indicate
+ * whether extraction removed unsupported relative imports. Execution consumers still validate package availability.
  *
  * This plugin is utilized by Export to CodeSandbox.
  *
@@ -45,31 +46,19 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
     return t.expressionStatement(storyParameters);
   };
 
-  const createFullSourceAssignmentExpression = (targetStoryName: string, fullSource: string) => {
-    return t.expressionStatement(
-      t.assignmentExpression(
-        '=',
-        t.memberExpression(
-          t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
-          t.identifier('fullSource'),
-        ),
-        t.stringLiteral(fullSource),
-      ),
-    );
-  };
-
-  const createUnsupportedImportsAssignmentExpression = (
+  const createSourceParameterAssignmentExpression = (
     targetStoryName: string,
-    unsupportedImports: readonly string[],
+    parameter: 'fullSource' | 'fullSourceIsRunnable' | 'fullSourceUnsupportedImports',
+    value: Babel.types.Expression,
   ) => {
     return t.expressionStatement(
       t.assignmentExpression(
         '=',
         t.memberExpression(
           t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
-          t.identifier('fullSourceUnsupportedImports'),
+          t.identifier(parameter),
         ),
-        t.arrayExpression(unsupportedImports.map(specifier => t.stringLiteral(specifier))),
+        value,
       ),
     );
   };
@@ -211,8 +200,7 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
             };
           };
 
-          // Emits `<Story>.parameters` (when missing), `.fullSource` and, when
-          // enabled, `.cssModuleSources` for a single story.
+          // Source display remains available even when execution is unsupported.
           const emitStorySource = (
             currentStory: string,
             source: { code: string; unsupportedRelativeImports: readonly string[] },
@@ -222,12 +210,27 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
               storiesWithParameters.add(currentStory);
             }
 
-            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, source.code));
+            path.pushContainer(
+              'body',
+              createSourceParameterAssignmentExpression(
+                currentStory,
+                'fullSourceIsRunnable',
+                t.booleanLiteral(source.unsupportedRelativeImports.length === 0),
+              ),
+            );
+            path.pushContainer(
+              'body',
+              createSourceParameterAssignmentExpression(currentStory, 'fullSource', t.stringLiteral(source.code)),
+            );
 
             if (source.unsupportedRelativeImports.length > 0) {
               path.pushContainer(
                 'body',
-                createUnsupportedImportsAssignmentExpression(currentStory, source.unsupportedRelativeImports),
+                createSourceParameterAssignmentExpression(
+                  currentStory,
+                  'fullSourceUnsupportedImports',
+                  t.arrayExpression(source.unsupportedRelativeImports.map(specifier => t.stringLiteral(specifier))),
+                ),
               );
             }
 
