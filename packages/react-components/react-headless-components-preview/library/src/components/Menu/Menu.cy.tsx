@@ -74,8 +74,12 @@ describe('Menu', () => {
     it('does not inherit the root opt-out in a submenu after deliberate entry', () => {
       mount(<Example disableAutoFocus />);
       cy.get('#editor').focus().trigger('keydown', { key: 'F8' }).should('be.focused');
-      cy.contains('[role="menuitem"]', 'More actions').focus().realPress('ArrowRight');
-      cy.contains('[role="menuitem"]', 'Nested action').should('be.focused').realPress('Escape');
+      cy.contains('[role="menuitem"]', 'More actions')
+        .should('be.visible')
+        .focus()
+        .should('be.focused')
+        .realPress('ArrowRight');
+      cy.contains('[role="menuitem"]', 'Nested action').should('be.visible').should('be.focused').realPress('Escape');
       cy.contains('[role="menuitem"]', 'More actions').should('be.focused');
     });
   });
