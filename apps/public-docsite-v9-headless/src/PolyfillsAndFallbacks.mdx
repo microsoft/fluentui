@@ -19,9 +19,11 @@ experience to provide. Fluent UI Headless leaves that tradeoff to the consuming 
    anchor-positioning polyfill. This keeps the common path lean and requires little application code,
    although a polyfill may implement only part of the positioning behavior listed in the
    [browser support matrix](?path=/docs/overview-browser-support--docs#detailed-feature-support).
-2. **Use product-owned positioning logic.** When `CSS.supports('anchor-name', '--x')` returns `false`,
-   hand the layer to a measurement-based positioner. This adds implementation work, but lets the
-   product control placement, flipping, and collision handling.
+2. **Supply a JavaScript positioning engine.** Components that accept a `positioning` prop also accept
+   `positioning.engine`, which delegates placement to a measurement-based positioner such as
+   `usePositioning` from `@fluentui/react-positioning`. This also unlocks options CSS anchor
+   positioning cannot express, such as `flipBoundary` and `shift`. Nothing is added to your bundle
+   unless you supply one, so it can be applied to every surface or only the ones that need it.
 3. **Allow static placement.** Keep the native fallback behavior: the surface opens, but it may appear
    at its document position rather than beside the trigger. Products aimed primarily at browsers with
    native support may find this sufficient.
@@ -57,8 +59,9 @@ if (!hasPopover) {
 
 Overlays are positioned relative to their trigger with
 [CSS anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning).
-The headless library does **not** include a JavaScript positioning fallback, so without support these
-overlays render at their static position. Use the feature detection and fallback options above, and
-load any polyfill before Fluent UI Headless renders. Consult the
+The headless library does not bundle a JavaScript positioner, so by default these overlays render at
+their static position where anchor positioning is unavailable. Supply one through
+`positioning.engine` if you need measurement-based placement — see the fallback options above — or
+load a polyfill before Fluent UI Headless renders. Consult the
 [browser support matrix](?path=/docs/overview-browser-support--docs#detailed-feature-support) for the
 individual CSS properties Fluent UI Headless uses.
