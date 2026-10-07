@@ -4,12 +4,6 @@
 
 _Author: @mainframev_
 
-_Stakeholders: cxe-prg_
-
-_Authored: 2026-10-04_
-
-_Status: Draft_
-
 ## Summary
 
 Today the headless layer is built on top of the styled layer: `@fluentui/react-headless-components-preview` depends on
