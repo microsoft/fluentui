@@ -644,6 +644,175 @@
     },
     "./package.json": "./package.json"
   },
+  "typesVersions": {
+    "*": {
+      "accordion": [
+        "./dist/accordion.d.ts"
+      ],
+      "avatar": [
+        "./dist/avatar.d.ts"
+      ],
+      "avatar-group": [
+        "./dist/avatar-group.d.ts"
+      ],
+      "badge": [
+        "./dist/badge.d.ts"
+      ],
+      "breadcrumb": [
+        "./dist/breadcrumb.d.ts"
+      ],
+      "button": [
+        "./dist/button.d.ts"
+      ],
+      "card": [
+        "./dist/card.d.ts"
+      ],
+      "checkbox": [
+        "./dist/checkbox.d.ts"
+      ],
+      "color-picker": [
+        "./dist/color-picker.d.ts"
+      ],
+      "combobox": [
+        "./dist/combobox.d.ts"
+      ],
+      "compound-button": [
+        "./dist/compound-button.d.ts"
+      ],
+      "dialog": [
+        "./dist/dialog.d.ts"
+      ],
+      "divider": [
+        "./dist/divider.d.ts"
+      ],
+      "drawer": [
+        "./dist/drawer.d.ts"
+      ],
+      "dropdown": [
+        "./dist/dropdown.d.ts"
+      ],
+      "field": [
+        "./dist/field.d.ts"
+      ],
+      "image": [
+        "./dist/image.d.ts"
+      ],
+      "info-label": [
+        "./dist/info-label.d.ts"
+      ],
+      "input": [
+        "./dist/input.d.ts"
+      ],
+      "interaction-tag": [
+        "./dist/interaction-tag.d.ts"
+      ],
+      "label": [
+        "./dist/label.d.ts"
+      ],
+      "link": [
+        "./dist/link.d.ts"
+      ],
+      "menu": [
+        "./dist/menu.d.ts"
+      ],
+      "menu-button": [
+        "./dist/menu-button.d.ts"
+      ],
+      "message-bar": [
+        "./dist/message-bar.d.ts"
+      ],
+      "nav": [
+        "./dist/nav.d.ts"
+      ],
+      "overflow": [
+        "./dist/overflow.d.ts"
+      ],
+      "persona": [
+        "./dist/persona.d.ts"
+      ],
+      "popover": [
+        "./dist/popover.d.ts"
+      ],
+      "positioning": [
+        "./dist/positioning.d.ts"
+      ],
+      "progress-bar": [
+        "./dist/progress-bar.d.ts"
+      ],
+      "provider": [
+        "./dist/provider.d.ts"
+      ],
+      "radio-group": [
+        "./dist/radio-group.d.ts"
+      ],
+      "rating": [
+        "./dist/rating.d.ts"
+      ],
+      "rating-display": [
+        "./dist/rating-display.d.ts"
+      ],
+      "search-box": [
+        "./dist/search-box.d.ts"
+      ],
+      "select": [
+        "./dist/select.d.ts"
+      ],
+      "skeleton": [
+        "./dist/skeleton.d.ts"
+      ],
+      "slider": [
+        "./dist/slider.d.ts"
+      ],
+      "spin-button": [
+        "./dist/spin-button.d.ts"
+      ],
+      "spinner": [
+        "./dist/spinner.d.ts"
+      ],
+      "split-button": [
+        "./dist/split-button.d.ts"
+      ],
+      "swatch-picker": [
+        "./dist/swatch-picker.d.ts"
+      ],
+      "switch": [
+        "./dist/switch.d.ts"
+      ],
+      "tab-list": [
+        "./dist/tab-list.d.ts"
+      ],
+      "tag": [
+        "./dist/tag.d.ts"
+      ],
+      "tag-group": [
+        "./dist/tag-group.d.ts"
+      ],
+      "tag-picker": [
+        "./dist/tag-picker.d.ts"
+      ],
+      "teaching-popover": [
+        "./dist/teaching-popover.d.ts"
+      ],
+      "textarea": [
+        "./dist/textarea.d.ts"
+      ],
+      "toast": [
+        "./dist/toast.d.ts"
+      ],
+      "toggle-button": [
+        "./dist/toggle-button.d.ts"
+      ],
+      "toolbar": [
+        "./dist/toolbar.d.ts"
+      ],
+      "tooltip": [
+        "./dist/tooltip.d.ts"
+      ],
+      "utils": [
+        "./dist/utils.d.ts"
+      ]
+    }
+  },
   "beachball": {
     "disallowedChangeTypes": [
       "major",

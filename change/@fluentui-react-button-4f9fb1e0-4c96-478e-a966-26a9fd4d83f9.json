@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Button is built on the headless base hook (headless-first PoC)",
+  "packageName": "@fluentui/react-button",
+  "email": "vgenaev@gmail.com"
+}

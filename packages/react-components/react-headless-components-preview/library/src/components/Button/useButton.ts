@@ -1,9 +1,9 @@
 'use client';
 
 import type * as React from 'react';
-import { useButtonBase_unstable } from '@fluentui/react-button';
 
 import type { ButtonProps, ButtonState } from './Button.types';
+import { useButtonBase } from './useButtonBase';
 import { toDataAttributeValue } from '../../utils';
 
 /**
@@ -11,7 +11,7 @@ import { toDataAttributeValue } from '../../utils';
  * The returned state can be modified with hooks before being passed to `renderButton`.
  */
 export const useButton = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
-  const state: ButtonState = useButtonBase_unstable(props, ref);
+  const state: ButtonState = useButtonBase(props, ref);
 
   // Set data attributes for disabled, disabledFocusable, and iconOnly states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability

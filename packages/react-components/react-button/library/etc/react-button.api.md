@@ -4,57 +4,48 @@
 
 ```ts
 
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ButtonBaseState as ButtonBaseState_2 } from '@fluentui/react-headless-components-preview/button';
+import { ButtonContextProvider } from '@fluentui/react-headless-components-preview/button';
+import { ButtonContextValue } from '@fluentui/react-headless-components-preview/button';
+import type { ButtonProps as ButtonProps_2 } from '@fluentui/react-headless-components-preview/button';
+import type { ButtonSlots } from '@fluentui/react-headless-components-preview/button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { renderButton } from '@fluentui/react-headless-components-preview/button';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useButtonContext } from '@fluentui/react-headless-components-preview/button';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public (undocumented)
-export type ButtonBaseProps = DistributiveOmit<ButtonProps, 'appearance' | 'size' | 'shape'>;
+// @public
+export type ButtonBaseProps = ButtonProps_2;
 
-// @public (undocumented)
-export type ButtonBaseState = DistributiveOmit<ButtonState, 'appearance' | 'size' | 'shape'>;
+// @public
+export type ButtonBaseState = ButtonBaseState_2;
 
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
-// @internal
-export const ButtonContextProvider: React_2.Provider<ButtonContextValue | undefined>;
+export { ButtonContextProvider }
 
-// @internal
-export interface ButtonContextValue {
-    // (undocumented)
-    size?: ButtonSize;
-}
+export { ButtonContextValue }
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & {
+export type ButtonProps = ButtonProps_2 & {
     appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
-    disabledFocusable?: boolean;
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
     shape?: 'rounded' | 'circular' | 'square';
     size?: ButtonSize;
 };
 
-// @public (undocumented)
-export type ButtonSlots = {
-    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-    icon?: Slot<'span'>;
-};
+export { ButtonSlots }
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
-    iconOnly: boolean;
-};
+export type ButtonState = ButtonBaseState_2 & Required<Pick<ButtonProps, 'appearance' | 'shape' | 'size'>>;
 
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
@@ -103,10 +94,8 @@ export type MenuButtonSlots = ButtonSlots & {
 // @public (undocumented)
 export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
 
-// @public
-const renderButton_unstable: (state: ButtonBaseState) => JSXElement;
-export { renderButton_unstable }
-export { renderButton_unstable as renderToggleButton_unstable }
+export { renderButton as renderButton_unstable }
+export { renderButton as renderToggleButton_unstable }
 
 // @public
 export const renderCompoundButton_unstable: (state: CompoundButtonBaseState) => JSXElement;
@@ -177,8 +166,7 @@ export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButto
 // @public
 export const useButtonBase_unstable: (props: ButtonBaseProps, ref?: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonBaseState;
 
-// @internal
-export const useButtonContext: () => ButtonContextValue;
+export { useButtonContext }
 
 // @public (undocumented)
 export const useButtonStyles_unstable: (state: ButtonState) => ButtonState;

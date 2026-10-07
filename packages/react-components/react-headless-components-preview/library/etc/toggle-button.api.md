@@ -4,12 +4,13 @@
 
 ```ts
 
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderToggleButton_unstable as renderToggleButton } from '@fluentui/react-button';
+import type { Slot } from '@fluentui/react-utilities';
 import type { ToggleButtonBaseState } from '@fluentui/react-button';
 import { ToggleButtonBaseProps as ToggleButtonProps } from '@fluentui/react-button';
-import { ButtonSlots as ToggleButtonSlots } from '@fluentui/react-button';
 
 export { renderToggleButton }
 
@@ -18,7 +19,11 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
 export { ToggleButtonProps }
 
-export { ToggleButtonSlots }
+// @public (undocumented)
+export type ToggleButtonSlots = {
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+    icon?: Slot<'span'>;
+};
 
 // @public
 export type ToggleButtonState = ToggleButtonBaseState & {

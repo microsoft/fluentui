@@ -4,26 +4,43 @@
 
 ```ts
 
-import type { ButtonBaseState } from '@fluentui/react-button';
-import { ButtonContextProvider } from '@fluentui/react-button';
-import { ButtonContextValue } from '@fluentui/react-button';
-import { ButtonBaseProps as ButtonProps } from '@fluentui/react-button';
-import { ButtonSlots } from '@fluentui/react-button';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
-import { renderButton_unstable as renderButton } from '@fluentui/react-button';
-import { useButtonContext } from '@fluentui/react-button';
+import type { JSXElement } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-export { ButtonContextProvider }
+// @public
+export type ButtonBaseState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'disabledFocusable' | 'disabled' | 'iconPosition'>> & {
+    iconOnly: boolean;
+};
 
-export { ButtonContextValue }
+// @internal
+export const ButtonContextProvider: React_2.Provider<ButtonContextValue | undefined>;
 
-export { ButtonProps }
+// @internal
+export interface ButtonContextValue {
+    // (undocumented)
+    size?: 'small' | 'medium' | 'large';
+}
 
-export { ButtonSlots }
+// @public
+export type ButtonProps = ComponentProps<ButtonSlots> & {
+    disabledFocusable?: boolean;
+    disabled?: boolean;
+    iconPosition?: 'before' | 'after';
+};
+
+// @public (undocumented)
+export type ButtonSlots = {
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+    icon?: Slot<'span'>;
+};
 
 // @public
 export type ButtonState = ButtonBaseState & {
@@ -35,12 +52,17 @@ export type ButtonState = ButtonBaseState & {
     };
 };
 
-export { renderButton }
+// @public
+export const renderButton: (state: ButtonBaseState) => JSXElement;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
-export { useButtonContext }
+// @public
+export const useButtonBase: (props: ButtonProps, ref?: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonBaseState;
+
+// @internal
+export const useButtonContext: () => ButtonContextValue;
 
 // (No @packageDocumentation comment for this package)
 

@@ -4,7 +4,7 @@
 
 ```ts
 
-import { ButtonBaseProps } from '@fluentui/react-button';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

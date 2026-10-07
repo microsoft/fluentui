@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Button owns its base hook, render function, types and context; add typesVersions for subpath types",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
