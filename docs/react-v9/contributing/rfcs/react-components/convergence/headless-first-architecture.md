@@ -97,13 +97,12 @@ flowchart TB
 Three rules:
 
 - Headless imports foundation only. It never imports `@griffel/*`, `@fluentui/react-theme` at runtime, `react-icons`,
-  `react-motion*`, `react-portal`, `react-positioning`, the `tabster` runtime, or a styled package. Today
-  `react-positioning` is a headless dependency, but all headless takes from it is types (`Position`, `Alignment`,
-  `PositioningShorthandValue`, `PositioningVirtualElement`, `PositioningImperativeRef`) and one pure function,
-  `resolvePositioningShorthand`, used by its own CSS anchor `usePositioning`. None of the base hooks headless wraps
-  positions anything: `usePositioning` is called in `useMenu_unstable` and `useTagPicker_unstable`, the outer hooks,
-  and headless Menu has its own root `useMenu`. Step 1 moves the types and the parser out of the floating-ui runtime
-  so the dependency can be dropped. `react-aria` and `react-tabster` are foundation: headless takes
+  `react-motion*`, `react-portal`, the `tabster` runtime, or a styled package. `react-positioning` stays as it is
+  today: headless takes types and `resolvePositioningShorthand` from it for its own CSS anchor `usePositioning`, and
+  none of the base hooks headless wraps positions anything (`usePositioning` is called in `useMenu_unstable` and
+  `useTagPicker_unstable`, the outer hooks, and headless Menu has its own root `useMenu`). What happens to that
+  dependency is decided by the headless positioning strategy RFC (#36807), not here. `react-aria` and `react-tabster`
+  are foundation: headless takes
   `useActiveDescendant` and `ActiveDescendantContextProvider` (Combobox, Dropdown, TagPicker), `AriaLiveAnnouncer`
   (Toaster), `useARIAButtonProps` (PopoverTrigger), `useIsNavigatingWithKeyboard` and `KEYBORG_FOCUSIN` from them, and
   every one of those symbols bottoms out in keyborg or plain DOM. The `tabster` runtime is forbidden at the symbol
@@ -201,7 +200,7 @@ provide.
   package in `forbidden`. The rule already exists and the shared react config already uses it for stories. Warn only
   until step 3 is complete.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
-  runtime, `react-icons`, `react-motion*`, `react-portal`, `react-positioning`.
+  runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
   already has.
 - Add the styled-side lint rule that forbids importing `use<Name>` from a headless subpath.
@@ -218,10 +217,6 @@ provide.
   TagPickerControl: icons and `Label` live in the same file as the base hook. Move them into the outer hook where they
   are not there already, and split the file so the base hook's module imports nothing styled.
 - Carousel, TagGroup, TagPickerControl, MenuSplitGroup, MenuItemSwitch: remove `.styles` imports from hooks.
-- Positioning: move the shared positioning types and the pure `resolvePositioningShorthand` parser from
-  `react-positioning` into `react-utilities` (or a types-only entry that both packages import), then drop
-  `react-positioning` from the headless `package.json`. `react-positioning` re-exports them, so nothing changes for
-  its consumers.
 - Done when the `allowedViolations` list for `BaseHooks.fixture.js` in `react-components/bundle-isolation.config.json`
   (today `@fluentui/react-motion`, `@griffel/core`, `@griffel/react`, `tabster`) is empty for every component that
   moves in step 3.
