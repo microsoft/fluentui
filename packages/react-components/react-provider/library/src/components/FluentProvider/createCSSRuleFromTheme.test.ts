@@ -257,4 +257,44 @@ describe('createCSSRuleFromTheme', () => {
     }
     expect(logWarnSpy).not.toHaveBeenCalled();
   });
+
+  it('contains a rule breakout without altering later theme tokens', () => {
+    const theme: PartialTheme = {
+      colorBrandBackground: 'red; } .other { color: red',
+      colorNeutralBackground1: 'blue',
+    };
+
+    const result = createCSSRuleFromTheme('.selector', theme);
+    expect(result).toBe(
+      '.selector { --colorBrandBackground: red\\3B  \\7D  .other { color: red}; --colorNeutralBackground1: blue;  }',
+    );
+  });
+
+  it('escapes semicolons in theme values so they cannot inject declarations', () => {
+    const theme = {
+      colorBrandBackground: 'red; color: transparent',
+    } as PartialTheme;
+
+    const result = createCSSRuleFromTheme('.selector', theme);
+    expect(result).toMatchInlineSnapshot(`".selector { --colorBrandBackground: red\\\\3B  color: transparent;  }"`);
+    expect(result.match(/;/g)).toHaveLength(1);
+  });
+
+  it('escapes curly braces in the selector so the generated rule stays a single, well-formed rule', () => {
+    const result = createCSSRuleFromTheme('.selector} .other {', undefined);
+
+    expect(result).toContain('.selector\\7D  .other \\7B ');
+    // Only the rule's own wrapping braces should remain unescaped.
+    expect(result.match(/{/g)).toHaveLength(1);
+    expect(result.match(/}/g)).toHaveLength(1);
+  });
+
+  it('preserves CSS escapes because decoded delimiters cannot terminate a declaration', () => {
+    const theme: PartialTheme = {
+      colorBrandBackground: '\\7D ',
+    };
+
+    const result = createCSSRuleFromTheme('.selector', theme);
+    expect(result).toBe('.selector { --colorBrandBackground: \\7D ;  }');
+  });
 });
