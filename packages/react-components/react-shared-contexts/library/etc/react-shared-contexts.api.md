@@ -207,6 +207,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTextareaStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTimePickerStyles_unstable: CustomStyleHook;
     useToastBodyStyles_unstable: CustomStyleHook;
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
@@ -404,6 +405,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTextareaStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTimePickerStyles_unstable: CustomStyleHook;
     useToastBodyStyles_unstable: CustomStyleHook;
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
@@ -601,6 +603,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTextareaStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
+    useTimePickerStyles_unstable: CustomStyleHook;
     useToastBodyStyles_unstable: CustomStyleHook;
     useToastContainerStyles_unstable: CustomStyleHook;
     useToasterStyles_unstable: CustomStyleHook;
