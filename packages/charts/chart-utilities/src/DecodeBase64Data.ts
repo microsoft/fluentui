@@ -1,6 +1,10 @@
 import { PlotlySchema } from './PlotlySchema';
 import { isArrayOrTypedArray } from './PlotlySchemaConverter';
 
+const MAX_SHAPE_RANK = 3;
+const MAX_SHAPE_ELEMENTS = 1_000_000;
+const MAX_NESTED_ARRAYS = 100_000;
+
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
   return s + '='.repeat(paddingNeeded);
@@ -77,8 +81,40 @@ function decodeBase64(value: string, dtype: string): any {
   }
 }
 
-// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
-export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+function validateShape(dataLength: number, shape: number[]): void {
+  if (shape.length === 0 || shape.length > MAX_SHAPE_RANK) {
+    throw new Error(`Invalid typed-array shape: rank must be between 1 and ${MAX_SHAPE_RANK}`);
+  }
+
+  let elementCount = 1;
+  let nestedArrayCount = 0;
+  let dimensionsAtLevel = 1;
+
+  for (let index = 0; index < shape.length; index++) {
+    const dimension = shape[index];
+    if (!Number.isSafeInteger(dimension) || dimension < 0) {
+      throw new Error('Invalid typed-array shape: dimensions must be non-negative safe integers');
+    }
+    if (dimension !== 0 && elementCount > MAX_SHAPE_ELEMENTS / dimension) {
+      throw new Error(`Invalid typed-array shape: element count exceeds ${MAX_SHAPE_ELEMENTS}`);
+    }
+
+    elementCount *= dimension;
+    if (index < shape.length - 1) {
+      dimensionsAtLevel *= dimension;
+      nestedArrayCount += dimensionsAtLevel;
+      if (nestedArrayCount > MAX_NESTED_ARRAYS) {
+        throw new Error(`Invalid typed-array shape: nested array count exceeds ${MAX_NESTED_ARRAYS}`);
+      }
+    }
+  }
+
+  if (elementCount !== dataLength) {
+    throw new Error('Invalid typed-array shape: dimensions do not match decoded element count');
+  }
+}
+
+function reshapeValidatedArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
   if (shape.length === 1) {
     return data;
   }
@@ -95,9 +131,15 @@ export function reshapeArray(data: number[], shape: number[]): number[] | number
   const step = data.length / dim;
   const result: number[][][] = [];
   for (let i = 0; i < dim; i++) {
-    result.push(reshapeArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
+    result.push(reshapeValidatedArray(data.slice(i * step, (i + 1) * step), rest) as number[][]);
   }
   return result;
+}
+
+// Helper to reshape a flat array into the given shape (e.g., [rows, cols])
+export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
+  validateShape(data.length, shape);
+  return reshapeValidatedArray(data, shape);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -140,7 +182,7 @@ function decodeBdataInDict(node: any): any {
 
     // If shape exists, reshape the decoded bdata
     if (shape && isArrayOrTypedArray(shape)) {
-      return reshapeArray(decodedBdata, shape as number[]);
+      return reshapeArray(decodedBdata, Array.from(shape as ArrayLike<number>));
     }
 
     return decodedBdata;
