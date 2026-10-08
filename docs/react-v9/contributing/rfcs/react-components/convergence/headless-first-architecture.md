@@ -146,8 +146,10 @@ Rules that fall out of this:
   It stays in the styled layer and reaches the base through slot defaults, never through the base hook.
 - The styled packages get a lint rule that forbids importing `use<Name>` (as opposed to `use<Name>Base`) from a headless
   subpath, so the `data-*` contract cannot reach v9 by accident.
-- Contexts move to headless; the styled layer re-exports them. Context identity is preserved because there is one
-  module instance.
+- Behaviour contexts move to headless and the styled layer re-exports them; context identity is preserved because
+  there is one module instance. A context that only carries design props stays styled. Button's context is the
+  example: its only field is `size`, set by Toolbar, so it stays in `react-button`, and the headless `button` subpath
+  stops re-exporting it. That is a headless preview break and is called out in the headless changelog.
 
 ### 3. Overlays
 
@@ -162,7 +164,7 @@ do not become dependent on the headless ones. Two implementations of these famil
 them is a separate decision, not part of this RFC.
 
 **v9-wrapping overlay parts: MenuItem, MenuList, MenuPopover, MenuTrigger, Drawer, Toast, the Combobox, Dropdown and
-TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in step 3 like every other
+TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in steps 3 and 4 like every other
 component. None of those base hooks positions a surface; positioning (`usePositioning` from `react-positioning`),
 motion (`presenceMotionSlot`, `useMotionForwardedRef`) and `Portal` all live in the styled outer hooks and stay there.
 
@@ -179,7 +181,7 @@ per package. Bringing v9 onto the headless model is a natural next step after th
 - Generators and skills (`react-component`, `v9-component`, `headless-component`) follow whichever layout wins.
 
 What this RFC does to keep that door open: headless subpath names and v9 package names stay one to one
-(`@fluentui/react-headless-components-preview/button` ↔ `@fluentui/react-button`); base hooks move once, into
+(`@fluentui/react-headless-components-preview/button` ↔ `@fluentui/react-button`); base hooks land once, in
 `library/src/components/<Name>` in headless, which is the layout a later consolidation keeps; and on the v9 side every
 step stays inside the existing package, so a later consolidation moves each styled file once.
 
@@ -195,6 +197,14 @@ provide.
 - In the headless `eslint.config.cjs`, enable `@fluentui/no-restricted-imports` with every `@fluentui/react-<component>`
   package in `forbidden`. The rule already exists and the shared react config already uses it for stories. Warn only
   until step 3 is complete.
+- Decide how v9 libraries resolve headless subpath types. They type-check against built `dist` output with
+  `moduleResolution: node`, which ignores `exports`, so `@fluentui/react-headless-components-preview/button` has no
+  types from a v9 package today. The suite solves the same problem for `./unstable` with a generated `unstable/`
+  shim folder. Options: switch the v9 library tsconfigs to `moduleResolution: bundler` (the headless stories project
+  already uses it; `tsconfig.spec.json` must move from `module: CommonJS` to `esnext`), or give headless node10
+  support through `typesVersions` or shim folders emitted by `export-maps-sync`. `nodenext` is not a candidate: it
+  requires explicit extensions on every relative import and per-file Node module rules the sources do not follow.
+  Must be settled before step 4.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
@@ -244,14 +254,14 @@ export const useCheckboxBase = (props: CheckboxProps, ref: React.Ref<HTMLInputEl
 };
 
 // v9: react-field/library/src/index.ts
-// react-field now depends on headless. The public names do not change.
+// Step 4: react-field now depends on headless. The public names do not change.
 export {
   useFieldControlProps as useFieldControlProps_unstable,
   useFieldContext as useFieldContext_unstable,
   FieldContextProvider,
 } from '@fluentui/react-headless-components-preview/field';
 
-// v9: react-checkbox/library/src/components/Checkbox/useCheckbox.tsx (step 3)
+// v9: react-checkbox/library/src/components/Checkbox/useCheckbox.tsx (step 4)
 // The behaviour dependency on react-field is gone; the rendering dependency on react-label stays.
 import { useCheckboxBase } from '@fluentui/react-headless-components-preview/checkbox';
 import { Label } from '@fluentui/react-label';
@@ -262,34 +272,70 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
 };
 ```
 
-- Done when `react-field` and `react-label` depend on headless and headless no longer depends on them.
+- The v9 `react-field` and `react-label` packages do not consume the headless copies yet. Doing so would close a cycle
+  in the Nx task graph (section "Step 3") while headless still depends on them through other components. They flip
+  in step 4.
+- Done when the headless `field` and `label` subpaths import nothing from `react-field` or `react-label`.
 - Consumer sees: nothing.
 
-### Step 3: Move components, one at a time
+### Step 3: Headless becomes self-sufficient, one component at a time
 
-Per component, one PR stack:
+The order of work matters because of the Nx task graph. The moment any v9 package depends on headless while headless
+still depends on a styled package that reaches it, the graph has a cycle (`react-button` → headless → `react-avatar`
+→ `react-tooltip` → `react-button`) and Nx refuses to run any target with `dependsOn: ^build` on either side. So the
+dependency is not inverted component by component; it is inverted in two phases. This step is the first: headless
+stops depending on styled packages. v9 does not change yet.
 
-1. Headless: move the base hook, render function, base types and contexts from the v9 package into
-   `library/src/components/<Name>` as `use<Name>Base`; the existing headless `use<Name>` keeps the `data-*` step and
-   calls the local base hook. Headless minor.
-2. Styled: `@fluentui/react-<name>` imports `use<Name>Base` and `render<Name>` from the headless subpath, keeps the
-   deprecated aliases, and drops the moved files. Patch on every touched v9 package; its `api.md` is unchanged except
-   for the `@deprecated` tags.
+Per component, one headless PR:
 
-Order, so that every move finds its dependencies already in headless: button, divider, badge, image, link, skeleton,
-spinner, progress-bar, text, checkbox, radio, switch, input, textarea, select, slider, spinbutton, search, tabs,
-accordion, card, tags, toolbar, breadcrumb, message-bar, rating, avatar and persona, swatch-picker, color-picker, the
-non-overlay parts of nav, then table, tree, list and carousel, which have no headless entry today and gain one as part
-of the move, and last the v9-wrapping overlays: menu, drawer, toast, the combobox, dropdown and tag-picker listboxes.
+1. Copy the base hook, render function, base types and behaviour contexts from the v9 package into
+   `library/src/components/<Name>` as `use<Name>Base`, `render<Name>` and the headless types; the existing headless
+   `use<Name>` keeps the `data-*` step and calls the local base hook. The v9 base-hook tests are copied with them.
+   Headless minor.
+2. Drop the `@fluentui/react-<name>` import from the headless subpath. The v9 package is untouched and keeps its own
+   copy for now.
 
-- Done when headless has no `@fluentui/react-<component>` dependency at all.
+Order, so that every copy finds its dependencies already in headless: field and label (step 2), then button, divider,
+badge, image, link, skeleton, spinner, progress-bar, text, checkbox, radio, switch, input, textarea, select, slider,
+spinbutton, search, tabs, accordion, card, tags, toolbar, breadcrumb, message-bar, rating, avatar and persona,
+swatch-picker, color-picker, the non-overlay parts of nav, then table, tree, list and carousel, which have no headless
+entry today and gain one as part of the copy, and last the v9-wrapping overlay parts: menu items, list, popover and
+trigger, drawer, toast, the combobox, dropdown and tag-picker listboxes.
+
+- While this step runs, every copied base hook exists twice. The copy is byte-for-byte at the time of the move, the
+  copied tests pin its behaviour, and the `@fluentui/no-restricted-imports` rule from step 0 keeps the headless copy
+  from reaching back. Fixes that land in v9 during this window have to be ported by hand; the window should be short.
+- Done when headless has no `@fluentui/react-<component>` dependency at all and the Nx graph has no edge from headless
+  to a styled package.
+- Consumer sees: nothing.
+
+### Step 4: v9 packages flip to the headless base, one at a time
+
+Headless now depends on foundation only, so a v9 package can depend on it without closing a cycle.
+
+Per component, one v9 PR:
+
+1. `@fluentui/react-<name>` adds the headless dependency, imports `use<Name>Base` and `render<Name>` from the headless
+   subpath, keeps `use<Name>Base_unstable` and the `<Name>Base*` types as plain aliases, and deletes its own copy.
+   Patch release.
+2. The API report gate is "no export removed, no signature changed". The report itself does change shape: inline type
+   bodies become re-exports and aliases of headless types, and headless reports for sibling components (ToggleButton,
+   SplitButton for Button) change the same way. Reviewers diff the export list, not the file.
+
+Same order as step 3.
+
+- Done when every v9 package that has a headless counterpart calls `use<Name>Base` from headless and no v9 package
+  defines a base hook of its own.
 - Consumer sees: nothing. DOM output is unchanged because the styled layer calls `use<Name>Base`.
 
-### Step 4: Lock in
+### Step 5: Lock in
 
 - `@fluentui/no-restricted-imports` on the headless project and the extended base-hook rule switch from warn to error.
 - The `BaseHooks.fixture.js` allow-list is removed.
-- `@deprecated` notices on `use<Name>Base_unstable` and the `<Name>Base*` types point at the headless subpath.
+- `@deprecated` notices on `use<Name>Base_unstable` and the `<Name>Base*` types point at the headless subpath. This
+  cannot land earlier: `@typescript-eslint/no-deprecated` fails the package's own lint while sibling components still
+  consume the aliases (ToggleButton, CompoundButton, MenuButton and SplitButton for Button), so every sibling in a
+  package switches to the headless imports first.
 - `docs/architecture/layers.md` and the hook section of `docs/architecture/component-patterns.md` are rewritten to
   match sections 1 and 2.
 - Consumer sees: deprecation notices in editors. Nothing else.
@@ -312,5 +358,7 @@ of the move, and last the v9-wrapping overlays: menu, drawer, toast, the combobo
   per-component unit of work and by every step being shippable on its own.
 - Every v9 component package depends on a `0.x` preview package.
 - Two hooks per component in headless (`use<Name>Base` and `use<Name>`) so that the `data-*` contract stays out of v9.
+- Between steps 3 and 4 every base hook exists in two places. Behaviour fixes made in v9 during that window have to be
+  ported to headless by hand.
 - Popover, Tooltip, Dialog and the Menu root keep two implementations. Open state, dismissal, focus restore and
   keyboard handling for them are still tested twice and can still drift.
