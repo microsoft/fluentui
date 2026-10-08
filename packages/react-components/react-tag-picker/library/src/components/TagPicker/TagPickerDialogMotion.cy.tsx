@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mount } from '@fluentui/scripts-cypress';
 import { Button } from '@fluentui/react-button';
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle } from '@fluentui/react-dialog';
-import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Tag } from '@fluentui/react-tags';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -19,12 +18,12 @@ const DialogWithTagPicker = ({
   onEntryStart,
   onEntryFinish,
 }: {
-  onEntryStart: (hasSuggestions: boolean) => void;
+  onEntryStart: (suggestionsVisible: boolean) => void;
   onEntryFinish: () => void;
 }) => {
-  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const surfaceRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(false);
+  const [pickerOpen, setPickerOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const remainingOptions = options.filter(option => !selectedOptions.includes(option));
 
@@ -33,16 +32,23 @@ const DialogWithTagPicker = ({
       <Button onClick={() => setOpen(true)}>Open dialog</Button>
       <Dialog
         open={open}
-        onOpenChange={(_, data) => setOpen(data.open)}
+        onOpenChange={(_, data) => {
+          setOpen(data.open);
+          if (!data.open) {
+            setPickerOpen(false);
+          }
+        }}
         surfaceMotion={{
           onMotionStart: (_, { direction }) => {
             if (direction === 'enter') {
-              onEntryStart(Boolean(surfaceRef.current?.ownerDocument.querySelector('[data-testid="picker-popup"]')));
+              const popup =
+                surfaceRef.current?.ownerDocument.querySelector<HTMLElement>('[data-testid="picker-popup"]');
+              onEntryStart(Boolean(popup && popup.getBoundingClientRect().height > 0));
             }
           },
           onMotionFinish: (_, { direction }) => {
             if (direction === 'enter') {
-              positioningRef.current?.updatePosition();
+              setPickerOpen(true);
               onEntryFinish();
             }
           },
@@ -52,10 +58,10 @@ const DialogWithTagPicker = ({
           <DialogBody>
             <DialogTitle>Suggestions</DialogTitle>
             <TagPicker
-              open={remainingOptions.length > 0}
+              open={pickerOpen && remainingOptions.length > 0}
               selectedOptions={selectedOptions}
               onOptionSelect={(_, data) => setSelectedOptions(data.selectedOptions)}
-              positioning={{ positioningRef, position: 'below', align: 'start', offset: 0, flipBoundary: [] }}
+              positioning={{ position: 'below', align: 'start', offset: 0, flipBoundary: [] }}
             >
               <TagPickerControl data-testid="picker-target">
                 <TagPickerGroup aria-label="Selected people">
@@ -76,7 +82,14 @@ const DialogWithTagPicker = ({
               </TagPickerList>
             </TagPicker>
             <DialogActions>
-              <Button onClick={() => setOpen(false)}>Close dialog</Button>
+              <Button
+                onClick={() => {
+                  setOpen(false);
+                  setPickerOpen(false);
+                }}
+              >
+                Close dialog
+              </Button>
             </DialogActions>
           </DialogBody>
         </DialogSurface>
@@ -86,7 +99,7 @@ const DialogWithTagPicker = ({
 };
 
 describe('TagPicker Dialog positioning workaround', () => {
-  it('corrects final alignment on entry and reopening while preserving selected people', () => {
+  it('opens aligned suggestions after entry and reopening while preserving selected people', () => {
     cy.viewport(1000, 800);
     const onEntryStart = cy.stub().as('entryStart');
     const onEntryFinish = cy.stub().as('entryFinish');
@@ -102,7 +115,7 @@ describe('TagPicker Dialog positioning workaround', () => {
       });
 
     cy.contains('button', 'Open dialog').click();
-    cy.get('@entryStart').should('have.been.calledOnce').and('have.been.calledWithExactly', true);
+    cy.get('@entryStart').should('have.been.calledOnce').and('have.been.calledWithExactly', false);
     cy.get('[data-testid="picker-popup"]').should('be.visible');
     cy.get('@entryFinish').should('have.been.calledOnce');
     checkAlignment();
@@ -113,11 +126,19 @@ describe('TagPicker Dialog positioning workaround', () => {
     cy.get('[data-testid="picker-popup"]').should('not.exist');
 
     cy.contains('button', 'Open dialog').click();
-    cy.get('@entryStart').should('have.been.calledTwice').and('have.always.been.calledWithExactly', true);
+    cy.get('@entryStart').should('have.been.calledTwice').and('have.always.been.calledWithExactly', false);
     cy.get('[data-testid="picker-popup"]').should('be.visible');
     cy.get('[aria-label="Selected people"]').should('contain.text', 'John Doe');
     cy.get('[data-testid="picker-popup"] [role="option"]').should('have.length', 1).and('contain.text', 'Jane Doe');
     cy.get('@entryFinish').should('have.been.calledTwice');
+    checkAlignment();
+
+    cy.contains('button', 'Close dialog').focus().realPress('Escape');
+    cy.get('[data-testid="dialog-surface"]').should('not.exist');
+    cy.contains('button', 'Open dialog').click();
+    cy.get('@entryStart').should('have.been.calledThrice').and('have.always.been.calledWithExactly', false);
+    cy.get('@entryFinish').should('have.been.calledThrice');
+    cy.get('[aria-label="Selected people"]').should('contain.text', 'John Doe');
     checkAlignment();
   });
 });

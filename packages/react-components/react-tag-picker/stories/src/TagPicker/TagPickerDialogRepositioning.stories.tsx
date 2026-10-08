@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { JSXElement, PositioningImperativeRef, TagPickerProps } from '@fluentui/react-components';
+import type { JSXElement, TagPickerProps } from '@fluentui/react-components';
 import {
   Avatar,
   Button,
@@ -32,7 +32,7 @@ const options = [
 ];
 
 export const DialogWithTagPicker = (): JSXElement => {
-  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [open, setOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => {
     setSelectedOptions(data.selectedOptions);
@@ -41,10 +41,15 @@ export const DialogWithTagPicker = (): JSXElement => {
 
   return (
     <Dialog
+      onOpenChange={(_, data) => {
+        if (!data.open) {
+          setOpen(false);
+        }
+      }}
       surfaceMotion={{
         onMotionFinish: (_, { direction }) => {
           if (direction === 'enter') {
-            positioningRef.current?.updatePosition();
+            setOpen(true);
           }
         },
       }}
@@ -58,10 +63,9 @@ export const DialogWithTagPicker = (): JSXElement => {
           <DialogContent>
             <Field label="Select Employees" style={{ maxWidth: '75%' }}>
               <TagPicker
-                positioning={{ positioningRef }}
                 onOptionSelect={onOptionSelect}
                 selectedOptions={selectedOptions}
-                open={tagPickerOptions.length > 0}
+                open={open && tagPickerOptions.length > 0}
               >
                 <TagPickerControl>
                   <TagPickerGroup aria-label="Selected Employees">
@@ -108,10 +112,10 @@ DialogWithTagPicker.parameters = {
     description: {
       story:
         'When suggestions are available immediately, the dropdown can be positioned before the Dialog entry ' +
-        'animation finishes. Use surfaceMotion.onMotionFinish to call positioningRef.updatePosition() on entry ' +
-        'and correct the final position without delaying suggestions. This does not keep the dropdown aligned ' +
-        'during the animation. Open the dialog, select a person, close it, and reopen it to check that the ' +
-        'selection is preserved and the remaining suggestions are aligned after entry finishes.',
+        'animation finishes. Use surfaceMotion.onMotionFinish to open suggestions after entry finishes, and ' +
+        'reset that state when the dialog closes. Open the dialog, select a person, close it, and reopen it ' +
+        'to check that the selection is preserved and the remaining suggestions open in the correct position ' +
+        'after each entry animation.',
     },
   },
 };
