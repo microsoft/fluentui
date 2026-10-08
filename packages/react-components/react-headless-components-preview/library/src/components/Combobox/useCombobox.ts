@@ -78,17 +78,12 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     activeDescendantController,
   };
 
-  const openOnPointerDownRef = React.useRef(open);
-  const hasExpandIconMouseDownRef = React.useRef(false);
-  React.useEffect(() => {
-    openOnPointerDownRef.current = open;
-  }, [open]);
+  const openOnPointerDownRef = React.useRef<boolean | undefined>(undefined);
 
   const onExpandIconMouseDown = useEventCallback(
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      hasExpandIconMouseDownRef.current = true;
       openOnPointerDownRef.current = open;
     }),
   );
@@ -97,10 +92,10 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      const wasOpenOnPointerDown = hasExpandIconMouseDownRef.current && openOnPointerDownRef.current;
-      const nextOpen = hasExpandIconMouseDownRef.current ? !openOnPointerDownRef.current : !open;
-      hasExpandIconMouseDownRef.current = false;
-      openOnPointerDownRef.current = nextOpen;
+      // Click-only activation must not consume a canceled pointer gesture.
+      const wasOpenOnPointerDown = event.detail > 0 ? openOnPointerDownRef.current : undefined;
+      const nextOpen = !(wasOpenOnPointerDown ?? open);
+      openOnPointerDownRef.current = undefined;
       // A pointer interaction that starts while open light-dismisses an auto popover on pointerup.
       // Let the popover's toggle event issue the close notification so onOpenChange fires only once.
       if (!disabled && (!wasOpenOnPointerDown || listbox?.popover === 'manual')) {
@@ -124,7 +119,6 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
       if (!disabled && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
         const nextOpen = !open;
-        openOnPointerDownRef.current = nextOpen;
         internalState.setOpen(event, nextOpen);
         triggerRef.current?.focus();
       }

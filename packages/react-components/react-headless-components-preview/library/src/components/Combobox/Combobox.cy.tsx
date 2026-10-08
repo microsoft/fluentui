@@ -92,6 +92,32 @@ describe('Combobox', () => {
     });
 
     (['auto', 'manual'] as const).forEach(popover => {
+      it(`does not suppress click-only activation after a canceled pointer gesture for ${popover} popovers`, () => {
+        const onOpenChange = cy.stub().as('onOpenChange');
+        mount(<BasicCombobox listbox={{ popover }} onOpenChange={onOpenChange} />);
+
+        cy.get(expandIcon).realMouseDown();
+        cy.get('body').realMouseMove(0, 0, { position: 'bottomRight' }).realMouseUp({ position: 'bottomRight' });
+        cy.get('@onOpenChange').should('not.have.been.called');
+
+        cy.get(trigger).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true');
+        cy.get('@onOpenChange').should('have.been.calledOnce');
+
+        cy.get(expandIcon).then($icon => $icon[0].click());
+        cy.get(listbox).should('not.exist');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+        cy.get('@onOpenChange').should('have.been.calledTwice');
+
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get('@onOpenChange').should('have.been.calledThrice');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('not.exist');
+        cy.get('@onOpenChange').should('have.callCount', 4);
+      });
+
       it(`toggles the ${popover} popover on pointer activation with one notification per change`, () => {
         const onOpenChange = cy.stub().as('onOpenChange');
         mount(<BasicCombobox listbox={{ popover }} onOpenChange={onOpenChange} />);

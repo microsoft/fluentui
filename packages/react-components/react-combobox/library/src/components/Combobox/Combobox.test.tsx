@@ -1250,6 +1250,58 @@ describe('Combobox', () => {
   });
 
   describe('expandIcon', () => {
+    it.each(['click-only', 'pointer'])('toggles on %s activation with one notification per change', activation => {
+      const onOpenChange = jest.fn();
+      const onClick = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox inlinePopup expandIcon={{ onClick }} onOpenChange={onOpenChange}>
+          <Option>Red</Option>
+        </Combobox>,
+      );
+      const icon = getByRole('button');
+      const input = getByRole('combobox');
+      const activate = () => {
+        if (activation === 'click-only') {
+          fireEvent.click(icon);
+        } else {
+          userEvent.click(icon);
+        }
+      };
+
+      activate();
+
+      expect(getByRole('listbox')).toBeVisible();
+      expect(input).toHaveAttribute('aria-expanded', 'true');
+      expect(input).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: true });
+      expect(onClick).toHaveBeenCalledTimes(1);
+
+      activate();
+
+      expect(queryByRole('listbox')).toBeNull();
+      expect(input).toHaveAttribute('aria-expanded', 'false');
+      expect(input).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(2);
+      expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: false });
+      expect(onClick).toHaveBeenCalledTimes(2);
+    });
+
+    it('does not open on click-only activation when disabled', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox disabled inlinePopup onOpenChange={onOpenChange}>
+          <Option>Red</Option>
+        </Combobox>,
+      );
+
+      fireEvent.click(getByRole('button'));
+
+      expect(queryByRole('listbox')).toBeNull();
+      expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
     it('respects author-provided labels for the chevron button', () => {
       const { container, rerender } = render(
         <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>

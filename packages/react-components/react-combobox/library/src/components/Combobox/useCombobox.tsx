@@ -153,6 +153,20 @@ export const useComboboxBase_unstable = (
     }),
   );
 
+  const onExpandIconClick = useEventCallback(
+    // eslint-disable-next-line react-hooks/refs
+    mergeCallbacks(state.expandIcon?.onClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      // Pointer clicks already toggle on mousedown; click-only activation has detail 0.
+      if (event.detail === 0) {
+        event.preventDefault();
+        if (!state.disabled) {
+          state.setOpen(event, !state.open);
+        }
+        triggerRef.current?.focus();
+      }
+    }),
+  );
+
   const onExpandIconKeyDown = useEventCallback(
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.expandIcon?.onKeyDown, event => {
@@ -176,6 +190,7 @@ export const useComboboxBase_unstable = (
   if (state.expandIcon) {
     state.expandIcon.ref = expandIconSlotRef;
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
     state.expandIcon.onKeyDown = onExpandIconKeyDown;
   }
 
