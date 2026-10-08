@@ -10,17 +10,9 @@ import {
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
 import type { VegaLiteSpec } from './VegaLiteTypes';
+import { specialChartNames } from '../../utilities/test-data/specialChartNames';
 
 const colorMap = new Map<string, string>();
-const specialNames = [
-  '__proto__',
-  'constructor',
-  'prototype',
-  'xAxisPoint',
-  'indexNum',
-  'groupSeries',
-  'stackCallOutAccessibilityData',
-];
 
 describe('VegaLiteSchemaAdapter', () => {
   beforeEach(() => {
@@ -73,7 +65,7 @@ describe('VegaLiteSchemaAdapter', () => {
       const spec: VegaLiteSpec = {
         mark: 'bar',
         data: {
-          values: specialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
+          values: specialChartNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
         },
         encoding: {
           x: { field: 'category', type: 'nominal' },
@@ -88,7 +80,7 @@ describe('VegaLiteSchemaAdapter', () => {
       expect(result.data).toEqual([
         {
           name: 'A',
-          series: specialNames.map((legend, index) => expect.objectContaining({ legend, data: index + 1 })),
+          series: specialChartNames.map((legend, index) => expect.objectContaining({ legend, data: index + 1 })),
         },
       ]);
       expect(Object.prototype.constructor).toBe(originalConstructor);

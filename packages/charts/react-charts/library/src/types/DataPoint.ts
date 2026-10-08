@@ -785,6 +785,9 @@ export interface GroupedVerticalBarChartData {
   stackCallOutAccessibilityData?: AccessibilityProps;
 }
 
+/**
+ * @deprecated Legacy internal dataset shape. Use GVBarChartSeriesPoint for grouped bar series data.
+ */
 export interface GVDataPoint {
   /**
    * This interface used for - While forming datapoints from given prop "data" in code
@@ -793,11 +796,15 @@ export interface GVDataPoint {
   [key: string]: number | string;
 }
 
+/**
+ * @deprecated Legacy internal dataset shape. Use GroupedVerticalBarChartData for grouped chart input.
+ */
 export interface GVSingleDataPoint {
   /**
    * While forming datapoints from given prop "data" in code.
    * These datapoints are used for to draw graph easily.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the legacy public type until removal.
   [key: string]: GVDataPoint;
 }
 

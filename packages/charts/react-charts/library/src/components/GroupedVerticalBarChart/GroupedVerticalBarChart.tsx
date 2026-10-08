@@ -59,9 +59,11 @@ const X1_INNER_PADDING = 0.1;
 const VERTICAL_BAR_GAP = 1;
 const MIN_BAR_HEIGHT = 1;
 
+type GVGroupSeriesPoint = YValueHover & { data: number; useSecondaryYScale?: boolean };
+
 interface GVSingleDatasetPoint {
   barPointsByLegend: Record<string, GVBarChartSeriesPoint[]>;
-  groupSeries: YValueHover[];
+  groupSeries: GVGroupSeriesPoint[];
   indexNum: number;
   stackCallOutAccessibilityData?: AccessibilityProps;
   xAxisPoint: string;
@@ -138,7 +140,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const _createDataset = (barData: GroupedVerticalBarChartData[], lineData: GVBCLineSeries[]) => {
     const datasetForBars: GVSingleDatasetPoint[] = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = Object.create(null);
+    const linePointsByX: Record<string, GVGroupSeriesPoint[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -151,7 +153,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
           color: series.color,
           data: point.y,
           useSecondaryYScale: series.useSecondaryYScale,
-        } as YValueHover);
+        });
       });
     });
 
@@ -390,12 +392,14 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const legendBars: JSXElement = _getLegendData();
   _adjustProps();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Add commentMore actions
-  function _getMinMaxOfYAxis(datasetForBars: any, yAxisType?: YAxisType, useSecondaryYScale?: boolean) {
+  function _getMinMaxOfYAxis(
+    datasetForBars: GVSingleDatasetPoint[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ) {
     const values: number[] = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    datasetForBars.forEach((data: any) => {
-      data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
+    datasetForBars.forEach(data => {
+      data.groupSeries.forEach(point => {
         if (!useSecondaryYScale === !point.useSecondaryYScale) {
           values.push(point.data);
         }
@@ -993,7 +997,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       points={_datasetForBars}
       chartType={ChartTypes.GroupedVerticalBarChart}
       getDomainNRangeValues={_getDomainNRangeValues}
-      getMinMaxOfYAxis={_getMinMaxOfYAxis}
+      getMinMaxOfYAxis={(_points, yAxisType, useSecondaryYScale) =>
+        _getMinMaxOfYAxis(_datasetForBars, yAxisType, useSecondaryYScale)
+      }
       createStringYAxis={createStringYAxis}
       calloutProps={calloutProps}
       legendBars={legendBars}

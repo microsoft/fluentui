@@ -5,15 +5,7 @@ import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
-const groupedBarSpecialNames = [
-  '__proto__',
-  'constructor',
-  'prototype',
-  'xAxisPoint',
-  'indexNum',
-  'groupSeries',
-  'stackCallOutAccessibilityData',
-];
+import { specialChartNames } from '../../utilities/test-data/specialChartNames';
 
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
@@ -1399,7 +1391,7 @@ describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
     {
       name: 'series',
       pollutionKey: undefined,
-      values: groupedBarSpecialNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
+      values: specialChartNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
     },
     {
       name: 'mixed category and series',

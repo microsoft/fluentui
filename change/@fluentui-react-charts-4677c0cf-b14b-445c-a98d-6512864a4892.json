@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Preserve special category names and legend selection across charts; deprecate obsolete grouped dataset types",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}

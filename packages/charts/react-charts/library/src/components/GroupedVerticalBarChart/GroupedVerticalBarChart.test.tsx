@@ -4,6 +4,8 @@ import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestU
 import type { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
+import { specialChartNames } from '../../utilities/test-data/specialChartNames';
+import { getNextColor } from '../../utilities/colors';
 
 expect.extend(toHaveNoViolations);
 
@@ -825,47 +827,113 @@ describe('GroupedVerticalBarChart - category and series names', () => {
     },
   );
 
-  it.each([
-    'Revenue',
-    '__proto__',
-    'constructor',
-    'xAxisPoint',
-    'indexNum',
-    'groupSeries',
-    'stackCallOutAccessibilityData',
-    'barPointsByLegend',
-  ])('preserves repeated %s bars and sums only their group callout values', legend => {
-    const data: GroupedVerticalBarChartData[] = [
-      {
-        name: 'A',
-        series: [
-          { key: 'first', legend, data: 10 },
-          { key: 'second', legend, data: 15 },
-          { key: 'other', legend: 'Other', data: 7 },
-        ],
-      },
-      { name: 'B', series: [{ key: 'third', legend, data: 40 }] },
-    ];
-    const { container } = render(<GroupedVerticalBarChart data={data} isCalloutForStack />);
+  it.each(['Revenue', ...specialChartNames])(
+    'preserves repeated %s bars and sums only their group callout values',
+    legend => {
+      const data: GroupedVerticalBarChartData[] = [
+        {
+          name: 'A',
+          series: [
+            { key: 'first', legend, data: 10 },
+            { key: 'second', legend, data: 15 },
+            { key: 'other', legend: 'Other', data: 7 },
+          ],
+        },
+        { name: 'B', series: [{ key: 'third', legend, data: 40 }] },
+      ];
+      const { container } = render(<GroupedVerticalBarChart data={data} isCalloutForStack />);
 
-    expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(4);
-    expect(screen.getByRole('option', { name: 'A. Other, 7.' })).toBeInTheDocument();
-    expect(screen.getByRole('option', { name: `B. ${legend}, 40.` })).toBeInTheDocument();
-    [10, 15].forEach(value => {
-      const bar = screen.getByRole('option', { name: `A. ${legend}, ${value}.` });
-      fireEvent.focus(bar);
-      const callout = within(screen.getByRole('group'));
-      expect(callout.getByText('A')).toBeInTheDocument();
-      expect(callout.getAllByText(legend)).toHaveLength(1);
-      expect(callout.getByText('25')).toBeInTheDocument();
-      expect(callout.getByText('Other')).toBeInTheDocument();
-      expect(callout.getByText('7')).toBeInTheDocument();
-      [10, 15, 40].forEach(individualValue => {
-        expect(callout.queryByText(String(individualValue))).not.toBeInTheDocument();
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(4);
+      expect(screen.getByRole('option', { name: 'A. Other, 7.' })).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: `B. ${legend}, 40.` })).toBeInTheDocument();
+      [10, 15].forEach(value => {
+        const bar = screen.getByRole('option', { name: `A. ${legend}, ${value}.` });
+        fireEvent.focus(bar);
+        const callout = within(screen.getByRole('group'));
+        expect(callout.getByText('A')).toBeInTheDocument();
+        expect(callout.getAllByText(legend)).toHaveLength(1);
+        expect(callout.getByText('25')).toBeInTheDocument();
+        expect(callout.getByText('Other')).toBeInTheDocument();
+        expect(callout.getByText('7')).toBeInTheDocument();
+        [10, 15, 40].forEach(individualValue => {
+          expect(callout.queryByText(String(individualValue))).not.toBeInTheDocument();
+        });
+        fireEvent.blur(bar);
       });
-      fireEvent.blur(bar);
-    });
-    expect(data[0].series.map(point => point.data)).toEqual([10, 15, 7]);
-    expect(data[1].series[0].data).toBe(40);
+      expect(data[0].series.map(point => point.data)).toEqual([10, 15, 7]);
+      expect(data[1].series[0].data).toBe(40);
+    },
+  );
+
+  it.each(['data', 'dataV2'] as const)(
+    'preserves special categories, legends and fallback colors through %s',
+    input => {
+      const names = ['Revenue', ...specialChartNames];
+      const props =
+        input === 'data'
+          ? {
+              data: names.map((name, index) => ({
+                name,
+                series: [{ key: name, legend: name, data: index + 1 }],
+              })),
+            }
+          : {
+              dataV2: names.map((name, index) => ({
+                type: 'bar' as const,
+                legend: name,
+                data: [{ x: name, y: index + 1 }],
+              })),
+            };
+      const { container } = render(<GroupedVerticalBarChart {...props} />);
+
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(names.length);
+      names.forEach((name, index) => {
+        expect(screen.getByRole('option', { name: `${name}. ${name}, ${index + 1}.` })).toHaveAttribute(
+          'fill',
+          getNextColor(index),
+        );
+      });
+    },
+  );
+
+  it.each(['constructor', '__proto__', 'toString'])(
+    'reuses the first fallback color for repeated %s legends',
+    legend => {
+      render(
+        <GroupedVerticalBarChart
+          data={[
+            { name: 'A', series: [{ key: 'first', legend, data: 10 }] },
+            { name: 'B', series: [{ key: 'second', legend, data: 20 }] },
+          ]}
+        />,
+      );
+      expect(screen.getByRole('option', { name: `A. ${legend}, 10.` })).toHaveAttribute('fill', getNextColor(0));
+      expect(screen.getByRole('option', { name: `B. ${legend}, 20.` })).toHaveAttribute('fill', getNextColor(0));
+    },
+  );
+
+  it.each(['constructor', '__proto__', 'toString'])('selects and deselects %s through the chart legend', legend => {
+    render(
+      <GroupedVerticalBarChart
+        data={[
+          {
+            name: 'A',
+            series: [
+              { key: 'special', legend, data: 10 },
+              { key: 'ordinary', legend: 'Revenue', data: 20 },
+            ],
+          },
+        ]}
+      />,
+    );
+    const legendOption = screen.getByRole('option', { name: legend });
+    const otherBar = screen.getByRole('option', { name: 'A. Revenue, 20.' });
+    expect(legendOption).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(legendOption);
+    expect(legendOption).toHaveAttribute('aria-selected', 'true');
+    expect(otherBar).toHaveAttribute('opacity', '0.1');
+    fireEvent.click(legendOption);
+    expect(legendOption).toHaveAttribute('aria-selected', 'false');
+    expect(otherBar).not.toHaveAttribute('opacity', '0.1');
   });
 });
