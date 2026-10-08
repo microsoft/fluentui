@@ -1,58 +1,7 @@
 import type { Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
-import { ALIGNMENTS, POSITIONS } from '../constants';
+import { ABOVE, AFTER, BEFORE, BELOW, CENTER, END, START } from '../constants';
 import { getPlacementString } from './placement';
-
-const DEFAULT_TOLERANCE = 2;
-
-const closeTo = (a: number, b: number, tolerance: number): boolean => Math.abs(a - b) <= tolerance;
-
-function detectPosition(floatingRect: DOMRect, referenceRect: DOMRect, tolerance: number): Position | null {
-  if (floatingRect.bottom <= referenceRect.top + tolerance) {
-    return POSITIONS.above;
-  }
-
-  if (floatingRect.top >= referenceRect.bottom - tolerance) {
-    return POSITIONS.below;
-  }
-
-  if (floatingRect.right <= referenceRect.left + tolerance) {
-    return POSITIONS.before;
-  }
-
-  if (floatingRect.left >= referenceRect.right - tolerance) {
-    return POSITIONS.after;
-  }
-
-  return null;
-}
-
-function detectAlign(
-  position: Position,
-  floatingRect: DOMRect,
-  referenceRect: DOMRect,
-  tolerance: number,
-): LogicalAlignment {
-  const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
-
-  const startAligned = isBlockMain
-    ? closeTo(floatingRect.left, referenceRect.left, tolerance)
-    : closeTo(floatingRect.top, referenceRect.top, tolerance);
-
-  if (startAligned) {
-    return ALIGNMENTS.start;
-  }
-
-  const endAligned = isBlockMain
-    ? closeTo(floatingRect.right, referenceRect.right, tolerance)
-    : closeTo(floatingRect.bottom, referenceRect.bottom, tolerance);
-
-  if (endAligned) {
-    return ALIGNMENTS.end;
-  }
-
-  return ALIGNMENTS.center;
-}
 
 export interface ComputePositionConfig {
   tolerance?: number;
@@ -69,16 +18,31 @@ export function computePosition(
   floating: HTMLElement,
   config?: ComputePositionConfig,
 ): ComputePositionReturn | null {
-  const tolerance = config?.tolerance ?? DEFAULT_TOLERANCE;
+  const tolerance = config?.tolerance ?? 2;
   const referenceRect = reference.getBoundingClientRect();
   const floatingRect = floating.getBoundingClientRect();
-
-  const position = detectPosition(floatingRect, referenceRect, tolerance);
+  const position: Position | null =
+    floatingRect.bottom <= referenceRect.top + tolerance
+      ? ABOVE
+      : floatingRect.top >= referenceRect.bottom - tolerance
+      ? BELOW
+      : floatingRect.right <= referenceRect.left + tolerance
+      ? BEFORE
+      : floatingRect.left >= referenceRect.right - tolerance
+      ? AFTER
+      : null;
   if (!position) {
     return null;
   }
 
-  const align = detectAlign(position, floatingRect, referenceRect, tolerance);
+  const block = position === ABOVE || position === BELOW;
+  const start = Math.abs(
+    (block ? floatingRect.left : floatingRect.top) - (block ? referenceRect.left : referenceRect.top),
+  );
+  const end = Math.abs(
+    (block ? floatingRect.right : floatingRect.bottom) - (block ? referenceRect.right : referenceRect.bottom),
+  );
+  const align: LogicalAlignment = start <= tolerance ? START : end <= tolerance ? END : CENTER;
   const placement = getPlacementString(position, align);
 
   return { position, align, placement };
