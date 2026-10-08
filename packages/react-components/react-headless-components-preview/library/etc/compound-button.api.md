@@ -24,6 +24,7 @@ export type CompoundButtonState = CompoundButtonBaseState & {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
+        'data-icon-position'?: string;
         'data-has-secondary-content'?: string;
     };
 };
