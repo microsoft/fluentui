@@ -164,7 +164,7 @@ do not become dependent on the headless ones. Two implementations of these famil
 them is a separate decision, not part of this RFC.
 
 **v9-wrapping overlay parts: MenuItem, MenuList, MenuPopover, MenuTrigger, Drawer, Toast, the Combobox, Dropdown and
-TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in steps 3 and 4 like every other
+TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in step 2 like every other
 component. None of those base hooks positions a surface; positioning (`usePositioning` from `react-positioning`),
 motion (`presenceMotionSlot`, `useMotionForwardedRef`) and `Portal` all live in the styled outer hooks and stay there.
 
@@ -196,11 +196,11 @@ provide.
 
 - In the headless `eslint.config.cjs`, enable `@fluentui/no-restricted-imports` with every `@fluentui/react-<component>`
   package in `forbidden`. The rule already exists and the shared react config already uses it for stories. Warn only
-  until step 3 is complete.
+  until step 2 is complete.
 - Give headless subpaths node10 type resolution. v9 libraries type-check against built `dist` output with
   `moduleResolution: node`, which ignores `exports`, so `@fluentui/react-headless-components-preview/button` has no
   types from a v9 package today. Headless gets a `typesVersions` block with one entry per subpath, emitted by
-  `export-maps-sync` so it never drifts from the export map. Must be in place before step 4.
+  `export-maps-sync` so it never drifts from the export map. Must be in place before the first move in step 2.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
@@ -221,17 +221,74 @@ provide.
 - Carousel, TagGroup, TagPickerControl, MenuSplitGroup, MenuItemSwitch: remove `.styles` imports from hooks.
 - Done when the `allowedViolations` list for `BaseHooks.fixture.js` in `react-components/bundle-isolation.config.json`
   (today `@fluentui/react-motion`, `@griffel/core`, `@griffel/react`, `tabster`) is empty for every component that
-  moves in step 3.
+  moves in step 2.
 - Consumer sees: nothing. Patch releases.
 
-### Step 2: Headless gains `field` and `label`
+### Step 2: Move components, one at a time, dependents first
 
-Checkbox, Input, Combobox and eight other components call `useFieldControlProps_unstable` from `react-field`, so Field
-and Label have to be real headless base logic before any of them can move. Today headless `field` and `label` wrap
-`useFieldBase_unstable` and `useLabelBase_unstable` from the v9 packages; after this step the direction is reversed.
+Per component, one PR stack, with the shape section 2 describes:
+
+1. Headless: move the base hook, render function, base types and behaviour contexts from the v9 package into
+   `library/src/components/<Name>` as `use<Name>Base`, `render<Name>` and the headless types; the existing headless
+   `use<Name>` keeps the `data-*` step and calls the local base hook; the v9 base-hook tests move with them. Headless
+   loses every reference to `@fluentui/react-<name>`: runtime imports, type-only imports and the `package.json` entry.
+   A type-only import is enough for Nx to draw a dependency edge, so `.types.ts` files count. Headless minor.
+2. Styled: `@fluentui/react-<name>` adds the headless dependency, imports `use<Name>Base` and `render<Name>` from the
+   headless subpath, keeps `use<Name>Base_unstable` and the `<Name>Base*` types as plain aliases, and drops the moved
+   files. Patch release. The API report gate is "no export removed, no signature changed". The report itself changes
+   shape: inline type bodies become re-exports and aliases of headless types, and headless reports for sibling
+   components (ToggleButton and SplitButton for Button) change the same way. Reviewers diff the export list, not the
+   file.
+
+**Order.** The Nx task graph decides it. A v9 package can depend on headless only while headless cannot reach that
+package through the styled packages it still wraps. Otherwise the graph has a cycle (`react-button` → headless →
+`react-avatar` → `react-tooltip` → `react-button`) and Nx refuses to run any target with `dependsOn: ^build` on either
+side. So packages move dependents first and dependencies last, the reverse of the v9 dependency graph. Computed from
+the project graph over the 45 styled packages headless wraps today, a package is movable once no un-moved wrapped
+package reaches it. Packages within a round are independent of each other and can move in any order or in parallel:
+
+| Round | Packages                                                                                                                                                                                                                                            |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | accordion, breadcrumb, card, checkbox, color-picker, image, message-bar, nav, persona, progress, rating, search, select, skeleton, slider, spinbutton, spinner, swatch-picker, switch, tabs, tag-picker, teaching-popover, textarea, toast, toolbar |
+| 2     | combobox, divider, drawer, input, link, overflow, radio, tags                                                                                                                                                                                       |
+| 3     | avatar, dialog, field                                                                                                                                                                                                                               |
+| 4     | badge, label, popover, tooltip                                                                                                                                                                                                                      |
+| 5     | button, menu                                                                                                                                                                                                                                        |
+| 6     | provider                                                                                                                                                                                                                                            |
+
+For the custom headless overlays (Popover, Tooltip, Dialog, the Menu root) only the type imports and the `package.json`
+entries go; nothing else moves. Table, tree, list and carousel have no headless entry today; they gain one as part of
+their move and join the round their dependents allow (carousel after teaching-popover). The order is recomputed from
+the graph before each round, since dependencies change.
+
+**Behaviour dependencies between base hooks.** A moved base hook keeps importing an un-moved package for behaviour it
+needs; that edge points from headless to a package that does not depend on headless yet, so it is harmless. When that
+package's turn comes, the same headless minor that moves it rewires every headless consumer to the local copy, and
+only then does the v9 package flip. Field is the worked example: Checkbox moves in round 1 and keeps calling
+`useFieldControlProps_unstable` from `react-field`; Field moves in round 3 and rewires Checkbox, Input, Combobox and
+the eight other callers in the same release.
 
 ```ts
-// headless: library/src/components/Field/useFieldControlProps.ts
+// Round 1. headless: library/src/components/Checkbox/useCheckboxBase.ts
+// Moved from react-checkbox. Field has not moved yet, so the behaviour import still points at the v9 package.
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+
+export const useCheckboxBase = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxBaseState => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+  // ...today's useCheckboxBase_unstable body, unchanged
+};
+
+// Round 1. v9: react-checkbox/library/src/components/Checkbox/useCheckbox.tsx
+// react-checkbox now depends on headless. The rendering dependency on react-label stays.
+import { useCheckboxBase } from '@fluentui/react-headless-components-preview/checkbox';
+import { Label } from '@fluentui/react-label';
+
+export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+  const state = useCheckboxBase(props, ref);
+  // design-prop defaults, default slots (Label, icons), as today
+};
+
+// Round 3. headless: library/src/components/Field/useFieldControlProps.ts
 // Moved from react-field/library/src/contexts/useFieldControlProps.ts. Same logic: reads the Field context
 // and fills id, aria-labelledby, aria-describedby, aria-invalid and required on the control's props.
 export function useFieldControlProps<Props extends FieldControlProps>(
@@ -241,90 +298,23 @@ export function useFieldControlProps<Props extends FieldControlProps>(
   return getFieldControlProps(useFieldContext(), props, options);
 }
 
-// headless: library/src/components/Checkbox/useCheckboxBase.ts (step 3, shown here for the dependency)
+// Round 3. headless: library/src/components/Checkbox/useCheckboxBase.ts, same release
 import { useFieldControlProps } from '../Field/useFieldControlProps';
 
-export const useCheckboxBase = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxBaseState => {
-  props = useFieldControlProps(props, { supportsLabelFor: true, supportsRequired: true });
-  // ...today's useCheckboxBase_unstable body, unchanged
-};
-
-// v9: react-field/library/src/index.ts
-// Step 4: react-field now depends on headless. The public names do not change.
+// Round 3. v9: react-field/library/src/index.ts
+// react-field now depends on headless. The public names do not change.
 export {
   useFieldControlProps as useFieldControlProps_unstable,
   useFieldContext as useFieldContext_unstable,
   FieldContextProvider,
 } from '@fluentui/react-headless-components-preview/field';
-
-// v9: react-checkbox/library/src/components/Checkbox/useCheckbox.tsx (step 4)
-// The behaviour dependency on react-field is gone; the rendering dependency on react-label stays.
-import { useCheckboxBase } from '@fluentui/react-headless-components-preview/checkbox';
-import { Label } from '@fluentui/react-label';
-
-export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const state = useCheckboxBase(props, ref);
-  // design-prop defaults, default slots (Label, icons), as today
-};
 ```
 
-- The v9 `react-field` and `react-label` packages do not consume the headless copies yet. Doing so would close a cycle
-  in the Nx task graph (section "Step 3") while headless still depends on them through other components. They flip
-  in step 4.
-- Done when the headless `field` and `label` subpaths import nothing from `react-field` or `react-label`.
-- Consumer sees: nothing.
-
-### Step 3: Headless becomes self-sufficient, one component at a time
-
-The order of work matters because of the Nx task graph. The moment any v9 package depends on headless while headless
-still depends on a styled package that reaches it, the graph has a cycle (`react-button` → headless → `react-avatar`
-→ `react-tooltip` → `react-button`) and Nx refuses to run any target with `dependsOn: ^build` on either side. So the
-dependency is not inverted component by component; it is inverted in two phases. This step is the first: headless
-stops depending on styled packages. v9 does not change yet.
-
-Per component, one headless PR:
-
-1. Copy the base hook, render function, base types and behaviour contexts from the v9 package into
-   `library/src/components/<Name>` as `use<Name>Base`, `render<Name>` and the headless types; the existing headless
-   `use<Name>` keeps the `data-*` step and calls the local base hook. The v9 base-hook tests are copied with them.
-   Headless minor.
-2. Drop the `@fluentui/react-<name>` import from the headless subpath. The v9 package is untouched and keeps its own
-   copy for now.
-
-Order, so that every copy finds its dependencies already in headless: field and label (step 2), then button, divider,
-badge, image, link, skeleton, spinner, progress-bar, text, checkbox, radio, switch, input, textarea, select, slider,
-spinbutton, search, tabs, accordion, card, tags, toolbar, breadcrumb, message-bar, rating, avatar and persona,
-swatch-picker, color-picker, the non-overlay parts of nav, then table, tree, list and carousel, which have no headless
-entry today and gain one as part of the copy, and last the v9-wrapping overlay parts: menu items, list, popover and
-trigger, drawer, toast, the combobox, dropdown and tag-picker listboxes.
-
-- While this step runs, every copied base hook exists twice. The copy is byte-for-byte at the time of the move, the
-  copied tests pin its behaviour, and the `@fluentui/no-restricted-imports` rule from step 0 keeps the headless copy
-  from reaching back. Fixes that land in v9 during this window have to be ported by hand; the window should be short.
-- Done when headless has no `@fluentui/react-<component>` dependency at all and the Nx graph has no edge from headless
-  to a styled package.
-- Consumer sees: nothing.
-
-### Step 4: v9 packages flip to the headless base, one at a time
-
-Headless now depends on foundation only, so a v9 package can depend on it without closing a cycle.
-
-Per component, one v9 PR:
-
-1. `@fluentui/react-<name>` adds the headless dependency, imports `use<Name>Base` and `render<Name>` from the headless
-   subpath, keeps `use<Name>Base_unstable` and the `<Name>Base*` types as plain aliases, and deletes its own copy.
-   Patch release.
-2. The API report gate is "no export removed, no signature changed". The report itself does change shape: inline type
-   bodies become re-exports and aliases of headless types, and headless reports for sibling components (ToggleButton,
-   SplitButton for Button) change the same way. Reviewers diff the export list, not the file.
-
-Same order as step 3.
-
-- Done when every v9 package that has a headless counterpart calls `use<Name>Base` from headless and no v9 package
-  defines a base hook of its own.
+- Done when headless has no `@fluentui/react-<component>` dependency at all and every v9 package with a headless
+  counterpart calls `use<Name>Base` from headless.
 - Consumer sees: nothing. DOM output is unchanged because the styled layer calls `use<Name>Base`.
 
-### Step 5: Lock in
+### Step 3: Lock in
 
 - `@fluentui/no-restricted-imports` on the headless project and the extended base-hook rule switch from warn to error.
 - The `BaseHooks.fixture.js` allow-list is removed.
@@ -354,7 +344,5 @@ Same order as step 3.
   per-component unit of work and by every step being shippable on its own.
 - Every v9 component package depends on a `0.x` preview package.
 - Two hooks per component in headless (`use<Name>Base` and `use<Name>`) so that the `data-*` contract stays out of v9.
-- Between steps 3 and 4 every base hook exists in two places. Behaviour fixes made in v9 during that window have to be
-  ported to headless by hand.
 - Popover, Tooltip, Dialog and the Menu root keep two implementations. Open state, dismissal, focus restore and
   keyboard handling for them are still tested twice and can still drift.
