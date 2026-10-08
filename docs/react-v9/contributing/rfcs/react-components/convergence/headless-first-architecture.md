@@ -197,14 +197,11 @@ provide.
 - In the headless `eslint.config.cjs`, enable `@fluentui/no-restricted-imports` with every `@fluentui/react-<component>`
   package in `forbidden`. The rule already exists and the shared react config already uses it for stories. Warn only
   until step 3 is complete.
-- Decide how v9 libraries resolve headless subpath types. They type-check against built `dist` output with
+- Give headless subpaths node10 type resolution. v9 libraries type-check against built `dist` output with
   `moduleResolution: node`, which ignores `exports`, so `@fluentui/react-headless-components-preview/button` has no
   types from a v9 package today. The suite solves the same problem for `./unstable` with a generated `unstable/`
-  shim folder. Options: switch the v9 library tsconfigs to `moduleResolution: bundler` (the headless stories project
-  already uses it; `tsconfig.spec.json` must move from `module: CommonJS` to `esnext`), or give headless node10
-  support through `typesVersions` or shim folders emitted by `export-maps-sync`. `nodenext` is not a candidate: it
-  requires explicit extensions on every relative import and per-file Node module rules the sources do not follow.
-  Must be settled before step 4.
+  shim folder; headless gets the equivalent, either `typesVersions` or per-subpath shim folders, emitted by
+  `export-maps-sync` so the list never drifts from the export map. Must be in place before step 4.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
