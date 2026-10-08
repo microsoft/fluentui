@@ -27,6 +27,27 @@ follow-up that this RFC keeps in mind but does not propose; see [Follow-ups](#4-
 The migration is a sequence of small steps. Every step ships on the regular v9 train, needs no major version, and
 leaves the repository working.
 
+## Terms
+
+- **Foundation**: the packages headless may import: `react-utilities`, `keyboard-keys`, `react-jsx-runtime`,
+  `react-shared-contexts`, `react-context-selector`, `react-aria` and `react-tabster` (keyborg-backed symbols only).
+- **Base hook**: `use<Name>Base`. Logic and accessibility for one component; no styles, tokens, motion, icons or
+  default slot content, and no `data-*` attributes. After this RFC it lives in headless.
+- **Headless hook**: `use<Name>` in headless. The base hook plus the `data-*` mapping. Never called by v9.
+- **Styled hook**: `use<Name>_unstable` in a v9 package. The base hook plus design-prop defaults, default slots and
+  motion.
+- **Behaviour context**: a React context whose fields are read by a base hook (ids, validation state, open state).
+  Moves to headless. A context that mixes behaviour fields with a design prop is still a behaviour context.
+- **Design-prop context**: a context whose every field is a design prop (`size`, `appearance`, `shape`). Stays
+  styled.
+- **Behaviour dependency**: a styled package importing another styled package only to call its base logic. Disappears
+  from the styled graph.
+- **Rendering dependency**: a styled package importing another styled package to render it as a default slot. Stays.
+- **Custom headless overlay**: a headless component with its own implementation that wraps no v9 base hook (Popover,
+  Tooltip, Dialog, the Menu root). Out of scope.
+- **Move**: one package's wrapped components changing ownership in one PR stack: a headless minor that takes the base
+  layer, then a v9 patch that consumes it.
+
 ## Background
 
 - [Headless components](./headless-components.md) decided that headless components reuse the v9 hooks and render
@@ -69,6 +90,9 @@ split.
 ## Goals
 
 - No breaking change for any published v9 or headless import, export, type, class name or version range.
+- Everything v9 consumes from headless (base hooks, render functions, base types, behaviour contexts) follows the v9
+  breaking-change policy from the moment it moves, whatever the headless version number says. The headless hooks and
+  the `data-*` contract keep the preview package's own policy.
 - No styling runtime reachable from headless, enforced by the dependency graph and lint, with `verify-bundle-isolation`
   as the end-to-end check rather than the only check.
 - The `data-*` state contract stays headless-only. Styled v9 DOM and SSR output does not change.
@@ -147,9 +171,13 @@ Rules that fall out of this:
 - The styled packages get a lint rule that forbids importing `use<Name>` (as opposed to `use<Name>Base`) from a headless
   subpath, so the `data-*` contract cannot reach v9 by accident.
 - Behaviour contexts move to headless and the styled layer re-exports them; context identity is preserved because
-  there is one module instance. A context that only carries design props stays styled. Button's context is the
-  example: its only field is `size`, set by Toolbar, so it stays in `react-button`, and the headless `button` subpath
-  stops re-exporting it. That is a headless preview break and is called out in the headless changelog.
+  there is one module instance. A context moves whole unless every one of its fields is a design prop. Mixed contexts
+  are the common case (Field, Combobox, Avatar, AccordionHeader, Skeleton, Table and TagPicker carry `size` or
+  `appearance` next to behaviour fields) and they move as they are: a string union in a context is not a styling
+  runtime, and splitting a context would change how many providers a component renders. Button's context is the
+  design-prop-only case: its only field is `size`, set by Toolbar, so it stays in `react-button`, and the headless
+  `button` subpath stops re-exporting it. That is a headless preview break and is called out in the headless
+  changelog.
 
 ### 3. Overlays
 
@@ -180,8 +208,9 @@ per package. Bringing v9 onto the headless model is a natural next step after th
   own build-time measurements and consumer story.
 - Generators and skills (`react-component`, `v9-component`, `headless-component`) follow whichever layout wins.
 
-What this RFC does to keep that door open: headless subpath names and v9 package names stay one to one
-(`@fluentui/react-headless-components-preview/button` ↔ `@fluentui/react-button`); base hooks land once, in
+What this RFC does to keep that door open: headless subpath names stay aligned with v9 package names, one or more
+subpaths per package (`@fluentui/react-headless-components-preview/button` ↔ `@fluentui/react-button`, `tag`,
+`tag-group` and `interaction-tag` ↔ `@fluentui/react-tags`); base hooks land once, in
 `library/src/components/<Name>` in headless, which is the layout a later consolidation keeps; and on the v9 side every
 step stays inside the existing package, so a later consolidation moves each styled file once.
 
@@ -226,7 +255,8 @@ provide.
 
 ### Step 2: Move components, one at a time, dependents first
 
-Per component, one PR stack, with the shape section 2 describes:
+The unit of work is a package: all of its wrapped components move in one PR stack, so a package is never half on
+headless. Per package, with the shape section 2 describes:
 
 1. Headless: move the base hook, render function, base types and behaviour contexts from the v9 package into
    `library/src/components/<Name>` as `use<Name>Base`, `render<Name>` and the headless types; the existing headless
