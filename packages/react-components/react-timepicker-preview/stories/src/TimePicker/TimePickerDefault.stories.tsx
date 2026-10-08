@@ -1,0 +1,20 @@
+import * as React from 'react';
+import type { JSXElement } from '@fluentui/react-components';
+import { Field, makeStyles } from '@fluentui/react-components';
+import type { TimePickerProps } from '@fluentui/react-timepicker-preview';
+import { TimePicker } from '@fluentui/react-timepicker-preview';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: '300px',
+  },
+});
+
+export const Default = (props: Partial<TimePickerProps>): JSXElement => {
+  const styles = useStyles();
+  return (
+    <Field label="Coffee time" className={styles.root}>
+      <TimePicker {...props} />
+    </Field>
+  );
+};
