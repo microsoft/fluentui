@@ -5,6 +5,7 @@ export { Default } from './FadeDefault.stories';
 export { Snappy } from './FadeSnappy.stories';
 export { Relaxed } from './FadeRelaxed.stories';
 export { Customization } from './FadeCustomization.stories';
+export { Fade2Prototype } from './Fade2Prototype.stories';
 
 export default {
   title: 'Motion/Components (preview)/Fade',
