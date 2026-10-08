@@ -199,9 +199,8 @@ provide.
   until step 3 is complete.
 - Give headless subpaths node10 type resolution. v9 libraries type-check against built `dist` output with
   `moduleResolution: node`, which ignores `exports`, so `@fluentui/react-headless-components-preview/button` has no
-  types from a v9 package today. The suite solves the same problem for `./unstable` with a generated `unstable/`
-  shim folder; headless gets the equivalent, either `typesVersions` or per-subpath shim folders, emitted by
-  `export-maps-sync` so the list never drifts from the export map. Must be in place before step 4.
+  types from a v9 package today. Headless gets a `typesVersions` block with one entry per subpath, emitted by
+  `export-maps-sync` so it never drifts from the export map. Must be in place before step 4.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
