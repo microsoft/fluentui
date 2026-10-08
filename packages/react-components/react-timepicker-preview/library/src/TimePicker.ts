@@ -8,7 +8,7 @@ export {
   useTimePickerSelection_unstable,
   useTimePickerStyles_unstable,
   useTimePicker_unstable,
-} from './TimePicker';
+} from './components/TimePicker/index';
 export type {
   TimePickerBaseProps,
   TimePickerBaseState,
@@ -23,19 +23,4 @@ export type {
   TimePickerState,
   TimePickerTimeProps,
   TimePickerTimeState,
-} from './TimePicker';
-
-export {
-  formatDateToTimeString,
-  getDateEndAnchor,
-  getDateFromTimeString,
-  getDateStartAnchor,
-  getTimesBetween,
-} from './utils';
-export type {
-  Hour,
-  TimeFormatOptions,
-  TimePickerErrorType,
-  TimePickerOption,
-  TimeStringValidationResult,
-} from './utils';
+} from './components/TimePicker/index';

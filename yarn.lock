@@ -3309,6 +3309,7 @@ __metadata:
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
     "@fluentui/react-storybook-addon-playground": "npm:*"
     "@fluentui/react-timepicker-compat": "npm:*"
+    "@fluentui/react-timepicker-preview": "npm:*"
     "@fluentui/recipes": "npm:*"
     "@fluentui/theme-designer": "npm:*"
     "@griffel/react": "npm:^1.5.32"
@@ -6027,14 +6028,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-timepicker-preview@workspace:packages/react-components/react-timepicker-preview/library":
+"@fluentui/react-timepicker-preview@npm:*, @fluentui/react-timepicker-preview@workspace:packages/react-components/react-timepicker-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-timepicker-preview@workspace:packages/react-components/react-timepicker-preview/library"
   dependencies:
+    "@fluentui/keyboard-keys": "npm:^9.0.9"
+    "@fluentui/react-combobox": "npm:^9.17.7"
+    "@fluentui/react-field": "npm:^9.5.5"
+    "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
-    "@fluentui/react-theme": "npm:^9.2.2"
+    "@fluentui/react-tabster": "npm:^9.26.18"
     "@fluentui/react-utilities": "npm:^9.26.7"
+    "@fluentui/scripts-cypress": "npm:*"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
