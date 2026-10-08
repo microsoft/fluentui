@@ -64,6 +64,7 @@ export const styles = css`
 
   :host {
     --_indicator-size: 20px;
+    --_placeholder-color: ${colorNeutralForeground4};
     --_initial-display: attr(initial-display raw-string, attr(placeholder raw-string, none));
 
     box-sizing: border-box;
@@ -72,7 +73,7 @@ export const styles = css`
   }
 
   :host(${placeholderShownState}) {
-    color: ${colorNeutralForeground4};
+    color: var(--_placeholder-color);
   }
 
   .control {
@@ -121,7 +122,7 @@ export const styles = css`
   }
 
   :host(:is(:not([value]), [value=''])) slot[name='control']::before {
-    color: ${colorNeutralForeground4};
+    color: var(--_placeholder-color);
   }
 
   ::slotted(:is(input, button)) {
@@ -141,6 +142,10 @@ export const styles = css`
     cursor: text;
     min-width: 0;
     width: 100%;
+  }
+
+  ::slotted(input)::placeholder {
+    color: var(--_placeholder-color);
   }
 
   :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
