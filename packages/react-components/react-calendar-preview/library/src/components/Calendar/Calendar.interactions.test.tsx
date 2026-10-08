@@ -196,6 +196,41 @@ describe('Calendar interaction sequences', () => {
     expect(onSelectDate).not.toHaveBeenCalled();
   });
 
+  it.each(['sunday', 'monday'] as const)(
+    'reveals and focuses today in a five-week grid when the month needs six rows starting on %s',
+    async firstDayOfWeek => {
+      const monthEnd = new Date(2020, 7, 31);
+      const onDisplayedDateChange = jest.fn();
+      const onSelectDate = jest.fn();
+      const { getAllByRole, getByRole, queryByRole } = render(
+        <Calendar
+          defaultValue={null}
+          defaultDisplayedDate={new Date(2020, 7, 1)}
+          today={monthEnd}
+          firstDayOfWeek={firstDayOfWeek}
+          monthPicker={null}
+          dayPicker={{ weeksToShow: 5 }}
+          onDisplayedDateChange={onDisplayedDateChange}
+          onSelectDate={onSelectDate}
+        />,
+      );
+      expect(queryByRole('button', { name: dayLabel(monthEnd) })).toBeNull();
+      expect(getAllByRole('row')).toHaveLength(6);
+      const button = getByRole('button', { name: 'Go to today' });
+      expect(button).not.toBeDisabled();
+      expect(button).toHaveAttribute('aria-disabled', 'false');
+
+      fireEvent.click(button);
+
+      expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+      expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(monthEnd);
+      await waitFor(() => expect(getByRole('button', { name: dayLabel(monthEnd) }).closest('td')).toHaveFocus());
+      expect(getAllByRole('row')).toHaveLength(6);
+      expect(button).toBeDisabled();
+      expect(onSelectDate).not.toHaveBeenCalled();
+    },
+  );
+
   it('clamps go-to-today within a shortened grid to the maximum date', async () => {
     const maxDate = new Date(2020, 8, 10);
     const { getByRole } = render(
@@ -213,11 +248,79 @@ describe('Calendar interaction sequences', () => {
     expect(getByRole('button', { name: 'Go to today' })).toBeDisabled();
   });
 
-  describe('focus ownership across picker visibility changes', () => {
+  it('reveals the maximum date when go-to-today is clamped into the sixth month row', async () => {
+    const maxDate = new Date(2020, 7, 31);
+    const { getByRole, queryByRole } = render(
+      <Calendar
+        defaultValue={null}
+        defaultDisplayedDate={new Date(2020, 7, 1)}
+        today={today}
+        maxDate={maxDate}
+        monthPicker={null}
+        dayPicker={{ weeksToShow: 5 }}
+      />,
+    );
+    expect(queryByRole('button', { name: dayLabel(maxDate) })).toBeNull();
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(maxDate) }).closest('td')).toHaveFocus());
+    expect(getByRole('button', { name: 'Go to today' })).toBeDisabled();
+  });
+
+  describe('focus ownership', () => {
     beforeEach(() => jest.useFakeTimers());
     afterEach(() => {
       act(() => jest.runOnlyPendingTimers());
       jest.useRealTimers();
+    });
+
+    it.each([
+      { key: 'PageUp', focusTarget: 'day' },
+      { key: 'PageDown', focusTarget: 'day' },
+      { key: 'PageUp', focusTarget: 'navigation' },
+      { key: 'PageDown', focusTarget: 'navigation' },
+    ])(
+      'cancels queued $key focus from $focusTarget when focus leaves Calendar before the next frame',
+      ({ key, focusTarget }) => {
+        const { getByRole, getByTitle } = render(
+          <>
+            <Calendar defaultValue={today} today={today} />
+            <button type="button">Outside action</button>
+          </>,
+        );
+        const target =
+          focusTarget === 'day'
+            ? getByRole('button', { name: dayLabel(today) }).closest('td')!
+            : getByTitle('Next month October');
+        target.focus();
+        fireEvent.keyDown(target, { key });
+        const outside = getByRole('button', { name: 'Outside action' });
+        outside.focus();
+        expect(outside).toHaveFocus();
+
+        act(() => jest.advanceTimersToNextFrame());
+
+        expect(outside).toHaveFocus();
+      },
+    );
+
+    it('does not reclaim focus moved outside by a navigation callback before focus is queued', () => {
+      const outsideRef = React.createRef<HTMLButtonElement>();
+      const { getByRole } = render(
+        <>
+          <Calendar defaultValue={today} today={today} onDisplayedDateChange={() => outsideRef.current?.focus()} />
+          <button ref={outsideRef} type="button">
+            Outside action
+          </button>
+        </>,
+      );
+      const day = getByRole('button', { name: dayLabel(today) }).closest('td')!;
+      day.focus();
+      fireEvent.keyDown(day, { key: 'PageDown' });
+      expect(outsideRef.current).toHaveFocus();
+
+      act(() => jest.advanceTimersToNextFrame());
+
+      expect(outsideRef.current).toHaveFocus();
     });
 
     it.each(['day', 'month'] as const)('does not reclaim outside focus when controlled view hides %s', view => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -196,6 +197,26 @@ describe('Calendar', () => {
       cy.get(goToToday).should('be.disabled');
     });
 
+    it('reveals and focuses today in a five-week grid when the month needs six rows', () => {
+      const onSelectDate = cy.stub().as('onSelectDate');
+      mountFluent(
+        <Calendar
+          today={new Date(2020, 7, 31)}
+          defaultValue={null}
+          defaultDisplayedDate={new Date(2020, 7, 1)}
+          monthPicker={null}
+          dayPicker={{ weeksToShow: 5 }}
+          onSelectDate={onSelectDate}
+        />,
+      );
+      cy.get(day('August 31, 2020')).should('not.exist');
+      cy.get(goToToday).should('be.enabled').click();
+      cy.get(day('August 31, 2020')).should('be.visible').and('be.focused');
+      cy.get('tbody > tr:not([aria-hidden="true"])').should('have.length', 6);
+      cy.get(goToToday).should('be.disabled');
+      cy.get('@onSelectDate').should('not.have.been.called');
+    });
+
     it('navigates back to today and moves focus to it', () => {
       mountFluent(<Calendar today={today} value={today} />);
 
@@ -295,6 +316,31 @@ describe('Calendar', () => {
   });
 
   describe('custom slot content and focus ownership', () => {
+    it('does not reclaim outside focus from a queued paging request', () => {
+      mountFluent(
+        <>
+          <Calendar today={today} defaultValue={today} />
+          <button type="button" data-testid="outside-action">
+            Outside action
+          </button>
+        </>,
+      );
+      cy.get(day('September 18, 2020'))
+        .focus()
+        .then(cell => {
+          flushSync(() => cell[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'PageDown', bubbles: true })));
+          cell[0].ownerDocument.querySelector<HTMLButtonElement>('[data-testid="outside-action"]')!.focus();
+        });
+      cy.get(heading).should('have.text', 'October 2020');
+      cy.window().then(
+        win =>
+          new Cypress.Promise<void>(resolve => {
+            win.requestAnimationFrame(() => resolve());
+          }),
+      );
+      cy.contains('button', 'Outside action').should('be.focused');
+    });
+
     it('preserves input editing and native custom-button Enter activation', () => {
       const onClick = cy.stub().as('onCustomClick');
       mountFluent(

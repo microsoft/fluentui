@@ -122,7 +122,7 @@ The reported range is clipped to `minDate` and `maxDate` and excludes `restricte
 ### Calendar display
 
 - `showWeekNumbers` adds a localized row header for each week.
-- `dayPicker.weeksToShow` fixes the number of visible week rows; otherwise the picker renders the number required by the navigated month.
+- `dayPicker.weeksToShow` fixes the number of visible week rows; otherwise the picker renders the number required by the navigated month. A five-week grid advances its start by one week when the navigated date would otherwise fall in a sixth row.
 - `dayPicker.lightenDaysOutsideNavigatedMonth` visually deemphasizes dates outside the navigated month.
 - `dayPicker.getMarkedDays` marks dates without selecting or disabling them.
 - `dayPicker.getDayCellProps(date)` customizes each visible day cell's native props, ref, and `button`, `dayLabel`, and `marker` slots. Click and keyboard handlers run before the built-in action; `preventDefault()` cancels that action. Transition rows do not invoke the customization callback.
@@ -323,7 +323,7 @@ There is no compatibility layer. Map selected dates and callbacks to `value` and
 - **Picker view:** controlled by `view` when supplied; otherwise initialized from `defaultView` and owned internally while switching overlay views.
 - **Year picker visibility:** owned by `CalendarMonth`; selecting a year returns to the month grid.
 - **Unavailable dates:** dates outside `minDate`/`maxDate` and dates in `restrictedDates` cannot be selected. Month navigation is bounded but is not blocked by a restricted anchor date. Disabled dates remain unavailable even when `allFocusable` enables focus.
-- **Go to today:** enabled when a picker is navigated away from today's month/year. A shortened day grid (`weeksToShow` from 1 to 4) also enables the action when its navigated day differs from today, even within the same month. It navigates and focuses today but does not commit a selection. `allFocusable` preserves focusability when the action is unavailable, without enabling activation.
+- **Go to today:** enabled when a picker is navigated away from today's month/year. A shortened day grid (`weeksToShow` from 1 to 5) also enables the action when its navigated day differs from today, even within the same month. It reveals and focuses today but does not commit a selection. If today is outside `minDate`/`maxDate`, navigation is clamped to the nearest boundary. `allFocusable` preserves focusability when the action is unavailable, without enabling activation.
 
 ### Pointer and touch
 
@@ -377,7 +377,7 @@ Marked dates include the marked state in their accessible label. Visual range ho
 - Each grid uses roving focus so arrow navigation does not add every cell to the tab sequence.
 - Switching between overlaid day and month pickers moves focus to the navigated cell in the destination picker.
 - When responsive `auto` layout hides the picker that contains focus, focus moves to the navigated cell in the remaining picker.
-- After focus leaves Calendar, responsive or externally controlled view changes do not move it back inside.
+- After focus leaves Calendar, responsive or externally controlled view changes do not move it back inside. Pending animation-frame focus requests are canceled when focus leaves or Calendar unmounts.
 - Opening the year picker moves focus to its navigated year; selecting a year returns focus to the corresponding month.
 - Calendar's month/year paging shortcuts restore focus to the navigated cell in the visible picker.
 - Go to today moves focus to today's day cell but does not select it.

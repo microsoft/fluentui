@@ -6,6 +6,7 @@ import {
   getIntrinsicElementProps,
   isHTMLElement,
   slot,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useMergedRefs,
@@ -17,7 +18,6 @@ import {
   addYears,
   compareDatePart,
   calendarFormatters as defaultCalendarFormatters,
-  focusAsync,
   isRestrictedDate,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
@@ -253,17 +253,46 @@ export const useCalendarBase_unstable = (
 
   const dayPickerRef = React.useRef<CalendarDayHandle>(null);
   const monthPickerRef = React.useRef<CalendarMonthHandle>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const mergedRootRef = useMergedRefs(ref, rootRef);
   const focusedPicker = React.useRef<'day' | 'month' | undefined>(undefined);
+  const isFocusWithin = React.useRef(false);
   const focusOnUpdate = React.useRef(false);
+  const [requestAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
   const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
+
+  const cancelFocus = () => {
+    focusedPicker.current = undefined;
+    isFocusWithin.current = false;
+    focusOnUpdate.current = false;
+    cancelAnimationFrame();
+  };
+
+  const onDocumentFocus = useEventCallback((ev: FocusEvent) => {
+    const root = rootRef.current;
+    if (root && !ev.composedPath().includes(root)) {
+      cancelFocus();
+    }
+  });
+
+  // Removing a focused cell may not emit blur, so also observe the next focus target.
+  React.useEffect(() => {
+    targetDocument?.addEventListener('focusin', onDocumentFocus, true);
+    return () => targetDocument?.removeEventListener('focusin', onDocumentFocus, true);
+  }, [onDocumentFocus, targetDocument]);
 
   const focus = useEventCallback(() => {
-    if (isDayPickerVisible && dayPickerRef.current) {
-      focusAsync(dayPickerRef.current, win);
-    } else if (isMonthPickerVisible && monthPickerRef.current) {
-      focusAsync(monthPickerRef.current, win);
-    }
+    requestAnimationFrame(() => {
+      if (targetDocument?.activeElement !== targetDocument?.body && !isFocusWithin.current) {
+        return;
+      }
+
+      if (isDayPickerVisible && dayPickerRef.current) {
+        dayPickerRef.current.focus();
+      } else if (isMonthPickerVisible && monthPickerRef.current) {
+        monthPickerRef.current.focus();
+      }
+    });
   });
 
   React.useEffect(() => {
@@ -366,6 +395,7 @@ export const useCalendarBase_unstable = (
   });
 
   const onRootFocusCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
+    isFocusWithin.current = true;
     props.onFocusCapture?.(ev);
 
     const target = ev.target;
@@ -381,8 +411,7 @@ export const useCalendarBase_unstable = (
   const onRootBlurCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
     props.onBlurCapture?.(ev);
     if (!ev.currentTarget.contains(ev.relatedTarget)) {
-      focusedPicker.current = undefined;
-      focusOnUpdate.current = false;
+      cancelFocus();
     }
   });
 
@@ -417,7 +446,7 @@ export const useCalendarBase_unstable = (
     navigatedDate.getFullYear() !== resolvedToday.getFullYear() ||
     navigatedDate.getMonth() !== resolvedToday.getMonth() ||
     (dayPicker?.weeksToShow !== undefined &&
-      dayPicker.weeksToShow <= 4 &&
+      dayPicker.weeksToShow <= 5 &&
       compareDatePart(dayPicker.navigatedDate ?? navigatedDate, resolvedToday) !== 0);
 
   return {
@@ -454,7 +483,7 @@ export const useCalendarBase_unstable = (
       getIntrinsicElementProps(
         'div',
         {
-          ref,
+          ref: mergedRootRef,
           ...props,
           onBlurCapture: onRootBlurCapture,
           onFocusCapture: onRootFocusCapture,

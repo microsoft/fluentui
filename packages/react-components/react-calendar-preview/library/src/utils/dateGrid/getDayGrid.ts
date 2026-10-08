@@ -1,4 +1,12 @@
-import { areDatesEqual, createDate, getDateRange, getStartDateOfWeek, isDateInRange } from '../dateMath';
+import {
+  addDays,
+  areDatesEqual,
+  compareDatePart,
+  createDate,
+  getDateRange,
+  getStartDateOfWeek,
+  isDateInRange,
+} from '../dateMath';
 import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from '../constants';
 import type { DayOfWeek } from '../constants';
 import type { Day, DayGridOptions } from './dateGrid.types';
@@ -55,6 +63,10 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   const weeks: Day[][] = [];
 
   date = getStartDateOfWeek(date, firstDayOfWeek);
+
+  if (weeksToShow === 5 && compareDatePart(navigatedDate, addDays(date, weeksToShow * DAYS_IN_WEEK)) >= 0) {
+    date = addDays(date, DAYS_IN_WEEK);
+  }
 
   // add the transition week as last week of previous range
   date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
