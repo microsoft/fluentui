@@ -214,18 +214,47 @@ export class BaseField extends FASTElement {
    *
    * @internal
    */
-  private setLabelProperties() {
-    if (this.$fastController.isConnected) {
-      this.input.id = this.input.id || uniqueId('input');
+  private async setLabelProperties() {
+    const input = await this.getLabelableInput();
 
-      this.labelSlot?.forEach(label => {
-        if (label instanceof HTMLLabelElement) {
-          label.htmlFor = label.htmlFor || this.input.id;
-          label.id = label.id || `${this.input.id}--label`;
-          this.input.setAttribute('aria-labelledby', label.id);
-        }
-      });
+    if (!input) {
+      return;
     }
+
+    input.id ||= uniqueId('input');
+
+    this.labelSlot?.forEach(label => {
+      if (label instanceof HTMLLabelElement) {
+        label.htmlFor ||= input.id;
+        label.id ||= `${input.id}--label`;
+        input.setAttribute('aria-labelledby', label.id);
+      }
+    });
+  }
+
+  private getLabelableInput(): Promise<HTMLElement | null> {
+    return new Promise(resolve => {
+      if (!this.input) {
+        return resolve(null);
+      }
+
+      if (this.input.constructor.elementIdentity !== 'dropdown') {
+        return resolve(this.input);
+      }
+
+      if (this.input.control) {
+        return resolve(this.input.control);
+      }
+
+      new MutationObserver((_, observer) => {
+        if (this.input.control) {
+          resolve(this.input.control);
+          observer.disconnect();
+        }
+      }).observe(this.input, {
+        childList: true,
+      });
+    });
   }
 
   /**
