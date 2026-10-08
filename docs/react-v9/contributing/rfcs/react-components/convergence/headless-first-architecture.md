@@ -235,7 +235,12 @@ provide.
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
   already has.
-- Add the styled-side lint rule that forbids importing `use<Name>` from a headless subpath.
+- Add the styled-side lint rule that forbids importing `use<Name>` from a headless subpath. Each subpath exports two
+  hooks for the same component, `use<Name>Base` without `data-*` and `use<Name>` with it, and TypeScript accepts
+  either where the base state is expected, so a v9 hook calling `use<Name>` by mistake would put the headless
+  `data-*` attributes into v9 DOM and SSR output without a compile error. The rule derives the forbidden name from
+  the subpath (`button` forbids `useButton`, allows `useButtonBase`, `useButtonContext` and `renderButton`) and
+  applies to v9 library projects only.
 - Done when the rules run in CI (warn).
 - Consumer sees: nothing.
 
