@@ -201,6 +201,12 @@ provide.
   `moduleResolution: node`, which ignores `exports`, so `@fluentui/react-headless-components-preview/button` has no
   types from a v9 package today. Headless gets a `typesVersions` block with one entry per subpath, emitted by
   `export-maps-sync` so it never drifts from the export map. Must be in place before the first move in step 2.
+- Settle the headless version range before the first move that carries a shared context (Field, round 3 of step 2).
+  v9 packages depend on headless with a caret on `0.x`, which only allows patch bumps, so two v9 packages released
+  against different headless minors install two headless copies, and with them two instances of every moved context:
+  Field in one copy, Checkbox reading the other, and the aria wiring between them silently gone. Either headless
+  reaches `1.0` first, so `^1.x` ranges dedupe the way `^9.x` does for v9, or v9 packages depend on headless with
+  `>=0.<minor>.0 <1.0.0` and every headless minor in the migration window keeps the moved surface backward compatible.
 - Extend `base-hook-no-forbidden-runtime` through `forbiddenRuntimes` from `tabster` to `@griffel/*`, `react-theme`
   runtime, `react-icons`, `react-motion*`, `react-portal`.
 - Add `@fluentui/react-motion` to the headless `bundle-isolation.config.json` `forbiddenPackages`, as the suite config
@@ -312,7 +318,9 @@ export {
 
 - Done when headless has no `@fluentui/react-<component>` dependency at all and every v9 package with a headless
   counterpart calls `use<Name>Base` from headless.
-- Consumer sees: nothing. DOM output is unchanged because the styled layer calls `use<Name>Base`.
+- Consumer sees: nothing. DOM output is unchanged because the styled layer calls `use<Name>Base`. Bundle size is
+  unchanged because the same code is imported from a different package; the Button proof of concept measured
+  34.065 kB before and 33.962 kB after.
 
 ### Step 3: Lock in
 
@@ -342,7 +350,9 @@ export {
 
 - A multi-quarter migration that touches every v9 package except Popover, Tooltip and Dialog. Mitigated by the
   per-component unit of work and by every step being shippable on its own.
-- Every v9 component package depends on a `0.x` preview package.
+- Every v9 component package depends on a `0.x` preview package. Until the range question in step 0 is settled, an
+  app that upgrades v9 packages one at a time can end up with two headless copies, which duplicates base hooks and
+  splits contexts.
 - Two hooks per component in headless (`use<Name>Base` and `use<Name>`) so that the `data-*` contract stays out of v9.
 - Popover, Tooltip, Dialog and the Menu root keep two implementations. Open state, dismissal, focus restore and
   keyboard handling for them are still tested twice and can still drift.
