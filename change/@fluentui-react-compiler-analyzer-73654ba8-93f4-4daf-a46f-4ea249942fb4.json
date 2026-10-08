@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Polish the human-facing CLI reference, publish focused documentation guides, and organize experimental-to-0.0.1 migration notes by version and date.",
-  "packageName": "@fluentui/react-compiler-analyzer",
-  "email": "martinhochel@microsoft.com"
-}

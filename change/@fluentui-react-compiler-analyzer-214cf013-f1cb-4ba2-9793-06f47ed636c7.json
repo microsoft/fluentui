@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-compiler-analyzer): add guided initialization and repository Agent Skill",
-  "packageName": "@fluentui/react-compiler-analyzer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

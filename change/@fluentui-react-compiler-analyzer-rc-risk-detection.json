@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add a schema-validated rca.config.json for shared analyzer defaults and opt-in 'Compiled but Risky' detection, including nonreactive store reads, hidden selector hooks, cross-file wrapper resolution, and safe annotation modes. Explicit CLI options override config defaults.",
-  "packageName": "@fluentui/react-compiler-analyzer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
