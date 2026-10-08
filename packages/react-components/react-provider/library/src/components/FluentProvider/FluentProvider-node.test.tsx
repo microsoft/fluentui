@@ -77,23 +77,45 @@ describe('FluentProvider (node)', () => {
     `);
   });
 
-  it.each(['"unfinished', 'red /* unfinished', 'calc(1px', 'red\\', 'red;}</style><script>bad</script>'])(
-    'contains malformed theme values in server-rendered style output for %j',
-    value => {
-      const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-      try {
-        const html = renderToStaticMarkup(
-          <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
-        );
+  it.each([
+    '"unfinished',
+    'red /* unfinished',
+    'calc(1px',
+    'red\\',
+    'red;}</style><script>bad</script>',
+    '<url(/*)',
+    '<url(a{)',
+    '>url(a{)',
+    ';url(a{)',
+    'url(image.png)',
+    'calc(var(--custom-size) * 2)',
+  ])('omits unsupported theme values in server-rendered style output for %j', value => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const html = renderToStaticMarkup(
+        <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
+      );
 
-        expect(html.match(/<style\b/g)).toHaveLength(1);
-        expect(html.match(/<\/style>/g)).toHaveLength(1);
-        expect(html).not.toContain('<script>');
-        expect(html).toContain('--colorBrandBackground: blue;');
-        expect(logWarnSpy).toHaveBeenCalled();
-      } finally {
-        logWarnSpy.mockRestore();
-      }
-    },
-  );
+      expect(html.match(/<style\b/g)).toHaveLength(1);
+      expect(html.match(/<\/style>/g)).toHaveLength(1);
+      expect(html).not.toContain('<script>');
+      expect(html).not.toContain('--fontFamilyBase:');
+      expect(html).toContain('--colorBrandBackground: blue;');
+      expect(logWarnSpy).toHaveBeenCalled();
+    } finally {
+      logWarnSpy.mockRestore();
+    }
+  });
+
+  it('escapes markup inside supported quoted theme values during SSR', () => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={{ fontFamilyBase: '"</style><script>text</script>"', colorBrandBackground: 'blue' }} />,
+    );
+
+    expect(html.match(/<style\b/g)).toHaveLength(1);
+    expect(html.match(/<\/style>/g)).toHaveLength(1);
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('--fontFamilyBase: "\\3C /style\\3E \\3C script\\3E text\\3C /script\\3E ";');
+    expect(html).toContain('--colorBrandBackground: blue;');
+  });
 });

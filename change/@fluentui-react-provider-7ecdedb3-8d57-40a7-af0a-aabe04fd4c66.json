@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: contain malformed theme tokens while preserving valid CSS syntax",
+  "comment": "fix: reject unsupported theme syntax instead of parsing or repairing CSS",
   "packageName": "@fluentui/react-provider",
   "email": "paliprandi@microsoft.com",
   "dependentChangeType": "patch"
