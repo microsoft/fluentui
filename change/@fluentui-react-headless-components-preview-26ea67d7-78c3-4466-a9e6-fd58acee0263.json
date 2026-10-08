@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: expose CompoundButton icon position as a data attribute when an icon is present",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "198982749+Copilot@users.noreply.github.com"
+}

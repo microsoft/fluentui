@@ -23,6 +23,11 @@ export type CompoundButtonState = CompoundButtonBaseState & {
     'data-icon-only'?: string;
 
     /**
+     * Data attribute reflecting the icon position when an icon slot is present.
+     */
+    'data-icon-position'?: string;
+
+    /**
      * Data attribute set when secondary content is rendered.
      */
     'data-has-secondary-content'?: string;
