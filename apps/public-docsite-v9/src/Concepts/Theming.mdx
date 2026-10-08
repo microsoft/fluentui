@@ -112,11 +112,13 @@ export const customDarkTheme = createDarkTheme(customBrandRamp);
 
 A theme is a flat object containing `{ [token name]: CSS value }` pairs. You can copy the object and overwrite any tokens you wish.
 
-Theme serialization accepts a conservative CSS subset covering all built-in themes: simple literals, complete unescaped
-quoted strings, and flat theme functions such as `rgba(...)`, `cubic-bezier(...)`, and `var(...)`. Malformed or unsupported
-entries are omitted with a development warning, not repaired. Comments, CSS escapes, URLs, and nested functions are
-unsupported even when valid CSS. For example, `var(--custom-color)` is supported, but `var(--custom-color, rgb(0 0 0))` is
-omitted. Validate dynamic theme data against an application-specific schema before constructing a theme.
+Theme serialization uses blocklists to omit unsafe token names and values, without a function-name or CSS-format
+allowlist. All built-in themes are preserved. Complete unescaped font-family strings and flat functions such as
+`rgba(...)`, `linear-gradient(...)`, and `url(image.png)` are retained. Blocked symbols, comments, CSS escapes, unmatched
+quotes/parentheses, nested parentheses, and quoted function arguments cause an entry to be omitted with a development
+warning, not repaired. Blocked symbols are rejected even inside quoted strings. For example, `var(--custom-color)` is
+retained, but `var(--custom-color, rgb(0 0 0))` is omitted. This is containment, not CSS-property or URL-policy validation:
+validate dynamic theme data against an application-specific schema before constructing a theme.
 
 ```tsx
 import { webLightTheme, Theme } from '@fluentui/react-components';

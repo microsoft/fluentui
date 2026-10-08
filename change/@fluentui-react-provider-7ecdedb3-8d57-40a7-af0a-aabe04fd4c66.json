@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: reject unsupported theme syntax with an unambiguous allowlist",
+  "comment": "fix: block unsafe theme token syntax without a value-format allowlist",
   "packageName": "@fluentui/react-provider",
   "email": "paliprandi@microsoft.com",
   "dependentChangeType": "patch"

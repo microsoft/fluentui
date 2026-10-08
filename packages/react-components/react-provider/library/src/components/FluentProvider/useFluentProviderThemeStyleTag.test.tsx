@@ -100,8 +100,10 @@ describe('useFluentProviderThemeStyleTag', () => {
     '<url(a{)',
     '>url(a{)',
     ';url(a{)',
-    'url(image.png)',
+    '"</style><script>text</script>"',
     'calc(var(--custom-size) * 2)',
+    'url(a"b)c"d)',
+    'custom((nested))',
   ])('omits unsupported values and keeps later theme declarations independent of %j', value => {
     const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     try {
@@ -120,6 +122,34 @@ describe('useFluentProviderThemeStyleTag', () => {
       expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
       expect(rule.style.getPropertyValue('color')).toBe('');
       expect(logWarnSpy).toHaveBeenCalled();
+      unmount();
+    } finally {
+      logWarnSpy.mockRestore();
+    }
+  });
+
+  it.each([
+    "'Segoe UI Web (West European)', sans-serif",
+    'linear-gradient(red, blue)',
+    'attr(data-color)',
+    'unsupportedrgb(0,0,0)',
+    'custom-function(anything / else: value)',
+    'url(images/icon.svg)',
+  ])('preserves values without a function-name allowlist in the stylesheet for %j', value => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const theme = { ...defaultTheme, fontFamilyBase: value, colorBrandBackground: 'blue' };
+      const { result, unmount } = renderHook(() =>
+        useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
+      );
+      const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
+      const sheet = tag.sheet as CSSStyleSheet;
+      const rule = sheet.cssRules[0] as CSSStyleRule;
+
+      expect(sheet.cssRules).toHaveLength(1);
+      expect(rule.style.getPropertyValue('--fontFamilyBase')).toBe(value);
+      expect(rule.style.getPropertyValue('--colorBrandBackground')).toBe('blue');
+      expect(logWarnSpy).not.toHaveBeenCalled();
       unmount();
     } finally {
       logWarnSpy.mockRestore();

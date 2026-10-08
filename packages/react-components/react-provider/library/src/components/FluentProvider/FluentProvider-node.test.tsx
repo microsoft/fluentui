@@ -87,8 +87,10 @@ describe('FluentProvider (node)', () => {
     '<url(a{)',
     '>url(a{)',
     ';url(a{)',
-    'url(image.png)',
+    '"</style><script>text</script>"',
     'calc(var(--custom-size) * 2)',
+    'url(a"b)c"d)',
+    'custom((nested))',
   ])('omits unsupported theme values in server-rendered style output for %j', value => {
     const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     try {
@@ -107,15 +109,28 @@ describe('FluentProvider (node)', () => {
     }
   });
 
-  it('escapes markup inside supported quoted theme values during SSR', () => {
-    const html = renderToStaticMarkup(
-      <FluentProvider theme={{ fontFamilyBase: '"</style><script>text</script>"', colorBrandBackground: 'blue' }} />,
-    );
+  it.each([
+    "'Segoe UI Web (West European)', sans-serif",
+    'linear-gradient(red, blue)',
+    'attr(data-color)',
+    'unsupportedrgb(0,0,0)',
+    'custom-function(anything / else: value)',
+    'url(images/icon.svg)',
+  ])('preserves values without a function-name allowlist during SSR for %j', value => {
+    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const html = renderToStaticMarkup(
+        <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
+      );
 
-    expect(html.match(/<style\b/g)).toHaveLength(1);
-    expect(html.match(/<\/style>/g)).toHaveLength(1);
-    expect(html).not.toContain('<script>');
-    expect(html).toContain('--fontFamilyBase: "\\3C /style\\3E \\3C script\\3E text\\3C /script\\3E ";');
-    expect(html).toContain('--colorBrandBackground: blue;');
+      expect(html.match(/<style\b/g)).toHaveLength(1);
+      expect(html.match(/<\/style>/g)).toHaveLength(1);
+      expect(html).not.toContain('<script>');
+      expect(html).toContain(`--fontFamilyBase: ${value};`);
+      expect(html).toContain('--colorBrandBackground: blue;');
+      expect(logWarnSpy).not.toHaveBeenCalled();
+    } finally {
+      logWarnSpy.mockRestore();
+    }
   });
 });

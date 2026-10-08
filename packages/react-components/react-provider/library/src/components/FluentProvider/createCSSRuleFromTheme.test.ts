@@ -48,14 +48,20 @@ describe('createCSSRuleFromTheme', () => {
     expect(logWarnSpy).toHaveBeenCalled();
   });
 
-  it('escapes markup and declaration delimiters inside supported strings', () => {
+  it.each([
+    '"</style><script>text</script>;{}"',
+    '"semicolon; text"',
+    "'curly {braces}'",
+    '"square [brackets]"',
+    '"comment /* text"',
+    '"priority!marker"',
+  ])('applies the symbol blocklist even inside complete strings in %j', value => {
     const theme: PartialTheme = {
-      fontFamilyBase: '"</style><script>text</script>;{}"',
+      fontFamilyBase: value,
+      colorBrandBackground: 'blue',
     };
-    expect(createCSSRuleFromTheme('.selector', theme)).toBe(
-      '.selector { --fontFamilyBase: "\\3C /style\\3E \\3C script\\3E text\\3C /script\\3E \\3B \\7B \\7D ";  }',
-    );
-    expect(logWarnSpy).not.toHaveBeenCalled();
+    expect(createCSSRuleFromTheme('.selector', theme)).toBe('.selector { --colorBrandBackground: blue;  }');
+    expect(logWarnSpy).toHaveBeenCalled();
   });
 
   it('prevents XSS by replacing angle brackets in the selector', () => {
@@ -120,14 +126,29 @@ describe('createCSSRuleFromTheme', () => {
     'unset',
     'revert-layer',
     'calc(\n  1px + 2px\n)',
-  ])('preserves supported CSS in %j', value => {
+    'linear-gradient(red, blue)',
+    'attr(data-color)',
+    'custom-function(anything / else: value)',
+    'unsupportedrgb(0,0,0)',
+    'evillab(0 0 0)',
+    'urlrgb(0 0 0)',
+    'customvar(--custom-color)',
+    'customcolor-mix(in srgb, red, blue)',
+    'url(image.png)',
+    'url(images/icon.svg)',
+    'url( image.png )',
+    'url( )',
+    'url(data:image/svg+xml,%3Csvg%3E)',
+    '@custom / : = ? & % $ ^ | ~',
+    '"literal (nested(parentheses)) and \'quotes\'"',
+    '\'literal "quotes" and (parentheses)\'',
+  ])('preserves values not matched by the blocklists in %j', value => {
     const theme: PartialTheme & { customToken: string } = { customToken: value };
     expect(createCSSRuleFromTheme('.selector', theme)).toBe(`.selector { --customToken: ${value};  }`);
     expect(logWarnSpy).not.toHaveBeenCalled();
   });
 
   it.each([
-    'url(image.png)',
     'url("image.png")',
     'url(data:image/svg+xml;charset=utf-8,%3Csvg%3E;%3C/svg%3E)',
     'clamp(1rem, calc(var(--scale, 1) * 2vw), 3rem)',
@@ -135,13 +156,6 @@ describe('createCSSRuleFromTheme', () => {
     'custom({ value; [other] })',
     'calc(1px /* ; } */ + 2px)',
     'red /* complete comment */',
-    'linear-gradient(red, blue)',
-    'attr(data-color)',
-    'unsupportedrgb(0,0,0)',
-    'evillab(0 0 0)',
-    'urlrgb(0 0 0)',
-    'customvar(--custom-color)',
-    'customcolor-mix(in srgb, red, blue)',
     'red !important',
     String.raw`red\;blue`,
     String.raw`"escaped \"quote\""`,
@@ -169,8 +183,6 @@ describe('createCSSRuleFromTheme', () => {
     String.raw`#\75rl(/* ) */; x)`,
     String.raw`f\6f o((x); y)`,
     String.raw`url("image" (x); fallback)`,
-    'url( image.png )',
-    'url( )',
     'url(a{)',
     'url(/*)',
     String.raw`\7D `,
@@ -192,7 +204,7 @@ describe('createCSSRuleFromTheme', () => {
     'url(resource',
     'url(resource\\',
     'url(\\x")',
-    'url(image.png fallback)',
+    'url(image.png fallback',
     'url(image(.png)',
     'url(image\u000B.png)',
     'url(resource/*);token/**/)',
@@ -214,11 +226,22 @@ describe('createCSSRuleFromTheme', () => {
     '}url(a[)',
     'red;url(a{)',
     String.raw`;\75rl(a{)`,
+    'custom("closed string")',
+    'url(a"b)c"d)',
+    'custom((nested))',
+    '(unfinished',
+    'unexpected)',
+    '"',
+    "'",
+    '"font\tfamily"',
+    '"first\n"second"',
+    "'first\r'second'",
   ])('omits malformed or unsupported CSS in %j without changing later tokens', value => {
     const theme = { customToken: value, colorBrandBackground: 'blue' };
     expect(createCSSRuleFromTheme('.selector', theme)).toBe('.selector { --colorBrandBackground: blue;  }');
-    expect(logWarnSpy).toHaveBeenCalledWith(expect.stringContaining('"customToken"'));
-    expect(logWarnSpy.mock.calls[0][0]).not.toContain(value);
+    expect(logWarnSpy).toHaveBeenCalledWith(
+      '@fluentui/react-provider: Ignoring an unsupported CSS custom property value for theme token "customToken".',
+    );
   });
 
   it.each([
@@ -248,6 +271,14 @@ describe('createCSSRuleFromTheme', () => {
   it.each(['custom-token_1', 'custom\u00DCnicode', '1custom'])('preserves supported token name %j', tokenName => {
     expect(createCSSRuleFromTheme('.selector', { [tokenName]: 'red' })).toBe(`.selector { --${tokenName}: red;  }`);
     expect(logWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('blocks ASCII punctuation and controls in names without blocking identifier characters', () => {
+    for (let code = 0; code < 128; code++) {
+      const tokenName = String.fromCharCode(code);
+      const result = createCSSRuleFromTheme('.selector', { [tokenName]: 'red' });
+      expect(result).toBe(/[-_a-z0-9]/i.test(tokenName) ? `.selector { --${tokenName}: red;  }` : '.selector {  }');
+    }
   });
 
   it.each([
@@ -313,8 +344,13 @@ describe('createCSSRuleFromTheme', () => {
     expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: '"'.repeat(100_000) + '\\' })).toBe('.selector {  }');
   });
 
-  it.each(['oklab', 'oklch'])('omits late failures after %s calls without exponential backtracking', functionName => {
-    const value = `${functionName}(0 0 0)`.repeat(64) + '!';
+  it.each([
+    { label: 'oklab calls', value: 'oklab(0 0 0)'.repeat(64) + '(' },
+    { label: 'oklch calls', value: 'oklch(0 0 0)'.repeat(64) + '"' },
+    { label: 'long literals', value: 'a'.repeat(100_000) + '(' },
+    { label: 'unfinished strings', value: '"unfinished\n'.repeat(10_000) },
+    { label: 'nested parentheses', value: '('.repeat(100_000) + ')'.repeat(100_000) },
+  ])('blocks late or repeated syntax failures after $label without exponential backtracking', ({ value }) => {
     const { code } = transformSync(readFileSync(join(__dirname, 'createCSSRuleFromTheme.ts'), 'utf8'), {
       swcrc: false,
       configFile: false,

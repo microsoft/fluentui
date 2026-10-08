@@ -1,27 +1,19 @@
 import type { PartialTheme } from '@fluentui/react-theme';
 
-const TOKEN_NAME_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]+(?![\s\S])/i;
-// Match complete words so "oklab(...)" cannot also match as the literal "ok" followed by "lab(...)".
-const LITERAL_PATTERN = /[-_a-z0-9\u0080-\uFFFF]+(?![-_a-z0-9\u0080-\uFFFF(])|[.#%,+ \t\n\r\f]/;
-const STRING_PATTERN = /"[^"\\\u0000-\u001F\u007F]*"|'[^'\\\u0000-\u001F\u007F]*'/;
-const FUNCTION_PATTERN =
-  /(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color(?:-mix)?|cubic-bezier|steps|calc|clamp|min|max|var|env)\((?:[-_a-z0-9\u0080-\uFFFF.#%,+* \t\n\r\f]|\/(?!\*))*\)/;
-// A conservative subset, not a CSS parser: strings have no escapes and functions cannot nest or contain comments.
-const TOKEN_VALUE_PATTERN = new RegExp(
-  `^(?:${LITERAL_PATTERN.source}|${STRING_PATTERN.source}|${FUNCTION_PATTERN.source})*(?![\\s\\S])`,
-  'i',
-);
+const BLOCKLIST_NAME_PATTERN = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~\u0000-\u0020\u007F]/;
+const BLOCKLIST_VALUE_PATTERN = /[!<>{};[\]\\\u0000-\u0008\u000B\u000E-\u001F\u007F]|\/\*/;
+const CLOSED_PARTS_PATTERN = /"[^"\u0000-\u001F\u007F]*"|'[^'\u0000-\u001F\u007F]*'|\([^"'()]*\)/g;
+const BLOCKLIST_UNMATCHED_DELIMITERS_PATTERN = /["'()]/;
 
 function escapeCharacter(character: string): string {
   return `\\${character.charCodeAt(0).toString(16).toUpperCase()} `;
 }
 
-function escapeForStyleTag(value: string, isSelector = false): string {
-  const characters = isSelector ? '<{}' : '<>{};';
+function escapeSelector(value: string): string {
   // Consume whole backslash runs so escaping preserves their parity and does not retry overlapping suffixes.
-  return value.replace(/\\+[<>{};]?|[<>{};]/g, match => {
+  return value.replace(/\\+[<{}]?|[<{}]/g, match => {
     const character = match[match.length - 1];
-    if (!characters.includes(character)) {
+    if (!'<{}'.includes(character)) {
       return match;
     }
 
@@ -41,28 +33,35 @@ function warnThemeToken(name: string, reason: string): void {
  * Creates a CSS rule from a theme object.
  *
  * Useful for scenarios when you want to apply theming statically to a top level elements like `body`.
- * Theme values must use supported literals, unescaped strings, or non-nested theme functions.
- * Unsupported entries are omitted rather than repaired. Validate dynamic data against an application-specific schema.
+ * Values with blocked symbols or unsupported quotes/parentheses are omitted, not repaired.
+ * No function-name or value-format allowlist is used. Validate dynamic data against an application-specific schema.
  */
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string {
-  const escapedSelector = escapeForStyleTag(selector, true);
+  const escapedSelector = escapeSelector(selector);
 
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
       const tokenValue: unknown = theme[cssVar];
-      if (!TOKEN_NAME_PATTERN.test(cssVar)) {
+      if (!cssVar || BLOCKLIST_NAME_PATTERN.test(cssVar)) {
         warnThemeToken(cssVar, 'Ignoring an unsupported CSS custom property name');
         return cssVarRule;
       }
+      if (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) {
+        warnThemeToken(cssVar, 'Ignoring an unsupported CSS custom property value');
+        return cssVarRule;
+      }
+
+      const value = String(tokenValue);
+      // Ignore complete strings and flat parentheses only while looking for leftover syntax; never rewrite the value.
       if (
-        (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) ||
-        !TOKEN_VALUE_PATTERN.test(String(tokenValue))
+        BLOCKLIST_VALUE_PATTERN.test(value) ||
+        BLOCKLIST_UNMATCHED_DELIMITERS_PATTERN.test(value.replace(CLOSED_PARTS_PATTERN, ''))
       ) {
         warnThemeToken(cssVar, 'Ignoring an unsupported CSS custom property value');
         return cssVarRule;
       }
 
-      return `${cssVarRule}--${cssVar}: ${escapeForStyleTag(String(tokenValue))}; `;
+      return `${cssVarRule}--${cssVar}: ${value}; `;
     }, '');
 
     return `${escapedSelector} { ${cssVarsAsString} }`;
