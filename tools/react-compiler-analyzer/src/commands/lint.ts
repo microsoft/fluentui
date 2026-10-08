@@ -2,6 +2,7 @@ import type { CommandModule } from 'yargs';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFilesStreaming } from '../compiler';
+import { normalizeCompilerEvents } from '../compiler-events';
 import { discoverFilesWithDirectives } from '../discovery';
 import { applyFixes } from '../fixer';
 import { compareText } from '../ordering';
@@ -32,6 +33,22 @@ async function analyzeDirectiveFiles(
     async compiled => {
       if (compiled.error) {
         unparseable.push({ file: compiled.filePath, error: compiled.error.message });
+        return;
+      }
+      const { unattributedErrors } = normalizeCompilerEvents(
+        compiled.events,
+        compiled.source,
+        compiled.sourceFunctions,
+        {
+          includeFullDiagnostics: verbose,
+          includeMutationMetadata: false,
+        },
+      );
+      if (unattributedErrors.length > 0) {
+        unparseable.push({
+          file: compiled.filePath,
+          error: unattributedErrors.map(error => `${error.kind}: ${error.reason}`).join('; '),
+        });
         return;
       }
       results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));

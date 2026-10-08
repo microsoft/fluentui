@@ -1,10 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
-// This function has a pattern that causes a compiler error (mutating input)
+// Writing a ref during render is rejected even when manual memoization is present.
 export function ErrorWithMemo({ items }: { items: string[] }) {
-  const sorted = useMemo(() => {
-    items.sort(); // Mutating the input — compiler will bail out
-    return items;
-  }, [items]);
+  const valueRef = useRef(0);
+  valueRef.current = 42;
+  const sorted = useMemo(() => [...items].sort(), [items]);
   return <div>{sorted.join(', ')}</div>;
 }

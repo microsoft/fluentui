@@ -1,6 +1,7 @@
 import { mkdtempSync, readFileSync, cpSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
+import { parseSync } from '@babel/core';
 
 import { compileFile } from '../compiler';
 import { deriveCoverage } from '../coverage-analyzer';
@@ -453,6 +454,44 @@ describe("applyAnnotations — 'all-safe' mode", () => {
     expect(outcome).toEqual({ filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 });
     expect(readFileSync(filePath, 'utf-8')).toBe(SOURCE);
   });
+
+  it.each<AnnotateMode>(['all-safe', 'bailout-only'])(
+    '%s keeps decoded line separators inside bailout comments',
+    async mode => {
+      for (const separator of ['\n', '\r', '\r\n', '\u2028', '\u2029']) {
+        const propertyName = JSON.stringify(`foo${separator}bar`)
+          .replace(/\u2028/g, '\\u2028')
+          .replace(/\u2029/g, '\\u2029');
+        const filePath = writeTemp(
+          `export function Risky() {\n  const value = store.use[${propertyName}]();\n  return <div>{value}</div>;\n}\n`,
+        );
+        const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false, {
+          selectorHookProperties: ['use'],
+        });
+        const results = deriveCoverage(compiled);
+        const risky = results.find(result => result.functionName === 'Risky');
+        expect(risky?.status).toBe('compiled');
+        expect(risky?.risks?.[0].symbol).toContain(separator);
+
+        const outcome = await applyAnnotations(results, mode);
+
+        expect(outcome.functionsBailedOut).toBe(1);
+        const modified = readFileSync(filePath, 'utf-8');
+        const comment = modified.split('\n').find(line => line.includes('// justified:'));
+        expect(comment).toContain('foo');
+        expect(comment).toContain('bar');
+        expect(comment).not.toMatch(/[\r\u2028\u2029]/);
+        expect(() =>
+          parseSync(modified, {
+            babelrc: false,
+            configFile: false,
+            sourceType: 'module',
+            parserOpts: { plugins: ['typescript', 'jsx'] },
+          }),
+        ).not.toThrow();
+      }
+    },
+  );
 
   it("'all' mode annotates the risky function with 'use memo' (no bailout)", async () => {
     const filePath = writeTemp(SOURCE);

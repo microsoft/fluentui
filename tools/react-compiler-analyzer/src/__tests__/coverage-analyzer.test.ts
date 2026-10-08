@@ -56,14 +56,11 @@ describe('deriveCoverage — manual memo integration', () => {
   it('detects manual memoization in functions with errors', async () => {
     const results = await analyzeFixture('error-with-memo.tsx');
 
-    // The function may error or compile depending on compiler version
-    // but it should still have manualMemo data if detected
-    const withMemo = results.filter(r => r.manualMemo);
-    expect(withMemo.length).toBeGreaterThanOrEqual(0);
-
-    if (withMemo.length > 0) {
-      expect(withMemo[0].manualMemo!.useMemo).toBe(1);
-    }
+    expect(results.find(result => result.functionName === 'ErrorWithMemo')).toMatchObject({
+      status: 'error',
+      compilerEvent: 'CompileError',
+      manualMemo: { useMemo: 1 },
+    });
   });
 
   it('returns no manualMemo for functions without memoization hooks', async () => {

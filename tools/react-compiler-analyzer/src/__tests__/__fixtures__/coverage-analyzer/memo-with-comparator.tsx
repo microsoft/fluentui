@@ -18,7 +18,7 @@ function ListComponent({ items, label }: Props) {
   );
 }
 
-// Custom comparator  - needs human review if it can be dropped when compiler is enabled for te component
+// Custom comparator  - needs human review if it can be dropped when compiler is enabled for the component
 export const MemoWithComparator = React.memo(ListComponent, (prev, next) => {
   return prev.items.length === next.items.length && prev.label === next.label;
 });

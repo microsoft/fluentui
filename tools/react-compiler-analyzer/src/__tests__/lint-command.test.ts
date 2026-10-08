@@ -4,6 +4,7 @@ import { tmpdir } from 'os';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
+import * as compiler from '../compiler';
 import { createLintCommand, runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { discoverFilesWithDirectives, findPackageName } from '../discovery';
@@ -11,6 +12,11 @@ import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
 import { normalizeCliOutput } from './helpers/output';
+
+jest.mock('../compiler', () => {
+  const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
+  return { ...actual, compileFilesStreaming: jest.fn(actual.compileFilesStreaming) };
+});
 
 const lintCommand = createLintCommand({});
 
@@ -540,6 +546,63 @@ export function Ok({ label }: { label: string }) {
 `,
     );
     await expect(runLint(baseArgv() as never)).resolves.toBe(0);
+  });
+
+  it.each([false, true])('fails JSON lint on an unattributed pipeline error with fix=%s', async fix => {
+    const filePath = join(tempDir, 'src', 'PipelineFailure.tsx');
+    const source = "export function Component() { 'use memo'; return <div />; }\n";
+    writeFileSync(filePath, source);
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({
+        ...result,
+        events: [...result.events, { kind: 'PipelineError', fnLoc: null, data: 'pipeline crashed' }],
+      });
+    });
+    const output: string[] = [];
+    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+      output.push(String(chunk));
+      return true;
+    });
+
+    try {
+      expect(await runLint(baseArgv({ format: 'json', fix }) as never)).toBe(1);
+      const document = JSON.parse(output.join(''));
+      expect(document.directives).toEqual([]);
+      expect(document.summary.unparseableFiles).toBe(1);
+      expect(document.unparseable).toEqual([
+        { file: expect.stringContaining('PipelineFailure.tsx'), error: 'PipelineError: pipeline crashed' },
+      ]);
+      expect(readFileSync(filePath, 'utf-8')).toBe(source);
+    } finally {
+      write.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('reports unattributed pipeline errors in human lint output', async () => {
+    const filePath = join(tempDir, 'src', 'PipelineFailure.tsx');
+    writeFileSync(filePath, "export function Component() { 'use memo'; return <div />; }\n");
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({
+        ...result,
+        events: [...result.events, { kind: 'PipelineError', fnLoc: null, data: 'pipeline crashed' }],
+      });
+    });
+    const output: string[] = [];
+    console.log = (...args: unknown[]) => {
+      output.push(args.map(String).join(' '));
+    };
+
+    try {
+      expect(await runLint(baseArgv() as never)).toBe(1);
+      expect(output.join('\n')).toContain('Files not analyzed (parse/compile errors)');
+      expect(output.join('\n')).toContain('PipelineError: pipeline crashed');
+      expect(output.join('\n')).toContain('PipelineFailure.tsx');
+    } finally {
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
   });
 
   it('exits 1 on a redundant directive', async () => {

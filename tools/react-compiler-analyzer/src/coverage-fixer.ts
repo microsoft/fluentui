@@ -18,9 +18,10 @@ function bailoutDirective(indent: string, risks: RiskFinding[], quote: QuoteStyl
       a.column - b.column,
   )[0];
   const extra = risks.length > 1 ? ` (+${risks.length - 1} more)` : '';
-  return `${indent}${quoted('use no memo', quote)}; // justified: ${top.ruleId} risk via ${
-    top.symbol
-  }${extra} - unsafe to memoize`;
+  const symbol = top.symbol.replace(/[\r\n\u2028\u2029]/g, ' ');
+  return `${indent}${quoted('use no memo', quote)}; // justified: ${
+    top.ruleId
+  } risk via ${symbol}${extra} - unsafe to memoize`;
 }
 
 export interface AnnotateOptions {
