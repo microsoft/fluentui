@@ -14,6 +14,8 @@ const dropdownIndicatorTemplate = html<BaseDropdown>`
 
 /**
  * The template partial for the dropdown input element. This template is used when the `type` property is set to "combobox".
+ * The `size` attribute is set to the smallest valid value (`1`) so the input’s intrinsic width is minimal and its
+ * width is controlled in CSS.
  *
  * @public
  * @remarks
@@ -30,10 +32,10 @@ export const dropdownInputTemplate = html<BaseDropdown>`
     aria-labelledby="${x => x.ariaLabelledBy}"
     aria-expanded="${x => x.open}"
     aria-haspopup="listbox"
+    size="1"
     placeholder="${x => x.placeholder}"
     role="combobox"
     ?disabled="${x => x.disabled}"
-    type="${x => x.type}"
     value="${x => x.initialValue}"
     slot="control"
     ${ref('control')}

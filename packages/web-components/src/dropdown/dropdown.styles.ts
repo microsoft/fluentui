@@ -139,6 +139,8 @@ export const styles = css`
 
   ::slotted(input) {
     cursor: text;
+    min-width: 0;
+    width: 100%;
   }
 
   :where(slot[name='indicator'] > *, ::slotted([slot='indicator'])) {
