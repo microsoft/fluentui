@@ -1,3 +1,7 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { transformSync } from '@swc/core';
 import {
   teamsDarkTheme,
   teamsHighContrastTheme,
@@ -106,6 +110,7 @@ describe('createCSSRuleFromTheme', () => {
     'lch(0% 0 0)',
     'oklab(0% 0 0)',
     'oklch(0% 0 0)',
+    'oklab(0% 0 0) oklch(0% 0 0)',
     'color(display-p3 0 0 0)',
     'cubic-bezier(0.9, 0.1, 1, 0.2)',
     'steps(2, jump-start)',
@@ -132,6 +137,11 @@ describe('createCSSRuleFromTheme', () => {
     'red /* complete comment */',
     'linear-gradient(red, blue)',
     'attr(data-color)',
+    'unsupportedrgb(0,0,0)',
+    'evillab(0 0 0)',
+    'urlrgb(0 0 0)',
+    'customvar(--custom-color)',
+    'customcolor-mix(in srgb, red, blue)',
     'red !important',
     String.raw`red\;blue`,
     String.raw`"escaped \"quote\""`,
@@ -301,6 +311,31 @@ describe('createCSSRuleFromTheme', () => {
     );
     expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: value.slice(0, -1) })).toBe('.selector {  }');
     expect(createCSSRuleFromTheme('.selector', { fontFamilyBase: '"'.repeat(100_000) + '\\' })).toBe('.selector {  }');
+  });
+
+  it.each(['oklab', 'oklch'])('omits late failures after %s calls without exponential backtracking', functionName => {
+    const value = `${functionName}(0 0 0)`.repeat(64) + '!';
+    const { code } = transformSync(readFileSync(join(__dirname, 'createCSSRuleFromTheme.ts'), 'utf8'), {
+      swcrc: false,
+      configFile: false,
+      jsc: { parser: { syntax: 'typescript' }, target: 'es2020' },
+      module: { type: 'commonjs' },
+    });
+    const result = execFileSync(
+      process.execPath,
+      [
+        '-e',
+        `${code}
+          process.env.NODE_ENV = 'production';
+          process.stdout.write(exports.createCSSRuleFromTheme('.selector', {
+            customToken: ${JSON.stringify(value)},
+            colorBrandBackground: 'blue',
+          }));`,
+      ],
+      { encoding: 'utf8', timeout: 2000 },
+    );
+
+    expect(result).toBe('.selector { --colorBrandBackground: blue;  }');
   });
 
   it('preserves all exported theme values', () => {

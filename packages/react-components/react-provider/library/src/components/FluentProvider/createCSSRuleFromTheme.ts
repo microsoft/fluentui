@@ -1,7 +1,8 @@
 import type { PartialTheme } from '@fluentui/react-theme';
 
 const TOKEN_NAME_PATTERN = /^[-_a-z0-9\u0080-\uFFFF]+(?![\s\S])/i;
-const LITERAL_PATTERN = /[-_a-z0-9\u0080-\uFFFF.#%,+ \t\n\r\f]/;
+// Match complete words so "oklab(...)" cannot also match as the literal "ok" followed by "lab(...)".
+const LITERAL_PATTERN = /[-_a-z0-9\u0080-\uFFFF]+(?![-_a-z0-9\u0080-\uFFFF(])|[.#%,+ \t\n\r\f]/;
 const STRING_PATTERN = /"[^"\\\u0000-\u001F\u007F]*"|'[^'\\\u0000-\u001F\u007F]*'/;
 const FUNCTION_PATTERN =
   /(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color(?:-mix)?|cubic-bezier|steps|calc|clamp|min|max|var|env)\((?:[-_a-z0-9\u0080-\uFFFF.#%,+* \t\n\r\f]|\/(?!\*))*\)/;

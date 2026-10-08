@@ -9,6 +9,7 @@ backslash escapes or control characters, and flat calls to `rgb`, `rgba`, `hsl`,
 `color`, `color-mix`, `cubic-bezier`, `steps`, `calc`, `clamp`, `min`, `max`, `var`, or `env`. Function arguments may contain
 literal characters, whitespace, commas, and arithmetic operators, but not nested functions or quoted strings. Lists of
 these supported forms, including font families and shadows, are supported.
+Function names must be complete identifiers; a name such as `customrgb(...)` is not accepted as `rgb(...)`.
 
 **Compatibility restriction:** comments, CSS escapes, URLs, other functions, and unquoted blocks or declaration delimiters
 are omitted, even when they are otherwise valid CSS. For example, `var(--custom-color)` is supported, while
