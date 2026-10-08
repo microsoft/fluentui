@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Allow Node.js 26 in the engines range to fix EBADENGINE install warnings",
+  "packageName": "@fluentui/web-components",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
