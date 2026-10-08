@@ -16,6 +16,7 @@
   },
   "files": [
     "bin",
+    "docs",
     "*.md",
     "rca.analyze.schema.json",
     "rca.config.schema.json",

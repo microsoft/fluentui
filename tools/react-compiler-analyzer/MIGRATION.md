@@ -1,8 +1,19 @@
-# Migration guide
+# Version migration guide
 
-Entries are ordered newest first.
+Use this guide when upgrading between package versions. Entries are ordered by target version,
+newest first; dates within an entry identify changes made during its development, not release dates.
 
-## 2026-09-17 — Compact canonical JSON v2
+## Experimental builds to 0.0.1
+
+| Upgrade                                  | Release date | Guide updated |
+| ---------------------------------------- | ------------ | ------------- |
+| Published experimental builds to `0.0.1` | Unreleased   | 2026-10-08    |
+
+`0.0.1` is the prepared first release, not a published version yet. The changes below apply when
+migrating from the experimental CLI to that release. The JSON `schemaVersion` is a separate
+contract version; it does not identify the installed package version.
+
+### JSON output: schema v1 to v2 (2026-09-17)
 
 The machine-readable output remains compact, but `schemaVersion` is now `2` because the analyzer
 normalizes compiler events into one canonical result per source function. The version bump is about
@@ -20,7 +31,7 @@ annotate (only with --annotate)
 
 The current document is validated by [`rca.analyze.schema.json`](rca.analyze.schema.json).
 
-### Analyze changes
+#### Analyze changes
 
 | v1                                                            | v2                                                                                           | Migration                                                                                            |
 | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -40,7 +51,7 @@ The following fields remain available with the same meaning:
   on findings.
 - `summary`, `unparseable`, and the optional `annotate` outcome.
 
-### Canonical terminal status
+#### Canonical terminal status
 
 Compiler events are reduced in their original order:
 
@@ -51,7 +62,7 @@ Compiler events are reduced in their original order:
 
 This makes function counts stable and prevents retries from being mistaken for separate functions.
 
-### Example consumer update
+#### Example consumer update
 
 Before:
 
@@ -67,7 +78,7 @@ jq '.functions[] | {name: .function}'
 jq '.findings[] | select(.ruleId == "nonreactive-store-read" and .suppressed == true)'
 ```
 
-### Intentionally not included
+#### Intentionally not included
 
 The v2 document does not serialize the analyzer's complete AST inventory, source spans, raw compiler
 event stream, code frames, Git provenance, resolver statistics, or human-review candidate lanes.
@@ -77,12 +88,12 @@ machine-readable workflow.
 `lint --format json` also reports `schemaVersion: 2`. Its compact shape is unchanged except that
 directive rows now include `column` for precise source locations and `package` may be `null`.
 
-## 2026-09-03 — Unified RCA configuration
+### Configuration: separate risk settings to rca.config.json (2026-09-03)
 
 Risk detection previously used a separate `risk.config.json` (or another JSON file selected with
 `--risk-config`). Its fields now live under `analyze.risks` in the shared `rca.config.json`.
 
-### Move the risk configuration
+#### Move the risk configuration
 
 Before:
 
@@ -147,7 +158,7 @@ unchanged under `analyze.risks`:
 - `resolveWrappers`
 - `pathAliases`
 
-### Configuration behavior changes
+#### Configuration behavior changes
 
 - `--risk-config` was removed. Use the global `--config <path>` option.
 - `risk-config.schema.json` was replaced by `rca.config.schema.json`.
