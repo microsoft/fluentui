@@ -100,9 +100,9 @@ split.
   `@fluentui/no-restricted-imports` from the ESLint plugin, `verify-bundle-isolation` on both projects, and the
   per-subpath `generate-api` and `export-maps-sync` already running on the headless project.
 
-Not in scope: visual changes, replacing Griffel or the `use<Name>Styles_unstable` hooks, new components, renaming or
-stabilising the headless preview package, unifying the custom headless overlays (Popover, Tooltip, Dialog, the Menu
-root) with their v9 counterparts, consolidating the v9 packages, subpath exports on `@fluentui/react-components`, shim packages, merging
+Not in scope: visual changes, replacing Griffel or the `use<Name>Styles_unstable` hooks, new components (including
+headless entries for table, tree, list and carousel), renaming or stabilising the headless preview package, unifying
+the custom headless overlays (Popover, Tooltip, Dialog, the Menu root) or Provider with their v9 counterparts, consolidating the v9 packages, subpath exports on `@fluentui/react-components`, shim packages, merging
 the stories projects.
 
 ## Proposal
@@ -189,7 +189,8 @@ They are built on the HTML Popover API, `<dialog>`, the top layer and CSS anchor
 own root hook on the headless `usePositioning`, not a wrapper of `useMenuBase_unstable`. They stay exactly as they
 are. v9 Popover, Tooltip, Dialog and the v9 Menu root keep their floating-ui, `Portal` and tabster implementation and
 do not become dependent on the headless ones. Two implementations of these families remain; whether and how to unify
-them is a separate decision, not part of this RFC.
+them is a separate decision, not part of this RFC. Provider is treated the same way: headless has its own `Provider`,
+v9 has `FluentProvider`, and they stay separate.
 
 **v9-wrapping overlay parts: MenuItem, MenuList, MenuPopover, MenuTrigger, Drawer, Toast, the Combobox, Dropdown and
 TagPicker listboxes.** Their headless version calls a v9 base hook today, so they move in step 2 like every other
@@ -284,12 +285,11 @@ package reaches it. Packages within a round are independent of each other and ca
 | 3     | avatar, dialog, field                                                                                                                                                                                                                               |
 | 4     | badge, label, popover, tooltip                                                                                                                                                                                                                      |
 | 5     | button, menu                                                                                                                                                                                                                                        |
-| 6     | provider                                                                                                                                                                                                                                            |
 
-For the custom headless overlays (Popover, Tooltip, Dialog, the Menu root) only the type imports and the `package.json`
-entries go; nothing else moves. Table, tree, list and carousel have no headless entry today; they gain one as part of
-their move and join the round their dependents allow (carousel after teaching-popover). The order is recomputed from
-the graph before each round, since dependencies change.
+For the custom headless overlays (Popover, Tooltip, Dialog, the Menu root) and for Provider only the type imports and
+the `package.json` entries go; nothing else moves. Table, tree, list and carousel have no headless entry today, so
+there is no dependency to reverse; they are out of scope. The order is recomputed from the graph before each round,
+since dependencies change.
 
 **Behaviour dependencies between base hooks.** A moved base hook keeps importing an un-moved package for behaviour it
 needs; that edge points from headless to a package that does not depend on headless yet, so it is harmless. When that
@@ -372,7 +372,7 @@ export {
 
 ### Cons
 
-- A multi-quarter migration that touches every v9 package except Popover, Tooltip and Dialog. Mitigated by the
+- A multi-quarter migration that touches every v9 package headless wraps today. Mitigated by the
   per-component unit of work and by every step being shippable on its own.
 - Every v9 component package depends on a `0.x` preview package. A caret on `0.x` only allows patch bumps, so an app
   that upgrades v9 packages one at a time can end up with two headless copies, which duplicates base hooks and splits
