@@ -1060,13 +1060,48 @@ describe(`workspace-plugin`, () => {
           metadata = getMetadata(results, 'proj/library');
         });
 
+        it.each(['react-compiler-analyzer--lint', 'react-compiler-analyzer--analyze'])(
+          'should build the workspace analyzer before %s',
+          targetName => {
+            expect(targets?.[targetName].dependsOn).toEqual([{ target: 'build', projects: 'react-compiler-analyzer' }]);
+          },
+        );
+
+        it.each(['react-compiler-analyzer--lint', 'react-compiler-analyzer--analyze', 'react-compiler-analyzer'])(
+          'should invalidate %s when the workspace analyzer changes',
+          targetName => {
+            expect(targets?.[targetName].inputs).toEqual(
+              expect.arrayContaining([
+                '{workspaceRoot}/tools/react-compiler-analyzer/src/**/*',
+                '{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*',
+                '{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs',
+                '{workspaceRoot}/tools/react-compiler-analyzer/package.json',
+                '{workspaceRoot}/tools/react-compiler-analyzer/project.json',
+                '{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json',
+              ]),
+            );
+          },
+        );
+
         it('should add react-compiler-analyzer target group', async () => {
           expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
             Object {
               "cache": true,
               "command": "yarn run -T react-compiler-analyzer lint ./src",
+              "dependsOn": Array [
+                Object {
+                  "projects": "react-compiler-analyzer",
+                  "target": "build",
+                },
+              ],
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",
@@ -1097,8 +1132,20 @@ describe(`workspace-plugin`, () => {
             Object {
               "cache": true,
               "command": "yarn run -T react-compiler-analyzer analyze ./src",
+              "dependsOn": Array [
+                Object {
+                  "projects": "react-compiler-analyzer",
+                  "target": "build",
+                },
+              ],
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",
@@ -1134,6 +1181,12 @@ describe(`workspace-plugin`, () => {
               "executor": "nx:noop",
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",
