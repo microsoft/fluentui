@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve Combobox listbox scrollTop by stabilizing positioning options to prevent manager recreation on every render (#35731)",
+  "packageName": "@fluentui/react-combobox",
+  "email": "198982749+Copilot@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
