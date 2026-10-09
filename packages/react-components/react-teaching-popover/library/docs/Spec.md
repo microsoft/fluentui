@@ -102,7 +102,7 @@ Teaching popover footer requires users to provide strings for the next/previous 
 
 ## API
 
-See API at [TeachingPopover.types.ts](./src/components/TeachingPopover/TeachingPopover.types.ts).
+See API at [TeachingPopover.types.ts](../src/components/TeachingPopover/TeachingPopover.types.ts).
 
 ## Migration
 
@@ -112,7 +112,7 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 The V8 TeachingPopover was a unified single component with a visibility flag, the data and especially localized strings such as title, heading, and body text, will need to be segmented out into the appropriate sub-components and composed as described in sample code.
 
-All popover logic, such as logic on dismiss or open, can be accessed via the underlying popover extension [Popover.md](../../react-popover/docs/Spec.md) - note that these classes have been extended, and their equivalent 'TeachingPopover' version should be used.
+All popover logic, such as logic on dismiss or open, can be accessed via the underlying popover extension [Popover.md](./Spec.md) - note that these classes have been extended, and their equivalent 'TeachingPopover' version should be used.
 
 | Popover (v9)   | TeachingPopover (v9)                    |
 | -------------- | --------------------------------------- |
@@ -132,7 +132,7 @@ Carousel logic, such as page change can be accessed via the TeachingPopoverCarou
 
 #### Popover Inheritance
 
-TeachingPopover components adhere to the same underlying behaviors as [Popover](../../react-popover/docs/Spec.md) as TeachingPopover extends the core Popover class, as well as TeachingPopoverSurface, TeachingPopoverBody, and TeachingPopoverTrigger.
+TeachingPopover components adhere to the same underlying behaviors as [Popover](./Spec.md) as TeachingPopover extends the core Popover class, as well as TeachingPopoverSurface, TeachingPopoverBody, and TeachingPopoverTrigger.
 
 #### TeachingPopoverCarousel
 
@@ -180,7 +180,7 @@ The wrapper that defines and drives the underlying carousel functionality, these
 
 ## Accessibility
 
-Focus and popover functionality will be handled by the underlying popover and focus zone, see functionality breakdown here: [Popover.md](../../react-popover/docs/Spec.md)
+Focus and popover functionality will be handled by the underlying popover and focus zone, see functionality breakdown here: [Popover.md](./Spec.md)
 
 Keyboard accessibility will follow the default DOM tab order, and all interaction elements are ARIA compliant buttons, including the icon version of carousel pagination.
 

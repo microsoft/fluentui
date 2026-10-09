@@ -73,7 +73,7 @@ n/a
 
 ## API proposal
 
-See API at [Image.types.ts](./src/components/Image/Image.types.ts).
+See API at [Image.types.ts](../src/components/Image/Image.types.ts).
 
 Proposed component props:
 
