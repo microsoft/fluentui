@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-<!-- This log was last generated on Mon, 21 Sep 2026 15:07:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 08 Oct 2026 05:35:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.4.0)
+
+Thu, 08 Oct 2026 05:35:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2..@fluentui/react-storybook-addon-export-to-sandbox_v0.4.0)
+
+### Minor changes
+
+- feat: support per-story full source generation and playground addon buttons ([PR #36744](https://github.com/microsoft/fluentui/pull/36744) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+### Patches
+
+- Address playground review feedback: clarify source execution metadata, simplify module configuration, and align build and package setup. ([PR #36744](https://github.com/microsoft/fluentui/pull/36744) by dmytrokirpa@microsoft.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2)
 

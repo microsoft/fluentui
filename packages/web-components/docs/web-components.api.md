@@ -635,6 +635,8 @@ export class BaseDropdown extends FASTElement {
     disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
+    static readonly elementIdentity = "dropdown";
+    // @internal
     elementInternals: ElementInternals;
     get enabledOptions(): DropdownOption[];
     // @internal
@@ -3798,6 +3800,10 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     readOnly: boolean;
     checked?: boolean;
     value?: string;
+    control?: HTMLButtonElement | HTMLInputElement;
+    constructor: {
+        elementIdentity?: string;
+    };
 };
 
 // @public

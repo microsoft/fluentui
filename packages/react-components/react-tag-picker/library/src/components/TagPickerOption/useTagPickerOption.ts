@@ -33,7 +33,12 @@ export const useTagPickerOption_unstable = (
       elementType: 'span',
     }),
     root: slot.always(
-      { ...optionState.root, role: 'option', 'aria-checked': props['aria-checked'] },
+      {
+        ...optionState.root,
+        role: 'option',
+        'aria-selected': props['aria-selected'] ?? optionState.selected,
+        'aria-checked': props['aria-checked'],
+      },
       {
         elementType: 'div',
       },
