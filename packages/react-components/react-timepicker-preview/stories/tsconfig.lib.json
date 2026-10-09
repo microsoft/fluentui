@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES2019", "ES2020.Intl", "dom"],
     "outDir": "../../../../dist/out-tsc",
     "inlineSources": true,
     "types": ["static-assets", "environment"]

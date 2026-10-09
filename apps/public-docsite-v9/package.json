@@ -33,6 +33,7 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/react-storybook-addon-playground": "*",
     "@fluentui/react-timepicker-compat": "*",
+    "@fluentui/react-timepicker-preview": "*",
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",
     "@griffel/react": "^1.5.32",
