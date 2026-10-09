@@ -3772,6 +3772,7 @@ __metadata:
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-overflow": "npm:^9.9.4"
     "@fluentui/react-popover": "npm:^9.14.9"
+    "@fluentui/react-positioning": "npm:^9.23.3"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-tabster": "npm:^9.26.18"
     "@fluentui/react-theme": "npm:^9.2.2"

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: ChartPopover honors caller and per-point positioning; DonutChart forwards calloutProps and anchors the keyboard-focus callout to the focused arc",
+  "packageName": "@fluentui/react-charts",
+  "email": "cam.w.bloomfield@gmail.com"
+}
