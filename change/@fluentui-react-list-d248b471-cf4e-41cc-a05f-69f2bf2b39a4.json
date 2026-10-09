@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: expose design-free List base hooks and context APIs with complete public types, editable-child validation, inferred roles, and explicit root support",
+  "packageName": "@fluentui/react-list",
+  "email": "dmytrokirpa@microsoft.com"
+}
