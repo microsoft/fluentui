@@ -1825,6 +1825,7 @@ export type {
   TagPickerState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
+  TagPickerSelectionMode,
   TagPickerSize,
   TagPickerInputProps,
   TagPickerInputSlots,
