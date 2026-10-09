@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "types": ["static-assets", "environment", "webpack-env"]
+  },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx"],
+  "include": ["./src/playground/**/*.ts", "./src/playground/**/*.tsx", "./src/url.ts", "./src/playground/**/*.d.ts"]
+}
