@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type { RenderResult } from '@testing-library/react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -224,5 +225,54 @@ describe('Tooltip', () => {
     expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
     expect(onPositioningEnd).toHaveBeenCalledTimes(2);
     expect(onPositioningEnd).toHaveBeenLastCalledWith(visibleEvent);
+  });
+
+  it('hides when positioning reports an explicit DOM target as hidden', () => {
+    const onPositioningEnd = jest.fn();
+    const result = render(
+      <Tooltip
+        content="Tooltip content"
+        relationship="label"
+        visible
+        positioning={{ target: document.body, onPositioningEnd }}
+      >
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+    const positioningEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', escaped: false, referenceHidden: true },
+    });
+
+    act(() => tooltip.dispatchEvent(positioningEvent));
+
+    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
+  });
+
+  it('remains visible when positioning reports a virtual target as hidden', () => {
+    const onPositioningEnd = jest.fn();
+    const virtualTarget: PositioningVirtualElement = {
+      getBoundingClientRect: () => new DOMRect(),
+    };
+    const result = render(
+      <Tooltip
+        content="Tooltip content"
+        relationship="label"
+        visible
+        positioning={{ target: virtualTarget, onPositioningEnd }}
+      >
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+    const positioningEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', escaped: false, referenceHidden: true },
+    });
+
+    act(() => tooltip.dispatchEvent(positioningEvent));
+
+    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
   });
 });

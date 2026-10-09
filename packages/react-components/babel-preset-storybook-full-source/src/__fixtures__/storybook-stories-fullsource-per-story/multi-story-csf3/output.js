@@ -79,11 +79,14 @@ export const Full = {
     ),
 };
 Basic.parameters = {};
+Basic.parameters.fullSourceIsRunnable = true;
 Basic.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\n// --- Custom React components defined in the module ---\nconst Card = ({ children }) => <div className="card">{children}</div>;\n\nconst CardHeader = ({ title }) => <h3 className="card-header">{title}</h3>;\n\n// Uses Card + CardHeader + Button.\nexport const Basic = () => (\n  <Card>\n    <CardHeader title="Basic" />\n    <Button>Action</Button>\n  </Card>\n);\n';
 WithMedia.parameters = {};
+WithMedia.parameters.fullSourceIsRunnable = true;
 WithMedia.parameters.fullSource =
   'import * as React from "react";\n\n// --- Custom React components defined in the module ---\nconst Card = ({ children }) => <div className="card">{children}</div>;\n\nconst CardMedia = ({ src }) => <img className="card-media" src={src} alt="" />;\n\n// Uses Card + CardMedia only.\nexport const WithMedia = () => (\n  <Card>\n    <CardMedia src="cat.png" />\n  </Card>\n);\n';
 Full.parameters = {};
+Full.parameters.fullSourceIsRunnable = true;
 Full.parameters.fullSource =
   'import * as React from "react";\n\n// --- Custom React components defined in the module ---\nconst Card = ({ children }) => <div className="card">{children}</div>;\n\nconst CardHeader = ({ title }) => <h3 className="card-header">{title}</h3>;\n\nconst CardMedia = ({ src }) => <img className="card-media" src={src} alt="" />;\n\nconst CardFooter = () => <footer className="card-footer">\xA9 Contoso</footer>;\n\n// Uses Card + CardHeader + CardMedia + CardFooter.\nexport const Full = () => (\n  <Card>\n    <CardHeader title="Full" />\n    <CardMedia src="dog.png" />\n    <CardFooter />\n  </Card>\n);\n';
