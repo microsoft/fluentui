@@ -333,7 +333,7 @@ describe('VerifyPackaging Executor', () => {
           main: 'lib-commonjs/index.cjs',
           type: 'module',
           exports: {
-            './items/*': { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' },
+            './items/*': { import: { types: './dist/items/*/index.d.ts', default: './lib/items/*/index.js' } },
           },
         },
       });
