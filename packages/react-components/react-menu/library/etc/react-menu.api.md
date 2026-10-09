@@ -355,6 +355,8 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalPro
 
 // @public
 export type MenuProps = ComponentProps<Partial<MenuSlots>> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+    unstable_disableAutoFocus?: boolean;
+    unstable_triggerElement?: HTMLElement | null;
     children: [JSXElement, JSXElement] | JSXElement;
     hoverDelay?: number;
     inline?: boolean;

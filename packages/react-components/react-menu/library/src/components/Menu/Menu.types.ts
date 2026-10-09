@@ -29,8 +29,33 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> &
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
   > & {
     /**
+     * Prevents automatic focus of the first menu item while open. Explicit keyboard
+     * navigation, close focus restoration, and Tab behavior are unchanged.
+     * This applies only to this Menu, not its nested menus. Changing this to false
+     * while open focuses the first menu item.
+     *
+     * @default false
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus?: boolean;
+
+    /**
+     * Registers an externally rendered trigger for containment, focus restoration,
+     * and positioning when no explicit positioning target is provided.
+     * The owner supplies activation, keyboard handling, ARIA relationships, and
+     * an accessible name for MenuList. Keep the element connected and focusable
+     * through close when focus restoration is expected.
+     *
+     * Null or undefined removes external registration. Do not combine with
+     * MenuTrigger; a rendered trigger takes precedence.
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_triggerElement?: HTMLElement | null;
+
+    /**
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
-     * Alternatively can only contain `MenuPopover` if using a custom `target`.
+     * Alternatively can only contain `MenuPopover` if using a custom positioning
+     * `target` or registering an external trigger with `unstable_triggerElement`.
      */
     children: [JSXElement, JSXElement] | JSXElement;
 

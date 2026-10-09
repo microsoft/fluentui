@@ -1,4 +1,4 @@
-import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resetIdsForTests, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { Menu } from './Menu';
 import { render, fireEvent } from '@testing-library/react';
@@ -10,6 +10,7 @@ import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
 import { MenuPopover } from '../MenuPopover/index';
 import type { MenuOpenChangeData } from './Menu.types';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
 
 describe('Menu', () => {
   isConformant({
@@ -63,6 +64,76 @@ describe('Menu', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  describe('external trigger lifecycle', () => {
+    it('preserves the internal trigger across external/internal composition transitions', () => {
+      const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const external = document.createElement('button');
+      const observeRef = jest.fn();
+      const Observer = () => {
+        const ref = useMenuContext_unstable(context => context.triggerRef);
+        useIsomorphicLayoutEffect(() => {
+          observeRef(ref);
+        });
+        return (
+          <MenuPopover>
+            <MenuList aria-label="Commands">
+              <MenuItem>Command</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        );
+      };
+      const Example = ({ internal }: { internal: boolean }) => (
+        <Menu open unstable_triggerElement={external}>
+          {internal ? (
+            [
+              <MenuTrigger key="trigger" disableButtonEnhancement>
+                <button>Internal trigger</button>
+              </MenuTrigger>,
+              <Observer key="popover" />,
+            ]
+          ) : (
+            <Observer key="popover" />
+          )}
+        </Menu>
+      );
+
+      try {
+        const { rerender, getByRole } = render(<Example internal={false} />);
+        const ref = observeRef.mock.calls[0][0];
+        expect(ref.current).toBe(external);
+        rerender(<Example internal />);
+        expect(ref.current).toBe(getByRole('button', { name: 'Internal trigger' }));
+        rerender(<Example internal={false} />);
+        expect(ref.current).toBe(external);
+      } finally {
+        warning.mockRestore();
+      }
+    });
+
+    it('retains external registration in Strict Mode', () => {
+      const external = document.createElement('input');
+      const observeRef = jest.fn();
+      const Observer = () => {
+        const ref = useMenuContext_unstable(context => context.triggerRef);
+        useIsomorphicLayoutEffect(() => {
+          observeRef(ref);
+        });
+        return <MenuPopover />;
+      };
+      const { unmount } = render(
+        <React.StrictMode>
+          <Menu open unstable_triggerElement={external}>
+            <Observer />
+          </Menu>
+        </React.StrictMode>,
+      );
+      const ref = observeRef.mock.calls[0][0];
+      expect(ref.current).toBe(external);
+      unmount();
+      expect(ref.current).toBeNull();
+    });
   });
 
   it.each([true, false])('should call onOpenChange when the menu is controlled with open: %s', open => {
