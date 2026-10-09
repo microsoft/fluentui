@@ -18,16 +18,22 @@ import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
 export const useNavDrawer = (props: NavDrawerProps, ref: React.Ref<HTMLElement>): NavDrawerState => {
   const navState = useNav(props, ref as React.Ref<HTMLDivElement>);
 
+  const type = props.type ?? 'overlay';
+
+  const root: NavDrawerState['root'] = slot.always(
+    { ref: ref as React.Ref<HTMLDivElement>, ...props },
+    {
+      elementType: Drawer,
+    },
+  );
+
+  root['data-type'] = type;
+
   return {
     ...navState,
     components: {
       root: Drawer,
     },
-    root: slot.always(
-      { ref: ref as React.Ref<HTMLDivElement>, ...props },
-      {
-        elementType: Drawer,
-      },
-    ),
+    root,
   };
 };

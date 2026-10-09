@@ -6,22 +6,30 @@
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build-storybook": {
-      "dependsOn": [
-        {
-          "projects": [
-            "react-storybook-addon",
-            "react-storybook-addon-export-to-sandbox",
-            "storybook-llms-extractor",
-            "react-alert",
-            "react-infobutton",
-            "react-virtualizer"
-          ],
-          "target": "build"
-        }
-      ]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        { "env": "FLUENTUI_ICON_VARIANT" }
+      ],
+      "dependsOn": ["^build"]
+    },
+    "storybook": {
+      "dependsOn": ["^build"]
+    },
+    "storybook:docs": {
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "dependsOn": ["^build"]
     },
     "build-storybook:docsite": {
-      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.storybook/**",
+        "{projectRoot}/.storybook/**",
+        { "env": "FLUENTUI_ICON_VARIANT" }
+      ],
       "outputs": ["{projectRoot}/dist/react"],
       "executor": "nx:noop",
       "dependsOn": [

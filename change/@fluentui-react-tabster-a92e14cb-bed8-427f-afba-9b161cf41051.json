@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: Bump keyborg to 3.498.0 and tabster to 8.8.1.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "dmytrokirpa@microsoft.com"
+}

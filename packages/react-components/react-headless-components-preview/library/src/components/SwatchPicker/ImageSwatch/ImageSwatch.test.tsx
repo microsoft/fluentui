@@ -5,7 +5,16 @@ import { ImageSwatch } from './ImageSwatch';
 import { SwatchPicker } from '../SwatchPicker';
 
 describe('ImageSwatch', () => {
-  isConformant({ Component: ImageSwatch, displayName: 'ImageSwatch', disabledTests: ['has-top-level-file-extra'] });
+  isConformant({
+    Component: ImageSwatch,
+    displayName: 'ImageSwatch',
+    requiredProps: { src: 'image.png', value: 'image', 'aria-label': 'Image' },
+    renderOptions: {
+      wrapper: ({ children }) => <SwatchPicker aria-label="Images">{children}</SwatchPicker>,
+    },
+    getTargetElement: result => result.getByRole('radio'),
+    disabledTests: ['has-top-level-file-extra'],
+  });
 
   it('renders an image swatch with its selection state', () => {
     const { getByRole } = render(<ImageSwatch src="image.png" value="image" aria-label="Image" />, {
@@ -13,5 +22,17 @@ describe('ImageSwatch', () => {
     });
 
     expect(getByRole('radio')).toHaveAttribute('data-selected');
+  });
+
+  it('marks only the selected swatch as the focusgroup entry point', () => {
+    const { getByLabelText } = render(
+      <SwatchPicker aria-label="Images" selectedValue="image">
+        <ImageSwatch src="image.png" value="image" aria-label="Image" />
+        <ImageSwatch src="other.png" value="other" aria-label="Other" />
+      </SwatchPicker>,
+    );
+
+    expect(getByLabelText('Image')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Other')).not.toHaveAttribute('focusgroupstart');
   });
 });

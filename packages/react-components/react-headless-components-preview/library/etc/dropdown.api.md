@@ -7,6 +7,7 @@
 import type { DropdownBaseHookProps } from '@fluentui/react-combobox';
 import type { DropdownBaseHookState } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { ListboxContextValues } from '@fluentui/react-combobox';
@@ -34,6 +35,8 @@ export const Dropdown: ForwardRefComponent<DropdownProps>;
 export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
     positioning?: PositioningShorthand;
 };
+
+export { DropdownSlots }
 
 // @public (undocumented)
 export type DropdownState = DropdownBaseHookState & {

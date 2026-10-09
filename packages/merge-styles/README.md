@@ -485,11 +485,11 @@ renderStatic(() => ReactDOM.renderToString(<App/>);
 
 - Rehydration on the client may result in mismatched rules. You can apply a namespace on the server side to ensure there aren't name collisions.
 
-### Untrusted data in style values
+### Untrusted style data
 
-The `css` returned by `renderStatic` (and by `Stylesheet.getRules`) is raw CSS text that is normally written into a `<style>` element. A `<style>` element is HTML raw text, so a declaration value containing `</style>` would otherwise terminate it and inject markup.
+The `css` returned by `renderStatic` (and by `Stylesheet.getRules`) is raw CSS text that is normally written into a `<style>` element. A `<style>` element is HTML raw text, so a case-insensitive `</style` sequence would otherwise terminate it and inject markup.
 
-To prevent that, `merge-styles` emits `<` and `>` inside declaration values as the CSS code point escapes `\3C ` and `\3E `. This is semantics-preserving - the escapes decode back to the same characters, including inside quoted strings and `url()`. Likewise, `Stylesheet.serialize` emits `<` as `\u003C` so its output can be embedded in an inline `<script>` for rehydration.
+To prevent that, `merge-styles` escapes these sequences at the CSS serialization boundary. Declaration values also emit `<` and `>` as the CSS code point escapes `\3C ` and `\3E `. These escapes are semantics-preserving and decode back to the same characters without changing selectors, combinators, at-rules, custom properties, or keyframe syntax. Likewise, `Stylesheet.serialize` emits `<` as `\u003C` so its output can be embedded in an inline `<script>` for rehydration.
 
 This escaping is defense in depth, not a substitute for validating input. Applications remain responsible for:
 

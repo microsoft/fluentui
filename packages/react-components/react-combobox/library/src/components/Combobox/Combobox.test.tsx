@@ -82,6 +82,92 @@ describe('Combobox', () => {
     expect(window.getComputedStyle(listbox!).display).toEqual('none');
   });
 
+  it('unmounts the hidden listbox when focus leaves from the expand icon', () => {
+    const result = render(
+      <Combobox inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    act(() => {
+      result.getByRole('combobox').focus();
+    });
+    const expandIcon = result.container.querySelector<HTMLElement>('[role="button"]');
+    expect(result.container.querySelector('[role="listbox"]')).not.toBeNull();
+
+    act(() => {
+      expandIcon?.focus();
+    });
+    act(() => {
+      expandIcon?.blur();
+    });
+
+    expect(result.container.querySelector('[role="listbox"]')).toBeNull();
+  });
+
+  it('closes on Escape from the expand icon without bubbling to a parent dialog', () => {
+    const onDialogKeyDown = jest.fn();
+    const result = render(
+      <div role="dialog" onKeyDown={onDialogKeyDown}>
+        <Combobox defaultOpen inlinePopup>
+          <Option>Red</Option>
+        </Combobox>
+      </div>,
+    );
+    const expandIcon = result.getByRole('button');
+
+    act(() => {
+      expandIcon.focus();
+    });
+    userEvent.keyboard('{Escape}');
+
+    expect(result.queryByRole('listbox')).toBeNull();
+    expect(onDialogKeyDown).not.toHaveBeenCalled();
+    expect(result.getByRole('combobox')).toHaveFocus();
+  });
+
+  it('notifies of an input blur close only once', () => {
+    const onOpenChange = jest.fn();
+    const result = render(
+      <Combobox defaultOpen inlinePopup onOpenChange={onOpenChange}>
+        <Option>Red</Option>
+      </Combobox>,
+    );
+
+    fireEvent.blur(result.getByRole('combobox'));
+
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+  });
+
+  it('closes on input blur with a null relatedTarget when the expand icon is absent', () => {
+    const onOpenChange = jest.fn();
+    const result = render(
+      <Combobox defaultOpen inlinePopup expandIcon={null} onOpenChange={onOpenChange}>
+        <Option>Red</Option>
+      </Combobox>,
+    );
+    const input = result.getByRole('combobox');
+
+    act(() => {
+      input.focus();
+    });
+    expect(input).toHaveFocus();
+    expect(input).toHaveAttribute('aria-expanded', 'true');
+    expect(result.queryByRole('button')).toBeNull();
+
+    act(() => {
+      input.blur();
+    });
+
+    expect(result.queryByRole('listbox')).toBeNull();
+    expect(input).toHaveAttribute('aria-expanded', 'false');
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+  });
+
   it('renders the popup under document.body by default', () => {
     const { container } = render(
       <Combobox open>
@@ -945,6 +1031,7 @@ describe('Combobox', () => {
     userEvent.tab();
     userEvent.keyboard('xyz');
     userEvent.tab();
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
@@ -960,6 +1047,7 @@ describe('Combobox', () => {
 
     userEvent.tab();
     userEvent.keyboard('blue');
+    userEvent.tab();
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Blue');
@@ -1063,6 +1151,16 @@ describe('Combobox', () => {
   });
 
   describe('clearable', () => {
+    it('removes the visually hidden expand icon from the tab order', () => {
+      const { getByRole } = render(
+        <Combobox clearable defaultSelectedOptions={['Red']} defaultValue="Red">
+          <Option>Red</Option>
+        </Combobox>,
+      );
+
+      expect(getByRole('button')).toHaveAttribute('tabindex', '-1');
+    });
+
     it('clears the selection on a button click', () => {
       const { getByText, getByRole } = render(
         <Combobox
@@ -1089,6 +1187,7 @@ describe('Combobox', () => {
 
       expect(clearButton).toHaveStyle({ display: 'none' });
       expect(combobox).toHaveValue('');
+      expect(getByRole('button')).toHaveAttribute('tabindex', '0');
     });
 
     it('is not visible when there is no selection', () => {
@@ -1151,6 +1250,58 @@ describe('Combobox', () => {
   });
 
   describe('expandIcon', () => {
+    it.each(['click-only', 'pointer'])('toggles on %s activation with one notification per change', activation => {
+      const onOpenChange = jest.fn();
+      const onClick = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox inlinePopup expandIcon={{ onClick }} onOpenChange={onOpenChange}>
+          <Option>Red</Option>
+        </Combobox>,
+      );
+      const icon = getByRole('button');
+      const input = getByRole('combobox');
+      const activate = () => {
+        if (activation === 'click-only') {
+          fireEvent.click(icon);
+        } else {
+          userEvent.click(icon);
+        }
+      };
+
+      activate();
+
+      expect(getByRole('listbox')).toBeVisible();
+      expect(input).toHaveAttribute('aria-expanded', 'true');
+      expect(input).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: true });
+      expect(onClick).toHaveBeenCalledTimes(1);
+
+      activate();
+
+      expect(queryByRole('listbox')).toBeNull();
+      expect(input).toHaveAttribute('aria-expanded', 'false');
+      expect(input).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(2);
+      expect(onOpenChange).toHaveBeenLastCalledWith(expect.anything(), { open: false });
+      expect(onClick).toHaveBeenCalledTimes(2);
+    });
+
+    it('does not open on click-only activation when disabled', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox disabled inlinePopup onOpenChange={onOpenChange}>
+          <Option>Red</Option>
+        </Combobox>,
+      );
+
+      fireEvent.click(getByRole('button'));
+
+      expect(queryByRole('listbox')).toBeNull();
+      expect(getByRole('combobox')).toHaveAttribute('aria-expanded', 'false');
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
     it('respects author-provided labels for the chevron button', () => {
       const { container, rerender } = render(
         <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>

@@ -12,8 +12,8 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
 export const useListbox = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const state = useListbox_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.popover = 'auto';
-
-  return state;
+  return {
+    ...state,
+    root: { popover: 'auto', ...state.root },
+  };
 };

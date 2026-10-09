@@ -2,6 +2,220 @@
   "name": "@fluentui/react-headless-components-preview",
   "entries": [
     {
+      "date": "Thu, 24 Sep 2026 09:53:10 GMT",
+      "version": "0.3.1",
+      "tag": "@fluentui/react-headless-components-preview_v0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "862a351e288aaaf2c63da00efb0caaa0873c6edf",
+            "comment": "fix: allow changing the root element for PopoverSurface"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2026 11:35:06 GMT",
+      "version": "0.3.0",
+      "tag": "@fluentui/react-headless-components-preview_v0.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "07ff39d3f07a20fd1682f388e7fef7ecd3a4f5d9",
+            "comment": "fix: use the valid nomemory focusgroup token for TabList"
+          },
+          {
+            "author": "array.knight@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "2fddca2d18e27ca8847d74b8cf489ce855730fbc",
+            "comment": "fix: export context providers from the avatar and avatar-group subpaths, and context readers/providers from the button and link subpaths"
+          },
+          {
+            "author": "array.knight@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "52aa7a81469a3528b7fddf43744ed6498e4c1731",
+            "comment": "fix: let a consumer-supplied popover attribute win over the default on the PopoverSurface, MenuPopover and Listbox slots"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "370b262f908d3513592c280d820c7e0df1e07f4b",
+            "comment": "feat: export toDataAttributeValue from the utils entry point"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "09bb9d01ceac33e2da983bf54ec76426e6d330ec",
+            "comment": "feat: expose the Avatar and AvatarGroup context readers from the headless entry points"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "43665d5fb41408837ad1e85eb662575da9e0c4d0",
+            "comment": "feat: add data-* state attributes to Nav components and forward AvatarGroup size through context"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "9651c17e53ffcf326a3fa43f701c735b29fce164",
+            "comment": "fix: allow overriding NavDrawerBody role"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "eb2f46eace4915f136f5da23582cca90a852db7c",
+            "comment": "feat: expose ToastTitle intent state via data attribute"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "6d627faf68c5b5a3f3cd9c97ea96b520c5b87f06",
+            "comment": "feat: add badge support for Avatar"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "49c0291821bfa7e2ef29514685a666198001ac73",
+            "comment": "fix: add native focus navigation and pause timeouts while focus is in a toast stack"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "c3bb4b9782910410cf7842523a6d53320be9cdd4",
+            "comment": "fix: preserve focus when opening non-modal Popover surfaces"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f3dd4c6e83a83a6eb8ca841fb20ba05adb9212b7",
+            "comment": "refactor: collapse redundant headless type, render, and hook wrappers to direct re-exports"
+          },
+          {
+            "author": "array.knight@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "d3b573a7cb86a1f92da0d3765e4473e04b4cdb57",
+            "comment": "fix: MenuSplitGroup provides its context to descendants via a new exported useMenuSplitGroupContextValues hook"
+          },
+          {
+            "author": "array.knight@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "a49a072dcb2aebf68d1f03fbddcd9781539a5459",
+            "comment": "fix: renderTooltip applies state.arrowClassName to the arrow element instead of silently discarding it"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "8dc81f2e98169a4a4ad65223fc226212b5dafa64",
+            "comment": "feat: expose Dropdown invalid and clear button visibility data attributes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "29cd9414c386a45dcdbacec1ec9ddc2ec699a2ae",
+            "comment": "add missing root export map entry"
+          },
+          {
+            "author": "array.knight@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "2a14995e086a14084e4f029d3f59ce4ab47ccb61",
+            "comment": "fix: default aria-hidden on NavCategoryItem's expandIcon slot"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "1422f2dd9239dae584fa8788bfdd839c0586a84d",
+            "comment": "fix: correct component subpath exports"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "25b0646fa18bb93e2d7ed052379b852a1f45d8f4",
+            "comment": "fix: forward default options from the headless Toaster to toast state"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "203c5b8d8eafa443f78665e66412668205529b65",
+            "comment": "feat: add development-time types for focusgroup attributes"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "dfca51e2ce6bd68f3270011ec9fb4c21a09c670e",
+            "comment": "fix: use global focusgroup typing for MenuListState instead of a local intersection"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "4456170aae78bacb682e79a6e5802495f872c919",
+            "comment": "fix: remove focusgroup arrow key navigation from Nav and NavDrawerBody in favor of tab navigation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "5c311a6ab91ec1a0482d1fe83b52d8e308a10d2e",
+            "comment": "feat: add headless CounterBadge and PresenceBadge"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "4832a420ab98eac938bd085c1c432fc9fccee131",
+            "comment": "fix: narrow positioning prop to the headless PositioningShorthand"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "cd47826976c89e6fb220f8de393d0bd44d4c4980",
+            "comment": "feat!: add Combobox filtering and root state attributes"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "3685a680cd5b0331decc14729c062172948b64a9",
+            "comment": "chore: adjust re-exports after direct re-exports workspace rule"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "a03842ae491e89168bbb76f338409f286fd66e74",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "c1f8330299439d342c6aa5a5d2b6e4db08aa5451",
+            "comment": "chore: infer verify-bundle-isolation target from workspace plugin"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-headless-components-preview",
+            "commit": "f51ba35768877b1e01346ac76e3ad4af7689a5eb",
+            "comment": "test: add axe accessibility checks to component conformance tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Aug 2026 13:26:17 GMT",
       "version": "0.2.5",
       "tag": "@fluentui/react-headless-components-preview_v0.2.5",
