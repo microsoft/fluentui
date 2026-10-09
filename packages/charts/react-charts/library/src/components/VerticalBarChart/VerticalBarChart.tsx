@@ -1086,7 +1086,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     _points.forEach(point => {
       const xValue = point.x as string;
       if (!categoryToValues[xValue]) {

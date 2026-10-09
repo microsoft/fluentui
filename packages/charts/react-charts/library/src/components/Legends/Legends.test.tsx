@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Legends } from './index';
-import { render, act, fireEvent } from '@testing-library/react';
+import { render, act, fireEvent, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { tokens } from '@fluentui/react-theme';
 
 expect.extend(toHaveNoViolations);
 
@@ -421,4 +422,86 @@ describe('Legends - axe-core', () => {
     });
     expect(axeResults).toHaveNoViolations();
   });
+});
+
+describe.each([false, true])('Legends - special names with multiselect %s', canSelectMultipleLegends => {
+  const names = ['Revenue', '__proto__', 'constructor', 'toString'];
+  const specialLegends = names.map(title => ({ title, color: tokens.colorBrandBackground }));
+
+  it.each(names)('selects and deselects %s without treating inherited names as selected', title => {
+    const onChange = jest.fn();
+    render(
+      <Legends legends={specialLegends} canSelectMultipleLegends={canSelectMultipleLegends} onChange={onChange} />,
+    );
+    names.forEach(name => expect(screen.getByRole('option', { name })).toHaveAttribute('aria-selected', 'false'));
+    const option = screen.getByRole('option', { name: title });
+
+    fireEvent.click(option);
+    expect(onChange).toHaveBeenLastCalledWith([title], expect.anything(), expect.objectContaining({ title }));
+    expect(option).toHaveAttribute('aria-selected', 'true');
+    names
+      .filter(name => name !== title)
+      .forEach(name => {
+        expect(screen.getByRole('option', { name })).toHaveAttribute('aria-selected', 'false');
+      });
+    fireEvent.click(option);
+    expect(onChange).toHaveBeenLastCalledWith([], expect.anything(), expect.objectContaining({ title }));
+    expect(option).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(option);
+    expect(option).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it.each(names)('honors default selection of %s', title => {
+    render(
+      <Legends
+        legends={specialLegends}
+        canSelectMultipleLegends={canSelectMultipleLegends}
+        {...(canSelectMultipleLegends ? { defaultSelectedLegends: [title] } : { defaultSelectedLegend: title })}
+      />,
+    );
+    names.forEach(name => {
+      expect(screen.getByRole('option', { name })).toHaveAttribute('aria-selected', String(name === title));
+    });
+    fireEvent.click(screen.getByRole('option', { name: title }));
+    expect(screen.getByRole('option', { name: title })).toHaveAttribute('aria-selected', 'false');
+  });
+
+  it('leaves controlled selection unchanged until props update', () => {
+    const onChange = jest.fn();
+    const props = { legends: specialLegends, canSelectMultipleLegends, onChange };
+    const { rerender } = render(
+      <Legends
+        {...props}
+        {...(canSelectMultipleLegends ? { selectedLegends: ['constructor'] } : { selectedLegend: 'constructor' })}
+      />,
+    );
+    fireEvent.click(screen.getByRole('option', { name: '__proto__' }));
+    expect(onChange).toHaveBeenLastCalledWith(
+      canSelectMultipleLegends ? ['constructor', '__proto__'] : ['__proto__'],
+      expect.anything(),
+      expect.objectContaining({ title: '__proto__' }),
+    );
+    expect(screen.getByRole('option', { name: 'constructor' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('option', { name: '__proto__' })).toHaveAttribute('aria-selected', 'false');
+    rerender(
+      <Legends
+        {...props}
+        {...(canSelectMultipleLegends ? { selectedLegends: ['__proto__'] } : { selectedLegend: '__proto__' })}
+      />,
+    );
+    expect(screen.getByRole('option', { name: '__proto__' })).toHaveAttribute('aria-selected', 'true');
+    expect(screen.getByRole('option', { name: 'constructor' })).toHaveAttribute('aria-selected', 'false');
+  });
+
+  if (canSelectMultipleLegends) {
+    it('clears all selections and can select a special name again', () => {
+      const onChange = jest.fn();
+      render(<Legends legends={specialLegends} canSelectMultipleLegends onChange={onChange} />);
+      names.forEach(name => fireEvent.click(screen.getByRole('option', { name })));
+      expect(onChange).toHaveBeenLastCalledWith([], expect.anything(), expect.anything());
+      names.forEach(name => expect(screen.getByRole('option', { name })).toHaveAttribute('aria-selected', 'false'));
+      fireEvent.click(screen.getByRole('option', { name: '__proto__' }));
+      expect(onChange).toHaveBeenLastCalledWith(['__proto__'], expect.anything(), expect.anything());
+    });
+  }
 });
