@@ -1,7 +1,8 @@
-import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
 import { BaseAccordionItem } from '../accordion-item/accordion-item.base.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { isAccordionItem } from '../accordion-item/accordion-item.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
+import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
@@ -11,7 +12,7 @@ import { AccordionExpandMode } from './accordion.options.js';
  * @tag fluent-accordion
  *
  * @slot - The default slot for the accordion items
- * @fires { Event } change - Fires a custom 'change' event when the active item changes
+ * @fires change - Fires a custom 'change' event when the active item changes
  *
  * @public
  */
@@ -110,19 +111,26 @@ export class Accordion extends FASTElement {
    */
   private setItems = (): void => {
     waitForConnectedDescendants(this, () => {
-      if (!this.slottedAccordionItems?.length) {
+      if (this.slottedAccordionItems.length === 0) {
         return;
       }
 
-      // Get all existing children and remove event listeners
+      this.removeItemListeners(this.accordionItems ?? []);
+
       const children: Element[] = Array.from(this.children);
-      this.removeItemListeners(children);
+      const accordionItems = getUpgradedCustomElements(children, isAccordionItem);
+
+      runAfterPendingDefinitions(children, isAccordionItem, () => {
+        if (this.isConnected) {
+          this.setItems();
+        }
+      });
 
       // Resubscribe to the `disabled` attribute of all children
-      children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
+      accordionItems.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
 
       // Add event listeners to each non-disabled AccordionItem
-      this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
+      this.accordionItems = accordionItems.filter(child => !child.hasAttribute('disabled'));
       this.accordionItems.forEach((item: Element, index: number) => {
         item.addEventListener('click', this.expandedChangedHandler);
         // Subscribe to the expanded attribute of the item
