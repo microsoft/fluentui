@@ -111,10 +111,11 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
+  /* webkit, firefox */
   :host(:not(:has([slot='control']))) slot[name='control']::before {
     content: var(--_initial-display);
   }
-
+  /* chromium */
   @scope {
     :scope:not(:has([slot='control'])) slot[name='control']::before {
       content: var(--_initial-display);
