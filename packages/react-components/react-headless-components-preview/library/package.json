@@ -26,6 +26,7 @@
     "@fluentui/react-badge": "^9.5.6",
     "@fluentui/react-breadcrumb": "^9.4.6",
     "@fluentui/react-button": "^9.11.1",
+    "@fluentui/react-calendar-preview": "*",
     "@fluentui/react-card": "^9.7.3",
     "@fluentui/react-checkbox": "^9.6.5",
     "@fluentui/react-color-picker": "^9.3.1",
@@ -150,6 +151,16 @@
       "require": {
         "types": "./dist/button.d.cts",
         "default": "./lib-commonjs/button.cjs"
+      }
+    },
+    "./calendar": {
+      "import": {
+        "types": "./dist/calendar.d.ts",
+        "default": "./lib/calendar.js"
+      },
+      "require": {
+        "types": "./dist/calendar.d.cts",
+        "default": "./lib-commonjs/calendar.cjs"
       }
     },
     "./card": {
