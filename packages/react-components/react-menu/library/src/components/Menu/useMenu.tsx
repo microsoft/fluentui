@@ -18,8 +18,8 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
-  useFirstMount,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -186,11 +186,39 @@ export const useMenuBase_unstable = (
     },
   });
 
-  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef);
+  const triggerRefVersion = React.useRef(0);
+  const trackTriggerRegistration = React.useCallback(() => {
+    triggerRefVersion.current += 1;
+  }, []);
+  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef, trackTriggerRegistration);
   const menuPopoverRef = useMergedRefs(containerRef, safeZoneHandle.containerRef);
+
+  const hasMenuTrigger = menuTrigger !== undefined;
+  useIsomorphicLayoutEffect(() => {
+    if (props.unstable_triggerElement === undefined) {
+      return;
+    }
+    if (hasMenuTrigger) {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.warn('Menu: unstable_triggerElement cannot be combined with MenuTrigger.');
+      }
+      return;
+    }
+
+    triggerRef(props.unstable_triggerElement);
+    const registrationVersion = triggerRefVersion.current;
+    return () => {
+      // A rendered trigger may attach before this effect's cleanup in the same commit.
+      if (triggerRefVersion.current === registrationVersion) {
+        triggerRef(null);
+      }
+    };
+  }, [props.unstable_triggerElement, hasMenuTrigger, triggerRef]);
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
+    disableAutoFocus: props.unstable_disableAutoFocus,
     hoverDelay,
     isSubmenu,
     setContextTarget,
@@ -270,7 +298,7 @@ const useMenuOpenState = (
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'> & { disableAutoFocus?: boolean },
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
@@ -370,14 +398,15 @@ const useMenuOpenState = (
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
-  const firstMount = useFirstMount();
+  const wasOpen = React.useRef(false);
   React.useEffect(() => {
     if (open) {
-      focusFirst();
+      if (!state.disableAutoFocus) {
+        focusFirst();
+      }
     } else {
-      // Skip the initial render — focus should only be restored when the menu
-      // transitions from open → closed, not on mount.
-      if (!firstMount) {
+      // Restore only on close, not when an autofocus preference changes while closed.
+      if (wasOpen.current) {
         if (
           // Focus landed on <body> after the popover was removed from the DOM,
           // meaning the user's focus has nowhere meaningful to go.
@@ -398,9 +427,16 @@ const useMenuOpenState = (
         }
       }
     }
-    // firstMount change should not re-run this effect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
+    wasOpen.current = open;
+  }, [
+    state.triggerRef,
+    state.isSubmenu,
+    state.disableAutoFocus,
+    open,
+    focusFirst,
+    targetDocument,
+    state.menuPopoverRef,
+  ]);
 
   return [open, setOpen] as const;
 };

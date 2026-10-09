@@ -21,6 +21,60 @@ const trigger = <button key="trigger">trigger</button>;
 const popover = <div key="popover">popover</div>;
 
 describe('useMenu_unstable', () => {
+  describe('external trigger registration', () => {
+    it('registers and replaces the external element', () => {
+      const first = document.createElement('button');
+      const second = document.createElement('input');
+      const { result, rerender } = renderHook(
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        ({ element }) => useMenu_unstable({ children: popover, unstable_triggerElement: element }),
+        { initialProps: { element: first as HTMLElement } },
+      );
+
+      expect(result.current.triggerRef.current).toBe(first);
+      rerender({ element: second });
+      expect(result.current.triggerRef.current).toBe(second);
+    });
+
+    it.each([null, undefined])('unregisters when the element becomes %s', element => {
+      const { result, rerender } = renderHook(
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        ({ external }) => useMenu_unstable({ children: popover, unstable_triggerElement: external }),
+        { initialProps: { external: document.createElement('button') as HTMLElement | null | undefined } },
+      );
+
+      rerender({ external: element });
+      expect(result.current.triggerRef.current).toBeNull();
+    });
+
+    it('clears external registration on unmount', () => {
+      const { result, unmount } = renderHook(() =>
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        useMenu_unstable({ children: popover, unstable_triggerElement: document.createElement('button') }),
+      );
+      const ref = result.current.triggerRef;
+      unmount();
+      expect(ref.current).toBeNull();
+    });
+
+    it('ignores the external element when an internal trigger is supplied', () => {
+      const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      try {
+        const { result } = renderHook(() =>
+          useMenu_unstable({
+            children: [trigger, popover],
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            unstable_triggerElement: document.createElement('button'),
+          }),
+        );
+        expect(result.current.triggerRef.current).toBeUndefined();
+        expect(warning).toHaveBeenCalledWith('Menu: unstable_triggerElement cannot be combined with MenuTrigger.');
+      } finally {
+        warning.mockRestore();
+      }
+    });
+  });
+
   describe('components and slots', () => {
     it('returns a surfaceMotion component', () => {
       const { result } = renderHook(() => useMenu_unstable({ children: [trigger, popover] }));

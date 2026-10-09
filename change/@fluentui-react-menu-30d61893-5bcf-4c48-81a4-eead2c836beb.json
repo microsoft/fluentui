@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-menu): add opt-in autofocus suppression and external trigger registration",
+  "packageName": "@fluentui/react-menu",
+  "email": "paulmardling@microsoft.com"
+}
