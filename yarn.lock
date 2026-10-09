@@ -2495,15 +2495,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/devtools@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@floating-ui/devtools@npm:0.2.3"
-  peerDependencies:
-    "@floating-ui/dom": ^1.0.0
-  checksum: 10c0/f4e1c830e1806ac4d20e02d3bc06255c24858a52c1b96516fc2d145c0ab8f016910667246be2b14bc63dab8e9c12bea46bc4757bf0c24416c612541f5822f7e5
-  languageName: node
-  linkType: hard
-
 "@floating-ui/dom@npm:1.6.12, @floating-ui/dom@npm:^1.6.12":
   version: 1.6.12
   resolution: "@floating-ui/dom@npm:1.6.12"
@@ -5291,8 +5282,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-positioning@workspace:packages/react-components/react-positioning/library"
   dependencies:
-    "@floating-ui/devtools": "npm:^0.2.3"
-    "@floating-ui/dom": "npm:^1.6.12"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@fluentui/react-utilities": "npm:^9.26.7"

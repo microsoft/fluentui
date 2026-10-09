@@ -1,24 +1,12 @@
 'use client';
 
-import { devtools } from '@floating-ui/devtools';
-import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import type { Middleware, Placement, Strategy } from './floating';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
-import {
-  shift as shiftMiddleware,
-  flip as flipMiddleware,
-  coverTarget as coverTargetMiddleware,
-  maxSize as maxSizeMiddleware,
-  resetMaxSize as resetMaxSizeMiddleware,
-  offset as offsetMiddleware,
-  intersecting as intersectingMiddleware,
-  matchTargetSize as matchTargetSizeMiddleware,
-} from './middleware';
+import type { PositioningPlugin, PositioningPluginMiddleware } from './plugins/types';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
-import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
-import { devtoolsCallback } from './utils/devtools';
+import { toFloatingUIPlacement } from './utils';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
 /**
@@ -105,7 +93,10 @@ function usePositioningConfigFn(
 /**
  * @internal
  */
-export function usePositioningOptions(options: PositioningOptions): (
+export function usePositioningOptions(
+  options: PositioningOptions,
+  plugins: readonly PositioningPlugin[],
+): (
   container: HTMLElement,
   arrow: HTMLElement | null,
 ) => {
@@ -115,7 +106,7 @@ export function usePositioningOptions(options: PositioningOptions): (
   disableUpdateOnResize?: boolean;
   useTransform?: boolean;
 } {
-  const { dir, targetDocument } = useFluent();
+  const { dir } = useFluent();
   const isRtl = dir === 'rtl';
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
@@ -126,56 +117,17 @@ export function usePositioningOptions(options: PositioningOptions): (
 
   return React.useCallback(
     (container: HTMLElement, arrow: HTMLElement | null) => {
-      const hasScrollableElement = hasScrollParent(container);
-
       const optionsAfterEnhancement = configFn(container, arrow);
-      const {
-        autoSize,
-        disableUpdateOnResize,
-        matchTargetSize,
-        offset,
-        coverTarget,
-        flipBoundary,
-        overflowBoundary,
-        useTransform,
-        overflowBoundaryPadding,
-        pinned,
-        position,
-        arrowPadding,
-        strategy,
-        align,
-        fallbackPositions,
-        shiftToCoverTarget,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        unstable_disableTether,
-      } = optionsAfterEnhancement;
-      const normalizedAutoSize = normalizeAutoSize(autoSize);
+      const { align, position, strategy, disableUpdateOnResize, useTransform } = optionsAfterEnhancement;
 
-      const middleware = [
-        normalizedAutoSize && resetMaxSizeMiddleware(normalizedAutoSize),
-        matchTargetSize && matchTargetSizeMiddleware(),
-        offset && offsetMiddleware(offset),
-        coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
-        shiftMiddleware({
-          container,
-          hasScrollableElement,
-          overflowBoundary,
-          disableTether: unstable_disableTether,
-          overflowBoundaryPadding,
-          isRtl,
-          shiftToCoverTarget,
-        }),
-        normalizedAutoSize &&
-          maxSizeMiddleware(normalizedAutoSize, { container, overflowBoundary, overflowBoundaryPadding, isRtl }),
-        intersectingMiddleware(),
-        arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
-        hideMiddleware({ strategy: 'referenceHidden' }),
-        hideMiddleware({ strategy: 'escaped' }),
-        process.env.NODE_ENV !== 'production' &&
-          targetDocument &&
-          devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
-      ].filter(Boolean) as Middleware[];
+      const entries: PositioningPluginMiddleware[] = [];
+      plugins.forEach(plugin => {
+        const created = plugin({ container, arrow, options: optionsAfterEnhancement, isRtl });
+        if (created) {
+          entries.push(...(Array.isArray(created) ? created : [created]));
+        }
+      });
+      const middleware = entries.sort((a, b) => a.order - b.order).map(entry => entry.middleware);
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
 
@@ -188,6 +140,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         useTransform,
       };
     },
-    [configFn, isRtl, targetDocument, positionFixed],
+    [configFn, isRtl, positionFixed, plugins],
   );
 }

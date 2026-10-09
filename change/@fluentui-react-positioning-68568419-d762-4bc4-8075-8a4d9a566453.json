@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: inline a trimmed, synchronous port of Floating UI instead of depending on @floating-ui/dom",
+  "packageName": "@fluentui/react-positioning",
+  "email": "dmytrokirpa@microsoft.com"
+}

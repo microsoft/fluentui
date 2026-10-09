@@ -1,30 +1,15 @@
-import type { Middleware } from '@floating-ui/dom';
-import { parseFloatingUIPlacement } from '../utils/index';
+import type { Middleware } from '../floating';
 
 export function coverTarget(): Middleware {
   return {
     name: 'coverTarget',
-    fn: middlewareArguments => {
-      const { placement, rects, x, y } = middlewareArguments;
-      const basePlacement = parseFloatingUIPlacement(placement).side;
-      const newCoords = { x, y };
+    fn: ({ placement, rects: { reference }, x, y }) => {
+      const side = placement.split('-')[0];
 
-      switch (basePlacement) {
-        case 'bottom':
-          newCoords.y -= rects.reference.height;
-          break;
-        case 'top':
-          newCoords.y += rects.reference.height;
-          break;
-        case 'left':
-          newCoords.x += rects.reference.width;
-          break;
-        case 'right':
-          newCoords.x -= rects.reference.width;
-          break;
-      }
-
-      return newCoords;
+      return {
+        x: x + (side === 'left' ? reference.width : side === 'right' ? -reference.width : 0),
+        y: y + (side === 'top' ? reference.height : side === 'bottom' ? -reference.height : 0),
+      };
     },
   };
 }
