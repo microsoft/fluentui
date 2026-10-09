@@ -1,10 +1,10 @@
-import { computePosition } from '@floating-ui/dom';
-import type { Placement } from '@floating-ui/dom';
+import { computePosition } from './floating';
+import type { Placement } from './floating';
 import { createPositionManager } from './createPositionManager';
 import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';
 
-jest.mock('@floating-ui/dom', () => ({
+jest.mock('./floating', () => ({
   computePosition: jest.fn(),
 }));
 
@@ -12,9 +12,8 @@ const computePositionMock = computePosition as jest.MockedFunction<typeof comput
 
 /**
  * Flush the microtask queue.
- * createPositionManager uses debounce (Promise.resolve().then → forceUpdate)
- * followed by computePosition(...).then → dispatch event, requiring multiple
- * microtask cycles to fully resolve.
+ * createPositionManager uses debounce (Promise.resolve().then → forceUpdate),
+ * which then computes the position and dispatches the event synchronously.
  */
 const flushMicrotasks = async () => {
   for (let i = 0; i < 5; i++) {
@@ -61,7 +60,7 @@ describe('createPositionManager', () => {
     'left-start',
     'left-end',
   ] as Placement[])('dispatches POSITIONING_END_EVENT with placement "%s"', async (placement: Placement) => {
-    computePositionMock.mockResolvedValue({
+    computePositionMock.mockReturnValue({
       x: 10,
       y: 20,
       placement,
@@ -96,7 +95,7 @@ describe('createPositionManager', () => {
 
   it('dispatches event with computed placement when middleware changes it', async () => {
     // Request 'top' but middleware flips to 'bottom'
-    computePositionMock.mockResolvedValue({
+    computePositionMock.mockReturnValue({
       x: 10,
       y: 20,
       placement: 'bottom',
@@ -130,7 +129,7 @@ describe('createPositionManager', () => {
   });
 
   it('dispatches event with hide middleware visibility flags', async () => {
-    computePositionMock.mockResolvedValue({
+    computePositionMock.mockReturnValue({
       x: 10,
       y: 20,
       placement: 'bottom',
@@ -174,7 +173,7 @@ describe('createPositionManager', () => {
   });
 
   it('does not report hide flags when the layout viewport is unavailable', async () => {
-    computePositionMock.mockResolvedValue({
+    computePositionMock.mockReturnValue({
       x: 0,
       y: 0,
       placement: 'bottom',
@@ -207,17 +206,7 @@ describe('createPositionManager', () => {
     expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
   });
 
-  it('does not dispatch event after dispose', async () => {
-    // Use a deferred promise so we can control when computePosition resolves
-    let resolveCompute!: (value: Awaited<ReturnType<typeof computePosition>>) => void;
-
-    computePositionMock.mockImplementation(
-      () =>
-        new Promise(resolve => {
-          resolveCompute = resolve;
-        }),
-    );
-
+  it('does not compute position or dispatch event after dispose', async () => {
     const { container, target } = createTestElements();
     const listener = jest.fn();
     container.addEventListener(POSITIONING_END_EVENT, listener);
@@ -232,24 +221,12 @@ describe('createPositionManager', () => {
       disableUpdateOnResize: true,
     });
 
-    // Let debounce microtask fire so computePosition is called
-    await flushMicrotasks();
-
-    // Dispose before the promise resolves
+    // Dispose before the debounced update fires
     manager.dispose();
 
-    // Now resolve the pending computePosition
-    resolveCompute({
-      x: 10,
-      y: 20,
-      placement: 'bottom',
-      strategy: 'absolute',
-      middlewareData: mockMiddlewareData,
-    });
-
-    // Allow the .then() to run
     await flushMicrotasks();
 
+    expect(computePositionMock).not.toHaveBeenCalled();
     expect(listener).not.toHaveBeenCalled();
   });
 });

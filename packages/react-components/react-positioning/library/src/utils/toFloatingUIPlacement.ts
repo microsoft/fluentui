@@ -1,46 +1,38 @@
-import type { Placement, Side, Alignment as FloatingUIAlignment } from '@floating-ui/dom';
+import type { Placement } from '../floating';
 import type { Alignment, Position } from '../types';
-
-type PlacementPosition = Side;
-type PlacementAlign = FloatingUIAlignment;
-
-const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => ({
-  above: 'top',
-  below: 'bottom',
-  before: rtl ? 'right' : 'left',
-  after: rtl ? 'left' : 'right',
-});
-
-// Floating UI automatically flips alignment
-// https://github.com/floating-ui/floating-ui/issues/1563
-const getAlignmentMap = (): Record<Alignment, PlacementAlign | undefined> => ({
-  start: 'start',
-  end: 'end',
-  top: 'start',
-  bottom: 'end',
-  center: undefined,
-});
-
-const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
-  const positionedVertically = p === 'above' || p === 'below';
-  const alignedVertically = a === 'top' || a === 'bottom';
-
-  return (positionedVertically && alignedVertically) || (!positionedVertically && !alignedVertically);
-};
 
 /**
  * Maps internal positioning values to Floating UI placement
  * @see positioningHelper.test.ts for expected placement values
  */
 export const toFloatingUIPlacement = (align?: Alignment, position?: Position, rtl?: boolean): Placement | undefined => {
-  const alignment = shouldAlignToCenter(position, align) ? 'center' : align;
-
-  const computedPosition = position && getPositionMap(rtl)[position];
-  const computedAlignment = alignment && getAlignmentMap()[alignment];
-
-  if (computedPosition && computedAlignment) {
-    return `${computedPosition}-${computedAlignment}` as Placement;
+  if (!position) {
+    return undefined;
   }
 
-  return computedPosition;
+  const positionedVertically = position === 'above' || position === 'below';
+  const alignedVertically = align === 'top' || align === 'bottom';
+
+  // `before` is on the left (right in RTL), `after` is the opposite
+  const side = positionedVertically
+    ? position === 'above'
+      ? 'top'
+      : 'bottom'
+    : (position === 'before') !== Boolean(rtl)
+    ? 'left'
+    : 'right';
+
+  // Aligning to the center is the absence of an alignment in Floating UI
+  // Floating UI automatically flips alignment
+  // https://github.com/floating-ui/floating-ui/issues/1563
+  const alignment =
+    positionedVertically === alignedVertically
+      ? undefined
+      : align === 'start' || align === 'top'
+      ? 'start'
+      : align === 'end' || align === 'bottom'
+      ? 'end'
+      : undefined;
+
+  return alignment ? `${side}-${alignment}` : side;
 };

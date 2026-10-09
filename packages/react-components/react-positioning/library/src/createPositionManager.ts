@@ -1,5 +1,5 @@
-import { computePosition } from '@floating-ui/dom';
-import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import { computePosition } from './floating';
+import type { Middleware, Placement, Strategy } from './floating';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
@@ -122,58 +122,50 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     Object.assign(container.style, { position: strategy });
-    computePosition(target, container, { placement, middleware, strategy })
-      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        // Promise can still resolve after destruction
-        // early return to avoid applying outdated position
-        if (isDestroyed) {
-          return;
-        }
 
-        const positioningMiddlewareData = isLayoutViewportUnavailable(container)
-          ? {
-              ...middlewareData,
-              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
-            }
-          : middlewareData;
+    try {
+      const {
+        x,
+        y,
+        middlewareData,
+        placement: computedPlacement,
+      } = computePosition(target, container, { placement, middleware, strategy });
 
-        writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
-        writeContainerUpdates({
-          container,
-          middlewareData: positioningMiddlewareData,
-          placement: computedPlacement,
-          coordinates: { x, y },
-          lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
-          strategy,
-          useTransform,
-        });
+      const positioningMiddlewareData = isLayoutViewportUnavailable(container)
+        ? {
+            ...middlewareData,
+            hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
+          }
+        : middlewareData;
 
-        container.dispatchEvent(
-          new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
-            detail: {
-              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
-              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
-              // types into the public API surface.
-              placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
-            },
-          }),
-        );
-      })
-      .catch(err => {
-        // https://github.com/floating-ui/floating-ui/issues/1845
-        // FIXME for node > 14
-        // node 15 introduces promise rejection which means that any components
-        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
-        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
-        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
-        // will actually be counter productive
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.error('[usePositioning]: Failed to calculate position', err);
-        }
+      writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
+      writeContainerUpdates({
+        container,
+        middlewareData: positioningMiddlewareData,
+        placement: computedPlacement,
+        coordinates: { x, y },
+        lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
+        strategy,
+        useTransform,
       });
+
+      container.dispatchEvent(
+        new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+          detail: {
+            placement: computedPlacement satisfies PositioningPlacement,
+            escaped: positioningMiddlewareData.hide?.escaped ?? false,
+            referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+          },
+        }),
+      );
+    } catch (err) {
+      // The container or target can be detached from the DOM (or the document torn down) by the time the debounced
+      // update runs, in which case measuring them throws. Logging in tests would only add noise.
+      if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
+        console.error('[usePositioning]: Failed to calculate position', err);
+      }
+    }
   };
 
   const updatePosition = debounce(() => forceUpdate());
@@ -181,10 +173,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const dispose = () => {
     isDestroyed = true;
 
-    if (targetWindow) {
-      targetWindow.removeEventListener('scroll', updatePosition);
-      targetWindow.removeEventListener('resize', updatePosition);
-    }
+    targetWindow.removeEventListener('scroll', updatePosition);
+    targetWindow.removeEventListener('resize', updatePosition);
 
     scrollParents.forEach(scrollParent => {
       scrollParent.removeEventListener('scroll', updatePosition);
@@ -194,10 +184,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
     resizeObserver?.disconnect();
   };
 
-  if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
-    targetWindow.addEventListener('resize', updatePosition);
-  }
+  targetWindow.addEventListener('scroll', updatePosition, { passive: true });
+  targetWindow.addEventListener('resize', updatePosition);
 
   // Update the position on initialization
   updatePosition();

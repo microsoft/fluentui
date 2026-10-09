@@ -1,8 +1,7 @@
 'use client';
 
-import { devtools } from '@floating-ui/devtools';
-import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import { hide as hideMiddleware, arrow as arrowMiddleware } from './floating';
+import type { Middleware, Placement, Strategy } from './floating';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
@@ -18,7 +17,6 @@ import {
 } from './middleware';
 import type { PositioningConfigurationFn, PositioningConfigurationFnOptions, PositioningOptions } from './types';
 import { toFloatingUIPlacement, hasScrollParent, normalizeAutoSize } from './utils';
-import { devtoolsCallback } from './utils/devtools';
 import { usePositioningConfiguration } from './PositioningConfigurationContext';
 
 /**
@@ -115,7 +113,7 @@ export function usePositioningOptions(options: PositioningOptions): (
   disableUpdateOnResize?: boolean;
   useTransform?: boolean;
 } {
-  const { dir, targetDocument } = useFluent();
+  const { dir } = useFluent();
   const isRtl = dir === 'rtl';
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
@@ -172,9 +170,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
-        process.env.NODE_ENV !== 'production' &&
-          targetDocument &&
-          devtools(targetDocument, devtoolsCallback(optionsAfterEnhancement)),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -188,6 +183,6 @@ export function usePositioningOptions(options: PositioningOptions): (
         useTransform,
       };
     },
-    [configFn, isRtl, targetDocument, positionFixed],
+    [configFn, isRtl, positionFixed],
   );
 }

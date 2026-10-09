@@ -1,4 +1,4 @@
-import type { Side, Placement, Alignment } from '@floating-ui/dom';
+import type { Side, Placement, Alignment } from '../floating';
 
 /**
  * Parses Floating UI placement and returns the different components
