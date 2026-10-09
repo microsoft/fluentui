@@ -269,29 +269,32 @@ describe('bundle-size-fixtures-sync generator', () => {
     });
   });
 
-  it.each(['entryPoints', 'baseHooks'] as const)('preserves quotes, backslashes and newlines in a %s fixture name', async kind => {
-    const name = `headless: user's "components" \\ path\nnext line`;
-    const project = setupProject({
-      name: 'react-headless',
-      projectConfig: {
-        metadata: {
-          exportMap: { root: false, subpathEntryPoints: ['src/*.ts'] },
-          bundleSizeFixtures: { 'Special.fixture.js': { kind, name } },
+  it.each(['entryPoints', 'baseHooks'] as const)(
+    'emits valid JavaScript preserving the exact %s fixture name',
+    async kind => {
+      const name = `headless: user's "components" \\ path\nnext line`;
+      const project = setupProject({
+        name: 'react-headless',
+        projectConfig: {
+          metadata: {
+            bundleSizeFixtures: { 'Special.fixture.js': { kind, name } },
+          },
         },
-      },
-      sourceFiles: { 'src/badge.ts': 'export {};' },
-    });
+      });
 
-    await generator(tree);
+      await generator(tree);
 
-    const fixture = project.readFixture('Special.fixture.js')!;
-    const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
-    const assignment = sourceFile.statements.find(ts.isExportAssignment)!;
-    const property = (assignment.expression as ts.ObjectLiteralExpression).properties.find(ts.isPropertyAssignment)!;
+      const fixture = project.readFixture('Special.fixture.js')!;
+      const { diagnostics } = ts.transpileModule(fixture, {
+        fileName: 'fixture.js',
+        compilerOptions: { allowJs: true, module: ts.ModuleKind.ESNext },
+        reportDiagnostics: true,
+      });
 
-    expect(ts.isStringLiteral(property.initializer)).toBe(true);
-    expect((property.initializer as ts.StringLiteral).text).toBe(name);
-  });
+      expect(diagnostics).toEqual([]);
+      expect(fixture).toContain(String.raw`name: 'headless: user\'s "components" \\ path\nnext line',`);
+    },
+  );
 
   it('leaves projects without a fixture declaration alone', async () => {
     const project = setupProject({ name: 'react-button' });
