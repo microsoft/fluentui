@@ -1,9 +1,8 @@
 type TsOriginalCompilerOptions = import('typescript').CompilerOptions;
-interface CompilerOptions
-  extends Omit<
-    RemoveRecordIndexSignature<TsOriginalCompilerOptions>,
-    'module' | 'target' | 'jsx' | 'moduleResolution'
-  > {
+interface CompilerOptions extends Omit<
+  RemoveRecordIndexSignature<TsOriginalCompilerOptions>,
+  'module' | 'target' | 'jsx' | 'moduleResolution'
+> {
   module?: keyof typeof import('typescript').ModuleKind;
   target?: keyof typeof import('typescript').ScriptTarget;
   jsx?: 'none' | 'preserve' | 'react' | 'react-native' | 'react-jsx' | 'react-jsxdev';

@@ -1,0 +1,40 @@
+{
+  "name": "@fluentui/postcss-tailwind-css-modules",
+  "version": "0.1.0",
+  "description": "PostCSS plugin that keeps Tailwind named group/peer markers global under CSS Modules",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "tailwindcss",
+    "css-modules"
+  ],
+  "peerDependencies": {
+    "postcss": "^8.4.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "src/index.js",
+    "src/index.d.ts"
+  ]
+}

@@ -1,0 +1,9 @@
+@reference '#theme';
+
+/* ToastFooter has no inverted branch: Griffel ships it no makeStyles at all. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply col-start-2 col-end-3 flex items-center gap-14 pt-vertical-l;
+  }
+}

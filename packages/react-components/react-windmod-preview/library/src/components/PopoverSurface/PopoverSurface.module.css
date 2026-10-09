@@ -1,0 +1,144 @@
+@reference '#theme';
+
+/* The root is a native <dialog>: popover="auto" when non-modal, showModal() under trapFocus.
+   Placement rides data-placement on this element. The arrow is rendered without a className, so
+   it is reached by descendant selector and keys placement off the root's named group.
+   The arrow's geometry, its per-axis rules and the filter-shadow token gap are documented once in
+   Tooltip.module.css; only what differs here is restated. */
+
+@layer fui.components.l1 {
+  /* No box-sizing here, deliberately: Griffel's surface declares none and so computes content-box,
+     and consumers that pin a length against it (InfoButton's max-width, AvatarGroupPopover's width)
+     are authoring Griffel's numbers for that box. `max-h-none`, `max-w-none` and `overflow-visible`
+     are not preferences either — they undo native <dialog> UA defaults that would otherwise clamp
+     the surface and clip the arrow. Nor is there a `cursor`: Griffel's Popover authors none, so the
+     body copy keeps its I-beam. Tooltip is the component that authors `cursor: default`. */
+  .root {
+    @apply max-h-none max-w-none overflow-visible rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
+
+    /* Griffel clamps floating-ui's arrow at 2 × borderRadiusMedium. */
+    --fui-positioning-arrow-cross: 8px;
+
+    /* `filter` takes no box-shadow, so the elevation is spelled as two `drop-shadow()` calls
+       and cannot read a `--shadow-*` token. The geometry is `--shadow-16`'s, so it repeats that
+       token's base-scale ramp by hand — otherwise this would be one of the only elevations in
+       the tree still frozen in px as the root font size grows. */
+    filter: drop-shadow(0 0 calc(2px * var(--base-scale)) var(--color-neutral-shadow-ambient))
+      drop-shadow(0 calc(8px * var(--base-scale)) calc(16px * var(--base-scale)) var(--color-neutral-shadow-key));
+
+    /* showModal() paints a translucent user-agent backdrop; the Griffel surface paints none. */
+    @variant backdrop {
+      @apply bg-transparent;
+    }
+
+    /* The height and offset are inherited from the size class on this element. */
+    & [data-arrow] {
+      @apply absolute -z-1 size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
+
+      @variant before {
+        @apply -m-thin block size-full rounded-bl-small border-thin border-solid border-transparent-stroke bg-inherit;
+
+        clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+      }
+
+      @variant group-placement-above/fui-popover-surface {
+        @apply bottom-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: -45deg;
+      }
+
+      @variant group-placement-below/fui-popover-surface {
+        @apply top-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 135deg;
+      }
+
+      @variant group-placement-before/fui-popover-surface {
+        @apply right-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 225deg;
+      }
+
+      @variant group-placement-after/fui-popover-surface {
+        @apply left-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 45deg;
+      }
+
+      @variant rtl {
+        @variant group-placement-before/fui-popover-surface {
+          @apply right-auto left-(--fui-positioning-arrow-offset);
+
+          --fui-positioning-arrow-angle: 45deg;
+        }
+
+        @variant group-placement-after/fui-popover-surface {
+          @apply right-(--fui-positioning-arrow-offset) left-auto;
+
+          --fui-positioning-arrow-angle: 225deg;
+        }
+      }
+
+      /* An explicit inset, not `inset-x-0 mx-auto`. Over-constrained auto margins leave one
+         LayoutUnit (1/64 px) of the free space unassigned, and Blink hands that quantum to the
+         margin on the containing block's end side — so the same box lands 1/64 px further right
+         under `dir="rtl"` than under `dir="ltr"`. Griffel pins floating-ui's own numeric inset,
+         which has no such term. This calc reproduces that inset to the LayoutUnit at every surface
+         width in both directions. */
+      @variant group-placement-above-centered/fui-popover-surface, group-placement-below-centered/fui-popover-surface {
+        @apply left-[calc(50%-var(--fui-positioning-arrow-height)/2)];
+      }
+
+      @variant group-placement-before-centered/fui-popover-surface, group-placement-after-centered/fui-popover-surface {
+        @apply inset-y-0 my-auto;
+      }
+
+      @variant group-placement-start/fui-popover-surface {
+        @apply start-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-end/fui-popover-surface {
+        @apply end-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-top/fui-popover-surface {
+        @apply top-(--fui-positioning-arrow-cross);
+      }
+
+      @variant group-placement-bottom/fui-popover-surface {
+        @apply bottom-(--fui-positioning-arrow-cross);
+      }
+    }
+  }
+
+  /* 8.484px = 6px × √2 — paired with ARROW_HEIGHTS in popoverOffset.ts. */
+  .small {
+    @apply p-12;
+
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+  }
+
+  /* 11.312px = 8px × √2. */
+  .medium {
+    @apply p-16;
+
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+
+  .large {
+    @apply p-20;
+
+    --fui-positioning-arrow-height: 11.312px;
+    --fui-positioning-arrow-offset: -5.656px;
+  }
+
+  .inverted {
+    @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
+  }
+
+  .brand {
+    @apply bg-brand-background text-neutral-foreground-on-brand;
+  }
+}

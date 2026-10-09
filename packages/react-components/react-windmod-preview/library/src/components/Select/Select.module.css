@@ -1,0 +1,136 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Select-modifier block order is the cascade: every selector below is :where()-flat, so source
+     order alone arbitrates. Appearance blocks after .select, .outlineInteractive after .outline,
+     .invalid* after every appearance block, .disabled* last. The order follows Griffel's
+     mergeClasses list, NOT its makeStyles key order — the two differ, and only the first is a
+     cascade. .disabledUnderline re-asserts its forced-colors border because Griffel wins that pair
+     through @griffel/core's media-bucket ordering, which flat source order inverts. */
+  .root {
+    @apply relative flex flex-nowrap items-center font-base;
+
+    /* The gradient paints the bottom half of a radius-tall box for the reason Input's clip trims
+       one — see Input.module.css. */
+    @variant after {
+      @apply absolute inset-x-0 bottom-0 h-(--radius-medium) rounded-b-medium;
+
+      background-image: linear-gradient(
+        0deg,
+        var(--color-compound-brand-stroke) 0%,
+        var(--color-compound-brand-stroke) 50%,
+        transparent 50%,
+        transparent 100%
+      );
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant focus-within {
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+    }
+  }
+
+  .select {
+    @apply h-32 max-w-full grow cursor-pointer appearance-none rounded-medium border-thin border-solid border-transparent ps-horizontal-m pe-34 font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1 shadow-none;
+
+    @variant focus {
+      @apply outline-thick outline-transparent outline-solid;
+    }
+
+    @variant group-size-small/fui-select {
+      @apply h-24 ps-horizontal-s pe-26 text-base-200 leading-16/12;
+    }
+
+    @variant group-size-large/fui-select {
+      @apply h-40 ps-18 pe-48 text-base-400 leading-11/8;
+    }
+  }
+
+  .outline {
+    @apply border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .underline {
+    @apply rounded-none border-b-neutral-stroke-accessible bg-transparent-background;
+
+    & option {
+      @apply bg-neutral-background-1;
+    }
+  }
+
+  .filled-lighter {
+    @apply bg-neutral-background-1;
+  }
+
+  .filled-darker {
+    @apply bg-neutral-background-3;
+  }
+
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible;
+    }
+
+    @variant active {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible;
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .invalid-underline {
+    @variant not-focus-within {
+      @apply border-b-palette-red-border-2;
+    }
+  }
+
+  .disabled {
+    @apply cursor-not-allowed border-neutral-stroke-disabled bg-transparent-background text-neutral-foreground-disabled;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .disabled-underline {
+    @apply border-transparent-stroke-disabled border-b-neutral-stroke-disabled;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .icon {
+    @apply pointer-events-none absolute end-horizontal-m-nudge block size-20 text-icon-20 leading-100 text-neutral-stroke-accessible;
+
+    @variant icon {
+      @apply block;
+    }
+
+    @variant group-disabled/fui-select {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+
+    @variant group-size-small/fui-select {
+      @apply end-horizontal-s-nudge size-16 text-icon-16 leading-125;
+    }
+
+    @variant group-size-large/fui-select {
+      @apply end-horizontal-m size-24 text-icon-24 leading-20/24;
+    }
+  }
+}

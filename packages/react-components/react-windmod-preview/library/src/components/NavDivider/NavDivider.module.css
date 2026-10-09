@@ -1,0 +1,7 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @apply my-4 grow-0;
+  }
+}

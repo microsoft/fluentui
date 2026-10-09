@@ -1,0 +1,83 @@
+@reference '#theme';
+
+/* Overrides windmod Input's fui.components.l1 rules on the same elements; layer order carries
+   every one of them. Inside each block the size variants precede the not-focused padding, which
+   reverses them. */
+@layer fui.components.l2 {
+  .root {
+    @apply max-w-468 gap-x-0 ps-horizontal-s pe-horizontal-s;
+
+    @variant size-small {
+      @apply ps-horizontal-s-nudge pe-horizontal-s-nudge;
+    }
+
+    @variant size-large {
+      @apply ps-horizontal-m-nudge pe-horizontal-m-nudge;
+    }
+
+    @variant not-focused {
+      @apply pe-0;
+    }
+  }
+
+  .input {
+    @apply ps-horizontal-s-nudge pe-0;
+
+    /* Two rules, never one selector list: ::-webkit-search-decoration is unsupported in current
+       Chrome, and one unknown pseudo-element invalidates a whole list. */
+    &::-webkit-search-decoration {
+      @apply hidden;
+    }
+
+    &::-webkit-search-cancel-button {
+      @apply hidden;
+    }
+
+    @variant group-not-focused/fui-search-box {
+      @apply pe-horizontal-s;
+
+      @variant group-size-small/fui-search-box {
+        @apply pe-horizontal-s-nudge;
+      }
+
+      @variant group-size-large/fui-search-box {
+        @apply pe-horizontal-m-nudge;
+      }
+    }
+  }
+
+  .content-after {
+    @apply gap-x-horizontal-xs ps-horizontal-m;
+
+    @variant group-not-focused/fui-search-box {
+      @apply h-0 w-0 overflow-hidden ps-0;
+    }
+  }
+}
+
+@layer fui.components.l1 {
+  /* The dismiss slot is this component's own; Input classes only its parent. */
+  .dismiss {
+    @apply flex cursor-pointer text-neutral-foreground-3;
+
+    @variant icon {
+      @apply text-icon-20;
+    }
+
+    @variant group-disabled/fui-search-box {
+      @apply text-neutral-foreground-disabled;
+    }
+
+    @variant group-size-small/fui-search-box {
+      @variant icon {
+        @apply text-icon-16;
+      }
+    }
+
+    @variant group-size-large/fui-search-box {
+      @variant icon {
+        @apply text-icon-24;
+      }
+    }
+  }
+}

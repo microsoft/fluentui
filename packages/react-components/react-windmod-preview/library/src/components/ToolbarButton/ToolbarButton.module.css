@@ -1,0 +1,20 @@
+@reference '#theme';
+
+/* data-vertical here is the BUTTON's own stacking flag, not the toolbar's orientation: the
+   headless toolbar button reads it from its own prop and never from the toolbar context. */
+
+@layer fui.components.l2 {
+  .root {
+    @variant vertical-flag {
+      @apply flex-col;
+    }
+  }
+
+  .icon {
+    /* `m-0` is load-bearing: Griffel's shorthand beats Button's icon-spacing longhand through
+       mergeClasses, so a vertically stacked button drops the 6px gap between glyph and label. */
+    @variant group-vertical-flag/fui-toolbar-button {
+      @apply m-0 text-icon-24 leading-20/24;
+    }
+  }
+}

@@ -10,6 +10,18 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
+  // prettier 3 has no plugin auto-discovery - plugins must be declared explicitly.
+  // prettier-plugin-tailwindcss sorts Tailwind classes; in this repo its effect is
+  // sorting `@apply` lists in authored *.module.css files (windmod packages).
+  plugins: ['prettier-plugin-tailwindcss'],
+  // Tailwind v4 CSS-config mode: point the plugin at the canonical theme entry that
+  // component modules reference via `@reference '#theme'`.
+  tailwindStylesheet: './packages/react-components/react-tailwind-theme-preview/css/index.css',
+  // DO NOT add `tailwindFunctions: ['clsx']`: clsx argument order is semantic in this repo
+  // (module class first, group marker second, consumer className last) and the
+  // plugin may reorder across arguments. Class sorting in JS/TS call expressions is
+  // therefore deliberately NOT enabled; sorting applies to CSS `@apply` lists and
+  // class attributes.
   overrides: [
     {
       files: 'apps/vr-tests/**/*',

@@ -1,0 +1,121 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-grid max-w-fit cursor-pointer grid-rows-[1lh_minmax(0,auto)] gap-x-horizontal-m px-horizontal-s py-vertical-s-nudge align-middle font-base text-base-300 leading-20/14 text-neutral-foreground-3;
+
+    @variant size-large {
+      @apply py-vertical-s;
+    }
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant focus-within-visible {
+      @apply fui-focus-outline;
+    }
+
+    @variant enabled {
+      @variant not-checked {
+        @variant hover {
+          @apply text-neutral-foreground-2;
+        }
+
+        @variant active {
+          @apply text-neutral-foreground-1;
+        }
+      }
+
+      @variant checked {
+        @apply text-neutral-foreground-1;
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-default text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  .input {
+    @apply absolute top-0 h-full w-32 cursor-[inherit] opacity-0;
+
+    @variant group-label-before/fui-checkbox {
+      @apply end-0;
+    }
+
+    @variant group-label-after/fui-checkbox {
+      @apply start-0;
+    }
+
+    @variant group-size-large/fui-checkbox {
+      @apply w-36;
+    }
+  }
+
+  .indicator {
+    @apply pointer-events-none row-start-1 flex size-16 items-center justify-center self-center overflow-hidden rounded-small border-thin border-solid border-neutral-stroke-accessible fill-current text-icon-12 leading-20/12;
+
+    @variant group-size-large/fui-checkbox {
+      @apply size-20 text-icon-16 leading-125;
+    }
+
+    @variant group-enabled/fui-checkbox {
+      @variant group-not-checked/fui-checkbox {
+        @variant group-hover/fui-checkbox {
+          @apply border-neutral-stroke-accessible-hover;
+        }
+
+        @variant group-active/fui-checkbox {
+          @apply border-neutral-stroke-accessible-pressed;
+        }
+      }
+
+      @variant group-checked/fui-checkbox {
+        @variant group-not-checked-mixed/fui-checkbox {
+          @apply border-compound-brand-background bg-compound-brand-background text-neutral-foreground-inverted;
+
+          @variant group-hover/fui-checkbox {
+            @apply border-compound-brand-background-hover bg-compound-brand-background-hover;
+          }
+
+          @variant group-active/fui-checkbox {
+            @apply border-compound-brand-background-pressed bg-compound-brand-background-pressed;
+          }
+        }
+      }
+
+      @variant group-checked-mixed/fui-checkbox {
+        @apply border-compound-brand-stroke text-compound-brand-foreground-1;
+
+        @variant group-hover/fui-checkbox {
+          @apply border-compound-brand-stroke-hover text-compound-brand-foreground-1-hover;
+        }
+
+        @variant group-active/fui-checkbox {
+          @apply border-compound-brand-stroke-pressed text-compound-brand-foreground-1-pressed;
+        }
+      }
+    }
+
+    @variant group-disabled/fui-checkbox {
+      @apply border-neutral-stroke-disabled text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  .circular {
+    @apply rounded-circular;
+  }
+
+  .label {
+    @apply row-[1/span_2] cursor-[inherit] self-start font-base text-base-300 leading-20/14;
+  }
+}

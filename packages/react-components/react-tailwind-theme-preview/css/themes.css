@@ -1,0 +1,22 @@
+/*
+ * DO NOT EDIT — generated file.
+ *
+ * Generator:  packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Regenerate: node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js
+ * Verify:     node packages/react-components/react-tailwind-theme-preview/scripts/generate-tokens-css.js --check
+ *
+ * ALL SEVEN SHIPPED THEMES. A convenience aggregate, not the recommended import:
+ * pulling this in costs every theme. Import only `./css/themes/<name>.css` for the
+ * themes an application actually offers.
+ *
+ * Used by the `./styles.css` monolith build and by the storybook harness, both of
+ * which want the whole catalog by definition.
+ */
+
+@import './themes/web-light.css';
+@import './themes/web-dark.css';
+@import './themes/teams-light.css';
+@import './themes/teams-dark.css';
+@import './themes/teams-high-contrast.css';
+@import './themes/teams-light-v21.css';
+@import './themes/teams-dark-v21.css';

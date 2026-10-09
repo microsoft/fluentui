@@ -1,0 +1,15 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply inline-flex gap-x-horizontal-s;
+
+    @variant size-small {
+      @apply gap-x-horizontal-s-nudge;
+    }
+
+    @variant size-extra-small {
+      @apply gap-x-horizontal-xs;
+    }
+  }
+}

@@ -1,0 +1,207 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  /* Root-modifier block order is the cascade: every selector below is :where()-flat, so source
+     order alone arbitrates. .filled before .filledInteractive, .invalid after every interactive
+     block, .disabled last. */
+  .root {
+    @apply relative isolate inline-grid min-h-32 grid-cols-[1fr_calc(var(--spacing)*24)] grid-rows-[1fr_1fr] gap-x-horizontal-xs gap-y-0 rounded-medium bg-neutral-background-1 ps-horizontal-m-nudge align-middle;
+
+    @variant before {
+      @apply pointer-events-none absolute inset-0 z-10 rounded-medium border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible;
+    }
+
+    /* Underline geometry — see Input.module.css. */
+    @variant after {
+      @apply absolute inset-x-0 bottom-0 z-20 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    /* All four typography halves are restated, not just the two that change: family and weight
+       reach the medium size by inheritance, so without them here a surrounding typography scope
+       would also reach the small text. */
+    @variant size-small {
+      @apply min-h-24 ps-horizontal-s font-base text-base-200 leading-16/12 font-regular;
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  .underline {
+    @variant before {
+      @apply rounded-none border-x-0 border-t-0;
+    }
+  }
+
+  .filled-darker {
+    @apply bg-neutral-background-3;
+  }
+
+  .filled-lighter {
+    @apply bg-neutral-background-1;
+  }
+
+  .filled {
+    @variant before {
+      @apply border-transparent-stroke;
+    }
+  }
+
+  .outline-interactive {
+    @variant hover {
+      @variant before {
+        @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+      }
+    }
+
+    @variant active, focus-within {
+      @variant before {
+        @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+      }
+    }
+  }
+
+  .underline-interactive {
+    @variant after {
+      @apply rounded-none;
+    }
+
+    @variant hover {
+      @variant before {
+        @apply border-b-neutral-stroke-accessible-hover;
+      }
+    }
+
+    @variant active, focus-within {
+      @variant before {
+        @apply border-b-neutral-stroke-accessible-pressed;
+      }
+    }
+  }
+
+  .filled-interactive {
+    @variant hover, focus-within {
+      @variant before {
+        @apply border-transparent-stroke-interactive;
+      }
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @variant before {
+        @apply border-palette-red-border-2;
+      }
+    }
+  }
+
+  .disabled {
+    @apply cursor-not-allowed bg-transparent-background;
+
+    @variant before {
+      @apply border-neutral-stroke-disabled;
+
+      @variant forced-colors {
+        @apply border-[GrayText];
+      }
+    }
+  }
+
+  .input {
+    @apply col-start-1 col-end-2 row-start-1 row-end-3 w-full text-neutral-foreground-1 outline-none;
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant group-disabled/fui-spin-button {
+      @apply cursor-not-allowed bg-transparent-background text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+
+  /* Absolutely positioned on top of the grid placement, as the reference is. The placement alone
+     lands each button in the same box (the 24px column and 1fr rows are fixed), but a static grid
+     item rasterizes the stepper glyph's antialiased edge one grey level off the reference. */
+  .button {
+    @apply absolute col-start-2 inline-flex h-16 w-24 items-center justify-center px-5 text-neutral-foreground-3 outline-none;
+
+    @variant enabled {
+      @variant hover {
+        @apply cursor-pointer bg-subtle-background-hover text-neutral-foreground-3-hover;
+      }
+
+      @variant active, spin-active {
+        @apply bg-subtle-background-pressed text-neutral-foreground-3-pressed;
+      }
+    }
+
+    @variant disabled {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+    }
+  }
+
+  /* The stepper paddings are hand-computed against the 16px glyph artwork, not the spacing
+     scale, so they stay numeric. */
+  .increment {
+    @apply row-start-1 rounded-se-medium pt-4 pb-1;
+
+    @variant group-size-small/fui-spin-button {
+      @apply h-12 ps-4 pe-6 pt-3 pb-0;
+    }
+  }
+
+  .decrement {
+    @apply row-start-2 rounded-ee-medium pt-1 pb-4;
+
+    @variant group-size-small/fui-spin-button {
+      @apply h-12 ps-4 pe-6 pt-0 pb-3;
+    }
+  }
+
+  .button-filled-darker {
+    @variant enabled {
+      @variant hover {
+        @apply bg-neutral-background-3-hover;
+      }
+
+      @variant active, spin-active {
+        @apply bg-neutral-background-3-pressed;
+      }
+    }
+  }
+
+  .button-filled-lighter {
+    @variant enabled {
+      @variant hover {
+        @apply bg-neutral-background-1-hover;
+      }
+
+      @variant active, spin-active {
+        @apply bg-neutral-background-1-pressed;
+      }
+    }
+  }
+}

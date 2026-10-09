@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: match both path separators when detecting the addon registration so the addon options are not silently dropped on Windows",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

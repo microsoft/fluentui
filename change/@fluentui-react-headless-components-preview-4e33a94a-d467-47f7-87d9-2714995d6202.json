@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: reserve the scrollbar gutter while a modal dialog locks document scroll, so opening a dialog no longer shifts the page",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

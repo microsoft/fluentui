@@ -1,0 +1,11 @@
+@reference '#theme';
+
+/* Row 1 of the surface grid. The column span reaches line 4 unconditionally: Griffel narrows its
+   title to line 3 only to clear the close-button track of its DialogTitle action slot, which the
+   headless family has no slot for. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply col-start-1 col-end-4 row-start-1 row-end-1 font-base text-base-500 leading-140 font-semibold;
+  }
+}

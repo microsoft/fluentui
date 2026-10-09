@@ -1,0 +1,105 @@
+@reference '#theme';
+
+/* The content is a native popover=hint element; placement rides data-placement on it,
+   and the arrow's placement rules key off the content's group marker. */
+
+@layer fui.components.l1 {
+  .content {
+    @apply max-w-240 cursor-default overflow-visible rounded-medium border-thin border-solid border-transparent-stroke bg-neutral-background-1 px-11 pt-vertical-xs pb-vertical-s-nudge font-base text-base-200 leading-16/12 break-words text-neutral-foreground-1;
+
+    /* Cross-axis inset for aligned arrows; on the surface so consumer overrides inherit. */
+    --fui-positioning-arrow-cross: 8px;
+
+    /* `filter` takes no box-shadow, so the elevation is spelled as two `drop-shadow()` calls
+       and cannot read a `--shadow-*` token. The geometry is `--shadow-8`'s, so it repeats that
+       token's base-scale ramp by hand — otherwise this would be one of the only elevations in
+       the tree still frozen in px as the root font size grows. */
+    filter: drop-shadow(0 0 calc(2px * var(--base-scale)) var(--color-neutral-shadow-ambient))
+      drop-shadow(0 calc(4px * var(--base-scale)) calc(8px * var(--base-scale)) var(--color-neutral-shadow-key));
+  }
+
+  /* `appearance` is a look prop — it rides a module class. */
+  .inverted {
+    @apply bg-neutral-background-static text-neutral-foreground-static-inverted;
+  }
+
+  /* Rotated square, half carved by the ::before clip-path. 8.484px = 6px × √2 — paired
+     with ARROW_HEIGHT in Tooltip.tsx. Geometry is physical; rtl swaps before/after. */
+  .arrow {
+    @apply absolute -z-1 size-(--fui-positioning-arrow-height) rotate-(--fui-positioning-arrow-angle) rounded-bl-small bg-inherit bg-clip-content;
+
+    --fui-positioning-arrow-height: 8.484px;
+    --fui-positioning-arrow-offset: -4.242px;
+
+    @variant before {
+      @apply -m-thin block size-full rounded-bl-small border-thin border-solid border-transparent-stroke bg-inherit;
+
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
+
+    /* Main axis: the edge the arrow pokes out of, and its rotation. */
+    @variant group-placement-above/fui-tooltip {
+      @apply bottom-(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: -45deg;
+    }
+
+    @variant group-placement-below/fui-tooltip {
+      @apply top-(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: 135deg;
+    }
+
+    /* Logical before = physical left of the trigger in LTR → arrow on the right edge. */
+    @variant group-placement-before/fui-tooltip {
+      @apply right-(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: 225deg;
+    }
+
+    @variant group-placement-after/fui-tooltip {
+      @apply left-(--fui-positioning-arrow-offset);
+
+      --fui-positioning-arrow-angle: 45deg;
+    }
+
+    @variant rtl {
+      @variant group-placement-before/fui-tooltip {
+        @apply right-auto left-(--fui-positioning-arrow-offset);
+
+        --fui-positioning-arrow-angle: 45deg;
+      }
+
+      @variant group-placement-after/fui-tooltip {
+        @apply right-(--fui-positioning-arrow-offset) left-auto;
+
+        --fui-positioning-arrow-angle: 225deg;
+      }
+    }
+
+    /* Cross axis: centered when suffix-less, near-edge inset when aligned. */
+    @variant group-placement-above-centered/fui-tooltip, group-placement-below-centered/fui-tooltip {
+      @apply inset-x-0 mx-auto;
+    }
+
+    @variant group-placement-before-centered/fui-tooltip, group-placement-after-centered/fui-tooltip {
+      @apply inset-y-0 my-auto;
+    }
+
+    @variant group-placement-start/fui-tooltip {
+      @apply start-(--fui-positioning-arrow-cross);
+    }
+
+    @variant group-placement-end/fui-tooltip {
+      @apply end-(--fui-positioning-arrow-cross);
+    }
+
+    @variant group-placement-top/fui-tooltip {
+      @apply top-(--fui-positioning-arrow-cross);
+    }
+
+    @variant group-placement-bottom/fui-tooltip {
+      @apply bottom-(--fui-positioning-arrow-cross);
+    }
+  }
+}
