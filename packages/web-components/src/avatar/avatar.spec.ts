@@ -1,6 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import { getInitials } from '../utils/get-initials.js';
-import { AvatarAppearance, AvatarColor, AvatarSize, tagName } from './avatar.options.js';
+import { AvatarColor, AvatarSize, tagName } from './avatar.options.js';
 
 test.describe('Avatar', () => {
   test.use({
@@ -99,24 +99,6 @@ test.describe('Avatar', () => {
     await expect(element).toContainText('JJ');
   });
 
-  test('should set the `active` property to `active` when the `active` attribute is set', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { active: 'active' } });
-
-    await expect(element).toHaveJSProperty('active', 'active');
-  });
-
-  test('should set the `active` property to `inactive` when the `active` attribute is set to `inactive`', async ({
-    fastPage,
-  }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { active: 'inactive' } });
-
-    await expect(element).toHaveJSProperty('active', 'inactive');
-  });
-
   test('should have a data-color attribute of `neutral` when no color is provided', async ({ fastPage }) => {
     const { element } = fastPage;
 
@@ -175,22 +157,6 @@ test.describe('Avatar', () => {
         await expect(element).toHaveAttribute('size', `${size}`);
 
         await expect(element).toHaveJSProperty('size', size);
-      });
-    }
-  });
-
-  test('should set the `appearance` property to match the `appearance` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const appearance of Object.values(AvatarAppearance)) {
-      await test.step(appearance, async () => {
-        await fastPage.updateTemplate(element, { attributes: { appearance } });
-
-        await expect(element).toHaveJSProperty('appearance', appearance);
-
-        await expect(element).toHaveAttribute('appearance', appearance);
       });
     }
   });

@@ -1,10 +1,11 @@
 import { attr, FASTElement, nullableNumberConverter, observable, Updates } from '@microsoft/fast-element';
-import { swapStates } from '../utils/element-internals.js';
-import { ProgressBarValidationState } from './progress-bar.options.js';
+import type { ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
  * A Progress HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#progressbar | ARIA progressbar }.
+ *
+ * @presentational {ProgressBarValidationState | null} [validation-state=null] - The validation state of the progress bar.
  *
  * @public
  */
@@ -31,29 +32,6 @@ export class BaseProgressBar extends FASTElement {
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The validation state of the progress bar
-   * The validation state of the progress bar
-   *
-   * HTML Attribute: `validation-state`
-   *
-   * @public
-   */
-  @attr({ attribute: 'validation-state' })
-  public validationState: ProgressBarValidationState | null = null;
-
-  /**
-   * Handles changes to validation-state attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public validationStateChanged(
-    prev: ProgressBarValidationState | undefined,
-    next: ProgressBarValidationState | undefined,
-  ) {
-    swapStates(this.elementInternals, prev, next, ProgressBarValidationState);
-  }
 
   /**
    * The value of the progress

@@ -16,6 +16,7 @@
 }
 
 .control {
+  --control-border-color: var(--colorNeutralStroke1);
   appearance: none;
   background-color: var(--colorNeutralBackground1);
   border-radius: var(--borderRadiusMedium);
@@ -102,6 +103,7 @@
 }
 
 .control::before {
+  background-color: var(--colorNeutralStrokeAccessible);
   height: var(--strokeWidthThin);
 }
 
@@ -129,42 +131,42 @@
   transition-timing-function: var(--curveAccelerateMid);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control::before {
-  background-color: var(--colorNeutralStrokeAccessible);
-}
-
 :host([appearance='transparent']) .control {
   --control-border-color: var(--colorTransparentStrokeInteractive);
   background-color: var(--colorTransparentBackground);
   border-radius: var(--borderRadiusNone);
 }
 
-:host([appearance='outline']) .control {
-  --control-border-color: var(--colorNeutralStroke1);
-}
-
-:host([appearance='outline']) .control:hover {
+.control:hover {
   --control-border-color: var(--colorNeutralStroke1Hover);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:hover::before {
+.control:hover::before {
   background-color: var(--colorNeutralStrokeAccessibleHover);
 }
 
-:host([appearance='outline']) .control:hover::after {
+.control:hover::after {
   background-color: var(--colorCompoundBrandBackgroundHover);
 }
 
-:host([appearance='outline']) .control:active {
+.control:active {
   --control-border-color: var(--colorNeutralStroke1Pressed);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::before {
+.control:active::before {
   background-color: var(--colorNeutralStrokeAccessiblePressed);
 }
 
-:host(:where([appearance='outline'], [appearance='transparent'])) .control:active::after {
+.control:active::after {
   background-color: var(--colorCompoundBrandBackgroundPressed);
+}
+
+:host([appearance='transparent']) .control:is(:hover, :active) {
+  --control-border-color: var(--colorTransparentStrokeInteractive);
+}
+
+:host([appearance='transparent']) .control:hover::after {
+  background-color: var(--colorCompoundBrandStroke);
 }
 
 :host([appearance='filled-darker']) .control {
@@ -173,6 +175,18 @@
 
 :host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control {
   --control-border-color: var(--colorTransparentStroke);
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active) {
+  --control-border-color: var(--colorTransparentStroke);
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control::before {
+  background-color: initial;
+}
+
+:host(:where([appearance='filled-lighter'], [appearance='filled-darker'])) .control:is(:hover, :active)::after {
+  background-color: var(--colorCompoundBrandStroke);
 }
 
 :host(:is([disabled], :disabled)),

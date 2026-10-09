@@ -18,42 +18,13 @@ import {
  *
  * @slot badge - Optional badge content displayed with the avatar.
  *
+ * @presentational {AvatarActive | undefined} active - Optional activity indicator.
+ * @presentational {AvatarShape | undefined} shape - The avatar can have a circular or square shape.
+ * @presentational {AvatarAppearance | undefined} appearance - The appearance when `active="active"`.
+ *
  * @public
  */
 export class Avatar extends BaseAvatar {
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
-
-  /**
-   * The avatar can have a circular or square shape.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: AvatarShape | undefined;
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: AvatarAppearance | undefined;
-
   /**
    * Size of the avatar in pixels.
    *

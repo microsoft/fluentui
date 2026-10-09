@@ -100,7 +100,7 @@ slot[name='checked-indicator'] > *,
   background-color: var(--colorNeutralBackgroundDisabled);
 }
 
-:host(:state(active)) {
+:host([active]) {
   border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
 }
 
