@@ -87,11 +87,13 @@ export function collectPublicExports(tree: Tree, entryFilePath: string): PublicE
   }
 
   function collectLocalDeclaration(node: ts.Statement) {
+    if (ts.canHaveModifiers(node) && ts.getModifiers(node)?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword)) {
+      return;
+    }
+
     if (ts.isVariableStatement(node)) {
       for (const declaration of node.declarationList.declarations) {
-        if (ts.isIdentifier(declaration.name)) {
-          result.values.add(declaration.name.text);
-        }
+        collectBindingName(declaration.name);
       }
       return;
     }
@@ -99,6 +101,19 @@ export function collectPublicExports(tree: Tree, entryFilePath: string): PublicE
     if (ts.isFunctionDeclaration(node) || ts.isClassDeclaration(node) || ts.isEnumDeclaration(node)) {
       if (node.name) {
         result.values.add(node.name.text);
+      }
+    }
+  }
+
+  function collectBindingName(name: ts.BindingName) {
+    if (ts.isIdentifier(name)) {
+      result.values.add(name.text);
+      return;
+    }
+
+    for (const element of name.elements) {
+      if (ts.isBindingElement(element)) {
+        collectBindingName(element.name);
       }
     }
   }

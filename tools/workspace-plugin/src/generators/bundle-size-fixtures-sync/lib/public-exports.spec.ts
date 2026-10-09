@@ -47,6 +47,26 @@ describe('collectPublicExports', () => {
     expect([...values].sort()).toEqual(['Level', 'Thing', 'helper', 'useBadgeBase_unstable']);
   });
 
+  it.each([
+    {
+      kind: 'object',
+      source:
+        `export const { useFooBase_unstable, usePropertyBase_unstable: useAliasedBase_unstable = fallback, ` +
+        `nested: { useNestedBase_unstable }, ...rest } = hooks;`,
+      names: ['useFooBase_unstable', 'useAliasedBase_unstable', 'useNestedBase_unstable', 'rest'],
+    },
+    {
+      kind: 'array',
+      source:
+        `export const [useFooBase_unstable, , { hook: useAliasedBase_unstable = fallback }, ...rest] = hooks;`,
+      names: ['useFooBase_unstable', 'useAliasedBase_unstable', 'rest'],
+    },
+  ])('collects exported $kind binding names without property keys or initializers', ({ source, names }) => {
+    const { values } = collect({ 'src/index.ts': source });
+
+    expect([...values]).toEqual(names);
+  });
+
   it('collects a namespace re-export binding', () => {
     const { values } = collect({
       'src/index.ts': `export * as utils from './utils';`,
@@ -54,6 +74,47 @@ describe('collectPublicExports', () => {
     });
 
     expect([...values]).toEqual(['utils']);
+  });
+
+  describe('default exports', () => {
+    it.each([
+      'export default function useFooBase_unstable() {}',
+      'export default class Foo {}',
+    ])('excludes a default-only declaration: %s', source => {
+      const { values } = collect({ 'src/index.ts': source });
+
+      expect([...values]).toEqual([]);
+    });
+
+    it.each([
+      'export default function useFooBase_unstable() {}',
+      'export default class Foo {}',
+    ])('excludes a default declaration reached through star re-exports: %s', source => {
+      const { values } = collect({
+        'src/index.ts': `export * from './components';`,
+        'src/components/index.ts': `export * from './Foo';`,
+        'src/components/Foo.ts': `${source}\nexport const useNamedBase_unstable = () => {};`,
+      });
+
+      expect([...values]).toEqual(['useNamedBase_unstable']);
+    });
+
+    it('collects an explicitly named alias of a default export', () => {
+      const { values } = collect({
+        'src/index.ts': `export { default as useFooBase_unstable } from './Foo';`,
+        'src/Foo.ts': `export default function useInternalBase_unstable() {}`,
+      });
+
+      expect([...values]).toEqual(['useFooBase_unstable']);
+    });
+
+    it('preserves a named export that is also exported as default', () => {
+      const { values } = collect({
+        'src/index.ts': `export const useFooBase_unstable = () => {};\nexport default useFooBase_unstable;`,
+      });
+
+      expect([...values]).toEqual(['useFooBase_unstable']);
+    });
   });
 
   describe('type only exports', () => {
@@ -100,6 +161,16 @@ describe('collectPublicExports', () => {
       });
 
       expect([...values]).toEqual(['useButtonBase_unstable']);
+    });
+
+    it('collects destructured bindings through transitive star re-exports', () => {
+      const { values } = collect({
+        'src/index.ts': `export * from './components';`,
+        'src/components/index.ts': `export * from './hooks';`,
+        'src/components/hooks.ts': `export const { useFooBase_unstable } = hooks;`,
+      });
+
+      expect([...values]).toEqual(['useFooBase_unstable']);
     });
 
     it.each([
