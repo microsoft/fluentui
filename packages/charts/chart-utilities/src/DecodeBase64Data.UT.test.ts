@@ -52,12 +52,15 @@ describe('reshapeArray', () => {
     expect(() => reshapeArray([], shape as number[])).toThrow(errorMessage as string);
   });
 
-  it('should reject shapes that exceed the element limit', () => {
-    expect(() => reshapeArray([], [1_000_001])).toThrow('element count exceeds 1000000');
+  it('should allow large shapes when they match the data length', () => {
+    const data = new Array(1_000_001).fill(0);
+    expect(reshapeArray(data, [1_000_001])).toBe(data);
   });
 
-  it('should reject shapes that exceed the nested array limit', () => {
-    expect(() => reshapeArray(new Array(100_001).fill(0), [100_001, 1])).toThrow('nested array count exceeds 100000');
+  it('should reject shape products that exceed the maximum safe integer', () => {
+    expect(() => reshapeArray([], [Number.MAX_SAFE_INTEGER, 2])).toThrow(
+      'element count exceeds the maximum safe integer',
+    );
   });
 
   it('should allow zero dimensions only when they match empty data', () => {
@@ -74,7 +77,7 @@ describe('decodeBase64Fields', () => {
       data: [{ type: 'scatter', x: { bdata: 'AQ==', dtype: 'i1', shape: '5000000,1' }, y: [1] }],
     } as unknown as PlotlySchema;
 
-    expect(() => decodeBase64Fields(schema)).toThrow('element count exceeds 1000000');
+    expect(() => decodeBase64Fields(schema)).toThrow('dimensions do not match decoded element count');
   });
 
   it.each(['2,2', '[2,2]'])('should decode and reshape a valid string shape %s', shape => {

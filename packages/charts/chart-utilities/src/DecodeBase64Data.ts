@@ -1,9 +1,7 @@
-import { PlotlySchema } from './PlotlySchema';
+import type { PlotlySchema } from './PlotlySchema';
 import { isArrayOrTypedArray } from './PlotlySchemaConverter';
 
 const MAX_SHAPE_RANK = 3;
-const MAX_SHAPE_ELEMENTS = 1_000_000;
-const MAX_NESTED_ARRAYS = 100_000;
 
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
@@ -87,26 +85,16 @@ function validateShape(dataLength: number, shape: number[]): void {
   }
 
   let elementCount = 1;
-  let nestedArrayCount = 0;
-  let dimensionsAtLevel = 1;
 
-  for (let index = 0; index < shape.length; index++) {
-    const dimension = shape[index];
+  for (const dimension of shape) {
     if (!Number.isSafeInteger(dimension) || dimension < 0) {
       throw new Error('Invalid typed-array shape: dimensions must be non-negative safe integers');
     }
-    if (dimension !== 0 && elementCount > MAX_SHAPE_ELEMENTS / dimension) {
-      throw new Error(`Invalid typed-array shape: element count exceeds ${MAX_SHAPE_ELEMENTS}`);
+    if (dimension !== 0 && elementCount > Number.MAX_SAFE_INTEGER / dimension) {
+      throw new Error('Invalid typed-array shape: element count exceeds the maximum safe integer');
     }
 
     elementCount *= dimension;
-    if (index < shape.length - 1) {
-      dimensionsAtLevel *= dimension;
-      nestedArrayCount += dimensionsAtLevel;
-      if (nestedArrayCount > MAX_NESTED_ARRAYS) {
-        throw new Error(`Invalid typed-array shape: nested array count exceeds ${MAX_NESTED_ARRAYS}`);
-      }
-    }
   }
 
   if (elementCount !== dataLength) {
