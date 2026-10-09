@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: handle special property names when filtering native props",
+  "packageName": "@fluentui/react-utilities",
+  "email": "paliprandi@microsoft.com"
+}

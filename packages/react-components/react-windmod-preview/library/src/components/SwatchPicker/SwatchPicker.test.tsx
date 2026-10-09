@@ -238,9 +238,7 @@ describe('SwatchPicker', () => {
     expect(root.id).toBe('sp');
     expect(root.getAttribute('aria-label')).toBe('picker');
     expect(root).toHaveClass('consumer');
-    // The shared base hook drops the consumer's `style` on this root, on both libraries. The
-    // windmod layer neither reinstates it nor writes a style of its own, so parity is exact.
-    expect(root.getAttribute('style')).toBeNull();
+    expect(root.style.margin).toBe('2px');
   });
 
   it('changes nothing but the root slot, which is what the context values may not depend on', () => {

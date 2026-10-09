@@ -2,6 +2,50 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.15.3",
+      "tag": "@fluentui/style-utilities_v8.15.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "f03f1e4e00455a54ab180a218962a7ae685e3b9b",
+            "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "191b8365a26c4ad5366ff7155da4a7914fb55150",
+            "comment": "Update the default Fluent CDN URL for the fabric-cdn 4.0.7 deployment."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.15"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.7.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.17.3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 09:55:29 GMT",
       "tag": "@fluentui/style-utilities_v8.15.2",
       "version": "8.15.2",

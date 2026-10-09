@@ -2,6 +2,120 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.3.27",
+      "tag": "@fluentui/react-charts_v9.3.27",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.14.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.3.26",
+      "tag": "@fluentui/react-charts_v9.3.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5977cf97889168b78a888595c85b5c4a69e2f25c",
+            "comment": "feat: add custom callout rendering to GaugeChart"
+          },
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eb4f176f26f3c830817f39b621df488fdb6d7d99",
+            "comment": "fix(react-charts): prevent prototype pollution in chart data grouping"
+          },
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5aed6562e0679b08b9e9f9073ba7e30e45d92fdd",
+            "comment": "fixed prototypr issue in vegalite adapter"
+          },
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "e8033487274728d29528055e3aadf6c75e65e4cc",
+            "comment": "Added test cases prototype pollution fix"
+          },
+          {
+            "author": "michael@xerilium.com",
+            "package": "@fluentui/react-charts",
+            "commit": "eefa4c17afd40ed5c1517e615b21185ba2a3e527",
+            "comment": "feat: allow a function for the cartesian tickFormat so the numeric value axis can render a literal % or route through an app/i18n formatter (string behavior unchanged)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.11.1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.9.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.14.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.26.4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.26.18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a03842ae491e89168bbb76f338409f286fd66e74",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Aug 2026 16:40:04 GMT",
       "version": "9.3.25",
       "tag": "@fluentui/react-charts_v9.3.25",

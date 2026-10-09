@@ -5,6 +5,7 @@
 ```ts
 
 import type { DropdownProps as DropdownProps_2 } from '@fluentui/react-headless-components-preview/dropdown';
+import { DropdownSlots } from '@fluentui/react-headless-components-preview/dropdown';
 import type { DropdownState as DropdownState_2 } from '@fluentui/react-headless-components-preview/dropdown';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderDropdown } from '@fluentui/react-headless-components-preview/dropdown';
@@ -30,6 +31,8 @@ export type DropdownProps = DropdownProps_2 & {
 
 // @public
 export type DropdownSize = 'small' | 'medium' | 'large';
+
+export { DropdownSlots }
 
 // @public
 export type DropdownState = DropdownState_2 & Required<Pick<DropdownProps, 'appearance' | 'size'>>;

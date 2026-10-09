@@ -2,6 +2,7 @@ export { Dropdown, dropdownClassNames, useDropdownStyles } from './components/Dr
 export type { DropdownAppearance, DropdownProps, DropdownSize, DropdownState } from './components/Dropdown';
 
 /** Headless building blocks, re-exported for consumers composing their own Dropdown. */
+export type { DropdownSlots } from '@fluentui/react-headless-components-preview/dropdown';
 export {
   renderDropdown,
   useDropdown,

@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-storybook-addon-export-to-sandbox
 
-This log was last generated on Thu, 30 Jul 2026 14:23:06 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 08 Oct 2026 05:35:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.4.0)
+
+Thu, 08 Oct 2026 05:35:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2..@fluentui/react-storybook-addon-export-to-sandbox_v0.4.0)
+
+### Minor changes
+
+- feat: support per-story full source generation and playground addon buttons ([PR #36744](https://github.com/microsoft/fluentui/pull/36744) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.5 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+### Patches
+
+- Address playground review feedback: clarify source execution metadata, simplify module configuration, and align build and package setup. ([PR #36744](https://github.com/microsoft/fluentui/pull/36744) by dmytrokirpa@microsoft.com)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2)
+
+Mon, 21 Sep 2026 15:07:56 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1..@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2)
+
+### Patches
+
+- Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/babel-preset-storybook-full-source to v0.1.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1)
 

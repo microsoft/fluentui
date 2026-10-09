@@ -33,7 +33,7 @@ const paddingClasses: Record<PopoverSize, string> = {
 // generateTestIdent drops the component token under jest, so every module local in this package
 // stringifies alike. The surface is addressed structurally and class presence is only ever
 // asserted against this module's own imported `styles` object.
-type SurfaceProps = PopoverSurfaceProps & { ref?: React.Ref<HTMLDialogElement> };
+type SurfaceProps = PopoverSurfaceProps & { ref?: React.Ref<HTMLDialogElement | HTMLDivElement> };
 
 const renderSurface = (popoverProps: Partial<PopoverProps> = {}, surfaceProps: SurfaceProps = {}) => {
   const result = render(
@@ -68,6 +68,17 @@ describe('PopoverSurface', () => {
 
     expect(surface).toHaveClass(styles.root);
     expect(surface.className).not.toContain('undefined');
+  });
+
+  it('preserves div rendering, its ref, and the visual contract', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { surface } = renderSurface({ size: 'large', appearance: 'brand' }, { as: 'div', ref });
+
+    expect(surface.tagName).toBe('DIV');
+    expect(ref.current).toBe(surface);
+    expect(surface).toHaveClass('fui-popover-surface', styles.root, styles.large, styles.brand);
+    expect(surface).toHaveAttribute('data-size', 'large');
+    expect(surface).toHaveAttribute('data-open', '');
   });
 
   it('selects the padding class and stamps data-size for every size', () => {

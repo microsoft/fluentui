@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from '@fluentui/react-utilities';
 import { renderCombobox, useCombobox } from '@fluentui/react-headless-components-preview/combobox';
 import { ChevronDownRegular } from '@fluentui/react-icons/headless/svg/chevron-down';
@@ -82,6 +82,21 @@ const renderCombo = (props: ComboboxProps = {}) => {
 };
 
 const pathOf = (host: Element | null): string | null => host?.querySelector('svg path')?.getAttribute('d') ?? null;
+
+it('keeps the styled expand icon keyboard-operable and returns focus to the input', () => {
+  const { getByRole } = render(<Combobox aria-label="Choices">{OPTIONS}</Combobox>);
+  const input = getByRole('combobox');
+  const expandIcon = getByRole('button', { name: 'Open Choices' });
+
+  expect(expandIcon).toHaveAttribute('tabindex', '0');
+  expect(expandIcon).toHaveClass(styles.icon);
+  fireEvent.keyDown(expandIcon, { key: 'Enter' });
+  expect(input).toHaveAttribute('aria-expanded', 'true');
+  expect(input).toHaveFocus();
+  fireEvent.keyDown(expandIcon, { key: 'Escape' });
+  expect(input).toHaveAttribute('aria-expanded', 'false');
+  expect(input).toHaveFocus();
+});
 
 const glyphPath = (icon: React.ReactElement): string | null => pathOf(render(icon).container);
 

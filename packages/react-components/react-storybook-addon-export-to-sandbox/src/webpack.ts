@@ -24,6 +24,7 @@ const addonFilePattern = /react-storybook-addon-export-to-sandbox[\\/][a-z\\/]+.
 const defaultOptions = {
   webpackRule: {},
   babelLoaderOptionsUpdater: identity,
+  storyGranularity: 'file' as const,
   cssModules: false,
 };
 
@@ -33,9 +34,9 @@ const PLUGIN_PATH =
     : '@fluentui/babel-preset-storybook-full-source';
 
 function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack').RuleSetRule {
-  const { babelLoaderOptionsUpdater, importMappings, webpackRule, cssModules } = config;
+  const { babelLoaderOptionsUpdater, importMappings, webpackRule, storyGranularity, cssModules } = config;
 
-  const plugin = [require.resolve(PLUGIN_PATH), { importMappings, cssModules }];
+  const plugin = [require.resolve(PLUGIN_PATH), { importMappings, storyGranularity, cssModules }];
 
   return {
     test: /\.stories\.(jsx?$|tsx?$)/,

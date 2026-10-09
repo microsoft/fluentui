@@ -14,15 +14,13 @@ export const compoundButtonClassNames: { root: string } = {
 };
 
 type CompoundButtonRootDataAttributes = {
-  'data-icon-position'?: CompoundButtonState['iconPosition'];
   'data-content-empty'?: true;
 };
 
 /**
  * Applies the visual contract on top of Button's, returning new state. The headless hook stamps
- * data-disabled/-disabled-focusable/-icon-only/-has-secondary-content and useButtonStyles stamps
- * data-appearance/-size/-empty; data-icon-position is the one attribute the headless compound
- * hook omits that Button's and this component's icon spacing both select on.
+ * data-disabled/-disabled-focusable/-icon-only/-icon-position/-has-secondary-content and
+ * useButtonStyles stamps data-appearance/-size/-empty.
  *
  * `data-content-empty` must test for nullish, not falsiness: this component's icon margin is
  * gated on `children !== undefined && children !== null` while Button's is gated on
@@ -41,7 +39,6 @@ export const useCompoundButtonStyles = (state: CompoundButtonState): CompoundBut
       root: styles.root,
       icon: styles.icon,
       rootAttributes: {
-        'data-icon-position': state.icon ? state.iconPosition : undefined,
         'data-content-empty': state.root.children === undefined || state.root.children === null || undefined,
       } satisfies CompoundButtonRootDataAttributes,
     }),

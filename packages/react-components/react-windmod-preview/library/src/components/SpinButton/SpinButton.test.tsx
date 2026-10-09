@@ -170,6 +170,7 @@ describe('SpinButton', () => {
   it('disables both steppers for readOnly while the root stays enabled', () => {
     const { root, input, increment, decrement } = renderSpinButton({ readOnly: true, defaultValue: 5 });
 
+    expect(root).toHaveAttribute('data-readonly', '');
     expect(increment).toBeDisabled();
     expect(decrement).toBeDisabled();
     expect(root).not.toHaveAttribute('data-disabled');

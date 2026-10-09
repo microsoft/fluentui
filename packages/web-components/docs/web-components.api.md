@@ -635,6 +635,8 @@ export class BaseDropdown extends FASTElement {
     disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
+    static readonly elementIdentity = "dropdown";
+    // @internal
     elementInternals: ElementInternals;
     get enabledOptions(): DropdownOption[];
     // @internal
@@ -3798,6 +3800,10 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     readOnly: boolean;
     checked?: boolean;
     value?: string;
+    control?: HTMLButtonElement | HTMLInputElement;
+    constructor: {
+        elementIdentity?: string;
+    };
 };
 
 // @public
@@ -4376,18 +4382,18 @@ export const TooltipDefinition: PartialFASTElementDefinition;
 
 // @public
 export const TooltipPositioningOption: {
-    readonly 'above-start': "block-start span-inline-end";
-    readonly above: "block-start";
-    readonly 'above-end': "block-start span-inline-start";
-    readonly 'below-start': "block-end span-inline-end";
-    readonly below: "block-end";
-    readonly 'below-end': "block-end span-inline-start";
-    readonly 'before-top': "inline-start span-block-end";
-    readonly before: "inline-start";
-    readonly 'before-bottom': "inline-start span-block-start";
-    readonly 'after-top': "inline-end span-block-end";
-    readonly after: "inline-end";
-    readonly 'after-bottom': "inline-end span-block-start";
+    readonly 'above-start': "above-start";
+    readonly above: "above";
+    readonly 'above-end': "above-end";
+    readonly 'below-start': "below-start";
+    readonly below: "below";
+    readonly 'below-end': "below-end";
+    readonly 'before-top': "before-top";
+    readonly before: "before";
+    readonly 'before-bottom': "before-bottom";
+    readonly 'after-top': "after-top";
+    readonly after: "after";
+    readonly 'after-bottom': "after-bottom";
 };
 
 // @public

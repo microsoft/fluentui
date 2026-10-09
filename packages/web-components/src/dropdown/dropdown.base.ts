@@ -40,6 +40,14 @@ export class BaseDropdown extends FASTElement {
   private static AnchorPositionFallbackObserver: IntersectionObserver;
 
   /**
+   * The element identity. This static property should NOT be overridden by subclasses. It’s designed to provide an
+   * unambiguous name for the custom element and its subclass custom elements, regardless of their tag names.
+   * @readonly
+   * @internal
+   */
+  static readonly elementIdentity = 'dropdown';
+
+  /**
    * The ID of the current active descendant.
    *
    * @public
@@ -253,7 +261,7 @@ export class BaseDropdown extends FASTElement {
       if (AnchorPositioningCSSSupported) {
         // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
         // It's unclear if the spec requires the `anchor-name` to be unique when styled on the `:host`.
-        const anchorName = uniqueId('--dropdown-anchor-');
+        const anchorName = this.style.getPropertyValue('anchor-name') || uniqueId('--dropdown-anchor-');
         this.style.setProperty('anchor-name', anchorName);
         this.listbox.style.setProperty('position-anchor', anchorName);
       }

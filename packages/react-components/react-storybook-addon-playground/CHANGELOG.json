@@ -1,0 +1,51 @@
+{
+  "name": "@fluentui/react-storybook-addon-playground",
+  "entries": [
+    {
+      "date": "Thu, 08 Oct 2026 05:35:58 GMT",
+      "version": "0.1.0",
+      "tag": "@fluentui/react-storybook-addon-playground_v0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "17ef6f4def03ec1ce314b5da297ad81b3fd19843",
+            "comment": "feat: add @fluentui/react-storybook-addon-playground, an in-browser TSX playground for Storybook with a sandboxed live preview, shareable links and on-demand editor typings"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "17ef6f4def03ec1ce314b5da297ad81b3fd19843",
+            "comment": "Address playground review feedback: clarify source execution metadata, simplify module configuration, and align build and package setup."
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "218952a7cd53e8e8128c2933ea092533dad514b6",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Sep 2026 15:07:55 GMT",
+      "version": "0.0.1",
+      "tag": "@fluentui/react-storybook-addon-playground_v0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "f836be2f3e9d61b7d7aa89b3e8689c9978b6b1c1",
+            "comment": "feat: add @fluentui/react-storybook-addon-playground package scaffold"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -12,8 +12,8 @@ import type { TeachingPopoverSurfaceProps } from './TeachingPopoverSurface.types
 import { useTeachingPopoverSurfaceStyles } from './useTeachingPopoverSurfaceStyles';
 
 /**
- * A TeachingPopoverSurface is the teaching popover's content area — a native <dialog> the browser
- * promotes into the top layer. Windmod TeachingPopoverSurface: the windmod PopoverSurface with the
+ * A TeachingPopoverSurface is the teaching popover's content area — a native <dialog> by default,
+ * or a <div> with `as="div"`, promoted into the top layer. Windmod PopoverSurface supplies the
  * teaching chrome layered over it.
  */
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps> = React.forwardRef(

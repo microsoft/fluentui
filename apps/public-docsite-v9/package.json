@@ -31,6 +31,7 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/react-storybook-addon-playground": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",

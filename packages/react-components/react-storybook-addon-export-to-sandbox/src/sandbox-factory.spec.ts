@@ -73,6 +73,44 @@ describe(`sandbox-factory`, () => {
     const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M11 8.5v3a1 1 0 0 1-1 1H2.5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1H6"></path><path d="M8.5 1.5H13v4.5"></path><path d="M13 1.5 6.5 8"></path></svg>`;
 
     describe('open in sandbox button', () => {
+      it.each([{ fullSourceIsRunnable: false }, { fullSourceUnsupportedImports: ['./utils'] }])(
+        'does not export incomplete source with extraction metadata %j',
+        metadata => {
+          const { canvas, context } = setup({ bundler: 'vite', provider: 'codesandbox-cloud' });
+          Object.assign(context.parameters, metadata);
+
+          try {
+            addDemoActionButtons(context);
+
+            expect(canvas.getActionButton()).toBeNull();
+            expect(canvas.getNewTabButton()).toBeTruthy();
+            expect(context.parameters.fullSource).toBeTruthy();
+          } finally {
+            canvas.cleanup();
+          }
+        },
+      );
+
+      it('updates the export action when extraction completeness changes', () => {
+        const { canvas, context } = setup({ bundler: 'vite', provider: 'codesandbox-cloud' });
+
+        try {
+          addDemoActionButtons(context);
+          expect(canvas.getActionButton()).toBeTruthy();
+
+          context.parameters.fullSourceIsRunnable = false;
+          addDemoActionButtons(context);
+          expect(canvas.getActionButton()).toBeNull();
+          expect(canvas.getNewTabButton()).toBeTruthy();
+
+          context.parameters.fullSourceIsRunnable = true;
+          addDemoActionButtons(context);
+          expect(canvas.getActionButtonsContainer()?.querySelectorAll('.with-code-sandbox-button')).toHaveLength(1);
+        } finally {
+          canvas.cleanup();
+        }
+      });
+
       it.each([
         {
           bundler: 'cra',

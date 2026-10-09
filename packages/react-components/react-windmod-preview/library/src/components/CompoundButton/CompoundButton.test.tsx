@@ -118,7 +118,7 @@ describe('CompoundButton', () => {
     expect(getByTestId('root').querySelector(`span.${styles.secondaryContent}`)).toBeNull();
   });
 
-  it('stamps data-icon-position only when an icon is rendered', () => {
+  it('preserves headless data-icon-position only when an icon is rendered', () => {
     const { getByTestId } = render(
       <>
         <CompoundButton data-testid="plain">Compound</CompoundButton>
@@ -313,7 +313,7 @@ describe('CompoundButton', () => {
       contentContainer: { as: 'span', className: 'consumer-container' },
       icon: { className: 'consumer-icon' },
       iconPosition: 'after',
-      root: { as: 'button', className: 'consumer', 'data-icon-only': '' },
+      root: { as: 'button', className: 'consumer', 'data-icon-only': '', 'data-icon-position': 'after' },
       secondaryContent: { as: 'span', className: 'consumer-secondary' },
       shape: 'circular',
       size: 'large',
@@ -327,7 +327,7 @@ describe('CompoundButton', () => {
     expect(styled.secondaryContent).not.toBe(state.secondaryContent);
 
     expect(state.root.className).toBe('consumer');
-    expect(state.root).not.toHaveProperty('data-icon-position');
+    expect(state.root['data-icon-position']).toBe('after');
     expect(state.root).not.toHaveProperty('data-appearance');
     expect(state.icon!.className).toBe('consumer-icon');
     expect(state.contentContainer.className).toBe('consumer-container');

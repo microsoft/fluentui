@@ -9,8 +9,8 @@ import type { PopoverSurfaceProps } from './PopoverSurface.types';
 import { usePopoverSurfaceStyles } from './usePopoverSurfaceStyles';
 
 /**
- * A PopoverSurface is the popover's content area — a native <dialog> the browser promotes into
- * the top layer. Windmod PopoverSurface: the headless surface decorated with the Fluent visual
+ * A PopoverSurface is the popover's content area — a native <dialog> by default, or a <div> with
+ * `as="div"`, promoted into the top layer. The headless surface is decorated with the Fluent visual
  * contract (Tailwind v4 + CSS Modules).
  */
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef((props, ref) => {

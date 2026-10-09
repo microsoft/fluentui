@@ -299,7 +299,7 @@ function duplicateData(data: SankeyChartData): SankeyChartData {
 }
 
 function valuesOfNodes(nodes: SNode[]): NodeValues {
-  const result: NodeValues = {};
+  const result: NodeValues = Object.create(null);
   nodes.forEach((node: SNode) => {
     result[node.nodeId as NodeId] = node.value!;
   });
@@ -307,12 +307,12 @@ function valuesOfNodes(nodes: SNode[]): NodeValues {
 }
 
 function valuesOfLinks(links: SLink[]): LinkValues {
-  const result: LinkValues = {};
+  const result: LinkValues = Object.create(null);
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
@@ -464,12 +464,12 @@ function computeLinkAttributes(
   linkAriaLabel: (link: SLink) => string,
   linkId: string,
 ): LinkItemValues<RenderedLinkAttributes> {
-  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  const result: LinkItemValues<RenderedLinkAttributes> = Object.create(null);
   links.forEach((link: SLink, index: number) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = {};
+      sourceToTarget = Object.create(null);
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
@@ -618,7 +618,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 
   const _computeNodeAttributes = React.useCallback(
     (nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string): ItemValues<RenderedNodeAttributes> => {
-      const result: ItemValues<RenderedNodeAttributes> = {};
+      const result: ItemValues<RenderedNodeAttributes> = Object.create(null);
       const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
       const nameSpan = select('.nodeName')
         .append('text')
