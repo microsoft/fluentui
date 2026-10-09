@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove stale aria-hidden from dialog portal ancestors when focusing on open, addressing focus trap breakage when closing stacked non-nested sibling dialogs (https://github.com/microsoft/fluentui/issues/35985)",
+  "packageName": "@fluentui/react-dialog",
+  "email": "Hotell@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
