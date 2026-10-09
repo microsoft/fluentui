@@ -218,7 +218,7 @@ export const useMenuBase_unstable = (
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
-    disableAutoFocus: props.unstable_disableAutoFocus,
+    disableAutoFocus: props.unstable_disableAutoFocus ?? false,
     hoverDelay,
     isSubmenu,
     setContextTarget,

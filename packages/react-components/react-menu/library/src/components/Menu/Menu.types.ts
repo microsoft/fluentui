@@ -54,7 +54,8 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> &
 
     /**
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
-     * Alternatively can only contain `MenuPopover` if using a custom `target`.
+     * Alternatively can only contain `MenuPopover` if using a custom positioning
+     * `target` or registering an external trigger with `unstable_triggerElement`.
      */
     children: [JSXElement, JSXElement] | JSXElement;
 

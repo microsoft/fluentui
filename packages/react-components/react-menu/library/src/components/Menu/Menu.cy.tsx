@@ -201,6 +201,38 @@ describe('External editable trigger', () => {
     cy.contains('[role="menuitem"]', 'Command').should('be.focused');
   });
 
+  it('preserves item focus when autofocus changes between undefined and false', () => {
+    const DefaultAutofocus = () => {
+      const [disableAutoFocus, setDisableAutoFocus] = React.useState<boolean | undefined>(undefined);
+      return (
+        <Menu defaultOpen unstable_disableAutoFocus={disableAutoFocus}>
+          <MenuTrigger disableButtonEnhancement>
+            <button>Open commands</button>
+          </MenuTrigger>
+          <MenuPopover
+            onKeyDown={event => {
+              if (event.key === 'F2') {
+                setDisableAutoFocus(false);
+              } else if (event.key === 'F3') {
+                setDisableAutoFocus(undefined);
+              }
+            }}
+          >
+            <MenuList>
+              <MenuItem>First command</MenuItem>
+              <MenuItem>Second command</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      );
+    };
+    mount(<DefaultAutofocus />);
+    cy.contains('[role="menuitem"]', 'First command').should('be.focused').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Second command').should('be.focused').realPress('F2');
+    cy.contains('[role="menuitem"]', 'Second command').should('be.focused').realPress('F3');
+    cy.contains('[role="menuitem"]', 'Second command').should('be.focused');
+  });
+
   it('suppresses autofocus when initially open', () => {
     mount(<Example initialOpen />);
     cy.contains('[role="menuitem"]', 'Command').should('be.visible').should('not.be.focused');
