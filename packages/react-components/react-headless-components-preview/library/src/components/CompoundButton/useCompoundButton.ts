@@ -23,7 +23,7 @@ export const useCompoundButton = (
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-icon-only'] = toDataAttributeValue(state.iconOnly);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-position'] = toDataAttributeValue(state.icon && state.iconPosition);
+  state.root['data-icon-position'] = state.icon ? state.iconPosition : undefined;
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-has-secondary-content'] = toDataAttributeValue(hasSecondaryContent);
 

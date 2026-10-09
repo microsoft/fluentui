@@ -25,7 +25,7 @@ export type CompoundButtonState = CompoundButtonBaseState & {
     /**
      * Data attribute reflecting the icon position when an icon slot is present.
      */
-    'data-icon-position'?: string;
+    'data-icon-position'?: CompoundButtonBaseState['iconPosition'];
 
     /**
      * Data attribute set when secondary content is rendered.
