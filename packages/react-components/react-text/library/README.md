@@ -94,4 +94,4 @@ For more information about the components, please refer to the [API documentatio
 
 ## Migration
 
-For migration information, have a look at the [migration guide](./MIGRATION.md).
+For migration information, have a look at the [migration guide](./docs/MIGRATION.md).

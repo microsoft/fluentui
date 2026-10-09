@@ -8,7 +8,7 @@ Compat component for [V8 TimePicker](https://developer.microsoft.com/en-us/fluen
 
 TimePicker offers a control that’s optimized for selecting a time from a drop-down list or using free-form input to enter a custom time.
 
-**TimePicker is built on top of v9 Combobox. Combobox [Spec.md](../../react-combobox/docs/Spec.md) covers the variants, structure and accessibility of TimePicker. This spec highlights the TimePicker specifics.**
+**TimePicker is built on top of v9 Combobox. Combobox [Spec.md](./Spec.md) covers the variants, structure and accessibility of TimePicker. This spec highlights the TimePicker specifics.**
 
 ## Prior Art
 

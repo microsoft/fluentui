@@ -8,7 +8,7 @@ If you want to learn more about the mods themselves, [check out the official REA
 
 There are three principal ways of writing your own codemods:
 
-- **Config-based codemod**: Probably the easier way to create a codemod, the config-based codemod reads in the contents of the json file `upgrades.json`, and returns a ready-to-run codemod to the user. To learn more about the specifics of the file configurations, [check out the custom types file](../src/codemods/types.ts)
+- **Config-based codemod**: Probably the easier way to create a codemod, the config-based codemod reads in the contents of the json file `upgrades.json`, and returns a ready-to-run codemod to the user. To learn more about the specifics of the file configurations, [check out the custom types file](../src/codeMods/types.ts)
 - **Custom codemod with createCodeMod()**: For developers who want more flexibility with their codemods, they have the option to create their own mods by wrapping codemod _utilities_ together in a function and passing said function into the `createCodeMod()` function, which will return a ready-to-run codemod. We'll go through an example of this later.
 - **Custom codemod manual creation**: The last strategy involves creating a codemod yourself with no helper functions. This allows to maximal flexibility, especially WRT error handling, but it's the least user-friendly for new modders.
 
@@ -49,7 +49,7 @@ Feel free to try this out on your local branch of fluent! I've set up the files 
 }
 ```
 
-- Once you fill out this file, you can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and test your codemod! Invoke the function `createCodeModFromJson()`, which will turn whatever exists in `upgrades.json` into a list of codemods. Check out ##Testing Your Codemods## for more info on how to verify it works!
+- Once you fill out this file, you can then go to [src/codemods/tests/configMod](../src/codeMods/tests/configMod/configMod.test.ts) and test your codemod! Invoke the function `createCodeModFromJson()`, which will turn whatever exists in `upgrades.json` into a list of codemods. Check out ##Testing Your Codemods## for more info on how to verify it works!
 
 ### Custom CodeMods
 
@@ -66,12 +66,12 @@ const func = function (file: SourceFile) {
 };
 ```
 
-- You can then go to [src/codemods/tests/configMod](../src/codemods/tests/configMod/configMod.test.ts) and run and test your codemod! Invoke the function `createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>)`, which accepts a struct containing a name and a version string, as well as the wrapper function that you just created. The return type is a single codemod!
+- You can then go to [src/codemods/tests/configMod](../src/codeMods/tests/configMod/configMod.test.ts) and run and test your codemod! Invoke the function `createCodeMod(options: ModOptions, mod: (file: SourceFile) => Result<ModResult, NoOp>)`, which accepts a struct containing a name and a version string, as well as the wrapper function that you just created. The return type is a single codemod!
 - Handling that `Result` return type isn't too tricky! Take a look at the return types of the utilities you're given -- they're often results too, which allows for you to pick out error / success messages and wrap them in result you return. To return a `Result` of type `ModResult, NoOp`, you'll simply have to return the constructor `Ok({ logs: [some success messages]})` when you know a mod has completed running, or `Err({ reason: 'why this mod failed' })`, if you encounter a place where you know a mod has failed. Feel free to checkout existing codemods for examples.
 
 ### Creating a CodeMod Manually
 
-- There is also a third way to create a codemod, which is how most of the existing codemods are written. For an example, check out [../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts](../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts).
+- There is also a third way to create a codemod, which is how most of the existing codemods are written. For an example, check out [../src/codemods/mods/oldToNewButton/oldToNewButton.mod.ts](../src/codeMods/mods/oldToNewButton/oldToNewButton.mod.ts).
   - Namely, this method actually explicitly creates a codemod object, allowing for the most flexibility possible. Here's a template for making your own:
 
 ```ts

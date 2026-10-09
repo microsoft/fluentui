@@ -54,7 +54,7 @@ The `Link` can also be custom rendered as something entirely different by replac
 
 ### Props
 
-See API at [Link.types.ts](./src/components/Link/Link.types.ts).
+See API at [Link.types.ts](../src/components/Link/Link.types.ts).
 
 ## Structure
 

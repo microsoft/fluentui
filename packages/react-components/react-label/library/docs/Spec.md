@@ -76,7 +76,7 @@ The Label component should be simple as shown below. It will just need the text 
 
 ## API
 
-See API at [Label.types.ts](./src/components/Label/Label.types.ts).
+See API at [Label.types.ts](../src/components/Label/Label.types.ts).
 
 ## Structure
 
