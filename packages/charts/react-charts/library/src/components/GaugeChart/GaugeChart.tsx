@@ -30,6 +30,7 @@ import type {
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { getChartEventTarget, isFocusLeavingChart } from '../CommonComponents/ChartFocusUtils';
 import { useImageExport } from '../../utilities/hooks';
 
 const GAUGE_MARGIN = 16;
@@ -291,10 +292,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             className={classes.needle}
             transform={`translate(${-_innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
             data-is-focusable={true}
-            onFocus={e => _handleFocus(e, 'Needle', needleId)}
-            onBlur={_handleBlur}
-            onMouseEnter={e => _handleMouseOver(e, 'Needle', needleId)}
-            onMouseMove={e => _handleMouseOver(e, 'Needle', needleId)}
+            onFocus={e => _handleFocus(e, 'Needle')}
+            onMouseEnter={e => _handleMouseOver(e, 'Needle')}
+            onMouseMove={e => _handleMouseOver(e, 'Needle')}
             role="img"
             aria-label={
               'Current value: ' + getChartValueLabel(props.chartValue, _minValue, _maxValue, props.chartValueFormat)
@@ -375,16 +375,18 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }
 
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string, elementId?: string) {
-      _showCallout(focusEvent, focusedElement, true, elementId);
+    function _handleFocus(focusEvent: React.FocusEvent<SVGElement>, focusedElement: string) {
+      _showCallout(focusEvent, focusedElement, true);
     }
 
-    function _handleBlur() {
-      _hideCallout(true);
+    function _handleChartBlur(event: React.FocusEvent<HTMLDivElement>) {
+      if (isFocusLeavingChart(event)) {
+        _hideCallout(true);
+      }
     }
 
-    function _handleMouseOver(mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string, elementId?: string) {
-      _showCallout(mouseEvent, hoveredElement, false, elementId);
+    function _handleMouseOver(mouseEvent: React.MouseEvent<SVGElement>, hoveredElement: string) {
+      _showCallout(mouseEvent, hoveredElement, false);
     }
 
     function _handleMouseOut() {
@@ -399,14 +401,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       event: React.MouseEvent<SVGElement, MouseEvent> | React.FocusEvent<SVGElement, Element>,
       legend: string,
       isFocusEvent: boolean,
-      elementId?: string,
     ) {
-      if (_calloutAnchor === legend) {
+      if (!isFocusEvent && _calloutAnchor === legend) {
         return;
       }
-      const targetElement = elementId
-        ? document.getElementById(elementId)
-        : (event.currentTarget as unknown as HTMLElement);
+      const targetElement = getChartEventTarget(event) as unknown as HTMLElement;
       _calloutAnchor = legend;
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const hoverYValues: YValue[] = _segments
@@ -618,6 +617,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         ref={el => {
           _rootElem.current = el;
         }}
+        onBlur={_handleChartBlur}
       >
         <div className={classes.chartWrapper} {...arrowAttributes}>
           <svg
@@ -691,11 +691,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                           'option',
                           true,
                         )}
-                        onFocus={e => _handleFocus(e, segment.legend, arcId)}
-                        onBlur={_handleBlur}
-                        onMouseEnter={e => _handleMouseOver(e, segment.legend, arcId)}
+                        onFocus={e => _handleFocus(e, segment.legend)}
+                        onMouseEnter={e => _handleMouseOver(e, segment.legend)}
                         onMouseLeave={e => _handleCalloutDismiss()}
-                        onMouseMove={e => _handleMouseOver(e, segment.legend, arcId)}
+                        onMouseMove={e => _handleMouseOver(e, segment.legend)}
                         tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
                       />
                     </React.Fragment>
