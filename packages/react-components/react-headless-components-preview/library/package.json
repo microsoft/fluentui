@@ -66,6 +66,7 @@
     "@fluentui/react-tags": "^9.9.7",
     "@fluentui/react-teaching-popover": "^9.7.7",
     "@fluentui/react-textarea": "^9.7.7",
+    "@fluentui/react-timepicker-preview": "*",
     "@fluentui/react-toast": "^9.8.4",
     "@fluentui/react-toolbar": "^9.8.5",
     "@fluentui/react-tooltip": "^9.10.7",
@@ -590,6 +591,16 @@
       "require": {
         "types": "./dist/textarea.d.cts",
         "default": "./lib-commonjs/textarea.cjs"
+      }
+    },
+    "./time-picker": {
+      "import": {
+        "types": "./dist/time-picker.d.ts",
+        "default": "./lib/time-picker.js"
+      },
+      "require": {
+        "types": "./dist/time-picker.d.cts",
+        "default": "./lib-commonjs/time-picker.cjs"
       }
     },
     "./toast": {
