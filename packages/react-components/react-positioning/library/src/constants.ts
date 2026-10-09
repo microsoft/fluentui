@@ -3,6 +3,10 @@ export const DATA_POSITIONING_ESCAPED = 'data-popper-escaped';
 export const DATA_POSITIONING_HIDDEN = 'data-popper-reference-hidden';
 export const DATA_POSITIONING_PLACEMENT = 'data-popper-placement';
 export const POSITIONING_END_EVENT = 'fui-positioningend';
+/**
+ * Logical placement (`PositioningShorthandValue`) written by positioning engines on the container.
+ */
+export const DATA_PLACEMENT = 'data-placement';
 
 /**
  * CSS custom properties used to encode the slide direction for positioning-aware enter animations.

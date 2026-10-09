@@ -9,6 +9,8 @@ export type { CreateArrowStylesOptions } from './createArrowStyles';
 export { PositioningConfigurationProvider } from './PositioningConfigurationContext';
 
 export { usePositioning } from './usePositioning';
+export { createFloatingUIPositioningEngine, floatingUIPositioningEngine } from './createFloatingUIPositioningEngine';
+export type { CreateFloatingUIPositioningEngineOptions } from './createFloatingUIPositioningEngine';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
 export { useSafeZoneArea } from './hooks/useSafeZoneArea/useSafeZoneArea';
 export type { UseSafeZoneOptions } from './hooks/useSafeZoneArea/useSafeZoneArea';
@@ -24,10 +26,17 @@ export type {
   OffsetFunctionParam,
   OffsetObject,
   OffsetShorthand,
+  OnPositioningEndEvent,
+  OnPositioningEndEventDetail,
   Position,
   PositioningBoundary,
+  PositioningEngine,
+  PositioningEngineCreateParams,
   PositioningImperativeRef,
+  PositioningOptions,
+  PositioningPlacement,
   PositioningProps,
+  PositionManager,
   PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,

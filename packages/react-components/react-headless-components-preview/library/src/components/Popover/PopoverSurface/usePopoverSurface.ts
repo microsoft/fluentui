@@ -34,7 +34,7 @@ export const usePopoverSurface = (
 
   const state: PopoverSurfaceState = {
     withArrow,
-    arrowRef,
+    arrowRef: useMergedRefs<HTMLDivElement>(arrowRef, positioningCtx.arrowRef),
     components: { root: 'dialog' },
     root: slot.always(
       {

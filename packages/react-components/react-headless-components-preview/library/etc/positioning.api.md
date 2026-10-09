@@ -7,7 +7,7 @@
 import { Alignment } from '@fluentui/react-positioning';
 import { Position } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
 
@@ -27,13 +27,13 @@ export { Position }
 
 export { PositioningImperativeRef }
 
-// @public (undocumented)
-export type PositioningProps = Pick<PositioningProps_2, 'align' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
+export { PositioningProps }
 
 // @public (undocumented)
 export type PositioningReturn = {
     targetRef: React_2.RefCallback<HTMLElement>;
     containerRef: React_2.RefCallback<HTMLElement>;
+    arrowRef: React_2.RefCallback<HTMLElement>;
 };
 
 // @public (undocumented)
@@ -52,7 +52,7 @@ export const POSITIONS: {
 // @public (undocumented)
 export const resolvePositioningShorthand: ResolvePositioningShorthand;
 
-// @public (undocumented)
+// @public
 export function usePositioning(options: PositioningProps): PositioningReturn;
 
 // (No @packageDocumentation comment for this package)
