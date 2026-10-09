@@ -1,5 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/display.js';
+import { stateSelector } from '../utils/element-internals.js';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -14,6 +15,8 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+
+const emptyState = stateSelector('empty');
 
 /** Divider styles
  * @public
@@ -63,7 +66,7 @@ export const styles = css`
     min-height: 84px;
   }
 
-  :host([orientation='vertical']):empty {
+  :host([orientation='vertical']${emptyState}) {
     min-height: 20px;
   }
 
@@ -74,8 +77,8 @@ export const styles = css`
     margin-bottom: 12px;
   }
 
-  :host([orientation='vertical']):empty::before,
-  :host([orientation='vertical']):empty::after {
+  :host([orientation='vertical']${emptyState})::before,
+  :host([orientation='vertical']${emptyState})::after {
     height: 10px;
     min-height: 10px;
     flex-grow: 0;
