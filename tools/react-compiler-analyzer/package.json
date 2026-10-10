@@ -1,0 +1,39 @@
+{
+  "name": "@fluentui/react-compiler-analyzer",
+  "version": "0.0.0",
+  "description": "CLI for assessing React Compiler coverage, directives, and migration risks in TypeScript source files.",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui",
+    "directory": "tools/react-compiler-analyzer"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0"
+  },
+  "files": [
+    "bin",
+    "docs",
+    "*.md",
+    "rca.analyze.schema.json",
+    "rca.config.schema.json",
+    "skills",
+    "dist"
+  ],
+  "bin": "./bin/react-compiler-analyzer.js",
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "ajv": "^8.13.0",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "enquirer": "^2.3.6",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@babel/types": "7.29.0",
+    "@types/yargs": "^17.0.33"
+  }
+}

@@ -342,11 +342,22 @@ function buildReactCompilerAnalyzerTargets(
   const groupName = 'React Compiler Analyzer';
   const metadata = { targetGroups: { [groupName]: [] as string[] } };
 
-  const inputs = ['default', { externalDependencies: ['babel-plugin-react-compiler'] }];
+  const inputs = [
+    'default',
+    '{workspaceRoot}/tools/react-compiler-analyzer/src/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*',
+    '{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs',
+    '{workspaceRoot}/tools/react-compiler-analyzer/package.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/project.json',
+    '{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json',
+    { externalDependencies: ['babel-plugin-react-compiler'] },
+  ];
+  const dependsOn = [{ target: 'build', projects: 'react-compiler-analyzer' }];
 
   targets['react-compiler-analyzer--lint'] = {
     command: `${config.pmc.exec} react-compiler-analyzer lint ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {
@@ -366,6 +377,7 @@ function buildReactCompilerAnalyzerTargets(
   targets['react-compiler-analyzer--analyze'] = {
     command: `${config.pmc.exec} react-compiler-analyzer analyze ./src`,
     options: { cwd: projectRoot },
+    dependsOn,
     cache: true,
     inputs,
     metadata: {

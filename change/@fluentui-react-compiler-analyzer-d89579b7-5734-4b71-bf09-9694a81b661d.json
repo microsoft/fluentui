@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Prepare the first 0.0.1 release of React Compiler Analyzer: analyze and lint workflows, guided initialization with an optional repository Agent Skill, schema-validated shared configuration, opt-in runtime-risk detection, first-party wrapper and wildcard path-alias resolution, directive fixes and risk-aware annotations, and CLI/Markdown/HTML reports with foldable HTML navigation. Harden parse, configuration, and compiler failure handling, including unattributed lint diagnostics; keep generated bailout comments on one line; emit canonical JSON v2 results; and detect nested memo/forwardRef migration candidates while preserving custom comparators. Include a human-facing CLI reference, packaged technical guides, and versioned migration notes from experimental builds.",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
