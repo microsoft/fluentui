@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "Update how npm tag is specified for ESRP",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "elcraig@microsoft.com"
+}
