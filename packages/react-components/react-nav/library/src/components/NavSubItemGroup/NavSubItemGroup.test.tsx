@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { renderHook } from '@testing-library/react-hooks';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { NavSubItemGroup } from './NavSubItemGroup';
-import { navSubItemGroupClassNames, useNavSubItemGroupStyles_unstable } from './useNavSubItemGroupStyles.styles';
+import { navSubItemGroupClassNames } from './useNavSubItemGroupStyles.styles';
 import type { NavCategoryContextValue } from '../NavCategoryContext';
 import { NavCategoryProvider } from '../NavCategoryContext';
-import type { NavSubItemGroupState } from './NavSubItemGroup.types';
 
 export function mockNavCategoryContextValue(partialValue?: Partial<NavCategoryContextValue>): NavCategoryContextValue {
   return {
@@ -32,16 +31,18 @@ describe('NavSubItemGroup', () => {
     renderOptions: { wrapper: Wrapper },
   });
 
-  describe('useNavSubItemGroupStyles_unstable', () => {
-    it('applies root styling with flex-shrink and without overflow clipping', () => {
-      const state: NavSubItemGroupState = {
-        components: { root: 'div' },
-        root: { type: 'div' },
-        open: true,
-      };
+  it('does not apply overflow clipping or translateZ transform to root', () => {
+    const { container } = render(
+      <NavSubItemGroup>
+        <span>child</span>
+      </NavSubItemGroup>,
+      { wrapper: Wrapper },
+    );
+    const root = container.querySelector<HTMLElement>(`.${navSubItemGroupClassNames.root}`)!;
+    const view = root.ownerDocument.defaultView!;
+    const computedStyle = view.getComputedStyle(root);
 
-      const { result } = renderHook(() => useNavSubItemGroupStyles_unstable(state));
-      expect(result.current.root.className).toContain(navSubItemGroupClassNames.root);
-    });
+    expect(computedStyle.overflow).not.toBe('hidden');
+    expect(computedStyle.transform).not.toBe('translateZ(0)');
   });
 });
