@@ -277,6 +277,7 @@ describe('rit CLI e2e', () => {
           '^react-dom/(.+)$': join(usedNodeModulesPath, 'react-dom/$1'),
           '^react-test-renderer$': join(usedNodeModulesPath, './react-test-renderer'),
           '^@testing-library/(react|dom)$': join(usedNodeModulesPath, './@testing-library/$1'),
+          '^@testing-library/react/(.+)$': join(usedNodeModulesPath, './@testing-library/react/$1'),
           '^@testing-library/react-hooks$': join(usedNodeModulesPath, './@testing-library/react/'),
         },
         setupFilesAfterEnv: [
