@@ -18,7 +18,7 @@ Nothing at this time. If you have references to `office-ui-fabric-react` in your
 
 Our primary package was renamed to `@fluentui/react`, but this package simply exports bits from the `office-ui-fabric-react` package. This ensures no partners are broken, they still receives fixes, but you can upgrade your package name at your leisure.
 
-Our plan is that the upcoming v8 package will start publishing only under the `@fluentui/react` name. To make the transition easier, we will be offering an upgrade script you can run on your project to upgrade to v8. This will fix your package names, but also make sure that any components which have major breaking improvements are patched to reference compat imports so that you can adjust to consume improvments when you're ready.
+Our plan is that the upcoming v8 package will start publishing only under the `@fluentui/react` name. To make the transition easier, we will be offering an upgrade script you can run on your project to upgrade to v8. This will fix your package names, but also make sure that any components which have major breaking improvements are patched to reference compat imports so that you can adjust to consume improvements when you're ready.
 
 ### What package should I use to build a new application?
 

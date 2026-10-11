@@ -45,7 +45,7 @@ For each component tested, write out any specific notes per-step here. Use this 
   - Be extra careful to verify the focus indicator both against the base state, and against other states like selected or pressed
   - If the control can contain focusable children like buttons or links, make sure to test those children's focus indicators as well. This is mostly relevant if the control has a different background color than the default page background (including in other states, like selected/pressed/etc).
 - [ ] Compare state vs. rest state: in addition to text/graphics needing contrast within each state, some states also need contrast against each other.
-  - Where this applies: focus (alread covered), and also states with meaning: selection, on/off states, checked, error, etc. Hover and mousedown/CSS ":pressed" do not count here.
+  - Where this applies: focus (already covered), and also states with meaning: selection, on/off states, checked, error, etc. Hover and mousedown/CSS ":pressed" do not count here.
   - Check states against the rest state, and also each other. For example, if the only visual indication of selection is a background color change, that color change must be at least 3:1 against the rest state, and also against the focus state, error state, etc.
   - If there are multiple indications of a state (e.g. a slight background color change + a check mark), only one needs to meet 3:1 contrast.
 
@@ -93,7 +93,7 @@ For each component tested, write out any specific notes per-step here. Use this 
 ### Steps
 
 1. Open a window with only the control (e.g. no Storybook panels or UI)
-2. Use some combination of window resizing and zoom to set the brower viewport to 320px by 256px
+2. Use some combination of window resizing and zoom to set the browser viewport to 320px by 256px
 3. Find all permutations of state, props, and children that affect layout (e.g. opening a combobox, or expanding multiple levels of dropdown menus), and check that the control is visually and functionally coherent.
 4. If the control accepts any freeform text content (via children, slots, or props), create a test case that inserts and absurdly long text string in all possible places, and then do steps 1-3.
 

@@ -16,7 +16,7 @@ Field requires integration between its parts to ensure that the label, error mes
 
 ## Detailed Design or Proposal
 
-Implement a single `<Field>` component, which does the layout for field, including slots for `label`, `validationMesssage`, and `hint`.
+Implement a single `<Field>` component, which does the layout for field, including slots for `label`, `validationMessage`, and `hint`.
 
 The control is the child, and Field adds the following props to the child using cloneElement (or a render function):
 

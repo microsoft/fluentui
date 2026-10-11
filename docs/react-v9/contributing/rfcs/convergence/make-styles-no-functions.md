@@ -26,7 +26,7 @@ makeStyles({
 
 ## Export tokens separately
 
-Initially we planed to support IE11 via runtime tricks, but with the deprecation of IE11, we are now able to leverage CSS Variables for tokens and theming purposes. We communicate this fact to customers so that they understand clearly what they are using.
+Initially we planned to support IE11 via runtime tricks, but with the deprecation of IE11, we are now able to leverage CSS Variables for tokens and theming purposes. We communicate this fact to customers so that they understand clearly what they are using.
 
 The proposal is to export `tokens` as a plain object:
 
@@ -122,7 +122,7 @@ In both scenarios above, `FluentProvider` will still inject all customer tokens 
 
 Also, in case there is an ask for it, we can decide to export a primitive component in the future (named for example `TokensProvider`) whose only purpose would be to render variables for `Record<string, string | number>`.
 
-Finally, we will export a function to make the tokens to css variable mapping for any custom theme be programatically generated.
+Finally, we will export a function to make the tokens to css variable mapping for any custom theme be programmatically generated.
 
 ## Using custom tokens in `makeStyles()`
 

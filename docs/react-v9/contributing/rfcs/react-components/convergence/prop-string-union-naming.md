@@ -39,7 +39,7 @@ We should use `spinal-case` for string union prop values in all cases.
 
 This proposal is arbitrary. We could just as easily propose the use of `camelCase` in all cases but there are some minor points in favor of `spinal-case`.
 
-Adopting this covention aligns naming with how [Griffel](https://github.com/microsoft/griffel) styles (CSS-in-JS) are written, e.g.:
+Adopting this convention aligns naming with how [Griffel](https://github.com/microsoft/griffel) styles (CSS-in-JS) are written, e.g.:
 
 ```ts
 makeStyles({
