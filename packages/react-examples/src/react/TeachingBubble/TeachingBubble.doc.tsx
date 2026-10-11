@@ -42,7 +42,7 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleWideExample />,
     },
     {
-      title: 'TeachingBubble with custon button order',
+      title: 'TeachingBubble with custom button order',
       code: TeachingBubbleButtonOrderExampleCode,
       view: <TeachingBubbleButtonOrderExample />,
     },
