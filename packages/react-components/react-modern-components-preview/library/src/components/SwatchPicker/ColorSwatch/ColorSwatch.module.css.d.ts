@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const disabledIcon: string;
-export const icon: string;
-export const root: string;
+declare const styles: {
+  readonly "disabledIcon": string;
+  readonly "icon": string;
+  readonly "root": string;
+};
+export = styles;
 

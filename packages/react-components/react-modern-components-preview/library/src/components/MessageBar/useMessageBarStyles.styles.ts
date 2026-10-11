@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
-import * as styles from './MessageBar.module.css';
+import styles from './MessageBar.module.css';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',

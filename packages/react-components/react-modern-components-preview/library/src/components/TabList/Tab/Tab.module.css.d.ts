@@ -1,6 +1,8 @@
-export const __esModule: true;
-export const content: string;
-export const contentReservedSpace: string;
-export const icon: string;
-export const root: string;
+declare const styles: {
+  readonly "content": string;
+  readonly "contentReservedSpace": string;
+  readonly "icon": string;
+  readonly "root": string;
+};
+export = styles;
 

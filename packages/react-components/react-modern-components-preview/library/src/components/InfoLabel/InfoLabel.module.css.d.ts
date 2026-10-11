@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const infoButton: string;
-export const label: string;
-export const root: string;
+declare const styles: {
+  readonly "infoButton": string;
+  readonly "label": string;
+  readonly "root": string;
+};
+export = styles;
 

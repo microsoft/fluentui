@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const root: string;
-export const textarea: string;
+declare const styles: {
+  readonly "root": string;
+  readonly "textarea": string;
+};
+export = styles;
 

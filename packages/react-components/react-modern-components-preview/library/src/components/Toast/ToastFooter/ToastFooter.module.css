@@ -1,9 +1,11 @@
 @layer fluent {
-  .root {
-    display: flex;
-    grid-column: 2 / 3;
-    gap: 14px;
-    align-items: center;
-    padding-block-start: var(--spacingVerticalL);
+  @layer defaults {
+    .root {
+      display: flex;
+      grid-column: 2 / 3;
+      gap: 14px;
+      align-items: center;
+      padding-block-start: var(--spacingVerticalL);
+    }
   }
 }

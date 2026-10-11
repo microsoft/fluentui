@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const media: string;
-export const root: string;
+declare const styles: {
+  readonly "media": string;
+  readonly "root": string;
+};
+export = styles;
 

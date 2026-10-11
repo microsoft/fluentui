@@ -1,6 +1,8 @@
-export const __esModule: true;
-export const contentContainer: string;
-export const icon: string;
-export const root: string;
-export const secondaryContent: string;
+declare const styles: {
+  readonly "contentContainer": string;
+  readonly "icon": string;
+  readonly "root": string;
+  readonly "secondaryContent": string;
+};
+export = styles;
 

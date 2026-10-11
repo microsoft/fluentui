@@ -1,11 +1,13 @@
-export const __esModule: true;
-export const centeredSlot: string;
-export const checkmark: string;
-export const content: string;
-export const icon: string;
-export const menuItem: string;
-export const multilineContent: string;
-export const secondaryContent: string;
-export const subText: string;
-export const submenuIndicator: string;
+declare const styles: {
+  readonly "centeredSlot": string;
+  readonly "checkmark": string;
+  readonly "content": string;
+  readonly "icon": string;
+  readonly "menuItem": string;
+  readonly "multilineContent": string;
+  readonly "secondaryContent": string;
+  readonly "subText": string;
+  readonly "submenuIndicator": string;
+};
+export = styles;
 

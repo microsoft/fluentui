@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const inlineDrawer: string;
+declare const styles: {
+  readonly "inlineDrawer": string;
+};
+export = styles;
 

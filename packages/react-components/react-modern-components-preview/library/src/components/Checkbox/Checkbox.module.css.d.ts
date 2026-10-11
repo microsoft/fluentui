@@ -1,11 +1,13 @@
-export const __esModule: true;
-export const indicator: string;
-export const indicatorCircular: string;
-export const indicatorLarge: string;
-export const input: string;
-export const inputLarge: string;
-export const label: string;
-export const labelLarge: string;
-export const labelMedium: string;
-export const root: string;
+declare const styles: {
+  readonly "indicator": string;
+  readonly "indicatorCircular": string;
+  readonly "indicatorLarge": string;
+  readonly "input": string;
+  readonly "inputLarge": string;
+  readonly "label": string;
+  readonly "labelLarge": string;
+  readonly "labelMedium": string;
+  readonly "root": string;
+};
+export = styles;
 

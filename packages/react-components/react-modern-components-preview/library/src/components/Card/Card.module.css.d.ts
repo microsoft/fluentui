@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const checkbox: string;
-export const floatingAction: string;
-export const root: string;
+declare const styles: {
+  readonly "checkbox": string;
+  readonly "floatingAction": string;
+  readonly "root": string;
+};
+export = styles;
 

@@ -1,5 +1,7 @@
 @layer fluent {
-  .block {
-    display: block;
+  @layer defaults {
+    .block {
+      display: block;
+    }
   }
 }

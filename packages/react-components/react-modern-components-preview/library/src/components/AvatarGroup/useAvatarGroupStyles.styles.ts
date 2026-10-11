@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AvatarGroupSlots, AvatarGroupState } from './AvatarGroup.types';
-import * as styles from './AvatarGroup.module.css';
+import styles from './AvatarGroup.module.css';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',

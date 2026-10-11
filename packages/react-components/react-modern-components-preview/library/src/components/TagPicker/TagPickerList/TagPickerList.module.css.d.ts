@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const collapsed: string;
-export const root: string;
+declare const styles: {
+  readonly "collapsed": string;
+  readonly "root": string;
+};
+export = styles;
 

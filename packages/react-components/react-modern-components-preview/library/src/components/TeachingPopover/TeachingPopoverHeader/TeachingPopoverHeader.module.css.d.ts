@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const dismissButton: string;
-export const icon: string;
-export const root: string;
+declare const styles: {
+  readonly "dismissButton": string;
+  readonly "icon": string;
+  readonly "root": string;
+};
+export = styles;
 

@@ -1,9 +1,11 @@
 @layer fluent {
-  .root {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    color: var(--colorNeutralForeground2);
-    text-wrap: nowrap;
+  @layer defaults {
+    .root {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      color: var(--colorNeutralForeground2);
+      text-wrap: nowrap;
+    }
   }
 }

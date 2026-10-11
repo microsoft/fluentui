@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const menuSplitGroup: string;
+declare const styles: {
+  readonly "menuSplitGroup": string;
+};
+export = styles;
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SpinnerSlots, SpinnerState } from './Spinner.types';
-import * as styles from './Spinner.module.css';
+import styles from './Spinner.module.css';
 
 export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   root: 'fui-Spinner',

@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const menuItemLink: string;
+declare const styles: {
+  readonly "menuItemLink": string;
+};
+export = styles;
 

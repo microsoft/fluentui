@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const drawerHeader: string;
+declare const styles: {
+  readonly "drawerHeader": string;
+};
+export = styles;
 

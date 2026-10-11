@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const input: string;
-export const root: string;
-export const thumb: string;
+declare const styles: {
+  readonly "input": string;
+  readonly "root": string;
+  readonly "thumb": string;
+};
+export = styles;
 

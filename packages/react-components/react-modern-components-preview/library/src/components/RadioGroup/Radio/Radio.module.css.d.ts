@@ -1,7 +1,9 @@
-export const __esModule: true;
-export const defaultIndicatorInput: string;
-export const indicator: string;
-export const input: string;
-export const label: string;
-export const root: string;
+declare const styles: {
+  readonly "defaultIndicatorInput": string;
+  readonly "indicator": string;
+  readonly "input": string;
+  readonly "label": string;
+  readonly "root": string;
+};
+export = styles;
 

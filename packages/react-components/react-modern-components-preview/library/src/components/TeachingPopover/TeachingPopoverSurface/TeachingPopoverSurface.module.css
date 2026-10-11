@@ -1,8 +1,10 @@
 @layer fluent {
-  .root {
-    box-sizing: border-box;
-    min-inline-size: 320px;
-    padding: var(--spacingVerticalL);
-    border-radius: var(--borderRadiusXLarge);
+  @layer defaults {
+    .root {
+      box-sizing: border-box;
+      min-inline-size: 320px;
+      padding: var(--spacingVerticalL);
+      border-radius: var(--borderRadiusXLarge);
+    }
   }
 }

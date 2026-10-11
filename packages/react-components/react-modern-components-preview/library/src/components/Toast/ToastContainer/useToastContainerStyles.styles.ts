@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToastContainerSlots, ToastContainerState } from './ToastContainer.types';
-import * as styles from './ToastContainer.module.css';
+import styles from './ToastContainer.module.css';
 
 export const toastContainerClassNames: SlotClassNames<ToastContainerSlots> = {
   root: 'fui-ToastContainer',

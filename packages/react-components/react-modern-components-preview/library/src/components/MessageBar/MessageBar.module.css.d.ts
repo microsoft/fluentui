@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const bottomReflowSpacer: string;
-export const icon: string;
-export const root: string;
+declare const styles: {
+  readonly "bottomReflowSpacer": string;
+  readonly "icon": string;
+  readonly "root": string;
+};
+export = styles;
 

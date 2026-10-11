@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const switchIndicator: string;
-export const switchIndicatorChecked: string;
+declare const styles: {
+  readonly "switchIndicator": string;
+  readonly "switchIndicatorChecked": string;
+};
+export = styles;
 

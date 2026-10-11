@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorPickerSlots, ColorPickerState } from './ColorPicker.types';
-import * as styles from './ColorPicker.module.css';
+import styles from './ColorPicker.module.css';
 
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots> = {
   root: 'fui-ColorPicker',

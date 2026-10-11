@@ -1,36 +1,23 @@
 @layer fluent {
-  .root {
-    --fui-AlphaSlider--direction: 90deg;
-    --fui-AlphaSlider--progress: 100%;
-    --fui-AlphaSlider__thumb--color: var(--colorPaletteRedBackground3);
-    --fui-AlphaSlider__rail--color: var(--colorPaletteRedBackground3);
-
-    &[data-orientation='horizontal'] {
-      --fui-AlphaSlider--direction: 90deg;
-    }
-  }
-
-  .rail {
-    background-image: linear-gradient(
-        var(--fui-AlphaSlider--direction),
-        transparent,
-        var(--fui-AlphaSlider__rail--color)
-      ),
-      url('https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png');
-    border: 1px solid var(--colorNeutralStroke1);
-  }
-
-  .thumb {
-    inset-inline-start: var(--fui-AlphaSlider--progress);
-    background-color: var(--colorNeutralBackground1);
-
-    &::before {
-      background-color: var(--fui-AlphaSlider__thumb--color);
+  @layer defaults {
+    .rail {
+      background-image: linear-gradient(90deg, transparent, var(--colorPaletteRedBackground3)),
+        url('https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png');
+      border: 1px solid var(--colorNeutralStroke1);
     }
 
-    .root[data-orientation='vertical'] & {
-      inset-block-end: var(--fui-AlphaSlider--progress);
-      inset-inline-start: auto;
+    .thumb {
+      inset-inline-start: 100%;
+      background-color: var(--colorNeutralBackground1);
+
+      &::before {
+        background-color: var(--colorPaletteRedBackground3);
+      }
+
+      .root[data-orientation='vertical'] & {
+        inset-block-end: 100%;
+        inset-inline-start: auto;
+      }
     }
   }
 }

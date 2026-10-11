@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const menuGroupHeader: string;
+declare const styles: {
+  readonly "menuGroupHeader": string;
+};
+export = styles;
 

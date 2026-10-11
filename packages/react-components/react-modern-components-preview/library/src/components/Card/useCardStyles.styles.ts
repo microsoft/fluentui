@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CardSlots, CardState } from './Card.types';
-import * as styles from './Card.module.css';
+import styles from './Card.module.css';
 
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',

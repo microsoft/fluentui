@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const menuList: string;
-export const menuListWithContext: string;
+declare const styles: {
+  readonly "menuList": string;
+  readonly "menuListWithContext": string;
+};
+export = styles;
 

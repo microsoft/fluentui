@@ -1,8 +1,10 @@
-export const __esModule: true;
-export const avatar: string;
-export const primaryText: string;
-export const quaternaryText: string;
-export const root: string;
-export const secondaryText: string;
-export const tertiaryText: string;
+declare const styles: {
+  readonly "avatar": string;
+  readonly "primaryText": string;
+  readonly "quaternaryText": string;
+  readonly "root": string;
+  readonly "secondaryText": string;
+  readonly "tertiaryText": string;
+};
+export = styles;
 

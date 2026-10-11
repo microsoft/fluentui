@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const checkIcon: string;
-export const root: string;
+declare const styles: {
+  readonly "checkIcon": string;
+  readonly "root": string;
+};
+export = styles;
 

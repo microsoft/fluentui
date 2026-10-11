@@ -1,7 +1,9 @@
-export const __esModule: true;
-export const actions: string;
-export const body: string;
-export const header: string;
-export const surface: string;
-export const title: string;
+declare const styles: {
+  readonly "actions": string;
+  readonly "body": string;
+  readonly "header": string;
+  readonly "surface": string;
+  readonly "title": string;
+};
+export = styles;
 

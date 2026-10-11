@@ -1,11 +1,13 @@
 @layer fluent {
-  .menuList {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  @layer defaults {
+    .menuList {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-  .menuListWithContext {
-    block-size: 100%;
+    .menuListWithContext {
+      block-size: 100%;
+    }
   }
 }

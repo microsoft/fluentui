@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const overlayDrawer: string;
+declare const styles: {
+  readonly "overlayDrawer": string;
+};
+export = styles;
 

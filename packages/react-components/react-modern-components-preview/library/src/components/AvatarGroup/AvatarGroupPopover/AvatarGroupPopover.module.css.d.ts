@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const content: string;
-export const popoverSurface: string;
-export const triggerButton: string;
+declare const styles: {
+  readonly "content": string;
+  readonly "popoverSurface": string;
+  readonly "triggerButton": string;
+};
+export = styles;
 

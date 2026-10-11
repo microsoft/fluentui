@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const menuDivider: string;
+declare const styles: {
+  readonly "menuDivider": string;
+};
+export = styles;
 

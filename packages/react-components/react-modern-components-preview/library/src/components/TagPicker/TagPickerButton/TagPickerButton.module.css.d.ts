@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const root: string;
-export const visuallyHidden: string;
+declare const styles: {
+  readonly "root": string;
+  readonly "visuallyHidden": string;
+};
+export = styles;
 

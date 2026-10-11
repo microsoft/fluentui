@@ -1,6 +1,8 @@
-export const __esModule: true;
-export const countText: string;
-export const label: string;
-export const root: string;
-export const valueText: string;
+declare const styles: {
+  readonly "countText": string;
+  readonly "label": string;
+  readonly "root": string;
+  readonly "valueText": string;
+};
+export = styles;
 

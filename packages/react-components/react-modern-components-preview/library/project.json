@@ -39,7 +39,7 @@
       "cache": false,
       "options": {
         "cwd": "packages/react-components/react-modern-components-preview/library",
-        "command": "yarn exec tcm -p 'src/**/*.module.css' -e --silent"
+        "command": "yarn exec tcm -p 'src/**/*.module.css' --silent"
       }
     },
     "build": {

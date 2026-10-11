@@ -1,6 +1,8 @@
 @layer fluent {
-  .root {
-    margin-block: 0;
-    margin-inline: var(--spacingHorizontalM);
+  @layer defaults {
+    .root {
+      margin-block: 0;
+      margin-inline: var(--spacingHorizontalM);
+    }
   }
 }

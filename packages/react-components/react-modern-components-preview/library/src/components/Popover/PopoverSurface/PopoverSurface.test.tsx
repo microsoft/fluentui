@@ -76,14 +76,16 @@ describe('PopoverSurface', () => {
     expect(ref.current?.tagName).toBe('DIALOG');
   });
 
-  it('forwards its ref to the native div surface when focus trapping is disabled', () => {
+  it('forwards its ref to the native div surface', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { getByRole } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
-        <PopoverSurface ref={ref}>Popover content</PopoverSurface>
+        <PopoverSurface as="div" ref={ref}>
+          Popover content
+        </PopoverSurface>
       </Popover>,
     );
 

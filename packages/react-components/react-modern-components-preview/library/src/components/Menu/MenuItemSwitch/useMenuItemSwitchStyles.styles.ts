@@ -4,7 +4,7 @@ import { styleMenuItemSlots } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuItemState } from '../MenuItem/MenuItem.types';
 import * as menuItemStyles from '../MenuItem/MenuItem.module.css';
 import type { MenuItemSwitchSlots, MenuItemSwitchState } from './MenuItemSwitch.types';
-import * as styles from './MenuItemSwitch.module.css';
+import styles from './MenuItemSwitch.module.css';
 
 export const menuItemSwitchClassNames: SlotClassNames<MenuItemSwitchSlots> = {
   root: 'fui-MenuItemSwitch',

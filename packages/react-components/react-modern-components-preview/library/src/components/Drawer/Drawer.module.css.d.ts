@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const drawerBase: string;
+declare const styles: {
+  readonly "drawerBase": string;
+};
+export = styles;
 

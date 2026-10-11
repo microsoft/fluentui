@@ -1,6 +1,8 @@
 @layer fluent {
-  .root {
-    display: flex;
-    flex-wrap: wrap;
+  @layer defaults {
+    .root {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }

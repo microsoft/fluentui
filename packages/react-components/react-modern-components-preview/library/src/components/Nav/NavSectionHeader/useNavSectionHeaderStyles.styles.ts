@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavSectionHeaderSlots, NavSectionHeaderState } from './NavSectionHeader.types';
-import * as styles from './NavSectionHeader.module.css';
+import styles from './NavSectionHeader.module.css';
 
 export const navSectionHeaderClassNames: SlotClassNames<NavSectionHeaderSlots> = {
   root: 'fui-NavSectionHeader',

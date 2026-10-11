@@ -1,10 +1,12 @@
-export const __esModule: true;
-export const fullValueInput: string;
-export const halfValueInput: string;
-export const indicator: string;
-export const input: string;
-export const lowerHalf: string;
-export const root: string;
-export const unselectedIcon: string;
-export const upperHalf: string;
+declare const styles: {
+  readonly "fullValueInput": string;
+  readonly "halfValueInput": string;
+  readonly "indicator": string;
+  readonly "input": string;
+  readonly "lowerHalf": string;
+  readonly "root": string;
+  readonly "unselectedIcon": string;
+  readonly "upperHalf": string;
+};
+export = styles;
 

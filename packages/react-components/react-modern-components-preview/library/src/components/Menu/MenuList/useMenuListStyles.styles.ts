@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuListSlots, MenuListState } from './MenuList.types';
-import * as styles from './MenuList.module.css';
+import styles from './MenuList.module.css';
 
 export const menuListClassNames: SlotClassNames<MenuListSlots> = { root: 'fui-MenuList' };
 

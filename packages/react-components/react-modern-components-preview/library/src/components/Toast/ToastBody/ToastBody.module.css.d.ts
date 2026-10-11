@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const root: string;
-export const subtitle: string;
+declare const styles: {
+  readonly "root": string;
+  readonly "subtitle": string;
+};
+export = styles;
 

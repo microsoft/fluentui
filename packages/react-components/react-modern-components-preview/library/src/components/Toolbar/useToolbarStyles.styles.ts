@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ToolbarSlots, ToolbarState } from './Toolbar.types';
-import * as styles from './Toolbar.module.css';
+import styles from './Toolbar.module.css';
 
 export const toolbarClassNames: SlotClassNames<ToolbarSlots> = {
   root: 'fui-Toolbar',

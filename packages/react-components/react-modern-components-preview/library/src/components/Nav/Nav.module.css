@@ -1,6 +1,8 @@
 @layer fluent {
-  .root {
-    display: flex;
-    flex-direction: column;
+  @layer defaults {
+    .root {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

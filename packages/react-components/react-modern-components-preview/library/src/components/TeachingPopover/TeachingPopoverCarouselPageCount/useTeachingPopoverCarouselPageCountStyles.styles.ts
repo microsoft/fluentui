@@ -4,7 +4,7 @@ import type {
   TeachingPopoverCarouselPageCountSlots,
   TeachingPopoverCarouselPageCountState,
 } from './TeachingPopoverCarouselPageCount.types';
-import * as styles from './TeachingPopoverCarouselPageCount.module.css';
+import styles from './TeachingPopoverCarouselPageCount.module.css';
 
 export const teachingPopoverCarouselPageCountClassNames: SlotClassNames<TeachingPopoverCarouselPageCountSlots> = {
   root: 'fui-TeachingPopoverCarouselPageCount',

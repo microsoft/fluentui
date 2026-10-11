@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow.types';
-import * as styles from './SwatchPickerRow.module.css';
+import styles from './SwatchPickerRow.module.css';
 
 export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots> = {
   root: 'fui-SwatchPickerRow',

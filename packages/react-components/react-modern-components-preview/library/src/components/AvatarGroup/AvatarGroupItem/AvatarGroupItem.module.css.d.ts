@@ -1,5 +1,7 @@
-export const __esModule: true;
-export const avatar: string;
-export const overflowLabel: string;
-export const root: string;
+declare const styles: {
+  readonly "avatar": string;
+  readonly "overflowLabel": string;
+  readonly "root": string;
+};
+export = styles;
 

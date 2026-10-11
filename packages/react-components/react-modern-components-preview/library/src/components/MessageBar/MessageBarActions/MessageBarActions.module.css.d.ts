@@ -1,4 +1,6 @@
-export const __esModule: true;
-export const containerAction: string;
-export const root: string;
+declare const styles: {
+  readonly "containerAction": string;
+  readonly "root": string;
+};
+export = styles;
 

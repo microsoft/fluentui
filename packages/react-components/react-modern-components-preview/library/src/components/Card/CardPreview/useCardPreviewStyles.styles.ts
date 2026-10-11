@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
-import * as styles from './CardPreview.module.css';
+import styles from './CardPreview.module.css';
 
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots> = {
   root: 'fui-CardPreview',

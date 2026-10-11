@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { OptionSlots, OptionState } from './Option.types';
-import * as styles from './Option.module.css';
+import styles from './Option.module.css';
 
 export const optionClassNames: SlotClassNames<OptionSlots> = {
   root: 'fui-Option',

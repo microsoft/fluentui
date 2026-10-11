@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const list: string;
+declare const styles: {
+  readonly "list": string;
+};
+export = styles;
 

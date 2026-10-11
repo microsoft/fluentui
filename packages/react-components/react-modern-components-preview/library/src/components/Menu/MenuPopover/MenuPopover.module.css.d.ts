@@ -1,3 +1,5 @@
-export const __esModule: true;
-export const menuPopover: string;
+declare const styles: {
+  readonly "menuPopover": string;
+};
+export = styles;
 

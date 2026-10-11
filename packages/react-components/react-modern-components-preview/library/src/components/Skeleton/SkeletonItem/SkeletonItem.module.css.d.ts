@@ -1,6 +1,8 @@
-export const __esModule: true;
-export const block: string;
-export const pulse: string;
-export const root: string;
-export const wave: string;
+declare const styles: {
+  readonly "block": string;
+  readonly "pulse": string;
+  readonly "root": string;
+  readonly "wave": string;
+};
+export = styles;
 

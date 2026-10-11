@@ -1,7 +1,9 @@
 @layer fluent {
-  .root {
-    flex-shrink: 0;
-    overflow: hidden;
-    transform: translateZ(0);
+  @layer defaults {
+    .root {
+      flex-shrink: 0;
+      overflow: hidden;
+      transform: translateZ(0);
+    }
   }
 }

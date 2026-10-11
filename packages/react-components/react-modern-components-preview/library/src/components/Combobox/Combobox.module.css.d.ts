@@ -1,8 +1,10 @@
-export const __esModule: true;
-export const clearIcon: string;
-export const expandIcon: string;
-export const icon: string;
-export const input: string;
-export const listbox: string;
-export const root: string;
+declare const styles: {
+  readonly "clearIcon": string;
+  readonly "expandIcon": string;
+  readonly "icon": string;
+  readonly "input": string;
+  readonly "listbox": string;
+  readonly "root": string;
+};
+export = styles;
 
