@@ -1,2 +1,2 @@
-// Component implementation is added in a follow-up PR.
-export {};
+export { CalendarProvider, calendarContextDefaultValue, useCalendarContext_unstable } from './contexts/calendarContext';
+export type { CalendarContextValue, CalendarContextValues } from './contexts/calendarContext';

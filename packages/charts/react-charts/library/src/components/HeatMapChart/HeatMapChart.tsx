@@ -808,6 +808,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
         yAxisPadding={0.02}
         legendBars={_createLegendBars()}
         onChartMouseLeave={_handleChartMouseLeave}
+        onChartBlur={_handleChartMouseLeave}
         componentRef={cartesianChartRef}
         tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */

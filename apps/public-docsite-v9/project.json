@@ -12,19 +12,16 @@
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],
-      "dependsOn": [
-        {
-          "projects": [
-            "react-storybook-addon",
-            "react-storybook-addon-export-to-sandbox",
-            "storybook-llms-extractor",
-            "react-alert",
-            "react-infobutton",
-            "react-virtualizer"
-          ],
-          "target": "build"
-        }
-      ]
+      "dependsOn": ["^build"]
+    },
+    "storybook": {
+      "dependsOn": ["^build"]
+    },
+    "storybook:docs": {
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "dependsOn": ["^build"]
     },
     "build-storybook:docsite": {
       "inputs": [

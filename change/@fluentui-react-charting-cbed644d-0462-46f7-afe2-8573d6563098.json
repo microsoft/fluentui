@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs: note that IChartDataPoint.color is rendered into generated CSS and should be validated when it comes from untrusted input",
-  "packageName": "@fluentui/react-charting",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

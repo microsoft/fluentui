@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme-samples",
-  "version": "8.7.226",
+  "version": "8.7.227",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,8 +21,8 @@
     "clean": "yarn run -T just-scripts clean"
   },
   "dependencies": {
-    "@fluentui/react": "^8.125.7",
-    "@fluentui/scheme-utilities": "^8.3.73",
+    "@fluentui/react": "^8.125.8",
+    "@fluentui/scheme-utilities": "^8.3.74",
     "@fluentui/set-version": "^8.2.24",
     "tslib": "^2.1.0"
   },

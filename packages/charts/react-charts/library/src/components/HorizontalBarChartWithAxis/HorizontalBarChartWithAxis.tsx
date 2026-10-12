@@ -925,6 +925,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
+        onChartBlur={_handleChartMouseLeave}
         componentRef={cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line @typescript-eslint/no-shadow

@@ -82,6 +82,10 @@ export type DialogProps = {
 
   /**
    * Decides whether the dialog should be removed from the DOM when it is closed.
+   * Removal waits for running, finite animations on the surface and its pseudo-elements.
+   * Native close and focus restoration are immediate. Exit styles must keep the
+   * surface displayed and in the top layer, using display keyframes or discrete
+   * display transitions together with a discrete overlay transition.
    *
    * @default true
    */

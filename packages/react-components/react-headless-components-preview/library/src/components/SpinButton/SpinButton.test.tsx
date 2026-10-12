@@ -24,6 +24,21 @@ describe('SpinButton', () => {
     expect(getByLabelText('Decrement value')).toBeInTheDocument();
   });
 
+  it('renders with data-readonly when read-only', () => {
+    const { container, getByRole } = render(<SpinButton defaultValue={1} readOnly />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-readonly', '');
+    expect(getByRole('spinbutton')).toHaveAttribute('readonly');
+  });
+
+  it('does not render data-readonly when editable', () => {
+    const { container } = render(<SpinButton defaultValue={1} />);
+    const root = container.firstElementChild!;
+
+    expect(root).not.toHaveAttribute('data-readonly');
+  });
+
   it('renders with data-at-bound when at min value', () => {
     const { container } = render(<SpinButton defaultValue={0} min={0} max={10} />);
     const root = container.firstElementChild!;

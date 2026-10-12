@@ -1173,6 +1173,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       getDomainNRangeValues={_getDomainNRangeValues}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
       {...(_xAxisType! === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,
