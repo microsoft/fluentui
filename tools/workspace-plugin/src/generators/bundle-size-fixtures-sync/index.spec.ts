@@ -1,5 +1,6 @@
 import { type ProjectConfiguration, type Tree, writeJson } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import ts from 'typescript';
 
 import generator from './index';
 
@@ -86,6 +87,40 @@ describe('bundle-size-fixtures-sync generator', () => {
         };
         "
       `);
+    });
+
+    it.each([
+      {
+        subpaths: ['menu-button', 'menuButton'],
+        namespaces: ['MenuButton', 'MenuButton2'],
+      },
+      {
+        subpaths: ['menu-button', 'menuButton', 'menuButton2'],
+        namespaces: ['MenuButton', 'MenuButton3', 'MenuButton2'],
+      },
+    ])('allocates unique namespace bindings for $subpaths', async ({ subpaths, namespaces }) => {
+      const project = setupEntryPointsProject(
+        Object.fromEntries(subpaths.map(subpath => [`src/${subpath}.ts`, 'export {};'])),
+      );
+
+      await generator(tree);
+
+      const fixture = project.readFixture('AllComponents.fixture.js')!;
+      const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+      const fixtureImports = sourceFile.statements.filter(ts.isImportDeclaration);
+      const bindings = fixtureImports.map(
+        statement => (statement.importClause!.namedBindings as ts.NamespaceImport).name.text,
+      );
+      const modules = fixtureImports.map(statement => (statement.moduleSpecifier as ts.StringLiteral).text);
+      const logged = sourceFile.statements.find(ts.isExpressionStatement)!.expression as ts.CallExpression;
+      const loggedBindings = (logged.arguments[0] as ts.ObjectLiteralExpression).properties.map(
+        property => (property as ts.ShorthandPropertyAssignment).name.text,
+      );
+
+      expect(bindings).toEqual(namespaces);
+      expect(new Set(bindings).size).toBe(subpaths.length);
+      expect(modules).toEqual(subpaths.map(subpath => `@proj/react-headless/${subpath}`));
+      expect(loggedBindings).toEqual(bindings);
     });
 
     it('omits the root entry, which would defeat per subpath isolation', async () => {
@@ -192,6 +227,41 @@ describe('bundle-size-fixtures-sync generator', () => {
       expect(project.readFixture('BaseHooks.fixture.js')).toContain('useAvatarGroupBase_unstable');
     });
 
+    it('imports named hooks and default aliases without importing default-only declaration names', async () => {
+      const project = setupSuite();
+      tree.write(
+        'packages/react-button/src/index.ts',
+        [
+          `export { useButtonBase_unstable } from './Button';`,
+          `export { default as useAliasedBase_unstable } from './Alias';`,
+          `export default function useDefaultBase_unstable() {}`,
+        ].join('\n'),
+      );
+
+      await generator(tree);
+
+      const fixture = project.readFixture('BaseHooks.fixture.js');
+      expect(fixture).toContain('useButtonBase_unstable');
+      expect(fixture).toContain('useAliasedBase_unstable');
+      expect(fixture).not.toContain('useDefaultBase_unstable');
+    });
+
+    it('imports destructured hooks reached through a dependency barrel', async () => {
+      const project = setupSuite();
+      tree.write('packages/react-button/src/index.ts', `export * from './hooks';`);
+      tree.write(
+        'packages/react-button/src/hooks.ts',
+        `export const { useButtonBase_unstable, usePropertyBase_unstable: useAliasedBase_unstable } = hooks;`,
+      );
+
+      await generator(tree);
+
+      const fixture = project.readFixture('BaseHooks.fixture.js');
+      expect(fixture).toContain('useButtonBase_unstable');
+      expect(fixture).toContain('useAliasedBase_unstable');
+      expect(fixture).not.toContain('usePropertyBase_unstable');
+    });
+
     it('ignores non workspace dependencies', async () => {
       const project = setupSuite();
 
@@ -200,6 +270,33 @@ describe('bundle-size-fixtures-sync generator', () => {
       expect(project.readFixture('BaseHooks.fixture.js')).not.toContain('@swc/helpers');
     });
   });
+
+  it.each(['entryPoints', 'baseHooks'] as const)(
+    'emits valid JavaScript preserving the exact %s fixture name',
+    async kind => {
+      const name = `headless: user's "components" \\ path\nnext line`;
+      const project = setupProject({
+        name: 'react-headless',
+        projectConfig: {
+          metadata: {
+            bundleSizeFixtures: { 'Special.fixture.js': { kind, name } },
+          },
+        },
+      });
+
+      await generator(tree);
+
+      const fixture = project.readFixture('Special.fixture.js')!;
+      const { diagnostics } = ts.transpileModule(fixture, {
+        fileName: 'fixture.js',
+        compilerOptions: { allowJs: true, module: ts.ModuleKind.ESNext },
+        reportDiagnostics: true,
+      });
+
+      expect(diagnostics).toEqual([]);
+      expect(fixture).toContain(String.raw`name: 'headless: user\'s "components" \\ path\nnext line',`);
+    },
+  );
 
   it('leaves projects without a fixture declaration alone', async () => {
     const project = setupProject({ name: 'react-button' });
