@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
@@ -6,6 +7,55 @@ import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 
 describe('Popover', () => {
+  describe('close lifecycle', () => {
+    const Example = ({ open, trapFocus = false }: { open: boolean; trapFocus?: boolean }) => (
+      <Popover open={open} trapFocus={trapFocus}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <button autoFocus>Inside</button>
+        </PopoverSurface>
+      </Popover>
+    );
+
+    it('calls native dialog close while the surface is connected', () => {
+      const { getByRole, getByText, rerender } = render(<Example open trapFocus />);
+      const surface = getByRole('dialog', { hidden: true });
+      const close = jest
+        .spyOn(HTMLDialogElement.prototype, 'close')
+        .mockImplementation(function (this: HTMLDialogElement) {
+          expect(this.isConnected).toBe(true);
+          this.removeAttribute('open');
+        });
+      try {
+        rerender(<Example open={false} trapFocus />);
+        expect(close).toHaveBeenCalledTimes(1);
+        expect(surface.isConnected).toBe(false);
+        expect(getByText('Trigger')).toHaveFocus();
+      } finally {
+        close.mockRestore();
+      }
+    });
+
+    it('preserves focus outside the shadow root during controlled close', () => {
+      const { container } = render(
+        <>
+          <button>Outside</button>
+          <div />
+        </>,
+      );
+      const outside = container.querySelector('button')!;
+      const host = container.querySelector('div')!;
+      const shadowRoot = host.attachShadow({ mode: 'closed' });
+      const { rerender } = render(createPortal(<Example open />, shadowRoot));
+      expect(shadowRoot.activeElement).toHaveTextContent('Inside');
+      outside.focus();
+      rerender(createPortal(<Example open={false} />, shadowRoot));
+      expect(outside).toHaveFocus();
+    });
+  });
+
   it('renders trigger and surface children', () => {
     const { getByText } = render(
       <Popover defaultOpen>

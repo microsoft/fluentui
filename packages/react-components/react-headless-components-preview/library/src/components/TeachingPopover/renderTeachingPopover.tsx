@@ -21,7 +21,7 @@ export const renderTeachingPopover = (
   <PopoverProvider value={contextValues.popover}>
     <BasePopoverProvider value={contextValues.basePopover as BasePopoverContextValue}>
       {state.popoverTrigger}
-      {state.open ? state.popoverSurface : null}
+      {state.shouldRenderSurface ? state.popoverSurface : null}
     </BasePopoverProvider>
   </PopoverProvider>
 );

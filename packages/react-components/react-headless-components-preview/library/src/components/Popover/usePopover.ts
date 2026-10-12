@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
+import {
+  useControllableState,
+  useEventCallback,
+  useId,
+  useTimeout,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
 
@@ -12,6 +18,19 @@ type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
 const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
   !!el && typeof (el as HTMLDialogElement).showModal === 'function';
+
+const getActiveElement = (surface: HTMLElement): Element | null => {
+  const root = surface.getRootNode();
+  const ShadowRootConstructor = surface.ownerDocument.defaultView?.ShadowRoot;
+  let activeElement =
+    ShadowRootConstructor && root instanceof ShadowRootConstructor
+      ? root.activeElement ?? surface.ownerDocument.activeElement
+      : surface.ownerDocument.activeElement;
+  while (activeElement?.shadowRoot?.activeElement) {
+    activeElement = activeElement.shadowRoot.activeElement;
+  }
+  return activeElement;
+};
 
 /**
  * Returns the state for a Popover component.
@@ -30,6 +49,12 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     defaultState: props.defaultOpen,
     initialState: false,
   });
+
+  const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
+  if (open && !shouldRenderSurface) {
+    setShouldRenderSurface(true);
+  }
+  const focusWasInsideOnNativeClose = React.useRef(false);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
@@ -95,7 +120,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     props.onOpenChange?.(event, { event, type: event.type, open: false });
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
 
     if (!surface) {
@@ -103,11 +128,37 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     }
 
     if (!open) {
+      const focusWasInside = surface.contains(getActiveElement(surface)) || focusWasInsideOnNativeClose.current;
       if (isDialogElement(surface) && surface.open) {
         surface.close();
+      } else if (
+        typeof surface.hidePopover === 'function' &&
+        SUPPORTS_POPOVER_OPEN_SELECTOR &&
+        surface.matches(':popover-open')
+      ) {
+        surface.hidePopover();
       }
+
+      const activeElement = getActiveElement(surface);
+      // Initially-open surfaces have no native trigger snapshot; preserve any successful native restoration.
+      if (
+        focusWasInside &&
+        (!activeElement || activeElement === surface.ownerDocument.body || surface.contains(activeElement)) &&
+        triggerRef.current?.isConnected
+      ) {
+        triggerRef.current.focus();
+      }
+      focusWasInsideOnNativeClose.current = false;
+      setShouldRenderSurface(false);
       return;
     }
+
+    focusWasInsideOnNativeClose.current = false;
+    const trackNativeCloseFocus = (event: Event) => {
+      if (event.type === 'cancel' || (event as ToggleEvent).newState === 'closed') {
+        focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
+      }
+    };
 
     if (trapFocus) {
       if (!isDialogElement(surface)) {
@@ -119,7 +170,11 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       }
 
       surface.addEventListener('close', onSurfaceClose);
-      return () => surface.removeEventListener('close', onSurfaceClose);
+      surface.addEventListener('cancel', trackNativeCloseFocus);
+      return () => {
+        surface.removeEventListener('close', onSurfaceClose);
+        surface.removeEventListener('cancel', trackNativeCloseFocus);
+      };
     }
 
     if (typeof surface.showPopover !== 'function') {
@@ -131,7 +186,11 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     }
 
     surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
+    surface.addEventListener('beforetoggle', trackNativeCloseFocus);
+    return () => {
+      surface.removeEventListener('toggle', onSurfaceToggle);
+      surface.removeEventListener('beforetoggle', trackNativeCloseFocus);
+    };
   }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
@@ -176,6 +235,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setContextTarget,
     positioning,
     surfaceId,
+    shouldRenderSurface,
   };
 };
 

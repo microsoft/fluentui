@@ -2,4 +2,4 @@ The headless `TeachingPopover` is built on top of the headless `Popover`. It add
 
 `TeachingPopover` re-uses the `@fluentui/react-teaching-popover` base hooks for its sub-components (`Header`, `Title`, `Footer`, `Carousel*`) and bridges the `@fluentui/react-popover` `PopoverContext` internally so dismiss buttons, finish handlers, and the carousel state machine all work transparently.
 
-When closing removes the focused surface and leaves focus on the document body, `TeachingPopover` restores focus to its trigger, including for initially open controlled tours mounted in a shadow root. Native focus restoration and intentional focus movement to another element take precedence.
+`TeachingPopover` inherits the headless `Popover` close lifecycle: the surface remains connected until `hidePopover()` or `close()` completes, allowing native focus restoration before unmounting. If an initially open tour has no native trigger snapshot and focus would be lost with its surface, focus returns to the connected trigger, including in shadow roots. Native focus restoration and intentional focus movement to another element take precedence.
