@@ -1077,3 +1077,25 @@ describe('Render empty chart calling with respective to props', () => {
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
+
+describe('Vertical bar chart - bar label formatting', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  testWithWait(
+    'Should render bar labels as plain decimals for y values less than 1',
+    VerticalBarChart,
+    {
+      data: [
+        { x: 'a', y: 0.9, legend: 'First', color: 'aqua' },
+        { x: 'b', y: 0.18, legend: 'Second', color: 'blue' },
+      ],
+    },
+    container => {
+      // Assert
+      const labels = getByClass(container, /barLabel/i);
+      expect(labels).toHaveLength(2);
+      expect(Array.from(labels).map(label => label.textContent)).toEqual(['0.9', '0.18']);
+    },
+  );
+});
