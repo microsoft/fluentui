@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "Visual regression executor",
+  "description": "Build a scoped Storybook or capture its visual regression screenshots.",
+  "type": "object",
+  "properties": {
+    "mode": { "type": "string", "enum": ["build", "capture"] },
+    "hostRoot": { "type": "string", "description": "Workspace-relative root of the host Storybook." },
+    "outputPath": { "type": "string", "description": "Workspace-relative group Storybook or screenshot output." },
+    "stories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Host-relative Storybook story globs for build mode."
+    },
+    "addons": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicit addon override; omit to preserve host addons."
+    },
+    "previewAnnotations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Host-relative preview annotations to append in build mode."
+    },
+    "storybookPath": { "type": "string", "description": "Workspace-relative built Storybook path for capture mode." },
+    "concurrency": { "type": "integer", "minimum": 1, "default": 1 }
+  },
+  "required": ["mode", "hostRoot", "outputPath"]
+}

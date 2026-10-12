@@ -197,6 +197,10 @@
         "packages/react-docsite-components/**",
         "packages/react-file-type-icons/**"
       ]
+    },
+    {
+      "plugin": "./tools/workspace-plugin/src/plugins/visual-regression-plugin.ts",
+      "include": ["apps/vr-tests-react-components/visual-regression.config.json"]
     }
   ],
   "useLegacyCache": true

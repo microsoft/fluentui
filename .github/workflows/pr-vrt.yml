@@ -76,3 +76,50 @@ jobs:
           if-no-files-found: error
           path: |
             pr.txt
+
+  vrt_granular_pilot:
+    if: ${{ github.repository_owner == 'microsoft' && github.event.pull_request.draft == true }}
+    runs-on: macos-14-xlarge
+    name: Granular VRT pilot (Spinner)
+    continue-on-error: true
+    timeout-minutes: 20
+    env:
+      NX_PARALLEL: 2
+      NX_DAEMON: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Derive SHAs for affected project selection
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --immutable
+      - run: yarn playwright install --with-deps chromium
+
+      - name: Show affected virtual projects
+        run: yarn nx show projects --affected --with-target=test-vr-granular
+
+      - name: Demonstrate Spinner-only affected selection
+        run: yarn nx show projects --affected --files=apps/vr-tests-react-components/src/stories/Spinner.stories.tsx --with-target=test-vr-granular
+
+      - name: Capture Spinner pilot screenshots
+        run: yarn nx run react-spinner-vrt:test-vr-granular --nxBail
+
+      - name: Upload granular pilot output
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: vrt-granular-pilot-spinner
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            apps/vr-tests-react-components/dist/visual-regression/react-spinner-vrt/storybook
+            apps/vr-tests-react-components/dist/visual-regression/react-spinner-vrt/screenshots
