@@ -111,12 +111,12 @@
   .checked-indicator,
   :host(:hover) .checked-indicator,
   :host(:active) .checked-indicator {
-    background-color: ActiveCaption;
+    background-color: CanvasText;
   }
   :host(:state(checked)) .checked-indicator,
   :host(:state(checked):hover) .checked-indicator,
   :host(:state(checked):active) .checked-indicator {
-    background-color: ButtonFace;
+    background-color: HighlightText;
   }
   :host(:is([disabled], :disabled)) .checked-indicator,
   :host(:state(checked):is([disabled], :disabled)) .checked-indicator {
