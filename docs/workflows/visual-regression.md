@@ -2,7 +2,7 @@
 
 This is an opt-in pilot. Existing PR and baseline `test-vr` workflows still use the legacy host apps; they are deliberately not switched to `test-vr-granular`. Their upload steps still pass the three legacy host projects. Virtual outputs are included only when their project names are explicitly passed in `config.projects`.
 
-Draft PRs also run the advisory `Granular VRT pilot (Spinner)` job. It lists the actual PR's affected virtual projects, demonstrates Spinner-only story selection, and captures the Spinner group. Its separate `vrt-granular-pilot-spinner` artifact contains the scoped Storybook and screenshots; it is not passed to VR approval. Pilot failures do not block the existing VR approval workflow. This demonstration does not replace affected full-pilot execution or performance benchmarking.
+Draft PRs also run the advisory `Granular VRT pilot (affected)` job. It lists the actual PR's affected virtual projects and runs all of them with `nx affected -t test-vr-granular --parallel=2`. The capture step logs wall-clock timing for the scoped Storybook builds and captures. The collector includes only those affected groups. Its separate `vrt-granular-pilot` artifact matches the legacy upload layout: `screenshots-report.json` at the artifact root, with screenshot files under `vr-tests-react-components/`. Built Storybook files are not uploaded, and the artifact is not passed to VR approval. Pilot failures do not block the existing VR approval workflow. Compare the capture-step duration with the legacy job while accounting for the pilot's two-task parallelism and one-worker capture concurrency.
 
 ## Project model
 

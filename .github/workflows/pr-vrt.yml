@@ -80,9 +80,9 @@ jobs:
   vrt_granular_pilot:
     if: ${{ github.repository_owner == 'microsoft' && github.event.pull_request.draft == true }}
     runs-on: macos-14-xlarge
-    name: Granular VRT pilot (Spinner)
+    name: Granular VRT pilot (affected)
     continue-on-error: true
-    timeout-minutes: 20
+    timeout-minutes: 60
     env:
       NX_PARALLEL: 2
       NX_DAEMON: false
@@ -108,18 +108,26 @@ jobs:
       - name: Show affected virtual projects
         run: yarn nx show projects --affected --with-target=test-vr-granular
 
-      - name: Demonstrate Spinner-only affected selection
-        run: yarn nx show projects --affected --files=apps/vr-tests-react-components/src/stories/Spinner.stories.tsx --with-target=test-vr-granular
+      - name: Capture affected pilot screenshots
+        run: time yarn nx affected -t test-vr-granular --parallel=2 --nxBail
 
-      - name: Capture Spinner pilot screenshots
-        run: yarn nx run react-spinner-vrt:test-vr-granular --nxBail
+      - name: Prepare granular screenshots for upload
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        id: granular_screenshots_root
+        with:
+          script: |
+            const { execFileSync } = require('node:child_process');
+            const projects = JSON.parse(execFileSync('yarn', [
+              'nx', 'show', 'projects', '--affected', '--with-target=test-vr-granular', '--json'
+            ], { encoding: 'utf8' }));
+            const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
+            return await run({ github, context, core, config: { projects } });
+          result-encoding: string
 
       - name: Upload granular pilot output
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: vrt-granular-pilot-spinner
+          name: vrt-granular-pilot
           retention-days: 7
           if-no-files-found: error
-          path: |
-            apps/vr-tests-react-components/dist/visual-regression/react-spinner-vrt/storybook
-            apps/vr-tests-react-components/dist/visual-regression/react-spinner-vrt/screenshots
+          path: ${{ steps.granular_screenshots_root.outputs.result }}
