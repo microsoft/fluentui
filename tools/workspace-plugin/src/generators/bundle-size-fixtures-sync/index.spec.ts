@@ -201,7 +201,7 @@ describe('bundle-size-fixtures-sync generator', () => {
         console.log(
           useAvatarBase_unstable,
           useButtonBase_unstable,
-          useCompoundButtonBase_unstable
+          useCompoundButtonBase_unstable,
         );
 
         export default {

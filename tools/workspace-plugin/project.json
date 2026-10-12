@@ -6,6 +6,11 @@
   "tags": ["platform:node", "tools"],
   "implicitDependencies": ["!eslint-plugin"],
   "targets": {
+    "test": {
+      "options": {
+        "command": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
+      }
+    },
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
