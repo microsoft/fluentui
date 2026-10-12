@@ -29,13 +29,83 @@ interface Token {
 }
 
 // ---------------------------------------------------------------------------
-// Own-property check — only allow access to properties that exist directly
-// on the object (not inherited from the prototype chain). This is an allowlist
-// approach: constructor, __proto__, toString, valueOf, etc. are all inherited
-// and thus blocked automatically without maintaining a blocklist.
+// Read own data descriptors only: inherited properties and accessors are not data.
 // ---------------------------------------------------------------------------
-const hasOwn = (obj: unknown, prop: string): boolean =>
-  obj !== null && obj !== undefined && typeof obj === 'object' && Object.prototype.hasOwnProperty.call(obj, prop);
+const ownDataValue = (obj: unknown, prop: string): unknown => {
+  if (obj === null || typeof obj !== 'object') {
+    return undefined;
+  }
+  const descriptor = Object.getOwnPropertyDescriptor(obj, prop);
+  return descriptor && 'value' in descriptor ? descriptor.value : undefined;
+};
+
+function rejectFunction(value: unknown): void {
+  if (typeof value === 'function') {
+    throw new Error('Safe expression evaluator: function values cannot be used as data');
+  }
+}
+
+/** Match ordinary string conversion without invoking any user coercion hooks. */
+function safeToString(value: unknown): string {
+  const active = new Set<object>();
+  let work = 0;
+  const convert = (input: unknown, depth: number): string => {
+    rejectFunction(input);
+    if (input === null || typeof input !== 'object') {
+      return String(input);
+    }
+    if (Array.isArray(input)) {
+      if (active.has(input)) {
+        return ''; // Array#join renders a cyclic reference as an empty item.
+      }
+      const length = ownDataValue(input, 'length') as number;
+      if (depth > 100 || (work += length) > 100000) {
+        throw new Error('Safe expression evaluator: array conversion work limit exceeded');
+      }
+      active.add(input);
+      const items: string[] = [];
+      for (let index = 0; index < length; index++) {
+        const item = ownDataValue(input, String(index));
+        items.push(item === null || item === undefined ? '' : convert(item, depth + 1));
+      }
+      active.delete(input);
+      return items.join(',');
+    }
+    if (input instanceof Date) {
+      return Date.prototype.toString.call(input);
+    }
+    // The canonical record tag also works for null-prototype clones. Calling
+    // Object#toString on the original could execute a Symbol.toStringTag getter.
+    return '[object Object]';
+  };
+  return convert(value, 0);
+}
+
+function safeToNumber(value: unknown): number {
+  rejectFunction(value);
+  if (Array.isArray(value)) {
+    return Number(safeToString(value));
+  }
+  if (value instanceof Date) {
+    return Date.prototype.getTime.call(value);
+  }
+  return value !== null && typeof value === 'object' ? NaN : Number(value);
+}
+
+/** Coercive operators must never fall back to an object's valueOf/toString. */
+function safeOperand(value: unknown, defaultHint = false): unknown {
+  rejectFunction(value);
+  if (Array.isArray(value)) {
+    return safeToString(value);
+  }
+  if (value instanceof Date) {
+    return defaultHint ? Date.prototype.toString.call(value) : Date.prototype.getTime.call(value);
+  }
+  if (value !== null && typeof value === 'object') {
+    throw new Error('Safe expression evaluator: object coercion is not allowed in operators');
+  }
+  return value;
+}
 
 // ---------------------------------------------------------------------------
 // Whitelisted built-in functions (mirrors the Vega expression function set)
@@ -47,21 +117,21 @@ const SAFE_FUNCTIONS: Record<string, (...args: unknown[]) => unknown> = {
   isString: (x: unknown) => typeof x === 'string',
   isBoolean: (x: unknown) => typeof x === 'boolean',
   isArray: (x: unknown) => Array.isArray(x),
-  isNaN: (x: unknown) => isNaN(x as number),
+  isNaN: (x: unknown) => Number.isNaN(safeToNumber(x)),
   isFinite: (x: unknown) => Number.isFinite(x),
-  abs: (x: unknown) => Math.abs(x as number),
-  ceil: (x: unknown) => Math.ceil(x as number),
-  floor: (x: unknown) => Math.floor(x as number),
-  round: (x: unknown) => Math.round(x as number),
-  sqrt: (x: unknown) => Math.sqrt(x as number),
-  log: (x: unknown) => Math.log(x as number),
-  exp: (x: unknown) => Math.exp(x as number),
-  pow: (x: unknown, y: unknown) => (x as number) ** (y as number),
-  min: (...args: unknown[]) => Math.min(...(args as number[])),
-  max: (...args: unknown[]) => Math.max(...(args as number[])),
-  length: (x: unknown) => (typeof x === 'string' || Array.isArray(x) ? (x as string | unknown[]).length : 0),
-  toNumber: (x: unknown) => Number(x),
-  toString: (x: unknown) => String(x),
+  abs: (x: unknown) => Math.abs(safeToNumber(x)),
+  ceil: (x: unknown) => Math.ceil(safeToNumber(x)),
+  floor: (x: unknown) => Math.floor(safeToNumber(x)),
+  round: (x: unknown) => Math.round(safeToNumber(x)),
+  sqrt: (x: unknown) => Math.sqrt(safeToNumber(x)),
+  log: (x: unknown) => Math.log(safeToNumber(x)),
+  exp: (x: unknown) => Math.exp(safeToNumber(x)),
+  pow: (x: unknown, y: unknown) => safeToNumber(x) ** safeToNumber(y),
+  min: (...args: unknown[]) => Math.min(...args.map(safeToNumber)),
+  max: (...args: unknown[]) => Math.max(...args.map(safeToNumber)),
+  length: (x: unknown) => (typeof x === 'string' ? x.length : Array.isArray(x) ? ownDataValue(x, 'length') : 0),
+  toNumber: safeToNumber,
+  toString: safeToString,
   toBoolean: (x: unknown) => Boolean(x),
 };
 
@@ -315,17 +385,27 @@ class ExpressionParser {
     while (['==', '===', '!=', '!=='].includes(this._peek().type)) {
       const op = this._advance().type;
       const right = this._parseComparison();
+      rejectFunction(left);
+      rejectFunction(right);
+      // Object identity and null comparisons do not require primitive coercion.
+      const coerce =
+        (op === '==' || op === '!=') &&
+        left != null &&
+        right != null &&
+        (typeof left === 'object') !== (typeof right === 'object');
+      const lhs = coerce ? safeOperand(left, true) : left;
+      const rhs = coerce ? safeOperand(right, true) : right;
       switch (op) {
         case '==':
           // eslint-disable-next-line eqeqeq
-          left = left == right;
+          left = lhs == rhs;
           break;
         case '===':
           left = left === right;
           break;
         case '!=':
           // eslint-disable-next-line eqeqeq
-          left = left != right;
+          left = lhs != rhs;
           break;
         case '!==':
           left = left !== right;
@@ -339,7 +419,8 @@ class ExpressionParser {
     let left = this._parseAdditive();
     while (['<', '>', '<=', '>='].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseAdditive();
+      const right = safeOperand(this._parseAdditive());
+      left = safeOperand(left);
       switch (op) {
         case '<':
           left = (left as number) < (right as number);
@@ -362,7 +443,8 @@ class ExpressionParser {
     let left = this._parseMultiplicative();
     while (['+', '-'].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseMultiplicative();
+      const right = safeOperand(this._parseMultiplicative(), op === '+');
+      left = safeOperand(left, op === '+');
       if (op === '+') {
         left =
           typeof left === 'string' || typeof right === 'string'
@@ -379,7 +461,8 @@ class ExpressionParser {
     let left = this._parseUnary();
     while (['*', '/', '%'].includes(this._peek().type)) {
       const op = this._advance().type;
-      const right = this._parseUnary();
+      const right = safeOperand(this._parseUnary());
+      left = safeOperand(left);
       switch (op) {
         case '*':
           left = (left as number) * (right as number);
@@ -402,11 +485,11 @@ class ExpressionParser {
     }
     if (this._peek().type === '-') {
       this._advance();
-      return -(this._parseUnary() as number);
+      return -(safeOperand(this._parseUnary()) as number);
     }
     if (this._peek().type === '+') {
       this._advance();
-      return +(this._parseUnary() as number);
+      return +(safeOperand(this._parseUnary()) as number);
     }
     return this._parsePostfix();
   }
@@ -421,23 +504,15 @@ class ExpressionParser {
         const prop = this._expect('ident');
         const propName = prop.value as string;
 
-        if (hasOwn(value, propName)) {
-          value = (value as Record<string, unknown>)[propName];
-        } else {
-          value = undefined;
-        }
+        value = ownDataValue(value, propName);
       } else if (this._peek().type === '[') {
         // Bracket access: obj['prop'] or obj[expr] — only own properties allowed
         this._advance();
         const index = this._parseExpression();
         this._expect(']');
 
-        const key = String(index);
-        if (hasOwn(value, key)) {
-          value = (value as Record<string, unknown>)[key];
-        } else {
-          value = undefined;
-        }
+        const key = safeToString(index);
+        value = ownDataValue(value, key);
       } else if (this._peek().type === '(') {
         // Function call — only safe built-in functions are callable
         if (typeof value !== 'function' || !SAFE_FUNCTION_VALUES.has(value)) {
@@ -453,6 +528,8 @@ class ExpressionParser {
           }
         }
         this._expect(')');
+        // Guard every argument, including extra arguments ignored by a built-in.
+        args.forEach(rejectFunction);
         value = (value as (...a: unknown[]) => unknown)(...args);
       } else {
         break;

@@ -125,6 +125,193 @@ describe('VegaLiteExpressionEvaluator', () => {
     });
   });
 
+  describe('safe data coercion', () => {
+    it.each(['count', '__proto__', 'constructor', 'toString', 'valueOf'])(
+      'stringifies a null-prototype transform row with an own %s alias',
+      field => {
+        const datum = Object.create(null);
+        Object.defineProperty(datum, field, { value: 2, enumerable: true });
+
+        expect(safeEvaluateExpression('toString(datum)', datum)).toBe('[object Object]');
+        expect(safeEvaluateExpression(`length(toString(datum)) + datum['${field}']`, datum)).toBe(17);
+      },
+    );
+
+    it.each([
+      ['null', null, 'null', 0],
+      ['undefined', undefined, 'undefined', NaN],
+      ['boolean', true, 'true', 1],
+      ['number', 42, '42', 42],
+      ['numeric string', '42', '42', 42],
+      ['empty string', '', '', 0],
+      ['record', {}, '[object Object]', NaN],
+      ['empty array', [], '', 0],
+      ['numeric array', [42], '42', 42],
+      ['nullish array', [null, undefined], ',', NaN],
+      ['nested array', [1, [2, null, 3], {}], '1,2,,3,[object Object]', NaN],
+    ])('converts %s without changing primitive/array semantics', (_name, value, text, number) => {
+      expect(safeEvaluateExpression('toString(datum.value)', { value })).toBe(text);
+      expect(safeEvaluateExpression('toNumber(datum.value)', { value })).toBe(number);
+    });
+
+    it('never reads own or inherited record coercion hooks, including Symbol.toStringTag', () => {
+      const hook = jest.fn(() => 42);
+      const getter = jest.fn(() => hook);
+      const prototype = Object.defineProperties(
+        {},
+        {
+          toString: { get: getter },
+          valueOf: { get: getter },
+          [Symbol.toPrimitive]: { get: getter },
+          [Symbol.toStringTag]: { get: getter },
+        },
+      );
+      const inherited = Object.create(prototype);
+      const own = Object.defineProperties({}, Object.getOwnPropertyDescriptors(prototype));
+
+      for (const value of [inherited, own, { toString: hook, valueOf: hook, [Symbol.toPrimitive]: hook }]) {
+        expect(safeEvaluateExpression('toString(datum.value)', { value })).toBe('[object Object]');
+        expect(safeEvaluateExpression('toNumber(datum.value)', { value })).toBeNaN();
+        expect(safeEvaluateExpression('isNaN(datum.value)', { value })).toBe(true);
+        expect(safeEvaluateExpression('abs(datum.value)', { value })).toBeNaN();
+      }
+      expect(hook).not.toHaveBeenCalled();
+      expect(getter).not.toHaveBeenCalled();
+    });
+
+    it('joins only own array data descriptors, without accessors or inherited items', () => {
+      const hook = jest.fn(() => 'unsafe');
+      const value: unknown[] = new Array(4);
+      value[0] = 1;
+      value[3] = [2, null, 3];
+      const prototype = Object.create(Array.prototype);
+      Object.defineProperty(prototype, '2', { get: hook });
+      Object.setPrototypeOf(value, prototype);
+      Object.defineProperty(value, '1', { get: hook });
+      Object.defineProperty(value, 'toString', { get: hook });
+      Object.defineProperty(value, 'join', { get: hook });
+      Object.defineProperty(value, Symbol.toPrimitive, { get: hook });
+
+      expect(safeEvaluateExpression('toString(datum.value)', { value })).toBe('1,,,2,,3');
+      expect(safeEvaluateExpression('toNumber(datum.value)', { value })).toBeNaN();
+      expect(safeEvaluateExpression("datum.value + '!'", { value })).toBe('1,,,2,,3!');
+      expect(hook).not.toHaveBeenCalled();
+    });
+
+    it('handles cyclic arrays and rejects oversized conversion work', () => {
+      const value: unknown[] = [1];
+      value.push(value, 2);
+      expect(safeEvaluateExpression('toString(datum.value)', { value })).toBe('1,,2');
+      expect(() => safeEvaluateExpression('toString(datum.value)', { value: new Array(100001) })).toThrow('work limit');
+    });
+
+    it('uses Date intrinsics rather than user-defined conversion methods', () => {
+      const value = new Date('2024-01-01T00:00:00Z');
+      const time = Date.prototype.getTime.call(value);
+      const text = Date.prototype.toString.call(value);
+      const hook = jest.fn(() => 'unsafe');
+      for (const key of ['toString', 'valueOf', 'getTime', Symbol.toPrimitive, Symbol.toStringTag]) {
+        Object.defineProperty(value, key, { get: hook });
+      }
+      expect(safeEvaluateExpression('toString(datum.value)', { value })).toBe(text);
+      expect(safeEvaluateExpression('toNumber(datum.value)', { value })).toBe(time);
+      expect(safeEvaluateExpression('datum.value - 1', { value })).toBe(time - 1);
+      expect(safeEvaluateExpression("datum.value + '!'", { value })).toBe(`${text}!`);
+      expect(safeEvaluateExpression('toNumber(datum.value)', { value: new Date(NaN) })).toBeNaN();
+      expect(safeEvaluateExpression('toString(datum.value)', { value: new Date(NaN) })).toBe('Invalid Date');
+      expect(hook).not.toHaveBeenCalled();
+    });
+
+    it.each(['datum.value', "datum['value']", 'datum.nested.value', 'datum[datum.key]'])(
+      'does not invoke an own accessor in %s',
+      expression => {
+        const getter = jest.fn(() => 42);
+        const datum = Object.defineProperty({ key: 'value' }, 'value', { get: getter });
+        expect(safeEvaluateExpression(expression, { ...datum, nested: datum })).toBeUndefined();
+        expect(safeEvaluateExpression(expression, datum)).toBeUndefined();
+        expect(getter).not.toHaveBeenCalled();
+      },
+    );
+
+    it.each([
+      'datum.value + 1',
+      '1 + datum.value',
+      "datum.value + ''",
+      'datum.value - 1',
+      'datum.value * 2',
+      'datum.value / 2',
+      'datum.value % 2',
+      '+datum.value',
+      '-datum.value',
+      'datum.value < 2',
+      'datum.value > 2',
+      'datum.value <= 2',
+      'datum.value >= 2',
+      'datum.value == 2',
+      'datum.value != 2',
+    ])('rejects unsafe object coercion in %s', expression => {
+      const hook = jest.fn(() => 2);
+      const value = { toString: hook, valueOf: hook, [Symbol.toPrimitive]: hook };
+      expect(() => safeEvaluateExpression(expression, { value })).toThrow('object coercion');
+      expect(hook).not.toHaveBeenCalled();
+    });
+
+    it('preserves non-coercive object identity and null comparisons', () => {
+      const value = Object.create(null);
+      expect(safeEvaluateExpression('datum.value == datum.value', { value })).toBe(true);
+      expect(safeEvaluateExpression('datum.value === datum.value', { value })).toBe(true);
+      expect(safeEvaluateExpression('datum.value == null', { value })).toBe(false);
+      expect(safeEvaluateExpression('datum.value != null', { value })).toBe(true);
+      expect(safeEvaluateExpression('datum.value === 2', { value })).toBe(false);
+    });
+
+    it.each([
+      'isValid',
+      'isDate',
+      'isNumber',
+      'isString',
+      'isBoolean',
+      'isArray',
+      'isNaN',
+      'isFinite',
+      'abs',
+      'ceil',
+      'floor',
+      'round',
+      'sqrt',
+      'log',
+      'exp',
+      'pow',
+      'min',
+      'max',
+      'length',
+      'toNumber',
+      'toString',
+      'toBoolean',
+    ])('rejects function values in every argument position of %s', name => {
+      const callback = jest.fn(() => 42);
+      for (const expression of [
+        `${name}(datum.callback)`,
+        `${name}(1, datum.callback)`,
+        `${name}(1, 2, datum.callback)`,
+        `${name}(abs)`,
+        `${name}(1, abs)`,
+      ]) {
+        expect(() => safeEvaluateExpression(expression, { callback })).toThrow('function values');
+      }
+      expect(callback).not.toHaveBeenCalled();
+    });
+
+    it.each(['toString(datum.value)', 'toNumber(datum.value)', 'abs(datum.value)', 'datum[datum.value]'])(
+      'rejects functions nested in array conversion in %s',
+      expression => {
+        const callback = jest.fn(() => 42);
+        expect(() => safeEvaluateExpression(expression, { value: [1, [callback]] })).toThrow('function values');
+        expect(callback).not.toHaveBeenCalled();
+      },
+    );
+  });
+
   // -------------------------------------------------------------------
   // Malicious expressions that MUST be rejected
   // -------------------------------------------------------------------
