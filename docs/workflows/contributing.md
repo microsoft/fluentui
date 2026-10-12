@@ -25,6 +25,14 @@ yarn nx affected -t test                  # Test affected projects
 yarn create-component                     # Interactive generator
 ```
 
+## Git Worktrees
+
+Creating a worktree triggers the checkout hook with no previous HEAD. The hook
+skips change notifications for this initial checkout, so Husky can remain enabled.
+Normal checkouts still report dependency and Nx configuration changes.
+
+Install dependencies in a new worktree before running development commands.
+
 ## PR Checklist
 
 1. **Change file** — Required for any published package change:
