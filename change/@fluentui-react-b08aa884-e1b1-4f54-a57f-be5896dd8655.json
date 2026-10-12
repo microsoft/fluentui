@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Sticky): compute placeholder width from getBoundingClientRect when content does not overflow horizontally, preventing a phantom horizontal scrollbar under browser zoom",
+  "packageName": "@fluentui/react",
+  "email": "144495202+AKnassa@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
