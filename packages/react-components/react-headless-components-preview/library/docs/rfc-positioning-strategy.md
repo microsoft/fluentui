@@ -8,7 +8,7 @@ Stakeholders: `@fluentui/react-headless-components-preview` maintainers, `@fluen
 
 ## Summary
 
-Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces with CSS anchor positioning. That leaves two gaps: the geometry-dependent `positioning` options are not implemented, and browser versions without anchor support render surfaces unpositioned. This RFC compares seven options (A–G) for closing the gaps and proposes **Option E**, a small JavaScript fallback inside headless that follows the CSS anchor rules.
+Headless components (`Popover`, `Menu`, `Tooltip`, ...) position their surfaces with CSS anchor positioning. That leaves two gaps: the geometry-dependent `positioning` options are not implemented, and browser versions without anchor support render surfaces unpositioned. This RFC compares six options (A, C–G; B was explored and discarded) for closing the gaps and proposes **Option E**, a small JavaScript fallback inside headless that follows the CSS anchor rules.
 
 ## Background
 
@@ -43,7 +43,7 @@ The library needs one rule for which code runs when, that can be documented and 
 
 ## Options
 
-A–E are strategies for headless. F and G change the engine inside `react-positioning`; they make A and C cheaper but do not position a headless surface on their own.
+A, C, D and E are strategies for headless. F and G change the engine inside `react-positioning`; they make A and C cheaper but do not position a headless surface on their own.
 
 ### Option A: Explicit engine ([#36800](https://github.com/microsoft/fluentui/pull/36800))
 
@@ -76,42 +76,25 @@ Cons
 - `engine`, `PositioningEngine` and the provider become public API, so retiring them once the platform catches up is a breaking change.
 - Migrating from v9 means adding an engine wherever the product relies on engine-only options, virtual targets or older browsers.
 
-### Option B: Automatic fallback, lazy-loaded ([#36124](https://github.com/microsoft/fluentui/pull/36124))
+### Option B: Automatic fallback, lazy-loaded ([#36124](https://github.com/microsoft/fluentui/pull/36124)) — discarded
+
+Explored and dropped. The library decided at runtime and `import()`ed floating-ui only when needed. Lazy loading at library level means a cold-open flash while the chunk loads, and the consumer's bundler, not the library, decides how that chunk is split, so it can end up duplicated. Option C keeps the runtime decision without the lazy load.
+
+### Option C: Automatic fallback, bundled
 
 ```ts
 mode = CSS.supports('position-area: bottom') && !requiresFloatingUI(options) ? 'anchor' : 'floating';
 ```
 
-`requiresFloatingUI` is true for any engine-only option or a virtual target. On mount the library decides, and if needed `import()`s floating-ui and caches it for every surface. `preloadPositioning(options)` fetches it ahead of time.
-
-**Cost:** 0 kB in the main bundle; ~10 kB gzip in a separate chunk, fetched on demand.
-
-Pros
-
-- floating-ui stays out of the main bundle.
-- Nothing to configure, and the same API as v9.
-- Full parity in every browser once the chunk has loaded.
-- The fallback is internal, so it can be replaced later without a breaking change.
-
-Cons
-
-- Cold-open flash: the surface shows unpositioned until the chunk lands, from a frame locally to seconds on a slow connection. Every surface in an older browser takes this path.
-- Consumers cannot tell which path a user got, or force one.
-- The consumer's bundler, not the library, splits the `import()`, so the fallback can be split differently than intended or duplicated across chunks.
-- Highest maintenance: detection, lazy loading, caching, cancellation on unmount, preload API, SSR, plus two implementations that must stay aligned.
-
-### Option C: Automatic fallback, bundled
-
-The same runtime decision as B, but floating-ui is a static dependency of headless, so there is no `import()`.
+`requiresFloatingUI` is true for any engine-only option or a virtual target. The library decides on mount; floating-ui is a static dependency of headless and only runs when `mode` is `'floating'`.
 
 **Cost:** ~29 kB / ~10 kB gzip on every headless page.
 
 Pros
 
-- No flash, no extra request, no preload API.
+- No flash and no extra request: the engine is already loaded when the surface opens.
 - Nothing to configure, full parity on the first open, and the same API as v9.
 - The fallback is internal, so it can be replaced without a breaking change.
-- Simpler than B: no loading state machine.
 
 Cons
 
@@ -170,10 +153,10 @@ const { targetRef, containerRef, arrowRef } = usePositioning({
 Pros
 
 - Older browsers and virtual targets work with no configuration, which also fixes the `openOnContext` menu.
-- Both paths position before paint, with no flash and no chunk to preload.
+- Both paths position before paint, with no flash.
 - Near-full option coverage in every browser, including `autoSize`, boundaries, `arrowPadding`, function `offset`, `onPositioningEnd`, virtual targets, `enabled` and `disableUpdateOnResize`.
 - No floating-ui in headless: about 10 kB for fallback and plugins against 25–29 kB for a floating-ui engine.
-- Both paths follow one rule set, so flips, fallbacks and offsets agree between browsers, and the comparison spec checks it. B and C pair CSS with floating-ui, whose flip and shift rules differ.
+- Both paths follow one rule set, so flips, fallbacks and offsets agree between browsers, and the comparison spec checks it. C pairs CSS with floating-ui, whose flip and shift rules differ.
 - Nothing is added that the library cannot take back. The public additions are `arrowRef`, `enabled` and the full `PositioningProps`; the fallback can shrink or disappear as browser support grows.
 
 Cons
@@ -263,24 +246,24 @@ Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anc
 
 F and G are engine changes that compose with A or C, so cells about headless browser behaviour read "n/a".
 
-| Criterion                      | A: Explicit engine     | B: Auto, lazy                   | C: Auto, bundled | D: Extend CSS     | E: CSS mimic                      | F: Inlined port | G: Modular engine            |
-| ------------------------------ | ---------------------- | ------------------------------- | ---------------- | ----------------- | --------------------------------- | --------------- | ---------------------------- |
-| Added to headless bundle       | 0; 27.2 kB if imported | 0; ~10 kB gzip chunk on demand  | ~29 kB, always   | 0                 | ~10 kB, always (no floating-ui)   | 24.5 kB engine  | 12.6–25.2 kB engine          |
-| Browser without anchor support | Consumer adds engine   | Handled, cold-open flash        | Handled          | Polyfill          | Handled                           | n/a             | n/a                          |
-| Which path runs is visible     | Yes                    | No                              | No               | Yes               | No                                | n/a             | n/a                          |
-| New public API                 | `engine`, provider     | `preloadPositioning()`          | None             | None              | `arrowRef`, `enabled`, full props | None            | Hook, 9 plugins, order slots |
-| Parity with v9                 | Full with engine       | Full                            | Full             | Partial           | Near-full, placement close        | Identical       | Identical with default set   |
-| Maintenance                    | Two paths              | Two paths + loading and caching | Two paths        | Growing CSS layer | Three implementations             | Owned fork      | Owned fork + plugin layer    |
-| Consumer effort                | Opt in where needed    | None                            | None             | Load polyfill     | None                              | None            | Choose plugins               |
-| Can change without breaking    | No                     | Yes                             | Yes              | Yes               | Yes                               | Yes             | No                           |
+| Criterion                      | A: Explicit engine     | C: Auto, bundled | D: Extend CSS     | E: CSS mimic                      | F: Inlined port | G: Modular engine            |
+| ------------------------------ | ---------------------- | ---------------- | ----------------- | --------------------------------- | --------------- | ---------------------------- |
+| Added to headless bundle       | 0; 27.2 kB if imported | ~29 kB, always   | 0                 | ~10 kB, always (no floating-ui)   | 24.5 kB engine  | 12.6–25.2 kB engine          |
+| Browser without anchor support | Consumer adds engine   | Handled          | Polyfill          | Handled                           | n/a             | n/a                          |
+| Which path runs is visible     | Yes                    | No               | Yes               | No                                | n/a             | n/a                          |
+| New public API                 | `engine`, provider     | None             | None              | `arrowRef`, `enabled`, full props | None            | Hook, 9 plugins, order slots |
+| Parity with v9                 | Full with engine       | Full             | Partial           | Near-full, placement close        | Identical       | Identical with default set   |
+| Maintenance                    | Two paths              | Two paths        | Growing CSS layer | Three implementations             | Owned fork      | Owned fork + plugin layer    |
+| Consumer effort                | Opt in where needed    | None             | Load polyfill     | None                              | None            | Choose plugins               |
+| Can change without breaking    | No                     | Yes              | Yes               | Yes                               | Yes             | No                           |
 
 ## Proposal
 
 Adopt **Option E** ([#36841](https://github.com/microsoft/fluentui/pull/36841)): CSS anchor positioning stays the primary path, and headless ships its own JavaScript fallback that follows the CSS rules. No floating-ui, no provider, no engine option.
 
 - Every surface is positioned in every supported browser by default. A and D leave older browsers unpositioned until the consumer acts.
-- The cost is about 10 kB, against 25–29 kB for a floating-ui engine (C) or a cold-open flash and bundler-dependent chunking (B).
-- Both paths follow one rule set, with the browser as the reference. B and C pair CSS with floating-ui and fork behaviour between paths.
+- The cost is about 10 kB, against 25–29 kB for a floating-ui engine (C).
+- Both paths follow one rule set, with the browser as the reference. C pairs CSS with floating-ui and forks behaviour between paths.
 - The fallback and plugins are internal, so they can shrink or be removed as the platform covers more of the contract.
 
 Known limits: placement is close to, not identical with, v9; `shiftToCoverTarget` and `useTransform` have no effect; the library owns a reimplementation of CSS anchor semantics that must track browser changes; and a page with both v9 and headless pays for both engines.
