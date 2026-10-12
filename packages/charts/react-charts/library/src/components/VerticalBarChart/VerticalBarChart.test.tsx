@@ -1102,3 +1102,65 @@ describe('Render empty chart calling with respective to props', () => {
     expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
+
+describe('VerticalBarChart - focusOnReset', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should focus the bar specified by focusOnReset when data or colors change', () => {
+    const focusOnReset = { barIndex: 1 };
+    const updatedData = chartPointsVBC.map(point => ({ ...point }));
+    const initialColors = ['red'];
+    const updatedColors = ['blue'];
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={chartPointsVBC} colors={initialColors} focusOnReset={focusOnReset} />
+      </>,
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    fireEvent.focus(getById(container, /_VBC_bar/i)[2]);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={updatedData} colors={initialColors} focusOnReset={focusOnReset} />
+      </>,
+    );
+    expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[1]);
+
+    beforeChart.focus();
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={updatedData} colors={updatedColors} focusOnReset={focusOnReset} />
+      </>,
+    );
+    expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[1]);
+  });
+
+  it('Should restore the previously focused bar when focusOnReset is not provided', () => {
+    const updatedData = chartPointsVBC.map(point => ({ ...point }));
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={chartPointsVBC} />
+      </>,
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const previouslyFocusedBar = getById(container, /_VBC_bar/i)[2];
+    expect(previouslyFocusedBar).not.toBeNull();
+    fireEvent.focus(previouslyFocusedBar!);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={updatedData} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[2]);
+  });
+});

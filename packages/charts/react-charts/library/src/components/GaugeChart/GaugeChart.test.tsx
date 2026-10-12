@@ -821,3 +821,63 @@ describe('Gauge Chart - Callout', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
 });
+
+describe('GaugeChart - focusOnReset', () => {
+  it('should focus the specified segment when gauge data changes', () => {
+    const focusOnReset = { segmentIndex: 1 };
+    const updatedSegments = segments.map(segment => ({ ...segment }));
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={25} focusOnReset={focusOnReset} />
+      </>,
+    );
+    const userSelectedElement = container.querySelector<SVGPathElement>('path[id$="-needle"]');
+    expect(userSelectedElement).not.toBeNull();
+    fireEvent.focus(userSelectedElement!);
+    screen.getByTestId('before-chart').focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={updatedSegments} chartValue={30} focusOnReset={focusOnReset} />
+      </>,
+    );
+
+    const expectedTarget = container.querySelectorAll<SVGPathElement>('path[role="option"]')[1];
+    expect(container.ownerDocument.activeElement).toBe(expectedTarget);
+  });
+
+  it.each(['segment', 'needle'] as const)(
+    'should restore the previously focused %s when focusOnReset is not provided',
+    targetType => {
+      const updatedSegments = segments.map(segment => ({ ...segment }));
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <GaugeChart segments={segments} chartValue={25} />
+        </>,
+      );
+      const previouslyFocusedElement =
+        targetType === 'segment'
+          ? container.querySelectorAll<SVGPathElement>('path[role="option"]')[2]
+          : container.querySelector<SVGPathElement>('path[id$="-needle"]');
+      expect(previouslyFocusedElement).not.toBeNull();
+      fireEvent.focus(previouslyFocusedElement!);
+      screen.getByTestId('before-chart').focus();
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <GaugeChart segments={updatedSegments} chartValue={30} />
+        </>,
+      );
+
+      const expectedTarget =
+        targetType === 'segment'
+          ? container.querySelectorAll<SVGPathElement>('path[role="option"]')[2]
+          : container.querySelector<SVGPathElement>('path[id$="-needle"]');
+      expect(container.ownerDocument.activeElement).toBe(expectedTarget);
+    },
+  );
+});

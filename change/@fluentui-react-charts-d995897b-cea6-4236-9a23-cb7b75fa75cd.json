@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Added dynamic data example in line chart-v9 stories",
+  "comment": "Implemented auto-focus on the last selected element in the chart when changing the data",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

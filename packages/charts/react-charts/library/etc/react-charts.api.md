@@ -917,6 +917,9 @@ export interface GaugeChartProps {
     componentRef?: React.Ref<Chart>;
     culture?: string;
     enableGradient?: boolean;
+    focusOnReset?: {
+        segmentIndex: number;
+    };
     height?: number;
     hideLegend?: boolean;
     hideMinMax?: boolean;
@@ -1400,6 +1403,10 @@ export interface LineChartProps extends CartesianChartProps {
     data: ChartProps;
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: EventsAnnotationProps;
+    focusOnReset?: {
+        lineIndex: number;
+        pointIndex: number;
+    };
     getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
     isCalloutForStack?: boolean;
     onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
@@ -1946,6 +1953,9 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     culture?: string;
     data?: VerticalBarChartDataPoint[];
     enableGradient?: boolean;
+    focusOnReset?: {
+        barIndex: number;
+    };
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;

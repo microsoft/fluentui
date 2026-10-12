@@ -1127,4 +1127,61 @@ describe('LineChart - mouse events', () => {
     fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
   });
+
+  it('Should focus the point specified by focusOnReset when data or colors change', () => {
+    const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const userSelectedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(userSelectedPoint).not.toBeNull();
+    fireEvent.focus(userSelectedPoint!);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusOnReset={focusOnReset} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="50. metaData2, 90."]'));
+  });
+
+  it('Should restore the previously focused point when focusOnReset is not provided', () => {
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const previouslyFocusedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(previouslyFocusedPoint).not.toBeNull();
+    fireEvent.focus(previouslyFocusedPoint!);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="70. metaData3, 30."]'));
+  });
 });

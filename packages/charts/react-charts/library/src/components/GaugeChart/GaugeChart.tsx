@@ -126,6 +126,7 @@ export const getGaugeChartSegmentLabel = (
 interface YValue extends Omit<YValueHover, 'y'> {
   y?: string | number;
 }
+type GaugeFocusTarget = { segmentIndex: number } | { target: 'needle' };
 export type { ExtendedSegment } from './GaugeChart.types';
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
@@ -158,6 +159,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
+    const previousFocusSegmentsRef = React.useRef(props.segments);
+    const previousFocusChartValueRef = React.useRef(props.chartValue);
+    const lastFocusedGaugeElementRef = React.useRef<GaugeFocusTarget | undefined>(undefined);
+    const focusSegmentRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
+    const focusNeedleRef = React.useRef<SVGPathElement | null>(null);
     const _width = props.width || width;
     const _height = props.height || height;
     const _outerRadius: number = Math.min(
@@ -187,6 +193,43 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
       prevPropsRef.current = props;
     }, [props]);
+
+    React.useEffect(() => {
+      const chartChanged =
+        previousFocusSegmentsRef.current !== props.segments || previousFocusChartValueRef.current !== props.chartValue;
+      previousFocusSegmentsRef.current = props.segments;
+      previousFocusChartValueRef.current = props.chartValue;
+
+      if (!chartChanged) {
+        return;
+      }
+
+      const focusTarget = props.focusOnReset ?? lastFocusedGaugeElementRef.current;
+      if (!focusTarget) {
+        return;
+      }
+
+      if ('segmentIndex' in focusTarget) {
+        _focusGaugeElement(focusSegmentRefs.current.get(focusTarget.segmentIndex));
+      } else {
+        _focusGaugeElement(focusNeedleRef.current);
+      }
+    }, [props.chartValue, props.focusOnReset, props.segments]);
+
+    function _focusGaugeElement(element: SVGElement | null | undefined): void {
+      if (!element) {
+        return;
+      }
+
+      const hadTabIndex = element.hasAttribute('tabindex');
+      if (!hadTabIndex) {
+        element.setAttribute('tabindex', '-1');
+      }
+      element.focus();
+      if (!hadTabIndex) {
+        element.removeAttribute('tabindex');
+      }
+    }
 
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
@@ -288,11 +331,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             A ${halfStrokeWidth + 3},${halfStrokeWidth + 3},0,0,0,0,${-halfStrokeWidth - 3}
           `}
             id={needleId}
+            ref={focusNeedleRef}
             strokeWidth={strokeWidth}
             className={classes.needle}
             transform={`translate(${-_innerRadius + EXTRA_NEEDLE_LENGTH / 2})`}
             data-is-focusable={true}
-            onFocus={e => _handleFocus(e, 'Needle')}
+            onFocus={e => {
+              lastFocusedGaugeElementRef.current = { target: 'needle' };
+              _handleFocus(e, 'Needle');
+            }}
             onMouseEnter={e => _handleMouseOver(e, 'Needle')}
             onMouseMove={e => _handleMouseOver(e, 'Needle')}
             role="img"
@@ -672,6 +719,13 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       <path
                         d={arc.d}
                         id={arcId}
+                        ref={element => {
+                          if (element) {
+                            focusSegmentRefs.current.set(arc.segmentIndex, element);
+                          } else {
+                            focusSegmentRefs.current.delete(arc.segmentIndex);
+                          }
+                        }}
                         strokeWidth={focusedElement === segment.legend ? ARC_PADDING : 0}
                         className={classes.segment}
                         fill={segment.color}
@@ -691,7 +745,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                           'option',
                           true,
                         )}
-                        onFocus={e => _handleFocus(e, segment.legend)}
+                        onFocus={e => {
+                          lastFocusedGaugeElementRef.current = { segmentIndex: arc.segmentIndex };
+                          _handleFocus(e, segment.legend);
+                        }}
                         onMouseEnter={e => _handleMouseOver(e, segment.legend)}
                         onMouseLeave={e => _handleCalloutDismiss()}
                         onMouseMove={e => _handleMouseOver(e, segment.legend)}
