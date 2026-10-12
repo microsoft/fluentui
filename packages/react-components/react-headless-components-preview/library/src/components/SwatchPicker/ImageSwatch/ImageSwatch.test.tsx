@@ -23,4 +23,16 @@ describe('ImageSwatch', () => {
 
     expect(getByRole('radio')).toHaveAttribute('data-selected');
   });
+
+  it('marks only the selected swatch as the focusgroup entry point', () => {
+    const { getByLabelText } = render(
+      <SwatchPicker aria-label="Images" selectedValue="image">
+        <ImageSwatch src="image.png" value="image" aria-label="Image" />
+        <ImageSwatch src="other.png" value="other" aria-label="Other" />
+      </SwatchPicker>,
+    );
+
+    expect(getByLabelText('Image')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Other')).not.toHaveAttribute('focusgroupstart');
+  });
 });

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: use server-provided initial-display attribute value as the initial display value in SSR context and stabilize control layout",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}

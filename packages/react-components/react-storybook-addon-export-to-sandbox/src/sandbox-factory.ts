@@ -31,9 +31,6 @@ export function addDemoActionButtons(context: StoryContext) {
   }
 
   prepareSandboxContainers(context).forEach(({ container, cssClasses }) => {
-    const files = scaffold[config.bundler](config);
-    const action = actionConfig[config.provider];
-
     if (context.parameters.openInNewTab !== false) {
       addButton({
         container,
@@ -45,6 +42,13 @@ export function addDemoActionButtons(context: StoryContext) {
         },
       });
     }
+
+    if (context.parameters.fullSourceIsRunnable === false || context.parameters.fullSourceUnsupportedImports?.length) {
+      return;
+    }
+
+    const files = scaffold[config.bundler](config);
+    const action = actionConfig[config.provider];
 
     addButton({
       container,

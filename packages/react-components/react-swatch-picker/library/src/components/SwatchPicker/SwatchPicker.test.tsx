@@ -68,11 +68,13 @@ describe('SwatchPicker', () => {
             class="fui-ImageSwatch"
             role="radio"
             style="background-image: url(\\"path/img.png\\");"
+            type="button"
           />
           <button
             aria-checked="false"
             class="fui-EmptySwatch"
             role="radio"
+            type="button"
           />
         </div>
       </div>

@@ -1,9 +1,31 @@
 import { getMonthIndex } from './dateUtils';
+import { createDate } from './dateMath';
 import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
 const date = new Date(2016, getMonthIndex('april'), 1);
 
 describe('createCalendarDateTimeFormatter', () => {
+  it.each(['en-US', 'de-DE', 'ar-SA'])('localizes the era for non-positive years in %s', locale => {
+    const formatter = createCalendarDateTimeFormatter(locale);
+    const zero = createDate(0, 0, 1);
+    for (const format of ['year', 'monthYear', 'monthDayYear', 'dayMonthYear'] as const) {
+      const fields =
+        format === 'year'
+          ? { year: 'numeric' as const }
+          : {
+              year: 'numeric' as const,
+              month: 'long' as const,
+              ...(format === 'monthYear' ? {} : { day: 'numeric' as const }),
+            };
+      expect(formatter({ date: zero, format })).toBe(
+        new Intl.DateTimeFormat(locale, { calendar: 'gregory', era: 'short', ...fields }).format(zero),
+      );
+    }
+    expect(formatter({ date: zero, format: 'year' })).not.toBe(
+      formatter({ date: createDate(1, 0, 1), format: 'year' }),
+    );
+  });
+
   it('supports a locale preference list', () => {
     expect(createCalendarDateTimeFormatter(['en-GB', 'en-US'])({ date, format: 'monthDayYear' })).toBe('1 April 2016');
   });
