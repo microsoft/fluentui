@@ -17,6 +17,7 @@ import {
 } from '@fluentui/react-menu';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
+import type { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 
@@ -1128,6 +1129,78 @@ describe('Context menu', () => {
       .should('not.exist')
       .get(menuTriggerSelector)
       .should('have.focus');
+  });
+
+  it('should anchor to the mouse position on right click', () => {
+    mount(<ContextMenuExample />);
+
+    cy.get(menuTriggerSelector).then(([trigger]) => {
+      const triggerRect = trigger.getBoundingClientRect();
+
+      // The positioned element is the popover surface (the parent of [role="menu"])
+      cy.get(menuTriggerSelector)
+        .rightclick(10, 10)
+        .get(menuSelector)
+        .parent()
+        .should(([popover]) => {
+          const popoverRect = popover.getBoundingClientRect();
+          // The context target is a 1px virtual element at the click point, the menu opens below-start of it
+          expect(popoverRect.left).to.be.closeTo(triggerRect.left + 10, 4);
+          expect(popoverRect.top).to.be.closeTo(triggerRect.top + 10 + 1, 4);
+        });
+    });
+  });
+
+  // https://github.com/microsoft/fluentui/issues/31727
+  it('should not override an imperative positioningRef.setTarget() called from onOpenChange', () => {
+    const ImperativeTargetContextMenuExample = () => {
+      const positioningRef = React.useRef<PositioningImperativeRef>(null);
+
+      return (
+        <>
+          <div
+            id="custom-anchor"
+            style={{ position: 'absolute', top: '200px', left: '200px', width: '50px', height: '50px' }}
+          />
+          <Menu
+            openOnContext
+            positioning={{ positioningRef }}
+            onOpenChange={(e, data) => {
+              if (data.open) {
+                positioningRef.current?.setTarget(document.getElementById('custom-anchor'));
+              }
+            }}
+          >
+            <MenuTrigger disableButtonEnhancement>
+              <button id={menuTriggerId}>trigger</button>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Item</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </>
+      );
+    };
+
+    mount(<ImperativeTargetContextMenuExample />);
+
+    cy.get(menuTriggerSelector).rightclick(5, 5);
+
+    cy.get('#custom-anchor').then(([anchor]) => {
+      const anchorRect = anchor.getBoundingClientRect();
+
+      // The positioned element is the popover surface (the parent of [role="menu"])
+      cy.get(menuSelector)
+        .parent()
+        .should(([popover]) => {
+          const popoverRect = popover.getBoundingClientRect();
+          // The menu should be anchored below-start of the imperatively set target, not at the click point
+          expect(popoverRect.left).to.be.closeTo(anchorRect.left, 4);
+          expect(popoverRect.top).to.be.closeTo(anchorRect.bottom, 4);
+        });
+    });
   });
 });
 
