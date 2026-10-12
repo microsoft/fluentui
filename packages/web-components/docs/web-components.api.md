@@ -696,7 +696,6 @@ export class BaseDropdown extends FASTElement {
     get validity(): ValidityState;
     get value(): string | null;
     set value(next: string | null);
-    valueAttribute: string;
     get willValidate(): boolean;
 }
 
