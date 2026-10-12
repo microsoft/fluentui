@@ -18,14 +18,14 @@ export type CardOnSelectData = {
 /**
  * Data shared between card components
  */
-export interface CardContextValue {
+export type CardContextValue = {
   selectableA11yProps: {
     referenceId?: string;
     setReferenceId: (referenceId: string) => void;
     referenceLabel?: string;
     setReferenceLabel: (referenceLabel: string) => void;
   };
-}
+} & Required<Pick<CardProps, 'orientation' | 'size'>>;
 
 /**
  * Slots available in the Card component.
