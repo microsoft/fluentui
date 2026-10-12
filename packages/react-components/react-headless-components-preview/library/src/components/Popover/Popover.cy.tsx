@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
@@ -14,6 +15,51 @@ const mount = (element: JSXElement) => {
 
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
+
+describe('nested shadow focus restoration', () => {
+  const NestedControl = ({ onClose }: { onClose: () => void }) => {
+    const [root, setRoot] = React.useState<ShadowRoot | null>(null);
+    const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
+      if (host) {
+        setRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
+      }
+    }, []);
+    return (
+      <div ref={attachRoot} data-testid="nested-host">
+        {root &&
+          createPortal(
+            <button autoFocus onClick={onClose}>
+              Finish
+            </button>,
+            root,
+          )}
+      </div>
+    );
+  };
+  const Example = ({ trapFocus }: { trapFocus: boolean }) => {
+    const [open, setOpen] = React.useState(true);
+    return (
+      <Popover trapFocus={trapFocus} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
+        <PopoverTrigger>
+          <button data-testid="trigger">Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface data-testid="surface">
+          <NestedControl onClose={() => setOpen(false)} />
+        </PopoverSurface>
+      </Popover>
+    );
+  };
+  ([false, true] as const).forEach(trapFocus => {
+    (['Enter', 'Escape'] as const).forEach(key => {
+      it(`restores nested shadow focus on ${key} (${trapFocus ? 'modal' : 'non-modal'})`, () => {
+        mount(<Example trapFocus={trapFocus} />);
+        cy.get('[data-testid=nested-host]').shadow().contains('button', 'Finish').focus().realPress(key);
+        cy.get('[data-testid=surface]').should('not.exist');
+        cy.get('[data-testid=trigger]').should('have.focus');
+      });
+    });
+  });
+});
 
 /**
  * Marks a focus-restoration scenario as a known gap of the native

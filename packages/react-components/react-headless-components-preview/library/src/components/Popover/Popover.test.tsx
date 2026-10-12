@@ -54,6 +54,44 @@ describe('Popover', () => {
       rerender(createPortal(<Example open={false} />, shadowRoot));
       expect(outside).toHaveFocus();
     });
+
+    (['open', 'closed'] as const).forEach(mode => {
+      ([false, true] as const).forEach(inShadowRoot => {
+        it(`restores focus from a nested ${mode} shadow root ${
+          inShadowRoot ? 'inside another shadow root' : 'in the document'
+        }`, () => {
+          const NestedControl = () => {
+            const [root, setRoot] = React.useState<ShadowRoot | null>(null);
+            const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
+              if (host) {
+                setRoot(host.attachShadow({ mode }));
+              }
+            }, []);
+            return <div ref={attachRoot}>{root && createPortal(<button autoFocus>Nested control</button>, root)}</div>;
+          };
+          const NestedExample = ({ open }: { open: boolean }) => (
+            <Popover open={open}>
+              <PopoverTrigger>
+                <button>Trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface as="div">
+                <NestedControl />
+              </PopoverSurface>
+            </Popover>
+          );
+          const { container } = render(<div />);
+          const host = container.firstElementChild!;
+          const outerShadowRoot = inShadowRoot ? host.attachShadow({ mode: 'open' }) : null;
+          const root = outerShadowRoot ?? host;
+          const { rerender } = render(createPortal(<NestedExample open />, root));
+          const surface = root.querySelector('[data-popover-surface]')!;
+          const nestedHost = surface.firstElementChild!;
+          expect(outerShadowRoot?.activeElement ?? host.ownerDocument.activeElement).toBe(nestedHost);
+          rerender(createPortal(<NestedExample open={false} />, root));
+          expect(outerShadowRoot?.activeElement ?? host.ownerDocument.activeElement).toBe(root.querySelector('button'));
+        });
+      });
+    });
   });
 
   it('renders trigger and surface children', () => {

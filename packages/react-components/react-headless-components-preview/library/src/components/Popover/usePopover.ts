@@ -22,14 +22,10 @@ const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
 const getActiveElement = (surface: HTMLElement): Element | null => {
   const root = surface.getRootNode();
   const ShadowRootConstructor = surface.ownerDocument.defaultView?.ShadowRoot;
-  let activeElement =
-    ShadowRootConstructor && root instanceof ShadowRootConstructor
-      ? root.activeElement ?? surface.ownerDocument.activeElement
-      : surface.ownerDocument.activeElement;
-  while (activeElement?.shadowRoot?.activeElement) {
-    activeElement = activeElement.shadowRoot.activeElement;
-  }
-  return activeElement;
+  // Keep focus retargeted to this root: Node.contains does not cross shadow boundaries.
+  return ShadowRootConstructor && root instanceof ShadowRootConstructor
+    ? root.activeElement ?? surface.ownerDocument.activeElement
+    : surface.ownerDocument.activeElement;
 };
 
 /**
