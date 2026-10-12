@@ -748,6 +748,22 @@ describe('Gauge Chart - Callout', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
   });
 
+  it('should clear the focused segment and callout when focus moves to a legend', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]');
+    const legend = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button')[0];
+
+    expect(segment).not.toBeNull();
+    fireEvent.focus(segment!);
+    expect(segment).toHaveAttribute('stroke-width', '2');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(segment!, { relatedTarget: legend });
+
+    expect(segment).toHaveAttribute('stroke-width', '0');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
   it('should show a callout when the needle is focused and hide it when blurred', () => {
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
 

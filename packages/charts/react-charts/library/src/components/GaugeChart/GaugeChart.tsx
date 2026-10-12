@@ -664,9 +664,8 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         ref={el => {
           _rootElem.current = el;
         }}
-        onBlur={_handleChartBlur}
       >
-        <div className={classes.chartWrapper} {...arrowAttributes}>
+        <div className={classes.chartWrapper} {...arrowAttributes} onBlur={_handleChartBlur}>
           <svg
             className={classes.chart}
             width={_width}
