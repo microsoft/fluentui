@@ -3,6 +3,8 @@ import { render } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
+import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
+import type { VegaLiteDiagnostic } from './VegaLiteDiagnostics';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // Suppress console warnings for cleaner test output
@@ -1246,6 +1248,92 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
   });
 });
 
+describe('VegaDeclarativeChart - Authored semantic diagnostics', () => {
+  const baseSpec: VegaLiteSpec = {
+    mark: 'line',
+    data: {
+      values: [
+        { x: 1, y: 10 },
+        { x: 2, y: 20 },
+      ],
+    },
+    encoding: {
+      x: { field: 'x', type: 'quantitative' },
+      y: { field: 'y', type: 'quantitative' },
+    },
+  };
+  const cases: Array<{ name: string; spec: VegaLiteSpec; diagnostic: VegaLiteDiagnostic }> = [
+    {
+      name: 'semantic parameter interactions',
+      spec: { ...baseSpec, params: [{ name: 'brush', select: 'interval' }] },
+      diagnostic: {
+        code: 'unsupported-property',
+        path: '$.params',
+        severity: 'warning',
+        message: 'Parameter/selection interactions are not implemented.',
+        remedy: 'Remove this property or implement its semantics before rendering.',
+      },
+    },
+    {
+      name: 'configuration normalization',
+      // Tooltip configuration is implemented; general view configuration is still unsupported.
+      spec: { ...baseSpec, config: { mark: { tooltip: true }, view: { stroke: null } } },
+      diagnostic: {
+        code: 'unsupported-property',
+        path: '$.config.view',
+        severity: 'warning',
+        message: 'This property has no implemented semantics in this context.',
+        remedy: 'Remove this property or implement its semantics before rendering.',
+      },
+    },
+    {
+      name: 'unsupported position scale',
+      spec: {
+        ...baseSpec,
+        encoding: { ...baseSpec.encoding, x: { ...baseSpec.encoding!.x, scale: { type: 'sqrt' } } },
+      },
+      diagnostic: {
+        code: 'unsupported-scale',
+        path: '$.encoding.x.scale.type',
+        severity: 'warning',
+        message: 'This scale is not implemented for this mark/channel combination.',
+        remedy: 'Use a supported linear, categorical or native y-log scale, or precompute coordinates.',
+      },
+    },
+  ];
+
+  it.each(cases)('validates raw authored props for $name before normalization', ({ spec, diagnostic }) => {
+    const original = JSON.parse(JSON.stringify(spec));
+    const onDiagnostics = jest.fn();
+    const props: VegaDeclarativeChartProps = { chartSchema: { vegaLiteSpec: spec }, onDiagnostics };
+
+    expect(validateVegaLiteSpec(spec)).toEqual([diagnostic]);
+    const strictDiagnostic = { ...diagnostic, severity: 'error' };
+    expect(validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([strictDiagnostic]);
+
+    // Always pass the raw declaration. Prepared data may have consumed the unsupported property.
+    expect(renderToString(<VegaDeclarativeChart {...props} />)).toContain('<svg');
+    expect(onDiagnostics).not.toHaveBeenCalled();
+    const { container, unmount } = render(<VegaDeclarativeChart {...props} />);
+    expect(container.querySelector('svg')).toBeInTheDocument();
+    expect(onDiagnostics).toHaveBeenCalledTimes(1);
+    expect(onDiagnostics).toHaveBeenLastCalledWith([diagnostic]);
+    unmount();
+
+    const strictOnDiagnostics = jest.fn();
+    const strictProps: VegaDeclarativeChartProps = {
+      ...props,
+      semanticMode: 'strict',
+      onDiagnostics: strictOnDiagnostics,
+    };
+    const error = `${diagnostic.path} [${diagnostic.code}] ${diagnostic.message} ${diagnostic.remedy}`;
+    expect(() => renderToString(<VegaDeclarativeChart {...strictProps} />)).toThrow(error);
+    expect(() => render(<VegaDeclarativeChart {...strictProps} />)).toThrow(error);
+    expect(strictOnDiagnostics).not.toHaveBeenCalled();
+    expect(spec).toEqual(original);
+  });
+});
+
 describe('VegaDeclarativeChart - Security', () => {
   it.each(['client', 'server'])('rejects folding inherited fields in a JSON-only spec during %s rendering', mode => {
     const spec: VegaLiteSpec = JSON.parse(
@@ -1254,9 +1342,11 @@ describe('VegaDeclarativeChart - Security', () => {
         data: { values: [{ x: 1 }] },
         transform: [
           { fold: ['constructor'], as: ['firstKey', 'objectConstructor'] },
+          { filter: { field: 'objectConstructor', valid: true } },
           { calculate: 'datum.objectConstructor', as: '__proto__' },
           { aggregate: [{ op: 'count', as: 'x' }], groupby: ['__proto__'] },
           { fold: ['constructor'], as: ['secondKey', 'callable'] },
+          { filter: { field: 'callable', valid: true } },
           { calculate: "datum.callable('return 73')()", as: 'y' },
         ],
         encoding: {
@@ -1267,7 +1357,8 @@ describe('VegaDeclarativeChart - Security', () => {
     );
     const chart = <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />;
 
-    // Only inherited fields were requested, so no data survives the first fold.
+    // Fold emits undefined for a missing own field; the explicit validity filters remove it.
+    // Any leaked constructor would survive these filters and reach the original security payload.
     expect(() => (mode === 'client' ? render(chart) : renderToString(chart))).toThrow(
       'VegaLiteSchemaAdapter: Empty data array for LineChart',
     );

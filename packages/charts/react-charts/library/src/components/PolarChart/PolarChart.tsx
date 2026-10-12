@@ -10,7 +10,7 @@ import {
   lineRadial as d3LineRadial,
   curveLinearClosed as d3CurveLinearClosed,
 } from 'd3-shape';
-import type { AreaPolarSeries, LinePolarSeries, PolarDataPoint, ScatterPolarSeries } from '../../types/DataPoint';
+import type { AreaPolarSeries, LinePolarSeries, PolarDataPoint } from '../../types/DataPoint';
 import { tokens } from '@fluentui/react-theme';
 import type { Legend } from '../Legends/index';
 import { Legends } from '../Legends/index';
@@ -65,6 +65,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activePoint, setActivePoint] = React.useState<string>('');
+    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<PolarDataPoint>();
 
     React.useEffect(() => {
       if (chartContainerRef.current) {
@@ -132,6 +133,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
               return {
                 ...point,
                 color: point.color ? getColorFromToken(point.color) : seriesColor,
+                sourcePoint: point,
               };
             }),
           };
@@ -497,11 +499,12 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     const showPopover = React.useCallback(
       (
         event: React.MouseEvent<SVGElement> | React.FocusEvent<SVGElement>,
-        point: PolarDataPoint,
+        point: PolarDataPoint & { sourcePoint: PolarDataPoint },
         pointId: string,
         legend: string,
       ) => {
         setPopoverTarget(event.currentTarget);
+        setDataPointCalloutProps(point.sourcePoint);
         setPopoverOpen(legendHighlighted(legend));
         setPopoverXValue(point.angularAxisCalloutData ?? formatAngle(point.theta, props.angularAxis?.unit));
         setPopoverLegend(legend);
@@ -525,7 +528,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     );
 
     const renderRadialPoints = React.useCallback(
-      (series: AreaPolarSeries | LinePolarSeries | ScatterPolarSeries, seriesIndex: number) => {
+      (series: (typeof chartData)[number], seriesIndex: number) => {
         const shouldHighlight = legendHighlighted(series.legend);
         return (
           <g>
@@ -683,6 +686,14 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
             legend={popoverLegend}
             color={popoverColor}
             YValue={popoverYValue}
+            customCallout={
+              isPopoverOpen && props.onRenderCalloutPerDataPoint && dataPointCalloutProps
+                ? {
+                    // ChartPopover requires defined JSX to suppress its default content for a null render.
+                    customizedCallout: <>{props.onRenderCalloutPerDataPoint(dataPointCalloutProps)}</>,
+                  }
+                : undefined
+            }
           />
         )}
       </div>

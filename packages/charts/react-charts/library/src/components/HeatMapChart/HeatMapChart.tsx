@@ -39,6 +39,7 @@ type DataSet = {
 };
 type FlattenData = HeatMapChartDataPoint & {
   legend: string;
+  sourcePoint?: HeatMapChartDataPoint;
 };
 type RectanglesGraphData = { [key: string]: FlattenData[] };
 
@@ -84,6 +85,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     const [descriptionMessage, setDescriptionMessage] = React.useState<string>('');
     const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+    const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<HeatMapChartDataPoint>();
 
     function _getMinMaxOfYAxis() {
       return { startValue: 0, endValue: 0 };
@@ -131,6 +133,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     };
 
     const _onRectFocus = (id: string, data: FlattenData, focusEvent: React.FocusEvent<SVGGElement>): void => {
+      setDataPointCalloutProps(data.sourcePoint ?? data);
       const boundingRect = focusEvent.currentTarget.getBoundingClientRect();
       const clientX = boundingRect.left + boundingRect.width / 2;
       const clientY = boundingRect.top + boundingRect.height / 2;
@@ -149,6 +152,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       mouseEvent.persist();
       if (_calloutAnchorPoint.current !== data) {
         _calloutAnchorPoint.current = data;
+        setDataPointCalloutProps(data.sourcePoint ?? data);
         updatePosition(mouseEvent.clientX, mouseEvent.clientY);
         /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
@@ -485,7 +489,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
          */
         data.forEach((item: HeatMapChartData) => {
           item.data.forEach((point: HeatMapChartDataPoint) => {
-            flattenData.push({ ...point, legend: item.legend });
+            flattenData.push({ ...point, legend: item.legend, sourcePoint: point });
           });
         });
         const yPoints: RectanglesGraphData = Object.create(null);
@@ -768,6 +772,10 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     _dataSet.current = dataSet;
     _stringYAxisDataPoints.current = yAxisPoints;
     _stringXAxisDataPoints.current = xAxisPoints;
+    const customizedCallout =
+      isPopoverOpen && !props.hideTooltip && props.onRenderCalloutPerDataPoint && dataPointCalloutProps ? (
+        <>{props.onRenderCalloutPerDataPoint(dataPointCalloutProps)}</>
+      ) : undefined;
     const calloutProps: ChartPopoverProps = {
       ...props.calloutProps,
       isPopoverOpen,
@@ -781,6 +789,16 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       styles: {
         calloutContentRoot: classes.calloutContentRoot!,
       },
+      ...(customizedCallout && {
+        customCallout: {
+          ...props.calloutProps?.customCallout,
+          // Preserve an intentional null render without falling back to the native cell details.
+          customizedCallout,
+          customCalloutProps: props.calloutPropsPerDataPoint
+            ? props.calloutPropsPerDataPoint(dataPointCalloutProps)
+            : props.calloutProps?.customCallout?.customCalloutProps,
+        },
+      }),
     };
     const tickParams = {
       tickValues: props.tickValues,

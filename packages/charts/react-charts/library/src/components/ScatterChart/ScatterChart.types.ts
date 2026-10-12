@@ -32,12 +32,18 @@ export interface ScatterChartProps extends CartesianChartProps {
   styles?: ScatterChartStyles;
 
   /**
-   * Define a custom callout renderer for a data point
+   * Render a custom callout for the hovered or focused data point. The input
+   * contains the original x coordinate and one value matching the point's y
+   * coordinate and series legend. Returning null hides the callout without
+   * falling back to the default content.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
-   * Define a custom callout renderer for a stack; default is to render per data point
+   * Render a custom callout for all points at the hovered or focused x coordinate.
+   * Takes precedence over onRenderCalloutPerDataPoint when both are supplied.
+   * Returning null hides the callout without invoking the point renderer or
+   * falling back to the default content.
    */
   onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
 

@@ -1,5 +1,6 @@
 import type { CartesianChartProps, CartesianChartStyles } from '../CommonComponents/CartesianChart.types';
-import type { HeatMapChartData } from '../../types/DataPoint';
+import type { HeatMapChartData, HeatMapChartDataPoint } from '../../types/DataPoint';
+import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Heat Map Chart properties
@@ -14,6 +15,13 @@ export interface HeatMapChartProps extends CartesianChartProps {
    * data to provide for Heat Map
    */
   data: HeatMapChartData[];
+  /**
+   * Renders custom JSX for the active cell using the original, unformatted data point.
+   * Empty cells receive a generated point with a NaN value.
+   * Returning null leaves the callout blank. No defaultRender function is supplied.
+   */
+  onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint>;
+
   /**
    * The domain value for the color scale,
    *
