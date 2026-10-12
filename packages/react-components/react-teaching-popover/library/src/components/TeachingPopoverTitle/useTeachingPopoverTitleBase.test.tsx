@@ -35,6 +35,15 @@ describe('useTeachingPopoverTitleBase_unstable', () => {
     expect(result.current.dismissButton?.children).toBeUndefined();
   });
 
+  it.each([undefined, -1, 0])('preserves tabIndex=%s without adding a focusable default', tabIndex => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    const { result } = renderHook(() => useTeachingPopoverTitleBase_unstable({ tabIndex }, ref), {
+      wrapper: makeWrapper(),
+    });
+
+    expect(result.current.root.tabIndex).toBe(tabIndex);
+  });
+
   it('dismisses the popover and restores focus', () => {
     const ref = React.createRef<HTMLHeadingElement>();
     const setOpen = jest.fn();

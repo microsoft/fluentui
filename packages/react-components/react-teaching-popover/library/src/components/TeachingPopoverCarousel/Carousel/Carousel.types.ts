@@ -17,8 +17,9 @@ export type CarouselItem = {
 
 export type UseCarouselOptions = {
   /**
-   * Localizes the string used to announce carousel page changes to screen reader users
-   * Defaults to: undefined
+   * Provides the string announced politely after a carousel page change is rendered.
+   * When omitted, the active page's TeachingPopoverTitle text is announced.
+   * Return an empty string to suppress an announcement.
    */
   announcement?: (newValue: string) => string;
 

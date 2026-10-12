@@ -4,6 +4,7 @@ exports[`TeachingPopoverTitle renders a default state 1`] = `
 <div>
   <h2
     class="fui-TeachingPopoverTitle"
+    data-carousel-title="true"
   >
     Default TeachingPopoverTitle
   </h2>
