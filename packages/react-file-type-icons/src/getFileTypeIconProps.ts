@@ -35,6 +35,7 @@ const PBI_SCORECARD = 'pbiscorecard';
 const PBI_SEMANTIC_MODEL = 'pbisemmodel';
 const PBI_REPORT = 'powerbi';
 const FABRIC_ONTOLOGY = 'fabricontology';
+const WIKI_PAGE = 'wikipage';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -202,6 +203,9 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.fabricOntology:
         iconBaseName = FABRIC_ONTOLOGY;
+        break;
+      case FileIconType.wikiPage:
+        iconBaseName = WIKI_PAGE;
         break;
     }
   }
