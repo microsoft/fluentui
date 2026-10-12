@@ -1,4 +1,4 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
 import dedent from 'dedent';
 import type { Meta, StoryArgs, StoryObj } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
@@ -23,6 +23,7 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-dropdown
     appearance="${story => story.appearance}"
     ?disabled="${story => story.disabled}"
+    ?required="${story => story.required}"
     ?multiple="${story => story.multiple}"
     size="${story => story.size}"
     id="${story => story.id}"
@@ -359,6 +360,28 @@ export const ManyOptions: Story = {
       { slottedContent: () => 'Zambia' },
       { slottedContent: () => 'Zimbabwe' },
     ],
+  },
+};
+
+export const Required: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.dropdown.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+    >
+      ${storyTemplate}
+      <br />
+      <div>
+        <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}>Reset</fluent-button>
+      </div>
+      <span id="success-message" hidden ${ref('successMessage')}>Form submitted successfully!</span>
+    </form>
+  `),
+  args: {
+    ...Default.args,
+    name: 'fruit',
+    required: true,
   },
 };
 
