@@ -41,7 +41,6 @@ export {
   renderMenuGroupHeader,
   MenuSplitGroup,
   useMenuSplitGroup,
-  useMenuSplitGroupContextValues,
   renderMenuSplitGroup,
 } from './components/Menu';
 export type {
@@ -86,5 +85,4 @@ export type {
   MenuSplitGroupProps,
   MenuSplitGroupSlots,
   MenuSplitGroupState,
-  MenuSplitGroupContextValues,
 } from './components/Menu';

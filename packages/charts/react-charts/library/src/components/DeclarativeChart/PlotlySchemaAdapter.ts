@@ -518,8 +518,7 @@ const shouldIgnoreKey = (key: string): boolean => {
  * @returns Flattened object
  */
 const flattenObject = (obj: Record<string, unknown>, prefix: string = ''): Record<string, unknown> => {
-  // Null-prototype object so a schema key of "__proto__" cannot mutate the object's prototype.
-  const flattened: Record<string, unknown> = Object.create(null);
+  const flattened: Record<string, unknown> = {};
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -1300,7 +1299,7 @@ export const transformPlotlyJsonToDonutProps = (
     isDarkTheme,
     true,
   );
-  const mapLegendToDataPoint: Record<string, ChartDataPoint> = Object.create(null);
+  const mapLegendToDataPoint: Record<string, ChartDataPoint> = {};
   // clear colorMap for donut chart to reassign colors as the colorMap initially gets assigned by
   // getAllupLegendsProps function without sorting labels by value
   colorMap.current!.clear();
@@ -1396,7 +1395,7 @@ export const transformPlotlyJsonToVSBCProps = (
   isDarkTheme?: boolean,
   fallbackVSBC?: boolean,
 ): VerticalStackedBarChartProps => {
-  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = Object.create(null);
+  const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
@@ -3078,7 +3077,7 @@ export const transformPlotlyJsonToFunnelChartProps = (
 
   if (isStacked) {
     // Assign a color per series/category and use it for all subValues of that category
-    const seriesColors: Record<string, string> = Object.create(null);
+    const seriesColors: Record<string, string> = {};
     input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
       const category = series.name || `Category ${seriesIdx + 1}`;
       // Use the same color for this category across all stages

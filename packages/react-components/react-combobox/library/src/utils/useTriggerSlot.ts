@@ -14,11 +14,10 @@ export type UseTriggerSlotState = Pick<
   'open' | 'getOptionById' | 'selectOption' | 'setOpen' | 'multiselect' | 'setHasFocus'
 >;
 
-export type UseTriggerSlotOptions = {
+type UseTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
   activeDescendantController: ActiveDescendantImperativeRef;
-  shouldCloseOnBlur?: (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => boolean;
 };
 
 export function useTriggerSlot(
@@ -47,7 +46,6 @@ export function useTriggerSlot(
     defaultProps,
     elementType,
     activeDescendantController,
-    shouldCloseOnBlur,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
@@ -66,10 +64,8 @@ export function useTriggerSlot(
 
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
-    if (shouldCloseOnBlur?.(event) ?? true) {
-      setOpen(event, false);
-      setHasFocus(false);
-    }
+    setOpen(event, false);
+    setHasFocus(false);
   }, trigger.onBlur);
 
   trigger.onFocus = mergeCallbacks(

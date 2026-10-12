@@ -171,11 +171,11 @@ const useStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {

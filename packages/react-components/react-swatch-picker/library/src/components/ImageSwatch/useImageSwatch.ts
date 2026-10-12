@@ -54,7 +54,6 @@ export const useImageSwatchBase_unstable = (
         role,
         ...ariaSelected,
         onClick: onImageSwatchClick,
-        type: 'button',
         ...rest,
         style: {
           backgroundImage: `url(${src})`,

@@ -27,8 +27,6 @@ export interface PresetConfig {
     // (undocumented)
     importMappings: BabelPluginOptions['importMappings'];
     // (undocumented)
-    storyGranularity?: BabelPluginOptions['storyGranularity'];
-    // (undocumented)
     webpackRule?: RuleSetRule;
 }
 

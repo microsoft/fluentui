@@ -26,9 +26,8 @@ export const Derived = {
   },
 };
 Base.parameters = {};
-Base.parameters.fullSourceIsRunnable = true;
 Base.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const Base = () => <Button appearance="primary">Base</Button>;\n';
-Derived.parameters.fullSourceIsRunnable = true;
+Derived.parameters = {};
 Derived.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const Derived = () => <Button appearance="primary">Base</Button>;\n';

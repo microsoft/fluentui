@@ -7,15 +7,6 @@ interface PluginState extends Babel.PluginPass {
   imports: Record<string, string[]>;
 }
 
-interface ModifyImportsPluginOptions extends BabelPluginOptions {
-  /**
-   * Reports a relative import removed from the extracted source because it cannot be included in the example.
-   * `fullSourcePlugin` uses these diagnostics to set `fullSourceIsRunnable` and `fullSourceUnsupportedImports`.
-   * This is not the playground's package allowlist or a request to load a runtime module.
-   */
-  onUnsupportedRelativeImport?: (specifier: string) => void;
-}
-
 export const PLUGIN_NAME = 'storybook-stories-modifyImports';
 
 /**
@@ -24,12 +15,9 @@ export const PLUGIN_NAME = 'storybook-stories-modifyImports';
  *
  * See test fixtures for usage examples
  */
-export function modifyImportsPlugin(
-  babel: typeof Babel,
-  options: ModifyImportsPluginOptions,
-): Babel.PluginObj<PluginState> {
+export function modifyImportsPlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj<PluginState> {
   const { types: t } = babel;
-  const { importMappings, onUnsupportedRelativeImport } = options;
+  const { importMappings } = options;
   const cssModulesEnabled = Boolean(options.cssModules);
 
   return {
@@ -76,8 +64,6 @@ export function modifyImportsPlugin(
               return;
             }
           }
-
-          onUnsupportedRelativeImport?.(importSource.value);
 
           if (process.env.NODE_ENV !== 'production') {
             console.warn(

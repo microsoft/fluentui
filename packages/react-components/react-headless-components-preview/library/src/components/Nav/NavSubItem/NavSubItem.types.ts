@@ -4,7 +4,6 @@ export type { NavSubItemSlots, NavSubItemBaseProps as NavSubItemProps } from '@f
 
 export type NavSubItemState = NavSubItemBaseState & {
   root: {
-    'data-disabled'?: string;
     'data-selected'?: string;
   };
 };

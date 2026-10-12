@@ -315,28 +315,7 @@ describe('Popover', () => {
   });
 
   describe('Focus trap', () => {
-    const trapSurfaceSelector = 'dialog';
-
-    it('does not move focus into the surface when opened on hover without focus trapping', () => {
-      mount(
-        <>
-          <button data-testid="current-task">Current task</button>
-          <Popover openOnHover>
-            <PopoverTrigger disableButtonEnhancement>
-              <button data-testid="trigger">Hover trigger</button>
-            </PopoverTrigger>
-            <PopoverSurface as="div" data-testid="surface" tabIndex={-1}>
-              Hover disclosure
-            </PopoverSurface>
-          </Popover>
-        </>,
-      );
-
-      cy.get('[data-testid=current-task]').focus();
-      cy.get('[data-testid=trigger]').trigger('mouseover');
-      cy.get('[data-testid=surface]').should('be.visible').and('have.attr', 'tabindex', '-1');
-      cy.focused().should('have.attr', 'data-testid', 'current-task');
-    });
+    const trapSurfaceSelector = '[role="dialog"]';
 
     it('moves focus into the surface on open and walks through focusables', () => {
       mount(

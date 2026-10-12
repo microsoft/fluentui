@@ -17,14 +17,6 @@ describe('useSwatchPickerRow', () => {
     expect(result.current.root.role).toBe('row');
   });
 
-  it('forwards style to the root', () => {
-    const ref = React.createRef<HTMLDivElement>();
-    const style = { outlineColor: 'rgb(1, 2, 3)' };
-    const { result } = renderHook(() => useSwatchPickerRow_unstable({ style }, ref));
-
-    expect(result.current.root.style).toEqual(style);
-  });
-
   it('uses the default spacing', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useSwatchPickerRow_unstable({}, ref));

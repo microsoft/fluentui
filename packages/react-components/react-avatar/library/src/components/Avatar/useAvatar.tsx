@@ -20,6 +20,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   const {
     size = contextSize ?? (32 as const),
     shape = contextShape ?? 'circular',
+    active = 'unset',
     activeAppearance = 'ring',
     idForColor,
     color: propColor = 'neutral',
@@ -52,15 +53,58 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   }
 
   const badge: AvatarState['badge'] = slot.optional(props.badge, {
-    defaultProps: { ...state.badge, size: getBadgeSize(size) },
+    defaultProps: { size: getBadgeSize(size), id: state.root.id + '__badge' },
     elementType: PresenceBadge,
   });
+
+  let activeAriaLabelElement: AvatarState['activeAriaLabelElement'] = state.activeAriaLabelElement;
+
+  // Enhance aria-label and/or aria-labelledby to include badge and active state
+  // Only process if aria attributes were not explicitly provided by the user
+  const userProvidedAriaLabel = props['aria-label'] !== undefined;
+  const userProvidedAriaLabelledby = props['aria-labelledby'] !== undefined;
+
+  if (!userProvidedAriaLabel && !userProvidedAriaLabelledby) {
+    if (props.name) {
+      if (badge) {
+        // eslint-disable-next-line react-hooks/immutability
+        state.root['aria-labelledby'] = state.root.id + ' ' + badge.id;
+      }
+    } else if (state.initials) {
+      // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
+      // eslint-disable-next-line react-hooks/immutability
+      state.root['aria-labelledby'] = state.initials.id + (badge ? ' ' + badge.id : '');
+      // eslint-disable-next-line react-hooks/immutability
+      delete state.root['aria-label'];
+    }
+    // Add the active state to the aria label
+    if (active === 'active' || active === 'inactive') {
+      const activeText = DEFAULT_STRINGS[active];
+      if (state.root['aria-labelledby']) {
+        // If using aria-labelledby, render a hidden span and append it to the labelledby
+        const activeId = state.root.id + '__active';
+        // eslint-disable-next-line react-hooks/immutability
+        state.root['aria-labelledby'] += ' ' + activeId;
+        activeAriaLabelElement = (
+          <span hidden id={activeId}>
+            {activeText}
+          </span>
+        );
+      } else if (state.root['aria-label']) {
+        // Otherwise, just append it to the aria-label
+        // eslint-disable-next-line react-hooks/immutability
+        state.root['aria-label'] += ' ' + activeText;
+      }
+    }
+  }
 
   return {
     ...state,
     size,
     shape,
+    active,
     activeAppearance,
+    activeAriaLabelElement,
     color,
     badge,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -73,7 +117,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
  */
 export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<HTMLElement>): AvatarBaseState => {
   const { dir } = useFluent();
-  const { name, image: imageProp, initials: initialsProp, badge, active = 'unset', ...rest } = props;
+  const { name, image: imageProp, initials: initialsProp, ...rest } = props;
 
   const baseId = useId('avatar-');
 
@@ -132,52 +176,25 @@ export const useAvatarBase_unstable = (props: AvatarBaseProps, ref?: React.Ref<H
     });
   }
 
-  const badgeSlot: AvatarBaseState['badge'] = slot.optional(badge, {
-    defaultProps: { id: root.id + '__badge' },
-    elementType: 'div',
-  });
-
   let activeAriaLabelElement: AvatarBaseState['activeAriaLabelElement'];
 
-  // Resolve aria-label and/or aria-labelledby, including the badge, if not provided by the user
-  const userProvidedAriaLabel = props['aria-label'] !== undefined;
-  const userProvidedAriaLabelledby = props['aria-labelledby'] !== undefined;
-  if (!userProvidedAriaLabel && !userProvidedAriaLabelledby) {
+  // Resolve aria-label and/or aria-labelledby if not provided by the user
+  if (!root['aria-label'] && !root['aria-labelledby']) {
     if (name) {
       root['aria-label'] = name;
-      if (badgeSlot) {
-        root['aria-labelledby'] = root.id + ' ' + badgeSlot.id;
-      }
     } else if (initials) {
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
-      root['aria-labelledby'] = initials.id + (badgeSlot ? ' ' + badgeSlot.id : '');
-    }
-
-    if (active === 'active' || active === 'inactive') {
-      const activeText = DEFAULT_STRINGS[active];
-      if (root['aria-labelledby']) {
-        const activeId = root.id + '__active';
-        root['aria-labelledby'] += ' ' + activeId;
-        activeAriaLabelElement = (
-          <span hidden id={activeId}>
-            {activeText}
-          </span>
-        );
-      } else if (root['aria-label']) {
-        root['aria-label'] += ' ' + activeText;
-      }
+      root['aria-labelledby'] = initials.id;
     }
   }
 
   return {
-    active,
     activeAriaLabelElement,
-    components: { root: 'span', initials: 'span', icon: 'span', image: 'img', badge: 'div' },
+    components: { root: 'span', initials: 'span', icon: 'span', image: 'img' },
     root,
     initials,
     icon,
     image,
-    badge: badgeSlot,
   };
 };
 

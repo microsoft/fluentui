@@ -519,7 +519,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _getFormattedLineData(data: VerticalStackedChartProps[]): LineObject {
     const linesData: LinePoint[] = [];
-    const formattedLineData: LineObject = Object.create(null);
+    const formattedLineData: LineObject = {};
     data.forEach((item: VerticalStackedChartProps, index: number) => {
       if (item.lineData) {
         item.lineData.forEach((line: any) => {
@@ -1307,7 +1307,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _mapCategoryToValues(isYAxis = false) {
-    const categoryToValues: Record<string, number[]> = Object.create(null);
+    const categoryToValues: Record<string, number[]> = {};
     _points.forEach(point => {
       point.chartData.forEach(bar => {
         const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
@@ -1390,7 +1390,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
-        onChartBlur={_handleChartMouseLeave}
         getDomainMargins={_getDomainMargins}
         {...(_xAxisType === XAxisTypes.StringAxis && {
           xAxisInnerPadding: _xAxisInnerPadding,

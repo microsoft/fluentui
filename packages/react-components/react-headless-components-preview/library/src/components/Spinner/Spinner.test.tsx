@@ -7,7 +7,6 @@ describe('Spinner', () => {
   isConformant({
     Component: Spinner,
     displayName: 'Spinner',
-    requiredProps: { 'aria-label': 'Loading' },
   });
 
   it('renders a default state', () => {

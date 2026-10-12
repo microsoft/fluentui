@@ -18,10 +18,8 @@ export const useSwatchPicker = (props: SwatchPickerProps, ref: React.Ref<HTMLDiv
   baseState.root['data-layout'] = layout;
 
   if (focusMode === 'arrow') {
-    const behavior = baseState.isGrid ? 'grid manual rowflow' : 'radiogroup';
-
     // eslint-disable-next-line react-hooks/immutability
-    baseState.root.focusgroup = baseState.selectedValue ? `${behavior} nomemory` : behavior;
+    baseState.root.focusgroup = baseState.isGrid ? 'grid manual rowflow' : 'radiogroup';
   }
 
   return baseState;

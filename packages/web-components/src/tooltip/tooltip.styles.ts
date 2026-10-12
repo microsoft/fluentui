@@ -14,6 +14,7 @@ import {
   spacingHorizontalXS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
+import { TooltipPositioningOption } from './tooltip.options.js';
 
 /**
  * Styles for the tooltip component
@@ -70,39 +71,39 @@ export const styles = css`
   }
 
   :host([positioning='above-start']) {
-    --position-area: block-start span-inline-end;
+    --position-area: ${TooltipPositioningOption['above-start']};
   }
   :host([positioning='above']) {
-    --position-area: block-start;
+    --position-area: ${TooltipPositioningOption.above};
   }
   :host([positioning='above-end']) {
-    --position-area: block-start span-inline-start;
+    --position-area: ${TooltipPositioningOption['above-end']};
   }
   :host([positioning='below-start']) {
-    --position-area: block-end span-inline-end;
+    --position-area: ${TooltipPositioningOption['below-start']};
   }
   :host([positioning='below']) {
-    --position-area: block-end;
+    --position-area: ${TooltipPositioningOption.below};
   }
   :host([positioning='below-end']) {
-    --position-area: block-end span-inline-start;
+    --position-area: ${TooltipPositioningOption['below-end']};
   }
   :host([positioning='before-top']) {
-    --position-area: inline-start span-block-end;
+    --position-area: ${TooltipPositioningOption['before-top']};
   }
   :host([positioning='before']) {
-    --position-area: inline-start;
+    --position-area: ${TooltipPositioningOption.before};
   }
   :host([positioning='before-bottom']) {
-    --position-area: inline-start span-block-start;
+    --position-area: ${TooltipPositioningOption['before-bottom']};
   }
   :host([positioning='after-top']) {
-    --position-area: inline-end span-block-end;
+    --position-area: ${TooltipPositioningOption['after-top']};
   }
   :host([positioning='after']) {
-    --position-area: inline-end;
+    --position-area: ${TooltipPositioningOption.after};
   }
   :host([positioning='after-bottom']) {
-    --position-area: inline-end span-block-start;
+    --position-area: ${TooltipPositioningOption['after-bottom']};
   }
 `;

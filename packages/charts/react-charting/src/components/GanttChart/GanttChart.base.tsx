@@ -48,9 +48,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   const _cartesianChartRef = React.useRef<IChart>(null);
   const _legendsRef = React.useRef<ILegendContainer>(null);
   const _emptyChartId = React.useRef<string>(getId('Gantt_empty'));
-  const _legendMap = React.useRef<Record<string, { id: string; startColor: string; endColor: string }>>(
-    Object.create(null),
-  );
+  const _legendMap = React.useRef<Record<string, { id: string; startColor: string; endColor: string }>>({});
   const _prevProps = React.useRef<Partial<IGanttChartProps>>({});
 
   const [calloutColor, setCalloutColor] = React.useState<string>('');
@@ -87,7 +85,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   );
 
   const _points = React.useMemo(() => {
-    _legendMap.current = Object.create(null);
+    _legendMap.current = {};
     let colorIndex = 0;
 
     return (
@@ -155,7 +153,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   }, [useUTC, _points, _xAxisType]);
 
   const _mapYValueToXValues = React.useCallback(() => {
-    const yValueToXValues: Record<string, number[]> = Object.create(null);
+    const yValueToXValues: Record<string, number[]> = {};
     _points.forEach(point => {
       if (!yValueToXValues[point.y]) {
         yValueToXValues[point.y] = [];
@@ -363,7 +361,7 @@ export const GanttChartBase: React.FunctionComponent<IGanttChartProps> = React.f
   const _getOrderedDataPoints = React.useCallback(() => {
     const result: IGanttChartDataPoint[] = [];
 
-    const yValueToPoints: Record<string, IGanttChartDataPoint[]> = Object.create(null);
+    const yValueToPoints: Record<string, IGanttChartDataPoint[]> = {};
     _points.forEach(point => {
       if (!yValueToPoints[point.y]) {
         yValueToPoints[point.y] = [];

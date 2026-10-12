@@ -385,7 +385,7 @@ export const FunnelChartBase: React.FunctionComponent<IFunnelChartProps> = React
 
     if (isStacked) {
       // Collect unique categories and their color
-      const categoryMap: Record<string, string> = Object.create(null);
+      const categoryMap: Record<string, string> = {};
       props.data.forEach((stage: IFunnelChartDataPoint) => {
         (stage.subValues || []).forEach(sub => {
           if (!(sub.category in categoryMap)) {

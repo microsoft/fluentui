@@ -92,25 +92,7 @@ export class BaseMenuList extends FASTElement {
    * @public
    */
   public focus(): void {
-    // Queue the focus() call so that browesr gets enough time to execute
-    // `.setItems()` and set `.menuItems`.
-    //
-    // This is useful for:
-    //
-    // ```
-    // const list = document.createElement("fluent-menu-list");
-    // const option = document.createElement("fluent-menu-item");
-    // list.append(option);
-    // document.body.append(list);
-    // list.focus();
-    // ```
-    //
-    // Without `Updates.enqueu()`, the above `focus()` call would fail because
-    // in `connectedCallback()`, `.setItems()` is called in an
-    // `Updates.enqueue()`.
-    Updates.enqueue(() => {
-      this.menuItems?.find(item => !item.disabled)?.focus();
-    });
+    this.menuItems?.find(item => !item.disabled)?.focus();
   }
 
   protected setItems(): void {

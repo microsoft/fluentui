@@ -17,7 +17,6 @@ describe('EmptySwatch', () => {
           aria-checked="false"
           class="fui-EmptySwatch"
           role="radio"
-          type="button"
         />
       </div>
     `);

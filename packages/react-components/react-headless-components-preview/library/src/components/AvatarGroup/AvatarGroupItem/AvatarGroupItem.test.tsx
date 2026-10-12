@@ -9,7 +9,6 @@ describe('AvatarGroupItem', () => {
   isConformant({
     Component: AvatarGroupItem,
     displayName: 'AvatarGroupItem',
-    requiredProps: { name: 'John Doe' },
     disabledTests: ['has-top-level-file-extra', 'component-has-root-ref'],
   });
 

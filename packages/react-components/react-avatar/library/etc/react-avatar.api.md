@@ -13,7 +13,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import type { PresenceBadge } from '@fluentui/react-badge';
-import type { PresenceBadgeBaseProps } from '@fluentui/react-badge';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -25,15 +24,10 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
 // @public (undocumented)
-export type AvatarBaseProps = ComponentProps<AvatarBaseSlots> & Pick<AvatarProps, 'active' | 'name'>;
+export type AvatarBaseProps = ComponentProps<Omit<AvatarSlots, 'badge'>> & Pick<AvatarProps, 'name'>;
 
 // @public (undocumented)
-export type AvatarBaseSlots = Omit<AvatarSlots, 'badge'> & {
-    badge?: Slot<PresenceBadgeBaseProps>;
-};
-
-// @public (undocumented)
-export type AvatarBaseState = ComponentState<AvatarBaseSlots> & Pick<AvatarState, 'active' | 'activeAriaLabelElement'>;
+export type AvatarBaseState = ComponentState<Omit<AvatarSlots, 'badge'>> & Pick<AvatarState, 'activeAriaLabelElement'>;
 
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;

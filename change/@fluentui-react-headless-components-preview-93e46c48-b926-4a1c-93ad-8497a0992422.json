@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: focus enters SwatchPicker on the selected swatch",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "vgenaev@gmail.com"
-}

@@ -4,10 +4,10 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-import type { AvatarBaseSlots, AvatarBaseState } from './Avatar.types';
+import type { AvatarSlots, AvatarBaseState } from './Avatar.types';
 
 export const renderAvatar_unstable = (state: AvatarBaseState): JSXElement => {
-  assertSlots<AvatarBaseSlots>(state);
+  assertSlots<AvatarSlots>(state);
 
   return (
     <state.root>

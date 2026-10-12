@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { PresenceAvailableFilled } from '@fluentui/react-icons';
-
 import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
 
 import styles from './avatar.module.css';
-import presenceBadgeStyles from '../PresenceBadge/presence-badge.module.css';
-
 export const Default = (): React.ReactNode => (
   <div className={styles.demo}>
     <div className={styles.demoRow}>
@@ -36,15 +32,7 @@ export const Default = (): React.ReactNode => (
     </div>
 
     <div className={styles.row}>
-      <Avatar
-        name="Eve Park"
-        className={`${styles.avatar} ${styles.size40} ${styles.tone3}`}
-        badge={{
-          className: `${styles.badge} ${presenceBadgeStyles.presenceBadge}`,
-          status: 'available',
-          icon: { className: presenceBadgeStyles.presenceIcon, children: <PresenceAvailableFilled /> },
-        }}
-      />
+      <Avatar name="Eve Park" className={`${styles.avatar} ${styles.size40} ${styles.tone3}`} />
       <div className={styles.meta}>
         <span className={styles.metaName}>Eve Park</span>
         <span className={styles.metaSub}>Product designer · Online</span>

@@ -18,12 +18,4 @@ export type NavDrawerProps = DrawerProps & NavProps;
 /**
  * State used in rendering NavDrawer
  */
-export type NavDrawerState = ComponentState<NavDrawerSlots> &
-  Omit<NavContextValue, 'tabbable'> & {
-    root: {
-      /**
-       * Data attribute reflecting the resolved Drawer type ('inline' or 'overlay').
-       */
-      'data-type'?: 'inline' | 'overlay';
-    };
-  };
+export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'>;

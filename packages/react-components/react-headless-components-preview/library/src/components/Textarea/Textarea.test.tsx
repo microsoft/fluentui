@@ -8,7 +8,6 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
-    requiredProps: { 'aria-label': 'Text' },
   });
 
   it('renders a default state', () => {

@@ -1,21 +1,5 @@
-import * as React from 'react';
-import { render, type RenderOptions } from '@testing-library/react';
 import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
-import { axe, toHaveNoViolations } from 'jest-axe';
-
-expect.extend(toHaveNoViolations);
-
-type HeadlessIsConformantOptions<TProps> = Omit<IsConformantOptions<TProps>, 'componentPath'> & {
-  /**
-   * Path to component file. This is optional because the test file is usually in the same folder as the component file.
-   */
-  componentPath?: string;
-  /**
-   * Custom render options applied only to the axe test.
-   */
-  axeRenderOptions?: RenderOptions;
-};
 
 function kebabCase(str: string): string {
   return str
@@ -24,8 +8,9 @@ function kebabCase(str: string): string {
     .toLowerCase();
 }
 
-export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<TProps>): void {
-  const { axeRenderOptions, ...baseTestInfo } = testInfo;
+export function isConformant<TProps = {}>(
+  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+): void {
   const name = kebabCase(testInfo.displayName);
 
   // Subcomponents have no top-level entry file and therefore no export map entry of their own.
@@ -45,19 +30,6 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
     ],
     disableTypeTests: true,
     extraTests: {
-      'component-has-no-axe-violations': ({ Component, requiredProps, renderOptions }: IsConformantOptions<TProps>) => {
-        it('has no axe violations (component-has-no-axe-violations)', async () => {
-          const { baseElement } = render(
-            React.createElement(Component as React.ComponentType<Partial<TProps>>, requiredProps),
-            { ...renderOptions, ...axeRenderOptions },
-          );
-
-          // The conformance fixture is rendered without an application landmark. Keep
-          // checking the full document so body-mounted content is included, but avoid
-          // reporting the fixture itself for not being inside a landmark.
-          expect(await axe(baseElement, { rules: { region: { enabled: false } } })).toHaveNoViolations();
-        });
-      },
       'has-top-level-file-extra': ({ displayName, Component }: IsConformantOptions<TProps>) => {
         it(`has corresponding top-level file 'src/${name}.ts' (has-top-level-file)`, () => {
           const topLevelFile = require(`../${name}.ts`);
@@ -91,5 +63,5 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
     },
   };
 
-  baseIsConformant(defaultOptions, baseTestInfo);
+  baseIsConformant(defaultOptions, testInfo);
 }

@@ -204,7 +204,7 @@ export const createAngularScale = (
   } = {},
 ): { scale: (v: string | number) => number; tickValues: (string | number)[]; tickLabels: string[] } => {
   if (scaleType === 'category') {
-    const categoryIndexMap: Record<string, number> = Object.create(null);
+    const categoryIndexMap: Record<string, number> = {};
     (domain as string[]).forEach((d, i) => {
       categoryIndexMap[d] = i;
     });

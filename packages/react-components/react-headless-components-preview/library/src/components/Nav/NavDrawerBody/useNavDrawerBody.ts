@@ -8,5 +8,10 @@ import { useDrawerBody } from '../../Drawer/DrawerBody';
  * Create the state required to render NavDrawerBody.
  */
 export const useNavDrawerBody = (props: NavDrawerBodyProps, ref: React.Ref<HTMLElement>): NavDrawerBodyState => {
-  return useDrawerBody({ role: 'navigation', ...props }, ref);
+  const state: NavDrawerBodyState = useDrawerBody(props, ref);
+
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.role = 'navigation';
+
+  return state;
 };

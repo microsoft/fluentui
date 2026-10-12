@@ -7,7 +7,6 @@ describe('Image', () => {
   isConformant({
     Component: Image,
     displayName: 'Image',
-    requiredProps: { alt: 'Image' },
   });
 
   it('renders an image element with the correct attributes', () => {

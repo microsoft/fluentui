@@ -368,18 +368,16 @@ module.exports = [
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
   writeJson(tree, joinPathFragments(newProjectRoot, 'package.json'), templates.packageJson);
   updateJson(tree, joinPathFragments(newProjectRoot, '.storybook/tsconfig.json'), (json: TsConfig) => {
-    json.include = ['*.js', '*.cjs'];
+    json.include = ['*.js'];
     return json;
   });
-  for (const storybookMain of ['.storybook/main.js', '.storybook/main.cjs']) {
-    updateFileContent(tree, joinPathFragments(newProjectRoot, storybookMain), content => {
-      content = content
-        .replace(/\.\.\/stories\//g, '../src/')
-        .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
+  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/main.js'), content => {
+    content = content
+      .replace(/\.\.\/stories\//g, '../src/')
+      .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
 
-      return content;
-    });
-  }
+    return content;
+  });
   updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/preview.js'), content => {
     content = content.replace(
       new RegExp(options.projectOffsetFromRoot.old, 'g'),

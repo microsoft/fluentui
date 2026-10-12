@@ -8,7 +8,6 @@ describe('SpinButton', () => {
     Component: SpinButton,
     displayName: 'SpinButton',
     primarySlot: 'input',
-    requiredProps: { 'aria-label': 'Value' },
   });
 
   it('renders a default state', () => {

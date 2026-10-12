@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: mark @types/react peer dependency as optional",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

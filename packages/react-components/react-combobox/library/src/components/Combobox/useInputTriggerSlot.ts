@@ -6,7 +6,7 @@ import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import type { ComboboxProps } from '../Combobox/Combobox.types';
-import type { UseTriggerSlotOptions, UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import type { UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { useTriggerSlot } from '../../utils/useTriggerSlot';
 import type { ComboboxBaseState } from '../../utils/ComboboxBase.types';
 import type { OptionValue } from '../../utils/OptionCollection.types';
@@ -20,7 +20,6 @@ type UseInputTriggerSlotOptions = {
   freeform: boolean | undefined;
   defaultProps?: Partial<ComboboxProps>;
   activeDescendantController: ActiveDescendantImperativeRef;
-  shouldCloseOnBlur?: UseTriggerSlotOptions['shouldCloseOnBlur'];
 };
 
 /**
@@ -50,7 +49,6 @@ export function useInputTriggerSlot(
     freeform,
     defaultProps,
     activeDescendantController,
-    shouldCloseOnBlur,
   } = options;
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -110,7 +108,6 @@ export function useInputTriggerSlot(
     defaultProps,
     elementType: 'input',
     activeDescendantController,
-    shouldCloseOnBlur,
   });
 
   // eslint-disable-next-line react-hooks/immutability

@@ -21,8 +21,7 @@ exports[`Listbox renders a default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -30,7 +29,7 @@ exports[`Listbox renders a default state 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>
@@ -49,8 +48,7 @@ exports[`Listbox renders a default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -58,7 +56,7 @@ exports[`Listbox renders a default state 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>
@@ -77,8 +75,7 @@ exports[`Listbox renders a default state 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -86,7 +83,7 @@ exports[`Listbox renders a default state 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>
@@ -118,8 +115,7 @@ exports[`Listbox renders with a selected option 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -127,7 +123,7 @@ exports[`Listbox renders with a selected option 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>
@@ -146,8 +142,7 @@ exports[`Listbox renders with a selected option 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -155,7 +150,7 @@ exports[`Listbox renders with a selected option 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>
@@ -174,8 +169,7 @@ exports[`Listbox renders with a selected option 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="fui-Icon"
-          data-fui-icon=""
+          class=""
           fill="currentColor"
           height="1em"
           viewBox="0 0 20 20"
@@ -183,7 +177,7 @@ exports[`Listbox renders with a selected option 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06z"
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
             fill="currentColor"
           />
         </svg>

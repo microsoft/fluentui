@@ -237,7 +237,7 @@ export interface CartesianChartProps {
     strokeWidth?: number;
     styles?: CartesianChartStyles;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
-    tickFormat?: string | ((value: number | Date) => string);
+    tickFormat?: string;
     tickPadding?: number;
     tickValues?: number[] | Date[] | string[] | undefined;
     timeFormatLocale?: TimeLocaleDefinition;
@@ -795,9 +795,11 @@ export interface EventsAnnotationProps {
     strokeColor?: string;
 }
 
-// @public
+// @public (undocumented)
 export interface ExtendedSegment extends GaugeChartSegment {
+    // (undocumented)
     end: number;
+    // (undocumented)
     start: number;
 }
 
@@ -894,21 +896,6 @@ export interface GanttChartStyles extends CartesianChartStyles {
 export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
 
 // @public
-export interface GaugeChartCalloutData {
-    chartTitle?: string;
-    chartValue: number;
-    chartValueLabel: string;
-    legend: string;
-    maxValue: number;
-    minValue: number;
-    segments?: GaugeChartCalloutSegment[];
-    segmentValues: YValueHover[];
-}
-
-// @public @deprecated
-export type GaugeChartCalloutSegment = ExtendedSegment;
-
-// @public
 export interface GaugeChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     chartTitle?: string;
@@ -925,7 +912,6 @@ export interface GaugeChartProps {
     legendProps?: Partial<LegendsProps>;
     maxValue?: number;
     minValue?: number;
-    onRenderCallout?: RenderFunction<GaugeChartCalloutData>;
     roundCorners?: boolean;
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
@@ -986,9 +972,6 @@ export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string
 
 // @public (undocumented)
 export function getContrastTextColor(backgroundColor: string, isDarkTheme?: boolean): string;
-
-// @public
-export const getGaugeChartSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant: GaugeChartVariant | undefined, chartValueFormat: GaugeChartProps["chartValueFormat"], isAriaLabel?: boolean) => string;
 
 // @public (undocumented)
 export const getInvertedTextColor: (color: string, isDarkTheme?: boolean) => string;
@@ -1505,7 +1488,6 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     legendBars: JSXElement | null;
     maxOfYVal?: number;
-    onChartBlur?: () => void;
     onChartMouseLeave?: () => void;
     points: any;
     showRoundOffXTickValues?: boolean;
@@ -1514,7 +1496,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     stringDatasetForYAxisDomain?: string[];
     tickParams?: {
         tickValues?: number[] | Date[] | string[];
-        tickFormat?: string | ((value: number | Date) => string);
+        tickFormat?: string;
     };
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;

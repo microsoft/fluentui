@@ -191,13 +191,6 @@ export type MenuProps = Omit<MenuBaseProps, 'positioning'> & {
 // @public (undocumented)
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
 
-// @public
-export type MenuSplitGroupContextValues = {
-    menuSplitGroup: {
-        setMultiline: (multiline: boolean) => void;
-    };
-};
-
 export { MenuSplitGroupProps }
 
 export { MenuSplitGroupSlots }
@@ -285,9 +278,6 @@ export const useMenuPopover: (props: MenuPopoverProps, ref: React_2.Ref<HTMLElem
 
 // @public
 export const useMenuSplitGroup: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
-
-// @public
-export const useMenuSplitGroupContextValues: (state: MenuSplitGroupState) => MenuSplitGroupContextValues;
 
 // @public (undocumented)
 export const useMenuTrigger: (props: MenuTriggerProps) => MenuTriggerState;

@@ -416,7 +416,6 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
   'alt', // area, img, input
   'crossOrigin', // img
   'height', // canvas, embed, iframe, img, input, object, video
-  'loading', // img, iframe
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcSet', // img, source
   'useMap', // img, object,
@@ -472,14 +471,14 @@ export function getNativeProps<T extends Record<string, any>>(
 
   for (const key of keys) {
     const isNativeProp =
-      (!isArray && Object.prototype.hasOwnProperty.call(allowedPropNames, key)) ||
+      (!isArray && (allowedPropNames as Record<string, number>)[key]) ||
       (isArray && (allowedPropNames as string[]).indexOf(key) >= 0) ||
       key.indexOf('data-') === 0 ||
       key.indexOf('aria-') === 0;
 
-    if (key !== '__proto__' && isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
+    if (isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      result[key] = props[key] as any;
+      result[key] = props![key] as any;
     }
   }
 

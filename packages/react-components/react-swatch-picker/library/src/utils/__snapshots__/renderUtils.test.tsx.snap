@@ -76,7 +76,6 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg\\");"
-        type="button"
       />
       <button
         aria-label="bridge"
@@ -84,7 +83,6 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg\\");"
-        type="button"
       />
       <button
         aria-label="park"
@@ -92,7 +90,6 @@ exports[`Render utils of SwatchPicker renders custom row 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg\\");"
-        type="button"
       />
     </div>
   </div>
@@ -245,7 +242,6 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg\\");"
-        type="button"
       />
       <button
         aria-label="bridge"
@@ -253,7 +249,6 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg\\");"
-        type="button"
       />
       <button
         aria-label="park"
@@ -261,7 +256,6 @@ exports[`Render utils of SwatchPicker renders default grid layout 1`] = `
         class="fui-ImageSwatch"
         role="gridcell"
         style="background-image: url(\\"https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg\\");"
-        type="button"
       />
     </div>
   </div>

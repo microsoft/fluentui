@@ -6,7 +6,6 @@ export type {
   AvatarSize,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
-  AvatarBaseSlots,
   AvatarSlots,
   AvatarBaseState,
   AvatarState,

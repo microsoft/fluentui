@@ -1,1 +1,0 @@
-export { webpackFinal } from '../webpack';

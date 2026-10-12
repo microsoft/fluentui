@@ -23,7 +23,7 @@ describe(`webpack`, () => {
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
-                { importMappings: undefined, storyGranularity: 'file', cssModules: false },
+                { importMappings: undefined, cssModules: false },
               ],
             ],
           },
@@ -46,7 +46,6 @@ describe(`webpack`, () => {
             babelLoaderOptionsUpdater: value => {
               return Object.assign(value, { presets: ['babel-foo-bar-preset'] });
             },
-            storyGranularity: 'story',
           } as PresetConfig,
         },
       ],
@@ -66,7 +65,6 @@ describe(`webpack`, () => {
                 expect.stringContaining('babel-preset-storybook-full-source'),
                 {
                   importMappings: { '@proj/foo': { replace: '@proj/moo' } },
-                  storyGranularity: 'story',
                   cssModules: false,
                 },
               ],
@@ -103,7 +101,7 @@ describe(`webpack`, () => {
             plugins: [
               [
                 expect.stringContaining('babel-preset-storybook-full-source'),
-                { importMappings: undefined, storyGranularity: 'file', cssModules },
+                { importMappings: undefined, cssModules },
               ],
             ],
           },

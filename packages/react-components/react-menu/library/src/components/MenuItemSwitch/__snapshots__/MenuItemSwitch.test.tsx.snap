@@ -19,8 +19,7 @@ exports[`MenuItemSwitch renders a default state 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="fui-Icon fui-MenuItemSwitch__switchIndicator__circleFilled"
-        data-fui-icon=""
+        class="fui-MenuItemSwitch__switchIndicator__circleFilled"
         fill="currentColor"
         height="1em"
         viewBox="0 0 20 20"
@@ -28,7 +27,7 @@ exports[`MenuItemSwitch renders a default state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16"
+          d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
           fill="currentColor"
         />
       </svg>

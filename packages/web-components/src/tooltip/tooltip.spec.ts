@@ -1,5 +1,6 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Tooltip } from './tooltip.js';
+import type { TooltipPositioningOption } from './tooltip.options.js';
 import { tagName } from './tooltip.options.js';
 
 test.describe('Tooltip', () => {
@@ -191,7 +192,7 @@ test.describe('Tooltip', () => {
     `);
 
     await element.evaluate((node: Tooltip) => {
-      node.positioning = 'above';
+      node.positioning = 'above' as TooltipPositioningOption;
     });
 
     await expect(element).toHaveAttribute('positioning', 'above');

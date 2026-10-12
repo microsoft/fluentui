@@ -194,7 +194,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): {
  */
 // This is exported for unit tests.
 export function groupNodesByColumn(graph: ISankeyChartData): NodesInColumns {
-  const nodesInColumn: NodesInColumns = Object.create(null);
+  const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
     if (nodesInColumn[columnId]) {
@@ -331,7 +331,7 @@ function duplicateData(data: ISankeyChartData): ISankeyChartData {
 }
 
 function valuesOfNodes(nodes: SNode[]): NodeValues {
-  const result: NodeValues = Object.create(null);
+  const result: NodeValues = {};
   nodes.forEach((node: SNode) => {
     result[node.nodeId as NodeId] = node.value!;
   });
@@ -339,12 +339,12 @@ function valuesOfNodes(nodes: SNode[]): NodeValues {
 }
 
 function valuesOfLinks(links: SLink[]): LinkValues {
-  const result: LinkValues = Object.create(null);
+  const result: LinkValues = {};
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = Object.create(null);
+      sourceToTarget = {};
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
@@ -495,12 +495,12 @@ function computeLinkAttributes(
   linkFrom: (node: SNode) => string,
   linkAriaLabel: (link: SLink) => string,
 ): LinkItemValues<RenderedLinkAttributes> {
-  const result: LinkItemValues<RenderedLinkAttributes> = Object.create(null);
+  const result: LinkItemValues<RenderedLinkAttributes> = {};
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
-      sourceToTarget = Object.create(null);
+      sourceToTarget = {};
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
@@ -928,7 +928,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     nodes: SNode[],
     nodeAriaLabel: (node: SNode, weight: number) => string,
   ): ItemValues<RenderedNodeAttributes> {
-    const result: ItemValues<RenderedNodeAttributes> = Object.create(null);
+    const result: ItemValues<RenderedNodeAttributes> = {};
     const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
     const nameSpan = select('.nodeName')
       .append('text')

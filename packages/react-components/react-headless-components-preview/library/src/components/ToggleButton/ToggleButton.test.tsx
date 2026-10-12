@@ -7,7 +7,6 @@ describe('ToggleButton', () => {
   isConformant({
     Component: ToggleButton,
     displayName: 'ToggleButton',
-    requiredProps: { children: 'Toggle' },
   });
 
   it('renders a default state', () => {

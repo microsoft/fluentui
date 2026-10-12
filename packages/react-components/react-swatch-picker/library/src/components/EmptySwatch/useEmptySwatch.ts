@@ -35,7 +35,6 @@ export const useEmptySwatchBase_unstable = (
         ref,
         role,
         ...a11yProps,
-        type: 'button',
         ...props,
       }),
       { elementType: 'button' },

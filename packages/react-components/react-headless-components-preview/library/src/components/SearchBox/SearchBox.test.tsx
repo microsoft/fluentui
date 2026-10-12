@@ -8,7 +8,6 @@ describe('SearchBox', () => {
     Component: SearchBox,
     displayName: 'SearchBox',
     primarySlot: 'input',
-    requiredProps: { 'aria-label': 'Search' },
   });
 
   it('renders a default state', () => {

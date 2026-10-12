@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -5,8 +6,6 @@ import { type AllPackageInfo, getAllPackageInfo, workspaceRoot } from '@fluentui
 import { logger, readJsonFile } from '@nx/devkit';
 import type { ChangeType } from 'beachball';
 import yargs from 'yargs';
-
-import { runNpmCommand } from './npm-utils';
 
 /**
  * Deprecates a package by executing an `npm deprecate` command.
@@ -16,12 +15,14 @@ import { runNpmCommand } from './npm-utils';
  */
 function deprecatePackage(packageSpec: string, npmToken: string) {
   const projectNpmName = packageSpec.replace('-preview', '');
-  const args = ['deprecate', packageSpec, `Deprecated in favor of stable release - use/migrate to ${projectNpmName}`];
+
+  const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release - use/migrate to ${projectNpmName}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
 
   logger.log(`Deprecating "${packageSpec}" package`);
+  logger.log(command);
 
   try {
-    runNpmCommand({ args, npmToken });
+    execSync(command, { stdio: 'inherit' });
   } catch (e) {
     throw new Error(`Failed to deprecate "${packageSpec}" package`);
   }
@@ -122,18 +123,20 @@ function createPackageChangeFileReader(options: { changeFilesRoot: string }) {
 }
 
 function main() {
-  try {
-    const argv = yargs.option('changeFilesRoot', {
+  const argv = yargs
+    .option('changeFilesRoot', {
       type: 'string',
       description: 'Root folder where change files live (relative to workspace root)',
       default: 'change',
+    })
+    .option('token', {
+      type: 'string',
+      description: 'NPM Token',
+      demandOption: true,
     }).argv;
-    const token = process.env.TOKEN;
-    if (!token) {
-      throw new Error('Please pass an NPM token through the TOKEN environment variable');
-    }
 
-    deprecateReactComponentsPreviewPackages({ argv: { ...argv, token }, packages: getAllPackageInfo() });
+  try {
+    deprecateReactComponentsPreviewPackages({ argv, packages: getAllPackageInfo() });
   } catch (e) {
     logger.error(e);
     logger.error('Failed to deprecate packages');

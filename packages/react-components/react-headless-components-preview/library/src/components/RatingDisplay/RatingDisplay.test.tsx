@@ -8,7 +8,6 @@ describe('RatingDisplay', () => {
   isConformant({
     Component: RatingDisplay,
     displayName: 'RatingDisplay',
-    requiredProps: { 'aria-label': 'Rating' },
   });
 
   it('renders a default state', () => {

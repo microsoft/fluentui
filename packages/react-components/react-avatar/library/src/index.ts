@@ -16,7 +16,6 @@ export type {
   AvatarSizes,
   AvatarSize,
   AvatarBaseProps,
-  AvatarBaseSlots,
   AvatarBaseState,
 } from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';

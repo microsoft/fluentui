@@ -9,7 +9,6 @@ import type { ButtonSlots } from '@fluentui/react-button';
 import type { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -30,7 +29,7 @@ export type BreadcrumbBaseState = Omit<BreadcrumbState, 'size'>;
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 
 // @public (undocumented)
-export type BreadcrumbButtonBaseProps = DistributiveOmit<BreadcrumbButtonProps, 'size'>;
+export type BreadcrumbButtonBaseProps = Omit<BreadcrumbButtonProps, 'size'>;
 
 // @public (undocumented)
 export type BreadcrumbButtonBaseState = Omit<BreadcrumbButtonState, 'appearance' | 'size' | 'shape'>;

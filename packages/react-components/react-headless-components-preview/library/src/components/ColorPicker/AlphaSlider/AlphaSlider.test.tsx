@@ -9,7 +9,6 @@ describe('AlphaSlider', () => {
     displayName: 'AlphaSlider',
     disabledTests: ['has-top-level-file-extra'],
     primarySlot: 'input',
-    requiredProps: { 'aria-label': 'Alpha' },
   });
 
   it('renders opacity as a native range value', () => {

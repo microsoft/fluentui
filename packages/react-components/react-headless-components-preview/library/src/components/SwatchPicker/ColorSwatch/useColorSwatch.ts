@@ -9,8 +9,6 @@ export const useColorSwatch = (props: ColorSwatchProps, ref: React.Ref<HTMLButto
   const state: ColorSwatchState = useColorSwatchBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root.focusgroupstart = toDataAttributeValue(state.selected);
-  // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = toDataAttributeValue(state.selected);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);

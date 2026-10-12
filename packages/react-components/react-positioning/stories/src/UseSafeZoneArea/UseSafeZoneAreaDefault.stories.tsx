@@ -94,8 +94,8 @@ export const UseSafeZoneAreaDefault = (props: UseSafeZoneOptions): JSXElement =>
   const [targetWidth, setTargetWidth] = React.useState<'small' | 'medium' | 'large'>('large');
 
   const safeZoneArea = useSafeZoneArea({
-    debug,
-    timeout: 5000,
+    debug: true,
+    timeout: 100000,
   });
   const positioning = usePositioning({
     ...resolvePositioningShorthand(position),

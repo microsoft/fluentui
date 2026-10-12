@@ -4,7 +4,6 @@ export type { NavItemSlots, NavItemBaseProps as NavItemProps } from '@fluentui/r
 
 export type NavItemState = NavItemBaseState & {
   root: {
-    'data-disabled'?: string;
     'data-selected'?: string;
   };
 };

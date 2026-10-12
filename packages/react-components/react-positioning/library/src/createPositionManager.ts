@@ -44,12 +44,6 @@ interface PositionManagerOptions {
   disableUpdateOnResize?: boolean;
 }
 
-function isLayoutViewportUnavailable(container: HTMLElement): boolean {
-  const { clientWidth, clientHeight } = container.ownerDocument.documentElement;
-
-  return clientWidth === 0 && clientHeight === 0;
-}
-
 /**
  * @internal
  * @returns manager that handles positioning out of the react lifecycle
@@ -130,17 +124,10 @@ export function createPositionManager(options: PositionManagerOptions): Position
           return;
         }
 
-        const positioningMiddlewareData = isLayoutViewportUnavailable(container)
-          ? {
-              ...middlewareData,
-              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
-            }
-          : middlewareData;
-
-        writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
+        writeArrowUpdates({ arrow, middlewareData });
         writeContainerUpdates({
           container,
-          middlewareData: positioningMiddlewareData,
+          middlewareData,
           placement: computedPlacement,
           coordinates: { x, y },
           lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
@@ -155,8 +142,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
               // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
               // types into the public API surface.
               placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+              escaped: middlewareData.hide?.escaped ?? false,
+              referenceHidden: middlewareData.hide?.referenceHidden ?? false,
             },
           }),
         );

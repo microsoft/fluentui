@@ -188,7 +188,7 @@ export interface IXAxisParams extends AxisProps {
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
-  tickFormat?: string | ((value: number | Date) => string);
+  tickFormat?: string;
 }
 
 export interface IYAxisParams extends AxisProps {
@@ -288,9 +288,7 @@ export function createNumericXAxis(
       return tickText[_index];
     }
     if (tickParams.tickFormat) {
-      return typeof tickParams.tickFormat === 'function'
-        ? tickParams.tickFormat(typeof domainValue === 'number' ? domainValue : domainValue.valueOf())
-        : d3Format(tickParams.tickFormat)(domainValue);
+      return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return defaultFormat?.(xAxisValue) === '' ? '' : (formatToLocaleString(xAxisValue, culture) as string);
@@ -499,9 +497,6 @@ export function createDateXAxis(
   const tickFormat = (domainValue: Date, _index: number) => {
     if (tickParams.tickValues && tickText && typeof tickText[_index] !== 'undefined') {
       return tickText[_index];
-    }
-    if (typeof tickParams.tickFormat === 'function') {
-      return tickParams.tickFormat(domainValue);
     }
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
@@ -1045,8 +1040,7 @@ export function calloutData(
       callOutAccessibilityData?: AccessibilityProps;
       index?: number;
     }[];
-    // Null-prototype object so data-derived x keys (e.g. "__proto__") cannot pollute Object.prototype.
-  } = Object.create(null);
+  } = {};
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
@@ -1392,8 +1386,7 @@ export function domainRangeOfNumericForAreaLineScatterCharts(
 export function groupChartDataByYValue(
   chartData: HorizontalBarChartWithAxisDataPoint[],
 ): HorizontalBarChartWithAxisDataPoint[][] {
-  // Null-prototype object so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
-  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = Object.create(null);
+  const map: Record<string, HorizontalBarChartWithAxisDataPoint[]> = {};
   chartData.forEach(dataPoint => {
     const key = dataPoint.y;
     if (!map[key]) {
