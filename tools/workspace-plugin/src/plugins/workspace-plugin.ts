@@ -742,7 +742,10 @@ function buildStorybookTarget(
   context: CreateNodesContextV2,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
-  if (!existsSync(join(config.absoluteProjectRoot, '.storybook/main.js'))) {
+  const hasStorybookMain = ['.storybook/main.js', '.storybook/main.cjs'].some(file =>
+    existsSync(join(config.absoluteProjectRoot, file)),
+  );
+  if (!hasStorybookMain) {
     return null;
   }
 

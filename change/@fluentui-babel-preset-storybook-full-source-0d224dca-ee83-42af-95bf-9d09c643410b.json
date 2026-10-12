@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Preserve inline CSF3 story parameters when adding fullSource",
-  "packageName": "@fluentui/babel-preset-storybook-full-source",
-  "email": "198982749+Copilot@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

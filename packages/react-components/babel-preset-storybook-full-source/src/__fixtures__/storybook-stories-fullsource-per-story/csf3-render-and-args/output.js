@@ -33,10 +33,13 @@ export const ArgsOnly = {
   },
 };
 Default.parameters = {};
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const Default = () => <Button>Default</Button>;\n';
 WithArgs.parameters = {};
+WithArgs.parameters.fullSourceIsRunnable = true;
 WithArgs.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const WithArgs = () => {\n  const args = { appearance: "outline" };\n  return <Button {...args}>With args</Button>;\n};\n';
+ArgsOnly.parameters.fullSourceIsRunnable = true;
 ArgsOnly.parameters.fullSource =
   'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\nexport const ArgsOnly = () => {\n  const args = { appearance: "primary", children: "Args only" };\n  return <Button {...args} />;\n};\n';

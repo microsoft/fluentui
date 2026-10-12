@@ -132,42 +132,45 @@ describe(`workspace-plugin`, () => {
       },
     );
 
-    it('infers Storybook and RIT sibling relationships independently of cwd', async () => {
-      await tempFs.createFiles({
-        'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
-        'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
-        'proj/stories/project.json': serializeJson({
-          name: 'proj-stories',
-          projectType: 'library',
-          tags: ['vNext', 'type:stories'],
-        }),
-        'proj/stories/package.json': serializeJson({ name: '@proj/proj-stories', private: true }),
-        'proj/stories/.storybook/main.js': '',
-        'proj/stories/jest.config.js': '',
-        'proj/stories/cypress.config.ts': '',
-      });
-      const results = await inferFromEveryCwd(['proj/library/project.json', 'proj/stories/project.json']);
-      const library = getTargets(results, 'proj/library')!;
-      const stories = results[1][1].projects!['proj/stories'].targets!;
-      expect(library.storybook).toEqual({ command: 'nx run proj-stories:storybook', cache: true });
-      expect(library.start).toEqual(library.storybook);
-      expect(stories.storybook.options?.cwd).toBe('proj/stories');
-      for (const version of ['17', '18']) {
-        const typeCheck = `react-integration-testing--${version}--type-check`;
-        const prepare = `react-integration-testing--${version}--prepare`;
-        expect(library[typeCheck]).toMatchObject({
-          executor: 'nx:noop',
-          dependsOn: [{ projects: 'proj-stories', target: typeCheck }],
+    it.each(['js', 'cjs'])(
+      'infers Storybook main.%s and RIT sibling relationships independently of cwd',
+      async extension => {
+        await tempFs.createFiles({
+          'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
+          'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
+          'proj/stories/project.json': serializeJson({
+            name: 'proj-stories',
+            projectType: 'library',
+            tags: ['vNext', 'type:stories'],
+          }),
+          'proj/stories/package.json': serializeJson({ name: '@proj/proj-stories', private: true }),
+          [`proj/stories/.storybook/main.${extension}`]: '',
+          'proj/stories/jest.config.js': '',
+          'proj/stories/cypress.config.ts': '',
         });
-        expect(library[prepare]).toBeUndefined();
-        expect(stories[typeCheck]).toMatchObject({ dependsOn: [prepare], options: { cwd: '{projectRoot}' } });
-        expect(stories[prepare].outputs).toEqual([
-          `{workspaceRoot}/tmp/rit/react-${version}/proj-stories-react-${version}-ci`,
-        ]);
-        expect(stories[`react-integration-testing--${version}--test`]).toBeUndefined();
-        expect(stories[`react-integration-testing--${version}--e2e`]).toBeUndefined();
-      }
-    });
+        const results = await inferFromEveryCwd(['proj/library/project.json', 'proj/stories/project.json']);
+        const library = getTargets(results, 'proj/library')!;
+        const stories = results[1][1].projects!['proj/stories'].targets!;
+        expect(library.storybook).toEqual({ command: 'nx run proj-stories:storybook', cache: true });
+        expect(library.start).toEqual(library.storybook);
+        expect(stories.storybook.options?.cwd).toBe('proj/stories');
+        for (const version of ['17', '18']) {
+          const typeCheck = `react-integration-testing--${version}--type-check`;
+          const prepare = `react-integration-testing--${version}--prepare`;
+          expect(library[typeCheck]).toMatchObject({
+            executor: 'nx:noop',
+            dependsOn: [{ projects: 'proj-stories', target: typeCheck }],
+          });
+          expect(library[prepare]).toBeUndefined();
+          expect(stories[typeCheck]).toMatchObject({ dependsOn: [prepare], options: { cwd: '{projectRoot}' } });
+          expect(stories[prepare].outputs).toEqual([
+            `{workspaceRoot}/tmp/rit/react-${version}/proj-stories-react-${version}-ci`,
+          ]);
+          expect(stories[`react-integration-testing--${version}--test`]).toBeUndefined();
+          expect(stories[`react-integration-testing--${version}--e2e`]).toBeUndefined();
+        }
+      },
+    );
 
     it.each(['js', 'cjs'])('resolves rit.config.%s and its referenced files independently of cwd', async extension => {
       await tempFs.createFiles({
@@ -1052,6 +1055,24 @@ describe(`workspace-plugin`, () => {
           ],
         ]
       `);
+    });
+
+    it('should create storybook targets for v9 stories project with .storybook/main.cjs', async () => {
+      await tempFs.createFiles({
+        'proj/stories/.storybook/main.cjs': '',
+        'proj/stories/project.json': serializeJson({
+          root: 'proj/stories',
+          projectType: 'library',
+          tags: ['vNext', 'type:stories'],
+        } satisfies ProjectConfiguration),
+        'proj/stories/package.json': serializeJson({
+          name: '@proj/proj-stories',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      });
+      const results = await createNodesFunction(['proj/stories/project.json'], options, context);
+
+      expect(getTargetsNames(results, 'proj/stories')).toEqual(expect.arrayContaining(['storybook', 'start']));
     });
 
     it('should create default nodes for v9 stories project', async () => {

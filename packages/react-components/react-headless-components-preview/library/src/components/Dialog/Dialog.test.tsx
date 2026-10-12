@@ -136,4 +136,21 @@ describe('Dialog', () => {
     expect(dialogElement).toBeInTheDocument();
     expect(dialogElement).not.toHaveAttribute('open');
   });
+
+  it('mounts a closed surface when unmountOnClose changes to false', () => {
+    const result = render(
+      <Dialog>
+        <DialogSurface>Preserved content</DialogSurface>
+      </Dialog>,
+    );
+    expect(result.container.querySelector('dialog')).not.toBeInTheDocument();
+
+    result.rerender(
+      <Dialog unmountOnClose={false}>
+        <DialogSurface>Preserved content</DialogSurface>
+      </Dialog>,
+    );
+    expect(result.container.querySelector('dialog')).toBeInTheDocument();
+    expect(result.container.querySelector('dialog')).not.toHaveAttribute('open');
+  });
 });

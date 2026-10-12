@@ -1,4 +1,5 @@
 import { expect, test } from '../../test/playwright/index.js';
+import { getInitials } from '../utils/get-initials.js';
 import { AvatarAppearance, AvatarColor, AvatarSize, tagName } from './avatar.options.js';
 
 test.describe('Avatar', () => {
@@ -73,6 +74,19 @@ test.describe('Avatar', () => {
     await fastPage.setTemplate({ attributes: { name: 'John Doe' } });
 
     await expect(element).toContainText('JD');
+  });
+
+  test('should preserve supported phone number forms', () => {
+    expect(getInitials('12345678', false)).toBe('');
+    expect(getInitials('1 Ext 2', false)).toBe('');
+    expect(getInitials('1x1', false)).toBe('');
+    expect(getInitials('1 EXT 234', false)).toBe('');
+    expect(getInitials('1y1', false)).toBe('1');
+    expect(getInitials('1', false)).toBe('1');
+  });
+
+  test('should handle long non-phone names', () => {
+    expect(getInitials(`${'1'.repeat(100_000)}y`, false)).toBe('1');
   });
 
   test('When `name` and `initials` attributes are both set, should prioritize the provided initials', async ({

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-compat",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "Package for icon utility methods used by font and svg icons.",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -19,10 +19,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.4.5",
-    "@fluentui/react-shared-contexts": "^9.26.3",
+    "@fluentui/react-jsx-runtime": "^9.4.6",
+    "@fluentui/react-shared-contexts": "^9.26.4",
     "@fluentui/react-theme": "^9.2.2",
-    "@fluentui/react-utilities": "^9.26.6",
+    "@fluentui/react-utilities": "^9.26.7",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

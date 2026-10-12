@@ -10,7 +10,7 @@ import {
 
 import styles from './dialog.module.css';
 export const Default = (): React.ReactNode => (
-  <Dialog>
+  <Dialog unmountOnClose>
     <DialogTrigger>
       <button type="button" className={styles.btn}>
         Open dialog
@@ -21,6 +21,7 @@ export const Default = (): React.ReactNode => (
       <DialogBody className={styles.body}>
         <DialogTitle className={styles.title}>Confirm action</DialogTitle>
         <p className={styles.copy}>Are you sure you want to proceed? This action cannot be undone.</p>
+        <p className={styles.copy}>The surface unmounts after its exit keyframes finish. Reopening starts fresh.</p>
       </DialogBody>
 
       <DialogActions className={styles.actions}>

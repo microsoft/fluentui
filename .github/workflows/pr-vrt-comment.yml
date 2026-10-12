@@ -21,8 +21,9 @@ jobs:
       contents: read
       actions: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          persist-credentials: false
           sparse-checkout: |
             .github
 
@@ -30,7 +31,7 @@ jobs:
       # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#45}
       # - see @{link file://./pr-vrt.yml#56}
 
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           name: vrscreenshot
           path: ./screenshots
@@ -38,7 +39,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if visual regression should be run (affected projects)
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         id: should_run_vrt
         with:
           script: |
@@ -56,7 +57,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
         with:
           name: pr-number
@@ -66,7 +67,7 @@ jobs:
 
       - name: Run VR Approval CLI
         if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           # this is explicity needed as github token is not available in CLI context
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}

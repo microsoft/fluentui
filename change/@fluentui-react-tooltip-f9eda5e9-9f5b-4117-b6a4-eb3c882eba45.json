@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve virtual target tooltips",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "paulmardling@microsoft.com"
+}

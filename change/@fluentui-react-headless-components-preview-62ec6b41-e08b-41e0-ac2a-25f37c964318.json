@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Defer dialog and overlay drawer unmounting until consumer exit animations finish.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

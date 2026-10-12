@@ -37,11 +37,11 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
   const mergedRef = useMergedRefs(ref, dialogRef);
 
-  // Keep the element mounted one extra render so native close can run while connected.
+  // Keep the element connected for native close and consumer-defined exit animations.
   const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
 
   // Ensure the element exists before open side-effects run.
-  if (open && !shouldRender) {
+  if ((open || !unmountOnClose) && !shouldRender) {
     setShouldRender(true);
   }
 
@@ -81,7 +81,37 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
         dialog.close();
       }
       if (unmountOnClose) {
-        setShouldRender(false);
+        // subtree includes ::backdrop; filtering the target excludes unrelated child animations.
+        const animations = (dialog.getAnimations?.({ subtree: true }) ?? []).filter(animation => {
+          const effect = animation.effect;
+          return (
+            effect &&
+            'target' in effect &&
+            effect.target === dialog &&
+            animation.playState === 'running' &&
+            Number.isFinite(effect.getComputedTiming().endTime)
+          );
+        });
+
+        if (animations.length === 0) {
+          setShouldRender(false);
+        } else {
+          let cancelled = false;
+          let remaining = animations.length;
+          // Cancellation rejects finished, but still completes the exit lifecycle.
+          const handleAnimationFinished = () => {
+            if (!cancelled && --remaining === 0) {
+              setShouldRender(false);
+            }
+          };
+          animations.forEach(animation => {
+            animation.finished.then(handleAnimationFinished, handleAnimationFinished);
+          });
+
+          return () => {
+            cancelled = true;
+          };
+        }
       }
       return;
     }

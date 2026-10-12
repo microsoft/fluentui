@@ -16,7 +16,8 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
  *
  * Specifically, it finds this expression in a story file: Story.parameters = ...
  * In case Story.parameters doesn't exist, it creates it.
- * And adds the following expression after it: Story.parameters.fullSource = `...`;
+ * Adds `Story.parameters.fullSource` for source display and `Story.parameters.fullSourceIsRunnable` to indicate
+ * whether extraction removed unsupported relative imports. Execution consumers still validate package availability.
  *
  * This plugin is utilized by Export to CodeSandbox.
  *
@@ -45,15 +46,19 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
     return t.expressionStatement(storyParameters);
   };
 
-  const createFullSourceAssignmentExpression = (targetStoryName: string, fullSource: string) => {
+  const createSourceParameterAssignmentExpression = (
+    targetStoryName: string,
+    parameter: 'fullSource' | 'fullSourceIsRunnable' | 'fullSourceUnsupportedImports',
+    value: Babel.types.Expression,
+  ) => {
     return t.expressionStatement(
       t.assignmentExpression(
         '=',
         t.memberExpression(
           t.memberExpression(t.identifier(targetStoryName), t.identifier('parameters')),
-          t.identifier('fullSource'),
+          t.identifier(parameter),
         ),
-        t.stringLiteral(fullSource),
+        value,
       ),
     );
   };
@@ -170,27 +175,64 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           const cssModules = cssModulesEnabled ? collectCssModuleImports(path, t, state.filename) : [];
 
           // Runs the shared modify-imports + prettier pipeline over a source string.
-          const buildFullSource = (source: string): string => {
+          const buildFullSource = (source: string): { code: string; unsupportedRelativeImports: readonly string[] } => {
+            const unsupportedRelativeImports = new Set<string>();
             const transformed = babel.transformSync(source, {
               ...state.file.opts,
               compact: false,
               retainLines: true,
               comments: false,
-              plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+              plugins: [
+                [
+                  modifyImportsPlugin,
+                  {
+                    ...options,
+                    onUnsupportedRelativeImport: (specifier: string) => unsupportedRelativeImports.add(specifier),
+                  },
+                ],
+                removeStorybookParameters,
+              ],
             })?.code;
 
-            return prettier.format(transformed ?? '', { parser: 'babel-ts' });
+            return {
+              code: prettier.format(transformed ?? '', { parser: 'babel-ts' }),
+              unsupportedRelativeImports: [...unsupportedRelativeImports],
+            };
           };
 
-          // Emits `<Story>.parameters` (when missing), `.fullSource` and, when
-          // enabled, `.cssModuleSources` for a single story.
-          const emitStorySource = (currentStory: string, code: string): void => {
+          // Source display remains available even when execution is unsupported.
+          const emitStorySource = (
+            currentStory: string,
+            source: { code: string; unsupportedRelativeImports: readonly string[] },
+          ): void => {
             if (!storiesWithParameters.has(currentStory)) {
               path.pushContainer('body', createStoryParametersAssignmentExpression(currentStory));
               storiesWithParameters.add(currentStory);
             }
 
-            path.pushContainer('body', createFullSourceAssignmentExpression(currentStory, code));
+            path.pushContainer(
+              'body',
+              createSourceParameterAssignmentExpression(
+                currentStory,
+                'fullSourceIsRunnable',
+                t.booleanLiteral(source.unsupportedRelativeImports.length === 0),
+              ),
+            );
+            path.pushContainer(
+              'body',
+              createSourceParameterAssignmentExpression(currentStory, 'fullSource', t.stringLiteral(source.code)),
+            );
+
+            if (source.unsupportedRelativeImports.length > 0) {
+              path.pushContainer(
+                'body',
+                createSourceParameterAssignmentExpression(
+                  currentStory,
+                  'fullSourceUnsupportedImports',
+                  t.arrayExpression(source.unsupportedRelativeImports.map(specifier => t.stringLiteral(specifier))),
+                ),
+              );
+            }
 
             if (cssModulesEnabled && (cssModules.length > 0 || tokensSource)) {
               path.pushContainer('body', createCssModuleSourcesAssignment(currentStory, { cssModules, tokensSource }));

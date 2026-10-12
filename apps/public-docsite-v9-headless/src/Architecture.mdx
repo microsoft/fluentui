@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Architecture" />
+
+# Architecture
+
+Fluent UI Headless is not a separate implementation of Fluent UI behavior. It reuses the foundational behavior from
+the corresponding Fluent UI v9 component packages, then exposes unstyled primitives for custom design systems.
+
+## How a primitive is built
+
+Button shows the common layering:
+
+1. `useButtonBase_unstable` in `@fluentui/react-button` resolves behavior, ARIA, refs, and semantic slots.
+2. The public headless `useButton` hook adds documented `data-*` attributes for styling resolved state.
+3. `renderButton` renders the slots.
+4. `<Button />` wires the public hook and renderer together.
+
+`useButtonBase_unstable` is an internal dependency of the headless implementation. It is **not exported from the
+headless package**. Headless consumers use either the primitive component or the public `useButton` and `renderButton`
+APIs.
+
+Styled Fluent UI v9 components start from the same base hooks, but add Fluent design props, default slots, Griffel
+styles, tokens, and motion. Headless components stop before that visual layer:
+
+| Fluent UI provides             | Your design system provides             |
+| ------------------------------ | --------------------------------------- |
+| Behavior and state             | Styling and design tokens               |
+| ARIA and keyboard interactions | Focus indicators and color contrast     |
+| Semantic slots and refs        | Typography, spacing, shape, and density |
+| Documented `data-*` state      | Icons, motion, and brand expression     |
+
+## Compound components
+
+Compound components such as Accordion, Menu, and Toolbar also reuse their v9 base hooks. Their public headless hooks
+create the context values shared by child primitives before calling the render function.
+
+Some components add headless-specific orchestration for native browser primitives or positioning, but they still reuse
+the v9 behavior layer where applicable.
+
+## Styling component state
+
+Headless components expose resolved behavioral and structural state through documented `data-*` attributes:
+
+```tsx
+<Button className={styles.button} disabled>
+  Save
+</Button>
+```
+
+```css
+.button[data-disabled] {
+  opacity: var(--brand-disabled-opacity);
+}
+```
+
+These attributes cover state such as disabled, checked, selected, open, orientation, or slot presence. Visual choices
+such as appearance, size, shape, color, and density remain owned by your design system.
+
+## Runtime dependencies
+
+Headless depends on v9 component packages to reuse their behavior, but it does not bring their visual implementation
+into the headless runtime. The package's
+[bundle-isolation configuration](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-headless-components-preview/library/bundle-isolation.config.json#L5)
+explicitly forbids:
+
+- `tabster`
+- `@griffel/*`
+- `@fluentui/react-icons`
+
+The bundle-isolation test verifies that these dependencies are not used by the bundled headless components. Styling,
+icons, and any optional interaction polyfills remain consumer choices.
+
+## Public APIs
+
+| API                                | Use it when                                                                                  |
+| ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| `<Component />`                    | You need the supported behavior and markup and only want to supply props, slots, and styles. |
+| `useComponent` + `renderComponent` | You need to extend resolved state, add slots, or control the render pipeline.                |
+
+The component API is the default. When using the hook and renderer directly, preserve the resolved slot props, refs,
+state attributes, and accessibility behavior.
+
+See [Accessibility](?path=/docs/overview-accessibility--docs) for the visual accessibility responsibilities that come
+with owning the styling layer.
+
+## Further reading
+
+- [Headless components RFC](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/headless-components.md)
+- [Component base state hooks RFC](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/base-state-hooks.md)

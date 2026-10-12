@@ -89,7 +89,7 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
-    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
   });
 
@@ -112,7 +112,7 @@ describe('Nav', () => {
     // Click to open
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
-    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
 
     // Click to close

@@ -1,0 +1,34 @@
+{
+  "name": "@fluentui/cli",
+  "entries": [
+    {
+      "date": "Thu, 08 Oct 2026 05:35:58 GMT",
+      "version": "0.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/cli",
+            "commit": "218952a7cd53e8e8128c2933ea092533dad514b6",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Sep 2026 15:07:55 GMT",
+      "version": "0.0.1",
+      "tag": "@fluentui/cli_v0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cli",
+            "commit": "b3b5a9ced4da76b9a9162c57606853188de26e5c",
+            "comment": "initial release"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-headless-components-preview
 
-<!-- This log was last generated on Wed, 12 Aug 2026 13:26:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 24 Sep 2026 09:53:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.1)
+
+Thu, 24 Sep 2026 09:53:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.3.0..@fluentui/react-headless-components-preview_v0.3.1)
+
+### Patches
+
+- fix: allow changing the root element for PopoverSurface ([PR #36789](https://github.com/microsoft/fluentui/pull/36789) by dmytrokirpa@microsoft.com)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.3.0)
+
+Wed, 23 Sep 2026 11:35:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-headless-components-preview_v0.2.5..@fluentui/react-headless-components-preview_v0.3.0)
+
+### Minor changes
+
+- feat: add headless CounterBadge and PresenceBadge ([PR #36674](https://github.com/microsoft/fluentui/pull/36674) by dmytrokirpa@microsoft.com)
+- fix: narrow positioning prop to the headless PositioningShorthand ([PR #36623](https://github.com/microsoft/fluentui/pull/36623) by vgenaev@gmail.com)
+- feat!: add Combobox filtering and root state attributes ([PR #36580](https://github.com/microsoft/fluentui/pull/36580) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- fix: use the valid nomemory focusgroup token for TabList ([PR #36560](https://github.com/microsoft/fluentui/pull/36560) by dmytrokirpa@microsoft.com)
+- fix: export context providers from the avatar and avatar-group subpaths, and context readers/providers from the button and link subpaths ([PR #36670](https://github.com/microsoft/fluentui/pull/36670) by array.knight@gmail.com)
+- fix: let a consumer-supplied popover attribute win over the default on the PopoverSurface, MenuPopover and Listbox slots ([PR #36665](https://github.com/microsoft/fluentui/pull/36665) by array.knight@gmail.com)
+- feat: export toDataAttributeValue from the utils entry point ([PR #36596](https://github.com/microsoft/fluentui/pull/36596) by dmytrokirpa@microsoft.com)
+- feat: expose the Avatar and AvatarGroup context readers from the headless entry points ([PR #36659](https://github.com/microsoft/fluentui/pull/36659) by vgenaev@gmail.com)
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- feat: add data-* state attributes to Nav components and forward AvatarGroup size through context ([PR #36712](https://github.com/microsoft/fluentui/pull/36712) by dmytrokirpa@microsoft.com)
+- fix: allow overriding NavDrawerBody role ([PR #36772](https://github.com/microsoft/fluentui/pull/36772) by dmytrokirpa@microsoft.com)
+- feat: expose ToastTitle intent state via data attribute ([PR #36640](https://github.com/microsoft/fluentui/pull/36640) by dmytrokirpa@microsoft.com)
+- feat: add badge support for Avatar ([PR #36694](https://github.com/microsoft/fluentui/pull/36694) by dmytrokirpa@microsoft.com)
+- fix: add native focus navigation and pause timeouts while focus is in a toast stack ([PR #36638](https://github.com/microsoft/fluentui/pull/36638) by dmytrokirpa@microsoft.com)
+- fix: preserve focus when opening non-modal Popover surfaces ([PR #36774](https://github.com/microsoft/fluentui/pull/36774) by dmytrokirpa@microsoft.com)
+- refactor: collapse redundant headless type, render, and hook wrappers to direct re-exports ([PR #36572](https://github.com/microsoft/fluentui/pull/36572) by vgenaev@gmail.com)
+- fix: MenuSplitGroup provides its context to descendants via a new exported useMenuSplitGroupContextValues hook ([PR #36669](https://github.com/microsoft/fluentui/pull/36669) by array.knight@gmail.com)
+- fix: renderTooltip applies state.arrowClassName to the arrow element instead of silently discarding it ([PR #36668](https://github.com/microsoft/fluentui/pull/36668) by array.knight@gmail.com)
+- feat: expose Dropdown invalid and clear button visibility data attributes ([PR #36571](https://github.com/microsoft/fluentui/pull/36571) by vgenaev@gmail.com)
+- add missing root export map entry ([PR #36615](https://github.com/microsoft/fluentui/pull/36615) by martinhochel@microsoft.com)
+- fix: default aria-hidden on NavCategoryItem's expandIcon slot ([PR #36690](https://github.com/microsoft/fluentui/pull/36690) by array.knight@gmail.com)
+- fix: correct component subpath exports ([PR #36606](https://github.com/microsoft/fluentui/pull/36606) by dmytrokirpa@microsoft.com)
+- fix: forward default options from the headless Toaster to toast state ([PR #36633](https://github.com/microsoft/fluentui/pull/36633) by dmytrokirpa@microsoft.com)
+- feat: add development-time types for focusgroup attributes ([PR #36568](https://github.com/microsoft/fluentui/pull/36568) by dmytrokirpa@microsoft.com)
+- fix: use global focusgroup typing for MenuListState instead of a local intersection ([PR #36608](https://github.com/microsoft/fluentui/pull/36608) by dmytrokirpa@microsoft.com)
+- fix: remove focusgroup arrow key navigation from Nav and NavDrawerBody in favor of tab navigation ([PR #36609](https://github.com/microsoft/fluentui/pull/36609) by dmytrokirpa@microsoft.com)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-headless-components-preview_v0.2.5)
 

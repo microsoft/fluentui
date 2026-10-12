@@ -556,31 +556,31 @@ Object {
     Object {
       "data": Array [
         Object {
-          "color": "#637cefff",
+          "color": "#9373c0ff",
           "x": "Jan",
           "y": 2000,
           "yAxisCalloutData": "2000",
         },
         Object {
-          "color": "#637cefff",
+          "color": "#9373c0ff",
           "x": "Feb",
           "y": 2100,
           "yAxisCalloutData": "2100",
         },
         Object {
-          "color": "#637cefff",
+          "color": "#9373c0ff",
           "x": "Mar",
           "y": 2200,
           "yAxisCalloutData": "2200",
         },
         Object {
-          "color": "#637cefff",
+          "color": "#9373c0ff",
           "x": "Apr",
           "y": 2300,
           "yAxisCalloutData": "2300",
         },
         Object {
-          "color": "#637cefff",
+          "color": "#9373c0ff",
           "x": "May",
           "y": 2400,
           "yAxisCalloutData": "2400",
@@ -594,31 +594,31 @@ Object {
     Object {
       "data": Array [
         Object {
-          "color": "#f87528ff",
+          "color": "#ca5010ff",
           "x": "Jan",
           "y": 3000,
           "yAxisCalloutData": "3000",
         },
         Object {
-          "color": "#f87528ff",
+          "color": "#ca5010ff",
           "x": "Feb",
           "y": 3100,
           "yAxisCalloutData": "3100",
         },
         Object {
-          "color": "#f87528ff",
+          "color": "#ca5010ff",
           "x": "Mar",
           "y": 3200,
           "yAxisCalloutData": "3200",
         },
         Object {
-          "color": "#f87528ff",
+          "color": "#ca5010ff",
           "x": "Apr",
           "y": 3300,
           "yAxisCalloutData": "3300",
         },
         Object {
-          "color": "#f87528ff",
+          "color": "#ca5010ff",
           "x": "May",
           "y": 3400,
           "yAxisCalloutData": "3400",
@@ -3204,139 +3204,139 @@ Object {
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
   "data": Array [
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 1659,
       "y": "Laravel",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 1067,
       "y": "Symfony2",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 671,
       "y": "Nette",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 597,
       "y": "CodeIgniter",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 504,
       "y": "Yii 2",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 418,
       "y": "PHPixie",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 407,
       "y": "Yii 1",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 390,
       "y": "Zend Framework 2",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 378,
       "y": "Company Internal Framework",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 274,
       "y": "Zend Framework 1",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 255,
       "y": "CakePHP",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 243,
       "y": "No Framework",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 203,
       "y": "We use a CMS for everything",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 169,
       "y": "Phalcon",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 79,
       "y": "Slim",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 65,
       "y": "Silex",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 42,
       "y": "Simple MVC Framework",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 35,
       "y": "Typo 3",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 35,
       "y": "Kohana",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 25,
       "y": "FuelPHP",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 17,
       "y": "TYPO3 Flow",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 11,
       "y": "Drupal",
     },
     Object {
-      "color": "#3a96ddff",
+      "color": "#b146c2ff",
       "legend": "Votes",
       "x": 10,
       "y": "Aura",
@@ -5108,7 +5108,7 @@ Object {
   "data": Object {
     "scatterChartData": Array [
       Object {
-        "color": "#57811bff",
+        "color": "#3a96ddff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5620,7 +5620,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#9373c0ff",
+        "color": "#e3008cff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -6132,7 +6132,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#ca5010ff",
+        "color": "#13a10eff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,

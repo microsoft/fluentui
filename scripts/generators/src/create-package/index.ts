@@ -58,12 +58,7 @@ module.exports = (plop: NodePlopAPI) => {
         type: 'list',
         name: 'codeowner',
         message: 'Provide team that owns this package',
-        choices: [
-          '@microsoft/fluentui-react-build',
-          '@microsoft/teams-prg',
-          '@microsoft/cxe-red',
-          '@microsoft/cxe-prg',
-        ],
+        choices: ['@microsoft/fluentui-react-build', '@microsoft/teams-prg', '@microsoft/cxe-prg'],
       },
       {
         type: 'confirm',

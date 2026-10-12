@@ -2,22 +2,22 @@ import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
- * The TooltipPositioning options and their corresponding CSS values
+ * The TooltipPositioning options
  * @public
  */
 export const TooltipPositioningOption = {
-  'above-start': 'block-start span-inline-end',
-  above: 'block-start',
-  'above-end': 'block-start span-inline-start',
-  'below-start': 'block-end span-inline-end',
-  below: 'block-end',
-  'below-end': 'block-end span-inline-start',
-  'before-top': 'inline-start span-block-end',
-  before: 'inline-start',
-  'before-bottom': 'inline-start span-block-start',
-  'after-top': 'inline-end span-block-end',
-  after: 'inline-end',
-  'after-bottom': 'inline-end span-block-start',
+  'above-start': 'above-start',
+  above: 'above',
+  'above-end': 'above-end',
+  'below-start': 'below-start',
+  below: 'below',
+  'below-end': 'below-end',
+  'before-top': 'before-top',
+  before: 'before',
+  'before-bottom': 'before-bottom',
+  'after-top': 'after-top',
+  after: 'after',
+  'after-bottom': 'after-bottom',
 } as const;
 
 /**

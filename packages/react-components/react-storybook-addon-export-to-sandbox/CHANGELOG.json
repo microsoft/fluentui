@@ -2,6 +2,62 @@
   "name": "@fluentui/react-storybook-addon-export-to-sandbox",
   "entries": [
     {
+      "date": "Thu, 08 Oct 2026 05:35:58 GMT",
+      "version": "0.4.0",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "17ef6f4def03ec1ce314b5da297ad81b3fd19843",
+            "comment": "Address playground review feedback: clarify source execution metadata, simplify module configuration, and align build and package setup."
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "218952a7cd53e8e8128c2933ea092533dad514b6",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "17ef6f4def03ec1ce314b5da297ad81b3fd19843",
+            "comment": "feat: support per-story full source generation and playground addon buttons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "comment": "Bump @fluentui/babel-preset-storybook-full-source to v0.1.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Sep 2026 15:07:56 GMT",
+      "version": "0.3.2",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Add `module` export condition so node-targeted bundlers resolve ESM (tree-shaking) while bare Node stays CommonJS; emit fully-specified .js import paths"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "comment": "Bump @fluentui/babel-preset-storybook-full-source to v0.1.4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jul 2026 14:23:06 GMT",
       "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.3.1",
       "version": "0.3.1",

@@ -493,7 +493,7 @@ Object {
                   </div>
                   <div
                     class="fui-cart__calloutContentY"
-                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
                   >
                     20,000
                   </div>
@@ -731,7 +731,7 @@ Object {
                 </div>
                 <div
                   class="fui-cart__calloutContentY"
-                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
                 >
                   20,000
                 </div>
@@ -1009,7 +1009,7 @@ Object {
                   </div>
                   <div
                     class="fui-cart__calloutContentY"
-                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                    style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
                   >
                     20,000
                   </div>
@@ -1247,7 +1247,7 @@ Object {
                 </div>
                 <div
                   class="fui-cart__calloutContentY"
-                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700);"
+                  style="color: rgb(229, 229, 229); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
                 >
                   20,000
                 </div>

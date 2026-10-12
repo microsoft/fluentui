@@ -30,6 +30,8 @@ import { renderAvatarGroup_unstable as renderAvatarGroup } from '@fluentui/react
 import { renderAvatarGroupItem_unstable as renderAvatarGroupItem } from '@fluentui/react-avatar';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
+import type { TooltipTriggerProps as TooltipTriggerProps_2 } from '@fluentui/react-tooltip';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import { useAvatarGroupContext_unstable as useAvatarGroupContext } from '@fluentui/react-avatar';
 
 // @public
