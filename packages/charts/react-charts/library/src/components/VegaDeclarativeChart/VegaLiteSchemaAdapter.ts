@@ -45,12 +45,23 @@ import type { ColorFillBarsProps } from '../LineChart/index';
 import type { Legend, LegendsProps } from '../Legends/index';
 import type { TitleStyles } from '../../utilities/Common.styles';
 import { getVegaColorFromMap, getVegaColor, getSequentialSchemeColors } from './VegaLiteColorAdapter';
-import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import type { ColorMapRef } from './VegaLiteColorAdapter';
-import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, mean as d3Mean } from 'd3-array';
+import { bin as d3Bin, extent as d3Extent, min as d3Min, max as d3Max } from 'd3-array';
 import type { Bin } from 'd3-array';
 import { format as d3Format } from 'd3-format';
 import { isInvalidValue } from '@fluentui/chart-utilities';
+import * as React from 'react';
+import { tokens } from '@fluentui/react-theme';
+import {
+  prepareVegaLiteSpec,
+  applyVegaTransforms,
+  aggregateVegaValues,
+  evaluateVegaPredicate,
+} from './VegaLiteDataTransforms';
+import { readVegaField } from './VegaLiteField';
+import type { VegaSemanticOptions, VegaDataRow } from './VegaLiteData.types';
+import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
+import { parseVegaDataValues } from './VegaLiteResourceLoader';
 
 /**
  * Vega-Lite to Fluent Charts adapter for line/point charts.
@@ -74,6 +85,798 @@ import { isInvalidValue } from '@fluentui/chart-utilities';
 const DEFAULT_CHART_HEIGHT = 350;
 const DEFAULT_MAX_BAR_WIDTH = 50;
 const DEFAULT_TRUNCATE_CHARS = 20;
+
+type AdapterKind = ChartTypeResult['type'];
+const preparedSpecs = new WeakSet<object>();
+const tooltipSpecs = new WeakMap<object, VegaLiteSpec>();
+const aggregateFields = new WeakMap<object, Set<string>>();
+const histogramTooltips = new WeakMap<object, { spec: VegaLiteSpec; row: VegaDataRow }>();
+const nativeTooltips = new WeakMap<object, { spec: VegaLiteSpec; row: VegaDataRow }>();
+const nativeSourceRows = new WeakMap<object, VegaDataRow>();
+const isRecord = (value: unknown): value is VegaDataRow =>
+  value !== null && typeof value === 'object' && !Array.isArray(value);
+const ownValue = (value: unknown, key: string): unknown => {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+  const descriptor = Object.getOwnPropertyDescriptor(value, key);
+  return descriptor && 'value' in descriptor ? descriptor.value : undefined;
+};
+
+function encodingTitle(definition: VegaDataRow): string {
+  const field = typeof definition.field === 'string' ? definition.field : '';
+  const op = definition.aggregate;
+  if (op === 'count') {
+    return 'Count of Records';
+  }
+  if (typeof op === 'string') {
+    return `${op[0].toUpperCase()}${op.slice(1)} of ${field}`;
+  }
+  if (isRecord(op)) {
+    const name = Object.keys(op)[0];
+    if (name === 'exponential' || name === 'exponentialb') {
+      return `EMA of ${field}`;
+    }
+  }
+  return field;
+}
+
+/** Source-field sorts are evaluated before aggregate projection discards those fields. */
+function resolveSourceSorts(encoding: VegaLiteEncoding, rows: VegaDataRow[], options: VegaSemanticOptions): void {
+  for (const channel of ['x', 'y'] as const) {
+    const definition = encoding[channel];
+    const sort = definition?.sort;
+    if (!definition?.field || !sort || typeof sort !== 'object' || Array.isArray(sort) || !sort.field) {
+      continue;
+    }
+    const categories = new Map<unknown, VegaDataRow[]>();
+    for (const row of rows) {
+      const category = readVegaField(row, definition.field);
+      if (!categories.has(category)) {
+        categories.set(category, []);
+      }
+      categories.get(category)!.push(row);
+    }
+    const values = [...categories].map(([category, data]) => ({
+      category,
+      value: aggregateVegaValues(data, sort.field, sort.op ?? 'sum', options),
+    }));
+    values.sort((left, right) => {
+      const a = left.value;
+      const b = right.value;
+      const order =
+        a === b
+          ? 0
+          : a === null || a === undefined
+          ? -1
+          : b === null || b === undefined
+          ? 1
+          : typeof a === 'string' && typeof b === 'string'
+          ? a < b
+            ? -1
+            : 1
+          : Number(a) - Number(b);
+      return sort.order === 'descending' ? -order : order;
+    });
+    definition.sort = values.map(entry => String(entry.category));
+  }
+}
+
+/** Descriptor-safe cloning and shared preparation are the only raw-spec boundary. */
+function prepareAdapterSpec(spec: VegaLiteSpec, options?: VegaSemanticOptions, kind?: AdapterKind): VegaLiteSpec {
+  const policy: VegaSemanticOptions = { mode: 'legacy', ...options };
+  const copy = applyVegaTransforms([spec as unknown as VegaDataRow], undefined, policy)[0] as unknown as VegaLiteSpec;
+  const deferred: Array<{ definition: VegaDataRow; aggregate: unknown }> = [];
+  const temporal: Array<{ definition: VegaDataRow; timeUnit: unknown }> = [];
+  const visit = (
+    node: VegaLiteSpec,
+    inheritedRows: VegaDataRow[],
+    inheritedEncoding: VegaLiteEncoding,
+    depth = 0,
+  ): void => {
+    if (depth > 100) {
+      throw new Error('VegaLiteSchemaAdapter: composition depth limit exceeded');
+    }
+    const source = node.data;
+    const values = source
+      ? source.values ?? (source.name ? ownValue(copy.datasets, source.name) : undefined)
+      : inheritedRows;
+    // Parse inline/named resources before any transform can inspect or coerce a field.
+    // Resolved resources have no format left, so this is also safe for pre-parsed inputs.
+    const rows =
+      source && values !== undefined
+        ? parseVegaDataValues({ ...source, values } as VegaLiteData)
+        : Array.isArray(values)
+        ? values.filter(isRecord)
+        : [];
+    // The shared pipeline applies parent transforms before child transforms. Clear consumed transforms.
+    const data = applyVegaTransforms(rows, node.transform, policy);
+    if (values !== undefined || !source) {
+      node.data = { ...source, values: data };
+      delete node.data.format;
+      delete node.transform;
+    }
+    const encoding = applyVegaTransforms(
+      [{ ...inheritedEncoding, ...node.encoding }],
+      undefined,
+      policy,
+    )[0] as VegaLiteEncoding;
+    if (node.layer?.length) {
+      node.layer.forEach(child => visit(child as VegaLiteSpec, data, encoding, depth + 1));
+      return;
+    }
+    node.encoding = encoding;
+    resolveSourceSorts(encoding, data, policy);
+    const seen = new Set<object>();
+    const metadata = (value: unknown): void => {
+      if (!value || typeof value !== 'object' || seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+      if (Array.isArray(value)) {
+        value.forEach(metadata);
+        return;
+      }
+      const definition = value as VegaDataRow;
+      if ((definition.field !== undefined || definition.aggregate !== undefined) && definition.title === undefined) {
+        const axisTitle = ownValue(definition.axis, 'title');
+        definition.title = typeof axisTitle === 'string' ? axisTitle : encodingTitle(definition);
+      }
+      if (definition.timeUnit !== undefined) {
+        temporal.push({ definition, timeUnit: definition.timeUnit });
+      }
+      if (kind === 'histogram' && definition.aggregate !== undefined) {
+        deferred.push({ definition, aggregate: definition.aggregate });
+        delete definition.aggregate;
+      }
+      metadata(definition.condition);
+    };
+    Object.values(encoding).forEach(metadata);
+  };
+  visit(copy, [], {});
+  // Capture metadata separately: generated aliases are never used as display titles.
+  const sourceUnits = normalizeSpec(copy);
+  const result = prepareVegaLiteSpec(copy, policy);
+  const units = normalizeSpec(result);
+  const tooltipCopy = applyVegaTransforms(
+    [result as unknown as VegaDataRow],
+    undefined,
+    policy,
+  )[0] as unknown as VegaLiteSpec;
+  const tooltipUnits = normalizeSpec(tooltipCopy);
+  const fields = new Set<string>();
+  sourceUnits.forEach((unit, index) => {
+    const restored = new Set<object>();
+    const restore = (source: unknown, target: unknown, tooltipTarget: unknown): void => {
+      if (source && typeof source === 'object') {
+        if (restored.has(source)) {
+          return;
+        }
+        restored.add(source);
+      }
+      if (Array.isArray(source) && Array.isArray(target) && Array.isArray(tooltipTarget)) {
+        source.forEach((entry, i) => restore(entry, target[i], tooltipTarget[i]));
+      } else if (isRecord(source) && isRecord(target) && isRecord(tooltipTarget)) {
+        if (source.aggregate !== undefined && typeof target.field === 'string') {
+          fields.add(target.field);
+        }
+        const unitMetadata = temporal.find(entry => entry.definition === source);
+        if (unitMetadata) {
+          tooltipTarget.timeUnit = unitMetadata.timeUnit;
+        }
+        const aggregate = deferred.find(entry => entry.definition === source);
+        if (aggregate) {
+          target.aggregate = aggregate.aggregate;
+          tooltipTarget.aggregate = aggregate.aggregate;
+        }
+        restore(source.condition, target.condition, tooltipTarget.condition);
+      }
+    };
+    Object.entries(unit.encoding ?? {}).forEach(([channel, definition]) => {
+      restore(definition, ownValue(units[index]?.encoding, channel), ownValue(tooltipUnits[index]?.encoding, channel));
+    });
+    if (unit.data?.format && tooltipUnits[index]?.data) {
+      tooltipUnits[index].data!.format = unit.data.format;
+    }
+  });
+  for (const unit of units) {
+    const encoding = unit.encoding;
+    const condition = encoding?.color?.condition;
+    // Only the supported single test/value color condition is materialized here.
+    if (condition && typeof condition.test === 'string' && typeof condition.value === 'string') {
+      const fallback = encoding!.color!.value ?? tokens.colorNeutralForeground3;
+      const rows = extractDataValues(unit.data);
+      let field = '__conditional_color__';
+      while (rows.some(row => Object.prototype.hasOwnProperty.call(row, field))) {
+        field += '_';
+      }
+      rows.forEach(row => {
+        Object.defineProperty(row, field, {
+          value: evaluateVegaPredicate(condition.test, row, policy) ? condition.value : fallback,
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
+      });
+      encoding!.color = {
+        field,
+        type: 'nominal',
+        scale: { domain: [condition.value, fallback], range: [condition.value, fallback] },
+        legend: null,
+      };
+    }
+  }
+  preparedSpecs.add(result);
+  tooltipSpecs.set(result, tooltipCopy);
+  aggregateFields.set(result, fields);
+  return result;
+}
+
+function transformPrepared<T extends object>(
+  kind: AdapterKind,
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme: boolean | undefined,
+  options: VegaSemanticOptions | undefined,
+  render: (input: VegaLiteSpec, colors: ColorMapRef, dark?: boolean) => T,
+): T {
+  const prepared = prepareAdapterSpec(spec, options, kind);
+  if (
+    (kind === 'area' || kind === 'stacked-bar') &&
+    normalizeSpec(prepared).some(unit => unit.encoding?.y?.stack === 'center')
+  ) {
+    throw new Error('VegaLiteSchemaAdapter: center stack is unsupported by the native zero-baseline renderer');
+  }
+  // Temporal declarations must be validated, never silently routed as categories.
+  for (const unit of normalizeSpec(prepared)) {
+    const data = extractDataValues(unit.data ?? prepared.data);
+    for (const channel of ['x', 'y'] as const) {
+      const definition = unit.encoding?.[channel];
+      if (definition?.type === 'temporal' && definition.field) {
+        validateEncodingType(data, definition.field, definition.type);
+      }
+    }
+  }
+  autoCorrectEncodingTypes(prepared);
+  const result = render(prepared, colorMap, isDarkTheme);
+  applyNativeScaleDomains(result, prepared, kind);
+  attachSemanticTooltips(result, prepared, kind);
+  applyNativeSemanticOrderAndStack(result, prepared, kind);
+  return result;
+}
+
+function equalCoordinate(left: unknown, right: unknown): boolean {
+  if (left instanceof Date || right instanceof Date) {
+    const date = (value: unknown): number =>
+      value instanceof Date
+        ? value.getTime()
+        : typeof value === 'string' || typeof value === 'number'
+        ? new Date(value).getTime()
+        : NaN;
+    return date(left) === date(right);
+  }
+  return (
+    left === right ||
+    (left !== null && left !== undefined && right !== null && right !== undefined && String(left) === String(right))
+  );
+}
+
+type TooltipBinding = { point: VegaDataRow; x: unknown; legend: unknown; row: VegaDataRow; spec: VegaLiteSpec };
+
+/** Native callout arguments contain coordinates, not the original tuple. Keep the tuple with each point. */
+function attachSemanticTooltips<T extends object>(result: T, prepared: VegaLiteSpec, kind: AdapterKind): void {
+  const tooltipSpec = tooltipSpecs.get(prepared) ?? prepared;
+  const units = normalizeSpec(prepared);
+  const tooltipUnits = normalizeSpec(tooltipSpec);
+  const explicit = tooltipUnits.some(unit => {
+    const mark = unit.mark;
+    const type = getMarkType(mark);
+    return (
+      ownValue(unit.encoding, 'tooltip') !== undefined ||
+      ownValue(mark, 'tooltip') !== undefined ||
+      Object.values(unit.encoding ?? {}).some(definition => ownValue(definition, 'tooltip') === false) ||
+      ownValue(ownValue(tooltipSpec.config, type ?? ''), 'tooltip') !== undefined ||
+      ownValue(ownValue(tooltipSpec.config, 'mark'), 'tooltip') !== undefined
+    );
+  });
+  if (!explicit) {
+    return;
+  } // Preserve native backward-compatible default callouts.
+  const props = result as unknown as VegaDataRow;
+  const bindings: TooltipBinding[] = [];
+  let hasTooltipContent = false;
+  const key = (x: unknown, y: unknown, legend: unknown): string =>
+    JSON.stringify(
+      [x, y, legend].map(value =>
+        value instanceof Date ? `date:${value.getTime()}` : value === undefined ? 'undefined' : String(value),
+      ),
+    );
+  type Source = { row: VegaDataRow; spec: VegaLiteSpec };
+  const source = new Map<string, { rows: Source[]; next: number }>();
+  const categoricalX =
+    (kind === 'line' || kind === 'area') &&
+    units.some(unit => unit.encoding?.x?.type === 'nominal' || unit.encoding?.x?.type === 'ordinal');
+  units.forEach((unit, index) => {
+    const encoding = unit.encoding ?? {};
+    const rows = extractDataValues(unit.data);
+    const yField =
+      kind === 'donut' ? encoding.theta?.field : kind === 'polar' ? encoding.radius?.field : encoding.y?.field;
+    const yLabels = new Map<string, number>();
+    if (
+      (kind === 'line' || kind === 'area' || kind === 'scatter') &&
+      (encoding.y?.type === 'nominal' || encoding.y?.type === 'ordinal')
+    ) {
+      categoricalDomain(encoding.y).forEach(value => yLabels.set(String(value), yLabels.size));
+      rows.forEach(row => {
+        const value = yField ? readVegaField(row, yField) : undefined;
+        if (typeof value === 'string' && !yLabels.has(value)) {
+          yLabels.set(value, yLabels.size);
+        }
+      });
+    }
+    const xField = kind === 'donut' ? undefined : kind === 'polar' ? encoding.theta?.field : encoding.x?.field;
+    rows.forEach(row => {
+      let x = xField ? readVegaField(row, xField) : undefined;
+      let y = yField ? readVegaField(row, yField) : undefined;
+      if ((kind === 'line' || kind === 'area' || kind === 'scatter') && encoding.x?.type === 'temporal') {
+        x = parseValue(x, true);
+      }
+      if (typeof y === 'string' && yLabels.has(y)) {
+        y = yLabels.get(y);
+      }
+      const legend = encoding.color?.field ? readVegaField(row, encoding.color.field) : undefined;
+      const id = key(x, y, kind === 'heatmap' ? undefined : legend);
+      if (!source.has(id)) {
+        source.set(id, { rows: [], next: 0 });
+      }
+      source.get(id)!.rows.push({ row, spec: { ...tooltipSpec, ...tooltipUnits[index] } as VegaLiteSpec });
+    });
+  });
+  const bind = (point: VegaDataRow, x: unknown, y: unknown, legend: unknown): void => {
+    const coordinate =
+      categoricalX && typeof x === 'number' && Array.isArray(props.tickValues) ? props.tickValues[x] : x;
+    const bucket = source.get(key(coordinate, y, legend)) ?? source.get(key(coordinate, y, undefined));
+    const match = histogramTooltips.get(point) ?? nativeTooltips.get(point) ?? (bucket && bucket.rows[bucket.next++]);
+    if (!match) {
+      return;
+    }
+    const tooltip = buildVegaTooltip(match.spec, match.row);
+    hasTooltipContent ||= tooltip.fields.length > 0;
+    // An empty string triggers the native renderer's unfiltered ARIA fallback.
+    point.callOutAccessibilityData = { ariaLabel: tooltip.ariaLabel || 'Data point' };
+    if (tooltip.disabled) {
+      props.hideTooltip = true;
+    }
+    bindings.push({ point, x, legend, row: match.row, spec: match.spec });
+  };
+  const records = (value: unknown): VegaDataRow[] => (Array.isArray(value) ? value.filter(isRecord) : []);
+  const chart = props.data;
+  if (kind === 'line' || kind === 'area' || kind === 'scatter') {
+    const series = records(ownValue(chart, kind === 'scatter' ? 'scatterChartData' : 'lineChartData'));
+    series.forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, group.legend)));
+  } else if (kind === 'stacked-bar') {
+    records(chart).forEach(stack => {
+      records(stack.chartData).forEach(point => bind(point, stack.xAxisPoint, point.data, point.legend));
+      records(stack.lineData).forEach(point => bind(point, stack.xAxisPoint, point.y, point.legend));
+      stack.stackCallOutAccessibilityData = {
+        ariaLabel: records(stack.chartData)
+          .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
+          .filter(Boolean)
+          .join('; '),
+      };
+    });
+  } else if (kind === 'grouped-bar') {
+    records(chart).forEach(group => {
+      records(group.series).forEach(point => bind(point, group.name, point.data, point.legend));
+      group.stackCallOutAccessibilityData = {
+        ariaLabel: records(group.series)
+          .map(point => ownValue(point.callOutAccessibilityData, 'ariaLabel'))
+          .filter(Boolean)
+          .join('; '),
+      };
+    });
+  } else if (kind === 'heatmap') {
+    records(chart).forEach(group => records(group.data).forEach(point => bind(point, point.x, point.y, undefined)));
+  } else if (kind === 'polar') {
+    records(chart).forEach(group =>
+      records(group.data).forEach(point => bind(point, point.theta, point.r, group.legend)),
+    );
+  } else if (kind === 'donut') {
+    records(ownValue(chart, 'chartData')).forEach(point => bind(point, undefined, point.data, point.legend));
+  } else {
+    records(chart).forEach(point => bind(point, point.x, point.y, point.legend));
+  }
+  // Null custom content otherwise falls back to the native unfiltered callout.
+  if (bindings.length > 0 && !hasTooltipContent) {
+    props.hideTooltip = true;
+  }
+  if (props.hideTooltip) {
+    return;
+  }
+  const content = (input: unknown): React.ReactElement | null => {
+    if (!isRecord(input)) {
+      return null;
+    }
+    let selected: TooltipBinding[];
+    const direct = bindings.find(binding => binding.point === input);
+    if (direct) {
+      selected = [direct];
+    } else if (Array.isArray(input.values)) {
+      selected = records(input.values).flatMap(value => {
+        const binding = bindings.find(
+          entry =>
+            equalCoordinate(entry.point.x ?? entry.x, input.x) &&
+            equalCoordinate(entry.legend, value.legend) &&
+            equalCoordinate(entry.point.y ?? entry.point.data, value.y),
+        );
+        return binding ? [binding] : [];
+      });
+    } else if (Array.isArray(input.chartData)) {
+      selected = bindings.filter(binding => equalCoordinate(binding.x, input.xAxisPoint));
+    } else if (Array.isArray(input.series)) {
+      selected = records(input.series).flatMap(point => {
+        const binding = bindings.find(
+          entry =>
+            equalCoordinate(entry.x, input.name) &&
+            (entry.point === point ||
+              (equalCoordinate(entry.legend, point.legend) && equalCoordinate(entry.point.data, point.data))),
+        );
+        return binding ? [binding] : [];
+      });
+    } else {
+      selected = bindings.filter(
+        binding =>
+          equalCoordinate(binding.point.x ?? binding.x, input.x) &&
+          equalCoordinate(binding.legend, input.legend) &&
+          equalCoordinate(binding.point.y ?? binding.point.data, input.y ?? input.data),
+      );
+    }
+    const elements = selected
+      .map(binding => renderVegaTooltip(binding.spec, binding.row))
+      .filter((entry): entry is React.ReactElement => entry !== null);
+    return elements.length === 0
+      ? null
+      : elements.length === 1
+      ? elements[0]
+      : React.createElement(
+          React.Fragment,
+          null,
+          ...elements.map((element, index) => React.cloneElement(element, { key: index })),
+        );
+  };
+  props.onRenderCalloutPerDataPoint = content;
+  if (kind === 'line' || kind === 'area' || kind === 'scatter' || kind === 'stacked-bar' || kind === 'grouped-bar') {
+    props.onRenderCalloutPerStack = content;
+  }
+}
+
+/** Only authored/shared categorical domains override legacy first-seen category order. */
+function categoricalDomain(definition: VegaLiteEncoding['x']): string[] {
+  if (definition?.type !== 'nominal' && definition?.type !== 'ordinal') {
+    return [];
+  }
+  const domain = definition.scale?.domain;
+  if (!Array.isArray(domain)) {
+    return [];
+  }
+  const labels = [...new Set(domain.map(value => String(value)))];
+  return definition.scale?.reverse ? labels.reverse() : labels;
+}
+
+/** Translate view-tree scale domains into actual native coordinate/axis props. */
+function applyNativeScaleDomains<T extends object>(result: T, prepared: VegaLiteSpec, kind: AdapterKind): void {
+  if (kind === 'donut' || kind === 'polar') {
+    return;
+  }
+  const units = normalizeSpec(prepared);
+  const encoding = (kind === 'line' || kind === 'area' ? findPrimaryLineSpec(units) : units[0])?.encoding;
+  if (!encoding) {
+    return;
+  }
+  const props = result as unknown as VegaDataRow;
+  for (const channel of ['x', 'y'] as const) {
+    const definition = encoding[channel];
+    const domain = definition?.scale?.domain;
+    if (!Array.isArray(domain)) {
+      continue;
+    }
+    if (definition?.type === 'nominal' || definition?.type === 'ordinal') {
+      const labels = categoricalDomain(definition);
+      props[channel === 'x' ? 'xAxisCategoryOrder' : 'yAxisCategoryOrder'] = labels;
+      // Line/area coordinates and categorical scatter y are already seeded below.
+      if (channel === 'x' && kind !== 'line' && kind !== 'area') {
+        props.tickValues = labels;
+      }
+      if (channel === 'y' && kind !== 'line' && kind !== 'area' && kind !== 'scatter') {
+        props.yAxisTickValues = labels;
+      }
+    } else if (domain.length >= 2) {
+      const bounds = domain.map((value: unknown) =>
+        definition?.type === 'temporal'
+          ? value instanceof Date
+            ? Date.prototype.getTime.call(value)
+            : typeof value === 'string' || typeof value === 'number'
+            ? new Date(value).getTime()
+            : NaN
+          : typeof value === 'number'
+          ? value
+          : NaN,
+      );
+      if (!bounds.every(Number.isFinite)) {
+        continue;
+      }
+      props[channel === 'x' ? 'xMinValue' : 'yMinValue'] = Math.min(...bounds);
+      props[channel === 'x' ? 'xMaxValue' : 'yMaxValue'] = Math.max(...bounds);
+      // Native temporal x scales read tickValues, not xMinValue/xMaxValue. Keep
+      // declared ticks and add domain endpoints so empty facet scopes share extent.
+      if (
+        channel === 'x' &&
+        definition?.type === 'temporal' &&
+        (kind === 'line' || kind === 'area' || kind === 'scatter')
+      ) {
+        const ticks = Array.isArray(props.tickValues) ? props.tickValues : [];
+        const times = [
+          ...new Set([
+            ...bounds,
+            ...ticks.map(value =>
+              value instanceof Date ? Date.prototype.getTime.call(value) : new Date(value as string | number).getTime(),
+            ),
+          ]),
+        ]
+          .filter(Number.isFinite)
+          .sort((a, b) => a - b);
+        props.tickValues = times.map(value => new Date(value));
+      }
+    }
+  }
+}
+
+/** Reorder actual native nodes, not just legends, and pass normalized contributions to native stacking. */
+function applyNativeSemanticOrderAndStack<T extends object>(
+  result: T,
+  prepared: VegaLiteSpec,
+  kind: AdapterKind,
+): void {
+  const units = normalizeSpec(prepared);
+  const unit =
+    kind === 'area' || kind === 'line'
+      ? findPrimaryLineSpec(units)
+      : units.find(candidate => (kind === 'stacked-bar' ? getMarkType(candidate.mark) === 'bar' : true)) ?? units[0];
+  const encoding = unit?.encoding;
+  if (!encoding) {
+    return;
+  }
+  const props = result as unknown as VegaDataRow;
+  const records = (value: unknown): VegaDataRow[] => (Array.isArray(value) ? (value as VegaDataRow[]) : []);
+  const order = (nodes: VegaDataRow[], values: unknown[], key: string): void => {
+    const ranks = new Map<string, number>();
+    values.forEach((value, index) => {
+      if (!ranks.has(String(value))) {
+        ranks.set(String(value), index);
+      }
+    });
+    const rank = (value: unknown): number => {
+      return ranks.get(String(value)) ?? values.length;
+    };
+    nodes.sort((a, b) => rank(a[key]) - rank(b[key]));
+  };
+  const chart = props.data;
+  for (const channel of ['x', 'y'] as const) {
+    const definition = encoding[channel];
+    const sort =
+      Array.isArray(definition?.scale?.domain) && (definition?.type === 'nominal' || definition?.type === 'ordinal')
+        ? categoricalDomain(definition)
+        : definition?.sort;
+    if (!Array.isArray(sort)) {
+      continue;
+    }
+    props[channel === 'x' ? 'xAxisCategoryOrder' : 'yAxisCategoryOrder'] = sort;
+    if (kind === 'bar' || kind === 'horizontal-bar') {
+      order(records(chart), sort, channel);
+    }
+    if (channel === 'x' && kind === 'stacked-bar') {
+      order(records(chart), sort, 'xAxisPoint');
+    }
+    if (channel === 'x' && kind === 'grouped-bar') {
+      order(records(chart), sort, 'name');
+    }
+    if (
+      (kind === 'line' || kind === 'area') &&
+      channel === 'x' &&
+      Array.isArray(props.tickValues) &&
+      (encoding.x?.type === 'nominal' || encoding.x?.type === 'ordinal')
+    ) {
+      const labels = props.tickValues;
+      const sorted = labels.map(label => ({ label }));
+      order(sorted, sort, 'label');
+      const nextLabels = sorted.map(entry => entry.label);
+      const indices = new Map(nextLabels.map((label, index) => [String(label), index]));
+      records(ownValue(chart, 'lineChartData')).forEach(series => {
+        const points = records(series.data);
+        points.forEach(point => {
+          if (typeof point.x === 'number') {
+            point.x = indices.get(String(labels[point.x])) ?? point.x;
+          }
+        });
+        points.sort((a, b) => Number(a.x) - Number(b.x));
+      });
+      props.tickValues = nextLabels;
+    }
+  }
+  const domain = encoding.color?.type === 'nominal' ? encoding.color.scale?.domain : undefined;
+  const stacked = kind === 'stacked-bar' || (kind === 'area' && encoding.y?.stack !== null && !!encoding.color?.field);
+  const stacks = kind === 'stacked-bar' ? records(chart).map(stack => records(stack.chartData)) : [];
+  const series = kind === 'area' ? records(ownValue(chart, 'lineChartData')) : [];
+  const orderEncoding = encoding.order;
+  const definitions = (Array.isArray(orderEncoding) ? orderEncoding : [orderEncoding]).filter(isRecord);
+  const preserveInsertion = definitions.some(definition => definition.sort === false || definition.sort === null);
+  const orderFields = definitions.filter(definition => typeof definition.field === 'string');
+  if (stacked && !preserveInsertion && orderFields.length) {
+    // The prepared order field may be a nested-field or aggregate alias. Retain
+    // each source tuple on the actual native point, before normalization changes y.
+    const value = (node: VegaDataRow, field: string): unknown => {
+      const point = kind === 'area' ? records(node.data)[0] : node;
+      const row = point && (nativeSourceRows.get(point) ?? nativeTooltips.get(point)?.row);
+      return row ? readVegaField(row, field) : undefined;
+    };
+    const compare = (left: unknown, right: unknown): number => {
+      if (equalCoordinate(left, right)) {
+        return 0;
+      }
+      if (left === null || left === undefined) {
+        return -1;
+      }
+      if (right === null || right === undefined) {
+        return 1;
+      }
+      if (typeof left === 'number' && typeof right === 'number') {
+        return left - right;
+      }
+      if (left instanceof Date && right instanceof Date) {
+        return left.getTime() - right.getTime();
+      }
+      return String(left) < String(right) ? -1 : 1;
+    };
+    const bySourceOrder = (left: VegaDataRow, right: VegaDataRow): number => {
+      for (const definition of orderFields) {
+        const result = compare(value(left, definition.field as string), value(right, definition.field as string));
+        if (result) {
+          return definition.sort === 'descending' ? -result : result;
+        }
+      }
+      return 0; // Native Array.sort is stable: ties retain tuple insertion order, including mixed signs.
+    };
+    stacks.forEach(nodes => nodes.sort(bySourceOrder));
+    series.sort(bySourceOrder);
+  } else if (stacked && !preserveInsertion && Array.isArray(domain)) {
+    stacks.forEach(nodes => order(nodes, domain, 'legend'));
+    order(series, domain, 'legend');
+  }
+  if (!stacked || encoding.y?.stack !== 'normalize') {
+    return;
+  }
+  if (kind === 'area') {
+    const byX = new Map<string, VegaDataRow[]>();
+    series.forEach(group =>
+      records(group.data).forEach(point => {
+        const key = point.x instanceof Date ? `date:${point.x.getTime()}` : `${typeof point.x}:${String(point.x)}`;
+        if (!byX.has(key)) {
+          byX.set(key, []);
+        }
+        byX.get(key)!.push(point);
+      }),
+    );
+    stacks.push(...byX.values());
+  }
+  let negative = false;
+  const field = kind === 'area' ? 'y' : 'data';
+  const formatter = createValueFormatter(encoding.y?.axis?.format);
+  stacks.forEach(nodes => {
+    const positives = nodes.reduce((sum, node) => sum + Math.max(0, Number(node[field]) || 0), 0);
+    const negatives = nodes.reduce((sum, node) => sum + Math.max(0, -Number(node[field]) || 0), 0);
+    negative ||= negatives > 0;
+    nodes.forEach(node => {
+      const value = Number(node[field]) || 0;
+      const total = value < 0 ? negatives : positives;
+      node[field] = total ? value / total : 0;
+      if (formatter) {
+        node.yAxisCalloutData = formatter(Number(node[field]));
+        node.barLabel = node.yAxisCalloutData;
+      }
+    });
+  });
+  props.yMinValue = negative ? -1 : 0;
+  props.yMaxValue = 1;
+}
+
+export function transformVegaLiteToLineChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): LineChartProps {
+  return transformPrepared('line', spec, colorMap, isDarkTheme, options, renderLineChartProps);
+}
+export function transformVegaLiteToVerticalBarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): VerticalBarChartProps {
+  return transformPrepared('bar', spec, colorMap, isDarkTheme, options, renderVerticalBarChartProps);
+}
+export function transformVegaLiteToVerticalStackedBarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): VerticalStackedBarChartProps {
+  return transformPrepared('stacked-bar', spec, colorMap, isDarkTheme, options, renderVerticalStackedBarChartProps);
+}
+export function transformVegaLiteToGroupedVerticalBarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): GroupedVerticalBarChartProps {
+  return transformPrepared('grouped-bar', spec, colorMap, isDarkTheme, options, renderGroupedVerticalBarChartProps);
+}
+export function transformVegaLiteToHorizontalBarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): HorizontalBarChartWithAxisProps {
+  return transformPrepared('horizontal-bar', spec, colorMap, isDarkTheme, options, renderHorizontalBarChartProps);
+}
+export function transformVegaLiteToAreaChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): AreaChartProps {
+  return transformPrepared('area', spec, colorMap, isDarkTheme, options, renderAreaChartProps);
+}
+export function transformVegaLiteToScatterChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): ScatterChartProps {
+  return transformPrepared('scatter', spec, colorMap, isDarkTheme, options, renderScatterChartProps);
+}
+export function transformVegaLiteToDonutChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): DonutChartProps {
+  return transformPrepared('donut', spec, colorMap, isDarkTheme, options, renderDonutChartProps);
+}
+export function transformVegaLiteToHeatMapChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): HeatMapChartProps {
+  return transformPrepared('heatmap', spec, colorMap, isDarkTheme, options, renderHeatMapChartProps);
+}
+export function transformVegaLiteToHistogramProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): VerticalBarChartProps {
+  return transformPrepared('histogram', spec, colorMap, isDarkTheme, options, renderHistogramProps);
+}
+export function transformVegaLiteToPolarChartProps(
+  spec: VegaLiteSpec,
+  colorMap: ColorMapRef,
+  isDarkTheme?: boolean,
+  options?: VegaSemanticOptions,
+): PolarChartProps {
+  return transformPrepared('polar', spec, colorMap, isDarkTheme, options, renderPolarChartProps);
+}
 
 /**
  * Determines if a spec is a layered specification
@@ -160,419 +963,6 @@ function extractDataValues(data: VegaLiteData | undefined): Array<Record<string,
   }
 
   return [];
-}
-
-function getOwnDataValue(row: Record<string, unknown>, field: string): unknown {
-  return Object.prototype.hasOwnProperty.call(row, field) ? row[field] : undefined;
-}
-
-/**
- * Applies a fold transform to convert wide-format data to long-format
- * The fold transform unpivots specified fields into key-value pairs
- *
- * @param data - Array of data records in wide format
- * @param foldFields - Array of field names to fold
- * @param asFields - [keyName, valueName] for the new columns (defaults to ['key', 'value'])
- * @returns Array of data records in long format
- */
-function applyFoldTransform(
-  data: Array<Record<string, unknown>>,
-  foldFields: string[],
-  asFields: [string, string] = ['key', 'value'],
-): Array<Record<string, unknown>> {
-  const [keyField, valueField] = asFields;
-  const result: Array<Record<string, unknown>> = [];
-
-  for (const row of data) {
-    // Create a base row without the fields being folded
-    const baseRow: Record<string, unknown> = Object.create(null);
-    for (const [key, value] of Object.entries(row)) {
-      if (!foldFields.includes(key)) {
-        baseRow[key] = value;
-      }
-    }
-
-    // Create a new row for each folded field
-    for (const field of foldFields) {
-      if (Object.prototype.hasOwnProperty.call(row, field)) {
-        result.push({
-          ...baseRow,
-          [keyField]: field,
-          [valueField]: row[field],
-        });
-      }
-    }
-  }
-
-  return result;
-}
-
-/**
- * Applies transforms from a Vega-Lite spec to data
- * Currently supports: fold transform
- *
- * @param data - Array of data records
- * @param transforms - Array of Vega-Lite transform specifications
- * @returns Transformed data array
- */
-function applyTransforms(
-  data: Array<Record<string, unknown>>,
-  transforms: Array<Record<string, unknown>> | undefined,
-): Array<Record<string, unknown>> {
-  if (!transforms || transforms.length === 0) {
-    return data;
-  }
-
-  let result = data;
-
-  for (const transform of transforms) {
-    // Handle fold transform
-    if ('fold' in transform && Array.isArray(transform.fold)) {
-      const foldFields = transform.fold as string[];
-      const asFields = (transform.as as [string, string]) || ['key', 'value'];
-      result = applyFoldTransform(result, foldFields, asFields);
-    }
-
-    // Handle filter transform
-    if ('filter' in transform) {
-      const filterExpr = transform.filter;
-      if (typeof filterExpr === 'string') {
-        result = result.filter(row => {
-          try {
-            return safeEvaluateExpression(filterExpr, row);
-          } catch {
-            return true;
-          }
-        });
-      }
-    }
-
-    // Handle calculate transform
-    if ('calculate' in transform && 'as' in transform) {
-      const expr = transform.calculate as string;
-      const asField = transform.as as string;
-      result = result.map(row => {
-        try {
-          const value = safeEvaluateExpression(expr, row);
-          return { ...row, [asField]: value };
-        } catch {
-          return row;
-        }
-      });
-    }
-
-    // Handle aggregate transform
-    if ('aggregate' in transform && Array.isArray(transform.aggregate)) {
-      const aggSpecs = transform.aggregate as Array<{ op: string; field?: string; as: string }>;
-      const groupby = (transform.groupby as string[]) || [];
-      const groups = new Map<string, Array<Record<string, unknown>>>();
-
-      result.forEach(row => {
-        const key = groupby.map(g => String(getOwnDataValue(row, g))).join('|');
-        if (!groups.has(key)) {
-          groups.set(key, []);
-        }
-        groups.get(key)!.push(row);
-      });
-
-      result = Array.from(groups.entries()).map(([key, rows]) => {
-        // Grouping fields and aggregate aliases are data keys, including "__proto__".
-        const baseRow: Record<string, unknown> = Object.create(null);
-        groupby.forEach((g, i) => {
-          baseRow[g] = getOwnDataValue(rows[0], g);
-        });
-
-        aggSpecs.forEach(spec => {
-          const values = spec.field
-            ? rows.map(r => Number(getOwnDataValue(r, spec.field!))).filter(v => !isNaN(v))
-            : [];
-          switch (spec.op) {
-            case 'count':
-              baseRow[spec.as] = rows.length;
-              break;
-            case 'sum':
-              baseRow[spec.as] = d3Sum(values);
-              break;
-            case 'mean':
-            case 'average':
-              baseRow[spec.as] = d3Mean(values) ?? 0;
-              break;
-            case 'min':
-              baseRow[spec.as] = d3Min(values) ?? 0;
-              break;
-            case 'max':
-              baseRow[spec.as] = d3Max(values) ?? 0;
-              break;
-            default:
-              baseRow[spec.as] = rows.length;
-          }
-        });
-        // Preserve ordinary row coercion without invoking setters for data keys.
-        return { ...baseRow };
-      });
-    }
-
-    // Handle window transform
-    if ('window' in transform && Array.isArray(transform.window)) {
-      const windowOps = transform.window as Array<{ op: string; field?: string; as: string }>;
-      const sortFields = (transform.sort as Array<{ field: string; order?: string }>) || [];
-      const groupby = (transform.groupby as string[]) || [];
-
-      // Group data
-      const groups = new Map<string, Array<Record<string, unknown>>>();
-      result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
-        if (!groups.has(key)) {
-          groups.set(key, []);
-        }
-        groups.get(key)!.push(row);
-      });
-
-      const newResult: Array<Record<string, unknown>> = [];
-      groups.forEach(rows => {
-        // Sort within group
-        if (sortFields.length > 0) {
-          rows.sort((a, b) => {
-            for (const sf of sortFields) {
-              const va = Number(getOwnDataValue(a, sf.field)) || 0;
-              const vb = Number(getOwnDataValue(b, sf.field)) || 0;
-              const cmp = sf.order === 'descending' ? vb - va : va - vb;
-              if (cmp !== 0) {
-                return cmp;
-              }
-            }
-            return 0;
-          });
-        }
-
-        let runningSum = 0;
-        rows.forEach((row, idx) => {
-          const newRow: Record<string, unknown> = Object.assign(Object.create(null), row);
-          windowOps.forEach(op => {
-            switch (op.op) {
-              case 'sum':
-                runningSum += Number(getOwnDataValue(row, op.field!)) || 0;
-                newRow[op.as] = runningSum;
-                break;
-              case 'rank':
-                newRow[op.as] = idx + 1;
-                break;
-              case 'row_number':
-                newRow[op.as] = idx + 1;
-                break;
-              case 'count':
-                newRow[op.as] = idx + 1;
-                break;
-              default:
-                newRow[op.as] = idx + 1;
-            }
-          });
-          newResult.push({ ...newRow });
-        });
-      });
-      result = newResult;
-    }
-
-    // Handle joinaggregate transform
-    if ('joinaggregate' in transform && Array.isArray(transform.joinaggregate)) {
-      const aggSpecs = transform.joinaggregate as Array<{ op: string; field?: string; as: string }>;
-      const groupby = (transform.groupby as string[]) || [];
-
-      // Compute aggregates
-      const groups = new Map<string, Array<Record<string, unknown>>>();
-      result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
-        if (!groups.has(key)) {
-          groups.set(key, []);
-        }
-        groups.get(key)!.push(row);
-      });
-
-      const aggResults = new Map<string, Record<string, number>>();
-      groups.forEach((rows, key) => {
-        const aggs: Record<string, number> = Object.create(null);
-        aggSpecs.forEach(spec => {
-          const values = spec.field
-            ? rows.map(r => Number(getOwnDataValue(r, spec.field!))).filter(v => !isNaN(v))
-            : [];
-          switch (spec.op) {
-            case 'mean':
-            case 'average':
-              aggs[spec.as] = d3Mean(values) ?? 0;
-              break;
-            case 'sum':
-              aggs[spec.as] = d3Sum(values);
-              break;
-            case 'count':
-              aggs[spec.as] = rows.length;
-              break;
-            case 'min':
-              aggs[spec.as] = d3Min(values) ?? 0;
-              break;
-            case 'max':
-              aggs[spec.as] = d3Max(values) ?? 0;
-              break;
-            default:
-              aggs[spec.as] = rows.length;
-          }
-        });
-        aggResults.set(key, aggs);
-      });
-
-      // Join back: add aggregate values to each row
-      result = result.map(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
-        return { ...row, ...(aggResults.get(key) || {}) };
-      });
-    }
-
-    // Handle regression transform (simple linear regression)
-    if ('regression' in transform && 'on' in transform) {
-      const yField = transform.regression as string;
-      const xField = transform.on as string;
-      const points = result
-        .map(r => ({ x: Number(getOwnDataValue(r, xField)), y: Number(getOwnDataValue(r, yField)) }))
-        .filter(p => !isNaN(p.x) && !isNaN(p.y));
-      if (points.length >= 2) {
-        const n = points.length;
-        const sumX = d3Sum(points.map(p => p.x));
-        const sumY = d3Sum(points.map(p => p.y));
-        const sumXY = d3Sum(points.map(p => p.x * p.y));
-        const sumX2 = d3Sum(points.map(p => p.x * p.x));
-        const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-        const intercept = (sumY - slope * sumX) / n;
-        const xMin = d3Min(points.map(p => p.x)) ?? 0;
-        const xMax = d3Max(points.map(p => p.x)) ?? 0;
-        result = [
-          { [xField]: xMin, [yField]: slope * xMin + intercept },
-          { [xField]: xMax, [yField]: slope * xMax + intercept },
-        ];
-      }
-    }
-
-    // Handle loess transform (simplified: moving average approximation)
-    if ('loess' in transform && 'on' in transform) {
-      const yField = transform.loess as string;
-      const xField = transform.on as string;
-      const sorted = [...result]
-        .filter(r => !isNaN(Number(getOwnDataValue(r, xField))) && !isNaN(Number(getOwnDataValue(r, yField))))
-        .sort((a, b) => Number(getOwnDataValue(a, xField)) - Number(getOwnDataValue(b, xField)));
-      const windowSize = Math.max(3, Math.floor(sorted.length / 4));
-      result = sorted.map((row, i) => {
-        const start = Math.max(0, i - Math.floor(windowSize / 2));
-        const end = Math.min(sorted.length, start + windowSize);
-        const windowSlice = sorted.slice(start, end);
-        const avgY =
-          d3Mean(windowSlice.map(r => Number(getOwnDataValue(r, yField)))) ?? Number(getOwnDataValue(row, yField));
-        return { [xField]: getOwnDataValue(row, xField), [yField]: avgY };
-      });
-    }
-
-    // Handle density transform (simplified: histogram-based density estimation)
-    if ('density' in transform) {
-      const field = transform.density as string;
-      const groupby = (transform.groupby as string[]) || [];
-      const groups = new Map<string, number[]>();
-
-      result.forEach(row => {
-        const key = groupby.length > 0 ? groupby.map(g => String(getOwnDataValue(row, g))).join('|') : '__all__';
-        if (!groups.has(key)) {
-          groups.set(key, []);
-        }
-        groups.get(key)!.push(Number(getOwnDataValue(row, field)));
-      });
-
-      const densityResult: Array<Record<string, unknown>> = [];
-      groups.forEach((values, key) => {
-        const min = d3Min(values) ?? 0;
-        const max = d3Max(values) ?? 0;
-        const range = max - min || 1;
-        const bins = 20;
-        const bandwidth = range / bins;
-        const groupFields: Record<string, unknown> = Object.create(null);
-        if (groupby.length > 0) {
-          const sampleRow = result.find(r => groupby.map(g => String(getOwnDataValue(r, g))).join('|') === key);
-          groupby.forEach(g => {
-            groupFields[g] = sampleRow ? getOwnDataValue(sampleRow, g) : undefined;
-          });
-        }
-        for (let i = 0; i <= bins; i++) {
-          const x = min + (i / bins) * range;
-          const count = values.filter(v => Math.abs(v - x) < bandwidth).length;
-          const density = count / (values.length * bandwidth);
-          densityResult.push({ value: x, density, ...groupFields });
-        }
-      });
-      result = densityResult;
-    }
-
-    // Handle quantile transform
-    if ('quantile' in transform) {
-      const field = transform.quantile as string;
-      const probs = (transform.probs as number[]) || [0.25, 0.5, 0.75];
-      const values = result
-        .map(r => Number(getOwnDataValue(r, field)))
-        .filter(v => !isNaN(v))
-        .sort((a, b) => a - b);
-      if (values.length > 0) {
-        result = probs.map(p => {
-          const idx = Math.min(Math.floor(p * values.length), values.length - 1);
-          return { prob: String(p), value: values[idx] };
-        });
-      }
-    }
-
-    // Handle impute transform (fill missing values)
-    if ('impute' in transform && 'key' in transform) {
-      const field = transform.impute as string;
-      const keyField = transform.key as string;
-      const method = (transform.method as string) || 'value';
-      const fillValue = transform.value ?? 0;
-
-      const existingKeys = new Set(result.map(r => getOwnDataValue(r, keyField)));
-      const allKeyValues = result.map(r => Number(getOwnDataValue(r, keyField))).filter(v => !isNaN(v));
-      if (allKeyValues.length > 0) {
-        const minKey = d3Min(allKeyValues) ?? 0;
-        const maxKey = d3Max(allKeyValues) ?? 0;
-        for (let k = minKey; k <= maxKey; k++) {
-          if (!existingKeys.has(k)) {
-            const imputed: Record<string, unknown> = { [keyField]: k, [field]: method === 'value' ? fillValue : 0 };
-            result.push(imputed);
-          }
-        }
-        result.sort((a, b) => Number(getOwnDataValue(a, keyField)) - Number(getOwnDataValue(b, keyField)));
-      }
-    }
-
-    // Handle lookup transform (join with secondary dataset)
-    if ('lookup' in transform && 'from' in transform) {
-      const lookupField = transform.lookup as string;
-      const fromSpec = transform.from as {
-        data?: { values?: Array<Record<string, unknown>> };
-        key?: string;
-        fields?: string[];
-      };
-      if (fromSpec.data?.values && fromSpec.key && fromSpec.fields) {
-        const lookupMap = new Map<string, Record<string, unknown>>();
-        fromSpec.data.values.forEach(row => {
-          lookupMap.set(String(getOwnDataValue(row, fromSpec.key!)), row);
-        });
-        result = result.map(row => {
-          const lookupRow = lookupMap.get(String(getOwnDataValue(row, lookupField)));
-          if (lookupRow) {
-            const extra: Record<string, unknown> = Object.create(null);
-            fromSpec.fields!.forEach(f => {
-              extra[f] = getOwnDataValue(lookupRow, f);
-            });
-            return { ...row, ...extra };
-          }
-          return row;
-        });
-      }
-    }
-  }
-
-  return result;
 }
 
 /**
@@ -1170,6 +1560,9 @@ function extractAxisCategoryOrderProps(encoding: VegaLiteEncoding): {
  * @returns Normalized context with unit specs, data values, encoding, and mark properties
  */
 function initializeTransformContext(spec: VegaLiteSpec) {
+  if (!preparedSpecs.has(spec)) {
+    spec = prepareAdapterSpec(spec);
+  }
   const unitSpecs = normalizeSpec(spec);
 
   if (unitSpecs.length === 0) {
@@ -1177,95 +1570,8 @@ function initializeTransformContext(spec: VegaLiteSpec) {
   }
 
   const primarySpec = unitSpecs[0];
-  const rawDataValues = extractDataValues(primarySpec.data);
-  // Apply any transforms from both top-level spec and primary unit spec
-  let dataValues = applyTransforms(rawDataValues, spec.transform);
-  dataValues = applyTransforms(dataValues, primarySpec.transform);
+  const dataValues = extractDataValues(primarySpec.data);
   const encoding = primarySpec.encoding || {};
-
-  // Handle conditional color encoding — evaluate test expressions and materialize color values
-  const colorEnc = encoding.color as Record<string, unknown> | undefined;
-  if (colorEnc?.condition && typeof (colorEnc.condition as Record<string, unknown>)?.test === 'string') {
-    const condition = colorEnc.condition as { test: string; value: string };
-    const elseValue = (colorEnc.value as string) || '#999';
-    const colorField = '__conditional_color__';
-
-    dataValues.forEach(row => {
-      try {
-        const testResult = safeEvaluateExpression(condition.test, row);
-        row[colorField] = testResult ? condition.value : elseValue;
-      } catch {
-        row[colorField] = elseValue;
-      }
-    });
-
-    // Replace conditional color with a field-based color encoding using the materialized values
-    (encoding as Record<string, unknown>).color = {
-      field: colorField,
-      type: 'nominal',
-      scale: { domain: [condition.value, elseValue], range: [condition.value, elseValue] },
-      legend: null,
-    };
-  }
-
-  // Handle timeUnit on x/y encodings — aggregate data by time unit
-  if (encoding.x?.timeUnit && encoding.x?.field) {
-    const field = encoding.x.field;
-    const unit = encoding.x.timeUnit as string;
-    const yField = encoding.y?.field;
-    const yAgg = encoding.y?.aggregate || (yField ? 'mean' : 'count');
-
-    const groups = new Map<string, Array<Record<string, unknown>>>();
-    dataValues.forEach(row => {
-      const dateVal = new Date(getOwnDataValue(row, field) as string | number);
-      if (isNaN(dateVal.getTime())) {
-        return;
-      }
-      let key: string;
-      switch (unit) {
-        case 'year':
-          key = String(dateVal.getFullYear());
-          break;
-        case 'quarter':
-          key = `Q${Math.floor(dateVal.getMonth() / 3) + 1}`;
-          break;
-        case 'month':
-          key = dateVal.toLocaleString('en', { month: 'short' });
-          break;
-        case 'day':
-          key = String(dateVal.getDate());
-          break;
-        case 'hours':
-          key = String(dateVal.getHours());
-          break;
-        default:
-          key = String(dateVal);
-      }
-      if (!groups.has(key)) {
-        groups.set(key, []);
-      }
-      groups.get(key)!.push(row);
-    });
-
-    dataValues = Array.from(groups.entries()).map(([key, rows]) => {
-      const result: Record<string, unknown> = Object.create(null);
-      result[field] = key;
-      if (yField && yAgg !== 'count') {
-        const vals = rows.map(r => Number(getOwnDataValue(r, yField))).filter(v => !isNaN(v));
-        result[yField] = yAgg === 'sum' ? d3Sum(vals) : d3Mean(vals) ?? 0;
-      } else {
-        result[yField || '__count'] = rows.length;
-      }
-      return { ...result };
-    });
-
-    // Switch x from temporal to ordinal since we've aggregated
-    encoding.x.type = 'ordinal';
-    delete encoding.x.timeUnit;
-    if (encoding.y?.aggregate) {
-      delete encoding.y.aggregate;
-    }
-  }
 
   const markProps = getMarkProperties(primarySpec.mark);
 
@@ -1425,6 +1731,9 @@ function groupDataBySeries(
   xType?: VegaLiteType,
   sizeField?: string | undefined,
   yType?: VegaLiteType,
+  xDomain?: string[],
+  yDomain?: string[],
+  tooltipSpec?: VegaLiteSpec,
 ): {
   seriesMap: Map<string, LineChartDataPoint[]>;
   ordinalMapping?: Map<string, number>;
@@ -1446,6 +1755,14 @@ function groupDataBySeries(
   const isYOrdinal = yType === 'ordinal' || yType === 'nominal';
   const yOrdinalMapping = isYOrdinal ? new Map<string, number>() : undefined;
   const yOrdinalLabels: string[] = [];
+  xDomain?.forEach(label => {
+    ordinalMapping?.set(label, ordinalLabels.length);
+    ordinalLabels.push(label);
+  });
+  yDomain?.forEach(label => {
+    yOrdinalMapping?.set(label, yOrdinalLabels.length);
+    yOrdinalLabels.push(label);
+  });
 
   dataValues.forEach(row => {
     const xValue = parseValue(row[xField], isXTemporal);
@@ -1469,13 +1786,17 @@ function groupDataBySeries(
 
     // Handle x-value based on type
     let numericX: number | Date;
-    if (isXOrdinal && typeof xValue === 'string') {
-      // For ordinal data, map each unique string to a sequential index
-      if (!ordinalMapping!.has(xValue)) {
-        ordinalMapping!.set(xValue, ordinalMapping!.size);
-        ordinalLabels.push(xValue);
+    if (isXOrdinal) {
+      const label = String(xValue);
+      if (xDomain && !ordinalMapping!.has(label)) {
+        return;
       }
-      numericX = ordinalMapping!.get(xValue)!;
+      // For ordinal data, map each unique string to a sequential index
+      if (!ordinalMapping!.has(label)) {
+        ordinalMapping!.set(label, ordinalMapping!.size);
+        ordinalLabels.push(label);
+      }
+      numericX = ordinalMapping!.get(label)!;
     } else if (typeof xValue === 'string') {
       // For non-ordinal strings, try to parse as float (fallback to 0)
       const parsed = parseFloat(xValue);
@@ -1491,21 +1812,29 @@ function groupDataBySeries(
 
     // Handle y-value: numeric or ordinal mapping
     let numericY: number;
-    if (isYOrdinal && typeof yValue === 'string') {
-      if (!yOrdinalMapping!.has(yValue)) {
-        yOrdinalMapping!.set(yValue, yOrdinalMapping!.size);
-        yOrdinalLabels.push(yValue);
+    if (isYOrdinal) {
+      const label = String(yValue);
+      if (yDomain && !yOrdinalMapping!.has(label)) {
+        return;
       }
-      numericY = yOrdinalMapping!.get(yValue)!;
+      if (!yOrdinalMapping!.has(label)) {
+        yOrdinalMapping!.set(label, yOrdinalMapping!.size);
+        yOrdinalLabels.push(label);
+      }
+      numericY = yOrdinalMapping!.get(label)!;
     } else {
       numericY = typeof yValue === 'number' ? yValue : 0;
     }
 
-    seriesMap.get(seriesName)!.push({
+    const point: LineChartDataPoint = {
       x: numericX,
       y: numericY,
       ...(markerSize !== undefined && !isNaN(markerSize) && { markerSize }),
-    });
+    };
+    if (tooltipSpec) {
+      nativeTooltips.set(point, { spec: tooltipSpec, row });
+    }
+    seriesMap.get(seriesName)!.push(point);
   });
 
   return {
@@ -1527,11 +1856,15 @@ function findPrimaryLineSpec(unitSpecs: VegaLiteUnitSpec[]): VegaLiteUnitSpec | 
   // First, try to find a line, point, or area layer
   const lineSpec = unitSpecs.find(spec => {
     const markType = getMarkType(spec.mark);
-    return markType === 'line' || markType === 'point' || markType === 'area';
+    return markType === 'line' || markType === 'area';
   });
 
   if (lineSpec) {
     return lineSpec;
+  }
+  const pointSpec = unitSpecs.find(spec => getMarkType(spec.mark) === 'point');
+  if (pointSpec) {
+    return pointSpec;
   }
 
   // If no line/point/area layer, find first layer with actual field encodings (not just datum)
@@ -1584,11 +1917,6 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
         } else if (typeof sample === 'object') {
           encoding.x.type = 'nominal';
         }
-      } else if (encoding.x.type === 'temporal') {
-        const isValidDate = sample instanceof Date || (typeof sample === 'string' && !isNaN(Date.parse(sample)));
-        if (!isValidDate) {
-          encoding.x.type = typeof sample === 'number' ? 'quantitative' : 'nominal';
-        }
       }
     }
   }
@@ -1627,11 +1955,6 @@ export function autoCorrectEncodingTypes(spec: VegaLiteSpec): void {
         } else if (typeof sample === 'object') {
           encoding.y.type = 'nominal';
         }
-      } else if (encoding.y.type === 'temporal') {
-        const isValidDate = sample instanceof Date || (typeof sample === 'string' && !isNaN(Date.parse(sample)));
-        if (!isValidDate) {
-          encoding.y.type = typeof sample === 'number' ? 'quantitative' : 'nominal';
-        }
       }
     }
   }
@@ -1657,6 +1980,7 @@ export type ChartTypeResult = {
  * Determines the chart type based on Vega-Lite spec
  */
 export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
+  spec = prepareAdapterSpec(spec);
   // Auto-correct encoding types based on actual data BEFORE chart type detection
   autoCorrectEncodingTypes(spec);
 
@@ -1706,7 +2030,9 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
 
   // Bar charts
   if (markType === 'bar') {
-    if (encoding?.x?.bin) {
+    const bin = ownValue(encoding?.x, 'bin');
+    // 'binned' declares existing interval endpoints; it must never trigger rebinning.
+    if (bin === true || isRecord(bin)) {
       return { type: 'histogram', mark: markType };
     }
 
@@ -1759,11 +2085,7 @@ export function getChartType(spec: VegaLiteSpec): ChartTypeResult {
   return { type: 'line', mark: markType || 'line' };
 }
 
-export function transformVegaLiteToLineChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): LineChartProps {
+function renderLineChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): LineChartProps {
   // Initialize transformation context, but find the primary line/point layer for layered specs
   const unitSpecs = normalizeSpec(spec);
 
@@ -1782,11 +2104,39 @@ export function transformVegaLiteToLineChartProps(
   const hasLineLayer = unitSpecs.some(unitSpec => getMarkType(unitSpec.mark) === 'line');
   const shouldShowPoints = hasPointLayer && hasLineLayer;
 
-  const rawDataValues = extractDataValues(primarySpec.data);
-  // Apply any transforms (fold, etc.) from the spec
-  const dataValues = applyTransforms(rawDataValues, spec.transform);
+  const dataValues = extractDataValues(primarySpec.data);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
+  const lineUnits = unitSpecs.filter(unit => getMarkType(unit.mark) === 'line');
+  const tooltipSpec = tooltipSpecs.get(spec) ?? spec;
+  const primaryTooltip = normalizeSpec(tooltipSpec)[unitSpecs.indexOf(primarySpec)];
+  // Every line unit keeps its own transforms/fields. A point companion only
+  // enables markers; it must not duplicate the matching line's tuples.
+  if (lineUnits.length > 1) {
+    for (const channel of ['x', 'y'] as const) {
+      const definition = encoding[channel];
+      if (definition?.type !== 'nominal' && definition?.type !== 'ordinal') {
+        continue;
+      }
+      const domain = Array.isArray(definition.scale?.domain)
+        ? categoricalDomain(definition)
+        : [
+            ...new Set(
+              lineUnits.flatMap(unit =>
+                extractDataValues(unit.data).map(row =>
+                  String(readVegaField(row, unit.encoding?.[channel]?.field ?? '')),
+                ),
+              ),
+            ),
+          ];
+      lineUnits.forEach(unit => {
+        const field = unit.encoding?.[channel];
+        if (field && !Array.isArray(field.scale?.domain)) {
+          field.scale = { ...field.scale, domain };
+        }
+      });
+    }
+  }
 
   // Extract field names
   const { xField, yField, colorField } = extractEncodingFields(encoding);
@@ -1826,6 +2176,13 @@ export function transformVegaLiteToLineChartProps(
     encoding.x?.type,
     sizeField,
     encoding.y?.type,
+    Array.isArray(encoding.x?.scale?.domain) && (encoding.x?.type === 'nominal' || encoding.x?.type === 'ordinal')
+      ? categoricalDomain(encoding.x)
+      : undefined,
+    Array.isArray(encoding.y?.scale?.domain) && (encoding.y?.type === 'nominal' || encoding.y?.type === 'ordinal')
+      ? categoricalDomain(encoding.y)
+      : undefined,
+    { ...tooltipSpec, ...primaryTooltip },
   );
 
   // Extract color configuration
@@ -1874,12 +2231,57 @@ export function transformVegaLiteToLineChartProps(
     });
   });
 
+  if (lineUnits.length > 1) {
+    lineChartData.forEach(series => {
+      if (!encoding.color?.field) {
+        series.legend = 'Line 1';
+        series.color = resolveColor(
+          series.legend,
+          0,
+          encoding.color?.value as string | undefined,
+          markProps.color,
+          colorMap,
+          colorScheme,
+          colorRange,
+          isDarkTheme,
+        );
+      }
+    });
+    lineUnits
+      .filter(unit => unit !== primarySpec)
+      .forEach((unit, index) => {
+        const input = { ...spec, ...unit, layer: undefined } as VegaLiteSpec;
+        const unitTooltip = normalizeSpec(tooltipSpec)[unitSpecs.indexOf(unit)];
+        tooltipSpecs.set(input, { ...tooltipSpec, ...unitTooltip, layer: undefined } as VegaLiteSpec);
+        const extra = renderLineChartProps(input, colorMap, isDarkTheme).data?.lineChartData ?? [];
+        extra.forEach(series => {
+          if (!unit.encoding?.color?.field) {
+            series.legend = `Line ${index + 2}`;
+            const mark = getMarkProperties(unit.mark);
+            const color = extractColorConfig(unit.encoding ?? {});
+            series.color = resolveColor(
+              series.legend,
+              index + 1,
+              unit.encoding?.color?.value as string | undefined,
+              mark.color,
+              colorMap,
+              color.colorScheme,
+              color.colorRange,
+              isDarkTheme,
+            );
+          }
+          series.hideNonActiveDots = !shouldShowPoints;
+        });
+        lineChartData.push(...extra);
+      });
+  }
+
   // Extract chart title
   const chartTitle = typeof spec.title === 'string' ? spec.title : spec.title?.text;
 
   // Extract axis titles and formats
-  const xAxisTitle = encoding.x?.axis?.title ?? undefined;
-  const yAxisTitle = encoding.y?.axis?.title ?? undefined;
+  const xAxisTitle = encoding.x?.title ?? encoding.x?.axis?.title ?? undefined;
+  const yAxisTitle = encoding.y?.title ?? encoding.y?.axis?.title ?? undefined;
   const tickFormat = encoding.x?.axis?.format;
   const yAxisTickFormat = encoding.y?.axis?.format;
 
@@ -1963,11 +2365,13 @@ export function transformVegaLiteToLineChartProps(
     data: chartProps,
     width: typeof spec.width === 'number' ? spec.width : undefined,
     height: typeof spec.height === 'number' ? spec.height : undefined,
-    ...(xAxisTitle && { chartTitle: xAxisTitle }),
+    ...(xAxisTitle && { xAxisTitle }),
     ...(yAxisTitle && { yAxisTitle }),
     ...(tickFormat && { tickFormat }),
     ...(yAxisTickFormat && { yAxisTickFormat }),
     ...(tickValues && { tickValues }),
+    ...(ordinalLabels &&
+      Array.isArray(encoding.x?.scale?.domain) && { xMinValue: 0, xMaxValue: Math.max(0, ordinalLabels.length - 1) }),
     ...(yAxisTickCount && { yAxisTickCount }),
     ...(yMinValue !== undefined && { yMinValue }),
     ...(yMaxValue !== undefined && { yMaxValue }),
@@ -2149,7 +2553,7 @@ export function getVegaLiteTitles(spec: VegaLiteSpec): {
  * @param isDarkTheme - Whether dark theme is active
  * @returns VerticalBarChartProps for rendering
  */
-export function transformVegaLiteToVerticalBarChartProps(
+function renderVerticalBarChartProps(
   spec: VegaLiteSpec,
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
@@ -2175,7 +2579,11 @@ export function transformVegaLiteToVerticalBarChartProps(
   }
 
   // Validate data and encodings (skip for aggregate charts)
-  if (!isAggregate && xField && yField) {
+  const missingAggregate =
+    yField &&
+    aggregateFields.get(spec)?.has(yField) &&
+    dataValues.every(row => row[yField] === null || row[yField] === undefined);
+  if (!isAggregate && !missingAggregate && xField && yField) {
     validateXYEncodings(dataValues, xField, yField, encoding.x?.type, encoding.y?.type, 'VerticalBarChart', encoding);
   }
 
@@ -2220,7 +2628,7 @@ export function transformVegaLiteToVerticalBarChartProps(
   } else if (xField && yField) {
     // Check if y values are numeric; if not, fall back to count aggregation
     const firstYValue = dataValues.find(r => r[yField] !== undefined)?.[yField];
-    const yIsNumeric = typeof firstYValue === 'number';
+    const yIsNumeric = encoding.y?.type === 'quantitative' || typeof firstYValue === 'number';
 
     if (!yIsNumeric) {
       // y values are non-numeric: compute count per x category
@@ -2357,7 +2765,7 @@ export function transformVegaLiteToVerticalBarChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns VerticalStackedBarChartProps for rendering
  */
-export function transformVegaLiteToVerticalStackedBarChartProps(
+function renderVerticalStackedBarChartProps(
   spec: VegaLiteSpec,
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
@@ -2377,10 +2785,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
 
   // Use bar specs if available, otherwise fall back to first unit spec
   const primarySpec = barSpecs.length > 0 ? barSpecs[0] : unitSpecs[0];
-  const rawDataValues = extractDataValues(primarySpec.data);
-  // Apply transforms from both top-level spec and primary spec
-  let dataValues = applyTransforms(rawDataValues, spec.transform);
-  dataValues = applyTransforms(dataValues, primarySpec.transform);
+  const dataValues = extractDataValues(primarySpec.data);
   const encoding = primarySpec.encoding || {};
   const markProps = getMarkProperties(primarySpec.mark);
 
@@ -2450,7 +2855,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
   } else {
     // Check if y values are actually numeric; if not, fall back to count aggregation
     const firstYValue = dataValues.find(r => r[yField!] !== undefined)?.[yField!];
-    const yIsNumeric = typeof firstYValue === 'number';
+    const yIsNumeric = encoding.y?.type === 'quantitative' || typeof firstYValue === 'number';
 
     if (!yIsNumeric && yField) {
       // y values are non-numeric (e.g., strings after auto-correction from quantitative to nominal)
@@ -2524,22 +2929,21 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
         );
 
         const stackYFormatter = createValueFormatter(encoding.y?.axis?.format);
-        mapXToDataPoints[xKey].chartData.push({
+        const point: VerticalStackedChartProps['chartData'][number] = {
           legend,
           data: yValue,
           color,
           ...(stackYFormatter && { yAxisCalloutData: stackYFormatter(yValue), barLabel: stackYFormatter(yValue) }),
-        });
+        };
+        nativeSourceRows.set(point, row);
+        mapXToDataPoints[xKey].chartData.push(point);
       });
     }
   } // end else (non-aggregate)
 
   // Process line data from additional layers (if any)
   lineSpecs.forEach((lineSpec, lineIndex) => {
-    let lineDataValues = extractDataValues(lineSpec.data);
-    // Apply transforms from both top-level spec and line spec
-    lineDataValues = applyTransforms(lineDataValues, spec.transform);
-    lineDataValues = applyTransforms(lineDataValues, lineSpec.transform);
+    const lineDataValues = extractDataValues(lineSpec.data);
     const lineEncoding = lineSpec.encoding || {};
     const lineMarkProps = getMarkProperties(lineSpec.mark);
 
@@ -2750,7 +3154,7 @@ export function transformVegaLiteToVerticalStackedBarChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns GroupedVerticalBarChartProps for rendering
  */
-export function transformVegaLiteToGroupedVerticalBarChartProps(
+function renderGroupedVerticalBarChartProps(
   spec: VegaLiteSpec,
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
@@ -2851,7 +3255,7 @@ export function transformVegaLiteToGroupedVerticalBarChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns HorizontalBarChartWithAxisProps for rendering
  */
-export function transformVegaLiteToHorizontalBarChartProps(
+function renderHorizontalBarChartProps(
   spec: VegaLiteSpec,
   colorMap: ColorMapRef,
   isDarkTheme?: boolean,
@@ -3037,14 +3441,10 @@ export function transformVegaLiteToHorizontalBarChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns AreaChartProps for rendering
  */
-export function transformVegaLiteToAreaChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): AreaChartProps {
+function renderAreaChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): AreaChartProps {
   // Area charts use the same structure as line charts in Fluent Charts
   // The only difference is the component renders with filled areas
-  const lineChartProps = transformVegaLiteToLineChartProps(spec, colorMap, isDarkTheme);
+  const lineChartProps = renderLineChartProps(spec, colorMap, isDarkTheme);
 
   // Determine stacking mode based on Vega-Lite spec
   const unitSpecs = normalizeSpec(spec);
@@ -3080,11 +3480,7 @@ export function transformVegaLiteToAreaChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns ScatterChartProps for rendering
  */
-export function transformVegaLiteToScatterChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): ScatterChartProps {
+function renderScatterChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): ScatterChartProps {
   // Initialize transformation context
   const { dataValues, encoding, markProps } = initializeTransformContext(spec);
 
@@ -3102,8 +3498,12 @@ export function transformVegaLiteToScatterChartProps(
   const yIsNominal = encoding.y?.type === 'nominal' || encoding.y?.type === 'ordinal';
   const yOrdinalMap = new Map<string, number>();
   const yOrdinalLabels: string[] = [];
+  categoricalDomain(encoding.y).forEach(label => {
+    yOrdinalMap.set(label, yOrdinalLabels.length);
+    yOrdinalLabels.push(label);
+  });
 
-  if (yIsNominal) {
+  if (yIsNominal && !Array.isArray(encoding.y?.scale?.domain)) {
     // Collect unique y-values in order
     dataValues.forEach(row => {
       const yVal = row[yField];
@@ -3122,6 +3522,9 @@ export function transformVegaLiteToScatterChartProps(
   const groupedData: Record<string, Array<Record<string, unknown>>> = Object.create(null);
 
   dataValues.forEach(row => {
+    if (yIsNominal && Array.isArray(encoding.y?.scale?.domain) && !yOrdinalMap.has(String(row[yField]))) {
+      return;
+    }
     const seriesName = colorField && row[colorField] !== undefined ? String(row[colorField]) : 'default';
 
     if (!groupedData[seriesName]) {
@@ -3135,6 +3538,7 @@ export function transformVegaLiteToScatterChartProps(
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 
+  const tooltipSpec = tooltipSpecs.get(spec) ?? spec;
   const chartData: LineChartPoints[] = seriesNames.map((seriesName, index) => {
     if (!colorIndex.has(seriesName)) {
       colorIndex.set(seriesName, currentColorIndex++);
@@ -3154,11 +3558,13 @@ export function transformVegaLiteToScatterChartProps(
         numericY = typeof yValue === 'number' ? yValue : 0;
       }
 
-      return {
+      const point: ScatterChartDataPoint = {
         x: typeof xValue === 'number' || xValue instanceof Date ? xValue : String(xValue),
         y: numericY,
         ...(markerSize !== undefined && { markerSize }),
       };
+      nativeTooltips.set(point, { spec: tooltipSpec, row });
+      return point;
     });
 
     // Get color for this series
@@ -3255,11 +3661,7 @@ export function transformVegaLiteToScatterChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns DonutChartProps for rendering
  */
-export function transformVegaLiteToDonutChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): DonutChartProps {
+function renderDonutChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): DonutChartProps {
   // Initialize transformation context
   const { dataValues, encoding, primarySpec } = initializeTransformContext(spec);
 
@@ -3333,11 +3735,7 @@ export function transformVegaLiteToDonutChartProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns HeatMapChartProps for rendering
  */
-export function transformVegaLiteToHeatMapChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): HeatMapChartProps {
+function renderHeatMapChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): HeatMapChartProps {
   // Initialize transformation context
   const { dataValues, encoding } = initializeTransformContext(spec);
 
@@ -3535,7 +3933,7 @@ export function transformVegaLiteToHeatMapChartProps(
 /**
  * Helper function to get bin center for display
  */
-function getBinCenter(bin: Bin<number, number>): number {
+function getBinCenter(bin: Bin<VegaDataRow, number>): number {
   return (bin.x0! + bin.x1!) / 2;
 }
 
@@ -3546,24 +3944,12 @@ function getBinCenter(bin: Bin<number, number>): number {
  * @param bin - Binned data values
  * @returns Aggregated value
  */
-function calculateHistogramAggregate(
-  aggregate: 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max' | undefined,
-  bin: number[],
-): number {
-  switch (aggregate) {
-    case 'sum':
-      return d3Sum(bin);
-    case 'mean':
-    case 'average':
-      return bin.length === 0 ? 0 : d3Mean(bin) ?? 0;
-    case 'min':
-      return d3Min(bin) ?? 0;
-    case 'max':
-      return d3Max(bin) ?? 0;
-    case 'count':
-    default:
-      return bin.length;
+function calculateHistogramAggregate(aggregate: unknown, bin: VegaDataRow[], field?: string): number {
+  const value = aggregateVegaValues(bin, field, aggregate ?? 'count', { mode: 'strict' });
+  if (value !== undefined && typeof value !== 'number') {
+    throw new Error('VegaLiteSchemaAdapter: Histogram requires a scalar numeric aggregate');
   }
+  return value === undefined ? NaN : value;
 }
 
 /**
@@ -3577,11 +3963,7 @@ function calculateHistogramAggregate(
  * @param isDarkTheme - Whether dark theme is active
  * @returns VerticalBarChartProps for rendering histogram
  */
-export function transformVegaLiteToHistogramProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): VerticalBarChartProps {
+function renderHistogramProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): VerticalBarChartProps {
   // Initialize transformation context
   const { dataValues, encoding } = initializeTransformContext(spec);
 
@@ -3633,7 +4015,9 @@ export function transformVegaLiteToHistogramProps(
 
   // Create bins using d3
   const [minVal, maxVal] = d3Extent(values) as [number, number];
-  const binGenerator = d3Bin().domain([minVal, maxVal]);
+  const binGenerator = d3Bin<VegaDataRow, number>()
+    .value(row => Number(row[xField]))
+    .domain([minVal, maxVal]);
 
   // Apply bin configuration
   if (typeof binConfig === 'object') {
@@ -3643,9 +4027,18 @@ export function transformVegaLiteToHistogramProps(
     if (binConfig.extent) {
       binGenerator.domain(binConfig.extent);
     }
+    if (binConfig.step !== undefined) {
+      const [start, end] = binConfig.extent ?? [minVal, maxVal];
+      const step = binConfig.step;
+      const count = Math.ceil((end - start) / step);
+      if (!Number.isFinite(step) || step <= 0 || !Number.isFinite(count) || count > 10000) {
+        throw new Error('VegaLiteSchemaAdapter: Invalid histogram step or bin work limit exceeded');
+      }
+      binGenerator.thresholds(Array.from({ length: Math.max(0, count - 1) }, (_, i) => start + (i + 1) * step));
+    }
   }
 
-  const bins = binGenerator(values);
+  const bins = binGenerator(dataValues.filter(row => typeof row[xField] === 'number' && !isInvalidValue(row[xField])));
 
   // Calculate histogram data points
   const legend = encoding.color?.field ? String(dataValues[0]?.[encoding.color.field]) : 'Frequency';
@@ -3654,39 +4047,49 @@ export function transformVegaLiteToHistogramProps(
 
   const histogramData: VerticalBarChartDataPoint[] = bins.map(bin => {
     const x = getBinCenter(bin);
-    let y: number;
-
-    if (yAggregate !== 'count' && yField) {
-      // For non-count aggregates, collect y-field values for rows whose x-value falls in this bin
-      const yValues = dataValues
-        .filter(row => {
-          const xVal = Number(row[xField]);
-          return !isNaN(xVal) && xVal >= bin.x0! && xVal < bin.x1!;
-        })
-        .map(row => Number(row[yField]))
-        .filter(v => !isNaN(v));
-      // Include the last bin's upper bound (x1 is inclusive for the last bin)
-      if (bin === bins[bins.length - 1]) {
-        const extraRows = dataValues
-          .filter(row => Number(row[xField]) === bin.x1!)
-          .map(row => Number(row[yField]))
-          .filter(v => !isNaN(v));
-        yValues.push(...extraRows);
-      }
-      y = calculateHistogramAggregate(yAggregate, yValues);
-    } else {
-      y = calculateHistogramAggregate(yAggregate, bin);
-    }
+    const y = calculateHistogramAggregate(yAggregate, bin, yField);
 
     const xAxisCalloutData = `[${bin.x0} - ${bin.x1})`;
 
-    return {
+    const point: VerticalBarChartDataPoint = {
       x,
       y,
       legend,
       color,
       xAxisCalloutData,
     };
+    const tooltipSpec = tooltipSpecs.get(spec) ?? spec;
+    const tooltipUnit = normalizeSpec(tooltipSpec)[0];
+    const row: VegaDataRow = { ...bin[0], [xField]: x };
+    const seen = new Set<object>();
+    const materialize = (definition: unknown): void => {
+      if (definition && typeof definition === 'object') {
+        if (seen.has(definition)) {
+          return;
+        }
+        seen.add(definition);
+      }
+      if (Array.isArray(definition)) {
+        definition.forEach(materialize);
+      } else if (isRecord(definition)) {
+        if (definition.aggregate !== undefined) {
+          const op = definition.aggregate;
+          const name = typeof op === 'string' ? op : isRecord(op) ? Object.keys(op)[0] : undefined;
+          const field = typeof definition.field === 'string' ? definition.field : undefined;
+          const alias = name === 'count' ? '__count' : `${name}_${field}`;
+          Object.defineProperty(row, alias, {
+            value: aggregateVegaValues(bin, field, op, { mode: 'strict' }),
+            enumerable: true,
+            writable: true,
+            configurable: true,
+          });
+        }
+        materialize(definition.condition);
+      }
+    };
+    Object.values(tooltipUnit?.encoding ?? {}).forEach(materialize);
+    histogramTooltips.set(point, { spec: { ...tooltipSpec, ...tooltipUnit, data: { values: bin } }, row });
+    return point;
   });
 
   const titles = getVegaLiteTitles(spec);
@@ -3697,7 +4100,7 @@ export function transformVegaLiteToHistogramProps(
     data: histogramData,
     chartTitle: titles.chartTitle,
     xAxisTitle: titles.xAxisTitle || xField,
-    yAxisTitle: titles.yAxisTitle || yAggregate,
+    yAxisTitle: titles.yAxisTitle || (typeof yAggregate === 'string' ? yAggregate : encoding.y?.field ?? 'Value'),
     ...(titles.titleStyles ? titles.titleStyles : {}),
     roundCorners: true,
     hideTickOverlap: true,
@@ -3717,11 +4120,7 @@ export function transformVegaLiteToHistogramProps(
  * @param isDarkTheme - Whether dark theme is active
  * @returns PolarChartProps for rendering with Fluent PolarChart component
  */
-export function transformVegaLiteToPolarChartProps(
-  spec: VegaLiteSpec,
-  colorMap: ColorMapRef,
-  isDarkTheme?: boolean,
-): PolarChartProps {
+function renderPolarChartProps(spec: VegaLiteSpec, colorMap: ColorMapRef, isDarkTheme?: boolean): PolarChartProps {
   // Initialize transformation context
   const { dataValues, encoding, markProps, primarySpec } = initializeTransformContext(spec);
 
