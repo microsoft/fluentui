@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add tested Vega-Lite semantic transforms, capability diagnostics, filtered callouts, recursive views, managed data loading, and ranged chart rendering",
+  "packageName": "@fluentui/react-charts",
+  "email": "atisjai@microsoft.com"
+}

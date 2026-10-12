@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Normalized stack order is independent of category order, color domain and raw formatted tooltip amounts.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "category": "B", "series": "Second", "amount": 6, "priority": 1 },
+      { "category": "B", "series": "First", "amount": 2, "priority": 2 },
+      { "category": "A", "series": "Second", "amount": 3, "priority": 1 },
+      { "category": "A", "series": "First", "amount": 1, "priority": 2 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "category", "type": "nominal", "sort": ["A", "B"] },
+    "y": { "field": "amount", "type": "quantitative", "stack": "normalize", "axis": { "format": ".0%" } },
+    "order": { "field": "priority", "type": "quantitative", "sort": "ascending" },
+    "color": {
+      "field": "series",
+      "type": "nominal",
+      "scale": { "domain": ["First", "Second", "Absent"], "scheme": "tableau10" }
+    },
+    "tooltip": [
+      { "field": "series", "type": "nominal", "title": "Series" },
+      { "field": "amount", "type": "quantitative", "title": "Raw amount", "format": ".2f" }
+    ]
+  }
+}

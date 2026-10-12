@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Explicit step bins include the maximum extent in the last bin and aggregate real counts.",
+  "width": 272,
+  "height": 172,
+  "data": {
+    "values": [{ "value": -4 }, { "value": -0.1 }, { "value": 0 }, { "value": 3.9 }, { "value": 4 }, { "value": 8 }]
+  },
+  "transform": [
+    { "bin": { "extent": [-4, 8], "step": 4, "nice": false }, "field": "value", "as": ["start", "end"] },
+    { "aggregate": [{ "op": "count", "as": "frequency" }], "groupby": ["start", "end"] }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "start", "type": "quantitative", "bin": "binned", "scale": { "domain": [-4, 8], "zero": false } },
+    "x2": { "field": "end" },
+    "y": { "field": "frequency", "type": "quantitative", "scale": { "domain": [0, 4] } },
+    "tooltip": [{ "field": "frequency", "type": "quantitative", "title": "Count" }]
+  }
+}
