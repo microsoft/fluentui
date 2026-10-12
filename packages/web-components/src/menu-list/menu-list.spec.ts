@@ -78,6 +78,36 @@ test.describe('MenuList', () => {
     await expect(firstItem).toBeFocused();
   });
 
+  test('should preserve arrow key navigation after being moved in the DOM', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const menuItems = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate();
+
+    // Move the menu list to trigger its disconnect/reconnect lifecycle.
+    await element.evaluate(node => {
+      const parent = node.parentElement;
+
+      if (!parent) {
+        throw new Error('Menu list must have a parent element');
+      }
+
+      const nextSibling = node.nextSibling;
+      node.remove();
+      parent.insertBefore(node, nextSibling);
+    });
+
+    await element.evaluate(node => {
+      node.focus();
+    });
+
+    await expect(menuItems.first()).toBeFocused();
+
+    await element.press('ArrowDown');
+
+    await expect(menuItems.nth(1)).toBeFocused();
+  });
+
   test('should focus before the queued item refresh completes', async ({ fastPage, page }) => {
     await fastPage.setTemplate('');
     await page.evaluate(
