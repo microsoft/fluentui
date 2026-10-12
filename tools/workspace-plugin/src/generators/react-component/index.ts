@@ -31,7 +31,9 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 
     // This is used only for integration testing purposes on CI as jest disables snapshot updates by default
     const forceSnapshotUpdate = Boolean(process.env.__FORCE_SNAPSHOT_UPDATE__);
-    const testCmd = `yarn nx run ${project}:test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
+    const testCmd =
+      `yarn nx run ${project}:test --testNamePattern=${componentName}` +
+      (forceSnapshotUpdate ? ' --updateSnapshot' : '');
 
     execSync(testCmd, {
       cwd: root,
