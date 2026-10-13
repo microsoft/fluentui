@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
-  isHTMLElement,
   slot,
   useAnimationFrame,
   useControllableState,
@@ -22,7 +21,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { getCalendarNavigationDate } from '../../utils/calendarKeyboard';
+import { getCalendarNavigationDate, isCalendarKeyboardEditable } from '../../utils/calendarKeyboard';
 import type { DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
@@ -375,10 +374,7 @@ export const useCalendarBase_unstable = (
 
       case PageUp:
       case PageDown: {
-        if (
-          isHTMLElement(ev.target) &&
-          ev.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')
-        ) {
+        if (isCalendarKeyboardEditable(ev.target)) {
           break;
         }
         const date = getCalendarNavigationDate(ev.nativeEvent) ?? navigatedDate;

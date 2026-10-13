@@ -12,8 +12,12 @@ import { calendarMonthGridCellClassNames } from '../CalendarMonthGridCell/useCal
 import { calendarYearGridCellClassNames } from '../CalendarYearGridCell/useCalendarYearGridCellStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-const mountFluent = (element: JSXElement) => {
-  mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
+const mountFluent = (element: JSXElement, dir: 'ltr' | 'rtl' = 'ltr') => {
+  mount(
+    <FluentProvider theme={webLightTheme} dir={dir}>
+      {element}
+    </FluentProvider>,
+  );
 };
 
 /**
@@ -243,6 +247,114 @@ describe('Calendar', () => {
   });
 
   describe('month and year pickers', () => {
+    (['month', 'year'] as const).forEach(picker => {
+      const cells = '[data-fui-calendar-picker="month"] button[role="gridcell"]';
+      const openYearPicker = () => {
+        if (picker === 'year') {
+          cy.get(`.${calendarMonthClassNames.heading}`).click();
+        }
+      };
+
+      it(`moves the ${picker} grid exactly once per arrow without wrapping rows or columns`, () => {
+        const onSelectDate = cy.stub().as('onSelectDate');
+        const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            layout="sideBySide"
+            onSelectDate={onSelectDate}
+            onDisplayedDateChange={onDisplayedDateChange}
+          />,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(1).should('be.focused').realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused').realPress('ArrowLeft');
+        cy.get(cells).eq(4).should('be.focused').realPress('ArrowUp');
+        cy.get(cells).eq(0).should('be.focused').realPress('ArrowLeft');
+        cy.get(cells).eq(0).should('be.focused');
+
+        cy.get(cells).eq(3).focus().realPress('ArrowRight');
+        cy.get(cells).eq(3).should('be.focused');
+        cy.get(cells).eq(8).focus().realPress('ArrowDown');
+        cy.get(cells).eq(8).should('be.focused');
+        cy.get('@onSelectDate').should('not.have.been.called');
+        cy.get('@onDisplayedDateChange').should('not.have.been.called');
+      });
+
+      it(`preserves RTL arrow navigation in the ${picker} grid`, () => {
+        mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" />, 'rtl');
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowLeft');
+        cy.get(cells).eq(1).should('be.focused').realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused').realPress('ArrowRight');
+        cy.get(cells).eq(4).should('be.focused');
+      });
+
+      it(`preserves Tabster's single Tab stop for the ${picker} grid`, () => {
+        mountFluent(
+          <>
+            <Calendar today={today} defaultValue={today} layout="sideBySide" goToTodayButton={null} />
+            <button type="button">After Calendar</button>
+          </>,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(1).should('be.focused').realPress('Tab');
+        cy.contains('button', 'After Calendar').should('be.focused');
+      });
+
+      it(`honors consumer capture cancellation in the ${picker} grid`, () => {
+        const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            layout="sideBySide"
+            monthPicker={
+              picker === 'month' ? { grid: { onKeyDownCapture } } : { yearPicker: { grid: { onKeyDownCapture } } }
+            }
+          />,
+        );
+        openYearPicker();
+
+        cy.get(cells).eq(5).focus().realPress('ArrowDown');
+        cy.get(cells).eq(5).should('be.focused');
+        cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+      });
+
+      [false, true].forEach(allFocusable => {
+        it(`respects unavailable ${picker} cells with allFocusable=${allFocusable}`, () => {
+          const onSelectDate = cy.stub().as('onSelectDate');
+          mountFluent(
+            <Calendar
+              today={today}
+              defaultValue={today}
+              layout="sideBySide"
+              allFocusable={allFocusable}
+              minDate={picker === 'month' ? new Date(2020, 1, 1) : new Date(2021, 0, 1)}
+              monthPicker={{ yearPicker: { navigatedYear: 2020 } }}
+              onSelectDate={onSelectDate}
+            />,
+          );
+          openYearPicker();
+
+          cy.get(cells).eq(1).focus().realPress('ArrowLeft');
+          cy.get(cells)
+            .eq(allFocusable ? 0 : 1)
+            .should('be.focused');
+          if (allFocusable) {
+            cy.get(cells).eq(0).should('be.enabled').and('have.attr', 'aria-disabled', 'true').realPress('Enter');
+            cy.get('@onSelectDate').should('not.have.been.called');
+          }
+        });
+      });
+    });
+
     it('keeps the month highlight on the navigated month', () => {
       mountFluent(<Calendar today={today} value={today} highlightSelectedMonth />);
 
