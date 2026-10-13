@@ -281,26 +281,31 @@ describe('Dialog', () => {
     });
 
     it('should not close when clicking inside a portaled Popover descendant', () => {
-      mount(
-        <Dialog modalType="modal">
-          <DialogTrigger>
-            <Button id={dialogTriggerOpenId}>Open dialog</Button>
-          </DialogTrigger>
-          <DialogSurface>
-            <DialogBody>
-              <DialogTitle>Dialog title</DialogTitle>
-              <Popover>
-                <PopoverTrigger disableButtonEnhancement>
-                  <Button id="popover-trigger-btn">Toggle popover</Button>
-                </PopoverTrigger>
-                <PopoverSurface aria-label="popover">
-                  <Button id="popover-inner-btn">Inner action</Button>
-                </PopoverSurface>
-              </Popover>
-            </DialogBody>
-          </DialogSurface>
-        </Dialog>,
-      );
+      const Example = () => {
+        const [mountNode, setMountNode] = React.useState<HTMLDialogElement | null>(null);
+        return (
+          <Dialog modalType="modal">
+            <DialogTrigger>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface ref={setMountNode}>
+              <DialogBody>
+                <DialogTitle>Dialog title</DialogTitle>
+                {/* Legacy portaled surfaces must stay inside the native modal's non-inert subtree. */}
+                <Popover mountNode={mountNode}>
+                  <PopoverTrigger disableButtonEnhancement>
+                    <Button id="popover-trigger-btn">Toggle popover</Button>
+                  </PopoverTrigger>
+                  <PopoverSurface aria-label="popover">
+                    <Button id="popover-inner-btn">Inner action</Button>
+                  </PopoverSurface>
+                </Popover>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+        );
+      };
+      mount(<Example />);
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('#popover-trigger-btn').realClick();
       cy.get('#popover-inner-btn').should('be.visible').realClick();

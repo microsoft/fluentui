@@ -27,7 +27,7 @@ const toPlacement = (shorthand: string): Placement => {
 };
 
 /**
- * `expected` values were recorded from Chrome 154 resolving the equivalent CSS (`position-area`, `position-try-fallbacks`, margins,
+ * Unpinned `expected` values were recorded from Chrome 154 resolving the equivalent CSS (`position-area`, `position-try-fallbacks`, margins,
  * `place-self: anchor-center` for centered placements) in a 1000x700 viewport.
  */
 const scenarios: Array<[string, Scenario]> = [
@@ -347,7 +347,7 @@ const scenarios: Array<[string, Scenario]> = [
       anchor: { left: 450, top: 60, width: 100, height: 40 },
       popup: { width: 200, height: 100 },
       pinned: true,
-      expected: { left: 400, top: 30 },
+      expected: { left: 400, top: -40 },
     },
   ],
   [
@@ -452,25 +452,47 @@ const scenarios: Array<[string, Scenario]> = [
     },
   ],
   [
-    'a popup that overflows the start of the viewport is moved inside',
+    'a pinned popup can overflow the start of the viewport',
     {
       pos: 'above',
       align: 'center',
       anchor: { left: 450, top: 20, width: 100, height: 40 },
       popup: { width: 200, height: 100 },
       pinned: true,
-      expected: { left: 400, top: 0 },
+      expected: { left: 400, top: -80 },
     },
   ],
   [
-    'a popup that overflows the end of the viewport is moved inside',
+    'a pinned popup can overflow the end of the viewport',
     {
       pos: 'below',
       align: 'center',
       anchor: { left: 450, top: 640, width: 100, height: 40 },
       popup: { width: 200, height: 100 },
       pinned: true,
-      expected: { left: 400, top: 600 },
+      expected: { left: 400, top: 680 },
+    },
+  ],
+  [
+    'a pinned popup preserves a large offset',
+    {
+      pos: 'above',
+      align: 'center',
+      anchor: { left: 450, top: 300, width: 100, height: 40 },
+      popup: { width: 200, height: 100 },
+      pinned: true,
+      offset: { main: 1000, cross: 0 },
+      expected: { left: 400, top: -800 },
+    },
+  ],
+  [
+    'an oversized popup stays above the anchor',
+    {
+      pos: 'above',
+      align: 'center',
+      anchor: { left: 450, top: 300, width: 100, height: 40 },
+      popup: { width: 1200, height: 800 },
+      expected: { left: 0, top: -500 },
     },
   ],
 ];

@@ -1,4 +1,5 @@
 import type { PlacementRect } from './computePlacement';
+import { isContainingBlock } from './containingBlock';
 
 const OVERFLOW = /auto|scroll|overlay|hidden|clip/;
 
@@ -35,12 +36,23 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
   const win = element.ownerDocument.defaultView;
   const root = element.ownerDocument.documentElement;
   const ancestors: HTMLElement[] = [];
+  const position = win?.getComputedStyle(element).position;
+  let strategy: 'absolute' | 'fixed' | undefined =
+    position === 'fixed' || position === 'absolute' ? position : undefined;
 
   for (let node = element.parentElement; win && node && node !== root; node = node.parentElement) {
-    const { overflow, overflowX, overflowY } = win.getComputedStyle(node);
+    const style = win.getComputedStyle(node);
+    const { overflow, overflowX, overflowY } = style;
 
-    if (OVERFLOW.test(overflow + overflowX + overflowY)) {
+    // Positioned descendants escape overflow between themselves and their containing block.
+    if (strategy && isContainingBlock(style, strategy)) {
+      strategy = undefined;
+    }
+    if (!strategy && OVERFLOW.test(overflow + overflowX + overflowY)) {
       ancestors.push(node);
+    }
+    if (style.position === 'fixed' || style.position === 'absolute') {
+      strategy = style.position;
     }
   }
 

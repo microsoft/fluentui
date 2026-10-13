@@ -5,7 +5,7 @@ const FORMS_CONTAINING_BLOCK = /transform|perspective|filter/;
 // Properties that are not supported are empty strings (i.e. in jsdom)
 const isSet = (value: string | undefined): boolean => !!value && value !== 'none';
 
-function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolute' | 'fixed'): boolean {
+export function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolute' | 'fixed'): boolean {
   return (
     (strategy === 'absolute' && !!style.position && style.position !== 'static') ||
     isSet(style.transform) ||

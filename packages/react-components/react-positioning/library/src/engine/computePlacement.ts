@@ -185,20 +185,31 @@ function place(
   { position, align }: Placement,
   rtl: boolean,
   centerSelf: boolean,
+  pinned: boolean,
 ): [left: number, top: number, fits: boolean] {
   const blockMain = isBlockAxis(position);
   // `low` is the left or top side
   const low = blockMain ? position === ABOVE : (position === BEFORE) !== rtl;
   const mainAxis = blockMain ? y : x;
   const crossAxis = blockMain ? x : y;
-  const main = placeMain(mainAxis, low, centerSelf);
+  const mainFits = mainAxis[6] + 2 * mainAxis[7] <= mainAxis[5][1] - mainAxis[5][0];
+  const main = placeMain(mainAxis, low, centerSelf && !pinned && mainFits);
   // Left and right are the physical sides, `start` of the inline axis is on the right for `rtl`
   const cross = blockMain
-    ? placeCross(crossAxis, align === CENTER ? 'center' : (align === START) !== rtl ? 'low' : 'high', centerSelf)
-    : placeCross(crossAxis, align === CENTER ? 'center' : align === START ? 'low' : 'high', centerSelf);
+    ? placeCross(
+        crossAxis,
+        align === CENTER ? 'center' : (align === START) !== rtl ? 'low' : 'high',
+        centerSelf && !pinned,
+      )
+    : placeCross(crossAxis, align === CENTER ? 'center' : align === START ? 'low' : 'high', centerSelf && !pinned);
 
-  main[0] = keepInside(mainAxis, main[0]);
-  cross[0] = keepInside(crossAxis, cross[0]);
+  // Oversized popups must stay beside the anchor rather than covering it.
+  if (!pinned) {
+    if (mainFits) {
+      main[0] = keepInside(mainAxis, main[0]);
+    }
+    cross[0] = keepInside(crossAxis, cross[0]);
+  }
   const fits = fitsInside(main[0], main[1], mainAxis) && fitsInside(cross[0], cross[1], crossAxis);
 
   return blockMain ? [cross[0], main[0], fits] : [main[0], cross[0], fits];
@@ -278,7 +289,7 @@ export function computePlacement(input: PlacementInput): PlacementOutput {
 
   for (const candidate of candidates) {
     const [x, y] = createAxes(getMargins?.(candidate));
-    const [left, top, fits] = place(x, y, candidate, rtl, centerSelf);
+    const [left, top, fits] = place(x, y, candidate, rtl, centerSelf, !!pinned);
     const output = { ...candidate, left, top };
     first ??= output;
 

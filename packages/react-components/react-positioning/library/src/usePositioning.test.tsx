@@ -4,6 +4,7 @@ import { createPositionManager } from './createPositionManager';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
+import { useMergedRefs, type ForwardRefComponent } from '@fluentui/react-utilities';
 
 // Mock createPositionManager to keep layout out of this test.
 // The mock dispatches the positioning end event asynchronously (via microtask),
@@ -33,25 +34,38 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent: React.FC<Pick<PositioningProps, 'onPositioningEnd' | 'strategy'>> = ({
-  onPositioningEnd,
-  strategy,
-}) => {
-  const { targetRef, containerRef } = usePositioning({ onPositioningEnd, strategy });
+const TestComponent: ForwardRefComponent<PositioningProps> = React.forwardRef((props, ref) => {
+  const { targetRef, containerRef } = usePositioning(props);
+  const mergedContainerRef = useMergedRefs(containerRef, ref);
 
   return (
     <>
       <button ref={targetRef} data-testid="target">
         Target
       </button>
-      <div ref={containerRef} data-testid="container">
+      <div ref={mergedContainerRef} data-testid="container">
         Container
       </div>
     </>
   );
-};
+});
 
 describe('usePositioning', () => {
+  it('preserves the trigger when the target option is explicitly undefined', async () => {
+    const { getByTestId } = render(<TestComponent target={undefined} />);
+
+    await act(async () => {
+      await new Promise(process.nextTick);
+    });
+
+    expect(createPositionManager).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        target: getByTestId('target'),
+        container: getByTestId('container'),
+      }),
+    );
+  });
+
   describe('onPositioningEnd', () => {
     it('calls onPositioningEnd with the positioning event', async () => {
       const onPositioningEnd = jest.fn();

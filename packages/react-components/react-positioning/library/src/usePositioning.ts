@@ -48,10 +48,10 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
       });
 
       managerRef.current = createPositionManager({
+        ...resolved,
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
-        ...resolved,
         strategy: resolved.strategy ?? (positionFixed ? 'fixed' : 'absolute'),
       });
     }
