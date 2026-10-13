@@ -542,8 +542,11 @@ export class BaseTextInput extends FASTElement {
   public inputHandler(e: InputEvent): boolean | void {
     this.dirtyValue = true;
     this.isUserInput = true;
-    this.value = this.control.value;
-    this.isUserInput = false;
+    try {
+      this.value = this.control.value;
+    } finally {
+      this.isUserInput = false;
+    }
 
     return true;
   }
