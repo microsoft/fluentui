@@ -1012,9 +1012,9 @@ export class BaseTextArea extends FASTElement {
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     // @internal
-    changeHandler(e: InputEvent): boolean;
+    changeHandler(e: InputEvent): boolean | void;
     checkValidity(): boolean;
-    clickHandler(e: MouseEvent): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -1043,9 +1043,9 @@ export class BaseTextInput extends FASTElement {
     // @internal
     initialValueChanged(): void;
     // @internal
-    inputHandler(e: InputEvent): boolean;
+    inputHandler(e: InputEvent): boolean | void;
     // @internal
-    keydownHandler(e: KeyboardEvent): boolean;
+    keydownHandler(e: KeyboardEvent): boolean | void;
     list: string;
     maxlength: number;
     minlength: number;

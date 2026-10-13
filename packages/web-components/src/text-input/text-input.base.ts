@@ -431,13 +431,11 @@ export class BaseTextInput extends FASTElement {
    * "Change" events are not `composable` so they will not permeate the shadow DOM boundary. This function effectively
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
-  public changeHandler(e: InputEvent): boolean {
-    // Already emitted on Enter; this is the browser's later native `change` for the same value.
-    if (this.control.value === this.committedValue) {
-      return true;
+  public changeHandler(e: InputEvent): boolean | void {
+    // Skip if already emitted on Enter; the browser's later native `change` has the same value.
+    if (this.control.value !== this.committedValue) {
+      this.emitChange(e);
     }
-
-    this.emitChange(e);
 
     return true;
   }
@@ -472,7 +470,7 @@ export class BaseTextInput extends FASTElement {
    *
    * @param e - the event object
    */
-  public clickHandler(e: MouseEvent): boolean {
+  public clickHandler(e: MouseEvent): boolean | void {
     if (e.target === this) {
       this.control?.click();
     }
@@ -539,7 +537,7 @@ export class BaseTextInput extends FASTElement {
    *
    * @internal
    */
-  public inputHandler(e: InputEvent): boolean {
+  public inputHandler(e: InputEvent): boolean | void {
     this.dirtyValue = true;
     this.isUserInput = true;
     try {
@@ -557,7 +555,7 @@ export class BaseTextInput extends FASTElement {
    * @param e - the event object
    * @internal
    */
-  public keydownHandler(e: KeyboardEvent): boolean {
+  public keydownHandler(e: KeyboardEvent): boolean | void {
     if (e.key !== 'Enter') {
       return true;
     }
@@ -565,6 +563,7 @@ export class BaseTextInput extends FASTElement {
     // Enter that confirms an IME composition must not commit or submit.
     // `keyCode` 229 means the IME handled the key; Safari fires this keydown
     // after `compositionend`, when `isComposing` is already false.
+    // See details: https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event#keydown_events_with_ime
     if (e.isComposing || e.keyCode === 229) {
       return true;
     }
