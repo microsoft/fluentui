@@ -248,6 +248,10 @@ Calendar owns selected-date, displayed-date, and picker-view state. The day and 
 
 The styled components use Tabster arrow-navigation groups. Base state hooks are exported for a headless layer and intentionally leave picker resolution or roving-focus behavior to the caller.
 
+The day and month base hooks reserve `data-fui-calendar-picker="day"` and `data-fui-calendar-picker="month"` on their roots.
+Calendar uses these behavioral markers, not styled class names, to restore focus when a focused picker is hidden.
+Custom renderers must preserve the base root props. Moving focus outside Calendar cancels pending restoration.
+
 ### DOM
 
 The default DOM is equivalent to:
@@ -256,7 +260,7 @@ The default DOM is equivalent to:
 <div class="fui-Calendar">
   <div aria-live="polite" aria-atomic="true">Selected: June 18, 2025</div>
 
-  <div class="fui-CalendarDay">
+  <div class="fui-CalendarDay" data-fui-calendar-picker="day">
     <div>
       <div><span aria-live="polite">June 2025</span></div>
       <div>
@@ -279,7 +283,7 @@ The default DOM is equivalent to:
   <div class="fui-Calendar__divider"></div>
 
   <div>
-    <div class="fui-CalendarMonth">
+    <div class="fui-CalendarMonth" data-fui-calendar-picker="month">
       <div>... year heading and previous/next year buttons ...</div>
       <div role="grid" aria-label="2025">... month gridcells ...</div>
     </div>

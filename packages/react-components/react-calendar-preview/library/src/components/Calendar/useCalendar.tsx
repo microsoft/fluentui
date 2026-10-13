@@ -398,14 +398,10 @@ export const useCalendarBase_unstable = (
     isFocusWithin.current = true;
     props.onFocusCapture?.(ev);
 
-    const target = ev.target;
-    if (target.closest('.fui-CalendarDay')) {
-      focusedPicker.current = 'day';
-    } else if (target.closest('.fui-CalendarMonth')) {
-      focusedPicker.current = 'month';
-    } else {
-      focusedPicker.current = undefined;
-    }
+    const picker = ev.target.closest('[data-fui-calendar-picker]');
+    const pickerType =
+      picker && ev.currentTarget.contains(picker) ? picker.getAttribute('data-fui-calendar-picker') : undefined;
+    focusedPicker.current = pickerType === 'day' || pickerType === 'month' ? pickerType : undefined;
   });
 
   const onRootBlurCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {

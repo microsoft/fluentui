@@ -279,7 +279,9 @@ export const useCalendarMonthBase_unstable = (
       grid: 'div',
       yearPicker: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', props), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', { ...props, 'data-fui-calendar-picker': 'month' }), {
+      elementType: 'div',
+    }),
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
