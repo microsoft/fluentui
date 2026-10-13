@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tags",
-  "version": "9.9.5",
+  "version": "9.9.7",
   "description": "Fluent UI Tag component",
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
@@ -13,14 +13,14 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.9",
-    "@fluentui/react-aria": "^9.17.14",
-    "@fluentui/react-avatar": "^9.11.6",
+    "@fluentui/react-aria": "^9.17.15",
+    "@fluentui/react-avatar": "^9.11.8",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-jsx-runtime": "^9.4.5",
-    "@fluentui/react-shared-contexts": "^9.26.3",
-    "@fluentui/react-tabster": "^9.26.17",
+    "@fluentui/react-jsx-runtime": "^9.4.6",
+    "@fluentui/react-shared-contexts": "^9.26.4",
+    "@fluentui/react-tabster": "^9.26.18",
     "@fluentui/react-theme": "^9.2.2",
-    "@fluentui/react-utilities": "^9.26.6",
+    "@fluentui/react-utilities": "^9.26.7",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1"
   },

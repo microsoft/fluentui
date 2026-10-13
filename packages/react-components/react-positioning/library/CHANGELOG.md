@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.3)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.2..@fluentui/react-positioning_v9.23.3)
+
+### Patches
+
+- fix: improve safe zone hit testing and avoid rerenders during pointer movement ([PR #36708](https://github.com/microsoft/fluentui/pull/36708) by jakubmiskech@microsoft.com)
+
+## [9.23.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.2)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.23.1..@fluentui/react-positioning_v9.23.2)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional, require use-sync-external-store ^1.4.0 for react 19 support ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Treat unavailable positioning geometry as indeterminate when reporting visibility flags. ([PR #36758](https://github.com/microsoft/fluentui/pull/36758) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.23.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.23.1)
 

@@ -4,6 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Tabs (Pivot) Migration
 
+## Overview
+
+Fluent UI v8's `Pivot` and `PivotItem` migrate to v9's `TabList` and `Tab` composition, with tab labels and content represented separately.
+
 ## v8 Pivot & PivotItem
 
 In v8, you declare a `Pivot` with a list of `PivotItem` components as children.
@@ -48,30 +52,64 @@ To migrate from `Pivot` to `TabList`
 - add the `onTabSelect` event handler to set the selected tab value as state
 - update the content element to render the selected tabs content.
 
+Moving panels outside `TabList` also makes their surrounding layout explicit.
+Preserve the source's fill and width behavior, and style the tab strip, panel
+region, fields, and adjacent status or help content as one composition. Use
+Fluent spacing tokens for gaps and padding; do not add arbitrary maximum
+widths merely to compact the example.
+
 For example, here is the previous `Pivot` example migrated to use `TabList`
 
 ```tsx
-const [selectedValue, setSelectedValue] = React.useState<TabValue>();
+const [selectedValue, setSelectedValue] = React.useState<TabValue>('tab1');
 
 const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
-    setSelectedValue(data.value);
+  setSelectedValue(data.value);
 };
 
 //...
 
-<TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
-  <Tab value="tab1">First Tab</Tab>
-  <Tab value="tab2">Second Tab</Tab>
-  <Tab value="tab3">Third Tab</Tab>
-</TabList>
-<div>
-  {selectedValue === 'tab1' && <div>Content 1</div>}
-  {selectedValue === 'tab2' && <div>Content 2</div>}
-  {selectedValue === 'tab3' && <div>Content 3</div>}
-</div>
+<>
+  <TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
+    <Tab id="tab1" value="tab1" aria-controls="panel1">
+      First Tab
+    </Tab>
+    <Tab id="tab2" value="tab2" aria-controls="panel2">
+      Second Tab
+    </Tab>
+    <Tab id="tab3" value="tab3" aria-controls="panel3">
+      Third Tab
+    </Tab>
+  </TabList>
+  <div>
+    <div id="panel1" role="tabpanel" aria-labelledby="tab1" hidden={selectedValue !== 'tab1'}>
+      Content 1
+    </div>
+    <div id="panel2" role="tabpanel" aria-labelledby="tab2" hidden={selectedValue !== 'tab2'}>
+      Content 2
+    </div>
+    <div id="panel3" role="tabpanel" aria-labelledby="tab3" hidden={selectedValue !== 'tab3'}>
+      Content 3
+    </div>
+  </div>
+</>;
 ```
 
-## Pivot -> TabList Props Mapping
+v8 selects the first `PivotItem` when neither `selectedKey` nor
+`defaultSelectedKey` is supplied. v9 `TabList` has no implicit initial
+selection, so initialize controlled state to the first value as above, or use
+`defaultSelectedValue="tab1"` for an uncontrolled list.
+
+The canonical v9 panel pattern gives each `Tab` a stable `id` and each panel
+`role="tabpanel"` plus `aria-labelledby`. When panels stay mounted, also connect
+each tab with `aria-controls`.
+
+v8 `PivotItem alwaysRender` keeps inactive content mounted. Preserve that
+behavior by rendering every stateful panel and toggling the HTML `hidden`
+attribute. Conditional rendering unmounts inactive panels and loses local
+state, focus, and pending work.
+
+## Prop Mapping
 
 | v8                 | v9                             |
 | ------------------ | ------------------------------ |
@@ -92,18 +130,18 @@ const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
 | theme              | (use FluentProvider)           |
 |                    | vertical                       |
 
-## PivotItem -> Tab Props Mapping
+### PivotItem -> Tab Props Mapping
 
-| v8                | v9             |
-| ----------------- | -------------- |
-| componentRef      | ref            |
-| linkText          | (removed)      |
-| headerText        | (use children) |
-| headerButtonProps | (removed)      |
-| itemKey           | value          |
-| ariaLabel         | aria-label     |
-| itemCount         | (removed)      |
-| itemIcon          | icon (slot)    |
-| onRenderItemLink  | (removed)      |
-| keytipProps       | (removed)      |
-| alwaysRender      | (removed)      |
+| v8                | v9                                      |
+| ----------------- | --------------------------------------- |
+| componentRef      | ref                                     |
+| linkText          | (use children, same as `headerText`)    |
+| headerText        | (use children)                          |
+| headerButtonProps | (removed)                               |
+| itemKey           | value                                   |
+| ariaLabel         | aria-label                              |
+| itemCount         | (removed)                               |
+| itemIcon          | icon (slot)                             |
+| onRenderItemLink  | Custom `Tab` children/content           |
+| keytipProps       | (removed)                               |
+| alwaysRender      | Keep panels mounted and toggle `hidden` |

@@ -17,12 +17,7 @@ export const Default = (): React.ReactNode => {
 
   return (
     <>
-      <Drawer
-        className={styles.drawerOverlay}
-        open={open}
-        onOpenChange={(_, data) => setOpen(data.open)}
-        unmountOnClose={false}
-      >
+      <Drawer className={styles.drawerOverlay} open={open} onOpenChange={(_, data) => setOpen(data.open)}>
         <DrawerHeader className={styles.drawerHeader}>
           <DrawerHeaderTitle
             action={
@@ -38,6 +33,7 @@ export const Default = (): React.ReactNode => {
         </DrawerHeader>
 
         <DrawerBody className={styles.drawerBody}>
+          <p>The drawer unmounts after its slide-out keyframes finish.</p>
           <DrawerContent />
         </DrawerBody>
 

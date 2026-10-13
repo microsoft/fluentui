@@ -1,9 +1,8 @@
 pr: none
 trigger: none
 
-# Customize build number to include major version
 # Example: web-components_20201022.1
-name: 'web-components_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "web-components_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -16,8 +15,6 @@ variables:
   - template: .devops/templates/variables.yml
   - name: release.web_components # Used to scope beachball to release only vnext packages
     value: true
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -72,7 +69,6 @@ extends:
                   steps:
                     - script: |
                         yarn beachball publish --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
-                        git reset --hard origin/master
                       env:
                         BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
                         BEACHBALL_NPM_TOKEN: $(npmToken)

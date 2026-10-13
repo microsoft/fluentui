@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: correct submenu sizing in WebKit",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

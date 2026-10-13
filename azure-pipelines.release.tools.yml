@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: tools_20201022.1
-name: 'tools_$(Date:yyyyMMdd)$(Rev:.r)'
+name: "tools_${{ iif(parameters.dryRun, 'dryrun_', '') }}$(Date:yyyyMMdd)$(Rev:.r)"
 
 parameters:
   - name: dryRun
@@ -14,8 +14,6 @@ parameters:
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
-  - name: tags
-    value: production,externalfacing
 
 resources:
   repositories:
@@ -74,7 +72,6 @@ extends:
                   steps:
                     - script: |
                         yarn beachball publish --config scripts/beachball/src/release-tools.config.js --message 'release: applying package updates - tools'
-                        git reset --hard origin/master
                       env:
                         BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
                         BEACHBALL_NPM_TOKEN: $(npmToken)

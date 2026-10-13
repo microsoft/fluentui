@@ -1,18 +1,13 @@
 'use client';
 
-import * as React from 'react';
+import { useAvatarGroupContextValues as useAvatarGroupContextValues_unstable } from '@fluentui/react-avatar';
 
-import type { AvatarGroupContextValue, AvatarGroupContextValues, AvatarGroupState } from './AvatarGroup.types';
+import type { AvatarGroupContextValues, AvatarGroupState } from './AvatarGroup.types';
 
 /**
  * Builds the context value shared with the AvatarGroupItems and AvatarGroupPopover
- * rendered inside the AvatarGroup. Only the design-agnostic `layout` is forwarded;
- * the styling `size` is owned by the consumer.
+ * rendered inside the AvatarGroup.
  */
-export const useAvatarGroupContextValues = (state: AvatarGroupState): AvatarGroupContextValues => {
-  const { layout } = state;
-
-  const avatarGroup = React.useMemo<AvatarGroupContextValue>(() => ({ layout }), [layout]);
-
-  return { avatarGroup };
-};
+export const useAvatarGroupContextValues = useAvatarGroupContextValues_unstable as (
+  state: AvatarGroupState,
+) => AvatarGroupContextValues;

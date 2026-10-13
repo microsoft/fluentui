@@ -1,0 +1,36 @@
+.presenceBadge {
+  display: inline-flex;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  color: var(--text-soft);
+  overflow: hidden;
+}
+
+.presenceIcon {
+  display: flex;
+}
+
+.presenceBadge[data-status='available'] {
+  color: var(--success);
+}
+
+.presenceBadge[data-status='away'] {
+  color: var(--warning);
+}
+
+.presenceBadge[data-status='busy'],
+.presenceBadge[data-status='do-not-disturb'],
+.presenceBadge[data-status='blocked'] {
+  color: var(--danger);
+}
+
+.presenceBadge[data-status='out-of-office'] {
+  color: var(--brand);
+}
+
+.demo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}

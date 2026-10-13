@@ -1,16 +1,13 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  height: 22px;
-  padding: 0 8px;
+  gap: var(--space-1);
+  min-block-size: var(--space-6);
+  padding-inline: var(--space-2);
   border-radius: var(--radius-pill);
   background: var(--surface-muted);
   color: var(--text);
-  border: 1px solid var(--border);
-  font-size: 11.5px;
-  font-weight: 500;
-  letter-spacing: 0;
+  border: var(--stroke-thin) solid var(--border);
 }
 
 .solid {
@@ -32,8 +29,8 @@
 }
 
 .danger {
-  background: var(--brand-soft);
-  color: var(--brand);
+  background: var(--danger-soft);
+  color: var(--danger);
   border-color: transparent;
 }
 
@@ -50,37 +47,31 @@
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  inline-size: var(--space-2);
+  block-size: var(--space-2);
   border-radius: 50%;
   background: currentColor;
   display: inline-block;
 }
 
-.icon {
-  width: 12px;
-  height: 12px;
-}
-
 .counter {
-  height: 18px;
-  min-width: 18px;
-  padding: 0 6px;
-  font-size: 10.5px;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--space-6);
+  min-block-size: var(--space-6);
+  padding-inline: var(--space-1);
+  border-radius: var(--radius-pill);
   background: var(--brand);
-  color: white;
-  border-color: transparent;
+  color: var(--text-on-accent);
+  font-weight: 600;
 }
 
 /* Demo helpers (used by Storybook examples) */
 
 .demo {
   display: flex;
-
   align-items: center;
-
-  gap: 12px;
-
+  gap: var(--space-3);
   flex-wrap: wrap;
 }

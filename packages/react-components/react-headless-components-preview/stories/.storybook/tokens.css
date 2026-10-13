@@ -94,6 +94,7 @@
   --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --font-display: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-weight-semibold: 600;
 
   --tracking-display: -0.03em;
   --tracking-heading: -0.02em;

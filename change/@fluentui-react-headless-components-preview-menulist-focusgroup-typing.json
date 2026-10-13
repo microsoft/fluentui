@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use global focusgroup typing for MenuListState instead of a local intersection",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

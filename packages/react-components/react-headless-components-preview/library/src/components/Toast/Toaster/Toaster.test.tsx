@@ -26,9 +26,9 @@ describe('Toaster', () => {
     // (not inside the Toaster's React tree) so a single shared region serves
     // the whole app. The DOM fallback path only renders an assertive region;
     // polite messages on browsers without `ariaNotify` are announced assertively.
-    render(<Toaster />);
+    const { baseElement } = render(<Toaster />);
 
-    expect(document.body.querySelector('[aria-live="assertive"]')).not.toBeNull();
+    expect(baseElement.querySelector('[aria-live="assertive"]')).not.toBeNull();
   });
 
   it('does not render position containers when there are no toasts', () => {
@@ -43,6 +43,21 @@ describe('Toaster', () => {
     render(<Toaster announce={jest.fn()} />);
 
     expect(document.body.querySelectorAll('[aria-live]').length).toBe(before);
+  });
+
+  it('uses list semantics with native block-axis focusgroup navigation', () => {
+    let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
+    const Test = () => {
+      dispatchToast = useToastController().dispatchToast;
+      return <Toaster />;
+    };
+    const { getByRole } = render(<Test />);
+
+    act(() => {
+      dispatchToast('toast', { timeout: -1 });
+    });
+
+    expect(getByRole('list')).toHaveAttribute('focusgroup', 'toolbar block itemcontrols');
   });
 
   it('limits the number of rendered toasts', () => {

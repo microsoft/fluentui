@@ -2,6 +2,20 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "a03842ae491e89168bbb76f338409f286fd66e74",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Aug 2026 16:40:04 GMT",
       "version": "9.4.3",
       "tag": "@fluentui/priority-overflow_v9.4.3",

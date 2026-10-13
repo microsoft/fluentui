@@ -630,6 +630,25 @@ describe('calloutData', () => {
     const result = utils.calloutData(values);
     matchResult(result);
   });
+
+  it('should treat prototype field names as ordinary x coordinates', () => {
+    const values = [
+      {
+        legend: 'Line 1',
+        data: [{ x: '__proto__', y: 10 }],
+      },
+    ] as unknown as ILineChartPoints[];
+
+    expect(Object.getOwnPropertyDescriptor(utils.calloutData(values), '__proto__')?.value).toEqual([
+      expect.objectContaining({ legend: 'Line 1', y: 10 }),
+    ]);
+  });
+});
+
+it('should return a null-prototype grouping object', () => {
+  const result = utils.calloutData([{ legend: 'Line 1', data: [{ x: 10, y: 20 }] }]);
+
+  expect(Object.getPrototypeOf(result)).toBeNull();
 });
 
 test(`getUnique should return an array of data points with unique values
@@ -1006,6 +1025,18 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
     const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, X_ORIGIN);
     matchResult(result);
+  });
+
+  describe('groupChartDataByYValue', () => {
+    it('treats prototype field names as ordinary axis values', () => {
+      const prototypePoint: IHorizontalBarChartWithAxisDataPoint = { x: 10, y: '__proto__' };
+      const constructorPoint: IHorizontalBarChartWithAxisDataPoint = { x: 20, y: 'constructor' };
+
+      expect(utils.groupChartDataByYValue([prototypePoint, constructorPoint])).toEqual([
+        [prototypePoint],
+        [constructorPoint],
+      ]);
+    });
   });
 });
 

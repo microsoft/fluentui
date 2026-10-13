@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-charts
 
-<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.27)
+
+Wed, 23 Sep 2026 09:04:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.26..@fluentui/react-charts_v9.3.27)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.14.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.26)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.3.25..@fluentui/react-charts_v9.3.26)
+
+### Patches
+
+- feat: add custom callout rendering to GaugeChart ([PR #36730](https://github.com/microsoft/fluentui/pull/36730) by atisjai@microsoft.com)
+- fix(react-charts): prevent prototype pollution in chart data grouping ([PR #36715](https://github.com/microsoft/fluentui/pull/36715) by v-baambati@microsoft.com)
+- fixed prototypr issue in vegalite adapter ([PR #36743](https://github.com/microsoft/fluentui/pull/36743) by v-baambati@microsoft.com)
+- Added test cases prototype pollution fix ([PR #36737](https://github.com/microsoft/fluentui/pull/36737) by v-baambati@microsoft.com)
+- feat: allow a function for the cartesian tickFormat so the numeric value axis can render a literal % or route through an app/i18n formatter (string behavior unchanged) ([PR #36369](https://github.com/microsoft/fluentui/pull/36369) by michael@xerilium.com)
+- Bump @fluentui/react-button to v9.11.1 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-overflow to v9.9.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-popover to v9.14.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.18 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.6 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.3.25)
 

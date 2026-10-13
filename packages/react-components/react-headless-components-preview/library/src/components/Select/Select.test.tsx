@@ -8,6 +8,7 @@ describe('Select', () => {
     Component: Select,
     displayName: 'Select',
     primarySlot: 'select',
+    requiredProps: { 'aria-label': 'Options' },
   });
 
   it('renders a default state', () => {

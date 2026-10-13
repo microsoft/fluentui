@@ -8,10 +8,12 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
+import type * as React_2 from 'react';
 import type { TooltipBaseProps } from '@fluentui/react-tooltip';
 import type { TooltipBaseState } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
-import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import type { TooltipTriggerProps as TooltipTriggerProps_2 } from '@fluentui/react-tooltip';
+import type { TriggerProps } from '@fluentui/react-utilities';
 
 export { OnVisibleChangeData }
 
@@ -25,7 +27,7 @@ export const Tooltip: {
 };
 
 // @public
-export type TooltipProps = Omit<TooltipBaseProps, 'mountNode' | 'positioning'> & {
+export type TooltipProps = Omit<TooltipBaseProps, 'children' | 'mountNode' | 'positioning'> & TriggerProps<TooltipTriggerProps> & {
     positioning?: PositioningShorthand;
 };
 
@@ -38,7 +40,8 @@ export type TooltipState = Omit<TooltipBaseState, 'mountNode' | 'hidden'> & {
     };
 };
 
-export { TooltipTriggerProps }
+// @public (undocumented)
+export type TooltipTriggerProps = TooltipTriggerProps_2 & Pick<React_2.HTMLAttributes<HTMLElement>, 'onPointerUp'>;
 
 // @public
 export const useTooltip: (props: TooltipProps) => TooltipState;

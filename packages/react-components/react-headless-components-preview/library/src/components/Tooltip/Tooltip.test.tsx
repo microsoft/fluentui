@@ -4,6 +4,9 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
 import { Tooltip } from './Tooltip';
+import { useTooltip } from './useTooltip';
+import { renderTooltip } from './renderTooltip';
+import type { TooltipProps } from './Tooltip.types';
 
 export const getTooltipElement: IsConformantOptions['getTargetElement'] = () => {
   return screen.queryByRole('tooltip') as HTMLElement;
@@ -109,6 +112,26 @@ describe('Tooltip', () => {
     );
 
     expect(screen.getByRole('tooltip').querySelector('[data-arrow]')).not.toBeNull();
+  });
+
+  // Regression test for https://github.com/microsoft/fluentui/issues/36650 — renderTooltip dropped
+  // state.arrowClassName, so a styled layer setting it between useTooltip and renderTooltip never
+  // reached the arrow element.
+  it('applies state.arrowClassName to the arrow element', () => {
+    const StyledTooltip = (props: TooltipProps) => {
+      const state = useTooltip(props);
+      state.arrowClassName = 'custom-arrow-class';
+      return renderTooltip(state);
+    };
+
+    render(
+      <StyledTooltip content="Styled arrow tooltip" relationship="label" visible withArrow>
+        <button>Trigger</button>
+      </StyledTooltip>,
+    );
+
+    const arrow = screen.getByRole('tooltip').querySelector('[data-arrow]');
+    expect(arrow).toHaveClass('custom-arrow-class');
   });
 
   it('does not render arrow element when withArrow is false', () => {
