@@ -47,9 +47,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
 
   const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
-  if (open && !shouldRenderSurface) {
-    setShouldRenderSurface(true);
-  }
   const focusWasInsideOnNativeClose = React.useRef(false);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
@@ -149,6 +146,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
 
+    setShouldRenderSurface(true);
     focusWasInsideOnNativeClose.current = false;
     const trackNativeCloseFocus = (event: Event) => {
       if (event.type === 'cancel' || (event as ToggleEvent).newState === 'closed') {
@@ -231,7 +229,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setContextTarget,
     positioning,
     surfaceId,
-    shouldRenderSurface,
+    shouldRenderSurface: open || shouldRenderSurface,
   };
 };
 

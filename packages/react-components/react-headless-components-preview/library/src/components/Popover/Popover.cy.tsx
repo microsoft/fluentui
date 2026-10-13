@@ -24,6 +24,7 @@ describe('nested shadow focus restoration', () => {
         setRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
       }
     }, []);
+    // A portal puts the focused control inside the shadow root, not in the host's light DOM.
     return (
       <div ref={attachRoot} data-testid="nested-host">
         {root &&
@@ -465,6 +466,44 @@ describe('Popover', () => {
 
   describe('Focus trap', () => {
     const trapSurfaceSelector = 'dialog';
+
+    it('keeps the surface open when native Escape cancellation is prevented', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(
+        <Popover defaultOpen trapFocus onOpenChange={onOpenChange}>
+          <PopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface onCancel={event => event.preventDefault()}>
+            <button data-testid="inner">Inner</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=inner]').should('have.focus').realPress('Escape');
+      cy.get(trapSurfaceSelector).should('be.visible').and('have.attr', 'open');
+      cy.get('[data-testid=trigger]').should('have.attr', 'aria-expanded', 'true');
+      cy.get('[data-testid=inner]').should('have.focus');
+      cy.get('@onOpenChange').should('not.have.been.called');
+    });
+
+    it('restores focus and unmounts after the native dialog close event', () => {
+      mount(
+        <Popover defaultOpen trapFocus>
+          <PopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button data-testid="inner">Inner</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=inner]').should('have.focus');
+      cy.get<HTMLDialogElement>(trapSurfaceSelector).then($dialog => $dialog[0].close());
+      cy.get(trapSurfaceSelector).should('not.exist');
+      cy.get('[data-testid=trigger]').should('have.focus');
+    });
 
     it('does not move focus into the surface when opened on hover without focus trapping', () => {
       mount(
