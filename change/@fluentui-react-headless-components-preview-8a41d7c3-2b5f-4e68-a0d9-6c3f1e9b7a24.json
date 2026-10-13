@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(usePositioning): use CSS anchor positioning by default, and the engine of @fluentui/react-positioning when the browser doesn't support it or an option can't be handled by CSS",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "kirpadv@gmail.com"
+}

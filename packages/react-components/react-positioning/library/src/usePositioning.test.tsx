@@ -4,9 +4,9 @@ import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
 
-// Mock createPositionManager to avoid @floating-ui/dom dependency in this test.
+// Mock createPositionManager to keep layout out of this test.
 // The mock dispatches the positioning end event asynchronously (via microtask),
-// matching the real implementation's debounce + computePosition promise chain.
+// matching the real implementation's debounced update.
 jest.mock('./createPositionManager', () => ({
   createPositionManager: jest.fn(({ container }: { container: HTMLElement }) => {
     const dispatchEnd = () => {

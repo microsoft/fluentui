@@ -1,9 +1,8 @@
 import type * as React from 'react';
 
 /**
- * Physical placement of a positioned element relative to its target, as computed by Floating UI.
- * This is a Fluent-owned equivalent of Floating UI's `Placement` type, avoiding a transitive
- * dependency on `@floating-ui/dom` in the public API surface.
+ * Physical placement of a positioned element relative to its target.
+ * `start` and `end` alignments follow the direction of the content.
  */
 export type PositioningPlacement =
   | 'top'
@@ -21,24 +20,22 @@ export type PositioningPlacement =
 
 /**
  * Detail payload of the positioning end event, providing the final computed placement
- * after all middleware (flip, shift, etc.) have run.
+ * after flipping and shifting.
  */
 export type OnPositioningEndEventDetail = {
   /**
    * The computed placement of the positioned element. May differ from the requested
-   * placement if flip or other middleware adjusted it.
+   * placement if it was flipped.
    */
   placement: PositioningPlacement;
 
   /**
-   * True when the floating element has escaped its clipping boundary,
-   * as reported by Floating UI's hide middleware.
+   * True when the positioned element is outside of its clipping boundary.
    */
   escaped: boolean;
 
   /**
-   * True when the reference element is clipped or out of view,
-   * as reported by Floating UI's hide middleware.
+   * True when the reference element is clipped or out of view.
    */
   referenceHidden: boolean;
 };
@@ -218,6 +215,7 @@ export interface PositioningOptions {
   /**
    * When the reference element or the viewport is outside viewport allows a positioned element to be fully in viewport.
    * "all" enables this behavior for all axis.
+   * Currently has no effect: the positioned element is always kept inside its boundary.
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_disableTether?: boolean | 'all';
@@ -247,7 +245,7 @@ export interface PositioningOptions {
   /**
    * Called when a position update has finished. Multiple position updates can happen in a single render,
    * since positioning happens outside of the React lifecycle.
-   * The event's `detail.placement` indicates the final computed placement after middleware adjustments.
+   * The event's `detail.placement` indicates the final computed placement after flipping.
    *
    * It's also possible to listen to the custom DOM event `fui-positioningend`
    */
@@ -261,6 +259,7 @@ export interface PositioningOptions {
   /**
    * When true, the positioned element will shift to cover the target element when there's not enough space.
    * @default false
+   * Currently has no effect: the positioned element is always kept inside its boundary.
    */
   shiftToCoverTarget?: boolean;
 }

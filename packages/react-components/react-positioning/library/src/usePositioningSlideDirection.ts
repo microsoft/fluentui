@@ -9,7 +9,7 @@ const registeredProperties = new WeakMap<Document, Set<string>>();
 const slideDirectionProperties = [POSITIONING_SLIDE_DIRECTION_VAR_X, POSITIONING_SLIDE_DIRECTION_VAR_Y];
 
 /**
- * Returns the slide direction unit vectors for a given Floating UI placement.
+ * Returns the slide direction unit vectors for a given placement.
  * Values are -1, 0, or 1, representing the direction the element slides in from.
  */
 export function getPlacementSlideDirections(placement: string): { x: number; y: number } {

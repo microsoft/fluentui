@@ -1,20 +1,46 @@
 'use client';
 
 import * as React from 'react';
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { createPositionManager } from '@fluentui/react-positioning';
 import type {
+  PositionManager,
+  PositionManagerOptions,
   PositioningImperativeRef,
   PositioningShorthandValue,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-import type { PositioningProps, PositioningReturn } from './types';
-import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
+import type { PositioningReturn, UsePositioningOptions } from './types';
+import { POSITIONS, ALIGNMENTS } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
-import { usePlacementObserver } from './usePlacementObserver';
+import {
+  applyOffset,
+  computePosition,
+  getCoverSelfAlignment,
+  getPositionArea,
+  resolveElementRef,
+  resolveOffset,
+  shorthandToPositionArea,
+} from './utils';
+
+let nextAnchorId = 0;
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
+
+/**
+ * CSS anchor positioning with the features that are used by the hook.
+ */
+const supportsAnchorPositioning = (): boolean =>
+  !!globalThis.CSS?.supports?.('(anchor-name: --a) and (position-area: top)');
+
+const CSS_ANCHOR_PROPERTIES = [
+  'position-anchor',
+  'position-area',
+  'position-try-fallbacks',
+  'place-self',
+  'align-self',
+  'justify-self',
+];
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
@@ -32,7 +58,14 @@ const readAnchorNames = (element: HTMLElement): string[] => {
     .filter(Boolean);
 };
 
-export function usePositioning(options: PositioningProps): PositioningReturn {
+/**
+ * Positions an element next to a target using CSS anchor positioning.
+ *
+ * The position is computed in JavaScript, with `@fluentui/react-positioning`, when the browser doesn't support CSS
+ * anchor positioning or when an option can't be handled by CSS: function offsets, boundaries and virtual element
+ * targets. `autoSize`, the arrow and `onPositioningEnd` are handled for both.
+ */
+export function usePositioning(options: UsePositioningOptions): PositioningReturn {
   const {
     pinned,
     target: customTarget = null,
@@ -44,6 +77,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     strategy = 'fixed',
     matchTargetSize,
     positioningRef,
+    enabled = true,
   } = options;
 
   const align = normalizeAlign(alignInput);
@@ -56,32 +90,106 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
+  const [arrowEl, setArrowEl] = React.useState<HTMLElement | null>(null);
+  const [imperativeTarget, setImperativeTarget] = React.useState<TargetElement | null>(null);
+  const positioningTarget: TargetElement | null = imperativeTarget ?? customTarget ?? triggerEl;
+  // CSS can only anchor to elements
+  const effectiveTarget = resolveElementRef(positioningTarget);
 
-  const anchorName = `--${useId('popover-anchor-')}`;
-  const positionArea = POSITION_AREA_MAP[position][align];
+  // The result doesn't change during the lifetime of the component
+  const [supportsAnchors] = React.useState(supportsAnchorPositioning);
+  // CSS needs an element to anchor to, and can't handle some of the options
+  const javaScriptPositioning =
+    !supportsAnchors ||
+    (!!positioningTarget && !effectiveTarget) ||
+    typeof offset === 'function' ||
+    !!(options.flipBoundary || options.overflowBoundary || options.overflowBoundaryPadding);
+
+  const [anchorName] = React.useState(() => `--popover-anchor-${++nextAnchorId}`);
+  const positionArea = getPositionArea(position, align);
   const placement = getPlacementString(position, align);
-
-  const { targetDocument } = useFluent();
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  // Read by the manager on every update
+  const [settings] = React.useState<Record<string, unknown>>({});
+  const managerRef = React.useRef<PositionManager | null>(null);
+  const nextSettings: Record<string, unknown> = { ...options, position, align: alignInput, strategy };
+  useIsomorphicLayoutEffect(() => {
+    const changed = Object.keys({ ...settings, ...nextSettings }).filter(key => settings[key] !== nextSettings[key]);
+    changed.forEach(key => {
+      settings[key] = nextSettings[key];
+    });
+
+    if (changed.length > 0) {
+      managerRef.current?.updatePosition();
+    }
+  });
+
+  const disableUpdateOnResize = options.disableUpdateOnResize;
+  useIsomorphicLayoutEffect(() => {
+    if (!enabled || !containerEl || !positioningTarget) {
+      return;
+    }
+
+    const onPositioningEndEvent = (e: Event) =>
+      (settings.onPositioningEnd as UsePositioningOptions['onPositioningEnd'])?.(
+        e as Parameters<NonNullable<UsePositioningOptions['onPositioningEnd']>>[0],
+      );
+    containerEl.addEventListener('fui-positioningend', onPositioningEndEvent);
+
+    const manager = createPositionManager(
+      Object.assign(settings, {
+        container: containerEl,
+        target: positioningTarget,
+        arrow: arrowEl,
+        // The browser picks the placement, it's detected from the rects
+        detectPlacement: javaScriptPositioning
+          ? undefined
+          : (target: TargetElement, container: HTMLElement) =>
+              !settings.coverTarget && 'nodeType' in target ? computePosition(target, container) : null,
+        onPlacement: ({
+          position: resolvedPosition,
+          align: resolvedAlign,
+        }: Parameters<NonNullable<PositionManagerOptions['onPlacement']>>[0]) =>
+          containerEl.setAttribute('data-placement', getPlacementString(resolvedPosition, resolvedAlign)),
+        attributes: {
+          placement: '',
+          hidden: 'data-positioning-hidden',
+          escaped: 'data-positioning-escaped',
+          intersecting: '',
+        },
+      }) as unknown as PositionManagerOptions,
+    );
+    managerRef.current = manager;
+
+    return () => {
+      containerEl.removeEventListener('fui-positioningend', onPositioningEndEvent);
+      manager.dispose();
+      managerRef.current = null;
+    };
+  }, [
+    enabled,
+    javaScriptPositioning,
+    containerEl,
+    positioningTarget,
+    arrowEl,
+    strategy,
+    disableUpdateOnResize,
+    settings,
+  ]);
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
-      setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
-      },
-      updatePosition: requestPlacementUpdate,
+      setTarget: setImperativeTarget,
+      updatePosition: () => managerRef.current?.updatePosition(),
     }),
-    [requestPlacementUpdate],
+    [],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    if (!effectiveTarget || !enabled || javaScriptPositioning) {
       return;
     }
 
@@ -107,23 +215,30 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
-
-  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
-  }, []);
+  }, [effectiveTarget, anchorName, enabled, javaScriptPositioning]);
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
       setContainerEl(node);
 
-      if (!node) {
+      if (!node || !enabled) {
+        return;
+      }
+
+      if (javaScriptPositioning) {
+        // The position is written by `@fluentui/react-positioning`, only the styles of the other mode are removed
+        CSS_ANCHOR_PROPERTIES.forEach(property => node.style.removeProperty(property));
+        if (matchTargetSize !== 'width') {
+          node.style.removeProperty('width');
+        }
+        node.setAttribute('data-placement', placement);
         return;
       }
 
       node.style.setProperty('position', strategy);
       node.style.setProperty('inset', 'auto');
       node.style.setProperty('margin', '0');
+      node.style.removeProperty('transform');
 
       applyOffset(node, position, mainAxis, crossAxis);
 
@@ -172,6 +287,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       }
     },
     [
+      enabled,
+      javaScriptPositioning,
       anchorName,
       positionArea,
       placement,
@@ -187,5 +304,5 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     ],
   );
 
-  return { targetRef, containerRef };
+  return { targetRef: setTriggerEl, containerRef, arrowRef: setArrowEl };
 }

@@ -13,7 +13,7 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { usePositioningOptions } from './usePositioningOptions';
+import { usePositioningConfiguration } from './PositioningConfigurationContext';
 import { useCallbackRef, hasAutofocusFilter } from './utils';
 
 /**
@@ -27,7 +27,9 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
   const { enabled = true } = options;
-  const resolvePositioningOptions = usePositioningOptions(options);
+  const configFn = usePositioningConfiguration();
+  // The manager reads the latest options, it's only created again when the elements or `enabled` change
+  const optionsRef = React.useRef(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {
       managerRef.current.dispose();
@@ -37,14 +39,35 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     const target = overrideTargetRef.current ?? targetRef.current;
 
     if (enabled && canUseDOM() && target && containerRef.current) {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      const { positionFixed, onPositioningEnd, enabled: _, ...positioningOptions } = optionsRef.current;
+      const resolved = configFn({
+        container: containerRef.current,
+        arrow: arrowRef.current,
+        options: positioningOptions,
+      });
+
       managerRef.current = createPositionManager({
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
-        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
+        ...resolved,
+        strategy: resolved.strategy ?? positionFixed ? 'fixed' : 'absolute',
       });
     }
-  }, [enabled, resolvePositioningOptions]);
+  }, [enabled, configFn]);
+
+  useIsomorphicLayoutEffect(() => {
+    const previous = optionsRef.current;
+    optionsRef.current = options;
+
+    if (
+      previous !== options &&
+      (Object.keys(options) as (keyof typeof options)[]).some(k => options[k] !== previous[k])
+    ) {
+      updatePositionManager();
+    }
+  });
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;

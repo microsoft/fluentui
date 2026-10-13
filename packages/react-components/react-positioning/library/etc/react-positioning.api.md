@@ -32,6 +32,9 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
+// @internal (undocumented)
+export function createPositionManager(options: PositionManagerOptions): PositionManager;
+
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
@@ -129,6 +132,26 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @internal (undocumented)
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
+
+// @internal (undocumented)
+export interface PositionManagerOptions extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'disableUpdateOnResize' | 'fallbackPositions' | 'flipBoundary' | 'matchTargetSize' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'useTransform'> {
+    arrow: HTMLElement | null;
+    attributes?: Partial<Record<'placement' | 'hidden' | 'escaped' | 'intersecting', string>>;
+    container: HTMLElement;
+    detectPlacement?: (target: TargetElement, container: HTMLElement) => Placement | null;
+    isRtl?: boolean;
+    onPlacement?: (placement: Placement) => void;
+    strategy: 'absolute' | 'fixed';
+    target: TargetElement;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
