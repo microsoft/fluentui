@@ -3,7 +3,6 @@
 import type * as React from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
-import { CAROUSEL_TITLE, CAROUSEL_TITLE_DISMISS } from '../TeachingPopoverCarousel/Carousel/constants';
 import type { TeachingPopoverTitleBaseProps, TeachingPopoverTitleBaseState } from './TeachingPopoverTitle.types';
 
 /**
@@ -39,7 +38,6 @@ export const useTeachingPopoverTitleBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps('h2', {
         ref,
-        [CAROUSEL_TITLE]: true,
         ...props,
       }),
       { elementType: 'h2' },
@@ -50,7 +48,6 @@ export const useTeachingPopoverTitleBase_unstable = (
         onClick: onDismissButtonClick,
         'aria-label': 'dismiss',
         'aria-hidden': true,
-        ...{ [CAROUSEL_TITLE_DISMISS]: true },
       },
       elementType: 'button',
     }),

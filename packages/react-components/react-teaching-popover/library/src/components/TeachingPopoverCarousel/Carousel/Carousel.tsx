@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM, CAROUSEL_TITLE, CAROUSEL_TITLE_DISMISS } from './constants';
+import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
 import type { CarouselStore, UseCarouselOptions } from './Carousel.types';
@@ -52,28 +52,13 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
   const announcePage = useEventCallback(() => {
     const pendingValue = pendingAnnouncementRef.current;
     const active = carouselWalker.active();
-    if (pendingValue === null || active?.value !== pendingValue) {
+    if (pendingValue === null || active?.value !== pendingValue || !announcement) {
       return;
     }
 
-    if (announcement) {
-      pendingAnnouncementRef.current = null;
-      const text = announcement(pendingValue);
-      if (text) {
-        announce(text, { polite: true });
-      }
-      return;
-    }
-
-    const title = active.el.querySelector(`[${CAROUSEL_TITLE}]`)?.cloneNode(true);
-    if (!isHTMLElement(title)) {
-      return;
-    }
-
-    title.querySelectorAll(`[${CAROUSEL_TITLE_DISMISS}]`).forEach(button => button.remove());
-    const text = title.textContent?.replace(/\s+/g, ' ').trim();
+    pendingAnnouncementRef.current = null;
+    const text = announcement(pendingValue);
     if (text) {
-      pendingAnnouncementRef.current = null;
       announce(text, { polite: true });
     }
   });
@@ -85,13 +70,13 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
 
     previousValueRef.current = value;
     pendingAnnouncementRef.current = null;
-    if (value === null) {
+    if (value === null || !announcement) {
       return;
     }
 
     pendingAnnouncementRef.current = value;
     announcePage();
-  });
+  }, [value, announcement, announcePage]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -154,7 +139,7 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
         }
       }
 
-      // Selector-based context updates and deferred titles can commit after the carousel's layout effect.
+      // Selector-based context updates can commit cards after the carousel's layout effect.
       announcePage();
     };
 
