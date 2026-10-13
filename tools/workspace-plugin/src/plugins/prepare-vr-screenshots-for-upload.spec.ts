@@ -19,26 +19,49 @@ describe('granular VRT workflow project output', () => {
     name?: string;
     if?: string;
     env?: Record<string, string>;
-    with: { script: string; 'result-encoding'?: string };
+    with: { script: string; 'result-encoding'?: string; name?: string; path?: string };
   };
   const workflow = require('js-yaml').load(
     readFileSync(join(__dirname, '../../../../.github/workflows/pr-vrt.yml'), 'utf8'),
-  ) as { jobs: Record<string, { steps: Step[] }> };
-  const steps = workflow.jobs.vrt_granular_pilot.steps;
+  ) as { jobs: Record<string, { steps: Step[]; env?: Record<string, string>; 'continue-on-error'?: boolean }> };
+  const primaryJob = workflow.jobs.generate_vrt_screenshots;
+  const steps = primaryJob.steps;
   const selection = steps.find(step => step.id === 'affected_vrt')!;
   const build = steps.find(step => step.id === 'shared_storybook')!;
   const capture = steps.find(step => step.name === 'Capture affected pilot screenshots')!;
-  const collector = steps.find(step => step.id === 'granular_screenshots_root')!;
+  const collector = steps.find(step => step.id === 'screenshots_root')!;
   const AsyncFunction = Object.getPrototypeOf(async () => undefined).constructor as new (
     ...parameterNames: string[]
   ) => (...parameters: unknown[]) => Promise<unknown>;
   const originalProjects = process.env.VRT_PROJECTS;
   const originalHash = process.env.VRT_STORYBOOK_HASH;
+  const originalExperiment = process.env.VRT_EXPERIMENT;
+  const originalCandidates = process.env.VRT_EXPERIMENT_PROJECTS;
+  const originalConcurrency = process.env.VRT_CAPTURE_CONCURRENCY;
+
+  it('routes the bounded draft experiment through the existing VRT approval artifact contract', () => {
+    const primary = workflow.jobs.generate_vrt_screenshots;
+    expect(primary.env?.VRT_EXPERIMENT).toContain('github.event.pull_request.number == 36868');
+    expect(primary.env?.VRT_EXPERIMENT).toContain('github.event.pull_request.draft');
+    expect(primary.env?.VRT_EXPERIMENT_PROJECTS).toBe('react-button-vrt,react-input-vrt,react-spinner-vrt');
+    expect(primary.env?.VRT_CAPTURE_CONCURRENCY).toBe('4');
+    expect(primary.steps.some(step => step.id === 'affected_vrt')).toBe(true);
+    expect(primary['continue-on-error']).not.toBe(true);
+    expect(workflow.jobs.vrt_granular_pilot).toBeUndefined();
+    expect(primary.steps.filter(step => step.with?.name === 'vrscreenshot')).toHaveLength(1);
+    expect(primary.steps.filter(step => step.with?.name === 'pr-number')).toHaveLength(1);
+    expect(primary.steps.find(step => step.with?.name === 'vrscreenshot')?.with.path).toBe(
+      '${{steps.screenshots_root.outputs.result}}',
+    );
+  });
 
   afterEach(() => {
     for (const [name, value] of [
       ['VRT_PROJECTS', originalProjects],
       ['VRT_STORYBOOK_HASH', originalHash],
+      ['VRT_EXPERIMENT', originalExperiment],
+      ['VRT_EXPERIMENT_PROJECTS', originalCandidates],
+      ['VRT_CAPTURE_CONCURRENCY', originalConcurrency],
     ]) {
       if (value === undefined) {
         delete process.env[name!];
@@ -50,10 +73,16 @@ describe('granular VRT workflow project output', () => {
 
   it.each([
     { projects: [] },
+    { projects: ['react-text-vrt'] },
     { projects: ['react-spinner-vrt'] },
-    { projects: ['react-text-vrt', 'react-spinner-vrt'] },
+    { projects: ['react-text-vrt', 'react-spinner-vrt', 'react-input-vrt', 'react-button-vrt'] },
   ])('passes the action-encoded project list to build, capture and collection: %j', async ({ projects }) => {
-    const expected = [...projects].sort();
+    process.env.VRT_EXPERIMENT = 'true';
+    process.env.VRT_EXPERIMENT_PROJECTS = primaryJob.env!.VRT_EXPERIMENT_PROJECTS;
+    process.env.VRT_CAPTURE_CONCURRENCY = primaryJob.env!.VRT_CAPTURE_CONCURRENCY;
+    const expected = projects
+      .filter(project => process.env.VRT_EXPERIMENT_PROJECTS!.split(',').includes(project))
+      .sort();
     const core = { info: jest.fn() };
     const selected = await new AsyncFunction('require', 'core', selection.with.script)(
       () => ({ execFileSync: () => JSON.stringify(projects) }),
@@ -63,10 +92,10 @@ describe('granular VRT workflow project output', () => {
     expect(JSON.parse(encoded)).toEqual(expected);
     process.env.VRT_PROJECTS = encoded;
     process.env.VRT_STORYBOOK_HASH = 'a'.repeat(64);
-    expect(build.if).toBe("${{ steps.affected_vrt.outputs.result != '[]' }}");
+    expect(build.if).toBe("${{ env.VRT_EXPERIMENT == 'true' && steps.affected_vrt.outputs.result != '[]' }}");
     expect(capture.if).toBe(build.if);
 
-    if (projects.length) {
+    if (expected.length) {
       for (const step of [build, capture]) {
         expect(step.env?.VRT_PROJECTS).toBe('${{ steps.affected_vrt.outputs.result }}');
         const execute = jest.fn();
@@ -80,6 +109,11 @@ describe('granular VRT workflow project output', () => {
           expect.arrayContaining([`${step === build ? '--selectedProjects' : '--projects'}=${expected.join(',')}`]),
           { stdio: 'inherit' },
         );
+        if (step === capture) {
+          expect(execute).toHaveBeenCalledWith('yarn', expect.arrayContaining(['--parallel=2', '--concurrency=4']), {
+            stdio: 'inherit',
+          });
+        }
       }
       expect(build.with['result-encoding']).toBe('string');
     } else {
@@ -94,6 +128,27 @@ describe('granular VRT workflow project output', () => {
     );
     expect(collectProjects).toHaveBeenCalledWith(expect.objectContaining({ config: { projects: expected } }));
     expect(collector.with['result-encoding']).toBe('string');
+  });
+
+  it('keeps legacy screenshot collection outside the draft experiment', async () => {
+    process.env.VRT_EXPERIMENT = 'false';
+    process.env.VRT_PROJECTS = 'unused experiment output';
+    const collectProjects = jest.fn().mockResolvedValue('screenshots');
+    await new AsyncFunction('require', 'github', 'context', 'core', collector.with.script)(
+      () => collectProjects,
+      {},
+      {},
+      { info: jest.fn() },
+    );
+    expect(collectProjects).toHaveBeenCalledWith(
+      expect.objectContaining({
+        config: { projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests'] },
+      }),
+    );
+    expect(selection.if).toBe("${{ env.VRT_EXPERIMENT == 'true' }}");
+    expect(steps.find(step => step.name === 'Run VR tests (generate screenshots)')?.if).toBe(
+      "${{ env.VRT_EXPERIMENT != 'true' }}",
+    );
   });
 });
 

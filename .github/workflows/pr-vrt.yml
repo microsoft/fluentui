@@ -25,6 +25,10 @@ jobs:
     runs-on: macos-14-xlarge
     name: Generate screenshots
     timeout-minutes: 60
+    env:
+      VRT_EXPERIMENT: ${{ github.event.pull_request.number == 36868 && github.event.pull_request.draft }}
+      VRT_EXPERIMENT_PROJECTS: react-button-vrt,react-input-vrt,react-spinner-vrt
+      VRT_CAPTURE_CONCURRENCY: '4'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -44,82 +48,27 @@ jobs:
       - run: yarn playwright install --with-deps
 
       - name: Run VR tests (generate screenshots)
+        if: ${{ env.VRT_EXPERIMENT != 'true' }}
         run: yarn nx affected -t test-vr --nxBail
 
-      - name: Prepare VR screenshots for upload
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
-        id: screenshots_root
-        with:
-          script: |
-            const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
-            const config = {
-              projects: ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
-            };
-            const result = await run({github,context,core,config});
-            return result;
-          result-encoding: string
-
-      - name: Upload VR screenshots
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
-        with:
-          name: vrscreenshot
-          retention-days: 1
-          path: ${{steps.screenshots_root.outputs.result}}
-
-      - name: Save PR number
-        run: echo ${{ github.event.number }} > pr.txt
-
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
-        with:
-          name: pr-number
-          retention-days: 1
-          if-no-files-found: error
-          path: |
-            pr.txt
-
-  vrt_granular_pilot:
-    if: ${{ github.repository_owner == 'microsoft' && github.event.pull_request.draft == true }}
-    runs-on: macos-14-xlarge
-    name: Granular VRT pilot (affected)
-    continue-on-error: true
-    timeout-minutes: 60
-    env:
-      NX_PARALLEL: 2
-      NX_DAEMON: false
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-
-      - name: Derive SHAs for affected project selection
-        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
-        with:
-          main-branch-name: 'master'
-
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
-        with:
-          cache: 'yarn'
-          node-version: '22'
-
-      - run: yarn install --immutable
-      - run: yarn playwright install --with-deps chromium
-
       - name: Select affected virtual projects
+        if: ${{ env.VRT_EXPERIMENT == 'true' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         id: affected_vrt
         with:
           script: |
             const { execFileSync } = require('node:child_process');
-            const projects = JSON.parse(execFileSync('yarn', [
+            const affected = JSON.parse(execFileSync('yarn', [
               'nx', 'show', 'projects', '--affected', '--with-target=test-vr-granular', '--json'
             ], { encoding: 'utf8' })).sort();
-            core.info(`Affected VRT projects (${projects.length}): ${projects.join(', ')}`);
+            const candidates = process.env.VRT_EXPERIMENT_PROJECTS.split(',');
+            const projects = affected.filter(project => candidates.includes(project));
+            core.info(`Experimental VRT projects (${projects.length}/${affected.length} affected): ${projects.join(', ')}`);
             return projects;
           result-encoding: json
 
       - name: Build affected Storybook once
-        if: ${{ steps.affected_vrt.outputs.result != '[]' }}
+        if: ${{ env.VRT_EXPERIMENT == 'true' && steps.affected_vrt.outputs.result != '[]' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         id: shared_storybook
         env:
@@ -142,7 +91,7 @@ jobs:
           result-encoding: string
 
       - name: Capture affected pilot screenshots
-        if: ${{ steps.affected_vrt.outputs.result != '[]' }}
+        if: ${{ env.VRT_EXPERIMENT == 'true' && steps.affected_vrt.outputs.result != '[]' }}
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         env:
           VRT_PROJECTS: ${{ steps.affected_vrt.outputs.result }}
@@ -154,28 +103,43 @@ jobs:
             const started = Date.now();
             execFileSync('yarn', [
               'nx', 'run-many', '-t', 'test-vr-granular', `--projects=${projects.join(',')}`,
-              '--excludeTaskDependencies', '--parallel=2', '--concurrency=2', '--nxBail',
+              '--excludeTaskDependencies', '--parallel=2', `--concurrency=${process.env.VRT_CAPTURE_CONCURRENCY}`, '--nxBail',
               '--storybookPath=apps/vr-tests-react-components/dist/visual-regression/_shared/storybook',
               `--storybookHash=${process.env.VRT_STORYBOOK_HASH}`
             ], { stdio: 'inherit' });
-            core.info(`Affected VRT capture: ${(Date.now() - started) / 1000}s`);
+            core.info(`Experimental VRT capture (${process.env.VRT_CAPTURE_CONCURRENCY} workers per project): ${(Date.now() - started) / 1000}s`);
 
-      - name: Prepare granular screenshots for upload
+      - name: Prepare VR screenshots for upload
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
-        id: granular_screenshots_root
+        id: screenshots_root
         env:
           VRT_PROJECTS: ${{ steps.affected_vrt.outputs.result }}
         with:
           script: |
-            const projects = JSON.parse(process.env.VRT_PROJECTS);
             const run = require('./.github/scripts/prepare-vr-screenshots-for-upload');
-            return await run({ github, context, core, config: { projects } });
+            const config = {
+              projects: process.env.VRT_EXPERIMENT == 'true'
+                ? JSON.parse(process.env.VRT_PROJECTS)
+                : ['vr-tests-web-components', 'vr-tests-react-components', 'vr-tests']
+            };
+            const result = await run({github,context,core,config});
+            return result;
           result-encoding: string
 
-      - name: Upload granular pilot output
+      - name: Upload VR screenshots
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: vrt-granular-pilot
-          retention-days: 7
+          name: vrscreenshot
+          retention-days: 1
+          path: ${{steps.screenshots_root.outputs.result}}
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: pr-number
+          retention-days: 1
           if-no-files-found: error
-          path: ${{ steps.granular_screenshots_root.outputs.result }}
+          path: |
+            pr.txt

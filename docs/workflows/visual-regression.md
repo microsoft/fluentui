@@ -1,8 +1,10 @@
 # Granular Visual Regression Pilot
 
-This is an opt-in pilot. Existing PR and baseline `test-vr` workflows still use the legacy host apps; they are deliberately not switched to `test-vr-granular`. Their upload steps still pass the three legacy host projects. Virtual outputs are included only when their project names are explicitly passed in `config.projects`.
+This is a testing-only experiment, not a production rollout. The existing `VRT PR` screenshot job uses granular capture only for draft PR #36868. Every other PR retains the legacy `test-vr` path, and baseline publishing is unchanged. The experiment's candidate list is configured by `VRT_EXPERIMENT_PROJECTS`: Button, Input, and Spinner. Only candidates present in the actual Nx affected list are selected; unrelated affected groups are omitted deliberately for this measurement.
 
-Draft PRs also run the advisory `Granular VRT pilot (affected)` job. It selects the actual PR's affected virtual projects once, builds their combined story files once, and captures those projects with `nx run-many -t test-vr-granular --excludeTaskDependencies`. Two concurrent Nx capture tasks use two workers each, for a maximum of four capture workers. Build and capture durations are logged separately. The collector includes only the selected groups. Its separate `vrt-granular-pilot` artifact matches the legacy upload layout: `screenshots-report.json` at the artifact root, with screenshot files under `vr-tests-react-components/`. Built Storybook files are not uploaded, and the artifact is not passed to VR approval. Pilot failures do not block the existing VR approval workflow.
+The experiment runs inside `Generate screenshots`, not a separate advisory job. It selects the bounded affected set once, builds its combined story files once, and captures those projects with `nx run-many -t test-vr-granular --excludeTaskDependencies`. Two concurrent Nx capture tasks use `VRT_CAPTURE_CONCURRENCY=4` workers each, for a maximum of eight workers. Build and capture durations are logged separately, and the collector includes only the selected groups. Screenshot generation must succeed before the run can reach VR approval.
+
+The job uploads the existing `vrscreenshot` and `pr-number` artifacts. Screenshot layout is unchanged: `screenshots-report.json` at the artifact root and image files under `vr-tests-react-components/`; Storybook files are not uploaded. The existing default-branch `VRT | Comment on PR` workflow already consumes these artifacts after `VRT PR` completes, so testing this route does not require merging a new privileged workflow to master. That workflow and its Azure/CLI handling remain untouched; no PR code is checked out with its credentials.
 
 ## Project model
 
@@ -26,19 +28,35 @@ The pilot's preview reuses only the addon's FluentProvider decorator and theme/d
 
 When iterating on the local inference plugin, use `NX_DAEMON=false` or restart it with `yarn nx reset --onlyDaemon` so checks do not reuse an older loaded plugin implementation.
 
-## Why PR uploads remain opt-in
+## Partial PR diff caveat
 
-The published `vr-approval-cli@0.5.1` implementation of `pixelBufferDiffFolders` marks omitted baseline images as removed. `filterRemovedScreenshots` retains removals when filename prefixes share `projectConf.splitParam`; that value comes from an external `repoConfig` service and the Fluent UI value is not established here. A partial PR upload could therefore request removal of baseline images that simply were not captured. Actual deleted screenshots must still be removable when a safe partial-upload policy is established. The screenshot report JSON only signals whether a workflow should run or skip; it does not limit the CLI's per-image comparison scope. Preserve the existing host namespace and do not wire this pilot into PR or baseline uploads until the service/CLI contract is proven safe for partial collections.
+The published `vr-approval-cli@0.5.1` implementation of `pixelBufferDiffFolders` marks omitted baseline images as removed. `filterRemovedScreenshots` retains removals when filename prefixes share `projectConf.splitParam`; that value comes from an external `repoConfig` service and the Fluent UI value is not established here. The three-package test intentionally exercises the existing PR diff route, so its result may include false removals for images that were not captured. Treat that policy result as experimental, not as proof that omitted snapshots should be deleted. Do not approve those removals or change baseline publishing as part of this experiment. Actual deleted screenshots must still be removable when a safe partial-upload policy is established. The screenshot report JSON only signals whether a workflow should run or skip; it does not limit the CLI's per-image comparison scope.
 
 Pinned `nx-set-shas@v4.3.3` uses the merge base of `origin/master` and `HEAD` on PR branches; its `workflow-id` input does not change PR-mode SHA selection. Baseline-aligned SHA selection, if required for this pilot, needs an explicit separate policy.
 
 ## Initial verification
+
+In matched CI run 38412014600, all-affected granular generation completed in 49.75 minutes versus 50.6 minutes for legacy generation. The shared build took 33 seconds; granular capture took 2,791 seconds, confirming that capture dominates the measured run. The next CI comparison deliberately narrows selection to the three configured candidates and increases the per-project worker count from two to four. This changes both workload size and concurrency, so any aggregate delta is not solely a concurrency speedup.
 
 The pilot passed 26 focused regression tests, the workspace-plugin implementation and spec typecheck, and package-scoped lint. Real affected checks selected only one group for a story or local-helper change, and all 51 groups for shared utilities, Storybook configuration, or reused FluentProvider decorator changes. The legacy `test-vr` selection remained unchanged.
 
 A real Spinner build and capture produced 17 nonblank PNGs. After deleting its generated Storybook and screenshot directories, both targets restored from Nx cache, including byte-identical screenshots. Collection retained the existing host report key and filenames. These checks do not establish full-host pixel equivalence, full-suite performance, or production partial-upload safety.
 
 The shared-compilation smoke check selected Spinner and Text, performed one compilation, and produced 17 and 6 screenshots in isolated outputs without per-project builds. All six Text screenshot filenames, dimensions, and pixels matched the standalone path. Shared and capture caches restored correctly after deleting generated outputs; selecting only Text produced a distinct artifact, and restoring the two-project selection recovered its original ownership manifest. Collection included only the 23 screenshots in the legacy upload layout. This verifies the two-project protocol, not an all-affected CI speedup.
+
+## Concurrency exploration
+
+A cache-disabled local Spinner microbenchmark reused the same shared build, captured 17 stories with one Nx task at a time, and measured capture invocation wall time:
+
+| StoryWright workers | Seconds |
+| ------------------- | ------- |
+| 2                   | 56.1    |
+| 4                   | 37.0    |
+| 8                   | 24.9    |
+
+All runs retained the same 17 screenshot filenames, dimensions, and pixels. These are single local samples in increasing worker order, not a three-package or CI benchmark. The larger local Button/Input/Spinner sweep was stopped before producing a completed result. CI uses four workers per capture with two concurrent Nx tasks; compare its new three-package results with the prior full-suite run, and measure an eight-worker-per-project setting separately before adopting it.
+
+StoryWright discovers stories before starting concurrency-sized capture batches. Discovery is serial within each project, and each batch waits for its slowest story. Screenshots also wait for load/network idle and tracked timers/DOM activity; the installed runner checks a five-second readiness deadline between attempts. `E2223` warnings mean the readiness loop ended while tracked activity remained, not proof that an image is incorrect. Higher concurrency can amortize some waiting but cannot eliminate discovery or readiness costs. The experiment does not reduce screenshot waits or bypass readiness checks.
 
 ## Rollout gates
 
