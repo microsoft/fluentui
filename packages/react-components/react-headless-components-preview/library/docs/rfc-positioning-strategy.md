@@ -124,12 +124,13 @@ CSS stays the primary path. When CSS cannot do the job, headless runs its own Ja
 
 ```ts
 // evaluated once per mount
-const [useAnchors] = React.useState(supportsAnchorPositioning); // anchor-name + position-area
+const [useAnchors] = React.useState(!!globalThis.CSS?.supports?.('(anchor-name: --a) and (position-area: top)'));
 
 const jsMode =
   !useAnchors ||
   (!!effectiveTarget && !('nodeType' in effectiveTarget)) || // virtual target
-  PLUGINS.some(plugin => plugin.requiresJs?.(options)); // boundaries, function offset
+  typeof offset === 'function' ||
+  !!(options.flipBoundary || options.overflowBoundary || options.overflowBoundaryPadding);
 
 const { targetRef, containerRef, arrowRef } = usePositioning({
   position: 'below',
@@ -142,7 +143,7 @@ const { targetRef, containerRef, arrowRef } = usePositioning({
 
 **What the fallback reproduces:** the `position-area` grid (extended when the anchor sticks out of its containing block), first-fit `position-try-fallbacks` (default `flip-block`, `flip-inline`, both), margin offsets, `anchor-center`, `coverTarget`, `matchTargetSize`, `absolute` and `fixed`, containing blocks created by positioned, transformed, filtered and scrolled ancestors, and RTL. It positions in a layout effect, before paint.
 
-**Plugins** (a module constant, not public API) handle what CSS cannot express. Each plugin can force the JavaScript path, adjust the fallback's input, or run after every update on both paths: `offsetPlugin` (function `offset`), `boundaryPlugin` (`flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`), `autoSizePlugin`, `arrowPlugin` (`arrowPadding`, `arrowRef`) and `hidePlugin` (`data-positioning-hidden`, `data-positioning-escaped`, `onPositioningEnd`). Because plugins also run on the CSS path, `autoSize`, the arrow and the hidden state work in modern browsers too. One update loop (`scroll`, `resize`, `ResizeObserver`, debounced) serves both paths and writes the applied placement to `data-placement`.
+**Plugins** are internal helpers in `usePositioning/plugins/`, not public API, for what CSS cannot express. Function `offset` and the boundaries (`flipBoundary`, `overflowBoundary`, `overflowBoundaryPadding`) force the JavaScript path, and their helpers adjust the fallback's input there. `autoSize`, the arrow (`arrowPadding`, `arrowRef`) and the hidden state (`data-positioning-hidden`, `data-positioning-escaped`, `onPositioningEnd`) run after every update on both paths, so they also work in modern browsers. One update loop (`scroll`, `resize`, `ResizeObserver`, debounced) serves both paths and writes the applied placement to `data-placement`.
 
 **Types:** headless re-exports `PositioningProps` and the related types from `@fluentui/react-positioning`, and a compile-time test fails if they diverge. `useTransform` and `shiftToCoverTarget` are accepted but have no effect.
 
@@ -165,6 +166,7 @@ Cons
 - A third positioning implementation (CSS, the CSS mimic, floating-ui in v9) that has to track browser changes. Chrome 154 keeps boxes that overflow the viewport inside it and Chromium 141 does not; the fallback follows 154, and the comparison spec skips itself in Electron 130.
 - Placement is close to, not identical with, v9. The size of that drift against v9 has not been measured yet; the under-0.5 % figure above compares the fallback with CSS, not with v9. An app that depends on exact v9 placement has no way to get it.
 - `shiftToCoverTarget` and `useTransform` are silent no-ops.
+- With `coverTarget` on the CSS path, the applied placement is not detected, so the arrow is not positioned and `data-placement` keeps the requested value.
 - Which path ran is invisible. In RTL, `data-placement` is physical on the CSS path and logical on the JavaScript path, so styling by placement can differ.
 - No runtime performance numbers for the fallback, and the visual regression and SSR suites have not been run.
 
@@ -244,18 +246,18 @@ Follow-up: raise CSSWG issues for custom overflow boundaries and non-element anc
 
 ## Comparison
 
-F and G are engine changes that compose with A or C, so cells about headless browser behaviour read "n/a".
+F and G are engine changes that compose with A or C and add nothing to headless by themselves, so cells about headless read "n/a"; their engine size is what A or C would ship.
 
-| Criterion                      | A: Explicit engine     | C: Auto, bundled | D: Extend CSS     | E: CSS mimic                      | F: Inlined port | G: Modular engine            |
-| ------------------------------ | ---------------------- | ---------------- | ----------------- | --------------------------------- | --------------- | ---------------------------- |
-| Added to headless bundle       | 0; 27.2 kB if imported | ~29 kB, always   | 0                 | ~10 kB, always (no floating-ui)   | 24.5 kB engine  | 12.6–25.2 kB engine          |
-| Browser without anchor support | Consumer adds engine   | Handled          | Polyfill          | Handled                           | n/a             | n/a                          |
-| Which path runs is visible     | Yes                    | No               | Yes               | No                                | n/a             | n/a                          |
-| New public API                 | `engine`, provider     | None             | None              | `arrowRef`, `enabled`, full props | None            | Hook, 9 plugins, order slots |
-| Parity with v9                 | Full with engine       | Full             | Partial           | Near-full, placement close        | Identical       | Identical with default set   |
-| Maintenance                    | Two paths              | Two paths        | Growing CSS layer | Three implementations             | Owned fork      | Owned fork + plugin layer    |
-| Consumer effort                | Opt in where needed    | None             | Load polyfill     | None                              | None            | Choose plugins               |
-| Can change without breaking    | No                     | Yes              | Yes               | Yes                               | Yes             | No                           |
+| Criterion                      | A: Explicit engine     | C: Auto, bundled | D: Extend CSS     | E: CSS mimic                      | F: Inlined port      | G: Modular engine            |
+| ------------------------------ | ---------------------- | ---------------- | ----------------- | --------------------------------- | -------------------- | ---------------------------- |
+| Added to headless bundle       | 0; 27.2 kB if imported | ~29 kB, always   | 0                 | ~10 kB, always (no floating-ui)   | n/a (engine 24.5 kB) | n/a (engine 12.6–25.2 kB)    |
+| Browser without anchor support | Consumer adds engine   | Handled          | Polyfill          | Handled                           | n/a                  | n/a                          |
+| Which path runs is visible     | Yes                    | No               | Yes               | No                                | n/a                  | n/a                          |
+| New public API                 | `engine`, provider     | None             | None              | `arrowRef`, `enabled`, full props | None                 | Hook, 9 plugins, order slots |
+| Parity with v9                 | Full with engine       | Full             | Partial           | Near-full, placement close        | Identical            | Identical with default set   |
+| Maintenance                    | Two paths              | Two paths        | Growing CSS layer | Three implementations             | Owned fork           | Owned fork + plugin layer    |
+| Consumer effort                | Opt in where needed    | None             | Load polyfill     | None                              | None                 | Choose plugins               |
+| Can change without breaking    | No                     | Yes              | Yes               | Yes                               | Yes                  | No                           |
 
 ## Proposal
 
