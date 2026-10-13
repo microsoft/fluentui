@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { isConformant } from '../../testing/isConformant';
 import type { IsConformantOptions } from '@fluentui/react-conformance';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type { RenderResult } from '@testing-library/react';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // testing-library's queryByRole function doesn't look inside portals
@@ -171,10 +172,7 @@ describe('Tooltip', () => {
     visibilityStateSpy.mockRestore();
   });
 
-  it.each([
-    { escaped: true, referenceHidden: false },
-    { escaped: false, referenceHidden: true },
-  ])('hides and restores the tooltip based on positioning visibility flags', flags => {
+  it('remains visible when positioning geometry is unavailable', async () => {
     const onPositioningEnd = jest.fn();
     const result = render(
       <Tooltip content="Tooltip content" relationship="label" visible positioning={{ onPositioningEnd }}>
@@ -183,23 +181,98 @@ describe('Tooltip', () => {
     );
     const tooltip = getByRoleTooltip(result);
 
-    const hiddenEvent = new CustomEvent('fui-positioningend', {
+    await waitFor(() => expect(onPositioningEnd).toHaveBeenCalled());
+
+    expect(onPositioningEnd.mock.calls.at(-1)?.[0].detail).toEqual(
+      expect.objectContaining({ escaped: false, referenceHidden: false }),
+    );
+    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
+  });
+
+  it.each([
+    { escaped: false, referenceHidden: false },
+    { escaped: true, referenceHidden: false },
+    { escaped: false, referenceHidden: true },
+    { escaped: true, referenceHidden: true },
+  ])('follows reference visibility for positioning flags %o', flags => {
+    const onPositioningEnd = jest.fn();
+    const result = render(
+      <Tooltip content="Tooltip content" relationship="label" visible positioning={{ onPositioningEnd }}>
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+
+    const positioningEvent = new CustomEvent('fui-positioningend', {
       detail: { placement: 'top', ...flags },
     });
-    act(() => tooltip.dispatchEvent(hiddenEvent));
+    act(() => tooltip.dispatchEvent(positioningEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
-    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
-    expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
-    expect(onPositioningEnd).toHaveBeenCalledWith(hiddenEvent);
+    expect(getComputedStyle(tooltip).visibility === 'hidden').toBe(flags.referenceHidden);
+    if (flags.referenceHidden) {
+      expect(getComputedStyle(tooltip).pointerEvents).toBe('none');
+    }
+    expect(onPositioningEnd).toHaveBeenCalledTimes(1);
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
 
     const visibleEvent = new CustomEvent('fui-positioningend', {
-      detail: { placement: 'top', escaped: false, referenceHidden: false },
+      detail: { placement: 'top', escaped: flags.escaped, referenceHidden: false },
     });
     act(() => tooltip.dispatchEvent(visibleEvent));
 
     expect(getByRoleTooltip(result)).toBe(tooltip);
     expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
-    expect(onPositioningEnd).toHaveBeenCalledWith(visibleEvent);
+    expect(onPositioningEnd).toHaveBeenCalledTimes(2);
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(visibleEvent);
+  });
+
+  it('hides when positioning reports an explicit DOM target as hidden', () => {
+    const onPositioningEnd = jest.fn();
+    const result = render(
+      <Tooltip
+        content="Tooltip content"
+        relationship="label"
+        visible
+        positioning={{ target: document.body, onPositioningEnd }}
+      >
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+    const positioningEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', escaped: false, referenceHidden: true },
+    });
+
+    act(() => tooltip.dispatchEvent(positioningEvent));
+
+    expect(getComputedStyle(tooltip).visibility).toBe('hidden');
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
+  });
+
+  it('remains visible when positioning reports a virtual target as hidden', () => {
+    const onPositioningEnd = jest.fn();
+    const virtualTarget: PositioningVirtualElement = {
+      getBoundingClientRect: () => new DOMRect(),
+    };
+    const result = render(
+      <Tooltip
+        content="Tooltip content"
+        relationship="label"
+        visible
+        positioning={{ target: virtualTarget, onPositioningEnd }}
+      >
+        <button />
+      </Tooltip>,
+    );
+    const tooltip = getByRoleTooltip(result);
+    const positioningEvent = new CustomEvent('fui-positioningend', {
+      detail: { placement: 'top', escaped: false, referenceHidden: true },
+    });
+
+    act(() => tooltip.dispatchEvent(positioningEvent));
+
+    expect(getComputedStyle(tooltip).visibility).not.toBe('hidden');
+    expect(onPositioningEnd).toHaveBeenLastCalledWith(positioningEvent);
   });
 });

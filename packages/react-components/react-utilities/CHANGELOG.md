@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-utilities
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.26.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.7)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.26.6..@fluentui/react-utilities_v9.26.7)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- fix: Add loading to img element property whitelist ([PR #36639](https://github.com/microsoft/fluentui/pull/36639) by 84954628+lukiod@users.noreply.github.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.26.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.26.6)
 

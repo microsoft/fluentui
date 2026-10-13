@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import type { OverflowContextValue } from './overflowContext';
+import { OverflowProvider } from './overflowContext';
 import { Overflow } from './components/Overflow';
 import { OverflowItem } from './components/OverflowItem/OverflowItem';
 import { useOverflowMenu } from './useOverflowMenu';
@@ -70,5 +72,37 @@ describe('useOverflowMenu', () => {
         </Overflow>,
       ),
     ).not.toThrow();
+  });
+
+  it('delegates menu updates to registration without forcing another update', () => {
+    const unregisterOverflowMenu = jest.fn();
+    const registerOverflowMenu = jest.fn(() => unregisterOverflowMenu);
+    const forceUpdateOverflow = jest.fn();
+    const contextValue: OverflowContextValue = {
+      hasOverflow: true,
+      itemVisibility: { item: false },
+      groupVisibility: {},
+      registerItem: () => jest.fn(),
+      registerOverflowMenu,
+      registerDivider: () => jest.fn(),
+      updateOverflow: jest.fn(),
+      forceUpdateOverflow,
+      getSnapshot: () => ({ itemVisibility: { item: false }, groupVisibility: {}, invisibleItemCount: 1 }),
+      subscribe: () => jest.fn(),
+    };
+
+    const { unmount } = render(
+      <OverflowProvider value={contextValue}>
+        <Menu />
+      </OverflowProvider>,
+    );
+
+    expect(registerOverflowMenu).toHaveBeenCalledTimes(1);
+    expect(forceUpdateOverflow).not.toHaveBeenCalled();
+
+    unmount();
+
+    expect(unregisterOverflowMenu).toHaveBeenCalledTimes(1);
+    expect(forceUpdateOverflow).not.toHaveBeenCalled();
   });
 });

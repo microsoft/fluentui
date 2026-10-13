@@ -141,7 +141,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, YValueHover[]> = {};
+    const linePointsByX: Record<string, YValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -160,8 +160,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     barData.forEach((point: GroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint: Record<string, GVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: GVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -1009,6 +1009,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       getGraphData={_getGraphData}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
       {...(_xAxisType === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,

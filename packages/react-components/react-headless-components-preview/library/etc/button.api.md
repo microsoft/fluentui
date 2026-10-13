@@ -4,21 +4,26 @@
 
 ```ts
 
-import type { ButtonBaseProps } from '@fluentui/react-button';
-import { ButtonBaseState } from '@fluentui/react-button';
-import type { ButtonSlots as ButtonSlots_2 } from '@fluentui/react-button';
+import type { ButtonBaseState } from '@fluentui/react-button';
+import { ButtonContextProvider } from '@fluentui/react-button';
+import { ButtonContextValue } from '@fluentui/react-button';
+import { ButtonBaseProps as ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderButton_unstable as renderButton } from '@fluentui/react-button';
+import { useButtonContext } from '@fluentui/react-button';
 
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public
-export type ButtonProps = ButtonBaseProps;
+export { ButtonContextProvider }
 
-// @public
-export type ButtonSlots = ButtonSlots_2;
+export { ButtonContextValue }
+
+export { ButtonProps }
+
+export { ButtonSlots }
 
 // @public
 export type ButtonState = ButtonBaseState & {
@@ -30,11 +35,12 @@ export type ButtonState = ButtonBaseState & {
     };
 };
 
-// @public
-export const renderButton: (state: ButtonBaseState) => JSXElement;
+export { renderButton }
 
 // @public
 export const useButton: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
+
+export { useButtonContext }
 
 // (No @packageDocumentation comment for this package)
 

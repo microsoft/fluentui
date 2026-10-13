@@ -1,15 +1,6 @@
-import type {
-  CardSlots as CardBaseSlots,
-  CardBaseProps,
-  CardBaseState,
-  CardContextValue as CardBaseContextValue,
-  CardOnSelectionChangeEvent as CardBaseOnSelectionChangeEvent,
-} from '@fluentui/react-card';
+import type { CardBaseProps, CardBaseState } from '@fluentui/react-card';
 
-/**
- * Card component slots
- */
-export type CardSlots = CardBaseSlots;
+export type { CardSlots, CardContextValue, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
 /**
  * Card component props
@@ -31,13 +22,3 @@ export type CardState = CardBaseState & {
     'data-disabled'?: string;
   };
 };
-
-/**
- * Context value provided by Card to its sub-components.
- */
-export type CardContextValue = CardBaseContextValue;
-
-/**
- * Card selected event type.
- */
-export type CardOnSelectionChangeEvent = CardBaseOnSelectionChangeEvent;

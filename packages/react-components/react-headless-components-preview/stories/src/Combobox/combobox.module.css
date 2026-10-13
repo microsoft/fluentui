@@ -10,6 +10,7 @@
 .root {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   width: 100%;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -99,6 +100,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-inline-start: auto;
   visibility: hidden;
 }
 
@@ -134,7 +136,7 @@
 
 /* clear icon — inline span acting as a clickable affordance */
 .clearIcon {
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: 20px;
@@ -151,8 +153,10 @@
   color: var(--text);
 }
 
-.input[data-placeholder] + .clearIcon,
-.input:not([data-placeholder]) ~ .expandIcon {
+.root[data-clearable] .clearIcon {
+  display: inline-flex;
+}
+.root[data-clearable] .expandIcon {
   display: none;
 }
 
@@ -179,6 +183,17 @@
   color: var(--text-faint);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* Demo helpers */

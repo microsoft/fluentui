@@ -3,7 +3,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { slot } from '@fluentui/react-utilities';
 
 import { Dialog, DialogSurface } from '../../Dialog';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
 
 /**
@@ -23,7 +23,7 @@ export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLD
     {
       ...rootProps,
       unmountOnClose,
-      'data-open': stringifyDataAttribute(open),
+      'data-open': toDataAttributeValue(open),
       'data-position': position,
       ref,
     },

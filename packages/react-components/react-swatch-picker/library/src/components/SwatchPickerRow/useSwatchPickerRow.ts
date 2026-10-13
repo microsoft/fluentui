@@ -22,8 +22,6 @@ export const useSwatchPickerRowBase_unstable = (
   props: SwatchPickerRowBaseProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerRowBaseState => {
-  const { style, ...rest } = props;
-
   return {
     components: {
       root: 'div',
@@ -32,7 +30,7 @@ export const useSwatchPickerRowBase_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         role: 'row',
-        ...rest,
+        ...props,
       }),
       { elementType: 'div' },
     ),

@@ -33,7 +33,10 @@ type InternalState = {
   atBound: SpinButtonBounds;
 };
 
-const DEFAULT_SPIN_DELAY_MS = 150;
+// A single tap on a trackpad can take ~200-250ms before mouseup fires. Keep the initial
+// repeat delay above that range so a tap is treated as one click while a true hold still
+// triggers repeat behavior.
+const DEFAULT_SPIN_DELAY_MS = 300;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 

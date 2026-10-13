@@ -9,5 +9,7 @@
     "@fluentui/react-motion",
     "@fluentui/react-motion-components-preview"
   ],
-  "allowedViolations": {}
+  "fixtures": {
+    "AllComponents.fixture.js": {}
+  }
 }

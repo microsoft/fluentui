@@ -11,7 +11,7 @@
   min-width: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: var(--space-2);
   align-items: center;
   border-radius: var(--radius-md);
   border: var(--stroke-thin) solid var(--border);
@@ -41,7 +41,7 @@
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.button[data-state='open'] {
+[data-open] > .button {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
@@ -100,6 +100,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-inline-start: auto;
   visibility: hidden;
 }
 
@@ -127,6 +128,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-inline-start: auto;
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -139,7 +141,7 @@
   right: var(--space-2);
   top: 50%;
   transform: translateY(-50%);
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-pill);
@@ -162,8 +164,11 @@
   box-shadow: 0 0 0 2px var(--bg-elev), 0 0 0 4px var(--accent);
 }
 
-.button[data-placeholder] + .clearButton,
-.button:not([data-placeholder]) .expandIcon {
+[data-clearable] > .clearButton {
+  display: inline-flex;
+}
+
+[data-clearable] > .button .expandIcon {
   display: none;
 }
 
@@ -190,6 +195,17 @@
   color: var(--text-faint);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* Demo helpers (used by Storybook examples) */

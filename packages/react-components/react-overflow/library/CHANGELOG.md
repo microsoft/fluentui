@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-overflow
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.4)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.9.3..@fluentui/react-overflow_v9.9.4)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.26.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.9.2..@fluentui/react-overflow_v9.9.3)
+
+### Patches
+
+- fix: avoid redundant overflow work during menu teardown and unchanged visibility updates ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/priority-overflow to v9.4.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.9.2)
 

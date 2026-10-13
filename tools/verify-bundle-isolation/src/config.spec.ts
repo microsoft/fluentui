@@ -2,7 +2,16 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { findFixtures, fixtureOutputPath, loadConfig, outputRoot, relativeToWorkspace } from './config';
+import {
+  allowedFor,
+  findFixtures,
+  fixtureOutputPath,
+  forbiddenFor,
+  loadConfig,
+  outputRoot,
+  relativeToWorkspace,
+  selectFixtures,
+} from './config';
 
 describe('loadConfig', () => {
   let root: string;
@@ -19,7 +28,7 @@ describe('loadConfig', () => {
     fixturesRoot: './bundle-size',
     externals: ['react'],
     forbiddenPackages: ['tabster'],
-    allowedViolations: {},
+    fixtures: { 'A.fixture.js': {} },
   };
 
   const load = (config: object) => {
@@ -40,20 +49,36 @@ describe('loadConfig', () => {
     expect(() => load({ ...valid, forbiddenPackages: [] })).toThrow(/must NOT have fewer than 1 items/);
   });
 
+  it('rejects an empty fixture list, which would leave nothing to verify', () => {
+    expect(() => load({ ...valid, fixtures: {} })).toThrow(/must NOT have fewer than 1 properties/);
+  });
+
   it('rejects unknown fields, so a typo cannot be mistaken for configuration', () => {
     expect(() => load({ ...valid, knownViolations: {} })).toThrow(/must NOT have additional properties/);
   });
 
+  it('rejects an unknown field inside a fixture entry', () => {
+    expect(() => load({ ...valid, fixtures: { 'A.fixture.js': { allowed: [] } } })).toThrow(
+      /must NOT have additional properties/,
+    );
+  });
+
   it('rejects a glob in allowedViolations, which would silently absorb an unrelated leak', () => {
-    expect(() => load({ ...valid, allowedViolations: { 'A.fixture.js': ['@griffel/*'] } })).toThrow(
+    expect(() => load({ ...valid, fixtures: { 'A.fixture.js': { allowedViolations: ['@griffel/*'] } } })).toThrow(
       /must match pattern/,
     );
   });
 
   it('accepts an exact package name in allowedViolations', () => {
-    expect(load({ ...valid, allowedViolations: { 'A.fixture.js': ['@griffel/core'] } }).allowedViolations).toEqual({
-      'A.fixture.js': ['@griffel/core'],
-    });
+    const config = load({ ...valid, fixtures: { 'A.fixture.js': { allowedViolations: ['@griffel/core'] } } });
+
+    expect(config.fixtures).toEqual({ 'A.fixture.js': { allowedViolations: ['@griffel/core'] } });
+  });
+
+  it('accepts a per-fixture forbidden list, so a fixture can narrow the package-level intent', () => {
+    const config = load({ ...valid, fixtures: { 'A.fixture.js': { forbiddenPackages: ['@griffel/*'] } } });
+
+    expect(config.fixtures['A.fixture.js'].forbiddenPackages).toEqual(['@griffel/*']);
   });
 
   it('reports the offending path relative to the workspace', () => {
@@ -85,6 +110,54 @@ describe('findFixtures', () => {
 
     // Asserted as a literal rather than via join(), because these become config keys on every platform.
     expect(findFixtures(root)).toEqual(['A.fixture.js', 'B.fixture.js', 'nested/C.fixture.js']);
+  });
+});
+
+describe('selectFixtures', () => {
+  const config = {
+    fixturesRoot: './bundle-size',
+    externals: [],
+    forbiddenPackages: ['tabster'],
+    fixtures: { 'A.fixture.js': {}, 'nested/C.fixture.js': {}, 'Gone.fixture.js': {} },
+  };
+
+  it('verifies only what the configuration opted in to', () => {
+    const selection = selectFixtures(['A.fixture.js', 'B.fixture.js', 'nested/C.fixture.js'], config);
+
+    expect(selection.verified).toEqual(['A.fixture.js', 'nested/C.fixture.js']);
+  });
+
+  it('reports a discovered but unlisted fixture as skipped rather than dropping it silently', () => {
+    const selection = selectFixtures(['A.fixture.js', 'B.fixture.js', 'nested/C.fixture.js'], config);
+
+    expect(selection.skipped).toEqual(['B.fixture.js']);
+  });
+
+  it('reports a listed fixture that no longer exists as an orphan', () => {
+    const selection = selectFixtures(['A.fixture.js', 'B.fixture.js', 'nested/C.fixture.js'], config);
+
+    expect(selection.orphans).toEqual(['Gone.fixture.js']);
+  });
+});
+
+describe('forbiddenFor', () => {
+  const config = {
+    fixturesRoot: './bundle-size',
+    externals: [],
+    forbiddenPackages: ['tabster', '@griffel/*'],
+    fixtures: { 'A.fixture.js': {}, 'B.fixture.js': { forbiddenPackages: ['@griffel/*'] } },
+  };
+
+  it('falls back to the package-level list', () => {
+    expect(forbiddenFor('A.fixture.js', config)).toEqual(['tabster', '@griffel/*']);
+  });
+
+  it('replaces rather than extends, so a fixture can narrow the list', () => {
+    expect(forbiddenFor('B.fixture.js', config)).toEqual(['@griffel/*']);
+  });
+
+  it('treats a fixture with no allowlist as carrying no debt', () => {
+    expect(allowedFor('A.fixture.js', config)).toEqual([]);
   });
 });
 

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fixed tooltip value cut off at the bottom in HorizontalBarChartWithAxis",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}

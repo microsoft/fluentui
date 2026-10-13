@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { useInlineDrawerBase_unstable } from '@fluentui/react-drawer';
 
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types';
 
 /**
@@ -13,7 +13,7 @@ export const useInlineDrawer = (props: InlineDrawerProps, ref: React.Ref<HTMLEle
   const state: InlineDrawerState = useInlineDrawerBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-open'] = stringifyDataAttribute(state.open);
+  state.root['data-open'] = toDataAttributeValue(state.open);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-position'] = state.position;
 

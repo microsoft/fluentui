@@ -1,16 +1,13 @@
-import { execSync } from 'node:child_process';
-
 import type { AllPackageInfo } from '@fluentui/scripts-monorepo';
 
 import { deprecateReactComponentsPreviewPackages } from './deprecate-react-components-preview-packages';
+import { runNpmCommand } from './npm-utils';
 
-// Mock the `execSync` function, as we don't want to actually run the `npm deprecate` command
-jest.mock('node:child_process', () => ({
-  ...jest.requireActual('node:child_process'),
-  execSync: jest.fn(),
+jest.mock('./npm-utils', () => ({
+  runNpmCommand: jest.fn(),
 }));
 
-const mockExecSync = execSync as jest.MockedFunction<typeof execSync>;
+const mockRunNpmCommand = runNpmCommand as jest.MockedFunction<typeof runNpmCommand>;
 
 const packages: AllPackageInfo = {
   // preview => stable package, published preview package should be deprecated
@@ -70,6 +67,10 @@ const packages: AllPackageInfo = {
 };
 
 describe('deprecateReactComponentsPreviewPackages', () => {
+  beforeEach(() => {
+    mockRunNpmCommand.mockReset();
+  });
+
   it('should skip deprecating packages (no change files)', () => {
     deprecateReactComponentsPreviewPackages({
       argv: {
@@ -80,7 +81,7 @@ describe('deprecateReactComponentsPreviewPackages', () => {
       packages,
     });
 
-    expect(mockExecSync).not.toHaveBeenCalled();
+    expect(mockRunNpmCommand).not.toHaveBeenCalled();
   });
 
   it('should skip deprecating packages (no preview packages)', () => {
@@ -93,7 +94,7 @@ describe('deprecateReactComponentsPreviewPackages', () => {
       packages,
     });
 
-    expect(mockExecSync).not.toHaveBeenCalled();
+    expect(mockRunNpmCommand).not.toHaveBeenCalled();
   });
 
   it('should deprecate preview packages', () => {
@@ -106,12 +107,15 @@ describe('deprecateReactComponentsPreviewPackages', () => {
       packages,
     });
 
-    expect(mockExecSync).toHaveBeenCalledTimes(1);
-
-    expect(mockExecSync).toHaveBeenCalledWith(
-      `npm deprecate @fluentui/react-carousel-preview "Deprecated in favor of stable release - use/migrate to @fluentui/react-carousel" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=npm-token`,
-      { stdio: 'inherit' },
-    );
+    expect(mockRunNpmCommand).toHaveBeenCalledTimes(1);
+    expect(mockRunNpmCommand).toHaveBeenCalledWith({
+      args: [
+        'deprecate',
+        '@fluentui/react-carousel-preview',
+        'Deprecated in favor of stable release - use/migrate to @fluentui/react-carousel',
+      ],
+      npmToken: 'npm-token',
+    });
   });
 
   it('should throw an error (change dir is not correct)', () => {
@@ -127,7 +131,7 @@ describe('deprecateReactComponentsPreviewPackages', () => {
   });
 
   it('should throw an error (package deprecation/npm command fails)', () => {
-    mockExecSync.mockImplementation(() => {
+    mockRunNpmCommand.mockImplementation(() => {
       throw new Error('Failed to deprecate package');
     });
 

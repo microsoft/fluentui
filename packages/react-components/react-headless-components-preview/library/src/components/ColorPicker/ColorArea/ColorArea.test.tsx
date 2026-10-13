@@ -7,6 +7,10 @@ describe('ColorArea', () => {
   isConformant({
     Component: ColorArea,
     displayName: 'ColorArea',
+    requiredProps: {
+      inputX: { 'aria-label': 'Saturation' },
+      inputY: { 'aria-label': 'Value' },
+    },
     disabledTests: ['has-top-level-file-extra'],
   });
 

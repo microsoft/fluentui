@@ -7,20 +7,18 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderSearchBox_unstable as renderSearchBox } from '@fluentui/react-search';
-import type { SearchBoxBaseProps } from '@fluentui/react-search';
 import type { SearchBoxBaseState } from '@fluentui/react-search';
-import type { SearchBoxSlots as SearchBoxSlots_2 } from '@fluentui/react-search';
+import { SearchBoxBaseProps as SearchBoxProps } from '@fluentui/react-search';
+import { SearchBoxSlots } from '@fluentui/react-search';
 
 export { renderSearchBox }
 
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
-// @public
-export type SearchBoxProps = SearchBoxBaseProps;
+export { SearchBoxProps }
 
-// @public
-export type SearchBoxSlots = SearchBoxSlots_2;
+export { SearchBoxSlots }
 
 // @public
 export type SearchBoxState = SearchBoxBaseState & {

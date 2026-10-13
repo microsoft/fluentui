@@ -96,8 +96,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   }, []);
 
   const registerOverflowMenu = React.useCallback((el: HTMLElement) => {
-    managerRef.current?.addOverflowMenu(el);
     el.setAttribute(DATA_OVERFLOW_MENU, '');
+    managerRef.current?.addOverflowMenu(el);
 
     return () => {
       managerRef.current?.removeOverflowMenu();

@@ -1,6 +1,6 @@
-import type { ToolbarToggleButtonBaseProps, ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
+import type { ToolbarToggleButtonBaseState } from '@fluentui/react-toolbar';
 
-export type ToolbarToggleButtonProps = ToolbarToggleButtonBaseProps;
+export type { ToolbarToggleButtonBaseProps as ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
 
 export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {
   root: {

@@ -1,20 +1,5 @@
-import type {
-  CardFooterSlots as CardFooterBaseSlots,
-  CardFooterBaseProps,
-  CardFooterBaseState,
+export type {
+  CardFooterSlots,
+  CardFooterBaseProps as CardFooterProps,
+  CardFooterBaseState as CardFooterState,
 } from '@fluentui/react-card';
-
-/**
- * CardFooter component slots
- */
-export type CardFooterSlots = CardFooterBaseSlots;
-
-/**
- * CardFooter component props
- */
-export type CardFooterProps = CardFooterBaseProps;
-
-/**
- * CardFooter component state
- */
-export type CardFooterState = CardFooterBaseState;

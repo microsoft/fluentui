@@ -21,6 +21,7 @@ import ts from 'typescript';
 import { getTemplate, uniqueArray } from './lib/utils';
 import setupCypressComponentTesting from '../cypress-component-configuration';
 import { PackageJson, TsConfig } from '../../types';
+import { buildExportMap } from '../export-maps-sync/lib/export-map';
 import {
   arePromptsEnabled,
   getProjectConfig,
@@ -699,23 +700,11 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     // packages get the ESM/CJS conditional export shape (no `node` condition); every other package
     // keeps the existing CommonJS-first shape below unchanged (this stays a no-op for them).
     if (json.type === 'module') {
-      // bare Node `import` resolves to valid ESM (`lib/`), `require` resolves to CommonJS
-      // (`lib-commonjs/*.cjs`). Per-condition `types` point `require` at a `.d.cts` so `node16`/
-      // `nodenext` CJS consumers get a CommonJS-flavoured declaration (keeps `@arethetypeswrong/cli` green).
       const commonjsCjs = commonjs ? commonjs.replace(/\.js$/, '.cjs') : null;
       if (commonjsCjs) {
         json.main = commonjsCjs;
       }
-      const esmTypes = json.typings;
-      const cjsTypes = json.typings ? json.typings.replace(/\.d\.ts$/, '.d.cts') : undefined;
-      json.exports = {
-        '.': {
-          ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
-          ...(esm && esmTypes ? { import: { types: esmTypes, default: esm } } : null),
-          ...(commonjsCjs && cjsTypes ? { require: { types: cjsTypes, default: commonjsCjs } } : null),
-        },
-        './package.json': './package.json',
-      };
+      json.exports = buildExportMap(json, [{ key: '.', name: 'index', outputPath: 'index' }]);
 
       return json;
     }

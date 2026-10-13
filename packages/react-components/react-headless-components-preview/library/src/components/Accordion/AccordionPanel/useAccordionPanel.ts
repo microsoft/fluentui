@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useAccordionPanelBase_unstable } from '@fluentui/react-accordion';
 
 import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an AccordionPanel component, given its props and ref.
@@ -15,7 +15,7 @@ export const useAccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTM
 
   // Set data attribute for open state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-open'] = stringifyDataAttribute(state.open);
+  state.root['data-open'] = toDataAttributeValue(state.open);
 
   return state;
 };

@@ -1,5 +1,5 @@
 import { InjectionMode, Stylesheet } from './Stylesheet';
-import { styleToClassName } from './styleToClassName';
+import { serializeRuleEntries, styleToClassName } from './styleToClassName';
 import { IStyleOptions } from './IStyleOptions';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
@@ -602,5 +602,113 @@ describe('styleToClassName with specificityMultiplier', () => {
         'margin-left:2px !important;' +
         '}',
     );
+  });
+
+  describe('style tag escaping', () => {
+    const payload = 'red;}</style><script>alert(1)</script><style>.x{color:red';
+
+    it('preserves supported string and number serialization', () => {
+      expect(
+        serializeRuleEntries(
+          {},
+          {
+            color: 'red',
+            marginTop: 2,
+            opacity: 0.5,
+            '--scale': 3,
+          },
+        ),
+      ).toEqual('color:red;margin-top:2px;opacity:0.5;--scale:3;');
+    });
+
+    it('escapes angle brackets after array values are coerced', () => {
+      const entries = { fontFamily: ['Arial', '<fallback>'] } as unknown as Record<string, string | number>;
+
+      expect(serializeRuleEntries({}, entries)).toEqual('font-family:Arial,\\3C fallback\\3E ;');
+    });
+
+    it('escapes angle brackets after custom string coercion', () => {
+      const value = {
+        toString: jest.fn(() => '<custom>'),
+      };
+      const entries = { color: value } as unknown as Record<string, string | number>;
+
+      expect(serializeRuleEntries({}, entries)).toEqual('color:\\3C custom\\3E ;');
+      expect(value.toString).toHaveBeenCalledTimes(1);
+    });
+
+    it.each(['fill', 'background', 'color', 'content', 'fontFamily', 'backgroundImage'] as const)(
+      'escapes a value that would terminate the style element in %s',
+      property => {
+        styleToClassName({}, { [property]: payload });
+
+        const rules = _stylesheet.getRules();
+
+        expect(rules).not.toContain('</style');
+        expect(rules).not.toContain('<script');
+        expect(rules).not.toContain('<');
+        expect(rules).not.toContain('>');
+      },
+    );
+
+    it('escapes angle brackets as css code points', () => {
+      styleToClassName({}, { content: '"a<b>c"' });
+
+      expect(_stylesheet.getRules()).toEqual('.css-0{content:"a\\3C b\\3E c";}');
+    });
+
+    it('preserves odd backslash escape parity in declaration values', () => {
+      const backslash = '\\';
+
+      expect(serializeRuleEntries({}, { content: `"${backslash}</style${backslash}>"` })).toEqual(
+        `content:"${backslash}3C /style${backslash}3E ";`,
+      );
+    });
+
+    it('preserves even backslash escape parity in declaration values', () => {
+      const backslash = '\\';
+
+      expect(
+        serializeRuleEntries({}, { content: `"${backslash}${backslash}</style${backslash}${backslash}>"` }),
+      ).toEqual(`content:"${backslash}${backslash}${backslash}3C /style${backslash}${backslash}${backslash}3E ";`);
+    });
+
+    it('preserves backslash escape parity in URLs', () => {
+      const backslash = '\\';
+
+      expect(serializeRuleEntries({}, { backgroundImage: `url("${backslash}</style${backslash}>")` })).toEqual(
+        `background-image:url("${backslash}3C /style${backslash}3E ");`,
+      );
+    });
+
+    it('serializes a long backslash run with and without a following terminator', () => {
+      const backslashes = new Array(20001).join('\\');
+
+      expect(serializeRuleEntries({}, { content: `${backslashes}x` })).toBe(`content:${backslashes}x;`);
+      expect(serializeRuleEntries({}, { content: `${backslashes}</style>` })).toBe(
+        `content:${backslashes}\\3C /style\\3E ;`,
+      );
+    });
+
+    it('does not escape selectors, so combinators keep working', () => {
+      styleToClassName(
+        {},
+        {
+          selectors: {
+            '& > .foo': { background: 'red' },
+          },
+        },
+      );
+
+      expect(_stylesheet.getRules()).toEqual('.css-0 > .foo{background:red;}');
+    });
+
+    it('keeps escaped values out of the class name cache key', () => {
+      const first = styleToClassName({}, { content: '"<"' });
+      const second = styleToClassName({}, { content: '"<"' });
+
+      expect(second).toEqual(first);
+      expect(_stylesheet.getRules()).toEqual('.css-0{content:"\\3C ";}');
+    });
   });
 });

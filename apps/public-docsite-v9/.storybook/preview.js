@@ -1,3 +1,4 @@
+import '@fluentui/react-storybook-addon-playground/styles.css';
 import * as rootPreview from '../../../.storybook/preview';
 
 /** @type {NonNullable<import('@storybook/react').Decorator[]>} */
@@ -26,6 +27,7 @@ export const parameters = {
             'Positioning Components',
             'Server-Side Rendering',
             ['Basic setup', 'Next.js setup', 'Limitations with Portals'],
+            'Native ESM',
           ],
           'Migration',
           [
@@ -33,7 +35,7 @@ export const parameters = {
             'Keeping Design Consistent',
             'Handling Breaking Changes',
             'from v8',
-            ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
+            ['Components', 'Component Mapping', 'Color Mapping', 'Troubleshooting'],
             'from v0',
           ],
           'Recipes',

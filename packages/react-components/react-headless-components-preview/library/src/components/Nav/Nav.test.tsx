@@ -89,7 +89,7 @@ describe('Nav', () => {
     );
 
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
-    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
   });
 
@@ -112,7 +112,7 @@ describe('Nav', () => {
     // Click to open
     fireEvent.click(result.getByText('Category 1'));
     expect(result.getByText('Category 1')).toHaveAttribute('aria-expanded', 'true');
-    expect(result.getByText('Category 1')).toHaveAttribute('data-open');
+    expect(result.getByText('Category 1')).toHaveAttribute('data-expanded');
     expect(result.getByText('Sub Item 1')).toBeInTheDocument();
 
     // Click to close
@@ -201,5 +201,35 @@ describe('Nav', () => {
     const link = result.getByText('Link Item');
     expect(link.tagName).toBe('A');
     expect(link).toHaveAttribute('href', 'https://example.com');
+  });
+
+  it('hides NavCategoryItem expandIcon from assistive technology by default', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('allows a consumer to override NavCategoryItem expandIcon aria-hidden', () => {
+    const result = render(
+      <Nav>
+        <NavCategory value="cat1">
+          <NavCategoryItem expandIcon={{ 'aria-hidden': false, children: <img alt="expand" src="chevron.png" /> }}>
+            Category 1
+          </NavCategoryItem>
+        </NavCategory>
+      </Nav>,
+    );
+
+    expect(result.getByRole('button', { name: 'Category 1 expand' })).toBeInTheDocument();
+    expect(result.getByAltText('expand').parentElement).toHaveAttribute('aria-hidden', 'false');
   });
 });

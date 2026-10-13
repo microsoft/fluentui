@@ -1,12 +1,6 @@
-import type {
-  MenuItemLinkProps as MenuItemLinkBaseProps,
-  MenuItemLinkState as MenuItemLinkBaseState,
-  MenuItemLinkSlots,
-} from '@fluentui/react-menu';
+import type { MenuItemLinkState as MenuItemLinkBaseState } from '@fluentui/react-menu';
 
-export type { MenuItemLinkSlots };
-
-export type MenuItemLinkProps = MenuItemLinkBaseProps;
+export type { MenuItemLinkSlots, MenuItemLinkProps } from '@fluentui/react-menu';
 
 export type MenuItemLinkState = MenuItemLinkBaseState & {
   root: {

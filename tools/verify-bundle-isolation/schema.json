@@ -32,20 +32,38 @@
         "minLength": 1
       }
     },
-    "allowedViolations": {
-      "description": "Bundle-size fixture paths mapped to forbidden packages tolerated as tracked debt. Fixture paths use forward slashes and are relative to fixturesRoot.",
+    "fixtures": {
+      "description": "Fixtures to verify, keyed by path relative to fixturesRoot using forward slashes. A fixture present in fixturesRoot but absent here is skipped, which is how a directory shared with monosize is narrowed to the entry points that carry an isolation guarantee.",
       "type": "object",
+      "minProperties": 1,
       "additionalProperties": {
-        "type": "array",
-        "uniqueItems": true,
-        "items": {
-          "description": "Exact resolved package name. Globs are rejected so a tolerated leak cannot silently cover a new one.",
-          "type": "string",
-          "minLength": 1,
-          "pattern": "^[^*]+$"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "forbiddenPackages": {
+            "description": "Replaces the top-level list for this fixture. Narrowing has to be possible, so this overrides rather than extends.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "allowedViolations": {
+            "description": "Forbidden packages tolerated as tracked debt for this fixture.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "description": "Exact resolved package name. Globs are rejected so a tolerated leak cannot silently cover a new one.",
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^*]+$"
+            }
+          }
         }
       }
     }
   },
-  "required": ["fixturesRoot", "externals", "forbiddenPackages", "allowedViolations"]
+  "required": ["fixturesRoot", "externals", "forbiddenPackages", "fixtures"]
 }

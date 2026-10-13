@@ -1,6 +1,1 @@
-import { renderButton_unstable } from '@fluentui/react-button';
-
-/**
- * Renders the final JSX of the Button component, given the state.
- */
-export const renderButton = renderButton_unstable;
+export { renderButton_unstable as renderButton } from '@fluentui/react-button';

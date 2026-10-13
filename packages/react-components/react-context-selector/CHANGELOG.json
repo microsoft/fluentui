@@ -2,6 +2,40 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Wed, 23 Sep 2026 09:04:33 GMT",
+      "version": "9.2.20",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "0e398342d856b879734d1b0047daf4ebfd5d1322",
+            "comment": "release recovery: versions already published to npm by the failed pipeline"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Sep 2026 11:25:39 GMT",
+      "version": "9.2.20",
+      "tag": "@fluentui/react-context-selector_v9.2.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "dfab5d732f028b0475663f5a945ede85e6ffc5c3",
+            "comment": "fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.26.7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Aug 2026 17:20:15 GMT",
       "version": "9.2.19",
       "tag": "@fluentui/react-context-selector_v9.2.19",

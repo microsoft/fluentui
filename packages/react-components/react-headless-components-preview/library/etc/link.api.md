@@ -5,20 +5,28 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { LinkBaseProps } from '@fluentui/react-link';
 import type { LinkBaseState } from '@fluentui/react-link';
-import type { LinkSlots as LinkSlots_2 } from '@fluentui/react-link';
+import { linkContextDefaultValue } from '@fluentui/react-link';
+import { LinkContextProvider } from '@fluentui/react-link';
+import { LinkContextValue } from '@fluentui/react-link';
+import { LinkBaseProps as LinkProps } from '@fluentui/react-link';
+import { LinkSlots } from '@fluentui/react-link';
 import type * as React_2 from 'react';
 import { renderLink_unstable as renderLink } from '@fluentui/react-link';
+import { useLinkContext } from '@fluentui/react-link';
 
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
 
-// @public
-export type LinkProps = LinkBaseProps;
+export { linkContextDefaultValue }
 
-// @public
-export type LinkSlots = LinkSlots_2;
+export { LinkContextProvider }
+
+export { LinkContextValue }
+
+export { LinkProps }
+
+export { LinkSlots }
 
 // @public
 export type LinkState = LinkBaseState & {
@@ -32,6 +40,8 @@ export { renderLink }
 
 // @public
 export const useLink: (props: LinkProps, ref: React_2.Ref<HTMLElement>) => LinkState;
+
+export { useLinkContext }
 
 // (No @packageDocumentation comment for this package)
 

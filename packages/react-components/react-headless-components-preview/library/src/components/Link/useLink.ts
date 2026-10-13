@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useLinkBase_unstable } from '@fluentui/react-link';
 
 import type { LinkProps, LinkState } from './Link.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Link component, given its props and ref.
@@ -14,9 +14,9 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>): LinkStat
   const state: LinkState = useLinkBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
 
   return state;
 };

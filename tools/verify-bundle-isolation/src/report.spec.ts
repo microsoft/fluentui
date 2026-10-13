@@ -1,3 +1,4 @@
+import { type Config, type FixtureConfig, selectFixtures } from './config';
 import {
   type FixtureResult,
   type RuntimeOptions,
@@ -57,7 +58,7 @@ describe('createReport', () => {
     const report = createReport(
       input({
         results: [fixtureResult({ found: ['allowed-pkg'] })],
-        allowedViolations: { 'A.fixture.js': ['allowed-pkg'] },
+        fixtures: { 'A.fixture.js': { allowedViolations: ['allowed-pkg'] } },
       }),
     );
 
@@ -68,7 +69,7 @@ describe('createReport', () => {
     const report = createReport(
       input({
         results: [fixtureResult({ found: ['allowed-pkg'] })],
-        allowedViolations: { 'A.fixture.js': ['allowed-pkg'] },
+        fixtures: { 'A.fixture.js': { allowedViolations: ['allowed-pkg'] } },
         strict: true,
       }),
     );
@@ -76,18 +77,33 @@ describe('createReport', () => {
     expect(report).toMatchObject({ failed: true, status: 'failed' });
   });
 
-  it('fails on an allowlist entry for a fixture that does not exist', () => {
-    const report = createReport(input({ results: [fixtureResult()], allowedViolations: { 'Gone.fixture.js': ['x'] } }));
+  it('fails on a fixture entry for a fixture that does not exist', () => {
+    const report = createReport(
+      input({
+        results: [fixtureResult()],
+        fixtures: { 'A.fixture.js': {}, 'Gone.fixture.js': { allowedViolations: ['x'] } },
+      }),
+    );
 
     expect(report.orphans).toEqual([{ fixture: 'Gone.fixture.js', packages: ['x'] }]);
     expect(report.failed).toBe(true);
+  });
+
+  it('reports a discovered fixture that was not opted in as skipped rather than verified', () => {
+    const report = createReport(
+      input({ results: [fixtureResult()], discovered: ['A.fixture.js', 'Monosize.fixture.js'] }),
+    );
+
+    expect(report.skipped).toEqual(['Monosize.fixture.js']);
+    expect(report.failed).toBe(false);
   });
 
   it('totals findings across fixtures', () => {
     const report = createReport(
       input({
         results: [fixtureResult({ found: ['a-pkg'] }), fixtureResult({ fixture: 'B.fixture.js', found: ['b-pkg'] })],
-        fixtures: ['A.fixture.js', 'B.fixture.js'],
+        discovered: ['A.fixture.js', 'B.fixture.js'],
+        fixtures: { 'A.fixture.js': {}, 'B.fixture.js': {} },
       }),
     );
 
@@ -107,7 +123,7 @@ describe('formatReport', () => {
       createReport(
         input({
           results: [fixtureResult({ found: ['forbidden-pkg'], leaks: { 'forbidden-pkg': leak() } })],
-          allowedViolations: { 'A.fixture.js': ['forbidden-pkg'] },
+          fixtures: { 'A.fixture.js': { allowedViolations: ['forbidden-pkg'] } },
         }),
       ),
       '/ws/summary.json',
@@ -115,6 +131,34 @@ describe('formatReport', () => {
 
     expect(text).not.toContain('free of');
     expect(text).toContain('PASS WITH DEBT - 1 fixture, 0 regressions, 1 allowed violation');
+  });
+
+  it('names the fixtures it skipped, so an opted-out fixture is never silently unguarded', () => {
+    const text = formatReport(
+      createReport(input({ results: [fixtureResult()], discovered: ['A.fixture.js', 'Monosize.fixture.js'] })),
+      '/ws/summary.json',
+    );
+
+    expect(text).toContain('  SKIPPED     1 fixture not listed under "fixtures" in packages/thing/config.json');
+    expect(text).toContain('    Monosize.fixture.js');
+    expect(text).toContain('PASS - 1 fixture, 1 skipped free of');
+  });
+
+  it('shows the forbidden list only for a fixture that overrides it', () => {
+    const text = formatReport(
+      createReport(
+        input({
+          results: [fixtureResult(), fixtureResult({ fixture: 'B.fixture.js' })],
+          discovered: ['A.fixture.js', 'B.fixture.js'],
+          fixtures: { 'A.fixture.js': {}, 'B.fixture.js': { forbiddenPackages: ['@scope/*'] } },
+        }),
+      ),
+      '/ws/summary.json',
+    );
+
+    expect(text).toContain('  CLEAN       B.fixture.js\n    forbidden: @scope/*');
+    expect(text).toContain('  CLEAN       A.fixture.js\n');
+    expect(text).not.toContain('  CLEAN       A.fixture.js\n    forbidden:');
   });
 
   it('lists allowlisted leaks with their size and entry points, ordered by cost', () => {
@@ -130,7 +174,7 @@ describe('formatReport', () => {
               },
             }),
           ],
-          allowedViolations: { 'A.fixture.js': ['forbidden-pkg', '@scope/styles'] },
+          fixtures: { 'A.fixture.js': { allowedViolations: ['forbidden-pkg', '@scope/styles'] } },
         }),
       ),
       '/ws/summary.json',
@@ -148,7 +192,7 @@ describe('formatReport', () => {
       createReport(
         input({
           results: [fixtureResult({ found: ['@scope/styles'], leaks: { '@scope/styles': leak() } })],
-          allowedViolations: { 'A.fixture.js': ['@scope/styles'] },
+          fixtures: { 'A.fixture.js': { allowedViolations: ['@scope/styles'] } },
         }),
       ),
       '/ws/summary.json',
@@ -178,7 +222,9 @@ describe('formatReport', () => {
 
   it('tells the reader how to lock in a fix rather than reporting it as a plain failure', () => {
     const text = formatReport(
-      createReport(input({ results: [fixtureResult()], allowedViolations: { 'A.fixture.js': ['fixed-pkg'] } })),
+      createReport(
+        input({ results: [fixtureResult()], fixtures: { 'A.fixture.js': { allowedViolations: ['fixed-pkg'] } } }),
+      ),
       '/ws/summary.json',
     );
 
@@ -191,7 +237,7 @@ describe('formatReport', () => {
       createReport(
         input({
           results: [fixtureResult({ found: ['forbidden-pkg'], leaks: { 'forbidden-pkg': leak() } })],
-          allowedViolations: { 'A.fixture.js': ['forbidden-pkg'] },
+          fixtures: { 'A.fixture.js': { allowedViolations: ['forbidden-pkg'] } },
           strict: true,
         }),
       ),
@@ -221,7 +267,7 @@ describe('createSummary', () => {
           results: [
             fixtureResult({ found: ['forbidden-pkg'], leaks: { 'forbidden-pkg': leak({ via: 'lib/entry.js' }) } }),
           ],
-          allowedViolations: { 'A.fixture.js': ['forbidden-pkg'] },
+          fixtures: { 'A.fixture.js': { allowedViolations: ['forbidden-pkg'] } },
         }),
       ),
     );
@@ -303,17 +349,24 @@ function leak({ modules = 2, via = null }: { modules?: number; via?: string | nu
 
 function input({
   results,
-  fixtures = ['A.fixture.js'],
-  allowedViolations = {},
+  discovered = ['A.fixture.js'],
+  fixtures = { 'A.fixture.js': {} },
   strict = false,
   analyze = false,
 }: {
   results: FixtureResult[];
-  fixtures?: string[];
-  allowedViolations?: Record<string, string[]>;
+  discovered?: string[];
+  fixtures?: Record<string, FixtureConfig>;
   strict?: boolean;
   analyze?: boolean;
 }) {
+  const config: Config = {
+    fixturesRoot: './bundle-size',
+    externals: [],
+    forbiddenPackages: ['forbidden-pkg', '@scope/*'],
+    fixtures,
+  };
+
   const options: RuntimeOptions = {
     configPath: '/ws/packages/thing/config.json',
     analyze,
@@ -321,13 +374,8 @@ function input({
     fixturesRoot: '/ws/packages/thing/bundle-size',
     packageRoot,
     workspaceRoot,
-    config: {
-      fixturesRoot: './bundle-size',
-      externals: [],
-      forbiddenPackages: ['forbidden-pkg', '@scope/*'],
-      allowedViolations,
-    },
+    config,
   };
 
-  return { packageName: '@fluentui/thing', results, fixtures, options };
+  return { packageName: '@fluentui/thing', results, selection: selectFixtures(discovered, config), options };
 }

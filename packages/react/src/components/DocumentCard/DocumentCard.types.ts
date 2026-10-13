@@ -36,6 +36,10 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
    * it will be used instead of the URL.
+   *
+   * The URL is navigated to as-is, exactly like the `href` of an anchor, so script URLs such as
+   * `javascript:` execute in your app's origin. Never pass untrusted or user supplied values here
+   * without validating their protocol first.
    */
   onClickHref?: string;
 

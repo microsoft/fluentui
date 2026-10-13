@@ -113,6 +113,7 @@ npminstall-log.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npmrc
 
 # Dependency change files generated from npmx aka rush
 package-deps.json

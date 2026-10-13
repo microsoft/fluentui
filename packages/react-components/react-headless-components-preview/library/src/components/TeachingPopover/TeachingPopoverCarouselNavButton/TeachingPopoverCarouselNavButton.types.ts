@@ -1,11 +1,9 @@
-import type {
-  TeachingPopoverCarouselNavButtonBaseProps,
-  TeachingPopoverCarouselNavButtonBaseState,
+import type { TeachingPopoverCarouselNavButtonBaseState } from '@fluentui/react-teaching-popover';
+
+export type {
+  TeachingPopoverCarouselNavButtonSlots,
+  TeachingPopoverCarouselNavButtonBaseProps as TeachingPopoverCarouselNavButtonProps,
 } from '@fluentui/react-teaching-popover';
-
-export type { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-teaching-popover';
-
-export type TeachingPopoverCarouselNavButtonProps = TeachingPopoverCarouselNavButtonBaseProps;
 
 export type TeachingPopoverCarouselNavButtonState = TeachingPopoverCarouselNavButtonBaseState & {
   root: {

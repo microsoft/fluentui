@@ -1,8 +1,20 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 02 Jul 2026 09:55:29 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.3)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.15.2..@fluentui/style-utilities_v8.15.3)
+
+### Patches
+
+- Update the default Fluent CDN URL for the fabric-cdn 4.0.7 deployment. ([PR #36756](https://github.com/microsoft/fluentui/pull/36756) by caperez@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.15.2)
 

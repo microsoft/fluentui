@@ -265,6 +265,9 @@ export type FieldControlPropsOptions = {
    * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
    *
    * This should be used with controls that have a custom size prop that matches the Field's size prop.
+   *
+   * NOTE: the size is set on the props *returned* by this hook, so the control must read `size` from the returned
+   * props.
    */
   supportsSize?: boolean;
 };

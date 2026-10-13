@@ -21,6 +21,8 @@ const config = {
     '**/stories/**',
     '**/.storybook/**',
     '**/bundle-size/**',
+    '**/monosize.config.mjs',
+    '**/bundle-isolation.config.json',
     '**/common/isConformant.ts',
     '**/src/testing/**',
     '**/src/e2e/**',
@@ -29,7 +31,6 @@ const config = {
     '**/SPEC*.md',
     '**/tests/**',
   ],
-  scope: ['!packages/fluentui/*'],
   changehint: "Run 'yarn change' to generate a change file",
 };
 

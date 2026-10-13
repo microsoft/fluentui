@@ -4,21 +4,19 @@
 
 ```ts
 
-import type { DividerBaseProps } from '@fluentui/react-divider';
-import { DividerBaseState } from '@fluentui/react-divider';
-import type { DividerSlots as DividerSlots_2 } from '@fluentui/react-divider';
+import type { DividerBaseState } from '@fluentui/react-divider';
+import { DividerBaseProps as DividerProps } from '@fluentui/react-divider';
+import { DividerSlots } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
+import { renderDivider_unstable as renderDivider } from '@fluentui/react-divider';
 
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
 
-// @public (undocumented)
-export type DividerProps = DividerBaseProps;
+export { DividerProps }
 
-// @public (undocumented)
-export type DividerSlots = DividerSlots_2;
+export { DividerSlots }
 
 // @public (undocumented)
 export type DividerState = DividerBaseState & {
@@ -27,8 +25,7 @@ export type DividerState = DividerBaseState & {
     };
 };
 
-// @public
-export const renderDivider: (state: DividerBaseState) => JSXElement;
+export { renderDivider }
 
 // @public
 export const useDivider: (props: DividerProps, ref: React_2.Ref<HTMLElement>) => DividerState;

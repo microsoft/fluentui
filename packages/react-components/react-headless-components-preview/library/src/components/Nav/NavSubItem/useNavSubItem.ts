@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useNavSubItemBase_unstable } from '@fluentui/react-nav';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
 
 export const useNavSubItem = (
@@ -12,7 +12,9 @@ export const useNavSubItem = (
   const state: NavSubItemState = useNavSubItemBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-selected'] = stringifyDataAttribute(state.selected);
+  state.root['data-disabled'] = toDataAttributeValue(state.root.disabled || state.root['aria-disabled']);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
 
   return state;
 };

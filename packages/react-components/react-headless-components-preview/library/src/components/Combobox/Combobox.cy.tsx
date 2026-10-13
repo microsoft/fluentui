@@ -7,6 +7,7 @@ import type { ComboboxProps } from '.';
 // ---- Selectors ----
 // The Combobox `id` prop maps to the trigger <input> element.
 const trigger = '#combobox';
+const expandIcon = '#expand-icon';
 const listbox = '[role="listbox"]';
 const option = '[role="option"]';
 const multiselectPopup = '[role="menu"]';
@@ -17,7 +18,12 @@ const groupLabel = '[role="presentation"]';
 // ---- Fixtures ----
 
 const BasicCombobox = (props: Partial<ComboboxProps>) => (
-  <Combobox id="combobox" placeholder="Select an animal" {...props}>
+  <Combobox
+    id="combobox"
+    placeholder="Select an animal"
+    expandIcon={{ id: 'expand-icon', children: 'Open' }}
+    {...props}
+  >
     <Option>Cat</Option>
     <Option>Dog</Option>
     <Option disabled>Ferret</Option>
@@ -39,6 +45,125 @@ describe('Combobox', () => {
       mount(<BasicCombobox />);
       cy.get(trigger).realClick();
       cy.get(listbox).should('exist');
+    });
+
+    it('toggles on click-only expand icon activation', () => {
+      mount(<BasicCombobox />);
+
+      cy.get(expandIcon).trigger('click');
+      cy.get('[data-open]').should('exist');
+      cy.get(expandIcon).trigger('click');
+      cy.get('[data-open]').should('not.exist');
+    });
+
+    it('toggles on expand icon keyboard activation', () => {
+      mount(<BasicCombobox />);
+
+      cy.get(expandIcon).focus().realPress('Enter');
+      cy.get('[data-open]').should('exist');
+      cy.get(expandIcon).focus().realPress('Space');
+      cy.get('[data-open]').should('not.exist');
+      cy.get(trigger).should('be.focused');
+    });
+
+    it('closes on Escape from the expand icon without bubbling to a parent dialog', () => {
+      const onDialogKeyDown = cy.stub().as('onDialogKeyDown');
+      mount(
+        <div role="dialog" onKeyDown={onDialogKeyDown}>
+          <BasicCombobox defaultOpen />
+        </div>,
+      );
+
+      cy.get(expandIcon).focus().realPress('Escape');
+      cy.get(listbox).should('not.exist');
+      cy.get(trigger).should('be.focused');
+      cy.get('@onDialogKeyDown').should('not.have.been.called');
+    });
+
+    it('clears focus state when focus leaves from the expand icon', () => {
+      mount(<BasicCombobox />);
+
+      cy.get(trigger).realClick();
+      cy.get(listbox).should('exist');
+      cy.get(expandIcon).focus();
+      cy.get(listbox).should('exist');
+      cy.realPress('Tab');
+      cy.get(listbox).should('not.exist');
+    });
+
+    (['auto', 'manual'] as const).forEach(popover => {
+      it(`does not suppress click-only activation after a canceled pointer gesture for ${popover} popovers`, () => {
+        const onOpenChange = cy.stub().as('onOpenChange');
+        mount(<BasicCombobox listbox={{ popover }} onOpenChange={onOpenChange} />);
+
+        cy.get(expandIcon).realMouseDown();
+        cy.get('body').realMouseMove(0, 0, { position: 'bottomRight' }).realMouseUp({ position: 'bottomRight' });
+        cy.get('@onOpenChange').should('not.have.been.called');
+
+        cy.get(trigger).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true');
+        cy.get('@onOpenChange').should('have.been.calledOnce');
+
+        cy.get(expandIcon).then($icon => $icon[0].click());
+        cy.get(listbox).should('not.exist');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+        cy.get('@onOpenChange').should('have.been.calledTwice');
+
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get('@onOpenChange').should('have.been.calledThrice');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('not.exist');
+        cy.get('@onOpenChange').should('have.callCount', 4);
+      });
+
+      it(`toggles the ${popover} popover on pointer activation with one notification per change`, () => {
+        const onOpenChange = cy.stub().as('onOpenChange');
+        mount(<BasicCombobox listbox={{ popover }} onOpenChange={onOpenChange} />);
+
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true').and('be.focused');
+        cy.get('@onOpenChange').should('have.been.calledOnce');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('not.exist');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'false').and('be.focused');
+        cy.get('[data-open]').should('not.exist');
+        cy.get('@onOpenChange').should('have.been.calledTwice');
+        cy.get(expandIcon).realClick();
+        cy.get(listbox).should('be.visible');
+        cy.get(trigger).should('have.attr', 'aria-expanded', 'true');
+        cy.get('@onOpenChange').should('have.been.calledThrice');
+      });
+    });
+
+    it('closes on input blur with a null relatedTarget when the expand icon is absent', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(<BasicCombobox defaultOpen expandIcon={null} onOpenChange={onOpenChange} />);
+
+      cy.get(expandIcon).should('not.exist');
+      cy.get(listbox).should('be.visible');
+      cy.get(trigger).focus().should('be.focused').blur();
+      cy.get(listbox).should('not.exist');
+      cy.get(trigger).should('have.attr', 'aria-expanded', 'false');
+      cy.get('[data-open]').should('not.exist');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+    });
+
+    it('notifies of an input blur close only once', () => {
+      const onOpenChange = cy.stub().as('onOpenChange');
+      mount(<BasicCombobox defaultOpen onOpenChange={onOpenChange} />);
+
+      cy.get(trigger).focus().blur();
+      cy.get('[data-open]').should('not.exist');
+      cy.get('@onOpenChange').should('have.been.calledOnce');
+    });
+
+    it('removes the visually hidden expand icon from the tab order', () => {
+      mount(<BasicCombobox clearable defaultSelectedOptions={['Cat']} defaultValue="Cat" />);
+
+      cy.get(expandIcon).should('have.attr', 'tabindex', '-1');
     });
 
     it('opens on ArrowDown key', () => {

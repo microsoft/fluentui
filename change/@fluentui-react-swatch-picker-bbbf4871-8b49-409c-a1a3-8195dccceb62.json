@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent ImageSwatch and EmptySwatch from submitting forms",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "vgenaev@gmail.com"
+}

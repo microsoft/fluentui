@@ -1,18 +1,6 @@
-import type {
-  SpinButtonSlots as SpinButtonBaseSlots,
-  SpinButtonBaseProps,
-  SpinButtonBaseState,
-} from '@fluentui/react-spinbutton';
+import type { SpinButtonBaseState } from '@fluentui/react-spinbutton';
 
-/**
- * SpinButton component slots
- */
-export type SpinButtonSlots = SpinButtonBaseSlots;
-
-/**
- * SpinButton component props
- */
-export type SpinButtonProps = SpinButtonBaseProps;
+export type { SpinButtonSlots, SpinButtonBaseProps as SpinButtonProps } from '@fluentui/react-spinbutton';
 
 /**
  * SpinButton component state
@@ -23,6 +11,11 @@ export type SpinButtonState = SpinButtonBaseState & {
      * Data attribute set when the spin button is disabled.
      */
     'data-disabled'?: string;
+
+    /**
+     * Data attribute set when the spin button is read-only.
+     */
+    'data-readonly'?: string;
 
     /**
      * Data attribute set when the spin button is actively spinning. Value is 'up' or 'down'.

@@ -182,4 +182,21 @@ test.describe('setTheme()', () => {
     await expect(span).toHaveCSS('--foo', 'foo2');
     await expect(span).toHaveCSS('--bar', 'bar2');
   });
+
+  test('sanitizes token values', async ({ fastPage, page }) => {
+    const body = page.locator('body');
+
+    await fastPage.setTemplate();
+
+    await page.evaluate(() => {
+      window.setTheme({
+        foo: 'red; } body { font-size: 10px; } /* ',
+        'bar: blue;} body { font-size': '10px',
+      });
+    });
+
+    await expect(body).not.toHaveCSS('--foo', 'red');
+    await expect(body).not.toHaveCSS('--bar', 'blue');
+    await expect(body).not.toHaveCSS('font-size', '10px');
+  });
 });
