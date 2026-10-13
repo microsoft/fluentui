@@ -26,23 +26,23 @@ export type CheckboxProps = Omit<
   'checked' | 'defaultChecked' | 'onChange' | 'size'
 > &
   Pick<CheckboxCoreProps, 'checked' | 'children' | 'defaultChecked' | 'labelPosition' | 'onChange'> & {
-  /**
-   * The shape of the checkbox indicator.
-   *
-   * The `circular` variant is only recommended to be used in a tasks-style UI (checklist),
-   * since it otherwise could be confused for a `RadioItem`.
-   *
-   * @default square
-   */
-  shape?: 'square' | 'circular';
+    /**
+     * The shape of the checkbox indicator.
+     *
+     * The `circular` variant is only recommended to be used in a tasks-style UI (checklist),
+     * since it otherwise could be confused for a `RadioItem`.
+     *
+     * @default square
+     */
+    shape?: 'square' | 'circular';
 
-  /**
-   * The size of the checkbox indicator.
-   *
-   * @default medium
-   */
-  size?: 'medium' | 'large';
-};
+    /**
+     * The size of the checkbox indicator.
+     *
+     * @default medium
+     */
+    size?: 'medium' | 'large';
+  };
 
 /**
  * State used in rendering Checkbox

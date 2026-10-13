@@ -21,10 +21,7 @@ import type { CheckboxBaseState, CheckboxProps } from './Checkbox.types';
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
-export const useCheckboxBase = (
-  props: CheckboxProps,
-  ref: React.Ref<HTMLInputElement>,
-): CheckboxBaseState => {
+export const useCheckboxBase = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxBaseState => {
   'use no memo'; // justified: compiler would optimize useCheckboxBase — manual opt-out to preserve runtime behavior
 
   // Merge props from surrounding <Field>, if any

@@ -24,7 +24,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "devDependencies": {
-    "@fluentui/react-field": "^9.5.5"
+    "@fluentui/react-field": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

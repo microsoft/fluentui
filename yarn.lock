@@ -3820,7 +3820,7 @@ __metadata:
   resolution: "@fluentui/react-checkbox@workspace:packages/react-components/react-checkbox/library"
   dependencies:
     "@fluentui/react-core-preview": "npm:^0.0.0"
-    "@fluentui/react-field": "npm:^9.5.5"
+    "@fluentui/react-field": "npm:*"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-label": "npm:^9.4.5"
