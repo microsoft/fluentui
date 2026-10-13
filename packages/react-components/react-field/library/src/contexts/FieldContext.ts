@@ -1,4 +1,1 @@
-export {
-  FieldContextProvider,
-  useFieldContext as useFieldContext_unstable,
-} from '@fluentui/react-core-preview';
+export { FieldContextProvider, useFieldContext as useFieldContext_unstable } from '@fluentui/react-core-preview';

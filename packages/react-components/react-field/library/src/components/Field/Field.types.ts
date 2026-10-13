@@ -25,21 +25,21 @@ export type FieldSlots = Omit<FieldCoreSlots, 'label'> & {
  */
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> &
   Pick<FieldCoreProps, 'children' | 'validationState' | 'required'> & {
-  /**
-   * The orientation of the label relative to the field component.
-   * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
-   *
-   * @default vertical
-   */
-  orientation?: 'vertical' | 'horizontal';
+    /**
+     * The orientation of the label relative to the field component.
+     * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
+     *
+     * @default vertical
+     */
+    orientation?: 'vertical' | 'horizontal';
 
-  /**
-   * The size of the Field's label.
-   *
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large';
-};
+    /**
+     * The size of the Field's label.
+     *
+     * @default medium
+     */
+    size?: 'small' | 'medium' | 'large';
+  };
 
 /**
  * State used in rendering Field
