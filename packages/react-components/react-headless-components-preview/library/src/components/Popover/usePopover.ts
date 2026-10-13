@@ -163,11 +163,19 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         surface.showModal();
       }
 
+      // Older dialogs lack beforetoggle; native close removes open before restoring focus.
+      const trackDialogFocusOut = () => {
+        focusWasInsideOnNativeClose.current = !surface.open;
+      };
       surface.addEventListener('close', onSurfaceClose);
       surface.addEventListener('cancel', trackNativeCloseFocus);
+      surface.addEventListener('beforetoggle', trackNativeCloseFocus);
+      surface.addEventListener('focusout', trackDialogFocusOut);
       return () => {
         surface.removeEventListener('close', onSurfaceClose);
         surface.removeEventListener('cancel', trackNativeCloseFocus);
+        surface.removeEventListener('beforetoggle', trackNativeCloseFocus);
+        surface.removeEventListener('focusout', trackDialogFocusOut);
       };
     }
 

@@ -55,6 +55,53 @@ describe('Popover', () => {
       expect(outside).toHaveFocus();
     });
 
+    const NativeCloseExample = () => (
+      <>
+        <button>Outside</button>
+        <Popover defaultOpen trapFocus>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button autoFocus>Inside</button>
+          </PopoverSurface>
+        </Popover>
+      </>
+    );
+
+    ([false, true] as const).forEach(withBeforeToggle => {
+      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, () => {
+        const { getByRole, getByText, queryByRole } = render(<NativeCloseExample />);
+        const surface = getByRole('dialog', { hidden: true });
+        expect(getByText('Inside')).toHaveFocus();
+        if (withBeforeToggle) {
+          fireEvent(surface, Object.assign(new Event('beforetoggle'), { newState: 'closed' }));
+        }
+        surface.removeAttribute('open');
+        getByText('Inside').blur();
+        fireEvent(surface, new Event('close'));
+        expect(queryByRole('dialog', { hidden: true })).toBeNull();
+        expect(getByText('Trigger')).toHaveFocus();
+      });
+    });
+
+    it('preserves focus moved outside between native dialog close and the close event', () => {
+      const { getByRole, getByText } = render(<NativeCloseExample />);
+      const surface = getByRole('dialog', { hidden: true });
+      surface.removeAttribute('open');
+      getByText('Outside').focus();
+      fireEvent(surface, new Event('close'));
+      expect(getByText('Outside')).toHaveFocus();
+    });
+
+    it('does not restore focus when the inner control was blurred before native dialog close', () => {
+      const { getByRole, getByText } = render(<NativeCloseExample />);
+      getByText('Inside').blur();
+      getByRole('dialog', { hidden: true }).removeAttribute('open');
+      fireEvent(getByRole('dialog', { hidden: true }), new Event('close'));
+      expect(getByText('Trigger')).not.toHaveFocus();
+    });
+
     (['open', 'closed'] as const).forEach(mode => {
       ([false, true] as const).forEach(inShadowRoot => {
         it(`restores focus from a nested ${mode} shadow root ${

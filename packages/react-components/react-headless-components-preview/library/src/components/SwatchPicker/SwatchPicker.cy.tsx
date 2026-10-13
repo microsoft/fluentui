@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
+import { polyfillBodyAndObserve, supportsFocusGroup } from '@microsoft/focusgroup-polyfill';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider';
@@ -26,6 +26,10 @@ describe('SwatchPicker', () => {
       </>,
     );
 
+    // The polyfill initializes tab stops in requestAnimationFrame.
+    if (!supportsFocusGroup()) {
+      cy.get('[aria-label="Red"]').should('have.attr', 'tabindex', '0');
+    }
     cy.contains('button', 'Before').focus().realPress('Tab');
     cy.get('[aria-label="Red"]').should('be.focused').realPress('ArrowRight');
     cy.get('[aria-label="Green"]').should('be.focused').realPress('Tab');
@@ -46,6 +50,9 @@ describe('SwatchPicker', () => {
       </>,
     );
 
+    if (!supportsFocusGroup()) {
+      cy.get('[aria-label="Green"]').should('have.attr', 'tabindex', '0');
+    }
     cy.contains('button', 'Before').focus().realPress('Tab');
     cy.get('[aria-label="Green"]').should('be.focused').realPress('ArrowRight');
     cy.get('[aria-label="Blue"]').should('be.focused').realPress('Tab');

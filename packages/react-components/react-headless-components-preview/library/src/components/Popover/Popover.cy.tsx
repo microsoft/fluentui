@@ -487,22 +487,53 @@ describe('Popover', () => {
       cy.get('@onOpenChange').should('not.have.been.called');
     });
 
-    it('restores focus and unmounts after the native dialog close event', () => {
+    ([false, true] as const).forEach(withBeforeToggle => {
+      it(`restores focus after native dialog close ${withBeforeToggle ? 'with' : 'without'} beforetoggle`, () => {
+        mount(
+          <Popover defaultOpen trapFocus>
+            <PopoverTrigger>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface>
+              <button data-testid="inner">Inner</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get('[data-testid=inner]').should('have.focus');
+        cy.get<HTMLDialogElement>(trapSurfaceSelector).then($dialog => {
+          if (!withBeforeToggle) {
+            $dialog[0].addEventListener('beforetoggle', event => event.stopImmediatePropagation(), true);
+          }
+          $dialog[0].close();
+        });
+        cy.get(trapSurfaceSelector).should('not.exist');
+        cy.get('[data-testid=trigger]').should('have.focus');
+      });
+    });
+
+    it('preserves focus moved outside before the queued native dialog close event', () => {
       mount(
-        <Popover defaultOpen trapFocus>
-          <PopoverTrigger>
-            <button data-testid="trigger">Trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface>
-            <button data-testid="inner">Inner</button>
-          </PopoverSurface>
-        </Popover>,
+        <>
+          <button data-testid="outside">Outside</button>
+          <Popover defaultOpen trapFocus>
+            <PopoverTrigger>
+              <button data-testid="trigger">Trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface>
+              <button data-testid="inner">Inner</button>
+            </PopoverSurface>
+          </Popover>
+        </>,
       );
 
       cy.get('[data-testid=inner]').should('have.focus');
-      cy.get<HTMLDialogElement>(trapSurfaceSelector).then($dialog => $dialog[0].close());
+      cy.get<HTMLDialogElement>(trapSurfaceSelector).then($dialog => {
+        $dialog[0].close();
+        $dialog[0].ownerDocument.querySelector<HTMLButtonElement>('[data-testid=outside]')!.focus();
+      });
       cy.get(trapSurfaceSelector).should('not.exist');
-      cy.get('[data-testid=trigger]').should('have.focus');
+      cy.get('[data-testid=outside]').should('have.focus');
     });
 
     it('does not move focus into the surface when opened on hover without focus trapping', () => {
@@ -709,7 +740,7 @@ describe('positioning observer', () => {
 
     it('should dismiss on Escape even with tooltip wrapper', () => {
       mount(<TooltipWrappedPopoverExample />);
-      cy.get('#tooltip-wrapped-trigger').click({ force: true });
+      cy.get('#tooltip-wrapped-trigger').focus().realPress('Enter');
       cy.get(surfaceSelector).should('be.visible');
       cy.focused().realPress('Escape');
       cy.get(surfaceSelector).should('not.exist');
