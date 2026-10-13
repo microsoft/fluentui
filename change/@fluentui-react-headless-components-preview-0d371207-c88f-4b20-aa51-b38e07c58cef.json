@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Field takes its base hook, render function and context from core; FieldSlots label is a plain label element (headless-first option B PoC)",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

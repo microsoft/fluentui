@@ -1,6 +1,6 @@
-import type { FieldBaseState } from '@fluentui/react-field';
+import type { FieldBaseState } from '@fluentui/react-core-preview';
 
-export type { FieldSlots, FieldBaseProps as FieldProps, FieldContextValues } from '@fluentui/react-field';
+export type { FieldSlots, FieldProps, FieldContextValues } from '@fluentui/react-core-preview';
 
 /**
  * Field component state

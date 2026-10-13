@@ -4,15 +4,15 @@
 
 ```ts
 
-import type { FieldBaseState } from '@fluentui/react-field';
-import { FieldContextValues } from '@fluentui/react-field';
-import { FieldBaseProps as FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import type { FieldBaseState } from '@fluentui/react-core-preview';
+import { FieldContextValues } from '@fluentui/react-core-preview';
+import { FieldProps } from '@fluentui/react-core-preview';
+import { FieldSlots } from '@fluentui/react-core-preview';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import { renderField_unstable as renderField } from '@fluentui/react-field';
-import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
-import { useFieldControlProps_unstable as useFieldControlProps } from '@fluentui/react-field';
+import { renderField } from '@fluentui/react-core-preview';
+import { useFieldContext } from '@fluentui/react-core-preview';
+import { useFieldControlProps } from '@fluentui/react-core-preview';
 
 // @public
 export const Field: ForwardRefComponent<FieldProps>;

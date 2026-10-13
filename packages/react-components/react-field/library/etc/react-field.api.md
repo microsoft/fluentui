@@ -7,12 +7,22 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
+import { FieldContextProvider } from '@fluentui/react-core-preview';
+import type { FieldContextValue } from '@fluentui/react-core-preview';
+import type { FieldContextValues } from '@fluentui/react-core-preview';
+import type { FieldControlProps } from '@fluentui/react-core-preview';
+import { FieldControlPropsOptions } from '@fluentui/react-core-preview';
+import type { FieldProps as FieldProps_2 } from '@fluentui/react-core-preview';
+import type { FieldSlots as FieldSlots_2 } from '@fluentui/react-core-preview';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useFieldContext as useFieldContext_unstable } from '@fluentui/react-core-preview';
+import { useFieldContextValues as useFieldContextValues_unstable } from '@fluentui/react-core-preview';
+import { useFieldControlProps as useFieldControlProps_unstable } from '@fluentui/react-core-preview';
 
 // @public (undocumented)
 export const Field: ForwardRefComponent<FieldProps>;
@@ -26,53 +36,25 @@ export type FieldBaseState = DistributiveOmit<FieldState, 'orientation' | 'size'
 // @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
-// @public (undocumented)
-export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string;
-    labelId?: string;
-    validationMessageId?: string;
-    hintId?: string;
-}> | undefined>;
+export { FieldContextProvider }
 
-// @public (undocumented)
-export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
-    labelFor?: string;
-    labelId?: string;
-    validationMessageId?: string;
-    hintId?: string;
-}>;
+export { FieldContextValue }
 
-// @public (undocumented)
-export type FieldContextValues = {
-    field: FieldContextValue;
-};
+export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
 
 // @public
-export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'>;
-
-// @public
-export type FieldControlPropsOptions = {
-    supportsLabelFor?: boolean;
-    supportsRequired?: boolean;
-    supportsSize?: boolean;
-};
-
-// @public
-export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & Pick<FieldProps_2, 'children' | 'validationState' | 'required'> & {
     orientation?: 'vertical' | 'horizontal';
-    validationState?: 'error' | 'warning' | 'success' | 'none';
-    required?: boolean;
     size?: 'small' | 'medium' | 'large';
 };
 
 // @public
-export type FieldSlots = {
-    root: NonNullable<Slot<'div'>>;
+export type FieldSlots = Omit<FieldSlots_2, 'label'> & {
     label?: Slot<typeof Label>;
-    validationMessage?: Slot<'div'>;
-    validationMessageIcon?: Slot<'span'>;
-    hint?: Slot<'div'>;
 };
 
 // @public
@@ -89,17 +71,11 @@ export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElem
 // @public
 export const useFieldBase_unstable: (props: FieldBaseProps, ref: React_2.Ref<HTMLDivElement>) => FieldBaseState;
 
-// @public (undocumented)
-export const useFieldContext_unstable: () => FieldContextValue | undefined;
+export { useFieldContext_unstable }
 
-// @public
-export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
+export { useFieldContextValues_unstable }
 
-// @public
-export function useFieldControlProps_unstable(): FieldControlProps | undefined;
-
-// @public
-export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
+export { useFieldControlProps_unstable }
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => FieldState;

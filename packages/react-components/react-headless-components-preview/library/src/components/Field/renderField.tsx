@@ -1,1 +1,1 @@
-export { renderField_unstable as renderField } from '@fluentui/react-field';
+export { renderField } from '@fluentui/react-core-preview';
