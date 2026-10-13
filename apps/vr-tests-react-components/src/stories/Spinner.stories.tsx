@@ -39,7 +39,7 @@ export default {
   } satisfies StoryParameters,
 } satisfies Meta<typeof Spinner>;
 
-export const Primary = () => <Spinner />;
+export const Primary = () => <Spinner size="huge" label="VRT diff probe" />;
 
 export const PrimaryHighContrast = getStoryVariant(Primary, HIGH_CONTRAST);
 
