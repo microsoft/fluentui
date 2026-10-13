@@ -13,6 +13,90 @@ const collect = require('../../../../.github/scripts/prepare-vr-screenshots-for-
 const hostRoot = 'apps/vr-tests-react-components';
 const hostProject = 'vr-tests-react-components';
 
+describe('granular VRT workflow project output', () => {
+  type Step = {
+    id?: string;
+    name?: string;
+    if?: string;
+    env?: Record<string, string>;
+    with: { script: string; 'result-encoding'?: string };
+  };
+  const workflow = require('js-yaml').load(
+    readFileSync(join(__dirname, '../../../../.github/workflows/pr-vrt.yml'), 'utf8'),
+  ) as { jobs: Record<string, { steps: Step[] }> };
+  const steps = workflow.jobs.vrt_granular_pilot.steps;
+  const selection = steps.find(step => step.id === 'affected_vrt')!;
+  const build = steps.find(step => step.id === 'shared_storybook')!;
+  const capture = steps.find(step => step.name === 'Capture affected pilot screenshots')!;
+  const collector = steps.find(step => step.id === 'granular_screenshots_root')!;
+  const AsyncFunction = Object.getPrototypeOf(async () => undefined).constructor as new (
+    ...parameterNames: string[]
+  ) => (...parameters: unknown[]) => Promise<unknown>;
+  const originalProjects = process.env.VRT_PROJECTS;
+  const originalHash = process.env.VRT_STORYBOOK_HASH;
+
+  afterEach(() => {
+    for (const [name, value] of [
+      ['VRT_PROJECTS', originalProjects],
+      ['VRT_STORYBOOK_HASH', originalHash],
+    ]) {
+      if (value === undefined) {
+        delete process.env[name!];
+      } else {
+        process.env[name!] = value;
+      }
+    }
+  });
+
+  it.each([
+    { projects: [] },
+    { projects: ['react-spinner-vrt'] },
+    { projects: ['react-text-vrt', 'react-spinner-vrt'] },
+  ])('passes the action-encoded project list to build, capture and collection: %j', async ({ projects }) => {
+    const expected = [...projects].sort();
+    const core = { info: jest.fn() };
+    const selected = await new AsyncFunction('require', 'core', selection.with.script)(
+      () => ({ execFileSync: () => JSON.stringify(projects) }),
+      core,
+    );
+    const encoded = selection.with['result-encoding'] === 'string' ? String(selected) : JSON.stringify(selected);
+    expect(JSON.parse(encoded)).toEqual(expected);
+    process.env.VRT_PROJECTS = encoded;
+    process.env.VRT_STORYBOOK_HASH = 'a'.repeat(64);
+    expect(build.if).toBe("${{ steps.affected_vrt.outputs.result != '[]' }}");
+    expect(capture.if).toBe(build.if);
+
+    if (projects.length) {
+      for (const step of [build, capture]) {
+        expect(step.env?.VRT_PROJECTS).toBe('${{ steps.affected_vrt.outputs.result }}');
+        const execute = jest.fn();
+        const load = (name: string) =>
+          name === 'node:child_process'
+            ? { execFileSync: execute }
+            : { readFileSync: () => JSON.stringify({ hash: process.env.VRT_STORYBOOK_HASH }) };
+        await new AsyncFunction('require', 'core', step.with.script)(load, core);
+        expect(execute).toHaveBeenCalledWith(
+          'yarn',
+          expect.arrayContaining([`${step === build ? '--selectedProjects' : '--projects'}=${expected.join(',')}`]),
+          { stdio: 'inherit' },
+        );
+      }
+      expect(build.with['result-encoding']).toBe('string');
+    } else {
+      expect(encoded).toBe('[]');
+    }
+    const collectProjects = jest.fn().mockResolvedValue('screenshots');
+    await new AsyncFunction('require', 'github', 'context', 'core', collector.with.script)(
+      () => collectProjects,
+      {},
+      {},
+      core,
+    );
+    expect(collectProjects).toHaveBeenCalledWith(expect.objectContaining({ config: { projects: expected } }));
+    expect(collector.with['result-encoding']).toBe('string');
+  });
+});
+
 describe('prepare-vr-screenshots-for-upload', () => {
   let workspace: string;
   let previousCwd: string;

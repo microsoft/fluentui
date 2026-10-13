@@ -116,7 +116,7 @@ jobs:
             ], { encoding: 'utf8' })).sort();
             core.info(`Affected VRT projects (${projects.length}): ${projects.join(', ')}`);
             return projects;
-          result-encoding: string
+          result-encoding: json
 
       - name: Build affected Storybook once
         if: ${{ steps.affected_vrt.outputs.result != '[]' }}
