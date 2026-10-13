@@ -326,6 +326,20 @@ export class BaseTextInput extends FASTElement {
   private dirtyValue: boolean = false;
 
   /**
+   * The value as of the last `change` event or programmatic update.
+   *
+   * @internal
+   */
+  private committedValue: string = '';
+
+  /**
+   * Indicates that `value` is being updated from the internal control's `input` event.
+   *
+   * @internal
+   */
+  private isUserInput: boolean = false;
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -374,6 +388,11 @@ export class BaseTextInput extends FASTElement {
   public set value(value: string) {
     this.currentValue = value;
 
+    // Programmatic updates are not user changes, so they must not trigger `change` later.
+    if (!this.isUserInput) {
+      this.committedValue = value ?? '';
+    }
+
     if (this.elementInternals && this.control) {
       this.control.value = value ?? '';
       this.setFormValue(value);
@@ -412,14 +431,29 @@ export class BaseTextInput extends FASTElement {
    * "Change" events are not `composable` so they will not permeate the shadow DOM boundary. This function effectively
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
-  public changeHandler(e: InputEvent): boolean | void {
+  public changeHandler(e: InputEvent): boolean {
+    // Already emitted on Enter; this is the browser's later native `change` for the same value.
+    if (this.control.value === this.committedValue) {
+      return true;
+    }
+
+    this.emitChange(e);
+
+    return true;
+  }
+
+  /**
+   * Validates, records the committed value, and emits `change` on the host.
+   *
+   * @internal
+   */
+  private emitChange(detail?: Event) {
+    this.committedValue = this.control.value;
     this.setValidity();
-    this.$emit('change', e, {
+    this.$emit('change', detail, {
       bubbles: true,
       composed: true,
     });
-
-    return true;
   }
 
   /**
@@ -507,7 +541,9 @@ export class BaseTextInput extends FASTElement {
    */
   public inputHandler(e: InputEvent): boolean | void {
     this.dirtyValue = true;
+    this.isUserInput = true;
     this.value = this.control.value;
+    this.isUserInput = false;
 
     return true;
   }
@@ -523,7 +559,7 @@ export class BaseTextInput extends FASTElement {
       return true;
     }
 
-    // Enter that confirms an IME composition must not blur or submit.
+    // Enter that confirms an IME composition must not commit or submit.
     // `keyCode` 229 means the IME handled the key; Safari fires this keydown
     // after `compositionend`, when `isComposing` is already false.
     if (e.isComposing || e.keyCode === 229) {
@@ -536,24 +572,15 @@ export class BaseTextInput extends FASTElement {
       return true;
     }
 
-    // On a built-in `<input>`, when its associated `<form>` meets the
-    // condition for implicit submit, hitting the `Enter` key will fire a
-    // `change` event on the `<input>` first before the `submit` event on
-    // `<form>`. This `blur()` call and the potential `focus()` call later are
-    // to mimic this behavior, by forcing the internal `<input>` to fire the
-    // `change` event (after blur) before requesting the associated `<form>`
-    // for submission.
+    // On a built-in `<input>`, hitting `Enter` fires `change` before the implicit
+    // form submission. Emit it here so listeners see the committed value on
+    // `submit`, without moving focus.
     // @see https://github.com/microsoft/fluentui/issues/36117
-    this.control.blur();
+    if (this.control.value !== this.committedValue) {
+      this.emitChange();
+    }
 
     this.implicitSubmit();
-
-    // Restore focus unless a submit handler moved it elsewhere.
-    const root = this.getRootNode() as Document | ShadowRoot;
-    const focusMoved = root.activeElement && root.activeElement !== document.body;
-    if (this.isConnected && !focusMoved) {
-      this.control.focus({ preventScroll: true });
-    }
 
     return true;
   }
