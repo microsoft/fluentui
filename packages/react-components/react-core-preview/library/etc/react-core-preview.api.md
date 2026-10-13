@@ -11,6 +11,32 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
+export type CheckboxBaseState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition'>>;
+
+// @public
+export interface CheckboxOnChangeData {
+    // (undocumented)
+    checked: 'mixed' | boolean;
+}
+
+// @public
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
+    checked?: 'mixed' | boolean;
+    children?: never;
+    defaultChecked?: 'mixed' | boolean;
+    labelPosition?: 'before' | 'after';
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+};
+
+// @public (undocumented)
+export type CheckboxSlots = {
+    root: NonNullable<Slot<'span'>>;
+    label?: Slot<'label'>;
+    input: NonNullable<Slot<'input'>>;
+    indicator: Slot<'div', 'span'>;
+};
+
+// @public
 export type FieldBaseState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'required' | 'validationState'>> & Pick<FieldProps, 'children'> & {
     generatedControlId: string;
 };
@@ -69,8 +95,14 @@ export type FieldSlots = {
 // @internal
 export function getFieldControlProps<Props extends FieldControlProps>(context: FieldContextValue | undefined, props?: Props, options?: FieldControlPropsOptions): Props | undefined;
 
+// @public (undocumented)
+export const renderCheckbox: (state: CheckboxBaseState) => JSXElement;
+
 // @public
 export const renderField: (state: FieldBaseState, contextValues: FieldContextValues) => JSXElement;
+
+// @public
+export const useCheckboxBase: (props: CheckboxProps, ref: React_2.Ref<HTMLInputElement>) => CheckboxBaseState;
 
 // @public
 export const useFieldBase: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldBaseState;

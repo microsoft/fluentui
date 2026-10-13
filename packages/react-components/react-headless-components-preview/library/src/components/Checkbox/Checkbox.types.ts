@@ -1,6 +1,6 @@
-import type { CheckboxBaseState } from '@fluentui/react-checkbox';
+import type { CheckboxBaseState } from '@fluentui/react-core-preview';
 
-export type { CheckboxSlots, CheckboxBaseProps as CheckboxProps } from '@fluentui/react-checkbox';
+export type { CheckboxSlots, CheckboxProps } from '@fluentui/react-core-preview';
 
 /**
  * State used in rendering Checkbox

@@ -1,19 +1,10 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
-import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { CheckboxBaseState, CheckboxSlots } from './Checkbox.types';
+import { renderCheckbox } from '@fluentui/react-core-preview';
+import type { CheckboxBaseState as CheckboxCoreBaseState } from '@fluentui/react-core-preview';
+import type { CheckboxBaseState } from './Checkbox.types';
 
-export const renderCheckbox_unstable = (state: CheckboxBaseState): JSXElement => {
-  assertSlots<CheckboxSlots>(state);
-
-  return (
-    <state.root>
-      <state.input />
-      {state.labelPosition === 'before' && state.label && <state.label />}
-      {state.indicator && <state.indicator />}
-      {state.labelPosition === 'after' && state.label && <state.label />}
-    </state.root>
-  );
-};
+/**
+ * Render the final JSX of Checkbox. The implementation lives in `@fluentui/react-core-preview`.
+ */
+export const renderCheckbox_unstable = (state: CheckboxBaseState): JSXElement =>
+  renderCheckbox(state as CheckboxCoreBaseState);

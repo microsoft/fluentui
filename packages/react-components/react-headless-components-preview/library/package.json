@@ -27,7 +27,6 @@
     "@fluentui/react-breadcrumb": "^9.4.6",
     "@fluentui/react-button": "^9.11.1",
     "@fluentui/react-card": "^9.7.3",
-    "@fluentui/react-checkbox": "^9.6.5",
     "@fluentui/react-color-picker": "^9.3.1",
     "@fluentui/react-combobox": "^9.17.7",
     "@fluentui/react-context-selector": "^9.2.20",

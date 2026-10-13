@@ -4,6 +4,9 @@
 
 ```ts
 
+import type { CheckboxOnChangeData } from '@fluentui/react-core-preview';
+import type { CheckboxProps as CheckboxProps_2 } from '@fluentui/react-core-preview';
+import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-core-preview';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -25,35 +28,23 @@ export type CheckboxBaseState = Omit<CheckboxState, 'shape' | 'size'>;
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
-// @public
-export interface CheckboxOnChangeData {
-    // (undocumented)
-    checked: 'mixed' | boolean;
-}
+export { CheckboxOnChangeData }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
-    checked?: 'mixed' | boolean;
-    children?: never;
-    defaultChecked?: 'mixed' | boolean;
-    labelPosition?: 'before' | 'after';
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & Pick<CheckboxProps_2, 'checked' | 'children' | 'defaultChecked' | 'labelPosition' | 'onChange'> & {
     shape?: 'square' | 'circular';
     size?: 'medium' | 'large';
 };
 
-// @public (undocumented)
-export type CheckboxSlots = {
-    root: NonNullable<Slot<'span'>>;
+// @public
+export type CheckboxSlots = Omit<CheckboxSlots_2, 'label'> & {
     label?: Slot<typeof Label>;
-    input: NonNullable<Slot<'input'>>;
-    indicator: Slot<'div', 'span'>;
 };
 
 // @public
 export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
 
-// @public (undocumented)
+// @public
 export const renderCheckbox_unstable: (state: CheckboxBaseState) => JSXElement;
 
 // @public

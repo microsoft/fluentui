@@ -47,6 +47,16 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
+    "./checkbox": {
+      "import": {
+        "types": "./dist/checkbox.d.ts",
+        "default": "./lib/checkbox.js"
+      },
+      "require": {
+        "types": "./dist/checkbox.d.cts",
+        "default": "./lib-commonjs/checkbox.cjs"
+      }
+    },
     "./field": {
       "import": {
         "types": "./dist/field.d.ts",
