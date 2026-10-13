@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { useCheckboxBase } from '@fluentui/react-core-preview';
-import type { CheckboxProps as CheckboxCoreProps } from '@fluentui/react-core-preview';
 import type { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
 import {
   Checkmark12Filled,
@@ -72,13 +71,12 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
  * Base hook for Checkbox component, which manages state related to checked state, ARIA attributes,
  * focus management, and slot structure without design props.
  *
- * The implementation lives in `@fluentui/react-core-preview`. The v9 types use `Label` for the label slot, the core
- * types use a plain `label` element, hence the casts.
+ * The implementation lives in `@fluentui/react-core-preview`.
  *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
-export const useCheckboxBase_unstable = (
+export const useCheckboxBase_unstable: (
   props: CheckboxBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): CheckboxBaseState => useCheckboxBase(props as CheckboxCoreProps, ref) as CheckboxBaseState;
+) => CheckboxBaseState = useCheckboxBase;
