@@ -52,7 +52,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
         target,
         arrow: arrowRef.current,
         ...resolved,
-        strategy: resolved.strategy ?? positionFixed ? 'fixed' : 'absolute',
+        strategy: resolved.strategy ?? (positionFixed ? 'fixed' : 'absolute'),
       });
     }
   }, [enabled, configFn]);

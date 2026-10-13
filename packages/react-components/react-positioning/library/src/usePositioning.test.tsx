@@ -1,5 +1,6 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
+import { createPositionManager } from './createPositionManager';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
@@ -32,8 +33,11 @@ jest.mock('./createPositionManager', () => ({
   }),
 }));
 
-const TestComponent: React.FC<{ onPositioningEnd?: PositioningProps['onPositioningEnd'] }> = ({ onPositioningEnd }) => {
-  const { targetRef, containerRef } = usePositioning({ onPositioningEnd });
+const TestComponent: React.FC<Pick<PositioningProps, 'onPositioningEnd' | 'strategy'>> = ({
+  onPositioningEnd,
+  strategy,
+}) => {
+  const { targetRef, containerRef } = usePositioning({ onPositioningEnd, strategy });
 
   return (
     <>
@@ -77,6 +81,22 @@ describe('usePositioning', () => {
       await act(async () => {
         await new Promise(process.nextTick);
       });
+    });
+  });
+
+  describe('strategy', () => {
+    it.each([
+      [undefined, 'absolute'],
+      ['absolute', 'absolute'],
+      ['fixed', 'fixed'],
+    ] as const)('passes strategy %s as "%s" to the position manager', async (strategy, expected) => {
+      render(<TestComponent strategy={strategy} />);
+
+      await act(async () => {
+        await new Promise(process.nextTick);
+      });
+
+      expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ strategy: expected }));
     });
   });
 });
