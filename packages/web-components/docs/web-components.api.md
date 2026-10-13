@@ -1014,7 +1014,7 @@ export class BaseTextInput extends FASTElement {
     // @internal
     changeHandler(e: InputEvent): boolean;
     checkValidity(): boolean;
-    clickHandler(e: MouseEvent): boolean | void;
+    clickHandler(e: MouseEvent): boolean;
     // (undocumented)
     connectedCallback(): void;
     // @internal
@@ -1043,9 +1043,9 @@ export class BaseTextInput extends FASTElement {
     // @internal
     initialValueChanged(): void;
     // @internal
-    inputHandler(e: InputEvent): boolean | void;
+    inputHandler(e: InputEvent): boolean;
     // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
+    keydownHandler(e: KeyboardEvent): boolean;
     list: string;
     maxlength: number;
     minlength: number;

@@ -472,7 +472,7 @@ export class BaseTextInput extends FASTElement {
    *
    * @param e - the event object
    */
-  public clickHandler(e: MouseEvent): boolean | void {
+  public clickHandler(e: MouseEvent): boolean {
     if (e.target === this) {
       this.control?.click();
     }
@@ -539,7 +539,7 @@ export class BaseTextInput extends FASTElement {
    *
    * @internal
    */
-  public inputHandler(e: InputEvent): boolean | void {
+  public inputHandler(e: InputEvent): boolean {
     this.dirtyValue = true;
     this.isUserInput = true;
     try {
@@ -557,7 +557,7 @@ export class BaseTextInput extends FASTElement {
    * @param e - the event object
    * @internal
    */
-  public keydownHandler(e: KeyboardEvent): boolean | void {
+  public keydownHandler(e: KeyboardEvent): boolean {
     if (e.key !== 'Enter') {
       return true;
     }
