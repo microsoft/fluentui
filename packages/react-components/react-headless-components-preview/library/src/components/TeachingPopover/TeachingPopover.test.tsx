@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopover } from './TeachingPopover';
@@ -200,11 +200,11 @@ describe('TeachingPopover', () => {
       );
     };
 
-    it('restores focus owned by an initially open surface', () => {
+    it('restores focus owned by an initially open surface', async () => {
       const { getByText, rerender } = render(<Example open />);
       expect(getByText('Inside')).toHaveFocus();
       rerender(<Example open={false} />);
-      expect(getByText('Trigger')).toHaveFocus();
+      await waitFor(() => expect(getByText('Trigger')).toHaveFocus());
     });
 
     it('does not steal focus when initially closed', () => {
@@ -219,23 +219,38 @@ describe('TeachingPopover', () => {
       expect(getByText('Trigger')).not.toHaveFocus();
     });
 
-    it('tracks surface focus even when its focus event stops bubbling', () => {
+    it('tracks surface focus even when its focus event stops bubbling', async () => {
       const { getByText, rerender } = render(<Example open autoFocus={false} />);
       getByText('Outside').focus();
       getByText('Inside').addEventListener('focusin', event => event.stopPropagation());
       getByText('Inside').focus();
       rerender(<Example open={false} autoFocus={false} />);
-      expect(getByText('Trigger')).toHaveFocus();
+      await waitFor(() => expect(getByText('Trigger')).toHaveFocus());
     });
 
-    it('preserves outside focus even when the surface focus event stops bubbling', () => {
-      const { getByText, rerender } = render(<Example open />);
+    it('preserves outside focus even when the surface focus event stops bubbling', async () => {
+      const { getByText, queryByText, rerender } = render(<Example open />);
       getByText('Inside').addEventListener('focusin', event => event.stopPropagation());
       getByText('Outside').focus();
       getByText('Inside').focus();
       getByText('Outside').focus();
-      rerender(<Example open={false} />);
-      expect(getByText('Outside')).toHaveFocus();
+      const surface = getByText('Inside').parentElement!;
+      // Model native closure without the polyfill's unconditional saved-focus restoration.
+      Object.defineProperty(surface, 'hidePopover', {
+        configurable: true,
+        value: () => {
+          fireEvent(surface, Object.assign(new Event('beforetoggle'), { newState: 'closed' }));
+        },
+      });
+      try {
+        rerender(<Example open={false} />);
+        expect(getByText('Outside')).toHaveFocus();
+        fireEvent(surface, Object.assign(new Event('toggle'), { newState: 'closed' }));
+        await waitFor(() => expect(queryByText('Inside')).not.toBeInTheDocument());
+        expect(getByText('Outside')).toHaveFocus();
+      } finally {
+        Reflect.deleteProperty(surface, 'hidePopover');
+      }
     });
 
     it('supports closing without a trigger', () => {
@@ -246,7 +261,7 @@ describe('TeachingPopover', () => {
     });
 
     (['open', 'closed'] as const).forEach(mode => {
-      it(`restores focus owned by an initially open surface in a ${mode} shadow root`, () => {
+      it(`restores focus owned by an initially open surface in a ${mode} shadow root`, async () => {
         const { container } = render(<div />);
         const host = container.firstElementChild!;
         const shadowRoot = host.attachShadow({ mode });
@@ -255,7 +270,7 @@ describe('TeachingPopover', () => {
         expect(shadowRoot.activeElement).toHaveTextContent('Inside');
         expect(host.ownerDocument.activeElement).toBe(host);
         rerender(createPortal(<Example open={false} />, shadowRoot));
-        expect(shadowRoot.activeElement).toHaveTextContent('Trigger');
+        await waitFor(() => expect(shadowRoot.activeElement).toHaveTextContent('Trigger'));
       });
     });
   });

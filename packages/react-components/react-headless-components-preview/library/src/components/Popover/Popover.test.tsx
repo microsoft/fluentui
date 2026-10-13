@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
@@ -19,7 +19,7 @@ describe('Popover', () => {
       </Popover>
     );
 
-    it('calls native dialog close while the surface is connected', () => {
+    it('calls native dialog close while the surface is connected', async () => {
       const { getByRole, getByText, rerender } = render(<Example open trapFocus />);
       const surface = getByRole('dialog', { hidden: true });
       const close = jest
@@ -27,11 +27,13 @@ describe('Popover', () => {
         .mockImplementation(function (this: HTMLDialogElement) {
           expect(this.isConnected).toBe(true);
           this.removeAttribute('open');
+          setTimeout(() => this.dispatchEvent(new Event('close')), 0);
         });
       try {
         rerender(<Example open={false} trapFocus />);
         expect(close).toHaveBeenCalledTimes(1);
-        expect(surface.isConnected).toBe(false);
+        expect(surface.isConnected).toBe(true);
+        await waitFor(() => expect(surface.isConnected).toBe(false));
         expect(getByText('Trigger')).toHaveFocus();
       } finally {
         close.mockRestore();
@@ -53,6 +55,68 @@ describe('Popover', () => {
       outside.focus();
       rerender(createPortal(<Example open={false} />, shadowRoot));
       expect(outside).toHaveFocus();
+    });
+
+    it('keeps the surface mounted until native close completes without repeating onOpenChange', () => {
+      const onOpenChange = jest.fn();
+      const ControlledExample = ({ open }: { open: boolean }) => (
+        <Popover open={open} trapFocus onOpenChange={onOpenChange}>
+          <PopoverSurface>Surface</PopoverSurface>
+        </Popover>
+      );
+      const { getByRole, rerender } = render(<ControlledExample open />);
+      const surface = getByRole('dialog', { hidden: true });
+      const close = jest
+        .spyOn(HTMLDialogElement.prototype, 'close')
+        .mockImplementation(function (this: HTMLDialogElement) {
+          this.removeAttribute('open');
+        });
+      try {
+        rerender(<ControlledExample open={false} />);
+        expect(surface.isConnected).toBe(true);
+        fireEvent(surface, new Event('cancel', { cancelable: true }));
+        expect(surface.isConnected).toBe(true);
+        fireEvent(surface, new Event('close'));
+        expect(surface.isConnected).toBe(false);
+        expect(onOpenChange).not.toHaveBeenCalled();
+      } finally {
+        close.mockRestore();
+      }
+    });
+
+    it('ignores a queued close event after the dialog has reopened', () => {
+      const { getByRole, rerender } = render(<Example open trapFocus />);
+      const surface = getByRole('dialog', { hidden: true });
+      const close = jest
+        .spyOn(HTMLDialogElement.prototype, 'close')
+        .mockImplementation(function (this: HTMLDialogElement) {
+          this.removeAttribute('open');
+        });
+      try {
+        rerender(<Example open={false} trapFocus />);
+        rerender(<Example open trapFocus />);
+        fireEvent(surface, new Event('close'));
+        expect(surface.isConnected).toBe(true);
+        expect(surface).toHaveAttribute('open');
+      } finally {
+        close.mockRestore();
+      }
+    });
+
+    it('reopens when a controlled parent keeps open after native dismissal', () => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = render(
+        <Popover open trapFocus onOpenChange={onOpenChange}>
+          <PopoverSurface>Surface</PopoverSurface>
+        </Popover>,
+      );
+      const surface = getByRole('dialog', { hidden: true });
+      surface.removeAttribute('open');
+      fireEvent(surface, new Event('close'));
+      expect(surface.isConnected).toBe(true);
+      expect(surface).toHaveAttribute('open');
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
     });
 
     const NativeCloseExample = () => (
@@ -106,7 +170,7 @@ describe('Popover', () => {
       ([false, true] as const).forEach(inShadowRoot => {
         it(`restores focus from a nested ${mode} shadow root ${
           inShadowRoot ? 'inside another shadow root' : 'in the document'
-        }`, () => {
+        }`, async () => {
           const NestedControl = () => {
             const [root, setRoot] = React.useState<ShadowRoot | null>(null);
             const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
@@ -135,7 +199,11 @@ describe('Popover', () => {
           const nestedHost = surface.firstElementChild!;
           expect(outerShadowRoot?.activeElement ?? host.ownerDocument.activeElement).toBe(nestedHost);
           rerender(createPortal(<NestedExample open={false} />, root));
-          expect(outerShadowRoot?.activeElement ?? host.ownerDocument.activeElement).toBe(root.querySelector('button'));
+          await waitFor(() =>
+            expect(outerShadowRoot?.activeElement ?? host.ownerDocument.activeElement).toBe(
+              root.querySelector('button'),
+            ),
+          );
         });
       });
     });
@@ -172,7 +240,7 @@ describe('Popover', () => {
     expect(getByText('Surface content')).toBeInTheDocument();
   });
 
-  it('closes on trigger click when open', () => {
+  it('closes on trigger click when open', async () => {
     const { getByText, queryByText } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -186,7 +254,7 @@ describe('Popover', () => {
 
     userEvent.click(getByText('Trigger'));
 
-    expect(queryByText('Surface content')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('Surface content')).not.toBeInTheDocument());
   });
 
   it('fires onOpenChange callback', () => {

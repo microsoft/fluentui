@@ -33,7 +33,11 @@ if (typeof HTMLDialogElement !== 'undefined') {
 
   if (!proto.close) {
     proto.close = function close() {
+      if (!this.open) {
+        return;
+      }
       this.removeAttribute('open');
+      setTimeout(() => this.dispatchEvent(new Event('close')), 0);
     };
   }
 }

@@ -47,7 +47,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
 
   const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
-  const focusWasInsideOnNativeClose = React.useRef(false);
+  const focusWasInsideOnNativeClose = React.useRef<boolean | null>(null);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
@@ -96,10 +96,34 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
+  const finishSurfaceClose = useEventCallback(() => {
+    const surface = contentRef.current;
+    if (!surface) {
+      return;
+    }
+    const activeElement = getActiveElement(surface);
+    // Initially-open surfaces have no native trigger snapshot; preserve successful native restoration.
+    if (
+      (focusWasInsideOnNativeClose.current ?? surface.contains(activeElement)) &&
+      (!activeElement || activeElement === surface.ownerDocument.body || surface.contains(activeElement)) &&
+      triggerRef.current?.isConnected
+    ) {
+      triggerRef.current.focus();
+    }
+    focusWasInsideOnNativeClose.current = null;
+    setShouldRenderSurface(false);
+  });
+
   const onSurfaceToggle = useEventCallback((event: Event) => {
     const toggle = event as ToggleEvent;
     const nextOpen = toggle.newState === 'open';
-
+    const surface = contentRef.current;
+    if (surface && SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open') !== nextOpen) {
+      return;
+    }
+    if (!nextOpen) {
+      finishSurfaceClose();
+    }
     if (nextOpen === open) {
       return;
     }
@@ -109,45 +133,25 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
 
   const onSurfaceClose = useEventCallback((event: Event) => {
+    const surface = contentRef.current;
+    if (isDialogElement(surface) && surface.open) {
+      return;
+    }
+    finishSurfaceClose();
+    if (!open) {
+      return;
+    }
     setOpenState(false);
     props.onOpenChange?.(event, { event, type: event.type, open: false });
   });
 
+  const renderSurface = open || shouldRenderSurface;
+
   useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
-
-    if (!surface) {
+    if (!surface || !renderSurface) {
       return;
     }
-
-    if (!open) {
-      const focusWasInside = surface.contains(getActiveElement(surface)) || focusWasInsideOnNativeClose.current;
-      if (isDialogElement(surface) && surface.open) {
-        surface.close();
-      } else if (
-        typeof surface.hidePopover === 'function' &&
-        SUPPORTS_POPOVER_OPEN_SELECTOR &&
-        surface.matches(':popover-open')
-      ) {
-        surface.hidePopover();
-      }
-
-      const activeElement = getActiveElement(surface);
-      // Initially-open surfaces have no native trigger snapshot; preserve any successful native restoration.
-      if (
-        focusWasInside &&
-        (!activeElement || activeElement === surface.ownerDocument.body || surface.contains(activeElement)) &&
-        triggerRef.current?.isConnected
-      ) {
-        triggerRef.current.focus();
-      }
-      focusWasInsideOnNativeClose.current = false;
-      setShouldRenderSurface(false);
-      return;
-    }
-
-    setShouldRenderSurface(true);
-    focusWasInsideOnNativeClose.current = false;
     const trackNativeCloseFocus = (event: Event) => {
       if (event.type === 'cancel' || (event as ToggleEvent).newState === 'closed') {
         focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
@@ -159,13 +163,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         return;
       }
 
-      if (!surface.open) {
-        surface.showModal();
-      }
-
       // Older dialogs lack beforetoggle; native close removes open before restoring focus.
       const trackDialogFocusOut = () => {
-        focusWasInsideOnNativeClose.current = !surface.open;
+        focusWasInsideOnNativeClose.current = surface.open ? null : true;
       };
       surface.addEventListener('close', onSurfaceClose);
       surface.addEventListener('cancel', trackNativeCloseFocus);
@@ -183,17 +183,52 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
 
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
     surface.addEventListener('toggle', onSurfaceToggle);
     surface.addEventListener('beforetoggle', trackNativeCloseFocus);
     return () => {
       surface.removeEventListener('toggle', onSurfaceToggle);
       surface.removeEventListener('beforetoggle', trackNativeCloseFocus);
     };
-  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
+  }, [renderSurface, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
+
+  useIsomorphicLayoutEffect(() => {
+    const surface = contentRef.current;
+    if (!surface) {
+      return;
+    }
+    if (open) {
+      setShouldRenderSurface(true);
+      focusWasInsideOnNativeClose.current = null;
+      if (trapFocus) {
+        if (isDialogElement(surface) && !surface.open) {
+          surface.showModal();
+        }
+      } else if (
+        typeof surface.showPopover === 'function' &&
+        !(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))
+      ) {
+        surface.showPopover();
+      }
+      return;
+    }
+    if (trapFocus) {
+      if (isDialogElement(surface) && surface.open) {
+        focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
+        surface.close();
+      } else if (!isDialogElement(surface)) {
+        focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
+        finishSurfaceClose();
+      }
+    } else if (typeof surface.hidePopover === 'function') {
+      if (!SUPPORTS_POPOVER_OPEN_SELECTOR || surface.matches(':popover-open')) {
+        focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
+        surface.hidePopover();
+      }
+    } else {
+      focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
+      finishSurfaceClose();
+    }
+  }, [open, trapFocus, shouldRenderSurface, contentRef, finishSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -237,7 +272,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     setContextTarget,
     positioning,
     surfaceId,
-    shouldRenderSurface: open || shouldRenderSurface,
+    shouldRenderSurface: renderSurface,
   };
 };
 
