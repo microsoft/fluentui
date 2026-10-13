@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore menu list keyboard navigation after reconnect",
+  "packageName": "@fluentui/web-components",
+  "email": "aseebshibin4@gmail.com"
+}
