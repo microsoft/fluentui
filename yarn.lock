@@ -4096,6 +4096,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-core-preview-stories@workspace:packages/react-components/react-core-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-core-preview-stories@workspace:packages/react-components/react-core-preview/stories"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-core-preview@workspace:packages/react-components/react-core-preview/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-core-preview@workspace:packages/react-components/react-core-preview/library"
+  dependencies:
+    "@fluentui/react-jsx-runtime": "npm:^9.4.6"
+    "@fluentui/react-shared-contexts": "npm:^9.26.4"
+    "@fluentui/react-tabster": "npm:^9.26.18"
+    "@fluentui/react-utilities": "npm:^9.26.7"
+    "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-date-time@workspace:packages/react-date-time":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-date-time@workspace:packages/react-date-time"

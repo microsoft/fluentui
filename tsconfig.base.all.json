@@ -114,6 +114,8 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
+      "@fluentui/react-core-preview": ["packages/react-components/react-core-preview/library/src/index.ts"],
+      "@fluentui/react-core-preview/*": ["packages/react-components/react-core-preview/library/src/*.ts"],
       "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/library/src/index.ts"],
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
@@ -250,6 +252,9 @@
         "packages/react-components/react-timepicker-compat/stories/src/index.ts"
       ],
       "@fluentui/react-timepicker-preview": ["packages/react-components/react-timepicker-preview/library/src/index.ts"],
+      "@fluentui/react-timepicker-preview-stories": [
+        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/library/src/index.ts"],
       "@fluentui/react-toast-stories": ["packages/react-components/react-toast/stories/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/library/src/index.ts"],
@@ -270,9 +275,7 @@
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-timepicker-preview-stories": [
-        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
-      ]
+      "@fluentui/react-core-preview-stories": ["packages/react-components/react-core-preview/stories/src/index.ts"]
     }
   }
 }

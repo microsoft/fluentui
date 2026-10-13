@@ -69,6 +69,9 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
+      "@fluentui/react-core-preview": ["packages/react-components/react-core-preview/library/src/index.ts"],
+      "@fluentui/react-core-preview-stories": ["packages/react-components/react-core-preview/stories/src/index.ts"],
+      "@fluentui/react-core-preview/*": ["packages/react-components/react-core-preview/library/src/*.ts"],
       "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/library/src/index.ts"],
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
