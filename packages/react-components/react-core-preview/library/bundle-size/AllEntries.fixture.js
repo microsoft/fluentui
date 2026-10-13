@@ -1,6 +1,6 @@
-import * as Core from '@fluentui/react-core-preview';
+import * as Field from '@fluentui/react-core-preview/field';
 
-console.log({ Core });
+console.log({ Field });
 
 export default {
   name: 'react-core-preview: all entries',

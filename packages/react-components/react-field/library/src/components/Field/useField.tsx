@@ -35,7 +35,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     components: { ...state.components, label: Label },
     label: slot.optional(props.label, {
-      defaultProps: { size, ...state.label },
+      // `required` is a Label prop (it renders the asterisk), so the styled hook sets it, not the core base hook.
+      defaultProps: { size, required: state.required, ...state.label },
       elementType: Label,
     }),
     validationMessageIcon: slot.optional(props.validationMessageIcon, {
