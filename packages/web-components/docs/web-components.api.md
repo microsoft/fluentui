@@ -1012,7 +1012,7 @@ export class BaseTextArea extends FASTElement {
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     // @internal
-    changeHandler(e: InputEvent): boolean | void;
+    changeHandler(e: InputEvent): boolean;
     checkValidity(): boolean;
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
