@@ -51,7 +51,7 @@ describe('useColorSlider', () => {
 
     expect(result.current.root.style).toMatchObject({
       [colorSliderCSSVars.thumbColorVar]: channel === 'hue' ? 'hsl(0, 100%, 50%)' : 'hsla(0, 100%, 50%, 1)',
-      [colorSliderCSSVars.railColorVar]: 'hsl(0, 100%, 50%)',
+      [colorSliderCSSVars.railColorVar]: channel === 'hue' ? 'hsl(0, 100%, 50%)' : 'hsla(0, 100%, 50%, 1)',
     });
   });
 });

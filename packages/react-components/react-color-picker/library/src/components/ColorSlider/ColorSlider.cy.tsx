@@ -6,6 +6,7 @@ import { ColorSlider } from './ColorSlider';
 import type { ColorSliderProps } from './ColorSlider.types';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 
 const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -25,6 +26,43 @@ const ColorSliderExample = (props: ColorSliderProps) => {
 };
 
 describe('ColorSlider', () => {
+  describe('channel-preserving runtime endpoints', () => {
+    for (const s of [0, 0.4, 1]) {
+      for (const v of [0, 0.8, 1]) {
+        for (const channel of ['saturation', 'value'] as const) {
+          it(`${channel}, saturation ${s}, value ${v}`, () => {
+            mountFluent(<ColorSlider channel={channel} defaultColor={{ h: 240, s, v }} />);
+            cy.get('.fui-ColorSlider').should($root => {
+              const root = $root[0];
+              const view = root.ownerDocument.defaultView!;
+              const low = channel === 'saturation' ? v : 0;
+              const high = channel === 'saturation' ? [0, 0, v] : [1 - s, 1 - s, 1];
+              for (const [variable, expected] of [
+                [colorSliderCSSVars.railColorLowVar, [low, low, low]],
+                [colorSliderCSSVars.railColorVar, high],
+              ] as const) {
+                const probe = root.ownerDocument.createElement('div');
+                probe.style.backgroundColor = root.style.getPropertyValue(variable);
+                root.appendChild(probe);
+                try {
+                  expect(view.getComputedStyle(probe).backgroundColor).to.equal(
+                    `rgb(${expected.map(component => Math.round(component * 255)).join(', ')})`,
+                  );
+                } finally {
+                  probe.remove();
+                }
+              }
+              const rail = root.querySelector<HTMLElement>('.fui-ColorSlider__rail')!;
+              const gradient = view.getComputedStyle(rail).backgroundImage;
+              expect(gradient).to.contain('linear-gradient(-90deg');
+              expect(gradient).not.to.contain('rgb(128, 128, 128)');
+            });
+          });
+        }
+      }
+    }
+  });
+
   describe('keyboard navigation', () => {
     it('has correct focus behavior', () => {
       mountFluent(
