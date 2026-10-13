@@ -10,6 +10,11 @@ Fluent UI is a collection of projects that represent the Fluent design language 
 
 Run `yarn workspace @fluentui/public-docsite-v9 start`
 
+## Build the website
+
+Run `yarn nx run public-docsite-v9:build-storybook` to build the production Storybook and generate LLM documentation.
+Nx builds `storybook-llms-extractor` before running the documentation generation step.
+
 ## Notes
 
 - `Open in CodeSandbox` button is located in different [repo](https://github.com/microsoft/fluentui-storybook-addons).
