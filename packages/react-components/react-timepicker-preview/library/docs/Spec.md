@@ -175,7 +175,7 @@ The event part is a discriminated union, as in TagPicker and Tree, so checking `
 | Commit, empty, not `required`    | `'keydown'`, `'blur'`  | `null`                | typed text (empty) | `undefined` |
 | Clear                            | `'click'`              | `null`                | `undefined`        | `undefined` |
 
-So: `errorType` set means a failed commit, `value === null` without `errorType` means the value is now empty, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit. An empty value comes either from the clear button (`type: 'click'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check `type`.
+`errorType` set means a failed commit, `value === null` without `errorType` means the value is now empty, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit. An empty value comes either from the clear button (`type: 'click'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check `type`.
 
 ### Slots
 
@@ -189,11 +189,11 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 `getTimesBetween(start, end, increment)` returns the dates from `start` (inclusive) to `end` (exclusive) that are `increment` minutes of elapsed time apart. It advances by `increment * 60_000` milliseconds, not by calendar minutes, so the spacing is preserved across daylight saving transitions.
 
-`increment` must be a finite positive integer. For any other value (`0`, negative, `NaN`, `Infinity`, fractional) `getTimesBetween` returns `[]` and logs an error in development, and the TimePicker renders no options. Fractional minutes are not supported.
+`increment` must be a finite positive integer. For any other value (`0`, negative, `NaN`, `Infinity`, fractional) `getTimesBetween` returns `[]` and logs an error in development, and the TimePicker renders no options.
 
 #### Formatting and parsing
 
-Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested, so the option is required). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
+Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
 
 The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace:
 
