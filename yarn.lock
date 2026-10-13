@@ -4438,7 +4438,6 @@ __metadata:
     "@fluentui/react-swatch-picker": "npm:^9.6.2"
     "@fluentui/react-switch": "npm:^9.7.6"
     "@fluentui/react-tabs": "npm:^9.12.5"
-    "@fluentui/react-tabster": "npm:^9.26.18"
     "@fluentui/react-tag-picker": "npm:^9.10.5"
     "@fluentui/react-tags": "npm:^9.9.7"
     "@fluentui/react-teaching-popover": "npm:^9.7.7"

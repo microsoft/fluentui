@@ -16,12 +16,23 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
-import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
+
+/**
+ * Whether the element matches `:focus-visible`, i.e. focus was moved by the keyboard, or by a script
+ * after a keyboard interaction. Browsers without `:focus-visible` support throw on the selector;
+ * treat them as focus-visible so the tooltip keeps showing on focus.
+ */
+const isFocusVisible = (element: Element): boolean => {
+  try {
+    return element.matches(':focus-visible');
+  } catch {
+    return true;
+  }
+};
 
 /**
  * Create the state required to render Tooltip.
@@ -138,9 +149,16 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   const onEnterTrigger = React.useCallback(
     // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
+      if (ev.type === 'focus') {
+        const ignoreFocus = ignoreNextFocusEventRef.current;
         ignoreNextFocusEventRef.current = false;
-        return;
+
+        // Skip showing the tooltip if focus did not come from keyboard navigation. For example, we don't
+        // want to show the tooltip when a dialog is closed with the mouse and focus is programmatically
+        // restored to the trigger button. See https://github.com/microsoft/fluentui/issues/27576
+        if (ignoreFocus || !isFocusVisible(ev.target as Element)) {
+          return;
+        }
       }
 
       setDelayTimeout(() => {
@@ -151,31 +169,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     },
     [setDelayTimeout, setVisible, state.showDelay],
   );
-
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
-
-  // Callback ref that attaches a keyborg:focusin event listener.
-  const [keyborgListenerCallbackRef] = React.useState(() => {
-    const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
-      // Skip showing the tooltip if focus moved programmatically.
-      // For example, we don't want to show the tooltip when a dialog is closed
-      // and Tabster programmatically restores focus to the trigger button.
-      // See https://github.com/microsoft/fluentui/issues/27576
-      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard()) {
-        ignoreNextFocusEventRef.current = true;
-      }
-    }) as EventListener;
-
-    // Save the current element to remove the listener when the ref changes
-    let current: Element | null = null;
-
-    // Callback ref that attaches the listener to the element
-    return (element: Element | null) => {
-      current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
-      element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
-      current = element;
-    };
-  });
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
@@ -262,7 +255,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     ...child?.props,
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
-      keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),
