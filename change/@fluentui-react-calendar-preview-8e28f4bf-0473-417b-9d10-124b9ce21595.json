@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore Calendar grid arrows and preserve native keyboard ownership",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
