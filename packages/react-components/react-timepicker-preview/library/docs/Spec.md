@@ -167,14 +167,15 @@ type OnChange = EventHandler<TimePickerOnChangeData>;
 
 The event part is a discriminated union, as in TagPicker and Tree, so checking `data.type` narrows `data.event` to the matching React event. `type` says which gesture caused the change; the outcome is read from the payload. <kbd>Enter</kbd> is a `keydown` both for a select and for a commit, so `type` alone does not tell the two apart.
 
-| Change                           | `type`                 | `value`               | `displayValue`  | `errorType` |
-| -------------------------------- | ---------------------- | --------------------- | --------------- | ----------- |
-| Select (click, <kbd>Enter</kbd>) | `'click'`, `'keydown'` | option time           | option text     | `undefined` |
-| Commit, valid                    | `'keydown'`, `'blur'`  | parsed time           | formatted value | `undefined` |
-| Commit, failed                   | `'keydown'`, `'blur'`  | see "Commit outcomes" | typed text      | set         |
-| Clear                            | `'click'`              | `null`                | `undefined`     | `undefined` |
+| Change                           | `type`                 | `value`               | `displayValue`     | `errorType` |
+| -------------------------------- | ---------------------- | --------------------- | ------------------ | ----------- |
+| Select (click, <kbd>Enter</kbd>) | `'click'`, `'keydown'` | option time           | option text        | `undefined` |
+| Commit, valid                    | `'keydown'`, `'blur'`  | parsed time           | formatted value    | `undefined` |
+| Commit, failed                   | `'keydown'`, `'blur'`  | see "Commit outcomes" | typed text         | set         |
+| Commit, empty, not `required`    | `'keydown'`, `'blur'`  | `null`                | typed text (empty) | `undefined` |
+| Clear                            | `'click'`              | `null`                | `undefined`        | `undefined` |
 
-So: `errorType` set means a failed commit, `value === null` without `errorType` means a clear, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit.
+So: `errorType` set means a failed commit, `value === null` without `errorType` means the value is now empty, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit. An empty value comes either from the clear button (`type: 'click'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check `type`.
 
 ### Slots
 
@@ -192,7 +193,7 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 #### Formatting and parsing
 
-Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`Intl.DateTimeFormat().resolvedOptions().hourCycle`). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
+Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested, so the option is required). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
 
 The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace:
 
@@ -205,9 +206,15 @@ The default parser (`getDateFromTimeString`) accepts, after trimming leading and
 
 With `showSeconds`, `:ss` is required; without it, seconds are rejected. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
 
-**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same time through the default `getDateFromTimeString` with the same options, for locales that use ASCII digits and `AM`/`PM` day periods (for example `en-US` and 24-hour locales such as `de-DE`). Localized digits and localized day periods (for example `午後`, `nachm.`) are **not** parsed by default. Consumers in those locales should pass `hourCycle="h23"` or supply a custom `parseTimeStringToDate`.
+**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options, for locales whose time format uses ASCII digits, `:` between the fields and either no day period or `AM`/`PM` (for example `en-US`, `en-GB`, `de-DE`, `fr-FR`, `ja-JP`). The default formatter uses the runtime locale's format, while the default parser only accepts the formats in the table above, so the guarantee does **not** hold for:
 
-A parsed time earlier than the start anchor is placed on the day after the anchor (`startHour={22} endHour={2}` with input `1:00` yields 01:00 on the next day). The day is chosen before the clock fields are applied, so a time that does not exist on the anchor day because of a daylight saving transition is not shifted. When a clock time occurs twice on the anchor day, the occurrence inside the range wins. A time at or after the end anchor is returned with `errorType: 'out-of-bounds'`.
+- locales with another separator, for example `fi-FI`, `da-DK` and `id-ID` format `10.10`;
+- locales with localized digits, for example `ar-EG` (`١٠:١٠`), `fa-IR`, `mr-IN`, `bn-BD` and `ne-NP`;
+- 12-hour locales with a localized day period, for example `ko-KR` (`오전 10:10`) and `el-GR` (`10:10 π.μ.`).
+
+`hourCycle="h23"` removes the day period and so fixes the last group only; it does not change the separator or the digits. Locales in the first two groups need a custom `parseTimeStringToDate` that accepts the locale's format, or a custom `formatDateToTimeString` that produces the ASCII format. A later version of the default parser may derive the separator and the numbering system from `Intl.DateTimeFormat.prototype.formatToParts` so the locale's own output is accepted.
+
+A parsed time earlier than the start anchor is placed on the day after the anchor (`startHour={22} endHour={2}` with input `1:00` yields 01:00 on the next day). The day is chosen before the clock fields are applied, so a time that does not exist on the anchor day because of a daylight saving transition is not shifted. When a clock time occurs twice because of a daylight saving transition, the earliest occurrence at or after the start anchor wins, so on a fall-back day the first (daylight saving) instant is chosen even when both are inside the range. Formatting and re-parsing therefore preserve the clock fields, not the instant: a value on the second occurrence of a repeated hour displays the same text and parses back to the first occurrence. A time at or after the end anchor is returned with `errorType: 'out-of-bounds'`.
 
 ### Hooks
 
@@ -287,7 +294,7 @@ The styled TimePicker applies `useComboboxStyles_unstable` after its own classes
 | `formatDateToTimeString: (date) => string`               | `formatDateToTimeString: (date, options) => string`          |
 | `useTimePickerCompatStyles_unstable` (custom style hook) | `useTimePickerStyles_unstable`                               |
 
-All other props are unchanged. Compat required a controlled `value` whenever `selectedTime` was controlled; that is no longer needed because the display text is derived from `value`.
+All other props are unchanged. Compat's documentation asked for a controlled `value` (or `defaultValue`) next to a controlled `selectedTime` (or `defaultSelectedTime`) so the input could show text before the options rendered; after that, Combobox derived the text from the selected option. Here the display text is always derived from `value`, so there is nothing to control.
 
 ### From v8
 
@@ -307,7 +314,7 @@ The display text is internal state, derived as follows:
 - `formatDateToTimeString(value, options)` on mount, after a select, after a valid commit, and whenever the `value` prop changes to a time other than the one the last change produced. A `null` value shows an empty input.
 - the typed text while the user edits in freeform mode, and after a failed commit, so the user can correct it.
 
-A valid commit therefore normalizes what the user typed (`10:10` becomes `10:10 AM` in `en-US`), which confirms the input was understood. An external `value` change while the user is typing discards the typed text, since committing it later would overwrite the new value with stale input.
+A valid commit therefore normalizes what the user typed (`10:10 am` becomes `10:10 AM` in `en-US`), which confirms the input was understood. An external `value` change while the user is typing discards the typed text, since committing it later would overwrite the new value with stale input.
 
 A `value` outside the range (for example 03:00 with `startHour={9} endHour={17}`) is shown as its formatted text with no selected option. It is the consumer's choice, so no error is reported and `onChange` is not called.
 
