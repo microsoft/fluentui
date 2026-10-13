@@ -1,3 +1,5 @@
+export { renderCheckbox, useCheckboxBase } from './checkbox';
+export type { CheckboxBaseState, CheckboxOnChangeData, CheckboxProps, CheckboxSlots } from './checkbox';
 export {
   FieldContextProvider,
   getFieldControlProps,
@@ -6,7 +8,7 @@ export {
   useFieldContext,
   useFieldContextValues,
   useFieldControlProps,
-} from './components/Field/index';
+} from './field';
 export type {
   FieldBaseState,
   FieldContextValue,
@@ -15,4 +17,4 @@ export type {
   FieldControlPropsOptions,
   FieldProps,
   FieldSlots,
-} from './components/Field/index';
+} from './field';

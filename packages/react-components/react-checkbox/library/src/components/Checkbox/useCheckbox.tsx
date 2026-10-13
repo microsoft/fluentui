@@ -1,16 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import {
-  getPartitionedNativeProps,
-  useControllableState,
-  mergeCallbacks,
-  useId,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-  slot,
-} from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
+import { useCheckboxBase } from '@fluentui/react-core-preview';
+import type { CheckboxProps as CheckboxCoreProps } from '@fluentui/react-core-preview';
 import type { CheckboxBaseProps, CheckboxBaseState, CheckboxProps, CheckboxState } from './Checkbox.types';
 import {
   Checkmark12Filled,
@@ -20,7 +13,6 @@ import {
   CircleFilled,
 } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { useFocusWithin } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Checkbox.
@@ -63,7 +55,11 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       label: Label,
     },
     label: slot.optional(props.label, {
+      // `disabled` and `required` are Label props, so they are set here and not in the core base hook.
+      // `required` is read from the input, where the base hook has merged the surrounding Field's props.
       defaultProps: {
+        disabled: state.disabled,
+        required: state.input.required,
         ...state.label,
         size: 'medium',
       },
@@ -76,97 +72,13 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
  * Base hook for Checkbox component, which manages state related to checked state, ARIA attributes,
  * focus management, and slot structure without design props.
  *
+ * The implementation lives in `@fluentui/react-core-preview`. The v9 types use `Label` for the label slot, the core
+ * types use a plain `label` element, hence the casts.
+ *
  * @param props - props from this instance of Checkbox
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckboxBase_unstable = (
   props: CheckboxBaseProps,
   ref: React.Ref<HTMLInputElement>,
-): CheckboxBaseState => {
-  'use no memo'; // justified: compiler would optimize useCheckboxBase_unstable — manual opt-out to preserve runtime behavior
-
-  // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
-
-  const { disabled = false, required, labelPosition = 'after', onChange } = props;
-
-  const [checked, setChecked] = useControllableState({
-    defaultState: props.defaultChecked,
-    state: props.checked,
-    initialState: false,
-  });
-
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['checked', 'defaultChecked', 'onChange'],
-  });
-
-  const mixed = checked === 'mixed';
-  const id = useId('checkbox-', nativeProps.primary.id);
-
-  const state: CheckboxBaseState = {
-    checked,
-    disabled,
-    labelPosition,
-    components: {
-      root: 'span',
-      input: 'input',
-      indicator: 'div',
-      label: 'label',
-    },
-    root: slot.always(props.root, {
-      defaultProps: {
-        ref: useFocusWithin<HTMLSpanElement>(),
-        ...nativeProps.root,
-      },
-      elementType: 'span',
-    }),
-    input: slot.always(props.input, {
-      defaultProps: {
-        type: 'checkbox',
-        id,
-        ref,
-        checked: checked === true,
-        ...nativeProps.primary,
-      },
-      elementType: 'input',
-    }),
-    label: slot.optional(props.label, {
-      defaultProps: {
-        htmlFor: id,
-        disabled,
-        required,
-      },
-      elementType: 'label',
-    }),
-    indicator: slot.optional(props.indicator, {
-      renderByDefault: true,
-      defaultProps: {
-        'aria-hidden': true,
-      },
-      elementType: 'div',
-    }),
-  };
-
-  state.input.onChange = mergeCallbacks(state.input.onChange, ev => {
-    const val = ev.currentTarget.indeterminate ? 'mixed' : ev.currentTarget.checked;
-    onChange?.(ev, { checked: val });
-    setChecked(val);
-  });
-
-  // Create a ref object for the input element so we can use it to set the indeterminate prop.
-  // Use useMergedRefs, since the ref might be undefined or a function-ref (no .current)
-  const inputRef = useMergedRefs(state.input.ref);
-  state.input.ref = inputRef;
-
-  // Set the <input> element's checked and indeterminate properties based on our tri-state property.
-  // Since indeterminate can only be set via javascript, it has to be done in a layout effect.
-  useIsomorphicLayoutEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.indeterminate = mixed;
-    }
-  }, [inputRef, mixed]);
-
-  return state;
-};
+): CheckboxBaseState => useCheckboxBase(props as CheckboxCoreProps, ref) as CheckboxBaseState;

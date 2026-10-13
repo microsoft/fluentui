@@ -1,1 +1,1 @@
-export { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-checkbox';
+export { renderCheckbox } from '@fluentui/react-core-preview';

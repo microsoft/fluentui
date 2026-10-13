@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Checkbox takes its base hook and render function from core and no longer depends on react-checkbox; CheckboxSlots label is a plain label element (headless-first option B PoC)",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

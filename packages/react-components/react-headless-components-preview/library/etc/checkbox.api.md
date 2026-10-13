@@ -4,12 +4,12 @@
 
 ```ts
 
-import type { CheckboxBaseState } from '@fluentui/react-checkbox';
-import { CheckboxBaseProps as CheckboxProps } from '@fluentui/react-checkbox';
-import { CheckboxSlots } from '@fluentui/react-checkbox';
+import type { CheckboxBaseState } from '@fluentui/react-core-preview';
+import { CheckboxProps } from '@fluentui/react-core-preview';
+import { CheckboxSlots } from '@fluentui/react-core-preview';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
-import { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-checkbox';
+import { renderCheckbox } from '@fluentui/react-core-preview';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
