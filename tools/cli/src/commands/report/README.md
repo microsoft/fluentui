@@ -55,6 +55,7 @@ Both report subcommands accept the shared catalog selectors:
 Configuration schema version 1 supports named systems with `catalogs` containing either a package name or a local path, plus independent `packages` and `exclusions` selectors. An explicitly configured system replaces its preset definition; `{ "disabled": true }` disables it. Local paths resolve from the config file and are read as static JSON. Config files and catalogs are never executed or downloaded.
 
 Traverses `.ts` and `.tsx` files (skipping gitignored files), resolves imports from tracked packages, and classifies every imported symbol into one of five categories.
+Git discovery works from a child directory of a parent repository. Outside a Git repository or when Git is unavailable, filesystem discovery honors `.gitignore` rules (including nested rules) and skips `node_modules`, `.git`, and declaration files. Other Git failures are reported as errors instead of empty reports. A genuine empty source selection still produces an empty report. Each file uses its nearest project tsconfig and package boundary for declaration resolution, including when a report spans multiple projects.
 
 #### Categories
 
@@ -68,9 +69,19 @@ Traverses `.ts` and `.tsx` files (skipping gitignored files), resolves imports f
 
 #### Output formats
 
-- **JSON** — machine-readable metadata with a `legend`, `fileMap`, and per-package `packages` map. Default.
-- **Markdown** — summary tables and per-package breakdowns; concise, no prop details.
-- **HTML** — self-contained report with collapsible prop/argument details and dark mode support.
+- **JSON** — machine-readable metadata with a `legend`, `fileMap`, and per-import-path `packages` map. Default.
+- **Markdown** — summary tables, per-package breakdowns, and per-component observed-prop tables with usage counts and values.
+- **HTML** — self-contained report with expanded observed component props, collapsible argument details, and dark mode support.
+
+Markdown and HTML group nested import paths under their npm package boundary: imports from
+`@fluentui/react/lib/Button` and `@fluentui/react/lib/Checkbox` belong to one `@fluentui/react` package section.
+Summary rows are labeled **Import Path** and retain their individual counts. Detailed entrypoint sections keep
+their symbols and observed props separate, including when the same symbol is imported through different paths.
+JSON retains its existing import-path keys and count/value semantics.
+
+Prop tables describe usage observed in source, not the complete supported component API. Query `api` to inspect
+supported props that are not used in the analyzed files. Empty value lists mean no value was captured; defaults are
+not inferred.
 
 ## Architecture
 
@@ -101,6 +112,7 @@ report/
 2. **Metadata classification** — compact package indexes classify symbols without loading API details or guidance
 3. **Type resolution fallback** — under `prefer` or `off`, unresolved classifications use the imported package's `.d.ts` declaration:
    - Functions returning JSX → `component`
+   - React class components (including inherited implementations) → `component`, when their inheritance resolves to the React package
    - `use*` naming or hook signatures → `hook`
    - Interfaces, type aliases, enums → `type`
    - Everything else with a resolved `.d.ts` → `other`
@@ -108,7 +120,9 @@ report/
 4. **Usage enrichment** — JSX props, call arguments, `typeof` references, and generic type arguments are captured
 5. **Deduplication** — symbols appearing in multiple categories are reconciled (e.g., a component found via both JSX and value reference)
 
-Existing JSON, Markdown, and HTML report bodies retain their legacy shapes and count/value semantics. Discovery and fallback diagnostics are written to stderr so stdout remains a valid report document.
+JSON retains its existing shape and count/value semantics. Markdown and HTML present the same observed data without
+changing the collected counts or values. Discovery and fallback diagnostics are written to stderr so stdout remains
+a valid report document.
 
 ### Testing
 

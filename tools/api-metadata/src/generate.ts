@@ -3,11 +3,11 @@ import { createRequire } from 'node:module';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 
-import { declarationInputKey, extractDeclarations, type ExportSelection, type ExtractionResult } from './extract';
-import { canonicalDeclarationPath, deduplicateRecords } from './deduplicate';
+import { declarationInputKey, extractDeclarations, type ExtractionResult } from './extract';
+import { canonicalDeclarationPath, deduplicateRecords, mapMetadataObjects } from './deduplicate';
 import { readPackageManifest, resolveDeclarationEntries, type DeclarationEntry } from './package-exports';
-import { API_METADATA_SCHEMA_VERSION } from './schema';
-import { fingerprintMetadata } from './serialize';
+import { API_METADATA_DEFAULT_BOUNDS, API_METADATA_SCHEMA_VERSION } from './schema';
+import { fingerprintMetadata, fingerprintSerializedMetadata, toCanonicalJsonValue } from './serialize';
 import type {
   ApiRecord,
   BundledPackageSource,
@@ -52,7 +52,6 @@ interface GenerationContext {
 
 interface InternalGeneratorOptions extends GeneratorOptions {
   declarationEntries?: readonly DeclarationEntry[];
-  selectedExports?: readonly ExportSelection[];
 }
 
 interface BundledRecord {
@@ -102,9 +101,11 @@ async function generateApiMetadataInternal(
       GENERATOR_IDENTITY,
       API_METADATA_SCHEMA_VERSION,
       options.selectedExports,
+      options.detail,
     );
-    const external = await bundleExternalDependencyRoutes(manifest, extraction, generationContext);
-    const bundled = { ...external, ...deduplicateRecords(external.records, external.routes) };
+    const external = await bundleExternalDependencyRoutes(manifest, extraction, generationContext, options.detail);
+    const deduplicated = deduplicateRecords(external.records, external.routes);
+    const bundled = { ...external, ...shardRecords(deduplicated.records, deduplicated.routes) };
     assertRouteDeclarationInputs(resolution.entries, bundled.routes, declarationInputs);
     const unavailableDependencyRoutes = findUnavailableDependencyRoutes(manifest.path, bundled.routes);
     const diagnostics = [
@@ -126,13 +127,19 @@ async function generateApiMetadataInternal(
     ].sort(compareDiagnostics);
     const hasErrors = diagnostics.some(diagnostic => diagnostic.severity === 'error');
     const hasUnselectedRoutes = resolution.unselectedRoutes.length > 0;
+    const hasUnselectedExports = extraction.unselectedExportBindings > 0;
+    const omittedDetail = options.detail !== undefined && options.detail !== 'full';
     const hasPartialEffectiveTypes = bundled.records.some(({ record }) =>
       record.symbols.some(symbol => symbol.effectiveType?.status.status === 'partial'),
     );
     const apiStatus: MetadataStatus =
       resolution.entries.length === 0
         ? 'unavailable'
-        : hasErrors || hasUnselectedRoutes || unavailableDependencyRoutes.length > 0
+        : hasErrors ||
+          hasUnselectedRoutes ||
+          hasUnselectedExports ||
+          unavailableDependencyRoutes.length > 0 ||
+          omittedDetail
         ? 'partial'
         : 'complete';
     const index: PackageIndex = {
@@ -147,7 +154,11 @@ async function generateApiMetadataInternal(
             ? { status: 'unsupported', reasons: ['no declaration entries were selected'] }
             : { status: 'supported' },
         effectiveTypes:
-          hasErrors || hasPartialEffectiveTypes
+          options.detail === 'none'
+            ? { status: 'unsupported', reasons: ['effective type detail was not requested'] }
+            : omittedDetail
+            ? { status: 'partial', reasons: ['effective type detail was requested only for selected exports'] }
+            : hasErrors || hasPartialEffectiveTypes
             ? {
                 status: 'partial',
                 reasons: [
@@ -170,6 +181,10 @@ async function generateApiMetadataInternal(
                   apiStatus === 'partial'
                     ? [
                         ...(hasErrors ? ['generation reported errors'] : []),
+                        ...(omittedDetail ? ['unrequested declaration detail was not generated'] : []),
+                        ...(hasUnselectedExports
+                          ? [`${extraction.unselectedExportBindings} export binding(s) were not selected`]
+                          : []),
                         ...(hasUnselectedRoutes
                           ? [`${resolution.unselectedRoutes.length} advertised declaration route(s) were not selected`]
                           : []),
@@ -217,10 +232,161 @@ async function generateApiMetadataInternal(
   }
 }
 
+function shardRecords(
+  records: BundledRecord[],
+  routes: GeneratorResult['index']['exports'],
+): { records: BundledRecord[]; routes: GeneratorResult['index']['exports'] } {
+  const maxShardBytes = API_METADATA_DEFAULT_BOUNDS.maxBytes / 4;
+  const maxShardNodes = API_METADATA_DEFAULT_BOUNDS.maxTotalNodes / 4;
+  const maxShardSymbols =
+    Math.min(API_METADATA_DEFAULT_BOUNDS.maxSymbolsPerRecord, API_METADATA_DEFAULT_BOUNDS.maxArrayLength) / 4;
+  const maxShardFiles = 24;
+  const locations = new Map<string, string>();
+  const owners = new Map<string, string>();
+  const sharded: BundledRecord[] = [];
+  const existingIds = new Set(records.map(({ record }) => record.recordId));
+  const routePaths = new Map<string, Set<string>>();
+  for (const route of routes) {
+    if (route.target.kind === 'dependency') {
+      continue;
+    }
+    const key = `${route.target.record}\0${route.target.symbol}`;
+    const paths = routePaths.get(key) ?? new Set<string>();
+    for (const path of route.declarationInputs ?? []) {
+      paths.add(canonicalDeclarationPath(path));
+    }
+    routePaths.set(key, paths);
+  }
+
+  for (const { record, source } of records) {
+    const overhead = Buffer.byteLength(JSON.stringify({ ...record, symbols: [] }), 'utf8');
+    const baseNodes = countValues({ ...record, symbols: [] });
+    const partitions: ApiRecord['symbols'][] = [];
+    let current: ApiRecord['symbols'] = [];
+    let bytes = overhead;
+    let nodes = baseNodes;
+    let files = new Set<string>();
+    const symbolPaths = new Map<string, Set<string>>();
+
+    for (const symbol of record.symbols) {
+      const symbolBytes = Buffer.byteLength(JSON.stringify(symbol), 'utf8') + 1;
+      const symbolNodes = countValues(symbol);
+      const symbolFiles = new Set(routePaths.get(`${record.recordId}\0${symbol.id}`) ?? []);
+      visitObjects(symbol, value => {
+        if (typeof value.file === 'string') {
+          symbolFiles.add(canonicalDeclarationPath(value.file));
+        }
+      });
+      symbolPaths.set(symbol.id, symbolFiles);
+      if (
+        overhead + symbolBytes > maxShardBytes ||
+        baseNodes + symbolNodes > maxShardNodes ||
+        symbolFiles.size > maxShardFiles
+      ) {
+        throw new Error(`Symbol ${symbol.id} in ${record.recordId} exceeds the canonical API record shard bounds`);
+      }
+      const additionalFiles = [...symbolFiles].filter(path => !files.has(path)).length;
+      if (
+        current.length > 0 &&
+        (bytes + symbolBytes > maxShardBytes ||
+          nodes + symbolNodes > maxShardNodes ||
+          files.size + additionalFiles > maxShardFiles ||
+          current.length >= maxShardSymbols)
+      ) {
+        partitions.push(current);
+        current = [];
+        bytes = overhead;
+        nodes = baseNodes;
+        files = new Set();
+      }
+      current.push(symbol);
+      bytes += symbolBytes;
+      nodes += symbolNodes;
+      for (const path of symbolFiles) {
+        files.add(path);
+      }
+    }
+    if (current.length > 0) {
+      partitions.push(current);
+    }
+
+    partitions.forEach((symbols, index) => {
+      const recordId = partitions.length === 1 ? record.recordId : `${record.recordId}:shard-${index + 1}`;
+      if (recordId !== record.recordId && existingIds.has(recordId)) {
+        throw new Error(`Canonical shard ID collides with an existing record: ${recordId}`);
+      }
+      existingIds.add(recordId);
+      owners.set(recordId, record.recordId);
+      for (const symbol of symbols) {
+        locations.set(`${record.recordId}\0${symbol.id}`, recordId);
+      }
+      const paths = new Set<string>();
+      for (const symbol of symbols) {
+        for (const path of symbolPaths.get(symbol.id) ?? []) {
+          paths.add(path);
+        }
+      }
+      const declarationInputs =
+        record.declarationInputs.length <= maxShardFiles
+          ? record.declarationInputs
+          : record.declarationInputs.filter(input => paths.has(canonicalDeclarationPath(input.path)));
+      sharded.push({ record: { ...record, recordId, declarationInputs, symbols }, ...(source ? { source } : {}) });
+    });
+  }
+
+  for (const { record } of sharded) {
+    record.symbols = record.symbols.map(symbol => {
+      let changed = false;
+      const remapped = mapMetadataObjects(symbol, value => {
+        if (value.kind !== 'local' || typeof value.symbol !== 'string') {
+          return value;
+        }
+        const originalRecordId = typeof value.record === 'string' ? value.record : owners.get(record.recordId)!;
+        const target = locations.get(`${originalRecordId}\0${value.symbol}`);
+        if (target && (value.record ? value.record !== target : target !== record.recordId)) {
+          changed = true;
+          return { ...value, record: target };
+        }
+        return value;
+      });
+      if (changed) {
+        const { fingerprint, ...content } = remapped;
+        return {
+          ...content,
+          fingerprint: fingerprintSerializedMetadata(JSON.stringify(toCanonicalJsonValue(content))),
+        };
+      }
+      return symbol;
+    });
+  }
+
+  return {
+    records: sharded,
+    routes: routes.map(route => {
+      if (route.target.kind === 'dependency') {
+        return route;
+      }
+      const recordId = locations.get(`${route.target.record}\0${route.target.symbol}`);
+      return recordId ? { ...route, target: { ...route.target, record: recordId } } : route;
+    }),
+  };
+}
+
+function countValues(value: unknown): number {
+  if (!value || typeof value !== 'object') {
+    return 1;
+  }
+  return (
+    1 +
+    (Array.isArray(value) ? value : Object.values(value)).reduce<number>((count, item) => count + countValues(item), 0)
+  );
+}
+
 async function bundleExternalDependencyRoutes(
   manifest: ReturnType<typeof readPackageManifest>,
   extraction: ExtractionResult,
   generationContext: GenerationContext,
+  detail: GeneratorOptions['detail'],
 ): Promise<{
   records: BundledRecord[];
   routes: GeneratorResult['index']['exports'];
@@ -260,6 +426,7 @@ async function bundleExternalDependencyRoutes(
         route.target,
         route.conditions,
         generationContext,
+        detail,
       );
       const key = `${materialized.record.package.name}\0${materialized.record.recordId}\0${
         fingerprintMetadata(materialized.record).value
@@ -310,6 +477,7 @@ async function materializeDependencyRoute(
   target: DependencyExportTarget,
   routeConditions: readonly string[],
   generationContext: GenerationContext,
+  detail: GeneratorOptions['detail'],
 ): Promise<{ record: ApiRecord; symbol: string; source: BundledRecordSource }> {
   const declarationOwner =
     input.declarationPath && input.package.name !== installed.manifest.name
@@ -318,7 +486,7 @@ async function materializeDependencyRoute(
   let result: GeneratorResult;
   let route: GeneratorResult['index']['exports'][number];
   try {
-    result = await generateDependencyCatalog(installed.root, target.entrypoint, generationContext);
+    result = await generateDependencyCatalog(installed.root, target, generationContext, detail);
     route = selectMaterializedRoute(result, target, routeConditions);
   } catch (error) {
     if (!declarationOwner) {
@@ -330,6 +498,7 @@ async function materializeDependencyRoute(
       target,
       routeConditions,
       generationContext,
+      detail,
     );
     route = selectMaterializedRoute(result, target, routeConditions);
   }
@@ -376,10 +545,20 @@ async function materializeDependencyRoute(
 
 async function generateDependencyCatalog(
   packageRoot: string,
-  entrypoint: string,
+  target: DependencyExportTarget,
   generationContext: GenerationContext,
+  detail: GeneratorOptions['detail'],
 ): Promise<GeneratorResult> {
-  const options = { packageRoot, entrypoints: [entrypoint] };
+  const options: GeneratorOptions = {
+    packageRoot,
+    entrypoints: [target.entrypoint],
+    detail,
+    ...(detail && detail !== 'full'
+      ? {
+          selectedExports: [{ entrypoint: target.entrypoint, export: target.export, namespace: target.namespace }],
+        }
+      : {}),
+  };
   const key = createGenerationKey(resolve(packageRoot), options);
   if (generationContext.active.has(key)) {
     throw new Error(`Dependency route cycle reached ${packageRoot}`);
@@ -399,6 +578,7 @@ async function generateRecordedDeclarationCatalog(
   target: DependencyExportTarget,
   routeConditions: readonly string[],
   generationContext: GenerationContext,
+  detail: GeneratorOptions['detail'],
 ): Promise<GeneratorResult> {
   if (owner.manifest.name !== input.package.name || owner.manifest.version !== input.package.version) {
     throw new Error(
@@ -424,6 +604,7 @@ async function generateRecordedDeclarationCatalog(
 
   const options: InternalGeneratorOptions = {
     packageRoot: owner.root,
+    detail,
     entrypoints: [target.entrypoint],
     declarationEntries: [
       {
@@ -622,7 +803,7 @@ function createGenerationKey(
   packageRoot: string,
   options: Pick<
     InternalGeneratorOptions,
-    'entrypoints' | 'declarationConditions' | 'declarationEntries' | 'selectedExports'
+    'entrypoints' | 'declarationConditions' | 'declarationEntries' | 'selectedExports' | 'detail'
   >,
 ) {
   return `${resolve(packageRoot)}\0${(options.entrypoints ?? []).join(',')}\0${(
@@ -631,7 +812,7 @@ function createGenerationKey(
     .map(entry => `${entry.entrypoint}:${entry.conditions.join(',')}:${entry.declarationRelativePath}`)
     .join('|')}\0${(options.selectedExports ?? [])
     .map(selection => `${selection.entrypoint}:${selection.export}:${selection.namespace}`)
-    .join('|')}`;
+    .join('|')}\0${options.detail ?? 'full'}`;
 }
 
 function packageNameFromSpecifier(requested: string): string {

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "perf: return lightweight API listings and reduce shared metadata generation time and peak memory without changing canonical output",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

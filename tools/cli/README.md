@@ -12,6 +12,11 @@ npx @fluentui/cli <command> [options]
 
 > Run any command with `--help` for detailed options.
 
+Interactive `api` and `report usage` commands show a delayed progress spinner on stderr while resolving APIs or
+analyzing source. Rendering stays responsive during synchronous declaration scans and stops before results or
+diagnostics are written. Redirected output, CI, and dumb terminals stay quiet; JSON stdout and report files never
+contain progress control sequences.
+
 ## Commands
 
 ### `init`
@@ -203,6 +208,38 @@ flowchart LR
     Query --> Recommendation["Verified recommendedImport or explicit ambiguity/unavailability"]
 ```
 
+### `cache`
+
+Inspect, build, or clear caches for the selected installed API catalogs:
+
+```sh
+npx @fluentui/cli cache status --cwd ./apps/forum --system headless
+npx @fluentui/cli cache build --cwd ./apps/forum --system headless
+npx @fluentui/cli cache build --cwd ./apps/forum --package @fluentui/react-components --force
+npx @fluentui/cli cache clear --cwd ./apps/forum --system headless --json
+```
+
+Each operation accepts `--cwd`, `--config`, repeatable `--system`, `--package`, and `--metadata-mode`; `--json` and
+`--output` select machine-readable output, and `build` additionally accepts `--force`. Status reports package roots,
+metadata source, readiness, record counts, errors, and active builds. A forced build refreshes declaration-derived
+caches but does not regenerate or replace shipped package metadata.
+
+Human terminal builds show the current package and stage in the spinner: generating declarations, writing records,
+or waiting for an existing build. Each generated package gets one completion line with its record count and elapsed
+time, followed by a short built/reused summary. Already-ready packages are summarized rather than logged separately.
+JSON, file output, pipelines, and background builds stay quiet.
+
+Cache builds use the same canonical full API metadata generator and produce the same index and record data as package
+publication for the same installed declarations and toolchain. Consumer cache artifacts live under the repository's
+`.cache/fluentui-cli/catalogs` directory, not in a user-global cache or installed package. Clear removes only selected
+cache entries; it never removes installed packages or source files.
+
+An `api` listing without a symbol returns an index-only view on a miss, then starts detailed catalog population in
+the background instead of waiting for a complete library build. A named query resolves only its requested API on a
+miss and starts the same detached full-catalog build. Subsequent queries read completed canonical records without loading the compiler.
+Status reports background jobs, and a foreground `cache build` can join an existing builder instead of duplicating it.
+Shipped metadata remains preferred; `--metadata-mode required` never generates declaration fallback.
+
 ### `api`
 
 List public APIs available from the selected installed catalogs. Human listings show each export once per import
@@ -294,9 +331,13 @@ Index listings remain a lazy inventory of export routes, not per-symbol recommen
 
 Component detail includes descriptions, the recommended public import, full call signatures, and expanded props with types,
 literal unions, optional/required markers, documentation, and deprecations. Props come from the actual component
-parameter type, not a guessed `<Name>Props` export: headless omissions and instantiated generic types are preserved.
+parameter type or verified React class props, not a guessed `<Name>Props` export: headless omissions and instantiated generic types are preserved.
 Overloads retain separate props views. For union props, shared members and the variant count are shown explicitly.
 Queries for props, state, slots, and other object types also enumerate their expanded members.
+
+React class components show a **Component Props** table separately from **Class API**. The latter contains the
+constructor and instance members; those members are not JSX component props. Inherited React members remain
+collapsed unless `--include-inherited` is selected.
 
 Human output is Markdown, including API index/import tables, fenced TypeScript signatures, and
 `Prop | Type | Default | Description` tables. Required, readonly, deprecated, and incomplete members are marked

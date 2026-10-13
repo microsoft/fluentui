@@ -120,6 +120,23 @@ it('recovers verified slots through renamed imports and re-exports without repla
   expect(result.records[0].dependencyInputs.map(input => input.package.name)).toContain('@fluentui/react-utilities');
 });
 
+it('retains selected component slots and referenced identities without expanding referenced components', async () => {
+  const selected = await generateApiMetadata({
+    packageRoot: root,
+    selectedExports: [{ entrypoint: '.', export: 'Widget', namespace: 'value' }],
+    detail: 'selected',
+  });
+  const symbols = selected.records.flatMap(record => record.symbols);
+  const widget = symbols.find(value => value.name === 'Widget')!;
+  const action = symbols.find(value => value.name === 'Action')!;
+  expect(widget.props?.[0].type.members.find(value => value.name === 'action')?.presentation?.targets).toEqual([
+    expect.objectContaining({ reference: { kind: 'local', symbol: action.id } }),
+  ]);
+  expect(action.effectiveType).toBeUndefined();
+  expect(action.props).toBeUndefined();
+  expect(validateCatalog(selected.index, selected.records).valid).toBe(true);
+});
+
 it('preserves alternate elements, nullability, component identity and custom restrictions', () => {
   expect(member('Props', 'heading').presentation).toEqual(
     expect.objectContaining({

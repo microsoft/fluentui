@@ -1,4 +1,4 @@
-import { mkdirSync, rmSync, symlinkSync, unlinkSync, utimesSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, rmSync, symlinkSync, unlinkSync, utimesSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { fingerprintDeclarationContent, MetadataReaderError } from './load';
@@ -11,7 +11,7 @@ import {
   type WrittenCatalog,
 } from './reader.test-utils';
 import { createMetadataReader } from './resolve';
-import { serializeMetadata } from './serialize';
+import { fingerprintSerializedMetadata, serializeMetadata } from './serialize';
 
 const testRoot = join(process.cwd(), '.reader-test-data', 'load');
 
@@ -384,6 +384,154 @@ describe('metadata loading', () => {
     const result = reader.resolveExport(query('@scope/registered-local', app.root));
     expect(result.status).toBe('complete');
     expect(result.definition?.symbol.name).toBe('Widget');
+  });
+
+  it('loads external registered index and shards while retaining installed declaration authority', () => {
+    const app = createApp('external-registration');
+    const catalog = writeLocalCatalog(app.nodeModules, '@scope/external-registration');
+    const metadataRoot = join(app.root, '.cache', 'catalog');
+    mkdirSync(join(metadataRoot, 'api'), { recursive: true });
+    copyFileSync(catalog.indexPath, join(metadataRoot, 'index.json'));
+    copyFileSync(catalog.recordPath!, join(metadataRoot, 'api', 'main.json'));
+    const manifest = readPackageManifest(catalog.packageRoot);
+    delete manifest.fluentuiCatalog;
+    delete (manifest.exports as Record<string, unknown>)['./metadata.json'];
+    writeFileSync(join(catalog.packageRoot, 'package.json'), JSON.stringify(manifest));
+
+    const reader = createMetadataReader();
+    reader.registerPackageCatalog({
+      requested: '@scope/external-registration',
+      importer: app.root,
+      packageRoot: catalog.packageRoot,
+      metadataFile: join(metadataRoot, 'index.json'),
+      metadataRoot,
+    });
+
+    const result = reader.resolveExport(query('@scope/external-registration', app.root));
+    expect(result.status).toBe('complete');
+    expect(result.definition?.owner.packageRoot).toBe(catalog.packageRoot);
+    expect(result.definition?.record.recordId).toBe('main-api');
+
+    utimesSync(catalog.declarationPath!, new Date(0), new Date(0));
+    writeFileSync(catalog.declarationPath!, 'export declare const Widget: number;\n');
+    expectReaderError(
+      () => reader.resolveExport(query('@scope/external-registration', app.root)),
+      'reader.declarationDrift',
+    );
+  });
+
+  it('loads a LocalSymbolReference.record from the same external registration', () => {
+    const app = createApp('external-reference');
+    const catalog = writeLocalCatalog(app.nodeModules, '@scope/external-reference');
+    const metadataRoot = join(app.root, '.cache', 'catalog');
+    mkdirSync(join(metadataRoot, 'api'), { recursive: true });
+    catalog.record!.symbols[0].effectiveType = {
+      status: { status: 'complete' },
+      type: {
+        text: 'Widget',
+        references: [
+          {
+            start: 0,
+            end: 6,
+            status: 'resolved',
+            target: { kind: 'local', symbol: 'Widget:value', record: 'other-api' },
+          },
+        ],
+      },
+      members: [],
+      signatures: [],
+    };
+    const otherRecord = { ...catalog.record!, recordId: 'other-api' };
+    const otherText = serializeMetadata(otherRecord);
+    writeFileSync(join(metadataRoot, 'api', 'other.json'), otherText);
+    catalog.index.records.push({
+      id: 'other-api',
+      kind: 'api',
+      path: 'api/other.json',
+      fingerprint: fingerprintSerializedMetadata(otherText),
+      symbols: ['Widget:value'],
+    });
+    const mainText = serializeMetadata(catalog.record!);
+    writeFileSync(join(metadataRoot, 'api', 'main.json'), mainText);
+    catalog.index.records[0].fingerprint = fingerprintSerializedMetadata(mainText);
+    writeFileSync(join(metadataRoot, 'index.json'), serializeMetadata(catalog.index));
+
+    const reader = createMetadataReader();
+    reader.registerPackageCatalog({
+      requested: '@scope/external-reference',
+      importer: app.root,
+      packageRoot: catalog.packageRoot,
+      metadataFile: join(metadataRoot, 'index.json'),
+      metadataRoot,
+    });
+    const result = reader.resolveExport(query('@scope/external-reference', app.root));
+    expect(result.status).toBe('complete');
+    const reference = result.definition?.symbol.effectiveType?.type?.references[0].target;
+    expect(reference).toEqual({ kind: 'local', symbol: 'Widget:value', record: 'other-api' });
+    if (reference?.kind === 'local' && reference.record) {
+      expect(reader.loadApiRecord(result.requested.catalog, reference.record).recordId).toBe('other-api');
+    }
+  });
+
+  it('requires external metadata and shards to stay inside their registered storage root', () => {
+    const app = createApp('external-escape');
+    const catalog = writeLocalCatalog(app.nodeModules, '@scope/external-escape');
+    const metadataRoot = join(app.root, '.cache', 'catalog');
+    const outsideRoot = join(app.root, '.cache', 'outside');
+    mkdirSync(join(metadataRoot, 'api'), { recursive: true });
+    mkdirSync(outsideRoot, { recursive: true });
+    const outsideIndex = join(outsideRoot, 'index.json');
+    copyFileSync(catalog.indexPath, outsideIndex);
+    expectReaderError(
+      () =>
+        createMetadataReader().registerPackageCatalog({
+          requested: '@scope/external-escape',
+          importer: app.root,
+          packageRoot: catalog.packageRoot,
+          metadataFile: join(metadataRoot, '..', 'outside', 'index.json'),
+          metadataRoot,
+        }),
+      'reader.catalogPathEscape',
+    );
+
+    const indexPath = join(metadataRoot, 'index.json');
+    symlinkSync(outsideIndex, indexPath);
+    expectReaderError(
+      () =>
+        createMetadataReader().registerPackageCatalog({
+          requested: '@scope/external-escape',
+          importer: app.root,
+          packageRoot: catalog.packageRoot,
+          metadataFile: indexPath,
+          metadataRoot,
+        }),
+      'reader.catalogPathEscape',
+    );
+    unlinkSync(indexPath);
+    copyFileSync(catalog.indexPath, indexPath);
+    symlinkSync(catalog.recordPath!, join(metadataRoot, 'api', 'main.json'));
+    const reader = createMetadataReader();
+    reader.registerPackageCatalog({
+      requested: '@scope/external-escape',
+      importer: app.root,
+      packageRoot: catalog.packageRoot,
+      metadataFile: indexPath,
+      metadataRoot,
+    });
+    const result = reader.resolveExport(query('@scope/external-escape', app.root));
+    expect(result.status).toBe('partial');
+    expect(result.diagnostics[0].causeCode).toBe('reader.symlinkEscape');
+
+    expectReaderError(
+      () =>
+        createMetadataReader().registerPackageCatalog({
+          requested: '@scope/external-escape',
+          importer: app.root,
+          packageRoot: catalog.packageRoot,
+          metadataFile: indexPath,
+        }),
+      'reader.catalogPathEscape',
+    );
   });
 
   it('does not let local registration bypass package identity or declaration provenance', () => {

@@ -10,6 +10,43 @@ const TEST_LEGEND: UsageReportOutput['legend'] = {
 };
 
 describe('markdown-reporter', () => {
+  it.each(['@fluentui/react', 'ui-kit'])('groups nested imports under their npm package %s', packageName => {
+    const usage = {
+      components: { Button: { props: { text: { values: ['Save'], count: 1 } }, count: 1 } },
+      hooks: {},
+      types: {},
+      others: {},
+      unknowns: {},
+      count: 1,
+    };
+    const reportData: UsageReportOutput = {
+      legend: TEST_LEGEND,
+      fileMap: ['src/App.tsx'],
+      packages: {
+        [packageName]: usage,
+        [`${packageName}/lib/Button`]: { ...usage, count: 2 },
+        [`${packageName}/lib/Checkbox`]: { ...usage, count: 3 },
+        [`${packageName}-other/lib/Button`]: { ...usage, count: 4 },
+      },
+    };
+    const before = JSON.stringify(reportData);
+    const output = formatMetadataAsMarkdown(reportData);
+    expect(output).toContain(`### ${packageName}\n`);
+    expect(output).toContain(`### ${packageName}-other\n`);
+    expect(output).not.toContain('### @fluentui\n');
+    expect(output).toContain('| Import Path | Components |');
+    expect(output).not.toContain('| Package | Components |');
+    expect(output).toContain(`## \`${packageName}\`\n`);
+    expect(output.split('\n').filter(line => line.startsWith('## `'))).toEqual([
+      `## \`${packageName}\``,
+      `## \`${packageName}-other\``,
+    ]);
+    for (const [importPath, entry] of Object.entries(reportData.packages)) {
+      expect(output).toContain(`| \`${importPath}\` | 1 | 0 | 0 | 0 | 0 | ${entry.count} |`);
+    }
+    expect(JSON.stringify(reportData)).toBe(before);
+  });
+
   it('should produce a report with summary table and per-package sections', () => {
     const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
@@ -61,12 +98,14 @@ describe('markdown-reporter', () => {
     expect(output).toContain('## Summary');
     expect(output).toContain('| `@proj/react-components` | 2 | 1 | 1 | 2 | 0 | 12 |');
 
-    // Components section — just symbol + count, no props
     expect(output).toContain('### Components');
     expect(output).toContain('| `Button` | 3 |');
     expect(output).toContain('| `Input` | 1 |');
-    expect(output).not.toContain('appearance');
-    expect(output).not.toContain('primary');
+    expect(output).toContain('#### `Button` Observed Props');
+    expect(output).toContain('| Prop | Usages | Observed Values |');
+    expect(output).toContain('| `appearance` | 3 | `primary`, `secondary` |');
+    expect(output).toContain('| `size` | 1 | `medium` |');
+    expect(output).toContain('#### `Input` Observed Props');
 
     // Hooks section — just symbol + count, no arguments
     expect(output).toContain('### Hooks');
@@ -80,6 +119,36 @@ describe('markdown-reporter', () => {
     // Others section
     expect(output).toContain('### Other Exports');
     expect(output).toContain('| `tokens` | 3 |');
+  });
+
+  it('preserves observed prop counts and values while escaping table content', () => {
+    const reportData: UsageReportOutput = {
+      legend: TEST_LEGEND,
+      fileMap: ['src/App.tsx'],
+      packages: {
+        '@proj/react-components': {
+          components: {
+            Button: {
+              count: 4,
+              props: {
+                text: { count: 3, values: ['first | second\nline', '`quoted`'] },
+                disabled: { count: 2, values: [] },
+              },
+            },
+          },
+          hooks: {},
+          types: {},
+          others: {},
+          unknowns: {},
+          count: 1,
+        },
+      },
+    };
+    const before = JSON.stringify(reportData);
+    const output = formatMetadataAsMarkdown(reportData);
+    expect(output).toContain('| `text` | 3 | `first \\| second line`, `` `quoted` `` |');
+    expect(output).toContain('| `disabled` | 2 | — |');
+    expect(JSON.stringify(reportData)).toBe(before);
   });
 
   it('should handle empty metadata', () => {

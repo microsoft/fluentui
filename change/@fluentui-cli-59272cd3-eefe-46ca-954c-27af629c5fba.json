@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: group usage report entrypoints by npm package boundary",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

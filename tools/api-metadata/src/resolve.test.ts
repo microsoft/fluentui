@@ -59,6 +59,55 @@ describe('contextual metadata resolution', () => {
     expect(result.routes[1].catalog.instance.package.name).toBe('@scope/leaf');
   });
 
+  it('follows a published default child route while keeping explicit root conditions exact', () => {
+    const app = createApp('default-child-route');
+    const suite = writeRoutingCatalog(app.nodeModules, '@scope/suite', dependencyTarget('@scope/leaf'));
+    const child = writeLocalCatalog(join(suite.packageRoot, 'node_modules'), '@scope/leaf');
+    child.record!.declarationInputs[0].conditions = ['types', 'default'];
+    child.index.declarationInputs[0].conditions = ['types', 'default'];
+    child.index.exports[0].conditions = ['types', 'default'];
+    rewriteRecord(child, serializeMetadata(child.record!));
+    const childManifest = JSON.parse(readFileSync(join(child.packageRoot, 'package.json'), 'utf8')) as {
+      exports: Record<string, unknown>;
+    };
+    childManifest.exports['.'] = { default: { types: './dist/index.d.ts' } };
+    writeFileSync(join(child.packageRoot, 'package.json'), JSON.stringify(childManifest));
+
+    const reader = createMetadataReader();
+    const result = reader.resolveExport(query('@scope/suite', app.root));
+    expect(result.status).toBe('complete');
+    expect(result.routes.map(route => route.route.conditions)).toEqual([
+      ['types', 'import'],
+      ['types', 'default'],
+    ]);
+    expect(result.definition?.catalog.instance.package.name).toBe('@scope/leaf');
+    expectReaderError(
+      () => reader.resolveExport({ ...query('@scope/suite', app.root), conditions: ['types', 'default'] }),
+      'reader.routeNotFound',
+    );
+  });
+
+  it('reports conflicting compatible dependency routes as ambiguous', () => {
+    const app = createApp('ambiguous-default-child');
+    const suite = writeRoutingCatalog(app.nodeModules, '@scope/suite', dependencyTarget('@scope/leaf'));
+    const child = writeLocalCatalog(join(suite.packageRoot, 'node_modules'), '@scope/leaf');
+    child.record!.symbols.push({ ...child.record!.symbols[0], id: 'Other:value', name: 'Other' });
+    child.index.records[0].symbols!.push('Other:value');
+    child.index.exports[0].conditions = ['types', 'default'];
+    child.index.exports.push({
+      ...child.index.exports[0],
+      id: 'route.Widget.import-default',
+      conditions: ['import', 'default'],
+      target: { kind: 'local', record: 'main-api', symbol: 'Other:value' },
+    });
+    rewriteRecord(child, serializeMetadata(child.record!));
+
+    const result = createMetadataReader().resolveExport(query('@scope/suite', app.root));
+    expect(result.status).toBe('partial');
+    expect(result.diagnostics).toContainEqual(expect.objectContaining({ causeCode: 'reader.routeAmbiguous' }));
+    expect(result.routes).toHaveLength(1);
+  });
+
   it('resolves workspace and pnpm-style symlinked package layouts', () => {
     const workspaceApp = createApp('workspace-link');
     const workspacePackage = join(testRoot, 'workspace-package');

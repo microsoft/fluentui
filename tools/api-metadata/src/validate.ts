@@ -1044,10 +1044,16 @@ function validateApiSymbol(input: unknown, context: ValidationContext, path: str
         (!isObject(type.status) || type.status.status !== 'unsupported') &&
         !(
           Array.isArray(signatures) &&
-          signatures.some(item => isObject(item) && item.id === signature && item.kind === 'call')
+          signatures.some(
+            item => isObject(item) && item.id === signature && (item.kind === 'call' || item.kind === 'construct'),
+          )
         )
       ) {
-        ctx.issue('reference.signature', `${itemPath}.signature`, 'Props must reference a component call signature');
+        ctx.issue(
+          'reference.signature',
+          `${itemPath}.signature`,
+          'Props must reference a component call or construct signature',
+        );
       }
       return { signature, type };
     });

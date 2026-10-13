@@ -324,6 +324,8 @@ export interface GeneratorOptions {
   system?: string;
   entrypoints?: string[];
   declarationConditions?: string[];
+  selectedExports?: Array<{ entrypoint: string; export: string; namespace: MetadataNamespace }>;
+  detail?: 'full' | 'selected' | 'none';
 }
 
 export interface GeneratorResult {

@@ -9,10 +9,10 @@ import type {
   TypeUsage,
   UnknownSymbolUsage,
 } from './types';
+import { groupImportPathsByPackage } from './package-resolver';
 
 /**
  * Format UsageReportOutput as a self-contained HTML report.
- * HTML provides comprehensive prop/argument detail that markdown intentionally omits.
  */
 export function formatMetadataAsHtml(data: UsageReportOutput): string {
   const { legend, fileMap, packages: metadata } = data;
@@ -53,7 +53,9 @@ function renderBody(
     renderLegend(legend),
     renderFileMap(fileMap),
     renderSummaryTable(metadata, packageNames),
-    ...packageNames.map(name => renderPackageSection(name, metadata[name])),
+    ...groupImportPathsByPackage(packageNames).map(([name, importPaths]) =>
+      renderPackageSection(name, importPaths, metadata),
+    ),
   ].join('\n');
 }
 
@@ -93,9 +95,9 @@ ${fileItems}
 }
 
 function renderSummaryTable(metadata: Metadata, packageNames: string[]): string {
-  const scopeGroups = groupByScope(packageNames);
+  const packageGroups = groupImportPathsByPackage(packageNames);
 
-  const scopeSections = scopeGroups.map(([scope, names]) => {
+  const packageSections = packageGroups.map(([packageName, names]) => {
     const rows = names.map(name => {
       const pkg = metadata[name];
       const anchor = toAnchorId(name);
@@ -110,10 +112,10 @@ function renderSummaryTable(metadata: Metadata, packageNames: string[]): string 
 </tr>`;
     });
 
-    return `<h3>${esc(scope)}</h3>
+    return `<h3>${esc(packageName)}</h3>
 <table>
 <thead><tr>
-<th>Package</th><th>Components</th><th>Hooks</th><th>Types</th><th>Others</th><th>Unknowns</th><th>Total&nbsp;Imports</th>
+<th>Import Path</th><th>Components</th><th>Hooks</th><th>Types</th><th>Others</th><th>Unknowns</th><th>Total&nbsp;Imports</th>
 </tr></thead>
 <tbody>
 ${rows.join('\n')}
@@ -123,11 +125,18 @@ ${rows.join('\n')}
 
   return `<section class="summary">
 <h2>Summary</h2>
-${scopeSections.join('\n')}
+${packageSections.join('\n')}
 </section>`;
 }
 
-function renderPackageSection(name: string, pkg: Metadata[string]): string {
+function renderPackageSection(name: string, importPaths: readonly string[], metadata: Metadata): string {
+  return `<section class="package" id="package-${toAnchorId(name)}">
+<h2><code>${esc(name)}</code></h2>
+${importPaths.map(importPath => renderImportSection(importPath, metadata[importPath])).join('\n')}
+</section>`;
+}
+
+function renderImportSection(name: string, pkg: Metadata[string]): string {
   const sections: string[] = [];
   const anchor = toAnchorId(name);
 
@@ -147,10 +156,10 @@ function renderPackageSection(name: string, pkg: Metadata[string]): string {
     sections.push(renderUnknownsSection(pkg.unknowns));
   }
 
-  return `<section class="package" id="${anchor}">
-<h2><code>${esc(name)}</code></h2>
+  return `<div class="entrypoint" id="${anchor}">
+<h3><code>${esc(name)}</code></h3>
 ${sections.join('\n')}
-</section>`;
+</div>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -170,12 +179,16 @@ function renderComponentsSection(components: Record<string, ComponentUsage>): st
     .map(([name, usage]) => renderPropDetailsBlock(name, 'component', usage.props));
 
   return `<div class="category">
-<h3>Components</h3>
+<h4>Components</h4>
 <table>
 <thead><tr><th>Component</th><th>Usages</th><th>Unique Props</th></tr></thead>
 <tbody>${overviewRows.join('\n')}</tbody>
 </table>
-${propDetails.length > 0 ? `<div class="prop-details"><h4>Component Props</h4>${propDetails.join('\n')}</div>` : ''}
+${
+  propDetails.length > 0
+    ? `<div class="prop-details"><h5>Observed Component Props</h5>${propDetails.join('\n')}</div>`
+    : ''
+}
 </div>`;
 }
 
@@ -196,12 +209,12 @@ function renderHooksSection(hooks: Record<string, HookUsage>): string {
     .map(([name, usage]) => renderPropDetailsBlock(name, 'hook', usage.props));
 
   return `<div class="category">
-<h3>Hooks</h3>
+<h4>Hooks</h4>
 <table>
 <thead><tr><th>Hook</th><th>Usages</th><th>Unique Args</th></tr></thead>
 <tbody>${overviewRows.join('\n')}</tbody>
 </table>
-${argDetails.length > 0 ? `<div class="prop-details"><h4>Hook Arguments</h4>${argDetails.join('\n')}</div>` : ''}
+${argDetails.length > 0 ? `<div class="prop-details"><h5>Hook Arguments</h5>${argDetails.join('\n')}</div>` : ''}
 </div>`;
 }
 
@@ -221,12 +234,12 @@ function renderFunctionsSection(title: string, functions: Record<string, Functio
     .map(([name, usage]) => renderPropDetailsBlock(name, 'function', usage.props));
 
   return `<div class="category">
-<h3>${esc(title)}</h3>
+<h4>${esc(title)}</h4>
 <table>
 <thead><tr><th>Symbol</th><th>Usages</th><th>Unique Args</th></tr></thead>
 <tbody>${overviewRows.join('\n')}</tbody>
 </table>
-${argDetails.length > 0 ? `<div class="prop-details"><h4>Function Arguments</h4>${argDetails.join('\n')}</div>` : ''}
+${argDetails.length > 0 ? `<div class="prop-details"><h5>Function Arguments</h5>${argDetails.join('\n')}</div>` : ''}
 </div>`;
 }
 
@@ -236,7 +249,7 @@ ${argDetails.length > 0 ? `<div class="prop-details"><h4>Function Arguments</h4>
 
 function renderPropDetailsBlock(
   symbolName: string,
-  _kind: 'component' | 'hook' | 'function',
+  kind: 'component' | 'hook' | 'function',
   props: Record<string, PropUsage>,
 ): string {
   const rows = Object.entries(props)
@@ -249,10 +262,12 @@ function renderPropDetailsBlock(
       return `<tr><td><code>${esc(propName)}</code></td><td>${usage.count}</td><td>${valuesHtml}</td></tr>`;
     });
 
-  return `<details class="symbol-props">
-<summary><code>${esc(symbolName)}</code> — ${Object.keys(props).length} prop(s)</summary>
+  return `<details class="symbol-props"${kind === 'component' ? ' open' : ''}>
+<summary><code>${esc(symbolName)}</code> — ${Object.keys(props).length} ${
+    kind === 'component' ? 'observed props' : 'arguments'
+  }</summary>
 <table>
-<thead><tr><th>Prop</th><th>Usages</th><th>Values</th></tr></thead>
+<thead><tr><th>Prop</th><th>Usages</th><th>${kind === 'component' ? 'Observed Values' : 'Values'}</th></tr></thead>
 <tbody>${rows.join('\n')}</tbody>
 </table>
 </details>`;
@@ -277,13 +292,13 @@ function renderTypesSection(types: Record<string, TypeUsage>): string {
     .map(([name, usage]) => renderPropDetailsBlock(name, 'function', usage.props));
 
   return `<div class="category">
-<h3>Types</h3>
+<h4>Types</h4>
 <table>
 <thead><tr><th>Symbol</th><th>Usages</th><th>typeof</th><th>Type Args</th></tr></thead>
 <tbody>${overviewRows.join('\n')}</tbody>
 </table>
 ${
-  argDetails.length > 0 ? `<div class="prop-details"><h4>Generic Type Arguments</h4>${argDetails.join('\n')}</div>` : ''
+  argDetails.length > 0 ? `<div class="prop-details"><h5>Generic Type Arguments</h5>${argDetails.join('\n')}</div>` : ''
 }
 </div>`;
 }
@@ -306,7 +321,7 @@ function renderUnknownsSection(unknowns: Record<string, UnknownSymbolUsage>): st
     .map(([name, usage]) => renderPropDetailsBlock(name, 'function', usage.props));
 
   return `<div class="category unknowns">
-<h3>Unknowns</h3>
+<h4>Unknowns</h4>
 <p class="note">Symbols whose <code>.d.ts</code> declarations could not be resolved. Install types or add declarations to improve classification.</p>
 <table>
 <thead><tr><th>Symbol</th><th>Usages</th><th>Unique Args</th><th>Description</th></tr></thead>
@@ -314,7 +329,7 @@ function renderUnknownsSection(unknowns: Record<string, UnknownSymbolUsage>): st
 </table>
 ${
   argDetails.length > 0
-    ? `<div class="prop-details"><h4>Unknown Symbol Arguments</h4>${argDetails.join('\n')}</div>`
+    ? `<div class="prop-details"><h5>Unknown Symbol Arguments</h5>${argDetails.join('\n')}</div>`
     : ''
 }
 </div>`;
@@ -333,22 +348,6 @@ function toAnchorId(name: string): string {
   return 'pkg-' + name.replace(/[^a-zA-Z0-9-]/g, '-');
 }
 
-/**
- * Group package names by npm scope. Scoped packages (@scope/name) are grouped
- * under their scope; unscoped packages go under "Other Packages".
- */
-function groupByScope(packageNames: string[]): Array<[string, string[]]> {
-  const groups = new Map<string, string[]>();
-  for (const name of packageNames) {
-    const scope = name.startsWith('@') ? name.split('/')[0] : 'Other Packages';
-    if (!groups.has(scope)) {
-      groups.set(scope, []);
-    }
-    groups.get(scope)!.push(name);
-  }
-  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
-}
-
 function renderStyles(): string {
   return `<style>
 :root { --bg: #fff; --fg: #1a1a1a; --muted: #6b7280; --border: #e5e7eb; --accent: #0078d4; --accent-light: #e8f4fd; --code-bg: #f3f4f6; --section-bg: #fafafa; }
@@ -363,16 +362,17 @@ h1 { border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
 h2 { margin-top: 2rem; }
 h2 code { font-size: 1em; }
 h3 { margin-top: 1.25rem; color: var(--accent); }
-h4 { margin: 1rem 0 .5rem; font-size: .95rem; color: var(--muted); }
-code { background: var(--code-bg); padding: .15em .35em; border-radius: 3px; font-size: .9em; }
+h4, h5 { margin: 1rem 0 .5rem; font-size: .95rem; color: var(--muted); }
+code { background: var(--code-bg); padding: .15em .35em; border-radius: 3px; font-size: .9em; overflow-wrap: anywhere; }
 table { width: 100%; border-collapse: collapse; margin: .5rem 0 1rem; font-size: .9rem; }
 th, td { text-align: left; padding: .45rem .75rem; border: 1px solid var(--border); }
 th { background: var(--section-bg); font-weight: 600; }
 tr:hover { background: var(--accent-light); }
+.summary { overflow-x: auto; }
 .summary table a { color: var(--accent); text-decoration: none; }
 .summary table a:hover { text-decoration: underline; }
 .summary table th:not(:first-child), .summary table td:not(:first-child) { text-align: center; }
-.category { margin-bottom: 1.5rem; }
+.category { margin-bottom: 1.5rem; overflow-x: auto; }
 .prop-details { margin-top: .75rem; padding-left: .25rem; }
 details.symbol-props { margin: .4rem 0; }
 details.symbol-props summary { cursor: pointer; padding: .3rem .5rem; border-radius: 4px; }

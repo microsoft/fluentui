@@ -85,7 +85,8 @@ export function getCatalogInventory(options: CatalogSelectionOptions = {}): Cata
   const workspacePackages = getWorkspacePackageInventory(cwd);
   const importer = workspacePackages.selectedPackageRoot;
   const loadedConfig = loadCatalogConfig({ cwd, workspaceRoot, config: options.config });
-  const systems = getEffectiveSystems(loadedConfig?.config.systems, options.system);
+  const explicitPackage = options.package ? parseRequiredPackage(options.package) : undefined;
+  const systems = getEffectiveSystems(loadedConfig?.config.systems, options.system, explicitPackage);
   const metadataMode = options.metadataMode ?? 'prefer';
   const reader = createMetadataReader();
   const diagnostics: CatalogDiagnostic[] = [];
@@ -98,6 +99,13 @@ export function getCatalogInventory(options: CatalogSelectionOptions = {}): Cata
           workspacePackages.packages.find(candidate => candidate.requestedPackage === catalog.package) ??
           resolveInstalledPackage(catalog.package, importer);
         if (!installed) {
+          if (
+            system.source === 'preset' &&
+            !options.system?.includes(system.name) &&
+            catalog.package !== explicitPackage
+          ) {
+            continue;
+          }
           roots.push(missingRoot(catalog.package, importer, system.name, system.source));
           diagnostics.push(
             unavailableDiagnostic(
@@ -152,7 +160,6 @@ export function getCatalogInventory(options: CatalogSelectionOptions = {}): Cata
     }
   }
 
-  const explicitPackage = options.package ? parseRequiredPackage(options.package) : undefined;
   if (explicitPackage && !roots.some(root => root.requestedPackage === explicitPackage)) {
     const installed = resolveInstalledPackage(explicitPackage, importer);
     if (!installed) {
@@ -173,11 +180,24 @@ export function getCatalogInventory(options: CatalogSelectionOptions = {}): Cata
 
   const mergedRoots = mergeRoots(roots);
   assertNoCatalogConflicts(mergedRoots);
+  const selectedSystems = systems.filter(
+    system =>
+      system.source === 'config' ||
+      options.system?.includes(system.name) ||
+      mergedRoots.some(root => root.systems.includes(system.name)) ||
+      workspacePackages.packages.some(installed =>
+        system.packages.some(
+          pattern =>
+            matchesPackagePattern(installed.requestedPackage, pattern) ||
+            matchesPackagePattern(installed.packageName, pattern),
+        ),
+      ),
+  );
   const selection = createPackageSelection(
-    systems,
+    selectedSystems,
     mergedRoots,
     explicitPackage,
-    !loadedConfig && !options.system?.length,
+    !loadedConfig && !options.system?.length && selectedSystems.length === 0,
   );
 
   return {
@@ -194,6 +214,7 @@ export function getCatalogInventory(options: CatalogSelectionOptions = {}): Cata
 function getEffectiveSystems(
   configured: Record<string, CatalogSystemConfig> | undefined,
   requested: string[] | undefined,
+  explicitPackage: string | undefined,
 ): EffectiveSystem[] {
   const effective = new Map<string, EffectiveSystem>();
   for (const preset of Object.values(CATALOG_SYSTEM_PRESETS)) {
@@ -221,7 +242,16 @@ function getEffectiveSystems(
   }
 
   if (!requested || requested.length === 0) {
-    return [...effective.values()].sort((left, right) => left.name.localeCompare(right.name));
+    return [...effective.values()]
+      .filter(
+        system =>
+          !explicitPackage ||
+          [...system.packages, ...system.catalogs.flatMap(catalog => (catalog.package ? [catalog.package] : []))].some(
+            pattern => matchesPackagePattern(explicitPackage, pattern),
+          ) ||
+          (system.source === 'config' && system.packages.length === 0),
+      )
+      .sort((left, right) => left.name.localeCompare(right.name));
   }
   const names = [...new Set(requested)];
   for (const name of names) {

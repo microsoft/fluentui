@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  lstatSync,
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -127,4 +136,54 @@ test('demo preparation rejects a destination inside the producer workspace', () 
   });
   assert.equal(result.status, 1);
   assert.match(result.stderr, /outside the producer workspace/);
+});
+
+test('local v8 acceptance sets up isolated fixtures without an installed Todo demo', t => {
+  const { root } = fixture(t);
+  const destination = join(root, 'consumer');
+  const command = join(dirname(fileURLToPath(import.meta.url)), 'v8-acceptance.mjs');
+  const args = [command, '--local', '--setup-only', '--root', destination];
+  const env = { ...process.env, FLUENTUI_DEMO_ROOT: undefined };
+  const result = spawnSync(process.execPath, args, { env, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  for (const app of ['reference-v8', 'reference']) {
+    const consumer = join(destination, app);
+    assert.ok(existsSync(join(consumer, 'src', 'App.tsx')));
+    for (const name of ['@fluentui/cli', '@fluentui/api-metadata']) {
+      const installed = join(consumer, 'node_modules', name);
+      assert.ok(lstatSync(installed).isDirectory());
+      assert.equal(lstatSync(installed).isSymbolicLink(), false);
+    }
+  }
+  const v8 = JSON.parse(readFileSync(join(destination, 'reference-v8/node_modules/@fluentui/react/package.json')));
+  assert.equal(v8.version, '8.125.8');
+  assert.equal(v8.fluentuiAcceptanceFixture, true);
+  assert.equal(existsSync(join(destination, '.git')), false);
+  const repeated = spawnSync(process.execPath, args, { env, encoding: 'utf8' });
+  assert.equal(repeated.status, 1);
+  assert.match(repeated.stderr, /Refusing to overwrite/);
+  const verified = spawnSync(process.execPath, [command], {
+    env: { ...env, FLUENTUI_DEMO_ROOT: destination },
+    encoding: 'utf8',
+  });
+  assert.equal(verified.status, 0, `${verified.stdout}\n${verified.stderr}`);
+  const summary = JSON.parse(readFileSync(join(destination, 'evidence/v8-cli/summary.json'), 'utf8'));
+  assert.equal(summary.mode, 'local-fixture');
+  assert.equal(summary.status, 'passed');
+  assert.ok(summary.commands.every(item => item.status === 'passed'));
+  assert.equal(summary.preservation.status, 'passed');
+});
+
+test('local v8 acceptance rejects a fixture root inside the producer checkout', t => {
+  const command = join(dirname(fileURLToPath(import.meta.url)), 'v8-acceptance.mjs');
+  const destination = resolve(dirname(command), '../.artifacts', `v8-inside-checkout-${process.pid}`);
+  assert.equal(existsSync(destination), false);
+  t.after(() => rmSync(destination, { recursive: true, force: true }));
+  const result = spawnSync(process.execPath, [command, '--local', '--setup-only', '--root', destination], {
+    env: { ...process.env, FLUENTUI_DEMO_ROOT: undefined },
+    encoding: 'utf8',
+  });
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /outside the producer workspace/);
+  assert.equal(existsSync(destination), false);
 });

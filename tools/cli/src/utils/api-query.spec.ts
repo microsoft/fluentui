@@ -1,3 +1,7 @@
+import * as fs from 'node:fs';
+import * as os from 'node:os';
+import * as path from 'node:path';
+
 import type {
   ApiRecord,
   GeneratorResult,
@@ -19,6 +23,10 @@ import {
   type CatalogRoot,
 } from './api-query';
 import yargs = require('yargs/yargs');
+
+const { generateApiMetadata } = require('@fluentui/api-metadata/generator') as {
+  generateApiMetadata(options: GeneratorOptions): Promise<GeneratorResult>;
+};
 
 const index = {
   kind: 'package-index',
@@ -83,6 +91,13 @@ function createDependencies(inventory: CatalogInventory): ApiQueryDependencies {
   return {
     getImportIssue: jest.fn(() => undefined),
     getInventory: jest.fn(() => inventory),
+    getCachedCatalog: jest.fn(() => undefined),
+    buildCachedCatalogs: jest.fn(async () => undefined),
+    startCachedCatalogs: jest.fn(),
+    loadCachedCatalog: jest.fn(async () => ({
+      catalog: { index } as LoadedPackageCatalog,
+      reader: { loadApiRecord: jest.fn(() => record) } as unknown as MetadataReader,
+    })),
     generate: jest.fn(async () => ({ index, records: [record], diagnostics: [] } as GeneratorResult)),
     loadApiRecord: jest.fn(async () => record),
     resolveExport: jest.fn(async () => {
@@ -144,6 +159,82 @@ async function replayCommands(commands: string[], dependencies: ApiQueryDependen
 }
 
 describe('API query', () => {
+  it('reads a complete cached catalog without generating declarations or starting a build', async () => {
+    const root = createRoot();
+    const dependencies = createDependencies(createInventory([root]));
+    (dependencies.getCachedCatalog as jest.Mock).mockReturnValue({
+      index,
+      packageRoot: root.packageRoot,
+      metadataRoot: '/consumer/.cache/fluentui-cli/catalogs/example',
+      metadataFile: '/consumer/.cache/fluentui-cli/catalogs/example/index.json',
+      source: 'declarations',
+      status: 'ready',
+    });
+
+    const result = await queryApi({ symbol: 'Button' }, dependencies);
+
+    expect(result.data).toMatchObject({ symbol: record.symbols[0] });
+    expect(dependencies.loadCachedCatalog).toHaveBeenCalledTimes(1);
+    expect(dependencies.generate).not.toHaveBeenCalled();
+    expect(dependencies.startCachedCatalogs).not.toHaveBeenCalled();
+  });
+
+  it('returns a lightweight API listing without waiting for a full catalog build', async () => {
+    const root = createRoot();
+    const dependencies = createDependencies(createInventory([root]));
+    let release!: () => void;
+    (dependencies.buildCachedCatalogs as jest.Mock).mockImplementation(
+      () =>
+        new Promise<void>(resolve => {
+          release = resolve;
+        }),
+    );
+    const query = queryApi({ from: '@fluentui/example' }, dependencies);
+    await Promise.resolve();
+    const blocksOnFullCatalog = (dependencies.buildCachedCatalogs as jest.Mock).mock.calls.length > 0;
+    release?.();
+    const result = await query;
+
+    expect(blocksOnFullCatalog).toBe(false);
+    expect(result.kind).toBe('index');
+    expect(dependencies.buildCachedCatalogs).not.toHaveBeenCalled();
+    expect(dependencies.generate).toHaveBeenCalledWith(expect.objectContaining({ detail: 'none' }));
+    expect(dependencies.startCachedCatalogs).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not expand a ready cached API listing or start another build', async () => {
+    const root = createRoot();
+    const dependencies = createDependencies(createInventory([root]));
+    (dependencies.getCachedCatalog as jest.Mock).mockReturnValue({
+      index,
+      packageRoot: root.packageRoot,
+      metadataRoot: '/consumer/.cache/fluentui-cli/catalogs/example',
+      metadataFile: '/consumer/.cache/fluentui-cli/catalogs/example/index.json',
+      source: 'declarations',
+      status: 'ready',
+    });
+
+    const result = await queryApi({ from: '@fluentui/example' }, dependencies);
+
+    expect(result.kind).toBe('index');
+    expect(dependencies.buildCachedCatalogs).not.toHaveBeenCalled();
+    expect(dependencies.generate).not.toHaveBeenCalled();
+    expect(dependencies.startCachedCatalogs).not.toHaveBeenCalled();
+  });
+
+  it('answers a named declaration query before launching the remaining catalog build', async () => {
+    const dependencies = createDependencies(createInventory([createRoot()]));
+    await expect(queryApi({ symbol: 'Button' }, dependencies)).resolves.toMatchObject({
+      kind: 'detail',
+      data: { symbol: record.symbols[0] },
+    });
+    expect(dependencies.buildCachedCatalogs).not.toHaveBeenCalled();
+    expect(dependencies.startCachedCatalogs).toHaveBeenCalledTimes(1);
+    expect((dependencies.startCachedCatalogs as jest.Mock).mock.invocationCallOrder[0]).toBeGreaterThan(
+      (dependencies.generate as jest.Mock).mock.invocationCallOrder[0],
+    );
+  });
+
   it('selects a configured facade definition over an unrelated same-named dependency API', async () => {
     const facade = createRoot({
       packageName: '@scope/facade',
@@ -283,6 +374,15 @@ describe('API query', () => {
     expect(dependencies.generate).not.toHaveBeenCalled();
   });
 
+  it('generates route-only declaration output when listing without metadata', async () => {
+    const dependencies = createDependencies(createInventory([createRoot()]));
+
+    const result = await queryApi({ metadataMode: 'off' }, dependencies);
+
+    expect(result.kind).toBe('index');
+    expect(dependencies.generate).toHaveBeenCalledWith(expect.objectContaining({ detail: 'none' }));
+  });
+
   it('applies the exact package selector even when discovery returns preset roots', async () => {
     const selected = createRoot();
     const unrelated = createRoot({
@@ -308,10 +408,10 @@ describe('API query', () => {
     const selectedIndex = {
       ...index,
       package: { ...index.package, name: packageName },
-      exports: ['.', './button', './components/button'].map(path => ({
+      exports: ['.', './button', './components/button'].map(importPath => ({
         ...index.exports[0],
-        id: path,
-        entrypoint: path,
+        id: importPath,
+        entrypoint: importPath,
       })),
     };
     const dependencies = createRoutedDependencies([{ root, index: selectedIndex }]);
@@ -398,11 +498,69 @@ describe('API query', () => {
     const root = createRoot();
     const dependencies = createDependencies(createInventory([root]));
 
-    const result = await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+    const result = await queryApi({ symbol: 'Button', entrypoint: '.', metadataMode: 'off' }, dependencies);
 
     expect(result.kind).toBe('detail');
     expect(result.data).toEqual(expect.objectContaining({ name: 'Button', symbol: record.symbols[0] }));
-    expect(dependencies.generate).toHaveBeenCalledTimes(1);
+    expect(dependencies.generate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        detail: 'selected',
+        selectedExports: [
+          { entrypoint: '.', export: 'Button', namespace: 'type' },
+          { entrypoint: '.', export: 'Button', namespace: 'value' },
+        ],
+      }),
+    );
+  });
+
+  it('selects all public declaration entrypoints without inferring routes from the symbol', async () => {
+    const packageRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-cli-api-query-'));
+    fs.mkdirSync(path.join(packageRoot, 'types', 'components', 'Button'), { recursive: true });
+    fs.mkdirSync(path.join(packageRoot, 'types', 'components', 'Input'), { recursive: true });
+    fs.mkdirSync(path.join(packageRoot, 'types'), { recursive: true });
+    fs.writeFileSync(
+      path.join(packageRoot, 'package.json'),
+      JSON.stringify({
+        name: '@fluentui/example',
+        version: '1.0.0',
+        exports: {
+          '.': { types: './types/index.d.ts' },
+          './components/*': { types: './types/components/*/index.d.ts' },
+        },
+      }),
+    );
+    fs.writeFileSync(path.join(packageRoot, 'types', 'index.d.ts'), 'export interface Button {}\n');
+    fs.writeFileSync(
+      path.join(packageRoot, 'types', 'components', 'Button', 'index.d.ts'),
+      'export interface Button {}\n',
+    );
+    fs.writeFileSync(
+      path.join(packageRoot, 'types', 'components', 'Input', 'index.d.ts'),
+      'export interface Input {}\n',
+    );
+    const root = createRoot({ packageRoot });
+    const dependencies = createDependencies(createInventory([root]));
+
+    try {
+      await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+    } finally {
+      fs.rmSync(packageRoot, { recursive: true, force: true });
+    }
+
+    expect(dependencies.generate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        entrypoints: ['.', './components/Button', './components/Input'],
+        detail: 'selected',
+        selectedExports: [
+          { entrypoint: '.', export: 'Button', namespace: 'type' },
+          { entrypoint: '.', export: 'Button', namespace: 'value' },
+          { entrypoint: './components/Button', export: 'Button', namespace: 'type' },
+          { entrypoint: './components/Button', export: 'Button', namespace: 'value' },
+          { entrypoint: './components/Input', export: 'Button', namespace: 'type' },
+          { entrypoint: './components/Input', export: 'Button', namespace: 'value' },
+        ],
+      }),
+    );
   });
 
   it('required mode accepts canonical requested detail from an intentionally partial index', async () => {
@@ -477,6 +635,47 @@ describe('API query', () => {
     expect(dependencies.resolveExport).not.toHaveBeenCalled();
     expect(resolveExport).toHaveBeenCalledTimes(1);
   });
+
+  it.each(['prefer', 'required'] as const)(
+    'only permits unresolved metadata dependency declaration fallback in prefer mode (%s)',
+    async metadataMode => {
+      const dependencyIndex = {
+        ...index,
+        exports: [
+          {
+            ...index.exports[0],
+            target: {
+              kind: 'dependency',
+              package: '@fluentui/leaf',
+              entrypoint: '.',
+              export: 'Button',
+              namespace: 'value',
+            },
+          },
+        ],
+      } as PackageIndex;
+      const catalog = { index: dependencyIndex } as LoadedPackageCatalog;
+      const dependencies = createDependencies(createInventory([createRoot({ catalog })]));
+      (dependencies.resolveExport as jest.Mock).mockResolvedValue({
+        status: 'unavailable',
+        requested: { catalog, route: dependencyIndex.exports[0] },
+        routes: [{ catalog, route: dependencyIndex.exports[0] }],
+        diagnostics: [],
+      });
+      (dependencies.resolveInstalledPackage as jest.Mock).mockReturnValue(
+        createRoot({ packageName: '@fluentui/leaf', packageRoot: '/consumer/node_modules/@fluentui/leaf' }),
+      );
+
+      const query = queryApi({ symbol: 'Button', metadataMode }, dependencies);
+      if (metadataMode === 'required') {
+        await expect(query).rejects.toMatchObject({ code: 'CLI_METADATA_REQUIRED' });
+        expect(dependencies.generate).not.toHaveBeenCalled();
+      } else {
+        await expect(query).resolves.toMatchObject({ kind: 'detail', data: { symbol: record.symbols[0] } });
+        expect(dependencies.generate).toHaveBeenCalledTimes(1);
+      }
+    },
+  );
 
   it('reports bundled definition ownership while recommending the verified facade route', async () => {
     const bundledIndex = {
@@ -613,11 +812,18 @@ describe('API query', () => {
         ]),
       }),
     );
-    expect(dependencies.generate).toHaveBeenCalledWith({
-      packageRoot: root.packageRoot,
-      packageName: root.packageName,
-      entrypoints: ['./input'],
-    });
+    expect(dependencies.generate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        packageRoot: root.packageRoot,
+        packageName: root.packageName,
+        entrypoints: ['./input'],
+        detail: 'selected',
+        selectedExports: [
+          { entrypoint: './input', export: 'Input', namespace: 'type' },
+          { entrypoint: './input', export: 'Input', namespace: 'value' },
+        ],
+      }),
+    );
   });
 
   it('required mode reports an omitted partial-catalog binding as unavailable', async () => {
@@ -677,6 +883,15 @@ describe('API query', () => {
       exitCode: 1,
     });
     expect(dependencies.generate).not.toHaveBeenCalled();
+  });
+
+  it('uses route-only declaration output for doctor inspection', async () => {
+    const dependencies = createDependencies(createInventory([createRoot()]));
+
+    const result = await inspectCatalogs({}, dependencies);
+
+    expect(result.roots).toEqual([expect.objectContaining({ authority: 'declarations' })]);
+    expect(dependencies.generate).toHaveBeenCalledWith(expect.objectContaining({ detail: 'none' }));
   });
 
   it('reports a stable not-found error', async () => {
@@ -933,6 +1148,245 @@ describe('API query', () => {
         ],
       }),
     );
+    expect(dependencies.generate).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        detail: 'selected',
+        selectedExports: [{ entrypoint: '.', export: 'Button', namespace: 'value' }],
+      }),
+    );
+  });
+
+  it.each(['cold', 'warm'] as const)(
+    'resolves a parent import route through a generated child default route with a %s child catalog',
+    async cacheState => {
+      const workspaceRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-cli-condition-route-'));
+      const suiteRoot = path.join(workspaceRoot, 'node_modules', '@fluentui', 'suite');
+      const childRoot = path.join(suiteRoot, 'node_modules', '@fluentui', 'example');
+      fs.mkdirSync(path.join(childRoot, 'dist'), { recursive: true });
+      fs.writeFileSync(
+        path.join(childRoot, 'package.json'),
+        JSON.stringify({
+          name: '@fluentui/example',
+          version: '1.0.0',
+          exports: { '.': { default: { types: './dist/index.d.ts', default: './dist/index.js' } } },
+        }),
+      );
+      fs.writeFileSync(path.join(childRoot, 'dist/index.d.ts'), 'export declare const Button: string;\n');
+
+      try {
+        const generatedChild = await generateApiMetadata({
+          packageRoot: childRoot,
+          entrypoints: ['.'],
+          detail: 'selected',
+          selectedExports: [{ entrypoint: '.', export: 'Button', namespace: 'value' }],
+        });
+        expect(generatedChild.index.exports).toEqual([
+          expect.objectContaining({ export: 'Button', conditions: ['types', 'default'] }),
+        ]);
+        const suiteIndex: PackageIndex = {
+          ...index,
+          package: { name: '@fluentui/suite', version: '1.0.0' },
+          exports: [
+            {
+              ...index.exports[0],
+              target: {
+                kind: 'dependency',
+                package: '@fluentui/example',
+                entrypoint: '.',
+                export: 'Button',
+                namespace: 'value',
+              },
+            },
+          ],
+        };
+        const suite = createRoot({
+          packageName: '@fluentui/suite',
+          requestedPackage: '@fluentui/suite',
+          packageRoot: suiteRoot,
+          importer: workspaceRoot,
+        });
+        const child = createRoot({ packageRoot: childRoot, importer: suiteRoot });
+        const dependencies = createDependencies(createInventory([suite]));
+        (dependencies.resolveInstalledPackage as jest.Mock).mockReturnValue(child);
+        (dependencies.generate as jest.Mock).mockImplementation(async (options: GeneratorOptions) => {
+          if (options.packageRoot === suiteRoot) {
+            return { index: suiteIndex, records: [], diagnostics: [] };
+          }
+          return generateApiMetadata(options);
+        });
+        if (cacheState === 'warm') {
+          (dependencies.getCachedCatalog as jest.Mock).mockImplementation((root: CatalogRoot) =>
+            root.packageRoot === childRoot
+              ? {
+                  index: generatedChild.index,
+                  packageRoot: childRoot,
+                  metadataRoot: childRoot,
+                  metadataFile: path.join(childRoot, 'index.json'),
+                  source: 'declarations',
+                  status: 'ready',
+                }
+              : undefined,
+          );
+          (dependencies.loadCachedCatalog as jest.Mock).mockResolvedValue({
+            catalog: { index: generatedChild.index } as LoadedPackageCatalog,
+            reader: {
+              loadApiRecord: jest.fn((_catalog, recordId: string) =>
+                generatedChild.records.find(candidate => candidate.recordId === recordId),
+              ),
+            } as unknown as MetadataReader,
+          });
+        }
+
+        const result = await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+
+        expect(result.data).toEqual(
+          expect.objectContaining({
+            package: '@fluentui/example',
+            symbol: expect.objectContaining({ name: 'Button' }),
+            resolvedPackages: [
+              expect.objectContaining({ package: '@fluentui/suite' }),
+              expect.objectContaining({ package: '@fluentui/example' }),
+            ],
+          }),
+        );
+        if (cacheState === 'warm') {
+          expect(dependencies.generate).toHaveBeenCalledTimes(1);
+        } else {
+          expect(dependencies.generate).toHaveBeenNthCalledWith(
+            2,
+            expect.not.objectContaining({ declarationConditions: ['types', 'import'] }),
+          );
+        }
+      } finally {
+        fs.rmSync(workspaceRoot, { recursive: true, force: true });
+      }
+    },
+  );
+
+  it('reports conflicting default-compatible child routes instead of selecting by order', async () => {
+    const suite = createRoot({
+      packageName: '@fluentui/suite',
+      requestedPackage: '@fluentui/suite',
+      packageRoot: '/consumer/node_modules/@fluentui/suite',
+    });
+    const child = createRoot({
+      packageRoot: '/consumer/node_modules/@fluentui/suite/node_modules/@fluentui/example',
+      importer: suite.packageRoot,
+    });
+    const suiteIndex: PackageIndex = {
+      ...index,
+      package: { name: '@fluentui/suite', version: '1.0.0' },
+      exports: [
+        {
+          ...index.exports[0],
+          target: {
+            kind: 'dependency',
+            package: '@fluentui/example',
+            entrypoint: '.',
+            export: 'Button',
+            namespace: 'value',
+          },
+        },
+      ],
+    };
+    const childIndex: PackageIndex = {
+      ...index,
+      exports: [
+        { ...index.exports[0], id: 'default', conditions: ['types', 'default'] },
+        {
+          ...index.exports[0],
+          id: 'import-default',
+          conditions: ['import', 'default'],
+          target: { kind: 'local', record: 'root', symbol: 'OtherButton' },
+        },
+      ],
+    };
+    const dependencies = createDependencies(createInventory([suite]));
+    (dependencies.generate as jest.Mock).mockImplementation(async (options: GeneratorOptions) => ({
+      index: options.packageRoot === suite.packageRoot ? suiteIndex : childIndex,
+      records: [record],
+      diagnostics: [],
+    }));
+    (dependencies.resolveInstalledPackage as jest.Mock).mockReturnValue(child);
+
+    const result = await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+
+    expect(result.status).toBe('partial');
+    expect(result.data).toEqual(expect.objectContaining({ symbol: undefined }));
+    expect(result.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'CLI_DECLARATION_DEPENDENCY_ROUTE_AMBIGUOUS' }),
+    );
+  });
+
+  it('uses a ready dependency catalog before generating its declaration detail', async () => {
+    const suiteIndex = {
+      ...index,
+      package: { name: '@fluentui/suite', version: '1.0.0' },
+      exports: [
+        {
+          ...index.exports[0],
+          target: {
+            kind: 'dependency',
+            package: '@fluentui/example',
+            entrypoint: '.',
+            export: 'Button',
+            namespace: 'value',
+          },
+        },
+      ],
+    } as PackageIndex;
+    const suite = createRoot({
+      packageName: '@fluentui/suite',
+      requestedPackage: '@fluentui/suite',
+      packageRoot: '/consumer/node_modules/@fluentui/suite',
+    });
+    const leaf = createRoot({
+      packageRoot: '/consumer/node_modules/@fluentui/suite/node_modules/@fluentui/example',
+      importer: suite.packageRoot,
+    });
+    const dependencies = createDependencies(createInventory([suite]));
+    const cachedIndex = {
+      ...index,
+      exports: [
+        {
+          ...index.exports[0],
+          id: 'button-require',
+          conditions: ['types', 'require'],
+          target: { kind: 'local', record: 'root', symbol: 'OtherButton' },
+        },
+        index.exports[0],
+      ],
+    } as PackageIndex;
+    const cached = {
+      index: cachedIndex,
+      packageRoot: leaf.packageRoot,
+      metadataRoot: '/consumer/.cache/fluentui-cli/catalogs/example',
+      metadataFile: '/consumer/.cache/fluentui-cli/catalogs/example/index.json',
+      source: 'declarations',
+      status: 'ready',
+    } as const;
+    (dependencies.generate as jest.Mock).mockResolvedValue({ index: suiteIndex, records: [], diagnostics: [] });
+    (dependencies.resolveInstalledPackage as jest.Mock).mockReturnValue(leaf);
+    (dependencies.getCachedCatalog as jest.Mock).mockImplementation((root: CatalogRoot) =>
+      root.packageRoot === leaf.packageRoot ? cached : undefined,
+    );
+    (dependencies.loadCachedCatalog as jest.Mock).mockResolvedValue({
+      catalog: { index: cachedIndex } as LoadedPackageCatalog,
+      reader: { loadApiRecord: jest.fn(() => record) } as unknown as MetadataReader,
+    });
+
+    const result = await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+
+    expect(result.data).toEqual(expect.objectContaining({ package: '@fluentui/example', symbol: record.symbols[0] }));
+    expect(dependencies.getCachedCatalog).toHaveBeenCalledWith(
+      expect.objectContaining({ packageRoot: leaf.packageRoot }),
+      expect.objectContaining({ metadataMode: 'off' }),
+    );
+    expect(dependencies.loadCachedCatalog).toHaveBeenCalledWith(leaf, cached);
+    expect(dependencies.generate).toHaveBeenCalledTimes(1);
+    expect(dependencies.generate).toHaveBeenCalledWith(expect.objectContaining({ packageRoot: suite.packageRoot }));
+    expect(dependencies.generate).not.toHaveBeenCalledWith(expect.objectContaining({ packageRoot: leaf.packageRoot }));
   });
 
   it('uses bundled declaration records during metadata-off fallback without changing the facade import', async () => {
@@ -1002,6 +1456,84 @@ describe('API query', () => {
         ]),
       }),
     );
+  });
+
+  it('loads a cached bundled record lazily and preserves its owner and facade import', async () => {
+    const ownerRecord = {
+      ...record,
+      package: { name: '@third/owner', version: '2.0.0' },
+    } as ApiRecord;
+    const suiteIndex = {
+      ...index,
+      package: { name: '@fluentui/suite', version: '1.0.0' },
+      records: [
+        {
+          ...index.records[0],
+          source: {
+            kind: 'dependency',
+            packages: [
+              {
+                requested: '@third/owner',
+                package: ownerRecord.package,
+                declarationInputs: [],
+              },
+            ],
+          },
+        },
+      ],
+      exports: [
+        {
+          ...index.exports[0],
+          target: { kind: 'bundled', record: 'root', symbol: 'Button' },
+        },
+      ],
+    } as PackageIndex;
+    const suite = createRoot({
+      packageName: '@fluentui/suite',
+      requestedPackage: '@fluentui/suite',
+      packageRoot: '/consumer/node_modules/@fluentui/suite',
+      source: 'config',
+    });
+    const cached = {
+      index: suiteIndex,
+      packageRoot: suite.packageRoot,
+      metadataRoot: '/consumer/.cache/fluentui-cli/catalogs/suite',
+      metadataFile: '/consumer/.cache/fluentui-cli/catalogs/suite/index.json',
+      source: 'declarations',
+      status: 'ready',
+    } as const;
+    const loadApiRecord = jest.fn(() => ownerRecord);
+    const dependencies = createDependencies(createInventory([suite]));
+    (dependencies.getCachedCatalog as jest.Mock).mockReturnValue(cached);
+    (dependencies.loadCachedCatalog as jest.Mock).mockResolvedValue({
+      catalog: { index: suiteIndex } as LoadedPackageCatalog,
+      reader: { loadApiRecord } as unknown as MetadataReader,
+    });
+    (dependencies.resolveInstalledPackage as jest.Mock).mockImplementation((requested: string) => ({
+      packageName: requested,
+      requestedPackage: requested,
+      packageRoot: `/consumer/node_modules/${requested}`,
+      importer: '/consumer',
+    }));
+
+    const result = await queryApi({ symbol: 'Button', metadataMode: 'off' }, dependencies);
+
+    expect(result.data).toEqual(
+      expect.objectContaining({
+        package: '@third/owner',
+        version: '2.0.0',
+        recordId: 'root',
+        recommendedImport: expect.objectContaining({ moduleSpecifier: '@fluentui/suite' }),
+        resolvedPackages: expect.arrayContaining([
+          expect.objectContaining({ package: '@fluentui/suite' }),
+          expect.objectContaining({ package: '@third/owner' }),
+        ]),
+      }),
+    );
+    expect(loadApiRecord).toHaveBeenCalledTimes(1);
+    expect(loadApiRecord).toHaveBeenCalledWith(expect.anything(), 'root');
+    expect(dependencies.loadApiRecord).not.toHaveBeenCalled();
+    expect(dependencies.generate).not.toHaveBeenCalled();
   });
 
   it('doctor deep validation checks the complete advertised catalog', async () => {

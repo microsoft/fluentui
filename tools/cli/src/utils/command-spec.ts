@@ -308,6 +308,62 @@ export const INIT_COMMAND_SPEC: CliCommandSpec = {
     2: 'Invalid command input',
   },
 };
+export const CACHE_STATUS_COMMAND_SPEC: CliCommandSpec = {
+  command: 'status',
+  description: 'Inspect installed API catalog cache readiness',
+  options: { ...catalogSelectionOptions, ...machineOutputOptions },
+  responses: ['fluentui.cache-status', 'fluentui.error'],
+  exits: {
+    0: 'Cache status emitted',
+    1: 'Cache status inspection failed',
+    2: 'Invalid cache selection or output options',
+  },
+};
+
+export const CACHE_BUILD_COMMAND_SPEC: CliCommandSpec = {
+  command: 'build',
+  description: 'Build caches for selected installed API catalogs',
+  options: {
+    ...catalogSelectionOptions,
+    force: {
+      type: 'boolean',
+      default: false,
+      describe: 'Rebuild caches even when the existing cache is current',
+    },
+    ...machineOutputOptions,
+  },
+  responses: ['fluentui.cache-build', 'fluentui.error'],
+  exits: {
+    0: 'Selected catalog caches built',
+    1: 'One or more catalog caches failed to build',
+    2: 'Invalid cache selection or output options',
+  },
+};
+
+export const CACHE_CLEAR_COMMAND_SPEC: CliCommandSpec = {
+  command: 'clear',
+  description: 'Clear caches for selected installed API catalogs',
+  options: { ...catalogSelectionOptions, ...machineOutputOptions },
+  responses: ['fluentui.cache-clear', 'fluentui.error'],
+  exits: {
+    0: 'Selected catalog caches cleared',
+    1: 'Cache clearing failed',
+    2: 'Invalid cache selection or output options',
+  },
+};
+
+export const CACHE_COMMAND_SPEC: CliCommandSpec = {
+  command: 'cache',
+  description: 'Manage cached installed API catalogs',
+  options: {},
+  responses: ['fluentui.cache-status', 'fluentui.cache-build', 'fluentui.cache-clear', 'fluentui.error'],
+  exits: {
+    0: 'Cache operation completed',
+    1: 'Cache operation failed',
+    2: 'Invalid cache selection or output options',
+  },
+  subcommands: [CACHE_STATUS_COMMAND_SPEC, CACHE_BUILD_COMMAND_SPEC, CACHE_CLEAR_COMMAND_SPEC],
+};
 export const COMMAND_SPECS: readonly CliCommandSpec[] = [
   REPORT_COMMAND_SPEC,
   METADATA_COMMAND_SPEC,
@@ -315,6 +371,7 @@ export const COMMAND_SPECS: readonly CliCommandSpec[] = [
   DOCTOR_COMMAND_SPEC,
   MANIFEST_COMMAND_SPEC,
   INIT_COMMAND_SPEC,
+  CACHE_COMMAND_SPEC,
 ];
 
 export function applyCommandOptions<T>(argv: Argv<T>, spec: CliCommandSpec): Argv<T> {

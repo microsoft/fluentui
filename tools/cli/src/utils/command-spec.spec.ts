@@ -2,11 +2,19 @@ import type { Argv, CommandModule } from 'yargs';
 import yargs = require('yargs/yargs');
 import apiCommand from '../commands/api';
 
+import cacheCommand from '../commands/cache';
+import cacheBuildCommand from '../commands/cache/commands/build';
+import cacheClearCommand from '../commands/cache/commands/clear';
+import cacheStatusCommand from '../commands/cache/commands/status';
 import metadataCommand from '../commands/metadata';
 import infoCommand from '../commands/report/commands/info';
 import usageCommand from '../commands/report/commands/usage';
 import {
   API_COMMAND_SPEC,
+  CACHE_BUILD_COMMAND_SPEC,
+  CACHE_CLEAR_COMMAND_SPEC,
+  CACHE_COMMAND_SPEC,
+  CACHE_STATUS_COMMAND_SPEC,
   METADATA_COMMAND_SPEC,
   METADATA_GENERATE_COMMAND_SPEC,
   REPORT_INFO_COMMAND_SPEC,
@@ -119,6 +127,57 @@ describe('command manifest contract', () => {
     );
     const metadata = getCommandManifest().commands.find(command => command.command === 'metadata');
     expect(metadata?.subcommands).toContain(METADATA_GENERATE_COMMAND_SPEC);
+  });
+
+  it('publishes cache operations as required subcommands with versioned envelopes', () => {
+    expect(Object.keys(CACHE_COMMAND_SPEC.options)).toEqual([]);
+    expect(CACHE_COMMAND_SPEC.subcommands?.map(command => command.command)).toEqual(['status', 'build', 'clear']);
+    expect(CACHE_COMMAND_SPEC.responses).toEqual([
+      'fluentui.cache-status',
+      'fluentui.cache-build',
+      'fluentui.cache-clear',
+      'fluentui.error',
+    ]);
+    for (const spec of [CACHE_STATUS_COMMAND_SPEC, CACHE_BUILD_COMMAND_SPEC, CACHE_CLEAR_COMMAND_SPEC]) {
+      expect(Object.keys(spec.options)).toEqual(
+        expect.arrayContaining(['cwd', 'path', 'config', 'system', 'package', 'metadataMode', 'json', 'output']),
+      );
+      expect(spec.responses).toContain(`fluentui.cache-${spec.command}`);
+    }
+    expect(CACHE_BUILD_COMMAND_SPEC.options.force).toEqual(
+      expect.objectContaining({ type: 'boolean', default: false }),
+    );
+  });
+
+  it('parses cache selectors and requires an operation', () => {
+    expect(
+      parseCommand(cacheStatusCommand, [
+        '--cwd',
+        './apps/forum',
+        '--config',
+        './fluentui.config.json',
+        '--system',
+        'headless',
+        '--package',
+        '@fluentui/react-headless-components-preview',
+        '--metadata-mode',
+        'off',
+        '--json',
+        '--output',
+        'cache.json',
+      ]),
+    ).toMatchObject({
+      cwd: './apps/forum',
+      config: './fluentui.config.json',
+      system: ['headless'],
+      package: '@fluentui/react-headless-components-preview',
+      metadataMode: 'off',
+      json: true,
+      output: 'cache.json',
+    });
+    expect(parseCommand(cacheBuildCommand, ['--force'])).toMatchObject({ force: true });
+    expect(parseCommand(cacheClearCommand, ['--system', 'headless'])).toMatchObject({ system: ['headless'] });
+    expect(() => parseCommand(cacheCommand, [])).toThrow(/cache <status\|build\|clear>/);
   });
 
   it('advertises import-path selection while keeping advanced selectors parseable', () => {

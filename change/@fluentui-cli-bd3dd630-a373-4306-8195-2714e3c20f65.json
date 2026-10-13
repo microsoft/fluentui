@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: support v8 declaration-backed API catalogs and usage with bounded extraction and React class compatibility",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

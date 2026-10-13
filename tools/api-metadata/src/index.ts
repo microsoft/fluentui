@@ -93,3 +93,4 @@ export type {
   ResolveExportOptions,
 } from './resolve';
 export type { ValidationBounds, ValidationIssue, ValidationOptions, ValidationResult } from './validate';
+export type { ReactClassCompatMatch, ReactClassCompatPlugin } from './react-class-compat';

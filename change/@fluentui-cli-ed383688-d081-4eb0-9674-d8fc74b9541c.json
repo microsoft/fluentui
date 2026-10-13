@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: show responsive interactive progress for API queries and usage reports without affecting machine output",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

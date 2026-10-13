@@ -1,5 +1,9 @@
 export {
   API_COMMAND_SPEC,
+  CACHE_BUILD_COMMAND_SPEC,
+  CACHE_CLEAR_COMMAND_SPEC,
+  CACHE_COMMAND_SPEC,
+  CACHE_STATUS_COMMAND_SPEC,
   COMMAND_SPECS,
   DOCTOR_COMMAND_SPEC,
   INIT_COMMAND_SPEC,
@@ -52,3 +56,5 @@ export type { DenseApiDetail, DenseApiMember, DenseApiMemberView, DenseApiOption
 export { getApiImportIssue, isRouteFromRoot, preferredApiRoots, selectApiImport } from './api-import';
 export type { ApiImportSelection, RecommendedImport } from './api-import';
 export { markdownCode, markdownCodeBlock, markdownTable, escapeMarkdownTableCell } from './markdown';
+export { withCliProgress } from './progress';
+export type { CliProgress } from './progress';

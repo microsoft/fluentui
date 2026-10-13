@@ -24,6 +24,168 @@ describe('generateApiMetadata', () => {
     rmSync(testOutputRoot, { recursive: true, force: true });
   });
 
+  it('shards an oversized full declaration record without losing routes or cross-record references', async () => {
+    const fixture = createConditionalPackage({ sameFile: true });
+    writeFileSync(
+      join(fixture.packageRoot, 'index.d.ts'),
+      "export * from './part-0.js';\nexport * from './part-1.js';\n" +
+        "import type { Large0 } from './part-0.js';\nimport type { Large319 } from './part-1.js';\n" +
+        'export type CrossShard = Large0 | Large319;\n',
+    );
+    for (let part = 0; part < 2; part++) {
+      writeFileSync(
+        join(fixture.packageRoot, `part-${part}.d.ts`),
+        Array.from(
+          { length: 160 },
+          (_, offset) =>
+            `/** ${'a'.repeat(60_000)} */\nexport interface Large${part * 160 + offset} { next: string }\n`,
+        ).join(''),
+      );
+    }
+
+    const result = await generateApiMetadata({ packageRoot: fixture.packageRoot, detail: 'full' });
+    expect(result.records.length).toBeGreaterThan(1);
+    expect(validateCatalog(result.index, result.records).valid).toBe(true);
+    expect(result.records.every(record => Buffer.byteLength(serializeMetadata(record)) < 4 * 1024 * 1024)).toBe(true);
+    expect(result.index.exports.filter(binding => binding.namespace === 'type')).toHaveLength(642);
+    expect(
+      result.records.some(record =>
+        record.symbols.some(item =>
+          item.declarations.some(declaration =>
+            declaration.type?.references.some(
+              reference =>
+                reference.target?.kind === 'local' &&
+                reference.target.record &&
+                reference.target.record !== record.recordId,
+            ),
+          ),
+        ),
+      ),
+    ).toBe(true);
+
+    writeGeneratedMetadata(result, join(fixture.packageRoot, 'dist/metadata'));
+    for (const name of ['Large0', 'Large160', 'Large319']) {
+      const resolved = createMetadataReader().resolveExport({ ...fixture.query, export: name, namespace: 'type' });
+      expect(resolved.definition?.symbol.name).toBe(name);
+    }
+  }, 120_000);
+
+  it('fails explicitly when one full-detail symbol cannot fit in a canonical shard', async () => {
+    const fixture = createConditionalPackage({ sameFile: true });
+    writeFileSync(
+      join(fixture.packageRoot, 'index.d.ts'),
+      `/** ${'a'.repeat(4_300_000)} */\nexport interface Widget { label: string }\n`,
+    );
+    await expect(generateApiMetadata({ packageRoot: fixture.packageRoot })).rejects.toThrow(
+      /Symbol .* exceeds the canonical API record shard bounds/,
+    );
+  }, 120_000);
+
+  describe.each([undefined, 'full'] as const)('selected export coverage (detail=%s)', detail => {
+    it.each([false, true])('reports omitted bindings as partial (empty selection=%s)', async emptySelection => {
+      const fixture = createConditionalPackage({ sameFile: true });
+      writeFileSync(
+        join(fixture.packageRoot, 'index.d.ts'),
+        'export declare class Widget { label: string }\nexport interface Other { disabled: boolean }\n',
+      );
+      const result = await generateApiMetadata({
+        packageRoot: fixture.packageRoot,
+        detail,
+        selectedExports: emptySelection ? [] : [{ entrypoint: '.', export: 'Widget', namespace: 'value' }],
+      });
+
+      expect(result.index.exports.map(binding => binding.namespace)).toEqual(emptySelection ? [] : ['value', 'value']);
+      expect(result.index.completeness.api).toEqual({
+        status: 'partial',
+        reasons: [`${emptySelection ? 6 : 4} export binding(s) were not selected`],
+      });
+      if (!emptySelection) {
+        writeGeneratedMetadata(result, join(fixture.packageRoot, 'dist/metadata'));
+        const selected = createMetadataReader().resolveExport({
+          ...fixture.query,
+          namespace: 'value',
+          conditions: ['types', 'import'],
+        });
+        expect(selected.definition?.symbol.name).toBe('Widget');
+        expect(selected.diagnostics).toEqual(
+          expect.arrayContaining([expect.objectContaining({ code: 'reader.indexPartial' })]),
+        );
+      }
+      expect(validateCatalog(result.index, result.records).valid).toBe(true);
+    });
+  });
+
+  it('preserves complete coverage when every export binding is explicitly selected', async () => {
+    const fixture = createConditionalPackage({ sameFile: true });
+    const result = await generateApiMetadata({
+      packageRoot: fixture.packageRoot,
+      detail: 'full',
+      selectedExports: [{ entrypoint: '.', export: 'Widget', namespace: 'type' }],
+    });
+
+    expect(result.index.exports).toHaveLength(2);
+    expect(result.index.completeness.api).toEqual({ status: 'complete' });
+    expect(memberNames(symbol(result, 'Widget'))).toEqual(expect.arrayContaining(['label', 'disabled']));
+  });
+
+  it.each([false, true])('tracks CommonJS export-assignment coverage (selected=%s)', async selected => {
+    const fixture = createConditionalPackage({});
+    writeFileSync(join(fixture.packageRoot, 'index.d.cts'), 'declare function widget(): void;\nexport = widget;\n');
+    const result = await generateApiMetadata({
+      packageRoot: fixture.packageRoot,
+      selectedExports: [
+        { entrypoint: '.', export: 'Widget', namespace: 'type' },
+        ...(selected ? [{ entrypoint: '.', export: 'default', namespace: 'value' as const }] : []),
+      ],
+    });
+
+    expect(result.index.exports.some(binding => binding.export === 'default')).toBe(selected);
+    expect(result.index.completeness.api).toEqual(
+      selected ? { status: 'complete' } : { status: 'partial', reasons: ['1 export binding(s) were not selected'] },
+    );
+  });
+
+  it('materializes only selected effective views and retains valid referenced declarations', async () => {
+    const input = getSyntheticPackageInputs(fixtureRoot).find(item => item.id === 'semantic-package')!;
+    const result = await generateApiMetadata({
+      ...toSyntheticGeneratorOptions(input),
+      entrypoints: ['.'],
+      declarationConditions: ['types', 'import'],
+      selectedExports: [{ entrypoint: '.', export: 'InheritedProps', namespace: 'type' }],
+      detail: 'selected',
+    });
+
+    expect(result.index.exports.map(binding => binding.export)).toEqual(['InheritedProps']);
+    expect(memberNames(symbol(result, 'InheritedProps'))).toContain('disabled');
+    const referenced = result.records.flatMap(record => record.symbols).filter(item => item.name !== 'InheritedProps');
+    expect(referenced.length).toBeGreaterThan(0);
+    expect(referenced.every(item => !item.effectiveType && !item.props)).toBe(true);
+    expect(referenced.every(item => item.declarations.length > 0)).toBe(true);
+    expect(result.index.capabilities.effectiveTypes.status).toBe('partial');
+    expect(validateCatalog(result.index, result.records).valid).toBe(true);
+  });
+
+  it('lists classified routes without expanding declaration signatures or effective views', async () => {
+    const input = getSyntheticPackageInputs(fixtureRoot).find(item => item.id === 'semantic-package')!;
+    const result = await generateApiMetadata({
+      ...toSyntheticGeneratorOptions(input),
+      entrypoints: ['.'],
+      declarationConditions: ['types', 'import'],
+      detail: 'none',
+    });
+
+    expect(route(result, 'StyledWidget', 'value').classifications?.map(item => item.facet)).toContain('component');
+    expect(
+      result.records
+        .flatMap(record => record.symbols)
+        .every(
+          item => !item.effectiveType && !item.props && item.declarations.every(declaration => !declaration.signatures),
+        ),
+    ).toBe(true);
+    expect(result.index.capabilities.effectiveTypes.status).toBe('unsupported');
+    expect(validateCatalog(result.index, result.records).valid).toBe(true);
+  });
+
   it('preserves declaration identities, aliases, overloads, merges, generics, and relationships', async () => {
     const semantic = getSyntheticPackageInputs(fixtureRoot).find(input => input.id === 'semantic-package')!;
     const result = await generateApiMetadata({
@@ -170,6 +332,61 @@ describe('generateApiMetadata', () => {
     expect(root?.type?.text).toContain('data-state');
     expect(root?.type?.text).toContain('id');
   });
+
+  it.each(['full', 'selected', 'none'] as const)(
+    'recognizes React classes through the compatibility plugin (%s)',
+    async detail => {
+      const result = await generateApiMetadata({
+        packageRoot: createReactClassPackage(),
+        entrypoints: ['.'],
+        detail,
+        ...(detail === 'selected'
+          ? {
+              selectedExports: [
+                { entrypoint: '.', export: 'LegacyContext', namespace: 'value' as const },
+                { entrypoint: '.', export: 'Constructible', namespace: 'value' as const },
+              ],
+            }
+          : {}),
+      });
+
+      for (const name of ['LegacyContext', 'Constructible']) {
+        const component = symbol(result, name);
+        expect(route(result, name, 'value').classifications.map(item => item.facet)).toEqual(['component']);
+        expect(component.classifications.map(item => item.facet)).toEqual(['component']);
+        if (detail !== 'none') {
+          expect(component.props?.[0].type.members).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({ name: 'value', type: expect.objectContaining({ text: 'string' }) }),
+              expect.objectContaining({
+                name: 'disabled',
+                defaultValue: 'false',
+                declarationPackages: ['@fixture/react-classes'],
+              }),
+            ]),
+          );
+          expect(component.effectiveType?.signatures).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({ id: component.props?.[0].signature, kind: 'construct' }),
+            ]),
+          );
+        } else {
+          expect(component.props).toBeUndefined();
+        }
+      }
+      expect(symbol(result, 'LegacyContext').declarations[0].deprecated).toBe('Use the functional API.');
+      expect(result.records.flatMap(record => record.dependencyInputs).map(input => input.package.name)).toContain(
+        '@types/react',
+      );
+      if (detail !== 'selected') {
+        for (const name of ['RenderOnly', 'PretendComponent']) {
+          expect(symbol(result, name).classifications.map(item => item.facet)).toEqual(['utility']);
+        }
+        expect(symbol(result, 'FunctionalContext').classifications.map(item => item.facet)).toEqual(['component']);
+      }
+      expect(validateCatalog(result.index, result.records).valid).toBe(true);
+    },
+  );
 
   it('preserves required, optional, defaulted, and rest parameter semantics from emitted declarations', async () => {
     const packageRoot = createEmittedParameterPackage();
@@ -446,6 +663,34 @@ describe('generateApiMetadata', () => {
     expect(ownerDrift.diagnostics).toContainEqual(expect.objectContaining({ causeCode: 'reader.declarationDrift' }));
   });
 
+  it.each(['selected', 'none'] as const)(
+    'propagates demand-driven detail through bundled dependencies (%s)',
+    async detail => {
+      const fixture = createExternalFacade();
+      const result = await generateApiMetadata({
+        packageRoot: fixture.facadeRoot,
+        entrypoints: ['.'],
+        detail,
+        selectedExports: [{ entrypoint: '.', export: 'Widget', namespace: 'value' }],
+      });
+      expect(route(result, 'Widget', 'value').target.kind).toBe('bundled');
+      const widget = symbol(result, 'Widget');
+      if (detail === 'selected') {
+        expect(widget.props?.[0].type.members.map(member => member.name)).toContain('disabled');
+      } else {
+        expect(widget.props).toBeUndefined();
+        expect(widget.effectiveType).toBeUndefined();
+      }
+      expect(
+        result.records
+          .flatMap(record => record.symbols)
+          .filter(item => item.name !== 'Widget')
+          .every(item => !item.effectiveType),
+      ).toBe(true);
+      expect(validateCatalog(result.index, result.records).valid).toBe(true);
+    },
+  );
+
   it('bundles a selected value from a DefinitelyTyped export-equals namespace', async () => {
     const fixture = createExportEqualsFacade();
     const result = await generateApiMetadata({
@@ -573,6 +818,42 @@ describe('generateApiMetadata', () => {
     expect(record.symbols.map(item => item.name)).toEqual(
       expect.arrayContaining(['PrivateButton', 'PrivateButtonProps', 'PrivateButtonState']),
     );
+  });
+
+  it('serializes each record only when it is ready to write and publishes the index last', async () => {
+    const fixture = createConditionalPackage({ difference: 'declaration' });
+    const result = await generateApiMetadata({ packageRoot: fixture.packageRoot });
+    const directory = join(fixture.packageRoot, 'dist/metadata');
+    const descriptors = result.index.records.filter(descriptor => descriptor.kind === 'api');
+    expect(descriptors).toHaveLength(2);
+
+    const serializations = jest.fn(serializeMetadata);
+    const writes = jest.fn(writeFileSync);
+    jest.isolateModules(() => {
+      jest.doMock('./serialize', () => ({ ...jest.requireActual('./serialize'), serializeMetadata: serializations }));
+      jest.doMock('node:fs', () => ({ ...jest.requireActual('node:fs'), writeFileSync: writes }));
+      try {
+        const isolatedWriter = jest.requireActual<typeof import('./write')>('./write');
+        isolatedWriter.writeGeneratedMetadata(result, directory);
+        const firstWrite = writes.mock.calls.findIndex(([path]) => path === join(directory, descriptors[0].path));
+        const secondSerializations = serializations.mock.calls.flatMap(([document], index) =>
+          document.kind === 'api-record' && document.recordId === descriptors[1].id
+            ? [serializations.mock.invocationCallOrder[index]]
+            : [],
+        );
+        const indexWrite = writes.mock.calls.findIndex(([path]) => path === join(directory, 'index.json'));
+        const secondWrite = writes.mock.calls.findIndex(([path]) => path === join(directory, descriptors[1].path));
+        expect(firstWrite).toBeGreaterThanOrEqual(0);
+        expect(secondSerializations).toHaveLength(1);
+        expect(secondWrite).toBeGreaterThanOrEqual(0);
+        expect(indexWrite).toBeGreaterThanOrEqual(0);
+        expect(writes.mock.invocationCallOrder[firstWrite]).toBeLessThan(secondSerializations[0]);
+        expect(writes.mock.invocationCallOrder[secondWrite]).toBeLessThan(writes.mock.invocationCallOrder[indexWrite]);
+      } finally {
+        jest.dontMock('node:fs');
+        jest.dontMock('./serialize');
+      }
+    });
   });
 
   it.each([false, true])(
@@ -962,6 +1243,46 @@ export function parameterKinds(
   }
 
   writeFileSync(join(declarationsRoot, 'index.d.ts'), emitted.outputText, 'utf8');
+  return packageRoot;
+}
+
+function createReactClassPackage(): string {
+  const packageRoot = join(testOutputRoot, 'react-classes');
+  mkdirSync(packageRoot, { recursive: true });
+  writeFileSync(
+    join(packageRoot, 'package.json'),
+    JSON.stringify({
+      name: '@fixture/react-classes',
+      version: '1.0.0',
+      types: './index.d.ts',
+    }),
+  );
+  writeFileSync(
+    join(packageRoot, 'base.d.ts'),
+    `
+import * as React from 'react';
+export interface LegacyProps<Value> {
+  value: Value;
+  /** Whether the component is disabled. @default false */
+  disabled?: boolean;
+}
+export declare class GenericBase<Value> extends React.PureComponent<LegacyProps<Value>> {}
+`,
+  );
+  writeFileSync(
+    join(packageRoot, 'index.d.ts'),
+    `
+import * as React from 'react';
+import { GenericBase, LegacyProps } from './base';
+/** Legacy component. @deprecated Use the functional API. */
+export declare class LegacyContext extends GenericBase<string> {}
+export declare const Constructible: React.ComponentClass<LegacyProps<string>>;
+export declare class RenderOnly { render(): React.ReactElement; }
+declare class Component<Props> { props: Props; render(): React.ReactElement; }
+export declare class PretendComponent extends Component<LegacyProps<string>> {}
+export declare function FunctionalContext(props: LegacyProps<string>): React.ReactElement;
+`,
+  );
   return packageRoot;
 }
 

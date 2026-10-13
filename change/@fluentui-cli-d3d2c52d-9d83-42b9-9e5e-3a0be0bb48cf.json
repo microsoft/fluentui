@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: build canonical bounded API catalogs in repository cache with foreground/background population and cache management",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

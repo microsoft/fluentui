@@ -26,6 +26,7 @@ describe('manifest handler', () => {
       'doctor',
       'manifest',
       'init',
+      'cache',
     ]);
     const report = output.data.commands.find((command: { command: string }) => command.command === 'report');
     const usage = report.subcommands.find((command: { command: string }) => command.command === 'usage');
@@ -56,6 +57,26 @@ describe('manifest handler', () => {
         json: expect.objectContaining({ default: false }),
       }),
     );
+    const cache = output.data.commands.find((command: { command: string }) => command.command === 'cache');
+    expect(cache.options).toEqual({});
+    expect(cache.subcommands.map((command: { command: string }) => command.command)).toEqual([
+      'status',
+      'build',
+      'clear',
+    ]);
+    const build = cache.subcommands.find((command: { command: string }) => command.command === 'build');
+    expect(build.options).toEqual(
+      expect.objectContaining({
+        cwd: expect.objectContaining({ type: 'string' }),
+        config: expect.objectContaining({ type: 'string' }),
+        system: expect.objectContaining({ array: true }),
+        package: expect.objectContaining({ type: 'string' }),
+        metadataMode: expect.objectContaining({ alias: 'metadata-mode' }),
+        force: expect.objectContaining({ default: false }),
+        json: expect.objectContaining({ default: false }),
+        output: expect.objectContaining({ type: 'string' }),
+      }),
+    );
   });
 
   it('formats the human manifest as Markdown', async () => {
@@ -66,6 +87,10 @@ describe('manifest handler', () => {
     expect(output).toContain('## `init`');
     expect(output).toContain('| Option | Description |');
     expect(output).toContain('| `--include-inherited` |');
+    expect(output).toContain('## `cache`');
+    expect(output).toContain('- `status`');
+    expect(output).toContain('- `build`');
+    expect(output).toContain('- `clear`');
     const api = output.split('## `api [symbol]`')[1].split('## `doctor`')[0];
     expect(api).toContain('| `--from` |');
     expect(api).not.toMatch(/--(?:package|entrypoint|namespace)\b/);

@@ -120,6 +120,50 @@ const diagnostics: CliDiagnostic[] = [
   { code: 'reader.indexPartial', severity: 'warning', message: 'Suite routes to pilot leaves' },
 ];
 
+describe('class component API presentation', () => {
+  it('separates JSX component props from constructors and class instance members', () => {
+    const constructor = {
+      ...symbol.effectiveType!.signatures[0],
+      id: 'signature:construct:0',
+      kind: 'construct' as const,
+      returnType: { text: 'Button', references: [] },
+    };
+    const classDetail: ApiSymbolDetail = {
+      ...detail,
+      symbol: {
+        ...symbol,
+        type: { text: 'Button', references: [] },
+        declarations: [{ ...symbol.declarations[0], kind: 'class' }],
+        effectiveType: {
+          status: { status: 'complete' },
+          type: { text: 'Button', references: [] },
+          signatures: [constructor],
+          members: [
+            { ...props.members[0], name: 'focus', kind: 'method', type: { text: '() => void', references: [] } },
+            { ...props.members[1], name: 'state', declarationPackages: ['@types/react'] },
+          ],
+        },
+        props: [{ signature: constructor.id, type: props }],
+      },
+    };
+
+    const output = formatApiDetail(classDetail, []);
+    expect(output).toContain('## Component Props');
+    expect(output).toContain('## Class API');
+    expect(output).toContain('### Constructor');
+    expect(output).not.toContain('## Signatures');
+    const componentProps = output.split('## Component Props')[1].split('## Class API')[0];
+    expect(componentProps).toContain('| Prop | Type | Default | Description |');
+    expect(componentProps).toContain('| `appearance` |');
+    expect(componentProps).not.toContain('| `focus` |');
+    const classApi = output.split('## Class API')[1];
+    expect(classApi).toContain('new (props: ButtonProps) => Button');
+    expect(classApi).toContain('| Member | Type | Default | Description |');
+    expect(classApi).toContain('| `focus` |');
+    expect(classApi).not.toContain('| `appearance` |');
+  });
+});
+
 describe('dense API projection', () => {
   it('retains useful API data without raw declarations, routes, or redundant import candidates', () => {
     const before = JSON.stringify(detail);

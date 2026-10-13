@@ -10,6 +10,42 @@ const TEST_LEGEND: UsageReportOutput['legend'] = {
 };
 
 describe('html-reporter', () => {
+  it.each(['@fluentui/react', 'ui-kit'])('groups nested imports under their npm package %s', packageName => {
+    const usage = {
+      components: { Button: { props: { text: { values: ['Save'], count: 1 } }, count: 1 } },
+      hooks: {},
+      types: {},
+      others: {},
+      unknowns: {},
+      count: 1,
+    };
+    const reportData: UsageReportOutput = {
+      legend: TEST_LEGEND,
+      fileMap: ['src/App.tsx'],
+      packages: {
+        [packageName]: usage,
+        [`${packageName}/lib/Button`]: { ...usage, count: 2 },
+        [`${packageName}/lib/Checkbox`]: { ...usage, count: 3 },
+        [`${packageName}-other/lib/Button`]: { ...usage, count: 4 },
+      },
+    };
+    const before = JSON.stringify(reportData);
+    const output = formatMetadataAsHtml(reportData);
+    const summary = output.split('<section class="summary">')[1].split('</section>')[0];
+    expect(summary).toContain(`<h3>${packageName}</h3>`);
+    expect(summary).toContain(`<h3>${packageName}-other</h3>`);
+    expect(summary).not.toContain('<h3>@fluentui</h3>');
+    expect(summary).toContain('<th>Import Path</th>');
+    expect(summary).not.toContain('<th>Package</th>');
+    expect(output.match(/<section class="package"/g)).toHaveLength(2);
+    expect(output).toContain(`<h2><code>${packageName}</code></h2>`);
+    expect(output).not.toContain(`<h2><code>${packageName}/lib/Button</code></h2>`);
+    for (const importPath of Object.keys(reportData.packages)) {
+      expect(summary).toContain(`<code>${importPath}</code>`);
+    }
+    expect(JSON.stringify(reportData)).toBe(before);
+  });
+
   it('should produce a valid HTML document', () => {
     const reportData: UsageReportOutput = {
       legend: TEST_LEGEND,
@@ -96,9 +132,11 @@ describe('html-reporter', () => {
 
     const output = formatMetadataAsHtml(reportData);
 
-    // Component Props section
-    expect(output).toContain('Component Props');
-    expect(output).toContain('<details class="symbol-props">');
+    expect(output).toContain('Observed Component Props');
+    expect(output).toContain('<details class="symbol-props" open>');
+    expect(output).toContain('<th>Observed Values</th>');
+    expect(output).toContain('overflow-x: auto');
+    expect(output).toContain('overflow-wrap: anywhere');
     expect(output).toContain('<code>Button</code>');
     expect(output).toContain('<code>appearance</code>');
     expect(output).toContain('<code>primary</code>');

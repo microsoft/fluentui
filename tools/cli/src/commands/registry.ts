@@ -8,6 +8,7 @@ import {
   REPORT_COMMAND_SPEC,
   type CliCommandSpec,
   INIT_COMMAND_SPEC,
+  CACHE_COMMAND_SPEC,
 } from '../utils/command-spec';
 import apiCommand from './api';
 import doctorCommand from './doctor';
@@ -15,6 +16,7 @@ import manifestCommand from './manifest';
 import metadataCommand from './metadata';
 import reportCommand from './report';
 import initCommand from './init';
+import cacheCommand from './cache';
 
 export interface RegisteredCommand {
   module: CommandModule;
@@ -28,6 +30,7 @@ export const REGISTERED_COMMANDS: readonly RegisteredCommand[] = [
   { module: doctorCommand, spec: DOCTOR_COMMAND_SPEC },
   { module: manifestCommand, spec: MANIFEST_COMMAND_SPEC },
   { module: initCommand, spec: INIT_COMMAND_SPEC },
+  { module: cacheCommand, spec: CACHE_COMMAND_SPEC },
 ];
 
 export function getRegisteredCommandManifest(): { commands: CliCommandSpec[] } {

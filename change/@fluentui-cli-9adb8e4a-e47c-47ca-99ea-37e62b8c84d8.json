@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: show concise package-stage progress and elapsed completion summaries for explicit cache builds",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

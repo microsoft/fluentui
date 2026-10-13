@@ -83,20 +83,41 @@ export function deduplicateRecords(
         : {}),
     });
   }
-  for (const { record } of retained) {
-    record.symbols = record.symbols.map(symbol => {
-      const remapped = remapReferences(symbol, replacements);
+  if (replacements.size === 0 && !retained.some(value => value.source)) {
+    return {
+      records: retained.sort((left, right) => left.record.recordId.localeCompare(right.record.recordId)),
+      routes,
+    };
+  }
+  for (let index = 0; index < retained.length; index++) {
+    const { record } = retained[index];
+    const source = retained[index].source;
+    if (replacements.size === 0 && !source) {
+      continue;
+    }
+    const symbols = record.symbols.map(symbol => {
+      const remapped = replacements.size > 0 ? remapReferences(symbol, replacements) : symbol;
+      if (remapped === symbol && !(source && hasSelfReference(symbol, record.recordId))) {
+        return symbol;
+      }
       const { fingerprint, ...value } = remapped;
-      return { ...value, fingerprint: fingerprintValue(value) };
+      const updated = fingerprintValue(value);
+      return remapped === symbol && updated.value === fingerprint.value ? symbol : { ...value, fingerprint: updated };
     });
+    if (symbols.some((symbol, symbolIndex) => symbol !== record.symbols[symbolIndex])) {
+      retained[index] = { ...retained[index], record: { ...record, symbols } };
+    }
   }
   return {
     records: retained.sort((left, right) => left.record.recordId.localeCompare(right.record.recordId)),
-    routes: routes.map(route =>
-      route.target.kind !== 'dependency' && replacements.has(route.target.record)
-        ? { ...route, target: { ...route.target, record: replacements.get(route.target.record)! } }
-        : route,
-    ),
+    routes:
+      replacements.size === 0
+        ? routes
+        : routes.map(route =>
+            route.target.kind !== 'dependency' && replacements.has(route.target.record)
+              ? { ...route, target: { ...route.target, record: replacements.get(route.target.record)! } }
+              : route,
+          ),
   };
 }
 
@@ -106,13 +127,19 @@ function recordIdentity(record: ApiRecord): unknown {
   const symbols = record.symbols.map(symbol => {
     const { fingerprint, effectiveType, props, ...authored } = symbol;
     return mapObjects(authored, object => {
-      if (typeof object.file === 'string' && paths.has(object.file)) {
-        object.file = paths.get(object.file)!;
+      let mapped = object;
+      if (typeof mapped.file === 'string' && paths.has(mapped.file)) {
+        const file = paths.get(mapped.file)!;
+        if (file !== mapped.file) {
+          mapped = { ...mapped, file };
+        }
       }
-      if (object.kind === 'local' && object.record === record.recordId) {
-        delete object.record;
+      if (mapped.kind === 'local' && mapped.record === record.recordId) {
+        const withoutRecord = { ...mapped };
+        delete withoutRecord.record;
+        mapped = withoutRecord;
       }
-      return object;
+      return mapped;
     });
   });
   return {
@@ -146,17 +173,50 @@ function uniqueInputs<T>(inputs: T[]): T[] {
 function remapReferences<T>(value: T, replacements: ReadonlyMap<string, string>): T {
   return mapObjects(value, object => {
     if (object.kind === 'local' && typeof object.record === 'string' && replacements.has(object.record)) {
-      object.record = replacements.get(object.record)!;
+      return { ...object, record: replacements.get(object.record)! };
     }
     return object;
   });
 }
 
-function mapObjects<T>(value: T, map: (object: Record<string, unknown>) => Record<string, unknown>): T {
-  return JSON.parse(JSON.stringify(value), (_key, item: unknown) =>
-    item && typeof item === 'object' && !Array.isArray(item) ? map(item as Record<string, unknown>) : item,
-  );
+function hasSelfReference(symbol: ApiRecord['symbols'][number], recordId: string): boolean {
+  let found = false;
+  mapObjects(symbol, object => {
+    if (object.kind === 'local' && object.record === recordId) {
+      found = true;
+    }
+    return object;
+  });
+  return found;
 }
+
+export function mapMetadataObjects<T>(value: T, map: (object: Record<string, unknown>) => Record<string, unknown>): T {
+  if (Array.isArray(value)) {
+    let result: unknown[] | undefined;
+    value.forEach((item, index) => {
+      const mapped = mapMetadataObjects(item, map);
+      if (mapped !== item) {
+        result ??= value.slice();
+        result[index] = mapped;
+      }
+    });
+    return (result ?? value) as T;
+  }
+  if (value && typeof value === 'object') {
+    let result: Record<string, unknown> | undefined;
+    for (const [key, item] of Object.entries(value)) {
+      const mapped = mapMetadataObjects(item, map);
+      if (mapped !== item) {
+        result ??= { ...(value as Record<string, unknown>) };
+        Object.defineProperty(result, key, { value: mapped, enumerable: true, configurable: true, writable: true });
+      }
+    }
+    return map(result ?? (value as Record<string, unknown>)) as T;
+  }
+  return value;
+}
+
+const mapObjects = mapMetadataObjects;
 
 function fingerprintValue(value: unknown): ApiRecord['symbols'][number]['fingerprint'] {
   return fingerprintSerializedMetadata(JSON.stringify(toCanonicalJsonValue(value)));

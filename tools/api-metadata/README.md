@@ -14,8 +14,8 @@ Metadata is split into a compact `package-index` and package-local `api-record` 
 
 API records retain every declaration, original type expressions with semantic reference spans, overload order, generic parameters, type relationships, and optional checker-derived effective views. Unsupported or partial expansion remains explicit rather than replacing the symbolic declaration.
 
-Schema v1 revision 1 adds optional `ApiSymbol.props` views for classified components. Each view references a call
-signature ID and expands its actual first parameter using the checker, including generic substitution, omitted fields,
+Schema v1 revision 1 adds optional `ApiSymbol.props` views for classified components. Each view references a call or
+construct signature ID and expands its actual props using the checker, including generic substitution, omitted fields,
 inline shapes, and inherited members. It does not infer props from an export naming convention. Original declarations
 remain unchanged. Bounds and semantic-reference validation apply to these views, and dependency drift invalidates them
 along with other checker-derived data. Readers still accept revision-0 catalogs; regenerate catalogs and update readers
@@ -127,6 +127,34 @@ const result = await generateApiMetadata({
 writeGeneratedMetadata(result, outputDirectory);
 ```
 
+`GeneratorOptions.selectedExports?: Array<{ entrypoint: string; export: string; namespace: MetadataNamespace }>`
+uses the existing public-binding filter. `detail?: 'full' | 'selected' | 'none'` defaults to `full`, preserving published
+generation. `selected` expands effective views and component props only for explicitly selected bindings; referenced
+symbols retain declaration identities, documentation and provenance without effective views. `none` retains classified
+routes and minimal valid declaration records, without reference-closure traversal or deep type/signature expansion.
+Use `none` for index/doctor fallback and `selected` with `selectedExports` for API detail. `selected` without selections
+does not expand any symbol. Reduced-detail results explicitly report partial API completeness. Modes propagate through
+external dependency bundling; all existing schema bounds remain unchanged. Compiler setup, diagnostics and declaration
+provenance discovery still inspect the selected entrypoints' module graph.
+
+Deprecated React class APIs are isolated in the statically registered `createReactClassCompatPlugin(typescript, checker)`
+export from `@fluentui/api-metadata/generator`. Pass the TypeScript API corresponding to the checker (including a
+ts-morph adapter's own compiler API). Its `match(symbol)` accepts a resolved compiler symbol and returns
+`ReactClassCompatMatch | undefined`: `{ constructorType: ts.Type; props: Array<{ signature: ts.Signature;
+overload: number; propsType: ts.Type }> }`. Matches require construct signatures returning instances whose checker
+inheritance reaches `Component` or `PureComponent` owned by `react`/`@types/react`. Props come from the instantiated
+instance's `props` member, including inherited generics. Arbitrary render-method classes do not match. Class props
+reference actual construct-signature IDs, and class instance members remain available in full/selected views.
+The plugin imports TypeScript only as a type; it is not exported from the reader-safe package root.
+
+For a declaration-only v8 performance/compatibility probe, set `FLUENTUI_API_METADATA_V8_PACKAGE_ROOT` to an existing
+installed `@fluentui/react` package and run `yarn nx run api-metadata:test --testPathPatterns=generate.real.test.ts
+--testNamePattern='demand-driven v8' --runInBand`. This probe reports timings/bytes and never builds declarations.
+Use `--testNamePattern='full v8 canonical catalog'` with the same environment variable to verify full default
+generation, bounded artifacts, disk resolution of root/subpath exports, and byte-for-byte stability across two runs.
+For authored declaration imports blocked only by a dependency's export map, the generator uses an unambiguous installed
+`.d.ts` from that same package as a TypeScript resolution fallback. Missing files still report generation errors.
+
 Run the mandatory real declaration gate with:
 
 ```sh
@@ -149,6 +177,15 @@ expressions with semantic reference spans, and bounded checker-derived effective
 uses canonical serialization and verifies every record fingerprint before writing `index.json` and API shards.
 Checker-rendered effective type strings are marked partial because they do not have source nodes from which reliable
 semantic reference spans can be recovered; the original symbolic expressions remain available with resolved spans.
+
+Full publication and on-demand generation both partition deduplicated API records before index descriptors and
+fingerprints are created. Small records retain their original IDs; oversized records receive stable `:shard-N` IDs.
+Export routes and local references (including declaration spans, effective members and slot presentations) point to
+the owning shard, without removing any symbol detail. Each shard remains below the existing reader/validator bounds;
+a symbol too large for one shard fails generation explicitly rather than silently losing data. The schema remains v1.
+Small records retain all local declaration and re-export inputs. Large records keep the package-wide input inventory
+in the index and bind each shard to its source declarations and public route paths, so a reader can verify the selected
+record within its default artifact fanout budget.
 
 Equivalent import/require declaration variants share one API payload, for example `api/api-root.json` or
 `api/api-button.json`, rather than duplicating the entire record per module format. Both condition-specific export

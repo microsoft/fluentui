@@ -1,4 +1,7 @@
 import { execSync } from 'node:child_process';
+import * as fs from 'node:fs';
+import * as os from 'node:os';
+import * as path from 'node:path';
 
 import * as fg from 'fast-glob';
 
@@ -9,6 +12,7 @@ jest.mock('node:child_process', () => ({
 }));
 
 jest.mock('fast-glob', () => ({
+  ...jest.requireActual('fast-glob'),
   globSync: jest.fn(),
 }));
 
@@ -63,14 +67,15 @@ describe('file-discovery', () => {
       expect(files[0]).toMatch(/^\/mock\/root/);
     });
 
-    it('should return empty array on git error', () => {
+    it('should report an actionable error when git discovery fails', () => {
       mockExecSync.mockImplementation(() => {
-        throw new Error('Not a git repository');
+        throw Object.assign(new Error('Git access denied'), {
+          status: 128,
+          stderr: 'fatal: detected dubious ownership in repository',
+        });
       });
 
-      const files = discoverSourceFiles('/mock/root');
-
-      expect(files).toEqual([]);
+      expect(() => discoverSourceFiles('/mock/root')).toThrow(/git.*\/mock\/root.*Git access denied/i);
     });
 
     it('should handle empty git output', () => {
@@ -90,6 +95,70 @@ describe('file-discovery', () => {
         'git ls-files --cached --others --exclude-standard',
         expect.objectContaining({ cwd: '/mock/root' }),
       );
+    });
+
+    it('discovers a child path inside a parent Git repository', () => {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-usage-git-'));
+      const child = path.join(root, 'apps', 'consumer');
+      try {
+        fs.mkdirSync(path.join(child, 'src'), { recursive: true });
+        fs.writeFileSync(path.join(child, 'src', 'App.tsx'), 'export const App = 1;\n');
+        const realExecSync = jest.requireActual<typeof import('node:child_process')>('node:child_process').execSync;
+        realExecSync('git init -q', { cwd: root });
+        mockExecSync.mockImplementation((command, options) => realExecSync(command, options as never));
+
+        expect(discoverSourceFiles(child)).toEqual([path.join(child, 'src', 'App.tsx')]);
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
+    });
+
+    it('discovers source in a non-Git directory while respecting nested gitignore rules', () => {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-usage-nongit-'));
+      try {
+        for (const directory of ['src', 'src/nested', 'build', 'node_modules/lib', '.git']) {
+          fs.mkdirSync(path.join(root, directory), { recursive: true });
+        }
+        fs.writeFileSync(path.join(root, '.gitignore'), 'build/\nsrc/ignored.ts\n');
+        fs.writeFileSync(path.join(root, 'src', 'nested', '.gitignore'), '*.ts\n!keep.ts\n');
+        for (const file of [
+          'src/App.tsx',
+          'src/ignored.ts',
+          'src/types.d.ts',
+          'src/nested/keep.ts',
+          'src/nested/skip.ts',
+          'build/generated.ts',
+          'node_modules/lib/index.ts',
+          '.git/hidden.ts',
+        ]) {
+          fs.writeFileSync(path.join(root, file), 'export const value = 1;\n');
+        }
+        const realExecSync = jest.requireActual<typeof import('node:child_process')>('node:child_process').execSync;
+        mockExecSync.mockImplementation((command, options) => realExecSync(command, options as never));
+
+        expect(discoverSourceFiles(root).sort()).toEqual(
+          [path.join(root, 'src', 'App.tsx'), path.join(root, 'src', 'nested', 'keep.ts')].sort(),
+        );
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
+    });
+
+    it('discovers source when the Git executable is unavailable', () => {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-usage-no-git-'));
+      try {
+        fs.writeFileSync(path.join(root, 'App.tsx'), 'export const App = 1;\n');
+        mockExecSync.mockImplementation(() => {
+          throw Object.assign(new Error('git: command not found'), {
+            status: 127,
+            stderr: 'sh: git: command not found',
+          });
+        });
+
+        expect(discoverSourceFiles(root)).toEqual([path.join(root, 'App.tsx')]);
+      } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+      }
     });
   });
 

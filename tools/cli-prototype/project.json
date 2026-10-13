@@ -26,6 +26,29 @@
         "command": "node tools/cli-prototype/scripts/demo.mjs verify"
       }
     },
+    "verify-v8": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/v8-acceptance.mjs"
+      }
+    },
+    "verify-v8-local": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": [{ "projects": ["cli", "api-metadata"], "target": "build" }],
+      "options": {
+        "command": "node tools/cli-prototype/scripts/v8-acceptance.mjs --local"
+      }
+    },
+    "benchmark-metadata": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/cli-prototype/scripts/metadata-benchmark.mjs"
+      }
+    },
     "start-demo": {
       "executor": "nx:run-commands",
       "cache": false,
@@ -36,6 +59,7 @@
     "test-demo-harness": {
       "executor": "nx:run-commands",
       "cache": false,
+      "dependsOn": [{ "projects": ["cli", "api-metadata"], "target": "build" }],
       "options": {
         "command": "node --test tools/cli-prototype/scripts/consumer-packages.test.mjs"
       }

@@ -11,6 +11,7 @@ import {
   type CatalogInventory,
   type CatalogSelectionOptions,
 } from '../../../utils';
+import { withCliProgress } from '../../../utils/progress';
 
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -77,7 +78,7 @@ export function collectUsageReportData(
     diagnostics?: CatalogDiagnostic[];
   } = {},
 ): UsageReportOutput {
-  const resolvedRoot = rootPath ?? getGitRoot();
+  const resolvedRoot = path.resolve(rootPath ?? getGitRoot());
   const astParser = parser ?? new TsMorphAstParser();
   const diagnostics = catalogOptions.diagnostics ?? [];
   const inventoryCache = new Map<string, CatalogInventory>();
@@ -92,14 +93,15 @@ export function collectUsageReportData(
     });
   const baseInventory = catalogOptions.inventory ?? createInventory(resolvedRoot);
   inventoryCache.set(findSelectedPackageRoot(resolvedRoot), baseInventory);
-  addDiagnostics(diagnostics, baseInventory.diagnostics);
   const getInventory = (filePath: string): CatalogInventory => {
     if (catalogOptions.inventory) {
+      addDiagnostics(diagnostics, catalogOptions.inventory.diagnostics);
       return catalogOptions.inventory;
     }
     const selectedRoot = findSelectedPackageRoot(filePath);
     const cached = inventoryCache.get(selectedRoot);
     if (cached) {
+      addDiagnostics(diagnostics, cached.diagnostics);
       return cached;
     }
     const inventory = createInventory(path.dirname(filePath));
@@ -118,13 +120,46 @@ export function collectUsageReportData(
   // Build relative fileMap for output
   const fileMap = filePaths.map(fp => path.relative(resolvedRoot, fp)).sort();
 
-  // Auto-detect tsconfig for path alias resolution
   const tsConfigPath = findTsConfig(resolvedRoot);
 
   // Initialize the parser with discovered files + tsconfig (or rootPath fallback)
   astParser.createProject(filePaths, tsConfigPath, resolvedRoot);
 
   const metadata: Metadata = {};
+  const categoryContexts = new Map<string, Map<string, Set<string>>>();
+  const fileContexts = new Map<string, string>();
+  const getContext = (filePath: string): string => {
+    const cached = fileContexts.get(filePath);
+    if (cached) {
+      return cached;
+    }
+    let directory = path.dirname(filePath);
+    let projectConfig: string | undefined;
+    while (true) {
+      projectConfig = findTsConfig(directory);
+      if (projectConfig || directory === resolvedRoot || path.dirname(directory) === directory) {
+        break;
+      }
+      directory = path.dirname(directory);
+    }
+    const context = `${findSelectedPackageRoot(filePath)}\0${projectConfig ?? tsConfigPath ?? ''}`;
+    fileContexts.set(filePath, context);
+    return context;
+  };
+  const recordCategory = (filePath: string, moduleSpec: string, name: string, category: string): void => {
+    const key = `${moduleSpec}\0${name}`;
+    const categories = categoryContexts.get(key) ?? new Map<string, Set<string>>();
+    const contexts = categories.get(category) ?? new Set<string>();
+    contexts.add(getContext(filePath));
+    categories.set(category, contexts);
+    categoryContexts.set(key, categories);
+  };
+  const hasIndependentUsage = (moduleSpec: string, name: string, category: string, replacements: string[]): boolean => {
+    const categories = categoryContexts.get(`${moduleSpec}\0${name}`);
+    return [...(categories?.get(category) ?? [])].some(
+      context => !replacements.some(replacement => categories?.get(replacement)?.has(context)),
+    );
+  };
 
   const sourceFiles = astParser.getSourceFiles();
 
@@ -149,6 +184,7 @@ export function collectUsageReportData(
       // Categorize each named import
       for (const name of importDecl.namedImports) {
         if (importDecl.isTypeOnly) {
+          recordCategory(filePath, moduleSpec, name, 'type');
           classifyUsageSymbol(inventory, moduleSpec, name, 'type', () => 'type', diagnostics);
           // Explicit `import type` always goes to types
           if (!pkgData.types[name]) {
@@ -168,6 +204,9 @@ export function collectUsageReportData(
           () => astParser.classifySymbol(filePath, localName, moduleSpec),
           diagnostics,
         );
+        if (classification !== 'component') {
+          recordCategory(filePath, moduleSpec, name, classification);
+        }
 
         switch (classification) {
           case 'component':
@@ -221,6 +260,7 @@ export function collectUsageReportData(
 
       const comp = pkgData.components[usage.componentName];
       comp.count++;
+      recordCategory(filePath, moduleSpec, usage.componentName, 'component');
 
       // Track prop usage
       for (const [propName, propValue] of Object.entries(usage.props)) {
@@ -290,6 +330,12 @@ export function collectUsageReportData(
 
       const entry = category[usage.functionName];
       entry.count++;
+      recordCategory(
+        filePath,
+        moduleSpec,
+        usage.functionName,
+        targetCategory === 'hooks' ? 'hook' : targetCategory === 'others' ? 'other' : 'unknown',
+      );
 
       // Track argument usage
       for (const [argName, argValue] of Object.entries(usage.args)) {
@@ -318,6 +364,7 @@ export function collectUsageReportData(
       const pkgData = metadata[moduleSpec];
 
       if (usage.kind === 'typeof') {
+        recordCategory(filePath, moduleSpec, usage.symbolName, 'type');
         // typeof references go to types with typeofCount tracking
         if (!pkgData.types[usage.symbolName]) {
           pkgData.types[usage.symbolName] = { count: 0, typeofCount: 0, props: {} };
@@ -325,6 +372,7 @@ export function collectUsageReportData(
         pkgData.types[usage.symbolName].count++;
         pkgData.types[usage.symbolName].typeofCount++;
       } else if (usage.kind === 'generic' && usage.typeArgs) {
+        recordCategory(filePath, moduleSpec, usage.symbolName, 'type');
         // Generic type params — ensure the type exists and capture args as props
         if (!pkgData.types[usage.symbolName]) {
           pkgData.types[usage.symbolName] = { count: 0, typeofCount: 0, props: {} };
@@ -369,6 +417,7 @@ export function collectUsageReportData(
       );
 
       if (classification === 'component') {
+        recordCategory(filePath, moduleSpec, ref.symbolName, 'component');
         // Component used as a value reference — count as component usage
         if (!pkgData.components[ref.symbolName]) {
           pkgData.components[ref.symbolName] = { props: {}, count: 0 };
@@ -379,19 +428,24 @@ export function collectUsageReportData(
   }
 
   // Post-process: deduplicate symbols across categories
-  for (const pkgData of Object.values(metadata)) {
+  for (const [moduleSpec, pkgData] of Object.entries(metadata)) {
     for (const name of Object.keys(pkgData.others)) {
-      if (pkgData.components[name] && pkgData.components[name].count > 0) {
+      if (
+        pkgData.components[name] &&
+        pkgData.components[name].count > 0 &&
+        !hasIndependentUsage(moduleSpec, name, 'other', ['component'])
+      ) {
         delete pkgData.others[name];
       }
     }
     // If an unknown symbol was also categorized elsewhere (e.g., as component via JSX), remove from unknowns
     for (const name of Object.keys(pkgData.unknowns)) {
       if (
-        (pkgData.components[name] && pkgData.components[name].count > 0) ||
-        pkgData.hooks[name] ||
-        pkgData.types[name] ||
-        pkgData.others[name]
+        !hasIndependentUsage(moduleSpec, name, 'unknown', ['component', 'hook', 'type', 'other']) &&
+        ((pkgData.components[name] && pkgData.components[name].count > 0) ||
+          pkgData.hooks[name] ||
+          pkgData.types[name] ||
+          pkgData.others[name])
       ) {
         delete pkgData.unknowns[name];
       }
@@ -432,22 +486,25 @@ export async function runUsageReport(
   output?: string,
   catalogOptions: CatalogSelectionOptions = {},
 ): Promise<void> {
-  const diagnostics: CatalogDiagnostic[] = [];
-  const reportData = collectUsageReportData(rootPath, undefined, include, exclude, {
-    ...catalogOptions,
-    diagnostics,
-  });
+  const { formatted, diagnostics } = await withCliProgress('Analyzing Fluent UI usage...', async () => {
+    const usageDiagnostics: CatalogDiagnostic[] = [];
+    const reportData = collectUsageReportData(rootPath, undefined, include, exclude, {
+      ...catalogOptions,
+      diagnostics: usageDiagnostics,
+    });
 
-  let formatted: string;
-  if (reporter === 'markdown') {
-    const { formatMetadataAsMarkdown } = await import('./markdown-reporter');
-    formatted = formatMetadataAsMarkdown(reportData);
-  } else if (reporter === 'html') {
-    const { formatMetadataAsHtml } = await import('./html-reporter');
-    formatted = formatMetadataAsHtml(reportData);
-  } else {
-    formatted = JSON.stringify(reportData, null, 2);
-  }
+    let content: string;
+    if (reporter === 'markdown') {
+      const { formatMetadataAsMarkdown } = await import('./markdown-reporter');
+      content = formatMetadataAsMarkdown(reportData);
+    } else if (reporter === 'html') {
+      const { formatMetadataAsHtml } = await import('./html-reporter');
+      content = formatMetadataAsHtml(reportData);
+    } else {
+      content = JSON.stringify(reportData, null, 2);
+    }
+    return { formatted: content, diagnostics: usageDiagnostics };
+  });
 
   if (output) {
     const outputPath = path.resolve(output);

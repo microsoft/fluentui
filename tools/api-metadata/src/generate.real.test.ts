@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
 import {
@@ -10,12 +10,232 @@ import {
   type PilotInput,
 } from './__fixtures__/pilot-inputs';
 import { generateApiMetadata } from './generate';
+import { createMetadataReader } from './resolve';
+import { validateCatalog } from './validate';
 import { serializeMetadata } from './serialize';
 import type { ApiRecord, ApiSymbol, ExportRoute, GeneratorResult } from './types';
 import { writeGeneratedMetadata } from './write';
 
 const describeReal = process.env.FLUENTUI_API_METADATA_REAL_PILOTS === '1' ? describe : describe.skip;
 const routingRoot = join(process.cwd(), '.real-pilot-routing');
+
+const v8PackageRoot = process.env.FLUENTUI_API_METADATA_V8_PACKAGE_ROOT;
+const describeV8 = v8PackageRoot ? describe : describe.skip;
+
+describeV8('demand-driven v8 declarations', () => {
+  jest.setTimeout(120_000);
+
+  it('resolves an installed declaration subpath omitted from dependency exports', async () => {
+    const result = await generateApiMetadata({
+      packageRoot: v8PackageRoot!,
+      entrypoints: ['./lib/components/Icon/Icon.styles'],
+    });
+    expect(result.diagnostics.filter(diagnostic => diagnostic.severity === 'error')).toEqual([]);
+    expect(validateCatalog(result.index, result.records).valid).toBe(true);
+  });
+
+  it('keeps Coachmark checker-derived constant views stable', async () => {
+    const options = { packageRoot: v8PackageRoot!, entrypoints: ['./lib-commonjs/Coachmark'] };
+    const first = await generateApiMetadata(options);
+    const second = await generateApiMetadata(options);
+    const view = (result: GeneratorResult) =>
+      result.records.flatMap(record => record.symbols).find(candidate => candidate.name === 'COACHMARK_ATTRIBUTE_NAME')
+        ?.effectiveType;
+    const original = view(first);
+    const repeated = view(second);
+    if (JSON.stringify(original) !== JSON.stringify(repeated)) {
+      const fields = Object.keys(original ?? {}).filter(
+        key =>
+          JSON.stringify(original?.[key as keyof typeof original]) !==
+          JSON.stringify(repeated?.[key as keyof typeof repeated]),
+      );
+      const memberIndex = original?.members.findIndex(
+        (candidateMember, index) => JSON.stringify(candidateMember) !== JSON.stringify(repeated?.members[index]),
+      );
+      throw new Error(
+        JSON.stringify({
+          fields,
+          types: [original?.type, repeated?.type],
+          memberIndex,
+          members:
+            memberIndex === undefined || memberIndex < 0
+              ? []
+              : [original?.members[memberIndex], repeated?.members[memberIndex]],
+        }),
+      );
+    }
+    expect(original).toBeDefined();
+  });
+
+  it.each(['selected', 'none'] as const)('generates bounded root metadata (%s)', async detail => {
+    const started = performance.now();
+    const result = await generateApiMetadata({
+      packageRoot: v8PackageRoot!,
+      entrypoints: ['.'],
+      detail,
+      ...(detail === 'selected'
+        ? {
+            selectedExports: ['Button', 'PrimaryButton', 'ContextualMenu'].map(name => ({
+              entrypoint: '.',
+              export: name,
+              namespace: 'value' as const,
+            })),
+          }
+        : {}),
+    });
+    const elapsedMs = Math.round(performance.now() - started);
+    expect(result.index.exports.length).toBeGreaterThan(0);
+    expect(validateCatalog(result.index, result.records).valid).toBe(true);
+    for (const name of ['Button', 'PrimaryButton', 'ContextualMenu']) {
+      expect(findRoute(result, name, 'value').classifications.map(value => value.facet)).toContain('component');
+      if (detail === 'selected') {
+        expect(symbol(result, name).props?.[0].type.members.length).toBeGreaterThan(0);
+      }
+    }
+    const expanded = result.records.flatMap(record => record.symbols).filter(value => value.effectiveType);
+    expect(expanded).toHaveLength(detail === 'selected' ? 3 : 0);
+    if (detail === 'selected') {
+      const outputRoot = mkdtempSync(join(v8PackageRoot!, '.fluentui-api-metadata-test-'));
+      try {
+        const written = writeGeneratedMetadata(result, join(outputRoot, 'selected'));
+        const importer = dirname(dirname(dirname(v8PackageRoot!)));
+        const reader = createMetadataReader();
+        reader.registerPackageCatalog({
+          requested: '@fluentui/react',
+          importer,
+          packageRoot: v8PackageRoot!,
+          metadataFile: written.indexPath,
+        });
+        const resolved = reader.resolveExport({
+          package: '@fluentui/react',
+          importer,
+          entrypoint: '.',
+          export: 'Button',
+          namespace: 'value',
+        });
+        if (!resolved.definition) {
+          throw new Error(JSON.stringify(resolved.diagnostics));
+        }
+        expect(resolved.definition?.symbol.name).toBe('Button');
+      } finally {
+        rmSync(outputRoot, { recursive: true, force: true });
+      }
+      const repeated = await generateApiMetadata({
+        packageRoot: v8PackageRoot!,
+        entrypoints: ['.'],
+        detail,
+        selectedExports: ['Button', 'PrimaryButton', 'ContextualMenu'].map(name => ({
+          entrypoint: '.',
+          export: name,
+          namespace: 'value' as const,
+        })),
+      });
+      expect(serializeMetadata(repeated.index)).toBe(serializeMetadata(result.index));
+      expect(repeated.records.map(serializeMetadata)).toEqual(result.records.map(serializeMetadata));
+    }
+    console.info(
+      JSON.stringify({
+        detail,
+        elapsedMs,
+        bytes: Buffer.byteLength(JSON.stringify(result)),
+        routes: result.index.exports.length,
+      }),
+    );
+  });
+});
+
+describeV8('full v8 canonical catalog', () => {
+  jest.setTimeout(1_200_000);
+
+  it('writes and reads stable bounded shards across root and subpath exports', async () => {
+    const outputRoot = mkdtempSync(join(v8PackageRoot!, '.fluentui-api-metadata-test-'));
+    const started = performance.now();
+    try {
+      const { firstWrite, generatedMs, routes } = await (async () => {
+        const first = await generateApiMetadata({ packageRoot: v8PackageRoot! });
+        expect(first.diagnostics.filter(diagnostic => diagnostic.severity === 'error')).toEqual([]);
+        expect(validateCatalog(first.index, first.records).valid).toBe(true);
+        expect(first.records.length).toBeGreaterThan(1);
+        const written = writeGeneratedMetadata(first, join(outputRoot, 'first'));
+        const elapsedMs = Math.round(performance.now() - started);
+
+        const reader = createMetadataReader();
+        const importer = dirname(dirname(dirname(v8PackageRoot!)));
+        reader.registerPackageCatalog({
+          requested: '@fluentui/react',
+          importer,
+          packageRoot: v8PackageRoot!,
+          metadataFile: written.indexPath,
+          index: first.index,
+        });
+        for (const [entrypoint, name] of [
+          ['.', 'Button'],
+          ['.', 'ContextualMenu'],
+          ['./lib/Button', 'Button'],
+          ['./lib/ContextualMenu', 'ContextualMenu'],
+        ]) {
+          const result = reader.resolveExport({
+            package: '@fluentui/react',
+            importer,
+            entrypoint,
+            export: name,
+            namespace: 'value',
+          });
+          if (!result.definition) {
+            throw new Error(`${entrypoint}/${name}: ${JSON.stringify(result.diagnostics)}`);
+          }
+          expect(result.definition.symbol.name).toBe(name);
+        }
+        return { firstWrite: written, generatedMs: elapsedMs, routes: first.index.exports.length };
+      })();
+
+      const second = await generateApiMetadata({ packageRoot: v8PackageRoot! });
+      const secondWrite = writeGeneratedMetadata(second, join(outputRoot, 'second'));
+      const firstIndex = JSON.parse(readFileSync(firstWrite.indexPath, 'utf8')) as GeneratorResult['index'];
+      const secondIndex = JSON.parse(readFileSync(secondWrite.indexPath, 'utf8')) as GeneratorResult['index'];
+      if (!readFileSync(secondWrite.indexPath).equals(readFileSync(firstWrite.indexPath))) {
+        const sections = (Object.keys(firstIndex) as Array<keyof GeneratorResult['index']>).filter(
+          key => JSON.stringify(firstIndex[key]) !== JSON.stringify(secondIndex[key]),
+        );
+        const changedRecord = firstIndex.records.findIndex(
+          (descriptor, index) => JSON.stringify(descriptor) !== JSON.stringify(secondIndex.records[index]),
+        );
+        throw new Error(
+          JSON.stringify({
+            sections,
+            records: [firstIndex.records.length, secondIndex.records.length],
+            changedRecord:
+              changedRecord < 0
+                ? undefined
+                : {
+                    first: firstIndex.records[changedRecord],
+                    second: secondIndex.records[changedRecord],
+                  },
+            routes: [firstIndex.exports.length, secondIndex.exports.length],
+          }),
+        );
+      }
+      expect(secondWrite.recordPaths.length).toBe(firstWrite.recordPaths.length);
+      for (let index = 0; index < firstWrite.recordPaths.length; index++) {
+        expect(readFileSync(secondWrite.recordPaths[index]).equals(readFileSync(firstWrite.recordPaths[index]))).toBe(
+          true,
+        );
+      }
+      console.info(
+        JSON.stringify({
+          generatedMs,
+          totalMs: Math.round(performance.now() - started),
+          records: firstWrite.recordPaths.length,
+          routes,
+          largestRecordBytes: Math.max(...firstWrite.recordPaths.map(path => readFileSync(path).length)),
+          heapUsedMb: Math.round(process.memoryUsage().heapUsed / 1024 / 1024),
+        }),
+      );
+    } finally {
+      rmSync(outputRoot, { recursive: true, force: true });
+    }
+  });
+});
 
 describeReal('generateApiMetadata real declaration pilots', () => {
   jest.setTimeout(120_000);

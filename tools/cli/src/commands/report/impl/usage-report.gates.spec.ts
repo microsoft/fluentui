@@ -1,4 +1,6 @@
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
+import * as os from 'node:os';
 import * as path from 'node:path';
 
 import { collectUsageReportData } from './usage-report';
@@ -39,14 +41,66 @@ describe('usage report rollout gates', () => {
     });
 
     expect(result.packages['@fluentui/react-button'].components.Button.count).toBe(1);
-    expect(diagnostics).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          severity: 'error',
-          package: '@fluentui/react-headless-components-preview',
-        }),
-      ]),
-    );
+    expect(diagnostics).toEqual([]);
+  });
+
+  it('scans a parent Git repository with independent child project declarations', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-usage-projects-'));
+    const packageName = '@private/child-ui';
+    const write = (relativePath: string, content: string) => {
+      const filePath = path.join(root, relativePath);
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+      fs.writeFileSync(filePath, content);
+    };
+    try {
+      execSync('git init -q', { cwd: root });
+      write('package.json', JSON.stringify({ name: 'usage-workspace', private: true }));
+      for (const project of ['first', 'second']) {
+        write(
+          `apps/${project}/package.json`,
+          JSON.stringify({ name: `usage-${project}`, dependencies: { [packageName]: '1.0.0' } }),
+        );
+        write(`apps/${project}/tsconfig.json`, JSON.stringify({ compilerOptions: { moduleResolution: 'node' } }));
+        write(
+          `apps/${project}/src/App.tsx`,
+          `import { Widget } from '${packageName}';\nexport const value = Widget;\n`,
+        );
+        write(
+          `apps/${project}/node_modules/${packageName}/package.json`,
+          JSON.stringify({ name: packageName, version: '1.0.0', types: 'index.d.ts' }),
+        );
+      }
+      write('apps/first/node_modules/@types/react/package.json', JSON.stringify({ name: '@types/react' }));
+      write(
+        'apps/first/node_modules/@types/react/index.d.ts',
+        'export interface ReactElement {}\nexport class Component<P> { props: P; render(): ReactElement; }\n',
+      );
+      write(
+        `apps/first/node_modules/${packageName}/index.d.ts`,
+        "import * as React from 'react';\nexport declare class Widget extends React.Component<{ label: string }> {}\n",
+      );
+      write(`apps/second/node_modules/${packageName}/index.d.ts`, 'export declare const Widget: number;\n');
+
+      const diagnostics: CatalogDiagnostic[] = [];
+      const report = collectUsageReportData(root, undefined, undefined, undefined, {
+        package: packageName,
+        metadataMode: 'off',
+        diagnostics,
+      });
+      expect(report.fileMap).toEqual(['apps/first/src/App.tsx', 'apps/second/src/App.tsx']);
+      expect(report.packages[packageName].components.Widget.count).toBe(1);
+      expect(report.packages[packageName].others.Widget.count).toBe(1);
+      expect(diagnostics).toEqual([]);
+
+      const childReport = collectUsageReportData(path.join(root, 'apps/first'), undefined, undefined, undefined, {
+        package: packageName,
+        metadataMode: 'off',
+      });
+      expect(childReport.fileMap).toEqual(['src/App.tsx']);
+      expect(childReport.packages[packageName].components.Widget.count).toBe(1);
+    } finally {
+      fs.rmSync(root, { recursive: true, force: true });
+    }
   });
 });
 

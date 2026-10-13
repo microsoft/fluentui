@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: distinguish class APIs from component props and show observed prop details in usage reports",
+  "packageName": "@fluentui/cli",
+  "email": "martinhochel@microsoft.com"
+}

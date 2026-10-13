@@ -3,6 +3,7 @@ import { queryApi, type ApiRouteSummary, type ApiSymbolDetail, type MetadataMode
 import { formatApiDetail, formatApiIndex } from '../../utils/api-format';
 import { createDenseApiDetail, createDenseApiIndex } from '../../utils/api-dense';
 import { createEnvelope, emitOutput } from '../../utils/output';
+import { withCliProgress } from '../../utils/progress';
 
 export interface ApiArgs {
   symbol?: string;
@@ -24,17 +25,19 @@ export interface ApiArgs {
 }
 
 export const handler: CommandHandler<ApiArgs> = async argv => {
-  const result = await queryApi({
-    symbol: argv.symbol,
-    cwd: argv.cwd ?? argv.path,
-    config: argv.config,
-    system: cleanStringArray(argv.system),
-    from: argv.from,
-    package: argv.package,
-    entrypoint: argv.entrypoint,
-    namespace: argv.namespace,
-    metadataMode: argv.metadataMode,
-  });
+  const result = await withCliProgress('Loading Fluent UI APIs...', () =>
+    queryApi({
+      symbol: argv.symbol,
+      cwd: argv.cwd ?? argv.path,
+      config: argv.config,
+      system: cleanStringArray(argv.system),
+      from: argv.from,
+      package: argv.package,
+      entrypoint: argv.entrypoint,
+      namespace: argv.namespace,
+      metadataMode: argv.metadataMode,
+    }),
+  );
   if (argv.json && argv.dense) {
     const options = { verbose: argv.verbose, includeInherited: argv.includeInherited, expandTypes: argv.expandTypes };
     const envelope = createEnvelope(

@@ -1,3 +1,4 @@
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import type {
@@ -25,6 +26,7 @@ import { loadMetadataGenerator } from './metadata-generator';
 import { formatPackageSpecifier, parsePackageSpecifier } from './package-inventory';
 import { getApiImportIssue, isRouteFromRoot, preferredApiRoots, selectApiImport } from './api-import';
 import type { ApiImportSelection } from './api-import';
+import type { CachedPackageCatalog } from './catalog-cache';
 
 export type MetadataMode = 'off' | 'prefer' | 'required';
 
@@ -119,12 +121,21 @@ interface CatalogSurface {
   index: PackageIndex;
   records?: ApiRecord[];
   reader?: MetadataReader;
+  catalog?: LoadedPackageCatalog;
+  cacheSelection?: CatalogSelectionOptions;
   authority: 'metadata' | 'declarations';
 }
 
 export interface ApiQueryDependencies {
   getImportIssue(route: ApiRouteSummary, root: CatalogRoot): string | undefined;
   getInventory(options: CatalogSelectionOptions): CatalogInventory;
+  getCachedCatalog(root: CatalogRoot, options: CatalogSelectionOptions): CachedPackageCatalog | undefined;
+  buildCachedCatalogs(options: CatalogSelectionOptions): Promise<void>;
+  startCachedCatalogs(options: CatalogSelectionOptions): void;
+  loadCachedCatalog(
+    root: CatalogRoot,
+    cached: CachedPackageCatalog,
+  ): Promise<{ catalog: LoadedPackageCatalog; reader: MetadataReader }>;
   generate(options: GeneratorOptions): Promise<GeneratorResult>;
   loadApiRecord(catalog: LoadedPackageCatalog, recordId: string): Promise<ApiRecord>;
   resolveExport(options: {
@@ -164,9 +175,11 @@ export async function queryApi(
   const loaded = await loadSurfaces(
     inventory,
     selection.metadataMode ?? 'prefer',
-    options.entrypoint,
+    { symbol: options.symbol, entrypoint: options.entrypoint, namespace: options.namespace },
     deps,
     diagnostics,
+    selection,
+    true,
   );
   let surfaces = loaded.surfaces;
   let unavailableRoots = loaded.unavailableRoots;
@@ -248,7 +261,14 @@ export async function queryApi(
       const fallback =
         selection.metadataMode === 'required'
           ? { surfaces: [], failures: 0 }
-          : await loadRequestedBindingFallback(metadataGaps, options.entrypoint, deps, diagnostics);
+          : await loadRequestedBindingFallback(
+              metadataGaps,
+              options.symbol,
+              options.entrypoint,
+              options.namespace,
+              deps,
+              diagnostics,
+            );
       surfaces = [...surfaces, ...fallback.surfaces];
       unavailableRoots += fallback.failures;
       coverage = createCoverage(inventory.roots.length, surfaces, unavailableRoots);
@@ -280,7 +300,9 @@ export async function queryApi(
     );
   }
 
-  const resolutions = await Promise.all(routes.map(route => resolveRouteDetail(route, surfaces, deps, diagnostics)));
+  const resolutions = await Promise.all(
+    routes.map(route => resolveRouteDetail(route, surfaces, selection.metadataMode ?? 'prefer', deps, diagnostics)),
+  );
   const definitions = new Map<string, (typeof resolutions)[number]>();
   for (const resolution of resolutions) {
     const current = definitions.get(resolution.definitionKey);
@@ -388,7 +410,7 @@ export async function inspectCatalogs(
   const inventory = filterInventory(getInventory(deps, selection), selection.package);
   const diagnostics = inventory.diagnostics.map(value => normalizeDiagnostic(value, 'CLI_CATALOG_DIAGNOSTIC'));
   const metadataMode = options.metadataMode ?? 'prefer';
-  const loaded = await loadSurfaces(inventory, metadataMode, undefined, deps, diagnostics);
+  const loaded = await loadSurfaces(inventory, metadataMode, {}, deps, diagnostics);
   const surfaces = new Map(loaded.surfaces.map(surface => [surface.root.packageRoot, surface]));
   const roots: DoctorRootResult[] = [];
 
@@ -491,6 +513,45 @@ function createDependencies(overrides: Partial<ApiQueryDependencies>): ApiQueryD
         };
         return inventory.getCatalogInventory(options);
       }),
+    getCachedCatalog:
+      overrides.getCachedCatalog ??
+      ((root, options) => {
+        const cache = require('./catalog-cache') as typeof import('./catalog-cache');
+        return cache.getCachedPackageCatalog(root, options);
+      }),
+    buildCachedCatalogs:
+      overrides.buildCachedCatalogs ??
+      (async options => {
+        const cache = require('./catalog-cache') as typeof import('./catalog-cache');
+        const result = await cache.buildCatalogCache(options);
+        const failures = result.packages.filter(entry => entry.state !== 'ready');
+        if (failures.length) {
+          throw new Error(
+            failures.map(entry => `${entry.package}: ${entry.error ?? 'catalog build failed'}`).join('; '),
+          );
+        }
+      }),
+    startCachedCatalogs:
+      overrides.startCachedCatalogs ??
+      (options => {
+        const cache = require('./catalog-cache') as typeof import('./catalog-cache');
+        cache.startCatalogCacheBuild(options);
+      }),
+    loadCachedCatalog:
+      overrides.loadCachedCatalog ??
+      (async (root, cached) => {
+        const { createMetadataReader } = await import('@fluentui/api-metadata');
+        const reader = createMetadataReader();
+        reader.registerPackageCatalog({
+          requested: root.requestedPackage,
+          importer: root.importer,
+          packageRoot: cached.packageRoot,
+          metadataRoot: cached.metadataRoot ?? path.dirname(cached.metadataFile),
+          metadataFile: cached.metadataFile,
+          index: cached.index,
+        });
+        return { reader, catalog: reader.loadPackageIndex(root.requestedPackage, root.importer) };
+      }),
     generate:
       overrides.generate ??
       (async options => {
@@ -556,12 +617,15 @@ function getInventory(deps: ApiQueryDependencies, selection: CatalogSelectionOpt
 async function loadSurfaces(
   inventory: CatalogInventory,
   metadataMode: MetadataMode,
-  entrypoint: string | undefined,
+  request: Pick<ApiQueryOptions, 'symbol' | 'entrypoint' | 'namespace'>,
   deps: ApiQueryDependencies,
   diagnostics: CliDiagnostic[],
+  cacheSelection: CatalogSelectionOptions = { cwd: inventory.workspaceRoot, metadataMode },
+  populateInBackground = false,
 ): Promise<{ surfaces: CatalogSurface[]; unavailableRoots: number }> {
   const surfaces: CatalogSurface[] = [];
   let unavailableRoots = 0;
+  let needsBackgroundBuild = false;
 
   for (const root of inventory.roots) {
     if (metadataMode !== 'off' && root.catalog) {
@@ -581,17 +645,27 @@ async function loadSurfaces(
     }
 
     try {
-      const generated = await deps.generate({
-        packageRoot: path.resolve(root.packageRoot),
-        packageName: root.source === 'local' ? undefined : root.packageName,
-        entrypoints: entrypoint ? [entrypoint] : undefined,
-      });
+      const cached = deps.getCachedCatalog(root, cacheSelection);
+      if (cached) {
+        const loaded = await deps.loadCachedCatalog(root, cached);
+        surfaces.push({ root, index: cached.index, ...loaded, cacheSelection, authority: 'declarations' });
+        diagnostics.push({
+          code: 'CLI_CATALOG_CACHE_HIT',
+          severity: 'info',
+          message: `Loaded the canonical API catalog from repository cache for ${root.packageName}.`,
+          package: root.packageName,
+        });
+        continue;
+      }
+      const generated = await deps.generate(createDeclarationGenerationOptions(root, request));
       surfaces.push({
         root,
         index: generated.index,
         records: generated.records,
+        cacheSelection,
         authority: 'declarations',
       });
+      needsBackgroundBuild ||= populateInBackground;
       diagnostics.push({
         code: metadataMode === 'off' ? 'CLI_METADATA_BYPASSED' : 'CLI_METADATA_DECLARATION_FALLBACK',
         severity: metadataMode === 'off' ? 'info' : 'warning',
@@ -607,12 +681,17 @@ async function loadSurfaces(
     }
   }
 
+  if (needsBackgroundBuild) {
+    deps.startCachedCatalogs(cacheSelection);
+  }
   return { surfaces, unavailableRoots };
 }
 
 async function loadRequestedBindingFallback(
   metadataGaps: readonly CatalogSurface[],
+  symbol: string,
   entrypoint: string | undefined,
+  namespace: ApiQueryOptions['namespace'],
   deps: ApiQueryDependencies,
   diagnostics: CliDiagnostic[],
 ): Promise<{ surfaces: CatalogSurface[]; failures: number }> {
@@ -620,11 +699,9 @@ async function loadRequestedBindingFallback(
   let failures = 0;
   for (const surface of metadataGaps) {
     try {
-      const generated = await deps.generate({
-        packageRoot: path.resolve(surface.root.packageRoot),
-        packageName: surface.root.source === 'local' ? undefined : surface.root.packageName,
-        entrypoints: entrypoint ? [entrypoint] : undefined,
-      });
+      const generated = await deps.generate(
+        createDeclarationGenerationOptions(surface.root, { symbol, entrypoint, namespace }),
+      );
       surfaces.push({
         root: surface.root,
         index: generated.index,
@@ -645,6 +722,140 @@ async function loadRequestedBindingFallback(
     }
   }
   return { surfaces, failures };
+}
+
+type DeclarationGenerationRequest = Pick<ApiQueryOptions, 'symbol' | 'entrypoint' | 'namespace'> & {
+  declarationConditions?: string[];
+};
+
+function createDeclarationGenerationOptions(
+  root: CatalogRoot,
+  request: DeclarationGenerationRequest,
+): GeneratorOptions {
+  const entrypoints = request.entrypoint
+    ? [request.entrypoint]
+    : request.symbol
+    ? resolvePublicDeclarationEntrypoints(root.packageRoot)
+    : undefined;
+  const namespaces = request.namespace ? [request.namespace] : (['type', 'value'] as const);
+  const selectedExports = request.symbol
+    ? (entrypoints ?? []).flatMap(entrypoint =>
+        namespaces.map(namespace => ({ entrypoint, export: request.symbol!, namespace })),
+      )
+    : undefined;
+
+  return {
+    packageRoot: path.resolve(root.packageRoot),
+    packageName: root.source === 'local' ? undefined : root.packageName,
+    entrypoints,
+    ...(request.declarationConditions ? { declarationConditions: request.declarationConditions } : {}),
+    detail: request.symbol ? 'selected' : 'none',
+    ...(selectedExports ? { selectedExports } : {}),
+  };
+}
+
+function resolvePublicDeclarationEntrypoints(packageRoot: string): string[] {
+  try {
+    const manifest = JSON.parse(fs.readFileSync(path.join(packageRoot, 'package.json'), 'utf8')) as {
+      exports?: unknown;
+      types?: unknown;
+      typings?: unknown;
+    };
+    const exports = manifest.exports;
+    if (exports !== undefined) {
+      const subpaths =
+        isRecord(exports) && Object.keys(exports).some(key => key.startsWith('.')) ? exports : { '.': exports };
+      const entrypoints = new Set<string>();
+      for (const [entrypoint, value] of Object.entries(subpaths)) {
+        const targets = collectDeclarationTargets(value);
+        if (!entrypoint.includes('*')) {
+          if (targets.length > 0) {
+            entrypoints.add(entrypoint);
+          }
+          continue;
+        }
+        for (const target of targets) {
+          for (const resolved of expandPublicDeclarationPattern(packageRoot, entrypoint, target)) {
+            entrypoints.add(resolved);
+          }
+        }
+      }
+      return [...entrypoints].sort();
+    }
+    return typeof manifest.types === 'string' || typeof manifest.typings === 'string' ? ['.'] : [];
+  } catch {
+    return [];
+  }
+}
+
+function collectDeclarationTargets(value: unknown): string[] {
+  if (typeof value === 'string') {
+    return /\.d\.(?:ts|mts|cts)$/.test(value) ? [value] : [];
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap(collectDeclarationTargets);
+  }
+  if (!isRecord(value)) {
+    return [];
+  }
+  return Object.values(value).flatMap(collectDeclarationTargets);
+}
+
+function expandPublicDeclarationPattern(
+  packageRoot: string,
+  entrypointPattern: string,
+  targetPattern: string,
+): string[] {
+  const star = targetPattern.indexOf('*');
+  if (star < 0) {
+    return [];
+  }
+  const normalizedTarget = targetPattern.replace(/^\.\//, '');
+  const normalizedStar = star - (targetPattern.startsWith('./') ? 2 : 0);
+  const prefix = normalizedTarget.slice(0, normalizedStar);
+  const suffix = normalizedTarget.slice(normalizedStar + 1);
+  const directoryPrefix = prefix.slice(0, prefix.lastIndexOf('/') + 1);
+  const searchRelative = directoryPrefix.replace(/\/$/, '') || '.';
+  const searchRoot = path.resolve(packageRoot, searchRelative);
+  if (!isPathWithin(packageRoot, searchRoot) || !fs.existsSync(searchRoot)) {
+    return [];
+  }
+
+  const entrypoints = new Set<string>();
+  const visit = (directory: string): void => {
+    let entries: fs.Dirent[];
+    try {
+      entries = fs.readdirSync(directory, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      const filePath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        visit(filePath);
+      } else if (entry.isFile()) {
+        const relativePath = path.relative(packageRoot, filePath).split(path.sep).join('/');
+        if (!relativePath.startsWith(prefix) || !relativePath.endsWith(suffix)) {
+          continue;
+        }
+        const capture = relativePath.slice(prefix.length, relativePath.length - suffix.length);
+        if (capture) {
+          entrypoints.add(entrypointPattern.replace('*', capture));
+        }
+      }
+    }
+  };
+  visit(searchRoot);
+  return [...entrypoints];
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
+}
+
+function isPathWithin(parent: string, child: string): boolean {
+  const relativePath = path.relative(path.resolve(parent), path.resolve(child));
+  return relativePath === '' || (!relativePath.startsWith('..') && !path.isAbsolute(relativePath));
 }
 
 function hasRequestedApiGap(index: PackageIndex): boolean {
@@ -692,6 +903,7 @@ function createRouteSummaries(surface: CatalogSurface, options: ApiQueryOptions)
 async function resolveRouteDetail(
   route: ApiRouteSummary,
   surfaces: readonly CatalogSurface[],
+  metadataMode: MetadataMode,
   deps: ApiQueryDependencies,
   diagnostics: CliDiagnostic[],
 ): Promise<{
@@ -773,12 +985,12 @@ async function resolveRouteDetail(
   if (indexRoute.target.kind === 'local') {
     const target = indexRoute.target;
     try {
-      const record =
-        surface.authority === 'metadata' && surface.root.catalog
-          ? surface.reader
-            ? surface.reader.loadApiRecord(surface.root.catalog, target.record)
-            : await deps.loadApiRecord(surface.root.catalog, target.record)
-          : surface.records?.find(candidate => candidate.recordId === target.record);
+      const catalog = surface.catalog ?? (surface.authority === 'metadata' ? surface.root.catalog : undefined);
+      const record = catalog
+        ? surface.reader
+          ? surface.reader.loadApiRecord(catalog, target.record)
+          : await deps.loadApiRecord(catalog, target.record)
+        : surface.records?.find(candidate => candidate.recordId === target.record);
       const symbol = record?.symbols.find(candidate => candidate.id === target.symbol);
       if (record && symbol) {
         return {
@@ -803,13 +1015,22 @@ async function resolveRouteDetail(
   }
 
   if (indexRoute.target.kind === 'bundled') {
-    const bundled = resolveBundledDeclarationTarget(indexRoute.target, surface, route, deps, diagnostics);
+    const bundled = await resolveBundledDeclarationTarget(indexRoute.target, surface, route, deps, diagnostics);
     if (bundled) {
       return bundled;
     }
   }
 
   if (indexRoute.target.kind === 'dependency') {
+    if (metadataMode === 'required') {
+      throw new CliError(
+        'CLI_METADATA_REQUIRED',
+        `Authoritative metadata could not resolve ${route.export} from ${route.requestedPackage}.`,
+        1,
+        diagnostics,
+        { package: route.requestedPackage, symbol: route.export, entrypoint: route.entrypoint },
+      );
+    }
     const dependency = await resolveDeclarationDependency(
       indexRoute.target,
       surface,
@@ -853,6 +1074,7 @@ async function resolveDeclarationDependency(
   diagnostics: CliDiagnostic[],
   visited: Set<string>,
   depth: number,
+  activeConditions: readonly string[] = requestedRoute.conditions,
 ): Promise<{
   definitionKey: string;
   package: string;
@@ -895,22 +1117,85 @@ async function resolveDeclarationDependency(
   visited.add(key);
 
   try {
-    const generated = await deps.generate({
-      packageRoot: dependency.packageRoot,
+    const dependencyRoot: CatalogRoot = {
       packageName: target.package,
-      entrypoints: [target.entrypoint],
-    });
-    const route = generated.index.exports.find(
+      requestedPackage,
+      packageRoot: dependency.packageRoot,
+      importer: dependency.importer,
+      systems: parentSurface.root.systems,
+      source: parentSurface.root.source,
+    };
+    const cacheSelection = parentSurface.cacheSelection ?? {
+      cwd: parentSurface.root.importer,
+      metadataMode: 'prefer' as const,
+    };
+    const cached = deps.getCachedCatalog(dependencyRoot, cacheSelection);
+    const cachedCatalog = cached?.index.package.name === target.package ? cached : undefined;
+    let resolvedSurface: CatalogSurface;
+    if (cachedCatalog) {
+      resolvedSurface = {
+        root: dependencyRoot,
+        index: cachedCatalog.index,
+        ...(await deps.loadCachedCatalog(dependencyRoot, cachedCatalog)),
+        cacheSelection,
+        authority: 'declarations',
+      };
+    } else {
+      const generated = await deps.generate(
+        createDeclarationGenerationOptions(dependencyRoot, {
+          symbol: target.export,
+          entrypoint: target.entrypoint,
+          namespace: target.namespace,
+        }),
+      );
+      resolvedSurface = {
+        root: dependencyRoot,
+        index: generated.index,
+        records: generated.records,
+        cacheSelection,
+        authority: 'declarations',
+      };
+    }
+    const candidates = resolvedSurface.index.exports.filter(
       candidate =>
         candidate.entrypoint === target.entrypoint &&
         candidate.export === target.export &&
         candidate.namespace === target.namespace,
     );
+    const exact = candidates.find(candidate => arraysEqual(candidate.conditions, activeConditions));
+    const requestedBranches = activeConditions.filter(condition => condition !== 'types' && condition !== 'default');
+    const compatible = exact
+      ? []
+      : candidates
+          .filter(candidate => {
+            if (!candidate.conditions.includes('default')) {
+              return false;
+            }
+            const branches = candidate.conditions.filter(condition => condition !== 'types' && condition !== 'default');
+            return branches.every(condition => requestedBranches.includes(condition));
+          })
+          .sort((left, right) => right.conditions.length - left.conditions.length || left.id.localeCompare(right.id));
+    const best = compatible.filter(candidate => candidate.conditions.length === compatible[0].conditions.length);
+    if (
+      best.length > 1 &&
+      best.some(candidate => JSON.stringify(candidate.target) !== JSON.stringify(best[0].target))
+    ) {
+      diagnostics.push({
+        code: 'CLI_DECLARATION_DEPENDENCY_ROUTE_AMBIGUOUS',
+        severity: 'error',
+        message: `${target.package} has conflicting compatible declaration routes for ${target.export} from ${target.entrypoint}.`,
+        package: target.package,
+      });
+      return null;
+    }
+    const route = exact ?? best[0];
     if (!route) {
       diagnostics.push({
         code: 'CLI_DECLARATION_DEPENDENCY_ROUTE_NOT_FOUND',
         severity: 'error',
-        message: `${target.package} does not declare ${target.export} from ${target.entrypoint}.`,
+        message: `${target.package} has no compatible declaration route for ${target.export} from ${
+          target.entrypoint
+        } under ${activeConditions.join(', ')}.`,
         package: target.package,
       });
       return null;
@@ -922,15 +1207,19 @@ async function resolveDeclarationDependency(
         packageRoot: parentSurface.root.packageRoot,
       },
       {
-        package: generated.index.package.name,
-        version: generated.index.package.version,
+        package: resolvedSurface.index.package.name,
+        version: resolvedSurface.index.package.version,
         packageRoot: dependency.packageRoot,
       },
     ];
 
     if (route.target.kind === 'local') {
       const localTarget = route.target;
-      const record = generated.records.find(candidate => candidate.recordId === localTarget.record);
+      const record = resolvedSurface.catalog
+        ? resolvedSurface.reader
+          ? resolvedSurface.reader.loadApiRecord(resolvedSurface.catalog, localTarget.record)
+          : await deps.loadApiRecord(resolvedSurface.catalog, localTarget.record)
+        : resolvedSurface.records?.find(candidate => candidate.recordId === localTarget.record);
       const symbol = record?.symbols.find(candidate => candidate.id === localTarget.symbol);
       if (!record || !symbol) {
         diagnostics.push({
@@ -943,8 +1232,8 @@ async function resolveDeclarationDependency(
       }
       return {
         definitionKey: `${dependency.packageRoot}\0${symbol.id}`,
-        package: generated.index.package.name,
-        version: generated.index.package.version,
+        package: resolvedSurface.index.package.name,
+        version: resolvedSurface.index.package.version,
         recordId: record.recordId,
         symbol,
         routes: [requestedRoute],
@@ -952,23 +1241,10 @@ async function resolveDeclarationDependency(
       };
     }
 
-    const dependencySurface: CatalogSurface = {
-      root: {
-        packageName: generated.index.package.name,
-        requestedPackage,
-        packageRoot: dependency.packageRoot,
-        importer: dependency.importer,
-        systems: parentSurface.root.systems,
-        source: parentSurface.root.source,
-      },
-      index: generated.index,
-      records: generated.records,
-      authority: 'declarations',
-    };
     if (route.target.kind === 'bundled') {
-      const bundled = resolveBundledDeclarationTarget(
+      const bundled = await resolveBundledDeclarationTarget(
         route.target,
-        dependencySurface,
+        resolvedSurface,
         requestedRoute,
         deps,
         diagnostics,
@@ -985,12 +1261,13 @@ async function resolveDeclarationDependency(
     }
     const nested = await resolveDeclarationDependency(
       nestedTarget,
-      dependencySurface,
+      resolvedSurface,
       requestedRoute,
       deps,
       diagnostics,
       visited,
       depth + 1,
+      route.conditions,
     );
     if (nested) {
       nested.resolvedPackages = uniqueResolvedPackages([...resolvedPackages, ...nested.resolvedPackages]);
@@ -1002,13 +1279,13 @@ async function resolveDeclarationDependency(
   }
 }
 
-function resolveBundledDeclarationTarget(
+async function resolveBundledDeclarationTarget(
   target: BundledExportTarget,
   surface: CatalogSurface,
   requestedRoute: ApiRouteSummary,
   deps: ApiQueryDependencies,
   diagnostics: CliDiagnostic[],
-): {
+): Promise<{
   definitionKey: string;
   package: string;
   version: string;
@@ -1016,11 +1293,32 @@ function resolveBundledDeclarationTarget(
   symbol: ApiSymbol;
   routes: ApiRouteSummary[];
   resolvedPackages: Array<{ package: string; version: string; packageRoot: string }>;
-} | null {
+} | null> {
   const descriptor = surface.index.records.find(candidate => candidate.id === target.record);
-  const record = surface.records?.find(candidate => candidate.recordId === target.record);
+  if (!descriptor?.source) {
+    diagnostics.push({
+      code: 'CLI_DECLARATION_BUNDLED_DETAIL_UNAVAILABLE',
+      severity: 'error',
+      message: `Bundled declaration detail for ${requestedRoute.export} is unavailable.`,
+      package: surface.index.package.name,
+    });
+    return null;
+  }
+  let record: ApiRecord | undefined;
+  try {
+    record = surface.catalog
+      ? surface.reader
+        ? surface.reader.loadApiRecord(surface.catalog, target.record)
+        : await deps.loadApiRecord(surface.catalog, target.record)
+      : surface.records?.find(candidate => candidate.recordId === target.record);
+  } catch (error) {
+    diagnostics.push(
+      toErrorDiagnostic(error, surface.index.package.name, 'CLI_DECLARATION_BUNDLED_DETAIL_UNAVAILABLE'),
+    );
+    return null;
+  }
   const symbol = record?.symbols.find(candidate => candidate.id === target.symbol);
-  if (!descriptor?.source || !record || !symbol) {
+  if (!record || !symbol) {
     diagnostics.push({
       code: 'CLI_DECLARATION_BUNDLED_DETAIL_UNAVAILABLE',
       severity: 'error',

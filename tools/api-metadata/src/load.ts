@@ -53,6 +53,7 @@ export interface MetadataCatalogRegistration {
   importer: string;
   packageRoot: string;
   metadataFile?: string;
+  metadataRoot?: string;
   index?: PackageIndex;
 }
 
@@ -185,6 +186,18 @@ export class MetadataLoader {
         throw new MetadataReaderError('reader.registration', `Registered ${name} paths must be absolute`, value);
       }
     }
+    if (registration.metadataRoot !== undefined) {
+      if (!isAbsolute(registration.metadataRoot)) {
+        throw new MetadataReaderError(
+          'reader.registration',
+          'Registered metadataRoot paths must be absolute',
+          registration.metadataRoot,
+        );
+      }
+      if (!registration.metadataFile) {
+        throw new MetadataReaderError('reader.registration', 'An external metadata root requires a metadata file');
+      }
+    }
     if (!registration.metadataFile && !registration.index) {
       throw new MetadataReaderError(
         'reader.registration',
@@ -194,6 +207,10 @@ export class MetadataLoader {
 
     const importerRoot = realpathDirectory(registration.importer, 'reader.registration');
     const packageRoot = realpathDirectory(registration.packageRoot, 'reader.registration');
+    const metadataRoot =
+      registration.metadataRoot !== undefined
+        ? realpathDirectory(registration.metadataRoot, 'reader.registration')
+        : packageRoot;
     const packageManifest = join(packageRoot, 'package.json');
     const manifest = readPackageJson(packageManifest);
     const actualName = readRequiredString(manifest, 'name', packageManifest);
@@ -202,7 +219,10 @@ export class MetadataLoader {
       ? realpathFile(registration.metadataFile, 'reader.registration')
       : join(packageRoot, '__fluentui_api_metadata_registered_index__.json');
     if (registration.metadataFile) {
-      this._assertContained(packageRoot, metadataFile, 'reader.catalogPathEscape');
+      if (registration.metadataRoot !== undefined) {
+        this._assertContained(registration.metadataRoot, registration.metadataFile, 'reader.catalogPathEscape');
+      }
+      this._assertContained(metadataRoot, metadataFile, 'reader.catalogPathEscape');
     }
 
     let index: PackageIndex | undefined;

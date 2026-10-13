@@ -5,6 +5,7 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import ts = require('typescript');
 
 import { toCanonicalJsonValue } from './serialize';
+import { createReactClassCompatPlugin, type ReactClassCompatPlugin } from './react-class-compat';
 import type {
   ApiDeclaration,
   ApiParameter,
@@ -17,6 +18,7 @@ import type {
   EffectiveTypeView,
   ExportRoute,
   Fingerprint,
+  GeneratorOptions,
   MetadataDiagnostic,
   MetadataNamespace,
   PackageIdentity,
@@ -35,9 +37,12 @@ import type {
 import type { DeclarationEntry, PackageManifest } from './package-exports';
 
 const MAX_EFFECTIVE_MEMBERS = 512;
+const COMPONENT_COMPAT_PLUGINS = [createReactClassCompatPlugin];
 const MAX_REACHABLE_SYMBOLS = 2_000;
 const MAX_REFERENCE_SPANS = 512;
 const MAX_TYPE_TEXT = 100_000;
+const MAX_RENDER_CACHE_ENTRIES = 20_000;
+const MAX_RENDER_CACHE_BYTES = 4 * 1024 * 1024;
 const TYPE_FORMAT_FLAGS =
   ts.TypeFormatFlags.NoTruncation |
   ts.TypeFormatFlags.UseAliasDefinedOutsideCurrentScope |
@@ -46,14 +51,23 @@ const TYPE_FORMAT_FLAGS =
 export interface ExtractionResult {
   records: ApiRecord[];
   routes: ExportRoute[];
+  unselectedExportBindings: number;
   dependencyRouteInputs: Map<string, DependencyInput>;
   diagnostics: MetadataDiagnostic[];
 }
 
-export interface ExportSelection {
-  entrypoint: string;
-  export: string;
-  namespace: MetadataNamespace;
+export type ExportSelection = NonNullable<GeneratorOptions['selectedExports']>[number];
+
+interface TypeRenderCache {
+  values: Map<ts.Type, Map<ts.Node | undefined, Map<ts.TypeFormatFlags | undefined, string>>>;
+  entries: number;
+  bytes: number;
+}
+
+interface DeclarationPackage {
+  name: string;
+  version: string;
+  root: string;
 }
 
 interface RecordContext {
@@ -71,6 +85,17 @@ interface RecordContext {
   declarationInputs: Map<string, ApiRecord['declarationInputs'][number]>;
   localDeclarationFiles: Set<string>;
   declarationPackages: Map<string, string | undefined>;
+  detail: NonNullable<GeneratorOptions['detail']>;
+  componentCompatPlugins: ReactClassCompatPlugin[];
+  moduleReferences: Map<ts.SourceFile, Array<{ specifier: ts.Node; module?: ts.Symbol }>>;
+  localModuleDependencies: Map<ts.SourceFile, ts.SourceFile[]>;
+  routePaths?: Map<ts.SourceFile, { rank: number; path: string[] }>;
+  typeRenderings: TypeRenderCache;
+  documentation: Map<ts.Symbol | ts.Signature, string>;
+  deprecations: Map<ts.Symbol, string | undefined>;
+  packageManifests: Map<string, DeclarationPackage | undefined>;
+  declarationFingerprints: Map<string, Fingerprint>;
+  canonicalSymbols: Map<string, ApiSymbol>;
 }
 
 interface ImportBinding {
@@ -92,10 +117,11 @@ export function extractDeclarations(
   generator: ApiRecord['generator'],
   schema: ApiRecord['schema'],
   selectedExports?: readonly ExportSelection[],
+  detail: NonNullable<GeneratorOptions['detail']> = 'full',
 ): ExtractionResult {
   const diagnostics: MetadataDiagnostic[] = [];
   if (entries.length === 0) {
-    return { records: [], routes: [], dependencyRouteInputs: new Map(), diagnostics };
+    return { records: [], routes: [], unselectedExportBindings: 0, dependencyRouteInputs: new Map(), diagnostics };
   }
 
   const compilerOptions: ts.CompilerOptions = {
@@ -105,18 +131,34 @@ export function extractDeclarations(
     skipLibCheck: true,
     target: ts.ScriptTarget.ESNext,
   };
-  const program = ts.createProgram({
+  let program = ts.createProgram({
     rootNames: entries.map(entry => entry.declarationPath),
     options: compilerOptions,
   });
+  const legacyPaths: Record<string, string[]> = {};
+  collectUnresolvedDeclarationImports(program, manifest.root, compilerOptions, legacyPaths);
+  if (Object.keys(legacyPaths).length > 0) {
+    compilerOptions.paths = legacyPaths;
+    program = ts.createProgram({ rootNames: entries.map(entry => entry.declarationPath), options: compilerOptions });
+  }
   const checker = program.getTypeChecker();
+  const componentCompatPlugins = COMPONENT_COMPAT_PLUGINS.map(factory => factory(ts, checker));
   diagnostics.push(...collectProgramDiagnostics(program, manifest.root));
   diagnostics.push(...collectUnresolvedDeclarationImports(program, manifest.root, compilerOptions));
 
   const records: ApiRecord[] = [];
   const routes: ExportRoute[] = [];
+  let unselectedExportBindings = 0;
   const dependencyRouteInputs = new Map<string, DependencyInput>();
   const declarationPackages = new Map<string, string | undefined>();
+  const moduleReferences = new Map<ts.SourceFile, Array<{ specifier: ts.Node; module?: ts.Symbol }>>();
+  const localModuleDependencies = new Map<ts.SourceFile, ts.SourceFile[]>();
+  const typeRenderings: TypeRenderCache = { values: new Map(), entries: 0, bytes: 0 };
+  const documentation = new Map<ts.Symbol | ts.Signature, string>();
+  const deprecations = new Map<ts.Symbol, string | undefined>();
+  const packageManifests = new Map<string, DeclarationPackage | undefined>();
+  const declarationFingerprints = new Map<string, Fingerprint>();
+  const canonicalSymbols = new Map<string, ApiSymbol>();
 
   for (const entry of entries) {
     const sourceFile = program.getSourceFile(entry.declarationPath);
@@ -153,6 +195,16 @@ export function extractDeclarations(
       declarationInputs,
       localDeclarationFiles: new Set([entry.declarationRelativePath]),
       declarationPackages,
+      detail,
+      componentCompatPlugins,
+      moduleReferences,
+      localModuleDependencies,
+      typeRenderings,
+      documentation,
+      deprecations,
+      packageManifests,
+      declarationFingerprints,
+      canonicalSymbols,
     };
     trackLocalModuleGraph(context);
     const extracted = extractEntry(
@@ -160,6 +212,7 @@ export function extractDeclarations(
       selectedExports?.filter(selection => selection.entrypoint === entry.entrypoint),
     );
     routes.push(...extracted.routes);
+    unselectedExportBindings += extracted.unselectedExportBindings;
     for (const [routeId, input] of extracted.dependencyRouteInputs) {
       dependencyRouteInputs.set(routeId, input);
     }
@@ -176,6 +229,8 @@ export function extractDeclarations(
         dependencyInputs: [...context.dependencyInputs.values()].sort(compareDependencyInputs),
         completeness: hasErrors
           ? { status: 'partial', reasons: ['semantic extraction reported errors'] }
+          : detail !== 'full'
+          ? { status: 'partial', reasons: ['unrequested declaration detail was not generated'] }
           : { status: 'complete' },
         symbols: extracted.symbols,
         diagnostics: recordDiagnostics.sort(compareDiagnostics),
@@ -188,6 +243,7 @@ export function extractDeclarations(
   return {
     records: records.sort((left, right) => left.recordId.localeCompare(right.recordId)),
     routes: routes.sort(compareRoutes),
+    unselectedExportBindings,
     dependencyRouteInputs,
     diagnostics: diagnostics.sort(compareDiagnostics),
   };
@@ -222,13 +278,15 @@ function extractEntry(
 ): {
   symbols: ApiSymbol[];
   routes: ExportRoute[];
+  unselectedExportBindings: number;
   dependencyRouteInputs: Map<string, DependencyInput>;
 } {
   const moduleSymbol = context.checker.getSymbolAtLocation(context.sourceFile);
   if (!moduleSymbol) {
-    return { symbols: [], routes: [], dependencyRouteInputs: new Map() };
+    return { symbols: [], routes: [], unselectedExportBindings: 0, dependencyRouteInputs: new Map() };
   }
 
+  let unselectedExportBindings = 0;
   const exports = context.checker
     .getExportsOfModule(moduleSymbol)
     .sort((left, right) => left.getName().localeCompare(right.getName()));
@@ -249,15 +307,17 @@ function extractEntry(
     const selectedNamespaces = selectedExports
       ?.filter(selection => selection.export === exportName)
       .map(selection => selection.namespace);
-    if (selectedExports && selectedNamespaces?.length === 0) {
-      continue;
-    }
     const exportKind = getExportKind(exportName, exportSymbol);
     const namespaceExport = exportKind === 'namespace';
     const targetSymbol = namespaceExport ? exportSymbol : resolveAliasedSymbol(exportSymbol, context.checker);
-    const namespaces = (namespaceExport ? ['value' as const] : getSymbolNamespaces(targetSymbol)).filter(
+    const availableNamespaces = namespaceExport ? ['value' as const] : getSymbolNamespaces(targetSymbol);
+    const namespaces = availableNamespaces.filter(
       namespace => !selectedNamespaces || selectedNamespaces.includes(namespace),
     );
+    unselectedExportBindings += availableNamespaces.length - namespaces.length;
+    if (selectedExports && selectedNamespaces?.length === 0) {
+      continue;
+    }
     if (namespaces.length === 0) {
       context.diagnostics.push({
         code: 'generator.exportNamespaceUnknown',
@@ -301,6 +361,7 @@ function extractEntry(
       selectedExports &&
       !selectedExports.some(selection => selection.export === 'default' && selection.namespace === 'value')
     ) {
+      unselectedExportBindings++;
       continue;
     }
     if (routePlans.some(plan => plan.exportName === 'default')) {
@@ -339,7 +400,13 @@ function extractEntry(
   const reachable = collectReachableSymbols([...localTargets.keys()], context);
   assignSymbolIds(reachable, context);
   const symbols = [...reachable]
-    .map(symbol => createApiSymbol(symbol, context))
+    .map(symbol =>
+      createApiSymbol(
+        symbol,
+        context,
+        context.detail === 'full' || (context.detail === 'selected' && !!selectedExports && localTargets.has(symbol)),
+      ),
+    )
     .sort((left, right) => left.id.localeCompare(right.id));
   const routes = routePlans.flatMap(plan =>
     plan.namespaces.map(namespace => {
@@ -361,7 +428,7 @@ function extractEntry(
         typeOnly: plan.typeOnly,
         declarationInputs: collectRouteDeclarationPaths(plan.exportSymbol, plan.targetSymbol, context),
         target,
-        classifications: classifySymbol(plan.exportName, plan.targetSymbol, context.checker),
+        classifications: classifySymbol(plan.exportName, plan.targetSymbol, context),
       } satisfies ExportRoute;
     }),
   );
@@ -377,7 +444,7 @@ function extractEntry(
     }
   }
 
-  return { symbols, routes, dependencyRouteInputs };
+  return { symbols, routes, unselectedExportBindings, dependencyRouteInputs };
 }
 
 function collectRouteDeclarationPaths(
@@ -390,30 +457,61 @@ function collectRouteDeclarationPaths(
       .filter(declaration => isLocalNode(declaration, context.manifest.root))
       .map(declaration => declaration.getSourceFile()),
   );
-  const pending: Array<{ source: ts.SourceFile; path: ts.SourceFile[] }> = [
-    { source: context.sourceFile, path: [context.sourceFile] },
-  ];
-  const visited = new Set<ts.SourceFile>();
-
-  while (pending.length > 0) {
-    const current = pending.shift()!;
-    if (visited.has(current.source)) {
-      continue;
+  if (!context.routePaths) {
+    const paths = new Map<ts.SourceFile, { rank: number; path: string[] }>();
+    const pending: Array<{ source: ts.SourceFile; path: string[] }> = [
+      { source: context.sourceFile, path: [context.entry.declarationRelativePath] },
+    ];
+    for (let cursor = 0; cursor < pending.length; cursor++) {
+      const current = pending[cursor];
+      if (paths.has(current.source)) {
+        continue;
+      }
+      paths.set(current.source, { rank: paths.size, path: current.path });
+      for (const dependency of collectLocalModuleDependencies(current.source, context)) {
+        pending.push({
+          source: dependency,
+          path: [...current.path, toPosix(relative(context.manifest.root, dependency.fileName))],
+        });
+      }
     }
-    visited.add(current.source);
-    if (targets.has(current.source)) {
-      return current.path.map(source => toPosix(relative(context.manifest.root, source.fileName)));
-    }
-    for (const dependency of collectLocalModuleDependencies(current.source, context)) {
-      pending.push({ source: dependency, path: [...current.path, dependency] });
-    }
+    context.routePaths = paths;
   }
-
-  return [context.entry.declarationRelativePath];
+  const selected = [...targets]
+    .map(source => context.routePaths!.get(source))
+    .filter((value): value is { rank: number; path: string[] } => value !== undefined)
+    .sort((first, second) => first.rank - second.rank)[0];
+  return selected?.path ?? [context.entry.declarationRelativePath];
 }
 
 function collectLocalModuleDependencies(source: ts.SourceFile, context: RecordContext): ts.SourceFile[] {
+  const cached = context.localModuleDependencies.get(source);
+  if (cached) {
+    return cached;
+  }
   const dependencies = new Set<ts.SourceFile>();
+  for (const { module } of collectModuleReferences(source, context)) {
+    for (const declaration of module?.declarations ?? []) {
+      const dependency = declaration.getSourceFile();
+      if (dependency.isDeclarationFile && isLocalNode(dependency, context.manifest.root)) {
+        dependencies.add(dependency);
+      }
+    }
+  }
+  const ordered = [...dependencies].sort((left, right) => left.fileName.localeCompare(right.fileName));
+  context.localModuleDependencies.set(source, ordered);
+  return ordered;
+}
+
+function collectModuleReferences(
+  source: ts.SourceFile,
+  context: RecordContext,
+): Array<{ specifier: ts.Node; module?: ts.Symbol }> {
+  const cached = context.moduleReferences.get(source);
+  if (cached) {
+    return cached;
+  }
+  const references: Array<{ specifier: ts.Node; module?: ts.Symbol }> = [];
   const visit = (node: ts.Node): void => {
     const specifier =
       ts.isImportDeclaration(node) || ts.isExportDeclaration(node)
@@ -424,18 +522,13 @@ function collectLocalModuleDependencies(source: ts.SourceFile, context: RecordCo
         ? node.argument.literal
         : undefined;
     if (specifier) {
-      const module = context.checker.getSymbolAtLocation(specifier);
-      for (const declaration of module?.declarations ?? []) {
-        const dependency = declaration.getSourceFile();
-        if (dependency.isDeclarationFile && isLocalNode(dependency, context.manifest.root)) {
-          dependencies.add(dependency);
-        }
-      }
+      references.push({ specifier, module: context.checker.getSymbolAtLocation(specifier) });
     }
     node.forEachChild(visit);
   };
   source.forEachChild(visit);
-  return [...dependencies].sort((left, right) => left.fileName.localeCompare(right.fileName));
+  context.moduleReferences.set(source, references);
+  return references;
 }
 
 function collectReachableSymbols(initial: ts.Symbol[], context: RecordContext): Set<ts.Symbol> {
@@ -458,6 +551,9 @@ function collectReachableSymbols(initial: ts.Symbol[], context: RecordContext): 
     }
 
     reachable.add(symbol);
+    if (context.detail === 'none') {
+      continue;
+    }
     for (const declaration of getSemanticDeclarations(symbol, context.manifest.root)) {
       trackLocalDeclaration(declaration, context);
       visitReferenceNodes(declaration, node => {
@@ -493,13 +589,13 @@ function assignSymbolIds(symbols: Set<ts.Symbol>, context: RecordContext): void 
   }
 }
 
-function createApiSymbol(symbol: ts.Symbol, context: RecordContext): ApiSymbol {
+function createApiSymbol(symbol: ts.Symbol, context: RecordContext, expand: boolean): ApiSymbol {
   const id = expectSymbolId(context, symbol);
   const name = normalizeExportName(symbol.getName());
   const namespaces = getSymbolNamespaces(symbol);
   const semanticDeclarations = getSemanticDeclarations(symbol, context.manifest.root);
   const declarations = semanticDeclarations.map((declaration, index) =>
-    createApiDeclaration(symbol, declaration, `${id}:declaration:${index}`, index, context),
+    createApiDeclaration(symbol, declaration, `${id}:declaration:${index}`, index, context, expand),
   );
   if (declarations.length === 0) {
     declarations.push({
@@ -515,11 +611,12 @@ function createApiSymbol(symbol: ts.Symbol, context: RecordContext): ApiSymbol {
   const type = declarations
     .map(declaration => declaration.type)
     .find((value): value is TypeExpression => value !== undefined);
-  const classifications = classifySymbol(name, symbol, context.checker);
-  const effectiveType = createEffectiveType(symbol, id, context);
-  const props = classifications.some(classification => classification.facet === 'component')
-    ? createComponentProps(symbol, id, context)
-    : undefined;
+  const classifications = classifySymbol(name, symbol, context);
+  const effectiveType = expand ? createEffectiveType(symbol, id, context) : undefined;
+  const props =
+    expand && classifications.some(classification => classification.facet === 'component')
+      ? createComponentProps(symbol, id, context)
+      : undefined;
   const normalizedNamespaces: MetadataNamespace[] = namespaces.length > 0 ? namespaces : ['value'];
   const valueWithoutFingerprint = {
     id,
@@ -533,10 +630,17 @@ function createApiSymbol(symbol: ts.Symbol, context: RecordContext): ApiSymbol {
     classifications,
   };
 
-  return {
+  const fingerprint = fingerprintValue(valueWithoutFingerprint);
+  const existing = context.canonicalSymbols.get(fingerprint.value);
+  if (existing) {
+    return existing;
+  }
+  const created = {
     ...valueWithoutFingerprint,
-    fingerprint: fingerprintValue(valueWithoutFingerprint),
+    fingerprint,
   };
+  context.canonicalSymbols.set(fingerprint.value, created);
+  return created;
 }
 
 function createApiDeclaration(
@@ -545,15 +649,17 @@ function createApiDeclaration(
   id: string,
   overload: number,
   context: RecordContext,
+  expand: boolean,
 ): ApiDeclaration {
   const kind = declarationKind(declaration);
   const namespaces = declarationNamespaces(symbol, declaration);
   const source = sourceLocation(declaration, context.manifest.root);
-  const type = declarationTypeExpression(symbol, declaration, context);
-  const signatures = declarationSignatures(declaration, overload, context);
-  const relationships = declarationRelationships(declaration, context);
-  const documentation = documentationForSymbol(symbol, context.checker);
-  const deprecated = deprecatedForSymbol(symbol);
+  trackLocalDeclaration(declaration, context);
+  const type = expand ? declarationTypeExpression(symbol, declaration, context) : undefined;
+  const signatures = expand ? declarationSignatures(declaration, overload, context) : [];
+  const relationships = expand ? declarationRelationships(declaration, context) : [];
+  const documentation = documentationForSymbol(symbol, context);
+  const deprecated = deprecatedForSymbol(symbol, context);
 
   return {
     id,
@@ -676,7 +782,7 @@ function createSignature(
     declaration && isLocalNode(declaration, context.manifest.root)
       ? sourceLocation(declaration, context.manifest.root)
       : undefined;
-  const documentation = ts.displayPartsToString(signature.getDocumentationComment(context.checker)).trim();
+  const documentation = documentationForSymbol(signature, context);
   const deprecated = deprecatedFromTags(signature.getJsDocTags());
   const kind =
     forcedKind ??
@@ -790,13 +896,40 @@ function createEffectiveType(
     return undefined;
   }
   const type = getDeclaredOrValueType(symbol, declaration, context.checker);
-  return expandEffectiveType(type, symbolId, declaration, context);
+  const effectiveType = expandEffectiveType(type, symbolId, declaration, context);
+  const compatibility = matchComponentCompatibility(symbol, context);
+  if (compatibility && type !== compatibility.constructorType) {
+    const constructors = compatibility.constructorType
+      .getConstructSignatures()
+      .map((signature, index) =>
+        createSignature(signature, signature.getDeclaration(), index, context, 'construct', 'checker'),
+      );
+    return effectiveType
+      ? { ...effectiveType, signatures: [...effectiveType.signatures, ...constructors] }
+      : expandEffectiveType(compatibility.constructorType, symbolId, declaration, context);
+  }
+  return effectiveType;
 }
 
 function createComponentProps(symbol: ts.Symbol, symbolId: string, context: RecordContext): ApiSymbol['props'] {
   const declaration = getSemanticDeclarations(symbol, context.manifest.root)[0];
   if (!declaration) {
     return undefined;
+  }
+  const compatibility = matchComponentCompatibility(symbol, context);
+  if (compatibility) {
+    return compatibility.props.map(({ propsType, overload }) => ({
+      signature: `signature:construct:${overload}`,
+      type: expandEffectiveType(propsType, symbolId, declaration, context) ?? {
+        status:
+          propsType.flags & ts.TypeFlags.Object
+            ? { status: 'complete' as const }
+            : { status: 'unsupported' as const, reasons: ['Props cannot be expanded into members'] },
+        type: checkerTypeExpression(propsType, context.sourceFile, context),
+        members: [],
+        signatures: [],
+      },
+    }));
   }
   const type = getDeclaredOrValueType(symbol, declaration, context.checker);
   return type.getCallSignatures().flatMap((signature, index) => {
@@ -857,7 +990,7 @@ function expandEffectiveType(
     }
     const declarationPackages = getDeclarationPackages(info.declaration ? [info.declaration] : [], context);
     members.push({
-      name: `[${context.checker.typeToString(info.keyType)}]`,
+      name: `[${renderCheckerType(info.keyType, context)}]`,
       kind: 'index',
       optional: false,
       readonly: info.isReadonly,
@@ -905,8 +1038,8 @@ function createEffectiveMember(
   const method = property.declarations?.some(
     candidate => ts.isMethodDeclaration(candidate) || ts.isMethodSignature(candidate),
   );
-  const documentation = documentationForSymbol(property, context.checker);
-  const deprecated = deprecatedForSymbol(property);
+  const documentation = documentationForSymbol(property, context);
+  const deprecated = deprecatedForSymbol(property, context);
   const documentedDefaults = [
     ...new Set(
       property
@@ -934,7 +1067,7 @@ function createEffectiveMember(
     ? {
         text: boundedTypeText(
           type.types
-            .map(branch => context.checker.typeToString(branch, context.sourceFile, TYPE_FORMAT_FLAGS))
+            .map(branch => renderCheckerType(branch, context, context.sourceFile, TYPE_FORMAT_FLAGS))
             .join(' | '),
           context,
           declaration,
@@ -945,7 +1078,7 @@ function createEffectiveMember(
   const presentation = createSlotPresentation(property, type, context);
 
   return {
-    name: property.getName(),
+    name: stableMemberName(property),
     kind: method ? 'method' : 'property',
     optional: (property.flags & ts.SymbolFlags.Optional) !== 0,
     readonly: Boolean(property.declarations?.some(candidate => hasModifier(candidate, ts.SyntaxKind.ReadonlyKeyword))),
@@ -975,6 +1108,17 @@ function createEffectiveMember(
     ...(documentation ? { documentation } : {}),
     ...(deprecated ? { deprecated } : {}),
   };
+}
+
+function stableMemberName(property: ts.Symbol): string {
+  const name = property.getName();
+  if (!/^__@.+@\d+$/.test(name)) {
+    return name;
+  }
+  const authored = property.declarations
+    ?.map(declaration => ts.getNameOfDeclaration(declaration))
+    .find((node): node is ts.ComputedPropertyName => Boolean(node && ts.isComputedPropertyName(node)));
+  return authored?.getText(authored.getSourceFile()) ?? name.replace(/@\d+$/, '');
 }
 
 function createSlotPresentation(
@@ -1059,7 +1203,7 @@ function slotPresentationFromNode(
   }
   trackLocalDeclaration(declaration, context);
   const typeArguments = node.typeArguments ?? [];
-  if (symbol.getName() === 'Slot' && packageNameFromDeclaration(declaration) === '@fluentui/react-utilities') {
+  if (symbol.getName() === 'Slot' && packageNameFromDeclaration(declaration, context) === '@fluentui/react-utilities') {
     const module = context.checker.getSymbolAtLocation(declaration.getSourceFile());
     const exported =
       module && context.checker.getExportsOfModule(module).find(candidate => candidate.getName() === 'Slot');
@@ -1192,7 +1336,7 @@ function getDeclarationPackages(declarations: readonly ts.Declaration[], context
     }
     trackLocalDeclaration(declaration, context);
     if (!context.declarationPackages.has(source.fileName)) {
-      context.declarationPackages.set(source.fileName, packageNameFromDeclaration(declaration));
+      context.declarationPackages.set(source.fileName, packageNameFromDeclaration(declaration, context));
     }
     const packageName = context.declarationPackages.get(source.fileName);
     if (!packageName) {
@@ -1251,12 +1395,39 @@ function checkerTypeExpression(type: ts.Type, location: ts.Node, context: Record
   const renderingLocation = getOwnerRelativeTypeLocation(type, location, context);
   return {
     text: boundedTypeText(
-      context.checker.typeToString(type, renderingLocation, TYPE_FORMAT_FLAGS),
+      renderCheckerType(type, context, renderingLocation, TYPE_FORMAT_FLAGS),
       context,
       renderingLocation,
     ),
     references: [],
   };
+}
+
+function renderCheckerType(
+  type: ts.Type,
+  context: RecordContext,
+  location?: ts.Node,
+  flags?: ts.TypeFormatFlags,
+): string {
+  const cached = context.typeRenderings.values.get(type)?.get(location)?.get(flags);
+  if (cached !== undefined) {
+    return cached;
+  }
+  const text = context.checker.typeToString(type, location, flags);
+  const bytes = Buffer.byteLength(text, 'utf8');
+  if (
+    context.typeRenderings.entries < MAX_RENDER_CACHE_ENTRIES &&
+    context.typeRenderings.bytes + bytes <= MAX_RENDER_CACHE_BYTES
+  ) {
+    const locations = context.typeRenderings.values.get(type) ?? new Map();
+    const renderings = locations.get(location) ?? new Map();
+    renderings.set(flags, text);
+    locations.set(location, renderings);
+    context.typeRenderings.values.set(type, locations);
+    context.typeRenderings.entries++;
+    context.typeRenderings.bytes += bytes;
+  }
+  return text;
 }
 
 function getOwnerRelativeTypeLocation(type: ts.Type, fallback: ts.Node, context: RecordContext): ts.Node {
@@ -1326,17 +1497,25 @@ function resolveDependency(
   fallbackExportName: string,
 ): ResolvedDependency | undefined {
   const declaration = symbol.declarations?.[0];
-  const requested = binding?.requested ?? packageNameFromDeclaration(declaration);
+  const requested = binding?.requested ?? packageNameFromDeclaration(declaration, context);
   if (!requested || requested.startsWith('.')) {
     return undefined;
   }
   const { packageName, entrypoint } = splitPackageSpecifier(requested);
-  const resolvedManifest = declaration ? findPackageManifest(declaration.getSourceFile().fileName) : undefined;
+  const resolvedManifest = declaration
+    ? findPackageManifest(declaration.getSourceFile().fileName, context.packageManifests)
+    : undefined;
   const packageIdentity: PackageIdentity = resolvedManifest
     ? { name: resolvedManifest.name, version: resolvedManifest.version }
     : { name: packageName, version: 'unknown' };
-  const declarationContent = declaration ? readFileSync(declaration.getSourceFile().fileName) : Buffer.from('');
-  const declarationFingerprint = fingerprintText(declarationContent);
+  const declarationFile = declaration?.getSourceFile().fileName;
+  let declarationFingerprint = declarationFile ? context.declarationFingerprints.get(declarationFile) : undefined;
+  if (!declarationFingerprint) {
+    declarationFingerprint = fingerprintText(declarationFile ? readFileSync(declarationFile) : Buffer.from(''));
+    if (declarationFile) {
+      context.declarationFingerprints.set(declarationFile, declarationFingerprint);
+    }
+  }
   const role = findDependencyRole(context.manifest, packageName);
   const range = role ? context.manifest.dependencies[role]?.[packageName] : undefined;
   const importedName = binding?.importedName ?? normalizeExportName(symbol.getName()) ?? fallbackExportName;
@@ -1597,9 +1776,26 @@ function declarationKind(declaration: ts.Declaration): ApiDeclaration['kind'] {
   return 'variable';
 }
 
-function classifySymbol(name: string, symbol: ts.Symbol, checker: ts.TypeChecker): SymbolClassification[] {
+function matchComponentCompatibility(symbol: ts.Symbol, context: RecordContext) {
+  for (const plugin of context.componentCompatPlugins) {
+    const match = plugin.match(symbol);
+    if (match) {
+      return match;
+    }
+  }
+  return undefined;
+}
+
+function classifySymbol(name: string, symbol: ts.Symbol, context: RecordContext): SymbolClassification[] {
   const facets: Array<{ facet: ProductFacet; evidence: string }> = [];
-  if (name.endsWith('Props')) {
+  if (matchComponentCompatibility(symbol, context)) {
+    facets.push({
+      facet: 'component',
+      evidence: 'React class compatibility plugin proved component inheritance and props',
+    });
+  } else if (/^[A-Z]/.test(name) && isComponentType(symbol, context)) {
+    facets.push({ facet: 'component', evidence: 'PascalCase callable API returns JSX or uses ForwardRefComponent' });
+  } else if (name.endsWith('Props')) {
     facets.push({ facet: 'props', evidence: 'export name ends with Props' });
   } else if (name.endsWith('State')) {
     facets.push({ facet: 'state', evidence: 'export name ends with State' });
@@ -1611,8 +1807,6 @@ function classifySymbol(name: string, symbol: ts.Symbol, checker: ts.TypeChecker
     facets.push({ facet: 'hook', evidence: 'export name follows the useX hook convention' });
   } else if (/^render[A-Z]/.test(name)) {
     facets.push({ facet: 'render', evidence: 'export name follows the renderX convention' });
-  } else if (/^[A-Z]/.test(name) && isComponentType(symbol, checker)) {
-    facets.push({ facet: 'component', evidence: 'PascalCase callable API returns JSX or uses ForwardRefComponent' });
   } else {
     facets.push({ facet: 'utility', evidence: 'no stronger product facet matched' });
   }
@@ -1624,18 +1818,19 @@ function classifySymbol(name: string, symbol: ts.Symbol, checker: ts.TypeChecker
   }));
 }
 
-function isComponentType(symbol: ts.Symbol, checker: ts.TypeChecker): boolean {
+function isComponentType(symbol: ts.Symbol, context: RecordContext): boolean {
+  const checker = context.checker;
   const declaration = symbol.valueDeclaration ?? symbol.declarations?.[0];
   if (!declaration) {
     return false;
   }
   const type = checker.getTypeOfSymbolAtLocation(symbol, declaration);
-  const text = checker.typeToString(type, declaration, TYPE_FORMAT_FLAGS);
+  const text = renderCheckerType(type, context, declaration, TYPE_FORMAT_FLAGS);
   if (text.includes('ForwardRefComponent') || text.includes('FunctionComponent')) {
     return true;
   }
   return type.getCallSignatures().some(signature => {
-    const returnType = checker.typeToString(checker.getReturnTypeOfSignature(signature));
+    const returnType = renderCheckerType(checker.getReturnTypeOfSignature(signature), context);
     return /(?:JSXElement|ReactElement|JSX\.Element)/.test(returnType);
   });
 }
@@ -1680,6 +1875,7 @@ function trackLocalDeclaration(node: ts.Node, context: RecordContext): void {
 function trackLocalModuleGraph(context: RecordContext): void {
   const pending = [context.sourceFile];
   const visited = new Set<ts.SourceFile>();
+  const dependencies = new Set<string>();
   while (pending.length) {
     const source = pending.pop()!;
     if (visited.has(source) || !source.isDeclarationFile || !isLocalNode(source, context.manifest.root)) {
@@ -1687,24 +1883,18 @@ function trackLocalModuleGraph(context: RecordContext): void {
     }
     visited.add(source);
     trackLocalDeclaration(source, context);
-    const visit = (node: ts.Node): void => {
-      const specifier =
-        ts.isImportDeclaration(node) || ts.isExportDeclaration(node)
-          ? node.moduleSpecifier
-          : ts.isImportEqualsDeclaration(node) && ts.isExternalModuleReference(node.moduleReference)
-          ? node.moduleReference.expression
-          : ts.isImportTypeNode(node) && ts.isLiteralTypeNode(node.argument)
-          ? node.argument.literal
-          : undefined;
-      if (specifier) {
-        const module = context.checker.getSymbolAtLocation(specifier);
-        for (const declaration of module?.declarations ?? []) {
-          pending.push(declaration.getSourceFile());
+    for (const { specifier, module } of collectModuleReferences(source, context)) {
+      if (context.detail !== 'full' && module && ts.isStringLiteralLike(specifier) && !specifier.text.startsWith('.')) {
+        const key = `${specifier.text}\0${module.declarations?.[0]?.getSourceFile().fileName ?? ''}`;
+        if (!dependencies.has(key)) {
+          dependencies.add(key);
+          resolveDependency(context, module, { requested: specifier.text, importedName: '*', typeOnly: true }, '*');
         }
       }
-      node.forEachChild(visit);
-    };
-    source.forEachChild(visit);
+      for (const declaration of module?.declarations ?? []) {
+        pending.push(declaration.getSourceFile());
+      }
+    }
   }
 }
 
@@ -1743,12 +1933,21 @@ function sourceLocation(node: ts.Node, packageRoot: string): SourceLocation {
   };
 }
 
-function documentationForSymbol(symbol: ts.Symbol, checker: ts.TypeChecker): string {
-  return ts.displayPartsToString(symbol.getDocumentationComment(checker)).trim();
+function documentationForSymbol(symbol: ts.Symbol | ts.Signature, context: RecordContext): string {
+  const cached = context.documentation.get(symbol);
+  if (cached !== undefined) {
+    return cached;
+  }
+  const text = ts.displayPartsToString(symbol.getDocumentationComment(context.checker)).trim();
+  context.documentation.set(symbol, text);
+  return text;
 }
 
-function deprecatedForSymbol(symbol: ts.Symbol): string | undefined {
-  return deprecatedFromTags(symbol.getJsDocTags());
+function deprecatedForSymbol(symbol: ts.Symbol, context: RecordContext): string | undefined {
+  if (!context.deprecations.has(symbol)) {
+    context.deprecations.set(symbol, deprecatedFromTags(symbol.getJsDocTags()));
+  }
+  return context.deprecations.get(symbol);
 }
 
 function deprecatedFromTags(tags: readonly ts.JSDocTagInfo[]): string | undefined {
@@ -1784,8 +1983,25 @@ function collectUnresolvedDeclarationImports(
   program: ts.Program,
   packageRoot: string,
   compilerOptions: ts.CompilerOptions,
+  legacyPaths?: Record<string, string[]>,
 ): MetadataDiagnostic[] {
   const diagnostics = new Map<string, MetadataDiagnostic>();
+  const canonicalFileName = (fileName: string) =>
+    ts.sys.useCaseSensitiveFileNames ? fileName : fileName.toLowerCase();
+  const resolutionCache = ts.createModuleResolutionCache(
+    program.getCurrentDirectory(),
+    canonicalFileName,
+    compilerOptions,
+  );
+  const legacyOptions: ts.CompilerOptions = {
+    module: ts.ModuleKind.CommonJS,
+    moduleResolution: ts.ModuleResolutionKind.Node10,
+  };
+  const legacyResolutionCache = ts.createModuleResolutionCache(
+    program.getCurrentDirectory(),
+    canonicalFileName,
+    legacyOptions,
+  );
   for (const sourceFile of program.getSourceFiles()) {
     if (!sourceFile.isDeclarationFile || !isPathInside(packageRoot, sourceFile.fileName)) {
       continue;
@@ -1803,8 +2019,32 @@ function collectUnresolvedDeclarationImports(
           : undefined;
       if (moduleSpecifier) {
         const requested = moduleSpecifier.text;
-        const resolution = ts.resolveModuleName(requested, sourceFile.fileName, compilerOptions, ts.sys);
+        const resolution = ts.resolveModuleName(
+          requested,
+          sourceFile.fileName,
+          compilerOptions,
+          ts.sys,
+          resolutionCache,
+        );
         if (!resolution.resolvedModule) {
+          const packageName = splitPackageSpecifier(requested).packageName;
+          if (legacyPaths && requested !== packageName && !requested.startsWith('.')) {
+            const legacy = ts.resolveModuleName(
+              requested,
+              sourceFile.fileName,
+              legacyOptions,
+              ts.sys,
+              legacyResolutionCache,
+            ).resolvedModule;
+            if (legacy?.packageId?.name === packageName && legacy.resolvedFileName.endsWith('.d.ts')) {
+              const previous = legacyPaths[requested]?.[0];
+              if (previous && previous !== legacy.resolvedFileName) {
+                throw new Error(`Conflicting installed declaration resolutions for ${requested}`);
+              }
+              legacyPaths[requested] = [legacy.resolvedFileName];
+              return;
+            }
+          }
           const path = toPosix(relative(packageRoot, sourceFile.fileName));
           diagnostics.set(`${path}\0${requested}`, {
             code: 'generator.unresolvedDeclarationImport',
@@ -1830,27 +2070,44 @@ function findDependencyRole(
   );
 }
 
-function findPackageManifest(fileName: string): { name: string; version: string; root: string } | undefined {
+function findPackageManifest(
+  fileName: string,
+  cache?: Map<string, DeclarationPackage | undefined>,
+): DeclarationPackage | undefined {
   let directory = dirname(resolve(fileName));
   const root = resolve(directory, sep);
+  const visited: string[] = [];
+  const remember = (value: DeclarationPackage | undefined): DeclarationPackage | undefined => {
+    for (const location of visited) {
+      cache?.set(location, value);
+    }
+    return value;
+  };
   while (directory !== root) {
+    if (cache?.has(directory)) {
+      return remember(cache.get(directory));
+    }
+    visited.push(directory);
     const candidate = join(directory, 'package.json');
     if (existsSync(candidate)) {
       const value = JSON.parse(readFileSync(candidate, 'utf8')) as { name?: unknown; version?: unknown };
       if (typeof value.name === 'string' && typeof value.version === 'string') {
-        return { name: value.name, version: value.version, root: directory };
+        return remember({ name: value.name, version: value.version, root: directory });
       }
     }
     directory = dirname(directory);
   }
-  return undefined;
+  return remember(undefined);
 }
 
-function packageNameFromDeclaration(declaration: ts.Declaration | undefined): string | undefined {
+function packageNameFromDeclaration(
+  declaration: ts.Declaration | undefined,
+  context: RecordContext,
+): string | undefined {
   if (!declaration) {
     return undefined;
   }
-  return findPackageManifest(declaration.getSourceFile().fileName)?.name;
+  return findPackageManifest(declaration.getSourceFile().fileName, context.packageManifests)?.name;
 }
 
 function splitPackageSpecifier(requested: string): { packageName: string; entrypoint: string } {

@@ -102,6 +102,10 @@ extends:
                 displayName: test
 
               - script: |
+                  CI=true FLUENT_PROD_BUILD=true yarn nx run cli-prototype:verify-v8-local
+                displayName: v8 local acceptance
+
+              - script: |
                   yarn beachball publish -b origin/$(validation.branchPath) --no-push --tag experimental --config scripts/beachball/src/release-tools.config.js
                 displayName: Publish changes and bump versions
                 condition: and(succeeded(), not(${{ parameters.dryRun }}))

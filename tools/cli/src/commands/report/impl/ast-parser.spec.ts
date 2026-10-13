@@ -1,3 +1,5 @@
+import * as fs from 'node:fs';
+import * as os from 'node:os';
 import * as path from 'node:path';
 
 import { TsMorphAstParser } from './ast-parser';
@@ -357,6 +359,63 @@ describe('TsMorphAstParser', () => {
       // FluentProvider comes from node_modules .d.ts — should resolve as component
       const result = aliasParser.classifySymbol(filePath, 'FluentProvider', '@proj/react-components');
       expect(result).toBe('component');
+    });
+  });
+
+  describe('nested project declaration fallback', () => {
+    let root: string;
+
+    beforeEach(() => {
+      root = fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-usage-parser-'));
+      const write = (relativePath: string, content: string) => {
+        const filePath = path.join(root, relativePath);
+        fs.mkdirSync(path.dirname(filePath), { recursive: true });
+        fs.writeFileSync(filePath, content);
+      };
+      write('node_modules/@types/react/package.json', JSON.stringify({ name: '@types/react' }));
+      write(
+        'node_modules/@types/react/index.d.ts',
+        'export interface ReactElement {}\nexport class Component<P> { props: P; render(): ReactElement; }\n',
+      );
+      for (const project of ['first', 'second']) {
+        write(
+          `${project}/tsconfig.json`,
+          JSON.stringify({ compilerOptions: { baseUrl: '.', paths: { '@demo/ui': ['types/index.d.ts'] } } }),
+        );
+        write(`${project}/src/App.tsx`, "import { Widget } from '@demo/ui';\nexport const value = Widget;\n");
+      }
+      write(
+        'first/types/index.d.ts',
+        "import * as React from 'react';\nexport { Widget } from './widget';\nexport declare class RenderOnly { render(): React.ReactElement; }\n",
+      );
+      write(
+        'first/types/widget.d.ts',
+        "import * as React from 'react';\nexport declare class Widget extends React.Component<{ label: string }> {}\n",
+      );
+      write('second/types/index.d.ts', 'export declare const Widget: number;\n');
+    });
+
+    afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
+
+    it('recognizes inherited React classes through aliases without accepting unrelated render methods', () => {
+      const filePath = path.join(root, 'first/src/App.tsx');
+      fs.writeFileSync(filePath, "import { Widget, RenderOnly } from '@demo/ui';\nexport const value = Widget;\n");
+      const nestedParser = new TsMorphAstParser();
+      nestedParser.createProject([filePath], undefined, root);
+
+      expect(nestedParser.classifySymbol(filePath, 'Widget', '@demo/ui')).toBe('component');
+      expect(nestedParser.classifySymbol(filePath, 'RenderOnly', '@demo/ui')).toBe('other');
+    });
+
+    it('resolves the same import independently in each nearest project tsconfig', () => {
+      const first = path.join(root, 'first/src/App.tsx');
+      const second = path.join(root, 'second/src/App.tsx');
+      const nestedParser = new TsMorphAstParser();
+      nestedParser.createProject([first, second], undefined, root);
+
+      expect(nestedParser.classifySymbol(first, 'Widget', '@demo/ui')).toBe('component');
+      expect(nestedParser.classifySymbol(second, 'Widget', '@demo/ui')).toBe('other');
+      expect(nestedParser.getSourceFiles()).toEqual(expect.arrayContaining([first, second]));
     });
   });
 });

@@ -19,6 +19,8 @@
     "@fluentui/api-metadata": "*",
     "@swc/helpers": "^0.5.1",
     "fast-glob": "^3.3.3",
+    "globby": "11.1.0",
+    "ora": "5.3.0",
     "ts-morph": "^23.0.0",
     "yargs": "^17.7.2"
   },

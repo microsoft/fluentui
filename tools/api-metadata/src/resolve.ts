@@ -205,7 +205,15 @@ export class MetadataReader {
     );
     const next = { catalog: dependencyCatalog, route: dependencyRoute };
     routes.push(next);
-    return this._resolveRouteTarget(next, conditions, operation, routes, visited, diagnostics, depth + 1);
+    return this._resolveRouteTarget(
+      next,
+      dependencyRoute.conditions,
+      operation,
+      routes,
+      visited,
+      diagnostics,
+      depth + 1,
+    );
   }
 }
 
@@ -234,13 +242,41 @@ function selectRoute(
 
   if (conditions) {
     const exact = candidates.find(route => arraysEqual(route.conditions, conditions));
-    if (!exact) {
+    if (exact) {
+      return exact;
+    }
+    if (authoritative) {
       throw new MetadataReaderError(
         code,
         `${catalog.instance.package.name} has no ${exportName} route for conditions ${conditions.join(', ')}`,
       );
     }
-    return exact;
+    const requestedBranches = conditions.filter(condition => condition !== 'types' && condition !== 'default');
+    const compatible = candidates
+      .filter(route => {
+        if (!route.conditions.includes('default')) {
+          return false;
+        }
+        const branches = route.conditions.filter(condition => condition !== 'types' && condition !== 'default');
+        return branches.every(condition => requestedBranches.includes(condition));
+      })
+      .sort((left, right) => right.conditions.length - left.conditions.length || left.id.localeCompare(right.id));
+    if (compatible.length === 0) {
+      throw new MetadataReaderError(
+        code,
+        `${catalog.instance.package.name} has no compatible ${exportName} route for conditions ${conditions.join(
+          ', ',
+        )}`,
+      );
+    }
+    const best = compatible.filter(route => route.conditions.length === compatible[0].conditions.length);
+    if (best.some(route => JSON.stringify(route.target) !== JSON.stringify(best[0].target))) {
+      throw new MetadataReaderError(
+        'reader.routeAmbiguous',
+        `${catalog.instance.package.name} has conflicting compatible declaration routes for ${exportName}`,
+      );
+    }
+    return best[0];
   }
 
   if (candidates.length === 1) {

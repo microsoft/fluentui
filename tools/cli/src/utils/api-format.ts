@@ -93,11 +93,16 @@ export function formatApiDetail(
   if (!symbol) {
     lines.push('', 'API detail is unavailable.');
   } else {
-    if (symbol.type) {
+    const signatures = apiSignatures(symbol);
+    const isClassComponent =
+      isComponent &&
+      (declarations.some(declaration => declaration.kind === 'class') ||
+        signatures.some(signature => signature.kind === 'construct'));
+    const propsTitle = isClassComponent ? 'Component Props' : 'Props';
+    if (symbol.type && !isClassComponent) {
       lines.push('', '## Type', '', markdownCodeBlock(symbol.type.text));
     }
-    const signatures = apiSignatures(symbol);
-    if (signatures.length) {
+    if (signatures.length && !isClassComponent) {
       lines.push('', '## Signatures', '', markdownCodeBlock(signatures.map(formatSignature).join('\n')));
     }
     for (const deprecated of new Set(declarations.map(item => item.deprecated).filter(Boolean))) {
@@ -107,17 +112,31 @@ export function formatApiDetail(
       if (!symbol.props) {
         lines.push(
           '',
-          '## Props',
+          `## ${propsTitle}`,
           '',
           'Props unavailable: regenerate this package catalog with the current metadata generator.',
         );
       } else if (symbol.props.length === 0) {
-        lines.push('', '## Props', '', 'Props: none.');
+        lines.push('', `## ${propsTitle}`, '', 'Props: none.');
       }
       for (const props of symbol.props ?? []) {
         const signature = signatures.find(item => item.id === props.signature);
         const suffix = (symbol.props?.length ?? 0) > 1 ? ` — overload ${(signature?.overload ?? 0) + 1}` : '';
-        lines.push('', ...formatMembers(`Props${suffix}`, props.type, includeInherited, expandTypes));
+        lines.push('', ...formatMembers(`${propsTitle}${suffix}`, props.type, includeInherited, expandTypes));
+      }
+      if (isClassComponent) {
+        const constructors = signatures.filter(signature => signature.kind === 'construct');
+        if (symbol.effectiveType) {
+          lines.push(
+            '',
+            ...formatMembers('Class API', symbol.effectiveType, includeInherited, expandTypes, constructors),
+          );
+        } else {
+          lines.push('', '## Class API');
+          if (constructors.length) {
+            lines.push('', '### Constructor', '', markdownCodeBlock(constructors.map(formatSignature).join('\n')));
+          }
+        }
       }
     } else if (symbol.effectiveType) {
       const title = symbol.classifications.some(classification => classification.facet === 'props')
@@ -155,15 +174,29 @@ function formatMembers(
   view: EffectiveTypeView,
   includeInherited: boolean,
   expandTypes: boolean,
+  constructors: readonly ApiSignature[] = [],
 ): string[] {
   const lines = [`## ${title}`, '', ...(view.type ? [`**Type:** ${markdownCode(view.type.text)}`, ''] : [])];
   if (view.status.status === 'unsupported') {
     return [...lines, `Unavailable: ${view.status.reasons?.join('; ') ?? 'No verified expanded type is available'}`];
   }
-  lines.push(`${view.members.length} members. **(required)** marks required members; — means no documented default.`);
+  if (constructors.length) {
+    lines.push('### Constructor', '', markdownCodeBlock(constructors.map(formatSignature).join('\n')), '');
+  }
+  const componentProps = title.startsWith('Component Props');
+  lines.push(
+    `${view.members.length} ${
+      componentProps ? 'component props' : 'members'
+    }. **(required)** marks required members; — means no documented default.`,
+  );
   const { control, inherited, unclassified } = groupMembers(view.members);
   if (control.length) {
-    lines.push('', `### Control-defined (${control.length})`, '', ...formatMemberTable(control, title, expandTypes));
+    lines.push(
+      '',
+      `### ${componentProps ? 'Component-defined Props' : 'Control-defined'} (${control.length})`,
+      '',
+      ...formatMemberTable(control, title, expandTypes),
+    );
   }
   if (unclassified.length) {
     lines.push(
@@ -205,7 +238,7 @@ function formatMembers(
 
 function formatMemberTable(members: readonly EffectiveMember[], title: string, expandTypes: boolean): string[] {
   return markdownTable(
-    [title.startsWith('Props') ? 'Prop' : 'Member', 'Type', 'Default', 'Description'],
+    [title.includes('Props') ? 'Prop' : 'Member', 'Type', 'Default', 'Description'],
     members.map(member => [
       markdownCode(member.name),
       markdownCode(memberType(member, expandTypes) ?? '(type unavailable)'),

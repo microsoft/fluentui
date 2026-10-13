@@ -1,7 +1,9 @@
 import { execSync } from 'node:child_process';
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import * as fg from 'fast-glob';
+import * as globby from 'globby';
 
 function normalizeGlobPath(filePath: string): string {
   return filePath.replace(/\\/g, '/');
@@ -9,7 +11,7 @@ function normalizeGlobPath(filePath: string): string {
 
 /**
  * Discover `.ts` and `.tsx` source files under the given root path,
- * respecting `.gitignore` rules by using `git ls-files`.
+ * respecting `.gitignore` rules via Git or filesystem discovery.
  *
  * @param rootPath - The root directory to search for source files.
  * @returns Array of absolute file paths.
@@ -35,9 +37,28 @@ export function discoverSourceFiles(rootPath: string): string[] {
       .filter(file => /\.tsx?$/.test(file))
       .filter(file => !file.endsWith('.d.ts'))
       .map(file => path.resolve(absoluteRoot, file));
-  } catch {
-    // Fallback: if git is not available, return empty
-    return [];
+  } catch (error) {
+    const gitError = error as NodeJS.ErrnoException & { status?: number; stderr?: string | Buffer };
+    const stderr = String(gitError.stderr ?? '');
+    const outsideRepository = gitError.status === 128 && /^fatal: not a git repository\b/m.test(stderr);
+    const gitUnavailable =
+      (gitError.code === 'ENOENT' && fs.existsSync(absoluteRoot)) ||
+      (gitError.status === 127 && /git: (?:command )?not found|['"]?git['"]? is not recognized/i.test(stderr));
+
+    if (outsideRepository || gitUnavailable) {
+      return globby
+        .sync(['**/*.ts', '**/*.tsx'], {
+          cwd: absoluteRoot,
+          absolute: true,
+          dot: true,
+          onlyFiles: true,
+          gitignore: true,
+          ignore: ['**/node_modules/**', '**/.git/**'],
+        })
+        .filter(file => !file.endsWith('.d.ts'));
+    }
+
+    throw new Error(`git source discovery failed in ${absoluteRoot}: ${String(error)}`);
   }
 }
 

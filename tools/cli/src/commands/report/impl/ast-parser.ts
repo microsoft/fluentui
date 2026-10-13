@@ -1,11 +1,16 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import {
   Project,
   SyntaxKind,
   Node,
+  ts,
   type SourceFile,
   type JsxOpeningElement,
   type JsxSelfClosingElement,
 } from 'ts-morph';
+
+import type { ReactClassCompatPlugin } from '@fluentui/api-metadata';
 
 import type {
   AstParser,
@@ -48,46 +53,88 @@ const TYPE_NAME_SUFFIXES = [
  */
 export class TsMorphAstParser implements AstParser {
   private project: Project | null = null;
+  private fileProjects = new Map<string, Project>();
+  private fileContexts = new Map<string, string>();
+  private classPlugins = new WeakMap<Project, ReactClassCompatPlugin>();
 
-  /** Cache classification results per (moduleSpecifier::symbolName) for consistency across files. */
   private classificationCache = new Map<string, SymbolClassification>();
 
   /** The original user source file paths (excludes resolved dependencies). */
   private userFilePaths = new Set<string>();
 
   public createProject(filePaths: string[], tsConfigPath?: string, rootPath?: string): void {
-    if (tsConfigPath) {
-      this.project = new Project({ tsConfigFilePath: tsConfigPath, skipAddingFilesFromTsConfig: true });
-    } else {
-      this.project = new Project({
-        compilerOptions: {
-          jsx: 2 /* JsxEmit.React */,
-          allowJs: true,
-          moduleResolution: 2 /* ModuleResolutionKind.NodeJs */,
-          ...(rootPath ? { baseUrl: rootPath } : {}),
-        },
-        skipAddingFilesFromTsConfig: true,
-      });
+    const root = rootPath
+      ? path.resolve(rootPath)
+      : tsConfigPath
+      ? path.dirname(path.resolve(tsConfigPath))
+      : undefined;
+    const contexts = new Map<string, { config?: string; baseUrl?: string; files: string[] }>();
+    this.project = null;
+    this.fileProjects.clear();
+    this.fileContexts.clear();
+    this.classPlugins = new WeakMap();
+    this.userFilePaths.clear();
+    this.classificationCache.clear();
+
+    for (const filePath of filePaths) {
+      let directory = path.dirname(path.resolve(filePath));
+      let config: string | undefined;
+      let packageRoot: string | undefined;
+      while (true) {
+        if (!config) {
+          for (const name of ['tsconfig.json', 'tsconfig.base.json']) {
+            const candidate = path.join(directory, name);
+            if (fs.existsSync(candidate)) {
+              config = candidate;
+              break;
+            }
+          }
+        }
+        if (!packageRoot && fs.existsSync(path.join(directory, 'package.json'))) {
+          packageRoot = directory;
+        }
+        if (directory === root || path.dirname(directory) === directory) {
+          break;
+        }
+        directory = path.dirname(directory);
+      }
+      config ??= tsConfigPath;
+      const context = `${packageRoot ?? root ?? path.dirname(filePath)}\0${config ?? ''}`;
+      const group = contexts.get(context) ?? { config, baseUrl: packageRoot ?? rootPath, files: [] };
+      group.files.push(filePath);
+      contexts.set(context, group);
+      this.fileContexts.set(path.resolve(filePath), context);
     }
 
-    this.project.addSourceFilesAtPaths(filePaths);
+    for (const group of contexts.values()) {
+      const project = group.config
+        ? new Project({ tsConfigFilePath: group.config, skipAddingFilesFromTsConfig: true })
+        : new Project({
+            compilerOptions: {
+              jsx: 2 /* JsxEmit.React */,
+              allowJs: true,
+              moduleResolution: 2 /* ModuleResolutionKind.NodeJs */,
+              ...(group.baseUrl ? { baseUrl: group.baseUrl } : {}),
+            },
+            skipAddingFilesFromTsConfig: true,
+          });
+      project.addSourceFilesAtPaths(group.files);
+      for (const sourceFile of project.getSourceFiles()) {
+        const filePath = sourceFile.getFilePath();
+        this.fileProjects.set(filePath, project);
+        this.userFilePaths.add(filePath);
+      }
+      project.resolveSourceFileDependencies();
+      this.project ??= project;
+    }
 
-    // Track which files are the user's source files before resolving dependencies
-    this.userFilePaths = new Set(this.project.getSourceFiles().map(sf => sf.getFilePath()));
-
-    // Resolve import dependencies so ts-morph can follow path aliases
-    // and node_modules .d.ts files for symbol classification.
-    this.project.resolveSourceFileDependencies();
-
-    this.classificationCache.clear();
+    this.project ??= new Project({ skipAddingFilesFromTsConfig: true });
   }
 
   public getSourceFiles(): string[] {
     this._ensureProject();
     // Only return user source files, not resolved library dependencies
-    return this.project!.getSourceFiles()
-      .map(sf => sf.getFilePath())
-      .filter(fp => this.userFilePaths.has(fp));
+    return [...this.userFilePaths];
   }
 
   public getImportDeclarations(filePath: string): ImportInfo[] {
@@ -286,7 +333,7 @@ export class TsMorphAstParser implements AstParser {
 
   public classifySymbol(filePath: string, symbolName: string, moduleSpecifier: string): SymbolClassification {
     // Check cache first for consistency across files
-    const cacheKey = `${moduleSpecifier}::${symbolName}`;
+    const cacheKey = `${this.fileContexts.get(path.resolve(filePath)) ?? filePath}\0${moduleSpecifier}::${symbolName}`;
     const cached = this.classificationCache.get(cacheKey);
     if (cached) {
       return cached;
@@ -396,7 +443,7 @@ export class TsMorphAstParser implements AstParser {
         return this._fallbackClassify(symbolName);
       }
 
-      return this._classifyFromDeclarations(dtsDeclarations, symbolName);
+      return this._classifyFromDeclarations(dtsDeclarations, symbolName, aliased);
     } catch {
       return this._fallbackClassify(symbolName);
     }
@@ -408,6 +455,7 @@ export class TsMorphAstParser implements AstParser {
   private _classifyFromDeclarations(
     declarations: ReadonlyArray<import('ts-morph').Node>,
     symbolName: string,
+    symbol: import('ts-morph').Symbol,
   ): SymbolClassification {
     for (const decl of declarations) {
       // Pure type: interface or type alias
@@ -440,10 +488,23 @@ export class TsMorphAstParser implements AstParser {
         continue;
       }
 
-      // Class declaration: check for render() method
       if (Node.isClassDeclaration(decl)) {
-        const renderMethod = decl.getMethod('render');
-        if (renderMethod && this._returnsJsx(renderMethod.getReturnType().getText())) {
+        const project = decl.getSourceFile().getProject();
+        let plugin = this.classPlugins.get(project);
+        if (!plugin) {
+          const { createReactClassCompatPlugin } = require('@fluentui/api-metadata/generator') as {
+            createReactClassCompatPlugin(
+              typescript: typeof import('typescript'),
+              checker: import('typescript').TypeChecker,
+            ): ReactClassCompatPlugin;
+          };
+          plugin = createReactClassCompatPlugin(
+            ts as unknown as typeof import('typescript'),
+            project.getTypeChecker().compilerObject as unknown as import('typescript').TypeChecker,
+          );
+          this.classPlugins.set(project, plugin);
+        }
+        if (plugin.match(symbol.compilerSymbol as import('typescript').Symbol)) {
           return 'component';
         }
         continue;
@@ -501,7 +562,7 @@ export class TsMorphAstParser implements AstParser {
 
   private _getSourceFile(filePath: string): SourceFile | undefined {
     this._ensureProject();
-    return this.project!.getSourceFile(filePath);
+    return this.fileProjects.get(path.resolve(filePath))?.getSourceFile(filePath);
   }
 
   /**

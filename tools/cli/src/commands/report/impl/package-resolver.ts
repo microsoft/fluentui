@@ -4,6 +4,20 @@ import { execSync } from 'node:child_process';
 
 import type { SystemInfo, ResolvedPackage, DuplicatePackage } from './types';
 import { LEGACY_INFO_PACKAGE_PATTERNS, LEGACY_USAGE_PACKAGE_PATTERNS, matchesPackagePattern } from '../../../utils';
+import { parsePackageSpecifier } from '../../../utils/package-inventory';
+
+export function groupImportPathsByPackage(importPaths: readonly string[]): Array<[string, string[]]> {
+  const groups = new Map<string, string[]>();
+  for (const importPath of importPaths) {
+    const packageName = parsePackageSpecifier(importPath)?.packageName ?? importPath;
+    const entries = groups.get(packageName) ?? [];
+    entries.push(importPath);
+    groups.set(packageName, entries);
+  }
+  return [...groups.entries()]
+    .sort(([first], [second]) => first.localeCompare(second))
+    .map(([packageName, entries]) => [packageName, entries.sort()]);
+}
 
 /**
  * Checks if a package name matches our reporting criteria (short report — includes 3rd-party).

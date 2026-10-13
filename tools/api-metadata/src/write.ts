@@ -37,7 +37,7 @@ export function writeGeneratedMetadata(
     }
     return {
       path: resolveContained(root, descriptor.path),
-      serialized: serializeMetadata(record),
+      record,
     };
   });
   const indexPath = join(root, 'index.json');
@@ -65,7 +65,7 @@ export function writeGeneratedMetadata(
     assertExistingPathContained(root, physicalRoot, outputPath);
   }
   for (const write of recordWrites) {
-    writeFileSync(write.path, write.serialized, 'utf8');
+    writeFileSync(write.path, serializeMetadata(write.record), 'utf8');
   }
   writeFileSync(indexPath, serializeMetadata(index), 'utf8');
   for (const obsoletePath of obsoletePaths) {

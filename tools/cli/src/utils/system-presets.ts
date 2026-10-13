@@ -6,6 +6,12 @@ export interface CatalogSystemPreset {
 }
 
 export const CATALOG_SYSTEM_PRESETS: Readonly<Record<string, CatalogSystemPreset>> = {
+  'fluent-v8': {
+    name: 'fluent-v8',
+    catalogs: ['@fluentui/react'],
+    packages: ['@fluentui/react'],
+    exclusions: [],
+  },
   'fluent-v9': {
     name: 'fluent-v9',
     catalogs: ['@fluentui/react-components'],

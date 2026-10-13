@@ -1,9 +1,19 @@
 import * as fs from 'node:fs';
+import * as os from 'node:os';
 import * as path from 'node:path';
 
 import { getCatalogInventory } from './catalog-inventory';
+import * as packageInventory from './package-inventory';
+import { CATALOG_SYSTEM_PRESETS } from './system-presets';
 
-const testRoot = path.join(process.cwd(), '.catalog-test-data', 'inventory');
+jest.mock('./package-inventory', () => ({
+  ...jest.requireActual('./package-inventory'),
+  resolveInstalledPackage: jest.fn(
+    jest.requireActual<typeof import('./package-inventory')>('./package-inventory').resolveInstalledPackage,
+  ),
+}));
+
+const testRoot = path.join(os.tmpdir(), `fluentui-cli-catalog-inventory-${process.pid}`);
 
 describe('catalog inventory', () => {
   beforeEach(() => {
@@ -13,6 +23,14 @@ describe('catalog inventory', () => {
 
   afterAll(() => {
     fs.rmSync(testRoot, { recursive: true, force: true });
+  });
+
+  afterEach(() => {
+    jest
+      .mocked(packageInventory.resolveInstalledPackage)
+      .mockImplementation(
+        jest.requireActual<typeof import('./package-inventory')>('./package-inventory').resolveInstalledPackage,
+      );
   });
 
   it('loads headless and private local catalogs and applies replacement, exclusions, and subpath selection', () => {
@@ -79,6 +97,169 @@ describe('catalog inventory', () => {
     const required = getCatalogInventory({ cwd: testRoot, system: ['product'], metadataMode: 'required' });
     expect(required.selection.matches('@company/ui-button/subpath')).toBe(true);
     expect(required.diagnostics[0].severity).toBe('error');
+  });
+
+  it.each(['prefer', 'required', 'off'] as const)(
+    'skips unavailable automatic presets without roots or diagnostics in %s mode',
+    metadataMode => {
+      hidePresetCatalogs();
+      fs.writeFileSync(path.join(testRoot, 'package.json'), JSON.stringify({ name: 'app' }));
+
+      const inventory = getCatalogInventory({ cwd: testRoot, metadataMode });
+      expect(inventory.roots).toEqual([]);
+      expect(inventory.diagnostics).toEqual([]);
+      expect(inventory.selection.packages).toEqual([]);
+    },
+  );
+
+  it('reports an unavailable explicitly selected preset and package', () => {
+    hidePresetCatalogs();
+    fs.writeFileSync(path.join(testRoot, 'package.json'), JSON.stringify({ name: 'app' }));
+
+    const selectedSystem = getCatalogInventory({ cwd: testRoot, system: ['headless'], metadataMode: 'required' });
+    expect(selectedSystem.roots.map(root => root.requestedPackage)).toEqual([
+      '@fluentui/react-headless-components-preview',
+    ]);
+    expect(selectedSystem.diagnostics).toEqual([
+      expect.objectContaining({ code: 'catalog.packageNotFound', severity: 'error', system: 'headless' }),
+    ]);
+
+    const selectedPackage = getCatalogInventory({ cwd: testRoot, package: '@company/missing' });
+    expect(selectedPackage.roots.map(root => root.requestedPackage)).toEqual(['@company/missing']);
+    expect(selectedPackage.diagnostics).toEqual([
+      expect.objectContaining({ code: 'catalog.packageNotFound', package: '@company/missing' }),
+    ]);
+  });
+
+  it('narrows catalog roots and diagnostics to the explicitly selected package', () => {
+    hidePresetCatalogs();
+    fs.writeFileSync(path.join(testRoot, 'package.json'), JSON.stringify({ name: 'app' }));
+    fs.writeFileSync(
+      path.join(testRoot, 'fluentui.config.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        systems: {
+          product: { catalogs: [{ package: '@company/ui-button' }], packages: ['@company/ui-*'] },
+          unrelated: { catalogs: [{ package: '@company/unrelated' }], packages: ['@company/other-*'] },
+        },
+      }),
+    );
+
+    const inventory = getCatalogInventory({ cwd: testRoot, package: '@company/ui-button', metadataMode: 'required' });
+    expect(inventory.roots.map(root => root.requestedPackage)).toEqual(['@company/ui-button']);
+    expect(inventory.diagnostics).toEqual([
+      expect.objectContaining({ code: 'catalog.packageNotFound', package: '@company/ui-button', system: 'product' }),
+    ]);
+    expect(inventory.selection.systems).toEqual(['product']);
+  });
+
+  it('keeps a configured provider without package patterns when narrowing to a consumer package', () => {
+    hidePresetCatalogs();
+    const provider = writeCatalog('@company/design-system', 'product');
+    fs.writeFileSync(path.join(testRoot, 'package.json'), JSON.stringify({ name: 'app' }));
+    fs.writeFileSync(
+      path.join(testRoot, 'fluentui.config.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        systems: {
+          product: { catalogs: [{ path: path.relative(testRoot, provider.indexPath) }] },
+          unrelated: { catalogs: [{ package: '@company/unrelated' }], packages: ['@company/other-*'] },
+        },
+      }),
+    );
+
+    const inventory = getCatalogInventory({ cwd: testRoot, package: '@company/ui-button' });
+    expect(inventory.selection.systems).toEqual(['product']);
+    expect(inventory.roots.map(root => root.requestedPackage)).toEqual([
+      '@company/design-system',
+      '@company/ui-button',
+    ]);
+    expect(inventory.roots[0].catalog).toBeDefined();
+    expect(inventory.diagnostics.map(diagnostic => diagnostic.package)).toEqual(['@company/ui-button']);
+  });
+
+  it('discovers the v8 library and matches only its public package and subpaths', () => {
+    hidePresetCatalogs(['@fluentui/react']);
+    fs.writeFileSync(
+      path.join(testRoot, 'package.json'),
+      JSON.stringify({ name: 'app', dependencies: { '@fluentui/react': '8.0.0' } }),
+    );
+    writePlainPackage('@fluentui/react');
+
+    const preferred = getCatalogInventory({ cwd: testRoot });
+    expect(preferred.roots.map(root => root.requestedPackage)).toEqual(['@fluentui/react']);
+    expect(preferred.selection.systems).toEqual(['fluent-v8']);
+    expect(preferred.selection.matches('@fluentui/react')).toBe(true);
+    expect(preferred.selection.matches('@fluentui/react/lib/Button')).toBe(true);
+    expect(preferred.selection.matches('@fluentui/react-components')).toBe(false);
+    expect(preferred.selection.matches('@fluentui/react-button')).toBe(false);
+    expect(preferred.selection.matches('@fluentui/react-headless-components-preview')).toBe(false);
+    expect(preferred.roots[0].catalog).toBeUndefined();
+    expect(preferred.diagnostics).toEqual([
+      expect.objectContaining({ code: 'catalog.metadataUnavailable', severity: 'warning', system: 'fluent-v8' }),
+    ]);
+
+    const required = getCatalogInventory({ cwd: testRoot, system: ['fluent-v8'], metadataMode: 'required' });
+    expect(required.diagnostics).toEqual([
+      expect.objectContaining({ code: 'catalog.metadataUnavailable', severity: 'error', system: 'fluent-v8' }),
+    ]);
+
+    const off = getCatalogInventory({ cwd: testRoot, metadataMode: 'off' });
+    expect(off.roots).toHaveLength(1);
+    expect(off.diagnostics).toEqual([]);
+
+    const selectedSubpath = getCatalogInventory({
+      cwd: testRoot,
+      package: '@fluentui/react/lib/Button',
+      metadataMode: 'off',
+    });
+    expect(selectedSubpath.selection.explicitPackage).toBe('@fluentui/react');
+    expect(selectedSubpath.selection.systems).toEqual(['fluent-v8']);
+    expect(selectedSubpath.roots.map(root => root.requestedPackage)).toEqual(['@fluentui/react']);
+  });
+
+  it('retains configured missing catalogs for matching packages and explicitly requested systems', () => {
+    hidePresetCatalogs();
+    fs.writeFileSync(path.join(testRoot, 'package.json'), JSON.stringify({ name: 'app' }));
+    fs.writeFileSync(
+      path.join(testRoot, 'fluentui.config.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        systems: {
+          product: {
+            catalogs: [{ path: './missing-catalog' }],
+            packages: ['@company/ui-*'],
+          },
+          unrelated: { catalogs: [{ package: '@company/unrelated' }], packages: ['@company/other-*'] },
+        },
+      }),
+    );
+
+    const automatic = getCatalogInventory({ cwd: testRoot, metadataMode: 'off' });
+    expect(automatic.diagnostics.map(diagnostic => diagnostic.code)).toEqual([
+      'catalog.localPathNotFound',
+      'catalog.packageNotFound',
+    ]);
+
+    const narrowed = getCatalogInventory({ cwd: testRoot, package: '@company/ui-button', metadataMode: 'required' });
+    expect(narrowed.roots.map(root => root.source)).toEqual(['dependency', 'local']);
+    expect(narrowed.diagnostics.map(diagnostic => diagnostic.code)).toEqual([
+      'catalog.localPathNotFound',
+      'catalog.packageNotFound',
+    ]);
+    expect(narrowed.diagnostics.every(diagnostic => diagnostic.severity === 'error')).toBe(true);
+
+    const explicitSystem = getCatalogInventory({
+      cwd: testRoot,
+      system: ['unrelated'],
+      package: '@company/ui-button',
+      metadataMode: 'required',
+    });
+    expect(explicitSystem.selection.systems).toEqual(['unrelated']);
+    expect(explicitSystem.diagnostics.map(diagnostic => diagnostic.package)).toEqual([
+      '@company/unrelated',
+      '@company/ui-button',
+    ]);
   });
 
   it('discovers a declared standalone catalog from its installed marker and system identity', () => {
@@ -179,6 +360,21 @@ describe('catalog inventory', () => {
     );
   });
 });
+
+function hidePresetCatalogs(available: string[] = []): void {
+  const original =
+    jest.requireActual<typeof import('./package-inventory')>('./package-inventory').resolveInstalledPackage;
+  const presetCatalogs = new Set(
+    Object.values(CATALOG_SYSTEM_PRESETS)
+      .flatMap(preset => preset.catalogs)
+      .filter(packageName => !available.includes(packageName)),
+  );
+  jest
+    .mocked(packageInventory.resolveInstalledPackage)
+    .mockImplementation((packageName, importer, dependencyKind) =>
+      presetCatalogs.has(packageName) ? undefined : original(packageName, importer, dependencyKind),
+    );
+}
 
 function writeCatalog(packageName: string, system?: string, suffix = ''): { root: string; indexPath: string } {
   const root = path.join(testRoot, 'catalogs', `${packageName.replace('/', '__')}${suffix}`);

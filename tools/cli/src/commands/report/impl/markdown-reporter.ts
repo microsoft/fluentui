@@ -6,11 +6,11 @@ import type {
   TypeUsage,
   UnknownSymbolUsage,
 } from './types';
+import { markdownCode, markdownTable } from '../../../utils/markdown';
+import { groupImportPathsByPackage } from './package-resolver';
 
 /**
  * Format UsageReportOutput as a structured Markdown report.
- * Markdown output is intentionally concise — no prop details.
- * Use the HTML reporter for comprehensive prop analysis.
  */
 export function formatMetadataAsMarkdown(data: UsageReportOutput): string {
   const { legend, fileMap, packages: metadata } = data;
@@ -40,15 +40,14 @@ export function formatMetadataAsMarkdown(data: UsageReportOutput): string {
     return lines.join('\n');
   }
 
-  // Summary tables grouped by npm scope
   lines.push('## Summary');
   lines.push('');
 
-  const scopeGroups = groupByScope(packageNames);
-  for (const [scope, names] of scopeGroups) {
-    lines.push(`### ${scope}`);
+  const packageGroups = groupImportPathsByPackage(packageNames);
+  for (const [packageName, names] of packageGroups) {
+    lines.push(`### ${packageName}`);
     lines.push('');
-    lines.push('| Package | Components | Hooks | Types | Others | Unknowns | Total Imports |');
+    lines.push('| Import Path | Components | Hooks | Types | Others | Unknowns | Total Imports |');
     lines.push('| ------- | ---------- | ----- | ----- | ------ | -------- | ------------- |');
 
     for (const name of names) {
@@ -62,30 +61,32 @@ export function formatMetadataAsMarkdown(data: UsageReportOutput): string {
     lines.push('');
   }
 
-  // Detailed sections per package
-  for (const name of packageNames) {
-    const pkg = metadata[name];
-    lines.push(`## \`${name}\``);
+  for (const [packageName, importPaths] of packageGroups) {
+    lines.push(`## ${markdownCode(packageName)}`);
     lines.push('');
+    for (const importPath of importPaths) {
+      const pkg = metadata[importPath];
+      lines.push(`### ${markdownCode(importPath)}`, '');
 
-    if (Object.keys(pkg.components).length > 0) {
-      lines.push(...formatSymbolsWithCount('Components', pkg.components));
-    }
+      if (Object.keys(pkg.components).length > 0) {
+        lines.push(...formatSymbolsWithCount('Components', pkg.components));
+      }
 
-    if (Object.keys(pkg.hooks).length > 0) {
-      lines.push(...formatSymbolsWithCount('Hooks', pkg.hooks));
-    }
+      if (Object.keys(pkg.hooks).length > 0) {
+        lines.push(...formatSymbolsWithCount('Hooks', pkg.hooks));
+      }
 
-    if (Object.keys(pkg.types).length > 0) {
-      lines.push(...formatTypesSection(pkg.types));
-    }
+      if (Object.keys(pkg.types).length > 0) {
+        lines.push(...formatTypesSection(pkg.types));
+      }
 
-    if (Object.keys(pkg.others).length > 0) {
-      lines.push(...formatSymbolsWithCount('Other Exports', pkg.others));
-    }
+      if (Object.keys(pkg.others).length > 0) {
+        lines.push(...formatSymbolsWithCount('Other Exports', pkg.others));
+      }
 
-    if (Object.keys(pkg.unknowns).length > 0) {
-      lines.push(...formatUnknownsSection(pkg.unknowns));
+      if (Object.keys(pkg.unknowns).length > 0) {
+        lines.push(...formatUnknownsSection(pkg.unknowns));
+      }
     }
   }
 
@@ -97,7 +98,7 @@ function formatSymbolsWithCount(
   symbols: Record<string, ComponentUsage | HookUsage | FunctionUsage>,
 ): string[] {
   const lines: string[] = [];
-  lines.push(`### ${title}`);
+  lines.push(`#### ${title}`);
   lines.push('');
   lines.push('| Symbol | Usages |');
   lines.push('| ------ | ------ |');
@@ -106,12 +107,33 @@ function formatSymbolsWithCount(
     lines.push(`| \`${name}\` | ${usage.count} |`);
   }
   lines.push('');
+  if (title === 'Components') {
+    for (const [name, usage] of Object.entries(symbols).sort(([, first], [, second]) => second.count - first.count)) {
+      const observedProps = Object.entries(usage.props).sort(([, first], [, second]) => second.count - first.count);
+      if (observedProps.length === 0) {
+        continue;
+      }
+      lines.push(
+        `##### ${markdownCode(name)} Observed Props`,
+        '',
+        ...markdownTable(
+          ['Prop', 'Usages', 'Observed Values'],
+          observedProps.map(([prop, observed]) => [
+            markdownCode(prop),
+            String(observed.count),
+            observed.values.length ? observed.values.map(markdownCode).join(', ') : '—',
+          ]),
+        ),
+        '',
+      );
+    }
+  }
   return lines;
 }
 
 function formatTypesSection(types: Record<string, TypeUsage>): string[] {
   const lines: string[] = [];
-  lines.push('### Types');
+  lines.push('#### Types');
   lines.push('');
   lines.push('| Symbol | Usages | typeof | Type Args |');
   lines.push('| ------ | ------ | ------ | --------- |');
@@ -125,7 +147,7 @@ function formatTypesSection(types: Record<string, TypeUsage>): string[] {
 
 function formatUnknownsSection(unknowns: Record<string, UnknownSymbolUsage>): string[] {
   const lines: string[] = [];
-  lines.push('### Unknowns');
+  lines.push('#### Unknowns');
   lines.push('');
   lines.push(
     '> Symbols whose `.d.ts` declarations could not be resolved. Install types or add declarations to improve classification.',
@@ -139,21 +161,4 @@ function formatUnknownsSection(unknowns: Record<string, UnknownSymbolUsage>): st
   }
   lines.push('');
   return lines;
-}
-
-/**
- * Group package names by npm scope. Scoped packages (@scope/name) are grouped
- * under their scope; unscoped packages go under "Other Packages".
- * Returns entries sorted by scope name, with each group's packages sorted alphabetically.
- */
-function groupByScope(packageNames: string[]): Array<[string, string[]]> {
-  const groups = new Map<string, string[]>();
-  for (const name of packageNames) {
-    const scope = name.startsWith('@') ? name.split('/')[0] : 'Other Packages';
-    if (!groups.has(scope)) {
-      groups.set(scope, []);
-    }
-    groups.get(scope)!.push(name);
-  }
-  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
 }
