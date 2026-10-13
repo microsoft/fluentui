@@ -5,13 +5,18 @@
   "description": "Build a scoped Storybook or capture its visual regression screenshots.",
   "type": "object",
   "properties": {
-    "mode": { "type": "string", "enum": ["build", "capture"] },
+    "mode": { "type": "string", "enum": ["build", "build-shared", "capture"] },
     "hostRoot": { "type": "string", "description": "Workspace-relative root of the host Storybook." },
     "outputPath": { "type": "string", "description": "Workspace-relative group Storybook or screenshot output." },
     "stories": {
       "type": "array",
       "items": { "type": "string" },
       "description": "Host-relative Storybook story globs for build mode."
+    },
+    "selectedProjects": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Selected virtual project names for the shared build."
     },
     "addons": {
       "type": "array",
@@ -24,6 +29,10 @@
       "description": "Host-relative preview annotations to append in build mode."
     },
     "storybookPath": { "type": "string", "description": "Workspace-relative built Storybook path for capture mode." },
+    "storybookHash": {
+      "type": "string",
+      "description": "Compiled shared Storybook fingerprint included in capture cache keys."
+    },
     "concurrency": { "type": "integer", "minimum": 1, "default": 1 }
   },
   "required": ["mode", "hostRoot", "outputPath"]

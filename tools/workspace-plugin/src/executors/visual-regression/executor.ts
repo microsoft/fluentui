@@ -1,10 +1,11 @@
 import { type ExecutorContext, type PromiseExecutor, logger } from '@nx/devkit';
 import { spawnSync } from 'node:child_process';
-import { existsSync, lstatSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, linkSync, lstatSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import { dirname, isAbsolute, join, relative, sep } from 'node:path';
 
 import { type VisualRegressionExecutorSchema } from './schema';
+import { type SharedStorybookManifest, resolveSharedGroups, writeSharedManifest } from './shared-storybook';
 
 function isRelativePath(path: unknown): path is string {
   return (
@@ -35,23 +36,77 @@ function groupForOutput(hostRoot: string, outputPath: string, leaf: string): str
     : undefined;
 }
 
+async function createCaptureView(sharedPath: string, viewPath: string, group: string, hash: string): Promise<number> {
+  const manifest = JSON.parse(readFileSync(join(sharedPath, 'vrt-shared.json'), 'utf8')) as SharedStorybookManifest;
+  const ids = manifest.groups?.[group];
+  if (manifest.hash !== hash || !Array.isArray(ids) || !ids.length || ids.some(id => typeof id !== 'string')) {
+    throw new Error(`Shared Storybook fingerprint or story ownership is invalid for ${group}`);
+  }
+  const index = JSON.parse(readFileSync(join(sharedPath, 'index.json'), 'utf8')) as {
+    v: number;
+    entries: Record<string, { id: string; type: string }>;
+  };
+  if (
+    index.v !== 5 ||
+    !index.entries ||
+    ids.some(id => index.entries[id]?.id !== id || index.entries[id]?.type !== 'story')
+  ) {
+    throw new Error(`Shared Storybook index is missing selected story IDs for ${group}`);
+  }
+  await rm(viewPath, { force: true, recursive: true });
+  const linkAssets = (source: string, destination: string): void => {
+    mkdirSync(destination, { recursive: true });
+    for (const entry of readdirSync(source, { withFileTypes: true })) {
+      if (source === sharedPath && ['index.json', 'stories.json', 'vrt-shared.json'].includes(entry.name)) {
+        continue;
+      }
+      if (entry.isDirectory()) {
+        linkAssets(join(source, entry.name), join(destination, entry.name));
+      } else if (entry.isFile()) {
+        linkSync(join(source, entry.name), join(destination, entry.name));
+      } else {
+        throw new Error(`Shared Storybook asset is not a regular file: ${entry.name}`);
+      }
+    }
+  };
+  linkAssets(sharedPath, viewPath);
+  writeFileSync(
+    join(viewPath, 'index.json'),
+    JSON.stringify({
+      ...index,
+      entries: Object.fromEntries(ids.map(id => [id, index.entries[id]])),
+    }),
+  );
+  return ids.length;
+}
+
 const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (options, context: ExecutorContext) => {
-  const { mode, hostRoot, outputPath, storybookPath, stories } = options;
+  const { mode, hostRoot, outputPath, storybookPath } = options;
+  let stories = options.stories;
+  const building = mode === 'build' || mode === 'build-shared';
   const group =
     isRelativePath(hostRoot) && isRelativePath(outputPath)
-      ? groupForOutput(hostRoot, outputPath, mode === 'build' ? 'storybook' : 'screenshots')
+      ? groupForOutput(hostRoot, outputPath, building ? 'storybook' : 'screenshots')
       : undefined;
+  const sharedCapture =
+    mode === 'capture' &&
+    isRelativePath(storybookPath) &&
+    groupForOutput(hostRoot, storybookPath, 'storybook') === '_shared';
   if (
-    (mode !== 'build' && mode !== 'capture') ||
+    (!building && mode !== 'capture') ||
     !group ||
     (mode === 'build' && (!Array.isArray(stories) || stories.length === 0 || !stories.every(isRelativePath))) ||
+    (mode === 'build-shared' &&
+      (group !== '_shared' || !Array.isArray(options.selectedProjects) || !options.selectedProjects.length)) ||
     (options.addons !== undefined &&
       (!Array.isArray(options.addons) || options.addons.some(addon => typeof addon !== 'string'))) ||
     (options.previewAnnotations !== undefined &&
       (!Array.isArray(options.previewAnnotations) || !options.previewAnnotations.every(isRelativePath))) ||
     (mode === 'capture' &&
       (!isRelativePath(storybookPath) ||
-        groupForOutput(hostRoot, storybookPath, 'storybook') !== group ||
+        (!sharedCapture && groupForOutput(hostRoot, storybookPath, 'storybook') !== group) ||
+        (sharedCapture &&
+          (typeof options.storybookHash !== 'string' || !/^[a-f0-9]{64}$/.test(options.storybookHash))) ||
         !Number.isInteger(options.concurrency ?? 1) ||
         (options.concurrency ?? 1) < 1))
   ) {
@@ -61,6 +116,7 @@ const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (opti
 
   const hostPath = join(context.root, hostRoot);
   const output = join(context.root, outputPath);
+  let viewPath: string | undefined;
   try {
     if (
       !existsSync(join(hostPath, '.storybook', 'main.js')) ||
@@ -72,7 +128,12 @@ const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (opti
       return { success: false };
     }
 
-    if (mode === 'build') {
+    if (building) {
+      const groups =
+        mode === 'build-shared' ? resolveSharedGroups(options.selectedProjects!, hostRoot, context) : undefined;
+      if (groups) {
+        stories = [...new Set(Object.values(groups).flat())].sort();
+      }
       const configPath = join(dirname(output), 'config');
       const originalConfig = join(hostPath, '.storybook');
       mkdirSync(configPath, { recursive: true });
@@ -96,15 +157,35 @@ const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (opti
           writeFileSync(join(configPath, filename), `export * from ${JSON.stringify(source)};\n`);
         }
       }
+      const started = Date.now();
       const result = spawnSync(
         'yarn',
         ['run', '-T', 'storybook', 'build', '--config-dir', configPath, '--output-dir', output],
         { cwd: hostPath, stdio: 'inherit', shell: false },
       );
+      if (result.status === 0 && !result.error && groups) {
+        const manifest = writeSharedManifest(output, hostPath, groups);
+        logger.info(
+          JSON.stringify({
+            phase: 'shared-build',
+            projects: Object.keys(groups),
+            hash: manifest.hash,
+            seconds: (Date.now() - started) / 1000,
+          }),
+        );
+      }
       return { success: result.status === 0 && !result.error };
     }
 
+    let capturePath = join(context.root, storybookPath!);
+    let storyCount: number | undefined;
+    if (sharedCapture) {
+      viewPath = join(dirname(output), 'shared-preview');
+      storyCount = await createCaptureView(capturePath, viewPath, group, options.storybookHash!);
+      capturePath = viewPath;
+    }
     await rm(output, { force: true, recursive: true });
+    const started = Date.now();
     const result = spawnSync(
       'yarn',
       [
@@ -114,7 +195,7 @@ const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (opti
         '--browsers',
         'chromium',
         '--url',
-        join(context.root, storybookPath!),
+        capturePath,
         '--destpath',
         output,
         '--waitTimeScreenshot',
@@ -129,10 +210,24 @@ const runExecutor: PromiseExecutor<VisualRegressionExecutorSchema> = async (opti
       ],
       { cwd: hostPath, stdio: 'inherit', shell: false },
     );
+    logger.info(
+      JSON.stringify({
+        phase: 'capture',
+        project: group,
+        stories: storyCount,
+        screenshots: existsSync(output) ? readdirSync(output).filter(file => file.endsWith('.png')).length : 0,
+        seconds: (Date.now() - started) / 1000,
+        success: result.status === 0 && !result.error,
+      }),
+    );
     return { success: result.status === 0 && !result.error };
   } catch (error) {
     logger.error(error);
     return { success: false };
+  } finally {
+    if (viewPath) {
+      await rm(viewPath, { force: true, recursive: true });
+    }
   }
 };
 

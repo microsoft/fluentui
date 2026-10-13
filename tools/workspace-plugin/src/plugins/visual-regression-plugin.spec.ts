@@ -114,7 +114,7 @@ describe('visual-regression-plugin', () => {
     const build = project.targets!['build-vr-storybook'];
     const capture = project.targets!['test-vr-granular'];
 
-    expect(Object.keys(projects)).toHaveLength(2);
+    expect(Object.keys(projects).filter(root => root !== hostRoot)).toHaveLength(2);
     expect(project.name).toBe('react-button-vrt');
     expect(project.root).toBe(`${buttonRoot}/visual-regression`);
     expect(project.metadata?.visualRegression).toEqual({
@@ -141,12 +141,16 @@ describe('visual-regression-plugin', () => {
       options: {
         mode: 'capture',
         hostRoot,
+        stories: groups['react-button'].stories,
         concurrency: 1,
         storybookPath: build.options!.outputPath,
         outputPath: `${hostRoot}/dist/visual-regression/react-button-vrt/screenshots`,
       },
       outputs: [`{workspaceRoot}/${hostRoot}/dist/visual-regression/react-button-vrt/screenshots`],
     });
+    expect(build.outputs).not.toContain(`{workspaceRoot}/${hostRoot}/dist/visual-regression/_shared/storybook`);
+    expect(capture.outputs).not.toContain(`{workspaceRoot}/${hostRoot}/dist/visual-regression/_shared/storybook`);
+    expect(capture.dependsOn).not.toContain('build-vr-storybook-shared');
     expect(build.inputs).toEqual(expect.arrayContaining(['vrt', '^production']));
     expect(project.namedInputs?.vrt).toEqual(
       expect.arrayContaining([
@@ -159,6 +163,60 @@ describe('visual-regression-plugin', () => {
       ]),
     );
     expect(project.namedInputs?.vrt).not.toContain(`{workspaceRoot}/${hostRoot}/src/stories/Menu/**/*.stories.tsx`);
+  });
+
+  it('creates one host-owned shared build using the union of group inputs without selecting projects at inference time', async () => {
+    const result = await createNodes([manifestPath], undefined, context);
+    const projects = result[0][1].projects!;
+    const host = projects[hostRoot];
+    const shared = host.targets?.['build-vr-storybook-shared'];
+    const output = `{workspaceRoot}/${hostRoot}/dist/visual-regression/_shared/storybook`;
+
+    expect(Object.keys(projects)).toHaveLength(3);
+    expect(host.metadata?.visualRegression).toBeUndefined();
+    expect(shared).toMatchObject({
+      executor: '@fluentui/workspace-plugin:visual-regression',
+      cache: true,
+      parallelism: false,
+      inputs: [
+        'vrt-shared',
+        '^production',
+        ...projects[`${buttonRoot}/visual-regression`].targets!['build-vr-storybook'].inputs!.slice(2),
+      ],
+      outputs: [output],
+      dependsOn: [{ projects: ['react-storybook-addon'], target: 'build' }],
+      options: {
+        mode: 'build-shared',
+        hostRoot,
+        outputPath: `${hostRoot}/dist/visual-regression/_shared/storybook`,
+      },
+    });
+    expect(shared?.options).not.toHaveProperty('stories');
+    expect(shared?.options).not.toHaveProperty('projects');
+    expect(host.namedInputs?.['vrt-shared']).toEqual([
+      ...new Set([
+        ...projects[`${buttonRoot}/visual-regression`].namedInputs!.vrt,
+        ...projects[`${menuRoot}/visual-regression`].namedInputs!.vrt,
+      ]),
+    ]);
+    expect(host.namedInputs?.['vrt-shared']).toEqual(
+      expect.arrayContaining([
+        `{workspaceRoot}/${manifestPath}`,
+        `{workspaceRoot}/${hostRoot}/src/stories/Button/**/*.stories.tsx`,
+        `{workspaceRoot}/${hostRoot}/src/stories/Menu/**/*.stories.tsx`,
+        `{workspaceRoot}/${hostRoot}/src/stories/Button/helper.ts`,
+        `{workspaceRoot}/${hostRoot}/src/stories/Button/nested.ts`,
+        `{workspaceRoot}/${hostRoot}/.storybook/**`,
+        `{workspaceRoot}/${hostRoot}/src/utilities/**`,
+        '{workspaceRoot}/yarn.lock',
+        '{workspaceRoot}/tools/workspace-plugin/src/executors/visual-regression/**',
+      ]),
+    );
+    for (const root of [`${buttonRoot}/visual-regression`, `${menuRoot}/visual-regression`]) {
+      expect(projects[root].targets?.['build-vr-storybook'].outputs).not.toContain(output);
+      expect(projects[root].targets?.['test-vr-granular'].outputs).not.toContain(output);
+      expect(projects[root].targets?.['test-vr-granular'].dependsOn).toEqual(['build-vr-storybook']);
+    }
   });
 
   it('links real imported packages through a local helper and shared addon without linking the host', async () => {
@@ -179,13 +237,14 @@ describe('visual-regression-plugin', () => {
           name: 'react-storybook-addon',
           root: 'packages/react-components/react-storybook-addon',
         },
-        'vr-tests-react-components': { name: 'vr-tests-react-components', root: hostRoot },
+        'vr-tests-react-components': { ...nodes[hostRoot], name: 'vr-tests-react-components', root: hostRoot },
       },
     } satisfies CreateDependenciesContext);
     const buttonTargets = dependencies.filter(edge => edge.source === 'react-button-vrt').map(edge => edge.target);
 
     expect(buttonTargets).toEqual(expect.arrayContaining(['react-button', 'react-menu', 'react-storybook-addon']));
     expect(buttonTargets).not.toContain('vr-tests-react-components');
+    expect(dependencies.every(edge => edge.source !== 'vr-tests-react-components')).toBe(true);
     expect(dependencies.every(edge => edge.type === 'implicit' && !('sourceFile' in edge))).toBe(true);
   });
 
@@ -204,6 +263,11 @@ describe('visual-regression-plugin', () => {
       addons: [],
       previewAnnotations: ['.storybook/preview-granular.ts'],
     });
+    expect(nodes[hostRoot].targets?.['build-vr-storybook-shared']).toMatchObject({
+      dependsOn: [],
+      options: { addons: [], previewAnnotations: ['.storybook/preview-granular.ts'] },
+    });
+    expect(nodes[hostRoot].namedInputs?.['vrt-shared']).toContain(`{workspaceRoot}/${previewSource}`);
     const dependencies = createDependencies(undefined, {
       workspaceRoot: tempFs.tempDir,
       externalNodes: {},

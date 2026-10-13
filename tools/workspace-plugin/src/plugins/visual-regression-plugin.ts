@@ -183,6 +183,15 @@ function createNodesInternal(configFile: string, _options: unknown, context: Cre
   const hostProject = readJsonFile<{ name: string }>(join(hostPath, 'project.json')).name;
   const options = compilerOptions(hostPath);
   const projects: NonNullable<CreateNodesResult['projects']> = {};
+  const sharedVrt = new Set<string>();
+  const inputs = [
+    'vrt',
+    '^production',
+    { externalDependencies: ['nx', 'typescript', 'storybook', '@storybook/react-webpack5', 'storywright'] },
+    { runtime: 'node --version' },
+    { runtime: 'node -p process.platform' },
+    { runtime: 'node -p process.arch' },
+  ];
   const configFiles = ['js', 'ts', 'tsx']
     .flatMap(extension => filesForGlob(`.storybook/**/*.${extension}`, hostPath))
     .map(file => join(hostPath, file));
@@ -218,14 +227,7 @@ function createNodesInternal(configFile: string, _options: unknown, context: Cre
       '{workspaceRoot}/tools/workspace-plugin/src/plugins/visual-regression-plugin.ts',
       '{workspaceRoot}/tools/workspace-plugin/src/executors/visual-regression/**',
     ];
-    const inputs = [
-      'vrt',
-      '^production',
-      { externalDependencies: ['nx', 'typescript', 'storybook', '@storybook/react-webpack5', 'storywright'] },
-      { runtime: 'node --version' },
-      { runtime: 'node -p process.platform' },
-      { runtime: 'node -p process.arch' },
-    ];
+    vrt.forEach(input => sharedVrt.add(input));
 
     projects[projectRoot] = {
       name: projectName,
@@ -254,11 +256,41 @@ function createNodesInternal(configFile: string, _options: unknown, context: Cre
           inputs,
           outputs: [`{workspaceRoot}/${screenshotsPath}`],
           dependsOn: ['build-vr-storybook'],
-          options: { mode: 'capture', hostRoot, storybookPath, outputPath: screenshotsPath, concurrency: 1 },
+          options: {
+            mode: 'capture',
+            hostRoot,
+            stories: group.stories,
+            storybookPath,
+            outputPath: screenshotsPath,
+            concurrency: 1,
+          },
         },
       },
     };
   }
+  const sharedOutput = `${hostRoot}/dist/visual-regression/_shared/storybook`;
+  projects[hostRoot] = {
+    name: hostProject,
+    root: hostRoot,
+    namedInputs: { 'vrt-shared': [...sharedVrt] },
+    targets: {
+      'build-vr-storybook-shared': {
+        executor,
+        cache: true,
+        parallelism: false,
+        inputs: ['vrt-shared', ...inputs.slice(1)],
+        outputs: [`{workspaceRoot}/${sharedOutput}`],
+        dependsOn: manifest.addons?.length === 0 ? [] : [{ projects: ['react-storybook-addon'], target: 'build' }],
+        options: {
+          mode: 'build-shared',
+          hostRoot,
+          outputPath: sharedOutput,
+          ...(manifest.addons === undefined ? {} : { addons: manifest.addons }),
+          ...(manifest.previewAnnotations === undefined ? {} : { previewAnnotations: manifest.previewAnnotations }),
+        },
+      },
+    },
+  };
   return { projects };
 }
 
