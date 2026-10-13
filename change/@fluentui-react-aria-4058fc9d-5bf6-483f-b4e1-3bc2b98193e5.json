@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: track keyboard vs pointer navigation for active descendant focus-visible styles without keyborg",
+  "packageName": "@fluentui/react-aria",
+  "email": "noreply@anthropic.com"
+}

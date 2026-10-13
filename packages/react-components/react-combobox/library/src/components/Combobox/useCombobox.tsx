@@ -13,6 +13,7 @@ import {
   useOnClickOutside,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -86,6 +87,13 @@ export const useComboboxBase_unstable = (
     activeDescendantController,
     shouldCloseOnBlur: event => !expandIconRef.current || event.relatedTarget !== expandIconRef.current,
   });
+
+  // keyborg ignores keys pressed in text inputs, mark keyboard navigation explicitly to keep its global state in sync
+  const setKeyboardNavigation = useSetKeyboardNavigation();
+  // eslint-disable-next-line react-hooks/immutability
+  triggerSlot.onKeyDown = mergeCallbacks((_event: React.KeyboardEvent<HTMLInputElement>) => {
+    setKeyboardNavigation(true);
+  }, triggerSlot.onKeyDown);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

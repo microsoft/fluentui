@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
@@ -49,10 +49,16 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
   }, []);
 
-  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+  const { targetDocument } = useFluent();
+
+  const onKeyboardNavigationChange = useEventCallback((isNavigatingWithKeyboard: boolean) => {
+    if (focusVisibleRef.current === isNavigatingWithKeyboard) {
+      return;
+    }
+
     focusVisibleRef.current = isNavigatingWithKeyboard;
 
-    // eslint-disable-next-line react-hooks/immutability, react-hooks/preserve-manual-memoization
+    // eslint-disable-next-line react-hooks/immutability
     const active = getActiveDescendant();
     if (!active) {
       return;
@@ -64,6 +70,47 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
   });
+
+  // Tracks whether the user navigates with the keyboard or a pointer, to decide whether the active descendant
+  // shows focus-visible styles. DOM focus stays on the active parent, so native `:focus-visible` can't be used.
+  // Intentionally does not use keyborg, so that consumers without tabster don't pay for it.
+  React.useEffect(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      // Any key pressed on the active parent (e.g. arrow keys in a combobox input) navigates the active descendants
+      if (event.key === 'Tab' || event.target === activeParentRef.current) {
+        onKeyboardNavigationChange(true);
+      }
+    };
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      // Screen readers dispatch synthetic mouse events without buttons or coordinates, those keep the keyboard mode
+      if (
+        event.type === 'mousedown' &&
+        ((event as MouseEvent).buttons === 0 ||
+          ((event as MouseEvent).clientX === 0 &&
+            (event as MouseEvent).clientY === 0 &&
+            (event as MouseEvent).screenX === 0 &&
+            (event as MouseEvent).screenY === 0))
+      ) {
+        return;
+      }
+
+      onKeyboardNavigationChange(false);
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    targetDocument.addEventListener('mousedown', onPointerDown, true);
+    targetDocument.addEventListener('touchstart', onPointerDown, true);
+
+    return () => {
+      targetDocument.removeEventListener('keydown', onKeyDown, true);
+      targetDocument.removeEventListener('mousedown', onPointerDown, true);
+      targetDocument.removeEventListener('touchstart', onPointerDown, true);
+    };
+  }, [targetDocument, onKeyboardNavigationChange]);
 
   const matchOption = useEventCallback(matchOptionUnstable);
   const listboxRef = React.useRef<TListboxElement>(null);

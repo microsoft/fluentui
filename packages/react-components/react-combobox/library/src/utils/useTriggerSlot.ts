@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
@@ -144,7 +143,6 @@ function useTriggerKeydown(
     }
   };
 
-  const setKeyboardNavigation = useSetKeyboardNavigation();
   return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(e, { open, multiselect });
     const activeOption = getActiveOption();
@@ -163,8 +161,6 @@ function useTriggerKeydown(
         e.preventDefault();
         break;
     }
-
-    setKeyboardNavigation(true);
 
     switch (action) {
       case 'First':
