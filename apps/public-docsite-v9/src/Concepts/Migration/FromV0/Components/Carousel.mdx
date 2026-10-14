@@ -1,0 +1,481 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Carousel Migration" />
+
+# Carousel Migration
+
+## Overview
+
+V9 keeps the `Carousel` name but replaces v0 item/navigation shorthand and static subcomponents with explicit composition. A bare v9 `Carousel` does **not** create slides, navigation, or paddles. Its `activeIndex` and callback `data.index` identify a **page**, which can contain several cards, rather than necessarily identifying one item.
+
+This guide targets `@fluentui/react-northstar@0.71.4`, React `18.3.1`, and `@fluentui/react-components@9.74.9`, including the published `@fluentui/react-carousel@9.9.14`. The APIs and defaults below come from those releases, not the current checkout.
+
+The example preserves the controlled **Project gallery**, Alpha/Beta/Gamma content, `Show Alpha`/`Show Beta`/`Show Gamma` tabs and their panel relationships, paddle labels, circular selection, pointer-navigation toggle, state outputs, and test markers. It explicitly uses one full-width card per page. It does not claim identical pixels, animation timing, or focus behavior.
+
+### Before: v0
+
+```tsx
+import * as React from 'react';
+import { Button, Carousel, Provider, teamsTheme } from '@fluentui/react-northstar';
+
+const projects = ['Alpha', 'Beta', 'Gamma'];
+
+export default function CarouselScenario() {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [pointerNavigationDisabled, setPointerNavigationDisabled] = React.useState(false);
+
+  return (
+    <Provider theme={teamsTheme}>
+      <section aria-label="Carousel migration scenario" data-testid="carousel-case">
+        <h2>Project gallery</h2>
+        <Carousel
+          aria-label="Project gallery"
+          aria-roledescription="carousel"
+          activeIndex={activeIndex}
+          circular
+          disableClickableNav={pointerNavigationDisabled}
+          items={projects.map((project, index) => ({
+            key: project,
+            id: `project-slide-${index}`,
+            'aria-label': project,
+            content: <h3 data-testid={`carousel-item-${project.toLowerCase()}`}>{project}</h3>,
+          }))}
+          navigation={projects.map((project, index) => ({
+            key: project,
+            content: project,
+            'aria-label': `Show ${project}`,
+            'aria-controls': `project-slide-${index}`,
+          }))}
+          paddlePrevious={{
+            'aria-label': 'Previous project',
+            'data-testid': 'carousel-previous',
+          }}
+          paddleNext={{
+            'aria-label': 'Next project',
+            'data-testid': 'carousel-next',
+          }}
+          getItemPositionText={(index, size) => `Project ${index + 1} of ${size}`}
+          onActiveIndexChange={(_event, data) => {
+            if (typeof data?.activeIndex !== 'number') {
+              throw new Error('Carousel callback did not provide a numeric activeIndex.');
+            }
+            // The released callback reports the unwrapped request at circular boundaries.
+            setActiveIndex(((data.activeIndex % projects.length) + projects.length) % projects.length);
+          }}
+        />
+        <output data-testid="carousel-selection">Selected index: {activeIndex}</output>
+        <Button
+          type="button"
+          content={pointerNavigationDisabled ? 'Enable pointer navigation' : 'Disable pointer navigation'}
+          aria-pressed={pointerNavigationDisabled}
+          onClick={() => setPointerNavigationDisabled(disabled => !disabled)}
+        />
+        <output data-testid="carousel-pointer-state">
+          Pointer navigation: {pointerNavigationDisabled ? 'disabled' : 'enabled'}
+        </output>
+      </section>
+    </Provider>
+  );
+}
+```
+
+### After: v9
+
+Render this module beneath your application's themed v9 `FluentProvider`. The docsite preview supplies that provider externally. `FluentProvider` and themes such as `webLightTheme` are public exports of `@fluentui/react-components`; the v0 `Provider` and `teamsTheme` do not provide v9 tokens. The before example is a code listing, not a live Northstar import into the docsite.
+
+The migration uses `CarouselViewport > CarouselSlider > CarouselCard`, followed by explicit paddles and `CarouselNav`. Keep the cards full-page and `groupSize={1}` together: merely renaming the callback field does not establish item/page equivalence.
+
+The pointer guard runs in **click capture**, before either kind of control selects a page. Native keyboard/assistive-technology activation, whose click has `detail === 0`, remains available. Panel arrows are handled separately, even while pointer navigation is off. The small focus effect waits for the new panel to stop being hidden/inert before focusing it; it does not depend on a private carousel event or recreate the scrolling engine.
+
+```tsx
+import * as React from 'react';
+import {
+  Button,
+  Carousel,
+  CarouselButton,
+  CarouselCard,
+  CarouselNav,
+  CarouselNavButton,
+  CarouselSlider,
+  CarouselViewport,
+  makeStyles,
+} from '@fluentui/react-components';
+import type { CarouselProps } from '@fluentui/react-components';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { tokens } from '@fluentui/react-theme';
+
+const projects = ['Alpha', 'Beta', 'Gamma'];
+
+const useStyles = makeStyles({
+  gallery: {
+    width: '100%',
+  },
+  viewport: {
+    overflowX: 'hidden',
+  },
+  card: {
+    boxSizing: 'border-box',
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalL}`,
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    ':focus-visible': {
+      outlineColor: tokens.colorStrokeFocus2,
+      outlineStyle: 'solid',
+      outlineWidth: tokens.strokeWidthThick,
+      outlineOffset: `calc(-1 * ${tokens.strokeWidthThick})`,
+    },
+  },
+  heading: {
+    marginTop: tokens.spacingVerticalNone,
+    marginBottom: tokens.spacingVerticalNone,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: tokens.spacingHorizontalS,
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalS,
+  },
+  navigation: {
+    gap: tokens.spacingHorizontalXS,
+  },
+  navigationButton: {
+    width: 'auto',
+    height: 'auto',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderRadius: tokens.borderRadiusMedium,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    fontWeight: tokens.fontWeightRegular,
+    '::after': {
+      display: 'none',
+    },
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+    },
+    '&[aria-selected="true"]': {
+      color: tokens.colorBrandForeground1,
+      backgroundColor: tokens.colorNeutralBackground3,
+      fontWeight: tokens.fontWeightBold,
+    },
+  },
+});
+
+export default function CarouselScenario() {
+  const styles = useStyles();
+  const { targetDocument } = useFluent_unstable();
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [pointerNavigationDisabled, setPointerNavigationDisabled] = React.useState(false);
+  const [pendingFocusIndex, setPendingFocusIndex] = React.useState<number | null>(null);
+  const panelRefs = React.useRef<Array<HTMLDivElement | null>>([]);
+
+  React.useEffect(() => {
+    if (pendingFocusIndex === null) {
+      return;
+    }
+
+    const panel = panelRefs.current[pendingFocusIndex];
+    const view = targetDocument?.defaultView;
+    if (!panel || !targetDocument || !view) {
+      throw new Error('The selected project panel and its document must be available for keyboard focus.');
+    }
+
+    let focused = false;
+    const focusWhenAvailable = () => {
+      if (panel.hasAttribute('inert') || panel.getAttribute('aria-hidden') === 'true') {
+        return;
+      }
+      panel.focus({ preventScroll: true });
+      if (targetDocument.activeElement !== panel) {
+        throw new Error('The selected project panel could not receive keyboard focus.');
+      }
+      focused = true;
+      setPendingFocusIndex(null);
+    };
+
+    const observer = new view.MutationObserver(focusWhenAvailable);
+    observer.observe(panel, { attributes: true, attributeFilter: ['inert', 'aria-hidden'] });
+    const timeout = view.setTimeout(() => {
+      if (!focused) {
+        throw new Error('The selected project panel did not become available for keyboard focus.');
+      }
+    }, 2000);
+    focusWhenAvailable();
+
+    return () => {
+      observer.disconnect();
+      view.clearTimeout(timeout);
+    };
+  }, [pendingFocusIndex, targetDocument]);
+
+  const handleActiveIndexChange: NonNullable<CarouselProps['onActiveIndexChange']> = (_event, data) => {
+    if (
+      typeof data?.index !== 'number' ||
+      !Number.isInteger(data.index) ||
+      data.index < 0 ||
+      data.index >= projects.length
+    ) {
+      throw new Error('Carousel callback did not provide a valid single-project page index.');
+    }
+    setPendingFocusIndex(null);
+    setActiveIndex(data.index);
+  };
+
+  const guardPointerClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (pointerNavigationDisabled && event.detail > 0) {
+      event.preventDefault();
+    }
+  };
+
+  const handlePanelKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.defaultPrevented || event.target !== event.currentTarget) {
+      return;
+    }
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    const step = event.key === 'ArrowRight' ? 1 : -1;
+    const nextIndex = (activeIndex + step + projects.length) % projects.length;
+    setActiveIndex(nextIndex);
+    setPendingFocusIndex(nextIndex);
+  };
+
+  return (
+    <section aria-label="Carousel migration scenario" data-testid="carousel-case">
+      <h2>Project gallery</h2>
+      <Carousel
+        className={styles.gallery}
+        aria-label="Project gallery"
+        aria-roledescription="carousel"
+        activeIndex={activeIndex}
+        circular
+        groupSize={1}
+        onActiveIndexChange={handleActiveIndexChange}
+        announcement={(index, totalPages) => `Project ${index + 1} of ${totalPages}`}
+      >
+        <CarouselViewport className={styles.viewport}>
+          <CarouselSlider cardFocus={false}>
+            {projects.map((project, index) => (
+              <CarouselCard
+                key={project}
+                id={`project-slide-${index}`}
+                aria-label={project}
+                className={styles.card}
+                tabIndex={index === activeIndex ? 0 : -1}
+                onKeyDown={handlePanelKeyDown}
+                ref={panel => {
+                  panelRefs.current[index] = panel;
+                }}
+              >
+                <h3 className={styles.heading} data-testid={`carousel-item-${project.toLowerCase()}`}>
+                  {project}
+                </h3>
+              </CarouselCard>
+            ))}
+          </CarouselSlider>
+        </CarouselViewport>
+        <div className={styles.controls}>
+          <CarouselButton
+            navType="prev"
+            aria-label="Previous project"
+            data-testid="carousel-previous"
+            onClickCapture={guardPointerClick}
+          />
+          <CarouselNav className={styles.navigation}>
+            {index => {
+              const project = projects[index];
+              if (project === undefined) {
+                throw new Error('Carousel navigation requested a page without a matching project.');
+              }
+              return (
+                <CarouselNavButton
+                  key={project}
+                  className={styles.navigationButton}
+                  aria-label={`Show ${project}`}
+                  aria-controls={`project-slide-${index}`}
+                  onClickCapture={guardPointerClick}
+                >
+                  {project}
+                </CarouselNavButton>
+              );
+            }}
+          </CarouselNav>
+          <CarouselButton
+            navType="next"
+            aria-label="Next project"
+            data-testid="carousel-next"
+            onClickCapture={guardPointerClick}
+          />
+        </div>
+      </Carousel>
+      <output data-testid="carousel-selection">Selected index: {activeIndex}</output>
+      <Button
+        type="button"
+        aria-pressed={pointerNavigationDisabled}
+        onClick={() => setPointerNavigationDisabled(disabled => !disabled)}
+      >
+        {pointerNavigationDisabled ? 'Enable pointer navigation' : 'Disable pointer navigation'}
+      </Button>
+      <output data-testid="carousel-pointer-state">
+        Pointer navigation: {pointerNavigationDisabled ? 'disabled' : 'enabled'}
+      </output>
+    </section>
+  );
+}
+```
+
+## How to migrate props
+
+### Carousel root
+
+| V0 prop                                                                                          | V9 migration                                                                 | Important qualification                                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeIndex`                                                                                    | `Carousel.activeIndex`                                                       | V0 indexes items; v9 indexes pages/groups. Use `groupSize={1}` and full-page cards for the example's item-level meaning.                                                                                                                                       |
+| `defaultActiveIndex`                                                                             | `Carousel.defaultActiveIndex`                                                | Uncontrolled initial page only. Do not use it as a second controlled state source.                                                                                                                                                                             |
+| `circular`                                                                                       | `Carousel.circular`                                                          | Retain the explicit opt-in. V9 also needs enough rendered card content for its engine to loop.                                                                                                                                                                 |
+| `onActiveIndexChange`                                                                            | `Carousel.onActiveIndexChange`                                               | Read `data.index`, not `data.activeIndex`. The callback's data no longer spreads all root props. See Events below.                                                                                                                                             |
+| `items`                                                                                          | Keyed `CarouselCard` children inside `CarouselViewport` and `CarouselSlider` | Expand primitive/object/JSX shorthand into JSX. Reapply each item's content, id, ARIA, native handlers, and ref to its card, not just to the gallery root.                                                                                                     |
+| `navigation`                                                                                     | `CarouselNav` with a `children(index)` render function                       | Render one `CarouselNavButton` or `CarouselNavImageButton` per page. There is no root `navigation` prop in v9. Preserve accessible names and panel ids.                                                                                                        |
+| `thumbnails`                                                                                     | `CarouselNavImageButton` with its required `image` slot                      | V0 styles supplied navigation content as thumbnails; it does not derive images from `items`. Supply the actual image and a button name, such as `Show Alpha`; use empty image alt text when the button name already describes the action.                      |
+| `paddlePrevious`                                                                                 | `CarouselButton navType="prev"` or `CarouselNavContainer.prev`               | Expand content/children, labels, events, and styling. The v9 value is **`prev`**, not `previous`.                                                                                                                                                              |
+| `paddleNext`                                                                                     | `CarouselButton navType="next"` or `CarouselNavContainer.next`               | V0 defaults both paddle shorthand values to `{}`; `null`/`false` omit them. In v9 omit standalone controls or set the container's corresponding optional slot to `null`.                                                                                       |
+| `disableClickableNav`                                                                            | Application-owned pointer guard on navigation and paddles                    | No matching v9 prop. Do not replace this with `disabled` on every control: panel arrows and useful keyboard activation must remain available.                                                                                                                  |
+| `getItemPositionText`                                                                            | `Carousel.announcement`, plus independently rendered text if needed          | Both receive zero-based indexes, but v9 receives a page index and page count plus `groupIndexList`. Its announcement does not render a visible pagination element or each card's hidden position text.                                                         |
+| `navigationPosition`                                                                             | Explicit composition/layout                                                  | V0 declares `below`, `above`, `start`, and `end`, but the audited release does not read this prop in rendering or style mapping. Do not promise placement changes or mechanically rename these values.                                                         |
+| `paddlesPosition`                                                                                | Explicit composition/layout                                                  | V0 declares `inside`, `outside`, and `inline`, but the audited release similarly does not implement these choices in its render/style mapping. There is no same-valued root v9 prop.                                                                           |
+| `animationEnterFromPrev`, `animationEnterFromNext`, `animationExitToPrev`, `animationExitToNext` | Choose v9 `motion`, or author a separate custom animation layer              | No direct equivalents for named directional Northstar theme animations. V9 supports `'slide'`, `{ kind: 'slide', duration }`, or `'fade'`.                                                                                                                     |
+| `children`                                                                                       | Explicit v9 composition                                                      | In v0, existing children replace **all** generated paddles, items, and navigation. In v9, children are the primary composition API; there is no fallback `items` generator.                                                                                    |
+| `aria-label`, `aria-roledescription`                                                             | Native ARIA on `Carousel`                                                    | Preserve the name and any explicitly localized role description. With v0 navigation, these belong to the internal items region; v9 names the outer carousel region. Neither audited implementation automatically supplies a localized role-description string. |
+| `accessibility`                                                                                  | Native ARIA, focus props, and deliberately chosen event handling             | V0 behavior functions do not work in v9. A v9 slider's `cardFocus` defaults to false; item-arrow navigation is not automatically supplied by a prop rename.                                                                                                    |
+| `as`                                                                                             | Only the element choices supported by the particular v9 slot type            | The default root remains a `div`; do not assume the unrestricted v0 custom-component substitution contract survives. Restructure JSX when necessary.                                                                                                           |
+| `className`                                                                                      | `className` on the corresponding composed component                          | V0 `ui-carousel*` selectors do not target the v9 `fui-*` components.                                                                                                                                                                                           |
+| `styles`, `design`                                                                               | Griffel `makeStyles` classes on each affected component                      | V0 slot-style objects/layout helpers are not v9 component props.                                                                                                                                                                                               |
+| `variables`                                                                                      | V9 theme tokens and component classes                                        | Do not forward Northstar variable overrides. In v0 the root explicitly merges its variables into paddles; that is not automatic inheritance of the same overrides into every item or navigation slot.                                                          |
+| `ref`, unhandled native attributes/events                                                        | The native root or composed element that owns them                           | Preserve ids, data markers, ARIA relationships, and event ownership. A ref to the gallery does not replace a ref to its active panel.                                                                                                                          |
+
+`CarouselNavContainer` is an optional layout convenience, not a required wrapper. Its released `layout` choices are `inline`, `inline-wide`, `overlay`, `overlay-wide`, and `overlay-expanded`. It creates previous/next controls by default and has `prev`, `next`, tooltip, and optional autoplay slots. These choices are not aliases for the old placement props. The example uses a native token-styled layout container so paddle labels and the pointer guard are explicit.
+
+### Static subcomponents and shorthand
+
+V9 uses named imports, not `Carousel.Item`, `Carousel.Navigation`, `Carousel.NavigationItem`, `Carousel.Paddle`, or `Carousel.PaddlesContainer`.
+
+| V0 component/props                                                                                                          | V9 disposition                                                                                                                                                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Carousel.Item` / `CarouselItem`                                                                                            | Use `CarouselCard`. Move `content` or `children` into children. `active` is context/visibility driven, not a card prop; `navigation` has no equivalent boolean. `itemPositionText` needs separately supplied text or an announcement.                                                                              |
+| `Carousel.Navigation` / `CarouselNavigation`                                                                                | Use `CarouselNav`. Move `items` into the render function. Selection comes from the surrounding `Carousel`, not an independent navigation `activeIndex`; v0's standalone `number \| string` index was compared strictly against numeric item indexes.                                                               |
+| Navigation `onItemClick`                                                                                                    | Move selection-dependent work to `Carousel.onActiveIndexChange` and native per-button `onClick` where appropriate. Do not expect the old second argument containing navigation-item props.                                                                                                                         |
+| Navigation `iconOnly`, `primary`, `secondary`, `vertical`, `thumbnails`, `disableClickableNav`                              | Choose explicit button/image composition, appearance, layout, and pointer handling. `CarouselNav` has `appearance="brand"`, not these booleans. V0 forwards `secondary` to items but does not map it as an independent style flag in this release. A vertical layout also needs a deliberate keyboard-axis policy. |
+| `Carousel.NavigationItem` / `CarouselNavigationItem`                                                                        | Use `CarouselNavButton` or `CarouselNavImageButton`. `active` and the per-page `index` come from context; neither is a corresponding public button prop.                                                                                                                                                           |
+| Navigation item `indicator`, `content`, `children`                                                                          | Compose explicit children or the required image slot. V0's `indicator` is Box shorthand, not a v9 slot with the same name. V9 nav buttons are dots by default; the example replaces the dot presentation with token-styled text tabs.                                                                              |
+| Navigation item `iconOnly`, `primary`, `secondary`, `vertical`, `thumbnails`, `disableClickableNav`                         | No direct boolean renames. Apply the layout/appearance/pointer decisions above to the actual button.                                                                                                                                                                                                               |
+| Navigation item `onClick`, `onFocus`, `onBlur`                                                                              | Native event-only handlers in v9, not `(event, fullItemProps)`.                                                                                                                                                                                                                                                    |
+| `Carousel.Paddle` / `CarouselPaddle`                                                                                        | Use `CarouselButton`. V0 `next`/`previous` become `navType="next"`/`"prev"`. Convert `content`/`children` to children or the button's icon slot.                                                                                                                                                                   |
+| Paddle `disabled`, `hidden`, `disableClickableNav`                                                                          | Keep real disabled semantics when genuinely required. Migrate `hidden` with omission/visibility classes; v9 trailing controls default to disabled rather than v0's theme-driven `visibility: hidden`. Pointer opt-out is a separate guard, not native disabled.                                                    |
+| Paddle `onClick`, `onFocus`, `onBlur`                                                                                       | Native handlers, not full-props callbacks; see the ordering caveat below.                                                                                                                                                                                                                                          |
+| `Carousel.PaddlesContainer` / `CarouselPaddlesContainer`                                                                    | Use `CarouselNavContainer` or a native layout container. Move its `content`/`children` into explicit JSX.                                                                                                                                                                                                          |
+| Common `accessibility`, `as`, `className`, `styles`, `variables`, `design`, native attributes, and refs on these components | Reapply their meaning on the corresponding v9 element using the root mapping above. Do not copy behavior functions, variable objects, or old slot selectors.                                                                                                                                                       |
+| `Carousel.create` and item/navigation/paddle `.create` factories                                                            | Replace with JSX and v9 slots; these are not public v9 APIs. V0's `PaddlesContainer` has shorthand configuration but no assigned `.create` factory.                                                                                                                                                                |
+
+Resolve shorthand precedence before converting it:
+
+- At the v0 root, existing `children` take precedence over the entire generated carousel, even when `items` and `navigation` are supplied.
+- On v0 items, navigation items, paddles, and the paddles container, existing `children` take precedence over generated `content`. On navigation, children replace the generated navigation-item list.
+- A navigation item with no content falls back to its indicator shorthand. `thumbnails` changes styling of supplied content; it is not an image-extraction feature.
+- Expand keys, ids, handlers, and overrides from each shorthand object. Root v0 defaults are not a substitute for an application's per-item customizations.
+
+## Defaults and state
+
+| Setting                      | Released v0 default/effective behavior                                                                                                               | Released v9 default/effective behavior                                                                                                                             |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Initial index                | `0` when neither index prop supplies a value                                                                                                         | `0` when neither index prop supplies a value                                                                                                                       |
+| Circular navigation          | Unspecified, effectively false                                                                                                                       | `circular={false}`                                                                                                                                                 |
+| Paddles                      | Both shorthand values default to `{}`; non-circular trailing paddles are hidden by the theme                                                         | Bare `Carousel` renders none; `CarouselNavContainer` renders previous/next by default. A trailing `CarouselButton` defaults to disabled.                           |
+| Navigation                   | None without `navigation`; no tabs are generated by default                                                                                          | None without explicitly composed `CarouselNav`                                                                                                                     |
+| Thumbnails / pointer opt-out | Absent/falsey                                                                                                                                        | No root `thumbnails` or `disableClickableNav` props                                                                                                                |
+| Position text                | No default `getItemPositionText`; without navigation a supplied generator also produces visible, `aria-hidden` pagination                            | `announcement` is undefined; announcements require a function. There is no automatic visible pagination.                                                           |
+| Motion                       | Enter names `carousel-slide-to-previous-enter` / `carousel-slide-to-next-enter`; both exit names are empty. Initial rendering has no animation name. | `motion="slide"`; default duration `25` is a physics-simulation parameter, **not milliseconds**                                                                    |
+| Grouping / alignment         | Item indexing, not v9-style page grouping                                                                                                            | `groupSize="auto"` and `align="center"`                                                                                                                            |
+| Appearance / interaction     | Northstar theme and behaviors                                                                                                                        | `appearance="flat"`, `draggable={false}`, `whitespace={false}`                                                                                                     |
+| Card arrow-focus group       | Behavior-managed item/container arrow actions                                                                                                        | `CarouselSlider.cardFocus` defaults to false                                                                                                                       |
+| Autoplay                     | Not enabled by this v0 scenario                                                                                                                      | Interval defaults to `4000` milliseconds, but autoplay needs `CarouselAutoplayButton`. Adding that button enables autoplay by default. Do not add it incidentally. |
+
+The examples are **controlled**: state lives in `CarouselScenario` and every accepted selection updates `activeIndex`. An uncontrolled migration may use `defaultActiveIndex` instead of `activeIndex`; its callback can report changes without becoming a second competing state source.
+
+There is a significant circular-boundary difference. V0 normalizes its internal target but emits the **requested unwrapped** `activeIndex`: moving previous from `0` can report `-1`, and moving next from the final item can report `items.length`. The before handler normalizes those proposals into `0..2` for the selected-index output. V9 directional controls report the selected page, so the after handler validates and stores `data.index` directly. Only the application's own panel-arrow handler computes a wrapped project index.
+
+For multi-card pages, remove the assumption that a page index selects a single project. `announcement(index, totalPages, groupIndexList)` supplies the card indexes within each page. Use that mapping for item-specific labels/state, and let navigation describe the page or group. Do not normalize a grouped page index modulo the number of individual cards.
+
+## Events and pointer navigation
+
+| Interaction                | V0 contract                                                                                                                                                                             | V9 contract / migration decision                                                                                                                                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Active-index change        | `(event, { ...props, activeIndex: requestedIndex })`                                                                                                                                    | `(event, { event, type, index })`, where `type` is `'click'`, `'focus'`, `'drag'`, or `'autoplay'`. Event types differ across this union; use the published `CarouselProps['onActiveIndexChange']` type rather than assuming every event is a mouse event. |
+| Navigation item activation | Navigation invokes `onItemClick` with item props, then the item's supplied `onClick`. The root installs a selection override and invokes supplied navigation `onClick` after selecting. | `CarouselNavButton.onClick(event)` runs before its selection and honors `event.defaultPrevented`. Selection uses the page index provided by `CarouselNav` context.                                                                                         |
+| Paddle click               | Full paddle props are supplied; the root chains the supplied click before its own selection when clickable navigation is allowed.                                                       | In the audited v9 release, `CarouselButton` merges its internal click handler **before** the supplied `onClick`. Preventing default only in that later callback is too late to cancel selection. Use `onClickCapture` for the pointer guard, as above.     |
+| Paddle focus/blur          | The root chains focus, turns polite narration on with paddle focus, and installs its own blur handler                                                                                   | Native handlers and v9 trailing-control focus management; no equivalent full-props data or narration-toggle callback                                                                                                                                       |
+
+`disableClickableNav` must not become a blanket keyboard lock. The source guards paddle clicks and navigation selection but leaves item-container ArrowLeft/ArrowRight and paddle key actions in place. The after example makes the pointer/keyboard distinction explicit:
+
+- With pointer navigation enabled, clicking a tab selects its project; clicking a paddle selects previous/next, including circular boundaries.
+- With pointer navigation disabled, pointer-generated clicks on those controls are canceled in capture and do not change selection. The controls are still focusable and are not advertised as universally disabled.
+- Enter/Space and assistive-technology/programmatic activation with a zero-detail click remain useful. Navigation-arrow focus movement is supplied by v9's navigation group.
+- ArrowRight/ArrowLeft on the focused panel itself still advance/wrap. Descendant controls' arrow keys are left alone; the handler checks `event.target === event.currentTarget`.
+
+If an application instead needs to disable **all** input, that is a different contract: explicitly choose native disabled semantics and decide whether panel/drag/programmatic navigation must also be stopped. The pointer guard in this guide does not implement that policy.
+
+## Accessibility and focus
+
+- **Named region:** With v0 navigation, the inner items container is the region named `Project gallery`; v9 places the region on `Carousel`. The source's explicit `aria-roledescription="carousel"` is retained.
+- **Tabs and panels:** V0 navigation defaults to a `ul` tablist with `li` tabs. V9 `CarouselNav` defaults to a `div` tablist and `CarouselNavButton` to a native button with `role="tab"` and context-derived `aria-selected`. Both retain the three `Show …` names. V9 cards default to `role="tabpanel"`; supplied panel ids remain `project-slide-0`, `project-slide-1`, and `project-slide-2`. V9 navigation also updates `aria-controls` from its actual page-to-card registry; grouping can produce multiple controlled ids.
+- **Paddles:** V0's navigation mode marks the paddles `aria-hidden` with `tabIndex={-1}`. The after example deliberately exposes useful, named `Previous project`/`Next project` buttons instead of copying those exclusions.
+- **Inactive content:** V0 marks inactive items hidden and uses mount-on-enter/unmount-on-exit animation wrappers. V9 keeps cards mounted. With `cardFocus={false}`, its visibility events apply `aria-hidden` and `inert` to offscreen cards. That changes component-state preservation and DOM queries; finding a heading in the DOM does not mean it is the active accessible panel.
+- **Panel arrows:** The example retains an active-panel tab stop and explicit panel-only arrow handling. Its focus request waits for the selected card's visibility-driven accessibility state. Missing panels, invalid callback indexes, or unsuccessful focus throw diagnostic errors rather than silently reporting success.
+- **Focus timing:** V0 debounces item focus after navigation and item arrows by `400` milliseconds. V9 nav activation does not automatically focus the selected card. Here nav/paddle activation keeps native control focus, while panel arrows move focus to the newly available panel. The focus effect's two-second timeout is an error diagnostic, not an animation duration or a promised debounce.
+- **Alternative focus policy:** `CarouselSlider cardFocus` opts into Tabster's horizontal arrow group and focusable cards. This is a different policy from the default visibility/inert branch. Do not enable it in addition to the example's manual arrows without removing/reviewing that compatibility handling and rechecking inactive-card accessibility.
+- **Position announcements:** V0 `getItemPositionText` supplies hidden position text inside items and visible `aria-hidden` pagination only when navigation is absent. Its polite live region is switched by paddle focus/blur, not always on. V9 uses the provider's polite announcer, suppresses the initial announcement, and deduplicates text. The explicit function retains `Project 1 of 3` / `Project 2 of 3` / `Project 3 of 3` on subsequent page changes without inventing a visible pagination slot.
+
+Verify keyboard operation, announcement delivery, selected tabs, focus after transitions, and panel/control relationships with the actual provider and supported browsers. Also review RTL behavior, custom interactive card descendants, and any changes to grouping or layout; no assistive-technology or exact focus/pixel equivalence is implied.
+
+## Styling, layout, and motion
+
+Use Griffel `makeStyles` and design tokens from `@fluentui/react-theme` on the composed components. Do not pass Northstar `styles`, `variables`, or `design` objects to v9, and do not keep selectors targeting `ui-carousel__itemscontainer`, `ui-carousel__navigationitem`, or the old paddle slots.
+
+The released Teams root theme is an inline-block carousel with a wrapper width variable defaulting to `300`. That is a theme default, not a v9 sizing requirement. The after example intentionally uses the available width, default full-width `CarouselCard` sizing, border-box token padding, and a below-viewport controls row. Avoid `autoSize` or slider gaps when preserving one full-page project at a time unless you also recheck geometry, grouping, and looping. V9 may not loop when there is insufficient card content, even with `circular`.
+
+The navigation-button class intentionally replaces the default dot pseudo-element with project text and styles selection through `aria-selected`. Apply custom classes to the actual component, not to a guessed internal wrapper. When building a reusable wrapper that accepts a user's `className`, merge it last with `mergeClasses` so caller overrides remain effective.
+
+Do not infer functioning layout features merely from the v0 placement prop declarations: the audited `navigationPosition` and `paddlesPosition` are not consumed by its render/style mapping. Choose a documented v9 `CarouselNavContainer.layout` or your own explicit layout based on what the application actually needs.
+
+V0's directional theme-animation names are unsupported v9 props. V9's slide motion uses an attraction simulation; its `duration` value is not a CSS time. Fade is a separate supported motion choice. Migrating custom enter/exit names, transition-specific mount lifecycle, or exact timings requires an independently designed animation strategy and reduced-motion testing, not a string rename.
+
+## Unsupported features and intentional differences
+
+There is no public v9 root `items`, `navigation`, `thumbnails`, `disableClickableNav`, `getItemPositionText`, old placement prop, or directional animation-name prop. There are no v0 behavior-function, shorthand-factory, or `Carousel.*` static-component equivalents. Convert those call sites rather than forwarding unknown props.
+
+This guide preserves the gallery's single-project selection and pointer/keyboard policy, but deliberately changes the region wrapper, native navigation elements, paddle exposure, inactive-card lifecycle, focus timing/ownership, theme geometry, and announcement mechanism. Autoplay and dragging are not introduced. Thumbnail composition, vertical navigation, arbitrary v0 accessibility behaviors, grouped cards, and custom motion need explicit application decisions beyond this scenario.
+
+## Source references
+
+The Northstar sources below are pinned to release commit `461eb5e4be0dd97b55fec08589048f091a2d67a8`. The v9 references are the actual published `@fluentui/react-carousel@9.9.14` declarations and emitted implementation, from release commit `191b8365a26c4ad5366ff7155da4a7914fb55150`; suite version `9.74.9` supplies the named public exports used above.
+
+- [V0 `Carousel.tsx`](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/Carousel.tsx): props, defaults, `400` ms focus debounce, unwrapped callback proposals, shorthand generation, pointer guards, children precedence, static components, and factory.
+- [V0 `CarouselItem.tsx`](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/CarouselItem.tsx) and [item behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Carousel/carouselItemBehavior.ts): content/children, hidden position text, active panel roles, and descendant-arrow isolation.
+- [V0 `CarouselNavigation.tsx`](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/CarouselNavigation.tsx), [navigation item](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/CarouselNavigationItem.tsx), [tab behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Tab/tabBehavior.ts), and [tablist behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Tab/tabListBehavior.ts): tab roles, selection, navigation variants, and event composition.
+- [V0 paddle](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/CarouselPaddle.tsx), [paddles container](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/CarouselPaddlesContainer.tsx), and [carousel behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Carousel/carouselBehavior.ts): paddle props, named region placement, key actions, and navigation-mode paddle exclusion.
+- [V0 Teams carousel themes](https://github.com/microsoft/fluentui/tree/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/themes/teams/components/Carousel): `carouselStyles.ts`, `carouselVariables.ts`, navigation/item styles, and paddle hiding. [Animation-name selection](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Carousel/utils.ts) explains directional names and initial-mount behavior.
+- [Published v9 `dist/index.d.ts`](https://unpkg.com/@fluentui/react-carousel@9.9.14/dist/index.d.ts): public components, root/slot props, page indexes, event-data union, announcement arguments, supported layouts, motion, and focus options.
+- [Published v9 `useCarousel.js`](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/Carousel/useCarousel.js) and [engine integration](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/useEmblaCarousel.js): defaults, controlled state, page registry, looping, callback fields, visibility events, and polite announcement lifecycle.
+- [Published v9 card](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselCard/useCarouselCard.js), [slider](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselSlider/useCarouselSlider.js), and [card styles](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselCard/useCarouselCardStyles.styles.js): roles, focus capture, visibility/inert handling, `cardFocus`, and default full-page sizing.
+- [Published v9 navigation](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselNav/useCarouselNav.js), [navigation button](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselNavButton/useCarouselNavButton.js), and [image button](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselNavImageButton/useCarouselNavImageButton.js): generated page controls, native tab semantics, selection cancellation, panel relationships, and image composition.
+- [Published v9 paddle](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselButton/useCarouselButton.js) and [navigation container](https://unpkg.com/@fluentui/react-carousel@9.9.14/lib/components/CarouselNavContainer/useCarouselNavContainer.js): internal-before-user paddle click ordering, trailing disabled state, default slots, and optional autoplay.

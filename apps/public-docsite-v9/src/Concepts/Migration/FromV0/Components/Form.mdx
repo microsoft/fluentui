@@ -1,0 +1,355 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Form Migration" />
+
+# Form Migration
+
+## Overview
+
+Replace a v0 `Form` with a native HTML `form`, and compose v9 `Field` with `Input`, `Button`, and the other controls your application needs. There is no v9 `Form` component or `Form.*` namespace. A form library is **not required**.
+
+`Field` supplies a label, hint, validation message, and accessibility relationships for a control. It is not a form element, values store, serializer, or validation engine. Keep validation rules, submission, and application-owned state in your application.
+
+In Northstar, the helpers are **named exports**: `FormInput`, `FormButton`, `FormCheckbox`, and so on. The released package does not attach them as `Form.Input`, `Form.Button`, or `Form.Field`.
+
+The examples below target `@fluentui/react-northstar@0.71.4`, React 18.3.1, and `@fluentui/react-components@9.74.9`, including the released `Field` 9.5.5, `Input` 9.8.7, and `Button` 9.11.1 implementations. The v0 example includes its Northstar provider. The application supplies a v9 `FluentProvider` and theme around the v9 examples; do not carry the Northstar provider into the migrated code.
+
+## Primary example
+
+Both versions start with an empty, controlled project name, no application error, and `Submitted: none`. They preserve the form's accessible name and GET method, control ID and name, help and error text, submit/reset buttons, and output markers.
+
+<a id="primaryBefore" />
+
+### Before (v0)
+
+```tsx
+import * as React from 'react';
+import { Form, FormButton, FormInput, Provider, teamsTheme } from '@fluentui/react-northstar';
+
+export default function FormScenario() {
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const [projectName, setProjectName] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState<string>();
+  const [submitted, setSubmitted] = React.useState('none');
+
+  return (
+    <Provider theme={teamsTheme}>
+      <section aria-label="Project form scenario" data-testid="form-case">
+        <h2>Project form</h2>
+        <Form
+          ref={formRef}
+          aria-label="Project form"
+          data-testid="project-form"
+          method="get"
+          onSubmit={event => {
+            event.preventDefault();
+            const form = formRef.current;
+            const FormDataConstructor = form?.ownerDocument.defaultView?.FormData;
+            if (!form || !FormDataConstructor) {
+              throw new Error('The mounted form and its owner-document FormData constructor are required.');
+            }
+            const entry = new FormDataConstructor(form).get('projectName');
+            if (typeof entry !== 'string') {
+              throw new Error('The named projectName text control is missing from form data.');
+            }
+            const value = entry;
+            if (value.trim().length < 3) {
+              setErrorMessage('Project name must have at least three characters.');
+              return;
+            }
+            setErrorMessage(undefined);
+            setSubmitted(value);
+          }}
+          onReset={() => {
+            setProjectName('');
+            setErrorMessage(undefined);
+            setSubmitted('none');
+          }}
+        >
+          <FormInput
+            id="project-name"
+            name="projectName"
+            label="Project name"
+            type="text"
+            required
+            value={projectName}
+            message="Use at least three characters."
+            errorMessage={errorMessage}
+            onChange={(_event, data) => {
+              if (typeof data?.value !== 'string') {
+                throw new Error('FormInput callback did not provide a string value.');
+              }
+              setProjectName(data.value);
+              setErrorMessage(undefined);
+            }}
+          />
+          <FormButton type="submit" content="Submit" primary />
+          <FormButton type="reset" content="Reset" />
+        </Form>
+        <output data-testid="form-submitted">Submitted: {submitted}</output>
+      </section>
+    </Provider>
+  );
+}
+```
+
+<a id="primaryAfter" />
+
+### After (v9)
+
+```tsx
+import * as React from 'react';
+import { Button, Field, Input, makeStyles, mergeClasses } from '@fluentui/react-components';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { tokens } from '@fluentui/react-theme';
+
+const useStyles = makeStyles({
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: tokens.spacingVerticalM,
+  },
+});
+
+export default function FormScenario({ className }: { className?: string }) {
+  const classes = useStyles();
+  const { targetDocument } = useFluent_unstable();
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const [projectName, setProjectName] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState<string>();
+  const [submitted, setSubmitted] = React.useState('none');
+
+  return (
+    <section aria-label="Project form scenario" data-testid="form-case">
+      <h2>Project form</h2>
+      <form
+        ref={formRef}
+        aria-label="Project form"
+        data-testid="project-form"
+        method="get"
+        className={mergeClasses(classes.form, className)}
+        onSubmit={event => {
+          event.preventDefault();
+          const form = event.currentTarget;
+          const FormDataConstructor = targetDocument?.defaultView?.FormData;
+          if (!targetDocument || form.ownerDocument !== targetDocument || !FormDataConstructor) {
+            throw new Error('The mounted form and its owner-document FormData constructor are required.');
+          }
+          const entry = new FormDataConstructor(form).get('projectName');
+          if (typeof entry !== 'string') {
+            throw new Error('The named projectName text control is missing from form data.');
+          }
+          const value = entry;
+          if (value.trim().length < 3) {
+            setErrorMessage('Project name must have at least three characters.');
+            return;
+          }
+          setErrorMessage(undefined);
+          setSubmitted(value);
+        }}
+        onReset={() => {
+          setProjectName('');
+          setErrorMessage(undefined);
+          setSubmitted('none');
+        }}
+      >
+        <Field
+          label={{ children: 'Project name', htmlFor: 'project-name' }}
+          required
+          hint={errorMessage ? undefined : 'Use at least three characters.'}
+          validationState={errorMessage ? 'error' : 'none'}
+          validationMessage={errorMessage ? { children: errorMessage, role: 'alert' } : undefined}
+        >
+          <Input
+            id="project-name"
+            name="projectName"
+            type="text"
+            required
+            value={projectName}
+            onChange={(_event, data) => {
+              if (typeof data?.value !== 'string') {
+                throw new Error('Input callback did not provide a string value.');
+              }
+              setProjectName(data.value);
+              setErrorMessage(undefined);
+            }}
+          />
+        </Field>
+        <Button type="submit" appearance="primary">
+          Submit
+        </Button>
+        <Button type="reset">Reset</Button>
+      </form>
+      <output data-testid="form-submitted">Submitted: {submitted}</output>
+    </section>
+  );
+}
+```
+
+The important changes are:
+
+- `FormInput`'s generated label/control/message composition becomes an explicit `Field` around `Input`. The label's `htmlFor` matches the retained `project-name` input ID. `name="projectName"` remains on the actual input, not the field wrapper.
+- Ordinary help uses `hint`, not an error `validationMessage`. When there is an error, the help is replaced, just as v0's truthy `errorMessage` replaces `message`. The error uses `validationState="error"` and an alert message; `Input` receives the invalid state through `Field` context.
+- `required` is retained on the native input as well as the field. An empty input is blocked by browser constraint validation before `onSubmit`; a nonempty value whose trimmed length is less than three is rejected by the application's submit handler.
+- The handler calls `preventDefault()` before processing data, so the app stays client-side despite `method="get"`. It reads the named control with the mounted form's document-specific `FormData` constructor, checks missing/non-text values, and submits the original string rather than its trimmed version.
+- Editing clears the application error but does not erase an earlier submitted result. Reset explicitly clears the React-owned value, error, and submitted result. Neither the old `Form` nor the new `Field` owns those states.
+- Both button types are explicit. Enter submission follows native form behavior; no custom Enter key handler is needed.
+
+## How to migrate props
+
+### Form root
+
+| v0 API                                                                                             | v9/native replacement                        | Migration notes                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                           | Native `form.action`                         | v0 automatically prevents default only when `action` is falsey. A native form does not have that guard. Explicitly prevent default for client-handled submissions, or intentionally retain browser navigation.   |
+| `method`, `name`, `id`, `target`, `encType`, `autoComplete`, `noValidate`, other native attributes | Same attributes on `form`                    | These were forwarded native props, not a special form-state API. Preserve the source values; do not add `noValidate` as a migration shortcut.                                                                    |
+| `children`                                                                                         | Native form children                         | In v0, children considered present by its `childrenExist` helper take precedence over `fields`; they are not appended to the shorthand fields. Keep controls inside, or natively associated with, the real form. |
+| `fields`                                                                                           | Explicit, keyed `Field`/control JSX          | Deprecated in v0. The source maps the collection through `FormField.create` only when children are absent. It is shorthand rendering, not a schema, registration, or values store.                               |
+| `content`                                                                                          | Explicit children, if content is needed      | The root `Form` does **not** support a `content` rendering shorthand. Do not confuse it with `FormButton`, `FormLabel`, or `FormMessage` content.                                                                |
+| `onSubmit`                                                                                         | Native React `onSubmit(event)`               | The v0 second argument is **all Form props**, not collected field values. Collect native `FormData` or use your own state explicitly.                                                                            |
+| `onReset`, other native events                                                                     | Native React handlers                        | There is no form-specific reset-store callback. Reset React-owned state in the application. Preserve other handlers on the appropriate native node.                                                              |
+| `accessibility`                                                                                    | Native form ARIA and control/field semantics | The root has no default Northstar form behavior. There is no behavior-function prop on the native form; migrate any custom ARIA or keyboard behavior deliberately.                                               |
+| `as`                                                                                               | Choose the actual native element             | The default was `form`. Replacing it with only a `Field` or `div` loses submission, constraint validation, and reset semantics. A source custom `as` needs its own semantic review.                              |
+| `className`                                                                                        | Native `form.className`                      | Remap old `ui-form` and helper selectors to the new composition.                                                                                                                                                 |
+| `styles`, `design`, `variables`                                                                    | Griffel classes, tokens, and theme           | No v9 `Form.styles`, `design`, or Northstar variables API exists. Separate form layout from field/control styling.                                                                                               |
+| `ref`                                                                                              | `React.useRef<HTMLFormElement>` on `form`    | Preserve access to the actual form. A `Field` ref targets its field wrapper, not the form or input.                                                                                                              |
+| `Form.create`                                                                                      | JSX composition                              | There is no corresponding v9 static factory. Expand the shorthand instead of inventing one.                                                                                                                      |
+
+### Field and message props
+
+| v0 API                                                                                                       | v9 replacement                                                        | Migration notes                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FormField.control`                                                                                          | A `Field` child                                                       | The deprecated field defaults to an `Input` control. Expand its shorthand and migrate that control's own props. Field-level `id`, `name`, `type`, and `required` were defaults for the old control; account for explicit overrides in its shorthand.                              |
+| `label`                                                                                                      | `Field.label`                                                         | Convert the old label shorthand to Label-slot content/props. With an explicit input ID, set matching `label.htmlFor`. Group/custom controls may instead use the supplied `aria-labelledby`.                                                                                       |
+| `message`                                                                                                    | `Field.hint`, or `validationMessage` with an explicit non-error state | Assistance text is not automatically an error. A validation message without an explicit state defaults to an error in v9.                                                                                                                                                         |
+| `errorMessage`                                                                                               | `validationMessage` and `validationState="error"`                     | A truthy v0 error replaces the normal message and supplies invalid/alert semantics. Do not render both messages by accident. This does not install a validation rule or browser custom validity.                                                                                  |
+| `inline`                                                                                                     | `orientation="horizontal"`; otherwise `"vertical"`                    | This maps the field's label layout intent. Some v0 helpers also forward `inline` to their underlying control; migrate that control behavior separately.                                                                                                                           |
+| `id`, `name`, `type` on `FormField`                                                                          | Props on the actual control                                           | Keep native submission names on inputs/selects/textareas, not only on `Field`'s `div`. Preserve the resolved control ID and its label relationship.                                                                                                                               |
+| `required`                                                                                                   | `Field.required` plus native `required` where supported               | `FormInput` forwards required to its label and input. v9 `Input` can also obtain native required through field context; the example keeps it explicit. A marker or `aria-required` alone is not native constraint validation.                                                     |
+| `FormField.children`                                                                                         | Explicit field/control composition                                    | In v0, custom children replace the generated label, control, and message together. Audit those children rather than assuming the old generated structure was rendered.                                                                                                            |
+| Common `accessibility`, `as`, `className`, `styles`, `variables`, `design`, native attributes, events, `ref` | The corresponding `Field`, slot, control, or native node              | Determine which old node received each prop. A form-prefixed control helper's base forwards unhandled props and its ref to its **control**, while its generated field styling belongs to the wrapper. Deprecated `FormField`/`FormFieldCustom` refs instead target their wrapper. |
+
+### Shorthand expansion and content precedence
+
+| Source pattern                                                              | What the released v0 implementation renders                                                                                                                 | What to write in v9                                                                                                                                         |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fields` containing a string such as `"Project name"`                       | `FormField.create` maps primitive shorthand to `label`; the field supplies its default Input control. It does not infer a control name or value.            | An explicit `Field` label and `Input`; add only the names, IDs, and state required by your application.                                                     |
+| `fields` containing field-props objects                                     | One `FormField` per shorthand entry, with a control/label/message composition unless that entry supplies custom children.                                   | Expand entries in source order into JSX with stable keys. Migrate each resolved control, label, and message, including native attributes.                   |
+| `Form` with both `fields` and present `children`                            | Children only.                                                                                                                                              | Keep the children; do not also render the shorthand fields.                                                                                                 |
+| `FormField` with present `children`                                         | Children instead of its generated label, control, and message. For generated checkbox/radio fields, the source otherwise puts the control before the label. | Preserve the chosen custom composition, or use the appropriate v9 control's own label placement.                                                            |
+| `FormButton` control `content`; Box-based `FormLabel`/`FormMessage` content | Their underlying control/Box chooses present children ahead of content.                                                                                     | Convert the content that was actually selected into `Button`/`Label` children or a field message slot. Do not blindly concatenate `children` and `content`. |
+
+The form-prefixed control helpers use a different composition base from deprecated `FormField`: their unhandled `children`, when supported by the wrapped control, are control props. Do not apply `FormField`'s whole-field children replacement rule to every helper.
+
+## Named helpers and controls
+
+All entries below are public **named exports** from Northstar, not members attached to `Form`. Their control-specific props and callbacks remain the wrapped control's API; the field decoration does not create a shared values protocol. Follow the linked v9 control documentation when migrating those inherited props.
+
+| v0 export         | Replacement                                                                                                                                                                                                                                                                         | Additional considerations                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FormField`       | [`Field`](https://react.fluentui.dev/?path=/docs/components-field--docs) and an explicit control                                                                                                                                                                                    | Expand deprecated `control` shorthand. Migrate `label`, `message`, `errorMessage`, `inline`, `id`, `name`, `type`, `required`, custom children, and wrapper styling/ref as described above.                                                                                                                                                                                             |
+| `FormFieldCustom` | A Field render-function child, field-aware custom control, or explicit native layout                                                                                                                                                                                                | It only renders its children. Although its prop documentation describes control attributes, the released implementation consumes `id`, `name`, `required`, and `type` without cloning or injecting them into children; `inline`, `required`, and `type` affect styling. Wire every actual control yourself. There is no released `.create` assignment on this helper.                   |
+| `FormLabel`       | `Field.label` or standalone [`Label`](https://react.fluentui.dev/?path=/docs/components-label--docs)                                                                                                                                                                                | Default v0 element is `label`. Map Box `content`/`children` to label children, retain `htmlFor`/native props/ref as appropriate, and map `inline` to layout. Its `required` only adds a styled marker; it does not make another control required.                                                                                                                                       |
+| `FormMessage`     | `Field.hint`, `Field.validationMessage`, or an explicitly associated message element                                                                                                                                                                                                | Default v0 element is `span`. Map Box content/children and native props/ref deliberately. Standalone `error` changes styling only: it does not itself add `role="alert"` or connect a control. Choose the target state and association explicitly.                                                                                                                                      |
+| `FormInput`       | `Field` and [`Input`](https://react.fluentui.dev/?path=/docs/components-input--docs)                                                                                                                                                                                                | Move label/message/error decoration to Field. Preserve required/name/type/value/defaultValue/disabled and input refs; migrate `labelPosition`, `input`/`wrapper`, icons/indicators, clearable/fluid/inverted styling, and other Input props using the control API. There is no public `control` shorthand prop on this helper.                                                          |
+| `FormTextArea`    | `Field` and [`Textarea`](https://react.fluentui.dev/?path=/docs/components-textarea--docs)                                                                                                                                                                                          | Note the new spelling. Keep native textarea attributes, required/name, controlled value/reset, and `onChange`. Migrate resize, disabled, fluid/inverted/error styling and other TextArea props separately.                                                                                                                                                                              |
+| `FormCheckbox`    | [`Checkbox`](https://react.fluentui.dev/?path=/docs/components-checkbox--docs), with Field for messages when needed                                                                                                                                                                 | The old helper sends `label` to Checkbox and removes its base label slot. Avoid a duplicate Field label. Migrate checked/defaultChecked, labelPosition, indicator, disabled, click/change behavior, and children. A source `toggle` may call for [`Switch`](https://react.fluentui.dev/?path=/docs/components-switch--docs), not a field layout rename.                                 |
+| `FormRadioGroup`  | `Field`, [`RadioGroup` and `Radio`](https://react.fluentui.dev/?path=/docs/components-radiogroup--docs) children                                                                                                                                                                    | Expand `items`; migrate checkedValue/defaultCheckedValue, onCheckedValueChange, vertical layout, and children. v9 selection values are strings. Preserve group naming, labeling, and radio keyboard behavior.                                                                                                                                                                           |
+| `FormSlider`      | `Field` and [`Slider`](https://react.fluentui.dev/?path=/docs/components-slider--docs)                                                                                                                                                                                              | Migrate value/defaultValue/onChange, min/max/step, vertical/disabled, input/inputRef, fluid layout, and accessible value announcements. v9 values are numeric. Required decoration does not give a range input meaningful required-value validation.                                                                                                                                    |
+| `FormDropdown`    | `Field` and [`Dropdown`](https://react.fluentui.dev/?path=/docs/components-dropdown--docs) or [`Combobox`](https://react.fluentui.dev/?path=/docs/components-combobox--docs); [`Select`](https://react.fluentui.dev/?path=/docs/components-select--docs) when native selection fits | Migrate the full underlying Dropdown/positioning API, including item/value/search/open/highlight shorthands and callbacks. v9 uses `selectedOptions` and `onOptionSelect`, not the old value-shorthand/onChange contract. Preserve an explicit submission policy for custom selection controls.                                                                                         |
+| `FormDatepicker`  | `Field` and a separately installed [`@fluentui/react-datepicker-compat` DatePicker](https://react.fluentui.dev/?path=/docs/compat-components-datepicker--docs), or a deliberately selected native date input                                                                        | DatePicker is not exported by the stable v9 suite. The compat package at the audited suite commit is separately versioned 0.6.38. Migrate date/calendar/popup/input options, strings, manual-entry/error handling, open state, and selected-date state separately. Its `onSelectDate(date)` is not v0 `onDateChange(event, data)`. A native date input is not an API-equivalent rename. |
+| `FormButton`      | [`Button`](https://react.fluentui.dev/?path=/docs/components-button--docs); Field only if surrounding label/messages are needed                                                                                                                                                     | Convert selected content to children and `primary` to `appearance="primary"`. Migrate other appearances, icons, loading, disabled/disabledFocusable, size, fluid layout, children, and focus/click handlers through the Button API. Set the native button type explicitly.                                                                                                              |
+
+### Native and custom controls
+
+Built-in v9 controls such as Input consume Field context. An arbitrary native or third-party child does not automatically consume that context. Use Field's render function to spread its ID/ARIA props onto the actual control, or make the control field-aware with `useFieldControlProps_unstable`.
+
+This independent module illustrates the render-function option. It can be rendered inside your application's native form. The native `select` has its own `name` and `required`; the render-function props include ARIA required information, not a native `required` attribute.
+
+```tsx
+import { Field } from '@fluentui/react-components';
+
+export default function NativeSelectField() {
+  return (
+    <Field label={{ children: 'Priority', htmlFor: 'priority' }} hint="Choose a priority." required>
+      {controlProps => (
+        <select {...controlProps} id="priority" name="priority" required defaultValue="">
+          <option value="" disabled>
+            Choose priority
+          </option>
+          <option value="normal">Normal</option>
+          <option value="high">High</option>
+        </select>
+      )}
+    </Field>
+  );
+}
+```
+
+When using the hook instead, opt into `supportsLabelFor` and `supportsRequired` only for controls that actually support those native semantics. Repeated field instances need unique control IDs and matching labels.
+
+## Defaults, state, and events
+
+| Concern            | v0                                                                                                 | v9/native composition                                                                                                                                  |
+| ------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Root               | `form` by default                                                                                  | Use a real `form`, not Field's `div`.                                                                                                                  |
+| No `action`        | Form calls `preventDefault()` before the callback.                                                 | Native submission can navigate unless your handler prevents default.                                                                                   |
+| Field layout       | Generated field/helper layout unless customized                                                    | Field defaults to vertical orientation and medium size.                                                                                                |
+| Required state     | Helper/control dependent; FormInput forwards native required.                                      | Field defaults to not required. Supply marker and appropriate control semantics deliberately.                                                          |
+| Validation message | A truthy `errorMessage` replaces `message`.                                                        | Field defaults to error when `validationMessage` is supplied, otherwise none. Supply an explicit state for ordinary help, success, or warning content. |
+| Button type        | The default native v0 Button does not set a type, so the browser defaults to submit inside a form. | v9 Button defaults to `type="button"`. Explicitly use submit/reset where intended; keep incidental buttons type button.                                |
+| Values and reset   | Form has no registered values/reset store.                                                         | Field has no values/reset store either. Preserve each control's controlled/default state and application reset logic.                                  |
+
+**Submission callbacks:** v0 calls `onSubmit(event, allFormProps, ...extraArgs)`. The second argument is not `{ values }`, field data, or a validation result. A native React form handler receives only the event. Use `event.currentTarget` while handling it, or the correctly typed form ref, to collect data. The primary example checks that the v9 provider's document owns that form before using its `FormData` constructor.
+
+**Input changes:** v0 Input supplies `(event, { ...inputProps, value })`; v9 Input supplies `(event, { value })`. Both wrappers expose a proposed control value, not a form-wide values object. Preserve the application update and error-clearing logic.
+
+**Other helper callbacks:** wrappers inherit their control callbacks. In v0, Checkbox reports proposed `checked`; Datepicker reports `value: Date` in `onDateChange` and an error string in `onDateChangeError`; Dropdown callbacks carry Dropdown props and can have null events; RadioGroup supplies item props; Slider proposes a value; TextArea carries updated props. Do not treat these as interchangeable with either native submit events or v9 control callback data.
+
+**Reset and refs:** a native reset event resets browser-owned control state, not your React values, validation errors, or submitted UI. The primary `onReset` resets all three explicitly. Review library-managed uncontrolled controls separately rather than assuming their internal state follows a DOM reset. If submission is triggered through a form ref, `requestSubmit()` follows native validation and submit-event behavior; `submit()` bypasses both.
+
+## Validation and submission
+
+- Keep business rules in the application. The primary rule is `value.trim().length >= 3`; it is not a Field `rules`, `validators`, or `values` prop. A field's visual/ARIA error state does not itself block submission or set browser custom validity.
+- Preserve native constraints separately. Native `required` checks emptiness, not the trimmed three-character rule. Adding `minLength` or `noValidate` would change the source validation path rather than merely migrate it.
+- `FormData` includes successful, named native controls. A name on Field's wrapper is not a submitted input. Disabled controls and unchecked native checkboxes are omitted; multiple values under one name require an intentional `getAll`/serialization policy.
+- Custom Dropdown/Combobox selection and date values need an explicit policy: read application state, deliberately append values, or render suitable named hidden controls. Do not assume a wrapper's name serializes its selection. Preserve the source value format and account for missing or non-text entries instead of silently substituting an empty string.
+- Keep submit/reset/disabled behavior on the actual controls and keyboard behavior on the form/control that owns it. Existing form-state libraries can be integrated, but the migration does not require adding one.
+
+## Accessibility
+
+- Retain the native form's accessible name (`aria-label="Project form"` in the example) and the control's explicit label relationship. For Input, the retained `project-name` ID and matching Field label `htmlFor` identify the actual native input.
+- Northstar's field behavior joins label and message IDs in `aria-labelledby`. Consequently, its input's accessible name can include the help/error text. v9 Field uses the label for the name and hint/validation messages in `aria-describedby`. This is an intentional semantic difference, not missing help text.
+- A truthy v0 field error supplies control `aria-invalid` and message `role="alert"`. v9 Field with error state supplies invalid semantics to field-aware controls and defaults error messages to alerts. The primary example also sets the alert role explicitly. Warning messages also default to alerts in v9; hints and ordinary messages must not become errors accidentally.
+- A standalone FormLabel required marker is only decoration, and standalone FormMessage error styling does not establish an alert or description. When migrating standalone helpers or FormFieldCustom children, establish those associations and control semantics explicitly.
+- Preserve labels and group semantics for Checkbox/RadioGroup and their native keyboard behavior. Do not replace a control's own label with a second, unassociated field label, or attach an input label only to a wrapper.
+- Custom v0 accessibility behaviors are not transferable function props. Review their ARIA, focus, and keyboard effects against the actual native/v9 controls. Field render-function children must receive the supplied control props; required-native semantics still need explicit support.
+
+## Styling
+
+The v0 Form theme supplies a column flex layout, sibling spacing, and a distinct last-child margin through `fieldsMarginBottom` and `lastChildMarginTop`. Helper themes also style labels, required marks, controls, and messages. These variable names and `ui-form__*` selectors do not map to Field props or unchanged DOM.
+
+Use Griffel `makeStyles` and design tokens from `@fluentui/react-theme` for the intended layout and themed styling. The primary v9 example uses a token-backed vertical gap and merges the caller's class **last**. Style Field's root, label, hint, and validation-message slots separately from the actual control and native form. Reassign old `styles`, `design`, `variables`, and `className` to the nodes that now own those concerns.
+
+The example adopts v9 component styling, including the standard Field validation icon. Its token-backed layout and error adornment are not a pixel-for-pixel copy of the Northstar theme or Input error indicator. No shim or new form-library dependency is necessary for this replacement.
+
+## Removed APIs and intentional differences
+
+- There is no v9 `Form`, `FormInput`, `FormButton`, `Form.*` namespace, or matching static `.create` factory. Deprecated `fields`/`control` shorthand becomes JSX, not a new schema API.
+- Northstar behavior functions, design/style functions, helper CSS selectors, and theme variables need explicit semantic/styling migration.
+- Native forms no longer inherit v0's conditional automatic `preventDefault`; v9 Button no longer defaults to submitting.
+- Labels and descriptions are separated in v9 accessibility relationships rather than preserving Northstar's concatenated accessible name.
+- Field's validation presentation does not replace application validation, native constraints, value collection, or state reset.
+- The optional compat DatePicker is a separate package choice, not a Form dependency or a stable-suite export.
+
+## Source coverage
+
+This guide covers the root Form contract, deprecated field shorthand, all the named Form helpers above, their field-owned props, and inherited-control migration boundaries. Its primary example covers a controlled required text field, manual length validation, client-side submission, and reset; it does not demonstrate every helper's entire control API or claim identical theme rendering.
+
+The mapping is based on the released implementations, including:
+
+- [Northstar Form and submission/children precedence](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Form/Form.tsx) and [public named exports](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/index.ts#L99-L112).
+- [FormField](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Form/FormField.tsx), [FormFieldCustom](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Form/FormFieldCustom.tsx), [helper composition](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Form/utils/formFieldBase.tsx), and [field accessibility behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Form/formFieldBehavior.tsx).
+- Released v9 [Field types](https://unpkg.com/@fluentui/react-field@9.5.5/dist/index.d.ts), [Field defaults and messages](https://unpkg.com/@fluentui/react-field@9.5.5/lib/components/Field/useFieldBase.js), and [control association](https://unpkg.com/@fluentui/react-field@9.5.5/lib/contexts/useFieldControlProps.js).
+- Released v9 [Input native props, ref, required, and change handling](https://unpkg.com/@fluentui/react-input@9.8.7/lib/components/Input/useInput.js) and [Button's explicit default type](https://unpkg.com/@fluentui/react-button@9.11.1/lib/components/Button/useButton.js).
+- Separately versioned [compat DatePicker props at the v9 suite commit](https://github.com/microsoft/fluentui/blob/191b8365a26c4ad5366ff7155da4a7914fb55150/packages/react-components/react-datepicker-compat/library/src/components/DatePicker/DatePicker.types.ts).

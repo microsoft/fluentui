@@ -1,0 +1,279 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Concepts/Migration/from v0/Components/Breadcrumb Migration" />
+
+# Breadcrumb Migration
+
+## Overview
+
+V9 keeps `Breadcrumb`, but replaces its v0 static subcomponents with named imports and an ordered-list composition. **There is no public v9 `BreadcrumbLink`.** Choose the actual navigation element rather than treating `BreadcrumbButton` as a behavior-free rename.
+
+This guide targets `@fluentui/react-northstar@0.71.4` and `@fluentui/react-components@9.74.9`, with React `18.3.1`. The relevant released v9 leaf packages are `@fluentui/react-breadcrumb@9.4.6`, `@fluentui/react-button@9.11.1`, and `@fluentui/react-aria@9.17.15`.
+
+The example preserves the **Project path** name, Home/Projects destinations and callbacks, slash separators, compact text, emphasized noninteractive Details, and `Selected:` output. Its explicit `aria-current` is separate from v0's visual `active` state.
+
+### Before: v0
+
+```tsx
+import * as React from 'react';
+import { Breadcrumb, Provider, teamsTheme } from '@fluentui/react-northstar';
+
+export default function BreadcrumbScenario() {
+  const [lastNavigation, setLastNavigation] = React.useState('none');
+
+  return (
+    <Provider theme={teamsTheme}>
+      <section data-testid="breadcrumb-scenario">
+        <button type="button">Before path</button>
+        <Breadcrumb aria-label="Project path" size="smaller">
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="#home" onClick={() => setLastNavigation('Home')}>
+              Home
+            </Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="#projects" onClick={() => setLastNavigation('Projects')}>
+              Projects
+            </Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Divider />
+          <Breadcrumb.Item active aria-current="page" data-testid="breadcrumb-current">
+            Details
+          </Breadcrumb.Item>
+        </Breadcrumb>
+        <button type="button">After path</button>
+        <output data-testid="breadcrumb-navigation" aria-live="polite">
+          Selected: {lastNavigation}
+        </output>
+      </section>
+    </Provider>
+  );
+}
+```
+
+### After: v9
+
+The docsite preview supplies a v9 `FluentProvider`. In an application, render this module beneath your application's themed `FluentProvider`; `FluentProvider` and themes such as `webLightTheme` are public exports of `@fluentui/react-components`. The old `Provider`/`teamsTheme` do not supply v9 theme tokens.
+
+This migration uses native anchors to retain native link activation, a plain current item to avoid adding a focus stop, and public arrow-group attributes to preserve the source navigation policy. No router or icon package is required.
+
+```tsx
+import * as React from 'react';
+import { Breadcrumb, BreadcrumbItem, makeStyles, mergeClasses } from '@fluentui/react-components';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+
+const useStyles = makeStyles({
+  root: {
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    fontWeight: tokens.fontWeightRegular,
+  },
+  item: {
+    color: tokens.colorNeutralForeground1,
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tokens.spacingHorizontalXS,
+    gap: tokens.spacingHorizontalXXS,
+  },
+  current: {
+    fontWeight: tokens.fontWeightBold,
+  },
+  link: {
+    color: 'inherit',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+    textDecorationLine: 'none',
+    borderRadius: tokens.borderRadiusSmall,
+    ':focus-visible': {
+      outlineColor: tokens.colorStrokeFocus2,
+      outlineStyle: 'solid',
+      outlineWidth: tokens.strokeWidthThick,
+      outlineOffset: tokens.spacingHorizontalXXS,
+    },
+  },
+  separator: {
+    display: 'flex',
+    alignItems: 'center',
+    color: tokens.colorNeutralForeground1,
+  },
+});
+
+export default function BreadcrumbScenario() {
+  const [lastNavigation, setLastNavigation] = React.useState('none');
+  const classes = useStyles();
+  const arrowAttributes = useArrowNavigationGroup({
+    axis: 'both',
+    circular: false,
+    memorizeCurrent: true,
+    tabbable: false,
+  });
+
+  return (
+    <section data-testid="breadcrumb-scenario">
+      <button type="button">Before path</button>
+      <Breadcrumb
+        focusMode="arrow"
+        {...arrowAttributes}
+        aria-label="Project path"
+        size="small"
+        className={classes.root}
+      >
+        <BreadcrumbItem className={classes.item}>
+          <a
+            className={classes.link}
+            href="#home"
+            onClick={event => {
+              event.currentTarget.focus();
+              setLastNavigation('Home');
+            }}
+          >
+            Home
+          </a>
+        </BreadcrumbItem>
+        <li aria-hidden="true" role="presentation" className={classes.separator}>
+          /
+        </li>
+        <BreadcrumbItem className={classes.item}>
+          <a
+            className={classes.link}
+            href="#projects"
+            onClick={event => {
+              event.currentTarget.focus();
+              setLastNavigation('Projects');
+            }}
+          >
+            Projects
+          </a>
+        </BreadcrumbItem>
+        <li aria-hidden="true" role="presentation" className={classes.separator}>
+          /
+        </li>
+        <BreadcrumbItem
+          className={mergeClasses(classes.item, classes.current)}
+          aria-current="page"
+          data-testid="breadcrumb-current"
+        >
+          Details
+        </BreadcrumbItem>
+      </Breadcrumb>
+      <button type="button">After path</button>
+      <output data-testid="breadcrumb-navigation" aria-live="polite">
+        Selected: {lastNavigation}
+      </output>
+    </section>
+  );
+}
+```
+
+## How to migrate props
+
+The common-prop rows below apply to the root, Item, Link, and Divider unless noted.
+
+| V0 component or factory                               | V9 migration                                                                                                                                                                                                            |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Breadcrumb`                                          | Import `Breadcrumb` from `@fluentui/react-components`. It renders a `nav` containing an `ol` list slot.                                                                                                                 |
+| `Breadcrumb.Item` / standalone `BreadcrumbItem`       | Import `BreadcrumbItem` by name. The default v0 `div` with `role="listitem"` becomes an `li`. The wrapper itself is not a navigation control.                                                                           |
+| `Breadcrumb.Link` / standalone `BreadcrumbLink`       | Compose a native anchor inside `BreadcrumbItem`, as above, or adopt `BreadcrumbButton` with an anchor/href after reviewing its additional keyboard and disabled behavior. There is no v9 export named `BreadcrumbLink`. |
+| `Breadcrumb.Divider` / standalone `BreadcrumbDivider` | Import `BreadcrumbDivider` for the v9 direction-aware chevron. Use a hidden native `li` separator for a literal slash or custom content; see [Separators](#separators).                                                 |
+| `Breadcrumb.create` / `shorthandConfig`               | No corresponding public v9 static shorthand factory/configuration. Render explicit JSX children and supported slots. Replace shorthand strings/objects with their rendered content and attributes.                      |
+
+| V0 prop                                                     | V9 migration                                                                                                                                                                                                                                                                                                                                                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`                                                  | Preserve explicit child order and nesting. Root/Item/Link accept children; a full v9 Divider replaces them with its chevron.                                                                                                                                                                                                                                              |
+| `content`                                                   | Replace with JSX children after resolving the v0 children/content precedence described below. Use native separator composition for Divider content. V9 has no `content` shorthand prop.                                                                                                                                                                                   |
+| `className`                                                 | Keep the class on the corresponding root, list slot, item, or actual control. Update selectors targeting old `ui-breadcrumb*` classes; they are not aliases for `fui-*` classes. When combining caller classes with `mergeClasses`, put the caller's class last.                                                                                                          |
+| `styles`                                                    | Port Fela style objects/functions to `makeStyles` classes on the appropriate element/slot. Do not forward the old `styles` prop.                                                                                                                                                                                                                                          |
+| `variables`                                                 | Separate theme values into v9 `FluentProvider` theme tokens and component/state overrides into Griffel classes. V0 variable callbacks are not v9 props.                                                                                                                                                                                                                   |
+| `design`                                                    | Translate the concrete styling into token-backed Griffel classes; there is no public v9 `design` prop.                                                                                                                                                                                                                                                                    |
+| `accessibility`                                             | Decompose behaviors into native semantics, ARIA attributes, focus configuration, and any custom event handlers. Do not pass v0 behavior functions into v9. See [Accessibility](#accessibility).                                                                                                                                                                           |
+| `as`                                                        | Review the actual element. V0 permits arbitrary polymorphism; the v9 Breadcrumb root/list/item/divider slots are typed for `nav`/`ol`/`li`/`li`. `BreadcrumbButton` supports its anchor and button arms. Compose native elements for other source shapes while keeping valid list markup.                                                                                 |
+| `size` (root)                                               | V9 supports only `small`, `medium`, and `large`, with `medium` still the default. Preserve v0 `smaller` through reviewed token-based typography and spacing, not an invented enum value. See [Sizing and styling](#sizing-and-styling).                                                                                                                                   |
+| `active` (Item)                                             | Apply visual emphasis to the corresponding item/control. It does not automatically set `aria-current`, disable navigation, or make an element focusable. Do not mechanically replace it with `BreadcrumbButton.current`.                                                                                                                                                  |
+| `disabled` (Item)                                           | For a default v0 `div` Item, preserve the disabled-looking color with a class using `tokens.colorNeutralForegroundDisabled`. It does not disable a nested Link. Use v9 control `disabled`/`disabledFocusable` only when actual disabled interaction is intended. A source `as="button"` may instead have native disabled behavior; review that source element separately. |
+| `href` (native Link attribute)                              | Preserve the destination on the actual anchor. `BreadcrumbButton` chooses an anchor for a truthy `href` unless `as` is explicit; its disabled/current behavior can remove that href.                                                                                                                                                                                      |
+| `onClick` and other native handlers                         | Move to the element that owns the action, preserving callbacks and `preventDefault` decisions. Native anchors retain browser activation; `BreadcrumbButton` adds activation/disabled handlers. Review changed event `currentTarget` types.                                                                                                                                |
+| `aria-current`                                              | Keep the explicit attribute on the corresponding current element. A plain current Item can remain noninteractive, as in the example.                                                                                                                                                                                                                                      |
+| `aria-label` / `aria-labelledby`                            | Preserve the nav/control name and referenced IDs. Do not silently replace `Project path` with v9's fallback label.                                                                                                                                                                                                                                                        |
+| `role` / `aria-hidden`                                      | Keep meaningful overrides on the corresponding semantic element. Decorative separators must remain hidden, not become announced list entries.                                                                                                                                                                                                                             |
+| `tabIndex` / `data-is-focusable`                            | Reassess authored focus overrides and use the public v9 arrow-group/focusability APIs where appropriate. Do not copy runtime-generated roving `tabIndex` values, or assume the legacy `data-is-focusable` attribute configures Tabster.                                                                                                                                   |
+| `ref`                                                       | Forward to the corresponding semantic root/control. Account for Item `div` and Divider `span` becoming `li`, including concrete DOM ref types.                                                                                                                                                                                                                            |
+| Other native attributes (`id`, `title`, `data-*`, `aria-*`) | Keep them on the element that owns their meaning. Wrapper attributes do not automatically belong on the nested control. Preserve test/analytics markers when changing composition.                                                                                                                                                                                        |
+
+### Children and content precedence
+
+V0 checks whether children **exist**, not merely whether they are non-null. `null`, `undefined`, `false`, an empty string, an empty array, and `NaN` fall back to `content`; `0`, nonempty arrays, and other truthy children win. A migration using only `children ?? content` can therefore change the output.
+
+The v0 Divider has default children of `/`. Omitting children, or supplying `undefined`, retains that default and shadows `content`. A source using Divider `content` must have displaced the default children, for example with `children={null}`. Preserve the final rendered content, not both old props.
+
+There is no v0 Breadcrumb `items`, `focusMode`, `current`, `onCurrentChange`, or `onSelectionChange` prop to translate. Routing/current state remains application-owned; generate explicit JSX if your application stores the path as an array.
+
+## Behavior and defaults
+
+| Concern                | V0 default                                                                            | V9 default                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Structure              | `nav` containing a `role="list"` container; default Item `div` with `role="listitem"` | `nav` containing `ol` with `role="list"`; Item `li`                                          |
+| Accessible name        | No inferred name                                                                      | `aria-label="breadcrumb"` unless overridden                                                  |
+| Size                   | `medium`                                                                              | `medium`, but not identical typography/spacing                                               |
+| Link/control element   | Link is an `a` by default                                                             | `BreadcrumbButton` uses `a` for a truthy `href`, otherwise `button`, unless `as` is explicit |
+| Focus navigation       | Bidirectional, noncircular FocusZone; one roving Tab stop                             | `focusMode="tab"`; links/controls participate in normal Tab navigation                       |
+| Explicit v9 arrow mode | Not a source prop                                                                     | Horizontal, circular navigation that remembers the current focus                             |
+| Separator              | Hidden `span` containing `/`                                                          | Hidden `li` containing a right chevron in LTR or left chevron in RTL                         |
+
+### Preserve the source arrow policy
+
+Setting only `focusMode="arrow"` changes the v9 Tab default, **but does not reproduce v0's boundaries or bidirectional policy**.
+
+The primary example uses public `useArrowNavigationGroup` from `@fluentui/react-tabster`, with `axis: 'both'`, `circular: false`, `memorizeCurrent: true`, and `tabbable: false`. The released `useBreadcrumb` hook merges its internally generated focus attributes **before** the caller's normalized root props, so the supplied root `data-tabster` replaces the whole generated value rather than deep-merging with the internal circular/horizontal configuration. These attributes belong on the `Breadcrumb` root, not an unrelated wrapper or a second nested arrow group.
+
+Home and Projects form one roving group. Arrows navigate its focusable links without wrapping at the ends; the group retains its focused entry. Tab/Shift+Tab leave the group for the surrounding buttons. Details and the hidden separators add no focus stops. If you intentionally prefer normal Tab navigation or the standard v9 circular/horizontal arrow policy, adopt that as a documented behavior change instead of claiming exact parity.
+
+The native-anchor click handlers explicitly focus the activated anchor before updating the output. This retains the legacy FocusZone's pointer-focus behavior so a subsequent arrow key continues from that link, including in Safari/WebKit configurations where native pointer clicks do not otherwise focus anchors. It does not prevent the anchor's hash navigation or turn the current plain item into a control. Native button Tab/click focus still follows the browser's keyboard-navigation settings.
+
+### Current, active, and disabled are different
+
+V0 Item `active` and `disabled` are unset by default. V9 `BreadcrumbItem` has neither prop; `BreadcrumbButton` defaults `current`, `disabled`, and `disabledFocusable` to `false`.
+
+V0 `active` only changes Item emphasis. The example separately authors `aria-current="page"` on plain Details. An active Item containing a Link can still navigate.
+
+`BreadcrumbButton.current` defaults to `aria-current="page"` and `aria-disabled=true`. The underlying disabled-anchor logic removes `href`; a current native-button form can remain focusable. Likewise, actual v9 `disabled` and `disabledFocusable` block activation, unlike the color-only v0 default Item state. Keep a plain `BreadcrumbItem` for the example's noninteractive current page.
+
+For other paths, `BreadcrumbButton` is a supported v9 design choice, not a renamed native Link. With an anchor it also handles Enter and Space activation and guards disabled clicks. The source Link has native anchor activation, with no synthetic Space click by default; the example therefore uses native anchors and retains their destinations without preventing navigation.
+
+## Accessibility
+
+Use the explicitly named v9 navigation landmark and its inner list rather than copying the legacy default root `role="list"` onto the nav. Keep the original current-page attribute, live output, and descriptive link text. Decorative separators need `aria-hidden="true"` and must not receive focus.
+
+Port custom v0 root/Item/Divider behaviors and any Link behavior individually. In particular, default v0 Link has no custom accessibility behavior, and default Item behavior only supplies `role="listitem"`. Read the [shared custom accessibility migration guide](?path=/docs/concepts-migration-from-v0-custom-accessibility--docs) for translating behavior attributes and key actions.
+
+Do not infer nonfocusability from a source anchor lacking `href`: legacy FocusZone recognizes `a` tags even without destinations and can assign them `tabIndex`. Review these cases separately; the primary example avoids the ambiguity by keeping Details plain text.
+
+Test focus visibility, arrow boundaries, Tab escape/re-entry, activation, accessible names, current-page announcements, and RTL in your application's browser/assistive-technology combinations. Neither changing the component name nor this source audit establishes WCAG certification.
+
+## Sizing and styling
+
+The implemented v0 presets are `smaller`, `small`, `medium`, and `large`. V9 retains the last three names, but they are not pixel-equivalent aliases. The v0 type also admits `smallest`; its runtime PropTypes and inspected theme styling do not implement that preset. Treat usage of it as a product-specific sizing decision.
+
+The source Teams `smaller` preset uses compact root typography and tighter Item padding/gaps. The primary migration chooses `size="small"` as its v9 context baseline, then explicitly supplies `fontSizeBase200`/`lineHeightBase200`, horizontal spacing tokens, and `fontWeightBold` emphasis. **A plain v9 `BreadcrumbItem` does not acquire size-specific typography or active styling from its parent.** Style noninteractive text as well as links.
+
+Use `makeStyles` from `@fluentui/react-components` and `tokens` from `@fluentui/react-theme`, as in the example. Port applied style effects rather than copying variable names: a declared v0 variable is not proof it affects layout. The native-anchor class includes a token-backed visible focus outline; review that treatment in your themes rather than removing focus indication.
+
+See the [shared style-override migration guide](?path=/docs/concepts-migration-from-v0-custom-style-overrides--docs) for Fela `styles`, `variables`, and `design` migration. Token-based compactness and emphasis preserve the design intent, not every pixel of the old Teams theme.
+
+### Separators
+
+The full released v9 `BreadcrumbDivider` unconditionally replaces supplied children with its direction-aware chevron. Writing `<BreadcrumbDivider>/</BreadcrumbDivider>` does **not** retain a slash, even though its native props type includes children.
+
+The primary example uses hidden native `li` separators so the `ol` remains valid and the visible `/` survives. For the standard v9 design, replace those separators with named `BreadcrumbDivider` components imported from `@fluentui/react-components` and accept the chevrons as an intentional visual change.
+
+## Limitations and source baseline
+
+- The primary example preserves this path's destinations, callbacks, plain current item, compact emphasis, separators, and noncircular arrow policy. It is not a general emulator for arbitrary custom FocusZone actions, geometry, polymorphic roots, or Fela themes.
+- Native anchors do not acquire `BreadcrumbButton` hover/pressed/current/disabled styling or its synthetic keyboard activation. Adopting that control is a separate design/interaction choice.
+- Token values, typography, and focus outlines depend on the application theme. No pixel identity or screen-reader certification is promised.
+
+Public source references for this baseline:
+
+- V0 [Breadcrumb and child implementations](https://github.com/microsoft/fluentui/tree/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-northstar/src/components/Breadcrumb), [default breadcrumb behavior](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/accessibility/src/behaviors/Breadcrumb/breadcrumbBehavior.ts), and [children precedence helper](https://github.com/microsoft/fluentui/blob/461eb5e4be0dd97b55fec08589048f091a2d67a8/packages/fluentui/react-bindings/src/utils/childrenExist.ts).
+- V9 [Breadcrumb implementations](https://github.com/microsoft/fluentui/tree/a51547435d0a5c4a0fb15c2996c3d3efea5b49dd/packages/react-components/react-breadcrumb/library/src/components), [public arrow-group hook](https://github.com/microsoft/fluentui/blob/a51547435d0a5c4a0fb15c2996c3d3efea5b49dd/packages/react-components/react-tabster/src/hooks/useArrowNavigationGroup.ts), and [ARIA-button handling](https://github.com/microsoft/fluentui/blob/a51547435d0a5c4a0fb15c2996c3d3efea5b49dd/packages/react-components/react-aria/library/src/button/useARIAButtonProps.ts). These relevant leaf releases use commit `a51547435d0a5c4a0fb15c2996c3d3efea5b49dd`, not the suite's later commit.
