@@ -7,6 +7,8 @@ import * as path from 'node:path';
 import { collectUsageReportData } from './usage-report';
 import type { CatalogDiagnostic } from '../../../utils';
 
+jest.mock('node:module', () => process.getBuiltinModule('node:module'));
+
 let testRoot: string;
 
 describe('usage report rollout gates', () => {
@@ -38,6 +40,7 @@ describe('usage report rollout gates', () => {
     );
     for (const packageName of ['@fluentui/react-components', '@fluentui/react-headless-components-preview']) {
       expect(() => requireFixture.resolve(`${packageName}/package.json`)).toThrow();
+      expect(() => requireFixture.resolve(packageName)).toThrow();
       expect(() => requireFixture.resolve(`${packageName}/metadata.json`)).toThrow();
     }
     const diagnostics: CatalogDiagnostic[] = [];
