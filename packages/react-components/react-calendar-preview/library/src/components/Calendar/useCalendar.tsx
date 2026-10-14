@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
+  isHTMLElement,
   slot,
   useAnimationFrame,
   useControllableState,
@@ -21,7 +22,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { getCalendarNavigationDate, isCalendarKeyboardEditable } from '../../utils/calendarKeyboard';
+import { getCalendarNavigationDate } from '../../utils/calendarKeyboard';
 import type { DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
@@ -374,7 +375,10 @@ export const useCalendarBase_unstable = (
 
       case PageUp:
       case PageDown: {
-        if (isCalendarKeyboardEditable(ev.target)) {
+        if (
+          isHTMLElement(ev.target) &&
+          ev.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')
+        ) {
           break;
         }
         const date = getCalendarNavigationDate(ev.nativeEvent) ?? navigatedDate;
@@ -394,10 +398,14 @@ export const useCalendarBase_unstable = (
     isFocusWithin.current = true;
     props.onFocusCapture?.(ev);
 
-    const picker = ev.target.closest('[data-fui-calendar-picker]');
-    const pickerType =
-      picker && ev.currentTarget.contains(picker) ? picker.getAttribute('data-fui-calendar-picker') : undefined;
-    focusedPicker.current = pickerType === 'day' || pickerType === 'month' ? pickerType : undefined;
+    const target = ev.target;
+    if (target.closest('.fui-CalendarDay')) {
+      focusedPicker.current = 'day';
+    } else if (target.closest('.fui-CalendarMonth')) {
+      focusedPicker.current = 'month';
+    } else {
+      focusedPicker.current = undefined;
+    }
   });
 
   const onRootBlurCapture = useEventCallback((ev: React.FocusEvent<HTMLDivElement>): void => {
