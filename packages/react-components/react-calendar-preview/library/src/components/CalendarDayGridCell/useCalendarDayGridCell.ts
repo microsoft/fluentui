@@ -1,7 +1,7 @@
 'use client';
 
 import type * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Space } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
   getRTLSafeKey,
@@ -12,6 +12,7 @@ import {
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
 import { createDate } from '../../utils/dateMath';
+import { setCalendarNavigationDate } from '../../utils/calendarKeyboard';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
 import type { AvailableDateOptions } from '../../utils';
@@ -243,6 +244,11 @@ export const useCalendarDayGridCell_unstable = (
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (!originalDate) {
+      return;
+    }
+
+    if (ev.key === PageUp || ev.key === PageDown) {
+      setCalendarNavigationDate(ev.nativeEvent, originalDate);
       return;
     }
 
