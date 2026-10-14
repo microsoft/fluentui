@@ -46,6 +46,7 @@ describe('reshapeArray', () => {
     [[Number.POSITIVE_INFINITY], 'dimensions must be non-negative safe integers'],
     [[Number.NaN], 'dimensions must be non-negative safe integers'],
     [[Number.MAX_SAFE_INTEGER + 1], 'dimensions must be non-negative safe integers'],
+    [[0, -1], 'dimensions must be non-negative safe integers'],
     [[], 'rank must be between 1 and 3'],
     [[1, 1, 1, 1], 'rank must be between 1 and 3'],
   ])('should reject invalid shape %p', (shape, errorMessage) => {
@@ -64,7 +65,9 @@ describe('reshapeArray', () => {
   });
 
   it('should allow zero dimensions only when they match empty data', () => {
-    expect(reshapeArray([], [0, 1])).toEqual([]);
+    expect(reshapeArray([], [0, 100_000, 1_000])).toEqual([]);
+    expect(reshapeArray([], [100_000, 0, 1_000])).toEqual([]);
+    expect(reshapeArray([], [100_000, 1_000, 0])).toEqual([]);
     expect(() => reshapeArray([1], [0, 1])).toThrow(
       'Invalid typed-array shape: dimensions do not match decoded element count',
     );

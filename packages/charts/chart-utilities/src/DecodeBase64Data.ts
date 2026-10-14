@@ -127,6 +127,9 @@ function reshapeValidatedArray(data: number[], shape: number[]): number[] | numb
 // Helper to reshape a flat array into the given shape (e.g., [rows, cols])
 export function reshapeArray(data: number[], shape: number[]): number[] | number[][] | number[][][] {
   validateShape(data.length, shape);
+  if (data.length === 0) {
+    return [];
+  }
   return reshapeValidatedArray(data, shape);
 }
 
