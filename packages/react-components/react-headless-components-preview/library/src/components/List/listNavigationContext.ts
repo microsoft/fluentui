@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { isHTMLElement, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  isHTMLElement,
+  useAnimationFrame,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import type { ListNavigationMode } from './List.types';
 
 const ListNavigationContext = React.createContext<ListNavigationMode | undefined>(undefined);
@@ -11,14 +16,34 @@ export const ListNavigationProvider = ListNavigationContext.Provider;
 export const useListNavigationMode = (): ListNavigationMode | undefined => React.useContext(ListNavigationContext);
 
 const authorTabIndices = new WeakMap<HTMLElement, { attribute: string | null; tabIndex: number }>();
+const editableOrMediaSelector =
+  '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], audio[controls], video[controls]';
+const naturallyFocusableSelector = `a[href], area[href], button, input, select, textarea, iframe, object, embed, summary, ${editableOrMediaSelector}`;
 
 const getAuthorTabIndex = (element: HTMLElement): number =>
-  !element.hasAttribute('tabindex') &&
-  element.matches(
-    '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], audio[controls], video[controls]',
-  )
-    ? 0
-    : element.tabIndex;
+  !element.hasAttribute('tabindex') && element.matches(editableOrMediaSelector) ? 0 : element.tabIndex;
+
+const updateAuthorTabIndices = (root: HTMLElement, records: MutationRecord[]): void => {
+  for (const record of records) {
+    if (
+      isHTMLElement(record.target) &&
+      record.target.closest('[data-list]') === root &&
+      authorTabIndices.has(record.target)
+    ) {
+      if (record.attributeName === 'tabindex') {
+        authorTabIndices.set(record.target, {
+          attribute: record.target.getAttribute('tabindex'),
+          tabIndex: getAuthorTabIndex(record.target),
+        });
+      } else if (['contenteditable', 'controls', 'href', 'type'].includes(record.attributeName ?? '')) {
+        const original = authorTabIndices.get(record.target);
+        if (original?.attribute === null) {
+          original.tabIndex = record.target.matches(naturallyFocusableSelector) ? 0 : -1;
+        }
+      }
+    }
+  }
+};
 
 const isAvailable = (element: HTMLElement): boolean => {
   if (element.matches(':disabled, input[type="hidden"]') || element.closest('[hidden], [inert]')) {
@@ -35,7 +60,7 @@ const isAvailable = (element: HTMLElement): boolean => {
 };
 
 export const getListFocusableElements = (root: HTMLElement): HTMLElement[] =>
-  Array.from(root.querySelectorAll<HTMLElement>('*')).filter(
+  Array.from(root.querySelectorAll<HTMLElement>(`[tabindex], ${naturallyFocusableSelector}`)).filter(
     element => (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 && isAvailable(element),
   );
 
@@ -51,24 +76,16 @@ export const useCompositeListNavigation = (
   const current = React.useRef<HTMLElement | null>(null);
   const managed = React.useRef(new Set<HTMLElement>());
   const observer = React.useRef<MutationObserver | undefined>(undefined);
+  const pendingRecords = React.useRef<MutationRecord[]>([]);
+  const [requestFrame, cancelFrame] = useAnimationFrame();
 
-  const reconcile = useEventCallback((records: MutationRecord[] = []) => {
+  const reconcile = useEventCallback(() => {
     const root = rootRef.current;
     if (!root || navigationMode !== 'composite') {
       return;
     }
-    for (const record of [...records, ...(observer.current?.takeRecords() ?? [])]) {
-      if (
-        record.attributeName === 'tabindex' &&
-        isHTMLElement(record.target) &&
-        record.target.closest('[data-list]') === root
-      ) {
-        authorTabIndices.set(record.target, {
-          attribute: record.target.getAttribute('tabindex'),
-          tabIndex: getAuthorTabIndex(record.target),
-        });
-      }
-    }
+    cancelFrame();
+    updateAuthorTabIndices(root, [...pendingRecords.current.splice(0), ...(observer.current?.takeRecords() ?? [])]);
 
     const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-navigable]')).filter(
       element =>
@@ -107,7 +124,8 @@ export const useCompositeListNavigation = (
         });
       }
       const tabIndex = element === current.current ? 0 : -1;
-      if (element.tabIndex !== tabIndex) {
+      // Natural editables/media can report -1 while still being native tab stops.
+      if (element.getAttribute('tabindex') !== String(tabIndex)) {
         element.tabIndex = tabIndex;
       }
     }
@@ -116,15 +134,17 @@ export const useCompositeListNavigation = (
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (navigationMode !== 'composite' || !rootRef.current) {
+    const root = rootRef.current;
+    if (navigationMode !== 'composite' || !root) {
       return;
     }
     const MutationObserver = targetDocument?.defaultView?.MutationObserver;
     if (MutationObserver) {
       observer.current = new MutationObserver(records => {
-        reconcile(records);
+        pendingRecords.current.push(...records);
+        requestFrame(() => reconcile());
       });
-      observer.current.observe(rootRef.current, {
+      observer.current.observe(root, {
         childList: true,
         subtree: true,
         attributes: true,
@@ -136,6 +156,7 @@ export const useCompositeListNavigation = (
           'href',
           'type',
           'contenteditable',
+          'controls',
           'style',
           'class',
         ],
@@ -144,8 +165,11 @@ export const useCompositeListNavigation = (
     reconcile();
 
     return () => {
+      updateAuthorTabIndices(root, [...pendingRecords.current.splice(0), ...(observer.current?.takeRecords() ?? [])]);
       observer.current?.disconnect();
       observer.current = undefined;
+      cancelFrame();
+      pendingRecords.current = [];
       for (const element of managed.current) {
         const original = authorTabIndices.get(element);
         if (original?.attribute === null) {
@@ -158,7 +182,7 @@ export const useCompositeListNavigation = (
       managed.current.clear();
       current.current = null;
     };
-  }, [navigationMode, reconcile, rootRef, targetDocument]);
+  }, [cancelFrame, navigationMode, reconcile, requestFrame, rootRef, targetDocument]);
 
   return useEventCallback(event => {
     const root = rootRef.current;

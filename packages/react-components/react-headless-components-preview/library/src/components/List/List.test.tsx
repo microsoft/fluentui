@@ -211,7 +211,7 @@ describe('List', () => {
   it('has no accessibility violations with named native checkmarks in a composite grid', async () => {
     const { baseElement } = render(
       <List aria-label="People actions" navigationMode="composite" selectionMode="multiselect">
-        <ListItem value="alex" checkmark={{ 'aria-label': 'Select Alex' }}>
+        <ListItem value="alex" checkmark={{ 'aria-label': 'Select Alex', tabIndex: 0 }}>
           <span role="gridcell">Alex</span>
           <span role="gridcell">
             <button aria-label="Edit Alex">Edit</button>
@@ -247,6 +247,93 @@ describe('List', () => {
     expect(getByRole('option')).not.toHaveFocus();
     expect(getByRole('option')).toHaveAttribute('tabindex', '0');
   });
+
+  it('batches composite style mutations into one focus-order reconciliation per frame', async () => {
+    const { getByRole } = render(
+      <List aria-label="Actions" navigationMode="composite">
+        <ListItem value="one">
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+    const button = getByRole('button');
+    const querySelectorAll = jest.spyOn(getByRole('grid'), 'querySelectorAll');
+
+    for (let index = 0; index < 5; index++) {
+      button.className = `state-${index}`;
+      await Promise.resolve();
+    }
+
+    expect(querySelectorAll).not.toHaveBeenCalled();
+    await waitFor(() => expect(querySelectorAll).toHaveBeenCalledTimes(1));
+    querySelectorAll.mockRestore();
+  });
+
+  it.each([
+    [0, -1],
+    [2, 4],
+  ])('restores a simultaneous author tab index change from %i to %i when navigation is removed', (initial, next) => {
+    const renderList = (navigationMode: 'composite' | undefined, tabIndex: number) => (
+      <List as="div" role="grid" navigationMode={navigationMode}>
+        <ListItem as="div" role="row" value="one">
+          <span role="gridcell">
+            <button tabIndex={tabIndex}>Edit</button>
+          </span>
+        </ListItem>
+      </List>
+    );
+    const { getByRole, rerender } = render(renderList('composite', initial));
+
+    expect(getByRole('button')).toHaveAttribute('tabindex', '-1');
+    rerender(renderList(undefined, next));
+    expect(getByRole('button')).toHaveAttribute('tabindex', String(next));
+    expect(getByRole('row')).not.toHaveAttribute('tabindex');
+  });
+
+  it.each(['contenteditable', 'controls', 'href'] as const)(
+    'updates natural focusability when %s is removed, without losing author tab indices',
+    async attribute => {
+      const renderList = (enabled: boolean) => (
+        <List aria-label="Actions" navigationMode="composite">
+          <ListItem value="one">
+            <span role="gridcell">
+              {attribute === 'contenteditable' ? (
+                <div contentEditable={enabled} suppressContentEditableWarning data-testid="control">
+                  Name
+                </div>
+              ) : attribute === 'controls' ? (
+                <audio controls={enabled} data-testid="control" />
+              ) : (
+                <a href={enabled ? '#edit' : undefined} data-testid="control">
+                  Link
+                </a>
+              )}
+              <button>Edit</button>
+            </span>
+          </ListItem>
+        </List>
+      );
+      const { getByRole, getByTestId, rerender } = render(renderList(true));
+
+      getByRole('row').focus();
+      fireEvent.keyDown(getByRole('row'), { key: 'ArrowRight' });
+      expect(getByTestId('control')).toHaveFocus();
+
+      rerender(renderList(false));
+      await waitFor(() => expect(getByTestId('control')).not.toHaveAttribute('tabindex'));
+      getByRole('row').focus();
+      fireEvent.keyDown(getByRole('row'), { key: 'ArrowRight' });
+      expect(getByRole('button')).toHaveFocus();
+
+      rerender(renderList(true));
+      await waitFor(() => expect(getByTestId('control')).toHaveAttribute('tabindex', '-1'));
+      getByRole('row').focus();
+      fireEvent.keyDown(getByRole('row'), { key: 'ArrowRight' });
+      expect(getByTestId('control')).toHaveFocus();
+    },
+  );
 
   it('preserves changed author tab indices and restores them when composite navigation is removed', async () => {
     const renderList = (navigationMode: 'composite' | undefined, tabIndex: number | undefined) => (

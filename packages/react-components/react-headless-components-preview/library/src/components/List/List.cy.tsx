@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
-import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
+import { polyfillBodyAndObserve, supportsFocusGroup } from '@microsoft/focusgroup-polyfill';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider';
@@ -12,6 +12,12 @@ polyfillBodyAndObserve();
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('List', () => {
+  before(() => {
+    if (Cypress.env('nativeFocusgroup')) {
+      expect(supportsFocusGroup(), 'native focusgroup support with no polyfill').to.be.true;
+    }
+  });
+
   it('navigates composite rows and secondary actions without flattening their focus order', () => {
     mount(
       <List aria-label="People actions" navigationMode="composite">
@@ -203,6 +209,66 @@ describe('List', () => {
     cy.get('[aria-label="Editable name"]').should('be.focused').realPress('ArrowRight').realPress('ArrowDown');
     cy.get('[aria-label="Editable name"]').should('be.focused').realPress('Escape');
     cy.get('[role="row"]').should('be.focused');
+  });
+
+  it('updates composite focus order when natural editability is removed and restored', () => {
+    const DynamicList = () => {
+      const [editable, setEditable] = React.useState(true);
+      return (
+        <>
+          <List aria-label="Actions" navigationMode="composite">
+            <ListItem value="one">
+              <span role="gridcell">
+                <div contentEditable={editable} suppressContentEditableWarning aria-label="Editable name">
+                  Alex
+                </div>
+                <button>Edit</button>
+              </span>
+            </ListItem>
+          </List>
+          <button onClick={() => setEditable(previous => !previous)}>Toggle editability</button>
+        </>
+      );
+    };
+    mount(<DynamicList />);
+
+    cy.get('[role="row"]').focus().realPress('ArrowRight');
+    cy.get('[aria-label="Editable name"]').should('be.focused');
+    cy.contains('button', 'Toggle editability').click();
+    cy.get('[aria-label="Editable name"]').should('not.have.attr', 'tabindex');
+    cy.get('[role="row"]').focus().realPress('ArrowRight');
+    cy.contains('button', /^Edit$/).should('be.focused');
+    cy.contains('button', 'Toggle editability').click();
+    cy.get('[aria-label="Editable name"]').should('have.attr', 'tabindex', '-1');
+    cy.get('[role="row"]').focus().realPress('ArrowRight');
+    cy.get('[aria-label="Editable name"]').should('be.focused');
+  });
+
+  it('supports direct keyboard selection through an explicitly navigable native grid checkmark', () => {
+    const onSelectionChange = cy.stub().as('selectionChange');
+    mount(
+      <List
+        aria-label="Actions"
+        navigationMode="composite"
+        selectionMode="multiselect"
+        onSelectionChange={onSelectionChange}
+      >
+        <ListItem value="one" checkmark={{ 'aria-label': 'Select first item', tabIndex: 0 }}>
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+
+    cy.get('[role="row"]').focus().realPress('ArrowRight');
+    cy.get('[aria-label="Select first item"]').should('be.focused').realPress('Space');
+    cy.get('[role="row"]').should('have.attr', 'data-selected', '');
+    cy.get('@selectionChange').should('have.been.calledOnce');
+    cy.get('[aria-label="Select first item"]').realPress('Escape');
+    cy.get('[role="row"]').should('be.focused').realPress('Space');
+    cy.get('[role="row"]').should('not.have.attr', 'data-selected');
+    cy.get('@selectionChange').should('have.been.calledTwice');
   });
 
   it('moves vertically between items and remembers focus when re-entering the list', () => {
