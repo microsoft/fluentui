@@ -16,7 +16,7 @@ export default {
   } satisfies StoryParameters,
 } satisfies Meta<typeof Input>;
 
-export const SizeSmall = () => <Input size="small" appearance="filled-darker" defaultValue="VRT diff probe" />;
+export const SizeSmall = () => <Input size="small" placeholder="Placeholder" />;
 SizeSmall.storyName = 'Size: small';
 
 export const SizeLarge = () => <Input size="large" placeholder="Placeholder" />;

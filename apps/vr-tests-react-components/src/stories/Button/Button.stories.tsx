@@ -14,11 +14,7 @@ export default {
   parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof Button>;
 
-export const Default = () => (
-  <Button id={buttonId} appearance="primary">
-    VRT diff probe
-  </Button>
-);
+export const Default = () => <Button id={buttonId}>Hello, world</Button>;
 
 export const DefaultRTL = getStoryVariant(Default, RTL);
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
