@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: modify roles for toolbar + buttons instead of listbox + options",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
