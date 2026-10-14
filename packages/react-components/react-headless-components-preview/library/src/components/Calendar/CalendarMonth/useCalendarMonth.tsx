@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useCalendarMonthBase_unstable } from '@fluentui/react-calendar-preview';
-import { slot } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { CalendarYear } from '../CalendarYear';
 import { CalendarMonthGridRow } from '../CalendarMonthGridRow';
 import type { CalendarMonthHandle, CalendarMonthProps, CalendarMonthState } from './CalendarMonth.types';
@@ -20,12 +20,16 @@ export const useCalendarMonth = (
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthState => {
   const state = useCalendarMonthBase_unstable(props, ref);
+  const yearPicker = slot.always(props.yearPicker, {
+    defaultProps: state.yearPicker,
+    elementType: CalendarYear,
+  });
+  yearPicker.ref = useMergedRefs(state.yearPickerRef, yearPicker.ref);
 
-  // Replaces the styled layer's Tabster arrow navigation.
+  // Base cell handlers own two-dimensional navigation; focusgroup owns the roving tab stop.
   // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = 'grid manual';
+  state.grid.focusgroup = 'toolbar inline';
 
-  // eslint-disable-next-line react-hooks/immutability
   state.grid.children ??= state.monthRows.map((_, rowIndex: number) => (
     <CalendarMonthGridRow key={rowIndex} rowIndex={rowIndex} />
   ));
@@ -37,9 +41,6 @@ export const useCalendarMonth = (
       ...state.components,
       yearPicker: CalendarYear,
     },
-    yearPicker: slot.always(props.yearPicker, {
-      defaultProps: { ...state.yearPicker, ref: state.yearPickerRef },
-      elementType: CalendarYear,
-    }),
+    yearPicker,
   };
 };

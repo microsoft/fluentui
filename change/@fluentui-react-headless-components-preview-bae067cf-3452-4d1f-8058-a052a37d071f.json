@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve Calendar keyboard, optional picker and public ref contracts",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -8,9 +8,11 @@
 
 .calendar {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--space-4);
   width: fit-content;
+  max-inline-size: 100%;
   padding: var(--space-4);
   border: var(--stroke-thin) solid var(--border);
   border-radius: var(--radius-lg);
@@ -35,7 +37,7 @@
   background: none;
   color: var(--text);
   font: inherit;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   text-align: start;
 }
 
@@ -90,8 +92,8 @@ button.heading:hover {
   width: var(--space-8);
   height: var(--space-8);
   color: var(--text-soft);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: inherit;
+  font-weight: var(--font-weight-semibold);
 }
 
 .grid td {
@@ -112,7 +114,7 @@ button.heading:hover {
   background: none;
   color: var(--text);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: inherit;
   cursor: pointer;
 }
 
@@ -126,13 +128,13 @@ button.heading:hover {
 
 .grid td[data-today] button {
   border-color: var(--border-stronger);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .grid td[data-selected] button {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--accent-contrast);
+  color: var(--bg);
 }
 
 .grid td[data-outside-bounds] button {
@@ -175,7 +177,7 @@ button.heading:hover {
   background: none;
   color: var(--text);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: inherit;
   cursor: pointer;
 }
 
@@ -185,19 +187,23 @@ button.heading:hover {
 
 .pickerGrid [role='gridcell'][data-current] {
   border-color: var(--border-stronger);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .pickerGrid [role='gridcell'][data-selected],
 .pickerGrid [role='gridcell'][aria-selected='true'] {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--accent-contrast);
+  color: var(--bg);
 }
 
 .pickerGrid [role='gridcell'][data-outside-bounds] {
   color: var(--text-faint);
   cursor: default;
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds]:hover {
+  background: none;
 }
 
 .divider {
@@ -213,15 +219,16 @@ button.heading:hover {
   background: none;
   color: var(--text);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: inherit;
   cursor: pointer;
 }
 
-.todayButton:hover:not(:disabled) {
+.todayButton:hover:not(:disabled):not([aria-disabled='true']) {
   background: var(--surface-muted);
 }
 
-.todayButton:disabled {
+.todayButton:disabled,
+.todayButton[aria-disabled='true'] {
   color: var(--text-faint);
   cursor: default;
 }
@@ -229,8 +236,8 @@ button.heading:hover {
 /* The headless layer ships no styling, so the announcement region must be hidden by the consumer. */
 .liveRegion {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--stroke-thin);
+  height: var(--stroke-thin);
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
@@ -239,5 +246,46 @@ button.heading:hover {
 .selectedDate {
   margin-block-start: var(--space-4);
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: inherit;
+}
+
+/* Day focus belongs to the cell, not its nested button. */
+.grid td:focus-visible,
+button.heading:focus-visible,
+.navButton:focus-visible,
+.todayButton:focus-visible,
+.pickerGrid [role='gridcell']:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: var(--stroke-thin);
+}
+
+@media (forced-colors: active) {
+  .grid td[data-today] button,
+  .pickerGrid [role='gridcell'][data-current] {
+    border-color: CanvasText;
+  }
+
+  .grid td[data-selected] button,
+  .pickerGrid [role='gridcell'][data-selected],
+  .pickerGrid [role='gridcell'][aria-selected='true'] {
+    forced-color-adjust: none;
+    background: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+  }
+
+  .grid td[data-outside-bounds] button,
+  .pickerGrid [role='gridcell'][data-outside-bounds],
+  .navButton[aria-disabled='true'],
+  .todayButton[aria-disabled='true'] {
+    color: GrayText;
+  }
+
+  .grid td:focus-visible,
+  button.heading:focus-visible,
+  .navButton:focus-visible,
+  .todayButton:focus-visible,
+  .pickerGrid [role='gridcell']:focus-visible {
+    outline-color: CanvasText;
+  }
 }

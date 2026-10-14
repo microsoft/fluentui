@@ -16,11 +16,10 @@ export { useCalendarYearContextValues_unstable as useCalendarYearContextValues }
 export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<CalendarYearHandle>): CalendarYearState => {
   const state = useCalendarYearBase_unstable(props, ref);
 
-  // Replaces the styled layer's Tabster arrow navigation.
+  // Base cell handlers own two-dimensional navigation; focusgroup owns the roving tab stop.
   // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = 'grid manual';
+  state.grid.focusgroup = 'toolbar inline';
 
-  // eslint-disable-next-line react-hooks/immutability
   state.grid.children ??= state.yearRows.map((_, rowIndex: number) => (
     <CalendarYearGridRow key={rowIndex} rowIndex={rowIndex} />
   ));

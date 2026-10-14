@@ -14,7 +14,6 @@ export const useCalendarYearGridRow = (
 ): CalendarYearGridRowState => {
   const state = useCalendarYearGridRowBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability
   state.root.children ??= state.cells.map(cell => React.createElement(CalendarYearGridCell, { key: cell.year, cell }));
 
   return state;

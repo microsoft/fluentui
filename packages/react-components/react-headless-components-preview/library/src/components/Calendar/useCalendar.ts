@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useCalendarBase_unstable } from '@fluentui/react-calendar-preview';
-import { slot } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
 import type { CalendarProps, CalendarState } from './Calendar.types';
@@ -17,6 +17,25 @@ export { useCalendarContextValues_unstable as useCalendarContextValues } from '@
  */
 export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): CalendarState => {
   const state = useCalendarBase_unstable(props, ref);
+  const dayPicker = slot.optional(props.dayPicker, {
+    renderByDefault: true,
+    defaultProps: state.dayPicker,
+    elementType: CalendarDay,
+  });
+  const monthPicker = slot.optional(props.monthPicker, {
+    renderByDefault: true,
+    defaultProps: state.monthPicker,
+    elementType: CalendarMonth,
+  });
+  const mergedDayPickerRef = useMergedRefs(state.dayPickerRef, dayPicker?.ref);
+  const mergedMonthPickerRef = useMergedRefs(state.monthPickerRef, monthPicker?.ref);
+
+  if (dayPicker) {
+    dayPicker.ref = mergedDayPickerRef;
+  }
+  if (monthPicker) {
+    monthPicker.ref = mergedMonthPickerRef;
+  }
 
   return {
     ...state,
@@ -26,13 +45,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
       dayPicker: CalendarDay,
       monthPicker: CalendarMonth,
     },
-    dayPicker: slot.always(props.dayPicker, {
-      defaultProps: { ...state.dayPicker, ref: state.dayPickerRef },
-      elementType: CalendarDay,
-    }),
-    monthPicker: slot.always(props.monthPicker, {
-      defaultProps: { ...state.monthPicker, ref: state.monthPickerRef },
-      elementType: CalendarMonth,
-    }),
+    dayPicker,
+    monthPicker,
   };
 };

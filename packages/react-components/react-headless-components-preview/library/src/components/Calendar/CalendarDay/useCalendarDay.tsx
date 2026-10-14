@@ -17,15 +17,13 @@ export { useCalendarDayContextValues_unstable as useCalendarDayContextValues } f
 export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarDayHandle>): CalendarDayState => {
   const state = useCalendarDayBase_unstable(props, ref);
 
-  // `rowflow` matches the styled layer's `grid-linear` Tabster axis: moving past the end of a week
-  // continues into the next one.
+  // Base day handlers own date-grid navigation; supported V1 focusgroup owns the roving tab stop.
   // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = 'grid manual rowflow';
+  state.grid.focusgroup = 'toolbar inline';
 
   const { weeks } = state;
 
   // The transition rows exist only to be animated out, so the unanimated layer skips them.
-  // eslint-disable-next-line react-hooks/immutability
   state.body.children ??= (
     <>
       <CalendarDayGridHeaderRow />

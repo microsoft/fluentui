@@ -7,7 +7,16 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { CalendarDay } from './CalendarDay';
 import type { CalendarMonth } from './CalendarMonth';
 
-export type { CalendarDismissData, CalendarSelectDateData } from '@fluentui/react-calendar-preview';
+export type {
+  CalendarContextValue,
+  CalendarContextValues,
+  CalendarDismissData,
+  CalendarLayout,
+  CalendarNavigateData,
+  CalendarSelectDateData,
+  CalendarView,
+  CalendarViewChangeData,
+} from '@fluentui/react-calendar-preview';
 
 /**
  * The picker slots are redeclared here so they resolve to the headless CalendarDay and
@@ -15,14 +24,14 @@ export type { CalendarDismissData, CalendarSelectDateData } from '@fluentui/reac
  */
 export type CalendarSlots = Omit<CalendarStyledSlots, 'dayPicker' | 'monthPicker'> & {
   /**
-   * The day picker. Only rendered while `isDayPickerVisible` is set.
+   * The day picker. Set to `null` to select months without showing the day picker.
    */
-  dayPicker: NonNullable<Slot<typeof CalendarDay>>;
+  dayPicker?: Slot<typeof CalendarDay>;
 
   /**
-   * The month picker. Only rendered while `isMonthPickerVisible` is set.
+   * The month picker. Set to `null` to show only the day picker.
    */
-  monthPicker: NonNullable<Slot<typeof CalendarMonth>>;
+  monthPicker?: Slot<typeof CalendarMonth>;
 };
 
 export type CalendarProps = CalendarBaseProps &

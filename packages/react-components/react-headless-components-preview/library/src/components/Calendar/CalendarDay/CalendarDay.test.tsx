@@ -32,7 +32,7 @@ describe('CalendarDay', () => {
   it('opts into native roving focus with focusgroup', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('table')!.getAttribute('focusgroup')).toBe('grid manual rowflow');
+    expect(container.querySelector('table')!.getAttribute('focusgroup')).toBe('toolbar inline');
   });
 
   it('renders its rows without motion wrappers', () => {

@@ -31,7 +31,7 @@ describe('CalendarYear', () => {
   it('opts into native roving focus with focusgroup', () => {
     const { container } = render(<CalendarYear />, { value: new Date(2020, 0, 1) });
 
-    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBe('grid manual');
+    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBe('toolbar inline');
   });
 
   it('renders a range of twelve years', () => {

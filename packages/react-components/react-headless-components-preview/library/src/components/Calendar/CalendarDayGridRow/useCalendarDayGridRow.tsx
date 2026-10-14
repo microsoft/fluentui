@@ -17,7 +17,6 @@ export const useCalendarDayGridRow = (
 ): CalendarDayGridRowState => {
   const state = useCalendarDayGridRowBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability
   state.root.children ??= props.week.map((day, dayIndex) => (
     <CalendarDayGridCell
       key={day.key}

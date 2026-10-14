@@ -1,12 +1,18 @@
 export { Calendar } from './Calendar';
 export { renderCalendar } from './renderCalendar';
-export { useCalendar } from './useCalendar';
+export { useCalendar, useCalendarContextValues } from './useCalendar';
 export type {
+  CalendarContextValue,
+  CalendarContextValues,
   CalendarDismissData,
+  CalendarLayout,
+  CalendarNavigateData,
   CalendarProps,
   CalendarSelectDateData,
   CalendarSlots,
   CalendarState,
+  CalendarView,
+  CalendarViewChangeData,
 } from './Calendar.types';
 
 export { CalendarDay, renderCalendarDay, useCalendarDay, useCalendarDayContextValues } from './CalendarDay';
