@@ -98,13 +98,13 @@ const fadeIn = fadeAtom({
 
 ## Available Atoms
 
-| Atom         | Effect               | CSS Property             | Key Parameters                |
-| ------------ | -------------------- | ------------------------ | ----------------------------- |
-| `fadeAtom`   | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`     |
-| `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`         |
-| `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`  |
-| `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `outAngle`, `inAngle` |
-| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`       |
+| Atom         | Effect               | CSS Property             | Key Parameters                 |
+| ------------ | -------------------- | ------------------------ | ------------------------------ |
+| `fadeAtom`   | Opacity transition   | `opacity`                | `outOpacity`, `inOpacity`      |
+| `scaleAtom`  | Size scaling         | `transform: scale()`     | `outScale`, `inScale`          |
+| `slideAtom`  | Position translation | `transform: translate()` | `outX`, `outY`, `inX`, `inY`   |
+| `rotateAtom` | 3D rotation          | `transform: rotate3d()`  | `axis`, `fromAngle`, `toAngle` |
+| `blurAtom`   | Blur filter          | `filter: blur()`         | `outRadius`, `inRadius`        |
 
 <AtomsDemo />
 
@@ -138,7 +138,7 @@ scaleAtom({ direction: 'enter', duration: 500, outScale: 0.9, inScale: 1 });
 slideAtom({ direction: 'enter', duration: 500, outX: '0px', outY: '20px', inX: '0px', inY: '0px' });
 
 // rotateAtom — rotation (axis: 'x' | 'y' | 'z')
-rotateAtom({ direction: 'enter', duration: 600, axis: 'z', outAngle: -90, inAngle: 0 });
+rotateAtom({ duration: 600, axis: 'z', fromAngle: -90, toAngle: 0 });
 
 // blurAtom — blur filter
 blurAtom({ direction: 'enter', duration: 500, outRadius: '10px', inRadius: '0px' });

@@ -80,7 +80,7 @@ export const ComponentsGrid: React.FC = () => {
 
       <ComponentCard name="Rotate">
         {visible => (
-          <Rotate visible={visible} outAngle={-90} inAngle={0} axis="z">
+          <Rotate visible={visible} fromAngle={-90} restAngle={0} axis="z">
             <div className={classes.demoBox}>Rotate</div>
           </Rotate>
         )}
