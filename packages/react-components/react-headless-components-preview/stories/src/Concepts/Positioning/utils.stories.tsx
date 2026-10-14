@@ -3,13 +3,12 @@ import type { PositioningProps } from '@fluentui/react-headless-components-previ
 
 /**
  * Subset of `PositioningProps` that the headless preview's `usePositioning` actually consumes.
- * Props not destructured by the hook (e.g. `autoSize`, `flipBoundary`, `useTransform`) are excluded
- * so Storybook's auto-generated args table only advertises what is supported.
+ * Props not destructured by the hook (e.g. `flipBoundary`, `useTransform`) are excluded so
+ * Storybook's auto-generated args table only advertises what is supported.
  */
 type SupportedPositioningProps = Omit<
   PositioningProps,
   | 'arrowPadding'
-  | 'autoSize'
   | 'disableUpdateOnResize'
   | 'flipBoundary'
   | 'onPositioningEnd'

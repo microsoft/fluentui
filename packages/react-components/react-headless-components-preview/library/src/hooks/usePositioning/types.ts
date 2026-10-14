@@ -14,6 +14,7 @@ export type PositioningReturn = {
 export type PositioningProps = Pick<
   CanonicalPositioningProps,
   | 'align'
+  | 'autoSize'
   | 'coverTarget'
   | 'fallbackPositions'
   | 'matchTargetSize'
