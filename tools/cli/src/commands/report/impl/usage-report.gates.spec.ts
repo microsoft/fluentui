@@ -1,16 +1,17 @@
 import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
+import { createRequire } from 'node:module';
 import * as os from 'node:os';
 import * as path from 'node:path';
 
 import { collectUsageReportData } from './usage-report';
 import type { CatalogDiagnostic } from '../../../utils';
 
-const testRoot = path.join(process.cwd(), '.catalog-test-data', 'standalone-required-usage');
+let testRoot: string;
 
 describe('usage report rollout gates', () => {
   beforeEach(() => {
-    fs.rmSync(testRoot, { recursive: true, force: true });
+    testRoot = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'fluentui-standalone-required-usage-')));
     fs.mkdirSync(path.join(testRoot, 'src'), { recursive: true });
     fs.writeFileSync(
       path.join(testRoot, 'package.json'),
@@ -24,15 +25,21 @@ describe('usage report rollout gates', () => {
       "import { Button } from '@fluentui/react-button';\nexport const App = () => <Button />;\n",
     );
     writeStandaloneButton();
-    writeUnavailablePreset('@fluentui/react-components');
-    writeUnavailablePreset('@fluentui/react-headless-components-preview');
   });
 
-  afterAll(() => {
+  afterEach(() => {
     fs.rmSync(testRoot, { recursive: true, force: true });
   });
 
   it('runs required metadata for standalone Button without installed suite or headless presets', () => {
+    const requireFixture = createRequire(path.join(testRoot, 'package.json'));
+    expect(requireFixture.resolve('@fluentui/react-button/metadata.json')).toBe(
+      path.join(testRoot, 'node_modules/@fluentui/react-button/dist/metadata/index.json'),
+    );
+    for (const packageName of ['@fluentui/react-components', '@fluentui/react-headless-components-preview']) {
+      expect(() => requireFixture.resolve(`${packageName}/package.json`)).toThrow();
+      expect(() => requireFixture.resolve(`${packageName}/metadata.json`)).toThrow();
+    }
     const diagnostics: CatalogDiagnostic[] = [];
     const result = collectUsageReportData(testRoot, undefined, undefined, undefined, {
       package: '@fluentui/react-button',
@@ -42,6 +49,26 @@ describe('usage report rollout gates', () => {
 
     expect(result.packages['@fluentui/react-button'].components.Button.count).toBe(1);
     expect(diagnostics).toEqual([]);
+  });
+
+  it('reports unavailable metadata for an installed suite without resolving a workspace catalog', () => {
+    writeUnavailablePreset('@fluentui/react-components');
+    const diagnostics: CatalogDiagnostic[] = [];
+    const result = collectUsageReportData(testRoot, undefined, undefined, undefined, {
+      package: '@fluentui/react-button',
+      metadataMode: 'required',
+      diagnostics,
+    });
+
+    expect(result.packages['@fluentui/react-button'].components.Button.count).toBe(1);
+    expect(diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'catalog.metadataUnavailable',
+        causeCode: 'reader.packageNotFound',
+        package: '@fluentui/react-components',
+        severity: 'error',
+      }),
+    ]);
   });
 
   it('scans a parent Git repository with independent child project declarations', () => {
