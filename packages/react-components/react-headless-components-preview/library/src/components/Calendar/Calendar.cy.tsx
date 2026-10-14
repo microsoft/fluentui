@@ -243,6 +243,13 @@ describe('Calendar', () => {
         />,
       );
 
+      // The automatic polyfill installs the nested owner's listeners on the next animation frame.
+      cy.window().then(
+        win =>
+          new Cypress.Promise<void>(resolve => {
+            win.requestAnimationFrame(() => resolve());
+          }),
+      );
       cy.get('[data-testid="nested-first"]').focus().realPress('ArrowRight');
 
       cy.get(focusgroup === 'none' ? '[data-testid="nested-first"]' : '[data-testid="nested-second"]').should(
