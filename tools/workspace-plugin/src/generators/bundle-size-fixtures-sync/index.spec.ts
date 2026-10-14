@@ -108,7 +108,9 @@ describe('bundle-size-fixtures-sync generator', () => {
       const fixture = project.readFixture('AllComponents.fixture.js')!;
       const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
       const fixtureImports = sourceFile.statements.filter(ts.isImportDeclaration);
-      const bindings = fixtureImports.map(statement => (statement.importClause!.namedBindings as ts.NamespaceImport).name.text);
+      const bindings = fixtureImports.map(
+        statement => (statement.importClause!.namedBindings as ts.NamespaceImport).name.text,
+      );
       const modules = fixtureImports.map(statement => (statement.moduleSpecifier as ts.StringLiteral).text);
       const logged = sourceFile.statements.find(ts.isExpressionStatement)!.expression as ts.CallExpression;
       const loggedBindings = (logged.arguments[0] as ts.ObjectLiteralExpression).properties.map(

@@ -87,7 +87,10 @@ export function collectPublicExports(tree: Tree, entryFilePath: string): PublicE
   }
 
   function collectLocalDeclaration(node: ts.Statement) {
-    if (ts.canHaveModifiers(node) && ts.getModifiers(node)?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword)) {
+    if (
+      ts.canHaveModifiers(node) &&
+      ts.getModifiers(node)?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword)
+    ) {
       return;
     }
 
