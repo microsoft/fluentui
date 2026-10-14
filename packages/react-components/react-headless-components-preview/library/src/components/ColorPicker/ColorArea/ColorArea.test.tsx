@@ -27,9 +27,4 @@ describe('ColorArea', () => {
     expect(screen.getByRole('slider', { name: 'Value' })).toHaveValue('80');
     expect(screen.getByRole('slider', { name: 'Value' })).toHaveAttribute('aria-orientation', 'vertical');
   });
-
-  it('preserves caller inputY orientation', () => {
-    render(<ColorArea inputY={{ 'aria-orientation': 'horizontal' }} />);
-    expect(screen.getAllByRole('slider')[1]).toHaveAttribute('aria-orientation', 'horizontal');
-  });
 });

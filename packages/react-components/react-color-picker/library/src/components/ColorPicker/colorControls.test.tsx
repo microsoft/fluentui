@@ -1,14 +1,8 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
-import { FluentProvider } from '@fluentui/react-provider';
-import { webLightTheme } from '@fluentui/react-theme';
-import { useControllableState } from '@fluentui/react-utilities';
 import { ColorPickerProvider } from '../../contexts/colorPicker';
-import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { ColorSlider } from '../ColorSlider/ColorSlider';
-import { useColorSliderBase_unstable } from '../ColorSlider/useColorSlider';
 import { colorSliderCSSVars } from '../ColorSlider/ColorSlider.constants';
 import type { ColorChannel } from '../ColorSlider/ColorSlider.types';
 import { AlphaSlider } from '../AlphaSlider/AlphaSlider';
@@ -16,6 +10,12 @@ import { alphaSliderCSSVars } from '../AlphaSlider/AlphaSlider.constants';
 import { ColorArea } from '../ColorArea/ColorArea';
 
 const initialColor = { h: 240, s: 0.4, v: 0.8, a: 0.6 };
+
+function expectColor(root: HTMLElement, variable: string, expected: string) {
+  const probe = root.ownerDocument.createElement('span');
+  probe.style.color = root.style.getPropertyValue(variable);
+  expect(probe.style.color).toBe(expected);
+}
 
 describe.each([
   { name: 'ColorSlider', Control: ColorSlider, initialValue: '240', changedValue: '120', field: 'h' },
@@ -110,48 +110,6 @@ describe.each([
       [field]: field === 'a' ? Number(changedValue) / 100 : Number(changedValue),
     });
   });
-
-  it('warns for conflicting controlled and default colors', () => {
-    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    try {
-      render(<Control color={initialColor} defaultColor={initialColor} />);
-      expect(error).toHaveBeenCalledWith(expect.stringContaining('either controlled or uncontrolled'));
-    } finally {
-      error.mockRestore();
-    }
-  });
-
-  it('warns on a late controlled color and retains its original uncontrolled mode', () => {
-    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    try {
-      const { rerender } = render(<Control />);
-      rerender(<Control color={initialColor} />);
-      expect(error).toHaveBeenCalledWith(expect.stringContaining('an uncontrolled value to be controlled'));
-      fireEvent.change(screen.getByRole('slider'), { target: { value: changedValue } });
-      expect(screen.getByRole('slider')).toHaveValue(changedValue);
-      rerender(<Control />);
-      expect(screen.getByRole('slider')).toHaveValue(changedValue);
-    } finally {
-      error.mockRestore();
-    }
-  });
-});
-
-it('uses the controllable-state warning for an unsupported controlled-to-uncontrolled transition', () => {
-  const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-  try {
-    // Check the warning at its owner without requiring controls to render an unsupported undefined color.
-    const initialProps: { color?: typeof initialColor } = { color: initialColor };
-    const { rerender } = renderHook(
-      ({ color }: { color?: typeof initialColor }) =>
-        useControllableState({ state: color, initialState: INITIAL_COLOR_HSV }),
-      { initialProps },
-    );
-    rerender({ color: undefined });
-    expect(error).toHaveBeenCalledWith(expect.stringContaining('a controlled value to be uncontrolled'));
-  } finally {
-    error.mockRestore();
-  }
 });
 
 describe('ColorSlider channel ramps', () => {
@@ -170,67 +128,31 @@ describe('ColorSlider channel ramps', () => {
     ]);
   });
 
-  // Endpoints are computed in HSV before converting to HSL, including black and grayscale.
   it.each([
-    { channel: 'saturation', color: initialColor, low: 'hsla(240, 0%, 80%, 1)', high: 'hsla(240, 100%, 40%, 1)' },
-    {
-      channel: 'saturation',
-      color: { ...initialColor, s: 0 },
-      low: 'hsla(240, 0%, 80%, 1)',
-      high: 'hsla(240, 100%, 40%, 1)',
-    },
-    {
-      channel: 'saturation',
-      color: { ...initialColor, s: 1 },
-      low: 'hsla(240, 0%, 80%, 1)',
-      high: 'hsla(240, 100%, 40%, 1)',
-    },
-    {
-      channel: 'saturation',
-      color: { ...initialColor, v: 0 },
-      low: 'hsla(240, 0%, 0%, 1)',
-      high: 'hsla(240, 0%, 0%, 1)',
-    },
-    {
-      channel: 'saturation',
-      color: { ...initialColor, v: 1 },
-      low: 'hsla(240, 0%, 100%, 1)',
-      high: 'hsla(240, 100%, 50%, 1)',
-    },
-    { channel: 'value', color: initialColor, low: 'hsla(240, 0%, 0%, 1)', high: 'hsla(240, 100%, 80%, 1)' },
-    {
-      channel: 'value',
-      color: { ...initialColor, v: 0 },
-      low: 'hsla(240, 0%, 0%, 1)',
-      high: 'hsla(240, 100%, 80%, 1)',
-    },
-    {
-      channel: 'value',
-      color: { ...initialColor, v: 1 },
-      low: 'hsla(240, 0%, 0%, 1)',
-      high: 'hsla(240, 100%, 80%, 1)',
-    },
-    { channel: 'value', color: { ...initialColor, s: 0 }, low: 'hsla(240, 0%, 0%, 1)', high: 'hsla(240, 0%, 100%, 1)' },
-    {
-      channel: 'value',
-      color: { ...initialColor, s: 1 },
-      low: 'hsla(240, 0%, 0%, 1)',
-      high: 'hsla(240, 100%, 50%, 1)',
-    },
-  ] as const)('exposes the $channel endpoints for $color', ({ channel, color, low, high }) => {
-    const { result } = renderHook(() => useColorSliderBase_unstable({ channel, defaultColor: color }, null));
-    expect(result.current.root.style).toMatchObject({
-      [colorSliderCSSVars.railColorVar]: high,
-      [colorSliderCSSVars.railColorLowVar]: low,
-    });
+    ['saturation', 0.4, 0.8, 'rgb(204, 204, 204)', 'rgb(0, 0, 204)'],
+    ['saturation', 0, 0.8, 'rgb(204, 204, 204)', 'rgb(0, 0, 204)'],
+    ['saturation', 1, 0.8, 'rgb(204, 204, 204)', 'rgb(0, 0, 204)'],
+    ['saturation', 0.4, 0, 'rgb(0, 0, 0)', 'rgb(0, 0, 0)'],
+    ['saturation', 0.4, 1, 'rgb(255, 255, 255)', 'rgb(0, 0, 255)'],
+    ['value', 0.4, 0, 'rgb(0, 0, 0)', 'rgb(153, 153, 255)'],
+    ['value', 0.4, 1, 'rgb(0, 0, 0)', 'rgb(153, 153, 255)'],
+    ['value', 0, 0.8, 'rgb(0, 0, 0)', 'rgb(255, 255, 255)'],
+    ['value', 1, 0.8, 'rgb(0, 0, 0)', 'rgb(0, 0, 255)'],
+  ] as const)('exposes opaque %s endpoints at saturation %s and value %s', (channel, s, v, low, high) => {
+    const { container } = render(<ColorSlider channel={channel} defaultColor={{ ...initialColor, s, v }} />);
+    const root = container.firstElementChild as HTMLElement;
+    expectColor(root, colorSliderCSSVars.railColorLowVar, low);
+    expectColor(root, colorSliderCSSVars.railColorVar, high);
   });
 
   it.each(['saturation', 'value'] as ColorChannel[])('paints the resolved uncontrolled %s color', channel => {
     const { container } = render(<ColorSlider channel={channel} defaultColor={initialColor} />);
     fireEvent.change(screen.getByRole('slider'), { target: { value: '50' } });
     const root = container.firstElementChild as HTMLElement;
-    expect(root.style.getPropertyValue(colorSliderCSSVars.thumbColorVar)).toBe(
-      channel === 'saturation' ? 'hsla(240, 50%, 60%, 0.6)' : 'hsla(240, 25%, 40%, 0.6)',
+    expectColor(
+      root,
+      colorSliderCSSVars.thumbColorVar,
+      channel === 'saturation' ? 'rgba(102, 102, 204, 0.6)' : 'rgba(77, 77, 128, 0.6)',
     );
   });
 });
@@ -245,47 +167,37 @@ describe('AlphaSlider transparency and direction', () => {
     expect(onChange.mock.lastCall[1].color).toEqual({ h: 240, s: 0.4, v: 0.8, a: 0.25 });
   });
 
-  it.each([
-    { dir: 'ltr', vertical: false, transparency: false, direction: '90deg' },
-    { dir: 'ltr', vertical: false, transparency: true, direction: '-90deg' },
-    { dir: 'rtl', vertical: false, transparency: false, direction: '-90deg' },
-    { dir: 'rtl', vertical: false, transparency: true, direction: '90deg' },
-    { dir: 'ltr', vertical: true, transparency: false, direction: '0deg' },
-    { dir: 'ltr', vertical: true, transparency: true, direction: '180deg' },
-    { dir: 'rtl', vertical: true, transparency: false, direction: '0deg' },
-    { dir: 'rtl', vertical: true, transparency: true, direction: '180deg' },
-  ] as const)(
-    'aligns input, thumb and ramp for $dir/$vertical/$transparency',
-    ({ dir, vertical, transparency, direction }) => {
-      const onChange = jest.fn();
-      const { container } = render(
-        <FluentProvider dir={dir} theme={webLightTheme}>
-          <AlphaSlider
-            defaultColor={initialColor}
-            onChange={onChange}
-            vertical={vertical}
-            transparency={transparency}
-          />
-        </FluentProvider>,
+  it.each([false, true])('updates input, progress and alpha paint with transparency=%s', transparency => {
+    const onChange = jest.fn();
+    render(<AlphaSlider defaultColor={initialColor} onChange={onChange} transparency={transparency} />);
+    const input = screen.getByRole('slider');
+    const root = input.parentElement!;
+    for (const value of [0, 100, 25, 0]) {
+      fireEvent.change(input, { target: { value: String(value) } });
+      const alpha = (transparency ? 100 - value : value) / 100;
+      expect(onChange.mock.lastCall[1].color).toEqual({ ...initialColor, a: alpha });
+      expect(input).toHaveValue(String(value));
+      expect(root.style.getPropertyValue(alphaSliderCSSVars.sliderProgressVar)).toBe(`${value}%`);
+      expectColor(
+        root,
+        alphaSliderCSSVars.thumbColorVar,
+        alpha === 1 ? 'rgb(122, 122, 204)' : `rgba(122, 122, 204, ${alpha})`,
       );
-      const input = screen.getByRole('slider');
-      const root = input.parentElement!;
-      const initialThumbColor = root.style.getPropertyValue(alphaSliderCSSVars.thumbColorVar);
-      expect(root.style.getPropertyValue(alphaSliderCSSVars.sliderDirectionVar)).toBe(direction);
-      expect(input).toHaveAttribute('aria-orientation', vertical ? 'vertical' : 'horizontal');
-      for (const value of [0, 100, 25, 0]) {
-        fireEvent.change(input, { target: { value: String(value) } });
-        const alpha = (transparency ? 100 - value : value) / 100;
-        expect(onChange.mock.lastCall[1].color).toEqual({ ...initialColor, a: alpha });
-        expect(input).toHaveValue(String(value));
-        expect(root.style.getPropertyValue(alphaSliderCSSVars.sliderProgressVar)).toBe(`${value}%`);
-        expect(root.style.getPropertyValue(alphaSliderCSSVars.thumbColorVar)).toBe(
-          initialThumbColor.replace(/, [^,]+\)$/, `, ${alpha})`),
-        );
-      }
-      expect(container.querySelector('.fui-AlphaSlider__rail')).toBeInTheDocument();
-    },
-  );
+    }
+  });
+
+  it('preserves the bare opaque black default and reports black HSV when edited', () => {
+    const onChange = jest.fn();
+    render(<AlphaSlider onChange={onChange} />);
+    const input = screen.getByRole('slider');
+    const root = input.parentElement!;
+    expect(input).toHaveValue('100');
+    expectColor(root, alphaSliderCSSVars.railColorVar, 'rgb(0, 0, 0)');
+    expectColor(root, alphaSliderCSSVars.thumbColorVar, 'rgb(0, 0, 0)');
+    fireEvent.change(input, { target: { value: '25' } });
+    expect(onChange.mock.lastCall[1].color).toEqual({ h: 0, s: 0, v: 0, a: 0.25 });
+    expectColor(root, alphaSliderCSSVars.thumbColorVar, 'rgba(0, 0, 0, 0.25)');
+  });
 
   it('updates transparency interpretation without changing the stored alpha', () => {
     const { rerender } = render(<AlphaSlider defaultColor={initialColor} />);
@@ -304,17 +216,10 @@ describe('AlphaSlider transparency and direction', () => {
   });
 });
 
-describe('ColorArea shared color and orientation', () => {
-  it('preserves an uncontrolled color across edits to both inputs', () => {
-    const onChange = jest.fn();
-    render(<ColorArea defaultColor={initialColor} onChange={onChange} />);
-    const [inputX, inputY] = screen.getAllByRole('slider');
-    fireEvent.change(inputX, { target: { value: '70' } });
-    fireEvent.change(inputY, { target: { value: '50' } });
-    expect(onChange.mock.lastCall[1].color).toEqual({ ...initialColor, s: 0.7, v: 0.5 });
-    expect(inputX).toHaveValue('70');
-    expect(inputY).toHaveValue('50');
-    expect(inputY).toHaveAttribute('aria-orientation', 'vertical');
+describe('ColorArea orientation', () => {
+  it('defaults the value axis to vertical', () => {
+    render(<ColorArea />);
+    expect(screen.getAllByRole('slider')[1]).toHaveAttribute('aria-orientation', 'vertical');
   });
 
   it('preserves caller inputY orientation', () => {

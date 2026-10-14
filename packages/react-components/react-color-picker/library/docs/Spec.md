@@ -106,11 +106,10 @@ ColorSliders might represent different color channels.
 
 ### Shared color-control behavior
 
-The styled controls and headless controls use the same base hooks. `color` takes precedence over
-ColorPicker context color; otherwise `defaultColor` initializes the control's uncontrolled HSV
-color. Changes preserve the other HSV channels and alpha. An explicit `onChange` takes precedence
-over the context callback. As with other Fluent controls, controlled and uncontrolled modes must
-not be switched during a control's lifetime.
+The styled and headless controls share base hooks. Color precedence is explicit `color`, then
+ColorPicker context color, then uncontrolled `defaultColor`, then the control's initial color.
+Changes preserve the other HSV channels and alpha. An explicit `onChange` takes precedence over
+the context callback. Controlled and uncontrolled modes must not switch during a control's lifetime.
 
 For saturation and value sliders, the base hook supplies opaque rail endpoints on `state.root.style`:
 
@@ -123,8 +122,8 @@ styles can use `linear-gradient(var(--fui-Slider--direction), var(--fui-Slider__
 var(--fui-Slider__rail--color-low))`. The direction runs from high to low for the native input's
 orientation and text direction. The existing hue spectrum is unchanged.
 
-AlphaSlider stores alpha as opacity and derives the input value from `transparency`; its ramp
-direction reverses in transparency mode for both LTR and RTL. The base hook defaults its input's
+AlphaSlider's alpha represents opacity; `transparency` displays `100 * (1 - alpha)` instead.
+Its ramp direction reverses in transparency mode for both LTR and RTL. The base hook defaults its input's
 `aria-orientation` to horizontal or vertical, and ColorArea defaults `inputY` to vertical. Caller
 slot overrides retain precedence. Headless consumers still own visual orientation (including
 vertical range input CSS), thumb positioning, focus indicators, and other styling.

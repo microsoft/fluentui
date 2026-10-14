@@ -6,7 +6,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { alphaSliderCSSVars } from './AlphaSlider.constants';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
-import { MIN, MAX, INITIAL_COLOR_HSV } from '../../utils/constants';
+import { MIN, MAX } from '../../utils/constants';
 import { getPercent } from '../../utils/getPercent';
 import { adjustToTransparency, getSliderDirection } from './alphaSliderUtils';
 import { createHsvColor } from '../../utils/createHsvColor';
@@ -20,8 +20,8 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const { color, onChange = onChangeFromContext, transparency = false, vertical = false } = props;
   const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
-    state: color ?? colorFromContext,
-    initialState: INITIAL_COLOR_HSV,
+    state: color || colorFromContext,
+    initialState: createHsvColor({}),
   });
   const hslColor = createHslColor(currentColor);
   const currentValue = adjustToTransparency((currentColor.a ?? 1) * 100, transparency);

@@ -177,14 +177,7 @@
   background: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
 }
 
-.slider[data-channel='saturation'] .rail {
-  background: linear-gradient(
-    var(--fui-Slider--direction),
-    var(--fui-Slider__rail--color),
-    var(--fui-Slider__rail--color-low)
-  );
-}
-
+.slider[data-channel='saturation'] .rail,
 .slider[data-channel='value'] .rail {
   background: linear-gradient(
     var(--fui-Slider--direction),

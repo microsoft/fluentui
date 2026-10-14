@@ -6,7 +6,6 @@ import { ColorSlider } from './ColorSlider';
 import type { ColorSliderProps } from './ColorSlider.types';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { colorSliderCSSVars } from './ColorSlider.constants';
 
 const mountFluent = (element: JSXElement) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -26,41 +25,76 @@ const ColorSliderExample = (props: ColorSliderProps) => {
 };
 
 describe('ColorSlider', () => {
-  describe('channel-preserving runtime endpoints', () => {
-    for (const s of [0, 0.4, 1]) {
-      for (const v of [0, 0.8, 1]) {
-        for (const channel of ['saturation', 'value'] as const) {
-          it(`${channel}, saturation ${s}, value ${v}`, () => {
-            mountFluent(<ColorSlider channel={channel} defaultColor={{ h: 240, s, v }} />);
-            cy.get('.fui-ColorSlider').should($root => {
-              const root = $root[0];
-              const view = root.ownerDocument.defaultView!;
-              const low = channel === 'saturation' ? v : 0;
-              const high = channel === 'saturation' ? [0, 0, v] : [1 - s, 1 - s, 1];
-              for (const [variable, expected] of [
-                [colorSliderCSSVars.railColorLowVar, [low, low, low]],
-                [colorSliderCSSVars.railColorVar, high],
-              ] as const) {
-                const probe = root.ownerDocument.createElement('div');
-                probe.style.backgroundColor = root.style.getPropertyValue(variable);
-                root.appendChild(probe);
-                try {
-                  expect(view.getComputedStyle(probe).backgroundColor).to.equal(
-                    `rgb(${expected.map(component => Math.round(component * 255)).join(', ')})`,
-                  );
-                } finally {
-                  probe.remove();
-                }
-              }
-              const rail = root.querySelector<HTMLElement>('.fui-ColorSlider__rail')!;
-              const gradient = view.getComputedStyle(rail).backgroundImage;
-              expect(gradient).to.contain('linear-gradient(-90deg');
-              expect(gradient).not.to.contain('rgb(128, 128, 128)');
+  describe('rendered channel stops and native direction', () => {
+    for (const [channel, dir, vertical, gradient] of [
+      ['saturation', 'ltr', false, 'linear-gradient(-90deg, rgb(0, 0, 204), rgb(204, 204, 204))'],
+      ['value', 'rtl', false, 'linear-gradient(90deg, rgb(153, 153, 255), rgb(0, 0, 0))'],
+      ['saturation', 'rtl', true, 'linear-gradient(rgb(0, 0, 204), rgb(204, 204, 204))'],
+      ['value', 'ltr', true, 'linear-gradient(rgb(153, 153, 255), rgb(0, 0, 0))'],
+    ] as const) {
+      it(`${channel}, ${dir}, ${vertical ? 'vertical' : 'horizontal'}`, () => {
+        const onChange = cy.stub();
+        mount(
+          <FluentProvider dir={dir} theme={webLightTheme}>
+            <ColorSlider
+              channel={channel}
+              vertical={vertical}
+              defaultColor={{ h: 240, s: 0.4, v: 0.8, a: 0.6 }}
+              onChange={onChange}
+            />
+          </FluentProvider>,
+        );
+        cy.get('.fui-ColorSlider__input').focus();
+        for (const [key, value] of [
+          ['Home', 0],
+          ['End', 100],
+          ['Home', 0],
+        ] as const) {
+          cy.realPress(key);
+          cy.get('.fui-ColorSlider__input').should('have.value', String(value));
+          cy.get('.fui-ColorSlider').should($root => {
+            const root = $root[0];
+            assertRailGradient(root, gradient);
+            expect(onChange.lastCall.args[1].color).to.deep.equal({
+              h: 240,
+              s: 0.4,
+              v: 0.8,
+              a: 0.6,
+              [channel === 'saturation' ? 's' : 'v']: value / 100,
             });
+            const rail = root.querySelector<HTMLElement>('.fui-ColorSlider__rail')!.getBoundingClientRect();
+            const thumb = root.querySelector<HTMLElement>('.fui-ColorSlider__thumb')!.getBoundingClientRect();
+            const position = vertical ? thumb.top + thumb.height / 2 : thumb.left + thumb.width / 2;
+            const expected = vertical
+              ? value === 0
+                ? rail.bottom
+                : rail.top
+              : (value === 0) === (dir === 'ltr')
+              ? rail.left
+              : rail.right;
+            expect(position).to.be.closeTo(expected, 2);
           });
         }
-      }
+      });
     }
+
+    it('rejects an unrelated painted rail even when runtime endpoints are present', () => {
+      mountFluent(
+        <ColorSlider
+          channel="saturation"
+          defaultColor={{ h: 240, s: 0.4, v: 0.8 }}
+          rail={{ style: { backgroundImage: 'linear-gradient(-90deg, red, black)' } }}
+        />,
+      );
+      cy.get('.fui-ColorSlider').should($root => {
+        const root = $root[0];
+        expect(root.style.getPropertyValue('--fui-Slider__rail--color')).not.to.equal('');
+        expect(root.style.getPropertyValue('--fui-Slider__rail--color-low')).not.to.equal('');
+        expect(() =>
+          assertRailGradient(root, 'linear-gradient(-90deg, rgb(0, 0, 204), rgb(204, 204, 204))'),
+        ).to.throw();
+      });
+    });
   });
 
   describe('keyboard navigation', () => {
@@ -161,4 +195,9 @@ describe('ColorSlider', () => {
 function assertSliderValue(value: string) {
   cy.get('#color-slider').should('have.attr', 'aria-valuetext', `${value}°`);
   cy.get('#color-slider').should('have.attr', 'value', value);
+}
+
+function assertRailGradient(root: HTMLElement, expected: string) {
+  const rail = root.querySelector<HTMLElement>('.fui-ColorSlider__rail')!;
+  expect(root.ownerDocument.defaultView!.getComputedStyle(rail).backgroundImage).to.equal(expected);
 }
