@@ -83,7 +83,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   }, [popoverOpen, infoRef]);
 
   // Hide the popover when focus moves out of the button and popover
-  const onBlurButtonOrInfo = (e: React.FocusEvent) => {
+  const onBlurButtonOrInfo: React.FocusEventHandler<HTMLElement> = e => {
     const nextFocused = e.relatedTarget;
 
     if (!nextFocused || (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused))) {
@@ -93,7 +93,8 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
 
   // eslint-disable-next-line react-hooks/refs
   state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  const onInfoBlurCapture = state.info.onBlurCapture as React.FocusEventHandler<HTMLElement> | undefined;
   // eslint-disable-next-line react-hooks/refs
-  state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
+  state.info.onBlurCapture = useEventCallback(mergeCallbacks(onInfoBlurCapture, onBlurButtonOrInfo));
   return state;
 };

@@ -2,6 +2,46 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.18.2",
+      "tag": "@fluentui/react-file-type-icons_v8.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "danielhall@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "f752d69f810deb2b41b8ce66fa41ab09cfed4505",
+            "comment": "Map clpx extension to the clipchamp filetype icon"
+          },
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "191b8365a26c4ad5366ff7155da4a7914fb55150",
+            "comment": "Add the Fabric Ontology file type icon."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.15.3"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "f03f1e4e00455a54ab180a218962a7ae685e3b9b",
+            "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 09:55:29 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.18.1",
       "version": "8.18.1",

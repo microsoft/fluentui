@@ -4,12 +4,6 @@ import { List } from '../List';
 import { ListItem } from './ListItem';
 
 describe('ListItem', () => {
-  const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => jest.fn());
-
-  afterAll(() => {
-    consoleWarn.mockRestore();
-  });
-
   it('forwards ref, className and style to the root element', () => {
     const ref = React.createRef<HTMLLIElement>();
 
@@ -143,6 +137,42 @@ describe('ListItem', () => {
 
     fireEvent.click(item);
     expect(onAction).toHaveBeenCalledTimes(1);
+  });
+
+  it('preserves the consumer checkmark ref and change handler without toggling twice', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const onChange = jest.fn();
+    const onSelectionChange = jest.fn();
+    const { getByRole } = render(
+      <List selectionMode="multiselect" onSelectionChange={onSelectionChange}>
+        <ListItem value="one" checkmark={{ ref, onChange }}>
+          First item
+        </ListItem>
+      </List>,
+    );
+
+    expect(ref.current).toBe(getByRole('checkbox'));
+    fireEvent.click(getByRole('checkbox'));
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onSelectionChange).toHaveBeenCalledTimes(1);
+    expect(getByRole('option')).toHaveAttribute('data-selected', '');
+  });
+
+  it('lets the checkmark change handler cancel selection', () => {
+    const onSelectionChange = jest.fn();
+    const { getByRole } = render(
+      <List selectionMode="multiselect" onSelectionChange={onSelectionChange}>
+        <ListItem value="one" checkmark={{ onChange: event => event.preventDefault() }}>
+          First item
+        </ListItem>
+      </List>,
+    );
+
+    fireEvent.click(getByRole('checkbox'));
+
+    expect(onSelectionChange).not.toHaveBeenCalled();
+    expect(getByRole('option')).not.toHaveAttribute('data-selected');
   });
 
   it('does not let a consumer misrepresent the reserved selected attribute', () => {

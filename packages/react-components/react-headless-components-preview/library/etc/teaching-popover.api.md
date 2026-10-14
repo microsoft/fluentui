@@ -13,7 +13,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
@@ -267,14 +268,17 @@ export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceS
 
 // @public
 export type TeachingPopoverSurfaceSlots = {
-    root: Slot<'dialog'>;
+    root: Slot<'dialog', 'div'>;
 };
 
 // @public (undocumented)
 export type TeachingPopoverSurfaceState = ComponentState<TeachingPopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
-    'data-open': string;
+    root: {
+        'data-open'?: string;
+        'data-popover-surface'?: string;
+    };
 };
 
 // @public (undocumented)
@@ -335,7 +339,7 @@ export { useTeachingPopoverFooter }
 export { useTeachingPopoverHeader }
 
 // @public
-export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => TeachingPopoverSurfaceState;
+export const useTeachingPopoverSurface: (props: TeachingPopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => TeachingPopoverSurfaceState;
 
 export { useTeachingPopoverTitle }
 

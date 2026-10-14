@@ -10,13 +10,6 @@ describe('List', () => {
     displayName: 'List',
   });
 
-  // The list warns about role/navigation combinations that Tabster cannot verify in jsdom.
-  const consoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => jest.fn());
-
-  afterAll(() => {
-    consoleWarn.mockRestore();
-  });
-
   it('renders a default state', () => {
     const { getByRole, getAllByRole } = render(
       <List>
@@ -45,7 +38,13 @@ describe('List', () => {
     const { container } = render(
       <List navigationMode={navigationMode}>
         <ListItem value="one">
-          <span role="gridcell">First item</span>
+          {navigationMode === 'composite' ? (
+            <span role="gridcell">
+              <button>First item</button>
+            </span>
+          ) : (
+            'First item'
+          )}
         </ListItem>
       </List>,
     );
@@ -80,6 +79,29 @@ describe('List', () => {
     expect(checkbox.tagName).toBe('INPUT');
     expect(checkbox).toHaveAttribute('type', 'checkbox');
     expect(checkbox.closest('.fui-Checkbox')).toBeNull();
+  });
+
+  it('preserves an explicit ordered-list root and item semantics', () => {
+    const { getByRole } = render(
+      <List as="ol">
+        <ListItem value="one">First item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('list').tagName).toBe('OL');
+    expect(getByRole('listitem').tagName).toBe('LI');
+  });
+
+  it('does not include Tabster attributes or Fluent styling', () => {
+    const { container, getByRole } = render(
+      <List navigationMode="items">
+        <ListItem value="one">First item</ListItem>
+      </List>,
+    );
+
+    expect(getByRole('list')).toHaveAttribute('focusgroup', 'toolbar block');
+    expect(container.querySelector('[data-tabster]')).toBeNull();
+    expect(container.querySelector('[class]')).toBeNull();
   });
 
   it('selects and deselects an item in multiselect mode', () => {

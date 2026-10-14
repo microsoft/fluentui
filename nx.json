@@ -16,7 +16,11 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production", "{workspaceRoot}/scripts/api-extractor/api-extractor.*.json"],
-      "cache": true
+      "cache": true,
+      "syncGenerators": [
+        "@fluentui/workspace-plugin:export-maps-sync",
+        "@fluentui/workspace-plugin:bundle-size-fixtures-sync"
+      ]
     },
     "build-storybook": {
       "dependsOn": [],
@@ -97,6 +101,7 @@
     },
     "verify-packaging": {
       "dependsOn": ["build"],
+      "inputs": ["production"],
       "cache": true
     },
     "test-rit--*--prepare": {
@@ -136,6 +141,12 @@
   "release": {
     "projectsRelationship": "independent"
   },
+  "sync": {
+    "globalGenerators": [
+      "@fluentui/workspace-plugin:export-maps-sync",
+      "@fluentui/workspace-plugin:bundle-size-fixtures-sync"
+    ]
+  },
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "master",
@@ -150,7 +161,13 @@
           "exclude": ["react-theme-stories", "react-migration-v8-v9-stories", "react-migration-v0-v9-stories"]
         },
         "verifyPackaging": {
-          "include": ["react-text", "react-components"]
+          "include": [
+            "react-components",
+            "react-headless-components-preview",
+            "react-utilities",
+            "react-button",
+            "react-charts"
+          ]
         },
         "reactIntegrationTesting": {
           "targetName": "test-rit",

@@ -46,5 +46,6 @@ const Child2 = () =>
     ),
   );
 ButtonAppearance.parameters = {};
+ButtonAppearance.parameters.fullSourceIsRunnable = true;
 ButtonAppearance.parameters.fullSource =
   'import * as React from "react";\n\nconst Child1 = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n  </>\n);\n\nexport const ButtonAppearance = () => (\n  <>\n    <Child1 />\n    <Child2 />\n  </>\n);\n\nconst Child2 = () => (\n  <>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n';

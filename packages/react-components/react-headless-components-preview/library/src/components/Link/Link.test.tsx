@@ -7,6 +7,7 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
+    requiredProps: { children: 'Link' },
   });
 
   it('renders as a button when no href is provided', () => {

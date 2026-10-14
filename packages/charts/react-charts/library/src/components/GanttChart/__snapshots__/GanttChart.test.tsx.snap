@@ -440,9 +440,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
     >
       <div
         class="fui-PopoverSurface"
-        data-popper-escaped=""
         data-popper-placement="top"
-        data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
@@ -474,7 +472,7 @@ exports[`GanttChart interaction and accessibility tests should render custom cal
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>
@@ -4934,9 +4932,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
     >
       <div
         class="fui-PopoverSurface"
-        data-popper-escaped=""
         data-popper-placement="top"
-        data-popper-reference-hidden=""
         data-tabster="{\\"restorer\\":{\\"type\\":0}}"
         role="group"
         style="position: absolute; left: 0px; top: 0px; margin: 0px; box-sizing: border-box; max-width: 0px; max-height: -20px; overflow-y: auto; transform: translate(-10px, -40px); --fui-positioning-slide-direction-x: 0px; --fui-positioning-slide-direction-y: 1px;"
@@ -4968,7 +4964,7 @@ exports[`GanttChart rendering and behavior tests should render callout correctly
               </div>
               <div
                 class="fui-cart__calloutContentY"
-                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700);"
+                style="color: rgb(16, 124, 16); font-size: var(--fontSizeHero700); line-height: var(--lineHeightHero700);"
               >
                 01/01/2017 - 02/02/2017
               </div>

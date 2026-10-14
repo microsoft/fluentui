@@ -15,7 +15,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
   const state: MenuPopoverState = {
     ...baseState,
-    root: { ...baseState.root, popover: 'auto' } as MenuPopoverState['root'],
+    root: { popover: 'auto', ...baseState.root } as MenuPopoverState['root'],
   };
 
   const open = useMenuContext(ctx => ctx.open);

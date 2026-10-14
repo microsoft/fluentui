@@ -8,6 +8,7 @@ describe('Input', () => {
     Component: Input,
     displayName: 'Input',
     primarySlot: 'input',
+    requiredProps: { 'aria-label': 'Text' },
   });
 
   it('renders a default state', () => {

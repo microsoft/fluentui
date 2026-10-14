@@ -112,12 +112,12 @@ Example (simplified):
 ```tsx
 const state = useButton(props, ref);
 
-// stringifyDataAttribute: returns undefined (omits the attribute) for falsy presence
-// attributes, or the string value ("true"/"false"/enum) for boolean/tri-state attributes.
+// toDataAttributeValue: returns '' (attribute present) for true, undefined (attribute
+// omitted) for false, and the stringified value for enum/tri-state attributes.
 Object.assign(state.root, {
-  'data-disabled': stringifyDataAttribute(state.disabled),
-  'data-disabled-focusable': stringifyDataAttribute(state.disabledFocusable),
-  'data-icon-only': stringifyDataAttribute(state.iconOnly),
+  'data-disabled': toDataAttributeValue(state.disabled),
+  'data-disabled-focusable': toDataAttributeValue(state.disabledFocusable),
+  'data-icon-only': toDataAttributeValue(state.iconOnly),
 });
 
 return state;

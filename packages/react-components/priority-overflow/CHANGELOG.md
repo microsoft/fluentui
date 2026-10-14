@@ -1,8 +1,18 @@
 # Change Log - @fluentui/priority-overflow
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 24 Aug 2026 16:40:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.3)
+
+Mon, 24 Aug 2026 16:40:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.4.2..@fluentui/priority-overflow_v9.4.3)
+
+### Patches
+
+- fix: synchronously measure overflowing managers when the overflow menu attaches ([PR #36588](https://github.com/microsoft/fluentui/pull/36588) by bernardo.sunderhus@gmail.com)
+- fix: avoid redundant overflow recomputation after conditional menu removal ([PR #36602](https://github.com/microsoft/fluentui/pull/36602) by bsunderhus@microsoft.com)
 
 ## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.4.2)
 

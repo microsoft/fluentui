@@ -2,6 +2,20 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.6.11",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/date-time-utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:18:55 GMT",
       "tag": "@fluentui/date-time-utilities_v8.6.11",
       "version": "8.6.11",

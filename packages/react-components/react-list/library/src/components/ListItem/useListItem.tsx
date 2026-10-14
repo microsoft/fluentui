@@ -23,7 +23,6 @@ import {
 import type { ListItemBaseProps, ListItemBaseState, ListItemProps, ListItemState } from './ListItem.types';
 import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
-import type { CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ListItemActionEvent } from '../../events/ListItemActionEvent';
 import { createListItemActionEvent, ListItemActionEventName } from '../../events/ListItemActionEvent';
@@ -37,18 +36,25 @@ const DEFAULT_ROOT_EL_TYPE = 'li';
  * before being passed to renderListItem_unstable.
  *
  * @param props - props from this instance of ListItem
- * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElement of ListItem
  */
 export const useListItem_unstable = (
   props: ListItemProps,
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const { checkmark: checkmarkProp, ...baseProps } = props;
-  const state = useListItemBase_unstable(baseProps, ref);
+  const state = useListItemBase_unstable(
+    {
+      ...baseProps,
+      // Keep the base ref and event handlers for explicitly rendered Fluent checkmarks.
+      checkmark: checkmarkProp === null ? null : checkmarkProp === undefined ? undefined : {},
+    },
+    ref,
+  );
 
   const { navigationMode } = useListSynchronousContext();
 
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
   const focusableGroupAttrs = useFocusableGroup({
     ignoreDefaultKeydown: { Enter: true },
@@ -118,13 +124,7 @@ export const useListItem_unstable = (
 
   const mergedCheckmarkRef = useMergedRefs(checkmark?.ref, state.checkmark?.ref);
   if (checkmark) {
-    checkmark.onChange = mergeCallbacks(
-      checkmark.onChange,
-      state.checkmark?.onChange as unknown as (
-        e: React.ChangeEvent<HTMLInputElement>,
-        data: CheckboxOnChangeData,
-      ) => void,
-    );
+    checkmark.onChange = mergeCallbacks(checkmark.onChange, state.checkmark?.onChange);
     checkmark.ref = mergedCheckmarkRef;
   }
 
@@ -147,7 +147,7 @@ export const useListItem_unstable = (
  * arrow key handling is layered on by the wrapping `useListItem_unstable` hook.
  *
  * @param props - props from this instance of ListItem
- * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElement of ListItem
  */
 export const useListItemBase_unstable = (
   props: ListItemBaseProps,
@@ -164,7 +164,7 @@ export const useListItemBase_unstable = (
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value)) ?? false;
   const validateListItem = useListContext_unstable(ctx => ctx.validateListItem);
 
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
   const finalListItemRole = role || listItemRole;
 
@@ -258,13 +258,13 @@ export const useListItemBase_unstable = (
     getIntrinsicElementProps(as, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
-      role: finalListItemRole,
       id: String(value),
       ...(isSelectionModeEnabled && {
         'aria-selected': isSelected,
         'aria-disabled': (disabledSelection && !onAction) || undefined,
       }),
       ...props,
+      role: finalListItemRole,
       onKeyDown: handleKeyDown,
       onClick: isSelectionModeEnabled || onClick || onAction ? handleClick : undefined,
     }),

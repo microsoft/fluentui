@@ -1,8 +1,18 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 10 Dec 2025 06:28:03 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [2.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.7.3)
+
+Thu, 01 Oct 2026 07:11:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.7.2..@fluentui/theme_v2.7.3)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.15 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/utilities to v8.17.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [2.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.7.2)
 

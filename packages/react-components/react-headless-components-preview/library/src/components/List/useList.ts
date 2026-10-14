@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useListBase_unstable, useListContextValues_unstable } from '@fluentui/react-list';
 
 import type { ListContextValues, ListProps, ListState } from './List.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 export { useListContext_unstable as useListContext } from '@fluentui/react-list';
 
@@ -23,7 +23,7 @@ export const useList = (
     root: {
       ...baseState.root,
       'data-navigation-mode': baseState.navigationMode,
-      'data-selectable': stringifyDataAttribute(!!baseState.selection),
+      'data-selectable': toDataAttributeValue(!!baseState.selection),
       focusgroup: 'toolbar block',
     },
   };
@@ -34,4 +34,4 @@ export const useList = (
 /**
  * Maps the state of the list to the values that are passed through context to its children.
  */
-export const useListContextValues = useListContextValues_unstable as (state: ListState) => ListContextValues;
+export const useListContextValues: (state: ListState) => ListContextValues = useListContextValues_unstable;

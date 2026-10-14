@@ -15,7 +15,9 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * any Tabster runtime.
  */
 const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  'a[href], area[href], button, input, select, textarea, iframe, ' +
+  '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], [tabindex]';
+const NON_FOCUSABLE_SELECTOR = ':disabled, [hidden], input[type="hidden"], [tabindex^="-"]';
 
 /**
  * Create the state required to render List.
@@ -33,7 +35,7 @@ export const useList_unstable = (
   const state = useListBase_unstable(props, ref);
 
   const { navigationMode, selectionMode } = props;
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
   const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
@@ -43,15 +45,18 @@ export const useList_unstable = (
 
   const { findAllFocusable } = useFocusFinders();
 
-  // Tabster aware validation, superseding the plain DOM detection used by the base hook.
-  const validateListItem = useEventCallback((listItemEl: HTMLElement) =>
+  const validateListItem = useEventCallback((listItemEl: HTMLElement) => {
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
+
     validateListItemElement(listItemEl, {
       listRenderedAs: as,
       listRole,
       hasSelection: !!selectionMode,
       hasFocusableChildren: findAllFocusable(listItemEl).length > 0,
-    }),
-  );
+    });
+  });
 
   return {
     ...state,
@@ -76,7 +81,7 @@ export const useListBase_unstable = (
 ): ListState => {
   const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
 
-  const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;
+  const as = props.as || (navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE);
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,
@@ -99,14 +104,20 @@ export const useListBase_unstable = (
   const listRole = props.role || calculateListRole(navigationMode, !!selectionMode);
   const listItemRole = calculateListItemRoleForListRole(listRole);
 
-  const validateListItem = useEventCallback((listItemEl: HTMLElement) =>
+  const validateListItem = useEventCallback((listItemEl: HTMLElement) => {
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
+
     validateListItemElement(listItemEl, {
       listRenderedAs: as,
       listRole,
       hasSelection: !!selectionMode,
-      hasFocusableChildren: listItemEl.querySelectorAll(FOCUSABLE_SELECTOR).length > 0,
-    }),
-  );
+      hasFocusableChildren: Array.from(listItemEl.querySelectorAll(FOCUSABLE_SELECTOR)).some(
+        element => !element.matches(NON_FOCUSABLE_SELECTOR),
+      ),
+    });
+  });
 
   return {
     components: {
@@ -115,11 +126,11 @@ export const useListBase_unstable = (
     root: slot.always(
       getIntrinsicElementProps(as, {
         ref,
-        role: listRole,
         ...(selectionMode && {
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
         ...props,
+        role: listRole,
       }),
       { elementType: as },
     ),

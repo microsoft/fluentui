@@ -18,6 +18,12 @@ import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export const calculateListItemRoleForListRole: (listRole: string) => string;
+
+// @public
+export const calculateListRole: (navigationMode: ListNavigationMode | undefined, selectable: boolean) => "grid" | "listbox" | "list";
+
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
@@ -43,12 +49,14 @@ export type ListContextValues = {
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
 // @public (undocumented)
-export type ListItemActionEventData = EventData<typeof ListItemActionEventName, ListItemActionEvent> & {
+export type ListItemActionEventData = EventData<'ListItemAction', CustomEvent<{
+    originalEvent: React_2.MouseEvent | React_2.KeyboardEvent;
+}>> & {
     value: ListItemValue;
 };
 
 // @public
-export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> & ListItemOwnProps;
+export type ListItemBaseProps = ComponentProps<ListItemBaseSlots> & Pick<ListItemProps, 'value' | 'onAction' | 'disabledSelection'>;
 
 // @public
 export type ListItemBaseSlots = {
@@ -57,13 +65,17 @@ export type ListItemBaseSlots = {
 };
 
 // @public
-export type ListItemBaseState = ComponentState<ListItemBaseSlots> & ListItemOwnState;
+export type ListItemBaseState = ComponentState<ListItemBaseSlots> & Pick<ListItemState, 'selectable' | 'navigable' | 'disabled'>;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
 
 // @public
-export type ListItemProps = ComponentProps<ListItemSlots> & ListItemOwnProps;
+export type ListItemProps = ComponentProps<ListItemSlots> & {
+    value?: ListItemValue;
+    onAction?: EventHandler<ListItemActionEventData>;
+    disabledSelection?: boolean;
+};
 
 // @public (undocumented)
 export type ListItemSlots = {
@@ -72,7 +84,11 @@ export type ListItemSlots = {
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots> & ListItemOwnState;
+export type ListItemState = ComponentState<ListItemSlots> & {
+    selectable: boolean;
+    navigable: boolean;
+    disabled?: boolean;
+};
 
 // @public (undocumented)
 export type ListItemValue = string | number;
@@ -87,6 +103,18 @@ export type ListProps = ComponentProps<ListSlots> & {
     selectedItems?: SelectionItemId[];
     defaultSelectedItems?: SelectionItemId[];
     onSelectionChange?: EventHandler<OnListSelectionChangeData>;
+};
+
+// @public (undocumented)
+export type ListSelectionState = {
+    isSelected: (item: string | number) => boolean;
+    toggleItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    deselectItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    selectItem: (e: React_2.SyntheticEvent, id: string | number) => void;
+    clearSelection: (e: React_2.SyntheticEvent) => void;
+    toggleAllItems: (e: React_2.SyntheticEvent, itemIds: string[] | number[]) => void;
+    setSelectedItems: React_2.Dispatch<React_2.SetStateAction<Iterable<SelectionItemId>>>;
+    selectedItems: SelectionItemId[];
 };
 
 // @public (undocumented)
@@ -137,6 +165,26 @@ export const useListItemStyles_unstable: (state: ListItemState) => ListItemState
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
+
+// @public
+export const validateGridCellsArePresent: (listRole: string, listItemEl: HTMLElement) => void;
+
+// @public
+export const validateListItemElement: (listItemEl: HTMLElement, { listRenderedAs, listRole, hasSelection, hasFocusableChildren }: ValidateListItemElementOptions) => void;
+
+// @public (undocumented)
+export type ValidateListItemElementOptions = {
+    listRenderedAs: string;
+    listRole: string;
+    hasSelection: boolean;
+    hasFocusableChildren: boolean;
+};
+
+// @public
+export function validateProperElementTypes(listRenderedAs?: string, listItemRenderedAs?: string): void;
+
+// @public
+export const validateProperRolesAreUsed: (role: string, listItemRole: string, hasSelection: boolean, hasFocusableChildren: boolean) => void;
 
 // (No @packageDocumentation comment for this package)
 

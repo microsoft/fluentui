@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-context-selector
 
-<!-- This log was last generated on Tue, 11 Aug 2026 17:20:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.20)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.2.19..@fluentui/react-context-selector_v9.2.20)
+
+### Patches
+
+- fix: remove unused react-dom and @types/react-dom peer dependencies, mark @types/react as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.26.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.2.19)
 

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-headless-components-preview): align List state attributes with current base hooks and preserve native selection behavior",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

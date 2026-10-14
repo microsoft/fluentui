@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.15)
+
+Thu, 01 Oct 2026 07:11:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.14..@fluentui/merge-styles_v8.6.15)
+
+### Patches
+
+- fix(security): escape < and > in serialized CSS values and stylesheet state so they cannot terminate a <style> or <script> element during SSR ([PR #36582](https://github.com/microsoft/fluentui/pull/36582) by martinhochel@microsoft.com)
 
 ## [8.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.14)
 

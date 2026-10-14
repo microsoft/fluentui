@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 22 Sep 2026 11:25:47 GMT",
+      "version": "3.1.3",
+      "tag": "@fluentui/web-components_v3.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "adc2cc48e7fe7e93e62a4ade13039a0ee056d9ac",
+            "comment": "fix: correct submenu sizing in WebKit"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eebb4337934edf01b1e4b0fda31a50786fa040da",
+            "comment": "fix: focus menu items immediately after connecting a menu list"
+          },
+          {
+            "author": "198982749+Copilot@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "3ea795c7f1eeb7e2ebe45e62e41ef246b342d691",
+            "comment": "fix: show TextArea scrollbar for overflowing content"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Aug 2026 04:08:41 GMT",
       "version": "3.1.2",
       "tag": "@fluentui/web-components_v3.1.2",

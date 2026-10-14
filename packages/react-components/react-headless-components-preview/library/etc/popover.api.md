@@ -13,7 +13,8 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PopoverTriggerChildProps as PopoverTriggerChildProps_2 } from '@fluentui/react-popover';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
+import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
@@ -84,14 +85,17 @@ export type PopoverSurfaceProps = ComponentProps<PopoverSurfaceSlots>;
 
 // @public
 export type PopoverSurfaceSlots = {
-    root: Slot<'dialog'>;
+    root: Slot<'dialog', 'div'>;
 };
 
 // @public (undocumented)
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
-    'data-open': string;
+    root: {
+        'data-open'?: string;
+        'data-popover-surface'?: string;
+    };
 };
 
 // @public
@@ -131,7 +135,7 @@ export const usePopoverContextValues: (state: PopoverState) => {
 };
 
 // @public
-export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement>) => PopoverSurfaceState;
+export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;
 
 // @public
 export const usePopoverTrigger: (props: PopoverTriggerProps) => PopoverTriggerState;

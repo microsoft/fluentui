@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Fixed voice control accessibility issue for the chart line and area charts",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}
