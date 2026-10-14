@@ -172,7 +172,11 @@ describe('TeachingPopoverCarousel', () => {
 
   it('discards pending announcements when the callback is removed and later restored', async () => {
     const announcement = jest.fn(value => `Custom ${value}`);
-    const example = (value: string, callback?: TeachingPopoverCarouselProps['announcement'], showDestination = false) => (
+    const example = (
+      value: string,
+      callback?: TeachingPopoverCarouselProps['announcement'],
+      showDestination = false,
+    ) => (
       <TeachingPopoverCarousel value={value} announcement={callback}>
         <TeachingPopoverCarouselCard value="one" />
         {showDestination && <TeachingPopoverCarouselCard value="two" />}
