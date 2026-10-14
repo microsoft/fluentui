@@ -18,8 +18,7 @@ import { ListProps } from '@fluentui/react-list';
 import { ListSlots } from '@fluentui/react-list';
 import type { ListState as ListState_2 } from '@fluentui/react-list';
 import { OnListSelectionChangeData } from '@fluentui/react-list';
-import type * as React_2 from 'react';
-import { renderList_unstable as renderList } from '@fluentui/react-list';
+import * as React_2 from 'react';
 import { useListContext_unstable as useListContext } from '@fluentui/react-list';
 
 // @public
@@ -59,6 +58,7 @@ export { ListSlots }
 // @public (undocumented)
 export type ListState = ListState_2 & {
     root: {
+        'data-list'?: string;
         'data-navigation-mode'?: ListNavigationMode;
         'data-selectable'?: string;
     };
@@ -66,7 +66,8 @@ export type ListState = ListState_2 & {
 
 export { OnListSelectionChangeData }
 
-export { renderList }
+// @public
+export const renderList: (state: ListState, contextValues: ListContextValues) => JSXElement;
 
 // @public
 export const renderListItem: (state: ListItemState) => JSXElement;

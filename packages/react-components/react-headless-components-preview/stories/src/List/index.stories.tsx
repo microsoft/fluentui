@@ -6,6 +6,8 @@ import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
 import './list.module.css';
 
 export { Default } from './ListDefault.stories';
+export { LeadingContent } from './ListLeadingContent.stories';
+export { Selected } from './ListSelected.stories';
 export { SingleSelection } from './ListSingleSelection.stories';
 export { Multiselect } from './ListMultiselect.stories';
 export { SecondaryContentRight } from './ListSecondaryContentRight.stories';

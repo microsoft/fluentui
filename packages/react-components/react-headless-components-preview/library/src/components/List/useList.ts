@@ -1,9 +1,16 @@
 'use client';
 
-import type * as React from 'react';
-import { useListBase_unstable, useListContextValues_unstable } from '@fluentui/react-list';
+import * as React from 'react';
+import {
+  calculateListRole,
+  useListBase_unstable,
+  useListContextValues_unstable,
+  validateListItemElement,
+} from '@fluentui/react-list';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 
 import type { ListContextValues, ListProps, ListState } from './List.types';
+import { getListFocusableElements, useCompositeListNavigation } from './listNavigationContext';
 import { toDataAttributeValue } from '../../utils';
 
 export { useListContext_unstable as useListContext } from '@fluentui/react-list';
@@ -17,14 +24,41 @@ export const useList = (
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
 ): ListState => {
   const baseState = useListBase_unstable(props, ref);
+  const rootRef = React.useRef<HTMLDivElement | HTMLUListElement | HTMLOListElement>(null);
+  const mergedRef = useMergedRefs(baseState.root.ref, rootRef);
+  const onCompositeFocus = useCompositeListNavigation(baseState.navigationMode, rootRef);
+  const handleFocusCapture: React.FocusEventHandler<HTMLDivElement & HTMLUListElement & HTMLOListElement> =
+    useEventCallback(event => {
+      baseState.root.onFocusCapture?.(event);
+      onCompositeFocus(event);
+    });
+  const validateListItem = useEventCallback((element: HTMLElement) => {
+    if (baseState.navigationMode !== 'composite') {
+      baseState.validateListItem(element);
+      return;
+    }
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
+    validateListItemElement(element, {
+      listRenderedAs: props.as || 'div',
+      listRole: baseState.root.role || calculateListRole(baseState.navigationMode, !!baseState.selection),
+      hasSelection: !!baseState.selection,
+      hasFocusableChildren: getListFocusableElements(element).length > 0,
+    });
+  });
 
   const state: ListState = {
     ...baseState,
+    validateListItem,
     root: {
       ...baseState.root,
+      ref: mergedRef,
+      'data-list': '',
       'data-navigation-mode': baseState.navigationMode,
       'data-selectable': toDataAttributeValue(!!baseState.selection),
-      focusgroup: 'toolbar block',
+      focusgroup: baseState.navigationMode === 'composite' ? undefined : 'toolbar block',
+      ...(baseState.navigationMode === 'composite' && { onFocusCapture: handleFocusCapture }),
     },
   };
 

@@ -12,7 +12,7 @@ export const SingleSelection = (): React.ReactNode => (
     defaultSelectedItems={['Mona Kane']}
   >
     {['Alex Wilber', 'Mona Kane', 'Allan Munger', 'Robin Counts'].map(person => (
-      <ListItem className={styles.item} key={person} value={person} checkmark={{ className: styles.checkmark }}>
+      <ListItem className={styles.item} key={person} value={person} checkmark={null}>
         <PersonRegular aria-hidden className={styles.leadingIcon} />
         <span className={styles.title}>{person}</span>
       </ListItem>

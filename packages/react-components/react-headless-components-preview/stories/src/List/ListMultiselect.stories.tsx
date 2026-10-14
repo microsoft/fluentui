@@ -27,7 +27,7 @@ export const Multiselect = (): React.ReactNode => {
             key={item.value}
             value={item.value}
             disabledSelection={item.disabled}
-            checkmark={{ className: styles.checkmark }}
+            checkmark={null}
           >
             <span className={styles.label}>
               <span className={styles.title}>{item.title}</span>

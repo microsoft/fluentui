@@ -12,6 +12,10 @@ export type {
 export type ListState = ListBaseState & {
   root: {
     /**
+     * Identifies the list boundary for nested keyboard navigation.
+     */
+    'data-list'?: string;
+    /**
      * Data attribute reflecting the navigation mode. Value is `items` or `composite`, and the
      * attribute is absent when no navigation mode is set.
      */

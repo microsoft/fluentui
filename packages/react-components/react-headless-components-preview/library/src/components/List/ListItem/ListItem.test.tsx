@@ -139,6 +139,61 @@ describe('ListItem', () => {
     expect(onAction).toHaveBeenCalledTimes(1);
   });
 
+  it('does not expose disabled selection when the list is not selectable', () => {
+    const { getByRole } = render(
+      <List navigationMode="items">
+        <ListItem value="one" disabledSelection>
+          First item
+        </ListItem>
+      </List>,
+    );
+
+    expect(getByRole('listitem')).not.toHaveAttribute('data-disabled');
+    expect(getByRole('listitem')).not.toHaveAttribute('aria-disabled');
+  });
+
+  it('preserves cancellation of composite navigation through the consumer handler', () => {
+    const onKeyDown = jest.fn(event => event.preventDefault());
+    const { getByRole } = render(
+      <List navigationMode="composite">
+        <ListItem value="one" onKeyDown={onKeyDown}>
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+    const row = getByRole('row');
+    row.focus();
+    fireEvent.keyDown(row, { key: 'ArrowRight' });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(row).toHaveFocus();
+    expect(getByRole('button')).not.toHaveFocus();
+  });
+
+  it('preserves base selection and action handling in composite mode', () => {
+    const onAction = jest.fn();
+    const onSelectionChange = jest.fn();
+    const { getByRole } = render(
+      <List navigationMode="composite" selectionMode="multiselect" onSelectionChange={onSelectionChange}>
+        <ListItem value="one" onAction={onAction} checkmark={null}>
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+    const row = getByRole('row');
+    fireEvent.keyDown(row, { key: ' ' });
+    expect(onSelectionChange).toHaveBeenCalledTimes(1);
+    expect(onAction).not.toHaveBeenCalled();
+
+    fireEvent.keyDown(row, { key: 'Enter' });
+    expect(onAction).toHaveBeenCalledTimes(1);
+    expect(onSelectionChange).toHaveBeenCalledTimes(2);
+  });
+
   it('preserves the consumer checkmark ref and change handler without toggling twice', () => {
     const ref = React.createRef<HTMLInputElement>();
     const onChange = jest.fn();

@@ -6,4 +6,8 @@ When `selectionMode` is set, each item renders a native `input[type="checkbox"]`
 
 Provide an accessible name for the list with `aria-label` or `aria-labelledby` whenever the surrounding content does not already label it.
 
-Arrow-key navigation uses the web-platform `focusgroup` attribute rather than Tabster. In browsers without native support, load the focusgroup polyfill described in the browser support overview.
+Item navigation uses the web-platform `focusgroup` attribute rather than Tabster. In browsers without native support, load the focusgroup polyfill described in the browser support overview. Composite navigation uses headless row/control handlers with a roving tab stop, since the current focusgroup polyfill does not support grid navigation.
+
+With `navigationMode="composite"`, <kbd>Up</kbd> and <kbd>Down</kbd> move between rows. <kbd>Right</kbd> enters a row's controls, and <kbd>Left</kbd> moves between controls or returns to the row from the first control. <kbd>Escape</kbd> returns to the row. <kbd>Up</kbd> or <kbd>Down</kbd> from a secondary action moves to the preceding or following row. Horizontal directions are reversed in right-to-left layouts, and editable controls retain their native arrow-key behavior.
+
+For a selectable listbox, use `checkmark={null}` and style the selection through `data-selected` to avoid nesting interactive checkboxes inside options. In a composite grid, the native checkmark is wrapped in a grid cell; give it an accessible name through its slot props, for example `checkmark={{ 'aria-label': 'Select Alex Wilber' }}`.
