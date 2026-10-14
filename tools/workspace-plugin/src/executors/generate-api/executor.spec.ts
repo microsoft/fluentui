@@ -18,7 +18,7 @@ import { type TsConfig } from '../../types';
 import { type GenerateApiExecutorSchema } from './schema';
 import executor from './executor';
 import { isCI } from './lib/shared';
-import { getExportSubpathConfigs } from './lib/utils';
+import { getExportSubpathConfigs, resolveDeclarationBase } from './lib/utils';
 
 const fixturesRootDir = join(__dirname, '__fixtures__');
 
@@ -350,40 +350,28 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     }
   });
 
-  it('resolves declaration base correctly when path.resolve returns Windows-style backslashes', async () => {
-    const subDirs = ['alpha'];
-    const { context } = prepareExportFixture({ wildcardSubDirs: subDirs });
-
+  it('resolves declaration base correctly when path.resolve returns Windows-style backslashes', () => {
+    const { paths } = prepareExportFixture({ wildcardSubDirs: ['alpha'] });
     const nodePath = require('node:path');
-    const nativeResolve = nodePath.resolve.bind(nodePath);
-    const resolveSpy = jest
-      .spyOn(nodePath, 'resolve')
-      .mockImplementation((...args: Parameters<typeof nodePath.resolve>) => {
-        const posixPath = nativeResolve(...args);
-        const stack = new Error().stack || '';
-        if (stack.includes('utils.ts') || stack.includes('resolveDeclarationBase')) {
-          return posixPath.replace(/\//g, '\\');
-        }
-        return posixPath;
-      });
 
-    const capturedConfigs: ExtractorConfig[] = [];
-    jest.spyOn(Extractor, 'invoke').mockImplementation(cfg => {
-      capturedConfigs.push(cfg);
-      return { succeeded: true } as ExtractorResult;
-    });
+    const resolveSpy = jest.spyOn(nodePath, 'resolve').mockReturnValue('C:\\project\\dist\\dts\\index.d.ts');
+    const basenameSpy = jest.spyOn(nodePath, 'basename').mockImplementation(nodePath.win32.basename);
+    const dirnameSpy = jest.spyOn(nodePath, 'dirname').mockImplementation(nodePath.win32.dirname);
 
     try {
-      const output = await executor({ ...options, exportSubpaths: true }, context);
-
-      expect(capturedConfigs).toHaveLength(1 + subDirs.length);
-      expect(output.success).toBe(true);
+      const result = resolveDeclarationBase(
+        { config: join(paths.projRoot, 'config/api-extractor.json') } as NormalizedOptions,
+        { name: '@proj/proj' },
+      );
+      expect(result).toBe('C:\\project\\dist\\dts');
     } finally {
       resolveSpy.mockRestore();
+      basenameSpy.mockRestore();
+      dirnameSpy.mockRestore();
     }
   });
 
-  it('throws a descriptive error when primary mainEntryPointFilePath does not end with /index.d.ts', async () => {
+  it('throws a descriptive error when primary mainEntryPointFilePath does not end with index.d.ts', async () => {
     const { paths, context } = prepareExportFixture({ wildcardSubDirs: ['alpha'] });
 
     writeFileSync(
@@ -402,7 +390,7 @@ describe('GenerateApi Executor – export subpath resolution', () => {
       'Primary mainEntryPointFilePath',
     );
     await expect(executor({ ...options, exportSubpaths: true }, context)).rejects.toThrow(
-      'does not end with "/index.d.ts". Failed to resolve declaration base for export subpaths.',
+      'does not end with "index.d.ts". Failed to resolve declaration base for export subpaths.',
     );
   });
 

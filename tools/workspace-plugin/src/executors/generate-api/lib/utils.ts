@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { parseJson } from '@nx/devkit';
 import { type IConfigFile } from '@microsoft/api-extractor';
 
@@ -126,152 +126,150 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
   }
 
   return configs;
+}
 
-  /**
-   * Resolves the declaration base path from the primary api-extractor config's mainEntryPointFilePath.
-   * The primary config uses tokens (<projectFolder>, <projectRoot>, <unscopedPackageName>) which we
-   * resolve here so that programmatic configs for wildcard entries land in the same output tree.
-   *
-   * @returns The absolute path to the declaration base, or `null` if it cannot be resolved.
-   */
-  function resolveDeclarationBase(opts: NormalizedOptions, pkgJson: PackageJson): string | null {
-    const primaryRawConfig = parseJson<{ mainEntryPointFilePath?: string }>(readFileSync(opts.config, 'utf-8'));
-    const primaryMainEntryTemplate = primaryRawConfig?.mainEntryPointFilePath;
-    if (!primaryMainEntryTemplate) {
-      return null;
-    }
-
-    const unscopedPackageName = (pkgJson.name ?? '').replace(/^@[^/]+\//, '');
-    // <projectRoot> and <projectFolder> in api-extractor.json are NOT replaced before path.resolve —
-    // they act as literal path segments that the subsequent "../" chain traverses through.
-    // path.resolve(configDir, "<projectRoot>/../../../../../../...") naturally normalizes to the correct path.
-    const configDir = dirname(opts.config);
-    // Normalize to POSIX separators so the suffix check and slice work consistently across platforms (e.g. Windows).
-    const resolvedPrimaryEntry = resolve(
-      configDir,
-      primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
-    ).replace(/\\/g, '/');
-
-    const indexDtsSuffix = '/index.d.ts';
-    if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
-      throw new Error(
-        `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${indexDtsSuffix}". ` +
-          `Failed to resolve declaration base for export subpaths.`,
-      );
-    }
-
-    return resolvedPrimaryEntry.slice(0, -indexDtsSuffix.length);
+/**
+ * Resolves the declaration base path from the primary api-extractor config's mainEntryPointFilePath.
+ * The primary config uses tokens (<projectFolder>, <projectRoot>, <unscopedPackageName>) which we
+ * resolve here so that programmatic configs for wildcard entries land in the same output tree.
+ *
+ * @returns The absolute path to the declaration base, or `null` if it cannot be resolved.
+ */
+export function resolveDeclarationBase(opts: NormalizedOptions, pkgJson: PackageJson): string | null {
+  const primaryRawConfig = parseJson<{ mainEntryPointFilePath?: string }>(readFileSync(opts.config, 'utf-8'));
+  const primaryMainEntryTemplate = primaryRawConfig?.mainEntryPointFilePath;
+  if (!primaryMainEntryTemplate) {
+    return null;
   }
 
-  /**
-   * Parses a wildcard types pattern and derives the dist-relative prefix and the
-   * wildcard sub-path (the portion after the first path segment).
-   *
-   * Example: "./dist/items/STAR/index.d.ts"
-   *  → distRelativePrefix: "dist/items/"
-   *  → wildcardSubPath: "items/"
-   *
-   * @returns The path prefixes, or `null` if the pattern cannot be parsed.
-   */
-  function parseWildcardTypesPattern(typesPattern: string): {
-    distRelativePrefix: string;
-    wildcardSubPath: string;
-  } | null {
-    const starIdx = typesPattern.indexOf('*');
-    if (starIdx === -1) {
-      return null;
-    }
+  const unscopedPackageName = (pkgJson.name ?? '').replace(/^@[^/]+\//, '');
+  // <projectRoot> and <projectFolder> in api-extractor.json are NOT replaced before path.resolve —
+  // they act as literal path segments that the subsequent "../" chain traverses through.
+  // path.resolve(configDir, "<projectRoot>/../../../../../../...") naturally normalizes to the correct path.
+  const configDir = dirname(opts.config);
+  const resolvedPrimaryEntry = resolve(
+    configDir,
+    primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
+  );
 
-    const typesPrefix = typesPattern.slice(0, starIdx);
-    const distRelativePrefix = typesPrefix.replace(/^\.\//, '');
-
-    // Extract the sub-path by stripping the first path segment (the dist directory name).
-    // e.g. "dist/items/" → "items/"
-    const firstSlashIdx = distRelativePrefix.indexOf('/');
-    const wildcardSubPath = firstSlashIdx === -1 ? '' : distRelativePrefix.slice(firstSlashIdx + 1);
-
-    return { distRelativePrefix, wildcardSubPath };
+  if (basename(resolvedPrimaryEntry) !== 'index.d.ts') {
+    throw new Error(
+      `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "index.d.ts". ` +
+        `Failed to resolve declaration base for export subpaths.`,
+    );
   }
 
-  /**
-   * Parses a named (non-wildcard) types pattern and derives the dts rollup path and
-   * the declaration-relative path (the portion after the first path segment).
-   *
-   * Examples:
-   *   "./dist/Accordion.d.ts"  → dtsRollupRelativePath: "dist/Accordion.d.ts",  declarationRelativePath: "Accordion.d.ts"
-   *   "./dist/utils/index.d.ts" → dtsRollupRelativePath: "dist/utils/index.d.ts", declarationRelativePath: "utils/index.d.ts"
-   *
-   * @returns The path components, or `null` if the pattern cannot be parsed.
-   */
-  function parseNamedTypesPattern(typesPattern: string): {
-    distRelativePath: string;
-    declarationSubPath: string;
-  } | null {
-    if (!typesPattern.endsWith('.d.ts')) {
-      return null;
-    }
+  return dirname(resolvedPrimaryEntry);
+}
 
-    const distRelativePath = typesPattern.replace(/^\.\//, '');
-    const firstSlashIdx = distRelativePath.indexOf('/');
-    if (firstSlashIdx === -1) {
-      return null;
-    }
-
-    const declarationSubPath = distRelativePath.slice(firstSlashIdx + 1);
-    if (!declarationSubPath) {
-      return null;
-    }
-
-    return { distRelativePath, declarationSubPath };
+/**
+ * Parses a wildcard types pattern and derives the dist-relative prefix and the
+ * wildcard sub-path (the portion after the first path segment).
+ *
+ * Example: "./dist/items/STAR/index.d.ts"
+ *  → distRelativePrefix: "dist/items/"
+ *  → wildcardSubPath: "items/"
+ *
+ * @returns The path prefixes, or `null` if the pattern cannot be parsed.
+ */
+function parseWildcardTypesPattern(typesPattern: string): {
+  distRelativePrefix: string;
+  wildcardSubPath: string;
+} | null {
+  const starIdx = typesPattern.indexOf('*');
+  if (starIdx === -1) {
+    return null;
   }
 
-  /**
-   * Lists immediate sub-directories of the given path.
-   *
-   * @returns Array of directory names, or `null` if the path does not exist or cannot be read.
-   */
-  function listSubDirectories(dirPath: string): string[] | null {
-    if (!existsSync(dirPath)) {
-      verboseLog(`Export subpath source dir not found, skipping: ${dirPath}`, 'warn');
-      return null;
-    }
+  const typesPrefix = typesPattern.slice(0, starIdx);
+  const distRelativePrefix = typesPrefix.replace(/^\.\//, '');
 
-    try {
-      return readdirSync(dirPath, { withFileTypes: true })
-        .filter(e => e.isDirectory())
-        .map(e => e.name);
-    } catch {
-      return null;
-    }
+  // Extract the sub-path by stripping the first path segment (the dist directory name).
+  // e.g. "dist/items/" → "items/"
+  const firstSlashIdx = distRelativePrefix.indexOf('/');
+  const wildcardSubPath = firstSlashIdx === -1 ? '' : distRelativePrefix.slice(firstSlashIdx + 1);
+
+  return { distRelativePrefix, wildcardSubPath };
+}
+
+/**
+ * Parses a named (non-wildcard) types pattern and derives the dts rollup path and
+ * the declaration-relative path (the portion after the first path segment).
+ *
+ * Examples:
+ *   "./dist/Accordion.d.ts"  → dtsRollupRelativePath: "dist/Accordion.d.ts",  declarationRelativePath: "Accordion.d.ts"
+ *   "./dist/utils/index.d.ts" → dtsRollupRelativePath: "dist/utils/index.d.ts", declarationRelativePath: "utils/index.d.ts"
+ *
+ * @returns The path components, or `null` if the pattern cannot be parsed.
+ */
+function parseNamedTypesPattern(typesPattern: string): {
+  distRelativePath: string;
+  declarationSubPath: string;
+} | null {
+  if (!typesPattern.endsWith('.d.ts')) {
+    return null;
   }
 
-  /**
-   * Creates an api-extractor IConfigFile for a single export sub-path entry.
-   */
-  function createSubpathEntryConfig(params: {
-    projectAbsolutePath: string;
-    mainEntryPointFilePath: string;
-    dtsRollupPath: string;
-    reportFileName: string;
-    apiReportEnabled: boolean;
-  }): IConfigFile {
-    const { mainEntryPointFilePath, dtsRollupPath } = params;
-
-    return {
-      projectFolder: params.projectAbsolutePath,
-      mainEntryPointFilePath,
-      apiReport: {
-        enabled: params.apiReportEnabled,
-        reportFileName: params.reportFileName,
-        reportFolder: '<projectFolder>/etc/',
-        reportTempFolder: '<projectFolder>/temp/',
-      },
-      docModel: { enabled: false },
-      dtsRollup: {
-        enabled: true,
-        untrimmedFilePath: dtsRollupPath,
-      },
-      tsdocMetadata: { enabled: false },
-    };
+  const distRelativePath = typesPattern.replace(/^\.\//, '');
+  const firstSlashIdx = distRelativePath.indexOf('/');
+  if (firstSlashIdx === -1) {
+    return null;
   }
+
+  const declarationSubPath = distRelativePath.slice(firstSlashIdx + 1);
+  if (!declarationSubPath) {
+    return null;
+  }
+
+  return { distRelativePath, declarationSubPath };
+}
+
+/**
+ * Lists immediate sub-directories of the given path.
+ *
+ * @returns Array of directory names, or `null` if the path does not exist or cannot be read.
+ */
+function listSubDirectories(dirPath: string): string[] | null {
+  if (!existsSync(dirPath)) {
+    verboseLog(`Export subpath source dir not found, skipping: ${dirPath}`, 'warn');
+    return null;
+  }
+
+  try {
+    return readdirSync(dirPath, { withFileTypes: true })
+      .filter(e => e.isDirectory())
+      .map(e => e.name);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Creates an api-extractor IConfigFile for a single export sub-path entry.
+ */
+function createSubpathEntryConfig(params: {
+  projectAbsolutePath: string;
+  mainEntryPointFilePath: string;
+  dtsRollupPath: string;
+  reportFileName: string;
+  apiReportEnabled: boolean;
+}): IConfigFile {
+  const { mainEntryPointFilePath, dtsRollupPath } = params;
+
+  return {
+    projectFolder: params.projectAbsolutePath,
+    mainEntryPointFilePath,
+    apiReport: {
+      enabled: params.apiReportEnabled,
+      reportFileName: params.reportFileName,
+      reportFolder: '<projectFolder>/etc/',
+      reportTempFolder: '<projectFolder>/temp/',
+    },
+    docModel: { enabled: false },
+    dtsRollup: {
+      enabled: true,
+      untrimmedFilePath: dtsRollupPath,
+    },
+    tsdocMetadata: { enabled: false },
+  };
 }
