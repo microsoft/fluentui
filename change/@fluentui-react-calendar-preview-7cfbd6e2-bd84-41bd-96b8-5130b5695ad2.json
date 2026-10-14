@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve Calendar arrows in nested focusgroups",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

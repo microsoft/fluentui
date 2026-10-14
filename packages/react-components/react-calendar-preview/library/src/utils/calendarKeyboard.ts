@@ -32,7 +32,7 @@ export const isCalendarGridCellEvent = (event: React.KeyboardEvent<HTMLElement>)
     isHTMLElement(event.target) &&
     !isCalendarKeyboardEditable(event.target) &&
     event.target.closest('[role="gridcell"]') === event.currentTarget &&
-    event.target.closest('[role="grid"]') === grid
+    event.target.closest('[role="grid"], [focusgroup]') === grid
   );
 };
 

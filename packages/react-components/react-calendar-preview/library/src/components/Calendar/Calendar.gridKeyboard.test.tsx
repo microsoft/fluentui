@@ -192,6 +192,22 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
   };
 }
 
+function appendFocusgroup(cell: HTMLElement, focusgroup: string) {
+  const targetDocument = cell.ownerDocument;
+  const group = targetDocument.createElement('span');
+  group.setAttribute('role', 'toolbar');
+  group.setAttribute('focusgroup', focusgroup);
+  const first = targetDocument.createElement('span');
+  first.tabIndex = 0;
+  first.textContent = 'First';
+  const second = targetDocument.createElement('span');
+  second.tabIndex = 0;
+  second.textContent = 'Second';
+  group.append(first, second);
+  (cell.querySelector('button') ?? cell).appendChild(group);
+  return { group, first, second };
+}
+
 describe.each([
   { name: 'base month', picker: 'month', base: true },
   { name: 'base year', picker: 'year', base: true },
@@ -450,6 +466,110 @@ describe.each([
     expect(nestedCell).toHaveFocus();
     expect(onCellKeyDown).toHaveBeenCalledTimes(1);
     expect(phases).toEqual([3]);
+  });
+
+  it.each(['toolbar inline', 'none'])(
+    'leaves descendant focusgroup="%s" arrows in bubbling without Calendar navigation',
+    focusgroup => {
+      const phases: number[] = [];
+      const currentTargets: HTMLElement[] = [];
+      const nativeDefaults: boolean[] = [];
+      const onCellKeyDownCapture = jest.fn();
+      const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
+        phases.push(event.eventPhase);
+        currentTargets.push(event.currentTarget);
+      });
+      const { cells, onSelect, onNavigate } = renderPicker(picker, base, {
+        onCellKeyDown,
+        onCellKeyDownCapture,
+      });
+      const { group, first } = appendFocusgroup(cells[0], focusgroup);
+      const nativeOwner = jest.fn((event: KeyboardEvent) => nativeDefaults.push(event.defaultPrevented));
+      group.addEventListener('keydown', nativeOwner);
+      const keys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'];
+
+      try {
+        act(() => first.focus());
+        for (const key of keys) {
+          expect(fireEvent.keyDown(first, { key })).toBe(true);
+          expect(first).toHaveFocus();
+        }
+
+        expect(onSelect).not.toHaveBeenCalled();
+        expect(onNavigate).not.toHaveBeenCalled();
+        expect(onCellKeyDownCapture).toHaveBeenCalledTimes(keys.length);
+        expect(onCellKeyDown).toHaveBeenCalledTimes(keys.length);
+        expect(nativeOwner).toHaveBeenCalledTimes(keys.length);
+        expect(nativeDefaults).toEqual(keys.map(() => false));
+        expect(phases).toEqual(keys.map(() => 3));
+        expect(currentTargets).toEqual(keys.map(() => cells[0]));
+      } finally {
+        group.removeEventListener('keydown', nativeOwner);
+      }
+    },
+  );
+
+  it('lets a nested native focusgroup move focus before the bubbling consumer', () => {
+    const order: string[] = [];
+    const currentTargets: HTMLElement[] = [];
+    const phases: number[] = [];
+    const onCellKeyDownCapture = jest.fn(() => order.push('capture'));
+    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
+      order.push('consumer');
+      currentTargets.push(event.currentTarget);
+      phases.push(event.eventPhase);
+    });
+    const { cells, onSelect, onNavigate } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
+    const { group, first, second } = appendFocusgroup(cells[0], 'toolbar inline');
+    const nativeOwner = jest.fn((event: KeyboardEvent) => {
+      order.push('native');
+      if (!event.defaultPrevented) {
+        second.focus();
+        event.preventDefault();
+      }
+    });
+    group.addEventListener('keydown', nativeOwner);
+
+    try {
+      act(() => first.focus());
+      expect(fireEvent.keyDown(first, { key: 'ArrowRight' })).toBe(false);
+
+      expect(second).toHaveFocus();
+      expect(onSelect).not.toHaveBeenCalled();
+      expect(onNavigate).not.toHaveBeenCalled();
+      expect(onCellKeyDownCapture).toHaveBeenCalledTimes(1);
+      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+      expect(nativeOwner).toHaveBeenCalledTimes(1);
+      expect(order).toEqual(['capture', 'native', 'consumer']);
+      expect(currentTargets).toEqual([cells[0]]);
+      expect(phases).toEqual([3]);
+    } finally {
+      group.removeEventListener('keydown', nativeOwner);
+    }
+  });
+
+  it.each([
+    { location: 'grid', focusgroup: 'toolbar inline' },
+    { location: 'grid', focusgroup: 'none' },
+    { location: 'ancestor', focusgroup: 'toolbar inline' },
+    { location: 'ancestor', focusgroup: 'none' },
+  ])('keeps Calendar arrows in capture with focusgroup="$focusgroup" on the $location', ({ location, focusgroup }) => {
+    const phases: number[] = [];
+    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => phases.push(event.eventPhase));
+    const { cells, container, getByRole, onSelect, onNavigate } = renderPicker(picker, base, {
+      onCellKeyDown,
+    });
+    const owner = location === 'grid' ? getByRole('grid') : container;
+    owner.setAttribute('focusgroup', focusgroup);
+    act(() => cells[0].focus());
+
+    expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+
+    expect(cells[1]).toHaveFocus();
+    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+    expect(phases).toEqual([1]);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
   });
 
   it.each(['ArrowRight', 'ArrowDown'])('consumer cancellation precedes the native grid owner for %s', key => {
