@@ -6,11 +6,13 @@
 
 import type { CurveFactory } from 'd3-shape';
 import type { Font } from '@fluentui/chart-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { Margin } from '@fluentui/chart-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Ref } from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { SankeyGraph } from 'd3-sankey';
 import type { SankeyLayout } from 'd3-sankey';
 import type { SankeyLink } from 'd3-sankey';
@@ -1021,6 +1023,8 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
     isCalloutForStack?: boolean;
     maxBarWidth?: number;
     mode?: 'default' | 'plotly';
+    onRenderCalloutPerDataPoint?: RenderFunction<GVBarChartSeriesPoint>;
+    onRenderCalloutPerStack?: RenderFunction<GroupedVerticalBarChartData>;
     roundCorners?: boolean;
     styles?: GroupedVerticalBarChartStyles;
     useSingleColor?: boolean;
@@ -1101,6 +1105,7 @@ export interface HeatMapChartProps extends CartesianChartProps {
     culture?: string;
     data: HeatMapChartData[];
     domainValuesForColorScale: number[];
+    onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint>;
     rangeValuesForColorScale: string[];
     sortOrder?: 'none' | 'alphabetical';
     styles?: HeatMapChartStyles;
@@ -1556,6 +1561,7 @@ export interface PolarChartProps {
     // (undocumented)
     legendProps?: Partial<LegendsProps>;
     margins?: Margins;
+    onRenderCalloutPerDataPoint?: RenderFunction<PolarDataPoint>;
     radialAxis?: PolarAxisProps;
     shape?: 'circle' | 'polygon';
     styles?: PolarChartStyles;
@@ -1645,6 +1651,9 @@ export interface ResolvedAnnotationPosition {
     anchor: AnnotationPoint;
     point: AnnotationPoint;
 }
+
+// @public
+export function resolveVegaLiteResources(spec: VegaLiteSpec, options: VegaLiteResourceOptions): Promise<VegaLiteSpec>;
 
 // @public
 export interface ResponsiveChildProps {
@@ -1854,15 +1863,125 @@ export interface SparklineStyles {
 export const Textbox: React_2.FunctionComponent<TextboxProps>;
 
 // @public
-export const VegaDeclarativeChart: React_2.ForwardRefExoticComponent<VegaDeclarativeChartProps & React_2.RefAttributes<HTMLDivElement>>;
+export function validateVegaLiteSpec(spec: unknown, options?: VegaLiteDiagnosticOptions): VegaLiteDiagnostic[];
+
+// @public
+export interface VegaDataParseOptions {
+    maxRows?: number;
+    maxTextLength?: number;
+    maxWork?: number;
+}
+
+// @public
+export type VegaDataResolver = (request: {
+    url: string;
+    signal: AbortSignal;
+    format?: VegaLiteData['format'];
+}) => Promise<unknown>;
+
+// @public
+export const VegaDeclarativeChart: ForwardRefComponent<VegaDeclarativeChartProps> & React_2.ForwardRefExoticComponent<VegaDeclarativeChartProps & RefAttributes<HTMLDivElement>>;
 
 // @public
 export interface VegaDeclarativeChartProps {
+    allowedDataOrigins?: readonly string[];
     chartSchema: VegaSchema;
     className?: string;
+    dataBaseUrl?: string;
+    dataResolver?: VegaDataResolver;
+    onDiagnostics?: (diagnostics: VegaLiteDiagnostic[]) => void;
     onSchemaChange?: (newSchema: VegaSchema) => void;
+    semanticMode?: VegaLiteSemanticMode;
     style?: React_2.CSSProperties;
 }
+
+// @public
+export type VegaLiteAggregate = VegaLiteAggregateOp | {
+    exponential: number;
+} | {
+    exponentialb: number;
+} | {
+    argmin: string;
+} | {
+    argmax: string;
+};
+
+// @public
+export type VegaLiteAggregateOp = 'count' | 'sum' | 'mean' | 'average' | 'median' | 'min' | 'max' | 'valid' | 'missing' | 'distinct' | 'values' | 'product' | 'q1' | 'q3' | 'variance' | 'variancep' | 'stdev' | 'stdevp' | 'stderr' | 'argmin' | 'argmax';
+
+// @public
+export type VegaLiteCompositionSpec = Omit<VegaLiteSpec, 'layer' | 'spec'> & {
+    layer?: Array<VegaLiteUnitSpec | VegaLiteCompositionSpec>;
+    spec?: VegaLiteSpec | VegaLiteRepeatSpec | VegaLiteCompositionSpec;
+};
+
+// @public (undocumented)
+export type VegaLiteDiagnostic = {
+    code: string;
+    path: string;
+    severity: 'warning' | 'error';
+    message: string;
+    remedy: string;
+};
+
+// @public (undocumented)
+export type VegaLiteDiagnosticOptions = {
+    mode?: VegaLiteSemanticMode;
+    allowExternalData?: boolean;
+};
+
+// @public
+export interface VegaLiteFacetFieldDef {
+    // (undocumented)
+    field: string;
+    // (undocumented)
+    header?: {
+        title?: string | null;
+        labels?: boolean;
+    };
+    // (undocumented)
+    sort?: VegaLiteSort;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    type?: VegaLiteType;
+}
+
+// @public
+export type VegaLiteRepeatEncoding = {
+    [Channel in keyof VegaLiteEncoding]?: Channel extends 'tooltip' ? VegaLiteEncoding[Channel] : RepeatChannel<NonNullable<VegaLiteEncoding[Channel]>>;
+};
+
+// @public
+export type VegaLiteRepeatFieldDef = {
+    repeat: 'row' | 'column' | 'repeat';
+};
+
+// @public
+export type VegaLiteRepeatSpec = Omit<VegaLiteSpec, 'encoding' | 'layer' | 'spec'> & {
+    encoding?: VegaLiteRepeatEncoding;
+    layer?: Array<VegaLiteUnitSpec | VegaLiteRepeatSpec>;
+    spec?: VegaLiteSpec | VegaLiteRepeatSpec;
+};
+
+// @public
+export interface VegaLiteResourceFormat {
+    parse?: Record<string, string>;
+    property?: string;
+    // (undocumented)
+    type?: 'json' | 'csv' | 'tsv';
+}
+
+// @public
+export interface VegaLiteResourceOptions extends VegaDataParseOptions {
+    allowedOrigins?: readonly string[];
+    baseUrl?: string;
+    resolveData: VegaDataResolver;
+    signal: AbortSignal;
+}
+
+// @public
+export type VegaLiteSemanticMode = 'legacy' | 'strict';
 
 // @public
 export interface VegaLiteSpec {
@@ -1872,8 +1991,12 @@ export interface VegaLiteSpec {
         contains?: string;
     };
     background?: string;
+    // (undocumented)
+    columns?: number;
+    concat?: VegaLiteSpec[];
     config?: Record<string, unknown>;
     data?: VegaLiteData;
+    datasets?: Record<string, Array<Record<string, unknown>>>;
     description?: string;
     encoding?: VegaLiteEncoding;
     facet?: Record<string, unknown>;
@@ -1887,7 +2010,8 @@ export interface VegaLiteSpec {
         left?: number;
         right?: number;
     };
-    repeat?: Record<string, unknown>;
+    params?: Record<string, unknown>[];
+    repeat?: string[] | Record<string, unknown>;
     resolve?: {
         scale?: {
             x?: 'shared' | 'independent';
@@ -1909,11 +2033,23 @@ export interface VegaLiteSpec {
         };
     };
     selection?: Record<string, unknown>;
+    spec?: VegaLiteSpec | VegaLiteRepeatSpec;
     title?: string | VegaLiteTitleParams;
     transform?: Array<Record<string, unknown>>;
     vconcat?: VegaLiteSpec[];
     width?: number | 'container';
 }
+
+// @public
+export type VegaLiteTooltipField = Omit<VegaLitePositionEncoding, 'value' | 'datum'> & {
+    format?: string;
+    formatType?: 'number' | 'time';
+    value?: unknown;
+    datum?: unknown;
+};
+
+// @public
+export type VegaLiteWindowOp = VegaLiteAggregateOp | 'row_number' | 'rank' | 'dense_rank' | 'percent_rank' | 'cume_dist' | 'ntile' | 'lag' | 'lead' | 'first_value' | 'last_value' | 'nth_value';
 
 // @public
 export interface VegaSchema {

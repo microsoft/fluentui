@@ -1,7 +1,7 @@
 import { screen, fireEvent, render, act } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import type { GroupedVerticalBarChartData } from '../../index';
+import type { GroupedVerticalBarChartData, GVBarChartSeriesPoint, GroupedVerticalBarChartProps } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
 
@@ -763,5 +763,133 @@ describe('Render empty chart aria label div when chart is empty', () => {
     const wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
+  });
+});
+
+// Keep new popover interactions after existing snapshots: Tabster initializes shared document state on focus.
+describe('GroupedVerticalBarChart custom JSX callout hooks', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each(['hover', 'focus'])('receives the original point on %s and updates the custom content', event => {
+    const onRenderCalloutPerDataPoint = jest.fn((point?: GVBarChartSeriesPoint) => (
+      <div data-testid="custom-point">{point?.data}</div>
+    ));
+    const { container, rerender } = render(
+      <GroupedVerticalBarChart data={chartPoints} onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint} />,
+    );
+    expect(onRenderCalloutPerDataPoint).not.toHaveBeenCalled();
+    const bars = container.querySelectorAll('rect[role="option"]');
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(bars[0]);
+    expect(onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]).toBe(chartPoints[0].series[0]);
+    expect(screen.getByTestId('custom-point')).toHaveTextContent('33000');
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent(/^33000$/);
+    show(bars[1]);
+    expect(onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]).toBe(chartPoints[0].series[1]);
+    expect(screen.getByTestId('custom-point')).toHaveTextContent('44000');
+
+    const replacement = jest.fn((point?: GVBarChartSeriesPoint) => <div>replacement {point?.data}</div>);
+    rerender(<GroupedVerticalBarChart data={chartPoints} onRenderCalloutPerDataPoint={replacement} />);
+    expect(replacement.mock.calls.slice(-1)[0][0]).toBe(chartPoints[0].series[1]);
+    expect(screen.getByText('replacement 44000')).toBeInTheDocument();
+    fireEvent.mouseLeave(container.querySelector('svg')!);
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+  });
+
+  it.each([false, true])('selects the callback matching isCalloutForStack=%s', isCalloutForStack => {
+    const pointRender = jest.fn((point?: GVBarChartSeriesPoint) => <div>point {point?.data}</div>);
+    const stackRender = jest.fn((group?: GroupedVerticalBarChartData) => <div>stack {group?.name}</div>);
+    const { container } = render(
+      <GroupedVerticalBarChart
+        data={chartPoints}
+        isCalloutForStack={isCalloutForStack}
+        onRenderCalloutPerDataPoint={pointRender}
+        onRenderCalloutPerStack={stackRender}
+      />,
+    );
+    fireEvent.focus(container.querySelector('rect[role="option"]')!);
+    if (isCalloutForStack) {
+      expect(stackRender.mock.calls.slice(-1)[0][0]).toBe(chartPoints[0]);
+      expect(pointRender).not.toHaveBeenCalled();
+      expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent(`stack ${chartPoints[0].name}`);
+    } else {
+      expect(pointRender.mock.calls.slice(-1)[0][0]).toBe(chartPoints[0].series[0]);
+      expect(stackRender).not.toHaveBeenCalled();
+    }
+  });
+
+  it.each([false, true])(
+    'does not fall back to default content when the selected renderer returns null (%s)',
+    stack => {
+      const renderNull = jest.fn(() => null);
+      const { container } = render(
+        <GroupedVerticalBarChart
+          data={chartPoints}
+          isCalloutForStack={stack}
+          onRenderCalloutPerDataPoint={renderNull}
+          onRenderCalloutPerStack={renderNull}
+        />,
+      );
+      fireEvent.mouseOver(container.querySelector('rect[role="option"]')!);
+      expect(renderNull).toHaveBeenCalled();
+      expect(container.querySelector('.fui-PopoverSurface')).toBeEmptyDOMElement();
+    },
+  );
+
+  it('keeps the native default and existing customCallout alias when no matching hook is supplied', () => {
+    const props: GroupedVerticalBarChartProps = { data: chartPoints };
+    const { container, rerender } = render(<GroupedVerticalBarChart {...props} />);
+    fireEvent.focus(container.querySelector('rect[role="option"]')!);
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('33%');
+    rerender(
+      <GroupedVerticalBarChart
+        {...props}
+        calloutProps={{ customCallout: { customizedCallout: <div>legacy custom content</div> } }}
+      />,
+    );
+    expect(screen.getByText('legacy custom content')).toBeInTheDocument();
+  });
+
+  it('passes converted dataV2 points without losing source metadata', () => {
+    const point = { x: 'group', y: 12, sourceRow: { id: 'native row' } };
+    const onRenderCalloutPerDataPoint = jest.fn((data?: GVBarChartSeriesPoint) => <div>custom {data?.data}</div>);
+    const { container } = render(
+      <GroupedVerticalBarChart
+        dataV2={[{ type: 'bar', legend: 'Bar', data: [point] }]}
+        onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint}
+      />,
+    );
+    fireEvent.focus(container.querySelector('rect[role="option"]')!);
+    expect(onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]).toMatchObject({
+      ...point,
+      key: 'Bar',
+      legend: 'Bar',
+      data: 12,
+    });
+  });
+
+  it('passes a typed mixed-series group and converted line point on focus', () => {
+    const barPoint = { x: 'group', y: 12 };
+    const linePoint = { x: 'group', y: 18, sourceRow: { id: 'line row' } };
+    const dataV2: GroupedVerticalBarChartProps['dataV2'] = [
+      { type: 'bar', legend: 'Bar', data: [barPoint] },
+      { type: 'line', legend: 'Line', data: [linePoint] },
+    ];
+    const stackRender = jest.fn((data?: GroupedVerticalBarChartData) => <div>{data?.series.length} points</div>);
+    const pointRender = jest.fn((data?: GVBarChartSeriesPoint) => <div>point {data?.data}</div>);
+    const { container, rerender } = render(
+      <GroupedVerticalBarChart dataV2={dataV2} isCalloutForStack onRenderCalloutPerStack={stackRender} />,
+    );
+    fireEvent.focus(container.querySelector('circle[role="option"]')!);
+    expect(stackRender.mock.calls.slice(-1)[0][0]).toMatchObject({
+      name: 'group',
+      series: [
+        { legend: 'Bar', data: 12 },
+        { legend: 'Line', data: 18, sourceRow: linePoint.sourceRow },
+      ],
+    });
+    rerender(<GroupedVerticalBarChart dataV2={dataV2} onRenderCalloutPerDataPoint={pointRender} />);
+    expect(pointRender.mock.calls.slice(-1)[0][0]).toMatchObject({ ...linePoint, legend: 'Line', data: 18 });
   });
 });

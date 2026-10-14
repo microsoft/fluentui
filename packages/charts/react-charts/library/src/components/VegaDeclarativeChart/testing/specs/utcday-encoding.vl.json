@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Sunday/Monday cyclic UTC day bins use the 2012 reference year before aggregation.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "when": "2024-01-07T12:00:00Z", "amount": 2 },
+      { "when": "2024-01-08T12:00:00Z", "amount": 3 },
+      { "when": "2024-01-14T12:00:00Z", "amount": 4 }
+    ]
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "when",
+      "type": "temporal",
+      "timeUnit": "utcday",
+      "scale": { "type": "utc" },
+      "axis": { "format": "%A" }
+    },
+    "y": { "field": "amount", "type": "quantitative", "aggregate": "sum" },
+    "tooltip": [
+      { "field": "when", "type": "temporal", "timeUnit": "utcday", "format": "%A", "title": "Day" },
+      { "field": "amount", "type": "quantitative", "aggregate": "sum", "title": "Total" }
+    ]
+  }
+}

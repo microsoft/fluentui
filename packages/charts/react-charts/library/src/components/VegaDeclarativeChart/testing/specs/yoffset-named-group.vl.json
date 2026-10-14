@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Horizontal groups use yOffset with its own named ordinal domain and both value signs.",
+  "width": 272,
+  "height": 172,
+  "data": {
+    "values": [
+      { "category": "A", "slot": "left", "amount": 4, "tone": "Warm" },
+      { "category": "A", "slot": "right", "amount": 8, "tone": "Warm" },
+      { "category": "B", "slot": "left", "amount": -4, "tone": "Cool" },
+      { "category": "B", "slot": "right", "amount": 2, "tone": "Cool" }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "scale": { "domain": ["A", "B"], "paddingInner": 0, "paddingOuter": 0 }
+    },
+    "yOffset": {
+      "field": "slot",
+      "type": "nominal",
+      "scale": { "domain": ["left", "right"], "paddingInner": 0, "paddingOuter": 0 }
+    },
+    "x": { "field": "amount", "type": "quantitative", "scale": { "domain": [-10, 10] } },
+    "color": { "field": "tone", "type": "nominal", "scale": { "domain": ["Cool", "Warm"] } }
+  }
+}

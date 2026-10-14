@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import type { HeatMapChartProps } from './index';
+import type { HeatMapChartDataPoint } from '../../types/DataPoint';
 import { HeatMapChart } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
@@ -652,5 +653,75 @@ describe('Render empty chart aria label div when chart is empty', () => {
     );
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
+  });
+});
+
+// Run new popover interactions after the existing snapshots to avoid changing shared Tabster document state.
+describe('HeatMapChart custom JSX callout hooks', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const point: HeatMapChartDataPoint = {
+    x: new Date('2020-03-01'),
+    y: 'row',
+    value: 50,
+    rectText: 'native value',
+    ratio: [50, 100],
+    descriptionMessage: 'native description',
+  };
+  const otherPoint: HeatMapChartDataPoint = { ...point, x: new Date('2020-03-02'), value: 75 };
+  const props: HeatMapChartProps = {
+    data: [{ legend: 'Series', value: 100, data: [point, otherPoint] }],
+    domainValuesForColorScale: [0, 100],
+    rangeValuesForColorScale: [],
+    yAxisStringFormatter: value => `formatted ${value}`,
+  };
+
+  it.each(['hover', 'focus'])('receives unformatted original point data on %s', event => {
+    const onRenderCalloutPerDataPoint = jest.fn((data?: HeatMapChartDataPoint) => (
+      <div data-testid="custom-point">custom {data?.value}</div>
+    ));
+    const { container, rerender } = render(
+      <HeatMapChart {...props} onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint} />,
+    );
+    expect(onRenderCalloutPerDataPoint).not.toHaveBeenCalled();
+    const cells = container.querySelectorAll('g[role="option"]');
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(cells[0]);
+    expect(onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]).toBe(point);
+    expect(point.x).toBeInstanceOf(Date);
+    expect(point.y).toBe('row');
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent(/^custom 50$/);
+    show(cells[1]);
+    expect(onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]).toBe(otherPoint);
+    expect(screen.getByTestId('custom-point')).toHaveTextContent('custom 75');
+
+    const replacement = jest.fn((data?: HeatMapChartDataPoint) => <div>replacement {data?.value}</div>);
+    rerender(<HeatMapChart {...props} onRenderCalloutPerDataPoint={replacement} />);
+    expect(replacement.mock.calls.slice(-1)[0][0]).toBe(otherPoint);
+    expect(screen.getByText('replacement 75')).toBeInTheDocument();
+    fireEvent.blur(container.querySelector('g[role="option"]')!);
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+  });
+
+  it('does not leak native ratio or description when the renderer returns null', () => {
+    const renderNull = jest.fn(() => null);
+    const { container } = render(<HeatMapChart {...props} onRenderCalloutPerDataPoint={renderNull} />);
+    fireEvent.focus(container.querySelector('g[role="option"]')!);
+    expect(renderNull).toHaveBeenCalledWith(point);
+    expect(container.querySelector('.fui-PopoverSurface')).toBeEmptyDOMElement();
+  });
+
+  it('preserves native default content and the customCallout alias without the new hook', () => {
+    const { container, rerender } = render(<HeatMapChart {...props} />);
+    fireEvent.focus(container.querySelector('g[role="option"]')!);
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('native description');
+    rerender(
+      <HeatMapChart
+        {...props}
+        calloutProps={{ customCallout: { customizedCallout: <div>legacy custom content</div> } }}
+      />,
+    );
+    expect(screen.getByText('legacy custom content')).toBeInTheDocument();
   });
 });

@@ -3,9 +3,11 @@ import type {
   CartesianChartStyleProps,
   CartesianChartStyles,
   GroupedVerticalBarChartData,
+  GVBarChartSeriesPoint,
   BarSeries,
   LineSeries,
 } from '../../index';
+import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Vertical Bar Chart properties
@@ -57,6 +59,20 @@ export interface GroupedVerticalBarChartProps extends CartesianChartProps {
    * @default false
    */
   isCalloutForStack?: boolean;
+
+  /**
+   * Renders custom JSX for the active point when `isCalloutForStack` is false.
+   * Receives the original point for `data`, or a converted point for `dataV2` and line series.
+   * Returning null leaves the callout blank. No defaultRender function is supplied.
+   */
+  onRenderCalloutPerDataPoint?: RenderFunction<GVBarChartSeriesPoint>;
+
+  /**
+   * Renders custom JSX for the active group when `isCalloutForStack` is true.
+   * Receives the original group for `data`, or a converted group including line points for mixed series.
+   * Returning null leaves the callout blank. No defaultRender function is supplied.
+   */
+  onRenderCalloutPerStack?: RenderFunction<GroupedVerticalBarChartData>;
 
   /**
    * Prop to hide the bar labels

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Tooltip array predicates bind to displayed fields without filtering plot rows or exposing private data.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      {
+        "id": 1,
+        "plotValue": 4,
+        "note": "zero",
+        "value": 0,
+        "forecast": "not numeric",
+        "secret": "PRIVATE_CORPUS_VALUE"
+      },
+      { "id": 2, "plotValue": 6, "note": "missing", "value": null, "forecast": null, "secret": "PRIVATE_CORPUS_VALUE" },
+      { "id": 3, "plotValue": 8, "note": "positive", "value": 5, "forecast": 7, "secret": "PRIVATE_CORPUS_VALUE" }
+    ]
+  },
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "id", "type": "quantitative", "tooltip": false },
+    "y": { "field": "plotValue", "type": "quantitative", "tooltip": false },
+    "tooltip": [
+      { "field": "note", "title": "Note" },
+      { "field": "value", "type": "quantitative", "filter": { "not": { "equal": 0 } } },
+      { "field": "forecast", "filter": { "valid": true } }
+    ]
+  }
+}
