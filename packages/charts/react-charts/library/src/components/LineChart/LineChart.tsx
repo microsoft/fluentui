@@ -229,7 +229,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
 
       focusPointRefs.current.get(`${focusTarget.lineIndex}-${focusTarget.pointIndex}`)?.focus();
-    }, [cartesianChartRef, props.data, props.focusOnReset]);
+    }, [props.data, props.focusOnReset]);
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,

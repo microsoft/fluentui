@@ -128,7 +128,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     }
 
     focusBarRefs.current.get(barIndex)?.focus();
-  }, [cartesianChartRef, props.colors, props.data, props.focusOnReset]);
+  }, [props.colors, props.data, props.focusOnReset]);
 
   React.useEffect(() => {
     if (prevPropsRef.current) {
