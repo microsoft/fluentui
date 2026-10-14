@@ -33,6 +33,7 @@ describe('AlphaSlider', () => {
           style="--fui-AlphaSlider--direction: 90deg; --fui-AlphaSlider--progress: 100%; --fui-AlphaSlider__thumb--color: hsla(0, 100%, 50%, 1); --fui-AlphaSlider__rail--color: hsl(0, 100%, 50%);"
         >
           <input
+            aria-orientation="horizontal"
             class="fui-ColorSlider__input fui-AlphaSlider__input"
             id="slider-_r_8_"
             type="range"
