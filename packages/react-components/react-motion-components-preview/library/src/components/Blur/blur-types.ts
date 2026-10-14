@@ -2,9 +2,12 @@ import type { BasePresenceParams, AnimateOpacity } from '../../types';
 
 export type BlurParams = BasePresenceParams &
   AnimateOpacity & {
-    /** Blur radius for the out state (exited). Defaults to '10px'. */
-    outRadius?: string;
+    /** Blur radius before entry. Used by Blur and Blur.In. Defaults to '10px'. */
+    fromRadius?: string;
 
-    /** Blur radius for the in state (entered). Defaults to '0px'. */
-    inRadius?: string;
+    /** Blur radius while visible. Used by Blur, Blur.In, and Blur.Out. Defaults to '0px'. */
+    restRadius?: string;
+
+    /** Blur radius after exit. Used by Blur and Blur.Out. Defaults to `fromRadius`. */
+    toRadius?: string;
   };
