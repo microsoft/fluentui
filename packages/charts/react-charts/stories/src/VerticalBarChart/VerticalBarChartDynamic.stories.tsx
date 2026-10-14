@@ -10,7 +10,7 @@ import type {
 import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
 import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
-import { Checkbox, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
+import { Checkbox, Field, Radio, RadioGroup, Input, Switch } from '@fluentui/react-components';
 
 export const VerticalBarDynamic = (): JSXElement => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -56,14 +56,14 @@ export const VerticalBarDynamic = (): JSXElement => {
   const initialDataSize = 5;
 
   let _changeData = (): void => {
-    focusedChartElementId.current = lastFocusedChartElementId.current;
+    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
     setDynamicData(_getData(dataSize, xAxisType));
     setStatusKey(statusKey + 1);
     setStatusMessage('Vertical bar chart data changed');
   };
 
   let _changeColors = (): void => {
-    focusedChartElementId.current = lastFocusedChartElementId.current;
+    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
     _colorIndex.current = (_colorIndex.current + 1) % _colors.length;
     setColors(_colors[_colorIndex.current]);
     setStatusKey(statusKey + 1);
@@ -152,6 +152,7 @@ export const VerticalBarDynamic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
+  const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
 
   React.useEffect(() => {
     const container = chartContainerRef.current;
@@ -295,6 +296,11 @@ export const VerticalBarDynamic = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
+      <Switch
+        label="Enable Default Chart Element Autofocus on Data Change"
+        checked={enableFocusOnReset}
+        onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
+      />
       <div
         ref={chartContainerRef}
         style={{ width: `${width}px`, height: '350px' }}
@@ -308,6 +314,7 @@ export const VerticalBarDynamic = (): JSXElement => {
           chartTitle="Vertical bar chart dynamic example"
           data={dynamicData}
           colors={colors}
+          focusOnReset={enableFocusOnReset ? { barIndex: 0 } : undefined}
           hideLegend={true}
           yMaxValue={100}
           width={width}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement, RadioGroupOnChangeData } from '@fluentui/react-components';
-import { Button, Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Button, Field, Radio, RadioGroup, Switch } from '@fluentui/react-components';
 import type { ChartProps, LineChartDataPoint } from '@fluentui/react-charts';
 import { DataVizPalette, getColorFromToken, LineChart } from '@fluentui/react-charts';
 
@@ -68,6 +68,7 @@ export const LineChartDynamic = (): JSXElement => {
   const [width, setWidth] = React.useState(650);
   const [xAxisType, setXAxisType] = React.useState<XAxisType>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState(initialDataSize);
+  const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
 
   React.useEffect(() => {
     const container = chartContainerRef.current;
@@ -101,7 +102,7 @@ export const LineChartDynamic = (): JSXElement => {
   };
 
   const queueFocusRestore = () => {
-    focusedChartElementId.current = lastFocusedChartElementId.current;
+    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
   };
 
   const announceChange = (message: string) => {
@@ -178,12 +179,18 @@ export const LineChartDynamic = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
+      <Switch
+        label="Enable Default Chart Element Autofocus on Data Change"
+        checked={enableFocusOnReset}
+        onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
+      />
       <div ref={chartContainerRef} style={{ width: `${width}px`, height: '350px' }} onFocusCapture={onChartFocus}>
         <LineChart
           key={xAxisType}
           data={dynamicData}
           width={width}
           height={350}
+          focusOnReset={enableFocusOnReset ? { lineIndex: 0, pointIndex: 0 } : undefined}
           yMinValue={0}
           yMaxValue={100}
           hideTickOverlap={true}

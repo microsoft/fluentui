@@ -52,6 +52,7 @@ export const GaugeChartDynamic = (): JSXElement => {
   const [chartValue, setChartValue] = React.useState(50);
   const [hideMinMax, setHideMinMax] = React.useState(false);
   const [enableGradient, setEnableGradient] = React.useState(false);
+  const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
   const [roundedCorners, setRoundedCorners] = React.useState(false);
   const [legendMultiSelect, setLegendMultiSelect] = React.useState(false);
   const [useCustomCallout, setUseCustomCallout] = React.useState(false);
@@ -86,7 +87,7 @@ export const GaugeChartDynamic = (): JSXElement => {
   }, [segments]);
 
   const queueFocusRestore = () => {
-    focusedChartElementId.current = lastFocusedChartElementId.current;
+    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
   };
 
   const announceChange = (message: string) => {
@@ -211,6 +212,12 @@ export const GaugeChartDynamic = (): JSXElement => {
           checked={useCustomCallout}
           onChange={event => setUseCustomCallout(event.currentTarget.checked)}
         />
+        &nbsp;&nbsp;
+        <Switch
+          label="Enable Default Chart Element Autofocus on Data Change"
+          checked={enableFocusOnReset}
+          onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
+        />
       </div>
       <div
         ref={chartContainerRef}
@@ -225,6 +232,7 @@ export const GaugeChartDynamic = (): JSXElement => {
           segments={segments}
           chartTitle="Gauge chart dynamic example"
           chartValue={chartValue}
+          focusOnReset={enableFocusOnReset ? { segmentIndex: 0 } : undefined}
           chartValueFormat={useCustomCallout ? ([value]) => `${value}%` : 'percentage'}
           hideMinMax={hideMinMax}
           variant="multiple-segments"
