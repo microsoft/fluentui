@@ -786,7 +786,11 @@ export interface GroupedVerticalBarChartData {
 }
 
 /**
- * @deprecated Legacy internal dataset shape. Use GVBarChartSeriesPoint for grouped bar series data.
+ * Legacy grouped-chart dataset entry, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped bar series data, use GVBarChartSeriesPoint.
+ * It is not a drop-in replacement for this legacy dictionary shape.
  */
 export interface GVDataPoint {
   /**
@@ -797,7 +801,11 @@ export interface GVDataPoint {
 }
 
 /**
- * @deprecated Legacy internal dataset shape. Use GroupedVerticalBarChartData for grouped chart input.
+ * Legacy grouped-chart dataset dictionary, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped chart input, use GroupedVerticalBarChartData.
+ * It is not a drop-in replacement for this legacy dictionary shape.
  */
 export interface GVSingleDataPoint {
   /**

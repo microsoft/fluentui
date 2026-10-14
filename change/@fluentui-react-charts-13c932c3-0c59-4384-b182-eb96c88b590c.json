@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Clarify compatibility of deprecated grouped chart dataset types",
+  "packageName": "@fluentui/react-charts",
+  "email": "paulmardling@microsoft.com"
+}
