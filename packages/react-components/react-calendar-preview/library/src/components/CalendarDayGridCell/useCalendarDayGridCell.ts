@@ -12,13 +12,7 @@ import {
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { compareDatePart, findAvailableDate, stringifyDataAttribute } from '../../utils';
 import { createDate } from '../../utils/dateMath';
-import {
-  getCalendarGridKeyDownHandlers,
-  isCalendarArrowKey,
-  isCalendarGridCellEvent,
-  isCalendarKeyboardEditable,
-  setCalendarNavigationDate,
-} from '../../utils/calendarKeyboard';
+import { setCalendarNavigationDate } from '../../utils/calendarKeyboard';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
 import type { AvailableDateOptions } from '../../utils';
@@ -304,21 +298,12 @@ export const useCalendarDayGridCell_unstable = (
           day.onSelected(ev);
         }
       },
-      ...getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
-        ev => {
-          cellProps.onKeyDown?.(ev);
-          if (
-            !ev.isDefaultPrevented() &&
-            !ariaHidden &&
-            !isCalendarKeyboardEditable(ev.target) &&
-            (!isCalendarArrowKey(ev.key) || isCalendarGridCellEvent(ev))
-          ) {
-            onDayKeyDown(ev);
-          }
-        },
-        cellProps.onKeyDownCapture,
-        ev => !ariaHidden && !!originalDate && isCalendarArrowKey(ev.key) && isCalendarGridCellEvent(ev),
-      ),
+      onKeyDown: (ev: React.KeyboardEvent<HTMLTableCellElement>) => {
+        cellProps.onKeyDown?.(ev);
+        if (!ev.isDefaultPrevented() && !ariaHidden) {
+          onDayKeyDown(ev);
+        }
+      },
       onMouseDown: !ariaHidden ? mergeCallbacks(cellProps.onMouseDown, onMouseDownDay) : undefined,
       onMouseOut: !ariaHidden ? mergeCallbacks(cellProps.onMouseOut, onMouseOutDay) : undefined,
       onMouseOver: !ariaHidden ? mergeCallbacks(cellProps.onMouseOver, onMouseOverDay) : undefined,

@@ -2,17 +2,10 @@
 
 import type * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarMonthContext_unstable } from '../../contexts/calendarMonthContext';
 import { stringifyDataAttribute } from '../../utils';
-import {
-  getCalendarGridKeyDownHandlers,
-  handleCalendarGridKeyDown,
-  isCalendarGridArrow,
-  isCalendarKeyboardEditable,
-} from '../../utils/calendarKeyboard';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { CalendarMonthGridCellProps, CalendarMonthGridCellState } from './CalendarMonthGridCell.types';
 
@@ -24,7 +17,6 @@ export const useCalendarMonthGridCell_unstable = (
   ref?: React.Ref<HTMLButtonElement>,
 ): CalendarMonthGridCellState => {
   const { month } = props;
-  const { dir } = useFluent_unstable();
   const nativeProps = getIntrinsicElementProps('button', props, ['month']);
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
   const navigatedMonthRef = useCalendarMonthContext_unstable(ctx => ctx.navigatedMonthRef);
@@ -47,21 +39,13 @@ export const useCalendarMonthGridCell_unstable = (
           onSelect?.(event);
         }
       },
-      ...getCalendarGridKeyDownHandlers<HTMLButtonElement>(
-        event => {
-          nativeProps.onKeyDown?.(event);
-          if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
-            return;
-          }
-          handleCalendarGridKeyDown(event, dir, allFocusable);
-          if (event.key === Enter && onSelect) {
-            event.preventDefault();
-            onSelect(event);
-          }
-        },
-        nativeProps.onKeyDownCapture,
-        isCalendarGridArrow,
-      ),
+      onKeyDown: event => {
+        nativeProps.onKeyDown?.(event);
+        if (!event.isDefaultPrevented() && event.key === Enter && onSelect) {
+          event.preventDefault();
+          onSelect(event);
+        }
+      },
       'aria-label': month.ariaLabel,
       'aria-disabled': !month.isInBounds,
       'aria-selected': month.isSelected,

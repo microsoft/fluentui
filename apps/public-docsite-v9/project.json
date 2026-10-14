@@ -12,13 +12,7 @@
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],
-      "dependsOn": [
-        "^build",
-        {
-          "projects": ["storybook-llms-extractor"],
-          "target": "build"
-        }
-      ]
+      "dependsOn": ["^build"]
     },
     "storybook": {
       "dependsOn": ["^build"]

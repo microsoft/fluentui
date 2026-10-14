@@ -1,13 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Space } from '@fluentui/keyboard-keys';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { createDate } from '../../utils/dateMath';
-import { CALENDAR_GRID_COLUMNS } from '../../utils/calendarKeyboard';
 import { CalendarYearGridRow } from '../CalendarYearGridRow/CalendarYearGridRow';
 import type {
   CalendarYearBaseProps,
@@ -20,6 +19,7 @@ import type {
 } from './CalendarYear.types';
 
 const CELL_COUNT = 12;
+const CELLS_PER_ROW = 4;
 
 function useYearRangeState({
   selectedYear,
@@ -68,7 +68,7 @@ function useYearRangeState({
 /**
  * Create the base state required to render an unstyled CalendarYear.
  * Free of Tabster so the headless layer can supply its own roving focus; the styled
- * `useCalendarYear_unstable` adds Tabster roving focus on top. Base cells own arrow navigation.
+ * `useCalendarYear_unstable` adds arrow key navigation on top.
  */
 export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
@@ -120,10 +120,10 @@ export const useCalendarYearBase_unstable = (
     Math.max(firstFocusableYear, props.navigatedYear ?? selectedYear ?? currentYear),
   );
   const yearRows: CalendarYearCell[][] = [];
-  for (let row = 0; row < CELL_COUNT / CALENDAR_GRID_COLUMNS; row++) {
+  for (let row = 0; row < CELL_COUNT / CELLS_PER_ROW; row++) {
     const cells: CalendarYearCell[] = [];
-    for (let column = 0; column < CALENDAR_GRID_COLUMNS; column++) {
-      const year = fromYear + row * CALENDAR_GRID_COLUMNS + column;
+    for (let column = 0; column < CELLS_PER_ROW; column++) {
+      const year = fromYear + row * CELLS_PER_ROW + column;
       cells.push({
         year,
         content: props.renderYear ? props.renderYear(year) : formatYear(year),
@@ -250,15 +250,7 @@ export const useCalendarYear_unstable = (
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearState => {
   const baseState = useCalendarYearBase_unstable(props, ref);
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'grid',
-    ignoreDefaultKeydown: {
-      [ArrowDown]: true,
-      [ArrowLeft]: true,
-      [ArrowRight]: true,
-      [ArrowUp]: true,
-    },
-  });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   return {
     ...baseState,

@@ -248,24 +248,6 @@ Calendar owns selected-date, displayed-date, and picker-view state. The day and 
 
 The styled components use Tabster arrow-navigation groups. Base state hooks are exported for a headless layer and intentionally leave picker resolution or roving-focus behavior to the caller.
 
-Month and year cells own two-dimensional arrow navigation in both layers. Horizontal arrows stay in the current
-four-cell row, respect RTL, and do not wrap; vertical arrows stay in the same column. Unavailable cells are skipped
-unless `allFocusable` is enabled, which permits focus but not selection. Consumer cell handlers can cancel the
-built-in action with `preventDefault()`. Modified arrows and editable descendants are left untouched.
-Handled arrows, including boundary keys, are prevented so Tabster or a native focusgroup does not move focus again.
-
-Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
-owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
-cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop.
-Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
-remain in bubbling without Calendar navigation. A focusgroup on the Calendar grid itself or outside that grid
-does not change Calendar's arrow ownership.
-Other keys, including Enter and PageUp/PageDown, retain their normal bubbling dispatch.
-
-The day and month base hooks reserve `data-fui-calendar-picker="day"` and `data-fui-calendar-picker="month"` on their roots.
-Calendar uses these behavioral markers, not styled class names, to restore focus when a focused picker is hidden.
-Custom renderers must preserve the base root props. Moving focus outside Calendar cancels pending restoration.
-
 ### DOM
 
 The default DOM is equivalent to:
@@ -274,7 +256,7 @@ The default DOM is equivalent to:
 <div class="fui-Calendar">
   <div aria-live="polite" aria-atomic="true">Selected: June 18, 2025</div>
 
-  <div class="fui-CalendarDay" data-fui-calendar-picker="day">
+  <div class="fui-CalendarDay">
     <div>
       <div><span aria-live="polite">June 2025</span></div>
       <div>
@@ -297,7 +279,7 @@ The default DOM is equivalent to:
   <div class="fui-Calendar__divider"></div>
 
   <div>
-    <div class="fui-CalendarMonth" data-fui-calendar-picker="month">
+    <div class="fui-CalendarMonth">
       <div>... year heading and previous/next year buttons ...</div>
       <div role="grid" aria-label="2025">... month gridcells ...</div>
     </div>

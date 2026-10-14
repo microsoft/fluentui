@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
+import { Enter } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
@@ -17,7 +17,6 @@ import {
   setMonth,
 } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
-import { CALENDAR_GRID_COLUMNS } from '../../utils/calendarKeyboard';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { CalendarMonthGridRow } from '../CalendarMonthGridRow/CalendarMonthGridRow';
 import type { CalendarYearHandle, CalendarYearProps, CalendarYearSelectData } from '../CalendarYear/CalendarYear.types';
@@ -29,6 +28,8 @@ import type {
   CalendarMonthProps,
   CalendarMonthState,
 } from './CalendarMonth.types';
+
+const MONTHS_PER_ROW = 4;
 
 const noop = () => undefined;
 
@@ -46,7 +47,7 @@ const onButtonKeyDown =
 /**
  * Create the base state required to render an unstyled CalendarMonth.
  * Free of Tabster so the headless layer can supply its own roving focus; the styled
- * `useCalendarMonth_unstable` adds Tabster roving focus on top. Base cells own arrow navigation.
+ * `useCalendarMonth_unstable` adds arrow key navigation on top.
  */
 export const useCalendarMonthBase_unstable = (
   props: CalendarMonthBaseProps,
@@ -211,9 +212,9 @@ export const useCalendarMonthBase_unstable = (
   const headerIsClickable = !!onUserHeaderSelect || !yearPickerHidden;
 
   const monthRows: CalendarMonthCell[][] = [];
-  for (let rowNum = 0; rowNum < 12 / CALENDAR_GRID_COLUMNS; rowNum++) {
-    const row = Array.from({ length: CALENDAR_GRID_COLUMNS }, (_, index: number) => {
-      const monthIndex = rowNum * CALENDAR_GRID_COLUMNS + index;
+  for (let rowNum = 0; rowNum < 12 / MONTHS_PER_ROW; rowNum++) {
+    const row = Array.from({ length: MONTHS_PER_ROW }, (_, index: number) => {
+      const monthIndex = rowNum * MONTHS_PER_ROW + index;
       const indexedMonth = setMonth(navigatedDate, monthIndex);
 
       return {
@@ -278,9 +279,7 @@ export const useCalendarMonthBase_unstable = (
       grid: 'div',
       yearPicker: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', { ...props, 'data-fui-calendar-picker': 'month' }), {
-      elementType: 'div',
-    }),
+    root: slot.always(getIntrinsicElementProps('div', props), { elementType: 'div' }),
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
@@ -351,15 +350,7 @@ export const useCalendarMonth_unstable = (
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthState => {
   const baseState = useCalendarMonthBase_unstable(props, ref);
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'grid',
-    ignoreDefaultKeydown: {
-      [ArrowDown]: true,
-      [ArrowLeft]: true,
-      [ArrowRight]: true,
-      [ArrowUp]: true,
-    },
-  });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
   const yearPicker = slot.always(props.yearPicker, {
     defaultProps: baseState.yearPicker,
     elementType: CalendarYear,
