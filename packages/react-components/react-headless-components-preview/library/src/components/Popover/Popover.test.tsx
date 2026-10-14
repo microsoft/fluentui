@@ -22,12 +22,12 @@ describe('Popover', () => {
     it('calls native dialog close while the surface is connected', async () => {
       const { getByRole, getByText, rerender } = render(<Example open trapFocus />);
       const surface = getByRole('dialog', { hidden: true });
+      const nativeClose = HTMLDialogElement.prototype.close;
       const close = jest
         .spyOn(HTMLDialogElement.prototype, 'close')
         .mockImplementation(function (this: HTMLDialogElement) {
           expect(this.isConnected).toBe(true);
-          this.removeAttribute('open');
-          setTimeout(() => this.dispatchEvent(new Event('close')), 0);
+          nativeClose.call(this);
         });
       try {
         rerender(<Example open={false} trapFocus />);
@@ -117,6 +117,72 @@ describe('Popover', () => {
       expect(surface).toHaveAttribute('open');
       expect(onOpenChange).toHaveBeenCalledTimes(1);
       expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+    });
+
+    ([false, true] as const).forEach(trapFocus => {
+      it(`follows a replaced surface after close and reopen (${trapFocus ? 'modal' : 'non-modal'})`, async () => {
+        const onOpenChange = jest.fn();
+        const KeyedExample = ({ open, version }: { open: boolean; version: number }) => (
+          <Popover open={open} trapFocus={trapFocus} onOpenChange={onOpenChange}>
+            <PopoverSurface key={version}>Surface</PopoverSurface>
+          </Popover>
+        );
+        const { getByText, queryByText, rerender } = render(<KeyedExample open version={0} />);
+        const oldSurface = getByText('Surface');
+        rerender(<KeyedExample open={false} version={1} />);
+        await waitFor(() => expect(queryByText('Surface')).toBeNull());
+        expect(oldSurface.isConnected).toBe(false);
+        rerender(<KeyedExample open version={1} />);
+        const surface = getByText('Surface');
+        if (trapFocus) {
+          surface.removeAttribute('open');
+          fireEvent(surface, new Event('close'));
+        } else {
+          surface.hidePopover();
+          await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1));
+        }
+        expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+      });
+
+      it(`unmounts a surface that never opened (${trapFocus ? 'modal' : 'non-modal'})`, async () => {
+        const preventOpening = (surface: HTMLDialogElement | HTMLDivElement | null) => {
+          if (surface) {
+            Object.defineProperty(surface, trapFocus ? 'showModal' : 'showPopover', {
+              configurable: true,
+              value: () => undefined,
+            });
+          }
+        };
+        const PreventedExample = ({ open }: { open: boolean }) => (
+          <Popover open={open} trapFocus={trapFocus}>
+            <PopoverSurface ref={preventOpening}>Surface</PopoverSurface>
+          </Popover>
+        );
+        const { queryByText, rerender } = render(<PreventedExample open />);
+        rerender(<PreventedExample open={false} />);
+        await waitFor(() => expect(queryByText('Surface')).toBeNull());
+      });
+    });
+
+    it('ignores a queued polyfill close toggle after reopening', async () => {
+      const onOpenChange = jest.fn();
+      const ControlledExample = ({ open }: { open: boolean }) => (
+        <Popover open={open} onOpenChange={onOpenChange}>
+          <PopoverSurface>Surface</PopoverSurface>
+        </Popover>
+      );
+      const { getByText, rerender } = render(<ControlledExample open />);
+      const surface = getByText('Surface');
+      const toggle = jest.fn();
+      surface.addEventListener('toggle', toggle);
+      await waitFor(() => expect(toggle).toHaveBeenCalled());
+      toggle.mockClear();
+      rerender(<ControlledExample open={false} />);
+      rerender(<ControlledExample open />);
+      await waitFor(() => expect(toggle).toHaveBeenCalled());
+      expect(surface.isConnected).toBe(true);
+      expect(surface.matches(':popover-open')).toBe(true);
+      expect(onOpenChange).not.toHaveBeenCalled();
     });
 
     const NativeCloseExample = () => (
@@ -355,7 +421,7 @@ describe('Popover', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('data-open');
   });
 
-  it('mirrors a browser-driven `toggle` event into React state and closes the surface', () => {
+  it('mirrors a browser-driven `toggle` event into React state and closes the surface', async () => {
     const { getByRole, queryByText } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -366,11 +432,9 @@ describe('Popover', () => {
     );
 
     const surface = getByRole('group', { hidden: true });
-    const toggleEvent = new Event('toggle');
-    (toggleEvent as unknown as { newState: string }).newState = 'closed';
-    fireEvent(surface, toggleEvent);
+    surface.hidePopover();
 
-    expect(queryByText('Surface')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('Surface')).not.toBeInTheDocument());
   });
 
   it('uses a custom id for the surface and references it from the trigger', () => {

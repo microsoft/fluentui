@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopover } from './TeachingPopover';
@@ -235,17 +235,18 @@ describe('TeachingPopover', () => {
       getByText('Inside').focus();
       getByText('Outside').focus();
       const surface = getByText('Inside').parentElement!;
-      // Model native closure without the polyfill's unconditional saved-focus restoration.
+      const hidePopover = surface.hidePopover;
+      // Preserve explicit outside focus after the polyfill restores its saved target.
       Object.defineProperty(surface, 'hidePopover', {
         configurable: true,
         value: () => {
-          fireEvent(surface, Object.assign(new Event('beforetoggle'), { newState: 'closed' }));
+          hidePopover.call(surface);
+          getByText('Outside').focus();
         },
       });
       try {
         rerender(<Example open={false} />);
         expect(getByText('Outside')).toHaveFocus();
-        fireEvent(surface, Object.assign(new Event('toggle'), { newState: 'closed' }));
         await waitFor(() => expect(queryByText('Inside')).not.toBeInTheDocument());
         expect(getByText('Outside')).toHaveFocus();
       } finally {

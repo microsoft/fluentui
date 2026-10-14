@@ -7,12 +7,10 @@ import {
   useId,
   useTimeout,
   useIsomorphicLayoutEffect,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
@@ -48,6 +46,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
   const focusWasInsideOnNativeClose = React.useRef<boolean | null>(null);
+  const openedSurface = React.useRef<HTMLElement | null>(null);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
@@ -88,7 +87,8 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   );
 
   const triggerRef = React.useRef<HTMLElement>(null);
-  const contentRef = React.useRef<HTMLElement>(null);
+  const [surfaceElement, setSurfaceElement] = React.useState<HTMLElement | null>(null);
+  const contentRef = useMergedRefs<HTMLElement>(setSurfaceElement);
   const arrowRef = React.useRef<HTMLDivElement>(null);
 
   const generatedSurfaceId = useId('fui-popover-surface-');
@@ -111,6 +111,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       triggerRef.current.focus();
     }
     focusWasInsideOnNativeClose.current = null;
+    openedSurface.current = null;
     setShouldRenderSurface(false);
   });
 
@@ -118,7 +119,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     const toggle = event as ToggleEvent;
     const nextOpen = toggle.newState === 'open';
     const surface = contentRef.current;
-    if (surface && SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open') !== nextOpen) {
+    if (event.currentTarget !== surface || !surface || surface.matches(':popover-open') !== nextOpen) {
       return;
     }
     if (!nextOpen) {
@@ -134,7 +135,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const onSurfaceClose = useEventCallback((event: Event) => {
     const surface = contentRef.current;
-    if (isDialogElement(surface) && surface.open) {
+    if (event.currentTarget !== surface || (isDialogElement(surface) && surface.open)) {
       return;
     }
     finishSurfaceClose();
@@ -189,7 +190,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       surface.removeEventListener('toggle', onSurfaceToggle);
       surface.removeEventListener('beforetoggle', trackNativeCloseFocus);
     };
-  }, [renderSurface, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
+  }, [renderSurface, trapFocus, surfaceElement, contentRef, onSurfaceToggle, onSurfaceClose]);
 
   useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
@@ -203,11 +204,14 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         if (isDialogElement(surface) && !surface.open) {
           surface.showModal();
         }
-      } else if (
-        typeof surface.showPopover === 'function' &&
-        !(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))
-      ) {
+        if (isDialogElement(surface) && surface.open) {
+          openedSurface.current = surface;
+        }
+      } else if (typeof surface.showPopover === 'function' && !surface.matches(':popover-open')) {
         surface.showPopover();
+        if (surface.matches(':popover-open')) {
+          openedSurface.current = surface;
+        }
       }
       return;
     }
@@ -215,20 +219,22 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       if (isDialogElement(surface) && surface.open) {
         focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
         surface.close();
-      } else if (!isDialogElement(surface)) {
+      } else if (openedSurface.current !== surface) {
         focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
         finishSurfaceClose();
       }
     } else if (typeof surface.hidePopover === 'function') {
-      if (!SUPPORTS_POPOVER_OPEN_SELECTOR || surface.matches(':popover-open')) {
+      if (surface.matches(':popover-open')) {
         focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
         surface.hidePopover();
+      } else if (openedSurface.current !== surface) {
+        finishSurfaceClose();
       }
     } else {
       focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
       finishSurfaceClose();
     }
-  }, [open, trapFocus, shouldRenderSurface, contentRef, finishSurfaceClose]);
+  }, [open, trapFocus, shouldRenderSurface, surfaceElement, contentRef, finishSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

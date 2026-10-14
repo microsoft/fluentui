@@ -16,6 +16,84 @@ const mount = (element: JSXElement) => {
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
 
+describe('native surface lifecycle', () => {
+  const Example = ({ trapFocus, preventOpening = false }: { trapFocus: boolean; preventOpening?: boolean }) => {
+    const [open, setOpen] = React.useState(true);
+    const [version, setVersion] = React.useState(0);
+    const attachSurface = React.useCallback(
+      (surface: HTMLDialogElement | HTMLDivElement | null) => {
+        if (surface && preventOpening) {
+          surface.addEventListener('beforetoggle', event => {
+            if ((event as Event & { newState: string }).newState === 'open') {
+              event.preventDefault();
+            }
+          });
+        }
+      },
+      [preventOpening],
+    );
+    return (
+      <>
+        <button data-testid="outside-close" onClick={() => setOpen(false)}>
+          Close
+        </button>
+        <Popover open={open} trapFocus={trapFocus} onOpenChange={(_, data) => setOpen(data.open)}>
+          <PopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface key={version} ref={attachSurface} data-testid="surface">
+            <button
+              autoFocus
+              data-testid="finish"
+              onClick={() => {
+                setOpen(false);
+                setVersion(value => value + 1);
+              }}
+            >
+              Finish
+            </button>
+          </PopoverSurface>
+        </Popover>
+      </>
+    );
+  };
+  ([false, true] as const).forEach(trapFocus => {
+    it(`dismisses a replacement surface after reopening (${trapFocus ? 'modal' : 'non-modal'})`, () => {
+      mount(<Example trapFocus={trapFocus} />);
+      cy.get('[data-testid=finish]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.get('[data-testid=trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=finish]').focus().realPress('Escape');
+      cy.get('[data-testid=surface]').should('not.exist');
+      cy.get('[data-testid=trigger]').should('have.attr', 'aria-expanded', 'false');
+    });
+
+    it(`unmounts after prevented native opening (${trapFocus ? 'modal' : 'non-modal'})`, function () {
+      if (trapFocus) {
+        cy.document().then(doc => {
+          const dialog = doc.createElement('dialog');
+          dialog.addEventListener('beforetoggle', event => event.preventDefault());
+          doc.body.append(dialog);
+          dialog.showModal();
+          const supportsCancelableOpening = !dialog.open;
+          if (dialog.open) {
+            dialog.close();
+          }
+          dialog.remove();
+          if (!supportsCancelableOpening) {
+            this.skip();
+          }
+        });
+      }
+      mount(<Example trapFocus={trapFocus} preventOpening />);
+      cy.get('[data-testid=surface]').should('not.be.visible');
+      cy.get('[data-testid=outside-close]').click();
+      cy.get('[data-testid=surface]').should('not.exist');
+    });
+  });
+});
+
 describe('nested shadow focus restoration', () => {
   const NestedControl = ({ onClose }: { onClose: () => void }) => {
     const [root, setRoot] = React.useState<ShadowRoot | null>(null);
