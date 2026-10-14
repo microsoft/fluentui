@@ -28,8 +28,8 @@ type HTMLElementWithFocusVisibleScope = {
  * @param targetWindow - window
  */
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void {
-  if (alreadyInScope(scope)) {
-    // Focus visible polyfill already applied at this scope
+  if ((scope as HTMLElementWithFocusVisibleScope).focusVisible) {
+    // Focus visible polyfill already applied at this element
     return () => undefined;
   }
 
@@ -40,7 +40,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   const keyborg = createKeyborg(targetWindow);
 
   function registerElementIfNavigating(el: EventTarget | HTMLElement | null) {
-    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el)) {
+    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el) && scope.contains(el)) {
       state.current = el;
       el.setAttribute(FOCUS_VISIBLE_ATTR, '');
     }
@@ -95,16 +95,4 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
     disposeKeyborg(keyborg);
   };
-}
-
-function alreadyInScope(el: HTMLElement | null | undefined): boolean {
-  if (!el) {
-    return false;
-  }
-
-  if ((el as HTMLElementWithFocusVisibleScope).focusVisible) {
-    return true;
-  }
-
-  return alreadyInScope(el?.parentElement);
 }
