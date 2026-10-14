@@ -169,4 +169,28 @@ describe('TeachingPopoverCarousel', () => {
     await waitFor(() => expect(announce).toHaveBeenCalledWith('Custom two', { polite: true }));
     expect(announcement).toHaveBeenCalledTimes(1);
   });
+
+  it('discards pending announcements when the callback is removed and later restored', async () => {
+    const announcement = jest.fn(value => `Custom ${value}`);
+    const example = (value: string, callback?: TeachingPopoverCarouselProps['announcement'], showDestination = false) => (
+      <TeachingPopoverCarousel value={value} announcement={callback}>
+        <TeachingPopoverCarouselCard value="one" />
+        {showDestination && <TeachingPopoverCarouselCard value="two" />}
+      </TeachingPopoverCarousel>
+    );
+    const view = render(example('one', announcement), { wrapper });
+    view.rerender(example('two', announcement));
+    await act(() => Promise.resolve());
+    expect(announcement).not.toHaveBeenCalled();
+
+    view.rerender(example('two'));
+    view.rerender(example('two', announcement, true));
+    await act(() => Promise.resolve());
+    expect(announcement).not.toHaveBeenCalled();
+    expect(announce).not.toHaveBeenCalled();
+
+    view.rerender(example('one', announcement, true));
+    await waitFor(() => expect(announce).toHaveBeenCalledWith('Custom one', { polite: true }));
+    expect(announcement).toHaveBeenCalledTimes(1);
+  });
 });

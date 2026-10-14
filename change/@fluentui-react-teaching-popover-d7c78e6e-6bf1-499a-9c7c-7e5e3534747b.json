@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Announce carousel page changes after render.",
+  "comment": "fix: Announce carousel page changes after render.",
   "packageName": "@fluentui/react-teaching-popover",
   "email": "paulmardling@microsoft.com",
   "dependentChangeType": "patch"

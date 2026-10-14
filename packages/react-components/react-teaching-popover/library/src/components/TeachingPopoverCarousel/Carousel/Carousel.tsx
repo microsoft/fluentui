@@ -52,18 +52,22 @@ export function useCarousel_unstable(options: UseCarouselOptions): {
   const announcePage = useEventCallback(() => {
     const pendingValue = pendingAnnouncementRef.current;
     const active = carouselWalker.active();
-    if (pendingValue === null || active?.value !== pendingValue || !announcement) {
+    if (pendingValue === null || active?.value !== pendingValue) {
       return;
     }
 
     pendingAnnouncementRef.current = null;
-    const text = announcement(pendingValue);
+    const text = announcement?.(pendingValue);
     if (text) {
       announce(text, { polite: true });
     }
   });
 
   useIsomorphicLayoutEffect(() => {
+    if (!announcement) {
+      pendingAnnouncementRef.current = null;
+    }
+
     if (previousValueRef.current === value) {
       return;
     }
