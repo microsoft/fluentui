@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: restore class-independent Calendar focus, two-dimensional grid arrows, and nested focusgroup keyboard ownership",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
