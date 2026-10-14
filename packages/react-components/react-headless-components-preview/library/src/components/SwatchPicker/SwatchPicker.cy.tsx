@@ -10,7 +10,21 @@ import { SwatchPickerRow } from './SwatchPickerRow/SwatchPickerRow';
 
 polyfillBodyAndObserve();
 
-const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
+const mount = (element: JSXElement) =>
+  mountBase(<Provider>{element}</Provider>)
+    .get('[focusgroup] button')
+    .should(swatches => {
+      if (supportsFocusGroup()) {
+        return;
+      }
+      const selectedSwatch = swatches.filter('[focusgroupstart]');
+      const tabStop = selectedSwatch.length ? selectedSwatch : swatches.first();
+      expect(tabStop).to.have.attr('tabindex', '0');
+      swatches
+        .not(tabStop)
+        .toArray()
+        .forEach(swatch => expect(swatch).to.have.attr('tabindex', '-1'));
+    });
 
 describe('SwatchPicker', () => {
   it('returns focus to the last focused swatch when no swatch is selected', () => {
