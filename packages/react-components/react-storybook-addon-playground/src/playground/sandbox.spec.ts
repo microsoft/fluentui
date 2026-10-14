@@ -154,6 +154,21 @@ describe('sandbox bootstrap', () => {
     postMessage.mockRestore();
     Object.assign(console, consoleMethods);
     Reflect.deleteProperty(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
+    document.querySelectorAll('style[data-href]').forEach(style => style.remove());
+  });
+
+  it('installs inlined CSS before runtime loading and identifies it for the native lazy CSS loader', () => {
+    const href = 'https://example.com/styles/lazy.css';
+    const cssText = 'body::before { content: "</script><script>not JavaScript</script>"; }';
+    const runtimeManifest = { ...manifest, inlineStyles: [{ href, cssText }] };
+    const source = new DOMParser().parseFromString(createSandboxDocument(runtimeManifest, 'css-token'), 'text/html');
+    expect(source.querySelectorAll('script')).toHaveLength(1);
+
+    loadBootstrap('css-token', 'https://example.com', runtimeManifest);
+    const style = document.head.querySelector<HTMLStyleElement>('style[data-href]');
+    expect(style?.getAttribute('data-href')).toBe(href);
+    expect(style?.textContent).toBe(cssText);
+    expect(document.head.querySelectorAll('link[rel="stylesheet"]')).toHaveLength(0);
   });
 
   it('executes bridged script text only after an authenticated shell response and retains its public path', async () => {

@@ -76,6 +76,7 @@ export function createSandboxDocument(
   const baseUrl = ${escapeInlineJson(manifest.baseUrl)};
   const initialScripts = ${escapeInlineJson(manifest.scripts)};
   const scriptFiles = new Set(${escapeInlineJson(manifest.scriptFiles ?? [])});
+  const inlineStyles = ${escapeInlineJson(manifest.inlineStyles ?? [])};
   const parentOrigin = ${escapeInlineJson(parentOrigin)};
   let runtime;
   let root;
@@ -618,6 +619,13 @@ export function createSandboxDocument(
 
   (async () => {
     try {
+      for (const { href, cssText } of inlineStyles) {
+        const style = document.createElement('style');
+        // mini-css-extract-plugin recognizes these styles instead of requesting a lazy stylesheet.
+        style.setAttribute('data-href', href);
+        style.textContent = cssText;
+        document.head.appendChild(style);
+      }
       for (const script of initialScripts) {
         await loadScript(script);
         if (initFailed) {

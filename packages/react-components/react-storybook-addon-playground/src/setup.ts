@@ -31,6 +31,11 @@ export interface PlaygroundRuntimeManifest {
    */
   scriptFiles?: string[];
   styles: string[];
+  /**
+   * Build-owned stylesheets with emitted font/image URLs inlined as data URLs. The preview's data-href attributes also
+   * satisfy Webpack's lazy CSS loader without making authenticated requests from the opaque iframe.
+   */
+  inlineStyles?: Array<{ href: string; cssText: string }>;
   /** Declarations that are always loaded (React and the `typings` addon option). */
   typings: string;
   /**

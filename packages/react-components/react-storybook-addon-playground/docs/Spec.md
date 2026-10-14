@@ -90,8 +90,14 @@ Implemented behavior:
 - Opaque-origin sandbox with a restrictive CSP allowing runtime origins while blocking other application network
   requests, console forwarding to a console panel, and viewport presets.
 - Manifest-allowlisted same-origin JavaScript is fetched by the shell and executed only inside the sandbox, including
-  lazy chunks. This supports COEP-restricted deployments without relaxing iframe isolation or globally exposing assets
-  through CORP headers, and leaves native script loading intact on Storybook pages sharing Webpack runtime chunks.
+  lazy chunks. Manifest location/shape and canonical asset paths are validated against the selected build root.
+  Fetches retain same-origin credentials and reject redirects, HTTP failures and non-JavaScript MIME types, reporting
+  initialization errors rather than navigating to login. This supports CORP `same-origin` and COEP-restricted deployments
+  without relaxing iframe isolation or globally exposing assets, and leaves native Storybook chunk loading intact.
+- Opt-in `inlineStyles` embeds extracted eager/lazy CSS and its emitted font/image assets in the manifest. CSS URLs
+  are resolved against emitted stylesheets at build time, without network or arbitrary filesystem reads; unresolved
+  imports/resources fail the build. The preview installs CSS up front and identifies it to the lazy CSS loader.
+  Native Storybook styles/fonts remain unchanged. Runtime-injected font URLs still require the host's resource policies.
 - Multiple CSS modules that can be added, renamed and removed; CSS edits apply without remounting the preview.
 - Non-blocking type diagnostics with an error badge.
 - Webpack integration: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped
@@ -103,14 +109,19 @@ Implemented behavior:
   directories. `typingsRoots` can explicitly select declaration package roots without a `node_modules` self-link.
 - Docs Canvas overrides render the Playground action through Storybook's `additionalActions` API where supported;
   an addon-owned fallback covers earlier action areas and Storybook 10's separate Docs source-actions row.
-- A Playwright e2e suite that covers the production runtime and shell.
+- A Playwright e2e suite covers the production runtime/shell and a nested cookie-authenticated CORP `same-origin`
+  fixture with extracted CSS and a real font, with and without COEP. It asserts shell credentialed fetches, opaque
+  preview isolation, lazy loading, HTTP/redirect/login-response failures and restart recovery. This is a synthetic
+  deployment, not validation of hosted EasyAuth; authentication of the shell HTML remains the host's prerequisite.
 - Monaco 0.52 with TypeScript 5.4 (the last release before Monaco's AMD deprecation and the move of the TypeScript API to a top-level namespace).
 - Enabled on the public v9 docsite (`apps/public-docsite-v9`) with `@fluentui/react-components`, icons, motion components
   and the calendar, date picker and time picker compat packages. Stories importing other runtime packages do not get
   the **Open in Playground** button.
 - Editor and shell ergonomics: the story name travels in the link and names the tab, compile errors link to their location, `Cmd/Ctrl+S` formats and writes the link, either pane can be maximized, and the active file can be copied.
-- The `?manifest=` override only accepts same-origin URLs, and link payloads are rejected when encoded or decoded sizes
-  exceed fixed limits (the decoder stops early instead of expanding an oversized compressed payload).
+- A standard shell is bound to its adjacent build manifest. A standalone shell can explicitly select a same-origin
+  build at `playground/runtime/manifest.json`; arbitrary manifests and out-of-build assets are rejected. Legacy
+  manifests without `scriptFiles` retain native script loading. Link payloads are rejected when encoded or decoded
+  sizes exceed fixed limits (the decoder stops early instead of expanding an oversized compressed payload).
 
 ### Source Extraction and Import Scanning
 

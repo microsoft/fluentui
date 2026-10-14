@@ -46,6 +46,15 @@ export interface PresetConfig {
    * This does not change runtime resolution; the selected declarations must describe the configured runtime module.
    */
   typingsRoots?: Record<string, string>;
+
+  /**
+   * Inline the runtime's extracted CSS and its emitted font/image assets into the manifest, including lazy styles.
+   * Use for private hosts with same-origin CORP or authenticated assets. Only assets emitted by this build are read;
+   * unresolved CSS imports or resource URLs fail the build. Storybook's own CSS loading is unchanged.
+   *
+   * @default false
+   */
+  inlineStyles?: boolean;
 }
 
 export interface ParametersExtension {

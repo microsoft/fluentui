@@ -2,6 +2,7 @@ import * as crypto from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
+import { inlineRuntimeStyles } from './inlineStyles';
 import type { PresetConfig } from './public-types';
 
 type WebpackFinalFn = NonNullable<import('@storybook/react-webpack5').StorybookConfig['webpackFinal']>;
@@ -250,6 +251,7 @@ export function getAddonOptions(
       setup: options.setup,
       typings: options.typings,
       typingsRoots: options.typingsRoots,
+      inlineStyles: options.inlineStyles,
     };
   }
 
@@ -573,17 +575,19 @@ export class PlaygroundRuntimeManifestPlugin {
 
           const files = entrypoint.getFiles();
           const scripts = files.filter(file => /\.m?js($|\?)/.test(file) && !file.includes('.hot-update.'));
-          const scriptFiles = Array.from(
-            new Set(
-              [
-                ...files,
-                ...Array.from(entrypoint.getEntrypointChunk().getAllReferencedChunks()).flatMap(chunk =>
-                  Array.from(chunk.files),
-                ),
-              ].filter(file => /\.m?js($|\?)/.test(file) && !file.includes('.hot-update.')),
-            ),
-          ).sort();
-          const styles = files.filter(file => /\.css($|\?)/.test(file) && !file.includes('.hot-update.'));
+          const referencedFiles = Array.from(
+            new Set([
+              ...files,
+              ...Array.from(entrypoint.getEntrypointChunk().getAllReferencedChunks()).flatMap(chunk =>
+                Array.from(chunk.files),
+              ),
+            ]),
+          ).filter(file => !file.includes('.hot-update.'));
+          const scriptFiles = referencedFiles.filter(file => /\.m?js($|\?)/.test(file)).sort();
+          const inlineStyles = this.options.inlineStyles
+            ? inlineRuntimeStyles(compilation, referencedFiles.filter(file => /\.css$/.test(file)).sort())
+            : undefined;
+          const styles = inlineStyles ? [] : files.filter(file => /\.css($|\?)/.test(file));
           const emitTypings = (declarations: Record<string, string>) => {
             const json = JSON.stringify(declarations);
             const hash = crypto.createHash('sha256').update(json).digest('hex').slice(0, 12);
@@ -610,6 +614,7 @@ export class PlaygroundRuntimeManifestPlugin {
                 scripts,
                 scriptFiles,
                 styles,
+                inlineStyles,
                 modules: getModuleRequests(this.options.modules),
                 typingsFile,
                 moduleTypings,
@@ -626,6 +631,7 @@ export class PlaygroundRuntimeManifestPlugin {
                   scripts,
                   scriptFiles,
                   styles,
+                  inlineStyles,
                   typings: typingsFile,
                   moduleTypings,
                   allowedModules: getAllowedModules(this.options),

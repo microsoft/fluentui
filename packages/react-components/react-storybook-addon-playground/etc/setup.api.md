@@ -15,6 +15,10 @@ export interface PlaygroundRuntimeManifest {
     allowedModules: string[];
     // (undocumented)
     buildId: string;
+    inlineStyles?: Array<{
+        href: string;
+        cssText: string;
+    }>;
     moduleTypings?: Record<string, string[]>;
     scriptFiles?: string[];
     // (undocumented)

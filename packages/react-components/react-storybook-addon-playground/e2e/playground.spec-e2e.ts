@@ -1,8 +1,11 @@
 import { expect, test, type Frame, type Page } from '@playwright/test';
 
 import { createPlaygroundHash, decodePlaygroundStateFromHash } from '../src/url';
+import type { PlaygroundRuntimeManifest } from '../src/setup';
 
 const PLAYGROUND_URL = '/playground/app/playground.html';
+const PRIVATE_BUILD_ROOT = '/authenticated/nested/storybook/';
+const PRIVATE_PLAYGROUND_URL = `${PRIVATE_BUILD_ROOT}playground/app/playground.html`;
 const IMPORTS = `import * as React from 'react';
 import { Button } from '@fluentui/react-components';
 `;
@@ -38,6 +41,213 @@ function setupPage(page: Page) {
 
   return { pageErrors, previewButton, previewFrame, replaceActiveFile, errorAlert };
 }
+
+test.describe('authenticated deployment', () => {
+  test('protects runtime, CSS and real font assets with the shell session cookie and same-origin CORP', async ({
+    page,
+  }) => {
+    const manifestPath = `${PRIVATE_BUILD_ROOT}playground/runtime/manifest.json`;
+    expect((await page.request.get(manifestPath)).status()).toBe(401);
+    await page.request.get(PRIVATE_PLAYGROUND_URL);
+    const manifest: PlaygroundRuntimeManifest = await (await page.request.get(manifestPath)).json();
+    const stylesheetPath = `${PRIVATE_BUILD_ROOT}${
+      manifest.inlineStyles!.find(style => style.cssText.includes('data:font/ttf;base64,'))!.href
+    }`;
+    const stylesheet = await page.request.get(stylesheetPath);
+    const fontReference = (await stylesheet.text()).match(/url\(([^)]+\.ttf)\)/)?.[1];
+    expect(fontReference).toBeDefined();
+    const fontPath = new URL(fontReference!, stylesheet.url()).pathname;
+    const font = await page.request.get(fontPath);
+    expect(font.status()).toBe(200);
+    expect(font.headers()['content-type']).toBe('font/ttf');
+    expect((await font.body()).length).toBeGreaterThan(0);
+
+    await page.context().clearCookies();
+    for (const asset of [manifestPath, `${PRIVATE_BUILD_ROOT}${manifest.scripts[0]}`, stylesheetPath, fontPath]) {
+      const response = await page.request.get(asset);
+      expect(response.status()).toBe(401);
+      expect(response.headers()['cross-origin-resource-policy']).toBe('same-origin');
+    }
+  });
+
+  for (const coep of [false, true]) {
+    test(`loads protected eager/shared/lazy scripts and inlined CSS/fonts ${coep ? 'with' : 'without'} COEP`, async ({
+      page,
+    }) => {
+      const { pageErrors, previewButton, previewFrame, replaceActiveFile } = setupPage(page);
+      const requests: Array<Promise<{ path: string; fromShell: boolean; type: string; cookie: string | null }>> = [];
+      const previewAssetRequests: string[] = [];
+      page.on('request', request => {
+        const { pathname, protocol } = new URL(request.url());
+        if (
+          pathname.startsWith(PRIVATE_BUILD_ROOT) &&
+          !pathname.includes('/playground/app/') &&
+          pathname.endsWith('.js')
+        ) {
+          requests.push(
+            request.headerValue('cookie').then(cookie => ({
+              path: pathname,
+              fromShell: request.frame() === page.mainFrame(),
+              type: request.resourceType(),
+              cookie,
+            })),
+          );
+        }
+        if (
+          protocol === 'http:' &&
+          request.frame() !== page.mainFrame() &&
+          ['stylesheet', 'font'].includes(request.resourceType())
+        ) {
+          previewAssetRequests.push(request.url());
+        }
+      });
+      await page.goto(
+        `${PRIVATE_PLAYGROUND_URL}${coep ? '?coep=require-corp' : ''}${createPlaygroundHash({
+          code: `${IMPORTS}export default () => <><span id="font-probe" className="playground-private-eager">&#xea60;</span><Button>Private eager</Button></>;`,
+        })}`,
+      );
+      await expect(previewButton('Private eager')).toBeVisible();
+      expect(await page.evaluate(() => globalThis.crossOriginIsolated)).toBe(coep);
+      expect(await page.evaluate(() => document.cookie)).not.toContain('playground-auth');
+      expect(await page.context().cookies()).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            name: 'playground-auth',
+            httpOnly: true,
+            sameSite: 'Lax',
+            path: PRIVATE_BUILD_ROOT,
+          }),
+        ]),
+      );
+      const manifest: PlaygroundRuntimeManifest = await (
+        await page.request.get(`${PRIVATE_BUILD_ROOT}playground/runtime/manifest.json`)
+      ).json();
+      expect(manifest.styles).toEqual([]);
+      expect(manifest.inlineStyles!.length).toBeGreaterThan(1);
+      expect(manifest.inlineStyles!.some(style => style.cssText.includes('data:font/ttf;base64,'))).toBe(true);
+      expect(manifest.scripts.some(script => script.startsWith('runtime~playground-runtime.'))).toBe(true);
+      expect((await Promise.all(requests)).some(request => /playground-module-[23]\./.test(request.path))).toBe(false);
+      await expect
+        .poll(() =>
+          previewFrame().evaluate(async () => {
+            const fonts = await document.fonts.load('16px "Playground Fixture"', '\uea60');
+            return fonts.length > 0 && fonts.every(font => font.status === 'loaded');
+          }),
+        )
+        .toBe(true);
+      expect(
+        await previewFrame().evaluate(() => getComputedStyle(document.getElementById('font-probe')!).fontFamily),
+      ).toContain('Playground Fixture');
+
+      await replaceActiveFile(
+        `${IMPORTS}import { compressToBase64 } from 'lz-string';\n` +
+          `import { className } from 'playground-private-assets';\n` +
+          `export default () => <><span id="lazy-probe" className={className}>Lazy CSS</span><Button data-value={compressToBase64('private')}>Private lazy</Button></>;`,
+      );
+      await expect(previewButton('Private lazy')).toHaveAttribute('data-value', /\S+/);
+      expect(
+        await previewFrame().evaluate(
+          () => getComputedStyle(document.getElementById('lazy-probe')!).textDecorationLine,
+        ),
+      ).toBe('underline');
+      const loaded = await Promise.all(requests);
+      expect(loaded.some(request => /playground-module-2\./.test(request.path))).toBe(true);
+      expect(loaded.some(request => /playground-module-3\./.test(request.path))).toBe(true);
+      expect(
+        manifest.scripts.every(script => loaded.some(request => request.path === `${PRIVATE_BUILD_ROOT}${script}`)),
+      ).toBe(true);
+      expect(
+        loaded.every(
+          request =>
+            request.fromShell && request.type === 'fetch' && request.cookie?.includes('playground-auth=fixture'),
+        ),
+      ).toBe(true);
+      expect(previewAssetRequests).toEqual([]);
+      expect(await previewFrame().evaluate(() => globalThis.origin)).toBe('null');
+      await expect(previewFrame().evaluate(() => parent.document.body.innerHTML)).rejects.toThrow(
+        /Blocked a frame|SecurityError/,
+      );
+      await expect(page.locator('iframe')).toHaveAttribute('sandbox', 'allow-scripts');
+      expect(pageErrors).toEqual([]);
+    });
+  }
+
+  for (const [failure, message] of [
+    ['unauthorized', '401 Unauthorized'],
+    ['redirect', 'Failed to fetch'],
+    ['html', 'instead of JavaScript'],
+    ['json', 'instead of JavaScript'],
+    ['plain', 'instead of JavaScript'],
+    ['missing', 'instead of JavaScript'],
+  ]) {
+    test(`reports ${failure} as an initialization error without navigating to sign-in`, async ({ page }) => {
+      const { previewButton, previewFrame, errorAlert } = setupPage(page);
+      const loginRequests: string[] = [];
+      page.on('request', request => {
+        if (new URL(request.url()).pathname === `${PRIVATE_BUILD_ROOT}login`) {
+          loginRequests.push(request.url());
+        }
+      });
+      await page.goto(
+        `${PRIVATE_PLAYGROUND_URL}?coep=require-corp&runtimeFailure=${failure}${createPlaygroundHash({
+          code: `${IMPORTS}export default () => <Button>Should not initialize</Button>;`,
+        })}`,
+      );
+      await expect(errorAlert('Playground runtime failed to load')).toContainText(message);
+      await expect(previewButton('Should not initialize')).toHaveCount(0);
+      expect(previewFrame().url()).toBe('about:srcdoc');
+      expect(new URL(page.url()).pathname).toBe(PRIVATE_PLAYGROUND_URL);
+      expect(loginRequests).toEqual([]);
+      await expect(page.locator('iframe')).toHaveAttribute('sandbox', 'allow-scripts');
+    });
+  }
+
+  test('preserves native Storybook CSS and lazy script loading in the private build', async ({ page }) => {
+    const pageErrors: string[] = [];
+    page.on('pageerror', error => pageErrors.push(error.message));
+    await page.goto(`${PRIVATE_BUILD_ROOT}storybook-fixture.html?coep=require-corp`);
+    await expect(page.locator('link[rel="stylesheet"]')).not.toHaveCount(0);
+    await expect(page.locator('style[data-href]')).toHaveCount(0);
+    const button = page.getByRole('button', { name: /^React / });
+    await expect(button).toBeVisible();
+    await button.click();
+    await expect(page.getByRole('button', { name: 'Native runtime ready' })).toHaveAttribute('data-value', /\S+/);
+    expect(pageErrors).toEqual([]);
+  });
+
+  test('lets a standalone shell explicitly select an authenticated nested build', async ({ page }) => {
+    const { previewButton } = setupPage(page);
+    await page.request.get(PRIVATE_PLAYGROUND_URL);
+    const manifest = `${PRIVATE_BUILD_ROOT}playground/runtime/manifest.json`;
+    await page.goto(
+      `/standalone/playground.html?manifest=${encodeURIComponent(manifest)}${createPlaygroundHash({
+        code: `${IMPORTS}export default () => <Button>Standalone private build</Button>;`,
+      })}`,
+    );
+    await expect(previewButton('Standalone private build')).toBeVisible();
+    await expect(page.locator('iframe')).toHaveAttribute('sandbox', 'allow-scripts');
+  });
+
+  test('does not fetch out-of-build resources authorized by a modified manifest', async ({ page }) => {
+    const privateReads: string[] = [];
+    page.on('request', request => {
+      if (new URL(request.url()).pathname === '/private/secret.js') {
+        privateReads.push(request.url());
+      }
+    });
+    await page.route(`**${PRIVATE_BUILD_ROOT}playground/runtime/manifest.json`, async route => {
+      const response = await route.fetch();
+      const manifest: PlaygroundRuntimeManifest = await response.json();
+      manifest.scripts[0] = '/private/secret.js';
+      manifest.scriptFiles!.push('/private/secret.js');
+      await route.fulfill({ response, json: manifest });
+    });
+    await page.goto(PRIVATE_PLAYGROUND_URL);
+    await expect(page.locator('body')).toContainText('outside the selected build');
+    await expect(page.locator('iframe')).toHaveCount(0);
+    expect(privateReads).toEqual([]);
+  });
+});
 
 test.describe('playground', () => {
   test('loads eager and lazy runtime chunks when deployment requires cross-origin resource permission', async ({

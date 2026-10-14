@@ -4,6 +4,7 @@ import * as fs from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import * as vm from 'node:vm';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import * as ts from 'typescript';
 
@@ -42,6 +43,7 @@ describe('getAddonOptions', () => {
       setup: './setup',
       typings: ['csstype'],
       typingsRoots: { icons: '/workspace/icons' },
+      inlineStyles: true,
     };
 
     expect(getAddonOptions(options)).toEqual(expect.objectContaining(options));
@@ -602,6 +604,82 @@ describe('collectConfiguredTypings', () => {
 
 describe('PlaygroundRuntimeManifestPlugin', () => {
   type Typings = Awaited<ReturnType<typeof collectConfiguredTypings>>;
+
+  it.each([false, true])(
+    'supports extracted eager/lazy CSS and emitted fonts without changing native assets (inlineStyles: %s)',
+    async inlineStyles => {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-css-manifest-'));
+      fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify({ private: true, sideEffects: false }));
+      fs.writeFileSync(path.join(root, 'entry.js'), 'import "./eager.css"; import("./lazy.js");');
+      fs.writeFileSync(path.join(root, 'lazy.js'), 'import "./lazy.css"; export const value = 1;');
+      fs.writeFileSync(
+        path.join(root, 'eager.css'),
+        '@font-face { font-family: Fixture; src: url("./fixture.woff2"); }',
+      );
+      fs.writeFileSync(path.join(root, 'lazy.css'), '.lazy { font-family: Fixture; }');
+      fs.writeFileSync(path.join(root, 'fixture.woff2'), Buffer.from('emitted font'));
+      const compiler = webpack({
+        mode: 'production',
+        devtool: false,
+        context: root,
+        entry: { [ENTRY_NAME]: './entry.js' },
+        output: {
+          path: path.join(root, 'out'),
+          publicPath: 'auto',
+          filename: '[name].[contenthash].js',
+          assetModuleFilename: 'assets/[name].[contenthash][ext]',
+        },
+        optimization: { minimize: false },
+        module: {
+          rules: [
+            { test: /\.css$/, sideEffects: true, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+            { test: /\.woff2$/, type: 'asset/resource' },
+          ],
+        },
+        resolveLoader: { modules: [path.resolve(__dirname, '../../../../node_modules')] },
+        plugins: [
+          new MiniCssExtractPlugin({ filename: 'styles/[name].[contenthash].css' }),
+          new PlaygroundRuntimeManifestPlugin({ modules: {}, inlineStyles }, () => ({
+            base: {},
+            shared: {},
+            modules: {},
+            sources: [],
+            missing: [],
+          })),
+        ],
+      });
+
+      try {
+        const stats = await new Promise<webpack.Stats>((resolve, reject) => {
+          compiler.run((error, result) => (error || !result ? reject(error) : resolve(result)));
+        });
+        expect(stats.toString('errors-only')).toBe('');
+        const manifest = JSON.parse(fs.readFileSync(path.join(root, 'out/playground/runtime/manifest.json'), 'utf8'));
+        const emittedCss = stats.compilation.getAssets().filter(asset => asset.name.endsWith('.css'));
+        const emittedSources = emittedCss.map(asset => fs.readFileSync(path.join(root, 'out', asset.name), 'utf8'));
+        expect(emittedCss).toHaveLength(2);
+        expect(emittedSources.some(source => source.includes('.woff2'))).toBe(true);
+        expect(emittedSources.every(source => !source.includes('data:font/'))).toBe(true);
+        if (inlineStyles) {
+          expect(manifest.styles).toEqual([]);
+          expect(manifest.inlineStyles.map((style: { href: string }) => style.href).sort()).toEqual(
+            emittedCss.map(asset => asset.name).sort(),
+          );
+          expect(JSON.stringify(manifest.inlineStyles)).toContain(
+            `data:font/woff2;base64,${Buffer.from('emitted font').toString('base64')}`,
+          );
+        } else {
+          expect(manifest.styles).toHaveLength(1);
+          expect(manifest.inlineStyles).toBeUndefined();
+        }
+      } finally {
+        await new Promise<void>((resolve, reject) => {
+          compiler.close(error => (error ? reject(error) : resolve()));
+        });
+        fs.rmSync(root, { recursive: true, force: true });
+      }
+    },
+  );
 
   const setup = () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-manifest-'));

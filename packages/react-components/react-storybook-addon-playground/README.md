@@ -162,9 +162,10 @@ are watched and recollected when they change.
 
 The addon reads its options from Storybook's preset options, generates its runtime entry in
 `node_modules/.cache/fluentui-playground-runtime/` (next to the Storybook config), and keeps the runtime out of Storybook
-pages through `html-webpack-plugin` hooks. The editor packages (`monaco-editor` 0.52 with TypeScript 5.4, Prettier,
-PostCSS) are root build-time dependencies, bundled into the prebuilt shell and not installed with the addon. Declarations are collected for the
-TypeScript version bundled with Monaco, so packages with `typesVersions` resolve the matching declaration tree.
+pages through `html-webpack-plugin` hooks. Monaco 0.52 with TypeScript 5.4 and Prettier are root build-time dependencies,
+bundled into the prebuilt shell and not installed with the addon. PostCSS supports both the shell's CSS parsing and the
+addon's build-time extracted CSS inlining. Declarations are collected for the TypeScript version bundled with Monaco,
+so packages with `typesVersions` resolve the matching declaration tree.
 
 Configuring the full `@fluentui/react-icons` package still bundles its whole namespace into an on-demand runtime chunk;
 lazy loading avoids loading it for examples that do not import icons, but does not split individual icons. Per-icon
@@ -193,23 +194,80 @@ The sandbox remains `allow-scripts` only; live updates never add `allow-same-ori
 
 ### Deployment resource policies
 
-The preview's `about:srcdoc` document has an opaque origin. With `Cross-Origin-Embedder-Policy: require-corp`, direct
-script requests from that document can be blocked even when the runtime is hosted alongside Storybook. This can affect
-both initial files such as `runtime~playground-runtime.*.js` and lazily loaded module chunks.
+The preview's `about:srcdoc` document has an opaque origin. Direct script requests can be blocked by
+`Cross-Origin-Resource-Policy: same-origin`, including deployments using `Cross-Origin-Embedder-Policy: require-corp`.
+The opaque iframe also cannot use the shell's HttpOnly `SameSite=Lax` authentication cookies for those requests.
+This can affect both initial files such as `runtime~playground-runtime.*.js` and lazily loaded module chunks.
 
 For same-origin runtime JavaScript, the addon avoids those requests: the build manifest lists all eager and lazy
 runtime script files, the shell fetches their text from its own origin, and execution remains entirely inside the
 sandbox. Lazy chunks still load only when imported. Shared Webpack chunks retain their normal loader on Storybook pages.
 No `allow-same-origin`, global `Cross-Origin-Resource-Policy: cross-origin` header, or consumer script loader is needed.
 
-Only exact script URLs listed in the manifest can be fetched through this channel. Requests are authenticated by the
-preview window and session token, cross-origin URLs and redirects are rejected, failed requests report an error, and
-disposing the preview aborts pending fetches. The shell never evaluates the returned JavaScript.
+Only exact, canonical JavaScript URLs listed in the manifest **within the selected Storybook build root** can be
+fetched through this channel. The manifest must be at `playground/runtime/manifest.json`, return JSON and have the
+expected shape; asset paths outside that build, traversal/ambiguous encoded paths and query/hash variants are rejected.
+Requests are authenticated by the preview window and session token. Fetches use same-origin credentials and
+`redirect: 'error'`; non-success responses, login pages, JSON, plain text and missing or unsupported JavaScript content
+types report an initialization error rather than navigating the iframe to sign-in. Disposing the preview aborts
+pending fetches. The shell never evaluates returned JavaScript.
+
+**Authentication of `playground.html` itself is a prerequisite.** The host must authenticate the user before serving
+the shell and provide a session usable for its same-origin asset requests; the addon does not implement login or
+bypass the host's authorization. Coverage uses a synthetic cookie-gated CORP deployment, with and without COEP,
+not a hosted EasyAuth integration.
+
+#### Private extracted CSS and fonts
+
+For private builds with extracted stylesheets and protected font/image assets, enable build-scoped inlining:
+
+```js
+options: {
+  modules: ['@workspace/ui'],
+  inlineStyles: true,
+}
+```
+
+Use production CSS extraction (tested with `mini-css-extract-plugin`), `css-loader` to resolve imports and URLs, and
+Webpack `asset/resource` for fonts/images. The relevant Webpack settings are:
+
+```js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+// Merge these settings into your existing production build, replacing its CSS loader pipeline, not adding a second one.
+const cssBuildSettings = {
+  module: {
+    rules: [
+      { test: /\.css$/, sideEffects: true, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+      { test: /\.(woff2?|ttf|otf|eot|png|jpe?g|gif|svg|webp|avif|ico)$/i, type: 'asset/resource' },
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin({ filename: 'styles/[name].[contenthash].css' })],
+};
+```
+
+Keep the CSS rule's `sideEffects: true` so stylesheet imports survive production tree-shaking even when their owning
+package marks JavaScript as side-effect-free.
+
+With `inlineStyles`, the manifest contains all extracted runtime CSS, including lazy CSS. Build-owned font/image
+`url(...)` references are resolved relative to each emitted stylesheet and replaced with data URLs. `image-set()`
+string URLs are handled too. Only this compilation's emitted assets are read: the build never fetches remote URLs
+or arbitrary files. Missing assets, unsupported asset types and unresolved `@import` rules fail the build rather than
+leaving a private resource request to fail in the iframe. Static directory/CDN URLs must be emitted through the
+build's CSS pipeline instead; already-inline data URLs and local fragments remain valid.
+
+The opaque preview installs those styles before executing the runtime, with `data-href` attributes recognized by the
+lazy CSS loader. **Lazy extracted CSS is installed up front**, so opt in only when that global style ordering is
+appropriate for your modules. Fonts load from data URLs without CORS or authentication requests from the iframe.
+Storybook's original emitted CSS/font assets and native loaders remain unchanged. No general-purpose authenticated
+fetch API, `allow-same-origin`, or permissive shared-server headers are added.
 
 Rebuild and deploy **both the addon shell and the consuming Storybook runtime** together. Older manifests without
-`scriptFiles` retain direct script loading and therefore still need appropriate hosting permissions. External/CDN
-runtime scripts, styles, fonts and media remain subject to their own resource policies. When using COEP, serve Monaco's
-worker scripts with a compatible COEP response header as well; otherwise the browser can block editor workers.
+`scriptFiles` retain direct script loading and therefore still need appropriate hosting permissions. Without
+`inlineStyles`, extracted stylesheets/fonts still make native requests. Runtime-injected CSS (including `style-loader`
+and CSS-in-JS font URLs), images and media not emitted through extracted CSS remain subject to their own resource
+policies; use the supported extraction configuration for protected fonts. When using COEP, serve Monaco's worker
+scripts with a compatible COEP response header as well; otherwise the browser can block editor workers.
 
 ### Preview sandbox
 
@@ -231,8 +289,11 @@ small crafted link cannot expand into a huge document. The playground warns when
 example when a chat app truncated it) and when **Copy link** produces a URL longer than 8,000 characters.
 `readPlaygroundHash` exposes the same parser for tools that create or inspect links.
 
-The shell loads `../runtime/manifest.json` by default. A `?manifest=` query parameter can point it at another runtime
-on the same origin (cross-origin manifests are ignored).
+The normally mounted `playground/app/playground.html` shell loads `../runtime/manifest.json` and is bound to that
+Storybook build. An override may name the same manifest, not a different same-origin build or arbitrary JSON endpoint.
+A standalone shell mounted outside that standard path can explicitly select a same-origin build, for example
+`/standalone/playground.html?manifest=/storybook/playground/runtime/manifest.json`. Its manifest must still be at the
+standard emitted location, and all manifest assets are confined to `/storybook/`. Invalid overrides fail visibly.
 
 The optional setup module default-exports a value created with `definePlaygroundSetup`:
 
