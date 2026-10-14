@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: make sure change event fires before submit event during implicit form submission",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com"
+}
