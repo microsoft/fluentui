@@ -28,9 +28,10 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
   const baseState = useListItemBase_unstable(props, ref);
   const navigationMode = useListNavigationMode();
   const { dir } = useFluent_unstable();
+  const onKeyDown: React.KeyboardEventHandler<HTMLElement> | undefined = baseState.root.onKeyDown;
 
-  const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(event => {
-    baseState.root.onKeyDown?.(event);
+  const handleKeyDown: React.KeyboardEventHandler<HTMLElement> = useEventCallback(event => {
+    onKeyDown?.(event);
 
     if (
       event.defaultPrevented ||

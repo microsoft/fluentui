@@ -7,7 +7,7 @@ import {
   useListContextValues_unstable,
   validateListItemElement,
 } from '@fluentui/react-list';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { isSlot, SLOT_ELEMENT_TYPE_SYMBOL, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 
 import type { ListContextValues, ListProps, ListState } from './List.types';
 import { getListFocusableElements, useCompositeListNavigation } from './listNavigationContext';
@@ -27,11 +27,11 @@ export const useList = (
   const rootRef = React.useRef<HTMLDivElement | HTMLUListElement | HTMLOListElement>(null);
   const mergedRef = useMergedRefs(baseState.root.ref, rootRef);
   const onCompositeFocus = useCompositeListNavigation(baseState.navigationMode, rootRef);
-  const handleFocusCapture: React.FocusEventHandler<HTMLDivElement & HTMLUListElement & HTMLOListElement> =
-    useEventCallback(event => {
-      baseState.root.onFocusCapture?.(event);
-      onCompositeFocus(event);
-    });
+  const onFocusCapture: React.FocusEventHandler<HTMLElement> | undefined = baseState.root.onFocusCapture;
+  const handleFocusCapture: React.FocusEventHandler<HTMLElement> = useEventCallback(event => {
+    onFocusCapture?.(event);
+    onCompositeFocus(event);
+  });
   const validateListItem = useEventCallback((element: HTMLElement) => {
     if (baseState.navigationMode !== 'composite') {
       baseState.validateListItem(element);
@@ -40,8 +40,12 @@ export const useList = (
     if (process.env.NODE_ENV === 'production') {
       return;
     }
+    const root = baseState.root;
+    if (!isSlot(root) || typeof root[SLOT_ELEMENT_TYPE_SYMBOL] !== 'string') {
+      throw new Error('List must render an intrinsic root slot.');
+    }
     validateListItemElement(element, {
-      listRenderedAs: props.as || 'div',
+      listRenderedAs: root[SLOT_ELEMENT_TYPE_SYMBOL],
       listRole: baseState.root.role || calculateListRole(baseState.navigationMode, !!baseState.selection),
       hasSelection: !!baseState.selection,
       hasFocusableChildren: getListFocusableElements(element).length > 0,

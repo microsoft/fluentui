@@ -93,6 +93,47 @@ describe('List', () => {
     expect(getByRole('listitem').tagName).toBe('LI');
   });
 
+  it('validates the resolved default composite root and item elements', () => {
+    const { getByRole } = render(
+      <List aria-label="Actions" navigationMode="composite">
+        <ListItem value="one">
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+
+    expect(getByRole('grid').tagName).toBe('DIV');
+    expect(getByRole('row').tagName).toBe('DIV');
+  });
+
+  it.each(['div', 'ul', 'ol'] as const)('preserves composite focus capture for an explicit %s root', as => {
+    const focusTargets: HTMLElement[] = [];
+    const { getByRole } = render(
+      <List
+        as={as}
+        aria-label="Actions"
+        navigationMode="composite"
+        onFocusCapture={(event: React.FocusEvent<HTMLElement>) => focusTargets.push(event.currentTarget)}
+      >
+        <ListItem as={as === 'div' ? 'div' : 'li'} value="one">
+          <span role="gridcell">
+            <button>Edit</button>
+          </span>
+        </ListItem>
+      </List>,
+    );
+
+    const grid = getByRole('grid');
+    const button = getByRole('button');
+    fireEvent.focusIn(button);
+
+    expect(grid.tagName).toBe(as.toUpperCase());
+    expect(focusTargets).toEqual([grid]);
+    expect(button).toHaveAttribute('tabindex', '0');
+  });
+
   it('does not include Tabster attributes or Fluent styling', () => {
     const { container, getByRole } = render(
       <List navigationMode="items">
@@ -193,9 +234,12 @@ describe('List', () => {
   );
 
   it('has no accessibility violations with populated composite actions', async () => {
-    const { baseElement } = render(
+    const { baseElement, getByRole } = render(
       <List aria-label="People actions" navigationMode="composite">
         <ListItem value="alex">
+          <span role="gridcell">
+            <span aria-hidden>Avatar</span>
+          </span>
           <span role="gridcell">Alex</span>
           <span role="gridcell">
             <button aria-label="Edit Alex">Edit</button>
@@ -205,6 +249,11 @@ describe('List', () => {
       </List>,
     );
 
+    expect(Array.from(getByRole('row').children, child => child.getAttribute('role'))).toEqual([
+      'gridcell',
+      'gridcell',
+      'gridcell',
+    ]);
     expect(await axe(baseElement, { rules: { region: { enabled: false } } })).toHaveNoViolations();
   });
 

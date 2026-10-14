@@ -8,7 +8,9 @@ export const ActionItems = (): React.ReactNode => (
   <List aria-label="People actions" className={styles.list} navigationMode="composite">
     {['Alex Wilber', 'Mona Kane', 'Allan Munger', 'Robin Counts'].map(person => (
       <ListItem className={styles.item} key={person} value={person}>
-        <PersonRegular aria-hidden className={styles.leadingIcon} />
+        <span className={styles.leadingIcon} role="gridcell">
+          <PersonRegular aria-hidden className={styles.leadingIcon} />
+        </span>
         <span className={styles.title} role="gridcell">
           {person}
         </span>
