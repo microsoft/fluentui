@@ -115,15 +115,6 @@ Each exported component is available as an unstyled primitive component, with it
 - `useDivider`
 - `renderDivider`
 
-#### Color picker controls
-
-`ColorPicker`, `ColorSlider`, `AlphaSlider`, and `ColorArea` delegate behavior and accessibility
-to the shared `@fluentui/react-color-picker` base hooks. Custom styles should consume the runtime
-rail endpoints, direction, thumb color, and progress from the returned root slot rather than
-maintaining another color state or recomputing endpoints. See the
-[shared color-control contract](../../../react-color-picker/library/docs/Spec.md#shared-color-control-behavior)
-for the CSS variables, color precedence, and orientation defaults.
-
 ## Structure
 
 ### Composition Layers

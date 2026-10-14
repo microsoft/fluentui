@@ -18,12 +18,11 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const colorFromContext = useColorPickerContextValue_unstable(ctx => ctx.color);
   const { color, onChange = onChangeFromContext, transparency = false, vertical = false } = props;
-  const [resolvedColor, setCurrentColor] = useControllableState<HsvColor>({
+  const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
     state: color ?? colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
-  const currentColor = resolvedColor ?? INITIAL_COLOR_HSV;
   const hslColor = createHslColor(currentColor);
   const currentValue = adjustToTransparency((currentColor.a ?? 1) * 100, transparency);
 

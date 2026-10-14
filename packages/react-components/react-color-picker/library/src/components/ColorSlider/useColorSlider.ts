@@ -60,12 +60,11 @@ export const useColorSliderBase_unstable = (
     thumb,
   } = props;
 
-  const [resolvedColor, setCurrentColor] = useControllableState<HsvColor>({
+  const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
     state: color ?? colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
-  const currentColor = resolvedColor ?? INITIAL_COLOR_HSV;
   const hslColor = createHslColor(currentColor);
 
   const MAX = channel === 'hue' ? HUE_MAX : COLOR_MAX;

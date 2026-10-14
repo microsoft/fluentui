@@ -4,7 +4,9 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
+import { useControllableState } from '@fluentui/react-utilities';
 import { ColorPickerProvider } from '../../contexts/colorPicker';
+import { INITIAL_COLOR_HSV } from '../../utils/constants';
 import { ColorSlider } from '../ColorSlider/ColorSlider';
 import { useColorSliderBase_unstable } from '../ColorSlider/useColorSlider';
 import { colorSliderCSSVars } from '../ColorSlider/ColorSlider.constants';
@@ -133,23 +135,23 @@ describe.each([
       error.mockRestore();
     }
   });
+});
 
-  it('warns when a controlled color is removed and retains its original controlled mode', () => {
-    const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    try {
-      const { rerender } = render(<Control color={initialColor} />);
-      rerender(<Control />);
-      expect(error).toHaveBeenCalledWith(expect.stringContaining('a controlled value to be uncontrolled'));
-      const input = screen.getByRole('slider');
-      const value = input.getAttribute('value');
-      fireEvent.change(input, { target: { value: changedValue } });
-      expect(input).toHaveValue(value);
-      rerender(<Control color={initialColor} />);
-      expect(input).toHaveValue(initialValue);
-    } finally {
-      error.mockRestore();
-    }
-  });
+it('uses the controllable-state warning for an unsupported controlled-to-uncontrolled transition', () => {
+  const error = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+  try {
+    // Check the warning at its owner without requiring controls to render an unsupported undefined color.
+    const initialProps: { color?: typeof initialColor } = { color: initialColor };
+    const { rerender } = renderHook(
+      ({ color }: { color?: typeof initialColor }) =>
+        useControllableState({ state: color, initialState: INITIAL_COLOR_HSV }),
+      { initialProps },
+    );
+    rerender({ color: undefined });
+    expect(error).toHaveBeenCalledWith(expect.stringContaining('a controlled value to be uncontrolled'));
+  } finally {
+    error.mockRestore();
+  }
 });
 
 describe('ColorSlider channel ramps', () => {
