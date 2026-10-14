@@ -5,6 +5,9 @@
 ```ts
 
 // @internal
+export function createFlatOverflowManager(initialOptions?: Partial<OverflowOptions>): OverflowManager;
+
+// @internal
 export function createOverflowManager(initialOptions?: Partial<OverflowOptions>): OverflowManager;
 
 // @internal
@@ -56,6 +59,7 @@ export interface OverflowItemEntry {
     id: string;
     pinned?: boolean;
     priority: number;
+    sizeHint?: number;
 }
 
 // @internal
