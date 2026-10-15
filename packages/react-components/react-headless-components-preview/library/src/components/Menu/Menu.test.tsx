@@ -26,16 +26,6 @@ describe('Menu', () => {
     expect(element).toBeDefined();
   });
 
-  it('compile-time: does not accept unsupported external trigger registration', () => {
-    const element = (
-      // @ts-expect-error The headless Menu does not register external triggers.
-      <Menu unstable_triggerElement={null}>
-        <MenuPopover />
-      </Menu>
-    );
-    expect(element).toBeDefined();
-  });
-
   it('renders trigger and surface children when open', () => {
     const { getByText } = render(
       <Menu defaultOpen>

@@ -19,7 +19,6 @@ import {
   elementContains,
   useTimeout,
   useMergedRefs,
-  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -186,35 +185,8 @@ export const useMenuBase_unstable = (
     },
   });
 
-  const triggerRefVersion = React.useRef(0);
-  const trackTriggerRegistration = React.useCallback(() => {
-    triggerRefVersion.current += 1;
-  }, []);
-  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef, trackTriggerRegistration);
+  const triggerRef = useMergedRefs(targetRef, safeZoneHandle.targetRef);
   const menuPopoverRef = useMergedRefs(containerRef, safeZoneHandle.containerRef);
-
-  const hasMenuTrigger = menuTrigger !== undefined;
-  useIsomorphicLayoutEffect(() => {
-    if (props.unstable_triggerElement === undefined) {
-      return;
-    }
-    if (hasMenuTrigger) {
-      if (process.env.NODE_ENV !== 'production') {
-        // eslint-disable-next-line no-console
-        console.warn('Menu: unstable_triggerElement cannot be combined with MenuTrigger.');
-      }
-      return;
-    }
-
-    triggerRef(props.unstable_triggerElement);
-    const registrationVersion = triggerRefVersion.current;
-    return () => {
-      // A rendered trigger may attach before this effect's cleanup in the same commit.
-      if (triggerRefVersion.current === registrationVersion) {
-        triggerRef(null);
-      }
-    };
-  }, [props.unstable_triggerElement, hasMenuTrigger, triggerRef]);
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({

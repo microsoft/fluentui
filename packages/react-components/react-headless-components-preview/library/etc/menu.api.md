@@ -184,7 +184,7 @@ export { MenuPopoverSlots }
 export { MenuPopoverState }
 
 // @public (undocumented)
-export type MenuProps = Omit<MenuBaseProps, 'positioning' | 'unstable_disableAutoFocus' | 'unstable_triggerElement'> & {
+export type MenuProps = Omit<MenuBaseProps, 'positioning' | 'unstable_disableAutoFocus'> & {
     positioning?: PositioningShorthand;
 };
 

@@ -40,22 +40,8 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> &
     unstable_disableAutoFocus?: boolean;
 
     /**
-     * Registers an externally rendered trigger for containment, focus restoration,
-     * and positioning when no explicit positioning target is provided.
-     * The owner supplies activation, keyboard handling, ARIA relationships, and
-     * an accessible name for MenuList. Keep the element connected and focusable
-     * through close when focus restoration is expected.
-     *
-     * Null or undefined removes external registration. Do not combine with
-     * MenuTrigger; a rendered trigger takes precedence.
-     */
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_triggerElement?: HTMLElement | null;
-
-    /**
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
-     * Alternatively can only contain `MenuPopover` if using a custom positioning
-     * `target` or registering an external trigger with `unstable_triggerElement`.
+     * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
     children: [JSXElement, JSXElement] | JSXElement;
 
