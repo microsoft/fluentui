@@ -89,6 +89,47 @@ describe('Calendar', () => {
       cy.get(day('September 19, 2020')).should('be.focused');
     });
 
+    (['capture', 'bubble'] as const).forEach(phase => {
+      it(`honors custom dayLabel child ${phase} cancellation before navigation`, () => {
+        const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => {
+          if (phase === 'capture') {
+            event.preventDefault();
+          }
+        });
+        const onKeyDown = cy.stub().callsFake((event: React.KeyboardEvent) => {
+          if (phase === 'bubble') {
+            event.preventDefault();
+          }
+        });
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            dayPicker={{
+              getDayCellProps: () => ({
+                dayLabel: {
+                  children: (
+                    <span
+                      tabIndex={0}
+                      title="Custom day content"
+                      onKeyDownCapture={onKeyDownCapture}
+                      onKeyDown={onKeyDown}
+                    >
+                      18
+                    </span>
+                  ),
+                },
+              }),
+            }}
+          />,
+        );
+        cy.get(day('September 18, 2020')).find('[title="Custom day content"]').focus().realPress('ArrowRight');
+        cy.get(day('September 18, 2020')).find('[title="Custom day content"]').should('be.focused');
+        cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+        cy.wrap(onKeyDown).should('have.been.calledOnce');
+      });
+    });
+
     it('pages from the arrow-focused day rather than the original anchor', () => {
       const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
       mountFluent(<Calendar today={today} defaultValue={today} onDisplayedDateChange={onDisplayedDateChange} />);

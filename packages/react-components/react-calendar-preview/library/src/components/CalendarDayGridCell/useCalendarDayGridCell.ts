@@ -351,24 +351,28 @@ export const useCalendarDayGridCell_unstable = (
   const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref);
   const onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLTableCellElement>) => {
     if (isCalendarGridArrow(ev)) {
-      dispatchedSlotEvents.add(ev.nativeEvent);
-      const slotHandlers = [
-        (capture: boolean) => forwardButton(ev, capture, buttonRef.current),
-        (capture: boolean) => forwardDayLabel(ev, capture, dayLabelRef.current),
-        (capture: boolean) => forwardMarker?.(ev, capture, markerRef.current),
-      ];
-      for (const forward of slotHandlers) {
-        if (!ev.isPropagationStopped()) {
-          forward(true);
+      const isSlotRootTarget =
+        ev.target === buttonRef.current || ev.target === dayLabelRef.current || ev.target === markerRef.current;
+      if (isSlotRootTarget) {
+        dispatchedSlotEvents.add(ev.nativeEvent);
+        const slotHandlers = [
+          (capture: boolean) => forwardButton(ev, capture, buttonRef.current),
+          (capture: boolean) => forwardDayLabel(ev, capture, dayLabelRef.current),
+          (capture: boolean) => forwardMarker?.(ev, capture, markerRef.current),
+        ];
+        for (const forward of slotHandlers) {
+          if (!ev.isPropagationStopped()) {
+            forward(true);
+          }
         }
-      }
-      for (const forward of slotHandlers.reverse()) {
-        if (!ev.isPropagationStopped()) {
-          forward(false);
+        for (const forward of slotHandlers.reverse()) {
+          if (!ev.isPropagationStopped()) {
+            forward(false);
+          }
         }
-      }
-      if (ev.isPropagationStopped()) {
-        return;
+        if (ev.isPropagationStopped()) {
+          return;
+        }
       }
     }
     if (!ev.isPropagationStopped()) {
@@ -383,10 +387,20 @@ export const useCalendarDayGridCell_unstable = (
       onDayKeyDown(ev);
     }
   });
+  const ownsArrow = useEventCallback(
+    (ev: React.KeyboardEvent<HTMLTableCellElement>) =>
+      !ariaHidden &&
+      !!originalDate &&
+      isCalendarGridArrow(ev) &&
+      (ev.target === ev.currentTarget ||
+        ev.target === buttonRef.current ||
+        ev.target === dayLabelRef.current ||
+        ev.target === markerRef.current),
+  );
   const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
     onKeyDown,
     cellProps.onKeyDownCapture,
-    ev => !ariaHidden && !!originalDate && isCalendarGridArrow(ev),
+    ownsArrow,
   );
 
   const root = slot.always<ExtractSlotProps<Slot<'td'>>>(

@@ -27,6 +27,7 @@ import { renderCalendarMonthGridCell_unstable } from '../CalendarMonthGridCell/r
 import { CalendarYearGridCell } from '../CalendarYearGridCell/CalendarYearGridCell';
 import { useCalendarYearGridCell_unstable } from '../CalendarYearGridCell/useCalendarYearGridCell';
 import { renderCalendarYearGridCell_unstable } from '../CalendarYearGridCell/renderCalendarYearGridCell';
+import { handleCalendarGridKeyDown, isCalendarKeyboardEditable } from '../../utils/calendarKeyboard';
 import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarDayHandle, CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarDayGridCellProps } from '../CalendarDayGridCell/CalendarDayGridCell.types';
@@ -275,6 +276,18 @@ describe.each([
     });
   });
 
+  it.each(['inherit', 'FALSE'])('treats contenteditable=%s as non-editable', value => {
+    const { cells } = renderPicker(picker, base);
+    const target = cells[0].ownerDocument.createElement('span');
+    target.setAttribute('contenteditable', value);
+    cells[0].appendChild(target);
+    act(() => target.focus());
+    fireEvent.keyDown(target, { key: 'ArrowRight' });
+
+    expect(cells[1]).toHaveFocus();
+    expect(isCalendarKeyboardEditable(target)).toBe(false);
+  });
+
   it.each([
     { key: 'ArrowRight', target: 6 },
     { key: 'ArrowLeft', target: 4 },
@@ -303,6 +316,47 @@ describe.each([
     expect(failedFocus).toHaveBeenCalledTimes(1);
     expect(cells[2]).toHaveFocus();
     failedFocus.mockRestore();
+  });
+
+  it.each([
+    { key: 'ArrowRight', targetIndex: 1 },
+    { key: 'ArrowDown', targetIndex: 4 },
+  ])('uses the shadow root activeElement after $key', ({ key, targetIndex }) => {
+    const host = document.createElement('div');
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const grid = document.createElement('div');
+    grid.setAttribute('role', 'grid');
+    const shadowCells = Array.from({ length: 12 }, () => {
+      const cell = document.createElement('button');
+      cell.setAttribute('role', 'gridcell');
+      return cell;
+    });
+    grid.append(...shadowCells);
+    shadowRoot.appendChild(grid);
+    document.body.appendChild(host);
+    act(() => shadowCells[0].focus());
+    const event = {
+      currentTarget: shadowCells[0],
+      isDefaultPrevented: () => false,
+      key,
+      shiftKey: false,
+      altKey: false,
+      ctrlKey: false,
+      metaKey: false,
+      target: shadowCells[0],
+      preventDefault: jest.fn(),
+    } as unknown as React.KeyboardEvent<HTMLButtonElement>;
+
+    handleCalendarGridKeyDown(event, 'ltr', false);
+
+    expect(shadowRoot.activeElement).toBe(shadowCells[targetIndex]);
+    host.remove();
+  });
+
+  it.each(['inherit', 'FALSE'])('does not consider contenteditable=%s editable without an editable ancestor', value => {
+    const target = document.createElement('span');
+    target.setAttribute('contenteditable', value);
+    expect(isCalendarKeyboardEditable(target)).toBe(false);
   });
 
   it.each([

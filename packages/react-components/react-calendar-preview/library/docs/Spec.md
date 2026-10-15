@@ -256,9 +256,9 @@ Handled arrows, including boundary keys, are prevented so Tabster or a native fo
 
 Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
 owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
-cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day button
-slot capture and bubbling handlers also run before navigation, with the slot element as `currentTarget`.
-Only handlers on the target's ancestor path run, in capture then bubbling order. `preventDefault()` cancels
+cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day button and day-label slot handlers, including handlers on custom descendants, run in natural capture and
+bubbling order with the correct `currentTarget`. Only handlers on the target's ancestor path run.
+`preventDefault()` cancels
 navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses later callbacks,
 but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
 Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
@@ -271,7 +271,8 @@ Month/year navigation continues past cells that cannot receive focus, including 
 programmatic navigation to cells with `tabIndex="-1"`.
 
 Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of
-`contenteditable="false"` remain navigable even inside an editable ancestor.
+`contenteditable="false"` remain navigable even inside an editable ancestor. `inherit` and invalid or
+case-insensitive values are treated according to the nearest explicit editable boundary.
 
 The day and month base hooks reserve `data-fui-calendar-picker="day"` and `data-fui-calendar-picker="month"` on their roots.
 Calendar uses these behavioral markers, not styled class names, to restore focus when a focused picker is hidden.

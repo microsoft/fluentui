@@ -27,8 +27,29 @@ export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean 
     return true;
   }
 
-  const contentEditableBoundary = target.closest('[contenteditable]');
-  return contentEditableBoundary?.getAttribute('contenteditable') !== 'false' && !!contentEditableBoundary;
+  let element: HTMLElement | null = target;
+  while (element) {
+    const contentEditable = element.getAttribute('contenteditable')?.trim().toLowerCase();
+    if (contentEditable === '' || contentEditable === 'true' || contentEditable === 'plaintext-only') {
+      return true;
+    }
+    if (contentEditable === 'false') {
+      return false;
+    }
+    element = element.parentElement;
+  }
+  return false;
+};
+
+export const getCalendarRootActiveElement = (element: HTMLElement): Element | null => {
+  const root = element.getRootNode();
+  if (root.nodeType === 9) {
+    return (root as Document).activeElement;
+  }
+  if (root.nodeType === 11 && 'host' in root) {
+    return (root as ShadowRoot).activeElement;
+  }
+  return null;
 };
 
 export const isCalendarArrowKey = (key: string): boolean =>
@@ -137,7 +158,7 @@ export const handleCalendarGridKeyDown = (
     const cell = cells[index];
     if (!cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true')) {
       cell.focus();
-      if (cell.ownerDocument.activeElement === cell) {
+      if (getCalendarRootActiveElement(cell) === cell) {
         break;
       }
     }
