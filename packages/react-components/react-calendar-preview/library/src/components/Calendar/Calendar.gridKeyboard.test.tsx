@@ -305,6 +305,18 @@ describe.each([
         const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
         cell.dispatchEvent(event);
 
+        const delegatedEvent = {
+          currentTarget: cell,
+          isDefaultPrevented: () => event.defaultPrevented,
+          isPropagationStopped: () => false,
+          key: 'ArrowRight',
+          nativeEvent: event,
+          preventDefault: () => event.preventDefault(),
+          stopPropagation: () => event.stopPropagation(),
+        } as unknown as React.KeyboardEvent<HTMLButtonElement>;
+        handlers.onKeyDownCapture(delegatedEvent);
+        handlers.onKeyDown(delegatedEvent);
+
         expect(order).toEqual(['capture', 'consumer', 'native']);
         expect(onCapture).toHaveBeenCalledTimes(1);
         expect(onKeyDown).toHaveBeenCalledTimes(1);
