@@ -79,7 +79,6 @@
 .slider {
   --slider-thumb-size: var(--space-5);
   --slider-progress: var(--fui-Slider--progress);
-  --slider-direction: to right;
 
   position: relative;
   display: grid;
@@ -101,8 +100,6 @@
 }
 
 .slider[data-orientation='vertical'] {
-  --slider-direction: to top;
-
   min-inline-size: var(--space-8);
   min-block-size: 280px;
   grid-template-rows: 1fr 100% 1fr;
@@ -180,12 +177,13 @@
   background: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
 }
 
-.slider[data-channel='saturation'] .rail {
-  background: linear-gradient(var(--slider-direction), #808080, var(--fui-Slider__rail--color));
-}
-
+.slider[data-channel='saturation'] .rail,
 .slider[data-channel='value'] .rail {
-  background: linear-gradient(var(--slider-direction), #000, var(--fui-Slider__rail--color));
+  background: linear-gradient(
+    var(--fui-Slider--direction),
+    var(--fui-Slider__rail--color),
+    var(--fui-Slider__rail--color-low)
+  );
 }
 
 .alphaSlider .rail {
