@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Implemented auto-focus on the last selected element in the chart when changing the data",
+  "comment": "feat(react-charts): add configurable focus restoration after data updates",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }
