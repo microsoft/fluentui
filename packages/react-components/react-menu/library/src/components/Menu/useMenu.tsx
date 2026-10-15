@@ -98,6 +98,7 @@ export const useMenuBase_unstable = (
     mountNode = null,
     safeZone,
   } = props;
+  const disableAutoFocus = props.unstable_disableAutoFocus ?? false;
 
   const { targetDocument } = useFluent();
   const triggerId = useId('menu');
@@ -190,7 +191,7 @@ export const useMenuBase_unstable = (
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
-    disableAutoFocus: props.unstable_disableAutoFocus ?? false,
+    disableAutoFocus,
     hoverDelay,
     isSubmenu,
     setContextTarget,
@@ -210,6 +211,7 @@ export const useMenuBase_unstable = (
   });
 
   return {
+    disableAutoFocus,
     inline,
     hoverDelay,
     triggerId,

@@ -1,7 +1,7 @@
 import type { MenuBaseProps } from '@fluentui/react-menu';
 import type { PositioningShorthand } from '../../positioning';
 
-export type MenuProps = Omit<MenuBaseProps, 'positioning' | 'unstable_disableAutoFocus'> & {
+export type MenuProps = Omit<MenuBaseProps, 'positioning'> & {
   /**
    * Configures the positioned menu.
    */

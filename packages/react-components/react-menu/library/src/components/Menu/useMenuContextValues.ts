@@ -6,6 +6,7 @@ import type { MenuContextValues, MenuState } from './Menu.types';
 export function useMenuContextValues_unstable(state: MenuState): MenuContextValues {
   const {
     checkedValues,
+    disableAutoFocus = false,
     hasCheckmarks,
     hasIcons,
     inline,
@@ -26,6 +27,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
   const menu = React.useMemo(
     () => ({
       checkedValues,
+      disableAutoFocus,
       hasCheckmarks,
       hasIcons,
       inline,
@@ -44,6 +46,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     }),
     [
       checkedValues,
+      disableAutoFocus,
       hasCheckmarks,
       hasIcons,
       inline,

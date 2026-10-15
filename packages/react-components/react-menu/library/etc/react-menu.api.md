@@ -48,7 +48,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
+export type MenuContextValue = Pick<MenuState, 'disableAutoFocus' | 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'safeZone'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -396,6 +396,7 @@ export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & Pick<Men
 
 // @public (undocumented)
 export type MenuState = ComponentState<InternalMenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+    disableAutoFocus?: boolean;
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;

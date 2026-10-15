@@ -19,10 +19,14 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   };
 
   const open = useMenuContext(ctx => ctx.open);
+  const disableAutoFocus = useMenuContext(ctx => ctx.disableAutoFocus ?? false);
   const setOpen = useMenuContext(ctx => ctx.setOpen);
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
+  const previousFocusState = React.useRef({ open, disableAutoFocus });
 
   React.useEffect(() => {
+    const previous = previousFocusState.current;
+    previousFocusState.current = { open, disableAutoFocus };
     const surface = menuPopoverRef.current as HTMLElement | null;
 
     if (!surface) {
@@ -46,10 +50,18 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
       ':is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]):not([aria-disabled="true"])',
     );
 
-    firstFocusable?.setAttribute('autofocus', '');
+    const ownsAutoFocus = !disableAutoFocus && !!firstFocusable && !firstFocusable.hasAttribute('autofocus');
+    if (ownsAutoFocus) {
+      firstFocusable.setAttribute('autofocus', '');
+    }
 
     if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
       surface.showPopover();
+    }
+
+    // Changing the attribute alone does not rerun the native popover focusing steps.
+    if (!disableAutoFocus && previous.open && previous.disableAutoFocus) {
+      firstFocusable?.focus();
     }
 
     const menuListEl = surface.querySelector<HTMLElement>('[focusgroup]');
@@ -70,8 +82,13 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     };
 
     surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [menuPopoverRef, open, setOpen]);
+    return () => {
+      surface.removeEventListener('toggle', onSurfaceToggle);
+      if (ownsAutoFocus) {
+        firstFocusable.removeAttribute('autofocus');
+      }
+    };
+  }, [disableAutoFocus, menuPopoverRef, open, setOpen]);
 
   return state;
 };

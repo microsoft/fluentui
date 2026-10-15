@@ -132,6 +132,11 @@ export type MenuState = ComponentState<InternalMenuSlots> &
     >
   > & {
     /**
+     * Whether automatic focus of the first menu item is disabled.
+     */
+    disableAutoFocus?: boolean;
+
+    /**
      * Anchors the popper to the mouse click for context events
      */
     contextTarget?: PositioningVirtualElement;
