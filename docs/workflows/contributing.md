@@ -35,10 +35,6 @@ yarn create-component                     # Interactive generator
 
    Use `patch` for fixes, `minor` for features. Never `major` without approval.
 
-   Documentation-only changes to `README.md` files or files under `docs/` and
-   `documentation/` do not require change files. These paths are ignored by the shared
-   Beachball configuration, including package documentation nested under `library/`.
-
 2. **Tests pass** — `yarn nx run <project>:test`
 
 3. **Lint passes** — `yarn nx run <project>:lint`
