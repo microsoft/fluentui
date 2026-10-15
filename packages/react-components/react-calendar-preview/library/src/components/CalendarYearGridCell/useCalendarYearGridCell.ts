@@ -60,7 +60,7 @@ export const useCalendarYearGridCell_unstable = (
       }
     },
     nativeProps.onKeyDownCapture,
-    isCalendarGridArrow,
+    event => isCalendarGridArrow(event) && event.target === event.currentTarget,
   );
 
   const root = slot.always<ExtractSlotProps<Slot<'button'>>>(

@@ -484,6 +484,58 @@ describe('Calendar', () => {
           }
         });
       });
+
+      if (picker === 'year') {
+        (['none', 'capture', 'bubble'] as const).forEach(phase => {
+          it(
+            phase === 'none'
+              ? 'navigates after custom year content keydown'
+              : `honors custom year content ${phase} cancellation`,
+            () => {
+              const onKeyDownCapture = cy.stub().callsFake((event: React.KeyboardEvent) => {
+                if (phase === 'capture') {
+                  event.preventDefault();
+                }
+              });
+              const onKeyDown = cy.stub().callsFake((event: React.KeyboardEvent) => {
+                if (phase === 'bubble') {
+                  event.preventDefault();
+                }
+              });
+              mountFluent(
+                <Calendar
+                  today={today}
+                  defaultValue={today}
+                  layout="sideBySide"
+                  monthPicker={{
+                    yearPicker: {
+                      renderYear: year => (
+                        <span
+                          tabIndex={0}
+                          title={`custom-year-${year}`}
+                          onKeyDownCapture={onKeyDownCapture}
+                          onKeyDown={onKeyDown}
+                        >
+                          {year}
+                        </span>
+                      ),
+                    },
+                  }}
+                />,
+              );
+              openYearPicker();
+              cy.get('[title="custom-year-2020"]').focus().realPress('ArrowRight');
+              if (phase === 'none') {
+                cy.get('[title="custom-year-2021"]').closest('[role="gridcell"]').should('be.focused');
+              } else {
+                cy.get('[title="custom-year-2020"]').should('be.focused');
+              }
+              cy.wrap(onKeyDownCapture).should('have.been.calledOnce');
+              cy.wrap(onKeyDown).should('have.been.calledOnce');
+            },
+          );
+        });
+      }
     });
 
     it('keeps the month highlight on the navigated month', () => {

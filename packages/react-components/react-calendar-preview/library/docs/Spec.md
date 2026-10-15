@@ -256,8 +256,9 @@ Handled arrows, including boundary keys, are prevented so Tabster or a native fo
 
 Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
 owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
-cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day button and day-label slot handlers, including handlers on custom descendants, run in natural capture and
-bubbling order with the correct `currentTarget`. Only handlers on the target's ancestor path run.
+cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day slot
+handlers, including handlers on custom descendants, and custom year-renderer handlers run before navigation
+with the correct `currentTarget`. Only handlers on the target's ancestor path run.
 `preventDefault()` cancels
 navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses later callbacks,
 but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
