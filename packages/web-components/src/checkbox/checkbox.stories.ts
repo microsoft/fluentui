@@ -12,6 +12,7 @@ const { argTypes } = getStorybookHelpers<FluentCheckbox>('fluent-checkbox');
 const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-checkbox
     ?checked="${story => story.checked}"
+    ?defaultindeterminate="${story => story.defaultIndeterminate}"
     ?disabled="${story => story.disabled}"
     id="${story => story.id}"
     :indeterminate="${story => story.indeterminate}"
@@ -105,6 +106,33 @@ export const Indeterminate: Story = {
   },
 };
 
+export const DefaultIndeterminate: Story = {
+  render: renderComponent(html<StoryArgs<FluentCheckbox>>`
+    ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
+  `),
+  args: {
+    storyContent: [
+      {
+        storyContent: storyTemplate,
+        defaultIndeterminate: true,
+        id: uniqueId('checkbox-'),
+        label: 'Default indeterminate',
+        labelPosition: LabelPosition.after,
+        slot: 'input',
+      },
+      {
+        storyContent: storyTemplate,
+        defaultIndeterminate: true,
+        id: uniqueId('checkbox-'),
+        label: 'Default indeterminate circular',
+        labelPosition: LabelPosition.after,
+        shape: CheckboxShape.circular,
+        slot: 'input',
+      },
+    ],
+  },
+};
+
 export const Disabled: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
@@ -162,6 +190,25 @@ export const Disabled: Story = {
         id: uniqueId('checkbox-'),
         indeterminate: true,
         label: 'Disabled circular indeterminate',
+        labelPosition: LabelPosition.after,
+        shape: CheckboxShape.circular,
+        slot: 'input',
+      },
+      {
+        storyContent: storyTemplate,
+        defaultIndeterminate: true,
+        disabled: true,
+        id: uniqueId('checkbox-'),
+        label: 'Disabled default indeterminate',
+        labelPosition: LabelPosition.after,
+        slot: 'input',
+      },
+      {
+        storyContent: storyTemplate,
+        defaultIndeterminate: true,
+        disabled: true,
+        id: uniqueId('checkbox-'),
+        label: 'Disabled circular default indeterminate',
         labelPosition: LabelPosition.after,
         shape: CheckboxShape.circular,
         slot: 'input',
