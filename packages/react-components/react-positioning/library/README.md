@@ -1,6 +1,10 @@
 # @fluentui/react-positioning
 
-A React utilities built on top of [Floating UI](https://floating-ui.com/) for positioning elements in the DOM.
+React utilities for positioning elements in the DOM. The position is computed following the rules of CSS anchor positioning (`position-area`, `position-try-fallbacks`), in JavaScript.
+
+Pinned elements preserve the requested placement and offset without flipping or shifting into the viewport.
+Oversized popups remain beside their target rather than covering it. Visibility checks respect the target's
+containing block, so fixed-position targets are not clipped by unrelated scrolling ancestors.
 
 ## Usage
 

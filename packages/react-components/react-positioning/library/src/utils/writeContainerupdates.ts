@@ -1,46 +1,39 @@
-import type { Placement, MiddlewareData, Strategy, Coords } from '@floating-ui/dom';
+import type { PositioningPlacement } from '../types';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_HIDDEN,
   DATA_POSITIONING_INTERSECTING,
   DATA_POSITIONING_PLACEMENT,
 } from '../constants';
+import type { Visibility } from '../engine';
 
 /**
  * Writes all container element position updates after the position is computed
  */
 export function writeContainerUpdates(options: {
   container: HTMLElement | null;
-  placement: Placement;
-  middlewareData: MiddlewareData;
+  placement: PositioningPlacement;
   /**
    * Layer acceleration can disable subpixel rendering which causes slightly
    * blurry text on low PPI displays, so we want to use 2D transforms
    * instead
    */
   lowPPI: boolean;
-  strategy: Strategy;
-  coordinates: Coords;
+  strategy: 'absolute' | 'fixed';
+  /**
+   * Coordinates relative to the containing block of the container
+   */
+  coordinates: { x: number; y: number };
   useTransform?: boolean;
+  /** Name of the attribute for the placement, an empty string skips it */
+  placementAttribute?: string;
 }): void {
-  const { container, placement, middlewareData, strategy, lowPPI, coordinates, useTransform = true } = options;
+  const { container, placement, strategy, lowPPI, coordinates, useTransform = true, placementAttribute } = options;
   if (!container) {
     return;
   }
-  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
-  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
-  if (middlewareData.intersectionObserver.intersecting) {
-    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_ESCAPED);
-  if (middlewareData.hide?.escaped) {
-    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_HIDDEN);
-  if (middlewareData.hide?.referenceHidden) {
-    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
+  if (placementAttribute !== '') {
+    container.setAttribute(placementAttribute ?? DATA_POSITIONING_PLACEMENT, placement);
   }
 
   // Round so that the coordinates land on device pixels.
@@ -66,4 +59,25 @@ export function writeContainerUpdates(options: {
     left: `${x}px`,
     top: `${y}px`,
   });
+}
+
+/**
+ * Writes the attributes that tell if the container or the target are visible
+ */
+export function writeVisibilityUpdates(options: {
+  container: HTMLElement;
+  visibility: Visibility;
+  /** Names of the attributes, an empty string skips an attribute */
+  attributes?: Partial<Record<'hidden' | 'escaped' | 'intersecting', string>>;
+}): void {
+  const { container, visibility, attributes } = options;
+  const toggle = (name: string | undefined, fallback: string, value: boolean) => {
+    if (name !== '') {
+      container.toggleAttribute(name ?? fallback, value);
+    }
+  };
+
+  toggle(attributes?.intersecting, DATA_POSITIONING_INTERSECTING, visibility.intersecting);
+  toggle(attributes?.escaped, DATA_POSITIONING_ESCAPED, visibility.escaped);
+  toggle(attributes?.hidden, DATA_POSITIONING_HIDDEN, visibility.referenceHidden);
 }

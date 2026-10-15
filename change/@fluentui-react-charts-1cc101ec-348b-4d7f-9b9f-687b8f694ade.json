@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Avoid creating a virtual popover target when no click position is provided.",
+  "packageName": "@fluentui/react-charts",
+  "email": "dmytrokirpa@microsoft.com"
+}

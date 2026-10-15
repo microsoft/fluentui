@@ -9,6 +9,8 @@ export type { CreateArrowStylesOptions } from './createArrowStyles';
 export { PositioningConfigurationProvider } from './PositioningConfigurationContext';
 
 export { usePositioning } from './usePositioning';
+export { createPositionManager } from './createPositionManager';
+export type { PositionManagerOptions } from './createPositionManager';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
 export { useSafeZoneArea } from './hooks/useSafeZoneArea/useSafeZoneArea';
 export type { UseSafeZoneOptions } from './hooks/useSafeZoneArea/useSafeZoneArea';
@@ -33,6 +35,7 @@ export type {
   PositioningShorthandValue,
   PositioningVirtualElement,
   SetVirtualMouseTarget,
+  PositionManager,
   PositioningConfigurationFn,
   PositioningConfigurationFnOptions,
 } from './types';

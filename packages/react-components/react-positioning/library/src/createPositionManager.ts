@@ -1,13 +1,51 @@
-import { computePosition } from '@floating-ui/dom';
-import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
-import { isHTMLElement } from '@fluentui/react-utilities';
-import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
-import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
-import { listScrollParents } from './utils/listScrollParents';
-import { POSITIONING_END_EVENT } from './constants';
+import type {
+  Alignment,
+  OnPositioningEndEventDetail,
+  PositionManager,
+  PositioningOptions,
+  Position,
+  TargetElement,
+} from './types';
+import { debounce, normalizeAutoSize, writeContainerUpdates, writeVisibilityUpdates } from './utils';
+import { MATCH_TARGET_SIZE_CSS_VAR, POSITIONING_END_EVENT } from './constants';
 import { createResizeObserver } from './utils/createResizeObserver';
+import {
+  applyArrow,
+  applyAutoSize,
+  applyBoundary,
+  applyFunctionOffset,
+  computePlacement,
+  getClippingRect,
+  getContainingBlock,
+  getVisibility,
+  resetAutoSize,
+  resolveOffset,
+  toPlacement,
+  toPositioningPlacement,
+} from './engine';
+import type { Placement, PlacementInput, PlacementOutput, PlacementRect } from './engine';
 
-interface PositionManagerOptions {
+/**
+ * @internal
+ */
+export interface PositionManagerOptions
+  extends Pick<
+    PositioningOptions,
+    | 'align'
+    | 'arrowPadding'
+    | 'autoSize'
+    | 'coverTarget'
+    | 'disableUpdateOnResize'
+    | 'fallbackPositions'
+    | 'flipBoundary'
+    | 'matchTargetSize'
+    | 'offset'
+    | 'overflowBoundary'
+    | 'overflowBoundaryPadding'
+    | 'pinned'
+    | 'position'
+    | 'useTransform'
+  > {
   /**
    * The positioned element
    */
@@ -24,24 +62,26 @@ interface PositionManagerOptions {
    * The value of the css `position` property
    * @default absolute
    */
-  strategy: Strategy;
+  strategy: 'absolute' | 'fixed';
   /**
-   * [Floating UI middleware](https://floating-ui.com/docs/middleware)
+   * Direction of the content, `before` and `after` swap sides and `start` and `end` alignments follow it.
+   * Defaults to the direction of the containing block of the container.
    */
-  middleware: Middleware[];
+  isRtl?: boolean;
   /**
-   * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
+   * The container is positioned by the browser (CSS anchor positioning), the placement that it ended up with is read
+   * with this function instead of being computed. It returns `null` when it can't be detected.
+   * The container is not moved, only `autoSize`, the arrow, the visibility attributes and the end event are handled.
    */
-  placement?: Placement;
+  detectPlacement?: (target: TargetElement, container: HTMLElement) => Placement | null;
   /**
-   * Modifies whether popover is positioned using transform.
-   * @default true
+   * Called after every update with the placement that the container ended up with.
    */
-  useTransform?: boolean;
+  onPlacement?: (placement: Placement) => void;
   /**
-   * Disables the resize observer that updates position on target or dimension change
+   * Names of the attributes that are written on the container, an empty string skips an attribute.
    */
-  disableUpdateOnResize?: boolean;
+  attributes?: Partial<Record<'placement' | 'hidden' | 'escaped' | 'intersecting', string>>;
 }
 
 function isLayoutViewportUnavailable(container: HTMLElement): boolean {
@@ -61,11 +101,12 @@ export function createPositionManager(options: PositionManagerOptions): Position
     target,
     arrow,
     strategy,
-    middleware,
-    placement,
     useTransform = true,
     disableUpdateOnResize = false,
+    detectPlacement,
+    attributes,
   } = options;
+  // `options` can be mutated by the caller, the properties that are not destructured are read on every update
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
     return {
@@ -90,11 +131,12 @@ export function createPositionManager(options: PositionManagerOptions): Position
       });
 
   let isFirstUpdate = true;
-  const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
-  Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
+  if (!detectPlacement) {
+    Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
+  }
 
   const forceUpdate = () => {
     // debounced update can still occur afterwards
@@ -104,76 +146,129 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     if (isFirstUpdate) {
-      listScrollParents(container).forEach(scrollParent => scrollParents.add(scrollParent));
-      if (isHTMLElement(target)) {
-        listScrollParents(target).forEach(scrollParent => scrollParents.add(scrollParent));
-      }
-
-      scrollParents.forEach(scrollParent => {
-        scrollParent.addEventListener('scroll', updatePosition, { passive: true });
-      });
-
       resizeObserver?.observe(container);
-      if (isHTMLElement(target)) {
+      if ('nodeType' in target) {
         resizeObserver?.observe(target);
       }
 
       isFirstUpdate = false;
     }
 
-    Object.assign(container.style, { position: strategy });
-    computePosition(target, container, { placement, middleware, strategy })
-      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        // Promise can still resolve after destruction
-        // early return to avoid applying outdated position
-        if (isDestroyed) {
-          return;
+    if (!detectPlacement) {
+      Object.assign(container.style, { position: strategy });
+    }
+
+    const { position, align, offset, arrowPadding, matchTargetSize, pinned, coverTarget, fallbackPositions } = options;
+    const autoSize = normalizeAutoSize(options.autoSize);
+
+    // The styles of the previous update would change the size that is measured
+    if (autoSize) {
+      resetAutoSize(container, autoSize);
+    }
+
+    const anchor = target.getBoundingClientRect();
+
+    if (matchTargetSize === 'width' && !detectPlacement) {
+      container.style.setProperty(MATCH_TARGET_SIZE_CSS_VAR, `${anchor.width}px`);
+      if (!container.style.width) {
+        container.style.width = `var(${MATCH_TARGET_SIZE_CSS_VAR})`;
+      }
+    }
+
+    const requested = toPlacement(position, align);
+    const [mainAxis, crossAxis] = resolveOffset(offset);
+    const [containingBlock, , originLeft, originTop] = getContainingBlock(container, strategy);
+    const isRtl =
+      options.isRtl ??
+      targetWindow.getComputedStyle(containingBlock ?? container.ownerDocument.documentElement).direction === 'rtl';
+    let result: Placement | null = requested;
+    let bounds: PlacementRect = getClippingRect(container);
+
+    if (detectPlacement) {
+      // The browser did the positioning, the arrow and the size need the side that it picked
+      result = detectPlacement(target, container);
+      if (autoSize) {
+        applyAutoSize(container, autoSize, result ?? requested, anchor, bounds, isRtl, mainAxis);
+      }
+    } else {
+      const fallbacks = fallbackPositions?.length
+        ? fallbackPositions.map(shorthand => {
+            const [fallbackPosition, fallbackAlign] = shorthand.split('-');
+            return toPlacement(fallbackPosition as Position, fallbackAlign as Alignment);
+          })
+        : undefined;
+      const blockMain = requested.position === 'above' || requested.position === 'below';
+      const compute = (): [PlacementOutput, PlacementRect] => {
+        const input: PlacementInput = [
+          anchor,
+          getClippingRect(container),
+          container.offsetWidth,
+          container.offsetHeight,
+          isRtl,
+          requested,
+          blockMain ? mainAxis : crossAxis,
+          blockMain ? crossAxis : mainAxis,
+          undefined,
+          fallbacks,
+          pinned,
+          coverTarget,
+        ];
+
+        applyFunctionOffset(input, offset);
+        applyBoundary(input, container, isRtl, options);
+
+        return [computePlacement(input), input[1]];
+      };
+
+      let output: PlacementOutput;
+      [output, bounds] = compute();
+
+      if (autoSize) {
+        const { offsetWidth, offsetHeight } = container;
+        applyAutoSize(container, autoSize, output, anchor, bounds, isRtl, mainAxis);
+
+        // The container was positioned using a size that is not the final one
+        if (container.offsetWidth !== offsetWidth || container.offsetHeight !== offsetHeight) {
+          [output, bounds] = compute();
+          applyAutoSize(container, autoSize, output, anchor, bounds, isRtl, mainAxis);
         }
+      }
 
-        const positioningMiddlewareData = isLayoutViewportUnavailable(container)
-          ? {
-              ...middlewareData,
-              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
-            }
-          : middlewareData;
-
-        writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
-        writeContainerUpdates({
-          container,
-          middlewareData: positioningMiddlewareData,
-          placement: computedPlacement,
-          coordinates: { x, y },
-          lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
-          strategy,
-          useTransform,
-        });
-
-        container.dispatchEvent(
-          new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
-            detail: {
-              // Cast from Floating UI's Placement to the Fluent-owned PositioningPlacement.
-              // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
-              // types into the public API surface.
-              placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
-            },
-          }),
-        );
-      })
-      .catch(err => {
-        // https://github.com/floating-ui/floating-ui/issues/1845
-        // FIXME for node > 14
-        // node 15 introduces promise rejection which means that any components
-        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
-        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
-        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
-        // will actually be counter productive
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.error('[usePositioning]: Failed to calculate position', err);
-        }
+      result = output;
+      writeContainerUpdates({
+        container,
+        placement: toPositioningPlacement(output, isRtl),
+        placementAttribute: attributes?.placement,
+        coordinates: { x: output.left - originLeft, y: output.top - originTop },
+        lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
+        strategy,
+        useTransform,
       });
+    }
+
+    // Measured after the container is moved
+    const popup = container.getBoundingClientRect();
+    const visibility = isLayoutViewportUnavailable(container)
+      ? { escaped: false, referenceHidden: false, intersecting: false }
+      : getVisibility(container, target, anchor, popup);
+
+    if (result) {
+      applyArrow(arrow, result, anchor, popup, arrowPadding);
+      options.onPlacement?.(result);
+    }
+    writeVisibilityUpdates({ container, visibility, attributes });
+
+    if (result) {
+      container.dispatchEvent(
+        new CustomEvent<OnPositioningEndEventDetail>(POSITIONING_END_EVENT, {
+          detail: {
+            placement: toPositioningPlacement(result, isRtl),
+            escaped: visibility.escaped,
+            referenceHidden: visibility.referenceHidden,
+          },
+        }),
+      );
+    }
   };
 
   const updatePosition = debounce(() => forceUpdate());
@@ -182,20 +277,16 @@ export function createPositionManager(options: PositionManagerOptions): Position
     isDestroyed = true;
 
     if (targetWindow) {
-      targetWindow.removeEventListener('scroll', updatePosition);
+      targetWindow.removeEventListener('scroll', updatePosition, { capture: true });
       targetWindow.removeEventListener('resize', updatePosition);
     }
-
-    scrollParents.forEach(scrollParent => {
-      scrollParent.removeEventListener('scroll', updatePosition);
-    });
-    scrollParents.clear();
 
     resizeObserver?.disconnect();
   };
 
   if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
+    // `scroll` doesn't bubble, capturing it covers every scrollable ancestor
+    targetWindow.addEventListener('scroll', updatePosition, { capture: true, passive: true });
     targetWindow.addEventListener('resize', updatePosition);
   }
 

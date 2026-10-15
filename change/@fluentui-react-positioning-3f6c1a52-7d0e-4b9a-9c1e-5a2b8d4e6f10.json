@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: compute positions with a built-in engine that follows the rules of CSS anchor positioning, replacing Floating UI to reduce the bundle size",
+  "packageName": "@fluentui/react-positioning",
+  "email": "kirpadv@gmail.com"
+}
