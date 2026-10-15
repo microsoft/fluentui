@@ -40,6 +40,67 @@ test.describe('MenuList', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
+  test('should reserve columns for slotted menu item content', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        <${MenuItemTagName} role="menuitemcheckbox">
+          <span slot="indicator">Check</span>
+          <span slot="start">Start</span>
+          Item
+          <span slot="end">End</span>
+          <${tagName} slot="submenu"><${MenuItemTagName}>Child</${MenuItemTagName}></${tagName}>
+        </${MenuItemTagName}>
+      `,
+    });
+
+    const menu = element.first();
+    await expect(menu).toHaveCSS('--_col-indicator-width', '24px');
+    await expect(menu).toHaveCSS('--_col-start-width', '24px');
+    await expect(menu).toHaveCSS('--_col-end-width', '24px');
+    await expect(menu).toHaveCSS('--_col-submenu-width', '24px');
+  });
+
+  test('should update columns when menu item slots and roles change', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const item = element.locator(MenuItemTagName);
+
+    await fastPage.setTemplate({ innerHTML: `<${MenuItemTagName}>Item</${MenuItemTagName}>` });
+    await expect(element).toHaveCSS('--_col-indicator-width', '0px');
+    await expect(element).toHaveCSS('--_col-start-width', '0px');
+
+    await item.evaluate(node => {
+      node.setAttribute('role', 'menuitemradio');
+      const icon = document.createElement('span');
+      icon.slot = 'start';
+      node.append(icon);
+    });
+    await expect(element).toHaveCSS('--_col-indicator-width', '24px');
+    await expect(element).toHaveCSS('--_col-start-width', '24px');
+
+    await item.locator('[slot="start"]').evaluate(node => node.setAttribute('slot', 'end'));
+    await expect(element).toHaveCSS('--_col-start-width', '0px');
+    await expect(element).toHaveCSS('--_col-end-width', '24px');
+
+    await item.evaluate(node => node.removeAttribute('role'));
+    await expect(element).toHaveCSS('--_col-indicator-width', '0px');
+
+    await element.evaluate(node => {
+      const parent = node.parentNode!;
+      node.remove();
+      parent.appendChild(node);
+    });
+    await item.evaluate(node => {
+      const icon = document.createElement('span');
+      icon.slot = 'start';
+      node.append(icon);
+    });
+    await expect(element).toHaveCSS('--_col-start-width', '24px');
+    await item.locator('[slot="start"]').evaluate(node => node.remove());
+    await expect(element).toHaveCSS('--_col-start-width', '0px');
+  });
+
   test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {
     const { element } = fastPage;
     const menuItems = element.locator(MenuItemTagName);
