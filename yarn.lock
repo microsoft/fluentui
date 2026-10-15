@@ -3027,6 +3027,7 @@ __metadata:
     markdown-table: "npm:2.0.0"
     memfs: "npm:3.5.3"
     micromatch: "npm:4.0.8"
+    mini-css-extract-plugin: "npm:2.9.4"
     monaco-editor: "npm:^0.52.2"
     monosize: "npm:0.10.0"
     monosize-bundler-webpack: "npm:0.4.1"
@@ -5633,11 +5634,15 @@ __metadata:
   dependencies:
     "@fluentui/react-components": "npm:^9.74.9"
     "@fluentui/react-icons": "npm:^2.0.245"
+    "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-utilities": "npm:^9.26.7"
     "@swc/helpers": "npm:^0.5.1"
     lz-string: "npm:^1.5.0"
+    postcss: "npm:8.5.18"
+    postcss-value-parser: "npm:^4.2.0"
     semver: "npm:^6.2.0"
   peerDependencies:
+    "@storybook/addon-docs": ">=9.1.17"
     "@storybook/react": ">=9.1.17"
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=18.0.0 <20.0.0"
@@ -25066,6 +25071,18 @@ __metadata:
   version: 1.0.1
   resolution: "min-indent@npm:1.0.1"
   checksum: 10c0/7e207bd5c20401b292de291f02913230cb1163abca162044f7db1d951fa245b174dc00869d40dd9a9f32a885ad6a5f3e767ee104cf278f399cb4e92d3f582d5c
+  languageName: node
+  linkType: hard
+
+"mini-css-extract-plugin@npm:2.9.4":
+  version: 2.9.4
+  resolution: "mini-css-extract-plugin@npm:2.9.4"
+  dependencies:
+    schema-utils: "npm:^4.0.0"
+    tapable: "npm:^2.2.1"
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 10c0/76f9e471784d52435ea766ce576ad23d37d0ea51c32ddc56414c8fdf14f7de44202dbc772cdf7549b7e54a5e56f569af93cfbd036d62d13ff8fd9571e53353b7
   languageName: node
   linkType: hard
 

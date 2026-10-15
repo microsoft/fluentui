@@ -89,21 +89,53 @@ Implemented behavior:
   stale results. JavaScript edits remount the example, CSS-only edits preserve its state, and Restart creates a clean sandbox.
 - Opaque-origin sandbox with a restrictive CSP allowing runtime origins while blocking other application network
   requests, console forwarding to a console panel, and viewport presets.
+- Same-origin JavaScript authorized by the manifest's `allowedScriptFiles` is fetched by the shell and executed only
+  inside the sandbox, including lazy chunks; `scripts` retains startup order. Manifest location/shape and canonical
+  asset paths are validated against the selected build root.
+  Fetches retain same-origin credentials and reject redirects, HTTP failures and non-JavaScript MIME types, reporting
+  initialization errors rather than navigating to login. This supports CORP `same-origin` and COEP-restricted deployments
+  without relaxing iframe isolation or globally exposing assets, and leaves native Storybook chunk loading intact.
+- Opt-in `inlineStyles` embeds extracted eager/lazy CSS and its emitted font/image assets in the manifest. CSS URLs
+  are resolved against emitted stylesheets at build time, without network or arbitrary filesystem reads; unresolved
+  imports/resources fail the build. The preview preserves eager stylesheet order, appends lazy CSS up front and
+  identifies it to the lazy CSS loader by build-relative filename, including explicit Webpack public paths.
+  This explicit compatibility tradeoff can change the cascade before a module is imported and transfers all referenced
+  CSS/embedded assets up front, even for unused modules; it is not transparent lazy CSS loading. The inlining helper and
+  parsers load only when the option is enabled, although the parsers remain installed addon dependencies.
+  Native Storybook styles/fonts remain unchanged. Runtime-injected font URLs still require the host's resource policies.
 - Multiple CSS modules that can be added, renamed and removed; CSS edits apply without remounting the preview.
 - Non-blocking type diagnostics with an error badge.
 - Webpack integration: addon options come from Storybook's preset options, every `html-webpack-plugin` instance is tapped
-  (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache`. Packages can be
+  (with a warning when none is found), and the generated runtime entry lives in `node_modules/.cache` or the config
+  directory's `.cache` when no `node_modules` exists. Packages can be
   listed directly in `modules`; import maps remain available for aliases. Repository Storybooks load the compiled addon,
   and the v9 docsite uses graph-driven Nx build prerequisites instead of a growing manual package list.
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
-- A Playwright e2e suite that covers the production runtime and shell.
+- Runtime and declaration collection share the final Webpack resolver, including workspace aliases and custom module
+  directories and Yarn Plug'n'Play workspace/archived packages without a `node_modules` tree. `typingsRoots` can
+  explicitly select declaration package roots without a `node_modules` self-link. Requested exports take precedence
+  when runtime targets are shared: exact keys win over wildcards, then longer pattern prefixes/suffixes win independently
+  of key order. Conditional branches follow the resolver's
+  effective conditions and export-map order; matched exports without a `types` target prefer adjacent, version-mapped
+  declarations. `main`/`module` entries without exports retain package-metadata resolution. Separate virtual entries preserve physical
+  declaration contents while supporting conditional/subpath aliases and `.d.mts`/`.d.cts` resolution in Monaco.
+- Docs Canvas overrides render the Playground action through Storybook's `additionalActions` API where supported;
+  an addon-owned fallback covers earlier action areas and Storybook 10's separate Docs source-actions row.
+- A Playwright e2e suite covers the production runtime/shell and a nested cookie-authenticated CORP `same-origin`
+  fixture with extracted CSS and a real font, with and without COEP. It asserts shell credentialed fetches, opaque
+  preview isolation, lazy loading, HTTP/redirect/login-response failures and restart recovery. This is a synthetic
+  deployment, not validation of hosted EasyAuth; authentication of the shell HTML remains the host's prerequisite.
+- An isolated, offline temporary Yarn workspace uses default Plug'n'Play (no `nodeLinker` override or `node_modules`)
+  to verify runtime compilation and collected workspace, archived transitive, versioned and declaration-only types.
 - Monaco 0.52 with TypeScript 5.4 (the last release before Monaco's AMD deprecation and the move of the TypeScript API to a top-level namespace).
 - Enabled on the public v9 docsite (`apps/public-docsite-v9`) with `@fluentui/react-components`, icons, motion components
   and the calendar, date picker and time picker compat packages. Stories importing other runtime packages do not get
   the **Open in Playground** button.
 - Editor and shell ergonomics: the story name travels in the link and names the tab, compile errors link to their location, `Cmd/Ctrl+S` formats and writes the link, either pane can be maximized, and the active file can be copied.
-- The `?manifest=` override only accepts same-origin URLs, and link payloads are rejected when encoded or decoded sizes
-  exceed fixed limits (the decoder stops early instead of expanding an oversized compressed payload).
+- A standard shell is bound to its adjacent build manifest. A standalone shell can explicitly select a same-origin
+  build at `playground/runtime/manifest.json`; arbitrary manifests and out-of-build assets are rejected. Legacy
+  manifests without `allowedScriptFiles` retain native script loading. Link payloads are rejected when encoded or decoded
+  sizes exceed fixed limits (the decoder stops early instead of expanding an oversized compressed payload).
 
 ### Source Extraction and Import Scanning
 

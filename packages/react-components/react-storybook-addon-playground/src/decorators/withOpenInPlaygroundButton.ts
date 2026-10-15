@@ -5,6 +5,8 @@ import { getModuleReferences } from '../moduleScanner';
 import { createPlaygroundUrl } from '../url';
 
 export const PLAYGROUND_BUTTON_CLASS = 'with-open-in-playground-button';
+export const PLAYGROUND_DOCS_ACTION_CLASS = 'with-open-in-playground-docs-action';
+const DECORATOR_BUTTON_ATTRIBUTE = 'data-playground-decorator';
 
 /** Replaced by the addon's `webpackFinal` with the modules the playground can import. */
 declare const __FLUENTUI_PLAYGROUND_ALLOWED_MODULES__: string[] | undefined;
@@ -55,7 +57,34 @@ export const withOpenInPlaygroundButton = (
 };
 
 export function addOpenInPlaygroundButton(context: StoryContext): void {
-  const buttonContainers = getButtonContainers(context);
+  const targetDocument = context.canvasElement?.ownerDocument;
+  if (!targetDocument) {
+    return;
+  }
+
+  const buttonContainers = getButtonContainers(context, targetDocument);
+  const action = getOpenInPlaygroundAction(context, targetDocument);
+  if (!action) {
+    return;
+  }
+
+  buttonContainers.forEach(({ container, cssClasses }) => {
+    const button = targetDocument.createElement('button');
+    button.classList.add(...cssClasses);
+    button.setAttribute('type', 'button');
+    button.setAttribute(DECORATOR_BUTTON_ATTRIBUTE, '');
+    button.innerHTML = `${codeIconSvg} ${action.title}`;
+    button.addEventListener('click', action.onClick);
+    container.prepend(button);
+  });
+}
+
+/** A Canvas `additionalActions` item, also used by the decorator's compatibility fallback. */
+export function getOpenInPlaygroundAction(
+  context: Pick<StoryContext, 'title' | 'name' | 'parameters'>,
+  targetDocument: Document | undefined,
+  warnMissingSource = true,
+): { title: string; className: string; onClick: () => void } | undefined {
   const source = context.parameters.fullSource;
 
   if (
@@ -72,21 +101,21 @@ export function addOpenInPlaygroundButton(context: StoryContext): void {
   }
 
   if (!source) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Playground Addon: Couldn't find source for story "${context.title} - ${context.name}". ` +
-        'Is @fluentui/babel-preset-storybook-full-source (registered via @fluentui/react-storybook-addon-export-to-sandbox) installed?',
-    );
+    if (warnMissingSource) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Playground Addon: Couldn't find source for story "${context.title} - ${context.name}". ` +
+          'Is @fluentui/babel-preset-storybook-full-source (registered via @fluentui/react-storybook-addon-export-to-sandbox) installed?',
+      );
+    }
     return;
   }
 
-  buttonContainers.forEach(({ container, cssClasses }) => {
-    const button = document.createElement('button');
-    button.classList.add(...cssClasses);
-    button.setAttribute('type', 'button');
-    button.innerHTML = `${codeIconSvg} Open in Playground`;
-    button.addEventListener('click', () => {
-      window.open(
+  return {
+    title: 'Open in Playground',
+    className: `${PLAYGROUND_BUTTON_CLASS} ${PLAYGROUND_DOCS_ACTION_CLASS}`,
+    onClick: () => {
+      targetDocument?.defaultView?.open(
         createPlaygroundUrl(
           source,
           undefined,
@@ -96,10 +125,8 @@ export function addOpenInPlaygroundButton(context: StoryContext): void {
         '_blank',
         'noopener',
       );
-    });
-
-    container.prepend(button);
-  });
+    },
+  };
 }
 
 /**
@@ -111,28 +138,33 @@ export function getPlaygroundTitle(context: Pick<StoryContext, 'title' | 'name'>
   return [component, context.name?.trim()].filter(Boolean).join(': ');
 }
 
-function getButtonContainers(context: StoryContext) {
-  // Support anchor ID formats for our Storybook major versions range.
-  // 10< `#anchor--{id}`
-  // >=10 `#anchor--primary--{id}`
-  // See: https://github.com/storybookjs/storybook/pull/33384
-  const docsSelector = `#anchor--${context.id} .docs-story, #anchor--primary--${context.id} .docs-story`;
-  const rootElements = document.querySelectorAll(docsSelector);
+function getButtonContainers(context: StoryContext, targetDocument: Document) {
+  const containers = new Set<HTMLElement>();
+  const rootElements = [
+    targetDocument.getElementById(`anchor--${context.id}`),
+    targetDocument.getElementById(`anchor--primary--${context.id}`),
+  ];
 
-  return Array.from(rootElements).flatMap(rootElement => {
+  return rootElements.flatMap(rootElement => {
     // The original Storybook "Show code" toggle. Sibling addons (export-to-sandbox) add their own buttons with the same
     // base class, so exclude them explicitly.
-    const showCodeButton = rootElement.querySelector(
-      `.docblock-code-toggle:not(.${PLAYGROUND_BUTTON_CLASS}):not(.with-code-sandbox-button):not(.with-open-in-new-tab-button)`,
+    const toggleSelector = `.docblock-code-toggle:not(.${PLAYGROUND_BUTTON_CLASS}):not(.with-code-sandbox-button):not(.with-open-in-new-tab-button)`;
+    // Storybook 10 moved source actions out of .docs-story into a sibling row.
+    const showCodeButton = rootElement?.querySelector(
+      `.sbdocs-preview-actions ${toggleSelector}, .docs-story ${toggleSelector}`,
     );
     const container = showCodeButton?.parentElement;
 
-    if (!showCodeButton || !container) {
+    if (!showCodeButton || !container || containers.has(container)) {
       return [];
     }
+    containers.add(container);
 
-    // remove button if it already existed (story re-render)
-    container.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`).forEach(node => node.remove());
+    container.querySelectorAll(`[${DECORATOR_BUTTON_ATTRIBUTE}]`).forEach(node => node.remove());
+    // Canvas overrides own their React-rendered actions; never replace or move those buttons.
+    if (container.querySelector(`.${PLAYGROUND_DOCS_ACTION_CLASS}`)) {
+      return [];
+    }
 
     const cssClasses = [...Array.from(showCodeButton.classList), PLAYGROUND_BUTTON_CLASS];
 

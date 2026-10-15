@@ -1,6 +1,7 @@
 import type { ResolvedPlaygroundRuntimeManifest } from './runtime';
 
 export const PLAYGROUND_REGISTER_CALLBACK = '__FLUENTUI_PLAYGROUND_REGISTER_V1__';
+export const PLAYGROUND_SCRIPT_LOADER_CALLBACK = '__FLUENTUI_PLAYGROUND_LOAD_SCRIPT_V1__';
 
 function escapeInlineJson(value: unknown): string {
   return JSON.stringify(value).replace(/</g, '\\u003c');
@@ -71,6 +72,11 @@ export function createSandboxDocument(
 (() => {
   const token = ${escapeInlineJson(token)};
   const callbackName = ${escapeInlineJson(PLAYGROUND_REGISTER_CALLBACK)};
+  const scriptLoaderName = ${escapeInlineJson(PLAYGROUND_SCRIPT_LOADER_CALLBACK)};
+  const baseUrl = ${escapeInlineJson(manifest.baseUrl)};
+  const initialScripts = ${escapeInlineJson(manifest.scripts)};
+  const allowedScriptFiles = new Set(${escapeInlineJson(manifest.allowedScriptFiles ?? [])});
+  const inlineStyles = ${escapeInlineJson(manifest.inlineStyles ?? [])};
   const parentOrigin = ${escapeInlineJson(parentOrigin)};
   let runtime;
   let root;
@@ -87,6 +93,89 @@ export function createSandboxDocument(
     token,
     ...message,
   }, parentOrigin);
+
+  let nextScriptRequestId = 0;
+  const scriptRequests = new Map();
+  const loadedScripts = new Map();
+  const canBridgeScript = url => allowedScriptFiles.has(url) && new URL(url).origin === parentOrigin;
+  window.addEventListener('message', event => {
+    const message = event.data;
+    if (
+      event.source !== parent ||
+      !message ||
+      message.source !== 'fluentui-playground' ||
+      message.token !== token ||
+      message.type !== 'script-response'
+    ) {
+      return;
+    }
+    const request = scriptRequests.get(message.requestId);
+    if (!request) {
+      return;
+    }
+    scriptRequests.delete(message.requestId);
+    window.clearTimeout(request.timeout);
+    if (typeof message.error === 'string') {
+      request.reject(new Error(message.error));
+    } else if (typeof message.scriptSource === 'string') {
+      request.resolve(message.scriptSource);
+    } else {
+      request.reject(new Error('Invalid playground runtime script response.'));
+    }
+  });
+
+  const requestScript = url => new Promise((resolve, reject) => {
+    const requestId = ++nextScriptRequestId;
+    const timeout = nativeSetTimeout(() => {
+      scriptRequests.delete(requestId);
+      reject(new Error('Timed out loading playground runtime script "' + url + '".'));
+    }, 120000);
+    scriptRequests.set(requestId, { resolve, reject, timeout });
+    send({ type: 'script-request', requestId, url });
+  });
+  const loadScript = url => {
+    let promise = loadedScripts.get(url);
+    if (!promise) {
+      promise = canBridgeScript(url)
+        ? requestScript(url).then(source => {
+            const script = document.createElement('script');
+            script.textContent = source;
+            // Automatic Webpack publicPath cannot infer a URL from an inline script.
+            const previousPublicPath = bridgeScript.publicPath;
+            bridgeScript.publicPath = baseUrl;
+            try {
+              document.head.appendChild(script);
+            } finally {
+              bridgeScript.publicPath = previousPublicPath;
+              script.remove();
+            }
+          })
+        : new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = url;
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Failed to load the playground runtime script "' + url + '".'));
+            document.head.appendChild(script);
+          });
+      loadedScripts.set(url, promise);
+      promise.catch(() => loadedScripts.delete(url));
+    }
+    return promise;
+  };
+  const bridgeScript = (url, done) => {
+    const absoluteUrl = new URL(url, baseUrl).href;
+    if (!canBridgeScript(absoluteUrl)) {
+      return false;
+    }
+    loadScript(absoluteUrl).then(
+      () => done({ type: 'load', target: { src: absoluteUrl } }),
+      error => done({ type: 'error', target: { src: absoluteUrl }, error }),
+    );
+    return true;
+  };
+  if (allowedScriptFiles.size > 0) {
+    window[scriptLoaderName] = bridgeScript;
+  }
 
   const formatValue = (value, depth, seen) => {
     if (typeof value === 'string') {
@@ -527,10 +616,29 @@ export function createSandboxDocument(
       sendError(error, message.runId, Boolean(successfulRun));
     }
   });
+
+  (async () => {
+    try {
+      for (const { href, cssText } of inlineStyles) {
+        const style = document.createElement('style');
+        // The emitted filename matches mini-css-extract-plugin with automatic or explicit public paths.
+        style.setAttribute('data-href', href.slice(baseUrl.length));
+        style.textContent = cssText;
+        document.head.appendChild(style);
+      }
+      for (const script of initialScripts) {
+        await loadScript(script);
+        if (initFailed) {
+          break;
+        }
+      }
+    } catch (error) {
+      sendInitError(formatError(error));
+    }
+  })();
 })();
 `;
   const styles = manifest.styles.map(style => `<link rel="stylesheet" href=${escapeInlineJson(style)} />`).join('');
-  const scripts = manifest.scripts.map(script => `<script src=${escapeInlineJson(script)}></script>`).join('');
 
   return `<!DOCTYPE html>
 <html>
@@ -550,7 +658,6 @@ export function createSandboxDocument(
   <body>
     <div id="root"></div>
     <script>${bootstrap}</script>
-    ${scripts}
   </body>
 </html>`;
 }
