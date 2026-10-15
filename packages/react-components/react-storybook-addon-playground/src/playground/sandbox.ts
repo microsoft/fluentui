@@ -621,8 +621,8 @@ export function createSandboxDocument(
     try {
       for (const { href, cssText } of inlineStyles) {
         const style = document.createElement('style');
-        // mini-css-extract-plugin recognizes these styles instead of requesting a lazy stylesheet.
-        style.setAttribute('data-href', href);
+        // The emitted filename matches mini-css-extract-plugin with automatic or explicit public paths.
+        style.setAttribute('data-href', href.slice(baseUrl.length));
         style.textContent = cssText;
         document.head.appendChild(style);
       }

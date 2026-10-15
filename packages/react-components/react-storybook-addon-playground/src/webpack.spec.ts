@@ -276,8 +276,8 @@ describe('collectConfiguredTypings', () => {
       expect((await result.runtime.moduleLoaders['workspace-ui']()).workspaceValue).toBe('workspace');
       const files = result.moduleFiles('workspace-ui');
       expect(files['file:///node_modules/@workspace/ui/dist/button.d.ts']).toContain('workspaceValue');
-      expect(files['file:///node_modules/workspace-ui/index.d.ts']).not.toContain('installedValue');
-      expect(files['file:///node_modules/workspace-ui/index.d.ts']).toContain('@workspace/ui');
+      expect(files['file:///node_modules/workspace-ui/index.d.ts']).toBeUndefined();
+      expect(files['file:///playground-typings/workspace-ui/root.d.ts']).toContain('@workspace/ui');
       expect(result.manifest.allowedModules).toContain('workspace-ui');
       expect(result.manifest.allowedModules).not.toContain('@workspace/ui');
       expect(result.warnings.join('\n')).not.toContain('"workspace-ui"');
@@ -508,6 +508,120 @@ describe('collectConfiguredTypings', () => {
       );
     });
 
+    it('prefers the requested export when root and subpath declarations share a runtime target', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/ui/package.json': JSON.stringify({
+            name: 'ui',
+            exports: {
+              '.': { types: './dist/root.d.ts', default: './index.js' },
+              './button': { types: './dist/button.d.ts', default: './index.js' },
+            },
+          }),
+          'node_modules/ui/index.js': 'exports.root = "root"; exports.button = "button";',
+          'node_modules/ui/dist/root.d.ts': 'export declare const root: "root";',
+          'node_modules/ui/dist/button.d.ts': 'export declare const button: "button";',
+        },
+        () => ({ options: { modules: ['ui', 'ui/button'] } }),
+      );
+
+      expect((await result.runtime.moduleLoaders['ui/button']()).button).toBe('button');
+      expectEditorImports(
+        { ...result.moduleFiles('ui'), ...result.moduleFiles('ui/button') },
+        'import { root } from "ui"; import { button } from "ui/button"; ' +
+          'const rootValue: "root" = root; const buttonValue: "button" = button;',
+      );
+    });
+
+    it.each([
+      ['mts', 'export declare const value: "actual";', 'import { value } from "public-ui"; const v: "actual" = value;'],
+      ['cts', 'export declare const value: "actual";', 'import { value } from "public-ui"; const v: "actual" = value;'],
+      [
+        'mts',
+        'declare const value: "actual"; export default value;',
+        'import value from "public-ui"; const v: "actual" = value;',
+      ],
+      [
+        'cts',
+        'declare const entry: { value: "actual" }; export = entry;',
+        'import entry = require("public-ui"); const v: "actual" = entry.value;',
+      ],
+    ])('resolves public aliases to .d.%s declarations in the editor (%s)', async (extension, declaration, source) => {
+      const result = await buildFixture(
+        {
+          'node_modules/actual/package.json': JSON.stringify({
+            name: 'actual',
+            exports: { '.': { types: `./dist/index.d.${extension}`, default: './index.js' } },
+          }),
+          'node_modules/actual/index.js': 'exports.value = "actual";',
+          [`node_modules/actual/dist/index.d.${extension}`]: declaration,
+        },
+        () => ({ options: { modules: { 'public-ui': 'actual' } } }),
+      );
+
+      expect((await result.runtime.moduleLoaders['public-ui']()).value).toBe('actual');
+      expectEditorImports(result.moduleFiles('public-ui'), source);
+    });
+
+    it('preserves global-only declarations through virtual entries', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/global-types/package.json': JSON.stringify({ name: 'global-types', types: './index.d.ts' }),
+          'node_modules/global-types/index.d.ts': 'declare interface SharedGlobal { version: "global"; }',
+        },
+        () => ({ options: { modules: [], typings: ['global-types'] } }),
+      );
+
+      expectEditorImports(result.base, 'import "global-types"; const value: SharedGlobal = { version: "global" };');
+    });
+
+    it.each([
+      ['conditional', 'conditional/button'],
+      ['conditional/button', 'conditional'],
+    ])('preserves physical declarations for root and subpath collisions (%s first)', async (...modules) => {
+      const rootDeclarations = 'export declare const rootShared: "root";';
+      const buttonDeclarations = 'export declare const buttonShared: "button";';
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            types: './index.d.ts',
+            exports: {
+              '.': {
+                node: { types: './node.d.ts', default: './node.js' },
+                default: { types: './index.d.ts', default: './browser.js' },
+              },
+              './button': {
+                node: { types: './node-button.d.ts', default: './button.js' },
+                default: { types: './button.d.ts', default: './browser.js' },
+              },
+            },
+          }),
+          'node_modules/conditional/node.js': 'exports.rootShared = "root"; exports.selected = "node";',
+          'node_modules/conditional/node.d.ts': 'export * from "./index"; export declare const selected: "node";',
+          'node_modules/conditional/index.d.ts': rootDeclarations,
+          'node_modules/conditional/button.js': 'exports.buttonShared = "button"; exports.selected = "node-button";',
+          'node_modules/conditional/node-button.d.ts':
+            'export * from "./button"; export declare const selected: "node-button";',
+          'node_modules/conditional/button.d.ts': buttonDeclarations,
+          'node_modules/conditional/browser.js': 'exports.selected = "browser";',
+        },
+        () => ({ options: { modules }, resolve: { conditionNames: ['node', 'default'] } }),
+      );
+
+      const files = { ...result.moduleFiles('conditional'), ...result.moduleFiles('conditional/button') };
+      expect(files['file:///node_modules/conditional/index.d.ts']).toBe(rootDeclarations);
+      expect(files['file:///node_modules/conditional/button.d.ts']).toBe(buttonDeclarations);
+      expect(result.warnings.join('\n')).not.toContain('conditional');
+      expectEditorImports(
+        files,
+        'import { rootShared, selected } from "conditional"; ' +
+          'import { buttonShared, selected as buttonSelected } from "conditional/button"; ' +
+          'const rootValue: "root" = rootShared; const rootSelected: "node" = selected; ' +
+          'const buttonValue: "button" = buttonShared; const selectedButton: "node-button" = buttonSelected;',
+      );
+    });
+
     it('uses wildcard runtime export metadata for a configured package subpath', async () => {
       const result = await buildFixture(
         {
@@ -580,7 +694,7 @@ describe('collectConfiguredTypings', () => {
     expect(baseFiles.some(file => file.startsWith('file:///node_modules/@types/react/'))).toBe(true);
     expect(typings.modules.react).toEqual({ files: {}, usesShared: false });
     const compression = typings.modules.compression.files;
-    expect(compression['file:///node_modules/compression/index.d.ts']).toContain('lz-string');
+    expect(compression['file:///playground-typings/compression/root.d.ts']).toContain('lz-string');
     expect(Object.keys(compression).some(file => file.includes('/lz-string/'))).toBe(true);
     expect(Object.keys(compression).filter(file => baseFiles.includes(file))).toEqual([]);
   });
@@ -595,7 +709,7 @@ describe('collectConfiguredTypings', () => {
     expect(Object.keys(typings.shared).some(file => file.includes('/lz-string/'))).toBe(true);
     expect(typings.modules.first.usesShared).toBe(true);
     expect(Object.keys(typings.modules.first.files)).toEqual([
-      'file:///node_modules/first/index.d.ts',
+      'file:///playground-typings/first/root.d.ts',
       'file:///node_modules/first/package.json',
     ]);
     expect(typings.modules.react.usesShared).toBe(false);
@@ -610,11 +724,15 @@ describe('PlaygroundRuntimeManifestPlugin', () => {
     async inlineStyles => {
       const root = fs.mkdtempSync(path.join(os.tmpdir(), 'playground-css-manifest-'));
       fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify({ private: true, sideEffects: false }));
-      fs.writeFileSync(path.join(root, 'entry.js'), 'import "./eager.css"; import("./lazy.js");');
+      fs.writeFileSync(
+        path.join(root, 'entry.js'),
+        'import "./vendor.css"; import "./eager.css"; import("./lazy.js");',
+      );
       fs.writeFileSync(path.join(root, 'lazy.js'), 'import "./lazy.css"; export const value = 1;');
+      fs.writeFileSync(path.join(root, 'vendor.css'), '.cascade { text-decoration-line: overline; }');
       fs.writeFileSync(
         path.join(root, 'eager.css'),
-        '@font-face { font-family: Fixture; src: url("./fixture.woff2"); }',
+        '@font-face { font-family: Fixture; src: url("./fixture.woff2"); } .cascade { text-decoration-line: underline; }',
       );
       fs.writeFileSync(path.join(root, 'lazy.css'), '.lazy { font-family: Fixture; }');
       fs.writeFileSync(path.join(root, 'fixture.woff2'), Buffer.from('emitted font'));
@@ -629,7 +747,20 @@ describe('PlaygroundRuntimeManifestPlugin', () => {
           filename: '[name].[contenthash].js',
           assetModuleFilename: 'assets/[name].[contenthash][ext]',
         },
-        optimization: { minimize: false },
+        optimization: {
+          minimize: false,
+          splitChunks: {
+            cacheGroups: {
+              vendor: {
+                name: 'vendor',
+                type: 'css/mini-extract',
+                test: /[\\/]vendor\.css$/,
+                chunks: 'all',
+                enforce: true,
+              },
+            },
+          },
+        },
         module: {
           rules: [
             { test: /\.css$/, sideEffects: true, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
@@ -657,11 +788,21 @@ describe('PlaygroundRuntimeManifestPlugin', () => {
         const manifest = JSON.parse(fs.readFileSync(path.join(root, 'out/playground/runtime/manifest.json'), 'utf8'));
         const emittedCss = stats.compilation.getAssets().filter(asset => asset.name.endsWith('.css'));
         const emittedSources = emittedCss.map(asset => fs.readFileSync(path.join(root, 'out', asset.name), 'utf8'));
-        expect(emittedCss).toHaveLength(2);
+        expect(emittedCss).toHaveLength(3);
+        const eagerStyles = stats.compilation.entrypoints
+          .get(ENTRY_NAME)!
+          .getFiles()
+          .filter(file => file.endsWith('.css'));
+        expect(eagerStyles).toHaveLength(2);
+        expect(eagerStyles[0]).toContain('vendor.');
+        expect(eagerStyles[1]).toContain(ENTRY_NAME);
         expect(emittedSources.some(source => source.includes('.woff2'))).toBe(true);
         expect(emittedSources.every(source => !source.includes('data:font/'))).toBe(true);
         if (inlineStyles) {
           expect(manifest.styles).toEqual([]);
+          expect(
+            manifest.inlineStyles.slice(0, eagerStyles.length).map((style: { href: string }) => style.href),
+          ).toEqual(eagerStyles);
           expect(manifest.inlineStyles.map((style: { href: string }) => style.href).sort()).toEqual(
             emittedCss.map(asset => asset.name).sort(),
           );
@@ -669,7 +810,7 @@ describe('PlaygroundRuntimeManifestPlugin', () => {
             `data:font/woff2;base64,${Buffer.from('emitted font').toString('base64')}`,
           );
         } else {
-          expect(manifest.styles).toHaveLength(1);
+          expect(manifest.styles).toEqual(eagerStyles);
           expect(manifest.inlineStyles).toBeUndefined();
         }
       } finally {

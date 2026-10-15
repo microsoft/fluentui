@@ -585,7 +585,10 @@ export class PlaygroundRuntimeManifestPlugin {
           ).filter(file => !file.includes('.hot-update.'));
           const scriptFiles = referencedFiles.filter(file => /\.m?js($|\?)/.test(file)).sort();
           const inlineStyles = this.options.inlineStyles
-            ? inlineRuntimeStyles(compilation, referencedFiles.filter(file => /\.css$/.test(file)).sort())
+            ? inlineRuntimeStyles(
+                compilation,
+                referencedFiles.filter(file => /\.css$/.test(file)),
+              )
             : undefined;
           const styles = inlineStyles ? [] : files.filter(file => /\.css($|\?)/.test(file));
           const emitTypings = (declarations: Record<string, string>) => {

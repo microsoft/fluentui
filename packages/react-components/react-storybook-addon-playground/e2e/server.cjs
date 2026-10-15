@@ -183,7 +183,7 @@ async function buildRuntime(outputPath, addonOptions) {
     devtool: false,
     output: {
       path: outputPath,
-      publicPath: 'auto',
+      publicPath: addonOptions.inlineStyles ? PRIVATE_BUILD_ROOT : 'auto',
       filename: '[name].[contenthash].js',
       chunkFilename: '[name].[contenthash].js',
       assetModuleFilename: 'assets/[name].[contenthash][ext]',

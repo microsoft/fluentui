@@ -158,15 +158,16 @@ describe('sandbox bootstrap', () => {
   });
 
   it('installs inlined CSS before runtime loading and identifies it for the native lazy CSS loader', () => {
-    const href = 'https://example.com/styles/lazy.css';
+    const baseUrl = 'https://example.com/storybook/';
+    const href = `${baseUrl}styles/lazy.css`;
     const cssText = 'body::before { content: "</script><script>not JavaScript</script>"; }';
-    const runtimeManifest = { ...manifest, inlineStyles: [{ href, cssText }] };
+    const runtimeManifest = { ...manifest, baseUrl, inlineStyles: [{ href, cssText }] };
     const source = new DOMParser().parseFromString(createSandboxDocument(runtimeManifest, 'css-token'), 'text/html');
     expect(source.querySelectorAll('script')).toHaveLength(1);
 
     loadBootstrap('css-token', 'https://example.com', runtimeManifest);
     const style = document.head.querySelector<HTMLStyleElement>('style[data-href]');
-    expect(style?.getAttribute('data-href')).toBe(href);
+    expect(style?.getAttribute('data-href')).toBe('styles/lazy.css');
     expect(style?.textContent).toBe(cssText);
     expect(document.head.querySelectorAll('link[rel="stylesheet"]')).toHaveLength(0);
   });

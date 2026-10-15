@@ -125,6 +125,11 @@ test.describe('authenticated deployment', () => {
       expect(manifest.styles).toEqual([]);
       expect(manifest.inlineStyles!.length).toBeGreaterThan(1);
       expect(manifest.inlineStyles!.some(style => style.cssText.includes('data:font/ttf;base64,'))).toBe(true);
+      expect(
+        await previewFrame().evaluate(() =>
+          Array.from(document.querySelectorAll('style[data-href]'), style => style.getAttribute('data-href')),
+        ),
+      ).toEqual(manifest.inlineStyles!.map(style => style.href));
       expect(manifest.scripts.some(script => script.startsWith('runtime~playground-runtime.'))).toBe(true);
       expect((await Promise.all(requests)).some(request => /playground-module-[23]\./.test(request.path))).toBe(false);
       await expect
@@ -164,7 +169,7 @@ test.describe('authenticated deployment', () => {
       ).toBe(true);
       expect(previewAssetRequests).toEqual([]);
       expect(await previewFrame().evaluate(() => globalThis.origin)).toBe('null');
-      await expect(previewFrame().evaluate(() => parent.document.body.innerHTML)).rejects.toThrow(
+      await expect(previewFrame().evaluate(() => globalThis.parent.document.body.innerHTML)).rejects.toThrow(
         /Blocked a frame|SecurityError/,
       );
       await expect(page.locator('iframe')).toHaveAttribute('sandbox', 'allow-scripts');

@@ -335,13 +335,14 @@ function findResolvedPackageDir(entryPath, sources) {
 }
 
 /**
- * Maps a resolved runtime export back to its declaration metadata, rather than assuming an alias keeps its subpath.
+ * Prefers the requested export when it matches the runtime target, then reverse-matches remapped aliases.
  *
  * @param {PackageInfo} pkg
  * @param {string} entryPath
+ * @param {string} requestedSubpath
  * @returns {{ subpath: string, typesPath: string | null } | null}
  */
-function getRuntimeExport(pkg, entryPath) {
+function getRuntimeExport(pkg, entryPath, requestedSubpath) {
   const realEntryPath = existingFile(entryPath) ? fs.realpathSync(entryPath) : path.resolve(entryPath);
   const relativePath = path.relative(pkg.dir, realEntryPath).split(path.sep).join('/');
   /**
@@ -390,14 +391,23 @@ function getRuntimeExport(pkg, entryPath) {
   };
   const exportsField = pkg.packageJson.exports;
   if (exportsField && typeof exportsField === 'object' && !Array.isArray(exportsField)) {
+    /** @type {{ subpath: string, typesPath: string | null } | null} */
+    let firstMatch = null;
     for (const [key, entry] of Object.entries(exportsField)) {
       const match = key.startsWith('.') && matchExport(entry);
       if (match) {
-        return {
+        const resolved = {
           subpath: key === '.' ? '' : key.slice(2).replaceAll('*', match.capture ?? ''),
           typesPath: match.typesPath,
         };
+        if (resolved.subpath === requestedSubpath) {
+          return resolved;
+        }
+        firstMatch ??= resolved;
       }
+    }
+    if (firstMatch) {
+      return firstMatch;
     }
   }
   const rootExport = matchExport(exportsField);
@@ -413,8 +423,8 @@ function getRuntimeExport(pkg, entryPath) {
 /**
  * Collects the transitive closure of type declaration files needed to type-check code importing `entries`.
  *
- * Every file gets a virtual path `file:///node_modules/<package>/<relative path>` so that TypeScript's node module
- * resolution works when the files are registered as Monaco extra libs.
+ * Package declarations keep their paths under `file:///node_modules/<package>/`. Separate virtual entries and
+ * package metadata route Monaco's node module resolution to the selected public exports without changing those files.
  *
  * @param {{
  *   packageRoot: string,
@@ -507,7 +517,7 @@ async function collectTypings(options) {
         ? findResolvedPackageDir(resolution.path, sources)
         : requestSpecifier && findPackageDir(requestSpecifier.name, fromDir));
     const own = ownDir ? load(ownDir) : null;
-    const resolvedExport = own && resolution ? getRuntimeExport(own, resolution.path) : null;
+    const resolvedExport = own && resolution ? getRuntimeExport(own, resolution.path, requestSubpath) : null;
     const ownSubpath = resolvedExport?.subpath ?? requestSubpath;
     /** @type {string | null} */
     let ownEntry = null;
@@ -636,44 +646,18 @@ async function collectTypings(options) {
   }
 
   /**
-   * Monaco's TypeScript uses classic node resolution (`pkg/button` -> `pkg/button.d.ts`).
-   * When types actually live at an `exports` path like `dist/button.d.ts`, add a shim at the classic location.
-   *
-   * @param {{ dir: string, name: string }} pkg
-   * @param {string} subpath
-   * @param {string} entryFile
-   */
-  function addSubpathShim(pkg, subpath, entryFile) {
-    const relativeEntry = path.relative(pkg.dir, entryFile).split(path.sep).join('/');
-    const shimRelativePath = subpath ? `${subpath}.d.ts` : 'index.d.ts';
-    if (relativeEntry === shimRelativePath || relativeEntry === `${subpath}/index.d.ts`) {
-      return;
-    }
-
-    const virtualPath = `${VIRTUAL_ROOT}/${pkg.name}/${shimRelativePath}`;
-    if (files[virtualPath]) {
-      return;
-    }
-
-    const importPath = relativeEntry.replace(/\.d\.[cm]?ts$/, '');
-    const fromDir = path.posix.dirname(shimRelativePath);
-    let relImport = path.posix.relative(fromDir, importPath);
-    if (!relImport.startsWith('.')) {
-      relImport = `./${relImport}`;
-    }
-
-    files[virtualPath] = createDeclarationReexport(
-      relImport,
-      files[toVirtualPath(pkg, entryFile)] ?? fs.readFileSync(entryFile, 'utf8'),
-    );
-  }
-
-  /**
    * @param {string} importPath
    * @param {string} content
    */
   function createDeclarationReexport(importPath, content) {
-    const target = JSON.stringify(importPath);
+    const ts = getTypeScript();
+    const isModule = ts
+      ? ts.isExternalModule(ts.createSourceFile(importPath, content, ts.ScriptTarget.Latest, false))
+      : /\b(?:export|import)\s/.test(content.replace(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g, ''));
+    if (!isModule) {
+      return `/// <reference path=${JSON.stringify(importPath)} />\n`;
+    }
+    const target = JSON.stringify(importPath.replace(/\.d\.([cm]?)ts$/, (_, kind) => (kind ? `.${kind}js` : '')));
     // `export *` never re-exports a default export, forward it explicitly.
     switch (getDefaultExportKind(content)) {
       case 'equals':
@@ -686,7 +670,8 @@ async function collectTypings(options) {
   }
 
   /**
-   * Keeps editor imports public even when Webpack resolves a different package, subpath or absolute request.
+   * Routes public imports through separate virtual entries, without overwriting physical declarations.
+   * Metadata is identical for every subpath so separately loaded module typings can share it safely.
    *
    * @param {string} specifier
    * @param {PackageInfo} pkg
@@ -694,32 +679,27 @@ async function collectTypings(options) {
    */
   function addImportAlias(specifier, pkg, entryFile) {
     const { name, subpath } = parseSpecifier(specifier);
-    const aliasFiles = new Set([subpath ? `${subpath}.d.ts` : 'index.d.ts']);
-    if (subpath && name === pkg.name) {
-      // Keep versioned lookups of a public subpath aligned without changing shared package metadata.
-      aliasFiles.add(getDeclarationPath(applyTypesVersions(pkg.packageJson, subpath, typescriptVersion)));
+    const entryRoot = `/playground-typings/${name}`;
+    const aliasPath = `${entryRoot}/${subpath ? `subpaths/${subpath}` : 'root'}.d.ts`;
+    const targetPath = toVirtualPath(pkg, entryFile).replace(/^file:\/\//, '');
+    let importPath = path.posix.relative(path.posix.dirname(aliasPath), targetPath);
+    if (!importPath.startsWith('.')) {
+      importPath = `./${importPath}`;
     }
-    const entryRelativePath = `${pkg.name}/${path.relative(pkg.dir, entryFile).split(path.sep).join('/')}`;
-    for (const aliasFile of aliasFiles) {
-      const aliasRelativePath = path.posix.join(name, aliasFile.split(path.sep).join('/'));
-      let importPath = path.posix.relative(
-        path.posix.dirname(aliasRelativePath),
-        entryRelativePath.replace(/\.d\.[cm]?ts$/, ''),
-      );
-      if (!importPath.startsWith('.')) {
-        importPath = `./${importPath}`;
-      }
-      if (aliasRelativePath !== entryRelativePath) {
-        files[`${VIRTUAL_ROOT}/${aliasRelativePath}`] = createDeclarationReexport(
-          importPath,
-          files[toVirtualPath(pkg, entryFile)],
-        );
-      }
-    }
-    const metadataPath = `${VIRTUAL_ROOT}/${name}/package.json`;
-    if (!files[metadataPath] || (!subpath && name === pkg.name)) {
-      files[metadataPath] = JSON.stringify({ name, ...(!subpath && { types: './index.d.ts' }) });
-    }
+    files[`file://${aliasPath}`] = createDeclarationReexport(importPath, files[toVirtualPath(pkg, entryFile)]);
+
+    const relativeRoot = path.posix.relative(`/node_modules/${name}`, entryRoot);
+    const types = `${relativeRoot}/root.d.ts`;
+    files[`${VIRTUAL_ROOT}/${name}/package.json`] = JSON.stringify({
+      name,
+      types,
+      typesVersions: {
+        '*': {
+          [types]: [types],
+          '*': [`${relativeRoot}/subpaths/*`],
+        },
+      },
+    });
   }
 
   /**
@@ -744,9 +724,7 @@ async function collectTypings(options) {
     const { entryFile } = pkg;
     if (entryFile) {
       await addFile(pkg, entryFile);
-      if (pkg.subpath || (!pkg.packageJson.types && !pkg.packageJson.typings)) {
-        addSubpathShim(pkg, pkg.subpath, entryFile);
-      }
+      addImportAlias(`${pkg.name}${pkg.subpath ? `/${pkg.subpath}` : ''}`, pkg, entryFile);
       if (
         (name !== pkg.name && getTypesPackageName(name) !== pkg.name) ||
         subpath !== pkg.subpath ||

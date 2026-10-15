@@ -136,6 +136,10 @@ Both the runtime and editor declarations resolve from that workspace package. Ex
 even when Webpack resolves a package with a different physical name. Import maps likewise retain their public keys,
 including maps to absolute runtime entry files.
 
+When several exports share one JavaScript target, the requested export's declarations take precedence. Remapped
+aliases still follow the resolved target. The collector preserves physical declaration contents and routes public
+imports through separate virtual entries and package metadata, including `.d.mts` and `.d.cts` declarations.
+
 If a local wrapper or nonstandard build layout needs declarations from a different package root, use
 `options.typingsRoots`. Keys are **public Playground import names**, or declaration-only `typings` entries; values are
 directories containing the package's `package.json` and declaration tree. Relative roots are resolved from the
@@ -256,9 +260,10 @@ or arbitrary files. Missing assets, unsupported asset types and unresolved `@imp
 leaving a private resource request to fail in the iframe. Static directory/CDN URLs must be emitted through the
 build's CSS pipeline instead; already-inline data URLs and local fragments remain valid.
 
-The opaque preview installs those styles before executing the runtime, with `data-href` attributes recognized by the
-lazy CSS loader. **Lazy extracted CSS is installed up front**, so opt in only when that global style ordering is
-appropriate for your modules. Fonts load from data URLs without CORS or authentication requests from the iframe.
+The opaque preview installs those styles before executing the runtime, preserving Webpack's eager stylesheet order
+and appending referenced lazy styles. Build-relative `data-href` attributes let the lazy CSS loader reuse them with
+automatic, empty or explicit public paths. **Lazy extracted CSS is installed up front**, so opt in only when that global
+style ordering is appropriate for your modules. Fonts load from data URLs without CORS or authentication requests from the iframe.
 Storybook's original emitted CSS/font assets and native loaders remain unchanged. No general-purpose authenticated
 fetch API, `allow-same-origin`, or permissive shared-server headers are added.
 

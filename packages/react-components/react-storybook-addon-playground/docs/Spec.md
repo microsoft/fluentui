@@ -96,7 +96,8 @@ Implemented behavior:
   without relaxing iframe isolation or globally exposing assets, and leaves native Storybook chunk loading intact.
 - Opt-in `inlineStyles` embeds extracted eager/lazy CSS and its emitted font/image assets in the manifest. CSS URLs
   are resolved against emitted stylesheets at build time, without network or arbitrary filesystem reads; unresolved
-  imports/resources fail the build. The preview installs CSS up front and identifies it to the lazy CSS loader.
+  imports/resources fail the build. The preview preserves eager stylesheet order, appends lazy CSS up front and
+  identifies it to the lazy CSS loader by build-relative filename, including explicit Webpack public paths.
   Native Storybook styles/fonts remain unchanged. Runtime-injected font URLs still require the host's resource policies.
 - Multiple CSS modules that can be added, renamed and removed; CSS edits apply without remounting the preview.
 - Non-blocking type diagnostics with an error badge.
@@ -107,6 +108,8 @@ Implemented behavior:
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
 - Runtime and declaration collection share the final Webpack resolver, including workspace aliases and custom module
   directories. `typingsRoots` can explicitly select declaration package roots without a `node_modules` self-link.
+  Requested exports take precedence when runtime targets are shared. Separate virtual entries preserve physical
+  declaration contents while supporting conditional/subpath aliases and `.d.mts`/`.d.cts` resolution in Monaco.
 - Docs Canvas overrides render the Playground action through Storybook's `additionalActions` API where supported;
   an addon-owned fallback covers earlier action areas and Storybook 10's separate Docs source-actions row.
 - A Playwright e2e suite covers the production runtime/shell and a nested cookie-authenticated CORP `same-origin`
