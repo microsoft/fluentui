@@ -1,5 +1,5 @@
 import { createFormatter } from '../formatter';
-import { printReport as printReportImpl, printSummary as printSummaryImpl } from '../reporter';
+import { printReport as printReportImpl, printSummary as printSummaryImpl, printDirectiveSummary } from '../reporter';
 import type { DirectiveAnalysis } from '../types';
 
 /** Render via the markdown formatter so existing snapshots stay stable. */
@@ -38,6 +38,29 @@ function makeResult(overrides: Partial<DirectiveAnalysis>): DirectiveAnalysis {
 }
 
 describe('printReport', () => {
+  it('labels probe failures and preserved file-level opt-outs accurately', () => {
+    const results = [
+      makeResult({ directiveType: 'use-no-memo', status: 'broken', compilerEvent: 'none', reason: 'probe failed' }),
+      makeResult({
+        directiveType: 'use-no-memo',
+        status: 'skipped',
+        compilerEvent: 'skipped',
+        sourceFunctionId: null,
+        functionName: null,
+        reason: 'file-level opt-out preserved',
+      }),
+    ];
+    const report = captureConsole(() => printReport(results, '/workspace', false));
+    expect(report).toContain('Broken (compilation or probe failed)');
+    expect(report).toContain('Skipped (justified or file-level opt-out)');
+    const summary = captureConsole(() => printSummary(results));
+    expect(summary).toContain('Compilation or opt-out probing failed');
+    expect(summary).not.toContain("broken `'use memo'`");
+    const compact = captureConsole(() => printDirectiveSummary(createFormatter('md'), results));
+    expect(compact).toContain('1 broken');
+    expect(compact).toContain('1 preserved');
+  });
+
   it('shows "Active (compilable)" section for use-memo directives', () => {
     const results: DirectiveAnalysis[] = [makeResult({ directiveType: 'use-memo', status: 'active' })];
 

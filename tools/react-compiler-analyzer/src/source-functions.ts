@@ -137,7 +137,11 @@ export class SourceFunctionIndex {
     this.relativeFile = toWorkspacePath(workspaceRoot, entry.filePath);
     this.lineStarts = [0];
     for (let offset = 0; offset < source.length; offset++) {
-      if (source.charCodeAt(offset) === 10) {
+      const code = source.charCodeAt(offset);
+      if (code === 13 && source.charCodeAt(offset + 1) === 10) {
+        offset++;
+      }
+      if (code === 10 || code === 13 || code === 0x2028 || code === 0x2029) {
         this.lineStarts.push(offset + 1);
       }
     }
@@ -337,10 +341,14 @@ export class SourceFunctionIndex {
       if (!directiveType || !span) {
         continue;
       }
-      const lineText = this.source.split(/\r?\n/)[span.start.line - 1] ?? '';
-      const trailingText = lineText.slice(span.end.column);
-      const commentMatch = trailingText.match(/\/\/(.*)$/) ?? trailingText.match(/\/\*([\s\S]*?)\*\//);
-      const commentText = commentMatch?.[1];
+      const lineText = this.source.split(/\r\n|[\r\n\u2028\u2029]/)[span.start.line - 1] ?? '';
+      const comment = directive.trailingComments?.find(
+        candidate =>
+          candidate.loc?.start.line === span.end.line &&
+          typeof candidate.start === 'number' &&
+          this.source.slice(span.end.offset, candidate.start).trim() === '',
+      );
+      const commentText = comment?.value;
       const justified = commentText ? JUSTIFIED_RE.test(commentText) : false;
       const occurrence: DirectiveOccurrence = {
         id: `${this.relativeFile}#directive-${span.start.offset}-${span.end.offset}`,

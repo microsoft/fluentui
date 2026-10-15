@@ -456,6 +456,42 @@ describe("applyAnnotations — 'all-safe' mode", () => {
   });
 
   it.each<AnnotateMode>(['all-safe', 'bailout-only'])(
+    '%s preserves a one-line function after a bailout',
+    async mode => {
+      const filePath = writeTemp('export function Risky() { return <div>{store.getState().value}</div>; }');
+      const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false, {
+        detectGetStateReads: true,
+      });
+      const results = deriveCoverage(compiled);
+      expect(results[0]).toMatchObject({ status: 'compiled', risks: [expect.anything()] });
+
+      expect(await applyAnnotations(results, mode)).toEqual({
+        filesModified: 1,
+        functionsAnnotated: 0,
+        functionsBailedOut: 1,
+      });
+      const modified = readFileSync(filePath, 'utf-8');
+      expect(() =>
+        parseSync(modified, {
+          babelrc: false,
+          configFile: false,
+          parserOpts: { plugins: ['typescript', 'jsx'] },
+        }),
+      ).not.toThrow();
+      expect(modified).toContain('return <div>{store.getState().value}</div>; }');
+
+      const recompiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false);
+      expect(recompiled.error).toBeUndefined();
+      expect(await applyAnnotations(deriveCoverage(recompiled), mode)).toEqual({
+        filesModified: 0,
+        functionsAnnotated: 0,
+        functionsBailedOut: 0,
+      });
+      expect(readFileSync(filePath, 'utf-8')).toBe(modified);
+    },
+  );
+
+  it.each<AnnotateMode>(['all-safe', 'bailout-only'])(
     '%s keeps decoded line separators inside bailout comments',
     async mode => {
       for (const separator of ['\n', '\r', '\r\n', '\u2028', '\u2029']) {

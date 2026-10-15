@@ -31,7 +31,7 @@ interface BindingRead {
 interface FnInfo {
   key: string;
   node: BabelFunction;
-  calls: { node: AnyCall; parent: Node | null }[];
+  calls: { node: AnyCall; parent: Node | null; binding: Node | null }[];
   bindingReads: BindingRead[];
 }
 
@@ -158,7 +158,12 @@ export function createCallGraphAnalyzer(
   }
 
   /** Resolve a call's callee to a first-party user function, following imports + re-exports. */
-  function resolveCallee(call: AnyCall, model: ModuleModel, depth: number): { model: ModuleModel; fn: FnInfo } | null {
+  function resolveCallee(
+    call: AnyCall,
+    binding: Node | null,
+    model: ModuleModel,
+    depth: number,
+  ): { model: ModuleModel; fn: FnInfo } | null {
     const callee = call.callee;
     if (callee.type !== 'Identifier') {
       return null; // member calls / dynamic dispatch — out of syntactic reach
@@ -169,7 +174,20 @@ export function createCallGraphAnalyzer(
     if (isHookName(callee.name)) {
       return null;
     }
-    return resolveName(callee.name, model, depth);
+    const fnNode =
+      binding && isUserFunction(binding)
+        ? binding
+        : binding?.type === 'VariableDeclarator' && binding.init && isUserFunction(binding.init)
+        ? binding.init
+        : null;
+    if (fnNode?.loc) {
+      const fn = model.fnByKey.get(locationKey(fnNode.loc.start));
+      return fn ? { model, fn } : null;
+    }
+    if (binding?.type === 'ImportSpecifier' || binding?.type === 'ImportDefaultSpecifier') {
+      return resolveName(callee.name, model, depth);
+    }
+    return null;
   }
 
   /** Resolve a name within a module to a user function, crossing imports/exports as needed. */
@@ -208,8 +226,7 @@ export function createCallGraphAnalyzer(
     const target = model.exports.get(exportName);
     if (target) {
       if (target.kind === 'local') {
-        const fn = model.localFns.get(target.localName);
-        return fn ? { model, fn } : null;
+        return resolveName(target.localName, model, depth + 1);
       }
       const targetPath = resolver(target.source, model.filePath);
       if (!targetPath) {
@@ -247,7 +264,7 @@ export function createCallGraphAnalyzer(
     // A snapshot read through a local binding is a leaf just like a direct risky call.
     let result: IndirectRisk | null = fn.bindingReads[0] ? { leaf: fn.bindingReads[0].match, chain: [] } : null;
 
-    for (const { node, parent } of result ? [] : fn.calls) {
+    for (const { node, parent, binding } of result ? [] : fn.calls) {
       // Direct leaf inside this function.
       const leaf = matchRiskyCall(node, parent, leafConfig);
       if (leaf) {
@@ -255,7 +272,7 @@ export function createCallGraphAnalyzer(
         break;
       }
       // Otherwise follow a first-party callee.
-      const resolved = resolveCallee(node, model, depth);
+      const resolved = resolveCallee(node, binding, model, depth);
       if (!resolved) {
         continue;
       }
@@ -279,12 +296,12 @@ export function createCallGraphAnalyzer(
    */
   function analyzeFunctionCalls(entryModel: ModuleModel, entryFn: FnInfo): { call: AnyCall; risk: IndirectRisk }[] {
     const out: { call: AnyCall; risk: IndirectRisk }[] = [];
-    for (const { node } of entryFn.calls) {
+    for (const { node, binding } of entryFn.calls) {
       // Skip calls that are themselves a direct leaf — the plugin reports those already.
       if (matchRiskyCall(node, null, leafConfig)) {
         continue;
       }
-      const resolved = resolveCallee(node, entryModel, 0);
+      const resolved = resolveCallee(node, binding, entryModel, 0);
       if (!resolved) {
         continue;
       }
@@ -372,7 +389,9 @@ function buildModuleModel(filePath: string, ast: File, leafConfig: LeafRiskConfi
       const top = fnStack[fnStack.length - 1];
       if (top) {
         const callPath = path as NodePath<AnyCall>;
-        top.calls.push({ node: callPath.node, parent: callPath.parent });
+        const callee = callPath.node.callee;
+        const binding = callee.type === 'Identifier' ? callPath.scope.getBinding(callee.name)?.path.node ?? null : null;
+        top.calls.push({ node: callPath.node, parent: callPath.parent, binding });
       }
     },
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -460,6 +479,18 @@ function indexTopLevel(
 
   if (stmt.type === 'FunctionDeclaration' || stmt.type === 'VariableDeclaration') {
     registerDeclaration(stmt, false);
+    return;
+  }
+
+  if (stmt.type === 'ExportDefaultDeclaration') {
+    const declaration = stmt.declaration;
+    if (declaration.type === 'Identifier') {
+      exports.set('default', { kind: 'local', localName: declaration.name });
+    } else if (isUserFunction(declaration)) {
+      registerDeclaration(declaration, false);
+      registerLocalFn('default', declaration);
+      exports.set('default', { kind: 'local', localName: 'default' });
+    }
     return;
   }
 

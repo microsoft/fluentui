@@ -73,13 +73,17 @@ describe('validateParserPlugins', () => {
 });
 
 describe('validateConcurrency', () => {
-  it('accepts any value >= 1', () => {
+  it('accepts positive integers', () => {
     expect(() => validateConcurrency(1)).not.toThrow();
     expect(() => validateConcurrency(64)).not.toThrow();
   });
 
   it('rejects values below 1', () => {
     expect(() => validateConcurrency(0)).toThrow(CliError);
+  });
+
+  it.each([-1, 1.5, NaN, Infinity, -Infinity])('rejects invalid worker counts: %s', concurrency => {
+    expect(() => validateConcurrency(concurrency)).toThrow(CliError);
   });
 });
 

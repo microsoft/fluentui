@@ -1,6 +1,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
+import { transformSync } from '@babel/core';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
@@ -15,7 +16,11 @@ import { normalizeCliOutput } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
-  return { ...actual, compileFilesStreaming: jest.fn(actual.compileFilesStreaming) };
+  return {
+    ...actual,
+    compileSource: jest.fn(actual.compileSource),
+    compileFilesStreaming: jest.fn(actual.compileFilesStreaming),
+  };
 });
 
 const lintCommand = createLintCommand({});
@@ -99,6 +104,65 @@ export function MyComponent({ label }: { label: string }) {
 
     expect(results.length).toBe(1);
     expect(results[0].status).toBe('skipped');
+  });
+
+  it.each<CompilationMode>(['infer', 'annotation', 'all'])('preserves a file-level opt-out in %s mode', async mode => {
+    const componentFile = join(tempDir, 'src', 'FileOptOut.tsx');
+    const source = "'use no memo';\nexport function Widget({ value }) { return <div>{value}</div>; }";
+    writeFileSync(componentFile, source);
+
+    const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' }, mode);
+    expect(results).toEqual([
+      expect.objectContaining({ functionName: null, directiveType: 'use-no-memo', status: 'skipped' }),
+    ]);
+    expect(await applyFixes(results)).toEqual({
+      filesModified: 0,
+      directivesRemoved: 0,
+      directivesJustified: 0,
+    });
+    expect(readFileSync(componentFile, 'utf-8')).toBe(source);
+
+    const transform = (input: string) =>
+      transformSync(input, {
+        filename: componentFile,
+        babelrc: false,
+        configFile: false,
+        parserOpts: { plugins: ['jsx'] },
+        plugins: [[require.resolve('babel-plugin-react-compiler'), { compilationMode: 'infer' }]],
+      })!.code!;
+    expect(transform(source)).not.toContain('react/compiler-runtime');
+    expect(transform(source.replace("'use no memo';", ''))).toContain('react/compiler-runtime');
+  });
+
+  it('reports a failed opt-out probe without removing the directive with --fix', async () => {
+    const componentFile = join(tempDir, 'src', 'FailedProbe.tsx');
+    const source = "export function Widget() { 'use no memo'; return <div />; }";
+    writeFileSync(componentFile, source);
+    const probe = jest.mocked(compiler.compileSource).mockResolvedValue({
+      events: [],
+      error: new Error('injected probe failure'),
+    });
+    try {
+      const results = await lintFile({ filePath: componentFile, packageName: 'test-lint-pkg' });
+      expect(results).toEqual([
+        expect.objectContaining({ status: 'broken', reason: expect.stringContaining('injected probe failure') }),
+      ]);
+      expect(
+        await runLint({
+          paths: [componentFile],
+          verbose: false,
+          concurrency: 1,
+          exclude: DEFAULT_EXCLUDE,
+          fix: true,
+          mode: 'infer',
+          format: 'json',
+        } as never),
+      ).toBe(1);
+      expect(readFileSync(componentFile, 'utf-8')).toBe(source);
+      expect(probe).toHaveBeenCalled();
+    } finally {
+      probe.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileSource);
+    }
   });
 
   it('removes redundant directives with --fix', async () => {

@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 import { compileFile } from '../compiler';
+import { deriveMemoDirectiveStatuses } from '../analyzer';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { deriveCandidates } from '../candidates';
@@ -41,6 +42,50 @@ describe('SourceFunctionIndex', () => {
     expect(result.sourceFunctions.resolveSpan(fn.declarationSpan)?.id).toBe(fn.id);
     expect(result.sourceFunctions.resolveSpan(fn.bodySpan)?.id).toBe(fn.id);
     expect(fn.id).toMatch(/^src\/fixture\.tsx#\d+-\d+$/);
+  });
+
+  it.each([
+    ['LF', '\n'],
+    ['CRLF', '\r\n'],
+    ['CR', '\r'],
+    ['line separator', '\u2028'],
+    ['paragraph separator', '\u2029'],
+  ])('attributes compiler results with %s line endings', async (_label, eol) => {
+    const result = await fixture(
+      [
+        '// header',
+        "export function First() { 'use memo'; return <div />; }",
+        "export function Second() { 'use memo'; return <span />; }",
+      ].join(eol),
+    );
+    expect(deriveMemoDirectiveStatuses(result, 'all')).toEqual([
+      expect.objectContaining({ functionName: 'First', status: 'active' }),
+      expect.objectContaining({ functionName: 'Second', status: 'active' }),
+    ]);
+    for (const fn of result.sourceFunctions.values()) {
+      expect(result.sourceFunctions.resolveRawLocation(fn.declarationSpan)?.id).toBe(fn.id);
+    }
+  });
+
+  it.each([
+    ['string', 'function Widget() { "use memo"; eval("1"); return "// justified: example"; }'],
+    [
+      'neighbor',
+      'function Widget() { "use memo"; eval("1"); return 1; } function Neighbor() { "use memo"; /* justified: neighbor */ return 2; }',
+    ],
+  ])('does not borrow a justification from a %s', async (_label, source) => {
+    const result = await fixture(source);
+    const widget = result.sourceFunctions.values().find(fn => fn.name === 'Widget')!;
+    expect(widget.directives[0].justified).toBe(false);
+    expect(deriveMemoDirectiveStatuses(result, 'all')).toContainEqual(
+      expect.objectContaining({ functionName: 'Widget', status: 'broken' }),
+    );
+  });
+
+  it.each(['// justified: intentional\n', '/* justified: intentional */'])('accepts a trailing %s', async comment => {
+    const result = await fixture(`function Widget() { "use memo"; ${comment} return <div />; }`);
+    expect(result.sourceFunctions.directives()[0].justified).toBe(true);
+    expect(deriveMemoDirectiveStatuses(result, 'all')[0].status).toBe('skipped');
   });
 
   it('selects the smallest containing nested function', async () => {

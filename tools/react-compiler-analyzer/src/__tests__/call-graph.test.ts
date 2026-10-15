@@ -1,4 +1,6 @@
 import { join } from 'path';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 
 import { createCallGraphAnalyzer } from '../call-graph';
 import { createModuleResolver } from '../module-resolver';
@@ -14,6 +16,79 @@ function analyzer(config: RiskConfig) {
 }
 
 describe('call-graph wrapper analysis', () => {
+  const roots: string[] = [];
+
+  afterEach(() => {
+    for (const root of roots.splice(0)) {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  function modules(files: Record<string, string>): string {
+    const root = mkdtempSync(join(tmpdir(), 'rca-call-graph-'));
+    roots.push(root);
+    for (const [name, source] of Object.entries(files)) {
+      writeFileSync(join(root, name), source);
+    }
+    return join(root, 'component.tsx');
+  }
+
+  it.each([
+    'export default function readValue() { return store.getState().value; }',
+    'export default function () { return store.getState().value; }',
+    'export default () => store.getState().value;',
+    'export default (function readValue() { return store.getState().value; });',
+    'const readValue = () => store.getState().value; export default readValue;',
+  ])('follows a default-exported wrapper: %s', async source => {
+    const filePath = modules({
+      'reader.ts': source,
+      'component.tsx':
+        "import readValue from './reader'; export function Widget() { return <div>{readValue()}</div>; }",
+    });
+    const callGraph = analyzer({ detectGetStateReads: true });
+    expect(callGraph.analyzeFile(filePath)).toEqual([
+      expect.objectContaining({ risk: expect.objectContaining({ chain: ['readValue'] }) }),
+    ]);
+    const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false, {}, callGraph);
+    expect(deriveCoverage(compiled)).toContainEqual(
+      expect.objectContaining({ functionName: 'Widget', status: 'compiled', risks: [expect.anything()] }),
+    );
+  });
+
+  it.each([
+    "export { readValue } from './reader';",
+    "import { readValue } from './reader'; export { readValue };",
+    "import { readValue as read } from './reader'; export { read as readValue };",
+    "import { readValue } from './reader'; export default readValue;",
+  ])('follows an exported imported binding: %s', barrel => {
+    const imported = barrel.includes('export default') ? 'readValue' : '{ readValue }';
+    const filePath = modules({
+      'reader.ts': 'export function readValue() { return store.getState().value; }',
+      'barrel.ts': barrel,
+      'component.tsx': `import ${imported} from './barrel'; function Widget() { return readValue(); }`,
+    });
+    expect(analyzer({ detectGetStateReads: true }).analyzeFile(filePath)).toHaveLength(1);
+  });
+
+  it.each([
+    'function Widget({ readValue }) { return readValue(); }',
+    'function Widget(readValue) { return readValue(); }',
+    'function Widget() { const readValue = () => 1; return readValue(); }',
+  ])('does not attribute a shadowed helper risk: %s', widget => {
+    const filePath = modules({
+      'component.tsx': `function readValue() { return store.getState().value; } ${widget}`,
+    });
+    expect(analyzer({ detectGetStateReads: true }).analyzeFile(filePath)).toEqual([]);
+  });
+
+  it('does not follow a shadowed import binding', () => {
+    const filePath = modules({
+      'reader.ts': 'export function readValue() { return store.getState().value; }',
+      'component.tsx': "import { readValue } from './reader'; function Widget({ readValue }) { return readValue(); }",
+    });
+    expect(analyzer({ detectGetStateReads: true }).analyzeFile(filePath)).toEqual([]);
+  });
+
   it('is disabled when no leaf rule is configured', () => {
     expect(analyzer({}).enabled).toBe(false);
     expect(analyzer({ detectGetStateReads: true }).enabled).toBe(true);

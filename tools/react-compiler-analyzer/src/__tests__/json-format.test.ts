@@ -462,6 +462,18 @@ describe('serializers', () => {
     expect(doc.summary.memoCacheEmitted).toBe(1);
   });
 
+  it.each(['/ws/src/Broken.tsx', 'C:\\repo\\src\\Broken.tsx'])('removes the known diagnostic filename: %s', file => {
+    const error = 'Expected closing tag for <div>. (1:34)';
+    const meta = { mode: 'infer' as const, workspaceRoot: '/ws', unparseable: [{ file, error: `${file}: ${error}` }] };
+    expect(toAnalysisDocument([], meta).unparseable[0].error).toBe(error);
+    expect(toLintDocument([], meta).unparseable[0].error).toBe(error);
+
+    const otherError = `Unexpected token while reading ${file}: nested diagnostic`;
+    const otherMeta = { ...meta, unparseable: [{ file, error: otherError }] };
+    expect(toAnalysisDocument([], otherMeta).unparseable[0].error).toBe(otherError);
+    expect(toLintDocument([], otherMeta).unparseable[0].error).toBe(otherError);
+  });
+
   it('summarizes lint directives by status', () => {
     const doc: LintDocument = toLintDocument(
       [

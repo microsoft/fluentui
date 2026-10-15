@@ -43,6 +43,8 @@ export interface SharedArgv {
 }
 
 export const DEFAULT_EXCLUDE = [
+  '**/node_modules/**',
+  '**/*.d.ts',
   '**/__tests__/**',
   '**/testing/**',
   '**/__mocks__/**',
@@ -158,8 +160,8 @@ export function validatePaths(rawPaths: string[], options: { strict?: boolean } 
 }
 
 export function validateConcurrency(concurrency: number): void {
-  if (concurrency < 1) {
-    throw new CliError('--concurrency must be >= 1');
+  if (!Number.isInteger(concurrency) || concurrency < 1) {
+    throw new CliError('--concurrency must be a positive integer');
   }
 }
 

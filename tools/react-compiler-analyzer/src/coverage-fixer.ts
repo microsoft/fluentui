@@ -131,7 +131,8 @@ export async function applyAnnotations(
       const directive = isBailout
         ? bailoutDirective(indent, candidate.risks!, quote)
         : `${indent}${quoted('use memo', quote)};`;
-      const insertion = canonicalOffset === undefined ? `${directive}${eol}` : `${eol}${directive}`;
+      const trailingEol = isBailout && !/^[ \t]*(?:\r\n|[\n\r\u2028\u2029])/.test(source.slice(offset)) ? eol : '';
+      const insertion = canonicalOffset === undefined ? `${directive}${eol}` : `${eol}${directive}${trailingEol}`;
       source = source.slice(0, offset) + insertion + source.slice(offset);
       if (isBailout) {
         functionsBailedOut++;

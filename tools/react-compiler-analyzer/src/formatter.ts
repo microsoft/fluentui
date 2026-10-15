@@ -160,6 +160,16 @@ function cellText(cell: Cell): string {
   return typeof cell === 'object' ? String(cell.value) : String(cell);
 }
 
+function markdownCellText(cell: Cell): string {
+  return cellText(cell)
+    .replace(/\\/g, '\\\\')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\|/g, '\\|')
+    .replace(/\r\n|[\r\n\u2028\u2029]/g, '<br>');
+}
+
 function cellTitleAttribute(cell: Cell): string {
   return typeof cell === 'object' ? ` title="${escapeHtml(cell.title)}"` : '';
 }
@@ -200,11 +210,11 @@ class MarkdownFormatter implements Formatter {
   }
 
   public table(headers: Cell[], rows: Cell[][]): void {
-    const headerCells = headers.map(cellText);
+    const headerCells = headers.map(markdownCellText);
     this.write('| ' + headerCells.join(' | ') + ' |');
     this.write('|' + headerCells.map(h => '-'.repeat(h.length + 2)).join('|') + '|');
     for (const row of rows) {
-      this.write('| ' + row.map(cellText).join(' | ') + ' |');
+      this.write('| ' + row.map(markdownCellText).join(' | ') + ' |');
     }
   }
 

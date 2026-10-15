@@ -18,7 +18,7 @@ from published experimental builds, see the [version migration guide](MIGRATION.
 
 ## Quick start
 
-Requires Node.js 22 or 24. Install the published package as a development dependency:
+Requires Node.js 22.14.0 or newer within 22.x, or Node.js 24.x. Install the published package as a development dependency:
 
 ```bash
 npm install --save-dev @fluentui/react-compiler-analyzer
@@ -65,6 +65,8 @@ Use `init` for the minimal first-time config:
   "mode": "infer",
   "format": "cli",
   "exclude": [
+    "**/node_modules/**",
+    "**/*.d.ts",
     "**/__tests__/**",
     "**/testing/**",
     "**/__mocks__/**",
@@ -79,8 +81,8 @@ Use `init` for the minimal first-time config:
 ```
 
 `init` offers `infer` and `annotation`, with `infer` selected by default because `analyze` is the
-primary workflow. It also persists the analyzer's current default excludes, including Cypress and
-E2E files and directories. It does not offer `all`. Re-running it preserves custom excludes and other valid
+primary workflow. It also persists the analyzer's current default excludes, including dependency
+directories, declarations, Cypress, and E2E files and directories. It does not offer `all`. Re-running it preserves custom excludes and other valid
 advanced settings already present in the file. An invalid existing config requires confirmation,
 or `--yes --force` in a non-interactive environment.
 
@@ -185,9 +187,9 @@ Scans one or more files or directories for both `'use no memo'` and `'use memo'`
 | ------------- | ---------------------------------------------------------- | --------- |
 | `redundant`   | Directive has no effect                                    | **1**     |
 | `active`      | Directive is valid (compilable or intentionally opted out) | 0         |
-| `broken`      | `'use memo'` requests compilation that errors              | **1**     |
+| `broken`      | Opt-in compilation or an opt-out probe fails               | **1**     |
 | `conflicting` | Both `'use no memo'` and `'use memo'` on same function     | **1**     |
-| `skipped`     | Has `// justified:` comment                                | 0         |
+| `skipped`     | Has a justification comment, or is a file-level opt-out    | 0         |
 
 Files that cannot be parsed or compiled are reported separately and fail the lint gate,
 even if no directive status could be derived. `--fix` does not modify these files.
@@ -200,12 +202,15 @@ even if no directive status could be derived. `--fix` does not modify these file
 
 All shared options apply. `--fix` removes redundant `'use no memo'` directives, adds
 `// justified: <reason>` to active ones, and resolves conflicts by keeping `'use memo'`.
-It does not repair broken opt-ins. JSON output describes the post-fix statuses and failures.
+It does not repair broken opt-ins, remove file-level opt-outs, or change directives whose probes
+fail. JSON output describes the post-fix statuses and failures.
 
 | Directive and scenario                          | `infer`       | `annotation`  |
 | ----------------------------------------------- | ------------- | ------------- |
 | `'use no memo'` on a compilable named component | `active`      | `redundant`   |
 | `'use no memo'` on a non-compilable function    | `redundant`   | `redundant`   |
+| File-level `'use no memo'`                      | `skipped`     | `skipped`     |
+| Opt-out probe fails                             | `broken`      | `broken`      |
 | Both directives on one function                 | `conflicting` | `conflicting` |
 | `'use memo'` on a compilable named component    | `active`      | `active`      |
 | `'use memo'` on a non-compilable function       | `broken`      | `broken`      |
@@ -302,7 +307,7 @@ compiled. See [runtime-risk detection](docs/runtime-risks.md) for examples and l
 | `--parser-plugin` | `string[]` | `[]`    | Extra Babel parser plugins, e.g. `decorators-legacy`. Match your build's parser config — see **Not Analyzed**                      |
 | `--config`        | `string`   | —       | Use this RCA config instead of an optional `./rca.config.json`                                                                     |
 
-_(1)_ Default excludes: `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`, `**/*.e2e.*`, `**/e2e/**`
+_(1)_ Default excludes: `**/node_modules/**`, `**/*.d.ts`, `**/__tests__/**`, `**/testing/**`, `**/__mocks__/**`, `**/*.spec.*`, `**/*.test.*`, `**/*.stories.*`, `**/*.cy.*`, `**/*.e2e.*`, `**/e2e/**`
 
 `--help` displays command help, and `--version` displays the CLI version. `--config` is global and
 can precede the command. Table defaults are built-in values; config values override them, and
@@ -471,7 +476,7 @@ react-compiler-analyzer analyze ./src --format json \
 
 For `lint`, the envelope is `schemaVersion`, `tool`, `command: "lint"`, `mode`, `summary`,
 `directives`, and `unparseable`. Each directive row has `file`, `package` (possibly `null`), `line`,
-`column`, `directive` (`use memo` or `use no memo`), `status`, `compilerEvent`, `function`, and
+`column`, `directive` (`use-memo` or `use-no-memo`), `status`, `compilerEvent`, `function`, and
 optional `reason`. Summary counters are `directives`, `active`, `redundant`, `broken`,
 `conflicting`, `skipped`, and `unparseableFiles`. Unparseable entries contain `file` and `error`.
 

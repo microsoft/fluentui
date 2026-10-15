@@ -49,6 +49,18 @@ describe('CliFormatter', () => {
 });
 
 describe('MarkdownFormatter', () => {
+  it('escapes HTML, table separators, and line endings in headers and cells', () => {
+    const out = render('md', f =>
+      f.table(
+        ['Error | <tag>'],
+        [['Expected <div> | <span> & value\r\nnext'], [{ value: '**bold** `code`', title: 'x' }]],
+      ),
+    );
+    expect(out).toContain('| Error \\| &lt;tag&gt; |');
+    expect(out).toContain('| Expected &lt;div&gt; \\| &lt;span&gt; &amp; value<br>next |');
+    expect(out).toContain('| **bold** `code` |');
+  });
+
   it('renders GitHub-flavored markdown', () => {
     const out = render('md', f => {
       f.heading(2, 'Section');

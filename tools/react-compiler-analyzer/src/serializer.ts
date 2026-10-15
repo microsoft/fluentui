@@ -26,6 +26,11 @@ function toRelative(filePath: string, workspaceRoot: string): string {
   return relative(workspaceRoot, filePath).replace(/\\/g, '/');
 }
 
+function diagnosticMessage(filePath: string, message: string): string {
+  const prefix = `${filePath}:`;
+  return message.startsWith(prefix) ? message.slice(prefix.length).trimStart() : message;
+}
+
 /** Convert analysis results into the compact JSON contract. */
 export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDocumentMeta): AnalysisDocument {
   const functions: JsonFunction[] = results.map(result => ({
@@ -89,7 +94,7 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
     findings,
     unparseable: (meta.unparseable ?? []).map(item => ({
       file: toRelative(item.file, meta.workspaceRoot),
-      error: item.error,
+      error: diagnosticMessage(item.file, item.error),
     })),
     ...(meta.annotate ? { annotate: meta.annotate } : {}),
   };
@@ -129,7 +134,7 @@ export function toLintDocument(
     directives,
     unparseable: (meta.unparseable ?? []).map(item => ({
       file: toRelative(item.file, meta.workspaceRoot),
-      error: item.error,
+      error: diagnosticMessage(item.file, item.error),
     })),
   };
 }

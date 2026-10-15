@@ -5,6 +5,10 @@ import type { DirectiveAnalysis } from './types';
 
 const TABLE_REASON_MAX_LEN = 80;
 
+function isPreservedFileOptOut(result: DirectiveAnalysis): boolean {
+  return result.status === 'skipped' && result.directiveType === 'use-no-memo' && result.sourceFunctionId === null;
+}
+
 /**
  * Print a report of all directive analyses, grouped by package and status.
  */
@@ -63,7 +67,9 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
     if (broken.length > 0) {
       f.foldableSection(
         {
-          title: "Broken (`'use memo'` on non-compilable)",
+          title: broken.some(result => result.directiveType === 'use-no-memo')
+            ? 'Broken (compilation or probe failed)'
+            : "Broken (`'use memo'` on non-compilable)",
           status: 'error',
           count: broken.length,
           level: 3,
@@ -102,7 +108,9 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
     if (skipped.length > 0) {
       f.foldableSection(
         {
-          title: 'Skipped (already justified)',
+          title: skipped.some(isPreservedFileOptOut)
+            ? 'Skipped (justified or file-level opt-out)'
+            : 'Skipped (already justified)',
           status: 'info',
           count: skipped.length,
           level: 3,
@@ -153,6 +161,8 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   const skipped = results.filter(r => r.status === 'skipped').length;
   const broken = results.filter(r => r.status === 'broken').length;
   const conflicting = results.filter(r => r.status === 'conflicting').length;
+  const failedProbe = results.some(r => r.status === 'broken' && r.directiveType === 'use-no-memo');
+  const skippedLabel = results.some(isPreservedFileOptOut) ? 'justified or file-level opt-out' : 'already justified';
 
   const activeNoMemo = results.filter(r => r.status === 'active' && r.directiveType === 'use-no-memo').length;
   const activeMemo = results.filter(r => r.status === 'active' && r.directiveType === 'use-memo').length;
@@ -167,9 +177,10 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   if (activeMemo > 0) {
     f.line(`- **Active** \`'use memo'\` (compilable): ${activeMemo}`);
   }
-  f.line(`- **Skipped** (already justified): ${skipped}`);
+  f.line(`- **Skipped** (${skippedLabel}): ${skipped}`);
   if (broken > 0) {
-    f.line(`- **Broken** ('use memo' on non-compilable): ${broken}`);
+    const brokenLabel = failedProbe ? 'compilation or probe failed' : "'use memo' on non-compilable";
+    f.line(`- **Broken** (${brokenLabel}): ${broken}`);
   }
   if (conflicting > 0) {
     f.line(`- **Conflicting** (both directives on same function): ${conflicting}`);
@@ -199,7 +210,11 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   }
 
   if (broken > 0) {
-    f.line(`> ⚠ **${broken}** broken \`'use memo'\` directive(s) — function cannot be compiled.`);
+    f.line(
+      failedProbe
+        ? `> **${broken}** broken directive(s). Compilation or opt-out probing failed; no automatic fix is available.`
+        : `> ⚠ **${broken}** broken \`'use memo'\` directive(s) — function cannot be compiled.`,
+    );
     f.blank();
   }
   if (conflicting > 0) {
@@ -226,7 +241,9 @@ export function printDirectiveSummary(f: Formatter, results: DirectiveAnalysis[]
   if (noMemoResults.length > 0) {
     const noMemoRedundant = noMemoResults.filter(r => r.status === 'redundant').length;
     const noMemoActive = noMemoResults.filter(r => r.status === 'active').length;
-    const noMemoSkipped = noMemoResults.filter(r => r.status === 'skipped').length;
+    const noMemoSkipped = noMemoResults.filter(r => r.status === 'skipped' && !isPreservedFileOptOut(r)).length;
+    const noMemoPreserved = noMemoResults.filter(isPreservedFileOptOut).length;
+    const noMemoBroken = noMemoResults.filter(r => r.status === 'broken').length;
     const subParts = [`${noMemoResults.length} 'use no memo'`];
     if (noMemoRedundant > 0) {
       subParts.push(`${noMemoRedundant} redundant`);
@@ -236,6 +253,12 @@ export function printDirectiveSummary(f: Formatter, results: DirectiveAnalysis[]
     }
     if (noMemoSkipped > 0) {
       subParts.push(`${noMemoSkipped} justified`);
+    }
+    if (noMemoPreserved > 0) {
+      subParts.push(`${noMemoPreserved} preserved`);
+    }
+    if (noMemoBroken > 0) {
+      subParts.push(`${noMemoBroken} broken`);
     }
     parts.push(subParts.join(' — '));
   }

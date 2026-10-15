@@ -169,11 +169,24 @@ export async function analyzeNoMemoDirectives(
 ): Promise<DirectiveAnalysis[]> {
   const allDirectives = result.sourceFunctions.directives();
   const conflicts = conflictIds(allDirectives);
+  const preserved = allDirectives
+    .filter(directive => directive.directiveType === 'use-no-memo' && !directive.justified && !directive.functionId)
+    .map(directive =>
+      toDirectiveAnalysis(result, directive, {
+        status: 'skipped',
+        compilerEvent: 'skipped',
+        reason: 'file-level opt-out preserved',
+      }),
+    );
   const directives = allDirectives.filter(
-    directive => directive.directiveType === 'use-no-memo' && !directive.justified && !conflicts.has(directive.id),
+    directive =>
+      directive.directiveType === 'use-no-memo' &&
+      directive.functionId &&
+      !directive.justified &&
+      !conflicts.has(directive.id),
   );
   if (directives.length === 0) {
-    return [];
+    return preserved;
   }
 
   const modifiedSource = neutralizeNoMemo(result.source, directives);
@@ -193,13 +206,16 @@ export async function analyzeNoMemoDirectives(
 
   if (error) {
     const fullTrace = error.stack ?? error.message;
-    return directives.map(directive =>
-      toDirectiveAnalysis(result, directive, {
-        status: 'redundant',
-        compilerEvent: 'none',
-        reason: `babel parse error:\n${fullTrace}`,
-      }),
-    );
+    return [
+      ...preserved,
+      ...directives.map(directive =>
+        toDirectiveAnalysis(result, directive, {
+          status: 'broken',
+          compilerEvent: 'none',
+          reason: `opt-out probe failed:\n${fullTrace}`,
+        }),
+      ),
+    ];
   }
 
   const normalized = normalizeCompilerEvents(events, modifiedSource, result.sourceFunctions, {
@@ -207,8 +223,9 @@ export async function analyzeNoMemoDirectives(
   });
   const analyses = new Map(normalized.analyses.map(analysis => [analysis.sourceFunctionId!, analysis]));
 
-  return directives
-    .map(directive => {
+  return [
+    ...preserved,
+    ...directives.map(directive => {
       const analysis = directive.functionId ? analyses.get(directive.functionId) : undefined;
       if (analysis?.status === 'compiled') {
         if (compilationMode === 'annotation') {
@@ -229,8 +246,6 @@ export async function analyzeNoMemoDirectives(
         reason: analysis?.reason ?? 'no compiler event - function not recognized as React component/hook',
         ...(analysis?.fullReason ? { fullReason: analysis.fullReason } : {}),
       });
-    })
-    .sort(
-      (a, b) => a.line - b.line || (a.column ?? 0) - (b.column ?? 0) || compareText(a.directiveId!, b.directiveId!),
-    );
+    }),
+  ].sort((a, b) => a.line - b.line || (a.column ?? 0) - (b.column ?? 0) || compareText(a.directiveId!, b.directiveId!));
 }

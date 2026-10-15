@@ -77,6 +77,30 @@ describe('nearest package discovery', () => {
     ]);
   });
 
+  it('excludes dependencies and declarations by default but accepts explicitly named files', async () => {
+    const root = mkdtempSync(join(tmpdir(), 'rca-discovery-'));
+    const dependency = join(root, 'node_modules', 'dependency');
+    const src = join(root, 'src');
+    mkdirSync(dependency, { recursive: true });
+    mkdirSync(src);
+    writeFileSync(join(root, 'package.json'), JSON.stringify({ name: 'source-only' }));
+    const component = join(src, 'Component.tsx');
+    const declaration = join(src, 'Component.d.ts');
+    const dependencySource = join(dependency, 'index.ts');
+    writeFileSync(component, 'export const Component = () => null;');
+    writeFileSync(declaration, 'export declare const Component: unknown;');
+    writeFileSync(dependencySource, 'export const dependency = 1;');
+
+    expect((await discoverAllFiles(root, null, DEFAULT_EXCLUDE, false)).map(entry => entry.filePath)).toEqual([
+      component,
+    ]);
+    for (const filePath of [declaration, dependencySource]) {
+      expect((await discoverAllFiles(filePath, null, DEFAULT_EXCLUDE, false)).map(entry => entry.filePath)).toEqual([
+        filePath,
+      ]);
+    }
+  });
+
   it('deduplicates overlapping inputs with a stable file order', () => {
     expect(
       dedupeFileEntries([
