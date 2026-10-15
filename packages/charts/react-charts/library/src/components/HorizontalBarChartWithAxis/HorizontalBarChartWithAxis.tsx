@@ -829,7 +829,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     _points.forEach(point => {
       if (!categoryToValues[point.y]) {
         categoryToValues[point.y] = [];

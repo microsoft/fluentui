@@ -1057,7 +1057,7 @@ export interface GVBarChartSeriesPoint {
     yAxisCalloutData?: string;
 }
 
-// @public (undocumented)
+// @public @deprecated
 export interface GVDataPoint {
     [key: string]: number | string;
 }
@@ -1067,7 +1067,7 @@ export interface GVForBarChart {
     [key: string]: GVBarChartSeriesPoint;
 }
 
-// @public (undocumented)
+// @public @deprecated
 export interface GVSingleDataPoint {
     [key: string]: GVDataPoint;
 }
