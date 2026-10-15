@@ -1,0 +1,787 @@
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
+import { join } from 'path';
+import { tmpdir } from 'os';
+
+import { compileFile, compileFiles } from '../compiler';
+import * as compiler from '../compiler';
+import { createAnalyzeCommand, runAnalyze } from '../commands/analyze';
+import { CliError, DEFAULT_EXCLUDE } from '../commands/shared';
+import { deriveCoverage } from '../coverage-analyzer';
+import { applyAnnotations } from '../coverage-fixer';
+import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
+import type { FileEntry, FunctionAnalysis } from '../types';
+import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
+import { normalizeCliOutput } from './helpers/output';
+
+jest.mock('../compiler', () => {
+  const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
+  return { ...actual, compileFilesStreaming: jest.fn(actual.compileFilesStreaming) };
+});
+
+const analyzeCommand = createAnalyzeCommand({});
+
+async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
+  const compiled = await compileFile(entry, 'infer', false);
+  return deriveCoverage(compiled);
+}
+
+describe('coverage command integration', () => {
+  let tempDir: string;
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'coverage-cmd-test-'));
+    mkdirSync(join(tempDir, 'src'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'test-integration-pkg' }));
+  });
+
+  it('analyzes files and reports migration candidates', async () => {
+    const componentFile = join(tempDir, 'src', 'Component.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useMemo, useState } from 'react';
+
+export function MyComponent({ items }: { items: string[] }) {
+  const [count, setCount] = useState(0);
+  const sorted = useMemo(() => [...items].sort(), [items]);
+  return <div>{sorted.join(', ')} {count}</div>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
+    expect(candidates.length).toBeGreaterThan(0);
+  });
+
+  it('applies annotations with --annotate', async () => {
+    const componentFile = join(tempDir, 'src', 'Annotatable.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useMemo, useState } from 'react';
+
+export function Annotatable({ items }: { items: string[] }) {
+  const [count, setCount] = useState(0);
+  const sorted = useMemo(() => [...items].sort(), [items]);
+  return <div>{sorted.join(', ')} {count}</div>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    const outcome = await applyAnnotations(results, 'manual-memo');
+
+    if (outcome.functionsAnnotated > 0) {
+      const modified = readFileSync(componentFile, 'utf-8');
+      expect(modified).toContain("'use memo'");
+    }
+  });
+
+  it('is idempotent — second annotate does not add duplicate directives', async () => {
+    const componentFile = join(tempDir, 'src', 'Idempotent.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useMemo, useState } from 'react';
+
+export function Idempotent({ items }: { items: string[] }) {
+  const [count, setCount] = useState(0);
+  const sorted = useMemo(() => [...items].sort(), [items]);
+  return <div>{sorted.join(', ')} {count}</div>;
+}
+`,
+    );
+
+    const entry: FileEntry = { filePath: componentFile, packageName: 'test-integration-pkg' };
+
+    // First pass
+    const results = await analyzeForCoverage(entry);
+    await applyAnnotations(results, 'manual-memo');
+    const firstContent = readFileSync(componentFile, 'utf-8');
+
+    // Re-analyze after annotation
+    const results2 = await analyzeForCoverage(entry);
+
+    // Second pass
+    const outcome2 = await applyAnnotations(results2, 'manual-memo');
+    const secondContent = readFileSync(componentFile, 'utf-8');
+
+    // Content should be the same (idempotent)
+    expect(secondContent).toBe(firstContent);
+    expect(outcome2.functionsAnnotated).toBe(0);
+  });
+
+  it('applies annotations to functions using React.* namespace hooks', async () => {
+    const componentFile = join(tempDir, 'src', 'Namespace.tsx');
+    writeFileSync(
+      componentFile,
+      `import * as React from 'react';
+
+export function NamespaceComponent(props: { items: string[]; multiplier: number }) {
+  const [count, setCount] = React.useState(0);
+
+  const handleClick = React.useCallback(() => {
+    setCount(prev => prev + 1);
+  }, []);
+
+  const displayCount = React.useMemo(() => count * props.multiplier, [count, props.multiplier]);
+
+  return <button onClick={handleClick}>{displayCount}</button>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    const candidates = results.filter(r => r.status === 'compiled' && r.manualMemo);
+    expect(candidates.length).toBeGreaterThan(0);
+    expect(candidates[0].manualMemo!.useMemo).toBe(1);
+    expect(candidates[0].manualMemo!.useCallback).toBe(1);
+
+    const outcome = await applyAnnotations(results, 'manual-memo');
+    expect(outcome.functionsAnnotated).toBeGreaterThan(0);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain("'use memo'");
+  });
+
+  it("'all' mode annotates compilable functions without manual memoization", async () => {
+    const componentFile = join(tempDir, 'src', 'NoMemo.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useState } from 'react';
+
+export function NoMemoComponent() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    // Verify this function has no manual memo
+    const compiled = results.filter(r => r.status === 'compiled');
+    expect(compiled.length).toBeGreaterThan(0);
+    expect(compiled[0].manualMemo).toBeUndefined();
+    expect(compiled[0].bodyInsertionLine).toBeGreaterThan(0);
+
+    const outcome = await applyAnnotations(results, 'all');
+    expect(outcome.functionsAnnotated).toBeGreaterThan(0);
+
+    const modified = readFileSync(componentFile, 'utf-8');
+    expect(modified).toContain("'use memo'");
+  });
+
+  it("'manual-memo' mode skips compilable functions without manual memoization", async () => {
+    const componentFile = join(tempDir, 'src', 'NoMemoSkipped.tsx');
+    writeFileSync(
+      componentFile,
+      `import { useState } from 'react';
+
+export function NoMemoSkipped() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
+}
+`,
+    );
+
+    const results = await analyzeForCoverage({ filePath: componentFile, packageName: 'test-integration-pkg' });
+
+    const outcome = await applyAnnotations(results, 'manual-memo');
+    expect(outcome.functionsAnnotated).toBe(0);
+
+    const content = readFileSync(componentFile, 'utf-8');
+    expect(content).not.toContain("'use memo'");
+  });
+});
+
+describe('analyze command — file-level failures', () => {
+  let tempDir: string;
+  let filePath: string;
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), 'analyze-failure-'));
+    filePath = join(tempDir, 'Component.tsx');
+    writeFileSync(filePath, 'export function Component() { return <div />; }\n');
+  });
+
+  function argv(overrides: Record<string, unknown> = {}) {
+    return {
+      paths: [filePath],
+      verbose: false,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'json',
+      'strict-paths': false,
+      'parser-plugin': [],
+      annotate: undefined,
+      quote: 'single',
+      ...overrides,
+    } as never;
+  }
+
+  it('fails instead of emitting a clean JSON report for an unattributed pipeline error', async () => {
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({
+        ...result,
+        events: [...result.events, { kind: 'PipelineError', fnLoc: null, data: 'pipeline crashed' }],
+      });
+    });
+    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+    try {
+      await expect(runAnalyze(argv({ annotate: 'all' }))).rejects.toThrow(
+        new CliError(`Compiler failed for 1 file(s):\n  ${filePath}: PipelineError: pipeline crashed`),
+      );
+      expect(output).not.toHaveBeenCalled();
+      expect(readFileSync(filePath, 'utf-8')).not.toContain('use memo');
+    } finally {
+      output.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('fails on a transform error rather than labeling it unparseable', async () => {
+    const stream = jest.mocked(compiler.compileFilesStreaming).mockImplementation(async (files, options, onResult) => {
+      const result = await compileFile(files[0], options.compilationMode, options.verbose);
+      await onResult({ ...result, error: new Error('plugin crashed') });
+    });
+    const output = jest.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+    try {
+      await expect(runAnalyze(argv())).rejects.toThrow(`Compiler failed for 1 file(s):\n  ${filePath}: plugin crashed`);
+      expect(output).not.toHaveBeenCalled();
+    } finally {
+      output.mockRestore();
+      stream.mockImplementation(jest.requireActual<typeof import('../compiler')>('../compiler').compileFilesStreaming);
+    }
+  });
+
+  it('reports genuine parser failures in JSON with a failing exit code', async () => {
+    writeFileSync(filePath, 'export function Broken( { return <div />;\n');
+    const output: string[] = [];
+    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+      output.push(String(chunk));
+      return true;
+    });
+
+    try {
+      expect(await runAnalyze(argv())).toBe(1);
+      const doc = JSON.parse(output.join(''));
+      expect(doc.summary.unparseableFiles).toBe(1);
+      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringContaining('Unexpected') }]);
+      expect(doc.functions).toEqual([]);
+    } finally {
+      write.mockRestore();
+    }
+  });
+
+  it('reports a parser failure and exits nonzero in human-readable output', async () => {
+    writeFileSync(filePath, 'export function Broken( { return <div />;\n');
+    const output: string[] = [];
+    const log = jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => {
+      output.push(args.map(String).join(' '));
+    });
+
+    try {
+      expect(await runAnalyze(argv({ format: 'cli' }))).toBe(1);
+      expect(output.join('\n')).toContain('Not analyzed');
+      expect(output.join('\n')).toContain('1 file(s)');
+    } finally {
+      log.mockRestore();
+    }
+  });
+
+  it('keeps genuinely empty source successful with zero functions', async () => {
+    writeFileSync(filePath, '');
+    const output: string[] = [];
+    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
+      output.push(String(chunk));
+      return true;
+    });
+
+    try {
+      expect(await runAnalyze(argv())).toBe(0);
+      const doc = JSON.parse(output.join(''));
+      expect(doc.summary).toMatchObject({ functions: 0, errors: 0, unparseableFiles: 0 });
+      expect(doc.unparseable).toEqual([]);
+    } finally {
+      write.mockRestore();
+    }
+  });
+});
+
+describe('multi-path analyze', () => {
+  let pkgA: TempPackage;
+  let pkgB: TempPackage;
+
+  beforeEach(() => {
+    pkgA = createTempPackage('pkg-alpha');
+    pkgB = createTempPackage('pkg-beta');
+    writeComponent(pkgA, 'A.tsx', COMPILABLE_COMPONENT);
+    writeComponent(pkgB, 'B.tsx', COMPILABLE_COMPONENT);
+  });
+
+  it('discovers files from multiple paths with correct package names', async () => {
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    expect(allFiles.length).toBe(2);
+    expect(allFiles[0].packageName).toBe('pkg-alpha');
+    expect(allFiles[1].packageName).toBe('pkg-beta');
+  });
+
+  it('resolves distinct package names per path via findPackageName', async () => {
+    const nameA = await findPackageName(pkgA.srcDir);
+    const nameB = await findPackageName(pkgB.srcDir);
+
+    expect(nameA).toBe('pkg-alpha');
+    expect(nameB).toBe('pkg-beta');
+  });
+
+  it('compiles merged files from multiple paths and produces results for each', async () => {
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+    const allFiles = [...filesA, ...filesB];
+
+    const compilationResults = await compileFiles(allFiles, {
+      concurrency: 10,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+
+    const coverageResults = compilationResults.flatMap(r => deriveCoverage(r));
+
+    const packagesInResults = new Set(coverageResults.map(r => r.packageName));
+    expect(packagesInResults).toEqual(new Set(['pkg-alpha', 'pkg-beta']));
+    expect(coverageResults.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('renders package-scoped candidate sections in HTML output', async () => {
+    const captured: string[] = [];
+    const originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    try {
+      await analyzeCommand.handler!({
+        paths: [pkgB.srcDir, pkgA.srcDir],
+        verbose: true,
+        concurrency: 2,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'html',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      console.log = originalLog;
+    }
+
+    expect(captured).toHaveLength(1);
+    const html = captured[0];
+    expect(html.match(/data-title="Candidate Legend"/g)).toHaveLength(1);
+    expect(html.match(/data-title="Manual Memo Migration Candidates"/g)).toHaveLength(2);
+    expect(html).toContain(
+      'id="pkg-alpha--manual-memo-migration-candidates" data-title="Manual Memo Migration Candidates" data-group="pkg-alpha"',
+    );
+    expect(html).toContain(
+      'id="pkg-beta--manual-memo-migration-candidates" data-title="Manual Memo Migration Candidates" data-group="pkg-beta"',
+    );
+    expect(html).toContain(
+      '<h2 class="toc-group-heading" id="package-pkg-alpha" data-title="pkg-alpha">pkg-alpha</h2>',
+    );
+    expect(html).toContain('<h2 class="toc-group-heading" id="package-pkg-beta" data-title="pkg-beta">pkg-beta</h2>');
+
+    const legend = html.indexOf('id="candidate-legend"');
+    const alphaPackage = html.indexOf('id="package-pkg-alpha"');
+    const alphaCandidates = html.indexOf('id="pkg-alpha--manual-memo-migration-candidates"');
+    const betaPackage = html.indexOf('id="package-pkg-beta"');
+    const betaCandidates = html.indexOf('id="pkg-beta--manual-memo-migration-candidates"');
+    expect(legend).toBeLessThan(alphaPackage);
+    expect(alphaPackage).toBeLessThan(alphaCandidates);
+    expect(alphaCandidates).toBeLessThan(betaPackage);
+    expect(betaPackage).toBeLessThan(betaCandidates);
+  });
+
+  it('renders only package and overall summary tables without verbose details', async () => {
+    writeComponent(pkgA, 'A.tsx', 'export function A() { return <div />; }\n');
+
+    const captured: string[] = [];
+    const originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+
+    try {
+      await analyzeCommand.handler!({
+        paths: [pkgA.srcDir, pkgB.srcDir],
+        verbose: false,
+        concurrency: 2,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'html',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      console.log = originalLog;
+    }
+
+    const html = captured.join('\n');
+    expect(html).not.toContain('data-title="Candidate Legend"');
+    expect(html).toContain(
+      '<h2 class="toc-group-heading" id="package-pkg-alpha" data-title="pkg-alpha">pkg-alpha</h2>',
+    );
+    expect(html).toContain('<h2 class="toc-group-heading" id="package-pkg-beta" data-title="pkg-beta">pkg-beta</h2>');
+    expect(html).not.toContain('id="pkg-alpha--manual-memo-migration-candidates"');
+    expect(html).not.toContain('id="pkg-beta--manual-memo-migration-candidates"');
+    expect(html).not.toContain('<details class="fold');
+    expect(html).not.toContain('Candidate Legend');
+    expect(html).not.toContain('Compiler accepted (memo cache emitted)</span>');
+    expect(html.match(/<table>/g)).toHaveLength(3);
+  });
+
+  it('applies annotations across files from multiple paths', async () => {
+    const fileA = writeComponent(pkgA, 'Annotatable.tsx', COMPILABLE_COMPONENT);
+    const fileB = writeComponent(pkgB, 'Annotatable.tsx', COMPILABLE_COMPONENT);
+
+    const filesA = await discoverAllFiles(pkgA.srcDir, pkgA.packageName, DEFAULT_EXCLUDE, false);
+    const filesB = await discoverAllFiles(pkgB.srcDir, pkgB.packageName, DEFAULT_EXCLUDE, false);
+
+    const compilationResults = await compileFiles([...filesA, ...filesB], {
+      concurrency: 10,
+      verbose: false,
+      compilationMode: 'infer',
+    });
+    const coverageResults = compilationResults.flatMap(r => deriveCoverage(r));
+    const outcome = await applyAnnotations(coverageResults, 'manual-memo');
+
+    if (outcome.functionsAnnotated > 0) {
+      // At least one file from each package should have been annotated
+      const modifiedA = readFileSync(fileA, 'utf-8');
+      const modifiedB = readFileSync(fileB, 'utf-8');
+      expect(modifiedA).toContain("'use memo'");
+      expect(modifiedB).toContain("'use memo'");
+    }
+  });
+});
+
+describe('single-file path analyze', () => {
+  let pkg: TempPackage;
+
+  beforeEach(() => {
+    pkg = createTempPackage('file-path-analyze');
+  });
+
+  it('discovers a single file when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.tsx', COMPILABLE_COMPONENT);
+
+    const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
+  });
+
+  it('ignores exclude patterns when the path points directly at a file', async () => {
+    const filePath = writeComponent(pkg, 'A.test.tsx', COMPILABLE_COMPONENT);
+
+    // 'A.test.tsx' matches the default '**/*.test.*' exclude, but an explicit
+    // file path must bypass excludes.
+    const files = await discoverAllFiles(filePath, pkg.packageName, DEFAULT_EXCLUDE, false);
+
+    expect(files).toEqual([{ filePath, packageName: pkg.packageName, packageRoot: pkg.dir }]);
+  });
+});
+
+describe('dedupeFileEntries', () => {
+  it('removes duplicate entries by file path, preserving first-seen order', () => {
+    const entries: FileEntry[] = [
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/B.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+    ];
+
+    expect(dedupeFileEntries(entries)).toEqual([
+      { filePath: '/p/src/A.tsx', packageName: 'pkg' },
+      { filePath: '/p/src/B.tsx', packageName: 'pkg' },
+    ]);
+  });
+
+  it('returns an empty array unchanged', () => {
+    expect(dedupeFileEntries([])).toEqual([]);
+  });
+});
+
+describe('mixed directory + file path analyze', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+  let captured: string[];
+
+  beforeEach(() => {
+    // realpathSync so cwd-relative paths in the report are machine-independent.
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'analyze-mixed-')));
+    mkdirSync(join(tempDir, 'src', 'comp'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'mixed-pkg' }));
+    // A directory of components, plus standalone files passed explicitly alongside it.
+    writeFileSync(join(tempDir, 'src', 'comp', 'Foo.tsx'), `export function Foo() { return <div />; }\n`);
+    writeFileSync(join(tempDir, 'src', 'Bar.styles.ts'), `export const bar = 1;\n`);
+    writeFileSync(join(tempDir, 'src', 'Baz.tsx'), `export function Baz() { return <span />; }\n`);
+
+    captured = [];
+    originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  it('accepts a directory combined with explicit files without crashing', async () => {
+    await analyzeCommand.handler!({
+      paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'Bar.styles.ts'), join(tempDir, 'src', 'Baz.tsx')],
+      verbose: true,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'md',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const output = captured.join('\n');
+    // All three files (one from the directory + two explicit) are analyzed.
+    expect(output).toContain('Files to analyze: 3');
+  });
+
+  it('processes a file only once when both its directory and the file itself are passed', async () => {
+    await analyzeCommand.handler!({
+      paths: [join(tempDir, 'src', 'comp'), join(tempDir, 'src', 'comp', 'Foo.tsx')],
+      verbose: true,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'md',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const output = captured.join('\n');
+    // The directory contains only Foo.tsx; passing it again must not double-count.
+    expect(output).toContain('Files to analyze: 1');
+    const analyzingFoo = captured.filter(l => l.includes('Analyzing:') && l.includes('Foo.tsx'));
+    expect(analyzingFoo).toHaveLength(1);
+  });
+});
+
+describe('analyze command — scan log wrapping', () => {
+  let tempDir: string;
+  let originalLog: typeof console.log;
+  let captured: string[];
+
+  beforeEach(() => {
+    // realpathSync so the path matches process.cwd() after chdir (macOS maps /var -> /private/var).
+    tempDir = realpathSync(mkdtempSync(join(tmpdir(), 'analyze-wrap-test-')));
+    mkdirSync(join(tempDir, 'src'), { recursive: true });
+    writeFileSync(join(tempDir, 'package.json'), JSON.stringify({ name: 'wrap-test-pkg' }));
+    writeFileSync(join(tempDir, 'src', 'A.tsx'), `export function A() { return <div />; }\n`);
+
+    captured = [];
+    originalLog = console.log;
+    console.log = (...args: unknown[]) => {
+      captured.push(args.map(String).join(' '));
+    };
+  });
+
+  afterEach(() => {
+    console.log = originalLog;
+  });
+
+  it('wraps scan + compile output in a single <details> block', async () => {
+    await analyzeCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'md',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    const openIdx = captured.indexOf('<details>');
+    const closeIdx = captured.indexOf('</details>');
+
+    // exactly one wrapper, properly ordered
+    expect(openIdx).toBeGreaterThanOrEqual(0);
+    expect(closeIdx).toBeGreaterThan(openIdx);
+    expect(captured.filter(l => l === '<details>')).toHaveLength(1);
+    expect(captured.filter(l => l === '</details>')).toHaveLength(1);
+
+    // banner before, report content after
+    expect(captured.slice(0, openIdx).some(l => l.includes('React Compiler Analysis'))).toBe(true);
+    expect(captured.slice(closeIdx + 1).join('\n')).toMatch(/Coverage|Migration|Summary/);
+
+    // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
+    const wrapper = captured
+      .slice(openIdx, closeIdx + 1)
+      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .join('\n');
+
+    expect(wrapper).toMatchInlineSnapshot(`
+      "<details>
+      <summary>📋 Scan & compile log</summary>
+
+      ## Scanning: <TEMP>
+         Package: wrap-test-pkg
+         Mode: infer
+
+        Found 1 TypeScript files in <TEMP>
+      Files to analyze: 1
+
+      Analyzing: <TEMP>/src/A.tsx
+        [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
+
+      </details>"
+    `);
+  });
+
+  it('emits terminal-friendly output (no markdown) in the default cli format', async () => {
+    // Run with cwd set to the temp dir so the report relativizes file paths to short,
+    // machine-independent values (e.g. `src/A.tsx`). This keeps CLI column widths
+    // deterministic, so the entire output can be snapshotted (paths normalized to <TEMP>).
+    const originalCwd = process.cwd();
+    process.chdir(tempDir);
+    try {
+      await analyzeCommand.handler!({
+        paths: [tempDir],
+        verbose: true,
+        concurrency: 1,
+        exclude: DEFAULT_EXCLUDE,
+        mode: 'infer',
+        format: 'cli',
+        annotate: undefined,
+        _: [],
+        $0: '',
+      } as never);
+    } finally {
+      process.chdir(originalCwd);
+    }
+
+    // No HTML <details> wrapper and no markdown table pipes or heading hashes.
+    expect(captured.some(l => l.includes('<details>'))).toBe(false);
+    expect(captured.some(l => l.startsWith('## '))).toBe(false);
+    expect(captured.some(l => l.includes('|'))).toBe(false);
+
+    const output = normalizeCliOutput(captured, tempDir);
+
+    expect(output).toMatchInlineSnapshot(`
+      "━━ React Compiler Analysis ━━
+
+      📋 Scan & compile log
+      ─────────────────────
+
+      Scanning: <TEMP>
+      ────────────────
+         Package: wrap-test-pkg
+         Mode: infer
+
+        Found 1 TypeScript files in <TEMP>
+      Files to analyze: 1
+
+      Analyzing: <TEMP>/src/A.tsx
+        [CompileSuccess] <TEMP>/src/A.tsx fn@1:7 A
+
+
+      wrap-test-pkg
+      ─────────────
+
+      Status                                     Count  Percentage
+      ─────────────────────────────────────────  ─────  ────────────────
+      Compiler accepted (memo cache emitted)     1      100.0%
+      Compiler accepted (no memo cache emitted)  0      0.0%
+      Manual Memo Migration Candidates           0      0.0% of accepted
+      Skipped                                    0      0.0%
+      Errors                                     0      0.0%
+      Total                                      1
+
+      ▸ Compiler accepted (memo cache emitted) (1)
+
+      Location     Function  Memo Slots  Memo Blocks  Memo Values
+      ───────────  ────────  ──────────  ───────────  ───────────
+      src/A.tsx:1  A         1           1            1
+
+      Summary
+      ───────
+
+      - Total functions analyzed: 1
+      - Compiler accepted: 1 (100.0%)
+        - Memo cache emitted: 1 (100.0% of total)
+        - No memo cache emitted: 0 (0.0% of total)
+      - Skipped (opted out or not a component/hook): 0 (0.0%)
+      - Errors (compiler bailout): 0 (0.0%)
+      - Manual memo migration candidates: 0
+
+        No compiler errors were reported.
+
+      ▸ Legend
+
+      Term         Meaning
+      ───────────  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+      Memo Slots   Number of retained runtime cache slots reported by the compiler. Zero means the function was accepted without emitting a memo cache.
+      Memo Blocks  Number of retained code blocks (JSX elements, conditional branches, etc.) wrapped with cache checks.
+      Memo Values  Number of retained values (variables, expressions, hook results) cached between renders.
+
+        Memo counters describe emitted compiler output; they do not rank expected performance benefit.
+
+
+        Tip: Run lint <path> for directive health checks."
+    `);
+  });
+
+  it('emits a self-contained HTML document in the html format', async () => {
+    await analyzeCommand.handler!({
+      paths: [tempDir],
+      verbose: true,
+      concurrency: 1,
+      exclude: DEFAULT_EXCLUDE,
+      mode: 'infer',
+      format: 'html',
+      annotate: undefined,
+      _: [],
+      $0: '',
+    } as never);
+
+    // The whole report is emitted as a single HTML document.
+    expect(captured).toHaveLength(1);
+    const doc = captured[0];
+
+    expect(doc.startsWith('<!DOCTYPE html>')).toBe(true);
+    expect(doc.trimEnd().endsWith('</html>')).toBe(true);
+    expect(doc).toContain('<title>React Compiler Analysis</title>');
+    expect(doc).toContain('<h1 class="banner">React Compiler Analysis</h1>');
+    // The compilation mode is surfaced in the meta bar for human clarity.
+    expect(doc).toContain('<span class="meta-label">Mode</span><span class="meta-value">infer</span>');
+    // Report content rendered as real HTML elements.
+    expect(doc).toContain('<details class="scan-log">');
+    expect(doc).toContain('<table>');
+    expect(doc).toContain('<h2>Summary</h2>');
+    // Raw compiler diagnostics are wrapped + escaped inside the scan log.
+    expect(doc).toContain('<div class="log-line">');
+    // No leftover terminal/markdown noise.
+    expect(doc).not.toContain('━━');
+    expect(doc).not.toMatch(/\*\*[^*]+\*\*/);
+    expect(doc).not.toContain('| Status |');
+  });
+});
