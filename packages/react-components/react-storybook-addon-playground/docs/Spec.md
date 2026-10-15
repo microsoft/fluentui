@@ -108,7 +108,9 @@ Implemented behavior:
 - Typings are collected with the TypeScript parser and split into base, shared, and per-module files; the editor only fetches typings for modules the source imports.
 - Runtime and declaration collection share the final Webpack resolver, including workspace aliases and custom module
   directories. `typingsRoots` can explicitly select declaration package roots without a `node_modules` self-link.
-  Requested exports take precedence when runtime targets are shared. Separate virtual entries preserve physical
+  Requested exports take precedence when runtime targets are shared. Conditional branches follow the resolver's
+  effective conditions and export-map order; matched exports without a `types` target prefer adjacent, version-mapped
+  declarations. `main`/`module` entries without exports retain package-metadata resolution. Separate virtual entries preserve physical
   declaration contents while supporting conditional/subpath aliases and `.d.mts`/`.d.cts` resolution in Monaco.
 - Docs Canvas overrides render the Playground action through Storybook's `additionalActions` API where supported;
   an addon-owned fallback covers earlier action areas and Storybook 10's separate Docs source-actions row.

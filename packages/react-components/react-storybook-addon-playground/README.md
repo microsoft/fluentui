@@ -137,7 +137,10 @@ even when Webpack resolves a package with a different physical name. Import maps
 including maps to absolute runtime entry files.
 
 When several exports share one JavaScript target, the requested export's declarations take precedence. Remapped
-aliases still follow the resolved target. The collector preserves physical declaration contents and routes public
+aliases still follow the resolved target. Conditional exports honor Webpack's effective dependency-specific conditions
+and export-map order. When a matched export has no `types` target, declarations beside its resolved JavaScript file
+(including `typesVersions`) take precedence over generic package metadata. Packages using `main`/`module` without an
+export map still use their declaration metadata. The collector preserves physical declaration contents and routes public
 imports through separate virtual entries and package metadata, including `.d.mts` and `.d.cts` declarations.
 
 If a local wrapper or nonstandard build layout needs declarations from a different package root, use

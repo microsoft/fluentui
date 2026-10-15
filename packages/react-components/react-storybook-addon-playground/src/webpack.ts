@@ -13,7 +13,10 @@ type CollectTypingsResult = {
   sources: string[];
   missing: string[];
 };
-type PackageResolver = (request: string, fromDirectory: string) => Promise<{ path: string } | false | null>;
+type PackageResolver = (
+  request: string,
+  fromDirectory: string,
+) => Promise<{ path: string; conditionNames: readonly string[] } | false | null>;
 type HtmlAssetsData = {
   assets: {
     js: string[];
@@ -426,7 +429,11 @@ export function createWebpackPackageResolver(compiler: import('webpack').Compile
           fulfill(false);
         } else {
           const resolvedPath = result?.path ?? resolved;
-          fulfill(typeof resolvedPath === 'string' ? { path: resolvedPath } : null);
+          fulfill(
+            typeof resolvedPath === 'string'
+              ? { path: resolvedPath, conditionNames: Array.from(resolver.options.conditionNames) }
+              : null,
+          );
         }
       });
     });

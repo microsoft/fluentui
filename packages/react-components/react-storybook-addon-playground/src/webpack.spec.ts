@@ -508,6 +508,253 @@ describe('collectConfiguredTypings', () => {
       );
     });
 
+    it.each<{ name: string; resolve?: webpack.ResolveOptions; expected: string }>([
+      { name: 'default browser conditions', expected: 'browser' },
+      { name: 'explicit node condition', resolve: { conditionNames: ['node'] }, expected: 'node' },
+      {
+        name: 'export order rather than condition-list order',
+        resolve: { conditionNames: ['browser', 'node'] },
+        expected: 'node',
+      },
+      { name: 'default fallback without named conditions', resolve: { conditionNames: [] }, expected: 'fallback' },
+      {
+        name: 'effective ESM conditions rather than base conditions',
+        resolve: {
+          conditionNames: ['node'],
+          byDependency: { esm: { conditionNames: ['browser'] } },
+        },
+        expected: 'browser',
+      },
+    ])('selects shared-target declarations using $name', async ({ resolve, expected }) => {
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            exports: {
+              node: { types: './node.d.ts', default: './shared.js' },
+              browser: { types: './browser.d.ts', default: './shared.js' },
+              default: { types: './fallback.d.ts', default: './shared.js' },
+            },
+          }),
+          'node_modules/conditional/shared.js': 'exports.value = "shared";',
+          ...Object.fromEntries(
+            ['node', 'browser', 'fallback'].map(condition => [
+              `node_modules/conditional/${condition}.d.ts`,
+              `export declare const value: "shared"; export type Condition = "${condition}";`,
+            ]),
+          ),
+        },
+        () => ({ options: { modules: ['conditional'] }, resolve }),
+      );
+
+      expect((await result.runtime.moduleLoaders.conditional()).value).toBe('shared');
+      expect(result.warnings.join('\n')).not.toContain('conditional');
+      expectEditorImports(
+        result.moduleFiles('conditional'),
+        `import { value, type Condition } from "conditional"; const v: "shared" = value; const c: Condition = "${expected}";`,
+      );
+    });
+
+    it('skips inactive nested conditions before selecting shared-target declarations', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            exports: {
+              node: { inactive: { types: './inactive.d.ts', default: './shared.js' } },
+              default: { types: './browser.d.ts', default: './shared.js' },
+            },
+          }),
+          'node_modules/conditional/shared.js': 'exports.value = "browser";',
+          'node_modules/conditional/inactive.d.ts': 'export declare const value: "inactive";',
+          'node_modules/conditional/browser.d.ts': 'export declare const value: "browser";',
+        },
+        () => ({
+          options: { modules: ['conditional'] },
+          resolve: { conditionNames: ['node'] },
+        }),
+      );
+
+      expect((await result.runtime.moduleLoaders.conditional()).value).toBe('browser');
+      expectEditorImports(
+        result.moduleFiles('conditional'),
+        'import { value } from "conditional"; const v: "browser" = value;',
+      );
+    });
+
+    it('uses effective conditions inside types metadata', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            exports: {
+              types: { node: './node.d.ts', default: './browser.d.ts' },
+              default: './shared.js',
+            },
+          }),
+          'node_modules/conditional/shared.js': 'exports.value = "node";',
+          'node_modules/conditional/node.d.ts': 'export declare const value: "node";',
+          'node_modules/conditional/browser.d.ts': 'export declare const value: "browser";',
+        },
+        () => ({
+          options: { modules: ['conditional'] },
+          resolve: { conditionNames: ['node'] },
+        }),
+      );
+
+      expectEditorImports(
+        result.moduleFiles('conditional'),
+        'import { value } from "conditional"; const v: "node" = value;',
+      );
+    });
+
+    it('matches export-array fallbacks after inactive conditions', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            exports: {
+              node: [
+                { inactive: { types: './inactive.d.ts', default: './shared.js' } },
+                { types: './node.d.ts', default: './shared.js' },
+              ],
+              default: { types: './browser.d.ts', default: './shared.js' },
+            },
+          }),
+          'node_modules/conditional/shared.js': 'exports.value = "node";',
+          'node_modules/conditional/inactive.d.ts': 'export declare const value: "inactive";',
+          'node_modules/conditional/node.d.ts': 'export declare const value: "node";',
+          'node_modules/conditional/browser.d.ts': 'export declare const value: "browser";',
+        },
+        () => ({
+          options: { modules: ['conditional'] },
+          resolve: { conditionNames: ['node'] },
+        }),
+      );
+
+      expect((await result.runtime.moduleLoaders.conditional()).value).toBe('node');
+      expectEditorImports(
+        result.moduleFiles('conditional'),
+        'import { value } from "conditional"; const v: "node" = value;',
+      );
+    });
+
+    it.each<{
+      subpath: string;
+      versioned: boolean;
+      wildcard: boolean;
+      extension: 'js' | 'mjs' | 'cjs';
+      exactVersion?: boolean;
+    }>([
+      { subpath: '', versioned: false, wildcard: false, extension: 'js' },
+      { subpath: 'button', versioned: false, wildcard: false, extension: 'js' },
+      { subpath: 'button', versioned: true, wildcard: false, extension: 'js' },
+      { subpath: 'button', versioned: true, wildcard: false, extension: 'js', exactVersion: true },
+      { subpath: 'button', versioned: false, wildcard: true, extension: 'js' },
+      { subpath: '', versioned: false, wildcard: false, extension: 'mjs' },
+      { subpath: '', versioned: false, wildcard: false, extension: 'cjs' },
+    ])(
+      'resolves adjacent declarations for matched exports ($subpath, .$extension, versioned=$versioned, exact=$exactVersion, wildcard=$wildcard)',
+      async ({ subpath, versioned, wildcard, extension, exactVersion }) => {
+        const entry = subpath || 'index';
+        const target = wildcard ? '*' : entry;
+        const declarationExtension = extension === 'mjs' ? 'mts' : extension === 'cjs' ? 'cts' : 'ts';
+        const specifier = `conditional${subpath ? `/${subpath}` : ''}`;
+        const conditions = { node: `./node/${target}.${extension}`, default: `./browser/${target}.${extension}` };
+        const result = await buildFixture(
+          {
+            'node_modules/conditional/package.json': JSON.stringify({
+              name: 'conditional',
+              types: './metadata.d.ts',
+              ...(versioned && {
+                typesVersions: {
+                  '<99.0.0': exactVersion
+                    ? {
+                        [`node/${entry}.d.${declarationExtension}`]: [`legacy/node/${entry}.d.${declarationExtension}`],
+                      }
+                    : { '*': ['legacy/*'] },
+                },
+              }),
+              exports: subpath ? { [`./${wildcard ? '*' : subpath}`]: conditions } : conditions,
+            }),
+            [`node_modules/conditional/node/${entry}.${extension}`]:
+              extension === 'mjs' ? 'export const value = "node";' : 'exports.value = "node";',
+            [`node_modules/conditional/node/${entry}.d.${declarationExtension}`]: `export declare const value: "${
+              versioned ? 'modern' : 'node'
+            }";`,
+            [`node_modules/conditional/legacy/node/${entry}.d.${declarationExtension}`]:
+              'export declare const value: "node";',
+            [`node_modules/conditional/browser/${entry}.${extension}`]:
+              extension === 'mjs' ? 'export const value = "browser";' : 'exports.value = "browser";',
+            [`node_modules/conditional/browser/${entry}.d.${declarationExtension}`]:
+              'export declare const value: "browser";',
+            'node_modules/conditional/metadata.d.ts': 'export declare const value: "metadata";',
+          },
+          () => ({
+            options: { modules: [specifier] },
+            resolve: { conditionNames: ['node'] },
+          }),
+        );
+
+        expect((await result.runtime.moduleLoaders[specifier]()).value).toBe('node');
+        expect(result.warnings.join('\n')).not.toContain('conditional');
+        expectEditorImports(
+          result.moduleFiles(specifier),
+          `import { value } from "${specifier}"; const v: "node" = value;`,
+        );
+      },
+    );
+
+    it('falls back to package metadata when a matched export has no adjacent declarations', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/conditional/package.json': JSON.stringify({
+            name: 'conditional',
+            types: './dist/index.d.ts',
+            exports: { node: './node.js', default: './browser.js' },
+          }),
+          'node_modules/conditional/node.js': 'exports.value = "node";',
+          'node_modules/conditional/browser.js': 'exports.value = "browser";',
+          'node_modules/conditional/dist/index.d.ts': 'export declare const value: "node";',
+        },
+        () => ({
+          options: { modules: ['conditional'] },
+          resolve: { conditionNames: ['node'] },
+        }),
+      );
+
+      expect(result.warnings.join('\n')).not.toContain('conditional');
+      expectEditorImports(
+        result.moduleFiles('conditional'),
+        'import { value } from "conditional"; const v: "node" = value;',
+      );
+    });
+
+    it.each(['main', 'module'])(
+      'preserves package declaration metadata for a %s entry without exports',
+      async field => {
+        const result = await buildFixture(
+          {
+            'node_modules/metadata/package.json': JSON.stringify({
+              name: 'metadata',
+              [field]: './runtime.js',
+              types: './dist/index.d.ts',
+            }),
+            'node_modules/metadata/runtime.js': 'exports.value = "metadata";',
+            'node_modules/metadata/runtime.d.ts': 'export declare const value: "adjacent";',
+            'node_modules/metadata/dist/index.d.ts': 'export declare const value: "metadata";',
+          },
+          () => ({ options: { modules: ['metadata'] } }),
+        );
+
+        expect((await result.runtime.moduleLoaders.metadata()).value).toBe('metadata');
+        expectEditorImports(
+          result.moduleFiles('metadata'),
+          'import { value } from "metadata"; const v: "metadata" = value;',
+        );
+      },
+    );
+
     it('prefers the requested export when root and subpath declarations share a runtime target', async () => {
       const result = await buildFixture(
         {

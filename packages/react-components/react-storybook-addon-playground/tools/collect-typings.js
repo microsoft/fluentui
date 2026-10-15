@@ -8,7 +8,7 @@ const semver = require('semver');
  * @typedef {{ kind: 'module' | 'path' | 'types', value: string }} Specifier
  * @typedef {{ files: Record<string, string>, sources: string[], missing: string[] }} CollectResult
  * @typedef {{ dir: string, name: string, packageJson: Record<string, any> }} PackageInfo
- * @typedef {{ path: string } | false | null} ModuleResolution
+ * @typedef {{ path: string, conditionNames: readonly string[] } | false | null} ModuleResolution
  * @typedef {(request: string, fromDir: string) => Promise<ModuleResolution>} PackageResolver
  */
 
@@ -165,16 +165,17 @@ function getTypesPackageName(name) {
  * Picks a types path from a package.json `exports` entry (string, conditions, or fallback list).
  *
  * @param {unknown} entry
+ * @param {ReadonlySet<string>} [conditionNames]
  * @returns {string | null}
  */
-function getTypesFromExportEntry(entry) {
+function getTypesFromExportEntry(entry, conditionNames) {
   if (typeof entry === 'string') {
     return entry;
   }
 
   if (Array.isArray(entry)) {
     for (const candidate of entry) {
-      const resolved = getTypesFromExportEntry(candidate);
+      const resolved = getTypesFromExportEntry(candidate, conditionNames);
       if (resolved) {
         return resolved;
       }
@@ -187,8 +188,11 @@ function getTypesFromExportEntry(entry) {
   }
 
   const conditions = /** @type {Record<string, unknown>} */ (entry);
-  for (const condition of ['types', 'import', 'require', 'default']) {
-    const resolved = getTypesFromExportEntry(conditions[condition]);
+  const keys = conditionNames
+    ? Object.keys(conditions).filter(key => key === 'types' || key === 'default' || conditionNames.has(key))
+    : ['types', 'import', 'require', 'default'];
+  for (const condition of keys) {
+    const resolved = getTypesFromExportEntry(conditions[condition], conditionNames);
     if (resolved) {
       return resolved;
     }
@@ -340,16 +344,21 @@ function findResolvedPackageDir(entryPath, sources) {
  * @param {PackageInfo} pkg
  * @param {string} entryPath
  * @param {string} requestedSubpath
- * @returns {{ subpath: string, typesPath: string | null } | null}
+ * @param {readonly string[]} conditionNames
+ * @returns {{ subpath: string, typesPath: string | null, runtimePath?: string } | null}
  */
-function getRuntimeExport(pkg, entryPath, requestedSubpath) {
+function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
   const realEntryPath = existingFile(entryPath) ? fs.realpathSync(entryPath) : path.resolve(entryPath);
   const relativePath = path.relative(pkg.dir, realEntryPath).split(path.sep).join('/');
+  const activeConditions = new Set(conditionNames);
   /**
    * @param {unknown} entry
-   * @returns {{ typesPath: string | null, capture?: string } | null}
+   * @returns {{ typesPath: string | null, capture?: string } | null | undefined}
    */
   const matchExport = entry => {
+    if (entry === null) {
+      return null;
+    }
     if (typeof entry === 'string') {
       if (/\.d\.[cm]?ts$/.test(entry)) {
         return null;
@@ -377,21 +386,29 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath) {
     if (entry && typeof entry === 'object') {
       const conditions = /** @type {Record<string, unknown>} */ (entry);
       for (const [key, value] of Object.entries(conditions)) {
-        const match = !key.startsWith('types') && matchExport(value);
-        if (match) {
-          const typesPath = match.typesPath ?? getTypesFromExportEntry(conditions.types);
-          return {
-            ...match,
-            typesPath: typesPath && match.capture !== undefined ? typesPath.replaceAll('*', match.capture) : typesPath,
-          };
+        if (key === 'types' || key.startsWith('types@') || (key !== 'default' && !activeConditions.has(key))) {
+          continue;
         }
+        const match = matchExport(value);
+        // Only a nested object with no enabled condition can fall through to the next condition.
+        if (match === undefined) {
+          continue;
+        }
+        if (!match) {
+          return null;
+        }
+        const typesPath = match.typesPath ?? getTypesFromExportEntry(conditions.types, activeConditions);
+        return {
+          ...match,
+          typesPath: typesPath && match.capture !== undefined ? typesPath.replaceAll('*', match.capture) : typesPath,
+        };
       }
     }
-    return null;
+    return undefined;
   };
   const exportsField = pkg.packageJson.exports;
   if (exportsField && typeof exportsField === 'object' && !Array.isArray(exportsField)) {
-    /** @type {{ subpath: string, typesPath: string | null } | null} */
+    /** @type {{ subpath: string, typesPath: string | null, runtimePath?: string } | null} */
     let firstMatch = null;
     for (const [key, entry] of Object.entries(exportsField)) {
       const match = key.startsWith('.') && matchExport(entry);
@@ -399,6 +416,7 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath) {
         const resolved = {
           subpath: key === '.' ? '' : key.slice(2).replaceAll('*', match.capture ?? ''),
           typesPath: match.typesPath,
+          runtimePath: relativePath,
         };
         if (resolved.subpath === requestedSubpath) {
           return resolved;
@@ -412,7 +430,7 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath) {
   }
   const rootExport = matchExport(exportsField);
   if (rootExport) {
-    return { subpath: '', typesPath: rootExport.typesPath };
+    return { subpath: '', typesPath: rootExport.typesPath, runtimePath: relativePath };
   }
   if ([pkg.packageJson.module, pkg.packageJson.main, pkg.packageJson.browser].some(entry => matchExport(entry))) {
     return { subpath: '', typesPath: null };
@@ -517,7 +535,8 @@ async function collectTypings(options) {
         ? findResolvedPackageDir(resolution.path, sources)
         : requestSpecifier && findPackageDir(requestSpecifier.name, fromDir));
     const own = ownDir ? load(ownDir) : null;
-    const resolvedExport = own && resolution ? getRuntimeExport(own, resolution.path, requestSubpath) : null;
+    const resolvedExport =
+      own && resolution ? getRuntimeExport(own, resolution.path, requestSubpath, resolution.conditionNames) : null;
     const ownSubpath = resolvedExport?.subpath ?? requestSubpath;
     /** @type {string | null} */
     let ownEntry = null;
@@ -527,6 +546,11 @@ async function collectTypings(options) {
         ownEntry = resolveVersionedTypesFile(own, path.relative(own.dir, realEntryPath));
       } else if (resolvedExport?.typesPath) {
         ownEntry = resolveVersionedTypesFile(own, resolvedExport.typesPath);
+      } else if (resolvedExport?.runtimePath) {
+        ownEntry =
+          resolveVersionedTypesFile(own, getDeclarationPath(resolvedExport.runtimePath)) ||
+          resolveVersionedTypesFile(own, resolvedExport.runtimePath) ||
+          resolveEntryFile(own, ownSubpath);
       } else if (resolvedExport || explicitRoot || !resolution) {
         ownEntry = resolveEntryFile(own, ownSubpath);
       } else {
