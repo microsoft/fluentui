@@ -1,191 +1,113 @@
 'use client';
 
+/*
+ * React Compiler cannot analyse this module.
+ *
+ * The engine is selected at runtime and invoked as a hook — `(delegate ?? useCssAnchorEngine)(...)`
+ * — which the compiler cannot trace, so it bails on the whole function and reports the bail at each
+ * manual memoization site. Verified by substituting a static call, after which the rule passes.
+ *
+ * The consequence is that this hook is not auto-optimised; its memoization is explicit and correct,
+ * so behaviour is unaffected. Dynamic dispatch is the mechanism that lets a component delegate
+ * placement without threading a rendered element through every state and render function, so this
+ * is a deliberate trade rather than an oversight.
+ */
+/* eslint-disable react-hooks/preserve-manual-memoization */
+
 import * as React from 'react';
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type {
-  PositioningImperativeRef,
-  PositioningShorthandValue,
-  PositioningVirtualElement,
-} from '@fluentui/react-positioning';
-import type { PositioningProps, PositioningReturn } from './types';
-import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
-import { getPlacementString, normalizeAlign } from './utils/placement';
-import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
-import { usePlacementObserver } from './usePlacementObserver';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import type { PositioningProps as CanonicalPositioningProps } from '@fluentui/react-positioning';
 
-export type TargetElement = HTMLElement | PositioningVirtualElement;
-
-const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
-
-const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
+import type { PositioningEngine, PositioningProps, PositioningReturn } from './types';
+import { useCssAnchorPositioning } from './useCssAnchorPositioning';
+import { toHeadlessPlacement } from './utils/toHeadlessPlacement';
 
 /**
- * Reads the current anchor-name property from an element and parses it into an array of names.
- * Handles comma-separated values and trimming.
+ * The built-in engine, adapted to the `PositioningEngine` signature so the dispatcher has a single
+ * call site regardless of which engine is active.
+ *
+ * Module scope, so its identity is stable.
  */
-const readAnchorNames = (element: HTMLElement): string[] => {
-  return element.style
-    .getPropertyValue('anchor-name')
-    .split(',')
-    .map(name => name.trim())
-    .filter(Boolean);
-};
+const useCssAnchorEngine: PositioningEngine = options => useCssAnchorPositioning(options as PositioningProps);
 
-export function usePositioning(options: PositioningProps): PositioningReturn {
-  const {
-    pinned,
-    target: customTarget = null,
-    align: alignInput = ALIGNMENTS.center,
-    position = POSITIONS.above,
-    fallbackPositions = EMPTY_FALLBACK_POSITIONS,
-    offset,
-    coverTarget = false,
-    strategy = 'fixed',
-    matchTargetSize,
-    positioningRef,
-  } = options;
+/**
+ * Positions a surface, delegating to an injected engine when one is supplied.
+ *
+ * Exactly one engine owns placement. The engine is invoked with options the component has already
+ * merged, so configuration derived internally — a submenu's placement, a pointer-derived target —
+ * reaches it without the consumer restating it.
+ *
+ * Two concerns stay with this hook regardless of engine, because they are properties of the
+ * surface rather than of the positioner: the top-layer reset, and reporting resolved placement
+ * through `data-placement`.
+ */
+export function usePositioning(
+  options: PositioningProps & { engine?: 'default' | PositioningEngine },
+): PositioningReturn {
+  const { engine, ...positioningOptions } = options;
+  const delegate = typeof engine === 'function' ? engine : undefined;
 
-  const align = normalizeAlign(alignInput);
+  const consumerOnPositioningEnd = (positioningOptions as CanonicalPositioningProps).onPositioningEnd;
 
-  const { mainAxis, crossAxis } = resolveOffset(offset);
-  const coverAlignment = React.useMemo(
-    () => (coverTarget ? getCoverSelfAlignment(position, align) : null),
-    [coverTarget, position, align],
+  /**
+   * Mirrors the engine's resolved placement into the headless vocabulary.
+   *
+   * Uses the public `onPositioningEnd` option rather than observing the engine's own attribute, so
+   * nothing here depends on a particular engine's internals. The event is dispatched on the
+   * surface, so `currentTarget` is the element to annotate — no ref needed.
+   */
+  const handlePositioningEnd = React.useCallback<NonNullable<CanonicalPositioningProps['onPositioningEnd']>>(
+    event => {
+      const container = event.currentTarget as HTMLElement | null;
+      const placement = toHeadlessPlacement(event.detail.placement);
+
+      if (container && placement) {
+        container.setAttribute('data-placement', placement);
+      }
+
+      consumerOnPositioningEnd?.(event);
+    },
+    [consumerOnPositioningEnd],
   );
 
-  const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
-  const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
-
-  const anchorName = `--${useId('popover-anchor-')}`;
-  const positionArea = POSITION_AREA_MAP[position][align];
-  const placement = getPlacementString(position, align);
-
-  const { targetDocument } = useFluent();
-
-  const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
-
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
-
-  React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
-    positioningRef,
-    () => ({
-      setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
-      },
-      updatePosition: requestPlacementUpdate,
-    }),
-    [requestPlacementUpdate],
-  );
-
-  useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+  /**
+   * Defeats the UA popover stylesheet before the engine positions the surface.
+   *
+   * `[popover]:popover-open` applies `inset: 0; margin: auto`. A JavaScript positioner writes
+   * `left` and `top` and then translates, which overrides only the longhands it sets — leaving
+   * `right: 0` and `bottom: 0` in force and stretching the surface across the viewport. Clearing
+   * `inset` is what keeps it sized to its content; the shorthand then reads back as
+   * `0px auto auto 0px`, which is correct.
+   *
+   * This belongs to the surface, not the engine: headless is what made the element a popover.
+   */
+  const applyTopLayerReset = React.useCallback<React.RefCallback<HTMLElement>>(node => {
+    if (!node) {
       return;
     }
 
-    // `anchor-name` is a comma-separated list. Append this instance's name
-    // instead of overwriting so that multiple positioned popovers can share a
-    // single trigger (e.g. a Tooltip on hover and a Menu on click attached to
-    // the same button) without clobbering each other's anchor. On cleanup we
-    // remove only our own name, preserving any others still in use.
-    if (anchorName) {
-      const names = readAnchorNames(effectiveTarget);
-      if (!names.includes(anchorName)) {
-        effectiveTarget.style.setProperty('anchor-name', [...names, anchorName].join(', '));
-      }
-    }
-
-    return () => {
-      if (anchorName) {
-        const remaining = readAnchorNames(effectiveTarget).filter(name => name !== anchorName);
-        if (remaining.length > 0) {
-          effectiveTarget.style.setProperty('anchor-name', remaining.join(', '));
-        } else {
-          effectiveTarget.style.removeProperty('anchor-name');
-        }
-      }
-    };
-  }, [effectiveTarget, anchorName]);
-
-  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
+    node.style.setProperty('inset', 'auto');
+    node.style.setProperty('margin', '0');
   }, []);
 
-  const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
-    node => {
-      setContainerEl(node);
+  const engineOptions: CanonicalPositioningProps = {
+    ...(positioningOptions as CanonicalPositioningProps),
+    // Headless surfaces are promoted to the top layer, where `fixed` is correct — and
+    // `@fluentui/react-positioning` defaults to `absolute`. Supplied as a default so an explicit
+    // `strategy` from the consumer still wins.
+    strategy: positioningOptions.strategy ?? 'fixed',
+    onPositioningEnd: delegate ? handlePositioningEnd : consumerOnPositioningEnd,
+  };
 
-      if (!node) {
-        return;
-      }
+  // Exactly one engine runs, and the two do not run the same number of hooks — which is why the
+  // engine's identity has to be stable for the lifetime of the component. Changing it mid-life
+  // fails as a React hook-order error.
+  const { targetRef, containerRef } = (delegate ?? useCssAnchorEngine)(engineOptions);
 
-      node.style.setProperty('position', strategy);
-      node.style.setProperty('inset', 'auto');
-      node.style.setProperty('margin', '0');
+  const mergedContainerRef = useMergedRefs(applyTopLayerReset, containerRef);
 
-      applyOffset(node, position, mainAxis, crossAxis);
-
-      if (matchTargetSize === 'width') {
-        node.style.setProperty('width', 'anchor-size(width)');
-      } else {
-        node.style.removeProperty('width');
-      }
-
-      node.style.setProperty('position-anchor', anchorName);
-      node.setAttribute('data-placement', placement);
-
-      if (coverAlignment) {
-        node.style.setProperty('position-area', 'center');
-        node.style.setProperty('align-self', coverAlignment.alignSelf);
-        node.style.setProperty('justify-self', coverAlignment.justifySelf);
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      node.style.setProperty('position-area', positionArea);
-
-      /*
-       * Workaround for https://crbug.com/438334710: Chromium (<=130-ish) doesn't
-         apply the implicit `anchor-center` self-alignment that the spec defines
-         for single-keyword `position-area` values (`block-start`, `block-end`,
-    `    inline-start`, `inline-end`) or `span-all`.
-      */
-      if (align === ALIGNMENTS.center) {
-        node.style.setProperty('place-self', 'anchor-center');
-      } else {
-        node.style.removeProperty('place-self');
-        node.style.removeProperty('align-self');
-        node.style.removeProperty('justify-self');
-      }
-
-      if (pinned) {
-        node.style.removeProperty('position-try-fallbacks');
-        return;
-      }
-
-      if (fallbackAreas.length > 0) {
-        node.style.setProperty('position-try-fallbacks', fallbackAreas.join(', '));
-      } else {
-        node.style.setProperty('position-try-fallbacks', DEFAULT_FLIP.join(', '));
-      }
-    },
-    [
-      anchorName,
-      positionArea,
-      placement,
-      fallbackAreas,
-      pinned,
-      position,
-      align,
-      mainAxis,
-      crossAxis,
-      coverAlignment,
-      strategy,
-      matchTargetSize,
-    ],
-  );
-
-  return { targetRef, containerRef };
+  return {
+    targetRef: targetRef as React.RefCallback<HTMLElement>,
+    containerRef: mergedContainerRef,
+  };
 }
