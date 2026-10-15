@@ -1,10 +1,12 @@
 const BASE_HOOK_PATTERN = /^use\w+Base_unstable$/;
 
 export interface EntryPointImport {
-  /** Namespace binding, eg. `ColorPicker` */
+  /** Prefix for aliasing names exported by more than one entry point, eg. `ColorPicker` */
   namespace: string;
   /** Module specifier, eg. `@fluentui/react-headless-components-preview/color-picker` */
   moduleSpecifier: string;
+  /** Value exports of the entry point, eg. `['ColorArea', 'ColorPicker', ...]` */
+  exports: string[];
 }
 
 export interface BaseHookImport {
@@ -25,25 +27,48 @@ export function toNamespaceBinding(subpath: string): string {
 }
 
 export function renderEntryPointsFixture(imports: EntryPointImport[], name: string): string {
-  const reservedNamespaces = new Set(imports.map(entry => entry.namespace));
-  const usedNamespaces = new Set<string>();
-  const uniqueImports = imports.map(entry => {
-    let namespace = entry.namespace;
-    let suffix = 2;
-    while (usedNamespaces.has(namespace) || (namespace !== entry.namespace && reservedNamespaces.has(namespace))) {
-      namespace = `${entry.namespace}${suffix}`;
-      suffix += 1;
+  const usedBindings = new Set<string>();
+  const importLines: string[] = [];
+  const logged: string[] = [];
+
+  for (const { namespace, moduleSpecifier, exports } of imports) {
+    // an entry point without value exports is still imported, so an unresolvable subpath keeps failing the build
+    if (exports.length === 0) {
+      importLines.push(`import '${moduleSpecifier}';`);
+      continue;
     }
-    usedNamespaces.add(namespace);
-    return { ...entry, namespace };
-  });
 
-  const importLines = uniqueImports.map(
-    ({ namespace, moduleSpecifier }) => `import * as ${namespace} from '${moduleSpecifier}';`,
-  );
-  const logged = uniqueImports.map(({ namespace }) => `  ${namespace},`);
+    const specifiers = exports.map(exportName => {
+      let binding = exportName;
+      let suffix = 2;
+      if (usedBindings.has(binding)) {
+        binding = `${namespace}_${exportName}`;
+      }
+      while (usedBindings.has(binding)) {
+        binding = `${namespace}_${exportName}${suffix}`;
+        suffix += 1;
+      }
+      usedBindings.add(binding);
+      logged.push(`  ${binding},`);
 
-  return [...importLines, '', 'console.log({', ...logged, '});', '', renderMonosizeExport(name), ''].join('\n');
+      return binding === exportName ? `  ${exportName},` : `  ${exportName} as ${binding},`;
+    });
+
+    importLines.push(`import {\n${specifiers.join('\n')}\n} from '${moduleSpecifier}';`);
+  }
+
+  return [
+    '// Named imports only - a namespace import keeps every export name as a string property in the minified output,',
+    '// which no consumer ships, and inflates the measured size.',
+    ...importLines,
+    '',
+    'console.log(',
+    ...logged,
+    ');',
+    '',
+    renderMonosizeExport(name),
+    '',
+  ].join('\n');
 }
 
 export function renderBaseHooksFixture(imports: BaseHookImport[], name: string): string {
