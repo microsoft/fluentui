@@ -5,7 +5,7 @@ exports[`RangeSlider renders disabled RangeSlider correctly 1`] = `
   <div
     class="fui-RangeSlider"
     role="group"
-    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
+    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--start-progress: 20%; --fui-RangeSlider--end-progress: 80%;"
   >
     <div
       class="fui-RangeSlider__rail"
@@ -51,7 +51,7 @@ exports[`RangeSlider renders horizontal RangeSlider correctly 1`] = `
   <div
     class="fui-RangeSlider"
     role="group"
-    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
+    style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--start-progress: 20%; --fui-RangeSlider--end-progress: 80%;"
   >
     <div
       class="fui-RangeSlider__rail"
@@ -95,7 +95,7 @@ exports[`RangeSlider renders vertical RangeSlider correctly 1`] = `
   <div
     class="fui-RangeSlider"
     role="group"
-    style="--fui-RangeSlider--direction: 0deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
+    style="--fui-RangeSlider--direction: 0deg; --fui-RangeSlider--start-progress: 20%; --fui-RangeSlider--end-progress: 80%;"
   >
     <div
       class="fui-RangeSlider__rail"

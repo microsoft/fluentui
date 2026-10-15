@@ -128,6 +128,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useProgressBarStyles_unstable: CustomStyleHook;
   useRadioGroupStyles_unstable: CustomStyleHook;
   useRadioStyles_unstable: CustomStyleHook;
+  useRangeSliderStyles_unstable: CustomStyleHook;
   useRatingDisplayStyles_unstable: CustomStyleHook;
   useRatingItemStyles_unstable: CustomStyleHook;
   useRatingStyles_unstable: CustomStyleHook;

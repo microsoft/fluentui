@@ -10,59 +10,97 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { rangeSliderCSSVars } from './useRangeSliderStyles.styles';
-import type { RangeSliderProps, RangeSliderState, RangeSliderValue } from './RangeSlider.types';
+import { rangeSliderCSSVars } from './RangeSlider.constants';
+import type { RangeSliderBaseProps, RangeSliderBaseState, RangeSliderValue } from './RangeSlider.types';
 
-const {
-  rangeSliderDirectionVar,
-  rangeSliderLowerProgressVar,
-  rangeSliderUpperProgressVar,
-  rangeSliderStepsPercentVar,
-} = rangeSliderCSSVars;
+const { rangeSliderDirectionVar, rangeSliderStartProgressVar, rangeSliderEndProgressVar, rangeSliderStepsPercentVar } =
+  rangeSliderCSSVars;
 
-export const useRangeSliderState_unstable = (state: RangeSliderState, props: RangeSliderProps): RangeSliderState => {
-  'use no memo';
+type Thumb = 'start' | 'end';
 
+type DragState = {
+  /** The pointer that owns the drag */
+  pointerId: number;
+  /** The dragged thumb; null until the first move picks one of two overlapping thumbs */
+  thumb: Thumb | null;
+  /** Pointer value minus the grabbed thumb's value */
+  offset: number;
+  /** The pointer value at the press */
+  pressValue: number;
+};
+
+// Tolerance for floating-point error when counting whole steps
+const STEP_EPSILON = 1e-9;
+
+/**
+ * Number of decimal places in `value`, including exponent notation such as 1e-7.
+ */
+const getDecimalPlaces = (value: number): number => {
+  const [mantissa, exponent] = String(value).split('e');
+  const decimals = (mantissa.split('.')[1] ?? '').length - Number(exponent ?? 0);
+  return Math.max(0, decimals);
+};
+
+export const useRangeSliderState_unstable = (
+  state: RangeSliderBaseState,
+  props: RangeSliderBaseProps,
+): RangeSliderBaseState => {
   const { min = 0, max = 100, step } = props;
   const { dir } = useFluent();
   const { disabled, vertical } = state;
   const stepValue = step && step > 0 ? step : 1;
   const rangeSpan = max - min;
 
-  // Snap value to the nearest step counted from `min` (stepValue defaults to 1)
+  // The RangeSlider `disabled` wins over `disabled` on an input slot
+  const startDisabled = !!disabled || !!state.startInput.disabled;
+  const endDisabled = !!disabled || !!state.endInput.disabled;
+
+  // Round step values to the precision of `min` and `step` to avoid floating-point noise
+  const precision = Math.max(getDecimalPlaces(min), getDecimalPlaces(stepValue));
+  const roundToPrecision = (value: number) => Number(value.toFixed(precision));
+  const getStepValue = (stepCount: number) => roundToPrecision(min + stepCount * stepValue);
+  const countStepsDown = (value: number) => Math.floor((value - min) / stepValue + STEP_EPSILON);
+
+  // The largest value on the step grid, below `max` when `step` doesn't divide the range
+  const lastStepValue = rangeSpan > 0 ? getStepValue(countStepsDown(max)) : min;
+
   const snapToStep = (value: number): number => {
     if (rangeSpan <= 0) {
       return min;
     }
-    return clamp(min + Math.round((value - min) / stepValue) * stepValue, min, max);
+    return clamp(getStepValue(Math.round((value - min) / stepValue)), min, lastStepValue);
   };
 
   const [currentValues, setCurrentValues] = useControllableState<RangeSliderValue>({
     state: props.value,
     defaultState: props.defaultValue,
-    // Default offset between start/end thumbs so the initial range has a visible selection
-    initialState: { start: min, end: snapToStep(min + Math.max(rangeSpan * 0.1, stepValue)) },
+    initialState: { start: min, end: lastStepValue },
   });
 
-  // Ensure values are properly ordered and clamped
+  // Order the values and snap them to the step grid, as the native inputs do
   const { start: rawStart, end: rawEnd } = currentValues;
-  const lowerValue = clamp(Math.min(rawStart, rawEnd), min, max);
-  const upperValue = clamp(Math.max(rawStart, rawEnd), min, max);
+  const startValue = snapToStep(Math.min(rawStart, rawEnd));
+  const endValue = snapToStep(Math.max(rawStart, rawEnd));
 
-  state.value = { start: lowerValue, end: upperValue };
+  // eslint-disable-next-line react-hooks/immutability
+  state.value = { start: startValue, end: endValue };
 
-  // Refs for pointer tracking and position calculation
-  const activeDragThumb = React.useRef<'start' | 'end' | null>(null);
-  const [activeThumb, setActiveThumb] = React.useState<'start' | 'end'>('start');
+  const drag = React.useRef<DragState | null>(null);
+  const [lastUsedThumb, setLastUsedThumb] = React.useState<Thumb>('start');
   const rootRef = React.useRef<HTMLDivElement>(null);
   const railRef = React.useRef<HTMLDivElement>(null);
+  const startThumbRef = React.useRef<HTMLDivElement>(null);
+  const endThumbRef = React.useRef<HTMLDivElement>(null);
   const startInputRef = React.useRef<HTMLInputElement>(null);
   const endInputRef = React.useRef<HTMLInputElement>(null);
 
-  // Shared update function for pointer and input handlers. Skips updates that don't change the value.
+  // When one thumb is disabled, the enabled one is active
+  const activeThumb: Thumb =
+    startDisabled && !endDisabled ? 'end' : endDisabled && !startDisabled ? 'start' : lastUsedThumb;
+
   const updateValues = useEventCallback(
     (start: number, end: number, event: React.SyntheticEvent | Event, type: 'change' | 'pointer') => {
-      if (start === lowerValue && end === upperValue) {
+      if (start === startValue && end === endValue) {
         return;
       }
 
@@ -85,12 +123,9 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
     },
   );
 
-  // Convert pointer position to slider value using the rail's bounding rect
-  // (rail excludes thumb overhang padding, giving accurate 0-100% mapping)
   const getValueFromPointer = (clientX: number, clientY: number): number | null => {
     const rect = railRef.current?.getBoundingClientRect() ?? rootRef.current?.getBoundingClientRect();
     const size = vertical ? rect?.height : rect?.width;
-    // A hidden or collapsed rail has no size to map the pointer onto
     if (!rect || !size) {
       return null;
     }
@@ -102,30 +137,51 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
     return min + adjustedRatio * rangeSpan;
   };
 
-  // Apply snapped value to the appropriate thumb
-  const applyValueToThumb = (thumb: 'start' | 'end', value: number, event: React.SyntheticEvent | Event) => {
+  const applyValueToThumb = (thumb: Thumb, value: number, event: React.SyntheticEvent | Event) => {
     const snapped = snapToStep(value);
-    const newStart = thumb === 'start' ? Math.min(snapped, upperValue) : lowerValue;
-    const newEnd = thumb === 'end' ? Math.max(snapped, lowerValue) : upperValue;
+    const newStart = thumb === 'start' ? Math.min(snapped, endValue) : startValue;
+    const newEnd = thumb === 'end' ? Math.max(snapped, startValue) : endValue;
     updateValues(newStart, newEnd, event, 'pointer');
   };
 
-  // Pick the thumb a pointer press should move
-  const getThumbForValue = (value: number): 'start' | 'end' => {
-    if (lowerValue === upperValue) {
-      // Overlapping thumbs are equally close, so move the one on the side of the press;
-      // a press exactly on them keeps the last-used thumb.
-      return value < lowerValue ? 'start' : value > upperValue ? 'end' : activeThumb;
+  const getThumbForValue = (value: number): Thumb | null => {
+    if (startDisabled || endDisabled) {
+      return startDisabled && endDisabled ? null : activeThumb;
     }
-    const distStart = Math.abs(value - lowerValue);
-    const distEnd = Math.abs(value - upperValue);
+    if (startValue === endValue) {
+      // Overlapping thumbs: move the one on the side of the press
+      return value < startValue ? 'start' : value > endValue ? 'end' : activeThumb;
+    }
+    const distStart = Math.abs(value - startValue);
+    const distEnd = Math.abs(value - endValue);
     return distStart < distEnd ? 'start' : distEnd < distStart ? 'end' : activeThumb;
   };
 
-  // Pointer handlers for rail click and drag
+  const endDrag = () => {
+    drag.current = null;
+  };
+
+  // The inputs ignore pointer events, so focus them programmatically
+  const focusThumb = (thumb: Thumb) => {
+    setLastUsedThumb(thumb);
+    (thumb === 'start' ? startInputRef : endInputRef).current?.focus();
+  };
+
+  const getPressedThumb = (target: EventTarget | null): Thumb | null => {
+    const node = target as Node | null;
+    if (!startDisabled && startThumbRef.current?.contains(node)) {
+      return 'start';
+    }
+    if (!endDisabled && endThumbRef.current?.contains(node)) {
+      return 'end';
+    }
+    return null;
+  };
+
   const handlePointerDown = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
-    // Only the primary button (left mouse button, touch contact, pen tip) moves a thumb
-    if (disabled || ev.button !== 0) {
+    // Ignore non-primary buttons and other pointers during a drag
+    const isOtherPointer = drag.current !== null && ev.pointerId !== drag.current.pointerId;
+    if (disabled || ev.button !== 0 || isOtherPointer) {
       return;
     }
 
@@ -134,22 +190,39 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       return;
     }
 
+    const pressedThumb = getPressedThumb(ev.target);
+    if (pressedThumb) {
+      // Grab the thumb without changing its value; overlapping thumbs wait for the first move
+      const overlapping = startValue === endValue && !startDisabled && !endDisabled;
+      const thumb = overlapping ? null : pressedThumb;
+      drag.current = {
+        pointerId: ev.pointerId,
+        thumb,
+        offset: value - (pressedThumb === 'start' ? startValue : endValue),
+        pressValue: value,
+      };
+      ev.preventDefault();
+      ev.currentTarget.setPointerCapture(ev.pointerId);
+      focusThumb(thumb ?? activeThumb);
+      return;
+    }
+
+    // A press on the rail moves the closest thumb
     const thumb = getThumbForValue(value);
-    activeDragThumb.current = thumb;
-    setActiveThumb(thumb);
+    if (thumb === null) {
+      return;
+    }
+    drag.current = { pointerId: ev.pointerId, thumb, offset: 0, pressValue: value };
 
     ev.preventDefault();
     ev.currentTarget.setPointerCapture(ev.pointerId);
     applyValueToThumb(thumb, value, ev);
-
-    // Focus the corresponding input programmatically since pointerEvents: 'none'
-    // on the input prevents it from receiving click-focus naturally.
-    const inputRef = thumb === 'start' ? startInputRef : endInputRef;
-    inputRef.current?.focus();
+    focusThumb(thumb);
   });
 
   const handlePointerMove = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
-    if (disabled || !activeDragThumb.current) {
+    const current = drag.current;
+    if (!current || ev.pointerId !== current.pointerId) {
       return;
     }
 
@@ -158,28 +231,48 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       return;
     }
 
+    if (current.thumb === null) {
+      // The first move direction picks one of two overlapping thumbs
+      if (value === current.pressValue) {
+        return;
+      }
+      current.thumb = value < current.pressValue ? 'start' : 'end';
+      focusThumb(current.thumb);
+    }
+
+    // The thumb may have been disabled during the drag
+    if (current.thumb === 'start' ? startDisabled : endDisabled) {
+      endDrag();
+      return;
+    }
+
     ev.preventDefault();
-    applyValueToThumb(activeDragThumb.current, value, ev);
+    applyValueToThumb(current.thumb, value - current.offset, ev);
   });
 
   const handlePointerUp = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
-    if (ev.currentTarget.hasPointerCapture(ev.pointerId)) {
+    if (!drag.current || ev.pointerId !== drag.current.pointerId) {
+      return;
+    }
+    if (ev.currentTarget.hasPointerCapture?.(ev.pointerId)) {
       ev.currentTarget.releasePointerCapture(ev.pointerId);
     }
-    activeDragThumb.current = null;
+    endDrag();
   });
 
-  // CSS variables for thumb positioning
   const stepPercent = step && step > 0 && rangeSpan ? `${(step * 100) / rangeSpan}%` : undefined;
 
+  /* eslint-disable react-hooks/immutability */
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
   state.rail.ref = useMergedRefs(state.rail.ref, railRef);
+  state.startThumb.ref = useMergedRefs(state.startThumb.ref, startThumbRef);
+  state.endThumb.ref = useMergedRefs(state.endThumb.ref, endThumbRef);
   state.startInput.ref = useMergedRefs(state.startInput.ref, startInputRef);
   state.endInput.ref = useMergedRefs(state.endInput.ref, endInputRef);
   state.root.style = {
     [rangeSliderDirectionVar]: vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
-    [rangeSliderLowerProgressVar]: `${getPercentInRange(lowerValue, min, max)}%`,
-    [rangeSliderUpperProgressVar]: `${getPercentInRange(upperValue, min, max)}%`,
+    [rangeSliderStartProgressVar]: `${getPercentInRange(startValue, min, max)}%`,
+    [rangeSliderEndProgressVar]: `${getPercentInRange(endValue, min, max)}%`,
     ...(stepPercent && { [rangeSliderStepsPercentVar]: stepPercent }),
     ...state.root.style,
   };
@@ -188,40 +281,45 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   state.root.onPointerMove = mergeCallbacks(state.root.onPointerMove, handlePointerMove);
   state.root.onPointerUp = mergeCallbacks(state.root.onPointerUp, handlePointerUp);
   state.root.onPointerCancel = mergeCallbacks(state.root.onPointerCancel, handlePointerUp);
+  state.root.onLostPointerCapture = mergeCallbacks(state.root.onLostPointerCapture, handlePointerUp);
 
-  // Input configuration for keyboard accessibility.
-  // Each input is limited by the other thumb's value. A native range input counts steps from its `min`, so the
-  // end input's `min` is aligned down to the step grid to keep keyboard steps in line with pointer snapping;
-  // onChange clamps the value back to the lower thumb.
-  state.startInput.value = lowerValue;
-  state.startInput.min = min;
-  state.startInput.max = upperValue;
-  state.startInput.step = stepValue;
+  // A thumb disabled on its own uses aria-disabled, so it stays focusable and is still submitted
   state.startInput.disabled = disabled;
+  state.startInput['aria-disabled'] = !disabled && startDisabled ? true : state.startInput['aria-disabled'];
+  state.endInput.disabled = disabled;
+  state.endInput['aria-disabled'] = !disabled && endDisabled ? true : state.endInput['aria-disabled'];
+
+  // Each input is limited by the other thumb's value
+  state.startInput.value = startValue;
+  state.startInput.min = min;
+  state.startInput.max = endValue;
+  state.startInput.step = stepValue;
   state.startInput.onChange = mergeCallbacks(state.startInput.onChange, ev => {
-    if (!disabled) {
-      updateValues(Math.min(Number(ev.currentTarget.value), upperValue), upperValue, ev, 'change');
+    if (!startDisabled) {
+      updateValues(Math.min(Number(ev.currentTarget.value), endValue), endValue, ev, 'change');
     }
   });
   state.startInput.onFocus = mergeCallbacks(state.startInput.onFocus, () => {
-    setActiveThumb('start');
+    setLastUsedThumb('start');
   });
 
-  state.endInput.value = upperValue;
-  state.endInput.min = min + Math.floor((lowerValue - min) / stepValue) * stepValue;
-  state.endInput.max = max;
+  state.endInput.value = endValue;
+  state.endInput.min = startValue;
+  state.endInput.max = lastStepValue;
   state.endInput.step = stepValue;
-  state.endInput.disabled = disabled;
   state.endInput.onChange = mergeCallbacks(state.endInput.onChange, ev => {
-    if (!disabled) {
-      updateValues(lowerValue, Math.max(Number(ev.currentTarget.value), lowerValue), ev, 'change');
+    if (!endDisabled) {
+      updateValues(startValue, Math.max(Number(ev.currentTarget.value), startValue), ev, 'change');
     }
   });
   state.endInput.onFocus = mergeCallbacks(state.endInput.onFocus, () => {
-    setActiveThumb('end');
+    setLastUsedThumb('end');
   });
 
+  state.startDisabled = startDisabled;
+  state.endDisabled = endDisabled;
   state.activeThumb = activeThumb;
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

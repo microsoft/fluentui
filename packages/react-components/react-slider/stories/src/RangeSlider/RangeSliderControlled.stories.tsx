@@ -16,7 +16,15 @@ export const Controlled = (): JSXElement => {
       <Label id={labelId}>
         Controlled Range Slider [ Start: {value.start} / End: {value.end} ]
       </Label>
-      <RangeSlider aria-labelledby={labelId} min={0} max={100} value={value} onChange={onChange} />
+      <RangeSlider
+        aria-labelledby={labelId}
+        min={0}
+        max={100}
+        value={value}
+        onChange={onChange}
+        startInput={{ 'aria-label': 'Minimum' }}
+        endInput={{ 'aria-label': 'Maximum' }}
+      />
       <Button onClick={reset}>Reset</Button>
     </>
   );

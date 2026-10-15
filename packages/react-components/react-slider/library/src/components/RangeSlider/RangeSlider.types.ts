@@ -3,12 +3,12 @@ import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } fr
 
 export type RangeSliderValue = {
   /**
-   * Lower value for the range.
+   * The smaller end of the selected range.
    */
   start: number;
 
   /**
-   * Upper value for the range.
+   * The larger end of the selected range.
    */
   end: number;
 };
@@ -22,68 +22,68 @@ export type RangeSliderOnChangeData = (
 
 export type RangeSliderSlots = {
   /**
-   * The root of the RangeSlider.
-   * The root slot receives the `className` and `style` specified directly on the `<RangeSlider>`.
+   * The root `role="group"` element.
    */
   root: NonNullable<Slot<'div'>>;
 
   /**
-   * The RangeSlider's base. It is used to display the currently selected range.
+   * The track the thumbs move along.
    */
   rail: NonNullable<Slot<'div'>>;
 
   /**
-   * Visual-only thumb that represents the minimum value. Focus and interaction come from the nested input.
+   * The thumb for the start value.
    */
   startThumb: NonNullable<Slot<'div'>>;
 
   /**
-   * Visual-only thumb that represents the maximum value. Focus and interaction come from the nested input.
+   * The thumb for the end value.
    */
   endThumb: NonNullable<Slot<'div'>>;
 
   /**
-   * Visually hidden `<input type="range">` that owns the lower value for accessibility and forms.
+   * The range input for the start value.
    */
   startInput: NonNullable<Slot<'input'>> & {
     /**
-     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
-     * when `vertical` is set to true.
-     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
-     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     * Non-standard attribute for vertical range inputs in Firefox. Set when `vertical` is true.
      */
     orient?: 'horizontal' | 'vertical';
   };
 
   /**
-   * Visually hidden `<input type="range">` that owns the upper value for accessibility and forms.
+   * The range input for the end value.
    */
   endInput: NonNullable<Slot<'input'>> & {
     /**
-     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
-     * when `vertical` is set to true.
-     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
-     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
+     * Non-standard attribute for vertical range inputs in Firefox. Set when `vertical` is true.
      */
     orient?: 'horizontal' | 'vertical';
   };
 };
 
-/**
- * RangeSlider Props.
- *
- * `className`, `style`, `id` and event handlers apply to the root group. Form props (`name`, `form`, `required`)
- * and `aria-describedby`/`aria-invalid` apply to both inputs, and `aria-label`/`aria-labelledby` label both the
- * group and, unless a slot provides its own label, each input. Props that describe a single thumb, such as a
- * per-thumb label or `aria-valuetext`, go on the `startInput` and `endInput` slots; `aria-valuetext`,
- * `aria-valuenow`, `aria-valuemin` and `aria-valuemax` set on the RangeSlider itself are ignored.
- */
 export type RangeSliderProps = Omit<
-  ComponentProps<Partial<RangeSliderSlots>, 'startInput' | 'endInput'>,
-  'defaultValue' | 'onChange' | 'size' | 'value'
+  ComponentProps<Partial<RangeSliderSlots>>,
+  'defaultValue' | 'onChange' | 'value' | 'aria-valuetext' | 'aria-valuenow' | 'aria-valuemin' | 'aria-valuemax'
 > & {
   /**
+   * Name of both inputs in a form.
+   */
+  name?: string;
+
+  /**
+   * Id of the form the inputs belong to.
+   */
+  form?: string;
+
+  /**
+   * Whether the inputs are required in a form.
+   */
+  required?: boolean;
+
+  /**
    * The starting value for an uncontrolled RangeSlider.
+   * @default `{ start: min, end: max }`
    */
   defaultValue?: RangeSliderValue;
 
@@ -94,42 +94,42 @@ export type RangeSliderProps = Omit<
   disabled?: boolean;
 
   /**
-   * Maximum slider value.
+   * The max value of the RangeSlider.
    * @default 100
    */
   max?: number;
 
   /**
-   * Minimum slider value.
+   * The min value of the RangeSlider.
    * @default 0
    */
   min?: number;
 
   /**
-   * Size of the slider.
+   * The size of the RangeSlider.
    * @default 'medium'
    */
   size?: 'small' | 'medium';
 
   /**
-   * Step amount the slider will change by when moved.
+   * The amount the value changes per step.
    * @default 1
    */
   step?: number;
 
   /**
-   * Controlled value for the RangeSlider.
+   * The controlled value of the RangeSlider.
    */
   value?: RangeSliderValue;
 
   /**
-   * Render the RangeSlider vertically with the smallest value at the bottom.
-   * @default `false`.
+   * Whether to render the RangeSlider vertically.
+   * @default `false`
    */
   vertical?: boolean;
 
   /**
-   * Fires when the slider values change.
+   * Called when either value changes.
    */
   onChange?: EventHandler<RangeSliderOnChangeData>;
 };
@@ -139,9 +139,28 @@ export type RangeSliderState = ComponentState<RangeSliderSlots> &
     value: RangeSliderValue;
 
     /**
-     * Tracks which thumb was last interacted with. When thumbs overlap,
-     * this determines which thumb is visually elevated and receives pointer events.
+     * Whether the start thumb is disabled.
+     */
+    startDisabled: boolean;
+
+    /**
+     * Whether the end thumb is disabled.
+     */
+    endDisabled: boolean;
+
+    /**
+     * The thumb drawn on top when the thumbs overlap.
      * @default 'start'
      */
     activeThumb: 'start' | 'end';
   };
+
+/**
+ * RangeSlider props without design props such as `size`.
+ */
+export type RangeSliderBaseProps = Omit<RangeSliderProps, 'size'>;
+
+/**
+ * RangeSlider state without design state such as `size`.
+ */
+export type RangeSliderBaseState = Omit<RangeSliderState, 'size'>;

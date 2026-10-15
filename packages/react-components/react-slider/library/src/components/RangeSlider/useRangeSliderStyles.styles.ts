@@ -5,6 +5,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RangeSliderSlots, RangeSliderState } from './RangeSlider.types';
+import { rangeSliderCSSVars } from './RangeSlider.constants';
 
 export const rangeSliderClassNames: SlotClassNames<RangeSliderSlots> = {
   root: 'fui-RangeSlider',
@@ -18,24 +19,11 @@ export const rangeSliderClassNames: SlotClassNames<RangeSliderSlots> = {
 const startThumbPositionVar = `--fui-RangeSlider__startThumb--position`;
 const endThumbPositionVar = `--fui-RangeSlider__endThumb--position`;
 
-export const rangeSliderCSSVars = {
-  rangeSliderDirectionVar: `--fui-RangeSlider--direction`,
-  rangeSliderInnerThumbRadiusVar: `--fui-RangeSlider__inner-thumb--radius`,
-  rangeSliderLowerProgressVar: `--fui-RangeSlider--lower-progress`,
-  rangeSliderUpperProgressVar: `--fui-RangeSlider--upper-progress`,
-  rangeSliderProgressColorVar: `--fui-RangeSlider__progress--color`,
-  rangeSliderRailSizeVar: `--fui-RangeSlider__rail--size`,
-  rangeSliderRailColorVar: `--fui-RangeSlider__rail--color`,
-  rangeSliderStepsPercentVar: `--fui-RangeSlider--steps-percent`,
-  rangeSliderThumbColorVar: `--fui-RangeSlider__thumb--color`,
-  rangeSliderThumbSizeVar: `--fui-RangeSlider__thumb--size`,
-};
-
 const {
   rangeSliderDirectionVar,
   rangeSliderInnerThumbRadiusVar,
-  rangeSliderLowerProgressVar,
-  rangeSliderUpperProgressVar,
+  rangeSliderStartProgressVar,
+  rangeSliderEndProgressVar,
   rangeSliderProgressColorVar,
   rangeSliderRailSizeVar,
   rangeSliderRailColorVar,
@@ -123,10 +111,10 @@ const useRailStyles = makeStyles({
     backgroundImage: `linear-gradient(
       var(${rangeSliderDirectionVar}),
       var(${rangeSliderRailColorVar}) 0%,
-      var(${rangeSliderRailColorVar}) var(${rangeSliderLowerProgressVar}),
-      var(${rangeSliderProgressColorVar}) var(${rangeSliderLowerProgressVar}),
-      var(${rangeSliderProgressColorVar}) var(${rangeSliderUpperProgressVar}),
-      var(${rangeSliderRailColorVar}) var(${rangeSliderUpperProgressVar})
+      var(${rangeSliderRailColorVar}) var(${rangeSliderStartProgressVar}),
+      var(${rangeSliderProgressColorVar}) var(${rangeSliderStartProgressVar}),
+      var(${rangeSliderProgressColorVar}) var(${rangeSliderEndProgressVar}),
+      var(${rangeSliderRailColorVar}) var(${rangeSliderEndProgressVar})
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
@@ -200,28 +188,33 @@ const useThumbStyles = makeStyles({
       border: `calc(var(${rangeSliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
     },
   },
+  // Applied to each disabled thumb, so a single disabled thumb looks disabled while the other stays enabled
   disabled: {
+    [rangeSliderThumbColorVar]: tokens.colorNeutralForegroundDisabled,
     '::before': {
       border: `calc(var(${rangeSliderThumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
     },
+    '@media (forced-colors: active)': {
+      [rangeSliderThumbColorVar]: 'GrayText',
+    },
   },
   startHorizontal: {
-    [`${startThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderLowerProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
+    [`${startThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderStartProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
     transform: 'translateX(-50%)',
     left: `var(${startThumbPositionVar})`,
   },
   endHorizontal: {
-    [`${endThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderUpperProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
+    [`${endThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderEndProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
     transform: 'translateX(-50%)',
     left: `var(${endThumbPositionVar})`,
   },
   startVertical: {
-    [`${startThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderLowerProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
+    [`${startThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderStartProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
     transform: 'translateY(50%)',
     bottom: `var(${startThumbPositionVar})`,
   },
   endVertical: {
-    [`${endThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderUpperProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
+    [`${endThumbPositionVar}`]: `clamp(var(${rangeSliderInnerThumbRadiusVar}), var(${rangeSliderEndProgressVar}), calc(100% - var(${rangeSliderInnerThumbRadiusVar})))`,
     transform: 'translateY(50%)',
     bottom: `var(${endThumbPositionVar})`,
   },
@@ -277,8 +270,6 @@ const useInputStyles = makeStyles({
 });
 
 export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSliderState => {
-  'use no memo';
-
   const rootStyles = useRootStyles();
   const railStyles = useRailStyles();
   const thumbStyles = useThumbStyles();
@@ -286,6 +277,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
 
   const thumbsOverlap = state.value.start === state.value.end;
 
+  /* eslint-disable react-hooks/immutability */
   state.root.className = mergeClasses(
     rangeSliderClassNames.root,
     rootStyles.root,
@@ -307,7 +299,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     thumbStyles.thumbBase,
     state.vertical ? thumbStyles.startVertical : thumbStyles.startHorizontal,
     thumbStyles.focusIndicator,
-    state.disabled && thumbStyles.disabled,
+    state.startDisabled && thumbStyles.disabled,
     thumbsOverlap && state.activeThumb === 'start' && thumbStyles.activeThumb,
     state.startThumb.className,
   );
@@ -317,7 +309,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     thumbStyles.thumbBase,
     state.vertical ? thumbStyles.endVertical : thumbStyles.endHorizontal,
     thumbStyles.focusIndicator,
-    state.disabled && thumbStyles.disabled,
+    state.endDisabled && thumbStyles.disabled,
     thumbsOverlap && state.activeThumb === 'end' && thumbStyles.activeThumb,
     state.endThumb.className,
   );
@@ -326,7 +318,7 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     rangeSliderClassNames.startInput,
     inputStyles.thumbInput,
     state.vertical && inputStyles.vertical,
-    state.disabled && inputStyles.disabled,
+    state.startDisabled && inputStyles.disabled,
     state.startInput.className,
   );
 
@@ -334,9 +326,10 @@ export const useRangeSliderStyles_unstable = (state: RangeSliderState): RangeSli
     rangeSliderClassNames.endInput,
     inputStyles.thumbInput,
     state.vertical && inputStyles.vertical,
-    state.disabled && inputStyles.disabled,
+    state.endDisabled && inputStyles.disabled,
     state.endInput.className,
   );
+  /* eslint-enable react-hooks/immutability */
 
   return state;
 };

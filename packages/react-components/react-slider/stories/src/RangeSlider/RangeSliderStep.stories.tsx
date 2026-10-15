@@ -8,7 +8,15 @@ export const Step = (): JSXElement => {
   return (
     <>
       <Label id={labelId}>Step Example</Label>
-      <RangeSlider aria-labelledby={labelId} step={5} min={0} max={50} defaultValue={{ start: 10, end: 40 }} />
+      <RangeSlider
+        aria-labelledby={labelId}
+        step={5}
+        min={0}
+        max={50}
+        defaultValue={{ start: 10, end: 40 }}
+        startInput={{ 'aria-label': 'Minimum' }}
+        endInput={{ 'aria-label': 'Maximum' }}
+      />
     </>
   );
 };

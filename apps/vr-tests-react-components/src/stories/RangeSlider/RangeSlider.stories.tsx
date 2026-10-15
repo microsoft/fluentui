@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { Steps, type StoryParameters } from 'storywright';
 import { RangeSlider } from '@fluentui/react-slider';
-import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'RangeSlider Converged',
@@ -64,3 +64,22 @@ StepVertical.storyName = 'Step - vertical';
 
 export const MinMax = () => <RangeSlider min={10} max={60} defaultValue={{ start: 20, end: 50 }} />;
 MinMax.storyName = 'Custom min/max';
+
+export const HorizontalOverlapping = () => <RangeSlider defaultValue={{ start: 50, end: 50 }} />;
+HorizontalOverlapping.storyName = 'Horizontal - overlapping thumbs';
+
+export const StartThumbDisabled = () => (
+  <RangeSlider defaultValue={{ start: 20, end: 80 }} startInput={{ disabled: true }} />
+);
+StartThumbDisabled.storyName = 'Start thumb disabled';
+
+export const StartThumbDisabledRTL = getStoryVariant(StartThumbDisabled, RTL);
+
+export const StartThumbDisabledHighContrast = getStoryVariant(StartThumbDisabled, HIGH_CONTRAST);
+
+export const StartThumbDisabledDarkMode = getStoryVariant(StartThumbDisabled, DARK_MODE);
+
+export const EndThumbDisabledVertical = () => (
+  <RangeSlider vertical defaultValue={{ start: 20, end: 80 }} endInput={{ disabled: true }} />
+);
+EndThumbDisabledVertical.storyName = 'End thumb disabled - vertical';

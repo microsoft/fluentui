@@ -1,5 +1,7 @@
 export { RangeSlider } from './RangeSlider';
 export type {
+  RangeSliderBaseProps,
+  RangeSliderBaseState,
   RangeSliderOnChangeData,
   RangeSliderProps,
   RangeSliderSlots,
@@ -7,10 +9,7 @@ export type {
   RangeSliderValue,
 } from './RangeSlider.types';
 export { renderRangeSlider_unstable } from './renderRangeSlider';
-export { useRangeSlider_unstable } from './useRangeSlider';
+export { useRangeSlider_unstable, useRangeSliderBase_unstable } from './useRangeSlider';
+export { rangeSliderCSSVars } from './RangeSlider.constants';
 export { useRangeSliderState_unstable } from './useRangeSliderState';
-export {
-  rangeSliderClassNames,
-  rangeSliderCSSVars,
-  useRangeSliderStyles_unstable,
-} from './useRangeSliderStyles.styles';
+export { rangeSliderClassNames, useRangeSliderStyles_unstable } from './useRangeSliderStyles.styles';

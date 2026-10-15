@@ -21,7 +21,14 @@ export const MinMax = (): JSXElement => {
       <Label id={labelId}>Min/Max Example</Label>
       <div className={styles.wrapper}>
         <Label aria-hidden>{min}</Label>
-        <RangeSlider aria-labelledby={labelId} min={min} max={max} defaultValue={{ start: 20, end: 50 }} />
+        <RangeSlider
+          aria-labelledby={labelId}
+          min={min}
+          max={max}
+          defaultValue={{ start: 20, end: 50 }}
+          startInput={{ 'aria-label': 'Minimum' }}
+          endInput={{ 'aria-label': 'Maximum' }}
+        />
         <Label aria-hidden>{max}</Label>
       </div>
     </>

@@ -82,7 +82,7 @@ import {
 import { useSearchBoxBase_unstable } from '@fluentui/react-search';
 import { useSelectBase_unstable } from '@fluentui/react-select';
 import { useSkeletonBase_unstable, useSkeletonItemBase_unstable } from '@fluentui/react-skeleton';
-import { useSliderBase_unstable } from '@fluentui/react-slider';
+import { useRangeSliderBase_unstable, useSliderBase_unstable } from '@fluentui/react-slider';
 import { useSpinButtonBase_unstable } from '@fluentui/react-spinbutton';
 import { useSpinnerBase_unstable } from '@fluentui/react-spinner';
 import {
@@ -196,6 +196,7 @@ console.log(
   useSelectBase_unstable,
   useSkeletonBase_unstable,
   useSkeletonItemBase_unstable,
+  useRangeSliderBase_unstable,
   useSliderBase_unstable,
   useSpinButtonBase_unstable,
   useSpinnerBase_unstable,

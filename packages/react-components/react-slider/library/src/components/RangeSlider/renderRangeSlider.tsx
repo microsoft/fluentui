@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { RangeSliderState, RangeSliderSlots } from './RangeSlider.types';
+import type { RangeSliderBaseState, RangeSliderSlots } from './RangeSlider.types';
 
 /**
  * Render the final JSX of RangeSlider
  */
-export const renderRangeSlider_unstable = (state: RangeSliderState): JSXElement => {
+export const renderRangeSlider_unstable = (state: RangeSliderBaseState): JSXElement => {
   assertSlots<RangeSliderSlots>(state);
 
   return (

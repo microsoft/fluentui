@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { act, render, screen, fireEvent } from '@testing-library/react';
+import { act, render, renderHook, screen, fireEvent } from '@testing-library/react';
 import { Field } from '@fluentui/react-field';
-import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
+import {
+  CustomStyleHooksProvider_unstable as CustomStyleHooksProvider,
+  Provider_unstable as Provider,
+} from '@fluentui/react-shared-contexts';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { RangeSlider } from './RangeSlider';
+import { useRangeSlider_unstable, useRangeSliderBase_unstable } from './useRangeSlider';
+import type { RangeSliderProps } from './RangeSlider.types';
 
 describe('RangeSlider', () => {
   isConformant({
@@ -94,37 +99,48 @@ describe('RangeSlider', () => {
     expect(sliders[1].getAttribute('step')).toEqual('5');
   });
 
-  it('constrains startInput max to the upper value', () => {
+  it('constrains startInput max to the end value', () => {
     render(<RangeSlider defaultValue={{ start: 20, end: 60 }} min={0} max={100} />);
     const sliders = screen.getAllByRole('slider');
     expect(sliders[0].getAttribute('max')).toEqual('60');
   });
 
-  it('constrains endInput min to the lower value', () => {
+  it('constrains endInput min to the start value', () => {
     render(<RangeSlider defaultValue={{ start: 20, end: 60 }} min={0} max={100} />);
     const sliders = screen.getAllByRole('slider');
     expect(sliders[1].getAttribute('min')).toEqual('20');
   });
 
-  it('aligns endInput min to the step grid when the lower value is off-step', () => {
-    render(<RangeSlider defaultValue={{ start: 3, end: 50 }} step={5} min={0} max={100} />);
+  it('snaps off-step values to the step grid, as the native input does', () => {
+    const { container } = render(<RangeSlider value={{ start: 3, end: 52 }} step={5} min={0} max={100} />);
     const sliders = screen.getAllByRole('slider');
-    expect(sliders[1].getAttribute('min')).toEqual('0');
+    const root = container.firstElementChild as HTMLElement;
+
+    expect(sliders[0].getAttribute('value')).toEqual('5');
+    expect(sliders[1].getAttribute('value')).toEqual('50');
+    expect(sliders[1].getAttribute('min')).toEqual('5');
+    expect(root.style.getPropertyValue('--fui-RangeSlider--start-progress')).toEqual('5%');
+    expect(root.style.getPropertyValue('--fui-RangeSlider--end-progress')).toEqual('50%');
   });
 
-  it('snaps the default end value to the step', () => {
-    const { unmount } = render(<RangeSlider min={0} max={50} step={20} />);
-    expect(screen.getAllByRole('slider')[1].getAttribute('value')).toEqual('20');
-    unmount();
+  it('ends the default range on the last step value when step does not divide the range', () => {
+    render(<RangeSlider min={0} max={10} step={3} />);
+    const end = screen.getAllByRole('slider')[1];
+    expect(end.getAttribute('value')).toEqual('9');
+    expect(end.getAttribute('max')).toEqual('9');
+  });
 
-    render(<RangeSlider min={0} max={7} />);
-    expect(screen.getAllByRole('slider')[1].getAttribute('value')).toEqual('1');
+  it('selects the full range when uncontrolled without a defaultValue', () => {
+    render(<RangeSlider min={1000} max={5000} step={500} />);
+    const sliders = screen.getAllByRole('slider');
+    expect(sliders[0].getAttribute('value')).toEqual('1000');
+    expect(sliders[1].getAttribute('value')).toEqual('5000');
   });
 
   it('orders values correctly when start > end', () => {
     render(<RangeSlider defaultValue={{ start: 80, end: 20 }} min={0} max={100} />);
     const sliders = screen.getAllByRole('slider');
-    // Values should be sorted: lower=20, upper=80
+    // Values should be sorted: start=20, end=80
     expect(sliders[0].getAttribute('value')).toEqual('20');
     expect(sliders[1].getAttribute('value')).toEqual('80');
   });
@@ -262,6 +278,112 @@ describe('RangeSlider', () => {
     expect(sliders[1].getAttribute('aria-describedby')).toEqual(sliders[0].getAttribute('aria-describedby'));
   });
 
+  describe('disabling a single thumb', () => {
+    it('keeps a slot-disabled thumb focusable with aria-disabled and leaves the other thumb enabled', () => {
+      render(<RangeSlider defaultValue={{ start: 20, end: 80 }} name="price" startInput={{ disabled: true }} />);
+      const [start, end] = screen.getAllByRole('slider') as HTMLInputElement[];
+
+      expect(start.disabled).toBe(false);
+      expect(start.getAttribute('aria-disabled')).toEqual('true');
+      expect(end.disabled).toBe(false);
+      expect(end.hasAttribute('aria-disabled')).toBe(false);
+
+      act(() => start.focus());
+      expect(document.activeElement).toBe(start);
+    });
+
+    it('ignores input changes on a slot-disabled thumb', () => {
+      const onChange = jest.fn();
+      render(<RangeSlider defaultValue={{ start: 20, end: 80 }} endInput={{ disabled: true }} onChange={onChange} />);
+      const [start, end] = screen.getAllByRole('slider');
+
+      fireEvent.change(end, { target: { value: '90' } });
+      expect(onChange).not.toHaveBeenCalled();
+
+      fireEvent.change(start, { target: { value: '30' } });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
+    });
+
+    it('submits the value of a slot-disabled thumb with the form', () => {
+      const { container } = render(
+        <form>
+          <RangeSlider defaultValue={{ start: 20, end: 80 }} name="price" startInput={{ disabled: true }} />
+        </form>,
+      );
+      const formData = new FormData(container.querySelector('form')!);
+      expect(formData.getAll('price')).toEqual(['20', '80']);
+    });
+
+    it('lets the whole-slider disabled win over a slot that is not disabled', () => {
+      render(<RangeSlider disabled defaultValue={{ start: 20, end: 80 }} startInput={{ disabled: false }} />);
+      const sliders = screen.getAllByRole('slider') as HTMLInputElement[];
+
+      expect(sliders.map(slider => slider.disabled)).toEqual([true, true]);
+      expect(sliders.map(slider => slider.hasAttribute('aria-disabled'))).toEqual([false, false]);
+    });
+
+    it('puts the enabled thumb on top when overlapping thumbs include a disabled one', () => {
+      const { result } = renderHook(() =>
+        useRangeSlider_unstable(
+          { defaultValue: { start: 50, end: 50 }, startInput: { disabled: true } },
+          React.createRef(),
+        ),
+      );
+
+      // Focusing the disabled start thumb must not bring it on top
+      act(() => result.current.startInput.onFocus?.({} as React.FocusEvent<HTMLInputElement>));
+
+      expect(result.current.activeThumb).toBe('end');
+      expect(result.current.startDisabled).toBe(true);
+      expect(result.current.endDisabled).toBe(false);
+    });
+  });
+
+  it('applies a custom style hook from the context after the default styles', () => {
+    const { container } = render(
+      <CustomStyleHooksProvider
+        value={{
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          useRangeSliderStyles_unstable: state => {
+            const { root } = state as { root: { className?: string } };
+            root.className = `${root.className} custom-range-slider`;
+          },
+        }}
+      >
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} />
+      </CustomStyleHooksProvider>,
+    );
+    const root = container.querySelector('[role="group"]') as HTMLElement;
+
+    expect(root.classList.contains('fui-RangeSlider')).toBe(true);
+    expect(root.classList.contains('custom-range-slider')).toBe(true);
+  });
+
+  describe('base hook', () => {
+    it('returns state without design props such as size', () => {
+      const { result } = renderHook(() =>
+        useRangeSliderBase_unstable({ defaultValue: { start: 20, end: 80 } }, React.createRef()),
+      );
+
+      expect(result.current).not.toHaveProperty('size');
+      expect(result.current.value).toEqual({ start: 20, end: 80 });
+    });
+
+    it('adds size in the styled hook', () => {
+      const { result } = renderHook(() => useRangeSlider_unstable({ size: 'small' }, React.createRef()));
+
+      expect(result.current.size).toBe('small');
+    });
+  });
+
+  describe('types', () => {
+    it('does not accept single-thumb value props in the props type', () => {
+      // @ts-expect-error -- aria-valuetext describes a single thumb; set it on a slot instead
+      const props: RangeSliderProps = { 'aria-valuetext': 'ignored' };
+      expect(props).toBeDefined();
+    });
+  });
+
   // Keyboard (native input change) tests
   describe('input changes', () => {
     it('calls onChange when the start input changes', () => {
@@ -275,12 +397,12 @@ describe('RangeSlider', () => {
       );
     });
 
-    it('clamps the end input to the lower value', () => {
+    it('clamps the end input to the start value', () => {
       const onChange = jest.fn();
-      render(<RangeSlider defaultValue={{ start: 3, end: 50 }} step={5} onChange={onChange} />);
+      render(<RangeSlider defaultValue={{ start: 10, end: 50 }} step={5} onChange={onChange} />);
       fireEvent.change(screen.getAllByRole('slider')[1], { target: { value: '0' } });
 
-      expect(onChange.mock.calls[0][1].value).toEqual({ start: 3, end: 3 });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 10, end: 10 });
     });
 
     it('does not call onChange when the clamped value is unchanged', () => {
@@ -303,9 +425,12 @@ describe('RangeSlider', () => {
     const dispatchPointer = (
       element: HTMLElement,
       type: string,
-      init: { clientX?: number; clientY?: number; button?: number },
+      init: { clientX?: number; clientY?: number; button?: number; pointerId?: number },
     ) => {
-      const event = new MouseEvent(type, { bubbles: true, cancelable: true, ...init });
+      const { pointerId, ...mouseInit } = init;
+      const event = new MouseEvent(type, { bubbles: true, cancelable: true, ...mouseInit });
+      // jsdom has no PointerEvent, so set pointerId on the MouseEvent directly
+      Object.defineProperty(event, 'pointerId', { value: pointerId ?? 1 });
       act(() => {
         element.dispatchEvent(event);
       });
@@ -484,6 +609,193 @@ describe('RangeSlider', () => {
       dispatchPointer(root, 'pointerdown', { clientX: 70, clientY: 15 });
 
       expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
+    });
+
+    it('moves the enabled thumb, stopped at the disabled one, when pressing near a disabled thumb', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider
+          defaultValue={{ start: 20, end: 80 }}
+          min={0}
+          max={100}
+          startInput={{ disabled: true }}
+          onChange={onChange}
+        />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 10, clientY: 15 });
+
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 20, end: 20 });
+      expect(document.activeElement).toBe(screen.getAllByRole('slider')[1]);
+    });
+
+    it('does not move when both thumbs are disabled through their slots', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider
+          defaultValue={{ start: 20, end: 80 }}
+          min={0}
+          max={100}
+          startInput={{ disabled: true }}
+          endInput={{ disabled: true }}
+          onChange={onChange}
+        />,
+      );
+
+      dispatchPointer(container.firstElementChild as HTMLElement, 'pointerdown', { clientX: 30, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('reports decimal-step values without floating-point noise', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider min={0} max={1} step={0.1} defaultValue={{ start: 0, end: 1 }} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 70, clientY: 15 });
+      dispatchPointer(root, 'pointerup', { clientX: 70, clientY: 15 });
+      dispatchPointer(root, 'pointerdown', { clientX: 30, clientY: 15 });
+
+      expect(onChange.mock.calls.map(call => call[1].value)).toEqual([
+        { start: 0, end: 0.7 },
+        { start: 0.3, end: 0.7 },
+      ]);
+      expect(screen.getAllByRole('slider')[1].getAttribute('min')).toEqual('0.3');
+    });
+
+    it('stops at the last value on the step grid when step does not divide the range', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider min={0} max={10} step={4} defaultValue={{ start: 0, end: 4 }} onChange={onChange} />,
+      );
+
+      dispatchPointer(container.firstElementChild as HTMLElement, 'pointerdown', { clientX: 100, clientY: 15 });
+
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 0, end: 8 });
+    });
+
+    it('ignores another pointer while a drag is in progress', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 25, clientY: 15, pointerId: 1 });
+      // A second contact presses and lifts while the first one keeps dragging
+      dispatchPointer(root, 'pointerdown', { clientX: 70, clientY: 15, pointerId: 2 });
+      dispatchPointer(root, 'pointerup', { clientX: 70, clientY: 15, pointerId: 2 });
+      dispatchPointer(root, 'pointermove', { clientX: 40, clientY: 15, pointerId: 1 });
+
+      expect(onChange.mock.calls.map(call => call[1].value)).toEqual([
+        { start: 25, end: 80 },
+        { start: 40, end: 80 },
+      ]);
+    });
+
+    it('stops updating when the pointer capture is lost', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      dispatchPointer(root, 'lostpointercapture', {});
+      dispatchPointer(root, 'pointermove', { clientX: 50, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('stops dragging a thumb that becomes disabled during the drag', () => {
+      const onChange = jest.fn();
+      const { container, rerender } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      rerender(
+        <RangeSlider
+          defaultValue={{ start: 20, end: 80 }}
+          min={0}
+          max={100}
+          onChange={onChange}
+          startInput={{ disabled: true }}
+        />,
+      );
+      dispatchPointer(root, 'pointermove', { clientX: 50, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('grabs a pressed thumb without changing its value, then drags it by the pointer movement', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+      const startThumb = container.querySelector('.fui-RangeSlider__startThumb') as HTMLElement;
+
+      // Off-center press on the start thumb (value 20)
+      dispatchPointer(startThumb, 'pointerdown', { clientX: 26, clientY: 15 });
+      expect(onChange).not.toHaveBeenCalled();
+      expect(document.activeElement).toBe(screen.getAllByRole('slider')[0]);
+
+      dispatchPointer(root, 'pointermove', { clientX: 36, clientY: 15 });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
+    });
+
+    it('does not move a thumb at the edge when it is pressed', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 0, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const startThumb = container.querySelector('.fui-RangeSlider__startThumb') as HTMLElement;
+
+      // The thumb at value 0 is drawn a few pixels inside the rail
+      dispatchPointer(startThumb, 'pointerdown', { clientX: 6, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('picks the thumb from the first move direction when overlapping thumbs are pressed', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 50, end: 50 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+      const endThumb = container.querySelector('.fui-RangeSlider__endThumb') as HTMLElement;
+
+      dispatchPointer(endThumb, 'pointerdown', { clientX: 50, clientY: 15 });
+      dispatchPointer(root, 'pointermove', { clientX: 40, clientY: 15 });
+      dispatchPointer(root, 'pointerup', { clientX: 40, clientY: 15 });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 40, end: 50 });
+
+      dispatchPointer(endThumb, 'pointerdown', { clientX: 50, clientY: 15 });
+      dispatchPointer(root, 'pointermove', { clientX: 65, clientY: 15 });
+      expect(onChange.mock.calls[1][1].value).toEqual({ start: 40, end: 65 });
+    });
+
+    it('moves the enabled thumb when a disabled thumb is pressed', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider
+          defaultValue={{ start: 20, end: 80 }}
+          min={0}
+          max={100}
+          onChange={onChange}
+          startInput={{ disabled: true }}
+        />,
+      );
+      const startThumb = container.querySelector('.fui-RangeSlider__startThumb') as HTMLElement;
+
+      dispatchPointer(startThumb, 'pointerdown', { clientX: 20, clientY: 15 });
+
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 20, end: 20 });
     });
 
     it('stops updating on pointerCancel', () => {
