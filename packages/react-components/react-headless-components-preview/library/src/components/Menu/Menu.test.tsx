@@ -17,13 +17,10 @@ import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 
 describe('Menu', () => {
   it('compile-time: does not accept unsupported autofocus suppression', () => {
-    const element = (
-      // @ts-expect-error The headless Menu has its own autofocus implementation.
-      <Menu unstable_disableAutoFocus>
-        <MenuPopover />
-      </Menu>
-    );
-    expect(element).toBeDefined();
+    const supportsAutoFocusSuppression: 'unstable_disableAutoFocus' extends keyof React.ComponentProps<typeof Menu>
+      ? true
+      : false = false;
+    expect(supportsAutoFocusSuppression).toBe(false);
   });
 
   it('renders trigger and surface children when open', () => {
