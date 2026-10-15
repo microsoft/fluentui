@@ -18,9 +18,17 @@ export type {
 } from './Slider';
 export {
   rangeSliderClassNames,
+  rangeSliderCSSVars,
   RangeSlider,
   renderRangeSlider_unstable,
   useRangeSlider_unstable,
+  useRangeSliderState_unstable,
   useRangeSliderStyles_unstable,
 } from './RangeSlider';
-export type { RangeSliderProps, RangeSliderState } from './RangeSlider';
+export type {
+  RangeSliderOnChangeData,
+  RangeSliderProps,
+  RangeSliderSlots,
+  RangeSliderState,
+  RangeSliderValue,
+} from './RangeSlider';
