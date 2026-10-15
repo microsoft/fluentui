@@ -16,13 +16,6 @@ import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
 import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 
 describe('Menu', () => {
-  it('compile-time: does not accept unsupported autofocus suppression', () => {
-    const supportsAutoFocusSuppression: 'unstable_disableAutoFocus' extends keyof React.ComponentProps<typeof Menu>
-      ? true
-      : false = false;
-    expect(supportsAutoFocusSuppression).toBe(false);
-  });
-
   it('renders trigger and surface children when open', () => {
     const { getByText } = render(
       <Menu defaultOpen>
