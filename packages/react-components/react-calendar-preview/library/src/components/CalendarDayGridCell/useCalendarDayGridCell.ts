@@ -5,9 +5,10 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Spa
 import {
   getIntrinsicElementProps,
   getRTLSafeKey,
+  isHTMLElement,
   mergeCallbacks,
   slot,
-  useIsomorphicLayoutEffect,
+  useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
@@ -37,7 +38,28 @@ const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: fa
  */
 const RANGE_HOVERED_ATTRIBUTE = 'data-range-hovered';
 const RANGE_PRESSED_ATTRIBUTE = 'data-range-pressed';
-const dispatchedButtonEvents = new WeakSet<Event>();
+const dispatchedSlotEvents = new WeakSet<Event>();
+
+const forwardSlotKeyboardHandlers = <T extends HTMLElement>(
+  slotProps: Pick<React.DOMAttributes<T>, 'onKeyDown' | 'onKeyDownCapture'>,
+) => {
+  const { onKeyDown, onKeyDownCapture } = slotProps;
+  slotProps.onKeyDownCapture = event => {
+    if (!dispatchedSlotEvents.has(event.nativeEvent)) {
+      onKeyDownCapture?.(event);
+    }
+  };
+  slotProps.onKeyDown = event => {
+    if (!dispatchedSlotEvents.has(event.nativeEvent)) {
+      onKeyDown?.(event);
+    }
+  };
+  return (event: React.KeyboardEvent<HTMLTableCellElement>, capture: boolean, element: T | null) => {
+    if (element && isHTMLElement(event.target) && element.contains(event.target)) {
+      invokeCalendarKeyboardHandler(event, element, capture ? onKeyDownCapture : onKeyDown);
+    }
+  };
+};
 
 const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
   element.toggleAttribute('data-corner-top-left', corners.topLeft);
@@ -289,8 +311,29 @@ export const useCalendarDayGridCell_unstable = (
     },
     elementType: 'button',
   });
-  const buttonOnKeyDownCapture = button.onKeyDownCapture;
-  const buttonOnKeyDown = button.onKeyDown;
+  const dayLabel = slot.always(cellProps.dayLabel, {
+    defaultProps: {
+      children: originalDate ? formatters.dateTime({ date: originalDate, format: 'day' }) : day.date,
+    },
+    elementType: 'span',
+  });
+  const marker = slot.optional(cellProps.marker, {
+    defaultProps: { 'aria-hidden': true },
+    renderByDefault: day.isMarked,
+    elementType: 'div',
+  });
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const dayLabelRef = React.useRef<HTMLSpanElement>(null);
+  const markerRef = React.useRef<HTMLDivElement>(null);
+  button.ref = useMergedRefs(button.ref, buttonRef);
+  dayLabel.ref = useMergedRefs(dayLabel.ref, dayLabelRef);
+  const mergedMarkerRef = useMergedRefs(marker?.ref, markerRef);
+  if (marker) {
+    marker.ref = mergedMarkerRef;
+  }
+  const forwardButton = forwardSlotKeyboardHandlers(button);
+  const forwardDayLabel = forwardSlotKeyboardHandlers(dayLabel);
+  const forwardMarker = marker && forwardSlotKeyboardHandlers(marker);
 
   const isFocusable = !ariaHidden && !!originalDate && (allFocusable || (day.isInBounds ? true : undefined));
 
@@ -305,57 +348,46 @@ export const useCalendarDayGridCell_unstable = (
    * The grid publishes `navigatedDayRef` so it can focus the navigated cell; assigning it from this
    * ref callback runs at commit, not during render.
    */
-  const cellElementRef = React.useRef<HTMLTableCellElement | null>(null);
-  const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref, cellElementRef);
-  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
-    ev => {
-      if (isCalendarGridArrow(ev)) {
-        const buttonElement = ev.currentTarget.querySelector('button');
-        if (buttonElement) {
-          dispatchedButtonEvents.add(ev.nativeEvent);
-          invokeCalendarKeyboardHandler(ev, buttonElement, buttonOnKeyDownCapture);
-          if (!ev.isDefaultPrevented() && !ev.isPropagationStopped()) {
-            invokeCalendarKeyboardHandler(ev, buttonElement, buttonOnKeyDown);
-          }
+  const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref);
+  const onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLTableCellElement>) => {
+    if (isCalendarGridArrow(ev)) {
+      dispatchedSlotEvents.add(ev.nativeEvent);
+      const slotHandlers = [
+        (capture: boolean) => forwardButton(ev, capture, buttonRef.current),
+        (capture: boolean) => forwardDayLabel(ev, capture, dayLabelRef.current),
+        (capture: boolean) => forwardMarker?.(ev, capture, markerRef.current),
+      ];
+      for (const forward of slotHandlers) {
+        if (!ev.isPropagationStopped()) {
+          forward(true);
         }
       }
-      if (!ev.isPropagationStopped()) {
-        cellProps.onKeyDown?.(ev);
+      for (const forward of slotHandlers.reverse()) {
+        if (!ev.isPropagationStopped()) {
+          forward(false);
+        }
       }
-      if (
-        !ev.isDefaultPrevented() &&
-        !ev.isPropagationStopped() &&
-        !ariaHidden &&
-        !isCalendarKeyboardEditable(ev.target) &&
-        (!isCalendarArrowKey(ev.key) || isCalendarGridArrow(ev))
-      ) {
-        onDayKeyDown(ev);
+      if (ev.isPropagationStopped()) {
+        return;
       }
-    },
+    }
+    if (!ev.isPropagationStopped()) {
+      cellProps.onKeyDown?.(ev);
+    }
+    if (
+      !ev.isDefaultPrevented() &&
+      !ariaHidden &&
+      !isCalendarKeyboardEditable(ev.target) &&
+      (!isCalendarArrowKey(ev.key) || isCalendarGridArrow(ev))
+    ) {
+      onDayKeyDown(ev);
+    }
+  });
+  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
+    onKeyDown,
     cellProps.onKeyDownCapture,
     ev => !ariaHidden && !!originalDate && isCalendarGridArrow(ev),
   );
-
-  useIsomorphicLayoutEffect(() => {
-    const cell = cellElementRef.current;
-    if (!cell) {
-      return;
-    }
-    const listener = keyDownHandlers.onLegacyKeyDownCapture;
-    cell.addEventListener('keydown', listener, true);
-    return () => cell.removeEventListener('keydown', listener, true);
-  }, [keyDownHandlers]);
-
-  button.onKeyDownCapture = ev => {
-    if (!dispatchedButtonEvents.has(ev.nativeEvent)) {
-      buttonOnKeyDownCapture?.(ev);
-    }
-  };
-  button.onKeyDown = ev => {
-    if (!dispatchedButtonEvents.has(ev.nativeEvent)) {
-      buttonOnKeyDown?.(ev);
-    }
-  };
 
   const root = slot.always<ExtractSlotProps<Slot<'td'>>>(
     getIntrinsicElementProps('td', {
@@ -412,16 +444,7 @@ export const useCalendarDayGridCell_unstable = (
     },
     root,
     button,
-    dayLabel: slot.always(cellProps.dayLabel, {
-      defaultProps: {
-        children: originalDate ? formatters.dateTime({ date: originalDate, format: 'day' }) : day.date,
-      },
-      elementType: 'span',
-    }),
-    marker: slot.optional(cellProps.marker, {
-      defaultProps: { 'aria-hidden': true },
-      renderByDefault: day.isMarked,
-      elementType: 'div',
-    }),
+    dayLabel,
+    marker,
   };
 };

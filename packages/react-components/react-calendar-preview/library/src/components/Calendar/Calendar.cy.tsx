@@ -37,6 +37,58 @@ const goToToday = `.${calendarClassNames.goToTodayButton}`;
 
 describe('Calendar', () => {
   describe('day grid keyboard navigation', () => {
+    it('does not forward cell-targeted arrows to the child button', () => {
+      const cancel = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{ getDayCellProps: () => ({ button: { onKeyDownCapture: cancel, onKeyDown: cancel } }) }}
+        />,
+      );
+      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('September 19, 2020')).should('be.focused');
+      cy.wrap(cancel).should('not.have.been.called');
+    });
+
+    (['capture', 'bubble'] as const).forEach(phase => {
+      it(`honors dayLabel ${phase} cancellation and preserves consumer bubbling`, () => {
+        const capture = cy.stub().callsFake((event: React.KeyboardEvent) => {
+          if (phase === 'capture') {
+            event.preventDefault();
+          }
+        });
+        const bubble = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
+        mountFluent(
+          <Calendar
+            today={today}
+            defaultValue={today}
+            dayPicker={{
+              getDayCellProps: () => ({
+                dayLabel: { tabIndex: 0, title: 'Focusable day', onKeyDownCapture: capture, onKeyDown: bubble },
+              }),
+            }}
+          />,
+        );
+        cy.get(day('September 18, 2020')).find('[title="Focusable day"]').focus().realPress('ArrowRight');
+        cy.get(day('September 18, 2020')).find('[title="Focusable day"]').should('be.focused');
+        cy.wrap(capture).should('have.been.calledOnce');
+        cy.wrap(bubble).should('have.been.calledOnce');
+      });
+    });
+
+    it('preserves day movement when the cell consumer only stops propagation', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{ getDayCellProps: () => ({ onKeyDown: event => event.stopPropagation() }) }}
+        />,
+      );
+      cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
+      cy.get(day('September 19, 2020')).should('be.focused');
+    });
+
     it('pages from the arrow-focused day rather than the original anchor', () => {
       const onDisplayedDateChange = cy.stub().as('onDisplayedDateChange');
       mountFluent(<Calendar today={today} defaultValue={today} onDisplayedDateChange={onDisplayedDateChange} />);
@@ -254,6 +306,16 @@ describe('Calendar', () => {
           cy.get(`.${calendarMonthClassNames.heading}`).click();
         }
       };
+
+      it(`skips hidden ${picker} cells and still focuses tabIndex=-1 candidates`, () => {
+        mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" />);
+        openYearPicker();
+
+        cy.get(cells).eq(1).invoke('prop', 'hidden', true).should('not.be.visible');
+        cy.get(cells).eq(2).invoke('attr', 'tabindex', '-1');
+        cy.get(cells).eq(0).focus().realPress('ArrowRight');
+        cy.get(cells).eq(2).should('be.focused');
+      });
 
       it(`moves the ${picker} grid exactly once per arrow without wrapping rows or columns`, () => {
         const onSelectDate = cy.stub().as('onSelectDate');

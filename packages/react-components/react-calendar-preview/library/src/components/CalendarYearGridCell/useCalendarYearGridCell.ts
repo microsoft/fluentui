@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarYearContext_unstable } from '../../contexts/calendarYearContext';
 import { stringifyDataAttribute } from '../../utils';
@@ -37,8 +37,6 @@ export const useCalendarYearGridCell_unstable = (
     cell.isCurrent ? currentYearRef : undefined,
     cell.isNavigated ? navigatedYearRef : undefined,
   );
-  const rootElementRef = React.useRef<HTMLButtonElement | null>(null);
-  const rootRef = useMergedRefs(cellRef, rootElementRef);
 
   const onSelect = cell.isDisabled
     ? undefined
@@ -65,20 +63,10 @@ export const useCalendarYearGridCell_unstable = (
     isCalendarGridArrow,
   );
 
-  useIsomorphicLayoutEffect(() => {
-    const cellElement = rootElementRef.current;
-    if (!cellElement) {
-      return;
-    }
-    const listener = keyDownHandlers.onLegacyKeyDownCapture;
-    cellElement.addEventListener('keydown', listener, true);
-    return () => cellElement.removeEventListener('keydown', listener, true);
-  }, [keyDownHandlers]);
-
   const root = slot.always<ExtractSlotProps<Slot<'button'>>>(
     {
       ...nativeProps,
-      ref: rootRef,
+      ref: cellRef,
       children: cell.content,
       type: 'button',
       role: 'gridcell',

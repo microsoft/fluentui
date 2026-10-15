@@ -257,14 +257,18 @@ Handled arrows, including boundary keys, are prevented so Tabster or a native fo
 Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
 owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
 cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day button
-slot capture and bubbling handlers also run before navigation, with the button as `currentTarget`; either can
-cancel the built-in action.
+slot capture and bubbling handlers also run before navigation, with the slot element as `currentTarget`.
+Only handlers on the target's ancestor path run, in capture then bubbling order. `preventDefault()` cancels
+navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses later callbacks,
+but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
 Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
 remain in bubbling without Calendar navigation. A focusgroup on the Calendar grid itself or outside that grid
 does not change Calendar's arrow ownership.
-The native capture fallback preserves this ordering on React 16, whose delegated synthetic capture handlers run
-after native grid bubbling listeners. Other keys, including Enter and PageUp/PageDown, retain their normal
-bubbling dispatch.
+This ordering relies on React 17+ capture delegation. There is no special React 16 bridge for native grid owners.
+Other keys, including Enter and PageUp/PageDown, retain their normal bubbling dispatch.
+
+Month/year navigation continues past cells that cannot receive focus, including hidden cells, while allowing
+programmatic navigation to cells with `tabIndex="-1"`.
 
 Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of
 `contenteditable="false"` remain navigable even inside an editable ancestor.

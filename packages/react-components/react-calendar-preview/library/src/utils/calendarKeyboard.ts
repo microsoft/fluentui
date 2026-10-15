@@ -7,8 +7,6 @@ export const CALENDAR_GRID_COLUMNS = 4;
 // The grid supplies the focused date while Calendar retains ownership of paging and consumer cancellation.
 const navigationDates = new WeakMap<Event, Date>();
 const capturedArrows = new WeakSet<Event>();
-const legacyHandledArrows = new WeakSet<Event>();
-const reactCaptureEvents = new WeakSet<Event>();
 
 export const setCalendarNavigationDate = (event: Event, date: Date): void => {
   navigationDates.set(event, date);
@@ -63,106 +61,28 @@ const withCurrentTarget = <T extends HTMLElement>(
     get: (target, property) => (property === 'currentTarget' ? currentTarget : Reflect.get(target, property, target)),
   }) as React.KeyboardEvent<T>;
 
-const fromNativeKeyboardEvent = <T extends HTMLElement>(
-  nativeEvent: KeyboardEvent,
-  currentTarget: T,
-): React.KeyboardEvent<T> => {
-  let propagationStopped = false;
-  return new Proxy(nativeEvent, {
-    get: (target, property) => {
-      if (property === 'currentTarget') {
-        return currentTarget;
-      }
-      if (property === 'nativeEvent') {
-        return nativeEvent;
-      }
-      if (property === 'isDefaultPrevented') {
-        return () => nativeEvent.defaultPrevented;
-      }
-      if (property === 'isPropagationStopped') {
-        return () => propagationStopped;
-      }
-      if (property === 'persist') {
-        return () => undefined;
-      }
-      if (property === 'preventDefault') {
-        return () => nativeEvent.preventDefault();
-      }
-      if (property === 'stopPropagation') {
-        return () => {
-          propagationStopped = true;
-          nativeEvent.stopPropagation();
-        };
-      }
-      const value = Reflect.get(target, property, target);
-      return typeof value === 'function' ? value.bind(target) : value;
-    },
-  }) as unknown as React.KeyboardEvent<T>;
-};
-
 export const getCalendarGridKeyDownHandlers = <T extends HTMLElement>(
   onKeyDown: React.KeyboardEventHandler<T>,
   onKeyDownCapture: React.KeyboardEventHandler<T> | undefined,
   ownsArrow: (event: React.KeyboardEvent<T>) => boolean,
-): Required<Pick<React.DOMAttributes<T>, 'onKeyDown' | 'onKeyDownCapture'>> & {
-  onLegacyKeyDownCapture: (event: KeyboardEvent) => void;
-} => {
-  const onLegacyKeyDownCapture = (nativeEvent: KeyboardEvent): void => {
-    if (
-      capturedArrows.has(nativeEvent) ||
-      reactCaptureEvents.has(nativeEvent) ||
-      !isCalendarArrowKey(nativeEvent.key)
-    ) {
-      return;
-    }
-
-    const event = fromNativeKeyboardEvent(nativeEvent, nativeEvent.currentTarget as T);
-    if (!ownsArrow(event)) {
-      return;
-    }
-
-    legacyHandledArrows.add(nativeEvent);
+): Required<Pick<React.DOMAttributes<T>, 'onKeyDown' | 'onKeyDownCapture'>> => ({
+  onKeyDownCapture: event => {
     onKeyDownCapture?.(event);
-    if (event.isPropagationStopped()) {
+    if (event.isPropagationStopped() || !ownsArrow(event)) {
       return;
     }
 
-    if (!event.isDefaultPrevented()) {
+    // Dispatch before native grid bubbling, then suppress the later synthetic bubble.
+    capturedArrows.add(event.nativeEvent);
+    onKeyDown(event);
+    event.preventDefault();
+  },
+  onKeyDown: event => {
+    if (!capturedArrows.delete(event.nativeEvent)) {
       onKeyDown(event);
     }
-    event.preventDefault();
-  };
-
-  return {
-    onKeyDownCapture: event => {
-      if (legacyHandledArrows.has(event.nativeEvent)) {
-        return;
-      }
-      if (isCalendarArrowKey(event.key)) {
-        reactCaptureEvents.add(event.nativeEvent);
-      }
-      onKeyDownCapture?.(event);
-      if (event.isPropagationStopped() || !ownsArrow(event)) {
-        return;
-      }
-
-      // Native grid owners bubble before React 16 dispatches delegated handlers.
-      capturedArrows.add(event.nativeEvent);
-      onKeyDown(event);
-      event.preventDefault();
-    },
-    onKeyDown: event => {
-      if (legacyHandledArrows.delete(event.nativeEvent)) {
-        return;
-      }
-      reactCaptureEvents.delete(event.nativeEvent);
-      if (!capturedArrows.delete(event.nativeEvent)) {
-        onKeyDown(event);
-      }
-    },
-    onLegacyKeyDownCapture,
-  };
-};
+  },
+});
 
 export const invokeCalendarKeyboardHandler = <T extends HTMLElement>(
   event: React.KeyboardEvent<HTMLElement>,
@@ -217,7 +137,9 @@ export const handleCalendarGridKeyDown = (
     const cell = cells[index];
     if (!cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true')) {
       cell.focus();
-      break;
+      if (cell.ownerDocument.activeElement === cell) {
+        break;
+      }
     }
   }
 };
