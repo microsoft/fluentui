@@ -422,6 +422,16 @@
         "default": "./lib-commonjs/radio-group.cjs"
       }
     },
+    "./range-slider": {
+      "import": {
+        "types": "./dist/range-slider.d.ts",
+        "default": "./lib/range-slider.js"
+      },
+      "require": {
+        "types": "./dist/range-slider.d.cts",
+        "default": "./lib-commonjs/range-slider.cjs"
+      }
+    },
     "./rating": {
       "import": {
         "types": "./dist/rating.d.ts",
