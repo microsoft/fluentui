@@ -4,7 +4,7 @@ import { readExportMapConfig, resolveEntryPoints } from '../export-maps-sync/lib
 import type { PackageJson } from '../../types';
 import {
   type BaseHookImport,
-  type EntryPointImport,
+  type NamedImport,
   isBaseHook,
   renderBaseHooksFixture,
   renderEntryPointsFixture,
@@ -83,12 +83,12 @@ async function renderEntryPoints(
   const packageJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
   const entryPoints = await resolveEntryPoints(tree, projectConfig.root, readExportMapConfig(projectConfig));
 
-  const imports: EntryPointImport[] = entryPoints
+  const imports: NamedImport[] = entryPoints
     // the root entry would pull in the whole library and defeat the point of per subpath isolation
     .filter(entryPoint => entryPoint.key !== '.')
     .map(entryPoint => {
       const sourceFile = resolveSourceFile(tree, `${projectConfig.root}/src/${entryPoint.outputPath}`);
-      const publicExports = sourceFile ? collectPublicExports(tree, sourceFile) : null;
+      const publicExports = sourceFile ? collectPublicExports(tree, sourceFile, { includeDefault: true }) : null;
       unresolved.push(...(publicExports?.unresolved ?? []));
 
       return {

@@ -31,7 +31,7 @@ it drops that fixture's recorded history.
 
 ### `entryPoints`
 
-Named imports every value export of every non-root export subpath of the project itself. Resolved from
+Named imports every value export, including defaults, of every non-root export subpath of the project itself. Resolved from
 `metadata.exportMap` (see [export-maps-sync](../export-maps-sync/README.md)) rather than from
 `package.json#exports`, so a drifted export map cannot hide behind a matching drifted fixture.
 
@@ -40,7 +40,8 @@ point of per subpath isolation.
 
 Named imports avoid retaining export names as string properties in the measured bundle. Duplicate
 export names are aliased, and subpaths without value exports retain a bare import so they must still
-resolve.
+resolve. Default exports are imported with generated local aliases, and are not collected through
+`export *` re-exports.
 
 ### `baseHooks`
 

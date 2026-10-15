@@ -94,27 +94,61 @@ describe('bundle-size-fixtures-sync generator', () => {
       `);
     });
 
-    it('aliases names exported by more than one subpath', async () => {
+    it.each([
+      {
+        scenario: 'ordinary duplicate names',
+        sourceFiles: {
+          'src/combobox.ts': `export { Combobox, Option } from './components/Combobox/index';`,
+          'src/dropdown.ts': `export { Dropdown, Option } from './components/Dropdown/index';`,
+        },
+        expectedImport: "import {\n  Dropdown,\n  Option as Dropdown_Option,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Combobox, Option, Dropdown, Dropdown_Option);',
+      },
+      {
+        scenario: 'an alias that collides with another exported name',
+        sourceFiles: {
+          'src/combobox.ts': `export const Option = 1;`,
+          'src/dropdown.ts': `export const Option = 1;\nexport const Dropdown_Option = 1;`,
+        },
+        expectedImport:
+          "import {\n  Dropdown_Option,\n  Option as Dropdown_Option2,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Option, Dropdown_Option, Dropdown_Option2);',
+      },
+    ])('aliases duplicate exports for $scenario', async ({ sourceFiles, expectedImport, expectedLog }) => {
+      const project = setupEntryPointsProject(sourceFiles);
+
+      await generator(tree);
+
+      const fixture = project.readFixture('AllComponents.fixture.js')!;
+      expect(fixture).toContain(expectedImport);
+      expect(fixture).toContain(expectedLog);
+    });
+
+    it('imports default function, expression, and re-export values using valid bindings', async () => {
       const project = setupEntryPointsProject({
-        'src/combobox.ts': `export { Combobox, Option } from './components/Combobox/index';`,
-        'src/dropdown.ts': `export { Dropdown, Option } from './components/Dropdown/index';`,
+        'src/default-function.ts': `export default function Widget() {}`,
+        'src/default-expression.ts': `export default () => null;`,
+        'src/default-reexport.ts': `export { default } from './widget';`,
+        'src/default-star.ts': `export * from './widget';`,
+        'src/widget.ts': `export default function InternalWidget() {}`,
       });
 
       await generator(tree);
 
       const fixture = project.readFixture('AllComponents.fixture.js')!;
-      const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
-      const bindings = sourceFile.statements
-        .filter(ts.isImportDeclaration)
-        .flatMap(statement => (statement.importClause!.namedBindings as ts.NamedImports).elements)
-        .map(element => element.name.text);
-      const logged = (
-        sourceFile.statements.find(ts.isExpressionStatement)!.expression as ts.CallExpression
-      ).arguments.map(argument => (argument as ts.Identifier).text);
-
-      expect(fixture).toContain('Option as Dropdown_Option');
-      expect(bindings).toEqual(['Combobox', 'Option', 'Dropdown', 'Dropdown_Option']);
-      expect(logged).toEqual(bindings);
+      expect(fixture).toContain('default as DefaultExpression_default');
+      expect(fixture).toContain('default as DefaultFunction_default');
+      expect(fixture).toContain('default as DefaultReexport_default');
+      expect(fixture).not.toContain('DefaultStar_default');
+      expect(fixture).toContain('console.log(');
+      expect(fixture).not.toContain('console.log(default');
+      expect(
+        ts.transpileModule(fixture, {
+          fileName: 'fixture.js',
+          compilerOptions: { allowJs: true, module: ts.ModuleKind.ESNext },
+          reportDiagnostics: true,
+        }).diagnostics,
+      ).toEqual([]);
     });
 
     it('keeps a bare import for a subpath without value exports, so it still has to resolve', async () => {
