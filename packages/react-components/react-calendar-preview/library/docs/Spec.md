@@ -256,11 +256,18 @@ Handled arrows, including boundary keys, are prevented so Tabster or a native fo
 
 Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
 owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
-cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop.
+cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day button
+slot capture and bubbling handlers also run before navigation, with the button as `currentTarget`; either can
+cancel the built-in action.
 Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
 remain in bubbling without Calendar navigation. A focusgroup on the Calendar grid itself or outside that grid
 does not change Calendar's arrow ownership.
-Other keys, including Enter and PageUp/PageDown, retain their normal bubbling dispatch.
+The native capture fallback preserves this ordering on React 16, whose delegated synthetic capture handlers run
+after native grid bubbling listeners. Other keys, including Enter and PageUp/PageDown, retain their normal
+bubbling dispatch.
+
+Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of
+`contenteditable="false"` remain navigable even inside an editable ancestor.
 
 The day and month base hooks reserve `data-fui-calendar-picker="day"` and `data-fui-calendar-picker="month"` on their roots.
 Calendar uses these behavioral markers, not styled class names, to restore focus when a focused picker is hidden.

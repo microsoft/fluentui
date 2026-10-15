@@ -27,6 +27,7 @@ import { renderCalendarMonthGridCell_unstable } from '../CalendarMonthGridCell/r
 import { CalendarYearGridCell } from '../CalendarYearGridCell/CalendarYearGridCell';
 import { useCalendarYearGridCell_unstable } from '../CalendarYearGridCell/useCalendarYearGridCell';
 import { renderCalendarYearGridCell_unstable } from '../CalendarYearGridCell/renderCalendarYearGridCell';
+import { getCalendarGridKeyDownHandlers, isCalendarGridArrow } from '../../utils/calendarKeyboard';
 import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarDayHandle, CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarDayGridCellProps } from '../CalendarDayGridCell/CalendarDayGridCell.types';
@@ -130,6 +131,8 @@ type FixtureProps = Omit<RowProps, 'base'> & {
   allFocusable?: boolean;
   dir?: 'ltr' | 'rtl';
   onGridKeyDownCapture?: React.KeyboardEventHandler<HTMLDivElement>;
+  onButtonKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
+  onButtonKeyDownCapture?: React.KeyboardEventHandler<HTMLButtonElement>;
 };
 
 function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: FixtureProps = {}) {
@@ -140,7 +143,14 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
   const onNavigate = jest.fn();
   const today = new Date(2020, 8, 18);
   const element = (fixtureProps: FixtureProps) => {
-    const { allFocusable = false, dir = 'ltr', onGridKeyDownCapture, ...rowProps } = fixtureProps;
+    const {
+      allFocusable = false,
+      dir = 'ltr',
+      onGridKeyDownCapture,
+      onButtonKeyDown,
+      onButtonKeyDownCapture,
+      ...rowProps
+    } = fixtureProps;
     return (
       <Provider_unstable value={{ dir }}>
         <CalendarProvider
@@ -153,6 +163,10 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
               getDayCellProps={() => ({
                 onKeyDown: rowProps.onCellKeyDown,
                 onKeyDownCapture: rowProps.onCellKeyDownCapture,
+                button: {
+                  onKeyDown: onButtonKeyDown,
+                  onKeyDownCapture: onButtonKeyDownCapture,
+                },
               })}
               grid={{ onKeyDownCapture: onGridKeyDownCapture }}
               body={{ children: <DayRows base={base} /> }}
@@ -234,6 +248,100 @@ describe.each([
         ArrowUp: true,
       });
     }
+  });
+
+  describe.each(['day', 'month', 'year'] as const)('%s grid keyboard editable boundaries', pickerName => {
+    it('allows navigation within a contenteditable=false island inside an editable ancestor', () => {
+      const { cells, container, getByRole } = renderPicker(pickerName, false);
+      const grid = getByRole('grid');
+      const targetDocument = grid.ownerDocument;
+      const editor = targetDocument.createElement('div');
+      const island = targetDocument.createElement('div');
+      editor.setAttribute('contenteditable', 'true');
+      island.setAttribute('contenteditable', 'false');
+      container.appendChild(editor);
+      editor.appendChild(island);
+      island.appendChild(grid);
+
+      act(() => cells[0].focus());
+      fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+
+      expect(cells[1]).toHaveFocus();
+    });
+  });
+
+  describe('React 16 native capture fallback', () => {
+    it('runs consumer cancellation before native grid listeners and dispatches once', () => {
+      const grid = document.createElement('div');
+      const cell = document.createElement('button');
+      const otherCell = document.createElement('button');
+      grid.setAttribute('role', 'grid');
+      cell.setAttribute('role', 'gridcell');
+      otherCell.setAttribute('role', 'gridcell');
+      grid.append(cell, otherCell);
+      document.body.appendChild(grid);
+
+      const order: string[] = [];
+      const onCapture = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
+        order.push('capture');
+        expect(event.currentTarget).toBe(cell);
+      });
+      const onKeyDown = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
+        order.push('consumer');
+        expect(event.currentTarget).toBe(cell);
+        otherCell.focus();
+      });
+      const handlers = getCalendarGridKeyDownHandlers(onKeyDown, onCapture, isCalendarGridArrow);
+      const nativeOwner = jest.fn((event: KeyboardEvent) => {
+        order.push('native');
+        if (!event.defaultPrevented) {
+          otherCell.focus();
+        }
+      });
+      cell.addEventListener('keydown', handlers.onLegacyKeyDownCapture, true);
+      grid.addEventListener('keydown', nativeOwner);
+
+      try {
+        const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
+        cell.dispatchEvent(event);
+
+        expect(order).toEqual(['capture', 'consumer', 'native']);
+        expect(onCapture).toHaveBeenCalledTimes(1);
+        expect(onKeyDown).toHaveBeenCalledTimes(1);
+        expect(nativeOwner).toHaveBeenCalledTimes(1);
+        expect(event.defaultPrevented).toBe(true);
+        expect(otherCell).toHaveFocus();
+      } finally {
+        cell.removeEventListener('keydown', handlers.onLegacyKeyDownCapture, true);
+        grid.removeEventListener('keydown', nativeOwner);
+        grid.remove();
+      }
+    });
+
+    it('does not run built-in navigation after native capture cancellation', () => {
+      const grid = document.createElement('div');
+      const cell = document.createElement('button');
+      grid.setAttribute('role', 'grid');
+      cell.setAttribute('role', 'gridcell');
+      grid.appendChild(cell);
+      document.body.appendChild(grid);
+      const onCapture = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => event.preventDefault());
+      const onKeyDown = jest.fn();
+      const handlers = getCalendarGridKeyDownHandlers(onKeyDown, onCapture, isCalendarGridArrow);
+      cell.addEventListener('keydown', handlers.onLegacyKeyDownCapture, true);
+
+      try {
+        const event = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true });
+        cell.dispatchEvent(event);
+
+        expect(onCapture).toHaveBeenCalledTimes(1);
+        expect(onKeyDown).not.toHaveBeenCalled();
+        expect(event.defaultPrevented).toBe(true);
+      } finally {
+        cell.removeEventListener('keydown', handlers.onLegacyKeyDownCapture, true);
+        grid.remove();
+      }
+    });
   });
 
   it.each([
@@ -390,6 +498,38 @@ describe.each([
   { name: 'styled month', picker: 'month', base: false },
   { name: 'styled year', picker: 'year', base: false },
 ] as const)('$name native keyboard ordering', ({ picker, base }) => {
+  if (picker === 'day') {
+    it.each(['capture', 'bubble'] as const)('honors button %s cancellation before day navigation', phase => {
+      const onButtonKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (phase === 'capture') {
+          event.preventDefault();
+        }
+      });
+      const onButtonKeyDown = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (phase === 'bubble') {
+          event.preventDefault();
+        }
+      });
+      const { cells, onNavigate } = renderPicker(picker, base, {
+        onButtonKeyDown,
+        onButtonKeyDownCapture,
+      });
+      const button = cells[0].querySelector('button')!;
+      act(() => button.focus());
+
+      fireEvent.keyDown(button, { key: 'ArrowRight' });
+
+      expect(button).toHaveFocus();
+      expect(onNavigate).not.toHaveBeenCalled();
+      expect(onButtonKeyDownCapture).toHaveBeenCalledTimes(1);
+      expect(onButtonKeyDown).toHaveBeenCalledTimes(phase === 'capture' ? 0 : 1);
+      expect(onButtonKeyDownCapture.mock.calls[0][0].currentTarget).toBe(button);
+      if (phase === 'bubble') {
+        expect(onButtonKeyDown.mock.calls[0][0].currentTarget).toBe(button);
+      }
+    });
+  }
+
   it('preserves capture cancellation and calls the consumer keydown once', () => {
     const onCellKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
     const onCellKeyDown = jest.fn();

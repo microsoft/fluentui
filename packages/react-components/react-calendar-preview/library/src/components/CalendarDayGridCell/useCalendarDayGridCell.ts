@@ -1,12 +1,13 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
   getRTLSafeKey,
   mergeCallbacks,
   slot,
+  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
@@ -14,6 +15,7 @@ import { compareDatePart, findAvailableDate, stringifyDataAttribute } from '../.
 import { createDate } from '../../utils/dateMath';
 import {
   getCalendarGridKeyDownHandlers,
+  invokeCalendarKeyboardHandler,
   isCalendarArrowKey,
   isCalendarGridArrow,
   isCalendarKeyboardEditable,
@@ -35,6 +37,7 @@ const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: fa
  */
 const RANGE_HOVERED_ATTRIBUTE = 'data-range-hovered';
 const RANGE_PRESSED_ATTRIBUTE = 'data-range-pressed';
+const dispatchedButtonEvents = new WeakSet<Event>();
 
 const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
   element.toggleAttribute('data-corner-top-left', corners.topLeft);
@@ -99,7 +102,6 @@ export const useCalendarDayGridCell_unstable = (
   const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
   const originalDate = day.originalDate;
   const cellProps = { ...(!ariaHidden && originalDate ? getDayCellProps?.(originalDate) : undefined), ...rest };
-
   const corners = weekCorners?.[weekIndex + '_' + dayIndex];
   const isFocusTargetDate =
     focusTargetDate && originalDate ? compareDatePart(focusTargetDate, originalDate) === 0 : false;
@@ -277,6 +279,19 @@ export const useCalendarDayGridCell_unstable = (
     ariaLabel = formatters.dayMarkedLabel({ date: originalDate, formattedDate });
   }
 
+  const button = slot.always(cellProps.button, {
+    defaultProps: {
+      'aria-label': ariaLabel,
+      disabled: !ariaHidden && !day.isInBounds,
+      id: isFocusTargetDate ? activeDescendantId : undefined,
+      tabIndex: -1,
+      type: 'button',
+    },
+    elementType: 'button',
+  });
+  const buttonOnKeyDownCapture = button.onKeyDownCapture;
+  const buttonOnKeyDown = button.onKeyDown;
+
   const isFocusable = !ariaHidden && !!originalDate && (allFocusable || (day.isInBounds ? true : undefined));
 
   const setCellRef = (element: HTMLTableCellElement) => {
@@ -290,7 +305,58 @@ export const useCalendarDayGridCell_unstable = (
    * The grid publishes `navigatedDayRef` so it can focus the navigated cell; assigning it from this
    * ref callback runs at commit, not during render.
    */
-  const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref);
+  const cellElementRef = React.useRef<HTMLTableCellElement | null>(null);
+  const cellRef = useMergedRefs(setCellRef, cellProps.ref, ref, cellElementRef);
+  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
+    ev => {
+      if (isCalendarGridArrow(ev)) {
+        const buttonElement = ev.currentTarget.querySelector('button');
+        if (buttonElement) {
+          dispatchedButtonEvents.add(ev.nativeEvent);
+          invokeCalendarKeyboardHandler(ev, buttonElement, buttonOnKeyDownCapture);
+          if (!ev.isDefaultPrevented() && !ev.isPropagationStopped()) {
+            invokeCalendarKeyboardHandler(ev, buttonElement, buttonOnKeyDown);
+          }
+        }
+      }
+      if (!ev.isPropagationStopped()) {
+        cellProps.onKeyDown?.(ev);
+      }
+      if (
+        !ev.isDefaultPrevented() &&
+        !ev.isPropagationStopped() &&
+        !ariaHidden &&
+        !isCalendarKeyboardEditable(ev.target) &&
+        (!isCalendarArrowKey(ev.key) || isCalendarGridArrow(ev))
+      ) {
+        onDayKeyDown(ev);
+      }
+    },
+    cellProps.onKeyDownCapture,
+    ev => !ariaHidden && !!originalDate && isCalendarGridArrow(ev),
+  );
+
+  useIsomorphicLayoutEffect(() => {
+    const cell = cellElementRef.current;
+    if (!cell) {
+      return;
+    }
+    const listener = keyDownHandlers.onLegacyKeyDownCapture;
+    cell.addEventListener('keydown', listener, true);
+    return () => cell.removeEventListener('keydown', listener, true);
+  }, [keyDownHandlers]);
+
+  button.onKeyDownCapture = ev => {
+    if (!dispatchedButtonEvents.has(ev.nativeEvent)) {
+      buttonOnKeyDownCapture?.(ev);
+    }
+  };
+  button.onKeyDown = ev => {
+    if (!dispatchedButtonEvents.has(ev.nativeEvent)) {
+      buttonOnKeyDown?.(ev);
+    }
+  };
+
   const root = slot.always<ExtractSlotProps<Slot<'td'>>>(
     getIntrinsicElementProps('td', {
       ...cellProps,
@@ -304,21 +370,8 @@ export const useCalendarDayGridCell_unstable = (
           day.onSelected(ev);
         }
       },
-      ...getCalendarGridKeyDownHandlers<HTMLTableCellElement>(
-        ev => {
-          cellProps.onKeyDown?.(ev);
-          if (
-            !ev.isDefaultPrevented() &&
-            !ariaHidden &&
-            !isCalendarKeyboardEditable(ev.target) &&
-            (!isCalendarArrowKey(ev.key) || isCalendarGridArrow(ev))
-          ) {
-            onDayKeyDown(ev);
-          }
-        },
-        cellProps.onKeyDownCapture,
-        ev => !ariaHidden && !!originalDate && isCalendarGridArrow(ev),
-      ),
+      onKeyDown: keyDownHandlers.onKeyDown,
+      onKeyDownCapture: keyDownHandlers.onKeyDownCapture,
       onMouseDown: !ariaHidden ? mergeCallbacks(cellProps.onMouseDown, onMouseDownDay) : undefined,
       onMouseOut: !ariaHidden ? mergeCallbacks(cellProps.onMouseOut, onMouseOutDay) : undefined,
       onMouseOver: !ariaHidden ? mergeCallbacks(cellProps.onMouseOver, onMouseOverDay) : undefined,
@@ -358,16 +411,7 @@ export const useCalendarDayGridCell_unstable = (
       marker: 'div',
     },
     root,
-    button: slot.always(cellProps.button, {
-      defaultProps: {
-        'aria-label': ariaLabel,
-        disabled: !ariaHidden && !day.isInBounds,
-        id: isFocusTargetDate ? activeDescendantId : undefined,
-        tabIndex: -1,
-        type: 'button',
-      },
-      elementType: 'button',
-    }),
+    button,
     dayLabel: slot.always(cellProps.dayLabel, {
       defaultProps: {
         children: originalDate ? formatters.dateTime({ date: originalDate, format: 'day' }) : day.date,
