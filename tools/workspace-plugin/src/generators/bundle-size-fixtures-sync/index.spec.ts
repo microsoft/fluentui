@@ -68,19 +68,24 @@ describe('bundle-size-fixtures-sync generator', () => {
       });
     }
 
-    it('namespace imports every subpath and logs them', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};', 'src/color-picker.ts': 'export {};' });
+    it('named imports every value export of every subpath and logs them', async () => {
+      const project = setupEntryPointsProject({
+        'src/badge.ts': [
+          `export { Badge, renderBadge, useBadge } from './components/Badge/index';`,
+          `export type { BadgeProps, BadgeState } from './components/Badge/index';`,
+        ].join('\n'),
+        'src/color-picker.ts': `export const ColorPicker = () => null;\nexport function useColorPicker() {}`,
+      });
 
       await generator(tree);
 
       expect(project.readFixture('AllComponents.fixture.js')).toMatchInlineSnapshot(`
-        "import * as Badge from '@proj/react-headless/badge';
-        import * as ColorPicker from '@proj/react-headless/color-picker';
+        "// Named imports only - a namespace import keeps every export name as a string property in the minified output,
+        // which no consumer ships, and inflates the measured size.
+        import { Badge, renderBadge, useBadge } from '@proj/react-headless/badge';
+        import { ColorPicker, useColorPicker } from '@proj/react-headless/color-picker';
 
-        console.log({
-          Badge,
-          ColorPicker,
-        });
+        console.log(Badge, renderBadge, useBadge, ColorPicker, useColorPicker);
 
         export default {
           name: 'react-headless: entire library',
@@ -91,40 +96,75 @@ describe('bundle-size-fixtures-sync generator', () => {
 
     it.each([
       {
-        subpaths: ['menu-button', 'menuButton'],
-        namespaces: ['MenuButton', 'MenuButton2'],
+        scenario: 'ordinary duplicate names',
+        sourceFiles: {
+          'src/combobox.ts': `export { Combobox, Option } from './components/Combobox/index';`,
+          'src/dropdown.ts': `export { Dropdown, Option } from './components/Dropdown/index';`,
+        },
+        expectedImport: "import {\n  Dropdown,\n  Option as Dropdown_Option,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Combobox, Option, Dropdown, Dropdown_Option);',
       },
       {
-        subpaths: ['menu-button', 'menuButton', 'menuButton2'],
-        namespaces: ['MenuButton', 'MenuButton3', 'MenuButton2'],
+        scenario: 'an alias that collides with another exported name',
+        sourceFiles: {
+          'src/combobox.ts': `export const Option = 1;`,
+          'src/dropdown.ts': `export const Option = 1;\nexport const Dropdown_Option = 1;`,
+        },
+        expectedImport:
+          "import {\n  Dropdown_Option,\n  Option as Dropdown_Option2,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Option, Dropdown_Option, Dropdown_Option2);',
       },
-    ])('allocates unique namespace bindings for $subpaths', async ({ subpaths, namespaces }) => {
-      const project = setupEntryPointsProject(
-        Object.fromEntries(subpaths.map(subpath => [`src/${subpath}.ts`, 'export {};'])),
-      );
+    ])('aliases duplicate exports for $scenario', async ({ sourceFiles, expectedImport, expectedLog }) => {
+      const project = setupEntryPointsProject(sourceFiles);
 
       await generator(tree);
 
       const fixture = project.readFixture('AllComponents.fixture.js')!;
-      const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
-      const fixtureImports = sourceFile.statements.filter(ts.isImportDeclaration);
-      const bindings = fixtureImports.map(
-        statement => (statement.importClause!.namedBindings as ts.NamespaceImport).name.text,
-      );
-      const modules = fixtureImports.map(statement => (statement.moduleSpecifier as ts.StringLiteral).text);
-      const logged = sourceFile.statements.find(ts.isExpressionStatement)!.expression as ts.CallExpression;
-      const loggedBindings = (logged.arguments[0] as ts.ObjectLiteralExpression).properties.map(
-        property => (property as ts.ShorthandPropertyAssignment).name.text,
-      );
+      expect(fixture).toContain(expectedImport);
+      expect(fixture).toContain(expectedLog);
+    });
 
-      expect(bindings).toEqual(namespaces);
-      expect(new Set(bindings).size).toBe(subpaths.length);
-      expect(modules).toEqual(subpaths.map(subpath => `@proj/react-headless/${subpath}`));
-      expect(loggedBindings).toEqual(bindings);
+    it('imports default function, expression, and re-export values using valid bindings', async () => {
+      const project = setupEntryPointsProject({
+        'src/default-function.ts': `export default function Widget() {}`,
+        'src/default-expression.ts': `export default () => null;`,
+        'src/default-reexport.ts': `export { default } from './widget';`,
+        'src/default-star.ts': `export * from './widget';`,
+        'src/widget.ts': `export default function InternalWidget() {}`,
+      });
+
+      await generator(tree);
+
+      const fixture = project.readFixture('AllComponents.fixture.js')!;
+      expect(fixture).toContain('default as DefaultExpression_default');
+      expect(fixture).toContain('default as DefaultFunction_default');
+      expect(fixture).toContain('default as DefaultReexport_default');
+      expect(fixture).not.toContain('DefaultStar_default');
+      expect(fixture).toContain('console.log(');
+      expect(fixture).not.toContain('console.log(default');
+      expect(
+        ts.transpileModule(fixture, {
+          fileName: 'fixture.js',
+          compilerOptions: { allowJs: true, module: ts.ModuleKind.ESNext },
+          reportDiagnostics: true,
+        }).diagnostics,
+      ).toEqual([]);
+    });
+
+    it('keeps a bare import for a subpath without value exports, so it still has to resolve', async () => {
+      const project = setupEntryPointsProject({
+        'src/badge.ts': `export { Badge } from './components/Badge/index';`,
+        'src/types.ts': `export type { BadgeProps } from './components/Badge/index';`,
+      });
+
+      await generator(tree);
+
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("import '@proj/react-headless/types';");
     });
 
     it('omits the root entry, which would defeat per subpath isolation', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};' });
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
+      tree.write('packages/react-headless/src/index.ts', `export * from './badge';`);
 
       await generator(tree);
 
@@ -132,16 +172,28 @@ describe('bundle-size-fixtures-sync generator', () => {
     });
 
     it('picks up a newly added subpath', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};' });
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
       await generator(tree);
 
-      tree.write('packages/react-headless/src/tooltip.ts', 'export {};');
+      tree.write('packages/react-headless/src/tooltip.ts', `export const Tooltip = () => null;`);
       const result = await generator(tree);
 
       expect(result.outOfSyncMessage).toContain('AllComponents.fixture.js');
-      expect(project.readFixture('AllComponents.fixture.js')).toContain(
-        "import * as Tooltip from '@proj/react-headless/tooltip';",
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("} from '@proj/react-headless/tooltip';");
+    });
+
+    it('picks up a newly added export of an existing subpath', async () => {
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
+      await generator(tree);
+
+      tree.write(
+        'packages/react-headless/src/badge.ts',
+        `export const Badge = () => null;\nexport const useBadge = () => null;`,
       );
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toContain('AllComponents.fixture.js');
+      expect(project.readFixture('AllComponents.fixture.js')).toContain('useBadge');
     });
   });
 
