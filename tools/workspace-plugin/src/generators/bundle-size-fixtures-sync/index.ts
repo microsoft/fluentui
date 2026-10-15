@@ -4,7 +4,7 @@ import { readExportMapConfig, resolveEntryPoints } from '../export-maps-sync/lib
 import type { PackageJson } from '../../types';
 import {
   type BaseHookImport,
-  type EntryPointImport,
+  type NamedImport,
   isBaseHook,
   renderBaseHooksFixture,
   renderEntryPointsFixture,
@@ -68,23 +68,35 @@ function renderFixture(
   unresolved: string[],
 ): Promise<string> | string {
   if (fixture.kind === 'entryPoints') {
-    return renderEntryPoints(tree, projectConfig, fixture.name);
+    return renderEntryPoints(tree, projectConfig, fixture.name, unresolved);
   }
 
   return renderBaseHooks(tree, projects, projectConfig, fixture.name, unresolved);
 }
 
-async function renderEntryPoints(tree: Tree, projectConfig: ProjectConfiguration, name: string): Promise<string> {
+async function renderEntryPoints(
+  tree: Tree,
+  projectConfig: ProjectConfiguration,
+  name: string,
+  unresolved: string[],
+): Promise<string> {
   const packageJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
   const entryPoints = await resolveEntryPoints(tree, projectConfig.root, readExportMapConfig(projectConfig));
 
-  const imports: EntryPointImport[] = entryPoints
+  const imports: NamedImport[] = entryPoints
     // the root entry would pull in the whole library and defeat the point of per subpath isolation
     .filter(entryPoint => entryPoint.key !== '.')
-    .map(entryPoint => ({
-      namespace: toNamespaceBinding(entryPoint.name),
-      moduleSpecifier: `${packageJson.name}/${entryPoint.name}`,
-    }));
+    .map(entryPoint => {
+      const sourceFile = resolveSourceFile(tree, `${projectConfig.root}/src/${entryPoint.outputPath}`);
+      const publicExports = sourceFile ? collectPublicExports(tree, sourceFile, { includeDefault: true }) : null;
+      unresolved.push(...(publicExports?.unresolved ?? []));
+
+      return {
+        namespace: toNamespaceBinding(entryPoint.name),
+        moduleSpecifier: `${packageJson.name}/${entryPoint.name}`,
+        exports: [...(publicExports?.values ?? [])].sort(),
+      };
+    });
 
   return renderEntryPointsFixture(imports, name);
 }
@@ -117,6 +129,13 @@ function renderBaseHooks(
   }
 
   return renderBaseHooksFixture(imports, name);
+}
+
+/** `src/color-picker` -> `src/color-picker.ts`, mirroring the extensions an entry point glob can match */
+function resolveSourceFile(tree: Tree, pathWithoutExtension: string): string | null {
+  return (
+    ['.ts', '.tsx'].map(extension => `${pathWithoutExtension}${extension}`).find(file => tree.exists(file)) ?? null
+  );
 }
 
 function mapProjectsByPackageName(tree: Tree, projects: Map<string, ProjectConfiguration>): Map<string, string> {
