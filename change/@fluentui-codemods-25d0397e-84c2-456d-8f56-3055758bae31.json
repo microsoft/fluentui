@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: fix relative links",
-  "packageName": "@fluentui/codemods",
-  "email": "f.ceballos.rastello@gmail.com",
-  "dependentChangeType": "none"
-}
