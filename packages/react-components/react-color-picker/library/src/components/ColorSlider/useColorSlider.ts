@@ -60,12 +60,10 @@ export const useColorSliderBase_unstable = (
     thumb,
   } = props;
 
-  const hsvColor = color || colorFromContext;
-  const hslColor = createHslColor(hsvColor);
-
+  const hslColor = createHslColor(color || colorFromContext);
   const [currentColor, setCurrentColor] = useControllableState<HsvColor>({
     defaultState: props.defaultColor,
-    state: hsvColor,
+    state: color || colorFromContext,
     initialState: INITIAL_COLOR_HSV,
   });
 
@@ -85,9 +83,9 @@ export const useColorSliderBase_unstable = (
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
     const newValue = Number(event.target.value);
     const colorActions: ChannelActions<() => HsvColor> = {
-      hue: () => createHsvColor({ ...hsvColor, h: newValue }),
-      saturation: () => createHsvColor({ ...hsvColor, s: newValue / 100 }),
-      value: () => createHsvColor({ ...hsvColor, v: newValue / 100 }),
+      hue: () => createHsvColor({ ...currentColor, h: newValue }),
+      saturation: () => createHsvColor({ ...currentColor, s: newValue / 100 }),
+      value: () => createHsvColor({ ...currentColor, v: newValue / 100 }),
     };
     const newColor = adjustChannel(channel, colorActions)();
 
@@ -105,11 +103,22 @@ export const useColorSliderBase_unstable = (
     [colorSliderCSSVars.sliderDirectionVar]: vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
     [colorSliderCSSVars.sliderProgressVar]: `${valuePercent}%`,
     [colorSliderCSSVars.thumbColorVar]:
-      channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : createHslColorString(hsvColor),
+      channel === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : createHslColorString(currentColor),
     [colorSliderCSSVars.railColorVar]:
       channel === 'hue'
         ? `hsl(${hslColor.h}, ${hslColor.s * 100}%, ${hslColor.l * 100}%)`
-        : `hsl(${hslColor.h}, 100%, 50%)`,
+        : createHslColorString({
+            ...currentColor,
+            ...(channel === 'saturation' ? { s: 1 } : { v: 1 }),
+            a: 1,
+          }),
+    ...(channel !== 'hue' && {
+      [colorSliderCSSVars.railColorLowVar]: createHslColorString({
+        ...currentColor,
+        ...(channel === 'saturation' ? { s: 0 } : { v: 0 }),
+        a: 1,
+      }),
+    }),
   };
 
   const state: ColorSliderBaseState = {

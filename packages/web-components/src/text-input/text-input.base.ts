@@ -326,6 +326,20 @@ export class BaseTextInput extends FASTElement {
   private dirtyValue: boolean = false;
 
   /**
+   * The value as of the last `change` event or programmatic update.
+   *
+   * @internal
+   */
+  private committedValue: string = '';
+
+  /**
+   * Indicates that `value` is being updated from the internal control's `input` event.
+   *
+   * @internal
+   */
+  private isUserInput: boolean = false;
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -374,6 +388,11 @@ export class BaseTextInput extends FASTElement {
   public set value(value: string) {
     this.currentValue = value;
 
+    // Programmatic updates are not user changes, so they must not trigger `change` later.
+    if (!this.isUserInput) {
+      this.committedValue = value ?? '';
+    }
+
     if (this.elementInternals && this.control) {
       this.control.value = value ?? '';
       this.setFormValue(value);
@@ -413,13 +432,26 @@ export class BaseTextInput extends FASTElement {
    * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
   public changeHandler(e: InputEvent): boolean | void {
+    // Skip if already emitted on Enter; the browser's later native `change` has the same value.
+    if (this.control.value !== this.committedValue) {
+      this.emitChange(e);
+    }
+
+    return true;
+  }
+
+  /**
+   * Validates, records the committed value, and emits `change` on the host.
+   *
+   * @internal
+   */
+  private emitChange(detail?: Event) {
+    this.committedValue = this.control.value;
     this.setValidity();
-    this.$emit('change', e, {
+    this.$emit('change', detail, {
       bubbles: true,
       composed: true,
     });
-
-    return true;
   }
 
   /**
@@ -507,7 +539,12 @@ export class BaseTextInput extends FASTElement {
    */
   public inputHandler(e: InputEvent): boolean | void {
     this.dirtyValue = true;
-    this.value = this.control.value;
+    this.isUserInput = true;
+    try {
+      this.value = this.control.value;
+    } finally {
+      this.isUserInput = false;
+    }
 
     return true;
   }
@@ -519,9 +556,33 @@ export class BaseTextInput extends FASTElement {
    * @internal
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (e.key === 'Enter') {
-      this.implicitSubmit();
+    if (e.key !== 'Enter') {
+      return true;
     }
+
+    // Enter that confirms an IME composition must not commit or submit.
+    // `keyCode` 229 means the IME handled the key; Safari fires this keydown
+    // after `compositionend`, when `isComposing` is already false.
+    // See details: https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event#keydown_events_with_ime
+    if (e.isComposing || e.keyCode === 229) {
+      return true;
+    }
+
+    // Keydown events from slotted start/end content also bubble to the host;
+    // implicit submission only applies to the control.
+    if (e.composedPath()[0] !== this.control) {
+      return true;
+    }
+
+    // On a built-in `<input>`, hitting `Enter` fires `change` before the implicit
+    // form submission. Emit it here so listeners see the committed value on
+    // `submit`, without moving focus.
+    // @see https://github.com/microsoft/fluentui/issues/36117
+    if (this.control.value !== this.committedValue) {
+      this.emitChange();
+    }
+
+    this.implicitSubmit();
 
     return true;
   }
