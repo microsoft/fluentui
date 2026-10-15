@@ -17,8 +17,14 @@ import {
 } from '@fluentui/keyboard-keys';
 
 import type { ListItemProps, ListItemState } from './ListItem.types';
-import { getListFocusableElements, useListNavigationMode } from '../listNavigationContext';
+import { getListFocusableElements } from '../listNavigation';
+import { useListNavigationMode } from '../listNavigationContext';
 import { toDataAttributeValue } from '../../../utils';
+
+const editableTargetSelector =
+  'input:not([type="checkbox" i]):not([type="radio" i]):not([type="button" i]):not([type="submit" i]):not([type="reset" i]):not([type="image" i]):not([type="hidden" i]), ' +
+  'textarea, select, [contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], ' +
+  'audio[controls], video[controls], iframe, object';
 
 /**
  * Returns the state for a ListItem component, given its props and ref.
@@ -56,15 +62,7 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
     }
 
     const key = getRTLSafeKey(event.key, dir);
-    if (
-      target !== root &&
-      key !== Escape &&
-      target.closest(
-        'input:not([type="checkbox"]):not([type="radio"]), textarea, select, ' +
-          '[contenteditable=""], [contenteditable="true" i], [contenteditable="plaintext-only" i], ' +
-          'audio[controls], video[controls], iframe, object',
-      )
-    ) {
+    if (target !== root && key !== Escape && target.closest(editableTargetSelector)) {
       return;
     }
 
@@ -87,36 +85,58 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
         root.focus();
         event.preventDefault();
       }
-    } else if (
-      key === ArrowUp ||
-      key === ArrowDown ||
-      (target !== root && key === Escape) ||
-      (target === root && (key === Home || key === End || key === PageUp || key === PageDown))
-    ) {
-      if (key !== Escape) {
-        const rows = (list ? getListFocusableElements(list) : []).filter(
-          element => element.hasAttribute('data-navigable') && element.closest('[data-list]') === list,
-        );
-        const step = key === ArrowDown || key === Home || key === PageUp ? 1 : -1;
-        const start =
-          key === Home || key === PageUp
-            ? 0
-            : key === End || key === PageDown
-            ? rows.length - 1
-            : rows.indexOf(root) + step;
+      return;
+    }
 
-        for (let index = start; index >= 0 && index < rows.length; index += step) {
-          rows[index].focus();
-          if (rows[index].matches(':focus')) {
-            event.preventDefault();
-            return;
-          }
-        }
-      }
-
+    if (key === Escape && target !== root) {
       root.focus();
       event.preventDefault();
+      return;
     }
+
+    if (target !== root && key !== ArrowUp && key !== ArrowDown) {
+      return;
+    }
+
+    const rows = (list ? getListFocusableElements(list) : []).filter(
+      element => element.hasAttribute('data-navigable') && element.closest('[data-list]') === list,
+    );
+    let step: number;
+    let start: number;
+
+    switch (key) {
+      case ArrowUp:
+        step = -1;
+        start = rows.indexOf(root) - 1;
+        break;
+      case ArrowDown:
+        step = 1;
+        start = rows.indexOf(root) + 1;
+        break;
+      case Home:
+      case PageUp:
+        step = 1;
+        start = 0;
+        break;
+      case End:
+      case PageDown:
+        step = -1;
+        start = rows.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    for (let index = start; index >= 0 && index < rows.length; index += step) {
+      rows[index].focus();
+      if (rows[index].matches(':focus')) {
+        event.preventDefault();
+        return;
+      }
+    }
+
+    root.focus();
+    event.preventDefault();
   });
 
   return {
@@ -126,7 +146,7 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
       'data-selectable': toDataAttributeValue(baseState.selectable),
       'data-navigable': toDataAttributeValue(baseState.navigable),
       'data-selected': toDataAttributeValue(baseState.root['aria-selected']),
-      'data-disabled': toDataAttributeValue(baseState.selectable && baseState.disabled),
+      'data-disabled': toDataAttributeValue(baseState.root['aria-disabled']),
       ...(navigationMode === 'composite' && { focusgroup: undefined, onKeyDown: handleKeyDown }),
     },
   };

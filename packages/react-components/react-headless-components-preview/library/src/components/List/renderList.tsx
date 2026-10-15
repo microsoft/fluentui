@@ -8,9 +8,8 @@ import { ListNavigationProvider } from './listNavigationContext';
 /**
  * Renders List and provides its navigation mode to the headless ListItem hooks.
  */
-export const renderList = (state: ListState, contextValues: ListContextValues): JSXElement =>
-  React.createElement(
-    ListNavigationProvider,
-    { value: state.navigationMode },
-    renderList_unstable(state, contextValues),
-  );
+export const renderList = (state: ListState, contextValues: ListContextValues): JSXElement => (
+  <ListNavigationProvider value={state.navigationMode}>
+    {renderList_unstable(state, contextValues)}
+  </ListNavigationProvider>
+);

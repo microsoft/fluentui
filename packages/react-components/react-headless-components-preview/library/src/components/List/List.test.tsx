@@ -33,6 +33,20 @@ describe('List', () => {
 
     expect(getByRole('list')).not.toHaveAttribute('data-navigation-mode');
     expect(getByRole('list')).not.toHaveAttribute('data-selectable');
+    expect(getByRole('list')).not.toHaveAttribute('focusgroup');
+  });
+
+  it('does not add toolbar navigation to a default list of links', () => {
+    const { getByRole } = render(
+      <List>
+        <ListItem value="one">
+          <a href="#first">First item</a>
+        </ListItem>
+      </List>,
+    );
+
+    expect(getByRole('list')).not.toHaveAttribute('focusgroup');
+    expect(getByRole('link', { name: 'First item' })).toHaveAttribute('href', '#first');
   });
 
   it.each(['items', 'composite'] as const)('sets data-navigation-mode to %s', navigationMode => {
@@ -295,6 +309,27 @@ describe('List', () => {
     expect(getByRole('button', { name: 'Outer action' })).toHaveFocus();
     expect(getByRole('option')).not.toHaveFocus();
     expect(getByRole('option')).toHaveAttribute('tabindex', '0');
+  });
+
+  it('keeps the focused row as the roving tab stop when an opted-out control receives focus', () => {
+    const { getAllByRole, getByRole } = render(
+      <List aria-label="Actions" navigationMode="composite">
+        {['Alex', 'Mona', 'Allan', 'Robin'].map(person => (
+          <ListItem key={person} value={person}>
+            <span role="gridcell">
+              <button tabIndex={-1}>Opted out {person}</button>
+              <button>{person}</button>
+            </span>
+          </ListItem>
+        ))}
+      </List>,
+    );
+    const rows = getAllByRole('row');
+
+    fireEvent.focusIn(getByRole('button', { name: 'Opted out Robin' }));
+
+    expect(rows[3]).toHaveAttribute('tabindex', '0');
+    expect(rows[0]).toHaveAttribute('tabindex', '-1');
   });
 
   it('batches composite style mutations into one focus-order reconciliation per frame', async () => {

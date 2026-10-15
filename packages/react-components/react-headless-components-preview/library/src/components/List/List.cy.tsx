@@ -117,6 +117,30 @@ describe('List', () => {
     cy.contains('button', 'Mona').should('be.focused');
   });
 
+  it('keeps the current row as the tab stop when an opted-out control is clicked', () => {
+    mount(
+      <>
+        <button>Before</button>
+        <List aria-label="Actions" navigationMode="composite">
+          {['Alex', 'Mona', 'Allan', 'Robin'].map(person => (
+            <ListItem key={person} value={person}>
+              <span role="gridcell">
+                <button tabIndex={-1}>Opted out {person}</button>
+                <button>{person}</button>
+              </span>
+            </ListItem>
+          ))}
+        </List>
+        <button>After</button>
+      </>,
+    );
+
+    cy.contains('button', 'Opted out Robin').click();
+    cy.get('[role="row"]').eq(3).should('have.attr', 'tabindex', '0');
+    cy.focused().realPress(['Shift', 'Tab']);
+    cy.get('[role="row"]').eq(3).should('be.focused');
+  });
+
   it('respects arrow-key cancellation by a composite child control', () => {
     mount(
       <List aria-label="Actions" navigationMode="composite">
@@ -187,7 +211,9 @@ describe('List', () => {
     cy.contains('button', 'Remove Mona').click();
     cy.get('[data-list]').find('[tabindex="0"]').should('have.length', 1);
     cy.get('[role="row"]').first().focus().realPress('End');
+    cy.get('[role="row"]').last().should('be.focused').realPress('PageDown');
     cy.get('[role="row"]').last().should('be.focused').realPress('Home');
+    cy.get('[role="row"]').first().should('be.focused').realPress('PageUp');
     cy.get('[role="row"]').first().should('be.focused');
   });
 

@@ -10,7 +10,7 @@ import {
 import { isSlot, SLOT_ELEMENT_TYPE_SYMBOL, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 
 import type { ListContextValues, ListProps, ListState } from './List.types';
-import { getListFocusableElements, useCompositeListNavigation } from './listNavigationContext';
+import { getListFocusableElements, useCompositeListNavigation } from './listNavigation';
 import { toDataAttributeValue } from '../../utils';
 
 export { useListContext_unstable as useListContext } from '@fluentui/react-list';
@@ -61,8 +61,12 @@ export const useList = (
       'data-list': '',
       'data-navigation-mode': baseState.navigationMode,
       'data-selectable': toDataAttributeValue(!!baseState.selection),
-      focusgroup: baseState.navigationMode === 'composite' ? undefined : 'toolbar block',
-      ...(baseState.navigationMode === 'composite' && { onFocusCapture: handleFocusCapture }),
+      ...(baseState.navigationMode === 'items' && { focusgroup: 'toolbar block' }),
+      // Composite navigation owns the tab stop and key handling; a focusgroup would compete with it.
+      ...(baseState.navigationMode === 'composite' && {
+        focusgroup: undefined,
+        onFocusCapture: handleFocusCapture,
+      }),
     },
   };
 

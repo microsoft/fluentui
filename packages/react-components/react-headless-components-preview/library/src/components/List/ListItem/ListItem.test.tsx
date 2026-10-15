@@ -152,6 +152,42 @@ describe('ListItem', () => {
     expect(getByRole('listitem')).not.toHaveAttribute('aria-disabled');
   });
 
+  it('reflects the resolved aria-disabled value in data-disabled', () => {
+    const { getByRole } = render(
+      <List selectionMode="multiselect">
+        <ListItem value="one" disabledSelection aria-disabled={false}>
+          First item
+        </ListItem>
+      </List>,
+    );
+
+    expect(getByRole('option')).toHaveAttribute('aria-disabled', 'false');
+    expect(getByRole('option')).not.toHaveAttribute('data-disabled');
+  });
+
+  it('navigates through button-like inputs without treating them as editable controls', () => {
+    const { getByRole } = render(
+      <List navigationMode="composite">
+        <ListItem value="one">
+          <span role="gridcell">
+            <input type="button" value="Action" />
+            <input type="text" aria-label="Name" />
+          </span>
+        </ListItem>
+      </List>,
+    );
+    const row = getByRole('row');
+    const action = getByRole('button', { name: 'Action' });
+    const name = getByRole('textbox', { name: 'Name' });
+
+    row.focus();
+    fireEvent.keyDown(row, { key: 'ArrowRight' });
+    expect(action).toHaveFocus();
+
+    fireEvent.keyDown(action, { key: 'ArrowRight' });
+    expect(name).toHaveFocus();
+  });
+
   it('preserves cancellation of composite navigation through the consumer handler', () => {
     const onKeyDown = jest.fn(event => event.preventDefault());
     const { getByRole } = render(
