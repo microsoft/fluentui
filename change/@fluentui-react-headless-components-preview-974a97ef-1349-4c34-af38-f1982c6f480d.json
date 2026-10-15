@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-headless-components-preview): default Slider aria-orientation from vertical while preserving explicit input attributes",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}

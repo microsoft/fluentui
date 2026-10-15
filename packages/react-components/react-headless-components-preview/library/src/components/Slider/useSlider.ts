@@ -13,6 +13,11 @@ import { toDataAttributeValue } from '../../utils';
 export const useSlider = (props: SliderProps, ref: React.Ref<HTMLInputElement>): SliderState => {
   const state: SliderState = useSliderBase_unstable(props, ref);
 
+  if (state.input['aria-orientation'] === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.input['aria-orientation'] = state.vertical ? 'vertical' : 'horizontal';
+  }
+
   // Set data attributes for disabled and vertical states to simplify styling of these states.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
