@@ -94,6 +94,45 @@ test('routes nested paths ahead of broad patterns and falls back to scope', () =
   assert.equal(detectArea(profile, issue({ title: 'chore: misc', files: ['unknown/file'] })), null);
 });
 
+test('icons profile defaults to build while preserving explicit package and ownership areas', async () => {
+  const iconsProfile = (await loadProfiles()).find(entry => entry.repo === 'microsoft/fluentui-system-icons');
+  const cases = [
+    ['packages/react-icons/src/index.ts', 'react-icons'],
+    ['packages/react-icons-file-type/src/index.ts', 'react-icons'],
+    ['packages/svg-icons/src/index.ts', 'react-icons'],
+    ['packages/svg-sprites/src/index.ts', 'react-icons'],
+    ['packages/eslint-plugin-react-icons/src/index.ts', 'build'],
+    ['packages/react-icons-atomic-webpack-loader/src/index.ts', 'build'],
+    ['packages/react-icons-font-subsetting-webpack-plugin/src/index.ts', 'build'],
+    ['packages/react-icons-svg-sprite-subsetting-webpack-plugin/src/index.ts', 'build'],
+    ['packages/docsite/src/index.ts', 'docs'],
+    ['packages/icon-app/src/index.ts', 'docs'],
+    ['packages/react-native-icons/src/index.ts', 'platforms'],
+    ['android/build.gradle', 'platforms'],
+    ['ios/Package.swift', 'platforms'],
+    ['flutter/pubspec.yaml', 'platforms'],
+    ['assets/icon.svg', 'assets'],
+    ['nx.json', 'build'],
+    ['.yarnrc.yml', 'build'],
+    ['packages/new-package/src/index.ts', 'build'],
+  ];
+
+  for (const [file, expected] of cases) {
+    assert.equal(detectArea(iconsProfile, issue({ title: 'chore: misc', files: [file] })), expected, file);
+  }
+  assert.equal(
+    detectArea(iconsProfile, issue({ files: ['packages/react-icons/src/index.ts', 'change/icons.json'] })),
+    'react-icons',
+  );
+});
+
+test('icons profile recognizes explicit tooling scopes when there are no matching files', async () => {
+  const iconsProfile = (await loadProfiles()).find(entry => entry.repo === 'microsoft/fluentui-system-icons');
+  for (const scope of ['eslint-plugin-react-icons', 'webpack']) {
+    assert.equal(detectArea(iconsProfile, issue({ title: `fix(${scope}): tooling`, files: [] })), 'build', scope);
+  }
+});
+
 test('counts existing coverage only in the matched area and requests the shortfall', () => {
   const rosters = { 'microsoft/cxe-prg': ['alice', 'bob', 'carol'] };
   const results = planAssignments(

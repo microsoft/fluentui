@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 import { VegaDeclarativeChart } from './VegaDeclarativeChart';
 import type { VegaDeclarativeChartProps, VegaLiteSpec } from './VegaDeclarativeChart';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+
+import { specialChartNames } from '../../utilities/test-data/specialChartNames';
 
 // Suppress console warnings for cleaner test output
 beforeAll(() => {
@@ -1246,6 +1249,32 @@ describe('VegaDeclarativeChart - More Heatmap Charts', () => {
 });
 
 describe('VegaDeclarativeChart - Security', () => {
+  it.each(['client', 'server'])('rejects folding inherited fields in a JSON-only spec during %s rendering', mode => {
+    const spec: VegaLiteSpec = JSON.parse(
+      JSON.stringify({
+        mark: 'line',
+        data: { values: [{ x: 1 }] },
+        transform: [
+          { fold: ['constructor'], as: ['firstKey', 'objectConstructor'] },
+          { calculate: 'datum.objectConstructor', as: '__proto__' },
+          { aggregate: [{ op: 'count', as: 'x' }], groupby: ['__proto__'] },
+          { fold: ['constructor'], as: ['secondKey', 'callable'] },
+          { calculate: "datum.callable('return 73')()", as: 'y' },
+        ],
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'y', type: 'quantitative' },
+        },
+      }),
+    );
+    const chart = <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />;
+
+    // Only inherited fields were requested, so no data survives the first fold.
+    expect(() => (mode === 'client' ? render(chart) : renderToString(chart))).toThrow(
+      'VegaLiteSchemaAdapter: Empty data array for LineChart',
+    );
+  });
+
   it('blocks malicious calculate expression (MSRC PoC: globalThis assignment)', () => {
     // Exact payload from the MSRC vulnerability report
     const maliciousSpec: VegaLiteSpec = {
@@ -1345,5 +1374,68 @@ describe('VegaDeclarativeChart - Security', () => {
     expect(() => render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: deepSpec }} />)).toThrow(
       'Maximum JSON depth exceeded',
     );
+  });
+});
+
+describe('VegaDeclarativeChart - Grouped Bar Special Names', () => {
+  it.each([
+    {
+      name: 'category',
+      pollutionKey: 'vegaRenderPrototypeProbe',
+      values: [
+        { category: '__proto__', series: 'vegaRenderPrototypeProbe', value: 10 },
+        { category: 'constructor', series: 'vegaRenderPrototypeProbe', value: 20 },
+        { category: 'prototype', series: 'vegaRenderPrototypeProbe', value: 30 },
+      ],
+    },
+    {
+      name: 'series',
+      pollutionKey: undefined,
+      values: specialChartNames.map((series, index) => ({ category: 'A', series, value: index + 1 })),
+    },
+    {
+      name: 'mixed category and series',
+      pollutionKey: 'vegaMixedPrototypeProbe',
+      values: ['Ordinary', '__proto__', 'constructor', '10', '2'].flatMap((category, categoryIndex) =>
+        ['vegaMixedPrototypeProbe', '__proto__', 'groupSeries', '10', '2'].map((series, seriesIndex) => ({
+          category,
+          series,
+          value: categoryIndex * 5 + seriesIndex + 1,
+        })),
+      ),
+    },
+  ])('should render special $name names as ordinary data', ({ values, pollutionKey }) => {
+    const originalConstructor = Object.prototype.constructor;
+    const originalPrototypeProperties = Object.getOwnPropertyNames(Object.prototype);
+    const spec: VegaLiteSpec = {
+      mark: 'bar',
+      data: { values },
+      encoding: {
+        x: { field: 'category', type: 'nominal' },
+        y: { field: 'value', type: 'quantitative' },
+        color: { field: 'series', type: 'nominal' },
+        xOffset: { field: 'series' },
+      },
+    };
+
+    try {
+      const { container } = render(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} />);
+
+      const bars = Array.from(container.querySelectorAll('rect[role="option"]'));
+      expect(bars).toHaveLength(values.length);
+      values.forEach(({ category, series, value }) => {
+        expect(bars.some(bar => bar.getAttribute('aria-label') === `${category}. ${series}, ${value}.`)).toBe(true);
+      });
+      expect(Object.prototype.constructor).toBe(originalConstructor);
+      expect(Object.getOwnPropertyNames(Object.prototype)).toEqual(originalPrototypeProperties);
+      if (pollutionKey) {
+        expect(Object.prototype).not.toHaveProperty(pollutionKey);
+      }
+    } finally {
+      if (pollutionKey) {
+        Reflect.deleteProperty(Object.prototype, pollutionKey);
+        Reflect.deleteProperty(Object, pollutionKey);
+      }
+    }
   });
 });

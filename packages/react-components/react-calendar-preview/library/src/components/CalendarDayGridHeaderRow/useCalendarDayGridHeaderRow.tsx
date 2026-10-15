@@ -71,6 +71,9 @@ export const useCalendarDayGridHeaderRowBase_unstable = (
     },
     root: slot.always(getIntrinsicElementProps('tr', { ref, ...props }), { elementType: 'tr' }),
     weekNumberSpacerCell: slot.optional(showWeekNumbers ? props.weekNumberSpacerCell ?? {} : undefined, {
+      defaultProps: {
+        role: 'presentation',
+      },
       elementType: 'th',
     }),
   };
