@@ -64,6 +64,17 @@ export const ExternalEditableTrigger = (): JSXElement => {
         Type to filter commands. When results are ready, press Down Arrow to enter the first command or Up Arrow to
         enter the last. Press Escape to dismiss.
       </p>
+      <div role="status" aria-atomic="true">
+        {requested
+          ? loading
+            ? 'Loading commands...'
+            : results?.commands.length
+            ? `${results.commands.length} command${results.commands.length === 1 ? '' : 's'} found.`
+            : 'No commands found.'
+          : executedCommand
+          ? `Executed ${executedCommand}.`
+          : ''}
+      </div>
       <Input
         aria-label="Find commands"
         aria-describedby={instructionsId}
@@ -109,17 +120,6 @@ export const ExternalEditableTrigger = (): JSXElement => {
           }
         }}
       />
-      <div role="status" aria-atomic="true">
-        {requested
-          ? loading
-            ? 'Loading commands...'
-            : results?.commands.length
-            ? `${results.commands.length} command${results.commands.length === 1 ? '' : 's'} found.`
-            : 'No commands found.'
-          : executedCommand
-          ? `Executed ${executedCommand}.`
-          : ''}
-      </div>
       <Menu
         open={open}
         onOpenChange={(_, data) => {

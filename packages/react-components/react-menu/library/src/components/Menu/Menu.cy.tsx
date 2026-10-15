@@ -117,6 +117,17 @@ describe('External editable trigger', () => {
 
     return (
       <>
+        <div role="status" aria-atomic="true">
+          {asyncResults && requestedOpen
+            ? loading
+              ? 'Loading commands...'
+              : results?.commands.length
+              ? `${results.commands.length} command${results.commands.length === 1 ? '' : 's'} found.`
+              : 'No commands found.'
+            : executedCommand
+            ? `Executed ${executedCommand}.`
+            : ''}
+        </div>
         <button>Before input</button>
         <input
           ref={setElement}
@@ -158,17 +169,6 @@ describe('External editable trigger', () => {
           }}
         />
         <button>After input</button>
-        <div role="status" aria-atomic="true">
-          {asyncResults && requestedOpen
-            ? loading
-              ? 'Loading commands...'
-              : results?.commands.length
-              ? `${results.commands.length} command${results.commands.length === 1 ? '' : 's'} found.`
-              : 'No commands found.'
-            : executedCommand
-            ? `Executed ${executedCommand}.`
-            : ''}
-        </div>
         <Menu
           open={open}
           onOpenChange={(_, data) => {
@@ -289,6 +289,20 @@ describe('External editable trigger', () => {
     cy.get('input').type('b').realPress('Tab');
     cy.contains('button', 'After input').should('be.focused');
     cy.get('[role="menu"]').should('not.exist');
+  });
+
+  it('keeps result status text above the open popup', () => {
+    mount(<Example asyncResults />);
+    cy.get('input').type('doc');
+    completeQuery('doc');
+    cy.get('[role="status"]').should('have.text', '2 commands found.');
+    cy.get('[role="menu"]').then(menu => {
+      cy.get('[role="status"]').should(status => {
+        const range = status[0].ownerDocument.createRange();
+        range.selectNodeContents(status[0]);
+        expect(range.getBoundingClientRect().bottom).to.be.at.most(menu[0].getBoundingClientRect().top);
+      });
+    });
   });
 
   it('filters asynchronous results without replaying entry keys or changing input selection', () => {
