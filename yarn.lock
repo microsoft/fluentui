@@ -4444,6 +4444,7 @@ __metadata:
     "@fluentui/react-tags": "npm:^9.9.7"
     "@fluentui/react-teaching-popover": "npm:^9.7.7"
     "@fluentui/react-textarea": "npm:^9.7.7"
+    "@fluentui/react-timepicker-preview": "npm:*"
     "@fluentui/react-toast": "npm:^9.8.4"
     "@fluentui/react-toolbar": "npm:^9.8.5"
     "@fluentui/react-tooltip": "npm:^9.10.7"

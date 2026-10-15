@@ -48,6 +48,7 @@ import * as TagGroup from '@fluentui/react-headless-components-preview/tag-group
 import * as TagPicker from '@fluentui/react-headless-components-preview/tag-picker';
 import * as TeachingPopover from '@fluentui/react-headless-components-preview/teaching-popover';
 import * as Textarea from '@fluentui/react-headless-components-preview/textarea';
+import * as TimePicker from '@fluentui/react-headless-components-preview/time-picker';
 import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
@@ -105,6 +106,7 @@ console.log({
   TagPicker,
   TeachingPopover,
   Textarea,
+  TimePicker,
   Toast,
   ToggleButton,
   Toolbar,
