@@ -677,6 +677,19 @@ describe.each([
   });
 
   if (picker === 'day') {
+    it.each(['altKey', 'ctrlKey', 'metaKey', 'shiftKey'])('leaves modified arrows in bubbling with %s', modifier => {
+      const onCellKeyDown = jest.fn();
+      const { cells, onNavigate } = renderPicker(picker, base, { onCellKeyDown });
+      act(() => cells[0].focus());
+
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight', [modifier]: true })).toBe(true);
+
+      expect(cells[0]).toHaveFocus();
+      expect(onNavigate).not.toHaveBeenCalled();
+      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+      expect(onCellKeyDown.mock.calls[0][0].defaultPrevented).toBe(false);
+    });
+
     it('blocks native fallback while requesting controlled navigation beyond the visible day grid', () => {
       const { cells, getByRole, onNavigate } = renderPicker(picker, base);
       const owner = getByRole('grid');

@@ -15,7 +15,7 @@ import { createDate } from '../../utils/dateMath';
 import {
   getCalendarGridKeyDownHandlers,
   isCalendarArrowKey,
-  isCalendarGridCellEvent,
+  isCalendarGridArrow,
   isCalendarKeyboardEditable,
   setCalendarNavigationDate,
 } from '../../utils/calendarKeyboard';
@@ -311,13 +311,13 @@ export const useCalendarDayGridCell_unstable = (
             !ev.isDefaultPrevented() &&
             !ariaHidden &&
             !isCalendarKeyboardEditable(ev.target) &&
-            (!isCalendarArrowKey(ev.key) || isCalendarGridCellEvent(ev))
+            (!isCalendarArrowKey(ev.key) || isCalendarGridArrow(ev))
           ) {
             onDayKeyDown(ev);
           }
         },
         cellProps.onKeyDownCapture,
-        ev => !ariaHidden && !!originalDate && isCalendarArrowKey(ev.key) && isCalendarGridCellEvent(ev),
+        ev => !ariaHidden && !!originalDate && isCalendarGridArrow(ev),
       ),
       onMouseDown: !ariaHidden ? mergeCallbacks(cellProps.onMouseDown, onMouseDownDay) : undefined,
       onMouseOut: !ariaHidden ? mergeCallbacks(cellProps.onMouseOut, onMouseOutDay) : undefined,
