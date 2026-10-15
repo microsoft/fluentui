@@ -42,19 +42,79 @@ const mount = (element: JSXElement) => {
 };
 
 describe('External editable trigger', () => {
+  let requests: { query: string; resolve: (commands: string[]) => void }[];
+  const loadCommands = (query: string) =>
+    new Promise<string[]>(resolve => {
+      requests.push({ query, resolve });
+    });
+  const completeQuery = (query: string) => {
+    cy.then(() => {
+      requests
+        .filter(request => request.query === query)
+        .forEach(request =>
+          request.resolve(
+            ['New document', 'Print document', 'More commands'].filter(command =>
+              command.toLowerCase().includes(query.toLowerCase()),
+            ),
+          ),
+        );
+    });
+  };
+
+  beforeEach(() => {
+    requests = [];
+  });
+
   const Example = ({
     disableAutoFocus = true,
     initialOpen = false,
+    asyncResults = false,
   }: {
     disableAutoFocus?: boolean;
     initialOpen?: boolean;
+    asyncResults?: boolean;
   }) => {
     const [element, setElement] = React.useState<HTMLInputElement | null>(null);
-    const [open, setOpen] = React.useState(initialOpen);
+    const [requestedOpen, setRequestedOpen] = React.useState(initialOpen);
     const [value, setValue] = React.useState('');
     const [suppressFocus, setSuppressFocus] = React.useState(disableAutoFocus);
+    const [results, setResults] = React.useState<{ query: string; commands: string[] }>();
+    const [resultSuffix, setResultSuffix] = React.useState('');
+    const [executedCommand, setExecutedCommand] = React.useState('');
     const listRef = React.useRef<HTMLDivElement>(null);
-    const { findFirstFocusable } = useFocusFinders();
+    const enterMenuRef = React.useRef<'ArrowDown' | 'ArrowUp' | null>(null);
+    const { findFirstFocusable, findLastFocusable } = useFocusFinders();
+    const loading = asyncResults && requestedOpen && results?.query !== value;
+    const open = requestedOpen && (!asyncResults || (!loading && !!results?.commands.length));
+
+    React.useEffect(() => {
+      if (!asyncResults || !requestedOpen || results?.query === value) {
+        return;
+      }
+      let active = true;
+      loadCommands(value).then(commands => {
+        if (active) {
+          setResults({ query: value, commands });
+        }
+      });
+      return () => {
+        active = false;
+      };
+    }, [asyncResults, requestedOpen, results?.query, value]);
+
+    React.useEffect(() => {
+      if (open && enterMenuRef.current) {
+        const findFocusable = enterMenuRef.current === 'ArrowDown' ? findFirstFocusable : findLastFocusable;
+        enterMenuRef.current = null;
+        findFocusable(listRef.current)?.focus();
+      }
+    }, [open, findFirstFocusable, findLastFocusable]);
+
+    const dismiss = () => {
+      enterMenuRef.current = null;
+      setRequestedOpen(false);
+    };
+
     return (
       <>
         <button>Before input</button>
@@ -62,45 +122,94 @@ describe('External editable trigger', () => {
           ref={setElement}
           aria-label="Find commands"
           aria-haspopup="menu"
-          aria-expanded={open}
           aria-controls={open ? 'external-commands' : undefined}
           value={value}
           onChange={event => {
             setValue(event.target.value);
-            setOpen(true);
+            setExecutedCommand('');
+            setRequestedOpen(true);
           }}
-          onClick={() => setOpen(true)}
+          onClick={() => setRequestedOpen(true)}
           onKeyDown={event => {
-            if (event.key === 'ArrowDown' && open) {
+            if (event.nativeEvent.isComposing) {
+              return;
+            }
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
               event.preventDefault();
-              findFirstFocusable(listRef.current)?.focus();
+              if (asyncResults && (results?.query !== value || !results.commands.length)) {
+                setRequestedOpen(true);
+              } else if (open) {
+                const findFocusable = event.key === 'ArrowDown' ? findFirstFocusable : findLastFocusable;
+                findFocusable(listRef.current)?.focus();
+              } else {
+                enterMenuRef.current = event.key;
+                setRequestedOpen(true);
+              }
             } else if (event.key === 'Escape' || event.key === 'Tab') {
-              setOpen(false);
+              dismiss();
             } else if (event.key === 'F2') {
               setSuppressFocus(false);
             }
           }}
+          onBlur={() => {
+            if (!open) {
+              dismiss();
+            }
+          }}
         />
         <button>After input</button>
+        <div role="status" aria-atomic="true">
+          {asyncResults && requestedOpen
+            ? loading
+              ? 'Loading commands...'
+              : results?.commands.length
+              ? `${results.commands.length} command${results.commands.length === 1 ? '' : 's'} found.`
+              : 'No commands found.'
+            : executedCommand
+            ? `Executed ${executedCommand}.`
+            : ''}
+        </div>
         <Menu
           open={open}
-          onOpenChange={(_, data) => setOpen(data.open)}
+          onOpenChange={(_, data) => {
+            if (!data.open) {
+              dismiss();
+            }
+          }}
           unstable_disableAutoFocus={suppressFocus}
           unstable_triggerElement={element}
         >
-          <MenuPopover>
+          <MenuPopover onKeyDown={event => event.key === 'F4' && setResultSuffix(' updated')}>
             <MenuList id="external-commands" ref={listRef} aria-label="Commands" aria-labelledby={undefined}>
-              <MenuItem>Command {value}</MenuItem>
-              <Menu>
-                <MenuTrigger disableButtonEnhancement>
-                  <MenuItem>More commands</MenuItem>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem>Nested command</MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
+              {asyncResults ? (
+                <MenuGroup>
+                  <MenuGroupHeader>Matching commands</MenuGroupHeader>
+                  {results?.commands
+                    .filter(command => command !== 'More commands')
+                    .map(command => (
+                      <MenuItem key={command} onClick={() => setExecutedCommand(command)}>
+                        {command}
+                      </MenuItem>
+                    ))}
+                </MenuGroup>
+              ) : (
+                <MenuItem>
+                  Command {value}
+                  {resultSuffix}
+                </MenuItem>
+              )}
+              {(!asyncResults || results?.commands.includes('More commands')) && (
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <MenuItem>More commands</MenuItem>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={() => setExecutedCommand('Nested command')}>Nested command</MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              )}
             </MenuList>
           </MenuPopover>
         </Menu>
@@ -128,7 +237,7 @@ describe('External editable trigger', () => {
     });
     cy.get('input').realPress('ArrowDown');
     cy.contains('[role="menuitem"]', 'Command axc').should('be.focused').realPress('Escape');
-    cy.get('input').should('be.focused').should('have.attr', 'aria-expanded', 'false');
+    cy.get('input').should('be.focused').should('not.have.attr', 'aria-controls');
     cy.get('input').type('d').should('be.focused');
     cy.contains('[role="menuitem"]', 'Command axdc').should('be.visible');
   });
@@ -140,7 +249,7 @@ describe('External editable trigger', () => {
     cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('ArrowRight');
     cy.contains('[role="menuitem"]', 'Nested command').should('be.focused').realPress('Escape');
     cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('Escape');
-    cy.get('input').should('be.focused').should('have.attr', 'aria-expanded', 'false');
+    cy.get('input').should('be.focused').should('not.have.attr', 'aria-controls');
     cy.get('[role="menu"]').should('not.exist');
   });
 
@@ -166,7 +275,7 @@ describe('External editable trigger', () => {
 
   it('treats the external trigger as inside and does not restore over another focused control', () => {
     mount(<Example />);
-    cy.get('input').type('a').click().should('have.attr', 'aria-expanded', 'true');
+    cy.get('input').type('a').click().should('have.attr', 'aria-controls', 'external-commands');
     cy.contains('button', 'After input').click().should('be.focused');
     cy.get('[role="menu"]').should('not.exist');
     cy.contains('button', 'After input').should('be.focused');
@@ -180,6 +289,151 @@ describe('External editable trigger', () => {
     cy.get('input').type('b').realPress('Tab');
     cy.contains('button', 'After input').should('be.focused');
     cy.get('[role="menu"]').should('not.exist');
+  });
+
+  it('filters asynchronous results without replaying entry keys or changing input selection', () => {
+    mount(
+      <React.StrictMode>
+        <Example asyncResults />
+      </React.StrictMode>,
+    );
+    cy.get('[role="status"]').should('be.empty');
+    cy.get('input').type('doc').should('not.have.attr', 'aria-expanded');
+    cy.get('[role="status"]').should('have.text', 'Loading commands...');
+    cy.get('[role="menu"]').should('not.exist');
+    cy.get('input').then(input => input[0].setSelectionRange(1, 2));
+    cy.get('input').realPress('ArrowDown');
+    completeQuery('doc');
+    cy.get('[role="status"]').should('have.text', '2 commands found.');
+    cy.get('[role="menu"]').should('have.attr', 'aria-label', 'Commands').should('not.have.attr', 'aria-labelledby');
+    cy.get('input').should('have.attr', 'aria-controls', 'external-commands').should('be.focused');
+    cy.get('input').should(input => {
+      expect(input[0].selectionStart).to.equal(1);
+      expect(input[0].selectionEnd).to.equal(2);
+    });
+    cy.get('[role="menuitem"]').should('have.length', 2);
+    cy.get('input').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'New document').should('be.focused');
+  });
+
+  it('removes old results while editing and exposes no empty menu for settled zero results', () => {
+    mount(<Example asyncResults />);
+    cy.get('input').type('doc');
+    completeQuery('doc');
+    cy.get('[role="menuitem"]').should('have.length', 2);
+    cy.get('input').clear().type('unmatched').should('be.focused');
+    cy.get('[role="status"]').should('have.text', 'Loading commands...');
+    completeQuery('unmatched');
+    cy.get('[role="status"]').should('have.text', 'No commands found.');
+    cy.get('[role="menu"]').should('not.exist');
+    cy.get('input').should('be.focused').should('not.have.attr', 'aria-controls').realPress('ArrowDown');
+    cy.get('[role="menu"]').should('not.exist');
+    cy.get('input').clear().type('print');
+    completeQuery('print');
+    cy.get('[role="menuitem"]').should('have.length', 1).should('have.text', 'Print document');
+    cy.get('input').should('be.focused');
+  });
+
+  it('cancels obsolete queries rather than displaying or announcing their results', () => {
+    mount(<Example asyncResults />);
+    cy.get('input').type('new');
+    cy.get('input').clear().type('print');
+    completeQuery('new');
+    cy.get('[role="status"]').should('have.text', 'Loading commands...');
+    cy.get('[role="menu"]').should('not.exist');
+    completeQuery('print');
+    cy.get('[role="status"]').should('have.text', '1 command found.');
+    cy.get('[role="menuitem"]').should('have.length', 1).should('have.text', 'Print document');
+    cy.get('input').should('be.focused');
+  });
+
+  (['Escape', 'Tab', 'Shift+Tab', 'outside click'] as const).forEach(dismissal => {
+    it(`does not reopen or steal focus after ${dismissal} during loading`, () => {
+      mount(<Example asyncResults />);
+      cy.get('input').type('doc');
+      if (dismissal === 'outside click') {
+        cy.contains('button', 'After input').click();
+      } else {
+        cy.get('input').realPress(dismissal === 'Shift+Tab' ? ['Shift', 'Tab'] : dismissal);
+      }
+      const target = dismissal === 'Escape' ? 'input' : dismissal === 'Shift+Tab' ? 'Before input' : 'After input';
+      if (target === 'input') {
+        cy.get('input').should('be.focused');
+      } else {
+        cy.contains('button', target).should('be.focused');
+      }
+      completeQuery('doc');
+      cy.get('[role="menu"]').should('not.exist');
+      cy.get('[role="status"]').should('be.empty');
+      if (target === 'input') {
+        cy.get('input').should('be.focused');
+      } else {
+        cy.contains('button', target).should('be.focused');
+      }
+    });
+  });
+
+  it('supports first and last entry after dismissal and executes a nested command with Enter', () => {
+    mount(<Example asyncResults />);
+    cy.get('input').click();
+    completeQuery('');
+    cy.get('input').realPress('Escape').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'New document').should('be.focused').realPress('Escape');
+    cy.get('input').should('be.focused').realPress('ArrowUp');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('ArrowRight');
+    cy.contains('[role="menuitem"]', 'Nested command').should('be.focused').realPress('Enter');
+    cy.get('[role="status"]').should('have.text', 'Executed Nested command.');
+    cy.get('[role="menu"]').should('not.exist');
+    cy.get('input').should('be.focused').should('not.have.attr', 'aria-controls');
+  });
+
+  it('does not execute a result on input Enter or intercept IME navigation', () => {
+    mount(<Example asyncResults />);
+    cy.get('input').type('print');
+    completeQuery('print');
+    cy.get('input').realPress('Enter');
+    cy.get('input').should('be.focused');
+    cy.get('[role="status"]').should('have.text', '1 command found.');
+    cy.get('input').trigger('compositionstart');
+    ['ArrowDown', 'ArrowUp', 'Escape', 'Enter'].forEach(key => {
+      cy.get('input')
+        .trigger('keydown', { eventConstructor: 'KeyboardEvent', key, isComposing: true })
+        .should('be.focused');
+      cy.contains('[role="menuitem"]', 'Print document').should('be.visible').should('not.be.focused');
+    });
+    cy.get('input').trigger('compositionend').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Print document').should('be.focused').realPress('Enter');
+    cy.get('[role="status"]').should('have.text', 'Executed Print document.');
+    cy.get('input').should('be.focused');
+  });
+
+  (['Tab', ['Shift', 'Tab']] as const).forEach(key => {
+    ([false, true] as const).forEach(nested => {
+      it(`preserves native ${typeof key === 'string' ? key : key.join('+')} exit from ${
+        nested ? 'nested' : 'root'
+      } asynchronous results`, () => {
+        mount(<Example asyncResults />);
+        cy.get('input').click();
+        completeQuery('');
+        cy.get('input').realPress(nested ? 'ArrowUp' : 'ArrowDown');
+        if (nested) {
+          cy.contains('[role="menuitem"]', 'More commands').realPress('ArrowRight');
+          cy.contains('[role="menuitem"]', 'Nested command').should('be.focused');
+        } else {
+          cy.contains('[role="menuitem"]', 'New document').should('be.focused');
+        }
+        cy.realPress(typeof key === 'string' ? key : [...key]);
+        cy.contains('button', typeof key === 'string' ? 'After input' : 'Before input').should('be.focused');
+        cy.get('[role="menu"]').should('not.exist');
+      });
+    });
+  });
+
+  it('preserves a focused item when its rendered result content changes', () => {
+    mount(<Example />);
+    cy.get('input').type('a').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Command a').should('be.focused').realPress('F4');
+    cy.contains('[role="menuitem"]', 'Command a updated').should('be.focused');
   });
 
   it('focuses the first item when suppression is turned off while open', () => {
