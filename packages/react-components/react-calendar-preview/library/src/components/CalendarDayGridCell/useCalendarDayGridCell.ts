@@ -38,24 +38,37 @@ const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: fa
  */
 const RANGE_HOVERED_ATTRIBUTE = 'data-range-hovered';
 const RANGE_PRESSED_ATTRIBUTE = 'data-range-pressed';
-const dispatchedSlotEvents = new WeakSet<Event>();
+const dispatchedSlotElements = new WeakMap<Event, WeakSet<EventTarget>>();
+
+const wasSlotHandlerDispatched = (event: Event, element: EventTarget): boolean =>
+  dispatchedSlotElements.get(event)?.has(element) ?? false;
+
+const markSlotHandlerDispatched = (event: Event, element: EventTarget): void => {
+  let dispatchedElements = dispatchedSlotElements.get(event);
+  if (!dispatchedElements) {
+    dispatchedElements = new WeakSet<EventTarget>();
+    dispatchedSlotElements.set(event, dispatchedElements);
+  }
+  dispatchedElements.add(element);
+};
 
 const forwardSlotKeyboardHandlers = <T extends HTMLElement>(
   slotProps: Pick<React.DOMAttributes<T>, 'onKeyDown' | 'onKeyDownCapture'>,
 ) => {
   const { onKeyDown, onKeyDownCapture } = slotProps;
   slotProps.onKeyDownCapture = event => {
-    if (!dispatchedSlotEvents.has(event.nativeEvent)) {
+    if (!wasSlotHandlerDispatched(event.nativeEvent, event.currentTarget)) {
       onKeyDownCapture?.(event);
     }
   };
   slotProps.onKeyDown = event => {
-    if (!dispatchedSlotEvents.has(event.nativeEvent)) {
+    if (!wasSlotHandlerDispatched(event.nativeEvent, event.currentTarget)) {
       onKeyDown?.(event);
     }
   };
   return (event: React.KeyboardEvent<HTMLTableCellElement>, capture: boolean, element: T | null) => {
     if (element && isHTMLElement(event.target) && element.contains(event.target)) {
+      markSlotHandlerDispatched(event.nativeEvent, element);
       invokeCalendarKeyboardHandler(event, element, capture ? onKeyDownCapture : onKeyDown);
     }
   };
@@ -354,7 +367,6 @@ export const useCalendarDayGridCell_unstable = (
       const isSlotRootTarget =
         ev.target === buttonRef.current || ev.target === dayLabelRef.current || ev.target === markerRef.current;
       if (isSlotRootTarget) {
-        dispatchedSlotEvents.add(ev.nativeEvent);
         const slotHandlers = [
           (capture: boolean) => forwardButton(ev, capture, buttonRef.current),
           (capture: boolean) => forwardDayLabel(ev, capture, dayLabelRef.current),

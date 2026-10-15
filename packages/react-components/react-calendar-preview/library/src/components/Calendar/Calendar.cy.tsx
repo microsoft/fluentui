@@ -37,6 +37,34 @@ const goToToday = `.${calendarClassNames.goToTodayButton}`;
 
 describe('Calendar', () => {
   describe('day grid keyboard navigation', () => {
+    it('keeps enclosing day-label callbacks when a nested Calendar handles an arrow', () => {
+      const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          dayPicker={{
+            getDayCellProps: date =>
+              date.getTime() === today.getTime()
+                ? {
+                    dayLabel: {
+                      onKeyDown: onOuterKeyDown,
+                      children: <Calendar today={today} defaultValue={today} />,
+                    },
+                  }
+                : {},
+          }}
+        />,
+      );
+
+      cy.get(day('September 18, 2020'))
+        .find('[role="grid"] button[aria-label="September 18, 2020"]')
+        .last()
+        .focus()
+        .realPress('ArrowRight');
+      cy.get('@onOuterKeyDown').should('have.been.calledOnce');
+    });
+
     it('does not forward cell-targeted arrows to the child button', () => {
       const cancel = cy.stub().callsFake((event: React.KeyboardEvent) => event.preventDefault());
       mountFluent(
