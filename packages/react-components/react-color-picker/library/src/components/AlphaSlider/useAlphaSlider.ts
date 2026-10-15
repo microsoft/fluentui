@@ -68,6 +68,7 @@ export const useAlphaSliderBase_unstable = (
       defaultProps: {
         id: useId('slider-', props.id),
         ref,
+        'aria-orientation': vertical ? 'vertical' : 'horizontal',
         ...nativeProps.primary,
         type: 'range',
       },

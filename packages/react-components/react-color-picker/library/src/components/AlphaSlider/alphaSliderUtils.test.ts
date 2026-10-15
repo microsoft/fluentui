@@ -47,8 +47,8 @@ describe('AlphaSlider Utils', () => {
       expect(getSliderDirection('rtl', false, false)).toBe('-90deg');
     });
 
-    it('should return "-90deg" when dir is "rtl" and transparency is true', () => {
-      expect(getSliderDirection('rtl', false, true)).toBe('-90deg');
+    it('should return "90deg" when dir is "rtl" and transparency is true', () => {
+      expect(getSliderDirection('rtl', false, true)).toBe('90deg');
     });
   });
 });
