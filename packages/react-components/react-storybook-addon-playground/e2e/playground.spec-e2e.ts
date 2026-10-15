@@ -244,7 +244,7 @@ test.describe('authenticated deployment', () => {
       const response = await route.fetch();
       const manifest: PlaygroundRuntimeManifest = await response.json();
       manifest.scripts[0] = '/private/secret.js';
-      manifest.scriptFiles!.push('/private/secret.js');
+      manifest.allowedScriptFiles!.push('/private/secret.js');
       await route.fulfill({ response, json: manifest });
     });
     await page.goto(PRIVATE_PLAYGROUND_URL);
@@ -259,13 +259,13 @@ test.describe('playground', () => {
     page,
   }) => {
     const { pageErrors, previewButton, replaceActiveFile } = setupPage(page);
-    const manifest: { scripts: string[]; scriptFiles: string[] } = await (
+    const manifest: { scripts: string[]; allowedScriptFiles: string[] } = await (
       await page.request.get('/playground/runtime/manifest.json')
     ).json();
-    const scriptPaths = new Set(manifest.scriptFiles.map(file => `/${file}`));
+    const scriptPaths = new Set(manifest.allowedScriptFiles.map(file => `/${file}`));
     expect(manifest.scripts.some(file => file.startsWith('runtime~playground-runtime.'))).toBe(true);
     expect(manifest.scripts.length).toBeGreaterThan(1);
-    expect(manifest.scriptFiles.some(file => file.startsWith('storybook.'))).toBe(false);
+    expect(manifest.allowedScriptFiles.some(file => file.startsWith('storybook.'))).toBe(false);
     const requests: Array<{ path: string; fromShell: boolean; type: string }> = [];
     page.on('request', request => {
       const { pathname } = new URL(request.url());

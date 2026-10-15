@@ -136,7 +136,8 @@ Both the runtime and editor declarations resolve from that workspace package. Ex
 even when Webpack resolves a package with a different physical name. Import maps likewise retain their public keys,
 including maps to absolute runtime entry files.
 
-When several exports share one JavaScript target, the requested export's declarations take precedence. Remapped
+When several exports share one JavaScript target, the requested export's declarations take precedence: exact keys
+win over wildcard keys, and more specific wildcard prefixes/suffixes win regardless of key order. Remapped
 aliases still follow the resolved target. Conditional exports honor Webpack's effective dependency-specific conditions
 and export-map order. When a matched export has no `types` target, declarations beside its resolved JavaScript file
 (including `typesVersions`) take precedence over generic package metadata. Packages using `main`/`module` without an
@@ -164,12 +165,14 @@ options: {
 `typingsRoots` changes only declaration collection, not Webpack's runtime imports. The selected declarations must
 describe the corresponding configured runtime module. Invalid roots fail the build; missing declarations produce a
 Webpack warning with this option as a recovery path. Ordinary `node_modules` packages and `@types` fallbacks continue
-to work, and declaration-only entries remain non-importable at runtime. Collected declarations and package metadata
-are watched and recollected when they change.
+to work. Yarn Plug'n'Play uses Webpack's resolver for workspace packages and archived transitive declarations without
+a `node_modules` tree. Declaration-only entries remain non-importable at runtime. Collected declarations and package
+metadata are watched and recollected when they change.
 
 The addon reads its options from Storybook's preset options, generates its runtime entry in
-`node_modules/.cache/fluentui-playground-runtime/` (next to the Storybook config), and keeps the runtime out of Storybook
-pages through `html-webpack-plugin` hooks. Monaco 0.52 with TypeScript 5.4 and Prettier are root build-time dependencies,
+`node_modules/.cache/fluentui-playground-runtime/` (next to the Storybook config), or the config directory's `.cache`
+when there is no `node_modules`, and keeps the runtime out of Storybook pages through `html-webpack-plugin` hooks.
+Monaco 0.52 with TypeScript 5.4 and Prettier are root build-time dependencies,
 bundled into the prebuilt shell and not installed with the addon. PostCSS supports both the shell's CSS parsing and the
 addon's build-time extracted CSS inlining. Declarations are collected for the TypeScript version bundled with Monaco,
 so packages with `typesVersions` resolve the matching declaration tree.
@@ -206,9 +209,10 @@ The preview's `about:srcdoc` document has an opaque origin. Direct script reques
 The opaque iframe also cannot use the shell's HttpOnly `SameSite=Lax` authentication cookies for those requests.
 This can affect both initial files such as `runtime~playground-runtime.*.js` and lazily loaded module chunks.
 
-For same-origin runtime JavaScript, the addon avoids those requests: the build manifest lists all eager and lazy
-runtime script files, the shell fetches their text from its own origin, and execution remains entirely inside the
-sandbox. Lazy chunks still load only when imported. Shared Webpack chunks retain their normal loader on Storybook pages.
+For same-origin runtime JavaScript, the addon avoids those requests: the build manifest's `allowedScriptFiles`
+authorizes shell fetches for all eager and lazy runtime JavaScript files, while `scripts` lists startup files in order.
+The shell fetches their text from its own origin, and execution remains entirely inside the sandbox.
+Lazy chunks still load only when imported. Shared Webpack chunks retain their normal loader on Storybook pages.
 No `allow-same-origin`, global `Cross-Origin-Resource-Policy: cross-origin` header, or consumer script loader is needed.
 
 Only exact, canonical JavaScript URLs listed in the manifest **within the selected Storybook build root** can be
@@ -256,7 +260,8 @@ const cssBuildSettings = {
 Keep the CSS rule's `sideEffects: true` so stylesheet imports survive production tree-shaking even when their owning
 package marks JavaScript as side-effect-free.
 
-With `inlineStyles`, the manifest contains all extracted runtime CSS, including lazy CSS. Build-owned font/image
+The inlining helper and its CSS parsers load only when `inlineStyles` is enabled; the parsers remain addon dependencies.
+With this option, the manifest contains all extracted runtime CSS, including lazy CSS. Build-owned font/image
 `url(...)` references are resolved relative to each emitted stylesheet and replaced with data URLs. `image-set()`
 string URLs are handled too. Only this compilation's emitted assets are read: the build never fetches remote URLs
 or arbitrary files. Missing assets, unsupported asset types and unresolved `@import` rules fail the build rather than
@@ -265,13 +270,15 @@ build's CSS pipeline instead; already-inline data URLs and local fragments remai
 
 The opaque preview installs those styles before executing the runtime, preserving Webpack's eager stylesheet order
 and appending referenced lazy styles. Build-relative `data-href` attributes let the lazy CSS loader reuse them with
-automatic, empty or explicit public paths. **Lazy extracted CSS is installed up front**, so opt in only when that global
-style ordering is appropriate for your modules. Fonts load from data URLs without CORS or authentication requests from the iframe.
+automatic, empty or explicit public paths. **This is an opt-in compatibility tradeoff, not transparent lazy CSS loading:**
+lazy styles can change the cascade before their modules are imported, and all referenced CSS and embedded font/image
+bytes transfer up front, including assets for unused modules. Opt in only when this ordering and initial transfer cost
+are appropriate. Fonts load from data URLs without CORS or authentication requests from the iframe.
 Storybook's original emitted CSS/font assets and native loaders remain unchanged. No general-purpose authenticated
 fetch API, `allow-same-origin`, or permissive shared-server headers are added.
 
 Rebuild and deploy **both the addon shell and the consuming Storybook runtime** together. Older manifests without
-`scriptFiles` retain direct script loading and therefore still need appropriate hosting permissions. Without
+`allowedScriptFiles` retain direct script loading and therefore still need appropriate hosting permissions. Without
 `inlineStyles`, extracted stylesheets/fonts still make native requests. Runtime-injected CSS (including `style-loader`
 and CSS-in-JS font URLs), images and media not emitted through extracted CSS remain subject to their own resource
 policies; use the supported extraction configuration for protected fonts. When using COEP, serve Monaco's worker

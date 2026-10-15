@@ -64,6 +64,7 @@ export interface PlaygroundParameters {
 export interface PlaygroundRuntimeManifest {
     // (undocumented)
     allowedModules: string[];
+    allowedScriptFiles?: string[];
     // (undocumented)
     buildId: string;
     inlineStyles?: Array<{
@@ -71,7 +72,6 @@ export interface PlaygroundRuntimeManifest {
         cssText: string;
     }>;
     moduleTypings?: Record<string, string[]>;
-    scriptFiles?: string[];
     // (undocumented)
     scripts: string[];
     // (undocumented)

@@ -69,7 +69,7 @@ async function main() {
   const privateManifest = JSON.parse(
     fs.readFileSync(path.join(privateSiteDir, 'playground/runtime/manifest.json'), 'utf8'),
   );
-  const privateScripts = new Set(privateManifest.scriptFiles.map(file => `/${file}`));
+  const privateScripts = new Set(privateManifest.allowedScriptFiles.map(file => `/${file}`));
 
   http
     .createServer((request, response) => {

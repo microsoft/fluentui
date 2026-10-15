@@ -134,12 +134,12 @@ function isRuntimeManifest(value: unknown): value is PlaygroundRuntimeManifest {
   if (!isRecord(value)) {
     return false;
   }
-  const { scripts, scriptFiles, styles, typings, moduleTypings, inlineStyles, allowedModules, buildId } = value;
+  const { scripts, allowedScriptFiles, styles, typings, moduleTypings, inlineStyles, allowedModules, buildId } = value;
   return (
     isStringArray(scripts) &&
     scripts.length > 0 &&
-    (scriptFiles === undefined ||
-      (isStringArray(scriptFiles) && scripts.every(script => scriptFiles.includes(script)))) &&
+    (allowedScriptFiles === undefined ||
+      (isStringArray(allowedScriptFiles) && scripts.every(script => allowedScriptFiles.includes(script)))) &&
     isStringArray(styles) &&
     typeof typings === 'string' &&
     typings.length > 0 &&
@@ -197,7 +197,7 @@ export async function loadRuntimeManifest(
     buildId: manifest.buildId,
     baseUrl: storybookRoot.href,
     scripts: manifest.scripts.map(scriptUrl),
-    scriptFiles: manifest.scriptFiles?.map(scriptUrl),
+    allowedScriptFiles: manifest.allowedScriptFiles?.map(scriptUrl),
     styles: manifest.styles.map(styleUrl),
     inlineStyles: manifest.inlineStyles?.map(style => ({ href: styleUrl(style.href), cssText: style.cssText })),
     typings: typingsUrl(manifest.typings),
@@ -215,7 +215,7 @@ export function createRuntimeScriptLoader(
   manifest: ResolvedPlaygroundRuntimeManifest,
   signal?: AbortSignal,
 ): (url: string) => Promise<string> {
-  const allowed = new Set([...(manifest.scriptFiles ?? []), ...manifest.scripts]);
+  const allowed = new Set([...(manifest.allowedScriptFiles ?? []), ...manifest.scripts]);
   const requests = new Map<string, Promise<string>>();
 
   return async url => {

@@ -780,6 +780,113 @@ describe('collectConfiguredTypings', () => {
       );
     });
 
+    it.each([false, true])(
+      'prefers exact exports over overlapping wildcards regardless of key order (reversed=%s)',
+      async reversed => {
+        const entries = [
+          ['./*', { types: './dist/wildcard.d.ts', default: './lib/*.js' }],
+          ['./button', { types: './dist/exact.d.ts', default: './lib/button.js' }],
+        ];
+        const result = await buildFixture(
+          {
+            'node_modules/overlap/package.json': JSON.stringify({
+              name: 'overlap',
+              exports: Object.fromEntries(reversed ? entries.reverse() : entries),
+            }),
+            'node_modules/overlap/lib/button.js': 'exports.value = "runtime";',
+            'node_modules/overlap/dist/wildcard.d.ts':
+              'export declare const value: "runtime"; export type Selection = "wildcard";',
+            'node_modules/overlap/dist/exact.d.ts':
+              'export declare const value: "runtime"; export type Selection = "exact";',
+          },
+          () => ({ options: { modules: ['overlap/button'] } }),
+        );
+
+        expect((await result.runtime.moduleLoaders['overlap/button']()).value).toBe('runtime');
+        expectEditorImports(
+          result.moduleFiles('overlap/button'),
+          'import { value, type Selection } from "overlap/button"; ' +
+            'const v: "runtime" = value; const selection: Selection = "exact";',
+        );
+      },
+    );
+
+    it.each(
+      [
+        {
+          name: 'longer prefix',
+          subpath: 'controls/button',
+          broad: ['./*', './lib/*.js'],
+          specific: ['./controls/*', './lib/controls/*.js'],
+        },
+        {
+          name: 'longer suffix',
+          subpath: 'controls/button.js',
+          broad: ['./controls/*', './lib/controls/*'],
+          specific: ['./controls/*.js', './lib/controls/*.js'],
+        },
+        {
+          name: 'prefix before suffix',
+          subpath: 'controls/button.js',
+          broad: ['./*.js', './lib/*.js'],
+          specific: ['./controls/*', './lib/controls/*'],
+        },
+      ].flatMap(fixture => [false, true].map(reversed => ({ ...fixture, reversed }))),
+    )('honors wildcard specificity: $name (reversed=$reversed)', async ({ subpath, broad, specific, reversed }) => {
+      const entries = [
+        [broad[0], { types: './dist/broad.d.ts', default: broad[1] }],
+        [specific[0], { types: './dist/specific.d.ts', default: specific[1] }],
+      ];
+      const specifier = `overlap/${subpath}`;
+      const result = await buildFixture(
+        {
+          'node_modules/overlap/package.json': JSON.stringify({
+            name: 'overlap',
+            exports: Object.fromEntries(reversed ? entries.reverse() : entries),
+          }),
+          'node_modules/overlap/lib/controls/button.js': 'exports.value = "runtime";',
+          'node_modules/overlap/dist/broad.d.ts':
+            'export declare const value: "runtime"; export type Selection = "broad";',
+          'node_modules/overlap/dist/specific.d.ts':
+            'export declare const value: "runtime"; export type Selection = "specific";',
+        },
+        () => ({ options: { modules: [specifier] } }),
+      );
+
+      expect((await result.runtime.moduleLoaders[specifier]()).value).toBe('runtime');
+      expectEditorImports(
+        result.moduleFiles(specifier),
+        `import { value, type Selection } from "${specifier}"; ` +
+          'const v: "runtime" = value; const selection: Selection = "specific";',
+      );
+    });
+
+    it('substitutes requested wildcard captures when exports share a static runtime target', async () => {
+      const result = await buildFixture(
+        {
+          'node_modules/overlap/package.json': JSON.stringify({
+            name: 'overlap',
+            exports: {
+              './*': { types: './dist/broad.d.ts', default: './shared.js' },
+              './controls/*': { types: './dist/*.d.ts', default: './shared.js' },
+            },
+          }),
+          'node_modules/overlap/shared.js': 'exports.value = "runtime";',
+          'node_modules/overlap/dist/broad.d.ts':
+            'export declare const value: "runtime"; export type Selection = "broad";',
+          'node_modules/overlap/dist/button.d.ts':
+            'export declare const value: "runtime"; export type Selection = "button";',
+        },
+        () => ({ options: { modules: ['overlap/controls/button'] } }),
+      );
+
+      expectEditorImports(
+        result.moduleFiles('overlap/controls/button'),
+        'import { value, type Selection } from "overlap/controls/button"; ' +
+          'const v: "runtime" = value; const selection: Selection = "button";',
+      );
+    });
+
     it.each([
       ['mts', 'export declare const value: "actual";', 'import { value } from "public-ui"; const v: "actual" = value;'],
       ['cts', 'export declare const value: "actual";', 'import { value } from "public-ui"; const v: "actual" = value;'],

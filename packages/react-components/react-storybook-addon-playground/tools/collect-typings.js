@@ -353,9 +353,10 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
   const activeConditions = new Set(conditionNames);
   /**
    * @param {unknown} entry
+   * @param {string} [requestedCapture]
    * @returns {{ typesPath: string | null, capture?: string } | null | undefined}
    */
-  const matchExport = entry => {
+  const matchExport = (entry, requestedCapture) => {
     if (entry === null) {
       return null;
     }
@@ -364,6 +365,11 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
         return null;
       }
       const target = path.posix.normalize(entry.replace(/^\.\//, ''));
+      if (requestedCapture !== undefined) {
+        return target.replaceAll('*', requestedCapture) === relativePath
+          ? { typesPath: null, capture: requestedCapture }
+          : null;
+      }
       const star = target.indexOf('*');
       if (star === -1) {
         return target === relativePath ? { typesPath: null } : null;
@@ -376,7 +382,7 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
     }
     if (Array.isArray(entry)) {
       for (const candidate of entry) {
-        const match = matchExport(candidate);
+        const match = matchExport(candidate, requestedCapture);
         if (match) {
           return match;
         }
@@ -389,7 +395,7 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
         if (key === 'types' || key.startsWith('types@') || (key !== 'default' && !activeConditions.has(key))) {
           continue;
         }
-        const match = matchExport(value);
+        const match = matchExport(value, requestedCapture);
         // Only a nested object with no enabled condition can fall through to the next condition.
         if (match === undefined) {
           continue;
@@ -408,10 +414,35 @@ function getRuntimeExport(pkg, entryPath, requestedSubpath, conditionNames) {
   };
   const exportsField = pkg.packageJson.exports;
   if (exportsField && typeof exportsField === 'object' && !Array.isArray(exportsField)) {
+    const entries = Object.entries(exportsField).filter(([key]) => key.startsWith('.'));
+    const requestedKey = requestedSubpath ? `./${requestedSubpath}` : '.';
+    const requestedEntry =
+      entries.find(([key]) => key === requestedKey) ??
+      entries
+        .filter(([key]) => {
+          const star = key.indexOf('*');
+          return (
+            star !== -1 &&
+            star === key.lastIndexOf('*') &&
+            requestedKey.length >= key.length &&
+            requestedKey.startsWith(key.slice(0, star)) &&
+            requestedKey.endsWith(key.slice(star + 1))
+          );
+        })
+        .sort(([left], [right]) => right.indexOf('*') - left.indexOf('*') || right.length - left.length)[0];
+    if (requestedEntry) {
+      const [key, entry] = requestedEntry;
+      const star = key.indexOf('*');
+      const capture = star === -1 ? undefined : requestedKey.slice(star, requestedKey.length - key.length + star + 1);
+      const match = matchExport(entry, capture);
+      if (match) {
+        return { subpath: requestedSubpath, typesPath: match.typesPath, runtimePath: relativePath };
+      }
+    }
     /** @type {{ subpath: string, typesPath: string | null, runtimePath?: string } | null} */
     let firstMatch = null;
-    for (const [key, entry] of Object.entries(exportsField)) {
-      const match = key.startsWith('.') && matchExport(entry);
+    for (const [key, entry] of entries) {
+      const match = matchExport(entry);
       if (match) {
         const resolved = {
           subpath: key === '.' ? '' : key.slice(2).replaceAll('*', match.capture ?? ''),

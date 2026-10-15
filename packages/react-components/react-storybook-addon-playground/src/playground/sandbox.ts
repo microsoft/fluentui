@@ -75,7 +75,7 @@ export function createSandboxDocument(
   const scriptLoaderName = ${escapeInlineJson(PLAYGROUND_SCRIPT_LOADER_CALLBACK)};
   const baseUrl = ${escapeInlineJson(manifest.baseUrl)};
   const initialScripts = ${escapeInlineJson(manifest.scripts)};
-  const scriptFiles = new Set(${escapeInlineJson(manifest.scriptFiles ?? [])});
+  const allowedScriptFiles = new Set(${escapeInlineJson(manifest.allowedScriptFiles ?? [])});
   const inlineStyles = ${escapeInlineJson(manifest.inlineStyles ?? [])};
   const parentOrigin = ${escapeInlineJson(parentOrigin)};
   let runtime;
@@ -97,7 +97,7 @@ export function createSandboxDocument(
   let nextScriptRequestId = 0;
   const scriptRequests = new Map();
   const loadedScripts = new Map();
-  const canBridgeScript = url => scriptFiles.has(url) && new URL(url).origin === parentOrigin;
+  const canBridgeScript = url => allowedScriptFiles.has(url) && new URL(url).origin === parentOrigin;
   window.addEventListener('message', event => {
     const message = event.data;
     if (
@@ -173,7 +173,7 @@ export function createSandboxDocument(
     );
     return true;
   };
-  if (scriptFiles.size > 0) {
+  if (allowedScriptFiles.size > 0) {
     window[scriptLoaderName] = bridgeScript;
   }
 

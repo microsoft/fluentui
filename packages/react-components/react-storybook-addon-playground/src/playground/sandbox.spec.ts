@@ -183,7 +183,7 @@ describe('sandbox bootstrap', () => {
       return node;
     });
     try {
-      loadBootstrap('script-token', 'https://example.com', { ...manifest, scriptFiles: [url] });
+      loadBootstrap('script-token', 'https://example.com', { ...manifest, allowedScriptFiles: [url] });
       const load = Reflect.get(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
       expect(load('/lazy.js', done)).toBe(true);
       expect(postMessage).toHaveBeenCalledWith(
@@ -233,7 +233,7 @@ describe('sandbox bootstrap', () => {
       runtimeManifest: {
         ...manifest,
         scripts: ['https://cdn.example.net/entry.js'],
-        scriptFiles: ['https://cdn.example.net/entry.js'],
+        allowedScriptFiles: ['https://cdn.example.net/entry.js'],
       },
     },
   ])('retains ordered native script loading for $name', async ({ runtimeManifest }) => {
@@ -264,7 +264,7 @@ describe('sandbox bootstrap', () => {
   it('propagates a bridged script failure instead of reporting a successful load', async () => {
     const url = 'https://example.com/lazy.js';
     const done = jest.fn();
-    loadBootstrap('script-error-token', 'https://example.com', { ...manifest, scriptFiles: [url] });
+    loadBootstrap('script-error-token', 'https://example.com', { ...manifest, allowedScriptFiles: [url] });
     const load = Reflect.get(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
     load(url, done);
 

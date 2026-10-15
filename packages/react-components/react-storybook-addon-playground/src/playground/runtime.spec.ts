@@ -8,7 +8,7 @@ const rawManifest: PlaygroundRuntimeManifest = {
   allowedModules: ['react'],
   buildId: 'test',
   scripts: ['runtime.js'],
-  scriptFiles: ['runtime.js', 'chunks/lazy.mjs'],
+  allowedScriptFiles: ['runtime.js', 'chunks/lazy.mjs'],
   styles: ['runtime.css'],
   typings: 'playground/runtime/typings.json',
   moduleTypings: { react: ['playground/runtime/typings.react.json'] },
@@ -80,7 +80,7 @@ describe('loadRuntimeManifest', () => {
 
     expect(result.baseUrl).toBe('https://example.com/deployments/nested/storybook/');
     expect(result.scripts).toEqual([`${result.baseUrl}runtime.js`]);
-    expect(result.scriptFiles).toEqual([`${result.baseUrl}runtime.js`, `${result.baseUrl}chunks/lazy.mjs`]);
+    expect(result.allowedScriptFiles).toEqual([`${result.baseUrl}runtime.js`, `${result.baseUrl}chunks/lazy.mjs`]);
     expect(result.styles).toEqual([`${result.baseUrl}runtime.css`]);
     expect(result.inlineStyles?.[0].href).toBe(`${result.baseUrl}chunks/private.css`);
     expect(result.typings).toBe(`${result.baseUrl}playground/runtime/typings.json`);
@@ -92,18 +92,18 @@ describe('loadRuntimeManifest', () => {
     });
   });
 
-  it('keeps legacy manifests without scriptFiles, moduleTypings or inlineStyles valid', async () => {
+  it('keeps legacy manifests without allowedScriptFiles, moduleTypings or inlineStyles valid', async () => {
     const fetch = jest.fn().mockResolvedValue({
       ...manifestResponse,
       json: async () => ({
         ...rawManifest,
-        scriptFiles: undefined,
+        allowedScriptFiles: undefined,
         moduleTypings: undefined,
       }),
     });
     const result = await loadRuntimeManifest({ fetch, location: { href: PAGE } }, FALLBACK);
 
-    expect(result.scriptFiles).toBeUndefined();
+    expect(result.allowedScriptFiles).toBeUndefined();
     expect(result.moduleTypings).toBeUndefined();
     expect(result.inlineStyles).toBeUndefined();
     expect(result.scripts).toEqual(['https://example.com/storybook/runtime.js']);
@@ -125,8 +125,8 @@ describe('loadRuntimeManifest', () => {
     { ...rawManifest, scripts: [] },
     { ...rawManifest, scripts: 'runtime.js' },
     { ...rawManifest, scripts: [123] },
-    { ...rawManifest, scriptFiles: [] },
-    { ...rawManifest, scriptFiles: {} },
+    { ...rawManifest, allowedScriptFiles: [] },
+    { ...rawManifest, allowedScriptFiles: {} },
     { ...rawManifest, styles: null },
     { ...rawManifest, typings: null },
     { ...rawManifest, buildId: '' },
@@ -162,14 +162,14 @@ describe('loadRuntimeManifest', () => {
   ])('rejects out-of-build or noncanonical script paths even when manifest-listed: %s', script => {
     const fetch = jest.fn().mockResolvedValue({
       ...manifestResponse,
-      json: async () => ({ ...rawManifest, scripts: [script], scriptFiles: [script] }),
+      json: async () => ({ ...rawManifest, scripts: [script], allowedScriptFiles: [script] }),
     });
     return expect(loadRuntimeManifest({ fetch, location: { href: PAGE } }, FALLBACK)).rejects.toThrow();
   });
 
   it.each([
     { ...rawManifest, styles: ['/private.css'] },
-    { ...rawManifest, scriptFiles: [...rawManifest.scripts, '../lazy.js'] },
+    { ...rawManifest, allowedScriptFiles: [...rawManifest.scripts, '../lazy.js'] },
     { ...rawManifest, typings: '../private.json' },
     { ...rawManifest, typings: 'private.json' },
     { ...rawManifest, moduleTypings: { react: ['/other/typings.json'] } },
@@ -205,7 +205,7 @@ describe('runtime script loading', () => {
     baseUrl: 'https://example.com/storybook/',
     buildId: 'test',
     scripts: [runtimeUrl],
-    scriptFiles: [runtimeUrl, lazyUrl],
+    allowedScriptFiles: [runtimeUrl, lazyUrl],
     styles: [],
     typings: 'https://example.com/storybook/playground/runtime/typings.json',
   };
@@ -270,7 +270,7 @@ describe('runtime script loading', () => {
     const fetch = jest.fn();
     const loadScript = createRuntimeScriptLoader(
       { fetch, location: { origin: 'https://example.com' } },
-      { ...manifest, scriptFiles: [...manifest.scriptFiles!, url] },
+      { ...manifest, allowedScriptFiles: [...manifest.allowedScriptFiles!, url] },
     );
     return expect(loadScript(url))
       .rejects.toThrow()

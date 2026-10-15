@@ -2,7 +2,6 @@ import * as crypto from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
-import { inlineRuntimeStyles } from './inlineStyles';
 import type { PresetConfig } from './public-types';
 
 type WebpackFinalFn = NonNullable<import('@storybook/react-webpack5').StorybookConfig['webpackFinal']>;
@@ -590,9 +589,9 @@ export class PlaygroundRuntimeManifestPlugin {
               ),
             ]),
           ).filter(file => !file.includes('.hot-update.'));
-          const scriptFiles = referencedFiles.filter(file => /\.m?js($|\?)/.test(file)).sort();
+          const allowedScriptFiles = referencedFiles.filter(file => /\.m?js($|\?)/.test(file)).sort();
           const inlineStyles = this.options.inlineStyles
-            ? inlineRuntimeStyles(
+            ? (await import('./inlineStyles')).inlineRuntimeStyles(
                 compilation,
                 referencedFiles.filter(file => /\.css$/.test(file)),
               )
@@ -622,7 +621,7 @@ export class PlaygroundRuntimeManifestPlugin {
             .update(
               JSON.stringify({
                 scripts,
-                scriptFiles,
+                allowedScriptFiles,
                 styles,
                 inlineStyles,
                 modules: getModuleRequests(this.options.modules),
@@ -639,7 +638,7 @@ export class PlaygroundRuntimeManifestPlugin {
               JSON.stringify(
                 {
                   scripts,
-                  scriptFiles,
+                  allowedScriptFiles,
                   styles,
                   inlineStyles,
                   typings: typingsFile,

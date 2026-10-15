@@ -51,6 +51,8 @@ export interface PresetConfig {
    * Inline the runtime's extracted CSS and its emitted font/image assets into the manifest, including lazy styles.
    * Use for private hosts with same-origin CORP or authenticated assets. Only assets emitted by this build are read;
    * unresolved CSS imports or resource URLs fail the build. Storybook's own CSS loading is unchanged.
+   * All referenced styles and embedded assets transfer up front, and lazy styles affect the cascade before import.
+   * Opt in only when this ordering and transfer cost are appropriate; this does not preserve lazy CSS loading.
    *
    * @default false
    */
