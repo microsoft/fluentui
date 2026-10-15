@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useMenuContext } from '../menuContext';
 import type { MenuPopoverProps, MenuPopoverState } from '@fluentui/react-menu';
 
@@ -24,6 +25,19 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
   const menuPopoverRef = useMenuContext(ctx => ctx.menuPopoverRef);
   const previousFocusState = React.useRef({ open, disableAutoFocus });
 
+  // Hide on the accepted close commit, before the browser's default Tab navigation.
+  useIsomorphicLayoutEffect(() => {
+    const surface = menuPopoverRef.current;
+    if (
+      !open &&
+      surface &&
+      typeof surface.hidePopover === 'function' &&
+      (!SUPPORTS_POPOVER_OPEN_SELECTOR || surface.matches(':popover-open'))
+    ) {
+      surface.hidePopover();
+    }
+  }, [menuPopoverRef, open]);
+
   React.useEffect(() => {
     const previous = previousFocusState.current;
     previousFocusState.current = { open, disableAutoFocus };
@@ -38,11 +52,6 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     }
 
     if (!open) {
-      if (SUPPORTS_POPOVER_OPEN_SELECTOR && !surface.matches(':popover-open')) {
-        return;
-      }
-
-      surface.hidePopover();
       return;
     }
 

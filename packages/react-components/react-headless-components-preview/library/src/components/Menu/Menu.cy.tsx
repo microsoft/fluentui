@@ -14,9 +14,11 @@ describe('Menu', () => {
     const Example = ({
       disableAutoFocus,
       initiallyOpen = false,
+      keepOpenOnClose = false,
     }: {
       disableAutoFocus?: boolean;
       initiallyOpen?: boolean;
+      keepOpenOnClose?: boolean;
     }) => {
       const [open, setOpen] = React.useState(initiallyOpen);
       const [suppressFocus, setSuppressFocus] = React.useState(disableAutoFocus);
@@ -34,7 +36,15 @@ describe('Menu', () => {
       return (
         <>
           <button>Before trigger</button>
-          <Menu open={open} onOpenChange={(_, data) => setOpen(data.open)} unstable_disableAutoFocus={suppressFocus}>
+          <Menu
+            open={open}
+            onOpenChange={(_, data) => {
+              if (data.open || !keepOpenOnClose) {
+                setOpen(data.open);
+              }
+            }}
+            unstable_disableAutoFocus={suppressFocus}
+          >
             <MenuTrigger>
               <button
                 onKeyDown={event => {
@@ -215,14 +225,66 @@ describe('Menu', () => {
       cy.contains('[role="menuitem"]', 'First command').should('not.be.visible');
     });
 
-    (['Tab', ['Shift', 'Tab']] as const).forEach(key => {
-      it(`preserves native ${typeof key === 'string' ? key : key.join('+')} exit after explicit entry`, () => {
-        mount(<Example disableAutoFocus />);
-        cy.contains('button', 'Open commands').click().realPress('ArrowDown');
-        cy.contains('[role="menuitem"]', 'First command').should('be.focused');
-        cy.realPress(typeof key === 'string' ? key : [...key]);
-        cy.contains('button', typeof key === 'string' ? 'After trigger' : 'Before trigger').should('be.focused');
-        cy.contains('[role="menuitem"]', 'First command').should('not.be.visible');
+    [false, true].forEach(disableAutoFocus => {
+      [false, true].forEach(fromSubmenu => {
+        (['Tab', ['Shift', 'Tab']] as const).forEach(key => {
+          const keyName = typeof key === 'string' ? key : key.join('+');
+          it(`preserves native ${keyName} exit from ${
+            fromSubmenu ? 'nested' : 'root'
+          } items with suppression ${disableAutoFocus}`, () => {
+            mount(<Example disableAutoFocus={disableAutoFocus} />);
+            cy.contains('button', 'Open commands').click();
+            if (disableAutoFocus) {
+              cy.contains('button', 'Open commands').realPress('ArrowDown');
+            }
+            cy.contains('[role="menuitem"]', 'First command').should('be.focused');
+            if (fromSubmenu) {
+              cy.contains('[role="menuitem"]', 'First command').realPress('ArrowDown');
+              cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('ArrowRight');
+              cy.contains('[role="menuitem"]', 'Nested command').should('be.focused');
+            }
+            cy.realPress(typeof key === 'string' ? key : [...key]);
+            cy.contains('button', typeof key === 'string' ? 'After trigger' : 'Before trigger').should('be.focused');
+            cy.get('[role="menu"]').should('not.be.visible');
+          });
+        });
+      });
+    });
+
+    it('keeps the native surface open when the controlled owner declines closing', () => {
+      mount(<Example disableAutoFocus keepOpenOnClose />);
+      cy.contains('button', 'Open commands').click().realPress('ArrowDown');
+      cy.contains('[role="menuitem"]', 'First command').should('be.focused').realPress('Escape');
+      cy.contains('[role="menuitem"]', 'First command').should('be.visible').should('be.focused');
+      cy.get('[role="menu"]')
+        .first()
+        .parent()
+        .should(surface => {
+          expect(surface[0].matches(':popover-open')).to.be.true;
+        });
+    });
+
+    it('does not emit a duplicate close request when hiding the native surface', () => {
+      const onOpenChange = cy.spy().as('onOpenChange');
+      mount(
+        <Menu onOpenChange={onOpenChange}>
+          <MenuTrigger>
+            <button>Open commands</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>First command</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+      cy.contains('button', 'Open commands').click();
+      cy.contains('[role="menuitem"]', 'First command').should('be.focused').realPress('Escape');
+      cy.contains('[role="menuitem"]', 'First command').should('not.be.visible');
+      cy.contains('button', 'Open commands').should('be.focused');
+      cy.get('@onOpenChange').should('have.been.calledTwice');
+      cy.then(() => {
+        expect(onOpenChange.secondCall.args[1].open).to.be.false;
       });
     });
   });

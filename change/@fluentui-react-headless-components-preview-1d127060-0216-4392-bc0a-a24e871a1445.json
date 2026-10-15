@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-headless-components-preview): support Menu autofocus suppression",
+  "comment": "feat(react-headless-components-preview): support Menu autofocus suppression and preserve native Tab exit on close",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com"
 }
