@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: track keyboard vs pointer navigation for active descendant focus-visible styles without keyborg",
+  "comment": "fix: remove keyborg and react-tabster dependencies from active descendant tracking and live announcements",
   "packageName": "@fluentui/react-aria",
   "email": "noreply@anthropic.com"
 }
