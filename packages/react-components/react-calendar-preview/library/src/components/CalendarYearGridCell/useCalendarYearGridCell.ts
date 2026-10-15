@@ -2,10 +2,17 @@
 
 import type * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { useCalendarYearContext_unstable } from '../../contexts/calendarYearContext';
 import { stringifyDataAttribute } from '../../utils';
+import {
+  getCalendarGridKeyDownHandlers,
+  handleCalendarGridKeyDown,
+  isCalendarGridArrow,
+  isCalendarKeyboardEditable,
+} from '../../utils/calendarKeyboard';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { CalendarYearGridCellProps, CalendarYearGridCellState } from './CalendarYearGridCell.types';
 
@@ -17,6 +24,7 @@ export const useCalendarYearGridCell_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): CalendarYearGridCellState => {
   const { cell } = props;
+  const { dir } = useFluent_unstable();
   const nativeProps = getIntrinsicElementProps('button', props, ['cell']);
   const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
   const currentYearRef = useCalendarYearContext_unstable(ctx => ctx.currentYearRef);
@@ -39,6 +47,22 @@ export const useCalendarYearGridCell_unstable = (
           year: cell.year,
         });
 
+  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLButtonElement>(
+    event => {
+      nativeProps.onKeyDown?.(event);
+      if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
+        return;
+      }
+      handleCalendarGridKeyDown(event, dir, allFocusable);
+      if (event.key === Enter && onSelect) {
+        event.preventDefault();
+        onSelect(event);
+      }
+    },
+    nativeProps.onKeyDownCapture,
+    event => isCalendarGridArrow(event) && event.target === event.currentTarget,
+  );
+
   const root = slot.always<ExtractSlotProps<Slot<'button'>>>(
     {
       ...nativeProps,
@@ -52,13 +76,8 @@ export const useCalendarYearGridCell_unstable = (
           onSelect?.(event);
         }
       },
-      onKeyDown: event => {
-        nativeProps.onKeyDown?.(event);
-        if (!event.isDefaultPrevented() && event.key === Enter && onSelect) {
-          event.preventDefault();
-          onSelect(event);
-        }
-      },
+      onKeyDown: keyDownHandlers.onKeyDown,
+      onKeyDownCapture: keyDownHandlers.onKeyDownCapture,
       disabled: cell.isDisabled && !allFocusable,
       'aria-disabled': cell.isDisabled,
       tabIndex: cell.isDisabled && !allFocusable ? -1 : 0,
