@@ -864,8 +864,12 @@ import { RadioSlots } from '@fluentui/react-radio';
 import { RadioState } from '@fluentui/react-radio';
 import { RangeSlider } from '@fluentui/react-slider';
 import { rangeSliderClassNames } from '@fluentui/react-slider';
+import { rangeSliderCSSVars } from '@fluentui/react-slider';
+import { RangeSliderOnChangeData } from '@fluentui/react-slider';
 import { RangeSliderProps } from '@fluentui/react-slider';
+import { RangeSliderSlots } from '@fluentui/react-slider';
 import { RangeSliderState } from '@fluentui/react-slider';
+import { RangeSliderValue } from '@fluentui/react-slider';
 import { Rating } from '@fluentui/react-rating';
 import { ratingClassNames } from '@fluentui/react-rating';
 import { RatingContextValues } from '@fluentui/react-rating';
@@ -1858,6 +1862,7 @@ import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useRangeSlider_unstable } from '@fluentui/react-slider';
+import { useRangeSliderState_unstable } from '@fluentui/react-slider';
 import { useRangeSliderStyles_unstable } from '@fluentui/react-slider';
 import { useRating_unstable } from '@fluentui/react-rating';
 import { useRatingContextValues } from '@fluentui/react-rating';
@@ -3759,9 +3764,17 @@ export { RangeSlider }
 
 export { rangeSliderClassNames }
 
+export { rangeSliderCSSVars }
+
+export { RangeSliderOnChangeData }
+
 export { RangeSliderProps }
 
+export { RangeSliderSlots }
+
 export { RangeSliderState }
+
+export { RangeSliderValue }
 
 export { Rating }
 
@@ -5746,6 +5759,8 @@ export { useRadioGroupStyles_unstable }
 export { useRadioStyles_unstable }
 
 export { useRangeSlider_unstable }
+
+export { useRangeSliderState_unstable }
 
 export { useRangeSliderStyles_unstable }
 

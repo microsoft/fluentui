@@ -7,8 +7,22 @@ export const Default = (): JSXElement => {
 
   return (
     <>
-      <Label id={labelId}>Basic Range Slider Example</Label>
-      <RangeSlider aria-labelledby={labelId} defaultValue={{ start: 20, end: 80 }} />
+      <Label id={labelId}>Price range</Label>
+      <RangeSlider
+        aria-labelledby={labelId}
+        defaultValue={{ start: 20, end: 80 }}
+        startInput={{ 'aria-label': 'Minimum price' }}
+        endInput={{ 'aria-label': 'Maximum price' }}
+      />
     </>
   );
+};
+
+Default.parameters = {
+  docs: {
+    description: {
+      story:
+        'The label names the RangeSlider group. Give each thumb its own label through the `startInput` and `endInput` slots so screen reader users can tell the lower and upper values apart.',
+    },
+  },
 };

@@ -69,6 +69,15 @@ export type RangeSliderSlots = {
   };
 };
 
+/**
+ * RangeSlider Props.
+ *
+ * `className`, `style`, `id` and event handlers apply to the root group. Form props (`name`, `form`, `required`)
+ * and `aria-describedby`/`aria-invalid` apply to both inputs, and `aria-label`/`aria-labelledby` label both the
+ * group and, unless a slot provides its own label, each input. Props that describe a single thumb, such as a
+ * per-thumb label or `aria-valuetext`, go on the `startInput` and `endInput` slots; `aria-valuetext`,
+ * `aria-valuenow`, `aria-valuemin` and `aria-valuemax` set on the RangeSlider itself are ignored.
+ */
 export type RangeSliderProps = Omit<
   ComponentProps<Partial<RangeSliderSlots>, 'startInput' | 'endInput'>,
   'defaultValue' | 'onChange' | 'size' | 'value'

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
+import { Provider_unstable as Provider } from '@fluentui/react-shared-contexts';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { RangeSlider } from './RangeSlider';
@@ -104,6 +106,21 @@ describe('RangeSlider', () => {
     expect(sliders[1].getAttribute('min')).toEqual('20');
   });
 
+  it('aligns endInput min to the step grid when the lower value is off-step', () => {
+    render(<RangeSlider defaultValue={{ start: 3, end: 50 }} step={5} min={0} max={100} />);
+    const sliders = screen.getAllByRole('slider');
+    expect(sliders[1].getAttribute('min')).toEqual('0');
+  });
+
+  it('snaps the default end value to the step', () => {
+    const { unmount } = render(<RangeSlider min={0} max={50} step={20} />);
+    expect(screen.getAllByRole('slider')[1].getAttribute('value')).toEqual('20');
+    unmount();
+
+    render(<RangeSlider min={0} max={7} />);
+    expect(screen.getAllByRole('slider')[1].getAttribute('value')).toEqual('1');
+  });
+
   it('orders values correctly when start > end', () => {
     render(<RangeSlider defaultValue={{ start: 80, end: 20 }} min={0} max={100} />);
     const sliders = screen.getAllByRole('slider');
@@ -116,14 +133,14 @@ describe('RangeSlider', () => {
   it('applies focus to the start input', () => {
     render(<RangeSlider defaultValue={{ start: 20, end: 80 }} />);
     const sliders = screen.getAllByRole('slider');
-    sliders[0].focus();
+    act(() => sliders[0].focus());
     expect(document.activeElement).toEqual(sliders[0]);
   });
 
   it('applies focus to the end input', () => {
     render(<RangeSlider defaultValue={{ start: 20, end: 80 }} />);
     const sliders = screen.getAllByRole('slider');
-    sliders[1].focus();
+    act(() => sliders[1].focus());
     expect(document.activeElement).toEqual(sliders[1]);
   });
 
@@ -131,7 +148,7 @@ describe('RangeSlider', () => {
     render(<RangeSlider disabled defaultValue={{ start: 20, end: 80 }} />);
     const sliders = screen.getAllByRole('slider');
     expect(document.activeElement).toEqual(document.body);
-    sliders[0].focus();
+    act(() => sliders[0].focus());
     expect(document.activeElement).toEqual(document.body);
   });
 
@@ -149,18 +166,65 @@ describe('RangeSlider', () => {
     expect(sliders[1].getAttribute('aria-label')).toEqual('Maximum value');
   });
 
-  it('applies aria-labelledby to both inputs', () => {
+  it('applies aria-labelledby to the root group and both inputs', () => {
     render(<RangeSlider aria-labelledby="test-label" defaultValue={{ start: 20, end: 80 }} />);
+    expect(screen.getByRole('group').getAttribute('aria-labelledby')).toEqual('test-label');
     const sliders = screen.getAllByRole('slider');
     expect(sliders[0].getAttribute('aria-labelledby')).toEqual('test-label');
     expect(sliders[1].getAttribute('aria-labelledby')).toEqual('test-label');
   });
 
-  it('applies aria-valuetext to both inputs', () => {
-    render(<RangeSlider aria-valuetext="test-value" defaultValue={{ start: 20, end: 80 }} />);
+  it('prefers a per-thumb label from the slot over the shared label', () => {
+    render(
+      <RangeSlider
+        aria-labelledby="test-label"
+        defaultValue={{ start: 20, end: 80 }}
+        startInput={{ 'aria-label': 'Minimum price' }}
+        endInput={{ 'aria-label': 'Maximum price' }}
+      />,
+    );
     const sliders = screen.getAllByRole('slider');
-    expect(sliders[0].getAttribute('aria-valuetext')).toEqual('test-value');
-    expect(sliders[1].getAttribute('aria-valuetext')).toEqual('test-value');
+    expect(sliders[0].getAttribute('aria-labelledby')).toBeNull();
+    expect(sliders[0].getAttribute('aria-label')).toEqual('Minimum price');
+    expect(sliders[1].getAttribute('aria-labelledby')).toBeNull();
+    expect(sliders[1].getAttribute('aria-label')).toEqual('Maximum price');
+  });
+
+  it('applies aria-valuetext per thumb via slots, not from the root props', () => {
+    render(
+      <RangeSlider
+        aria-valuetext="ignored"
+        defaultValue={{ start: 20, end: 80 }}
+        startInput={{ 'aria-valuetext': '$20' }}
+        endInput={{ 'aria-valuetext': '$80' }}
+      />,
+    );
+    const sliders = screen.getAllByRole('slider');
+    expect(sliders[0].getAttribute('aria-valuetext')).toEqual('$20');
+    expect(sliders[1].getAttribute('aria-valuetext')).toEqual('$80');
+    expect(screen.getByRole('group').getAttribute('aria-valuetext')).toBeNull();
+  });
+
+  it('applies form props to both inputs and other native props to the root', () => {
+    const onPointerDown = jest.fn();
+    render(
+      <RangeSlider
+        name="price"
+        required
+        data-testid="range"
+        onPointerDown={onPointerDown}
+        defaultValue={{ start: 20, end: 80 }}
+      />,
+    );
+    const sliders = screen.getAllByRole('slider');
+    expect(sliders.map(slider => slider.getAttribute('name'))).toEqual(['price', 'price']);
+    expect(sliders.map(slider => slider.hasAttribute('required'))).toEqual([true, true]);
+
+    const root = screen.getByTestId('range');
+    expect(root.getAttribute('role')).toEqual('group');
+    expect(root.getAttribute('name')).toBeNull();
+    fireEvent.pointerDown(root);
+    expect(onPointerDown).toHaveBeenCalledTimes(1);
   });
 
   it('provides each input with type range', () => {
@@ -178,6 +242,56 @@ describe('RangeSlider', () => {
     expect(sliders[1].id).toContain('rangeslider-end-');
   });
 
+  it('applies a provided id to the root and derives unique input ids from it', () => {
+    render(<RangeSlider id="price" defaultValue={{ start: 20, end: 80 }} />);
+    expect(screen.getByRole('group').id).toEqual('price');
+    const sliders = screen.getAllByRole('slider');
+    expect(sliders.map(slider => slider.id)).toEqual(['price-start', 'price-end']);
+  });
+
+  it('labels the group and both inputs with the Field label, keeping ids unique', () => {
+    render(
+      <Field label="Price" hint="In dollars">
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} />
+      </Field>,
+    );
+    const group = screen.getByRole('group', { name: 'Price' });
+    const sliders = screen.getAllByRole('slider', { name: 'Price' });
+    expect(new Set([group.id, sliders[0].id, sliders[1].id]).size).toBe(3);
+    expect(sliders[0].getAttribute('aria-describedby')).toBeTruthy();
+    expect(sliders[1].getAttribute('aria-describedby')).toEqual(sliders[0].getAttribute('aria-describedby'));
+  });
+
+  // Keyboard (native input change) tests
+  describe('input changes', () => {
+    it('calls onChange when the start input changes', () => {
+      const onChange = jest.fn();
+      render(<RangeSlider defaultValue={{ start: 20, end: 80 }} onChange={onChange} />);
+      fireEvent.change(screen.getAllByRole('slider')[0], { target: { value: '25' } });
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange.mock.calls[0][1]).toEqual(
+        expect.objectContaining({ type: 'change', value: { start: 25, end: 80 } }),
+      );
+    });
+
+    it('clamps the end input to the lower value', () => {
+      const onChange = jest.fn();
+      render(<RangeSlider defaultValue={{ start: 3, end: 50 }} step={5} onChange={onChange} />);
+      fireEvent.change(screen.getAllByRole('slider')[1], { target: { value: '0' } });
+
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 3, end: 3 });
+    });
+
+    it('does not call onChange when the clamped value is unchanged', () => {
+      const onChange = jest.fn();
+      render(<RangeSlider defaultValue={{ start: 50, end: 50 }} onChange={onChange} />);
+      fireEvent.change(screen.getAllByRole('slider')[0], { target: { value: '60' } });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+  });
+
   // Pointer event tests
   // Note: jsdom lacks PointerEvent, setPointerCapture, and getBoundingClientRect support,
   // so these tests mock the missing DOM APIs to validate the pointer handler logic.
@@ -186,9 +300,15 @@ describe('RangeSlider', () => {
 
     // jsdom lacks PointerEvent, so fireEvent.pointerDown creates a MouseEvent whose
     // clientX/clientY default to 0. Dispatching via MouseEvent constructor preserves coordinates.
-    const dispatchPointer = (element: HTMLElement, type: string, init: { clientX?: number; clientY?: number }) => {
+    const dispatchPointer = (
+      element: HTMLElement,
+      type: string,
+      init: { clientX?: number; clientY?: number; button?: number },
+    ) => {
       const event = new MouseEvent(type, { bubbles: true, cancelable: true, ...init });
-      element.dispatchEvent(event);
+      act(() => {
+        element.dispatchEvent(event);
+      });
     };
 
     beforeEach(() => {
@@ -286,6 +406,84 @@ describe('RangeSlider', () => {
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][1].value).toEqual({ start: 20, end: 75 });
+    });
+
+    it('moves the thumb on the pressed side when thumbs overlap', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 50, end: 50 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+      const sliders = screen.getAllByRole('slider');
+
+      // The end thumb is the last-used one, but the press is below both thumbs
+      fireEvent.focus(sliders[1]);
+      dispatchPointer(root, 'pointerdown', { clientX: 20, clientY: 15 });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 20, end: 50 });
+    });
+
+    it('moves the end thumb when thumbs overlap at min and the press is above them', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 0, end: 0 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 70, clientY: 15 });
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 0, end: 70 });
+    });
+
+    it('does not call onChange when a pointer move keeps the same snapped value', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} step={10} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 21, clientY: 15 });
+      dispatchPointer(root, 'pointermove', { clientX: 23, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('ignores non-primary buttons', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 40, clientY: 15, button: 2 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('ignores presses when the rail has no size', () => {
+      window.HTMLElement.prototype.getBoundingClientRect = jest
+        .fn()
+        .mockReturnValue({ bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0 } as DOMRect);
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+
+      dispatchPointer(container.firstElementChild as HTMLElement, 'pointerdown', { clientX: 40, clientY: 15 });
+
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('maps the pointer from the right in RTL', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <Provider value={{ dir: 'rtl' }}>
+          <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />
+        </Provider>,
+      );
+      const root = container.querySelector('[role="group"]') as HTMLElement;
+
+      dispatchPointer(root, 'pointerdown', { clientX: 70, clientY: 15 });
+
+      expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
     });
 
     it('stops updating on pointerCancel', () => {

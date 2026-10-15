@@ -29,13 +29,19 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   const stepValue = step && step > 0 ? step : 1;
   const rangeSpan = max - min;
 
-  // Default offset between start/end thumbs so the initial range has a visible selection
-  const defaultRangeOffset = rangeSpan * 0.1;
+  // Snap value to the nearest step counted from `min` (stepValue defaults to 1)
+  const snapToStep = (value: number): number => {
+    if (rangeSpan <= 0) {
+      return min;
+    }
+    return clamp(min + Math.round((value - min) / stepValue) * stepValue, min, max);
+  };
 
   const [currentValues, setCurrentValues] = useControllableState<RangeSliderValue>({
     state: props.value,
     defaultState: props.defaultValue,
-    initialState: { start: min, end: Math.min(min + defaultRangeOffset, max) },
+    // Default offset between start/end thumbs so the initial range has a visible selection
+    initialState: { start: min, end: snapToStep(min + Math.max(rangeSpan * 0.1, stepValue)) },
   });
 
   // Ensure values are properly ordered and clamped
@@ -53,9 +59,13 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   const startInputRef = React.useRef<HTMLInputElement>(null);
   const endInputRef = React.useRef<HTMLInputElement>(null);
 
-  // Shared update function for pointer and input handlers.
+  // Shared update function for pointer and input handlers. Skips updates that don't change the value.
   const updateValues = useEventCallback(
     (start: number, end: number, event: React.SyntheticEvent | Event, type: 'change' | 'pointer') => {
+      if (start === lowerValue && end === upperValue) {
+        return;
+      }
+
       setCurrentValues({ start, end });
       const value = { start, end };
 
@@ -79,24 +89,17 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   // (rail excludes thumb overhang padding, giving accurate 0-100% mapping)
   const getValueFromPointer = (clientX: number, clientY: number): number | null => {
     const rect = railRef.current?.getBoundingClientRect() ?? rootRef.current?.getBoundingClientRect();
-    if (!rect) {
+    const size = vertical ? rect?.height : rect?.width;
+    // A hidden or collapsed rail has no size to map the pointer onto
+    if (!rect || !size) {
       return null;
     }
 
-    const size = vertical ? rect.height : rect.width;
     const offset = vertical ? rect.bottom - clientY : clientX - rect.left;
     const ratio = clamp(offset / size, 0, 1);
     const adjustedRatio = !vertical && dir === 'rtl' ? 1 - ratio : ratio;
 
     return min + adjustedRatio * rangeSpan;
-  };
-
-  // Snap value to nearest step (always snaps, using stepValue which defaults to 1)
-  const snapToStep = (value: number): number => {
-    if (rangeSpan === 0) {
-      return min;
-    }
-    return clamp(min + Math.round((value - min) / stepValue) * stepValue, min, max);
   };
 
   // Apply snapped value to the appropriate thumb
@@ -107,9 +110,22 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
     updateValues(newStart, newEnd, event, 'pointer');
   };
 
+  // Pick the thumb a pointer press should move
+  const getThumbForValue = (value: number): 'start' | 'end' => {
+    if (lowerValue === upperValue) {
+      // Overlapping thumbs are equally close, so move the one on the side of the press;
+      // a press exactly on them keeps the last-used thumb.
+      return value < lowerValue ? 'start' : value > upperValue ? 'end' : activeThumb;
+    }
+    const distStart = Math.abs(value - lowerValue);
+    const distEnd = Math.abs(value - upperValue);
+    return distStart < distEnd ? 'start' : distEnd < distStart ? 'end' : activeThumb;
+  };
+
   // Pointer handlers for rail click and drag
   const handlePointerDown = useEventCallback((ev: React.PointerEvent<HTMLDivElement>) => {
-    if (disabled) {
+    // Only the primary button (left mouse button, touch contact, pen tip) moves a thumb
+    if (disabled || ev.button !== 0) {
       return;
     }
 
@@ -118,10 +134,7 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
       return;
     }
 
-    // Determine closest thumb based on distance; when equal (thumbs overlap), prefer the last-used thumb
-    const distStart = Math.abs(value - lowerValue);
-    const distEnd = Math.abs(value - upperValue);
-    const thumb = distStart < distEnd ? 'start' : distEnd < distStart ? 'end' : activeThumb;
+    const thumb = getThumbForValue(value);
     activeDragThumb.current = thumb;
     setActiveThumb(thumb);
 
@@ -176,7 +189,10 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   state.root.onPointerUp = mergeCallbacks(state.root.onPointerUp, handlePointerUp);
   state.root.onPointerCancel = mergeCallbacks(state.root.onPointerCancel, handlePointerUp);
 
-  // Input configuration for keyboard accessibility
+  // Input configuration for keyboard accessibility.
+  // Each input is limited by the other thumb's value. A native range input counts steps from its `min`, so the
+  // end input's `min` is aligned down to the step grid to keep keyboard steps in line with pointer snapping;
+  // onChange clamps the value back to the lower thumb.
   state.startInput.value = lowerValue;
   state.startInput.min = min;
   state.startInput.max = upperValue;
@@ -192,7 +208,7 @@ export const useRangeSliderState_unstable = (state: RangeSliderState, props: Ran
   });
 
   state.endInput.value = upperValue;
-  state.endInput.min = lowerValue;
+  state.endInput.min = min + Math.floor((lowerValue - min) / stepValue) * stepValue;
   state.endInput.max = max;
   state.endInput.step = stepValue;
   state.endInput.disabled = disabled;

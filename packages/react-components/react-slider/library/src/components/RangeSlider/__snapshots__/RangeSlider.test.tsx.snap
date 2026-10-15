@@ -4,6 +4,7 @@ exports[`RangeSlider renders disabled RangeSlider correctly 1`] = `
 <div>
   <div
     class="fui-RangeSlider"
+    role="group"
     style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
   >
     <div
@@ -49,6 +50,7 @@ exports[`RangeSlider renders horizontal RangeSlider correctly 1`] = `
 <div>
   <div
     class="fui-RangeSlider"
+    role="group"
     style="--fui-RangeSlider--direction: 90deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
   >
     <div
@@ -92,6 +94,7 @@ exports[`RangeSlider renders vertical RangeSlider correctly 1`] = `
 <div>
   <div
     class="fui-RangeSlider"
+    role="group"
     style="--fui-RangeSlider--direction: 0deg; --fui-RangeSlider--lower-progress: 20%; --fui-RangeSlider--upper-progress: 80%;"
   >
     <div
