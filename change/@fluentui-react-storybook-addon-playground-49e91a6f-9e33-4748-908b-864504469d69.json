@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Storybook 10 Docs actions and resolve Playground declarations through the final webpack resolver, with optional explicit typings roots.",
-  "packageName": "@fluentui/react-storybook-addon-playground",
-  "email": "dmytrokirpa@microsoft.com"
-}

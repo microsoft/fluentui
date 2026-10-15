@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Load same-origin Playground runtime scripts through the shell under restrictive resource policies while preserving the opaque-origin sandbox and native Storybook chunk loading.",
+  "comment": "Improve Storybook Docs actions and Playground declaration resolution, including workspace and conditional aliases. Validate build-scoped manifests and JavaScript responses, and support authenticated runtime loading and ordered CSS/font inlining while preserving the opaque sandbox and native Storybook loading.",
   "packageName": "@fluentui/react-storybook-addon-playground",
   "email": "dmytrokirpa@microsoft.com"
 }
