@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import type { ForwardRefComponent, JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement, RefAttributes } from '@fluentui/react-utilities';
 
 /**
  * Hook creating the state of a component from its props and ref.
@@ -65,19 +65,19 @@ export function composeComponent<Props, State, RefType>(
   displayName: string,
   useState: StateHook<Props, State, RefType>,
   render: RenderFn<State>,
-): ForwardRefComponent<Props>;
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>>;
 export function composeComponent<Props, State, RefType, ContextValues>(
   displayName: string,
   useState: StateHook<Props, State, RefType>,
   render: RenderWithContextValuesFn<State, ContextValues>,
   useGetContextValues: ContextValuesHook<State, ContextValues>,
-): ForwardRefComponent<Props>;
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>>;
 export function composeComponent<Props, State, RefType, ContextValues>(
   displayName: string,
   useState: StateHook<Props, State, RefType>,
   render: RenderFn<State> | RenderWithContextValuesFn<State, ContextValues>,
   useGetContextValues?: ContextValuesHook<State, ContextValues>,
-): ForwardRefComponent<Props> {
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>> {
   let Component: ReturnType<typeof React.forwardRef<RefType, Props>>;
 
   if (useGetContextValues) {
@@ -96,5 +96,5 @@ export function composeComponent<Props, State, RefType, ContextValues>(
 
   Component.displayName = displayName;
 
-  return Component as unknown as ForwardRefComponent<Props>;
+  return Component;
 }
