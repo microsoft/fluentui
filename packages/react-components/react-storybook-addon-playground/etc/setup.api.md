@@ -13,8 +13,13 @@ export function definePlaygroundSetup<TTheme>(setup: PlaygroundSetup<TTheme>): P
 export interface PlaygroundRuntimeManifest {
     // (undocumented)
     allowedModules: string[];
+    allowedScriptFiles?: string[];
     // (undocumented)
     buildId: string;
+    inlineStyles?: Array<{
+        href: string;
+        cssText: string;
+    }>;
     moduleTypings?: Record<string, string[]>;
     // (undocumented)
     scripts: string[];

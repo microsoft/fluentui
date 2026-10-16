@@ -307,7 +307,9 @@ export const useCalendarDayBase_unstable = (
       grid: 'table',
       body: 'tbody',
     },
-    root: slot.always(getIntrinsicElementProps('div', props), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', { ...props, 'data-fui-calendar-picker': 'day' }), {
+      elementType: 'div',
+    }),
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
