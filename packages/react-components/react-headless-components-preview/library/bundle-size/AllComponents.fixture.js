@@ -477,6 +477,7 @@ import {
   renderTabList,
   useTab,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
 } from '@fluentui/react-headless-components-preview/tab-list';
 import { Tag, renderTag, useTag, useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
@@ -1060,6 +1061,7 @@ console.log(
   renderTabList,
   useTab,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
   Tag,
   renderTag,
