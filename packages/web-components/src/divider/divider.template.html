@@ -1,6 +1,6 @@
 <f-template name="fluent-divider" shadowrootmode="open">
   <template>
     {{styles}}
-    <slot></slot>
+    <slot f-ref="{defaultSlot}" @slotchange="{handleSlotChange()}"></slot>
   </template>
 </f-template>

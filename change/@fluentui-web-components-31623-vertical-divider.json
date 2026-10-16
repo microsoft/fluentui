@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: compact vertical dividers without slotted content, including whitespace-only markup",
+  "packageName": "@fluentui/web-components",
+  "email": "cosorgen@microsoft.com"
+}
