@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat(react-charts): add configurable focus restoration after data updates",
+  "packageName": "@fluentui/react-charts",
+  "email": "v-baambati@microsoft.com"
+}

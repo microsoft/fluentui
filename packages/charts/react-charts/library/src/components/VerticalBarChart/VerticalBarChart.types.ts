@@ -122,6 +122,14 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * @default 'default'
    */
   mode?: 'default' | 'plotly' | 'histogram';
+
+  /**
+   * Bar to focus when the chart data or colors change.
+   * When not provided, focus returns to the previously focused bar.
+   */
+  focusOnReset?: {
+    barIndex: number;
+  };
 }
 
 /**

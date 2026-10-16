@@ -28,6 +28,7 @@ import type {
   YValueHover,
 } from '../../index';
 import { CartesianChart } from '../../index';
+import { getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -204,6 +205,31 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
+    const previousCalloutDataRef = React.useRef(props.data);
+    const previousFocusDataRef = React.useRef(props.data);
+    const lastFocusedPointRef = React.useRef<{ lineIndex: number; pointIndex: number } | undefined>(undefined);
+    const focusPointRefs = React.useRef<Map<string, SVGElement>>(new Map());
+    const calloutDataVersionRef = React.useRef(0);
+    if (previousCalloutDataRef.current !== props.data) {
+      previousCalloutDataRef.current = props.data;
+      calloutDataVersionRef.current++;
+    }
+
+    React.useEffect(() => {
+      const dataChanged = previousFocusDataRef.current !== props.data;
+      previousFocusDataRef.current = props.data;
+
+      if (!dataChanged) {
+        return;
+      }
+
+      const focusTarget = props.focusOnReset ?? lastFocusedPointRef.current;
+      if (!focusTarget) {
+        return;
+      }
+
+      focusPointRefs.current.get(`${focusTarget.lineIndex}-${focusTarget.pointIndex}`)?.focus();
+    }, [props.data, props.focusOnReset]);
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
@@ -630,8 +656,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     aria-label={_points[i].data[0].text ?? _getAriaLabel(i, 0)}
                     ref={(e: SVGCircleElement | null) => {
                       _refCallback(e!, circleId);
+                      _setFocusPointRef(e, i, 0);
                     }}
-                    onFocus={event =>
+                    onFocus={event => {
+                      lastFocusedPointRef.current = { lineIndex: i, pointIndex: 0 };
                       _handleFocus(
                         event,
                         circleId,
@@ -640,8 +668,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         circleId,
                         targetElement,
                         xAxisCalloutAccessibilityData,
-                      )
-                    }
+                      );
+                    }}
                     onBlur={_handleMouseOut}
                     {..._getClickHandler(_points[i].data[0].onDataPointClick)}
                   />
@@ -788,6 +816,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 pointsForLine.push(
                   <circle
                     key={`${_circleId}_${i}_${k}_marker`}
+                    ref={element => _setFocusPointRef(element, i, k)}
                     r={calculateMarkerRadius({
                       pointMarkerSize: markerSize,
                       minMarkerSize: 0,
@@ -809,7 +838,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     opacity={isLegendSelected ? 1 : 0.1}
                     onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                     onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
-                    onFocus={event => _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k)}
+                    onFocus={event => {
+                      lastFocusedPointRef.current = { lineIndex: i, pointIndex: k };
+                      _onFocusLargeDataset(i, verticaLineHeight, event, yScale, k);
+                    }}
                     onMouseOut={_handleMouseOut}
                     role="option"
                     aria-label={_points[i].data[k].text ?? _getAriaLabel(i, k)}
@@ -856,6 +888,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     <circle
                       id={circleId}
                       key={circleId}
+                      ref={element => _setFocusPointRef(element, i, j - 1)}
                       r={calculateMarkerRadius({
                         pointMarkerSize: currentMarkerSize,
                         minMarkerSize: 0,
@@ -898,7 +931,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         )
                       }
                       onMouseOut={_handleMouseOut}
-                      onFocus={event =>
+                      onFocus={event => {
+                        lastFocusedPointRef.current = { lineIndex: i, pointIndex: j - 1 };
                         _handleFocus(
                           event,
                           lineId,
@@ -907,8 +941,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           circleId,
                           targetElement,
                           xAxisCalloutAccessibilityData,
-                        )
-                      }
+                        );
+                      }}
                       onBlur={_handleMouseOut}
                       {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                       opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
@@ -944,6 +978,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                   <path
                     id={circleId}
                     key={circleId}
+                    ref={element => _setFocusPointRef(element, i, j - 1)}
                     d={path}
                     onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                       _handleHover(
@@ -976,7 +1011,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       )
                     }
                     onMouseOut={_handleMouseOut}
-                    onFocus={event =>
+                    onFocus={event => {
+                      lastFocusedPointRef.current = { lineIndex: i, pointIndex: j - 1 };
                       _handleFocus(
                         event,
                         lineId,
@@ -985,8 +1021,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         circleId,
                         targetElement,
                         xAxisCalloutAccessibilityData,
-                      )
-                    }
+                      );
+                    }}
                     onBlur={_handleMouseOut}
                     {..._getClickHandler(_points[i].data[j - 1].onDataPointClick)}
                     opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
@@ -1022,6 +1058,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                         <circle
                           id={lastCircleId}
                           key={lastCircleId}
+                          ref={element => _setFocusPointRef(element, i, j)}
                           r={calculateMarkerRadius({
                             pointMarkerSize: currentMarkerSize,
                             minMarkerSize: 0,
@@ -1064,7 +1101,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             )
                           }
                           onMouseOut={_handleMouseOut}
-                          onFocus={event =>
+                          onFocus={event => {
+                            lastFocusedPointRef.current = { lineIndex: i, pointIndex: j };
                             _handleFocus(
                               event,
                               lineId,
@@ -1073,8 +1111,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                               lastCircleId,
                               targetElement,
                               lastCirlceXCalloutAccessibilityData,
-                            )
-                          }
+                            );
+                          }}
                           onBlur={_handleMouseOut}
                           {..._getClickHandler(_points[i].data[j].onDataPointClick)}
                           opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
@@ -1109,6 +1147,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       <path
                         id={lastCircleId}
                         key={lastCircleId}
+                        ref={element => _setFocusPointRef(element, i, j)}
                         d={path}
                         onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                           _handleHover(
@@ -1141,7 +1180,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                           )
                         }
                         onMouseOut={_handleMouseOut}
-                        onFocus={event =>
+                        onFocus={event => {
+                          lastFocusedPointRef.current = { lineIndex: i, pointIndex: j };
                           _handleFocus(
                             event,
                             lineId,
@@ -1150,8 +1190,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                             lastCircleId,
                             targetElement,
                             lastCirlceXCalloutAccessibilityData,
-                          )
-                        }
+                          );
+                        }}
                         onBlur={_handleMouseOut}
                         {..._getClickHandler(_points[i].data[j].onDataPointClick)}
                         opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
@@ -1452,6 +1492,15 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       _refArray.push({ index: legendTitle, refElement: element });
     }
 
+    function _setFocusPointRef(element: SVGElement | null, lineIndex: number, pointIndex: number): void {
+      const key = `${lineIndex}-${pointIndex}`;
+      if (element) {
+        focusPointRefs.current.set(key, element);
+      } else {
+        focusPointRefs.current.delete(key);
+      }
+    }
+
     // Helper function to update highlight circle, vertical line, and callout for large datasets
     const _updateLargeDatasetHighlightAndCallout = (
       linenumber: number,
@@ -1616,7 +1665,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       x: number | Date,
       xAxisCalloutData: string | undefined,
       circleId: string,
-      targetElement: HTMLElement | null,
+      _targetElement: HTMLElement | null,
       xAxisCalloutAccessibilityData?: AccessibilityProps,
     ) {
       _uniqueCallOutID = circleId;
@@ -1633,7 +1682,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             setPopoverOpen(true);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
-            setRefSelected(targetElement);
+            setRefSelected(getChartEventTarget(event) as unknown as HTMLElement);
             setStackCalloutProps(found!);
             setDataPointCalloutProps(found!);
             setActivePoint(circleId);
@@ -1866,8 +1915,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     let points = _points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
-      calloutPointsRef.current = calloutData(points);
     }
+    calloutPointsRef.current = calloutData(points);
 
     let legendBars = null;
     // reduce computation cost by only creating legendBars
@@ -1877,6 +1926,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
     const calloutProps = {
+      key: calloutDataVersionRef.current,
       YValueHover: yValueHover,
       hoverXValue,
       YValue,
