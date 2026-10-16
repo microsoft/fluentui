@@ -32,6 +32,7 @@ describe(`beachball configs`, () => {
       changehint: "Run 'yarn change' to generate a change file",
       commit: false,
       disallowedChangeTypes: ['major'],
+      fetch: false,
       generateChangelog: true,
       hooks: {
         precommit: expect.any(Function),

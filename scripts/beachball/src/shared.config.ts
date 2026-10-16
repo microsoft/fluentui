@@ -5,7 +5,8 @@ import type { BeachballConfig } from 'beachball';
 import { renderEntry, renderHeader } from './customRenderers';
 import baseConfig from '../base.config';
 
-type SharedConfig = typeof baseConfig & Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'hooks' | 'registry'>>;
+type SharedConfig = typeof baseConfig &
+  Required<Pick<BeachballConfig, 'branch' | 'changelog' | 'fetch' | 'hooks' | 'registry'>>;
 
 export type ScopedConfig = SharedConfig & { scope: string[] };
 
@@ -18,7 +19,11 @@ export const config: SharedConfig = {
   // but it should be safe in release pipelines.
   branch: 'origin/master',
   // In beachball v3 alpha, this is required if BEACHBALL_NPM_TOKEN is used.
+  // TODO: update this once the feature is finished/when beachball v3 stable is released.
   registry: 'https://registry.npmjs.org',
+  // In the multi-stage release build, use the original Build.SourceVersion to ensure that the
+  // published and committed content matches.
+  fetch: false,
   changelog: {
     customRenderers: {
       renderHeader,

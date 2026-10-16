@@ -1,0 +1,12 @@
+# This template is a helper to declare many readonly variables in a readable manner.
+# Otherwise they could be updated by a setvariable logging command in any step.
+parameters:
+  - name: variables
+    type: object
+    default: {}
+
+variables:
+  - ${{ each variable in parameters.variables }}:
+      - name: ${{ variable.key }}
+        value: ${{ variable.value }}
+        readonly: true
