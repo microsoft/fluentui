@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useActiveDescendant } from './useActiveDescendant';
 import type { ActiveDescendantImperativeRef } from './types';
-import { render } from '@testing-library/react';
-import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
+import { fireEvent, render } from '@testing-library/react';
+import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 
 interface CustomMatchers<R = unknown> {
   toHaveActiveDescendant(received: string | null | undefined): R;
@@ -61,17 +61,23 @@ expect.extend({
 });
 
 describe('useActivedescendant', () => {
-  const Test: React.FC<{ imperativeRef: React.RefObject<ActiveDescendantImperativeRef | null> }> = ({
+  const Test = ({
     imperativeRef,
+    autoFocus,
+  }: {
+    imperativeRef: React.RefObject<ActiveDescendantImperativeRef | null>;
+    autoFocus?: boolean;
   }) => {
-    const { listboxRef, activeParentRef } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
+    const { listboxRef, activeParentRef, controller } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
       matchOption: el => el.getAttribute('role') === 'option',
       imperativeRef,
     });
 
     return (
       <>
-        <button ref={activeParentRef}>active parent</button>
+        <button ref={activeParentRef} autoFocus={autoFocus} onFocus={() => controller.showFocusVisibleAttributes()}>
+          active parent
+        </button>
         <div ref={listboxRef}>
           <div role="option" id="option-1" />
           <div role="option" id="option-2" />
@@ -91,6 +97,78 @@ describe('useActivedescendant', () => {
     expect(res).toBe(expecetdOption);
     const button = getByRole('button');
     expect(button).toHaveActiveDescendant(expecetdOption);
+  });
+
+  it('restores focus-visible attributes for keyboard events retargeted from an open shadow root', () => {
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
+    const activeParent = getByRole('button');
+    const host = document.createElement('div');
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const originalParent = container.parentNode;
+    const originalNextSibling = container.nextSibling;
+    document.body.appendChild(host);
+    shadowRoot.appendChild(container);
+
+    try {
+      imperativeRef.current?.first();
+      fireEvent.mouseDown(document.body, {
+        buttons: 1,
+        clientX: 1,
+        clientY: 1,
+        screenX: 1,
+        screenY: 1,
+      });
+      const event = new KeyboardEvent('keydown', { bubbles: true, composed: true, key: 'ArrowDown' });
+      activeParent.dispatchEvent(event);
+
+      expect(shadowRoot.querySelector('#option-1')?.hasAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE)).toBe(true);
+    } finally {
+      if (originalParent) {
+        originalParent.insertBefore(container, originalNextSibling);
+      }
+      host.remove();
+    }
+  });
+
+  it('restores focus-visible attributes after keyboard activation from another control', () => {
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+    const activeParent = getByRole('button');
+    const activationButton = document.createElement('button');
+    document.body.appendChild(activationButton);
+
+    imperativeRef.current?.first();
+    fireEvent.mouseDown(document.body, {
+      buttons: 1,
+      clientX: 1,
+      clientY: 1,
+      screenX: 1,
+      screenY: 1,
+    });
+    fireEvent.keyDown(activationButton, { key: 'Enter' });
+    fireEvent.focus(activeParent);
+
+    expect(document.getElementById('option-1')?.hasAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE)).toBe(true);
+    activationButton.remove();
+  });
+
+  it('synchronizes focus-visible state when keyboard activation mounts and autofocuses the controller', () => {
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    fireEvent.keyDown(document.body, { key: 'Enter' });
+
+    const { getByRole } = render(<Test imperativeRef={imperativeRef} autoFocus />);
+    const activeParent = getByRole('button', { name: 'active parent' });
+    const matches = jest.spyOn(activeParent, 'matches').mockReturnValue(true);
+    try {
+      fireEvent.focus(activeParent);
+
+      imperativeRef.current?.first();
+
+      expect(document.getElementById('option-1')?.hasAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE)).toBe(true);
+    } finally {
+      matches.mockRestore();
+    }
   });
 
   it('should not have aria-activedescendant attribute if hideAttributes invoked', () => {

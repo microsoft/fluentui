@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: drop keyborg from Tooltip by detecting keyboard focus via :focus-visible, and remove the react-tabster dependency",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "noreply@anthropic.com"
+}

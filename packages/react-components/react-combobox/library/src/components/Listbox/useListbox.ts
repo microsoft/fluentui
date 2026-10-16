@@ -20,8 +20,19 @@ import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
-import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { isComboboxOptionElement } from '../../utils/isComboboxOptionElement';
+
+/**
+ * Whether the element matches `:focus-visible`, i.e. it received focus from keyboard navigation.
+ * Browsers without `:focus-visible` support throw on the selector, treat them as focus-visible.
+ */
+const isFocusVisible = (element: Element): boolean => {
+  try {
+    return element.matches(':focus-visible');
+  } catch {
+    return true;
+  }
+};
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -82,9 +93,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       element.addEventListener('activedescendantchange', listener);
     };
   }, [onActiveDescendantChange]);
-
-  const [isNavigatingWithKeyboard, setIsNavigatingWithKeyboard] = React.useState(false);
-  useOnKeyboardNavigationChange(setIsNavigatingWithKeyboard);
 
   const activeDescendantContext = useActiveDescendantContext();
   const hasParentActiveDescendantContext = useHasParentActiveDescendantContext();
@@ -190,17 +198,20 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onFocus = React.useCallback(() => {
-    if (hasParentActiveDescendantContext) {
-      return;
-    }
+  const onFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLElement>) => {
+      if (hasParentActiveDescendantContext) {
+        return;
+      }
 
-    activeDescendantController.showFocusVisibleAttributes();
+      activeDescendantController.showFocusVisibleAttributes();
 
-    if (isNavigatingWithKeyboard) {
-      activeDescendantController.scrollActiveIntoView();
-    }
-  }, [activeDescendantController, hasParentActiveDescendantContext, isNavigatingWithKeyboard]);
+      if (isFocusVisible(event.currentTarget)) {
+        activeDescendantController.scrollActiveIntoView();
+      }
+    },
+    [activeDescendantController, hasParentActiveDescendantContext],
+  );
 
   const onBlur = React.useCallback(() => {
     if (hasParentActiveDescendantContext) {

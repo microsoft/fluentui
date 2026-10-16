@@ -3418,7 +3418,6 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.9"
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
-    "@fluentui/react-tabster": "npm:^9.26.18"
     "@fluentui/react-utilities": "npm:^9.26.7"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -4441,7 +4440,6 @@ __metadata:
     "@fluentui/react-swatch-picker": "npm:^9.6.2"
     "@fluentui/react-switch": "npm:^9.7.6"
     "@fluentui/react-tabs": "npm:^9.12.5"
-    "@fluentui/react-tabster": "npm:^9.26.18"
     "@fluentui/react-tag-picker": "npm:^9.10.5"
     "@fluentui/react-tags": "npm:^9.9.7"
     "@fluentui/react-teaching-popover": "npm:^9.7.7"

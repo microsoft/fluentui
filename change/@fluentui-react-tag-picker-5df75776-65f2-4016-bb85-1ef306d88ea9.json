@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: keep keyborg keyboard-navigation state in sync from the styled TagPickerInput hook instead of the shared trigger slot",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "noreply@anthropic.com"
+}
