@@ -93,6 +93,23 @@ const useStyles = makeStyles({
     gap: tokens.spacingVerticalXS,
     flex: 1,
   },
+  classNamesTable: {
+    borderCollapse: 'collapse',
+    width: '100%',
+    marginTop: tokens.spacingVerticalS,
+  },
+  classNamesTableHeaderCell: {
+    textAlign: 'start',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  classNamesTableCell: {
+    textAlign: 'start',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+    verticalAlign: 'top',
+  },
 });
 
 const useVideoClasses = makeStyles({
@@ -248,22 +265,55 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
+
+const SlotClassNamesTable: React.FC<{ classNames: Record<string, string> }> = ({ classNames }) => {
+  const styles = useStyles();
+  const entries = Object.entries(classNames);
+  return (
+    <table className={styles.classNamesTable}>
+      <thead>
+        <tr>
+          <th className={styles.classNamesTableHeaderCell} scope="col">
+            slot
+          </th>
+          <th className={styles.classNamesTableHeaderCell} scope="col">
+            className
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {entries.map(([slot, className]) => (
+          <tr key={slot}>
+            <td className={styles.classNamesTableCell}>{slot}</td>
+            <td className={styles.classNamesTableCell}>
+              <code>{className}</code>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
 const RenderArgsTable = ({
   story,
   hideArgsTable,
   showSlotsApi,
   showNativePropsApi,
+  slotClassNames,
 }: {
   story: PrimaryStory;
   hideArgsTable: boolean;
   showSlotsApi?: boolean;
   showNativePropsApi?: boolean;
+  slotClassNames?: Record<string, string>;
 }) => {
   const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
     slotsApi: showSlotsApi,
     nativePropsApi: showNativePropsApi,
   });
   const styles = useStyles();
+  const hasClassNames = slotClassNames && Object.keys(slotClassNames).length > 0;
 
   return hideArgsTable ? null : (
     <>
@@ -301,6 +351,22 @@ const RenderArgsTable = ({
                 </Link>
               </span>
             </p>
+          </AdditionalApiDocs>
+        )}
+        {hasClassNames && (
+          <AdditionalApiDocs>
+            <p>
+              <b>
+                Customizing component's slot styles with className hooks <span role="presentation">🙌</span>
+              </b>
+              <br />
+              <span>
+                Each slot exposes a stable public className that can be targeted for style overrides. Import the
+                component's <code>classNames</code> object (e.g. <code>buttonClassNames</code>) from{' '}
+                <code>@fluentui/react-components</code> and reference its entries in your styles.
+              </span>
+            </p>
+            <SlotClassNamesTable classNames={slotClassNames!} />
           </AdditionalApiDocs>
         )}
       </div>
@@ -379,6 +445,9 @@ export const FluentDocsPage = ({
   const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
+  const slotClassNames = primaryStoryContext.parameters?.reactStorybookAddon?.docs?.classNames as
+    | Record<string, string>
+    | undefined;
   const styles = useStyles();
 
   // If docs page is disabled, return Storybook's default docs page
@@ -389,7 +458,7 @@ export const FluentDocsPage = ({
         <Subtitle />
         <Description />
         {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
-        {renderArgsTable({ story: primaryStory, hideArgsTable })}
+        {renderArgsTable({ story: primaryStory, hideArgsTable, slotClassNames })}
         {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
@@ -439,6 +508,7 @@ export const FluentDocsPage = ({
             hideArgsTable,
             showSlotsApi: argTable.slotsApi,
             showNativePropsApi: argTable.nativePropsApi,
+            slotClassNames,
           })}
           {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>
