@@ -58,6 +58,7 @@ const config = {
         'jju',
         'loader-utils',
         'lodash',
+        'monaco-editor',
         'prettier',
         'schema-utils',
         'react-is',

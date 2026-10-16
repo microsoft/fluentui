@@ -2,6 +2,26 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:33 GMT",
+      "version": "0.4.23",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:18:57 GMT",
       "tag": "@fluentui/keyboard-key_v0.4.23",
       "version": "0.4.23",

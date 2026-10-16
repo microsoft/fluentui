@@ -2,6 +2,9 @@
   "$schema": "./reviewers.schema.json",
   "version": 1,
 
+  "repo": "microsoft/fluentui",
+  "queues": ["microsoft/cxe-prg", "microsoft/fluentui-react-build"],
+
   "team": {
     "org": "microsoft",
     "slug": "cxe-prg"

@@ -605,6 +605,7 @@ export const GanttChart: React.FunctionComponent<GanttChartProps> = React.forwar
           getmargins={_getMargins}
           getYDomainMargins={_getYDomainMargins}
           onChartMouseLeave={_handleChartMouseLeave}
+          onChartBlur={_handleChartMouseLeave}
           useUTC={useUTC}
           children={_createBars}
         />

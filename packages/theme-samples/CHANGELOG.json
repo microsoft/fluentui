@@ -2,6 +2,45 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.7.227",
+      "tag": "@fluentui/theme-samples_v8.7.227",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/theme-samples",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/theme-samples",
+            "commit": "f03f1e4e00455a54ab180a218962a7ae685e3b9b",
+            "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/theme-samples",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.125.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/scheme-utilities to v8.3.74"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 09:55:29 GMT",
       "tag": "@fluentui/theme-samples_v8.7.226",
       "version": "8.7.226",

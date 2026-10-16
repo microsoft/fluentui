@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: export DropdownSlots from the dropdown entry point",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

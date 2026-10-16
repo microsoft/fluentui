@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make the Combobox expand icon keyboard- and click-operable without duplicate pointer toggles or hidden, missing-icon, or duplicate blur interactions",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

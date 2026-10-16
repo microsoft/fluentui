@@ -15,6 +15,7 @@ export {
   useOptionGroup,
 } from './components/Dropdown';
 export type {
+  DropdownSlots,
   DropdownProps,
   DropdownState,
   ListboxSlots,

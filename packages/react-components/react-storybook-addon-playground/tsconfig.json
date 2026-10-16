@@ -17,7 +17,13 @@
       "path": "./tsconfig.lib.json"
     },
     {
+      "path": "./tsconfig.playground.json"
+    },
+    {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.e2e.json"
     }
   ]
 }

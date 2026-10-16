@@ -25,9 +25,10 @@ import type {
   GaugeChartVariant,
   GaugeValueFormat,
   GaugeChartProps,
-  GaugeChartSegment,
+  ExtendedSegment,
 } from './GaugeChart.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useId } from '@fluentui/react-utilities';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { useImageExport } from '../../utilities/hooks';
 
@@ -83,35 +84,52 @@ export const getChartValueLabel = (
   chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string),
   forCallout: boolean = false,
 ): string => {
-  if (forCallout) {
-    // When displaying the chart value as a percentage, use fractions in the callout, and vice versa.
-    // This helps clarify the actual value and avoid repetition.
-    return minValue !== 0
-      ? chartValue.toString()
-      : chartValueFormat === 'fraction'
-      ? `${((chartValue / maxValue) * 100).toFixed()}%`
-      : `${chartValue}/${maxValue}`;
+  if (typeof chartValueFormat === 'function') {
+    return chartValueFormat([chartValue - minValue, maxValue - minValue]);
   }
 
-  return typeof chartValueFormat === 'function'
-    ? chartValueFormat([chartValue - minValue, maxValue - minValue])
-    : minValue !== 0
-    ? chartValue.toString()
-    : chartValueFormat === 'fraction'
-    ? `${chartValue}/${maxValue}`
-    : `${((chartValue / maxValue) * 100).toFixed()}%`;
+  if (chartValueFormat === 'fraction') {
+    return `${chartValue}/${maxValue}`;
+  }
+
+  return `${((chartValue / maxValue) * 100).toFixed()}%`;
+};
+
+/**
+ * Returns a GaugeChart segment label formatted for the chart's value format.
+ * {@docCategory GaugeChart}
+ */
+export const getGaugeChartSegmentLabel = (
+  segment: ExtendedSegment,
+  minValue: number,
+  maxValue: number,
+  variant: GaugeChartVariant | undefined,
+  chartValueFormat: GaugeChartProps['chartValueFormat'],
+  isAriaLabel: boolean = false,
+): string => {
+  if ((minValue === 0 && variant === 'single-segment') || typeof chartValueFormat === 'function') {
+    return getSegmentLabel(segment, minValue, maxValue, variant, isAriaLabel);
+  }
+
+  if (!chartValueFormat || chartValueFormat === 'percentage') {
+    const startPercentage = ((segment.start / maxValue) * 100).toFixed();
+    const endPercentage = ((segment.end / maxValue) * 100).toFixed();
+    return isAriaLabel
+      ? `${segment.legend}, ${startPercentage}% to ${endPercentage}%`
+      : `${startPercentage}% - ${endPercentage}%`;
+  }
+
+  return isAriaLabel ? `${segment.legend}, ${segment.start} to ${segment.end}` : `${segment.start} - ${segment.end}`;
 };
 
 interface YValue extends Omit<YValueHover, 'y'> {
   y?: string | number;
 }
-export interface ExtendedSegment extends GaugeChartSegment {
-  start: number;
-  end: number;
-}
+export type { ExtendedSegment } from './GaugeChart.types';
 
 export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwardRef<HTMLDivElement, GaugeChartProps>(
   (props, forwardedRef) => {
+    const _gaugeChartId = useId('gauge-chart');
     const _getMargins = () => {
       const { hideMinMax, chartTitle, sublabel } = props;
       return {
@@ -257,7 +275,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const strokeWidth = 2;
       const halfStrokeWidth = strokeWidth / 2;
       const needleLength = _outerRadius - _innerRadius + EXTRA_NEEDLE_LENGTH;
-      const needleId = `gauge-chart-needle`;
+      const needleId = `${_gaugeChartId}-needle`;
       return (
         <g transform={`rotate(${rtlSafeNeedleRotation}, 0, 0)`}>
           <path
@@ -396,7 +414,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         .map(segment => {
           const yValue: YValue = {
             legend: segment.legend,
-            y: getSegmentLabel(segment, _minValue, _maxValue, props.variant),
+            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
             color: segment.color,
           };
           return yValue;
@@ -648,7 +666,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               <g role="listbox" aria-label={`${_segments.length} ${_segments.length === 1 ? 'segment' : 'segments'}`}>
                 {arcs.map((arc, index) => {
                   const segment = _segments[arc.segmentIndex];
-                  const arcId = `gauge-chart-arc-${index}`;
+                  const arcId = `${_gaugeChartId}-arc-${index}`;
                   return (
                     <React.Fragment key={index}>
                       <path
@@ -660,7 +678,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                         opacity={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 1 : 0.1}
                         {...getAccessibleDataObject(
                           {
-                            ariaLabel: getSegmentLabel(segment, _minValue, _maxValue, props.variant, true),
+                            ariaLabel: getGaugeChartSegmentLabel(
+                              segment,
+                              _minValue,
+                              _maxValue,
+                              props.variant,
+                              props.chartValueFormat,
+                              true,
+                            ),
                             ...segment.accessibilityData,
                           },
                           'option',
@@ -726,6 +751,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                 (() => {
                   const calloutData: GaugeChartCalloutData = {
                     legend: calloutLegend,
+                    chartTitle: props.chartTitle,
                     chartValue: props.chartValue,
                     minValue: _minValue,
                     maxValue: _maxValue,
@@ -736,6 +762,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                       props.chartValueFormat,
                       true,
                     ),
+                    segments: _segments.slice(0, props.segments.length).map(segment => ({ ...segment })),
                     segmentValues: hoverYValues,
                   };
 

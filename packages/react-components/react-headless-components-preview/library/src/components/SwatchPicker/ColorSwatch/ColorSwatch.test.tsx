@@ -30,4 +30,16 @@ describe('ColorSwatch', () => {
     expect(swatch).toHaveAttribute('data-selected');
     expect(swatch).toHaveAttribute('data-disabled');
   });
+
+  it('marks only the selected swatch as the focusgroup entry point', () => {
+    const { getByLabelText } = render(
+      <SwatchPicker aria-label="Colors" selectedValue="pink">
+        <ColorSwatch color="#f09" value="pink" aria-label="Pink" />
+        <ColorSwatch color="#00f" value="blue" aria-label="Blue" />
+      </SwatchPicker>,
+    );
+
+    expect(getByLabelText('Pink')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Blue')).not.toHaveAttribute('focusgroupstart');
+  });
 });

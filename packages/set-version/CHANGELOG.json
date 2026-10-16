@@ -2,6 +2,20 @@
   "name": "@fluentui/set-version",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.2.24",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/set-version",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:04 GMT",
       "tag": "@fluentui/set-version_v8.2.24",
       "version": "8.2.24",

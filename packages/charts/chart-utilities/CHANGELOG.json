@@ -2,6 +2,29 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "1.1.40",
+      "tag": "@fluentui/chart-utilities_v1.1.40",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "035ee66b71902ad8e1d066f0b7e3899d74dd979e",
+            "comment": "Add nested `module` condition under `node` so node-targeted bundlers (SSR) resolve ESM and tree-shake; bare Node and `require` consumers keep resolving CommonJS unchanged"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 May 2026 12:04:31 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.39",
       "version": "1.1.39",

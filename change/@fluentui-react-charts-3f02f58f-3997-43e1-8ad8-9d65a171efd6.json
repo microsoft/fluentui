@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: prevent Legends overflow crashes after dynamic item changes",
+  "packageName": "@fluentui/react-charts",
+  "email": "171317405+jakesalvesen@users.noreply.github.com"
+}

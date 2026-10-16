@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: forward the style prop to the SwatchPicker and SwatchPickerRow roots",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "vgenaev@gmail.com"
+}

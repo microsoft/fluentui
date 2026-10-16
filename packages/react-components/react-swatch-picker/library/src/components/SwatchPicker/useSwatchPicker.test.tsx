@@ -53,6 +53,14 @@ describe('useSwatchPicker', () => {
     expect(result.current.root).not.toHaveProperty('data-tabster');
   });
 
+  it('forwards style to the root', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const style = { outlineColor: 'rgb(1, 2, 3)' };
+    const { result } = renderHook(() => useSwatchPicker_unstable({ style }, ref));
+
+    expect(result.current.root.style).toEqual(style);
+  });
+
   it('uses the default selected value', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { result } = renderHook(() => useSwatchPicker_unstable({ defaultSelectedValue: 'red' }, ref));

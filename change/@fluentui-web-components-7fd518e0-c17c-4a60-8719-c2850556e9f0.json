@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: keep dropdown anchor stable for tooltips",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com"
+}

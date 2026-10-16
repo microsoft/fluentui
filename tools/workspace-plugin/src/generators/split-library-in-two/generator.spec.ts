@@ -278,6 +278,7 @@ describe('split-library-in-two generator', () => {
         "extends": "../tsconfig.json",
         "include": Array [
           "*.js",
+          "*.cjs",
         ],
       }
     `);
@@ -316,6 +317,22 @@ describe('split-library-in-two generator', () => {
       "
     `);
     // Test was sometimes timing out in CI
+  }, 10_000);
+
+  it('should update storybook main.cjs paths', async () => {
+    const oldConfig = readProjectConfiguration(tree, options.project);
+    tree.rename(`${oldConfig.root}/.storybook/main.js`, `${oldConfig.root}/.storybook/main.cjs`);
+
+    await splitLibraryInTwoGenerator(tree, options);
+
+    const storiesConfig = readProjectConfiguration(tree, `${options.project}-stories`);
+    const storybookMain = tree.read(`${storiesConfig.root}/.storybook/main.cjs`, 'utf-8');
+
+    expect(tree.exists(`${storiesConfig.root}/.storybook/main.js`)).toBe(false);
+    expect(storybookMain).toContain(`require('../../../../../.storybook/main')`);
+    expect(storybookMain).toContain(`'../src/**/*.mdx'`);
+    expect(storybookMain).toContain(`'../src/**/index.stories.@(ts|tsx)'`);
+    expect(storybookMain).not.toContain('../stories/');
   }, 10_000);
 });
 

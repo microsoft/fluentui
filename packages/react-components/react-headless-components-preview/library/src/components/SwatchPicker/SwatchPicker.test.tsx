@@ -39,6 +39,43 @@ describe('SwatchPicker', () => {
     expect(getByRole(role)).toHaveAttribute('focusgroup', focusgroup);
   });
 
+  it.each([
+    ['row', 'radiogroup', 'radiogroup nomemory'],
+    ['grid', 'grid', 'grid manual rowflow nomemory'],
+  ] as const)('disables focus memory in a %s while a value is selected', (layout, role, focusgroup) => {
+    const { getByRole } = render(
+      <SwatchPicker aria-label="Colors" layout={layout} defaultSelectedValue="pink">
+        <ColorSwatch color="#f09" value="pink" aria-label="Pink" />
+      </SwatchPicker>,
+    );
+
+    expect(getByRole(role)).toHaveAttribute('focusgroup', focusgroup);
+  });
+
+  it('moves the focusgroup entry point to the newly selected swatch', async () => {
+    const { getByRole, getByLabelText } = render(
+      <SwatchPicker aria-label="Colors">
+        <ColorSwatch color="#f00" value="red" aria-label="Red" />
+        <ColorSwatch color="#0f0" value="green" aria-label="Green" />
+      </SwatchPicker>,
+    );
+
+    expect(getByRole('radiogroup')).toHaveAttribute('focusgroup', 'radiogroup');
+    expect(getByLabelText('Red')).not.toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Green')).not.toHaveAttribute('focusgroupstart');
+
+    await userEvent.click(getByLabelText('Green'));
+
+    expect(getByRole('radiogroup')).toHaveAttribute('focusgroup', 'radiogroup nomemory');
+    expect(getByLabelText('Green')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Red')).not.toHaveAttribute('focusgroupstart');
+
+    await userEvent.click(getByLabelText('Red'));
+
+    expect(getByLabelText('Red')).toHaveAttribute('focusgroupstart');
+    expect(getByLabelText('Green')).not.toHaveAttribute('focusgroupstart');
+  });
+
   it('does not add grid arrow navigation in tab mode', async () => {
     const onKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
     const { getByLabelText } = render(

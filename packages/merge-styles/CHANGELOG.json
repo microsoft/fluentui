@@ -2,6 +2,29 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:33 GMT",
+      "version": "8.6.15",
+      "tag": "@fluentui/merge-styles_v8.6.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "d46cb5ca3426a5bbd49f9e3bb6653cbef06217fe",
+            "comment": "fix(security): escape < and > in serialized CSS values and stylesheet state so they cannot terminate a <style> or <script> element during SSR"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: migrate to yarn modern"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:36 GMT",
       "tag": "@fluentui/merge-styles_v8.6.14",
       "version": "8.6.14",

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: register positioning slide-direction CSS properties once per document",
+  "packageName": "@fluentui/react-positioning",
+  "email": "bernardo.sunderhus@gmail.com"
+}

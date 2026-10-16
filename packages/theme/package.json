@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "description": "Basic building blocks for Fluent UI React Component themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,9 +24,9 @@
     "update-snapshots": "yarn run -T just-scripts jest -u"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.6.14",
+    "@fluentui/merge-styles": "^8.6.15",
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/utilities": "^8.17.2",
+    "@fluentui/utilities": "^8.17.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

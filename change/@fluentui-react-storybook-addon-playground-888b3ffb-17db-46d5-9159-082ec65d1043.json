@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Improve Storybook Docs actions and Playground declaration resolution, including workspace/PnP packages, export precedence, active conditions and adjacent versioned declarations. Validate build-scoped manifests and JavaScript responses, authorize script fetches through allowedScriptFiles, and support opt-in ordered CSS/font inlining while preserving the opaque sandbox and native Storybook loading.",
+  "packageName": "@fluentui/react-storybook-addon-playground",
+  "email": "dmytrokirpa@microsoft.com"
+}

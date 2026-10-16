@@ -205,6 +205,10 @@
       "@fluentui/react-timepicker-compat-stories": [
         "packages/react-components/react-timepicker-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-timepicker-preview": ["packages/react-components/react-timepicker-preview/library/src/index.ts"],
+      "@fluentui/react-timepicker-preview-stories": [
+        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/library/src/index.ts"],
       "@fluentui/react-toast-stories": ["packages/react-components/react-toast/stories/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/library/src/index.ts"],

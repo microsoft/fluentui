@@ -319,7 +319,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     _points.forEach(point => {
       if (point.data && Array.isArray(point.data)) {
         point.data.forEach(d => {
@@ -736,6 +736,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       createYAxis={createNumericYAxis}
       createStringYAxis={createStringYAxis}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
       componentRef={cartesianChartRef}

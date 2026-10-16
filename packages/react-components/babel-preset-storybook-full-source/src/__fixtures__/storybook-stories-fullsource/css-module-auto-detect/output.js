@@ -9,6 +9,7 @@ export const Default = () =>
     'Click me',
   );
 Default.parameters = {};
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource =
   'import * as React from "react";\nimport styles from "./styles/example.module.css";\n\nexport const Default = () => <Button className={styles.root}>Click me</Button>;\n';
 Default.parameters.cssModuleSources = Object.assign({}, Default.parameters.cssModuleSources, {

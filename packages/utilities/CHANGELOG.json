@@ -2,6 +2,28 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.17.3",
+      "tag": "@fluentui/utilities_v8.17.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:35 GMT",
       "tag": "@fluentui/utilities_v8.17.2",
       "version": "8.17.2",

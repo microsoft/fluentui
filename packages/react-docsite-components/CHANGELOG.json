@@ -2,6 +2,61 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.16.8",
+      "tag": "@fluentui/react-docsite-components_v8.16.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "31724d8040198cac3edc85680a60797306d692e6",
+            "comment": "docs: warn that Markdown's `enableRenderHtmlBlock` renders unsanitized HTML and must only be used with developer-authored content"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.125.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.10.3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.8.12"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.7.3"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "f03f1e4e00455a54ab180a218962a7ae685e3b9b",
+            "comment": "chore: recover lost v8 release version bumps (pipeline commit-back failed)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 09:55:29 GMT",
       "tag": "@fluentui/react-docsite-components_v8.16.7",
       "version": "8.16.7",

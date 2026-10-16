@@ -2,6 +2,26 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.4.223",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: Yarn Modern migration compatibility changes"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "a6303bceea92d495ba8eb8aa1ae0eb839999f29c",
+            "comment": "fix: Yarn 4 workspace command resolution"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Jan 2026 05:19:09 GMT",
       "tag": "@fluentui/cra-template_v8.4.223",
       "version": "8.4.223",

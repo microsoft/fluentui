@@ -120,19 +120,26 @@ describe(`workspace-plugin`, () => {
     expect(getTargetsNames(results)).toContain('test');
   });
 
-  it('should add an optional attw target only when package.json declares exports and is not private', async () => {
+  it('should add the attw target only for published esm first projects that declare exports', async () => {
     await tempFs.createFiles({
       'with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'with-exports/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+      'with-exports/package.json': serializeJson({ type: 'module', exports: { '.': './lib/index.js' } }),
       'no-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'no-exports/package.json': serializeJson({}),
+      'no-exports/package.json': serializeJson({ type: 'module' }),
       'private-with-exports/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
-      'private-with-exports/package.json': serializeJson({ private: true, exports: { '.': './lib/index.js' } }),
+      'private-with-exports/package.json': serializeJson({
+        private: true,
+        type: 'module',
+        exports: { '.': './lib/index.js' },
+      }),
+      'commonjs-first/project.json': serializeJson({ projectType: 'library', tags: ['vNext'] }),
+      'commonjs-first/package.json': serializeJson({ exports: { '.': './lib-commonjs/index.js' } }),
     });
 
     const withExports = await createNodesFunction(['with-exports/project.json'], options, context);
     const noExports = await createNodesFunction(['no-exports/project.json'], options, context);
     const privateWithExports = await createNodesFunction(['private-with-exports/project.json'], options, context);
+    const commonjsFirst = await createNodesFunction(['commonjs-first/project.json'], options, context);
 
     expect(getTargetsNames(withExports, 'with-exports')).toContain('attw');
     expect(getTargets(withExports, 'with-exports')?.attw).toMatchObject({
@@ -142,6 +149,8 @@ describe(`workspace-plugin`, () => {
     });
     expect(getTargetsNames(noExports, 'no-exports')).not.toContain('attw');
     expect(getTargetsNames(privateWithExports, 'private-with-exports')).not.toContain('attw');
+    // CommonJS-first packages always report inherent `CJS default export` interop findings
+    expect(getTargetsNames(commonjsFirst, 'commonjs-first')).not.toContain('attw');
   });
 
   it('should add lint,test task only if configuration exists', async () => {
@@ -875,6 +884,24 @@ describe(`workspace-plugin`, () => {
       `);
     });
 
+    it('should create storybook targets for v9 stories project with .storybook/main.cjs', async () => {
+      await tempFs.createFiles({
+        'proj/stories/.storybook/main.cjs': '',
+        'proj/stories/project.json': serializeJson({
+          root: 'proj/stories',
+          projectType: 'library',
+          tags: ['vNext', 'type:stories'],
+        } satisfies ProjectConfiguration),
+        'proj/stories/package.json': serializeJson({
+          name: '@proj/proj-stories',
+          private: true,
+        } satisfies Partial<PackageJson>),
+      });
+      const results = await createNodesFunction(['proj/stories/project.json'], options, context);
+
+      expect(getTargetsNames(results, 'proj/stories')).toEqual(expect.arrayContaining(['storybook', 'start']));
+    });
+
     it('should create default nodes for v9 stories project', async () => {
       await tempFs.createFiles({
         'proj/stories/.storybook/main.js': '',
@@ -1060,13 +1087,48 @@ describe(`workspace-plugin`, () => {
           metadata = getMetadata(results, 'proj/library');
         });
 
+        it.each(['react-compiler-analyzer--lint', 'react-compiler-analyzer--analyze'])(
+          'should build the workspace analyzer before %s',
+          targetName => {
+            expect(targets?.[targetName].dependsOn).toEqual([{ target: 'build', projects: 'react-compiler-analyzer' }]);
+          },
+        );
+
+        it.each(['react-compiler-analyzer--lint', 'react-compiler-analyzer--analyze', 'react-compiler-analyzer'])(
+          'should invalidate %s when the workspace analyzer changes',
+          targetName => {
+            expect(targets?.[targetName].inputs).toEqual(
+              expect.arrayContaining([
+                '{workspaceRoot}/tools/react-compiler-analyzer/src/**/*',
+                '{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*',
+                '{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs',
+                '{workspaceRoot}/tools/react-compiler-analyzer/package.json',
+                '{workspaceRoot}/tools/react-compiler-analyzer/project.json',
+                '{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json',
+              ]),
+            );
+          },
+        );
+
         it('should add react-compiler-analyzer target group', async () => {
           expect(targets?.['react-compiler-analyzer--lint']).toMatchInlineSnapshot(`
             Object {
               "cache": true,
               "command": "yarn run -T react-compiler-analyzer lint ./src",
+              "dependsOn": Array [
+                Object {
+                  "projects": "react-compiler-analyzer",
+                  "target": "build",
+                },
+              ],
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",
@@ -1097,8 +1159,20 @@ describe(`workspace-plugin`, () => {
             Object {
               "cache": true,
               "command": "yarn run -T react-compiler-analyzer analyze ./src",
+              "dependsOn": Array [
+                Object {
+                  "projects": "react-compiler-analyzer",
+                  "target": "build",
+                },
+              ],
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",
@@ -1134,6 +1208,12 @@ describe(`workspace-plugin`, () => {
               "executor": "nx:noop",
               "inputs": Array [
                 "default",
+                "{workspaceRoot}/tools/react-compiler-analyzer/src/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/bin/**/*",
+                "{workspaceRoot}/tools/react-compiler-analyzer/esbuild.config.mjs",
+                "{workspaceRoot}/tools/react-compiler-analyzer/package.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/project.json",
+                "{workspaceRoot}/tools/react-compiler-analyzer/rca*.schema.json",
                 Object {
                   "externalDependencies": Array [
                     "babel-plugin-react-compiler",

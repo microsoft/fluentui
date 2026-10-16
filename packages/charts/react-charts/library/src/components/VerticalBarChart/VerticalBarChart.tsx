@@ -1086,7 +1086,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _mapCategoryToValues() {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     _points.forEach(point => {
       const xValue = point.x as string;
       if (!categoryToValues[xValue]) {
@@ -1173,6 +1173,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       getDomainNRangeValues={_getDomainNRangeValues}
       getAxisData={_getAxisData}
       onChartMouseLeave={_handleChartMouseLeave}
+      onChartBlur={_handleChartMouseLeave}
       getDomainMargins={_getDomainMargins}
       {...(_xAxisType! === XAxisTypes.StringAxis && {
         xAxisInnerPadding: _xAxisInnerPadding,

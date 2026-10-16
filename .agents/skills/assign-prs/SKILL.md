@@ -1,9 +1,9 @@
 ---
 name: assign-prs
 description: >-
-  Assign reviewers to the open pull requests awaiting review from the Fluent UI team queues, by default microsoft/cxe-prg and microsoft/fluentui-react-build. Routes each PR that lacks coverage to a reviewer by area ownership and then by lowest current review load, requesting only the shortfall. Always presents a dry-run plan and requires explicit approval before requesting a review.
+  Assign reviewers to open pull requests awaiting review from the Fluent UI team queues across microsoft/fluentui, fluentui-system-icons, fluentui-contrib and monosize. Routes each PR that lacks coverage by area ownership and then lowest current review load, requesting only the shortfall. Always presents a dry-run plan and requires explicit approval before requesting a review.
 disable-model-invocation: true
-argument-hint: '[--repo owner/repo] [--team slug] [--account login] [--reviewers count] [--stale-days days]'
+argument-hint: '[--repo owner/repo ...] [--team org/slug ...] [--account login] [--reviewers count] [--stale-days days]'
 allowed-tools: Bash Read Grep Glob
 ---
 
@@ -15,17 +15,17 @@ This skill does one thing. It does not approve, merge, close, or comment on anyt
 
 ## Defaults
 
-| Argument       | Default                                               | Purpose                                             |
-| -------------- | ----------------------------------------------------- | --------------------------------------------------- |
-| `--repo`       | `microsoft/fluentui`                                  | Repository containing the pull requests             |
-| `--team`       | `microsoft/cxe-prg`, `microsoft/fluentui-react-build` | Team queue to read; repeat the flag to pass several |
-| `--account`    | Active `gh` account                                   | GitHub account the run acts as                      |
-| `--reviewers`  | `1`                                                   | Reviewers to assign per PR, minimum 1               |
-| `--stale-days` | `90`                                                  | Age past which a PR is reported but never assigned  |
+| Argument       | Default                           | Purpose                                                    |
+| -------------- | --------------------------------- | ---------------------------------------------------------- |
+| `--repo`       | All four configured repositories  | Repository to read; repeat to select a subset              |
+| `--team`       | Queues in each repository profile | Queue to read; repeat for a single repo to select a subset |
+| `--account`    | Active `gh` account               | GitHub account the run acts as                             |
+| `--reviewers`  | `1`                               | Reviewers to assign per PR, minimum 1                      |
+| `--stale-days` | `90`                              | Age past which a PR is reported but never assigned         |
 
-Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--reviewers` value below 1, a non-integer `--stale-days`, or unknown arguments instead of guessing.
+Parse overrides from `$ARGUMENTS`. Reject an invalid repository name, a `--reviewers` value below 1, a non-integer `--stale-days`, or unknown arguments instead of guessing. `--repo` is repeatable. Without it, plan all four repositories in `reviewers.json` and `profiles/*.json` beside this file. Reject unknown repositories instead of reading an arbitrary repo with the wrong profile.
 
-`--team` is repeatable and replaces the defaults entirely when given: passing it once reads exactly one queue rather than adding a third. Collect the validated values into `TEAMS`, each as `org/slug`. Note that this selects which queues to read, not who may be assigned — the reviewer roster comes from the team declared in `reviewers.json`, as Step 4 explains.
+`--team` is repeatable but requires exactly one `--repo`, and selects only a subset of that repository's configured queues: passing it once reads exactly one queue rather than adding another. Collect the validated values into `TEAMS`, each as `org/slug`. Note that this selects which queues to read, not who may be assigned — the reviewer roster comes from the team declared in that repo's profile, as Step 4 explains.
 
 ## Step 1 - Check prerequisites
 
@@ -45,13 +45,13 @@ gh auth switch --user "$ACCOUNT"
 
 Also confirm the token carries `read:org`, which Step 4 needs to resolve the team roster.
 
-The account must then have `push` or `triage` permission on the repository. Requesting a reviewer fails on a read-only token, and the failure message is misleading: GitHub reports a `ReplaceActorsForAssignable` permission error rather than an authentication error.
+The account must then have `push` or `triage` permission on **each selected repository**. Requesting a reviewer fails on a read-only token, and the failure message is misleading: GitHub reports a `ReplaceActorsForAssignable` permission error rather than an authentication error.
 
 ```bash
 gh api "repos/${REPO}" -q '.permissions'
 ```
 
-Stop and report if `push` and `triage` are both `false`.
+Stop and report if `push` and `triage` are both `false` for any selected repository.
 
 ## Step 2 - Fetch the queues
 
@@ -66,16 +66,23 @@ for TEAM in "${TEAMS[@]}"; do
 done
 ```
 
+Run that query for each selected repo and its configured queue teams. The skill's [planner](./scripts/plan.mjs) handles pagination and validates every local profile. From the workspace root:
+
+```bash
+node ./.agents/skills/assign-prs/scripts/plan.mjs --account LOGIN
+# Optionally add --repo microsoft/monosize, or repeat --repo to select a subset.
+```
+
 **Build the qualifier string from the validated `REPO` and `TEAM` values, and never from a literal.** A single-quoted query with the repository baked in ignores `--repo` entirely, so discovery reads one repository while the mutations in the final step, which do honour `--repo`, write to another. The queue then holds PR numbers from the wrong project and every number resolves to an unrelated PR that happens to share it. Use `--method GET` with `-f q="..."` as above so `gh` form-encodes the qualifiers; hand-glued `+` separators in a query string silently mis-encode any value containing a space or a slash.
 
-**Deduplicate by PR number across the queues.** The queues overlap substantially; a PR requesting review from more than one team must be considered once and assigned once. Record which queue or queues each PR came from so the report can show it.
+**Deduplicate by `(repo, PR number)` across the queues.** The queues overlap substantially; a PR requesting review from more than one team must be considered once and assigned once. Different repositories may have the same PR number. Record which queue or queues each PR came from so the report can show it.
 
 ### What these queries do and do not cover
 
-`team-review-requested:` matches only PRs with an _outstanding_ review request for that team. Two consequences worth stating in the report:
+`team-review-requested:` matches only open, non-draft PRs with a review request still pending for that team. A team that reviewed earlier or had its request removed is no longer in the queue. Two consequences worth stating in the report:
 
-- **The queue is a point-in-time snapshot.** PRs are opened while the plan is being reviewed, and a long approval pause means the batch no longer matches reality. Re-fetch every queue immediately before applying, and assign to anything that appeared in between rather than reusing a stale list. Timestamp the snapshot in the report so the gap is visible.
-- **A PR that never requested one of these teams is invisible here**, however badly it needs a reviewer. The repository carries several times more open PRs than these queues contain; the rest belong to other teams and are out of scope. Report the queue size against the repository's total open non-draft PR count so the boundary is explicit and nobody reads a clean queue as a clean repository.
+- **The queue is a point-in-time snapshot.** PRs are opened while the plan is being reviewed, and a long approval pause means the batch no longer matches reality. Re-fetch every queue immediately before applying; if the plan changes, present it and obtain fresh approval instead of silently assigning new arrivals. Timestamp the snapshot in the report so the gap is visible.
+- **A PR that never requested one of these teams is invisible here**, however badly it needs a reviewer. The repositories carry more open PRs than these queues contain; the rest belong to other teams and are out of scope. Report each queue size against that repository's total open non-draft PR count so the boundary is explicit and nobody reads a clean queue as a clean repository.
 
 ## Step 3 - Partition the queue
 
@@ -94,7 +101,7 @@ Both exclusions earn their place:
 
 ## Step 4 - Plan reviewer assignments
 
-Resolve team members at run time rather than hardcoding a roster, because membership changes. The roster comes from the team declared in `reviewers.json`, not from `--team`:
+Resolve team members at run time rather than hardcoding a roster, because membership changes. The roster comes from the `team` in **each repository's profile**, not from `--team`:
 
 ```bash
 TEAM_ORG="$(jq -r '.team.org' "$CONFIG")"
@@ -108,41 +115,19 @@ This needs only `read:org`. If it fails, stop and report; do not fall back to a 
 
 ### Reviewer configuration
 
-Everything about _who_ reviews lives in `reviewers.json`, beside this file, and `README.md` documents its fields. This document deliberately contains no names — to change who receives assignments, edit that file, never this one.
+Everything about _who_ reviews lives in the selected repo's profile (`reviewers.json` for fluentui, `profiles/*.json` for the other repos), and `README.md` documents its fields. This document deliberately contains no names — to change who receives assignments, edit the profile, never this one. The profiles are an **overlay, not a roster**: the API says who exists, the file says who to ask. Never load policy from a PR branch.
 
-Validate the config before reading anything out of it:
+The planner validates all profiles before reading a queue or contacting GitHub. When changing this skill, run the tests described in `README.md`; a normal planning run does not need a separate test command.
 
-```bash
-CONFIG="$(dirname "$SKILL_PATH")/reviewers.json"
-SCHEMA="$(dirname "$SKILL_PATH")/reviewers.schema.json"
+The shared schema covers structure and `additionalProperties: false` prevents a free-text field about a person from being introduced. JSON Schema has no keyref, so the validator also checks that every entry in `primary` and `secondary` is a key of `areas`, that repos and queues are unique, and that logins are unique within a profile.
 
-jq empty "$CONFIG" || { echo "reviewers.json is unparseable"; }
+**If a profile is missing, unparseable, fails schema validation, declares an undeclared area, or yields zero eligible live reviewers, stop and report the specific fault.** Never fall back to an inline list — that reintroduces the hardcoding this design removes. Assigning to a guessed reviewer is worse than assigning to nobody, because it looks like the config was consulted.
 
-jq -e '
-  (.areas | keys) as $valid
-  | [.reviewers[] | (.primary + .secondary)[]]
-  | map(select(. as $a | $valid | index($a) | not))
-  | if length == 0 then true else ("undeclared areas: " + join(", ") | error) end
-' "$CONFIG"
-```
-
-`reviewers.schema.json` covers the structure, and its `additionalProperties: false` is what stops a free-text field about a person being reintroduced. It cannot express that every entry in `primary` and `secondary` must be a key of `areas` — JSON Schema has no keyref — so that cross-reference is the check above. It matters because a misspelled area is not an error at run time: it simply never matches, and the owner silently stops receiving their own area's PRs.
-
-The config is an **overlay, not a roster**. Membership still comes from the API call above; the file only declares which of those members are eligible and what each one knows well. Both halves are required: the API says who exists, the file says who to ask.
-
-Read the eligible pool from it:
-
-```bash
-jq -r '[.reviewers[] | select(.eligible) | .login] | join("\n")' "$CONFIG"
-```
-
-**If `reviewers.json` is missing, unparseable, fails schema validation, declares an undeclared area, or yields zero eligible reviewers, stop and report the specific fault.** Never fall back to an inline list — that reintroduces the hardcoding this design removes. Assigning to a guessed reviewer is worse than assigning to nobody, because it looks like the config was consulted.
-
-Report the effective pool size at the top of the plan, because shrinking the roster concentrates load: at `REVIEWERS=1` a 19-PR queue still lands roughly 5 new reviews on each of 4 eligible people, and raising `REVIEWERS` multiplies that directly.
+Report each repo's effective pool size at the top of the plan, because shrinking the roster concentrates load: at `REVIEWERS=1` a 19-PR queue still lands roughly 5 new reviews on each of 4 eligible people, and raising `REVIEWERS` multiplies that directly.
 
 ### Reconcile the config against the live roster
 
-The two sources drift as people join and leave. Compare them every run and report both directions:
+The two sources drift as people join and leave. Compare them for **each repo** and report both directions:
 
 - **In the config but no longer on the team** — a stale entry. Never request a review from them; report so the entry can be removed.
 - **On the team but absent from the config** — unconfigured. Under the default `unknownMemberPolicy` of `exclude-and-report` they receive nothing, and the run says so by name.
@@ -151,7 +136,7 @@ The second case is the one that matters. Treating an unknown member as eligible 
 
 ### Eligibility means "reviews", not "is on the team"
 
-Before marking anyone `eligible`, check that they actually review. An account can accumulate hundreds of review requests through CODEOWNERS while submitting almost none:
+Before marking anyone `eligible`, check that they actually review **in that repository**. An account can accumulate hundreds of review requests through CODEOWNERS while submitting almost none:
 
 ```bash
 gh api "search/issues?q=repo:${REPO}+reviewed-by:${LOGIN}&per_page=1" --jq .total_count
@@ -160,13 +145,11 @@ gh api "search/issues?q=repo:${REPO}+review-requested:${LOGIN}&per_page=1" --jq 
 
 A ratio near zero matters because an eligible member counts toward `existing_coverage` on any PR that already requests them **in an area they serve**. Marking a non-reviewing account eligible therefore suppresses the real assignment those PRs needed, inside that area. Coverage is area-scoped precisely to bound this, so an account that CODEOWNERS requests across the whole repository only distorts the areas it actually claims — but the bound is only as tight as its area list. Keep such an account's `primary` and `secondary` narrow, and set `fallbackEligible` to `false` so it never absorbs unclassified work either.
 
-Where an area's declared owner does not review in practice, give the area to someone who does as well. `reviewers.json` holds no free-text field, so name the substitution in the run's report — read cold, the config shows both as owners with nothing to indicate one is standing in for the other.
+Where an area's declared owner does not review in practice, give the area to someone who does as well. Profiles hold no free-text field, so name the substitution in the run's report — read cold, the config shows both as owners with nothing to indicate one is standing in for the other.
 
-**Report those ratios in the run, never try to record them in `reviewers.json`.** This repository is public and the config is committed, so it deliberately gives you nowhere to put them. A measurement that justifies a decision in conversation becomes a permanent public statement about a named person once committed. Change the `eligible` flag, and explain the change in the pull request that makes it.
+**Report those ratios in the run, never try to record them in a profile.** The configs are committed in a public repository, so they deliberately give you nowhere to put them. A measurement that justifies a decision in conversation becomes a permanent public statement about a named person once committed. Change the `eligible` flag, and explain the change in the pull request that makes it.
 
-A typo'd login in the config surfaces here too: it appears as a stale entry on one side and an unconfigured member on the other.
-
-When diffing the two lists with `comm`, sort both sides with the same collation — `jq` sorts ASCII (uppercase first) while shell `sort` follows the locale, so mixed-case logins land in different positions and `comm` reports every name as drifted in both directions at once. That symptom is diagnostic: identical non-empty lists under both headings means the sort, not the roster, is wrong.
+A typo'd login in the config surfaces here too: it appears as a stale entry on one side and an unconfigured member on the other. When diffing the two lists with `comm`, sort both sides with the same collation — `jq` sorts ASCII (uppercase first) while shell `sort` follows the locale, so mixed-case logins land in different positions and `comm` reports every name as drifted in both directions at once. That symptom is diagnostic: identical non-empty lists under both headings means the sort, not the roster, is wrong.
 
 ```bash
 gh api "orgs/${TEAM_ORG}/teams/${TEAM_SLUG}/members" --paginate -q '.[].login' | LC_ALL=C sort > live.txt
@@ -177,15 +160,11 @@ LC_ALL=C comm -23 live.txt cfg.txt   # unconfigured members
 
 ### Route by area, then by load
 
-Each reviewer declares `primary` and `secondary` areas; each area declares the `paths` and conventional-commit `scopes` that identify it.
-
-Detect a PR's area from **changed file paths first**, falling back to the conventional-commit scope in the title (`feat(react-button): …` → `react-button`). Paths are authoritative because a title scope is free text and is occasionally wrong or absent. A PR matching nothing has no area.
+Each reviewer declares `primary` and `secondary` areas; each area declares the `paths` and conventional-commit `scopes` that identify it. Detect a PR's area from **changed file paths first**, falling back to the conventional-commit scope in the title (`feat(react-button): …` → `react-button`). Paths are authoritative because a title scope is free text and is occasionally wrong or absent. A PR matching nothing has no area.
 
 **Score each file against the most specific pattern that matches it, then total per area — never count a file toward every area whose pattern matches.** Area paths nest: `packages/react-components/react-headless-components-preview/**` sits inside `packages/react-components/**`, so every headless file also matches `components`. Counting matches per area therefore guarantees the broader area wins any nested case by construction, and a purely headless PR routes to `components`.
 
-Assign each file to exactly one area — the one whose matching pattern has the longest literal prefix — and only then take the area holding the most files. Ties go to the more specific area.
-
-Take a pattern's literal prefix as everything before its **first** `*`, not merely by stripping a trailing `/**`. Patterns carry mid-string globs — `packages/react-components/react-motion*/**` is one — and trimming only the tail leaves a `*` inside the prefix, so it matches nothing and the area silently never fires.
+Assign each file to exactly one area — the one whose matching pattern has the longest literal prefix — and only then take the area holding the most files. Ties go to the more specific area. Take a pattern's literal prefix as everything before its **first** `*`, not merely by stripping a trailing `/**`. Patterns carry mid-string globs — `packages/react-components/react-motion*/**` is one — and trimming only the tail leaves a `*` inside the prefix, so it matches nothing and the area silently never fires.
 
 Ignore `change/**` beachball files when counting. Every fluentui PR carries them, they encode the package name in the filename rather than the path, and including them dilutes the signal without ever identifying an area.
 
@@ -195,8 +174,8 @@ Expect path and scope to disagree, and trust the path. A GitHub Action bump is t
 
 ```
 score(scope, pattern) = 1000 + len(pattern)   if pattern == scope
-                        len(pattern)          if pattern is a prefix glob that matches
-                        no match              otherwise
+      len(pattern)          if pattern is a prefix glob that matches
+      no match              otherwise
 ```
 
 Taking the first match in file order instead produces silently wrong routing that looks correct on the common cases — `react-motion` lands in `components`, and `headless` only wins by the accident of being declared first. Apply the same specificity rule to path patterns.
@@ -206,8 +185,8 @@ Build the tier for selection:
 ```
 pool  = (live roster ∩ config eligible) − author − already requested − already reviewing
 tier  = pool ∩ reviewers whose PRIMARY   areas include area
-        else pool ∩ reviewers whose SECONDARY areas include area
-        else pool ∩ reviewers where fallbackEligible is not false
+  else pool ∩ reviewers whose SECONDARY areas include area
+  else pool ∩ reviewers where fallbackEligible is not false, only if no eligible owner declares area
 ```
 
 A reviewer may set `"fallbackEligible": false` to opt out of that last tier. They are then only ever selected for an area they actually declare, and never absorb work that matched nothing. This exists because a narrow specialist carries little load by definition, so lowest-load selection would otherwise hand them every unclassifiable PR — the opposite of what declaring a specialty means. The field is optional and defaults to `true`.
@@ -222,13 +201,9 @@ jq -r '.reviewers[] | select(.eligible)
 
 `.fallbackEligible // true` is wrong and fails silently: jq treats `false` as empty, so the alternative fires and every opted-out reviewer reads back as opted-in. Note the parentheses around `has(...) | not` as well — without them the pipe binds first, `.fallbackEligible` is applied to a boolean, and jq aborts with `Cannot index boolean`. The same trap applies to any boolean in this file that defaults to true.
 
-The final fallback tier is what makes `areaMatch: "preference"` different from `"hard"`. The eligible pool is small, and some areas are owned by other teams entirely, so at any moment an area may have no declared owner among the people available. A strict filter would report those PRs under-covered while a perfectly capable reviewer sat idle; preference mode degrades to the pool instead. Under `"hard"`, an empty tier is left under-covered rather than filled.
+The final fallback tier is what makes `areaMatch: "preference"` different from `"hard"`. The eligible pool is small, and some areas are owned by other teams entirely, so at any moment an area may have no declared owner. A strict filter would report those PRs under-covered while a capable reviewer sat idle; preference mode degrades to the pool instead. Under `"hard"`, an empty tier is left under-covered rather than filled. An owner who is unavailable on a particular PR does not turn that area into an unowned one. An area that repeatedly reaches the fallback tier is a gap in its repo profile, not a property of the work — give it an owner rather than letting selection default.
 
-An area that repeatedly reaches the fallback tier is a gap in `reviewers.json`, not a property of the work — give it an owner rather than letting selection default.
-
-Then pick from the tier by **lowest current open-review load**, breaking ties at random.
-
-Load-first selection within the tier, rather than a uniform draw over it, is deliberate. A blind random draw over a four-person pool skews badly and self-reinforces: it repeatedly lands on whoever is already busiest, and the excess trains the team to ignore review notifications. Report the load column alongside the number of requests this batch adds so a bad draw is still visible before approval.
+Then pick from the tier by **lowest current open-review load across selected repositories**, using a stable login tie-breaker so an unchanged plan can be approved by fingerprint. A blind random draw over a small pool skews badly and self-reinforces: it repeatedly lands on whoever is already busiest, and the excess trains the team to ignore review notifications. Report the load column alongside the number of requests this batch adds so a lopsided result is still visible before approval.
 
 For each assignable PR, build the eligible pool by removing:
 
@@ -242,10 +217,9 @@ Never assign a fixed `REVIEWERS` per PR. Count what the PR already has, and requ
 
 ```
 serves(area)      = eligible reviewers whose primary or secondary areas include area,
-                    or — when no eligible reviewer declares that area — every eligible
-                    reviewer whose fallbackEligible is not false
-existing_coverage = reviewers in serves(area) already requested on the PR or already
-                    reviewing it
+        or — when no eligible reviewer declares that area — every eligible
+        reviewer whose fallbackEligible is not false (in preference mode)
+existing_coverage = reviewers in serves(area) already requested on the PR or already reviewing it
 shortfall         = max(0, REVIEWERS - existing_coverage)
 ```
 
@@ -253,9 +227,9 @@ Select `shortfall` logins from the tier described above — area match first, th
 
 This is the single most important rule in this step. A PR that already has a team member on it does not need a second, and assigning one anyway is the default failure mode of this skill: most PRs in these queues already carry a reviewer, so a naive fixed-size assignment inflates a batch several times over and dumps the excess on a small pool. Excess requests are worse than useless — they train the team to ignore review notifications.
 
-**Coverage is area-scoped: being requested on a PR only counts if the person serves that PR's area.** Note that `serves(area)` does not cascade the way selection does — selection prefers a primary owner over a secondary one, but for coverage either counts, because either would be a legitimate review. Without this scoping, one account that CODEOWNERS requests across the whole repository would mark nearly every PR "already covered" and silently suppress the assignments they needed, in areas that account never works in. Area ownership is already declared in `reviewers.json`, so use it on both sides of the calculation rather than treating any request as coverage.
+**Coverage is area-scoped: being requested on a PR only counts if the person serves that PR's area.** Note that `serves(area)` does not cascade the way selection does — selection prefers a primary owner over a secondary one, but for coverage either counts, because either would be a legitimate review. Without this scoping, one account that CODEOWNERS requests across the whole repository would mark nearly every PR "already covered" and silently suppress the assignments they needed, in areas that account never works in. Area ownership is already declared in the repo profile, so use it on both sides of the calculation rather than treating any request as coverage.
 
-`existing_coverage` counts only members of the eligible pool defined by `reviewers.json`. A review request aimed at the whole team is what put the PR in this queue, so it never counts toward coverage; neither does a bot review, nor a reviewer outside the team, nor an eligible member requested on a PR outside the areas they serve, nor the author's own review of their own PR.
+`existing_coverage` counts only members of the eligible pool defined by the repo profile. A review request aimed at the whole team is what put the PR in this queue, so it never counts toward coverage; neither does a bot review, nor a reviewer outside the team, nor an eligible member requested on a PR outside the areas they serve, nor the author's own review of their own PR.
 
 ### Judge coverage, not pool size
 
@@ -263,7 +237,7 @@ A small or empty pool usually means the PR is already well covered, not that it 
 
 ```
 effective_coverage = (reviewers in serves(area) already requested or already reviewing)
-                     + (newly selected reviewers)
+         + (newly selected reviewers)
 ```
 
 - Report a PR as **under-covered** only when `effective_coverage < REVIEWERS`. That is the condition a human needs to act on, and it means the pool ran dry before the shortfall was filled.
@@ -272,7 +246,9 @@ effective_coverage = (reviewers in serves(area) already requested or already rev
 
 Flagging on pool size alone produces false warnings on exactly the PRs that are in the best shape.
 
-Compute each member's current open-review load across the deduplicated queue and include it in the report, alongside the number of requests this batch would add. Selection is area-then-load rather than a blind draw, so a lopsided batch is now a signal that something is wrong rather than ordinary variance — check whether one area is absorbing the whole queue, or whether the shortfall rule is being ignored. If the batch total looks large relative to the number of under-covered PRs, that is a symptom of ignoring the shortfall rule — recheck it before presenting the plan.
+Compute each member's current open-review load across the deduplicated queues of **all selected repos** and include it in the report, alongside the number of requests this batch would add. Selection is area-then-load rather than a blind draw, so a lopsided batch is now a signal that something is wrong rather than ordinary variance — check whether one area is absorbing the whole queue, or whether the shortfall rule is being ignored. If the batch total looks large relative to the number of under-covered PRs, that is a symptom of ignoring the shortfall rule — recheck it before presenting the plan.
+
+The skill-local runner implements these calculations and returns JSON containing `account`, `snapshotAt`, `fingerprint`, repo/queue counts, roster drift, current/planned load per login, excluded counts and assignable PR rows. The fingerprint includes the full internal snapshot, even though excluded PR details are summarized. The runner only reads GitHub; no review requests are made.
 
 ## Step 5 - Present the dry-run plan
 
@@ -281,19 +257,19 @@ Show the whole plan before touching anything:
 ```markdown
 ## Reviewer assignment plan
 
-- Repository: owner/repo
-- Queues: cxe-prg (25), fluentui-react-build (51), 62 unique after dedupe
-- Eligible reviewers after exclusions: 6 of 8
-- Config: reviewers.json in sync with the live roster
+- Account: confirmed-login
+- Repositories: microsoft/fluentui, microsoft/monosize (snapshot time and fingerprint)
+- Queues: fluentui cxe-prg (25), build (51), 62 unique; monosize build (11), 11 unique
+- Eligible reviewers after exclusions: by repo; include roster drift even when clean
 - Assignable: 18 | Dependabot (not assigned): 40 | Stale (not assigned): 4
 
 ### Reviewer assignments
 
-| PR   | Author | Queue   | Area       | Reviewers to add  | Match     | Coverage |
-| ---- | ------ | ------- | ---------- | ----------------- | --------- | -------- |
-| #123 | alice  | cxe-prg | headless   | bob               | primary   | 1        |
-| #124 | dave   | both    | motion     | carol             | fell back | 1        |
-| #125 | erin   | cxe-prg | components | (already covered) | -         | 2        |
+| PR                     | Author | Queue   | Area       | Reviewers to add  | Match     | Coverage |
+| ---------------------- | ------ | ------- | ---------- | ----------------- | --------- | -------- |
+| microsoft/fluentui#123 | alice  | cxe-prg | headless   | bob               | primary   | 1        |
+| microsoft/monosize#124 | dave   | build   | core       | carol             | secondary | 1        |
+| microsoft/fluentui#125 | erin   | cxe-prg | components | (already covered) | -         | 2        |
 
 ### Not assigned
 
@@ -303,37 +279,37 @@ Show the whole plan before touching anything:
 | Stale      | 4     | idle more than 90 days; needs a human decision |
 ```
 
-Show the config-reconciliation line even when it is clean, so a silent drift is never mistaken for an absent check. When it is not clean, replace it with the detail and list the affected logins by name:
+Show the config-reconciliation line for **each repo** even when it is clean, so silent drift is never mistaken for an absent check. When it is not clean, replace it with the detail and list affected logins by name:
 
 ```markdown
-- Config: 1 stale entry (`oldperson` left the team), 1 unconfigured member (`newperson` — receiving nothing until added to reviewers.json)
+- Config for microsoft/fluentui: 1 stale entry (`oldperson` left the team), 1 unconfigured member (`newperson` — receiving nothing until added to its profile)
 ```
 
-The `Match` column records whether the chosen reviewer owned the area as `primary`, as `secondary`, or whether selection `fell back` to the whole pool because nobody owned it. A column full of fallbacks means the area map in `reviewers.json` no longer reflects what the team actually works on, and is the signal to update it.
+The `Match` column records whether the chosen reviewer owned the area as `primary`, as `secondary`, or whether selection `fell back` to the whole pool because nobody owned it. A column full of fallbacks means the area map in that profile no longer reflects what the team actually works on, and is the signal to update it.
 
 The `Coverage` column counts only reviewers who serve the PR's area, so it can read lower than the reviewer list GitHub shows. When a PR is assigned despite already carrying an eligible reviewer, say which reviewer was discounted and for which area — otherwise the row looks like the shortfall rule misfiring, and the natural correction is to suppress exactly the assignment that was needed.
 
-Report the two excluded buckets as counts rather than dropping them. A run that assigns 3 reviewers out of a 62-PR queue looks broken until the report shows that 40 were Dependabot and 4 were stale.
+Report the two excluded buckets as counts rather than dropping them. A run that assigns 3 reviewers out of a 62-PR queue looks broken until the report shows that 40 were Dependabot and 4 were stale. Include each repository's total open non-draft PR count alongside its queue count; a clean team queue does not imply a clean repository. Name every under-covered PR and its specific blocker.
 
-Then ask the user to approve. Accept `apply all`, a subset such as `assign 36476` or `skip 36430`, or `cancel`. Treat invoking the skill as a request for the plan, never as approval to mutate.
+Then ask the user to approve. Accept `apply all`, a subset such as `assign microsoft/fluentui#36476` or `skip microsoft/monosize#300`, or `cancel`. Treat invoking the skill as a request for the plan, never as approval to mutate. Never use an unqualified PR number across repositories.
 
 ## Step 6 - Apply approved assignments
 
-Act on approved items only, one PR at a time, printing a one-line result for each. Do not retry a failure blindly; report it and continue with the remaining items.
+Immediately before applying, rerun the **same** plan command with the same options and account. Compare the `fingerprint` with the approved plan. If it differs (new PR, changed review request, area, roster, load, or configuration), present the updated plan and obtain fresh approval. Do not quietly include newly arrived PRs. A newly selected reviewer or even a change to an approved PR's coverage requires reapproval.
 
-Request reviewers:
+For each approved `(repo, number, login)` tuple, re-read the PR and its reviews. Confirm it is open, non-draft, still in a configured queue and not stale or Dependabot; confirm the author, requests, submitted reviews, area, eligibility, shortfall and active `gh` account still match the approved snapshot. If anything differs, skip that PR and report it. Never reuse a PR number under another repo or retry with another reviewer without asking.
+
+Only then request the approved reviewer:
 
 ```bash
 gh pr edit "$PR" --repo "$REPO" --add-reviewer "$LOGIN"
 ```
 
-Pass `--repo "$REPO"` on every call, using the same value discovery ran under. A mutation aimed at a different repository than the queue was read from will still succeed whenever that number happens to exist there, and it will act on an unrelated PR.
-
-If the request is rejected for a missing permission or because the login cannot be requested on that PR, report it and move on. Never retry by substituting a different reviewer without saying so.
+Pass `--repo "$REPO"` on every call, using the same value discovery ran under. A mutation aimed at a different repository than the queue was read from will still succeed whenever that number happens to exist there, and it will act on an unrelated PR. Act on approved items only, one PR at a time, printing a one-line result for each. If the request is rejected for a missing permission or because the login cannot be requested on that PR, report it and move on. Never retry by substituting a different reviewer without saying so.
 
 ## Step 7 - Report
 
-Print assigned, skipped and failed counts, each failure with its specific reason, plus already-covered PRs and any genuinely under-covered PRs still needing a human. Restate the Dependabot and stale counts that were excluded from assignment. Name the next action for anything left unresolved.
+Print assigned, skipped and failed counts, each failure with its specific reason, plus already-covered PRs and any genuinely under-covered PRs still needing a human. Restate the Dependabot and stale counts excluded from assignment for every repo. Name the next action for anything left unresolved.
 
 Verify rather than trusting exit codes: re-read the affected PRs and confirm the state actually changed — every assigned PR should sit at exactly `REVIEWERS` eligible reviewers who serve its area. A command that returns zero has not necessarily produced the state you intended.
 
@@ -343,17 +319,17 @@ A run almost always leaves something a human has to finish: a PR parked on anoth
 
 ## Guardrails
 
-- Always dry-run and obtain explicit approval before requesting a review.
+- Always dry-run and obtain explicit approval before requesting a review. Re-run the same plan command immediately before applying and require new approval when its fingerprint differs.
 - Never act as an account other than the one confirmed in Step 1; stop and ask rather than switching accounts unprompted.
 - Never approve, merge, close, or comment on a pull request. This skill only requests reviewers; `/dependabot-rollup` owns dependency updates.
-- Never build a search query from a literal repository or team name; derive every qualifier from the validated `REPO` and `TEAMS` values, and mutate only PRs discovered under that same `REPO`.
+- Never build a search query from a literal repository or team name; derive every qualifier from validated profiles and arguments, and mutate only PRs discovered under that same `REPO`.
 - Never assign the PR author as a reviewer of their own PR.
 - Never add a reviewer to a PR that already has `REVIEWERS` eligible team members requested or reviewing who serve that PR's area; request only the shortfall. A request to someone outside the area they serve is not coverage, and the author's own review never counts toward that total.
 - Never assign a reviewer to a Dependabot PR or to a PR idle longer than `STALE_DAYS`; report both as counts instead.
-- Never hardcode the team roster or reviewer names in `SKILL.md`; resolve membership from the API at run time and read eligibility and areas from `reviewers.json`. Neither source is sufficient alone.
-- Never request a review from a login that is absent from `reviewers.json`, or present but not `eligible`; report the omission by name instead.
-- Never fall back to an inline reviewer list when `reviewers.json` is missing, malformed, or fails schema validation; stop and report the specific fault.
-- Never add review statistics, performance comparisons, or any other free-text assessment of a person to `reviewers.json`; it is a committed file in a public repository. Report those figures in the run, and explain eligibility changes in the pull request that makes them.
+- Never hardcode the team roster or reviewer names in this skill; resolve membership from the API at run time and read eligibility and areas from the repo profile. Neither source is sufficient alone.
+- Never request a review from a login absent from that repo's profile, or present but not `eligible`; report the omission by name instead.
+- Never fall back to an inline reviewer list when a profile is missing, malformed, or fails schema validation; stop and report the specific fault.
+- Never add review statistics, performance comparisons, or any other free-text assessment of a person to a profile; it is committed in a public repository. Report those figures in the run, and explain eligibility changes in the pull request that makes them.
 - Never request or print a GitHub token; use the user's existing `gh` authentication.
 - Never run on a schedule or add a GitHub Actions workflow.
 - Never remove a reviewer this run did not add.
