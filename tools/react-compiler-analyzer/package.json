@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compiler-analyzer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "CLI for assessing React Compiler coverage, directives, and migration risks in TypeScript source files.",
   "type": "commonjs",
   "main": "./dist/index.js",
