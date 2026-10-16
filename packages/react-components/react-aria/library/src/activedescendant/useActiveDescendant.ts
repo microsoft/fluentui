@@ -29,7 +29,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   options: ActiveDescendantOptions,
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
-  const focusVisibleRef = React.useRef(false);
+  const focusVisibleRef = React.useRef<boolean | undefined>(undefined);
   const shouldShowFocusVisibleAttrRef = React.useRef(true);
   const activeIdRef = React.useRef<string | null>(null);
   const lastActiveIdRef = React.useRef<string | null>(null);
@@ -80,8 +80,17 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
-      // Any key pressed on the active parent (e.g. arrow keys in a combobox input) navigates the active descendants
-      if (event.key === 'Tab' || event.target === activeParentRef.current) {
+      const eventTarget = event.composedPath()[0] ?? event.target;
+      const activeParent = activeParentRef.current;
+      const NodeConstructor = targetDocument.defaultView?.Node;
+      const isWithinActiveParent =
+        activeParent !== null &&
+        NodeConstructor !== undefined &&
+        eventTarget instanceof NodeConstructor &&
+        activeParent.contains(eventTarget);
+
+      // Keyboard navigation can either happen in the active parent or transfer focus from another control.
+      if (event.key === 'Tab' || eventTarget === activeParent || !isWithinActiveParent) {
         onKeyboardNavigationChange(true);
       }
     };
@@ -277,6 +286,14 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         removeAttribute();
       },
       showFocusVisibleAttributes() {
+        if (focusVisibleRef.current === undefined && activeParentRef.current) {
+          try {
+            focusVisibleRef.current = activeParentRef.current.matches(':focus-visible');
+          } catch {
+            focusVisibleRef.current = false;
+          }
+        }
+
         setShouldShowFocusVisibleAttribute(true);
       },
       hideFocusVisibleAttributes() {

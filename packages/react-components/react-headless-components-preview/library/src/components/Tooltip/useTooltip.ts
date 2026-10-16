@@ -144,6 +144,42 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
   const ignoreNextFocusEventRef = React.useRef(false);
+  const keyboardModalityRef = React.useRef<boolean | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    const onKeyDown = () => {
+      keyboardModalityRef.current = true;
+    };
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      // Screen readers dispatch synthetic mouse events without buttons or coordinates.
+      if (
+        event.type === 'mousedown' &&
+        ((event as MouseEvent).buttons === 0 ||
+          ((event as MouseEvent).clientX === 0 &&
+            (event as MouseEvent).clientY === 0 &&
+            (event as MouseEvent).screenX === 0 &&
+            (event as MouseEvent).screenY === 0))
+      ) {
+        return;
+      }
+
+      keyboardModalityRef.current = false;
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    targetDocument.addEventListener('mousedown', onPointerDown, true);
+    targetDocument.addEventListener('touchstart', onPointerDown, true);
+
+    return () => {
+      targetDocument.removeEventListener('keydown', onKeyDown, true);
+      targetDocument.removeEventListener('mousedown', onPointerDown, true);
+      targetDocument.removeEventListener('touchstart', onPointerDown, true);
+    };
+  }, [targetDocument]);
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
@@ -156,7 +192,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         // Skip showing the tooltip if focus did not come from keyboard navigation. For example, we don't
         // want to show the tooltip when a dialog is closed with the mouse and focus is programmatically
         // restored to the trigger button. See https://github.com/microsoft/fluentui/issues/27576
-        if (ignoreFocus || !isFocusVisible(ev.target as Element)) {
+        const isKeyboardFocus = keyboardModalityRef.current ?? isFocusVisible(ev.target as Element);
+        if (ignoreFocus || !isKeyboardFocus) {
           return;
         }
       }
