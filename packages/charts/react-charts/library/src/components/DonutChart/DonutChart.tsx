@@ -21,6 +21,7 @@ import { useId } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useImageExport } from '../../utilities/hooks';
 
 const MIN_LEGEND_CONTAINER_HEIGHT = 40;
@@ -389,10 +390,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           </svg>
         </div>
         <ChartPopover
+          {...props.calloutProps}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture}
           positioning={{
+            ...resolvePositioningShorthand(props.calloutProps?.positioning),
             target: refSelected,
           }}
           isPopoverOpen={
