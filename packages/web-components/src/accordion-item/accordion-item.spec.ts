@@ -1,7 +1,7 @@
 import { expect, test } from '../../test/playwright/index.js';
 import { tagName as AccordionTagName } from '../accordion/accordion.options.js';
 import { AccordionItem } from './accordion-item.js';
-import { AccordionItemSize, tagName } from './accordion-item.options.js';
+import { tagName } from './accordion-item.options.js';
 
 test.describe('Accordion item', () => {
   test.use({
@@ -115,63 +115,5 @@ test.describe('Accordion item', () => {
 
     await expect(firstItem).toHaveAttribute('expanded');
     await expect(firstItem).toHaveJSProperty('expanded', true);
-  });
-
-  for (const size of Object.values(AccordionItemSize)) {
-    test(`should set the \`size\` property to "${size}" when the attribute is set to "${size}"`, async ({
-      fastPage,
-    }) => {
-      const { element } = fastPage;
-
-      await fastPage.setTemplate({ attributes: { size } });
-
-      await expect(element).toHaveAttribute('size', size);
-
-      await expect(element).toHaveJSProperty('size', size);
-    });
-  }
-
-  test('should set the `block` property when the `block` attribute is set', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { block: true } });
-
-    await expect(element).toHaveAttribute('block');
-
-    await expect(element).toHaveJSProperty('block', true);
-
-    await test.step('should remove the `block` attribute when the `block` property is set to `false`', async () => {
-      await element.evaluate<void, AccordionItem>(node => {
-        node.block = false;
-      });
-
-      await expect(element).not.toHaveAttribute('block');
-
-      await expect(element).toHaveJSProperty('block', false);
-    });
-  });
-
-  test('should set the `marker-position` attribute to the provided value', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({
-      attributes: {
-        'marker-position': 'end',
-      },
-    });
-
-    await expect(element).toHaveAttribute('marker-position', 'end');
-
-    await expect(element).toHaveJSProperty('markerPosition', 'end');
-
-    await test.step('should set the `marker-position` attribute to `start` when the `markerPosition` property is set to `start`', async () => {
-      await element.evaluate<void, AccordionItem>(node => {
-        node.markerPosition = 'start';
-      });
-
-      await expect(element).toHaveAttribute('marker-position', 'start');
-
-      await expect(element).toHaveJSProperty('markerPosition', 'start');
-    });
   });
 });

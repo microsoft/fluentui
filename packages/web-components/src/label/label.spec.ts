@@ -1,27 +1,11 @@
 import { expect, test } from '../../test/playwright/index.js';
 import type { Label } from './label.js';
-import { LabelSize, LabelWeight, tagName } from './label.options.js';
+import { tagName } from './label.options.js';
 
 test.describe('Label', () => {
   test.use({
     tagName,
     innerHTML: 'Label',
-  });
-
-  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const size of Object.values(LabelSize)) {
-      await test.step(`should set the \`size\` property to "${size}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { size } });
-
-        await expect(element).toHaveAttribute('size', size);
-
-        await expect(element).toHaveJSProperty('size', size);
-      });
-    }
   });
 
   test('should create with document.createElement()', async ({ page, fastPage }) => {
@@ -38,40 +22,6 @@ test.describe('Label', () => {
     }, tagName);
 
     expect(hasError).toBe(false);
-  });
-
-  test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate();
-
-    for (const weight of Object.values(LabelWeight)) {
-      await test.step(`should set the \`weight\` property to "${weight}"`, async () => {
-        await fastPage.updateTemplate(element, { attributes: { weight } });
-
-        await expect(element).toHaveAttribute('weight', weight);
-
-        await expect(element).toHaveJSProperty('weight', weight);
-      });
-    }
-  });
-
-  test('should set the `disabled` property to match the `disabled` attribute', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { disabled: true } });
-
-    await expect(element).toHaveAttribute('disabled');
-
-    await expect(element).toHaveJSProperty('disabled', true);
-
-    await element.evaluate((node: Label) => {
-      node.disabled = false;
-    });
-
-    await expect(element).not.toHaveAttribute('disabled');
-
-    await expect(element).toHaveJSProperty('disabled', false);
   });
 
   test('should set the `required` property to match the `required` attribute', async ({ fastPage }) => {

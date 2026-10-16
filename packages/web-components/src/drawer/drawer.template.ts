@@ -15,8 +15,6 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       aria-label="${x => x.dialogLabel}"
       aria-modal="${x => x.dialogModal}"
       role="${x => x.dialogRole}"
-      size="${x => x.size}"
-      position="${x => x.position}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @cancel="${x => x.cancelHandler()}"
       ${ref('dialog')}

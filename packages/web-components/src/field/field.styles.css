@@ -1,6 +1,7 @@
 :host([hidden]) {
   display: none;
 }
+
 :host {
   display: inline-grid;
 }
@@ -10,6 +11,8 @@
   align-items: center;
   gap: 0 var(--spacingHorizontalM);
   justify-items: start;
+  grid-template-areas: 'label' 'input' 'message';
+  row-gap: var(--spacingVerticalXXS);
 }
 
 :has([slot='message']) {
@@ -33,11 +36,6 @@
 
 :host([label-position='after']) ::slotted([slot='input']) {
   margin-inline-end: var(--spacingHorizontalM);
-}
-
-:host([label-position='above']) {
-  grid-template-areas: 'label' 'input' 'message';
-  row-gap: var(--spacingVerticalXXS);
 }
 
 :host([label-position='below']) {
