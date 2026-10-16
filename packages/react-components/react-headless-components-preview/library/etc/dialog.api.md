@@ -147,6 +147,7 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
     unmountOnClose: boolean;
     modalType: DialogModalType;
     shouldRender: boolean;
+    phase: TopLayerPhase;
 };
 
 // @public

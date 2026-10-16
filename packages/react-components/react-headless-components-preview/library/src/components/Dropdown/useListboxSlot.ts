@@ -9,12 +9,12 @@ import {
   useEventCallback,
   slot,
   isResolvedShorthand,
-  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type { DropdownState } from './Dropdown.types';
 import { Listbox } from './Listbox';
+import { useTopLayer } from '../../hooks/useTopLayer';
 import type { ListboxProps } from './Listbox';
 
 export type UseListboxSlotState = Pick<DropdownState, 'multiselect' | 'open' | 'setOpen'>;
@@ -101,45 +101,16 @@ export function useListboxSlot(
     listboxSlot.onClick = onClick;
   }
 
-  const onListboxToggle = useEventCallback((event: Event & { newState?: 'open' | 'closed' }) => {
-    const nextOpen = event.newState === 'open';
-    if (nextOpen === open) {
-      return;
-    }
-    setOpen(event as unknown as DropdownOpenEvents, nextOpen);
+  // Focus stays on the trigger (active descendant), so the hook neither moves nor restores it.
+  // The listbox is rendered only while open, so `unmountOnClose` stays with the render function.
+  useTopLayer(popoverRef, {
+    open,
+    mode: 'auto',
+    unmountOnClose: false,
+    restoreFocus: false,
+    onClose: ({ event }) => setOpen(event as unknown as DropdownOpenEvents, false),
+    onOpen: event => setOpen(event as unknown as DropdownOpenEvents, true),
   });
-
-  useIsomorphicLayoutEffect(() => {
-    const el = listboxRef.current;
-    if (!el) {
-      return;
-    }
-
-    el.addEventListener('toggle', onListboxToggle);
-
-    try {
-      if (open) {
-        el.showPopover();
-      } else if (el.matches(':popover-open')) {
-        el.hidePopover();
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          [
-            'Popover API is not supported in this browser, and the listbox will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
-          ].join(' '),
-          { error },
-        );
-      }
-    }
-
-    return () => {
-      el.removeEventListener('toggle', onListboxToggle);
-    };
-  }, [listboxRef, open, onListboxToggle]);
 
   return listboxSlot;
 }

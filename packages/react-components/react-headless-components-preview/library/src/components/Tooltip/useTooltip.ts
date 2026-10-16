@@ -10,7 +10,6 @@ import {
   useControllableState,
   useEventCallback,
   useId,
-  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
   useTimeout,
@@ -22,6 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
+import { useTopLayer } from '../../hooks/useTopLayer';
 
 /**
  * Create the state required to render Tooltip.
@@ -90,45 +90,17 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
-  const onToggle = useEventCallback((event: Event) => {
-    if ((event as ToggleEvent).newState === 'closed') {
-      setVisible(undefined, { visible: false });
-    }
+  // The content stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it stays
+  // `manual`, so showing a tooltip never closes an open `auto` popover.
+  useTopLayer(contentRef, {
+    open: visible,
+    mode: 'hint',
+    role: 'tooltip',
+    unmountOnClose: false,
+    restoreFocus: false,
+    hintFallback: 'manual',
+    onClose: () => setVisible(undefined, { visible: false }),
   });
-
-  // Keep the tooltip in sync with the state when it is changed programmatically.
-  // Also sync React state when the browser auto-dismisses the hint popover (click outside, Escape).
-  useIsomorphicLayoutEffect(() => {
-    const el = contentRef.current;
-    if (!el) {
-      return;
-    }
-
-    el.addEventListener('toggle', onToggle);
-
-    try {
-      if (visible) {
-        el.showPopover();
-      } else if (el.matches(':popover-open')) {
-        el.hidePopover();
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn(
-          [
-            'Popover API is not supported in this browser, and the tooltip will not work correctly.',
-            'Please include a popover polyfill for better browser support.',
-          ].join(' '),
-          { error },
-        );
-      }
-    }
-
-    return () => {
-      el.removeEventListener('toggle', onToggle);
-    };
-  }, [contentRef, visible, setVisible, onToggle]);
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.

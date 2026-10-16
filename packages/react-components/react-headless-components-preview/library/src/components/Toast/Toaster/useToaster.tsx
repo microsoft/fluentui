@@ -15,9 +15,7 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
+import { useTopLayer } from '../../../hooks/useTopLayer';
 
 /**
  * Create the state required to render the Toaster.
@@ -91,23 +89,13 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     const popoverRef = React.useRef<HTMLDivElement>(null);
     const positionHasToasts = toastsToRender.has(toastPosition);
 
-    // Each rendered position container is its own native popover. We open it on
-    // mount so the position is promoted to the browser top layer. When the
-    // position has no more toasts, the slot unmounts and the browser removes
-    // it from the top layer automatically — no explicit hidePopover needed.
-    useIsomorphicLayoutEffect(() => {
-      if (!positionHasToasts) {
-        return;
-      }
-      const el = popoverRef.current;
-      if (!el || typeof el.showPopover !== 'function') {
-        return;
-      }
-      const isOpen = SUPPORTS_POPOVER_OPEN_SELECTOR && el.matches(':popover-open');
-      if (!isOpen) {
-        el.showPopover();
-      }
-    }, [positionHasToasts]);
+    // The slot unmounts when the position has no toasts. Toasts own their focus restore.
+    useTopLayer(popoverRef, {
+      open: positionHasToasts,
+      mode: 'manual',
+      unmountOnClose: false,
+      restoreFocus: false,
+    });
 
     return slot.optional<ExtractSlotProps<Slot<'div'>>>(positionHasToasts ? {} : null, {
       defaultProps: {
