@@ -45,7 +45,7 @@ concern. An [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Eleme
 supplies the missing mapping.
 
 Mapping all ~70 transitive dependencies (`@griffel/react`, `@griffel/core`, `tabster`, `keyborg`,
-`@floating-ui/dom`, `@swc/helpers`, and the 60+ `@fluentui/react-*` packages) by hand is
+`@swc/helpers`, and the 60+ `@fluentui/react-*` packages) by hand is
 impractical. Instead, an ESM CDN such as [esm.sh](https://esm.sh) rewrites the bare specifiers
 inside the served files, so the import map only needs the entry points:
 

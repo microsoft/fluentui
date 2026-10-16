@@ -1,5 +1,5 @@
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
-import type { Placement } from '@floating-ui/dom';
+import type { Placement } from '../floating';
 
 describe('fromFloatingUIPlacement', () => {
   it.each([

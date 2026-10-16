@@ -1,4 +1,4 @@
-import type { Boundary as FloatingUIBoundary } from '@floating-ui/dom';
+import type { Boundary as FloatingUIBoundary } from '../floating';
 
 import { getScrollParent } from './getScrollParent';
 import type { PositioningBoundary } from '../types';

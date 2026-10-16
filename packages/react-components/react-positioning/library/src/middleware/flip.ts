@@ -1,5 +1,5 @@
-import type { Placement, Middleware } from '@floating-ui/dom';
-import { flip as baseFlip } from '@floating-ui/dom';
+import type { Placement, Middleware } from '../floating';
+import { flip as baseFlip } from '../floating';
 import type { PositioningOptions } from '../types';
 import { getBoundary, resolvePositioningShorthand, toFloatingUIPlacement } from '../utils/index';
 
@@ -24,7 +24,6 @@ export function flip(options: FlipMiddlewareOptions): Middleware {
   return baseFlip({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
-    fallbackStrategy: 'bestFit',
     ...(fallbackPlacements.length && { fallbackPlacements }),
   });
 }
