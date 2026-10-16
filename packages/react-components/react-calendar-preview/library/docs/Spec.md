@@ -259,8 +259,9 @@ owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onK
 cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day slot
 handlers, including handlers on custom descendants, and custom year-renderer handlers run before navigation
 with the correct `currentTarget`. Only handlers on the target's ancestor path run.
-`preventDefault()` cancels navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses
-later callbacks, but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
+`preventDefault()` cancels
+navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses later callbacks,
+but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
 Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
 remain in bubbling without Calendar navigation. A focusgroup on the Calendar grid itself or outside that grid
 does not change Calendar's arrow ownership.
