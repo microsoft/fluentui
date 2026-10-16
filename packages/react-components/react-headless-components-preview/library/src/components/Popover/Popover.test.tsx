@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { usePopoverContext } from './popoverContext';
 import { usePopover } from './usePopover';
 
 describe('Popover', () => {
@@ -508,5 +509,25 @@ describe('Popover', () => {
     );
 
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
+  });
+
+  it('mounts a custom surface only while open', () => {
+    const CustomSurface = () => {
+      const open = usePopoverContext(context => context.open);
+      return <div data-testid="custom">{open ? 'open' : 'closed'}</div>;
+    };
+    const Example = ({ open }: { open: boolean }) => (
+      <Popover open={open}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <CustomSurface />
+      </Popover>
+    );
+    const { queryByTestId, rerender } = render(<Example open />);
+    expect(queryByTestId('custom')).toBeInTheDocument();
+
+    rerender(<Example open={false} />);
+    expect(queryByTestId('custom')).not.toBeInTheDocument();
   });
 });

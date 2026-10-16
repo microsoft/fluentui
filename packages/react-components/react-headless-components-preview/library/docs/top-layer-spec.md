@@ -18,7 +18,7 @@ Exported from `@fluentui/react-headless-components-preview/top-layer`.
 | `useTopLayer`             | top-layer lifecycle, focus and close reporting for an element you own |
 | `getTopLayerTriggerProps` | trigger ARIA attributes                                               |
 
-There are no ready-made components. The Concepts/Top Layer stories show recipes for a menu, a modal dialog and a hint.
+There are no ready-made components: `Popover` and `Dialog` are built on the same hook. The Concepts/Top Layer stories show recipes for a menu, a modal dialog and a hint.
 
 ### Terms
 
@@ -134,14 +134,41 @@ Tabbable elements exclude `tabindex="-1"`, disabled, `aria-disabled="true"`, `ar
 - Showing a modal closes open `auto` popovers. Content that must sit above a modal (toasts) must be shown after it.
 - Popovers opened without user activation between them share a close watcher, so one Escape closes them together. Tests must use trusted input (`cypress-real-events`).
 
+## Consumers
+
+- **Popover / TeachingPopover / InfoLabel.** `usePopover` calls `useTopLayer` on `contentRef` with `mode: trapFocus ? 'modal' : 'auto'` and `restoreFocusTarget: triggerRef`, and routes `onClose` / `onOpen` into its open state. `shouldRenderSurface` comes from the hook. Any element given `contentRef` is driven the same way; a custom surface that does not use `contentRef` is mounted only while open.
+- **Dialog / Drawer.** `DialogSurface` calls `useTopLayer` with `mode: 'manual'` (non-modal) or `'modal'`. Escape and backdrop clicks stay in the surface's React handlers so `onOpenChange` keeps its event types; Escape from inside a nested popover or dialog is left to that layer. A non-modal surface toggled by a `popovertarget` invoker is reported as `surfaceToggle`.
+- **Tooltip.** `mode: 'hint'` with `hintFallback: 'manual'`, so showing a tooltip never closes an open `auto` popover in browsers without `hint`. The content stays mounted (`unmountOnClose: false`) so `aria-labelledby` / `aria-describedby` always resolve. No focus handling.
+- **Menu.** `MenuPopover` stays mounted and uses `mode: 'auto'`. It still marks the first item `autofocus` before the popover is shown, and `useMenu` keeps owning focus restore (`restoreFocus: false`). Browser closes are reported as `clickOutside`, as before.
+- **Combobox / Dropdown / TagPicker listbox.** `mode: 'auto'`, rendered only while open, focus stays on the trigger (no initial focus, `restoreFocus: false`). Browser opens and closes are synced through `setOpen`.
+- **Toaster.** Each toast position is a `manual` popover shown while it has toasts and unmounted when it has none. Toasts own their focus restore.
+
 ## Decisions
 
 **React owns `open`.** The hook reports every open or close the browser makes, and none made through `open`.
 
 - Browser closes (Escape, light dismiss, `<form method="dialog">`) are reported through `onClose`; browser opens (`popovertarget`, `commandfor`) through `onOpen`, or ignored with a dev warning without it.
 - Programmatic closes (`open` becoming false) are never reported.
-- Escape on a modal follows the platform: the browser closes the dialog and `onClose` reports it. `preventEscapeClose` keeps the dialog open instead, for consumers that let the user veto a close.
+- Escape on a modal follows the platform: the browser closes the dialog and `onClose` reports it. `preventEscapeClose` keeps the dialog open instead, for consumers that let the user veto a close. `DialogSurface` uses it, because `onOpenChange` can be default-prevented.
 
 **Focus restore defers to the browser.** The hook moves focus only in the modes the browser does not restore, and only when focus was inside the element as it started closing.
 
 **Tab wraps only in modal dialogs.** A non-modal dialog that trapped Tab would keep keyboard users out of the page it sits next to.
+
+## Changes from master
+
+Observable differences for the components moved onto `useTopLayer`. Everything else is unchanged.
+
+| Area                                                      | Master                                                                                      | Now                                                                                                                                                                                                                             |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Popover exit                                              | surface unmounted once the browser reported the close                                       | also waits for running exit animations before unmounting, like `DialogSurface`                                                                                                                                                  |
+| Exiting element                                           | —                                                                                           | `inert` and `aria-hidden="true"` while it exits (Popover and Dialog)                                                                                                                                                            |
+| Modal Tab                                                 | browser default: Tab can leave a modal through the browser chrome                           | Tab wraps inside modal Dialog, `trapFocus` Popover and Drawer; a radio group counts as one stop                                                                                                                                 |
+| Non-modal Dialog open                                     | focus stays where it was, unless a child has `autofocus`                                    | focus moves to `[autofocus]`, else the first focusable element                                                                                                                                                                  |
+| Non-modal Dialog close                                    | focus always returned to the element focused before opening, even if the user moved it away | returned only when focus was inside as the dialog closed and is still inside it or on `<body>`                                                                                                                                  |
+| Escape in a popover or dialog nested in a `DialogSurface` | the outer dialog closed too, unless the inner handler stopped the event                     | only the inner one closes                                                                                                                                                                                                       |
+| `popover="hint"` on Tooltip                               | `hint`; browsers without it treat it as `manual`                                            | unchanged (`hintFallback: 'manual'`)                                                                                                                                                                                            |
+| Hidden Tooltip                                            | `display: none`                                                                             | `display: none`, plus `inert` and `aria-hidden="true"` once it has been shown and hidden again; `aria-labelledby` / `aria-describedby` still resolve, because directly referenced hidden content counts for the accessible name |
+| Custom Popover surface                                    | mounted only while open                                                                     | unchanged                                                                                                                                                                                                                       |
+| Popover `trapFocus` Escape                                | browser closes the dialog, `onOpenChange` `type: 'close'`                                   | unchanged                                                                                                                                                                                                                       |
+| Native opens (`popovertarget`)                            | non-modal Dialog synced as `surfaceToggle`; Popover unreachable while closed                | unchanged                                                                                                                                                                                                                       |
