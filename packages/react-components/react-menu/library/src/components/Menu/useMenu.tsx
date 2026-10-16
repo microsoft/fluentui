@@ -150,6 +150,7 @@ export const useMenuBase_unstable = (
     mouseCoordinates: { x: 0, y: 0 },
   });
 
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: SafeZoneArea pulls Griffel
   const safeZoneHandle = useSafeZoneArea({
     disabled: !enableSafeZone,
     timeout: typeof safeZone === 'object' ? safeZone.timeout : 300,

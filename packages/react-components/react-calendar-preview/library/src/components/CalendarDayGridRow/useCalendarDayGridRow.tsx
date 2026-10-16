@@ -22,6 +22,7 @@ import type {
 export const useCalendarDayGridRowBase_unstable = (
   props: CalendarDayGridRowBaseProps,
   ref: React.Ref<HTMLTableRowElement>,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: motion slot remains in base state
 ): CalendarDayGridRowState => {
   const { transition } = props;
   const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);

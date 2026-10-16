@@ -17,6 +17,7 @@ import type {
  * Create the base state required to render an unstyled CalendarMonthGridRow.
  */
 export const useCalendarMonthGridRowBase_unstable = (
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: motion slot remains in base props
   props: CalendarMonthGridRowProps,
   ref: React.Ref<HTMLDivElement>,
 ): CalendarMonthGridRowBaseState => {

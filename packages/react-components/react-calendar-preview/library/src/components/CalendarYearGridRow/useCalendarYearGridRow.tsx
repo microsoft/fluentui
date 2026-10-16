@@ -13,8 +13,10 @@ import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
  * Create the state required to render CalendarYearGridRow.
  */
 export const useCalendarYearGridRowBase_unstable = (
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: motion slot remains in base props
   props: CalendarYearGridRowProps,
   ref: React.Ref<HTMLDivElement>,
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- tracked debt: motion slot remains in base state
 ): CalendarYearGridRowState => {
   const yearRows = useCalendarYearContext_unstable(ctx => ctx.yearRows);
 
