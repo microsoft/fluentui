@@ -18,7 +18,6 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
-  useFirstMount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -99,6 +98,7 @@ export const useMenuBase_unstable = (
     mountNode = null,
     safeZone,
   } = props;
+  const disableAutoFocus = props.unstable_disableAutoFocus ?? false;
 
   const { targetDocument } = useFluent();
   const triggerId = useId('menu');
@@ -191,6 +191,7 @@ export const useMenuBase_unstable = (
 
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
+    disableAutoFocus,
     hoverDelay,
     isSubmenu,
     setContextTarget,
@@ -210,6 +211,7 @@ export const useMenuBase_unstable = (
   });
 
   return {
+    disableAutoFocus,
     inline,
     hoverDelay,
     triggerId,
@@ -270,7 +272,7 @@ const useMenuOpenState = (
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'> & { disableAutoFocus?: boolean },
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
@@ -370,14 +372,15 @@ const useMenuOpenState = (
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
-  const firstMount = useFirstMount();
+  const wasOpen = React.useRef(false);
   React.useEffect(() => {
     if (open) {
-      focusFirst();
+      if (!state.disableAutoFocus) {
+        focusFirst();
+      }
     } else {
-      // Skip the initial render — focus should only be restored when the menu
-      // transitions from open → closed, not on mount.
-      if (!firstMount) {
+      // Restore only on close, not when an autofocus preference changes while closed.
+      if (wasOpen.current) {
         if (
           // Focus landed on <body> after the popover was removed from the DOM,
           // meaning the user's focus has nowhere meaningful to go.
@@ -398,9 +401,16 @@ const useMenuOpenState = (
         }
       }
     }
-    // firstMount change should not re-run this effect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
+    wasOpen.current = open;
+  }, [
+    state.triggerRef,
+    state.isSubmenu,
+    state.disableAutoFocus,
+    open,
+    focusFirst,
+    targetDocument,
+    state.menuPopoverRef,
+  ]);
 
   return [open, setOpen] as const;
 };

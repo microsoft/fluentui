@@ -3,6 +3,7 @@
 ### Do
 
 - Use `MenuTrigger` as the first child of `Menu`.
+- Use `unstable_disableAutoFocus` only when the owner provides a keyboard path into the menu. It suppresses automatic focus while open, not close restoration or Tab behavior, and does not change nested Menu defaults. Changing it to `false` while open focuses the first item.
 - Use `MenuList` as the only child of `MenuPopover`.
 - Create nested menus as separate components.
 - Use the `hasIcons` prop for alignment if only some menu items have icons.
@@ -12,6 +13,8 @@
 
 ### Don't
 
+- Don't treat autofocus suppression as combobox or virtual-focus support. Normal Menu keyboard navigation requires DOM focus inside the menu.
+- Don't assume autofocus suppression supplies v8 `ContextualMenu` parity. Result loading, keyboard entry, custom focus restoration, and host accessibility validation remain consumer responsibilities.
 - Don't render focusable or clickable items inside menu items.
 - Don't use more than 2 levels of nested menus.
 - Don't use verbose secondary content for menuitems.

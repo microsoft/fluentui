@@ -102,6 +102,7 @@ export const useMenu = (props: MenuProps): MenuState => {
   const mergedMenuPopoverRef = useMergedRefs(menuPopoverRef, containerRef) as React.MutableRefObject<HTMLElement | null>;
 
   return {
+    disableAutoFocus: props.unstable_disableAutoFocus ?? false,
     inline,
     hoverDelay,
     triggerId,

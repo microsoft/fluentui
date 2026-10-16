@@ -10,6 +10,7 @@ export const MenuContext: Context<MenuContextValue> = createContext<MenuContextV
 ) as Context<MenuContextValue>;
 
 const menuContextDefaultValue: MenuContextValue = {
+  disableAutoFocus: false,
   open: false,
   setOpen: () => false,
   checkedValues: {},
@@ -36,6 +37,7 @@ const menuContextDefaultValue: MenuContextValue = {
  */
 export type MenuContextValue = Pick<
   MenuState,
+  | 'disableAutoFocus'
   | 'openOnHover'
   | 'openOnContext'
   | 'triggerRef'

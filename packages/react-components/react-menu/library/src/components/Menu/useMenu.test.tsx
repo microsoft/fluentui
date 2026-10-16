@@ -55,6 +55,7 @@ describe('useMenu_unstable', () => {
       expect(result.current.persistOnItemClick).toBe(false);
       expect(result.current.mountNode).toBeNull();
       expect(result.current.openOnHover).toBe(false);
+      expect(result.current.disableAutoFocus).toBe(false);
     });
 
     it('openOnHover defaults to true when rendered as a submenu', () => {
@@ -86,6 +87,8 @@ describe('useMenu_unstable', () => {
           closeOnScroll: true,
           openOnContext: true,
           persistOnItemClick: true,
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          unstable_disableAutoFocus: true,
           mountNode,
         }),
       );
@@ -97,6 +100,7 @@ describe('useMenu_unstable', () => {
       expect(result.current.closeOnScroll).toBe(true);
       expect(result.current.openOnContext).toBe(true);
       expect(result.current.persistOnItemClick).toBe(true);
+      expect(result.current.disableAutoFocus).toBe(true);
       expect(result.current.mountNode).toBe(mountNode);
     });
   });

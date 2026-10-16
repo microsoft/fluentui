@@ -29,6 +29,17 @@ export type MenuProps = ComponentProps<Partial<MenuSlots>> &
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
   > & {
     /**
+     * Prevents automatic focus of the first menu item while open. Explicit keyboard
+     * navigation, close focus restoration, and Tab behavior are unchanged.
+     * This applies only to this Menu, not its nested menus. Changing this to false
+     * while open focuses the first menu item.
+     *
+     * @default false
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus?: boolean;
+
+    /**
      * Can contain two children including `MenuTrigger` and `MenuPopover`.
      * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
@@ -120,6 +131,11 @@ export type MenuState = ComponentState<InternalMenuSlots> &
       | 'persistOnItemClick'
     >
   > & {
+    /**
+     * Whether automatic focus of the first menu item is disabled.
+     */
+    disableAutoFocus?: boolean;
+
     /**
      * Anchors the popper to the mouse click for context events
      */

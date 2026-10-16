@@ -19,6 +19,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 import {
   menuItemRadioSelector,
@@ -39,6 +40,241 @@ const useStyles = makeStyles({
 const mount = (element: JSXElement) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
+
+describe('Autofocus suppression', () => {
+  const Example = ({
+    disableAutoFocus = true,
+    initialOpen = false,
+  }: {
+    disableAutoFocus?: boolean;
+    initialOpen?: boolean;
+  }) => {
+    const [open, setOpen] = React.useState(initialOpen);
+    const [suppressFocus, setSuppressFocus] = React.useState<boolean | undefined>(disableAutoFocus);
+    const [resultSuffix, setResultSuffix] = React.useState('');
+    const listRef = React.useRef<HTMLDivElement>(null);
+    const enterMenuRef = React.useRef(false);
+    const { findFirstFocusable } = useFocusFinders();
+
+    React.useEffect(() => {
+      if (open && enterMenuRef.current) {
+        enterMenuRef.current = false;
+        findFirstFocusable(listRef.current)?.focus();
+      }
+    }, [open, findFirstFocusable]);
+
+    const onKeyDown = (event: React.KeyboardEvent) => {
+      if (event.key === 'F2') {
+        setSuppressFocus(false);
+      } else if (event.key === 'F3') {
+        setSuppressFocus(undefined);
+      } else if (event.key === 'F4') {
+        setResultSuffix(' updated');
+      }
+    };
+
+    return (
+      <>
+        <button>Before trigger</button>
+        <Menu
+          open={open}
+          onOpenChange={(_, data) => {
+            enterMenuRef.current = false;
+            setOpen(data.open);
+          }}
+          unstable_disableAutoFocus={suppressFocus}
+        >
+          <MenuTrigger disableButtonEnhancement>
+            <button
+              onKeyDown={event => {
+                onKeyDown(event);
+                if (event.key === 'ArrowDown') {
+                  event.preventDefault();
+                  if (open) {
+                    findFirstFocusable(listRef.current)?.focus();
+                  } else {
+                    enterMenuRef.current = true;
+                    setOpen(true);
+                  }
+                }
+              }}
+            >
+              Open commands
+            </button>
+          </MenuTrigger>
+          <MenuPopover onKeyDown={onKeyDown}>
+            <MenuList ref={listRef}>
+              <MenuItem>Command{resultSuffix}</MenuItem>
+              <Menu>
+                <MenuTrigger disableButtonEnhancement>
+                  <MenuItem>More commands</MenuItem>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>Nested command</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <button>After trigger</button>
+      </>
+    );
+  };
+
+  it('preserves typing and selection when externally controlled results open', () => {
+    const SearchResults = () => {
+      const [query, setQuery] = React.useState('');
+      const [input, setInput] = React.useState<HTMLInputElement | null>(null);
+
+      return (
+        <>
+          <input
+            ref={setInput}
+            aria-label="Find commands"
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+          />
+          <Menu open={query.length > 0} positioning={{ target: input }} unstable_disableAutoFocus>
+            <MenuPopover>
+              <MenuList aria-label="Commands" aria-labelledby={undefined}>
+                <MenuItem>Command {query}</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </>
+      );
+    };
+    mount(
+      <React.StrictMode>
+        <SearchResults />
+      </React.StrictMode>,
+    );
+    cy.get('input').type('abc').should('be.focused').should('have.value', 'abc');
+    cy.contains('[role="menuitem"]', 'Command abc').should('be.visible').should('not.be.focused');
+    cy.get('input').then(input => input[0].setSelectionRange(1, 2));
+    cy.get('input').realPress('x');
+    cy.get('input').should('be.focused').should('have.value', 'axc');
+    cy.contains('[role="menuitem"]', 'Command axc').should('be.visible');
+    cy.get('input').should(input => {
+      expect(input[0].selectionStart).to.equal(2);
+      expect(input[0].selectionEnd).to.equal(2);
+    });
+  });
+
+  it('keeps focus on the trigger when opened until the owner explicitly enters the menu', () => {
+    mount(
+      <React.StrictMode>
+        <Example />
+      </React.StrictMode>,
+    );
+    cy.contains('button', 'Open commands').click().should('be.focused');
+    cy.contains('[role="menuitem"]', 'Command').should('be.visible').should('not.be.focused');
+    cy.contains('button', 'Open commands').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused').realPress('Escape');
+    cy.contains('button', 'Open commands').should('be.focused');
+    cy.get('[role="menu"]').should('not.exist');
+  });
+
+  it('allows explicit keyboard entry when initially closed', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').focus().realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused');
+  });
+
+  it('restores focus on close without reopening and preserves nested-menu autofocus', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').click().realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('ArrowRight');
+    cy.contains('[role="menuitem"]', 'Nested command').should('be.focused').realPress('Escape');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('Escape');
+    cy.contains('button', 'Open commands').should('be.focused');
+    cy.get('[role="menu"]').should('not.exist');
+  });
+
+  (['Tab', ['Shift', 'Tab']] as const).forEach(key => {
+    it(`retains native ${typeof key === 'string' ? key : key.join('+')} progression from root items`, () => {
+      mount(<Example />);
+      cy.contains('button', 'Open commands').click().realPress('ArrowDown');
+      cy.contains('[role="menuitem"]', 'Command').should('be.focused');
+      cy.realPress(typeof key === 'string' ? key : [...key]);
+      cy.contains('button', typeof key === 'string' ? 'After trigger' : 'Before trigger').should('be.focused');
+      cy.get('[role="menu"]').should('not.exist');
+    });
+
+    it(`retains native ${typeof key === 'string' ? key : key.join('+')} progression from nested items`, () => {
+      mount(<Example />);
+      cy.contains('button', 'Open commands')
+        .click()
+        .realPress('ArrowDown')
+        .realPress('ArrowDown')
+        .realPress('ArrowRight');
+      cy.contains('[role="menuitem"]', 'Nested command').should('be.focused');
+      cy.realPress(typeof key === 'string' ? key : [...key]);
+      cy.contains('button', typeof key === 'string' ? 'After trigger' : 'Before trigger').should('be.focused');
+      cy.get('[role="menu"]').should('not.exist');
+    });
+  });
+
+  it('does not restore over another focused control on dismissal', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').click();
+    cy.contains('button', 'After trigger').click().should('be.focused');
+    cy.get('[role="menu"]').should('not.exist');
+    cy.contains('button', 'After trigger').should('be.focused');
+  });
+
+  it('dismisses on Escape while focus remains on the trigger', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').click().realPress('Escape');
+    cy.contains('button', 'Open commands').should('be.focused');
+    cy.get('[role="menu"]').should('not.exist');
+  });
+
+  it('preserves a focused item when its rendered result content changes', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').click().realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused').realPress('F4');
+    cy.contains('[role="menuitem"]', 'Command updated').should('be.focused');
+  });
+
+  it('focuses the first item when suppression is turned off while open', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands').click().realPress('F2');
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused');
+  });
+
+  it('does not focus the trigger when suppression changes while closed', () => {
+    mount(<Example />);
+    cy.contains('button', 'Open commands')
+      .should(trigger => {
+        expect(trigger[0].ownerDocument.activeElement).to.equal(trigger[0].ownerDocument.body);
+      })
+      .trigger('keydown', { key: 'F2' })
+      .should('not.be.focused');
+  });
+
+  it('preserves explicit false autofocus behavior on opening', () => {
+    mount(<Example disableAutoFocus={false} />);
+    cy.contains('button', 'Open commands').click();
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused');
+  });
+
+  it('preserves item focus when autofocus changes between undefined and false', () => {
+    mount(<Example disableAutoFocus={false} initialOpen />);
+    cy.contains('[role="menuitem"]', 'Command').should('be.focused').realPress('ArrowDown');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('F3');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused').realPress('F2');
+    cy.contains('[role="menuitem"]', 'More commands').should('be.focused');
+  });
+
+  it('suppresses autofocus when initially open', () => {
+    mount(<Example initialOpen />);
+    cy.contains('[role="menuitem"]', 'Command').should('be.visible').should('not.be.focused');
+  });
+});
 
 describe('MenuTrigger', () => {
   it('should open menu and focus first item when clicked', () => {
