@@ -32,8 +32,25 @@ if (typeof HTMLDialogElement !== 'undefined') {
   }
 
   if (!proto.close) {
+    const pendingCloseEvents = new Set();
+    afterEach(() => {
+      for (const timeout of pendingCloseEvents) {
+        clearTimeout(timeout);
+      }
+      pendingCloseEvents.clear();
+    });
+
     proto.close = function close() {
+      if (!this.open) {
+        return;
+      }
       this.removeAttribute('open');
+      // Native close events are queued, not dispatched by close() synchronously.
+      const timeout = setTimeout(() => {
+        pendingCloseEvents.delete(timeout);
+        this.dispatchEvent(new Event('close'));
+      }, 0);
+      pendingCloseEvents.add(timeout);
     };
   }
 }
