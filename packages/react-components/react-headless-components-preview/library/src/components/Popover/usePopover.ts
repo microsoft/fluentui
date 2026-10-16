@@ -7,7 +7,6 @@ import {
   useId,
   useTimeout,
   useIsomorphicLayoutEffect,
-  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
@@ -74,6 +73,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         onOpenChange(e, shouldOpen);
       }, mouseLeaveDelay);
     } else {
+      if (shouldOpen && props.open === undefined) {
+        setShouldRenderSurface(true);
+      }
       setOpenState(shouldOpen);
       onOpenChange(e, shouldOpen);
     }
@@ -87,8 +89,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   );
 
   const triggerRef = React.useRef<HTMLElement>(null);
-  const [surfaceElement, setSurfaceElement] = React.useState<HTMLElement | null>(null);
-  const contentRef = useMergedRefs<HTMLElement>(setSurfaceElement);
+  const contentRef = React.useRef<HTMLElement>(null);
   const arrowRef = React.useRef<HTMLDivElement>(null);
 
   const generatedSurfaceId = useId('fui-popover-surface-');
@@ -148,6 +149,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const renderSurface = open || shouldRenderSurface;
 
+  // Rebind after each commit so keyed surface replacements need no mirrored element state.
   useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
     if (!surface || !renderSurface) {
@@ -190,7 +192,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       surface.removeEventListener('toggle', onSurfaceToggle);
       surface.removeEventListener('beforetoggle', trackNativeCloseFocus);
     };
-  }, [renderSurface, trapFocus, surfaceElement, contentRef, onSurfaceToggle, onSurfaceClose]);
+  });
 
   useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
@@ -198,7 +200,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
     if (open) {
-      setShouldRenderSurface(true);
+      if (!shouldRenderSurface) {
+        setShouldRenderSurface(true);
+      }
       focusWasInsideOnNativeClose.current = null;
       if (trapFocus) {
         if (isDialogElement(surface) && !surface.open) {
@@ -234,7 +238,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
       finishSurfaceClose();
     }
-  }, [open, trapFocus, shouldRenderSurface, surfaceElement, contentRef, finishSurfaceClose]);
+  }, [open, trapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { usePopover } from './usePopover';
 
 describe('Popover', () => {
   describe('close lifecycle', () => {
@@ -304,6 +305,51 @@ describe('Popover', () => {
     userEvent.click(getByText('Trigger'));
 
     expect(getByText('Surface content')).toBeInTheDocument();
+  });
+
+  it('batches surface retention with an uncontrolled opening', () => {
+    const onRender = jest.fn();
+    const MeasuredPopover = () => {
+      const state = usePopover({ children: <div /> });
+      onRender();
+      return (
+        <>
+          <button aria-expanded={state.open} onClick={event => state.setOpen(event, true)}>
+            Trigger
+          </button>
+          {state.shouldRenderSurface && (
+            <section popover="auto" ref={state.contentRef}>
+              Surface
+            </section>
+          )}
+        </>
+      );
+    };
+    const { getByText } = render(<MeasuredPopover />);
+    onRender.mockClear();
+
+    fireEvent.click(getByText('Trigger'));
+
+    expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'true');
+    expect(getByText('Surface').matches(':popover-open')).toBe(true);
+    expect(onRender).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not mount a surface when a controlled opening request is rejected', () => {
+    const onOpenChange = jest.fn();
+    const { getByText, queryByText } = render(
+      <Popover open={false} onOpenChange={onOpenChange}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Surface</PopoverSurface>
+      </Popover>,
+    );
+
+    fireEvent.click(getByText('Trigger'));
+
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
+    expect(queryByText('Surface')).not.toBeInTheDocument();
   });
 
   it('closes on trigger click when open', async () => {
