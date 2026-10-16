@@ -60,8 +60,8 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 See API at:
 
-- [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
-- [SkeletonItem.types.ts](./src/components/SkeletonItem/SkeletonItem.types.ts).
+- [Skeleton.types.ts](../src/components/Skeleton/Skeleton.types.ts).
+- [SkeletonItem.types.ts](../src/components/SkeletonItem/SkeletonItem.types.ts).
 
 ## Structure
 

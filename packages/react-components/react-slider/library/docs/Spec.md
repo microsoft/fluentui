@@ -20,7 +20,7 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 ### Props
 
-See API at [Slider.types.ts](./src/components/Slider/Slider.types.ts).
+See API at [Slider.types.ts](../src/components/Slider/Slider.types.ts).
 
 ## Structure
 
