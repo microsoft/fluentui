@@ -153,6 +153,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useProgressBarStyles_unstable: CustomStyleHook;
     useRadioGroupStyles_unstable: CustomStyleHook;
     useRadioStyles_unstable: CustomStyleHook;
+    useRangeSliderStyles_unstable: CustomStyleHook;
     useRatingDisplayStyles_unstable: CustomStyleHook;
     useRatingItemStyles_unstable: CustomStyleHook;
     useRatingStyles_unstable: CustomStyleHook;
@@ -350,6 +351,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useProgressBarStyles_unstable: CustomStyleHook;
     useRadioGroupStyles_unstable: CustomStyleHook;
     useRadioStyles_unstable: CustomStyleHook;
+    useRangeSliderStyles_unstable: CustomStyleHook;
     useRatingDisplayStyles_unstable: CustomStyleHook;
     useRatingItemStyles_unstable: CustomStyleHook;
     useRatingStyles_unstable: CustomStyleHook;
@@ -547,6 +549,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useProgressBarStyles_unstable: CustomStyleHook;
     useRadioGroupStyles_unstable: CustomStyleHook;
     useRadioStyles_unstable: CustomStyleHook;
+    useRangeSliderStyles_unstable: CustomStyleHook;
     useRatingDisplayStyles_unstable: CustomStyleHook;
     useRatingItemStyles_unstable: CustomStyleHook;
     useRatingStyles_unstable: CustomStyleHook;

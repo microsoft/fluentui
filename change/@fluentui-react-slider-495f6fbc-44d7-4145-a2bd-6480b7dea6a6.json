@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add RangeSlider component",
+  "packageName": "@fluentui/react-slider",
+  "email": "soniaboller@gmail.com",
+  "dependentChangeType": "patch"
+}
