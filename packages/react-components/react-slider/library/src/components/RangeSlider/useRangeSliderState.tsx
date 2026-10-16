@@ -131,7 +131,8 @@ export const useRangeSliderState_unstable = (
     }
 
     const offset = vertical ? rect.bottom - clientY : clientX - rect.left;
-    const ratio = clamp(offset / size, 0, 1);
+    // Unbounded, so a grab offset can still reach both ends; snapToStep clamps the value
+    const ratio = offset / size;
     const adjustedRatio = !vertical && dir === 'rtl' ? 1 - ratio : ratio;
 
     return min + adjustedRatio * rangeSpan;

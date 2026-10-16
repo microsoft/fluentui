@@ -749,6 +749,36 @@ describe('RangeSlider', () => {
       expect(onChange.mock.calls[0][1].value).toEqual({ start: 30, end: 80 });
     });
 
+    it('reaches max after an off-center grab of the end thumb', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+      const endThumb = container.querySelector('.fui-RangeSlider__endThumb') as HTMLElement;
+
+      // Grab the end thumb (value 80) 6px right of its center, then drag past the rail end
+      dispatchPointer(endThumb, 'pointerdown', { clientX: 86, clientY: 15 });
+      dispatchPointer(root, 'pointermove', { clientX: 120, clientY: 15 });
+
+      expect(onChange.mock.lastCall[1].value).toEqual({ start: 20, end: 100 });
+    });
+
+    it('reaches min after an off-center grab of the start thumb', () => {
+      const onChange = jest.fn();
+      const { container } = render(
+        <RangeSlider defaultValue={{ start: 20, end: 80 }} min={0} max={100} onChange={onChange} />,
+      );
+      const root = container.firstElementChild as HTMLElement;
+      const startThumb = container.querySelector('.fui-RangeSlider__startThumb') as HTMLElement;
+
+      // Grab the start thumb (value 20) 6px left of its center, then drag past the rail start
+      dispatchPointer(startThumb, 'pointerdown', { clientX: 14, clientY: 15 });
+      dispatchPointer(root, 'pointermove', { clientX: -20, clientY: 15 });
+
+      expect(onChange.mock.lastCall[1].value).toEqual({ start: 0, end: 80 });
+    });
+
     it('does not move a thumb at the edge when it is pressed', () => {
       const onChange = jest.fn();
       const { container } = render(
