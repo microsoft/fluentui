@@ -12,14 +12,17 @@ import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 export const useRatingItem = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const state: RatingItemState = useRatingItemBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability
+  let appearance: RatingItemState['root']['data-appearance'];
   if (state.iconFillWidth === 1) {
-    state.root['data-appearance'] = 'filled';
+    appearance = 'filled';
   } else if (state.iconFillWidth > 0) {
-    state.root['data-appearance'] = 'filled-half';
+    appearance = 'filled-half';
   } else {
-    state.root['data-appearance'] = 'outline';
+    appearance = 'outline';
   }
+
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-appearance'] = appearance;
 
   return state;
 };
