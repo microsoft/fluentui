@@ -1,0 +1,8 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      flex-grow: 0;
+      margin-block: var(--spacingVerticalXS);
+    }
+  }
+}

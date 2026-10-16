@@ -21,6 +21,7 @@ import { renderImageSwatch_unstable as renderImageSwatch } from '@fluentui/react
 import { renderSwatchPicker_unstable as renderSwatchPicker } from '@fluentui/react-swatch-picker';
 import { renderSwatchPickerRow_unstable as renderSwatchPickerRow } from '@fluentui/react-swatch-picker';
 import type { SwatchPickerBaseState } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker';
 import { SwatchPickerBaseProps as SwatchPickerProps } from '@fluentui/react-swatch-picker';
 import type { SwatchPickerRowBaseState } from '@fluentui/react-swatch-picker';
 import { SwatchPickerRowBaseProps as SwatchPickerRowProps } from '@fluentui/react-swatch-picker';
@@ -85,6 +86,8 @@ export { renderSwatchPickerRow }
 
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
+
+export { SwatchPickerOnSelectEventHandler }
 
 export { SwatchPickerProps }
 

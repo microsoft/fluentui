@@ -1,7 +1,12 @@
 export { SwatchPicker } from './SwatchPicker';
 export { renderSwatchPicker } from './renderSwatchPicker';
 export { useSwatchPicker, useSwatchPickerContextValues, useSwatchPickerContextValue } from './useSwatchPicker';
-export type { SwatchPickerSlots, SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+export type {
+  SwatchPickerSlots,
+  SwatchPickerProps,
+  SwatchPickerState,
+  SwatchPickerOnSelectEventHandler,
+} from './SwatchPicker.types';
 
 export type { ColorSwatchSlots, ColorSwatchProps, ColorSwatchState } from './ColorSwatch';
 export { ColorSwatch, useColorSwatch, renderColorSwatch } from './ColorSwatch';

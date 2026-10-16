@@ -1,0 +1,7 @@
+@layer fluent {
+  @layer defaults {
+    .menuItemLink {
+      text-decoration: none;
+    }
+  }
+}

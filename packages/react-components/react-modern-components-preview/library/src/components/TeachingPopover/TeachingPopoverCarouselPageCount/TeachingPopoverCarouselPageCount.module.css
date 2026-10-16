@@ -1,0 +1,9 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

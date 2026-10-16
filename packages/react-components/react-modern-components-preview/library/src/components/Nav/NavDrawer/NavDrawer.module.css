@@ -1,0 +1,10 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      --fui-Drawer--size: 260px;
+
+      align-items: unset;
+      background-color: var(--colorNeutralBackground4);
+    }
+  }
+}

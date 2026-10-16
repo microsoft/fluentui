@@ -1,0 +1,12 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      display: flex;
+      flex-direction: column;
+      align-items: unset;
+      padding-block: 0;
+      padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+      row-gap: var(--spacingVerticalXXS);
+    }
+  }
+}

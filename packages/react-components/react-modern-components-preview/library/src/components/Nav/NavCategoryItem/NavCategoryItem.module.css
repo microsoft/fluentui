@@ -1,0 +1,7 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      inline-size: 100%;
+    }
+  }
+}

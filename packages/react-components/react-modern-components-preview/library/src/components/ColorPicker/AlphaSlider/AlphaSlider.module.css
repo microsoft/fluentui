@@ -1,0 +1,23 @@
+@layer fluent {
+  @layer defaults {
+    .rail {
+      background-image: linear-gradient(90deg, transparent, var(--colorPaletteRedBackground3)),
+        url('https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png');
+      border: 1px solid var(--colorNeutralStroke1);
+    }
+
+    .thumb {
+      inset-inline-start: 100%;
+      background-color: var(--colorNeutralBackground1);
+
+      &::before {
+        background-color: var(--colorPaletteRedBackground3);
+      }
+
+      .root[data-orientation='vertical'] & {
+        inset-block-end: 100%;
+        inset-inline-start: auto;
+      }
+    }
+  }
+}
