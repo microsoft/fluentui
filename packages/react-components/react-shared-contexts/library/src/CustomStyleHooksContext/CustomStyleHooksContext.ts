@@ -186,6 +186,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useTextareaStyles_unstable: CustomStyleHook;
   useTextStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
+  useTimePickerStyles_unstable: CustomStyleHook;
   useToastBodyStyles_unstable: CustomStyleHook;
   useToastContainerStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;

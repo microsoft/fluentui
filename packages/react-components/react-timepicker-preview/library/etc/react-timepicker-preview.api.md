@@ -4,6 +4,147 @@
 
 ```ts
 
+import type { BaseComboboxState } from '@fluentui/react-combobox';
+import type { ComboboxContextValues } from '@fluentui/react-combobox';
+import type { ComboboxProps } from '@fluentui/react-combobox';
+import type { ComboboxSlots } from '@fluentui/react-combobox';
+import type { ComboboxState } from '@fluentui/react-combobox';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }?: TimeFormatOptions): string;
+
+// @public
+export function getDateEndAnchor(dateAnchor: Date, startHour: number, endHour: number): Date;
+
+// @public
+export function getDateFromTimeString(time: string | undefined, dateStartAnchor: Date, dateEndAnchor: Date, timeFormatOptions: TimeFormatOptions): TimeStringValidationResult;
+
+// @public
+export function getDateStartAnchor(dateAnchor: Date, startHour: number): Date;
+
+// @public
+export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, increment: number): Date[];
+
+// @public
+export type Hour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24;
+
+// @public
+export const renderTimePicker_unstable: (state: TimePickerBaseState, contextValues: TimePickerContextValues) => JSXElement;
+
+// @public (undocumented)
+export type TimeFormatOptions = {
+    hourCycle?: HourCycle | undefined;
+    showSeconds?: boolean;
+};
+
+// @public
+export const TimePicker: ForwardRefComponent<TimePickerProps>;
+
+// @public
+export type TimePickerBaseProps = DistributiveOmit<TimePickerProps, 'appearance' | 'size'>;
+
+// @public
+export type TimePickerBaseState = DistributiveOmit<TimePickerState, 'appearance' | 'size'>;
+
+// @public (undocumented)
+export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
+
+// @public
+export type TimePickerComboboxProps = Pick<ComboboxProps, 'clearable' | 'freeform' | 'onBlur' | 'onOpenChange'>;
+
+// @public
+export type TimePickerComboboxState = Pick<BaseComboboxState, 'root' | 'input' | 'listbox' | 'expandIcon' | 'clearIcon' | 'value' | 'getOptionById' | 'activeDescendantController'>;
+
+// @public
+export type TimePickerCommitData = Pick<TimePickerOnChangeData, 'value' | 'displayValue' | 'errorType'>;
+
+// @public (undocumented)
+export type TimePickerContextValues = ComboboxContextValues;
+
+// @public
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
+
+// @public
+export type TimePickerOnChangeData = {
+    value: Date | null;
+    displayValue: string | undefined;
+    errorType: TimePickerErrorType | undefined;
+} & (EventData<'click', React_2.MouseEvent<HTMLElement>> | EventData<'keydown', React_2.KeyboardEvent<HTMLElement>> | EventData<'blur', React_2.FocusEvent<HTMLElement>>);
+
+// @public
+export type TimePickerOption = {
+    date: Date;
+    key: string;
+    text: string;
+};
+
+// @public
+export type TimePickerProps = Omit<ComponentProps<Partial<TimePickerSlots>, 'input'>, 'children' | 'size' | 'value' | 'defaultValue' | 'onChange'> & Pick<ComboboxProps, 'appearance' | 'clearable' | 'defaultOpen' | 'freeform' | 'inlinePopup' | 'mountNode' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size'> & TimePickerTimeProps;
+
+// @public
+export type TimePickerSelection<TComboboxProps> = TimePickerTimeState & {
+    comboboxProps: TComboboxProps;
+    options: TimePickerOption[];
+    clearIconRef: React_2.RefObject<HTMLSpanElement | null>;
+    commitValue: (event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => void;
+};
+
+// @public (undocumented)
+export type TimePickerSlots = ComboboxSlots;
+
+// @public
+export type TimePickerState = ComboboxState & TimePickerTimeState;
+
+// @public
+export type TimePickerTimeProps = TimeFormatOptions & {
+    startHour?: Hour;
+    endHour?: Hour;
+    increment?: number;
+    dateAnchor?: Date;
+    value?: Date | null;
+    defaultValue?: Date | null;
+    onChange?: EventHandler<TimePickerOnChangeData>;
+    formatDateToTimeString?: (date: Date, options: TimeFormatOptions) => string;
+    parseTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
+};
+
+// @public
+export type TimePickerTimeState = Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
+    committedText: string | undefined;
+};
+
+// @public
+export type TimeStringValidationResult = {
+    date: Date | null;
+    errorType?: TimePickerErrorType;
+};
+
+// @public
+export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLInputElement>) => TimePickerState;
+
+// @public
+export const useTimePickerBase_unstable: (props: TimePickerBaseProps, ref: React_2.Ref<HTMLInputElement>) => TimePickerBaseState;
+
+// @public
+export const useTimePickerComboboxState_unstable: <TState extends TimePickerComboboxState>(comboboxState: TState, selection: Pick<TimePickerSelection<unknown>, "clearIconRef" | "freeform" | "parseTimeStringToDate" | "commitValue" | "committedText">) => TState & TimePickerTimeState;
+
+// @public
+export const useTimePickerContextValues_unstable: (state: TimePickerBaseState) => TimePickerContextValues;
+
+// @public
+export const useTimePickerSelection_unstable: <TComboboxProps extends TimePickerComboboxProps>(props: TimePickerTimeProps & Omit<TComboboxProps, "value" | "defaultValue" | "onChange">) => TimePickerSelection<TComboboxProps>;
+
+// @public
+export const useTimePickerStyles_unstable: (state: TimePickerState) => TimePickerState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
