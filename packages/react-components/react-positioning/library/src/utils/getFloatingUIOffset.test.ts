@@ -1,4 +1,4 @@
-import type { MiddlewareState } from '@floating-ui/dom';
+import type { MiddlewareState } from '../floating';
 import type { OffsetFunction } from '../types';
 import type { FloatingUIOffsetFunction } from './getFloatingUIOffset';
 import { getFloatingUIOffset } from './getFloatingUIOffset';
@@ -26,17 +26,8 @@ describe('getFloatingUIOffset', () => {
         width: 0,
       },
     },
-    platform: {
-      getElementRects: jest.fn(),
-      getClippingRect: jest.fn(),
-      getDimensions: jest.fn(),
-      convertOffsetParentRelativeRectToViewportRelativeRect: jest.fn(),
-      getOffsetParent: jest.fn(),
-      isElement: jest.fn(),
-      getDocumentElement: jest.fn(),
-      getClientRects: jest.fn(),
-      isRTL: jest.fn(),
-    },
+    rtl: false,
+    clippingCache: new Map(),
     middlewareData: {},
     x: 0,
     y: 0,

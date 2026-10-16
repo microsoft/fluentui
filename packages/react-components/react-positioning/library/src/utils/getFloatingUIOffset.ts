@@ -1,5 +1,5 @@
 import type { Offset } from '../types';
-import type { MiddlewareState } from '@floating-ui/dom';
+import type { MiddlewareState } from '../floating';
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
 /**
  * Type taken from Floating UI since they are not exported

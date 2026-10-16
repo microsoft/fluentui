@@ -1,8 +1,10 @@
-import { size } from '@floating-ui/dom';
-import type { Middleware } from '@floating-ui/dom';
+import { size } from '../floating';
+import type { Middleware } from '../floating';
 import type { NormalizedAutoSize, PositioningOptions } from '../types';
 import { getBoundary } from '../utils/getBoundary';
 import { toFloatingUIPadding } from '../utils';
+const DIMENSIONS = ['width', 'height'] as const;
+
 export interface MaxSizeMiddlewareOptions
   extends Pick<PositioningOptions, 'overflowBoundary' | 'overflowBoundaryPadding'> {
   container: HTMLElement | null;
@@ -22,16 +24,16 @@ export const resetMaxSize = (autoSize: NormalizedAutoSize): Middleware => ({
     }
 
     const { applyMaxWidth, applyMaxHeight } = autoSize;
-    if (applyMaxWidth) {
-      elements.floating.style.removeProperty('box-sizing');
-      elements.floating.style.removeProperty('max-width');
-      elements.floating.style.removeProperty('width');
+    const { style } = elements.floating;
+    if (applyMaxWidth || applyMaxHeight) {
+      style.removeProperty('box-sizing');
     }
-    if (applyMaxHeight) {
-      elements.floating.style.removeProperty('box-sizing');
-      elements.floating.style.removeProperty('max-height');
-      elements.floating.style.removeProperty('height');
-    }
+    DIMENSIONS.forEach(dimension => {
+      if (dimension === 'width' ? applyMaxWidth : applyMaxHeight) {
+        style.removeProperty(`max-${dimension}`);
+        style.removeProperty(dimension);
+      }
+    });
 
     return {
       data: { maxSizeAlreadyReset: true },
@@ -46,27 +48,26 @@ export function maxSize(autoSize: NormalizedAutoSize, options: MaxSizeMiddleware
     ...(overflowBoundaryPadding && { padding: toFloatingUIPadding(overflowBoundaryPadding, isRtl) }),
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
     apply({ availableHeight, availableWidth, elements, rects }) {
-      const applyMaxSizeStyles = (apply: boolean, dimension: 'width' | 'height', availableSize: number) => {
-        if (!apply) {
+      const { style } = elements.floating;
+
+      DIMENSIONS.forEach(dimension => {
+        if (!(dimension === 'width' ? autoSize.applyMaxWidth : autoSize.applyMaxHeight)) {
           return;
         }
 
-        elements.floating.style.setProperty('box-sizing', 'border-box');
-        elements.floating.style.setProperty(`max-${dimension}`, `${availableSize}px`);
+        const availableSize = dimension === 'width' ? availableWidth : availableHeight;
+        style.setProperty('box-sizing', 'border-box');
+        style.setProperty(`max-${dimension}`, `${availableSize}px`);
 
         if (rects.floating[dimension] > availableSize) {
-          elements.floating.style.setProperty(dimension, `${availableSize}px`);
+          style.setProperty(dimension, `${availableSize}px`);
 
-          const axis = dimension === 'width' ? 'x' : 'y';
-          if (!elements.floating.style.getPropertyValue(`overflow-${axis}`)) {
-            elements.floating.style.setProperty(`overflow-${axis}`, 'auto');
+          const overflow = dimension === 'width' ? 'overflow-x' : 'overflow-y';
+          if (!style.getPropertyValue(overflow)) {
+            style.setProperty(overflow, 'auto');
           }
         }
-      };
-
-      const { applyMaxWidth, applyMaxHeight } = autoSize;
-      applyMaxSizeStyles(applyMaxWidth, 'width', availableWidth);
-      applyMaxSizeStyles(applyMaxHeight, 'height', availableHeight);
+      });
     },
   });
 }

@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { MiddlewareState } from '@floating-ui/dom';
+import type { MiddlewareState } from '../floating';
 import { matchTargetSize, matchTargetSizeCssVar } from './matchTargetSize';
 
 describe('matchTargetSize', () => {

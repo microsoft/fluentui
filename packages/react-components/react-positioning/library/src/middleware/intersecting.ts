@@ -1,12 +1,12 @@
-import type { Middleware } from '@floating-ui/dom';
-import { detectOverflow } from '@floating-ui/dom';
+import type { Middleware } from '../floating';
+import { detectOverflow } from '../floating';
 
 export function intersecting(): Middleware {
   return {
     name: 'intersectionObserver',
-    fn: async middlewareArguments => {
+    fn: middlewareArguments => {
       const floatingRect = middlewareArguments.rects.floating;
-      const altOverflow = await detectOverflow(middlewareArguments, { altBoundary: true });
+      const altOverflow = detectOverflow(middlewareArguments, { altBoundary: true });
 
       const isIntersectingTop = altOverflow.top < floatingRect.height && altOverflow.top > 0;
       const isIntersectingBottom = altOverflow.bottom < floatingRect.height && altOverflow.bottom > 0;

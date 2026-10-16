@@ -1,4 +1,4 @@
-import type { Placement, MiddlewareData, Strategy, Coords } from '@floating-ui/dom';
+import type { Placement, MiddlewareData, Strategy, Coords } from '../floating';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_HIDDEN,
@@ -28,20 +28,13 @@ export function writeContainerUpdates(options: {
     return;
   }
   container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
-  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
-  if (middlewareData.intersectionObserver.intersecting) {
-    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-  }
 
-  container.removeAttribute(DATA_POSITIONING_ESCAPED);
-  if (middlewareData.hide?.escaped) {
-    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
-  }
+  const toggleAttribute = (name: string, enabled: boolean | undefined) =>
+    enabled ? container.setAttribute(name, '') : container.removeAttribute(name);
 
-  container.removeAttribute(DATA_POSITIONING_HIDDEN);
-  if (middlewareData.hide?.referenceHidden) {
-    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
-  }
+  toggleAttribute(DATA_POSITIONING_INTERSECTING, middlewareData.intersectionObserver.intersecting);
+  toggleAttribute(DATA_POSITIONING_ESCAPED, middlewareData.hide?.escaped);
+  toggleAttribute(DATA_POSITIONING_HIDDEN, middlewareData.hide?.referenceHidden);
 
   // Round so that the coordinates land on device pixels.
   // This prevents blurriness in cases where the browser doesn't apply pixel snapping, such as when other effects like
@@ -53,17 +46,8 @@ export function writeContainerUpdates(options: {
 
   Object.assign(container.style, {
     position: strategy,
-  });
-
-  if (useTransform) {
-    Object.assign(container.style, {
-      transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
-    });
-    return;
-  }
-
-  Object.assign(container.style, {
-    left: `${x}px`,
-    top: `${y}px`,
+    ...(useTransform
+      ? { transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)` }
+      : { left: `${x}px`, top: `${y}px` }),
   });
 }

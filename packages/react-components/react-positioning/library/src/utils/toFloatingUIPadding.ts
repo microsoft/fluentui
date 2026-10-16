@@ -1,4 +1,4 @@
-import type { SideObject } from '@floating-ui/dom';
+import type { SideObject } from '../floating';
 import type { PositioningOptions } from '../types';
 
 export function toFloatingUIPadding(

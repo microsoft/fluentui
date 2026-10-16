@@ -1,6 +1,6 @@
 # @fluentui/react-positioning
 
-A React utilities built on top of [Floating UI](https://floating-ui.com/) for positioning elements in the DOM.
+A React utilities built on top of an inlined, trimmed-down port of [Floating UI](https://floating-ui.com/) (see `src/floating`) for positioning elements in the DOM.
 
 ## Usage
 

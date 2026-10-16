@@ -1,11 +1,11 @@
-import type { Middleware } from '@floating-ui/dom';
+import type { Middleware } from '../floating';
 
 export const matchTargetSizeCssVar = '--fui-match-target-size';
 
 export function matchTargetSize(): Middleware {
   return {
     name: 'matchTargetSize',
-    fn: async middlewareArguments => {
+    fn: middlewareArguments => {
       const {
         rects: { reference: referenceRect, floating: floatingRect },
         elements: { floating: floatingElement },
