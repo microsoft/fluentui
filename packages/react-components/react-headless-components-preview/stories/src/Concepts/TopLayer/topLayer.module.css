@@ -1,0 +1,53 @@
+.btn {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--surface-muted);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.layer {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: var(--shadow-4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 1;
+  transition: opacity var(--duration-medium) var(--ease-standard), display var(--duration-medium) allow-discrete,
+    overlay var(--duration-medium) allow-discrete;
+}
+
+.layer:not([data-open]) {
+  opacity: 0;
+}
+
+@starting-style {
+  .layer[data-open] {
+    opacity: 0;
+  }
+}
+
+.modal {
+  inset: 0;
+  margin: auto;
+  width: min(92vw, 400px);
+  padding: 24px;
+}
+
+.modal::backdrop {
+  background: rgba(10, 10, 10, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer,
+  .modal {
+    transition: none;
+  }
+}
