@@ -74,7 +74,6 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
 
   // Apply after slot resolution so an explicitly undefined slot attribute also receives the default.
   if (state.input['aria-orientation'] === undefined) {
-    // eslint-disable-next-line react-hooks/immutability
     state.input['aria-orientation'] = state.vertical ? 'vertical' : 'horizontal';
   }
 
