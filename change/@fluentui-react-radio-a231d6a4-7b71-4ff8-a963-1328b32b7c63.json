@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-radio): preserve keyboard focus tracking with consumer root refs",
+  "packageName": "@fluentui/react-radio",
+  "email": "3682072+machineloop@users.noreply.github.com"
+}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from './Radio';
@@ -49,6 +49,58 @@ describe('Radio', () => {
     const ref = React.createRef<HTMLInputElement>();
     const { getByRole } = render(<Radio ref={ref} />);
     expect(getByRole('radio')).toEqual(ref.current);
+  });
+
+  it('preserves keyboard focus tracking with a consumer object root ref', async () => {
+    const rootRef = React.createRef<HTMLSpanElement>();
+    const { getByRole, unmount } = render(
+      <>
+        <Radio root={{ ref: rootRef }} />
+        <button>After</button>
+      </>,
+    );
+    expect(rootRef.current).toBe(getByRole('radio').parentElement);
+    userEvent.tab();
+    expect(getByRole('radio').matches(':focus')).toBe(true);
+    await waitFor(() => expect(rootRef.current?.hasAttribute('data-fui-focus-within')).toBe(true));
+    userEvent.tab();
+    expect(getByRole('button').matches(':focus')).toBe(true);
+    expect(rootRef.current?.hasAttribute('data-fui-focus-within')).toBe(false);
+    unmount();
+    expect(rootRef.current).toBeNull();
+  });
+
+  it('preserves keyboard focus tracking with a consumer callback root ref', async () => {
+    const rootRef = jest.fn<void, [HTMLSpanElement | null]>();
+    const { getByRole, unmount } = render(<Radio root={{ ref: rootRef }} />);
+    const root = getByRole('radio').parentElement;
+    expect(rootRef).toHaveBeenLastCalledWith(root);
+    userEvent.tab();
+    await waitFor(() => expect(root?.hasAttribute('data-fui-focus-within')).toBe(true));
+    unmount();
+    expect(rootRef).toHaveBeenLastCalledWith(null);
+  });
+
+  it('updates consumer root refs without losing keyboard focus tracking', async () => {
+    const firstRef = React.createRef<HTMLSpanElement>();
+    const secondRef = React.createRef<HTMLSpanElement>();
+    const { getByRole, rerender, unmount } = render(<Radio root={{ ref: firstRef }} />);
+    const root = getByRole('radio').parentElement;
+    userEvent.tab();
+    await waitFor(() => expect(root?.hasAttribute('data-fui-focus-within')).toBe(true));
+    rerender(<Radio root={{ ref: secondRef }} />);
+    expect(firstRef.current).toBeNull();
+    expect(secondRef.current).toBe(root);
+    expect(getByRole('radio').matches(':focus')).toBe(true);
+    expect(root?.hasAttribute('data-fui-focus-within')).toBe(true);
+    unmount();
+    expect(secondRef.current).toBeNull();
+  });
+
+  it('keeps internal keyboard focus tracking when the consumer root ref is null', async () => {
+    const { getByRole } = render(<Radio root={{ ref: null }} />);
+    userEvent.tab();
+    await waitFor(() => expect(getByRole('radio').parentElement?.hasAttribute('data-fui-focus-within')).toBe(true));
   });
 
   it('handles disabled', () => {
