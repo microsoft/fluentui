@@ -16,6 +16,7 @@ const COMPONENT_FEATURES: Record<string, ConceptKey[]> = {
   Combobox: ['popover', 'anchor-positioning'],
   TagPicker: ['popover', 'anchor-positioning', 'focusgroup'],
   Dialog: ['dialog', 'popover'],
+  TopLayer: ['popover', 'dialog'],
   Drawer: ['dialog', 'popover'],
   Toast: ['popover'],
   TagGroup: ['focusgroup'],
