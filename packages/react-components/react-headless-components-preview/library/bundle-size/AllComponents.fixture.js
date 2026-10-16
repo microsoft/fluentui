@@ -417,6 +417,11 @@ import {
   useRadioGroupContextValues,
 } from '@fluentui/react-headless-components-preview/radio-group';
 import {
+  RangeSlider,
+  renderRangeSlider,
+  useRangeSlider,
+} from '@fluentui/react-headless-components-preview/range-slider';
+import {
   Rating,
   RatingItem,
   renderRating,
@@ -998,6 +1003,9 @@ console.log(
   useRadio,
   useRadioGroup,
   useRadioGroupContextValues,
+  RangeSlider,
+  renderRangeSlider,
+  useRangeSlider,
   Rating,
   RatingItem,
   renderRating,
