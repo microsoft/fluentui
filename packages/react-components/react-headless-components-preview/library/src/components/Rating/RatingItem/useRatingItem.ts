@@ -13,8 +13,13 @@ export const useRatingItem = (props: RatingItemProps, ref: React.Ref<HTMLSpanEle
   const state: RatingItemState = useRatingItemBase_unstable(props, ref);
 
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-appearance'] =
-    state.iconFillWidth === 1 ? 'filled' : state.iconFillWidth > 0 ? 'filled-half' : 'outline';
+  if (state.iconFillWidth === 1) {
+    state.root['data-appearance'] = 'filled';
+  } else if (state.iconFillWidth > 0) {
+    state.root['data-appearance'] = 'filled-half';
+  } else {
+    state.root['data-appearance'] = 'outline';
+  }
 
   return state;
 };
