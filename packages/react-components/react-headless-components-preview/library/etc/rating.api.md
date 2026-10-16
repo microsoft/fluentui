@@ -4,7 +4,10 @@
 
 ```ts
 
+import { DetailedHTMLProps } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefExoticComponent } from 'react';
+import { HTMLAttributes } from 'react';
 import { RatingContextValues } from '@fluentui/react-rating';
 import type { RatingItemBaseState } from '@fluentui/react-rating';
 import { RatingItemBaseProps as RatingItemProps } from '@fluentui/react-rating';
@@ -12,7 +15,8 @@ import { RatingItemSlots } from '@fluentui/react-rating';
 import { RatingBaseProps as RatingProps } from '@fluentui/react-rating';
 import { RatingSlots } from '@fluentui/react-rating';
 import { RatingBaseState as RatingState } from '@fluentui/react-rating';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
+import { RefAttributes } from '@fluentui/react-utilities';
 import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
 import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
 import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
@@ -21,13 +25,13 @@ import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
 export const Rating: ForwardRefComponent<RatingProps>;
 
 // @public
-export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingItemSlots>, "root"> & Omit<{
-    as?: "span" | undefined;
-} & Omit<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children"> & {
-    children?: any;
+export const RatingItem: ForwardRefExoticComponent<Omit<Partial<RatingItemSlots>, "root"> & Omit<{
+as?: "span" | undefined;
+} & Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, "children"> & {
+children?: any;
 }, "ref"> & {
-    value?: number;
-} & React_2.RefAttributes<HTMLSpanElement>>;
+value?: number;
+} & RefAttributes<HTMLSpanElement>>;
 
 export { RatingItemProps }
 
