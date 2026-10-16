@@ -639,6 +639,10 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
     }, [props.hideLegend, props.legendProps, legendsRef, onLegendSelectionChange, classes.legendContainer]);
 
     const focusAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
+    const customizedCallout =
+      isPopoverOpen && !props.hideTooltip && props.onRenderCalloutPerDataPoint && dataPointCalloutProps
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+        : undefined;
 
     return (
       <div className={classes.root} ref={chartContainerRef} onMouseLeave={hidePopover} onBlur={hidePopover}>
@@ -678,7 +682,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
         {renderLegends()}
         {!props.hideTooltip && (
           <ChartPopover
-            isPopoverOpen={isPopoverOpen}
+            isPopoverOpen={isPopoverOpen && customizedCallout !== null}
             positioning={{
               target: popoverTarget,
             }}
@@ -687,10 +691,9 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
             color={popoverColor}
             YValue={popoverYValue}
             customCallout={
-              isPopoverOpen && props.onRenderCalloutPerDataPoint && dataPointCalloutProps
+              customizedCallout
                 ? {
-                    // ChartPopover requires defined JSX to suppress its default content for a null render.
-                    customizedCallout: <>{props.onRenderCalloutPerDataPoint(dataPointCalloutProps)}</>,
+                    customizedCallout,
                   }
                 : undefined
             }

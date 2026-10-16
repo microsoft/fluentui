@@ -2,7 +2,7 @@ import * as React from 'react';
 import { screen, fireEvent, render, within } from '@testing-library/react';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { ScatterChart } from '../../index';
-import type { CustomizedCalloutData } from '../../index';
+import type { CustomizedCalloutData, ScatterChartDataPoint } from '../../index';
 import type { ScatterChartProps } from './ScatterChart.types';
 import { toHaveNoViolations } from 'jest-axe';
 import type { ChartProps } from '../../ScatterChart';
@@ -258,32 +258,36 @@ describe('ScatterChart custom callout public contracts', () => {
     ],
   };
 
-  it.each(['hover', 'focus'] as const)(
-    'passes only the selected x/y/legend to the point renderer on %s',
-    interaction => {
-      const onRenderCalloutPerDataPoint = jest.fn((input?: CustomizedCalloutData) =>
-        input ? <div role="tooltip">{input.values.map(value => `${value.legend}: ${value.y}`).join('; ')}</div> : null,
-      );
-      const { container } = render(
-        <ScatterChart data={sharedXData} onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint} />,
-      );
-      const points = container.querySelectorAll('circle[role="option"]');
-      const expected = [
-        { legend: 'second', y: 4 },
-        { legend: 'first', y: 4 },
-        { legend: 'first', y: 8 },
-      ];
-      expect(points).toHaveLength(expected.length);
+  it.each(['hover', 'focus'] as const)('preserves all values at x for the legacy point renderer on %s', interaction => {
+    const onRenderCalloutPerDataPoint = jest.fn((input?: CustomizedCalloutData) =>
+      input ? <div role="tooltip">{input.values.map(value => `${value.legend}: ${value.y}`).join('; ')}</div> : null,
+    );
+    const { container } = render(
+      <ScatterChart data={sharedXData} onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint} />,
+    );
+    const points = container.querySelectorAll('circle[role="option"]');
+    const expected = [
+      { legend: 'second', y: 4 },
+      { legend: 'first', y: 4 },
+      { legend: 'first', y: 8 },
+    ];
+    expect(points).toHaveLength(expected.length);
 
-      points.forEach((point, index) => {
-        interact(point, interaction);
-        expect(onRenderCalloutPerDataPoint).toHaveBeenLastCalledWith(
-          expect.objectContaining({ x: 2, values: [expect.objectContaining(expected[index])] }),
-        );
-        expect(screen.getByRole('tooltip')).toHaveTextContent(`${expected[index].legend}: ${expected[index].y}`);
-      });
-    },
-  );
+    points.forEach(point => {
+      interact(point, interaction);
+      expect(onRenderCalloutPerDataPoint).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          x: 2,
+          values: [
+            expect.objectContaining({ legend: 'first', y: 4 }),
+            expect.objectContaining({ legend: 'first', y: 8 }),
+            expect.objectContaining({ legend: 'second', y: 4 }),
+          ],
+        }),
+      );
+      expect(screen.getByRole('tooltip')).toHaveTextContent('first: 4; first: 8; second: 4');
+    });
+  });
 
   it.each(['hover', 'focus'] as const)('passes all points at x to the stack renderer on %s', interaction => {
     const onRenderCalloutPerStack = jest.fn((input?: CustomizedCalloutData) =>
@@ -304,7 +308,7 @@ describe('ScatterChart custom callout public contracts', () => {
     expect(screen.getByRole('tooltip')).toHaveTextContent('first: 4; first: 8; second: 4');
   });
 
-  it.each(['hover', 'focus'] as const)('suppresses native content when a renderer returns null on %s', interaction => {
+  it.each(['hover', 'focus'] as const)('keeps the legacy null-to-default fallback on %s', interaction => {
     const onRenderCalloutPerDataPoint = jest.fn(() => null);
     const { container } = render(
       <ScatterChart data={data} onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint} />,
@@ -314,13 +318,12 @@ describe('ScatterChart custom callout public contracts', () => {
     expect(onRenderCalloutPerDataPoint).toHaveBeenCalledWith(
       expect.objectContaining({ x: 1, values: [expect.objectContaining({ legend: 'default', y: 4 })] }),
     );
-    expect(container.querySelector('.fui-PopoverSurface')).not.toBeInTheDocument();
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('PRIVATE_CORPUS_VALUE');
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
-    expect(screen.queryByText('PRIVATE_CORPUS_VALUE')).not.toBeInTheDocument();
   });
 
   it.each(['hover', 'focus'] as const)(
-    'suppresses the point hook when the stack hook returns null on %s',
+    'keeps stack precedence and the legacy null-to-default fallback on %s',
     interaction => {
       const onRenderCalloutPerDataPoint = jest.fn(semanticCallout);
       const onRenderCalloutPerStack = jest.fn(() => null);
@@ -338,9 +341,80 @@ describe('ScatterChart custom callout public contracts', () => {
         expect.objectContaining({ x: 1, values: [expect.objectContaining({ legend: 'default', y: 4 })] }),
       );
       expect(onRenderCalloutPerDataPoint).not.toHaveBeenCalled();
-      expect(container.querySelector('.fui-PopoverSurface')).not.toBeInTheDocument();
+      expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('PRIVATE_CORPUS_VALUE');
     },
   );
+
+  it.each(['hover', 'focus'] as const)(
+    'passes the original point identity to the dedicated hook on %s',
+    interaction => {
+      const first = { x: 2, y: 4, text: 'first duplicate' };
+      const second = { x: 2, y: 4, text: 'second duplicate' };
+      const onRenderCalloutPerPoint = jest.fn((point?: ScatterChartDataPoint) => <div>{point?.text}</div>);
+      const legacyPoint = jest.fn(semanticCallout);
+      const legacyStack = jest.fn(semanticCallout);
+      const duplicateData = { scatterChartData: [{ legend: 'same', data: [first, second] }] };
+      const { container, rerender } = render(
+        <ScatterChart
+          data={duplicateData}
+          onRenderCalloutPerPoint={onRenderCalloutPerPoint}
+          onRenderCalloutPerDataPoint={legacyPoint}
+          onRenderCalloutPerStack={legacyStack}
+        />,
+      );
+      expect(onRenderCalloutPerPoint).not.toHaveBeenCalled();
+      const marks = container.querySelectorAll('circle[role="option"]');
+      [first, second].forEach((point, index) => {
+        interact(marks[index], interaction);
+        expect(onRenderCalloutPerPoint).toHaveBeenLastCalledWith(point);
+        expect(onRenderCalloutPerPoint.mock.calls.slice(-1)[0][0]).toBe(point);
+        expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent(point.text);
+      });
+      expect(legacyPoint).not.toHaveBeenCalled();
+      expect(legacyStack).not.toHaveBeenCalled();
+      const replacement = jest.fn((point?: ScatterChartDataPoint) => <div>replacement {point?.text}</div>);
+      rerender(<ScatterChart data={duplicateData} onRenderCalloutPerPoint={replacement} />);
+      expect(replacement.mock.calls.slice(-1)[0][0]).toBe(second);
+      expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('replacement second duplicate');
+    },
+  );
+
+  it.each(['hover', 'focus'] as const)(
+    'closes a null dedicated callout but falls back on undefined on %s',
+    interaction => {
+      const renderPoint = jest.fn().mockReturnValue(null);
+      const { container, rerender } = render(<ScatterChart data={data} onRenderCalloutPerPoint={renderPoint} />);
+      interact(container.querySelector('circle[role="option"]')!, interaction);
+      expect(renderPoint).toHaveBeenCalled();
+      expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+      renderPoint.mockReturnValue(undefined);
+      rerender(<ScatterChart data={data} onRenderCalloutPerPoint={renderPoint} />);
+      expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('PRIVATE_CORPUS_VALUE');
+      renderPoint.mockClear();
+      rerender(<ScatterChart data={data} onRenderCalloutPerPoint={renderPoint} hideTooltip />);
+      expect(renderPoint).not.toHaveBeenCalled();
+      expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+    },
+  );
+
+  it.each(['hover', 'focus'] as const)('preserves all values for calloutPropsPerDataPoint on %s', interaction => {
+    const calloutPropsPerDataPoint = jest.fn(() => ({}));
+    const { container } = render(
+      <ScatterChart data={sharedXData} calloutPropsPerDataPoint={calloutPropsPerDataPoint} />,
+    );
+    interact(container.querySelector('circle[role="option"]')!, interaction);
+    expect(calloutPropsPerDataPoint).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        x: 2,
+        values: [
+          expect.objectContaining({ legend: 'first', y: 4 }),
+          expect.objectContaining({ legend: 'first', y: 8 }),
+          expect.objectContaining({ legend: 'second', y: 4 }),
+        ],
+      }),
+    );
+    expect(calloutPropsPerDataPoint.mock.calls.slice(-1)[0]).toHaveLength(1);
+  });
 
   it.each(['hover', 'focus'] as const)(
     'preserves the native default callout without render hooks on %s',

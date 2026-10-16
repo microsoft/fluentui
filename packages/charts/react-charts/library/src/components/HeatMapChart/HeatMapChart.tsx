@@ -773,12 +773,12 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     _stringYAxisDataPoints.current = yAxisPoints;
     _stringXAxisDataPoints.current = xAxisPoints;
     const customizedCallout =
-      isPopoverOpen && !props.hideTooltip && props.onRenderCalloutPerDataPoint && dataPointCalloutProps ? (
-        <>{props.onRenderCalloutPerDataPoint(dataPointCalloutProps)}</>
-      ) : undefined;
+      isPopoverOpen && !props.hideTooltip && props.onRenderCalloutPerDataPoint && dataPointCalloutProps
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+        : undefined;
     const calloutProps: ChartPopoverProps = {
       ...props.calloutProps,
-      isPopoverOpen,
+      isPopoverOpen: isPopoverOpen && customizedCallout !== null,
       YValue: calloutYValue,
       legend: calloutLegend,
       color: calloutTextColor,
@@ -792,7 +792,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       ...(customizedCallout && {
         customCallout: {
           ...props.calloutProps?.customCallout,
-          // Preserve an intentional null render without falling back to the native cell details.
           customizedCallout,
           customCalloutProps: props.calloutPropsPerDataPoint
             ? props.calloutPropsPerDataPoint(dataPointCalloutProps)

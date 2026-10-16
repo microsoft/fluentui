@@ -42,12 +42,23 @@ describe('PolarChart custom JSX callout hooks', () => {
     expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
   });
 
-  it('does not fall back to native content when the renderer returns null', () => {
+  it.each(['hover', 'focus'])('does not mount a surface when the renderer returns null on %s', event => {
     const renderNull = jest.fn(() => null);
     const { container } = render(<PolarChart {...props} onRenderCalloutPerDataPoint={renderNull} />);
-    fireEvent.focus(container.querySelector('circle[role="img"]')!);
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(container.querySelector('circle[role="img"]')!);
     expect(renderNull).toHaveBeenCalledWith(point);
-    expect(container.querySelector('.fui-PopoverSurface')).toBeEmptyDOMElement();
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+  });
+
+  it.each(['hover', 'focus'])('falls back to native content when the hook returns undefined on %s', event => {
+    const renderDefault = jest.fn().mockReturnValue(undefined);
+    const { container } = render(<PolarChart {...props} onRenderCalloutPerDataPoint={renderDefault} />);
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(container.querySelector('circle[role="img"]')!);
+    expect(renderDefault).toHaveBeenCalledWith(point);
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('native radial value');
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('native angular value');
   });
 
   it('keeps native callout content when no renderer is supplied', () => {

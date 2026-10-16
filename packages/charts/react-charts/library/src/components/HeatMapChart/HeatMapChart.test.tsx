@@ -704,12 +704,22 @@ describe('HeatMapChart custom JSX callout hooks', () => {
     expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
   });
 
-  it('does not leak native ratio or description when the renderer returns null', () => {
+  it.each(['hover', 'focus'])('does not mount a surface when the renderer returns null on %s', event => {
     const renderNull = jest.fn(() => null);
     const { container } = render(<HeatMapChart {...props} onRenderCalloutPerDataPoint={renderNull} />);
-    fireEvent.focus(container.querySelector('g[role="option"]')!);
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(container.querySelector('g[role="option"]')!);
     expect(renderNull).toHaveBeenCalledWith(point);
-    expect(container.querySelector('.fui-PopoverSurface')).toBeEmptyDOMElement();
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+  });
+
+  it.each(['hover', 'focus'])('falls back to the native callout on undefined on %s', event => {
+    const renderDefault = jest.fn().mockReturnValue(undefined);
+    const { container } = render(<HeatMapChart {...props} onRenderCalloutPerDataPoint={renderDefault} />);
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(container.querySelector('g[role="option"]')!);
+    expect(renderDefault).toHaveBeenCalledWith(point);
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('native description');
   });
 
   it('preserves native default content and the customCallout alias without the new hook', () => {

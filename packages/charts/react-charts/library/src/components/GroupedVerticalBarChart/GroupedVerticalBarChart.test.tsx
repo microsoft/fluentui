@@ -819,21 +819,48 @@ describe('GroupedVerticalBarChart custom JSX callout hooks', () => {
     }
   });
 
-  it.each([false, true])(
-    'does not fall back to default content when the selected renderer returns null (%s)',
-    stack => {
-      const renderNull = jest.fn(() => null);
+  it.each([
+    [false, 'hover'],
+    [false, 'focus'],
+    [true, 'hover'],
+    [true, 'focus'],
+  ] as const)('does not mount a surface when the selected renderer returns null (stack=%s, %s)', (stack, event) => {
+    const renderNull = jest.fn(() => null);
+    const { container } = render(
+      <GroupedVerticalBarChart
+        data={chartPoints}
+        isCalloutForStack={stack}
+        onRenderCalloutPerDataPoint={renderNull}
+        onRenderCalloutPerStack={renderNull}
+      />,
+    );
+    const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+    show(container.querySelector('rect[role="option"]')!);
+    expect(renderNull).toHaveBeenCalled();
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+  });
+
+  it.each([
+    [false, 'hover'],
+    [false, 'focus'],
+    [true, 'hover'],
+    [true, 'focus'],
+  ] as const)(
+    'falls back to native content when the selected hook returns undefined (stack=%s, %s)',
+    (stack, event) => {
+      const renderDefault = jest.fn().mockReturnValue(undefined);
       const { container } = render(
         <GroupedVerticalBarChart
           data={chartPoints}
           isCalloutForStack={stack}
-          onRenderCalloutPerDataPoint={renderNull}
-          onRenderCalloutPerStack={renderNull}
+          onRenderCalloutPerDataPoint={renderDefault}
+          onRenderCalloutPerStack={renderDefault}
         />,
       );
-      fireEvent.mouseOver(container.querySelector('rect[role="option"]')!);
-      expect(renderNull).toHaveBeenCalled();
-      expect(container.querySelector('.fui-PopoverSurface')).toBeEmptyDOMElement();
+      const show = event === 'hover' ? fireEvent.mouseOver : fireEvent.focus;
+      show(container.querySelector('rect[role="option"]')!);
+      expect(renderDefault).toHaveBeenCalled();
+      expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('33%');
     },
   );
 

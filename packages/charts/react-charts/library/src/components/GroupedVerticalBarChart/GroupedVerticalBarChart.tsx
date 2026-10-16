@@ -452,19 +452,18 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
   const customizedCallout =
-    isPopoverOpen && !props.hideTooltip ? (
-      props.isCalloutForStack ? (
-        props.onRenderCalloutPerStack && stackCalloutProps ? (
-          <>{props.onRenderCalloutPerStack(stackCalloutProps)}</>
-        ) : undefined
-      ) : props.onRenderCalloutPerDataPoint && dataPointCalloutProps ? (
-        <>{props.onRenderCalloutPerDataPoint(dataPointCalloutProps)}</>
-      ) : undefined
-    ) : undefined;
+    isPopoverOpen && !props.hideTooltip
+      ? props.isCalloutForStack
+        ? props.onRenderCalloutPerStack && stackCalloutProps
+          ? props.onRenderCalloutPerStack(stackCalloutProps)
+          : undefined
+        : props.onRenderCalloutPerDataPoint && dataPointCalloutProps
+        ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
+        : undefined
+      : undefined;
 
   const calloutProps: ChartPopoverProps = {
     positioning: { target: popoverTarget },
-    isPopoverOpen,
     color,
     legend: calloutLegend,
     XValue: xCalloutValue,
@@ -476,10 +475,10 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     isCalloutForStack: props.isCalloutForStack,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
+    isPopoverOpen: isPopoverOpen && customizedCallout !== null,
     ...(customizedCallout && {
       customCallout: {
         ...props.calloutProps?.customCallout,
-        // A defined fragment prevents ChartPopover from treating custom null as a default-render request.
         customizedCallout,
         customCalloutProps: props.calloutPropsPerDataPoint
           ? props.calloutPropsPerDataPoint(dataPointCalloutProps)

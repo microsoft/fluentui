@@ -18,7 +18,8 @@ export interface HeatMapChartProps extends CartesianChartProps {
   /**
    * Renders custom JSX for the active cell using the original, unformatted data point.
    * Empty cells receive a generated point with a NaN value.
-   * Returning null leaves the callout blank. No defaultRender function is supplied.
+   * Returning null hides the callout; undefined uses the native default content.
+   * No defaultRender function is supplied.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<HeatMapChartDataPoint>;
 

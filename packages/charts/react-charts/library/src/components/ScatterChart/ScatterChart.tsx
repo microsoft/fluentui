@@ -95,6 +95,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [activePoint, setActivePoint] = React.useState<string>('');
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
+  const [pointCalloutProps, setPointCalloutProps] = React.useState<ScatterChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
@@ -444,29 +445,29 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
                   _handleHover(
                     x,
                     y,
-                    legendVal,
                     verticaLineHeight,
                     xAxisCalloutData,
                     circleId,
                     xAxisCalloutAccessibilityData,
                     event,
+                    _points[i].data[j],
                   )
                 }
                 onMouseMove={(event: React.MouseEvent<SVGElement>) =>
                   _handleHover(
                     x,
                     y,
-                    legendVal,
                     verticaLineHeight,
                     xAxisCalloutData,
                     circleId,
                     xAxisCalloutAccessibilityData,
                     event,
+                    _points[i].data[j],
                   )
                 }
                 onMouseOut={_handleMouseOut}
                 onFocus={event =>
-                  _handleFocus(event, x, y, legendVal, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                  _handleFocus(event, x, xAxisCalloutData, circleId, _points[i].data[j], xAxisCalloutAccessibilityData)
                 }
                 onBlur={_handleMouseOut}
                 {..._getClickHandler(_points[i].data[j].onDataPointClick)}
@@ -519,10 +520,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _handleFocus(
     event: React.FocusEvent<SVGCircleElement, Element>,
     x: number | Date | string,
-    y: number,
-    legend: string,
     xAxisCalloutData: string | undefined,
     circleId: string,
+    point: ScatterChartDataPoint,
     xAxisCalloutAccessibilityData?: AccessibilityProps,
   ) {
     let cx = 0;
@@ -543,7 +543,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         .attr('visibility', 'visibility');
       setPopoverOpen(true);
       xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
-      _setCalloutData(found, y, legend);
+      _setCalloutData(found, point);
       setActivePoint(circleId);
     } else {
       setActivePoint(circleId);
@@ -553,12 +553,12 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _handleHover(
     x: number | Date | string,
     y: number,
-    legend: string,
     lineHeight: number,
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData: AccessibilityProps | undefined,
     mouseEvent: React.MouseEvent<SVGElement>,
+    point: ScatterChartDataPoint,
   ) {
     mouseEvent?.persist();
     const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC as boolean) : x;
@@ -576,7 +576,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         updatePosition(mouseEvent.clientX, mouseEvent.clientY);
         setPopoverOpen(true);
         xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
-        _setCalloutData(found, y, legend);
+        _setCalloutData(found, point);
         setActivePoint(circleId);
       }
     } else {
@@ -584,11 +584,11 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _setCalloutData(found: CustomizedCalloutData, y: number, legend: string) {
-    const point = found.values.find(value => value.y === y && value.legend === legend);
+  function _setCalloutData(found: CustomizedCalloutData, point: ScatterChartDataPoint) {
     setYValueHover(found.values);
     setStackCalloutProps(found);
-    setDataPointCalloutProps(point ? { x: found.x, values: [point] } : undefined);
+    setDataPointCalloutProps(found);
+    setPointCalloutProps(point);
   }
 
   /**
@@ -618,7 +618,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   }
 
   function _getCustomizedCallout() {
-    return props.onRenderCalloutPerStack
+    return props.onRenderCalloutPerPoint
+      ? props.onRenderCalloutPerPoint(pointCalloutProps)
+      : props.onRenderCalloutPerStack
       ? props.onRenderCalloutPerStack(stackCalloutProps)
       : props.onRenderCalloutPerDataPoint
       ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
@@ -682,8 +684,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   if (!props.hideLegend && !_isTextMode.current) {
     legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
   }
-  const hasCustomCallout = !!(props.onRenderCalloutPerStack || props.onRenderCalloutPerDataPoint);
-  const customizedCallout = isPopoverOpen && !props.hideTooltip ? _getCustomizedCallout() : null;
+  const customizedCallout = isPopoverOpen && !props.hideTooltip ? _getCustomizedCallout() : undefined;
   const calloutProps = {
     YValueHover: yValueHover,
     hoverXValue,
@@ -695,9 +696,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     xAxisCalloutAccessibilityData,
     ...props.calloutProps,
     clickPosition,
-    // A custom renderer owns the content, including an explicit null result.
-    // Do not let ChartPopover fall back to the unfiltered native callout.
-    isPopoverOpen: isPopoverOpen && (!hasCustomCallout || !!customizedCallout),
+    // Only the dedicated point hook opts into null suppression. Legacy callbacks
+    // retain their all-values payload and null-to-default fallback.
+    isPopoverOpen: isPopoverOpen && !(props.onRenderCalloutPerPoint && customizedCallout === null),
     isCalloutForStack: true,
     culture: props.culture,
     isCartesian: true,

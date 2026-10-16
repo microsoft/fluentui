@@ -1,14 +1,65 @@
 import * as React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import { VegaDeclarativeChart } from '../../index';
+import { GroupedVerticalBarChart, HeatMapChart, VegaDeclarativeChart } from '../../index';
 import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import { buildVegaViewTree } from './VegaLiteViewTree';
 import { buildVegaTooltip } from './VegaLiteTooltip';
 import { prepareVegaLiteSpec } from './VegaLiteDataTransforms';
+import {
+  transformVegaLiteToGroupedVerticalBarChartProps,
+  transformVegaLiteToHeatMapChartProps,
+} from './VegaLiteSchemaAdapter';
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { specificationCorpus } from './testing/specs/manifest';
 
 const strict = { mode: 'strict' as const };
+
+const nativeKinds = ['scatter', 'grouped', 'heatmap', 'polar'] as const;
+function nativeTooltipSpec(kind: (typeof nativeKinds)[number]): VegaLiteSpec {
+  const mark = kind === 'grouped' ? 'bar' : kind === 'heatmap' ? 'rect' : 'point';
+  const encoding = {
+    x: { field: 'x', type: kind === 'grouped' || kind === 'heatmap' ? 'nominal' : 'quantitative', tooltip: false },
+    y: { field: 'y', type: kind === 'heatmap' ? 'nominal' : 'quantitative', tooltip: false },
+    tooltip: [{ field: 'note', title: 'Note', filter: { equal: 'shown' } }],
+    ...(kind === 'grouped'
+      ? { color: { field: 'group', type: 'nominal', tooltip: false }, xOffset: { field: 'group', type: 'nominal' } }
+      : kind === 'heatmap'
+      ? { color: { field: 'value', type: 'quantitative', tooltip: false } }
+      : {}),
+  };
+  return {
+    mark,
+    data: {
+      values: [
+        { x: 1, y: 4, value: 10, group: 'series', note: 'hidden', secret: 'PRIVATE_CORPUS_VALUE' },
+        { x: 2, y: 8, value: 20, group: 'series', note: 'shown', secret: 'PRIVATE_CORPUS_VALUE' },
+      ],
+    },
+    encoding: kind === 'polar' ? { theta: encoding.x, radius: encoding.y, tooltip: encoding.tooltip } : encoding,
+  } as unknown as VegaLiteSpec;
+}
+
+function showMark(mark: Element, interaction: 'focus' | 'hover') {
+  if (interaction === 'focus') {
+    fireEvent.focus(mark);
+  } else {
+    fireEvent.mouseOver(mark, { clientX: 100, clientY: 100 });
+  }
+}
+
+function renderNativeTooltipChart(spec: VegaLiteSpec, kind: (typeof nativeKinds)[number]) {
+  // Public xOffset specs deliberately route to the ranged renderer. Exercise the
+  // grouped native hook using the public adapter's actual native props instead.
+  return render(
+    kind === 'grouped' ? (
+      <GroupedVerticalBarChart
+        {...transformVegaLiteToGroupedVerticalBarChartProps(spec, { current: new Map() }, false, strict)}
+      />
+    ) : (
+      <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />
+    ),
+  );
+}
 
 beforeEach(() => {
   jest.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(function (this: Element) {
@@ -31,6 +82,132 @@ beforeEach(() => {
 afterEach(() => jest.restoreAllMocks());
 
 describe('source-backed tooltip-array filter public integration', () => {
+  it.each(['focus', 'hover'] as const)(
+    'uses actual scatter tuple identity, even for duplicate coordinates on %s',
+    async interaction => {
+      const spec = nativeTooltipSpec('scatter');
+      spec.data!.values = [
+        { x: 1, y: 4, note: 'first same-coordinate row' },
+        { x: 1, y: 8, note: 'other y row' },
+        { x: 1, y: 4, note: 'second same-coordinate row' },
+      ];
+      spec.encoding!.tooltip = [{ field: 'note', title: 'Note' }];
+      expect(validateVegaLiteSpec(spec, strict)).toEqual([]);
+      const { container, baseElement } = render(
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />,
+      );
+      await waitFor(() => expect(container.querySelectorAll('circle[role="option"]')).toHaveLength(3));
+      const marks = Array.from(container.querySelectorAll('circle[role="option"]'));
+      expect(marks.map(mark => mark.getAttribute('aria-label'))).toEqual([
+        'Note: first same-coordinate row',
+        'Note: other y row',
+        'Note: second same-coordinate row',
+      ]);
+      for (const mark of marks) {
+        const label = mark.getAttribute('aria-label')!;
+        showMark(mark, interaction);
+        await waitFor(() => {
+          const surface = baseElement.querySelector('.fui-PopoverSurface');
+          const tooltips = surface?.querySelectorAll('[role="tooltip"]');
+          expect(tooltips).toHaveLength(1);
+          expect(tooltips![0]).toHaveAttribute('aria-label', label);
+          expect(surface!.textContent).toBe(tooltips![0].textContent);
+        });
+      }
+    },
+  );
+
+  describe.each(nativeKinds)('%s native callout suppression', kind => {
+    it.each(['focus', 'hover'] as const)(
+      'closes filtered-out content and opens the next actual row on %s',
+      async interaction => {
+        const spec = nativeTooltipSpec(kind);
+        expect(validateVegaLiteSpec(spec, strict)).toEqual([]);
+        const { container, baseElement } = renderNativeTooltipChart(spec, kind);
+        await waitFor(() => expect(container.querySelector('[aria-label="Note: shown"]')).not.toBeNull());
+        const hidden = container.querySelector('svg [aria-label="Data point"]')!;
+        const shown = container.querySelector('svg [aria-label="Note: shown"]')!;
+        expect(hidden).not.toBeNull();
+        // Test a transition from a visible callout too, not only the initially closed state.
+        showMark(shown, interaction);
+        await waitFor(() => expect(baseElement.querySelector('.fui-PopoverSurface')).toHaveTextContent('Noteshown'));
+        showMark(hidden, interaction);
+        await waitFor(() => expect(baseElement.querySelector('.fui-PopoverSurface')).toBeNull());
+        showMark(shown, interaction);
+        await waitFor(() => expect(baseElement.querySelector('.fui-PopoverSurface')).toHaveTextContent(/^Noteshown$/));
+        expect(baseElement.querySelector('.fui-PopoverSurface')).not.toHaveTextContent('PRIVATE_CORPUS_VALUE');
+      },
+    );
+
+    it.each(['focus', 'hover'] as const)('does not open a surface with mark tooltip:false on %s', async interaction => {
+      const spec = nativeTooltipSpec(kind);
+      // The permissive runtime supports mark tooltip declarations beyond the minimal local mark type.
+      spec.mark = Object.assign({ type: spec.mark as 'point' | 'bar' | 'rect' }, { tooltip: false });
+      delete spec.encoding!.tooltip;
+      expect(validateVegaLiteSpec(spec, strict)).toEqual([]);
+      const { container, baseElement } = renderNativeTooltipChart(spec, kind);
+      const selector =
+        kind === 'heatmap' ? 'g[role="option"]' : kind === 'polar' ? 'circle[role="img"]' : '[role="option"]';
+      await waitFor(() =>
+        expect(container.querySelectorAll(`svg ${selector}`)).toHaveLength(kind === 'heatmap' ? 4 : 2),
+      );
+      for (const mark of Array.from(container.querySelectorAll(`svg ${selector}`))) {
+        showMark(mark, interaction);
+        expect(baseElement.querySelector('.fui-PopoverSurface')).toBeNull();
+      }
+    });
+  });
+
+  it.each(['focus', 'hover'] as const)(
+    'retains No data available for sparse generated heatmap cells on %s',
+    async interaction => {
+      const spec = nativeTooltipSpec('heatmap');
+      spec.encoding!.tooltip = [{ field: 'note', title: 'Note' }];
+      const props = transformVegaLiteToHeatMapChartProps(spec, { current: new Map() }, false, strict);
+      // The adapter keeps a complete zero-filled grid for compatibility. Remove
+      // only its synthetic points to exercise cells generated by HeatMapChart
+      // itself, keeping original bound point identities and adapter callbacks.
+      const sparseData = props.data.map(group => ({
+        ...group,
+        data: group.data.filter(point => point.value === 10 || point.value === 20),
+      }));
+      const { container, baseElement } = render(<HeatMapChart {...props} data={sparseData} />);
+      await waitFor(() => expect(container.querySelectorAll('g[role="option"]')).toHaveLength(4));
+      const missing = Array.from(container.querySelectorAll('g[role="option"]')).filter(mark =>
+        mark.getAttribute('aria-label')?.includes('No data available'),
+      );
+      expect(missing).toHaveLength(2);
+      showMark(container.querySelector('[aria-label="Note: shown"]')!, interaction);
+      await waitFor(() => expect(baseElement.querySelector('.fui-PopoverSurface')).toHaveTextContent(/^Noteshown$/));
+      for (const mark of missing) {
+        showMark(mark, interaction);
+        await waitFor(() =>
+          expect(baseElement.querySelector('.fui-PopoverSurface')).toHaveTextContent('No data available'),
+        );
+        expect(baseElement.querySelector('.fui-PopoverSurface [role="tooltip"]')).toBeNull();
+      }
+    },
+  );
+
+  it.each(['focus', 'hover'] as const)(
+    'preserves the public adapter zero-fill default for cells without a source binding on %s',
+    async interaction => {
+      const spec = nativeTooltipSpec('heatmap');
+      spec.encoding!.tooltip = [{ field: 'note', title: 'Note' }];
+      const { container, baseElement } = renderNativeTooltipChart(spec, 'heatmap');
+      await waitFor(() => expect(container.querySelectorAll('g[role="option"]')).toHaveLength(4));
+      const unbound = Array.from(container.querySelectorAll('g[role="option"]')).filter(
+        mark => !mark.getAttribute('aria-label')?.startsWith('Note:'),
+      );
+      expect(unbound).toHaveLength(2);
+      for (const mark of unbound) {
+        showMark(mark, interaction);
+        await waitFor(() => expect(baseElement.querySelector('.fui-PopoverSurface')).toHaveTextContent(/^0$/));
+        expect(baseElement.querySelector('.fui-PopoverSurface [role="tooltip"]')).toBeNull();
+      }
+    },
+  );
+
   it.each(specificationCorpus.filter(entry => !!entry.tooltipLabels))('$file preserves every row and label', entry => {
     expect(validateVegaLiteSpec(entry.spec, strict)).toEqual([]);
     const leaf = buildVegaViewTree(entry.spec, strict);

@@ -99,7 +99,8 @@ export interface PolarChartProps {
 
   /**
    * Renders custom JSX for the active marker using the original polar data point.
-   * Returning null leaves the callout blank. No defaultRender function is supplied.
+   * Returning null hides the callout; undefined uses the native default content.
+   * No defaultRender function is supplied.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<PolarDataPoint>;
 
