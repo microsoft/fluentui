@@ -1,5 +1,6 @@
 import { deviation, median, quantileSorted } from 'd3-array';
 import type { VegaDataRow } from './VegaLiteData.types';
+import { readVegaOwnData as own } from './VegaLiteField';
 
 type Point = [number, number];
 type Group = { rows: VegaDataRow[]; keys: unknown[] };
@@ -12,10 +13,6 @@ export interface VegaStatisticsContext {
   spend: (amount: number) => void;
 }
 
-const own = (row: VegaDataRow, field: string): unknown => {
-  const descriptor = Object.getOwnPropertyDescriptor(row, field);
-  return descriptor && 'value' in descriptor ? descriptor.value : undefined;
-};
 const put = (row: VegaDataRow, field: string, value: unknown): void => {
   Object.defineProperty(row, field, { value, enumerable: true, configurable: true, writable: true });
 };

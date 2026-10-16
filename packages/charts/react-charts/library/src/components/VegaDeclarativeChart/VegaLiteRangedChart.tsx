@@ -91,7 +91,7 @@ function renderedGeometry(spec: VegaLiteSpec, width: number, height: number): Ve
   return { ...geometry, axes: { x: axis(x, axes.x.ticks), y: axis(y, axes.y.ticks) } };
 }
 
-/** Native Fluent SVG renderer for prepared P2 ranged and offset geometry. */
+/** Native Fluent SVG renderer for prepared ranged and offset geometry. */
 export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> = React.forwardRef((props, ref) => {
   const {
     spec,
@@ -279,8 +279,9 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
                   opacity={isSelected ? markDefinition?.opacity ?? 1 : 0.25}
                   role="img"
                   aria-label={
-                    (mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row)) ??
-                    (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel)
+                    (mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row)) ||
+                    (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel) ||
+                    'Data point'
                   }
                   tabIndex={0}
                   aria-describedby={showTooltip && active.mark === mark ? `${id}-tooltip` : undefined}

@@ -25,6 +25,130 @@ const raw = (value: unknown): VegaLiteSpec => value as VegaLiteSpec;
 const paths = (diagnostics: VegaLiteDiagnostic[], code: string): string[] =>
   diagnostics.filter(item => item.code === code).map(item => item.path);
 
+describe('separate bounded grammar and row-data inspection', () => {
+  const fixtures = [20000, 50000].map(length => {
+    const spec = unit({
+      data: { values: Array.from({ length }, (_, x) => Object.freeze({ x, y: x % 10, a: 1, b: 2 })) },
+      encoding: { x: { ...xy.x }, y: { ...xy.y } },
+    });
+    Object.freeze(spec.data!.values);
+    Object.freeze(spec.data);
+    Object.freeze(spec.encoding!.x);
+    Object.freeze(spec.encoding!.y);
+    Object.freeze(spec.encoding);
+    return Object.freeze(spec);
+  });
+
+  it.each(['legacy', 'strict'] as const)('accepts frozen 20k and 50k four-field sources in %s mode', mode => {
+    for (const spec of fixtures) {
+      expect(validateVegaLiteSpec(spec, { mode })).toEqual([]);
+      const named = Object.freeze({
+        ...spec,
+        datasets: Object.freeze({ rows: spec.data!.values }),
+        data: Object.freeze({ name: 'rows' }),
+      });
+      expect(validateVegaLiteSpec(named, { mode })).toEqual([]);
+      expect(spec.data!.values).toHaveLength(spec === fixtures[0] ? 20000 : 50000);
+      expect(Object.isFrozen(spec.data!.values![0])).toBe(true);
+    }
+  });
+
+  it.each(['legacy', 'strict'] as const)('accepts explicit scalar parses on 50k four-field rows in %s mode', mode => {
+    expect(
+      validateVegaLiteSpec(
+        { ...fixtures[1], data: { ...fixtures[1].data, format: { parse: { x: 'number', y: 'number' } } } },
+        { mode },
+      ),
+    ).toEqual([]);
+  });
+
+  it.each(['legacy', 'strict'] as const)(
+    'recognizes declared row sources inside composed views and lookups in %s mode',
+    mode => {
+      expect(validateVegaLiteSpec({ hconcat: [fixtures[0]] }, { mode })).toEqual([]);
+      expect(
+        validateVegaLiteSpec(
+          unit({
+            transform: [{ lookup: 'x', from: { data: fixtures[0].data, key: 'x', fields: ['a'] }, as: ['lookedUp'] }],
+          }),
+          { mode },
+        ),
+      ).toEqual([]);
+      expect(validateVegaLiteSpec(unit({ ignored: { data: { values: new Array(100001) } } }), { mode })).toEqual([
+        expect.objectContaining({ code: 'work-limit', path: '$.ignored.data.values', severity: 'error' }),
+      ]);
+    },
+  );
+
+  it.each(['legacy', 'strict'] as const)('still inspects the last row beyond the old cap in %s mode', mode => {
+    const getter = jest.fn(() => {
+      throw new Error('must not execute');
+    });
+    const row = Object.defineProperty({ x: 1, y: 2 }, 'hidden', { get: getter });
+    const values = [...fixtures[0].data!.values!, row];
+    expect(validateVegaLiteSpec(unit({ data: { values } }), { mode })).toEqual([
+      expect.objectContaining({ code: 'unsafe-accessor', path: '$.data.values[20000].hidden', severity: 'error' }),
+    ]);
+    expect(getter).not.toHaveBeenCalled();
+  });
+
+  it.each(['legacy', 'strict'] as const)('keeps row and grammar safety failures fatal in %s mode', mode => {
+    const hook = jest.fn(() => {
+      throw new Error('must not execute');
+    });
+    const accessor = Object.defineProperty({}, 'value', { get: hook });
+    const cyclic: Record<string, unknown> = {};
+    cyclic.self = cyclic;
+    let deep: Record<string, unknown> = {};
+    for (let index = 0; index < 65; index++) {
+      deep = { nested: deep };
+    }
+    for (const [payload, code, suffix] of [
+      [accessor, 'unsafe-accessor', '.value'],
+      [{ valueOf: hook }, 'unsafe-value', '.valueOf'],
+      [cyclic, 'cycle', '.self'],
+      [deep, 'depth-limit', undefined],
+    ] as const) {
+      for (const insideRow of [false, true]) {
+        const path = insideRow ? '$.data.values[0].payload' : '$.ignored';
+        const spec = insideRow ? unit({ data: { values: [{ x: 1, y: 2, payload }] } }) : unit({ ignored: payload });
+        expect(validateVegaLiteSpec(spec, { mode })).toContainEqual(
+          expect.objectContaining({
+            code,
+            path: suffix ? `${path}${suffix}` : expect.stringContaining(`${path}.nested`),
+            severity: 'error',
+          }),
+        );
+      }
+    }
+    expect(hook).not.toHaveBeenCalled();
+  });
+
+  it.each(['legacy', 'strict'] as const)(
+    'bounds rows, cumulative data work and grammar independently in %s mode',
+    mode => {
+      for (const values of [new Array(100001), Array.from({ length: 100001 }, () => ({ x: 1, y: 2 }))]) {
+        expect(validateVegaLiteSpec(unit({ data: { values } }), { mode })).toEqual([
+          expect.objectContaining({ code: 'work-limit', path: '$.data.values', severity: 'error' }),
+        ]);
+      }
+      // Each nested array fits individually; their combined logical slots must exhaust data work.
+      const row = Object.freeze({ x: 1, y: 2, payload: Object.freeze(new Array(100000)) });
+      const dataWork = validateVegaLiteSpec(unit({ data: { values: new Array(25).fill(row) } }), { mode });
+      expect(dataWork).toEqual([
+        expect.objectContaining({
+          code: 'work-limit',
+          path: expect.stringMatching(/^\$\.data\.values\[\d+\]\.payload$/),
+          severity: 'error',
+        }),
+      ]);
+      expect(validateVegaLiteSpec({ ...fixtures[1], ignored: new Array(100001) }, { mode })).toEqual([
+        expect.objectContaining({ code: 'work-limit', path: '$.ignored', severity: 'error' }),
+      ]);
+    },
+  );
+});
+
 describe('strict field-bound tooltip filter grammar', () => {
   const filtered = (filter: unknown, definition: Record<string, unknown> = {}) =>
     unit({ encoding: { ...xy, tooltip: [{ field: 'y', ...definition, filter }] } });
@@ -886,6 +1010,18 @@ describe('validateVegaLiteSpec', () => {
       '$.transform[0].from.data.url',
     ]);
     expect(validateVegaLiteSpec(spec, { allowExternalData: true })).toEqual([]);
+  });
+
+  it.each([
+    // eslint-disable-next-line no-script-url -- Malicious input must be rejected without executing it.
+    'javascript:alert(1)',
+    'data:text/plain,malicious',
+    'https://user:password@example.test/rows.json',
+    ' https://example.test/rows.json',
+  ])('rejects unsafe resource URL %s even when a host resolver is declared', url => {
+    expect(validateVegaLiteSpec(unit({ data: { url } }), { allowExternalData: true })).toContainEqual(
+      expect.objectContaining({ code: 'invalid-data', path: '$.data.url', severity: 'error' }),
+    );
   });
 
   it.each(['json', 'csv', 'tsv'])(
@@ -2039,7 +2175,7 @@ describe('validateVegaLiteSpec', () => {
 
   it('bounds semantic work across views inheriting a large dataset', () => {
     const spec = raw({
-      data: { values: Array.from({ length: 20000 }, () => ({ x: 1, y: 2 })) },
+      data: { values: Array.from({ length: 50000 }, () => ({ x: 1, y: 2 })) },
       encoding: xy,
       hconcat: Array.from({ length: 20 }, () => ({ mark: 'line' })),
     });

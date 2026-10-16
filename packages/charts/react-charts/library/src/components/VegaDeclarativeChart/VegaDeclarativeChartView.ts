@@ -3,11 +3,8 @@ import type { VegaViewPlan, VegaLegendItems } from './VegaDeclarativeChart.types
 import type { VegaLiteSpec, VegaLiteSemanticMode } from './VegaLiteTypes';
 import type { VegaViewNode } from './VegaLiteViewTree';
 import { getVegaViewSourceSpec } from './VegaLiteViewTree';
-import { readVegaField } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import { getVegaColorFromMap } from './VegaLiteColorAdapter';
-
-const own = (value: unknown, key: string): unknown =>
-  value && typeof value === 'object' ? Object.getOwnPropertyDescriptor(value, key)?.value : undefined;
 
 function sourceContextAtPath(spec: VegaLiteSpec, path: string): VegaLiteSpec {
   let current = spec;

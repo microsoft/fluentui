@@ -98,6 +98,19 @@ describe('Vega-Lite public resource API', () => {
     expect(parseVegaDataValues({ values: [] })).toEqual([]);
   });
 
+  it('accepts 2+ MB resource text by default while preserving an explicit smaller public work budget', async () => {
+    const text = 'x'.repeat(2100000);
+    const resolveData: VegaDataResolver = async () => JSON.stringify([{ text }]);
+    const options: VegaLiteResourceOptions = {
+      resolveData,
+      signal: new AbortController().signal,
+      baseUrl: 'https://charts.example/',
+    };
+    const spec: VegaLiteSpec = { data: { url: 'data.json' } };
+    await expect(resolveVegaLiteResources(spec, options)).resolves.toEqual({ data: { values: [{ text }] } });
+    await expect(resolveVegaLiteResources(spec, { ...options, maxWork: 2000000 })).rejects.toThrow(/work.*limit/i);
+  });
+
   it.each<{ limits: VegaDataParseOptions; payload: unknown; error: RegExp }>([
     { limits: { maxRows: 1 }, payload: [{ n: 1 }, { n: 2 }], error: /row.*limit/i },
     { limits: { maxTextLength: 64 }, payload: `n\n${'1'.repeat(100)}\n`, error: /text.*limit/i },

@@ -1,7 +1,7 @@
 import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import type { VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteResourceLoader.types';
 import { timeParse, utcParse } from 'd3-time-format';
-import { readVegaField } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 
 export type { VegaDataResolver, VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteResourceLoader.types';
 
@@ -10,7 +10,9 @@ function budget(options: VegaDataParseOptions = {}): Budget {
   const limits = {
     maxRows: options.maxRows ?? 100000,
     maxTextLength: options.maxTextLength ?? 10000000,
-    remaining: options.maxWork ?? 2000000,
+    // A maximum-length text resource is charged once for parsing and once for each of two row copies.
+    // Leave finite headroom for record keys, visits and declared scalar parsing; never scale with input size.
+    remaining: options.maxWork ?? 40000000,
   };
   if (Object.values(limits).some(value => !Number.isSafeInteger(value) || value < 0)) {
     throw new Error('Invalid Vega resource budget limit');
@@ -32,13 +34,6 @@ function rowLimit(length: number, limits: Budget): void {
 
 type RecordValue = Record<string, unknown>;
 type DataFormat = NonNullable<VegaLiteData['format']> & { property?: string };
-
-function own(value: unknown, key: string): unknown {
-  if (!value || typeof value !== 'object') {
-    return undefined;
-  }
-  return Object.getOwnPropertyDescriptor(value, key)?.value;
-}
 
 function record(value: unknown): RecordValue {
   return value && typeof value === 'object' && !Array.isArray(value) ? (value as RecordValue) : {};

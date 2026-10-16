@@ -1,12 +1,21 @@
 import type { VegaLiteData } from './VegaLiteTypes';
 
-/** Parsing and copying limits. These limits do not authorize network access. */
+/**
+ * Independent, finite parsing and copying limits. These limits do not authorize network access.
+ * A source must satisfy every limit; raising the text/row limit does not raise the cumulative work budget.
+ */
 export interface VegaDataParseOptions {
   /** Maximum rows in a data source, checked before copying or parsing output. Defaults to 100000. */
   maxRows?: number;
   /** Maximum resource text or individual string length in UTF-16 code units. Defaults to 10000000. */
   maxTextLength?: number;
-  /** Cumulative parsing and copying work budget for one resource resolution request. Defaults to 2000000. */
+  /**
+   * Cumulative parsing and copying work budget for one parse call or entire resource resolution request.
+   * Defaults to 40000000: enough for a 10000000-code-unit text source, two row copies and bounded overhead.
+   * Charges input text length, copied string/key lengths, array slots, value visits and declared field parsing.
+   * Shared across the spec, all resources and repeated copies, even when host requests are deduplicated.
+   * Large/wide records or multiple sources can exhaust work before reaching the independent text/row limits.
+   */
   maxWork?: number;
 }
 

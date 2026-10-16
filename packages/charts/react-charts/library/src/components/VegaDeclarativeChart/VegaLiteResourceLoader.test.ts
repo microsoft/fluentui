@@ -9,6 +9,13 @@ function options(resolveData: VegaDataResolver, signal = new AbortController().s
 }
 
 describe('parseVegaDataValues', () => {
+  it('accepts a valid 2+ MB JSON string under the default independent text and work limits', () => {
+    const text = 'x'.repeat(2100000);
+    const data = { values: JSON.stringify([{ text }]), format: { parse: { text: 'string' } } };
+    expect(parseVegaDataValues(data as unknown as VegaLiteData)).toEqual([{ text }]);
+    expect(() => parseVegaDataValues(data as unknown as VegaLiteData, { maxWork: 2000000 })).toThrow(/work.*limit/i);
+  });
+
   it('purely parses declared scalars and local/UTC custom dates before any transforms', () => {
     const data: VegaLiteData = {
       values: [{ n: '4.5', b: '0', s: 17, d: '2026-03-04', u: '04/03/2026', bad: 'wrong' }],
@@ -105,6 +112,24 @@ describe('parseVegaDataValues', () => {
 });
 
 describe('resolveVegaLiteResources', () => {
+  it.each([
+    ['json', 10000000],
+    ['csv', 2100000],
+    ['tsv', 2100000],
+  ] as const)(
+    'accepts default-limit %s text of %i code units including parsing and both bounded copies',
+    async (type, length) => {
+      const prefix = type === 'json' ? '[{"text":"' : 'text\n';
+      const suffix = type === 'json' ? '"}]' : '\n';
+      const text = 'x'.repeat(length - prefix.length - suffix.length);
+      const result = await resolveVegaLiteResources(
+        { data: { url: `a.${type}`, format: { type, parse: { text: 'string' } } } },
+        options(async () => prefix + text + suffix),
+      );
+      expect(result.data?.values).toEqual([{ text }]);
+    },
+  );
+
   it('uses the pure parser for custom-date CSV returned by the host', async () => {
     const result = await resolveVegaLiteResources(
       {
@@ -200,6 +225,16 @@ describe('resolveVegaLiteResources', () => {
       ),
     ).rejects.toThrow(/work.*limit/i);
   });
+
+  it('keeps the larger default work budget finite across deduplicated source copies', async () => {
+    const host = jest.fn(async () => [{ text: 'x'.repeat(1000000) }]);
+    const spec: VegaLiteSpec = {
+      hconcat: Array.from({ length: 40 }, () => ({ data: { url: 'same.json' } })),
+    };
+    await expect(resolveVegaLiteResources(spec, options(host))).rejects.toThrow(/work.*limit/i);
+    expect(host).toHaveBeenCalledTimes(1);
+  });
+
   it('calls only the supplied host resolver and returns a cloned inline spec', async () => {
     const spec: VegaLiteSpec = { mark: 'point', data: { url: `${origin}/data.json`, format: { type: 'json' } } };
     Object.freeze(spec.data);

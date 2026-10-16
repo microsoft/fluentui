@@ -62,6 +62,25 @@ function chart(spec: VegaLiteSpec, props: Partial<VegaDeclarativeChartProps> = {
 }
 
 describe('VegaDeclarativeChart public semantics', () => {
+  it('renders a frozen 20k four-field inline source in default legacy mode', async () => {
+    const spec = {
+      ...integrationLineSpec,
+      data: {
+        values: Array.from({ length: 20000 }, (_, x) => Object.freeze({ x, y: x % 10, a: 1, b: 2 })),
+      },
+    };
+    Object.freeze(spec.data.values);
+    Object.freeze(spec.data);
+    Object.freeze(spec);
+    const onDiagnostics = jest.fn();
+    const { container } = render(chart(spec, { onDiagnostics }));
+    await waitFor(() => expect(onDiagnostics).toHaveBeenLastCalledWith([]));
+    expect(container.querySelector('svg')).not.toBeNull();
+    expect(container.querySelectorAll('line[id^="lineID"]')).toHaveLength(19999);
+    expect(spec.data.values).toHaveLength(20000);
+    expect(spec.data.values[19999]).toEqual({ x: 19999, y: 9, a: 1, b: 2 });
+  }, 30000);
+
   it('renders centered areas through the public responsive boundary with raw-value tooltips', async () => {
     const spec: VegaLiteSpec = {
       width: 640,
@@ -531,8 +550,8 @@ describe('VegaDeclarativeChart public resources', () => {
     expect(screen.queryByRole('alert')).toBeNull();
   });
 
-  // eslint-disable-next-line no-script-url -- Hostile data is intentionally rejected before any host I/O.
   it.each([
+    // eslint-disable-next-line no-script-url -- Hostile data is intentionally rejected before any host I/O.
     'javascript:alert(1)',
     'file:///secret',
     'https://user:password@data.example/table',

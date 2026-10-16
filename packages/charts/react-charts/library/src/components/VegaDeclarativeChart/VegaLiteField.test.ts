@@ -1,8 +1,115 @@
-import { readVegaField } from './VegaLiteField';
+import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData } from './VegaLiteField';
 import { readVegaField as engineReadVegaField } from './VegaLiteDataTransforms';
 import type { VegaDataRow as EngineDataRow, VegaSemanticOptions as EngineOptions } from './VegaLiteDataTransforms';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 import { readVegaField as rangedReadVegaField } from './VegaLiteRangedGeometry';
+import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
+import { buildVegaTooltip } from './VegaLiteTooltip';
+
+describe('canonical own-data readers', () => {
+  it('preserves own data identities and descriptor flags without cloning or coercion', () => {
+    const hook = jest.fn(() => {
+      throw new Error('user code must not execute');
+    });
+    const date = new Date('2024-02-29T00:00:00Z');
+    const object = Object.create(null);
+    object.self = object;
+    Object.defineProperties(date, { getTime: { get: hook }, toJSON: { get: hook } });
+    for (const value of [date, object, [object], undefined, null, false, 0, '', NaN]) {
+      const row = Object.defineProperty({}, 'value', { value });
+      expect(readVegaOwnData(row, 'value')).toBe(value);
+      expect(getVegaOwnDataDescriptor(row, 'value')).toEqual({
+        value,
+        enumerable: false,
+        configurable: false,
+        writable: false,
+      });
+    }
+    expect(hook).not.toHaveBeenCalled();
+  });
+
+  it('distinguishes own undefined from missing while refusing accessors and inherited properties', () => {
+    const hook = jest.fn(() => 7);
+    const row = Object.create({ inherited: 3, inheritedFunction: hook });
+    Object.defineProperties(row, {
+      present: { value: undefined },
+      getter: { get: hook },
+      setter: { set: hook },
+    });
+    expect(getVegaOwnDataDescriptor(row, 'present')).toEqual(expect.objectContaining({ value: undefined }));
+    for (const key of ['missing', 'inherited', 'inheritedFunction', 'getter', 'setter']) {
+      expect(getVegaOwnDataDescriptor(row, key)).toBeUndefined();
+      expect(readVegaOwnData(row, key)).toBeUndefined();
+    }
+    expect(readVegaOwnData(row, 'present')).toBeUndefined();
+    expect(hook).not.toHaveBeenCalled();
+  });
+
+  it('reads sparse arrays, own length and nonenumerable entries without inherited values', () => {
+    const hook = jest.fn(() => 7);
+    const values = new Array(4);
+    const prototype = Object.create(Array.prototype);
+    Object.defineProperty(prototype, '0', { value: 99 });
+    Object.setPrototypeOf(values, prototype);
+    Object.defineProperties(values, { 1: { get: hook }, 2: { value: 7 } });
+    expect(readVegaOwnData(values, 'length')).toBe(4);
+    expect(readVegaOwnData(values, '2')).toBe(7);
+    for (const key of ['0', '1', '3']) {
+      expect(getVegaOwnDataDescriptor(values, key)).toBeUndefined();
+      expect(readVegaOwnData(values, key)).toBeUndefined();
+    }
+    expect(hook).not.toHaveBeenCalled();
+  });
+
+  it('allows own constructor, prototype and __proto__ keys on null-prototype records', () => {
+    const row = Object.create(null);
+    for (const key of ['constructor', 'prototype', '__proto__']) {
+      const value = { key };
+      Object.defineProperty(row, key, { value });
+      expect(readVegaOwnData(row, key)).toBe(value);
+      expect(getVegaOwnDataDescriptor(row, key)?.value).toBe(value);
+      expect(readVegaOwnData({}, key)).toBeUndefined();
+    }
+  });
+
+  it.each([null, undefined, 0, false, 'value', Symbol('value'), () => 7])(
+    'does not inspect non-object input %s',
+    value => {
+      expect(getVegaOwnDataDescriptor(value, 'constructor')).toBeUndefined();
+      expect(readVegaOwnData(value, 'constructor')).toBeUndefined();
+    },
+  );
+
+  it('deliberately retains raw callable identity for expression rejection, not ordinary reads', () => {
+    const callback = jest.fn(() => 7);
+    const row = { callback };
+    expect(getVegaOwnDataDescriptor(row, 'callback')?.value).toBe(callback);
+    expect(readVegaOwnData(row, 'callback')).toBeUndefined();
+    expect(readVegaField(row, 'callback')).toBeUndefined();
+    for (const expression of ['isValid(datum.callback)', 'pow(1, datum.callback)', 'min(1, 2, datum.callback)']) {
+      expect(() => safeEvaluateExpression(expression, row)).toThrow('function values');
+    }
+    for (const expression of ['toString(datum.value)', 'toNumber(datum.value)', 'abs(datum.value)']) {
+      expect(() => safeEvaluateExpression(expression, { value: [1, [callback]] })).toThrow('function values');
+    }
+    expect(callback).not.toHaveBeenCalled();
+  });
+
+  it('keeps tooltip presence for own undefined but excludes missing, accessor and callable fields', () => {
+    const hook = jest.fn(() => 7);
+    const row = Object.defineProperty({ present: undefined, callable: hook }, 'getter', { get: hook });
+    expect(
+      buildVegaTooltip(
+        {
+          mark: 'point',
+          encoding: { tooltip: ['present', 'missing', 'getter', 'callable'].map(field => ({ field })) },
+        },
+        row,
+      ).fields,
+    ).toEqual([{ title: 'present', value: 'undefined' }]);
+    expect(hook).not.toHaveBeenCalled();
+  });
+});
 
 describe('canonical readVegaField', () => {
   const row = { nested: { items: [{ value: 7 }] }, 'a.b': 11, 'a[b]': 13, 'a\\b': 17, 0: 19 };
@@ -142,6 +249,19 @@ describe('diagnostics canonical field resolution', () => {
     mark: 'point',
     data: { values: [row] },
     encoding: { x: { field, type }, y: { field: 'y', type: 'quantitative' } },
+  });
+
+  it.each(['legacy', 'strict'] as const)('reports raw callable data before ordinary filtering in %s mode', mode => {
+    const callback = jest.fn(() => 7);
+    const row = { callback, nested: [callback], y: 2 };
+    expect(readVegaOwnData(row, 'callback')).toBeUndefined();
+    expect(validateVegaLiteSpec(spec('y', row), { mode })).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: 'unsafe-value', path: '$.data.values[0].callback', severity: 'error' }),
+        expect.objectContaining({ code: 'unsafe-value', path: '$.data.values[0].nested[0]', severity: 'error' }),
+      ]),
+    );
+    expect(callback).not.toHaveBeenCalled();
   });
 
   it.each([

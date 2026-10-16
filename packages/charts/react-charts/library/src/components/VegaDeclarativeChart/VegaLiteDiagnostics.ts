@@ -2,7 +2,7 @@ import type { VegaLiteData, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLit
 import { canRenderVegaRangedSpec } from './VegaLiteRangedGeometry';
 import { canRenderVegaCenteredAreaSpec } from './VegaLiteCenteredArea';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
-import { readVegaField } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 
 export type VegaLiteDiagnostic = {
   code: string;
@@ -19,6 +19,26 @@ export type VegaLiteDiagnosticOptions = {
 };
 
 type Dictionary = Record<string, unknown>;
+type SnapshotContext =
+  | 'spec'
+  | 'views'
+  | 'source'
+  | 'datasets'
+  | 'rows'
+  | 'row'
+  | 'transforms'
+  | 'transform'
+  | 'lookup'
+  | 'grammar';
+
+// Grammar declarations are independent of row count. Data inspection shares the engine/resource
+// defaults: at most 100000 rows per source and 2000000 cumulative work units in either mode.
+// Work includes descriptor copies, array slots (including holes), data keys/text and semantic scans.
+// These are safety limits, not unsupported-feature warnings: legacy must not bypass them.
+const maxSpecificationWork = 100000;
+const maxDataRows = 100000;
+const maxDataWork = 2000000;
+
 type Scope = {
   datasets: Map<string, unknown>;
   encoding: Dictionary;
@@ -171,8 +191,6 @@ const topProperties = [
 const isRecord = (value: unknown): value is Dictionary =>
   value !== null && typeof value === 'object' && !Array.isArray(value) && !(value instanceof Date);
 const record = (value: unknown): Dictionary => (isRecord(value) ? value : Object.create(null));
-const own = (value: unknown, key: string): unknown =>
-  value !== null && typeof value === 'object' ? Object.getOwnPropertyDescriptor(value, key)?.value : undefined;
 const has = (value: unknown, key: string): boolean =>
   value !== null && typeof value === 'object' && Object.getOwnPropertyDescriptor(value, key) !== undefined;
 const list = (value: unknown): unknown[] => (Array.isArray(value) ? value : []);
@@ -211,19 +229,23 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
 
   // Bounded DFS: shared objects are permitted, ancestor cycles are not. Even data rows are inspected;
   // an accessor in an array element must not be invoked by Array#map or a later native adapter.
-  let work = 0;
-  let semanticWork = 0;
+  let specificationWork = 0;
+  let dataWork = 0;
   let stopped = false;
-  const spend = (amount: number, path: string): boolean => {
+  const spend = (amount: number, path: string, rowData = false): boolean => {
     if (stopped) {
       return false;
     }
-    semanticWork += amount;
-    if (semanticWork > 100000) {
+    if (rowData) {
+      dataWork += amount;
+    } else {
+      specificationWork += amount;
+    }
+    if (rowData ? dataWork > maxDataWork : specificationWork > maxSpecificationWork) {
       invalid(
         'work-limit',
         path,
-        'Semantic inspection exceeds 100000 operations.',
+        rowData ? 'Data inspection exceeds 2000000 work units.' : 'Specification inspection exceeds 100000 work units.',
         'Reduce the data/view count or precompute compatible fields.',
       );
       stopped = true;
@@ -231,19 +253,48 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     }
     return true;
   };
-  const ancestors = new Set<object>();
-  const snapshot = (value: unknown, path: string, depth: number): unknown => {
-    if (stopped) {
-      return undefined;
+  const inspectData = (amount: number, path: string): boolean => spend(amount, path, true);
+  // Only declared data sources/datasets enter the larger budget. An arbitrary grammar property
+  // named "values" is not data. Retain context through view composition and lookup sources.
+  const childContext = (context: SnapshotContext, key: string): SnapshotContext => {
+    if (context === 'row' || context === 'rows') {
+      return 'row';
     }
-    if (++work > 100000) {
-      invalid(
-        'work-limit',
-        path,
-        'Specification inspection exceeds 100000 values.',
-        'Reduce the data or specification size.',
-      );
-      stopped = true;
+    if (context === 'datasets' || (context === 'source' && key === 'values')) {
+      return 'rows';
+    }
+    if (context === 'views') {
+      return 'spec';
+    }
+    if (context === 'transforms') {
+      return 'transform';
+    }
+    if (context === 'transform' && key === 'from') {
+      return 'lookup';
+    }
+    if ((context === 'spec' || context === 'lookup') && key === 'data') {
+      return 'source';
+    }
+    if (context === 'spec') {
+      if (key === 'datasets') {
+        return 'datasets';
+      }
+      if (key === 'spec') {
+        return 'spec';
+      }
+      if (['layer', 'hconcat', 'vconcat', 'concat'].includes(key)) {
+        return 'views';
+      }
+      if (key === 'transform') {
+        return 'transforms';
+      }
+    }
+    return 'grammar';
+  };
+  const ancestors = new Set<object>();
+  const snapshot = (value: unknown, path: string, depth: number, context: SnapshotContext = 'spec'): unknown => {
+    const rowData = context === 'rows' || context === 'row';
+    if (!spend(1 + (rowData && typeof value === 'string' ? value.length : 0), path, rowData)) {
       return undefined;
     }
     if (depth > 64) {
@@ -295,29 +346,23 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     ancestors.add(value);
     const result = array ? [] : Object.create(null);
     try {
-      const keys = Object.getOwnPropertyNames(value);
       if (array) {
         const length = own(value, 'length');
-        if (typeof length !== 'number' || length > 100000 - work) {
+        if (typeof length !== 'number' || (context === 'rows' && length > maxDataRows)) {
           invalid(
             'work-limit',
             path,
-            'Array length exceeds the remaining inspection budget.',
+            'Data source exceeds 100000 rows.',
             'Reduce large or sparse arrays before validation.',
           );
           stopped = true;
-        } else {
+        } else if (spend(length, path, rowData)) {
           Object.defineProperty(result, 'length', { value: length });
         }
       }
-      if (keys.length > 100000 - work) {
-        invalid(
-          'work-limit',
-          path,
-          'Specification inspection exceeds 100000 properties.',
-          'Reduce the data or specification size.',
-        );
-        stopped = true;
+      const keys = stopped ? [] : Object.getOwnPropertyNames(value);
+      if (keys.length > (rowData ? maxDataWork - dataWork : maxSpecificationWork - specificationWork)) {
+        spend(keys.length, path, rowData);
       }
       for (const key of keys) {
         if (stopped) {
@@ -327,6 +372,9 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           continue;
         }
         const target = childPath(path, key);
+        if (!spend(rowData && !array ? key.length : 1, target, rowData)) {
+          break;
+        }
         const descriptor = Object.getOwnPropertyDescriptor(value, key);
         if (!descriptor || !('value' in descriptor)) {
           invalid(
@@ -347,7 +395,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
           continue;
         }
         Object.defineProperty(result, key, {
-          value: snapshot(descriptor.value, target, depth + 1),
+          value: snapshot(descriptor.value, target, depth + 1, childContext(context, key)),
           enumerable: true,
           configurable: true,
           writable: true,
@@ -749,7 +797,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
   const validateRows = (rows: unknown, path: string): void => {
     if (!Array.isArray(rows)) {
       invalid('invalid-data', path, 'Inline data must be an array of records.');
-    } else {
+    } else if (inspectData(rows.length, path)) {
       for (let index = 0; index < rows.length; index++) {
         if (!isRecord(rows[index])) {
           invalid('invalid-data', `${path}[${index}]`, 'Each data row must be a record.');
@@ -878,30 +926,39 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       let cost = 0;
       const measure = (item: unknown): void => {
         cost += typeof item === 'string' ? item.length + 1 : 1;
-        if (cost > 100000) {
+        if (cost > maxDataWork - dataWork) {
           return;
         }
         if (Array.isArray(item)) {
-          item.forEach(measure);
+          cost += item.length;
+          for (const entry of item) {
+            if (cost > maxDataWork - dataWork) {
+              break;
+            }
+            measure(entry);
+          }
         } else if (isRecord(item)) {
-          Object.keys(item).forEach(key => {
+          for (const key of Object.keys(item)) {
+            if (cost > maxDataWork - dataWork) {
+              break;
+            }
             cost += key.length;
             measure(own(item, key));
-          });
+          }
         }
       };
       measure(values);
-      if (!spend(cost, `${path}.values`)) {
+      if (!inspectData(cost, `${path}.values`)) {
         return;
       }
       try {
         const rows = parseVegaDataValues({ values, format: own(value, 'format') } as VegaLiteData, {
-          maxRows: 100000,
-          maxTextLength: 100000,
-          maxWork: 100000 - semanticWork,
+          maxRows: maxDataRows,
+          maxTextLength: maxDataWork,
+          maxWork: maxDataWork - dataWork,
         });
         const parseFields = Object.keys(record(own(own(value, 'format'), 'parse')));
-        if (spend(rows.length * (1 + parseFields.reduce((sum, key) => sum + key.length + 1, 0)), path)) {
+        if (inspectData(rows.length * (1 + parseFields.reduce((sum, key) => sum + key.length + 1, 0)), path)) {
           parsedSources.set(value, rows);
         }
       } catch (error) {
@@ -1398,7 +1455,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
     ) {
       return;
     }
-    if (!spend(scope.rows.length * (1 + Math.ceil(name.length / 16)), path)) {
+    if (!inspectData(scope.rows.length * (1 + Math.ceil(name.length / 16)), path)) {
       return;
     }
     const incompatible = scope.rows.some(row => {
@@ -1860,7 +1917,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       } else if (['ordinal', 'band', 'point'].includes(scaleType as string)) {
         type = 'nominal';
       } else if (!scope.transformed) {
-        if (!spend(scope.rows.length * (1 + (typeof name === 'string' ? name.length : 0)), path)) {
+        if (!inspectData(scope.rows.length * (1 + (typeof name === 'string' ? name.length : 0)), path)) {
           return undefined;
         }
         const sample = has(definition, 'datum')

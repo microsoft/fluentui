@@ -1,6 +1,6 @@
 import type { VegaLitePositionEncoding, VegaLiteSpec } from '../../components/VegaDeclarativeChart/VegaLiteTypes';
 
-// Local fixture vocabulary: the shared, intentionally minimal Vega types are not changed by P2.
+// Local fixture vocabulary extends the shared, intentionally minimal Vega types.
 type Position = Omit<VegaLitePositionEncoding, 'scale'> & {
   scale?:
     | (NonNullable<VegaLitePositionEncoding['scale']> & {

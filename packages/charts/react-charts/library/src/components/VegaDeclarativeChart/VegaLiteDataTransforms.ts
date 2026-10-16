@@ -3,7 +3,7 @@ import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import { aggregateVegaStatistic, densityVegaRows, loessVegaRows } from './VegaLiteStatistics';
 import { extent as dataExtent } from 'd3-array';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
-import { readVegaField } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 
 export type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 export { readVegaField } from './VegaLiteField';
@@ -35,13 +35,6 @@ const spend = (options: VegaSemanticOptions | undefined, amount: number): void =
 };
 const record = (value: unknown): value is VegaDataRow =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
-const own = (value: unknown, key: string): unknown => {
-  if (!value || typeof value !== 'object') {
-    return undefined;
-  }
-  const descriptor = Object.getOwnPropertyDescriptor(value, key);
-  return descriptor && 'value' in descriptor && typeof descriptor.value !== 'function' ? descriptor.value : undefined;
-};
 const put = (row: VegaDataRow, key: string, value: unknown): void => {
   Object.defineProperty(row, key, { value, enumerable: true, configurable: true, writable: true });
 };

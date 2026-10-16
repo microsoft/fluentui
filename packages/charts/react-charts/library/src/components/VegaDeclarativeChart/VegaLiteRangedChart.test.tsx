@@ -12,7 +12,7 @@ import { timeFormat, utcFormat } from 'd3-time-format';
 import { ThemeContext_unstable } from '@fluentui/react-shared-contexts';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webDarkTheme, webLightTheme } from '@fluentui/react-theme';
-import { renderVegaTooltip } from './VegaLiteTooltip';
+import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { getVegaColor } from './VegaLiteColorAdapter';
 import { VegaLiteChartTitle } from './VegaLiteChartPresentation';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
@@ -577,6 +577,32 @@ describe('native SVG integration', () => {
     fireEvent.click(screen.getByRole('option', { name: 'red' }));
     expect(onLegendChange).toHaveBeenCalledWith(['red']);
   });
+
+  it.each([{ tooltip: [] }, { tooltip: [{ field: 'value', type: 'quantitative' as const, filter: { gt: 100 } }] }])(
+    'retains accessible names when tooltip fields are empty: %j',
+    ({ tooltip }) => {
+      const spec: VegaLiteSpec = {
+        ...horizontalRangeSpec,
+        encoding: { ...horizontalRangeSpec.encoding, tooltip },
+      };
+      const { container } = render(
+        <VegaLiteRangedChart
+          spec={spec}
+          getAriaLabel={row => buildVegaTooltip(spec, row).ariaLabel}
+          renderTooltip={row => renderVegaTooltip(spec, row)}
+        />,
+      );
+      const marks = container.querySelectorAll<SVGPathElement>('[data-ranged-mark]');
+      expect(marks).toHaveLength(2);
+      marks.forEach(mark => {
+        expect(mark.getAttribute('aria-label')).toContain('task:');
+        const name = mark.getAttribute('aria-label')!;
+        expect(within(container).getByRole('img', { name })).toBe(mark);
+        fireEvent.focus(mark);
+        expect(within(container).getByRole('img', { name })).toBe(mark);
+      });
+    },
+  );
 
   it('provides accessible range names and server-safe rendering', () => {
     const html = renderToString(<VegaLiteRangedChart spec={rectangleRangeSpec} />);

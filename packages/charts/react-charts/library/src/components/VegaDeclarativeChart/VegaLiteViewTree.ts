@@ -1,6 +1,6 @@
 import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import { aggregateVegaValues, applyVegaTransforms, prepareVegaLiteSpec } from './VegaLiteDataTransforms';
-import { readVegaField } from './VegaLiteField';
+import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import type { VegaDataParseOptions } from './VegaLiteResourceLoader';
 
@@ -65,10 +65,6 @@ function bindSourceSpec(prepared: VegaLiteSpec, source: VegaLiteSpec, charge?: (
       bindSourceSpec(layer, original, charge);
     }
   });
-}
-
-function own(value: unknown, key: string): unknown {
-  return value && typeof value === 'object' ? Object.getOwnPropertyDescriptor(value, key)?.value : undefined;
 }
 
 function record(value: unknown): RecordValue {

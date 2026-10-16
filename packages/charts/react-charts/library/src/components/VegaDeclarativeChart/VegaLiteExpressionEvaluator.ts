@@ -19,6 +19,8 @@
  * @see https://vega.github.io/vega/docs/expressions/
  */
 
+import { getVegaOwnDataDescriptor } from './VegaLiteField';
+
 // ---------------------------------------------------------------------------
 // Token types
 // ---------------------------------------------------------------------------
@@ -28,16 +30,11 @@ interface Token {
   start: number;
 }
 
-// ---------------------------------------------------------------------------
-// Read own data descriptors only: inherited properties and accessors are not data.
-// ---------------------------------------------------------------------------
-const ownDataValue = (obj: unknown, prop: string): unknown => {
-  if (obj === null || typeof obj !== 'object') {
-    return undefined;
-  }
-  const descriptor = Object.getOwnPropertyDescriptor(obj, prop);
-  return descriptor && 'value' in descriptor ? descriptor.value : undefined;
-};
+/**
+ * Unlike ordinary reads, retain callable data so rejectFunction reports "function values", including
+ * every built-in argument and nested array conversion. Filtering here would silently weaken rejection.
+ */
+const ownDataValue = (obj: unknown, prop: string): unknown => getVegaOwnDataDescriptor(obj, prop)?.value;
 
 function rejectFunction(value: unknown): void {
   if (typeof value === 'function') {

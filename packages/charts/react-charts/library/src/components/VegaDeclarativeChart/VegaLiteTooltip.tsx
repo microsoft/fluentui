@@ -6,7 +6,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { format as numberFormat } from 'd3-format';
 import { timeFormat, timeParse, utcFormat, utcParse } from 'd3-time-format';
 import { aggregateVegaValues, evaluateVegaPredicate } from './VegaLiteDataTransforms';
-import { readVegaField } from './VegaLiteField';
+import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { useVegaLiteTooltipStyles } from './useVegaLiteTooltipStyles.styles';
 
@@ -21,14 +21,11 @@ type Datum = { value: unknown; present: boolean };
 const strict = { mode: 'strict' as const };
 const channels = ['x', 'x2', 'y', 'y2', 'color', 'theta', 'radius', 'size', 'shape', 'text', 'xOffset', 'yOffset'];
 const isRecord = (value: unknown): value is Row => value !== null && typeof value === 'object' && !Array.isArray(value);
+/** Match ordinary reads' callable exclusion while preserving own undefined versus missing data. */
 const descriptor = (value: unknown, key: string): PropertyDescriptor | undefined => {
-  if (!value || typeof value !== 'object') {
-    return undefined;
-  }
-  const property = Object.getOwnPropertyDescriptor(value, key);
-  return property && 'value' in property && typeof property.value !== 'function' ? property : undefined;
+  const property = getVegaOwnDataDescriptor(value, key);
+  return property && typeof property.value !== 'function' ? property : undefined;
 };
-const own = (value: unknown, key: string): unknown => descriptor(value, key)?.value;
 const string = (value: unknown): string | undefined => (typeof value === 'string' ? value : undefined);
 // Do not use array iterators: accessor entries and inherited entries must not execute code.
 const array = (value: unknown): unknown[] =>

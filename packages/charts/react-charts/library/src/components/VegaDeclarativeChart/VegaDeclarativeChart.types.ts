@@ -26,9 +26,16 @@ export interface VegaDeclarativeChartProps {
   semanticMode?: VegaLiteSemanticMode;
   /** Receives actionable preflight diagnostics after commit, never during render or server rendering. */
   onDiagnostics?: (diagnostics: VegaLiteDiagnostic[]) => void;
-  /** Explicit host-owned resource I/O. Without this callback, no external data is requested. */
+  /**
+   * Explicit host-owned resource I/O. Without this callback, no external data is requested.
+   * Callback identity changes do not reload data; future loads use the latest committed callback.
+   * Uses the default VegaDataParseOptions limits; parsing limits do not authorize network access.
+   */
   dataResolver?: VegaDataResolver;
-  /** HTTP/S origins authorized for absolute resources. Hosts must also enforce redirect policy during I/O. */
+  /**
+   * HTTP/S origins authorized for absolute resources. Hosts must also enforce redirect policy during I/O.
+   * Compared by set content, not array identity or order; duplicate entries do not reload data.
+   */
   allowedDataOrigins?: readonly string[];
   /** HTTP/S base for relative resources; same-origin relative references need no additional allowlist. */
   dataBaseUrl?: string;

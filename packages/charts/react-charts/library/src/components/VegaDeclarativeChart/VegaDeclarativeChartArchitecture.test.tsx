@@ -280,4 +280,158 @@ describe('VegaDeclarativeChart architecture', () => {
     expect(dataResolver).toHaveBeenCalledTimes(1);
     expect(signal.aborted).toBe(false);
   });
+
+  it.each(['origins', 'resolver', 'both'] as const)(
+    'keeps pending and resolved resources and controlled legend focus across inline %s rerenders',
+    async inline => {
+      let resolve!: (value: unknown) => void;
+      const pending = new Promise<unknown>(res => {
+        resolve = res;
+      });
+      const dataResolver = jest.fn<ReturnType<VegaDataResolver>, Parameters<VegaDataResolver>>(() => pending);
+      const onDiagnostics = jest.fn();
+      const onSchemaChange = jest.fn();
+      const origins = ['https://data.example', 'https://other.example'];
+      const spec: VegaLiteSpec = {
+        ...integrationResourceSpec,
+        encoding: { ...integrationResourceSpec.encoding, color: { field: 'series', type: 'nominal' } },
+      };
+      function Controlled({ revision }: { revision: number }) {
+        const [chartSchema, setChartSchema] = React.useState<VegaSchema>({
+          vegaLiteSpec: spec,
+          selectedLegends: ['Series'],
+        });
+        return (
+          <VegaDeclarativeChart
+            chartSchema={chartSchema}
+            semanticMode="strict"
+            dataBaseUrl="https://data.example/"
+            allowedDataOrigins={
+              inline === 'resolver'
+                ? origins
+                : revision % 2
+                ? ['https://other.example', 'https://data.example', 'https://data.example']
+                : ['https://data.example', 'https://other.example']
+            }
+            dataResolver={inline === 'origins' ? dataResolver : request => dataResolver(request)}
+            onDiagnostics={onDiagnostics}
+            onSchemaChange={schema => {
+              onSchemaChange(schema);
+              setChartSchema(schema);
+            }}
+          />
+        );
+      }
+      const { rerender, container } = render(<Controlled revision={0} />);
+      await waitFor(() => expect(dataResolver).toHaveBeenCalledTimes(1));
+      const signal = dataResolver.mock.calls[0][0].signal;
+      rerender(<Controlled revision={1} />);
+      expect(dataResolver).toHaveBeenCalledTimes(1);
+      expect(signal.aborted).toBe(false);
+      expect(onDiagnostics).toHaveBeenCalledTimes(1);
+      await act(async () => resolve('x,y,series\n1,2,Series\n2,4,Series\n1,3,Other\n2,5,Other'));
+      const svg = container.querySelector('svg');
+      const legend = screen.getByRole('option', { name: 'Series' });
+      act(() => legend.focus());
+      expect(legend.ownerDocument.activeElement).toBe(legend);
+      const diagnosticCalls = onDiagnostics.mock.calls.length;
+      rerender(<Controlled revision={2} />);
+      expect(screen.queryByRole('status')).toBeNull();
+      expect(container.querySelector('svg')).toBe(svg);
+      expect(legend.ownerDocument.activeElement).toBe(legend);
+      fireEvent.click(legend);
+      expect(onSchemaChange).toHaveBeenLastCalledWith({ vegaLiteSpec: spec, selectedLegends: [] });
+      expect(screen.queryByRole('status')).toBeNull();
+      expect(container.querySelector('svg')).toBe(svg);
+      expect(legend.ownerDocument.activeElement).toBe(legend);
+      fireEvent.click(legend);
+      expect(onSchemaChange).toHaveBeenLastCalledWith({ vegaLiteSpec: spec, selectedLegends: ['Series'] });
+      await act(async () => undefined);
+      expect(dataResolver).toHaveBeenCalledTimes(1);
+      expect(signal.aborted).toBe(false);
+      expect(onDiagnostics).toHaveBeenCalledTimes(diagnosticCalls);
+      expect(container.querySelector('svg')).toBe(svg);
+      expect(screen.queryByRole('status')).toBeNull();
+      expect(legend.ownerDocument.activeElement).toBe(legend);
+    },
+  );
+
+  it('uses the current resolver for later resources and spec reloads without restarting a pending request', async () => {
+    let resolve!: (value: unknown) => void;
+    const pending = new Promise<unknown>(res => {
+      resolve = res;
+    });
+    const oldResolver = jest.fn<ReturnType<VegaDataResolver>, Parameters<VegaDataResolver>>(() => pending);
+    const nextResolver = jest.fn<ReturnType<VegaDataResolver>, Parameters<VegaDataResolver>>(async () => [
+      { x: 1, y: 2 },
+      { x: 2, y: 4 },
+    ]);
+    const spec: VegaLiteSpec = {
+      hconcat: ['first.json', 'second.json'].map(url => ({ ...integrationLineSpec, data: { url } })),
+    };
+    const props = { chartSchema: { vegaLiteSpec: spec }, dataBaseUrl: 'https://data.example/' };
+    const { rerender, container } = render(<VegaDeclarativeChart {...props} dataResolver={oldResolver} />);
+    await waitFor(() => expect(oldResolver).toHaveBeenCalledTimes(1));
+    const signal = oldResolver.mock.calls[0][0].signal;
+    rerender(<VegaDeclarativeChart {...props} dataResolver={nextResolver} />);
+    expect(signal.aborted).toBe(false);
+    expect(nextResolver).not.toHaveBeenCalled();
+    await act(async () => resolve([{ x: 1, y: 2 }]));
+    await waitFor(() => expect(container.querySelectorAll('svg')).toHaveLength(2));
+    expect(nextResolver).toHaveBeenCalledTimes(1);
+    expect(nextResolver.mock.calls[0][0].url).toBe('https://data.example/second.json');
+    rerender(
+      <VegaDeclarativeChart
+        {...props}
+        chartSchema={{ vegaLiteSpec: { ...integrationLineSpec, data: { url: 'next.json' } } }}
+        dataResolver={nextResolver}
+      />,
+    );
+    await waitFor(() => expect(nextResolver).toHaveBeenCalledTimes(2));
+    expect(nextResolver.mock.calls[1][0].url).toBe('https://data.example/next.json');
+    expect(oldResolver).toHaveBeenCalledTimes(1);
+    expect(signal.aborted).toBe(true);
+  });
+
+  it.each(['spec', 'base', 'origins', 'mode'] as const)(
+    'aborts and reloads resources when the actual %s request input changes',
+    async change => {
+      const dataResolver = jest.fn<ReturnType<VegaDataResolver>, Parameters<VegaDataResolver>>(
+        () => new Promise<unknown>(() => undefined),
+      );
+      const props: VegaDeclarativeChartProps = {
+        chartSchema: { vegaLiteSpec: integrationResourceSpec },
+        dataResolver,
+        dataBaseUrl: 'https://data.example/',
+        allowedDataOrigins: ['https://data.example'],
+        semanticMode: 'legacy',
+      };
+      const { rerender } = render(<VegaDeclarativeChart {...props} />);
+      await waitFor(() => expect(dataResolver).toHaveBeenCalledTimes(1));
+      const signal = dataResolver.mock.calls[0][0].signal;
+      const next = {
+        spec: { chartSchema: { vegaLiteSpec: { ...integrationResourceSpec } } },
+        base: { dataBaseUrl: 'https://data.example/next/' },
+        origins: { allowedDataOrigins: ['https://other.example'] },
+        mode: { semanticMode: 'strict' as const },
+      }[change];
+      rerender(<VegaDeclarativeChart {...props} {...next} />);
+      await waitFor(() => expect(dataResolver).toHaveBeenCalledTimes(2));
+      expect(signal.aborted).toBe(true);
+      expect(dataResolver.mock.calls[1][0].signal.aborted).toBe(false);
+    },
+  );
+
+  it('reprepares when resolver availability toggles, without authorizing I/O for inline data', () => {
+    const plan = jest.spyOn(views, 'planVegaDeclarativeChartViews');
+    const dataResolver = jest.fn<ReturnType<VegaDataResolver>, Parameters<VegaDataResolver>>(async () => []);
+    const props = { chartSchema: { vegaLiteSpec: integrationLineSpec } };
+    const { rerender } = render(<VegaDeclarativeChart {...props} dataResolver={dataResolver} />);
+    expect(plan).toHaveBeenCalledTimes(1);
+    rerender(<VegaDeclarativeChart {...props} />);
+    expect(plan).toHaveBeenCalledTimes(2);
+    rerender(<VegaDeclarativeChart {...props} dataResolver={dataResolver} />);
+    expect(plan).toHaveBeenCalledTimes(3);
+    expect(dataResolver).not.toHaveBeenCalled();
+  });
 });

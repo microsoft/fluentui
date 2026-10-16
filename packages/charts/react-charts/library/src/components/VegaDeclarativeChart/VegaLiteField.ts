@@ -1,10 +1,23 @@
-const own = (value: unknown, key: string): unknown => {
-  if (!value || typeof value !== 'object') {
+/**
+ * Inspect an own data property without traversing prototypes, invoking accessors or coercing values.
+ * The raw descriptor deliberately retains callable values: expressions must reject them explicitly,
+ * not silently treat them as missing. Ordinary reads must use readVegaOwnData instead.
+ * Diagnostic snapshots must inspect raw descriptors too, so unsafe values/accessors are reported, not dropped.
+ * Presence (including an own undefined value) is preserved. Cloning, cycles and budgets are caller policies.
+ */
+export function getVegaOwnDataDescriptor(value: unknown, key: string): PropertyDescriptor | undefined {
+  if (value === null || typeof value !== 'object') {
     return undefined;
   }
   const descriptor = Object.getOwnPropertyDescriptor(value, key);
-  return descriptor && 'value' in descriptor && typeof descriptor.value !== 'function' ? descriptor.value : undefined;
-};
+  return descriptor && Object.prototype.hasOwnProperty.call(descriptor, 'value') ? descriptor : undefined;
+}
+
+/** Read own data without accessors, inherited properties or callable values; preserve other value identities. */
+export function readVegaOwnData(value: unknown, key: string): unknown {
+  const descriptor = getVegaOwnDataDescriptor(value, key);
+  return descriptor && typeof descriptor.value !== 'function' ? descriptor.value : undefined;
+}
 
 /** Parse Vega field paths, not JavaScript. Accessor descriptors and callable values are never read. */
 export function readVegaField(row: unknown, field: string): unknown {
@@ -75,5 +88,5 @@ export function readVegaField(row: unknown, field: string): unknown {
       return undefined;
     }
   }
-  return path.reduce<unknown>((value, key) => own(value, key), row);
+  return path.reduce<unknown>((value, key) => readVegaOwnData(value, key), row);
 }

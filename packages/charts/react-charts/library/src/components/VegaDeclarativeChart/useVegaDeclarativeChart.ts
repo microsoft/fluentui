@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { slot } from '@fluentui/react-utilities';
+import { slot, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { VegaDeclarativeChartProps, VegaDeclarativeChartState } from './VegaDeclarativeChart.types';
 import type { VegaLiteSpec, VegaLiteSemanticMode } from './VegaLiteTypes';
@@ -12,11 +12,10 @@ import type { VegaDataResolver } from './VegaLiteResourceLoader';
 import { buildVegaViewTree } from './VegaLiteViewTree';
 import { planVegaDeclarativeChartViews } from './VegaDeclarativeChartView';
 import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
+import { readVegaOwnData as own } from './VegaLiteField';
 
 const MAX_DEPTH = 15;
 const safetyCodes = new Set(['unsafe-accessor', 'unsafe-value', 'cycle', 'depth-limit', 'work-limit']);
-const own = (value: unknown, key: string): unknown =>
-  value && typeof value === 'object' ? Object.getOwnPropertyDescriptor(value, key)?.value : undefined;
 const ownArray = (value: unknown): unknown[] =>
   Array.isArray(value)
     ? Object.keys(value)
@@ -74,8 +73,8 @@ function declaredViewCount(spec: VegaLiteSpec): number {
 
 type ResourceRequest = {
   spec: VegaLiteSpec;
-  resolver?: VegaDataResolver;
-  origins?: readonly string[];
+  resolverAvailable: boolean;
+  origins: readonly string[];
   baseUrl?: string;
   mode: VegaLiteSemanticMode;
 };
@@ -93,15 +92,27 @@ export function useVegaDeclarativeChart(
   const isDarkTheme = useIsDarkTheme();
   const [activeLegends, setActiveLegends] = React.useState<string[]>(() => props.chartSchema.selectedLegends ?? []);
   const [resourceState, setResourceState] = React.useState<ResourceState>();
+  // Origins are an authorization set: inline arrays, ordering and duplicates do not change the policy.
+  const originsKey = JSON.stringify([...new Set(props.allowedDataOrigins ?? [])].sort());
+  const resolverAvailable = !!props.dataResolver;
+  const mode = props.semanticMode ?? 'legacy';
+  // The utility's commit-updated ref supplies the current callback for every future host invocation,
+  // including later sources in a pending composed request. Callback identity is not resource identity.
+  const resolveData = useEventCallback((resource: Parameters<VegaDataResolver>[0]) => {
+    if (!props.dataResolver) {
+      return Promise.reject(new Error('Vega data resolver is unavailable'));
+    }
+    return props.dataResolver(resource);
+  });
   const request = React.useMemo<ResourceRequest>(
     () => ({
       spec: vegaLiteSpec,
-      resolver: props.dataResolver,
-      origins: props.allowedDataOrigins,
+      resolverAvailable,
+      origins: JSON.parse(originsKey) as string[],
       baseUrl: props.dataBaseUrl,
-      mode: props.semanticMode ?? 'legacy',
+      mode,
     }),
-    [vegaLiteSpec, props.dataResolver, props.allowedDataOrigins, props.dataBaseUrl, props.semanticMode],
+    [vegaLiteSpec, resolverAvailable, originsKey, props.dataBaseUrl, mode],
   );
 
   const preflight = React.useMemo(() => {
@@ -113,7 +124,7 @@ export function useVegaDeclarativeChart(
     }
     const diagnostics = validateVegaLiteSpec(request.spec, {
       mode: request.mode,
-      allowExternalData: !!request.resolver,
+      allowExternalData: request.resolverAvailable,
     });
     const fatal = diagnostics.filter(
       item =>
@@ -138,7 +149,7 @@ export function useVegaDeclarativeChart(
   }, [request, vegaLiteSpec]);
 
   const needsResources = React.useMemo(
-    () => !preflight.error && !!request.resolver && hasResources(request.spec),
+    () => !preflight.error && request.resolverAvailable && hasResources(request.spec),
     [preflight.error, request],
   );
   const currentResource = resourceState?.request === request ? resourceState : undefined;
@@ -192,7 +203,7 @@ export function useVegaDeclarativeChart(
   }, [props.chartSchema.selectedLegends]);
 
   React.useEffect(() => {
-    if (!needsResources || !request.resolver) {
+    if (!needsResources || !request.resolverAvailable) {
       return;
     }
     const view = targetDocument?.defaultView as (Window & typeof globalThis) | null | undefined;
@@ -204,7 +215,7 @@ export function useVegaDeclarativeChart(
     const controller = new view.AbortController();
     let cancelled = false;
     resolveVegaLiteResources(request.spec, {
-      resolveData: request.resolver,
+      resolveData,
       allowedOrigins: request.origins,
       baseUrl: request.baseUrl,
       signal: controller.signal,
@@ -224,7 +235,7 @@ export function useVegaDeclarativeChart(
       cancelled = true;
       controller.abort();
     };
-  }, [needsResources, request, targetDocument]);
+  }, [needsResources, request, resolveData, targetDocument]);
 
   React.useEffect(() => {
     if (!preflight.error) {
