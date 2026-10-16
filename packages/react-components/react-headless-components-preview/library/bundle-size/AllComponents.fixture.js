@@ -618,6 +618,7 @@ import {
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
 import { Tooltip, renderTooltip, useTooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import { getTopLayerTriggerProps, useTopLayer } from '@fluentui/react-headless-components-preview/top-layer';
 import { toDataAttributeValue } from '@fluentui/react-headless-components-preview/utils';
 
 console.log(
@@ -1196,6 +1197,8 @@ console.log(
   Tooltip,
   renderTooltip,
   useTooltip,
+  getTopLayerTriggerProps,
+  useTopLayer,
   toDataAttributeValue,
 );
 
