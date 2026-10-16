@@ -726,6 +726,36 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('Accessibility Announcements', () => {
+    it('announces when the dropdown collapses', () => {
+      jest.useFakeTimers();
+      const { getByRole, queryByRole, queryAllByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
+      const dropdownRoot = getByRole('combobox');
+
+      // Initially, there should be no collapsed announcement
+      expect(queryAllByRole('status').some(el => el.textContent === 'collapsed')).toBe(false);
+
+      // Open the dropdown
+      fireEvent.click(dropdownRoot);
+      expect(queryByRole('listbox')).toBeTruthy();
+      expect(queryAllByRole('status').some(el => el.textContent === 'collapsed')).toBe(false);
+
+      // Close the dropdown via Escape key
+      fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+      expect(queryByRole('listbox')).toBeFalsy();
+
+      // Advance timers so DelayedRender can render the message
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      // Now, the collapsed announcement should be present
+      expect(queryAllByRole('status').some(el => el.textContent === 'collapsed')).toBe(true);
+
+      jest.useRealTimers();
+    });
+  });
+
   describe('with simulated async loaded options', () => {
     /** See https://github.com/microsoft/fluentui/issues/7315 */
     const DropdownWithChangingProps = (props: { multi: boolean }) => {
