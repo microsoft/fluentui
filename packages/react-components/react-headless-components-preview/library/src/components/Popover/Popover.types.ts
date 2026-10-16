@@ -8,6 +8,7 @@ import type { PositioningShorthand, PositioningReturn } from '../../hooks/usePos
 export type OpenPopoverEvents =
   | MouseEvent
   | TouchEvent
+  | FocusEvent
   | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement>;
@@ -58,6 +59,17 @@ export type PopoverProps = {
    * @default 500
    */
   mouseLeaveDelay?: number;
+
+  /**
+   * Close a non-modal popover when focus moves outside its trigger, surface,
+   * and their DOM, shadow, or Fluent virtual-parent descendants.
+   * Moving back to the trigger keeps the popover open. Opening while focus is
+   * elsewhere does not dismiss until focus enters and then leaves this boundary.
+   * Browser-window blur or an unknown focus destination alone does not close it.
+   * Ignored when `trapFocus` is true.
+   * @default false
+   */
+  closeOnFocusOutside?: boolean;
 
   /**
    * Positioning configuration. Accepts either a full `PositioningProps`

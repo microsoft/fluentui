@@ -4,7 +4,7 @@
 
 Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
 
-Popover lets the browser manage dismissal: a non-modal surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. When `trapFocus` is enabled, the default `<dialog>` surface opens modally with `role="dialog"`.
+Popover lets the browser manage light dismissal: a non-modal surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React. Hover-leave, programmatic close, and opt-in `closeOnFocusOutside` requests also flow through React before native closing. When `trapFocus` is enabled, the default `<dialog>` surface opens modally with `role="dialog"`.
 
 ## Composition
 
@@ -24,17 +24,18 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 
 ### `Popover`
 
-| Prop              | Type                                                        | Default     | Description                                                                                                                  |
-| ----------------- | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `open`            | `boolean`                                                   | `undefined` | Controlled: whether the surface is visible. Omit for uncontrolled.                                                           |
-| `defaultOpen`     | `boolean`                                                   | `false`     | Uncontrolled: initial visibility.                                                                                            |
-| `onOpenChange`    | `(e, data: { open: boolean; type: string; event }) => void` | —           | Fires whenever the surface wants to open or close. Always paired with the originating event and its `type` (click/key/etc.). |
-| `openOnHover`     | `boolean`                                                   | `false`     | Open on `mouseenter` of the trigger; close on `mouseleave` (with delay).                                                     |
-| `mouseLeaveDelay` | `number` (ms)                                               | `500`       | Delay before closing when hover leaves, giving the user time to move into the surface.                                       |
-| `openOnContext`   | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
-| `withArrow`       | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
-| `positioning`     | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
-| `trapFocus`       | `boolean`                                                   | `false`     | Open the popover as a modal via `HTMLDialogElement.showModal()`. See [Focus management](#focus-management).                  |
+| Prop                  | Type                                                        | Default     | Description                                                                                                                  |
+| --------------------- | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `open`                | `boolean`                                                   | `undefined` | Controlled: whether the surface is visible. Omit for uncontrolled.                                                           |
+| `defaultOpen`         | `boolean`                                                   | `false`     | Uncontrolled: initial visibility.                                                                                            |
+| `onOpenChange`        | `(e, data: { open: boolean; type: string; event }) => void` | —           | Fires whenever the surface wants to open or close. Always paired with the originating event and its `type` (click/key/etc.). |
+| `openOnHover`         | `boolean`                                                   | `false`     | Open on `mouseenter` of the trigger; close on `mouseleave` (with delay).                                                     |
+| `mouseLeaveDelay`     | `number` (ms)                                               | `500`       | Delay before closing when hover leaves, giving the user time to move into the surface.                                       |
+| `openOnContext`       | `boolean`                                                   | `false`     | Open on the trigger's context-menu event (right-click / Shift+F10). Click and keyboard activation are ignored while on.      |
+| `withArrow`           | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
+| `positioning`         | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
+| `trapFocus`           | `boolean`                                                   | `false`     | Open the popover as a modal via `HTMLDialogElement.showModal()`. See [Focus management](#focus-management).                  |
+| `closeOnFocusOutside` | `boolean`                                                   | `false`     | Opt in to non-modal logical-boundary focus-exit dismissal. See [Opt-in focus-exit dismissal](#opt-in-focus-exit-dismissal).  |
 
 ### `PopoverTrigger`
 
@@ -150,10 +151,18 @@ The role on the surface depends on `trapFocus`:
 
 ### Focus management
 
-Focus management is delegated to the platform; the component adds no React-side focus trap, focus finder, or restoration logic.
+Native opening, trapping, and closing use the platform APIs, with the close lifecycle retaining the connected surface until native closing finishes.
 
 - **`trapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
 - **`trapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. On close, `dialog.close()` restores focus to whatever element was focused when `showModal()` ran — typically the trigger.
+
+#### Opt-in focus-exit dismissal
+
+`closeOnFocusOutside` defaults to `false` and applies only when `trapFocus={false}`. When enabled, focus moving outside the logical boundary requests closing through `onOpenChange` with a native `focusin` event. Controlled consumers may accept or reject the request through `open`. Closing happens after destination focus is established, preserving focus on that destination rather than moving it back to the trigger.
+
+The boundary includes the trigger, surface, and their DOM, shadow, and Fluent virtual-parent descendants. Moving between those members, including back to the trigger, keeps the popover open. Unregistered React portals are not automatically owned descendants. A trigger focused at opening immediately establishes boundary focus, including for text-only surfaces. Hover or programmatic opening with focus elsewhere waits for focus to enter the boundary before an exit can dismiss.
+
+Window blur and an unknown destination (`relatedTarget={null}`) alone do not request dismissal. A subsequent confirmed focus move outside can dismiss; unrelated external focus movement on a popover that has never owned focus cannot.
 
 #### Specifying initial focus
 
@@ -204,7 +213,7 @@ Arrow positioning is **consumer-owned CSS** keyed off `[data-placement]`. The ho
 
 ## Open / dismiss model
 
-The surface is rendered with `popover="auto"`, so the **browser owns light dismiss**. React only owns _opening_ the surface (and unmounting the JSX once state flips closed); every close path goes through the browser first and is mirrored back into React via the surface's `toggle` event.
+The surface is rendered with `popover="auto"`, so the **browser owns light dismiss**. React owns opening and explicit close requests, including opt-in focus-exit dismissal. React-driven closing calls `hidePopover()` while the surface remains connected, then unmounts after native closing. Browser-driven dismissal is mirrored back into React via the surface's `toggle` event.
 
 ### Open paths (React-driven)
 
@@ -322,8 +331,8 @@ Firefox and Safari are implementing CSS Anchor Positioning; most features work b
 
 ## Notes
 
-- **Auto mode is the only mode**: the surface always renders with `popover="auto"`, so the browser owns light dismiss and the popover-stack semantics. There is no manual-mode escape hatch — consumers that need React-driven dismiss timing or multiple unrelated popovers open at once should not use this component (or should fork the dismiss layer).
+- **Auto mode is the only non-modal mode**: the surface renders with `popover="auto"`, so the browser owns light dismiss and the popover-stack semantics. Opt-in focus-exit dismissal adds a React-driven close request without replacing native light dismiss. There is no manual-mode escape hatch for intercepting native dismissal or keeping multiple unrelated popovers open at once.
 - **Nested popovers**: nesting is JSX-nesting. The browser's popover-stack treats the inner trigger's DOM descendancy of the outer surface as the ancestor signal — Escape closes only the topmost popover, click-outside dismisses the chain.
-- **Hover-to-open**: `openOnHover` opens on `mouseenter` of the trigger and _stays_ open while the pointer is over the surface. Closing waits `mouseLeaveDelay` ms; this is the one close path that is React-driven (it unmounts the surface, which implicitly closes the native popover).
+- **Hover-to-open**: `openOnHover` opens on `mouseenter` of the trigger and _stays_ open while the pointer is over the surface. Closing waits `mouseLeaveDelay` ms and follows the React-driven native-close lifecycle.
 - **Context popovers**: when `openOnContext={true}`, the mouse event's `clientX` / `clientY` are stored as `contextTarget` state — available to consumers via the popover context if they want to anchor the surface at the cursor position instead of on the trigger.
 - **Positioning is CSS, not JS**: because placement computation is pushed to the browser, there's no JS layout loop and `positioning.updatePosition()` is a no-op. Consumers that need imperative retargeting use `positioning.setTarget(el)`.

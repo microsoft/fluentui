@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add opt-in non-modal Popover focus-exit dismissal",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "paulmardling@microsoft.com"
+}

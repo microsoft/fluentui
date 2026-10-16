@@ -7,6 +7,7 @@ import {
   useId,
   useTimeout,
   useIsomorphicLayoutEffect,
+  elementContains,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
@@ -35,6 +36,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     mouseLeaveDelay = 500,
     withArrow = false,
     trapFocus = false,
+    closeOnFocusOutside = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -46,6 +48,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
   const focusWasInsideOnNativeClose = React.useRef<boolean | null>(null);
   const openedSurface = React.useRef<HTMLElement | null>(null);
+  const boundaryFocus = React.useRef<{ surface: HTMLElement; inside: boolean } | null>(null);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
@@ -239,6 +242,62 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       finishSurfaceClose();
     }
   }, [open, trapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
+
+  useIsomorphicLayoutEffect(() => {
+    const surface = contentRef.current;
+    if (!open || trapFocus || !closeOnFocusOutside || !surface || typeof surface.showPopover !== 'function') {
+      boundaryFocus.current = null;
+      return;
+    }
+
+    const trigger = triggerRef.current;
+    const isFocusInside = () =>
+      [getActiveElement(surface), trigger && getActiveElement(trigger)].some(
+        element => !!element && (elementContains(surface, element) || elementContains(trigger, element)),
+      );
+    const hasUnknownDestination = () => {
+      const activeElement = getActiveElement(surface);
+      return (
+        !activeElement ||
+        activeElement === surface.ownerDocument.body ||
+        activeElement === surface.ownerDocument.documentElement
+      );
+    };
+    if (boundaryFocus.current?.surface !== surface) {
+      boundaryFocus.current = { surface, inside: false };
+    }
+    const focus = boundaryFocus.current;
+    // Native opening can focus a descendant before this listener is attached.
+    // Preserve ownership across commits while the destination remains unknown.
+    if (isFocusInside()) {
+      focus.inside = true;
+    } else if (!hasUnknownDestination()) {
+      focus.inside = false;
+    }
+    const onFocusIn: EventListener = event => {
+      if (!surface.matches(':popover-open')) {
+        return;
+      }
+      if (isFocusInside()) {
+        focus.inside = true;
+        return;
+      }
+      if (hasUnknownDestination()) {
+        return;
+      }
+      if (focus.inside) {
+        focus.inside = false;
+        // Focus has reached its destination, so native close must not restore the trigger.
+        setOpen(event as FocusEvent, false);
+      }
+    };
+    // Shadow-root listeners also see moves that are retargeted away at the document.
+    const roots = new Set([surface.ownerDocument, surface.getRootNode(), trigger?.getRootNode()]);
+    roots.forEach(root => root?.addEventListener('focusin', onFocusIn, true));
+    return () => {
+      roots.forEach(root => root?.removeEventListener('focusin', onFocusIn, true));
+    };
+  });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

@@ -1,13 +1,257 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { act, render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { setVirtualParent } from '@fluentui/react-utilities';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import { usePopover } from './usePopover';
+import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
+  describe('closeOnFocusOutside', () => {
+    const focus = (element: HTMLElement) => act(() => element.focus());
+    const Example = ({ textOnly = false, ...props }: Partial<PopoverProps> & { textOnly?: boolean }) => (
+      <>
+        <button>Before</button>
+        <Popover defaultOpen={props.open === undefined ? true : undefined} closeOnFocusOutside {...props}>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            {textOnly ? 'Surface' : <button>Inside</button>}
+            {props.children}
+          </PopoverSurface>
+        </Popover>
+        <button>After</button>
+      </>
+    );
+
+    it('preserves default Tab-through behavior without opting in', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(<Example closeOnFocusOutside={undefined} onOpenChange={onOpenChange} />);
+      focus(getByText('Inside'));
+      focus(getByText('After'));
+      expect(getByText('Inside')).toBeInTheDocument();
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
+    it('closes once on Tab out and preserves destination focus', async () => {
+      const onOpenChange = jest.fn();
+      const { getByText, queryByText } = render(<Example onOpenChange={onOpenChange} />);
+      focus(getByText('Inside'));
+      userEvent.tab();
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(getByText('After')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      expect(onOpenChange).toHaveBeenCalledWith(
+        expect.any(FocusEvent),
+        expect.objectContaining({ type: 'focusin', open: false }),
+      );
+    });
+
+    it('keeps surface-to-trigger movement open, then closes on Shift+Tab outside', async () => {
+      const onOpenChange = jest.fn();
+      const { getByText, queryByText } = render(<Example onOpenChange={onOpenChange} />);
+      focus(getByText('Inside'));
+      userEvent.tab({ shift: true });
+      expect(getByText('Trigger')).toHaveFocus();
+      expect(onOpenChange).not.toHaveBeenCalled();
+      userEvent.tab({ shift: true });
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(getByText('Before')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('seeds trigger focus when opening a text-only surface', () => {
+      const onOpenChange = jest.fn();
+      const { getByText, rerender } = render(<Example open={false} textOnly onOpenChange={onOpenChange} />);
+      focus(getByText('Trigger'));
+      rerender(<Example open textOnly onOpenChange={onOpenChange} />);
+      userEvent.tab();
+      expect(getByText('After')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('seeds focus moved by native opening before the listener is attached', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(
+        <Popover open closeOnFocusOutside onOpenChange={onOpenChange}>
+          <PopoverSurface>
+            <button autoFocus>Autofocused</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+      const { getByText: getOutside } = render(<button>Outside</button>);
+      expect(getByText('Autofocused')).toHaveFocus();
+      focus(getOutside('Outside'));
+      expect(getOutside('Outside')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not dismiss initially external focus until the boundary has been entered', async () => {
+      const onOpenChange = jest.fn();
+      const { getByText, queryByText } = render(<Example textOnly onOpenChange={onOpenChange} />);
+      focus(getByText('Before'));
+      focus(getByText('After'));
+      expect(onOpenChange).not.toHaveBeenCalled();
+      focus(getByText('Trigger'));
+      focus(getByText('After'));
+      await waitFor(() => expect(queryByText('Surface')).toBeNull());
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not dismiss hover opening when focus moves between unrelated outside controls', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(<Example defaultOpen={false} textOnly openOnHover onOpenChange={onOpenChange} />);
+      focus(getByText('Before'));
+      fireEvent.mouseEnter(getByText('Trigger'));
+      onOpenChange.mockClear();
+      focus(getByText('After'));
+      expect(getByText('Surface')).toBeInTheDocument();
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
+    it('allows controlled acceptance without duplicate native close callbacks', async () => {
+      const onOpenChange = jest.fn();
+      const ControlledExample = () => {
+        const [open, setOpen] = React.useState(true);
+        return (
+          <Example
+            open={open}
+            onOpenChange={(event, data) => {
+              onOpenChange(event, data);
+              setOpen(data.open);
+            }}
+          />
+        );
+      };
+      const { getByText, queryByText } = render(<ControlledExample />);
+      focus(getByText('Inside'));
+      focus(getByText('After'));
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(getByText('After')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('honors controlled rejection and only requests again after reentry', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(<Example open onOpenChange={onOpenChange} />);
+      focus(getByText('Inside'));
+      focus(getByText('After'));
+      expect(getByText('Inside').closest('[popover]')?.matches(':popover-open')).toBe(true);
+      expect(getByText('After')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      focus(getByText('Before'));
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+      focus(getByText('Inside'));
+      focus(getByText('After'));
+      expect(onOpenChange).toHaveBeenCalledTimes(2);
+    });
+
+    it('ignores unknown destinations and window blur without losing boundary ownership', async () => {
+      const onOpenChange = jest.fn();
+      const { getByText, queryByText, rerender } = render(<Example onOpenChange={onOpenChange} />);
+      const inside = getByText('Inside');
+      focus(inside);
+      act(() => inside.blur());
+      fireEvent.focusOut(inside, { relatedTarget: null });
+      fireEvent(inside.ownerDocument.defaultView!, new Event('blur'));
+      expect(onOpenChange).not.toHaveBeenCalled();
+      rerender(<Example onOpenChange={onOpenChange} />);
+      focus(getByText('After'));
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(getByText('After')).toHaveFocus();
+    });
+
+    it('does not change modal focus handling', () => {
+      const onOpenChange = jest.fn();
+      const { getByText } = render(<Example trapFocus onOpenChange={onOpenChange} />);
+      focus(getByText('Inside'));
+      focus(getByText('After'));
+      expect(getByText('Inside')).toBeInTheDocument();
+      expect(onOpenChange).not.toHaveBeenCalled();
+    });
+
+    it('keeps a parent open while entering and leaving a nested surface within its boundary', async () => {
+      const parentChange = jest.fn();
+      const childChange = jest.fn();
+      const { getByText, queryByText } = render(
+        <Example onOpenChange={parentChange}>
+          <Popover defaultOpen closeOnFocusOutside onOpenChange={childChange}>
+            <PopoverSurface>
+              <button>Nested</button>
+            </PopoverSurface>
+          </Popover>
+        </Example>,
+      );
+      focus(getByText('Nested'));
+      focus(getByText('Inside'));
+      await waitFor(() => expect(queryByText('Nested')).toBeNull());
+      expect(parentChange).not.toHaveBeenCalled();
+      expect(childChange).toHaveBeenCalledTimes(1);
+      expect(getByText('Inside')).toHaveFocus();
+    });
+
+    it('includes virtual-parent-linked portals without treating arbitrary portals as owned', async () => {
+      const onOpenChange = jest.fn();
+      const { getByText, queryByText } = render(
+        <Example onOpenChange={onOpenChange}>
+          {createPortal(<button>Linked portal</button>, document.body)}
+          {createPortal(<button>Unregistered portal</button>, document.body)}
+        </Example>,
+      );
+      setVirtualParent(getByText('Linked portal'), getByText('Inside').closest('[popover]')!);
+      focus(getByText('Inside'));
+      focus(getByText('Linked portal'));
+      expect(onOpenChange).not.toHaveBeenCalled();
+      focus(getByText('Unregistered portal'));
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
+    });
+
+    (['open', 'closed'] as const).forEach(mode => {
+      it(`tracks focus inside a ${mode} shadow root and preserves outside destination focus`, async () => {
+        const { container, getByText } = render(
+          <>
+            <div />
+            <button>Outside shadow</button>
+          </>,
+        );
+        const root = container.firstElementChild!.attachShadow({ mode });
+        const onOpenChange = jest.fn();
+        render(createPortal(<Example onOpenChange={onOpenChange} />, root));
+        const inside = root.querySelector('[popover] button') as HTMLButtonElement;
+        const trigger = root.querySelectorAll('button')[1];
+        focus(inside);
+        focus(trigger);
+        expect(onOpenChange).not.toHaveBeenCalled();
+        focus(getByText('Outside shadow'));
+        await waitFor(() => expect(root.querySelector('[popover]')).toBeNull());
+        expect(getByText('Outside shadow')).toHaveFocus();
+        expect(onOpenChange).toHaveBeenCalledTimes(1);
+      });
+
+      it(`includes descendants in a nested ${mode} shadow root`, async () => {
+        const { getByText, queryByText } = render(
+          <Example>
+            <div data-testid="shadow-host" />
+          </Example>,
+        );
+        const surface = getByText('Inside').closest('[popover]')!;
+        const root = surface.querySelector('[data-testid=shadow-host]')!.attachShadow({ mode });
+        render(createPortal(<button>Shadow control</button>, root));
+        focus(getByText('Inside'));
+        focus(root.querySelector('button')!);
+        expect(getByText('Inside')).toBeInTheDocument();
+        focus(getByText('After'));
+        await waitFor(() => expect(queryByText('Inside')).toBeNull());
+        expect(getByText('After')).toHaveFocus();
+      });
+    });
+  });
+
   describe('close lifecycle', () => {
     const Example = ({ open, trapFocus = false }: { open: boolean; trapFocus?: boolean }) => (
       <Popover open={open} trapFocus={trapFocus}>
