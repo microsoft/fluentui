@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Popover } from './Popover';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { usePopoverContext } from './popoverContext';
 
 describe('Popover', () => {
   it('renders trigger and surface children', () => {
@@ -152,7 +153,7 @@ describe('Popover', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('data-open');
   });
 
-  it('mirrors a browser-driven `toggle` event into React state and closes the surface', () => {
+  it('mirrors a browser-driven `toggle` event into React state and closes the surface', async () => {
     const { getByRole, queryByText } = render(
       <Popover defaultOpen>
         <PopoverTrigger>
@@ -162,12 +163,11 @@ describe('Popover', () => {
       </Popover>,
     );
 
-    const surface = getByRole('group', { hidden: true });
-    const toggleEvent = new Event('toggle');
-    (toggleEvent as unknown as { newState: string }).newState = 'closed';
-    fireEvent(surface, toggleEvent);
+    act(() => {
+      getByRole('group', { hidden: true }).hidePopover();
+    });
 
-    expect(queryByText('Surface')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('Surface')).not.toBeInTheDocument());
   });
 
   it('uses a custom id for the surface and references it from the trigger', () => {
@@ -195,5 +195,25 @@ describe('Popover', () => {
     );
 
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
+  });
+
+  it('mounts a custom surface only while open', () => {
+    const CustomSurface = () => {
+      const open = usePopoverContext(context => context.open);
+      return <div data-testid="custom">{open ? 'open' : 'closed'}</div>;
+    };
+    const Example = ({ open }: { open: boolean }) => (
+      <Popover open={open}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <CustomSurface />
+      </Popover>
+    );
+    const { queryByTestId, rerender } = render(<Example open />);
+    expect(queryByTestId('custom')).toBeInTheDocument();
+
+    rerender(<Example open={false} />);
+    expect(queryByTestId('custom')).not.toBeInTheDocument();
   });
 });

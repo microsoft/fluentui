@@ -5,7 +5,11 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-export const renderPopoverSurface = (state: PopoverSurfaceState): JSXElement => {
+export const renderPopoverSurface = (state: PopoverSurfaceState): JSXElement | null => {
+  if (!state.shouldRender) {
+    return null;
+  }
+
   assertSlots<PopoverSurfaceSlots>(state);
 
   return (

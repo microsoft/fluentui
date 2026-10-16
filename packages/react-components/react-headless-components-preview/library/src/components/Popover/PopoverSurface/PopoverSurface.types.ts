@@ -1,5 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { TopLayerPhase } from '../../../hooks/useTopLayer/TopLayer.types';
 
 /**
  * PopoverSurface Slots.
@@ -22,6 +23,15 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
    * A ref pointing to the popover surface arrow element.
    */
   arrowRef: React.RefObject<HTMLDivElement | null>;
+  /**
+   * Whether the surface should be present in the DOM this render.
+   * Stays true while the surface closes and its exit animations run.
+   */
+  shouldRender: boolean;
+  /**
+   * Top-layer lifecycle phase of the surface.
+   */
+  phase: TopLayerPhase;
 
   root: {
     /**

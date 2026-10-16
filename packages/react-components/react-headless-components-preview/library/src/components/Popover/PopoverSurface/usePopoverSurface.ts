@@ -1,9 +1,10 @@
 'use client';
 
-import type * as React from 'react';
-import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
-import { usePopoverContext } from '../popoverContext';
+import * as React from 'react';
+import { useMergedRefs, slot, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { PopoverSurfaceOpenContext, usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
+import { useTopLayer } from '../../../hooks/useTopLayer/useTopLayer';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -18,10 +19,13 @@ export const usePopoverSurface = (
   const setOpen = usePopoverContext(context => context.setOpen);
   const arrowRef = usePopoverContext(context => context.arrowRef);
   const withArrow = usePopoverContext(context => context.withArrow);
-  const open = usePopoverContext(context => context.open);
+  const contextOpen = usePopoverContext(context => context.open);
+  const open = React.useContext(PopoverSurfaceOpenContext) ?? contextOpen;
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const onNativeOpenChange = usePopoverContext(context => context.onNativeOpenChange);
+  const onSurfaceRenderChange = usePopoverContext(context => context.onSurfaceRenderChange);
 
   if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
@@ -32,9 +36,25 @@ export const usePopoverSurface = (
     );
   }
 
+  const { shouldRender, phase, popover } = useTopLayer(contentRef, {
+    open,
+    // A <div> cannot be shown modally; it falls back to a non-modal popover (see the warning above).
+    mode: trapFocus && props.as !== 'div' ? 'modal' : 'auto',
+    role: props.role ?? (trapFocus ? 'dialog' : 'group'),
+    onClose: ({ event }) => onNativeOpenChange(event, false),
+    onOpen: event => onNativeOpenChange(event, true),
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    onSurfaceRenderChange(shouldRender);
+    return () => onSurfaceRenderChange(false);
+  }, [shouldRender, onSurfaceRenderChange]);
+
   const state: PopoverSurfaceState = {
     withArrow,
     arrowRef,
+    shouldRender,
+    phase,
     components: { root: 'dialog' },
     root: slot.always(
       {
@@ -47,7 +67,7 @@ export const usePopoverSurface = (
       },
       {
         defaultProps: {
-          popover: trapFocus ? undefined : 'auto',
+          popover,
         },
         elementType: 'dialog',
       },

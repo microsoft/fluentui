@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: move Popover and DialogSurface onto a shared top-layer engine. Popover now stays mounted during its exit animation; modal Dialog, trapFocus Popover and Drawer wrap Tab; non-modal Dialog moves focus into itself on open and only restores focus when it is still inside",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

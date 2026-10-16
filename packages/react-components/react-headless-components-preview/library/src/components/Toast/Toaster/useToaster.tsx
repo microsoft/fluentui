@@ -15,9 +15,7 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
+import { isPopoverOpen } from '../../../utils/topLayer';
 
 /**
  * Create the state required to render the Toaster.
@@ -103,8 +101,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
       if (!el || typeof el.showPopover !== 'function') {
         return;
       }
-      const isOpen = SUPPORTS_POPOVER_OPEN_SELECTOR && el.matches(':popover-open');
-      if (!isOpen) {
+      if (!isPopoverOpen(el)) {
         el.showPopover();
       }
     }, [positionHasToasts]);

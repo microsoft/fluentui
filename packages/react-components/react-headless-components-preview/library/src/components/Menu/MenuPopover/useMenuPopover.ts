@@ -4,11 +4,8 @@ import * as React from 'react';
 import { useMenuPopoverBase_unstable } from '@fluentui/react-menu';
 import { useMenuContext } from '../menuContext';
 import type { MenuPopoverProps, MenuPopoverState } from '@fluentui/react-menu';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
+import { isPopoverOpen } from '../../../utils/topLayer';
+import type { ToggleEvent } from '../../../utils/topLayer';
 
 export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const baseState = useMenuPopoverBase_unstable(props, ref);
@@ -34,7 +31,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
     }
 
     if (!open) {
-      if (SUPPORTS_POPOVER_OPEN_SELECTOR && !surface.matches(':popover-open')) {
+      if (!isPopoverOpen(surface)) {
         return;
       }
 
@@ -48,7 +45,7 @@ export const useMenuPopover = (props: MenuPopoverProps, ref: React.Ref<HTMLEleme
 
     firstFocusable?.setAttribute('autofocus', '');
 
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
+    if (!isPopoverOpen(surface)) {
       surface.showPopover();
     }
 

@@ -298,7 +298,7 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'trigger');
     });
 
-    itSkipUnsupportedFocusRestore('context-open + Esc: should restore focus to trigger', () => {
+    it('context-open + Esc: should restore focus to trigger', () => {
       mount(
         <Popover openOnContext>
           <PopoverTrigger disableButtonEnhancement>
@@ -316,6 +316,27 @@ describe('Popover', () => {
 
   describe('Focus trap', () => {
     const trapSurfaceSelector = 'dialog';
+
+    it('lets the browser close the modal on Escape and reports a close event', () => {
+      const types: string[] = [];
+      mount(
+        <Popover trapFocus onOpenChange={(_, data) => types.push(`${data.type}:${data.open}`)}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button data-testid="inside">Inside</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get('[data-testid=inside]').should('be.focused');
+      cy.realPress('Escape');
+      cy.get(trapSurfaceSelector).should('not.exist');
+      cy.get('[data-testid=trigger]').should('be.focused');
+      cy.then(() => expect(types).to.deep.equal(['click:true', 'close:false']));
+    });
 
     it('does not move focus into the surface when opened on hover without focus trapping', () => {
       mount(

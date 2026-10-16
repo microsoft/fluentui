@@ -3,7 +3,7 @@ import {
   PopoverProvider as BasePopoverProvider,
   type PopoverContextValue as BasePopoverContextValue,
 } from '@fluentui/react-popover';
-import { PopoverProvider } from '../Popover/popoverContext';
+import { PopoverProvider, PopoverSurfaceOpenContext } from '../Popover/popoverContext';
 import type { TeachingPopoverContextValues, TeachingPopoverState } from './TeachingPopover.types';
 
 /**
@@ -21,7 +21,9 @@ export const renderTeachingPopover = (
   <PopoverProvider value={contextValues.popover}>
     <BasePopoverProvider value={contextValues.basePopover as BasePopoverContextValue}>
       {state.popoverTrigger}
-      {state.open ? state.popoverSurface : null}
+      <PopoverSurfaceOpenContext.Provider value={state.open}>
+        {state.shouldRenderSurface ? state.popoverSurface : null}
+      </PopoverSurfaceOpenContext.Provider>
     </BasePopoverProvider>
   </PopoverProvider>
 );

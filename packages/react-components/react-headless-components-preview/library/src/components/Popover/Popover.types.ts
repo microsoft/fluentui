@@ -104,6 +104,19 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
   Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
+    /**
+     * Syncs an open or close made by the browser (light dismiss, Escape, invokers) into the popover state.
+     */
+    onNativeOpenChange: (e: Event, open: boolean) => void;
+    /**
+     * Called by `PopoverSurface` when it starts or stops rendering. It stays rendered while it closes and its
+     * exit animations run.
+     */
+    onSurfaceRenderChange: (rendered: boolean) => void;
+    /**
+     * Whether the surface is mounted: while open, and while a `PopoverSurface` closes and its exit animations run.
+     */
+    shouldRenderSurface: boolean;
     triggerRef: React.RefObject<HTMLElement | null>;
     contentRef: React.RefObject<HTMLElement | null>;
     arrowRef: React.RefObject<HTMLDivElement | null>;
@@ -123,6 +136,8 @@ export type PopoverContextValue = Pick<
   | 'open'
   | 'setOpen'
   | 'toggleOpen'
+  | 'onNativeOpenChange'
+  | 'onSurfaceRenderChange'
   | 'triggerRef'
   | 'contentRef'
   | 'arrowRef'

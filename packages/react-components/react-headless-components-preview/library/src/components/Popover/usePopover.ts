@@ -5,14 +5,6 @@ import { useControllableState, useEventCallback, useId, useTimeout } from '@flue
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
 
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
-
-const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
-  !!el && typeof (el as HTMLDialogElement).showModal === 'function';
-
 /**
  * Returns the state for a Popover component.
  */
@@ -78,61 +70,21 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  const onSurfaceToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEvent;
-    const nextOpen = toggle.newState === 'open';
+  // `PopoverSurface` reports whether it still renders (it stays mounted while its exit animations run).
+  // Custom surfaces that never report are mounted only while open.
+  // The state setter is stable and callable from the surface's first layout effect, before this hook's effects run.
+  const [surfaceRendered, onSurfaceRenderChange] = React.useState(false);
+  const shouldRenderSurface = open || surfaceRendered;
 
-    if (nextOpen === open) {
-      return;
+  // Browser-driven open or close (light dismiss, Escape, invokers), reported by the surface.
+  const onNativeOpenChange = useEventCallback((event: Event, shouldOpen: boolean) => {
+    clearOpenTimeout();
+    if (!shouldOpen) {
+      setContextTarget(undefined);
     }
-
-    setOpenState(nextOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: nextOpen });
+    setOpenState(shouldOpen);
+    props.onOpenChange?.(event, { event, type: event.type, open: shouldOpen });
   });
-
-  const onSurfaceClose = useEventCallback((event: Event) => {
-    setOpenState(false);
-    props.onOpenChange?.(event, { event, type: event.type, open: false });
-  });
-
-  React.useEffect(() => {
-    const surface = contentRef.current;
-
-    if (!surface) {
-      return;
-    }
-
-    if (!open) {
-      if (isDialogElement(surface) && surface.open) {
-        surface.close();
-      }
-      return;
-    }
-
-    if (trapFocus) {
-      if (!isDialogElement(surface)) {
-        return;
-      }
-
-      if (!surface.open) {
-        surface.showModal();
-      }
-
-      surface.addEventListener('close', onSurfaceClose);
-      return () => surface.removeEventListener('close', onSurfaceClose);
-    }
-
-    if (typeof surface.showPopover !== 'function') {
-      return;
-    }
-
-    if (!(SUPPORTS_POPOVER_OPEN_SELECTOR && surface.matches(':popover-open'))) {
-      surface.showPopover();
-    }
-
-    surface.addEventListener('toggle', onSurfaceToggle);
-    return () => surface.removeEventListener('toggle', onSurfaceToggle);
-  }, [open, trapFocus, contentRef, onSurfaceToggle, onSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -162,6 +114,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     open,
     setOpen,
     toggleOpen,
+    onNativeOpenChange,
+    onSurfaceRenderChange,
+    shouldRenderSurface,
     triggerRef,
     contentRef,
     arrowRef,
@@ -184,6 +139,8 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     open,
     setOpen,
     toggleOpen,
+    onNativeOpenChange,
+    onSurfaceRenderChange,
     triggerRef,
     contentRef,
     arrowRef,
@@ -200,6 +157,8 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       open,
       setOpen,
       toggleOpen,
+      onNativeOpenChange,
+      onSurfaceRenderChange,
       triggerRef,
       contentRef,
       arrowRef,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PopoverProvider } from './popoverContext';
+import { PopoverProvider, PopoverSurfaceOpenContext } from './popoverContext';
 import type { PopoverState, PopoverContextValue } from './Popover.types';
 
 /**
@@ -11,6 +11,8 @@ export const renderPopover = (
 ): React.ReactElement => (
   <PopoverProvider value={contextValues.popover}>
     {state.popoverTrigger}
-    {state.open ? state.popoverSurface : null}
+    <PopoverSurfaceOpenContext.Provider value={state.open}>
+      {state.shouldRenderSurface ? state.popoverSurface : null}
+    </PopoverSurfaceOpenContext.Provider>
   </PopoverProvider>
 );

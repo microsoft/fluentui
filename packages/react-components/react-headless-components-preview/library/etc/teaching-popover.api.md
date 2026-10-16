@@ -96,7 +96,7 @@ export const renderTeachingPopoverFooter: (state: TeachingPopoverFooterState) =>
 export const renderTeachingPopoverHeader: (state: TeachingPopoverHeaderState) => JSXElement;
 
 // @public (undocumented)
-export const renderTeachingPopoverSurface: (state: TeachingPopoverSurfaceState) => JSXElement;
+export const renderTeachingPopoverSurface: (state: TeachingPopoverSurfaceState) => JSXElement | null;
 
 // @public (undocumented)
 export const renderTeachingPopoverTitle: (state: TeachingPopoverTitleState) => JSXElement;
@@ -243,6 +243,9 @@ export type TeachingPopoverProps = {
 export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
+    onNativeOpenChange: (e: Event, open: boolean) => void;
+    onSurfaceRenderChange: (rendered: boolean) => void;
+    shouldRenderSurface: boolean;
     triggerRef: React_2.RefObject<HTMLElement | null>;
     contentRef: React_2.RefObject<HTMLElement | null>;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
@@ -275,6 +278,8 @@ export type TeachingPopoverSurfaceSlots = {
 export type TeachingPopoverSurfaceState = ComponentState<TeachingPopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
+    shouldRender: boolean;
+    phase: TopLayerPhase;
     root: {
         'data-open'?: string;
         'data-popover-surface'?: string;

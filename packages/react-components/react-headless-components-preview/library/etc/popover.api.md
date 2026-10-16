@@ -34,7 +34,7 @@ export const Popover: {
 };
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'trapFocus'> & {
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'onNativeOpenChange' | 'onSurfaceRenderChange' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'trapFocus'> & {
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
@@ -60,6 +60,9 @@ export type PopoverProps = {
 export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
+    onNativeOpenChange: (e: Event, open: boolean) => void;
+    onSurfaceRenderChange: (rendered: boolean) => void;
+    shouldRenderSurface: boolean;
     triggerRef: React_2.RefObject<HTMLElement | null>;
     contentRef: React_2.RefObject<HTMLElement | null>;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
@@ -92,6 +95,8 @@ export type PopoverSurfaceSlots = {
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & {
     withArrow: boolean | undefined;
     arrowRef: React_2.RefObject<HTMLDivElement | null>;
+    shouldRender: boolean;
+    phase: TopLayerPhase;
     root: {
         'data-open'?: string;
         'data-popover-surface'?: string;
@@ -118,7 +123,7 @@ export const renderPopover: (state: PopoverState, contextValues: {
 }) => React_2.ReactElement;
 
 // @public (undocumented)
-export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
+export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement | null;
 
 // @public
 export const renderPopoverTrigger: (state: PopoverTriggerState) => JSXElement | null;
