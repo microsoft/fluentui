@@ -20,6 +20,7 @@ export class MenuList extends BaseMenuList {
 
   disconnectedCallback() {
     this.fg?.disconnect();
+    this.fg = undefined;
     super.disconnectedCallback();
   }
 
