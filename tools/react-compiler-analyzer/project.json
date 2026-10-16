@@ -1,0 +1,24 @@
+{
+  "name": "react-compiler-analyzer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/react-compiler-analyzer/src",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node esbuild.config.mjs"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/tools/react-compiler-analyzer"],
+      "options": {
+        "jestConfig": "tools/react-compiler-analyzer/jest.config.ts"
+      }
+    }
+  }
+}

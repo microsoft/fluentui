@@ -18,9 +18,39 @@ export const getCalendarNavigationDate = (event: Event): Date | undefined => {
   return date;
 };
 
-export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean =>
-  isHTMLElement(target) &&
-  !!target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])');
+export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean => {
+  if (!isHTMLElement(target)) {
+    return false;
+  }
+
+  if (target.closest('input, textarea, select')) {
+    return true;
+  }
+
+  let element: HTMLElement | null = target;
+  while (element) {
+    const contentEditable = element.getAttribute('contenteditable')?.trim().toLowerCase();
+    if (contentEditable === '' || contentEditable === 'true' || contentEditable === 'plaintext-only') {
+      return true;
+    }
+    if (contentEditable === 'false') {
+      return false;
+    }
+    element = element.parentElement;
+  }
+  return false;
+};
+
+export const getCalendarRootActiveElement = (element: HTMLElement): Element | null => {
+  const root = element.getRootNode();
+  if (root.nodeType === 9) {
+    return (root as Document).activeElement;
+  }
+  if (root.nodeType === 11 && 'host' in root) {
+    return (root as ShadowRoot).activeElement;
+  }
+  return null;
+};
 
 export const isCalendarArrowKey = (key: string): boolean =>
   key === ArrowDown || key === ArrowLeft || key === ArrowRight || key === ArrowUp;
@@ -44,6 +74,14 @@ export const isCalendarGridArrow = (event: React.KeyboardEvent<HTMLElement>): bo
   !event.shiftKey &&
   isCalendarGridCellEvent(event);
 
+const withCurrentTarget = <T extends HTMLElement>(
+  event: React.KeyboardEvent<HTMLElement>,
+  currentTarget: T,
+): React.KeyboardEvent<T> =>
+  new Proxy(event, {
+    get: (target, property) => (property === 'currentTarget' ? currentTarget : Reflect.get(target, property, target)),
+  }) as React.KeyboardEvent<T>;
+
 export const getCalendarGridKeyDownHandlers = <T extends HTMLElement>(
   onKeyDown: React.KeyboardEventHandler<T>,
   onKeyDownCapture: React.KeyboardEventHandler<T> | undefined,
@@ -55,7 +93,7 @@ export const getCalendarGridKeyDownHandlers = <T extends HTMLElement>(
       return;
     }
 
-    // Native grid owners bubble before React; dispatch here and keep ownership across rerenders.
+    // Dispatch before native grid bubbling, then suppress the later synthetic bubble.
     capturedArrows.add(event.nativeEvent);
     onKeyDown(event);
     event.preventDefault();
@@ -66,6 +104,14 @@ export const getCalendarGridKeyDownHandlers = <T extends HTMLElement>(
     }
   },
 });
+
+export const invokeCalendarKeyboardHandler = <T extends HTMLElement>(
+  event: React.KeyboardEvent<HTMLElement>,
+  currentTarget: T,
+  handler: React.KeyboardEventHandler<T> | undefined,
+): void => {
+  handler?.(withCurrentTarget(event, currentTarget));
+};
 
 export const handleCalendarGridKeyDown = (
   event: React.KeyboardEvent<HTMLButtonElement>,
@@ -112,7 +158,9 @@ export const handleCalendarGridKeyDown = (
     const cell = cells[index];
     if (!cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true')) {
       cell.focus();
-      break;
+      if (getCalendarRootActiveElement(cell) === cell) {
+        break;
+      }
     }
   }
 };

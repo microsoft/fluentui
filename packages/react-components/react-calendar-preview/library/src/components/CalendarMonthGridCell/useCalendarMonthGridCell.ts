@@ -30,6 +30,21 @@ export const useCalendarMonthGridCell_unstable = (
   const navigatedMonthRef = useCalendarMonthContext_unstable(ctx => ctx.navigatedMonthRef);
   const onSelect = month.isInBounds ? month.onSelect : undefined;
   const rootRef = useMergedRefs(ref, month.isNavigated ? navigatedMonthRef : undefined);
+  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLButtonElement>(
+    event => {
+      nativeProps.onKeyDown?.(event);
+      if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
+        return;
+      }
+      handleCalendarGridKeyDown(event, dir, allFocusable);
+      if (event.key === Enter && onSelect) {
+        event.preventDefault();
+        onSelect(event);
+      }
+    },
+    nativeProps.onKeyDownCapture,
+    isCalendarGridArrow,
+  );
 
   const root = slot.always(
     {
@@ -47,21 +62,8 @@ export const useCalendarMonthGridCell_unstable = (
           onSelect?.(event);
         }
       },
-      ...getCalendarGridKeyDownHandlers<HTMLButtonElement>(
-        event => {
-          nativeProps.onKeyDown?.(event);
-          if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
-            return;
-          }
-          handleCalendarGridKeyDown(event, dir, allFocusable);
-          if (event.key === Enter && onSelect) {
-            event.preventDefault();
-            onSelect(event);
-          }
-        },
-        nativeProps.onKeyDownCapture,
-        isCalendarGridArrow,
-      ),
+      onKeyDown: keyDownHandlers.onKeyDown,
+      onKeyDownCapture: keyDownHandlers.onKeyDownCapture,
       'aria-label': month.ariaLabel,
       'aria-disabled': !month.isInBounds,
       'aria-selected': month.isSelected,

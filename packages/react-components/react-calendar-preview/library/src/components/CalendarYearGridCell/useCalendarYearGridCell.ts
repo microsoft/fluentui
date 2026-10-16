@@ -47,6 +47,22 @@ export const useCalendarYearGridCell_unstable = (
           year: cell.year,
         });
 
+  const keyDownHandlers = getCalendarGridKeyDownHandlers<HTMLButtonElement>(
+    event => {
+      nativeProps.onKeyDown?.(event);
+      if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
+        return;
+      }
+      handleCalendarGridKeyDown(event, dir, allFocusable);
+      if (event.key === Enter && onSelect) {
+        event.preventDefault();
+        onSelect(event);
+      }
+    },
+    nativeProps.onKeyDownCapture,
+    event => isCalendarGridArrow(event) && event.target === event.currentTarget,
+  );
+
   const root = slot.always<ExtractSlotProps<Slot<'button'>>>(
     {
       ...nativeProps,
@@ -60,21 +76,8 @@ export const useCalendarYearGridCell_unstable = (
           onSelect?.(event);
         }
       },
-      ...getCalendarGridKeyDownHandlers<HTMLButtonElement>(
-        event => {
-          nativeProps.onKeyDown?.(event);
-          if (event.isDefaultPrevented() || isCalendarKeyboardEditable(event.target)) {
-            return;
-          }
-          handleCalendarGridKeyDown(event, dir, allFocusable);
-          if (event.key === Enter && onSelect) {
-            event.preventDefault();
-            onSelect(event);
-          }
-        },
-        nativeProps.onKeyDownCapture,
-        isCalendarGridArrow,
-      ),
+      onKeyDown: keyDownHandlers.onKeyDown,
+      onKeyDownCapture: keyDownHandlers.onKeyDownCapture,
       disabled: cell.isDisabled && !allFocusable,
       'aria-disabled': cell.isDisabled,
       tabIndex: cell.isDisabled && !allFocusable ? -1 : 0,
