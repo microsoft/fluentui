@@ -3,6 +3,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import {
+  navItemTokens,
   useContentStyles,
   useIndicatorStyles,
   useRootDefaultClassName,
@@ -31,12 +32,12 @@ const useNavSubItemSpecificStyles = makeStyles({
   },
   selectedIndicator: {
     '::after': {
-      marginInlineStart: `calc(-1 * (${tokens.spacingHorizontalMNudge} + ${subItemMediumIndent} + ${tokens.spacingHorizontalSNudge}))`,
+      marginInlineStart: `calc(-1 * (${subItemMediumIndent} + ${navItemTokens.indicatorOffset}px))`,
     },
   },
   smallSelectedIndicator: {
     '::after': {
-      marginInlineStart: `calc(-1 * (${tokens.spacingHorizontalMNudge} + ${subItemSmallIndent} + ${tokens.spacingHorizontalSNudge}))`,
+      marginInlineStart: `calc(-1 * (${subItemSmallIndent} + ${navItemTokens.indicatorOffset}px))`,
     },
   },
 });

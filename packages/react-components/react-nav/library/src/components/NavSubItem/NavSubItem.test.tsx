@@ -6,6 +6,8 @@ import { navSubItemClassNames } from './useNavSubItemStyles.styles';
 import type { NavSubItemProps } from './NavSubItem.types';
 import { NavProvider } from '../NavContext';
 import { NavCategoryProvider } from '../NavCategoryContext';
+import { navItemTokens } from '../sharedNavStyles.styles';
+import { webLightTheme } from '@fluentui/react-theme';
 
 import type { NavContextValue } from '../NavContext.types';
 import type { NavCategoryContextValue } from '../NavCategoryContext';
@@ -58,6 +60,51 @@ function getIndicatorMarginRule(element: HTMLElement): string | undefined {
   return undefined;
 }
 
+// jsdom cannot resolve CSS variables or compute layout, so we evaluate the Griffel-generated calc() against theme tokens.
+function evaluateCalc(expr: string, theme: Record<string, string | number>): number {
+  let s = expr.replace(/var\(--([a-zA-Z0-9]+)\)/g, (_, name) => {
+    const val = theme[name];
+    if (val === undefined) {
+      throw new Error(`Token --${name} not found in theme`);
+    }
+    return String(val);
+  });
+
+  s = s.replace(/calc/g, '').replace(/px/g, '').replace(/\s+/g, '');
+
+  const evalSimple = (sub: string): string => {
+    let cur = sub;
+    const mulDivRegex = /(-?\d+(?:\.\d+)?)([*/])(-?\d+(?:\.\d+)?)/;
+    while (mulDivRegex.test(cur)) {
+      cur = cur.replace(mulDivRegex, (_, a, op, b) =>
+        String(op === '*' ? Number(a) * Number(b) : Number(a) / Number(b)),
+      );
+    }
+    const addSubRegex = /(-?\d+(?:\.\d+)?)([+-])(\d+(?:\.\d+)?)/;
+    while (addSubRegex.test(cur)) {
+      cur = cur.replace(addSubRegex, (_, a, op, b) =>
+        String(op === '+' ? Number(a) + Number(b) : Number(a) - Number(b)),
+      );
+    }
+    return cur;
+  };
+
+  while (/\([^()]+\)/.test(s)) {
+    s = s.replace(/\(([^()]+)\)/g, (_, inner) => evalSimple(inner));
+  }
+
+  const result = Number(evalSimple(s));
+  if (!Number.isFinite(result)) {
+    throw new Error(`Failed to evaluate CSS calc expression: "${expr}" (resolved to: "${s}")`);
+  }
+  return result;
+}
+
+function extractMarginInlineStart(ruleText: string): string {
+  const match = ruleText.match(/margin-inline-start:\s*([^;}]+)/);
+  return match ? match[1].trim() : ruleText.trim();
+}
+
 describe('NavSubItem', () => {
   isConformant({
     Component: NavSubItem as React.FunctionComponent<NavSubItemProps>,
@@ -83,10 +130,8 @@ describe('NavSubItem', () => {
     const smallRoot = smallContainer.querySelector<HTMLElement>(`.${navSubItemClassNames.root}`)!;
     const smallIndicatorRule = getIndicatorMarginRule(smallRoot);
 
-    const expectedMediumCalc =
-      'calc(-1 * (var(--spacingHorizontalMNudge) + calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalSNudge)))';
-    const expectedSmallCalc =
-      'calc(-1 * (var(--spacingHorizontalMNudge) + calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalSNudge)) + var(--spacingHorizontalSNudge)))';
+    const expectedMediumCalc = `calc(-1 * (calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalXS)) + ${navItemTokens.indicatorOffset}px))`;
+    const expectedSmallCalc = `calc(-1 * (calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalSNudge)) + ${navItemTokens.indicatorOffset}px))`;
 
     expect(mediumIndicatorRule).toBeDefined();
     expect(mediumIndicatorRule).toContain(expectedMediumCalc);
@@ -95,6 +140,38 @@ describe('NavSubItem', () => {
     expect(smallIndicatorRule).toContain(expectedSmallCalc);
 
     expect(smallIndicatorRule).not.toEqual(mediumIndicatorRule);
+  });
+
+  describe.each(['medium', 'small'] as const)('density: %s', density => {
+    it.each(['6px', '8px'] as const)(
+      'resolves net indicator position to -6px matching top-level NavItem when spacingHorizontalSNudge is %s',
+      sNudgeValue => {
+        // Top-level NavItem indicator sits at paddingInlineStart (10px, spacingHorizontalMNudge)
+        // plus marginInlineStart (-16px, -navItemTokens.indicatorOffset) = -6px.
+        // NavSubItem must match this exact -6px position relative to the root element's outer edge,
+        // ensuring the selection rail remains visually aligned across both medium and small densities
+        // even when spacingHorizontalSNudge is customized.
+        const { container } = renderNavSubItem({ density, selected: true });
+        const root = container.querySelector<HTMLElement>(`.${navSubItemClassNames.root}`)!;
+        const view = root.ownerDocument.defaultView!;
+
+        const paddingInlineStartRaw = view.getComputedStyle(root).getPropertyValue('padding-inline-start');
+        const indicatorRule = getIndicatorMarginRule(root)!;
+        const marginInlineStartRaw = extractMarginInlineStart(indicatorRule);
+
+        const theme = {
+          ...webLightTheme,
+          spacingHorizontalSNudge: sNudgeValue,
+        };
+
+        const paddingInlineStart = evaluateCalc(paddingInlineStartRaw, theme);
+        const marginInlineStart = evaluateCalc(marginInlineStartRaw, theme);
+        const netPosition = paddingInlineStart + marginInlineStart;
+
+        const expectedPosition = parseFloat(webLightTheme.spacingHorizontalMNudge) - navItemTokens.indicatorOffset; // 10 - 16 = -6px
+        expect(netPosition).toBe(expectedPosition);
+      },
+    );
   });
 
   it('resolves padding-inline-start to small density without medium density overriding it', () => {
