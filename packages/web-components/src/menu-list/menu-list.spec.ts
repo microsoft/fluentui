@@ -69,6 +69,9 @@ test.describe('MenuList', () => {
           .map(child => child.shadowRoot?.querySelector('[part="content"]')?.getBoundingClientRect().x),
       MenuItemTagName,
     );
+    expect(contentPositions).toHaveLength(2);
+    expect(contentPositions[0]).toEqual(expect.any(Number));
+    expect(contentPositions[1]).toEqual(expect.any(Number));
     expect(contentPositions[0]).toBe(contentPositions[1]);
   });
 
