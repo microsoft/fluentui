@@ -1,0 +1,85 @@
+@reference '#theme';
+
+/* The 1px inset and its icon counter-margin ride --base-scale like every other design length in
+   this package, even though Griffel's own value is a frozen 1px — see the numeric spacing axis. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative box-border inline-flex items-center justify-center rounded-circular bg-neutral-background-1 bg-clip-content p-1;
+
+    /* Griffel forces an explicit root width at these three sizes, matching the icon pixel size
+       exactly — the padding above still reserves space, so the icon overflows it symmetrically
+       rather than growing the root. tiny additionally drops the content-box clip: its glyph's
+       stroke is under 1px wide there and the clip fix would cut into it. */
+    @variant size-tiny {
+      @apply aspect-square w-6 bg-clip-border;
+    }
+
+    @variant size-large {
+      @apply aspect-square w-20;
+    }
+
+    @variant size-extra-large {
+      @apply aspect-square w-28;
+    }
+
+    @variant status-busy, status-do-not-disturb, status-blocked {
+      @apply text-palette-red-background-3;
+    }
+
+    @variant status-away {
+      @apply text-palette-marigold-background-3;
+    }
+
+    @variant status-available {
+      @apply text-palette-light-green-foreground-3;
+    }
+
+    @variant status-offline, status-unknown {
+      @apply text-neutral-foreground-3;
+    }
+
+    @variant status-out-of-office {
+      @apply text-palette-berry-foreground-3;
+    }
+
+    @variant out-of-office {
+      @apply text-neutral-background-1;
+
+      @variant status-available {
+        @apply text-palette-light-green-foreground-3;
+      }
+
+      @variant status-busy, status-do-not-disturb, status-blocked {
+        @apply text-palette-red-background-3;
+      }
+
+      @variant status-out-of-office, status-away, status-offline {
+        @apply text-palette-berry-foreground-3;
+      }
+
+      @variant status-unknown {
+        @apply text-neutral-foreground-3;
+      }
+    }
+  }
+
+  .icon {
+    @apply -m-1 flex;
+
+    /* Every other size renders its own correctly-sized glyph asset (presenceGlyph picks it per
+       size); only these two reuse a neighbouring asset and need the CSS to resize it — matching
+       Griffel's own forced overrides on the same two reused sizes. */
+    @variant group-size-tiny/fui-presence-badge {
+      @variant icon {
+        @apply size-6;
+      }
+    }
+
+    @variant group-size-extra-large/fui-presence-badge {
+      @variant icon {
+        @apply size-28;
+      }
+    }
+  }
+}

@@ -4,5 +4,12 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-provider/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "options": {
+        "command": "node --experimental-vm-modules ../../../../node_modules/jest/bin/jest.js"
+      }
+    }
+  }
 }

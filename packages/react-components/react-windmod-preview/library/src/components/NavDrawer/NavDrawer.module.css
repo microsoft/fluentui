@@ -1,0 +1,16 @@
+@reference '#theme';
+
+/* The 260px width applies only while the consumer leaves `size` unset; the drawer beneath always
+   resolves and stamps a concrete size, so the condition cannot be expressed as a selector. */
+
+@layer fui.components.l2 {
+  .root {
+    @apply bg-neutral-background-4;
+
+    align-items: unset;
+  }
+
+  .default-width {
+    @apply w-260;
+  }
+}

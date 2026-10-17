@@ -1,0 +1,246 @@
+@reference '#theme';
+
+@layer fui.components.l2 {
+  .root {
+    @variant checked {
+      @apply border-thin border-neutral-stroke-1 bg-neutral-background-1-selected text-neutral-foreground-1-selected;
+
+      @variant hover {
+        @apply border-neutral-stroke-1-hover bg-neutral-background-1-hover text-neutral-foreground-1-hover;
+      }
+
+      @variant hover-active {
+        @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+      }
+
+      /* Griffel orders every :hover rule after every static rule regardless of source position, so
+         the checked hover and pressed border colours above outrank this appearance there; here the
+         block re-states them because source order alone carries the cascade. */
+      @variant appearance-outline {
+        @apply border-thicker border-neutral-stroke-1 bg-transparent-background-selected;
+
+        @variant hover {
+          @apply border-neutral-stroke-1-hover bg-transparent-background-hover;
+        }
+
+        @variant hover-active {
+          @apply border-neutral-stroke-1-pressed bg-transparent-background-pressed;
+        }
+      }
+
+      @variant appearance-primary {
+        @apply border-transparent bg-brand-background-selected text-neutral-foreground-on-brand;
+
+        @variant hover {
+          @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+        }
+      }
+
+      @variant appearance-subtle {
+        @apply border-transparent bg-subtle-background-selected text-neutral-foreground-2-selected;
+
+        @variant hover {
+          @apply border-transparent bg-subtle-background-hover text-neutral-foreground-2-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-subtle-background-pressed text-neutral-foreground-2-pressed;
+        }
+      }
+
+      @variant appearance-transparent {
+        @apply border-transparent bg-transparent-background-selected text-neutral-foreground-2-brand-selected;
+
+        @variant hover {
+          @apply border-transparent bg-transparent-background-hover text-neutral-foreground-2-brand-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-transparent-background-pressed text-neutral-foreground-2-brand-pressed;
+        }
+      }
+
+      @variant accessible {
+        @apply border-transparent bg-brand-background text-neutral-foreground-on-brand;
+
+        @variant hover {
+          @apply border-transparent bg-brand-background-hover text-neutral-foreground-on-brand;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-brand-background-pressed text-neutral-foreground-on-brand;
+        }
+
+        @variant appearance-outline {
+          @apply border-thin;
+        }
+
+        @variant appearance-primary {
+          @apply outline-thin -outline-offset-thicker outline-neutral-foreground-on-brand outline-solid;
+
+          @variant focus-visible {
+            @apply outline-thin -outline-offset-thickest outline-neutral-foreground-on-brand outline-solid;
+          }
+
+          /* Button's pressed outline reset is a lower layer and cannot reach the inner stroke, so
+             the pressed brand fill only covers it if the reset is repeated here — last, because in
+             Griffel the pressed compound outranks the focus indicator by specificity too. */
+          @variant hover-active {
+            @apply outline-none;
+          }
+        }
+      }
+    }
+
+    @variant disabled, disabled-focusable {
+      @apply border-neutral-stroke-disabled bg-neutral-background-disabled text-neutral-foreground-disabled;
+
+      @variant appearance-primary {
+        @apply border-transparent;
+      }
+
+      @variant appearance-subtle, appearance-transparent {
+        @apply border-transparent bg-transparent-background;
+
+        @variant hover {
+          @apply border-transparent bg-transparent-background-hover;
+        }
+
+        @variant hover-active {
+          @apply border-transparent bg-transparent-background-pressed;
+        }
+      }
+    }
+
+    /* Griffel selects the focus indicator with an attribute on top of the class, so it
+       outranks every recolour above by specificity; here position alone carries that. */
+    @variant focus-visible {
+      border-color: var(--fui-focus-ring-color, var(--color-stroke-focus-2));
+      border-width: var(--fui-focus-ring-width, var(--stroke-width-thin));
+
+      @variant checked {
+        @variant appearance-outline {
+          @apply border-neutral-stroke-1;
+        }
+      }
+    }
+
+    /* Griffel emits every forced-colors rule into its media style bucket, which its sheet writes
+       after every other bucket, so those rules outrank the checked, appearance, disabled and focus
+       rules whatever their source position; source order is the only equivalent here. Button's own
+       trailing forced-colors block is a layer below and cannot reach past this layer's blocks
+       above, so the focus border it supplies is repeated first. */
+    @variant forced-colors {
+      @variant focus {
+        @apply border-[ButtonText];
+      }
+
+      @variant disabled, disabled-focusable {
+        @apply border-[GrayText] bg-[ButtonFace] text-[GrayText];
+      }
+    }
+
+    @variant appearance-primary {
+      @variant forced-colors {
+        @apply border-[ButtonBorder] bg-[ButtonFace] text-[ButtonText] forced-color-adjust-auto;
+
+        /* Griffel reaches these from Button's own high-contrast rules, where the hover and pressed
+           pseudo-classes outrank this resting appearance by specificity inside the shared media
+           bucket; a whole layer separates them here, so they are repeated. */
+        @variant hover, hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight] forced-color-adjust-none;
+        }
+
+        @variant disabled, disabled-focusable {
+          @apply border-[GrayText] text-[GrayText];
+        }
+      }
+    }
+
+    @variant checked {
+      @variant forced-colors {
+        @apply border-[Highlight] bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
+
+        @variant hover, hover-active {
+          @apply border-[Highlight] bg-[HighlightText] text-[Highlight];
+        }
+
+        @variant focus {
+          @apply border-thin border-solid border-[HighlightText] outline-[color:Highlight];
+        }
+      }
+    }
+  }
+
+  .icon {
+    @variant forced-colors {
+      @apply forced-color-adjust-auto;
+    }
+
+    @variant group-checked/fui-toggle-button {
+      @variant group-appearance-subtle/fui-toggle-button, group-appearance-transparent/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-selected;
+      }
+
+      @variant group-accessible/fui-toggle-button {
+        @apply text-neutral-foreground-on-brand;
+
+        /* Griffel gates its selected glyph colour on NOT accessible and authors nothing for the
+           accessible case, so the glyph inherits the root colour. That matters only under forced
+           colors, where this slot keeps forced-color-adjust: auto and any colour authored here
+           would be replaced by the system foreground instead of following the root. */
+        @variant forced-colors {
+          @apply text-inherit;
+        }
+      }
+
+      @variant icon-filled {
+        @apply inline;
+      }
+
+      @variant icon-regular {
+        @apply hidden;
+      }
+    }
+
+    /* Button's own subtle icon colours live a layer below and cannot reach past the checked and
+       accessible colours above, so they are repeated here after them. */
+    @variant group-appearance-subtle/fui-toggle-button {
+      @variant group-hover/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-hover;
+      }
+
+      @variant group-hover-active/fui-toggle-button {
+        @apply text-neutral-foreground-2-brand-pressed;
+      }
+
+      @variant forced-colors {
+        @variant group-hover/fui-toggle-button, group-hover-active/fui-toggle-button {
+          @apply text-[Highlight];
+        }
+      }
+    }
+
+    @variant group-disabled/fui-toggle-button, group-disabled-focusable/fui-toggle-button {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+
+      @variant group-hover/fui-toggle-button, group-hover-active/fui-toggle-button {
+        @variant icon-filled {
+          @apply hidden;
+        }
+
+        @variant icon-regular {
+          @apply inline;
+        }
+      }
+    }
+  }
+}

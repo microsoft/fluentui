@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add react-tailwind-theme-preview, the Fluent design tokens and themes as a Tailwind v4 CSS layer",
+  "packageName": "@fluentui/react-tailwind-theme-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Align Windmod with updated headless component APIs and expose DropdownSlots.",
+  "packageName": "@fluentui/react-windmod-preview",
+  "email": "array.knight+github@gmail.com"
+}

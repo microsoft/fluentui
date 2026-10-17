@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Expose headless tab and navigation context APIs and align color slider gradients with current channel state.",
+  "packageName": "@fluentui/react-windmod-preview",
+  "email": "array.knight+github@gmail.com"
+}

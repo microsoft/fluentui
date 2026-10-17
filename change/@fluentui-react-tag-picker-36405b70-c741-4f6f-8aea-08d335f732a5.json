@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: cancel the aside-width animation frame from the observer ref's detach path instead of a passive-effect cleanup, so the frame's lifecycle is tied to the observation it belongs to",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

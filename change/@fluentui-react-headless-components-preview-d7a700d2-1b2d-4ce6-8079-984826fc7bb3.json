@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: publish the AvatarGroup context reader and provider from the ./avatar-group subpath",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

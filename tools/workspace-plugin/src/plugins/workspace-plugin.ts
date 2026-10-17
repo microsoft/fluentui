@@ -55,8 +55,8 @@ export const postTasksExecution: PostTasksExecution<WorkspacePluginOptions> = (_
     process.env.GITHUB_ACTIONS === 'true'
       ? '::error::'
       : process.env.TF_BUILD?.toLowerCase() === 'true'
-      ? '##vso[task.logissue type=error]'
-      : undefined;
+        ? '##vso[task.logissue type=error]'
+        : undefined;
 
   if (!errorPrefix) {
     return;
