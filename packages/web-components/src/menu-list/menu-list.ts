@@ -25,7 +25,6 @@ export class MenuList extends BaseMenuList {
 
   override setItems(): void {
     super.setItems();
-
     this.fgItems ??= new ArrayItemCollection<MenuItem>(() => this.menuItems?.filter(i => !i.hidden) ?? []);
     if (!this.fg) {
       this.fg = new FocusGroup(this, this.fgItems, {
