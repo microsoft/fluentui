@@ -245,13 +245,6 @@ Compose the existing Input, Portal, positioning, Field-context, utility, and Tab
 Use `useFluent_unstable().targetDocument` and its `defaultView` for environment access. Opening,
 positioning, dismissal, and focus must work in a non-default document as well as during SSR.
 
-**Dependency review prerequisite:** the requested Calendar Preview composition, and reuse of Input
-and Field context, involve component-package dependencies. The repository's
-[dependency-layer rules](../../../../../docs/architecture/layers.md) prohibit those edges by default.
-Implementation requires an explicitly approved composition exception or an approved foundation-layer
-arrangement. This spec records the required composition; it does not silently waive that rule,
-authorize copying components, or add dependency changes.
-
 ### DOM
 
 The conceptual default structure is:
@@ -625,7 +618,7 @@ outside interactions, v9 conformance tests, and visual-regression fixtures for t
 API extraction and type tests must verify slot restrictions, event/data signatures, string unions,
 and ref targets. Run relevant Nx targets for the new package and any Calendar Preview changes.
 
-Implementation is ready for review only when the dependency arrangement is approved, every compat
-configuration has a migration path, paired visual/behavioral evidence is recorded, and any remaining
+Implementation is ready for review only when every compat configuration has a migration path,
+paired visual/behavioral evidence is recorded, and any remaining
 difference has an explicit decision. Until then, retain the preview designation and do not claim the
 component is an exact replacement.
