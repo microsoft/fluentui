@@ -73,6 +73,10 @@
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-datepicker-preview": ["packages/react-components/react-datepicker-preview/library/src/index.ts"],
+      "@fluentui/react-datepicker-preview-stories": [
+        "packages/react-components/react-datepicker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/library/src/index.ts"],
       "@fluentui/react-dialog-stories": ["packages/react-components/react-dialog/stories/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/library/src/index.ts"],
