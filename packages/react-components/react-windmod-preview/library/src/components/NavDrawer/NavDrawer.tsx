@@ -4,7 +4,6 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderNavDrawer, useNavContextValues, useNavDrawer } from '@fluentui/react-headless-components-preview/nav';
-import type { NavState } from '@fluentui/react-headless-components-preview/nav';
 
 import { Drawer } from '../Drawer/Drawer';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
@@ -27,10 +26,7 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef(
       root: slot.always(headless.root, { elementType: Drawer }),
       size: rest.size,
     });
-    // The context helper is typed for a Nav root (`Slot<'div'>`); a NavDrawer root is a Drawer slot,
-    // so the two states are structurally incompatible even though every field the helper reads is
-    // present. Griffel's own NavDrawer casts at the same seam.
-    const contextValues = useNavContextValues(styled as unknown as NavState);
+    const contextValues = useNavContextValues(styled);
 
     return renderNavDrawer(styled, { ...contextValues, nav: { ...contextValues.nav, density } });
   },

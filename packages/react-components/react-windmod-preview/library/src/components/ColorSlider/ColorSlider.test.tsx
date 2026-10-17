@@ -161,6 +161,7 @@ describe('ColorSlider', () => {
     expect(root.style.getPropertyValue('--fui-Slider--progress')).toBe('50%');
     expect(root.style.getPropertyValue('--fui-Slider__thumb--color')).not.toBe('');
     expect(root.style.getPropertyValue('--fui-Slider__rail--color')).not.toBe('');
+    expect(root.style.getPropertyValue('--fui-Slider__rail--color-low')).not.toBe('');
     expect(root.style.marginTop).toBe('3px');
 
     // The hook spreads {...rootVariables, ...state.root.style}, so a consumer style wins and

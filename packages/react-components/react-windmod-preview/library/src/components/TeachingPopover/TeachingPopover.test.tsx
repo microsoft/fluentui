@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import type { PositioningProps } from '@fluentui/react-headless-components-preview/positioning';
 
 import { isConformant } from '../../testing/isConformant';
@@ -68,6 +68,23 @@ describe('TeachingPopover', () => {
     expect(getByRole('button')).toHaveTextContent('Trigger');
     expect(surface).toHaveTextContent('Content');
     expect(container.children).toHaveLength(2);
+  });
+
+  it('closes the native surface before unmounting and restores trigger focus', async () => {
+    const { getByText, surface } = renderPopover(
+      { trapFocus: true },
+      <TeachingPopoverHeader>Help</TeachingPopoverHeader>,
+    );
+    const close = jest.spyOn(surface as HTMLDialogElement, 'close');
+    const dismissButton = surface.querySelector('button')!;
+
+    dismissButton.focus();
+    fireEvent.click(dismissButton);
+
+    expect(close).toHaveBeenCalledTimes(1);
+    expect(surface.isConnected).toBe(true);
+    await waitFor(() => expect(surface.isConnected).toBe(false));
+    expect(getByText('Trigger')).toHaveFocus();
   });
 
   it('defaults withArrow to TRUE, and a consumer false still wins', () => {

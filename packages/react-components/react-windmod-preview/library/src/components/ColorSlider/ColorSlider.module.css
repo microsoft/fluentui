@@ -18,28 +18,19 @@
 
   /* The channel gradients stay raw declarations: a Tailwind gradient utility emits the
      --tw-gradient-* machinery and its own interpolation space instead of the literal
-     linear-gradient() Griffel compiles. The two literal channel gradients name a physical
-     axis, so they need an explicit rtl counterpart; the hue gradient reads the hook's
-     direction custom property, which is already direction-aware. */
+     linear-gradient() Griffel compiles. The hook supplies direction-aware gradients and
+     channel endpoints derived from the current colour. */
   .rail {
     @apply pointer-events-none relative col-start-2 col-end-2 row-start-2 row-end-2 h-(--fui-color-slider-rail-size) w-full rounded-medium outline-thin outline-transparent-stroke forced-color-adjust-none outline-solid;
 
     background-image: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
 
-    @variant group-channel-saturation/fui-color-slider {
-      background-image: linear-gradient(to right, #808080, var(--fui-Slider__rail--color));
-
-      @variant rtl {
-        background-image: linear-gradient(to left, #808080, var(--fui-Slider__rail--color));
-      }
-    }
-
-    @variant group-channel-value/fui-color-slider {
-      background-image: linear-gradient(to right, #000, var(--fui-Slider__rail--color));
-
-      @variant rtl {
-        background-image: linear-gradient(to left, #000, var(--fui-Slider__rail--color));
-      }
+    @variant group-channel-saturation/fui-color-slider, group-channel-value/fui-color-slider {
+      background-image: linear-gradient(
+        var(--fui-Slider--direction),
+        var(--fui-Slider__rail--color),
+        var(--fui-Slider__rail--color-low)
+      );
     }
 
     @variant group-shape-square/fui-color-slider {

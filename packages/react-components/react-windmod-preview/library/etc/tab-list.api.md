@@ -18,6 +18,7 @@ import type { TabState as TabState_2 } from '@fluentui/react-headless-components
 import { TabValue } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTabList } from '@fluentui/react-headless-components-preview/tab-list';
+import { useTabListContext } from '@fluentui/react-headless-components-preview/tab-list';
 import { useTabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
 
 export { renderTab }
@@ -74,6 +75,8 @@ export { useTab }
 export const useTabAnimatedIndicator: (state: TabState) => TabState;
 
 export { useTabList }
+
+export { useTabListContext }
 
 export { useTabListContextValues }
 

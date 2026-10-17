@@ -30,12 +30,12 @@ describe('RatingItem', () => {
     expect(root.classList[0]).toBe('fui-rating-item');
   });
 
-  it('stamps no data attribute and renders no input outside an interactive rating', () => {
+  it('preserves headless appearance without look attributes or input outside an interactive rating', () => {
     const { getByTestId } = render(<RatingItem data-testid="root" value={1} color="brand" size="large" />);
 
     const root = getByTestId('root');
 
-    expect(root.hasAttribute('data-appearance')).toBe(false);
+    expect(root).toHaveAttribute('data-appearance', 'outline');
     expect(root.hasAttribute('data-color')).toBe(false);
     expect(root.hasAttribute('data-size')).toBe(false);
     expect(root.querySelector('input')).toBeNull();
@@ -69,6 +69,7 @@ describe('RatingItem', () => {
     const inherit = getByTestId('inherit');
 
     expect(inherit).toHaveClass(styles.large);
+    expect(inherit).toHaveAttribute('data-appearance', 'filled');
     expect(indicators(inherit)[0]).toHaveClass(styles.selectedBrand);
 
     const override = getByTestId('override');

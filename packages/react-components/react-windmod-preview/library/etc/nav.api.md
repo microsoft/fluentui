@@ -18,6 +18,7 @@ import { NavCategoryProps } from '@fluentui/react-headless-components-preview/na
 import { NavCategoryProvider } from '@fluentui/react-headless-components-preview/nav';
 import { NavCategoryState } from '@fluentui/react-headless-components-preview/nav';
 import { NavContextValues } from '@fluentui/react-headless-components-preview/nav';
+import { NavContextValuesState } from '@fluentui/react-headless-components-preview/nav';
 import { NavDividerProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavDividerSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavDividerState as NavDividerState_2 } from '@fluentui/react-headless-components-preview/nav';
@@ -128,6 +129,8 @@ export const navClassNames: {
 };
 
 export { NavContextValues }
+
+export { NavContextValuesState }
 
 // @public
 export type NavDensity = 'small' | 'medium';

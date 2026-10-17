@@ -22,8 +22,8 @@ const tabListContextDefaultValue: TabListContextValue = {
 export const TabListContextProvider = TabListContext.Provider;
 
 /**
- * The headless surface exports the provider half of the Griffel tab list context but no reader,
- * so this module supplies one. It is internal — no barrel re-exports it.
+ * Reads the styled list's look props and registration data for indicator layout.
+ * This context is internal — the family barrel exports the headless state reader.
  */
 export const useTabListContext = (): TabListContextValue =>
   React.useContext(TabListContext) ?? tabListContextDefaultValue;

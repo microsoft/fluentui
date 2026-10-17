@@ -157,8 +157,7 @@ export const ColorPickerVrScene = ({
     </div>
 
     {/*
-     * The only band that reaches the direction-dependent rules: the saturation and value rails
-     * name a physical gradient axis, the alpha rail and the hue rail read a direction custom
+     * The band that reaches the direction-dependent rules: slider rails read a direction custom
      * property, both thumbs mirror their half-width offset, a vertical input inverts its own
      * `direction`, and ColorArea's white overlay names a physical axis of its own. Griffel picks
      * its rtl atoms from provider context, so the band needs a real provider on each side rather

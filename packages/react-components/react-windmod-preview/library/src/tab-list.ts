@@ -10,5 +10,6 @@ export {
   renderTabList,
   useTab,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
 } from '@fluentui/react-headless-components-preview/tab-list';

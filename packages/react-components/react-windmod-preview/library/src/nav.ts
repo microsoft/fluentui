@@ -52,6 +52,7 @@ export { NavSubItemGroup, navSubItemGroupClassNames, useNavSubItemGroupStyles } 
 export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './components/NavSubItemGroup';
 
 /** Headless building blocks, re-exported for consumers composing their own Nav. */
+export type { NavContextValuesState } from '@fluentui/react-headless-components-preview/nav';
 export {
   NavCategoryItemProvider,
   NavCategoryProvider,

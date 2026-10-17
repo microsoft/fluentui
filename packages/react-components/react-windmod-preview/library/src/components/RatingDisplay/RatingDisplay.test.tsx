@@ -32,7 +32,7 @@ describe('RatingDisplay', () => {
     expect(root.classList[0]).toBe('fui-rating-display');
   });
 
-  it('stamps no data attribute — every look prop resolves to a class', () => {
+  it('uses classes for look props while preserving headless item appearance', () => {
     const { getByTestId } = render(<RatingDisplay data-testid="root" color="brand" size="large" value={4} count={2} />);
 
     const root = getByTestId('root');
@@ -40,7 +40,7 @@ describe('RatingDisplay', () => {
     expect(root.hasAttribute('data-color')).toBe(false);
     expect(root.hasAttribute('data-size')).toBe(false);
     expect(root.hasAttribute('data-compact')).toBe(false);
-    expect(items(root)[0].hasAttribute('data-appearance')).toBe(false);
+    expect(items(root)[0]).toHaveAttribute('data-appearance', 'filled');
   });
 
   it('renders one item per max, and a single item when compact', () => {
