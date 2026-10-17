@@ -52,39 +52,52 @@ test.describe('MenuList', () => {
           <span slot="end">End</span>
           <${tagName} slot="submenu"><${MenuItemTagName}>Child</${MenuItemTagName}></${tagName}>
         </${MenuItemTagName}>
+        <${MenuItemTagName}>Plain item</${MenuItemTagName}>
       `,
     });
 
     const menu = element.first();
-    await expect(menu).toHaveCSS('--_col-indicator-width', '24px');
-    await expect(menu).toHaveCSS('--_col-start-width', '24px');
-    await expect(menu).toHaveCSS('--_col-end-width', '24px');
-    await expect(menu).toHaveCSS('--_col-submenu-width', '24px');
+    const getColumnWidths = () =>
+      menu.evaluate(node => getComputedStyle(node).gridTemplateColumns.split(' ').map(Number.parseFloat));
+    for (const index of [1, 2, 4, 5]) {
+      await expect.poll(async () => (await getColumnWidths())[index]).toBeGreaterThan(0);
+    }
+    const contentPositions = await menu.evaluate(
+      (node, itemTag) =>
+        Array.from(node.children)
+          .filter(child => child.localName === itemTag)
+          .map(child => child.shadowRoot?.querySelector('[part="content"]')?.getBoundingClientRect().x),
+      MenuItemTagName,
+    );
+    expect(contentPositions[0]).toBe(contentPositions[1]);
   });
 
   test('should update columns when menu item slots and roles change', async ({ fastPage }) => {
     const { element } = fastPage;
     const item = element.locator(MenuItemTagName);
+    const getColumnWidths = () =>
+      element.evaluate(node => getComputedStyle(node).gridTemplateColumns.split(' ').map(Number.parseFloat));
 
     await fastPage.setTemplate({ innerHTML: `<${MenuItemTagName}>Item</${MenuItemTagName}>` });
-    await expect(element).toHaveCSS('--_col-indicator-width', '0px');
-    await expect(element).toHaveCSS('--_col-start-width', '0px');
+    await expect.poll(async () => (await getColumnWidths())[1]).toBe(0);
+    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
 
     await item.evaluate(node => {
       node.setAttribute('role', 'menuitemradio');
       const icon = document.createElement('span');
       icon.slot = 'start';
+      icon.textContent = 'Start';
       node.append(icon);
     });
-    await expect(element).toHaveCSS('--_col-indicator-width', '24px');
-    await expect(element).toHaveCSS('--_col-start-width', '24px');
+    await expect.poll(async () => (await getColumnWidths())[1]).toBeGreaterThan(0);
+    await expect.poll(async () => (await getColumnWidths())[2]).toBeGreaterThan(0);
 
     await item.locator('[slot="start"]').evaluate(node => node.setAttribute('slot', 'end'));
-    await expect(element).toHaveCSS('--_col-start-width', '0px');
-    await expect(element).toHaveCSS('--_col-end-width', '24px');
+    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
+    await expect.poll(async () => (await getColumnWidths())[4]).toBeGreaterThan(0);
 
     await item.evaluate(node => node.removeAttribute('role'));
-    await expect(element).toHaveCSS('--_col-indicator-width', '0px');
+    await expect.poll(async () => (await getColumnWidths())[1]).toBe(0);
 
     await element.evaluate(node => {
       const parent = node.parentNode!;
@@ -94,11 +107,12 @@ test.describe('MenuList', () => {
     await item.evaluate(node => {
       const icon = document.createElement('span');
       icon.slot = 'start';
+      icon.textContent = 'Start';
       node.append(icon);
     });
-    await expect(element).toHaveCSS('--_col-start-width', '24px');
+    await expect.poll(async () => (await getColumnWidths())[2]).toBeGreaterThan(0);
     await item.locator('[slot="start"]').evaluate(node => node.remove());
-    await expect(element).toHaveCSS('--_col-start-width', '0px');
+    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
   });
 
   test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {

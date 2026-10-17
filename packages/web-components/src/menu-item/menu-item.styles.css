@@ -57,11 +57,16 @@
   outline: 2px solid var(--colorStrokeFocus2);
 }
 
-:host(:not(:state(checked))) .indicator,
-:host(:not(:state(checked))) ::slotted([slot='indicator']),
+:host(:not([role='menuitemcheckbox']):not([role='menuitemradio'])) .indicator,
+:host(:not([role='menuitemcheckbox']):not([role='menuitemradio'])) ::slotted([slot='indicator']),
 :host(:not(:state(submenu))) .submenu-glyph,
 :host(:not(:state(submenu))) ::slotted([slot='submenu-glyph']) {
   display: none;
+}
+
+:host(:not(:state(checked))) .indicator,
+:host(:not(:state(checked))) ::slotted([slot='indicator']) {
+  visibility: hidden;
 }
 
 ::slotted([slot='end']) {
