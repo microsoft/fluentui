@@ -322,7 +322,7 @@ describe('List', () => {
   it('selects once with Space, Enter, and the native checkmark', () => {
     const onSelectionChange = cy.stub().as('selectionChange');
     mount(
-      <List aria-label="Items" selectionMode="multiselect" onSelectionChange={onSelectionChange}>
+      <List aria-label="Items" navigationMode="items" selectionMode="multiselect" onSelectionChange={onSelectionChange}>
         <ListItem value="one">First item</ListItem>
         <ListItem value="two">Second item</ListItem>
       </List>,
