@@ -57,8 +57,7 @@ describe('collectPublicExports', () => {
     },
     {
       kind: 'array',
-      source:
-        `export const [useFooBase_unstable, , { hook: useAliasedBase_unstable = fallback }, ...rest] = hooks;`,
+      source: `export const [useFooBase_unstable, , { hook: useAliasedBase_unstable = fallback }, ...rest] = hooks;`,
       names: ['useFooBase_unstable', 'useAliasedBase_unstable', 'rest'],
     },
   ])('collects exported $kind binding names without property keys or initializers', ({ source, names }) => {
@@ -77,27 +76,27 @@ describe('collectPublicExports', () => {
   });
 
   describe('default exports', () => {
-    it.each([
-      'export default function useFooBase_unstable() {}',
-      'export default class Foo {}',
-    ])('excludes a default-only declaration: %s', source => {
-      const { values } = collect({ 'src/index.ts': source });
+    it.each(['export default function useFooBase_unstable() {}', 'export default class Foo {}'])(
+      'excludes a default-only declaration: %s',
+      source => {
+        const { values } = collect({ 'src/index.ts': source });
 
-      expect([...values]).toEqual([]);
-    });
+        expect([...values]).toEqual([]);
+      },
+    );
 
-    it.each([
-      'export default function useFooBase_unstable() {}',
-      'export default class Foo {}',
-    ])('excludes a default declaration reached through star re-exports: %s', source => {
-      const { values } = collect({
-        'src/index.ts': `export * from './components';`,
-        'src/components/index.ts': `export * from './Foo';`,
-        'src/components/Foo.ts': `${source}\nexport const useNamedBase_unstable = () => {};`,
-      });
+    it.each(['export default function useFooBase_unstable() {}', 'export default class Foo {}'])(
+      'excludes a default declaration reached through star re-exports: %s',
+      source => {
+        const { values } = collect({
+          'src/index.ts': `export * from './components';`,
+          'src/components/index.ts': `export * from './Foo';`,
+          'src/components/Foo.ts': `${source}\nexport const useNamedBase_unstable = () => {};`,
+        });
 
-      expect([...values]).toEqual(['useNamedBase_unstable']);
-    });
+        expect([...values]).toEqual(['useNamedBase_unstable']);
+      },
+    );
 
     it('collects an explicitly named alias of a default export', () => {
       const { values } = collect({

@@ -5,6 +5,7 @@ import type { StoryContext } from '../types';
 import { decodeCodeFromHash, decodePlaygroundStateFromHash } from '../url';
 import {
   PLAYGROUND_BUTTON_CLASS,
+  PLAYGROUND_DOCS_ACTION_CLASS,
   getPlaygroundTitle,
   getUnavailableImports,
   withOpenInPlaygroundButton,
@@ -24,6 +25,7 @@ function createContext(overrides: Partial<StoryContext> = {}): StoryContext {
     title: 'Components/Button',
     name: 'Default',
     viewMode: 'docs',
+    canvasElement: document.body,
     parameters: { fullSource },
     ...overrides,
   } as unknown as StoryContext;
@@ -91,6 +93,39 @@ describe('withOpenInPlaygroundButton', () => {
     expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
   });
 
+  it.each(['', 'primary--'])('uses the Storybook 10 Docs actions row for the "%s" anchor', prefix => {
+    const context = createContext();
+    document.body.innerHTML = `
+      <div id="anchor--${prefix}${context.id}">
+        <div class="sbdocs sbdocs-preview">
+          <div class="docs-story"><div class="story-wrapper"></div></div>
+        </div>
+        <div class="sbdocs sbdocs-preview-actions">
+          <div class="actions">
+            <button class="docblock-code-toggle storybook-button">Show code</button>
+            <button class="storybook-button">Copy code</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    const button = document.querySelector(`.${PLAYGROUND_BUTTON_CLASS}`) as HTMLButtonElement;
+    expect(button).not.toBeNull();
+    expect(button.closest('.sbdocs-preview-actions')).not.toBeNull();
+    expect(document.querySelector('.docs-story')?.contains(button)).toBe(false);
+    expect(button.nextElementSibling?.textContent).toBe('Show code');
+    expect(button.classList.contains('storybook-button')).toBe(true);
+    button.click();
+    const url = openSpy.mock.calls[0][0] as string;
+    expect(decodePlaygroundStateFromHash(`#${url.split('#')[1]}`)).toEqual({
+      code: fullSource,
+      cssModules: [],
+      title: 'Button: Default',
+    });
+  });
+
   it('does not duplicate the button on re-render', () => {
     const context = createContext();
     renderDocsPage(context.id);
@@ -99,6 +134,44 @@ describe('withOpenInPlaygroundButton', () => {
     withOpenInPlaygroundButton(storyFn, context);
 
     expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
+  });
+
+  it('adds only one button when primary and regular anchors contain the same action row', () => {
+    const context = createContext();
+    renderDocsPage(`primary--${context.id}`);
+    document.body.innerHTML = `<div id="anchor--${context.id}">${document.body.innerHTML}</div>`;
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
+  });
+
+  it('leaves the native Canvas action in place without creating another button', () => {
+    const context = createContext();
+    renderDocsPage(context.id);
+    const nativeButton = document.createElement('button');
+    nativeButton.className = `${PLAYGROUND_BUTTON_CLASS} ${PLAYGROUND_DOCS_ACTION_CLASS}`;
+    nativeButton.textContent = 'Open in Playground';
+    document.querySelector('.toolbar')?.append(nativeButton);
+    const handler = jest.fn();
+    nativeButton.addEventListener('click', handler);
+
+    withOpenInPlaygroundButton(storyFn, context);
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(1);
+    expect(document.querySelector(`.${PLAYGROUND_BUTTON_CLASS}`)).toBe(nativeButton);
+    nativeButton.click();
+    expect(handler).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not add another story's button to the wrong Docs actions row", () => {
+    const context = createContext();
+    renderDocsPage('other-story--default');
+
+    withOpenInPlaygroundButton(storyFn, context);
+
+    expect(document.querySelectorAll(`.${PLAYGROUND_BUTTON_CLASS}`)).toHaveLength(0);
   });
 
   it('opens the playground with the story source encoded in the hash', () => {

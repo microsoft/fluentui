@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve uncontrolled HSV and alpha across shared color controls, expose channel-preserving rail endpoints, correct RTL transparency direction, and default slider orientations",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "43711362+paolo-aliprandi@users.noreply.github.com"
+}

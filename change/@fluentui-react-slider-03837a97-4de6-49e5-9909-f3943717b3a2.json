@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: default Slider aria-orientation from vertical while preserving explicit input attributes",
+  "packageName": "@fluentui/react-slider",
+  "email": "paoloalipro@gmail.com"
+}
