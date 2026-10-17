@@ -118,6 +118,7 @@
       "@fluentui/react-datepicker-compat-stories": [
         "packages/react-components/react-datepicker-compat/stories/src/index.ts"
       ],
+      "@fluentui/react-datepicker-preview": ["packages/react-components/react-datepicker-preview/library/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/library/src/index.ts"],
       "@fluentui/react-dialog-stories": ["packages/react-components/react-dialog/stories/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/library/src/index.ts"],
@@ -250,6 +251,9 @@
         "packages/react-components/react-timepicker-compat/stories/src/index.ts"
       ],
       "@fluentui/react-timepicker-preview": ["packages/react-components/react-timepicker-preview/library/src/index.ts"],
+      "@fluentui/react-timepicker-preview-stories": [
+        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/library/src/index.ts"],
       "@fluentui/react-toast-stories": ["packages/react-components/react-toast/stories/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/library/src/index.ts"],
@@ -270,8 +274,8 @@
       "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
       "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-timepicker-preview-stories": [
-        "packages/react-components/react-timepicker-preview/stories/src/index.ts"
+      "@fluentui/react-datepicker-preview-stories": [
+        "packages/react-components/react-datepicker-preview/stories/src/index.ts"
       ]
     }
   }
