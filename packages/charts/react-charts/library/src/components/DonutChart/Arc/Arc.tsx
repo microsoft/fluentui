@@ -16,7 +16,6 @@ import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
 export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivElement, ArcProps>(
   (props, forwardedRef) => {
     const arc = d3Arc();
-    const currentRef = React.createRef<SVGPathElement>();
     const _isRTL: boolean = useRtl();
     const classes = useArcStyles(props);
 
@@ -24,13 +23,8 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       _updateChart(props);
     }, [props]);
 
-    function _onFocus(
-      data: ChartDataPoint,
-      id: string,
-      event: React.FocusEvent<SVGPathElement, Element>,
-      targetElement?: HTMLElement | null,
-    ): void {
-      props.onFocusCallback!(data, id, event, currentRef.current, targetElement);
+    function _onFocus(data: ChartDataPoint, id: string, event: React.FocusEvent<SVGPathElement, Element>): void {
+      props.onFocusCallback!(data, id, event, event.currentTarget);
     }
 
     function _hoverOn(
@@ -114,7 +108,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const cornerRadius = props.roundCorners ? 3 : 0;
     const targetElement = document.getElementById(id);
     return (
-      <g ref={currentRef} role="presentation">
+      <g role="presentation">
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
@@ -141,7 +135,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           }
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
-          onFocus={event => _onFocus(props.data!.data, id, event, targetElement)}
+          onFocus={event => _onFocus(props.data!.data, id, event)}
           onMouseOver={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseMove={event => _hoverOn(props.data!.data, event, targetElement)}
           onMouseLeave={_hoverOff}

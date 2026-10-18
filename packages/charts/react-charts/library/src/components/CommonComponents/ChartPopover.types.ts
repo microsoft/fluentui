@@ -24,6 +24,12 @@ export interface ChartPopoverProps {
   ratio?: [number, number];
   isCartesian?: boolean;
   styles?: Partial<PopoverComponentStyles>;
+
+  /**
+   * Configures the position of the callout.
+   * Per-data-point `positioning` overrides the chart's `calloutProps.positioning`.
+   * A `null` or `undefined` per-data-point `target` falls back to the chart's target.
+   */
   positioning?: PositioningShorthand;
 }
 
