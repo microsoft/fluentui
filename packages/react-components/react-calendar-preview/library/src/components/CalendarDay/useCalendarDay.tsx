@@ -39,8 +39,8 @@ const onButtonKeyDown =
   ): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) =>
   ev => {
     if (ev.key === Enter) {
-      ev.preventDefault();
       callback?.(ev);
+      ev.preventDefault();
     }
   };
 

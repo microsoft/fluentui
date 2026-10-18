@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Notify Calendar keyboard selection and action callbacks before preventing native activation so DatePicker can honor consumer cancellation.",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
