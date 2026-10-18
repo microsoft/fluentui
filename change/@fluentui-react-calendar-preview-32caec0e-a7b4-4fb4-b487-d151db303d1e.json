@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Match compat Calendar picker footprints and Go to today action geometry, including week-number and overlay layouts.",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

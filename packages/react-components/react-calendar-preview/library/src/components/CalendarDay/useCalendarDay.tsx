@@ -109,8 +109,8 @@ export const useCalendarDayBase_unstable = (
   React.useImperativeHandle(
     ref,
     () => ({
-      focus() {
-        navigatedDayRef.current?.focus?.();
+      focus(options?: FocusOptions) {
+        navigatedDayRef.current?.focus?.(options);
       },
     }),
     [],
