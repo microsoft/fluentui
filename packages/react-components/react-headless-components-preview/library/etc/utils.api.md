@@ -5,6 +5,9 @@
 ```ts
 
 // @public
+export function toDataAttributeValue(value: boolean | undefined): '' | undefined;
+
+// @public (undocumented)
 export function toDataAttributeValue(value: boolean | string | number | undefined): string | undefined;
 
 // (No @packageDocumentation comment for this package)

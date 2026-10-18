@@ -14,6 +14,8 @@
  * toDataAttributeValue(0); // '0'
  * ```
  */
+export function toDataAttributeValue(value: boolean | undefined): '' | undefined;
+export function toDataAttributeValue(value: boolean | string | number | undefined): string | undefined;
 export function toDataAttributeValue(value: boolean | string | number | undefined): string | undefined {
   if (value === true || value === 'true') {
     return '';

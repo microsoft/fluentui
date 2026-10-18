@@ -130,6 +130,7 @@ import {
   renderCompoundButton,
   useCompoundButton,
 } from '@fluentui/react-headless-components-preview/compound-button';
+import { DatePicker, renderDatePicker, useDatePicker } from '@fluentui/react-headless-components-preview/date-picker';
 import {
   Dialog,
   DialogActions,
@@ -733,6 +734,9 @@ console.log(
   CompoundButton,
   renderCompoundButton,
   useCompoundButton,
+  DatePicker,
+  renderDatePicker,
+  useDatePicker,
   Dialog,
   DialogActions,
   DialogBody,

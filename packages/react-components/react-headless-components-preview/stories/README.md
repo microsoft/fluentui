@@ -27,9 +27,8 @@ No public API — this package only ships stories.
 
 ## DatePicker integration status
 
-Headless DatePicker is **blocked**, not implemented or exported. The final DatePicker stack layer
-reserves this integration after the styled implementation and its separate public-preview
-publication layer. Do not use the styled Calendar as a temporary default for an unstyled DatePicker.
+Headless DatePicker is implemented through the `date-picker` subpath. Its PR remains a blocked draft
+until the Calendar prerequisites merge; they are not part of the DatePicker stack.
 
 Prerequisites:
 
@@ -39,36 +38,26 @@ Prerequisites:
   must merge independently before rebasing the DatePicker stack. These changes intentionally
   remain outside the DatePicker GitHub PR stack.
 
-### Verified upstream inventory
+### Implementation inventory
 
-| Surface                   | Available foundation                                                                                                                                                                                                                                               | Remaining headless integration                                                                                                                                                                                     |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Date state and validation | [`useDatePickerBase_unstable`](../../react-datepicker-preview/library/src/components/DatePicker/useDatePickerBase.ts) shares controlled/uncontrolled selection, editable drafts, parsing/formatting, required/boundary/restriction validation, and popup requests. | Reuse this behavior; do not duplicate date arithmetic or callback/validation rules.                                                                                                                                |
-| Props and state           | [`DatePickerBaseProps` and `DatePickerBaseState`](../../react-datepicker-preview/library/src/components/DatePicker/DatePicker.types.ts) are exported. The base hook does not produce DOM slots or accept a ref.                                                    | Define native/headless slots and preserve the native input ref. Do not alias the styled Input/Calendar slot types or claim the base state is renderable.                                                           |
-| Input                     | The headless [Input family](../library/src/components/Input) already exists.                                                                                                                                                                                       | Preserve Field naming, required/invalid associations, text editing, and consumer slot forwarding without appearance/size defaults or icons.                                                                        |
-| Calendar                  | The current base does not export a headless Calendar subpath.                                                                                                                                                                                                      | Integrate the public unstyled Calendar family from the prerequisite PR; verify selection/range events, restricted dates, view switching, and focus entry.                                                          |
-| Popup and rendering       | The [styled integration](../../react-datepicker-preview/library/src/components/DatePicker/useDatePicker.tsx) documents and tests open/dismiss/focus behavior; its renderer composes styled Input and Calendar and cannot be aliased.                               | Use headless popup/positioning primitives, with correct document ownership, SSR/hydration, Escape/outside dismissal, and input-focus restoration. Do not copy Tabster or Griffel into the headless implementation. |
+- [`useDatePicker`](../library/src/components/DatePicker/useDatePicker.tsx) reuses
+  `useDatePickerBase_unstable` for controlled/uncontrolled dates, parsing/formatting, validation,
+  and popup requests.
+- Headless Input and Calendar supply the semantic slots, Field associations, native input ref,
+  restricted dates, keyboard navigation, and month/year switching. No styled fallback is used.
+- Headless Popover's native modal-dialog lifecycle and CSS-anchor positioning provide same-document
+  top-layer rendering and focus restoration. Native dialog, CSS anchors, and native focusgroup
+  support (or the application-supplied focusgroup polyfill) are required.
+- Stable exports are `DatePicker`, `useDatePicker`, `renderDatePicker`, and their props/slots/state
+  and event types. No root-barrel exports, design props, default icons, or Fluent styles are added.
+- Reserved Input-wrapper presence attributes are `data-open`, `data-disabled`, and `data-invalid`.
+- [Stories](./src/DatePicker) demonstrate default, editable/invalid, controlled, and disabled fields
+  with token-based CSS, visible focus, forced-colors support, and TSX/CSS source.
+- `mountNode` and `inlinePopup` are intentionally excluded: the native dialog remains in the input's
+  document and enters the browser top layer rather than a Portal.
 
-### Completion requirements after the prerequisite lands
-
-- Export stable `DatePicker`, `useDatePicker`, `renderDatePicker`, and related props/slots/state/event
-  types through the public `date-picker` subpath. Keep the package root-export policy unchanged.
-- Define and test reserved root presence attributes for behavioral state (`data-open`,
-  `data-disabled`, and `data-invalid`), including their absent states and consumer-override
-  protection. These are proposed selectors, not an API currently available to consumers.
-- Cover conformance, controlled/uncontrolled selection and visibility, validation callbacks,
-  accessible input/dialog relationships, and consumer slot/ref forwarding.
-- Add browser coverage for open/select/close and inverse actions, Escape/outside dismissal, focus
-  entry/return, Calendar keyboard/view navigation, RTL, iframe ownership, and hydration.
-- Add token-based CSS Module stories demonstrating default, editable, controlled, invalid, and
-  disabled states, with light/dark themes, visible focus, forced-colors support, and complete
-  TSX/CSS "Show code" output.
-- Add the package dependency/export-map entry, subpath API report, AllComponents bundle fixture,
-  and package-scoped Beachball change file only when the implementation exists. Verify the
-  headless bundle does not introduce styled Calendar, default icons, Griffel, or Tabster.
-
-This readiness record adds no executable DatePicker API, stories, package dependencies, or release
-claim. Keep the final PR in draft until the dependency and implementation requirements are met.
+After the prerequisites merge, rebase and rerun package/build/browser validation before requesting
+review. Manual screen-reader and cross-browser acceptance remain release gates.
 
 ---
 

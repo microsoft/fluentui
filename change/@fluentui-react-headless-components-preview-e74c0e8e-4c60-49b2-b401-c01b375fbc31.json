@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add an unstyled DatePicker with shared date validation, headless Calendar composition, and native modal-dialog behavior.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
