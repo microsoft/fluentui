@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: release preview package",
+  "packageName": "@fluentui/react-datepicker-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

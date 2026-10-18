@@ -3300,6 +3300,7 @@ __metadata:
     "@fluentui/react-calendar-preview": "npm:*"
     "@fluentui/react-components": "npm:*"
     "@fluentui/react-datepicker-compat": "npm:*"
+    "@fluentui/react-datepicker-preview": "npm:*"
     "@fluentui/react-icons-compat": "npm:*"
     "@fluentui/react-icons-northstar": "npm:*"
     "@fluentui/react-menu-grid-preview": "npm:*"
@@ -4154,7 +4155,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-datepicker-preview@workspace:^, @fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
+"@fluentui/react-datepicker-preview@npm:*, @fluentui/react-datepicker-preview@workspace:^, @fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library"
   dependencies:

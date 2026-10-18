@@ -18,6 +18,7 @@ const playgroundModules = [
   '@fluentui/react-motion-components-preview',
   '@fluentui/react-calendar-compat',
   '@fluentui/react-datepicker-compat',
+  '@fluentui/react-datepicker-preview',
   '@fluentui/react-timepicker-compat',
 ];
 

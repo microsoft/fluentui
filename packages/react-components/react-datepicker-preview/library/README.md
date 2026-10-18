@@ -4,6 +4,10 @@
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
+The package is configured for public preview publication as `@fluentui/react-datepicker-preview`,
+with examples on the v9 documentation site. Public preview availability does not imply production
+readiness or final API approval; the remaining verification gates are documented below.
+
 DatePicker composes Input and Calendar Preview with controlled/uncontrolled date selection, optional
 text editing, validation callbacks, popup positioning, and modal focus management. Use Field for labels
 and validation presentation. See the [spec](./docs/Spec.md) for the API and parity requirements.
