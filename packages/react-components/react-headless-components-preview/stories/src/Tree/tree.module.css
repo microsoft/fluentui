@@ -1,0 +1,208 @@
+.tree {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  max-inline-size: 420px;
+  padding: var(--space-2);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Subtrees inherit the layout of the root tree, without its frame. */
+.subtree {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  --tree-level: 1;
+  --tree-indent: var(--space-5);
+
+  border-radius: var(--radius-md);
+  outline: none;
+}
+
+.item[aria-level='2'] {
+  --tree-level: 2;
+}
+
+.item[aria-level='3'] {
+  --tree-level: 3;
+}
+
+.item[aria-level='4'] {
+  --tree-level: 4;
+}
+
+.item[aria-level='5'] {
+  --tree-level: 5;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--space-8);
+  padding-block: var(--space-1);
+  padding-inline: calc(var(--space-2) + (var(--tree-level) - 1) * var(--tree-indent)) var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.layout:hover {
+  background: var(--surface-muted);
+}
+
+.item:focus-visible > .layout {
+  box-shadow: inset 0 0 0 var(--stroke-thick) var(--accent);
+}
+
+.item[data-checked=''] > .layout,
+.item[aria-selected='true'] > .layout {
+  background: var(--accent-soft);
+}
+
+/* Leaves reserve the space of the expand icon so that labels stay aligned. */
+.item[data-item-type='leaf'] > .layout {
+  padding-inline-start: calc(
+    var(--space-2) + (var(--tree-level) - 1) * var(--tree-indent) + var(--space-4) + var(--space-2)
+  );
+}
+
+.expandIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  inline-size: var(--space-4);
+  block-size: var(--space-4);
+  color: var(--text-muted);
+  transition: transform var(--duration-medium) var(--ease-emphasized);
+}
+
+.item[data-open] > .layout > .expandIcon {
+  transform: rotate(90deg);
+  color: var(--text);
+}
+
+/* The chevron points towards the start of the next level, which is mirrored in right-to-left layouts. */
+.expandIcon:dir(rtl) {
+  transform: scaleX(-1);
+}
+
+.item[data-open] > .layout > .expandIcon:dir(rtl) {
+  transform: rotate(90deg);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.main {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  font-size: var(--space-3);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selector {
+  flex-shrink: 0;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.aside {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-size: var(--space-3);
+}
+
+.actions {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--space-6);
+  block-size: var(--space-6);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.action:hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.action:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--stroke-thick) var(--accent);
+}
+
+.toolbar {
+  display: flex;
+  gap: var(--space-2);
+  margin-block-end: var(--space-3);
+}
+
+.button {
+  padding: var(--space-1) var(--space-3);
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--surface-muted);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--stroke-thick) var(--accent);
+}
+
+.description {
+  margin-block: var(--space-3) 0;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layout,
+  .expandIcon {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .item:focus-visible > .layout {
+    outline: var(--stroke-thick) solid Highlight;
+    outline-offset: calc(-1 * var(--stroke-thick));
+  }
+
+  .item[data-checked=''] > .layout,
+  .item[aria-selected='true'] > .layout {
+    outline: var(--stroke-thin) solid Highlight;
+  }
+}

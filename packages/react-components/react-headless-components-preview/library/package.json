@@ -69,6 +69,7 @@
     "@fluentui/react-toast": "^9.8.4",
     "@fluentui/react-toolbar": "^9.8.5",
     "@fluentui/react-tooltip": "^9.10.7",
+    "@fluentui/react-tree": "^9.16.8",
     "@fluentui/react-utilities": "^9.26.7",
     "@swc/helpers": "^0.5.1"
   },
@@ -630,6 +631,16 @@
       "require": {
         "types": "./dist/tooltip.d.cts",
         "default": "./lib-commonjs/tooltip.cjs"
+      }
+    },
+    "./tree": {
+      "import": {
+        "types": "./dist/tree.d.ts",
+        "default": "./lib/tree.js"
+      },
+      "require": {
+        "types": "./dist/tree.d.cts",
+        "default": "./lib-commonjs/tree.cjs"
       }
     },
     "./utils": {

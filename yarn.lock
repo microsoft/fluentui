@@ -4446,6 +4446,7 @@ __metadata:
     "@fluentui/react-toast": "npm:^9.8.4"
     "@fluentui/react-toolbar": "npm:^9.8.5"
     "@fluentui/react-tooltip": "npm:^9.10.7"
+    "@fluentui/react-tree": "npm:^9.16.8"
     "@fluentui/react-utilities": "npm:^9.26.7"
     "@fluentui/scripts-cypress": "npm:*"
     "@oddbird/popover-polyfill": "npm:^0.6.1"

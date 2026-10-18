@@ -52,6 +52,7 @@ import * as Toast from '@fluentui/react-headless-components-preview/toast';
 import * as ToggleButton from '@fluentui/react-headless-components-preview/toggle-button';
 import * as Toolbar from '@fluentui/react-headless-components-preview/toolbar';
 import * as Tooltip from '@fluentui/react-headless-components-preview/tooltip';
+import * as Tree from '@fluentui/react-headless-components-preview/tree';
 import * as Utils from '@fluentui/react-headless-components-preview/utils';
 
 console.log({
@@ -109,6 +110,7 @@ console.log({
   ToggleButton,
   Toolbar,
   Tooltip,
+  Tree,
   Utils,
 });
 
