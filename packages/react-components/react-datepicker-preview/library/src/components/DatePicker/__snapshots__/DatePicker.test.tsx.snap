@@ -1,11 +1,43 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`DatePicker renders a default state 1`] = `
+exports[`DatePicker renders an empty, enabled, selection-only combobox 1`] = `
 <div>
-  <div
-    class="fui-DatePicker"
+  <span
+    class="fui-Input fui-DatePicker"
   >
-    Default DatePicker
-  </div>
+    <input
+      aria-expanded="false"
+      aria-haspopup="dialog"
+      class="fui-Input__input"
+      id="date-input"
+      readonly=""
+      role="combobox"
+      type="text"
+      value=""
+    />
+    <span
+      aria-expanded="false"
+      aria-label="Open calendar"
+      class="fui-Input__contentAfter"
+      id="date-icon"
+      role="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="fui-Icon"
+        data-fui-icon=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5M7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2M7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </span>
 </div>
 `;

@@ -3608,7 +3608,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-calendar-preview@npm:*, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
+"@fluentui/react-calendar-preview@npm:*, @fluentui/react-calendar-preview@workspace:^, @fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-calendar-preview@workspace:packages/react-components/react-calendar-preview/library"
   dependencies:
@@ -4154,14 +4154,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
+"@fluentui/react-datepicker-preview@workspace:^, @fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library"
   dependencies:
+    "@fluentui/react-calendar-preview": "workspace:^"
+    "@fluentui/react-field": "workspace:^"
+    "@fluentui/react-icons": "npm:^2.0.339"
+    "@fluentui/react-input": "workspace:^"
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
+    "@fluentui/react-portal": "workspace:^"
+    "@fluentui/react-positioning": "workspace:^"
+    "@fluentui/react-provider": "workspace:^"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
+    "@fluentui/react-tabster": "workspace:^"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@fluentui/react-utilities": "npm:^9.26.7"
+    "@fluentui/scripts-cypress": "workspace:^"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -4363,7 +4372,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-field@npm:*, @fluentui/react-field@npm:^9.5.5, @fluentui/react-field@workspace:packages/react-components/react-field/library":
+"@fluentui/react-field@npm:*, @fluentui/react-field@npm:^9.5.5, @fluentui/react-field@workspace:^, @fluentui/react-field@workspace:packages/react-components/react-field/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-field@workspace:packages/react-components/react-field/library"
   dependencies:
@@ -4709,7 +4718,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-input@npm:*, @fluentui/react-input@npm:^9.8.7, @fluentui/react-input@workspace:packages/react-components/react-input/library":
+"@fluentui/react-input@npm:*, @fluentui/react-input@npm:^9.8.7, @fluentui/react-input@workspace:^, @fluentui/react-input@workspace:packages/react-components/react-input/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-input@workspace:packages/react-components/react-input/library"
   dependencies:
@@ -5290,7 +5299,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-portal@npm:*, @fluentui/react-portal@npm:^9.8.16, @fluentui/react-portal@workspace:packages/react-components/react-portal/library":
+"@fluentui/react-portal@npm:*, @fluentui/react-portal@npm:^9.8.16, @fluentui/react-portal@workspace:^, @fluentui/react-portal@workspace:packages/react-components/react-portal/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-portal@workspace:packages/react-components/react-portal/library"
   dependencies:
@@ -5315,7 +5324,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-positioning@npm:*, @fluentui/react-positioning@npm:^9.23.3, @fluentui/react-positioning@workspace:packages/react-components/react-positioning/library":
+"@fluentui/react-positioning@npm:*, @fluentui/react-positioning@npm:^9.23.3, @fluentui/react-positioning@workspace:^, @fluentui/react-positioning@workspace:packages/react-components/react-positioning/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-positioning@workspace:packages/react-components/react-positioning/library"
   dependencies:
@@ -5380,7 +5389,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.21, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
+"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.21, @fluentui/react-provider@workspace:^, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
@@ -5832,7 +5841,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-tabster@npm:^9.26.18, @fluentui/react-tabster@workspace:packages/react-components/react-tabster":
+"@fluentui/react-tabster@npm:^9.26.18, @fluentui/react-tabster@workspace:^, @fluentui/react-tabster@workspace:packages/react-components/react-tabster":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-tabster@workspace:packages/react-components/react-tabster"
   dependencies:
@@ -6351,7 +6360,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/scripts-cypress@npm:*, @fluentui/scripts-cypress@workspace:scripts/cypress":
+"@fluentui/scripts-cypress@npm:*, @fluentui/scripts-cypress@workspace:^, @fluentui/scripts-cypress@workspace:scripts/cypress":
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-cypress@workspace:scripts/cypress"
   languageName: unknown
@@ -6797,6 +6806,7 @@ __metadata:
     "@fluentui/react-combobox": "npm:*"
     "@fluentui/react-context-selector": "npm:*"
     "@fluentui/react-datepicker-compat": "npm:*"
+    "@fluentui/react-datepicker-preview": "workspace:^"
     "@fluentui/react-dialog": "npm:*"
     "@fluentui/react-divider": "npm:*"
     "@fluentui/react-drawer": "npm:*"

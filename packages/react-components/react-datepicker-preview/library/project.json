@@ -4,5 +4,15 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-datepicker-preview/library/src",
   "tags": ["platform:web", "vNext"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "e2e": {
+      "inputs": [
+        "default",
+        "{projectRoot}/cypress.config.ts",
+        "{projectRoot}/src/**/*.cy.tsx",
+        { "externalDependencies": ["cypress", "@cypress/react"] }
+      ]
+    }
+  }
 }

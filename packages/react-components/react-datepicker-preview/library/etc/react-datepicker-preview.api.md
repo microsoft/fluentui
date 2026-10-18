@@ -4,31 +4,99 @@
 
 ```ts
 
+import type { Calendar } from '@fluentui/react-calendar-preview';
+import type { CalendarProps } from '@fluentui/react-calendar-preview';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Input } from '@fluentui/react-input';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { PositioningProps } from '@fluentui/react-positioning';
+import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
+// @public
+export type DatePickerBaseProps = Omit<DatePickerProps, 'appearance' | 'size'>;
+
+// @public
+export type DatePickerBaseState = DatePickerDateState & {
+    open: boolean;
+    today: Date;
+    required?: boolean;
+    requestOpen: (event: React_2.SyntheticEvent | Event, open: boolean, reason: DatePickerOpenChangeData['reason']) => void;
+};
+
 // @public (undocumented)
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
-// @public
-export type DatePickerProps = ComponentProps<DatePickerSlots> & {};
+// @public (undocumented)
+export type DatePickerDateChangeData = EventData<string, DatePickerEvent> & {
+    value: Date | null;
+    selectedDateRange: Date[];
+    reason: 'calendar' | 'input' | 'clear';
+};
+
+// @public (undocumented)
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public
-export type DatePickerState = ComponentState<DatePickerSlots>;
+export type DatePickerOpenChangeData = EventData<string, React_2.SyntheticEvent | Event> & {
+    open: boolean;
+    reason: 'input' | 'icon' | 'keyboard' | 'focus' | 'selection' | 'dismiss';
+};
+
+// @public
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'value' | 'defaultValue' | 'type' | 'readOnly' | 'calendar'> & Omit<DatePickerDateStateOptions, 'isDateUnavailable'> & {
+    calendar?: NonNullable<Slot<Omit<CalendarProps, 'value' | 'defaultValue' | 'today' | 'minDate' | 'maxDate'> & RefAttributes<HTMLDivElement>>>;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: EventHandler<DatePickerOpenChangeData>;
+    openOnClick?: boolean;
+    openOnFocus?: boolean;
+    today?: Date;
+    minDate?: Date;
+    maxDate?: Date;
+    inlinePopup?: boolean;
+    mountNode?: PortalProps['mountNode'];
+    positioning?: PositioningProps;
+};
+
+// @public (undocumented)
+export type DatePickerSlots = {
+    root: NonNullable<Slot<typeof Input>>;
+    calendar: NonNullable<Slot<typeof Calendar>>;
+    popupSurface?: Slot<'div'>;
+};
+
+// @public
+export type DatePickerState = ComponentState<DatePickerSlots> & Required<Pick<DatePickerProps, 'allowTextInput' | 'disabled' | 'inlinePopup'>> & Pick<DatePickerProps, 'mountNode'> & {
+    open: boolean;
+};
+
+// @public (undocumented)
+export type DatePickerValidationResultData = EventData<string, DatePickerEvent> & {
+    error?: DatePickerErrorType;
+};
+
+// @public
+export const defaultDatePickerErrorStrings: Record<DatePickerErrorType, string>;
 
 // @public
 export const renderDatePicker_unstable: (state: DatePickerState) => JSXElement;
 
 // @public
-export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLDivElement>) => DatePickerState;
+export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;
+
+// @public
+export const useDatePickerBase_unstable: (props: DatePickerBaseProps) => DatePickerBaseState;
 
 // @public
 export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;

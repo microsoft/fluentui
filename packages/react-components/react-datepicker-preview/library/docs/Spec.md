@@ -1,6 +1,7 @@
 # @fluentui/react-datepicker-preview Spec
 
-**Status:** Proposed. This document specifies the target component, not the current scaffold's implemented API.
+**Status:** Implemented in preview. Exact compat visual parity and manual assistive-technology
+verification remain release gates; see Acceptance Criteria and Verification.
 
 ## Background
 
@@ -38,7 +39,7 @@ compat prop comments alone.
 
 ## Sample Code
 
-Examples use the proposed API; they are not examples of the current scaffold.
+Examples use the preview API.
 
 ### Basic usage
 
@@ -119,7 +120,7 @@ There is no additional clear button, time picker, multiple-date selection, or st
 
 ## API
 
-The implementation must replace the scaffold in
+The public API is defined in
 [DatePicker.types.ts](../src/components/DatePicker/DatePicker.types.ts) with this contract.
 
 ### Slots and ref
@@ -339,8 +340,8 @@ not an undocumented "v9 improvement".
 ### Compat-to-preview migration walkthrough
 
 This walkthrough targets `@fluentui/react-datepicker-compat` consumers. The destination code uses
-the **proposed** API in this spec and is not runnable against the current scaffold. Migrate only
-after that API is implemented and parity is verified; keep production consumers on compat meanwhile.
+the preview API in this spec. Migrate production consumers only after parity is verified;
+keep production consumers on compat meanwhile.
 
 #### 1. Replace imports and adapt controlled callbacks
 
