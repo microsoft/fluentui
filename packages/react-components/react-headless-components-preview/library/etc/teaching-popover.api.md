@@ -258,6 +258,7 @@ export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    shouldRenderSurface: boolean;
 };
 
 // @public

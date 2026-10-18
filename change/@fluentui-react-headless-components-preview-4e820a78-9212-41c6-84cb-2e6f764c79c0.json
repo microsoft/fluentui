@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: expose useTabListContext from the tab-list entry point",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "198982749+Copilot@users.noreply.github.com"
+}
