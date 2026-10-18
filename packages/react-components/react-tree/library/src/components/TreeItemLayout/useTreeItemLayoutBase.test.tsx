@@ -1,0 +1,124 @@
+import * as React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
+import type { SelectionMode } from '@fluentui/react-utilities';
+import { Tree } from '../Tree/Tree';
+import type { TreeProps } from '../Tree/Tree.types';
+import { TreeItem } from '../TreeItem/TreeItem';
+import { useTreeItemLayoutBase_unstable } from './useTreeItemLayout';
+import { renderTreeItemLayout_unstable } from './renderTreeItemLayout';
+import type { TreeItemLayoutBaseProps } from './TreeItemLayout.types';
+
+const renderLayoutHook = (
+  props: TreeItemLayoutBaseProps = {},
+  { selectionMode, itemType = 'leaf' }: { selectionMode?: SelectionMode; itemType?: 'leaf' | 'branch' } = {},
+) =>
+  renderHook(() => useTreeItemLayoutBase_unstable(props, React.createRef()), {
+    wrapper: ({ children }: React.PropsWithChildren) => (
+      <Tree aria-label="Tree" selectionMode={selectionMode}>
+        <TreeItem itemType={itemType} value="item">
+          {children}
+        </TreeItem>
+      </Tree>
+    ),
+  });
+
+const BaseTreeItemLayout = React.forwardRef<HTMLElement, TreeItemLayoutBaseProps>((props, ref) =>
+  renderTreeItemLayout_unstable(useTreeItemLayoutBase_unstable(props, ref)),
+);
+
+describe('useTreeItemLayoutBase_unstable', () => {
+  it('renders a native checkbox selector in multiselect mode', () => {
+    const { result } = renderLayoutHook({}, { selectionMode: 'multiselect' });
+
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    expect(result.current.components.selector).toBe('input');
+    expect(result.current.selector).toMatchObject({ type: 'checkbox', checked: false, tabIndex: -1 });
+    expect(result.current.selector?.['aria-labelledby']).toBe(result.current.main.id);
+  });
+
+  it('renders a native radio selector in single selection mode', () => {
+    const { result } = renderLayoutHook({}, { selectionMode: 'single' });
+
+    expect(result.current.selector?.type).toBe('radio');
+  });
+
+  it('does not render a selector without selection or when disabled by the consumer', () => {
+    expect(renderLayoutHook().result.current.selector).toBeUndefined();
+    expect(
+      renderLayoutHook({ selector: null }, { selectionMode: 'multiselect' }).result.current.selector,
+    ).toBeUndefined();
+  });
+
+  it('renders the expand icon of a branch without default content', () => {
+    const { result } = renderLayoutHook({}, { itemType: 'branch' });
+
+    expect(result.current.expandIcon).toBeDefined();
+    expect(result.current.expandIcon?.children).toBeUndefined();
+    expect(result.current.expandIcon?.['aria-hidden']).toBe(true);
+  });
+
+  it('renders visible actions as a toolbar without Tabster attributes', () => {
+    const { result } = renderLayoutHook({ actions: { visible: true, children: 'actions' } });
+
+    expect(result.current.actions?.role).toBe('toolbar');
+    expect(result.current.actions).not.toHaveProperty('data-tabster');
+  });
+
+  it('carries no button context', () => {
+    const { result } = renderLayoutHook();
+
+    expect(result.current).not.toHaveProperty('buttonContextValue');
+  });
+
+  it.each([
+    ['multiselect', 'checkbox'],
+    ['single', 'radio'],
+  ] as const)('toggles the %s selection through the native %s', (selectionMode, role) => {
+    const onCheckedChange = jest.fn();
+    const ControlledTree = () => {
+      const [checkedItems, setCheckedItems] = React.useState<TreeProps['checkedItems']>([]);
+      return (
+        <Tree
+          aria-label="Tree"
+          selectionMode={selectionMode}
+          checkedItems={checkedItems}
+          onCheckedChange={(event, data) => {
+            onCheckedChange(event, data);
+            setCheckedItems([[data.value, data.checked]]);
+          }}
+        >
+          <TreeItem itemType="leaf" value="item">
+            <BaseTreeItemLayout>Item</BaseTreeItemLayout>
+          </TreeItem>
+        </Tree>
+      );
+    };
+    render(<ControlledTree />);
+
+    const selector = screen.getByRole(role, { name: 'Item' }) as HTMLInputElement;
+    expect(selector.checked).toBe(false);
+
+    fireEvent.click(selector);
+
+    expect(onCheckedChange).toHaveBeenCalledWith(
+      expect.any(Object),
+      expect.objectContaining({ value: 'item', checked: true }),
+    );
+    expect(selector.checked).toBe(true);
+  });
+
+  it('reflects a mixed state through the indeterminate property of the native checkbox', () => {
+    render(
+      <Tree aria-label="Tree" selectionMode="multiselect" checkedItems={[['item', 'mixed']]}>
+        <TreeItem itemType="leaf" value="item">
+          <BaseTreeItemLayout>Item</BaseTreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+
+    const checkbox = screen.getByRole('checkbox', { name: 'Item' }) as HTMLInputElement;
+    expect(checkbox.indeterminate).toBe(true);
+    expect(checkbox.hasAttribute('aria-checked')).toBe(false);
+  });
+});

@@ -10,11 +10,14 @@ import {
   elementContains,
   useControllableState,
   useId,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type {
   TreeItemLayoutActionSlotProps,
   TreeItemLayoutActionVisibilityChangeData,
+  TreeItemLayoutBaseProps,
+  TreeItemLayoutBaseState,
   TreeItemLayoutProps,
   TreeItemLayoutState,
 } from './TreeItemLayout.types';
@@ -39,11 +42,75 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
+  const { selector: selectorProp, ...baseProps } = props;
+  const state = useTreeItemLayoutBase_unstable(
+    // The base hook only needs to know whether the consumer provided or disabled the selector,
+    // the Fluent selector itself is resolved below.
+    { ...baseProps, selector: selectorProp === undefined || selectorProp === null ? selectorProp : {} },
+    ref,
+  );
+
+  const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
+  const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
+  const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+
+  // Link the selector to the main content unless the consumer provided an accessible name
+  const selectorShorthand = isResolvedShorthand(selectorProp) ? selectorProp : undefined;
+  const selectorAriaLabelledBy =
+    selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : state.main.id;
+
+  const selector = slot.optional(selectorProp, {
+    renderByDefault: selectionMode !== 'none',
+    defaultProps: {
+      checked,
+      tabIndex: -1,
+      ref: selectionRef,
+      'aria-labelledby': selectorAriaLabelledBy,
+      // casting here to a union between checkbox and radio
+      // since ref is not present on the selector signature
+      // FIXME: look into Slot type to see if we can make this work
+    } as CheckboxProps | RadioProps,
+    elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+  });
+
+  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
+
+  return {
+    ...state,
+    components: {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ...state.components,
+      // Casting here to a union between checkbox and radio
+      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+    },
+    buttonContextValue: { size: 'small' },
+    // Consumer props keep winning over the navigation attributes, matching the base slot ordering.
+    actions: state.actions && { ...arrowNavigationProps, ...state.actions },
+    expandIcon: state.expandIcon && { children: <TreeItemChevron />, ...state.expandIcon },
+    selector,
+  };
+};
+
+/**
+ * Base state hook for TreeItemLayout, free of any focus management runtime and of the Fluent
+ * components used for the selector, the expand icon and the actions.
+ *
+ * The selector slot is rendered as a native `input`, of type `checkbox` in multiselect mode and
+ * `radio` in single selection mode, the expand icon has no default content, and the Tabster driven
+ * arrow key navigation of the actions is layered on by the wrapping `useTreeItemLayout_unstable` hook.
+ *
+ * @param props - props from this instance of TreeItemLayout
+ * @param ref - reference to root HTMLElement of TreeItemLayout
+ */
+export const useTreeItemLayoutBase_unstable = (
+  props: TreeItemLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+): TreeItemLayoutBaseState => {
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
-  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
 
   const [isActionsVisibleFromProps, onActionVisibilityChange]: [
     TreeItemLayoutActionSlotProps['visible'],
@@ -75,18 +142,26 @@ export const useTreeItemLayout_unstable = (
   const selectorAriaLabelledBy =
     selectorShorthand?.['aria-label'] || selectorShorthand?.['aria-labelledby'] ? undefined : mainContentId;
 
+  // The mixed state of a native checkbox can only be set through its `indeterminate` DOM property.
+  const selectorInputRef = React.useRef<HTMLInputElement>(null);
+  useIsomorphicLayoutEffect(() => {
+    if (selectorInputRef.current) {
+      selectorInputRef.current.indeterminate = checked === 'mixed';
+    }
+  }, [checked]);
+
   const selector = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
     defaultProps: {
-      checked,
+      type: selectionMode === 'multiselect' ? 'checkbox' : 'radio',
+      checked: checked === true,
       tabIndex: -1,
-      ref: selectionRef,
+      ref: useMergedRefs(selectionRef, selectorInputRef),
       'aria-labelledby': selectorAriaLabelledBy,
-      // casting here to a union between checkbox and radio
-      // since ref is not present on the selector signature
-      // FIXME: look into Slot type to see if we can make this work
-    } as CheckboxProps | RadioProps,
-    elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+      // Changes bubble up to the tree item, which owns the selection state.
+      onChange: noop,
+    },
+    elementType: 'input',
   });
   const mainSlot = slot.always(main, {
     defaultProps: { id: selector ? mainContentId : undefined },
@@ -173,14 +248,11 @@ export const useTreeItemLayout_unstable = (
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
-      children: <TreeItemChevron />,
       'aria-hidden': true,
       ref: expandIconRefs,
     },
     elementType: 'div',
   });
-  const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
-
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -198,7 +270,6 @@ export const useTreeItemLayout_unstable = (
   const actions = isActionsVisible
     ? slot.optional(props.actions, {
         defaultProps: {
-          ...arrowNavigationProps,
           role: 'toolbar',
           ref: actionsRefs,
           onBlur: handleActionsBlur,
@@ -241,10 +312,8 @@ export const useTreeItemLayout_unstable = (
       iconAfter: 'div',
       actions: 'div',
       aside: 'div',
-      // Casting here to a union between checkbox and radio
-      selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
+      selector: 'input',
     },
-    buttonContextValue: { size: 'small' },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
@@ -266,6 +335,10 @@ export const useTreeItemLayout_unstable = (
     selector,
   };
 };
+
+function noop() {
+  /* noop */
+}
 
 function assertIsRefObject<Value>(ref?: React.Ref<Value>): asserts ref is React.RefObject<Value> {
   if (process.env.NODE_ENV !== 'production') {
