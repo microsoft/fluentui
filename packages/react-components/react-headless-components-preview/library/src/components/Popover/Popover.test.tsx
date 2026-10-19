@@ -10,12 +10,12 @@ import { usePopover } from './usePopover';
 import type { PopoverProps } from './Popover.types';
 
 describe('Popover', () => {
-  describe('closeOnFocusOutside', () => {
+  describe('automatic focus-exit dismissal', () => {
     const focus = (element: HTMLElement) => act(() => element.focus());
     const Example = ({ textOnly = false, ...props }: Partial<PopoverProps> & { textOnly?: boolean }) => (
       <>
         <button>Before</button>
-        <Popover defaultOpen={props.open === undefined ? true : undefined} closeOnFocusOutside {...props}>
+        <Popover defaultOpen={props.open === undefined ? true : undefined} {...props}>
           <PopoverTrigger>
             <button>Trigger</button>
           </PopoverTrigger>
@@ -28,13 +28,14 @@ describe('Popover', () => {
       </>
     );
 
-    it('preserves default Tab-through behavior without opting in', () => {
+    it('closes by default when focus moves to the next page control', async () => {
       const onOpenChange = jest.fn();
-      const { getByText } = render(<Example closeOnFocusOutside={undefined} onOpenChange={onOpenChange} />);
+      const { getByText, queryByText } = render(<Example onOpenChange={onOpenChange} />);
       focus(getByText('Inside'));
       focus(getByText('After'));
-      expect(getByText('Inside')).toBeInTheDocument();
-      expect(onOpenChange).not.toHaveBeenCalled();
+      await waitFor(() => expect(queryByText('Inside')).toBeNull());
+      expect(getByText('After')).toHaveFocus();
+      expect(onOpenChange).toHaveBeenCalledTimes(1);
     });
 
     it('closes once on Tab out and preserves destination focus', async () => {
@@ -77,7 +78,7 @@ describe('Popover', () => {
     it('seeds focus moved by native opening before the listener is attached', () => {
       const onOpenChange = jest.fn();
       const { getByText } = render(
-        <Popover open closeOnFocusOutside onOpenChange={onOpenChange}>
+        <Popover open onOpenChange={onOpenChange}>
           <PopoverSurface>
             <button autoFocus>Autofocused</button>
           </PopoverSurface>
@@ -179,7 +180,7 @@ describe('Popover', () => {
       const childChange = jest.fn();
       const { getByText, queryByText } = render(
         <Example onOpenChange={parentChange}>
-          <Popover defaultOpen closeOnFocusOutside onOpenChange={childChange}>
+          <Popover defaultOpen onOpenChange={childChange}>
             <PopoverSurface>
               <button>Nested</button>
             </PopoverSurface>

@@ -36,7 +36,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     mouseLeaveDelay = 500,
     withArrow = false,
     trapFocus = false,
-    closeOnFocusOutside = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -52,13 +51,13 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
-  const onOpenChange = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const onOpenChange = useEventCallback((e: OpenPopoverEvents | FocusEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
   });
 
   const [setOpenTimeout, clearOpenTimeout] = useTimeout();
 
-  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const setOpen = useEventCallback((e: OpenPopoverEvents | FocusEvent, shouldOpen: boolean) => {
     clearOpenTimeout();
 
     if (shouldOpen && e.type === 'contextmenu') {
@@ -245,7 +244,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   useIsomorphicLayoutEffect(() => {
     const surface = contentRef.current;
-    if (!open || trapFocus || !closeOnFocusOutside || !surface || typeof surface.showPopover !== 'function') {
+    if (!open || trapFocus || !surface || typeof surface.showPopover !== 'function') {
       boundaryFocus.current = null;
       return;
     }

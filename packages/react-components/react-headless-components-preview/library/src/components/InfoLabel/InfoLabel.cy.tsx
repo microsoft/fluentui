@@ -14,6 +14,28 @@ describe('InfoLabel - close on tab-out', () => {
     return cy.get('button.info-button').focus().realPress('{enter}');
   };
 
+  it('preserves destination focus and does not duplicate close notifications', () => {
+    mount(
+      <>
+        <InfoLabel
+          label="Label"
+          info={<button data-testid="inside">Inside</button>}
+          infoButton={{
+            className: 'info-button',
+            popover: { onOpenChange: cy.spy().as('change') },
+          }}
+        />
+        <button data-testid="after">After</button>
+      </>,
+    );
+    openInfoButton().get(surfaceSelector).should('exist');
+    cy.get('@change').invoke('resetHistory');
+    cy.get('[data-testid=inside]').focus().realPress('Tab');
+    cy.get(surfaceSelector).should('not.exist');
+    cy.get('[data-testid=after]').should('have.focus');
+    cy.get('@change').should('have.callCount', 0);
+  });
+
   it('no focusable elements', () => {
     mount(
       <>

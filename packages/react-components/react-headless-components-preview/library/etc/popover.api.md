@@ -25,7 +25,7 @@ export type OnOpenChangeData = EventData<string, React_2.SyntheticEvent | Event>
 };
 
 // @public
-export type OpenPopoverEvents = MouseEvent | TouchEvent | FocusEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
+export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
 export const Popover: {
@@ -50,7 +50,6 @@ export type PopoverProps = {
     openOnHover?: boolean;
     openOnContext?: boolean;
     mouseLeaveDelay?: number;
-    closeOnFocusOutside?: boolean;
     positioning?: PositioningShorthand;
     withArrow?: boolean;
     id?: string;

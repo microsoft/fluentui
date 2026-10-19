@@ -233,7 +233,6 @@ export type TeachingPopoverProps = {
     openOnHover?: boolean;
     openOnContext?: boolean;
     mouseLeaveDelay?: number;
-    closeOnFocusOutside?: boolean;
     positioning?: PositioningShorthand;
     withArrow?: boolean;
     id?: string;

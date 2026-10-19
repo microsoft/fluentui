@@ -17,16 +17,14 @@ const mount = (element: JSXElement) => {
 const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="group"]';
 
-describe('opt-in focus-exit dismissal', () => {
+describe('automatic focus-exit dismissal', () => {
   const Example = ({
     textOnly = false,
     mode = 'uncontrolled',
-    closeOnFocusOutside = true,
     onOpenChange,
   }: {
     textOnly?: boolean;
     mode?: 'uncontrolled' | 'accept' | 'reject';
-    closeOnFocusOutside?: boolean;
     onOpenChange?: PopoverProps['onOpenChange'];
   }) => {
     const [open, setOpen] = React.useState(false);
@@ -35,7 +33,6 @@ describe('opt-in focus-exit dismissal', () => {
         <button data-testid="before">Before</button>
         <Popover
           open={mode === 'uncontrolled' ? undefined : open}
-          closeOnFocusOutside={closeOnFocusOutside}
           onOpenChange={(event, data) => {
             onOpenChange?.(event, data);
             if (mode !== 'reject' || data.open) {
@@ -101,21 +98,22 @@ describe('opt-in focus-exit dismissal', () => {
     cy.get('[data-testid=surface]').should('not.exist');
   });
 
-  it('does not change Tab-through behavior without opt-in', () => {
-    mount(<Example closeOnFocusOutside={false} onOpenChange={cy.spy().as('change')} />);
+  it('dismisses by default on a programmatic focus move without an outside click', () => {
+    mount(<Example onOpenChange={cy.spy().as('change')} />);
     cy.get('[data-testid=trigger]').focus().realPress('Enter');
     cy.get('[data-testid=surface]').should('be.visible');
     cy.get('@change').invoke('resetHistory');
-    cy.get('[data-testid=inside]').focus().realPress('Tab');
+    cy.get('[data-testid=inside]').focus();
+    cy.get('[data-testid=after]').focus();
     cy.get('[data-testid=after]').should('have.focus');
-    cy.get('[data-testid=surface]').should('be.visible');
-    cy.get('@change').should('not.have.been.called');
+    cy.get('[data-testid=surface]').should('not.exist');
+    cy.get('@change').should('have.been.calledOnce');
   });
 
   it('seeds autofocus before listeners attach and preserves the Tab destination', () => {
     mount(
       <>
-        <Popover defaultOpen closeOnFocusOutside onOpenChange={cy.spy().as('change')}>
+        <Popover defaultOpen onOpenChange={cy.spy().as('change')}>
           <PopoverSurface data-testid="surface">
             <button autoFocus data-testid="inside">
               Inside
@@ -137,7 +135,7 @@ describe('opt-in focus-exit dismissal', () => {
         <button data-testid="before" autoFocus>
           Before
         </button>
-        <Popover defaultOpen closeOnFocusOutside onOpenChange={cy.spy().as('change')}>
+        <Popover defaultOpen onOpenChange={cy.spy().as('change')}>
           <PopoverTrigger>
             <button data-testid="trigger">Trigger</button>
           </PopoverTrigger>
@@ -159,7 +157,7 @@ describe('opt-in focus-exit dismissal', () => {
     cy.get('@change').should('have.been.calledOnce');
   });
 
-  it('keeps Escape restoration and click-outside dismissal working with opt-in', () => {
+  it('keeps Escape restoration and click-outside dismissal working', () => {
     mount(<Example onOpenChange={cy.spy().as('change')} />);
     cy.get('[data-testid=trigger]').focus().realPress('Enter');
     cy.get('[data-testid=surface]').should('be.visible');
@@ -179,12 +177,12 @@ describe('opt-in focus-exit dismissal', () => {
 
   it('does not close a parent when focus enters a nested surface or returns to its trigger', () => {
     mount(
-      <Popover closeOnFocusOutside onOpenChange={cy.spy().as('parentChange')}>
+      <Popover onOpenChange={cy.spy().as('parentChange')}>
         <PopoverTrigger>
           <button data-testid="parent-trigger">Parent</button>
         </PopoverTrigger>
         <PopoverSurface data-testid="parent-surface">
-          <Popover closeOnFocusOutside>
+          <Popover>
             <PopoverTrigger>
               <button data-testid="child-trigger">Child</button>
             </PopoverTrigger>
@@ -239,7 +237,7 @@ describe('opt-in focus-exit dismissal', () => {
       const surface = React.useRef<HTMLDialogElement | HTMLDivElement>(null);
       return (
         <>
-          <Popover defaultOpen closeOnFocusOutside onOpenChange={cy.spy().as('change')}>
+          <Popover defaultOpen onOpenChange={cy.spy().as('change')}>
             <PopoverSurface ref={surface} data-testid="surface">
               <button data-testid="inside">Inside</button>
               <OwnedControls surface={surface} />

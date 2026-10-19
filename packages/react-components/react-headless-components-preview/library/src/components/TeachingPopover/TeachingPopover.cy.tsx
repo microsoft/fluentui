@@ -22,6 +22,30 @@ const triggerSelector = '[aria-expanded]';
 const surfaceSelector = '[role="group"]';
 
 describe('TeachingPopover', () => {
+  it('automatically closes on Tab-out without stealing destination focus', () => {
+    mount(
+      <>
+        <TeachingPopover onOpenChange={cy.spy().as('change')}>
+          <TeachingPopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </TeachingPopoverTrigger>
+          <TeachingPopoverSurface data-testid="surface">
+            <button data-testid="inside">Inside</button>
+          </TeachingPopoverSurface>
+        </TeachingPopover>
+        <button data-testid="after">After</button>
+      </>,
+    );
+    cy.get('[data-testid=trigger]').focus().realPress('Enter');
+    cy.get('[data-testid=surface]').should('be.visible');
+    cy.get('@change').invoke('resetHistory');
+    cy.get('[data-testid=inside]').focus().realPress('Tab');
+    cy.get('[data-testid=surface]').should('not.exist');
+    cy.get('[data-testid=after]').should('have.focus');
+    cy.get('@change').should('have.been.calledOnce');
+    cy.get('@change').its('firstCall.args.1').should('include', { open: false, type: 'focusin' });
+  });
+
   (['uncontrolled', 'controlled'] as const).forEach(scenario => {
     const UncontrolledExample = () => (
       <TeachingPopover>
