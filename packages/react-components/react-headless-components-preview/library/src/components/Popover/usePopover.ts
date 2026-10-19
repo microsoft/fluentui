@@ -47,17 +47,20 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const [shouldRenderSurface, setShouldRenderSurface] = React.useState(open);
   const focusWasInsideOnNativeClose = React.useRef<boolean | null>(null);
   const openedSurface = React.useRef<HTMLElement | null>(null);
-  const boundaryFocus = React.useRef<{ surface: HTMLElement; inside: boolean } | null>(null);
+  const focusWasInside = React.useRef(false);
+  const latestFocusEvent = React.useRef<Event | null>(null);
+  const classifiedFocusEvents = React.useRef(new WeakSet<Event>());
+  const focusObservers = React.useRef(new Map<Node, () => void>());
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
-  const onOpenChange = useEventCallback((e: OpenPopoverEvents | FocusEvent, shouldOpen: boolean) => {
+  const onOpenChange = useEventCallback((e: OpenPopoverEvents | Event, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
   });
 
   const [setOpenTimeout, clearOpenTimeout] = useTimeout();
 
-  const setOpen = useEventCallback((e: OpenPopoverEvents | FocusEvent, shouldOpen: boolean) => {
+  const setOpen = useEventCallback((e: OpenPopoverEvents | Event, shouldOpen: boolean) => {
     clearOpenTimeout();
 
     if (shouldOpen && e.type === 'contextmenu') {
@@ -242,61 +245,121 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     }
   }, [open, trapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
 
+  const isFocusInside = React.useCallback(
+    (target: Node | null) => elementContains(contentRef.current, target) || elementContains(triggerRef.current, target),
+    [],
+  );
+  const recordFocus = React.useCallback(
+    (event: Event, target: Node | null) => {
+      const surface = contentRef.current;
+      if (!open || trapFocus || !surface || typeof surface.showPopover !== 'function') {
+        return;
+      }
+      if (!surface.matches(':popover-open') || !target) {
+        return;
+      }
+      if (isFocusInside(target)) {
+        focusWasInside.current = true;
+      } else if (target !== surface.ownerDocument.body && target !== surface.ownerDocument.documentElement) {
+        if (focusWasInside.current) {
+          focusWasInside.current = false;
+          setOpen(event, false);
+        }
+      }
+    },
+    [open, trapFocus, isFocusInside, setOpen],
+  );
+
+  const onBoundaryFocusCapture = (event: React.FocusEvent<HTMLElement>) => {
+    latestFocusEvent.current = event.nativeEvent;
+    classifiedFocusEvents.current.add(event.nativeEvent);
+    recordFocus(event.nativeEvent, event.target);
+  };
+
   useIsomorphicLayoutEffect(() => {
-    const surface = contentRef.current;
-    if (!open || trapFocus || !surface || typeof surface.showPopover !== 'function') {
-      boundaryFocus.current = null;
+    if (!open || trapFocus) {
+      focusWasInside.current = false;
+      latestFocusEvent.current = null;
       return;
     }
-
+    const surface = contentRef.current;
     const trigger = triggerRef.current;
-    const isFocusInside = () =>
-      [getActiveElement(surface), trigger && getActiveElement(trigger)].some(
-        element => !!element && (elementContains(surface, element) || elementContains(trigger, element)),
-      );
-    const hasUnknownDestination = () => {
-      const activeElement = getActiveElement(surface);
-      return (
-        !activeElement ||
-        activeElement === surface.ownerDocument.body ||
-        activeElement === surface.ownerDocument.documentElement
-      );
-    };
-    if (boundaryFocus.current?.surface !== surface) {
-      boundaryFocus.current = { surface, inside: false };
+    if (
+      (surface && isFocusInside(getActiveElement(surface))) ||
+      (trigger && isFocusInside(getActiveElement(trigger)))
+    ) {
+      focusWasInside.current = true;
     }
-    const focus = boundaryFocus.current;
-    // Native opening can focus a descendant before this listener is attached.
-    // Preserve ownership across commits while the destination remains unknown.
-    if (isFocusInside()) {
-      focus.inside = true;
-    } else if (!hasUnknownDestination()) {
-      focus.inside = false;
-    }
-    const onFocusIn: EventListener = event => {
-      if (!surface.matches(':popover-open')) {
-        return;
-      }
-      if (isFocusInside()) {
-        focus.inside = true;
-        return;
-      }
-      if (hasUnknownDestination()) {
-        return;
-      }
-      if (focus.inside) {
-        focus.inside = false;
-        // Focus has reached its destination, so native close must not restore the trigger.
-        setOpen(event as FocusEvent, false);
-      }
-    };
-    // Shadow-root listeners also see moves that are retargeted away at the document.
-    const roots = new Set([surface.ownerDocument, surface.getRootNode(), trigger?.getRootNode()]);
-    roots.forEach(root => root?.addEventListener('focusin', onFocusIn, true));
-    return () => {
-      roots.forEach(root => root?.removeEventListener('focusin', onFocusIn, true));
-    };
   });
+
+  const onFocusIn = useEventCallback((event: Event) => {
+    latestFocusEvent.current = event;
+    const target = (event.composedPath()[0] ?? event.target) as Node | null;
+    if (isFocusInside(target)) {
+      classifiedFocusEvents.current.add(event);
+      recordFocus(event, target);
+      return;
+    }
+    // React portals expose the real target even when an external closed root hides it from this listener.
+    Promise.resolve().then(() => {
+      if (latestFocusEvent.current === event && !classifiedFocusEvents.current.has(event)) {
+        recordFocus(event, target);
+      }
+    });
+  });
+  const onFrameFocus = useEventCallback((event: Event, doc: Document) => {
+    const active = getActiveElement(contentRef.current ?? doc.body);
+    if (doc.hasFocus() && (active?.nodeName === 'IFRAME' || active?.nodeName === 'WEBVIEW')) {
+      recordFocus(event, active);
+    }
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    const roots = new Set<Node>();
+    if (open && !trapFocus) {
+      [contentRef.current, triggerRef.current].forEach(element => {
+        if (element) {
+          roots.add(element.getRootNode());
+          roots.add(element.ownerDocument);
+        }
+      });
+    }
+    // Reconcile roots without detaching surviving listeners during ordinary commits or keyed replacements.
+    focusObservers.current.forEach((dispose, root) => {
+      if (!roots.has(root)) {
+        dispose();
+        focusObservers.current.delete(root);
+      }
+    });
+    roots.forEach(root => {
+      if (focusObservers.current.has(root)) {
+        return;
+      }
+      const doc = root.nodeType === 9 ? (root as Document) : undefined;
+      const win = doc?.defaultView;
+      let timeout: number | undefined;
+      const onWindowBlur = (event: Event) => {
+        if (win && doc) {
+          win.clearTimeout(timeout);
+          timeout = win.setTimeout(() => onFrameFocus(event, doc), 0);
+        }
+      };
+      root.addEventListener('focusin', onFocusIn, true);
+      win?.addEventListener('blur', onWindowBlur);
+      focusObservers.current.set(root, () => {
+        root.removeEventListener('focusin', onFocusIn, true);
+        win?.removeEventListener('blur', onWindowBlur);
+        win?.clearTimeout(timeout);
+      });
+    });
+  });
+  useIsomorphicLayoutEffect(() => {
+    const observers = focusObservers.current;
+    return () => {
+      observers.forEach(dispose => dispose());
+      observers.clear();
+    };
+  }, []);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -320,6 +383,16 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     popoverSurface = children[1];
   } else if (children.length === 1) {
     popoverSurface = children[0];
+  }
+
+  if (React.isValidElement<React.HTMLAttributes<HTMLElement>>(popoverSurface)) {
+    const onFocusCaptureOriginal = popoverSurface.props.onFocusCapture;
+    popoverSurface = React.cloneElement(popoverSurface, {
+      onFocusCapture: event => {
+        onBoundaryFocusCapture(event);
+        onFocusCaptureOriginal?.(event);
+      },
+    });
   }
 
   return {

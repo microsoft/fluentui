@@ -163,6 +163,10 @@ The boundary includes the trigger, surface, and their DOM, shadow, and Fluent vi
 
 Window blur and an unknown destination (`relatedTarget={null}`) alone do not request dismissal. A subsequent confirmed focus move outside can dismiss; unrelated external focus movement on a popover that has never owned focus cannot.
 
+Tabbing into an outside iframe is a confirmed destination and dismisses the popover while preserving focus inside the frame. An iframe within the logical boundary stays owned. Native focus observation remains attached across ordinary commits so descendant layout-effect focus moves are not lost.
+
+Owned React/Fluent portals in external open or closed shadow roots retain their logical focus destination through React focus capture. Virtual ownership is still checked; an unregistered React portal is outside the boundary. Manually linked non-React content hidden inside an inaccessible external closed shadow root is not observable from outside that root and is not covered by this portal support.
+
 #### Specifying initial focus
 
 Consumers control which child receives initial focus via the standard React `autoFocus` attribute on the desired child JSX element. There is no `initialFocusRef` prop — the HTML attribute already covers it for both show modes.
