@@ -195,7 +195,7 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
 
-The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace:
+The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace (`:` stands for `:` or the separator the runtime locale puts after the hour, for example `.` in `fi-FI`):
 
 | Resolved hour cycle | Accepted input                           | Notes                                                                 |
 | ------------------- | ---------------------------------------- | --------------------------------------------------------------------- |
@@ -204,15 +204,15 @@ The default parser (`getDateFromTimeString`) accepts, after trimming leading and
 | `h12`               | `h:mm AM`, `hh:mm AM` with hour `1`–`12` | Day period is case-insensitive and separated by a single ASCII space. |
 | `h11`               | `h:mm AM`, `hh:mm AM` with hour `0`–`11` | Same as `h12`.                                                        |
 
-With `showSeconds`, `:ss` is required; without it, seconds are rejected. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
+With `showSeconds`, `:ss` is required; without it, seconds are rejected. The same separator set applies between the minutes and the seconds. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
 
-**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options, for locales whose time format uses ASCII digits, `:` between the fields and either no day period or `AM`/`PM` (for example `en-US`, `en-GB`, `de-DE`, `fr-FR`, `ja-JP`). The default formatter uses the runtime locale's format, while the default parser only accepts the formats in the table above, so the guarantee does **not** hold for:
+**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options, for locales whose time format uses ASCII digits, one separator between all fields and either no day period or `AM`/`PM` (for example `en-US`, `en-GB`, `de-DE`, `fr-FR`, `ja-JP`, and `fi-FI`, `da-DK` and `id-ID`, which format `10.10`). The default formatter uses the runtime locale's format, while the default parser only accepts the formats in the table above, so the guarantee does **not** hold for:
 
-- locales with another separator, for example `fi-FI`, `da-DK` and `id-ID` format `10.10`;
+- locales with a different separator before the seconds, for example `fr-CA` with `showSeconds` (`10 h 10 min 10 s`);
 - locales with localized digits, for example `ar-EG` (`١٠:١٠`), `fa-IR`, `mr-IN`, `bn-BD` and `ne-NP`;
 - 12-hour locales with a localized day period, for example `ko-KR` (`오전 10:10`) and `el-GR` (`10:10 π.μ.`).
 
-`hourCycle="h23"` removes the day period and so fixes the last group only; it does not change the separator or the digits. Locales in the first two groups need a custom `parseTimeStringToDate` that accepts the locale's format, or a custom `formatDateToTimeString` that produces the ASCII format. A later version of the default parser may derive the separator and the numbering system from `Intl.DateTimeFormat.prototype.formatToParts` so the locale's own output is accepted.
+`hourCycle="h23"` removes the day period and so fixes the last group only; it does not change the separators or the digits. Locales in the first two groups need a custom `parseTimeStringToDate` that accepts the locale's format, or a custom `formatDateToTimeString` that produces the ASCII format.
 
 A parsed time earlier than the start anchor is placed on the day after the anchor (`startHour={22} endHour={2}` with input `1:00` yields 01:00 on the next day). The day is chosen before the clock fields are applied, so a time that does not exist on the anchor day because of a daylight saving transition is not shifted. When a clock time occurs twice because of a daylight saving transition, the earliest occurrence at or after the start anchor wins, so on a fall-back day the first (daylight saving) instant is chosen even when both are inside the range. Formatting and re-parsing therefore preserve the clock fields, not the instant: a value on the second occurrence of a repeated hour displays the same text and parses back to the first occurrence. A time at or after the end anchor is returned with `errorType: 'out-of-bounds'`.
 
