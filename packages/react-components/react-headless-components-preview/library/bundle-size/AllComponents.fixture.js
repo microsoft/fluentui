@@ -284,6 +284,16 @@ import {
   useLinkContext,
 } from '@fluentui/react-headless-components-preview/link';
 import {
+  List,
+  ListItem,
+  renderList,
+  renderListItem,
+  useList,
+  useListContext,
+  useListContextValues,
+  useListItem,
+} from '@fluentui/react-headless-components-preview/list';
+import {
   Menu,
   MenuDivider,
   MenuGroup,
@@ -519,6 +529,7 @@ import {
   renderTabList,
   useTab,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
 } from '@fluentui/react-headless-components-preview/tab-list';
 import { Tag, renderTag, useTag, useTagContextValues } from '@fluentui/react-headless-components-preview/tag';
@@ -919,6 +930,14 @@ console.log(
   renderLink,
   useLink,
   useLinkContext,
+  List,
+  ListItem,
+  renderList,
+  renderListItem,
+  useList,
+  useListContext,
+  useListContextValues,
+  useListItem,
   Menu,
   MenuDivider,
   MenuGroup,
@@ -1142,6 +1161,7 @@ console.log(
   renderTabList,
   useTab,
   useTabList,
+  useTabListContext,
   useTabListContextValues,
   Tag,
   renderTag,

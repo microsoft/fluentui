@@ -94,6 +94,17 @@ describe('CalendarYear', () => {
     expect(getByRole('gridcell', { name: '2027' })).toHaveFocus();
   });
 
+  it('forwards native focus options to the navigated year', () => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2027} />);
+    const year = getByRole('gridcell', { name: '2027' });
+    const focus = jest.spyOn(year, 'focus');
+    ref.current!.focus({ preventScroll: true });
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(year).toHaveFocus();
+    focus.mockRestore();
+  });
+
   it('focuses an available year when the navigated year is disabled', () => {
     const ref = React.createRef<CalendarYearHandle>();
     const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2025} selectedYear={2025} />, {

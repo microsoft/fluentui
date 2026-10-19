@@ -41,6 +41,7 @@
     "@fluentui/react-jsx-runtime": "^9.4.6",
     "@fluentui/react-label": "^9.4.5",
     "@fluentui/react-link": "^9.8.5",
+    "@fluentui/react-list": "^9.6.19",
     "@fluentui/react-menu": "^9.25.6",
     "@fluentui/react-message-bar": "^9.7.7",
     "@fluentui/react-nav": "^9.4.7",
@@ -321,6 +322,16 @@
       "require": {
         "types": "./dist/link.d.cts",
         "default": "./lib-commonjs/link.cjs"
+      }
+    },
+    "./list": {
+      "import": {
+        "types": "./dist/list.d.ts",
+        "default": "./lib/list.js"
+      },
+      "require": {
+        "types": "./dist/list.d.cts",
+        "default": "./lib-commonjs/list.cjs"
       }
     },
     "./menu": {
