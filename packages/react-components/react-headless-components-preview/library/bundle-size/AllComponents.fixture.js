@@ -76,22 +76,6 @@ import {
   useButtonContext,
 } from '@fluentui/react-headless-components-preview/button';
 import {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardPreview,
-  renderCard,
-  renderCardFooter,
-  renderCardHeader,
-  renderCardPreview,
-  useCard,
-  useCardContext,
-  useCardContextValue,
-  useCardFooter,
-  useCardHeader,
-  useCardPreview,
-} from '@fluentui/react-headless-components-preview/card';
-import {
   Calendar,
   CalendarDay,
   CalendarDayGridCell,
@@ -133,6 +117,22 @@ import {
   useCalendarYearGridCell,
   useCalendarYearGridRow,
 } from '@fluentui/react-headless-components-preview/calendar';
+import {
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+  renderCard,
+  renderCardFooter,
+  renderCardHeader,
+  renderCardPreview,
+  useCard,
+  useCardContext,
+  useCardContextValue,
+  useCardFooter,
+  useCardHeader,
+  useCardPreview,
+} from '@fluentui/react-headless-components-preview/card';
 import { Checkbox, renderCheckbox, useCheckbox } from '@fluentui/react-headless-components-preview/checkbox';
 import {
   AlphaSlider,

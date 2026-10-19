@@ -26,13 +26,16 @@ export const useCalendarMonth = (
   });
   yearPicker.ref = useMergedRefs(state.yearPickerRef, yearPicker.ref);
 
-  // Base cell handlers own two-dimensional navigation; focusgroup owns the roving tab stop.
+  // Base cell handlers own two-dimensional navigation; cells manage the roving tab stop.
   // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = 'toolbar inline';
+  state.grid.focusgroup = undefined;
 
-  state.grid.children ??= state.monthRows.map((_, rowIndex: number) => (
-    <CalendarMonthGridRow key={rowIndex} rowIndex={rowIndex} />
-  ));
+  if (state.grid.children === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.grid.children = state.monthRows.map((_, rowIndex: number) => (
+      <CalendarMonthGridRow key={rowIndex} rowIndex={rowIndex} />
+    ));
+  }
 
   return {
     ...state,

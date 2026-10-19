@@ -24,14 +24,17 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
   const { weeks } = state;
 
   // The transition rows exist only to be animated out, so the unanimated layer skips them.
-  state.body.children ??= (
-    <>
-      <CalendarDayGridHeaderRow />
-      {weeks.slice(1, weeks.length - 1).map((week, weekIndex) => (
-        <CalendarDayGridRow key={weekIndex} week={week} weekIndex={weekIndex} />
-      ))}
-    </>
-  );
+  if (state.body.children === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.body.children = (
+      <>
+        <CalendarDayGridHeaderRow />
+        {weeks.slice(1, weeks.length - 1).map((week, weekIndex) => (
+          <CalendarDayGridRow key={weekIndex} week={week} weekIndex={weekIndex} />
+        ))}
+      </>
+    );
+  }
 
   return state;
 };

@@ -17,15 +17,18 @@ export const useCalendarDayGridRow = (
 ): CalendarDayGridRowState => {
   const state = useCalendarDayGridRowBase_unstable(props, ref);
 
-  state.root.children ??= props.week.map((day, dayIndex) => (
-    <CalendarDayGridCell
-      key={day.key}
-      day={day}
-      dayIndex={dayIndex}
-      weekIndex={props.weekIndex}
-      ariaHidden={!!props.transition}
-    />
-  ));
+  if (state.root.children === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.root.children = props.week.map((day, dayIndex) => (
+      <CalendarDayGridCell
+        key={day.key}
+        day={day}
+        dayIndex={dayIndex}
+        weekIndex={props.weekIndex}
+        ariaHidden={!!props.transition}
+      />
+    ));
+  }
 
   return state;
 };

@@ -80,6 +80,21 @@ describe('Calendar', () => {
     cy.get(month('August')).should('be.focused');
   });
 
+  it('passes Alt+Arrow through without moving focus or cancelling the browser default', () => {
+    mount(<Calendar today={today} value={today} dayPicker={null} />);
+
+    cy.get(month('September'))
+      .focus()
+      .then($cell => {
+        for (const key of ['ArrowLeft', 'ArrowRight']) {
+          const event = new KeyboardEvent('keydown', { key, altKey: true, bubbles: true, cancelable: true });
+          $cell[0].dispatchEvent(event);
+          expect(event.defaultPrevented).to.equal(false);
+        }
+      });
+    cy.get(month('September')).should('be.focused');
+  });
+
   it('does not wrap the year grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
     cy.get('button[aria-label="2020, change year"]').click();
@@ -88,6 +103,42 @@ describe('Calendar', () => {
     cy.contains('button[role="gridcell"]', '2023').should('be.focused').realPress('ArrowDown');
     cy.contains('button[role="gridcell"]', '2027').should('be.focused').realPress('ArrowRight');
     cy.contains('button[role="gridcell"]', '2027').should('be.focused');
+  });
+
+  it('lets custom year content cancel navigation before the grid handles it', () => {
+    const onKeyDown = cy
+      .stub()
+      .as('onKeyDown')
+      .callsFake((event: React.KeyboardEvent<HTMLSpanElement>) => {
+        if (event.currentTarget.title === 'custom-year-2022') {
+          event.preventDefault();
+        }
+      });
+
+    mount(
+      <Calendar
+        today={today}
+        value={today}
+        dayPicker={null}
+        monthPicker={{
+          yearPicker: {
+            navigatedYear: 2020,
+            renderYear: year => (
+              <span tabIndex={0} title={`custom-year-${year}`} onKeyDown={onKeyDown}>
+                {year}
+              </span>
+            ),
+          },
+        }}
+      />,
+    );
+    cy.get('button[aria-label="2020, change year"]').click();
+
+    cy.get('[title="custom-year-2022"]').focus().realPress('ArrowRight');
+    cy.get('[title="custom-year-2022"]').should('be.focused');
+    cy.get('[title="custom-year-2023"]').focus().realPress('ArrowRight');
+    cy.get('[title="custom-year-2023"]').should('be.focused');
+    cy.get('@onKeyDown').should('have.been.calledTwice');
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {

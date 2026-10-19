@@ -6,6 +6,7 @@ import {
   type CalendarContextValue,
 } from '@fluentui/react-calendar-preview';
 import { isConformant } from '../../../testing/isConformant';
+import { CalendarMonthGridRow } from '../CalendarMonthGridRow';
 import { CalendarMonth } from './CalendarMonth';
 import type { CalendarYearHandle } from '../CalendarYear';
 
@@ -29,10 +30,15 @@ describe('CalendarMonth', () => {
     ],
   });
 
-  it('opts into native roving focus with focusgroup', () => {
+  it('keeps one roving tab stop and updates it when focus moves', () => {
     const { container } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
+    const grid = container.querySelector('[role="grid"]')!;
 
-    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBe('toolbar inline');
+    expect(grid.getAttribute('focusgroup')).toBeNull();
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    fireEvent.focus(grid.querySelectorAll<HTMLElement>('[role="gridcell"]')[1]);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="-1"]')).toHaveLength(11);
   });
 
   it('swaps in the headless year picker from its header', () => {
@@ -42,8 +48,7 @@ describe('CalendarMonth', () => {
     fireEvent.click(container.querySelector('button')!);
 
     expect(container.textContent).toContain('2020 - 2031');
-    // The year picker inherits the headless focusgroup, not Tabster.
-    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBe('toolbar inline');
+    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBeNull();
   });
 
   it('exposes month state as data attributes', () => {
@@ -70,5 +75,27 @@ describe('CalendarMonth', () => {
 
     expect(yearRef.current?.focus).toBeInstanceOf(Function);
     await waitFor(() => expect(getByRole('gridcell', { name: '2020' })).toHaveFocus());
+  });
+
+  it('preserves null grid and row children while rendering defaults when omitted', () => {
+    const navigatedDate = new Date(2020, 8, 18);
+    const defaultGrid = render(<CalendarMonth navigatedDate={navigatedDate} />);
+    expect(defaultGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(12);
+
+    const emptyGrid = render(<CalendarMonth navigatedDate={navigatedDate} grid={{ children: null }} />);
+    expect(emptyGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
+
+    const defaultRow = render(
+      <CalendarMonth navigatedDate={navigatedDate} grid={{ children: <CalendarMonthGridRow rowIndex={0} /> }} />,
+    );
+    expect(defaultRow.container.querySelectorAll('[role="gridcell"]')).toHaveLength(4);
+
+    const emptyRow = render(
+      <CalendarMonth
+        navigatedDate={navigatedDate}
+        grid={{ children: <CalendarMonthGridRow rowIndex={0} children={null} /> }}
+      />,
+    );
+    expect(emptyRow.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
   });
 });

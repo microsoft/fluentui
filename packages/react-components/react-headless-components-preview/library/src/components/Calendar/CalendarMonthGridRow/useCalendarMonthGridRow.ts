@@ -14,9 +14,12 @@ export const useCalendarMonthGridRow = (
 ): CalendarMonthGridRowState => {
   const state = useCalendarMonthGridRowBase_unstable(props, ref);
 
-  state.root.children ??= state.cells.map(month =>
-    React.createElement(CalendarMonthGridCell, { key: month.index, month }),
-  );
+  if (state.root.children === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.root.children = state.cells.map(month =>
+      React.createElement(CalendarMonthGridCell, { key: month.index, month }),
+    );
+  }
 
   return state as CalendarMonthGridRowState;
 };

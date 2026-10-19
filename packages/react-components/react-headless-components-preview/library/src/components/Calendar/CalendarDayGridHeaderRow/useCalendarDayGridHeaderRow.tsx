@@ -18,9 +18,12 @@ export const useCalendarDayGridHeaderRow = (
 ): CalendarDayGridHeaderRowState => {
   const state = useCalendarDayGridHeaderRowBase_unstable(props, ref);
 
-  state.root.children ??= state.dayLabels.map((dayLabel: CalendarWeekDayLabel) => (
-    <CalendarDayGridHeaderCell key={dayLabel.key} dayLabel={dayLabel} />
-  ));
+  if (state.root.children === undefined) {
+    // eslint-disable-next-line react-hooks/immutability
+    state.root.children = state.dayLabels.map((dayLabel: CalendarWeekDayLabel) => (
+      <CalendarDayGridHeaderCell key={dayLabel.key} dayLabel={dayLabel} />
+    ));
+  }
 
   return state;
 };

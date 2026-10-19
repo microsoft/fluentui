@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render as testingRender } from '@testing-library/react';
+import { fireEvent, render as testingRender } from '@testing-library/react';
 import {
   CalendarProvider,
   calendarContextDefaultValue,
@@ -28,10 +28,15 @@ describe('CalendarYear', () => {
     ],
   });
 
-  it('opts into native roving focus with focusgroup', () => {
+  it('keeps one roving tab stop and updates it when focus moves', () => {
     const { container } = render(<CalendarYear />, { value: new Date(2020, 0, 1) });
+    const grid = container.querySelector('[role="grid"]')!;
 
-    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBe('toolbar inline');
+    expect(grid.getAttribute('focusgroup')).toBeNull();
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    fireEvent.focus(grid.querySelectorAll<HTMLElement>('[role="gridcell"]')[1]);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="-1"]')).toHaveLength(11);
   });
 
   it('renders a range of twelve years', () => {
@@ -52,5 +57,13 @@ describe('CalendarYear', () => {
     expect(container.querySelector('[data-current]')).not.toBeNull();
     expect(container.querySelector('[data-selected]')).not.toBeNull();
     expect(container.querySelector('[data-outside-bounds]')).not.toBeNull();
+  });
+
+  it('preserves null grid children while rendering defaults when omitted', () => {
+    const defaultGrid = render(<CalendarYear />, { value: new Date(2020, 0, 1) });
+    expect(defaultGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(12);
+
+    const emptyGrid = render(<CalendarYear grid={{ children: null }} />, { value: new Date(2020, 0, 1) });
+    expect(emptyGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
   });
 });

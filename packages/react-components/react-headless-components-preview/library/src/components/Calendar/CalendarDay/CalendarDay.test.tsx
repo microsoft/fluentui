@@ -52,4 +52,13 @@ describe('CalendarDay', () => {
     // Weekday header row plus the weeks of the month, and nothing else.
     expect(container.querySelectorAll('tbody > tr')).toHaveLength(6);
   });
+
+  it('preserves null body children while rendering defaults when omitted', () => {
+    const navigatedDate = new Date(2020, 8, 18);
+    const defaultBody = render(<CalendarDay navigatedDate={navigatedDate} />);
+    expect(defaultBody.container.querySelector('tbody')!.children.length).toBeGreaterThan(0);
+
+    const emptyBody = render(<CalendarDay navigatedDate={navigatedDate} body={{ children: null }} />);
+    expect(emptyBody.container.querySelector('tbody')!.children).toHaveLength(0);
+  });
 });

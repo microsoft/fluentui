@@ -22,14 +22,15 @@ describe('Calendar', () => {
     expect(container.querySelectorAll('[role="grid"]')).toHaveLength(2);
   });
 
-  it('drives roving focus with focusgroup rather than Tabster', () => {
+  it('uses focusgroup for the day grid and a single roving tab stop for the month grid', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     const dayGrid = container.querySelector('table[role="grid"]')!;
     expect(dayGrid.getAttribute('focusgroup')).toBe('toolbar inline');
 
     const monthGrid = container.querySelector('div[role="grid"]')!;
-    expect(monthGrid.getAttribute('focusgroup')).toBe('toolbar inline');
+    expect(monthGrid.getAttribute('focusgroup')).toBeNull();
+    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
   });
 
   it('emits no Griffel styles of its own', () => {
