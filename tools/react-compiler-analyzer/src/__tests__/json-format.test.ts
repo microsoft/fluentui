@@ -80,6 +80,30 @@ export function Risky({ label }: { label: string }) {
       );
     });
 
+    it.each([
+      ['label.tsx', 'Label'],
+      ['useLabel.ts', 'useLabel'],
+    ])('reports compiled functions in %s alongside a declared class field', async (fileName, functionName) => {
+      const filePath = join(__dirname, '__fixtures__', 'declare-fields', fileName);
+      const { doc, code, stderr } = await captureJson<AnalysisDocument>(() =>
+        runAnalyze(argv({ paths: [filePath] }) as never),
+      );
+
+      expect(code).toBe(0);
+      expect(stderr).toEqual([]);
+      expect(doc.summary).toMatchObject({
+        functions: 1,
+        compiled: 1,
+        memoCacheEmitted: 1,
+        errors: 0,
+        unparseableFiles: 0,
+      });
+      expect(doc.functions).toEqual([
+        expect.objectContaining({ function: functionName, status: 'compiled', compilerEvent: 'CompileSuccess' }),
+      ]);
+      expect(doc.unparseable).toEqual([]);
+    });
+
     it('emits a versioned envelope on stdout', async () => {
       const { doc, code } = await captureJson<AnalysisDocument>(() =>
         runAnalyze(argv({ riskConfig: { storeAccessorPattern: 'Store$' } }) as never),

@@ -242,6 +242,7 @@ export async function compileSource(
             // angle-bracket type assertion (`<Foo>bar`) as an unterminated JSX element.
             isTSX: ext === '.tsx',
             allExtensions: true,
+            allowDeclareFields: true,
           },
         ],
       ],
