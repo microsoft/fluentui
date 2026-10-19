@@ -3,139 +3,43 @@ import { flushSync } from 'react-dom';
 import { act, fireEvent, render } from '@testing-library/react';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
-import { useCalendarDayContext_unstable } from '../../contexts/calendarDayContext';
-import { useCalendarMonthContext_unstable } from '../../contexts/calendarMonthContext';
-import { useCalendarYearContext_unstable } from '../../contexts/calendarYearContext';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { useCalendarDayBase_unstable } from '../CalendarDay/useCalendarDay';
 import { renderCalendarDay_unstable } from '../CalendarDay/renderCalendarDay';
-import { useCalendarDayContextValues_unstable } from '../CalendarDay/useCalendarDayContextValues';
-import { CalendarDayGridCell } from '../CalendarDayGridCell/CalendarDayGridCell';
-import { useCalendarDayGridCell_unstable } from '../CalendarDayGridCell/useCalendarDayGridCell';
-import { renderCalendarDayGridCell_unstable } from '../CalendarDayGridCell/renderCalendarDayGridCell';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
 import { useCalendarMonthBase_unstable } from '../CalendarMonth/useCalendarMonth';
 import { renderCalendarMonth_unstable } from '../CalendarMonth/renderCalendarMonth';
-import { useCalendarMonthContextValues_unstable } from '../CalendarMonth/useCalendarMonthContextValues';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 import { useCalendarYearBase_unstable } from '../CalendarYear/useCalendarYear';
 import { renderCalendarYear_unstable } from '../CalendarYear/renderCalendarYear';
-import { useCalendarYearContextValues_unstable } from '../CalendarYear/useCalendarYearContextValues';
-import { CalendarMonthGridCell } from '../CalendarMonthGridCell/CalendarMonthGridCell';
-import { useCalendarMonthGridCell_unstable } from '../CalendarMonthGridCell/useCalendarMonthGridCell';
-import { renderCalendarMonthGridCell_unstable } from '../CalendarMonthGridCell/renderCalendarMonthGridCell';
-import { CalendarYearGridCell } from '../CalendarYearGridCell/CalendarYearGridCell';
-import { useCalendarYearGridCell_unstable } from '../CalendarYearGridCell/useCalendarYearGridCell';
-import { renderCalendarYearGridCell_unstable } from '../CalendarYearGridCell/renderCalendarYearGridCell';
-import { handleCalendarGridKeyDown, isCalendarKeyboardEditable } from '../../utils/calendarKeyboard';
-import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
+import { isCalendarKeyboardEditable, moveCalendarGridFocus } from '../../utils/calendarKeyboard';
 import type { CalendarDayHandle, CalendarDayProps } from '../CalendarDay/CalendarDay.types';
-import type { CalendarDayGridCellProps } from '../CalendarDayGridCell/CalendarDayGridCell.types';
+import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarYearHandle, CalendarYearProps } from '../CalendarYear/CalendarYear.types';
-import type { CalendarMonthGridCellProps } from '../CalendarMonthGridCell/CalendarMonthGridCell.types';
-import type { CalendarYearGridCellProps } from '../CalendarYearGridCell/CalendarYearGridCell.types';
 
-const BaseDay: typeof CalendarDay = React.forwardRef<CalendarDayHandle, CalendarDayProps>((props, ref) => {
-  const state = useCalendarDayBase_unstable(props, ref);
-  return renderCalendarDay_unstable(state, useCalendarDayContextValues_unstable(state));
-});
-
-const BaseDayCell: typeof CalendarDayGridCell = React.forwardRef<HTMLTableCellElement, CalendarDayGridCellProps>(
-  (props, ref) => renderCalendarDayGridCell_unstable(useCalendarDayGridCell_unstable(props, ref)),
+const BaseDay: typeof CalendarDay = React.forwardRef<CalendarDayHandle, CalendarDayProps>((props, ref) =>
+  renderCalendarDay_unstable(useCalendarDayBase_unstable(props, ref)),
 );
 
-const BaseMonth: typeof CalendarMonth = React.forwardRef<CalendarMonthHandle, CalendarMonthProps>((props, ref) => {
-  const state = useCalendarMonthBase_unstable(props, ref);
-  return renderCalendarMonth_unstable(state, useCalendarMonthContextValues_unstable(state));
-});
-
-const BaseYear: typeof CalendarYear = React.forwardRef<CalendarYearHandle, CalendarYearProps>((props, ref) => {
-  const state = useCalendarYearBase_unstable(props, ref);
-  return renderCalendarYear_unstable(state, useCalendarYearContextValues_unstable(state));
-});
-
-const BaseMonthCell: typeof CalendarMonthGridCell = React.forwardRef<HTMLButtonElement, CalendarMonthGridCellProps>(
-  (props, ref) => renderCalendarMonthGridCell_unstable(useCalendarMonthGridCell_unstable(props, ref)),
+const BaseMonth: typeof CalendarMonth = React.forwardRef<CalendarMonthHandle, CalendarMonthProps>((props, ref) =>
+  renderCalendarMonth_unstable(useCalendarMonthBase_unstable(props, ref)),
 );
 
-const BaseYearCell: typeof CalendarYearGridCell = React.forwardRef<HTMLButtonElement, CalendarYearGridCellProps>(
-  (props, ref) => renderCalendarYearGridCell_unstable(useCalendarYearGridCell_unstable(props, ref)),
+const BaseYear: typeof CalendarYear = React.forwardRef<CalendarYearHandle, CalendarYearProps>((props, ref) =>
+  renderCalendarYear_unstable(useCalendarYearBase_unstable(props, ref)),
 );
 
-type RowProps = {
-  base: boolean;
-  disabledIndices?: number[];
+type FixtureProps = {
+  allFocusable?: boolean;
+  dir?: 'ltr' | 'rtl';
+  minDate?: Date;
+  onGridKeyDown?: React.KeyboardEventHandler<HTMLElement>;
+  onGridKeyDownCapture?: React.KeyboardEventHandler<HTMLElement>;
   onCellKeyDown?: React.KeyboardEventHandler<HTMLElement>;
   onCellKeyDownCapture?: React.KeyboardEventHandler<HTMLElement>;
 };
 
-const DayRows = ({ base }: RowProps) => {
-  const weeks = useCalendarDayContext_unstable(ctx => ctx.weeks);
-  const Cell = base ? BaseDayCell : CalendarDayGridCell;
-  return (
-    <>
-      {weeks.slice(1, -1).map((week, weekIndex) => (
-        <tr key={weekIndex}>
-          {week.map((day, dayIndex) => (
-            <Cell key={dayIndex} day={day} dayIndex={dayIndex} weekIndex={weekIndex + 1} />
-          ))}
-        </tr>
-      ))}
-    </>
-  );
-};
-
-const MonthRows = ({ base, disabledIndices = [], onCellKeyDown, onCellKeyDownCapture }: RowProps) => {
-  const rows = useCalendarMonthContext_unstable(ctx => ctx.monthRows);
-  const Cell = base ? BaseMonthCell : CalendarMonthGridCell;
-  return (
-    <>
-      {rows.map((months, row) => (
-        <div role="row" key={row}>
-          {months.map(month => (
-            <Cell
-              key={month.index}
-              month={{ ...month, isInBounds: month.isInBounds && !disabledIndices.includes(month.index) }}
-              onKeyDown={onCellKeyDown}
-              onKeyDownCapture={onCellKeyDownCapture}
-            />
-          ))}
-        </div>
-      ))}
-    </>
-  );
-};
-
-const YearRows = ({ base, disabledIndices = [], onCellKeyDown, onCellKeyDownCapture }: RowProps) => {
-  const rows = useCalendarYearContext_unstable(ctx => ctx.yearRows);
-  const Cell = base ? BaseYearCell : CalendarYearGridCell;
-  return (
-    <>
-      {rows.map((years, row) => (
-        <div role="row" key={row}>
-          {years.map((cell, column) => (
-            <Cell
-              key={cell.year}
-              cell={{ ...cell, isDisabled: cell.isDisabled || disabledIndices.includes(row * 4 + column) }}
-              onKeyDown={onCellKeyDown}
-              onKeyDownCapture={onCellKeyDownCapture}
-            />
-          ))}
-        </div>
-      ))}
-    </>
-  );
-};
-
-type FixtureProps = Omit<RowProps, 'base'> & {
-  allFocusable?: boolean;
-  dir?: 'ltr' | 'rtl';
-  onGridKeyDownCapture?: React.KeyboardEventHandler<HTMLDivElement>;
-  onButtonKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
-  onButtonKeyDownCapture?: React.KeyboardEventHandler<HTMLButtonElement>;
-  dayLabel?: CalendarDayGridCellProps['dayLabel'];
-  marker?: CalendarDayGridCellProps['marker'];
-};
+const today = new Date(2020, 8, 18);
 
 function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: FixtureProps = {}) {
   const Month = base ? BaseMonth : CalendarMonth;
@@ -143,69 +47,45 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
   const Day = base ? BaseDay : CalendarDay;
   const onSelect = jest.fn();
   const onNavigate = jest.fn();
-  const today = new Date(2020, 8, 18);
   const element = (fixtureProps: FixtureProps) => {
     const {
       allFocusable = false,
       dir = 'ltr',
+      minDate,
+      onGridKeyDown,
       onGridKeyDownCapture,
-      onButtonKeyDown,
-      onButtonKeyDownCapture,
-      dayLabel,
-      marker,
-      ...rowProps
+      onCellKeyDown,
+      onCellKeyDownCapture,
     } = fixtureProps;
+    const grid = { onKeyDown: onGridKeyDown, onKeyDownCapture: onGridKeyDownCapture };
     return (
       <Provider_unstable value={{ dir }}>
         <CalendarProvider
-          value={{ ...calendarContextDefaultValue, allFocusable, today, value: today, setValue: onSelect }}
+          value={{ ...calendarContextDefaultValue, allFocusable, minDate, today, value: today, setValue: onSelect }}
         >
           {picker === 'day' ? (
             <Day
               navigatedDate={today}
               onNavigateDate={onNavigate}
-              getDayCellProps={() => ({
-                onKeyDown: rowProps.onCellKeyDown,
-                onKeyDownCapture: rowProps.onCellKeyDownCapture,
-                button: {
-                  onKeyDown: onButtonKeyDown,
-                  onKeyDownCapture: onButtonKeyDownCapture,
-                },
-                dayLabel,
-                marker,
-              })}
-              grid={{ onKeyDownCapture: onGridKeyDownCapture }}
-              body={{ children: <DayRows base={base} /> }}
+              getDayCellProps={() => ({ onKeyDown: onCellKeyDown, onKeyDownCapture: onCellKeyDownCapture })}
+              grid={grid}
             />
           ) : picker === 'month' ? (
-            <Month
-              navigatedDate={today}
-              onSelectDate={onSelect}
-              onNavigateDate={onNavigate}
-              grid={{
-                onKeyDownCapture: onGridKeyDownCapture,
-                children: <MonthRows base={base} {...rowProps} />,
-              }}
-            />
+            <Month navigatedDate={today} onSelectDate={onSelect} onNavigateDate={onNavigate} grid={grid} />
           ) : (
-            <Year
-              navigatedYear={2020}
-              onSelectYear={onSelect}
-              onNavigateDate={onNavigate}
-              grid={{
-                onKeyDownCapture: onGridKeyDownCapture,
-                children: <YearRows base={base} {...rowProps} />,
-              }}
-            />
+            <Year navigatedYear={2020} onSelectYear={onSelect} onNavigateDate={onNavigate} grid={grid} />
           )}
         </CalendarProvider>
       </Provider_unstable>
     );
   };
   const result = render(element(props));
+  const cells = result
+    .getAllByRole('gridcell')
+    .filter(cell => cell.getAttribute('aria-disabled') !== 'true' || picker !== 'day');
   return {
     ...result,
-    cells: result.getAllByRole('gridcell'),
+    cells,
     onSelect,
     onNavigate,
     rerenderPicker: (nextProps: FixtureProps) => result.rerender(element(nextProps)),
@@ -234,10 +114,11 @@ describe.each([
   { name: 'styled month', picker: 'month', base: false },
   { name: 'styled year', picker: 'year', base: false },
 ] as const)('$name grid keyboard navigation', ({ picker, base }) => {
-  it('preserves grid semantics and delegates only roving tab stops to the styled layer', () => {
+  it('preserves grid semantics and keeps a single roving tab stop', () => {
     const { container, getByRole, getAllByRole, cells } = renderPicker(picker, base);
     expect(getAllByRole('row')).toHaveLength(3);
     expect(cells).toHaveLength(12);
+    expect(cells.filter(cell => cell.tabIndex === 0)).toHaveLength(1);
     if (base) {
       expect(
         container.querySelector(
@@ -256,24 +137,13 @@ describe.each([
     }
   });
 
-  describe.each(['day', 'month', 'year'] as const)('%s grid keyboard editable boundaries', pickerName => {
-    it('allows navigation within a contenteditable=false island inside an editable ancestor', () => {
-      const { cells, container, getByRole } = renderPicker(pickerName, false);
-      const grid = getByRole('grid');
-      const targetDocument = grid.ownerDocument;
-      const editor = targetDocument.createElement('div');
-      const island = targetDocument.createElement('div');
-      editor.setAttribute('contenteditable', 'true');
-      island.setAttribute('contenteditable', 'false');
-      container.appendChild(editor);
-      editor.appendChild(island);
-      island.appendChild(grid);
+  it('moves the tab stop to the last focused cell', () => {
+    const { cells } = renderPicker(picker, base);
+    act(() => cells[5].focus());
+    fireEvent.keyDown(cells[5], { key: 'ArrowRight' });
 
-      act(() => cells[0].focus());
-      fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
-
-      expect(cells[1]).toHaveFocus();
-    });
+    expect(cells[6]).toHaveFocus();
+    expect(cells.filter(cell => cell.tabIndex === 0)).toEqual([cells[6]]);
   });
 
   it.each(['inherit', 'FALSE'])('treats contenteditable=%s as non-editable', value => {
@@ -319,47 +189,6 @@ describe.each([
   });
 
   it.each([
-    { key: 'ArrowRight', targetIndex: 1 },
-    { key: 'ArrowDown', targetIndex: 4 },
-  ])('uses the shadow root activeElement after $key', ({ key, targetIndex }) => {
-    const host = document.createElement('div');
-    const shadowRoot = host.attachShadow({ mode: 'open' });
-    const grid = document.createElement('div');
-    grid.setAttribute('role', 'grid');
-    const shadowCells = Array.from({ length: 12 }, () => {
-      const cell = document.createElement('button');
-      cell.setAttribute('role', 'gridcell');
-      return cell;
-    });
-    grid.append(...shadowCells);
-    shadowRoot.appendChild(grid);
-    document.body.appendChild(host);
-    act(() => shadowCells[0].focus());
-    const event = {
-      currentTarget: shadowCells[0],
-      isDefaultPrevented: () => false,
-      key,
-      shiftKey: false,
-      altKey: false,
-      ctrlKey: false,
-      metaKey: false,
-      target: shadowCells[0],
-      preventDefault: jest.fn(),
-    } as unknown as React.KeyboardEvent<HTMLButtonElement>;
-
-    handleCalendarGridKeyDown(event, 'ltr', false);
-
-    expect(shadowRoot.activeElement).toBe(shadowCells[targetIndex]);
-    host.remove();
-  });
-
-  it.each(['inherit', 'FALSE'])('does not consider contenteditable=%s editable without an editable ancestor', value => {
-    const target = document.createElement('span');
-    target.setAttribute('contenteditable', value);
-    expect(isCalendarKeyboardEditable(target)).toBe(false);
-  });
-
-  it.each([
     { key: 'ArrowRight', target: 4 },
     { key: 'ArrowLeft', target: 6 },
   ])('respects RTL for $key', ({ key, target }) => {
@@ -387,7 +216,9 @@ describe.each([
     { key: 'ArrowRight', target: 2 },
     { key: 'ArrowDown', target: 8 },
   ])('skips unavailable cells with $key without changing row or column', ({ key, target }) => {
-    const { cells } = renderPicker(picker, base, { disabledIndices: [1, 4] });
+    const { cells } = renderPicker(picker, base);
+    cells[1].setAttribute('aria-disabled', 'true');
+    cells[4].setAttribute('aria-disabled', 'true');
     act(() => cells[0].focus());
 
     expect(fireEvent.keyDown(cells[0], { key })).toBe(false);
@@ -395,35 +226,46 @@ describe.each([
   });
 
   it('keeps an unavailable cell navigable but not selectable with allFocusable', () => {
-    const { cells, onSelect } = renderPicker(picker, base, { allFocusable: true, disabledIndices: [1] });
-    act(() => cells[0].focus());
-    fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+    const minDate = picker === 'month' ? new Date(2020, 1, 1) : new Date(2021, 0, 1);
+    const { cells, onSelect } = renderPicker(picker, base, { allFocusable: true, minDate });
+    act(() => cells[1].focus());
+    fireEvent.keyDown(cells[1], { key: 'ArrowLeft' });
 
-    expect(cells[1]).toHaveFocus();
-    expect(cells[1]).toHaveAttribute('aria-disabled', 'true');
-    expect(cells[1]).not.toBeDisabled();
-    fireEvent.keyDown(cells[1], { key: 'Enter' });
+    expect(cells[0]).toHaveFocus();
+    expect(cells[0]).toHaveAttribute('aria-disabled', 'true');
+    expect(cells[0]).not.toBeDisabled();
+    fireEvent.keyDown(cells[0], { key: 'Enter' });
+    fireEvent.click(cells[0]);
     expect(onSelect).not.toHaveBeenCalled();
 
-    fireEvent.keyDown(cells[1], { key: 'ArrowDown' });
-    expect(cells[5]).toHaveFocus();
+    fireEvent.keyDown(cells[0], { key: 'ArrowDown' });
+    expect(cells[4]).toHaveFocus();
   });
 
-  it.each(['ArrowRight', 'Enter'])('honors consumer cancellation of %s', key => {
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => event.preventDefault());
-    const { cells, onSelect, onNavigate } = renderPicker(picker, base, { onCellKeyDown });
+  it.each(['ArrowRight', 'Enter'])('honors grid consumer cancellation of %s', key => {
+    const onGridKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
+    const { cells, onSelect, onNavigate } = renderPicker(picker, base, { onGridKeyDown });
     act(() => cells[0].focus());
 
     fireEvent.keyDown(cells[0], { key });
 
-    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+    expect(onGridKeyDown).toHaveBeenCalledTimes(1);
     expect(cells[0]).toHaveFocus();
     expect(onSelect).not.toHaveBeenCalled();
     expect(onNavigate).not.toHaveBeenCalled();
   });
 
+  it('selects with Enter', () => {
+    const { cells, onSelect } = renderPicker(picker, base);
+    act(() => cells[2].focus());
+
+    expect(fireEvent.keyDown(cells[2], { key: 'Enter' })).toBe(false);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelect.mock.calls[0][1].type).toBe('keydown');
+  });
+
   it('honors cancellation from the grid capture handler', () => {
-    const onGridKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLDivElement>) => event.preventDefault());
+    const onGridKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
     const { cells } = renderPicker(picker, base, { onGridKeyDownCapture });
     act(() => cells[0].focus());
 
@@ -441,26 +283,6 @@ describe.each([
     expect(cells[0]).toHaveFocus();
   });
 
-  it.each(['input', 'textarea', 'select', 'contenteditable'])('preserves arrows in nested %s content', tag => {
-    const { cells, onSelect } = renderPicker(picker, base);
-    const targetDocument = cells[0].ownerDocument;
-    const editable = targetDocument.createElement(tag === 'contenteditable' ? 'div' : tag);
-    const target = tag === 'contenteditable' ? targetDocument.createElement('span') : editable;
-    if (tag === 'contenteditable') {
-      editable.setAttribute('contenteditable', 'true');
-      editable.tabIndex = 0;
-      editable.appendChild(target);
-    }
-    cells[0].appendChild(editable);
-    act(() => editable.focus());
-
-    for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Enter']) {
-      expect(fireEvent.keyDown(target, { key })).toBe(true);
-      expect(editable).toHaveFocus();
-    }
-    expect(onSelect).not.toHaveBeenCalled();
-  });
-
   it('can focus cells removed from the tab order by a roving-focus layer', () => {
     const { cells } = renderPicker(picker, base);
     cells.forEach((cell, index) => {
@@ -472,157 +294,157 @@ describe.each([
 
     expect(cells[4]).toHaveFocus();
   });
+});
 
-  it('does not take over an independently nested grid', () => {
-    const { cells } = renderPicker(picker, base);
-    const targetDocument = cells[0].ownerDocument;
-    const nestedGrid = targetDocument.createElement('div');
-    const nestedCell = targetDocument.createElement('button');
-    nestedGrid.setAttribute('role', 'grid');
-    nestedCell.setAttribute('role', 'gridcell');
-    nestedGrid.appendChild(nestedCell);
-    cells[0].appendChild(nestedGrid);
-    act(() => nestedCell.focus());
+describe('moveCalendarGridFocus', () => {
+  it.each([
+    { key: 'ArrowRight', targetIndex: 1 },
+    { key: 'ArrowDown', targetIndex: 4 },
+  ])('uses the shadow root activeElement after $key', ({ key, targetIndex }) => {
+    const host = document.createElement('div');
+    const shadowRoot = host.attachShadow({ mode: 'open' });
+    const grid = document.createElement('div');
+    grid.setAttribute('role', 'grid');
+    const shadowCells = Array.from({ length: 12 }, () => {
+      const cell = document.createElement('button');
+      cell.setAttribute('role', 'gridcell');
+      return cell;
+    });
+    grid.append(...shadowCells);
+    shadowRoot.appendChild(grid);
+    document.body.appendChild(host);
+    act(() => shadowCells[0].focus());
+    const event = {
+      currentTarget: grid,
+      key,
+      preventDefault: jest.fn(),
+    } as unknown as React.KeyboardEvent<HTMLElement>;
 
-    expect(fireEvent.keyDown(nestedCell, { key: 'ArrowRight' })).toBe(true);
-    expect(nestedCell).toHaveFocus();
+    moveCalendarGridFocus(event, shadowCells[0], 'ltr', false);
+
+    expect(shadowRoot.activeElement).toBe(shadowCells[targetIndex]);
+    host.remove();
+  });
+
+  it.each(['inherit', 'FALSE'])('does not consider contenteditable=%s editable without an editable ancestor', value => {
+    const target = document.createElement('span');
+    target.setAttribute('contenteditable', value);
+    expect(isCalendarKeyboardEditable(target)).toBe(false);
+  });
+});
+
+describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', picker => {
+  describe.each([
+    { name: 'base', base: true },
+    { name: 'styled', base: false },
+  ])('$name', ({ base }) => {
+    it('allows navigation within a contenteditable=false island inside an editable ancestor', () => {
+      const { cells, container, getByRole } = renderPicker(picker, base);
+      const grid = getByRole('grid');
+      const targetDocument = grid.ownerDocument;
+      const editor = targetDocument.createElement('div');
+      const island = targetDocument.createElement('div');
+      editor.setAttribute('contenteditable', 'true');
+      island.setAttribute('contenteditable', 'false');
+      container.appendChild(editor);
+      editor.appendChild(island);
+      island.appendChild(grid);
+
+      act(() => cells[0].focus());
+      fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+
+      expect(cells[1]).toHaveFocus();
+    });
+
+    it.each(['input', 'textarea', 'select', 'contenteditable'])('preserves arrows in nested %s content', tag => {
+      const { cells, onSelect } = renderPicker(picker, base);
+      const targetDocument = cells[0].ownerDocument;
+      const editable = targetDocument.createElement(tag === 'contenteditable' ? 'div' : tag);
+      const target = tag === 'contenteditable' ? targetDocument.createElement('span') : editable;
+      if (tag === 'contenteditable') {
+        editable.setAttribute('contenteditable', 'true');
+        editable.tabIndex = 0;
+        editable.appendChild(target);
+      }
+      cells[0].appendChild(editable);
+      act(() => editable.focus());
+
+      for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Enter']) {
+        expect(fireEvent.keyDown(target, { key })).toBe(true);
+        expect(editable).toHaveFocus();
+      }
+      expect(onSelect).not.toHaveBeenCalled();
+    });
+
+    it('does not take over an independently nested grid', () => {
+      const { cells } = renderPicker(picker, base);
+      const targetDocument = cells[0].ownerDocument;
+      const nestedGrid = targetDocument.createElement('div');
+      const nestedCell = targetDocument.createElement('button');
+      nestedGrid.setAttribute('role', 'grid');
+      nestedCell.setAttribute('role', 'gridcell');
+      nestedGrid.appendChild(nestedCell);
+      cells[0].appendChild(nestedGrid);
+      act(() => nestedCell.focus());
+
+      expect(fireEvent.keyDown(nestedCell, { key: 'ArrowRight' })).toBe(true);
+      expect(nestedCell).toHaveFocus();
+    });
+
+    it.each(['toolbar inline', 'none'])(
+      'leaves descendant focusgroup="%s" arrows to the focusgroup without Calendar navigation',
+      focusgroup => {
+        const { cells, onSelect, onNavigate } = renderPicker(picker, base);
+        const { first } = appendFocusgroup(cells[0], focusgroup);
+
+        act(() => first.focus());
+        for (const key of ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp']) {
+          expect(fireEvent.keyDown(first, { key })).toBe(true);
+          expect(first).toHaveFocus();
+        }
+
+        expect(onSelect).not.toHaveBeenCalled();
+        expect(onNavigate).not.toHaveBeenCalled();
+      },
+    );
+
+    it.each([
+      { location: 'grid', focusgroup: 'toolbar inline' },
+      { location: 'ancestor', focusgroup: 'none' },
+    ])('keeps Calendar arrows with focusgroup="$focusgroup" on the $location', ({ location, focusgroup }) => {
+      const { cells, container, getByRole, onSelect, onNavigate } = renderPicker(picker, base);
+      (location === 'grid' ? getByRole('grid') : container).setAttribute('focusgroup', focusgroup);
+      act(() => cells[0].focus());
+
+      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+
+      expect(cells[1]).toHaveFocus();
+      expect(onSelect).not.toHaveBeenCalled();
+      expect(onNavigate).not.toHaveBeenCalled();
+    });
   });
 });
 
 describe.each([
-  { name: 'base day', picker: 'day', base: true },
-  { name: 'base month', picker: 'month', base: true },
-  { name: 'base year', picker: 'year', base: true },
-  { name: 'styled day', picker: 'day', base: false },
-  { name: 'styled month', picker: 'month', base: false },
-  { name: 'styled year', picker: 'year', base: false },
-] as const)('$name native keyboard ordering', ({ picker, base }) => {
-  if (picker === 'day') {
-    it('does not invoke child button handlers for a cell-targeted event', () => {
-      const onButtonKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => event.preventDefault());
-      const onButtonKeyDown = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => event.preventDefault());
-      const { cells } = renderPicker(picker, base, { onButtonKeyDown, onButtonKeyDownCapture });
-      act(() => cells[0].focus());
+  { name: 'base', base: true },
+  { name: 'styled', base: false },
+])('$name day grid consumer cell handlers', ({ base }) => {
+  it('runs cell handlers before navigation and honors their cancellation', () => {
+    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
+    const { cells, onNavigate } = renderPicker('day', base, { onCellKeyDown });
+    act(() => cells[0].focus());
 
-      fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+    expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
 
-      expect(cells[1]).toHaveFocus();
-      expect(onButtonKeyDownCapture).not.toHaveBeenCalled();
-      expect(onButtonKeyDown).not.toHaveBeenCalled();
-    });
+    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+    expect(cells[0]).toHaveFocus();
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
 
-    it.each(['dayLabel', 'marker'] as const)('preserves %s capture and bubble event ordering', slotName => {
-      const order: string[] = [];
-      const onButtonKeyDownCapture = jest.fn(() => order.push('button capture'));
-      const onButtonKeyDown = jest.fn(() => order.push('button bubble'));
-      const capture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-        order.push('slot capture');
-        expect(event.currentTarget).toBe(target);
-        event.preventDefault();
-      });
-      const bubble = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-        order.push('slot bubble');
-        expect(event.currentTarget).toBe(target);
-      });
-      const { cells, getAllByTitle } = renderPicker(picker, base, {
-        onButtonKeyDown,
-        onButtonKeyDownCapture,
-        [slotName]: { tabIndex: 0, title: 'target', onKeyDownCapture: capture, onKeyDown: bubble },
-      });
-      const target = getAllByTitle('target')[0];
-      act(() => target.focus());
-
-      fireEvent.keyDown(target, { key: 'ArrowRight' });
-
-      expect(target).toHaveFocus();
-      expect(order).toEqual(['button capture', 'slot capture', 'slot bubble', 'button bubble']);
-      expect(capture).toHaveBeenCalledTimes(1);
-      expect(bubble).toHaveBeenCalledTimes(1);
-      expect(cells[1]).not.toHaveFocus();
-    });
-
-    it('honors dayLabel bubbling cancellation before navigation', () => {
-      const onKeyDown = jest.fn((event: React.KeyboardEvent<HTMLSpanElement>) => event.preventDefault());
-      const { getAllByTitle } = renderPicker(picker, base, {
-        dayLabel: { tabIndex: 0, title: 'label', onKeyDown },
-      });
-      const label = getAllByTitle('label')[0];
-      act(() => label.focus());
-
-      fireEvent.keyDown(label, { key: 'ArrowRight' });
-
-      expect(label).toHaveFocus();
-      expect(onKeyDown).toHaveBeenCalledTimes(1);
-    });
-
-    it('keeps navigation when the cell bubbling handler only stops propagation', () => {
-      const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.stopPropagation());
-      const { cells } = renderPicker(picker, base, { onCellKeyDown });
-      act(() => cells[0].focus());
-
-      fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
-
-      expect(cells[1]).toHaveFocus();
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-    });
-
-    it('stops later consumer handlers after slot capture stops propagation', () => {
-      const onButtonKeyDown = jest.fn();
-      const onCellKeyDown = jest.fn();
-      const { getAllByTitle } = renderPicker(picker, base, {
-        onButtonKeyDown,
-        onCellKeyDown,
-        dayLabel: {
-          tabIndex: 0,
-          title: 'label',
-          onKeyDownCapture: event => {
-            event.stopPropagation();
-          },
-        },
-      });
-      const label = getAllByTitle('label')[0];
-      act(() => label.focus());
-      fireEvent.keyDown(label, { key: 'ArrowRight' });
-      expect(label).toHaveFocus();
-      expect(onButtonKeyDown).not.toHaveBeenCalled();
-      expect(onCellKeyDown).not.toHaveBeenCalled();
-    });
-
-    it.each(['capture', 'bubble'] as const)('honors button %s cancellation before day navigation', phase => {
-      const onButtonKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
-        if (phase === 'capture') {
-          event.preventDefault();
-        }
-      });
-      const onButtonKeyDown = jest.fn((event: React.KeyboardEvent<HTMLButtonElement>) => {
-        if (phase === 'bubble') {
-          event.preventDefault();
-        }
-      });
-      const { cells, onNavigate } = renderPicker(picker, base, {
-        onButtonKeyDown,
-        onButtonKeyDownCapture,
-      });
-      const button = cells[0].querySelector('button')!;
-      act(() => button.focus());
-
-      fireEvent.keyDown(button, { key: 'ArrowRight' });
-
-      expect(button).toHaveFocus();
-      expect(onNavigate).not.toHaveBeenCalled();
-      expect(onButtonKeyDownCapture).toHaveBeenCalledTimes(1);
-      expect(onButtonKeyDown).toHaveBeenCalledTimes(1);
-      expect(onButtonKeyDownCapture.mock.calls[0][0].currentTarget).toBe(button);
-      if (phase === 'bubble') {
-        expect(onButtonKeyDown.mock.calls[0][0].currentTarget).toBe(button);
-      }
-    });
-  }
-
-  it('preserves capture cancellation and calls the consumer keydown once', () => {
+  it('honors cell capture cancellation and still calls the cell keydown once', () => {
     const onCellKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
     const onCellKeyDown = jest.fn();
-    const { cells } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
+    const { cells } = renderPicker('day', base, { onCellKeyDown, onCellKeyDownCapture });
     act(() => cells[0].focus());
 
     fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
@@ -632,17 +454,14 @@ describe.each([
     expect(onCellKeyDown).toHaveBeenCalledTimes(1);
   });
 
-  it('preserves propagation stopped by the consumer capture handler', () => {
-    const onCellKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.stopPropagation());
-    const onCellKeyDown = jest.fn();
-    const { cells } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
+  it.each(['Enter', ' '])('honors cell cancellation of %p selection', key => {
+    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
+    const { cells, onSelect } = renderPicker('day', base, { onCellKeyDown });
     act(() => cells[0].focus());
 
-    fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+    fireEvent.keyDown(cells[0], { key });
 
-    expect(cells[0]).toHaveFocus();
-    expect(onCellKeyDownCapture).toHaveBeenCalledTimes(1);
-    expect(onCellKeyDown).not.toHaveBeenCalled();
+    expect(onSelect).not.toHaveBeenCalled();
   });
 
   it('does not dispatch an arrow again after a synchronous consumer rerender', () => {
@@ -650,105 +469,22 @@ describe.each([
     const onCellKeyDown = jest.fn(() => {
       flushSync(() => rerenderPicker({ onCellKeyDown: onAfterRerender }));
     });
-    const { cells, getAllByRole, rerenderPicker } = renderPicker(picker, base, { onCellKeyDown });
+    const { cells, getAllByRole, rerenderPicker } = renderPicker('day', base, { onCellKeyDown });
     act(() => cells[0].focus());
 
     fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
 
-    expect(getAllByRole('gridcell')[0]).toBe(cells[0]);
+    expect(getAllByRole('gridcell').filter(cell => cell.getAttribute('aria-disabled') !== 'true')[0]).toBe(cells[0]);
     expect(cells[1]).toHaveFocus();
     expect(onCellKeyDown).toHaveBeenCalledTimes(1);
     expect(onAfterRerender).not.toHaveBeenCalled();
   });
 
-  it('leaves editable arrows in bubbling without moving or selecting the enclosing cell', () => {
-    const phases: number[] = [];
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => phases.push(event.eventPhase));
-    const { cells, onSelect } = renderPicker(picker, base, { onCellKeyDown });
-    const input = cells[0].ownerDocument.createElement('input');
-    cells[0].appendChild(input);
-    act(() => input.focus());
-
-    expect(fireEvent.keyDown(input, { key: 'ArrowRight' })).toBe(true);
-
-    expect(input).toHaveFocus();
-    expect(onSelect).not.toHaveBeenCalled();
-    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-    expect(phases).toEqual([3]);
-  });
-
-  it('leaves a nested grid arrow in bubbling without taking over its focus', () => {
-    const phases: number[] = [];
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => phases.push(event.eventPhase));
-    const { cells } = renderPicker(picker, base, { onCellKeyDown });
-    const targetDocument = cells[0].ownerDocument;
-    const nestedGrid = targetDocument.createElement('div');
-    const nestedCell = targetDocument.createElement('button');
-    nestedGrid.setAttribute('role', 'grid');
-    nestedCell.setAttribute('role', 'gridcell');
-    nestedGrid.appendChild(nestedCell);
-    cells[0].appendChild(nestedGrid);
-    act(() => nestedCell.focus());
-
-    expect(fireEvent.keyDown(nestedCell, { key: 'ArrowRight' })).toBe(true);
-
-    expect(nestedCell).toHaveFocus();
-    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-    expect(phases).toEqual([3]);
-  });
-
-  it.each(['toolbar inline', 'none'])(
-    'leaves descendant focusgroup="%s" arrows in bubbling without Calendar navigation',
-    focusgroup => {
-      const phases: number[] = [];
-      const currentTargets: HTMLElement[] = [];
-      const nativeDefaults: boolean[] = [];
-      const onCellKeyDownCapture = jest.fn();
-      const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-        phases.push(event.eventPhase);
-        currentTargets.push(event.currentTarget);
-      });
-      const { cells, onSelect, onNavigate } = renderPicker(picker, base, {
-        onCellKeyDown,
-        onCellKeyDownCapture,
-      });
-      const { group, first } = appendFocusgroup(cells[0], focusgroup);
-      const nativeOwner = jest.fn((event: KeyboardEvent) => nativeDefaults.push(event.defaultPrevented));
-      group.addEventListener('keydown', nativeOwner);
-      const keys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'];
-
-      try {
-        act(() => first.focus());
-        for (const key of keys) {
-          expect(fireEvent.keyDown(first, { key })).toBe(true);
-          expect(first).toHaveFocus();
-        }
-
-        expect(onSelect).not.toHaveBeenCalled();
-        expect(onNavigate).not.toHaveBeenCalled();
-        expect(onCellKeyDownCapture).toHaveBeenCalledTimes(keys.length);
-        expect(onCellKeyDown).toHaveBeenCalledTimes(keys.length);
-        expect(nativeOwner).toHaveBeenCalledTimes(keys.length);
-        expect(nativeDefaults).toEqual(keys.map(() => false));
-        expect(phases).toEqual(keys.map(() => 3));
-        expect(currentTargets).toEqual(keys.map(() => cells[0]));
-      } finally {
-        group.removeEventListener('keydown', nativeOwner);
-      }
-    },
-  );
-
-  it('lets a nested native focusgroup move focus before the bubbling consumer', () => {
+  it('lets a nested native focusgroup move focus before the cell consumer', () => {
     const order: string[] = [];
-    const currentTargets: HTMLElement[] = [];
-    const phases: number[] = [];
     const onCellKeyDownCapture = jest.fn(() => order.push('capture'));
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-      order.push('consumer');
-      currentTargets.push(event.currentTarget);
-      phases.push(event.eventPhase);
-    });
-    const { cells, onSelect, onNavigate } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
+    const onCellKeyDown = jest.fn(() => order.push('consumer'));
+    const { cells, onSelect, onNavigate } = renderPicker('day', base, { onCellKeyDown, onCellKeyDownCapture });
     const { group, first, second } = appendFocusgroup(cells[0], 'toolbar inline');
     const nativeOwner = jest.fn((event: KeyboardEvent) => {
       order.push('native');
@@ -766,185 +502,33 @@ describe.each([
       expect(second).toHaveFocus();
       expect(onSelect).not.toHaveBeenCalled();
       expect(onNavigate).not.toHaveBeenCalled();
-      expect(onCellKeyDownCapture).toHaveBeenCalledTimes(1);
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-      expect(nativeOwner).toHaveBeenCalledTimes(1);
       expect(order).toEqual(['capture', 'native', 'consumer']);
-      expect(currentTargets).toEqual([cells[0]]);
-      expect(phases).toEqual([3]);
     } finally {
       group.removeEventListener('keydown', nativeOwner);
     }
   });
 
-  it.each([
-    { location: 'grid', focusgroup: 'toolbar inline' },
-    { location: 'grid', focusgroup: 'none' },
-    { location: 'ancestor', focusgroup: 'toolbar inline' },
-    { location: 'ancestor', focusgroup: 'none' },
-  ])('keeps Calendar arrows in capture with focusgroup="$focusgroup" on the $location', ({ location, focusgroup }) => {
-    const phases: number[] = [];
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => phases.push(event.eventPhase));
-    const { cells, container, getByRole, onSelect, onNavigate } = renderPicker(picker, base, {
-      onCellKeyDown,
-    });
-    const owner = location === 'grid' ? getByRole('grid') : container;
-    owner.setAttribute('focusgroup', focusgroup);
+  it.each(['altKey', 'ctrlKey', 'metaKey', 'shiftKey'])('leaves modified arrows to the consumer with %s', modifier => {
+    const onCellKeyDown = jest.fn();
+    const { cells, onNavigate } = renderPicker('day', base, { onCellKeyDown });
     act(() => cells[0].focus());
 
-    expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight' })).toBe(false);
+    expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight', [modifier]: true })).toBe(true);
 
-    expect(cells[1]).toHaveFocus();
-    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-    expect(phases).toEqual([1]);
-    expect(onSelect).not.toHaveBeenCalled();
+    expect(cells[0]).toHaveFocus();
     expect(onNavigate).not.toHaveBeenCalled();
+    expect(onCellKeyDown).toHaveBeenCalledTimes(1);
+    expect(onCellKeyDown.mock.calls[0][0].defaultPrevented).toBe(false);
   });
 
-  it.each(['ArrowRight', 'ArrowDown'])('consumer cancellation precedes the native grid owner for %s', key => {
-    const order: string[] = [];
-    const consumerTargets: HTMLElement[] = [];
-    const captureTargets: HTMLElement[] = [];
-    const onCellKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-      order.push('capture');
-      captureTargets.push(event.currentTarget);
-    });
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-      order.push('consumer');
-      consumerTargets.push(event.currentTarget);
-      event.preventDefault();
-    });
-    const { cells, getByRole } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
-    const owner = getByRole('grid');
-    const focusHops = jest.fn();
-    const nativeOwner = jest.fn((event: KeyboardEvent) => {
-      order.push('native');
-      if (!event.defaultPrevented) {
-        cells[1].focus();
-        event.preventDefault();
-      }
-    });
+  it('requests controlled navigation beyond the visible day grid', () => {
+    const { cells, onNavigate } = renderPicker('day', base);
     act(() => cells[0].focus());
-    owner.addEventListener('keydown', nativeOwner);
-    owner.addEventListener('focusin', focusHops);
 
-    try {
-      fireEvent.keyDown(cells[0], { key });
+    expect(fireEvent.keyDown(cells[0], { key: 'ArrowLeft' })).toBe(false);
 
-      expect(cells[0]).toHaveFocus();
-      expect(focusHops).not.toHaveBeenCalled();
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-      expect(onCellKeyDownCapture).toHaveBeenCalledTimes(1);
-      expect(nativeOwner).toHaveBeenCalledTimes(1);
-      expect(consumerTargets).toEqual([cells[0]]);
-      expect(captureTargets).toEqual([cells[0]]);
-      expect(order).toEqual(['capture', 'consumer', 'native']);
-    } finally {
-      owner.removeEventListener('keydown', nativeOwner);
-      owner.removeEventListener('focusin', focusHops);
-    }
+    expect(cells[0]).toHaveFocus();
+    expect(onNavigate).toHaveBeenCalledTimes(1);
+    expect(onNavigate.mock.calls[0][1].date).toEqual(new Date(2020, 7, 29));
   });
-
-  it.each(['ArrowRight', 'ArrowDown'])('moves focus once before the native grid owner for %s', key => {
-    const phases: number[] = [];
-    const consumerTargets: HTMLElement[] = [];
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-      phases.push(event.eventPhase);
-      consumerTargets.push(event.currentTarget);
-    });
-    const { cells, getByRole } = renderPicker(picker, base, { onCellKeyDown });
-    const owner = getByRole('grid');
-    const focusHops = jest.fn();
-    const nativeOwner = jest.fn((event: KeyboardEvent) => {
-      if (!event.defaultPrevented) {
-        cells[2].focus();
-        event.preventDefault();
-      }
-    });
-    act(() => cells[0].focus());
-    owner.addEventListener('keydown', nativeOwner);
-    owner.addEventListener('focusin', focusHops);
-
-    try {
-      fireEvent.keyDown(cells[0], { key });
-
-      expect(cells[key === 'ArrowRight' ? 1 : picker === 'day' ? 7 : 4]).toHaveFocus();
-      expect(focusHops).toHaveBeenCalledTimes(1);
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-      expect(nativeOwner).toHaveBeenCalledTimes(1);
-      expect(consumerTargets).toEqual([cells[0]]);
-      expect(phases).toEqual([1]);
-    } finally {
-      owner.removeEventListener('keydown', nativeOwner);
-      owner.removeEventListener('focusin', focusHops);
-    }
-  });
-
-  it.each(['Enter', 'PageDown', 'Tab'])('keeps %s consumer handling in bubbling', key => {
-    const order: string[] = [];
-    const phases: number[] = [];
-    const onCellKeyDownCapture = jest.fn(() => order.push('capture'));
-    const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => {
-      order.push('consumer');
-      phases.push(event.eventPhase);
-    });
-    const { cells, getByRole } = renderPicker(picker, base, { onCellKeyDown, onCellKeyDownCapture });
-    const owner = getByRole('grid');
-    const nativeOwner = () => order.push('native');
-    owner.addEventListener('keydown', nativeOwner);
-
-    try {
-      fireEvent.keyDown(cells[0], { key });
-
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-      expect(onCellKeyDownCapture).toHaveBeenCalledTimes(1);
-      expect(order).toEqual(['capture', 'native', 'consumer']);
-      expect(phases).toEqual([3]);
-    } finally {
-      owner.removeEventListener('keydown', nativeOwner);
-    }
-  });
-
-  if (picker === 'day') {
-    it.each(['altKey', 'ctrlKey', 'metaKey', 'shiftKey'])('leaves modified arrows in bubbling with %s', modifier => {
-      const onCellKeyDown = jest.fn();
-      const { cells, onNavigate } = renderPicker(picker, base, { onCellKeyDown });
-      act(() => cells[0].focus());
-
-      expect(fireEvent.keyDown(cells[0], { key: 'ArrowRight', [modifier]: true })).toBe(true);
-
-      expect(cells[0]).toHaveFocus();
-      expect(onNavigate).not.toHaveBeenCalled();
-      expect(onCellKeyDown).toHaveBeenCalledTimes(1);
-      expect(onCellKeyDown.mock.calls[0][0].defaultPrevented).toBe(false);
-    });
-
-    it('blocks native fallback while requesting controlled navigation beyond the visible day grid', () => {
-      const { cells, getByRole, onNavigate } = renderPicker(picker, base);
-      const owner = getByRole('grid');
-      const focusHops = jest.fn();
-      const nativeOwner = jest.fn((event: KeyboardEvent) => {
-        if (!event.defaultPrevented) {
-          cells[2].focus();
-          event.preventDefault();
-        }
-      });
-      act(() => cells[0].focus());
-      owner.addEventListener('keydown', nativeOwner);
-      owner.addEventListener('focusin', focusHops);
-
-      try {
-        fireEvent.keyDown(cells[0], { key: 'ArrowLeft' });
-
-        expect(cells[0]).toHaveFocus();
-        expect(focusHops).not.toHaveBeenCalled();
-        expect(nativeOwner).toHaveBeenCalledTimes(1);
-        expect(onNavigate).toHaveBeenCalledTimes(1);
-        expect(onNavigate.mock.calls[0][1].date).toEqual(new Date(2020, 7, 29));
-      } finally {
-        owner.removeEventListener('keydown', nativeOwner);
-        owner.removeEventListener('focusin', focusHops);
-      }
-    });
-  }
 });

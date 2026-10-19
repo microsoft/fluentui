@@ -7,10 +7,8 @@ import { useCalendarBase_unstable } from './useCalendar';
 import { useCalendarContextValues_unstable } from './useCalendarContextValues';
 import { renderCalendar_unstable } from './renderCalendar';
 import { useCalendarDay_unstable } from '../CalendarDay/useCalendarDay';
-import { useCalendarDayContextValues_unstable } from '../CalendarDay/useCalendarDayContextValues';
 import { renderCalendarDay_unstable } from '../CalendarDay/renderCalendarDay';
 import { useCalendarMonth_unstable } from '../CalendarMonth/useCalendarMonth';
-import { useCalendarMonthContextValues_unstable } from '../CalendarMonth/useCalendarMonthContextValues';
 import { renderCalendarMonth_unstable } from '../CalendarMonth/renderCalendarMonth';
 import type { CalendarProps } from './Calendar.types';
 import type { CalendarDay } from '../CalendarDay/CalendarDay';
@@ -20,13 +18,13 @@ import type { CalendarMonthHandle, CalendarMonthProps } from '../CalendarMonth/C
 
 const ClasslessCalendarDay: typeof CalendarDay = React.forwardRef<CalendarDayHandle, CalendarDayProps>((props, ref) => {
   const state = useCalendarDay_unstable(props, ref);
-  return renderCalendarDay_unstable(state, useCalendarDayContextValues_unstable(state));
+  return renderCalendarDay_unstable(state);
 });
 
 const ClasslessCalendarMonth: typeof CalendarMonth = React.forwardRef<CalendarMonthHandle, CalendarMonthProps>(
   (props, ref) => {
     const state = useCalendarMonth_unstable(props, ref);
-    return renderCalendarMonth_unstable(state, useCalendarMonthContextValues_unstable(state));
+    return renderCalendarMonth_unstable(state);
   },
 );
 

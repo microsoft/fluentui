@@ -3,8 +3,15 @@
 import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import {
   addYears,
   compareDatePart,
@@ -15,11 +22,25 @@ import {
   getYearStart,
   isRestrictedDate,
   setMonth,
+  stringifyDataAttribute,
 } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
-import { CALENDAR_GRID_COLUMNS } from '../../utils/calendarKeyboard';
+import {
+  CALENDAR_GRID_COLUMNS,
+  getCalendarGridCell,
+  getCalendarGridCells,
+  isCalendarGridArrow,
+  moveCalendarGridFocus,
+} from '../../utils/calendarKeyboard';
+import {
+  getCalendarEventType,
+  getCalendarNavigationButtonProps,
+  onCalendarEnterKeyDown,
+} from '../../utils/calendarHeader';
+import { useCalendarGridTabStop } from '../../hooks/useCalendarGridTabStop';
+import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
+import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { CalendarMonthGridRow } from '../CalendarMonthGridRow/CalendarMonthGridRow';
 import type { CalendarYearHandle, CalendarYearProps, CalendarYearSelectData } from '../CalendarYear/CalendarYear.types';
 import type {
   CalendarMonthBaseProps,
@@ -27,26 +48,16 @@ import type {
   CalendarMonthCell,
   CalendarMonthHandle,
   CalendarMonthProps,
+  CalendarMonthRow,
   CalendarMonthState,
 } from './CalendarMonth.types';
 
-const noop = () => undefined;
-
-const onButtonKeyDown =
-  (
-    callback?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void,
-  ): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) =>
-  ev => {
-    if (ev.key === Enter) {
-      ev.preventDefault();
-      callback?.(ev);
-    }
-  };
+type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 
 /**
  * Create the base state required to render an unstyled CalendarMonth.
- * Free of Tabster so the headless layer can supply its own roving focus; the styled
- * `useCalendarMonth_unstable` adds Tabster roving focus on top. Base cells own arrow navigation.
+ * The grid owns arrow navigation and its roving tab stop, so the base state is complete without a focus runtime.
+ * The year picker slot is left for the caller to resolve, so each layer renders its own CalendarYear.
  */
 export const useCalendarMonthBase_unstable = (
   props: CalendarMonthBaseProps,
@@ -63,6 +74,7 @@ export const useCalendarMonthBase_unstable = (
   const workWeekDays = useCalendarContext_unstable(ctx => ctx.workWeekDays);
   const contextToday = useCalendarContext_unstable(ctx => ctx.today);
   const value = useCalendarContext_unstable(ctx => ctx.value);
+  const { dir } = useFluent_unstable();
 
   const {
     grid,
@@ -70,7 +82,7 @@ export const useCalendarMonthBase_unstable = (
     navigation,
     nextYearButton,
     onHeaderSelect: onUserHeaderSelect,
-    onNavigateDate = noop,
+    onNavigateDate,
     onSelectDate,
     previousYearButton,
     heading,
@@ -81,102 +93,53 @@ export const useCalendarMonthBase_unstable = (
   const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
   const selectedDate = props.selectedDate !== undefined ? props.selectedDate : value === undefined ? today : value;
+  const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
-  const navigatedMonthRef = React.useRef<HTMLButtonElement>(null);
   const yearPickerRef = React.useRef<CalendarYearHandle>(null);
   const focusOnUpdate = React.useRef(false);
 
   const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
 
-  const focus = React.useCallback((options?: FocusOptions) => {
-    if (yearPickerRef.current) {
-      yearPickerRef.current.focus(options);
-    } else {
-      navigatedMonthRef.current?.focus(options);
+  const navigate = (ev: React.SyntheticEvent<HTMLElement>, date: Date, focusOnNavigatedDay: boolean) =>
+    onNavigateDate?.(ev, { event: ev, type: getCalendarEventType(ev), date, focusOnNavigatedDay });
+
+  const onSelectMonth = (ev: ButtonEvent, newMonth: number): void => {
+    const type = getCalendarEventType(ev);
+    let date = setMonth(navigatedDate, newMonth);
+    if (onSelectDate) {
+      const availableDates = getDateRange(date, 'month', firstDayOfWeek).filter(
+        rangeDate => !isRestrictedDate(rangeDate, restrictedDatesOptions),
+      );
+      if (!availableDates.length) {
+        return;
+      }
+      date = availableDates.find(rangeDate => compareDatePart(rangeDate, date) === 0) ?? availableDates[0];
+      const selectedDateRange = getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays).filter(
+        rangeDate => !isRestrictedDate(rangeDate, restrictedDatesOptions),
+      );
+      onSelectDate(ev, { event: ev, type, date, selectedDateRange });
     }
-  }, []);
+    // If header is clickable the calendars are overlaid, switch back to day picker when month is clicked
+    onUserHeaderSelect?.(ev, { event: ev, type });
+    navigate(ev, date, true);
+  };
 
-  React.useImperativeHandle(ref, () => ({ focus }), [focus]);
-
-  React.useEffect(() => {
-    if (focusOnUpdate.current) {
-      focus();
-      focusOnUpdate.current = false;
+  const onHeaderSelect = useEventCallback((ev: ButtonEvent): void => {
+    if (!yearPickerHidden) {
+      focusOnUpdate.current = true;
+      setIsYearPickerVisible(true);
+    } else {
+      onUserHeaderSelect?.(ev, { event: ev, type: getCalendarEventType(ev) });
     }
   });
 
-  const focusOnNextUpdate = () => {
-    focusOnUpdate.current = true;
-  };
-
-  const onSelectMonth = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>, newMonth: number): void => {
-      const type = ev.type === 'keydown' ? 'keydown' : 'click';
-      let date = setMonth(navigatedDate, newMonth);
-      if (onSelectDate) {
-        const availableDates = getDateRange(date, 'month', firstDayOfWeek).filter(
-          rangeDate => !isRestrictedDate(rangeDate, { minDate, maxDate, restrictedDates }),
-        );
-        if (!availableDates.length) {
-          return;
-        }
-        date = availableDates.find(rangeDate => compareDatePart(rangeDate, date) === 0) ?? availableDates[0];
-        const selectedDateRange = getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays).filter(
-          rangeDate => !isRestrictedDate(rangeDate, { minDate, maxDate, restrictedDates }),
-        );
-        onSelectDate(ev, { event: ev, type, date, selectedDateRange });
-      }
-      // If header is clickable the calendars are overlaid, switch back to day picker when month is clicked
-      onUserHeaderSelect?.(ev, { event: ev, type });
-      onNavigateDate(ev, {
-        event: ev,
-        type,
-        date,
-        focusOnNavigatedDay: true,
-      });
-    },
-  );
-
-  const onSelectPrevYear = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
-      onNavigateDate(ev, {
-        event: ev,
-        type: ev.type === 'keydown' ? 'keydown' : 'click',
-        date: addYears(navigatedDate, -1),
-        focusOnNavigatedDay: false,
-      }),
-  );
-  const onSelectNextYear = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
-      onNavigateDate(ev, {
-        event: ev,
-        type: ev.type === 'keydown' ? 'keydown' : 'click',
-        date: addYears(navigatedDate, 1),
-        focusOnNavigatedDay: false,
-      }),
-  );
-
-  const onHeaderSelect = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>): void => {
-      if (!yearPickerHidden) {
-        focusOnNextUpdate();
-        setIsYearPickerVisible(true);
-      } else {
-        onUserHeaderSelect?.(ev, { event: ev, type: ev.type === 'keydown' ? 'keydown' : 'click' });
-      }
-    },
-  );
-
   const onSelectYear = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarYearSelectData) => {
     const selectedYear = data.year;
-    focusOnNextUpdate();
+    focusOnUpdate.current = true;
     const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
       let newNavigationDate = addYears(navigatedDate, selectedYear - navYear);
-      /*
-       * for min and max dates, adjust the new navigation date - perhaps this should be
-       * checked on the master navigation date handler (i.e. in Calendar)
-       */
+      // for min and max dates, adjust the new navigation date
       if (maxDate && compareDatePart(newNavigationDate, maxDate) > 0) {
         newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
         if (compareDatePart(newNavigationDate, maxDate) > 0) {
@@ -188,68 +151,116 @@ export const useCalendarMonthBase_unstable = (
           newNavigationDate = minDate;
         }
       }
-      onNavigateDate(ev, {
-        ...data,
-        date: newNavigationDate,
-        focusOnNavigatedDay: true,
-      });
+      onNavigateDate?.(ev, { ...data, date: newNavigationDate, focusOnNavigatedDay: true });
     }
     setIsYearPickerVisible(false);
   });
 
-  const onYearPickerHeaderSelect = useEventCallback((_ev: React.SyntheticEvent | Event, _data): void => {
-    focusOnNextUpdate();
+  const onYearPickerHeaderSelect = useEventCallback((): void => {
+    focusOnUpdate.current = true;
     setIsYearPickerVisible(false);
   });
 
   const yearString = formatters.dateTime({ date: navigatedDate, format: 'year' });
-  const headerAriaLabel = formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString });
-
   const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
   const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
-
   const headerIsClickable = !!onUserHeaderSelect || !yearPickerHidden;
 
-  const monthRows: CalendarMonthCell[][] = [];
-  for (let rowNum = 0; rowNum < 12 / CALENDAR_GRID_COLUMNS; rowNum++) {
-    const row = Array.from({ length: CALENDAR_GRID_COLUMNS }, (_, index: number) => {
-      const monthIndex = rowNum * CALENDAR_GRID_COLUMNS + index;
-      const indexedMonth = setMonth(navigatedDate, monthIndex);
+  const months: CalendarMonthCell[] = Array.from({ length: 12 }, (_, monthIndex) => {
+    const indexedMonth = setMonth(navigatedDate, monthIndex);
+    return {
+      index: monthIndex,
+      label: formatters.dateTime({ date: indexedMonth, format: 'shortMonth' }),
+      isNavigated: navigatedDate.getMonth() === monthIndex,
+      isCurrent:
+        highlightCurrentMonth && today.getFullYear() === navigatedDate.getFullYear() && today.getMonth() === monthIndex,
+      isSelected:
+        !!selectedDate &&
+        selectedDate.getMonth() === monthIndex &&
+        selectedDate.getFullYear() === navigatedDate.getFullYear(),
+      isInBounds:
+        (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+        (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true) &&
+        (!onSelectDate ||
+          getDateRange(indexedMonth, 'month', firstDayOfWeek).some(
+            date => !isRestrictedDate(date, restrictedDatesOptions),
+          )),
+      props: {
+        'aria-label': formatters.dateTime({ date: indexedMonth, format: 'month' }),
+      },
+    };
+  });
 
-      return {
-        index: monthIndex,
-        label: formatters.dateTime({ date: indexedMonth, format: 'shortMonth' }),
-        ariaLabel: formatters.dateTime({ date: indexedMonth, format: 'month' }),
-        isNavigated: navigatedDate.getMonth() === monthIndex,
-        isCurrent:
-          !!highlightCurrentMonth &&
-          today.getFullYear() === navigatedDate.getFullYear() &&
-          today.getMonth() === monthIndex,
-        isSelected:
-          !!selectedDate &&
-          selectedDate.getMonth() === monthIndex &&
-          selectedDate.getFullYear() === navigatedDate.getFullYear(),
-        isInBounds:
-          (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-          (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true) &&
-          (!onSelectDate ||
-            getDateRange(indexedMonth, 'month', firstDayOfWeek).some(
-              date => !isRestrictedDate(date, { minDate, maxDate, restrictedDates }),
-            )),
-        onSelect: (ev: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>) =>
-          onSelectMonth(ev, monthIndex),
-      };
-    });
-    monthRows.push(row);
-  }
-
-  const months = monthRows.flat();
   const focusableMonth =
     months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
     months.find(month => month.isInBounds);
+  const [gridRef, onGridFocus] = useCalendarGridTabStop(
+    allFocusable,
+    gridElement => focusableMonth && getCalendarGridCells(gridElement)[focusableMonth.index],
+  );
+
+  const focus = (options?: FocusOptions) => {
+    if (yearPickerRef.current) {
+      yearPickerRef.current.focus(options);
+    } else if (gridRef.current && focusableMonth) {
+      getCalendarGridCells(gridRef.current)[focusableMonth.index]?.focus(options);
+    }
+  };
+
+  React.useImperativeHandle(ref, () => ({ focus }));
+
+  React.useEffect(() => {
+    if (focusOnUpdate.current) {
+      focus();
+      focusOnUpdate.current = false;
+    }
+  });
+  const monthRows: CalendarMonthRow[] = [];
   for (const month of months) {
     month.isNavigated = month === focusableMonth;
+    Object.assign(month.props, {
+      type: 'button',
+      role: 'gridcell',
+      disabled: !allFocusable && !month.isInBounds,
+      'aria-disabled': !month.isInBounds,
+      'aria-selected': month.isSelected,
+      tabIndex: month.isNavigated ? 0 : -1,
+      'data-current': stringifyDataAttribute(month.isCurrent),
+      'data-selected': stringifyDataAttribute(month.isSelected),
+      'data-outside-bounds': stringifyDataAttribute(!month.isInBounds),
+    });
+    const rowIndex = Math.floor(month.index / CALENDAR_GRID_COLUMNS);
+    (monthRows[rowIndex] ??= { key: rowIndex, props: { role: 'row' }, cells: [] }).cells.push(month);
   }
+
+  const getMonth = (ev: React.SyntheticEvent<HTMLElement>, cell: HTMLElement) =>
+    months[getCalendarGridCells(ev.currentTarget).indexOf(cell)];
+
+  const gridSlot = slot.always(grid, {
+    defaultProps: { 'aria-label': yearString, role: 'grid' },
+    elementType: 'div',
+  });
+  gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
+  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
+  gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
+    const cell = getCalendarGridCell(ev);
+    const month = cell && getMonth(ev, cell);
+    if (month?.isInBounds && !ev.isDefaultPrevented()) {
+      onSelectMonth(ev as React.MouseEvent<HTMLButtonElement>, month.index);
+    }
+  });
+  gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
+    const cell = getCalendarGridCell(ev);
+    if (!cell || ev.isDefaultPrevented()) {
+      return;
+    }
+    if (isCalendarGridArrow(ev)) {
+      moveCalendarGridFocus(ev, cell, dir, allFocusable);
+    } else if (ev.key === Enter && getMonth(ev, cell)?.isInBounds) {
+      onSelectMonth(ev as React.KeyboardEvent<HTMLButtonElement>, getMonth(ev, cell).index);
+      ev.preventDefault();
+    }
+  });
 
   let yearPickerProps: CalendarYearProps | undefined;
   if (isYearPickerVisible) {
@@ -261,13 +272,14 @@ export const useCalendarMonthBase_unstable = (
     };
   }
 
+  const onSelectPrevYear = (ev: ButtonEvent) => navigate(ev, addYears(navigatedDate, -1), false);
+  const onSelectNextYear = (ev: ButtonEvent) => navigate(ev, addYears(navigatedDate, 1), false);
+
   return {
     isYearPickerVisible,
     monthRows,
-    navigatedMonthRef,
     navigatedYear: navigatedDate.getFullYear(),
     yearPickerRef,
-    yearString,
     components: {
       root: 'div',
       header: 'div',
@@ -284,14 +296,14 @@ export const useCalendarMonthBase_unstable = (
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
-        'aria-label': headerAriaLabel,
+        'aria-label': formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString }),
         children: (
           <span aria-live="polite" aria-atomic="true">
             {yearString}
           </span>
         ),
         onClick: onHeaderSelect,
-        onKeyDown: onButtonKeyDown(onHeaderSelect),
+        onKeyDown: onCalendarEnterKeyDown(onHeaderSelect),
         tabIndex: headerIsClickable ? 0 : -1,
         type: 'button',
       },
@@ -299,40 +311,30 @@ export const useCalendarMonthBase_unstable = (
     }),
     navigation: slot.always(navigation, { elementType: 'div' }),
     previousYearButton: slot.always(previousYearButton, {
-      defaultProps: {
-        'aria-disabled': !isPrevYearInBounds,
-        onClick: isPrevYearInBounds ? onSelectPrevYear : undefined,
-        onKeyDown: isPrevYearInBounds ? onButtonKeyDown(onSelectPrevYear) : undefined,
-        tabIndex: isPrevYearInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatters.previousYearLabel({
+      defaultProps: getCalendarNavigationButtonProps(
+        isPrevYearInBounds,
+        allFocusable,
+        formatters.previousYearLabel({
           date: addYears(navigatedDate, -1),
           formattedDate: formatters.dateTime({ date: addYears(navigatedDate, -1), format: 'year' }),
         }),
-        type: 'button',
-      },
+        onSelectPrevYear,
+      ),
       elementType: 'button',
     }),
     nextYearButton: slot.always(nextYearButton, {
-      defaultProps: {
-        'aria-disabled': !isNextYearInBounds,
-        onClick: isNextYearInBounds ? onSelectNextYear : undefined,
-        onKeyDown: isNextYearInBounds ? onButtonKeyDown(onSelectNextYear) : undefined,
-        tabIndex: isNextYearInBounds ? undefined : allFocusable ? 0 : -1,
-        title: formatters.nextYearLabel({
+      defaultProps: getCalendarNavigationButtonProps(
+        isNextYearInBounds,
+        allFocusable,
+        formatters.nextYearLabel({
           date: addYears(navigatedDate, 1),
           formattedDate: formatters.dateTime({ date: addYears(navigatedDate, 1), format: 'year' }),
         }),
-        type: 'button',
-      },
+        onSelectNextYear,
+      ),
       elementType: 'button',
     }),
-    grid: slot.always(grid, {
-      defaultProps: {
-        'aria-label': yearString,
-        role: 'grid',
-      },
-      elementType: 'div',
-    }),
+    grid: gridSlot,
     yearPicker: slot.always(yearPicker, {
       defaultProps: yearPickerProps,
       elementType: 'div',
@@ -350,53 +352,41 @@ export const useCalendarMonth_unstable = (
   props: CalendarMonthProps,
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthState => {
-  const baseState = useCalendarMonthBase_unstable(props, ref);
+  const state = useCalendarMonthBase_unstable(props, ref);
+  // The grid owns its arrow keys; the Tabster group only keeps an enclosing Tabster mover from handling them.
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'grid',
-    ignoreDefaultKeydown: {
-      [ArrowDown]: true,
-      [ArrowLeft]: true,
-      [ArrowRight]: true,
-      [ArrowUp]: true,
-    },
+    ignoreDefaultKeydown: { [ArrowDown]: true, [ArrowLeft]: true, [ArrowRight]: true, [ArrowUp]: true },
   });
+  const animateBackwards = useAnimateBackwards(state.navigatedYear);
   const yearPicker = slot.always(props.yearPicker, {
-    defaultProps: baseState.yearPicker,
+    defaultProps: state.yearPicker,
     elementType: CalendarYear,
   });
-  yearPicker.ref = useMergedRefs(baseState.yearPickerRef, yearPicker.ref);
+  yearPicker.ref = useMergedRefs(state.yearPickerRef, yearPicker.ref);
+
+  Object.assign(state.grid, arrowNavigationAttributes);
+  /* eslint-disable react-hooks/immutability */
+  state.previousYearButton.children ??= <ArrowUpRegular />;
+  state.nextYearButton.children ??= <ArrowDownRegular />;
+  state.wrapRow = row => (
+    <DirectionalSlideIn
+      animationDirection="vertical"
+      animateBackwards={animateBackwards}
+      replayKey={state.navigatedYear}
+    >
+      {row}
+    </DirectionalSlideIn>
+  );
+  /* eslint-enable react-hooks/immutability */
 
   return {
-    ...baseState,
+    ...state,
     components: {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ...baseState.components,
+      ...state.components,
       yearPicker: CalendarYear,
     },
-    grid: slot.always(props.grid, {
-      defaultProps: {
-        ...baseState.grid,
-        ...arrowNavigationAttributes,
-        children: baseState.monthRows.map((_, rowNum: number) => (
-          <CalendarMonthGridRow key={rowNum} rowIndex={rowNum} />
-        )),
-      },
-      elementType: 'div',
-    }),
     yearPicker,
-    previousYearButton: slot.always(props.previousYearButton, {
-      defaultProps: {
-        ...baseState.previousYearButton,
-        children: <ArrowUpRegular />,
-      },
-      elementType: 'button',
-    }),
-    nextYearButton: slot.always(props.nextYearButton, {
-      defaultProps: {
-        ...baseState.nextYearButton,
-        children: <ArrowDownRegular />,
-      },
-      elementType: 'button',
-    }),
   };
 };

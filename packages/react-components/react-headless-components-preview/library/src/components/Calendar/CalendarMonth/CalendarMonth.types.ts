@@ -1,26 +1,24 @@
 import type {
   CalendarMonthBaseProps,
   CalendarMonthBaseState,
-  CalendarMonthSlots as CalendarMonthStyledSlots,
+  CalendarMonthSlots as CalendarMonthBaseSlots,
 } from '@fluentui/react-calendar-preview';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarYear } from '../CalendarYear';
 
 export type {
   CalendarMonthCell,
-  CalendarMonthContextValue,
-  CalendarMonthContextValues,
   CalendarMonthHandle,
   CalendarMonthHeaderSelectData,
   CalendarMonthNavigateData,
+  CalendarMonthRow,
   CalendarMonthSelectData,
 } from '@fluentui/react-calendar-preview';
 
 /**
- * Row motion is a styled concern, so the headless month picker renders its rows unanimated. The
- * year picker slot is redeclared here so it resolves to the headless CalendarYear.
+ * The year picker slot is redeclared so it resolves to the headless CalendarYear.
  */
-export type CalendarMonthSlots = Omit<CalendarMonthStyledSlots, 'rowMotion' | 'yearPicker'> & {
+export type CalendarMonthSlots = Omit<CalendarMonthBaseSlots, 'yearPicker'> & {
   /**
    * The year picker, which replaces the whole month picker while it is open. Only rendered while
    * `isYearPickerVisible` is set.

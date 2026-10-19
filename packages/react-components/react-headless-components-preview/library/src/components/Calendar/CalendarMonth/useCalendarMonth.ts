@@ -1,13 +1,10 @@
 'use client';
 
-import * as React from 'react';
+import type * as React from 'react';
 import { useCalendarMonthBase_unstable } from '@fluentui/react-calendar-preview';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { CalendarYear } from '../CalendarYear';
-import { CalendarMonthGridRow } from '../CalendarMonthGridRow';
 import type { CalendarMonthHandle, CalendarMonthProps, CalendarMonthState } from './CalendarMonth.types';
-
-export { useCalendarMonthContextValues_unstable as useCalendarMonthContextValues } from '@fluentui/react-calendar-preview';
 
 /**
  * Create the state required to render CalendarMonth.
@@ -25,17 +22,6 @@ export const useCalendarMonth = (
     elementType: CalendarYear,
   });
   yearPicker.ref = useMergedRefs(state.yearPickerRef, yearPicker.ref);
-
-  // Base cell handlers own two-dimensional navigation; cells manage the roving tab stop.
-  // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = undefined;
-
-  if (state.grid.children === undefined) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.grid.children = state.monthRows.map((_, rowIndex: number) => (
-      <CalendarMonthGridRow key={rowIndex} rowIndex={rowIndex} />
-    ));
-  }
 
   return {
     ...state,

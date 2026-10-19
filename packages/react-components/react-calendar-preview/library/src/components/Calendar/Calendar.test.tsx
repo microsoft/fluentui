@@ -404,6 +404,13 @@ describe('Calendar', () => {
     });
   });
 
+  it('keeps a single roving tab stop in the day grid', () => {
+    const { container } = render(<Calendar defaultValue={new Date(2020, 8, 18)} />);
+    const grid = container.querySelector('table[role="grid"]')!;
+
+    expect(Array.from(grid.querySelectorAll('td[tabindex="0"]')).map(cell => cell.textContent)).toEqual(['18']);
+  });
+
   it.each([
     { key: 'PageUp', shiftKey: false, targetDate: new Date(2020, 7, 18) },
     { key: 'PageDown', shiftKey: false, targetDate: new Date(2020, 9, 18) },

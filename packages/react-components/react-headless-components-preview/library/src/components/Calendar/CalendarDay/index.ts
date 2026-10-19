@@ -1,9 +1,9 @@
 export { CalendarDay } from './CalendarDay';
 export { renderCalendarDay } from './renderCalendarDay';
-export { useCalendarDay, useCalendarDayContextValues } from './useCalendarDay';
+export { useCalendarDay } from './useCalendarDay';
 export type {
-  CalendarDayContextValue,
-  CalendarDayContextValues,
+  CalendarDayCell,
+  CalendarDayCellProps,
   CalendarDayDismissData,
   CalendarDayHandle,
   CalendarDayHeaderSelectData,
@@ -12,4 +12,7 @@ export type {
   CalendarDaySelectData,
   CalendarDaySlots,
   CalendarDayState,
+  CalendarDayWeek,
+  CalendarDayWeekdayRow,
+  DayInfo,
 } from './CalendarDay.types';
