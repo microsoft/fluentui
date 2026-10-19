@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Compose Calendar components with the shared component helper.",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "dmytrokirpa@microsoft.com"
-}
