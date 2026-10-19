@@ -17,9 +17,9 @@ export { useCalendarDayContextValues_unstable as useCalendarDayContextValues } f
 export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarDayHandle>): CalendarDayState => {
   const state = useCalendarDayBase_unstable(props, ref);
 
-  // Base day handlers own date-grid navigation; supported V1 focusgroup owns the roving tab stop.
+  // Calendar cells own both date-grid arrows and the roving tab stop.
   // eslint-disable-next-line react-hooks/immutability
-  state.grid.focusgroup = 'toolbar inline';
+  state.grid.focusgroup = undefined;
 
   const { weeks } = state;
 

@@ -29,10 +29,23 @@ describe('CalendarDay', () => {
     expect(container.querySelector('svg')).toBeNull();
   });
 
-  it('opts into native roving focus with focusgroup', () => {
+  it('provides a single roving tab stop without focusgroup', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('table')!.getAttribute('focusgroup')).toBe('toolbar inline');
+    expect(container.querySelector('table')!.getAttribute('focusgroup')).toBeNull();
+    expect(container.querySelectorAll('td[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+  });
+
+  it('preserves a single remembered tab stop when the navigated date changes', () => {
+    const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
+    const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
+    remembered.focus();
+
+    rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
+
+    expect(remembered).toHaveFocus();
+    expect(container.querySelectorAll('td[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(remembered.tabIndex).toBe(0);
   });
 
   it('renders its rows without motion wrappers', () => {

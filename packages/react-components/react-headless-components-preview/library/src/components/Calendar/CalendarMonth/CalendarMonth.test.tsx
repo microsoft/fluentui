@@ -41,6 +41,33 @@ describe('CalendarMonth', () => {
     expect(grid.querySelectorAll('[role="gridcell"][tabindex="-1"]')).toHaveLength(11);
   });
 
+  it('preserves a single remembered tab stop when the navigated month changes', () => {
+    const { container, getByRole, rerender } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
+    getByRole('gridcell', { name: 'October' }).focus();
+
+    rerender(<CalendarMonth navigatedDate={new Date(2020, 10, 18)} />);
+
+    expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'October' }).tabIndex).toBe(0);
+  });
+
+  it('falls back to an available month when the remembered month becomes disabled', () => {
+    const picker = (minDate?: Date) => (
+      <CalendarProvider value={{ ...calendarContextDefaultValue, minDate }}>
+        <CalendarMonth navigatedDate={new Date(2020, 8, 18)} />
+      </CalendarProvider>
+    );
+    const { container, getByRole, rerender } = testingRender(picker());
+    getByRole('gridcell', { name: 'October' }).focus();
+
+    rerender(picker(new Date(2020, 10, 1)));
+
+    expect(getByRole('gridcell', { name: 'October' })).toBeDisabled();
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'November' }).tabIndex).toBe(0);
+  });
+
   it('swaps in the headless year picker from its header', () => {
     const selectedDate = new Date(2020, 8, 18);
     const { container } = render(<CalendarMonth navigatedDate={selectedDate} />, { value: selectedDate });

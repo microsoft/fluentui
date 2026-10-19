@@ -77,7 +77,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { RefAttributes } from '@fluentui/react-utilities';
 import { renderCalendar_unstable as renderCalendar } from '@fluentui/react-calendar-preview';
-import { renderCalendarDay_unstable as renderCalendarDay } from '@fluentui/react-calendar-preview';
 import { renderCalendarDayGridCell_unstable as renderCalendarDayGridCell } from '@fluentui/react-calendar-preview';
 import { renderCalendarDayGridHeaderRow_unstable as renderCalendarDayGridHeaderRow } from '@fluentui/react-calendar-preview';
 import { renderCalendarDayGridRow_unstable as renderCalendarDayGridRow } from '@fluentui/react-calendar-preview';
@@ -90,12 +89,9 @@ import { renderCalendarYearGridRow_unstable as renderCalendarYearGridRow } from 
 import type { Slot } from '@fluentui/react-utilities';
 import { useCalendarContextValues_unstable as useCalendarContextValues } from '@fluentui/react-calendar-preview';
 import { useCalendarDayContextValues_unstable as useCalendarDayContextValues } from '@fluentui/react-calendar-preview';
-import { useCalendarDayGridCell_unstable as useCalendarDayGridCell } from '@fluentui/react-calendar-preview';
 import { useCalendarDayGridHeaderCellBase_unstable as useCalendarDayGridHeaderCell } from '@fluentui/react-calendar-preview';
 import { useCalendarMonthContextValues_unstable as useCalendarMonthContextValues } from '@fluentui/react-calendar-preview';
-import { useCalendarMonthGridCell_unstable as useCalendarMonthGridCell } from '@fluentui/react-calendar-preview';
 import { useCalendarYearContextValues_unstable as useCalendarYearContextValues } from '@fluentui/react-calendar-preview';
-import { useCalendarYearGridCell_unstable as useCalendarYearGridCell } from '@fluentui/react-calendar-preview';
 
 // @public
 export const Calendar: ForwardRefComponent<CalendarProps>;
@@ -283,7 +279,8 @@ export { CalendarYearState }
 
 export { renderCalendar }
 
-export { renderCalendarDay }
+// @public
+export const renderCalendarDay: (state: CalendarDayState, contextValues: CalendarDayContextValues) => JSXElement;
 
 export { renderCalendarDayGridCell }
 
@@ -316,7 +313,8 @@ export const useCalendarDay: (props: CalendarDayProps, ref: React_2.Ref<Calendar
 
 export { useCalendarDayContextValues }
 
-export { useCalendarDayGridCell }
+// @public
+export const useCalendarDayGridCell: (props: CalendarDayGridCellProps, ref: React_2.Ref<HTMLTableCellElement>) => CalendarDayGridCellState;
 
 export { useCalendarDayGridHeaderCell }
 
@@ -331,7 +329,8 @@ export const useCalendarMonth: (props: CalendarMonthProps, ref: React_2.Ref<Cale
 
 export { useCalendarMonthContextValues }
 
-export { useCalendarMonthGridCell }
+// @public
+export const useCalendarMonthGridCell: (props: CalendarMonthGridCellProps, ref?: React_2.Ref<HTMLButtonElement>) => CalendarMonthGridCellState;
 
 // @public
 export const useCalendarMonthGridRow: (props: CalendarMonthGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarMonthGridRowState;
@@ -341,7 +340,8 @@ export const useCalendarYear: (props: CalendarYearProps, ref: React_2.Ref<Calend
 
 export { useCalendarYearContextValues }
 
-export { useCalendarYearGridCell }
+// @public
+export const useCalendarYearGridCell: (props: CalendarYearGridCellProps, ref: React_2.Ref<HTMLButtonElement>) => CalendarYearGridCellState;
 
 // @public
 export const useCalendarYearGridRow: (props: CalendarYearGridRowProps, ref: React_2.Ref<HTMLDivElement>) => CalendarYearGridRowState;

@@ -95,6 +95,21 @@ describe('Calendar', () => {
     cy.get(month('September')).should('be.focused');
   });
 
+  it('passes Alt+Arrow through the day grid without cancelling the browser default', () => {
+    mount(<Calendar today={today} value={today} monthPicker={null} />);
+
+    cy.get(day('September 18, 2020'))
+      .focus()
+      .then($cell => {
+        for (const key of ['ArrowLeft', 'ArrowRight']) {
+          const event = new KeyboardEvent('keydown', { key, altKey: true, bubbles: true, cancelable: true });
+          $cell[0].dispatchEvent(event);
+          expect(event.defaultPrevented).to.equal(false);
+        }
+      });
+    cy.get(day('September 18, 2020')).should('be.focused');
+  });
+
   it('does not wrap the year grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
     cy.get('button[aria-label="2020, change year"]').click();

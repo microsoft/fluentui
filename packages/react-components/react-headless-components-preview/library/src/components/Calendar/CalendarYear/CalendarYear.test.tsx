@@ -39,6 +39,33 @@ describe('CalendarYear', () => {
     expect(grid.querySelectorAll('[role="gridcell"][tabindex="-1"]')).toHaveLength(11);
   });
 
+  it('preserves a single remembered tab stop when the navigated year changes', () => {
+    const { container, getByRole, rerender } = render(<CalendarYear navigatedYear={2020} />);
+    getByRole('gridcell', { name: '2022' }).focus();
+
+    rerender(<CalendarYear navigatedYear={2021} />);
+
+    expect(getByRole('gridcell', { name: '2022' })).toHaveFocus();
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: '2022' }).tabIndex).toBe(0);
+  });
+
+  it('falls back to an available year when the remembered year becomes disabled', () => {
+    const picker = (minDate?: Date) => (
+      <CalendarProvider value={{ ...calendarContextDefaultValue, minDate }}>
+        <CalendarYear navigatedYear={2020} />
+      </CalendarProvider>
+    );
+    const { container, getByRole, rerender } = testingRender(picker());
+    getByRole('gridcell', { name: '2022' }).focus();
+
+    rerender(picker(new Date(2023, 0, 1)));
+
+    expect(getByRole('gridcell', { name: '2022' })).toBeDisabled();
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: '2023' }).tabIndex).toBe(0);
+  });
+
   it('renders a range of twelve years', () => {
     const { container } = render(<CalendarYear />, { value: new Date(2020, 0, 1) });
 

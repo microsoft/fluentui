@@ -20,14 +20,12 @@ Day cells additionally expose `data-range-hovered`, `data-range-pressed` and
 ### Keyboard navigation and browser support
 
 The base Calendar handlers provide date-grid arrows, month/year two-dimensional navigation,
-RTL behavior and restricted-date handling. The grids retain `role="grid"` and use the supported
-V1 `focusgroup="toolbar inline"` behavior for a single roving tab stop and focus memory.
-The component does not depend on the experimental V2 `grid manual` behavior, which is not
-implemented by `@microsoft/focusgroup-polyfill` 1.5.0 or 1.6.0.
+RTL behavior and restricted-date handling. The grids retain `role="grid"` and manage their own
+single roving tab stop and focus memory. Custom year handlers can cancel navigation, and
+Alt+Arrow shortcuts pass through without interference from a focusgroup polyfill.
 
-Applications without native V1 focusgroup support must install a compatible focusgroup polyfill;
-the library does not install one automatically. The Storybook preview and playground initialize
-`polyfillBodyAndObserve` from `@microsoft/focusgroup-polyfill/shadowless`.
+Calendar does not require native focusgroup support or a focusgroup polyfill. Custom content
+that introduces its own nested focusgroup still needs native support or a compatible polyfill.
 Consumers must provide visible focus styles on the day `td[role="gridcell"]` as well as the
 month/year buttons, and visually hide the announcement region without removing it from the
 accessibility tree.
