@@ -55,8 +55,8 @@ export const useCalendarYearGridCell_unstable = (
       }
       handleCalendarGridKeyDown(event, dir, allFocusable);
       if (event.key === Enter && onSelect) {
-        event.preventDefault();
         onSelect(event);
+        event.preventDefault();
       }
     },
     nativeProps.onKeyDownCapture,

@@ -240,7 +240,7 @@ export type CalendarDayGridRowState = ComponentState<CalendarDayGridRowSlots> & 
 
 // @public
 export type CalendarDayHandle = {
-    focus(): void;
+    focus(options?: FocusOptions): void;
 };
 
 // @public
@@ -417,7 +417,7 @@ export type CalendarMonthGridRowState = ComponentState<CalendarMonthGridRowSlots
 
 // @public
 export type CalendarMonthHandle = {
-    focus(): void;
+    focus(options?: FocusOptions): void;
 };
 
 // @public
@@ -642,7 +642,7 @@ export type CalendarYearGridRowState = ComponentState<CalendarYearGridRowSlots> 
 
 // @public
 export type CalendarYearHandle = {
-    focus(): void;
+    focus(options?: FocusOptions): void;
 };
 
 // @public

@@ -242,6 +242,16 @@ import {
   useLinkContext,
 } from '@fluentui/react-headless-components-preview/link';
 import {
+  List,
+  ListItem,
+  renderList,
+  renderListItem,
+  useList,
+  useListContext,
+  useListContextValues,
+  useListItem,
+} from '@fluentui/react-headless-components-preview/list';
+import {
   Menu,
   MenuDivider,
   MenuGroup,
@@ -838,6 +848,14 @@ console.log(
   renderLink,
   useLink,
   useLinkContext,
+  List,
+  ListItem,
+  renderList,
+  renderListItem,
+  useList,
+  useListContext,
+  useListContextValues,
+  useListItem,
   Menu,
   MenuDivider,
   MenuGroup,
