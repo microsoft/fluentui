@@ -11,10 +11,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.9",
+    "@fluentui/react-components": "^9.74.10",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-shared-contexts": "^9.26.4",
-    "@fluentui/react-utilities": "^9.26.7",
+    "@fluentui/react-utilities": "^9.27.0",
     "@swc/helpers": "^0.5.1",
     "lz-string": "^1.5.0",
     "postcss": "8.5.18",
