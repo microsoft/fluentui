@@ -24,8 +24,6 @@ const useStyles = makeStyles({
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
-  'use no memo';
-
   const styles = useStyles();
   // eslint-disable-next-line react-hooks/immutability
   state.root.className = mergeClasses(datePickerClassNames.root, styles.root, state.root.className);
