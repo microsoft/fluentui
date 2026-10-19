@@ -14,6 +14,7 @@ layouts. The divider does not increase the overall width, and the "Go to today" 
 the compat height and spacing. These defaults are applied by Calendar itself, including when
 hosted in DatePicker; consumer slot styles still take precedence.
 
-Keyboard activation invokes selection/action callbacks before preventing the browser's default
-Enter or Space behavior. Consumers can therefore distinguish canceled selection from a handled
-native key action, as they can with pointer activation.
+Keyboard date selection invokes date-selection callbacks before preventing the browser's default
+Enter or Space behavior. Consumers can therefore distinguish canceled date selection from a handled
+native key action, as they can with pointer activation. This ordering guarantee does not apply to
+navigation or action callbacks.
