@@ -47,7 +47,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
 
     // set states separately for each instance of the component
     const [activeLegend, setActiveLegend] = React.useState('');
-    const [selectedLegends, setSelectedLegends] = React.useState<LegendMap>({});
+    const [selectedLegends, setSelectedLegends] = React.useState<LegendMap>(() => Object.create(null));
     const focusAttributes = useFocusableGroup();
     const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal', memorizeCurrent: true });
     const classes = useLegendStyles(props);
@@ -75,17 +75,14 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     React.useEffect(() => {
       const initialSelectedLegends = props.selectedLegends ?? props.defaultSelectedLegends;
       const initialSelectedLegend = props.selectedLegend ?? props.defaultSelectedLegend;
-      let selectedLegendsState = {};
+      const selectedLegendsState: LegendMap = Object.create(null);
       if (props.canSelectMultipleLegends) {
-        selectedLegendsState =
-          (initialSelectedLegends ?? [])?.reduce(
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (combineDict: any, key: any) => ({ [key]: true, ...combineDict }),
-            {},
-          ) || {};
+        [...(initialSelectedLegends ?? [])].reverse().forEach(key => {
+          selectedLegendsState[key] = true;
+        });
         setSelectedLegends(selectedLegendsState);
       } else if (initialSelectedLegend !== undefined) {
-        selectedLegendsState = { [initialSelectedLegend]: true };
+        selectedLegendsState[initialSelectedLegend] = true;
         setSelectedLegends(selectedLegendsState);
       }
     }, [
@@ -214,7 +211,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
      * @returns An object with the new selected legend(s) state data.
      */
     function _getNewSelectedLegendsForMultiselect(legend: Legend): { [key: string]: boolean } {
-      let legendsSelected = { ...selectedLegends };
+      let legendsSelected: LegendMap = Object.assign(Object.create(null), selectedLegends);
       if (legendsSelected[legend.title]) {
         // Delete entry for the deselected legend to make
         // the number of keys equal to the number of selected legends
@@ -223,7 +220,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
         legendsSelected[legend.title] = true;
         // Clear set if all legends are selected
         if (Object.keys(legendsSelected).length === props.legends.length) {
-          legendsSelected = {};
+          legendsSelected = Object.create(null);
         }
       }
       return legendsSelected;
@@ -235,7 +232,11 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
      * @returns An object with the new selected legend state data.
      */
     function _getNewSelectedLegendsForSingleSelect(legend: Legend): { [key: string]: boolean } {
-      return selectedLegends[legend.title] ? {} : { [legend.title]: true };
+      const legendsSelected: LegendMap = Object.create(null);
+      if (!selectedLegends[legend.title]) {
+        legendsSelected[legend.title] = true;
+      }
+      return legendsSelected;
     }
 
     function _onClick(legend: Legend, event: React.MouseEvent<HTMLButtonElement>): void {
