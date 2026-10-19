@@ -4484,6 +4484,7 @@ __metadata:
     "@fluentui/react-progress": "npm:^9.5.7"
     "@fluentui/react-provider": "npm:^9.22.22"
     "@fluentui/react-radio": "npm:^9.6.7"
+    "@fluentui/react-range-slider-preview": "npm:^0.1.0"
     "@fluentui/react-rating": "npm:^9.4.7"
     "@fluentui/react-search": "npm:^9.4.8"
     "@fluentui/react-select": "npm:^9.5.7"
@@ -5465,7 +5466,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-range-slider-preview@npm:*, @fluentui/react-range-slider-preview@workspace:packages/react-components/react-range-slider-preview/library":
+"@fluentui/react-range-slider-preview@npm:*, @fluentui/react-range-slider-preview@npm:^0.1.0, @fluentui/react-range-slider-preview@workspace:packages/react-components/react-range-slider-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-range-slider-preview@workspace:packages/react-components/react-range-slider-preview/library"
   dependencies:
