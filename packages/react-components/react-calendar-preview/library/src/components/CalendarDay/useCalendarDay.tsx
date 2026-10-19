@@ -70,12 +70,15 @@ const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: fa
 const RANGE_HOVERED_ATTRIBUTE = 'data-range-hovered';
 const RANGE_PRESSED_ATTRIBUTE = 'data-range-pressed';
 
-const applyCorners = (element: HTMLElement, corners: DayCorners): void => {
-  element.toggleAttribute('data-corner-top-left', corners.topLeft);
-  element.toggleAttribute('data-corner-top-right', corners.topRight);
-  element.toggleAttribute('data-corner-bottom-left', corners.bottomLeft);
-  element.toggleAttribute('data-corner-bottom-right', corners.bottomRight);
-};
+const CORNER_ATTRIBUTES = [
+  ['topLeft', 'data-corner-top-left'],
+  ['topRight', 'data-corner-top-right'],
+  ['bottomLeft', 'data-corner-bottom-left'],
+  ['bottomRight', 'data-corner-bottom-right'],
+] as const;
+
+const applyCorners = (element: HTMLElement, corners: DayCorners): void =>
+  CORNER_ATTRIBUTES.forEach(([corner, attribute]) => element.toggleAttribute(attribute, corners[corner]));
 
 const assignRef = <T,>(ref: React.Ref<T> | undefined, value: T | null): void => {
   if (typeof ref === 'function') {
@@ -125,19 +128,22 @@ export const useCalendarDayBase_unstable = (
   props: CalendarDayBaseProps,
   ref: React.Ref<CalendarDayHandle>,
 ): CalendarDayBaseState => {
-  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
-  const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
-  const firstWeekOfYear = useCalendarContext_unstable(ctx => ctx.firstWeekOfYear);
-  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
-  const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
-  const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
-  const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
-  const setValue = useCalendarContext_unstable(ctx => ctx.setValue);
-  const showWeekNumbers = useCalendarContext_unstable(ctx => ctx.showWeekNumbers);
-  const contextToday = useCalendarContext_unstable(ctx => ctx.today);
-  const value = useCalendarContext_unstable(ctx => ctx.value);
-  const workWeekDays = useCalendarContext_unstable(ctx => ctx.workWeekDays);
+  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
+  const {
+    allFocusable,
+    dateRangeType,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    formatters,
+    maxDate,
+    minDate,
+    restrictedDates,
+    setValue,
+    showWeekNumbers,
+    today: contextToday,
+    value,
+    workWeekDays,
+  } = useCalendarContext_unstable(ctx => ctx);
   const { dir } = useFluent_unstable();
 
   const {
@@ -302,10 +308,9 @@ export const useCalendarDayBase_unstable = (
           'data-outside-month': stringifyDataAttribute(!day.isInMonth),
           'data-selected': stringifyDataAttribute(day.isSelected),
           'data-today': stringifyDataAttribute(day.isToday),
-          'data-corner-top-left': stringifyDataAttribute(!!corners?.topLeft),
-          'data-corner-top-right': stringifyDataAttribute(!!corners?.topRight),
-          'data-corner-bottom-left': stringifyDataAttribute(!!corners?.bottomLeft),
-          'data-corner-bottom-right': stringifyDataAttribute(!!corners?.bottomRight),
+          ...Object.fromEntries(
+            CORNER_ATTRIBUTES.map(([corner, attribute]) => [attribute, stringifyDataAttribute(!!corners?.[corner])]),
+          ),
         },
         button: {
           'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,

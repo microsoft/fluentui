@@ -20,7 +20,7 @@ Calendar is intended for choosing a date in application UI. It does not provide 
 - [Fluent UI v9 Calendar compatibility component](../../../react-calendar-compat/library/src/components/Calendar/Calendar.types.ts)
 - [WAI-ARIA Authoring Practices date picker dialog example](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/)
 
-The v8 and compatibility components are the behavioral predecessors of this package. Calendar Preview reimplements the control with v9 slots, contexts, Griffel styles, and Tabster navigation. The WAI-ARIA example informs the day-grid semantics, but Calendar itself is not a dialog and does not trap focus.
+The v8 and compatibility components are the behavioral predecessors of this package. Calendar Preview reimplements the control with v9 slots, contexts, Griffel styles, and grid-owned keyboard navigation. The WAI-ARIA example informs the day-grid semantics, but Calendar itself is not a dialog and does not trap focus.
 
 ## Sample Code
 
@@ -125,7 +125,8 @@ The reported range is clipped to `minDate` and `maxDate` and excludes `restricte
 - `dayPicker.weeksToShow` fixes the number of visible week rows; otherwise the picker renders the number required by the navigated month. A five-week grid advances its start by one week when the navigated date would otherwise fall in a sixth row.
 - `dayPicker.lightenDaysOutsideNavigatedMonth` visually deemphasizes dates outside the navigated month.
 - `dayPicker.getMarkedDays` marks dates without selecting or disabling them.
-- `dayPicker.getDayCellProps(date)` customizes each visible day cell's native props, ref, and `button`, `dayLabel`, and `marker` slots. Click and keyboard handlers run before the built-in action; `preventDefault()` cancels that action. Transition rows do not invoke the customization callback.
+- `dayPicker.getDayCellProps(date)` customizes each visible day cell's native props and ref. Click and keyboard handlers run before the built-in action; `preventDefault()` cancels that action. Transition rows do not invoke the customization callback.
+- `dayPicker.renderDay(day, defaultContent)` customizes the content of each visible day's button, such as a badge or a custom label, while retaining the cell's selection, navigation, and disabled behavior.
 - `monthPicker.yearPicker.renderYear(year)` customizes year content while retaining the year cell's selection, navigation, and disabled behavior.
 - `highlightCurrentMonth` and `highlightSelectedMonth` add current and selected treatments to month cells.
 - `goToTodayButton={null}` removes the default Go to today action.
@@ -244,36 +245,19 @@ Honor a day picker's `focusOnNavigatedDay` request through its focus handle afte
 
 ### Internal composition
 
-Calendar owns selected-date, displayed-date, and picker-view state. The day and month pickers share the displayed date. It publishes shared date, range, formatting, and boundary configuration through `CalendarContext`. `CalendarDay`, `CalendarMonth`, and `CalendarYear` publish narrower contexts to their row and cell components so navigation and styling do not require cloning props through the tree.
+Calendar owns selected-date, displayed-date, and picker-view state. The day and month pickers share the displayed date. It publishes shared date, range, formatting, and boundary configuration through `CalendarContext`.
 
-The styled components use Tabster arrow-navigation groups. Base state hooks are exported for a headless layer and intentionally leave picker resolution or roving-focus behavior to the caller.
+`CalendarDay`, `CalendarMonth`, and `CalendarYear` render their grid rows and cells themselves. Repeated elements are props objects in picker state (`weeks`, `weekdayRow`, `monthRows`, `yearRows`) rather than slots or components: the styled hooks add their class names to those props, and the renderers spread them. Row motion is a styled concern supplied through the state's `wrapWeek`, `wrapWeekdayCell`, and `wrapRow` functions; without them the hidden transition rows are not rendered.
 
-Month and year cells own two-dimensional arrow navigation in both layers. Horizontal arrows stay in the current
-four-cell row, respect RTL, and do not wrap; vertical arrows stay in the same column. Unavailable cells are skipped
-unless `allFocusable` is enabled, which permits focus but not selection. Consumer cell handlers can cancel the
-built-in action with `preventDefault()`. Modified arrows and editable descendants are left untouched.
-Handled arrows, including boundary keys, are prevented so Tabster or a native focusgroup does not move focus again.
+Each grid handles keyboard, click, range-hover, and focus events for all of its cells through handlers on the grid element, and keeps a single roving tab stop: the navigated cell is rendered with `tabIndex={0}`, every other focusable cell with `tabIndex={-1}`, and the last focused cell takes over the tab stop until it is removed or becomes unavailable. Base hooks therefore need no focus runtime. The styled components add Tabster arrow-navigation groups that ignore the keys the grids own, so an enclosing Tabster mover does not move focus out of a grid.
 
-Owned day/month/year arrows dispatch the composed cell keyboard handler during capture, before a native grid
-owner's bubbling listener. Consumer `onKeyDownCapture` runs first; consumer `onKeyDown` runs exactly once with the
-cell as `currentTarget`, and `preventDefault()` cancels movement without an intermediate focus hop. Day slot
-handlers, including handlers on custom descendants, and custom year-renderer handlers run before navigation
-with the correct `currentTarget`. Only handlers on the target's ancestor path run.
-`preventDefault()` cancels
-navigation without suppressing later consumer callbacks; `stopPropagation()` suppresses later callbacks,
-but a cell bubbling handler can stop propagation without cancelling Calendar navigation.
-Arrows from independently nested grids or descendant `[focusgroup]` owners, including `focusgroup="none"`,
-remain in bubbling without Calendar navigation. A focusgroup on the Calendar grid itself or outside that grid
-does not change Calendar's arrow ownership.
-This ordering relies on React 17+ capture delegation. There is no special React 16 bridge for native grid owners.
-Other keys, including Enter and PageUp/PageDown, retain their normal bubbling dispatch.
+Month and year grids own two-dimensional arrow navigation. Horizontal arrows stay in the current four-cell row, respect RTL, and do not wrap; vertical arrows stay in the same column. Unavailable cells are skipped unless `allFocusable` is enabled, which permits focus but not selection. Handled arrows, including boundary keys, are prevented so a native focusgroup does not move focus again.
 
-Month/year navigation continues past cells that cannot receive focus, including hidden cells, while allowing
-programmatic navigation to cells with `tabIndex="-1"`.
+Grid keyboard handling runs when the event bubbles to the grid, after consumer handlers on the cell, custom cell content, and the grid slot. `preventDefault()` in any of those handlers cancels the built-in action, and `stopPropagation()` in a cell or content handler keeps the event from reaching the grid. Modified arrows, editable descendants, arrows from independently nested grids, and arrows from descendant `[focusgroup]` owners, including `focusgroup="none"`, are left untouched. A focusgroup on the Calendar grid itself or outside that grid does not change Calendar's arrow ownership.
 
-Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of
-`contenteditable="false"` remain navigable even inside an editable ancestor. `inherit` and invalid or
-case-insensitive values are treated according to the nearest explicit editable boundary.
+Month/year navigation continues past cells that cannot receive focus, including hidden cells, while allowing programmatic navigation to cells with `tabIndex="-1"`.
+
+Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of `contenteditable="false"` remain navigable even inside an editable ancestor. `inherit` and invalid or case-insensitive values are treated according to the nearest explicit editable boundary.
 
 The day and month base hooks reserve `data-fui-calendar-picker="day"` and `data-fui-calendar-picker="month"` on their roots.
 Calendar uses these behavioral markers, not styled class names, to restore focus when a focused picker is hidden.
@@ -333,7 +317,7 @@ Calendar Preview preserves the main date-selection concepts but is not a drop-in
 - Configure child-only behavior through the `dayPicker` and `monthPicker` slots.
 - Replace `isDayPickerVisible={false}` with `dayPicker={null}` and `isMonthPickerVisible={false}` with `monthPicker={null}`. Replace `showMonthPickerAsOverlay` with `layout="overlay"`; a controlled `view="month"` alone is not month-only selection mode.
 - Replace `showSixWeeksByDefault` with `dayPicker={{ weeksToShow: 6 }}`, `showCloseButton` with `dayPicker={{ closeButton: {} }}`, and `showGoToToday={false}` with `goToTodayButton={null}`.
-- Replace `customDayCellRef` with `dayPicker.getDayCellProps`, returning a cell `ref` or declarative props. Replace `onRenderYear` with `monthPicker.yearPicker.renderYear`; customize year headings through the `heading` slot.
+- Replace `customDayCellRef` with `dayPicker.getDayCellProps`, returning a cell `ref` or declarative props, and use `dayPicker.renderDay` for custom day content. Replace `onRenderYear` with `monthPicker.yearPicker.renderYear`; customize year headings through the `heading` slot.
 - For independent pickers, move shared props into a `CalendarProvider` value based on `calendarContextDefaultValue`.
 - Replace `componentRef`/`ICalendar` usage with normal React refs and application-owned focus or popup behavior. Calendar's root ref is an `HTMLDivElement`; child picker handles expose their own focus methods.
 - Re-test custom keyboard handling. Preventing default in a consumer `onKeyDown` intentionally suppresses Calendar's root key behavior.

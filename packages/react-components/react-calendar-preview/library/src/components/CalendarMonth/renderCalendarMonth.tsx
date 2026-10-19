@@ -24,22 +24,27 @@ export const renderCalendarMonth_unstable = (state: CalendarMonthBaseState): JSX
               <state.nextYearButton />
             </state.navigation>
           </state.header>
-          <state.grid>
-            {state.monthRows.map(row => {
-              const element = (
-                <div {...row.props}>
-                  {row.cells.map(cell => (
-                    <button key={cell.index} {...cell.props}>
-                      {cell.label}
-                    </button>
-                  ))}
-                </div>
-              );
-              return (
-                <React.Fragment key={row.key}>{state.wrapRow ? state.wrapRow(element, row) : element}</React.Fragment>
-              );
-            })}
-          </state.grid>
+          {/* Consumer children replace the default rows. */}
+          {state.grid.children !== undefined ? (
+            <state.grid />
+          ) : (
+            <state.grid>
+              {state.monthRows.map(row => {
+                const element = (
+                  <div {...row.props}>
+                    {row.cells.map(cell => (
+                      <button key={cell.index} {...cell.props}>
+                        {cell.label}
+                      </button>
+                    ))}
+                  </div>
+                );
+                return (
+                  <React.Fragment key={row.key}>{state.wrapRow ? state.wrapRow(element, row) : element}</React.Fragment>
+                );
+              })}
+            </state.grid>
+          )}
         </>
       )}
     </state.root>

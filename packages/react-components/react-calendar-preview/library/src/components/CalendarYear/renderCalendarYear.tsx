@@ -20,20 +20,27 @@ export const renderCalendarYear_unstable = (state: CalendarYearBaseState): JSXEl
           <state.nextRangeButton />
         </state.navigation>
       </state.header>
-      <state.grid>
-        {state.yearRows.map(row => {
-          const element = (
-            <div {...row.props}>
-              {row.cells.map(cell => (
-                <button key={cell.year} {...cell.props}>
-                  {cell.content}
-                </button>
-              ))}
-            </div>
-          );
-          return <React.Fragment key={row.key}>{state.wrapRow ? state.wrapRow(element, row) : element}</React.Fragment>;
-        })}
-      </state.grid>
+      {/* Consumer children replace the default rows. */}
+      {state.grid.children !== undefined ? (
+        <state.grid />
+      ) : (
+        <state.grid>
+          {state.yearRows.map(row => {
+            const element = (
+              <div {...row.props}>
+                {row.cells.map(cell => (
+                  <button key={cell.year} {...cell.props}>
+                    {cell.content}
+                  </button>
+                ))}
+              </div>
+            );
+            return (
+              <React.Fragment key={row.key}>{state.wrapRow ? state.wrapRow(element, row) : element}</React.Fragment>
+            );
+          })}
+        </state.grid>
+      )}
     </state.root>
   );
 };

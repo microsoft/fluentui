@@ -23,6 +23,25 @@ describe('CalendarDay', () => {
     expect(grid.id).toBe('custom-grid');
   });
 
+  it('customizes day cells and their content without replacing the grid behavior', () => {
+    const cellRef = React.createRef<HTMLTableCellElement>();
+    const { getByRole } = render(
+      <CalendarDay
+        navigatedDate={new Date(2020, 8, 18)}
+        getDayCellProps={date => (date.getDate() === 15 ? { ref: cellRef, title: 'Appointment' } : {})}
+        renderDay={(day, defaultContent) =>
+          day.originalDate?.getDate() === 15 ? <strong>{defaultContent}</strong> : defaultContent
+        }
+      />,
+    );
+    const button = getByRole('button', { name: 'September 15, 2020' });
+
+    expect(cellRef.current).toBe(button.closest('td'));
+    expect(cellRef.current).toHaveAttribute('title', 'Appointment');
+    expect(cellRef.current).toHaveAttribute('role', 'gridcell');
+    expect(button.querySelector('strong')).toHaveTextContent('15');
+  });
+
   it('renders no navigation icons, since icons are a styled concern', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 

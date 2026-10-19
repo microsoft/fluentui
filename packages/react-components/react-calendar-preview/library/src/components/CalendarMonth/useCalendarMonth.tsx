@@ -1,17 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import {
-  getIntrinsicElementProps,
-  mergeCallbacks,
-  slot,
-  useEventCallback,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import {
   addYears,
   compareDatePart,
@@ -22,22 +15,14 @@ import {
   getYearStart,
   isRestrictedDate,
   setMonth,
-  stringifyDataAttribute,
 } from '../../utils';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
-import {
-  CALENDAR_GRID_COLUMNS,
-  getCalendarGridCell,
-  getCalendarGridCells,
-  isCalendarGridArrow,
-  moveCalendarGridFocus,
-} from '../../utils/calendarKeyboard';
 import {
   getCalendarEventType,
   getCalendarNavigationButtonProps,
   onCalendarEnterKeyDown,
 } from '../../utils/calendarHeader';
-import { useCalendarGridTabStop } from '../../hooks/useCalendarGridTabStop';
+import { getCalendarPickerRows, useCalendarPickerGrid } from '../../hooks/useCalendarPickerGrid';
 import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
 import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
@@ -63,18 +48,20 @@ export const useCalendarMonthBase_unstable = (
   props: CalendarMonthBaseProps,
   ref: React.Ref<CalendarMonthHandle>,
 ): CalendarMonthBaseState => {
-  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const dateRangeType = useCalendarContext_unstable(ctx => ctx.dateRangeType);
-  const firstDayOfWeek = useCalendarContext_unstable(ctx => ctx.firstDayOfWeek);
-  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
-  const highlightCurrentMonth = useCalendarContext_unstable(ctx => ctx.highlightCurrent);
-  const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
-  const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
-  const restrictedDates = useCalendarContext_unstable(ctx => ctx.restrictedDates);
-  const workWeekDays = useCalendarContext_unstable(ctx => ctx.workWeekDays);
-  const contextToday = useCalendarContext_unstable(ctx => ctx.today);
-  const value = useCalendarContext_unstable(ctx => ctx.value);
-  const { dir } = useFluent_unstable();
+  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
+  const {
+    allFocusable,
+    dateRangeType,
+    firstDayOfWeek,
+    formatters,
+    highlightCurrent: highlightCurrentMonth,
+    maxDate,
+    minDate,
+    restrictedDates,
+    workWeekDays,
+    today: contextToday,
+    value,
+  } = useCalendarContext_unstable(ctx => ctx);
 
   const {
     grid,
@@ -194,16 +181,20 @@ export const useCalendarMonthBase_unstable = (
   const focusableMonth =
     months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
     months.find(month => month.isInBounds);
-  const [gridRef, onGridFocus] = useCalendarGridTabStop(
+  const [gridSlot, getCell] = useCalendarPickerGrid(
+    grid,
+    yearString,
     allFocusable,
-    gridElement => focusableMonth && getCalendarGridCells(gridElement)[focusableMonth.index],
+    focusableMonth?.index,
+    index => !!months[index]?.isInBounds,
+    onSelectMonth,
   );
 
   const focus = (options?: FocusOptions) => {
     if (yearPickerRef.current) {
       yearPickerRef.current.focus(options);
-    } else if (gridRef.current && focusableMonth) {
-      getCalendarGridCells(gridRef.current)[focusableMonth.index]?.focus(options);
+    } else if (focusableMonth) {
+      getCell(focusableMonth.index)?.focus(options);
     }
   };
 
@@ -215,52 +206,16 @@ export const useCalendarMonthBase_unstable = (
       focusOnUpdate.current = false;
     }
   });
-  const monthRows: CalendarMonthRow[] = [];
+
   for (const month of months) {
     month.isNavigated = month === focusableMonth;
-    Object.assign(month.props, {
-      type: 'button',
-      role: 'gridcell',
-      disabled: !allFocusable && !month.isInBounds,
-      'aria-disabled': !month.isInBounds,
-      'aria-selected': month.isSelected,
-      tabIndex: month.isNavigated ? 0 : -1,
-      'data-current': stringifyDataAttribute(month.isCurrent),
-      'data-selected': stringifyDataAttribute(month.isSelected),
-      'data-outside-bounds': stringifyDataAttribute(!month.isInBounds),
-    });
-    const rowIndex = Math.floor(month.index / CALENDAR_GRID_COLUMNS);
-    (monthRows[rowIndex] ??= { key: rowIndex, props: { role: 'row' }, cells: [] }).cells.push(month);
   }
-
-  const getMonth = (ev: React.SyntheticEvent<HTMLElement>, cell: HTMLElement) =>
-    months[getCalendarGridCells(ev.currentTarget).indexOf(cell)];
-
-  const gridSlot = slot.always(grid, {
-    defaultProps: { 'aria-label': yearString, role: 'grid' },
-    elementType: 'div',
-  });
-  gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
-  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
-  gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
-    const cell = getCalendarGridCell(ev);
-    const month = cell && getMonth(ev, cell);
-    if (month?.isInBounds && !ev.isDefaultPrevented()) {
-      onSelectMonth(ev as React.MouseEvent<HTMLButtonElement>, month.index);
-    }
-  });
-  gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
-    const cell = getCalendarGridCell(ev);
-    if (!cell || ev.isDefaultPrevented()) {
-      return;
-    }
-    if (isCalendarGridArrow(ev)) {
-      moveCalendarGridFocus(ev, cell, dir, allFocusable);
-    } else if (ev.key === Enter && getMonth(ev, cell)?.isInBounds) {
-      onSelectMonth(ev as React.KeyboardEvent<HTMLButtonElement>, getMonth(ev, cell).index);
-      ev.preventDefault();
-    }
-  });
+  const monthRows: CalendarMonthRow[] = getCalendarPickerRows(months, allFocusable, month => [
+    !month.isInBounds,
+    month.isSelected,
+    month.isCurrent,
+    month.isNavigated,
+  ]);
 
   let yearPickerProps: CalendarYearProps | undefined;
   if (isYearPickerVisible) {

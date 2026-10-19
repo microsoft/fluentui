@@ -25,7 +25,6 @@ import { getCalendarNavigationDate, isCalendarKeyboardEditable } from '../../uti
 import type { DayOfWeek } from '../../utils';
 import type {
   CalendarDayHandle,
-  CalendarDayDismissData,
   CalendarDayNavigateData,
   CalendarDaySelectData,
 } from '../CalendarDay/CalendarDay.types';
@@ -314,34 +313,18 @@ export const useCalendarBase_unstable = (
     focusOnUpdate.current = true;
   };
 
-  const onNavigateDayDate = useEventCallback(
-    (ev: React.SyntheticEvent | Event, data: CalendarDayNavigateData): void => {
-      const { date, focusOnNavigatedDay } = data;
-      navigate(date, ev);
-      if (focusOnNavigatedDay) {
+  const onNavigateDate = useEventCallback(
+    (ev: React.SyntheticEvent | Event, data: CalendarDayNavigateData | CalendarMonthNavigateData): void => {
+      navigate(data.date, ev);
+      if (data.focusOnNavigatedDay) {
         focusOnNextUpdate();
       }
-    },
-  );
-
-  const onNavigateMonthDate = useEventCallback(
-    (ev: React.SyntheticEvent | Event, data: CalendarMonthNavigateData): void => {
-      const { date, focusOnNavigatedDay } = data;
-      if (focusOnNavigatedDay) {
-        focusOnNextUpdate();
-      }
-
-      navigate(date, ev);
     },
   );
 
   const onHeaderSelect = useEventCallback((ev: React.SyntheticEvent | Event, _data): void => {
     toggleDayMonthPickerVisibility(ev);
     focusOnNextUpdate();
-  });
-
-  const onDayDismiss = useEventCallback((ev: React.SyntheticEvent | Event, data: CalendarDayDismissData): void => {
-    onDismiss?.(ev, data);
   });
 
   const onGotoToday = useEventCallback((ev: React.SyntheticEvent): void => {
@@ -427,9 +410,9 @@ export const useCalendarBase_unstable = (
         })}, ${selectedDateString}, ${todayDateString}`,
       },
       navigatedDate,
-      onDismiss: onDismiss ? onDayDismiss : undefined,
+      onDismiss,
       onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-      onNavigateDate: onNavigateDayDate,
+      onNavigateDate,
     },
     elementType: 'div',
   });
@@ -526,7 +509,7 @@ export const useCalendarBase_unstable = (
         selectedDate: isMonthOnly ? selectedDate : navigatedDate,
         onSelectDate: isMonthOnly ? onDateSelected : undefined,
         onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-        onNavigateDate: onNavigateMonthDate,
+        onNavigateDate,
       },
       elementType: 'div',
     }),

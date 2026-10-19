@@ -6,7 +6,6 @@ import {
   type CalendarContextValue,
 } from '@fluentui/react-calendar-preview';
 import { isConformant } from '../../../testing/isConformant';
-import { CalendarMonthGridRow } from '../CalendarMonthGridRow';
 import { CalendarMonth } from './CalendarMonth';
 import type { CalendarYearHandle } from '../CalendarYear';
 
@@ -104,25 +103,12 @@ describe('CalendarMonth', () => {
     await waitFor(() => expect(getByRole('gridcell', { name: '2020' })).toHaveFocus());
   });
 
-  it('preserves null grid and row children while rendering defaults when omitted', () => {
+  it('preserves null grid children while rendering defaults when omitted', () => {
     const navigatedDate = new Date(2020, 8, 18);
     const defaultGrid = render(<CalendarMonth navigatedDate={navigatedDate} />);
     expect(defaultGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(12);
 
     const emptyGrid = render(<CalendarMonth navigatedDate={navigatedDate} grid={{ children: null }} />);
     expect(emptyGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
-
-    const defaultRow = render(
-      <CalendarMonth navigatedDate={navigatedDate} grid={{ children: <CalendarMonthGridRow rowIndex={0} /> }} />,
-    );
-    expect(defaultRow.container.querySelectorAll('[role="gridcell"]')).toHaveLength(4);
-
-    const emptyRow = render(
-      <CalendarMonth
-        navigatedDate={navigatedDate}
-        grid={{ children: <CalendarMonthGridRow rowIndex={0} children={null} /> }}
-      />,
-    );
-    expect(emptyRow.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
   });
 });

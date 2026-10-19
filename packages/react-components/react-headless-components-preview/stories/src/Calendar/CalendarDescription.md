@@ -20,9 +20,10 @@ Day cells additionally expose `data-range-hovered`, `data-range-pressed` and
 ### Keyboard navigation and browser support
 
 The base Calendar handlers provide date-grid arrows, month/year two-dimensional navigation,
-RTL behavior and restricted-date handling. The grids retain `role="grid"` and manage their own
-single roving tab stop and focus memory. Custom year handlers can cancel navigation, and
-Alt+Arrow shortcuts pass through without interference from a focusgroup polyfill.
+RTL behavior and restricted-date handling. Each grid handles keyboard and pointer input for all of
+its cells, retains `role="grid"` and manages its own single roving tab stop and focus memory.
+Grid and cell handlers can cancel navigation with `preventDefault`, and modified arrows such as
+Alt+Arrow pass through.
 
 Calendar does not require native focusgroup support or a focusgroup polyfill. Custom content
 that introduces its own nested focusgroup still needs native support or a compatible polyfill.
@@ -33,10 +34,14 @@ accessibility tree.
 The day picker, month picker and year picker are slots, so each can be replaced or configured
 without re-implementing the calendar's date logic. Set `dayPicker={null}` for month-only selection,
 or `monthPicker={null}` for a day-only calendar. Consumer picker refs are merged with the internal
-focus handles; individual cells and weekday headers also forward their DOM refs.
+focus handles.
+
+Grid rows and cells are rendered by their picker rather than being components of their own. Use
+`dayPicker.getDayCellProps` to add props or a ref to a day's `td`, `dayPicker.renderDay` to customize
+the content of a day's button, and `yearPicker.renderYear` for year content. Cell handlers run before
+the grid's selection and navigation, and `preventDefault` cancels the built-in action.
 
 For a custom Calendar component, compose `useCalendar`, `useCalendarContextValues` and
 `renderCalendar` from the public `@fluentui/react-headless-components-preview/calendar` subpath.
-The subpath also exports the row/cell components, including `CalendarDayGridHeaderCell`, and the
-event, layout, view and context types used by the family. Weekday headers use the base slot types,
-without the styled package's label-motion slot.
+The subpath also exports `CalendarDay`, `CalendarMonth` and `CalendarYear` with their hooks and
+renderers, and the event, layout, view and context types used by the family.

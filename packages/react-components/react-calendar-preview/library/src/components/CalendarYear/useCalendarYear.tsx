@@ -3,21 +3,12 @@
 import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, Space } from '@fluentui/keyboard-keys';
 import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import { createDate } from '../../utils/dateMath';
-import { stringifyDataAttribute } from '../../utils/dataAttributes';
-import {
-  CALENDAR_GRID_COLUMNS,
-  getCalendarGridCell,
-  getCalendarGridCells,
-  isCalendarGridArrow,
-  moveCalendarGridFocus,
-} from '../../utils/calendarKeyboard';
 import { getCalendarEventType, getCalendarNavigationButtonProps } from '../../utils/calendarHeader';
-import { useCalendarGridTabStop } from '../../hooks/useCalendarGridTabStop';
+import { getCalendarPickerRows, useCalendarPickerGrid } from '../../hooks/useCalendarPickerGrid';
 import { useAnimateBackwards } from '../../hooks/useAnimateBackwards';
 import { DirectionalSlideIn } from '../../utils/calendarMotions';
 import type {
@@ -73,14 +64,15 @@ export const useCalendarYearBase_unstable = (
   props: CalendarYearBaseProps,
   ref: React.Ref<CalendarYearHandle>,
 ): CalendarYearBaseState => {
-  const allFocusable = useCalendarContext_unstable(ctx => ctx.allFocusable);
-  const contextToday = useCalendarContext_unstable(ctx => ctx.today);
-  const formatters = useCalendarContext_unstable(ctx => ctx.formatters);
-  const maxDate = useCalendarContext_unstable(ctx => ctx.maxDate);
-  const minDate = useCalendarContext_unstable(ctx => ctx.minDate);
-  const value = useCalendarContext_unstable(ctx => ctx.value);
-  const { dir } = useFluent_unstable();
-
+  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
+  const {
+    allFocusable,
+    today: contextToday,
+    formatters,
+    maxDate,
+    minDate,
+    value,
+  } = useCalendarContext_unstable(ctx => ctx);
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
@@ -98,67 +90,28 @@ export const useCalendarYearBase_unstable = (
     Math.max(firstFocusableYear, props.navigatedYear ?? selectedYear ?? currentYear),
   );
 
-  const [gridRef, onGridFocus] = useCalendarGridTabStop(
-    allFocusable,
-    gridElement => getCalendarGridCells(gridElement)[focusYear - fromYear],
-  );
-
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      focus(options?: FocusOptions) {
-        const cells = gridRef.current ? getCalendarGridCells(gridRef.current) : [];
-        [focusYear, selectedYear, currentYear]
-          .map(year => (typeof year === 'number' ? cells[year - fromYear] : undefined))
-          .find(cell => cell && !cell.matches(':disabled'))
-          ?.focus(options);
-      },
-    }),
-    [currentYear, focusYear, fromYear, gridRef, selectedYear],
-  );
-
   const formatYear = (year: number) => formatters.dateTime({ date: createDate(year, 0, 1), format: 'year' });
   const isYearDisabled = (year: number) =>
     (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
 
-  const selectYear = (ev: ButtonEvent, cell: HTMLElement) => {
-    const year = fromYear + getCalendarGridCells(ev.currentTarget).indexOf(cell);
-    if (!isYearDisabled(year)) {
-      onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year });
-    }
-  };
-
-  const yearRows: CalendarYearRow[] = [];
-  for (let row = 0; row < CELL_COUNT / CALENDAR_GRID_COLUMNS; row++) {
-    const cells: CalendarYearCell[] = [];
-    for (let column = 0; column < CALENDAR_GRID_COLUMNS; column++) {
-      const year = fromYear + row * CALENDAR_GRID_COLUMNS + column;
-      const isDisabled = isYearDisabled(year);
-      const isSelected = year === selectedYear;
-      const isCurrent = year === currentYear;
-      const isNavigated = year === focusYear;
-      cells.push({
-        year,
-        content: props.renderYear ? props.renderYear(year) : formatYear(year),
-        isCurrent,
-        isSelected,
-        isNavigated,
-        isDisabled,
-        props: {
-          type: 'button',
-          role: 'gridcell',
-          disabled: isDisabled && !allFocusable,
-          'aria-disabled': isDisabled,
-          'aria-selected': isSelected,
-          tabIndex: isNavigated ? 0 : -1,
-          'data-current': stringifyDataAttribute(isCurrent),
-          'data-selected': stringifyDataAttribute(isSelected),
-          'data-outside-bounds': stringifyDataAttribute(isDisabled),
-        },
-      });
-    }
-    yearRows.push({ key: row, props: { role: 'row' }, cells });
-  }
+  const yearCells: CalendarYearCell[] = Array.from({ length: CELL_COUNT }, (_, index) => {
+    const year = fromYear + index;
+    return {
+      year,
+      content: props.renderYear ? props.renderYear(year) : formatYear(year),
+      isCurrent: year === currentYear,
+      isSelected: year === selectedYear,
+      isNavigated: year === focusYear,
+      isDisabled: isYearDisabled(year),
+      props: {},
+    };
+  });
+  const yearRows: CalendarYearRow[] = getCalendarPickerRows(yearCells, allFocusable, cell => [
+    cell.isDisabled,
+    cell.isSelected,
+    cell.isCurrent,
+    cell.isNavigated,
+  ]);
 
   const prevDisabled = minYear !== undefined && fromYear <= minYear;
   const nextDisabled = maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
@@ -176,30 +129,23 @@ export const useCalendarYearBase_unstable = (
     </>
   );
 
-  const gridSlot = slot.always(grid, {
-    defaultProps: { 'aria-label': rangeLabel, role: 'grid' },
-    elementType: 'div',
-  });
-  gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
-  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
-  gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
-    const cell = getCalendarGridCell(ev);
-    if (cell && !ev.isDefaultPrevented()) {
-      selectYear(ev as React.MouseEvent<HTMLButtonElement>, cell);
-    }
-  });
-  gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
-    const cell = getCalendarGridCell(ev);
-    if (!cell || ev.isDefaultPrevented()) {
-      return;
-    }
-    if (isCalendarGridArrow(ev)) {
-      moveCalendarGridFocus(ev, cell, dir, allFocusable);
-    } else if (ev.key === Enter && !isYearDisabled(fromYear + getCalendarGridCells(ev.currentTarget).indexOf(cell))) {
-      selectYear(ev as React.KeyboardEvent<HTMLButtonElement>, cell);
-      ev.preventDefault();
-    }
-  });
+  const [gridSlot, getCell] = useCalendarPickerGrid(
+    grid,
+    rangeLabel,
+    allFocusable,
+    focusYear - fromYear,
+    index => !isYearDisabled(fromYear + index),
+    (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
+  );
+
+  React.useImperativeHandle(ref, () => ({
+    focus(options?: FocusOptions) {
+      [focusYear, selectedYear, currentYear]
+        .map(year => (typeof year === 'number' ? getCell(year - fromYear) : undefined))
+        .find(cell => cell && !cell.matches(':disabled'))
+        ?.focus(options);
+    },
+  }));
 
   return {
     fromYear,
