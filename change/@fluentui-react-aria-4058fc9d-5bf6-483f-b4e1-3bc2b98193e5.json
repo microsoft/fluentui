@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: remove keyborg and react-tabster dependencies from active descendant tracking and live announcements",
+  "packageName": "@fluentui/react-aria",
+  "email": "noreply@anthropic.com"
+}

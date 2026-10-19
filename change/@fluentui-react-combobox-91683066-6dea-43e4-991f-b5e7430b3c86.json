@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: remove keyborg usage from Listbox and trigger slot hooks; Combobox keeps keyborg keyboard-navigation state in sync in its own hook",
+  "packageName": "@fluentui/react-combobox",
+  "email": "noreply@anthropic.com"
+}

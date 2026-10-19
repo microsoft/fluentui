@@ -5,7 +5,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState, SwitchBaseProps, SwitchBaseState } from './Switch.types';
 
 /**
@@ -21,6 +21,11 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
   const { size = 'medium', ...baseProps } = props;
 
   const baseState = useSwitchBase_unstable(baseProps, ref);
+
+  // Focus-within ref drives the styled focus outline; applied here rather than in the base hook
+  // so the base hook does not depend on react-tabster (keyborg).
+  // eslint-disable-next-line react-hooks/immutability
+  baseState.root.ref = useMergedRefs(baseState.root.ref, useFocusWithin<HTMLDivElement>());
 
   baseState.indicator.children ??= <CircleFilled />;
 
@@ -68,7 +73,7 @@ export const useSwitchBase_unstable = (props: SwitchBaseProps, ref?: React.Ref<H
   const id = useId('switch-', nativeProps.primary.id);
 
   const root = slot.always(props.root, {
-    defaultProps: { ref: useFocusWithin<HTMLDivElement>(), ...nativeProps.root },
+    defaultProps: nativeProps.root,
     elementType: 'div',
   });
   const indicator = slot.always(props.indicator, {
