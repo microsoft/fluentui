@@ -133,7 +133,7 @@ export function createCallGraphAnalyzer(
             require.resolve('@babel/preset-typescript'),
             // Enabling JSX for `.ts` would make `<Foo>bar` parse as an unterminated JSX element,
             // silently turning a resolvable wrapper module into an opaque boundary.
-            { isTSX: ext === '.tsx', allExtensions: true },
+            { isTSX: ext === '.tsx', allExtensions: true, allowDeclareFields: true },
           ],
         ],
       }) as File | null;
