@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mergeClasses, useFluent, useMergedRefs, type ForwardRefComponent } from '@fluentui/react-components';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 import type { PlaygroundSetupMetadata } from '../setup';
 import type {
@@ -7,6 +8,7 @@ import type {
   PlaygroundRuntimeMessage,
   ResolvedPlaygroundRuntimeManifest,
 } from './runtime';
+import { createRuntimeScriptLoader } from './runtime';
 import { createSandboxDocument, type PlaygroundConsoleLevel } from './sandbox';
 import { usePreviewStyles } from './Preview.styles';
 
@@ -72,10 +74,6 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
     [manifest, parentOrigin, token],
   );
 
-  React.useEffect(() => {
-    readyRef.current = false;
-  }, [token]);
-
   const postRun = React.useCallback(() => {
     if (!readyRef.current || !frameRef.current?.contentWindow) {
       return;
@@ -105,7 +103,50 @@ const SandboxFrame: ForwardRefComponent<PreviewProps> = React.forwardRef((props,
     );
   }, [code, cssModules, paused, preserveState, requiredModules, runId, themeId, token]);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    const targetWindow = targetDocument?.defaultView;
+    const frameWindow = frameRef.current?.contentWindow;
+    if (!targetWindow || !frameWindow) {
+      return;
+    }
+
+    const controller = new AbortController();
+    const loadScript = createRuntimeScriptLoader(targetWindow, manifest, controller.signal);
+    const respond = (requestId: number, response: { scriptSource: string } | { error: string }) => {
+      if (!controller.signal.aborted) {
+        frameWindow.postMessage(
+          { source: 'fluentui-playground', token, type: 'script-response', requestId, ...response },
+          '*',
+        );
+      }
+    };
+    const handleScriptRequest = (event: MessageEvent<PlaygroundRuntimeMessage>) => {
+      const message = event.data;
+      if (
+        event.source !== frameWindow ||
+        message?.source !== 'fluentui-playground' ||
+        message.token !== token ||
+        message.type !== 'script-request' ||
+        !Number.isSafeInteger(message.requestId) ||
+        typeof message.url !== 'string'
+      ) {
+        return;
+      }
+
+      loadScript(message.url).then(
+        scriptSource => respond(message.requestId, { scriptSource }),
+        error => respond(message.requestId, { error: error instanceof Error ? error.message : String(error) }),
+      );
+    };
+
+    targetWindow.addEventListener('message', handleScriptRequest);
+    return () => {
+      controller.abort();
+      targetWindow.removeEventListener('message', handleScriptRequest);
+    };
+  }, [manifest, targetDocument, token]);
+
+  useIsomorphicLayoutEffect(() => {
     const targetWindow = targetDocument?.defaultView;
     if (!targetWindow) {
       return;
