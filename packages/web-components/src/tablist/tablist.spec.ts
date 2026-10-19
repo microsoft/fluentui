@@ -32,8 +32,6 @@ test.describe('Tablist', () => {
   });
 
   test.describe('custom state fallback', () => {
-    test.use({ ssr: false });
-
     test.beforeEach(async ({ page, fastPage }) => {
       await page.addInitScript(() => {
         const supports = CSS.supports.bind(CSS);
@@ -47,7 +45,9 @@ test.describe('Tablist', () => {
       await fastPage.goto();
     });
 
-    test('should construct without adding host attributes', async ({ page }) => {
+    test('should construct without adding host attributes', async ({ page, fastPage }) => {
+      await fastPage.setTemplate('');
+
       const errors: Error[] = [];
       page.on('pageerror', error => errors.push(error));
 
@@ -63,17 +63,17 @@ test.describe('Tablist', () => {
       expect(errors).toEqual([]);
     });
 
-    test('should apply default states after construction', async ({ page }) => {
-      await page.evaluate(tagName => {
-        document.body.append(document.createElement(tagName));
-      }, tagName);
+    test('should apply default states after construction', async ({ fastPage }) => {
+      await fastPage.setTemplate();
 
-      await expect(page.locator(tagName)).toHaveAttribute('state--horizontal');
-      await expect(page.locator(tagName)).not.toHaveAttribute('state--vertical');
-      await expect(page.locator(tagName)).not.toHaveAttribute('state--disabled');
+      await expect(fastPage.element).toHaveAttribute('state--horizontal');
+      await expect(fastPage.element).not.toHaveAttribute('state--vertical');
+      await expect(fastPage.element).not.toHaveAttribute('state--disabled');
     });
 
-    test('should retain the latest states when updated before connection', async ({ page }) => {
+    test('should retain the latest states when updated before connection', async ({ page, fastPage }) => {
+      await fastPage.setTemplate('');
+
       await page.evaluate(tagName => {
         const element = document.createElement(tagName) as Tablist;
         element.orientation = 'vertical';
