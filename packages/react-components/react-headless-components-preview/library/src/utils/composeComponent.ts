@@ -78,21 +78,12 @@ export function composeComponent<Props, State, RefType, ContextValues>(
   render: RenderFn<State> | RenderWithContextValuesFn<State, ContextValues>,
   useGetContextValues?: ContextValuesHook<State, ContextValues>,
 ): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>> {
-  let Component: ReturnType<typeof React.forwardRef<RefType, Props>>;
-
-  if (useGetContextValues) {
-    const renderWithContextValues = render as RenderWithContextValuesFn<State, ContextValues>;
-
-    Component = React.forwardRef<RefType, Props>((props, ref) => {
-      const state = useState(props as Props, ref);
-
-      return renderWithContextValues(state, useGetContextValues(state));
-    });
-  } else {
-    const renderState = render as RenderFn<State>;
-
-    Component = React.forwardRef<RefType, Props>((props, ref) => renderState(useState(props as Props, ref)));
-  }
+  const Component = useGetContextValues
+    ? React.forwardRef<RefType, Props>((props, ref) => {
+        const state = useState(props as Props, ref);
+        return (render as RenderWithContextValuesFn<State, ContextValues>)(state, useGetContextValues(state));
+      })
+    : React.forwardRef<RefType, Props>((props, ref) => (render as RenderFn<State>)(useState(props as Props, ref)));
 
   Component.displayName = displayName;
 
