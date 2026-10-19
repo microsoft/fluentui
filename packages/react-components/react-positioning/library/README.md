@@ -1,6 +1,8 @@
 # @fluentui/react-positioning
 
-A React utilities built on top of [Floating UI](https://floating-ui.com/) for positioning elements in the DOM.
+React utilities for positioning elements in the DOM, using a standalone JavaScript engine.
+The fallback preserves the existing Floating UI-based hook's placement and configuration semantics
+without importing the Floating UI engine at runtime.
 
 ## Usage
 
@@ -60,3 +62,29 @@ possible combination. Font rasterization, browser zoom, native high-DPI capture,
 layout differences, iframe/shadow-root targets, and visual-viewport/mobile behavior are not
 covered. The explicit `strategy: 'absolute'` case deliberately records the existing baseline's
 `fixed` result; changing that behavior requires a separate intentional compatibility decision.
+
+## Engine parity and size gates
+
+The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
+best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
+Positioning callbacks and imperative refs do not recreate the manager on callback-only rerenders.
+
+```sh
+yarn nx run react-positioning:bundle-size --skip-nx-cache
+yarn nx run react-positioning:test-bundle-size
+yarn nx run react-positioning:test-raster
+```
+
+The bundle gate runs the repository's monosize/webpack measurement for the existing
+`bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`, and rejects an actual
+minified output larger than **15,000 bytes**. This is an absolute, uncompressed limit; gzip
+is reported separately. Gate tests cover the inclusive limit and invalid or stale measurements.
+
+The raster target extracts the unchanged lower-PR source from
+`788e3b739fe79246a2f8850d1c575cf4018fd744` into a temporary directory, then runs the same
+contracts against that implementation and the replacement in Electron. A paint-only wrapper
+makes otherwise transparent fixtures visible without changing their layout. It compares every
+decoded RGBA pixel, including antialiasing, and writes its report to
+`dist/positioning-raster/comparison.json`. It does not update the pinned geometry expectations.
+This is bounded fixture coverage on the same browser and host display, not a guarantee of all
+option combinations, fonts, browsers, iframe/shadow-root targets, or mobile visual viewports.

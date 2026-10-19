@@ -1,5 +1,5 @@
 import type { Placement, Middleware } from '@floating-ui/dom';
-import { flip as baseFlip } from '@floating-ui/dom';
+import { flip as baseFlip } from '../engine';
 import type { PositioningOptions } from '../types';
 import { getBoundary, resolvePositioningShorthand, toFloatingUIPlacement } from '../utils/index';
 

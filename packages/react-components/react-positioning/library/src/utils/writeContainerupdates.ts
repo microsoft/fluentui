@@ -1,4 +1,4 @@
-import type { Placement, MiddlewareData, Strategy, Coords } from '@floating-ui/dom';
+import type { Placement, MiddlewareData, Coords } from '@floating-ui/dom';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_HIDDEN,
@@ -19,29 +19,18 @@ export function writeContainerUpdates(options: {
    * instead
    */
   lowPPI: boolean;
-  strategy: Strategy;
   coordinates: Coords;
   useTransform?: boolean;
 }): void {
-  const { container, placement, middlewareData, strategy, lowPPI, coordinates, useTransform = true } = options;
+  const { container, placement, middlewareData, lowPPI, coordinates, useTransform = true } = options;
   if (!container) {
     return;
   }
   container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
-  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
-  if (middlewareData.intersectionObserver.intersecting) {
-    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_ESCAPED);
-  if (middlewareData.hide?.escaped) {
-    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_HIDDEN);
-  if (middlewareData.hide?.referenceHidden) {
-    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
-  }
+  container.toggleAttribute(DATA_POSITIONING_INTERSECTING, !!middlewareData.intersectionObserver.intersecting);
+  const { escaped, referenceHidden } = middlewareData.hide || {};
+  container.toggleAttribute(DATA_POSITIONING_ESCAPED, !!escaped);
+  container.toggleAttribute(DATA_POSITIONING_HIDDEN, !!referenceHidden);
 
   // Round so that the coordinates land on device pixels.
   // This prevents blurriness in cases where the browser doesn't apply pixel snapping, such as when other effects like
@@ -50,10 +39,6 @@ export function writeContainerUpdates(options: {
   const devicePixelRatio = container.ownerDocument.defaultView?.devicePixelRatio || 1;
   const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
   const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
-
-  Object.assign(container.style, {
-    position: strategy,
-  });
 
   if (useTransform) {
     Object.assign(container.style, {
