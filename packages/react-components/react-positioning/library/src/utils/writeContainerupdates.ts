@@ -1,11 +1,17 @@
-import type { PositioningPlacement } from '../types';
+import type { MiddlewareData, Coords } from '@floating-ui/dom';
 import {
   DATA_POSITIONING_ESCAPED,
   DATA_POSITIONING_HIDDEN,
   DATA_POSITIONING_INTERSECTING,
   DATA_POSITIONING_PLACEMENT,
 } from '../constants';
-import type { Visibility } from '../engine';
+import type { PositioningPlacement } from '../types';
+
+type Visibility = {
+  referenceHidden: boolean;
+  escaped: boolean;
+  intersecting: boolean;
+};
 
 /**
  * Writes all container element position updates after the position is computed
@@ -13,28 +19,25 @@ import type { Visibility } from '../engine';
 export function writeContainerUpdates(options: {
   container: HTMLElement | null;
   placement: PositioningPlacement;
+  middlewareData: MiddlewareData;
   /**
    * Layer acceleration can disable subpixel rendering which causes slightly
    * blurry text on low PPI displays, so we want to use 2D transforms
    * instead
    */
   lowPPI: boolean;
-  strategy: 'absolute' | 'fixed';
-  /**
-   * Coordinates relative to the containing block of the container
-   */
-  coordinates: { x: number; y: number };
+  coordinates: Coords;
   useTransform?: boolean;
-  /** Name of the attribute for the placement, an empty string skips it */
-  placementAttribute?: string;
 }): void {
-  const { container, placement, strategy, lowPPI, coordinates, useTransform = true, placementAttribute } = options;
+  const { container, placement, middlewareData, lowPPI, coordinates, useTransform = true } = options;
   if (!container) {
     return;
   }
-  if (placementAttribute !== '') {
-    container.setAttribute(placementAttribute ?? DATA_POSITIONING_PLACEMENT, placement);
-  }
+  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
+  container.toggleAttribute(DATA_POSITIONING_INTERSECTING, !!middlewareData.intersectionObserver.intersecting);
+  const { escaped, referenceHidden } = middlewareData.hide || {};
+  container.toggleAttribute(DATA_POSITIONING_ESCAPED, !!escaped);
+  container.toggleAttribute(DATA_POSITIONING_HIDDEN, !!referenceHidden);
 
   // Round so that the coordinates land on device pixels.
   // This prevents blurriness in cases where the browser doesn't apply pixel snapping, such as when other effects like
@@ -43,10 +46,6 @@ export function writeContainerUpdates(options: {
   const devicePixelRatio = container.ownerDocument.defaultView?.devicePixelRatio || 1;
   const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
   const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
-
-  Object.assign(container.style, {
-    position: strategy,
-  });
 
   if (useTransform) {
     Object.assign(container.style, {

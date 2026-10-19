@@ -509,6 +509,7 @@ describe('createPositionManager', () => {
       position: 'below',
       align: 'end',
       disableUpdateOnResize: true,
+      detectPlacement: () => ({ position: 'below', align: 'end' }),
       onPlacement,
     });
     await flushMicrotasks();

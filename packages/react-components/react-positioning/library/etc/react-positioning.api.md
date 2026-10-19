@@ -143,13 +143,25 @@ export interface PositionManager {
 
 // @internal (undocumented)
 export interface PositionManagerOptions extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'disableUpdateOnResize' | 'fallbackPositions' | 'flipBoundary' | 'matchTargetSize' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'useTransform'> {
+    // (undocumented)
     arrow: HTMLElement | null;
+    // (undocumented)
     attributes?: Partial<Record<'placement' | 'hidden' | 'escaped' | 'intersecting', string>>;
+    // (undocumented)
     container: HTMLElement;
-    detectPlacement?: (target: TargetElement, container: HTMLElement) => Placement | null;
+    // (undocumented)
+    detectPlacement?: (target: TargetElement, container: HTMLElement) => HeadlessPlacement | null;
+    // (undocumented)
     isRtl?: boolean;
-    onPlacement?: (placement: Placement) => void;
+    // (undocumented)
+    onPlacement?: (placement: HeadlessPlacement) => void;
+    // (undocumented)
+    placement?: PositioningPlacement;
+    // (undocumented)
+    positioningOptions?: PositioningOptions;
+    // (undocumented)
     strategy: 'absolute' | 'fixed';
+    // (undocumented)
     target: TargetElement;
 }
 

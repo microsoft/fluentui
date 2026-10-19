@@ -1,16 +1,16 @@
 import { act, render } from '@testing-library/react';
 import * as React from 'react';
-import { createPositionManager } from './createPositionManager';
+import { createComputedPositionManager } from './createComputedPositionManager';
 import { usePositioning } from './usePositioning';
 import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent, OnPositioningEndEventDetail, PositioningProps } from './types';
 import { useMergedRefs, type ForwardRefComponent } from '@fluentui/react-utilities';
 
-// Mock createPositionManager to keep layout out of this test.
+// Mock the computed manager to keep layout out of this test.
 // The mock dispatches the positioning end event asynchronously (via microtask),
 // matching the real implementation's debounced update.
-jest.mock('./createPositionManager', () => ({
-  createPositionManager: jest.fn(({ container }: { container: HTMLElement }) => {
+jest.mock('./createComputedPositionManager', () => ({
+  createComputedPositionManager: jest.fn(({ container }: { container: HTMLElement }) => {
     const dispatchEnd = () => {
       Promise.resolve().then(() => {
         container.dispatchEvent(
@@ -58,7 +58,7 @@ describe('usePositioning', () => {
       await new Promise(process.nextTick);
     });
 
-    expect(createPositionManager).toHaveBeenLastCalledWith(
+    expect(createComputedPositionManager).toHaveBeenLastCalledWith(
       expect.objectContaining({
         target: getByTestId('target'),
         container: getByTestId('container'),
@@ -101,7 +101,7 @@ describe('usePositioning', () => {
   describe('strategy', () => {
     it.each([
       [undefined, 'absolute'],
-      ['absolute', 'absolute'],
+      ['absolute', 'fixed'],
       ['fixed', 'fixed'],
     ] as const)('passes strategy %s as "%s" to the position manager', async (strategy, expected) => {
       render(<TestComponent strategy={strategy} />);
@@ -110,7 +110,7 @@ describe('usePositioning', () => {
         await new Promise(process.nextTick);
       });
 
-      expect(createPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ strategy: expected }));
+      expect(createComputedPositionManager).toHaveBeenLastCalledWith(expect.objectContaining({ strategy: expected }));
     });
   });
 });

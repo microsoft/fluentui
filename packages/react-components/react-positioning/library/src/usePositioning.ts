@@ -4,7 +4,7 @@ import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentu
 import * as React from 'react';
 
 import { POSITIONING_END_EVENT } from './constants';
-import { createPositionManager } from './createPositionManager';
+import { createComputedPositionManager } from './createComputedPositionManager';
 import type {
   OnPositioningEndEvent,
   PositioningOptions,
@@ -13,7 +13,7 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { usePositioningConfiguration } from './PositioningConfigurationContext';
+import { usePositioningOptions } from './usePositioningOptions';
 import { useCallbackRef, hasAutofocusFilter } from './utils';
 
 /**
@@ -27,47 +27,24 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   const arrowRef = React.useRef<HTMLElement | null>(null);
 
   const { enabled = true } = options;
-  const configFn = usePositioningConfiguration();
-  // The manager reads the latest options, it's only created again when the elements or `enabled` change
-  const optionsRef = React.useRef(options);
+  const resolvePositioningOptions = usePositioningOptions(options);
   const updatePositionManager = React.useCallback(() => {
     if (managerRef.current) {
       managerRef.current.dispose();
     }
     managerRef.current = null;
 
-    const target = overrideTargetRef.current ?? targetRef.current;
+    const target = overrideTargetRef.current || targetRef.current;
 
     if (enabled && canUseDOM() && target && containerRef.current) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const { positionFixed, onPositioningEnd, enabled: _, ...positioningOptions } = optionsRef.current;
-      const resolved = configFn({
-        container: containerRef.current,
-        arrow: arrowRef.current,
-        options: positioningOptions,
-      });
-
-      managerRef.current = createPositionManager({
-        ...resolved,
+      managerRef.current = createComputedPositionManager({
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
-        strategy: resolved.strategy ?? (positionFixed ? 'fixed' : 'absolute'),
+        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
     }
-  }, [enabled, configFn]);
-
-  useIsomorphicLayoutEffect(() => {
-    const previous = optionsRef.current;
-    optionsRef.current = options;
-
-    if (
-      previous !== options &&
-      (Object.keys(options) as (keyof typeof options)[]).some(k => options[k] !== previous[k])
-    ) {
-      updatePositionManager();
-    }
-  });
+  }, [enabled, resolvePositioningOptions]);
 
   const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
     overrideTargetRef.current = target;
@@ -94,7 +71,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   );
 
   useIsomorphicLayoutEffect(() => {
-    setOverrideTarget(options.target ?? null);
+    setOverrideTarget(options.target || null);
   }, [options.target, setOverrideTarget]);
 
   useIsomorphicLayoutEffect(() => {

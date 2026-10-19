@@ -1,5 +1,11 @@
 export type { Fiber, HookType } from './getReactFiberFromNode';
 export { getReactFiberFromNode } from './getReactFiberFromNode';
+export { getBoundary } from './getBoundary';
+export { getFloatingUIOffset } from './getFloatingUIOffset';
+export { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
+export { parseFloatingUIPlacement } from './parseFloatingUIPlacement';
+export { toFloatingUIPadding } from './toFloatingUIPadding';
+export { toFloatingUIPlacement } from './toFloatingUIPlacement';
 export { mergeArrowOffset } from './mergeArrowOffset';
 export { resolvePositioningShorthand } from './resolvePositioningShorthand';
 export { useCallbackRef } from './useCallbackRef';

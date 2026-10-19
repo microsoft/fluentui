@@ -26,7 +26,6 @@ function resolveBoundary(boundary: PositioningBoundary, container: HTMLElement):
     return getPaddingBox(boundary);
   }
 
-  // A rect
   return { left: boundary.x, top: boundary.y, width: boundary.width, height: boundary.height };
 }
 
@@ -49,8 +48,7 @@ const shrink = (rect: PlacementRect, padding: Padding, rtl: boolean): PlacementR
 };
 
 /**
- * Handles `flipBoundary`, `overflowBoundary` and `overflowBoundaryPadding`: placements are chosen to fit inside the
- * flip boundary, and the element is kept inside the overflow boundary.
+ * Handles `flipBoundary`, `overflowBoundary` and `overflowBoundaryPadding`.
  */
 export function applyBoundary(
   input: PlacementInput,

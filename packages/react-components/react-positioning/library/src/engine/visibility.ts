@@ -7,27 +7,23 @@ export type Visibility = {
   referenceHidden: boolean;
   /** The container is not visible */
   escaped: boolean;
-  /** The container overlaps the top or the bottom edge of the area where the target is visible */
+  /** The container overlaps the top or bottom edge of the target's clipping area */
   intersecting: boolean;
 };
 
-/** Whether one of the sides of the rect is completely outside of the clipping rect */
 const isClipped = (rect: PlacementRect, clip: PlacementRect): boolean =>
   rect.left + rect.width <= clip.left ||
   rect.left >= clip.left + clip.width ||
   rect.top + rect.height <= clip.top ||
   rect.top >= clip.top + clip.height;
 
-/**
- * Computes what is visible after the container is positioned.
- */
+/** Computes what is visible after the container is positioned. */
 export function getVisibility(
   container: HTMLElement,
   target: TargetElement,
   anchor: PlacementRect,
   popup: PlacementRect,
 ): Visibility {
-  // Virtual elements are clipped like the element that they are in
   const element = ('nodeType' in target ? target : target.contextElement) ?? container;
   const clip = getClippingRect(element);
   const overflowTop = clip.top - popup.top;

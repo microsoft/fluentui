@@ -1,5 +1,3 @@
-import type { PlacementRect } from './computePlacement';
-
 const FORMS_CONTAINING_BLOCK = /transform|perspective|filter/;
 
 // Properties that are not supported are empty strings (i.e. in jsdom)
@@ -22,41 +20,13 @@ export function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolut
  * Finds the element that forms the containing block of the positioned element,
  * `null` is the viewport (`fixed`) or the initial containing block (`absolute`).
  */
-export function getContainingBlock(
-  container: HTMLElement,
-  strategy: 'absolute' | 'fixed',
-): [element: HTMLElement | null, bounds: PlacementRect, originLeft: number, originTop: number] {
-  const win = container.ownerDocument.defaultView;
+export function getContainingBlock(container: HTMLElement, strategy: 'absolute' | 'fixed'): HTMLElement | null {
+  const win = container.ownerDocument.defaultView!;
   const root = container.ownerDocument.documentElement;
-  let node = container.parentElement;
-
-  while (win && node && node !== root) {
+  for (let node = container.parentElement; node && node !== root; node = node.parentElement) {
     if (isContainingBlock(win.getComputedStyle(node), strategy)) {
-      break;
+      return node;
     }
-    node = node.parentElement;
   }
-
-  if (node && node !== root) {
-    const rect = node.getBoundingClientRect();
-    const originLeft = rect.left + node.clientLeft - node.scrollLeft;
-    const originTop = rect.top + node.clientTop - node.scrollTop;
-
-    return [
-      node,
-      { left: originLeft, top: originTop, width: node.clientWidth, height: node.clientHeight },
-      originLeft,
-      originTop,
-    ];
-  }
-
-  const originLeft = strategy === 'fixed' ? 0 : -(win?.scrollX ?? 0);
-  const originTop = strategy === 'fixed' ? 0 : -(win?.scrollY ?? 0);
-
-  return [
-    null,
-    { left: originLeft, top: originTop, width: root.clientWidth, height: root.clientHeight },
-    originLeft,
-    originTop,
-  ];
+  return null;
 }
