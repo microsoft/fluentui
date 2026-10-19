@@ -296,12 +296,12 @@ export const useCalendarDayGridCell_unstable = (
     }
 
     if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
-      ev.preventDefault();
       /*
        * `day.onSelected` is the grid's own handler, so keyboard activation resolves the same date range and
        * navigation as a click does.
        */
       day.onSelected(ev);
+      ev.preventDefault();
     } else {
       navigateMonthEdge(ev, originalDate);
     }

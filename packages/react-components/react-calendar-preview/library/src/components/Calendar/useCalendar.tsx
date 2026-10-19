@@ -510,8 +510,8 @@ export const useCalendarBase_unstable = (
         onClick: onGotoToday,
         onKeyDown: (ev: React.KeyboardEvent<HTMLButtonElement>) => {
           if (ev.key === Enter) {
-            ev.preventDefault();
             onGotoToday(ev);
+            ev.preventDefault();
           }
         },
         type: 'button',

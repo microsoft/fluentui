@@ -39,8 +39,8 @@ const onButtonKeyDown =
   ): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) =>
   ev => {
     if (ev.key === Enter) {
-      ev.preventDefault();
       callback?.(ev);
+      ev.preventDefault();
     }
   };
 
@@ -109,8 +109,8 @@ export const useCalendarDayBase_unstable = (
   React.useImperativeHandle(
     ref,
     () => ({
-      focus() {
-        navigatedDayRef.current?.focus?.();
+      focus(options?: FocusOptions) {
+        navigatedDayRef.current?.focus?.(options);
       },
     }),
     [],

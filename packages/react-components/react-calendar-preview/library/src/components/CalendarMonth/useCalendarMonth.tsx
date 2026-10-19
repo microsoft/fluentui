@@ -88,11 +88,11 @@ export const useCalendarMonthBase_unstable = (
 
   const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);
 
-  const focus = React.useCallback(() => {
+  const focus = React.useCallback((options?: FocusOptions) => {
     if (yearPickerRef.current) {
-      yearPickerRef.current.focus();
+      yearPickerRef.current.focus(options);
     } else {
-      navigatedMonthRef.current?.focus();
+      navigatedMonthRef.current?.focus(options);
     }
   }, []);
 
