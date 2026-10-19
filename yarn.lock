@@ -4420,6 +4420,7 @@ __metadata:
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-label": "npm:^9.4.5"
     "@fluentui/react-link": "npm:^9.8.5"
+    "@fluentui/react-list": "npm:^9.6.19"
     "@fluentui/react-menu": "npm:^9.25.6"
     "@fluentui/react-message-bar": "npm:^9.7.7"
     "@fluentui/react-nav": "npm:^9.4.7"
