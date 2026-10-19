@@ -7,6 +7,7 @@ exports[`Slider renders disabled Slider correctly 1`] = `
     style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
   >
     <input
+      aria-orientation="horizontal"
       class="fui-Slider__input"
       disabled=""
       id="slider-_r_a_"
@@ -32,6 +33,7 @@ exports[`Slider renders horizontal Slider correctly 1`] = `
     style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
   >
     <input
+      aria-orientation="horizontal"
       class="fui-Slider__input"
       id="slider-_r_8_"
       max="10"
@@ -56,6 +58,7 @@ exports[`Slider renders vertical Slider correctly 1`] = `
     style="--fui-Slider--direction: 0deg; --fui-Slider--progress: 50%;"
   >
     <input
+      aria-orientation="vertical"
       class="fui-Slider__input"
       id="slider-_r_9_"
       max="10"
