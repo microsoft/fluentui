@@ -250,14 +250,19 @@ type TimePickerComboboxState = Pick<
   'root' | 'input' | 'listbox' | 'expandIcon' | 'clearIcon' | 'value' | 'getOptionById' | 'activeDescendantController'
 >;
 
-function useTimePickerSelection_unstable<TComboboxProps>(
-  props: TimePickerTimeProps & TComboboxProps,
+/** The part of the Combobox props `useTimePickerSelection_unstable` reads. */
+type TimePickerComboboxProps = Pick<ComboboxProps, 'clearable' | 'freeform' | 'onBlur' | 'onOpenChange'>;
+
+function useTimePickerSelection_unstable<TComboboxProps extends TimePickerComboboxProps>(
+  props: TimePickerTimeProps & Omit<TComboboxProps, 'value' | 'defaultValue' | 'onChange'>,
 ): TimePickerSelection<TComboboxProps>;
 function useTimePickerComboboxState_unstable<TState extends TimePickerComboboxState>(
   comboboxState: TState,
   selection: TimePickerSelection<unknown>,
 ): TState & TimePickerTimeState;
 ```
+
+`value`, `defaultValue` and `onChange` are omitted from the Combobox props because TimePicker redefines them: the value is a `Date | null` rather than the display text, and `onChange` reports a time change. Only the TimePicker definitions apply.
 
 ## Structure
 
