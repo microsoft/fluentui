@@ -21,8 +21,8 @@ results as they finish rather than retaining every source file or AST.
 The TypeScript preset erases `declare` class fields, so classes with type-only declarations do not
 prevent analysis of function components or hooks in the same module. This does not add React
 Compiler support for class components. JSX parsing is enabled only for `.tsx`; `.ts` files retain
-support for angle-bracket type assertions. Wrapper resolution uses the same TypeScript preset
-settings when following first-party imports.
+support for angle-bracket type assertions. Compilation and wrapper resolution share one Babel
+configuration factory for the per-file TypeScript preset and additional parser plugins.
 
 Directories apply exclusion globs; explicit files bypass them. Results are deduplicated by absolute
 path and attributed to the nearest package where possible. Files without an attributable package

@@ -1,9 +1,9 @@
-import { extname } from 'node:path';
 import { readFile } from 'node:fs/promises';
 
 import { transformAsync } from '@babel/core';
-import type { PluginItem, TransformOptions } from '@babel/core';
+import type { PluginItem } from '@babel/core';
 
+import { createBabelOptions } from './babel-options';
 import { forEachConcurrently } from './concurrency';
 import { compareText } from './ordering';
 import { manualMemoPlugin } from './manual-memo-plugin';
@@ -205,8 +205,6 @@ export async function compileSource(
     },
   };
 
-  const ext = extname(filePath);
-
   const extraPlugins = options.plugins ?? [];
   const compilerPluginConfig: [string, Record<string, unknown>] = [
     require.resolve('babel-plugin-react-compiler'),
@@ -220,32 +218,9 @@ export async function compileSource(
 
   try {
     await transformAsync(source, {
-      filename: filePath,
+      ...createBabelOptions(filePath, options.parserPlugins),
       ast: false,
       code: false,
-      babelrc: false,
-      configFile: false,
-      ...(options.parserPlugins?.length
-        ? {
-            parserOpts: {
-              plugins: [...options.parserPlugins] as NonNullable<
-                NonNullable<TransformOptions['parserOpts']>['plugins']
-              >,
-            },
-          }
-        : {}),
-      presets: [
-        [
-          require.resolve('@babel/preset-typescript'),
-          {
-            // Must track the extension: enabling JSX for `.ts` makes the parser read an
-            // angle-bracket type assertion (`<Foo>bar`) as an unterminated JSX element.
-            isTSX: ext === '.tsx',
-            allExtensions: true,
-            allowDeclareFields: true,
-          },
-        ],
-      ],
       plugins: [...extraPlugins, compilerPluginConfig],
     });
   } catch (err) {
