@@ -92,6 +92,7 @@ describe(`workspace-plugin`, () => {
           'proj/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
           'proj/package.json': serializeJson({
             name: '@proj/proj',
+            type: 'module',
             exports: { '.': './lib/index.js' },
             peerDependencies: { react: '>=17' },
           }),
@@ -224,7 +225,7 @@ describe(`workspace-plugin`, () => {
         'proj/library/project.json': serializeJson({ name: 'proj', projectType: 'library', tags: ['vNext'] }),
         'proj/library/package.json': serializeJson({ name: '@proj/proj', private: true }),
         'nested/proj/library/project.json': serializeJson({ name: 'wrong-project', tags: ['tools'] }),
-        'nested/proj/library/package.json': serializeJson({ exports: { '.': './lib/index.js' } }),
+        'nested/proj/library/package.json': serializeJson({ type: 'module', exports: { '.': './lib/index.js' } }),
         'nested/proj/library/jest.config.js': '',
         'nested/proj/library/eslint.config.js': '',
         'nested/proj/library/.storybook/main.js': '',
