@@ -120,11 +120,14 @@ describe('TimePicker', () => {
     );
 
     userEvent.type(getByRole('combobox'), '9:15');
+    // The expand icon is in the tab order; moving focus to it does not commit.
+    userEvent.tab();
+    expect(onChange).not.toHaveBeenCalled();
     userEvent.tab();
 
     expect(onChange).toHaveBeenCalledWith(
       expect.anything(),
-      expect.objectContaining({ type: 'blur', displayValue: '9:15', errorType: undefined }),
+      expect.objectContaining({ type: 'blur', displayValue: '09:15', errorType: undefined }),
     );
   });
 
