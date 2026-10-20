@@ -683,10 +683,14 @@ export const useCalendarDay_unstable = (
 
   /* eslint-disable react-hooks/immutability */
   Object.assign(state.grid, arrowNavigationAttributes);
-  state.previousMonthButton.children ??= <ArrowUpRegular />;
-  state.nextMonthButton.children ??= <ArrowDownRegular />;
-  if (state.closeButton) {
-    state.closeButton.children ??= <DismissRegular />;
+  if (state.previousMonthButton.children === undefined) {
+    state.previousMonthButton.children = <ArrowUpRegular />;
+  }
+  if (state.nextMonthButton.children === undefined) {
+    state.nextMonthButton.children = <ArrowDownRegular />;
+  }
+  if (state.closeButton && state.closeButton.children === undefined) {
+    state.closeButton.children = <DismissRegular />;
   }
   // The filler rows slide out towards the edge they sit on; the visible weeks slide in.
   state.wrapWeek = (row, week) =>

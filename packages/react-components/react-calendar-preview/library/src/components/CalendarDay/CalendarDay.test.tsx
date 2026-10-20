@@ -113,6 +113,26 @@ describe('CalendarDay', () => {
       expect(close.querySelector('svg')).not.toBeNull();
     });
 
+    it.each([null, undefined])('preserves navigation children=%s', children => {
+      const { container } = render(
+        <CalendarDay
+          {...defaultProps}
+          previousMonthButton={{ children }}
+          nextMonthButton={{ children }}
+          closeButton={{ children }}
+        />,
+      );
+      const buttons = Array.from(container.querySelectorAll('button[title]'));
+      expect(buttons).toHaveLength(3);
+      for (const button of buttons) {
+        if (children === undefined) {
+          expect(button.querySelector('svg')).not.toBeNull();
+        } else {
+          expect(button).toBeEmptyDOMElement();
+        }
+      }
+    });
+
     it('lets the navigation button slots replace the default icons', () => {
       const { container } = render(
         <CalendarDay

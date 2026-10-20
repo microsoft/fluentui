@@ -128,6 +128,7 @@ The reported range is clipped to `minDate` and `maxDate` and excludes `restricte
 - `dayPicker.getDayCellProps(date)` customizes each visible day cell's native props and ref. Click and keyboard handlers run before the built-in action; `preventDefault()` cancels that action, including click-driven focus, so a consumer's focus destination is preserved. Transition rows do not invoke the customization callback.
 - `dayPicker.renderDay(day, defaultContent)` customizes the content of each visible day's button, such as a badge or a custom label, while retaining the cell's selection, navigation, and disabled behavior.
 - `monthPicker.yearPicker.renderYear(year)` customizes year content while retaining the year cell's selection, navigation, and disabled behavior.
+- Picker navigation-button slots use default icons only when `children` is `undefined`. Explicit `children: null` preserves an empty button for consumer styling.
 - `highlightCurrentMonth` and `highlightSelectedMonth` add current and selected treatments to month cells.
 - `goToTodayButton={null}` removes the default Go to today action.
 
