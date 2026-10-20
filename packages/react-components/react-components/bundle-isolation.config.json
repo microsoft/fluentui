@@ -2,10 +2,22 @@
   "$schema": "../../../tools/verify-bundle-isolation/schema.json",
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
-  "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons", "@fluentui/react-motion"],
+  "forbiddenPackages": [
+    "tabster",
+    "@griffel/*",
+    "@fluentui/react-icons",
+    "@fluentui/react-motion",
+    "@fluentui/react-motion-components-preview"
+  ],
   "fixtures": {
     "BaseHooks.fixture.js": {
-      "allowedViolations": ["@fluentui/react-motion", "@griffel/core", "@griffel/react", "tabster"]
+      "allowedViolations": [
+        "@fluentui/react-motion",
+        "@fluentui/react-motion-components-preview",
+        "@griffel/core",
+        "@griffel/react",
+        "tabster"
+      ]
     }
   }
 }
