@@ -3,8 +3,13 @@
 import type * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { useEventCallback } from '@fluentui/react-utilities';
-import type { DataGridHeaderCellProps, DataGridHeaderCellState } from './DataGridHeaderCell.types';
-import { useTableHeaderCell_unstable } from '../TableHeaderCell/useTableHeaderCell';
+import type {
+  DataGridHeaderCellBaseProps,
+  DataGridHeaderCellBaseState,
+  DataGridHeaderCellProps,
+  DataGridHeaderCellState,
+} from './DataGridHeaderCell.types';
+import { useTableHeaderCell_unstable, useTableHeaderCellBase_unstable } from '../TableHeaderCell/useTableHeaderCell';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { useTableContext } from '../../contexts/tableContext';
@@ -23,6 +28,31 @@ export const useDataGridHeaderCell_unstable = (
   props: DataGridHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridHeaderCellState => {
+  const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+
+  return useTableHeaderCell_unstable(
+    useDataGridHeaderCellProps(props, props.focusMode === 'group' ? focusableGroupAttr : undefined),
+    ref,
+  );
+};
+
+/**
+ * Base state hook for DataGridHeaderCell, free of Tabster and of the default sort icon.
+ *
+ * @param props - props from this instance of DataGridHeaderCell
+ * @param ref - reference to root HTMLElement of DataGridHeaderCell
+ */
+export const useDataGridHeaderCellBase_unstable = (
+  props: DataGridHeaderCellBaseProps,
+  ref: React.Ref<HTMLElement>,
+): DataGridHeaderCellBaseState => {
+  return useTableHeaderCellBase_unstable(useDataGridHeaderCellProps(props), ref);
+};
+
+/**
+ * Props of the underlying table header cell, shared by the styled and the base DataGridHeaderCell hooks.
+ */
+function useDataGridHeaderCellProps(props: DataGridHeaderCellBaseProps, focusProps?: object) {
   const columnId = useColumnIdContext();
   const { sortable: gridSortable } = useTableContext();
   const toggleColumnSort = useDataGridContext_unstable(ctx => ctx.sort.toggleColumnSort);
@@ -46,7 +76,6 @@ export const useDataGridHeaderCell_unstable = (
   });
 
   const { focusMode = sortable ? 'none' : 'cell' } = props;
-  const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated -- prefer HTMLTableCellElement
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
@@ -56,17 +85,14 @@ export const useDataGridHeaderCell_unstable = (
     props.onClick?.(e);
   });
 
-  return useTableHeaderCell_unstable(
-    {
-      sortable,
-      sortDirection,
-      as: 'div',
-      tabIndex: focusMode !== 'none' ? 0 : undefined,
-      ...(focusMode === 'group' && focusableGroupAttr),
-      ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
-      ...props,
-      onClick,
-    },
-    ref,
-  );
-};
+  return {
+    sortable,
+    sortDirection,
+    as: 'div' as const,
+    tabIndex: focusMode !== 'none' ? 0 : undefined,
+    ...focusProps,
+    ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
+    ...props,
+    onClick,
+  };
+}

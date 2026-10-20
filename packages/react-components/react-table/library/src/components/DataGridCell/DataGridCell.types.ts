@@ -1,4 +1,4 @@
-import type { TableCellProps, TableCellSlots, TableCellState } from '../TableCell/TableCell.types';
+import type { TableCellBaseState, TableCellProps, TableCellSlots, TableCellState } from '../TableCell/TableCell.types';
 
 export type DataGridCellSlots = TableCellSlots;
 
@@ -28,3 +28,14 @@ export type DataGridCellProps = TableCellProps & {
  * State used in rendering DataGridCell
  */
 export type DataGridCellState = TableCellState;
+
+/**
+ * DataGridCell props accepted by `useDataGridCellBase_unstable`.
+ * The `group` focus mode relies on Tabster and is handled like `cell` by the base hook.
+ */
+export type DataGridCellBaseProps = DataGridCellProps;
+
+/**
+ * State returned by `useDataGridCellBase_unstable`.
+ */
+export type DataGridCellBaseState = TableCellBaseState;

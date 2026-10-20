@@ -1,6 +1,8 @@
+'use client';
+
 import type * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { TableProps, TableState } from './Table.types';
+import type { TableBaseProps, TableBaseState, TableProps, TableState } from './Table.types';
 
 /**
  * Create the state required to render Table.
@@ -12,6 +14,21 @@ import type { TableProps, TableState } from './Table.types';
  * @param ref - reference to root HTMLElement of Table
  */
 export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>): TableState => {
+  const baseState = useTableBase_unstable(props, ref);
+
+  return {
+    ...baseState,
+    size: props.size ?? 'medium',
+  };
+};
+
+/**
+ * Base state hook for Table, without the design props (`size`).
+ *
+ * @param props - props from this instance of Table
+ * @param ref - reference to root HTMLElement of Table
+ */
+export const useTableBase_unstable = (props: TableBaseProps, ref: React.Ref<HTMLElement>): TableBaseState => {
   const rootComponent = props.as ?? props.noNativeElements ? 'div' : 'table';
 
   return {
@@ -29,7 +46,6 @@ export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>
       }),
       { elementType: rootComponent },
     ),
-    size: props.size ?? 'medium',
     noNativeElements: props.noNativeElements ?? false,
     sortable: props.sortable ?? false,
   };

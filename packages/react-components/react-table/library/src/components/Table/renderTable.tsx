@@ -2,13 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TableState, TableSlots, TableContextValues } from './Table.types';
+import type { TableBaseState, TableSlots, TableContextValues } from './Table.types';
 import { TableContextProvider } from '../../contexts/tableContext';
 
 /**
  * Render the final JSX of Table
  */
-export const renderTable_unstable = (state: TableState, contextValues: TableContextValues): JSXElement => {
+export const renderTable_unstable = (state: TableBaseState, contextValues: TableContextValues): JSXElement => {
   assertSlots<TableSlots>(state);
 
   return (

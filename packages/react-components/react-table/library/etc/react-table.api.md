@@ -24,6 +24,9 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
+// @public
+export type CellRenderBaseFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridBaseContextValue) => React_2.ReactNode;
+
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
@@ -48,6 +51,34 @@ export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefi
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
+export type DataGridBaseContextValue = TableFeaturesState<any> & {
+    focusMode: DataGridFocusMode;
+    selectableRows: boolean;
+    resizableColumns?: boolean;
+};
+
+// @public
+export type DataGridBaseProps = TableBaseProps & Pick<DataGridBaseContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridBaseContextValue>, 'focusMode' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
+    onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
+    selectionMode?: SelectionMode_2;
+    columnSizingOptions?: TableColumnSizingOptions;
+    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
+        columnId: TableColumnId;
+        width: number;
+    }) => void;
+    containerWidthOffset?: number;
+    resizableColumnsOptions?: {
+        autoFitColumns?: boolean;
+    };
+};
+
+// @public
+export type DataGridBaseState = TableBaseState & {
+    tableState: TableFeaturesState<unknown>;
+} & Pick<DataGridBaseContextValue, 'focusMode' | 'selectableRows' | 'getRowId' | 'resizableColumns'>;
+
+// @public
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSXElement);
 
 // @public (undocumented)
@@ -69,6 +100,12 @@ export type DataGridBodyState = TableBodyState & {
 
 // @public
 export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
+
+// @public
+export type DataGridCellBaseProps = DataGridCellProps;
+
+// @public
+export type DataGridCellBaseState = TableCellBaseState;
 
 // @public (undocumented)
 export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
@@ -94,12 +131,9 @@ export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
 
 // @public (undocumented)
-export type DataGridContextValue = TableFeaturesState<any> & {
-    focusMode: DataGridFocusMode;
-    selectableRows: boolean;
+export type DataGridContextValue = DataGridBaseContextValue & {
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
-    resizableColumns?: boolean;
     compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
@@ -116,6 +150,12 @@ export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
 
 // @public
 export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
+
+// @public
+export type DataGridHeaderCellBaseProps = DataGridHeaderCellProps;
+
+// @public
+export type DataGridHeaderCellBaseState = TableHeaderCellBaseState;
 
 // @public (undocumented)
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
@@ -142,23 +182,27 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
-    onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
-    onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
-    selectionMode?: SelectionMode_2;
-    columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
-        columnId: TableColumnId;
-        width: number;
-    }) => void;
-    containerWidthOffset?: number;
-    resizableColumnsOptions?: {
-        autoFitColumns?: boolean;
-    };
-};
+export type DataGridProps = TableProps & Pick<DataGridBaseProps, 'items' | 'columns' | 'getRowId' | 'focusMode' | 'resizableColumns' | 'sortState' | 'defaultSortState' | 'defaultSelectedItems' | 'selectedItems' | 'onSortChange' | 'onSelectionChange' | 'selectionMode' | 'columnSizingOptions' | 'onColumnResize' | 'containerWidthOffset' | 'resizableColumnsOptions'> & Pick<Partial<DataGridContextValue>, 'subtleSelection' | 'selectionAppearance'>;
 
 // @public
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSXElement);
+
+// @public
+export type DataGridRowBaseProps<TItem = unknown> = Omit<TableRowBaseProps, 'children'> & Omit<ComponentProps<DataGridRowBaseSlots>, 'children'> & {
+    children: CellRenderBaseFunction<TItem>;
+};
+
+// @public (undocumented)
+export type DataGridRowBaseSlots = TableRowSlots;
+
+// @public
+export type DataGridRowBaseState = TableRowBaseState & ComponentState<DataGridRowBaseSlots> & {
+    renderCell: CellRenderBaseFunction;
+    columnDefs: TableColumnDefinition<any>[];
+    dataGridContextValue: DataGridBaseContextValue;
+    selectable: boolean;
+    selected: boolean;
+};
 
 // @public (undocumented)
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
@@ -183,6 +227,15 @@ export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> 
 // @public
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps>;
 
+// @public
+export type DataGridSelectionCellBaseProps = TableSelectionCellBaseProps;
+
+// @public (undocumented)
+export type DataGridSelectionCellBaseSlots = TableSelectionCellBaseSlots;
+
+// @public
+export type DataGridSelectionCellBaseState = TableSelectionCellBaseState;
+
 // @public (undocumented)
 export const dataGridSelectionCellClassNames: SlotClassNames<DataGridSelectionCellSlots>;
 
@@ -204,55 +257,55 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSXElement;
+export const renderDataGrid_unstable: (state: DataGridBaseState, contextValues: DataGridContextValues) => JSXElement;
 
 // @public
 export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSXElement;
 
 // @public
-export const renderDataGridCell_unstable: (state: DataGridCellState) => JSXElement;
+export const renderDataGridCell_unstable: (state: DataGridCellBaseState) => JSXElement;
 
 // @public
 export const renderDataGridHeader_unstable: (state: DataGridHeaderState) => JSXElement;
 
 // @public
-export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellState) => JSXElement;
+export const renderDataGridHeaderCell_unstable: (state: DataGridHeaderCellBaseState) => JSXElement;
 
 // @public
-export const renderDataGridRow_unstable: (state: DataGridRowState) => JSXElement;
+export const renderDataGridRow_unstable: (baseState: DataGridRowState | DataGridRowBaseState) => JSXElement;
 
 // @public
-export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState) => JSXElement;
+export const renderDataGridSelectionCell_unstable: (state: DataGridSelectionCellState | DataGridSelectionCellBaseState) => JSXElement;
 
 // @public
-export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSXElement;
+export const renderTable_unstable: (state: TableBaseState, contextValues: TableContextValues) => JSXElement;
 
 // @public
 export const renderTableBody_unstable: (state: TableBodyState) => JSXElement;
 
 // @public
-export const renderTableCell_unstable: (state: TableCellState) => JSXElement;
+export const renderTableCell_unstable: (state: TableCellBaseState) => JSXElement;
 
 // @public
 export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSXElement;
 
 // @public
-export const renderTableCellLayout_unstable: (state: TableCellLayoutState, contextValues: TableCellLayoutContextValues) => JSXElement;
+export const renderTableCellLayout_unstable: (state: TableCellLayoutBaseState, contextValues?: TableCellLayoutContextValues) => JSXElement;
 
 // @public
 export const renderTableHeader_unstable: (state: TableHeaderState) => JSXElement;
 
 // @public
-export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSXElement;
+export const renderTableHeaderCell_unstable: (state: TableHeaderCellBaseState) => JSXElement;
 
 // @public
 export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSXElement;
 
 // @public
-export const renderTableRow_unstable: (state: TableRowState) => JSXElement;
+export const renderTableRow_unstable: (state: TableRowBaseState) => JSXElement;
 
 // @public
-export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSXElement;
+export const renderTableSelectionCell_unstable: (state: TableSelectionCellState | TableSelectionCellBaseState) => JSXElement;
 
 // @public (undocumented)
 export type RowRenderFunction<TItem = unknown> = (row: TableRowData<TItem>, ...rest: unknown[]) => React_2.ReactNode;
@@ -265,6 +318,12 @@ export const Table: ForwardRefComponent<TableProps>;
 
 // @public (undocumented)
 export const TABLE_SELECTION_CELL_WIDTH = 44;
+
+// @public
+export type TableBaseProps = ComponentProps<TableSlots> & Partial<Omit<TableContextValue, 'size'>>;
+
+// @public
+export type TableBaseState = ComponentState<TableSlots> & Omit<TableContextValue, 'size'>;
 
 // @public
 export const TableBody: ForwardRefComponent<TableBodyProps>;
@@ -308,6 +367,9 @@ export type TableCellActionsSlots = {
 // @public
 export type TableCellActionsState = ComponentState<TableCellActionsSlots> & Pick<Required<TableCellActionsProps>, 'visible'>;
 
+// @public
+export type TableCellBaseState = ComponentState<TableCellSlots> & Pick<TableContextValue, 'noNativeElements'>;
+
 // @public (undocumented)
 export const tableCellClassName = "fui-TableCell";
 
@@ -316,6 +378,12 @@ export const tableCellClassNames: SlotClassNames<TableCellSlots>;
 
 // @public
 export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
+
+// @public
+export type TableCellLayoutBaseProps = Omit<TableCellLayoutProps, 'appearance' | 'truncate'>;
+
+// @public
+export type TableCellLayoutBaseState = ComponentState<TableCellLayoutSlots>;
 
 // @public (undocumented)
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
@@ -412,6 +480,9 @@ export const TableHeader: ForwardRefComponent<TableHeaderProps>;
 // @public
 export const TableHeaderCell: ForwardRefComponent<TableHeaderCellProps>;
 
+// @public
+export type TableHeaderCellBaseState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable' | 'sortDirection'>;
+
 // @public (undocumented)
 export const tableHeaderCellClassName = "fui-TableHeaderCell";
 
@@ -478,6 +549,14 @@ export type TableResizeHandleState = ComponentState<TableResizeHandleSlots>;
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
 
+// @public
+export type TableRowBaseProps = ComponentProps<TableRowSlots>;
+
+// @public
+export type TableRowBaseState = ComponentState<TableRowSlots> & Pick<TableContextValue, 'noNativeElements'> & {
+    isHeaderRow: boolean;
+};
+
 // @public (undocumented)
 export const tableRowClassName = "fui-TableRow";
 
@@ -513,6 +592,22 @@ export type TableRowState = ComponentState<TableRowSlots> & Pick<TableContextVal
 
 // @public
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
+
+// @public
+export type TableSelectionCellBaseProps = ComponentProps<Partial<TableSelectionCellBaseSlots>> & Pick<TableSelectionCellProps, 'type' | 'hidden' | 'invisible'> & {
+    checked?: boolean | 'mixed';
+};
+
+// @public (undocumented)
+export type TableSelectionCellBaseSlots = {
+    checkboxIndicator: Slot<'input'>;
+    radioIndicator: Slot<'input'>;
+} & Pick<TableCellSlots, 'root'>;
+
+// @public
+export type TableSelectionCellBaseState = ComponentState<TableSelectionCellBaseSlots> & Required<Pick<TableSelectionCellBaseProps, 'type' | 'checked'>> & Pick<TableContextValue, 'noNativeElements'> & {
+    hidden: boolean;
+};
 
 // @public (undocumented)
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
@@ -577,6 +672,9 @@ export const useColumnIdContext: () => TableColumnId;
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
 // @public
+export const useDataGridBase_unstable: (props: DataGridBaseProps, ref: React_2.Ref<HTMLElement>) => DataGridBaseState;
+
+// @public
 export const useDataGridBody_unstable: (props: DataGridBodyProps, ref: React_2.Ref<HTMLElement>) => DataGridBodyState;
 
 // @public
@@ -586,19 +684,25 @@ export const useDataGridBodyStyles_unstable: (state: DataGridBodyState) => DataG
 export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.Ref<HTMLElement>) => DataGridCellState;
 
 // @public
+export const useDataGridCellBase_unstable: (props: DataGridCellBaseProps, ref: React_2.Ref<HTMLElement>) => DataGridCellBaseState;
+
+// @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
 
 // @public (undocumented)
 export const useDataGridContext_unstable: <T>(selector: ContextSelector<DataGridContextValue, T>) => T;
 
 // @public (undocumented)
-export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
+export function useDataGridContextValues_unstable(state: DataGridBaseState & Partial<Pick<DataGridState, 'size' | 'subtleSelection' | 'selectionAppearance' | 'compositeRowTabsterAttribute'>>): DataGridContextValues;
 
 // @public
 export const useDataGridHeader_unstable: (props: DataGridHeaderProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderState;
 
 // @public
 export const useDataGridHeaderCell_unstable: (props: DataGridHeaderCellProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderCellState;
+
+// @public
+export const useDataGridHeaderCellBase_unstable: (props: DataGridHeaderCellBaseProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderCellBaseState;
 
 // @public
 export const useDataGridHeaderCellStyles_unstable: (state: DataGridHeaderCellState) => DataGridHeaderCellState;
@@ -610,10 +714,16 @@ export const useDataGridHeaderStyles_unstable: (state: DataGridHeaderState) => D
 export const useDataGridRow_unstable: (props: DataGridRowProps, ref: React_2.Ref<HTMLElement>) => DataGridRowState;
 
 // @public
+export const useDataGridRowBase_unstable: (props: DataGridRowBaseProps, ref: React_2.Ref<HTMLElement>) => DataGridRowBaseState;
+
+// @public
 export const useDataGridRowStyles_unstable: (state: DataGridRowState) => DataGridRowState;
 
 // @public
 export const useDataGridSelectionCell_unstable: (props: DataGridSelectionCellProps, ref: React_2.Ref<HTMLElement>) => DataGridSelectionCellState;
+
+// @public
+export const useDataGridSelectionCellBase_unstable: (props: DataGridSelectionCellBaseProps, ref: React_2.Ref<HTMLElement>) => DataGridSelectionCellBaseState;
 
 // @public
 export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionCellState) => DataGridSelectionCellState;
@@ -626,6 +736,9 @@ export const useIsInTableHeader: () => boolean;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
+
+// @public
+export const useTableBase_unstable: (props: TableBaseProps, ref: React_2.Ref<HTMLElement>) => TableBaseState;
 
 // @public
 export const useTableBody_unstable: (props: TableBodyProps, ref: React_2.Ref<HTMLElement>) => TableBodyState;
@@ -643,7 +756,13 @@ export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: R
 export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
 
 // @public
+export const useTableCellBase_unstable: (props: TableCellProps, ref: React_2.Ref<HTMLElement>) => TableCellBaseState;
+
+// @public
 export const useTableCellLayout_unstable: (props: TableCellLayoutProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutState;
+
+// @public
+export const useTableCellLayoutBase_unstable: (props: TableCellLayoutBaseProps, ref: React_2.Ref<HTMLElement>) => TableCellLayoutBaseState;
 
 // @public
 export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) => TableCellLayoutState;
@@ -665,6 +784,9 @@ export function useTableCompositeNavigation(): {
 export const useTableContext: () => TableContextValue;
 
 // @public (undocumented)
+export function useTableContextValues_unstable(state: TableBaseState & Partial<Pick<TableState, 'size'>>): TableContextValues;
+
+// @public (undocumented)
 export function useTableFeatures<TItem>(options: UseTableFeaturesOptions<TItem>, plugins?: TableFeaturePlugin[]): TableFeaturesState<TItem>;
 
 // @public (undocumented)
@@ -684,6 +806,9 @@ export const useTableHeader_unstable: (props: TableHeaderProps, ref: React_2.Ref
 export const useTableHeaderCell_unstable: (props: TableHeaderCellProps, ref: React_2.Ref<HTMLElement>) => TableHeaderCellState;
 
 // @public
+export const useTableHeaderCellBase_unstable: (props: TableHeaderCellProps, ref: React_2.Ref<HTMLElement>) => TableHeaderCellBaseState;
+
+// @public
 export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) => TableHeaderCellState;
 
 // @public
@@ -698,6 +823,9 @@ export const useTableResizeHandleStyles_unstable: (state: TableResizeHandleState
 // @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
 
+// @public
+export const useTableRowBase_unstable: (props: TableRowBaseProps, ref: React_2.Ref<HTMLElement>) => TableRowBaseState;
+
 // @public (undocumented)
 export const useTableRowIdContext: () => TableRowId;
 
@@ -709,6 +837,9 @@ export function useTableSelection<TItem>(options: SelectionHookParams): (tableSt
 
 // @public
 export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;
+
+// @public
+export const useTableSelectionCellBase_unstable: (props: TableSelectionCellBaseProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellBaseState;
 
 // @public
 export const useTableSelectionCellStyles_unstable: (state: TableSelectionCellState) => TableSelectionCellState;

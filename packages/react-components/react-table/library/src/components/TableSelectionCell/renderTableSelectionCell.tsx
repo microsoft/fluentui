@@ -2,13 +2,20 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell.types';
+import type {
+  TableSelectionCellBaseSlots,
+  TableSelectionCellBaseState,
+  TableSelectionCellSlots,
+  TableSelectionCellState,
+} from './TableSelectionCell.types';
 
 /**
  * Render the final JSX of TableSelectionCell
  */
-export const renderTableSelectionCell_unstable = (state: TableSelectionCellState): JSXElement => {
-  assertSlots<TableSelectionCellSlots>(state);
+export const renderTableSelectionCell_unstable = (
+  state: TableSelectionCellState | TableSelectionCellBaseState,
+): JSXElement => {
+  assertSlots<TableSelectionCellSlots | TableSelectionCellBaseSlots>(state);
 
   return (
     <state.root>
