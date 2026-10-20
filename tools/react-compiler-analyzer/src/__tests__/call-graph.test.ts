@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 
 import { createCallGraphAnalyzer } from '../call-graph';
@@ -136,6 +136,42 @@ describe('call-graph wrapper analysis', () => {
     const viaCast = findings.filter(f => f.risk.chain.includes('readCastActiveId'));
     expect(viaCast).toHaveLength(1);
     expect(viaCast[0].risk.leaf.symbol).toBe('getCastStore().getState');
+  });
+
+  it.each(['reader.ts', 'reader.tsx'])('follows a wrapper alongside declared class fields in %s', async fileName => {
+    const filePath = modules({
+      [fileName]: readFileSync(join(__dirname, '__fixtures__', 'declare-fields', fileName), 'utf-8'),
+      'component.tsx':
+        "import { readValue } from './reader'; export function Widget() { return <span>{readValue()}</span>; }",
+    });
+    const riskConfig: RiskConfig = { detectGetStateReads: true, resolveWrappers: true };
+    const callGraph = analyzer(riskConfig);
+
+    expect(callGraph.analyzeFile(filePath)).toEqual([
+      expect.objectContaining({
+        risk: expect.objectContaining({
+          chain: ['readValue'],
+          leaf: expect.objectContaining({ ruleId: 'nonreactive-store-read', symbol: 'store.getState' }),
+        }),
+      }),
+    ]);
+
+    const compiled = await compileFile({ filePath, packageName: 'test-pkg' }, 'infer', false, riskConfig, callGraph);
+
+    expect(compiled.error).toBeUndefined();
+    expect(deriveCoverage(compiled)).toEqual([
+      expect.objectContaining({
+        functionName: 'Widget',
+        status: 'compiled',
+        risks: [
+          expect.objectContaining({
+            ruleId: 'nonreactive-store-read',
+            symbol: 'store.getState',
+            message: expect.stringContaining('reached via `readValue`'),
+          }),
+        ],
+      }),
+    ]);
   });
 });
 

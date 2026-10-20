@@ -5,7 +5,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 ## Migration from v8
 
 - `ariaLabel` => use `aria-label` instead
-- `ariaValueText` => explicitely set `aria-valuetext`
+- `ariaValueText` => explicitly set `aria-valuetext`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element
 - `componentRef` => use `ref` instead.
 - `inline` => use css, or wrap in flex parent
@@ -23,7 +23,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 
 - `accessibility` => use `aria-*` properties directly on `Slider`
 - `fluid` => use css, or wrap in flex parent
-- `getA11yValueMessageOnChange` => explicitely set `aria-value-text`
+- `getA11yValueMessageOnChange` => explicitly set `aria-value-text`
 - `input` => Slider props, other than className and id, are passed to `input` element
 - `inputRef` => `ref`
 - `label` => use explicitly rendered value instead
