@@ -427,6 +427,55 @@ describe('moveCalendarGridFocus', () => {
   });
 });
 
+describe.each([
+  { name: 'base day', Picker: BaseDay, props: { navigatedDate: today }, label: 'September 18, 2020' },
+  { name: 'styled day', Picker: CalendarDay, props: { navigatedDate: today }, label: 'September 18, 2020' },
+  { name: 'base month', Picker: BaseMonth, props: { navigatedDate: today }, label: 'September' },
+  { name: 'styled month', Picker: CalendarMonth, props: { navigatedDate: today }, label: 'September' },
+  { name: 'base year', Picker: BaseYear, props: { navigatedYear: 2020 }, label: '2020' },
+  { name: 'styled year', Picker: CalendarYear, props: { navigatedYear: 2020 }, label: '2020' },
+])('$name hidden panel', ({ Picker, props, label }) => {
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'keeps its tab stop when a panel hidden with %s is revealed without rerendering',
+    hiding => {
+      const { getByTestId, getByRole } = render(
+        <>
+          <button type="button">Before panel</button>
+          <div
+            data-testid="panel"
+            hidden={hiding === 'hidden'}
+            style={hiding === 'display' ? { display: 'none' } : hiding === 'visibility' ? { visibility: 'hidden' } : {}}
+          >
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Picker {...props} />
+            </CalendarProvider>
+          </div>
+        </>,
+      );
+      const panel = getByTestId('panel');
+      expect(panel.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+
+      panel.hidden = false;
+      panel.style.removeProperty('display');
+      panel.style.removeProperty('visibility');
+      const target = panel.querySelector<HTMLElement>('[role="gridcell"][tabindex="0"]')!;
+      expect(target).toBeVisible();
+      expect(target).toBe(
+        label.includes(',')
+          ? getByRole('button', { name: label }).closest('[role="gridcell"]')
+          : getByRole('gridcell', { name: label }),
+      );
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+      for (let step = 0; step < 5 && target.ownerDocument.activeElement !== target; step++) {
+        userEvent.tab();
+      }
+
+      expect(target).toHaveFocus();
+    },
+  );
+});
+
 describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', picker => {
   describe.each([
     { name: 'base', base: true },

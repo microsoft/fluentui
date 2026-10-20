@@ -44,9 +44,13 @@ export function useCalendarGridTabStop<T extends HTMLElement = HTMLDivElement>(
     if (canHoldTabStop(tabStop)) {
       applyTabStop(grid, tabStop);
     } else {
-      tabStopRef.current = null;
       const navigatedCell = getNavigatedCell(grid);
-      applyTabStop(grid, canHoldTabStop(navigatedCell) ? navigatedCell : cells.find(canHoldTabStop) ?? null);
+      const nextTabStop = canHoldTabStop(navigatedCell) ? navigatedCell : cells.find(canHoldTabStop);
+      // A hidden panel may be revealed without rerendering this picker. Keep its existing stop until then.
+      if (nextTabStop) {
+        tabStopRef.current = null;
+        applyTabStop(grid, nextTabStop);
+      }
     }
   });
 
