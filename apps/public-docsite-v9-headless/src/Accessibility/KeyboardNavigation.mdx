@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Accessibility/Keyboard navigation" />
+
+# Keyboard navigation with focusgroup
+
+Composite widgets such as menus, tab lists and toolbars take a single Tab stop, and arrow keys move between their items. Headless components implement this with the [`focusgroup`](https://open-ui.org/components/scoped-focusgroup.explainer/) HTML attribute, a proposed platform feature. The browser, or a polyfill until browsers ship it, does the focus movement. No JavaScript key handling ships in the components for it.
+
+## How focusgroup works
+
+The component puts a `focusgroup` attribute on the container, for example `focusgroup="toolbar inline wrap"`. The browser (or the polyfill) then:
+
+- makes the group one Tab stop, managing `tabindex` on the items itself;
+- moves focus between items with the arrow keys and Home/End;
+- with `inline` or `block`, only reacts to the horizontal or vertical arrows;
+- with `wrap`, moves from the last item to the first and back;
+- remembers the last focused item and returns to it when Tab re-enters the group, unless the value has `nomemory`. Then focus enters at the item marked `focusgroupstart`, or the first item.
+
+An item with `focusgroup="none"` opts out of its parent group: arrow keys skip it.
+
+## Load the polyfill
+
+No browser ships `focusgroup` yet, and the package doesn't load the polyfill for you. Without it, arrow keys and Home/End do nothing inside these components, and they don't match their ARIA pattern.
+
+```ts
+import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
+
+polyfillBodyAndObserve();
+```
+
+`polyfillBodyAndObserve` also picks up groups added to the page later, such as menus that mount when they open. The polyfill steps aside once browsers support `focusgroup` natively. See [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs#focusgroup) for loading it conditionally.
+
+## Component by component
+
+| Component                       | `focusgroup` value                                              | Arrow keys                        | Wraps | Tab re-enters at                            |
+| ------------------------------- | --------------------------------------------------------------- | --------------------------------- | ----- | ------------------------------------------- |
+| MenuList                        | `menu block wrap`                                               | Up/Down                           | Yes   | First item (the menu opens fresh each time) |
+| TabList                         | `tablist inline wrap nomemory`, `block` when vertical           | Left/Right, Up/Down when vertical | Yes   | Selected tab                                |
+| Toolbar                         | `toolbar inline wrap`, `block` when vertical                    | Left/Right, Up/Down when vertical | Yes   | Last focused item                           |
+| TagGroup                        | `toolbar inline wrap`                                           | Left/Right                        | Yes   | Last focused tag                            |
+| TagPicker (selected tags)       | `toolbar inline wrap`                                           | Left/Right                        | Yes   | Last focused tag                            |
+| SwatchPicker (row)              | `radiogroup`, plus `nomemory` once a value is selected          | All arrows                        | —     | Selected swatch, else last focused          |
+| SwatchPicker (grid)             | `grid manual rowflow`, plus `nomemory` once a value is selected | All arrows, by row and column     | —     | Selected swatch, else last focused          |
+| List (`navigationMode="items"`) | `toolbar block`                                                 | Up/Down                           | No    | Last focused item                           |
+| Toaster                         | `toolbar block itemcontrols`; each Toast opts out with `none`   | Up/Down between toasts            | No    | Last focused toast                          |
+
+RadioGroup uses native radio inputs, so the browser handles its arrow keys without `focusgroup`. List in `composite` mode handles its own keys, because its items contain further focusable controls.
+
+## Using focusgroup in your own components
+
+Any custom composite widget can use the same attribute, and the polyfill handles it like the built-in ones:
+
+```tsx
+<div role="toolbar" aria-label="Text formatting" focusgroup="toolbar inline wrap">
+  <button>Bold</button>
+  <button>Italic</button>
+  <button>Underline</button>
+</div>
+```
+
+- Set the ARIA role yourself. The behavior token (`toolbar`, `tablist`, `menu`, …) describes the navigation; don't rely on the polyfill to add roles.
+- Items must be focusable elements: buttons, links, inputs, or elements with `tabindex`.
+- To make a selected item the entry point, use `nomemory` and move the `focusgroupstart` attribute to the selected item.
+- React passes `focusgroup` through as a plain attribute. In TypeScript, declare it once in a `.d.ts` file. Keep the `export {}`: without it, the file replaces React's types instead of extending them.
+
+```ts
+export {};
+
+declare module 'react' {
+  interface HTMLAttributes<T> {
+    focusgroup?: string;
+    focusgroupstart?: string;
+  }
+}
+```
+
+## Polyfill limitations
+
+The polyfill differs from a native implementation in these cases:
+
+- **Controls that use arrow keys themselves.** A text input inside a Toolbar keeps its arrow keys, so users can't arrow past it. Put such controls at the edge of the group, or give them `focusgroup="none"`.
+- **Visibility changes.** The polyfill observes added and removed items and attribute changes, but not visibility. An item hidden with CSS can still take part in navigation. Unmount hidden items, or give them `focusgroup="none"` while hidden.
+- **`tabindex` is managed.** The polyfill rewrites `tabindex` on items. Don't set it yourself on items inside a group.
+- **`reading-flow`** CSS is not supported.
+
+## Testing
+
+- Load the polyfill wherever you test keyboard behavior: the app, Storybook, and browser tests.
+- Tab into each group once, arrow through it, Tab out, and Shift+Tab back. Check which item gets focus on re-entry.
+- Test arrow-key behavior in a real browser (Cypress, Playwright); jsdom doesn't implement focus movement.
