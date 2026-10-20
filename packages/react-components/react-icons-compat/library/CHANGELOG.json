@@ -2,6 +2,25 @@
   "name": "@fluentui/react-icons-compat",
   "entries": [
     {
+      "date": "Mon, 19 Oct 2026 16:49:01 GMT",
+      "version": "0.2.25",
+      "tag": "@fluentui/react-icons-compat_v0.2.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "0.2.24",
       "comments": {

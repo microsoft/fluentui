@@ -18,7 +18,7 @@ export type CalendarYearHandle = {
    * Focuses the navigated year, or the selected/current year when navigation is unspecified,
    * within the focusable visible range.
    */
-  focus(): void;
+  focus(options?: FocusOptions): void;
 };
 
 /**

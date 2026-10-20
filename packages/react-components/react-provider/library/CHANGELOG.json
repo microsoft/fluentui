@@ -2,6 +2,36 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "9.22.22",
+      "tag": "@fluentui/react-provider_v9.22.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "paliprandi@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "16fcf57fe487780e42c6326bf56b30061e2caa11",
+            "comment": "fix: block unsafe theme token syntax without a value-format allowlist"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.22.21",
       "comments": {

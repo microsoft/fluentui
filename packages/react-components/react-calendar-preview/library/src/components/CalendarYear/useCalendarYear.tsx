@@ -102,10 +102,10 @@ export const useCalendarYearBase_unstable = (
   React.useImperativeHandle(
     ref,
     () => ({
-      focus() {
+      focus(options?: FocusOptions) {
         [navigatedYearRef.current, selectedYearRef.current, currentYearRef.current]
           .find(element => element && !element.disabled)
-          ?.focus();
+          ?.focus(options);
       },
     }),
     [],
