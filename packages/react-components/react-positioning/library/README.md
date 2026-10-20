@@ -61,6 +61,8 @@ padding, auto-size aliases, target-width matching, target covering, containing-b
 transforms, virtual targets, and fractional rectangles at DPR 1, 1.25, 1.5, 2, and 3. DPR is
 controlled independently of the host display; geometry and the engine are never mocked.
 Scrollbars are hidden without disabling scrolling so native scrollbar widths do not alter the fixture.
+The fixture includes a scoped `::-webkit-scrollbar` rule for the older Chromium bundled with
+Cypress 13 in React 17 compatibility tests, which does not support `scrollbar-width`.
 
 Lifecycle cases cover imperative updates and retargeting, target prop removal, option removal,
 enable/disable, resize and scroll updates, visibility recovery, native end events, detached

@@ -244,6 +244,7 @@ const Fixture = ({ scenario, controls }: { scenario: Scenario; controls: Control
       data-enabled={options.enabled !== false}
       style={{ position: 'fixed', inset: 0, direction: scenario.dir ?? 'ltr' }}
     >
+      <style>{'[data-host]::-webkit-scrollbar, [data-floating]::-webkit-scrollbar { display: none; }'}</style>
       <div
         ref={setBoundary}
         data-boundary=""
@@ -331,6 +332,12 @@ function mountScenario(scenario: Scenario) {
     </FluentProvider>,
   );
   cy.get('[data-floating]').should('have.attr', 'data-popper-placement');
+  if (scenario.host === 'scroll') {
+    cy.get('[data-host]').should($host => {
+      expect($host[0].clientWidth, 'scrollbar-free fixture width').to.equal(400);
+      expect($host[0].scrollHeight, 'fixture remains scrollable').to.be.greaterThan($host[0].clientHeight);
+    });
+  }
   cy.window().then(
     win =>
       new Cypress.Promise<void>(resolve => {
