@@ -11,6 +11,7 @@ import { calendarMonthClassNames } from '../CalendarMonth/useCalendarMonthStyles
 import { calendarMonthGridCellClassNames } from '../CalendarMonthGridCell/useCalendarMonthGridCellStyles.styles';
 import { calendarYearGridCellClassNames } from '../CalendarYearGridCell/useCalendarYearGridCellStyles.styles';
 import type { JSXElement } from '@fluentui/react-utilities';
+import type { CalendarProps } from './Calendar.types';
 
 const mountFluent = (element: JSXElement, dir: 'ltr' | 'rtl' = 'ltr') => {
   mount(
@@ -36,6 +37,96 @@ const nextMonth = `.${calendarDayClassNames.nextMonthButton}`;
 const goToToday = `.${calendarClassNames.goToTodayButton}`;
 
 describe('Calendar', () => {
+  describe('layout geometry', () => {
+    const layouts: { name: string; props: CalendarProps; width: number; monthOnly?: boolean }[] = [
+      { name: 'side by side', props: { layout: 'sideBySide' }, width: 440 },
+      { name: 'side by side with week numbers', props: { layout: 'sideBySide', showWeekNumbers: true }, width: 470 },
+      { name: 'day only', props: { monthPicker: null }, width: 220 },
+      { name: 'day only with week numbers', props: { monthPicker: null, showWeekNumbers: true }, width: 250 },
+      { name: 'overlay', props: { layout: 'overlay' }, width: 220 },
+      { name: 'month only', props: { dayPicker: null, showWeekNumbers: true }, width: 220, monthOnly: true },
+    ];
+
+    for (const dir of ['ltr', 'rtl'] as const) {
+      for (const sixWeeks of [false, true]) {
+        for (const { name, props, width, monthOnly } of layouts) {
+          it(`preserves ${name} dimensions with ${sixWeeks ? 'six' : 'five'} weeks in ${dir}`, () => {
+            const date = sixWeeks ? new Date(2020, 7, 18) : today;
+            const dayHeight = sixWeeks ? 248 : 220;
+            const sideBySide = props.layout === 'sideBySide';
+            const height = monthOnly ? 241 : sideBySide ? Math.max(dayHeight, 241) : dayHeight + 33;
+            mountFluent(<Calendar today={date} defaultValue={date} {...props} />, dir);
+
+            cy.get(`.${calendarClassNames.root}`).should(elements => {
+              const root = elements[0];
+              const bounds = root.getBoundingClientRect();
+              expect(bounds.width).to.equal(width);
+              expect(bounds.height).to.equal(height);
+              const action = root.querySelector<HTMLButtonElement>(goToToday)!;
+              const actionBounds = action.getBoundingClientRect();
+              const actionStyles = getComputedStyle(action);
+              expect(actionBounds.height).to.equal(30);
+              expect(actionStyles.marginTop).to.equal('3px');
+              expect(actionStyles.lineHeight).to.equal('30px');
+
+              if (sideBySide) {
+                const dayPicker = root.querySelector<HTMLElement>(`.${calendarDayClassNames.root}`)!;
+                const monthPicker = root.querySelector<HTMLElement>(`.${calendarMonthClassNames.root}`)!;
+                const dayBounds = dayPicker.getBoundingClientRect();
+                const monthBounds = monthPicker.getBoundingClientRect();
+                expect(dayBounds.width).to.equal(props.showWeekNumbers ? 250 : 220);
+                expect(monthBounds.width).to.equal(220);
+                expect(
+                  dir === 'ltr' ? monthBounds.left - dayBounds.right : dayBounds.left - monthBounds.right,
+                ).to.equal(1);
+              }
+            });
+          });
+        }
+      }
+    }
+
+    it('does not reserve action space when the action is hidden', () => {
+      mountFluent(<Calendar today={today} defaultValue={today} layout="sideBySide" goToTodayButton={null} />);
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(440);
+        expect(bounds.height).to.equal(220);
+      });
+      cy.get(goToToday).should('not.exist');
+    });
+
+    it('retains the single-picker footprint when overlay navigation switches views', () => {
+      mountFluent(<Calendar today={today} defaultValue={today} layout="overlay" />);
+      cy.get(heading).click();
+      cy.get(`.${calendarMonthClassNames.root}`).should('be.visible');
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(220);
+        expect(bounds.height).to.equal(241);
+      });
+      cy.get(`.${calendarMonthClassNames.heading}`).click();
+      cy.get(`.${calendarClassNames.root}`).should(elements => {
+        const bounds = elements[0].getBoundingClientRect();
+        expect(bounds.width).to.equal(220);
+        expect(bounds.height).to.equal(241);
+      });
+    });
+
+    it('preserves consumer root and action sizing overrides', () => {
+      mountFluent(
+        <Calendar
+          today={today}
+          defaultValue={today}
+          style={{ width: 500 }}
+          goToTodayButton={{ style: { height: 40, lineHeight: '40px', marginTop: 0 } }}
+        />,
+      );
+      cy.get(`.${calendarClassNames.root}`).should('have.css', 'width', '500px');
+      cy.get(goToToday).should('have.css', 'height', '40px').and('have.css', 'margin-top', '0px');
+    });
+  });
+
   describe('day grid keyboard navigation', () => {
     it('keeps enclosing day-label callbacks when a nested Calendar handles an arrow', () => {
       const onOuterKeyDown = cy.stub().as('onOuterKeyDown');
