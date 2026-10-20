@@ -27,6 +27,21 @@ describe('CalendarMonth', () => {
     expect(() => render(<CalendarMonth {...defaultProps} />)).not.toThrow();
   });
 
+  it.each([null, undefined])('preserves navigation children=%s', children => {
+    const { container } = render(
+      <CalendarMonth {...defaultProps} previousYearButton={{ children }} nextYearButton={{ children }} />,
+    );
+    const buttons = Array.from(container.querySelectorAll('button[title]'));
+    expect(buttons).toHaveLength(2);
+    for (const button of buttons) {
+      if (children === undefined) {
+        expect(button.querySelector('svg')).not.toBeNull();
+      } else {
+        expect(button).toBeEmptyDOMElement();
+      }
+    }
+  });
+
   it.each([false, true])('forwards focus options with year picker open=%s', yearPickerOpen => {
     const ref = React.createRef<CalendarMonthHandle>();
     const { getByRole } = render(<CalendarMonth {...defaultProps} ref={ref} />);

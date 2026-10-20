@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: handle TypeScript declare class fields without aborting analysis",
-  "packageName": "@fluentui/react-compiler-analyzer",
-  "email": "martinhochel@microsoft.com"
-}
