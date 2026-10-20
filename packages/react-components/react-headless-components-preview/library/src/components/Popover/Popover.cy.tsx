@@ -321,6 +321,9 @@ describe('automatic focus-exit dismissal', () => {
       cy.get<HTMLIFrameElement>('[data-testid=outside-frame]')
         .its('0.contentDocument.readyState')
         .should('equal', 'complete');
+      cy.get<HTMLIFrameElement>('[data-testid=outside-frame]').should(frames => {
+        expect(frames[0].contentDocument?.querySelector('#control')).not.to.be.null;
+      });
       cy.get('[data-testid=inside]').focus().realPress('Tab');
       cy.get<HTMLIFrameElement>('[data-testid=outside-frame]').should($frame => {
         expect($frame[0].contentDocument?.activeElement?.id).to.equal('control');
@@ -355,6 +358,9 @@ describe('automatic focus-exit dismissal', () => {
     cy.get<HTMLIFrameElement>('[data-testid=inside-frame]')
       .its('0.contentDocument.readyState')
       .should('equal', 'complete');
+    cy.get<HTMLIFrameElement>('[data-testid=inside-frame]').should(frames => {
+      expect(frames[0].contentDocument?.querySelector('#control')).not.to.be.null;
+    });
     cy.get('[data-testid=inside]').focus().realPress('Tab');
     cy.get<HTMLIFrameElement>('[data-testid=inside-frame]').should($frame => {
       expect($frame[0].contentDocument?.activeElement?.id).to.equal('control');

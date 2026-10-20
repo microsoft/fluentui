@@ -4426,6 +4426,7 @@ __metadata:
     "@fluentui/react-overflow": "npm:^9.9.4"
     "@fluentui/react-persona": "npm:^9.7.10"
     "@fluentui/react-popover": "npm:^9.14.9"
+    "@fluentui/react-portal": "npm:^9.8.16"
     "@fluentui/react-positioning": "npm:^9.23.3"
     "@fluentui/react-progress": "npm:^9.5.6"
     "@fluentui/react-provider": "npm:^9.22.21"

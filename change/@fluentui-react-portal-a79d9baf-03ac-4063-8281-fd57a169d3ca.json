@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: establish portal virtual ownership during layout for focus observers",
+  "packageName": "@fluentui/react-portal",
+  "email": "paulmardling@microsoft.com"
+}
