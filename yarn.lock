@@ -4742,7 +4742,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-jsx-runtime@npm:^9.4.7, @fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime":
+"@fluentui/react-jsx-runtime@npm:^9.4.6, @fluentui/react-jsx-runtime@npm:^9.4.7, @fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-jsx-runtime@workspace:packages/react-components/react-jsx-runtime"
   dependencies:
@@ -6257,7 +6257,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.27.0, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
+"@fluentui/react-utilities@npm:*, @fluentui/react-utilities@npm:^9.26.7, @fluentui/react-utilities@npm:^9.27.0, @fluentui/react-utilities@workspace:packages/react-components/react-utilities":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-utilities@workspace:packages/react-components/react-utilities"
   dependencies:
