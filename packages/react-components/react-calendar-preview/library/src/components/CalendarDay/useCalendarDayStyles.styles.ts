@@ -2,6 +2,7 @@
 
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { calendarGridWidth, calendarGridWidthWithWeekNumbers } from '../../utils/calendarDimensions';
 import { useCalendarContext_unstable } from '../../contexts/calendarContext';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDaySlots, CalendarDayState } from './CalendarDay.types';
@@ -27,7 +28,7 @@ const useRootStyles = makeStyles({
   base: {
     boxSizing: 'content-box',
     padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
-    width: '196px',
+    width: calendarGridWidth,
   },
   normalize: {
     boxShadow: 'none',
@@ -36,7 +37,7 @@ const useRootStyles = makeStyles({
     padding: '0',
   },
   showWeekNumbers: {
-    width: '226px',
+    width: calendarGridWidthWithWeekNumbers,
   },
 });
 
@@ -60,10 +61,10 @@ const useGridStyles = makeStyles({
     position: 'relative',
     tableLayout: 'fixed',
     textAlign: 'center',
-    width: '196px',
+    width: calendarGridWidth,
   },
   showWeekNumbers: {
-    width: '226px',
+    width: calendarGridWidthWithWeekNumbers,
   },
 });
 

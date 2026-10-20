@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
 import type { ResolvedPlaygroundRuntimeManifest } from './runtime';
 import {
   CONSOLE_MESSAGES_PER_SECOND,
   PLAYGROUND_REGISTER_CALLBACK,
+  PLAYGROUND_SCRIPT_LOADER_CALLBACK,
   createSandboxContentSecurityPolicy,
   createSandboxDocument,
 } from './sandbox';
@@ -17,8 +19,8 @@ const manifest: ResolvedPlaygroundRuntimeManifest = {
   typings: 'https://example.com/typings.json',
 };
 
-function getBootstrap(token: string, parentOrigin?: string): string {
-  const documentSource = createSandboxDocument(manifest, token, parentOrigin);
+function getBootstrap(token: string, parentOrigin?: string, runtimeManifest = manifest): string {
+  const documentSource = createSandboxDocument(runtimeManifest, token, parentOrigin);
   const sandboxDocument = new DOMParser().parseFromString(documentSource, 'text/html');
   const bootstrap = sandboxDocument.querySelector('script:not([src])')?.textContent;
   if (!bootstrap) {
@@ -52,11 +54,11 @@ function createRuntime(render: jest.Mock) {
   };
 }
 
-function loadBootstrap(token: string, parentOrigin?: string) {
+function loadBootstrap(token: string, parentOrigin?: string, runtimeManifest = manifest) {
   document.body.innerHTML = '<div id="root"></div>';
   // The production bootstrap is generated JavaScript that must execute inside the iframe global.
   // eslint-disable-next-line no-eval
-  window.eval(getBootstrap(token, parentOrigin));
+  window.eval(getBootstrap(token, parentOrigin, runtimeManifest));
   return (window as unknown as Record<string, (runtime: unknown) => void>)[PLAYGROUND_REGISTER_CALLBACK];
 }
 
@@ -151,6 +153,139 @@ describe('sandbox bootstrap', () => {
   afterEach(() => {
     postMessage.mockRestore();
     Object.assign(console, consoleMethods);
+    Reflect.deleteProperty(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
+    document.querySelectorAll('style[data-href]').forEach(style => style.remove());
+  });
+
+  it('installs inlined CSS before runtime loading and identifies it for the native lazy CSS loader', () => {
+    const baseUrl = 'https://example.com/storybook/';
+    const href = `${baseUrl}styles/lazy.css`;
+    const cssText = 'body::before { content: "</script><script>not JavaScript</script>"; }';
+    const runtimeManifest = { ...manifest, baseUrl, inlineStyles: [{ href, cssText }] };
+    const source = new DOMParser().parseFromString(createSandboxDocument(runtimeManifest, 'css-token'), 'text/html');
+    expect(source.querySelectorAll('script')).toHaveLength(1);
+
+    loadBootstrap('css-token', 'https://example.com', runtimeManifest);
+    const style = document.head.querySelector<HTMLStyleElement>('style[data-href]');
+    expect(style?.getAttribute('data-href')).toBe('styles/lazy.css');
+    expect(style?.textContent).toBe(cssText);
+    expect(document.head.querySelectorAll('link[rel="stylesheet"]')).toHaveLength(0);
+  });
+
+  it('executes bridged script text only after an authenticated shell response and retains its public path', async () => {
+    const url = 'https://example.com/lazy.js';
+    const done = jest.fn();
+    const append = jest.spyOn(document.head, 'appendChild').mockImplementation(node => {
+      if (isHTMLElement(node) && node.tagName === 'SCRIPT') {
+        // eslint-disable-next-line no-eval
+        window.eval(node.textContent ?? '');
+      }
+      return node;
+    });
+    try {
+      loadBootstrap('script-token', 'https://example.com', { ...manifest, allowedScriptFiles: [url] });
+      const load = Reflect.get(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
+      expect(load('/lazy.js', done)).toBe(true);
+      expect(postMessage).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'script-request', requestId: 1, url }),
+        'https://example.com',
+      );
+      const response = {
+        source: 'fluentui-playground',
+        type: 'script-response',
+        requestId: 1,
+        scriptSource: `document.body.dataset.scriptBase = window[${JSON.stringify(
+          PLAYGROUND_SCRIPT_LOADER_CALLBACK,
+        )}].publicPath;`,
+      };
+      window.dispatchEvent(
+        new MessageEvent('message', { source: window.parent, data: { ...response, token: 'incorrect' } }),
+      );
+      window.dispatchEvent(new MessageEvent('message', { source: null, data: { ...response, token: 'script-token' } }));
+      await Promise.resolve();
+      expect(append).not.toHaveBeenCalled();
+
+      window.dispatchEvent(
+        new MessageEvent('message', { source: window.parent, data: { ...response, token: 'script-token' } }),
+      );
+      await Promise.resolve();
+      await Promise.resolve();
+      expect(document.body.dataset.scriptBase).toBe(manifest.baseUrl);
+      expect(append).toHaveBeenCalledTimes(1);
+      expect(done).toHaveBeenCalledWith(expect.objectContaining({ type: 'load', target: { src: url } }));
+      expect(load.publicPath).toBeUndefined();
+      expect(load('https://example.com/private', jest.fn())).toBe(false);
+    } finally {
+      append.mockRestore();
+    }
+  });
+
+  it.each([
+    {
+      name: 'legacy manifests',
+      runtimeManifest: {
+        ...manifest,
+        scripts: ['https://example.com/runtime.js', 'https://example.com/vendor.js', 'https://example.com/entry.js'],
+      },
+    },
+    {
+      name: 'external runtime assets',
+      runtimeManifest: {
+        ...manifest,
+        scripts: ['https://cdn.example.net/entry.js'],
+        allowedScriptFiles: ['https://cdn.example.net/entry.js'],
+      },
+    },
+  ])('retains ordered native script loading for $name', async ({ runtimeManifest }) => {
+    const scripts: HTMLElement[] = [];
+    const append = jest.spyOn(document.head, 'appendChild').mockImplementation(node => {
+      if (isHTMLElement(node) && node.tagName === 'SCRIPT') {
+        scripts.push(node);
+      }
+      return node;
+    });
+    try {
+      loadBootstrap('native-script-token', 'https://example.com', runtimeManifest);
+      for (let index = 0; index < runtimeManifest.scripts.length; index++) {
+        expect(scripts.map(script => script.getAttribute('src'))).toEqual(runtimeManifest.scripts.slice(0, index + 1));
+        scripts[index].dispatchEvent(new Event('load'));
+        await Promise.resolve();
+      }
+
+      expect(postMessage).not.toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'script-request' }),
+        expect.anything(),
+      );
+    } finally {
+      append.mockRestore();
+    }
+  });
+
+  it('propagates a bridged script failure instead of reporting a successful load', async () => {
+    const url = 'https://example.com/lazy.js';
+    const done = jest.fn();
+    loadBootstrap('script-error-token', 'https://example.com', { ...manifest, allowedScriptFiles: [url] });
+    const load = Reflect.get(window, PLAYGROUND_SCRIPT_LOADER_CALLBACK);
+    load(url, done);
+
+    window.dispatchEvent(
+      new MessageEvent('message', {
+        source: window.parent,
+        data: {
+          source: 'fluentui-playground',
+          token: 'script-error-token',
+          type: 'script-response',
+          requestId: 1,
+          error: 'Runtime asset unavailable',
+        },
+      }),
+    );
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(done).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'error', error: new Error('Runtime asset unavailable') }),
+    );
   });
 
   it('targets the shell origin when it is known', async () => {

@@ -72,6 +72,11 @@ export const useSliderBase_unstable = (props: SliderBaseProps, ref: React.Ref<HT
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
 
+  // Apply after slot resolution so an explicitly undefined slot attribute also receives the default.
+  if (state.input['aria-orientation'] === undefined) {
+    state.input['aria-orientation'] = state.vertical ? 'vertical' : 'horizontal';
+  }
+
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useSliderState_unstable(state, props);

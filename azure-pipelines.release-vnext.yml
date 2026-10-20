@@ -71,12 +71,12 @@ extends:
                         BEACHBALL_GIT_TOKEN: $(createToken.GITHUB_APP_TOKEN)
                         BEACHBALL_NPM_TOKEN: $(npmToken)
                       displayName: Publish changes and bump versions
-                      condition: not(${{ parameters.dryRun }})
+                      condition: and(succeeded(), not(${{ parameters.dryRun }}))
 
               - script: |
                   node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
-                condition: not(${{ parameters.dryRun }})
+                condition: and(succeeded(), not(${{ parameters.dryRun }}))
                 env:
                   TOKEN: $(npmToken)

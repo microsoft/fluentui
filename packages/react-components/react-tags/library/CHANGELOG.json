@@ -2,6 +2,40 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Mon, 19 Oct 2026 16:49:01 GMT",
+      "version": "9.9.8",
+      "tag": "@fluentui/react-tags_v9.9.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.17.16"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.11.9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.9.7",
       "tag": "@fluentui/react-tags_v9.9.7",

@@ -10,7 +10,8 @@ export type CalendarDayGridHeaderRowSlots = {
   root: NonNullable<Slot<'tr'>>;
 
   /**
-   * The empty leading cell above the week numbers. Only rendered while the grid shows week numbers.
+   * The empty leading cell above the week numbers, with presentation semantics by default.
+   * Only rendered while the grid shows week numbers.
    */
   weekNumberSpacerCell?: Slot<'th'>;
 };
