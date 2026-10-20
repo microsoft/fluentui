@@ -39,17 +39,28 @@ export function useCalendarGridTabStop<T extends HTMLElement = HTMLDivElement>(
       return;
     }
     const cells = getCalendarGridCells(grid);
-    const canHoldTabStop = (cell: HTMLElement | null | undefined): cell is HTMLElement =>
-      !!cell && cells.includes(cell) && cell.hasAttribute('tabindex') && isCalendarCellFocusable(cell, allFocusable);
+    const canHoldTabStop = (cell: HTMLElement | null | undefined, includeHidden = false): cell is HTMLElement =>
+      !!cell &&
+      cells.includes(cell) &&
+      cell.hasAttribute('tabindex') &&
+      isCalendarCellFocusable(cell, allFocusable, includeHidden);
     if (canHoldTabStop(tabStop)) {
       applyTabStop(grid, tabStop);
     } else {
       const navigatedCell = getNavigatedCell(grid);
-      const nextTabStop = canHoldTabStop(navigatedCell) ? navigatedCell : cells.find(canHoldTabStop);
-      // A hidden panel may be revealed without rerendering this picker. Keep its existing stop until then.
+      const nextTabStop = canHoldTabStop(navigatedCell) ? navigatedCell : cells.find(cell => canHoldTabStop(cell));
       if (nextTabStop) {
         tabStopRef.current = null;
         applyTabStop(grid, nextTabStop);
+      } else {
+        // Hidden panels can update and reveal without another render. Normalize their logical stop too.
+        const hiddenTabStop = canHoldTabStop(tabStop, true)
+          ? tabStop
+          : canHoldTabStop(navigatedCell, true)
+          ? navigatedCell
+          : cells.find(cell => canHoldTabStop(cell, true));
+        tabStopRef.current = hiddenTabStop === tabStop ? tabStop : null;
+        applyTabStop(grid, hiddenTabStop ?? null);
       }
     }
   });

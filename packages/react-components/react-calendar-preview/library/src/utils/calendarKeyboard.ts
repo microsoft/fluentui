@@ -78,15 +78,18 @@ export const isCalendarGridArrow = (event: React.KeyboardEvent): boolean =>
   isCalendarArrowKey(event.key) && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
 
 /**
- * Whether a cell can be the target of keyboard focus.
+ * Whether a cell can be the target of keyboard focus. Hidden cells may retain a logical tab stop while a panel is hidden.
  */
-export const isCalendarCellFocusable = (cell: HTMLElement, allFocusable: boolean): boolean => {
+export const isCalendarCellFocusable = (cell: HTMLElement, allFocusable: boolean, includeHidden = false): boolean => {
   if (
     !cell.isConnected ||
     cell.matches(':disabled') ||
     (!allFocusable && cell.getAttribute('aria-disabled') === 'true')
   ) {
     return false;
+  }
+  if (includeHidden) {
+    return true;
   }
   const targetWindow = cell.ownerDocument.defaultView;
   const visibility = targetWindow?.getComputedStyle(cell).visibility;

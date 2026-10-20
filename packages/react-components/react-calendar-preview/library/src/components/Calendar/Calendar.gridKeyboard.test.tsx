@@ -481,6 +481,93 @@ describe.each([
   );
 });
 
+describe.each([
+  {
+    name: 'base day',
+    Picker: BaseDay,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 8, 20) },
+    label: 'September 19, 2020',
+  },
+  {
+    name: 'styled day',
+    Picker: CalendarDay,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 8, 20) },
+    label: 'September 19, 2020',
+  },
+  {
+    name: 'base month',
+    Picker: BaseMonth,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 9, 18) },
+    label: 'November',
+  },
+  {
+    name: 'styled month',
+    Picker: CalendarMonth,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 9, 18) },
+    label: 'November',
+  },
+  { name: 'base year', Picker: BaseYear, props: { navigatedYear: 2020 }, next: { navigatedYear: 2021 }, label: '2022' },
+  {
+    name: 'styled year',
+    Picker: CalendarYear,
+    props: { navigatedYear: 2020 },
+    next: { navigatedYear: 2021 },
+    label: '2022',
+  },
+])('$name hidden panel updates', ({ Picker, props, next, label }) => {
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'normalizes its remembered tab stop when navigation changes under %s',
+    hiding => {
+      const element = (hidden: boolean, pickerProps: typeof props) => (
+        <>
+          <button type="button">Before panel</button>
+          <div
+            data-testid="panel"
+            hidden={hidden && hiding === 'hidden'}
+            style={
+              hidden && hiding === 'display'
+                ? { display: 'none' }
+                : hidden && hiding === 'visibility'
+                ? { visibility: 'hidden' }
+                : {}
+            }
+          >
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Picker {...pickerProps} />
+            </CalendarProvider>
+          </div>
+        </>
+      );
+      const { getByRole, getByTestId, rerender } = render(element(false, props));
+      const remembered = label.includes(',')
+        ? getByRole('button', { name: label }).closest<HTMLElement>('[role="gridcell"]')!
+        : getByRole('gridcell', { name: label });
+      act(() => remembered.focus());
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+      rerender(element(true, props));
+      rerender(element(true, next));
+
+      const panel = getByTestId('panel');
+      expect(panel.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+      expect(remembered).toHaveAttribute('tabindex', '0');
+      panel.hidden = false;
+      panel.style.removeProperty('display');
+      panel.style.removeProperty('visibility');
+
+      for (let step = 0; step < 5 && remembered.ownerDocument.activeElement !== remembered; step++) {
+        userEvent.tab();
+      }
+
+      expect(remembered).toHaveFocus();
+    },
+  );
+});
+
 describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', picker => {
   describe.each([
     { name: 'base', base: true },
