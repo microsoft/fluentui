@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components",
+  "packageName": "@fluentui/react-calendar-preview",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

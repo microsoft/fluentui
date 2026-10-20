@@ -6,7 +6,6 @@ export const CALENDAR_GRID_COLUMNS = 4;
 
 // The grid supplies the focused date while Calendar retains ownership of paging and consumer cancellation.
 const navigationDates = new WeakMap<Event, Date>();
-const capturedArrows = new WeakSet<Event>();
 
 export const setCalendarNavigationDate = (event: Event, date: Date): void => {
   navigationDates.set(event, date);
@@ -41,88 +40,57 @@ export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean 
   return false;
 };
 
-export const getCalendarRootActiveElement = (element: HTMLElement): Element | null => {
-  const root = element.getRootNode();
-  if (root.nodeType === 9) {
-    return (root as Document).activeElement;
+/**
+ * Lists the cells owned by a grid, skipping the cells of any grid nested inside it.
+ */
+export const getCalendarGridCells = (grid: Element): HTMLElement[] =>
+  Array.from(grid.querySelectorAll<HTMLElement>('[role="gridcell"]')).filter(
+    cell => cell.closest('[role="grid"]') === grid,
+  );
+
+/**
+ * Resolves the cell of the grid handling `event`, ignoring events from nested grids, focus groups and editable content.
+ */
+export const getCalendarGridCell = (event: React.SyntheticEvent<HTMLElement>): HTMLElement | undefined => {
+  const { currentTarget: grid, target } = event;
+  if (!isHTMLElement(target) || isCalendarKeyboardEditable(target)) {
+    return undefined;
   }
-  if (root.nodeType === 11 && 'host' in root) {
-    return (root as ShadowRoot).activeElement;
-  }
-  return null;
+  const cell = target.closest<HTMLElement>('[role="gridcell"]');
+  return cell && cell.closest('[role="grid"]') === grid && target.closest('[role="grid"], [focusgroup]') === grid
+    ? cell
+    : undefined;
 };
 
 export const isCalendarArrowKey = (key: string): boolean =>
   key === ArrowDown || key === ArrowLeft || key === ArrowRight || key === ArrowUp;
 
-export const isCalendarGridCellEvent = (event: React.KeyboardEvent<HTMLElement>): boolean => {
-  const grid = event.currentTarget.closest('[role="grid"]');
-  return (
-    !!grid &&
-    isHTMLElement(event.target) &&
-    !isCalendarKeyboardEditable(event.target) &&
-    event.target.closest('[role="gridcell"]') === event.currentTarget &&
-    event.target.closest('[role="grid"], [focusgroup]') === grid
-  );
+/**
+ * Whether the key event is an arrow without modifiers, which the grids own.
+ */
+export const isCalendarGridArrow = (event: React.KeyboardEvent): boolean =>
+  isCalendarArrowKey(event.key) && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
+
+/**
+ * Whether a cell can be the target of keyboard focus.
+ */
+export const isCalendarCellFocusable = (cell: HTMLElement, allFocusable: boolean): boolean =>
+  !cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true');
+
+const getActiveElement = (element: HTMLElement): Element | null => {
+  const root = element.getRootNode() as Document | ShadowRoot;
+  return 'activeElement' in root ? root.activeElement : null;
 };
 
-export const isCalendarGridArrow = (event: React.KeyboardEvent<HTMLElement>): boolean =>
-  isCalendarArrowKey(event.key) &&
-  !event.altKey &&
-  !event.ctrlKey &&
-  !event.metaKey &&
-  !event.shiftKey &&
-  isCalendarGridCellEvent(event);
-
-const withCurrentTarget = <T extends HTMLElement>(
+/**
+ * Moves focus through a four-column month or year grid without wrapping rows, skipping unavailable cells.
+ */
+export const moveCalendarGridFocus = (
   event: React.KeyboardEvent<HTMLElement>,
-  currentTarget: T,
-): React.KeyboardEvent<T> =>
-  new Proxy(event, {
-    get: (target, property) => (property === 'currentTarget' ? currentTarget : Reflect.get(target, property, target)),
-  }) as React.KeyboardEvent<T>;
-
-export const getCalendarGridKeyDownHandlers = <T extends HTMLElement>(
-  onKeyDown: React.KeyboardEventHandler<T>,
-  onKeyDownCapture: React.KeyboardEventHandler<T> | undefined,
-  ownsArrow: (event: React.KeyboardEvent<T>) => boolean,
-): Required<Pick<React.DOMAttributes<T>, 'onKeyDown' | 'onKeyDownCapture'>> => ({
-  onKeyDownCapture: event => {
-    onKeyDownCapture?.(event);
-    if (event.isPropagationStopped() || !ownsArrow(event)) {
-      return;
-    }
-
-    // Dispatch before native grid bubbling, then suppress the later synthetic bubble.
-    capturedArrows.add(event.nativeEvent);
-    onKeyDown(event);
-    event.preventDefault();
-  },
-  onKeyDown: event => {
-    if (!capturedArrows.delete(event.nativeEvent)) {
-      onKeyDown(event);
-    }
-  },
-});
-
-export const invokeCalendarKeyboardHandler = <T extends HTMLElement>(
-  event: React.KeyboardEvent<HTMLElement>,
-  currentTarget: T,
-  handler: React.KeyboardEventHandler<T> | undefined,
-): void => {
-  handler?.(withCurrentTarget(event, currentTarget));
-};
-
-export const handleCalendarGridKeyDown = (
-  event: React.KeyboardEvent<HTMLButtonElement>,
+  cell: HTMLElement,
   dir: 'ltr' | 'rtl',
   allFocusable: boolean,
 ): void => {
-  const { currentTarget } = event;
-  if (event.isDefaultPrevented() || !isCalendarGridArrow(event)) {
-    return;
-  }
-
   let step: number;
   if (event.key === ArrowDown) {
     step = CALENDAR_GRID_COLUMNS;
@@ -135,18 +103,9 @@ export const handleCalendarGridKeyDown = (
   } else {
     return;
   }
-  const grid = currentTarget.closest('[role="grid"]');
-  if (!grid) {
-    return;
-  }
 
-  const cells = Array.from(grid.querySelectorAll<HTMLElement>('[role="gridcell"]')).filter(
-    cell => cell.closest('[role="grid"]') === grid,
-  );
-  const currentIndex = cells.indexOf(currentTarget);
-  if (currentIndex < 0) {
-    return;
-  }
+  const cells = getCalendarGridCells(event.currentTarget);
+  const currentIndex = cells.indexOf(cell);
 
   // Own boundary keys too so a native focusgroup cannot fall back to linear movement.
   event.preventDefault();
@@ -155,10 +114,10 @@ export const handleCalendarGridKeyDown = (
     if (Math.abs(step) === 1 && Math.floor(index / CALENDAR_GRID_COLUMNS) !== currentRow) {
       break;
     }
-    const cell = cells[index];
-    if (!cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true')) {
-      cell.focus();
-      if (getCalendarRootActiveElement(cell) === cell) {
+    const candidate = cells[index];
+    if (isCalendarCellFocusable(candidate, allFocusable)) {
+      candidate.focus();
+      if (getActiveElement(candidate) === candidate) {
         break;
       }
     }
