@@ -73,6 +73,7 @@ Positioning callbacks and imperative refs do not recreate the manager on callbac
 yarn nx run react-positioning:bundle-size --skip-nx-cache
 yarn nx run react-positioning:test-bundle-size
 yarn nx run react-positioning:test-raster
+yarn nx run react-positioning:benchmark
 ```
 
 The bundle gate runs the repository's monosize/webpack measurement for the existing
@@ -88,3 +89,21 @@ decoded RGBA pixel, including antialiasing, and writes its report to
 `dist/positioning-raster/comparison.json`. It does not update the pinned geometry expectations.
 This is bounded fixture coverage on the same browser and host display, not a guarantee of all
 option combinations, fonts, browsers, iframe/shadow-root targets, or mobile visual viewports.
+
+The performance target mounts 24 concurrent positioning instances per engine in the same Electron
+browser and compares against the unchanged Floating UI implementation from upstream lower PR
+`fca219991ed9e907b01274bd89ac1431e51c573a`.
+It warms up both engines, randomizes workload order, randomizes which engine runs first for
+imperative updates, and records paired initialization, imperative, window-scroll, and window-resize
+completion times. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
+autosizing. It measures completion through the actual `usePositioning` end-event path; setup is
+excluded from update timings, while initialization intentionally includes mount-to-all-positioned.
+
+The target reports per-workload median, p95, p10/p90, coefficient of variation, and paired
+replacement/oracle ratios. It enforces complete, finite, nonzero samples but intentionally has no
+machine-dependent performance pass/fail threshold. Run it on the same host/browser for meaningful
+comparisons; investigate workload-specific p95 or ratio regressions rather than relying only on
+an aggregate median. Set `POSITIONING_BENCH_SEED` to reproduce or vary the randomized order. The
+full samples and browser/machine metadata are written to
+`dist/positioning-perf/benchmark.json`; compare runs only with their recorded host and browser
+metadata in view.

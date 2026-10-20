@@ -33,6 +33,15 @@
       },
       "executor": "nx:run-commands"
     },
+    "benchmark": {
+      "cache": false,
+      "dependsOn": ["build", { "target": "build", "projects": "scripts-cypress" }],
+      "options": {
+        "cwd": "packages/react-components/react-positioning/library",
+        "command": "node scripts/positioning-benchmark.mjs"
+      },
+      "executor": "nx:run-commands"
+    },
     "e2e": {
       "inputs": ["default", "^production", "{projectRoot}/cypress.config.ts"]
     }
