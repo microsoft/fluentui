@@ -3,6 +3,10 @@ import { buildVegaViewTree, getVegaViewSourceSpec } from './VegaLiteViewTree';
 import type { VegaViewNode } from './VegaLiteViewTree';
 import { getVegaCenteredAreaGeometry } from './VegaLiteCenteredArea';
 import { getVegaRangedGeometry } from './VegaLiteRangedGeometry';
+import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
+import { parseVegaDataValues, resolveVegaLiteResources } from './VegaLiteResourceLoader';
+import { planVegaDeclarativeChartViews } from './VegaDeclarativeChartView';
+import { transformVegaLiteToLineChartProps } from './VegaLiteSchemaAdapter';
 import {
   missingFacetSpec,
   nestedConcatSpec,
@@ -34,6 +38,91 @@ function freeze(value: unknown): void {
 }
 
 describe('buildVegaViewTree', () => {
+  it.each(['legacy', 'strict'] as const)(
+    'prepares, expands, plans and adapts actual 100000 four-field rows in %s without DOM allocation',
+    async mode => {
+      const values = Array.from({ length: 100000 }, (_, x) =>
+        Object.freeze({ x, y: x % 10, series: 'A', label: `row-${x}` }),
+      );
+      const spec: VegaLiteSpec = {
+        mark: 'line',
+        data: { values, format: { parse: { x: 'number', y: 'number' } } },
+        transform: [{ calculate: 'datum.y', as: 'y' }],
+        encoding: { x: { field: 'x', type: 'quantitative' }, y: { field: 'y', type: 'quantitative' } },
+      };
+      expect(validateVegaLiteSpec(spec, { mode })).toEqual([]);
+      const parsed = parseVegaDataValues(spec.data!);
+      expect(parsed).toHaveLength(100000);
+      const resolved = await resolveVegaLiteResources(
+        { ...spec, data: { url: 'https://charts.example/full.json', format: spec.data!.format } },
+        {
+          resolveData: async () => values,
+          signal: new AbortController().signal,
+          allowedOrigins: ['https://charts.example'],
+        },
+      );
+      expect(resolved.data!.values).toHaveLength(100000);
+      expect(validateVegaLiteSpec(resolved, { mode })).toEqual([]);
+      for (const source of [spec, resolved]) {
+        const tree = buildVegaViewTree(source, { mode });
+        const [cell] = units(tree);
+        expect(cell.spec.data!.values).toHaveLength(100000);
+        expect(cell.spec.encoding!.x!.scale!.domain).toEqual([0, 99999]);
+        expect(cell.spec.encoding!.y!.scale!.domain).toEqual([0, 9]);
+        const colorMap = { current: new Map<string, string>() };
+        const plan = planVegaDeclarativeChartViews(tree, source, colorMap, false, mode);
+        if (plan.type !== 'unit') {
+          throw new Error('Expected one prepared native unit');
+        }
+        const props = transformVegaLiteToLineChartProps(plan.nativeSpec, colorMap, false, { mode });
+        const points = props.data!.lineChartData!.flatMap(series => series.data);
+        expect(points).toHaveLength(100000);
+        expect(points[99999]).toMatchObject({ x: 99999, y: 9 });
+        expect(source.data!.values![99999]).toEqual(values[99999]);
+      }
+      expect(() => buildVegaViewTree({ ...spec, data: { values: [...values, values[0]] } }, { mode })).toThrow(
+        /row.*limit/i,
+      );
+    },
+  );
+
+  it.each(['legacy', 'strict'] as const)(
+    'rebuilds sampled views independently with identical native points in %s',
+    mode => {
+      const spec: VegaLiteSpec = {
+        mark: 'line',
+        data: { values: Array.from({ length: 1000 }, (_, x) => ({ x, y: x })) },
+        transform: [{ sample: 50 }],
+        encoding: { x: { field: 'x', type: 'quantitative' }, y: { field: 'y', type: 'quantitative' } },
+      };
+      const random = jest.spyOn(Math, 'random').mockImplementation(() => {
+        throw new Error('global random during independent builds');
+      });
+      try {
+        const build = () => {
+          const [cell] = units(buildVegaViewTree(spec, { mode }));
+          return transformVegaLiteToLineChartProps(getVegaViewSourceSpec(cell.spec), { current: new Map() }, false, {
+            mode,
+          }).data;
+        };
+        expect(build()).toEqual(build());
+        expect(random).not.toHaveBeenCalled();
+      } finally {
+        random.mockRestore();
+      }
+    },
+  );
+
+  it('charges cumulative text copies while accepting one maximum-length metadata string', () => {
+    const spec: VegaLiteSpec = {
+      mark: 'point',
+      data: { values: [{ x: 1, y: 2, label: 'a'.repeat(10000000), series: 'A' }] },
+      encoding: { x: { field: 'x', type: 'quantitative' }, y: { field: 'y', type: 'quantitative' } },
+    };
+    expect(units(buildVegaViewTree(spec))[0].spec.data!.values).toHaveLength(1);
+    expect(() => buildVegaViewTree({ hconcat: Array.from({ length: 9 }, () => spec) })).toThrow(/work.*limit/i);
+  });
+
   describe('inferred positional extents', () => {
     const centered: VegaLiteSpec = {
       mark: 'area',

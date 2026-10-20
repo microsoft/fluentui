@@ -3,6 +3,7 @@ import { aggregateVegaValues, applyVegaTransforms, prepareVegaLiteSpec } from '.
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import type { VegaDataParseOptions } from './VegaLiteResourceLoader';
+import { VEGA_MAX_DATA_ROWS, VEGA_MAX_PIPELINE_WORK, VEGA_MAX_TEXT_LENGTH } from './VegaLiteBudgets';
 
 /** A layered chart remains one unit; composition, not renderer selection, determines the tree. */
 export type VegaViewNode =
@@ -80,15 +81,15 @@ function clone<T>(
   charge: (work: number) => void = (() => {
     let work = 0;
     return (amount: number) => {
-      if ((work += amount) > 2000000) {
+      if ((work += amount) > VEGA_MAX_PIPELINE_WORK) {
         throw new Error('Vega spec work limit exceeded');
       }
     };
   })(),
   ancestors = new Set<object>(),
   depth = 0,
-  maxTextLength = 10000000,
-  maxRows = 100000,
+  maxTextLength = VEGA_MAX_TEXT_LENGTH,
+  maxRows = VEGA_MAX_DATA_ROWS,
 ): T {
   charge(1 + (typeof value === 'string' ? value.length : 0));
   if (typeof value === 'string' && value.length > maxTextLength) {
@@ -509,9 +510,9 @@ function layerFields(spec: RecordValue, channel: Channel, charge?: (work: number
 export function buildVegaViewTree(spec: VegaLiteSpec, options: ModeOptions = {}): VegaViewNode {
   const maxViews = options.maxViews ?? 10000;
   const maxDepth = options.maxDepth ?? 64;
-  const maxRows = options.maxRows ?? 100000;
-  const maxTextLength = options.maxTextLength ?? 10000000;
-  let remaining = options.maxWork ?? 2000000;
+  const maxRows = options.maxRows ?? VEGA_MAX_DATA_ROWS;
+  const maxTextLength = options.maxTextLength ?? VEGA_MAX_TEXT_LENGTH;
+  let remaining = options.maxWork ?? VEGA_MAX_PIPELINE_WORK;
   if (
     [maxViews, maxDepth, maxRows, maxTextLength, remaining].some(limit => !Number.isSafeInteger(limit) || limit < 0)
   ) {
@@ -534,8 +535,21 @@ export function buildVegaViewTree(spec: VegaLiteSpec, options: ModeOptions = {})
   const sources: Array<{ prepared: VegaLiteSpec; source: VegaLiteSpec }> = [];
 
   const parseData = (data: VegaLiteData): RecordValue[] => {
+    const values = own(data, 'values');
+    const format = own(data, 'format');
+    if (typeof values === 'string') {
+      spend(values.length);
+    }
+    const property = own(format, 'property');
+    if (typeof property === 'string') {
+      spend(property.length);
+    }
     const rows = parseVegaDataValues(data, { maxRows, maxTextLength, maxWork: remaining });
-    return copy(rows);
+    const parse = record(own(format, 'parse'));
+    spend(rows.length * Object.keys(parse).reduce((total, key) => total + key.length + 1, 0));
+    // The parser makes a descriptor copy too. Charge both its row copy and ours to this build's
+    // cumulative budget, not a fresh per-source allowance. No extra measuring copy is allocated.
+    return clone(rows, work => spend(2 * work), new Set(), 0, maxTextLength, maxRows);
   };
   const readData = (
     value: unknown,

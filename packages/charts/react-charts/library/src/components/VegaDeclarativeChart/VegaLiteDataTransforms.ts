@@ -4,13 +4,21 @@ import { aggregateVegaStatistic, densityVegaRows, loessVegaRows } from './VegaLi
 import { extent as dataExtent } from 'd3-array';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import {
+  VEGA_MAX_CLONE_NODES,
+  VEGA_MAX_DATA_ROWS,
+  VEGA_MAX_DATA_WORK,
+  VEGA_MAX_PIPELINE_WORK,
+  VEGA_MAX_SEMANTIC_OPERATIONS,
+  VEGA_MAX_TEXT_LENGTH,
+} from './VegaLiteBudgets';
 
 export type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 export { readVegaField } from './VegaLiteField';
 
-const WORKBUDGET = 2000000;
+const WORKBUDGET = VEGA_MAX_SEMANTIC_OPERATIONS;
 const workBudget = Symbol('Vega semantic work budget');
-type SemanticContext = VegaSemanticOptions & { [workBudget]?: { remaining: number } };
+type SemanticContext = VegaSemanticOptions & { [workBudget]?: { remaining: number; copying: number } };
 class SemanticError extends Error {
   public readonly code: 'WORKBUDGET' | 'UNSUPPORTED' | 'INVALID';
 
@@ -25,7 +33,9 @@ class SemanticError extends Error {
 }
 const context = (options?: VegaSemanticOptions): SemanticContext => {
   const current = options as SemanticContext | undefined;
-  return current?.[workBudget] ? current : { ...options, [workBudget]: { remaining: WORKBUDGET } };
+  return current?.[workBudget]
+    ? current
+    : { ...options, [workBudget]: { remaining: WORKBUDGET, copying: VEGA_MAX_PIPELINE_WORK } };
 };
 const spend = (options: VegaSemanticOptions | undefined, amount: number): void => {
   const budget = (options as SemanticContext | undefined)?.[workBudget];
@@ -49,14 +59,23 @@ const fail = (options: VegaSemanticOptions | undefined, message: string): void =
 };
 
 /** Descriptor-based clone: preserves Dates, cycles and own keys, never executes user code. */
-function clone<T>(input: T, expression = false, options?: VegaSemanticOptions): T {
+function clone<T>(input: T, expression = false, options?: VegaSemanticOptions, operationWork = false): T {
   const seen = new WeakMap<object, unknown>();
   let nodes = 0;
   let work = 0;
-  const visit = (value: unknown, depth: number): unknown => {
-    spend(options, 1);
-    if (++work > WORKBUDGET) {
+  const charge = (amount: number): void => {
+    const budget = (options as SemanticContext | undefined)?.[workBudget];
+    if ((work += amount) > VEGA_MAX_DATA_WORK || (budget && (budget.copying -= amount) < 0)) {
       throw new SemanticError('clone work limit exceeded');
+    }
+    if (operationWork) {
+      spend(options, amount);
+    }
+  };
+  const visit = (value: unknown, depth: number): unknown => {
+    charge(1 + (typeof value === 'string' ? value.length : 0));
+    if (typeof value === 'string' && value.length > VEGA_MAX_TEXT_LENGTH) {
+      throw new SemanticError('clone text limit exceeded');
     }
     if (typeof value === 'function' || typeof value === 'symbol') {
       return undefined;
@@ -64,7 +83,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions): 
     if (!value || typeof value !== 'object') {
       return value;
     }
-    if (depth > 100 || ++nodes > 100000) {
+    if (depth > 100 || ++nodes > VEGA_MAX_CLONE_NODES) {
       throw new SemanticError('clone depth/work limit exceeded');
     }
     if (seen.has(value)) {
@@ -74,7 +93,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions): 
       return new Date(Date.prototype.getTime.call(value));
     }
     if (Array.isArray(value)) {
-      spend(options, own(value, 'length') as number);
+      charge(own(value, 'length') as number);
     }
     // Preserve sparse trailing slots without reading inherited indices or array getters.
     const result: VegaDataRow | unknown[] = Array.isArray(value)
@@ -86,6 +105,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions): 
     for (const key of Object.keys(value)) {
       const descriptor = Object.getOwnPropertyDescriptor(value, key);
       if (descriptor && 'value' in descriptor && typeof descriptor.value !== 'function') {
+        charge(key.length);
         put(result as VegaDataRow, key, visit(descriptor.value, depth + 1));
       }
     }
@@ -176,7 +196,7 @@ export function aggregateVegaValues(
         }),
       ).size;
     case 'values':
-      return clone(rows);
+      return clone(rows, false, options);
     case 'min':
     case 'max':
     case 'argmin':
@@ -192,7 +212,11 @@ export function aggregateVegaValues(
           index = i;
         }
       });
-      return name.startsWith('arg') ? (index < 0 ? undefined : clone(rows[index])) : clone(best);
+      return name.startsWith('arg')
+        ? index < 0
+          ? undefined
+          : clone(rows[index], false, options)
+        : clone(best, false, options);
     }
     case 'sum':
     case 'product':
@@ -290,13 +314,13 @@ function groups(rows: VegaDataRow[], groupby: string[]): Group[] {
   }
   return result;
 }
-function groupRow(group: Group, groupby: string[]): VegaDataRow {
+function groupRow(group: Group, groupby: string[], options?: VegaSemanticOptions): VegaDataRow {
   const row: VegaDataRow = {};
-  groupby.forEach((field, i) => put(row, field, clone(group.keys[i])));
+  groupby.forEach((field, i) => put(row, field, clone(group.keys[i], false, options)));
   return row;
 }
 
-function expression(expr: string, row: VegaDataRow): unknown {
+function expression(expr: string, row: VegaDataRow, options?: VegaSemanticOptions): unknown {
   if (expr.length > 10000) {
     throw new SemanticError('expression work limit exceeded');
   }
@@ -362,7 +386,7 @@ function expression(expr: string, row: VegaDataRow): unknown {
     }
   }
   // Null-prototype expression objects cannot invoke user-supplied coercion hooks.
-  return safeEvaluateExpression(expr, clone(row, true));
+  return safeEvaluateExpression(expr, clone(row, true, options));
 }
 
 /** The safe expression subset plus field/logical predicates. Selection predicates are unsupported. */
@@ -371,7 +395,7 @@ export function evaluateVegaPredicate(predicate: unknown, row: VegaDataRow, opti
   try {
     if (typeof predicate === 'string') {
       spend(options, predicate.length);
-      return Boolean(expression(predicate, row));
+      return Boolean(expression(predicate, row, options));
     }
     const visit = (p: unknown, depth: number): boolean => {
       spend(options, 1);
@@ -632,7 +656,7 @@ function aggregateRows(
   const output: VegaDataRow[] = [];
   const joins = new Map<VegaDataRow, VegaDataRow>();
   for (const group of groups(rows, groupby)) {
-    const row = groupRow(group, groupby);
+    const row = groupRow(group, groupby, options);
     for (const measure of measures) {
       const field = text(own(measure, 'field'));
       const op = own(measure, 'op');
@@ -641,12 +665,12 @@ function aggregateRows(
     }
     if (join) {
       for (const source of group.rows) {
-        const joined = clone(source);
+        const joined = clone(source, false, options);
         for (const measure of measures) {
           const field = text(own(measure, 'field'));
           const name =
             text(own(measure, 'as')) ?? `${operation(own(measure, 'op'))?.name ?? 'count'}${field ? `_${field}` : ''}`;
-          put(joined, name, clone(own(row, name)));
+          put(joined, name, clone(own(row, name), false, options));
         }
         joins.set(source, joined);
       }
@@ -758,7 +782,7 @@ function windowRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
         spend(options, Math.max(0, end - start) * measures.length);
       }
       const frameRows = needsFrame ? ordered.slice(start, Math.max(start, end)) : [];
-      const row = clone(source);
+      const row = clone(source, false, options);
       for (const measure of measures) {
         const op = own(measure, 'op');
         const name = operation(op)?.name;
@@ -853,7 +877,7 @@ function quantileRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Veg
     }
     spend(options, values.length * probs.length);
     for (const p of probs as number[]) {
-      const row = groupRow(group, groupby);
+      const row = groupRow(group, groupby, options);
       put(row, as[0] ?? 'prob', p);
       put(row, as[1] ?? 'value', quantile(values, p));
       result.push(row);
@@ -862,7 +886,7 @@ function quantileRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Veg
   return result;
 }
 
-function regressionRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRow[] {
+function regressionRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSemanticOptions): VegaDataRow[] {
   if (own(transform, 'method') !== undefined && own(transform, 'method') !== 'linear') {
     throw new Error('Vega semantics: unsupported regression method');
   }
@@ -890,8 +914,8 @@ function regressionRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRo
     const slope = xy / xx;
     const intercept = my - slope * mx;
     if (own(transform, 'params') === true) {
-      const row = groupRow(group, groupby);
-      put(row, 'keys', clone(group.keys));
+      const row = groupRow(group, groupby, options);
+      put(row, 'keys', clone(group.keys, false, options));
       put(row, 'coef', [intercept, slope]);
       put(row, 'rSquared', yy ? Math.min(1, (xy * xy) / (xx * yy)) : 1);
       result.push(row);
@@ -908,7 +932,7 @@ function regressionRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRo
         throw new Error('Vega semantics: invalid regression extent');
       }
       for (const value of extent as number[]) {
-        const row = groupRow(group, groupby);
+        const row = groupRow(group, groupby, options);
         put(row, as[0] ?? x, value);
         put(row, as[1] ?? y, intercept + slope * value);
         result.push(row);
@@ -918,7 +942,7 @@ function regressionRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRo
   return result;
 }
 
-function lookupRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRow[] {
+function lookupRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSemanticOptions): VegaDataRow[] {
   const from = own(transform, 'from');
   const data = list(own(own(from, 'data'), 'values'));
   const key = text(own(from, 'key'));
@@ -939,14 +963,18 @@ function lookupRows(rows: VegaDataRow[], transform: VegaDataRow): VegaDataRow[] 
     }
   });
   return rows.map(source => {
-    const row = clone(source);
+    const row = clone(source, false, options);
     const match = index.get(readVegaField(source, field));
     if (selected.length) {
       selected.forEach((f, i) =>
-        put(row, as[i] ?? f, clone(match === undefined ? own(transform, 'default') ?? null : readVegaField(match, f))),
+        put(
+          row,
+          as[i] ?? f,
+          clone(match === undefined ? own(transform, 'default') ?? null : readVegaField(match, f), false, options),
+        ),
       );
     } else {
-      put(row, as[0], clone(match ?? own(transform, 'default') ?? null));
+      put(row, as[0], clone(match ?? own(transform, 'default') ?? null, false, options));
     }
     return row;
   });
@@ -960,7 +988,9 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
   }
   const groupby = fields(own(transform, 'groupby'));
   const keyvals = own(transform, 'keyvals');
-  let keys: unknown[] = Array.isArray(keyvals) ? clone(keyvals) : rows.map(row => readVegaField(row, key));
+  let keys: unknown[] = Array.isArray(keyvals)
+    ? clone(keyvals, false, options)
+    : rows.map(row => readVegaField(row, key));
   if (record(keyvals)) {
     const start = own(keyvals, 'start') ?? 0;
     const stop = own(keyvals, 'stop');
@@ -992,7 +1022,7 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
     const values = group.rows.slice();
     for (const keyValue of keys) {
       if (!values.some(row => sameValue(readVegaField(row, key), keyValue))) {
-        const row = groupRow(group, groupby);
+        const row = groupRow(group, groupby, options);
         put(row, key, keyValue);
         put(row, field, null);
         values.push(row);
@@ -1001,7 +1031,7 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
     const frame = own(transform, 'frame');
     const ordered = values.slice().sort((a, b) => compare(readVegaField(a, key), readVegaField(b, key)));
     for (const source of values) {
-      const row = clone(source);
+      const row = clone(source, false, options);
       if (!valid(readVegaField(source, field))) {
         let sample = group.rows;
         if (frame !== undefined) {
@@ -1018,7 +1048,7 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
           row,
           field,
           method === 'value'
-            ? clone(own(transform, 'value') ?? null)
+            ? clone(own(transform, 'value') ?? null, false, options)
             : aggregateVegaValues(sample, field, method, options),
         );
       }
@@ -1273,7 +1303,7 @@ function flattenRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Vega
       0,
     );
     count += size;
-    if (count > 100000) {
+    if (count > VEGA_MAX_DATA_ROWS) {
       throw new SemanticError('flatten row work limit exceeded');
     }
     spend(options, selected.length * (1 + size));
@@ -1282,8 +1312,10 @@ function flattenRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Vega
   const result: VegaDataRow[] = [];
   for (const { source, arrays, size } of plans) {
     for (let i = 0; i < size; i++) {
-      const row = clone(source, false, options);
-      as.forEach((name, j) => put(row, name, clone(own(arrays[j], String(i)) ?? null, false, options)));
+      // Expanded copies remain transform work: the linear-input allowance must not enable
+      // quadratic copying of a small input containing large arrays.
+      const row = clone(source, false, options, true);
+      as.forEach((name, j) => put(row, name, clone(own(arrays[j], String(i)) ?? null, false, options, true)));
       if (typeof index === 'string') {
         put(row, index, i);
       }
@@ -1332,7 +1364,7 @@ function pivotRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSe
   const partitioned = groups(rows, groupby);
   spend(options, partitioned.length * columns.length);
   return partitioned.map(group => {
-    const row = groupRow(group, groupby);
+    const row = groupRow(group, groupby, options);
     for (const column of columns) {
       // Vega Pivot uses NaN sentinels for non-matching cells, including for distinct.
       const sample = group.rows.map(source => ({
@@ -1427,8 +1459,28 @@ function sampleRows(rows: VegaDataRow[], size: unknown, options?: VegaSemanticOp
   }
   spend(options, rows.length);
   const result = rows.slice(0, size);
+  // Local Mulberry32 stream: identical ordered input lengths and sample sizes select identical
+  // positions on server/client and independent builds. No global state, input serialization,
+  // coercion hooks or invented Vega-Lite seed property. Values need not be read to seed the stream.
+  /* eslint-disable no-bitwise -- Mulberry32 is defined in terms of unsigned 32-bit mixing. */
+  let state = (0x6d2b79f5 ^ rows.length ^ size) >>> 0;
+  const uniformIndex = (bound: number): number => {
+    const limit = 0x100000000 - (0x100000000 % bound);
+    let value: number;
+    do {
+      spend(options, 1);
+      state = (state + 0x6d2b79f5) >>> 0;
+      let mixed = Math.imul(state ^ (state >>> 15), state | 1);
+      mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), mixed | 61);
+      value = (mixed ^ (mixed >>> 14)) >>> 0;
+    } while (value >= limit);
+    // Rejection avoids modulo bias when bound does not divide 2^32. Algorithm R retains equal
+    // inclusion probability for every stream position rather than favoring a prefix.
+    return value % bound;
+  };
+  /* eslint-enable no-bitwise */
   for (let i = size; i < rows.length; i++) {
-    const index = Math.floor((i + 1) * Math.random());
+    const index = uniformIndex(i + 1);
     if (index < size) {
       result[index] = rows[i];
     }
@@ -1444,12 +1496,12 @@ export function applyVegaTransforms(
 ): VegaDataRow[] {
   options = context(options);
   spend(options, data.length);
-  if (data.length > 100000 || (transforms?.length ?? 0) > 1000) {
+  if (data.length > VEGA_MAX_DATA_ROWS || (transforms?.length ?? 0) > 1000) {
     throw new SemanticError('transform/row work limit exceeded');
   }
   if (transforms !== undefined && !Array.isArray(transforms)) {
     fail(options, 'invalid transform array');
-    return clone(data);
+    return clone(data, false, options);
   }
   let rows = clone(data, false, options);
   for (const raw of transforms ?? []) {
@@ -1539,12 +1591,12 @@ export function applyVegaTransforms(
         const expr = own(transform, 'calculate') as string;
         spend(options, Math.max(1, rows.length) * expr.length);
         if (!rows.length && options?.mode === 'strict') {
-          expression(expr, {});
+          expression(expr, {}, options);
         }
         rows = rows.map(source => {
-          const row = clone(source);
+          const row = clone(source, false, options);
           try {
-            put(row, as, expression(own(transform, 'calculate') as string, source));
+            put(row, as, expression(own(transform, 'calculate') as string, source, options));
           } catch (error) {
             fail(options, `calculate failed: ${error instanceof Error ? error.message : 'invalid expression'}`);
           }
@@ -1580,7 +1632,7 @@ export function applyVegaTransforms(
         }
         timeUnit(null, own(transform, 'timeUnit'));
         rows = rows.map(source => {
-          const row = clone(source);
+          const row = clone(source, false, options);
           put(row, as, timeUnit(readVegaField(source, field), own(transform, 'timeUnit')));
           return row;
         });
@@ -1597,25 +1649,25 @@ export function applyVegaTransforms(
         spend(options, rows.length * fold.length);
         rows = rows.flatMap(source =>
           fold.map(field => {
-            const row = clone(source);
+            const row = clone(source, false, options, true);
             put(row, as[0] ?? 'key', field);
-            put(row, as[1] ?? 'value', clone(readVegaField(source, field)));
+            put(row, as[1] ?? 'value', clone(readVegaField(source, field), false, options, true));
             return row;
           }),
         );
       } else if (own(transform, 'lookup') !== undefined) {
-        rows = lookupRows(rows, transform);
+        rows = lookupRows(rows, transform, options);
       } else if (own(transform, 'impute') !== undefined) {
         rows = imputeRows(rows, transform, options);
       } else if (own(transform, 'quantile') !== undefined) {
         rows = quantileRows(rows, transform, options);
       } else if (own(transform, 'regression') !== undefined) {
-        rows = regressionRows(rows, transform);
+        rows = regressionRows(rows, transform, options);
       } else if (own(transform, 'loess') !== undefined || own(transform, 'density') !== undefined) {
         const statisticsContext = {
           readField: readVegaField,
           groups,
-          groupRow,
+          groupRow: (group: Group, groupby: string[]) => groupRow(group, groupby, options),
           spend: (amount: number) => spend(options, amount),
         };
         rows =
@@ -1625,7 +1677,7 @@ export function applyVegaTransforms(
       } else {
         throw new Error(`unsupported transform ${Object.keys(transform).join(', ')}`);
       }
-      if (rows.length > 100000) {
+      if (rows.length > VEGA_MAX_DATA_ROWS) {
         throw new SemanticError('row work limit exceeded');
       }
     } catch (error) {
@@ -1638,7 +1690,7 @@ export function applyVegaTransforms(
 /** Normalize data semantics only; rendering, formatting, stack geometry and interactions remain separate. */
 export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOptions): VegaLiteSpec {
   options = context(options);
-  const copy = clone(spec) as unknown as VegaDataRow;
+  const copy = clone(spec, false, options) as unknown as VegaDataRow;
   const datasets = own(copy, 'datasets');
   let aliasId = 0;
   const prepare = (
@@ -1668,23 +1720,23 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
         );
         rows = [];
       } else {
-        rows = clone(values.filter(record));
+        rows = clone(values.filter(record), false, options);
       }
     } else {
-      rows = clone(inheritedData ?? []);
+      rows = clone(inheritedData ?? [], false, options);
     }
     rows = applyVegaTransforms(rows, own(node, 'transform') as VegaDataRow[] | undefined, options);
     delete node.transform;
-    const encoding = clone(inheritedEncoding);
+    const encoding = clone(inheritedEncoding, false, options);
     const localEncoding = own(node, 'encoding');
     if (record(localEncoding)) {
       for (const channel of Object.keys(localEncoding)) {
-        put(encoding, channel, clone(own(localEncoding, channel)));
+        put(encoding, channel, clone(own(localEncoding, channel), false, options));
       }
     }
     const composition = ['layer', 'hconcat', 'vconcat', 'concat'].filter(key => Array.isArray(own(node, key)));
     if (composition.length) {
-      put(node, 'data', { values: clone(rows) });
+      put(node, 'data', { values: clone(rows, false, options) });
       // Parent encodings are moved into each child, so a second preparation is idempotent.
       delete node.encoding;
       for (const channel of composition) {
@@ -1778,10 +1830,10 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
           const target = field;
           spend(options, rows.length * (original.length + 1));
           rows = rows.map(sourceRow => {
-            const row = clone(sourceRow);
+            const row = clone(sourceRow, false, options);
             const value = readVegaField(sourceRow, original);
             try {
-              put(row, target, temporal === undefined ? clone(value) : timeUnit(value, temporal));
+              put(row, target, temporal === undefined ? clone(value, false, options) : timeUnit(value, temporal));
             } catch (error) {
               fail(options, error instanceof Error ? error.message : 'invalid timeUnit');
               put(row, target, null);

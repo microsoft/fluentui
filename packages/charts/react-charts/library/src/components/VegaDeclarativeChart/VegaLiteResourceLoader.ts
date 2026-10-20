@@ -2,17 +2,18 @@ import type { VegaLiteData, VegaLiteSpec } from './VegaLiteTypes';
 import type { VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteResourceLoader.types';
 import { timeParse, utcParse } from 'd3-time-format';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import { VEGA_MAX_DATA_ROWS, VEGA_MAX_DATA_WORK, VEGA_MAX_TEXT_LENGTH } from './VegaLiteBudgets';
 
 export type { VegaDataResolver, VegaDataParseOptions, VegaLiteResourceOptions } from './VegaLiteResourceLoader.types';
 
 type Budget = { maxRows: number; maxTextLength: number; remaining: number };
 function budget(options: VegaDataParseOptions = {}): Budget {
   const limits = {
-    maxRows: options.maxRows ?? 100000,
-    maxTextLength: options.maxTextLength ?? 10000000,
+    maxRows: options.maxRows ?? VEGA_MAX_DATA_ROWS,
+    maxTextLength: options.maxTextLength ?? VEGA_MAX_TEXT_LENGTH,
     // A maximum-length text resource is charged once for parsing and once for each of two row copies.
     // Leave finite headroom for record keys, visits and declared scalar parsing; never scale with input size.
-    remaining: options.maxWork ?? 40000000,
+    remaining: options.maxWork ?? VEGA_MAX_DATA_WORK,
   };
   if (Object.values(limits).some(value => !Number.isSafeInteger(value) || value < 0)) {
     throw new Error('Invalid Vega resource budget limit');

@@ -22,6 +22,41 @@ import {
 const strict = { mode: 'strict' as const };
 const prepare = (spec: unknown) => prepareVegaLiteSpec(spec as VegaLiteSpec, strict);
 
+describe('bounded full-size semantic preparation', () => {
+  it.each(['legacy', 'strict'] as const)('charges repeated text copies cumulatively in %s', mode => {
+    const rows = Array.from({ length: 10 }, (_, x) => ({ x, payload: 'x'.repeat(1000000) }));
+    expect(() =>
+      applyVegaTransforms(
+        rows,
+        Array.from({ length: 5 }, () => ({ calculate: '1', as: 'n' })),
+        { mode },
+      ),
+    ).toThrow(/clone work limit/i);
+  });
+
+  it.each(['legacy', 'strict'] as const)('clones and samples actual 100000 four-field rows in %s', mode => {
+    const rows = Array.from({ length: 100000 }, (_, x) =>
+      Object.freeze({ x, y: x % 10, series: 'A', label: `row-${x}` }),
+    );
+    const spec: VegaLiteSpec = {
+      mark: 'line',
+      data: { values: rows },
+      encoding: { x: { field: 'x', type: 'quantitative' }, y: { field: 'y', type: 'quantitative' } },
+    };
+    const prepared = prepareVegaLiteSpec(spec, { mode });
+    expect(prepared.data!.values).toHaveLength(100000);
+    expect(prepared.data!.values![99999]).toEqual(rows[99999]);
+    expect(prepared.data!.values![99999]).not.toBe(rows[99999]);
+    const sampled = applyVegaTransforms(rows, [{ sample: 100 }], { mode });
+    expect(sampled).toHaveLength(100);
+    expect(new Set(sampled.map(row => row.x)).size).toBe(100);
+    expect(() => prepareVegaLiteSpec({ ...spec, data: { values: [...rows, rows[0]] } }, { mode })).toThrow(
+      /row.*limit/i,
+    );
+    expect(rows[0]).toEqual({ x: 0, y: 0, series: 'A', label: 'row-0' });
+  });
+});
+
 describe('readVegaField', () => {
   const row = { nested: { items: [{ value: 7 }] }, 'a.b': 11, 'a[b]': 13, 'a\\b': 17, 0: 19 };
   it.each([
@@ -710,16 +745,39 @@ describe('remaining transform semantics', () => {
     expect(hostile[0].y1).toBeNaN();
     expect(hook).not.toHaveBeenCalled();
   });
-  it('sample uses a size-bounded reservoir and Math.random, without inventing seed semantics', () => {
-    const rows = Array.from({ length: 5 }, (_, id) => ({ id }));
-    const random = jest.spyOn(Math, 'random').mockReturnValueOnce(0).mockReturnValueOnce(0.99).mockReturnValueOnce(0.4);
+  it('sample is a deterministic local reservoir without global randomness or authored seed semantics', () => {
+    const getter = jest.fn(() => {
+      throw new Error('must not serialize input or execute hooks');
+    });
+    const rows = Array.from({ length: 1000 }, (_, id) =>
+      Object.freeze(Object.defineProperty({ id, toJSON: getter }, 'hidden', { get: getter, enumerable: true })),
+    );
+    const random = jest.spyOn(Math, 'random').mockImplementation(() => {
+      throw new Error('global randomness must not run during rendering');
+    });
     try {
-      expect(applyVegaTransforms(rows, [{ sample: 2 }], strict)).toEqual([{ id: 2 }, { id: 1 }]);
-      expect(random).toHaveBeenCalledTimes(3);
-      random.mockClear();
+      const first = applyVegaTransforms(rows, [{ sample: 50 }], strict);
+      const second = applyVegaTransforms(
+        rows.map(row => ({ id: row.id })),
+        [{ sample: 50 }],
+        strict,
+      );
+      expect(first).toEqual(second);
+      expect(first).toHaveLength(50);
+      expect(new Set(first.map(row => row.id)).size).toBe(50);
+      expect(first.some(row => (row.id as number) >= 900)).toBe(true);
+      // Identical row counts select identical positions without inspecting row values for the seed.
+      expect(
+        applyVegaTransforms(
+          rows.map(row => ({ id: row.id + 2000 })),
+          [{ sample: 50 }],
+          strict,
+        ).map(row => (row.id as number) - 2000),
+      ).toEqual(first.map(row => row.id));
       expect(applyVegaTransforms(rows, [{ sample: 0 }], strict)).toEqual([]);
-      expect(applyVegaTransforms(rows, [{ sample: 10 }], strict)).toEqual(rows);
+      expect(applyVegaTransforms(rows, [{ sample: 2000 }], strict)).toEqual(rows.map(row => ({ id: row.id })));
       expect(random).not.toHaveBeenCalled();
+      expect(getter).not.toHaveBeenCalled();
     } finally {
       random.mockRestore();
     }
