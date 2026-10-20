@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { act, fireEvent, render, renderHook, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import type { ExtractSlotProps, RefAttributes, SlotRenderFunction } from '@fluentui/react-utilities';
 import { InfoLabel } from './InfoLabel';
 import { useInfoLabel } from './useInfoLabel';
