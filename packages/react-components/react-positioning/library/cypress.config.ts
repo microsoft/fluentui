@@ -8,7 +8,13 @@ if (source) {
   const webpackConfig = baseConfig.component.devServer.webpackConfig;
   webpackConfig.resolve = {
     ...webpackConfig.resolve,
-    alias: { './usePositioning$': path.join(source, 'usePositioning.ts') },
+    alias: {
+      './usePositioning$': path.join(source, 'usePositioning.ts'),
+      '@floating-ui/devtools$': path.join(
+        fileURLToPath(new URL('.', import.meta.url)),
+        'scripts/floating-ui-devtools-shim.ts',
+      ),
+    },
   };
   webpackConfig.plugins = [
     ...(webpackConfig.plugins || []),
