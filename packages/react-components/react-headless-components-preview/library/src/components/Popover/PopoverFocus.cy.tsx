@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { Portal } from '@fluentui/react-portal';
 import { mount } from '@fluentui/scripts-cypress';
 import { Popover } from './Popover';
@@ -118,6 +119,54 @@ describe('settled Popover focus ownership', () => {
       });
     });
 
+    (['whole-popover', 'fluent-portal'] as const).forEach(kind => {
+      it(`retains every closed shadow ancestor (${kind}, inner ${mode})`, () => {
+        withExternalRoot('closed', (outer, after) => {
+          const innerHost = outer.ownerDocument.createElement('div');
+          outer.append(innerHost);
+          const inner = innerHost.attachShadow({ mode });
+          const mountNode = inner.ownerDocument.createElement('div');
+          inner.append(mountNode);
+          const change = cy.spy().as('change');
+          const content = (
+            <Popover defaultOpen onOpenChange={change}>
+              <PopoverSurface as="div" data-testid="surface">
+                <button data-testid="inside">Inside</button>
+                {kind === 'fluent-portal' && (
+                  <Portal mountNode={mountNode}>
+                    <button data-testid="nested-portal">Nested portal</button>
+                  </Portal>
+                )}
+              </PopoverSurface>
+            </Popover>
+          );
+          mount(kind === 'whole-popover' ? createPortal(content, mountNode) : content);
+          cy.wrap(inner).should(() => {
+            const source = kind === 'whole-popover' ? mountNode : after.ownerDocument;
+            expect(source.querySelector('[data-testid=surface]')?.matches(':popover-open')).to.equal(true);
+          });
+          cy.then(() => {
+            const source = kind === 'whole-popover' ? mountNode : after.ownerDocument;
+            return cy.wrap(source.querySelector<HTMLButtonElement>('[data-testid=inside]')!).focus();
+          });
+          if (kind === 'fluent-portal') {
+            cy.then(() => cy.wrap(mountNode.querySelector<HTMLButtonElement>('button')!).focus());
+          }
+          cy.wrap(inner).should(() => {
+            const source = kind === 'whole-popover' ? mountNode : after.ownerDocument;
+            expect(source.querySelector('[data-testid=surface]')?.matches(':popover-open')).to.equal(true);
+          });
+          cy.get('@change').should('not.have.been.called');
+          cy.wrap(after).focus();
+          cy.wrap(inner).should(() => {
+            const source = kind === 'whole-popover' ? mountNode : after.ownerDocument;
+            expect(source.querySelector('[data-testid=surface]')).to.be.null;
+          });
+          cy.wrap(after).should('have.focus');
+          cy.get('@change').should('have.been.calledOnce');
+        });
+      });
+    });
     it(`observes Tab from an owned portal to an unowned sibling in the same root (${mode})`, () => {
       withExternalRoot(mode, root => {
         const mountNode = root.ownerDocument.createElement('div');
@@ -293,5 +342,51 @@ describe('settled Popover focus ownership', () => {
         cy.get('@change').should('have.been.calledTwice');
       }
     });
+  });
+
+  it('samples opaque cross-origin frames without repeating rejected closes and rearms on sampled reentry', () => {
+    const change = cy.spy().as('change');
+    const observedInside = cy.spy().as('observedInside');
+    const loaded = cy.spy().as('loaded');
+    const frameUrl = 'data:text/html,<button>Opaque frame control</button>';
+    mount(
+      <>
+        <Popover open onOpenChange={change}>
+          <PopoverSurface as="div" data-testid="surface">
+            <button data-testid="inside">Inside</button>
+            <iframe data-testid="opaque-inside" title="Opaque inside" src={frameUrl} onLoad={loaded} />
+          </PopoverSurface>
+        </Popover>
+        <iframe data-testid="opaque-outside" title="Opaque outside" src={frameUrl} onLoad={loaded} />
+      </>,
+    );
+    cy.get('@loaded').should('have.been.calledTwice');
+    cy.get<HTMLIFrameElement>('iframe').should(frames => {
+      frames.each((_index, frame) => {
+        expect(frame.contentDocument).to.be.null;
+      });
+    });
+    cy.get<HTMLIFrameElement>('[data-testid=opaque-inside]').then(frames => {
+      frames[0].addEventListener('fuiframefocus', observedInside, { once: true });
+    });
+    cy.get('[data-testid=inside]').focus().realPress('Tab');
+    cy.get('[data-testid=opaque-inside]').should('have.focus');
+    cy.get('@observedInside').should('have.been.calledOnce');
+    cy.get('@change').should('not.have.been.called');
+    cy.realPress('Tab');
+    cy.get('[data-testid=opaque-outside]').should('have.focus');
+    cy.get('@change').should('have.been.calledOnce');
+    cy.get('@change').its('firstCall.args.1').should('include', { open: false, type: 'fuiframefocus' });
+    cy.get('[data-testid=surface]').should('be.visible');
+    cy.get('@observedInside').invoke('resetHistory');
+    cy.get<HTMLIFrameElement>('[data-testid=opaque-inside]').then(frames => {
+      frames[0].addEventListener('fuiframefocus', observedInside, { once: true });
+    });
+    cy.realPress(['Shift', 'Tab']);
+    cy.get('[data-testid=opaque-inside]').should('have.focus');
+    cy.get('@observedInside').should('have.been.calledOnce');
+    cy.realPress('Tab');
+    cy.get('[data-testid=opaque-outside]').should('have.focus');
+    cy.get('@change').should('have.been.calledTwice');
   });
 });

@@ -376,17 +376,28 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   function observeFocus(event: Event, target: Node | null) {
     focusObservations.current.push({ event, target });
     if (target) {
-      const root = target.getRootNode();
-      const ShadowRootConstructor = target.ownerDocument?.defaultView?.ShadowRoot;
-      if (ShadowRootConstructor && root instanceof ShadowRootConstructor) {
-        knownShadowRoots.current.set(root.host, root);
-      }
-      observeRoot(root);
-      if (target.ownerDocument) {
-        observeRoot(target.ownerDocument);
-      }
+      observeRootChain(target);
     }
     scheduleFocusReconciliation();
+  }
+
+  function observeRootChain(target: Node) {
+    let current = target;
+    const visited = new Set<Node>();
+    while (!visited.has(current)) {
+      visited.add(current);
+      const root = current.getRootNode();
+      observeRoot(root);
+      const ShadowRootConstructor = current.ownerDocument?.defaultView?.ShadowRoot;
+      if (!ShadowRootConstructor || !(root instanceof ShadowRootConstructor)) {
+        break;
+      }
+      knownShadowRoots.current.set(root.host, root);
+      current = root.host;
+    }
+    if (target.ownerDocument) {
+      observeRoot(target.ownerDocument);
+    }
   }
 
   function observeRoot(root: Node) {
@@ -439,13 +450,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     // Surviving listeners and learned portal roots stay attached across commits.
     [contentRef.current, triggerRef.current].forEach(element => {
       if (element) {
-        const root = element.getRootNode();
-        const ShadowRootConstructor = element.ownerDocument.defaultView?.ShadowRoot;
-        if (ShadowRootConstructor && root instanceof ShadowRootConstructor) {
-          knownShadowRoots.current.set(root.host, root);
-        }
-        observeRoot(root);
-        observeRoot(element.ownerDocument);
+        observeRootChain(element);
         if (isFocusInside(getDeepActiveElement(element.ownerDocument))) {
           focusWasInside.current = true;
         }
