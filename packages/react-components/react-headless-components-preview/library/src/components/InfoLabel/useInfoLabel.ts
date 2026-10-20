@@ -59,19 +59,24 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
   });
 
   const present = !!infoButton;
+  const normalizedRootKey = root.key !== undefined ? String(root.key) : undefined;
   const normalizedKey = present && infoButton.key !== undefined ? String(infoButton.key) : undefined;
   const defaultOpen = infoButtonPopover.defaultOpen ?? false;
   const createLifecycle = () => ({
     present,
+    rootKey: normalizedRootKey,
     key: normalizedKey,
     generation: {},
     open: present && defaultOpen,
   });
   const [storedLifecycle, setLifecycle] = React.useState(createLifecycle);
-  const identityChanged = storedLifecycle.present !== present || storedLifecycle.key !== normalizedKey;
+  const identityChanged =
+    storedLifecycle.present !== present ||
+    storedLifecycle.rootKey !== normalizedRootKey ||
+    storedLifecycle.key !== normalizedKey;
   const lifecycle = identityChanged ? createLifecycle() : storedLifecycle;
   if (identityChanged) {
-    // Ownership belongs to the mounted slot, not a removed or differently keyed button.
+    // Either keyed slot boundary can replace the mounted button.
     setLifecycle(lifecycle);
   }
   const controlledOpen = infoButtonPopover.open;

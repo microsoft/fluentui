@@ -12,9 +12,9 @@ export const renderInfoLabel = (state: InfoLabelState): JSXElement => {
   assertSlots<InfoLabelSlots>(state);
 
   return (
-    <state.root>
+    <state.root key={state.root.key}>
       <state.label />
-      {state.infoButton && <state.infoButton />}
+      {state.infoButton && <state.infoButton key={state.infoButton.key} />}
     </state.root>
   );
 };
