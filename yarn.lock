@@ -5406,6 +5406,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@fluentui/react-range-slider-preview-stories@workspace:packages/react-components/react-range-slider-preview/stories":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-range-slider-preview-stories@workspace:packages/react-components/react-range-slider-preview/stories"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/react-range-slider-preview@npm:*, @fluentui/react-range-slider-preview@workspace:packages/react-components/react-range-slider-preview/library":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/react-range-slider-preview@workspace:packages/react-components/react-range-slider-preview/library"
+  dependencies:
+    "@fluentui/react-field": "npm:^9.5.6"
+    "@fluentui/react-jsx-runtime": "npm:^9.4.7"
+    "@fluentui/react-shared-contexts": "npm:^9.26.4"
+    "@fluentui/react-tabster": "npm:^9.26.19"
+    "@fluentui/react-theme": "npm:^9.2.2"
+    "@fluentui/react-utilities": "npm:^9.27.0"
+    "@fluentui/scripts-cypress": "npm:*"
+    "@griffel/react": "npm:^1.5.32"
+    "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  languageName: unknown
+  linkType: soft
+
 "@fluentui/react-rating-stories@workspace:packages/react-components/react-rating/stories":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-rating-stories@workspace:packages/react-components/react-rating/stories"
@@ -6794,6 +6822,7 @@ __metadata:
     "@fluentui/react-progress": "npm:*"
     "@fluentui/react-provider": "npm:*"
     "@fluentui/react-radio": "npm:*"
+    "@fluentui/react-range-slider-preview": "npm:*"
     "@fluentui/react-rating": "npm:*"
     "@fluentui/react-search": "npm:*"
     "@fluentui/react-select": "npm:*"
