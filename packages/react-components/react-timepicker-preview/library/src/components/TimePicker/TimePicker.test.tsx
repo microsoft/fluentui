@@ -11,6 +11,14 @@ import type { TimePickerBaseProps, TimePickerProps } from './TimePicker.types';
 
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 
+// Moves focus out of the TimePicker. The expand icon is in the tab order, so Tab from the input may stop on it first.
+const leaveTimePicker = () => {
+  userEvent.tab();
+  if (document.activeElement?.closest('.fui-TimePicker')) {
+    userEvent.tab();
+  }
+};
+
 describe('TimePicker', () => {
   // mock locale to make sure the test generates same result as browser, and not affected by the test runner's locale
   const originalToLocaleTimeString = Date.prototype.toLocaleTimeString;
@@ -276,7 +284,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
       // Call onChange on focus lose
-      userEvent.tab();
+      leaveTimePicker();
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({ type: 'blur', displayValue: '111' }),
@@ -321,7 +329,7 @@ describe('TimePicker', () => {
     userEvent.click(getByText('CLEAR BUTTON'));
     expect(onChange).toHaveBeenCalledTimes(2);
 
-    userEvent.tab();
+    leaveTimePicker();
     expect(onChange).toHaveBeenCalledTimes(2);
   });
 
@@ -351,7 +359,7 @@ describe('TimePicker', () => {
     );
 
     // The normalized text is the committed text, so leaving the input does not commit again.
-    userEvent.tab();
+    leaveTimePicker();
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -368,11 +376,25 @@ describe('TimePicker', () => {
       return { ...result, onChange, input: result.getByRole('combobox') };
     };
 
+    it('commits when focus leaves the TimePicker, not when it moves to the expand icon', () => {
+      const { input, onChange, getByRole } = renderFreeform();
+      userEvent.type(input, '111');
+      userEvent.tab();
+      expect(getByRole('button', { name: 'Open' })).toHaveFocus();
+      expect(onChange).not.toHaveBeenCalled();
+
+      userEvent.tab();
+      expect(onChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ type: 'blur', displayValue: '111', errorType: 'invalid-input' }),
+      );
+    });
+
     it('does not commit when focus leaves without typing', () => {
       const { input, onChange } = renderFreeform({ defaultValue });
       userEvent.click(input);
       userEvent.type(input, '{esc}');
-      userEvent.tab();
+      leaveTimePicker();
       expect(onChange).not.toHaveBeenCalled();
     });
 
@@ -387,7 +409,7 @@ describe('TimePicker', () => {
       expect(input).toHaveValue('1:00 AM');
       userEvent.click(input);
       userEvent.type(input, '{esc}');
-      userEvent.tab();
+      leaveTimePicker();
       expect(onChange).not.toHaveBeenCalled();
     });
 
@@ -395,7 +417,7 @@ describe('TimePicker', () => {
       const { input, onChange } = renderFreeform({ defaultValue });
       userEvent.clear(input);
       userEvent.type(input, '{esc}');
-      userEvent.tab();
+      leaveTimePicker();
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.anything(),
@@ -408,12 +430,31 @@ describe('TimePicker', () => {
       // Typing a space would select the active option, as in Combobox.
       input.focus();
       fireEvent.change(input, { target: { value: '  ' } });
-      userEvent.tab();
+      leaveTimePicker();
       expect(onChange).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({ value: null, displayValue: '', errorType: 'required-input' }),
       );
     });
+  });
+
+  it('does not report a change when the selected option is selected again', () => {
+    const onChange = jest.fn();
+    const { getByRole, getAllByRole } = render(
+      <>
+        <TimePicker dateAnchor={dateAnchor} startHour={10} endHour={12} onChange={onChange} />
+        <button>Next</button>
+      </>,
+    );
+    const input = getByRole('combobox');
+    userEvent.click(input);
+    userEvent.click(getAllByRole('option')[1]);
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    // Tab with the listbox open selects the active option, which is the selected one.
+    userEvent.click(input);
+    leaveTimePicker();
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('does not change the value while typing without freeform', () => {
@@ -447,7 +488,7 @@ describe('TimePicker', () => {
       // Clearing the text reopens the listbox with an active option, which Tab would select; Escape closes it first.
       userEvent.clear(input);
       userEvent.type(input, '{esc}');
-      userEvent.tab();
+      leaveTimePicker();
       return onChange;
     };
 
@@ -490,7 +531,7 @@ describe('TimePicker', () => {
       userEvent.type(input, '10:10{enter}');
       userEvent.clear(input);
       userEvent.type(input, '{esc}');
-      userEvent.tab();
+      leaveTimePicker();
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
         expect.objectContaining({ value: null, errorType: 'required-input' }),

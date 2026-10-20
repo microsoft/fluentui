@@ -172,6 +172,10 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
       // value: a freeform TimePicker commits the text later, and a basic one only moves the active option.
       return;
     }
+    if (data.optionValue === valueKey && activeTypedText === undefined) {
+      // Combobox selects the option matching the display text again when the input loses focus. It is not a change.
+      return;
+    }
 
     commitValue(event, {
       value: keyToDate(data.optionValue ?? ''),

@@ -80,7 +80,8 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
   });
 
   const rootRef = React.useRef<HTMLDivElement>(null);
-  const onInputBlur = useEventCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  // Commits when focus leaves the TimePicker, from the input or from the expand icon, which is in the tab order.
+  const onBlur = useEventCallback((event: React.FocusEvent<HTMLElement>) => {
     const isOutside = event.relatedTarget ? !elementContains(rootRef.current, event.relatedTarget) : true;
     if (isOutside) {
       selectTimeFromValue(event);
@@ -100,14 +101,14 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
     },
     input: {
       ...comboboxState.input,
-      onBlur: mergeCallbacks(onInputBlur, comboboxState.input.onBlur),
+      onBlur: mergeCallbacks(onBlur, comboboxState.input.onBlur),
     },
-    // tabIndex -1 allows the listbox and the expand icon to be the relatedTarget of a blur event.
+    // tabIndex -1 allows the listbox to be the relatedTarget of a blur event.
     listbox: comboboxState.listbox ? { ...comboboxState.listbox, tabIndex: -1 } : undefined,
     expandIcon: comboboxState.expandIcon
       ? {
           ...comboboxState.expandIcon,
-          tabIndex: -1,
+          onBlur: mergeCallbacks(onBlur, comboboxState.expandIcon.onBlur),
           ...expandIconFieldLabelProps,
         }
       : undefined,
