@@ -1,11 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { useId, slot, mergeCallbacks } from '@fluentui/react-utilities';
+import { useId, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 import { Label } from '../Label';
 import { InfoButton } from './InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
+import { infoLabelOwnershipReporter } from './infoLabelContext';
+import type { InfoButtonOwnership, InfoLabelOwnershipReporter, InternalInfoLabelState } from './infoLabelContext';
 
 /**
  * Create the state required to render InfoLabel.
@@ -58,33 +60,39 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     elementType: 'div',
   });
 
-  const present = !!infoButton;
-  const normalizedRootKey = root.key !== undefined ? String(root.key) : undefined;
-  const normalizedKey = present && infoButton.key !== undefined ? String(infoButton.key) : undefined;
-  const defaultOpen = infoButtonPopover.defaultOpen ?? false;
-  const createLifecycle = () => ({
-    present,
-    rootKey: normalizedRootKey,
-    key: normalizedKey,
-    generation: {},
-    open: present && defaultOpen,
-  });
-  const [storedLifecycle, setLifecycle] = React.useState(createLifecycle);
-  const identityChanged =
-    storedLifecycle.present !== present ||
-    storedLifecycle.rootKey !== normalizedRootKey ||
-    storedLifecycle.key !== normalizedKey;
-  const lifecycle = identityChanged ? createLifecycle() : storedLifecycle;
-  if (identityChanged) {
-    // Either keyed slot boundary can replace the mounted button.
-    setLifecycle(lifecycle);
-  }
-  const controlledOpen = infoButtonPopover.open;
-  const open = controlledOpen !== undefined ? controlledOpen : lifecycle.open;
-
-  infoButtonPopover.onOpenChange = mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
-    setLifecycle(current => (current.generation === lifecycle.generation ? { ...current, open: data.open } : current));
-  });
+  const rootKey = root.key === undefined ? undefined : String(root.key);
+  const buttonKey = infoButton?.key === undefined ? undefined : String(infoButton.key);
+  const [reportedOwnership, setOwnership] = React.useState<
+    (InfoButtonOwnership & { lifetime: object; rootKey: string | undefined; buttonKey: string | undefined }) | null
+  >();
+  const ownership =
+    reportedOwnership && (reportedOwnership.rootKey !== rootKey || reportedOwnership.buttonKey !== buttonKey)
+      ? undefined
+      : reportedOwnership;
+  const reportOwnership: InfoLabelOwnershipReporter = React.useCallback(
+    (lifetime, next) => {
+      setOwnership(current => {
+        if (!next) {
+          return current?.lifetime === lifetime ? null : current;
+        }
+        if (
+          current?.lifetime === lifetime &&
+          current.open === next.open &&
+          current.surfaceId === next.surfaceId &&
+          current.rootKey === rootKey &&
+          current.buttonKey === buttonKey
+        ) {
+          return current;
+        }
+        return { lifetime, rootKey, buttonKey, ...next };
+      });
+    },
+    [rootKey, buttonKey],
+  );
+  useIsomorphicLayoutEffect(() => {
+    // A custom renderer can omit the button entirely, so it never sends a report.
+    setOwnership(current => (current === undefined ? null : current));
+  }, []);
 
   if (infoButton) {
     const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup
@@ -99,12 +107,15 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
 
+    // Before the first layout report (including SSR), project the initial slot props.
+    const open =
+      ownership === undefined ? infoButtonPopover.open ?? infoButtonPopover.defaultOpen ?? false : ownership?.open;
     if (open) {
-      root['aria-owns'] ??= infoButtonPopover.id;
+      root['aria-owns'] ??= ownership === undefined ? infoButtonPopover.id : ownership?.surfaceId;
     }
   }
 
-  return {
+  const state: InternalInfoLabelState = {
     components: {
       root: 'span',
       label: Label,
@@ -113,5 +124,7 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     root,
     label,
     infoButton,
+    [infoLabelOwnershipReporter]: reportOwnership,
   };
+  return state;
 };

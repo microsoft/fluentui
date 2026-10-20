@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderToString } from 'react-dom/server';
 import type { ExtractSlotProps, RefAttributes, SlotRenderFunction } from '@fluentui/react-utilities';
 import { InfoLabel } from './InfoLabel';
-import { useInfoLabel } from './useInfoLabel';
+import { InfoButton } from './InfoButton/InfoButton';
 import type { InfoLabelProps } from './InfoLabel.types';
 import type { InfoButtonProps } from './InfoButton/InfoButton.types';
 import type { PopoverProps } from '../Popover/Popover.types';
@@ -103,60 +103,6 @@ describe('InfoLabel ownership lifecycle', () => {
     rerender(element(false));
     expect(ownership(container)).not.toHaveAttribute('aria-owns');
     expect(change).not.toHaveBeenCalled();
-  });
-
-  it('ignores a removed lifetime callback after reinserting the same key', () => {
-    const oldChange = jest.fn();
-    const newChange = jest.fn();
-    const initialProps: InfoLabelProps = {
-      info: 'Information',
-      infoButton: { key: 'same', popover: { onOpenChange: oldChange } },
-    };
-    const { result, rerender } = renderHook((props: InfoLabelProps) => useInfoLabel(props, null), { initialProps });
-    const oldRequest = result.current.infoButton?.popover;
-    const event = new MouseEvent('click');
-    if (!oldRequest || typeof oldRequest !== 'object' || !('onOpenChange' in oldRequest)) {
-      throw new Error('Expected a resolved popover slot');
-    }
-    const oldCallback = oldRequest.onOpenChange;
-    rerender({ infoButton: null });
-    rerender({
-      info: 'Information',
-      infoButton: { key: 'same', popover: { defaultOpen: true, onOpenChange: newChange } },
-    });
-    expect(result.current.root['aria-owns']).toBeDefined();
-    act(() => oldCallback?.(event, { type: 'click', event, open: false }));
-    expect(result.current.root['aria-owns']).toBeDefined();
-    expect(oldChange).toHaveBeenCalledTimes(1);
-    expect(newChange).not.toHaveBeenCalled();
-  });
-
-  it('ignores a previous root lifetime callback after the root key is reused', () => {
-    const oldChange = jest.fn();
-    const newChange = jest.fn();
-    const initialProps: InfoLabelProps = {
-      root: { key: 'first' },
-      info: 'Information',
-      infoButton: { popover: { onOpenChange: oldChange } },
-    };
-    const { result, rerender } = renderHook((props: InfoLabelProps) => useInfoLabel(props, null), { initialProps });
-    const oldRequest = result.current.infoButton?.popover;
-    const event = new MouseEvent('click');
-    if (!oldRequest || typeof oldRequest !== 'object' || !('onOpenChange' in oldRequest)) {
-      throw new Error('Expected a resolved popover slot');
-    }
-    const oldCallback = oldRequest.onOpenChange;
-    rerender({ root: { key: 'second' }, info: 'Information' });
-    rerender({
-      root: { key: 'first' },
-      info: 'Information',
-      infoButton: { popover: { defaultOpen: true, onOpenChange: newChange } },
-    });
-    expect(result.current.root['aria-owns']).toBeDefined();
-    act(() => oldCallback?.(event, { type: 'click', event, open: false }));
-    expect(result.current.root['aria-owns']).toBeDefined();
-    expect(oldChange).toHaveBeenCalledTimes(1);
-    expect(newChange).not.toHaveBeenCalled();
   });
 
   it('reports one merged callback per uncontrolled trigger toggle', async () => {
@@ -366,5 +312,172 @@ describe('InfoLabel ownership lifecycle', () => {
     expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
     expect(getByRole('note', { hidden: true })).toBeInTheDocument();
     expect(change).not.toHaveBeenCalled();
+  });
+
+  (['root', 'infoButton'] as const).forEach(target => {
+    it(`follows actual ${target} renderer-owned keys without resetting for new inline render functions`, () => {
+      const change = jest.fn();
+      const element = (returnedKey: string, defaultOpen: boolean) => {
+        const renderRoot: typeof renderRootWithoutKey = (Component, props) => (
+          <Component {...props} key={returnedKey} />
+        );
+        const renderButton: typeof renderButtonWithoutKey = (Component, props) => (
+          <Component {...props} key={returnedKey} />
+        );
+        return strict(
+          <Example
+            root={{ id: 'ownership', children: target === 'root' ? renderRoot : undefined }}
+            infoButton={{
+              children: target === 'infoButton' ? renderButton : undefined,
+              popover: { defaultOpen, onOpenChange: change },
+            }}
+          />,
+        );
+      };
+      const { container, getByRole, queryByRole, rerender } = render(element('first', true));
+      const firstButton = trigger(container);
+      expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      rerender(element('first', false));
+      expect(trigger(container)).toBe(firstButton);
+      expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      rerender(element('second', false));
+      expect(trigger(container)).not.toBe(firstButton);
+      expect(ownership(container)).not.toHaveAttribute('aria-owns');
+      expect(queryByRole('note', { hidden: true })).toBeNull();
+      rerender(element('third', true));
+      expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      expect(change).not.toHaveBeenCalled();
+    });
+
+    it(`resets ownership for same-key ${target} default/custom renderer transitions in both directions`, () => {
+      const change = jest.fn();
+      const element = (custom: boolean, defaultOpen = false) =>
+        strict(
+          <Example
+            root={{
+              id: 'ownership',
+              key: 'root',
+              children: target === 'root' && custom ? renderRootWithoutKey : undefined,
+            }}
+            infoButton={{
+              key: 'button',
+              children: target === 'infoButton' && custom ? renderButtonWithoutKey : undefined,
+              popover: { defaultOpen, onOpenChange: change },
+            }}
+          />,
+        );
+      const { container, getByRole, queryByRole, rerender } = render(element(false));
+      for (const custom of [true, false, true, false]) {
+        fireEvent.click(trigger(container));
+        expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+        change.mockClear();
+        const previousButton = trigger(container);
+        rerender(element(custom));
+        expect(trigger(container)).not.toBe(previousButton);
+        expect(ownership(container)).not.toHaveAttribute('aria-owns');
+        expect(queryByRole('note', { hidden: true })).toBeNull();
+        expect(change).not.toHaveBeenCalled();
+      }
+      rerender(element(true, true));
+      expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      expect(change).not.toHaveBeenCalled();
+    });
+  });
+
+  it.each(['root', 'infoButton'] as const)(
+    'ignores callbacks retained from an actual rendered %s replacement',
+    target => {
+      const change = jest.fn();
+      let oldCallback: PopoverProps['onOpenChange'];
+      const element = (key: string) => {
+        const renderButton: typeof renderButtonWithoutKey = (Component, props) => {
+          const popover = props.popover;
+          if (key === 'first' && popover && typeof popover === 'object' && 'onOpenChange' in popover) {
+            oldCallback = popover.onOpenChange;
+          }
+          return <Component {...props} key={target === 'infoButton' ? key : 'button'} />;
+        };
+        const renderRoot: typeof renderRootWithoutKey = (Component, props) => <Component {...props} key={key} />;
+        return strict(
+          <Example
+            root={{ id: 'ownership', children: target === 'root' ? renderRoot : undefined }}
+            infoButton={{
+              children: renderButton,
+              popover: { defaultOpen: true, onOpenChange: change },
+            }}
+          />,
+        );
+      };
+      const { container, getByRole, rerender } = render(element('first'));
+      rerender(element('second'));
+      const event = new MouseEvent('click');
+      act(() => oldCallback?.(event, { type: 'click', event, open: false }));
+      expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      expect(change).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it('preserves consumer ownership while actual button state changes', () => {
+    const { container } = render(strict(<Example root={{ id: 'ownership', 'aria-owns': 'consumer-popup' }} />));
+    fireEvent.click(trigger(container));
+    expect(ownership(container)).toHaveAttribute('aria-owns', 'consumer-popup');
+    fireEvent.click(trigger(container));
+    expect(ownership(container)).toHaveAttribute('aria-owns', 'consumer-popup');
+  });
+
+  it('reports mounted state separately for multiple InfoLabels', () => {
+    const { container, getByRole } = render(
+      strict(
+        <>
+          <InfoLabel root={{ id: 'first-owner' }} info="First information">
+            First label
+          </InfoLabel>
+          <InfoLabel root={{ id: 'second-owner' }} info="Second information">
+            Second label
+          </InfoLabel>
+        </>,
+      ),
+    );
+    const firstOwner = container.querySelector('#first-owner')!;
+    const secondOwner = container.querySelector('#second-owner')!;
+    expect(firstOwner).not.toHaveAttribute('aria-owns');
+    expect(secondOwner).not.toHaveAttribute('aria-owns');
+    fireEvent.click(getByRole('button', { name: 'First label information' }));
+    expect(firstOwner).toHaveAttribute('aria-owns');
+    expect(secondOwner).not.toHaveAttribute('aria-owns');
+  });
+
+  it('does not let a nested InfoButton replace the owning button report', () => {
+    const element = (nestedId: string) =>
+      strict(
+        <Example
+          info={<InfoButton info="Nested information" popover={{ id: nestedId }} />}
+          infoButton={{ popover: { defaultOpen: true } }}
+        />,
+      );
+    const { container, rerender } = render(element('first-nested-popup'));
+    expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+    rerender(element('second-nested-popup'));
+    expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+  });
+
+  it('does not keep projected default ownership when a custom renderer omits the button', () => {
+    const { container, queryByRole } = render(
+      strict(<Example infoButton={{ children: () => null, popover: { defaultOpen: true } }} />),
+    );
+    expect(queryByRole('button', { name: /information/ })).toBeNull();
+    expect(ownership(container)).not.toHaveAttribute('aria-owns');
+  });
+
+  it.each(['controlled', 'default'] as const)('projects initial %s ownership in server-rendered markup', mode => {
+    const markup = renderToString(
+      <Example infoButton={{ popover: mode === 'controlled' ? { open: true } : { defaultOpen: true } }} />,
+    );
+    expect(markup).toContain('aria-owns="information-popup"');
   });
 });

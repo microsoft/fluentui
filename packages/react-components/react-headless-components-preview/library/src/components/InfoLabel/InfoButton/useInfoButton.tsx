@@ -9,12 +9,14 @@ import {
   useMergedRefs,
   elementContains,
   useEventCallback,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import { Popover, PopoverSurface } from '../../Popover';
 import type { PopoverProps } from '../../Popover';
 import { toDataAttributeValue } from '../../../utils';
+import { InfoLabelOwnershipContext } from '../infoLabelContext';
 
 /**
  * Create the state required to render InfoButton.
@@ -70,6 +72,14 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   state.popover.defaultOpen = undefined;
   state.root['data-open'] = toDataAttributeValue(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
+
+  const reportOwnership = React.useContext(InfoLabelOwnershipContext);
+  const [lifetime] = React.useState(() => ({}));
+  const surfaceId = state.popover.id;
+  useIsomorphicLayoutEffect(() => {
+    reportOwnership?.(lifetime, { open: popoverOpen, surfaceId });
+  }, [reportOwnership, lifetime, popoverOpen, surfaceId]);
+  useIsomorphicLayoutEffect(() => () => reportOwnership?.(lifetime, null), [reportOwnership, lifetime]);
 
   const infoRef = useMergedRefs(state.info.ref);
   state.info.ref = infoRef;

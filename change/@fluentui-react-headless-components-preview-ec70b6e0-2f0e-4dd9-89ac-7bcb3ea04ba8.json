@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: synchronize InfoLabel ownership for controlled open state, defaults, and keyed button lifetimes",
+  "comment": "fix: synchronize InfoLabel ownership with the mounted InfoButton open state across controlled updates, defaults, and custom-rendered replacements",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com"
 }

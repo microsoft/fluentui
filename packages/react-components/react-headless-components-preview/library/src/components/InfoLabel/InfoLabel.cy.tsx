@@ -2,12 +2,55 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { InfoLabel } from './InfoLabel';
 import { Provider } from '../Provider';
+import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
+import type { InfoLabelProps } from './InfoLabel.types';
+import type { InfoButtonProps } from './InfoButton/InfoButton.types';
 
 const mount = (element: React.ReactElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
 const surfaceSelector = '[role="note"]';
+
+describe('InfoLabel - rendered ownership lifetime', () => {
+  (['root', 'infoButton'] as const).forEach(target => {
+    it(`clears ownership after a ${target} renderer replaces its returned element`, () => {
+      let replace: () => void;
+      const change = cy.spy().as('change');
+      const Example = () => {
+        const [replacement, setReplacement] = React.useState(false);
+        replace = () => setReplacement(true);
+        const key = replacement ? 'second' : 'first';
+        const renderRoot: SlotRenderFunction<ExtractSlotProps<InfoLabelProps['root']>> = (Component, props) => (
+          <Component {...props} key={key} />
+        );
+        const renderButton: SlotRenderFunction<InfoButtonProps> = (Component, props) => (
+          <Component {...props} key={key} />
+        );
+        return (
+          <InfoLabel
+            root={{ id: 'ownership', children: target === 'root' ? renderRoot : undefined }}
+            info="Information"
+            infoButton={{
+              children: target === 'infoButton' ? renderButton : undefined,
+              popover: { defaultOpen: !replacement, onOpenChange: change },
+            }}
+          >
+            Label
+          </InfoLabel>
+        );
+      };
+      mount(<Example />);
+      cy.get(surfaceSelector).should('exist');
+      cy.get('#ownership').should('have.attr', 'aria-owns');
+      // Replace without moving focus outside first, which would dismiss the old popup.
+      cy.then(() => replace());
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('#ownership').should('not.have.attr', 'aria-owns');
+      cy.get('@change').should('not.have.been.called');
+    });
+  });
+});
 
 describe('InfoLabel - close on tab-out', () => {
   const openInfoButton = () => {
