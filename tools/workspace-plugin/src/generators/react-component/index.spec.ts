@@ -28,7 +28,7 @@ describe('react-component generator', () => {
 
       expect(execSync.mock.calls.map(([command]) => command)).toEqual([
         'yarn nx run react-one:generate-api',
-        `yarn nx run react-one:test --testNamePattern=MyOne${updateSnapshots ? ' --updateSnapshot' : ''}`,
+        `yarn nx run react-one:test --testNamePattern=MyOne${updateSnapshots ? ' -u' : ''}`,
         'yarn nx run react-one:lint --fix',
       ]);
     } finally {
@@ -101,7 +101,7 @@ describe('react-component generator', () => {
       "
     `);
 
-        expect(tree.children(componentRootPath).sort()).toMatchInlineSnapshot(`
+        expect(tree.children(componentRootPath)).toMatchInlineSnapshot(`
       Array [
         "MyOne.test.tsx",
         "MyOne.tsx",
@@ -299,7 +299,7 @@ describe('react-component generator', () => {
             : 'packages/react-components/react-one/stories/src/MyOne';
         await generator(tree, { project: 'react-one', name: 'MyOne' });
 
-        expect(tree.children(componentStoryRootPath).sort()).toMatchInlineSnapshot(`
+        expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
       Array [
         "MyOneBestPractices.md",
         "MyOneDefault.stories.tsx",

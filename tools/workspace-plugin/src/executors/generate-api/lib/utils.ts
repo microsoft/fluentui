@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { basename, dirname, join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { parseJson } from '@nx/devkit';
 import { type IConfigFile } from '@microsoft/api-extractor';
 
@@ -151,16 +151,17 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
       primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
     );
 
-    if (basename(resolvedPrimaryEntry) !== 'index.d.ts') {
+    const indexDtsSuffix = '/index.d.ts';
+    if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
       verboseLog(
-        `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "index.d.ts". ` +
+        `Primary mainEntryPointFilePath "${resolvedPrimaryEntry}" does not end with "${indexDtsSuffix}". ` +
           `Skipping export subpath expansion.`,
         'warn',
       );
       return null;
     }
 
-    return dirname(resolvedPrimaryEntry);
+    return resolvedPrimaryEntry.slice(0, -indexDtsSuffix.length);
   }
 
   /**

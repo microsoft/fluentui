@@ -50,8 +50,9 @@ describe('react-library generator', () => {
     const stories = readProjectConfiguration(tree, 'react-one-preview-stories');
 
     // library
-    expect(tree.children(library.root).sort()).toMatchInlineSnapshot(`
+    expect(tree.children(library.root)).toMatchInlineSnapshot(`
       Array [
+        "project.json",
         ".babelrc.json",
         ".swcrc",
         "LICENSE",
@@ -62,7 +63,6 @@ describe('react-library generator', () => {
         "etc",
         "jest.config.cjs",
         "package.json",
-        "project.json",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -168,16 +168,16 @@ describe('react-library generator', () => {
 
     // stories
 
-    expect(tree.children(stories.root).sort()).toMatchInlineSnapshot(`
+    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
       Array [
+        "src",
         ".storybook",
         "README.md",
         "eslint.config.js",
-        "package.json",
-        "project.json",
-        "src",
         "tsconfig.json",
         "tsconfig.lib.json",
+        "package.json",
+        "project.json",
       ]
     `);
 
@@ -257,8 +257,9 @@ describe('react-library generator', () => {
 
     // library
 
-    expect(tree.children(library.root).sort()).toMatchInlineSnapshot(`
+    expect(tree.children(library.root)).toMatchInlineSnapshot(`
       Array [
+        "project.json",
         ".babelrc.json",
         ".swcrc",
         "LICENSE",
@@ -269,7 +270,6 @@ describe('react-library generator', () => {
         "etc",
         "jest.config.cjs",
         "package.json",
-        "project.json",
         "src",
         "tsconfig.json",
         "tsconfig.lib.json",
@@ -286,16 +286,16 @@ describe('react-library generator', () => {
 
     // stories
 
-    expect(tree.children(stories.root).sort()).toMatchInlineSnapshot(`
+    expect(tree.children(stories.root)).toMatchInlineSnapshot(`
       Array [
+        "src",
         ".storybook",
         "README.md",
         "eslint.config.js",
-        "package.json",
-        "project.json",
-        "src",
         "tsconfig.json",
         "tsconfig.lib.json",
+        "package.json",
+        "project.json",
       ]
     `);
 

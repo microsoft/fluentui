@@ -32,8 +32,8 @@ describe(`format-plugin`, () => {
 
   afterEach(() => {
     jest.resetModules();
-    process.chdir(cwd);
     tempFs.cleanup();
+    process.chdir(cwd);
   });
 
   it('should create nodes', async () => {

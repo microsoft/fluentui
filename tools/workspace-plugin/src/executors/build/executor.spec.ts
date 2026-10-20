@@ -103,9 +103,9 @@ describe('Build Executor', () => {
     expect(stripIndents`${clearLogs}`).toEqual(stripIndents`
       Cleaning outputs:
 
-       - ${join(workspaceRoot, 'libs/proj/lib-commonjs')}
-       - ${join(workspaceRoot, 'libs/proj/lib')}
-       - ${join(workspaceRoot, 'libs/proj/dist/assets/spec.md')}
+       - ${workspaceRoot}/libs/proj/lib-commonjs
+       - ${workspaceRoot}/libs/proj/lib
+       - ${workspaceRoot}/libs/proj/dist/assets/spec.md
     `);
 
     expect(restOfLogs).toEqual([
@@ -116,22 +116,22 @@ describe('Build Executor', () => {
 
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `Applying transforms: 0`,
-      `babel: transformed ${join(workspaceRoot, 'libs/proj/lib/greeter.styles.js')}`,
+      `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
       `Applying transforms: 0`,
     ]);
 
     expect(rmMock.mock.calls.flat()).toEqual([
-      join(workspaceRoot, 'libs/proj/lib-commonjs'),
+      `${workspaceRoot}/libs/proj/lib-commonjs`,
       {
         force: true,
         recursive: true,
       },
-      join(workspaceRoot, 'libs/proj/lib'),
+      `${workspaceRoot}/libs/proj/lib`,
       {
         force: true,
         recursive: true,
       },
-      join(workspaceRoot, 'libs/proj/dist/assets/spec.md'),
+      `${workspaceRoot}/libs/proj/dist/assets/spec.md`,
       {
         force: true,
         recursive: true,
@@ -210,14 +210,9 @@ describe('Build Executor', () => {
       }
       "
     `);
-    expect(JSON.parse(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8'))).toEqual({
-      version: 3,
-      sources: ['../src/greeter.ts'],
-      sourcesContent: [readFileSync(join(workspaceRoot, 'libs/proj/src/greeter.ts'), 'utf-8')],
-      names: ['useStyles', 'greeter', 'greeting', 'user', 'styles', 'name', 'hometown'],
-      mappings:
-        'AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F',
-    });
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8')).toMatchInlineSnapshot(
+      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+    );
 
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
       "\\"use strict\\";
@@ -239,13 +234,15 @@ describe('Build Executor', () => {
       "
     `);
 
-    for (const outputPath of ['lib', 'lib-commonjs']) {
-      for (const sourceFile of ['greeter.ts', 'utils/nested.ts']) {
-        const mapPath = join(workspaceRoot, 'libs/proj', outputPath, sourceFile.replace(/\.ts$/, '.js.map'));
-        const map = JSON.parse(readFileSync(mapPath, 'utf-8'));
-        expect(map.sources).toEqual([`${sourceFile.includes('/') ? '../../' : '../'}src/${sourceFile}`]);
-        expect(map.sourcesContent).toEqual([readFileSync(join(workspaceRoot, 'libs/proj/src', sourceFile), 'utf-8')]);
-      }
+    for (const [outputFile, sourceFile, expectedSource] of [
+      ['lib/greeter.js.map', 'src/greeter.ts', '../src/greeter.ts'],
+      ['lib/utils/nested.js.map', 'src/utils/nested.ts', '../../src/utils/nested.ts'],
+      ['lib-commonjs/greeter.js.map', 'src/greeter.ts', '../src/greeter.ts'],
+      ['lib-commonjs/utils/nested.js.map', 'src/utils/nested.ts', '../../src/utils/nested.ts'],
+    ]) {
+      const map = JSON.parse(readFileSync(join(workspaceRoot, 'libs/proj', outputFile), 'utf-8'));
+      expect(map.sources).toEqual([expectedSource]);
+      expect(map.sourcesContent).toEqual([readFileSync(join(workspaceRoot, 'libs/proj', sourceFile), 'utf-8')]);
     }
 
     // =====================
@@ -439,9 +436,6 @@ describe('Build Executor', () => {
         __esmFirst: true,
       };
 
-      const packageJsonPath = join(workspaceRoot, 'libs/esm-first-proj/package.json');
-      const originalPackageJson = readFileSync(packageJsonPath);
-
       const output = await executor(esmFirstOptions, esmFirstContext);
       expect(output.success).toBe(true);
 
@@ -471,7 +465,9 @@ describe('Build Executor', () => {
       expect(greeterCjs).not.toContain(`./helper.js`);
 
       // package.json itself is never modified by this temporary flag
-      expect(readFileSync(packageJsonPath)).toEqual(originalPackageJson);
+      expect(readFileSync(join(workspaceRoot, 'libs/esm-first-proj/package.json'), 'utf-8')).toBe(
+        '{\n  "name": "esm-first-proj"\n}\n',
+      );
 
       // `copyCjsTypes` is driven by the same `isEsmPackage` flag as the `.cjs` rename - unified via `options.isEsmPackage`
       expect(existsSync(join(workspaceRoot, 'libs/esm-first-proj/dist/index.d.cts'))).toBe(true);
