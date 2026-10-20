@@ -19,16 +19,14 @@ const leaveTimePicker = () => {
 };
 
 describe('TimePicker', () => {
-  const originalToLocaleTimeString = Date.prototype.toLocaleTimeString;
+  const { DateTimeFormat } = Intl;
   beforeAll(() => {
-    // eslint-disable-next-line no-extend-native
-    Date.prototype.toLocaleTimeString = function (locales?: string | string[], options?: Intl.DateTimeFormatOptions) {
-      return originalToLocaleTimeString.call(this, locales ?? 'en-US', options);
-    };
+    jest
+      .spyOn(Intl, 'DateTimeFormat')
+      .mockImplementation((locales, options) => new DateTimeFormat(locales ?? 'en-US', options));
   });
   afterAll(() => {
-    // eslint-disable-next-line no-extend-native
-    Date.prototype.toLocaleTimeString = originalToLocaleTimeString;
+    jest.restoreAllMocks();
   });
 
   isConformant({

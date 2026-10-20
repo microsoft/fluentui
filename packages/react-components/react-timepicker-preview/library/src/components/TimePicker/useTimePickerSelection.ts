@@ -5,13 +5,12 @@ import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentu
 import type { ComboboxProps } from '@fluentui/react-combobox';
 import type { Hour, TimePickerOption } from '../../utils/types';
 import {
+  createTimeFormat,
   dateToKey,
   keyToDate,
-  formatDateToTimeString as defaultFormatDateToTimeString,
   getDateStartAnchor,
   getDateEndAnchor,
   getTimesBetween,
-  getDateFromTimeString,
 } from '../../utils/timeMath';
 import type {
   TimePickerComboboxProps,
@@ -71,7 +70,7 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     dateAnchor: dateAnchorInProps,
     defaultValue: defaultValueInProps,
     endHour = 24,
-    formatDateToTimeString = defaultFormatDateToTimeString,
+    formatDateToTimeString: formatDateToTimeStringInProps,
     hourCycle,
     increment = 30,
     onChange,
@@ -107,14 +106,23 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     }, [dateAnchorInProps, endHour, startHour]);
   }
 
+  const timeFormat = React.useMemo(() => createTimeFormat({ hourCycle, showSeconds }), [hourCycle, showSeconds]);
+  const formatTime = React.useCallback(
+    (date: Date) =>
+      formatDateToTimeStringInProps
+        ? formatDateToTimeStringInProps(date, { showSeconds, hourCycle })
+        : timeFormat.format(date),
+    [formatDateToTimeStringInProps, hourCycle, showSeconds, timeFormat],
+  );
+
   const options: TimePickerOption[] = React.useMemo(
     () =>
       getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => ({
         date: time,
         key: dateToKey(time),
-        text: formatDateToTimeString(time, { showSeconds, hourCycle }),
+        text: formatTime(time),
       })),
-    [dateEndAnchor, dateStartAnchor, formatDateToTimeString, hourCycle, increment, showSeconds],
+    [dateEndAnchor, dateStartAnchor, formatTime, increment],
   );
 
   const [typedText, setTypedText] = React.useState<TypedText | undefined>(undefined);
@@ -123,9 +131,9 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
       ? typedText.text
       : undefined;
   const formattedValue = React.useMemo(
-    () => (value ? formatDateToTimeString(value, { showSeconds, hourCycle }) : ''),
+    () => (value ? formatTime(value) : ''),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- `valueKey` stands for `value`
-    [formatDateToTimeString, hourCycle, showSeconds, valueKey],
+    [formatTime, valueKey],
   );
   const displayValue = activeTypedText ?? formattedValue;
 
@@ -135,11 +143,7 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
   const commitValue = useEventCallback((event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => {
     const keepsTypedText = !!data.errorType && data.displayValue !== undefined;
     const nextDisplayValue =
-      keepsTypedText || data.displayValue === undefined
-        ? data.displayValue
-        : data.value
-        ? formatDateToTimeString(data.value, { showSeconds, hourCycle })
-        : '';
+      keepsTypedText || data.displayValue === undefined ? data.displayValue : data.value ? formatTime(data.value) : '';
     const nextValueKey = dateToKey(data.value);
 
     setValue(data.value);
@@ -193,9 +197,8 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
   });
 
   const defaultParseTimeStringToDate = React.useCallback(
-    (time: string | undefined) =>
-      getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hourCycle, showSeconds }),
-    [dateEndAnchor, dateStartAnchor, hourCycle, showSeconds],
+    (time: string | undefined) => timeFormat.parse(time, dateStartAnchor, dateEndAnchor),
+    [dateEndAnchor, dateStartAnchor, timeFormat],
   );
 
   return {
