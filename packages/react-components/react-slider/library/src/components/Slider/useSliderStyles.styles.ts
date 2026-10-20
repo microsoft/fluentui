@@ -255,9 +255,10 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${sliderThumbSizeVar})`,
-    // Vertically oriented form controls support `writing-mode` since Chrome 124, Firefox 120 and Safari 17.4.
-    // The legacy `-webkit-appearance: slider-vertical` fallback cannot be kept in an `@supports not (...)` branch:
-    // Chromium reports the deprecated value while parsing the CSS, even when the condition does not match.
+    // Vertically oriented form controls support `writing-mode` since Chrome 124, Firefox 120 and Safari 17.4. Older
+    // engines keep the legacy look through `legacyVerticalSliderAppearance.ts`, which cannot be a stylesheet rule here:
+    // Chromium reports the deprecated `-webkit-appearance: slider-vertical` value while parsing the CSS, even inside an
+    // `@supports not (...)` branch that never matches.
     writingMode: 'vertical-lr',
     direction: 'rtl',
   },
