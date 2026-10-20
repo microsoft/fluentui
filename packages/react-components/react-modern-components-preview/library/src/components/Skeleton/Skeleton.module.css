@@ -1,0 +1,7 @@
+@layer fluent {
+  @layer defaults {
+    .block {
+      display: block;
+    }
+  }
+}

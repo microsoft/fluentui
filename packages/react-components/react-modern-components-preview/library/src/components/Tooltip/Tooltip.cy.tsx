@@ -1,0 +1,46 @@
+import 'cypress-real-events';
+import * as React from 'react';
+import { mount as mountBase } from '@fluentui/scripts-cypress';
+import { Provider } from '@fluentui/react-headless-components-preview/provider';
+import { Button } from '../Button';
+import { Tooltip } from './index';
+
+const mount = (element: React.ReactElement) => {
+  mountBase(<Provider>{element}</Provider>);
+};
+
+describe('Tooltip', () => {
+  describe('overflow behavior (regression: #32882)', () => {
+    it('hides and restores the tooltip when its trigger scrolls out of view', () => {
+      mount(
+        <div
+          id="scroll-container"
+          style={{
+            height: '100px',
+            width: '200px',
+            overflow: 'hidden scroll',
+            position: 'relative',
+          }}
+        >
+          <div style={{ height: '400px', paddingTop: '8px' }}>
+            <Tooltip content="Overflow tooltip" relationship="label">
+              <Button id="trigger">Hover me</Button>
+            </Tooltip>
+          </div>
+        </div>,
+      );
+
+      cy.get('#trigger').realHover();
+
+      cy.get('[role="tooltip"]')
+        .should('be.visible')
+        .then($tooltip => {
+          cy.get('#scroll-container').scrollTo(0, 300);
+          cy.wrap($tooltip).should('not.be.visible');
+
+          cy.get('#scroll-container').scrollTo(0, 0);
+          cy.wrap($tooltip).should('be.visible');
+        });
+    });
+  });
+});

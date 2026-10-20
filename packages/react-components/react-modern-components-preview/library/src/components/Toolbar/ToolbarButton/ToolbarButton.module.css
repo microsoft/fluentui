@@ -1,0 +1,16 @@
+@layer fluent {
+  @layer defaults {
+    .icon {
+      .root[data-vertical] & {
+        margin: 0;
+        font-size: 24px;
+      }
+    }
+  }
+
+  @layer modifiers {
+    .root[data-vertical] {
+      flex-direction: column;
+    }
+  }
+}

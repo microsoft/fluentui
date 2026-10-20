@@ -1,0 +1,13 @@
+@layer fluent {
+  @layer defaults {
+    .root {
+      display: flex;
+      align-items: center;
+
+      &[data-vertical] {
+        flex-direction: column;
+        inline-size: fit-content;
+      }
+    }
+  }
+}

@@ -33,4 +33,5 @@ export type {
   SwatchPickerRowSlots,
   SwatchPickerRowProps,
   SwatchPickerRowState,
+  SwatchPickerOnSelectEventHandler,
 } from './components/SwatchPicker';

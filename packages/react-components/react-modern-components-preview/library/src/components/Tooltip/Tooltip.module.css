@@ -1,0 +1,66 @@
+@layer fluent {
+  @layer defaults {
+    .content {
+      display: none;
+      box-sizing: border-box;
+      max-inline-size: 240px;
+      padding: 4px 11px 6px;
+      overflow-wrap: break-word;
+      color: var(--colorNeutralForeground1);
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase200);
+      line-height: var(--lineHeightBase200);
+      cursor: default;
+      background-color: var(--colorNeutralBackground1);
+      border: 1px solid var(--colorTransparentStroke);
+      border-radius: var(--borderRadiusMedium);
+      filter: drop-shadow(0 0 2px var(--colorNeutralShadowAmbient)) drop-shadow(0 4px 8px var(--colorNeutralShadowKey));
+    }
+
+    .arrow {
+      /* Matches createArrowHeightStyles(6): rotated-square edge (6 * 1.414) and its negative half-offset. */
+
+      position: absolute;
+      z-index: -1;
+      box-sizing: border-box;
+      inline-size: 8.484px;
+      block-size: 8.484px;
+      background-color: inherit;
+      background-clip: content-box;
+      border-inline-end: inherit;
+      border-block-end: inherit;
+      border-end-start-radius: var(--borderRadiusSmall);
+    }
+  }
+
+  @layer modifiers {
+    .content[data-open] {
+      display: block;
+    }
+
+    .content[data-appearance='inverted'] {
+      color: var(--colorNeutralForegroundStaticInverted);
+      background-color: var(--colorNeutralBackgroundStatic);
+    }
+
+    .content[data-placement^='above'] > .arrow {
+      inset-block-end: -4.242px;
+      transform: rotate(-45deg);
+    }
+
+    .content[data-placement^='after'] > .arrow {
+      inset-inline-start: -4.242px;
+      transform: rotate(45deg);
+    }
+
+    .content[data-placement^='below'] > .arrow {
+      inset-block-start: -4.242px;
+      transform: rotate(135deg);
+    }
+
+    .content[data-placement^='before'] > .arrow {
+      inset-inline-end: -4.242px;
+      transform: rotate(225deg);
+    }
+  }
+}

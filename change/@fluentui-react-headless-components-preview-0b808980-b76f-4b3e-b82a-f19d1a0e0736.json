@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: re-export types and utils for breadcrummbs and swatch-picker",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
