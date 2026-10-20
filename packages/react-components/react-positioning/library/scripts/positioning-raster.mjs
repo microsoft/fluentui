@@ -37,7 +37,7 @@ try {
     });
     assert('totalFailed' in result, `${engine}: Cypress did not finish`);
     assert.equal(result.totalFailed, 0, `${engine}: geometry/lifecycle contracts failed during capture`);
-    assert.equal(result.totalTests, 141, `${engine}: expected the complete lower-PR contract suite`);
+    assert.equal(result.totalTests, 143, `${engine}: expected the complete lower-PR contract suite`);
   }
   const screenshots = async engine => {
     const directory = path.join(output, engine, 'usePositioning.raster.tsx');
@@ -47,7 +47,7 @@ try {
   const master = await screenshots('master');
   const replacement = await screenshots('replacement');
   assert.deepEqual(replacement.files, master.files, 'Both engines must render every captured case');
-  assert.equal(master.files.length, 140, 'Expected every geometry/lifecycle case except baseline integrity');
+  assert.equal(master.files.length, 142, 'Expected every rasterized case except baseline integrity');
   const results = [];
   for (const file of master.files) {
     const expected = PNG.sync.read(await readFile(path.join(master.directory, file)));
