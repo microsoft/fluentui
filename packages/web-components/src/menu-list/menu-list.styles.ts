@@ -14,11 +14,7 @@ export const styles = css`
   ${display('grid')}
 
   :host {
-    --_col-indicator-width: 0px;
-    --_col-start-width: 0px;
-    --_col-content-width: 1fr;
-    --_col-end-width: 0px;
-    --_col-submenu-width: 0px;
+    --_has-indicator: 0;
 
     contain: layout style;
     block-size: auto;
@@ -29,53 +25,23 @@ export const styles = css`
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
     box-shadow: ${shadow16};
-    grid-template-columns:
-      10px
-      var(--_col-indicator-width)
-      var(--_col-start-width)
-      var(--_col-content-width)
-      var(--_col-end-width)
-      var(--_col-submenu-width)
-      10px;
+    grid-template-columns: 10px calc(var(--_has-indicator) * 24px) auto 1fr auto auto 10px;
     gap: 2px 0;
     padding: 4px;
   }
 
-  ::slotted(*) {
-    grid-column: 1 / -1;
-  }
-
-  :host(:has(> [role='menuitemradio'], > [role='menuitemcheckbox'])) {
-    --_col-indicator-width: 24px;
-  }
-
-  :host(:has(> * > [slot='start'])) {
-    --_col-start-width: 24px;
-  }
-
-  :host(:has(> * > [slot='end'])) {
-    --_col-end-width: 24px;
-  }
-
-  :host(:has(> * > [slot='submenu'])) {
-    --_col-submenu-width: 24px;
+  :host(:has(> [role='menuitemradio'])),
+  :host(:has(> [role='menuitemcheckbox'])) {
+    --_has-indicator: 1;
   }
 
   @scope {
-    :scope:has(> [role='menuitemradio'], > [role='menuitemcheckbox']) {
-      --_col-indicator-width: 24px;
+    :scope:has(> :is([role='menuitemradio'], [role='menuitemcheckbox'])) {
+      --_has-indicator: 1;
     }
+  }
 
-    :scope:has(> * > [slot='start']) {
-      --_col-start-width: 24px;
-    }
-
-    :scope:has(> * > [slot='end']) {
-      --_col-end-width: 24px;
-    }
-
-    :scope:has(> * > [slot='submenu']) {
-      --_col-submenu-width: 24px;
-    }
+  ::slotted(*) {
+    grid-column: 1 / -1;
   }
 `;

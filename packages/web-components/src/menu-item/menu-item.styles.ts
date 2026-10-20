@@ -87,6 +87,15 @@ export const styles = css`
     display: none;
   }
 
+  .indicator,
+  ::slotted([slot='indicator']),
+  ::slotted([slot='start']),
+  ::slotted([slot='end']),
+  .submenu-glyph,
+  ::slotted([slot='submenu-glyph']) {
+    margin-inline: 2px;
+  }
+
   ::slotted([slot='end']) {
     color: ${colorNeutralForeground3};
     font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};

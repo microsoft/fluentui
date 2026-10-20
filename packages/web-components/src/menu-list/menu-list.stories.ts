@@ -160,8 +160,6 @@ export const Submenus: Story = {
         [
           {
             slottedContent: () => 'Item 1',
-            startSlottedContent: () => html`<span slot="start">${Edit20Filled}</span>`,
-
             submenuSlottedContent: () => html`
               <fluent-menu-list slot="submenu">
                 <fluent-menu-item>
