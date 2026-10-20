@@ -124,7 +124,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       placement: options.placement ?? toFloatingUIPlacement(positioningOptions.align, positioningOptions.position, rtl),
       isRtl: rtl,
     });
-    if (!options.attributes && !options.onPlacement) {
+    if (!attributes && !onPlacement) {
       return manager;
     }
 
@@ -221,7 +221,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
     const positioningOptions = options.positioningOptions ?? options;
     const requested = toPlacement(positioningOptions.position, positioningOptions.align);
-    const placement = detectPlacement(target, container);
+    const placement = detectPlacement ? detectPlacement(target, container) : requested;
     const resolved = placement ?? requested;
     const autoSize = normalizeAutoSize(positioningOptions.autoSize);
     const targetRect = rectOf(target.getBoundingClientRect());

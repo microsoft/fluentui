@@ -60,13 +60,11 @@ export function getCoordinateSpace(
       y: rect.top + parent.clientTop * scale.y - parent.scrollTop * scale.y,
     };
   }
-  const root = element.ownerDocument.documentElement;
   const win = element.ownerDocument.defaultView!;
-  const rect = root.getBoundingClientRect();
   return {
     scale: { x: 1, y: 1 },
-    x: strategy === 'fixed' ? 0 : rect.left - win.scrollX,
-    y: strategy === 'fixed' ? 0 : rect.top - win.scrollY,
+    x: strategy === 'fixed' ? 0 : -win.scrollX,
+    y: strategy === 'fixed' ? 0 : -win.scrollY,
   };
 }
 

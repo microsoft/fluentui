@@ -211,12 +211,18 @@ export async function computePosition(
     }
     if (autoSize.length) {
       const available = overflow({ ...f, ...coords }, shiftClip, padding);
-      const maxWidth = f.width - available.left - available.right;
-      const maxHeight = f.height - available.top - available.bottom;
+      const maxWidth = Math.max(0, f.width - available.left - available.right);
+      const maxHeight = Math.max(0, f.height - available.top - available.bottom);
       const widthSide = isVertical ? (align === (rtl ? 'start' : 'end') ? 'left' : 'right') : side;
       const heightSide = isVertical ? side : align === 'end' ? 'top' : 'bottom';
-      const width = main === 'x' || shiftCross ? maxWidth : Math.min(f.width - available[widthSide], maxWidth);
-      const height = main === 'y' || shiftCross ? maxHeight : Math.min(f.height - available[heightSide], maxHeight);
+      const width = Math.max(
+        0,
+        main === 'x' || shiftCross ? maxWidth : Math.min(f.width - available[widthSide], maxWidth),
+      );
+      const height = Math.max(
+        0,
+        main === 'y' || shiftCross ? maxHeight : Math.min(f.height - available[heightSide], maxHeight),
+      );
       for (const dimension of autoSize) {
         const size = dimension === 'width' ? width : height;
         css.setProperty('box-sizing', 'border-box');

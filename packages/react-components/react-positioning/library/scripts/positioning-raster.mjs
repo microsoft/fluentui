@@ -41,12 +41,16 @@ try {
     const failedTests = result.runs.flatMap(run =>
       run.tests.filter(test => test.state === 'failed').map(test => test.title.at(-1)),
     );
-    assert.deepEqual(
-      failedTests.sort(),
-      knownHostFailures,
+    const sortedFailures = failedTests.sort();
+    const sortedKnownHostFailures = [...knownHostFailures].sort();
+    const onlyKnownHostFailures =
+      sortedFailures.length === sortedKnownHostFailures.length &&
+      sortedFailures.every((test, index) => test === sortedKnownHostFailures[index]);
+    assert.ok(
+      sortedFailures.length === 0 || onlyKnownHostFailures,
       `${engine}: only the two oracle-reproduced fractional-DPR contracts may fail during raster capture`,
     );
-    console.log(`${engine}: captured all 141 contracts; ${knownHostFailures.length} known host failures`);
+    console.log(`${engine}: captured all 141 contracts; ${sortedFailures.length} host failures`);
   }
   const screenshots = async engine => {
     const directory = path.join(output, engine, 'usePositioning.raster.tsx');

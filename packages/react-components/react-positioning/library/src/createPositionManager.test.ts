@@ -143,6 +143,28 @@ describe('createPositionManager', () => {
     expect(container.style.transform).toBe('translate(450px, 348px)');
   });
 
+  it('uses the initial containing block origin for absolute positioning', async () => {
+    const { container, target } = createTestElements();
+    jest
+      .spyOn(document.documentElement, 'getBoundingClientRect')
+      .mockReturnValue(toDOMRect({ left: 10, top: 20, width: 1000, height: 700 }));
+
+    createPositionManager({
+      container,
+      target,
+      arrow: null,
+      strategy: 'absolute',
+      position: 'below',
+      align: 'start',
+      offset: 8,
+      disableUpdateOnResize: true,
+    });
+
+    await flushMicrotasks();
+
+    expect(container.style.transform).toBe('translate(450px, 348px)');
+  });
+
   it('writes left and top without useTransform', async () => {
     const { container, target } = createTestElements();
 
