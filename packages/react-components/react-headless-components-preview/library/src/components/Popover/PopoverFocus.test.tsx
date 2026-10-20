@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { act, fireEvent, render } from '@testing-library/react';
+import { flushSync } from 'react-dom';
 import { Popover } from './Popover';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 
@@ -93,5 +94,37 @@ describe('Popover frame observation lifecycle', () => {
     expect(interval).toHaveBeenCalledTimes(2);
     expect(change).not.toHaveBeenCalled();
     unmount();
+  });
+
+  it('does not reattach observers when an older React capture continues after synchronous unmount', async () => {
+    const add = jest.spyOn(document, 'addEventListener');
+    const remove = jest.spyOn(document, 'removeEventListener');
+    const lifecycle: { unmount?: () => void } = {};
+    const result = render(
+      <div
+        onFocusCapture={() => {
+          if (lifecycle.unmount) {
+            flushSync(lifecycle.unmount);
+          }
+        }}
+      >
+        <Popover defaultOpen>
+          <PopoverSurface as="div">
+            <button>Inside</button>
+          </PopoverSurface>
+        </Popover>
+      </div>,
+    );
+    lifecycle.unmount = result.unmount;
+    const initialObservers = add.mock.calls.filter(call => call[0] === 'fuiframefocus').length;
+    expect(initialObservers).toBeGreaterThan(0);
+    await settle(() => {
+      const inside = result.getByText('Inside');
+      inside.blur();
+      inside.focus();
+    });
+    expect(result.queryByText('Inside')).toBeNull();
+    expect(add.mock.calls.filter(call => call[0] === 'fuiframefocus')).toHaveLength(initialObservers);
+    expect(remove.mock.calls.filter(call => call[0] === 'fuiframefocus')).toHaveLength(initialObservers);
   });
 });

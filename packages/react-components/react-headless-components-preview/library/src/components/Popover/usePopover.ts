@@ -15,7 +15,7 @@ import type { InternalPopoverContextValue } from './popoverContext';
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 type InternalPopoverState = PopoverState & Pick<InternalPopoverContextValue, 'focusCapture'>;
-type FocusObservation = { event: Event; target: Node | null };
+type FocusObservation = { event: Event; target: Node | null; generation: number };
 
 const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
   !!el && typeof (el as HTMLDialogElement).showModal === 'function';
@@ -57,6 +57,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const focusObservations = React.useRef<FocusObservation[]>([]);
   const focusReconciliationQueued = React.useRef(false);
   const framePolls = React.useRef(new Map<Document, number>());
+  const observationLifecycle = React.useRef({ mounted: true, generation: 0 });
+  const eventGenerations = React.useRef(new WeakMap<Event, number>());
+  const retiredFocusDocuments = React.useRef(new WeakSet<Document>());
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
@@ -225,10 +228,10 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       if (!shouldRenderSurface) {
         setShouldRenderSurface(true);
       }
-      focusWasInsideOnNativeClose.current = null;
       if (pendingNativeClose.current === surface && !surface.matches(':popover-open')) {
         return;
       }
+      focusWasInsideOnNativeClose.current = null;
       pendingNativeClose.current = null;
       if (trapFocus) {
         if (isDialogElement(surface) && !surface.open) {
@@ -292,13 +295,46 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     return active;
   };
 
+  const getActiveFrameChain = (doc: Document): Array<{ doc: Document; active: Element }> => {
+    const chain: Array<{ doc: Document; active: Element }> = [];
+    const visited = new Set<Document>();
+    let current = doc;
+    while (!visited.has(current)) {
+      visited.add(current);
+      const active = getDeepActiveElement(current);
+      if (!active) {
+        break;
+      }
+      chain.push({ doc: current, active });
+      const childDocument = active.nodeName === 'IFRAME' ? (active as HTMLIFrameElement).contentDocument : null;
+      if (!childDocument || !childDocument.hasFocus()) {
+        break;
+      }
+      current = childDocument;
+    }
+    return chain;
+  };
+
   const reconcileFocus = useEventCallback(() => {
-    const observations = focusObservations.current.splice(0);
+    const generation = observationLifecycle.current.generation;
+    const observations = focusObservations.current.splice(0).filter(item => item.generation === generation);
     const surface = contentRef.current;
-    if (!open || trapFocus || !surface || typeof surface.showPopover !== 'function') {
+    if (
+      !observationLifecycle.current.mounted ||
+      !open ||
+      trapFocus ||
+      !surface ||
+      typeof surface.showPopover !== 'function'
+    ) {
       return;
     }
-    if (!surface.matches(':popover-open')) {
+    const isCurrentSurface = () =>
+      observationLifecycle.current.mounted &&
+      observationLifecycle.current.generation === generation &&
+      contentRef.current === surface &&
+      surface.isConnected &&
+      surface.matches(':popover-open');
+    if (!isCurrentSurface()) {
       return;
     }
     if (observations.some(observation => isFocusInside(observation.target))) {
@@ -311,14 +347,19 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         documents.add(root as Document);
       }
     });
-    const focusedDocument =
+    const focusedRootDocument =
       [...observations]
         .reverse()
         .map(observation => observation.target?.ownerDocument)
         .find(doc => doc?.hasFocus()) ?? [...documents].find(doc => doc?.hasFocus());
-    documents.forEach(doc => {
-      if (!doc) {
+    const activeChain = focusedRootDocument ? getActiveFrameChain(focusedRootDocument) : [];
+    activeChain.forEach(item => documents.add(item.doc));
+    for (const doc of documents) {
+      if (!isCurrentSurface()) {
         return;
+      }
+      if (!doc) {
+        continue;
       }
       const win = doc.defaultView;
       const active = getDeepActiveElement(doc);
@@ -326,6 +367,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       if (active?.nodeName === 'IFRAME') {
         const frameDocument = (active as HTMLIFrameElement).contentDocument;
         if (frameDocument) {
+          if (!isCurrentSurface()) {
+            return;
+          }
           observeRoot(frameDocument);
         }
       }
@@ -334,33 +378,50 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         framePolls.current.set(
           doc,
           win.setInterval(() => {
+            const currentWindow = doc.defaultView;
             const destination = getDeepActiveElement(doc);
-            if (!doc.hasFocus() || !destination) {
-              win.clearInterval(framePolls.current.get(doc));
+            if (
+              !observationLifecycle.current.mounted ||
+              observationLifecycle.current.generation !== generation ||
+              !currentWindow ||
+              !doc.hasFocus() ||
+              !destination
+            ) {
+              currentWindow?.clearInterval(framePolls.current.get(doc));
               framePolls.current.delete(doc);
               return;
             }
-            destination.dispatchEvent(new win.CustomEvent('fuiframefocus', { bubbles: true, composed: true }));
+            destination.dispatchEvent(
+              new currentWindow.CustomEvent('fuiframefocus', { bubbles: true, composed: true }),
+            );
           }, 100),
         );
       } else if (win && (!isFrame || !doc.hasFocus())) {
         win.clearInterval(framePolls.current.get(doc));
         framePolls.current.delete(doc);
       }
-      if (!active || active === doc.body || active === doc.documentElement || doc !== focusedDocument) {
-        return;
-      }
-      if (isFocusInside(active)) {
-        focusWasInside.current = true;
-        return;
-      }
-      const observation =
-        [...observations].reverse().find(item => item.target === active) ?? observations[observations.length - 1];
-      if (focusWasInside.current && observation) {
-        focusWasInside.current = false;
-        setOpen(observation.event, false);
-      }
-    });
+    }
+    if (!isCurrentSurface()) {
+      return;
+    }
+    if (activeChain.some(item => isFocusInside(item.active))) {
+      focusWasInside.current = true;
+      return;
+    }
+    const destination = [...activeChain]
+      .reverse()
+      .find(item => item.active !== item.doc.body && item.active !== item.doc.documentElement);
+    if (!destination) {
+      return;
+    }
+    const observation =
+      [...observations].reverse().find(item => item.target === destination.active) ??
+      observations[observations.length - 1];
+    if (focusWasInside.current && observation) {
+      focusWasInside.current = false;
+      // Consumer code may synchronously close or unmount; allocate nothing after this callback.
+      setOpen(observation.event, false);
+    }
   });
 
   function scheduleFocusReconciliation() {
@@ -374,7 +435,16 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   }
 
   function observeFocus(event: Event, target: Node | null) {
-    focusObservations.current.push({ event, target });
+    const lifecycle = observationLifecycle.current;
+    if (!lifecycle.mounted || (target && !target.isConnected)) {
+      return;
+    }
+    const previousGeneration = eventGenerations.current.get(event);
+    if (previousGeneration !== undefined && previousGeneration !== lifecycle.generation) {
+      return;
+    }
+    eventGenerations.current.set(event, lifecycle.generation);
+    focusObservations.current.push({ event, target, generation: lifecycle.generation });
     if (target) {
       observeRootChain(target);
     }
@@ -401,34 +471,67 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   }
 
   function observeRoot(root: Node) {
-    if (focusObservers.current.has(root)) {
+    const ownerDocument = root.nodeType === 9 ? (root as Document) : root.ownerDocument;
+    if (
+      !observationLifecycle.current.mounted ||
+      focusObservers.current.has(root) ||
+      !ownerDocument?.defaultView ||
+      (retiredFocusDocuments.current.has(ownerDocument) && !ownerDocument.hasFocus())
+    ) {
       return;
     }
+    retiredFocusDocuments.current.delete(ownerDocument);
     const onFocus = (event: Event) => observeFocus(event, (event.composedPath()[0] ?? event.target) as Node | null);
     const doc = root.nodeType === 9 ? (root as Document) : undefined;
     const win = doc?.defaultView;
     let timeout: number | undefined;
+    let disposed = false;
     const onWindowBlur = (event: Event) => {
-      if (win) {
-        win.clearTimeout(timeout);
-        timeout = win.setTimeout(() => observeFocus(event, null), 0);
+      const currentWindow = doc?.defaultView;
+      const generation = observationLifecycle.current.generation;
+      if (!disposed && currentWindow) {
+        currentWindow.clearTimeout(timeout);
+        timeout = currentWindow.setTimeout(() => {
+          if (!disposed && observationLifecycle.current.generation === generation) {
+            observeFocus(event, null);
+          }
+        }, 0);
       }
     };
     const onWindowFocus = (event: Event) => observeFocus(event, null);
+    const onPageHide = (event: PageTransitionEvent) => {
+      if (doc && !event.persisted) {
+        retiredFocusDocuments.current.add(doc);
+        focusObservers.current.forEach((dispose, observedRoot) => {
+          if (observedRoot === doc || observedRoot.ownerDocument === doc) {
+            dispose();
+          }
+        });
+      }
+    };
     root.addEventListener('focusin', onFocus, true);
     root.addEventListener('fuiframefocus', onFocus, true);
     win?.addEventListener('blur', onWindowBlur);
     win?.addEventListener('focus', onWindowFocus);
+    win?.addEventListener('pagehide', onPageHide);
     focusObservers.current.set(root, () => {
+      if (disposed) {
+        return;
+      }
+      disposed = true;
       root.removeEventListener('focusin', onFocus, true);
       root.removeEventListener('fuiframefocus', onFocus, true);
-      win?.removeEventListener('blur', onWindowBlur);
-      win?.removeEventListener('focus', onWindowFocus);
-      win?.clearTimeout(timeout);
-      if (doc && win) {
-        win.clearInterval(framePolls.current.get(doc));
+      // A captured WindowProxy can become cross-origin after its document navigates.
+      const currentWindow = doc?.defaultView;
+      currentWindow?.removeEventListener('blur', onWindowBlur);
+      currentWindow?.removeEventListener('focus', onWindowFocus);
+      currentWindow?.removeEventListener('pagehide', onPageHide);
+      currentWindow?.clearTimeout(timeout);
+      if (doc) {
+        currentWindow?.clearInterval(framePolls.current.get(doc));
         framePolls.current.delete(doc);
       }
+      focusObservers.current.delete(root);
     });
   }
 
@@ -439,7 +542,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   };
 
   useIsomorphicLayoutEffect(() => {
+    observationLifecycle.current.mounted = true;
     if (!open || trapFocus) {
+      observationLifecycle.current.generation++;
       focusWasInside.current = false;
       focusObservations.current = [];
       focusObservers.current.forEach(dispose => dispose());
@@ -464,7 +569,10 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   });
   useIsomorphicLayoutEffect(() => {
     const observers = focusObservers.current;
+    const lifecycle = observationLifecycle.current;
     return () => {
+      lifecycle.mounted = false;
+      lifecycle.generation++;
       observers.forEach(dispose => dispose());
       observers.clear();
     };
