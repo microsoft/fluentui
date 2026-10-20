@@ -7,8 +7,8 @@ import {
 const STYLE_ID = 'fui-Slider-legacy-vertical-appearance';
 
 function mockProbeRect(size: { height: number; width: number }): jest.SpyInstance {
-  const rect = new DOMRect(0, 0, size.width, size.height);
-  return jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue(rect);
+  jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(size.width);
+  return jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(size.height);
 }
 
 function createDocument(): Document {
@@ -103,5 +103,19 @@ describe('legacyVerticalSliderAppearance', () => {
     const style = targetDocument.getElementById(STYLE_ID);
     expect(style?.getAttribute('nonce')).toBe('abc123');
     expect(style?.getAttribute('data-test')).toBe('x');
+  });
+
+  it('isolates the probe from application styles so global input sizing cannot skew the measurement', () => {
+    const targetDocument = createDocument();
+    const appended = jest.spyOn(targetDocument.body, 'append');
+    mockProbeRect({ height: 129, width: 16 });
+
+    supportsVerticalRangeInput(targetDocument);
+
+    const probe = appended.mock.calls[0][0] as HTMLInputElement;
+    expect(probe.style.getPropertyValue('all')).toBe('initial');
+    expect(probe.style.getPropertyPriority('all')).toBe('important');
+    expect(probe.style.getPropertyPriority('writing-mode')).toBe('important');
+    expect(targetDocument.body.contains(probe)).toBe(false);
   });
 });
