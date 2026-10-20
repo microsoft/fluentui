@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-motion
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.5)
+
+Mon, 19 Oct 2026 16:49:01 GMT
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.16.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.16.4)
 

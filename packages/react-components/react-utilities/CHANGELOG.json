@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "9.27.0",
+      "tag": "@fluentui/react-utilities_v9.27.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6cf751bc00c5939cee2980aae0a32c5be20f22ee",
+            "comment": "feat: add getPercentInRange helper"
+          }
+        ],
+        "patch": [
+          {
+            "author": "paliprandi@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "9f88a917f7025c3e67e61dae16371869b0ffd611",
+            "comment": "fix: handle special property names when filtering native props"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.26.7",
       "comments": {
