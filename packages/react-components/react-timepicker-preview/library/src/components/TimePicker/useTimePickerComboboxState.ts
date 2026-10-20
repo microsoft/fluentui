@@ -35,9 +35,6 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
     return activeOptionId ? getOptionById(activeOptionId) : null;
   }, [activeDescendantController, getOptionById]);
 
-  // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
-  // This effect ensures that the activeOption is cleared when the input doesn't match any option.
-  // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
   React.useEffect(() => {
     if (freeform && value) {
       const activeOption = getActiveOption();
@@ -52,18 +49,14 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
     }
   }, [freeform, value, activeDescendantController, getActiveOption]);
 
-  // Mimics the behavior of the browser's change event for a freeform TimePicker.
   const selectTimeFromValue = useEventCallback(
     (event: React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
       if (!freeform) {
         return;
       }
 
-      // Only commits when the text differs from the display text after the last change, so leaving the input after a
-      // clear or without typing does not report anything.
       if ((committedText ?? '') !== (value ?? '')) {
         if (!value?.trim()) {
-          // An empty commit is not parsed; it is an error only when the TimePicker or its Field is required.
           commitValue(event, { value: null, displayValue: '', errorType: required ? 'required-input' : undefined });
         } else {
           const { date, errorType } = parseTimeStringToDate(value);
@@ -80,17 +73,15 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
   });
 
   const rootRef = React.useRef<HTMLDivElement>(null);
-  // Commits when focus leaves the TimePicker, from the input or from the expand icon, which is in the tab order.
   const onBlur = useEventCallback((event: React.FocusEvent<HTMLElement>) => {
-    const isOutside = event.relatedTarget ? !elementContains(rootRef.current, event.relatedTarget) : true;
-    if (isOutside) {
+    if (!event.relatedTarget || !elementContains(rootRef.current, event.relatedTarget)) {
       selectTimeFromValue(event);
     }
   });
 
   const rootMergedRef = useMergedRefs(comboboxState.root.ref, rootRef);
   const clearIconMergedRef = useMergedRefs(comboboxState.clearIcon?.ref, clearIconRef);
-  const expandIconFieldLabelProps = useExpandIconFieldLabelProps(comboboxState.expandIcon);
+  const expandIconFieldLabelProps = useExpandIconFieldLabelProps(comboboxState.expandIcon, fieldContext?.labelId);
 
   return {
     ...comboboxState,
@@ -103,7 +94,6 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
       ...comboboxState.input,
       onBlur: mergeCallbacks(onBlur, comboboxState.input.onBlur),
     },
-    // tabIndex -1 allows the listbox to be the relatedTarget of a blur event.
     listbox: comboboxState.listbox ? { ...comboboxState.listbox, tabIndex: -1 } : undefined,
     expandIcon: comboboxState.expandIcon
       ? {
@@ -125,14 +115,14 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
  */
 const useExpandIconFieldLabelProps = (
   expandIcon: TimePickerComboboxState['expandIcon'],
+  fieldLabelId: string | undefined,
 ): { id: string; 'aria-labelledby': string } | undefined => {
-  const fieldContext = useFieldContext();
   const defaultChevronId = useId('timepicker-chevron-');
   const defaultLabelFromCombobox = 'Open';
 
-  if (fieldContext?.labelId && expandIcon?.['aria-label'] === defaultLabelFromCombobox) {
+  if (fieldLabelId && expandIcon?.['aria-label'] === defaultLabelFromCombobox) {
     const id = expandIcon.id ?? defaultChevronId;
-    return { id, 'aria-labelledby': `${id} ${fieldContext.labelId}` };
+    return { id, 'aria-labelledby': `${id} ${fieldLabelId}` };
   }
 
   return undefined;

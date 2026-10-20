@@ -5,9 +5,9 @@
 ```ts
 
 import type { BaseComboboxState } from '@fluentui/react-combobox';
-import type { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxContextValues as TimePickerContextValues } from '@fluentui/react-combobox';
 import type { ComboboxProps } from '@fluentui/react-combobox';
-import type { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxSlots as TimePickerSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
@@ -70,7 +70,7 @@ export type TimePickerComboboxState = Pick<BaseComboboxState, 'root' | 'input' |
 export type TimePickerCommitData = Pick<TimePickerOnChangeData, 'value' | 'displayValue' | 'errorType'>;
 
 // @public (undocumented)
-export type TimePickerContextValues = ComboboxContextValues;
+export { TimePickerContextValues }
 
 // @public
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
@@ -101,7 +101,7 @@ export type TimePickerSelection<TComboboxProps> = TimePickerTimeState & {
 };
 
 // @public (undocumented)
-export type TimePickerSlots = ComboboxSlots;
+export { TimePickerSlots }
 
 // @public
 export type TimePickerState = ComboboxState & TimePickerTimeState;

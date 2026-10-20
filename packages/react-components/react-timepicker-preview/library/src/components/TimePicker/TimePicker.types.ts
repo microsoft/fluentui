@@ -1,15 +1,17 @@
 import type * as React from 'react';
 import type {
   BaseComboboxState,
-  ComboboxContextValues,
   ComboboxProps,
-  ComboboxSlots,
+  ComboboxSlots as TimePickerSlots,
   ComboboxState,
 } from '@fluentui/react-combobox';
 import type { ComponentProps, DistributiveOmit, EventData, EventHandler } from '@fluentui/react-utilities';
 import type { Hour, TimeFormatOptions, TimePickerErrorType, TimeStringValidationResult } from '../../utils/types';
 
-export type TimePickerSlots = ComboboxSlots;
+export type {
+  ComboboxContextValues as TimePickerContextValues,
+  ComboboxSlots as TimePickerSlots,
+} from '@fluentui/react-combobox';
 
 /**
  * Data passed to the `onChange` callback.
@@ -160,5 +162,3 @@ export type TimePickerState = ComboboxState & TimePickerTimeState;
  * State used in rendering TimePicker, without design-only state.
  */
 export type TimePickerBaseState = DistributiveOmit<TimePickerState, 'appearance' | 'size'>;
-
-export type TimePickerContextValues = ComboboxContextValues;

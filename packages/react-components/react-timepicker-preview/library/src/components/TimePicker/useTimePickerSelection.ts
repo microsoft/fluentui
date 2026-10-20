@@ -81,7 +81,6 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     parseTimeStringToDate: parseTimeStringToDateInProps,
     ...restProps
   } = props;
-  // Removing the TimePicker specific props leaves only the Combobox props.
   const rest = restProps as unknown as TComboboxProps;
   const { freeform = false, clearable } = rest;
 
@@ -92,8 +91,6 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
   });
   const valueKey = dateToKey(value);
 
-  // The fallback anchor is resolved once, from the initial value, so that accepting a selection never regenerates the
-  // options around the new value.
   const [initialValue] = React.useState(() => value ?? undefined);
   const { dateStartAnchor, dateEndAnchor } = useStableDateAnchor(dateAnchorInProps ?? initialValue, startHour, endHour);
 
@@ -125,16 +122,17 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     typedText && (typedText.valueKey === valueKey || typedText.committedValueKey === valueKey)
       ? typedText.text
       : undefined;
-  const formattedValue = value ? formatDateToTimeString(value, { showSeconds, hourCycle }) : '';
+  const formattedValue = React.useMemo(
+    () => (value ? formatDateToTimeString(value, { showSeconds, hourCycle }) : ''),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `valueKey` stands for `value`
+    [formatDateToTimeString, hourCycle, showSeconds, valueKey],
+  );
   const displayValue = activeTypedText ?? formattedValue;
 
-  // The display text after the last change, with the value key it produced. While `value` still has that key, typed
-  // text equal to it is unchanged; after any other `value` change the formatted value is the text to compare against.
   const [lastCommit, setLastCommit] = React.useState<{ text: string; valueKey: string } | undefined>(undefined);
   const committedText = lastCommit && lastCommit.valueKey === valueKey ? lastCommit.text : formattedValue;
 
   const commitValue = useEventCallback((event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => {
-    // A failed commit keeps the typed text so the user can correct it; a valid one shows the formatted value.
     const keepsTypedText = !!data.errorType && data.displayValue !== undefined;
     const nextDisplayValue =
       keepsTypedText || data.displayValue === undefined
@@ -146,9 +144,7 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
 
     setValue(data.value);
     setLastCommit({ text: nextDisplayValue ?? '', valueKey: nextValueKey });
-    setTypedText(
-      keepsTypedText ? { text: nextDisplayValue ?? '', valueKey, committedValueKey: nextValueKey } : undefined,
-    );
+    setTypedText(keepsTypedText ? { text: data.displayValue!, valueKey, committedValueKey: nextValueKey } : undefined);
     onChange?.(event, {
       event,
       type: event.type,
@@ -157,10 +153,10 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     } as TimePickerOnChangeData);
   });
 
-  const selectedOptions = React.useMemo(() => {
-    const selectedOption = options.find(option => option.key === valueKey);
-    return selectedOption ? [selectedOption.key] : [];
-  }, [options, valueKey]);
+  const selectedOptions = React.useMemo(
+    () => (options.some(option => option.key === valueKey) ? [valueKey] : []),
+    [options, valueKey],
+  );
 
   const clearIconRef = React.useRef<HTMLSpanElement>(null);
   const onOptionSelect: NonNullable<ComboboxProps['onOptionSelect']> = useEventCallback((event, data) => {
@@ -168,12 +164,9 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
       data.optionValue === undefined &&
       !(clearable && event.type === 'click' && event.currentTarget === clearIconRef.current)
     ) {
-      // Combobox clears the selection when the typed text stops matching it. In TimePicker typing never changes the
-      // value: a freeform TimePicker commits the text later, and a basic one only moves the active option.
       return;
     }
     if (data.optionValue === valueKey && activeTypedText === undefined) {
-      // Combobox selects the option matching the display text again when the input loses focus. It is not a change.
       return;
     }
 
@@ -188,15 +181,14 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
     setTypedText({ text: event.target.value, valueKey, committedValueKey: valueKey });
   });
 
-  // Without freeform, closing the listbox or leaving the input discards the typed text, as Combobox does.
-  const onOpenChange: NonNullable<ComboboxProps['onOpenChange']> = useEventCallback((event, data) => {
-    if (!data.open && !freeform) {
+  const discardTypedText = useEventCallback(() => {
+    if (!freeform) {
       setTypedText(undefined);
     }
   });
-  const onInputBlur = useEventCallback(() => {
-    if (!freeform) {
-      setTypedText(undefined);
+  const onOpenChange: NonNullable<ComboboxProps['onOpenChange']> = useEventCallback((event, data) => {
+    if (!data.open) {
+      discardTypedText();
     }
   });
 
@@ -212,7 +204,7 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
       ...rest,
       value: displayValue,
       onChange: onInputChange,
-      onBlur: mergeCallbacks(rest.onBlur, onInputBlur),
+      onBlur: mergeCallbacks(rest.onBlur, discardTypedText),
       onOpenChange: mergeCallbacks(rest.onOpenChange, onOpenChange),
       selectedOptions,
       onOptionSelect,
@@ -242,7 +234,6 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
     const dateEndAnchor = getDateEndAnchor(dateAnchor, startHour, endHour);
 
     return { dateStartAnchor, dateEndAnchor };
-    // `providedDate`'s stable key representation is used as dependency instead of the Date object. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endHour, fallbackDateAnchor, providedDateKey, startHour]);
 };

@@ -22,14 +22,19 @@ export const useTimePickerBase_unstable = (
   ref: React.Ref<HTMLInputElement>,
 ): TimePickerBaseState => {
   const selection = useTimePickerSelection_unstable<BaseComboboxProps>(props);
+  const optionElements = React.useMemo(
+    () =>
+      selection.options.map(option => (
+        <Option key={option.key} value={option.key}>
+          {option.text}
+        </Option>
+      )),
+    [selection.options],
+  );
 
   const comboboxProps: BaseComboboxProps = {
     ...selection.comboboxProps,
-    children: selection.options.map(option => (
-      <Option key={option.key} value={option.key}>
-        {option.text}
-      </Option>
-    )),
+    children: optionElements,
   };
   const comboboxState = useComboboxBase_unstable(comboboxProps, ref);
 
@@ -50,7 +55,6 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   const { appearance = 'outline', size = fieldContext?.size ?? 'medium', ...baseProps } = props;
   const baseState = useTimePickerBase_unstable(baseProps, ref);
 
-  // While open, Escape closes the listbox and must not be handled by Tabster.
   const ignoreEscapeKeyAttribute = useTabsterAttributes({
     focusable: { ignoreKeydown: { Escape: baseState.open } },
   });

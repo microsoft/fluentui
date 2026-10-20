@@ -11,7 +11,6 @@ import type { TimePickerBaseProps, TimePickerProps } from './TimePicker.types';
 
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 
-// Moves focus out of the TimePicker. The expand icon is in the tab order, so Tab from the input may stop on it first.
 const leaveTimePicker = () => {
   userEvent.tab();
   if (document.activeElement?.closest('.fui-TimePicker')) {
@@ -20,7 +19,6 @@ const leaveTimePicker = () => {
 };
 
 describe('TimePicker', () => {
-  // mock locale to make sure the test generates same result as browser, and not affected by the test runner's locale
   const originalToLocaleTimeString = Date.prototype.toLocaleTimeString;
   beforeAll(() => {
     // eslint-disable-next-line no-extend-native
@@ -42,7 +40,6 @@ describe('TimePicker', () => {
         {
           props: {
             open: true,
-            // Portal messes with the classNames test, so rendering the listbox inline here
             inlinePopup: true,
           },
         },
@@ -85,7 +82,7 @@ describe('TimePicker', () => {
 
     const input = getByRole('combobox');
     userEvent.click(input);
-    expect(getAllByRole('option')[1].getAttribute('aria-selected')).toBe('true'); // '1:00' is selected
+    expect(getAllByRole('option')[1].getAttribute('aria-selected')).toBe('true');
 
     userEvent.click(getAllByRole('option')[10]);
     expect(getByRole('combobox').getAttribute('value')).toBe('10:00 AM');
@@ -171,7 +168,6 @@ describe('TimePicker', () => {
     userEvent.click(input);
     expect(getAllByRole('option').map(option => option.textContent)).toEqual(['22:00', '23:00', '00:00', '01:00']);
 
-    // 01:00 is on November 26. Accepting it must not move the anchor to November 26.
     userEvent.click(getAllByRole('option')[3]);
     expect(input).toHaveValue('01:00');
 
@@ -245,7 +241,6 @@ describe('TimePicker', () => {
 
       const input = getByRole('combobox');
 
-      // Call onChange when select an option
       userEvent.click(input);
       userEvent.click(getAllByRole('option')[1]);
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
@@ -255,11 +250,9 @@ describe('TimePicker', () => {
       );
       handleTimeSelect.mockClear();
 
-      // Do not call onChange on Enter when the value remains the same
       fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-      // Call onChange on Enter when the value changes
       userEvent.type(input, '111{enter}');
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
@@ -278,12 +271,10 @@ describe('TimePicker', () => {
       const input = getByRole('combobox');
       const expandIcon = getByRole('button');
 
-      // Do not call onChange when clicking dropdown icon
       userEvent.type(input, '111');
       userEvent.click(expandIcon);
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-      // Call onChange on focus lose
       leaveTimePicker();
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
@@ -358,7 +349,6 @@ describe('TimePicker', () => {
       expect.objectContaining({ type: 'keydown', displayValue: '09:05', errorType: undefined }),
     );
 
-    // The normalized text is the committed text, so leaving the input does not commit again.
     leaveTimePicker();
     expect(onChange).toHaveBeenCalledTimes(1);
   });
@@ -427,7 +417,6 @@ describe('TimePicker', () => {
 
     it('reports whitespace-only text as an empty commit', () => {
       const { input, onChange } = renderFreeform({ required: true });
-      // Typing a space would select the active option, as in Combobox.
       input.focus();
       fireEvent.change(input, { target: { value: '  ' } });
       leaveTimePicker();
@@ -451,7 +440,6 @@ describe('TimePicker', () => {
     userEvent.click(getAllByRole('option')[1]);
     expect(onChange).toHaveBeenCalledTimes(1);
 
-    // Tab with the listbox open selects the active option, which is the selected one.
     userEvent.click(input);
     leaveTimePicker();
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -467,7 +455,6 @@ describe('TimePicker', () => {
   });
 
   describe('required', () => {
-    // Commits a time, clears the text and moves focus away, which commits the empty text.
     const commitEmpty = (props: Partial<TimePickerProps>, wrapInRequiredField = false) => {
       const onChange = jest.fn();
       const timePicker = <TimePicker freeform hourCycle="h23" dateAnchor={dateAnchor} onChange={onChange} {...props} />;
@@ -485,7 +472,6 @@ describe('TimePicker', () => {
       );
       const input = getByRole('combobox');
       userEvent.type(input, '10:10{enter}');
-      // Clearing the text reopens the listbox with an active option, which Tab would select; Escape closes it first.
       userEvent.clear(input);
       userEvent.type(input, '{esc}');
       leaveTimePicker();

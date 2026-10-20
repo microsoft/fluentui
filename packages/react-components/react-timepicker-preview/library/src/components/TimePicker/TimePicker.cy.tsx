@@ -124,7 +124,6 @@ describe('TimePicker', () => {
         mount(<Example freeform />);
         cy.get(inputSelector).click().type('a').get(inputSelector).should('have.value', 'a');
         cy.get('#selected-time-text').should('have.text', '');
-        // The expand icon is in the tab order, so the second Tab moves focus out of the TimePicker.
         cy.realPress('Tab').realPress('Tab');
         cy.get('#selected-time-text').should('have.text', 'a');
       });
@@ -132,14 +131,12 @@ describe('TimePicker', () => {
       it(`${name} should select input value only on change`, () => {
         mount(<Example freeform />);
         cy.get(inputSelector).click().type('10:3').get(inputSelector).should('have.value', '10:3');
-        // The expand icon is in the tab order, so the second Tab moves focus out of the TimePicker.
         cy.realPress('Tab').realPress('Tab');
         cy.get('#selected-time-text').should('have.text', '10:3');
 
         cy.get(inputSelector).click().type('0').get(inputSelector).should('have.value', '10:30');
         cy.get('#selected-time-text').should('have.text', '10:3');
 
-        // The expand icon is in the tab order, so the second Tab moves focus out of the TimePicker.
         cy.realPress('Tab').realPress('Tab');
         cy.get('#selected-time-text').should('have.text', '10:30');
       });
