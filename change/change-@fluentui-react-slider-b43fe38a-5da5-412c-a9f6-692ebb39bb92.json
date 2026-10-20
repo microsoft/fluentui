@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(Slider): drop the deprecated -webkit-appearance: slider-vertical fallback so Chromium stops logging a deprecation warning",
+  "packageName": "@fluentui/react-slider",
+  "email": "jakesalvesen@users.noreply.github.com"
+}

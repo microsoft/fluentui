@@ -255,17 +255,11 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${sliderThumbSizeVar})`,
-    // Workaround to check if the browser supports `writing-mode: vertical-lr` for inputs and input[type=range] specifically.
-    // We check if the `writing-mode: sideways-lr` is supported as it's newer feature and it means
-    // that vertical controls should also support `writing-mode: vertical-lr`.
-    '@supports (writing-mode: sideways-lr)': {
-      writingMode: 'vertical-lr',
-      direction: 'rtl',
-    },
-    // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
-    '@supports not (writing-mode: sideways-lr)': {
-      WebkitAppearance: 'slider-vertical',
-    },
+    // Vertically oriented form controls support `writing-mode` since Chrome 124, Firefox 120 and Safari 17.4.
+    // The legacy `-webkit-appearance: slider-vertical` fallback cannot be kept in an `@supports not (...)` branch:
+    // Chromium reports the deprecated value while parsing the CSS, even when the condition does not match.
+    writingMode: 'vertical-lr',
+    direction: 'rtl',
   },
 });
 
