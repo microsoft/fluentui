@@ -41,6 +41,16 @@ CSS variable, and overflow styles. No tolerance or engine-derived expected coord
 The baseline helper only expands literal expected values. Engine replacements must pass these
 expectations, not regenerate them.
 
+For fractional DPR cases with transforms disabled, only rectangle x/y are compared to an
+engine-free sibling positioned with the committed literal left/top values. Native layout
+quantization is host-dependent: Electron 130 lays out `280.667px` at `280.6640625` on the
+original macOS host but at `280.65625` on Linux CI. Both are distinct from device-pixel rounding
+performed by the engine. The sibling runs no positioning logic and never reads engine output;
+all inline styles, dimensions, placement, and other fields remain exact literal assertions.
+The original rectangle snapshots are retained as provenance, not regenerated for each host.
+Negative-control tests at DPR 1.5 and 3 reject a `0.001px` left/top change even when native
+layout produces the same rectangle, and reject displaced rectangles with unchanged left/top.
+
 Coverage includes the finite 4-position by 5-alignment by 2-direction matrix (including invalid
 axis combinations), edge flips, ordered fallbacks and best fit, pinned shifting, tether options,
 shift-to-cover limits, number/object/function offsets, arrows, rectangular/element/intersected
