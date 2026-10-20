@@ -30,6 +30,7 @@ import { VegaLiteRangedChart, canRenderVegaRangedSpec } from './VegaLiteRangedCh
 import type { VegaLiteRangedChartProps } from './VegaLiteRangedChart';
 import { VegaLiteCenteredArea, canRenderVegaCenteredAreaSpec } from './VegaLiteCenteredArea';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
+import { readVegaOwnData } from './VegaLiteField';
 import type { useVegaDeclarativeChartStyles } from './useVegaDeclarativeChartStyles.styles';
 import type { ResponsiveChildProps } from '../ResponsiveContainer/ResponsiveContainer.types';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
@@ -60,20 +61,23 @@ const ResponsivePolarChart = withResponsiveContainer(PolarChart);
 
 // Strip ResponsiveContainer's native-only metadata before the geometry DOM boundary.
 const ResponsiveRangedContent: ForwardRefComponent<VegaLiteRangedChartProps & ResponsiveChildProps> = React.forwardRef(
-  ({ spec, width, height, styles: _styles, shouldResize: _shouldResize, ...props }, ref) => {
+  ({ spec, semanticMode, width, height, styles: _styles, shouldResize: _shouldResize, ...props }, ref) => {
     const renderTooltip = React.useCallback(
-      (row: Record<string, unknown>, unitSpec?: VegaLiteSpec) => renderVegaTooltip(unitSpec ?? spec, row),
-      [spec],
+      (row: Record<string, unknown>, unitSpec?: VegaLiteSpec) =>
+        renderVegaTooltip(unitSpec ?? spec, row, { mode: semanticMode }),
+      [spec, semanticMode],
     );
     const getAriaLabel = React.useCallback(
-      (row: Record<string, unknown>, unitSpec?: VegaLiteSpec) => buildVegaTooltip(unitSpec ?? spec, row).ariaLabel,
-      [spec],
+      (row: Record<string, unknown>, unitSpec?: VegaLiteSpec) =>
+        buildVegaTooltip(unitSpec ?? spec, row, { mode: semanticMode }).ariaLabel,
+      [spec, semanticMode],
     );
     const Renderer = canRenderVegaCenteredAreaSpec(spec) ? VegaLiteCenteredArea : VegaLiteRangedChart;
     return (
       <Renderer
         {...props}
         spec={spec}
+        semanticMode={semanticMode}
         width={width}
         height={height}
         ref={ref}
@@ -185,11 +189,12 @@ function withoutGeometryLegends(spec: VegaLiteSpec): VegaLiteSpec {
   };
 }
 
-const VegaGeometryUnit: ForwardRefComponent<UnitProps> = React.forwardRef(({ view, legendProps }, _ref) => {
+const VegaGeometryUnit: ForwardRefComponent<UnitProps> = React.forwardRef(({ view, mode, legendProps }, _ref) => {
   const spec = React.useMemo(() => (view.hideLegend ? withoutGeometryLegends(view.spec) : view.spec), [view]);
   return (
     <ResponsiveRangedChart
       spec={spec}
+      semanticMode={mode}
       hideTitle={view.composed}
       width={typeof spec.width === 'number' ? spec.width : undefined}
       height={typeof spec.height === 'number' ? spec.height : undefined}
@@ -199,6 +204,34 @@ const VegaGeometryUnit: ForwardRefComponent<UnitProps> = React.forwardRef(({ vie
   );
 });
 VegaGeometryUnit.displayName = 'VegaGeometryUnit';
+
+/** Preserve the pre-existing native grouped route in legacy mode, not newly supported range/offset geometry. */
+function isLegacyGroupedBar(spec: VegaLiteSpec): boolean {
+  if (spec.layer) {
+    return (
+      spec.layer.length === 1 &&
+      isLegacyGroupedBar({
+        ...spec.layer[0],
+        encoding: { ...spec.encoding, ...spec.layer[0].encoding },
+      })
+    );
+  }
+  const mark = typeof spec.mark === 'object' ? spec.mark : { type: spec.mark };
+  const encoding = spec.encoding;
+  return (
+    mark.type === 'bar' &&
+    readVegaOwnData(mark, 'orient') !== 'horizontal' &&
+    readVegaOwnData(mark, 'cornerRadiusEnd') === undefined &&
+    (encoding?.x?.type === 'nominal' || encoding?.x?.type === 'ordinal') &&
+    encoding.y?.type === 'quantitative' &&
+    !!encoding.color?.field &&
+    encoding.xOffset?.field === encoding.color.field &&
+    !encoding.x2 &&
+    !encoding.y2 &&
+    !encoding.yOffset &&
+    encoding.y.stack !== 'center'
+  );
+}
 
 /** Recursive JSX consumes an immutable plan. It neither prepares specs nor calls state hooks. */
 function renderView(view: VegaViewPlan, state: VegaDeclarativeChartState, classes: ViewClasses): React.ReactElement {
@@ -217,7 +250,8 @@ function renderView(view: VegaViewPlan, state: VegaDeclarativeChartState, classe
       );
     }
     const Renderer =
-      canRenderVegaRangedSpec(view.spec) || canRenderVegaCenteredAreaSpec(view.spec)
+      (canRenderVegaRangedSpec(view.spec) && !(state.mode === 'legacy' && isLegacyGroupedBar(view.nativeSpec))) ||
+      canRenderVegaCenteredAreaSpec(view.spec)
         ? VegaGeometryUnit
         : VegaNativeUnit;
     const chart = (

@@ -3,12 +3,6 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, useId } from '@fluentui/react-utilities';
-import {
-  useArrowNavigationGroup,
-  useFocusableGroup,
-  useMergedTabsterAttributes_unstable,
-} from '@fluentui/react-tabster';
-import { mergeClasses } from '@griffel/react';
 import { scaleLinear, scalePoint, scaleTime, scaleUtc } from 'd3-scale';
 import { format } from 'd3-format';
 import { timeFormat, utcFormat } from 'd3-time-format';
@@ -23,23 +17,16 @@ import {
   curveMonotoneX,
   curveNatural,
 } from 'd3-shape';
-import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { Legends } from '../Legends/Legends';
-import type { VegaLitePositionEncoding, VegaLiteSpec } from './VegaLiteTypes';
+import type { VegaLitePositionEncoding, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
 import { readVegaField } from './VegaLiteField';
 import { getVegaCenterStack } from './VegaLiteStackGeometry';
 import { getVegaColor } from './VegaLiteColorAdapter';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { useIsDarkTheme } from './VegaDeclarativeChartHooks';
 import { useVegaLiteCenteredAreaStyles } from './useVegaLiteCenteredAreaStyles.styles';
-import {
-  getVegaLiteChartTitle,
-  getVegaLiteChartDescription,
-  VegaLiteChartTitle,
-  VegaLiteTooltipContainer,
-  vegaLiteChartPresentation,
-  renderVegaLiteAxes,
-} from './VegaLiteChartPresentation';
+import { getVegaLiteChartTitle, vegaLiteChartPresentation } from './VegaLiteChartPresentation';
+import { VegaLiteChartShell } from './VegaLiteChartShell';
+import { useVegaLiteChartInteraction } from './useVegaLiteChartInteraction';
 
 export type VegaCenteredAreaRow = Record<string, unknown>;
 type Scalar = string | number | boolean;
@@ -540,6 +527,8 @@ export function getVegaCenteredAreaGeometry(
 export type VegaLiteCenteredAreaProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   /** Prepared inline rows; no transforms/aggregates are run by this renderer. */
   spec: VegaLiteSpec;
+  /** Internal tooltip policy, matching the owning declarative view. */
+  semanticMode?: VegaLiteSemanticMode;
   /** Internal composition option: the owning view renders the heading, but not the subtitle. */
   hideTitle?: boolean;
   /** Total SVG viewport including internal axis gutters. */
@@ -551,12 +540,12 @@ export type VegaLiteCenteredAreaProps = Omit<React.ComponentPropsWithoutRef<'div
   renderTooltip?: (row: VegaCenteredAreaRow, spec?: VegaLiteSpec) => React.ReactNode;
   getAriaLabel?: (row: VegaCenteredAreaRow, spec?: VegaLiteSpec) => string;
 };
-type Anchor = { point: VegaCenteredAreaPoint; target: SVGCircleElement };
 
 /** Native filled SVG areas with semantic per-tuple focus targets and event-owned Fluent callouts. */
 export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps> = React.forwardRef((props, ref) => {
   const {
     spec,
+    semanticMode = 'strict',
     hideTitle,
     width: measuredWidth,
     height: measuredHeight,
@@ -573,9 +562,6 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
   const classes = useVegaLiteCenteredAreaStyles();
   const id = useId('vega-centered-area');
   const dark = useIsDarkTheme();
-  const groupAttributes = useFocusableGroup();
-  const arrowAttributes = useArrowNavigationGroup({ axis: 'both', circular: true });
-  const navigationAttributes = useMergedTabsterAttributes_unstable(groupAttributes, arrowAttributes);
   const width = Math.max(
     0,
     measuredWidth ?? (typeof spec.width === 'number' ? spec.width : vegaLiteChartPresentation.viewport.width),
@@ -592,17 +578,13 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
   );
   const showXAxis = !!axisEncoding(geometry.units, 'x');
   const showYAxis = !!axisEncoding(geometry.units, 'y');
-  const [hovered, setHovered] = React.useState<Anchor>();
-  const [focused, setFocused] = React.useState<Anchor>();
-  const [localSelection, setLocalSelection] = React.useState<string[]>([]);
-  const selected = selectedLegends ?? localSelection;
-  const candidate = hovered ?? focused;
-  const active =
-    candidate && candidate.target.ownerSVGElement && geometry.points.includes(candidate.point) ? candidate : undefined;
-  React.useEffect(() => {
-    setHovered(previous => (previous && geometry.points.includes(previous.point) ? previous : undefined));
-    setFocused(previous => (previous && geometry.points.includes(previous.point) ? previous : undefined));
-  }, [geometry]);
+  const interaction = useVegaLiteChartInteraction<VegaCenteredAreaPoint, SVGCircleElement>(geometry.points, {
+    onBlur,
+    onMouseLeave,
+    selectedLegends,
+    onLegendChange,
+  });
+  const { active, selected } = interaction;
   const legends = Array.from(
     new Set([
       ...geometry.units.flatMap(unit => unit.encoding?.color?.scale?.domain?.map(String) ?? []),
@@ -627,162 +609,105 @@ export const VegaLiteCenteredArea: ForwardRefComponent<VegaLiteCenteredAreaProps
   const selectedPoint = (legend?: string) => !selected.length || legend === undefined || selected.includes(legend);
   const title = getVegaLiteChartTitle(spec, 'Centered area chart');
   let content: React.ReactNode = null;
-  if (active?.point.row) {
-    const point = active.point;
+  if (active?.item.row) {
+    const point = active.item;
     const unit = point.spec ?? spec;
-    const tooltip = buildVegaTooltip(unit, point.row!);
+    const tooltip = buildVegaTooltip(unit, point.row!, { mode: semanticMode });
     if (!tooltip.disabled) {
       content = renderTooltip
         ? point.spec
           ? renderTooltip(point.row!, point.spec)
           : renderTooltip(point.row!)
-        : renderVegaTooltip(unit, point.row!);
+        : renderVegaTooltip(unit, point.row!, { mode: semanticMode });
     }
   }
   const showTooltip = !!active && content !== null && content !== undefined && content !== false;
-  const handleLegendChange = React.useCallback(
-    (keys: string[]) => {
-      setLocalSelection(keys);
-      onLegendChange?.(keys);
-    },
-    [onLegendChange],
-  );
-  const capture = (event: React.SyntheticEvent<SVGCircleElement>, point: VegaCenteredAreaPoint): Anchor | undefined =>
-    event.currentTarget.ownerSVGElement ? { point, target: event.currentTarget } : undefined;
 
   return (
-    <div
+    <VegaLiteChartShell
       {...getIntrinsicElementProps('div', rest)}
+      {...interaction.rootProps}
       ref={ref}
       style={{ ...style, width }}
-      className={mergeClasses(classes.root, className)}
-      role="group"
-      aria-label={rest['aria-label'] ?? title}
-      onBlur={event => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setFocused(undefined);
-          setHovered(undefined);
-        }
-        onBlur?.(event);
-      }}
-      onMouseLeave={event => {
-        setHovered(undefined);
-        onMouseLeave?.(event);
-      }}
+      className={className}
+      spec={spec}
+      hideTitle={hideTitle}
+      chartTitle={title}
+      svgId={id}
+      width={width}
+      height={height}
+      plotWidth={plotWidth}
+      plotHeight={plotHeight}
+      axes={geometry.axes}
+      showXAxis={showXAxis}
+      showYAxis={showYAxis}
+      classes={classes}
+      subject="points"
+      navigationKind="centered"
+      navigationAttributes={interaction.navigationAttributes}
+      beforeNavigation={geometry.warnings.length > 0 && <div role="status">{geometry.warnings.join(' ')}</div>}
+      legendProps={
+        colorEncoding?.legend !== null && !colorEncoding?.legend?.disable && legends.length > 0
+          ? {
+              legends: legends.map(legend => ({ title: legend, color: colorFor(legend) })),
+              selectedLegends: selected,
+              canSelectMultipleLegends: true,
+              onChange: interaction.onLegendChange,
+            }
+          : undefined
+      }
+      tooltip={showTooltip && active ? { target: active.target, content } : undefined}
     >
-      <VegaLiteChartTitle spec={spec} hideTitle={hideTitle} />
-      {geometry.warnings.length > 0 && <div role="status">{geometry.warnings.join(' ')}</div>}
-      <div {...navigationAttributes} data-centered-navigation="true">
-        <svg
-          id={id}
-          className={classes.svg}
-          width={width}
-          height={height}
-          viewBox={`${vegaLiteChartPresentation.viewBox.x} ${vegaLiteChartPresentation.viewBox.y} ${width} ${height}`}
-          role="group"
-          aria-labelledby={`${id}-title`}
-          aria-describedby={`${id}-description`}
-        >
-          <title id={`${id}-title`}>{title}</title>
-          <desc id={`${id}-description`}>{getVegaLiteChartDescription(spec, 'points')}</desc>
-          <defs>
-            <clipPath id={`${id}-clip`}>
-              <rect width={plotWidth} height={plotHeight} />
-            </clipPath>
-          </defs>
-          {renderVegaLiteAxes({ id, axes: geometry.axes, plotWidth, plotHeight, showXAxis, showYAxis, classes })}
-          <g clipPath={`url(#${id}-clip)`}>
-            {geometry.series.map(item => (
-              <path
-                key={item.key}
-                id={`${id}-series-${item.key}`}
-                className={classes.area}
-                data-centered-series={item.key}
-                data-legend={item.legend}
-                data-selected={selectedPoint(item.legend)}
-                d={item.d}
-                fill={colorFor(item.legend, item.spec)}
-                aria-hidden="true"
-                opacity={
-                  selectedPoint(item.legend)
-                    ? (mark(item.spec).opacity ?? 1) * (mark(item.spec).fillOpacity ?? 1)
-                    : 0.25
-                }
-              />
-            ))}
-            {geometry.points
-              .filter(point => !!point.row)
-              .map(point => {
-                const row = point.row!;
-                const unit = point.spec ?? spec;
-                const aria =
-                  (point.spec ? getAriaLabel?.(row, point.spec) : getAriaLabel?.(row)) ??
-                  buildVegaTooltip(unit, row).ariaLabel;
-                return (
-                  <circle
-                    key={point.key}
-                    id={`${id}-point-${point.key}`}
-                    className={classes.point}
-                    data-centered-point={point.key}
-                    data-value={point.value}
-                    data-lower={point.lower}
-                    data-upper={point.upper}
-                    data-selected={selectedPoint(point.legend)}
-                    cx={point.x}
-                    cy={(point.yLower + point.yUpper) / 2}
-                    r={vegaLiteChartPresentation.pointRadius}
-                    fill={colorFor(point.legend, unit)}
-                    role="img"
-                    aria-label={aria || 'Data point'}
-                    tabIndex={0}
-                    aria-describedby={showTooltip && active?.point === point ? `${id}-tooltip` : undefined}
-                    onFocus={event => {
-                      setHovered(undefined);
-                      setFocused(capture(event, point));
-                    }}
-                    onMouseEnter={event => setHovered(capture(event, point))}
-                    onMouseLeave={() => setHovered(previous => (previous?.point === point ? undefined : previous))}
-                    onKeyDown={event => {
-                      if (event.key === 'Escape') {
-                        setHovered(undefined);
-                        setFocused(undefined);
-                      } else if (
-                        event.key.startsWith('Arrow') ||
-                        event.key === 'Home' ||
-                        event.key === 'End' ||
-                        event.key === 'Tab'
-                      ) {
-                        setHovered(undefined);
-                      }
-                    }}
-                  />
-                );
-              })}
-          </g>
-        </svg>
-      </div>
-      {colorEncoding?.legend !== null && !colorEncoding?.legend?.disable && legends.length > 0 && (
-        <Legends
-          legends={legends.map(legend => ({ title: legend, color: colorFor(legend) }))}
-          selectedLegends={selected}
-          canSelectMultipleLegends
-          onChange={handleLegendChange}
+      {geometry.series.map(item => (
+        <path
+          key={item.key}
+          id={`${id}-series-${item.key}`}
+          className={classes.area}
+          data-centered-series={item.key}
+          data-legend={item.legend}
+          data-selected={selectedPoint(item.legend)}
+          d={item.d}
+          fill={colorFor(item.legend, item.spec)}
+          aria-hidden="true"
+          opacity={
+            selectedPoint(item.legend) ? (mark(item.spec).opacity ?? 1) * (mark(item.spec).fillOpacity ?? 1) : 0.25
+          }
         />
-      )}
-      {showTooltip && active && (
-        <ChartPopover
-          isPopoverOpen
-          positioning={{ target: active.target }}
-          customCallout={{
-            customizedCallout: (
-              <VegaLiteTooltipContainer id={`${id}-tooltip`} className={classes.tooltip}>
-                {content}
-              </VegaLiteTooltipContainer>
-            ),
-          }}
-        />
-      )}
-    </div>
+      ))}
+      {geometry.points
+        .filter(point => !!point.row)
+        .map(point => {
+          const row = point.row!;
+          const unit = point.spec ?? spec;
+          const aria =
+            (point.spec ? getAriaLabel?.(row, point.spec) : getAriaLabel?.(row)) ??
+            buildVegaTooltip(unit, row, { mode: semanticMode }).ariaLabel;
+          return (
+            <circle
+              key={point.key}
+              id={`${id}-point-${point.key}`}
+              className={classes.point}
+              data-centered-point={point.key}
+              data-value={point.value}
+              data-lower={point.lower}
+              data-upper={point.upper}
+              data-selected={selectedPoint(point.legend)}
+              cx={point.x}
+              cy={(point.yLower + point.yUpper) / 2}
+              r={vegaLiteChartPresentation.pointRadius}
+              fill={colorFor(point.legend, unit)}
+              role="img"
+              aria-label={aria || 'Data point'}
+              tabIndex={0}
+              aria-describedby={showTooltip && active?.item === point ? `${id}-tooltip` : undefined}
+              onFocus={event => interaction.focus(event, point)}
+              onMouseEnter={event => interaction.hover(event, point)}
+              onMouseLeave={() => interaction.leave(point)}
+              onKeyDown={interaction.onKeyDown}
+            />
+          );
+        })}
+    </VegaLiteChartShell>
   );
 });
 VegaLiteCenteredArea.displayName = 'VegaLiteCenteredArea';

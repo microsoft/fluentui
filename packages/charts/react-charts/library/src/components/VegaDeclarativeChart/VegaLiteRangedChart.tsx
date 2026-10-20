@@ -3,29 +3,16 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, useId } from '@fluentui/react-utilities';
-import {
-  useArrowNavigationGroup,
-  useFocusableGroup,
-  useMergedTabsterAttributes_unstable,
-} from '@fluentui/react-tabster';
-import { mergeClasses } from '@griffel/react';
-import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { Legends } from '../Legends/Legends';
 import { getVegaColor } from './VegaLiteColorAdapter';
-import type { VegaLitePositionEncoding, VegaLiteSpec } from './VegaLiteTypes';
+import type { VegaLitePositionEncoding, VegaLiteSemanticMode, VegaLiteSpec } from './VegaLiteTypes';
 import { getVegaRangedGeometry } from './VegaLiteRangedGeometry';
 import type { VegaRangedGeometry, VegaRangedRow } from './VegaLiteRangedGeometry';
 import { useIsDarkTheme } from './VegaDeclarativeChartHooks';
 import { buildVegaTooltip } from './VegaLiteTooltip';
 import { useVegaLiteRangedStyles } from './useVegaLiteRangedStyles.styles';
-import {
-  getVegaLiteChartTitle,
-  getVegaLiteChartDescription,
-  VegaLiteChartTitle,
-  VegaLiteTooltipContainer,
-  vegaLiteChartPresentation,
-  renderVegaLiteAxes,
-} from './VegaLiteChartPresentation';
+import { getVegaLiteChartTitle, vegaLiteChartPresentation } from './VegaLiteChartPresentation';
+import { VegaLiteChartShell } from './VegaLiteChartShell';
+import { useVegaLiteChartInteraction } from './useVegaLiteChartInteraction';
 
 export { canRenderVegaRangedSpec, getVegaRangedGeometry } from './VegaLiteRangedGeometry';
 export type { VegaRangedGeometry, VegaRangedRow } from './VegaLiteRangedGeometry';
@@ -33,6 +20,8 @@ export type { VegaRangedGeometry, VegaRangedRow } from './VegaLiteRangedGeometry
 export type VegaLiteRangedChartProps = Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
   /** Inline, cloned data with engine transforms/aggregates already applied. */
   spec: VegaLiteSpec;
+  /** Internal tooltip policy, matching the owning declarative view. */
+  semanticMode?: VegaLiteSemanticMode;
   /** Internal composition option: the owning view renders the heading, but not the subtitle. */
   hideTitle?: boolean;
   /** Total SVG dimensions from the responsive wrapper, including the internal axis gutters. */
@@ -47,9 +36,6 @@ export type VegaLiteRangedChartProps = Omit<React.ComponentPropsWithoutRef<'div'
 };
 
 type GeometryMark = VegaRangedGeometry['marks'][number];
-type Anchor = { mark: GeometryMark; target: SVGPathElement };
-// Never search a document for an SVG: derive the owning chart from the DIRECT event target.
-const getSVG = (target: SVGElement) => target.ownerSVGElement;
 
 const axisEncoding = (units: VegaLiteSpec[], axis: 'x' | 'y'): VegaLitePositionEncoding | undefined => {
   const visible = units.flatMap(unit => {
@@ -95,6 +81,7 @@ function renderedGeometry(spec: VegaLiteSpec, width: number, height: number): Ve
 export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> = React.forwardRef((props, ref) => {
   const {
     spec,
+    semanticMode = 'strict',
     hideTitle,
     width: measuredWidth,
     height: measuredHeight,
@@ -111,9 +98,6 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
   const classes = useVegaLiteRangedStyles();
   const id = useId('vega-ranged');
   const isDarkTheme = useIsDarkTheme();
-  const groupAttributes = useFocusableGroup();
-  const arrowAttributes = useArrowNavigationGroup({ axis: 'both', circular: true });
-  const navigationAttributes = useMergedTabsterAttributes_unstable(groupAttributes, arrowAttributes);
   const width =
     measuredWidth ?? (typeof spec.width === 'number' ? spec.width : vegaLiteChartPresentation.viewport.width);
   const height =
@@ -124,20 +108,13 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
   const geometry = React.useMemo(() => renderedGeometry(spec, plotWidth, plotHeight), [spec, plotWidth, plotHeight]);
   const showXAxis = !!axisEncoding(geometry.units ?? [spec], 'x');
   const showYAxis = !!axisEncoding(geometry.units ?? [spec], 'y');
-  const [hovered, setHovered] = React.useState<Anchor>();
-  const [focused, setFocused] = React.useState<Anchor>();
-  const [localSelection, setLocalSelection] = React.useState<string[]>([]);
-  const selected = selectedLegends ?? localSelection;
-  const activeAnchor = hovered ?? focused;
-  // A changed prepared spec must not leave an old row/removed SVG anchor in a callout.
-  const active =
-    activeAnchor && activeAnchor.target.ownerSVGElement && geometry.marks.includes(activeAnchor.mark)
-      ? activeAnchor
-      : undefined;
-  React.useEffect(() => {
-    setHovered(previous => (previous && geometry.marks.includes(previous.mark) ? previous : undefined));
-    setFocused(previous => (previous && geometry.marks.includes(previous.mark) ? previous : undefined));
-  }, [geometry]);
+  const interaction = useVegaLiteChartInteraction<GeometryMark, SVGPathElement>(geometry.marks, {
+    onBlur,
+    onMouseLeave,
+    selectedLegends,
+    onLegendChange,
+  });
+  const { active, selected } = interaction;
   const colorEncoding =
     geometry.units?.find(unit => unit.encoding?.color?.field)?.encoding?.color ?? spec.encoding?.color;
   const domain = React.useMemo(() => {
@@ -181,13 +158,15 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
     (typeof unitSpec.mark === 'object' ? unitSpec.mark.color : undefined) ??
     (legend === undefined ? undefined : colors.get(legend)) ??
     getVegaColor(0, scheme, range, isDarkTheme);
-  const activeTooltip = active ? buildVegaTooltip(active.mark.spec ?? spec, active.mark.row) : undefined;
+  const activeTooltip = active
+    ? buildVegaTooltip(active.item.spec ?? spec, active.item.row, { mode: semanticMode })
+    : undefined;
   let content: React.ReactNode = null;
   if (active && activeTooltip && !activeTooltip.disabled) {
     content = renderTooltip
-      ? active.mark.spec
-        ? renderTooltip(active.mark.row, active.mark.spec)
-        : renderTooltip(active.mark.row)
+      ? active.item.spec
+        ? renderTooltip(active.item.row, active.item.spec)
+        : renderTooltip(active.item.row)
       : activeTooltip.fields.length
       ? activeTooltip.ariaLabel
       : null;
@@ -195,131 +174,78 @@ export const VegaLiteRangedChart: ForwardRefComponent<VegaLiteRangedChartProps> 
   const showTooltip = active && content !== null && content !== undefined && content !== false;
   const title = getVegaLiteChartTitle(spec, 'Ranged chart');
 
-  const captureAnchor = (event: React.SyntheticEvent<SVGPathElement>, mark: GeometryMark): Anchor | undefined => {
-    const target = event.currentTarget;
-    return getSVG(target) ? { mark, target } : undefined;
-  };
-  const onKeyDown = (event: React.KeyboardEvent<SVGPathElement>) => {
-    if (event.key === 'Escape') {
-      setHovered(undefined);
-      setFocused(undefined);
-      return;
-    }
-    if (event.key.startsWith('Arrow') || event.key === 'Home' || event.key === 'End' || event.key === 'Tab') {
-      setHovered(undefined);
-    }
-    // Tabster owns movement, including circular arrows/Home/End and non-trapping Tab/Shift+Tab.
-  };
-  const handleLegendChange = React.useCallback(
-    (keys: string[]) => {
-      setLocalSelection(keys);
-      onLegendChange?.(keys);
-    },
-    [onLegendChange],
-  );
-
   return (
-    <div
+    <VegaLiteChartShell
       {...getIntrinsicElementProps('div', rootProps)}
+      {...interaction.rootProps}
       ref={ref}
-      className={mergeClasses(classes.root, className)}
+      className={className}
       style={{ ...style, width, ...(spec.title ? {} : { height }) }}
-      role="group"
-      aria-label={rootProps['aria-label'] ?? title}
-      onBlur={event => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setHovered(undefined);
-          setFocused(undefined);
-        }
-        onBlur?.(event);
-      }}
-      onMouseLeave={event => {
-        setHovered(undefined);
-        onMouseLeave?.(event);
-      }}
-    >
-      <VegaLiteChartTitle spec={spec} hideTitle={hideTitle} />
-      <div {...navigationAttributes} data-ranged-navigation="true">
-        <svg
-          id={id}
-          className={classes.svg}
-          width={width}
-          height={height}
-          viewBox={`${vegaLiteChartPresentation.viewBox.x} ${vegaLiteChartPresentation.viewBox.y} ${width} ${height}`}
-          role="group"
-          aria-labelledby={`${id}-title`}
-          aria-describedby={`${id}-description`}
-        >
-          <title id={`${id}-title`}>{title}</title>
-          <desc id={`${id}-description`}>{getVegaLiteChartDescription(spec, 'marks')}</desc>
-          <defs>
-            <clipPath id={`${id}-clip`}>
-              <rect width={plotWidth} height={plotHeight} />
-            </clipPath>
-          </defs>
+      spec={spec}
+      hideTitle={hideTitle}
+      chartTitle={title}
+      svgId={id}
+      width={width}
+      height={height}
+      plotWidth={plotWidth}
+      plotHeight={plotHeight}
+      axes={geometry.axes}
+      showXAxis={showXAxis}
+      showYAxis={showYAxis}
+      classes={classes}
+      subject="marks"
+      navigationKind="ranged"
+      navigationAttributes={interaction.navigationAttributes}
+      beforeAxes={
+        <>
           {/* Independent namespaces also when x, y and offsets happen to use the same field. */}
           <g id={`${id}-xOffset`} aria-hidden="true" />
           <g id={`${id}-yOffset`} aria-hidden="true" />
-          {renderVegaLiteAxes({ id, axes: geometry.axes, plotWidth, plotHeight, showXAxis, showYAxis, classes })}
-          <g clipPath={`url(#${id}-clip)`}>
-            {geometry.marks.map(mark => {
-              const isSelected = !selected.length || mark.legend === undefined || selected.includes(mark.legend);
-              const unitSpec = mark.spec ?? spec;
-              const markDefinition = typeof unitSpec.mark === 'object' ? unitSpec.mark : undefined;
-              const tooltip = buildVegaTooltip(unitSpec, mark.row);
-              return (
-                <path
-                  id={`${id}-mark-${mark.key}`}
-                  key={mark.key}
-                  className={classes.mark}
-                  data-ranged-mark={mark.key}
-                  data-selected={isSelected}
-                  d={mark.d}
-                  fill={colorFor(mark.legend, unitSpec)}
-                  opacity={isSelected ? markDefinition?.opacity ?? 1 : 0.25}
-                  role="img"
-                  aria-label={
-                    (mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row)) ||
-                    (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel) ||
-                    'Data point'
-                  }
-                  tabIndex={0}
-                  aria-describedby={showTooltip && active.mark === mark ? `${id}-tooltip` : undefined}
-                  onFocus={event => {
-                    setHovered(undefined);
-                    setFocused(captureAnchor(event, mark));
-                  }}
-                  onMouseEnter={event => setHovered(captureAnchor(event, mark))}
-                  onMouseLeave={() => setHovered(previous => (previous?.mark === mark ? undefined : previous))}
-                  onKeyDown={onKeyDown}
-                />
-              );
-            })}
-          </g>
-        </svg>
-      </div>
-      {colorEncoding?.legend !== null && !colorEncoding?.legend?.disable && legends.length > 0 && (
-        <Legends
-          legends={legends.map(legend => ({ title: legend, color: colorFor(legend) }))}
-          selectedLegends={selected}
-          canSelectMultipleLegends
-          onChange={handleLegendChange}
-        />
-      )}
-      {showTooltip && (
-        <ChartPopover
-          isPopoverOpen
-          positioning={{ target: active.target }}
-          customCallout={{
-            customizedCallout: (
-              <VegaLiteTooltipContainer id={`${id}-tooltip`} className={classes.tooltip}>
-                {content}
-              </VegaLiteTooltipContainer>
-            ),
-          }}
-        />
-      )}
-    </div>
+        </>
+      }
+      legendProps={
+        colorEncoding?.legend !== null && !colorEncoding?.legend?.disable && legends.length > 0
+          ? {
+              legends: legends.map(legend => ({ title: legend, color: colorFor(legend) })),
+              selectedLegends: selected,
+              canSelectMultipleLegends: true,
+              onChange: interaction.onLegendChange,
+            }
+          : undefined
+      }
+      tooltip={showTooltip ? { target: active.target, content } : undefined}
+    >
+      {geometry.marks.map(mark => {
+        const isSelected = !selected.length || mark.legend === undefined || selected.includes(mark.legend);
+        const unitSpec = mark.spec ?? spec;
+        const markDefinition = typeof unitSpec.mark === 'object' ? unitSpec.mark : undefined;
+        const tooltip = buildVegaTooltip(unitSpec, mark.row, { mode: semanticMode });
+        return (
+          <path
+            id={`${id}-mark-${mark.key}`}
+            key={mark.key}
+            className={classes.mark}
+            data-ranged-mark={mark.key}
+            data-selected={isSelected}
+            d={mark.d}
+            fill={colorFor(mark.legend, unitSpec)}
+            opacity={isSelected ? markDefinition?.opacity ?? 1 : 0.25}
+            role="img"
+            aria-label={
+              (mark.spec ? getAriaLabel?.(mark.row, mark.spec) : getAriaLabel?.(mark.row)) ||
+              (tooltip.disabled ? tooltip.ariaLabel || mark.ariaLabel : mark.ariaLabel) ||
+              'Data point'
+            }
+            tabIndex={0}
+            aria-describedby={showTooltip && active.item === mark ? `${id}-tooltip` : undefined}
+            onFocus={event => interaction.focus(event, mark)}
+            onMouseEnter={event => interaction.hover(event, mark)}
+            onMouseLeave={() => interaction.leave(mark)}
+            onKeyDown={interaction.onKeyDown}
+          />
+        );
+      })}
+    </VegaLiteChartShell>
   );
 });
 VegaLiteRangedChart.displayName = 'VegaLiteRangedChart';

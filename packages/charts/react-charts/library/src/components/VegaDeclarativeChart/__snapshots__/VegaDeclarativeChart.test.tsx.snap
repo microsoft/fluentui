@@ -2256,7 +2256,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="A, 28."
                   class="fui-donut-arc__root"
                   d="M0.5,-49.998A50,50,0,0,1,42.748,25.935L0,0Z"
-                  id="_Pie__r_2o_A28"
+                  id="_Pie__r_2s_A28"
                   opacity="1"
                   role="option"
                   style="fill: #637cef; cursor: default;"
@@ -2270,7 +2270,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
                   aria-label="B, 55."
                   class="fui-donut-arc__root"
                   d="M42.22,26.785A50,50,0,1,1,-0.5,-49.998L0,0Z"
-                  id="_Pie__r_2o_B55"
+                  id="_Pie__r_2s_B55"
                   opacity="1"
                   role="option"
                   style="fill: #e3008c; cursor: default;"
@@ -2282,7 +2282,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__calloutContainer"
-          id="callout_r_2p_"
+          id="callout_r_2t_"
         />
         <div
           class="fui-donut__legendContainer"
@@ -2360,221 +2360,269 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
       style="width: 100%; height: 100%;"
     >
       <div
-        aria-label="Ranged chart"
-        class=""
-        role="group"
-        style="width: 640px; height: 400px;"
+        class="fui-cart__root fui-charts-resp-child__root"
+        id="chart_"
+        role="presentation"
       >
         <div
-          data-ranged-navigation="true"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{},\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
+          class="fui-cart__chartWrapper fui-charts-resp-child__chartWrapper"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         >
           <svg
-            aria-describedby="vega-ranged_r_2m_-description"
-            aria-labelledby="vega-ranged_r_2m_-title"
-            class=""
-            height="400"
-            id="vega-ranged_r_2m_"
-            role="group"
-            viewBox="-56 -24 640 400"
-            width="640"
+            aria-label="Vertical bar chart with 2 grouped bar series. The X axis displays categories. The Y axis displays values. "
+            class="fui-cart__chart fui-charts-resp-child__chart"
+            height="NaN"
+            role="region"
+            style="display: block;"
+            width="0"
           >
-            <title
-              id="vega-ranged_r_2m_-title"
+            <g
+              class="fui-cart__xAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="xAxisGElementchart_"
+              text-anchor="middle"
+              transform="translate(0, NaN)"
             >
-              Ranged chart
-            </title>
-            <desc
-              id="vega-ranged_r_2m_-description"
+              <path
+                class="domain"
+                d="M48.5,6V0.5H-27.5V6"
+                stroke="currentColor"
+              />
+            </g>
+            <g
+              class="fui-cart__yAxis"
+              fill="none"
+              font-family="sans-serif"
+              font-size="10"
+              id="yAxisGElementchart_"
+              text-anchor="end"
+              transform="translate(40, 0)"
             >
-              Use arrow keys to navigate data marks. Home and End move to the first and last mark. Tab or Shift+Tab leaves the data marks. Escape dismisses the tooltip.
-            </desc>
-            <defs>
-              <clippath
-                id="vega-ranged_r_2m_-clip"
+              <path
+                class="domain"
+                d="M-6,NaNH0.5V20.5H-6"
+                stroke="currentColor"
+              />
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  0
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  11.25k
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  22.5k
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  33.75k
+                </text>
+              </g>
+              <g
+                class="tick"
+                opacity="1"
+                transform="translate(0,NaN)"
+              >
+                <line
+                  stroke="currentColor"
+                  x2="-60"
+                />
+                <text
+                  aria-hidden="true"
+                  dy="0.32em"
+                  fill="currentColor"
+                  style="direction: ltr; unicode-bidi: isolate; text-anchor: end;"
+                  x="-70"
+                >
+                  45k
+                </text>
+              </g>
+            </g>
+            <rect
+              fill="transparent"
+              height="100%"
+              style="pointer-events: none;"
+              width="100%"
+            />
+            <g>
+              <g
+                aria-label="Q1, category 1 of 1, with 2 bars"
+                role="listbox"
+                transform="translate(-6.888888888888889, 0)"
               >
                 <rect
-                  height="328"
-                  width="568"
+                  aria-label="Q1. North, 45000."
+                  class="fui-gvbc**opacityChangeOnHover"
+                  fill="#637cef"
+                  height="NaN"
+                  opacity=""
+                  role="option"
+                  rx="0"
+                  tabindex="0"
+                  width="16"
+                  x="0"
+                  y="NaN"
                 />
-              </clippath>
-            </defs>
-            <g
-              aria-hidden="true"
-              id="vega-ranged_r_2m_-xOffset"
-            />
-            <g
-              aria-hidden="true"
-              id="vega-ranged_r_2m_-yOffset"
-            />
-            <g
-              aria-hidden="true"
-              class=""
-              id="vega-ranged_r_2m_-x"
-            >
-              <path
-                class=""
-                d="M0,328L568,328"
-                fill="none"
-              />
-              <text
-                text-anchor="middle"
-                x="284"
-                y="346"
-              >
-                Q1
-              </text>
-              <text
-                text-anchor="middle"
-                x="284"
-                y="366"
-              >
-                quarter
-              </text>
-            </g>
-            <g
-              aria-hidden="true"
-              class=""
-              id="vega-ranged_r_2m_-y"
-            >
-              <path
-                class=""
-                d="M0,0L0,328"
-                fill="none"
-              />
-              <text
-                dominant-baseline="middle"
-                text-anchor="end"
-                x="-8"
-                y="328"
-              >
-                0
-              </text>
-              <text
-                dominant-baseline="middle"
-                text-anchor="end"
-                x="-8"
-                y="255.11111111111111"
-              >
-                10000
-              </text>
-              <text
-                dominant-baseline="middle"
-                text-anchor="end"
-                x="-8"
-                y="182.22222222222223"
-              >
-                20000
-              </text>
-              <text
-                dominant-baseline="middle"
-                text-anchor="end"
-                x="-8"
-                y="109.33333333333334"
-              >
-                30000
-              </text>
-              <text
-                dominant-baseline="middle"
-                text-anchor="end"
-                x="-8"
-                y="36.44444444444446"
-              >
-                40000
-              </text>
-              <text
-                text-anchor="middle"
-                transform="translate(-44,164) rotate(-90)"
-              >
-                sales
-              </text>
-            </g>
-            <g
-              clip-path="url(#vega-ranged_r_2m_-clip)"
-            >
-              <path
-                aria-label="quarter: Q1; sales: 45000; region: North"
-                class=""
-                d="M28.4,0L284,0L284,328L28.4,328Z"
-                data-ranged-mark="0"
-                data-selected="true"
-                fill="#637cef"
-                id="vega-ranged_r_2m_-mark-0"
-                opacity="1"
-                role="img"
-                tabindex="0"
-              />
-              <path
-                aria-label="quarter: Q1; sales: 38000; region: South"
-                class=""
-                d="M284,51.022222222L539.6,51.022222222L539.6,328L284,328Z"
-                data-ranged-mark="1"
-                data-selected="true"
-                fill="#e3008c"
-                id="vega-ranged_r_2m_-mark-1"
-                opacity="1"
-                role="img"
-                tabindex="0"
-              />
+                <rect
+                  aria-label="Q1. South, 38000."
+                  class="fui-gvbc**opacityChangeOnHover"
+                  fill="#e3008c"
+                  height="NaN"
+                  opacity=""
+                  role="option"
+                  rx="0"
+                  tabindex="0"
+                  width="16"
+                  x="17.77777777777778"
+                  y="NaN"
+                />
+                <text
+                  aria-hidden="true"
+                  class="fui-gvbc**barLabel"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  text-anchor="middle"
+                  x="8"
+                  y="NaN"
+                >
+                  45k
+                </text>
+                <text
+                  aria-hidden="true"
+                  class="fui-gvbc**barLabel"
+                  style="direction: ltr; unicode-bidi: isolate;"
+                  text-anchor="middle"
+                  x="25.77777777777778"
+                  y="NaN"
+                >
+                  38k
+                </text>
+              </g>
             </g>
           </svg>
         </div>
         <div
-          class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+          class="fui-cart__legendContainer"
         >
           <div
-            class="fui-Overflow fui-legend__resizableArea"
-            style="text-align: unset;"
+            class="fui-legend__root"
+            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           >
             <div
-              aria-label="Legends"
-              aria-multiselectable="true"
-              role="listbox"
-              style="display: contents;"
+              class="fui-Overflow fui-legend__resizableArea"
+              style="text-align: unset;"
             >
-              <button
-                aria-label="North"
-                aria-posinset="1"
-                aria-selected="false"
-                aria-setsize="2"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
-                type="button"
+              <div
+                aria-label="Legends"
+                aria-multiselectable="true"
+                role="listbox"
+                style="display: contents;"
               >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
-                />
-                <div
-                  class="fui-legend__text"
+                <button
+                  aria-label="North"
+                  aria-posinset="1"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #637cef; --rect-borderColor: #637cef;"
+                  type="button"
                 >
-                  North
-                </div>
-              </button>
-              <button
-                aria-label="South"
-                aria-posinset="2"
-                aria-selected="false"
-                aria-setsize="2"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(99, 124, 239); border-color: rgb(99, 124, 239); --rect-content-high-contrast: linear-gradient(to right, #637cef, #637cef);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    North
+                  </div>
+                </button>
+                <button
+                  aria-label="South"
+                  aria-posinset="2"
+                  aria-selected="false"
+                  aria-setsize="2"
+                  class="fui-Button fui-legend__legend"
+                  data-overflow-item=""
+                  role="option"
+                  style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+                  type="button"
                 >
-                  South
-                </div>
-              </button>
+                  <div
+                    class="fui-legend__rect"
+                    style="height: 12px; background-color: rgb(227, 0, 140); border-color: rgb(227, 0, 140); --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+                  />
+                  <div
+                    class="fui-legend__text"
+                  >
+                    South
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2717,7 +2765,7 @@ exports[`VegaDeclarativeChart - Chart Type Detection Snapshots for Chart Type De
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_2s_"
+          id="tooltip__r_30_"
           style="opacity: 0;"
         />
       </div>
@@ -2772,9 +2820,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_30_"
+              aria-describedby="tooltip-_r_34_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_2v_"
+              id="tooltip-host_r_33_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -3186,9 +3234,9 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_32_"
+              aria-describedby="tooltip-_r_36_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_31_"
+              id="tooltip-host_r_35_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -3203,7 +3251,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_2u_"
+          id="tooltip__r_32_"
           style="opacity: 0;"
         />
       </div>
@@ -3345,7 +3393,7 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 1: Heatmap Chart Not Rendering
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3a_"
+          id="tooltip__r_3e_"
           style="opacity: 0;"
         />
       </div>
@@ -3755,17 +3803,17 @@ exports[`VegaDeclarativeChart - Issue Fixes Issue 2: Line+Bar Combo (Now Support
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3j_"
+          id="tooltip__r_3n_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3j_"
+          id="tooltip__r_3n_"
           style="opacity: 0;"
         />
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_3j_"
+          id="tooltip__r_3n_"
           style="opacity: 0;"
         />
       </div>
@@ -3820,9 +3868,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_4o_"
+              aria-describedby="tooltip-_r_4s_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4n_"
+              id="tooltip-host_r_4r_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -4234,9 +4282,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_4q_"
+              aria-describedby="tooltip-_r_4u_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4p_"
+              id="tooltip-host_r_4t_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4251,7 +4299,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4m_"
+          id="tooltip__r_4q_"
           style="opacity: 0;"
         />
       </div>
@@ -4306,9 +4354,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="336"
             />
             <text
-              aria-describedby="tooltip-_r_4u_"
+              aria-describedby="tooltip-_r_52_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4t_"
+              id="tooltip-host_r_51_"
               text-anchor="middle"
               x="22"
               y="342"
@@ -4720,9 +4768,9 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               y="151.5"
             />
             <text
-              aria-describedby="tooltip-_r_50_"
+              aria-describedby="tooltip-_r_54_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4v_"
+              id="tooltip-host_r_53_"
               text-anchor="middle"
               transform="rotate(-90, 16, 157.5)"
               x="16"
@@ -4737,7 +4785,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4s_"
+          id="tooltip__r_50_"
           style="opacity: 0;"
         />
       </div>
@@ -4949,7 +4997,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap with r
         </div>
         <div
           class="fui-cart__tooltip"
-          id="tooltip__r_4k_"
+          id="tooltip__r_4o_"
           style="opacity: 0;"
         />
       </div>
@@ -5061,9 +5109,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_49_"
+              aria-describedby="tooltip-_r_4d_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_48_"
+              id="tooltip-host_r_4c_"
               text-anchor="middle"
               x="22"
               y="NaN"
@@ -5185,7 +5233,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
             </g>
             <g>
               <line
-                id="verticalLine_r_45_"
+                id="verticalLine_r_49_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5218,9 +5266,9 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart from 
               y="NaN"
             />
             <text
-              aria-describedby="tooltip-_r_4b_"
+              aria-describedby="tooltip-_r_4f_"
               class="fui-cart__axisTitle"
-              id="tooltip-host_r_4a_"
+              id="tooltip-host_r_4e_"
               text-anchor="middle"
               transform="rotate(-90, 16, NaN)"
               x="16"
@@ -5544,7 +5592,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_3p_"
+                id="verticalLine_r_3t_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"
@@ -5900,7 +5948,7 @@ exports[`VegaDeclarativeChart - Scatter Charts should render scatter chart with 
             </g>
             <g>
               <line
-                id="verticalLine_r_3v_"
+                id="verticalLine_r_43_"
                 stroke="#323130"
                 stroke-dasharray="5,5"
                 visibility="hidden"

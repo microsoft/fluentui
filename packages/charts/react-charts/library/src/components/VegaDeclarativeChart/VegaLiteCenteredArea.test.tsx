@@ -579,6 +579,49 @@ describe('native centered area renderer', () => {
     expect(screen.queryByTestId('popover')).toBeNull();
   });
 
+  it('restores the focused custom row callout after hover and retains local legend state', () => {
+    nativePopover = true;
+    const spec = centeredAreaSpec();
+    const renderTooltip = jest.fn(row => (
+      <span>
+        Row {String(row.series)} {String(row.x)}
+      </span>
+    ));
+    const { container } = render(<VegaLiteCenteredArea spec={spec} renderTooltip={renderTooltip} />);
+    fireEvent.click(screen.getByRole('option', { name: 'B' }));
+    const [first, second] = points(container);
+    act(() => first.focus());
+    const focusedContent = container.querySelector('.fui-PopoverSurface')!.textContent;
+    expect(renderTooltip.mock.calls[0][0]).toBe(spec.data!.values![0]);
+    fireEvent.mouseEnter(second);
+    expect(anchor().target).toBe(second);
+    expect(container.querySelector('.fui-PopoverSurface')!.textContent).not.toBe(focusedContent);
+    fireEvent.mouseLeave(second, { relatedTarget: first });
+    expect(first).toHaveFocus();
+    expect(anchor().target).toBe(first);
+    expect(container.querySelector('.fui-PopoverSurface')!.textContent).toBe(focusedContent);
+    expect(first).toHaveAttribute('aria-describedby', `${first.ownerSVGElement!.id}-tooltip`);
+    expect(series(container)[0]).toHaveAttribute('data-selected', 'false');
+    fireEvent.keyDown(first, { key: 'Escape' });
+    expect(first).toHaveFocus();
+    expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+    expect(first).not.toHaveAttribute('aria-describedby');
+  });
+
+  it('uses the same token focus-visible stroke as ranged marks, including forced-color point visibility', () => {
+    const { container } = render(<VegaLiteCenteredArea spec={centeredAreaSpec()} />);
+    const pointClasses = points(container)[0].getAttribute('class')!.split(' ');
+    const css = Array.from(container.ownerDocument.querySelectorAll('style'))
+      .flatMap(element => Array.from(element.sheet?.cssRules ?? [], rule => rule.cssText))
+      .filter(rule => pointClasses.some(className => rule.includes(`.${className}:`)))
+      .join('\n');
+    expect(css).toContain(':focus-visible');
+    expect(css).not.toMatch(/:focus\s*\{/);
+    expect(css).toContain('var(--colorStrokeFocus2)');
+    expect(css).toContain('forced-colors: active');
+    expect(css).toContain('Highlight');
+  });
+
   it('removes stale callouts when prepared spec/geometry changes', () => {
     const { container, rerender } = render(<VegaLiteCenteredArea spec={centeredAreaSpec()} />);
     fireEvent.focus(points(container)[0]);

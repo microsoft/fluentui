@@ -15,6 +15,8 @@ import { webDarkTheme, webLightTheme } from '@fluentui/react-theme';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { getVegaColor } from './VegaLiteColorAdapter';
 import { VegaLiteChartTitle } from './VegaLiteChartPresentation';
+import { VegaLiteCenteredArea } from './VegaLiteCenteredArea';
+import { centeredAreaSpec } from './testing/fixtures/centered-area';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import {
   groupedOffsetSpec,
@@ -555,6 +557,101 @@ describe('native SVG integration', () => {
     } finally {
       bounds.mockRestore();
       offset.mockRestore();
+    }
+  });
+
+  it.each(['ranged-first', 'centered-first'])('isolates mixed chart keyboard/callout ownership: %s', async order => {
+    nativePopover = true;
+    const rangedRef = React.createRef<HTMLDivElement>();
+    const centeredRef = React.createRef<HTMLDivElement>();
+    const centeredSpec = centeredAreaSpec();
+    centeredSpec.encoding!.color!.legend = null;
+    const rangedTooltip = jest.fn(row => <span>Range {String(row.task)}</span>);
+    const centeredTooltip = jest.fn(row => (
+      <span>
+        Area {String(row.series)} {String(row.x)}
+      </span>
+    ));
+    const ranged = (
+      <VegaLiteRangedChart
+        key="ranged"
+        ref={rangedRef}
+        id="ranged-host"
+        aria-label="Ranged owner"
+        aria-describedby="external-description"
+        spec={horizontalRangeSpec}
+        renderTooltip={rangedTooltip}
+      />
+    );
+    const centered = (
+      <VegaLiteCenteredArea
+        key="centered"
+        ref={centeredRef}
+        id="centered-host"
+        aria-label="Centered owner"
+        aria-describedby="external-description"
+        spec={centeredSpec}
+        renderTooltip={centeredTooltip}
+      />
+    );
+    const { container, restoreVisibility } = renderNavigable(
+      <>
+        <span id="external-description">Caller description</span>
+        <button>Before mixed charts</button>
+        {order === 'ranged-first' ? [ranged, centered] : [centered, ranged]}
+        <button>After mixed charts</button>
+      </>,
+    );
+    try {
+      expect(rangedRef.current).toBe(screen.getByRole('group', { name: 'Ranged owner' }));
+      expect(centeredRef.current).toBe(screen.getByRole('group', { name: 'Centered owner' }));
+      expect(rangedRef.current).toHaveAttribute('id', 'ranged-host');
+      expect(centeredRef.current).toHaveAttribute('id', 'centered-host');
+      for (const root of [rangedRef.current!, centeredRef.current!]) {
+        expect(root).toHaveAttribute('aria-describedby', 'external-description');
+        const svg = root.querySelector('svg')!;
+        expect(svg).toHaveAttribute('aria-labelledby', `${svg.id}-title`);
+        expect(svg).toHaveAttribute('aria-describedby', `${svg.id}-description`);
+      }
+      const roots =
+        order === 'ranged-first'
+          ? [rangedRef.current!, centeredRef.current!]
+          : [centeredRef.current!, rangedRef.current!];
+      for (const root of roots) {
+        const marks = root.querySelectorAll<SVGElement>('[data-ranged-mark], [data-centered-point]');
+        act(() => marks[0].focus());
+        fireEvent.mouseEnter(marks[1]);
+        expect((popover.mock.calls[popover.mock.calls.length - 1][0].positioning as { target: unknown }).target).toBe(
+          marks[1],
+        );
+        await act(async () => userEvent.keyboard('{Home}'));
+        expect(marks[0]).toHaveFocus();
+        expect((popover.mock.calls[popover.mock.calls.length - 1][0].positioning as { target: unknown }).target).toBe(
+          marks[0],
+        );
+        await act(async () => userEvent.keyboard('{End}'));
+        expect(marks[marks.length - 1]).toHaveFocus();
+        await act(async () => userEvent.keyboard('{Escape}'));
+        expect(marks[marks.length - 1]).toHaveFocus();
+        expect(container.querySelector('.fui-PopoverSurface')).toBeNull();
+        expect(marks[marks.length - 1]).not.toHaveAttribute('aria-describedby');
+        await act(async () => userEvent.keyboard('{ArrowRight}'));
+        expect(marks[0]).toHaveFocus();
+        expect(container.querySelectorAll('.fui-PopoverSurface')).toHaveLength(1);
+        await act(async () => userEvent.tab());
+        expect(root.contains(container.ownerDocument.activeElement)).toBe(false);
+      }
+      expect(screen.getByRole('button', { name: 'After mixed charts' })).toHaveFocus();
+      expect(rangedTooltip.mock.calls[0][0]).toBe(horizontalRangeSpec.data!.values![0]);
+      expect(centeredTooltip.mock.calls[0][0]).toBe(centeredSpec.data!.values![0]);
+      await act(async () => userEvent.tab({ shift: true }));
+      expect(roots[1].contains(container.ownerDocument.activeElement)).toBe(true);
+      await act(async () => userEvent.tab({ shift: true }));
+      expect(roots[0].contains(container.ownerDocument.activeElement)).toBe(true);
+      await act(async () => userEvent.tab({ shift: true }));
+      expect(screen.getByRole('button', { name: 'Before mixed charts' })).toHaveFocus();
+    } finally {
+      restoreVisibility();
     }
   });
 

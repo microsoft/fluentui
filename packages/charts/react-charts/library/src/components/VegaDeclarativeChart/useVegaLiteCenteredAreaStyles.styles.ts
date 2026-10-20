@@ -1,18 +1,10 @@
 'use client';
 
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import { useVegaLiteChartPresentationStyles } from './VegaLiteChartPresentation.styles';
 
-export const useVegaLiteCenteredAreaStyles = makeStyles({
-  root: {
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
-  svg: { display: 'block', overflow: 'hidden' },
-  axis: { fill: tokens.colorNeutralForeground1, fontSize: tokens.fontSizeBase200 },
-  axisLine: { stroke: tokens.colorNeutralStroke1, strokeWidth: tokens.strokeWidthThin },
+const useStyles = makeStyles({
   area: {
     '@media (forced-colors: active)': { fill: 'Canvas', stroke: 'CanvasText', strokeWidth: tokens.strokeWidthThin },
   },
@@ -20,17 +12,21 @@ export const useVegaLiteCenteredAreaStyles = makeStyles({
     fillOpacity: 0,
     strokeOpacity: 0,
     pointerEvents: 'all',
-    ':focus': {
+    ':focus-visible': {
       fill: tokens.colorNeutralBackground1,
       fillOpacity: 1,
-      stroke: tokens.colorStrokeFocus2,
       strokeOpacity: 1,
-      strokeWidth: tokens.strokeWidthThick,
     },
     ':hover': { fillOpacity: 1 },
     '@media (forced-colors: active)': {
-      ':focus': { fill: 'Canvas', stroke: 'Highlight' },
+      ':focus-visible': { fill: 'Canvas', stroke: 'Highlight' },
     },
   },
-  tooltip: { padding: tokens.spacingHorizontalS, color: tokens.colorNeutralForeground1 },
 });
+
+export const useVegaLiteCenteredAreaStyles = (): ReturnType<typeof useVegaLiteChartPresentationStyles> &
+  ReturnType<typeof useStyles> => {
+  const shared = useVegaLiteChartPresentationStyles();
+  const classes = useStyles();
+  return { ...shared, ...classes, point: mergeClasses(shared.focusIndicator, classes.point) };
+};
