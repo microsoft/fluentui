@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Accessibility/Overview" />
+
+# Accessibility
+
+Fluent UI Headless components ship the behavior half of accessibility: semantic elements, ARIA roles and states, keyboard interaction and focus handling. They ship **no visual styling**, so the visual half is yours: focus indicators, contrast, state feedback, forced colors and motion.
+
+Using these components does not by itself make a page accessible. The pages in this section cover what the components handle, what you have to add, and the mistakes that are easy to make when you style unstyled components.
+
+The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG22/quickref/) and the [WAI-ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/) are the standards these components follow.
+
+## What the components handle
+
+- **Semantic DOM.** Native elements where they exist (`<button>`, `<input>`, `<dialog>`, `<a>`), and the matching ARIA role where they don't.
+- **ARIA states and properties.** `aria-expanded`, `aria-checked`, `aria-pressed`, `aria-selected`, `aria-disabled`, `aria-invalid`, `aria-controls` and the rest are kept in sync with component state.
+- **Keyboard interaction.** Tab order, Enter/Space activation, arrow keys inside composite widgets, Home/End, and Escape to dismiss, following each component's APG pattern.
+- **Focus handling.** Focus moves into modal dialogs and menus when they open and returns to the trigger when overlays close. Modal dialogs use the native `<dialog>` element, so the browser makes the rest of the page inert.
+
+## Differences from the styled Fluent components
+
+Components reuse the base hooks of `@fluentui/react-components`, so the rendered roles and ARIA attributes match the styled components. Focus, keyboard navigation and overlays rely on the platform instead of JavaScript libraries:
+
+- **Keyboard navigation uses `focusgroup`.** Arrow-key navigation in Menu, TabList, Toolbar and other composite widgets comes from the `focusgroup` attribute, which needs a polyfill until browsers ship it. See [Keyboard navigation](?path=/docs/overview-accessibility-keyboard-navigation--docs).
+- **Overlays use `<dialog>` and the Popover API, not portals.** Overlays render in place and stack in the browser's top layer. Modal dialogs rely on native inert instead of a focus trap, and popovers use native light dismiss. See [Overlays](?path=/docs/overview-accessibility-overlays--docs).
+
+## What you own
+
+- **Focus indicators.** Every focusable element needs a visible `:focus-visible` style. See [Focus indicator](?path=/docs/overview-accessibility-focus-indicator--docs).
+- **Color contrast.** Text needs 4.5:1 (3:1 for large text), and non-text UI such as borders, icons and focus rings needs 3:1 ([WCAG 1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum), [1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast)).
+- **State feedback.** Hover, pressed, selected, checked, invalid and disabled must look different from each other, and not through color alone.
+- **Forced colors.** Windows High Contrast and other forced-colors modes strip backgrounds and box-shadows. Test your styles with `forced-colors: active`.
+- **Target size.** Pointer targets of at least 24×24 CSS px ([WCAG 2.5.8](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum)), 44×44 where you can.
+- **Motion.** Respect `prefers-reduced-motion` for transitions and enter/exit animations.
+- **Zoom and reflow.** Layouts must work at 400% zoom and 320 CSS px width without horizontal scrolling.
+- **Labels and page structure.** Accessible names, landmarks, headings and announcements belong to your application.
+
+## ARIA patterns
+
+| Component                     | APG pattern                                                                                                              | Rendered semantics                                                                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Button, ToggleButton          | [Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/)                                                               | `<button>`; `aria-pressed` on toggles                                                                                                          |
+| Checkbox, Switch, RadioGroup  | [Checkbox](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/), [Radio](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) | Native `<input>`; Switch adds `role="switch"`; `role="radiogroup"` on the group                                                                |
+| Accordion                     | [Accordion](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)                                                         | Header `<button>` with `aria-expanded`                                                                                                         |
+| Dialog, Drawer                | [Dialog (modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)                                                 | Native `<dialog>`, labelled by `DialogTitle`                                                                                                   |
+| Menu                          | [Menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/)                                                     | `role="menu"`, `role="menuitem"` / `menuitemcheckbox` / `menuitemradio`                                                                        |
+| TabList                       | [Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)                                                                   | `role="tablist"`, `role="tab"`, `aria-selected`                                                                                                |
+| Tooltip                       | [Tooltip](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/)                                                             | `role="tooltip"`, referenced by the trigger's label or description                                                                             |
+| Combobox, Dropdown, TagPicker | [Combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)                                                           | `role="combobox"`, `role="listbox"`, `role="option"`, `aria-activedescendant`; with `multiselect`, `role="menu"` and `role="menuitemcheckbox"` |
+| Toolbar                       | [Toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/)                                                             | `role="toolbar"`, arrow-key navigation through `focusgroup`                                                                                    |
+| Slider                        | [Slider](https://www.w3.org/WAI/ARIA/apg/patterns/slider/)                                                               | Native `<input type="range">`                                                                                                                  |
+
+Each component page lists its own roles, keyboard map and state attributes.
+
+## Keyboard
+
+| Key           | Action                                                                    |
+| ------------- | ------------------------------------------------------------------------- |
+| Tab ⇧Tab      | Move between components. Composite widgets take one Tab stop.             |
+| Enter / Space | Activate buttons, checkboxes, switches, toggles and menu items.           |
+| Arrow keys    | Move inside radio groups, tab lists, menus, toolbars, listboxes, sliders. |
+| Home / End    | Jump to the first or last item, where the pattern defines it.             |
+| Escape        | Close the topmost open overlay and return focus to its trigger.           |
+
+## Testing
+
+- **Keyboard only.** Unplug the mouse. Every action must be reachable and every focused element visible.
+- **Screen readers.** NVDA or JAWS with Chrome or Edge on Windows, VoiceOver with Safari on macOS and iOS, TalkBack with Chrome on Android.
+- **Automated checks.** [axe-core](https://github.com/dequelabs/axe-core) (or the Storybook a11y addon) catches missing names, invalid ARIA and contrast failures. It cannot judge focus order or announcements.
+- **Forced colors.** Chrome DevTools → Rendering → Emulate CSS media feature `forced-colors: active`.
+- **Zoom.** 200% and 400% browser zoom, and a 320 px wide viewport.
+- **Reduced motion.** Turn on reduced motion in the OS, or emulate `prefers-reduced-motion: reduce`.
+
+## Resources
+
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [WCAG 2.2 quick reference](https://www.w3.org/WAI/WCAG22/quickref/)
+- [WebAIM contrast checker](https://webaim.org/resources/contrastchecker/)
+- [Fluent UI v9 accessibility docs](https://storybooks.fluentui.dev/react/?path=/docs/concepts-developer-accessibility-components-overview--docs)
