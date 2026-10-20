@@ -196,9 +196,8 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     alignSelf: 'flex-start',
     fontSize: tokens.fontSizeBase500,
-    // the SVG must have display: block for accurate positioning
-    // otherwise an extra inline space is inserted after the svg element
-    '& svg': {
+    // Block display avoids inline baseline space for both icon renderers.
+    '& svg, & i': {
       display: 'block',
     },
   },

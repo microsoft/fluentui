@@ -2,17 +2,22 @@
 
 import { makeStyles } from '@fluentui/react-components';
 
+const iconSize = '32px';
+
 export const useAttachmentIconStyles = makeStyles({
   root: {
-    height: '32px',
-    width: '32px',
+    height: iconSize,
+    width: iconSize,
     marginRight: '12px',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    '& svg': {
+    '& svg, & i': {
       height: '100%',
       width: '100%',
+    },
+    '& i': {
+      fontSize: `${iconSize} !important`,
     },
   },
 });

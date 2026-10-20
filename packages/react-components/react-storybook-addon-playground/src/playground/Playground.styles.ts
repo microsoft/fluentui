@@ -49,7 +49,7 @@ export const usePlaygroundStyles = makeStyles({
     display: 'inline-flex',
     fontSize: tokens.fontSizeBase500,
     color: tokens.colorBrandForeground1,
-    '& svg': {
+    '& svg, & i': {
       display: 'block',
     },
   },
@@ -159,7 +159,7 @@ export const usePlaygroundStyles = makeStyles({
     flex: 1,
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground1,
-    '& svg': {
+    '& svg, & i': {
       fontSize: tokens.fontSizeBase300,
       color: tokens.colorNeutralForeground3,
       flexShrink: 0,

@@ -1,0 +1,58 @@
+jest.mock('@fluentui/react-icons-font-subsetting-webpack-plugin', () => ({ default: jest.fn() }));
+
+const { configureReactIcons } = require('../../../.storybook/react-icons-webpack');
+
+describe('Storybook React icon configuration', () => {
+  const originalVariant = process.env.FLUENTUI_ICON_VARIANT;
+
+  afterEach(() => {
+    if (originalVariant === undefined) {
+      delete process.env.FLUENTUI_ICON_VARIANT;
+    } else {
+      process.env.FLUENTUI_ICON_VARIANT = originalVariant;
+    }
+  });
+
+  it('keeps SVG as the default without adding font assets or changing the entry', () => {
+    delete process.env.FLUENTUI_ICON_VARIANT;
+    const config = configureReactIcons({ config: { entry: './preview.js' } });
+
+    expect(config.entry).toBe('./preview.js');
+    expect(config.plugins).toBeUndefined();
+    expect(config.module?.rules).toEqual([
+      expect.objectContaining({
+        use: [
+          expect.objectContaining({
+            options: { iconVariant: 'svg', fallbackVariant: 'svg', headless: false },
+          }),
+        ],
+      }),
+    ]);
+  });
+
+  it('emits fonts under static/media without relative workspace path segments', async () => {
+    process.env.FLUENTUI_ICON_VARIANT = 'fonts';
+    const config = configureReactIcons({ config: { entry: './preview.js' } });
+
+    expect(config.module?.rules).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          type: 'asset',
+          generator: { filename: 'static/media/[name].[contenthash][ext]' },
+        }),
+        expect.objectContaining({
+          use: [
+            expect.objectContaining({
+              options: { iconVariant: 'fonts', fallbackVariant: 'svg', headless: false },
+            }),
+          ],
+        }),
+      ]),
+    );
+    expect(config.plugins).toHaveLength(1);
+    if (typeof config.entry !== 'function') {
+      throw new Error('Font styles must be prepended through an entry function');
+    }
+    expect(await config.entry()).toEqual([require.resolve('../../../.storybook/react-icons-font.css'), './preview.js']);
+  });
+});
