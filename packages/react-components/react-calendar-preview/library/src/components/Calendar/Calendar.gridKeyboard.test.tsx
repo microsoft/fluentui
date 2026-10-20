@@ -721,6 +721,67 @@ describe.each([
   { name: 'base', base: true },
   { name: 'styled', base: false },
 ])('$name day grid consumer cell handlers', ({ base }) => {
+  it.each(['contenteditable', 'input'])('clears range state when the pointer leaves %s day content', editable => {
+    const Day = base ? BaseDay : CalendarDay;
+    const onSelect = jest.fn();
+    const onNavigate = jest.fn();
+    const { getByRole } = render(
+      <CalendarProvider
+        value={{ ...calendarContextDefaultValue, today, value: today, dateRangeType: 'week', setValue: onSelect }}
+      >
+        <Day
+          navigatedDate={today}
+          onNavigateDate={onNavigate}
+          renderDay={(_day, defaultContent) => (
+            <>
+              {defaultContent}
+              {editable === 'input' ? (
+                <input aria-label="Day editor" />
+              ) : (
+                <span contentEditable suppressContentEditableWarning>
+                  Editor
+                </span>
+              )}
+            </>
+          )}
+        />
+      </CalendarProvider>,
+    );
+    const button = getByRole('button', { name: 'September 18, 2020' });
+    const cell = button.closest('td')!;
+    const editor = cell.querySelector<HTMLElement>(editable === 'input' ? 'input' : '[contenteditable]')!;
+    const grid = getByRole('grid');
+    fireEvent.mouseOver(button);
+    fireEvent.mouseDown(button);
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    expect(grid.querySelectorAll('[data-range-pressed]')).toHaveLength(7);
+
+    fireEvent.mouseOut(button, { relatedTarget: editor });
+    fireEvent.mouseOver(editor, { relatedTarget: button });
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    expect(grid.querySelectorAll('[data-range-pressed]')).toHaveLength(7);
+    fireEvent.click(editor);
+    expect(fireEvent.keyDown(editor, { key: 'Enter' })).toBe(true);
+    expect(fireEvent.keyDown(editor, { key: 'ArrowRight' })).toBe(true);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+
+    fireEvent.mouseOut(editor, { relatedTarget: grid });
+
+    expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0);
+    fireEvent.mouseOver(editor, { relatedTarget: grid });
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    fireEvent.mouseOut(editor, { relatedTarget: grid });
+    const nestedGrid = cell.ownerDocument.createElement('div');
+    const nestedCell = cell.ownerDocument.createElement('div');
+    nestedGrid.setAttribute('role', 'grid');
+    nestedCell.setAttribute('role', 'gridcell');
+    nestedGrid.appendChild(nestedCell);
+    cell.appendChild(nestedGrid);
+    fireEvent.mouseOver(nestedCell);
+    expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0);
+  });
+
   it.each(['hidden', 'display', 'visibility'] as const)(
     'excludes an internally %s row while preserving grid visibility styles',
     hiding => {

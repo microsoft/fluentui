@@ -258,6 +258,8 @@ Grid keyboard handling runs when the event bubbles to the grid, after consumer h
 
 Descendant focusgroups own keyboard handling, not pointer selection: uncancelled clicks on their non-editable day or year content still select the enclosing date or year. Nested grids retain their own event ownership.
 
+Range hover includes editable day content: moving within a cell preserves its range state, and leaving through an editable descendant clears hover and pressed state. Editable descendants remain excluded from date selection and keyboard handling.
+
 Month/year navigation continues past cells that cannot receive focus, including hidden cells, while allowing programmatic navigation to cells with `tabIndex="-1"`.
 
 Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of `contenteditable="false"` remain navigable even inside an editable ancestor. `inherit` and invalid or case-insensitive values are treated according to the nearest explicit editable boundary.

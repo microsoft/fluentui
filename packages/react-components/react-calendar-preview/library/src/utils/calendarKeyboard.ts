@@ -55,12 +55,13 @@ export const getCalendarGridCells = (grid: Element): HTMLElement[] =>
   );
 
 /**
- * Resolves the cell of the grid handling `event`, ignoring nested grids and editable content.
+ * Resolves the cell of the grid handling `event`, ignoring nested grids and editable content except for range hover.
  * Keyboard events also respect descendant focusgroup owners.
  */
 export const getCalendarGridCell = (event: React.SyntheticEvent<HTMLElement>): HTMLElement | undefined => {
   const { currentTarget: grid, target } = event;
-  if (!isElement(target) || isCalendarKeyboardEditable(target)) {
+  const isRangeHover = event.type === 'mouseover' || event.type === 'mouseout';
+  if (!isElement(target) || (!isRangeHover && isCalendarKeyboardEditable(target))) {
     return undefined;
   }
   const cell = target.closest<HTMLElement>('[role="gridcell"]');
