@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(Legends): pass overflow menu checkedValues to Menu instead of MenuList to avoid a duplicate props warning",
+  "packageName": "@fluentui/react-charts",
+  "email": "jakesalvesen@users.noreply.github.com"
+}

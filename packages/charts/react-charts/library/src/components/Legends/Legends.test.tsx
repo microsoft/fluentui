@@ -411,6 +411,23 @@ describe('Legends - dynamic overflow', () => {
     expect(result.getByText('+14 Overflow Items')).toBeTruthy();
     expect(result.container.querySelectorAll('button[role="option"]:not([data-overflowing])').length).toBe(3);
   });
+
+  it('opens the overflow menu without warning about duplicate Menu and MenuList props', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const result = render(<Legends legends={legends} overflowText="Overflow Items" />);
+
+      fireEvent.click(result.getByText('+14 Overflow Items'));
+
+      expect(document.querySelector('div[role="menu"]')).not.toBeNull();
+      const menuPropsWarnings = warnSpy.mock.calls.filter(call =>
+        String(call[0]).includes('both MenuList and Menu props'),
+      );
+      expect(menuPropsWarnings).toHaveLength(0);
+    } finally {
+      warnSpy.mockRestore();
+    }
+  });
 });
 
 describe('Legends - axe-core', () => {
