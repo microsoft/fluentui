@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useId, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
+import { useId, slot, mergeCallbacks } from '@fluentui/react-utilities';
 
 import { Label } from '../Label';
 import { InfoButton } from './InfoButton/InfoButton';
@@ -27,7 +27,6 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     ...labelProps
   } = props;
   const baseId = useId('infolabel-');
-  const [open, setOpen] = React.useState(false);
 
   const root = slot.always(rootShorthand, {
     defaultProps: {
@@ -59,11 +58,28 @@ export const useInfoLabel = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElem
     elementType: 'div',
   });
 
-  infoButtonPopover.onOpenChange = useEventCallback(
-    mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
-      setOpen(data.open);
-    }),
-  );
+  const present = !!infoButton;
+  const normalizedKey = present && infoButton.key !== undefined ? String(infoButton.key) : undefined;
+  const defaultOpen = infoButtonPopover.defaultOpen ?? false;
+  const createLifecycle = () => ({
+    present,
+    key: normalizedKey,
+    generation: {},
+    open: present && defaultOpen,
+  });
+  const [storedLifecycle, setLifecycle] = React.useState(createLifecycle);
+  const identityChanged = storedLifecycle.present !== present || storedLifecycle.key !== normalizedKey;
+  const lifecycle = identityChanged ? createLifecycle() : storedLifecycle;
+  if (identityChanged) {
+    // Ownership belongs to the mounted slot, not a removed or differently keyed button.
+    setLifecycle(lifecycle);
+  }
+  const controlledOpen = infoButtonPopover.open;
+  const open = controlledOpen !== undefined ? controlledOpen : lifecycle.open;
+
+  infoButtonPopover.onOpenChange = mergeCallbacks(infoButtonPopover.onOpenChange, (_, data) => {
+    setLifecycle(current => (current.generation === lifecycle.generation ? { ...current, open: data.open } : current));
+  });
 
   if (infoButton) {
     const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup

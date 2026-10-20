@@ -7,8 +7,6 @@ import {
   useControllableState,
   slot,
   useMergedRefs,
-  elementContains,
-  useEventCallback,
 } from '@fluentui/react-utilities';
 
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
@@ -67,6 +65,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   });
 
   state.popover.open = popoverOpen;
+  state.popover.defaultOpen = undefined;
   state.root['data-open'] = toDataAttributeValue(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
 
@@ -82,19 +81,5 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
     infoRef.current?.focus();
   }, [popoverOpen, infoRef]);
 
-  // Hide the popover when focus moves out of the button and popover
-  const onBlurButtonOrInfo: React.FocusEventHandler<HTMLElement> = e => {
-    const nextFocused = e.relatedTarget;
-
-    if (!nextFocused || (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused))) {
-      setPopoverOpen(false);
-    }
-  };
-
-  // eslint-disable-next-line react-hooks/refs
-  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
-  const onInfoBlurCapture = state.info.onBlurCapture as React.FocusEventHandler<HTMLElement> | undefined;
-  // eslint-disable-next-line react-hooks/refs
-  state.info.onBlurCapture = useEventCallback(mergeCallbacks(onInfoBlurCapture, onBlurButtonOrInfo));
   return state;
 };
