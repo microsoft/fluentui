@@ -4,6 +4,7 @@ exports[`TeachingPopoverCarouselFooterButton renders a default state 1`] = `
 <div>
   <button
     class="fui-TeachingPopoverCarouselFooterButton fui-Button"
+    type="button"
   >
     Default TeachingPopoverCarouselFooterButton
   </button>

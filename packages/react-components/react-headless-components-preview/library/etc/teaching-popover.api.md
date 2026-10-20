@@ -56,7 +56,6 @@ import { useTeachingPopoverBody_unstable as useTeachingPopoverBody } from '@flue
 import { useTeachingPopoverCarouselBase_unstable as useTeachingPopoverCarousel } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselCard_unstable as useTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import type { useTeachingPopoverCarouselContextValues_unstable } from '@fluentui/react-teaching-popover';
-import { useTeachingPopoverCarouselFooterButtonBase_unstable as useTeachingPopoverCarouselFooterButton } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselNavBase_unstable as useTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselPageCount_unstable as useTeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverFooterBase_unstable as useTeachingPopoverFooter } from '@fluentui/react-teaching-popover';
@@ -323,7 +322,8 @@ export const useTeachingPopoverCarouselContextValues: (state: TeachingPopoverCar
 // @public (undocumented)
 export const useTeachingPopoverCarouselFooter: (props: TeachingPopoverCarouselFooterProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselFooterState;
 
-export { useTeachingPopoverCarouselFooterButton }
+// @public (undocumented)
+export const useTeachingPopoverCarouselFooterButton: (props: TeachingPopoverCarouselFooterButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselFooterButtonState;
 
 export { useTeachingPopoverCarouselNav }
 
