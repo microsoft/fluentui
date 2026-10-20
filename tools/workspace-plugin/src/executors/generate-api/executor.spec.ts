@@ -150,21 +150,15 @@ describe('GenerateApi Executor', () => {
   it(`should handle invalid inputs`, async () => {
     const { paths, context } = prepareFixture('invalid', {});
 
-    try {
-      await executor(options, context);
-    } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: ${paths.projRoot}/tsconfig.json doesn't exist]`);
-    }
+    await expect(executor(options, context)).rejects.toEqual(
+      new Error(`${join(paths.projRoot, 'tsconfig.json')} doesn't exist`),
+    );
 
     writeFileSync(join(paths.projRoot, 'tsconfig.json'), '{}', 'utf-8');
 
-    try {
-      await executor(options, context);
-    } catch (err) {
-      expect(err).toMatchInlineSnapshot(
-        `[Error: Cannot find api-extractor.json at "${paths.projRoot}/config/api-extractor.json"]`,
-      );
-    }
+    await expect(executor(options, context)).rejects.toEqual(
+      new Error(`Cannot find api-extractor.json at "${paths.projRoot}/config/api-extractor.json"`),
+    );
   });
 
   it('can run', async () => {
@@ -182,7 +176,7 @@ describe('GenerateApi Executor', () => {
     const output = await executor(options, context);
 
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${paths.projRoot}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
+      `tsc -p ${join(paths.projRoot, 'tsconfig.lib.json')} --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
       { stdio: 'inherit' },
     ]);
 
