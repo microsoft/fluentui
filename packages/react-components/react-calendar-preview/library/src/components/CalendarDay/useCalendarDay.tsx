@@ -221,7 +221,7 @@ export const useCalendarDayBase_unstable = (
   }
 
   let focusTargetDate: Date | undefined = navigatedDate;
-  if (isRestrictedDate(navigatedDate, restrictedDatesOptions)) {
+  if (!allFocusable && isRestrictedDate(navigatedDate, restrictedDatesOptions)) {
     const isInNavigatedMonth = (date: Date) =>
       compareDatePart(date, getMonthStart(navigatedDate)) >= 0 &&
       compareDatePart(date, getMonthEnd(navigatedDate)) <= 0;
@@ -546,7 +546,7 @@ export const useCalendarDayBase_unstable = (
   });
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
-    if (eventDay) {
+    if (eventDay && !ev.isDefaultPrevented()) {
       eventDay[0].focus();
       if (!ev.isDefaultPrevented() && eventDay[1].isInBounds) {
         onSelectDay(ev, eventDay[1].originalDate!);

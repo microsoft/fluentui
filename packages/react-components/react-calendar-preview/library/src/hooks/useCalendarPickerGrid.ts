@@ -3,7 +3,7 @@
 import type * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { isHTMLElement, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { SlotShorthandValue, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { stringifyDataAttribute } from '../utils/dataAttributes';
 import type { CalendarElementProps, CalendarGridRow } from '../utils/calendarGrid.types';
@@ -49,8 +49,25 @@ export function useCalendarPickerGrid(
 
   const getEventIndex = (event: React.SyntheticEvent<HTMLElement>) => {
     const cell = getCalendarGridCell(event);
-    const index = cell ? getCalendarGridCells(event.currentTarget).indexOf(cell) : -1;
+    if (!isHTMLElement(cell, { constructorName: 'HTMLButtonElement' })) {
+      return [undefined, -1] as const;
+    }
+    const index = getCalendarGridCells(event.currentTarget).indexOf(cell);
     return [cell, index] as const;
+  };
+
+  const selectCell = (
+    event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    cell: HTMLButtonElement,
+    index: number,
+  ) => {
+    const gridElement = event.currentTarget;
+    try {
+      // Preserve the button-event contract while sharing cancellation with the delegated grid event.
+      onSelect(Object.assign(event, { currentTarget: cell }), index);
+    } finally {
+      event.currentTarget = gridElement;
+    }
   };
 
   const gridSlot = slot.always(grid, {
@@ -60,9 +77,9 @@ export function useCalendarPickerGrid(
   gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
   gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (event: React.MouseEvent<HTMLElement>) => {
-    const [, index] = getEventIndex(event);
-    if (index >= 0 && !event.isDefaultPrevented() && isAvailable(index)) {
-      onSelect(event as React.MouseEvent<HTMLButtonElement>, index);
+    const [cell, index] = getEventIndex(event);
+    if (cell && index >= 0 && !event.isDefaultPrevented() && isAvailable(index)) {
+      selectCell(event, cell, index);
     }
   });
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (event: React.KeyboardEvent<HTMLElement>) => {
@@ -73,7 +90,7 @@ export function useCalendarPickerGrid(
     if (isCalendarGridArrow(event)) {
       moveCalendarGridFocus(event, cell, dir, allFocusable);
     } else if (event.key === Enter && isAvailable(index)) {
-      onSelect(event as React.KeyboardEvent<HTMLButtonElement>, index);
+      selectCell(event, cell, index);
       event.preventDefault();
     }
   });

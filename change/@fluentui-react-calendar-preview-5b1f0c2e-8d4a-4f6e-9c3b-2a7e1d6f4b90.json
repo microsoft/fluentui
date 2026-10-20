@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components",
+  "comment": "feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components; preserve button currentTarget for picker selection events and support selection from SVG cell content; preserve cancelled-click focus, visible tab stops, restricted-date focus with allFocusable, and focus after synchronous controlled navigation",
   "packageName": "@fluentui/react-calendar-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

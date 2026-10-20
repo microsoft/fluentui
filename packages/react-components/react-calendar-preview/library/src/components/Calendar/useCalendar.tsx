@@ -315,10 +315,10 @@ export const useCalendarBase_unstable = (
 
   const onNavigateDate = useEventCallback(
     (ev: React.SyntheticEvent | Event, data: CalendarDayNavigateData | CalendarMonthNavigateData): void => {
-      navigate(data.date, ev);
       if (data.focusOnNavigatedDay) {
         focusOnNextUpdate();
       }
+      navigate(data.date, ev);
     },
   );
 

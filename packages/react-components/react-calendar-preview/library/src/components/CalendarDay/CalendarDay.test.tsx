@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { spawnSync } from 'node:child_process';
-import { render as testingRender, fireEvent } from '@testing-library/react';
+import { act, render as testingRender, fireEvent } from '@testing-library/react';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarDay } from './CalendarDay';
 import { CalendarProvider, calendarContextDefaultValue } from '../../index';
@@ -259,17 +259,19 @@ describe('CalendarDay', () => {
     expect(cellRef.current).toHaveFocus();
   });
 
-  it('keeps focus on the cell when a custom cell handler prevents selection', () => {
+  it('preserves existing cell focus when a custom cell handler prevents selection', () => {
     const setValue = jest.fn();
     const { container, getByRole } = render(
       <CalendarDay {...defaultProps} getDayCellProps={() => ({ onClick: event => event.preventDefault() })} />,
       { setValue },
     );
 
+    const cell = findDayCellByLabel(container, 18, 'September', 2020)!;
+    act(() => cell.focus());
     fireEvent.click(getByRole('button', { name: 'September 18, 2020' }));
 
     expect(setValue).not.toHaveBeenCalled();
-    expect(document.activeElement).toBe(findDayCellByLabel(container, 18, 'September', 2020));
+    expect(cell).toHaveFocus();
   });
 
   it('shows the requested number of weeks', () => {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flushSync } from 'react-dom';
 import { act, fireEvent, render } from '@testing-library/react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -106,6 +107,29 @@ describe.each([
   afterEach(() => {
     act(() => jest.runOnlyPendingTimers());
     jest.useRealTimers();
+  });
+
+  it('focuses the new day after a synchronous controlled month selection', () => {
+    const ControlledCalendar = () => {
+      const [displayedDate, setDisplayedDate] = React.useState(today);
+      return (
+        <Component
+          defaultValue={today}
+          today={today}
+          layout="sideBySide"
+          displayedDate={displayedDate}
+          onDisplayedDateChange={(_, data) => flushSync(() => setDisplayedDate(data.displayedDate))}
+        />
+      );
+    };
+    const { getByRole } = render(<ControlledCalendar />);
+    const december = getByRole('gridcell', { name: 'December' });
+    act(() => december.focus());
+
+    fireEvent.click(december);
+    act(() => jest.advanceTimersToNextFrame());
+
+    expect(getByRole('button', { name: 'December 18, 2020' }).closest('td')).toHaveFocus();
   });
 
   it('reserves behavioral picker markers while preserving consumer classes', () => {

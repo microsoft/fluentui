@@ -9,7 +9,7 @@ import { getCalendarGridCell, getCalendarGridCells, isCalendarCellFocusable } fr
  *
  * Cells render the navigated cell with `tabIndex={0}` and every other cell with `tabIndex={-1}`. The last focused
  * cell then takes over as the tab stop, so Tab leaves the grid and returning focuses the cell the user left, until
- * that cell is removed or becomes unavailable.
+ * that cell is removed, hidden or becomes unavailable.
  *
  * @param allFocusable - whether unavailable cells can hold the tab stop
  * @param getNavigatedCell - resolves the cell rendered as the tab stop, restored when the remembered cell is lost
@@ -35,14 +35,18 @@ export function useCalendarGridTabStop<T extends HTMLElement = HTMLDivElement>(
   useIsomorphicLayoutEffect(() => {
     const grid = gridRef.current;
     const tabStop = tabStopRef.current;
-    if (!grid || !tabStop) {
+    if (!grid) {
       return;
     }
-    if (!grid.contains(tabStop) || !isCalendarCellFocusable(tabStop, allFocusable)) {
-      tabStopRef.current = null;
-      applyTabStop(grid, getNavigatedCell(grid) ?? null);
-    } else {
+    const cells = getCalendarGridCells(grid);
+    const canHoldTabStop = (cell: HTMLElement | null | undefined): cell is HTMLElement =>
+      !!cell && cells.includes(cell) && cell.hasAttribute('tabindex') && isCalendarCellFocusable(cell, allFocusable);
+    if (canHoldTabStop(tabStop)) {
       applyTabStop(grid, tabStop);
+    } else {
+      tabStopRef.current = null;
+      const navigatedCell = getNavigatedCell(grid);
+      applyTabStop(grid, canHoldTabStop(navigatedCell) ? navigatedCell : cells.find(canHoldTabStop) ?? null);
     }
   });
 
