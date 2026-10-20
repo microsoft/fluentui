@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(Slider): drop the deprecated -webkit-appearance: slider-vertical fallback so Chromium stops logging a deprecation warning",
+  "comment": "fix(Slider): keep the deprecated vertical appearance value out of the stylesheet so Chromium stops logging a deprecation warning, and install it at runtime only in engines that cannot orient range inputs with writing-mode",
   "packageName": "@fluentui/react-slider",
   "email": "jakesalvesen@users.noreply.github.com"
 }
