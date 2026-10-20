@@ -28,7 +28,7 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
   const { clearIconRef, freeform, parseTimeStringToDate, commitValue, committedText } = selection;
   const { activeDescendantController, getOptionById, value } = comboboxState;
   const fieldContext = useFieldContext();
-  const required = fieldContext?.required ?? !!comboboxState.input.required;
+  const required = !!fieldContext?.required || !!comboboxState.input.required;
 
   const getActiveOption = React.useCallback(() => {
     const activeOptionId = activeDescendantController.active();
@@ -59,14 +59,16 @@ export const useTimePickerComboboxState_unstable = <TState extends TimePickerCom
         return;
       }
 
-      // Only commits when the typed text has changed. A clear and an untouched empty input count as the same text,
-      // so leaving the input after clearing does not report `required-input`.
+      // Only commits when the text differs from the display text after the last change, so leaving the input after a
+      // clear or without typing does not report anything.
       if ((committedText ?? '') !== (value ?? '')) {
-        const { date, errorType } = parseTimeStringToDate(value);
-        // An empty commit is an error only when the TimePicker or its Field is required.
-        const isEmpty = !value?.trim();
-        const effectiveErrorType = isEmpty ? (required ? 'required-input' : undefined) : errorType;
-        commitValue(event, { value: isEmpty ? null : date, displayValue: value, errorType: effectiveErrorType });
+        if (!value?.trim()) {
+          // An empty commit is not parsed; it is an error only when the TimePicker or its Field is required.
+          commitValue(event, { value: null, displayValue: '', errorType: required ? 'required-input' : undefined });
+        } else {
+          const { date, errorType } = parseTimeStringToDate(value);
+          commitValue(event, { value: date, displayValue: value, errorType });
+        }
       }
     },
   );

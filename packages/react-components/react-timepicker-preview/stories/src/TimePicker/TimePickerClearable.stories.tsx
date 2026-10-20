@@ -22,7 +22,7 @@ export const Clearable = (): JSXElement => {
 Clearable.parameters = {
   docs: {
     description: {
-      story: 'A TimePicker can be clearable and let users remove their selection.',
+      story: 'A TimePicker can be clearable and let users clear its value.',
     },
   },
 };

@@ -128,21 +128,32 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
   const formattedValue = value ? formatDateToTimeString(value, { showSeconds, hourCycle }) : '';
   const displayValue = activeTypedText ?? formattedValue;
 
-  const [committedText, setCommittedText] = React.useState<string | undefined>(undefined);
+  // The display text after the last change, with the value key it produced. While `value` still has that key, typed
+  // text equal to it is unchanged; after any other `value` change the formatted value is the text to compare against.
+  const [lastCommit, setLastCommit] = React.useState<{ text: string; valueKey: string } | undefined>(undefined);
+  const committedText = lastCommit && lastCommit.valueKey === valueKey ? lastCommit.text : formattedValue;
 
   const commitValue = useEventCallback((event: TimePickerOnChangeData['event'], data: TimePickerCommitData) => {
-    setValue(data.value);
-    setCommittedText(data.displayValue);
     // A failed commit keeps the typed text so the user can correct it; a valid one shows the formatted value.
+    const keepsTypedText = !!data.errorType && data.displayValue !== undefined;
+    const nextDisplayValue =
+      keepsTypedText || data.displayValue === undefined
+        ? data.displayValue
+        : data.value
+        ? formatDateToTimeString(data.value, { showSeconds, hourCycle })
+        : '';
+    const nextValueKey = dateToKey(data.value);
+
+    setValue(data.value);
+    setLastCommit({ text: nextDisplayValue ?? '', valueKey: nextValueKey });
     setTypedText(
-      data.errorType && data.displayValue !== undefined
-        ? { text: data.displayValue, valueKey, committedValueKey: dateToKey(data.value) }
-        : undefined,
+      keepsTypedText ? { text: nextDisplayValue ?? '', valueKey, committedValueKey: nextValueKey } : undefined,
     );
     onChange?.(event, {
       event,
       type: event.type,
       ...data,
+      displayValue: nextDisplayValue,
     } as TimePickerOnChangeData);
   });
 
@@ -154,11 +165,11 @@ export const useTimePickerSelection_unstable = <TComboboxProps extends TimePicke
   const clearIconRef = React.useRef<HTMLSpanElement>(null);
   const onOptionSelect: NonNullable<ComboboxProps['onOptionSelect']> = useEventCallback((event, data) => {
     if (
-      freeform &&
       data.optionValue === undefined &&
       !(clearable && event.type === 'click' && event.currentTarget === clearIconRef.current)
     ) {
-      // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
+      // Combobox clears the selection when the typed text stops matching it. In TimePicker typing never changes the
+      // value: a freeform TimePicker commits the text later, and a basic one only moves the active option.
       return;
     }
 

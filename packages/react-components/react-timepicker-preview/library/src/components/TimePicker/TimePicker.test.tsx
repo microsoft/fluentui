@@ -333,12 +333,96 @@ describe('TimePicker', () => {
     expect(input).toHaveValue('abc');
   });
 
-  it('reformats valid freeform text on commit', () => {
-    const { getByRole } = render(<TimePicker freeform hourCycle="h23" dateAnchor={dateAnchor} />);
+  it('reformats valid freeform text on commit and reports the formatted text', () => {
+    const onChange = jest.fn();
+    const { getByRole } = render(
+      <>
+        <TimePicker freeform hourCycle="h23" dateAnchor={dateAnchor} onChange={onChange} />
+        <button>Next</button>
+      </>,
+    );
     const input = getByRole('combobox');
 
     userEvent.type(input, '9:05{enter}');
     expect(input).toHaveValue('09:05');
+    expect(onChange).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ type: 'keydown', displayValue: '09:05', errorType: undefined }),
+    );
+
+    // The normalized text is the committed text, so leaving the input does not commit again.
+    userEvent.tab();
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  describe('commits only changed text', () => {
+    const defaultValue = new Date('November 25, 2021 10:00:00');
+    const renderFreeform = (props: Partial<TimePickerProps> = {}) => {
+      const onChange = jest.fn();
+      const result = render(
+        <>
+          <TimePicker freeform dateAnchor={dateAnchor} onChange={onChange} {...props} />
+          <button>Next</button>
+        </>,
+      );
+      return { ...result, onChange, input: result.getByRole('combobox') };
+    };
+
+    it('does not commit when focus leaves without typing', () => {
+      const { input, onChange } = renderFreeform({ defaultValue });
+      userEvent.click(input);
+      userEvent.type(input, '{esc}');
+      userEvent.tab();
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('does not commit after the controlled value changes', () => {
+      const { input, onChange, rerender } = renderFreeform({ value: defaultValue });
+      rerender(
+        <>
+          <TimePicker freeform dateAnchor={dateAnchor} onChange={onChange} value={dateAnchor} />
+          <button>Next</button>
+        </>,
+      );
+      expect(input).toHaveValue('1:00 AM');
+      userEvent.click(input);
+      userEvent.type(input, '{esc}');
+      userEvent.tab();
+      expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('commits the empty text when the initial value is deleted', () => {
+      const { input, onChange } = renderFreeform({ defaultValue });
+      userEvent.clear(input);
+      userEvent.type(input, '{esc}');
+      userEvent.tab();
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ type: 'blur', value: null, displayValue: '', errorType: undefined }),
+      );
+    });
+
+    it('reports whitespace-only text as an empty commit', () => {
+      const { input, onChange } = renderFreeform({ required: true });
+      // Typing a space would select the active option, as in Combobox.
+      input.focus();
+      fireEvent.change(input, { target: { value: '  ' } });
+      userEvent.tab();
+      expect(onChange).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ value: null, displayValue: '', errorType: 'required-input' }),
+      );
+    });
+  });
+
+  it('does not change the value while typing without freeform', () => {
+    const onChange = jest.fn();
+    const { getByRole } = render(
+      <TimePicker dateAnchor={dateAnchor} defaultValue={new Date('November 25, 2021 10:00:00')} onChange={onChange} />,
+    );
+    userEvent.type(getByRole('combobox'), 'x');
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   describe('required', () => {
@@ -386,6 +470,27 @@ describe('TimePicker', () => {
 
     it('reports required-input for an empty commit when the Field is required', () => {
       const onChange = commitEmpty({}, true);
+      expect(onChange).toHaveBeenLastCalledWith(
+        expect.anything(),
+        expect.objectContaining({ value: null, errorType: 'required-input' }),
+      );
+    });
+
+    it('reports required-input when the input is required inside a Field that is not', () => {
+      const onChange = jest.fn();
+      const { getByRole } = render(
+        <>
+          <Field label="Time" required={false}>
+            <TimePicker freeform required hourCycle="h23" dateAnchor={dateAnchor} onChange={onChange} />
+          </Field>
+          <button>Next</button>
+        </>,
+      );
+      const input = getByRole('combobox');
+      userEvent.type(input, '10:10{enter}');
+      userEvent.clear(input);
+      userEvent.type(input, '{esc}');
+      userEvent.tab();
       expect(onChange).toHaveBeenLastCalledWith(
         expect.anything(),
         expect.objectContaining({ value: null, errorType: 'required-input' }),

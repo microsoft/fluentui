@@ -29,20 +29,21 @@ export const FreeformCustomParsing = (): JSXElement => {
   const [anchor] = React.useState(() => new Date(2023, 1, 1));
 
   const parseTimeStringToDate: TimePickerProps['parseTimeStringToDate'] = (time: string | undefined) => {
-    if (!time) {
-      return { date: null };
+    const match = time?.match(/^(Morning|Afternoon): (\d{1,2}):(\d{2})/);
+    if (!match) {
+      return { date: null, errorType: 'invalid-input' };
     }
 
-    const [hours, minutes] = (time.split(' ')[1].match(/\d+/g) ?? []).map(Number);
-    const adjustedHours = time.includes('Afternoon: ') && hours !== 12 ? hours + 12 : hours;
-    const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), adjustedHours, minutes);
+    const [, dayPart, hours, minutes] = match;
+    const adjustedHours = dayPart === 'Afternoon' && +hours !== 12 ? +hours + 12 : +hours;
+    const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), adjustedHours, +minutes);
 
     return { date };
   };
 
-  const [displayValue, setValueText] = React.useState<string | undefined>(undefined);
+  const [displayValue, setDisplayValue] = React.useState<string | undefined>(undefined);
   const onChange: TimePickerProps['onChange'] = (_ev, data) => {
-    setValueText(data.displayValue);
+    setDisplayValue(data.errorType ? undefined : data.displayValue);
   };
 
   return (
@@ -56,7 +57,7 @@ export const FreeformCustomParsing = (): JSXElement => {
           onChange={onChange}
         />
       </Field>
-      {displayValue && <div>Selected time: {displayValue}</div>}
+      {displayValue && <div>Value: {displayValue}</div>}
     </div>
   );
 };

@@ -34,6 +34,7 @@ export {
 } from './utils';
 export type {
   Hour,
+  HourCycle,
   TimeFormatOptions,
   TimePickerErrorType,
   TimePickerOption,

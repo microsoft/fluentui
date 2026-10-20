@@ -37,6 +37,9 @@ export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, incr
 export type Hour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24;
 
 // @public
+export type HourCycle = 'h11' | 'h12' | 'h23' | 'h24';
+
+// @public
 export const renderTimePicker_unstable: (state: TimePickerBaseState, contextValues: TimePickerContextValues) => JSXElement;
 
 // @public (undocumented)

@@ -41,7 +41,14 @@ export const FreeformWithErrorHandling = (): JSXElement => {
       }
       validationMessage={getErrorMessage(errorType)}
     >
-      <TimePicker className={styles.control} freeform startHour={10} endHour={20} onChange={handleTimeChange} />
+      <TimePicker
+        className={styles.control}
+        freeform
+        hourCycle="h23"
+        startHour={10}
+        endHour={20}
+        onChange={handleTimeChange}
+      />
     </Field>
   );
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-components';
-import { Field, makeStyles } from '@fluentui/react-components';
+import { Field, makeStyles, tokens } from '@fluentui/react-components';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import type { TimePickerProps } from '@fluentui/react-timepicker-preview';
@@ -9,10 +9,10 @@ import { TimePicker } from '@fluentui/react-timepicker-preview';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    columnGap: '20px',
+    columnGap: tokens.spacingHorizontalXL,
     gridTemplateColumns: 'repeat(2, 1fr)',
     maxWidth: '600px',
-    marginBottom: '10px',
+    marginBottom: tokens.spacingVerticalMNudge,
   },
 });
 
@@ -59,9 +59,7 @@ export const TimePickerWithDatePicker = (): JSXElement => {
         </Field>
       </div>
 
-      {selectedDate && (
-        <div>Selected date time: {selectedTime ? selectedTime.toString() : selectedDate.toString()}</div>
-      )}
+      {selectedDate && <div>Date and time: {selectedTime ? selectedTime.toString() : selectedDate.toString()}</div>}
     </div>
   );
 };
