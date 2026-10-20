@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add tested Vega-Lite semantics, diagnostics, filtered tooltips, recursive views, managed resources, and ranged rendering. Add onRenderCalloutPerDataPoint to GroupedVerticalBarChart, HeatMapChart and PolarChart, onRenderCalloutPerStack to GroupedVerticalBarChart, and identity-preserving onRenderCalloutPerPoint to ScatterChart. Preserve legacy Scatter all-values-at-x callbacks and null-to-default fallback; new point callbacks hide surfaces on null and use native defaults on undefined.",
+  "comment": "Add tested Vega-Lite semantics, diagnostics, filtered tooltips, recursive views, managed resources, and ranged rendering. Add onRenderCalloutPerDataPoint to GroupedVerticalBarChart, HeatMapChart and PolarChart, onRenderCalloutPerStack to GroupedVerticalBarChart, and identity-preserving onRenderCalloutPerPoint to ScatterChart. Preserve legacy Scatter all-values-at-x callbacks and null-to-default fallback; new point callbacks hide surfaces on null and use native defaults on undefined. Preserve ordinary native grouped bars and raw tooltip fallback in legacy mode, stabilize diagnostics delivery, and use deterministic sampling with bounded full-size data preparation.",
   "packageName": "@fluentui/react-charts",
   "email": "atisjai@microsoft.com"
 }
