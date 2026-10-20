@@ -2,7 +2,6 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { TeachingPopoverCarouselFooterProvider } from './teachingPopoverCarouselFooterContext';
 import type {
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
@@ -13,11 +12,9 @@ export const renderTeachingPopoverCarouselFooter = (state: TeachingPopoverCarous
 
   return (
     <state.root>
-      <TeachingPopoverCarouselFooterProvider>
-        {state.previous && <state.previous />}
-        {state.root.children}
-        <state.next />
-      </TeachingPopoverCarouselFooterProvider>
+      {state.previous && <state.previous />}
+      {state.root.children}
+      <state.next />
     </state.root>
   );
 };

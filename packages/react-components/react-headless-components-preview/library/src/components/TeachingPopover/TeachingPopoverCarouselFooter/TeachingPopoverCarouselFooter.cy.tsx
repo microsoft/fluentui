@@ -4,10 +4,12 @@ import { mount } from '@fluentui/scripts-cypress';
 import { slot, useMergedRefs, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { ForwardRefComponent, RefAttributes } from '@fluentui/react-utilities';
 import { Button } from '../../Button';
+import type { ButtonProps } from '../../Button';
 import {
   TeachingPopoverCarousel,
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
+  TeachingPopoverCarouselFooterButton,
   useTeachingPopoverCarouselFooter,
   renderTeachingPopoverCarouselFooter,
   useTeachingPopoverCarouselFooterButton,
@@ -15,6 +17,11 @@ import {
 } from '../index';
 import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton';
 import type { TeachingPopoverCarouselFooterProps } from './TeachingPopoverCarouselFooter.types';
+
+const ForwardingButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const mergedRef = useMergedRefs(ref);
+  return <Button {...props} ref={element => mergedRef(element)} data-adapter-root />;
+});
 
 const PresentationButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps> = React.forwardRef(
   (props, ref) => {
@@ -25,16 +32,24 @@ const PresentationButton: ForwardRefComponent<TeachingPopoverCarouselFooterButto
         button.blur();
       }
     });
-    const state = useTeachingPopoverCarouselFooterButton(props, useMergedRefs(ref, localRef));
-    state.root = slot.always(state.root, { elementType: Button });
+    const baseState = useTeachingPopoverCarouselFooterButton(props, useMergedRefs(ref, localRef));
+    const state = {
+      ...baseState,
+      components: { root: ForwardingButton },
+      root: slot.always(baseState.root, { elementType: ForwardingButton }),
+    };
     return renderTeachingPopoverCarouselFooterButton(state);
   },
 );
 
 const PresentationFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps> = React.forwardRef((props, ref) => {
-  const state = useTeachingPopoverCarouselFooter(props, ref);
-  state.previous = slot.optional(state.previous, { elementType: PresentationButton });
-  state.next = slot.always(state.next, { elementType: PresentationButton });
+  const baseState = useTeachingPopoverCarouselFooter(props, ref);
+  const state = {
+    ...baseState,
+    components: { root: 'div' as const, previous: PresentationButton, next: PresentationButton },
+    previous: slot.optional(baseState.previous, { elementType: PresentationButton }),
+    next: slot.always(baseState.next, { elementType: PresentationButton }),
+  };
   return renderTeachingPopoverCarouselFooter(state);
 });
 
@@ -50,9 +65,21 @@ type ExampleProps = {
   next?: FooterButtonOverrides;
   hidePrevious?: boolean;
   presentation?: boolean;
+  omitNext?: boolean;
+  extraNext?: boolean;
+  visibilityOverride?: boolean;
 };
 
-const Example = ({ controlled, previous, next, hidePrevious = true, presentation }: ExampleProps) => {
+const Example = ({
+  controlled,
+  previous,
+  next,
+  hidePrevious = true,
+  presentation,
+  omitNext,
+  extraNext,
+  visibilityOverride,
+}: ExampleProps) => {
   const [value, setValue] = React.useState('two');
   const pendingValue = React.useRef('two');
   const Footer = presentation ? PresentationFooter : TeachingPopoverCarouselFooter;
@@ -63,33 +90,53 @@ const Example = ({ controlled, previous, next, hidePrevious = true, presentation
       <button data-testid="accept" onClick={() => setValue(pendingValue.current)}>
         Accept pending value
       </button>
-      <TeachingPopoverCarousel
-        defaultValue="two"
-        value={controlled ? value : undefined}
-        onValueChange={(_, data) => {
-          if (data.value === undefined) {
-            throw new Error('Expected navigation to a registered carousel card');
-          }
-          pendingValue.current = data.value;
-          if (controlled === 'accept') {
-            setValue(data.value);
-          }
-        }}
-      >
-        <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
-        <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
-        <Footer
-          previous={{
-            navType: 'prev',
-            children: 'Previous',
-            altText: null,
-            className: 'paired-previous',
-            ...{ 'data-testid': 'previous' },
-            ...previous,
+      <div style={{ visibility: visibilityOverride ? 'hidden' : undefined }}>
+        <TeachingPopoverCarousel
+          defaultValue="two"
+          value={controlled ? value : undefined}
+          onValueChange={(_, data) => {
+            if (data.value === undefined) {
+              throw new Error('Expected navigation to a registered carousel card');
+            }
+            pendingValue.current = data.value;
+            if (controlled === 'accept') {
+              setValue(data.value);
+            }
           }}
-          next={{ navType: 'next', children: 'Next', altText: 'Got it', ...{ 'data-testid': 'next' }, ...next }}
-        />
-      </TeachingPopoverCarousel>
+        >
+          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
+          <Footer
+            previous={{
+              navType: 'prev',
+              children: 'Previous',
+              altText: null,
+              className: 'paired-previous',
+              style: visibilityOverride ? { visibility: 'visible' } : undefined,
+              ...{ 'data-testid': 'previous' },
+              ...previous,
+            }}
+            next={
+              omitNext
+                ? { navType: 'next', altText: 'Got it', children: () => null }
+                : {
+                    navType: 'next',
+                    children: 'Next',
+                    altText: 'Got it',
+                    style: visibilityOverride ? { visibility: 'visible' } : undefined,
+                    ...{ 'data-testid': 'next' },
+                    ...next,
+                  }
+            }
+          >
+            {extraNext && (
+              <TeachingPopoverCarouselFooterButton navType="next" altText="Auxiliary" data-testid="auxiliary">
+                Auxiliary
+              </TeachingPopoverCarouselFooterButton>
+            )}
+          </Footer>
+        </TeachingPopoverCarousel>
+      </div>
     </>
   );
 };
@@ -225,6 +272,8 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     const nextRef = React.createRef<HTMLButtonElement>();
     const previous = { ref: previousRef, onBlur, onClick, 'data-blur-on-empty': true };
     mount(<Example presentation previous={previous} next={{ ref: nextRef }} />);
+    cy.get('[data-testid="previous"]').should('have.attr', 'data-adapter-root');
+    cy.get('[data-testid="next"]').should('have.attr', 'data-adapter-root');
     cy.get('[data-testid="previous"]').should(element => expect(previousRef.current).to.equal(element[0]));
     cy.get('[data-testid="previous"]').focus().realPress('Enter');
     cy.get('[data-testid="next"]').should('have.focus').and('have.text', 'Next');
@@ -268,6 +317,38 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     cy.get('[data-testid="previous"]').first().focus().realPress('Enter');
     cy.get('[data-testid="next"]').first().should('have.focus').and('have.text', 'Next');
     cy.get('[data-testid="next"]').last().should('not.have.focus').and('have.text', 'Got it');
+  });
+
+  it('does not focus another footer child when the designated Next is absent', () => {
+    mount(<Example omitNext extraNext />);
+    cy.get('[data-testid="previous"]').focus().realPress('Enter');
+    cy.get('[data-testid="previous"]').should('not.be.visible');
+    cy.get('[data-testid="next"]').should('not.exist');
+    cy.get('[data-testid="auxiliary"]').should('not.have.focus');
+  });
+
+  it('hands off to a visible Next overriding ancestor visibility:hidden', () => {
+    mount(<Example visibilityOverride />);
+    cy.get('[data-testid="previous"]').should('be.visible').focus().realPress('Enter');
+    cy.get('[data-testid="previous"]').should('not.be.visible');
+    cy.get('[data-testid="next"]').should('be.visible').and('have.focus');
+    cy.realPress('Enter');
+    cy.get('[data-testid="next"]').should('have.text', 'Got it');
+  });
+
+  it('retries after the designated Next becomes available', () => {
+    mount(<Example next={{ hidden: true }} />);
+    cy.get('[data-testid="previous"]').focus().realPress('Enter');
+    cy.get('[data-testid="previous"]').should('not.be.visible');
+    cy.get('[data-testid="next"]').should('not.have.focus').invoke('removeAttr', 'hidden');
+    cy.get('[data-testid="next"]').should('have.focus');
+  });
+
+  it('cancels pending handoff if outside focus is moved and then blurred', () => {
+    mount(<Example next={{ hidden: true }} />);
+    cy.get('[data-testid="previous"]').focus().realPress('Enter');
+    cy.get('[data-testid="outside"]').focus().blur();
+    cy.get('[data-testid="next"]').invoke('removeAttr', 'hidden').should('not.have.focus');
   });
 
   it('hands off inside a shadow root without treating the host as outside focus', () => {
