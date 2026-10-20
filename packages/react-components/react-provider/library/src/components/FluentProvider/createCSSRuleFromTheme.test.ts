@@ -357,19 +357,16 @@ describe('createCSSRuleFromTheme', () => {
       jsc: { parser: { syntax: 'typescript' }, target: 'es2020' },
       module: { type: 'commonjs' },
     });
-    const result = execFileSync(
-      process.execPath,
-      [
-        '-e',
-        `${code}
+    const result = execFileSync(process.execPath, ['-'], {
+      input: `${code}
           process.env.NODE_ENV = 'production';
           process.stdout.write(exports.createCSSRuleFromTheme('.selector', {
             customToken: ${JSON.stringify(value)},
             colorBrandBackground: 'blue',
           }));`,
-      ],
-      { encoding: 'utf8', timeout: 2000 },
-    );
+      encoding: 'utf8',
+      timeout: 2000,
+    });
 
     expect(result).toBe('.selector { --colorBrandBackground: blue;  }');
   });

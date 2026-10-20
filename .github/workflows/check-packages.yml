@@ -11,16 +11,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
-        with:
-          node-version: '22'
-          cache: 'yarn'
-
       - uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
         id: changed-files-specific
         with:
           files: |
             yarn.lock
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        with:
+          node-version: '22'
+          cache: 'yarn'
 
       - run: yarn install --immutable
         if: steps.changed-files-specific.outputs.any_changed == 'true'
