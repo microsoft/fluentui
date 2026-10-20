@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: synchronize InfoLabel ownership with the mounted InfoButton open state and delegate blur dismissal to Popover",
+  "comment": "fix: synchronize InfoLabel ownership for controlled open state, defaults, and keyed button lifetimes",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com"
 }

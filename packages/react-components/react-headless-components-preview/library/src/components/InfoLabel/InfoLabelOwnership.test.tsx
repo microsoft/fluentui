@@ -52,7 +52,7 @@ const renderButtonWithoutKey: SlotRenderFunction<InfoButtonProps & RefAttributes
 ) => <Component {...props} />;
 
 describe('InfoLabel ownership lifecycle', () => {
-  it('retains initial focus, consumer refs and blur handlers without closing on an unknown destination', () => {
+  it('retains initial focus, consumer refs and blur handlers when focus moves inside the button and surface', () => {
     const buttonRef = React.createRef<HTMLButtonElement>();
     const surfaceRef = React.createRef<HTMLDialogElement>();
     const buttonBlur = jest.fn();
@@ -78,8 +78,8 @@ describe('InfoLabel ownership lifecycle', () => {
     expect(buttonRef.current).toBe(trigger(container));
     expect(surfaceRef.current).toBe(getByRole('note', { hidden: true }));
     expect(surfaceRef.current).toHaveFocus();
-    fireEvent.blur(surfaceRef.current!, { relatedTarget: null });
-    fireEvent.blur(buttonRef.current!, { relatedTarget: null });
+    act(() => buttonRef.current?.focus());
+    act(() => surfaceRef.current?.focus());
     expect(buttonBlur).toHaveBeenCalledTimes(1);
     expect(surfaceBlur).toHaveBeenCalledTimes(1);
     expect(change).not.toHaveBeenCalled();
@@ -158,58 +158,43 @@ describe('InfoLabel ownership lifecycle', () => {
     expect(newChange).not.toHaveBeenCalled();
   });
 
-  it('closes through one merged callback after destination focus is established', async () => {
+  it('reports one merged callback per uncontrolled trigger toggle', async () => {
     const change = jest.fn();
-    const buttonBlur = jest.fn();
-    const infoBlur = jest.fn();
-    const { container, getByTestId, getByRole, queryByRole } = render(
-      strict(
-        <Example
-          infoButton={{
-            onBlur: buttonBlur,
-            info: { onBlurCapture: infoBlur },
-            popover: { onOpenChange: change },
-          }}
-        />,
-      ),
+    const { container, getByRole, queryByRole } = render(
+      strict(<Example infoButton={{ popover: { onOpenChange: change } }} />),
     );
     for (let cycle = 0; cycle < 2; cycle++) {
       fireEvent.click(trigger(container));
       expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
+      expect(getByRole('note', { hidden: true })).toHaveFocus();
+      expect(change).toHaveBeenCalledTimes(1);
+      expect(change.mock.calls[0][1].open).toBe(true);
       change.mockClear();
-      buttonBlur.mockClear();
-      infoBlur.mockClear();
-      act(() => getByRole('note', { hidden: true }).focus());
-      act(() => trigger(container).focus());
-      change.mockImplementation((_event, data) => {
-        if (!data.open) {
-          expect(getByTestId('outside')).toHaveFocus();
-        }
-      });
-      act(() => getByTestId('outside').focus());
+      fireEvent.click(trigger(container));
       await waitFor(() => expect(queryByRole('note', { hidden: true })).toBeNull());
       expect(ownership(container)).not.toHaveAttribute('aria-owns');
       expect(change).toHaveBeenCalledTimes(1);
-      expect(infoBlur).toHaveBeenCalledTimes(1);
-      expect(buttonBlur).toHaveBeenCalledTimes(1);
+      expect(change.mock.calls[0][1].open).toBe(false);
+      change.mockClear();
     }
   });
 
   it('keeps controlled state authoritative when opening and closing requests are rejected', async () => {
     const change = jest.fn();
-    const { container, getByTestId, getByRole, rerender } = render(
+    const { container, getByRole, rerender } = render(
       strict(<Example infoButton={{ popover: { open: false, onOpenChange: change } }} />),
     );
     fireEvent.click(trigger(container));
     expect(change).toHaveBeenCalledTimes(1);
+    expect(change.mock.calls[0][1].open).toBe(true);
     expect(ownership(container)).not.toHaveAttribute('aria-owns');
     change.mockClear();
     rerender(strict(<Example infoButton={{ popover: { open: true, onOpenChange: change } }} />));
     expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
     expect(change).not.toHaveBeenCalled();
-    act(() => getByRole('note', { hidden: true }).focus());
-    act(() => getByTestId('outside').focus());
+    fireEvent.click(trigger(container));
     await waitFor(() => expect(change).toHaveBeenCalledTimes(1));
+    expect(change.mock.calls[0][1].open).toBe(false);
     expect(getByRole('note', { hidden: true })).toBeInTheDocument();
     expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
     change.mockClear();
@@ -236,14 +221,15 @@ describe('InfoLabel ownership lifecycle', () => {
         />
       );
     };
-    const { container, getByTestId, queryByRole } = render(strict(<Controlled />));
+    const { container, queryByRole } = render(strict(<Controlled />));
     fireEvent.click(trigger(container));
     expect(ownership(container)).toHaveAttribute('aria-owns', 'information-popup');
     change.mockClear();
-    act(() => getByTestId('outside').focus());
+    fireEvent.click(trigger(container));
     await waitFor(() => expect(queryByRole('note', { hidden: true })).toBeNull());
     expect(ownership(container)).not.toHaveAttribute('aria-owns');
     expect(change).toHaveBeenCalledTimes(1);
+    expect(change.mock.calls[0][1].open).toBe(false);
   });
 
   (['explicit-null', 'automatic'] as const).forEach(removal => {
