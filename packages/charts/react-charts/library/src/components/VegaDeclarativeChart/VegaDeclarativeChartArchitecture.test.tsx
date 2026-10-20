@@ -9,6 +9,7 @@ import type { VegaDataResolver } from './VegaLiteResourceLoader';
 import type { LineChartProps } from '../LineChart/index';
 import * as adapter from './VegaLiteSchemaAdapter';
 import * as views from './VegaDeclarativeChartView';
+import * as diagnostics from './VegaLiteDiagnostics';
 import { buildVegaViewTree, getVegaViewSourceSpec } from './VegaLiteViewTree';
 import {
   integrationLineSpec,
@@ -82,7 +83,187 @@ function freeze<T>(value: T): T {
   return value;
 }
 
+function groupedRouteSpec(budget: boolean, title?: string): VegaLiteSpec {
+  // Small gallery representatives, not story imports or copies of the entire gallery.
+  const categoryField = budget ? 'department' : 'region';
+  const valueField = budget ? 'amount' : 'count';
+  return {
+    width: 400,
+    height: 200,
+    ...(title ? { title } : {}),
+    mark: 'bar',
+    data: {
+      values: budget
+        ? [
+            { department: 'Marketing', category: 'Budget', amount: 250000 },
+            { department: 'Marketing', category: 'Actual', amount: 235000 },
+            { department: 'Engineering', category: 'Budget', amount: 450000 },
+            { department: 'Engineering', category: 'Actual', amount: 478000 },
+            { department: 'Sales', category: 'Budget', amount: 320000 },
+            { department: 'Sales', category: 'Actual', amount: 310000 },
+            { department: 'Operations', category: 'Budget', amount: 180000 },
+            { department: 'Operations', category: 'Actual', amount: 192000 },
+          ]
+        : [
+            { region: 'Amazon', category: 'Mammals', count: 427 },
+            { region: 'Amazon', category: 'Birds', count: 1300 },
+            { region: 'Congo', category: 'Mammals', count: 268 },
+            { region: 'Congo', category: 'Birds', count: 700 },
+          ],
+    },
+    encoding: {
+      x: { field: categoryField, type: 'nominal', axis: { title: budget ? 'Department' : 'Region' } },
+      y: {
+        field: valueField,
+        type: 'quantitative',
+        axis: budget ? { title: 'Amount ($)', format: '$,.0f' } : { title: 'Species Count' },
+      },
+      color: {
+        field: 'category',
+        type: 'nominal',
+        ...(budget ? { scale: { domain: ['Budget', 'Actual'] } } : {}),
+      },
+      xOffset: { field: 'category' },
+    },
+  };
+}
+
 describe('VegaDeclarativeChart architecture', () => {
+  describe.each([
+    { name: 'untitled region gallery', spec: freeze(groupedRouteSpec(false)) },
+    { name: 'titled region gallery', spec: freeze(groupedRouteSpec(false, 'Biodiversity by Rainforest Region')) },
+    { name: 'budget gallery', spec: freeze(groupedRouteSpec(true, 'Budget vs Actual - Department Comparison')) },
+  ])('$name grouped routing', ({ spec }) => {
+    it.each([undefined, 'legacy', 'strict'] as const)('uses the actual renderer for %s mode', semanticMode => {
+      const before = JSON.stringify(spec);
+      expect(diagnostics.validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([]);
+      const { container } = render(
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode={semanticMode} />,
+      );
+      expect(container.querySelectorAll('svg')).toHaveLength(1);
+      const svg = container.querySelector('svg')!;
+      if (semanticMode === 'strict') {
+        expect(svg).not.toHaveClass('fui-cart__chart');
+        const marks = svg.querySelectorAll('path[data-ranged-mark][role="img"][tabindex="0"]');
+        expect(marks).toHaveLength(spec.data!.values!.length);
+        marks.forEach(mark => {
+          expect(mark.getAttribute('d')).toMatch(/^M.+Z$/);
+          expect(mark.getAttribute('d')).not.toMatch(/NaN|Infinity/);
+          expect(mark.getAttribute('aria-label')).toBeTruthy();
+        });
+      } else {
+        expect(svg).toHaveClass('fui-cart__chart');
+        expect(svg).toHaveAttribute('role', 'region');
+        expect(svg).toHaveAttribute(
+          'aria-label',
+          expect.stringContaining('Vertical bar chart with 2 grouped bar series.'),
+        );
+        expect(svg.getAttribute('aria-label')).toContain(`The X axis displays ${spec.encoding!.x!.axis!.title}.`);
+        expect(svg.getAttribute('aria-label')).toContain(`The Y axis displays ${spec.encoding!.y!.axis!.title}.`);
+        expect(container.querySelectorAll('[data-ranged-mark]')).toHaveLength(0);
+        const bars = svg.querySelectorAll('rect[role="option"][tabindex="0"]');
+        expect(bars).toHaveLength(spec.data!.values!.length);
+        bars.forEach(bar => {
+          expect(bar.getAttribute('aria-label')).toBeTruthy();
+          ['width', 'height'].forEach(attribute => expect(Number(bar.getAttribute(attribute))).toBeGreaterThan(0));
+          expect(bar.outerHTML).not.toMatch(/NaN|Infinity/);
+        });
+      }
+      expect(JSON.stringify(spec)).toBe(before);
+    });
+  });
+
+  describe.each(['x2', 'y2', 'independent xOffset'] as const)('%s new geometry routing', kind => {
+    it.each([undefined, 'legacy', 'strict'] as const)('remains ranged in %s mode', semanticMode => {
+      const grouped = groupedRouteSpec(false);
+      const spec: VegaLiteSpec = freeze({
+        ...grouped,
+        data: { values: grouped.data!.values!.map(row => ({ ...row, start: 1, end: 4, scenario: row.region })) },
+        encoding:
+          kind === 'x2'
+            ? {
+                x: { field: 'start', type: 'quantitative' },
+                x2: { field: 'end' },
+                y: { field: 'region', type: 'nominal' },
+                color: grouped.encoding!.color,
+              }
+            : kind === 'y2'
+            ? { ...grouped.encoding, y: { field: 'start', type: 'quantitative' }, y2: { field: 'end' } }
+            : { ...grouped.encoding, xOffset: { field: 'scenario', type: 'nominal' } },
+      });
+      expect(diagnostics.validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([]);
+      const { container } = render(
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode={semanticMode} />,
+      );
+      expect(container.querySelector('svg.fui-cart__chart')).toBeNull();
+      const marks = container.querySelectorAll('svg path[data-ranged-mark][role="img"][tabindex="0"]');
+      expect(marks).toHaveLength(4);
+      marks.forEach(mark => {
+        expect(mark.getAttribute('d')).toMatch(/^M.+Z$/);
+        expect(mark.getAttribute('d')).not.toMatch(/NaN|Infinity/);
+      });
+    });
+  });
+
+  it.each([undefined, 'legacy', 'strict'] as const)(
+    'keeps centered areas on shared geometry in %s mode',
+    semanticMode => {
+      const spec = freeze(seriesSpec('centered', 'Stream'));
+      const { container } = render(
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode={semanticMode} />,
+      );
+      expect(container.querySelector('svg.fui-cart__chart')).toBeNull();
+      expect(container.querySelectorAll('[data-centered-navigation]')).toHaveLength(1);
+      expect(container.querySelectorAll('svg path[data-centered-series]')).toHaveLength(1);
+      const marks = container.querySelectorAll('svg circle[data-centered-point][role="img"][tabindex="0"]');
+      expect(marks).toHaveLength(2);
+      marks.forEach(mark => expect(mark.outerHTML).not.toMatch(/NaN|Infinity/));
+    },
+  );
+
+  it('independently server-renders the same sampled ranged tuples and paths without mutating the frozen input', () => {
+    const spec: VegaLiteSpec = freeze({
+      width: 400,
+      height: 200,
+      mark: 'bar',
+      data: {
+        values: Array.from({ length: 100 }, (_, index) => ({ task: `Task ${index}`, start: index, end: index + 2 })),
+      },
+      transform: [{ sample: 7 }],
+      encoding: {
+        x: { field: 'start', type: 'quantitative' },
+        x2: { field: 'end' },
+        y: { field: 'task', type: 'nominal' },
+        tooltip: [{ field: 'task', title: 'Task' }],
+      },
+    });
+    const before = JSON.stringify(spec);
+    const chart = <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />;
+    const first = renderToString(chart);
+    const second = renderToString(chart);
+    // Only generated IDs and their references may differ between independent SSR roots.
+    const normalizeIds = (markup: string) => {
+      const svgId = markup.match(/<svg id="([^"]+)"/)![1];
+      return markup.replace(
+        /\b(id|aria-labelledby|aria-describedby|clip-path)="([^"]*)"/g,
+        (_match, attribute: string, value: string) => `${attribute}="${value.split(svgId).join('vega-ranged-ID')}"`,
+      );
+    };
+    expect(normalizeIds(second)).toBe(normalizeIds(first));
+    const { container } = render(<div />);
+    container.firstElementChild!.innerHTML = first;
+    const marks = container.querySelectorAll('svg path[data-ranged-mark][role="img"][tabindex="0"]');
+    expect(marks).toHaveLength(7);
+    const labels = Array.from(marks, mark => mark.getAttribute('aria-label'));
+    expect(new Set(labels).size).toBe(7);
+    labels.forEach(label => expect(label).toMatch(/^Task: Task \d+$/));
+    marks.forEach(mark => {
+      expect(mark.getAttribute('d')).toMatch(/^M.+Z$/);
+      expect(mark.getAttribute('d')).not.toMatch(/NaN|Infinity/);
+    });
+    expect(JSON.stringify(spec)).toBe(before);
+  });
+
   it.each(['ranged', 'centered'] as const)(
     'renders exactly one composed %s heading in SSR with the authored label',
     kind => {
@@ -250,6 +431,120 @@ describe('VegaDeclarativeChart architecture', () => {
     fireEvent.focus(screen.getByRole('option', { name: '1. Series, 2.' }));
     expect(transform).toHaveBeenCalledTimes(transformCalls);
   });
+
+  it('bounds notifications when an inline diagnostics callback updates parent state', () => {
+    const onDiagnostics = jest.fn();
+    function Host() {
+      const [notifications, setNotifications] = React.useState(0);
+      return (
+        <>
+          <output data-testid="notifications">{notifications}</output>
+          <VegaDeclarativeChart
+            chartSchema={{ vegaLiteSpec: integrationLineSpec }}
+            onDiagnostics={items => {
+              onDiagnostics(items);
+              if (onDiagnostics.mock.calls.length > 3) {
+                throw new Error('Unbounded diagnostics notifications');
+              }
+              setNotifications(count => count + 1);
+            }}
+          />
+        </>
+      );
+    }
+    render(<Host />);
+    expect(onDiagnostics).toHaveBeenCalledTimes(1);
+    expect(onDiagnostics).toHaveBeenCalledWith([]);
+    expect(screen.getByTestId('notifications')).toHaveTextContent('1');
+  });
+
+  it('notifies only on diagnostic changes and uses the latest callback after parent and legend rerenders', () => {
+    const previousCallback = jest.fn();
+    const latestCallback = jest.fn();
+    const spec = seriesSpec('native', 'Series');
+    const props = { chartSchema: { vegaLiteSpec: spec } };
+    const { rerender } = render(<VegaDeclarativeChart {...props} onDiagnostics={previousCallback} />);
+    expect(previousCallback).toHaveBeenCalledTimes(1);
+    expect(previousCallback).toHaveBeenCalledWith([]);
+    rerender(<VegaDeclarativeChart {...props} className="parent-update" onDiagnostics={latestCallback} />);
+    fireEvent.click(screen.getByRole('option', { name: 'Series' }));
+    expect(previousCallback).toHaveBeenCalledTimes(1);
+    expect(latestCallback).not.toHaveBeenCalled();
+    const nextSpec = { ...spec, ignored: true };
+    rerender(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: nextSpec }} onDiagnostics={latestCallback} />);
+    expect(previousCallback).toHaveBeenCalledTimes(1);
+    expect(latestCallback).toHaveBeenCalledTimes(1);
+    expect(latestCallback).toHaveBeenCalledWith([
+      expect.objectContaining({ code: 'unsupported-property', path: '$.ignored', severity: 'warning' }),
+    ]);
+    rerender(
+      <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: nextSpec }} onDiagnostics={items => latestCallback(items)} />,
+    );
+    expect(latestCallback).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not replay diagnostics when a callback is supplied after being absent', () => {
+    const onDiagnostics = jest.fn();
+    const props = { chartSchema: { vegaLiteSpec: integrationLineSpec } };
+    const { rerender } = render(<VegaDeclarativeChart {...props} />);
+    rerender(<VegaDeclarativeChart {...props} onDiagnostics={onDiagnostics} />);
+    expect(onDiagnostics).not.toHaveBeenCalled();
+    rerender(
+      <VegaDeclarativeChart
+        chartSchema={{ vegaLiteSpec: Object.assign({}, integrationLineSpec, { ignored: true }) }}
+        onDiagnostics={onDiagnostics}
+      />,
+    );
+    expect(onDiagnostics).toHaveBeenCalledTimes(1);
+    expect(onDiagnostics).toHaveBeenCalledWith([expect.objectContaining({ path: '$.ignored' })]);
+  });
+
+  it('never notifies diagnostics during server rendering', () => {
+    const onDiagnostics = jest.fn();
+    const spec = { ...integrationLineSpec, ignored: true };
+    expect(
+      renderToString(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} onDiagnostics={onDiagnostics} />),
+    ).toContain('<svg');
+    expect(onDiagnostics).not.toHaveBeenCalled();
+  });
+
+  it.each(['legacy', 'strict'] as const)(
+    'rejects uninspectable objects by diagnostic code, not message wording, in %s mode',
+    semanticMode => {
+      const validate = diagnostics.validateVegaLiteSpec;
+      jest
+        .spyOn(diagnostics, 'validateVegaLiteSpec')
+        .mockImplementation((...args) =>
+          validate(...args).map(item => ({ ...item, message: 'Host object rejected.' })),
+        );
+      for (const trap of ['getPrototypeOf', 'ownKeys', 'getOwnPropertyDescriptor'] as const) {
+        for (const nested of [false, true]) {
+          const exotic = new Proxy<VegaLiteSpec>(
+            { mark: 'line' },
+            {
+              [trap]: () => {
+                throw new Error('Proxy trap must not escape');
+              },
+            },
+          );
+          const spec = nested
+            ? { ...integrationLineSpec, data: { values: [{ x: 1, y: 2, payload: exotic }] } }
+            : exotic;
+          const onDiagnostics = jest.fn();
+          expect(() =>
+            renderToString(
+              <VegaDeclarativeChart
+                chartSchema={{ vegaLiteSpec: spec }}
+                semanticMode={semanticMode}
+                onDiagnostics={onDiagnostics}
+              />,
+            ),
+          ).toThrow(`${nested ? '$.data.values[0].payload' : '$'} [unsafe-object] Host object rejected.`);
+          expect(onDiagnostics).not.toHaveBeenCalled();
+        }
+      }
+    },
+  );
 
   it('does not restart host loads or diagnostics on unrelated props, during or after resolution', async () => {
     let resolve!: (value: unknown) => void;

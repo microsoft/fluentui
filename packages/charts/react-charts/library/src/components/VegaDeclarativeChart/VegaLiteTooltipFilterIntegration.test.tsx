@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { GroupedVerticalBarChart, HeatMapChart, VegaDeclarativeChart } from '../../index';
 import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import { buildVegaViewTree } from './VegaLiteViewTree';
@@ -80,6 +81,204 @@ beforeEach(() => {
   });
 });
 afterEach(() => jest.restoreAllMocks());
+
+describe.each(['line', 'bar'] as const)('public %s legacy tooltip exceptions', kind => {
+  describe.each([
+    { exception: { formatType: 'myFormatter', format: '.2f' }, diagnostic: 'formatType' },
+    { exception: { format: 'zz' }, diagnostic: 'format' },
+    { exception: { condition: { param: 'brush', value: 'PRIVATE_CONDITIONAL_VALUE' } }, diagnostic: 'condition' },
+  ])('$diagnostic', ({ exception, diagnostic }) => {
+    it.each(['focus', 'hover'] as const)('keeps every raw datum and warns on %s', async interaction => {
+      const onDiagnostics = jest.fn();
+      const spec = {
+        mark: kind === 'line' ? { type: 'line', point: true } : 'bar',
+        data: {
+          values: [
+            { x: 1, amount: 1234.5, secret: 'PRIVATE_CORPUS_VALUE' },
+            { x: 2, amount: 9876.5, secret: 'PRIVATE_CORPUS_VALUE' },
+          ],
+        },
+        encoding: {
+          x: { field: 'x', type: kind === 'line' ? 'quantitative' : 'nominal', tooltip: false },
+          y: { field: 'amount', type: 'quantitative', tooltip: false },
+          tooltip: [
+            { field: 'amount', title: 'Amount', type: 'quantitative', ...exception },
+            { field: 'secret', tooltip: false },
+            { field: 'amount', title: 'Filtered', ...exception, filter: { lt: 0 } },
+          ],
+        },
+      } as unknown as VegaLiteSpec;
+      const before = JSON.stringify(spec);
+      const { container, baseElement } = render(
+        <VegaDeclarativeChart
+          chartSchema={{ vegaLiteSpec: spec }}
+          semanticMode={interaction === 'focus' ? undefined : 'legacy'}
+          onDiagnostics={onDiagnostics}
+        />,
+      );
+      const labels = ['Amount: 1234.5', 'Amount: 9876.5'];
+      await waitFor(() => {
+        labels.forEach(label => expect(container.querySelectorAll(`svg [aria-label="${label}"]`)).toHaveLength(1));
+      });
+      for (const label of labels) {
+        const mark = container.querySelector(`svg [aria-label="${label}"]`)!;
+        expect(mark.outerHTML).not.toMatch(/NaN|Infinity/);
+        showMark(mark, interaction);
+        await waitFor(() => {
+          const surface = baseElement.querySelector('.fui-PopoverSurface');
+          const tooltip = surface?.querySelector('[role="tooltip"]');
+          expect(tooltip).toHaveAttribute('aria-label', label);
+          expect(Array.from(tooltip!.querySelectorAll('dt')).map(node => node.textContent)).toEqual(['Amount']);
+          expect(Array.from(tooltip!.querySelectorAll('dd')).map(node => node.textContent)).toEqual([
+            label.slice('Amount: '.length),
+          ]);
+          expect(surface!.textContent).toBe(tooltip!.textContent);
+          expect(surface!.textContent).not.toMatch(/PRIVATE|Filtered|secret/);
+        });
+      }
+      expect(onDiagnostics).toHaveBeenCalled();
+      onDiagnostics.mock.calls.forEach(([diagnostics]) => {
+        expect(diagnostics).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'warning' }),
+          ]),
+        );
+        expect(diagnostics.every((entry: { severity: string }) => entry.severity === 'warning')).toBe(true);
+      });
+      expect(JSON.stringify(spec)).toBe(before);
+    });
+
+    it('rejects the same declaration in strict preflight', () => {
+      const spec = {
+        mark: kind,
+        data: { values: [{ x: 1, amount: 1234.5 }] },
+        encoding: {
+          x: { field: 'x', type: 'quantitative' },
+          y: { field: 'amount', type: 'quantitative' },
+          tooltip: [{ field: 'amount', type: 'quantitative', ...exception }],
+        },
+      } as unknown as VegaLiteSpec;
+      expect(validateVegaLiteSpec(spec, strict)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'error' }),
+        ]),
+      );
+      expect(() =>
+        renderToStaticMarkup(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />),
+      ).toThrow(`$.encoding.tooltip[0].${diagnostic}`);
+    });
+  });
+});
+
+describe.each(['ranged bar', 'centered area'] as const)('public %s geometry legacy tooltip exceptions', kind => {
+  describe.each([
+    { exception: { formatType: 'myFormatter', format: '.2f' }, diagnostic: 'formatType' },
+    { exception: { format: 'zz' }, diagnostic: 'format' },
+    { exception: { condition: { param: 'brush', value: 'PRIVATE_CONDITIONAL_VALUE' } }, diagnostic: 'condition' },
+  ])('$diagnostic', ({ exception, diagnostic }) => {
+    const spec = {
+      width: 400,
+      height: 200,
+      mark: kind === 'ranged bar' ? 'bar' : 'area',
+      data: {
+        values: [
+          { x: 1, end: 2, task: 'First', amount: 1234.5, secret: 'PRIVATE_CORPUS_VALUE' },
+          { x: 3, end: 4, task: 'Second', amount: 9876.5, secret: 'PRIVATE_CORPUS_VALUE' },
+        ],
+      },
+      encoding: {
+        x: { field: 'x', type: 'quantitative', tooltip: false },
+        ...(kind === 'ranged bar'
+          ? {
+              x2: { field: 'end', tooltip: false },
+              y: { field: 'task', type: 'nominal', tooltip: false },
+            }
+          : { y: { field: 'amount', type: 'quantitative', stack: 'center', tooltip: false } }),
+        tooltip: [
+          { field: 'amount', title: 'Amount', type: 'quantitative', ...exception },
+          { field: 'secret', tooltip: false },
+          { field: 'amount', title: 'Filtered', ...exception, filter: { lt: 0 } },
+        ],
+      },
+    } as unknown as VegaLiteSpec;
+
+    it.each(['focus', 'hover'] as const)('retains raw callout and mark ARIA on %s', async interaction => {
+      const onDiagnostics = jest.fn();
+      const before = JSON.stringify(spec);
+      const { container, baseElement } = render(
+        <VegaDeclarativeChart
+          chartSchema={{ vegaLiteSpec: spec }}
+          semanticMode={interaction === 'focus' ? undefined : 'legacy'}
+          onDiagnostics={onDiagnostics}
+        />,
+      );
+      const selector =
+        kind === 'ranged bar'
+          ? 'svg path[data-ranged-mark][role="img"][tabindex="0"]'
+          : 'svg circle[data-centered-point][role="img"][tabindex="0"]';
+      const labels = ['Amount: 1234.5', 'Amount: 9876.5'];
+      await waitFor(() => expect(container.querySelectorAll(selector)).toHaveLength(2));
+      const marks = Array.from(container.querySelectorAll(selector));
+      expect(marks.map(mark => mark.getAttribute('aria-label'))).toEqual(labels);
+      if (kind === 'centered area') {
+        expect(container.querySelectorAll('svg path[data-centered-series]')).toHaveLength(1);
+      }
+      for (const [index, mark] of marks.entries()) {
+        expect(mark.getAttribute('aria-hidden')).not.toBe('true');
+        expect(mark.outerHTML).not.toMatch(/NaN|Infinity|PRIVATE|Filtered|secret/);
+        if (kind === 'ranged bar') {
+          expect(mark.getAttribute('d')).toMatch(/^M.+Z$/);
+        } else {
+          expect(Number(mark.getAttribute('r'))).toBeGreaterThan(0);
+          ['cx', 'cy'].forEach(attribute => expect(Number.isFinite(Number(mark.getAttribute(attribute)))).toBe(true));
+        }
+        showMark(mark, interaction);
+        await waitFor(() => {
+          const surface = baseElement.querySelector('.fui-PopoverSurface');
+          const tooltip = surface?.querySelector('[role="tooltip"]');
+          expect(tooltip).toHaveAttribute('aria-label', labels[index]);
+          expect(Array.from(tooltip!.querySelectorAll('dt')).map(node => node.textContent)).toEqual(['Amount']);
+          expect(Array.from(tooltip!.querySelectorAll('dd')).map(node => node.textContent)).toEqual([
+            labels[index].slice('Amount: '.length),
+          ]);
+          expect(surface!.textContent).toBe(tooltip!.textContent);
+          expect(surface!.textContent).not.toMatch(/PRIVATE|Filtered|secret/);
+        });
+      }
+      expect(onDiagnostics).toHaveBeenCalled();
+      onDiagnostics.mock.calls.forEach(([items]) => {
+        expect(items).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'warning' }),
+          ]),
+        );
+        expect(items.every((item: { severity: string }) => item.severity === 'warning')).toBe(true);
+      });
+      expect(JSON.stringify(spec)).toBe(before);
+    });
+
+    it('rejects the identical geometry declaration in strict public preflight', () => {
+      expect(validateVegaLiteSpec(spec, strict)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'error' }),
+        ]),
+      );
+      expect(() =>
+        renderToStaticMarkup(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />),
+      ).toThrow(`$.encoding.tooltip[0].${diagnostic}`);
+      const helperError =
+        diagnostic === 'formatType'
+          ? 'unsupported formatType'
+          : diagnostic === 'format'
+          ? 'invalid numeric format'
+          : 'conditional tooltip requires a supported test predicate';
+      for (const row of spec.data!.values!) {
+        expect(() => buildVegaTooltip(spec, row)).toThrow(helperError);
+        expect(() => buildVegaTooltip(spec, row, strict)).toThrow(helperError);
+      }
+    });
+  });
+});
 
 describe('source-backed tooltip-array filter public integration', () => {
   it.each(['focus', 'hover'] as const)(

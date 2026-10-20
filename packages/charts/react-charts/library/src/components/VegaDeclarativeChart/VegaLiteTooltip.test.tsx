@@ -5,6 +5,7 @@ import { timeFormat, utcFormat } from 'd3-time-format';
 import { buildVegaTooltip, renderVegaTooltip } from './VegaLiteTooltip';
 import { prepareVegaLiteSpec } from './VegaLiteDataTransforms';
 import { aggregateTooltipSpec, projectedTooltipSpec, tooltipRow, tooltipSpec } from './testing/fixtures/tooltips';
+import type { VegaSemanticOptions } from './VegaLiteData.types';
 
 const explicit = (tooltip: unknown, extra: Record<string, unknown> = {}) =>
   tooltipSpec({
@@ -214,6 +215,133 @@ describe('ordered fields and formatting', () => {
   it('rejects invalid numeric formats even when the row value is null', () => {
     expect(() => fields({ field: 'nil', type: 'quantitative', format: 'invalid format' })).toThrow(/format/i);
   });
+});
+
+describe('legacy tooltip exceptions', () => {
+  const legacy = { mode: 'legacy' as const };
+
+  it.each([{ formatType: 'myFormatter', format: '.2f' }, { format: 'zz' }])(
+    'falls back only the unsupported formatter %j to exact raw text',
+    formatting => {
+      const spec = explicit([
+        { field: 'amount', title: 'Raw', type: 'quantitative', ...formatting },
+        { field: 'zero', title: 'Formatted', type: 'quantitative', format: '.2f' },
+        { field: 'secret', tooltip: false },
+      ]);
+      const expected = [
+        { title: 'Raw', value: '1234.5' },
+        { title: 'Formatted', value: '0.00' },
+      ];
+      expect(buildVegaTooltip(spec, tooltipRow, legacy)).toEqual({
+        fields: expected,
+        ariaLabel: 'Raw: 1234.5; Formatted: 0.00',
+        disabled: false,
+      });
+      const { container } = render(renderVegaTooltip(spec, tooltipRow, legacy)!);
+      expect(Array.from(container.querySelectorAll('dd')).map(node => node.textContent)).toEqual(['1234.5', '0.00']);
+      expect(() => buildVegaTooltip(spec, tooltipRow)).toThrow(/format/);
+      expect(() => buildVegaTooltip(spec, tooltipRow, { mode: 'strict' })).toThrow(/format/);
+    },
+  );
+
+  it.each([0, null, NaN, false, 'unformatted'])('preserves raw scalar %j rather than blank content', value => {
+    const spec = explicit({ field: 'v', type: 'quantitative', format: 'zz' });
+    expect(buildVegaTooltip(spec, { v: value }, legacy).fields).toEqual([{ title: 'v', value: String(value) }]);
+  });
+
+  it('uses nonconditional fallback for parameter-only conditions, including recursive aggregate grouping', () => {
+    const spec = tooltipSpec({
+      mark: 'point',
+      data: {
+        values: [
+          { group: 'A', amount: 2 },
+          { group: 'A', amount: 6 },
+        ],
+      },
+      encoding: {
+        x: { field: 'group', condition: { param: 'brush', value: 'selected' } },
+        tooltip: [
+          { condition: { param: 'brush', value: 'selected' }, field: 'group', title: 'Group' },
+          { field: 'amount', aggregate: 'mean', title: 'Mean', type: 'quantitative', format: 'zz' },
+        ],
+      },
+    });
+    expect(buildVegaTooltip(spec, { group: 'A', amount: 999 }, legacy).fields).toEqual([
+      { title: 'Group', value: 'A' },
+      { title: 'Mean', value: '4' },
+    ]);
+    expect(() => buildVegaTooltip(spec, { group: 'A', amount: 999 })).toThrow(/supported test/);
+    expect(buildVegaTooltip(explicit({ condition: { param: 'brush', value: 'selected' } }), {}, legacy).fields).toEqual(
+      [],
+    );
+  });
+
+  it('threads legacy formatting through projected and disabled coordinate tooltips and config defaults', () => {
+    const spec = tooltipSpec({
+      mark: { type: 'point', tooltip: true },
+      config: { numberFormat: 'zz' },
+      encoding: { x: { field: 'zero', type: 'quantitative' }, y: { field: 'secret', tooltip: false } },
+    });
+    expect(buildVegaTooltip(spec, tooltipRow, legacy).ariaLabel).toBe('zero: 0');
+    const disabled = tooltipSpec({ ...spec, encoding: { ...spec.encoding, tooltip: null } });
+    expect(buildVegaTooltip(disabled, tooltipRow, legacy)).toEqual({
+      fields: [],
+      ariaLabel: 'zero: 0',
+      disabled: true,
+    });
+    expect(renderVegaTooltip(disabled, tooltipRow, legacy)).toBeNull();
+  });
+
+  it('retains supported test selection and formats only the selected definition in legacy mode', () => {
+    const spec = explicit({
+      condition: [
+        { param: 'brush', value: 'unresolved selection' },
+        { test: 'datum.zero === 0', field: 'amount', title: 'Selected', formatType: 'myFormatter' },
+      ],
+      value: 'fallback',
+    });
+    expect(buildVegaTooltip(spec, tooltipRow, legacy).fields).toEqual([{ title: 'Selected', value: '1234.5' }]);
+    expect(buildVegaTooltip(spec, { ...tooltipRow, zero: 1 }, legacy).fields).toEqual([
+      { title: '', value: 'fallback' },
+    ]);
+    const coercion = jest.fn(() => 'SECRET');
+    const raw = explicit({ field: 'value', formatType: 'myFormatter' });
+    expect(buildVegaTooltip(raw, { value: { toString: coercion, valueOf: coercion } }, legacy).fields).toEqual([
+      { title: 'value', value: '[Object]' },
+    ]);
+    expect(coercion).not.toHaveBeenCalled();
+  });
+
+  it('retains filters, field exclusions and tuple privacy when applying legacy fallbacks', () => {
+    const spec = explicit([
+      { field: 'amount', formatType: 'myFormatter', filter: { lt: 0 } },
+      { field: 'secret', format: 'zz', tooltip: false },
+    ]);
+    expect(buildVegaTooltip(spec, tooltipRow, legacy)).toEqual({ fields: [], ariaLabel: '', disabled: false });
+    expect(renderVegaTooltip(spec, tooltipRow, legacy)).toBeNull();
+  });
+
+  it.each<VegaSemanticOptions>([legacy, { mode: 'strict' }])(
+    'does not swallow malformed or unsafe input in %j',
+    options => {
+      for (const definition of [
+        { field: 12, formatType: 'myFormatter' },
+        { field: 'zero', format: 12 },
+        { field: 'zero', formatType: 12 },
+        { condition: { param: 12, value: 'invalid' }, value: 'fallback' },
+        { condition: { param: 'brush', empty: 'invalid', value: 'invalid' }, value: 'fallback' },
+        { condition: { test: 'unknownTooltipFunction(datum.zero)', value: 'invalid' }, value: 'fallback' },
+        { field: 'zero', filter: { unknown: true } },
+      ]) {
+        expect(() => buildVegaTooltip(explicit([definition]), tooltipRow, options)).toThrow();
+      }
+      const getter = jest.fn(() => 'datum.zero === 0');
+      const condition = { param: 'brush', value: 'unsafe' };
+      Object.defineProperty(condition, 'test', { get: getter, enumerable: true });
+      expect(() => buildVegaTooltip(explicit({ condition, value: 'fallback' }), tooltipRow, options)).toThrow();
+      expect(getter).not.toHaveBeenCalled();
+    },
+  );
 });
 
 describe('Vega-Lite 6.5 bound tooltip array filters', () => {

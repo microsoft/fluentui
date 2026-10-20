@@ -24,7 +24,11 @@ export interface VegaDeclarativeChartProps {
   onSchemaChange?: (newSchema: VegaSchema) => void;
   /** Semantic capability validation. Legacy preserves native fallbacks; strict rejects unsupported declarations. */
   semanticMode?: VegaLiteSemanticMode;
-  /** Receives actionable preflight diagnostics after commit, never during render or server rendering. */
+  /**
+   * Receives actionable diagnostics after commit, never during render or server rendering.
+   * Uses the latest committed callback on mount and when the prepared diagnostics array changes.
+   * Replacing or adding the callback alone does not replay unchanged diagnostics.
+   */
   onDiagnostics?: (diagnostics: VegaLiteDiagnostic[]) => void;
   /**
    * Explicit host-owned resource I/O. Without this callback, no external data is requested.

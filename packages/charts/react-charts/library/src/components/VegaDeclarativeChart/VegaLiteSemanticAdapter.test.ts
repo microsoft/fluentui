@@ -363,6 +363,49 @@ describe('VegaLite semantic adapter integration', () => {
     expect(() => bar(spec, colors(), false, strict)).toThrow(/unsupported|unknown/);
   });
 
+  describe.each(['line', 'bar'] as const)('%s legacy tooltip policy', kind => {
+    it.each([
+      { formatType: 'myFormatter', format: '.2f' },
+      { format: 'zz' },
+      { condition: { param: 'brush', value: 'selected' } },
+    ])('passes the policy to both point ARIA and activated callouts for %j', exception => {
+      const spec = tooltipSpec();
+      spec.mark = kind;
+      spec.encoding!.tooltip = [
+        { field: 'label', title: 'Label' },
+        { field: 'y', type: 'quantitative', title: 'Amount', ...exception },
+        { field: 'private', tooltip: false },
+      ] as unknown as NonNullable<VegaLiteSpec['encoding']>['tooltip'];
+      const before = JSON.stringify(spec);
+      for (const options of [undefined, { mode: 'legacy' as const }]) {
+        if (kind === 'line') {
+          const props = line(freezeSpec(spec), colors(), false, options);
+          const point = props.data!.lineChartData![0].data[1];
+          expect(point.callOutAccessibilityData?.ariaLabel).toBe('Label: second row; Amount: 4');
+          const input = { x: 2, values: [{ legend: 'one', y: 4, color: '' }] };
+          expect(tooltipFields(props.onRenderCalloutPerDataPoint?.(input))).toEqual([
+            { title: 'Label', value: 'second row' },
+            { title: 'Amount', value: '4' },
+          ]);
+          expect(tooltipFields(props.onRenderCalloutPerStack?.(input))).toEqual([
+            { title: 'Label', value: 'second row' },
+            { title: 'Amount', value: '4' },
+          ]);
+        } else {
+          const props = bar(freezeSpec(spec), colors(), false, options);
+          const point = props.data![1];
+          expect(point.callOutAccessibilityData?.ariaLabel).toBe('Label: second row; Amount: 4');
+          expect(tooltipFields(props.onRenderCalloutPerDataPoint?.(point))).toEqual([
+            { title: 'Label', value: 'second row' },
+            { title: 'Amount', value: '4' },
+          ]);
+        }
+      }
+      expect(JSON.stringify(spec)).toBe(before);
+      expect(() => (kind === 'line' ? line : bar)(spec, colors(), false, strict)).toThrow(/format|supported test/);
+    });
+  });
+
   it('orders actual nominal stack segments by color domain, not grouped or simple bars', () => {
     const spec = stackSpec();
     expect(stacked(spec, colors()).data?.[0].chartData.map(p => p.legend)).toEqual(['first', 'second']);

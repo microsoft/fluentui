@@ -7,6 +7,7 @@ import { format as numberFormat } from 'd3-format';
 import { timeFormat, timeParse, utcFormat, utcParse } from 'd3-time-format';
 import { aggregateVegaValues, evaluateVegaPredicate } from './VegaLiteDataTransforms';
 import { getVegaOwnDataDescriptor, readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import type { VegaSemanticOptions } from './VegaLiteData.types';
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { useVegaLiteTooltipStyles } from './useVegaLiteTooltipStyles.styles';
 
@@ -94,15 +95,17 @@ function temporalDate(spec: VegaLiteSpec, field: string | undefined, value: unkn
   return new Date(value);
 }
 
-function formatValue(spec: VegaLiteSpec, definition: Row, value: unknown): string {
+function formatValue(spec: VegaLiteSpec, definition: Row, value: unknown, options: VegaSemanticOptions): string {
   const type = own(definition, 'type');
   const formatType = own(definition, 'formatType');
-  if (formatType !== undefined && !['number', 'time', 'utc'].includes(formatType as string)) {
-    return error('unsupported formatType');
-  }
   const pattern = own(definition, 'format');
   if (pattern !== undefined && typeof pattern !== 'string') {
     return error('format must be a string');
+  }
+  if (formatType !== undefined && !['number', 'time', 'utc'].includes(formatType as string)) {
+    // Registered Vega formatters have no native equivalent. Legacy charts keep
+    // the selected datum, never a blank tooltip or an unrelated row fallback.
+    return options.mode === 'legacy' && typeof formatType === 'string' ? text(value) : error('unsupported formatType');
   }
   const config = own(spec, 'config');
   const quantitative =
@@ -114,7 +117,7 @@ function formatValue(spec: VegaLiteSpec, definition: Row, value: unknown): strin
     try {
       numericFormatter = numberFormat(string(pattern) ?? string(own(config, 'numberFormat')) ?? '');
     } catch {
-      return error('invalid numeric format');
+      return options.mode === 'legacy' ? text(value) : error('invalid numeric format');
     }
   }
   // Preserve missing/invalid scalars, rather than letting d3 coerce null to zero or epoch.
@@ -182,7 +185,7 @@ function safePredicate(value: unknown, depth = 0): unknown {
   return value;
 }
 
-function selectedDefinition(definition: unknown, row: Row): Row | undefined {
+function selectedDefinition(definition: unknown, row: Row, options: VegaSemanticOptions): Row | undefined {
   if (!isRecord(definition)) {
     return undefined;
   }
@@ -191,6 +194,20 @@ function selectedDefinition(definition: unknown, row: Row): Row | undefined {
     const conditions = Array.isArray(condition) ? array(condition) : [condition];
     for (const entry of conditions) {
       if (!isRecord(entry) || own(entry, 'test') === undefined) {
+        // Selection parameters are intentionally not evaluated. Only this known
+        // unsupported shape may use the nonconditional definition in legacy mode;
+        // malformed predicates/accessors and evaluator failures must still throw.
+        if (
+          options.mode === 'legacy' &&
+          isRecord(entry) &&
+          !Object.prototype.hasOwnProperty.call(entry, 'test') &&
+          typeof own(entry, 'param') === 'string' &&
+          own(entry, 'param') !== '' &&
+          (own(entry, 'empty') === undefined || typeof own(entry, 'empty') === 'boolean') &&
+          Object.keys(entry).every(key => !!descriptor(entry, key))
+        ) {
+          continue;
+        }
         return error('conditional tooltip requires a supported test predicate');
       }
       if (evaluateVegaPredicate(safePredicate(own(entry, 'test')), row, strict)) {
@@ -201,12 +218,12 @@ function selectedDefinition(definition: unknown, row: Row): Row | undefined {
   return definition;
 }
 
-function definitionsForEncoding(spec: VegaLiteSpec, row: Row): Row[] {
+function definitionsForEncoding(spec: VegaLiteSpec, row: Row, options: VegaSemanticOptions): Row[] {
   const encoding = own(spec, 'encoding');
   return [...channels, 'tooltip'].flatMap(channel => {
     const definition = own(encoding, channel);
     return (Array.isArray(definition) ? array(definition) : [definition])
-      .map(entry => selectedDefinition(entry, row))
+      .map(entry => selectedDefinition(entry, row, options))
       .filter((entry): entry is Row => !!entry);
   });
 }
@@ -217,7 +234,7 @@ const same = (a: unknown, b: unknown): boolean =>
     : a === b || Object.is(a, b);
 
 /** Read prepared aliases first; only raw specs with source tuples may aggregate. */
-function datumForDefinition(spec: VegaLiteSpec, definition: Row, row: Row): Datum {
+function datumForDefinition(spec: VegaLiteSpec, definition: Row, row: Row, options: VegaSemanticOptions): Datum {
   for (const key of ['value', 'datum']) {
     const property = descriptor(definition, key);
     if (property) {
@@ -241,7 +258,7 @@ function datumForDefinition(spec: VegaLiteSpec, definition: Row, row: Row): Datu
     if (!Array.isArray(values)) {
       return error('aggregate requires a prepared datum alias or full source data');
     }
-    const groupFields = definitionsForEncoding(spec, row)
+    const groupFields = definitionsForEncoding(spec, row, options)
       .filter(entry => own(entry, 'aggregate') === undefined)
       .map(entry => string(own(entry, 'field')))
       .filter((entry): entry is string => entry !== undefined);
@@ -426,23 +443,29 @@ function passesFilter(spec: VegaLiteSpec, definition: Row, filter: unknown, rawV
   return evaluateVegaPredicate(predicate, { value: dateCopy(value) ?? value, valid: true }, strict);
 }
 
-function buildFields(spec: VegaLiteSpec, definitions: unknown[], row: Row, filterable: boolean): VegaTooltip['fields'] {
+function buildFields(
+  spec: VegaLiteSpec,
+  definitions: unknown[],
+  row: Row,
+  filterable: boolean,
+  options: VegaSemanticOptions,
+): VegaTooltip['fields'] {
   const result: VegaTooltip['fields'] = [];
   for (const input of definitions) {
-    const definition = selectedDefinition(input, row);
+    const definition = selectedDefinition(input, row, options);
     if (!definition) {
       return error('invalid tooltip field definition');
     }
     if (own(definition, 'tooltip') === false) {
       continue;
     }
-    const datum = datumForDefinition(spec, definition, row);
+    const datum = datumForDefinition(spec, definition, row, options);
     const filter = own(definition, 'filter');
     if (filterable && filter !== undefined && !passesFilter(spec, definition, filter, datum.value)) {
       continue;
     }
     if (datum.present) {
-      result.push({ title: fieldTitle(definition), value: formatValue(spec, definition, datum.value) });
+      result.push({ title: fieldTitle(definition), value: formatValue(spec, definition, datum.value, options) });
     }
   }
   return result;
@@ -451,26 +474,35 @@ function buildFields(spec: VegaLiteSpec, definitions: unknown[], row: Row, filte
 const labelFor = (fields: VegaTooltip['fields']): string =>
   fields.map(field => (field.title ? `${field.title}: ${field.value}` : field.value)).join('; ');
 
-function projectedFields(spec: VegaLiteSpec, row: Row, coordinateOnly = false): VegaTooltip['fields'] {
+function projectedFields(
+  spec: VegaLiteSpec,
+  row: Row,
+  options: VegaSemanticOptions,
+  coordinateOnly = false,
+): VegaTooltip['fields'] {
   const encoding = own(spec, 'encoding');
   const definitions = (coordinateOnly ? ['x', 'y'] : channels).flatMap(channel => {
-    const definition = selectedDefinition(own(encoding, channel), row);
+    const definition = selectedDefinition(own(encoding, channel), row, options);
     // Constant visual encodings (e.g. pixel size or fixed color) are not datum fields.
     return definition && (own(definition, 'field') !== undefined || own(definition, 'aggregate') !== undefined)
       ? [definition]
       : [];
   });
-  const fields = buildFields(spec, definitions, row, false);
+  const fields = buildFields(spec, definitions, row, false, options);
   // Vega's generated object projection retains the first duplicate title.
   const seen = new Set<string>();
   return fields.filter(field => !seen.has(field.title) && !!seen.add(field.title));
 }
 
 /** Build visual content and accessible text without opening a callout, loading resources or mutating data. */
-export function buildVegaTooltip(spec: VegaLiteSpec, row: Record<string, unknown>): VegaTooltip {
+export function buildVegaTooltip(
+  spec: VegaLiteSpec,
+  row: Record<string, unknown>,
+  options: VegaSemanticOptions = strict,
+): VegaTooltip {
   const encodingTooltip = own(own(spec, 'encoding'), 'tooltip');
   if (encodingTooltip === null) {
-    return { fields: [], ariaLabel: labelFor(projectedFields(spec, row, true)), disabled: true };
+    return { fields: [], ariaLabel: labelFor(projectedFields(spec, row, options, true)), disabled: true };
   }
   if (encodingTooltip !== undefined) {
     const fields = buildFields(
@@ -478,6 +510,7 @@ export function buildVegaTooltip(spec: VegaLiteSpec, row: Record<string, unknown
       Array.isArray(encodingTooltip) ? array(encodingTooltip) : [encodingTooltip],
       row,
       true,
+      options,
     );
     return { fields, ariaLabel: labelFor(fields), disabled: false };
   }
@@ -492,7 +525,7 @@ export function buildVegaTooltip(spec: VegaLiteSpec, row: Record<string, unknown
   ];
   const tooltip = candidates.find(candidate => candidate !== undefined);
   if (tooltip === null || tooltip === false) {
-    return { fields: [], ariaLabel: labelFor(projectedFields(spec, row, true)), disabled: true };
+    return { fields: [], ariaLabel: labelFor(projectedFields(spec, row, options, true)), disabled: true };
   }
   let fields: VegaTooltip['fields'];
   if (typeof tooltip === 'string') {
@@ -507,7 +540,7 @@ export function buildVegaTooltip(spec: VegaLiteSpec, row: Record<string, unknown
       return error('unsupported mark tooltip (expected true, null, text, or content:encoding/data)');
     }
     // Native chart defaults need a projection even when mark/config tooltip is undefined.
-    fields = projectedFields(spec, row);
+    fields = projectedFields(spec, row, options);
   }
   return { fields, ariaLabel: labelFor(fields), disabled: false };
 }
@@ -537,7 +570,11 @@ const VegaLiteTooltip: ForwardRefComponent<TooltipProps> = React.forwardRef((pro
 VegaLiteTooltip.displayName = 'VegaLiteTooltip';
 
 /** Content-only boundary. The main adapter owns native callout activation, focus and keyboard interaction. */
-export function renderVegaTooltip(spec: VegaLiteSpec, row: Record<string, unknown>): React.ReactElement | null {
-  const tooltip = buildVegaTooltip(spec, row);
+export function renderVegaTooltip(
+  spec: VegaLiteSpec,
+  row: Record<string, unknown>,
+  options: VegaSemanticOptions = strict,
+): React.ReactElement | null {
+  const tooltip = buildVegaTooltip(spec, row, options);
   return tooltip.disabled || !tooltip.fields.length ? null : <VegaLiteTooltip tooltip={tooltip} />;
 }

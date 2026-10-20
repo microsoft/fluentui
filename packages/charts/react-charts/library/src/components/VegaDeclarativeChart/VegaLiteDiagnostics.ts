@@ -3,6 +3,8 @@ import { canRenderVegaRangedSpec } from './VegaLiteRangedGeometry';
 import { canRenderVegaCenteredAreaSpec } from './VegaLiteCenteredArea';
 import { parseVegaDataValues } from './VegaLiteResourceLoader';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
+import { VEGA_MAX_DATA_ROWS, VEGA_MAX_DATA_WORK, VEGA_MAX_SPECIFICATION_WORK } from './VegaLiteBudgets';
+import { format as numberFormat } from 'd3-format';
 
 export type VegaLiteDiagnostic = {
   code: string;
@@ -32,12 +34,12 @@ type SnapshotContext =
   | 'grammar';
 
 // Grammar declarations are independent of row count. Data inspection shares the engine/resource
-// defaults: at most 100000 rows per source and 2000000 cumulative work units in either mode.
+// defaults: at most 100000 rows per source and 40000000 cumulative inspection work units in either mode.
 // Work includes descriptor copies, array slots (including holes), data keys/text and semantic scans.
 // These are safety limits, not unsupported-feature warnings: legacy must not bypass them.
-const maxSpecificationWork = 100000;
-const maxDataRows = 100000;
-const maxDataWork = 2000000;
+const maxSpecificationWork = VEGA_MAX_SPECIFICATION_WORK;
+const maxDataRows = VEGA_MAX_DATA_ROWS;
+const maxDataWork = VEGA_MAX_DATA_WORK;
 
 type Scope = {
   datasets: Map<string, unknown>;
@@ -245,7 +247,9 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       invalid(
         'work-limit',
         path,
-        rowData ? 'Data inspection exceeds 2000000 work units.' : 'Specification inspection exceeds 100000 work units.',
+        rowData
+          ? `Data inspection exceeds ${maxDataWork} work units.`
+          : `Specification inspection exceeds ${maxSpecificationWork} work units.`,
         'Reduce the data/view count or precompute compatible fields.',
       );
       stopped = true;
@@ -316,7 +320,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       array = Array.isArray(value);
     } catch {
       invalid(
-        'invalid-spec',
+        'unsafe-object',
         path,
         'Object type could not be inspected safely.',
         'Pass plain JSON data instead of exotic objects.',
@@ -403,7 +407,7 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
       }
     } catch {
       invalid(
-        'invalid-spec',
+        'unsafe-object',
         path,
         'Object properties could not be inspected safely.',
         'Pass plain JSON data instead of exotic objects.',
@@ -1863,6 +1867,24 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
         for (const key of ['format', 'formatType']) {
           if (has(definition, key) && typeof own(definition, key) !== 'string') {
             invalid('invalid-field', `${definitionPath}.${key}`, 'Formats must be strings.');
+          }
+        }
+        const formatType = own(definition, 'formatType');
+        const format = own(definition, 'format');
+        if (
+          channel === 'tooltip' &&
+          typeof format === 'string' &&
+          (formatType === 'number' || (formatType === undefined && type !== 'temporal'))
+        ) {
+          try {
+            numberFormat(format);
+          } catch {
+            report(
+              'unsupported-format',
+              `${definitionPath}.format`,
+              'Tooltip numeric format is invalid; legacy mode displays the raw value.',
+              'Use a valid D3 numeric format or remove the format declaration.',
+            );
           }
         }
         if (

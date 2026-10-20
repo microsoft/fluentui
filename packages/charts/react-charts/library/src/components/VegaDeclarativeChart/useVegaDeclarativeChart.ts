@@ -15,7 +15,7 @@ import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
 import { readVegaOwnData as own } from './VegaLiteField';
 
 const MAX_DEPTH = 15;
-const safetyCodes = new Set(['unsafe-accessor', 'unsafe-value', 'cycle', 'depth-limit', 'work-limit']);
+const safetyCodes = new Set(['unsafe-object', 'unsafe-accessor', 'unsafe-value', 'cycle', 'depth-limit', 'work-limit']);
 const ownArray = (value: unknown): unknown[] =>
   Array.isArray(value)
     ? Object.keys(value)
@@ -104,6 +104,8 @@ export function useVegaDeclarativeChart(
     }
     return props.dataResolver(resource);
   });
+  // Diagnostics identity, not callback identity/availability, determines when to notify the host.
+  const reportDiagnostics = useEventCallback((diagnostics: VegaLiteDiagnostic[]) => onDiagnostics?.(diagnostics));
   const request = React.useMemo<ResourceRequest>(
     () => ({
       spec: vegaLiteSpec,
@@ -127,10 +129,7 @@ export function useVegaDeclarativeChart(
       allowExternalData: request.resolverAvailable,
     });
     const fatal = diagnostics.filter(
-      item =>
-        safetyCodes.has(item.code) ||
-        (item.code === 'invalid-spec' && item.message.includes('safely')) ||
-        (request.mode === 'strict' && item.severity === 'error'),
+      item => safetyCodes.has(item.code) || (request.mode === 'strict' && item.severity === 'error'),
     );
     if (fatal.length) {
       return { diagnostics, error: diagnosticError(fatal) };
@@ -239,9 +238,9 @@ export function useVegaDeclarativeChart(
 
   React.useEffect(() => {
     if (!preflight.error) {
-      onDiagnostics?.(prepared.diagnostics);
+      reportDiagnostics(prepared.diagnostics);
     }
-  }, [preflight.error, prepared.diagnostics, onDiagnostics]);
+  }, [preflight.error, prepared.diagnostics, reportDiagnostics]);
 
   // All hooks are unconditional across validation, loading and error transitions.
   if (preflight.error) {

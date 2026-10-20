@@ -313,7 +313,8 @@ function transformPrepared<T extends object>(
   options: VegaSemanticOptions | undefined,
   render: (input: VegaLiteSpec, colors: ColorMapRef, dark?: boolean) => T,
 ): T {
-  const prepared = prepareAdapterSpec(spec, options, kind);
+  const policy: VegaSemanticOptions = { mode: 'legacy', ...options };
+  const prepared = prepareAdapterSpec(spec, policy, kind);
   if (
     (kind === 'area' || kind === 'stacked-bar') &&
     normalizeSpec(prepared).some(unit => unit.encoding?.y?.stack === 'center')
@@ -333,7 +334,7 @@ function transformPrepared<T extends object>(
   autoCorrectEncodingTypes(prepared);
   const result = render(prepared, colorMap, isDarkTheme);
   applyNativeScaleDomains(result, prepared, kind);
-  attachSemanticTooltips(result, prepared, kind);
+  attachSemanticTooltips(result, prepared, kind, policy);
   applyNativeSemanticOrderAndStack(result, prepared, kind);
   return result;
 }
@@ -357,7 +358,12 @@ function equalCoordinate(left: unknown, right: unknown): boolean {
 type TooltipBinding = { point: VegaDataRow; x: unknown; legend: unknown; row: VegaDataRow; spec: VegaLiteSpec };
 
 /** Native callout arguments contain coordinates, not the original tuple. Keep the tuple with each point. */
-function attachSemanticTooltips<T extends object>(result: T, prepared: VegaLiteSpec, kind: AdapterKind): void {
+function attachSemanticTooltips<T extends object>(
+  result: T,
+  prepared: VegaLiteSpec,
+  kind: AdapterKind,
+  options: VegaSemanticOptions,
+): void {
   const tooltipSpec = tooltipSpecs.get(prepared) ?? prepared;
   const units = normalizeSpec(prepared);
   const tooltipUnits = normalizeSpec(tooltipSpec);
@@ -433,7 +439,7 @@ function attachSemanticTooltips<T extends object>(result: T, prepared: VegaLiteS
     if (!match) {
       return;
     }
-    const tooltip = buildVegaTooltip(match.spec, match.row);
+    const tooltip = buildVegaTooltip(match.spec, match.row, options);
     hasTooltipContent ||= tooltip.fields.length > 0;
     // An empty string triggers the native renderer's unfiltered ARIA fallback.
     point.callOutAccessibilityData = { ariaLabel: tooltip.ariaLabel || 'Data point' };
@@ -530,7 +536,7 @@ function attachSemanticTooltips<T extends object>(result: T, prepared: VegaLiteS
       return undefined;
     }
     const elements = selected
-      .map(binding => renderVegaTooltip(binding.spec, binding.row))
+      .map(binding => renderVegaTooltip(binding.spec, binding.row, options))
       .filter((entry): entry is React.ReactElement => entry !== null);
     return elements.length === 0
       ? null

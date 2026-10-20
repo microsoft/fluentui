@@ -26,6 +26,13 @@ const paths = (diagnostics: VegaLiteDiagnostic[], code: string): string[] =>
   diagnostics.filter(item => item.code === code).map(item => item.path);
 
 describe('separate bounded grammar and row-data inspection', () => {
+  it.each(['legacy', 'strict'] as const)('accepts actual 100000 four-field rows with explicit parses in %s', mode => {
+    const values = Array.from({ length: 100000 }, (_, x) => ({ x, y: x % 10, series: 'A', label: `row-${x}` }));
+    expect(
+      validateVegaLiteSpec(unit({ data: { values, format: { parse: { x: 'number', y: 'number' } } } }), { mode }),
+    ).toEqual([]);
+  });
+
   const fixtures = [20000, 50000].map(length => {
     const spec = unit({
       data: { values: Array.from({ length }, (_, x) => Object.freeze({ x, y: x % 10, a: 1, b: 2 })) },
@@ -134,7 +141,7 @@ describe('separate bounded grammar and row-data inspection', () => {
       }
       // Each nested array fits individually; their combined logical slots must exhaust data work.
       const row = Object.freeze({ x: 1, y: 2, payload: Object.freeze(new Array(100000)) });
-      const dataWork = validateVegaLiteSpec(unit({ data: { values: new Array(25).fill(row) } }), { mode });
+      const dataWork = validateVegaLiteSpec(unit({ data: { values: new Array(401).fill(row) } }), { mode });
       expect(dataWork).toEqual([
         expect.objectContaining({
           code: 'work-limit',
@@ -2177,26 +2184,61 @@ describe('validateVegaLiteSpec', () => {
     const spec = raw({
       data: { values: Array.from({ length: 50000 }, () => ({ x: 1, y: 2 })) },
       encoding: xy,
-      hconcat: Array.from({ length: 20 }, () => ({ mark: 'line' })),
+      hconcat: Array.from({ length: 200 }, () => ({ mark: 'line' })),
     });
     expect(validateVegaLiteSpec(spec)).toContainEqual(
       expect.objectContaining({ code: 'work-limit', severity: 'error' }),
     );
   });
 
-  it('returns a diagnostic for objects that cannot be inspected safely', () => {
-    const exotic = new Proxy(
-      {},
-      {
-        getPrototypeOf: () => {
-          throw new Error('uninspectable');
+  it.each(['legacy', 'strict'] as const)(
+    'returns unsafe-object diagnostics for throwing inspection traps in %s mode without reading properties',
+    mode => {
+      for (const trap of ['getPrototypeOf', 'ownKeys', 'getOwnPropertyDescriptor'] as const) {
+        for (const location of ['root', 'grammar', 'row'] as const) {
+          const read = jest.fn(() => {
+            throw new Error('Property reads must not execute');
+          });
+          const inspect = jest.fn(() => {
+            throw new Error('Inspection trap failed');
+          });
+          const exotic = new Proxy({ mark: 'line' }, { get: read, [trap]: inspect });
+          const [spec, path] =
+            location === 'root'
+              ? [exotic, '$']
+              : location === 'grammar'
+              ? [unit({ ignored: exotic }), '$.ignored']
+              : [unit({ data: { values: [{ x: 1, y: 2, payload: exotic }] } }), '$.data.values[0].payload'];
+          expect(validateVegaLiteSpec(spec, { mode })).toEqual([
+            expect.objectContaining({ code: 'unsafe-object', path, severity: 'error' }),
+          ]);
+          expect(inspect).toHaveBeenCalledTimes(1);
+          expect(read).not.toHaveBeenCalled();
+        }
+      }
+    },
+  );
+
+  it.each(['legacy', 'strict'] as const)(
+    'catches revoked proxies and array-length descriptor failures in %s mode',
+    mode => {
+      const { proxy, revoke } = Proxy.revocable({}, {});
+      revoke();
+      const values = new Proxy([], {
+        getOwnPropertyDescriptor: () => {
+          throw new Error('Array length descriptor failed');
         },
-      },
-    );
-    expect(validateVegaLiteSpec(raw(exotic), { mode: 'strict' })).toContainEqual(
-      expect.objectContaining({ code: 'invalid-spec', path: '$', severity: 'error' }),
-    );
-  });
+      });
+      for (const [spec, path] of [
+        [proxy, '$'],
+        [unit({ data: { values } }), '$.data.values'],
+      ] as const) {
+        expect(validateVegaLiteSpec(spec, { mode })).toEqual([
+          expect.objectContaining({ code: 'unsafe-object', path, severity: 'error' }),
+        ]);
+      }
+    },
+  );
 
   it('never calls array-owned methods and bounds sparse array lengths before cloning', () => {
     const rows = [{ x: 1, y: 2 }];
