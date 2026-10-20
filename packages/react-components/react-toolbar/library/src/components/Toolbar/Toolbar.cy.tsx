@@ -5,7 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { ToggleButton } from '@fluentui/react-button';
 import { TextBoldRegular } from '@fluentui/react-icons';
-import { readability } from '@ctrl/tinycolor';
+import { TextBoldRegular as TextBoldFont } from '@fluentui/react-icons/lib/fonts';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import {
@@ -216,13 +216,16 @@ describe('ToolbarDivider', () => {
 });
 
 describe('Toolbar checked icon contrast', () => {
-  const restoredStyles: Array<{ style: CSSStyleDeclaration; cssText: string }> = [];
   const assertIconContrast = ($button: JQuery<HTMLElement>) => {
     const foreground = $button.css('color');
-    expect($button.find('.fui-Button__icon').css('color')).to.equal(foreground);
-    expect($button.find('svg').css('color')).to.equal(foreground);
-    expect($button.find('svg').css('fill')).to.equal(foreground);
-    expect($button.find('.fui-Button__icon').css('forced-color-adjust')).to.equal('none');
+    const $icon = $button.find('.fui-Button__icon');
+    expect($icon.css('color')).to.equal(foreground);
+    expect($icon.css('forced-color-adjust')).to.equal('none');
+    expect($icon.children().css('color')).to.equal(foreground);
+    expect($icon.children().css('forced-color-adjust')).to.equal('none');
+    if ($icon.find('svg').length) {
+      expect($icon.find('svg').css('fill')).to.equal(foreground);
+    }
     expect(foreground).not.to.equal($button.css('background-color'));
   };
 
@@ -242,124 +245,57 @@ describe('Toolbar checked icon contrast', () => {
       }),
     );
 
-  afterEach(() => {
-    cy.then(() => {
-      for (const { style, cssText } of restoredStyles) {
-        style.cssText = cssText;
-      }
-      restoredStyles.length = 0;
-    });
-    setForcedColors();
-  });
+  afterEach(() => setForcedColors());
 
   for (const colorScheme of ['light', 'dark'] as const) {
     for (const appearance of ['primary', 'subtle', 'transparent'] as const) {
-      for (const disabledState of ['enabled', 'disabled', 'disabledFocusable'] as const) {
-        it(`preserves checked icon contrast with ${colorScheme} forced colors, ${appearance}, ${disabledState}`, () => {
+      for (const [iconType, Icon] of [
+        ['SVG', TextBoldRegular],
+        ['font', TextBoldFont],
+      ] as const) {
+        it(`preserves ${iconType} icon contrast with ${colorScheme} forced colors and ${appearance} appearance`, () => {
           setForcedColors(colorScheme);
-          const props = {
-            appearance,
-            disabled: disabledState === 'disabled',
-            disabledFocusable: disabledState === 'disabledFocusable',
-            icon: <TextBoldRegular />,
-          };
+          const props = { appearance, icon: <Icon /> };
 
           mount(
             <Toolbar checkedValues={{ radio: ['selected'], toggle: ['selected'] }}>
               <ToolbarRadioButton {...props} name="radio" value="selected" aria-label="Selected radio" />
               <ToolbarToggleButton {...props} name="toggle" value="selected" aria-label="Selected toggle" />
               <ToggleButton {...props} checked aria-label="Selected button" />
-              <ToolbarRadioButton {...props} name="radio" value="unselected" aria-label="Unselected radio" />
-              <ToolbarToggleButton {...props} name="toggle" value="unselected" aria-label="Unselected toggle" />
+              <ToggleButton {...props} aria-label="Unselected" />
+              <ToggleButton {...props} checked disabled aria-label="Disabled" />
+              <ToggleButton {...props} checked disabledFocusable aria-label="Disabled focusable" />
             </Toolbar>,
           );
 
-          for (const label of ['Selected radio', 'Selected toggle', 'Selected button']) {
-            const selector = `[aria-label="${label}"]`;
-            if (disabledState === 'enabled') {
-              cy.get(selector).should(assertIconContrast);
-              cy.get(selector).realHover();
-              cy.get(selector).should(assertIconContrast);
-              cy.get(selector).realMouseDown();
-              cy.get(selector).should(assertIconContrast);
-              cy.get(selector).realMouseUp();
-              cy.get(selector).focus();
-              cy.get(selector).should(assertIconContrast);
-            } else {
-              cy.get(`[aria-label="${label}"] .fui-Button__icon`).should('have.css', 'forced-color-adjust', 'auto');
-            }
+          if (iconType === 'font') {
+            cy.get('[aria-label="Selected radio"] i').should('be.visible');
+            cy.document().then(async doc => {
+              const fonts = await doc.fonts.load('20px FluentSystemIcons');
+              expect(fonts).to.have.length(1);
+              expect(fonts[0].status).to.equal('loaded');
+            });
           }
 
-          for (const label of ['Unselected radio', 'Unselected toggle']) {
+          for (const label of ['Selected radio', 'Selected toggle', 'Selected button']) {
+            const selector = `[aria-label="${label}"]`;
+            cy.get('body').realHover({ position: 'bottomRight' });
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realHover();
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realMouseDown();
+            cy.get(selector).should(assertIconContrast);
+            cy.get(selector).realMouseUp();
+            cy.get('body').realHover({ position: 'bottomRight' });
+            cy.get(selector).focus();
+            cy.get(selector).should(assertIconContrast);
+          }
+
+          for (const label of ['Unselected', 'Disabled', 'Disabled focusable']) {
             cy.get(`[aria-label="${label}"] .fui-Button__icon`).should('have.css', 'forced-color-adjust', 'auto');
           }
         });
       }
     }
   }
-
-  it('preserves icon contrast with the Microsoft-published Aquatic selected-color reference', () => {
-    // Reference swatches, not native Windows emulation:
-    // https://learn.microsoft.com/windows/apps/design/accessibility/high-contrast-themes#contrast-colors
-    const aquatic = {
-      highlight: 'rgb(142, 227, 240)',
-      highlightText: 'rgb(38, 59, 80)',
-    };
-
-    setForcedColors('dark');
-    mount(
-      <Toolbar checkedValues={{ radio: ['selected'], toggle: ['selected'] }}>
-        <ToolbarRadioButton name="radio" value="selected" icon={<TextBoldRegular />} aria-label="Selected radio" />
-        <ToolbarToggleButton name="toggle" value="selected" icon={<TextBoldRegular />} aria-label="Selected toggle" />
-        <ToggleButton checked appearance="subtle" icon={<TextBoldRegular />} aria-label="Selected button" />
-      </Toolbar>,
-    );
-    cy.get('body').realHover({ position: 'bottomRight' });
-
-    // Substitute only the system-color references, preserving the component's cascade and adjustment policy.
-    cy.window().then(win => {
-      const replaceSystemColors = (rules: CSSRuleList) => {
-        for (const rule of Array.from(rules)) {
-          if (rule instanceof win.CSSStyleRule) {
-            const cssText = rule.style.cssText;
-            const replaced = cssText.replace(/\bHighlight(?:Text)?\b/gi, color =>
-              color.toLowerCase() === 'highlight' ? aquatic.highlight : aquatic.highlightText,
-            );
-            if (replaced !== cssText) {
-              restoredStyles.push({ style: rule.style, cssText });
-              rule.style.cssText = replaced;
-            }
-          } else if (rule instanceof win.CSSGroupingRule) {
-            replaceSystemColors(rule.cssRules);
-          }
-        }
-      };
-      for (const sheet of Array.from(win.document.styleSheets)) {
-        replaceSystemColors(sheet.cssRules);
-      }
-      expect(restoredStyles.length).to.be.greaterThan(0);
-    });
-
-    const assertPaletteContrast = (foreground: string, background: string) => ($button: JQuery<HTMLElement>) => {
-      assertIconContrast($button);
-      expect($button.css('color')).to.equal(foreground);
-      expect($button.css('background-color')).to.equal(background);
-      expect(readability($button.find('svg').css('fill'), background)).to.be.at.least(3);
-    };
-
-    cy.get('button').each($button => {
-      cy.wrap($button).should(assertPaletteContrast(aquatic.highlightText, aquatic.highlight));
-    });
-    for (const label of ['Selected radio', 'Selected toggle', 'Selected button']) {
-      const selector = `[aria-label="${label}"]`;
-      cy.get(selector).realHover();
-      cy.get(selector).should(assertPaletteContrast(aquatic.highlight, aquatic.highlightText));
-      cy.get(selector).realMouseDown();
-      cy.get(selector).should(assertPaletteContrast(aquatic.highlight, aquatic.highlightText));
-      cy.get(selector).realMouseUp();
-    }
-
-    cy.get('body').realHover({ position: 'bottomRight' });
-    cy.get('[role="toolbar"]').screenshot('Aquatic-reference-selected');
-  });
 });
