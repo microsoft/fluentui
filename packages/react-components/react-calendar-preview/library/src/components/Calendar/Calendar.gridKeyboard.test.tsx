@@ -721,6 +721,113 @@ describe.each([
   { name: 'base', base: true },
   { name: 'styled', base: false },
 ])('$name day grid consumer cell handlers', ({ base }) => {
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'excludes an internally %s row while preserving grid visibility styles',
+    hiding => {
+      const Day = base ? BaseDay : CalendarDay;
+      const element = (hidden: boolean) => (
+        <>
+          <button type="button">Before panel</button>
+          <div data-testid="panel" hidden={hidden}>
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Day navigatedDate={today} />
+            </CalendarProvider>
+          </div>
+        </>
+      );
+      const { getByRole, getByTestId, rerender } = render(element(false));
+      const remembered = getByRole('button', { name: 'September 19, 2020' }).closest('td')!;
+      const grid = getByRole('grid');
+      const row = remembered.closest('tr')!;
+      act(() => remembered.focus());
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+      if (hiding === 'hidden') {
+        row.hidden = true;
+      } else {
+        row.style.setProperty(
+          hiding === 'display' ? 'display' : 'visibility',
+          hiding === 'display' ? 'none' : 'hidden',
+        );
+      }
+      grid.style.setProperty('visibility', 'hidden', 'important');
+
+      rerender(element(true));
+
+      expect(grid.style.getPropertyValue('visibility')).toBe('hidden');
+      expect(grid.style.getPropertyPriority('visibility')).toBe('important');
+      expect(remembered).toHaveAttribute('tabindex', '-1');
+      const tabStops = grid.querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+      expect(tabStops).toHaveLength(1);
+      getByTestId('panel').hidden = false;
+      grid.style.removeProperty('visibility');
+      expect(tabStops[0]).toBeVisible();
+
+      for (let step = 0; step < 5 && tabStops[0].ownerDocument.activeElement !== tabStops[0]; step++) {
+        userEvent.tab();
+      }
+      expect(tabStops[0]).toHaveFocus();
+    },
+  );
+
+  it.each(
+    (['hidden', 'display', 'visibility'] as const).flatMap(panelHiding =>
+      (['hidden', 'display', 'visibility'] as const).map(hiding => ({ panelHiding, hiding })),
+    ),
+  )('replaces an individually $hiding remembered date while its panel uses $panelHiding', ({ panelHiding, hiding }) => {
+    const Day = base ? BaseDay : CalendarDay;
+    const element = (hidden: boolean) => (
+      <>
+        <button type="button">Before panel</button>
+        <div
+          data-testid="panel"
+          hidden={hidden && panelHiding === 'hidden'}
+          style={
+            hidden && panelHiding === 'display'
+              ? { display: 'none' }
+              : hidden && panelHiding === 'visibility'
+              ? { visibility: 'hidden' }
+              : {}
+          }
+        >
+          <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+            <Day
+              navigatedDate={today}
+              getDayCellProps={date =>
+                hidden && (date.getDate() === 18 || date.getDate() === 19)
+                  ? hiding === 'hidden'
+                    ? { hidden: true }
+                    : { style: hiding === 'display' ? { display: 'none' } : { visibility: 'hidden' } }
+                  : {}
+              }
+            />
+          </CalendarProvider>
+        </div>
+      </>
+    );
+    const { getByRole, getByTestId, rerender } = render(element(false));
+    const remembered = getByRole('button', { name: 'September 19, 2020' }).closest('td')!;
+    act(() => remembered.focus());
+    act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+    rerender(element(true));
+
+    const panel = getByTestId('panel');
+    const tabStops = panel.querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+    expect(tabStops).toHaveLength(1);
+    expect(remembered).toHaveAttribute('tabindex', '-1');
+    panel.hidden = false;
+    panel.style.removeProperty('display');
+    panel.style.removeProperty('visibility');
+    expect(tabStops[0]).toBeVisible();
+    expect(tabStops[0]).toBe(getByRole('button', { name: 'August 30, 2020' }).closest('td'));
+
+    for (let step = 0; step < 5 && tabStops[0].ownerDocument.activeElement !== tabStops[0]; step++) {
+      userEvent.tab();
+    }
+
+    expect(tabStops[0]).toHaveFocus();
+  });
+
   it('preserves the focus destination of a cancelled cell click', () => {
     const { container, cells, onSelect, onNavigate } = renderPicker('day', base, {
       getDayCellProps: () => ({

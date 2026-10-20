@@ -10,6 +10,7 @@ import { getCalendarGridCell, getCalendarGridCells, isCalendarCellFocusable } fr
  * Cells render the navigated cell with `tabIndex={0}` and every other cell with `tabIndex={-1}`. The last focused
  * cell then takes over as the tab stop, so Tab leaves the grid and returning focuses the cell the user left, until
  * that cell is removed, hidden or becomes unavailable.
+ * Panel visibility is isolated at the grid boundary; styles targeting cells directly remain cell-local hiding.
  *
  * @param allFocusable - whether unavailable cells can hold the tab stop
  * @param getNavigatedCell - resolves the cell rendered as the tab stop, restored when the remembered cell is lost
@@ -39,11 +40,14 @@ export function useCalendarGridTabStop<T extends HTMLElement = HTMLDivElement>(
       return;
     }
     const cells = getCalendarGridCells(grid);
-    const canHoldTabStop = (cell: HTMLElement | null | undefined, includeHidden = false): cell is HTMLElement =>
+    const canHoldTabStop = (
+      cell: HTMLElement | null | undefined,
+      visibilityBoundary?: HTMLElement,
+    ): cell is HTMLElement =>
       !!cell &&
       cells.includes(cell) &&
       cell.hasAttribute('tabindex') &&
-      isCalendarCellFocusable(cell, allFocusable, includeHidden);
+      isCalendarCellFocusable(cell, allFocusable, visibilityBoundary);
     if (canHoldTabStop(tabStop)) {
       applyTabStop(grid, tabStop);
     } else {
@@ -53,14 +57,25 @@ export function useCalendarGridTabStop<T extends HTMLElement = HTMLDivElement>(
         tabStopRef.current = null;
         applyTabStop(grid, nextTabStop);
       } else {
-        // Hidden panels can update and reveal without another render. Normalize their logical stop too.
-        const hiddenTabStop = canHoldTabStop(tabStop, true)
-          ? tabStop
-          : canHoldTabStop(navigatedCell, true)
-          ? navigatedCell
-          : cells.find(cell => canHoldTabStop(cell, true));
-        tabStopRef.current = hiddenTabStop === tabStop ? tabStop : null;
-        applyTabStop(grid, hiddenTabStop ?? null);
+        const visibility = grid.style.getPropertyValue('visibility');
+        const priority = grid.style.getPropertyPriority('visibility');
+        // Isolate inherited panel visibility synchronously; cell-local hiding must still exclude a logical stop.
+        grid.style.setProperty('visibility', 'visible', 'important');
+        try {
+          const hiddenTabStop = canHoldTabStop(tabStop, grid)
+            ? tabStop
+            : canHoldTabStop(navigatedCell, grid)
+            ? navigatedCell
+            : cells.find(cell => canHoldTabStop(cell, grid));
+          tabStopRef.current = hiddenTabStop === tabStop ? tabStop : null;
+          applyTabStop(grid, hiddenTabStop ?? null);
+        } finally {
+          if (visibility) {
+            grid.style.setProperty('visibility', visibility, priority);
+          } else {
+            grid.style.removeProperty('visibility');
+          }
+        }
       }
     }
   });
