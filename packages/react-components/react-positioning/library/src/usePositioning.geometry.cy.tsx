@@ -185,6 +185,10 @@ const Fixture = ({ scenario, controls }: { scenario: Scenario; controls: Control
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
   const target = { x: 300, y: 240, width: 80, height: 40, ...scenario.target };
   const floating = scenario.floating ?? { width: 120, height: 60 };
+  const layoutBaseline =
+    scenario.dpr !== undefined && scenario.options?.useTransform === false
+      ? geometryBaseline[scenario.name]
+      : undefined;
   const virtualTarget = React.useMemo(
     () => ({
       getBoundingClientRect: () => ({
@@ -267,6 +271,20 @@ const Fixture = ({ scenario, controls }: { scenario: Scenario; controls: Control
         }}
       >
         <div style={{ position: 'relative', width: scenario.host === 'scroll' ? 900 : 800, height: 900 }}>
+          {layoutBaseline && (
+            <div
+              data-layout-reference=""
+              style={{
+                position: 'absolute',
+                left: String(layoutBaseline[7]),
+                top: String(layoutBaseline[8]),
+                width: `${layoutBaseline[2]}px`,
+                height: `${layoutBaseline[3]}px`,
+                visibility: 'hidden',
+                pointerEvents: 'none',
+              }}
+            />
+          )}
           <div
             data-target=""
             ref={refs.targetRef}
@@ -348,6 +366,21 @@ function geometry(element: HTMLElement) {
   ];
 }
 
+function expectGeometry(element: HTMLElement, scenario: Scenario) {
+  const expected = [...geometryBaseline[scenario.name]];
+  if (scenario.dpr !== undefined && scenario.options?.useTransform === false) {
+    const reference = element.parentElement?.querySelector<HTMLElement>('[data-layout-reference]');
+    if (!reference) {
+      throw new Error('Fractional left/top geometry requires an engine-free layout reference');
+    }
+    // Native layout quantization varies by host; the reference uses only committed CSS literals.
+    const rect = reference.getBoundingClientRect();
+    expected[0] = rect.x;
+    expected[1] = rect.y;
+  }
+  expect(geometry(element)).to.deep.equal(expected);
+}
+
 describe('usePositioning browser geometry contracts', () => {
   let originalDpr: PropertyDescriptor | undefined;
   beforeEach(() => {
@@ -374,8 +407,7 @@ describe('usePositioning browser geometry contracts', () => {
     it(scenario.name, () => {
       const controls = mountScenario(scenario);
       cy.get('[data-floating]').should($floating => {
-        const actual = geometry($floating[0]);
-        expect(actual).to.deep.equal(geometryBaseline[scenario.name]);
+        expectGeometry($floating[0], scenario);
         expect(controls.events[controls.events.length - 1]).to.deep.equal({
           placement: $floating.attr('data-popper-placement'),
           escaped: $floating.is('[data-popper-escaped]'),
@@ -384,6 +416,33 @@ describe('usePositioning browser geometry contracts', () => {
       });
     });
   });
+
+  scenarios
+    .filter(scenario => [1.5, 3].includes(scenario.dpr ?? 0) && scenario.options?.useTransform === false)
+    .forEach(scenario => {
+      it(`${scenario.name} rejects style drift even within one native layout step`, () => {
+        mountScenario(scenario);
+        cy.get('[data-floating]').then($floating => {
+          const element = $floating[0];
+          expectGeometry(element, scenario);
+          const rect = geometry(element).slice(0, 4);
+          for (const property of ['left', 'top'] as const) {
+            const original = element.style[property];
+            element.style[property] = `${parseFloat(original) - 0.001}px`;
+            expect(geometry(element).slice(0, 4), 'sub-layout-step drift has the same rectangle').to.deep.equal(rect);
+            expect(() => expectGeometry(element, scenario), `reject changed ${property}`).to.throw();
+            element.style[property] = original;
+          }
+          element.style.marginLeft = '1px';
+          expect(
+            () => expectGeometry(element, scenario),
+            'reject a displaced rectangle with unchanged left/top',
+          ).to.throw();
+          element.style.marginLeft = '';
+          expectGeometry(element, scenario);
+        });
+      });
+    });
 
   function expectRect(x: number, y: number, width = 120, height = 60) {
     cy.get('[data-floating]').should($floating => {
