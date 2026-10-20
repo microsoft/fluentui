@@ -23,6 +23,7 @@ describe('InfoLabel - close on tab-out', () => {
           info="Example non-focusable info"
           infoButton={{ className: 'info-button', children: 'i' }}
         />
+        <button data-testid="after">after</button>
       </>,
     );
 
@@ -33,6 +34,7 @@ describe('InfoLabel - close on tab-out', () => {
     cy.realPress(['Shift', 'Tab']).get(surfaceSelector).should('not.exist');
     openInfoButton();
     cy.realPress('Tab').get(surfaceSelector).should('not.exist');
+    cy.get('[data-testid=after]').should('have.focus');
   });
 
   it('single focusable element', () => {
@@ -49,6 +51,7 @@ describe('InfoLabel - close on tab-out', () => {
           }
           infoButton={{ className: 'info-button', children: 'i' }}
         />
+        <button data-testid="after">after</button>
       </>,
     );
 
@@ -65,6 +68,7 @@ describe('InfoLabel - close on tab-out', () => {
     cy.realPress(['Shift', 'Tab']).realPress(['Shift', 'Tab']).get(surfaceSelector).should('not.exist');
     openInfoButton();
     cy.realPress('Tab').realPress('Tab').get(surfaceSelector).should('not.exist');
+    cy.get('[data-testid=after]').should('have.focus');
   });
 
   it('one or more focusable elements', () => {
@@ -83,6 +87,7 @@ describe('InfoLabel - close on tab-out', () => {
           }
           infoButton={{ className: 'info-button', children: 'i' }}
         />
+        <button data-testid="after">after</button>
       </>,
     );
 
@@ -101,6 +106,7 @@ describe('InfoLabel - close on tab-out', () => {
     // checking that event does not propagate to children
     cy.realPress('Tab').realPress('Tab').realPress(['Shift', 'Tab']).get(surfaceSelector).should('exist');
     cy.realPress('Tab').realPress('Tab').realPress('Tab').get(surfaceSelector).should('not.exist');
+    cy.get('[data-testid=after]').should('have.focus');
   });
 });
 
