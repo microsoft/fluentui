@@ -6,6 +6,15 @@ const LEGACY_STYLE_ID = 'fui-Slider-legacy-vertical-appearance';
  */
 export const LEGACY_VERTICAL_SLIDER_RULE = '.fui-Slider__input[orient="vertical"]{-webkit-appearance:slider-vertical;}';
 
+// `all: initial` drops every author declaration (for example a global `input { width: 100% }`), and `!important` keeps
+// author `!important` rules from winning over the inline values, so the probe renders at the native intrinsic size of a
+// range input.
+const PROBE_STYLE =
+  'all:initial!important;appearance:auto!important;' +
+  'position:absolute!important;left:-9999px!important;top:-9999px!important;' +
+  'visibility:hidden!important;pointer-events:none!important;' +
+  'writing-mode:vertical-lr!important;direction:rtl!important;';
+
 const probeResults = new WeakMap<Document, boolean>();
 
 /**
@@ -15,6 +24,10 @@ const probeResults = new WeakMap<Document, boolean>();
  * wide. This is deliberately a layout probe rather than a `CSS.supports('writing-mode', ...)` check: engines gained
  * vertical range support at different times from `sideways-lr`, so a feature query would take the fallback on versions
  * that no longer need it.
+ *
+ * The probe is isolated from application styles (see `PROBE_STYLE`) and measured with `offsetWidth`/`offsetHeight`,
+ * which report the layout box before transforms, so styles on its ancestors (such as a rotated or scaled `body`)
+ * cannot change the result either.
  *
  * @returns `undefined` when the document has no layout (for example a `display: none` iframe or jsdom), so the caller
  * does not install the fallback on a guess.
@@ -28,11 +41,10 @@ export function supportsVerticalRangeInput(targetDocument: Document): boolean | 
 
   const probe = targetDocument.createElement('input');
   probe.type = 'range';
-  probe.style.cssText =
-    'position:absolute;left:-9999px;top:-9999px;visibility:hidden;pointer-events:none;' +
-    'writing-mode:vertical-lr;direction:rtl;';
+  probe.style.cssText = PROBE_STYLE;
   targetDocument.body.append(probe);
-  const { height, width } = probe.getBoundingClientRect();
+  const height = probe.offsetHeight;
+  const width = probe.offsetWidth;
   probe.remove();
 
   if (height === width) {
