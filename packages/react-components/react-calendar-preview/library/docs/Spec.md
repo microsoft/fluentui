@@ -255,6 +255,8 @@ Month and year grids own two-dimensional arrow navigation. Horizontal arrows sta
 
 Grid keyboard handling runs when the event bubbles to the grid, after consumer handlers on the cell, custom cell content, and the grid slot. `preventDefault()` in any of those handlers cancels the built-in action, and `stopPropagation()` in a cell or content handler keeps the event from reaching the grid. Modified arrows, editable descendants, arrows from independently nested grids, and arrows from descendant `[focusgroup]` owners, including `focusgroup="none"`, are left untouched. A focusgroup on the Calendar grid itself or outside that grid does not change Calendar's arrow ownership.
 
+Descendant focusgroups own keyboard handling, not pointer selection: uncancelled clicks on their non-editable day or year content still select the enclosing date or year. Nested grids retain their own event ownership.
+
 Month/year navigation continues past cells that cannot receive focus, including hidden cells, while allowing programmatic navigation to cells with `tabIndex="-1"`.
 
 Editable keyboard detection honors the nearest `contenteditable` boundary: descendants of `contenteditable="false"` remain navigable even inside an editable ancestor. `inherit` and invalid or case-insensitive values are treated according to the nearest explicit editable boundary.

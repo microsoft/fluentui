@@ -43,6 +43,7 @@ type FixtureProps = {
   onCellKeyDownCapture?: React.KeyboardEventHandler<HTMLElement>;
   onPickerSelect?: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
   renderIcon?: boolean;
+  renderFocusgroup?: boolean;
 };
 
 const today = new Date(2020, 8, 18);
@@ -91,9 +92,11 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
               renderDay={
                 fixtureProps.renderIcon
                   ? () => (
-                      <svg aria-label="Day icon">
-                        <path />
-                      </svg>
+                      <span {...(fixtureProps.renderFocusgroup ? { focusgroup: 'none' } : {})}>
+                        <svg aria-label="Day icon">
+                          <path />
+                        </svg>
+                      </span>
                     )
                   : undefined
               }
@@ -122,9 +125,11 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
               renderYear={
                 fixtureProps.renderIcon
                   ? year => (
-                      <svg aria-label={`Year ${year}`}>
-                        <path />
-                      </svg>
+                      <span {...(fixtureProps.renderFocusgroup ? { focusgroup: 'none' } : {})}>
+                        <svg aria-label={`Year ${year}`}>
+                          <path />
+                        </svg>
+                      </span>
                     )
                   : undefined
               }
@@ -482,6 +487,27 @@ describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', 
     { name: 'styled', base: false },
   ])('$name', ({ base }) => {
     if (picker !== 'month') {
+      it.each(['HTML', 'SVG'])(
+        'selects custom focusgroup %s content on click but preserves keyboard ownership',
+        content => {
+          const { cells, onSelect } = renderPicker(picker, base, { renderIcon: true, renderFocusgroup: true });
+          const target = cells[2].querySelector(content === 'HTML' ? '[focusgroup]' : 'path')!;
+          expect(fireEvent.keyDown(target, { key: 'Enter' })).toBe(true);
+          expect(fireEvent.keyDown(target, { key: 'ArrowRight' })).toBe(true);
+          expect(onSelect).not.toHaveBeenCalled();
+          target.addEventListener('click', event => event.preventDefault(), { once: true });
+          expect(fireEvent.click(target)).toBe(false);
+          expect(onSelect).not.toHaveBeenCalled();
+
+          fireEvent.click(target);
+
+          expect(onSelect).toHaveBeenCalledTimes(1);
+          expect(onSelect.mock.calls[0][1]).toMatchObject(
+            picker === 'day' ? { type: 'click', date: new Date(2020, 8, 1) } : { type: 'click', year: 2022 },
+          );
+        },
+      );
+
       it.each(['click', 'keydown'] as const)('selects the correct cell from an SVG-child %s', type => {
         const { cells, onSelect } = renderPicker(picker, base, { renderIcon: true });
         const path = cells[2].querySelector('path')!;
@@ -499,16 +525,14 @@ describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', 
       });
     }
 
-    it.each(['contenteditable', 'grid', 'focusgroup'])('ignores SVG clicks inside nested %s content', owner => {
+    it.each(['contenteditable', 'grid'])('ignores SVG clicks inside nested %s content', owner => {
       const { cells, onSelect } = renderPicker(picker, base);
       const targetDocument = cells[0].ownerDocument;
       const nestedOwner = targetDocument.createElement('span');
       if (owner === 'contenteditable') {
         nestedOwner.setAttribute('contenteditable', 'true');
-      } else if (owner === 'grid') {
-        nestedOwner.setAttribute('role', 'grid');
       } else {
-        nestedOwner.setAttribute('focusgroup', 'none');
+        nestedOwner.setAttribute('role', 'grid');
       }
       const icon = targetDocument.createElementNS('http://www.w3.org/2000/svg', 'svg');
       nestedOwner.appendChild(icon);

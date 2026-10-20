@@ -55,7 +55,8 @@ export const getCalendarGridCells = (grid: Element): HTMLElement[] =>
   );
 
 /**
- * Resolves the cell of the grid handling `event`, ignoring events from nested grids, focus groups and editable content.
+ * Resolves the cell of the grid handling `event`, ignoring nested grids and editable content.
+ * Keyboard events also respect descendant focusgroup owners.
  */
 export const getCalendarGridCell = (event: React.SyntheticEvent<HTMLElement>): HTMLElement | undefined => {
   const { currentTarget: grid, target } = event;
@@ -63,9 +64,8 @@ export const getCalendarGridCell = (event: React.SyntheticEvent<HTMLElement>): H
     return undefined;
   }
   const cell = target.closest<HTMLElement>('[role="gridcell"]');
-  return cell && cell.closest('[role="grid"]') === grid && target.closest('[role="grid"], [focusgroup]') === grid
-    ? cell
-    : undefined;
+  const ownerSelector = event.type.startsWith('key') ? '[role="grid"], [focusgroup]' : '[role="grid"]';
+  return cell && cell.closest('[role="grid"]') === grid && target.closest(ownerSelector) === grid ? cell : undefined;
 };
 
 export const isCalendarArrowKey = (key: string): boolean =>
