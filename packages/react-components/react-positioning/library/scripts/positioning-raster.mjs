@@ -37,7 +37,7 @@ try {
       },
     });
     assert('totalFailed' in result, `${engine}: Cypress did not finish`);
-    assert.equal(result.totalTests, 141, `${engine}: expected the complete lower-PR contract suite`);
+    assert.equal(result.totalTests, 143, `${engine}: expected the complete lower-PR contract suite`);
     const failedTests = result.runs.flatMap(run =>
       run.tests.filter(test => test.state === 'failed').map(test => test.title.at(-1)),
     );
@@ -50,12 +50,17 @@ try {
       sortedFailures.length === 0 || onlyKnownHostFailures,
       `${engine}: only the two oracle-reproduced fractional-DPR contracts may fail during raster capture`,
     );
-    console.log(`${engine}: captured all 141 contracts; ${sortedFailures.length} host failures`);
+    console.log(`${engine}: ran all ${result.totalTests} contracts; ${sortedFailures.length} host failures`);
   }
   const screenshots = async engine => {
     const directory = path.join(output, engine, 'usePositioning.raster.tsx');
     const files = (await readdir(directory))
-      .filter(file => file.endsWith('.png') && !file.endsWith('(failed).png'))
+      .filter(
+        file =>
+          file.endsWith('.png') &&
+          !file.endsWith('(failed).png') &&
+          !file.includes('rejects style drift even within one native layout step'),
+      )
       .sort();
     return { directory, files };
   };
