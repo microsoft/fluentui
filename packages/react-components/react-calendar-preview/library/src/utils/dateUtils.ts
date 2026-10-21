@@ -13,7 +13,7 @@ export function getDayIndex(day: DayOfWeek): number {
  */
 export function getDayFromIndex(index: number): DayOfWeek {
   if (!Number.isFinite(index) || !Number.isInteger(index)) {
-    throw new RangeError('index must be a finite integer.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'index must be a finite integer.' : '');
   }
 
   return daysOfWeek[((index % DAYS_IN_WEEK) + DAYS_IN_WEEK) % DAYS_IN_WEEK];

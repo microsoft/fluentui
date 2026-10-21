@@ -22,6 +22,21 @@ describe('CalendarYear', () => {
     expect(() => render(<CalendarYear {...requiredProps} />)).not.toThrow();
   });
 
+  it.each([null, undefined])('preserves navigation children=%s', children => {
+    const { container } = render(
+      <CalendarYear navigatedYear={2020} previousRangeButton={{ children }} nextRangeButton={{ children }} />,
+    );
+    const buttons = Array.from(container.querySelectorAll('button[title]'));
+    expect(buttons).toHaveLength(2);
+    for (const button of buttons) {
+      if (children === undefined) {
+        expect(button.querySelector('svg')).not.toBeNull();
+      } else {
+        expect(button).toBeEmptyDOMElement();
+      }
+    }
+  });
+
   it('should render the navigated year range', () => {
     const { getByRole } = render(<CalendarYear {...requiredProps} navigatedYear={2025} />);
     const grid = getByRole('grid');
