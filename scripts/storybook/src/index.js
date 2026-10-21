@@ -1,5 +1,5 @@
-const rules = require('./rules');
 const { configureReactIcons } = require('./react-icons-webpack');
+const rules = require('./rules');
 const {
   getPackageStoriesGlob,
   loadWorkspaceAddon,
