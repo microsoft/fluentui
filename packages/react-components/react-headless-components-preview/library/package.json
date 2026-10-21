@@ -662,7 +662,7 @@
     ]
   },
   "devDependencies": {
-    "@fluentui/react-portal": "^9.8.17",
+    "@fluentui/react-portal": "*",
     "@fluentui/scripts-cypress": "*",
     "@oddbird/popover-polyfill": "^0.6.1"
   },

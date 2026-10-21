@@ -62,6 +62,26 @@ describe('Popover frame observation lifecycle', () => {
     unmount();
   });
 
+  it('shares one sampler across nested frame documents', async () => {
+    const interval = jest.spyOn(window, 'setInterval');
+    const clear = jest.spyOn(window, 'clearInterval');
+    const { getByTitle, getByText, unmount } = render(<Example />);
+    const frame = getByTitle('Inside frame') as HTMLIFrameElement;
+    const child = frame.contentDocument!;
+    const nested = child.createElement('iframe');
+    child.body.append(nested);
+    const button = nested.contentDocument!.createElement('button');
+    nested.contentDocument!.body.append(button);
+    const childInterval = jest.spyOn(child.defaultView!, 'setInterval');
+    await settle(() => frame.focus());
+    await settle(() => button.focus());
+    expect(interval).toHaveBeenCalledTimes(1);
+    expect(childInterval).not.toHaveBeenCalled();
+    await settle(() => getByText('Outside').focus());
+    expect(clear).toHaveBeenCalledWith(interval.mock.results[0].value);
+    unmount();
+  });
+
   it('cleans up pending frame checks and intervals on close and unmount', async () => {
     const interval = jest.spyOn(window, 'setInterval');
     const clear = jest.spyOn(window, 'clearInterval');

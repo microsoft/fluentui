@@ -191,8 +191,10 @@ describe('Popover document and close lifecycle', () => {
     cy.get<HTMLIFrameElement>('[data-testid=outside-frame]').then(frames => {
       const child = frames[0].contentDocument!;
       const grandchild = child.querySelector<HTMLIFrameElement>('#nested')!.contentDocument!;
-      const interval = cy.spy(child.defaultView!, 'setInterval').as('childInterval');
-      const clearInterval = cy.spy(child.defaultView!, 'clearInterval').as('childClearInterval');
+      const intervals = [frames[0].ownerDocument.defaultView!, child.defaultView!].map(win => ({
+        interval: cy.spy(win, 'setInterval'),
+        clearInterval: cy.spy(win, 'clearInterval'),
+      }));
       const add = cy.spy(grandchild, 'addEventListener').as('grandchildAdd');
       const remove = cy.spy(grandchild, 'removeEventListener').as('grandchildRemove');
       cy.get('[data-testid=inside]').focus();
@@ -206,9 +208,14 @@ describe('Popover document and close lifecycle', () => {
       cy.get('[data-testid=surface]').should('not.exist');
       cy.get('@change').should('have.been.calledTwice');
       cy.then(() => {
-        const polls = interval.getCalls().filter(call => call.args[1] === 100);
+        const polls = intervals.flatMap(({ interval, clearInterval }) =>
+          interval
+            .getCalls()
+            .filter(call => call.args[1] === 100)
+            .map(call => ({ call, clearInterval })),
+        );
         expect(polls).not.to.be.empty;
-        polls.forEach(call => expect(clearInterval).to.have.been.calledWith(call.returnValue));
+        polls.forEach(({ call, clearInterval }) => expect(clearInterval).to.have.been.calledWith(call.returnValue));
         const listeners = add.getCalls().filter(call => call.args[0] === 'fuiframefocus');
         expect(listeners).not.to.be.empty;
         listeners.forEach(call => expect(remove).to.have.been.calledWith('fuiframefocus', call.args[1], true));
