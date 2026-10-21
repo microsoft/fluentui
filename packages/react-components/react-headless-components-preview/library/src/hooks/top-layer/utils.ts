@@ -33,6 +33,15 @@ export const isModal = (element: HTMLDialogElement): boolean => {
 };
 
 /**
+ * Whether Escape pressed on `target` is for `layer`: not when it comes from a popover or dialog nested inside it.
+ * Content portaled out of `layer` still counts.
+ */
+export const isEscapeForLayer = (layer: Element, target: Element): boolean => {
+  const targetLayer = target.closest('[popover], dialog');
+  return !targetLayer || targetLayer === layer;
+};
+
+/**
  * Calls `onFinished` once the finite animations on the element and its pseudo-elements (`::backdrop`, `::before`,
  * `::after`) end, or right away when none run. Animations on descendants are ignored. Returns a cancel function.
  */
