@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
-import type { JSXElement, SlotRenderFunction } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../Provider';
 import { Calendar } from './Calendar';
@@ -278,33 +278,25 @@ describe('Calendar', () => {
 
   (['toolbar inline', 'none'] as const).forEach(focusgroup => {
     it(`leaves arrows to a nested ${focusgroup} focusgroup`, () => {
-      const renderDayButton: SlotRenderFunction<React.ComponentProps<'button'>> = (_Component, props) => (
-        <span id={props.id} aria-label={props['aria-label']}>
-          <span role="toolbar" focusgroup={focusgroup}>
-            <span tabIndex={0} data-testid="nested-first">
-              First
-            </span>
-            <span tabIndex={0} data-testid="nested-second">
-              Second
-            </span>
-          </span>
-        </span>
-      );
-
       mount(
         <Calendar
           today={today}
           value={today}
           monthPicker={null}
           dayPicker={{
-            getDayCellProps: date =>
-              date.getTime() === today.getTime()
-                ? {
-                    button: {
-                      children: renderDayButton,
-                    },
-                  }
-                : {},
+            renderDay: (day, defaultContent) =>
+              day.originalDate?.getTime() === today.getTime() ? (
+                <span role="toolbar" focusgroup={focusgroup}>
+                  <span tabIndex={0} data-testid="nested-first">
+                    First
+                  </span>
+                  <span tabIndex={0} data-testid="nested-second">
+                    Second
+                  </span>
+                </span>
+              ) : (
+                defaultContent
+              ),
           }}
         />,
       );
