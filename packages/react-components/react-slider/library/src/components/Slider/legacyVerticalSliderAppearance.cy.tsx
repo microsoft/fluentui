@@ -8,6 +8,7 @@ import { Slider } from './Slider';
 import {
   LEGACY_STYLE_ID as STYLE_ID,
   LEGACY_VERTICAL_SLIDER_RULE,
+  LEGACY_VERTICAL_SLIDER_SELECTOR,
   ensureLegacyVerticalSliderInput,
   installLegacyVerticalSliderRule,
   supportsVerticalRangeInput,
@@ -110,7 +111,66 @@ describe('legacyVerticalSliderAppearance', () => {
     });
   });
 
+  describe('content security policy', () => {
+    it('reads native vertical range support under a nonce-only style-src that blocks style attributes', () => {
+      const policy = "default-src 'self'; style-src 'nonce-fui-test'";
+      mount(
+        <iframe
+          title="csp"
+          style={{ width: 400, height: 300 }}
+          srcDoc={`<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="${policy}"></head><body></body></html>`}
+        />,
+      );
+
+      cy.get('iframe')
+        .should($iframe => {
+          const frameDocument = ($iframe[0] as HTMLIFrameElement).contentDocument;
+          expect(frameDocument?.querySelector('meta[http-equiv]'), 'policy document loaded').to.exist;
+        })
+        .then($iframe => {
+          const frameDocument = ($iframe[0] as HTMLIFrameElement).contentDocument!;
+
+          // The policy is really enforced: a style attribute is dropped.
+          const blocked = frameDocument.body.appendChild(frameDocument.createElement('div'));
+          blocked.setAttribute('style', 'width: 123px');
+          expect(blocked.style.width, 'style attributes are blocked').to.equal('');
+          blocked.remove();
+
+          expect(supportsVerticalRangeInput(frameDocument)).to.equal(true);
+          ensureLegacyVerticalSliderInput(frameDocument.body.appendChild(frameDocument.createElement('div')));
+          expect(legacyRuleIn(frameDocument)).to.equal(false);
+        });
+    });
+  });
+
   describe('styling root', () => {
+    it('installs the Slider rule even when the shadow root already adopts an unrelated slider-vertical sheet', () => {
+      withFrame('', frameDocument => {
+        const view = frameDocument.defaultView!;
+        const host = frameDocument.body.appendChild(frameDocument.createElement('div'));
+        const shadowRoot = host.attachShadow({ mode: 'open' });
+        const unrelated = new view.CSSStyleSheet();
+        unrelated.replaceSync('.native-range { -webkit-appearance: slider-vertical; }');
+        shadowRoot.adoptedStyleSheets = [unrelated];
+        const input = frameDocument.createElement('input');
+        input.type = 'range';
+        input.className = 'fui-Slider__input';
+        input.setAttribute('orient', 'vertical');
+        shadowRoot.append(input);
+
+        installLegacyVerticalSliderRule(input);
+        installLegacyVerticalSliderRule(input);
+
+        const sliderSheets = shadowRoot.adoptedStyleSheets.filter(sheet =>
+          Array.from(sheet.cssRules).some(
+            rule => (rule as CSSStyleRule).selectorText === LEGACY_VERTICAL_SLIDER_SELECTOR,
+          ),
+        );
+        expect(sliderSheets, 'the Slider rule is added once').to.have.length(1);
+        expect(shadowRoot.adoptedStyleSheets, 'the unrelated sheet is kept').to.include(unrelated);
+        expect(view.getComputedStyle(input).getPropertyValue('-webkit-appearance')).to.equal('slider-vertical');
+      });
+    });
     it('adds the rule to the shadow root a Slider renders in, so a shadow-root Slider matches it', () => {
       withFrame('', frameDocument => {
         const host = frameDocument.body.appendChild(frameDocument.createElement('div'));

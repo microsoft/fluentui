@@ -92,6 +92,7 @@ describe('legacyVerticalSliderAppearance', () => {
   it('measures the probe inside its own shadow root, out of reach of application selectors', () => {
     const targetDocument = createDocument();
     const appended = jest.spyOn(targetDocument.body, 'append');
+    const setAttribute = jest.spyOn(Element.prototype, 'setAttribute');
     mockProbeRect({ height: 129, width: 16 });
 
     supportsVerticalRangeInput(targetDocument);
@@ -102,10 +103,8 @@ describe('legacyVerticalSliderAppearance', () => {
     expect(probe?.style.getPropertyValue('all')).toBe('initial');
     expect(host.style.getPropertyValue('all')).toBe('initial');
     expect(host.style.getPropertyPriority('all')).toBe('important');
-    // `all: initial` resets appearance to none, so the native look must be restored with every spelling.
-    const declared = probe?.getAttribute('style') ?? '';
-    expect(declared).toMatch(/-webkit-appearance:\s*auto/);
-    expect(declared).toMatch(/-moz-appearance:\s*auto/);
+    // Styles go through CSSOM, never the `style` attribute, which a nonce-only `style-src` CSP blocks.
+    expect(setAttribute.mock.calls.filter(([name]) => name === 'style')).toHaveLength(0);
     expect(targetDocument.body.contains(host)).toBe(false);
   });
 
@@ -156,7 +155,6 @@ describe('legacyVerticalSliderAppearance', () => {
     it('does not add the rule again when another copy of this module already installed it', () => {
       const targetDocument = createDocument();
       jest.isolateModules(() => {
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const otherCopy =
           require('./legacyVerticalSliderAppearance') as typeof import('./legacyVerticalSliderAppearance');
         otherCopy.installLegacyVerticalSliderRule(createInput(targetDocument));
@@ -201,6 +199,31 @@ describe('legacyVerticalSliderAppearance', () => {
       ensureLegacyVerticalSliderInput(targetDocument);
 
       expect(targetDocument.querySelectorAll(`#${STYLE_ID}`)).toHaveLength(1);
+    });
+
+    it.each([
+      [true, 1],
+      [false, 0],
+    ])('installs only where the engine parses the legacy value (parses: %s)', (parses, expected) => {
+      // A Document needs a window for `CSS.supports`, so this case uses an iframe document.
+      const frame = document.createElement('iframe');
+      document.body.append(frame);
+      try {
+        const supports = jest.fn(() => parses);
+        Object.defineProperty(frame.contentWindow!, 'CSS', { configurable: true, value: { supports } });
+        const frameDocument = frame.contentDocument!;
+
+        installLegacyVerticalSliderRule(createInput(frameDocument));
+        installLegacyVerticalSliderRule(createInput(frameDocument));
+        installLegacyVerticalSliderRule(createInput(frameDocument));
+
+        // Chromium logs the deprecation for this query too, so it is asked once per window, not once per mount.
+        expect(supports).toHaveBeenCalledTimes(1);
+        expect(supports).toHaveBeenCalledWith('-webkit-appearance', 'slider-vertical');
+        expect(frameDocument.querySelectorAll(`#${STYLE_ID}`)).toHaveLength(expected);
+      } finally {
+        frame.remove();
+      }
     });
   });
 
