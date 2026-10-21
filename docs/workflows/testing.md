@@ -21,10 +21,10 @@ yarn nx run vr-tests-react-components:start --port 6006
 FLUENTUI_ICON_VARIANT=fonts yarn nx run vr-tests-react-components:start --port 6006
 ```
 
-Run each project's SVG and font variants sequentially to avoid sharing Storybook's
-webpack cache between concurrent builds. The same flag works with
-`vr-tests-react-components:build-storybook`. For the Attachment examples, use the
-migration Storybook:
+The same flag works with `vr-tests-react-components:build-storybook`. The VRT app
+uses separate webpack cache names for SVG, full-font, and focused font-sizing builds.
+For the Attachment examples, use the migration Storybook. Run its SVG and font
+variants sequentially to avoid sharing its webpack cache:
 
 ```bash
 yarn nx run react-migration-v0-v9-stories:storybook --port 6007
@@ -32,6 +32,26 @@ FLUENTUI_ICON_VARIANT=fonts yarn nx run react-migration-v0-v9-stories:storybook 
 ```
 
 The icon variant is included in those tasks' Nx cache inputs.
+
+### Focused font visual regression coverage
+
+```bash
+yarn nx run vr-tests-react-components:build-storybook-fonts
+yarn nx run vr-tests-react-components:test-vr
+```
+
+`build-storybook-fonts` sets `FLUENTUI_VRT_FONT_SIZING=true` and
+`FLUENTUI_ICON_VARIANT=fonts`, includes only `IconSizingFont.stories.tsx`, and writes
+to `dist/storybook-fonts`. It reuses the existing sizing stories without replacing
+SearchBox, PresenceBadge, or RatingDisplay's default icons. Their internal icon
+imports are transformed by the normal font loader.
+
+`test-vr` depends on both the full SVG build (`dist/storybook`) and the focused
+font build. It runs StoryWright sequentially against each output, saving both sets
+of screenshots in `dist/screenshots` for the existing PR and baseline publishers.
+The font stories use the distinct title `Icon sizing fonts` to prevent screenshot
+filename collisions. They cover default, overridden-token, and high-contrast themes.
+Other stories are not included in the focused font build.
 
 ### Manual icon checks and limitations
 
@@ -72,7 +92,9 @@ These are manual checks, not a reliable CI assertion gate. StoryWright opens sto
 previews, which can trigger `play`, but the current runner does not explicitly await
 `play` completion or propagate its failures into its exit status. A successful
 screenshot capture therefore does not prove that the assertions passed. The
-current VRT workflow also does not run a font-variant matrix.
+current VRT workflow captures the focused font sizing stories, not a full
+font-variant matrix. The font stories' manual checks also reject SVG icons so a
+missing font transformation cannot silently pass those checks.
 
 **TODO:** Additional browser-testing design is required before treating these
 stories as CI-enforced regression coverage. Decide the runner and ownership,

@@ -8,11 +8,30 @@
     "build-storybook": {
       "inputs": [
         "default",
+        "^production",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
-        { "env": "FLUENTUI_ICON_VARIANT" }
+        { "env": "FLUENTUI_ICON_VARIANT" },
+        { "env": "FLUENTUI_VRT_FONT_SIZING" }
       ],
       "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }]
+    },
+    "build-storybook-fonts": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "outputs": ["{projectRoot}/dist/storybook-fonts"],
+      "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }],
+      "cache": true
+    },
+    "test-vr": {
+      "dependsOn": ["build-storybook", "build-storybook-fonts"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/.storybook/**",
+        { "env": "FLUENTUI_ICON_VARIANT" },
+        { "env": "FLUENTUI_VRT_FONT_SIZING" }
+      ],
+      "outputs": ["{projectRoot}/dist/screenshots"]
     }
   }
 }

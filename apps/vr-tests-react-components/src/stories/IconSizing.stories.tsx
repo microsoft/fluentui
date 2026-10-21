@@ -35,7 +35,7 @@ const Examples = () => (
 );
 
 // TODO: Design CI enforcement for these manual play checks; StoryWright does not await or gate on their failures.
-const assertFixedIconSizes: NonNullable<StoryObj['play']> = async ({ canvasElement }) => {
+const assertFixedIconSizes: NonNullable<StoryObj['play']> = async ({ canvasElement, parameters }) => {
   const targetDocument = canvasElement.ownerDocument;
   const targetWindow = targetDocument.defaultView;
   if (!targetWindow) {
@@ -49,6 +49,9 @@ const assertFixedIconSizes: NonNullable<StoryObj['play']> = async ({ canvasEleme
       throw new Error(`${selector}: expected ${count} icons, found ${icons.length}`);
     }
     for (const icon of Array.from(icons)) {
+      if (parameters.iconRenderer === 'fonts' && icon.localName !== 'i') {
+        throw new Error(`${selector}: expected a font icon, found ${icon.localName}`);
+      }
       const style = targetWindow.getComputedStyle(icon);
       const rect = icon.getBoundingClientRect();
       if (Math.abs(rect.width - size) > 0.1 || Math.abs(rect.height - size) > 0.1) {
@@ -114,4 +117,7 @@ export const OverriddenTokens: StoryObj = {
   play: assertFixedIconSizes,
 };
 
-export const OverriddenTokensHighContrast = getStoryVariant(OverriddenTokens, HIGH_CONTRAST);
+export const OverriddenTokensHighContrast = {
+  ...getStoryVariant(OverriddenTokens, HIGH_CONTRAST),
+  name: 'Overridden tokens high contrast',
+};
