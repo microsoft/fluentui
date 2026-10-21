@@ -1,6 +1,0 @@
-{
-  "type": "patch",
-  "comment": "perf: build components with a shared composeComponent helper",
-  "packageName": "@fluentui/react-headless-components-preview",
-  "email": "noreply@anthropic.com"
-}
