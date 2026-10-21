@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: add headless Calendar built on react-calendar-preview's base hooks",
+  "comment": "feat: add a self-contained headless Calendar with locally owned hooks, renderers, types, context and date utilities",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"
