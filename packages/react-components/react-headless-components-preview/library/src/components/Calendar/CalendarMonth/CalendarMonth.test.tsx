@@ -25,29 +25,31 @@ describe('CalendarMonth', () => {
     ],
   });
 
-  it('keeps one roving tab stop and updates it when focus moves', () => {
+  it('declares manual grid rows and the navigated month as the entry point', () => {
     const { container } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
     const grid = container.querySelector('[role="grid"]')!;
 
-    expect(grid.getAttribute('focusgroup')).toBeNull();
-    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(grid).toHaveAttribute('focusgroup', 'grid manual');
+    expect(grid.querySelectorAll('[focusgrouprow]')).toHaveLength(3);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(12);
+    expect(grid.querySelector('[focusgroupstart]')).toHaveAttribute('aria-label', 'September');
     fireEvent.focus(grid.querySelectorAll<HTMLElement>('[role="gridcell"]')[1]);
-    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-    expect(grid.querySelectorAll('[role="gridcell"][tabindex="-1"]')).toHaveLength(11);
+    expect(grid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(12);
   });
 
-  it('preserves a single remembered tab stop when the navigated month changes', () => {
+  it('updates the start marker without stealing focus when the navigated month changes', () => {
     const { container, getByRole, rerender } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
     getByRole('gridcell', { name: 'October' }).focus();
 
     rerender(<CalendarMonth navigatedDate={new Date(2020, 10, 18)} />);
 
     expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
-    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('focusgroupstart');
     expect(getByRole('gridcell', { name: 'October' }).tabIndex).toBe(0);
   });
 
-  it('falls back to an available month when the remembered month becomes disabled', () => {
+  it('marks an available initial month when the navigated month becomes disabled', () => {
     const picker = (minDate?: Date) => (
       <CalendarProvider value={{ ...calendarContextDefaultValue, minDate }}>
         <CalendarMonth navigatedDate={new Date(2020, 8, 18)} />
@@ -59,7 +61,8 @@ describe('CalendarMonth', () => {
     rerender(picker(new Date(2020, 10, 1)));
 
     expect(getByRole('gridcell', { name: 'October' })).toBeDisabled();
-    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('focusgroupstart');
     expect(getByRole('gridcell', { name: 'November' }).tabIndex).toBe(0);
   });
 
@@ -70,7 +73,7 @@ describe('CalendarMonth', () => {
     fireEvent.click(container.querySelector('button')!);
 
     expect(container.textContent).toContain('2020 - 2031');
-    expect(container.querySelector('[role="grid"]')!.getAttribute('focusgroup')).toBeNull();
+    expect(container.querySelector('[role="grid"]')).toHaveAttribute('focusgroup', 'grid manual');
   });
 
   it('exposes month state as data attributes', () => {

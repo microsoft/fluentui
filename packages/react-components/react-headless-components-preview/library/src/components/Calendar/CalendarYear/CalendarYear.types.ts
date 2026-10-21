@@ -90,7 +90,7 @@ export type CalendarYearSlots = {
   nextRangeButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The `role="grid"` container holding the year rows. Owns arrow key navigation and the roving tab stop.
+   * The manual focusgroup grid holding the year rows. The focusgroup runtime owns arrow navigation and Tab entry.
    */
   grid: NonNullable<Slot<'div'>>;
 };

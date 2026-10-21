@@ -146,6 +146,32 @@ button.heading:hover {
   background: none;
 }
 
+.grid td[data-marked] button {
+  position: relative;
+}
+
+.grid td[data-marked] button [aria-hidden='true'] {
+  position: absolute;
+  inset-block-end: var(--space-1);
+  inline-size: var(--space-1);
+  block-size: var(--space-1);
+  border-radius: var(--radius-sm);
+  background: currentColor;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-end: var(--space-4);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 /* --------------------------------------------------- month & year picker */
 
 .monthPicker {
@@ -257,6 +283,13 @@ button.heading:focus-visible,
 .pickerGrid [role='gridcell']:focus-visible {
   outline: var(--stroke-thick) solid var(--accent);
   outline-offset: var(--stroke-thin);
+}
+
+@media (max-width: 440px) {
+  .story,
+  .calendar {
+    padding: var(--space-2);
+  }
 }
 
 @media (forced-colors: active) {

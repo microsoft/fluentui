@@ -3,14 +3,7 @@
 import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import {
-  getIntrinsicElementProps,
-  getRTLSafeKey,
-  mergeCallbacks,
-  slot,
-  useId,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, getRTLSafeKey, mergeCallbacks, slot, useId } from '@fluentui/react-utilities';
 import {
   DAYS_IN_WEEK,
   addDays,
@@ -36,7 +29,6 @@ import {
   onCalendarEnterKeyDown,
 } from '../utils/calendarHeader';
 import { useCalendarContext } from '../contexts/calendarContext';
-import { useCalendarGridTabStop } from '../hooks/useCalendarGridTabStop';
 import { useWeekCorners } from '../hooks/useWeekCorners';
 import type { DayCorners } from '../hooks/useWeekCorners';
 import type { DayGridOptions } from '../utils';
@@ -113,8 +105,7 @@ const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 
 
 /**
  * Create the base state required to render an unstyled CalendarDay.
- * The grid owns selection, range hover, arrow navigation and its roving tab stop, so the base state is complete
- * without a focus runtime.
+ * Calendar owns selection, range hover and date paging; focusgroup owns directional navigation and focus memory.
  */
 export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarDayHandle>): CalendarDayState => {
   // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
@@ -280,7 +271,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
           'aria-current': day.isToday ? 'date' : undefined,
           'aria-disabled': !transition && !day.isInBounds,
           'aria-selected': day.isInBounds ? day.isSelected : undefined,
-          tabIndex: isFocusTarget ? 0 : isFocusable ? -1 : undefined,
+          tabIndex: isFocusable ? 0 : undefined,
+          focusgroupstart: stringifyDataAttribute(isFocusTarget),
           ...customProps,
           ref: transition
             ? undefined
@@ -368,7 +360,6 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
   };
 
   const getFocusTarget = () => (focusTargetKey ? dayElements.get(focusTargetKey) : undefined);
-  const [gridRef, onGridFocus] = useCalendarGridTabStop<HTMLTableElement>(allFocusable, getFocusTarget);
 
   React.useImperativeHandle(ref, () => ({
     focus(options?: FocusOptions) {
@@ -445,19 +436,10 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       return;
     }
 
-    const focusDayInView = (dateToFocus: Date | undefined): boolean => {
-      const day =
-        dateToFocus && visibleDays.find(d => d.originalDate && compareDatePart(d.originalDate, dateToFocus) === 0);
-      const element = day && dayElements.get(day.key);
-      if (!element) {
-        return false;
-      }
-      element.focus();
-      ev.preventDefault();
-      return true;
-    };
-
-    if (allFocusable && focusDayInView(targetDate)) {
+    // In-grid movement belongs to focusgroup. Calendar only handles dates beyond the rendered view.
+    const isInView = (dateToFind: Date) =>
+      visibleDays.some(day => day.originalDate && compareDatePart(day.originalDate, dateToFind) === 0);
+    if (isInView(targetDate)) {
       return;
     }
 
@@ -468,8 +450,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       // if no dates available in initial direction, try going backwards
       findAvailableDate({ ...findAvailableDateOptions, direction: direction === 1 ? -1 : 1 });
 
-    // If the next date is still inside the current view, focus it without navigating the displayed month.
-    if (nextDate && !focusDayInView(nextDate)) {
+    if (nextDate && !isInView(nextDate)) {
       // else, fire navigation on the date to change the view to show it
       onNavigateDate(ev, { event: ev, type: 'keydown', date: nextDate, focusOnNavigatedDay: true });
       ev.preventDefault();
@@ -508,14 +489,13 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
   const gridSlot = slot.always(grid, {
     defaultProps: {
       role: 'grid',
+      focusgroup: 'grid rowflow',
       'aria-activedescendant': activeDescendantId,
       'aria-label': monthAndYear,
       'aria-multiselectable': dateRangeType !== 'day' || Math.abs(daysToSelectInDayView ?? 1) > 1,
     },
     elementType: 'table',
   });
-  gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
-  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
     if (!eventDay || ev.isDefaultPrevented()) {

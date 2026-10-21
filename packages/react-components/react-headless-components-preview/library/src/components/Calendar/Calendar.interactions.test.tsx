@@ -12,7 +12,7 @@ describe('Calendar interaction sequences', () => {
     { key: 'PageDown', shiftKey: false, targetDate: new Date(2020, 9, 25) },
     { key: 'PageUp', shiftKey: true, targetDate: new Date(2019, 8, 25) },
     { key: 'PageDown', shiftKey: true, targetDate: new Date(2021, 8, 25) },
-  ])('pages from the arrow-focused date with $key and shiftKey=$shiftKey', async ({ key, shiftKey, targetDate }) => {
+  ])('pages from the focused date with $key and shiftKey=$shiftKey', async ({ key, shiftKey, targetDate }) => {
     const onDisplayedDateChange = jest.fn();
     const onSelectDate = jest.fn();
     const { getByRole } = render(
@@ -23,10 +23,8 @@ describe('Calendar interaction sequences', () => {
         onSelectDate={onSelectDate}
       />,
     );
-    const originalDay = getByRole('button', { name: dayLabel(today) }).closest('td')!;
-    originalDay.focus();
-    fireEvent.keyDown(originalDay, { key: 'ArrowDown' });
     const focusedDay = getByRole('button', { name: 'September 25, 2020' }).closest('td')!;
+    focusedDay.focus();
     expect(focusedDay).toHaveFocus();
 
     fireEvent.keyDown(focusedDay, { key, shiftKey });

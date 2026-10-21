@@ -76,11 +76,6 @@ export type FirstWeekOfYear = 'firstDay' | 'firstFullWeek' | 'firstFourDayWeek';
 export type DateRangeType = 'day' | 'week' | 'month' | 'workWeek';
 
 /**
- * The axis along which the day grid transitions when navigating between months.
- */
-export type AnimationDirection = 'horizontal' | 'vertical';
-
-/**
  * Number of days in a week.
  */
 export const DAYS_IN_WEEK = 7;

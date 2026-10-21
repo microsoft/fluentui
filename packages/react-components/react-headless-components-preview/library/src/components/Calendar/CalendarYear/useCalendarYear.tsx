@@ -52,7 +52,7 @@ function useYearRangeState({
 
 /**
  * Create the base state required to render an unstyled CalendarYear.
- * The grid owns arrow navigation and its roving tab stop, so the base state is complete without a focus runtime.
+ * Calendar owns selection and focus handles; focusgroup owns grid arrows, Tab entry and focus memory.
  */
 export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<CalendarYearHandle>): CalendarYearState => {
   // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
@@ -116,8 +116,6 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<Calenda
   const [gridSlot, getCell] = useCalendarPickerGrid(
     grid,
     rangeLabel,
-    allFocusable,
-    focusYear - fromYear,
     index => !isYearDisabled(fromYear + index),
     (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
   );

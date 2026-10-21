@@ -6,7 +6,6 @@ import {
   setMonth,
   areDatesEqual,
   getDateRange,
-  getWeekNumbersInMonth,
   getWeekNumber,
   getMonthStart,
   getMonthEnd,
@@ -435,53 +434,6 @@ describe('DateMath', () => {
     it.each(testData)(`can get %s`, ({ testItems, expected }) => {
       expect(testItems).toEqual(expected);
     });
-  });
-
-  it.each([-1, 1.5, Infinity, -Infinity, NaN])('rejects an invalid weeksInMonth value of %s', weeksInMonth => {
-    expect(() => getWeekNumbersInMonth(weeksInMonth, 'monday', 'firstFullWeek', new Date(2020, 8, 18))).toThrow(
-      new RangeError('weeksInMonth must be a non-negative finite integer.'),
-    );
-  });
-
-  it('returns no week numbers when zero weeks are requested', () => {
-    expect(getWeekNumbersInMonth(0, 'monday', 'firstFullWeek', new Date(2020, 8, 18))).toEqual([]);
-  });
-
-  it('rejects an invalid navigated date when calculating week numbers', () => {
-    expect(() => getWeekNumbersInMonth(1, 'monday', 'firstFullWeek', new Date(NaN))).toThrow(
-      new RangeError('navigatedDate must be valid.'),
-    );
-  });
-
-  it('continues week numbers across a month boundary', () => {
-    expect(getWeekNumbersInMonth(6, 'sunday', 'firstDay', new Date(2020, 8, 1))).toEqual([36, 37, 38, 39, 40, 41]);
-  });
-
-  // Generating week numbers array per month
-  it('can calculate week numbers from selected date', () => {
-    // firstDayOfWeek is Monday, firstWeekOfYear is firstFullWeek
-    let date = new Date(2017, 0, 4);
-    let result = getWeekNumbersInMonth(6, 'monday', 'firstFullWeek', date);
-    let expected = 52;
-    expect(result[0]).toEqual(expected);
-
-    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
-    date = new Date(2000, 11, 31);
-    result = getWeekNumbersInMonth(6, 'sunday', 'firstFullWeek', date);
-    expected = 53;
-    expect(result[5]).toEqual(expected);
-
-    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
-    date = new Date(2010, 0, 1);
-    result = getWeekNumbersInMonth(6, 'sunday', 'firstFullWeek', date);
-    expected = 52;
-    expect(result[0]).toEqual(expected);
-
-    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFourDayWeek
-    date = new Date(2018, 11, 31);
-    result = getWeekNumbersInMonth(6, 'sunday', 'firstFourDayWeek', date);
-    expected = 1;
-    expect(result[5]).toEqual(expected);
   });
 
   // First week of year set to 'firstDay'

@@ -34,7 +34,7 @@ type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTM
 
 /**
  * Create the base state required to render an unstyled CalendarMonth.
- * The grid owns arrow navigation and its roving tab stop, so the base state is complete without a focus runtime.
+ * Calendar owns selection and focus handles; focusgroup owns grid arrows, Tab entry and focus memory.
  * The year picker slot is left for the caller to resolve, so each layer renders its own CalendarYear.
  */
 const useCalendarMonthBase = (props: CalendarMonthProps, ref: React.Ref<CalendarMonthHandle>): CalendarMonthState => {
@@ -174,8 +174,6 @@ const useCalendarMonthBase = (props: CalendarMonthProps, ref: React.Ref<Calendar
   const [gridSlot, getCell] = useCalendarPickerGrid(
     grid,
     yearString,
-    allFocusable,
-    focusableMonth?.index,
     index => !!months[index]?.isInBounds,
     onSelectMonth,
   );

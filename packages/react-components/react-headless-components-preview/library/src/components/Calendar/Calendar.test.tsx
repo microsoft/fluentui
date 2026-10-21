@@ -22,16 +22,19 @@ describe('Calendar', () => {
     expect(container.querySelectorAll('[role="grid"]')).toHaveLength(2);
   });
 
-  it('provides a single roving tab stop in each grid without focusgroup', () => {
+  it('declares a focusgroup and initial entry point for each grid', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     const dayGrid = container.querySelector('table[role="grid"]')!;
-    expect(dayGrid.getAttribute('focusgroup')).toBeNull();
-    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(dayGrid).toHaveAttribute('focusgroup', 'grid rowflow');
+    expect(dayGrid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]').length).toBeGreaterThan(1);
 
     const monthGrid = container.querySelector('div[role="grid"]')!;
-    expect(monthGrid.getAttribute('focusgroup')).toBeNull();
-    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(monthGrid).toHaveAttribute('focusgroup', 'grid manual');
+    expect(monthGrid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(monthGrid.querySelectorAll('[focusgrouprow]')).toHaveLength(3);
+    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(12);
   });
 
   it('emits no Griffel styles of its own', () => {

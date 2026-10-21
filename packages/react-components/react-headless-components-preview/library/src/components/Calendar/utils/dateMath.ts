@@ -272,50 +272,6 @@ export function isDateInRange(date: Date, dateRange: Date[]): boolean {
 }
 
 /**
- * Returns the week number in a year for a date.
- *
- * @param weeksInMonth - The number of weeks to include; must be a non-negative finite integer.
- * @param navigatedDate - A date to find the week number for.
- * @param firstDayOfWeek - The named day that starts each week.
- * @param firstWeekOfYear - The convention that determines which week is the first week of the year.
- * @returns The week number array for the current month.
- */
-export function getWeekNumbersInMonth(
-  weeksInMonth: number,
-  firstDayOfWeek: DayOfWeek,
-  firstWeekOfYear: FirstWeekOfYear,
-  navigatedDate: Date,
-): number[] {
-  if (!Number.isFinite(weeksInMonth) || !Number.isInteger(weeksInMonth) || weeksInMonth < 0) {
-    throw new RangeError(
-      process.env.NODE_ENV !== 'production' ? 'weeksInMonth must be a non-negative finite integer.' : '',
-    );
-  }
-  if (!Number.isFinite(navigatedDate.getTime())) {
-    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'navigatedDate must be valid.' : '');
-  }
-
-  const selectedYear = navigatedDate.getFullYear();
-  const selectedMonth = navigatedDate.getMonth();
-  const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  const dayOfMonth = 1;
-  const firstDayOfMonth = createDate(selectedYear, selectedMonth, dayOfMonth);
-  const endOfFirstWeek =
-    dayOfMonth +
-    (firstDayOfWeekIndex + DAYS_IN_WEEK - 1) -
-    adjustWeekDay(firstDayOfWeekIndex, firstDayOfMonth.getDay());
-  let endOfWeekRange = createDate(selectedYear, selectedMonth, endOfFirstWeek);
-
-  const weeksArray = [];
-  for (let i = 0; i < weeksInMonth; i++) {
-    // Get week number for end of week
-    weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear));
-    endOfWeekRange = addDays(endOfWeekRange, DAYS_IN_WEEK);
-  }
-  return weeksArray;
-}
-
-/**
  * Returns the week number for a date.
  *
  * @param date - A date to find the week number for.
@@ -424,19 +380,6 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: DayOfWeek): number {
   const num3 = (num2 - getDayIndex(firstDayOfWeek) + 2 * DAYS_IN_WEEK) % DAYS_IN_WEEK;
 
   return Math.floor((num + num3) / DAYS_IN_WEEK + 1);
-}
-
-/**
- * Helper function for `getWeekNumber`.
- * Returns adjusted week day number when `firstDayOfWeek` is other than Sunday.
- * For Week Day Number comparison checks
- * @param firstDayOfWeekIndex - The first day of week (0-6, Sunday = 0)
- * @param dateWeekDay - shifts number forward to 1 week in case passed as true
- * @returns The day of week adjusted to `firstDayOfWeek`; e.g. when `firstDayOfWeek` is Monday (1),
- * Sunday becomes 7.
- */
-function adjustWeekDay(firstDayOfWeekIndex: number, dateWeekDay: number): number {
-  return firstDayOfWeekIndex !== 0 && dateWeekDay < firstDayOfWeekIndex ? dateWeekDay + DAYS_IN_WEEK : dateWeekDay;
 }
 
 /**

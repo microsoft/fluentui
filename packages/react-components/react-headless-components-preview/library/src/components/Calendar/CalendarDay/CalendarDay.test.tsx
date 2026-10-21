@@ -48,14 +48,17 @@ describe('CalendarDay', () => {
     expect(container.querySelector('svg')).toBeNull();
   });
 
-  it('provides a single roving tab stop without focusgroup', () => {
+  it('enrolls eligible day cells in a native-table focusgroup', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('table')!.getAttribute('focusgroup')).toBeNull();
-    expect(container.querySelectorAll('td[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelector('table')).toHaveAttribute('focusgroup', 'grid rowflow');
+    expect(container.querySelectorAll('td[role="gridcell"][tabindex="0"]').length).toBeGreaterThan(1);
+    expect(container.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(container.querySelector('[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 18, 2020');
+    expect(container.querySelectorAll('td button:not([tabindex="-1"])')).toHaveLength(0);
   });
 
-  it('preserves a single remembered tab stop when the navigated date changes', () => {
+  it('updates the start marker without stealing focus when the navigated date changes', () => {
     const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
     const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
     remembered.focus();
@@ -63,7 +66,8 @@ describe('CalendarDay', () => {
     rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
 
     expect(remembered).toHaveFocus();
-    expect(container.querySelectorAll('td[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
+    expect(container.querySelector('[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 20, 2020');
     expect(remembered.tabIndex).toBe(0);
   });
 

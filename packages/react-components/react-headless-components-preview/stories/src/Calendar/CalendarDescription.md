@@ -22,14 +22,23 @@ Day cells additionally expose `data-range-hovered`, `data-range-pressed` and
 
 ### Keyboard navigation and browser support
 
-The base Calendar handlers provide date-grid arrows, month/year two-dimensional navigation,
-RTL behavior and restricted-date handling. Each grid handles keyboard and pointer input for all of
-its cells, retains `role="grid"` and manages its own single roving tab stop and focus memory.
-Grid and cell handlers can cancel navigation with `preventDefault`, and modified arrows such as
-Alt+Arrow pass through.
+Calendar declares `focusgroup="grid rowflow"` on the native day table, and
+`focusgroup="grid manual"` on the month and year grids. Their rows use `focusgrouprow`;
+the navigated cell uses `focusgroupstart`. Eligible cells are authored with `tabIndex={0}` so
+the browser or polyfill, not Calendar, owns arrow navigation, the single Tab entry and focus memory.
+There is no Tabster or custom in-grid roving-focus implementation.
 
-Calendar does not require native focusgroup support or a focusgroup polyfill. Custom content
-that introduces its own nested focusgroup still needs native support or a compatible polyfill.
+**Grid navigation requires focusgroup V2 support.** The currently installed
+`@microsoft/focusgroup-polyfill` does not implement grids, so arrows and single-stop Tab traversal
+are not available with that release. [microsoft/polyfills#64](https://github.com/microsoft/polyfills/pull/64)
+adds V2 grids but requires exactly one keyboard-focusable target per cell; non-focusable
+weekday/week-number headers and unavailable dates also require runtime support. The affected E2E
+tests are retained as skipped cases with a TODO so they can be enabled against a compatible release.
+
+Calendar still handles date selection, PageUp/PageDown, and paging when an arrow leaves the
+rendered day range. Selection and paging respect consumer cancellation, date restrictions and
+RTL direction. Nested focusgroups and editable content retain their own keyboard ownership.
+
 Consumers must provide visible focus styles on the day `td[role="gridcell"]` as well as the
 month/year buttons, and visually hide the announcement region without removing it from the
 accessibility tree.

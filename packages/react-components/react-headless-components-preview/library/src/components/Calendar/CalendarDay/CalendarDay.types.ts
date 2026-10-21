@@ -51,7 +51,7 @@ export type CalendarDaySlots = {
 
   /**
    * The `<table role="grid">` holding the days of the navigated month. Owns arrow key navigation,
-   * selection, range hover and the roving tab stop for every day cell.
+   * selection and range hover for every day cell. The focusgroup runtime owns in-grid arrows and Tab entry.
    */
   grid: NonNullable<Slot<'table'>>;
 

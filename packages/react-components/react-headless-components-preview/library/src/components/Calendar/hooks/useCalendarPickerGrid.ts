@@ -1,31 +1,21 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { isHTMLElement, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { SlotShorthandValue, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { stringifyDataAttribute } from '../utils/dataAttributes';
 import type { CalendarElementProps, CalendarGridRow } from '../utils/calendarGrid.types';
-import {
-  CALENDAR_GRID_COLUMNS,
-  getCalendarGridCell,
-  getCalendarGridCells,
-  isCalendarGridArrow,
-  moveCalendarGridFocus,
-} from '../utils/calendarKeyboard';
-import { useCalendarGridTabStop } from './useCalendarGridTabStop';
+import { CALENDAR_GRID_COLUMNS, getCalendarGridCell, getCalendarGridCells } from '../utils/calendarKeyboard';
 
 type GridSlotProps = ExtractSlotProps<Slot<'div'>>;
 
 /**
- * Resolves the `grid` slot of the four-column month and year pickers. The grid owns selection, arrow navigation and
- * the roving tab stop of its cells, which are addressed by their index in the grid.
+ * Resolves the four-column month and year grids. Focusgroup owns directional navigation and focus memory;
+ * Calendar retains selection and imperative focus handles.
  *
  * @param grid - the consumer `grid` slot props
  * @param ariaLabel - the accessible name of the grid
- * @param allFocusable - whether unavailable cells can be focused
- * @param navigatedIndex - the index of the cell rendered as the tab stop
  * @param isAvailable - whether the cell at an index can be selected
  * @param onSelect - selects the cell at an index
  * @returns the resolved grid slot, and a function returning the cell element at an index
@@ -34,18 +24,13 @@ type GridSlotProps = ExtractSlotProps<Slot<'div'>>;
 export function useCalendarPickerGrid(
   grid: GridSlotProps | SlotShorthandValue | undefined,
   ariaLabel: string,
-  allFocusable: boolean,
-  navigatedIndex: number | undefined,
   isAvailable: (index: number) => boolean,
   onSelect: (
     event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>,
     index: number,
   ) => void,
 ): [GridSlotProps, (index: number) => HTMLElement | undefined] {
-  const { dir } = useFluent_unstable();
-  const [gridRef, onGridFocus] = useCalendarGridTabStop(allFocusable, gridElement =>
-    navigatedIndex === undefined ? undefined : getCalendarGridCells(gridElement)[navigatedIndex],
-  );
+  const gridRef = React.useRef<HTMLDivElement>(null);
 
   const getEventIndex = (event: React.SyntheticEvent<HTMLElement>) => {
     const cell = getCalendarGridCell(event);
@@ -71,11 +56,10 @@ export function useCalendarPickerGrid(
   };
 
   const gridSlot = slot.always(grid, {
-    defaultProps: { 'aria-label': ariaLabel, role: 'grid' },
+    defaultProps: { 'aria-label': ariaLabel, role: 'grid', focusgroup: 'grid manual' },
     elementType: 'div',
   });
   gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
-  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, onGridFocus);
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (event: React.MouseEvent<HTMLElement>) => {
     const [cell, index] = getEventIndex(event);
     if (cell && index >= 0 && !event.isDefaultPrevented() && isAvailable(index)) {
@@ -87,9 +71,7 @@ export function useCalendarPickerGrid(
     if (!cell || event.isDefaultPrevented()) {
       return;
     }
-    if (isCalendarGridArrow(event)) {
-      moveCalendarGridFocus(event, cell, dir, allFocusable);
-    } else if (event.key === Enter && isAvailable(index)) {
+    if (event.key === Enter && isAvailable(index)) {
       selectCell(event, cell, index);
       event.preventDefault();
     }
@@ -122,13 +104,14 @@ export const getCalendarPickerRows = <
       disabled: isDisabled && !allFocusable,
       'aria-disabled': isDisabled,
       'aria-selected': isSelected,
-      tabIndex: isNavigated ? 0 : -1,
+      tabIndex: 0,
+      focusgroupstart: stringifyDataAttribute(isNavigated),
       'data-current': stringifyDataAttribute(isCurrent),
       'data-selected': stringifyDataAttribute(isSelected),
       'data-outside-bounds': stringifyDataAttribute(isDisabled),
     });
     const rowIndex = Math.floor(index / CALENDAR_GRID_COLUMNS);
-    (rows[rowIndex] ??= { key: rowIndex, props: { role: 'row' }, cells: [] }).cells.push(cell);
+    (rows[rowIndex] ??= { key: rowIndex, props: { role: 'row', focusgrouprow: '' }, cells: [] }).cells.push(cell);
   });
   return rows;
 };
