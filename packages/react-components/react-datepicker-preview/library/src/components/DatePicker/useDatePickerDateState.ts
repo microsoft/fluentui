@@ -72,7 +72,10 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
   });
   const formatValue = (date: Date | null): string => (date && isValidDate(date) ? formatDate(date) : '');
   const timestamp = value?.getTime();
-  const formattedValue = formatValue(value);
+  const formattedValue = React.useMemo(
+    () => (value && isValidDate(value) ? formatDate(value) : ''),
+    [formatDate, value],
+  );
   const [draft, setDraft] = React.useState(() => ({
     text: formattedValue,
     dirty: false,
