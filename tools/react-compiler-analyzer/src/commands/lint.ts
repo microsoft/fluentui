@@ -53,13 +53,9 @@ async function analyzeDirectiveFiles(
       }
       const options = { parserPlugins: argv['parser-plugin'], revalidateJustified: argv['revalidate-justified'] };
       results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode, options));
-      results.push(
-        ...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, {
-          ...options,
-        })),
-      );
+      results.push(...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, options)));
       if (argv['revalidate-justified']) {
-        results.push(...(await revalidateJustifiedDirectives(compiled, argv.mode)));
+        results.push(...(await revalidateJustifiedDirectives(compiled, argv.mode, options)));
       }
     },
   );
@@ -117,14 +113,7 @@ export async function runLint(argv: LintArgv): Promise<number> {
       }
 
       if (argv.fix) {
-        const fixable = results.filter(
-          r =>
-            !r.justified &&
-            ((r.status === 'redundant' && r.directiveType === 'use-no-memo') ||
-              (r.status === 'active' && r.directiveType === 'use-no-memo') ||
-              r.status === 'conflicting'),
-        );
-        if (fixable.length > 0) {
+        if (fixResult!.filesModified > 0) {
           f.line('Applying fixes...');
           const parts: string[] = [];
           if (fixResult!.directivesRemoved > 0) {
@@ -136,7 +125,11 @@ export async function runLint(argv: LintArgv): Promise<number> {
           f.line(`Fixed: ${parts.join(', ')} across ${fixResult!.filesModified} file(s).`);
           f.blank();
         } else {
-          f.line('Nothing to fix.');
+          f.line(exitCode === 0 ? 'Nothing to fix.' : 'No automatic fixes applied.');
+          f.blank();
+        }
+        if (exitCode !== 0) {
+          f.line('Remaining lint failures require manual review; justified directives are report-only.');
           f.blank();
         }
       }

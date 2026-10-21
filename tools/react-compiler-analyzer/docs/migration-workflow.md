@@ -102,6 +102,8 @@ Both memo directive kinds are probed individually against Babel in the selected 
 directives remain untouched even with `--fix`; redundant, broken, or conflicting findings fail
 lint for manual review. This does not prove a guard is removable in a native or different consumer
 build, or validate its rationale. File-level directives remain preserved.
+Each justified function directive can add a sequential whole-file compilation; expect additional
+runtime for files with many justified directives.
 
 Preview new annotations without changing files:
 

@@ -30,6 +30,8 @@ TypeScript auto-accessors are supported; decorators still require explicit parse
 This is Babel analysis, not native Rust/OXC/SWC compiler execution. Valid syntax need not be
 accepted by React Compiler, and Babel outcomes do not prove native candidate, cache, or export
 parity. Verbose human reports identify the installed compiler versions; JSON has no provenance.
+Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
+analysis failure. Actual compiler failures remain errors.
 
 Directories apply exclusion globs; explicit files bypass them. Results are deduplicated by absolute
 path and attributed to the nearest package where possible. Files without an attributable package
@@ -66,6 +68,13 @@ an explicit limitation. Revalidated rows carry `justified: true` and `revalidate
 Justified source is protected inside the fixer as well as the CLI. Redundant, broken, and
 conflicting revalidated directives fail lint even alongside `--fix`.
 
+Revalidation can add one whole-file compilation per justified function directive, performed
+sequentially within that file. This is additional work beyond the initial pass and ordinary opt-out probes, so files
+with many justified directives can take longer. File-level and conflicting directives are not probed.
+If the initial pass has unattributed compiler errors, lint reports the file as not analyzed before
+evaluating either ordinary or justified directives. New unattributed errors in a probe remain failed
+revalidation evidence rather than being ignored.
+
 Coverage analysis uses the selected discovery mode. Directive health uses the mode assumed for the
 build. The same function can therefore be relevant to an infer-mode assessment but redundant as an
 opt-out in an annotation-mode build.
@@ -77,6 +86,8 @@ explicit requests rather than persistent configuration.
 `analyze --annotate <mode> --dry-run` builds and validates the same edit plan but never invokes
 the writer. It lists proposed targets in human output. JSON keeps actual write counters at zero
 and adds only `dryRun: true` and `planned` counters; normal output shapes are unchanged.
+Planned insertion targets are intentionally omitted from JSON to keep the contract compact.
+Use human output to inspect target locations, rendered relative to the workspace.
 
 ## Memo-cache statistics
 

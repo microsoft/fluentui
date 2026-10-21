@@ -415,7 +415,8 @@ rows whose reported `memoStats.memoSlots` is greater than zero.
 With `--annotate <mode> --dry-run`, actual annotation counters remain
 zero. The `annotate` object additionally contains `dryRun: true` and `planned`, whose
 `filesModified`, `functionsAnnotated`, and `functionsBailedOut` counters describe proposed changes.
-No planned metadata is emitted for ordinary analysis or actual writes.
+No planned metadata is emitted for ordinary analysis or actual writes. Dry-run JSON contains
+counts only; use human output for the list of proposed insertion targets.
 
 The envelope is `schemaVersion`, `tool`, `command`, `mode`, `summary`, `functions`, `findings`,
 `unparseable`, and optional `annotate`. Summary counters are `functions`, `compiled`,

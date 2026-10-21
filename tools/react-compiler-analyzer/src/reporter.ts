@@ -48,7 +48,7 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
       f.foldableSection(
         {
           title: activeNoMemo.some(r => r.revalidated)
-            ? 'Active opt-outs (justified directives are report-only)'
+            ? 'Active opt-outs (unjustified: add justification; justified: report-only)'
             : 'Active (needs `// justified:` comment)',
           status: 'warning',
           count: activeNoMemo.length,
@@ -98,7 +98,7 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
       f.foldableSection(
         {
           title: redundant.some(r => r.revalidated)
-            ? 'Redundant (justified directives are report-only)'
+            ? 'Redundant (unjustified: removable; justified: manual review)'
             : 'Redundant (removable)',
           status: 'warning',
           count: redundant.length,
@@ -175,11 +175,18 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   f.blank();
   f.line(`- **Total directives:** ${total}`);
   const protectedResults = results.some(r => r.revalidated);
-  f.line(`- **Redundant** (${protectedResults ? 'justified directives are report-only' : 'removable'}): ${redundant}`);
+  const protectedRedundant = results.some(r => r.revalidated && r.status === 'redundant');
+  f.line(
+    `- **Redundant** (${
+      protectedRedundant ? 'unjustified: removable; justified: manual review' : 'removable'
+    }): ${redundant}`,
+  );
   if (activeNoMemo > 0) {
     f.line(
       `- **Active** \`'use no memo'\` (${
-        protectedResults ? 'justified directives are report-only' : 'needs `// justified:` comment'
+        results.some(r => r.revalidated && r.status === 'active' && r.directiveType === 'use-no-memo')
+          ? 'unjustified: add justification; justified: report-only'
+          : 'needs `// justified:` comment'
       }): ${activeNoMemo}`,
     );
   }
@@ -205,6 +212,12 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   ).length;
   if (protectedResults) {
     f.line('> Revalidated justified directives are report-only and will not be changed by `--fix`.');
+    f.blank();
+  }
+  if (protectedRedundant) {
+    f.line(
+      '> Review redundant justified directives against the applicable build before manually removing or updating them; `--fix` leaves them untouched.',
+    );
     f.blank();
   }
 

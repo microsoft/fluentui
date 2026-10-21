@@ -259,6 +259,7 @@ export async function analyzeNoMemoDirectives(
 export async function revalidateJustifiedDirectives(
   result: FileCompilationResult,
   compilationMode: CompilationMode,
+  options: DirectiveAnalysisOptions = {},
 ): Promise<DirectiveAnalysis[]> {
   const directives = result.sourceFunctions.directives();
   const conflicts = conflictIds(directives, true);
@@ -309,7 +310,7 @@ export async function revalidateJustifiedDirectives(
     const source = result.source.slice(0, start.offset) + neutral + result.source.slice(end.offset);
     const probe = await compileSource(source, result.filePath, {
       compilationMode,
-      parserPlugins: result.parserPlugins,
+      parserPlugins: options.parserPlugins ?? result.parserPlugins,
     });
     const normalized = normalizeCompilerEvents(probe.events, source, result.sourceFunctions);
     const analysis = normalized.analyses.find(item => item.sourceFunctionId === directive.functionId);

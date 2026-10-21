@@ -13,11 +13,16 @@ import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { applyFixes } from '../fixer';
+import { toWorkspacePath } from '../path-utils';
 import type { AnalysisDocument, AnnotateMode, CompilationMode, LintDocument, QuoteStyle } from '../types';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
-  return { ...actual, compileSource: jest.fn(actual.compileSource) };
+  return {
+    ...actual,
+    compileSource: jest.fn(actual.compileSource),
+    compileFilesStreaming: jest.fn(actual.compileFilesStreaming),
+  };
 });
 
 describe('syntax compatibility and opt-in workflows', () => {
@@ -31,6 +36,7 @@ describe('syntax compatibility and opt-in workflows', () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    jest.dontMock('babel-plugin-react-compiler/package.json');
     rmSync(root, { recursive: true, force: true });
   });
 
@@ -268,6 +274,152 @@ export function useValue(initial = 0) {
     expect(lines.join('\n')).toContain('report-only');
     expect(lines.join('\n')).not.toContain('Run with `--fix`');
     expect(lines.join('\n')).not.toContain('need a `// justified:');
+  });
+
+  it('reports a protected mixed conflict as requiring manual review, not a successful fix', async () => {
+    const original = source("'use memo';\n  'use no memo'; // justified: retain");
+    writeFileSync(filePath, original);
+    const lines: string[] = [];
+    jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
+    const code = await runLint({ ...argv(), format: 'cli', fix: true, 'revalidate-justified': true });
+    expect(code).toBe(1);
+    expect(lines.join('\n')).toContain('No automatic fixes applied.');
+    expect(lines.join('\n')).toContain('Remaining lint failures require manual review');
+    expect(lines.join('\n')).not.toContain('Fixed:');
+    expect(readFileSync(filePath, 'utf-8')).toBe(original);
+  });
+
+  it('uses workspace-relative paths for human dry-run targets', async () => {
+    const original = source();
+    writeFileSync(filePath, original);
+    const lines: string[] = [];
+    jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
+    await runAnalyze({ ...argv(), format: 'cli', annotate: 'all', 'dry-run': true });
+    const target = lines.find(line => line.includes(": insert 'use memo'"));
+    expect(target).toBe(`${toWorkspacePath(process.cwd(), filePath)}:4 useValue: insert 'use memo'`);
+    expect(readFileSync(filePath, 'utf-8')).toBe(original);
+  });
+
+  it('rejects first-pass unattributed errors before probing either directive kind', async () => {
+    writeFileSync(
+      filePath,
+      source("'use no memo'; // justified: retain") + "\nfunction Plain() { 'use memo'; return { value: 1 }; }",
+    );
+    const firstPass = await compiled();
+    firstPass.events.push({ kind: 'PipelineError', fnLoc: null, data: 'existing module diagnostic' });
+    jest.spyOn(compiler, 'compileFilesStreaming').mockImplementationOnce(async (_files, _options, onResult) => {
+      await onResult(firstPass);
+    });
+    jest.mocked(compiler.compileSource).mockClear();
+    const { code, document } = await json<LintDocument>(() =>
+      runLint({ ...argv(), fix: true, 'revalidate-justified': true }),
+    );
+    expect(code).toBe(1);
+    expect(document.directives).toEqual([]);
+    expect(document.unparseable).toEqual([
+      expect.objectContaining({ error: expect.stringContaining('existing module diagnostic') }),
+    ]);
+    expect(compiler.compileSource).not.toHaveBeenCalled();
+  });
+
+  it('keeps newly unattributed probe errors broken and protected', async () => {
+    const original = source("'use no memo'; // justified: retain");
+    writeFileSync(filePath, original);
+    const firstPass = await compiled();
+    jest.spyOn(compiler, 'compileSource').mockResolvedValueOnce({
+      events: [{ kind: 'PipelineError', fnLoc: null, data: 'new module diagnostic' }],
+    });
+    const results = await revalidateJustifiedDirectives(firstPass, 'infer');
+    expect(results).toEqual([
+      expect.objectContaining({
+        status: 'broken',
+        justified: true,
+        reason: expect.stringContaining('new module diagnostic'),
+      }),
+    ]);
+    expect(await applyFixes(results)).toMatchObject({ filesModified: 0 });
+    expect(readFileSync(filePath, 'utf-8')).toBe(original);
+  });
+
+  it('honors explicit parser overrides and falls back to first-pass parser settings', async () => {
+    writeFileSync(
+      filePath,
+      'declare const decorate: ClassDecorator;\n@decorate class Legacy {}\n' +
+        source("'use no memo'; // justified: retain"),
+    );
+    const firstPass = await compileFile({ filePath, packageName: null }, 'infer', false, {}, undefined, [
+      'decorators-legacy',
+    ]);
+    expect(firstPass.error).toBeUndefined();
+    const overridden = await revalidateJustifiedDirectives(firstPass, 'infer', { parserPlugins: [] });
+    expect(overridden[0].status).toBe('broken');
+    const fallback = await revalidateJustifiedDirectives(firstPass, 'infer');
+    expect(fallback[0].status).toBe('active');
+    const explicit = await revalidateJustifiedDirectives(firstPass, 'infer', { parserPlugins: ['decorators-legacy'] });
+    expect(explicit[0].status).toBe('active');
+  });
+
+  it.each([
+    [
+      'missing',
+      () => {
+        throw Object.assign(new Error('metadata unavailable'), { code: 'MODULE_NOT_FOUND' });
+      },
+    ],
+    [
+      'hidden exports',
+      () => {
+        throw Object.assign(new Error('metadata unavailable'), { code: 'ERR_PACKAGE_PATH_NOT_EXPORTED' });
+      },
+    ],
+    [
+      'unreadable',
+      () => {
+        throw Object.assign(new Error('metadata unreadable'), { code: 'EACCES' });
+      },
+    ],
+    [
+      'invalid JSON',
+      () => {
+        throw new SyntaxError('invalid metadata JSON');
+      },
+    ],
+    ['invalid version', () => ({ version: 0 })],
+  ])('warns for %s metadata without failing analysis', async (_label, metadata) => {
+    writeFileSync(filePath, source());
+    jest.doMock('babel-plugin-react-compiler/package.json', metadata);
+    const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const lines: string[] = [];
+    jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
+    expect(await runAnalyze({ ...argv(), format: 'cli', verbose: true })).toBe(0);
+    expect(warning).toHaveBeenCalledWith(expect.stringContaining('Warning:'));
+    expect(lines.join('\n')).toContain('React Compiler unavailable;');
+    expect(lines.join('\n')).toContain('Compiler accepted');
+  });
+
+  it('does not hide actual compiler failures when informational metadata is invalid', async () => {
+    writeFileSync(filePath, source());
+    jest.doMock('babel-plugin-react-compiler/package.json', () => ({}));
+    jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    jest.spyOn(console, 'log').mockImplementation(() => undefined);
+    const firstPass = await compiled();
+    firstPass.error = new Error('actual compiler failure');
+    jest.spyOn(compiler, 'compileFilesStreaming').mockImplementationOnce(async (_files, _options, onResult) => {
+      await onResult(firstPass);
+    });
+    await expect(runAnalyze({ ...argv(), format: 'cli', verbose: true })).rejects.toThrow('actual compiler failure');
+  });
+
+  it('does not read informational compiler metadata for verbose JSON', async () => {
+    writeFileSync(filePath, source());
+    const metadata = jest.fn(() => {
+      throw new Error('should not read metadata');
+    });
+    jest.doMock('babel-plugin-react-compiler/package.json', metadata);
+    const { code, document } = await json<AnalysisDocument>(() => runAnalyze({ ...argv(), verbose: true }));
+    expect(code).toBe(0);
+    expect(document).not.toHaveProperty('compiler');
+    expect(metadata).not.toHaveBeenCalled();
   });
 
   it('rejects incomplete or misleading dry-run schema metadata', async () => {

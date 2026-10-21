@@ -11,6 +11,7 @@ import {
 } from '../coverage-reporter';
 import { discoverAllFiles } from '../discovery';
 import { compareText } from '../ordering';
+import { toWorkspacePath } from '../path-utils';
 import type { ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
 import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RcaConfig, RiskConfig } from '../types';
@@ -179,7 +180,9 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           f.line('Dry run: no source files were modified.');
           for (const target of annotate.targets ?? []) {
             f.line(
-              `${target.filePath}:${target.line} ${target.functionName ?? '(anonymous)'}: insert '${target.directive}'`,
+              `${toWorkspacePath(workspaceRoot, target.filePath)}:${target.line} ${
+                target.functionName ?? '(anonymous)'
+              }: insert '${target.directive}'`,
             );
           }
         }
