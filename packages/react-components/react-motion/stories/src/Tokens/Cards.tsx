@@ -21,8 +21,13 @@ function getPointsFromEasing(value: string) {
   throw new Error('Only cubic-bezier() easing is supported');
 }
 
-const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; tokenValue: string }> = props => {
-  const { animationEnabled, tokenName, tokenValue } = props;
+const MotionCurveCard: React.FC<{
+  animationEnabled: boolean;
+  controlPointsVisible: boolean;
+  tokenName: string;
+  tokenValue: string;
+}> = props => {
+  const { animationEnabled, controlPointsVisible, tokenName, tokenValue } = props;
 
   const classes = useCardClasses();
   const easingPoints = getPointsFromEasing(tokenValue);
@@ -31,12 +36,26 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
     <div className={classes.container}>
       <div className={classes.graph} role="presentation">
         <svg className={classes.svg} viewBox="0 0 100 100">
+          {controlPointsVisible && (
+            <g className={classes.handle} aria-hidden="true">
+              <line x1="0" y1="100" x2={easingPoints[0]} y2={100 - easingPoints[1]} />
+              <line x1="100" y1="0" x2={easingPoints[2]} y2={100 - easingPoints[3]} />
+            </g>
+          )}
           <path
             d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
               100 - easingPoints[3]
             }, 100 0`}
             className={classes.path}
           />
+          {controlPointsVisible && (
+            <g aria-hidden="true">
+              <circle className={classes.controlPoint} cx={easingPoints[0]} cy={100 - easingPoints[1]} r="1.6" />
+              <circle className={classes.controlPoint} cx={easingPoints[2]} cy={100 - easingPoints[3]} r="1.6" />
+              <circle className={classes.endpoint} cx="0" cy="100" r="0.8" />
+              <circle className={classes.endpoint} cx="100" cy="0" r="0.8" />
+            </g>
+          )}
         </svg>
 
         <div className={classes.graphP} title="Progress">
@@ -99,6 +118,11 @@ function useAnimationEnabled() {
 export const MotionCurves = (): JSXElement => {
   const classes = useClasses();
   const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
+  const [controlPointsVisible, setControlPointsVisible] = React.useState(true);
+
+  const handleControlPointsChange = React.useCallback(() => {
+    setControlPointsVisible(visible => !visible);
+  }, []);
 
   const handleChange = React.useCallback(() => {
     setAnimationEnabled(e => !e);
@@ -107,12 +131,14 @@ export const MotionCurves = (): JSXElement => {
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
+        <Switch label="Show control points" checked={controlPointsVisible} onChange={handleControlPointsChange} />
         <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.card}>
         {Object.entries(curves).map(([tokenName, tokenValue]) => (
           <MotionCurveCard
             animationEnabled={animationEnabled}
+            controlPointsVisible={controlPointsVisible}
             key={tokenName}
             tokenName={tokenName}
             tokenValue={tokenValue}
