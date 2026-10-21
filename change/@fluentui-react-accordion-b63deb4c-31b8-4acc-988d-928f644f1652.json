@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "chore: refresh Accordion declarations for TypeScript 5.8",
+  "packageName": "@fluentui/react-accordion",
+  "email": "paulmardling@microsoft.com"
+}
