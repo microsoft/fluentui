@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Support syntax-only TypeScript analysis, protected directive revalidation, and annotation previews.",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com"
+}

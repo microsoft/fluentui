@@ -1,6 +1,6 @@
 import type { CommandModule } from 'yargs';
 
-import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
+import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses, revalidateJustifiedDirectives } from '../analyzer';
 import { compileFilesStreaming } from '../compiler';
 import { normalizeCompilerEvents } from '../compiler-events';
 import { discoverFilesWithDirectives } from '../discovery';
@@ -12,7 +12,7 @@ import { toLintDocument, writeDocument } from '../serializer';
 import type { DirectiveAnalysis, RcaConfig } from '../types';
 import { runReport, sharedOptions, sortByLocation, type SharedArgv } from './shared';
 
-type LintArgv = SharedArgv & { fix: boolean };
+type LintArgv = SharedArgv & { fix: boolean; 'revalidate-justified'?: boolean };
 
 async function analyzeDirectiveFiles(
   files: Parameters<typeof compileFilesStreaming>[0],
@@ -51,12 +51,16 @@ async function analyzeDirectiveFiles(
         });
         return;
       }
-      results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode));
+      const options = { parserPlugins: argv['parser-plugin'], revalidateJustified: argv['revalidate-justified'] };
+      results.push(...deriveMemoDirectiveStatuses(compiled, argv.mode, options));
       results.push(
         ...(await analyzeNoMemoDirectives(compiled, argv.mode, verbose, {
-          parserPlugins: argv['parser-plugin'],
+          ...options,
         })),
       );
+      if (argv['revalidate-justified']) {
+        results.push(...(await revalidateJustifiedDirectives(compiled, argv.mode)));
+      }
     },
   );
   sortByLocation(results);
@@ -67,7 +71,7 @@ async function analyzeDirectiveFiles(
 /** Check the final directive statuses and any files that could not be analyzed. */
 function lintExitCode(results: DirectiveAnalysis[], unparseableCount: number): number {
   const fixableFailures =
-    results.some(r => r.status === 'redundant' && r.directiveType === 'use-no-memo') ||
+    results.some(r => r.status === 'redundant' && (r.directiveType === 'use-no-memo' || r.revalidated)) ||
     results.some(r => r.status === 'conflicting');
   const unfixableFailures = results.some(r => r.status === 'broken');
 
@@ -115,9 +119,10 @@ export async function runLint(argv: LintArgv): Promise<number> {
       if (argv.fix) {
         const fixable = results.filter(
           r =>
-            (r.status === 'redundant' && r.directiveType === 'use-no-memo') ||
-            (r.status === 'active' && r.directiveType === 'use-no-memo') ||
-            r.status === 'conflicting',
+            !r.justified &&
+            ((r.status === 'redundant' && r.directiveType === 'use-no-memo') ||
+              (r.status === 'active' && r.directiveType === 'use-no-memo') ||
+              r.status === 'conflicting'),
         );
         if (fixable.length > 0) {
           f.line('Applying fixes...');
@@ -146,11 +151,17 @@ export function createLintCommand(config: RcaConfig): CommandModule<{}, LintArgv
     command: 'lint <paths..>',
     describe: "Lint 'use no memo' and 'use memo' directives for redundancy (CI gate)",
     builder: yarg =>
-      sharedOptions(yarg, config).option('fix', {
-        type: 'boolean' as const,
-        describe: 'Auto-remove redundant directives and resolve conflicts',
-        default: false,
-      }),
+      sharedOptions(yarg, config)
+        .option('revalidate-justified', {
+          type: 'boolean',
+          default: false,
+          describe: 'Revalidate justified directives against Babel without modifying them, even with --fix',
+        })
+        .option('fix', {
+          type: 'boolean' as const,
+          describe: 'Auto-remove redundant directives and resolve conflicts',
+          default: false,
+        }),
     handler: async argv => {
       process.exitCode = await runLint(argv);
     },

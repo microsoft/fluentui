@@ -2,6 +2,7 @@ import { existsSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
+import { version as babelVersion } from '@babel/core';
 
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import { dedupeFileEntries, findPackageName } from '../discovery';
@@ -373,6 +374,21 @@ export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<num
     spec.title,
     async f => {
       openScanLog(f, 'Scan & compile log');
+      if (argv.verbose && argv.format !== 'json') {
+        const compilerPackage: unknown = require('babel-plugin-react-compiler/package.json');
+        if (
+          typeof compilerPackage !== 'object' ||
+          compilerPackage === null ||
+          !('version' in compilerPackage) ||
+          typeof compilerPackage.version !== 'string'
+        ) {
+          throw new CliError('Cannot identify the installed Babel React Compiler version');
+        }
+        f.line(
+          `Backend: Babel ${babelVersion}; React Compiler ${compilerPackage.version}; syntax-only TypeScript parsing (not native compiler parity).`,
+        );
+        f.blank();
+      }
 
       const collected: FileEntry[] = [];
       for (const resolvedPath of resolvedPaths) {

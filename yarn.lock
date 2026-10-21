@@ -1765,7 +1765,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.13.0, @babel/preset-typescript@npm:^7.22.5, @babel/preset-typescript@npm:^7.28.5":
+"@babel/preset-typescript@npm:^7.13.0, @babel/preset-typescript@npm:^7.22.5":
   version: 7.29.7
   resolution: "@babel/preset-typescript@npm:7.29.7"
   dependencies:
@@ -3948,7 +3948,6 @@ __metadata:
   resolution: "@fluentui/react-compiler-analyzer@workspace:tools/react-compiler-analyzer"
   dependencies:
     "@babel/core": "npm:^7.28.5"
-    "@babel/preset-typescript": "npm:^7.28.5"
     "@babel/types": "npm:7.29.0"
     "@types/yargs": "npm:^17.0.33"
     ajv: "npm:^8.13.0"
