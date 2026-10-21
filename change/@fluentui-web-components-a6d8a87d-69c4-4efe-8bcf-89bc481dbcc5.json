@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: create plugin to export .js file references instead of .ts files in CEM",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
