@@ -170,11 +170,11 @@ export function getDateRange(
   daysToSelectInDayView: number = 1,
 ): Date[] {
   if (!Number.isFinite(date.valueOf())) {
-    throw new RangeError('date must be valid');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'date must be valid' : '');
   }
 
   if (!Number.isFinite(daysToSelectInDayView) || !Number.isInteger(daysToSelectInDayView)) {
-    throw new RangeError('daysToSelectInDayView must be a finite integer');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'daysToSelectInDayView must be a finite integer' : '');
   }
 
   if (dateRangeType === 'day' && daysToSelectInDayView === 0) {
@@ -232,7 +232,9 @@ export function getDateRange(
   }
 
   if (!Number.isFinite(endDate.getTime())) {
-    throw new RangeError('Date range end is outside the representable date range');
+    throw new RangeError(
+      process.env.NODE_ENV !== 'production' ? 'Date range end is outside the representable date range' : '',
+    );
   }
 
   // Populate the dates array with a range-specific bound so a faulty adapter cannot hang rendering.
@@ -285,10 +287,12 @@ export function getWeekNumbersInMonth(
   navigatedDate: Date,
 ): number[] {
   if (!Number.isFinite(weeksInMonth) || !Number.isInteger(weeksInMonth) || weeksInMonth < 0) {
-    throw new RangeError('weeksInMonth must be a non-negative finite integer.');
+    throw new RangeError(
+      process.env.NODE_ENV !== 'production' ? 'weeksInMonth must be a non-negative finite integer.' : '',
+    );
   }
   if (!Number.isFinite(navigatedDate.getTime())) {
-    throw new RangeError('navigatedDate must be valid.');
+    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'navigatedDate must be valid.' : '');
   }
 
   const selectedYear = navigatedDate.getFullYear();
@@ -350,14 +354,18 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
   for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
     const candidate = createDate(year, month, day - daysBack);
     if (!Number.isFinite(candidate.getTime())) {
-      throw new RangeError('Cannot align an invalid or out-of-range date.');
+      throw new RangeError(
+        process.env.NODE_ENV !== 'production' ? 'Cannot align an invalid or out-of-range date.' : '',
+      );
     }
     if (candidate.getDay() === firstDayOfWeekIndex) {
       return candidate;
     }
   }
 
-  throw new RangeError('Could not find a representable week start within two weeks.');
+  throw new RangeError(
+    process.env.NODE_ENV !== 'production' ? 'Could not find a representable week start within two weeks.' : '',
+  );
 }
 
 /**
