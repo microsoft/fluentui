@@ -16,6 +16,12 @@ import { setupCodeowners } from '../../utils-testing';
 import { TsConfig } from '../../types';
 import { addCodeowner } from '../add-codeowners';
 import { workspacePaths } from '../../utils';
+import { normalize, win32 } from 'node:path';
+
+jest.mock('node:path', () => {
+  const actual = jest.requireActual<typeof import('node:path')>('node:path');
+  return { ...actual, normalize: jest.fn(actual.normalize) };
+});
 
 const noop = () => {
   return;
@@ -32,6 +38,30 @@ describe('split-library-in-two generator', () => {
     jest.spyOn(output, 'log').mockImplementation(noop);
     jest.spyOn(output, 'warn').mockImplementation(noop);
     jest.spyOn(output, 'error').mockImplementation(noop);
+  });
+
+  it('preserves stories and Storybook files with Windows path normalization', async () => {
+    const root = readProjectConfiguration(tree, options.project).root;
+    const story = tree.read(`${root}/stories/Default.stories.tsx`, 'utf-8');
+    const actualNormalize = jest.requireActual<typeof import('node:path')>('node:path').normalize;
+    // Emulate Windows exclusions without changing the host's filesystem path handling.
+    jest
+      .mocked(normalize)
+      .mockImplementation(value =>
+        value === '/stories/' || value === '/.storybook/' ? win32.normalize(value) : actualNormalize(value),
+      );
+
+    try {
+      await splitLibraryInTwoGenerator(tree, { ...options, skipFormat: true });
+
+      expect(tree.read(`${root}/stories/src/Default.stories.tsx`, 'utf-8')).toEqual(story);
+      expect(readJson(tree, `${root}/stories/.storybook/tsconfig.json`).include).toEqual(['*.js', '*.cjs']);
+      expect(tree.read(`${root}/stories/.storybook/main.js`, 'utf-8')).toContain('../src/');
+      expect(tree.exists(`${root}/library/.storybook/tsconfig.json`)).toBe(false);
+      expect(tree.exists(`${root}/library/stories/Default.stories.tsx`)).toBe(false);
+    } finally {
+      jest.mocked(normalize).mockImplementation(actualNormalize);
+    }
   });
 
   it('should split v9 project into 2', async () => {

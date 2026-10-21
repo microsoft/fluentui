@@ -1,7 +1,15 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, readJson, getWorkspaceLayout, readProjectConfiguration } from '@nx/devkit';
+import {
+  Tree,
+  readJson,
+  readJsonFile,
+  updateJson,
+  workspaceRoot,
+  getWorkspaceLayout,
+  readProjectConfiguration,
+  joinPathFragments,
+} from '@nx/devkit';
 import { libraryGenerator } from '@nx/js';
-import path from 'path';
 
 import generator from './index';
 import { WorkspaceGeneratorGeneratorSchema } from './schema';
@@ -65,6 +73,7 @@ describe('workspace-generator generator', () => {
         names,
         generateFiles,
         getWorkspaceLayout,
+        joinPathFragments,
       } from '@nx/devkit';
       import { libraryGenerator } from '@nx/js';
 
@@ -77,7 +86,7 @@ describe('workspace-generator generator', () => {
       export default async function (tree: Tree, schema: CustomGeneratorSchema) {
         await libraryGenerator(tree, {
           name: schema.name,
-          directory: path.join(getWorkspaceLayout(tree).libsDir, schema.name),
+          directory: joinPathFragments(getWorkspaceLayout(tree).libsDir, schema.name),
           formatter: 'prettier',
         });
 
@@ -123,8 +132,15 @@ describe('workspace-generator generator', () => {
   });
 
   it('should create a library with the generated Nx API call', async () => {
+    const rootPackageJson = readJsonFile<{ devDependencies: { typescript: string } }>(
+      joinPathFragments(workspaceRoot, 'package.json'),
+    );
+    updateJson(tree, 'package.json', json => ({
+      ...json,
+      devDependencies: { ...json.devDependencies, typescript: rootPackageJson.devDependencies.typescript },
+    }));
     const name = 'example';
-    const directory = path.join(getWorkspaceLayout(tree).libsDir, name);
+    const directory = joinPathFragments(getWorkspaceLayout(tree).libsDir, name);
 
     await libraryGenerator(tree, { name, directory, formatter: 'prettier' });
 

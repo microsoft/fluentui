@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { Tree, formatFiles, installPackagesTask, names, generateFiles, getWorkspaceLayout } from '@nx/devkit';
+import { Tree, formatFiles, installPackagesTask, names, generateFiles, getWorkspaceLayout, joinPathFragments } from '@nx/devkit';
 import { libraryGenerator } from '@nx/js';
 
 import { getProjectConfig } from '../../utils';
@@ -11,7 +11,7 @@ interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 export default async function(tree: Tree, schema: <%= className %>GeneratorSchema) {
   await libraryGenerator(tree, {
     name: schema.name,
-    directory: path.join(getWorkspaceLayout(tree).libsDir, schema.name),
+    directory: joinPathFragments(getWorkspaceLayout(tree).libsDir, schema.name),
     formatter: 'prettier',
   });
 
