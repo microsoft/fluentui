@@ -1,4 +1,4 @@
-import type { Position, PositioningProps } from '@fluentui/react-positioning';
+import type { OffsetObject, Position, PositioningProps } from '@fluentui/react-positioning';
 import { POSITIONS } from '../constants';
 
 export function applyOffset(node: HTMLElement, position: Position, mainAxis: number, crossAxis: number): void {
@@ -33,7 +33,7 @@ export function applyOffset(node: HTMLElement, position: Position, mainAxis: num
  * positioning — rect information is not available ahead of layout — and
  * resolves to a zero offset.
  */
-export function resolveOffset(offset: PositioningProps['offset']): { mainAxis: number; crossAxis: number } {
+export function resolveOffset(offset: PositioningProps['offset']): Required<OffsetObject> {
   if (typeof offset === 'number') {
     return { mainAxis: offset, crossAxis: 0 };
   }

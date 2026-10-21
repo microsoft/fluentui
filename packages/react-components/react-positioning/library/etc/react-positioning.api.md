@@ -41,6 +41,15 @@ export function createVirtualElementFromClick(nativeEvent: MouseEvent): Position
 // @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
 
+// @public
+export const normalizeAutoSize: (autoSize?: PositioningOptions["autoSize"]) => NormalizedAutoSize | false;
+
+// @public (undocumented)
+export type NormalizedAutoSize = {
+    applyMaxWidth: boolean;
+    applyMaxHeight: boolean;
+};
+
 // @public (undocumented)
 export type Offset = OffsetFunction | OffsetObject | OffsetShorthand;
 
