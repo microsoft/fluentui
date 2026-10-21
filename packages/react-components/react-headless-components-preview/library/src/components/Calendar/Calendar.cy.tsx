@@ -284,8 +284,8 @@ describe('Calendar', () => {
           value={today}
           monthPicker={null}
           dayPicker={{
-            renderDay: (day, defaultContent) =>
-              day.originalDate?.getTime() === today.getTime() ? (
+            renderDay: (dayInfo, defaultContent) =>
+              dayInfo.originalDate?.getTime() === today.getTime() ? (
                 <span role="toolbar" focusgroup={focusgroup}>
                   <span tabIndex={0} data-testid="nested-first">
                     First
