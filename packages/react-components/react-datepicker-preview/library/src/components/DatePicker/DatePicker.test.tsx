@@ -248,7 +248,12 @@ describe('DatePicker', () => {
   it('reopens on the committed selection instead of the initial default displayed date', () => {
     const june = new Date(2030, 5, 1);
     const result = render(
-      <DatePicker today={today} calendar={{ defaultDisplayedDate: june, layout: 'sideBySide' }} contentAfter="Pick" />,
+      <DatePicker
+        today={today}
+        defaultValue={selectedDate}
+        calendar={{ defaultDisplayedDate: june, layout: 'sideBySide' }}
+        contentAfter="Pick"
+      />,
     );
     const input = result.getByRole('combobox');
     fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
@@ -260,6 +265,51 @@ describe('DatePicker', () => {
 
     expect(result.getByRole('dialog').textContent).toContain('July 2030');
     expect((input as HTMLInputElement).value).toBe(new Date(2030, 6, 20).toDateString());
+  });
+
+  it('opens with a default displayed date when a selection already exists', () => {
+    const june = new Date(2030, 5, 1);
+    const result = render(
+      <DatePicker
+        today={today}
+        defaultValue={selectedDate}
+        calendar={{ defaultDisplayedDate: june, layout: 'sideBySide' }}
+      />,
+    );
+
+    fireEvent.click(result.getByRole('combobox'));
+
+    expect(result.getByRole('dialog').textContent).toContain('June 2030');
+  });
+
+  it('opens using a valid default displayed date when the selection is invalid', () => {
+    const june = new Date(2030, 5, 1);
+    const result = render(
+      <DatePicker
+        value={new Date(NaN)}
+        today={today}
+        calendar={{ defaultDisplayedDate: june, layout: 'sideBySide' }}
+      />,
+    );
+
+    fireEvent.click(result.getByRole('combobox'));
+
+    expect(result.getByRole('dialog').textContent).toContain('June 2030');
+  });
+
+  it('does not use an invalid selection as the displayed date', () => {
+    const invalidDate = new Date(NaN);
+    const onValidationResult = jest.fn();
+    const result = render(<DatePicker value={invalidDate} today={today} onValidationResult={onValidationResult} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+
+    expect(result.getByRole('dialog')).toBeTruthy();
+    fireEvent.blur(result.getByRole('combobox'));
+    expect(onValidationResult).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ error: 'invalid-input' }),
+    );
   });
 
   it('preserves a controlled displayed date when reopening after selection', () => {
@@ -413,6 +463,31 @@ describe('DatePicker', () => {
     act(() => result.getByRole('combobox').focus());
     fireEvent.keyDown(result.getByRole('combobox'), { key: 'Enter' });
     expect(onValidationResult).toHaveBeenCalledTimes(1);
+  });
+
+  it('validates new input after a controlled Enter opening request is declined', () => {
+    const onDateChange = jest.fn();
+    const onValidationResult = jest.fn();
+    const result = render(
+      <DatePicker
+        allowTextInput
+        open={false}
+        parseDate={() => selectedDate}
+        onDateChange={onDateChange}
+        onValidationResult={onValidationResult}
+      />,
+    );
+    const input = result.getByRole('combobox');
+    fireEvent.change(input, { target: { value: 'first draft' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(result.queryByRole('dialog')).toBeNull();
+    expect(onValidationResult).toHaveBeenCalledTimes(1);
+
+    fireEvent.change(input, { target: { value: 'second draft' } });
+    fireEvent.blur(input);
+
+    expect(onValidationResult).toHaveBeenCalledTimes(2);
+    expect(onDateChange).toHaveBeenCalledTimes(2);
   });
 
   it('validates an editable date on blur after ArrowDown opens Calendar', () => {

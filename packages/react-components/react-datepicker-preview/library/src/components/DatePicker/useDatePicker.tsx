@@ -63,6 +63,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const restoreFocus = React.useRef<boolean | undefined>(undefined);
   const focusWithinPopup = React.useRef(false);
   const skipBlurValidation = React.useRef(false);
+  const [hasOpened, setHasOpened] = React.useState(false);
   const lastCloseEvent = React.useRef<Event | undefined>(undefined);
   const outsidePointerTarget = React.useRef<EventTarget | null>(null);
   const inputId = useId('datePicker-input', props.id ?? props.input?.id ?? fieldContext?.generatedControlId);
@@ -158,6 +159,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     consumerNativeChange?.(event);
     consumerChange?.(event, data);
     if (!event.defaultPrevented && allowTextInput && !disabled) {
+      skipBlurValidation.current = false;
       dateState.setText(data.value);
       requestOpen(event, false, 'input');
     }
@@ -230,7 +232,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   });
   calendar.value = dateState.value && Number.isFinite(dateState.value.getTime()) ? dateState.value : null;
-  if (dateState.value) {
+  if (
+    hasOpened &&
+    calendar.displayedDate === undefined &&
+    dateState.value &&
+    Number.isFinite(dateState.value.getTime())
+  ) {
     calendar.defaultDisplayedDate = dateState.value;
   }
   calendar.today = today;
@@ -336,6 +343,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const wasOpen = React.useRef(false);
   React.useEffect(() => {
     if (popupOpen && !wasOpen.current) {
+      setHasOpened(true);
       dayRef.current?.focus({ preventScroll: true });
       if (!surfaceRef.current?.contains(targetDocument?.activeElement ?? null)) {
         monthRef.current?.focus({ preventScroll: true });
