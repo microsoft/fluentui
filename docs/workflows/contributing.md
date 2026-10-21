@@ -37,6 +37,13 @@ yarn nx run workspace-plugin:test --skipNxCache --output-style=static -- --runIn
 ```
 
 The workspace-plugin test target enables Node's VM modules for Nx's dynamic formatter imports.
+The root Jest configuration explicitly includes workspace-plugin because Nx cannot discover its
+Node-based Jest command. To run this suite through root Jest with VM modules enabled:
+
+```bash
+yarn nx exec --projects=fluentui-repo --excludeTaskDependencies -- node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config=./jest.config.ts --selectProjects=workspace-plugin --runInBand
+```
+
 Generator test trees explicitly select Prettier to match this repository rather than Nx's default formatter.
 The workspace compiler is TypeScript 5.8.3 because Nx 23's JavaScript generators require at least 5.8.
 Generator compatibility tests must include the workspace's TypeScript dependency, not just an empty tree.
