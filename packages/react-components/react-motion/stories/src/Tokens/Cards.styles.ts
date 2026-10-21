@@ -54,14 +54,6 @@ export const useCardClasses = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     clipPath: 'polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%)',
 
-    animationName: {
-      '0%': { transform: 'translateY(calc(var(--container-size) - var(--point-size) / 2))' },
-      '60%, 100%': { transform: 'translateY(calc(var(--point-size) / 2 * -1))' },
-    },
-    animationDuration: '2s',
-    animationIterationCount: 'infinite',
-    animationFillMode: 'forwards',
-
     '@media (forced-colors: active)': {
       backgroundColor: 'LinkText',
     },
