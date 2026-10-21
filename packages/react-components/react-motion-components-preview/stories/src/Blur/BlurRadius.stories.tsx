@@ -45,12 +45,10 @@ const useClasses = makeStyles({
 });
 
 const blurRadiusCombinations = [
-  // Top row: outRadius 5px, inRadius 0px (default)
-  { outRadius: '5px', inRadius: '0px' },
-  { outRadius: '10px', inRadius: '0px' },
-  // Bottom row: outRadius 20px, with inRadius values
-  { outRadius: '10px', inRadius: '1px' },
-  { outRadius: '10px', inRadius: '2px' },
+  { fromRadius: '5px', restRadius: '0px', toRadius: '5px' },
+  { fromRadius: '10px', restRadius: '0px', toRadius: '10px' },
+  { fromRadius: '10px', restRadius: '1px', toRadius: '20px' },
+  { fromRadius: '10px', restRadius: '2px', toRadius: '5px' },
 ];
 
 export const Radius = (): JSXElement => {
@@ -75,22 +73,24 @@ export const Radius = (): JSXElement => {
               <Table size="small" noNativeElements aria-label="Blur radius values">
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell>outRadius</TableHeaderCell>
-                    <TableHeaderCell>inRadius</TableHeaderCell>
+                    <TableHeaderCell>fromRadius</TableHeaderCell>
+                    <TableHeaderCell>restRadius</TableHeaderCell>
+                    <TableHeaderCell>toRadius</TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className={isVisible ? classes.cellNormal : classes.cellBold}>
-                      {option.outRadius}
-                    </TableCell>
+                    <TableCell>{option.fromRadius}</TableCell>
                     <TableCell className={isVisible ? classes.cellBold : classes.cellNormal}>
-                      {option.inRadius}
+                      {option.restRadius}
+                    </TableCell>
+                    <TableCell className={isVisible ? classes.cellNormal : classes.cellBold}>
+                      {option.toRadius}
                     </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
-              <Blur visible={isVisible} outRadius={option.outRadius} inRadius={option.inRadius} animateOpacity={false}>
+              <Blur visible={isVisible} {...option} animateOpacity={false}>
                 <div>Lorem ipsum dolor sit amet</div>
               </Blur>
               <CardFooter>
