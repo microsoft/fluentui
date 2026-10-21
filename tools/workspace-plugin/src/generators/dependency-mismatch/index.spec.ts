@@ -10,7 +10,7 @@ describe('dependency-mismatch generator', () => {
   let workspaceNpmScope: string;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     workspaceNpmScope = getWorkspaceConfig(tree).npmScope;
   });
 

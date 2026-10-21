@@ -2,6 +2,9 @@
 
 ## Development Commands
 
+Use Node.js 22.18 or newer in the 22.x line, or Node.js 24.x. Nx 23 requires at least
+22.12, and the existing `@microsoft/fast-build` dependency requires at least 22.18.
+
 ```bash
 # Setup
 yarn                                      # Install dependencies
@@ -24,6 +27,27 @@ yarn nx affected -t test                  # Test affected projects
 # Component generation (v9 only)
 yarn create-component                     # Interactive generator
 ```
+
+### Nx tooling
+
+Pass Jest-specific flags after `--`, for example:
+
+```bash
+yarn nx run workspace-plugin:test --skipNxCache --output-style=static -- --runInBand --no-cache
+```
+
+The workspace-plugin test target enables Node's VM modules for Nx's dynamic formatter imports.
+Generator test trees explicitly select Prettier to match this repository rather than Nx's default formatter.
+Keep lint commands and working directories in the workspace plugin; a conflicting command in
+`nx.json` target defaults replaces the inferred target in Nx 23.
+
+The Nx 23 migration plan keeps only the applicable generated-output ignore and CreateNodes type
+migrations. The earlier deferred entries remain in `migrations.todo.json`. The other generated
+migrations were no-ops for this workspace: release tags and executor cache settings were already
+current; flat ESLint configuration and snapshot headers were already migrated; removed ESLint rules,
+pnpm outputs and obsolete Jest options were absent. The ts-jest solution-setup migration does not
+apply to this workspace's non-solution TypeScript configuration. No AI migration prompts or optional
+TypeScript, Jest, SWC, or formatter upgrades were applied.
 
 ## PR Checklist
 

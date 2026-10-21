@@ -6,6 +6,14 @@
   "tags": ["platform:node", "tools"],
   "implicitDependencies": ["!eslint-plugin"],
   "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/coverage"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
+      }
+    },
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],

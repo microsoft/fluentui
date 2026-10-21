@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {
-  CreateNodesContextV2,
+  CreateNodesContext,
   CreateNodesResult,
-  CreateNodesV2,
+  CreateNodes,
   TargetConfiguration,
   createNodesFromFiles,
 } from '@nx/devkit';
@@ -14,7 +14,7 @@ interface CleanPluginOptions {
   targetName?: string;
 }
 
-export const createNodesV2: CreateNodesV2<CleanPluginOptions> = [
+export const createNodesV2: CreateNodes<CleanPluginOptions> = [
   projectConfigGlob,
   (configFiles, options, context) => {
     return createNodesFromFiles(
@@ -39,7 +39,7 @@ function normalizeOptions(options: CleanPluginOptions | undefined): Required<Cle
 function createNodesInternal(
   configFilePath: string,
   options: CleanPluginOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
 
@@ -64,7 +64,7 @@ function createNodesInternal(
 
 export function buildCleanTarget(
   _options: CleanPluginOptions,
-  _context: CreateNodesContextV2,
+  _context: CreateNodesContext,
   _config: TaskBuilderConfig,
 ) {
   const targetConfig: TargetConfiguration = {

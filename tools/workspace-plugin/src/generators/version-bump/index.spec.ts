@@ -22,7 +22,7 @@ describe('version-string-replace generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   it('should bump alpha package to beta', async () => {

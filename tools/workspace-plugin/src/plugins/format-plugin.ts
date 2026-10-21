@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import {
-  type CreateNodesV2,
+  type CreateNodes,
   createNodesFromFiles,
   TargetConfiguration,
-  CreateNodesContextV2,
+  CreateNodesContext,
   CreateNodesResult,
   getPackageManagerCommand,
 } from '@nx/devkit';
@@ -15,7 +15,7 @@ interface FormatPluginOptions {
   targetName?: string;
 }
 
-export const createNodesV2: CreateNodesV2<FormatPluginOptions> = [
+export const createNodesV2: CreateNodes<FormatPluginOptions> = [
   projectConfigGlob,
   (configFiles, options, context) => {
     return createNodesFromFiles(
@@ -40,7 +40,7 @@ function normalizeOptions(options: FormatPluginOptions | undefined): Required<Fo
 function createNodesInternal(
   configFilePath: string,
   options: FormatPluginOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
 
@@ -72,7 +72,7 @@ function createNodesInternal(
 
 export function buildFormatTarget(
   _options: FormatPluginOptions,
-  _context: CreateNodesContextV2,
+  _context: CreateNodesContext,
   config: Required<TaskBuilderConfig>,
 ) {
   const targetConfig: TargetConfiguration = {

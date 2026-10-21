@@ -26,7 +26,7 @@ describe('split-library-in-two generator', () => {
   const options = { project: 'react-hello', logs: true };
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = setup(tree);
 
     jest.spyOn(output, 'log').mockImplementation(noop);
