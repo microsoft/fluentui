@@ -72,18 +72,19 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
   });
   const formatValue = (date: Date | null): string => (date && isValidDate(date) ? formatDate(date) : '');
   const timestamp = value?.getTime();
+  const formattedValue = formatValue(value);
   const [draft, setDraft] = React.useState(() => ({
-    text: formatValue(value),
+    text: formattedValue,
     dirty: false,
     timestamp,
-    formatter: formatDate,
+    formattedValue,
   }));
 
-  if (!Object.is(draft.timestamp, timestamp) || draft.formatter !== formatDate) {
-    setDraft({ text: formatValue(value), dirty: false, timestamp, formatter: formatDate });
+  if (!Object.is(draft.timestamp, timestamp) || draft.formattedValue !== formattedValue) {
+    setDraft({ text: formattedValue, dirty: false, timestamp, formattedValue });
   }
 
-  const updateText = (text: string, dirty: boolean) => setDraft({ text, dirty, timestamp, formatter: formatDate });
+  const updateText = (text: string, dirty: boolean) => setDraft({ text, dirty, timestamp, formattedValue });
 
   const reportValidation = (event: DatePickerEvent, error?: DatePickerErrorType) => {
     onValidationResult?.(event, { type: event.type, event, error });

@@ -102,6 +102,21 @@ describe('DatePicker', () => {
     expect(input.getAttribute('aria-describedby')).toBeTruthy();
   });
 
+  it('associates the Field label with the input so clicking it activates the picker', () => {
+    const result = render(
+      <Field label="Start date">
+        <DatePicker />
+      </Field>,
+    );
+    const input = result.getByRole('combobox', { name: 'Start date' });
+    const label = result.getByText('Start date');
+
+    expect(label.getAttribute('for')).toBe(input.id);
+    fireEvent.click(label);
+
+    expect(result.getByRole('dialog')).toBeTruthy();
+  });
+
   it('does not open on focus by default', () => {
     const result = render(<DatePicker />);
     fireEvent.focus(result.getByRole('combobox'));
@@ -129,6 +144,16 @@ describe('DatePicker', () => {
     expect(result.queryByRole('dialog')).toBeNull();
     fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
     expect(result.getByRole('dialog')).toBeTruthy();
+  });
+
+  it('dismisses an open editable popup by clicking the input when openOnClick is false', () => {
+    const result = render(<DatePicker allowTextInput openOnClick={false} contentAfter="Pick" />);
+    fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
+    expect(result.getByRole('dialog')).toBeTruthy();
+
+    fireEvent.click(result.getByRole('combobox'));
+
+    expect(result.queryByRole('dialog')).toBeNull();
   });
 
   it('leaves an open selection-only popup open on repeated activation', () => {
@@ -220,6 +245,48 @@ describe('DatePicker', () => {
     expect(result.getByRole('combobox').ownerDocument.activeElement).toBe(result.getByRole('combobox'));
   });
 
+  it('reopens on the committed selection instead of the initial default displayed date', () => {
+    const june = new Date(2030, 5, 1);
+    const result = render(
+      <DatePicker today={today} calendar={{ defaultDisplayedDate: june, layout: 'sideBySide' }} contentAfter="Pick" />,
+    );
+    const input = result.getByRole('combobox');
+    fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
+    expect(result.getByRole('dialog').textContent).toContain('June 2030');
+    fireEvent.click(result.getByTitle('Next month July'));
+    fireEvent.click(result.getByRole('button', { name: 'July 20, 2030' }));
+
+    fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
+
+    expect(result.getByRole('dialog').textContent).toContain('July 2030');
+    expect((input as HTMLInputElement).value).toBe(new Date(2030, 6, 20).toDateString());
+  });
+
+  it('preserves a controlled displayed date when reopening after selection', () => {
+    const controlledDisplayedDate = new Date(2030, 5, 1);
+    const result = render(
+      <DatePicker
+        allowTextInput
+        openOnClick={false}
+        today={today}
+        defaultValue={new Date(2030, 6, 20)}
+        calendar={{
+          displayedDate: controlledDisplayedDate,
+          defaultDisplayedDate: new Date(2030, 4, 1),
+          layout: 'sideBySide',
+        }}
+        contentAfter="Pick"
+      />,
+    );
+    fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
+    expect(result.getByRole('dialog').textContent).toContain('June 2030');
+    fireEvent.click(result.getByRole('combobox'));
+
+    fireEvent.click(result.getByRole('button', { name: 'Open calendar' }));
+
+    expect(result.getByRole('dialog').textContent).toContain('June 2030');
+  });
+
   it('allows Calendar selection cancellation before committing or closing', () => {
     const onDateChange = jest.fn();
     const result = render(
@@ -287,6 +354,26 @@ describe('DatePicker', () => {
     expect((input as HTMLInputElement).value).toBe(selectedDate.toDateString());
   });
 
+  it('preserves editable draft text when an equivalent formatter callback is recreated', () => {
+    const ControlledDatePicker = () => {
+      const [, setObservedText] = React.useState('');
+      return (
+        <DatePicker
+          allowTextInput
+          defaultValue={selectedDate}
+          formatDate={date => date.toLocaleDateString()}
+          onChange={(_, data) => setObservedText(data.value)}
+        />
+      );
+    };
+    const result = render(<ControlledDatePicker />);
+    const input = result.getByRole('combobox');
+
+    fireEvent.change(input, { target: { value: 'unfinished draft' } });
+
+    expect((input as HTMLInputElement).value).toBe('unfinished draft');
+  });
+
   it('closes for editing without committing the previous draft', () => {
     const parseDate = jest.fn();
     const onDateChange = jest.fn();
@@ -326,6 +413,31 @@ describe('DatePicker', () => {
     act(() => result.getByRole('combobox').focus());
     fireEvent.keyDown(result.getByRole('combobox'), { key: 'Enter' });
     expect(onValidationResult).toHaveBeenCalledTimes(1);
+  });
+
+  it('validates an editable date on blur after ArrowDown opens Calendar', () => {
+    const typedDate = new Date(2035, 4, 20);
+    const onDateChange = jest.fn();
+    const result = render(
+      <DatePicker
+        allowTextInput
+        today={today}
+        parseDate={() => typedDate}
+        onDateChange={onDateChange}
+        calendar={{ layout: 'sideBySide' }}
+      />,
+    );
+    const input = result.getByRole('combobox');
+    fireEvent.change(input, { target: { value: 'May 20, 2035' } });
+
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.blur(input);
+
+    expect(onDateChange).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ value: typedDate, reason: 'input' }),
+    );
+    expect(result.getByRole('dialog').textContent).toContain('May 2035');
   });
 
   it('validates once for outside pointer dismissal followed by input blur', () => {

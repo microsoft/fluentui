@@ -65,7 +65,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const skipBlurValidation = React.useRef(false);
   const lastCloseEvent = React.useRef<Event | undefined>(undefined);
   const outsidePointerTarget = React.useRef<EventTarget | null>(null);
-  const inputId = useId('datePicker-input', props.id ?? props.input?.id);
+  const inputId = useId('datePicker-input', props.id ?? props.input?.id ?? fieldContext?.generatedControlId);
   const popupId = useId('datePicker-popup', slot.resolveShorthand(popupSurfaceProp)?.id);
   const iconId = useId('datePicker-icon');
   const { targetRef, containerRef } = usePositioning({
@@ -165,7 +165,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const consumerClick = input.onClick ?? root.onClick;
   input.onClick = useEventCallback(event => {
     consumerClick?.(event);
-    if (openOnClick) {
+    if (open || openOnClick) {
       activate(event, 'input');
     }
   });
@@ -182,7 +182,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const consumerBlur = input.onBlur ?? root.onBlur;
   input.onBlur = useEventCallback(event => {
     consumerBlur?.(event);
-    if (!event.defaultPrevented && !open && !skipBlurValidation.current) {
+    if (!event.defaultPrevented && !skipBlurValidation.current) {
       dateState.validate(event);
     }
     skipBlurValidation.current = false;
@@ -196,6 +196,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     if (event.key === 'Enter') {
       if (!open) {
         dateState.validate(event);
+        skipBlurValidation.current = true;
         requestOpen(event, true, 'keyboard');
       } else if (allowTextInput) {
         dismiss(event, true);
@@ -229,6 +230,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   });
   calendar.value = dateState.value && Number.isFinite(dateState.value.getTime()) ? dateState.value : null;
+  if (dateState.value) {
+    calendar.defaultDisplayedDate = dateState.value;
+  }
   calendar.today = today;
   calendar.minDate = minDate;
   calendar.maxDate = maxDate;
