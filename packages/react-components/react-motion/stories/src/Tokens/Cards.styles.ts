@@ -8,6 +8,8 @@ export const useClasses = makeStyles({
     flexDirection: 'column',
   },
   controls: {
+    display: 'flex',
+    flexWrap: 'wrap',
     alignSelf: 'end',
     backgroundColor: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusMedium,
@@ -106,6 +108,38 @@ export const useCardClasses = makeStyles({
 
     '@media (forced-colors: active)': {
       stroke: 'CanvasText',
+    },
+  },
+
+  handle: {
+    stroke: tokens.colorNeutralStrokeAccessible,
+    strokeWidth: tokens.strokeWidthThin,
+    strokeDasharray: '4 3',
+
+    '& line': {
+      vectorEffect: 'non-scaling-stroke',
+    },
+
+    '@media (forced-colors: active)': {
+      stroke: 'CanvasText',
+    },
+  },
+  controlPoint: {
+    fill: tokens.colorNeutralBackground1,
+    stroke: tokens.colorBrandForeground1,
+    strokeWidth: tokens.strokeWidthThick,
+    vectorEffect: 'non-scaling-stroke',
+
+    '@media (forced-colors: active)': {
+      fill: 'Canvas',
+      stroke: 'LinkText',
+    },
+  },
+  endpoint: {
+    fill: tokens.colorNeutralForeground1,
+
+    '@media (forced-colors: active)': {
+      fill: 'CanvasText',
     },
   },
 
