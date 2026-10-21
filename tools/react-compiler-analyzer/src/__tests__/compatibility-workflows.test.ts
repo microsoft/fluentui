@@ -15,6 +15,7 @@ import { applyAnnotations } from '../coverage-fixer';
 import { applyFixes } from '../fixer';
 import { toWorkspacePath } from '../path-utils';
 import type { AnalysisDocument, AnnotateMode, CompilationMode, LintDocument, QuoteStyle } from '../types';
+import { captureJson } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -57,14 +58,8 @@ describe('syntax compatibility and opt-in workflows', () => {
   }
 
   async function json<T>(run: () => Promise<number>): Promise<{ code: number; document: T }> {
-    const output: string[] = [];
-    const write = jest.spyOn(process.stdout, 'write').mockImplementation(chunk => {
-      output.push(String(chunk));
-      return true;
-    });
-    const code = await run();
-    write.mockRestore();
-    return { code, document: JSON.parse(output.join('')) as T };
+    const { code, doc } = await captureJson<T>(run);
+    return { code, document: doc };
   }
 
   function source(directive = '', expression = '{ value }') {
@@ -416,10 +411,15 @@ export function useValue(initial = 0) {
       throw new Error('should not read metadata');
     });
     jest.doMock('babel-plugin-react-compiler/package.json', metadata);
-    const { code, document } = await json<AnalysisDocument>(() => runAnalyze({ ...argv(), verbose: true }));
+    const {
+      code,
+      doc: document,
+      stderr,
+    } = await captureJson<AnalysisDocument>(() => runAnalyze({ ...argv(), verbose: true }));
     expect(code).toBe(0);
     expect(document).not.toHaveProperty('compiler');
     expect(metadata).not.toHaveBeenCalled();
+    expect(stderr.join('\n')).toContain('Analyzing:');
   });
 
   it('rejects incomplete or misleading dry-run schema metadata', async () => {

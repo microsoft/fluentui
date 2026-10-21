@@ -20,4 +20,28 @@ export function captureConsole(method: 'log' | 'warn' | 'error', output: string[
     output.push(args.map(String).join(' '));
   });
 }
+
+/** Keep diagnostics out of stdout even when Jest routes its console output through stdout. */
+export async function captureJson<T>(run: () => Promise<number>): Promise<{ doc: T; code: number; stderr: string[] }> {
+  const chunks: string[] = [];
+  const stderr: string[] = [];
+  const originalWrite = process.stdout.write;
+  const originalError = console.error;
+
+  process.stdout.write = ((chunk: string) => {
+    chunks.push(String(chunk));
+    return true;
+  }) as typeof process.stdout.write;
+  console.error = (...args: unknown[]) => {
+    stderr.push(args.map(String).join(' '));
+  };
+
+  try {
+    const code = await run();
+    return { doc: JSON.parse(chunks.join('')) as T, code, stderr };
+  } finally {
+    process.stdout.write = originalWrite;
+    console.error = originalError;
+  }
+}
 import { jest } from '@jest/globals';
