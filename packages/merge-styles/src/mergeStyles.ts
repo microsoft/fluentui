@@ -1,13 +1,12 @@
 import { extractStyleParts } from './extractStyleParts';
-import { IStyle, IStyleBaseArray } from './IStyle';
+import { IStyle } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
 import { isShadowConfig, ShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
 
-type Missing = false | null | undefined;
-type StyleArg = IStyle | IStyleBaseArray | Missing;
+type StyleArg = IStyle;
 type StyleArgWithShadow = StyleArg | ShadowConfig;
 
 export function mergeStyles(...args: StyleArg[]): string;
