@@ -1,12 +1,12 @@
 /** @jest-environment node */
 
 jest.mock('@fluentui/scripts-storybook', () => ({
+  configureReactIcons: jest.fn(),
   loadWorkspaceAddon: jest.fn(),
   registerTsPaths: jest.fn(),
   registerRules: jest.fn(),
   rules: {},
 }));
-jest.mock('../../../.storybook/react-icons-webpack', () => ({ configureReactIcons: jest.fn() }));
 
 describe('Icon sizing font Storybook', () => {
   const originalScope = process.env.FLUENTUI_VRT_FONT_SIZING;

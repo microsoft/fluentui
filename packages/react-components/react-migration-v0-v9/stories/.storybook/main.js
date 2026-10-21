@@ -1,6 +1,5 @@
 const path = require('path');
-const { registerTsPaths } = require('@fluentui/scripts-storybook');
-const { configureReactIcons } = require('../../../../../.storybook/react-icons-webpack');
+const { configureReactIcons, registerTsPaths } = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../../../.storybook/main');
 

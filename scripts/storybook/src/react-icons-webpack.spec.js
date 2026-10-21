@@ -1,6 +1,6 @@
 jest.mock('@fluentui/react-icons-font-subsetting-webpack-plugin', () => ({ default: jest.fn() }));
 
-const { configureReactIcons } = require('../../../.storybook/react-icons-webpack');
+const { configureReactIcons } = require('./index');
 
 describe('Storybook React icon configuration', () => {
   const originalVariant = process.env.FLUENTUI_ICON_VARIANT;
@@ -53,6 +53,6 @@ describe('Storybook React icon configuration', () => {
     if (typeof config.entry !== 'function') {
       throw new Error('Font styles must be prepended through an entry function');
     }
-    expect(await config.entry()).toEqual([require.resolve('../../../.storybook/react-icons-font.css'), './preview.js']);
+    expect(await config.entry()).toEqual([require.resolve('./react-icons-font.css'), './preview.js']);
   });
 });

@@ -13,6 +13,10 @@
 
 ## SVG and Font Icons
 
+Shared icon configuration is exported as `configureReactIcons` from
+`@fluentui/scripts-storybook`; its implementation, CSS, and tests live in
+[the Storybook tooling project](../../scripts/storybook/src/react-icons-webpack.js).
+
 SVG icons are the default renderer. Use the existing icon variant flag to run the
 visual-test Storybook with font glyphs:
 

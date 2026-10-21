@@ -10,6 +10,7 @@
       "inputs": [
         "production",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "externalDependencies": ["storybook"] },
         { "env": "FLUENTUI_ICON_VARIANT" }

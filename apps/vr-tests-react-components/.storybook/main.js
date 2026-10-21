@@ -1,9 +1,13 @@
 // @ts-check
 
 const path = require('path');
-const { configureReactIcons } = require('../../../.storybook/react-icons-webpack');
-
-const { registerTsPaths, registerRules, rules, loadWorkspaceAddon } = require('@fluentui/scripts-storybook');
+const {
+  configureReactIcons,
+  registerTsPaths,
+  registerRules,
+  rules,
+  loadWorkspaceAddon,
+} = require('@fluentui/scripts-storybook');
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 const fontSizingOnly = process.env.FLUENTUI_VRT_FONT_SIZING === 'true';
 
