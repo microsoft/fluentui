@@ -322,8 +322,12 @@ export const useCalendarMonth_unstable = (
 
   Object.assign(state.grid, arrowNavigationAttributes);
   /* eslint-disable react-hooks/immutability */
-  state.previousYearButton.children ??= <ArrowUpRegular />;
-  state.nextYearButton.children ??= <ArrowDownRegular />;
+  if (state.previousYearButton.children === undefined) {
+    state.previousYearButton.children = <ArrowUpRegular />;
+  }
+  if (state.nextYearButton.children === undefined) {
+    state.nextYearButton.children = <ArrowDownRegular />;
+  }
   state.wrapRow = row => (
     <DirectionalSlideIn
       animationDirection="vertical"

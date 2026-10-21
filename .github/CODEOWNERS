@@ -339,6 +339,10 @@ packages/react-components/react-calendar-preview/library @microsoft/cxe-prg
 packages/react-components/react-calendar-preview/stories @microsoft/cxe-prg
 packages/react-components/react-timepicker-preview/library @microsoft/cxe-prg
 packages/react-components/react-timepicker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-datepicker-preview/library @microsoft/cxe-prg
+packages/react-components/react-datepicker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-range-slider-preview/library @microsoft/cxe-prg
+packages/react-components/react-range-slider-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api

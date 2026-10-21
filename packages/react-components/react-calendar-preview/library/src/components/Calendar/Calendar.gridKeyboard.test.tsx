@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { flushSync } from 'react-dom';
 import { act, fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarProvider, calendarContextDefaultValue } from '../../contexts/calendarContext';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
@@ -33,10 +34,16 @@ type FixtureProps = {
   allFocusable?: boolean;
   dir?: 'ltr' | 'rtl';
   minDate?: Date;
+  restrictedDates?: Date[];
+  weeksToShow?: number;
+  getDayCellProps?: CalendarDayProps['getDayCellProps'];
   onGridKeyDown?: React.KeyboardEventHandler<HTMLElement>;
   onGridKeyDownCapture?: React.KeyboardEventHandler<HTMLElement>;
   onCellKeyDown?: React.KeyboardEventHandler<HTMLElement>;
   onCellKeyDownCapture?: React.KeyboardEventHandler<HTMLElement>;
+  onPickerSelect?: (event: React.SyntheticEvent<HTMLButtonElement>) => void;
+  renderIcon?: boolean;
+  renderFocusgroup?: boolean;
 };
 
 const today = new Date(2020, 8, 18);
@@ -61,19 +68,74 @@ function renderPicker(picker: 'day' | 'month' | 'year', base: boolean, props: Fi
     return (
       <Provider_unstable value={{ dir }}>
         <CalendarProvider
-          value={{ ...calendarContextDefaultValue, allFocusable, minDate, today, value: today, setValue: onSelect }}
+          value={{
+            ...calendarContextDefaultValue,
+            allFocusable,
+            minDate,
+            restrictedDates: fixtureProps.restrictedDates,
+            today,
+            value: today,
+            setValue: onSelect,
+          }}
         >
           {picker === 'day' ? (
             <Day
               navigatedDate={today}
               onNavigateDate={onNavigate}
-              getDayCellProps={() => ({ onKeyDown: onCellKeyDown, onKeyDownCapture: onCellKeyDownCapture })}
+              weeksToShow={fixtureProps.weeksToShow}
+              getDayCellProps={date => ({
+                onKeyDown: onCellKeyDown,
+                onKeyDownCapture: onCellKeyDownCapture,
+                ...fixtureProps.getDayCellProps?.(date),
+              })}
               grid={grid}
+              renderDay={
+                fixtureProps.renderIcon
+                  ? () => (
+                      <span {...(fixtureProps.renderFocusgroup ? { focusgroup: 'none' } : {})}>
+                        <svg aria-label="Day icon">
+                          <path />
+                        </svg>
+                      </span>
+                    )
+                  : undefined
+              }
             />
           ) : picker === 'month' ? (
-            <Month navigatedDate={today} onSelectDate={onSelect} onNavigateDate={onNavigate} grid={grid} />
+            <Month
+              navigatedDate={today}
+              onSelectDate={(event, data) => {
+                onSelect(event, data);
+                if (data.type !== undefined) {
+                  fixtureProps.onPickerSelect?.(data.event);
+                }
+              }}
+              onNavigateDate={onNavigate}
+              grid={grid}
+            />
           ) : (
-            <Year navigatedYear={2020} onSelectYear={onSelect} onNavigateDate={onNavigate} grid={grid} />
+            <Year
+              navigatedYear={2020}
+              onSelectYear={(event, data) => {
+                onSelect(event, data);
+                if (data.type !== undefined) {
+                  fixtureProps.onPickerSelect?.(data.event);
+                }
+              }}
+              renderYear={
+                fixtureProps.renderIcon
+                  ? year => (
+                      <span {...(fixtureProps.renderFocusgroup ? { focusgroup: 'none' } : {})}>
+                        <svg aria-label={`Year ${year}`}>
+                          <path />
+                        </svg>
+                      </span>
+                    )
+                  : undefined
+              }
+              onNavigateDate={onNavigate}
+              grid={grid}
+            />
           )}
         </CalendarProvider>
       </Provider_unstable>
@@ -176,7 +238,6 @@ describe.each([
 
   it('continues past a candidate that cannot receive focus, including to tabIndex=-1 cells', () => {
     const { cells } = renderPicker(picker, base);
-    cells[1].hidden = true;
     const failedFocus = jest.spyOn(cells[1], 'focus').mockImplementation(() => undefined);
     cells[2].tabIndex = -1;
     act(() => cells[0].focus());
@@ -186,6 +247,19 @@ describe.each([
     expect(failedFocus).toHaveBeenCalledTimes(1);
     expect(cells[2]).toHaveFocus();
     failedFocus.mockRestore();
+  });
+
+  it('skips hidden cells without attempting to focus them', () => {
+    const { cells } = renderPicker(picker, base);
+    cells[1].hidden = true;
+    const hiddenFocus = jest.spyOn(cells[1], 'focus');
+    act(() => cells[0].focus());
+
+    fireEvent.keyDown(cells[0], { key: 'ArrowRight' });
+
+    expect(hiddenFocus).not.toHaveBeenCalled();
+    expect(cells[2]).toHaveFocus();
+    hiddenFocus.mockRestore();
   });
 
   it.each([
@@ -264,6 +338,31 @@ describe.each([
     expect(onSelect.mock.calls[0][1].type).toBe('keydown');
   });
 
+  it.each(['click', 'keydown'] as const)('forwards %s selection with the cell button as currentTarget', type => {
+    const targets: HTMLButtonElement[] = [];
+    const onPickerSelect = jest.fn((event: React.SyntheticEvent<HTMLButtonElement>) => {
+      targets.push(event.currentTarget);
+      expect(event.currentTarget.form).toBe(form);
+      event.preventDefault();
+      expect(event.nativeEvent.defaultPrevented).toBe(true);
+      event.stopPropagation();
+    });
+    const { cells, container, getByRole } = renderPicker(picker, base, { onPickerSelect });
+    const form = container.ownerDocument.createElement('form');
+    container.appendChild(form);
+    form.appendChild(getByRole('grid'));
+    const onBubble = jest.fn();
+    container.ownerDocument.body.addEventListener(type, onBubble);
+
+    const defaultAllowed = type === 'click' ? fireEvent.click(cells[2]) : fireEvent.keyDown(cells[2], { key: 'Enter' });
+    container.ownerDocument.body.removeEventListener(type, onBubble);
+
+    expect(onPickerSelect).toHaveBeenCalledTimes(1);
+    expect(targets).toEqual([cells[2]]);
+    expect(defaultAllowed).toBe(false);
+    expect(onBubble).not.toHaveBeenCalled();
+  });
+
   it('honors cancellation from the grid capture handler', () => {
     const onGridKeyDownCapture = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
     const { cells } = renderPicker(picker, base, { onGridKeyDownCapture });
@@ -333,11 +432,204 @@ describe('moveCalendarGridFocus', () => {
   });
 });
 
+describe.each([
+  { name: 'base day', Picker: BaseDay, props: { navigatedDate: today }, label: 'September 18, 2020' },
+  { name: 'styled day', Picker: CalendarDay, props: { navigatedDate: today }, label: 'September 18, 2020' },
+  { name: 'base month', Picker: BaseMonth, props: { navigatedDate: today }, label: 'September' },
+  { name: 'styled month', Picker: CalendarMonth, props: { navigatedDate: today }, label: 'September' },
+  { name: 'base year', Picker: BaseYear, props: { navigatedYear: 2020 }, label: '2020' },
+  { name: 'styled year', Picker: CalendarYear, props: { navigatedYear: 2020 }, label: '2020' },
+])('$name hidden panel', ({ Picker, props, label }) => {
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'keeps its tab stop when a panel hidden with %s is revealed without rerendering',
+    hiding => {
+      const { getByTestId, getByRole } = render(
+        <>
+          <button type="button">Before panel</button>
+          <div
+            data-testid="panel"
+            hidden={hiding === 'hidden'}
+            style={hiding === 'display' ? { display: 'none' } : hiding === 'visibility' ? { visibility: 'hidden' } : {}}
+          >
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Picker {...props} />
+            </CalendarProvider>
+          </div>
+        </>,
+      );
+      const panel = getByTestId('panel');
+      expect(panel.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+
+      panel.hidden = false;
+      panel.style.removeProperty('display');
+      panel.style.removeProperty('visibility');
+      const target = panel.querySelector<HTMLElement>('[role="gridcell"][tabindex="0"]')!;
+      expect(target).toBeVisible();
+      expect(target).toBe(
+        label.includes(',')
+          ? getByRole('button', { name: label }).closest('[role="gridcell"]')
+          : getByRole('gridcell', { name: label }),
+      );
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+      for (let step = 0; step < 5 && target.ownerDocument.activeElement !== target; step++) {
+        userEvent.tab();
+      }
+
+      expect(target).toHaveFocus();
+    },
+  );
+});
+
+describe.each([
+  {
+    name: 'base day',
+    Picker: BaseDay,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 8, 20) },
+    label: 'September 19, 2020',
+  },
+  {
+    name: 'styled day',
+    Picker: CalendarDay,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 8, 20) },
+    label: 'September 19, 2020',
+  },
+  {
+    name: 'base month',
+    Picker: BaseMonth,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 9, 18) },
+    label: 'November',
+  },
+  {
+    name: 'styled month',
+    Picker: CalendarMonth,
+    props: { navigatedDate: today },
+    next: { navigatedDate: new Date(2020, 9, 18) },
+    label: 'November',
+  },
+  { name: 'base year', Picker: BaseYear, props: { navigatedYear: 2020 }, next: { navigatedYear: 2021 }, label: '2022' },
+  {
+    name: 'styled year',
+    Picker: CalendarYear,
+    props: { navigatedYear: 2020 },
+    next: { navigatedYear: 2021 },
+    label: '2022',
+  },
+])('$name hidden panel updates', ({ Picker, props, next, label }) => {
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'normalizes its remembered tab stop when navigation changes under %s',
+    hiding => {
+      const element = (hidden: boolean, pickerProps: typeof props) => (
+        <>
+          <button type="button">Before panel</button>
+          <div
+            data-testid="panel"
+            hidden={hidden && hiding === 'hidden'}
+            style={
+              hidden && hiding === 'display'
+                ? { display: 'none' }
+                : hidden && hiding === 'visibility'
+                ? { visibility: 'hidden' }
+                : {}
+            }
+          >
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Picker {...pickerProps} />
+            </CalendarProvider>
+          </div>
+        </>
+      );
+      const { getByRole, getByTestId, rerender } = render(element(false, props));
+      const remembered = label.includes(',')
+        ? getByRole('button', { name: label }).closest<HTMLElement>('[role="gridcell"]')!
+        : getByRole('gridcell', { name: label });
+      act(() => remembered.focus());
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+      rerender(element(true, props));
+      rerender(element(true, next));
+
+      const panel = getByTestId('panel');
+      expect(panel.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+      expect(remembered).toHaveAttribute('tabindex', '0');
+      panel.hidden = false;
+      panel.style.removeProperty('display');
+      panel.style.removeProperty('visibility');
+
+      for (let step = 0; step < 5 && remembered.ownerDocument.activeElement !== remembered; step++) {
+        userEvent.tab();
+      }
+
+      expect(remembered).toHaveFocus();
+    },
+  );
+});
+
 describe.each(['day', 'month', 'year'] as const)('%s grid keyboard boundaries', picker => {
   describe.each([
     { name: 'base', base: true },
     { name: 'styled', base: false },
   ])('$name', ({ base }) => {
+    if (picker !== 'month') {
+      it.each(['HTML', 'SVG'])(
+        'selects custom focusgroup %s content on click but preserves keyboard ownership',
+        content => {
+          const { cells, onSelect } = renderPicker(picker, base, { renderIcon: true, renderFocusgroup: true });
+          const target = cells[2].querySelector(content === 'HTML' ? '[focusgroup]' : 'path')!;
+          expect(fireEvent.keyDown(target, { key: 'Enter' })).toBe(true);
+          expect(fireEvent.keyDown(target, { key: 'ArrowRight' })).toBe(true);
+          expect(onSelect).not.toHaveBeenCalled();
+          target.addEventListener('click', event => event.preventDefault(), { once: true });
+          expect(fireEvent.click(target)).toBe(false);
+          expect(onSelect).not.toHaveBeenCalled();
+
+          fireEvent.click(target);
+
+          expect(onSelect).toHaveBeenCalledTimes(1);
+          expect(onSelect.mock.calls[0][1]).toMatchObject(
+            picker === 'day' ? { type: 'click', date: new Date(2020, 8, 1) } : { type: 'click', year: 2022 },
+          );
+        },
+      );
+
+      it.each(['click', 'keydown'] as const)('selects the correct cell from an SVG-child %s', type => {
+        const { cells, onSelect } = renderPicker(picker, base, { renderIcon: true });
+        const path = cells[2].querySelector('path')!;
+
+        if (type === 'click') {
+          fireEvent.click(path);
+        } else {
+          fireEvent.keyDown(path, { key: 'Enter' });
+        }
+
+        expect(onSelect).toHaveBeenCalledTimes(1);
+        expect(onSelect.mock.calls[0][1]).toMatchObject(
+          picker === 'day' ? { type, date: new Date(2020, 8, 1) } : { type, year: 2022 },
+        );
+      });
+    }
+
+    it.each(['contenteditable', 'grid'])('ignores SVG clicks inside nested %s content', owner => {
+      const { cells, onSelect } = renderPicker(picker, base);
+      const targetDocument = cells[0].ownerDocument;
+      const nestedOwner = targetDocument.createElement('span');
+      if (owner === 'contenteditable') {
+        nestedOwner.setAttribute('contenteditable', 'true');
+      } else {
+        nestedOwner.setAttribute('role', 'grid');
+      }
+      const icon = targetDocument.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      nestedOwner.appendChild(icon);
+      cells[0].appendChild(nestedOwner);
+
+      fireEvent.click(icon);
+
+      expect(onSelect).not.toHaveBeenCalled();
+    });
+
     it('allows navigation within a contenteditable=false island inside an editable ancestor', () => {
       const { cells, container, getByRole } = renderPicker(picker, base);
       const grid = getByRole('grid');
@@ -429,6 +721,258 @@ describe.each([
   { name: 'base', base: true },
   { name: 'styled', base: false },
 ])('$name day grid consumer cell handlers', ({ base }) => {
+  it.each(['contenteditable', 'input'])('clears range state when the pointer leaves %s day content', editable => {
+    const Day = base ? BaseDay : CalendarDay;
+    const onSelect = jest.fn();
+    const onNavigate = jest.fn();
+    const { getByRole } = render(
+      <CalendarProvider
+        value={{ ...calendarContextDefaultValue, today, value: today, dateRangeType: 'week', setValue: onSelect }}
+      >
+        <Day
+          navigatedDate={today}
+          onNavigateDate={onNavigate}
+          renderDay={(_day, defaultContent) => (
+            <>
+              {defaultContent}
+              {editable === 'input' ? (
+                <input aria-label="Day editor" />
+              ) : (
+                <span contentEditable suppressContentEditableWarning>
+                  Editor
+                </span>
+              )}
+            </>
+          )}
+        />
+      </CalendarProvider>,
+    );
+    const button = getByRole('button', { name: 'September 18, 2020' });
+    const cell = button.closest('td')!;
+    const editor = cell.querySelector<HTMLElement>(editable === 'input' ? 'input' : '[contenteditable]')!;
+    const grid = getByRole('grid');
+    fireEvent.mouseOver(button);
+    fireEvent.mouseDown(button);
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    expect(grid.querySelectorAll('[data-range-pressed]')).toHaveLength(7);
+
+    fireEvent.mouseOut(button, { relatedTarget: editor });
+    fireEvent.mouseOver(editor, { relatedTarget: button });
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    expect(grid.querySelectorAll('[data-range-pressed]')).toHaveLength(7);
+    fireEvent.click(editor);
+    expect(fireEvent.keyDown(editor, { key: 'Enter' })).toBe(true);
+    expect(fireEvent.keyDown(editor, { key: 'ArrowRight' })).toBe(true);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+
+    fireEvent.mouseOut(editor, { relatedTarget: grid });
+
+    expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0);
+    fireEvent.mouseOver(editor, { relatedTarget: grid });
+    expect(grid.querySelectorAll('[data-range-hovered]')).toHaveLength(7);
+    fireEvent.mouseOut(editor, { relatedTarget: grid });
+    const nestedGrid = cell.ownerDocument.createElement('div');
+    const nestedCell = cell.ownerDocument.createElement('div');
+    nestedGrid.setAttribute('role', 'grid');
+    nestedCell.setAttribute('role', 'gridcell');
+    nestedGrid.appendChild(nestedCell);
+    cell.appendChild(nestedGrid);
+    fireEvent.mouseOver(nestedCell);
+    expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0);
+  });
+
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'excludes an internally %s row while preserving grid visibility styles',
+    hiding => {
+      const Day = base ? BaseDay : CalendarDay;
+      const element = (hidden: boolean) => (
+        <>
+          <button type="button">Before panel</button>
+          <div data-testid="panel" hidden={hidden}>
+            <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+              <Day navigatedDate={today} />
+            </CalendarProvider>
+          </div>
+        </>
+      );
+      const { getByRole, getByTestId, rerender } = render(element(false));
+      const remembered = getByRole('button', { name: 'September 19, 2020' }).closest('td')!;
+      const grid = getByRole('grid');
+      const row = remembered.closest('tr')!;
+      act(() => remembered.focus());
+      act(() => getByRole('button', { name: 'Before panel' }).focus());
+      if (hiding === 'hidden') {
+        row.hidden = true;
+      } else {
+        row.style.setProperty(
+          hiding === 'display' ? 'display' : 'visibility',
+          hiding === 'display' ? 'none' : 'hidden',
+        );
+      }
+      grid.style.setProperty('visibility', 'hidden', 'important');
+
+      rerender(element(true));
+
+      expect(grid.style.getPropertyValue('visibility')).toBe('hidden');
+      expect(grid.style.getPropertyPriority('visibility')).toBe('important');
+      expect(remembered).toHaveAttribute('tabindex', '-1');
+      const tabStops = grid.querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+      expect(tabStops).toHaveLength(1);
+      getByTestId('panel').hidden = false;
+      grid.style.removeProperty('visibility');
+      expect(tabStops[0]).toBeVisible();
+
+      for (let step = 0; step < 5 && tabStops[0].ownerDocument.activeElement !== tabStops[0]; step++) {
+        userEvent.tab();
+      }
+      expect(tabStops[0]).toHaveFocus();
+    },
+  );
+
+  it.each(
+    (['hidden', 'display', 'visibility'] as const).flatMap(panelHiding =>
+      (['hidden', 'display', 'visibility'] as const).map(hiding => ({ panelHiding, hiding })),
+    ),
+  )('replaces an individually $hiding remembered date while its panel uses $panelHiding', ({ panelHiding, hiding }) => {
+    const Day = base ? BaseDay : CalendarDay;
+    const element = (hidden: boolean) => (
+      <>
+        <button type="button">Before panel</button>
+        <div
+          data-testid="panel"
+          hidden={hidden && panelHiding === 'hidden'}
+          style={
+            hidden && panelHiding === 'display'
+              ? { display: 'none' }
+              : hidden && panelHiding === 'visibility'
+              ? { visibility: 'hidden' }
+              : {}
+          }
+        >
+          <CalendarProvider value={{ ...calendarContextDefaultValue, today, value: today }}>
+            <Day
+              navigatedDate={today}
+              getDayCellProps={date =>
+                hidden && (date.getDate() === 18 || date.getDate() === 19)
+                  ? hiding === 'hidden'
+                    ? { hidden: true }
+                    : { style: hiding === 'display' ? { display: 'none' } : { visibility: 'hidden' } }
+                  : {}
+              }
+            />
+          </CalendarProvider>
+        </div>
+      </>
+    );
+    const { getByRole, getByTestId, rerender } = render(element(false));
+    const remembered = getByRole('button', { name: 'September 19, 2020' }).closest('td')!;
+    act(() => remembered.focus());
+    act(() => getByRole('button', { name: 'Before panel' }).focus());
+
+    rerender(element(true));
+
+    const panel = getByTestId('panel');
+    const tabStops = panel.querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+    expect(tabStops).toHaveLength(1);
+    expect(remembered).toHaveAttribute('tabindex', '-1');
+    panel.hidden = false;
+    panel.style.removeProperty('display');
+    panel.style.removeProperty('visibility');
+    expect(tabStops[0]).toBeVisible();
+    expect(tabStops[0]).toBe(getByRole('button', { name: 'August 30, 2020' }).closest('td'));
+
+    for (let step = 0; step < 5 && tabStops[0].ownerDocument.activeElement !== tabStops[0]; step++) {
+      userEvent.tab();
+    }
+
+    expect(tabStops[0]).toHaveFocus();
+  });
+
+  it('preserves the focus destination of a cancelled cell click', () => {
+    const { container, cells, onSelect, onNavigate } = renderPicker('day', base, {
+      getDayCellProps: () => ({
+        onClick: event => {
+          event.preventDefault();
+          editor.focus();
+        },
+      }),
+    });
+    const editor = container.ownerDocument.createElement('input');
+    container.appendChild(editor);
+
+    expect(fireEvent.click(cells[2].querySelector('button')!)).toBe(false);
+
+    expect(editor).toHaveFocus();
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
+
+  it.each(['hidden', 'display', 'visibility'] as const)(
+    'provides a visible initial Tab stop when the navigated cell is hidden with %s',
+    hiding => {
+      const { getByRole, getByTitle } = renderPicker('day', base, {
+        getDayCellProps: date =>
+          date.getTime() === today.getTime()
+            ? hiding === 'hidden'
+              ? { hidden: true }
+              : { style: hiding === 'display' ? { display: 'none' } : { visibility: 'hidden' } }
+            : {},
+      });
+      const grid = getByRole('grid');
+      const tabStops = grid.querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+      expect(tabStops).toHaveLength(1);
+      expect(tabStops[0]).toBeVisible();
+      expect(tabStops[0]).toBe(getByRole('button', { name: 'August 30, 2020' }).closest('td'));
+      act(() => getByTitle('Next month October').focus());
+
+      userEvent.tab();
+
+      expect(tabStops[0]).toHaveFocus();
+    },
+  );
+
+  it('replaces a hidden remembered Tab stop even when the navigated date is also hidden', () => {
+    const { getByRole, getByTitle, rerenderPicker } = renderPicker('day', base);
+    const remembered = getByRole('button', { name: 'September 19, 2020' }).closest('td')!;
+    act(() => remembered.focus());
+
+    rerenderPicker({
+      getDayCellProps: date => ({
+        hidden: date.getTime() === today.getTime() || date.getTime() === new Date(2020, 8, 19).getTime(),
+      }),
+    });
+
+    const tabStops = getByRole('grid').querySelectorAll<HTMLElement>('[role="gridcell"][tabindex="0"]');
+    expect(remembered).toHaveAttribute('tabindex', '-1');
+    expect(tabStops).toHaveLength(1);
+    expect(tabStops[0]).toBeVisible();
+    act(() => getByTitle('Next month October').focus());
+
+    userEvent.tab();
+
+    expect(tabStops[0]).toHaveFocus();
+  });
+
+  it('keeps a restricted navigated date reachable by Tab in an allFocusable single-week grid', () => {
+    const { getByRole, getByTitle, onSelect, onNavigate } = renderPicker('day', base, {
+      allFocusable: true,
+      weeksToShow: 1,
+      restrictedDates: Array.from({ length: 7 }, (_, index) => new Date(2020, 8, 13 + index)),
+    });
+    const cell = getByRole('button', { name: 'September 18, 2020' }).closest('td')!;
+    expect(cell).toHaveAttribute('tabindex', '0');
+    act(() => getByTitle('Next month October').focus());
+
+    userEvent.tab();
+
+    expect(cell).toHaveFocus();
+    fireEvent.keyDown(cell, { key: 'Enter' });
+    fireEvent.click(cell);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
+
   it('runs cell handlers before navigation and honors their cancellation', () => {
     const onCellKeyDown = jest.fn((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault());
     const { cells, onNavigate } = renderPicker('day', base, { onCellKeyDown });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { spawnSync } from 'node:child_process';
-import { render as testingRender, fireEvent } from '@testing-library/react';
+import { act, render as testingRender, fireEvent } from '@testing-library/react';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarDay } from './CalendarDay';
 import { CalendarProvider, calendarContextDefaultValue } from '../../index';
@@ -111,6 +111,26 @@ describe('CalendarDay', () => {
       expect(prev.querySelector('svg')).not.toBeNull();
       expect(next.querySelector('svg')).not.toBeNull();
       expect(close.querySelector('svg')).not.toBeNull();
+    });
+
+    it.each([null, undefined])('preserves navigation children=%s', children => {
+      const { container } = render(
+        <CalendarDay
+          {...defaultProps}
+          previousMonthButton={{ children }}
+          nextMonthButton={{ children }}
+          closeButton={{ children }}
+        />,
+      );
+      const buttons = Array.from(container.querySelectorAll('button[title]'));
+      expect(buttons).toHaveLength(3);
+      for (const button of buttons) {
+        if (children === undefined) {
+          expect(button.querySelector('svg')).not.toBeNull();
+        } else {
+          expect(button).toBeEmptyDOMElement();
+        }
+      }
     });
 
     it('lets the navigation button slots replace the default icons', () => {
@@ -259,17 +279,19 @@ describe('CalendarDay', () => {
     expect(cellRef.current).toHaveFocus();
   });
 
-  it('keeps focus on the cell when a custom cell handler prevents selection', () => {
+  it('preserves existing cell focus when a custom cell handler prevents selection', () => {
     const setValue = jest.fn();
     const { container, getByRole } = render(
       <CalendarDay {...defaultProps} getDayCellProps={() => ({ onClick: event => event.preventDefault() })} />,
       { setValue },
     );
 
+    const cell = findDayCellByLabel(container, 18, 'September', 2020)!;
+    act(() => cell.focus());
     fireEvent.click(getByRole('button', { name: 'September 18, 2020' }));
 
     expect(setValue).not.toHaveBeenCalled();
-    expect(document.activeElement).toBe(findDayCellByLabel(container, 18, 'September', 2020));
+    expect(cell).toHaveFocus();
   });
 
   it('shows the requested number of weeks', () => {

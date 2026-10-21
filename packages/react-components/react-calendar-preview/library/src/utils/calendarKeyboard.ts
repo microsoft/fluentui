@@ -1,8 +1,14 @@
 import type * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from '@fluentui/keyboard-keys';
-import { getRTLSafeKey, isHTMLElement } from '@fluentui/react-utilities';
+import { getRTLSafeKey } from '@fluentui/react-utilities';
 
 export const CALENDAR_GRID_COLUMNS = 4;
+
+const isElement = (target: EventTarget | null): target is Element => {
+  const element = target as Element | null;
+  const ElementConstructor = element?.ownerDocument?.defaultView?.Element;
+  return !!ElementConstructor && element instanceof ElementConstructor;
+};
 
 // The grid supplies the focused date while Calendar retains ownership of paging and consumer cancellation.
 const navigationDates = new WeakMap<Event, Date>();
@@ -18,7 +24,7 @@ export const getCalendarNavigationDate = (event: Event): Date | undefined => {
 };
 
 export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean => {
-  if (!isHTMLElement(target)) {
+  if (!isElement(target)) {
     return false;
   }
 
@@ -26,7 +32,7 @@ export const isCalendarKeyboardEditable = (target: EventTarget | null): boolean 
     return true;
   }
 
-  let element: HTMLElement | null = target;
+  let element: Element | null = target;
   while (element) {
     const contentEditable = element.getAttribute('contenteditable')?.trim().toLowerCase();
     if (contentEditable === '' || contentEditable === 'true' || contentEditable === 'plaintext-only') {
@@ -49,17 +55,18 @@ export const getCalendarGridCells = (grid: Element): HTMLElement[] =>
   );
 
 /**
- * Resolves the cell of the grid handling `event`, ignoring events from nested grids, focus groups and editable content.
+ * Resolves the cell of the grid handling `event`, ignoring nested grids and editable content except for range hover.
+ * Keyboard events also respect descendant focusgroup owners.
  */
 export const getCalendarGridCell = (event: React.SyntheticEvent<HTMLElement>): HTMLElement | undefined => {
   const { currentTarget: grid, target } = event;
-  if (!isHTMLElement(target) || isCalendarKeyboardEditable(target)) {
+  const isRangeHover = event.type === 'mouseover' || event.type === 'mouseout';
+  if (!isElement(target) || (!isRangeHover && isCalendarKeyboardEditable(target))) {
     return undefined;
   }
   const cell = target.closest<HTMLElement>('[role="gridcell"]');
-  return cell && cell.closest('[role="grid"]') === grid && target.closest('[role="grid"], [focusgroup]') === grid
-    ? cell
-    : undefined;
+  const ownerSelector = event.type.startsWith('key') ? '[role="grid"], [focusgroup]' : '[role="grid"]';
+  return cell && cell.closest('[role="grid"]') === grid && target.closest(ownerSelector) === grid ? cell : undefined;
 };
 
 export const isCalendarArrowKey = (key: string): boolean =>
@@ -72,10 +79,36 @@ export const isCalendarGridArrow = (event: React.KeyboardEvent): boolean =>
   isCalendarArrowKey(event.key) && !event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey;
 
 /**
- * Whether a cell can be the target of keyboard focus.
+ * Whether a cell can be the target of keyboard focus, optionally ignoring hiding at or above a panel boundary.
  */
-export const isCalendarCellFocusable = (cell: HTMLElement, allFocusable: boolean): boolean =>
-  !cell.matches(':disabled') && (allFocusable || cell.getAttribute('aria-disabled') !== 'true');
+export const isCalendarCellFocusable = (
+  cell: HTMLElement,
+  allFocusable: boolean,
+  visibilityBoundary?: HTMLElement,
+): boolean => {
+  if (
+    !cell.isConnected ||
+    cell.matches(':disabled') ||
+    (!allFocusable && cell.getAttribute('aria-disabled') === 'true')
+  ) {
+    return false;
+  }
+  const targetWindow = cell.ownerDocument.defaultView;
+  const visibility = targetWindow?.getComputedStyle(cell).visibility;
+  if (visibility === 'hidden' || visibility === 'collapse') {
+    return false;
+  }
+  for (
+    let element: HTMLElement | null = cell;
+    element && element !== visibilityBoundary;
+    element = element.parentElement
+  ) {
+    if (element.hidden || element.hasAttribute('inert') || targetWindow?.getComputedStyle(element).display === 'none') {
+      return false;
+    }
+  }
+  return true;
+};
 
 const getActiveElement = (element: HTMLElement): Element | null => {
   const root = element.getRootNode() as Document | ShadowRoot;

@@ -2,6 +2,20 @@
   "name": "@fluentui/react-storybook-addon-playground",
   "entries": [
     {
+      "date": "Tue, 20 Oct 2026 13:39:53 GMT",
+      "version": "0.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2026 14:21:29 GMT",
       "version": "0.1.1",
       "tag": "@fluentui/react-storybook-addon-playground_v0.1.1",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compiler-analyzer",
   "entries": [
     {
+      "date": "Tue, 20 Oct 2026 13:39:53 GMT",
+      "version": "0.0.2",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "ccec524b9cc2b3af6c3bfb761d326d82d16ba344",
+            "comment": "fix: handle TypeScript declare class fields without aborting analysis"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Oct 2026 14:21:29 GMT",
       "version": "0.0.1",
       "tag": "@fluentui/react-compiler-analyzer_v0.0.1",
