@@ -17,17 +17,20 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
 
   // Styling concern, so it lives here rather than in the base hook that unstyled consumers build on. Client-only and
   // markup-free; see legacyVerticalSliderAppearance.ts for why the fallback cannot be static CSS.
+  // The input element locates the styling root (document or shadow root) and lets a hidden mount retry once laid out.
   const { targetDocument } = useFluent();
   const { styleElementAttributes } = useRenderer_unstable();
   const vertical = !!baseState.vertical;
+  const inputRef = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
     if (vertical) {
-      ensureLegacyVerticalSliderInput(targetDocument, styleElementAttributes);
+      return ensureLegacyVerticalSliderInput(inputRef.current ?? targetDocument, styleElementAttributes);
     }
   }, [vertical, targetDocument, styleElementAttributes]);
 
   return {
     ...baseState,
+    input: { ...baseState.input, ref: useMergedRefs(baseState.input.ref, inputRef) },
     size,
   };
 };
