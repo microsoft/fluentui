@@ -288,5 +288,7 @@ export function measureEnd(key: string) {
   performance.mark(`${key}:end`);
   const measure = performance.measure(key, `${key}:start`, `${key}:end`);
 
-  logger.verbose(`Execution Timings: ${key} (${(measure.duration / 1000).toFixed(2)} s)`);
+  if (process.env.NX_VERBOSE_LOGGING === 'true') {
+    process.stderr.write(`Execution Timings: ${key} (${(measure.duration / 1000).toFixed(2)} s)\n`);
+  }
 }
