@@ -43,17 +43,22 @@ export const useTreeItemLayout_unstable = (
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
   const { selector: selectorProp, ...baseProps } = props;
-  const state = useTreeItemLayoutBase_unstable(
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const { targetDocument } = useFluent();
+  const state = useTreeItemLayoutBase(
     // The base hook only needs to know whether the consumer provided or disabled the selector,
     // the Fluent selector itself is resolved below.
     { ...baseProps, selector: selectorProp === undefined || selectorProp === null ? selectorProp : {} },
     ref,
+    targetDocument,
+    isNavigatingWithKeyboard,
   );
 
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
+  const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
 
   // Link the selector to the main content unless the consumer provided an accessible name
   const selectorShorthand = isResolvedShorthand(selectorProp) ? selectorProp : undefined;
@@ -73,8 +78,25 @@ export const useTreeItemLayout_unstable = (
     } as CheckboxProps | RadioProps,
     elementType: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
   });
+  // Checkbox and Radio slot props omit `ref` from their type, but consumers can still provide it.
+  const selectorConsumerRef = selector && (selector as typeof selector & { ref?: React.Ref<HTMLInputElement> }).ref;
+  const selectorRef = useMergedRefs(selectorConsumerRef, selectionRef);
+  const selectorWithRef = selector && { ...selector, ref: selectorRef };
 
   const arrowNavigationProps = useArrowNavigationGroup({ circular: navigationMode === 'tree', axis: 'horizontal' });
+  const expandIcon = state.expandIcon
+    ? slot.optional(props.expandIcon, {
+        renderByDefault: true,
+        defaultProps: {
+          'aria-hidden': true,
+          children: <TreeItemChevron />,
+          ref: expandIconRef,
+        },
+        elementType: 'div',
+      })
+    : undefined;
+  const expandIconRefWithConsumer = useMergedRefs(expandIcon?.ref, expandIconRef);
+  const expandIconWithRef = expandIcon && { ...expandIcon, ref: expandIconRefWithConsumer };
 
   return {
     ...state,
@@ -87,8 +109,8 @@ export const useTreeItemLayout_unstable = (
     buttonContextValue: { size: 'small' },
     // Consumer props keep winning over the navigation attributes, matching the base slot ordering.
     actions: state.actions && { ...arrowNavigationProps, ...state.actions },
-    expandIcon: state.expandIcon && { children: <TreeItemChevron />, ...state.expandIcon },
-    selector,
+    expandIcon: expandIconWithRef,
+    selector: selectorWithRef,
   };
 };
 
@@ -107,6 +129,18 @@ export const useTreeItemLayoutBase_unstable = (
   props: TreeItemLayoutBaseProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutBaseState => {
+  const { targetDocument } = useFluent();
+  const isNavigatingWithKeyboard = useDOMKeyboardNavigation(targetDocument, Boolean(props.actions));
+
+  return useTreeItemLayoutBase(props, ref, targetDocument, isNavigatingWithKeyboard);
+};
+
+function useTreeItemLayoutBase(
+  props: TreeItemLayoutBaseProps,
+  ref: React.Ref<HTMLElement>,
+  targetDocument: Document | undefined,
+  isNavigatingWithKeyboard: () => boolean,
+): TreeItemLayoutBaseState {
   const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
@@ -148,21 +182,22 @@ export const useTreeItemLayoutBase_unstable = (
     if (selectorInputRef.current) {
       selectorInputRef.current.indeterminate = checked === 'mixed';
     }
-  }, [checked]);
+  });
 
-  const selector = slot.optional(props.selector, {
+  const selectorSlot = slot.optional(props.selector, {
     renderByDefault: selectionMode !== 'none',
     defaultProps: {
       type: selectionMode === 'multiselect' ? 'checkbox' : 'radio',
       checked: checked === true,
       tabIndex: -1,
-      ref: useMergedRefs(selectionRef, selectorInputRef),
       'aria-labelledby': selectorAriaLabelledBy,
       // Changes bubble up to the tree item, which owns the selection state.
       onChange: noop,
     },
     elementType: 'input',
   });
+  const selectorRef = useMergedRefs(selectorSlot?.ref, selectionRef, selectorInputRef);
+  const selector = selectorSlot && { ...selectorSlot, ref: selectorRef };
   const mainSlot = slot.always(main, {
     defaultProps: { id: selector ? mainContentId : undefined },
     elementType: 'div',
@@ -195,8 +230,7 @@ export const useTreeItemLayoutBase_unstable = (
     [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
 
-  const { targetDocument } = useFluent();
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
+  const hasActions = Boolean(props.actions);
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
@@ -244,15 +278,15 @@ export const useTreeItemLayoutBase_unstable = (
     [setIsActionsVisible, onActionVisibilityChange, treeItemRef, isNavigatingWithKeyboard, targetDocument],
   );
 
-  const expandIconRefs = useMergedRefs(expandIconRef);
-  const expandIcon = slot.optional(props.expandIcon, {
+  const expandIconSlot = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
     defaultProps: {
       'aria-hidden': true,
-      ref: expandIconRefs,
     },
     elementType: 'div',
   });
+  const expandIconRefs = useMergedRefs(expandIconSlot?.ref, expandIconRef);
+  const expandIcon = expandIconSlot && { ...expandIconSlot, ref: expandIconRefs };
   const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.actions)) {
       props.actions.onBlur?.(event);
@@ -277,8 +311,6 @@ export const useTreeItemLayoutBase_unstable = (
         elementType: 'div',
       })
     : undefined;
-
-  const hasActions = Boolean(props.actions);
 
   React.useEffect(() => {
     if (treeItemRef.current && hasActions) {
@@ -334,7 +366,42 @@ export const useTreeItemLayoutBase_unstable = (
     expandIcon,
     selector,
   };
-};
+}
+
+function useDOMKeyboardNavigation(targetDocument: Document | undefined, enabled: boolean): () => boolean {
+  const isNavigatingWithKeyboardRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!targetDocument || !enabled) {
+      return;
+    }
+
+    const onKeyDown = () => {
+      isNavigatingWithKeyboardRef.current = true;
+    };
+    const onPointerInteraction = () => {
+      isNavigatingWithKeyboardRef.current = false;
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    targetDocument.addEventListener('pointermove', onPointerInteraction, true);
+    targetDocument.addEventListener('pointerdown', onPointerInteraction, true);
+    targetDocument.addEventListener('mousemove', onPointerInteraction, true);
+    targetDocument.addEventListener('mousedown', onPointerInteraction, true);
+    targetDocument.addEventListener('touchstart', onPointerInteraction, true);
+
+    return () => {
+      targetDocument.removeEventListener('keydown', onKeyDown, true);
+      targetDocument.removeEventListener('pointermove', onPointerInteraction, true);
+      targetDocument.removeEventListener('pointerdown', onPointerInteraction, true);
+      targetDocument.removeEventListener('mousemove', onPointerInteraction, true);
+      targetDocument.removeEventListener('mousedown', onPointerInteraction, true);
+      targetDocument.removeEventListener('touchstart', onPointerInteraction, true);
+    };
+  }, [targetDocument, enabled]);
+
+  return React.useCallback(() => isNavigatingWithKeyboardRef.current, []);
+}
 
 function noop() {
   /* noop */

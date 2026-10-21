@@ -143,7 +143,32 @@ describe('useTreeBase_unstable', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">
           <TreeItem itemType="leaf" value="1">
-            <BaseTreeItemLayout actions={{ visible: true, children: <button>Edit</button> }}>item 1</BaseTreeItemLayout>
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <>
+                    <input type="hidden" />
+                    <button hidden>Hidden</button>
+                    <div aria-hidden="true">
+                      <button>Aria hidden</button>
+                    </div>
+                    <div inert={true}>
+                      <button>Inert</button>
+                    </div>
+                    <div style={{ visibility: 'hidden' }}>
+                      <button>Visibility hidden</button>
+                    </div>
+                    <button disabled tabIndex={0}>
+                      Disabled
+                    </button>
+                    <button>Edit</button>
+                  </>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
           </TreeItem>
         </BaseTree>,
       );
@@ -155,6 +180,29 @@ describe('useTreeBase_unstable', () => {
 
       fireEvent.keyDown(screen.getByRole('button', { name: 'Edit' }), { key: 'ArrowLeft' });
       expect(document.activeElement).toBe(item);
+    });
+
+    it('moves focus into a contenteditable action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: <div contentEditable={true} data-testid="editor" />,
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByTestId('editor'));
     });
   });
 });

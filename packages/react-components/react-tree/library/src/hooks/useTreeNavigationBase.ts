@@ -15,7 +15,7 @@ import { treeItemLayoutClassNames } from '../components/TreeItemLayout/useTreeIt
  * Plain DOM approximation of Tabster's focus finders, used when no focus management runtime is provided.
  */
 const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]), [contenteditable]:not([contenteditable="false"])';
 
 /**
  * @internal
@@ -37,7 +37,39 @@ export type TreeNavigationOptions = {
  * @internal
  */
 export const findFirstFocusableDOM: TreeNavigationOptions['findFirstFocusable'] = container =>
-  container.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
+  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).find(isFocusableDOM) ?? null;
+
+function isFocusableDOM(element: HTMLElement): boolean {
+  const contentEditable = element.getAttribute('contenteditable')?.toLowerCase();
+  const isEditable =
+    element.isContentEditable ||
+    contentEditable === 'true' ||
+    contentEditable === 'plaintext-only' ||
+    contentEditable === '';
+  if (
+    element.matches(':disabled') ||
+    (element.hasAttribute('tabindex') && element.tabIndex < 0) ||
+    (element.tabIndex < 0 && !isEditable)
+  ) {
+    return false;
+  }
+
+  let current: HTMLElement | null = element;
+  while (current) {
+    if (current.hidden || current.hasAttribute('inert') || current.getAttribute('aria-hidden') === 'true') {
+      return false;
+    }
+
+    const style = current.ownerDocument.defaultView?.getComputedStyle(current);
+    if (style?.display === 'none' || style?.visibility === 'hidden' || style?.visibility === 'collapse') {
+      return false;
+    }
+
+    current = current.parentElement;
+  }
+
+  return true;
+}
 
 /***
  * Hook used to manage navigation in the tree, with the focus management provided by the caller.

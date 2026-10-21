@@ -121,4 +121,43 @@ describe('useTreeItemLayoutBase_unstable', () => {
     expect(checkbox.indeterminate).toBe(true);
     expect(checkbox.hasAttribute('aria-checked')).toBe(false);
   });
+
+  it('applies the indeterminate state when a selector is mounted after the layout', () => {
+    const ControlledTreeItemLayout = ({ showSelector }: { showSelector: boolean }) => (
+      <Tree aria-label="Tree" selectionMode="multiselect" checkedItems={[['item', 'mixed']]}>
+        <TreeItem itemType="leaf" value="item">
+          <BaseTreeItemLayout selector={showSelector ? {} : null}>Item</BaseTreeItemLayout>
+        </TreeItem>
+      </Tree>
+    );
+    const { rerender } = render(<ControlledTreeItemLayout showSelector={false} />);
+
+    expect(screen.queryByRole('checkbox')).toBeNull();
+
+    rerender(<ControlledTreeItemLayout showSelector={true} />);
+
+    expect((screen.getByRole('checkbox', { name: 'Item' }) as HTMLInputElement).indeterminate).toBe(true);
+  });
+
+  it('merges a consumer selector ref with the internal selection refs', () => {
+    const onCheckedChange = jest.fn();
+    const selectorRef = jest.fn();
+    render(
+      <Tree aria-label="Tree" selectionMode="multiselect" onCheckedChange={onCheckedChange}>
+        <TreeItem itemType="leaf" value="item">
+          <BaseTreeItemLayout selector={{ ref: selectorRef }}>Item</BaseTreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+
+    const selector = screen.getByRole('checkbox', { name: 'Item' });
+    expect(selectorRef).toHaveBeenCalledWith(selector);
+
+    fireEvent.keyDown(screen.getByRole('treeitem'), { key: ' ' });
+
+    expect(onCheckedChange).toHaveBeenCalledWith(
+      expect.any(Object),
+      expect.objectContaining({ value: 'item', checked: true }),
+    );
+  });
 });
