@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Make Calendar self-contained with locally owned hooks, renderers, types, context and date utilities.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

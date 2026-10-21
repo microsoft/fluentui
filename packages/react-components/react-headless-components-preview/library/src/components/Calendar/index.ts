@@ -58,3 +58,28 @@ export type {
   CalendarYearState,
   CalendarYearSelectData,
 } from './CalendarYear';
+
+export { CalendarProvider, calendarContextDefaultValue, useCalendarContext } from './contexts/calendarContext';
+export {
+  calendarFormatters,
+  createCalendarDateTimeFormatter,
+  addDays,
+  addMonths,
+  addWeeks,
+  addYears,
+  getDateRange,
+} from './utils';
+export type {
+  CalendarDateLabelData,
+  CalendarDateTimeFormat,
+  CalendarFormatters,
+  CalendarYearRangeLabelData,
+  CalendarDataAttributes,
+  CalendarElementProps,
+  CalendarGridRow,
+  CalendarRowWrapper,
+  DateRangeType,
+  DayOfWeek,
+  FirstWeekOfYear,
+  MonthOfYear,
+} from './utils';

@@ -1,5 +1,8 @@
 `Calendar` shows a date grid and lets the user pick a date, a week, a work week or a month.
 
+The Calendar family is self-contained in this package: its hooks, renderers, context, types and
+date utilities do not depend on `@fluentui/react-calendar-preview`.
+
 It ships no styling. Day state is exposed as data attributes on each cell, so all of a day's
 appearance is addressable with plain CSS selectors:
 
@@ -45,3 +48,9 @@ For a custom Calendar component, compose `useCalendar`, `useCalendarContextValue
 `renderCalendar` from the public `@fluentui/react-headless-components-preview/calendar` subpath.
 The subpath also exports `CalendarDay`, `CalendarMonth` and `CalendarYear` with their hooks and
 renderers, and the event, layout, view and context types used by the family.
+
+For standalone pickers, use `CalendarProvider` with `calendarContextDefaultValue` to supply shared
+selection, date restrictions and formatting. `useCalendarContext` reads this same headless context.
+The subpath also exports `calendarFormatters`, `createCalendarDateTimeFormatter`, `addDays`,
+`addMonths`, `addWeeks`, `addYears` and `getDateRange`, along with their supporting date and
+formatter types. No imports from the styled Calendar package are needed.

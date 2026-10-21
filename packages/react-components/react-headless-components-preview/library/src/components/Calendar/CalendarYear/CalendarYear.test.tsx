@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render as testingRender } from '@testing-library/react';
-import {
-  CalendarProvider,
-  calendarContextDefaultValue,
-  type CalendarContextValue,
-} from '@fluentui/react-calendar-preview';
+import { CalendarProvider, calendarContextDefaultValue, type CalendarContextValue } from '../../../calendar';
 import { isConformant } from '../../../testing/isConformant';
 import { CalendarYear } from './CalendarYear';
 
