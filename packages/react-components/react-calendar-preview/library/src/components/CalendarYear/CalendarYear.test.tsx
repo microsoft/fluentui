@@ -22,6 +22,21 @@ describe('CalendarYear', () => {
     expect(() => render(<CalendarYear {...requiredProps} />)).not.toThrow();
   });
 
+  it.each([null, undefined])('preserves navigation children=%s', children => {
+    const { container } = render(
+      <CalendarYear navigatedYear={2020} previousRangeButton={{ children }} nextRangeButton={{ children }} />,
+    );
+    const buttons = Array.from(container.querySelectorAll('button[title]'));
+    expect(buttons).toHaveLength(2);
+    for (const button of buttons) {
+      if (children === undefined) {
+        expect(button.querySelector('svg')).not.toBeNull();
+      } else {
+        expect(button).toBeEmptyDOMElement();
+      }
+    }
+  });
+
   it('should render the navigated year range', () => {
     const { getByRole } = render(<CalendarYear {...requiredProps} navigatedYear={2025} />);
     const grid = getByRole('grid');
@@ -92,6 +107,17 @@ describe('CalendarYear', () => {
     ref.current?.focus();
 
     expect(getByRole('gridcell', { name: '2027' })).toHaveFocus();
+  });
+
+  it('forwards native focus options to the navigated year', () => {
+    const ref = React.createRef<CalendarYearHandle>();
+    const { getByRole } = render(<CalendarYear ref={ref} navigatedYear={2027} />);
+    const year = getByRole('gridcell', { name: '2027' });
+    const focus = jest.spyOn(year, 'focus');
+    ref.current!.focus({ preventScroll: true });
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(year).toHaveFocus();
+    focus.mockRestore();
   });
 
   it('focuses an available year when the navigated year is disabled', () => {

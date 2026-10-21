@@ -1,16 +1,14 @@
 'use client';
 
-import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselCardProps } from './TeachingPopoverCarouselCard.types';
 import { useTeachingPopoverCarouselCard } from './useTeachingPopoverCarouselCard';
 import { renderTeachingPopoverCarouselCard } from './renderTeachingPopoverCarouselCard';
+import { composeComponent } from '../../../utils/composeComponent';
 
-export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps> = React.forwardRef(
-  (props, ref) => {
-    const state = useTeachingPopoverCarouselCard(props, ref);
-    return renderTeachingPopoverCarouselCard(state);
-  },
-);
-
-TeachingPopoverCarouselCard.displayName = 'TeachingPopoverCarouselCard';
+export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps> =
+  /*#__PURE__*/ composeComponent(
+    'TeachingPopoverCarouselCard',
+    useTeachingPopoverCarouselCard,
+    renderTeachingPopoverCarouselCard,
+  );

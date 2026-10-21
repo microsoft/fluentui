@@ -49,6 +49,7 @@
     "@fluentui/react-progress": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-radio": "*",
+    "@fluentui/react-range-slider-preview": "*",
     "@fluentui/react-rating": "*",
     "@fluentui/react-search": "*",
     "@fluentui/react-select": "*",
