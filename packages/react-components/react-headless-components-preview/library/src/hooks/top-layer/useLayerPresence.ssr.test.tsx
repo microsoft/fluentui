@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { act } from '@testing-library/react';
-import { useTopLayer } from './useTopLayer';
-import { isPopoverOpen } from '../../utils/topLayer';
+import { useLayerOpenState } from './useLayerOpenState';
+import { useLayerPresence } from './useLayerPresence';
+import { isPopoverOpen } from './utils';
 
 const HintLayer = () => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { shouldRender, popover } = useTopLayer(ref, { open: true, mode: 'hint' });
+  const { popover } = useLayerOpenState(ref, { open: true, mode: 'hint' });
+  const { shouldRender } = useLayerPresence(ref, { open: true });
   return shouldRender ? <div ref={ref} role="status" popover={popover} /> : null;
 };
 
@@ -22,7 +24,7 @@ const getHydrateRoot = (): typeof import('react-dom/client').hydrateRoot | undef
 const hydrateRoot = getHydrateRoot();
 const describeWithHydrateRoot = hydrateRoot ? describe : describe.skip;
 
-describeWithHydrateRoot('useTopLayer SSR', () => {
+describeWithHydrateRoot('useLayerOpenState and useLayerPresence SSR', () => {
   it('renders hidden on the server and shows the element after hydration without a mismatch', async () => {
     const ui = <HintLayer />;
     const container = document.createElement('div');

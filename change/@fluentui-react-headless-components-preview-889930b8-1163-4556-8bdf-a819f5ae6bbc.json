@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: add an internal useTopLayer hook for the headless overlays",
+  "comment": "chore: add internal top-layer hooks for the headless overlays",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com"
 }
