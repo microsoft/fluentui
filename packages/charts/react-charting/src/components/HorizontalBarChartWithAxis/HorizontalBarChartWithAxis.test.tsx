@@ -74,6 +74,20 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
     expect(result!.container.firstChild).toMatchSnapshot();
   });
 
+  it('supports correctly spelled y-axis label props', () => {
+    let result: ReturnType<typeof render> | undefined;
+    act(() => {
+      result = render(
+        <HorizontalBarChartWithAxis
+          data={pointsForWrapLabels}
+          showYAxisLabels={true}
+          showYAxisLabelsTooltip={true}
+        />,
+      );
+    });
+    expect(result!.container.firstChild).not.toBeNull();
+  });
+
   it('Should render gradients on bars', () => {
     const { container } = render(<HorizontalBarChartWithAxis data={pointsHBCWA} enableGradient={true} />);
     expect(container.firstChild).toMatchSnapshot();
