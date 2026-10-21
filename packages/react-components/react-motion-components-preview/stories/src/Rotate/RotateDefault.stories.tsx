@@ -109,11 +109,15 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
   const [perspective, setPerspective] = React.useState<string>('1000px');
   const [duration, setDuration] = React.useState<number>(motionTokens.durationUltraSlow); // 500ms
   const [axis, setAxis] = React.useState<Axis3D>('z');
-  const [outAngle, setOutAngle] = React.useState<number>(-90);
+  const [fromAngle, setFromAngle] = React.useState<number>(-90);
+  const [restAngle, setRestAngle] = React.useState<number>(0);
+  const [toAngle, setToAngle] = React.useState<number>(-90);
 
   const perspectiveSliderId = useId();
   const durationSliderId = useId();
-  const outAngleSliderId = useId();
+  const fromAngleSliderId = useId();
+  const restAngleSliderId = useId();
+  const toAngleSliderId = useId();
 
   const perspectiveMin = 200;
   const perspectiveMax = 2000;
@@ -146,18 +150,54 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
 
           <Field className={classes.sliderField}>
             <div className={classes.sliderHeader}>
-              <Label htmlFor={outAngleSliderId} className={classes.sliderLabel}>
-                Out Angle
+              <Label htmlFor={fromAngleSliderId} className={classes.sliderLabel}>
+                From Angle
               </Label>
-              <span className={classes.valueDisplay}>{outAngle}°</span>
+              <span className={classes.valueDisplay}>{fromAngle}°</span>
             </div>
             <Slider
               min={angleMin}
               max={angleMax}
-              defaultValue={outAngle}
-              id={outAngleSliderId}
+              defaultValue={fromAngle}
+              id={fromAngleSliderId}
               onChange={(_, data) => {
-                setOutAngle(data.value);
+                setFromAngle(data.value);
+              }}
+            />
+          </Field>
+
+          <Field className={classes.sliderField}>
+            <div className={classes.sliderHeader}>
+              <Label htmlFor={restAngleSliderId} className={classes.sliderLabel}>
+                Rest Angle
+              </Label>
+              <span className={classes.valueDisplay}>{restAngle}°</span>
+            </div>
+            <Slider
+              min={angleMin}
+              max={angleMax}
+              defaultValue={restAngle}
+              id={restAngleSliderId}
+              onChange={(_, data) => {
+                setRestAngle(data.value);
+              }}
+            />
+          </Field>
+
+          <Field className={classes.sliderField}>
+            <div className={classes.sliderHeader}>
+              <Label htmlFor={toAngleSliderId} className={classes.sliderLabel}>
+                To Angle
+              </Label>
+              <span className={classes.valueDisplay}>{toAngle}°</span>
+            </div>
+            <Slider
+              min={angleMin}
+              max={angleMax}
+              defaultValue={toAngle}
+              id={toAngleSliderId}
+              onChange={(_, data) => {
+                setToAngle(data.value);
               }}
             />
           </Field>
@@ -203,7 +243,14 @@ export const Default = (props: React.ComponentProps<typeof Rotate>): JSXElement 
         </div>
       </div>
 
-      <Rotate visible={visible} axis={axis} outAngle={outAngle} duration={duration}>
+      <Rotate
+        visible={visible}
+        axis={axis}
+        fromAngle={fromAngle}
+        restAngle={restAngle}
+        toAngle={toAngle}
+        duration={duration}
+      >
         <Card className={classes.card}>
           <CardHeader
             header={
