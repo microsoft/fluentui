@@ -31,6 +31,29 @@ export const useClasses = makeStyles({
     placeItems: 'center',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
+  durationTableContainer: {
+    overflowX: 'auto',
+    backgroundColor: tokens.colorNeutralBackground1,
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopRightRadius: 0,
+  },
+  durationTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase300,
+
+    '& th, & td': {
+      padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+      textAlign: 'left',
+      whiteSpace: 'nowrap',
+      borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    },
+    '& tbody th': {
+      fontWeight: tokens.fontWeightRegular,
+    },
+  },
 });
 
 export const useCardClasses = makeStyles({
@@ -136,18 +159,9 @@ export const useCardClasses = makeStyles({
   },
 
   duration: {
-    placeSelf: 'center',
-
-    width: '128px',
-    height: '4px',
-    margin: '64px auto',
+    width: tokens.strokeWidthThicker,
+    height: '100%',
     backgroundColor: tokens.colorNeutralForeground3,
-
-    animationName: {
-      from: { transform: 'rotate(0)' },
-      to: { transform: 'rotate(180deg)' },
-    },
-    animationIterationCount: 'infinite',
 
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
@@ -155,7 +169,9 @@ export const useCardClasses = makeStyles({
   },
 
   view: {
-    gridArea: 'view',
+    '--duration-track-size': '128px',
+    width: 'var(--duration-track-size)',
+    height: tokens.spacingVerticalXXL,
   },
   title: {
     gridArea: 'title',
