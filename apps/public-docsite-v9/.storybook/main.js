@@ -1,8 +1,13 @@
 const path = require('path');
-const { getPackageStoriesGlob, registerTsPaths, rules, registerRules } = require('@fluentui/scripts-storybook');
+const {
+  configureReactIcons,
+  getPackageStoriesGlob,
+  registerTsPaths,
+  rules,
+  registerRules,
+} = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
-const { configureReactIcons } = require('../../../.storybook/react-icons-webpack');
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
