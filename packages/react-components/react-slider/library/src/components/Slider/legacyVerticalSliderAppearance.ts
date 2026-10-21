@@ -8,7 +8,12 @@ export const LEGACY_STYLE_ID = 'fui-Slider-legacy-vertical-appearance';
  * Scoped to vertical inputs: in engines that need this value, it also turns a horizontal range input vertical.
  * @internal
  */
-export const LEGACY_VERTICAL_SLIDER_RULE = '.fui-Slider__input[orient="vertical"]{-webkit-appearance:slider-vertical;}';
+export const LEGACY_VERTICAL_SLIDER_SELECTOR = '.fui-Slider__input[orient="vertical"]';
+
+/**
+ * @internal
+ */
+export const LEGACY_VERTICAL_SLIDER_RULE = `${LEGACY_VERTICAL_SLIDER_SELECTOR}{-webkit-appearance:slider-vertical;}`;
 
 // The probe is measured inside its own shadow root, so no document selector reaches it or its range pseudo-elements
 // (for example `input::-webkit-slider-runnable-track { width: 200px }`). `all: initial` on the host stops inherited
@@ -46,11 +51,13 @@ export function supportsVerticalRangeInput(targetDocument: Document): boolean | 
     return cached;
   }
 
+  // Assigned through CSSOM rather than the `style` attribute: a nonce-only `style-src` (or `style-src-attr 'none'`)
+  // blocks style attributes, which would drop `writing-mode` from the probe and misread a supporting engine.
   const host = targetDocument.createElement('div');
-  host.setAttribute('style', PROBE_HOST_STYLE);
+  host.style.cssText = PROBE_HOST_STYLE;
   const probe = targetDocument.createElement('input');
   probe.type = 'range';
-  probe.setAttribute('style', PROBE_STYLE);
+  probe.style.cssText = PROBE_STYLE;
   host.attachShadow({ mode: 'open' }).append(probe);
   targetDocument.body.append(host);
   const height = probe.offsetHeight;
@@ -70,6 +77,21 @@ function isShadowRoot(node: Node): node is ShadowRoot {
   return node.nodeType === 11 && 'host' in node;
 }
 
+type DocumentView = NonNullable<Document['defaultView']>;
+
+const legacyValueResults = new WeakMap<DocumentView, boolean>();
+
+// Chromium logs the deprecation for this query as well, so it is asked at most once per window, and only after the
+// probe has shown the engine needs the fallback.
+function parsesLegacyValue(view: DocumentView): boolean {
+  let parses = legacyValueResults.get(view);
+  if (parses === undefined) {
+    parses = typeof view.CSS?.supports !== 'function' || view.CSS.supports('-webkit-appearance', 'slider-vertical');
+    legacyValueResults.set(view, parses);
+  }
+  return parses;
+}
+
 /**
  * Adds the legacy rule to the styling root that contains `element`: the shadow root it renders in, matching
  * `createShadowDOMRenderer(root)`, or otherwise its document's `head`. Each root receives the rule at most once.
@@ -80,6 +102,7 @@ export function installLegacyVerticalSliderRule(
   styleElementAttributes: Record<string, string> = {},
 ): void {
   const targetDocument = element.ownerDocument;
+  const view = targetDocument.defaultView;
   const rootNode = element.getRootNode();
   const shadowRoot = isShadowRoot(rootNode) ? rootNode : undefined;
   const container = shadowRoot ?? targetDocument.head;
@@ -90,8 +113,13 @@ export function installLegacyVerticalSliderRule(
     return;
   }
 
+  // Skip engines that cannot parse the value (Firefox before 120): the rule would be inert there, and because the
+  // declaration is dropped, the root could never be recognised as carrying it, so each mount would add another sheet.
+  if (view && !parsesLegacyValue(view)) {
+    return;
+  }
+
   // Constructed sheets must come from the root's own window, so this also works for a Slider inside an iframe.
-  const view = targetDocument.defaultView;
   if (shadowRoot && view && 'adoptedStyleSheets' in shadowRoot && 'replaceSync' in view.CSSStyleSheet.prototype) {
     const sheet = new view.CSSStyleSheet();
     sheet.replaceSync(LEGACY_VERTICAL_SLIDER_RULE);
@@ -112,9 +140,17 @@ function hasLegacyRule(root: Document | ShadowRoot): boolean {
   if (root.getElementById(LEGACY_STYLE_ID)) {
     return true;
   }
-  const isLegacySheet = (sheet: CSSStyleSheet) =>
-    sheet.cssRules.length === 1 && sheet.cssRules[0].cssText.includes('slider-vertical');
-  return Array.from(root.adoptedStyleSheets ?? []).some(isLegacySheet);
+  // Match the selector and the declaration, not just the keyword: an application sheet such as
+  // `.native-range { -webkit-appearance: slider-vertical }` must not stand in for the Slider rule.
+  return Array.from(root.adoptedStyleSheets ?? []).some(sheet => Array.from(sheet.cssRules).some(isLegacyRule));
+}
+
+function isLegacyRule(rule: CSSRule): boolean {
+  const styleRule = rule as Partial<CSSStyleRule>;
+  return (
+    styleRule.selectorText === LEGACY_VERTICAL_SLIDER_SELECTOR &&
+    styleRule.style?.getPropertyValue('-webkit-appearance') === 'slider-vertical'
+  );
 }
 
 /**
@@ -126,31 +162,32 @@ function hasLegacyRule(root: Document | ShadowRoot): boolean {
  * browsers that do not. It runs only in effects, so server rendering is unaffected, and it adds a style rather than
  * changing markup, so it cannot cause a hydration mismatch.
  *
- * When the document has no layout yet (for example a Slider mounted in a `display: none` iframe), it watches the input
- * and decides once the input is laid out, so revealing the iframe is enough and no Slider prop has to change.
+ * When the document has no layout yet (for example a Slider mounted in a `display: none` iframe), it watches the Slider
+ * element and decides once it is laid out, so revealing the iframe is enough and no Slider prop has to change.
  *
+ * @param elementOrDocument - a rendered Slider element, which locates its styling root, or its document as a fallback
  * @param styleElementAttributes - attributes for a style element, such as the Griffel renderer's `nonce`
  * @returns a cleanup function while a retry is pending
  * @internal
  */
 export function ensureLegacyVerticalSliderInput(
-  inputOrDocument: HTMLElement | Document | null | undefined,
+  elementOrDocument: HTMLElement | Document | null | undefined,
   styleElementAttributes?: Record<string, string>,
 ): (() => void) | undefined {
-  if (!inputOrDocument) {
+  if (!elementOrDocument) {
     return undefined;
   }
 
-  // Without the rendered input (a custom `input` slot that does not forward refs), fall back to the document root.
-  const input = 'body' in inputOrDocument ? inputOrDocument.body : inputOrDocument;
-  if (!input?.ownerDocument.body) {
+  // Without a rendered element (a custom `root` slot that does not forward refs), fall back to the document root.
+  const element = 'body' in elementOrDocument ? elementOrDocument.body : elementOrDocument;
+  if (!element?.ownerDocument.body) {
     return undefined;
   }
 
   const attempt = (): boolean => {
-    const supported = supportsVerticalRangeInput(input.ownerDocument);
+    const supported = supportsVerticalRangeInput(element.ownerDocument);
     if (supported === false) {
-      installLegacyVerticalSliderRule(input, styleElementAttributes);
+      installLegacyVerticalSliderRule(element, styleElementAttributes);
     }
     return supported !== undefined;
   };
@@ -159,7 +196,7 @@ export function ensureLegacyVerticalSliderInput(
     return undefined;
   }
 
-  const ResizeObserverCtor = input.ownerDocument.defaultView?.ResizeObserver;
+  const ResizeObserverCtor = element.ownerDocument.defaultView?.ResizeObserver;
   if (!ResizeObserverCtor) {
     return undefined;
   }
@@ -169,6 +206,6 @@ export function ensureLegacyVerticalSliderInput(
       observer.disconnect();
     }
   });
-  observer.observe(input);
+  observer.observe(element);
   return () => observer.disconnect();
 }
