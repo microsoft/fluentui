@@ -4,6 +4,12 @@ import { act, render } from '@testing-library/react';
 import { PREVIEW_SANDBOX } from './Preview';
 import { Preview } from './Preview';
 import type { ResolvedPlaygroundRuntimeManifest } from './runtime';
+import * as runtime from './runtime';
+
+jest.mock('./runtime', () => ({
+  ...jest.requireActual('./runtime'),
+  createRuntimeScriptLoader: jest.fn(),
+}));
 
 const manifest: ResolvedPlaygroundRuntimeManifest = {
   allowedModules: [],
@@ -14,12 +20,12 @@ const manifest: ResolvedPlaygroundRuntimeManifest = {
   typings: 'https://example.com/typings.json',
 };
 
-function sendMessage(frame: HTMLIFrameElement, message: Record<string, unknown>) {
+function sendMessage(frame: HTMLIFrameElement, message: Record<string, unknown>, source = frame.contentWindow) {
   const token = JSON.parse(frame.srcdoc.match(/const token = ("[^"]+");/)![1]);
   act(() => {
     frame.ownerDocument.defaultView!.dispatchEvent(
       new MessageEvent('message', {
-        source: frame.contentWindow,
+        source,
         data: { source: 'fluentui-playground', token, ...message },
       }),
     );
@@ -27,9 +33,168 @@ function sendMessage(frame: HTMLIFrameElement, message: Record<string, unknown>)
 }
 
 describe('Preview sandbox', () => {
+  beforeEach(() => {
+    jest
+      .mocked(runtime.createRuntimeScriptLoader)
+      .mockClear()
+      .mockImplementation(jest.requireActual<typeof runtime>('./runtime').createRuntimeScriptLoader);
+  });
+
+  it('delivers approved script text only to the authenticated sandbox without running it in the shell', async () => {
+    const scriptSource = 'throw new Error("Do not execute in the shell");';
+    const loadScript = jest.fn().mockResolvedValue(scriptSource);
+    const loader = jest.mocked(runtime.createRuntimeScriptLoader).mockReturnValue(loadScript);
+    const props = {
+      code: null,
+      runId: 1,
+      manifest,
+      onMetadata: jest.fn(),
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    };
+    try {
+      const { container } = render(<Preview {...props} />);
+      const frame = container.querySelector('iframe')!;
+      const post = jest.spyOn(frame.contentWindow!, 'postMessage');
+      await act(async () => {
+        sendMessage(frame, {
+          type: 'script-request',
+          requestId: 1,
+          url: 'https://example.com/runtime.js',
+          token: 'incorrect-token',
+        });
+      });
+      expect(loadScript).not.toHaveBeenCalled();
+
+      await act(async () => {
+        sendMessage(frame, { type: 'script-request', requestId: 2, url: 'https://example.com/runtime.js' }, window);
+      });
+      expect(loadScript).not.toHaveBeenCalled();
+
+      await act(async () => {
+        sendMessage(frame, { type: 'script-request', requestId: 2, url: 'https://example.com/runtime.js' });
+      });
+
+      expect(loadScript).toHaveBeenCalledTimes(1);
+      expect(post).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'script-response', requestId: 2, scriptSource }),
+        '*',
+      );
+      expect(props.onMetadata).not.toHaveBeenCalled();
+      expect(props.onError).not.toHaveBeenCalled();
+    } finally {
+      loader.mockRestore();
+    }
+  });
+
+  it('reports script fetch failures back to the preview', async () => {
+    const loadScript = jest.fn().mockRejectedValue(new Error('Runtime asset unavailable'));
+    const loader = jest.mocked(runtime.createRuntimeScriptLoader).mockReturnValue(loadScript);
+    try {
+      const { container } = render(
+        <Preview
+          code={null}
+          runId={1}
+          manifest={manifest}
+          onMetadata={jest.fn()}
+          onSuccess={jest.fn()}
+          onError={jest.fn()}
+        />,
+      );
+      const frame = container.querySelector('iframe')!;
+      const post = jest.spyOn(frame.contentWindow!, 'postMessage');
+
+      await act(async () => {
+        sendMessage(frame, { type: 'script-request', requestId: 1, url: 'https://example.com/runtime.js' });
+      });
+
+      expect(post).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'script-response', requestId: 1, error: 'Runtime asset unavailable' }),
+        '*',
+      );
+    } finally {
+      loader.mockRestore();
+    }
+  });
+
+  it('cancels script fetches and suppresses stale responses when the sandbox is disposed', async () => {
+    let resolve!: (source: string) => void;
+    const request = new Promise<string>(fulfill => {
+      resolve = fulfill;
+    });
+    const loader = jest.mocked(runtime.createRuntimeScriptLoader).mockReturnValue(() => request);
+    try {
+      const { container, unmount } = render(
+        <Preview
+          code={null}
+          runId={1}
+          manifest={manifest}
+          onMetadata={jest.fn()}
+          onSuccess={jest.fn()}
+          onError={jest.fn()}
+        />,
+      );
+      const frame = container.querySelector('iframe')!;
+      const post = jest.spyOn(frame.contentWindow!, 'postMessage');
+      sendMessage(frame, { type: 'script-request', requestId: 1, url: 'https://example.com/runtime.js' });
+      const signal = loader.mock.calls[0][2]!;
+
+      unmount();
+      await act(async () => {
+        resolve('script text');
+      });
+
+      expect(signal.aborted).toBe(true);
+      expect(post).not.toHaveBeenCalled();
+    } finally {
+      loader.mockRestore();
+    }
+  });
+
   it('keeps evaluated user code in an opaque-origin iframe', () => {
     expect(PREVIEW_SANDBOX.split(/\s+/)).toEqual(['allow-scripts']);
     expect(PREVIEW_SANDBOX.split(/\s+/)).not.toContain('allow-same-origin');
+  });
+
+  it('retains readiness when the runtime initializes before passive effects run', () => {
+    const props = {
+      code: null,
+      runId: 1,
+      manifest,
+      onMetadata: jest.fn(),
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    };
+    const addEventListener = window.addEventListener.bind(window);
+    const listen = jest.spyOn(window, 'addEventListener').mockImplementation((type, listener, options) => {
+      addEventListener(type, listener, options);
+      if (type === 'message' && !props.onMetadata.mock.calls.length) {
+        const frame = document.querySelector<HTMLIFrameElement>('iframe[title="Playground preview"]');
+        if (frame) {
+          // Simulate a cached runtime becoming ready before React's passive effects run.
+          const token = JSON.parse(frame.srcdoc.match(/const token = ("[^"]+");/)![1]);
+          window.dispatchEvent(
+            new MessageEvent('message', {
+              source: frame.contentWindow,
+              data: { source: 'fluentui-playground', token, type: 'ready', metadata: { themes: [] } },
+            }),
+          );
+        }
+      }
+    });
+    try {
+      const { container, rerender } = render(<Preview {...props} />);
+      expect(props.onMetadata).toHaveBeenCalledTimes(1);
+      const frame = container.querySelector('iframe')!;
+      const post = jest.spyOn(frame.contentWindow!, 'postMessage');
+
+      rerender(<Preview {...props} code="exports.default = () => null;" runId={2} />);
+
+      expect(post).toHaveBeenCalledWith(expect.objectContaining({ type: 'run', runId: 2 }), '*');
+      post.mockRestore();
+    } finally {
+      listen.mockRestore();
+    }
   });
 
   it('forwards runtime initialization failures and does not post runs', () => {

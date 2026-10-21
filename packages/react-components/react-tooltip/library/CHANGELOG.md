@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tooltip
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.10.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.8)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.10.7..@fluentui/react-tooltip_v9.10.8)
+
+### Patches
+
+- fix: preserve virtual target tooltips ([PR #36794](https://github.com/microsoft/fluentui/pull/36794) by paulmardling@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-portal to v9.8.17 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-positioning to v9.23.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.10.7)
 

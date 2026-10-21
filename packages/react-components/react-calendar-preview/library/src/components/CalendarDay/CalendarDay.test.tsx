@@ -4,10 +4,7 @@ import { render as testingRender, fireEvent } from '@testing-library/react';
 import { Provider_unstable } from '@fluentui/react-shared-contexts';
 import { CalendarDay } from './CalendarDay';
 import { CalendarProvider, calendarContextDefaultValue } from '../../index';
-import { calendarDayClassNames } from './useCalendarDayStyles.styles';
-import { calendarDayGridCellClassNames } from '../CalendarDayGridCell/useCalendarDayGridCellStyles.styles';
-import { calendarDayGridRowClassNames } from '../CalendarDayGridRow/useCalendarDayGridRowStyles.styles';
-import { calendarDayGridHeaderCellClassNames } from '../CalendarDayGridHeaderCell/useCalendarDayGridHeaderCellStyles.styles';
+import { calendarDayClassNames, calendarDayGridClassNames } from './useCalendarDayStyles.styles';
 import { calendarFormatters } from '../../utils';
 import type { CalendarContextValue } from '../../contexts/calendarContext';
 import type { CalendarDayHandle, CalendarDayProps } from './CalendarDay.types';
@@ -225,6 +222,17 @@ describe('CalendarDay', () => {
     expect(document.activeElement).toBe(navigatedCell);
   });
 
+  it('forwards native focus options to the navigated day', () => {
+    const ref = React.createRef<CalendarDayHandle>();
+    const { container } = render(<CalendarDay {...defaultProps} ref={ref} />);
+    const cell = container.querySelector('button[aria-label="September 18, 2020"]')!.closest('td')!;
+    const focus = jest.spyOn(cell, 'focus');
+    ref.current!.focus({ preventScroll: true });
+    expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+    expect(document.activeElement).toBe(cell);
+    focus.mockRestore();
+  });
+
   it('preserves selection and focus with customized day content, props, and refs', () => {
     const ref = React.createRef<CalendarDayHandle>();
     const cellRef = React.createRef<HTMLTableCellElement>();
@@ -234,11 +242,8 @@ describe('CalendarDay', () => {
       <CalendarDay
         {...defaultProps}
         ref={ref}
-        getDayCellProps={date =>
-          date.getDate() === 18
-            ? { ref: cellRef, title: 'Appointment', onClick, dayLabel: { children: <strong>18</strong> } }
-            : {}
-        }
+        getDayCellProps={date => (date.getDate() === 18 ? { ref: cellRef, title: 'Appointment', onClick } : {})}
+        renderDay={(day, defaultContent) => (day.originalDate?.getDate() === 18 ? <strong>18</strong> : defaultContent)}
       />,
       { setValue },
     );
@@ -298,7 +303,9 @@ describe('CalendarDay', () => {
     });
 
     expect(findDayCellByLabel(container, 18, 'September', 2020)).not.toHaveAttribute('tabindex');
-    expect(findDayCellByLabel(container, 17, 'September', 2020)).toHaveAttribute('tabindex', '0');
+    expect(findDayCellByLabel(container, 17, 'September', 2020)).toHaveAttribute('tabindex', '-1');
+    // The next available day takes over the roving tab stop.
+    expect(findDayCellByLabel(container, 19, 'September', 2020)).toHaveAttribute('tabindex', '0');
   });
 
   it('focuses an available day in the displayed month when the navigated day is restricted', () => {
@@ -654,7 +661,7 @@ describe('CalendarDay', () => {
           container.querySelector('tr:not([aria-hidden="true"]) button[aria-label="31"]')?.closest('td'),
         ).not.toHaveAttribute('tabindex');
       } else {
-        expect(findDayCellByLabel(container, 31, 'December', 1994)).toHaveAttribute('tabindex', '0');
+        expect(findDayCellByLabel(container, 31, 'December', 1994)).toHaveAttribute('tabindex', '-1');
       }
     });
 
@@ -781,7 +788,7 @@ describe('CalendarDay', () => {
        * only for the matching navigation direction), so they are excluded here.
        */
       const getWeekRows = () =>
-        Array.from(tbody.querySelectorAll(`tr.${calendarDayGridRowClassNames.root}:not([aria-hidden="true"])`));
+        Array.from(tbody.querySelectorAll(`tr.${calendarDayGridClassNames.weekRow}:not([aria-hidden="true"])`));
       const rowsBefore = getWeekRows();
       expect(rowsBefore.length).toBeGreaterThan(0);
 
@@ -835,30 +842,27 @@ describe('CalendarDay', () => {
     });
   });
 
-  // Rows and cells own their own styles hooks, so the day picker only has to render them.
   describe('styling reaches the rows and cells', () => {
     it('applies the day cell and day button class names', () => {
       const { container } = render(<CalendarDay {...defaultProps} />);
 
       const dayCell = container.querySelector('td[role="gridcell"]');
       expect(dayCell).not.toBeNull();
-      expect(dayCell!.className).toContain(calendarDayGridCellClassNames.root);
-      expect(dayCell!.querySelector('button')!.className).toContain(calendarDayGridCellClassNames.button);
+      expect(dayCell!.className).toContain(calendarDayGridClassNames.dayCell);
+      expect(dayCell!.querySelector('button')!.className).toContain(calendarDayGridClassNames.dayButton);
     });
 
     it('applies the weekday label and week row class names', () => {
       const { container } = render(<CalendarDay {...defaultProps} />);
 
-      expect(container.querySelector('th[scope="col"]')!.className).toContain(calendarDayGridHeaderCellClassNames.root);
-      expect(container.querySelector(`.${calendarDayGridRowClassNames.root}`)).not.toBeNull();
+      expect(container.querySelector('th[scope="col"]')!.className).toContain(calendarDayGridClassNames.weekdayCell);
+      expect(container.querySelector(`.${calendarDayGridClassNames.weekRow}`)).not.toBeNull();
     });
 
     it('applies the week number cell class name when week numbers are shown', () => {
       const { container } = render(<CalendarDay {...defaultProps} />, { showWeekNumbers: true });
 
-      expect(container.querySelector('th[scope="row"]')!.className).toContain(
-        calendarDayGridRowClassNames.weekNumberCell,
-      );
+      expect(container.querySelector('th[scope="row"]')!.className).toContain(calendarDayGridClassNames.weekNumberCell);
     });
 
     it('keeps selected outside-month dates from using the lightened foreground', () => {
