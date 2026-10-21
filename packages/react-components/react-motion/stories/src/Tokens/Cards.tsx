@@ -103,27 +103,63 @@ const MotionCurveCard: React.FC<{
   );
 };
 
-const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: string; tokenValue: string }> = props => {
+/**
+ * Compares duration tokens by sliding a vertical line back and forth with linear easing.
+ * Each trip takes the token's duration, then pauses for the rest of a shared 1500 ms
+ * interval so the previews start each direction together.
+ */
+const DurationPreview = createMotionComponent<{ duration: number }>(({ duration }) => {
+  const lineAtLeft = 'translateX(0)';
+  // translateX percentages use the line's width; subtract it to keep the right edge inside the track.
+  const lineAtRight = 'translateX(calc(var(--duration-track-size) - 100%))';
+  // Each direction gets 1500 ms for travel plus a hold, so all tokens reverse together.
+  const intervalDuration = 1500;
+  const loopDuration = intervalDuration * 2;
+  // Keyframe offsets are fractions of the full 3000 ms round trip, not of one direction.
+  const travelOffset = duration / loopDuration;
+
+  return {
+    keyframes: [
+      { transform: lineAtLeft, offset: 0 },
+      { transform: lineAtRight, offset: travelOffset },
+      // Hold at the right until 1500 ms, then travel back using the same token duration.
+      { transform: lineAtRight, offset: 0.5 },
+      { transform: lineAtLeft, offset: 0.5 + travelOffset },
+      // Hold at the left until 3000 ms before repeating.
+      { transform: lineAtLeft, offset: 1 },
+    ],
+    duration: loopDuration,
+    easing: 'linear',
+    iterations: Infinity,
+    // Finish once almost immediately when reduced motion is requested.
+    reducedMotion: {
+      duration: 1,
+      iterations: 1,
+    },
+  };
+});
+
+const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: string; tokenValue: number }> = props => {
   const { animationEnabled, tokenName, tokenValue } = props;
   const classes = useCardClasses();
+  const motionRef = React.useRef<MotionImperativeRef>(null);
+
+  React.useEffect(() => {
+    motionRef.current?.setPlayState(animationEnabled ? 'running' : 'paused');
+  }, [animationEnabled]);
 
   return (
-    <div className={classes.container}>
-      <div className={classes.view}>
-        <div
-          className={classes.duration}
-          style={{
-            animationDuration: `${tokenValue}ms`,
-            animationPlayState: animationEnabled ? 'running' : 'paused',
-          }}
-        />
-      </div>
-      <div className={classes.title}>
-        <div className={classes.name}>{tokenName}</div>
-        <Divider />
-        <div className={classes.value}>{tokenValue}ms</div>
-      </div>
-    </div>
+    <tr>
+      <th scope="row">{tokenName}</th>
+      <td>{tokenValue}ms</td>
+      <td>
+        <div className={classes.view}>
+          <DurationPreview imperativeRef={motionRef} duration={tokenValue}>
+            <div className={classes.duration} />
+          </DurationPreview>
+        </div>
+      </td>
+    </tr>
   );
 };
 
@@ -188,15 +224,26 @@ export const MotionDuration = (): JSXElement => {
       <div className={classes.controls}>
         <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
-      <div className={classes.card}>
-        {Object.entries(durations).map(([tokenName, tokenValue]) => (
-          <MotionDurationCard
-            animationEnabled={animationEnabled}
-            key={tokenName}
-            tokenName={tokenName}
-            tokenValue={tokenValue.toString()}
-          />
-        ))}
+      <div className={classes.durationTableContainer}>
+        <table className={classes.durationTable} aria-label="Motion duration tokens">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Animation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(durations).map(([tokenName, tokenValue]) => (
+              <MotionDurationCard
+                animationEnabled={animationEnabled}
+                key={tokenName}
+                tokenName={tokenName}
+                tokenValue={tokenValue}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
