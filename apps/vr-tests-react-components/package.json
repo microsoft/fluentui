@@ -28,7 +28,6 @@
     "@fluentui/react-combobox": "*",
     "@fluentui/react-context-selector": "*",
     "@fluentui/react-datepicker-compat": "*",
-    "@fluentui/react-datepicker-preview": "*",
     "@fluentui/react-dialog": "*",
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",

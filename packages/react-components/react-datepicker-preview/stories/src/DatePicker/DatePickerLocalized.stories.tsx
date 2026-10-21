@@ -3,7 +3,6 @@ import { Field } from '@fluentui/react-components';
 import type { JSXElement } from '@fluentui/react-components';
 import { createCalendarDateTimeFormatter } from '@fluentui/react-calendar-preview';
 import { DatePicker } from '@fluentui/react-datepicker-preview';
-import { formatDate, parseDate } from './dateFormatting';
 
 export const Localized = (): JSXElement => (
   <Field label="Date du rendez-vous">
@@ -11,8 +10,15 @@ export const Localized = (): JSXElement => (
       allowTextInput
       today={new Date(2030, 0, 15)}
       defaultValue={new Date(2030, 0, 15)}
-      formatDate={formatDate}
-      parseDate={parseDate}
+      formatDate={date => new Intl.DateTimeFormat('fr-FR').format(date)}
+      parseDate={text => {
+        const [day, month, year] = text.split('/').map(Number);
+        if (!day || !month || !year) {
+          return null;
+        }
+        const date = new Date(year, month - 1, day);
+        return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day ? date : null;
+      }}
       contentAfter={{ 'aria-label': 'Ouvrir le calendrier' }}
       popupSurface={{ 'aria-label': 'Calendrier' }}
       calendar={{

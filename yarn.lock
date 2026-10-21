@@ -4182,7 +4182,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-datepicker-preview@npm:*, @fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
+"@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-datepicker-preview@workspace:packages/react-components/react-datepicker-preview/library"
   dependencies:
@@ -6863,7 +6863,6 @@ __metadata:
     "@fluentui/react-combobox": "npm:*"
     "@fluentui/react-context-selector": "npm:*"
     "@fluentui/react-datepicker-compat": "npm:*"
-    "@fluentui/react-datepicker-preview": "npm:*"
     "@fluentui/react-dialog": "npm:*"
     "@fluentui/react-divider": "npm:*"
     "@fluentui/react-drawer": "npm:*"
