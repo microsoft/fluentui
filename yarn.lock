@@ -4165,12 +4165,12 @@ __metadata:
     "@fluentui/react-jsx-runtime": "npm:^9.4.6"
     "@fluentui/react-portal": "workspace:^"
     "@fluentui/react-positioning": "workspace:^"
-    "@fluentui/react-provider": "workspace:^"
+    "@fluentui/react-provider": "npm:*"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-tabster": "workspace:^"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@fluentui/react-utilities": "npm:^9.26.7"
-    "@fluentui/scripts-cypress": "workspace:^"
+    "@fluentui/scripts-cypress": "npm:*"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -5390,7 +5390,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.21, @fluentui/react-provider@workspace:^, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
+"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.21, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
@@ -6361,7 +6361,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/scripts-cypress@npm:*, @fluentui/scripts-cypress@workspace:^, @fluentui/scripts-cypress@workspace:scripts/cypress":
+"@fluentui/scripts-cypress@npm:*, @fluentui/scripts-cypress@workspace:scripts/cypress":
   version: 0.0.0-use.local
   resolution: "@fluentui/scripts-cypress@workspace:scripts/cypress"
   languageName: unknown

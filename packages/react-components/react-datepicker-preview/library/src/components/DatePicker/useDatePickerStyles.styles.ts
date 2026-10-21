@@ -50,33 +50,40 @@ const usePopupSurfaceStyles = makeResetStyles({
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
-  'use no memo';
-
   const styles = useStyles();
   const popupSurfaceClassName = usePopupSurfaceStyles();
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(
-    datePickerClassNames.root,
-    styles.root,
-    !state.allowTextInput && styles.selectionOnly,
-    state.disabled && styles.disabled,
-    state.root.className,
-  );
   const contentAfter = slot.resolveShorthand(state.root.contentAfter);
-  if (contentAfter) {
-    contentAfter.className = mergeClasses(styles.icon, state.disabled && styles.disabled, contentAfter.className);
-  }
-  // eslint-disable-next-line react-hooks/immutability
-  state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
-  if (state.popupSurface) {
-    // eslint-disable-next-line react-hooks/immutability
-    state.popupSurface.className = mergeClasses(
-      datePickerClassNames.popupSurface,
-      popupSurfaceClassName,
-      state.inlinePopup && styles.inline,
-      state.popupSurface.className,
-    );
-  }
 
-  return state;
+  return {
+    ...state,
+    root: {
+      ...state.root,
+      className: mergeClasses(
+        datePickerClassNames.root,
+        styles.root,
+        !state.allowTextInput && styles.selectionOnly,
+        state.disabled && styles.disabled,
+        state.root.className,
+      ),
+      contentAfter: contentAfter
+        ? {
+            ...contentAfter,
+            className: mergeClasses(styles.icon, state.disabled && styles.disabled, contentAfter.className),
+          }
+        : state.root.contentAfter,
+    },
+    calendar: {
+      ...state.calendar,
+      className: mergeClasses(datePickerClassNames.calendar, state.calendar.className),
+    },
+    popupSurface: state.popupSurface && {
+      ...state.popupSurface,
+      className: mergeClasses(
+        datePickerClassNames.popupSurface,
+        popupSurfaceClassName,
+        state.inlinePopup && styles.inline,
+        state.popupSurface.className,
+      ),
+    },
+  };
 };

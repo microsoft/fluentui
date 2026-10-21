@@ -10,9 +10,7 @@ import type { DatePickerProps } from './DatePicker.types';
  * A date input with an accessible Calendar Preview popup.
  */
 export const DatePicker: ForwardRefComponent<DatePickerProps> = React.forwardRef((props, ref) => {
-  const state = useDatePicker_unstable(props, ref);
-
-  useDatePickerStyles_unstable(state);
+  const state = useDatePickerStyles_unstable(useDatePicker_unstable(props, ref));
 
   return renderDatePicker_unstable(state);
 });

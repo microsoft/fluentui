@@ -64,7 +64,7 @@
     ]
   },
   "devDependencies": {
-    "@fluentui/react-provider": "workspace:^",
-    "@fluentui/scripts-cypress": "workspace:^"
+    "@fluentui/react-provider": "*",
+    "@fluentui/scripts-cypress": "*"
   }
 }
