@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-table): let a sortable TableHeaderCell button follow the cell justification",
+  "packageName": "@fluentui/react-table",
+  "email": "jakesalvesen@users.noreply.github.com"
+}
