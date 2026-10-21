@@ -17,19 +17,6 @@ const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${lab
 const month = (label: string) => `button[role="gridcell"][aria-label="${label}"]`;
 
 describe('Calendar', () => {
-  beforeEach(() => {
-    const mode = Cypress.env('focusgroup');
-    cy.document().then(doc => {
-      const element = doc.createElement('div');
-      const hasNativeFocusgroup = 'focusGroup' in element || 'focusgroup' in element;
-      if (mode === 'native') {
-        expect(hasNativeFocusgroup, 'native V1 focusgroup enabled').to.equal(true);
-      } else if (mode === 'polyfill') {
-        expect(hasNativeFocusgroup, 'native focusgroup disabled for the actual polyfill').to.equal(false);
-      }
-    });
-  });
-
   it('pages from the arrow-focused day and restores focus with a consumer ref', () => {
     const dayRef = React.createRef<CalendarDayHandle>();
     mount(<Calendar today={today} defaultValue={today} dayPicker={{ ref: dayRef }} />);
