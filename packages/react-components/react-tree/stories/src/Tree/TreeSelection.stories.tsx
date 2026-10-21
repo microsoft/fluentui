@@ -46,6 +46,10 @@ Selection.parameters = {
       story: `
 The tree component offers selectable functionality in both single and multi-selection modes. You can enable this feature by passing the \`selectionMode\` prop with either \`single\` or \`multiselect\` value.
 
+⚠️ WARNING: trees that have multiple possible interactions on the same tree item (e.g. selection + a primary action, or selection + expand/collapse) are fundamentally inaccessible across multiple modalities, specifically mobile screen readers, VoiceOver on macOS, and voice control. Trees generally are not broadly accessible, and should be used very infrequently if at all. If you create a selectable tree, the best practice is to not also define an onClick for TreeItems.
+
+Controlling selection state:
+
 - \`Tree\`: In nested tree, you are responsible for controlling the selection state, as it would be difficult to manage the state in an uncontrolled manner without knowing the items upfront.
 - \`FlatTree\`: In flat tree, you can take advantage of an uncontrolled state for easier management, as the items are known upfront. It is also possible to use a controlled state if you need to manage the selection state externally.
 

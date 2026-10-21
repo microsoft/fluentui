@@ -26,7 +26,6 @@ export { NavigationModeTreeGrid } from './TreeNavigationModeTreeGrid.stories';
 export { DefaultOpen } from './TreeDefaultOpen.stories';
 export { OpenItemsControlled } from './OpenItemsControlled.stories';
 export { OpenItemControlled } from './OpenItemControlled.stories';
-export { CustomizingInteraction } from './TreeCustomizingInteraction.stories';
 export { InlineStylingTreeItemLevel } from './TreeInlineStylingTreeItemLevel.stories';
 export { FlatTreeStory as FlatTree } from './FlatTree.stories';
 

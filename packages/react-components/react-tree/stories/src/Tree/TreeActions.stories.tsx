@@ -113,7 +113,7 @@ In addition to \`aside\` slot, both tree item layouts support \`actions\` slot t
 
 The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navigation with the keyboard by using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default).
 
-> ⚠️ Although \`actions\` are easy to navigate, they're not an expected pattern according to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).providing a context menu with the same functionalities as the actions is recommended to ensure your tree item is accessible.
+> ⚠️ Although \`aria-actions\` will improve accessibility in the future, the current state of actions is that they are inaccessible across multiple platforms and input modalities, such as voice control. They are also not allowed children of a treeitem per the ARIA spec. Providing a context menu with the same functionalities as the actions is recommended to improve the accessibility of actions.
 
 In the example below, we compose on top of \`TreeItem\` component to include both a context menu and actions that provide the same amount of functionalities. We also provide an \`aria-description\` to the tree item to indicate that it has actions. This is a new behavior that the user might not be aware of, so you might need to explain somewhere else in the UI what does having actions refers to.
 
