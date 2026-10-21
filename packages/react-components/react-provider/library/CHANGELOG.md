@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-provider
 
-<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.22.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.22)
+
+Mon, 19 Oct 2026 16:49:00 GMT
+
+### Patches
+
+- fix: block unsafe theme token syntax without a value-format allowlist ([PR #36830](https://github.com/microsoft/fluentui/pull/36830) by paliprandi@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.22.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.21)
 
