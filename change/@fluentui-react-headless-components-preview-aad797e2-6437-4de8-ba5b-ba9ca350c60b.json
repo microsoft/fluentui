@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: add a self-contained headless Calendar with focusgroup grid navigation, locally owned hooks, renderers, types, context and date utilities, and examples for restrictions, ranges, controlled overlays, localization, month selection and marked days",
+  "comment": "feat: add a self-contained headless Calendar with focusgroup navigation",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

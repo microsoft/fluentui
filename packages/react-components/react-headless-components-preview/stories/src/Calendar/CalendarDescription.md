@@ -28,13 +28,6 @@ the navigated cell uses `focusgroupstart`. Eligible cells are authored with `tab
 the browser or polyfill, not Calendar, owns arrow navigation, the single Tab entry and focus memory.
 There is no Tabster or custom in-grid roving-focus implementation.
 
-**Grid navigation requires focusgroup V2 support.** The currently installed
-`@microsoft/focusgroup-polyfill` does not implement grids, so arrows and single-stop Tab traversal
-are not available with that release. [microsoft/polyfills#64](https://github.com/microsoft/polyfills/pull/64)
-adds V2 grids but requires exactly one keyboard-focusable target per cell; non-focusable
-weekday/week-number headers and unavailable dates also require runtime support. The affected E2E
-tests are retained as skipped cases with a TODO so they can be enabled against a compatible release.
-
 Calendar still handles date selection, PageUp/PageDown, and paging when an arrow leaves the
 rendered day range. Selection and paging respect consumer cancellation, date restrictions and
 RTL direction. Nested focusgroups and editable content retain their own keyboard ownership.
