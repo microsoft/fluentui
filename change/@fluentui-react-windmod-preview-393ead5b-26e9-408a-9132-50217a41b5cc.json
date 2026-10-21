@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Expose headless tab and navigation context APIs and align color slider gradients with current channel state.",
+  "comment": "feat: release the Windmod preview styling package using headless ^0.3.2, with DropdownSlots and tab/navigation context exports, published icon class selectors, expanded NavCategoryItem styling and channel-aware ColorSlider gradients.",
   "packageName": "@fluentui/react-windmod-preview",
   "email": "array.knight+github@gmail.com"
 }
