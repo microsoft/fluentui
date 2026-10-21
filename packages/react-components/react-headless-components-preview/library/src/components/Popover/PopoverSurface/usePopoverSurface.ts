@@ -22,6 +22,8 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const mode = usePopoverContext(context => context.mode);
+  const onSurfaceKeyDown = usePopoverContext(context => context.onSurfaceKeyDown);
 
   if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
@@ -47,14 +49,24 @@ export const usePopoverSurface = (
       },
       {
         defaultProps: {
-          popover: trapFocus ? undefined : 'auto',
+          popover: trapFocus ? undefined : mode,
         },
         elementType: 'dialog',
       },
     ) as PopoverSurfaceState['root'],
   };
 
-  const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
+  const {
+    onMouseEnter: onMouseEnterOriginal,
+    onMouseLeave: onMouseLeaveOriginal,
+    onKeyDown: onKeyDownOriginal,
+  } = state.root;
+
+  // The browser ignores Escape on `manual` popovers (and on `hint` where unsupported); `usePopover` closes it.
+  state.root.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDialogElement & HTMLDivElement>) => {
+    onKeyDownOriginal?.(e);
+    onSurfaceKeyDown(e);
+  });
 
   state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {

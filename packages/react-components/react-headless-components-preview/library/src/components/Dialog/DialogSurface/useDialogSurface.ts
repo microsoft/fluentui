@@ -12,19 +12,14 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
+import { useDialogLayerOpenState, useLayerPresence } from '../../../hooks/top-layer';
+import { isEscapeForLayer } from '../../../hooks/top-layer/utils';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
-
-const SUPPORTS_POPOVER_OPEN_SELECTOR =
-  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
-
-type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
 /**
  * Create the state required to render DialogSurface.
- * Uses native `<dialog>` behavior:
- * - modal/alert => `showModal()`
- * - non-modal => `showPopover()` (fallback to `show()`)
- * - close => `close()`/`hidePopover()`
+ * Show/hide and exit come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for
+ * non-modal.
  *
  * @param props - props from this instance of DialogSurface
  * @param ref - reference to root HTMLDialogElement of DialogSurface
@@ -34,133 +29,67 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
   const { targetDocument } = useFluent();
 
   const dialogRef = React.useRef<HTMLDialogElement>(null);
-  const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
   const mergedRef = useMergedRefs(ref, dialogRef);
 
-  // Keep the element connected for native close and consumer-defined exit animations.
-  const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
+  const isNonModal = modalType === 'non-modal';
 
-  // Ensure the element exists before open side-effects run.
-  if ((open || !unmountOnClose) && !shouldRender) {
-    setShouldRender(true);
-  }
-
-  const handleToggle = useEventCallback((event: Event) => {
-    const toggle = event as ToggleEvent;
-    const nextOpen = toggle.newState === 'open';
-
-    if (nextOpen !== open) {
-      requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event });
-    }
-  });
-
-  // Open/close native dialog/popover and keep listeners in sync with mounted element.
+  // Non-modal: return focus to the element focused before opening. Read before the open-state hook shows the
+  // surface, which can move focus into it.
+  const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
   useIsomorphicLayoutEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) {
-      return;
-    }
-
-    if (!open) {
-      if (modalType === 'non-modal') {
-        if (typeof dialog.hidePopover === 'function') {
-          const isPopoverOpen = SUPPORTS_POPOVER_OPEN_SELECTOR && dialog.matches(':popover-open');
-          if (isPopoverOpen) {
-            dialog.hidePopover();
-          }
-        } else if (dialog.open) {
-          dialog.close();
-        }
-
-        const elementToFocus = previouslyFocusedElement.current;
-        if (elementToFocus && targetDocument?.contains(elementToFocus)) {
-          elementToFocus.focus();
-        }
-        previouslyFocusedElement.current = null;
-      } else if (dialog.open) {
-        dialog.close();
-      }
-      if (unmountOnClose) {
-        // subtree includes ::backdrop; filtering the target excludes unrelated child animations.
-        const animations = (dialog.getAnimations?.({ subtree: true }) ?? []).filter(animation => {
-          const effect = animation.effect;
-          return (
-            effect &&
-            'target' in effect &&
-            effect.target === dialog &&
-            animation.playState === 'running' &&
-            Number.isFinite(effect.getComputedTiming().endTime)
-          );
-        });
-
-        if (animations.length === 0) {
-          setShouldRender(false);
-        } else {
-          let cancelled = false;
-          let remaining = animations.length;
-          // Cancellation rejects finished, but still completes the exit lifecycle.
-          const handleAnimationFinished = () => {
-            if (!cancelled && --remaining === 0) {
-              setShouldRender(false);
-            }
-          };
-          animations.forEach(animation => {
-            animation.finished.then(handleAnimationFinished, handleAnimationFinished);
-          });
-
-          return () => {
-            cancelled = true;
-          };
-        }
-      }
-      return;
-    }
-
-    const shouldLockScroll = modalType !== 'non-modal' && !!targetDocument;
-    if (shouldLockScroll) {
-      lockDocumentScroll(targetDocument);
-    }
-
-    if (modalType === 'non-modal') {
+    if (isNonModal && open) {
       previouslyFocusedElement.current = targetDocument?.activeElement as HTMLElement | null;
     }
+  }, [open, isNonModal, targetDocument]);
 
-    let handleCancel: ((event: Event) => void) | undefined;
-    if (modalType !== 'non-modal') {
-      // Let React own close state; prevent native Escape auto-close.
-      handleCancel = (event: Event) => event.preventDefault();
-      dialog.addEventListener('cancel', handleCancel);
+  // A browser open or close (`popovertarget`, `commandfor`, `<form method="dialog">`) is reported as `surfaceToggle`.
+  useDialogLayerOpenState(dialogRef, {
+    open,
+    mode: isNonModal ? 'manual' : 'modal',
+    onOpenChange: (nextOpen, { event }) => requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event }),
+  });
+
+  const { shouldRender, phase } = useLayerPresence(dialogRef, { open, unmountOnClose });
+
+  // After the open-state hook hid the surface.
+  useIsomorphicLayoutEffect(() => {
+    if (!isNonModal || open) {
+      return;
     }
-
-    if (modalType !== 'non-modal') {
-      if (!dialog.open) {
-        dialog.showModal();
-      }
-    } else if (typeof dialog.showPopover === 'function') {
-      const isPopoverOpen = SUPPORTS_POPOVER_OPEN_SELECTOR && dialog.matches(':popover-open');
-      if (!isPopoverOpen) {
-        dialog.showPopover();
-      }
-
-      dialog.addEventListener('toggle', handleToggle);
-    } else if (!dialog.open) {
-      dialog.show();
+    const elementToFocus = previouslyFocusedElement.current;
+    if (elementToFocus && targetDocument?.contains(elementToFocus)) {
+      elementToFocus.focus();
     }
+    previouslyFocusedElement.current = null;
+  }, [open, isNonModal, targetDocument]);
 
-    return () => {
-      if (handleCancel) {
-        dialog.removeEventListener('cancel', handleCancel);
-      }
-      dialog.removeEventListener('toggle', handleToggle);
-      if (shouldLockScroll) {
-        unlockDocumentScroll(targetDocument);
-      }
-    };
-  }, [open, modalType, targetDocument, unmountOnClose, handleToggle]);
+  // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
+  useIsomorphicLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    if (!open || isNonModal || !dialog) {
+      return;
+    }
+    const preventCancel = (event: Event) => event.preventDefault();
+    dialog.addEventListener('cancel', preventCancel);
+    return () => dialog.removeEventListener('cancel', preventCancel);
+  }, [open, isNonModal]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!open || modalType === 'non-modal' || !targetDocument) {
+      return;
+    }
+    lockDocumentScroll(targetDocument);
+    return () => unlockDocumentScroll(targetDocument);
+  }, [open, modalType, targetDocument]);
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
     props.onKeyDown?.(event);
-    if (event.key === 'Escape' && !event.isDefaultPrevented()) {
+    if (
+      event.key === 'Escape' &&
+      !event.isDefaultPrevented() &&
+      // Leave Escape to a popover or dialog nested inside. Content portaled out of the surface still counts.
+      isEscapeForLayer(event.currentTarget, event.target as Element)
+    ) {
       requestOpenChange({ type: 'escapeKeyDown', open: false, event });
       // Stop propagation to avoid closing parent dialogs simultaneously.
       event.stopPropagation();
@@ -215,6 +144,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     unmountOnClose,
     modalType,
     shouldRender,
+    phase,
     root: slot.always(
       getIntrinsicElementProps('dialog', {
         role: modalType === 'alert' ? 'alertdialog' : undefined,
