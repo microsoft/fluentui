@@ -58,9 +58,42 @@ export type UseLayerOpenStateOptions<Mode extends TopLayerMode = PopoverMode> = 
    */
   onOpenChange?: (open: boolean, data: TopLayerOpenChangeData) => void;
   /**
+   * Called before the hook shows the element: once per open, and again when a new element replaces the shown one.
+   */
+  onBeforeShow?: (element: HTMLElement) => void;
+  /**
    * Called after the element is shown: once per open, and again when a new element replaces the shown one.
    */
   onShow?: (element: HTMLElement) => void;
+  /**
+   * Called once per close as it starts, before the element leaves the top layer: before the hook hides it, or on the
+   * browser's `beforetoggle` or `cancel`. Not called when the browser closes a dialog without either.
+   */
+  onBeforeHide?: (element: HTMLElement) => void;
+  /**
+   * Called once per close, after the element has left the top layer, whether React or the browser closed it.
+   */
+  onHide?: (element: HTMLElement) => void;
+};
+
+/**
+ * Lifecycle callbacks for `useLayerOpenState`; spread them into its options.
+ */
+export type LayerLifecycleCallbacks = Pick<UseLayerOpenStateOptions, 'onBeforeShow' | 'onBeforeHide' | 'onHide'>;
+
+export type UseLayerFocusReturnOptions = {
+  /**
+   * Where focus goes on close. Defaults to the element focused before the layer was shown.
+   */
+  target?: React.RefObject<HTMLElement | null>;
+  /**
+   * When focus goes back:
+   * - `inside`: when focus was inside as the close started, and is now on `<body>` or still inside;
+   * - `always`: whenever the target is still in the document;
+   * - `false`: never, e.g. a modal dialog, where the browser returns focus.
+   * @default 'inside'
+   */
+  when?: 'inside' | 'always' | false;
 };
 
 export type UseLayerEscapeOptions = {

@@ -72,14 +72,15 @@ export const useLayerPresence = (
       if (exit.current.element) {
         endExit(exit.current.element);
       }
+
       if (!element) {
         return;
       }
 
-      // After the commit, once the element has been shown, so its enter animations are running.
       let settled = false;
       let cancelEnter = () => undefined as void;
       let cancelled = false;
+
       queueMicrotask(() => {
         if (cancelled) {
           return;
@@ -124,7 +125,7 @@ export const useLayerPresence = (
         endExit(element);
       }
     };
-    // Inert only while exit animations run.
+
     const waitForExitAnimations = () => {
       cancelAnimations = waitForAnimations(element, finish);
       if (!done) {
@@ -142,7 +143,6 @@ export const useLayerPresence = (
       },
     };
 
-    // After the commit, once the element has been hidden, so its exit animations are running.
     queueMicrotask(() => {
       if (done) {
         return;
@@ -152,7 +152,6 @@ export const useLayerPresence = (
         return;
       }
 
-      // Still shown: wait for the browser to report the close.
       element.addEventListener(
         isPopoverOpen(element) ? 'toggle' : 'close',
         event => {
