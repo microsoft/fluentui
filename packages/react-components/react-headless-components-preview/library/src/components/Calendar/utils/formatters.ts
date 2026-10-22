@@ -129,20 +129,23 @@ const dateTimeFormatters = {
   shortWeekday: { weekday: 'narrow' },
 } satisfies Record<CalendarDateTimeFormat, Intl.DateTimeFormatOptions>;
 
+const gregorianCalendar = { calendar: 'gregory' } as Intl.DateTimeFormatOptions;
+
 /**
  * Creates reusable Intl formatters for every calendar date format. The defaults use en-US; pass the
  * desired locale to localize date labels.
  */
 export function createCalendarDateTimeFormatter(locales: string | string[] = 'en-US'): CalendarFormatters['dateTime'] {
-  const formatters = Object.fromEntries(
-    Object.entries(dateTimeFormatters).map(([key, fields]) => [
-      key,
-      new Intl.DateTimeFormat(locales, {
-        ...fields,
-        ...({ calendar: 'gregory' } as Intl.DateTimeFormatOptions),
-      }),
-    ]),
-  );
+  const formatters: Record<CalendarDateTimeFormat, Intl.DateTimeFormat> = {
+    day: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.day, ...gregorianCalendar }),
+    month: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.month, ...gregorianCalendar }),
+    shortMonth: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.shortMonth, ...gregorianCalendar }),
+    year: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.year, ...gregorianCalendar }),
+    monthDayYear: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.monthDayYear, ...gregorianCalendar }),
+    monthYear: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.monthYear, ...gregorianCalendar }),
+    weekday: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.weekday, ...gregorianCalendar }),
+    shortWeekday: new Intl.DateTimeFormat(locales, { ...dateTimeFormatters.shortWeekday, ...gregorianCalendar }),
+  };
 
   return data => formatters[data.format].format(data.date);
 }
