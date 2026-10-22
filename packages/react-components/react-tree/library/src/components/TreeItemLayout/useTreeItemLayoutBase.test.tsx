@@ -63,6 +63,8 @@ describe('useTreeItemLayoutBase_unstable', () => {
 
     expect(result.current.actions?.role).toBe('toolbar');
     expect(result.current.actions).not.toHaveProperty('data-tabster');
+    expect(result.current.actions).not.toHaveProperty('visible');
+    expect(result.current.actions).not.toHaveProperty('onVisibilityChange');
   });
 
   it('carries no button context', () => {
@@ -159,5 +161,31 @@ describe('useTreeItemLayoutBase_unstable', () => {
       expect.any(Object),
       expect.objectContaining({ value: 'item', checked: true }),
     );
+  });
+
+  it('shares a single set of document modality listeners across layouts with actions', () => {
+    const addEventListener = jest.spyOn(document, 'addEventListener');
+    const removeEventListener = jest.spyOn(document, 'removeEventListener');
+    const countKeyDownListeners = (spy: jest.SpyInstance) =>
+      spy.mock.calls.filter(([type, , options]) => type === 'keydown' && options === true).length;
+
+    const { unmount } = render(
+      <Tree aria-label="Tree">
+        {['1', '2', '3'].map(value => (
+          <TreeItem key={value} itemType="leaf" value={value}>
+            <BaseTreeItemLayout actions={<button>Edit {value}</button>}>Item {value}</BaseTreeItemLayout>
+          </TreeItem>
+        ))}
+      </Tree>,
+    );
+
+    expect(countKeyDownListeners(addEventListener)).toBe(1);
+
+    unmount();
+
+    expect(countKeyDownListeners(removeEventListener)).toBe(1);
+
+    addEventListener.mockRestore();
+    removeEventListener.mockRestore();
   });
 });

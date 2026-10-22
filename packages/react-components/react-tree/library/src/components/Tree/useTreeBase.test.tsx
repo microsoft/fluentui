@@ -153,7 +153,8 @@ describe('useTreeBase_unstable', () => {
                     <div aria-hidden="true">
                       <button>Aria hidden</button>
                     </div>
-                    <div inert={true}>
+                    {/* React 17 and 18 do not forward `inert`, so it is set through a ref */}
+                    <div ref={element => element?.setAttribute('inert', '')}>
                       <button>Inert</button>
                     </div>
                     <div style={{ visibility: 'hidden' }}>

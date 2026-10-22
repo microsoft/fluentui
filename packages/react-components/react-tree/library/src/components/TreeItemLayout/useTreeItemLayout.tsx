@@ -311,6 +311,11 @@ function useTreeItemLayoutBase(
         elementType: 'div',
       })
     : undefined;
+  if (actions) {
+    // .visible .onVisibilityChange are consumed above and should not be propagated to the DOM
+    delete actions.visible;
+    delete actions.onVisibilityChange;
+  }
 
   React.useEffect(() => {
     if (treeItemRef.current && hasActions) {
@@ -368,39 +373,68 @@ function useTreeItemLayoutBase(
   };
 }
 
+type DOMKeyboardNavigationTracker = {
+  isNavigatingWithKeyboard: boolean;
+  subscribers: number;
+  dispose: () => void;
+};
+
+/**
+ * Keyboard modality trackers shared by every base layout of a document, so that the number of
+ * document listeners does not grow with the number of mounted tree items.
+ */
+const domKeyboardNavigationTrackers = new WeakMap<Document, DOMKeyboardNavigationTracker>();
+
+const DOM_POINTER_EVENTS = ['pointermove', 'pointerdown', 'mousemove', 'mousedown', 'touchstart'] as const;
+
+function subscribeToDOMKeyboardNavigation(targetDocument: Document): DOMKeyboardNavigationTracker {
+  let tracker = domKeyboardNavigationTrackers.get(targetDocument);
+  if (!tracker) {
+    const onKeyDown = () => {
+      state.isNavigatingWithKeyboard = true;
+    };
+    const onPointerInteraction = () => {
+      state.isNavigatingWithKeyboard = false;
+    };
+    const state: DOMKeyboardNavigationTracker = {
+      isNavigatingWithKeyboard: false,
+      subscribers: 0,
+      dispose: () => {
+        targetDocument.removeEventListener('keydown', onKeyDown, true);
+        DOM_POINTER_EVENTS.forEach(type => targetDocument.removeEventListener(type, onPointerInteraction, true));
+        domKeyboardNavigationTrackers.delete(targetDocument);
+      },
+    };
+
+    targetDocument.addEventListener('keydown', onKeyDown, true);
+    DOM_POINTER_EVENTS.forEach(type => targetDocument.addEventListener(type, onPointerInteraction, true));
+    domKeyboardNavigationTrackers.set(targetDocument, state);
+    tracker = state;
+  }
+  tracker.subscribers++;
+  return tracker;
+}
+
 function useDOMKeyboardNavigation(targetDocument: Document | undefined, enabled: boolean): () => boolean {
-  const isNavigatingWithKeyboardRef = React.useRef(false);
+  const trackerRef = React.useRef<DOMKeyboardNavigationTracker | null>(null);
 
   React.useEffect(() => {
     if (!targetDocument || !enabled) {
       return;
     }
 
-    const onKeyDown = () => {
-      isNavigatingWithKeyboardRef.current = true;
-    };
-    const onPointerInteraction = () => {
-      isNavigatingWithKeyboardRef.current = false;
-    };
-
-    targetDocument.addEventListener('keydown', onKeyDown, true);
-    targetDocument.addEventListener('pointermove', onPointerInteraction, true);
-    targetDocument.addEventListener('pointerdown', onPointerInteraction, true);
-    targetDocument.addEventListener('mousemove', onPointerInteraction, true);
-    targetDocument.addEventListener('mousedown', onPointerInteraction, true);
-    targetDocument.addEventListener('touchstart', onPointerInteraction, true);
+    const tracker = subscribeToDOMKeyboardNavigation(targetDocument);
+    trackerRef.current = tracker;
 
     return () => {
-      targetDocument.removeEventListener('keydown', onKeyDown, true);
-      targetDocument.removeEventListener('pointermove', onPointerInteraction, true);
-      targetDocument.removeEventListener('pointerdown', onPointerInteraction, true);
-      targetDocument.removeEventListener('mousemove', onPointerInteraction, true);
-      targetDocument.removeEventListener('mousedown', onPointerInteraction, true);
-      targetDocument.removeEventListener('touchstart', onPointerInteraction, true);
+      trackerRef.current = null;
+      if (--tracker.subscribers === 0) {
+        tracker.dispose();
+      }
     };
   }, [targetDocument, enabled]);
 
-  return React.useCallback(() => isNavigatingWithKeyboardRef.current, []);
+  return React.useCallback(() => trackerRef.current?.isNavigatingWithKeyboard ?? false, []);
 }
 
 function noop() {
