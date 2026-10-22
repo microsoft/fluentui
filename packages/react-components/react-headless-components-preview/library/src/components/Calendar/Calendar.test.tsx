@@ -73,6 +73,57 @@ describe('Calendar rendering and public API', () => {
     expect(onDisplayedDateChange).not.toHaveBeenCalled();
   });
 
+  it('composes consumer handlers with month navigation and Go to today', () => {
+    const onDisplayedDateChange = jest.fn();
+    const onNextMonthClick = jest.fn();
+    const onGoToTodayClick = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        defaultDisplayedDate={new Date(2020, 9, 18)}
+        onDisplayedDateChange={onDisplayedDateChange}
+        dayPicker={{ nextMonthButton: { onClick: onNextMonthClick } }}
+        goToTodayButton={{ onClick: onGoToTodayClick }}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Next month November' }));
+    expect(onNextMonthClick).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange).toHaveBeenLastCalledWith(
+      expect.anything(),
+      expect.objectContaining({ displayedDate: new Date(2020, 10, 18) }),
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+    expect(onGoToTodayClick).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange).toHaveBeenLastCalledWith(
+      expect.anything(),
+      expect.objectContaining({ displayedDate: today }),
+    );
+  });
+
+  it('keeps day-button consumer handlers and delegated selection', () => {
+    const onSelectDate = jest.fn();
+    const onButtonClick = jest.fn();
+    const selected = new Date(2020, 8, 19);
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        defaultDisplayedDate={today}
+        onSelectDate={onSelectDate}
+        dayPicker={{
+          getCellProps: day =>
+            day.originalDate?.getTime() === selected.getTime() ? { button: { onClick: onButtonClick } } : {},
+        }}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: dayLabel(selected) }));
+
+    expect(onButtonClick).toHaveBeenCalledTimes(1);
+    expect(onSelectDate).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ date: selected }));
+  });
+
   it.each([
     { layout: 'sideBySide', view: 'day', dayOnly: false, monthOnly: false },
     { layout: 'sideBySide', view: 'day', dayOnly: true, monthOnly: false },

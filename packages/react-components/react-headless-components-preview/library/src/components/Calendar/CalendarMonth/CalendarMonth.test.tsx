@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { act, fireEvent, render as testingRender, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { CalendarProvider, calendarContextDefaultValue, type CalendarContextValue } from '../../../calendar';
+import { CalendarProvider, calendarContextDefaultValue } from '../calendarContext';
+import type { CalendarContextValue } from '../calendarContext';
 import { isConformant } from '../../../testing/isConformant';
 import { CalendarMonth } from './CalendarMonth';
 import { useCalendarMonth } from './useCalendarMonth';
@@ -80,6 +81,17 @@ const render = (element: React.ReactElement, contextValue: Partial<CalendarConte
   });
 
 describe('CalendarMonth', () => {
+  it('renders a noninteractive heading without button attributes when the year picker is hidden', () => {
+    const { container } = render(<CalendarMonth navigatedDate={today} yearPickerHidden />);
+    const heading = container.querySelector('[data-fui-calendar-picker="month"] > div > div')!;
+
+    expect(heading.tagName).toBe('DIV');
+    expect(heading).not.toHaveAttribute('onClick');
+    expect(heading).not.toHaveAttribute('onKeyDown');
+    expect(heading).not.toHaveAttribute('type');
+    expect(heading).not.toHaveAttribute('aria-label');
+  });
+
   it('keeps row and month state data-only and resolves HTML props on demand', () => {
     const getCellProps = jest.fn(() => ({ root: { title: 'Custom month' } }));
     const getRowProps = jest.fn(() => ({ root: { title: 'Custom row' } }));
@@ -98,15 +110,15 @@ describe('CalendarMonth', () => {
     });
     const row = state.monthRows[2];
     const month = row.cells[0];
-    expect(state.getMonthCellProps(month).root).toMatchObject({
+    const cellProps = state.getMonthCellProps(month);
+    expect(cellProps.root).toMatchObject({
       role: 'gridcell',
-      type: 'button',
-      children: month.label,
       'aria-label': 'September',
       title: 'Custom month',
       tabIndex: 0,
       focusgroupstart: '',
     });
+    expect(cellProps.button).toMatchObject({ type: 'button', children: month.label, tabIndex: -1 });
     expect(state.getMonthRowProps(row).root).toMatchObject({
       role: 'row',
       focusgrouprow: '',
@@ -186,7 +198,7 @@ describe('CalendarMonth', () => {
 
     rerender(picker(new Date(2020, 10, 1)));
 
-    expect(getByRole('gridcell', { name: 'October' })).toBeDisabled();
+    expect(getByRole('gridcell', { name: 'October' }).querySelector('button')).toBeDisabled();
     expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
     expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('focusgroupstart');
   });
@@ -215,13 +227,14 @@ describe('CalendarMonth', () => {
   it('customizes resolved cells and rows without changing the grid structure or focus handle', () => {
     const handle = React.createRef<CalendarMonthHandle>();
     const pickerRef = React.createRef<HTMLDivElement>();
-    const cellRef = React.createRef<HTMLButtonElement>();
+    const cellRef = React.createRef<HTMLDivElement>();
     const rowRef = React.createRef<HTMLDivElement>();
     const getCellProps = jest.fn((cell: CalendarMonthCellData) => {
       expect(cell).not.toHaveProperty('root');
       expect(cell.label).toEqual(expect.any(String));
       return {
-        root: cell.index === 8 ? { ref: cellRef, children: <strong>{cell.label}</strong>, title: 'Custom month' } : {},
+        root: cell.index === 8 ? { ref: cellRef, title: 'Custom month' } : {},
+        button: cell.index === 8 ? { children: <strong>{cell.label}</strong> } : {},
       };
     });
     const { container, getByRole, unmount } = render(
@@ -244,7 +257,7 @@ describe('CalendarMonth', () => {
     expect(pickerRef.current).toBe(container.firstElementChild);
     expect(getCellProps).toHaveBeenCalledTimes(12);
     expect(cellRef.current).toBe(september);
-    expect(september.querySelector('strong')).toHaveTextContent('Sep');
+    expect(september.querySelector('button strong')).toHaveTextContent('Sep');
     expect(september).toHaveAttribute('title', 'Custom month');
     expect(rowRef.current).toContainElement(september);
     expect(rowRef.current).toHaveAttribute('title', 'Row 2');
@@ -265,12 +278,12 @@ describe('CalendarMonth', () => {
         getCellProps={() => ({
           root: {
             role: 'link',
-            disabled: false,
             tabIndex: -1,
             'aria-disabled': false,
             'aria-selected': false,
             'data-selected': 'custom',
           },
+          button: { disabled: false },
         })}
         getRowProps={() => ({ root: { role: 'presentation' } })}
       />,
@@ -288,7 +301,7 @@ describe('CalendarMonth', () => {
 
   it.each([undefined, null, ''])('preserves month content override semantics for %p', children => {
     const { getByRole } = render(
-      <CalendarMonth navigatedDate={new Date(2020, 8, 18)} getCellProps={() => ({ root: { children } })} />,
+      <CalendarMonth navigatedDate={new Date(2020, 8, 18)} getCellProps={() => ({ button: { children } })} />,
     );
     expect(getByRole('gridcell', { name: 'September' }).textContent).toBe(children === undefined ? 'Sep' : '');
   });

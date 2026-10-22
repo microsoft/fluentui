@@ -1,7 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import {
   addYears,
   compareDatePart,
@@ -191,22 +197,26 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     month.isNavigated = month === focusableMonth;
   }
   const monthRows = getCalendarPickerRows(months, calendarMonthColumns);
-  const getMonthCellProps: CalendarMonthState['getMonthCellProps'] = month => ({
-    root: mergeProps(
-      {
-        ...getCalendarPickerCellProps(
-          allFocusable,
-          !month.isInBounds,
-          month.isSelected,
-          month.isCurrent,
-          month.index === focusableMonth?.index,
-        ),
-        'aria-label': formatters.dateTime({ date: setMonth(navigatedDate, month.index), format: 'month' }),
-        children: month.label,
-      },
-      props.getCellProps?.(month).root,
-    ),
-  });
+  const getMonthCellProps: CalendarMonthState['getMonthCellProps'] = month => {
+    const cellProps = getCalendarPickerCellProps(
+      allFocusable,
+      !month.isInBounds,
+      month.isSelected,
+      month.isCurrent,
+      month.index === focusableMonth?.index,
+    );
+    const overrides = props.getCellProps?.(month);
+    return {
+      root: mergeProps(
+        {
+          ...cellProps.root,
+          'aria-label': formatters.dateTime({ date: setMonth(navigatedDate, month.index), format: 'month' }),
+        },
+        overrides?.root,
+      ),
+      button: mergeProps({ ...cellProps.button, children: month.label }, overrides?.button),
+    };
+  };
   const getMonthRowProps: CalendarMonthState['getMonthRowProps'] = row => ({
     root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
   });
@@ -231,6 +241,41 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     elementType: CalendarYear,
   });
   yearPickerSlot.imperativeRef = useMergedRefs(yearPickerRef, yearPickerSlot.imperativeRef);
+  const headingSlot = slot.always(heading, {
+    defaultProps: {
+      'aria-label': headerIsClickable
+        ? formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })
+        : undefined,
+      children: (
+        <span aria-live="polite" aria-atomic="true">
+          {yearString}
+        </span>
+      ),
+      tabIndex: headerIsClickable ? 0 : undefined,
+      type: headerIsClickable ? 'button' : undefined,
+    },
+    elementType: headerIsClickable ? 'button' : 'div',
+  });
+  if (headerIsClickable) {
+    headingSlot.onClick = mergeCallbacks(
+      headingSlot.onClick as React.MouseEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (!ev.isDefaultPrevented()) {
+          onHeaderSelect(ev as React.MouseEvent<HTMLButtonElement>);
+        }
+      },
+    );
+    headingSlot.onKeyDown = mergeCallbacks(
+      headingSlot.onKeyDown as React.KeyboardEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (!ev.isDefaultPrevented()) {
+          onCalendarEnterKeyDown<HTMLElement>(event => onHeaderSelect(event as React.KeyboardEvent<HTMLButtonElement>))(
+            ev,
+          );
+        }
+      },
+    );
+  }
 
   return {
     isYearPickerVisible,
@@ -251,23 +296,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
       elementType: 'div',
     }),
     header: slot.always(header, { elementType: 'div' }),
-    heading: slot.always(heading, {
-      defaultProps: {
-        'aria-label': headerIsClickable
-          ? formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })
-          : undefined,
-        children: (
-          <span aria-live="polite" aria-atomic="true">
-            {yearString}
-          </span>
-        ),
-        onClick: headerIsClickable ? onHeaderSelect : undefined,
-        onKeyDown: headerIsClickable ? onCalendarEnterKeyDown(onHeaderSelect) : undefined,
-        tabIndex: headerIsClickable ? 0 : undefined,
-        type: headerIsClickable ? 'button' : undefined,
-      },
-      elementType: headerIsClickable ? 'button' : 'div',
-    }),
+    heading: headingSlot,
     navigation: slot.always(navigation, { elementType: 'div' }),
     previousYearButton: resolveCalendarNavigationButton(
       previousYearButton,

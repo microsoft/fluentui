@@ -109,7 +109,10 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
    */
   onDismiss?: EventHandler<CalendarDismissData>;
 
-  /** The selected date. `null` represents an explicitly empty controlled selection. */
+  /**
+   * The selected date. `null` represents an explicitly empty controlled selection.
+   * A value outside `minDate`/`maxDate` renders as an empty selection and warns in development.
+   */
   value?: Date | null;
 
   /** The initial selected date when uncontrolled. `null` starts with no selection. */
@@ -140,7 +143,8 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   layout?: CalendarLayout;
 
   /**
-   * Value of today. If unspecified, current time in client machine will be used.
+   * Value of today. If unspecified, the current time on the client machine is used. Pass this explicitly
+   * while server rendering to keep the server and client calendars consistent.
    */
   today?: Date;
 

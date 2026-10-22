@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "feat: add headless Calendar with single-layer hooks, visible-only grids, shared civil-date and selection filtering utilities, streamlined state and date formatting, consumer-controlled layout and styling, factual date attributes, and consumer-first prop overrides",
+  "type": "minor",
+  "comment": "feat: add headless Calendar",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "dmytrokirpa@microsoft.com",
   "dependentChangeType": "patch"

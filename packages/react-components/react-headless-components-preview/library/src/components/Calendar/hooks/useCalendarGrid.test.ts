@@ -17,23 +17,24 @@ describe('calendar grid helpers', () => {
 
   it.each([false, true])('provides the focusgroup start target with allFocusable=%s', allFocusable => {
     expect(getCalendarPickerCellProps(allFocusable, false, true, false, true)).toMatchObject({
-      type: 'button',
-      role: 'gridcell',
-      tabIndex: 0,
-      focusgroupstart: '',
+      root: {
+        role: 'gridcell',
+        tabIndex: 0,
+        focusgroupstart: '',
+        'aria-selected': true,
+      },
+      button: { type: 'button', tabIndex: -1 },
     });
   });
 
   it('keeps unavailable picker cells out of the tab order unless allFocusable is enabled', () => {
     expect(getCalendarPickerCellProps(false, true, false, false, true)).toMatchObject({
-      disabled: true,
-      tabIndex: -1,
-      focusgroupstart: '',
+      root: { tabIndex: -1, focusgroupstart: '', 'aria-disabled': true },
+      button: { disabled: true },
     });
     expect(getCalendarPickerCellProps(true, true, false, false, true)).toMatchObject({
-      disabled: false,
-      tabIndex: 0,
-      focusgroupstart: '',
+      root: { tabIndex: 0, focusgroupstart: '', 'aria-disabled': true },
+      button: { disabled: false },
     });
   });
 });

@@ -91,7 +91,7 @@ export type CalendarFormatters = {
    */
   monthPickerHeaderLabel: (data: CalendarDateLabelData) => string;
   /**
-   * Formats the label for the year picker header.
+   * Formats the label for the day picker header.
    */
   dayPickerHeaderLabel: (data: CalendarDateLabelData) => string;
   /**
@@ -130,8 +130,8 @@ const dateTimeFormatters = {
 } satisfies Record<CalendarDateTimeFormat, Intl.DateTimeFormatOptions>;
 
 /**
- * Creates reusable Intl formatters for every calendar date format. Full dates follow locale-specific
- * field ordering for the full date label.
+ * Creates reusable Intl formatters for every calendar date format. The defaults use en-US; pass the
+ * desired locale to localize date labels.
  */
 export function createCalendarDateTimeFormatter(locales: string | string[] = 'en-US'): CalendarFormatters['dateTime'] {
   const formatters = Object.fromEntries(

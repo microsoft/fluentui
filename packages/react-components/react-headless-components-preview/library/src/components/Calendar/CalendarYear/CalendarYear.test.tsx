@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { act, fireEvent, render as testingRender } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { CalendarProvider, calendarContextDefaultValue, type CalendarContextValue } from '../../../calendar';
+import { CalendarProvider, calendarContextDefaultValue } from '../calendarContext';
+import type { CalendarContextValue } from '../calendarContext';
 import { isConformant } from '../../../testing/isConformant';
 import { CalendarYear } from './CalendarYear';
 import { useCalendarYear } from './useCalendarYear';
@@ -41,8 +42,8 @@ function renderYear(options: YearOptions = {}) {
     root: {
       onClick: options.onCellClick,
       onKeyDown: options.onCellKeyDown,
-      ...(options.renderIcon ? { children: icon } : {}),
     },
+    button: options.renderIcon ? { children: icon } : {},
   });
   const onPickerSelect = (event: React.SyntheticEvent | Event, data: CalendarYearSelectData) => {
     onSelect(event, data);
@@ -105,14 +106,14 @@ describe('CalendarYear', () => {
     });
     const row = state.yearRows[0];
     const year = row.cells[0];
-    expect(state.getYearCellProps(year).root).toMatchObject({
+    const cellProps = state.getYearCellProps(year);
+    expect(cellProps.root).toMatchObject({
       role: 'gridcell',
-      type: 'button',
-      children: year.label,
       title: 'Custom year',
       tabIndex: 0,
       focusgroupstart: '',
     });
+    expect(cellProps.button).toMatchObject({ type: 'button', children: year.label, tabIndex: -1 });
     expect(state.getYearRowProps(row).root).toMatchObject({
       role: 'row',
       focusgrouprow: '',
@@ -162,7 +163,7 @@ describe('CalendarYear', () => {
 
     rerender(picker(new Date(2023, 0, 1)));
 
-    expect(getByRole('gridcell', { name: '2022' })).toBeDisabled();
+    expect(getByRole('button', { name: '2022' })).toBeDisabled();
     expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
     expect(getByRole('gridcell', { name: '2023' })).toHaveAttribute('focusgroupstart');
   });
@@ -202,7 +203,7 @@ describe('CalendarYear', () => {
   it('customizes resolved year cells and rows while retaining focus and selection', () => {
     const handle = React.createRef<CalendarYearHandle>();
     const pickerRef = React.createRef<HTMLDivElement>();
-    const cellRef = React.createRef<HTMLButtonElement>();
+    const cellRef = React.createRef<HTMLDivElement>();
     const rowRef = React.createRef<HTMLDivElement>();
     const onSelectYear = jest.fn();
     const { container, getByRole, unmount } = render(
@@ -215,7 +216,10 @@ describe('CalendarYear', () => {
           expect(cell).not.toHaveProperty('root');
           expect(cell).not.toHaveProperty('content');
           expect(cell.label).toEqual(expect.any(String));
-          return { root: cell.year === 2020 ? { ref: cellRef, children: <strong>{cell.label}</strong> } : {} };
+          return {
+            root: cell.year === 2020 ? { ref: cellRef } : {},
+            button: cell.year === 2020 ? { children: <strong>{cell.label}</strong> } : {},
+          };
         }}
         getRowProps={row => {
           expect(row).not.toHaveProperty('root');
@@ -231,7 +235,7 @@ describe('CalendarYear', () => {
     const year = getByRole('gridcell', { name: '2020' });
     expect(pickerRef.current).toBe(container.firstElementChild);
     expect(cellRef.current).toBe(year);
-    expect(year.querySelector('strong')).toHaveTextContent('2020');
+    expect(year.querySelector('button strong')).toHaveTextContent('2020');
     expect(rowRef.current).toContainElement(year);
     expect(rowRef.current).toHaveAttribute('title', 'Row 0');
     act(() => handle.current?.focus());
@@ -253,12 +257,12 @@ describe('CalendarYear', () => {
         getCellProps={() => ({
           root: {
             role: 'link',
-            disabled: false,
             tabIndex: -1,
             'aria-disabled': false,
             'aria-selected': false,
             'data-selected': 'custom',
           },
+          button: { disabled: false },
         })}
         getRowProps={() => ({ root: { role: 'presentation' } })}
       />,
@@ -275,7 +279,7 @@ describe('CalendarYear', () => {
   });
 
   it.each([undefined, null, ''])('preserves year content override semantics for %p', children => {
-    const { getByRole } = render(<CalendarYear navigatedYear={2020} getCellProps={() => ({ root: { children } })} />);
+    const { getByRole } = render(<CalendarYear navigatedYear={2020} getCellProps={() => ({ button: { children } })} />);
     // An empty button has no name, so locate the stable first cell instead.
     expect(getByRole('grid').querySelector('button')?.textContent).toBe(children === undefined ? '2020' : '');
   });

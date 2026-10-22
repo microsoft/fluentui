@@ -6,7 +6,16 @@ import type { SlotShorthandValue, ExtractSlotProps, Slot } from '@fluentui/react
 import { toDataAttributeValue } from '../../../utils';
 
 type GridSlotProps = ExtractSlotProps<Slot<'div'>> & { focusgroup?: string };
-type GridCellProps = React.ComponentProps<'button'> & { focusgroupstart?: string };
+type GridCellRootProps = React.ComponentProps<'div'> & {
+  focusgroupstart?: string;
+  'data-current'?: string;
+  'data-selected'?: string;
+  'data-outside-bounds'?: string;
+};
+type GridCellProps = {
+  root: GridCellRootProps;
+  button: React.ComponentProps<'button'>;
+};
 
 /**
  * One row of the month or year grid.
@@ -92,7 +101,7 @@ export function useCalendarPickerGrid(
 
   const getEventIndex = (event: React.SyntheticEvent<HTMLElement>) => {
     const cell = getCalendarGridCell(event);
-    if (!isHTMLElement(cell, { constructorName: 'HTMLButtonElement' })) {
+    if (!cell) {
       return [undefined, -1] as const;
     }
     const index = getCalendarGridCells(event.currentTarget).indexOf(cell);
@@ -101,13 +110,17 @@ export function useCalendarPickerGrid(
 
   const selectCell = (
     event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    cell: HTMLButtonElement,
+    cell: HTMLElement,
     index: number,
   ) => {
+    const button = cell.querySelector('button');
+    if (!isHTMLElement(button, { constructorName: 'HTMLButtonElement' })) {
+      return;
+    }
     const gridElement = event.currentTarget;
     try {
       // Preserve the button-event contract while sharing cancellation with the delegated grid event.
-      onSelect(Object.assign(event, { currentTarget: cell }), index);
+      onSelect(Object.assign(event, { currentTarget: button }), index);
     } finally {
       event.currentTarget = gridElement;
     }
@@ -155,17 +168,21 @@ export const getCalendarPickerCellProps = (
   isCurrent: boolean,
   isTabStop: boolean,
 ): GridCellProps => {
-  const props = {
-    type: 'button' as const,
-    role: 'gridcell',
-    disabled: isDisabled && !allFocusable,
-    'aria-disabled': isDisabled,
-    'aria-selected': isSelected,
-    tabIndex: allFocusable || !isDisabled ? 0 : -1,
-    focusgroupstart: isTabStop ? '' : undefined,
-    'data-current': toDataAttributeValue(isCurrent),
-    'data-selected': toDataAttributeValue(isSelected),
-    'data-outside-bounds': toDataAttributeValue(isDisabled),
+  return {
+    root: {
+      role: 'gridcell',
+      'aria-disabled': isDisabled,
+      'aria-selected': isSelected,
+      tabIndex: allFocusable || !isDisabled ? 0 : -1,
+      focusgroupstart: isTabStop ? '' : undefined,
+      'data-current': toDataAttributeValue(isCurrent),
+      'data-selected': toDataAttributeValue(isSelected),
+      'data-outside-bounds': toDataAttributeValue(isDisabled),
+    },
+    button: {
+      type: 'button',
+      disabled: isDisabled && !allFocusable,
+      tabIndex: -1,
+    },
   };
-  return props;
 };

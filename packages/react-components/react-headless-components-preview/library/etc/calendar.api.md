@@ -15,22 +15,7 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export function addDays(date: Date, days: number): Date;
-
-// @public
-export function addMonths(date: Date, months: number): Date;
-
-// @public
-export function addWeeks(date: Date, weeks: number): Date;
-
-// @public
-export function addYears(date: Date, years: number): Date;
-
-// @public
 export const Calendar: ForwardRefComponent<CalendarProps>;
-
-// @public
-export const calendarContextDefaultValue: CalendarContextValue;
 
 // @public
 export type CalendarContextValue = {
@@ -234,7 +219,10 @@ export type CalendarMonthCellData = {
 
 // @public
 export type CalendarMonthCellProps = {
-    root?: React_2.ComponentProps<'button'>;
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
+        focusgroupstart?: string;
+    };
+    button?: React_2.ComponentProps<'button'>;
 };
 
 // @public
@@ -382,7 +370,10 @@ export type CalendarYearCellData = {
 
 // @public
 export type CalendarYearCellProps = {
-    root?: React_2.ComponentProps<'button'>;
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
+        focusgroupstart?: string;
+    };
+    button?: React_2.ComponentProps<'button'>;
 };
 
 // @public
@@ -483,9 +474,6 @@ export type DayOfWeek = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursda
 
 // @public
 export type FirstWeekOfYear = 'firstDay' | 'firstFullWeek' | 'firstFourDayWeek';
-
-// @public
-export function getDateRange(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
 
 // @public
 export type MonthOfYear = 'january' | 'february' | 'march' | 'april' | 'may' | 'june' | 'july' | 'august' | 'september' | 'october' | 'november' | 'december';

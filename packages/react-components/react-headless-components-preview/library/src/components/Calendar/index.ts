@@ -66,16 +66,8 @@ export type {
   CalendarYearSelectData,
 } from './CalendarYear';
 
-export { CalendarProvider, calendarContextDefaultValue, useCalendarContext } from './calendarContext';
-export {
-  calendarFormatters,
-  createCalendarDateTimeFormatter,
-  addDays,
-  addMonths,
-  addWeeks,
-  addYears,
-  getDateRange,
-} from './utils';
+export { CalendarProvider, useCalendarContext } from './calendarContext';
+export { calendarFormatters, createCalendarDateTimeFormatter } from './utils';
 export type {
   CalendarDateLabelData,
   CalendarDateTimeFormat,

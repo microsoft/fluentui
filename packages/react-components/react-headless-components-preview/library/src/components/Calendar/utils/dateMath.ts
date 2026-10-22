@@ -39,16 +39,6 @@ export function addDays(date: Date, days: number): Date {
 }
 
 /**
- * Returns a date offset from the given date by the specified number of weeks.
- * @param date - The origin date
- * @param weeks - The number of weeks to offset. 'weeks' can be negative.
- * @returns A new Date object offset from the origin date by the given number of weeks
- */
-export function addWeeks(date: Date, weeks: number): Date {
-  return addDays(date, weeks * DAYS_IN_WEEK);
-}
-
-/**
  * Returns a date offset from the given date by the specified number of months.
  * The method tries to preserve the day-of-month; however, if the new month does not have enough days
  * to contain the original day-of-month, we'll use the last day of the new month.

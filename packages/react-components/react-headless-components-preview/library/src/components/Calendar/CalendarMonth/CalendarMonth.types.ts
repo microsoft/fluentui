@@ -47,12 +47,16 @@ export type CalendarMonthCellData = {
 /** Semantic month row passed to getters, without DOM props on the row or its cells. */
 export type CalendarMonthRowData = CalendarGridRow<CalendarMonthCellData>;
 
-/** Overrides for a month button. */
+/** Overrides for a month gridcell and its nested button. */
 export type CalendarMonthCellProps = {
   /**
-   * Overrides for the `<button role="gridcell">`. Set `children` to customize the month content.
+   * Overrides for the `<div role="gridcell">`.
    */
-  root?: React.ComponentProps<'button'>;
+  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgroupstart?: string };
+  /**
+   * Overrides for the nested month button. Set `children` to customize the month content.
+   */
+  button?: React.ComponentProps<'button'>;
 };
 
 /** Overrides for a month row. */
@@ -164,7 +168,7 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   selectedDate?: Date | null;
 
   /**
-   * Overrides each month button. Use root.children to customize its content.
+   * Overrides each month gridcell and its nested button. Use button.children to customize its content.
    * Receives semantic month data and a formatted label, not DOM props.
    * Refs are composed, class names appended and styles merged.
    * Defined consumer props override defaults, including roles, focus, disabled/selection state and data attributes.
@@ -223,7 +227,7 @@ export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
    * Resolves built-in HTML props and consumer overrides for a month without modifying its data.
    * Calls the consumer's `getCellProps` callback.
    * @param month - A month from a row in `monthRows`.
-   * @returns Props for the month button.
+   * @returns Props for the month gridcell and its nested button.
    */
   getMonthCellProps: (month: CalendarMonthCellData) => Required<CalendarMonthCellProps>;
 

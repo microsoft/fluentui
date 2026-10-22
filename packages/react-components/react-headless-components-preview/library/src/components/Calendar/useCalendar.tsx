@@ -109,14 +109,12 @@ function useDateState({
 
   const navigate = useEventCallback((date: Date, ev: React.SyntheticEvent | Event) => {
     const resolvedDate = resolveDate(date);
-    if (resolvedDate) {
-      setNavigatedDate(resolvedDate);
-      onDisplayedDateChange?.(ev, {
-        event: ev as React.SyntheticEvent<HTMLElement>,
-        type: ev.type === 'keydown' ? 'keydown' : 'click',
-        displayedDate: resolvedDate,
-      });
-    }
+    setNavigatedDate(resolvedDate);
+    onDisplayedDateChange?.(ev, {
+      event: ev as React.SyntheticEvent<HTMLElement>,
+      type: ev.type === 'keydown' ? 'keydown' : 'click',
+      displayedDate: resolvedDate,
+    });
   });
 
   // Stable identity: this is published on the calendar context, which would otherwise change every render.
@@ -313,18 +311,6 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     focusOnNextUpdate();
   });
 
-  const onGotoToday = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>): void => {
-    if (ev.isDefaultPrevented() || !goToTodayEnabled) {
-      return;
-    }
-
-    navigate(resolveDate(today), ev);
-    if (isOverlay && isMonthPickerVisible) {
-      toggleDayMonthPickerVisibility(ev);
-    }
-    focusOnNextUpdate();
-  });
-
   const onRootKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLDivElement>): void => {
     props.onKeyDown?.(ev);
 
@@ -427,6 +413,17 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     (dayPicker?.weeksToShow !== undefined &&
       dayPicker.weeksToShow <= 5 &&
       compareDatePart(dayPicker.navigatedDate ?? navigatedDate, resolvedToday) !== 0);
+  const onGotoToday = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>): void => {
+    if (ev.isDefaultPrevented() || !goToTodayEnabled) {
+      return;
+    }
+
+    navigate(resolvedToday, ev);
+    if (isOverlay && isMonthPickerVisible) {
+      toggleDayMonthPickerVisibility(ev);
+    }
+    focusOnNextUpdate();
+  });
   const goToTodaySlot = slot.optional(goToTodayButton, {
     renderByDefault: true,
     defaultProps: {

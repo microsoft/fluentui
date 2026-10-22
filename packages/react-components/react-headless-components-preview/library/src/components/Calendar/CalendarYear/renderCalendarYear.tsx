@@ -25,9 +25,14 @@ export const renderCalendarYear = (state: CalendarYearState): JSXElement => {
           ? state.grid.children
           : state.yearRows.map(row => (
               <div key={row.key} {...state.getYearRowProps(row).root}>
-                {row.cells.map(cell => (
-                  <button key={cell.year} {...state.getYearCellProps(cell).root} />
-                ))}
+                {row.cells.map(cell => {
+                  const cellProps = state.getYearCellProps(cell);
+                  return (
+                    <div key={cell.year} {...cellProps.root}>
+                      <button {...cellProps.button} />
+                    </div>
+                  );
+                })}
               </div>
             ))}
       </state.grid>

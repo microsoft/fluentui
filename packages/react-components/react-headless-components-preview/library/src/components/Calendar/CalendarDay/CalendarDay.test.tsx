@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { flushSync } from 'react-dom';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { isConformant } from '../../../testing/isConformant';
 import { CalendarProvider, calendarContextDefaultValue } from '../calendarContext';
@@ -362,6 +362,28 @@ describe('CalendarDay', () => {
     expect(container.querySelector('table[aria-activedescendant]')).toBeNull();
   });
 
+  it('keeps the noninteractive heading out of the tab order', () => {
+    const { container } = render(<CalendarDay navigatedDate={today} />);
+    const heading = container.querySelector('[data-fui-calendar-picker="day"] > div > div')!;
+
+    expect(heading.tagName).toBe('DIV');
+    expect(heading).not.toHaveAttribute('tabindex');
+    expect(heading).not.toHaveAttribute('aria-label');
+    expect(heading).not.toHaveAttribute('onClick');
+    expect(heading).not.toHaveAttribute('onKeyDown');
+    expect(heading).not.toHaveAttribute('type');
+  });
+
+  it('prevents nested day buttons from taking focus away from the gridcell', () => {
+    const { getByRole } = render(<CalendarDay navigatedDate={today} />);
+    const button = getByRole('button', { name: 'September 18, 2020' });
+    const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+
+    button.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(true);
+  });
+
   it('focuses the next-month control when no visible date is available', () => {
     const imperativeRef = React.createRef<CalendarDayHandle>();
     const nextMonthRef = React.createRef<HTMLButtonElement>();
@@ -489,6 +511,26 @@ describe('CalendarDay', () => {
           type: 'keydown',
         }),
       );
+    });
+
+    it('clears range hover attributes when paging to another month', async () => {
+      const Picker = () => {
+        const [navigatedDate, setNavigatedDate] = React.useState(today);
+        return (
+          <CalendarProvider value={{ ...calendarContextDefaultValue, today }}>
+            <CalendarDay navigatedDate={navigatedDate} onNavigateDate={(_event, data) => setNavigatedDate(data.date)} />
+          </CalendarProvider>
+        );
+      };
+      const { getByRole } = render(<Picker />);
+      const button = getByRole('button', { name: 'September 18, 2020' });
+      const grid = getByRole('grid');
+      fireEvent.mouseOver(button);
+      expect(grid.querySelectorAll('[data-range-hovered]').length).toBeGreaterThan(0);
+
+      fireEvent.keyDown(button.closest('[role="gridcell"]')!, { key: 'PageDown' });
+
+      await waitFor(() => expect(grid.querySelectorAll('[data-range-hovered], [data-range-pressed]')).toHaveLength(0));
     });
 
     it('does not navigate beyond a minimum date', () => {

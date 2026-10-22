@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { mergeProps } from './mergeProps';
 
 describe('mergeProps', () => {
@@ -60,10 +60,22 @@ describe('mergeProps', () => {
     expect(mergeProps({}, { ref }).ref).toBe(ref);
   });
 
-  it('replaces default event handlers instead of invoking both', () => {
+  it('calls consumer and default handlers in order unless the consumer cancels', () => {
     const defaultClick = jest.fn();
     const overrideClick = jest.fn();
-    expect(mergeProps({ onClick: defaultClick }, { onClick: overrideClick }).onClick).toBe(overrideClick);
+    const { getByRole, rerender } = render(
+      React.createElement('button', mergeProps({ onClick: defaultClick }, { onClick: overrideClick }), 'Run'),
+    );
+
+    fireEvent.click(getByRole('button'));
+    expect(overrideClick).toHaveBeenCalledTimes(1);
+    expect(defaultClick).toHaveBeenCalledTimes(1);
+
+    const cancelClick = jest.fn((event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault());
+    rerender(React.createElement('button', mergeProps({ onClick: defaultClick }, { onClick: cancelClick }), 'Run'));
+    fireEvent.click(getByRole('button'));
+    expect(cancelClick).toHaveBeenCalledTimes(1);
+    expect(defaultClick).toHaveBeenCalledTimes(1);
   });
 
   it('lets consumer attributes override defaults without mutating either input', () => {

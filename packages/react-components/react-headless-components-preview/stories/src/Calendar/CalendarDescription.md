@@ -32,6 +32,8 @@ available date without selecting it, within the date bounds. PageUp/PageDown pag
 day in Calendar and standalone day pickers. The weekday header is rendered in `<thead>` and week
 rows in `<tbody>`.
 
+When server rendering, pass `today` explicitly so server and browser output use the same date.
+
 Today is not selected by default; it is identified with `aria-current="date"`. Controlled values
 outside `minDate`/`maxDate` render as an empty selection and emit a development warning.
 
@@ -97,7 +99,8 @@ dayPicker={{
 Day cells expose `root`, `button`, `label` and `marker` prop bags. Marker overrides apply only to
 marked days. Use `label.children` to change the day content while preserving its marker, or
 `button.children` to replace both; `null` intentionally removes content. Month and year cells expose
-`root`, with `root.children` controlling their content. Row getters expose `root`; the day row getter
+`root` for the gridcell and `button` for its interactive content; use `button.children` to customize
+the visible label. Row getters expose `root`; the day row getter
 also exposes `weekNumber` for a week's number or the weekday header's spacer when week numbers are shown.
 Default content is rendered only when `children` is `undefined`; explicit `null`, `false` or an empty
 string suppresses it. This also applies to the day picker's `body` slot and month/year `grid` slots.
@@ -130,15 +133,12 @@ For a custom Calendar component, compose `useCalendar`, `useCalendarContextValue
 The subpath also exports `CalendarDay`, `CalendarMonth` and `CalendarYear` with their hooks and
 renderers, and the event, layout, view and context types used by the family.
 
-For standalone pickers, use `CalendarProvider` with `calendarContextDefaultValue` to supply shared
-selection, date restrictions, formatting and `calendarMonthColumns`/`calendarYearColumns`.
-`useCalendarContext()` reads this same headless context
-using regular React context. Without a provider, it returns
-`calendarContextDefaultValue`.
-The subpath also exports `calendarFormatters`, `createCalendarDateTimeFormatter`, `addDays`,
-`addMonths`, `addWeeks`, `addYears` and `getDateRange`, along with their supporting date and
-formatter types.
+For standalone pickers, use `CalendarProvider` to supply selection, date restrictions, formatting
+and `calendarMonthColumns`/`calendarYearColumns` through a `CalendarContextValue`.
+`useCalendarContext()` reads this same headless context using regular React context. Without a
+provider, it uses the package's internal defaults.
+The subpath exports `calendarFormatters` and `createCalendarDateTimeFormatter` for formatting.
 
-Default date formatting uses en-US ordering and the Gregorian calendar. Use
-`createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` to localize dates; override the
+Default date formatting uses en-US ordering and the Gregorian calendar. Pass
+`createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` for other locales; override the
 label formatter functions as well when their assistive-technology text needs localization.

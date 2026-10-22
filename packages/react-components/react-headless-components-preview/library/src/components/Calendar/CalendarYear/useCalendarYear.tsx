@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot } from '@fluentui/react-utilities';
 import { useCalendarContext } from '../calendarContext';
 import { createDate } from '../utils/dateMath';
 import { mergeProps } from '../../../utils/mergeProps';
@@ -104,15 +104,20 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
     index => !isYearDisabled(fromYear + index),
     (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
   );
-  const getYearCellProps: CalendarYearState['getYearCellProps'] = year => ({
-    root: mergeProps(
-      {
-        ...getCalendarPickerCellProps(allFocusable, year.isDisabled, year.isSelected, year.isCurrent, year.isNavigated),
-        children: year.label,
-      },
-      props.getCellProps?.(year).root,
-    ),
-  });
+  const getYearCellProps: CalendarYearState['getYearCellProps'] = year => {
+    const cellProps = getCalendarPickerCellProps(
+      allFocusable,
+      year.isDisabled,
+      year.isSelected,
+      year.isCurrent,
+      year.isNavigated,
+    );
+    const overrides = props.getCellProps?.(year);
+    return {
+      root: mergeProps(cellProps.root, overrides?.root),
+      button: mergeProps({ ...cellProps.button, children: year.label }, overrides?.button),
+    };
+  };
   const getYearRowProps: CalendarYearState['getYearRowProps'] = row => ({
     root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
   });
@@ -135,6 +140,44 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
     },
   }));
 
+  const headingSlot = slot.always(heading, {
+    defaultProps: {
+      as: titleElementType,
+      'aria-label': onHeaderSelect
+        ? formatters.yearRangePickerHeaderLabel({ ...range, formattedRange: rangeLabel })
+        : undefined,
+      children: onHeaderSelect ? (
+        <span aria-live="assertive" aria-atomic="true">
+          {rangeLabel}
+        </span>
+      ) : (
+        rangeLabel
+      ),
+      type: onHeaderSelect ? 'button' : undefined,
+    },
+    elementType: titleElementType,
+  });
+  if (onHeaderSelect) {
+    headingSlot.onClick = mergeCallbacks(
+      headingSlot.onClick as React.MouseEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (!ev.isDefaultPrevented()) {
+          onHeaderSelect(ev, { event: ev, type: 'click', focus: true });
+        }
+      },
+    );
+    headingSlot.onKeyDown = mergeCallbacks(
+      headingSlot.onKeyDown as React.KeyboardEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (ev.isDefaultPrevented() || (ev.key !== Enter && ev.key !== Space)) {
+          return;
+        }
+        ev.preventDefault();
+        onHeaderSelect(ev, { event: ev, type: 'keydown', focus: true });
+      },
+    );
+  }
+
   return {
     yearRows,
     getYearCellProps,
@@ -150,34 +193,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
     },
     root: slot.always(getIntrinsicElementProps('div', { ...props, ref }), { elementType: 'div' }),
     header: slot.always(header, { elementType: 'div' }),
-    heading: slot.always(heading, {
-      defaultProps: {
-        as: titleElementType,
-        'aria-label': onHeaderSelect
-          ? formatters.yearRangePickerHeaderLabel({ ...range, formattedRange: rangeLabel })
-          : undefined,
-        children: onHeaderSelect ? (
-          <span aria-live="assertive" aria-atomic="true">
-            {rangeLabel}
-          </span>
-        ) : (
-          rangeLabel
-        ),
-        onClick: onHeaderSelect
-          ? (ev: React.MouseEvent<HTMLElement>) => onHeaderSelect(ev, { event: ev, type: 'click', focus: true })
-          : undefined,
-        onKeyDown: onHeaderSelect
-          ? (ev: React.KeyboardEvent<HTMLElement>) => {
-              if (ev.key === Enter || ev.key === Space) {
-                ev.preventDefault();
-                onHeaderSelect(ev, { event: ev, type: 'keydown', focus: true });
-              }
-            }
-          : undefined,
-        type: onHeaderSelect ? 'button' : undefined,
-      },
-      elementType: titleElementType,
-    }),
+    heading: headingSlot,
     navigation: slot.always(navigation, { elementType: 'div' }),
     previousRangeButton: resolveCalendarNavigationButton(
       previousRangeButton,

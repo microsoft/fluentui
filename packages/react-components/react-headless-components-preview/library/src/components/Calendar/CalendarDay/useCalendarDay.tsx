@@ -124,6 +124,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
   const [dayElements] = React.useState(() => new Map<string, HTMLTableCellElement>());
+  const dayElementRefs = React.useRef(new Map<string, React.RefCallback<HTMLTableCellElement>>());
   const nextMonthRef = React.useRef<HTMLButtonElement>(null);
   const previousMonthRef = React.useRef<HTMLButtonElement>(null);
   const navigatedDateTimestamp = navigatedDate.getTime();
@@ -132,6 +133,11 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     dayElements.forEach(element => {
       element.removeAttribute(RANGE_HOVERED_ATTRIBUTE);
       element.removeAttribute(RANGE_PRESSED_ATTRIBUTE);
+    });
+    dayElementRefs.current.forEach((_callback, key) => {
+      if (!dayElements.has(key)) {
+        dayElementRefs.current.delete(key);
+      }
     });
   }, [dayElements, navigatedDateTimestamp]);
 
@@ -151,7 +157,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   };
 
   const gridOptions: DayGridOptions = {
-    ...props,
+    daysToSelectInDayView,
     dateRangeType,
     firstDayOfWeek,
     maxDate,
@@ -170,10 +176,12 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     .filter((date): date is Date => date !== null);
   const markedDays =
     visibleDates.length > 0 ? getMarkedDays?.(visibleDates[0], visibleDates[visibleDates.length - 1]) || [] : [];
+  const markedDayKeys = new Set(markedDays.map(date => `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`));
   for (const week of dayGrid) {
     for (const day of week) {
       const dayDate = day.originalDate;
-      day.isMarked ||= !!dayDate && markedDays.some(markedDay => compareDatePart(dayDate, markedDay) === 0);
+      day.isMarked ||=
+        !!dayDate && markedDayKeys.has(`${dayDate.getFullYear()}-${dayDate.getMonth()}-${dayDate.getDate()}`);
     }
   }
 
@@ -238,6 +246,20 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     return { type: 'week', key: weekIndex, days, weekNumber };
   });
   const visibleDays = weeks.flatMap(week => week.days);
+  const getDayElementRef = (key: string): React.RefCallback<HTMLTableCellElement> => {
+    let callback = dayElementRefs.current.get(key);
+    if (!callback) {
+      callback = element => {
+        if (element) {
+          dayElements.set(key, element);
+        } else {
+          dayElements.delete(key);
+        }
+      };
+      dayElementRefs.current.set(key, callback);
+    }
+    return callback;
+  };
   const getDayCellProps: CalendarDayState['getDayCellProps'] = day => {
     const date = day.originalDate;
     const formattedDate = date ? formatters.dateTime({ date, format: 'monthDayYear' }) : day.date;
@@ -249,13 +271,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       'aria-selected': day.isInBounds ? day.isSelected : undefined,
       tabIndex: date && (allFocusable || day.isInBounds) ? 0 : undefined,
       focusgroupstart: day.key === focusTargetKey ? '' : undefined,
-      ref: (element: HTMLTableCellElement | null) => {
-        if (element) {
-          dayElements.set(day.key, element);
-        } else {
-          dayElements.delete(day.key);
-        }
-      },
+      ref: getDayElementRef(day.key),
+      'data-day-key': day.key,
       'data-marked': toDataAttributeValue(day.isMarked),
       'data-outside-bounds': toDataAttributeValue(!day.isInBounds),
       'data-outside-month': toDataAttributeValue(!day.isInMonth),
@@ -271,6 +288,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
         {
           'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
           disabled: !day.isInBounds,
+          onMouseDown: (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault(),
           tabIndex: -1,
           type: 'button',
         },
@@ -551,6 +569,59 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     ev => navigateMonth(ev, 1),
   );
   nextMonthSlot.ref = useMergedRefs(nextMonthSlot.ref, nextMonthRef);
+  const headingSlot = slot.always(heading, {
+    defaultProps: {
+      'aria-label': onHeaderSelect
+        ? formatters.dayPickerHeaderLabel({ date: navigatedDate, formattedDate: monthAndYear })
+        : undefined,
+      tabIndex: onHeaderSelect ? 0 : undefined,
+      type: onHeaderSelect ? 'button' : undefined,
+      children: (
+        <span aria-live="polite" aria-atomic="true">
+          {monthAndYear}
+        </span>
+      ),
+    },
+    elementType: onHeaderSelect ? 'button' : 'div',
+  });
+  if (onHeaderSelect) {
+    headingSlot.onClick = mergeCallbacks(
+      headingSlot.onClick as React.MouseEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (!ev.isDefaultPrevented()) {
+          onSelectHeader(ev);
+        }
+      },
+    );
+    headingSlot.onKeyDown = mergeCallbacks(
+      headingSlot.onKeyDown as React.KeyboardEventHandler<HTMLElement> | undefined,
+      ev => {
+        if (!ev.isDefaultPrevented()) {
+          onCalendarEnterKeyDown(onSelectHeader)(ev);
+        }
+      },
+    );
+  }
+  const closeButtonSlot = slot.optional(closeButton, {
+    defaultProps: {
+      'aria-label': formatters.closeLabel(),
+      title: formatters.closeLabel(),
+      type: 'button',
+    },
+    elementType: 'button',
+  });
+  if (closeButtonSlot && onDismiss) {
+    closeButtonSlot.onClick = mergeCallbacks(closeButtonSlot.onClick, ev => {
+      if (!ev.isDefaultPrevented()) {
+        onClose(ev);
+      }
+    });
+    closeButtonSlot.onKeyDown = mergeCallbacks(closeButtonSlot.onKeyDown, ev => {
+      if (!ev.isDefaultPrevented()) {
+        onCalendarEnterKeyDown(onClose)(ev);
+      }
+    });
+  }
 
   return {
     weekdayRow,
@@ -573,37 +644,11 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       elementType: 'div',
     }),
     header: slot.always(header, { elementType: 'div' }),
-    heading: slot.always(heading, {
-      defaultProps: {
-        'aria-label': onHeaderSelect
-          ? formatters.dayPickerHeaderLabel({ date: navigatedDate, formattedDate: monthAndYear })
-          : undefined,
-        onClick: onHeaderSelect ? onSelectHeader : undefined,
-        onKeyDown: onHeaderSelect ? onCalendarEnterKeyDown(onSelectHeader) : undefined,
-        // Prevent focus when the header has no action.
-        tabIndex: onHeaderSelect ? 0 : -1,
-        type: onHeaderSelect ? 'button' : undefined,
-        children: (
-          <span aria-live="polite" aria-atomic="true">
-            {monthAndYear}
-          </span>
-        ),
-      },
-      elementType: onHeaderSelect ? 'button' : 'div',
-    }),
+    heading: headingSlot,
     navigation: slot.always(navigation, { elementType: 'div' }),
     previousMonthButton: previousMonthSlot,
     nextMonthButton: nextMonthSlot,
-    closeButton: slot.optional(closeButton, {
-      defaultProps: {
-        onClick: onDismiss ? onClose : undefined,
-        onKeyDown: onDismiss ? onCalendarEnterKeyDown(onClose) : undefined,
-        'aria-label': formatters.closeLabel(),
-        title: formatters.closeLabel(),
-        type: 'button',
-      },
-      elementType: 'button',
-    }),
+    closeButton: closeButtonSlot,
     grid: gridSlot,
     body: slot.always(body, { elementType: 'tbody' }),
   };

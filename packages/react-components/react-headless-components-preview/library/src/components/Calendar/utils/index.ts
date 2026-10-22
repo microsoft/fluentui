@@ -13,7 +13,6 @@ export { findAvailableDate, getBoundedDateRange, getDayGrid, isRestrictedDate } 
 export {
   addDays,
   addMonths,
-  addWeeks,
   addYears,
   compareDatePart,
   getDateRange,

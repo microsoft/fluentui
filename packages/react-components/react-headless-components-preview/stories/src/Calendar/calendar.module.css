@@ -218,21 +218,31 @@ button.heading:hover {
 }
 
 .pickerGrid [role='gridcell'] {
+  color: var(--text);
+}
+
+.pickerGrid [role='gridcell'] > button {
+  width: 100%;
   padding: var(--space-2) var(--space-1);
   border: var(--stroke-thin) solid transparent;
   border-radius: var(--radius-sm);
   background: none;
-  color: var(--text);
+  color: inherit;
   font: inherit;
   font-size: inherit;
   cursor: pointer;
 }
 
-.pickerGrid [role='gridcell']:hover {
+.pickerGrid [role='gridcell']:hover > button {
   background: var(--surface-muted);
 }
 
 .pickerGrid [role='gridcell'][data-current] {
+  border-color: var(--border-stronger);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pickerGrid [role='gridcell'][data-current] > button {
   border-color: var(--border-stronger);
   font-weight: var(--font-weight-semibold);
 }
@@ -246,10 +256,20 @@ button.heading:hover {
 
 .pickerGrid [role='gridcell'][data-outside-bounds] {
   color: var(--text-faint);
+}
+
+.pickerGrid [role='gridcell'][data-selected] > button,
+.pickerGrid [role='gridcell'][aria-selected='true'] > button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.pickerGrid [role='gridcell'][data-outside-bounds] > button {
   cursor: default;
 }
 
-.pickerGrid [role='gridcell'][data-outside-bounds]:hover {
+.pickerGrid [role='gridcell'][data-outside-bounds]:hover > button {
   background: none;
 }
 
@@ -320,8 +340,8 @@ button.heading:focus-visible,
   }
 
   .grid td[data-selected] button,
-  .pickerGrid [role='gridcell'][data-selected],
-  .pickerGrid [role='gridcell'][aria-selected='true'] {
+  .pickerGrid [role='gridcell'][data-selected] > button,
+  .pickerGrid [role='gridcell'][aria-selected='true'] > button {
     forced-color-adjust: none;
     background: Highlight;
     border-color: Highlight;

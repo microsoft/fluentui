@@ -29,9 +29,14 @@ export const renderCalendarMonth = (state: CalendarMonthState): JSXElement => {
               ? state.grid.children
               : state.monthRows.map(row => (
                   <div key={row.key} {...state.getMonthRowProps(row).root}>
-                    {row.cells.map(cell => (
-                      <button key={cell.index} {...state.getMonthCellProps(cell).root} />
-                    ))}
+                    {row.cells.map(cell => {
+                      const cellProps = state.getMonthCellProps(cell);
+                      return (
+                        <div key={cell.index} {...cellProps.root}>
+                          <button {...cellProps.button} />
+                        </div>
+                      );
+                    })}
                   </div>
                 ))}
           </state.grid>

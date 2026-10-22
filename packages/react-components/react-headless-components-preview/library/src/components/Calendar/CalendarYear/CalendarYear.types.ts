@@ -60,12 +60,16 @@ export type CalendarYearCellData = {
 /** Semantic year row passed to getters, without DOM props on the row or its cells. */
 export type CalendarYearRowData = CalendarGridRow<CalendarYearCellData>;
 
-/** Overrides for a year button. */
+/** Overrides for a year gridcell and its nested button. */
 export type CalendarYearCellProps = {
   /**
-   * Overrides for the `<button role="gridcell">`. Set `children` to customize the year content.
+   * Overrides for the `<div role="gridcell">`.
    */
-  root?: React.ComponentProps<'button'>;
+  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgroupstart?: string };
+  /**
+   * Overrides for the nested year button. Set `children` to customize the year content.
+   */
+  button?: React.ComponentProps<'button'>;
 };
 
 /** Overrides for a year row. */
@@ -168,7 +172,7 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   selectedYear?: number | null;
 
   /**
-   * Overrides each year button. Use root.children to customize its content.
+   * Overrides each year gridcell and its nested button. Use button.children to customize its content.
    * Receives semantic year data and a formatted label, not DOM props.
    * Refs are composed, class names appended and styles merged.
    * Defined consumer props override defaults, including roles, focus, disabled/selection state and data attributes.
@@ -214,7 +218,7 @@ export type CalendarYearState = ComponentState<CalendarYearSlots> & {
    * Resolves built-in HTML props and consumer overrides for a year without modifying its data.
    * Calls the consumer's `getCellProps` callback.
    * @param year - A year from a row in `yearRows`.
-   * @returns Props for the year button.
+   * @returns Props for the year gridcell and its nested button.
    */
   getYearCellProps: (year: CalendarYearCellData) => Required<CalendarYearCellProps>;
 

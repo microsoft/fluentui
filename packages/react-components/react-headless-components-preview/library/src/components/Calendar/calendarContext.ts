@@ -69,7 +69,7 @@ export type CalendarContextValue = {
   showWeekNumbers: boolean;
 
   /**
-   * Value of today. When unset, consumers fall back to the current time on the client machine.
+   * Value of today. Pass explicitly while server rendering to keep server and client output consistent.
    */
   today?: Date;
 
