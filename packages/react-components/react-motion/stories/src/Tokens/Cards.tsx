@@ -195,7 +195,7 @@ export const MotionCurves = (): JSXElement => {
     <div className={classes.container}>
       <div className={classes.controls}>
         <Switch label="Show control points" checked={controlPointsVisible} onChange={handleControlPointsChange} />
-        <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
+        <Switch label="Play previews" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.card}>
         {Object.entries(curves)
@@ -225,7 +225,7 @@ export const MotionDuration = (): JSXElement => {
   return (
     <div className={classes.container}>
       <div className={classes.controls}>
-        <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
+        <Switch label="Play previews" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.durationTableContainer}>
         <table className={classes.durationTable} aria-label="Motion duration tokens">
