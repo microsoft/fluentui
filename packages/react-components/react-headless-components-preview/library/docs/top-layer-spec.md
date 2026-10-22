@@ -16,6 +16,7 @@ Each hook does one job, and a component composes only the ones it needs:
 | `useLayerOpenState`       | Open state, kept in sync with the browser through the Popover API. Reports opens and closes the browser makes. |
 | `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` and handles a `<dialog>` without the Popover API.        |
 | `useLayerPresence`        | Whether to render the element, its animation `phase`, and keeping it mounted and inert while it animates out.  |
+| `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
 No positioning: overlays compose them with `usePositioning`.
 
@@ -139,14 +140,33 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 - **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `trapFocus`). The element is closed and shown in the new mode, and no close is reported. The hook sets the `popover` attribute itself if it isn't there yet. Without the Popover API, a `<dialog>` switches between `show()` and `showModal()`.
 - **Element replaced or mounted late.** A new element (changed `key`, or rendered after `open` became true) is shown, with `onShow` as on any other open. An exiting element that is replaced or removed finishes its exit.
 - **Element rendered only while open.** Listeners attach when it appears.
-- **Listeners.** Element listeners only, added once per element and event set. Closed layers that stay mounted (Tooltip, Menu) add no document listeners.
+- **Listeners.** Element listeners only, added once per element and event set. Closed layers that stay mounted (Tooltip, Menu) add no document listeners; `useLayerEscape` with `listen: 'document'` adds one only while open.
 - **SSR.** Renders hidden (`popover` attribute or closed `<dialog>`) and is shown in a layout effect after hydration.
+
+## `useLayerEscape`
+
+```ts
+const { onKeyDown } = useLayerEscape(elementRef, {
+  open,
+  onEscape: event => setOpen(false),
+  when: 'manual' | 'always',
+  listen: 'layer' | 'document',
+});
+```
+
+| Option   | Type                    | Default    | Description                                                                                                                                                                                     |
+| -------- | ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `when`   | `'manual' \| 'always'`  | `'manual'` | `manual`: only where the browser leaves Escape to the page: `popover="manual"`, `hint` where unsupported (it reads back as `manual`), a `<dialog>` shown with `show()`. `always`: every Escape. |
+| `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.                                          |
+
+- With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`). Because it is a React handler, Escape from content portaled out of the element still counts.
+- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer.
+- Escape already prevented is ignored. A handled Escape is reported first, so `onEscape` can check `isDefaultPrevented()` for a veto, then prevented and stopped: outer layers' handlers and the browser leave it alone.
 
 ## Not covered yet
 
-The hooks leave focus and Escape to the browser. Components that need more keep their own code until these helpers exist:
+The hooks leave focus to the browser. Components that need more keep their own code until this helper exists:
 
-- **`useLayerEscape`** (standalone, from element events): Escape for `manual`, `hint` where unsupported and a `<dialog>` without the Popover API; the rule for which nested layer an Escape belongs to; a veto for modal Escape (`preventEscapeClose`).
 - **`useLayerFocus`** (wired through `onBeforeShow`, `onShow`, `onBeforeHide` and `onHide` callbacks on the open-state hook): `initialFocus`, returning focus where the browser doesn't (`manual`, `hint`, light dismiss, a `<dialog>` shown as a popover), and keeping focus on the same control across a mode switch.
 
 Focus on open and Tab order are the browser's:
