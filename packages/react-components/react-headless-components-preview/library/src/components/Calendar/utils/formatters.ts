@@ -7,7 +7,6 @@ export type CalendarDateTimeFormat =
   | 'shortMonth'
   | 'year'
   | 'monthDayYear'
-  | 'dayMonthYear'
   | 'monthYear'
   | 'weekday'
   | 'shortWeekday';
@@ -49,6 +48,14 @@ export type CalendarYearRangeLabelData = {
  */
 export type CalendarFormatters = {
   /**
+   * Label for the button that navigates to today.
+   */
+  goToTodayLabel: () => string;
+  /**
+   * Label for the button that closes the calendar.
+   */
+  closeLabel: () => string;
+  /**
    * Formats a date according to the specified format.
    */
   dateTime: (data: { date: Date; format: CalendarDateTimeFormat }) => string;
@@ -86,7 +93,7 @@ export type CalendarFormatters = {
   /**
    * Formats the label for the year picker header.
    */
-  yearPickerHeaderLabel: (data: CalendarDateLabelData) => string;
+  dayPickerHeaderLabel: (data: CalendarDateLabelData) => string;
   /**
    * Formats the label for the year range picker header.
    */
@@ -117,7 +124,6 @@ const dateTimeFormatters = {
   shortMonth: { month: 'short' },
   year: { year: 'numeric' },
   monthDayYear: { day: 'numeric', month: 'long', year: 'numeric' },
-  dayMonthYear: { day: 'numeric', month: 'long', year: 'numeric' },
   monthYear: { month: 'long', year: 'numeric' },
   weekday: { weekday: 'long' },
   shortWeekday: { weekday: 'narrow' },
@@ -125,7 +131,7 @@ const dateTimeFormatters = {
 
 /**
  * Creates reusable Intl formatters for every calendar date format. Full dates follow locale-specific
- * field ordering, so `monthDayYear` and `dayMonthYear` produce the same locale-appropriate label.
+ * field ordering for the full date label.
  */
 export function createCalendarDateTimeFormatter(locales: string | string[] = 'en-US'): CalendarFormatters['dateTime'] {
   const formatters = Object.fromEntries(
@@ -145,6 +151,8 @@ export function createCalendarDateTimeFormatter(locales: string | string[] = 'en
  * Default calendar formatters.
  */
 export const calendarFormatters: CalendarFormatters = {
+  goToTodayLabel: () => 'Go to today',
+  closeLabel: () => 'Close',
   dateTime: createCalendarDateTimeFormatter(),
   previousMonthLabel: data => `Previous month ${data.formattedDate}`,
   nextMonthLabel: data => `Next month ${data.formattedDate}`,
@@ -153,7 +161,7 @@ export const calendarFormatters: CalendarFormatters = {
   previousYearRangeLabel: data => `Previous year range ${data.formattedRange}`,
   nextYearRangeLabel: data => `Next year range ${data.formattedRange}`,
   monthPickerHeaderLabel: data => `${data.formattedDate}, change year`,
-  yearPickerHeaderLabel: data => `${data.formattedDate}, change month`,
+  dayPickerHeaderLabel: data => `${data.formattedDate}, change month`,
   yearRangePickerHeaderLabel: data => `${data.formattedRange}, change year`,
   weekNumberLabel: data => `Week number ${data.weekNumber}`,
   selectedDateLabel: data => `Selected date ${data.formattedDate}`,

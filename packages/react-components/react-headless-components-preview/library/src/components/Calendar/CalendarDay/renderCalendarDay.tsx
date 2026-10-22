@@ -20,7 +20,10 @@ export const renderCalendarDay = (state: CalendarDayState): JSXElement => {
           {state.closeButton && <state.closeButton />}
         </state.navigation>
       </state.header>
-      <state.grid>{state.body.children !== undefined ? <state.body /> : renderCalendarDayBody(state)}</state.grid>
+      <state.grid>
+        {renderWeekdayHeader(state)}
+        {state.body.children !== undefined ? <state.body /> : renderCalendarDayBody(state)}
+      </state.grid>
     </state.root>
   );
 };
@@ -30,16 +33,9 @@ export const renderCalendarDay = (state: CalendarDayState): JSXElement => {
  */
 const renderCalendarDayBody = (state: CalendarDayState) => {
   assertSlots<CalendarDaySlots>(state);
-  const weekdayRowProps = state.getDayRowProps(state.weekdayRow);
 
   return (
     <state.body>
-      <tr {...weekdayRowProps.root}>
-        {weekdayRowProps.weekNumber && <th {...weekdayRowProps.weekNumber} />}
-        {state.weekdayRow.cells.map(cell => (
-          <th key={cell.key} {...state.getWeekdayCellProps(cell).root} />
-        ))}
-      </tr>
       {state.weeks.map(week => {
         const weekProps = state.getDayRowProps(week);
 
@@ -67,5 +63,21 @@ const renderCalendarDayBody = (state: CalendarDayState) => {
         );
       })}
     </state.body>
+  );
+};
+
+const renderWeekdayHeader = (state: CalendarDayState) => {
+  assertSlots<CalendarDaySlots>(state);
+  const weekdayRowProps = state.getDayRowProps(state.weekdayRow);
+
+  return (
+    <thead>
+      <tr {...weekdayRowProps.root}>
+        {weekdayRowProps.weekNumber && <th {...weekdayRowProps.weekNumber} />}
+        {state.weekdayRow.cells.map(cell => (
+          <th key={cell.key} {...state.getWeekdayCellProps(cell).root} />
+        ))}
+      </tr>
+    </thead>
   );
 };

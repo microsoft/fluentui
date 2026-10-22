@@ -73,7 +73,7 @@ export type CalendarYearRowProps = {
   /**
    * Overrides for the row's `<div>`. Its year cells remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'div'>, 'children'>;
+  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgrouprow?: string };
 };
 
 /**
@@ -112,7 +112,7 @@ export type CalendarYearSlots = {
   nextRangeButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The grid holding the year rows. Calendar handles arrow navigation, roving Tab entry and focus memory.
+   * The grid holding the year rows. Focusgroup provides arrow navigation.
    */
   grid: NonNullable<Slot<'div'>>;
 };

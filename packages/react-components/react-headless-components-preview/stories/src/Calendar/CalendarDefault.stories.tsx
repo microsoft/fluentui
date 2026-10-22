@@ -37,14 +37,15 @@ const calendarAppearance = {
 } satisfies CalendarProps;
 
 export const Default = (): React.ReactNode => {
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const today = new Date(2025, 9, 14);
+  const [selectedDate, setSelectedDate] = React.useState(today);
   const onSelectDate: NonNullable<CalendarProps['onSelectDate']> = React.useCallback((_event, data) => {
     setSelectedDate(data.date);
   }, []);
 
   return (
     <div className={styles.story}>
-      <Calendar {...calendarAppearance} value={selectedDate} onSelectDate={onSelectDate} />
+      <Calendar {...calendarAppearance} today={today} value={selectedDate} onSelectDate={onSelectDate} />
       <div className={styles.selectedDate}>Selected: {selectedDate.toDateString()}</div>
     </div>
   );

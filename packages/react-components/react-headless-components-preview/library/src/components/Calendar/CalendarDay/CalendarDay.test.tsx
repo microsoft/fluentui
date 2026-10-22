@@ -235,7 +235,7 @@ describe('CalendarDay', () => {
         ref={pickerRef}
         imperativeRef={handle}
         navigatedDate={today}
-        markedDays={[today]}
+        getMarkedDays={() => [today]}
         getCellProps={day =>
           day.originalDate?.getTime() === today.getTime()
             ? {
@@ -293,7 +293,7 @@ describe('CalendarDay', () => {
     );
 
     expect(getCellProps).toHaveBeenCalledTimes(container.querySelectorAll('td').length);
-    expect(getRowProps).toHaveBeenCalledTimes(container.querySelectorAll('tbody > tr').length);
+    expect(getRowProps).toHaveBeenCalledTimes(container.querySelectorAll('tr').length);
     expect(rowRef.current).toHaveAttribute('title', 'Week');
     expect(container.querySelector('tr[title="Weekdays"]')).not.toBeNull();
     expect(container.querySelectorAll('th.custom-week-number')).toHaveLength(6);
@@ -306,7 +306,7 @@ describe('CalendarDay', () => {
     const { getByRole } = render(
       <CalendarDay
         navigatedDate={today}
-        markedDays={[today]}
+        getMarkedDays={() => [today]}
         getCellProps={day =>
           day.originalDate?.getTime() === today.getTime()
             ? { button: { children }, label: { children: 'Custom day' }, marker: { children: 'Marker' } }
@@ -356,7 +356,10 @@ describe('CalendarDay', () => {
   it('marks the navigated day as the initial entry point', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 18, 2020');
+    expect(container.querySelector('table')).toHaveAttribute('focusgroup', 'grid rowflow');
+    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 18, 2020');
+    expect(container.querySelector('td[focusgroupstart]')).toHaveAttribute('tabindex', '0');
+    expect(container.querySelector('table[aria-activedescendant]')).toBeNull();
   });
 
   it('focuses the next-month control when no visible date is available', () => {
@@ -384,7 +387,7 @@ describe('CalendarDay', () => {
     expect(nextMonthRef.current).toBe(getByTitle('Next month October'));
   });
 
-  it('updates the Tab entry point without stealing focus when the navigated date changes', () => {
+  it('updates the focusgroup start without stealing focus when the navigated date changes', () => {
     const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
     const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
     act(() => remembered.focus());
@@ -392,9 +395,9 @@ describe('CalendarDay', () => {
     rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
 
     expect(remembered).toHaveFocus();
-    expect(container.querySelectorAll('td[tabindex="0"]')).toHaveLength(1);
-    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 20, 2020');
-    expect(remembered.tabIndex).toBe(-1);
+    expect(container.querySelectorAll('td[focusgroupstart]')).toHaveLength(1);
+    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 20, 2020');
+    expect(remembered).toHaveAttribute('tabindex', '0');
   });
 
   it('renders its rows without motion wrappers', () => {
@@ -411,8 +414,8 @@ describe('CalendarDay', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
     expect(container.querySelectorAll('tr[aria-hidden="true"]')).toHaveLength(0);
-    // Weekday header row plus the weeks of the month, and nothing else.
-    expect(container.querySelectorAll('tbody > tr')).toHaveLength(6);
+    expect(container.querySelectorAll('thead > tr')).toHaveLength(1);
+    expect(container.querySelectorAll('tbody > tr')).toHaveLength(5);
   });
 
   it('preserves null body children while rendering defaults when omitted', () => {
@@ -427,7 +430,7 @@ describe('CalendarDay', () => {
     expect(emptyBody.container.querySelector('tbody')!.children).toHaveLength(0);
   });
 
-  it('preserves the body slot when replacing rows without resolving default row or cell props', () => {
+  it('preserves the body slot while rendering the independent weekday header', () => {
     const getCellProps = jest.fn(() => ({}));
     const getRowProps = jest.fn(() => ({}));
     const getWeekdayCellProps = jest.fn(() => ({}));
@@ -450,8 +453,8 @@ describe('CalendarDay', () => {
 
     expect(container.querySelector('tbody#custom-body')).toContainElement(getByText('Custom row'));
     expect(getCellProps).not.toHaveBeenCalled();
-    expect(getRowProps).not.toHaveBeenCalled();
-    expect(getWeekdayCellProps).not.toHaveBeenCalled();
+    expect(getRowProps).toHaveBeenCalledTimes(1);
+    expect(getWeekdayCellProps).toHaveBeenCalledTimes(7);
   });
 
   describe('day-grid domain behavior', () => {
@@ -471,6 +474,21 @@ describe('CalendarDay', () => {
       expect(cells[0]).toHaveFocus();
       expect(onNavigate).toHaveBeenCalledTimes(1);
       expect(onNavigate.mock.calls[0][1].date).toEqual(new Date(2020, 7, 29));
+    });
+
+    it('pages from the focused day when rendered without the Calendar root', () => {
+      const { getByRole, onNavigate } = renderDay();
+      const cell = getByRole('button', { name: 'September 18, 2020' }).closest('[role="gridcell"]')!;
+
+      expect(fireEvent.keyDown(cell, { key: 'PageUp' })).toBe(false);
+      expect(onNavigate).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: new Date(2020, 7, 18),
+          focusOnNavigatedDay: true,
+          type: 'keydown',
+        }),
+      );
     });
 
     it('does not navigate beyond a minimum date', () => {
@@ -569,7 +587,8 @@ describe('CalendarDay', () => {
     });
   });
 
-  describe('grid keyboard navigation', () => {
+  // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
+  describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
     it('provides a single Tab entry point', () => {
       const { getByRole, cells } = renderDay();
       const grid = getByRole('grid');

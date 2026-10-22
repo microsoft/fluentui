@@ -18,8 +18,8 @@ import { mergeProps } from '../../../utils/mergeProps';
 import { getAvailableDates } from '../utils/dateGrid/dateAvailability';
 import {
   getCalendarEventType,
-  getCalendarNavigationButtonProps,
   onCalendarEnterKeyDown,
+  resolveCalendarNavigationButton,
 } from '../utils/calendarNavigation';
 import { getCalendarPickerCellProps, getCalendarPickerRows, useCalendarPickerGrid } from '../hooks/useCalendarGrid';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
@@ -65,7 +65,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
 
   const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
-  const selectedDate = props.selectedDate !== undefined ? props.selectedDate : value === undefined ? today : value;
+  const selectedDate = props.selectedDate !== undefined ? props.selectedDate : value ?? null;
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
   const yearPickerRef = React.useRef<CalendarYearHandle>(null);
@@ -163,22 +163,18 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
   const focusableMonth =
     months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
     months.find(month => month.isInBounds);
-  const [gridSlot, getCell, activeIndex] = useCalendarPickerGrid(
+  const [gridSlot, getCell] = useCalendarPickerGrid(
     grid,
     yearString,
     index => !!months[index]?.isInBounds,
     onSelectMonth,
-    focusableMonth?.index,
-    allFocusable,
-    navigatedDate.getFullYear(),
-    calendarMonthColumns,
   );
 
   const focus = (options?: FocusOptions) => {
     if (yearPickerRef.current) {
       yearPickerRef.current.focus(options);
-    } else if (activeIndex !== undefined) {
-      getCell(activeIndex)?.focus(options);
+    } else if (focusableMonth) {
+      getCell(focusableMonth.index)?.focus(options);
     }
   };
 
@@ -203,7 +199,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
           !month.isInBounds,
           month.isSelected,
           month.isCurrent,
-          month.index === activeIndex,
+          month.index === focusableMonth?.index,
         ),
         'aria-label': formatters.dateTime({ date: setMonth(navigatedDate, month.index), format: 'month' }),
         children: month.label,
@@ -212,7 +208,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     ),
   });
   const getMonthRowProps: CalendarMonthState['getMonthRowProps'] = row => ({
-    root: mergeProps({ role: 'row' }, props.getRowProps?.(row).root),
+    root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
   });
 
   let yearPickerProps: CalendarYearProps | undefined;
@@ -244,7 +240,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     components: {
       root: 'div',
       header: 'div',
-      heading: 'button',
+      heading: headerIsClickable ? 'button' : 'div',
       navigation: 'div',
       previousYearButton: 'button',
       nextYearButton: 'button',
@@ -257,44 +253,42 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
-        'aria-label': formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString }),
+        'aria-label': headerIsClickable
+          ? formatters.monthPickerHeaderLabel({ date: navigatedDate, formattedDate: yearString })
+          : undefined,
         children: (
           <span aria-live="polite" aria-atomic="true">
             {yearString}
           </span>
         ),
-        onClick: onHeaderSelect,
-        onKeyDown: onCalendarEnterKeyDown(onHeaderSelect),
-        tabIndex: headerIsClickable ? 0 : -1,
-        type: 'button',
+        onClick: headerIsClickable ? onHeaderSelect : undefined,
+        onKeyDown: headerIsClickable ? onCalendarEnterKeyDown(onHeaderSelect) : undefined,
+        tabIndex: headerIsClickable ? 0 : undefined,
+        type: headerIsClickable ? 'button' : undefined,
       },
-      elementType: 'button',
+      elementType: headerIsClickable ? 'button' : 'div',
     }),
     navigation: slot.always(navigation, { elementType: 'div' }),
-    previousYearButton: slot.always(previousYearButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        isPrevYearInBounds,
-        allFocusable,
-        formatters.previousYearLabel({
-          date: previousYearDate,
-          formattedDate: formatters.dateTime({ date: previousYearDate, format: 'year' }),
-        }),
-        onSelectPrevYear,
-      ),
-      elementType: 'button',
-    }),
-    nextYearButton: slot.always(nextYearButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        isNextYearInBounds,
-        allFocusable,
-        formatters.nextYearLabel({
-          date: nextYearDate,
-          formattedDate: formatters.dateTime({ date: nextYearDate, format: 'year' }),
-        }),
-        onSelectNextYear,
-      ),
-      elementType: 'button',
-    }),
+    previousYearButton: resolveCalendarNavigationButton(
+      previousYearButton,
+      isPrevYearInBounds,
+      allFocusable,
+      formatters.previousYearLabel({
+        date: previousYearDate,
+        formattedDate: formatters.dateTime({ date: previousYearDate, format: 'year' }),
+      }),
+      onSelectPrevYear,
+    ),
+    nextYearButton: resolveCalendarNavigationButton(
+      nextYearButton,
+      isNextYearInBounds,
+      allFocusable,
+      formatters.nextYearLabel({
+        date: nextYearDate,
+        formattedDate: formatters.dateTime({ date: nextYearDate, format: 'year' }),
+      }),
+      onSelectNextYear,
+    ),
     grid: gridSlot,
     yearPicker: yearPickerSlot,
   };

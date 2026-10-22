@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronDownRegular, ChevronUpRegular } from '@fluentui/react-icons';
-import { Calendar, addMonths } from '@fluentui/react-headless-components-preview/calendar';
+import { Calendar } from '@fluentui/react-headless-components-preview/calendar';
 import type { CalendarProps, CalendarView } from '@fluentui/react-headless-components-preview/calendar';
 import styles from './calendar.module.css';
 
@@ -47,14 +47,14 @@ export const ControlledOverlay = (): React.ReactNode => {
         <button
           type="button"
           className={styles.todayButton}
-          onClick={() => setDisplayedDate(date => addMonths(date, -1))}
+          onClick={() => setDisplayedDate(date => new Date(date.getFullYear(), date.getMonth() - 1, 1))}
         >
           Previous month
         </button>
         <button
           type="button"
           className={styles.todayButton}
-          onClick={() => setDisplayedDate(date => addMonths(date, 1))}
+          onClick={() => setDisplayedDate(date => new Date(date.getFullYear(), date.getMonth() + 1, 1))}
         >
           Next month
         </button>

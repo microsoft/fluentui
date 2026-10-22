@@ -1,5 +1,7 @@
 import type * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
+import { mergeCallbacks, slot } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot, SlotShorthandValue } from '@fluentui/react-utilities';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 
@@ -44,12 +46,35 @@ export const getCalendarNavigationButtonProps = (
   inBounds: boolean,
   allFocusable: boolean,
   title: string,
-  onActivate: (event: ButtonEvent) => void,
 ): React.ButtonHTMLAttributes<HTMLButtonElement> => ({
   'aria-disabled': !inBounds,
-  onClick: inBounds ? onActivate : undefined,
-  onKeyDown: inBounds ? onCalendarEnterKeyDown(onActivate) : undefined,
+  'aria-label': title,
   tabIndex: inBounds ? undefined : allFocusable ? 0 : -1,
   title,
   type: 'button',
 });
+
+/** Resolves navigation button props while allowing consumer handlers to cancel built-in navigation. */
+export const resolveCalendarNavigationButton = (
+  button: ExtractSlotProps<Slot<'button'>> | SlotShorthandValue | undefined,
+  inBounds: boolean,
+  allFocusable: boolean,
+  title: string,
+  onActivate: (event: ButtonEvent) => void,
+): ExtractSlotProps<Slot<'button'>> => {
+  const buttonSlot = slot.always(button, {
+    defaultProps: getCalendarNavigationButtonProps(inBounds, allFocusable, title),
+    elementType: 'button',
+  });
+  buttonSlot.onClick = mergeCallbacks(buttonSlot.onClick, event => {
+    if (inBounds && !event.isDefaultPrevented()) {
+      onActivate(event);
+    }
+  });
+  buttonSlot.onKeyDown = mergeCallbacks(buttonSlot.onKeyDown, event => {
+    if (inBounds && !event.isDefaultPrevented()) {
+      onCalendarEnterKeyDown(onActivate)(event);
+    }
+  });
+  return buttonSlot;
+};

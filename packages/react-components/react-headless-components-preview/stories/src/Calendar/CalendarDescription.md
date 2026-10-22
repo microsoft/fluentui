@@ -16,28 +16,33 @@ and outside-month emphasis are consumer styling decisions.
 
 ### Keyboard navigation
 
-Calendar handles keyboard navigation. Each grid has one roving
-Tab stop and remembers its last focused eligible cell. Unavailable cells are skipped unless
-`allFocusable` is set; they cannot be selected in either mode. Weekday and week-number headers
-are not navigation targets.
+The day table declares `focusgroup="grid rowflow"`; the month and year pickers declare
+`focusgroup="grid manual"` with `focusgrouprow` on each row and `focusgroupstart` on the initial
+eligible cell. In-grid arrow navigation is delegated to focusgroup; Calendar does not install a
+custom roving-focus or arrow-key fallback. This requires a runtime with focusgroup V2 grid support.
+The currently released polyfill does not provide that support yet, and the corresponding browser
+keyboard tests remain pending the compatible release. Weekday and week-number headers are not
+navigation targets. Unavailable cells are skipped unless `allFocusable` is set; they cannot be
+selected in either mode.
 If no visible day is eligible, imperative day-picker focus falls back to the next available
 month-navigation control, preferring Next month.
 
-Day arrows move by one day or one week, skipping unavailable dates in the requested direction.
-Moving into another month updates the displayed month without selecting a date, within the date bounds.
-Home/End move to the first/last eligible date in the current week.
-Month and year arrows follow their configured column layout without horizontal row wrapping;
-vertical movement skips unavailable cells in the same column. Home/End move to the first/last
-eligible cell in the grid. PageUp/PageDown page from the focused day.
+When an arrow crosses the visible day-grid boundary, Calendar requests navigation to the next
+available date without selecting it, within the date bounds. PageUp/PageDown page from the focused
+day in Calendar and standalone day pickers. The weekday header is rendered in `<thead>` and week
+rows in `<tbody>`.
 
-Selection and navigation respect consumer cancellation and RTL direction. Nested grids,
+Today is not selected by default; it is identified with `aria-current="date"`. Controlled values
+outside `minDate`/`maxDate` render as an empty selection and emit a development warning.
+
+Selection and Calendar-owned navigation respect consumer cancellation and RTL direction. Nested grids,
 toolbars and editable content retain their own keyboard ownership.
 Keep the provider's `dir` and the DOM direction in sync: the headless `Provider` does not render
 a DOM wrapper, so use both `<Provider dir="rtl">` and `dir="rtl"` on a surrounding element for RTL.
 
-Consumers must provide visible focus styles on the day `td[role="gridcell"]` as well as the
-month/year buttons, and visually hide the announcement region without removing it from the
-accessibility tree.
+Consumers must provide visible focus styles on the day `td[role="gridcell"]` and month/year
+grid cells, and visually hide the announcement region without removing it from the accessibility
+tree.
 
 ### Pickers, layout and focus
 
@@ -49,7 +54,7 @@ initial uncontrolled value. Calendar preserves focus when a layout change hides 
 without reclaiming focus that has already moved outside the calendar.
 
 The month and year pickers each default to four columns. Set `calendarMonthColumns` and
-`calendarYearColumns` independently to `3` or `4`; row grouping and keyboard navigation use
+`calendarYearColumns` independently to `3` or `4`; row grouping and focusgroup navigation use
 the same configuration. Both grids always contain twelve cells.
 
 ```tsx
@@ -134,5 +139,6 @@ The subpath also exports `calendarFormatters`, `createCalendarDateTimeFormatter`
 `addMonths`, `addWeeks`, `addYears` and `getDateRange`, along with their supporting date and
 formatter types.
 
-Default date formatting uses locale-specific ordering and the Gregorian calendar.
-Supply a custom `formatters.dateTime` for specialized labels.
+Default date formatting uses en-US ordering and the Gregorian calendar. Use
+`createCalendarDateTimeFormatter(locale)` as `formatters.dateTime` to localize dates; override the
+label formatter functions as well when their assistive-technology text needs localization.

@@ -1,31 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import {
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  End,
-  Enter,
-  Home,
-  PageDown,
-  PageUp,
-  Space,
-} from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import {
-  getIntrinsicElementProps,
-  getRTLSafeKey,
-  mergeCallbacks,
-  slot,
-  useId,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import {
   DAYS_IN_WEEK,
   addDays,
   addMonths,
+  addYears,
   compareDatePart,
   findAvailableDate,
   getDateRange,
@@ -41,11 +24,11 @@ import { addCivilDays, createDate, matchesCivilDate } from '../utils/dateMath';
 import { getAvailableDates } from '../utils/dateGrid/dateAvailability';
 import { mergeProps } from '../../../utils/mergeProps';
 import { getDateRangeTypeToUse } from '../utils/dateGrid/workWeek';
-import { getCalendarGridCell, isCalendarGridNavigation, useCalendarRovingFocus } from '../hooks/useCalendarGrid';
+import { getCalendarGridCell } from '../hooks/useCalendarGrid';
 import {
   getCalendarEventType,
-  getCalendarNavigationButtonProps,
   onCalendarEnterKeyDown,
+  resolveCalendarNavigationButton,
   setCalendarNavigationDate,
 } from '../utils/calendarNavigation';
 import { useCalendarContext } from '../calendarContext';
@@ -59,6 +42,7 @@ import type {
 import { toDataAttributeValue } from '../../../utils';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
+type CalendarDayGridSlotProps = React.ComponentProps<'table'> & { focusgroup?: string };
 
 const noop = () => undefined;
 
@@ -136,13 +120,20 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
 
   const today = React.useMemo(() => contextToday ?? new Date(), [contextToday]);
   const navigatedDate = props.navigatedDate ?? today;
-  const selectedDate = value === undefined ? today : value;
+  const selectedDate = value ?? null;
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
   const [dayElements] = React.useState(() => new Map<string, HTMLTableCellElement>());
   const nextMonthRef = React.useRef<HTMLButtonElement>(null);
   const previousMonthRef = React.useRef<HTMLButtonElement>(null);
-  const activeDescendantId = useId();
+  const navigatedDateTimestamp = navigatedDate.getTime();
+
+  React.useEffect(() => {
+    dayElements.forEach(element => {
+      element.removeAttribute(RANGE_HOVERED_ATTRIBUTE);
+      element.removeAttribute(RANGE_PRESSED_ATTRIBUTE);
+    });
+  }, [dayElements, navigatedDateTimestamp]);
 
   const onSelectDay = (ev: React.SyntheticEvent<HTMLElement>, date: Date): void => {
     if (isRestrictedDate(date, restrictedDatesOptions)) {
@@ -247,21 +238,17 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     return { type: 'week', key: weekIndex, days, weekNumber };
   });
   const visibleDays = weeks.flatMap(week => week.days);
-  const [activeKey, setActiveKey] = useCalendarRovingFocus(
-    focusTargetKey,
-    visibleDays.filter(day => day.originalDate && (allFocusable || day.isInBounds)).map(day => day.key),
-  );
-
   const getDayCellProps: CalendarDayState['getDayCellProps'] = day => {
     const date = day.originalDate;
-    const formattedDate = date ? formatters.dateTime({ date, format: 'dayMonthYear' }) : day.date;
+    const formattedDate = date ? formatters.dateTime({ date, format: 'monthDayYear' }) : day.date;
     const overrides = getCellProps?.(day);
     const rootProps = {
       role: 'gridcell' as const,
       'aria-current': day.isToday ? ('date' as const) : undefined,
       'aria-disabled': !day.isInBounds,
       'aria-selected': day.isInBounds ? day.isSelected : undefined,
-      tabIndex: date && (allFocusable || day.isInBounds) ? (day.key === activeKey ? 0 : -1) : undefined,
+      tabIndex: date && (allFocusable || day.isInBounds) ? 0 : undefined,
+      focusgroupstart: day.key === focusTargetKey ? '' : undefined,
       ref: (element: HTMLTableCellElement | null) => {
         if (element) {
           dayElements.set(day.key, element);
@@ -276,12 +263,14 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       'data-today': toDataAttributeValue(day.isToday),
     };
     return {
-      root: mergeProps<HTMLTableCellElement, React.ComponentProps<'td'>>(rootProps, overrides?.root),
+      root: mergeProps<HTMLTableCellElement, React.ComponentProps<'td'> & { focusgroupstart?: string }>(
+        rootProps,
+        overrides?.root,
+      ),
       button: mergeProps(
         {
           'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
           disabled: !day.isInBounds,
-          id: day.key === activeKey ? activeDescendantId : undefined,
           tabIndex: -1,
           type: 'button',
         },
@@ -296,7 +285,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     const weekNumber = row.type === 'week' ? row.weekNumber : undefined;
     const weekNumberLabel = weekNumber !== undefined ? formatters.weekNumberLabel({ weekNumber }) : '';
     return {
-      root: mergeProps({ role: 'row' }, overrides?.root),
+      root: mergeProps({ role: 'row', focusgrouprow: row.type === 'week' ? '' : undefined }, overrides?.root),
       weekNumber:
         row.type === 'weekday'
           ? showWeekNumbers
@@ -354,7 +343,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     ),
   });
 
-  const getFocusTarget = () => (activeKey ? dayElements.get(activeKey) : undefined);
+  const getFocusTarget = () => (focusTargetKey ? dayElements.get(focusTargetKey) : undefined);
 
   React.useImperativeHandle(props.imperativeRef, () => ({
     focus(options?: FocusOptions) {
@@ -408,8 +397,12 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     });
   };
 
-  const navigateDay = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
-    let targetDate: Date | undefined = undefined;
+  const navigateOutsideVisibleDays = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
+    if (ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) {
+      return;
+    }
+
+    let targetDate: Date | undefined;
     let direction: 1 | -1 = 1; // by default search forward
 
     if (ev.key === ArrowUp) {
@@ -417,50 +410,31 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       targetDate = getDirectionalTargetDate(date, -7, direction);
     } else if (ev.key === ArrowDown) {
       targetDate = getDirectionalTargetDate(date, 7, direction);
-    } else if (ev.key === getRTLSafeKey(ArrowLeft, dir)) {
-      direction = -1;
-      targetDate = getDirectionalTargetDate(date, -1, direction);
-    } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
-      targetDate = getDirectionalTargetDate(date, 1, direction);
-    } else if (ev.key === Home || ev.key === End) {
-      const index = visibleDays.findIndex(day => day.originalDate && compareDatePart(day.originalDate, date) === 0);
-      const rowStart = Math.floor(index / DAYS_IN_WEEK) * DAYS_IN_WEEK;
-      const row = visibleDays
-        .slice(rowStart, rowStart + DAYS_IN_WEEK)
-        .filter(day => day.originalDate && (allFocusable || day.isInBounds));
-      targetDate = (ev.key === Home ? row[0] : row[row.length - 1])?.originalDate ?? undefined;
-      direction = ev.key === Home ? -1 : 1;
-    }
-
-    ev.preventDefault();
-    if (!targetDate) {
-      return;
-    }
-
-    const findVisibleDay = (candidate: Date) =>
-      visibleDays.find(day => day.originalDate && compareDatePart(day.originalDate, candidate) === 0);
-    const nextDate =
-      allFocusable && findVisibleDay(targetDate)
-        ? targetDate
-        : findAvailableDate({
-            initialDate: date,
-            targetDate,
-            direction,
-            ...restrictedDatesOptions,
-            restrictedDates: allFocusable ? undefined : restrictedDates,
-          });
-
-    if (!nextDate) {
-      return;
-    }
-    const target = findVisibleDay(nextDate);
-    if (
-      target &&
-      ((nextDate.getFullYear() === navigatedDate.getFullYear() && nextDate.getMonth() === navigatedDate.getMonth()) ||
-        (allFocusable && isRestrictedDate(nextDate, { minDate, maxDate })))
-    ) {
-      dayElements.get(target.key)?.focus();
+    } else if (ev.key === ArrowLeft || ev.key === ArrowRight) {
+      const isForward = (ev.key === ArrowRight) !== (dir === 'rtl');
+      direction = isForward ? 1 : -1;
+      targetDate = getDirectionalTargetDate(date, direction, direction);
     } else {
+      return;
+    }
+
+    if (
+      !targetDate ||
+      visibleDays.some(day => day.originalDate && compareDatePart(day.originalDate, targetDate!) === 0)
+    ) {
+      return;
+    }
+
+    const nextDate = findAvailableDate({
+      initialDate: date,
+      targetDate,
+      direction,
+      ...restrictedDatesOptions,
+      restrictedDates: allFocusable ? undefined : restrictedDates,
+    });
+
+    if (nextDate) {
+      ev.preventDefault();
       onNavigateDate(ev, { event: ev, type: 'keydown', date: nextDate, focusOnNavigatedDay: true });
     }
   };
@@ -497,18 +471,12 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   const gridSlot = slot.always(grid, {
     defaultProps: {
       role: 'grid',
-      'aria-activedescendant': activeKey ? activeDescendantId : undefined,
+      focusgroup: 'grid rowflow',
       'aria-label': monthAndYear,
       'aria-multiselectable': dateRangeType !== 'day' || Math.abs(daysToSelectInDayView ?? 1) > 1,
     },
     elementType: 'table',
-  });
-  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, (ev: React.FocusEvent<HTMLElement>) => {
-    const eventDay = getEventDay(ev);
-    if (eventDay && (allFocusable || eventDay[1].isInBounds)) {
-      setActiveKey(eventDay[1].key);
-    }
-  });
+  }) as CalendarDayGridSlotProps;
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
     if (!eventDay || ev.isDefaultPrevented()) {
@@ -517,13 +485,24 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     const [, day] = eventDay;
     const date = day.originalDate!;
     if (ev.key === PageUp || ev.key === PageDown) {
-      // Calendar pages from the focused day rather than the navigated date.
-      setCalendarNavigationDate(ev.nativeEvent, date);
+      if (ev.currentTarget.closest('[data-fui-calendar-root]')) {
+        // Calendar pages from the focused day rather than the navigated date.
+        setCalendarNavigationDate(ev.nativeEvent, date);
+      } else {
+        const direction = ev.key === PageUp ? -1 : 1;
+        onNavigateDate(ev, {
+          event: ev,
+          type: 'keydown',
+          date: ev.shiftKey ? addYears(date, direction) : addMonths(date, direction),
+          focusOnNavigatedDay: true,
+        });
+        ev.preventDefault();
+      }
     } else if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
       onSelectDay(ev, date);
       ev.preventDefault();
-    } else if (isCalendarGridNavigation(ev)) {
-      navigateDay(ev, date);
+    } else if (ev.key === ArrowLeft || ev.key === ArrowRight || ev.key === ArrowUp || ev.key === ArrowDown) {
+      navigateOutsideVisibleDays(ev, date);
     }
   });
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
@@ -540,6 +519,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
   gridSlot.onMouseDown = mergeCallbacks(gridSlot.onMouseDown, (ev: React.MouseEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
     if (eventDay) {
+      ev.preventDefault();
       updateRange(eventDay[1], undefined, true);
     }
   });
@@ -549,31 +529,27 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       updateRange(eventDay[1], undefined, false);
     }
   });
-  const previousMonthSlot = slot.always(previousMonthButton, {
-    defaultProps: getCalendarNavigationButtonProps(
-      prevMonthInBounds,
-      allFocusable,
-      formatters.previousMonthLabel({
-        date: addMonths(navigatedDate, -1),
-        formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, -1), format: 'month' }),
-      }),
-      ev => navigateMonth(ev, -1),
-    ),
-    elementType: 'button',
-  });
+  const previousMonthSlot = resolveCalendarNavigationButton(
+    previousMonthButton,
+    prevMonthInBounds,
+    allFocusable,
+    formatters.previousMonthLabel({
+      date: addMonths(navigatedDate, -1),
+      formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, -1), format: 'month' }),
+    }),
+    ev => navigateMonth(ev, -1),
+  );
   previousMonthSlot.ref = useMergedRefs(previousMonthSlot.ref, previousMonthRef);
-  const nextMonthSlot = slot.always(nextMonthButton, {
-    defaultProps: getCalendarNavigationButtonProps(
-      nextMonthInBounds,
-      allFocusable,
-      formatters.nextMonthLabel({
-        date: addMonths(navigatedDate, 1),
-        formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, 1), format: 'month' }),
-      }),
-      ev => navigateMonth(ev, 1),
-    ),
-    elementType: 'button',
-  });
+  const nextMonthSlot = resolveCalendarNavigationButton(
+    nextMonthButton,
+    nextMonthInBounds,
+    allFocusable,
+    formatters.nextMonthLabel({
+      date: addMonths(navigatedDate, 1),
+      formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, 1), format: 'month' }),
+    }),
+    ev => navigateMonth(ev, 1),
+  );
   nextMonthSlot.ref = useMergedRefs(nextMonthSlot.ref, nextMonthRef);
 
   return {
@@ -600,7 +576,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     heading: slot.always(heading, {
       defaultProps: {
         'aria-label': onHeaderSelect
-          ? formatters.yearPickerHeaderLabel({ date: navigatedDate, formattedDate: monthAndYear })
+          ? formatters.dayPickerHeaderLabel({ date: navigatedDate, formattedDate: monthAndYear })
           : undefined,
         onClick: onHeaderSelect ? onSelectHeader : undefined,
         onKeyDown: onHeaderSelect ? onCalendarEnterKeyDown(onSelectHeader) : undefined,
@@ -622,7 +598,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       defaultProps: {
         onClick: onDismiss ? onClose : undefined,
         onKeyDown: onDismiss ? onCalendarEnterKeyDown(onClose) : undefined,
-        title: 'Close',
+        'aria-label': formatters.closeLabel(),
+        title: formatters.closeLabel(),
         type: 'button',
       },
       elementType: 'button',

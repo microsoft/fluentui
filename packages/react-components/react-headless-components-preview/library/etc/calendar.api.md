@@ -63,7 +63,7 @@ export type CalendarDateLabelData = {
 };
 
 // @public
-export type CalendarDateTimeFormat = 'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'dayMonthYear' | 'monthYear' | 'weekday' | 'shortWeekday';
+export type CalendarDateTimeFormat = 'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'monthYear' | 'weekday' | 'shortWeekday';
 
 // @public
 export const CalendarDay: ForwardRefComponent<CalendarDayProps>;
@@ -76,7 +76,9 @@ export type CalendarDayCellData = DayInfo & {
 
 // @public
 export type CalendarDayCellProps = {
-    root?: Omit<React_2.ComponentProps<'td'>, 'children'>;
+    root?: Omit<React_2.ComponentProps<'td'>, 'children'> & {
+        focusgroupstart?: string;
+    };
     button?: React_2.ComponentProps<'button'>;
     label?: React_2.ComponentProps<'span'>;
     marker?: React_2.ComponentProps<'span'>;
@@ -100,7 +102,7 @@ export type CalendarDayNavigateData = EventData<'click' | 'keydown', React_2.Syn
 };
 
 // @public
-export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> & Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
+export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> & Pick<Partial<DayGridOptions>, 'daysToSelectInDayView'> & {
     imperativeRef?: React_2.Ref<CalendarDayHandle>;
     navigatedDate?: Date;
     onNavigateDate?: EventHandler<CalendarDayNavigateData>;
@@ -126,7 +128,9 @@ export type CalendarDayRowData = {
 
 // @public
 export type CalendarDayRowProps = {
-    root?: Omit<React_2.ComponentProps<'tr'>, 'children'>;
+    root?: Omit<React_2.ComponentProps<'tr'>, 'children'> & {
+        focusgrouprow?: string;
+    };
     weekNumber?: React_2.ComponentProps<'th'>;
 };
 
@@ -180,6 +184,8 @@ export type CalendarDismissData = EventData<'click' | 'keydown', React_2.Synthet
 
 // @public
 export type CalendarFormatters = {
+    goToTodayLabel: () => string;
+    closeLabel: () => string;
     dateTime: (data: {
         date: Date;
         format: CalendarDateTimeFormat;
@@ -191,7 +197,7 @@ export type CalendarFormatters = {
     previousYearRangeLabel: (data: CalendarYearRangeLabelData) => string;
     nextYearRangeLabel: (data: CalendarYearRangeLabelData) => string;
     monthPickerHeaderLabel: (data: CalendarDateLabelData) => string;
-    yearPickerHeaderLabel: (data: CalendarDateLabelData) => string;
+    dayPickerHeaderLabel: (data: CalendarDateLabelData) => string;
     yearRangePickerHeaderLabel: (data: CalendarYearRangeLabelData) => string;
     weekNumberLabel: (data: {
         weekNumber: number;
@@ -263,7 +269,9 @@ export type CalendarMonthRowData = CalendarGridRow<CalendarMonthCellData>;
 
 // @public
 export type CalendarMonthRowProps = {
-    root?: React_2.ComponentProps<'div'>;
+    root?: React_2.ComponentProps<'div'> & {
+        focusgrouprow?: string;
+    };
 };
 
 // @public
@@ -276,7 +284,7 @@ export type CalendarMonthSelectData = EventData<'click' | 'keydown', React_2.Syn
 export type CalendarMonthSlots = {
     root: NonNullable<Slot<'div'>>;
     header: NonNullable<Slot<'div'>>;
-    heading: NonNullable<Slot<'button'>>;
+    heading: NonNullable<Slot<'button', 'div'>>;
     navigation: NonNullable<Slot<'div'>>;
     previousYearButton: NonNullable<Slot<'button'>>;
     nextYearButton: NonNullable<Slot<'button'>>;
@@ -422,7 +430,9 @@ export type CalendarYearRowData = CalendarGridRow<CalendarYearCellData>;
 
 // @public
 export type CalendarYearRowProps = {
-    root?: Omit<React_2.ComponentProps<'div'>, 'children'>;
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
+        focusgrouprow?: string;
+    };
 };
 
 // @public

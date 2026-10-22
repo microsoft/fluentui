@@ -9,7 +9,7 @@ describe('createCalendarDateTimeFormatter', () => {
     try {
       createCalendarDateTimeFormatter();
 
-      expect(constructor).toHaveBeenCalledTimes(9);
+      expect(constructor).toHaveBeenCalledTimes(8);
       constructor.mock.calls.forEach(([, options]) => expect(options).not.toHaveProperty('era'));
     } finally {
       constructor.mockRestore();
@@ -18,7 +18,7 @@ describe('createCalendarDateTimeFormatter', () => {
 
   it.each(['en-US', 'de-DE', 'ar-SA'])('uses ordinary year-bearing formats without adding an era in %s', locale => {
     const formatter = createCalendarDateTimeFormatter(locale);
-    for (const format of ['year', 'monthYear', 'monthDayYear', 'dayMonthYear'] as const) {
+    for (const format of ['year', 'monthYear', 'monthDayYear'] as const) {
       const fields =
         format === 'year'
           ? { year: 'numeric' as const }
@@ -42,10 +42,10 @@ describe('createCalendarDateTimeFormatter', () => {
     expect(() => createCalendarDateTimeFormatter()({ date: new Date(NaN), format: 'day' })).toThrow(RangeError);
   });
 
-  it.each(['monthDayYear', 'dayMonthYear'] as const)('uses locale ordering for %s', format => {
+  it('uses locale ordering for the full date label', () => {
     const formatter = createCalendarDateTimeFormatter('en-GB');
 
-    expect(formatter({ date, format })).toBe('1 April 2016');
+    expect(formatter({ date, format: 'monthDayYear' })).toBe('1 April 2016');
   });
 
   it('localizes month and weekday names', () => {
@@ -80,7 +80,6 @@ describe('defaultCalendarFormatters', () => {
     ['shortMonth', 'Apr'],
     ['year', '2016'],
     ['monthDayYear', 'April 1, 2016'],
-    ['dayMonthYear', 'April 1, 2016'],
     ['monthYear', 'April 2016'],
     ['weekday', 'Friday'],
     ['shortWeekday', 'F'],
@@ -97,12 +96,17 @@ describe('defaultCalendarFormatters', () => {
     ['previousYearLabel', 'Previous year April 2016'],
     ['nextYearLabel', 'Next year April 2016'],
     ['monthPickerHeaderLabel', 'April 2016, change year'],
-    ['yearPickerHeaderLabel', 'April 2016, change month'],
+    ['dayPickerHeaderLabel', 'April 2016, change month'],
     ['selectedDateLabel', 'Selected date April 2016'],
     ['todayDateLabel', "Today's date April 2016"],
     ['dayMarkedLabel', 'April 2016, marked'],
   ] as const)('formats %s', (formatter, expected) => {
     expect(calendarFormatters[formatter](dateData)).toBe(expected);
+  });
+
+  it('formats action labels', () => {
+    expect(calendarFormatters.goToTodayLabel()).toBe('Go to today');
+    expect(calendarFormatters.closeLabel()).toBe('Close');
   });
 
   it('formats week numbers', () => {

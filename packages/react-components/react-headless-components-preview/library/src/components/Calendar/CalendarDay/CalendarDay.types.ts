@@ -55,13 +55,13 @@ export type CalendarDaySlots = {
   closeButton?: Slot<'button'>;
 
   /**
-   * The `<table role="grid">` holding the days of the navigated month. Owns arrow key navigation,
-   * selection, range hover, directional navigation and roving Tab entry for every day cell.
+   * The `<table role="grid">` holding the days of the navigated month. Focusgroup provides in-grid
+   * arrow navigation; Calendar owns selection, range hover and navigation beyond visible dates.
    */
   grid: NonNullable<Slot<'table'>>;
 
   /**
-   * The `<tbody>` wrapping the weekday header row and every week row.
+   * The `<tbody>` wrapping every week row.
    */
   body: NonNullable<Slot<'tbody'>>;
 };
@@ -186,7 +186,7 @@ export type CalendarDayCellProps = {
   /**
    * Overrides for the `<td role="gridcell">`. Its children remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'td'>, 'children'>;
+  root?: Omit<React.ComponentProps<'td'>, 'children'> & { focusgroupstart?: string };
   /**
    * Overrides for the day button. Set `children` to replace both the label and marker.
    */
@@ -206,7 +206,7 @@ export type CalendarDayRowProps = {
   /**
    * Overrides for the `<tr>`. Its cells remain controlled by the renderer.
    */
-  root?: Omit<React.ComponentProps<'tr'>, 'children'>;
+  root?: Omit<React.ComponentProps<'tr'>, 'children'> & { focusgrouprow?: string };
   /**
    * Overrides for the week-number `<th>`, or the header row's spacer.
    * Applied only when the corresponding element is rendered.
@@ -226,7 +226,7 @@ export type CalendarDayWeekdayCellProps = {
  * Props for the day picker. Shared selection, boundaries, and formatting come from CalendarProvider.
  */
 export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
-  Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
+  Pick<Partial<DayGridOptions>, 'daysToSelectInDayView'> & {
     /**
      * Provides access to the picker's focus handle.
      */

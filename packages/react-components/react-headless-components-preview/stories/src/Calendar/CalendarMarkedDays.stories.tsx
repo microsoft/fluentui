@@ -46,7 +46,7 @@ export const MarkedDays = (): React.ReactNode => (
       monthPicker={null}
       dayPicker={{
         ...calendarAppearance.dayPicker,
-        markedDays: [new Date(2025, 9, 8), new Date(2025, 9, 14), new Date(2025, 9, 22)],
+        getMarkedDays: () => [new Date(2025, 9, 8), new Date(2025, 9, 14), new Date(2025, 9, 22)],
         getCellProps: day => ({
           root: day.isMarked ? { title: 'Appointment' } : {},
         }),

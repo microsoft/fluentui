@@ -37,6 +37,8 @@ const calendarAppearance = {
 } satisfies CalendarProps;
 
 const germanFormatters: CalendarFormatters = {
+  goToTodayLabel: () => 'Heute',
+  closeLabel: () => 'Schließen',
   dateTime: createCalendarDateTimeFormatter('de-DE'),
   previousMonthLabel: data => `Vorheriger Monat ${data.formattedDate}`,
   nextMonthLabel: data => `Nächster Monat ${data.formattedDate}`,
@@ -45,7 +47,7 @@ const germanFormatters: CalendarFormatters = {
   previousYearRangeLabel: data => `Vorheriger Jahresbereich ${data.formattedRange}`,
   nextYearRangeLabel: data => `Nächster Jahresbereich ${data.formattedRange}`,
   monthPickerHeaderLabel: data => `${data.formattedDate}, Jahr ändern`,
-  yearPickerHeaderLabel: data => `${data.formattedDate}, Monat ändern`,
+  dayPickerHeaderLabel: data => `${data.formattedDate}, Monat ändern`,
   yearRangePickerHeaderLabel: data => `${data.formattedRange}, Jahr ändern`,
   weekNumberLabel: data => `Kalenderwoche ${data.weekNumber}`,
   selectedDateLabel: data => `Ausgewähltes Datum ${data.formattedDate}`,
@@ -64,7 +66,6 @@ export const Localized = (): React.ReactNode => (
       firstWeekOfYear="firstFourDayWeek"
       showWeekNumbers
       formatters={germanFormatters}
-      goToTodayButton={{ ...calendarAppearance.goToTodayButton, children: 'Heute' }}
     />
   </div>
 );

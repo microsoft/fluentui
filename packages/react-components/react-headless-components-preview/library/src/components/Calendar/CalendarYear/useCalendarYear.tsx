@@ -6,7 +6,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useCalendarContext } from '../calendarContext';
 import { createDate } from '../utils/dateMath';
 import { mergeProps } from '../../../utils/mergeProps';
-import { getCalendarEventType, getCalendarNavigationButtonProps } from '../utils/calendarNavigation';
+import { getCalendarEventType, resolveCalendarNavigationButton } from '../utils/calendarNavigation';
 import { getCalendarPickerCellProps, getCalendarPickerRows, useCalendarPickerGrid } from '../hooks/useCalendarGrid';
 import type {
   CalendarYearProps,
@@ -98,33 +98,23 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
   const yearRows = getCalendarPickerRows(yearCells, calendarYearColumns);
   const range = { fromYear, toYear };
   const rangeLabel = `${formatYear(fromYear)} - ${formatYear(toYear)}`;
-  const [gridSlot, getCell, activeIndex] = useCalendarPickerGrid(
+  const [gridSlot, getCell] = useCalendarPickerGrid(
     grid,
     rangeLabel,
     index => !isYearDisabled(fromYear + index),
     (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
-    focusYear - fromYear,
-    allFocusable,
-    fromYear,
-    calendarYearColumns,
   );
   const getYearCellProps: CalendarYearState['getYearCellProps'] = year => ({
     root: mergeProps(
       {
-        ...getCalendarPickerCellProps(
-          allFocusable,
-          year.isDisabled,
-          year.isSelected,
-          year.isCurrent,
-          year.year - fromYear === activeIndex,
-        ),
+        ...getCalendarPickerCellProps(allFocusable, year.isDisabled, year.isSelected, year.isCurrent, year.isNavigated),
         children: year.label,
       },
       props.getCellProps?.(year).root,
     ),
   });
   const getYearRowProps: CalendarYearState['getYearRowProps'] = row => ({
-    root: mergeProps({ role: 'row' }, props.getRowProps?.(row).root),
+    root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
   });
 
   const prevDisabled = minYear !== undefined && fromYear <= minYear;
@@ -139,8 +129,8 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
 
   React.useImperativeHandle(props.imperativeRef, () => ({
     focus(options?: FocusOptions) {
-      if (activeIndex !== undefined) {
-        getCell(activeIndex)?.focus(options);
+      if (focusYear >= fromYear && focusYear <= toYear) {
+        getCell(focusYear - fromYear)?.focus(options);
       }
     },
   }));
@@ -189,24 +179,20 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
       elementType: titleElementType,
     }),
     navigation: slot.always(navigation, { elementType: 'div' }),
-    previousRangeButton: slot.always(previousRangeButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        !prevDisabled,
-        allFocusable,
-        formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
-        ev => onNavigate(ev, -CELL_COUNT),
-      ),
-      elementType: 'button',
-    }),
-    nextRangeButton: slot.always(nextRangeButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        !nextDisabled,
-        allFocusable,
-        formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
-        ev => onNavigate(ev, CELL_COUNT),
-      ),
-      elementType: 'button',
-    }),
+    previousRangeButton: resolveCalendarNavigationButton(
+      previousRangeButton,
+      !prevDisabled,
+      allFocusable,
+      formatters.previousYearRangeLabel({ ...prevRange, formattedRange: formatRange(prevRange) }),
+      ev => onNavigate(ev, -CELL_COUNT),
+    ),
+    nextRangeButton: resolveCalendarNavigationButton(
+      nextRangeButton,
+      !nextDisabled,
+      allFocusable,
+      formatters.nextYearRangeLabel({ ...nextRange, formattedRange: formatRange(nextRange) }),
+      ev => onNavigate(ev, CELL_COUNT),
+    ),
     grid: gridSlot,
   };
 };

@@ -11,7 +11,7 @@ import { renderCalendar, useCalendarContextValues } from '../../calendar';
 import { calendarFormatters } from './utils';
 
 const today = new Date(2020, 8, 18);
-const dayLabel = (date: Date) => calendarFormatters.dateTime({ date, format: 'dayMonthYear' });
+const dayLabel = (date: Date) => calendarFormatters.dateTime({ date, format: 'monthDayYear' });
 
 describe('Calendar rendering and public API', () => {
   isConformant({
@@ -24,6 +24,53 @@ describe('Calendar rendering and public API', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     expect(container.querySelectorAll('[role="grid"]')).toHaveLength(2);
+  });
+
+  it('starts with no selected date while still identifying today', () => {
+    const { getByRole } = render(<Calendar today={today} />);
+    const todayCell = getByRole('button', { name: dayLabel(today) }).closest('[role="gridcell"]')!;
+
+    expect(todayCell).toHaveAttribute('aria-current', 'date');
+    expect(todayCell).not.toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('warns once when a controlled value is outside the configured bounds', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const value = new Date(2020, 8, 18);
+    const props = { value, minDate: new Date(2020, 8, 19), today };
+    const { rerender, getByRole } = render(<Calendar {...props} />);
+
+    expect(getByRole('button', { name: dayLabel(value) }).closest('[role="gridcell"]')).not.toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    rerender(<Calendar {...props} />);
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(warn).toHaveBeenCalledWith(
+      'Calendar: value is outside minDate/maxDate and is rendered as an empty selection.',
+    );
+
+    warn.mockRestore();
+  });
+
+  it('lets a consumer cancel navigation-button actions', () => {
+    const onDisplayedDateChange = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        today={today}
+        defaultDisplayedDate={new Date(2020, 9, 18)}
+        onDisplayedDateChange={onDisplayedDateChange}
+        dayPicker={{
+          previousMonthButton: {
+            onClick: event => event.preventDefault(),
+          },
+        }}
+      />,
+    );
+
+    fireEvent.click(getByRole('button', { name: 'Previous month September' }));
+
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
   });
 
   it.each([
@@ -62,7 +109,8 @@ describe('Calendar rendering and public API', () => {
     const { container, getByRole } = render(
       <Calendar today={today} calendarMonthColumns={3} dayPicker={{ weeksToShow: 6 }} />,
     );
-    expect(container.querySelectorAll('table tbody tr')).toHaveLength(7);
+    expect(container.querySelectorAll('table thead > tr')).toHaveLength(1);
+    expect(container.querySelectorAll('table tbody > tr')).toHaveLength(6);
     const rows = container.querySelectorAll('div[role="grid"] [role="row"]');
     expect(rows).toHaveLength(4);
     rows.forEach(row => expect(row.children).toHaveLength(3));
@@ -75,16 +123,18 @@ describe('Calendar rendering and public API', () => {
     expect(getAllByRole('grid')).toHaveLength(2);
   });
 
-  it('provides one Tab entry point per grid', () => {
+  it('marks the initial focusgroup target in each grid', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     const dayGrid = container.querySelector('table[role="grid"]')!;
-    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(dayGrid).toHaveAttribute('focusgroup', 'grid rowflow');
+    expect(dayGrid.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
 
     const monthGrid = container.querySelector('div[role="grid"]')!;
     expect(monthGrid.querySelectorAll('[role="row"]')).toHaveLength(3);
     monthGrid.querySelectorAll('[role="row"]').forEach(row => expect(row.children).toHaveLength(4));
-    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(monthGrid).toHaveAttribute('focusgroup', 'grid manual');
+    expect(monthGrid.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
   });
 
   it.each([
@@ -109,7 +159,7 @@ describe('Calendar rendering and public API', () => {
     getAllByRole('row').forEach(row => expect(row.children).toHaveLength(yearColumns));
   });
 
-  it('updates columns and remembered Tab entry without stealing external focus', () => {
+  it('updates the focusgroup start when columns change without stealing external focus', () => {
     const calendar = (columns: 3 | 4) => (
       <>
         <Calendar today={today} value={today} dayPicker={null} calendarMonthColumns={columns} />
@@ -123,11 +173,8 @@ describe('Calendar rendering and public API', () => {
     rerender(calendar(4));
 
     expect(getAllByRole('row')).toHaveLength(3);
-    expect(getByRole('gridcell', { name: 'December' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: 'September' })).toHaveAttribute('focusgroupstart');
     expect(getByRole('button', { name: 'Outside' })).toHaveFocus();
-    act(() => getByRole('gridcell', { name: 'January' }).focus());
-    fireEvent.keyDown(getByRole('gridcell', { name: 'January' }), { key: 'ArrowDown' });
-    expect(getByRole('gridcell', { name: 'May' })).toHaveFocus();
   });
 
   it('emits no Griffel styles of its own', () => {

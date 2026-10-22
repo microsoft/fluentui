@@ -1,9 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { Enter, Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
+import { Escape, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   getIntrinsicElementProps,
+  mergeCallbacks,
   slot,
   useAnimationFrame,
   useControllableState,
@@ -74,12 +75,21 @@ function useDateState({
   const [selectedDateState, setSelectedDate] = useControllableState({
     state: value,
     defaultState: defaultValue && resolveDate(defaultValue),
-    initialState: resolveDate(today),
+    initialState: null,
   });
   const selectedDate =
     selectedDateState && compareDatePart(selectedDateState, resolveDate(selectedDateState)) !== 0
       ? null
       : selectedDateState;
+  const warnedOutOfRange = React.useRef(false);
+  const isControlledValueOutOfRange = !!value && compareDatePart(value, resolveDate(value)) !== 0;
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && isControlledValueOutOfRange && !warnedOutOfRange.current) {
+      warnedOutOfRange.current = true;
+      // eslint-disable-next-line no-console
+      console.warn('Calendar: value is outside minDate/maxDate and is rendered as an empty selection.');
+    }
+  }, [isControlledValueOutOfRange]);
 
   const initialDisplayedDate = resolveDate(defaultDisplayedDate ?? selectedDate ?? today);
   const [navigatedDateState = initialDisplayedDate, setNavigatedDate] = useControllableState({
@@ -303,13 +313,12 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     focusOnNextUpdate();
   });
 
-  const onGotoToday = useEventCallback((ev: React.SyntheticEvent): void => {
-    const resolvedToday = resolveDate(today);
-    if (!goToTodayEnabled) {
+  const onGotoToday = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>): void => {
+    if (ev.isDefaultPrevented() || !goToTodayEnabled) {
       return;
     }
 
-    navigate(resolvedToday, ev);
+    navigate(resolveDate(today), ev);
     if (isOverlay && isMonthPickerVisible) {
       toggleDayMonthPickerVisibility(ev);
     }
@@ -418,6 +427,19 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     (dayPicker?.weeksToShow !== undefined &&
       dayPicker.weeksToShow <= 5 &&
       compareDatePart(dayPicker.navigatedDate ?? navigatedDate, resolvedToday) !== 0);
+  const goToTodaySlot = slot.optional(goToTodayButton, {
+    renderByDefault: true,
+    defaultProps: {
+      children: formatters.goToTodayLabel(),
+      'aria-disabled': !goToTodayEnabled,
+      disabled: !goToTodayEnabled && !allFocusable,
+      type: 'button',
+    },
+    elementType: 'button',
+  });
+  if (goToTodaySlot) {
+    goToTodaySlot.onClick = mergeCallbacks(goToTodaySlot.onClick, onGotoToday);
+  }
 
   return {
     allFocusable,
@@ -452,6 +474,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
         {
           ref: mergedRootRef,
           ...props,
+          'data-fui-calendar-root': '',
           onBlurCapture: onRootBlurCapture,
           onFocusCapture: onRootFocusCapture,
           onKeyDown: onRootKeyDown,
@@ -476,23 +499,7 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
     monthPickerWrapper: slot.always(monthPickerWrapper, {
       elementType: 'div',
     }),
-    goToTodayButton: slot.optional(goToTodayButton, {
-      renderByDefault: true,
-      defaultProps: {
-        children: 'Go to today',
-        'aria-disabled': !goToTodayEnabled,
-        disabled: !goToTodayEnabled && !allFocusable,
-        onClick: onGotoToday,
-        onKeyDown: (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-          if (ev.key === Enter) {
-            onGotoToday(ev);
-            ev.preventDefault();
-          }
-        },
-        type: 'button',
-      },
-      elementType: 'button',
-    }),
+    goToTodayButton: goToTodaySlot,
     dayPicker,
     monthPicker,
   };
