@@ -70,6 +70,7 @@ export { ImageSwatchSlots }
 export type ImageSwatchState = ImageSwatchBaseState & {
     root: {
         'data-selected'?: string;
+        'data-disabled'?: string;
     };
 };
 
