@@ -92,16 +92,6 @@
         @variant group-hover-active/fui-toolbar-toggle-button {
           @apply text-neutral-foreground-2-brand-pressed;
         }
-
-        /* Button and ToggleButton both carry these as high-contrast glyph rules, and both are
-           below this layer, so the brand colours above win and the forced-colors UA then swaps
-           them for the system foreground — this slot keeps forced-color-adjust: auto. Only a
-           system colour authored at this layer survives that swap. */
-        @variant forced-colors {
-          @variant group-hover/fui-toolbar-toggle-button, group-hover-active/fui-toolbar-toggle-button {
-            @apply text-[Highlight];
-          }
-        }
       }
 
       /* Griffel reaches the disabled glyph colour from the button root with a descendant
@@ -112,6 +102,14 @@
 
         @variant forced-colors {
           @apply text-[GrayText];
+        }
+      }
+
+      @variant group-enabled/fui-toolbar-toggle-button {
+        @variant group-not-disabled-focusable/fui-toolbar-toggle-button {
+          @variant forced-colors {
+            @apply text-inherit;
+          }
         }
       }
     }

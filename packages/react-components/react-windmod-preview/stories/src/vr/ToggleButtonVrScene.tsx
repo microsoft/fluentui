@@ -43,10 +43,10 @@ export const ToggleButtonVrScene = ({
             Icon
           </ToggleButton>
           <ToggleButton appearance={appearance} checked={checked} icon={<Icon />} aria-label="icon" />
-          <ToggleButton appearance={appearance} checked={checked} disabled>
+          <ToggleButton appearance={appearance} checked={checked} icon={<Icon />} disabled>
             Disabled
           </ToggleButton>
-          <ToggleButton appearance={appearance} checked={checked} disabledFocusable>
+          <ToggleButton appearance={appearance} checked={checked} icon={<Icon />} disabledFocusable>
             Disabled
           </ToggleButton>
         </div>
@@ -60,10 +60,10 @@ export const ToggleButtonVrScene = ({
           </ToggleButton>
         ))}
         <ToggleButton appearance={appearance} checked isAccessible icon={<Icon />} aria-label="icon" />
-        <ToggleButton appearance={appearance} checked isAccessible disabled>
+        <ToggleButton appearance={appearance} checked isAccessible icon={<Icon />} disabled>
           Disabled
         </ToggleButton>
-        <ToggleButton appearance={appearance} checked isAccessible disabledFocusable>
+        <ToggleButton appearance={appearance} checked isAccessible icon={<Icon />} disabledFocusable>
           Disabled
         </ToggleButton>
       </div>

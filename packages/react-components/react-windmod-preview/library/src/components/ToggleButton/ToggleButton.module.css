@@ -188,14 +188,6 @@
 
       @variant group-accessible/fui-toggle-button {
         @apply text-neutral-foreground-on-brand;
-
-        /* Griffel gates its selected glyph colour on NOT accessible and authors nothing for the
-           accessible case, so the glyph inherits the root colour. That matters only under forced
-           colors, where this slot keeps forced-color-adjust: auto and any colour authored here
-           would be replaced by the system foreground instead of following the root. */
-        @variant forced-colors {
-          @apply text-inherit;
-        }
       }
 
       @variant icon-filled {
@@ -239,6 +231,23 @@
 
         @variant icon-regular {
           @apply inline;
+        }
+      }
+    }
+
+    @variant group-checked/fui-toggle-button {
+      @variant group-enabled/fui-toggle-button {
+        @variant group-not-disabled-focusable/fui-toggle-button {
+          @variant forced-colors {
+            @apply text-inherit;
+
+            forced-color-adjust: inherit;
+
+            /* Fluent glyphs opt back into automatic forced-color adjustment. */
+            @variant icon {
+              forced-color-adjust: inherit;
+            }
+          }
         }
       }
     }

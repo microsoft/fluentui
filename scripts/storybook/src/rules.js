@@ -5,6 +5,7 @@ const path = require('path');
  * scheme, three pipelines.
  */
 const globalizeGroupMarkers = require('@fluentui/postcss-tailwind-css-modules');
+
 const { getLocalIdent } = require('../../css-modules/ident');
 
 /**
@@ -94,7 +95,7 @@ const tailwindPostcssLoader = {
          *
          * Without it css-loader hashes the marker and every named-group rule compiles to a
          * selector the DOM never matches — silently, with VR still green. See
-         * @fluentui/postcss-tailwind-css-modules.
+         * the `@fluentui/postcss-tailwind-css-modules` package.
          */
         globalizeGroupMarkers(),
       ],
