@@ -20,7 +20,7 @@ jest.mock('../../hooks/useMeasureElement', () => {
 const renderDataGridHook = (props: Partial<DataGridProps> = {}) =>
   renderHook(() => useDataGrid_unstable({ items, columns, ...props }, React.createRef())).result.current;
 
-const tabsterAttribute = (state: { root: object }) => (state.root as { 'data-tabster'?: string })['data-tabster'];
+const getTabsterAttribute = (element: object) => (element as { 'data-tabster'?: string })['data-tabster'];
 
 describe('useDataGrid_unstable', () => {
   it('renders a div with the grid role and no native elements', () => {
@@ -80,20 +80,20 @@ describe('useDataGrid_unstable', () => {
   it('uses Tabster arrow navigation attributes on the root for the cell focus mode', () => {
     const state = renderDataGridHook({ focusMode: 'cell' });
 
-    expect(tabsterAttribute(state)).toContain('"mover"');
-    expect(tabsterAttribute(state)).toContain('"cyclic"');
+    expect(getTabsterAttribute(state.root)).toContain('"mover"');
+    expect(getTabsterAttribute(state.root)).toContain('"cyclic"');
   });
 
   it('does not use Tabster attributes on the root for the none focus mode', () => {
     const state = renderDataGridHook({ focusMode: 'none' });
 
-    expect(tabsterAttribute(state)).toBeUndefined();
+    expect(getTabsterAttribute(state.root)).toBeUndefined();
   });
 
   it('uses a Tabster mover on the root and a row groupper for the composite focus mode', () => {
     const state = renderDataGridHook({ focusMode: 'composite' });
 
-    expect(tabsterAttribute(state)).toContain('"mover"');
+    expect(getTabsterAttribute(state.root)).toContain('"mover"');
     expect(state.compositeRowTabsterAttribute['data-tabster']).toContain('"groupper"');
   });
 
