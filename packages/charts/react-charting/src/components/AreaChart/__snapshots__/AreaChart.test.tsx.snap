@@ -1999,9 +1999,9 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -2304,9 +2304,9 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -2638,9 +2638,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -2972,7 +2972,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
             width="10"
           />
@@ -3297,9 +3297,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -3620,9 +3620,9 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -3795,9 +3795,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -4129,9 +4129,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -4463,9 +4463,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
@@ -4797,9 +4797,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         <g>
           <rect
             fill="transparent"
-            height="-20"
+            height="0"
             id="rectangle3"
-            width="-20"
+            width="0"
           />
         </g>
         <g>
