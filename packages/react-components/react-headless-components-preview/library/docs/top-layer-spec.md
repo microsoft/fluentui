@@ -16,6 +16,7 @@ Each hook does one job, and a component composes only the ones it needs:
 | `useLayerOpenState`       | Open state, kept in sync with the browser through the Popover API. Reports opens and closes the browser makes. |
 | `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` and handles a `<dialog>` without the Popover API.        |
 | `useLayerPresence`        | Whether to render the element, its animation `phase`, and keeping it mounted and inert while it animates out.  |
+| `useLayerFocusReturn`     | Returns focus on close where the browser doesn't. Plugs into the open-state hook through its callbacks.        |
 | `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
 No positioning: overlays compose them with `usePositioning`.
@@ -35,7 +36,10 @@ useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options
 | `defaultOpen`  | `boolean`                                                          | `false` | Initial state when uncontrolled.                                                                                |
 | `mode`         | `'auto' \| 'hint' \| 'manual'`, plus `'modal'` for the dialog hook | —       | See [Modes](#modes). `modal` needs a `<dialog>`.                                                                |
 | `onOpenChange` | `(open: boolean, data: TopLayerOpenChangeData) => void`            | —       | The browser opened or closed the element. Never called for changes made through `open` or `setOpen`.            |
+| `onBeforeShow` | `(element: HTMLElement) => void`                                   | —       | Called before the hook shows the element, once per open and per new element.                                    |
 | `onShow`       | `(element: HTMLElement) => void`                                   | —       | Called after the element is shown, once per show of each element, e.g. to set up content that needs it visible. |
+| `onBeforeHide` | `(element: HTMLElement) => void`                                   | —       | Called once per close as it starts: before the hook hides it, or on the browser's `beforetoggle` or `cancel`.   |
+| `onHide`       | `(element: HTMLElement) => void`                                   | —       | Called once per close after the element left the top layer, whether React or the browser closed it.             |
 
 | Return    | Type                                        | Description                                                 |
 | --------- | ------------------------------------------- | ----------------------------------------------------------- |
@@ -58,11 +62,12 @@ useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options
 
 | Bundle (esbuild, minified, production, React and `@fluentui/*` external) | Minified | Gzip   |
 | ------------------------------------------------------------------------ | -------- | ------ |
-| `useLayerOpenState`                                                      | 2146 B   | 1049 B |
-| `useDialogLayerOpenState`                                                | 2898 B   | 1292 B |
+| `useLayerOpenState`                                                      | 2477 B   | 1167 B |
+| `useDialogLayerOpenState`                                                | 3229 B   | 1405 B |
 | `useLayerPresence`                                                       | 2036 B   | 1072 B |
-| `useLayerOpenState` + `useLayerPresence`                                 | 4007 B   | 1820 B |
-| `useDialogLayerOpenState` + `useLayerPresence`                           | 4757 B   | 2056 B |
+| `useLayerOpenState` + `useLayerPresence`                                 | 4338 B   | 1934 B |
+| `useDialogLayerOpenState` + `useLayerPresence`                           | 5100 B   | 2163 B |
+| `useDialogLayerOpenState` + `useLayerPresence` + `useLayerFocusReturn`   | 5918 B   | 2473 B |
 
 `useLayerPresence` has no dialog variant: its only dialog code is a check for `dialog.open` and the `close` event, about 50 B gzip.
 
@@ -143,6 +148,27 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 - **Listeners.** Element listeners only, added once per element and event set. Closed layers that stay mounted (Tooltip, Menu) add no document listeners; `useLayerEscape` with `listen: 'document'` adds one only while open.
 - **SSR.** Renders hidden (`popover` attribute or closed `<dialog>`) and is shown in a layout effect after hydration.
 
+## `useLayerFocusReturn`
+
+```ts
+const focusReturn = useLayerFocusReturn(elementRef, {
+  target: RefObject<HTMLElement | null>,
+  when: 'inside' | 'always' | false,
+});
+useDialogLayerOpenState(elementRef, { open, mode, ...focusReturn });
+```
+
+It returns `onBeforeShow`, `onBeforeHide` and `onHide`, which the open-state hook calls at fixed points, so the hooks can be declared in any order.
+
+| Option   | Type                             | Default    | Description                                                                                                                                         |
+| -------- | -------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `target` | `RefObject<HTMLElement \| null>` | —          | Where focus goes on close. Without it, the element focused before the layer was shown.                                                              |
+| `when`   | `'inside' \| 'always' \| false`  | `'inside'` | `inside`: focus was inside as the close started and is now on `<body>` or still inside. `always`: whenever the target is connected. `false`: never. |
+
+- Focus inside is read as the close starts: before the hook hides the element, on `beforetoggle`, or on `cancel`. For a modal `<dialog>` in browsers without `beforetoggle` on dialogs, focus leaving the closed dialog counts as inside.
+- Focus goes back once per close, after the element left the top layer, so a browser close (light dismiss, `popovertarget`, `<form method="dialog">`) is covered too. Works inside shadow roots.
+- It sits in its own module; Tooltip, Menu, Toaster and Listbox don't bundle it.
+
 ## `useLayerEscape`
 
 ```ts
@@ -165,14 +191,37 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 
 ## Not covered yet
 
-The hooks leave focus to the browser. Components that need more keep their own code until this helper exists:
-
-- **`useLayerFocus`** (wired through `onBeforeShow`, `onShow`, `onBeforeHide` and `onHide` callbacks on the open-state hook): `initialFocus`, returning focus where the browser doesn't (`manual`, `hint`, light dismiss, a `<dialog>` shown as a popover), and keeping focus on the same control across a mode switch.
+`initialFocus` (Menu focuses its first item in `onShow`), and keeping focus on the same control across a mode switch.
 
 Focus on open and Tab order are the browser's:
 
 - `showModal()` focuses `[autofocus]` or the dialog, and `close()` returns focus. Tab can leave a modal through the browser chrome.
 - `showPopover()` focuses an `[autofocus]` element and otherwise leaves focus alone. React's `autoFocus` prop runs on mount, before the popover is shown, so it doesn't help.
+
+## Consumers
+
+Each component composes the hooks it needs.
+
+- **Popover / TeachingPopover / InfoLabel.** `useDialogLayerOpenState` with `mode: trapFocus ? 'modal' : mode`, `useLayerPresence`, and `useLayerFocusReturn` with `target: triggerRef`. `useLayerEscape` closes a `manual` surface on Escape. `PopoverTrigger` keeps its own Escape handler for focus on the trigger.
+- **Dialog / Drawer.** `useDialogLayerOpenState` with `'modal'`, or `'manual'` when non-modal, and `useLayerPresence`. Browser opens and closes are reported as `surfaceToggle`. `useLayerEscape` with `when: 'always'` reports every Escape as `escapeKeyDown`, skipping Escape from a layer nested inside. As on master, `DialogSurface` blocks the browser closing a modal on Escape so `onOpenChange` can veto, and locks scroll. `useLayerFocusReturn` with `when: 'always'` returns focus to the element focused before a non-modal dialog opened; a modal dialog's `close()` returns it natively.
+- **Tooltip.** `useLayerOpenState` with `mode: 'hint'`, `useLayerPresence`, and `useLayerEscape` with `listen: 'document'`, which closes it on Escape where `hint` falls back to `manual`. Stays mounted so `aria-labelledby` / `aria-describedby` resolve.
+- **Menu.** `useLayerOpenState` with `mode: 'auto'`. Stays mounted; `onShow` re-applies `focusgroup` and focuses the first enabled item. `useMenu` returns focus. Browser closes are reported as `clickOutside`.
+- **Combobox / Dropdown / TagPicker listbox.** `useLayerOpenState` with `mode: 'auto'`. Combobox and Dropdown render the listbox while `shouldRenderListbox` from `useLayerPresence` is true. Focus stays on the trigger.
+- **Toaster.** Each toast position is a `manual` popover, shown while it has toasts. Escape on the toaster closes all toasts, unless a layer inside already handled it.
+
+## Changes from master
+
+| Area                                                        | Master                                                                       | Now                                                                        |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Popover exit                                                | unmounted once the browser reported the close                                | also waits for exit animations, like `DialogSurface`                       |
+| Exiting Popover and Dialog                                  | —                                                                            | `inert` and `aria-hidden="true"` while exit animations run                 |
+| Tooltip, Dropdown and Combobox exit                         | unmounted as soon as they closed                                             | wait for exit animations, `inert` while they run                           |
+| Tooltip Escape where `hint` is unsupported                  | ignored                                                                      | closes the tooltip                                                         |
+| Escape in a layer nested in a `DialogSurface`               | the outer dialog closed too, unless the inner handler stopped the event      | only the inner one closes                                                  |
+| Popover `mode`                                              | always `auto`                                                                | `auto`, `manual` or `hint`; a `manual` surface closes on Escape            |
+| Popover kept `open` after a browser dismiss                 | shown again                                                                  | stays closed, with a dev warning; use `mode="manual"` to prevent dismissal |
+| Modal Dialog native close (`<form method="dialog">`)        | closes, not reported, so React state goes out of sync                        | closes, reported as `surfaceToggle`                                        |
+| Native opens (`popovertarget`, `commandfor`, `showModal()`) | non-modal Dialog synced as `surfaceToggle`; Popover unreachable while closed | also modal Dialog, where dialogs fire `toggle` (Chromium 132+)             |
 
 ## Stacking and nesting
 

@@ -164,6 +164,24 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
     expect(layer.matches(':modal')).toBe(false);
   });
 
+  it('calls the lifecycle callbacks in order, once per open and close', async () => {
+    const calls: string[] = [];
+    const callbacks = {
+      onBeforeShow: () => calls.push('beforeShow'),
+      onShow: () => calls.push('show'),
+      onBeforeHide: () => calls.push('beforeHide'),
+      onHide: () => calls.push('hide'),
+    };
+    const { getByTestId, rerender } = render(<Layer open {...callbacks} />);
+    rerender(<Layer open={false} {...callbacks} />);
+    expect(calls).toEqual(['beforeShow', 'show', 'beforeHide', 'hide']);
+
+    calls.length = 0;
+    rerender(<Layer open {...callbacks} onOpenChange={() => undefined} />);
+    act(() => getByTestId('layer').hidePopover());
+    await waitFor(() => expect(calls).toEqual(['beforeShow', 'show', 'beforeHide', 'hide']));
+  });
+
   it('calls onShow once per show', () => {
     const onShow = jest.fn();
     const { rerender } = render(<Layer open onShow={onShow} />);

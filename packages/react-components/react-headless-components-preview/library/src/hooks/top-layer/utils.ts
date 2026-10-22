@@ -3,6 +3,17 @@ export const log = (level: 'warn' | 'error', message: string): void => {
   console[level](`@fluentui/react-headless-components-preview [top layer]: ${message}`);
 };
 
+/**
+ * The focused element in the element's own root. Inside a shadow root, `document.activeElement` is only the host.
+ */
+export const getActiveElement = (element: Element): Element | null => {
+  const root = element.getRootNode();
+  const ShadowRootConstructor = element.ownerDocument.defaultView?.ShadowRoot;
+  const shadowActiveElement =
+    ShadowRootConstructor && root instanceof ShadowRootConstructor ? root.activeElement : null;
+  return shadowActiveElement ?? element.ownerDocument.activeElement;
+};
+
 export const isDialogElement = (element: Element | null | undefined): element is HTMLDialogElement =>
   !!element && typeof (element as HTMLDialogElement).showModal === 'function';
 
