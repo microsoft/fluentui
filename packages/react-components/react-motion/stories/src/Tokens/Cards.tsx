@@ -61,6 +61,9 @@ const MotionCurveCard: React.FC<{
     <div className={classes.container}>
       <div className={classes.graph} role="presentation">
         <svg className={classes.svg} viewBox="0 0 100 100">
+          <line className={classes.referenceLine} x1="0" y1="100" x2="100" y2="0" aria-hidden="true" />
+          <line className={classes.referenceLine} x1="50" y1="0" x2="50" y2="100" aria-hidden="true" />
+          <line className={classes.referenceLine} x1="0" y1="50" x2="100" y2="50" aria-hidden="true" />
           <Fade visible={controlPointsVisible}>
             <g className={classes.handle} aria-hidden="true">
               <line x1="0" y1="100" x2={easingPoints[0]} y2={100 - easingPoints[1]} />
