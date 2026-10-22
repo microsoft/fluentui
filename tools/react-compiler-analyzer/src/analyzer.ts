@@ -6,6 +6,7 @@ import type { CompilationMode, DirectiveAnalysis, DirectiveOccurrence, FunctionA
 
 export interface DirectiveAnalysisOptions {
   parserPlugins?: string[];
+  revalidateJustified?: boolean;
 }
 
 function compilerEventOf(analysis: FunctionAnalysis | undefined): DirectiveAnalysis['compilerEvent'] {
@@ -39,10 +40,10 @@ function toDirectiveAnalysis(
   };
 }
 
-function conflictIds(directives: DirectiveOccurrence[]): Set<string> {
+function conflictIds(directives: DirectiveOccurrence[], includeJustified = false): Set<string> {
   const byFunction = new Map<string, DirectiveOccurrence[]>();
   for (const directive of directives) {
-    if (!directive.functionId || directive.justified) {
+    if (!directive.functionId || (directive.justified && !includeJustified)) {
       continue;
     }
     const list = byFunction.get(directive.functionId) ?? [];
@@ -74,17 +75,21 @@ function analysisByFunction(result: FileCompilationResult): Map<string, Function
 export function deriveMemoDirectiveStatuses(
   result: FileCompilationResult,
   _compilationMode: CompilationMode,
+  options: DirectiveAnalysisOptions = {},
 ): DirectiveAnalysis[] {
   const directives = result.sourceFunctions.directives();
   if (directives.length === 0) {
     return [];
   }
-  const conflicts = conflictIds(directives);
+  const conflicts = conflictIds(directives, options.revalidateJustified);
   const analyses = result.error ? new Map<string, FunctionAnalysis>() : analysisByFunction(result);
   const output: DirectiveAnalysis[] = [];
 
   for (const directive of directives) {
     if (directive.justified) {
+      if (options.revalidateJustified) {
+        continue;
+      }
       output.push(
         toDirectiveAnalysis(result, directive, {
           status: 'skipped',
@@ -168,7 +173,7 @@ export async function analyzeNoMemoDirectives(
   options: DirectiveAnalysisOptions = {},
 ): Promise<DirectiveAnalysis[]> {
   const allDirectives = result.sourceFunctions.directives();
-  const conflicts = conflictIds(allDirectives);
+  const conflicts = conflictIds(allDirectives, options.revalidateJustified);
   const preserved = allDirectives
     .filter(directive => directive.directiveType === 'use-no-memo' && !directive.justified && !directive.functionId)
     .map(directive =>
@@ -248,4 +253,87 @@ export async function analyzeNoMemoDirectives(
       });
     }),
   ].sort((a, b) => a.line - b.line || (a.column ?? 0) - (b.column ?? 0) || compareText(a.directiveId!, b.directiveId!));
+}
+
+/** Revalidate one justified directive at a time without making it eligible for source fixes. */
+export async function revalidateJustifiedDirectives(
+  result: FileCompilationResult,
+  compilationMode: CompilationMode,
+  options: DirectiveAnalysisOptions = {},
+): Promise<DirectiveAnalysis[]> {
+  const directives = result.sourceFunctions.directives();
+  const conflicts = conflictIds(directives, true);
+  const original = analysisByFunction(result);
+  const output: DirectiveAnalysis[] = [];
+  for (const directive of directives.filter(item => item.justified)) {
+    const report = (values: Parameters<typeof toDirectiveAnalysis>[2]) =>
+      output.push({
+        ...toDirectiveAnalysis(result, directive, values),
+        justified: true,
+        revalidated: true,
+      });
+    if (!directive.functionId) {
+      report({
+        status: 'skipped',
+        compilerEvent: 'skipped',
+        reason: 'file-level directive preserved; function-level revalidation unavailable (report-only)',
+      });
+      continue;
+    }
+    if (conflicts.has(directive.id)) {
+      report({
+        status: 'conflicting',
+        compilerEvent: 'none',
+        reason: "conflicting 'use memo' and 'use no memo' directives; justified directive is report-only",
+      });
+      continue;
+    }
+    const initial = original.get(directive.functionId);
+    if (
+      result.error ||
+      initial?.compilerEvent === 'PipelineError' ||
+      (directive.directiveType === 'use-memo' && initial?.status !== 'compiled')
+    ) {
+      report({
+        status: 'broken',
+        compilerEvent: compilerEventOf(initial),
+        reason: result.error?.message ?? initial?.reason ?? 'original opt-in has no successful compiler outcome',
+      });
+      continue;
+    }
+    const { start, end } = directive.span;
+    const text = result.source.slice(start.offset, end.offset);
+    const neutral = text.replace(
+      directive.directiveType === 'use-memo' ? 'use memo' : 'use no memo',
+      directive.directiveType === 'use-memo' ? 'use-memo' : 'use no-memo',
+    );
+    const source = result.source.slice(0, start.offset) + neutral + result.source.slice(end.offset);
+    const probe = await compileSource(source, result.filePath, {
+      compilationMode,
+      parserPlugins: options.parserPlugins ?? result.parserPlugins,
+    });
+    const normalized = normalizeCompilerEvents(probe.events, source, result.sourceFunctions);
+    const analysis = normalized.analyses.find(item => item.sourceFunctionId === directive.functionId);
+    if (probe.error || normalized.unattributedErrors.length > 0 || analysis?.compilerEvent === 'PipelineError') {
+      report({
+        status: 'broken',
+        compilerEvent: compilerEventOf(analysis),
+        reason: `directive revalidation unavailable: ${
+          probe.error?.message ??
+          (normalized.unattributedErrors.map(item => item.reason).join('; ') || analysis?.reason)
+        }`,
+      });
+      continue;
+    }
+    const accepted = analysis?.status === 'compiled';
+    const active = directive.directiveType === 'use-memo' ? !accepted : accepted;
+    report({
+      status: active ? 'active' : 'redundant',
+      compilerEvent: compilerEventOf(analysis),
+      reason: `${
+        active ? 'changes' : 'does not change'
+      } Babel compiler acceptance in ${compilationMode} mode; justified directive is report-only, not a native-parity or performance guarantee`,
+    });
+  }
+  return output;
 }

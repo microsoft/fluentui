@@ -11,9 +11,7 @@ describe('createBabelOptions', () => {
       filename: filePath,
       babelrc: false,
       configFile: false,
-      presets: [
-        [require.resolve('@babel/preset-typescript'), { isTSX, allExtensions: true, allowDeclareFields: true }],
-      ],
+      parserOpts: { plugins: ['typescript', ...(isTSX ? ['jsx'] : []), 'decoratorAutoAccessors'] },
     });
   });
 
@@ -21,18 +19,19 @@ describe('createBabelOptions', () => {
     const parserPlugins = ['decorators-legacy'];
     const options = createBabelOptions('module.tsx', parserPlugins);
 
-    expect(options.parserOpts?.plugins).toEqual(parserPlugins);
+    expect(options.parserOpts?.plugins).toEqual(['typescript', 'jsx', 'decoratorAutoAccessors', 'decorators-legacy']);
     expect(options.parserOpts?.plugins).not.toBe(parserPlugins);
 
     parserPlugins.push('jsx');
 
-    expect(options.parserOpts?.plugins).toEqual(['decorators-legacy']);
+    expect(options.parserOpts?.plugins).toEqual(['typescript', 'jsx', 'decoratorAutoAccessors', 'decorators-legacy']);
   });
 
-  it.each(['module.ts', 'module.tsx'])('erases ambient declarations and class fields in %s', filePath => {
+  it.each(['module.ts', 'module.tsx'])('preserves TypeScript without lowering in %s', filePath => {
     const source = 'declare const prefix: string; export class Legacy { declare context: unknown; }';
     const result = transformSync(source, createBabelOptions(filePath));
 
-    expect(result?.code).toBe('export class Legacy {}');
+    expect(result?.code).toContain('declare const prefix: string;');
+    expect(result?.code).toContain('declare context: unknown;');
   });
 });
