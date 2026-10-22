@@ -187,6 +187,9 @@ export { ToolbarGriffel } from './ToolbarGriffel.stories';
 export { TooltipWindmod } from './TooltipWindmod.stories';
 export { TooltipGriffel } from './TooltipGriffel.stories';
 
+export { ListWindmod } from './ListWindmod.stories';
+export { ListGriffel } from './ListGriffel.stories';
+
 export default {
   title: 'Windmod/VR',
 };

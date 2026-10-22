@@ -1,6 +1,6 @@
 # Differences from `@fluentui/react-components`
 
-The package's `MIGRATION.md` enumerates **sixty-three** deliberate differences in full. This is the
+The package's `MIGRATION.md` enumerates **sixty-four** deliberate differences in full. This is the
 routing layer: the ones that change how you style, test or debug, grouped by what they break. Load the
 full document from
 `node_modules/@fluentui/react-windmod-preview/MIGRATION.md` when a specific delta needs its detail.
@@ -178,6 +178,13 @@ before calling the port done.
 | a non-16px root font size            | the whole UI rescales together — intended, or reset the root to 16px          |
 | a browser without anchor positioning | anchored surfaces render at the viewport origin — polyfill or keep on Griffel |
 
+## List selection inputs
+
+`ListItem.checkmark` accepts native input props, following headless, rather than Griffel Checkbox
+props. Windmod decorates that input with its Checkbox treatment. Refs, handlers, form values,
+`className` and `style` target the input; use `checkmark={null}` to hide it. Checkbox-specific
+`label`, `indicator`, `shape` and `size` are not accepted by this slot. See migration entry 64.
+
 ## Mixing the two libraries
 
 - **Griffel container around windmod children** — works.
@@ -203,3 +210,5 @@ Shared upstream code, so windmod is at exact parity. Consumer-actionable, not ca
 - A disabled `ColorSwatch` loses its 1px border on hover.
 - A `MenuSplitGroup` whose halves are different element types loses its seam styling (`:nth-of-type`
   counts by element type). Keep both halves on the same element type.
+- Nested selectable Lists share bubbling clicks: an inner checkbox click can also select its outer
+  row. Stop click propagation on the inner List when selection must stay independent.

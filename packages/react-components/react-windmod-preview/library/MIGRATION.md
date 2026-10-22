@@ -260,6 +260,7 @@ headless subpath one-for-one.
 | `./interaction-tag`  | InteractionTag, InteractionTagPrimary, InteractionTagSecondary                                                                                                                                                                                                                                                                                                                     |
 | `./label`            | Label                                                                                                                                                                                                                                                                                                                                                                              |
 | `./link`             | Link                                                                                                                                                                                                                                                                                                                                                                               |
+| `./list`             | List, ListItem                                                                                                                                                                                                                                                                                                                                                                     |
 | `./menu`             | Menu, MenuDivider, MenuGroup, MenuGroupHeader, MenuItem, MenuItemContextProvider, MenuItemCheckbox, MenuItemLink, MenuItemRadio, MenuItemSwitch, MenuList, MenuPopover, MenuSplitGroup, MenuTrigger                                                                                                                                                                                |
 | `./menu-button`      | MenuButton                                                                                                                                                                                                                                                                                                                                                                         |
 | `./message-bar`      | MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle                                                                                                                                                                                                                                                                                                                     |
@@ -1249,11 +1250,21 @@ in entry 62 can also reach the control's geometry. The `switch` scene has a rati
 3,132 differing pixels and a one-pixel height allowance. These bounds reflect the grid layout,
 replacing the earlier flex-centering measurements.
 
+#### 64. ListItem checkmarks expose native input props
+
+`List` and `ListItem` ship from `@fluentui/react-windmod-preview/list`. The `checkmark` slot follows
+headless: it accepts native input props rather than Griffel Checkbox props. Windmod renders its
+Checkbox treatment around that input, preserving the input ref, form values, handlers, `className`
+and `style`. Use `checkmark={null}` to hide it. Checkbox-specific props such as `label`, `indicator`,
+`shape` and `size` are not part of this slot's API. Selection and composite navigation remain owned
+by headless; item navigation uses native `focusgroup`, and focus uses the native modality rules
+already described above.
+
 ## Where the pixels are allowed to differ
 
 The parity gate is strict zero: pixelmatch at threshold 0, with the antialiasing classifier absorbing
 sub-perceptual rasterization noise. One differing pixel that is not classified as antialiasing fails the
-scene. Sixty-six of the ninety-three scenes hold that unconditionally. The remaining twenty-seven carry a
+scene. Sixty-seven of the ninety-four scenes hold that unconditionally. The remaining twenty-seven carry a
 numeric ceiling — counted under the same rule — recorded on the scene itself, each granted individually
 and each recorded with the control that bounds it. **No allowance is a tolerance band** — every one names a specific mechanism, and a diff that does
 not decompose the documented way fails the scene even when it sits under the ceiling. The original
@@ -1319,12 +1330,12 @@ evidence, and because a VR harness pointed at this package will reproduce these 
 
 windmod reskins what the headless package ships and invents nothing. These have no windmod component:
 
-| Not shipped                                                                                                        | Why                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Text` and the typography components, `Table`/`DataGrid`, `Tree`, the standalone `Carousel`, `Virtualizer`, `List` | no headless counterpart (the teaching-popover carousel is a different component and does ship — see [the teaching carousel](#the-teaching-carousel)) |
-| `MessageBarGroup`                                                                                                  | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce))              |
-| `Overflow` and family                                                                                              | **scoped out permanently** — see below                                                                                                               |
-| `Persona`'s `presence` slot and `presenceOnly` prop                                                                | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                                  |
+| Not shipped                                                                                                | Why                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Text` and the typography components, `Table`/`DataGrid`, `Tree`, the standalone `Carousel`, `Virtualizer` | no headless counterpart (the teaching-popover carousel is a different component and does ship — see [the teaching carousel](#the-teaching-carousel)) |
+| `MessageBarGroup`                                                                                          | no headless counterpart, and no visual contract to reskin (see [delta 21](#21-messagebar-has-no-group-animation-and-does-not-announce))              |
+| `Overflow` and family                                                                                      | **scoped out permanently** — see below                                                                                                               |
+| `Persona`'s `presence` slot and `presenceOnly` prop                                                        | the headless surface omits both; a windmod `Persona` cannot render a presence badge                                                                  |
 
 All of these compose over windmod components without a shim: they are Griffel-styled containers around
 windmod-styled children, and nothing in either library's CSS fights the other.
@@ -1399,6 +1410,10 @@ one. They are listed because they are consumer-actionable, not because migrating
   The zeroed inner radii, the leading padding and the 1px divider all stop applying, and both halves take
   `flex: 1` instead of only the first. Griffel's selector has the same shape and misfires identically, so
   both libraries render this the same wrong way. Keep both halves on the same element type.
+
+- **Nested selectable Lists share bubbling clicks.** Clicking an inner checkmark can also select its
+  containing outer row in both headless and Griffel List. Stop click propagation on the nested List
+  when its selection must be independent (`onClick={event => event.stopPropagation()}`).
 
 ### Mixing windmod with `@fluentui/react-components`
 

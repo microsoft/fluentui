@@ -60,6 +60,8 @@
 @custom-variant checked-mixed (&:where([data-checked='mixed'], [aria-checked='mixed']));
 @custom-variant not-checked-mixed (&:where(:not([data-checked='mixed'], [aria-checked='mixed'])));
 @custom-variant selected (&:where([data-selected], [aria-selected='true']));
+@custom-variant selectable (&:where([data-selectable]));
+@custom-variant navigable (&:where([data-navigable]));
 @custom-variant not-selected (&:where(:not([data-selected], [aria-selected='true'])));
 @custom-variant multiselect (&:where([data-multiselect]));
 @custom-variant current (&:where([data-current], [aria-current]:not([aria-current='false'])));

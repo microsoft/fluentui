@@ -10,7 +10,7 @@ and both importable:
 
 | File                                                      | Vocabulary                                                             | Entries |
 | --------------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
-| `@fluentui/react-tailwind-theme-preview/css/variants.css` | **generic** — meaningful without knowing any component's API           | 95      |
+| `@fluentui/react-tailwind-theme-preview/css/variants.css` | **generic** — meaningful without knowing any component's API           | 97      |
 | `@fluentui/react-windmod-preview/variants.css`            | **component-specific** — component API values, sectioned per component | 68      |
 
 The split test: _would this name mean anything to someone who has never seen this component's props?_
@@ -85,6 +85,7 @@ enabled                 the negation
 checked / not-checked
 checked-mixed / not-checked-mixed
 selected / not-selected
+selectable / navigable    [data-selectable] / [data-navigable]
 multiselect
 current                 [data-current], [aria-current] not 'false'
 open                    [open], [data-open], :open

@@ -1,0 +1,30 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply list-none indent-0;
+
+    @variant selectable, navigable {
+      @apply flex cursor-pointer;
+    }
+
+    @variant disabled {
+      @apply cursor-default;
+    }
+
+    @variant focus-visible {
+      @apply rounded-medium outline-thick outline-stroke-focus-2 outline-solid;
+    }
+
+    /* Headless wraps the selection input in a gridcell for composite lists. */
+    & > :where([role='gridcell']:has(> .checkmark)) {
+      @apply self-center;
+    }
+  }
+}
+
+@layer fui.components.l2 {
+  .checkmark {
+    @apply grid-rows-[auto] self-center px-horizontal-xs py-vertical-xs;
+  }
+}
