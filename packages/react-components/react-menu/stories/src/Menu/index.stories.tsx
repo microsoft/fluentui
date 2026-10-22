@@ -38,7 +38,6 @@ export { NestedSubmenusControlled } from './MenuNestedSubmenusControlled.stories
 export { NestedSubmenusResponsiveness } from './NestedSubmenusResponsiveness.stories';
 export { AnchorToCustomTarget } from './MenuAnchorToTarget.stories';
 export { CustomTrigger } from './MenuCustomTrigger.stories';
-export { CustomOpeningFocus } from './MenuCustomOpeningFocus.stories';
 export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
 export { SplitMenuItem } from './MenuSplitMenuItem.stories';

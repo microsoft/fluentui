@@ -10,9 +10,6 @@ export {
   Menu,
   renderMenu_unstable,
   useMenuBase_unstable,
-  useMenuState_unstable,
-  useMenuFocusFirst_unstable,
-  useMenuRestoreFocus_unstable,
   useMenuContextValues_unstable,
   useMenu_unstable,
 } from './Menu';

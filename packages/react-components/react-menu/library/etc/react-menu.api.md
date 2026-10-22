@@ -521,9 +521,6 @@ export const useMenuDivider_unstable: (props: MenuDividerProps, ref: React_2.Ref
 export const useMenuDividerStyles_unstable: (state: MenuDividerState) => MenuDividerState;
 
 // @public
-export const useMenuFocusFirst_unstable: (state: Pick<MenuBaseState, "open" | "menuPopoverRef">) => void;
-
-// @public
 export function useMenuGroup_unstable(props: MenuGroupProps, ref: React_2.Ref<HTMLElement>): MenuGroupState;
 
 // @public (undocumented)
@@ -611,20 +608,10 @@ export const useMenuPopoverBase_unstable: (props: MenuPopoverProps, ref: React_2
 export const useMenuPopoverStyles_unstable: (state: MenuPopoverState) => MenuPopoverState;
 
 // @public
-export const useMenuRestoreFocus_unstable: (state: Pick<MenuBaseState, "open" | "menuPopoverRef" | "triggerRef">) => void;
-
-// @public
 export const useMenuSplitGroup_unstable: (props: MenuSplitGroupProps, ref: React_2.Ref<HTMLElement>) => MenuSplitGroupState;
 
 // @public
 export const useMenuSplitGroupStyles_unstable: (state: MenuSplitGroupState) => MenuSplitGroupState;
-
-// @public
-export const useMenuState_unstable: (props: MenuProps & {
-    safeZone?: boolean | {
-        timeout?: number;
-    };
-}) => MenuState;
 
 // @public
 export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerState;

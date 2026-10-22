@@ -1,6 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-menu): expose independent Menu state, opening-focus and restoration hooks for recomposition",
-  "packageName": "@fluentui/react-menu",
-  "email": "paulmardling@microsoft.com"
-}

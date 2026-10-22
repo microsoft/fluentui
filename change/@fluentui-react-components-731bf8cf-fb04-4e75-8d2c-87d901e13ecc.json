@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(react-menu): expose independent Menu state, opening-focus and restoration hooks for recomposition",
+  "comment": "feat(react-components): export existing Menu base hooks and composition types",
   "packageName": "@fluentui/react-components",
   "email": "paulmardling@microsoft.com"
 }
