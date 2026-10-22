@@ -12,7 +12,7 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { useDialogLayerOpenState, useLayerPresence } from '../../../hooks/top-layer';
+import { useDialogLayerOpenState, useLayerFocusReturn, useLayerPresence } from '../../../hooks/top-layer';
 import { isEscapeForLayer } from '../../../hooks/top-layer/utils';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
@@ -33,35 +33,18 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
   const isNonModal = modalType === 'non-modal';
 
-  // Non-modal: return focus to the element focused before opening. Read before the open-state hook shows the
-  // surface, which can move focus into it.
-  const previouslyFocusedElement = React.useRef<HTMLElement | null>(null);
-  useIsomorphicLayoutEffect(() => {
-    if (isNonModal && open) {
-      previouslyFocusedElement.current = targetDocument?.activeElement as HTMLElement | null;
-    }
-  }, [open, isNonModal, targetDocument]);
+  // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
+  const focusReturn = useLayerFocusReturn(dialogRef, { when: isNonModal ? 'always' : false });
 
   // A browser open or close (`popovertarget`, `commandfor`, `<form method="dialog">`) is reported as `surfaceToggle`.
   useDialogLayerOpenState(dialogRef, {
     open,
     mode: isNonModal ? 'manual' : 'modal',
     onOpenChange: (nextOpen, { event }) => requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event }),
+    ...focusReturn,
   });
 
   const { shouldRender, phase } = useLayerPresence(dialogRef, { open, unmountOnClose });
-
-  // After the open-state hook hid the surface.
-  useIsomorphicLayoutEffect(() => {
-    if (!isNonModal || open) {
-      return;
-    }
-    const elementToFocus = previouslyFocusedElement.current;
-    if (elementToFocus && targetDocument?.contains(elementToFocus)) {
-      elementToFocus.focus();
-    }
-    previouslyFocusedElement.current = null;
-  }, [open, isNonModal, targetDocument]);
 
   // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
   useIsomorphicLayoutEffect(() => {
