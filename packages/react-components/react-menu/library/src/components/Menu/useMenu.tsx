@@ -18,11 +18,9 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
-  useFirstMount,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
@@ -36,6 +34,8 @@ import type {
   MenuState,
 } from './Menu.types';
 import { MenuSurfaceMotion } from './MenuSurfaceMotion';
+import { useMenuFocusFirst_unstable } from './useMenuFocusFirst';
+import { useMenuRestoreFocus_unstable } from './useMenuRestoreFocus';
 
 // If it's not possible to position the submenu in smaller viewports, try
 // and fallback to this order of positions
@@ -57,8 +57,24 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
  * @param props - props from this instance of Menu
  */
 export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
+  const state = useMenuState_unstable(props);
+  useMenuFocusFirst_unstable(state);
+  useMenuRestoreFocus_unstable(state);
+  return state;
+};
+
+/**
+ * Creates the complete Menu state, including motion, without installing opening
+ * focus or close restoration effects. Compose with useMenuFocusFirst_unstable
+ * and useMenuRestoreFocus_unstable, or supply your own focus policy, before
+ * passing the state to useMenuContextValues_unstable and renderMenu_unstable.
+ *
+ * Menu parts retain their own keyboard focus behavior, including Tab dismissal
+ * and directional entry into an already-open submenu.
+ */
+export const useMenuState_unstable = (props: MenuProps & { safeZone?: boolean | { timeout?: number } }): MenuState => {
   const { surfaceMotion, ...baseProps } = props;
-  const baseState = useMenuBase_unstable(baseProps);
+  const baseState = useMenuBaseState(baseProps);
 
   return {
     ...baseState,
@@ -79,12 +95,21 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean | { tim
 /**
  * Base hook for Menu component, produces state required to render the component.
  * It doesn't set any design-related slots specific to Menu such as `surfaceMotion`.
+ * It retains the default opening-focus and close-restoration policies.
  *
  * @param props - props from this instance of Menu
  */
 export const useMenuBase_unstable = (
   props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } },
 ): MenuBaseState => {
+  const state = useMenuBaseState(props);
+  // eslint-disable-next-line @nx/workspace-base-hook-no-forbidden-runtime -- Preserve this existing public hook's autofocus contract; useMenuState_unstable provides focus-policy-free composition.
+  useMenuFocusFirst_unstable(state);
+  useMenuRestoreFocus_unstable(state);
+  return state;
+};
+
+const useMenuBaseState = (props: MenuBaseProps & { safeZone?: boolean | { timeout?: number } }): MenuBaseState => {
   const isSubmenu = useIsSubmenu();
   const {
     hoverDelay = 500,
@@ -192,7 +217,6 @@ export const useMenuBase_unstable = (
   // TODO Better way to narrow types ?
   const [open, setOpen] = useMenuOpenState({
     hoverDelay,
-    isSubmenu,
     setContextTarget,
     closeOnScroll,
     menuPopoverRef,
@@ -262,13 +286,7 @@ const useMenuSelectableState = (
 const useMenuOpenState = (
   state: Pick<
     MenuState,
-    | 'isSubmenu'
-    | 'menuPopoverRef'
-    | 'setContextTarget'
-    | 'triggerRef'
-    | 'openOnContext'
-    | 'closeOnScroll'
-    | 'hoverDelay'
+    'menuPopoverRef' | 'setContextTarget' | 'triggerRef' | 'openOnContext' | 'closeOnScroll' | 'hoverDelay'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
@@ -362,45 +380,6 @@ const useMenuOpenState = (
     disabled: !open,
     refs: [state.menuPopoverRef],
   });
-
-  // Manage focus for open state
-  const { findFirstFocusable } = useFocusFinders();
-  const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, state.menuPopoverRef]);
-
-  const firstMount = useFirstMount();
-  React.useEffect(() => {
-    if (open) {
-      focusFirst();
-    } else {
-      // Skip the initial render — focus should only be restored when the menu
-      // transitions from open → closed, not on mount.
-      if (!firstMount) {
-        if (
-          // Focus landed on <body> after the popover was removed from the DOM,
-          // meaning the user's focus has nowhere meaningful to go.
-          targetDocument?.activeElement === targetDocument?.body ||
-          // The surfaceMotion presence component delays unmounting the popover
-          // (e.g. during an exit animation), so focus may still be inside the
-          // popover even though `open` is already false. Proactively move it
-          // to the trigger before the DOM element is eventually removed.
-          state.menuPopoverRef.current?.contains(targetDocument?.activeElement ?? null)
-        ) {
-          // We know that React effects are sync so we focus the trigger here
-          // after any event handler (event handlers will update state and re-render).
-          // Since the browser only performs the default behaviour for the Tab key once
-          // keyboard events have fully bubbled up the window, the browser will move
-          // focus to the next tabbable element before/after the trigger if needed.
-          // If the Tab key was not pressed, focus will remain on the trigger as expected.
-          state.triggerRef.current?.focus();
-        }
-      }
-    }
-    // firstMount change should not re-run this effect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
 
   return [open, setOpen] as const;
 };

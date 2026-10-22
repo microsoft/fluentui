@@ -15,5 +15,8 @@ export {
   renderMenu_unstable,
   useMenuContextValues_unstable,
   useMenuBase_unstable,
+  useMenuState_unstable,
+  useMenuFocusFirst_unstable,
+  useMenuRestoreFocus_unstable,
   useMenu_unstable,
 } from './components/Menu/index';

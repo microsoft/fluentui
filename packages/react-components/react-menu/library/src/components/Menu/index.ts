@@ -12,5 +12,7 @@ export type {
   MenuState,
 } from './Menu.types';
 export { renderMenu_unstable } from './renderMenu';
-export { useMenu_unstable, useMenuBase_unstable } from './useMenu';
+export { useMenu_unstable, useMenuBase_unstable, useMenuState_unstable } from './useMenu';
+export { useMenuFocusFirst_unstable } from './useMenuFocusFirst';
+export { useMenuRestoreFocus_unstable } from './useMenuRestoreFocus';
 export { useMenuContextValues_unstable } from './useMenuContextValues';

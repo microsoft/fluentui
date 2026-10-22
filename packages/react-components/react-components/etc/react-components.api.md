@@ -1750,6 +1750,7 @@ import { useMenuContext_unstable } from '@fluentui/react-menu';
 import { useMenuContextValues_unstable } from '@fluentui/react-menu';
 import { useMenuDivider_unstable } from '@fluentui/react-menu';
 import { useMenuDividerStyles_unstable } from '@fluentui/react-menu';
+import { useMenuFocusFirst_unstable } from '@fluentui/react-menu';
 import { useMenuGroup_unstable } from '@fluentui/react-menu';
 import { useMenuGroupContext_unstable } from '@fluentui/react-menu';
 import { useMenuGroupContextValues_unstable } from '@fluentui/react-menu';
@@ -1772,8 +1773,10 @@ import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
 import { useMenuListStyles_unstable } from '@fluentui/react-menu';
 import { useMenuPopover_unstable } from '@fluentui/react-menu';
 import { useMenuPopoverStyles_unstable } from '@fluentui/react-menu';
+import { useMenuRestoreFocus_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
+import { useMenuState_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
@@ -5524,6 +5527,8 @@ export { useMenuDivider_unstable }
 
 export { useMenuDividerStyles_unstable }
 
+export { useMenuFocusFirst_unstable }
+
 export { useMenuGroup_unstable }
 
 export { useMenuGroupContext_unstable }
@@ -5568,9 +5573,13 @@ export { useMenuPopover_unstable }
 
 export { useMenuPopoverStyles_unstable }
 
+export { useMenuRestoreFocus_unstable }
+
 export { useMenuSplitGroup_unstable }
 
 export { useMenuSplitGroupStyles_unstable }
+
+export { useMenuState_unstable }
 
 export { useMenuTrigger_unstable }
 
