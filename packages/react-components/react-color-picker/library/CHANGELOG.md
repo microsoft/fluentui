@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.3.3)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.3.2..@fluentui/react-color-picker_v9.3.3)
+
+### Patches
+
+- fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.3.2)
 
