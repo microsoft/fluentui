@@ -2,17 +2,19 @@ export { CalendarDay } from './CalendarDay';
 export { renderCalendarDay } from './renderCalendarDay';
 export { useCalendarDay } from './useCalendarDay';
 export type {
-  CalendarDayCell,
+  CalendarDayCellData,
   CalendarDayCellProps,
   CalendarDayDismissData,
   CalendarDayHandle,
   CalendarDayHeaderSelectData,
   CalendarDayNavigateData,
   CalendarDayProps,
+  CalendarDayRowData,
+  CalendarDayRowProps,
   CalendarDaySelectData,
   CalendarDaySlots,
   CalendarDayState,
-  CalendarDayWeek,
-  CalendarDayWeekdayRow,
+  CalendarDayWeekdayCellData,
+  CalendarDayWeekdayCellProps,
   DayInfo,
 } from './CalendarDay.types';

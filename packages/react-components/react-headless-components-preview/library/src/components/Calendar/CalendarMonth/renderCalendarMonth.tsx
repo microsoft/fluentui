@@ -1,6 +1,5 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-import * as React from 'react';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { CalendarMonthState, CalendarMonthSlots } from './CalendarMonth.types';
@@ -24,27 +23,18 @@ export const renderCalendarMonth = (state: CalendarMonthState): JSXElement => {
               <state.nextYearButton />
             </state.navigation>
           </state.header>
-          {/* Consumer children replace the default rows. */}
-          {state.grid.children !== undefined ? (
-            <state.grid />
-          ) : (
-            <state.grid>
-              {state.monthRows.map(row => {
-                const element = (
-                  <div {...row.props}>
+          <state.grid>
+            {/* Consumer children replace the default rows. */}
+            {state.grid.children !== undefined
+              ? state.grid.children
+              : state.monthRows.map(row => (
+                  <div key={row.key} {...state.getMonthRowProps(row).root}>
                     {row.cells.map(cell => (
-                      <button key={cell.index} {...cell.props}>
-                        {cell.label}
-                      </button>
+                      <button key={cell.index} {...state.getMonthCellProps(cell).root} />
                     ))}
                   </div>
-                );
-                return (
-                  <React.Fragment key={row.key}>{state.wrapRow ? state.wrapRow(element, row) : element}</React.Fragment>
-                );
-              })}
-            </state.grid>
-          )}
+                ))}
+          </state.grid>
         </>
       )}
     </state.root>

@@ -1,12 +1,11 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { Day as DayInfo, DayGridOptions } from '../utils';
-import type { CalendarElementProps, CalendarRowWrapper } from '../utils/calendarGrid.types';
+import type { Day as DayInfo, DayGridOptions, DayOfWeek } from '../utils';
 
-export type { CalendarContextValue, CalendarContextValues } from '../contexts/calendarContext';
+export type { CalendarContextValue, CalendarContextValues } from '../calendarContext';
 
 /**
- * The imperative API exposed on CalendarDay's forwarded ref.
+ * The imperative API exposed through CalendarDay's `imperativeRef` prop.
  */
 export type CalendarDayHandle = {
   /**
@@ -15,7 +14,13 @@ export type CalendarDayHandle = {
   focus(options?: FocusOptions): void;
 };
 
+/**
+ * Slots rendered by the day picker.
+ */
 export type CalendarDaySlots = {
+  /**
+   * The outer container of the day picker.
+   */
   root: NonNullable<Slot<'div'>>;
 
   /**
@@ -51,7 +56,7 @@ export type CalendarDaySlots = {
 
   /**
    * The `<table role="grid">` holding the days of the navigated month. Owns arrow key navigation,
-   * selection and range hover for every day cell. The focusgroup runtime owns in-grid arrows and Tab entry.
+   * selection, range hover, directional navigation and roving Tab entry for every day cell.
    */
   grid: NonNullable<Slot<'table'>>;
 
@@ -67,103 +72,155 @@ export type CalendarDaySlots = {
 export type { Day as DayInfo } from '../utils';
 
 /**
- * A day cell in the grid, with the props of each element rendered for it.
+ * Semantic day data passed to cell getters, without DOM props.
  */
-export type CalendarDayCell = DayInfo & {
+export type CalendarDayCellData = DayInfo & {
   /**
-   * Props of the `<td role="gridcell">`, including the consumer props from `getDayCellProps`.
+   * The formatted day number, or the civil date label when `originalDate` is `null`.
    */
-  props: CalendarElementProps<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>;
-
+  label: string;
   /**
-   * Props of the `button` inside the cell, which carries the day's accessible name.
+   * Whether this day is the grid's initial focus target.
    */
-  button: CalendarElementProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>;
-
-  /**
-   * Props of the `span` holding the formatted day number.
-   */
-  label: CalendarElementProps<HTMLSpanElement>;
-
-  /**
-   * Props of the dot shown under marked days. Only set while the day is marked.
-   */
-  marker?: CalendarElementProps<HTMLDivElement>;
+  isNavigated: boolean;
 };
 
 /**
- * A week row of the grid.
+ * Semantic weekday data passed to header-cell getters.
  */
-export type CalendarDayWeek = {
+export type CalendarDayWeekdayCellData = {
   /**
-   * Stable key of the row, so rows keep their DOM elements across month navigation.
+   * Stable key of the weekday header cell.
    */
-  key: number;
-
+  key: string;
   /**
-   * Set on the hidden rows before and after the visible weeks, which only exist to be animated out.
-   * They are rendered only when the layer animates rows.
+   * The weekday represented by the header cell.
    */
-  transition?: 'first' | 'last';
-
+  dayOfWeek: DayOfWeek;
   /**
-   * Props of the `<tr>`.
+   * The visible short weekday label, or a short month label at a month boundary in single-week view.
    */
-  props: CalendarElementProps<HTMLTableRowElement>;
-
+  label: string;
   /**
-   * Props of the leading week number `<th>`. Only set while week numbers are shown.
+   * The full weekday or month label used as the cell's default accessible name and title.
    */
-  weekNumber?: CalendarElementProps<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>;
-
-  /**
-   * The day cells of the week.
-   */
-  days: CalendarDayCell[];
+  accessibleLabel: string;
 };
 
 /**
- * The weekday header row of the grid.
+ * A visible week or weekday-header row, without DOM props on the row or its items.
  */
-export type CalendarDayWeekdayRow = {
-  /**
-   * Props of the `<tr>`.
-   */
-  props: CalendarElementProps<HTMLTableRowElement>;
+export type CalendarDayRowData =
+  | {
+      /**
+       * Identifies a row of day cells.
+       */
+      type: 'week';
+      /**
+       * Zero-based index of the visible week row.
+       */
+      key: number;
+      /**
+       * Semantic day data in display order, including placeholder dates.
+       */
+      days: CalendarDayCellData[];
+      /**
+       * The numeric week number, present only when week numbers are shown and the row has a representable date.
+       */
+      weekNumber?: number;
+    }
+  | {
+      /**
+       * Identifies the weekday header row.
+       */
+      type: 'weekday';
+      /**
+       * Semantic header-cell data ordered from the configured first day of the week.
+       */
+      cells: CalendarDayWeekdayCellData[];
+    };
 
-  /**
-   * Props of the empty `<th>` above the week numbers. Only set while week numbers are shown.
-   */
-  weekNumberSpacer?: CalendarElementProps<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>;
-
-  /**
-   * The weekday `<th>` cells.
-   */
-  cells: {
-    key: string;
-    props: CalendarElementProps<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>;
-  }[];
-};
-
+/**
+ * Data describing a day selection and its bounded, unrestricted date range.
+ */
 export type CalendarDaySelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /**
+   * The selected day.
+   */
   date: Date;
+  /**
+   * The dates selected for the configured range, excluding restricted and out-of-bounds dates.
+   */
   selectedDateRange: Date[];
 };
 
+/**
+ * Data describing a request to navigate the day picker.
+ */
 export type CalendarDayNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /**
+   * The date to navigate to.
+   */
   date: Date;
+  /**
+   * Whether focus should move into the day grid after navigation.
+   */
   focusOnNavigatedDay: boolean;
 };
 
+/**
+ * Data describing activation of the day picker's close button.
+ */
 export type CalendarDayDismissData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>>;
 
+/**
+ * Data describing activation of the day picker's month/year heading.
+ */
 export type CalendarDayHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>>;
 
 /**
- * Custom props and ref for a visible day cell.
+ * Overrides for the existing elements of a visible day cell. These are prop bags, not slots.
+ * Use label.children for day content or button.children to replace both the label and marker.
  */
-export type CalendarDayCellProps = React.TdHTMLAttributes<HTMLTableCellElement> &
-  CalendarElementProps<HTMLTableCellElement>;
+export type CalendarDayCellProps = {
+  /**
+   * Overrides for the `<td role="gridcell">`. Its children remain controlled by the renderer.
+   */
+  root?: Omit<React.ComponentProps<'td'>, 'children'>;
+  /**
+   * Overrides for the day button. Set `children` to replace both the label and marker.
+   */
+  button?: React.ComponentProps<'button'>;
+  /**
+   * Overrides for the day-number span. Set `children` to customize content while preserving the marker.
+   */
+  label?: React.ComponentProps<'span'>;
+  /**
+   * Overrides for the marker element. Applied only when the day is marked.
+   */
+  marker?: React.ComponentProps<'span'>;
+};
+
+/** Overrides for a week row or weekday-header row. */
+export type CalendarDayRowProps = {
+  /**
+   * Overrides for the `<tr>`. Its cells remain controlled by the renderer.
+   */
+  root?: Omit<React.ComponentProps<'tr'>, 'children'>;
+  /**
+   * Overrides for the week-number `<th>`, or the header row's spacer.
+   * Applied only when the corresponding element is rendered.
+   */
+  weekNumber?: React.ComponentProps<'th'>;
+};
+
+/** Overrides for a weekday header cell. */
+export type CalendarDayWeekdayCellProps = {
+  /**
+   * Overrides for the `<th scope="col">`, including its visible content and accessible name.
+   */
+  root?: React.ComponentProps<'th'>;
+};
 
 /**
  * Props for the day picker. Shared selection, boundaries, and formatting come from CalendarProvider.
@@ -171,14 +228,18 @@ export type CalendarDayCellProps = React.TdHTMLAttributes<HTMLTableCellElement> 
 export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
   Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
     /**
+     * Provides access to the picker's focus handle.
+     */
+    imperativeRef?: React.Ref<CalendarDayHandle>;
+
+    /**
      * The currently navigated date
      */
     navigatedDate?: Date;
 
     /**
-     * Callback issued when a date in the calendar is navigated
-     * @param date - The date that is navigated to
-     * @param focusOnNavigatedDay - Whether to set the focus to the navigated date.
+     * Called when navigation is requested. The event data includes the destination date and whether
+     * focus should move into the day grid.
      */
     onNavigateDate?: EventHandler<CalendarDayNavigateData>;
 
@@ -200,12 +261,6 @@ export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
     weeksToShow?: number;
 
     /**
-     * Whether to show days outside the selected month with lighter styles
-     * @default true
-     */
-    lightenDaysOutsideNavigatedMonth?: boolean;
-
-    /**
      * Optional callback function to mark specific days with a small symbol. Fires when the date range changes,
      * gives the starting and ending displayed dates and expects the list of which days in between should be
      * marked.
@@ -213,81 +268,70 @@ export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> &
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
 
     /**
-     * Customizes each visible day cell. Cell refs are merged with the calendar's refs. Click and keyboard handlers
-     * run before selection and navigation; preventDefault suppresses the built-in action.
+     * Overrides the existing elements of each visible cell, including placeholder dates.
+     * Receives semantic day data and a formatted label, not DOM props.
+     * Refs are composed, class names appended and styles merged.
+     * Defined consumer props override defaults, including roles, focus, disabled/selection state and data attributes.
+     * Consumers are responsible for preserving accessibility and interaction semantics when overriding these props.
+     * Handlers run before the delegated grid behavior; preventDefault cancels selection and navigation.
+     * Marker overrides apply only to marked days.
+     * Called when the renderer resolves the cell's props, not while the hook builds its data.
      */
-    getDayCellProps?: (date: Date) => CalendarDayCellProps;
+    getCellProps?: (day: CalendarDayCellData) => CalendarDayCellProps;
 
     /**
-     * Renders the content of each visible day's button without replacing its selection and keyboard behavior.
-     * `defaultContent` is the formatted day number and the marker of a marked day.
+     * Overrides each visible week row and the weekday header row. Use row.type to identify the row.
+     * Week-number overrides apply only when week numbers are shown.
+     * Called when the renderer resolves the row's props.
      */
-    renderDay?: (day: CalendarDayCell, defaultContent: React.ReactNode) => React.ReactNode;
+    getRowProps?: (row: CalendarDayRowData) => CalendarDayRowProps;
+
+    /**
+     * Overrides each weekday header cell, including its default role and scope.
+     * Receives semantic weekday data and formatted labels. Called when the renderer resolves the cell's props.
+     */
+    getWeekdayCellProps?: (weekday: CalendarDayWeekdayCellData) => CalendarDayWeekdayCellProps;
   };
 
+/**
+ * Resolved slots, semantic grid data and on-demand prop getters used to render the day picker.
+ */
 export type CalendarDayState = ComponentState<CalendarDaySlots> & {
-  /**
-   * The date currently displayed in the day grid.
-   */
-  navigatedDate: Date;
-
-  /**
-   * The available date that receives focus when focus moves into the grid.
-   */
-  focusTargetDate?: Date;
-
-  /**
-   * The formatted month and year shown in the header.
-   */
-  monthAndYear: string;
-
-  /**
-   * Whether navigating to the previous month is allowed by `minDate`.
-   */
-  prevMonthInBounds: boolean;
-
-  /**
-   * Whether navigating to the next month is allowed by `maxDate`.
-   */
-  nextMonthInBounds: boolean;
-
-  /**
-   * Whether the heading is a button.
-   */
-  headerIsClickable: boolean;
-
-  /**
-   * Whether days outside the displayed month use reduced emphasis.
-   */
-  lightenDaysOutsideNavigatedMonth: boolean;
-
-  /**
-   * Whether week numbers appear before each week row.
-   */
-  showWeekNumbers: boolean;
-
   /**
    * The weekday header row.
    */
-  weekdayRow: CalendarDayWeekdayRow;
+  weekdayRow: Extract<CalendarDayRowData, { type: 'weekday' }>;
 
   /**
-   * Every week row, including the leading and trailing transition rows.
+   * Visible week rows, containing semantic day data only.
    */
-  weeks: CalendarDayWeek[];
+  weeks: Extract<CalendarDayRowData, { type: 'week' }>[];
 
   /**
-   * Renders the content of each visible day's button.
+   * Resolves built-in HTML props and consumer overrides for a day without modifying its data.
+   * Calls the consumer's `getCellProps` callback.
+   * @param day - A day from a visible week in `weeks`.
+   * @returns Root, button and label props, plus marker props only when the day is marked.
    */
-  renderDay?: CalendarDayProps['renderDay'];
+  getDayCellProps: (
+    day: CalendarDayCellData,
+  ) => Required<Omit<CalendarDayCellProps, 'marker'>> & Pick<CalendarDayCellProps, 'marker'>;
 
   /**
-   * Wraps each rendered week row, for example to add motion in a custom renderer.
+   * Resolves built-in HTML props and consumer overrides for a row without modifying its data.
+   * Calls the consumer's `getRowProps` callback.
+   * @param row - A visible week from `weeks`, or `weekdayRow`.
+   * @returns Root props and optional week-number or header-spacer props.
    */
-  wrapWeek?: CalendarRowWrapper<CalendarDayWeek>;
+  getDayRowProps: (
+    row: CalendarDayRowData,
+  ) => Required<Pick<CalendarDayRowProps, 'root'>> & Pick<CalendarDayRowProps, 'weekNumber'>;
 
   /**
-   * Wraps each rendered weekday header cell, for example to add motion in a custom renderer.
+   * Resolves built-in HTML props and consumer overrides for a weekday header without modifying its data.
+   * Calls the consumer's `getWeekdayCellProps` callback.
+   * @param weekday - A header cell from `weekdayRow.cells`.
+   * @returns Props for the column-header element.
    */
-  wrapWeekdayCell?: (cell: React.ReactElement) => React.ReactElement;
+  getWeekdayCellProps: (weekday: CalendarDayWeekdayCellData) => Required<CalendarDayWeekdayCellProps>;
 };

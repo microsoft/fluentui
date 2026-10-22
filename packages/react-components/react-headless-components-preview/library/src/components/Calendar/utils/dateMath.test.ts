@@ -1,5 +1,6 @@
 import {
   addDays,
+  addCivilDays,
   addWeeks,
   addMonths,
   addYears,
@@ -15,6 +16,7 @@ import {
   createDate,
   compareDatePart,
   isDateInRange,
+  matchesCivilDate,
 } from './dateMath';
 
 enum Months {
@@ -32,6 +34,33 @@ enum Months {
   Dec = 11,
 }
 describe('DateMath', () => {
+  it.each([
+    [{ year: 2020, month: 1, day: 28 }, 1, { year: 2020, month: 1, day: 29 }],
+    [{ year: 2020, month: 0, day: 1 }, -1, { year: 2019, month: 11, day: 31 }],
+    [{ year: 99, month: 11, day: 31 }, 1, { year: 100, month: 0, day: 1 }],
+    [{ year: 2011, month: 11, day: 29 }, 1, { year: 2011, month: 11, day: 30 }],
+  ] as const)('advances civil date %j by %s days without local normalization', (date, offset, expected) => {
+    const original = { ...date };
+    expect(addCivilDays(date, offset)).toEqual(expected);
+    expect(date).toEqual(original);
+  });
+
+  it('exposes civil overflow as invalid fields instead of wrapping', () => {
+    const date = addCivilDays({ year: 275760, month: 8, day: 13 }, 1);
+    expect(Number.isNaN(date.year)).toBe(true);
+    expect(Number.isNaN(date.month)).toBe(true);
+    expect(Number.isNaN(date.day)).toBe(true);
+  });
+
+  it('detects normalized or invalid local dates while preserving representable civil dates', () => {
+    const civilDate = { year: 2011, month: 11, day: 30 };
+    const date = createDate(civilDate.year, civilDate.month, civilDate.day);
+    expect(matchesCivilDate(date, civilDate)).toBe(date.getDate() === 30);
+    expect(matchesCivilDate(createDate(99, 0, 1), { year: 99, month: 0, day: 1 })).toBe(true);
+    expect(matchesCivilDate(createDate(2020, 1, 30), { year: 2020, month: 1, day: 30 })).toBe(false);
+    expect(matchesCivilDate(new Date(NaN), civilDate)).toBe(false);
+  });
+
   it.each([0, 1, 99, 2020])('creates local midnight dates without remapping year %s', year => {
     const date = createDate(year, 1, 15);
     expect([

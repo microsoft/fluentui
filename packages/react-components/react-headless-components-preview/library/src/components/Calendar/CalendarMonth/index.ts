@@ -2,12 +2,14 @@ export { CalendarMonth } from './CalendarMonth';
 export { renderCalendarMonth } from './renderCalendarMonth';
 export { useCalendarMonth } from './useCalendarMonth';
 export type {
-  CalendarMonthCell,
+  CalendarMonthCellData,
+  CalendarMonthCellProps,
   CalendarMonthHandle,
   CalendarMonthHeaderSelectData,
   CalendarMonthNavigateData,
   CalendarMonthProps,
-  CalendarMonthRow,
+  CalendarMonthRowData,
+  CalendarMonthRowProps,
   CalendarMonthSelectData,
   CalendarMonthSlots,
   CalendarMonthState,

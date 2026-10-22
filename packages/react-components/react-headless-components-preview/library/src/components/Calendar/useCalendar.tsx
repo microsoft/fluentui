@@ -21,7 +21,8 @@ import {
 } from './utils';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
-import { getCalendarNavigationDate, isCalendarKeyboardEditable } from './utils/calendarKeyboard';
+import { getCalendarNavigationDate } from './utils/calendarNavigation';
+import { isCalendarKeyboardEditable } from './hooks/useCalendarGrid';
 import type { DayOfWeek } from './utils';
 import type {
   CalendarDayHandle,
@@ -30,8 +31,6 @@ import type {
 } from './CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle, CalendarMonthNavigateData } from './CalendarMonth/CalendarMonth.types';
 import type { CalendarProps, CalendarState } from './Calendar.types';
-
-const MIN_SIZE_FORCE_OVERLAY = 440;
 
 const defaultWorkWeekDays: DayOfWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
@@ -128,35 +127,14 @@ function useDateState({
   return [selectedDate, navigatedDate, onDateSelected, navigate, resolveDate] as const;
 }
 
-function useResponsiveOverlay(layout: CalendarProps['layout']) {
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-  const [isNarrow, setIsNarrow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!win?.matchMedia || layout === 'sideBySide' || layout === 'overlay') {
-      return;
-    }
-
-    const mediaQuery = win.matchMedia(`(max-width: ${MIN_SIZE_FORCE_OVERLAY}px)`);
-    const onChange = () => setIsNarrow(mediaQuery.matches);
-    onChange();
-    mediaQuery.addEventListener('change', onChange);
-    return () => mediaQuery.removeEventListener('change', onChange);
-  }, [layout, win]);
-
-  return isNarrow;
-}
-
 function useVisibilityState({
   dayPicker,
   defaultView,
-  layout,
+  layout = 'sideBySide',
   monthPicker,
   onViewChange,
   view: viewProp,
 }: Pick<CalendarProps, 'dayPicker' | 'defaultView' | 'layout' | 'monthPicker' | 'onViewChange' | 'view'>) {
-  const responsiveOverlay = useResponsiveOverlay(layout);
   const [view = 'day', setView] = useControllableState({
     state: viewProp,
     defaultState: viewProp === undefined ? defaultView : undefined,
@@ -164,8 +142,7 @@ function useVisibilityState({
   });
   const hasDayPicker = dayPicker !== null;
   const hasMonthPicker = monthPicker !== null;
-  const isOverlay =
-    hasDayPicker && hasMonthPicker && (layout === 'overlay' || (layout !== 'sideBySide' && responsiveOverlay));
+  const isOverlay = hasDayPicker && hasMonthPicker && layout === 'overlay';
   const isDayPickerVisible = hasDayPicker && (!isOverlay || view === 'day');
   const isMonthPickerVisible = hasMonthPicker && (!isOverlay || view === 'month');
 
@@ -182,9 +159,16 @@ function useVisibilityState({
   return [isMonthPickerVisible, isDayPickerVisible, isOverlay, toggleDayMonthPickerVisibility] as const;
 }
 
-const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): CalendarState => {
+/**
+ * Creates Calendar state and resolves its headless picker slots.
+ * @param props - Props from this instance of Calendar.
+ * @param ref - Reference to Calendar's root element.
+ */
+export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): CalendarState => {
   const {
     allFocusable = false,
+    calendarMonthColumns = 4,
+    calendarYearColumns = 4,
     dateRangeType = 'day',
     defaultDisplayedDate,
     defaultValue,
@@ -195,8 +179,6 @@ const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): 
     firstWeekOfYear = 'firstDay',
     formatters: formatterOverrides,
     goToTodayButton,
-    highlightCurrentMonth = false,
-    highlightSelectedMonth = false,
     liveRegion,
     layout,
     maxDate,
@@ -408,8 +390,27 @@ const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): 
       onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
       onNavigateDate,
     },
-    elementType: 'div',
+    elementType: CalendarDay,
   });
+  const monthPicker = slot.optional(props.monthPicker, {
+    renderByDefault: true,
+    defaultProps: {
+      navigatedDate,
+      selectedDate: isMonthOnly ? selectedDate : navigatedDate,
+      onSelectDate: isMonthOnly ? onDateSelected : undefined,
+      onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
+      onNavigateDate,
+    },
+    elementType: CalendarMonth,
+  });
+  const mergedDayPickerRef = useMergedRefs(dayPickerRef, dayPicker?.imperativeRef);
+  const mergedMonthPickerRef = useMergedRefs(monthPickerRef, monthPicker?.imperativeRef);
+  if (dayPicker) {
+    dayPicker.imperativeRef = mergedDayPickerRef;
+  }
+  if (monthPicker) {
+    monthPicker.imperativeRef = mergedMonthPickerRef;
+  }
   const resolvedToday = resolveDate(today);
   const goToTodayEnabled =
     navigatedDate.getFullYear() !== resolvedToday.getFullYear() ||
@@ -420,12 +421,12 @@ const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): 
 
   return {
     allFocusable,
+    calendarMonthColumns,
+    calendarYearColumns,
     dateRangeType,
     firstDayOfWeek,
     firstWeekOfYear,
     formatters,
-    highlightCurrent: highlightCurrentMonth,
-    highlightSelected: highlightSelectedMonth,
     maxDate,
     minDate,
     restrictedDates,
@@ -434,19 +435,16 @@ const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): 
     today,
     value: selectedDate,
     workWeekDays,
-    dayPickerRef,
     isDayPickerVisible,
     isMonthPickerVisible,
-    monthPickerRef,
-    isOverlay,
     components: {
       root: 'div',
       liveRegion: 'div',
       divider: 'div',
       monthPickerWrapper: 'div',
       goToTodayButton: 'button',
-      dayPicker: 'div',
-      monthPicker: 'div',
+      dayPicker: CalendarDay,
+      monthPicker: CalendarMonth,
     },
     root: slot.always(
       getIntrinsicElementProps(
@@ -496,59 +494,6 @@ const useCalendarBase = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): 
       elementType: 'button',
     }),
     dayPicker,
-    monthPicker: slot.optional(props.monthPicker, {
-      renderByDefault: true,
-      defaultProps: {
-        navigatedDate,
-        selectedDate: isMonthOnly ? selectedDate : navigatedDate,
-        onSelectDate: isMonthOnly ? onDateSelected : undefined,
-        onHeaderSelect: isOverlay ? onHeaderSelect : undefined,
-        onNavigateDate,
-      },
-      elementType: 'div',
-    }),
-  };
-};
-
-/**
- * Create the state required to render Calendar.
- *
- * @param props - props from this instance of Calendar
- * @param ref - reference to the root element of Calendar
- */
-export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>): CalendarState => {
-  const state = useCalendarBase(props, ref);
-  const dayPicker = slot.optional(props.dayPicker, {
-    renderByDefault: true,
-    defaultProps: state.dayPicker,
-    elementType: CalendarDay,
-  });
-  const monthPicker = slot.optional(props.monthPicker, {
-    renderByDefault: true,
-    defaultProps: state.monthPicker,
-    elementType: CalendarMonth,
-  });
-  const mergedDayPickerRef = useMergedRefs(state.dayPickerRef, dayPicker?.ref);
-  const mergedMonthPickerRef = useMergedRefs(state.monthPickerRef, monthPicker?.ref);
-
-  if (dayPicker) {
-    dayPicker.ref = mergedDayPickerRef;
-  }
-  if (monthPicker) {
-    monthPicker.ref = mergedMonthPickerRef;
-  }
-
-  return {
-    ...state,
-    components: {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      ...state.components,
-      dayPicker: CalendarDay,
-      monthPicker: CalendarMonth,
-    },
-    dayPicker,
     monthPicker,
   };
 };
-
-export { useCalendarContextValues } from './useCalendarContextValues';

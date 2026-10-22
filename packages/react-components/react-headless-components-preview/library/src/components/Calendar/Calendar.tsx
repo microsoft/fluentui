@@ -1,7 +1,8 @@
 'use client';
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCalendar, useCalendarContextValues } from './useCalendar';
+import { useCalendar } from './useCalendar';
+import { useCalendarContextValues } from './calendarContext';
 import { renderCalendar } from './renderCalendar';
 import type { CalendarProps } from './Calendar.types';
 import { composeComponent } from '../../utils/composeComponent';

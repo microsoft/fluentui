@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
-import { CalendarProvider } from './contexts/calendarContext';
+import { CalendarProvider } from './calendarContext';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { CalendarState, CalendarContextValues, CalendarSlots } from './Calendar.types';
 
@@ -17,14 +17,10 @@ export const renderCalendar = (state: CalendarState, contextValues: CalendarCont
         <state.liveRegion />
         {state.isDayPickerVisible && state.dayPicker && <state.dayPicker />}
         {state.isDayPickerVisible && state.isMonthPickerVisible && <state.divider />}
-        {state.isMonthPickerVisible ? (
-          <state.monthPickerWrapper>
-            {state.monthPicker && <state.monthPicker />}
-            {state.goToTodayButton && <state.goToTodayButton />}
-          </state.monthPickerWrapper>
-        ) : (
-          state.goToTodayButton && <state.goToTodayButton />
+        {state.isMonthPickerVisible && (
+          <state.monthPickerWrapper>{state.monthPicker && <state.monthPicker />}</state.monthPickerWrapper>
         )}
+        {state.goToTodayButton && <state.goToTodayButton />}
       </state.root>
     </CalendarProvider>
   );

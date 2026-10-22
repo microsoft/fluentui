@@ -1,4 +1,4 @@
-import { getCalendarNavigationDate, setCalendarNavigationDate } from './calendarKeyboard';
+import { getCalendarNavigationDate, setCalendarNavigationDate } from './calendarNavigation';
 
 describe('calendar keyboard navigation dates', () => {
   it('provides a date only for the originating event and consumes it once', () => {

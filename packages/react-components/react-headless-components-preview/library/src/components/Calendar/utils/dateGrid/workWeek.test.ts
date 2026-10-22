@@ -24,7 +24,6 @@ describe('getDateRangeTypeToUse', () => {
       const options = {
         dateRangeType: 'workWeek' as const,
         firstDayOfWeek: 'wednesday' as const,
-        firstWeekOfYear: 'firstFullWeek' as const,
         navigatedDate: new Date(2026, 8, 18),
         selectedDate: new Date(2026, 8, 18),
       };

@@ -1,11 +1,13 @@
 import {
   addDays,
+  addCivilDays,
   areDatesEqual,
   compareDatePart,
   createDate,
   getDateRange,
   getStartDateOfWeek,
   isDateInRange,
+  matchesCivilDate,
 } from '../dateMath';
 import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from '../constants';
 import type { DayOfWeek } from '../constants';
@@ -15,8 +17,7 @@ import { getDateRangeTypeToUse } from './workWeek';
 
 /**
  * Generates a grid of days, given the `options`.
- * Returns one additional week at the beginning from the previous range
- * and one at the end from the future range
+ * Returns only visible weeks, including outside-month days needed to complete each row.
  * @param options - parameters to specify date related restrictions for the resulting grid
  * @throws RangeError if the week count is invalid or grid dates cannot be represented.
  */
@@ -39,7 +40,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     weeksToShow !== undefined &&
     (!Number.isFinite(weeksToShow) || !Number.isInteger(weeksToShow) || weeksToShow <= 0)
   ) {
-    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'weeksToShow must be a positive finite integer.' : '');
+    throw new RangeError('weeksToShow must be a positive finite integer.');
   }
 
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
@@ -50,7 +51,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   const navigatedDate = options.navigatedDate ? options.navigatedDate : todaysDate;
 
   if (!Number.isFinite(navigatedDate.getTime())) {
-    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'navigatedDate must be valid.' : '');
+    throw new RangeError('navigatedDate must be valid.');
   }
 
   let date;
@@ -68,17 +69,11 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     date = addDays(date, DAYS_IN_WEEK);
   }
 
-  // add the transition week as last week of previous range
-  date = createDate(date.getFullYear(), date.getMonth(), date.getDate() - DAYS_IN_WEEK);
   let civilDate = {
     year: date.getFullYear(),
     month: date.getMonth(),
     day: date.getDate(),
   };
-
-  // a flag to indicate whether all days of the week are outside the month
-  let isAllDaysOfWeekOutOfMonth = false;
-  let hasReachedNavigatedMonth = false;
 
   // in work week view if the days aren't contiguous we use week view instead
   const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, effectiveWorkWeekDays, firstDayOfWeek);
@@ -96,30 +91,25 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
   }
 
-  let shouldGetWeeks = true;
-
-  for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
+  while (
+    weeksToShow !== undefined
+      ? weeks.length < weeksToShow
+      : !Number.isFinite(civilDate.year) ||
+        civilDate.year < navigatedDate.getFullYear() ||
+        (civilDate.year === navigatedDate.getFullYear() && civilDate.month <= navigatedDate.getMonth())
+  ) {
     const week: Day[] = [];
-
-    isAllDaysOfWeekOutOfMonth = true;
 
     for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
       const { year: civilYear, month: civilMonth, day: civilDay } = civilDate;
       if (!Number.isFinite(civilYear) || !Number.isFinite(civilMonth) || !Number.isFinite(civilDay)) {
-        throw new RangeError(
-          process.env.NODE_ENV !== 'production' ? 'Cannot generate a grid containing an out-of-range date.' : '',
-        );
+        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
       }
       const originalDate = createDate(civilYear, civilMonth, civilDay);
-      const isPlaceholder =
-        originalDate.getFullYear() !== civilYear ||
-        originalDate.getMonth() !== civilMonth ||
-        originalDate.getDate() !== civilDay;
-      if (!isPlaceholder && !Number.isFinite(originalDate.getTime())) {
-        throw new RangeError(
-          process.env.NODE_ENV !== 'production' ? 'Cannot generate a grid containing an out-of-range date.' : '',
-        );
+      if (!Number.isFinite(originalDate.getTime())) {
+        throw new RangeError('Cannot generate a grid containing an out-of-range date.');
       }
+      const isPlaceholder = !matchesCivilDate(originalDate, civilDate);
       const dayInfo: Day = {
         key: `${civilYear}-${civilMonth}-${civilDay}`,
         date: civilDay.toString(),
@@ -137,27 +127,9 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
 
       week.push(dayInfo);
 
-      if (dayInfo.isInMonth) {
-        isAllDaysOfWeekOutOfMonth = false;
-        hasReachedNavigatedMonth = true;
-      }
-
-      const nextCivilDate = new Date(0);
-      nextCivilDate.setUTCFullYear(civilYear, civilMonth, civilDay + 1);
-      civilDate = {
-        year: nextCivilDate.getUTCFullYear(),
-        month: nextCivilDate.getUTCMonth(),
-        day: nextCivilDate.getUTCDate(),
-      };
-      date = createDate(civilDate.year, civilDate.month, civilDate.day);
+      civilDate = addCivilDays(civilDate, 1);
     }
 
-    // A fixed week count includes both transition rows; a skipped weekday may add leading rows in month view.
-    shouldGetWeeks = weeksToShow
-      ? weekIndex < weeksToShow + 1
-      : !isAllDaysOfWeekOutOfMonth || !hasReachedNavigatedMonth;
-
-    // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
     weeks.push(week);
   }
 

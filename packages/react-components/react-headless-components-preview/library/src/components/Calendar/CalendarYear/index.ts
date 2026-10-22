@@ -2,13 +2,15 @@ export { CalendarYear } from './CalendarYear';
 export { renderCalendarYear } from './renderCalendarYear';
 export { useCalendarYear } from './useCalendarYear';
 export type {
-  CalendarYearCell,
+  CalendarYearCellData,
+  CalendarYearCellProps,
   CalendarYearHandle,
   CalendarYearHeaderSelectData,
   CalendarYearNavigateData,
   CalendarYearProps,
   CalendarYearRange,
-  CalendarYearRow,
+  CalendarYearRowData,
+  CalendarYearRowProps,
   CalendarYearSlots,
   CalendarYearState,
   CalendarYearSelectData,

@@ -8,12 +8,11 @@ import type {
   Slot,
 } from '@fluentui/react-utilities';
 import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
-import type { CalendarContextValue, CalendarDayHandle } from './CalendarDay/CalendarDay.types';
-import type { CalendarMonthHandle } from './CalendarMonth/CalendarMonth.types';
+import type { CalendarContextValue } from './calendarContext';
 import type { CalendarDay } from './CalendarDay';
 import type { CalendarMonth } from './CalendarMonth';
 
-export type { CalendarContextValue, CalendarContextValues } from './contexts/calendarContext';
+export type { CalendarContextValue, CalendarContextValues } from './calendarContext';
 
 /**
  * Slots available to the Calendar component.
@@ -40,7 +39,7 @@ export type CalendarSlots = {
   divider: NonNullable<Slot<'div'>>;
 
   /**
-   * Wraps the month picker and the "go to today" button.
+   * Wraps the month picker.
    */
   monthPickerWrapper: NonNullable<Slot<'div'>>;
 
@@ -50,7 +49,8 @@ export type CalendarSlots = {
   monthPicker?: Slot<typeof CalendarMonth>;
 
   /**
-   * The "go to today" button. Set to `null` to hide it.
+   * The "go to today" button, rendered as the root's last child.
+   * Use CSS to position it below either picker or across the full width. Set to `null` to hide it.
    */
   goToTodayButton?: Slot<'button'>;
 };
@@ -85,7 +85,7 @@ export type CalendarViewChangeData = EventData<'click' | 'keydown', React.Synthe
 };
 
 /** Controls how the day and month pickers are arranged. */
-export type CalendarLayout = 'auto' | 'sideBySide' | 'overlay';
+export type CalendarLayout = 'sideBySide' | 'overlay';
 
 /**
  * Event data for dismissing the Calendar.
@@ -134,8 +134,8 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   onViewChange?: EventHandler<CalendarViewChangeData>;
 
   /**
-   * How the day and month pickers are arranged. `auto` switches to an overlay below 440px.
-   * @default 'auto'
+   * How the day and month pickers are arranged. Consumers control responsive layout changes.
+   * @default 'sideBySide'
    */
   layout?: CalendarLayout;
 
@@ -197,22 +197,22 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
   workWeekDays?: DayOfWeek[];
 
   /**
-   * Whether the month picker should highlight the current month
-   * @default false
-   */
-  highlightCurrentMonth?: boolean;
-
-  /**
-   * Whether the month picker should highlight the selected month
-   * @default false
-   */
-  highlightSelectedMonth?: boolean;
-
-  /**
    * Allows all dates and buttons to be focused, including disabled ones
    * @default false
    */
   allFocusable?: boolean;
+
+  /**
+   * Number of columns in the month picker.
+   * @default 4
+   */
+  calendarMonthColumns?: 3 | 4;
+
+  /**
+   * Number of columns in the year picker.
+   * @default 4
+   */
+  calendarYearColumns?: 3 | 4;
 };
 
 /**
@@ -220,16 +220,6 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
  */
 export type CalendarState = ComponentState<CalendarSlots> &
   CalendarContextValue & {
-    /**
-     * Reference to the day picker.
-     */
-    dayPickerRef: React.RefObject<CalendarDayHandle | null>;
-
-    /**
-     * Reference to the month picker.
-     */
-    monthPickerRef: React.RefObject<CalendarMonthHandle | null>;
-
     /**
      * Whether the day picker is rendered.
      */
@@ -239,9 +229,4 @@ export type CalendarState = ComponentState<CalendarSlots> &
      * Whether the month picker is rendered.
      */
     isMonthPickerVisible: boolean;
-
-    /**
-     * Whether the day and month pickers replace one another.
-     */
-    isOverlay: boolean;
   };

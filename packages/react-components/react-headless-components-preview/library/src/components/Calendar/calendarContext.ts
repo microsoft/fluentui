@@ -1,11 +1,11 @@
 'use client';
 
-import { createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { calendarFormatters } from '../utils';
-import type { ContextSelector } from '@fluentui/react-context-selector';
+import * as React from 'react';
+import { calendarFormatters } from './utils';
 import type { EventHandler } from '@fluentui/react-utilities';
-import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../utils';
-import type { CalendarDaySelectData } from '../CalendarDay/CalendarDay.types';
+import type { CalendarState } from './Calendar.types';
+import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from './utils';
+import type { CalendarDaySelectData } from './CalendarDay/CalendarDay.types';
 
 /**
  * Configuration shared by the Calendar root, every picker below it, and every grid row and cell.
@@ -16,6 +16,12 @@ export type CalendarContextValue = {
    * Allows all dates and buttons to be focused, including disabled ones.
    */
   allFocusable: boolean;
+
+  /** Number of columns in the month picker. */
+  calendarMonthColumns: 3 | 4;
+
+  /** Number of columns in the year picker. */
+  calendarYearColumns: 3 | 4;
 
   /**
    * The range selected when a date is chosen.
@@ -36,16 +42,6 @@ export type CalendarContextValue = {
    * Formats dates and accessibility labels displayed by the calendar.
    */
   formatters: CalendarFormatters;
-
-  /**
-   * Whether the month and year grids highlight the current month/year.
-   */
-  highlightCurrent: boolean;
-
-  /**
-   * Whether the month and year grids highlight the selected month/year.
-   */
-  highlightSelected: boolean;
 
   /**
    * The latest selectable or navigable date.
@@ -103,20 +99,82 @@ export type CalendarContextValues = {
  */
 export const calendarContextDefaultValue: CalendarContextValue = {
   allFocusable: false,
+  calendarMonthColumns: 4,
+  calendarYearColumns: 4,
   dateRangeType: 'day',
   firstDayOfWeek: 'sunday',
   firstWeekOfYear: 'firstDay',
   formatters: calendarFormatters,
-  highlightCurrent: false,
-  highlightSelected: false,
   showWeekNumbers: false,
 };
 
-const calendarContext = createContext<CalendarContextValue | undefined>(undefined);
+const calendarContext = React.createContext<CalendarContextValue | undefined>(undefined);
 
 /** Provides shared configuration to standalone Calendar pickers and grids. */
 export const CalendarProvider = calendarContext.Provider;
 
-/** Selects shared Calendar configuration from the nearest CalendarProvider. */
-export const useCalendarContext = <T>(selector: ContextSelector<CalendarContextValue, T>): T =>
-  useContextSelector(calendarContext, (ctx = calendarContextDefaultValue) => selector(ctx));
+/** Reads shared Calendar configuration from the nearest CalendarProvider, or standalone defaults. */
+export const useCalendarContext = (): CalendarContextValue =>
+  React.useContext(calendarContext) ?? calendarContextDefaultValue;
+
+/**
+ * Creates state for the CalendarContextValues component.
+ */
+export function useCalendarContextValues(state: CalendarState): CalendarContextValues {
+  const {
+    allFocusable,
+    calendarMonthColumns,
+    calendarYearColumns,
+    dateRangeType,
+    firstDayOfWeek,
+    firstWeekOfYear,
+    formatters,
+    maxDate,
+    minDate,
+    restrictedDates,
+    setValue,
+    showWeekNumbers,
+    today,
+    value,
+    workWeekDays,
+  } = state;
+
+  const calendar = React.useMemo<CalendarContextValue>(
+    () => ({
+      allFocusable,
+      calendarMonthColumns,
+      calendarYearColumns,
+      dateRangeType,
+      firstDayOfWeek,
+      firstWeekOfYear,
+      formatters,
+      maxDate,
+      minDate,
+      restrictedDates,
+      setValue,
+      showWeekNumbers,
+      today,
+      value,
+      workWeekDays,
+    }),
+    [
+      allFocusable,
+      calendarMonthColumns,
+      calendarYearColumns,
+      dateRangeType,
+      firstDayOfWeek,
+      firstWeekOfYear,
+      formatters,
+      maxDate,
+      minDate,
+      restrictedDates,
+      setValue,
+      showWeekNumbers,
+      today,
+      value,
+      workWeekDays,
+    ],
+  );
+
+  return { calendar };
+}

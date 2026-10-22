@@ -3,17 +3,16 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import { useCalendarContext } from '../contexts/calendarContext';
+import { useCalendarContext } from '../calendarContext';
 import { createDate } from '../utils/dateMath';
-import { getCalendarEventType, getCalendarNavigationButtonProps } from '../utils/calendarHeader';
-import { getCalendarPickerRows, useCalendarPickerGrid } from '../hooks/useCalendarPickerGrid';
+import { mergeProps } from '../../../utils/mergeProps';
+import { getCalendarEventType, getCalendarNavigationButtonProps } from '../utils/calendarNavigation';
+import { getCalendarPickerCellProps, getCalendarPickerRows, useCalendarPickerGrid } from '../hooks/useCalendarGrid';
 import type {
   CalendarYearProps,
   CalendarYearState,
-  CalendarYearCell,
-  CalendarYearHandle,
+  CalendarYearCellData,
   CalendarYearRange,
-  CalendarYearRow,
 } from './CalendarYear.types';
 
 const CELL_COUNT = 12;
@@ -51,12 +50,19 @@ function useYearRangeState({
 }
 
 /**
- * Create the base state required to render an unstyled CalendarYear.
- * Calendar owns selection and focus handles; focusgroup owns grid arrows, Tab entry and focus memory.
+ * Create the state required to render CalendarYear.
+ * Calendar owns selection, directional navigation and roving focus.
  */
-export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<CalendarYearHandle>): CalendarYearState => {
-  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
-  const { allFocusable, today: contextToday, formatters, maxDate, minDate, value } = useCalendarContext(ctx => ctx);
+export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDivElement>): CalendarYearState => {
+  const {
+    allFocusable,
+    calendarYearColumns,
+    today: contextToday,
+    formatters,
+    maxDate,
+    minDate,
+    value,
+  } = useCalendarContext();
   const { grid, header, navigation, nextRangeButton, onHeaderSelect, onSelectYear, previousRangeButton, heading } =
     props;
 
@@ -78,60 +84,71 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<Calenda
   const isYearDisabled = (year: number) =>
     (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
 
-  const yearCells: CalendarYearCell[] = Array.from({ length: CELL_COUNT }, (_, index) => {
+  const yearCells: CalendarYearCellData[] = Array.from({ length: CELL_COUNT }, (_, index) => {
     const year = fromYear + index;
     return {
       year,
-      content: props.renderYear ? props.renderYear(year) : formatYear(year),
+      label: formatYear(year),
       isCurrent: year === currentYear,
       isSelected: year === selectedYear,
       isNavigated: year === focusYear,
       isDisabled: isYearDisabled(year),
-      props: {},
     };
   });
-  const yearRows: CalendarYearRow[] = getCalendarPickerRows(yearCells, allFocusable, cell => [
-    cell.isDisabled,
-    cell.isSelected,
-    cell.isCurrent,
-    cell.isNavigated,
-  ]);
-
-  const prevDisabled = minYear !== undefined && fromYear <= minYear;
-  const nextDisabled = maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
-
-  const formatRange = (range: CalendarYearRange) => `${formatYear(range.fromYear)} - ${formatYear(range.toYear)}`;
-  const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
-  const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
+  const yearRows = getCalendarPickerRows(yearCells, calendarYearColumns);
   const range = { fromYear, toYear };
-  const rangeLabel = formatRange(range);
-
-  const titleElementType = onHeaderSelect ? 'button' : 'div';
-  const titleContent = (
-    <>
-      {formatYear(fromYear)} - {formatYear(toYear)}
-    </>
-  );
-
-  const [gridSlot, getCell] = useCalendarPickerGrid(
+  const rangeLabel = `${formatYear(fromYear)} - ${formatYear(toYear)}`;
+  const [gridSlot, getCell, activeIndex] = useCalendarPickerGrid(
     grid,
     rangeLabel,
     index => !isYearDisabled(fromYear + index),
     (ev, index) => onSelectYear?.(ev, { event: ev, type: getCalendarEventType(ev), year: fromYear + index }),
+    focusYear - fromYear,
+    allFocusable,
+    fromYear,
+    calendarYearColumns,
   );
+  const getYearCellProps: CalendarYearState['getYearCellProps'] = year => ({
+    root: mergeProps(
+      {
+        ...getCalendarPickerCellProps(
+          allFocusable,
+          year.isDisabled,
+          year.isSelected,
+          year.isCurrent,
+          year.year - fromYear === activeIndex,
+        ),
+        children: year.label,
+      },
+      props.getCellProps?.(year).root,
+    ),
+  });
+  const getYearRowProps: CalendarYearState['getYearRowProps'] = row => ({
+    root: mergeProps({ role: 'row' }, props.getRowProps?.(row).root),
+  });
 
-  React.useImperativeHandle(ref, () => ({
+  const prevDisabled = minYear !== undefined && fromYear <= minYear;
+  const nextDisabled = maxYear !== undefined && fromYear + CELL_COUNT > maxYear;
+
+  const formatRange = (yearRange: CalendarYearRange) =>
+    `${formatYear(yearRange.fromYear)} - ${formatYear(yearRange.toYear)}`;
+  const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
+  const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
+
+  const titleElementType = onHeaderSelect ? 'button' : 'div';
+
+  React.useImperativeHandle(props.imperativeRef, () => ({
     focus(options?: FocusOptions) {
-      [focusYear, selectedYear, currentYear]
-        .map(year => (typeof year === 'number' ? getCell(year - fromYear) : undefined))
-        .find(cell => cell && !cell.matches(':disabled'))
-        ?.focus(options);
+      if (activeIndex !== undefined) {
+        getCell(activeIndex)?.focus(options);
+      }
     },
   }));
 
   return {
-    fromYear,
     yearRows,
+    getYearCellProps,
+    getYearRowProps,
     components: {
       root: 'div',
       header: 'div',
@@ -141,7 +158,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<Calenda
       nextRangeButton: 'button',
       grid: 'div',
     },
-    root: slot.always(getIntrinsicElementProps('div', props), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', { ...props, ref }), { elementType: 'div' }),
     header: slot.always(header, { elementType: 'div' }),
     heading: slot.always(heading, {
       defaultProps: {
@@ -151,10 +168,10 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<Calenda
           : undefined,
         children: onHeaderSelect ? (
           <span aria-live="assertive" aria-atomic="true">
-            {titleContent}
+            {rangeLabel}
           </span>
         ) : (
-          titleContent
+          rangeLabel
         ),
         onClick: onHeaderSelect
           ? (ev: React.MouseEvent<HTMLElement>) => onHeaderSelect(ev, { event: ev, type: 'click', focus: true })
@@ -191,8 +208,5 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<Calenda
       elementType: 'button',
     }),
     grid: gridSlot,
-    hasHeaderClickCallback: !!onHeaderSelect,
-    prevDisabled,
-    nextDisabled,
   };
 };

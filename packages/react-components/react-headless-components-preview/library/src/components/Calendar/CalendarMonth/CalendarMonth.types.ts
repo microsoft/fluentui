@@ -1,11 +1,10 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CalendarElementProps, CalendarGridRow, CalendarRowWrapper } from '../utils/calendarGrid.types';
+import type { CalendarGridRow } from '../hooks/useCalendarGrid';
 import type { CalendarYear } from '../CalendarYear/CalendarYear';
-import type { CalendarYearHandle } from '../CalendarYear/CalendarYear.types';
 
 /**
- * The imperative API exposed on CalendarMonth's forwarded ref.
+ * The imperative API exposed through CalendarMonth's `imperativeRef` prop.
  */
 export type CalendarMonthHandle = {
   /**
@@ -16,23 +15,23 @@ export type CalendarMonthHandle = {
 };
 
 /**
- * One month cell in the grid.
+ * Semantic month data stored in the grid and passed to cell getters, without DOM props.
  */
-export type CalendarMonthCell = {
+export type CalendarMonthCellData = {
   /**
    * Index of the month within the year, matching `Date.prototype.getMonth()`.
    */
   index: number;
   /**
-   * Visible month name.
+   * The formatted short month name displayed in the cell.
    */
   label: string;
   /**
-   * Whether this is the displayed month.
+   * Whether this month is the grid's initial focus target, falling back to an available month when needed.
    */
   isNavigated: boolean;
   /**
-   * Whether this is the current month.
+   * Whether this month matches today's month and year, independently of consumer styling.
    */
   isCurrent: boolean;
   /**
@@ -43,18 +42,34 @@ export type CalendarMonthCell = {
    * Whether this month can be selected.
    */
   isInBounds: boolean;
+};
+
+/** Semantic month row passed to getters, without DOM props on the row or its cells. */
+export type CalendarMonthRowData = CalendarGridRow<CalendarMonthCellData>;
+
+/** Overrides for a month button. */
+export type CalendarMonthCellProps = {
   /**
-   * Props of the `button` rendered for the cell.
+   * Overrides for the `<button role="gridcell">`. Set `children` to customize the month content.
    */
-  props: CalendarElementProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+  root?: React.ComponentProps<'button'>;
+};
+
+/** Overrides for a month row. */
+export type CalendarMonthRowProps = {
+  /**
+   * Overrides for the row's `<div>`. Its month cells remain controlled by the renderer.
+   */
+  root?: React.ComponentProps<'div'>;
 };
 
 /**
- * One row of month cells.
+ * Slots rendered by the month picker.
  */
-export type CalendarMonthRow = CalendarGridRow<CalendarMonthCell>;
-
 export type CalendarMonthSlots = {
+  /**
+   * The outer container of the month picker.
+   */
   root: NonNullable<Slot<'div'>>;
 
   /**
@@ -83,7 +98,7 @@ export type CalendarMonthSlots = {
   nextYearButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The manual focusgroup grid holding the month rows. The focusgroup runtime owns arrow navigation and Tab entry.
+   * The grid holding the month rows. Calendar handles arrow navigation, roving Tab entry and focus memory.
    */
   grid: NonNullable<Slot<'div'>>;
 
@@ -94,29 +109,76 @@ export type CalendarMonthSlots = {
   yearPicker: NonNullable<Slot<typeof CalendarYear>>;
 };
 
+/**
+ * Data describing a month selection and its bounded, unrestricted date range.
+ */
 export type CalendarMonthSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
+  /**
+   * An available day in the selected month, preserving the navigated day of the month when possible.
+   */
   date: Date;
+  /**
+   * The dates selected for the configured range, excluding restricted and out-of-bounds dates.
+   */
   selectedDateRange: Date[];
 };
 
+/**
+ * Data describing a request to navigate the month picker.
+ */
 export type CalendarMonthNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /**
+   * The date to navigate to.
+   */
   date: Date;
+  /**
+   * Whether focus should move into the day grid after navigation.
+   */
   focusOnNavigatedDay: boolean;
 };
 
+/**
+ * Data describing activation of the month picker's heading or a month selection that returns to the day view.
+ */
 export type CalendarMonthHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>>;
 
+/**
+ * Props for the month picker. Shared selection, boundaries, and formatting come from CalendarProvider.
+ */
 export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
+  /**
+   * Provides access to the picker's focus handle. The regular `ref` points to the root element.
+   */
+  imperativeRef?: React.Ref<CalendarMonthHandle>;
+
   /**
    * The currently navigated date
    */
   navigatedDate?: Date;
 
   /**
-   * The date whose month is highlighted when `highlightSelectedMonth` is set, and whose year the
-   * year picker opens on. Defaults to the Calendar's selected value.
+   * The date whose month is selected and whose year is selected in the year picker.
+   * Defaults to the Calendar's selected value, or today when that value is undefined.
+   * Set to null for an empty selection.
    */
   selectedDate?: Date | null;
+
+  /**
+   * Overrides each month button. Use root.children to customize its content.
+   * Receives semantic month data and a formatted label, not DOM props.
+   * Refs are composed, class names appended and styles merged.
+   * Defined consumer props override defaults, including roles, focus, disabled/selection state and data attributes.
+   * Consumers are responsible for preserving accessibility and interaction semantics when overriding these props.
+   * Handlers run before the delegated grid behavior; preventDefault cancels selection.
+   * Called when the renderer resolves the cell's props, not while the hook builds its data.
+   */
+  getCellProps?: (month: CalendarMonthCellData) => CalendarMonthCellProps;
+
+  /**
+   * Overrides each row's default props, including its role and focus attributes, without replacing its cells.
+   * Receives semantic row and month data. Called when the renderer resolves the row's props.
+   */
+  getRowProps?: (row: CalendarMonthRowData) => CalendarMonthRowProps;
 
   /**
    * Called when a month is selected. The date is an available day in that month and the range
@@ -125,14 +187,14 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   onSelectDate?: EventHandler<CalendarMonthSelectData>;
 
   /**
-   * Callback issued when the year is navigated
-   * @param date - The date that is navigated to
-   * @param focusOnNavigatedDay - Whether to set the focus to the navigated date.
+   * Called when month or year navigation is requested. The event data includes the destination date
+   * and whether focus should move into the day grid.
    */
   onNavigateDate?: EventHandler<CalendarMonthNavigateData>;
 
   /**
-   * Callback function when the header is selected
+   * Called when the heading is activated while the year picker is hidden, or when a month is selected
+   * to return to the day view.
    */
   onHeaderSelect?: EventHandler<CalendarMonthHeaderSelectData>;
 
@@ -143,6 +205,9 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
   yearPickerHidden?: boolean;
 };
 
+/**
+ * Resolved slots, semantic grid data and on-demand prop getters used to render the month picker.
+ */
 export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
   /**
    * When the year picker is open, CalendarMonth renders CalendarYear instead of its own grid.
@@ -150,37 +215,23 @@ export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
   isYearPickerVisible: boolean;
 
   /**
-   * Reference to the year picker while it is open.
+   * Semantic month data grouped into rows of three, without HTML prop bags.
    */
-  yearPickerRef: React.RefObject<CalendarYearHandle | null>;
+  monthRows: CalendarMonthRowData[];
 
   /**
-   * Whether the heading opens the year picker or reports `onHeaderSelect`.
+   * Resolves built-in HTML props and consumer overrides for a month without modifying its data.
+   * Calls the consumer's `getCellProps` callback.
+   * @param month - A month from a row in `monthRows`.
+   * @returns Props for the month button.
    */
-  headerIsClickable: boolean;
+  getMonthCellProps: (month: CalendarMonthCellData) => Required<CalendarMonthCellProps>;
 
   /**
-   * Whether navigating to the previous year is allowed by `minDate`.
+   * Resolves built-in HTML props and consumer overrides for a row without modifying its data.
+   * Calls the consumer's `getRowProps` callback.
+   * @param row - A row from `monthRows`.
+   * @returns Props for the row element.
    */
-  isPrevYearInBounds: boolean;
-
-  /**
-   * Whether navigating to the next year is allowed by `maxDate`.
-   */
-  isNextYearInBounds: boolean;
-
-  /**
-   * Month cells grouped into rows of four.
-   */
-  monthRows: CalendarMonthRow[];
-
-  /**
-   * The year the grid is showing.
-   */
-  navigatedYear: number;
-
-  /**
-   * Wraps each rendered row, for example to add motion in a custom renderer.
-   */
-  wrapRow?: CalendarRowWrapper<CalendarMonthRow>;
+  getMonthRowProps: (row: CalendarMonthRowData) => Required<CalendarMonthRowProps>;
 };

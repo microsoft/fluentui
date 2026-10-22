@@ -1,4 +1,4 @@
-import type { DayOfWeek, DateRangeType, FirstWeekOfYear } from '../constants';
+import type { DayOfWeek, DateRangeType } from '../constants';
 
 export interface Day {
   /**
@@ -82,11 +82,6 @@ export interface DayGridOptions extends RestrictedDatesOptions {
   firstDayOfWeek: DayOfWeek;
 
   /**
-   * Defines when the first week of the year should start.
-   */
-  firstWeekOfYear: FirstWeekOfYear;
-
-  /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
    */
@@ -102,11 +97,6 @@ export interface DayGridOptions extends RestrictedDatesOptions {
    * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
-
-  /**
-   * Whether the calendar should show the week number before each week row
-   */
-  showWeekNumbers?: boolean;
 
   /**
    * The days that are selectable when `dateRangeType` is `workWeek`.

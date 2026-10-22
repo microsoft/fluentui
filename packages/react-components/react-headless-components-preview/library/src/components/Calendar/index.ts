@@ -1,6 +1,7 @@
 export { Calendar } from './Calendar';
 export { renderCalendar } from './renderCalendar';
-export { useCalendar, useCalendarContextValues } from './useCalendar';
+export { useCalendar } from './useCalendar';
+export { useCalendarContextValues } from './calendarContext';
 export type {
   CalendarContextValue,
   CalendarContextValues,
@@ -17,29 +18,33 @@ export type {
 
 export { CalendarDay, renderCalendarDay, useCalendarDay } from './CalendarDay';
 export type {
-  CalendarDayCell,
+  CalendarDayCellData,
   CalendarDayCellProps,
   CalendarDayDismissData,
   CalendarDayHandle,
   CalendarDayHeaderSelectData,
   CalendarDayNavigateData,
   CalendarDayProps,
+  CalendarDayRowData,
+  CalendarDayRowProps,
   CalendarDaySelectData,
   CalendarDaySlots,
   CalendarDayState,
-  CalendarDayWeek,
-  CalendarDayWeekdayRow,
+  CalendarDayWeekdayCellData,
+  CalendarDayWeekdayCellProps,
   DayInfo,
 } from './CalendarDay';
 
 export { CalendarMonth, renderCalendarMonth, useCalendarMonth } from './CalendarMonth';
 export type {
-  CalendarMonthCell,
+  CalendarMonthCellData,
+  CalendarMonthCellProps,
   CalendarMonthHandle,
   CalendarMonthHeaderSelectData,
   CalendarMonthNavigateData,
   CalendarMonthProps,
-  CalendarMonthRow,
+  CalendarMonthRowData,
+  CalendarMonthRowProps,
   CalendarMonthSelectData,
   CalendarMonthSlots,
   CalendarMonthState,
@@ -47,19 +52,21 @@ export type {
 
 export { CalendarYear, renderCalendarYear, useCalendarYear } from './CalendarYear';
 export type {
-  CalendarYearCell,
+  CalendarYearCellData,
+  CalendarYearCellProps,
   CalendarYearHandle,
   CalendarYearHeaderSelectData,
   CalendarYearNavigateData,
   CalendarYearProps,
   CalendarYearRange,
-  CalendarYearRow,
+  CalendarYearRowData,
+  CalendarYearRowProps,
   CalendarYearSlots,
   CalendarYearState,
   CalendarYearSelectData,
 } from './CalendarYear';
 
-export { CalendarProvider, calendarContextDefaultValue, useCalendarContext } from './contexts/calendarContext';
+export { CalendarProvider, calendarContextDefaultValue, useCalendarContext } from './calendarContext';
 export {
   calendarFormatters,
   createCalendarDateTimeFormatter,
@@ -74,10 +81,7 @@ export type {
   CalendarDateTimeFormat,
   CalendarFormatters,
   CalendarYearRangeLabelData,
-  CalendarDataAttributes,
-  CalendarElementProps,
   CalendarGridRow,
-  CalendarRowWrapper,
   DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,

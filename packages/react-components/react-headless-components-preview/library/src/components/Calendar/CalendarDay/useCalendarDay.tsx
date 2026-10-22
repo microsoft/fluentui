@@ -1,51 +1,66 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  End,
+  Enter,
+  Home,
+  PageDown,
+  PageUp,
+  Space,
+} from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { getIntrinsicElementProps, getRTLSafeKey, mergeCallbacks, slot, useId } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  getRTLSafeKey,
+  mergeCallbacks,
+  slot,
+  useId,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import {
   DAYS_IN_WEEK,
   addDays,
   addMonths,
   compareDatePart,
   findAvailableDate,
-  getBoundedDateRange,
   getDateRange,
   getDayGrid,
+  getDayFromIndex,
   getDayIndex,
   getMonthEnd,
   getMonthStart,
   getWeekNumber,
   isRestrictedDate,
-  stringifyDataAttribute,
 } from '../utils';
-import { createDate } from '../utils/dateMath';
+import { addCivilDays, createDate, matchesCivilDate } from '../utils/dateMath';
+import { getAvailableDates } from '../utils/dateGrid/dateAvailability';
+import { mergeProps } from '../../../utils/mergeProps';
 import { getDateRangeTypeToUse } from '../utils/dateGrid/workWeek';
-import { getCalendarGridCell, isCalendarGridArrow, setCalendarNavigationDate } from '../utils/calendarKeyboard';
+import { getCalendarGridCell, isCalendarGridNavigation, useCalendarRovingFocus } from '../hooks/useCalendarGrid';
 import {
   getCalendarEventType,
   getCalendarNavigationButtonProps,
   onCalendarEnterKeyDown,
-} from '../utils/calendarHeader';
-import { useCalendarContext } from '../contexts/calendarContext';
-import { useWeekCorners } from '../hooks/useWeekCorners';
-import type { DayCorners } from '../hooks/useWeekCorners';
+  setCalendarNavigationDate,
+} from '../utils/calendarNavigation';
+import { useCalendarContext } from '../calendarContext';
 import type { DayGridOptions } from '../utils';
 import type {
   CalendarDayProps,
   CalendarDayState,
-  CalendarDayCell,
-  CalendarDayHandle,
-  CalendarDayWeek,
-  CalendarDayWeekdayRow,
+  CalendarDayCellData,
+  CalendarDayWeekdayCellData,
 } from './CalendarDay.types';
+import { toDataAttributeValue } from '../../../utils';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 
 const noop = () => undefined;
-
-const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: false, bottomRight: false };
 
 /**
  * Applied imperatively to every cell in the hovered or pressed range, because an arbitrary blob of
@@ -54,61 +69,34 @@ const NO_CORNERS: DayCorners = { topLeft: false, topRight: false, bottomLeft: fa
 const RANGE_HOVERED_ATTRIBUTE = 'data-range-hovered';
 const RANGE_PRESSED_ATTRIBUTE = 'data-range-pressed';
 
-const CORNER_ATTRIBUTES = [
-  ['topLeft', 'data-corner-top-left'],
-  ['topRight', 'data-corner-top-right'],
-  ['bottomLeft', 'data-corner-bottom-left'],
-  ['bottomRight', 'data-corner-bottom-right'],
-] as const;
-
-const applyCorners = (element: HTMLElement, corners: DayCorners): void =>
-  CORNER_ATTRIBUTES.forEach(([corner, attribute]) => element.toggleAttribute(attribute, corners[corner]));
-
-const assignRef = <T,>(ref: React.Ref<T> | undefined, value: T | null): void => {
-  if (typeof ref === 'function') {
-    ref(value);
-  } else if (ref) {
-    (ref as React.RefObject<T | null>).current = value;
-  }
-};
-
 /**
  * Finds the next representable civil date at `initialOffset` days and beyond, skipping dates that do not exist in
  * the local timezone.
  */
 const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 1 | -1): Date | undefined => {
+  const origin = { year: date.getFullYear(), month: date.getMonth(), day: date.getDate() };
   for (let offset = initialOffset; ; offset += direction) {
-    const civilDate = new Date(0);
-    civilDate.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate() + offset);
-    if (!Number.isFinite(civilDate.getTime())) {
+    const civilDate = addCivilDays(origin, offset);
+    if (!Number.isFinite(civilDate.year)) {
       return undefined;
     }
 
-    const expectedYear = civilDate.getUTCFullYear();
-    const expectedMonth = civilDate.getUTCMonth();
-    const expectedDay = civilDate.getUTCDate();
-    const candidate = createDate(expectedYear, expectedMonth, expectedDay);
+    const candidate = createDate(civilDate.year, civilDate.month, civilDate.day);
     if (!Number.isFinite(candidate.getTime())) {
       return undefined;
     }
 
-    if (
-      candidate.getFullYear() === expectedYear &&
-      candidate.getMonth() === expectedMonth &&
-      candidate.getDate() === expectedDay &&
-      compareDatePart(candidate, date) * direction > 0
-    ) {
+    if (matchesCivilDate(candidate, civilDate) && compareDatePart(candidate, date) * direction > 0) {
       return candidate;
     }
   }
 };
 
 /**
- * Create the base state required to render an unstyled CalendarDay.
- * Calendar owns selection, range hover and date paging; focusgroup owns directional navigation and focus memory.
+ * Create the state required to render CalendarDay.
+ * Calendar owns selection, range hover, directional navigation and roving focus.
  */
-export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarDayHandle>): CalendarDayState => {
-  // The context value only changes when Calendar re-renders the pickers anyway, so it is read as a whole.
+export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivElement>): CalendarDayState => {
   const {
     allFocusable,
     dateRangeType,
@@ -123,19 +111,20 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     today: contextToday,
     value,
     workWeekDays,
-  } = useCalendarContext(ctx => ctx);
+  } = useCalendarContext();
   const { dir } = useFluent_unstable();
 
   const {
     body,
     closeButton,
     daysToSelectInDayView,
-    getDayCellProps,
+    getCellProps,
     getMarkedDays,
+    getRowProps,
+    getWeekdayCellProps,
     grid,
     header,
     heading,
-    lightenDaysOutsideNavigatedMonth = true,
     navigation,
     nextMonthButton,
     onDismiss,
@@ -151,6 +140,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
   const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
   const [dayElements] = React.useState(() => new Map<string, HTMLTableCellElement>());
+  const nextMonthRef = React.useRef<HTMLButtonElement>(null);
+  const previousMonthRef = React.useRef<HTMLButtonElement>(null);
   const activeDescendantId = useId();
 
   const onSelectDay = (ev: React.SyntheticEvent<HTMLElement>, date: Date): void => {
@@ -158,9 +149,10 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       return;
     }
 
-    let dateRange = getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
-    dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
-    dateRange = dateRange.filter((d: Date) => !isRestrictedDate(d, restrictedDatesOptions));
+    const dateRange = getAvailableDates(
+      getDateRange(date, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView),
+      restrictedDatesOptions,
+    );
 
     const type = getCalendarEventType(ev);
     setValue?.(ev, { event: ev, type, date, selectedDateRange: dateRange });
@@ -171,7 +163,6 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     ...props,
     dateRangeType,
     firstDayOfWeek,
-    firstWeekOfYear,
     maxDate,
     minDate,
     navigatedDate,
@@ -182,13 +173,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     workWeekDays,
   };
 
-  /*
-   * The grid includes one transition week before and after the visible weeks. Marked days are requested only for
-   * the visible range.
-   */
   const dayGrid = getDayGrid(gridOptions);
   const visibleDates = dayGrid
-    .slice(1, -1)
     .flatMap(week => week.map(day => day.originalDate))
     .filter((date): date is Date => date !== null);
   const markedDays =
@@ -240,130 +226,144 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       });
   }
 
-  const [getWeekCorners, calculateRoundedCorners] = useWeekCorners(gridOptions);
-  const weekCorners = getWeekCorners(dayGrid);
-
   const focusTarget = focusTargetDate;
   const focusTargetKey = focusTarget
-    ? dayGrid
-        .slice(1, -1)
-        .flat()
-        .find(day => day.originalDate && compareDatePart(day.originalDate, focusTarget) === 0)?.key
+    ? dayGrid.flat().find(day => day.originalDate && compareDatePart(day.originalDate, focusTarget) === 0)?.key
     : undefined;
-  const visibleDays: CalendarDayCell[] = [];
-  const weeks: CalendarDayWeek[] = dayGrid.map((week, gridIndex) => {
-    const transition = gridIndex === 0 ? 'first' : gridIndex === dayGrid.length - 1 ? 'last' : undefined;
-    const weekIndex = gridIndex - 1;
-
-    const days = week.map((day, dayIndex): CalendarDayCell => {
-      const date = day.originalDate;
-      const isVisible = !transition && !!date;
-      const isFocusTarget = isVisible && day.key === focusTargetKey;
-      const isFocusable = isVisible && (allFocusable || day.isInBounds);
-      const customProps = isVisible ? getDayCellProps?.(date) : undefined;
-      const corners = transition ? undefined : weekCorners[weekIndex + '_' + dayIndex];
-      const formattedDate = date ? formatters.dateTime({ date, format: 'dayMonthYear' }) : day.date;
-
-      const cell: CalendarDayCell = {
+  const weeks: CalendarDayState['weeks'] = dayGrid.map((week, weekIndex) => {
+    const days = week.map(
+      (day): CalendarDayCellData => ({
         ...day,
-        props: {
-          role: 'gridcell',
-          'aria-current': day.isToday ? 'date' : undefined,
-          'aria-disabled': !transition && !day.isInBounds,
-          'aria-selected': day.isInBounds ? day.isSelected : undefined,
-          tabIndex: isFocusable ? 0 : undefined,
-          focusgroupstart: stringifyDataAttribute(isFocusTarget),
-          ...customProps,
-          ref: transition
-            ? undefined
-            : (element: HTMLTableCellElement | null) => {
-                if (element) {
-                  dayElements.set(day.key, element);
-                } else {
-                  dayElements.delete(day.key);
-                }
-                assignRef(customProps?.ref, element);
-              },
-          'data-marked': stringifyDataAttribute(day.isMarked),
-          'data-outside-bounds': stringifyDataAttribute(!day.isInBounds),
-          'data-outside-month': stringifyDataAttribute(!day.isInMonth),
-          'data-selected': stringifyDataAttribute(day.isSelected),
-          'data-today': stringifyDataAttribute(day.isToday),
-          ...Object.fromEntries(
-            CORNER_ATTRIBUTES.map(([corner, attribute]) => [attribute, stringifyDataAttribute(!!corners?.[corner])]),
-          ),
-        },
-        button: {
-          'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
-          disabled: !transition && !day.isInBounds,
-          id: isFocusTarget ? activeDescendantId : undefined,
-          tabIndex: -1,
-          type: 'button',
-        },
-        label: {
-          children: date ? formatters.dateTime({ date, format: 'day' }) : day.date,
-        },
-        marker: day.isMarked ? { 'aria-hidden': true } : undefined,
-      };
-      if (!transition) {
-        visibleDays.push(cell);
-      }
-      return cell;
-    });
-
+        label: day.originalDate ? formatters.dateTime({ date: day.originalDate, format: 'day' }) : day.date,
+        isNavigated: !!day.originalDate && day.key === focusTargetKey,
+      }),
+    );
     const lastDate = week
       .slice()
       .reverse()
       .find(day => day.originalDate)?.originalDate;
     const weekNumber =
       showWeekNumbers && lastDate ? getWeekNumber(lastDate, firstDayOfWeek, firstWeekOfYear) : undefined;
-    const weekNumberLabel = weekNumber !== undefined ? formatters.weekNumberLabel({ weekNumber }) : '';
-
-    return {
-      key: transition === 'first' ? -1 : transition === 'last' ? -2 : weekIndex,
-      transition,
-      props: {
-        'aria-hidden': transition ? true : undefined,
-        role: transition ? 'presentation' : undefined,
-      },
-      weekNumber:
-        weekNumber !== undefined
-          ? { 'aria-label': weekNumberLabel, children: <span>{weekNumber}</span>, scope: 'row', title: weekNumberLabel }
-          : undefined,
-      days,
-    };
+    return { type: 'week', key: weekIndex, days, weekNumber };
   });
+  const visibleDays = weeks.flatMap(week => week.days);
+  const [activeKey, setActiveKey] = useCalendarRovingFocus(
+    focusTargetKey,
+    visibleDays.filter(day => day.originalDate && (allFocusable || day.isInBounds)).map(day => day.key),
+  );
+
+  const getDayCellProps: CalendarDayState['getDayCellProps'] = day => {
+    const date = day.originalDate;
+    const formattedDate = date ? formatters.dateTime({ date, format: 'dayMonthYear' }) : day.date;
+    const overrides = getCellProps?.(day);
+    const rootProps = {
+      role: 'gridcell' as const,
+      'aria-current': day.isToday ? ('date' as const) : undefined,
+      'aria-disabled': !day.isInBounds,
+      'aria-selected': day.isInBounds ? day.isSelected : undefined,
+      tabIndex: date && (allFocusable || day.isInBounds) ? (day.key === activeKey ? 0 : -1) : undefined,
+      ref: (element: HTMLTableCellElement | null) => {
+        if (element) {
+          dayElements.set(day.key, element);
+        } else {
+          dayElements.delete(day.key);
+        }
+      },
+      'data-marked': toDataAttributeValue(day.isMarked),
+      'data-outside-bounds': toDataAttributeValue(!day.isInBounds),
+      'data-outside-month': toDataAttributeValue(!day.isInMonth),
+      'data-selected': toDataAttributeValue(day.isSelected),
+      'data-today': toDataAttributeValue(day.isToday),
+    };
+    return {
+      root: mergeProps<HTMLTableCellElement, React.ComponentProps<'td'>>(rootProps, overrides?.root),
+      button: mergeProps(
+        {
+          'aria-label': day.isMarked && date ? formatters.dayMarkedLabel({ date, formattedDate }) : formattedDate,
+          disabled: !day.isInBounds,
+          id: day.key === activeKey ? activeDescendantId : undefined,
+          tabIndex: -1,
+          type: 'button',
+        },
+        overrides?.button,
+      ),
+      label: mergeProps({ children: day.label }, overrides?.label),
+      marker: day.isMarked ? mergeProps({ 'aria-hidden': true }, overrides?.marker) : undefined,
+    };
+  };
+  const getDayRowProps: CalendarDayState['getDayRowProps'] = row => {
+    const overrides = getRowProps?.(row);
+    const weekNumber = row.type === 'week' ? row.weekNumber : undefined;
+    const weekNumberLabel = weekNumber !== undefined ? formatters.weekNumberLabel({ weekNumber }) : '';
+    return {
+      root: mergeProps({ role: 'row' }, overrides?.root),
+      weekNumber:
+        row.type === 'weekday'
+          ? showWeekNumbers
+            ? mergeProps({ role: 'presentation' }, overrides?.weekNumber)
+            : undefined
+          : weekNumber !== undefined
+          ? mergeProps(
+              {
+                'aria-label': weekNumberLabel,
+                children: <span>{weekNumber}</span>,
+                scope: 'row',
+                title: weekNumberLabel,
+              },
+              overrides?.weekNumber,
+            )
+          : undefined,
+    };
+  };
 
   // Weekday labels follow the configured first day of the week.
   const weekdayDates = Array.from({ length: DAYS_IN_WEEK }, (_, index) => new Date(2020, 0, 5 + index));
   const shortDays = weekdayDates.map(date => formatters.dateTime({ date, format: 'shortWeekday' }));
   const dayNames = weekdayDates.map(date => formatters.dateTime({ date, format: 'weekday' }));
   const firstDayOfWeekIndex = getDayIndex(firstDayOfWeek);
-  const firstOfMonthIndex = dayGrid[1].findIndex(day => day.originalDate?.getDate() === 1);
-  const firstOfMonthDate = dayGrid[1][firstOfMonthIndex]?.originalDate;
+  const firstOfMonthIndex = dayGrid[0].findIndex(day => day.originalDate?.getDate() === 1);
+  const firstOfMonthDate = dayGrid[0][firstOfMonthIndex]?.originalDate;
   if (weeksToShow === 1 && firstOfMonthDate) {
     // if we only show one week, replace the header with short month name
     const firstOfMonthIndexOffset = (firstOfMonthIndex + firstDayOfWeekIndex) % DAYS_IN_WEEK;
     shortDays[firstOfMonthIndexOffset] = formatters.dateTime({ date: firstOfMonthDate, format: 'shortMonth' });
     dayNames[firstOfMonthIndexOffset] = formatters.dateTime({ date: firstOfMonthDate, format: 'month' });
   }
-  const weekdayRow: CalendarDayWeekdayRow = {
-    props: {},
-    weekNumberSpacer: showWeekNumbers ? { role: 'presentation' } : undefined,
-    cells: shortDays.map((_, index) => {
+  const weekdayRow: CalendarDayState['weekdayRow'] = {
+    type: 'weekday',
+    cells: shortDays.map((_, index): CalendarDayWeekdayCellData => {
       const i = (index + firstDayOfWeekIndex) % DAYS_IN_WEEK;
       return {
         key: shortDays[i] + ' ' + index,
-        props: { 'aria-label': dayNames[i], children: shortDays[i], scope: 'col', title: dayNames[i] },
+        dayOfWeek: getDayFromIndex(i),
+        label: shortDays[i],
+        accessibleLabel: dayNames[i],
       };
     }),
   };
+  const resolveWeekdayCellProps: CalendarDayState['getWeekdayCellProps'] = weekday => ({
+    root: mergeProps(
+      {
+        role: 'columnheader',
+        'aria-label': weekday.accessibleLabel,
+        children: weekday.label,
+        scope: 'col',
+        title: weekday.accessibleLabel,
+      },
+      getWeekdayCellProps?.(weekday).root,
+    ),
+  });
 
-  const getFocusTarget = () => (focusTargetKey ? dayElements.get(focusTargetKey) : undefined);
+  const getFocusTarget = () => (activeKey ? dayElements.get(activeKey) : undefined);
 
-  React.useImperativeHandle(ref, () => ({
+  React.useImperativeHandle(props.imperativeRef, () => ({
     focus(options?: FocusOptions) {
-      getFocusTarget()?.focus(options);
+      const target =
+        getFocusTarget() ??
+        [nextMonthRef.current, previousMonthRef.current].find(
+          button => button && !button.disabled && button.getAttribute('aria-disabled') !== 'true',
+        );
+      target?.focus(options);
     },
   }));
 
@@ -374,7 +374,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
    * the month for month view — a CSS `:hover` rule isn't enough. Mouse callbacks set attributes on
    * every relevant cell instead, so the grid resolves a day to its peers.
    */
-  const getDaysInRange = (day: CalendarDayCell): CalendarDayCell[] => {
+  const getDaysInRange = (day: CalendarDayCellData): CalendarDayCellData[] => {
     if (!day.originalDate) {
       return [];
     }
@@ -392,22 +392,15 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     });
   };
 
-  const isMultiDaySelection = dateRangeType === 'day' && !!daysToSelectInDayView && Math.abs(daysToSelectInDayView) > 1;
-  const updateRange = (day: CalendarDayCell, hovered: boolean | undefined, pressed?: boolean) => {
+  const updateRange = (day: CalendarDayCellData, hovered: boolean | undefined, pressed?: boolean) => {
     const daysInRange = getDaysInRange(day);
-    daysInRange.forEach((dayInRange, index) => {
+    daysInRange.forEach(dayInRange => {
       const element = dayElements.get(dayInRange.key);
       if (!element) {
         return;
       }
       if (hovered !== undefined) {
         element.toggleAttribute(RANGE_HOVERED_ATTRIBUTE, hovered);
-        if (!dayInRange.isSelected && isMultiDaySelection) {
-          applyCorners(
-            element,
-            hovered ? calculateRoundedCorners(false, false, index > 0, index < daysInRange.length - 1) : NO_CORNERS,
-          );
-        }
       }
       if (pressed !== undefined) {
         element.toggleAttribute(RANGE_PRESSED_ATTRIBUTE, pressed);
@@ -415,7 +408,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     });
   };
 
-  const navigateMonthEdge = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
+  const navigateDay = (ev: React.KeyboardEvent<HTMLElement>, date: Date): void => {
     let targetDate: Date | undefined = undefined;
     let direction: 1 | -1 = 1; // by default search forward
 
@@ -429,35 +422,50 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       targetDate = getDirectionalTargetDate(date, -1, direction);
     } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
       targetDate = getDirectionalTargetDate(date, 1, direction);
+    } else if (ev.key === Home || ev.key === End) {
+      const index = visibleDays.findIndex(day => day.originalDate && compareDatePart(day.originalDate, date) === 0);
+      const rowStart = Math.floor(index / DAYS_IN_WEEK) * DAYS_IN_WEEK;
+      const row = visibleDays
+        .slice(rowStart, rowStart + DAYS_IN_WEEK)
+        .filter(day => day.originalDate && (allFocusable || day.isInBounds));
+      targetDate = (ev.key === Home ? row[0] : row[row.length - 1])?.originalDate ?? undefined;
+      direction = ev.key === Home ? -1 : 1;
     }
 
+    ev.preventDefault();
     if (!targetDate) {
-      // if we couldn't find a target date at all, do nothing
       return;
     }
 
-    // In-grid movement belongs to focusgroup. Calendar only handles dates beyond the rendered view.
-    const isInView = (dateToFind: Date) =>
-      visibleDays.some(day => day.originalDate && compareDatePart(day.originalDate, dateToFind) === 0);
-    if (isInView(targetDate)) {
-      return;
-    }
-
-    // target date is restricted, search in whatever direction until finding the next possible date, stopping at boundaries
-    const findAvailableDateOptions = { initialDate: date, targetDate, direction, ...restrictedDatesOptions };
+    const findVisibleDay = (candidate: Date) =>
+      visibleDays.find(day => day.originalDate && compareDatePart(day.originalDate, candidate) === 0);
     const nextDate =
-      findAvailableDate(findAvailableDateOptions) ??
-      // if no dates available in initial direction, try going backwards
-      findAvailableDate({ ...findAvailableDateOptions, direction: direction === 1 ? -1 : 1 });
+      allFocusable && findVisibleDay(targetDate)
+        ? targetDate
+        : findAvailableDate({
+            initialDate: date,
+            targetDate,
+            direction,
+            ...restrictedDatesOptions,
+            restrictedDates: allFocusable ? undefined : restrictedDates,
+          });
 
-    if (nextDate && !isInView(nextDate)) {
-      // else, fire navigation on the date to change the view to show it
+    if (!nextDate) {
+      return;
+    }
+    const target = findVisibleDay(nextDate);
+    if (
+      target &&
+      ((nextDate.getFullYear() === navigatedDate.getFullYear() && nextDate.getMonth() === navigatedDate.getMonth()) ||
+        (allFocusable && isRestrictedDate(nextDate, { minDate, maxDate })))
+    ) {
+      dayElements.get(target.key)?.focus();
+    } else {
       onNavigateDate(ev, { event: ev, type: 'keydown', date: nextDate, focusOnNavigatedDay: true });
-      ev.preventDefault();
     }
   };
 
-  const getEventDay = (ev: React.SyntheticEvent<HTMLElement>): [HTMLElement, CalendarDayCell] | undefined => {
+  const getEventDay = (ev: React.SyntheticEvent<HTMLElement>): [HTMLElement, CalendarDayCellData] | undefined => {
     const cell = getCalendarGridCell(ev);
     const day = cell && findDay(cell);
     return cell && day?.originalDate ? [cell, day] : undefined;
@@ -489,12 +497,17 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
   const gridSlot = slot.always(grid, {
     defaultProps: {
       role: 'grid',
-      focusgroup: 'grid rowflow',
-      'aria-activedescendant': activeDescendantId,
+      'aria-activedescendant': activeKey ? activeDescendantId : undefined,
       'aria-label': monthAndYear,
       'aria-multiselectable': dateRangeType !== 'day' || Math.abs(daysToSelectInDayView ?? 1) > 1,
     },
     elementType: 'table',
+  });
+  gridSlot.onFocus = mergeCallbacks(gridSlot.onFocus, (ev: React.FocusEvent<HTMLElement>) => {
+    const eventDay = getEventDay(ev);
+    if (eventDay && (allFocusable || eventDay[1].isInBounds)) {
+      setActiveKey(eventDay[1].key);
+    }
   });
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
@@ -509,8 +522,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
     } else if ((ev.key === Enter || ev.key === Space) && day.isInBounds) {
       onSelectDay(ev, date);
       ev.preventDefault();
-    } else if (isCalendarGridArrow(ev)) {
-      navigateMonthEdge(ev, date);
+    } else if (isCalendarGridNavigation(ev)) {
+      navigateDay(ev, date);
     }
   });
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (ev: React.MouseEvent<HTMLElement>) => {
@@ -536,19 +549,39 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       updateRange(eventDay[1], undefined, false);
     }
   });
+  const previousMonthSlot = slot.always(previousMonthButton, {
+    defaultProps: getCalendarNavigationButtonProps(
+      prevMonthInBounds,
+      allFocusable,
+      formatters.previousMonthLabel({
+        date: addMonths(navigatedDate, -1),
+        formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, -1), format: 'month' }),
+      }),
+      ev => navigateMonth(ev, -1),
+    ),
+    elementType: 'button',
+  });
+  previousMonthSlot.ref = useMergedRefs(previousMonthSlot.ref, previousMonthRef);
+  const nextMonthSlot = slot.always(nextMonthButton, {
+    defaultProps: getCalendarNavigationButtonProps(
+      nextMonthInBounds,
+      allFocusable,
+      formatters.nextMonthLabel({
+        date: addMonths(navigatedDate, 1),
+        formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, 1), format: 'month' }),
+      }),
+      ev => navigateMonth(ev, 1),
+    ),
+    elementType: 'button',
+  });
+  nextMonthSlot.ref = useMergedRefs(nextMonthSlot.ref, nextMonthRef);
 
   return {
-    focusTargetDate,
-    headerIsClickable: !!onHeaderSelect,
-    lightenDaysOutsideNavigatedMonth,
-    monthAndYear,
-    navigatedDate,
-    nextMonthInBounds,
-    prevMonthInBounds,
-    renderDay: props.renderDay,
-    showWeekNumbers,
     weekdayRow,
     weeks,
+    getDayCellProps,
+    getDayRowProps,
+    getWeekdayCellProps: resolveWeekdayCellProps,
     components: {
       root: 'div',
       header: 'div',
@@ -560,7 +593,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       grid: 'table',
       body: 'tbody',
     },
-    root: slot.always(getIntrinsicElementProps('div', { ...props, 'data-fui-calendar-picker': 'day' }), {
+    root: slot.always(getIntrinsicElementProps('div', { ...props, ref, 'data-fui-calendar-picker': 'day' }), {
       elementType: 'div',
     }),
     header: slot.always(header, { elementType: 'div' }),
@@ -583,30 +616,8 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<CalendarD
       elementType: onHeaderSelect ? 'button' : 'div',
     }),
     navigation: slot.always(navigation, { elementType: 'div' }),
-    previousMonthButton: slot.always(previousMonthButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        prevMonthInBounds,
-        allFocusable,
-        formatters.previousMonthLabel({
-          date: addMonths(navigatedDate, -1),
-          formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, -1), format: 'month' }),
-        }),
-        ev => navigateMonth(ev, -1),
-      ),
-      elementType: 'button',
-    }),
-    nextMonthButton: slot.always(nextMonthButton, {
-      defaultProps: getCalendarNavigationButtonProps(
-        nextMonthInBounds,
-        allFocusable,
-        formatters.nextMonthLabel({
-          date: addMonths(navigatedDate, 1),
-          formattedDate: formatters.dateTime({ date: addMonths(navigatedDate, 1), format: 'month' }),
-        }),
-        ev => navigateMonth(ev, 1),
-      ),
-      elementType: 'button',
-    }),
+    previousMonthButton: previousMonthSlot,
+    nextMonthButton: nextMonthSlot,
     closeButton: slot.optional(closeButton, {
       defaultProps: {
         onClick: onDismiss ? onClose : undefined,

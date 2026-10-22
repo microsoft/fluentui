@@ -7,9 +7,8 @@
 }
 
 .calendar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  align-items: start;
   gap: var(--space-4);
   width: fit-content;
   max-inline-size: 100%;
@@ -18,6 +17,31 @@
   border-radius: var(--radius-lg);
   background: var(--bg-elev);
   box-shadow: var(--shadow-2);
+}
+
+.calendar:has(> .divider) {
+  grid-template-columns: auto var(--stroke-thin) auto;
+}
+
+.calendar > [data-fui-calendar-picker='day'],
+.calendar > .monthPicker {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.calendar > .todayButton {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.calendar > .divider {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.calendar:has(> .divider) > .monthPicker {
+  grid-column: 3;
+  grid-row: 1 / span 2;
 }
 
 /* ---------------------------------------------------------------- header */
@@ -186,13 +210,10 @@ button.heading:hover {
   gap: var(--space-1);
 }
 
-/*
- * The picker rows carry no class of their own, so they are addressed structurally. Four columns
- * matches the library's fixed four-per-row layout.
- */
 .pickerGrid > [role='row'] {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: var(--space-1);
 }
 

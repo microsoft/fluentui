@@ -1,13 +1,23 @@
 import { getMonthIndex } from './dateUtils';
-import { createDate } from './dateMath';
 import { calendarFormatters, createCalendarDateTimeFormatter } from './formatters';
 
 const date = new Date(2016, getMonthIndex('april'), 1);
 
 describe('createCalendarDateTimeFormatter', () => {
-  it.each(['en-US', 'de-DE', 'ar-SA'])('localizes the era for non-positive years in %s', locale => {
+  it('creates only the ordinary formatters, without a second era-specific set', () => {
+    const constructor = jest.spyOn(Intl, 'DateTimeFormat');
+    try {
+      createCalendarDateTimeFormatter();
+
+      expect(constructor).toHaveBeenCalledTimes(9);
+      constructor.mock.calls.forEach(([, options]) => expect(options).not.toHaveProperty('era'));
+    } finally {
+      constructor.mockRestore();
+    }
+  });
+
+  it.each(['en-US', 'de-DE', 'ar-SA'])('uses ordinary year-bearing formats without adding an era in %s', locale => {
     const formatter = createCalendarDateTimeFormatter(locale);
-    const zero = createDate(0, 0, 1);
     for (const format of ['year', 'monthYear', 'monthDayYear', 'dayMonthYear'] as const) {
       const fields =
         format === 'year'
@@ -17,13 +27,10 @@ describe('createCalendarDateTimeFormatter', () => {
               month: 'long' as const,
               ...(format === 'monthYear' ? {} : { day: 'numeric' as const }),
             };
-      expect(formatter({ date: zero, format })).toBe(
-        new Intl.DateTimeFormat(locale, { calendar: 'gregory', era: 'short', ...fields }).format(zero),
+      expect(formatter({ date, format })).toBe(
+        new Intl.DateTimeFormat(locale, { calendar: 'gregory', ...fields }).format(date),
       );
     }
-    expect(formatter({ date: zero, format: 'year' })).not.toBe(
-      formatter({ date: createDate(1, 0, 1), format: 'year' }),
-    );
   });
 
   it('supports a locale preference list', () => {

@@ -41,9 +41,6 @@ declare module 'react' {
      * to create accessible components that support keyboard navigation and focus management.
      */
     focusgroupstart?: string;
-
-    /** Enrolls a direct child row in a manual focusgroup grid. */
-    focusgrouprow?: string;
   }
 }
 

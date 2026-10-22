@@ -11,7 +11,6 @@ jest.mock('../dateMath', () => ({
 const defaultOptions: DayGridOptions = {
   dateRangeType: 'day',
   firstDayOfWeek: 'sunday',
-  firstWeekOfYear: 'firstFullWeek',
   navigatedDate: new Date(2020, 8, 18),
   today: new Date(2020, 8, 18),
 };
@@ -25,13 +24,13 @@ describe('getDayGrid', () => {
     );
   });
 
-  it('generates the full month with a transition row on each side', () => {
+  it('generates only visible month rows, including outside-month days that complete a row', () => {
     const weeks = getDayGrid(defaultOptions);
-    expect(weeks).toHaveLength(7);
+    expect(weeks).toHaveLength(5);
     weeks.forEach((week, weekIndex) => {
       expect(week).toHaveLength(7);
       week.forEach((day, dayIndex) => {
-        const expected = new Date(2020, 7, 23 + weekIndex * 7 + dayIndex);
+        const expected = new Date(2020, 7, 30 + weekIndex * 7 + dayIndex);
         expect(day).toEqual({
           key: `${expected.getFullYear()}-${expected.getMonth()}-${expected.getDate()}`,
           date: String(expected.getDate()),
@@ -53,10 +52,17 @@ describe('getDayGrid', () => {
     weeks.forEach(week => expect(week[0].originalDate!.getDay()).toBe(daysOfWeek.indexOf(firstDayOfWeek)));
   });
 
-  it.each([1, 2, 3, 4, 5, 6])('includes two transition rows for %s visible weeks', weeksToShow => {
+  it('does not construct cells for hidden transition weeks', () => {
+    const createDate = jest.spyOn(dateMath, 'createDate');
+    const weeks = getDayGrid(defaultOptions);
+
+    expect(createDate).toHaveBeenCalledTimes(1 + weeks.length * 7);
+  });
+
+  it.each([1, 2, 3, 4, 5, 6])('generates exactly %s visible weeks', weeksToShow => {
     const weeks = getDayGrid({ ...defaultOptions, weeksToShow });
-    expect(weeks).toHaveLength(weeksToShow + 2);
-    expect(weeks[1][0].originalDate).toEqual(new Date(2020, weeksToShow <= 4 ? 8 : 7, weeksToShow <= 4 ? 13 : 30));
+    expect(weeks).toHaveLength(weeksToShow);
+    expect(weeks[0][0].originalDate).toEqual(new Date(2020, weeksToShow <= 4 ? 8 : 7, weeksToShow <= 4 ? 13 : 30));
   });
 
   it.each([
@@ -67,25 +73,22 @@ describe('getDayGrid', () => {
     ({ firstDayOfWeek, firstVisibleDate, lastVisibleDate }) => {
       const navigatedDate = new Date(2020, 7, 31);
       const weeks = getDayGrid({ ...defaultOptions, navigatedDate, firstDayOfWeek, weeksToShow: 5 });
-      const visibleWeeks = weeks.slice(1, -1);
-      expect(weeks).toHaveLength(7);
-      expect(visibleWeeks).toHaveLength(5);
-      expect(visibleWeeks[0][0].originalDate).toEqual(firstVisibleDate);
-      expect(visibleWeeks[4][6].originalDate).toEqual(lastVisibleDate);
-      expect(visibleWeeks.flat().some(day => day.originalDate?.getTime() === navigatedDate.getTime())).toBe(true);
+      expect(weeks).toHaveLength(5);
+      expect(weeks[0][0].originalDate).toEqual(firstVisibleDate);
+      expect(weeks[4][6].originalDate).toEqual(lastVisibleDate);
+      expect(weeks.flat().some(day => day.originalDate?.getTime() === navigatedDate.getTime())).toBe(true);
     },
   );
 
   it('preserves month-start anchoring when the navigated day fits in five weeks', () => {
     const weeks = getDayGrid({ ...defaultOptions, navigatedDate: new Date(2020, 7, 29), weeksToShow: 5 });
-    const visibleWeeks = weeks.slice(1, -1);
-    expect(visibleWeeks[0][0].originalDate).toEqual(new Date(2020, 6, 26));
-    expect(visibleWeeks[4][6].originalDate).toEqual(new Date(2020, 7, 29));
+    expect(weeks[0][0].originalDate).toEqual(new Date(2020, 6, 26));
+    expect(weeks[4][6].originalDate).toEqual(new Date(2020, 7, 29));
   });
 
   it.each([
-    [2021, 1, 6],
-    [2020, 7, 8],
+    [2021, 1, 4],
+    [2020, 7, 6],
   ])('covers all days in month %s/%s with %s rows', (year, month, rowCount) => {
     const weeks = getDayGrid({ ...defaultOptions, navigatedDate: new Date(year, month, 15), firstDayOfWeek: 'monday' });
     const inMonth = weeks.flat().filter(day => day.isInMonth);
@@ -226,8 +229,8 @@ describe('getDayGrid', () => {
     const options = { ...defaultOptions, navigatedDate: new Date(2012, 0, 1) };
     const mondayWeeks = getDayGrid({ ...options, firstDayOfWeek: 'monday' });
     const fridayWeeks = getDayGrid({ ...options, firstDayOfWeek: 'friday' });
-    expect(mondayWeeks[1][0].originalDate).toEqual(new Date(2011, 11, 26));
-    expect(fridayWeeks[1][0].originalDate).toEqual(new Date(2011, 11, skippedFriday ? 23 : 30));
+    expect(mondayWeeks[0][0].originalDate).toEqual(new Date(2011, 11, 26));
+    expect(fridayWeeks[0][0].originalDate).toEqual(new Date(2011, 11, skippedFriday ? 23 : 30));
     expect(
       fridayWeeks
         .flat()

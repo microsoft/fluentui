@@ -2,14 +2,18 @@ import * as React from 'react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Calendar } from './Calendar';
-import type { CalendarDayHandle } from './CalendarDay';
-import type { CalendarMonthHandle } from './CalendarMonth';
-import type { CalendarYearHandle } from './CalendarYear';
+import type { CalendarDayHandle } from './CalendarDay/CalendarDay.types';
+import type { CalendarMonthHandle } from './CalendarMonth/CalendarMonth.types';
+import type { CalendarYearHandle } from './CalendarYear/CalendarYear.types';
 import type { CalendarProps } from './Calendar.types';
 import { useCalendar } from './useCalendar';
 import { renderCalendar, useCalendarContextValues } from '../../calendar';
+import { calendarFormatters } from './utils';
 
-describe('Calendar', () => {
+const today = new Date(2020, 8, 18);
+const dayLabel = (date: Date) => calendarFormatters.dateTime({ date, format: 'dayMonthYear' });
+
+describe('Calendar rendering and public API', () => {
   isConformant({
     Component: Calendar,
     displayName: 'Calendar',
@@ -22,19 +26,108 @@ describe('Calendar', () => {
     expect(container.querySelectorAll('[role="grid"]')).toHaveLength(2);
   });
 
-  it('declares a focusgroup and initial entry point for each grid', () => {
+  it.each([
+    { layout: 'sideBySide', view: 'day', dayOnly: false, monthOnly: false },
+    { layout: 'sideBySide', view: 'day', dayOnly: true, monthOnly: false },
+    { layout: 'sideBySide', view: 'day', dayOnly: false, monthOnly: true },
+    { layout: 'overlay', view: 'day', dayOnly: false, monthOnly: false },
+    { layout: 'overlay', view: 'month', dayOnly: false, monthOnly: false },
+    { layout: 'overlay', view: 'day', dayOnly: true, monthOnly: false },
+    { layout: 'overlay', view: 'month', dayOnly: false, monthOnly: true },
+  ] as const)(
+    'renders Go to today once as the last root child ($layout, $view, dayOnly=$dayOnly, monthOnly=$monthOnly)',
+    ({ layout, view, dayOnly, monthOnly }) => {
+      const { getByRole, container } = render(
+        <Calendar
+          today={today}
+          layout={layout}
+          view={view}
+          dayPicker={monthOnly ? null : { id: 'day-picker', weeksToShow: 6 }}
+          monthPicker={dayOnly ? null : undefined}
+          monthPickerWrapper={{ id: 'month-picker-wrapper' }}
+          data-testid="calendar"
+        />,
+      );
+      const button = getByRole('button', { name: 'Go to today' });
+      const monthVisible = !dayOnly && (layout === 'sideBySide' || view === 'month');
+      expect(container.querySelector('[data-testid="calendar"]')?.lastElementChild).toBe(button);
+      expect(button.previousElementSibling).toBe(
+        container.querySelector(monthVisible ? '#month-picker-wrapper' : '#day-picker'),
+      );
+      expect(button.closest('#month-picker-wrapper')).toBeNull();
+    },
+  );
+
+  it('supports a six-week day grid and a three-column month grid together', () => {
+    const { container, getByRole } = render(
+      <Calendar today={today} calendarMonthColumns={3} dayPicker={{ weeksToShow: 6 }} />,
+    );
+    expect(container.querySelectorAll('table tbody tr')).toHaveLength(7);
+    const rows = container.querySelectorAll('div[role="grid"] [role="row"]');
+    expect(rows).toHaveLength(4);
+    rows.forEach(row => expect(row.children).toHaveLength(3));
+    expect(getByRole('button', { name: 'Go to today' })).toBeDisabled();
+  });
+
+  it('can hide Go to today without hiding either picker', () => {
+    const { queryByRole, getAllByRole } = render(<Calendar goToTodayButton={null} />);
+    expect(queryByRole('button', { name: 'Go to today' })).toBeNull();
+    expect(getAllByRole('grid')).toHaveLength(2);
+  });
+
+  it('provides one Tab entry point per grid', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     const dayGrid = container.querySelector('table[role="grid"]')!;
-    expect(dayGrid).toHaveAttribute('focusgroup', 'grid rowflow');
-    expect(dayGrid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
-    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]').length).toBeGreaterThan(1);
+    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
 
     const monthGrid = container.querySelector('div[role="grid"]')!;
-    expect(monthGrid).toHaveAttribute('focusgroup', 'grid manual');
-    expect(monthGrid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
-    expect(monthGrid.querySelectorAll('[focusgrouprow]')).toHaveLength(3);
-    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(12);
+    expect(monthGrid.querySelectorAll('[role="row"]')).toHaveLength(3);
+    monthGrid.querySelectorAll('[role="row"]').forEach(row => expect(row.children).toHaveLength(4));
+    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+  });
+
+  it.each([
+    [3, 3],
+    [3, 4],
+    [4, 3],
+    [4, 4],
+  ] as const)('configures month columns=%s and year columns=%s independently', (monthColumns, yearColumns) => {
+    const { getAllByRole, getByRole } = render(
+      <Calendar
+        today={today}
+        value={today}
+        dayPicker={null}
+        calendarMonthColumns={monthColumns}
+        calendarYearColumns={yearColumns}
+      />,
+    );
+    expect(getAllByRole('row')).toHaveLength(12 / monthColumns);
+    getAllByRole('row').forEach(row => expect(row.children).toHaveLength(monthColumns));
+    fireEvent.click(getByRole('button', { name: '2020, change year' }));
+    expect(getAllByRole('row')).toHaveLength(12 / yearColumns);
+    getAllByRole('row').forEach(row => expect(row.children).toHaveLength(yearColumns));
+  });
+
+  it('updates columns and remembered Tab entry without stealing external focus', () => {
+    const calendar = (columns: 3 | 4) => (
+      <>
+        <Calendar today={today} value={today} dayPicker={null} calendarMonthColumns={columns} />
+        <button>Outside</button>
+      </>
+    );
+    const { getByRole, getAllByRole, rerender } = render(calendar(3));
+    act(() => getByRole('gridcell', { name: 'December' }).focus());
+    act(() => getByRole('button', { name: 'Outside' }).focus());
+
+    rerender(calendar(4));
+
+    expect(getAllByRole('row')).toHaveLength(3);
+    expect(getByRole('gridcell', { name: 'December' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('button', { name: 'Outside' })).toHaveFocus();
+    act(() => getByRole('gridcell', { name: 'January' }).focus());
+    fireEvent.keyDown(getByRole('gridcell', { name: 'January' }), { key: 'ArrowDown' });
+    expect(getByRole('gridcell', { name: 'May' })).toHaveFocus();
   });
 
   it('emits no Griffel styles of its own', () => {
@@ -49,8 +142,6 @@ describe('Calendar', () => {
   it('emits no styled class names at all', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
-    // Week-corner rounding is expressed as `data-corner-*` state rather than `fui-*` marker
-    // classes, so the headless output carries no styled vocabulary.
     const leaked = new Set<string>();
     container.querySelectorAll('[class]').forEach(el => {
       el.className
@@ -62,14 +153,27 @@ describe('Calendar', () => {
     expect([...leaked]).toEqual([]);
   });
 
-  it('exposes week-corner rounding through data attributes', () => {
-    const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
-
-    const corners = container.querySelectorAll(
-      'td[data-corner-top-left], td[data-corner-top-right], td[data-corner-bottom-left], td[data-corner-bottom-right]',
+  it('preserves range interaction state without imposing corner geometry', () => {
+    const { container, getByRole } = render(
+      <Calendar value={today} today={today} dayPicker={{ daysToSelectInDayView: 3 }} />,
     );
+    const cornerAttributes = () =>
+      Array.from(container.querySelectorAll('td')).flatMap(cell =>
+        cell.getAttributeNames().filter(name => name.startsWith('data-corner-')),
+      );
+    expect(cornerAttributes()).toEqual([]);
+    expect(container.querySelectorAll('td[data-selected]')).toHaveLength(3);
 
-    expect(corners.length).toBeGreaterThan(0);
+    const button = getByRole('button', { name: 'September 21, 2020' });
+    fireEvent.mouseOver(button);
+    fireEvent.mouseDown(button);
+    expect(container.querySelectorAll('td[data-range-hovered]')).toHaveLength(3);
+    expect(container.querySelectorAll('td[data-range-pressed]')).toHaveLength(3);
+    expect(cornerAttributes()).toEqual([]);
+
+    fireEvent.mouseOut(button);
+    expect(container.querySelectorAll('td[data-range-hovered], td[data-range-pressed]')).toHaveLength(0);
+    expect(cornerAttributes()).toEqual([]);
   });
 
   it('exposes day state through data attributes', () => {
@@ -145,35 +249,43 @@ describe('Calendar', () => {
     expect(queryByRole('button', { name: /change month/ })).toBeNull();
   });
 
-  it('preserves day focus restoration with a consumer picker ref', async () => {
+  it('preserves day focus restoration with a consumer imperativeRef and root ref', async () => {
     const dayRef = React.createRef<CalendarDayHandle>();
+    const dayRootRef = React.createRef<HTMLDivElement>();
     const { getByRole } = render(
       <Calendar
         today={new Date(2020, 8, 18)}
         defaultDisplayedDate={new Date(2020, 9, 18)}
-        dayPicker={{ ref: dayRef }}
+        dayPicker={{ ref: dayRootRef, imperativeRef: dayRef }}
       />,
     );
 
     expect(dayRef.current?.focus).toBeInstanceOf(Function);
+    expect(dayRootRef.current).toContainElement(getByRole('button', { name: 'October 18, 2020' }));
     fireEvent.click(getByRole('button', { name: 'Go to today' }));
 
     await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
   });
 
-  it('preserves month focus restoration with a consumer picker ref', async () => {
+  it('preserves month focus restoration with a consumer imperativeRef and root ref', async () => {
     const monthRef = React.createRef<CalendarMonthHandle>();
+    const monthRootRef = React.createRef<HTMLDivElement>();
     const { getByRole } = render(
-      <Calendar value={new Date(2020, 8, 18)} layout="overlay" monthPicker={{ ref: monthRef }} />,
+      <Calendar
+        value={new Date(2020, 8, 18)}
+        layout="overlay"
+        monthPicker={{ ref: monthRootRef, imperativeRef: monthRef }}
+      />,
     );
 
     fireEvent.click(getByRole('button', { name: /September 2020, change month/ }));
 
     expect(monthRef.current?.focus).toBeInstanceOf(Function);
+    expect(monthRootRef.current).toContainElement(getByRole('gridcell', { name: 'September' }));
     await waitFor(() => expect(getByRole('gridcell', { name: 'September' })).toHaveFocus());
   });
 
-  it('preserves picker focus handles with consumer callback refs', async () => {
+  it('preserves picker focus handles with consumer imperativeRef callbacks', async () => {
     let dayHandle: CalendarDayHandle | null = null;
     let monthHandle: CalendarMonthHandle | null = null;
     let yearHandle: CalendarYearHandle | null = null;
@@ -186,12 +298,12 @@ describe('Calendar', () => {
     const yearRef = (handle: CalendarYearHandle | null) => {
       yearHandle = handle;
     };
-    const { getByRole } = render(
+    const { getByRole, unmount } = render(
       <Calendar
         today={new Date(2020, 8, 18)}
         defaultDisplayedDate={new Date(2020, 9, 18)}
-        dayPicker={{ ref: dayRef }}
-        monthPicker={{ ref: monthRef, yearPicker: { ref: yearRef } }}
+        dayPicker={{ imperativeRef: dayRef }}
+        monthPicker={{ imperativeRef: monthRef, yearPicker: { imperativeRef: yearRef } }}
       />,
     );
     const handles = () => ({ day: dayHandle, month: monthHandle, year: yearHandle });
@@ -208,39 +320,388 @@ describe('Calendar', () => {
     fireEvent.click(getByRole('button', { name: '2020 - 2031, change year' }));
     expect(handles().year).toBeNull();
     await waitFor(() => expect(getByRole('gridcell', { name: 'September' })).toHaveFocus());
+    unmount();
+    expect(handles()).toEqual({ day: null, month: null, year: null });
   });
 
-  it('restores focus when responsive overlay mode hides the focused month picker', async () => {
-    const targetWindow = render(<div />).container.ownerDocument.defaultView!;
-    const descriptor = Object.getOwnPropertyDescriptor(targetWindow, 'matchMedia');
-    let onMediaChange: (() => void) | undefined;
-    const mediaQuery = {
-      matches: false,
-      addEventListener: (_type: string, listener: () => void) => {
-        onMediaChange = listener;
-      },
-      removeEventListener: jest.fn(),
-    };
-    Object.defineProperty(targetWindow, 'matchMedia', {
-      configurable: true,
-      value: jest.fn(() => mediaQuery),
+  it('defaults to side-by-side and restores focus when a layout change hides the focused month picker', async () => {
+    const { getByRole, queryByRole, rerender } = render(<Calendar value={new Date(2020, 8, 18)} />);
+
+    expect(getByRole('button', { name: 'September 18, 2020' })).toBeInTheDocument();
+    act(() => getByRole('gridcell', { name: 'March' }).focus());
+    rerender(<Calendar value={new Date(2020, 8, 18)} layout="overlay" />);
+
+    expect(queryByRole('gridcell', { name: 'March' })).toBeNull();
+    await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
+  });
+});
+
+describe('Calendar interaction sequences', () => {
+  it.each([
+    { key: 'PageUp', shiftKey: false, targetDate: new Date(2020, 7, 25) },
+    { key: 'PageDown', shiftKey: false, targetDate: new Date(2020, 9, 25) },
+    { key: 'PageUp', shiftKey: true, targetDate: new Date(2019, 8, 25) },
+    { key: 'PageDown', shiftKey: true, targetDate: new Date(2021, 8, 25) },
+  ])('pages from the focused date with $key and shiftKey=$shiftKey', async ({ key, shiftKey, targetDate }) => {
+    const onDisplayedDateChange = jest.fn();
+    const onSelectDate = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        onDisplayedDateChange={onDisplayedDateChange}
+        onSelectDate={onSelectDate}
+      />,
+    );
+    const focusedDay = getByRole('button', { name: 'September 25, 2020' }).closest('td')!;
+    act(() => focusedDay.focus());
+    expect(focusedDay).toHaveFocus();
+
+    fireEvent.keyDown(focusedDay, { key, shiftKey });
+
+    expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(targetDate);
+    expect(onSelectDate).not.toHaveBeenCalled();
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(targetDate) }).closest('td')).toHaveFocus());
+  });
+
+  it.each([
+    { anchorDate: new Date(2021, 0, 18), focusedDate: new Date(2021, 0, 31), shiftKey: false },
+    { anchorDate: new Date(2020, 1, 18), focusedDate: new Date(2020, 1, 29), shiftKey: true },
+  ])('clamps a focused month-end or leap day when paging', async ({ anchorDate, focusedDate, shiftKey }) => {
+    const onDisplayedDateChange = jest.fn();
+    const targetDate = new Date(2021, 1, 28);
+    const { getByRole } = render(
+      <Calendar defaultValue={anchorDate} today={today} onDisplayedDateChange={onDisplayedDateChange} />,
+    );
+    const focusedDay = getByRole('button', { name: dayLabel(focusedDate) }).closest('td')!;
+    act(() => focusedDay.focus());
+
+    fireEvent.keyDown(focusedDay, { key: 'PageDown', shiftKey });
+
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(targetDate);
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(targetDate) }).closest('td')).toHaveFocus());
+  });
+
+  it('preserves controlled navigation and consumer cancellation after moving focus', () => {
+    const onDisplayedDateChange = jest.fn();
+    const onKeyDown = jest.fn((event: React.KeyboardEvent) => {
+      if (event.key === 'PageDown') {
+        event.preventDefault();
+      }
+    });
+    const { getByRole, rerender } = render(
+      <Calendar value={today} displayedDate={today} onDisplayedDateChange={onDisplayedDateChange} />,
+    );
+    const focusedDay = getByRole('button', { name: 'September 25, 2020' }).closest('td')!;
+    act(() => focusedDay.focus());
+    fireEvent.keyDown(focusedDay, { key: 'PageDown' });
+    expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(new Date(2020, 9, 25));
+    expect(getByRole('button', { name: 'September 25, 2020' })).toBeTruthy();
+
+    onDisplayedDateChange.mockClear();
+    rerender(
+      <Calendar
+        value={today}
+        displayedDate={today}
+        onKeyDown={onKeyDown}
+        onDisplayedDateChange={onDisplayedDateChange}
+      />,
+    );
+    fireEvent.keyDown(focusedDay, { key: 'PageDown' });
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+    expect(focusedDay).toHaveFocus();
+  });
+
+  it.each([false, true])('only owns Escape when onDismiss is provided: %s', ownsDismissal => {
+    const onDismiss = jest.fn();
+    const onParentKeyDown = jest.fn();
+    const { getByRole } = render(
+      <div onKeyDown={onParentKeyDown}>
+        <Calendar defaultValue={today} today={today} onDismiss={ownsDismissal ? onDismiss : undefined} />
+      </div>,
+    );
+    fireEvent.keyDown(getByRole('button', { name: dayLabel(today) }).closest('td')!, { key: 'Escape' });
+    expect(onDismiss).toHaveBeenCalledTimes(ownsDismissal ? 1 : 0);
+    expect(onParentKeyDown).toHaveBeenCalledTimes(ownsDismissal ? 0 : 1);
+  });
+
+  it.each(['Backspace', 'Enter', 'PageUp', 'PageDown'])('preserves %s in editable header content', key => {
+    const onDisplayedDateChange = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        layout="sideBySide"
+        onDisplayedDateChange={onDisplayedDateChange}
+        dayPicker={{ heading: { children: <input aria-label="Custom header" defaultValue="2020" /> } }}
+      />,
+    );
+    const input = getByRole('textbox', { name: 'Custom header' });
+    input.focus();
+    expect(fireEvent.keyDown(input, { key })).toBe(true);
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+  });
+
+  it('preserves paging keys in nested contenteditable content', () => {
+    const onDisplayedDateChange = jest.fn();
+    const { getByText } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        layout="sideBySide"
+        onDisplayedDateChange={onDisplayedDateChange}
+        dayPicker={{
+          heading: {
+            children: (
+              <div contentEditable suppressContentEditableWarning>
+                <span>Editable year</span>
+              </div>
+            ),
+          },
+        }}
+      />,
+    );
+    expect(fireEvent.keyDown(getByText('Editable year'), { key: 'PageDown' })).toBe(true);
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+  });
+
+  it('does not cancel native Enter activation for custom header buttons', () => {
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        layout="sideBySide"
+        dayPicker={{ heading: { children: <button type="button">Custom action</button> } }}
+      />,
+    );
+    expect(fireEvent.keyDown(getByRole('button', { name: 'Custom action' }), { key: 'Enter' })).toBe(true);
+  });
+
+  it('keeps an unavailable go-to-today action focusable but inactive with allFocusable', () => {
+    const onDisplayedDateChange = jest.fn();
+    const onViewChange = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        allFocusable
+        onDisplayedDateChange={onDisplayedDateChange}
+        onViewChange={onViewChange}
+      />,
+    );
+    const button = getByRole('button', { name: 'Go to today' });
+    expect(button).not.toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    button.focus();
+    expect(button).toHaveFocus();
+    fireEvent.click(button);
+    fireEvent.keyDown(button, { key: 'Enter' });
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+    expect(onViewChange).not.toHaveBeenCalled();
+    expect(button).toHaveFocus();
+  });
+
+  it.each([1, 2, 3, 4])('navigates to today within the same month in a %s-week day grid', async weeksToShow => {
+    const onSelectDate = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={null}
+        defaultDisplayedDate={new Date(2020, 8, 1)}
+        today={today}
+        monthPicker={null}
+        dayPicker={{ weeksToShow }}
+        onSelectDate={onSelectDate}
+      />,
+    );
+    const button = getByRole('button', { name: 'Go to today' });
+    expect(button).not.toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'false');
+    fireEvent.click(button);
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(today) }).closest('td')).toHaveFocus());
+    expect(button).toBeDisabled();
+    expect(onSelectDate).not.toHaveBeenCalled();
+  });
+
+  it.each(['sunday', 'monday'] as const)(
+    'reveals and focuses today in a five-week grid when the month needs six rows starting on %s',
+    async firstDayOfWeek => {
+      const monthEnd = new Date(2020, 7, 31);
+      const onDisplayedDateChange = jest.fn();
+      const onSelectDate = jest.fn();
+      const { getAllByRole, getByRole, queryByRole } = render(
+        <Calendar
+          defaultValue={null}
+          defaultDisplayedDate={new Date(2020, 7, 1)}
+          today={monthEnd}
+          firstDayOfWeek={firstDayOfWeek}
+          monthPicker={null}
+          dayPicker={{ weeksToShow: 5 }}
+          onDisplayedDateChange={onDisplayedDateChange}
+          onSelectDate={onSelectDate}
+        />,
+      );
+      expect(queryByRole('button', { name: dayLabel(monthEnd) })).toBeNull();
+      expect(getAllByRole('row')).toHaveLength(6);
+      const button = getByRole('button', { name: 'Go to today' });
+      expect(button).not.toBeDisabled();
+      expect(button).toHaveAttribute('aria-disabled', 'false');
+
+      fireEvent.click(button);
+
+      expect(onDisplayedDateChange).toHaveBeenCalledTimes(1);
+      expect(onDisplayedDateChange.mock.calls[0][1].displayedDate).toEqual(monthEnd);
+      await waitFor(() => expect(getByRole('button', { name: dayLabel(monthEnd) }).closest('td')).toHaveFocus());
+      expect(getAllByRole('row')).toHaveLength(6);
+      expect(button).toBeDisabled();
+      expect(onSelectDate).not.toHaveBeenCalled();
+    },
+  );
+
+  it('clamps go-to-today within a shortened grid to the maximum date', async () => {
+    const maxDate = new Date(2020, 8, 10);
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={null}
+        defaultDisplayedDate={new Date(2020, 8, 1)}
+        today={today}
+        maxDate={maxDate}
+        monthPicker={null}
+        dayPicker={{ weeksToShow: 1 }}
+      />,
+    );
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(maxDate) }).closest('td')).toHaveFocus());
+    expect(getByRole('button', { name: 'Go to today' })).toBeDisabled();
+  });
+
+  it('reveals the maximum date when go-to-today is clamped into the sixth month row', async () => {
+    const maxDate = new Date(2020, 7, 31);
+    const { getByRole, queryByRole } = render(
+      <Calendar
+        defaultValue={null}
+        defaultDisplayedDate={new Date(2020, 7, 1)}
+        today={today}
+        maxDate={maxDate}
+        monthPicker={null}
+        dayPicker={{ weeksToShow: 5 }}
+      />,
+    );
+    expect(queryByRole('button', { name: dayLabel(maxDate) })).toBeNull();
+    fireEvent.click(getByRole('button', { name: 'Go to today' }));
+    await waitFor(() => expect(getByRole('button', { name: dayLabel(maxDate) }).closest('td')).toHaveFocus());
+    expect(getByRole('button', { name: 'Go to today' })).toBeDisabled();
+  });
+
+  describe('focus ownership', () => {
+    beforeEach(() => jest.useFakeTimers());
+    afterEach(() => {
+      act(() => jest.runOnlyPendingTimers());
+      jest.useRealTimers();
     });
 
-    try {
-      const { getByRole, queryByRole } = render(<Calendar value={new Date(2020, 8, 18)} layout="auto" />);
+    it.each([
+      { key: 'PageUp', focusTarget: 'day' },
+      { key: 'PageDown', focusTarget: 'day' },
+      { key: 'PageUp', focusTarget: 'navigation' },
+      { key: 'PageDown', focusTarget: 'navigation' },
+    ])(
+      'cancels queued $key focus from $focusTarget when focus leaves Calendar before the next frame',
+      ({ key, focusTarget }) => {
+        const { getByRole, getByTitle } = render(
+          <>
+            <Calendar defaultValue={today} today={today} />
+            <button type="button">Outside action</button>
+          </>,
+        );
+        const target =
+          focusTarget === 'day'
+            ? getByRole('button', { name: dayLabel(today) }).closest('td')!
+            : getByTitle('Next month October');
+        act(() => target.focus());
+        fireEvent.keyDown(target, { key });
+        const outside = getByRole('button', { name: 'Outside action' });
+        outside.focus();
+        expect(outside).toHaveFocus();
 
-      getByRole('gridcell', { name: 'March' }).focus();
-      mediaQuery.matches = true;
-      act(() => onMediaChange?.());
+        act(() => jest.advanceTimersToNextFrame());
 
-      expect(queryByRole('gridcell', { name: 'March' })).toBeNull();
-      await waitFor(() => expect(getByRole('button', { name: 'September 18, 2020' }).closest('td')).toHaveFocus());
-    } finally {
-      if (descriptor) {
-        Object.defineProperty(targetWindow, 'matchMedia', descriptor);
-      } else {
-        Reflect.deleteProperty(targetWindow, 'matchMedia');
-      }
-    }
+        expect(outside).toHaveFocus();
+      },
+    );
+
+    it('does not reclaim focus moved outside by a navigation callback before focus is queued', () => {
+      const outsideRef = React.createRef<HTMLButtonElement>();
+      const { getByRole } = render(
+        <>
+          <Calendar defaultValue={today} today={today} onDisplayedDateChange={() => outsideRef.current?.focus()} />
+          <button ref={outsideRef} type="button">
+            Outside action
+          </button>
+        </>,
+      );
+      const day = getByRole('button', { name: dayLabel(today) }).closest('td')!;
+      act(() => day.focus());
+      fireEvent.keyDown(day, { key: 'PageDown' });
+      expect(outsideRef.current).toHaveFocus();
+
+      act(() => jest.advanceTimersToNextFrame());
+
+      expect(outsideRef.current).toHaveFocus();
+    });
+
+    it.each(['day', 'month'] as const)('does not reclaim outside focus when controlled view hides %s', view => {
+      const onBlurCapture = jest.fn();
+      const { getByRole, rerender } = render(
+        <>
+          <Calendar defaultValue={today} today={today} layout="overlay" view={view} onBlurCapture={onBlurCapture} />
+          <button type="button">Outside action</button>
+        </>,
+      );
+      const pickerCell =
+        view === 'day'
+          ? getByRole('button', { name: dayLabel(today) }).closest('td')!
+          : getByRole('gridcell', { name: 'September' });
+      act(() => pickerCell.focus());
+      const outside = getByRole('button', { name: 'Outside action' });
+      outside.focus();
+      expect(onBlurCapture).toHaveBeenCalledTimes(1);
+      rerender(
+        <>
+          <Calendar
+            defaultValue={today}
+            today={today}
+            layout="overlay"
+            view={view === 'day' ? 'month' : 'day'}
+            onBlurCapture={onBlurCapture}
+          />
+          <button type="button">Outside action</button>
+        </>,
+      );
+      act(() => jest.advanceTimersToNextFrame());
+      expect(outside).toHaveFocus();
+    });
+
+    it('does not reclaim outside focus when a layout change hides the previously focused month picker', () => {
+      const { getByRole, queryByRole, rerender } = render(
+        <>
+          <Calendar defaultValue={today} today={today} layout="sideBySide" />
+          <button type="button">Outside action</button>
+        </>,
+      );
+      act(() => getByRole('gridcell', { name: 'September' }).focus());
+      const outside = getByRole('button', { name: 'Outside action' });
+      outside.focus();
+      rerender(
+        <>
+          <Calendar defaultValue={today} today={today} layout="overlay" />
+          <button type="button">Outside action</button>
+        </>,
+      );
+      act(() => jest.advanceTimersToNextFrame());
+      expect(queryByRole('gridcell', { name: 'September' })).toBeNull();
+      expect(outside).toHaveFocus();
+    });
   });
 });

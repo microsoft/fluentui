@@ -1,4 +1,3 @@
-export { stringifyDataAttribute } from './dataAttributes';
 export { DAYS_IN_WEEK } from './constants';
 export { getDayFromIndex, getDayIndex, getMonthIndex } from './dateUtils';
 export type { DateRangeType, DayOfWeek, FirstWeekOfYear, MonthOfYear } from './constants';
@@ -27,9 +26,4 @@ export {
   isDateInRange,
   setMonth,
 } from './dateMath';
-export type {
-  CalendarDataAttributes,
-  CalendarElementProps,
-  CalendarGridRow,
-  CalendarRowWrapper,
-} from './calendarGrid.types';
+export type { CalendarGridRow } from '../hooks/useCalendarGrid';

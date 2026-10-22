@@ -3,6 +3,21 @@ import { Enter } from '@fluentui/keyboard-keys';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
 
+// The day grid supplies the focused date while Calendar owns paging and consumer cancellation.
+const navigationDates = new WeakMap<Event, Date>();
+
+/** Records the focused day for the parent Calendar's paging handler. */
+export const setCalendarNavigationDate = (event: Event, date: Date): void => {
+  navigationDates.set(event, date);
+};
+
+/** Consumes the focused day associated with this paging event. */
+export const getCalendarNavigationDate = (event: Event): Date | undefined => {
+  const date = navigationDates.get(event);
+  navigationDates.delete(event);
+  return date;
+};
+
 /**
  * The `type` reported in event data for a mouse or keyboard activation.
  */

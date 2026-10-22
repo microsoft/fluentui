@@ -1,4 +1,4 @@
-import { findAvailableDate, getBoundedDateRange, isRestrictedDate } from './dateAvailability';
+import { findAvailableDate, getAvailableDates, getBoundedDateRange, isRestrictedDate } from './dateAvailability';
 import * as dateMath from '../dateMath';
 import type { AvailableDateOptions } from './dateGrid.types';
 
@@ -26,6 +26,31 @@ describe('isRestrictedDate', () => {
   it('matches restricted dates by year, month and day, not time', () => {
     expect(isRestrictedDate(date, { restrictedDates: [new Date(2020, 8, 18, 23)] })).toBe(true);
     expect(isRestrictedDate(date, { restrictedDates: [new Date(2020, 7, 18), new Date(2019, 8, 18)] })).toBe(false);
+  });
+});
+
+describe('getAvailableDates', () => {
+  const dates = Array.from({ length: 5 }, (_, index) => new Date(2020, 8, 17 + index));
+
+  it('filters inclusive bounds and restrictions without changing input dates or their order', () => {
+    const result = getAvailableDates(dates, {
+      minDate: new Date(2020, 8, 18, 12),
+      maxDate: new Date(2020, 8, 20),
+      restrictedDates: [new Date(2020, 8, 19, 23)],
+    });
+    expect(result).toEqual([dates[1], dates[3]]);
+    expect(result[0]).toBe(dates[1]);
+    expect(result[1]).toBe(dates[3]);
+    expect(dates.map(date => date.getDate())).toEqual([17, 18, 19, 20, 21]);
+  });
+
+  it('returns a fresh array without restrictions and handles empty or fully restricted ranges', () => {
+    const result = getAvailableDates(dates, {});
+    expect(result).toEqual(dates);
+    expect(result).not.toBe(dates);
+    expect(getAvailableDates([], {})).toEqual([]);
+    expect(getAvailableDates(dates, { restrictedDates: dates })).toEqual([]);
+    expect(getAvailableDates(dates, { minDate: dates[4], maxDate: dates[0] })).toEqual([]);
   });
 });
 

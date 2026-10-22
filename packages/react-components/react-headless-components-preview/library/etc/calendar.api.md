@@ -6,17 +6,12 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
 import * as React_2 from 'react';
-import type { RefAttributes } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
@@ -40,12 +35,12 @@ export const calendarContextDefaultValue: CalendarContextValue;
 // @public
 export type CalendarContextValue = {
     allFocusable: boolean;
+    calendarMonthColumns: 3 | 4;
+    calendarYearColumns: 3 | 4;
     dateRangeType: DateRangeType;
     firstDayOfWeek: DayOfWeek;
     firstWeekOfYear: FirstWeekOfYear;
     formatters: CalendarFormatters;
-    highlightCurrent: boolean;
-    highlightSelected: boolean;
     maxDate?: Date;
     minDate?: Date;
     restrictedDates?: Date[];
@@ -62,11 +57,6 @@ export type CalendarContextValues = {
 };
 
 // @public
-export type CalendarDataAttributes = {
-    [attribute: `data-${string}`]: string | undefined;
-};
-
-// @public
 export type CalendarDateLabelData = {
     date: Date;
     formattedDate: string;
@@ -76,20 +66,23 @@ export type CalendarDateLabelData = {
 export type CalendarDateTimeFormat = 'day' | 'month' | 'shortMonth' | 'year' | 'monthDayYear' | 'dayMonthYear' | 'monthYear' | 'weekday' | 'shortWeekday';
 
 // @public
-export const CalendarDay: React_2.ForwardRefExoticComponent<CalendarDayProps & RefAttributes<CalendarDayHandle>>;
+export const CalendarDay: ForwardRefComponent<CalendarDayProps>;
 
 // @public
-export type CalendarDayCell = DayInfo & {
-    props: CalendarElementProps<HTMLTableCellElement, React_2.TdHTMLAttributes<HTMLTableCellElement>>;
-    button: CalendarElementProps<HTMLButtonElement, React_2.ButtonHTMLAttributes<HTMLButtonElement>>;
-    label: CalendarElementProps<HTMLSpanElement>;
-    marker?: CalendarElementProps<HTMLDivElement>;
+export type CalendarDayCellData = DayInfo & {
+    label: string;
+    isNavigated: boolean;
 };
 
 // @public
-export type CalendarDayCellProps = React_2.TdHTMLAttributes<HTMLTableCellElement> & CalendarElementProps<HTMLTableCellElement>;
+export type CalendarDayCellProps = {
+    root?: Omit<React_2.ComponentProps<'td'>, 'children'>;
+    button?: React_2.ComponentProps<'button'>;
+    label?: React_2.ComponentProps<'span'>;
+    marker?: React_2.ComponentProps<'span'>;
+};
 
-// @public (undocumented)
+// @public
 export type CalendarDayDismissData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>>;
 
 // @public
@@ -97,10 +90,10 @@ export type CalendarDayHandle = {
     focus(options?: FocusOptions): void;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarDayHeaderSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>>;
 
-// @public (undocumented)
+// @public
 export type CalendarDayNavigateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     date: Date;
     focusOnNavigatedDay: boolean;
@@ -108,24 +101,42 @@ export type CalendarDayNavigateData = EventData<'click' | 'keydown', React_2.Syn
 
 // @public
 export type CalendarDayProps = ComponentProps<Partial<CalendarDaySlots>> & Pick<Partial<DayGridOptions>, 'daysToSelectInDayView' | 'markedDays'> & {
+    imperativeRef?: React_2.Ref<CalendarDayHandle>;
     navigatedDate?: Date;
     onNavigateDate?: EventHandler<CalendarDayNavigateData>;
     onDismiss?: EventHandler<CalendarDayDismissData>;
     onHeaderSelect?: EventHandler<CalendarDayHeaderSelectData>;
     weeksToShow?: number;
-    lightenDaysOutsideNavigatedMonth?: boolean;
     getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
-    getDayCellProps?: (date: Date) => CalendarDayCellProps;
-    renderDay?: (day: CalendarDayCell, defaultContent: React_2.ReactNode) => React_2.ReactNode;
+    getCellProps?: (day: CalendarDayCellData) => CalendarDayCellProps;
+    getRowProps?: (row: CalendarDayRowData) => CalendarDayRowProps;
+    getWeekdayCellProps?: (weekday: CalendarDayWeekdayCellData) => CalendarDayWeekdayCellProps;
 };
 
-// @public (undocumented)
+// @public
+export type CalendarDayRowData = {
+    type: 'week';
+    key: number;
+    days: CalendarDayCellData[];
+    weekNumber?: number;
+} | {
+    type: 'weekday';
+    cells: CalendarDayWeekdayCellData[];
+};
+
+// @public
+export type CalendarDayRowProps = {
+    root?: Omit<React_2.ComponentProps<'tr'>, 'children'>;
+    weekNumber?: React_2.ComponentProps<'th'>;
+};
+
+// @public
 export type CalendarDaySelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     date: Date;
     selectedDateRange: Date[];
 };
 
-// @public (undocumented)
+// @public
 export type CalendarDaySlots = {
     root: NonNullable<Slot<'div'>>;
     header: NonNullable<Slot<'div'>>;
@@ -138,49 +149,34 @@ export type CalendarDaySlots = {
     body: NonNullable<Slot<'tbody'>>;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarDayState = ComponentState<CalendarDaySlots> & {
-    navigatedDate: Date;
-    focusTargetDate?: Date;
-    monthAndYear: string;
-    prevMonthInBounds: boolean;
-    nextMonthInBounds: boolean;
-    headerIsClickable: boolean;
-    lightenDaysOutsideNavigatedMonth: boolean;
-    showWeekNumbers: boolean;
-    weekdayRow: CalendarDayWeekdayRow;
-    weeks: CalendarDayWeek[];
-    renderDay?: CalendarDayProps['renderDay'];
-    wrapWeek?: CalendarRowWrapper<CalendarDayWeek>;
-    wrapWeekdayCell?: (cell: React_2.ReactElement) => React_2.ReactElement;
+    weekdayRow: Extract<CalendarDayRowData, {
+        type: 'weekday';
+    }>;
+    weeks: Extract<CalendarDayRowData, {
+        type: 'week';
+    }>[];
+    getDayCellProps: (day: CalendarDayCellData) => Required<Omit<CalendarDayCellProps, 'marker'>> & Pick<CalendarDayCellProps, 'marker'>;
+    getDayRowProps: (row: CalendarDayRowData) => Required<Pick<CalendarDayRowProps, 'root'>> & Pick<CalendarDayRowProps, 'weekNumber'>;
+    getWeekdayCellProps: (weekday: CalendarDayWeekdayCellData) => Required<CalendarDayWeekdayCellProps>;
 };
 
 // @public
-export type CalendarDayWeek = {
-    key: number;
-    transition?: 'first' | 'last';
-    props: CalendarElementProps<HTMLTableRowElement>;
-    weekNumber?: CalendarElementProps<HTMLTableCellElement, React_2.ThHTMLAttributes<HTMLTableCellElement>>;
-    days: CalendarDayCell[];
+export type CalendarDayWeekdayCellData = {
+    key: string;
+    dayOfWeek: DayOfWeek;
+    label: string;
+    accessibleLabel: string;
 };
 
 // @public
-export type CalendarDayWeekdayRow = {
-    props: CalendarElementProps<HTMLTableRowElement>;
-    weekNumberSpacer?: CalendarElementProps<HTMLTableCellElement, React_2.ThHTMLAttributes<HTMLTableCellElement>>;
-    cells: {
-        key: string;
-        props: CalendarElementProps<HTMLTableCellElement, React_2.ThHTMLAttributes<HTMLTableCellElement>>;
-    }[];
+export type CalendarDayWeekdayCellProps = {
+    root?: React_2.ComponentProps<'th'>;
 };
 
 // @public
 export type CalendarDismissData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>>;
-
-// @public
-export type CalendarElementProps<E extends HTMLElement, A extends React_2.HTMLAttributes<E> = React_2.HTMLAttributes<E>> = A & CalendarDataAttributes & {
-    ref?: React_2.Ref<E>;
-};
 
 // @public
 export type CalendarFormatters = {
@@ -211,25 +207,28 @@ export const calendarFormatters: CalendarFormatters;
 // @public
 export type CalendarGridRow<TCell> = {
     key: number;
-    props: CalendarElementProps<HTMLDivElement>;
     cells: TCell[];
 };
 
 // @public
-export type CalendarLayout = 'auto' | 'sideBySide' | 'overlay';
+export type CalendarLayout = 'sideBySide' | 'overlay';
 
 // @public
-export const CalendarMonth: React_2.ForwardRefExoticComponent<CalendarMonthProps & RefAttributes<CalendarMonthHandle>>;
+export const CalendarMonth: ForwardRefComponent<CalendarMonthProps>;
 
 // @public
-export type CalendarMonthCell = {
+export type CalendarMonthCellData = {
     index: number;
     label: string;
     isNavigated: boolean;
     isCurrent: boolean;
     isSelected: boolean;
     isInBounds: boolean;
-    props: CalendarElementProps<HTMLButtonElement, React_2.ButtonHTMLAttributes<HTMLButtonElement>>;
+};
+
+// @public
+export type CalendarMonthCellProps = {
+    root?: React_2.ComponentProps<'button'>;
 };
 
 // @public
@@ -237,19 +236,22 @@ export type CalendarMonthHandle = {
     focus(options?: FocusOptions): void;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarMonthHeaderSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>>;
 
-// @public (undocumented)
+// @public
 export type CalendarMonthNavigateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     date: Date;
     focusOnNavigatedDay: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
+    imperativeRef?: React_2.Ref<CalendarMonthHandle>;
     navigatedDate?: Date;
     selectedDate?: Date | null;
+    getCellProps?: (month: CalendarMonthCellData) => CalendarMonthCellProps;
+    getRowProps?: (row: CalendarMonthRowData) => CalendarMonthRowProps;
     onSelectDate?: EventHandler<CalendarMonthSelectData>;
     onNavigateDate?: EventHandler<CalendarMonthNavigateData>;
     onHeaderSelect?: EventHandler<CalendarMonthHeaderSelectData>;
@@ -257,15 +259,20 @@ export type CalendarMonthProps = ComponentProps<Partial<CalendarMonthSlots>> & {
 };
 
 // @public
-export type CalendarMonthRow = CalendarGridRow<CalendarMonthCell>;
+export type CalendarMonthRowData = CalendarGridRow<CalendarMonthCellData>;
 
-// @public (undocumented)
+// @public
+export type CalendarMonthRowProps = {
+    root?: React_2.ComponentProps<'div'>;
+};
+
+// @public
 export type CalendarMonthSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>> & {
     date: Date;
     selectedDateRange: Date[];
 };
 
-// @public (undocumented)
+// @public
 export type CalendarMonthSlots = {
     root: NonNullable<Slot<'div'>>;
     header: NonNullable<Slot<'div'>>;
@@ -277,16 +284,12 @@ export type CalendarMonthSlots = {
     yearPicker: NonNullable<Slot<typeof CalendarYear>>;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarMonthState = ComponentState<CalendarMonthSlots> & {
     isYearPickerVisible: boolean;
-    yearPickerRef: React_2.RefObject<CalendarYearHandle | null>;
-    headerIsClickable: boolean;
-    isPrevYearInBounds: boolean;
-    isNextYearInBounds: boolean;
-    monthRows: CalendarMonthRow[];
-    navigatedYear: number;
-    wrapRow?: CalendarRowWrapper<CalendarMonthRow>;
+    monthRows: CalendarMonthRowData[];
+    getMonthCellProps: (month: CalendarMonthCellData) => Required<CalendarMonthCellProps>;
+    getMonthRowProps: (row: CalendarMonthRowData) => Required<CalendarMonthRowProps>;
 };
 
 // @public
@@ -317,16 +320,13 @@ export type CalendarProps = DistributiveOmit<ComponentProps<Partial<CalendarSlot
     maxDate?: Date;
     restrictedDates?: Date[];
     workWeekDays?: DayOfWeek[];
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
     allFocusable?: boolean;
+    calendarMonthColumns?: 3 | 4;
+    calendarYearColumns?: 3 | 4;
 };
 
 // @public
-export const CalendarProvider: Provider<CalendarContextValue | undefined> & FC<ProviderProps<CalendarContextValue | undefined>>;
-
-// @public
-export type CalendarRowWrapper<TRow> = (row: React_2.ReactElement, data: TRow) => React_2.ReactElement | null;
+export const CalendarProvider: React_2.Provider<CalendarContextValue | undefined>;
 
 // @public
 export type CalendarSelectDateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
@@ -347,11 +347,8 @@ export type CalendarSlots = {
 
 // @public
 export type CalendarState = ComponentState<CalendarSlots> & CalendarContextValue & {
-    dayPickerRef: React_2.RefObject<CalendarDayHandle | null>;
-    monthPickerRef: React_2.RefObject<CalendarMonthHandle | null>;
     isDayPickerVisible: boolean;
     isMonthPickerVisible: boolean;
-    isOverlay: boolean;
 };
 
 // @public
@@ -363,17 +360,21 @@ export type CalendarViewChangeData = EventData<'click' | 'keydown', React_2.Synt
 };
 
 // @public
-export const CalendarYear: React_2.ForwardRefExoticComponent<CalendarYearProps & RefAttributes<CalendarYearHandle>>;
+export const CalendarYear: ForwardRefComponent<CalendarYearProps>;
 
 // @public
-export type CalendarYearCell = {
+export type CalendarYearCellData = {
     year: number;
-    content: React_2.ReactNode;
+    label: string;
     isCurrent: boolean;
     isSelected: boolean;
     isNavigated: boolean;
     isDisabled: boolean;
-    props: CalendarElementProps<HTMLButtonElement, React_2.ButtonHTMLAttributes<HTMLButtonElement>>;
+};
+
+// @public
+export type CalendarYearCellProps = {
+    root?: React_2.ComponentProps<'button'>;
 };
 
 // @public
@@ -381,21 +382,23 @@ export type CalendarYearHandle = {
     focus(options?: FocusOptions): void;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLElement>> & {
     focus: boolean;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarYearNavigateData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>> & {
     year: number;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
+    imperativeRef?: React_2.Ref<CalendarYearHandle>;
     navigatedYear?: number;
     selectedYear?: number | null;
-    renderYear?: (year: number) => React_2.ReactNode;
+    getCellProps?: (year: CalendarYearCellData) => CalendarYearCellProps;
+    getRowProps?: (row: CalendarYearRowData) => CalendarYearRowProps;
     onSelectYear?: EventHandler<CalendarYearSelectData>;
     onNavigateDate?: EventHandler<CalendarYearNavigateData>;
     onHeaderSelect?: EventHandler<CalendarYearHeaderSelectData>;
@@ -403,9 +406,7 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
 
 // @public
 export interface CalendarYearRange {
-    // (undocumented)
     fromYear: number;
-    // (undocumented)
     toYear: number;
 }
 
@@ -417,14 +418,19 @@ export type CalendarYearRangeLabelData = {
 };
 
 // @public
-export type CalendarYearRow = CalendarGridRow<CalendarYearCell>;
+export type CalendarYearRowData = CalendarGridRow<CalendarYearCellData>;
 
-// @public (undocumented)
+// @public
+export type CalendarYearRowProps = {
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'>;
+};
+
+// @public
 export type CalendarYearSelectData = EventData<'click' | 'keydown', React_2.SyntheticEvent<HTMLButtonElement>> & {
     year: number;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarYearSlots = {
     root: NonNullable<Slot<'div'>>;
     header: NonNullable<Slot<'div'>>;
@@ -435,14 +441,11 @@ export type CalendarYearSlots = {
     grid: NonNullable<Slot<'div'>>;
 };
 
-// @public (undocumented)
+// @public
 export type CalendarYearState = ComponentState<CalendarYearSlots> & {
-    fromYear: number;
-    hasHeaderClickCallback: boolean;
-    prevDisabled: boolean;
-    nextDisabled: boolean;
-    yearRows: CalendarYearRow[];
-    wrapRow?: CalendarRowWrapper<CalendarYearRow>;
+    yearRows: CalendarYearRowData[];
+    getYearCellProps: (year: CalendarYearCellData) => Required<CalendarYearCellProps>;
+    getYearRowProps: (row: CalendarYearRowData) => Required<CalendarYearRowProps>;
 };
 
 // @public
@@ -493,19 +496,19 @@ export const renderCalendarYear: (state: CalendarYearState) => JSXElement;
 export const useCalendar: (props: CalendarProps, ref: React_2.Ref<HTMLDivElement>) => CalendarState;
 
 // @public
-export const useCalendarContext: <T>(selector: ContextSelector<CalendarContextValue, T>) => T;
+export const useCalendarContext: () => CalendarContextValue;
 
 // @public
 export function useCalendarContextValues(state: CalendarState): CalendarContextValues;
 
 // @public
-export const useCalendarDay: (props: CalendarDayProps, ref: React_2.Ref<CalendarDayHandle>) => CalendarDayState;
+export const useCalendarDay: (props: CalendarDayProps, ref: React_2.Ref<HTMLDivElement>) => CalendarDayState;
 
 // @public
-export const useCalendarMonth: (props: CalendarMonthProps, ref: React_2.Ref<CalendarMonthHandle>) => CalendarMonthState;
+export const useCalendarMonth: (props: CalendarMonthProps, ref: React_2.Ref<HTMLDivElement>) => CalendarMonthState;
 
 // @public
-export const useCalendarYear: (props: CalendarYearProps, ref: React_2.Ref<CalendarYearHandle>) => CalendarYearState;
+export const useCalendarYear: (props: CalendarYearProps, ref: React_2.Ref<HTMLDivElement>) => CalendarYearState;
 
 // (No @packageDocumentation comment for this package)
 

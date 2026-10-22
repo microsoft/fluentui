@@ -1,9 +1,9 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CalendarElementProps, CalendarGridRow, CalendarRowWrapper } from '../utils/calendarGrid.types';
+import type { CalendarGridRow } from '../hooks/useCalendarGrid';
 
 /**
- * The imperative API exposed on CalendarYear's forwarded ref.
+ * The imperative API exposed through CalendarYear's `imperativeRef` prop.
  */
 export type CalendarYearHandle = {
   /**
@@ -17,22 +17,28 @@ export type CalendarYearHandle = {
  * A range of years, inclusive.
  */
 export interface CalendarYearRange {
+  /**
+   * The first year in the range.
+   */
   fromYear: number;
+  /**
+   * The last year in the range.
+   */
   toYear: number;
 }
 
 /**
- * One year cell in the grid.
+ * Semantic year data stored in the grid and passed to cell getters, without DOM props.
  */
-export type CalendarYearCell = {
+export type CalendarYearCellData = {
   /**
-   * Four-digit year represented by the cell.
+   * The numeric year represented by the cell.
    */
   year: number;
   /**
-   * Visible cell content.
+   * Formatted year label.
    */
-  content: React.ReactNode;
+  label: string;
   /**
    * Whether this is the current year.
    */
@@ -49,18 +55,34 @@ export type CalendarYearCell = {
    * Whether this year cannot be selected.
    */
   isDisabled: boolean;
+};
+
+/** Semantic year row passed to getters, without DOM props on the row or its cells. */
+export type CalendarYearRowData = CalendarGridRow<CalendarYearCellData>;
+
+/** Overrides for a year button. */
+export type CalendarYearCellProps = {
   /**
-   * Props of the `button` rendered for the cell.
+   * Overrides for the `<button role="gridcell">`. Set `children` to customize the year content.
    */
-  props: CalendarElementProps<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>;
+  root?: React.ComponentProps<'button'>;
+};
+
+/** Overrides for a year row. */
+export type CalendarYearRowProps = {
+  /**
+   * Overrides for the row's `<div>`. Its year cells remain controlled by the renderer.
+   */
+  root?: Omit<React.ComponentProps<'div'>, 'children'>;
 };
 
 /**
- * One row of year cells.
+ * Slots rendered by the year picker.
  */
-export type CalendarYearRow = CalendarGridRow<CalendarYearCell>;
-
 export type CalendarYearSlots = {
+  /**
+   * The outer container of the year picker.
+   */
   root: NonNullable<Slot<'div'>>;
 
   /**
@@ -90,24 +112,50 @@ export type CalendarYearSlots = {
   nextRangeButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The manual focusgroup grid holding the year rows. The focusgroup runtime owns arrow navigation and Tab entry.
+   * The grid holding the year rows. Calendar handles arrow navigation, roving Tab entry and focus memory.
    */
   grid: NonNullable<Slot<'div'>>;
 };
 
+/**
+ * Data describing a year selection.
+ */
 export type CalendarYearSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
+  /**
+   * The selected year.
+   */
   year: number;
 };
 
+/**
+ * Data describing navigation to another visible year range.
+ */
 export type CalendarYearNavigateData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLButtonElement>> & {
+  /**
+   * The first year of the destination range.
+   */
   year: number;
 };
 
+/**
+ * Data describing activation of the year-range heading.
+ */
 export type CalendarYearHeaderSelectData = EventData<'click' | 'keydown', React.SyntheticEvent<HTMLElement>> & {
+  /**
+   * Whether focus should move to the parent picker when returning from the year view.
+   */
   focus: boolean;
 };
 
+/**
+ * Props for the year picker. Shared selection, boundaries, and formatting come from CalendarProvider.
+ */
 export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
+  /**
+   * Provides access to the picker's focus handle. The regular `ref` points to the root element.
+   */
+  imperativeRef?: React.Ref<CalendarYearHandle>;
+
   /**
    * The currently navigated year. Takes precedence over selectedYear for the displayed range and focus.
    */
@@ -120,56 +168,61 @@ export type CalendarYearProps = ComponentProps<Partial<CalendarYearSlots>> & {
   selectedYear?: number | null;
 
   /**
-   * Renders the content of each year cell without replacing its selection and keyboard behavior.
+   * Overrides each year button. Use root.children to customize its content.
+   * Receives semantic year data and a formatted label, not DOM props.
+   * Refs are composed, class names appended and styles merged.
+   * Defined consumer props override defaults, including roles, focus, disabled/selection state and data attributes.
+   * Consumers are responsible for preserving accessibility and interaction semantics when overriding these props.
+   * Handlers run before the delegated grid behavior; preventDefault cancels selection.
+   * Called when the renderer resolves the cell's props, not while the hook builds its data.
    */
-  renderYear?: (year: number) => React.ReactNode;
+  getCellProps?: (year: CalendarYearCellData) => CalendarYearCellProps;
 
   /**
-   * Callback action when a year is selected
-   * @param year - The year the user selected
+   * Overrides each row's default props, including its role and focus attributes, without replacing its cells.
+   * Receives semantic row and year data. Called when the renderer resolves the row's props.
+   */
+  getRowProps?: (row: CalendarYearRowData) => CalendarYearRowProps;
+
+  /**
+   * Called when a year is selected. The event data includes the selected year.
    */
   onSelectYear?: EventHandler<CalendarYearSelectData>;
 
   /**
-   * Callback action when the decade is navigated
-   * @param year - The year at the start of the new decade range being navigated to
+   * Called when navigation changes the visible twelve-year range.
+   * The event data includes the first year of the destination range.
    */
   onNavigateDate?: EventHandler<CalendarYearNavigateData>;
 
   /**
-   * Callback action when the header is selected
+   * Called when the year-range heading is activated to return to the parent picker.
    */
   onHeaderSelect?: EventHandler<CalendarYearHeaderSelectData>;
 };
 
+/**
+ * Resolved slots, semantic grid data and on-demand prop getters used to render the year picker.
+ */
 export type CalendarYearState = ComponentState<CalendarYearSlots> & {
   /**
-   * The first year of the visible range.
+   * Semantic year data grouped into rows of three, without HTML prop bags.
    */
-  fromYear: number;
+  yearRows: CalendarYearRowData[];
 
   /**
-   * Whether the heading is a button.
+   * Resolves built-in HTML props and consumer overrides for a year without modifying its data.
+   * Calls the consumer's `getCellProps` callback.
+   * @param year - A year from a row in `yearRows`.
+   * @returns Props for the year button.
    */
-  hasHeaderClickCallback: boolean;
+  getYearCellProps: (year: CalendarYearCellData) => Required<CalendarYearCellProps>;
 
   /**
-   * Whether navigating to the previous range is allowed by `minDate`.
+   * Resolves built-in HTML props and consumer overrides for a row without modifying its data.
+   * Calls the consumer's `getRowProps` callback.
+   * @param row - A row from `yearRows`.
+   * @returns Props for the row element.
    */
-  prevDisabled: boolean;
-
-  /**
-   * Whether navigating to the next range is allowed by `maxDate`.
-   */
-  nextDisabled: boolean;
-
-  /**
-   * Year cells grouped into rows of four.
-   */
-  yearRows: CalendarYearRow[];
-
-  /**
-   * Wraps each rendered row, for example to add motion in a custom renderer.
-   */
-  wrapRow?: CalendarRowWrapper<CalendarYearRow>;
+  getYearRowProps: (row: CalendarYearRowData) => Required<CalendarYearRowProps>;
 };

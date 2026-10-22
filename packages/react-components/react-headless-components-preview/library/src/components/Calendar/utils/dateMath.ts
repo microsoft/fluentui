@@ -12,6 +12,20 @@ export function createDate(year: number, month: number, day: number): Date {
   return date;
 }
 
+type CivilDate = { year: number; month: number; day: number };
+
+/** Advances calendar fields independently of local timezone gaps. */
+export function addCivilDays({ year, month, day }: CivilDate, days: number): CivilDate {
+  const date = new Date(0);
+  date.setUTCFullYear(year, month, day + days);
+  return { year: date.getUTCFullYear(), month: date.getUTCMonth(), day: date.getUTCDate() };
+}
+
+/** Checks whether a local date preserved the requested calendar fields without normalization. */
+export function matchesCivilDate(date: Date, { year, month, day }: CivilDate): boolean {
+  return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
+}
+
 /**
  * Returns a date offset from the given date by the specified number of days.
  * @param date - The origin date
@@ -170,11 +184,11 @@ export function getDateRange(
   daysToSelectInDayView: number = 1,
 ): Date[] {
   if (!Number.isFinite(date.valueOf())) {
-    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'date must be valid' : '');
+    throw new RangeError('date must be valid');
   }
 
   if (!Number.isFinite(daysToSelectInDayView) || !Number.isInteger(daysToSelectInDayView)) {
-    throw new RangeError(process.env.NODE_ENV !== 'production' ? 'daysToSelectInDayView must be a finite integer' : '');
+    throw new RangeError('daysToSelectInDayView must be a finite integer');
   }
 
   if (dateRangeType === 'day' && daysToSelectInDayView === 0) {
@@ -232,9 +246,7 @@ export function getDateRange(
   }
 
   if (!Number.isFinite(endDate.getTime())) {
-    throw new RangeError(
-      process.env.NODE_ENV !== 'production' ? 'Date range end is outside the representable date range' : '',
-    );
+    throw new RangeError('Date range end is outside the representable date range');
   }
 
   // Populate the dates array with a range-specific bound so a faulty adapter cannot hang rendering.
@@ -310,18 +322,14 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
   for (let daysBack = 0; daysBack < 2 * DAYS_IN_WEEK; daysBack++) {
     const candidate = createDate(year, month, day - daysBack);
     if (!Number.isFinite(candidate.getTime())) {
-      throw new RangeError(
-        process.env.NODE_ENV !== 'production' ? 'Cannot align an invalid or out-of-range date.' : '',
-      );
+      throw new RangeError('Cannot align an invalid or out-of-range date.');
     }
     if (candidate.getDay() === firstDayOfWeekIndex) {
       return candidate;
     }
   }
 
-  throw new RangeError(
-    process.env.NODE_ENV !== 'production' ? 'Could not find a representable week start within two weeks.' : '',
-  );
+  throw new RangeError('Could not find a representable week start within two weeks.');
 }
 
 /**
