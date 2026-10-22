@@ -179,6 +179,7 @@ Focus on open and Tab order are the browser's:
 - The top layer is ordered by insertion; `z-index` has no effect.
 - Elements stay inline, so a popover rendered inside an `auto` popover is nested: opening it keeps the parent open, and Escape and light dismiss close the topmost first. Portals break this.
 - Showing a modal closes open `auto` popovers. Content that must sit above a modal, like toasts, has to be shown after it.
+- Before Chromium 120, Escape in a popover nested in a modal `<dialog>` goes to the dialog first, so both close.
 - Popovers opened without user activation in between share a close watcher, so one Escape closes them all. Tests need trusted input (`cypress-real-events`).
 
 ## Decisions
