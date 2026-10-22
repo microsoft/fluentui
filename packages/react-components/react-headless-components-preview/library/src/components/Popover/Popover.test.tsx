@@ -428,6 +428,25 @@ describe('Popover', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 
+  it('sets aria-controls on trigger only while open', () => {
+    const { getByText, getByRole } = render(
+      <Popover id="my-id">
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Surface</PopoverSurface>
+      </Popover>,
+    );
+
+    const trigger = getByText('Trigger');
+    expect(trigger).not.toHaveAttribute('aria-controls');
+
+    userEvent.click(trigger);
+
+    expect(trigger).toHaveAttribute('aria-controls', 'my-id');
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('id', 'my-id');
+  });
+
   it('sets data-open on trigger when open', () => {
     const { getByText } = render(
       <Popover defaultOpen>
