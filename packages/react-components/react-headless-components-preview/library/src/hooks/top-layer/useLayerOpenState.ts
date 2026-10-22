@@ -80,6 +80,22 @@ export const useLayerOpenStateWith = (
   const shownPopoverMode = React.useRef<string | null>(null);
   const warnedNativeOpen = React.useRef(false);
   const devCloseCheckPending = React.useRef(false);
+  // Where the element is between show and hide, so each hide callback runs once per close.
+  const lifecycle = React.useRef<'hidden' | 'shown' | 'hiding'>('hidden');
+
+  const notifyBeforeHide = (element: HTMLElement) => {
+    if (lifecycle.current === 'shown') {
+      lifecycle.current = 'hiding';
+      options.onBeforeHide?.(element);
+    }
+  };
+
+  const notifyHide = (element: HTMLElement) => {
+    if (lifecycle.current !== 'hidden') {
+      lifecycle.current = 'hidden';
+      options.onHide?.(element);
+    }
+  };
 
   const reportOpenChange = (nextOpen: boolean, data: TopLayerOpenChangeData) => {
     setOpen(nextOpen);
@@ -100,8 +116,11 @@ export const useLayerOpenStateWith = (
   };
 
   const handleBeforeToggle = (event: Event) => {
-    if ((event as ToggleEvent).newState !== 'closed') {
-      shownPopoverMode.current = (event.currentTarget as HTMLElement).getAttribute('popover');
+    const element = event.currentTarget as HTMLElement;
+    if ((event as ToggleEvent).newState === 'closed') {
+      notifyBeforeHide(element);
+    } else {
+      shownPopoverMode.current = element.getAttribute('popover');
     }
   };
 
@@ -141,17 +160,29 @@ export const useLayerOpenStateWith = (
       return;
     }
 
+    notifyHide(element);
     reportNativeClose({ type: 'light-dismiss', event });
   };
 
-  // One stable listener for every event type.
+  const handleDialogEvent = (event: Event) => {
+    const element = event.currentTarget as HTMLElement;
+    if (event.target === element) {
+      if (event.type === 'cancel') {
+        notifyBeforeHide(element);
+      } else if (!isInTopLayer(element)) {
+        notifyHide(element);
+      }
+    }
+    dialog?.handleEvent(event, type => reportNativeClose({ type, event }));
+  };
+
   const handleEvent = useEventCallback((event: Event) => {
     if (event.type === 'beforetoggle') {
       handleBeforeToggle(event);
     } else if (event.type === 'toggle') {
       handleToggle(event);
     } else {
-      dialog?.handleEvent(event, type => reportNativeClose({ type, event }));
+      handleDialogEvent(event);
     }
   });
 
@@ -182,11 +213,24 @@ export const useLayerOpenStateWith = (
     openRef.current = open;
 
     if (!open) {
-      if (element && isPopoverOpen(element)) {
+      if (!element) {
+        return;
+      }
+
+      if (isInTopLayer(element)) {
+        notifyBeforeHide(element);
+      }
+
+      if (isPopoverOpen(element)) {
         element.hidePopover();
-      } else if (element) {
+      } else {
         dialog?.hide(element);
       }
+
+      if (!isInTopLayer(element)) {
+        notifyHide(element);
+      }
+
       return;
     }
 
@@ -197,7 +241,16 @@ export const useLayerOpenStateWith = (
       return;
     }
 
+    if (fresh) {
+      options.onBeforeShow?.(element);
+    }
+
     const shown = dialog?.show(element, mode) ?? showPopover(element);
+
+    if (isInTopLayer(element)) {
+      lifecycle.current = 'shown';
+    }
+
     if (fresh && (shown || isInTopLayer(element))) {
       options.onShow?.(element);
     }
