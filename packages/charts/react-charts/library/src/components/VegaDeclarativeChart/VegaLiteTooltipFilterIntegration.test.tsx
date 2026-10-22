@@ -82,16 +82,79 @@ beforeEach(() => {
 });
 afterEach(() => jest.restoreAllMocks());
 
+it.each([false, true])('reports an invalid config numberFormat at its authored path (nested: %s)', nested => {
+  const spec: VegaLiteSpec = {
+    mark: 'line',
+    config: { numberFormat: 'zz' },
+    data: { values: [{ x: 1, amount: 1234.5 }] },
+    encoding: {
+      x: { field: 'x', type: 'quantitative' },
+      y: { field: 'amount', type: 'quantitative' },
+      tooltip: [{ field: 'amount', type: 'quantitative' }],
+    },
+  };
+
+  const input = nested ? { hconcat: [spec] } : spec;
+  const path = nested ? '$.hconcat[0].config.numberFormat' : '$.config.numberFormat';
+  expect(validateVegaLiteSpec(input)).toEqual([
+    expect.objectContaining({ code: 'unsupported-format', path, severity: 'warning' }),
+  ]);
+  expect(validateVegaLiteSpec(input, strict)).toEqual([
+    expect.objectContaining({ code: 'unsupported-format', path, severity: 'error' }),
+  ]);
+  expect(() =>
+    renderToStaticMarkup(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: input }} semanticMode="strict" />),
+  ).toThrow(path);
+});
+
+describe('config numberFormat controls', () => {
+  const scatter = nativeTooltipSpec('scatter');
+  const spec: VegaLiteSpec = {
+    ...scatter,
+    encoding: { ...scatter.encoding, tooltip: [{ field: 'y', title: 'Amount', type: 'quantitative' }] },
+  };
+
+  it('accepts a valid numeric default without changing the input', () => {
+    const input = { ...spec, config: { numberFormat: ',.2f' } };
+    const before = JSON.stringify(input);
+    expect(validateVegaLiteSpec(input)).toEqual([]);
+    expect(validateVegaLiteSpec(input, strict)).toEqual([]);
+    expect(buildVegaTooltip(input, { y: 1234.5 }, strict).fields).toEqual([{ title: 'Amount', value: '1,234.50' }]);
+    expect(JSON.stringify(input)).toBe(before);
+  });
+
+  it.each([123, null, false, {}, []].map(numberFormat => ({ numberFormat })))(
+    'retains invalid-field for non-string defaults: $numberFormat',
+    ({ numberFormat }) => {
+      const input = { ...spec, config: { numberFormat } };
+      expect(validateVegaLiteSpec(input)).toEqual([
+        expect.objectContaining({ code: 'invalid-field', path: '$.config.numberFormat', severity: 'error' }),
+      ]);
+      expect(validateVegaLiteSpec(input, strict)).toEqual(validateVegaLiteSpec(input));
+    },
+  );
+});
+
 describe.each(['line', 'bar'] as const)('public %s legacy tooltip exceptions', kind => {
   describe.each([
-    { exception: { formatType: 'myFormatter', format: '.2f' }, diagnostic: 'formatType' },
-    { exception: { format: 'zz' }, diagnostic: 'format' },
-    { exception: { condition: { param: 'brush', value: 'PRIVATE_CONDITIONAL_VALUE' } }, diagnostic: 'condition' },
-  ])('$diagnostic', ({ exception, diagnostic }) => {
+    {
+      exception: { formatType: 'myFormatter', format: '.2f' },
+      config: undefined,
+      diagnosticPath: '$.encoding.tooltip[0].formatType',
+    },
+    { exception: { format: 'zz' }, config: undefined, diagnosticPath: '$.encoding.tooltip[0].format' },
+    {
+      exception: { condition: { param: 'brush', value: 'PRIVATE_CONDITIONAL_VALUE' } },
+      config: undefined,
+      diagnosticPath: '$.encoding.tooltip[0].condition',
+    },
+    { exception: {}, config: { numberFormat: 'zz' }, diagnosticPath: '$.config.numberFormat' },
+  ])('$diagnosticPath', ({ exception, config, diagnosticPath }) => {
     it.each(['focus', 'hover'] as const)('keeps every raw datum and warns on %s', async interaction => {
       const onDiagnostics = jest.fn();
       const spec = {
         mark: kind === 'line' ? { type: 'line', point: true } : 'bar',
+        ...(config ? { config } : {}),
         data: {
           values: [
             { x: 1, amount: 1234.5, secret: 'PRIVATE_CORPUS_VALUE' },
@@ -136,12 +199,10 @@ describe.each(['line', 'bar'] as const)('public %s legacy tooltip exceptions', k
           expect(surface!.textContent).not.toMatch(/PRIVATE|Filtered|secret/);
         });
       }
-      expect(onDiagnostics).toHaveBeenCalled();
+      expect(onDiagnostics).toHaveBeenCalledTimes(1);
       onDiagnostics.mock.calls.forEach(([diagnostics]) => {
         expect(diagnostics).toEqual(
-          expect.arrayContaining([
-            expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'warning' }),
-          ]),
+          expect.arrayContaining([expect.objectContaining({ path: diagnosticPath, severity: 'warning' })]),
         );
         expect(diagnostics.every((entry: { severity: string }) => entry.severity === 'warning')).toBe(true);
       });
@@ -151,6 +212,7 @@ describe.each(['line', 'bar'] as const)('public %s legacy tooltip exceptions', k
     it('rejects the same declaration in strict preflight', () => {
       const spec = {
         mark: kind,
+        ...(config ? { config } : {}),
         data: { values: [{ x: 1, amount: 1234.5 }] },
         encoding: {
           x: { field: 'x', type: 'quantitative' },
@@ -159,13 +221,11 @@ describe.each(['line', 'bar'] as const)('public %s legacy tooltip exceptions', k
         },
       } as unknown as VegaLiteSpec;
       expect(validateVegaLiteSpec(spec, strict)).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({ path: `$.encoding.tooltip[0].${diagnostic}`, severity: 'error' }),
-        ]),
+        expect.arrayContaining([expect.objectContaining({ path: diagnosticPath, severity: 'error' })]),
       );
       expect(() =>
         renderToStaticMarkup(<VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode="strict" />),
-      ).toThrow(`$.encoding.tooltip[0].${diagnostic}`);
+      ).toThrow(diagnosticPath);
     });
   });
 });

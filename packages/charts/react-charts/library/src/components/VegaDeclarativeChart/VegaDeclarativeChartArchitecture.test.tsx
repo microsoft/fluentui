@@ -133,6 +133,17 @@ describe('VegaDeclarativeChart architecture', () => {
     { name: 'untitled region gallery', spec: freeze(groupedRouteSpec(false)) },
     { name: 'titled region gallery', spec: freeze(groupedRouteSpec(false, 'Biodiversity by Rainforest Region')) },
     { name: 'budget gallery', spec: freeze(groupedRouteSpec(true, 'Budget vs Actual - Department Comparison')) },
+    ...(['x', 'y', 'both'] as const).map(axes => {
+      const spec = groupedRouteSpec(false, 'Grouped bars with inferred types');
+      if (axes !== 'y') {
+        delete spec.encoding!.x!.type;
+      }
+      if (axes !== 'x') {
+        delete spec.encoding!.y!.type;
+        spec.encoding!.y!.aggregate = 'sum';
+      }
+      return { name: `omitted ${axes} types${axes === 'x' ? '' : ' with aggregate y'}`, spec: freeze(spec) };
+    }),
   ])('$name grouped routing', ({ spec }) => {
     it.each([undefined, 'legacy', 'strict'] as const)('uses the actual renderer for %s mode', semanticMode => {
       const before = JSON.stringify(spec);
@@ -144,6 +155,9 @@ describe('VegaDeclarativeChart architecture', () => {
       const svg = container.querySelector('svg')!;
       if (semanticMode === 'strict') {
         expect(svg).not.toHaveClass('fui-cart__chart');
+        if (spec.title) {
+          expect(svg.querySelector('title')).toHaveTextContent(spec.title as string);
+        }
         const marks = svg.querySelectorAll('path[data-ranged-mark][role="img"][tabindex="0"]');
         expect(marks).toHaveLength(spec.data!.values!.length);
         marks.forEach(mark => {
@@ -160,11 +174,18 @@ describe('VegaDeclarativeChart architecture', () => {
         );
         expect(svg.getAttribute('aria-label')).toContain(`The X axis displays ${spec.encoding!.x!.axis!.title}.`);
         expect(svg.getAttribute('aria-label')).toContain(`The Y axis displays ${spec.encoding!.y!.axis!.title}.`);
+        if (spec.title) {
+          expect(svg.getAttribute('aria-label')).toContain(spec.title as string);
+        }
         expect(container.querySelectorAll('[data-ranged-mark]')).toHaveLength(0);
         const bars = svg.querySelectorAll('rect[role="option"][tabindex="0"]');
         expect(bars).toHaveLength(spec.data!.values!.length);
         bars.forEach(bar => {
           expect(bar.getAttribute('aria-label')).toBeTruthy();
+          ['x', 'y', 'width', 'height'].forEach(attribute => {
+            expect(bar).toHaveAttribute(attribute);
+            expect(Number.isFinite(Number(bar.getAttribute(attribute)))).toBe(true);
+          });
           ['width', 'height'].forEach(attribute => expect(Number(bar.getAttribute(attribute))).toBeGreaterThan(0));
           expect(bar.outerHTML).not.toMatch(/NaN|Infinity/);
         });
@@ -172,6 +193,26 @@ describe('VegaDeclarativeChart architecture', () => {
       expect(JSON.stringify(spec)).toBe(before);
     });
   });
+
+  it.each([undefined, 'legacy', 'strict'] as const)(
+    'renders a native polar chart without Cartesian x/y channels in %s mode',
+    semanticMode => {
+      const spec: VegaLiteSpec = freeze({
+        ...integrationLineSpec,
+        mark: 'arc',
+        encoding: { theta: integrationLineSpec.encoding!.x, radius: integrationLineSpec.encoding!.y },
+      });
+      const before = JSON.stringify(spec);
+      expect(diagnostics.validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([]);
+      const { container } = render(
+        <VegaDeclarativeChart chartSchema={{ vegaLiteSpec: spec }} semanticMode={semanticMode} />,
+      );
+      expect(container.querySelectorAll('svg')).toHaveLength(1);
+      expect(container.querySelectorAll('svg circle[role="img"]')).toHaveLength(spec.data!.values!.length);
+      expect(container.querySelector('svg')!.outerHTML).not.toMatch(/NaN|Infinity/);
+      expect(JSON.stringify(spec)).toBe(before);
+    },
+  );
 
   describe.each(['x2', 'y2', 'independent xOffset'] as const)('%s new geometry routing', kind => {
     it.each([undefined, 'legacy', 'strict'] as const)('remains ranged in %s mode', semanticMode => {

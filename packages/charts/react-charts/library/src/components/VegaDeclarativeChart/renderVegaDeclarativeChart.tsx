@@ -218,12 +218,17 @@ function isLegacyGroupedBar(spec: VegaLiteSpec): boolean {
   }
   const mark = typeof spec.mark === 'object' ? spec.mark : { type: spec.mark };
   const encoding = spec.encoding;
+  if (!encoding?.x || !encoding.y) {
+    return false;
+  }
   return (
     mark.type === 'bar' &&
     readVegaOwnData(mark, 'orient') !== 'horizontal' &&
     readVegaOwnData(mark, 'cornerRadiusEnd') === undefined &&
-    (encoding?.x?.type === 'nominal' || encoding?.x?.type === 'ordinal') &&
-    encoding.y?.type === 'quantitative' &&
+    (encoding.x.type === 'nominal' ||
+      encoding.x.type === 'ordinal' ||
+      (encoding.x.type === undefined && !!encoding.x.field)) &&
+    (encoding.y.type === 'quantitative' || (encoding.y.type === undefined && encoding.y.aggregate !== undefined)) &&
     !!encoding.color?.field &&
     encoding.xOffset?.field === encoding.color.field &&
     !encoding.x2 &&

@@ -469,6 +469,19 @@ export function validateVegaLiteSpec(spec: unknown, options: VegaLiteDiagnosticO
         invalid('invalid-field', `${path}.${key}`, 'Tooltip format defaults must be strings.');
       }
     }
+    const numericFormat = own(value, 'numberFormat');
+    if (typeof numericFormat === 'string') {
+      try {
+        numberFormat(numericFormat);
+      } catch {
+        report(
+          'unsupported-format',
+          `${path}.numberFormat`,
+          'Tooltip numeric format is invalid; legacy mode displays the raw value.',
+          'Use a valid D3 numeric format or remove the format declaration.',
+        );
+      }
+    }
     for (const key of Object.keys(value).filter(name => tooltipConfigMarks.includes(name))) {
       const setting = own(value, key);
       if (!isRecord(setting)) {
