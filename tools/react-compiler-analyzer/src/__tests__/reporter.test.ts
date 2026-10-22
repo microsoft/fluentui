@@ -38,6 +38,45 @@ function makeResult(overrides: Partial<DirectiveAnalysis>): DirectiveAnalysis {
 }
 
 describe('printReport', () => {
+  it('distinguishes fixable and protected findings in mixed sections and summary guidance', () => {
+    const results = [
+      makeResult({ status: 'redundant', directiveType: 'use-no-memo', functionName: 'Plain' }),
+      makeResult({
+        status: 'redundant',
+        directiveType: 'use-no-memo',
+        functionName: 'Protected',
+        justified: true,
+        revalidated: true,
+      }),
+      makeResult({ status: 'active', directiveType: 'use-no-memo', functionName: 'ActivePlain' }),
+      makeResult({
+        status: 'active',
+        directiveType: 'use-no-memo',
+        functionName: 'ActiveProtected',
+        justified: true,
+        revalidated: true,
+      }),
+    ];
+    const report = captureConsole(() => printReport(results, '/workspace', false));
+    expect(report).toContain('Redundant (unjustified: removable; justified: manual review) (2)');
+    expect(report).toContain('Active opt-outs (unjustified: add justification; justified: report-only) (2)');
+    const summary = captureConsole(() => printSummary(results));
+    expect(summary).toContain('Redundant** (unjustified: removable; justified: manual review): 2');
+    expect(summary).toContain('against the applicable build before manually removing or updating');
+    expect(summary).toContain("**1** redundant `'use no memo'`");
+    expect(summary).toContain("**1** active `'use no memo'`");
+  });
+
+  it('does not relabel an ordinary section because another status has protected results', () => {
+    const results = [
+      makeResult({ status: 'redundant', directiveType: 'use-no-memo' }),
+      makeResult({ status: 'active', directiveType: 'use-memo', justified: true, revalidated: true }),
+    ];
+    const summary = captureConsole(() => printSummary(results));
+    expect(summary).toContain('Redundant** (removable): 1');
+    expect(summary).not.toContain('Redundant** (unjustified:');
+  });
+
   it('labels probe failures and preserved file-level opt-outs accurately', () => {
     const results = [
       makeResult({ directiveType: 'use-no-memo', status: 'broken', compilerEvent: 'none', reason: 'probe failed' }),

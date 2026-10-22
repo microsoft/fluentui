@@ -267,7 +267,30 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["mode", "filesModified", "functionsAnnotated", "functionsBailedOut"],
+      "dependencies": {
+        "dryRun": ["planned"],
+        "planned": ["dryRun"]
+      },
+      "if": { "required": ["dryRun"] },
+      "then": {
+        "properties": {
+          "filesModified": { "const": 0 },
+          "functionsAnnotated": { "const": 0 },
+          "functionsBailedOut": { "const": 0 }
+        }
+      },
       "properties": {
+        "dryRun": { "const": true },
+        "planned": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["filesModified", "functionsAnnotated", "functionsBailedOut"],
+          "properties": {
+            "filesModified": { "$ref": "#/definitions/nonNegativeInteger" },
+            "functionsAnnotated": { "$ref": "#/definitions/nonNegativeInteger" },
+            "functionsBailedOut": { "$ref": "#/definitions/nonNegativeInteger" }
+          }
+        },
         "mode": {
           "enum": ["manual-memo", "all", "all-safe", "bailout-only"]
         },

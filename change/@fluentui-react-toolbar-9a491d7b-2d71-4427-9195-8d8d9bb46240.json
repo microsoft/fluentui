@@ -1,6 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: load Fluent font icons in forced-colors regression tests",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "paulmardling@microsoft.com"
-}

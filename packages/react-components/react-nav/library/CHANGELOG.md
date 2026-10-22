@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-nav
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.4.9)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav_v9.4.8..@fluentui/react-nav_v9.4.9)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.4.8)
 

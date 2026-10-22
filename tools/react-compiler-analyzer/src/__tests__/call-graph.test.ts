@@ -30,8 +30,20 @@ describe('call-graph wrapper analysis', () => {
     for (const [name, source] of Object.entries(files)) {
       writeFileSync(join(root, name), source);
     }
+
     return join(root, 'component.tsx');
   }
+
+  it('follows a wrapper in a module with a mutable TypeScript namespace', () => {
+    const filePath = modules({
+      'reader.ts': `namespace Values { export let value = 1; }
+export function readValue() { return store.getState().value + Values.value; }`,
+      'component.tsx': "import { readValue } from './reader'; function Widget() { return <div>{readValue()}</div>; }",
+    });
+    expect(analyzer({ detectGetStateReads: true }).analyzeFile(filePath)).toEqual([
+      expect.objectContaining({ risk: expect.objectContaining({ chain: ['readValue'] }) }),
+    ]);
+  });
 
   it.each([
     'export default function readValue() { return store.getState().value; }',
