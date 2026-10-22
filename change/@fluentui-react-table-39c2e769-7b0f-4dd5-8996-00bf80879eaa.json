@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-table): add design-free base hooks for Table and DataGrid",
+  "packageName": "@fluentui/react-table",
+  "email": "noreply@anthropic.com"
+}

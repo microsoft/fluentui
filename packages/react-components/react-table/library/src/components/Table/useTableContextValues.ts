@@ -1,10 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import type { TableContextValues, TableState } from './Table.types';
+import type { TableBaseState, TableContextValues, TableState } from './Table.types';
 
-export function useTableContextValues_unstable(state: TableState): TableContextValues {
-  const { size, noNativeElements, sortable } = state;
+export function useTableContextValues_unstable(
+  state: TableBaseState & Partial<Pick<TableState, 'size'>>,
+): TableContextValues {
+  const { size = 'medium', noNativeElements, sortable } = state;
 
   const tableContext = React.useMemo(
     () => ({
