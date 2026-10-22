@@ -1,0 +1,131 @@
+.table {
+  inline-size: 100%;
+  max-inline-size: 720px;
+  border-collapse: collapse;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+/* Without native elements the table parts are divs, laid out with a grid */
+.table:not(table) {
+  display: block;
+}
+
+.table:not(table) [role='row'] {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 3), minmax(0, 1fr));
+}
+
+.headerRow {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+}
+
+.row {
+  border-block-end: var(--stroke-thin) solid var(--border);
+}
+
+.row:last-child {
+  border-block-end: none;
+}
+
+.headerCell,
+.cell {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+}
+
+.headerCell {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* The sort state is exposed by the data attributes of the header cell */
+.headerCell[data-sortable] {
+  cursor: pointer;
+}
+
+.headerCell[data-sortable]:hover {
+  color: var(--text);
+}
+
+.headerCell[data-sort-direction='ascending'] button::after {
+  content: ' \2191';
+}
+
+.headerCell[data-sort-direction='descending'] button::after {
+  content: ' \2193';
+}
+
+.sortButton {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: inherit;
+}
+
+.sortButton:focus-visible,
+.headerCell:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: calc(-1 * var(--stroke-thick));
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.media {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  color: var(--text-soft);
+}
+
+.actions {
+  display: inline-flex;
+  gap: var(--space-1);
+  margin-inline-start: auto;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.row:hover .actions,
+.row:focus-within .actions,
+.actions[data-visible] {
+  opacity: 1;
+}
+
+.actionButton {
+  padding: var(--space-1) var(--space-2);
+  border: var(--stroke-thin) solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.actionButton:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actions {
+    transition: none;
+  }
+}
