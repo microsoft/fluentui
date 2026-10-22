@@ -3335,6 +3335,7 @@ __metadata:
     "@fluentui/react-migration-v8-v9": "npm:*"
     "@fluentui/react-motion-components-preview": "npm:*"
     "@fluentui/react-northstar": "npm:*"
+    "@fluentui/react-range-slider-preview": "npm:*"
     "@fluentui/react-storybook-addon": "npm:*"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
     "@fluentui/react-storybook-addon-playground": "npm:*"
