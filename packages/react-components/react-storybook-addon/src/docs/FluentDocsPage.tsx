@@ -296,7 +296,7 @@ const RenderArgsTable = ({
                 approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
                 primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
                 component structures, similar to slots in other frameworks.{' '}
-                <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                <Link href="./?path=/docs/concepts-developer-customizing-components-with-slots--docs">
                   Customizing components with slots{' '}
                 </Link>
               </span>

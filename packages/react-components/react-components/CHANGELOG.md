@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.74.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.11)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.10..@fluentui/react-components_v9.74.11)
+
+### Minor changes
+
+- `@fluentui/react-calendar-preview`
+  - feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components; preserve button currentTarget for picker selection events and support selection from SVG and descendant-focusgroup cell content; clear range hover and pressed state when leaving editable day content; preserve cancelled-click focus, a single eligible tab stop through hidden-panel updates and reveal while excluding individually hidden dates, restricted-date focus with allFocusable, focus after synchronous controlled navigation, and explicitly empty navigation-button content ([PR #36948](https://github.com/microsoft/fluentui/pull/36948) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-range-slider-preview`
+  - chore: initial release ([PR #36949](https://github.com/microsoft/fluentui/pull/36949) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: preserve selected toggle button icon contrast in forced-colors mode, including toolbar radio and toggle buttons ([PR #36935](https://github.com/microsoft/fluentui/pull/36935) by paulmardling@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
+- `@fluentui/react-slider`
+  - fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
+
+## [9.74.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.10)
+
+Mon, 19 Oct 2026 16:49:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.9..@fluentui/react-components_v9.74.10)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: add getPercentInRange helper ([PR #36889](https://github.com/microsoft/fluentui/pull/36889) by vgenaev@gmail.com)
+- `@fluentui/react-calendar-preview`
+  - chore: initial release ([PR #36751](https://github.com/microsoft/fluentui/pull/36751) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-list`
+  - feat: expose design-free List base hooks and context APIs with complete public types, editable-child validation, inferred roles, and explicit root support ([PR #36590](https://github.com/microsoft/fluentui/pull/36590) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-teaching-popover`
+  - fix: Announce carousel page changes after render. ([PR #36643](https://github.com/microsoft/fluentui/pull/36643) by paulmardling@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: handle special property names when filtering native props ([PR #36806](https://github.com/microsoft/fluentui/pull/36806) by paliprandi@microsoft.com)
+- `@fluentui/react-calendar-preview`
+  - fix: Align Calendar sizing, popup focus, and keyboard selection behavior. ([PR #36917](https://github.com/microsoft/fluentui/pull/36917) by dmytrokirpa@microsoft.com)
+  - fix: restore class-independent Calendar focus, two-dimensional grid arrows that skip unfocusable cells, and consumer keyboard event ordering and cancellation ([PR #36884](https://github.com/microsoft/fluentui/pull/36884) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: default Slider aria-orientation from vertical while preserving explicit input attributes ([PR #36895](https://github.com/microsoft/fluentui/pull/36895) by paoloalipro@gmail.com)
+- `@fluentui/react-charts`
+  - Preserve special category and series names and legend selection across charts; deprecate legacy grouped dataset types while retaining compatibility ([PR #36710](https://github.com/microsoft/fluentui/pull/36710) by paulmardling@microsoft.com)
+  - fix: prevent Legends overflow crashes after dynamic item changes ([PR #36691](https://github.com/microsoft/fluentui/pull/36691) by 171317405+jakesalvesen@users.noreply.github.com)
+  - fix: improve LineChart and GaugeChart callout behavior and formatting ([PR #36739](https://github.com/microsoft/fluentui/pull/36739) by atisjai@microsoft.com)
+  - fix(react-charts): read only own transform data fields and preserve special output keys while retaining ordinary row coercion ([PR #36718](https://github.com/microsoft/fluentui/pull/36718) by paulmardling@microsoft.com)
+  - fixed tooltip value cut off at the bottom in HorizontalBarChartWithAxis ([PR #36818](https://github.com/microsoft/fluentui/pull/36818) by v-baambati@microsoft.com)
+  - Fixed voice control accessibility issue for the chart line and area charts ([PR #36703](https://github.com/microsoft/fluentui/pull/36703) by v-baambati@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: preserve uncontrolled HSV and alpha across shared color controls, expose channel-preserving rail endpoints, correct RTL transparency direction, and default slider orientations ([PR #36873](https://github.com/microsoft/fluentui/pull/36873) by 43711362+paolo-aliprandi@users.noreply.github.com)
+- `@fluentui/react-provider`
+  - fix: block unsafe theme token syntax without a value-format allowlist ([PR #36830](https://github.com/microsoft/fluentui/pull/36830) by paliprandi@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Bump keyborg to 3.498.0 and tabster to 8.8.1. ([PR #36787](https://github.com/microsoft/fluentui/pull/36787) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: expose selection state on grouped TagPicker options for assistive technology ([PR #36834](https://github.com/microsoft/fluentui/pull/36834) by paulmardling@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: preserve virtual target tooltips ([PR #36794](https://github.com/microsoft/fluentui/pull/36794) by paulmardling@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: register positioning slide-direction CSS properties once per document ([PR #36833](https://github.com/microsoft/fluentui/pull/36833) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-swatch-picker`
+  - fix: forward the style prop to the SwatchPicker and SwatchPickerRow roots ([PR #36847](https://github.com/microsoft/fluentui/pull/36847) by vgenaev@gmail.com)
+  - fix: prevent ImageSwatch and EmptySwatch from submitting forms ([PR #36822](https://github.com/microsoft/fluentui/pull/36822) by vgenaev@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: make the Combobox expand icon keyboard- and click-operable without duplicate pointer toggles or hidden, missing-icon, or duplicate blur interactions ([PR #36574](https://github.com/microsoft/fluentui/pull/36574) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: improve phone number initials handling ([PR #36711](https://github.com/microsoft/fluentui/pull/36711) by paulmardling@microsoft.com)
+  - fix: avoid repeated scanning of unmatched name enclosures when generating initials ([PR #36738](https://github.com/microsoft/fluentui/pull/36738) by 223556219+Copilot@users.noreply.github.com)
 
 ## [9.74.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.9)
 

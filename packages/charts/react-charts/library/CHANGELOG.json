@@ -2,6 +2,108 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.3.29",
+      "tag": "@fluentui/react-charts_v9.3.29",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.11.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "9.3.28",
+      "tag": "@fluentui/react-charts_v9.3.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "696519c524043e8986d9b6afd64e7fe261a8d3cb",
+            "comment": "Preserve special category and series names and legend selection across charts; deprecate legacy grouped dataset types while retaining compatibility"
+          },
+          {
+            "author": "171317405+jakesalvesen@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "64f59375dfc2db9e16a69ba0ab90bb47ef79feaf",
+            "comment": "fix: prevent Legends overflow crashes after dynamic item changes"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "541b165e6c658198105fae2baf1e05fba0ee85ec",
+            "comment": "fix: improve LineChart and GaugeChart callout behavior and formatting"
+          },
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8d973816314876edeefe04aa504dbcfde22ffe44",
+            "comment": "fix(react-charts): read only own transform data fields and preserve special output keys while retaining ordinary row coercion"
+          },
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4666954b6b64221809c0d3c32858021ca335e32b",
+            "comment": "fixed tooltip value cut off at the bottom in HorizontalBarChartWithAxis"
+          },
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "5f32665b4dc2447c7d174393a53aa5db1408aa30",
+            "comment": "Fixed voice control accessibility issue for the chart line and area charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.11.2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.9.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.14.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.10.8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.3.27",
       "tag": "@fluentui/react-charts_v9.3.27",

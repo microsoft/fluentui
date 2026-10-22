@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
@@ -134,7 +134,7 @@ describe('PopoverSurface', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'manual');
   });
 
-  it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
+  it('mirrors a browser-driven `toggle` event into onOpenChange', async () => {
     const onOpenChange = jest.fn();
 
     const { getByRole } = render(
@@ -147,11 +147,11 @@ describe('PopoverSurface', () => {
     );
 
     const surface = getByRole('group', { hidden: true });
-    const toggleEvent = new Event('toggle');
-    (toggleEvent as unknown as { newState: string }).newState = 'closed';
-    fireEvent(surface, toggleEvent);
+    surface.hidePopover();
 
-    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+    await waitFor(() =>
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false })),
+    );
   });
 
   it('renders arrow when withArrow is set', () => {
