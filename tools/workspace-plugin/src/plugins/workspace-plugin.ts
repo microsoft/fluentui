@@ -3,9 +3,9 @@
 import { basename, dirname, join, resolve } from 'node:path';
 import { existsSync } from 'node:fs';
 import {
-  type CreateNodesContextV2,
+  type CreateNodesContext,
   type CreateNodesResult,
-  type CreateNodesV2,
+  type CreateNodes,
   type PostTasksExecution,
   type ProjectConfiguration,
   type TargetConfiguration,
@@ -69,7 +69,7 @@ export const postTasksExecution: PostTasksExecution<WorkspacePluginOptions> = (_
   }
 };
 
-export const createNodesV2: CreateNodesV2<WorkspacePluginOptions> = [
+export const createNodesV2: CreateNodes<WorkspacePluginOptions> = [
   projectConfigGlob,
   async (configFiles, options, context) => {
     const pmc = getPackageManagerCommand('yarn');
@@ -129,7 +129,7 @@ function normalizeOptions(options: WorkspacePluginOptions | undefined): DeepRequ
 function createNodesInternal(
   configFilePath: string,
   options: WorkspacePluginOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   globalConfig: Pick<TaskBuilderConfig, 'pmc'>,
 ): CreateNodesResult {
   const projectRoot = dirname(configFilePath);
@@ -193,7 +193,7 @@ function getTaskBuilderConfig(projectRoot: string, pmc: TaskBuilderConfig['pmc']
 function buildWorkspaceProjectConfiguration(
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): WorkspaceTargets {
   const targets: Record<string, TargetConfiguration> = {};
@@ -335,7 +335,7 @@ function buildWorkspaceProjectConfiguration(
 function buildReactCompilerAnalyzerTargets(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): WorkspaceTargets {
   const targets: Record<string, TargetConfiguration> = {};
@@ -456,7 +456,7 @@ function buildGenerateApiTarget(projectRoot: string, config: TaskBuilderConfig):
 function buildTestTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration<JestConfig.InitialOptions & Pick<RunCommandsOptions, 'cwd'>> | null {
   if (
@@ -518,7 +518,7 @@ function buildAttwTarget(projectRoot: string, config: TaskBuilderConfig): Target
 function buildLintTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasEslintConfig =
@@ -559,7 +559,7 @@ function buildLintTarget(
 function buildVerifyPackagingTarget(
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   if (options.verifyPackaging.include.length && !options.verifyPackaging.include.includes(config.projectJSON.name!)) {
@@ -581,7 +581,7 @@ function buildVerifyPackagingTarget(
 function buildBundleSizeTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasMonosize =
@@ -616,7 +616,7 @@ function buildBundleSizeTarget(
 function buildVerifyBundleIsolationTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   if (!existsSync(join(projectRoot, 'bundle-isolation.config.json'))) {
@@ -647,7 +647,7 @@ function buildVerifyBundleIsolationTarget(
 function buildE2eTarget(
   projectRoot: string,
   options: Required<WorkspacePluginOptions>,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasCypress =
@@ -721,7 +721,7 @@ function buildE2eTarget(
 function buildTestSsrTarget(
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   if (options.testSSR.include.length && !options.testSSR.include.includes(config.projectJSON.name!)) {
@@ -748,7 +748,7 @@ function buildTestSsrTarget(
 function buildStorybookTarget(
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasStorybookMain = ['.storybook/main.js', '.storybook/main.cjs'].some(file =>
@@ -782,7 +782,7 @@ type ReactIntegrationTesterTargets = Pick<ProjectConfiguration, 'targets' | 'met
 function buildReactIntegrationTesterProjectConfiguration(
   projectRoot: string,
   options: NormalizedOptions,
-  context: CreateNodesContextV2,
+  context: CreateNodesContext,
   config: TaskBuilderConfig,
 ): ReactIntegrationTesterTargets {
   if (

@@ -1,5 +1,15 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, readJson } from '@nx/devkit';
+import {
+  Tree,
+  readJson,
+  readJsonFile,
+  updateJson,
+  workspaceRoot,
+  getWorkspaceLayout,
+  readProjectConfiguration,
+  joinPathFragments,
+} from '@nx/devkit';
+import { libraryGenerator } from '@nx/js';
 
 import generator from './index';
 import { WorkspaceGeneratorGeneratorSchema } from './schema';
@@ -9,7 +19,7 @@ describe('workspace-generator generator', () => {
   const options: WorkspaceGeneratorGeneratorSchema = { name: 'custom' };
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   it('should generate boilerplate', async () => {
@@ -62,8 +72,10 @@ describe('workspace-generator generator', () => {
         installPackagesTask,
         names,
         generateFiles,
+        getWorkspaceLayout,
+        joinPathFragments,
       } from '@nx/devkit';
-      import { libraryGenerator } from '@nx/workspace/generators';
+      import { libraryGenerator } from '@nx/js';
 
       import { getProjectConfig } from '../../utils';
 
@@ -72,7 +84,11 @@ describe('workspace-generator generator', () => {
       interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
       export default async function (tree: Tree, schema: CustomGeneratorSchema) {
-        await libraryGenerator(tree, { name: schema.name });
+        await libraryGenerator(tree, {
+          name: schema.name,
+          directory: joinPathFragments(getWorkspaceLayout(tree).libsDir, schema.name),
+          formatter: 'prettier',
+        });
 
         const normalizedOptions = normalizeOptions(tree, schema);
 
@@ -115,6 +131,22 @@ describe('workspace-generator generator', () => {
     `);
   });
 
+  it('should create a library with the generated Nx API call', async () => {
+    const rootPackageJson = readJsonFile<{ devDependencies: { typescript: string } }>(
+      joinPathFragments(workspaceRoot, 'package.json'),
+    );
+    updateJson(tree, 'package.json', json => ({
+      ...json,
+      devDependencies: { ...json.devDependencies, typescript: rootPackageJson.devDependencies.typescript },
+    }));
+    const name = 'example';
+    const directory = joinPathFragments(getWorkspaceLayout(tree).libsDir, name);
+
+    await libraryGenerator(tree, { name, directory, formatter: 'prettier' });
+
+    expect(readProjectConfiguration(tree, name).root).toEqual(directory);
+  });
+
   it('should generate testing boilerplate', async () => {
     await generator(tree, options);
 
@@ -132,7 +164,7 @@ describe('workspace-generator generator', () => {
         const options: CustomGeneratorSchema = { name: 'test' };
 
         beforeEach(() => {
-          appTree = createTreeWithEmptyWorkspace();
+          appTree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
         });
 
         it('should run successfully', async () => {

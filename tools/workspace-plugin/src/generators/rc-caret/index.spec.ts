@@ -17,7 +17,7 @@ describe('rc-caret generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     npmScope = getWorkspaceConfig(tree).npmScope;
   });
 

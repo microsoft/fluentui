@@ -36,7 +36,7 @@ describe('resolveEntryPoints', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
   });
 
   function writeSourceFiles(...files: string[]) {

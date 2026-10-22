@@ -35,7 +35,7 @@ describe('recipe-generator generator', () => {
   const options: RecipeGeneratorGeneratorSchema = { recipeName };
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = setup(tree);
   });
 

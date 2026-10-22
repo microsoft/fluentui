@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: preserve flat config declaration compatibility with TypeScript 5.8",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "paulmardling@microsoft.com"
+}

@@ -18,7 +18,7 @@ describe('react-library generator', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyWorkspace({ formatter: 'prettier' });
     tree = setupCodeowners(tree, { content: '' });
     tree = createLibrary(tree, 'react-jsx-runtime');
     tree = createLibrary(tree, 'react-theme');
