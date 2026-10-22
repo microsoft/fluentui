@@ -8,7 +8,7 @@ import { Calendar } from './Calendar';
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 const today = new Date(2020, 8, 18);
 const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${label}"])`;
-const month = (label: string) => `button[role="gridcell"][aria-label="${label}"]`;
+const month = (label: string) => `[role="gridcell"][aria-label="${label}"]`;
 
 describe('Calendar', () => {
   it('returns to today with six weeks and three month columns without changing selection', () => {
@@ -88,9 +88,9 @@ describe('Calendar', () => {
     mount(<Calendar today={today} value={today} />);
 
     cy.get('button[aria-label="2020, change year"]').click();
-    cy.contains('button[role="gridcell"]', '2020').should('be.focused').realPress('ArrowDown');
-    cy.contains('button[role="gridcell"]', '2024').should('be.focused').realPress('ArrowRight');
-    cy.contains('button[role="gridcell"]', '2025').should('be.focused');
+    cy.contains('[role="gridcell"]', '2020').should('be.focused').realPress('ArrowDown');
+    cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('ArrowRight');
+    cy.contains('[role="gridcell"]', '2025').should('be.focused');
   });
 
   it.skip('skips restricted dates in the day grid', () => {
@@ -113,10 +113,10 @@ describe('Calendar', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
     cy.get('button[aria-label="2020, change year"]').click();
 
-    cy.contains('button[role="gridcell"]', '2023').focus().realPress('ArrowRight');
-    cy.contains('button[role="gridcell"]', '2023').should('be.focused').realPress('ArrowDown');
-    cy.contains('button[role="gridcell"]', '2027').should('be.focused').realPress('ArrowRight');
-    cy.contains('button[role="gridcell"]', '2027').should('be.focused');
+    cy.contains('[role="gridcell"]', '2023').focus().realPress('ArrowRight');
+    cy.contains('[role="gridcell"]', '2023').should('be.focused').realPress('ArrowDown');
+    cy.contains('[role="gridcell"]', '2027').should('be.focused').realPress('ArrowRight');
+    cy.contains('[role="gridcell"]', '2027').should('be.focused');
   });
 
   ([3, 4] as const).forEach(columns => {
@@ -189,8 +189,8 @@ describe('Calendar', () => {
         cy.get(month('September')).focus().realPress('ArrowLeft');
         cy.get(month('October')).should('be.focused');
       } else {
-        cy.contains('button[role="gridcell"]', '2020').focus().realPress('ArrowLeft');
-        cy.contains('button[role="gridcell"]', '2021').should('be.focused');
+        cy.contains('[role="gridcell"]', '2020').focus().realPress('ArrowLeft');
+        cy.contains('[role="gridcell"]', '2021').should('be.focused');
       }
     });
 
@@ -223,7 +223,7 @@ describe('Calendar', () => {
       } else if (picker === 'month') {
         cy.get(month('September')).focus();
       } else {
-        cy.contains('button[role="gridcell"]', '2020').focus();
+        cy.contains('[role="gridcell"]', '2020').focus();
       }
       cy.then(() => onFocus.resetHistory());
       cy.realPress('ArrowRight');
@@ -234,7 +234,7 @@ describe('Calendar', () => {
       } else if (picker === 'month') {
         cy.get(month('September')).should('be.focused');
       } else {
-        cy.contains('button[role="gridcell"]', '2020').should('be.focused');
+        cy.contains('[role="gridcell"]', '2020').should('be.focused');
       }
     });
   });
@@ -278,15 +278,15 @@ describe('Calendar', () => {
       );
       cy.get('button[aria-label="2024, change year"]').click();
 
-      cy.contains('button[role="gridcell"]', '2024').focus().realPress('ArrowDown');
-      cy.contains('button[role="gridcell"]', '2028').should('be.focused').realPress('ArrowUp');
-      cy.contains('button[role="gridcell"]', '2024').should('be.focused').realPress('ArrowUp');
-      cy.contains('button[role="gridcell"]', allFocusable ? '2020' : '2024').should('be.focused');
+      cy.contains('[role="gridcell"]', '2024').focus().realPress('ArrowDown');
+      cy.contains('[role="gridcell"]', '2028').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', '2024').should('be.focused').realPress('ArrowUp');
+      cy.contains('[role="gridcell"]', allFocusable ? '2020' : '2024').should('be.focused');
       if (allFocusable) {
-        cy.contains('button[role="gridcell"]', '2020').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
+        cy.contains('[role="gridcell"]', '2020').should('have.attr', 'aria-disabled', 'true').realPress('Enter');
         cy.get('@onSelectDate').should('not.have.been.called');
         cy.get('button[aria-label="2020 - 2031, change year"]').should('exist');
-        cy.contains('button[role="gridcell"]', '2020').should('be.focused');
+        cy.contains('[role="gridcell"]', '2020').should('be.focused');
       }
     });
   });
@@ -359,7 +359,7 @@ describe('Calendar', () => {
       } else if (picker === 'month') {
         cy.get(month('September')).should('be.focused');
       } else {
-        cy.contains('button[role="gridcell"]', '2020').should('be.focused');
+        cy.contains('[role="gridcell"]', '2020').should('be.focused');
       }
 
       if (picker === 'day') {
@@ -369,8 +369,8 @@ describe('Calendar', () => {
         cy.get(month('September')).focus().realPress('ArrowRight');
         cy.get(month('October')).should('be.focused').realPress('Tab');
       } else {
-        cy.contains('button[role="gridcell"]', '2020').focus().realPress('ArrowRight');
-        cy.contains('button[role="gridcell"]', '2021').should('be.focused').realPress('Tab');
+        cy.contains('[role="gridcell"]', '2020').focus().realPress('ArrowRight');
+        cy.contains('[role="gridcell"]', '2021').should('be.focused').realPress('Tab');
       }
 
       cy.contains('button', 'After').should('be.focused').realPress(['Shift', 'Tab']);
@@ -379,7 +379,7 @@ describe('Calendar', () => {
       } else if (picker === 'month') {
         cy.get(month('October')).should('be.focused');
       } else {
-        cy.contains('button[role="gridcell"]', '2021').should('be.focused');
+        cy.contains('[role="gridcell"]', '2021').should('be.focused');
       }
     });
   });
@@ -459,9 +459,9 @@ describe('Calendar', () => {
         cy.get(month('October')).should('be.focused');
       } else {
         cy.get('button[aria-label="2024, change year"]').click();
-        cy.contains('button[role="gridcell"]', '2024').focus().realPress('Home');
-        cy.contains('button[role="gridcell"]', '2022').should('be.focused').realPress('End');
-        cy.contains('button[role="gridcell"]', '2028').should('be.focused');
+        cy.contains('[role="gridcell"]', '2024').focus().realPress('Home');
+        cy.contains('[role="gridcell"]', '2022').should('be.focused').realPress('End');
+        cy.contains('[role="gridcell"]', '2028').should('be.focused');
       }
       cy.get('[role="grid"] [role="gridcell"][tabindex="0"]').should('have.length', 1);
       cy.get('@onSelectDate').should('not.have.been.called');
@@ -601,7 +601,7 @@ describe('Calendar', () => {
       />,
     );
 
-    cy.get(month('October')).focus().realPress('Enter');
+    cy.get(month('October')).find('button').focus().realPress('Enter');
 
     cy.get('@onSelectDate').should('have.been.calledOnce');
     cy.get(month('October')).should('have.attr', 'aria-selected', 'true');
