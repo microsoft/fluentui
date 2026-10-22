@@ -116,6 +116,17 @@ export const useCardClasses = makeStyles({
     height: 'var(--container-size)',
     width: 'var(--container-size)',
   },
+  referenceLine: {
+    stroke: tokens.colorNeutralForeground1,
+    strokeWidth: tokens.strokeWidthThin,
+    opacity: 0.2,
+    vectorEffect: 'non-scaling-stroke',
+
+    '@media (forced-colors: active)': {
+      stroke: 'CanvasText',
+      opacity: 1,
+    },
+  },
   path: {
     fill: 'none',
     stroke: tokens.colorNeutralStrokeAccessible,
