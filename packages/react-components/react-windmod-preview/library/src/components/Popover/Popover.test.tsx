@@ -66,6 +66,31 @@ describe('Popover', () => {
     expect(container.children).toHaveLength(2);
   });
 
+  it('associates the trigger with the current surface only while open', () => {
+    const tree = (open: boolean, id: string) => (
+      <Popover open={open} id={id}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Content</PopoverSurface>
+      </Popover>
+    );
+    const { getByRole, rerender, container } = render(tree(false, 'first-surface'));
+    const trigger = getByRole('button');
+    expect(trigger).not.toHaveAttribute('aria-controls');
+
+    rerender(tree(true, 'first-surface'));
+    expect(trigger).toHaveAttribute('aria-controls', 'first-surface');
+    expect(container.querySelector('[data-popover-surface]')).toHaveAttribute('id', 'first-surface');
+
+    rerender(tree(true, 'second-surface'));
+    expect(trigger).toHaveAttribute('aria-controls', 'second-surface');
+    expect(container.querySelector('[data-popover-surface]')).toHaveAttribute('id', 'second-surface');
+
+    rerender(tree(false, 'second-surface'));
+    expect(trigger).not.toHaveAttribute('aria-controls');
+  });
+
   it('carries the look to a surface rendered as a separate child', () => {
     expect(renderPopover({ size: 'large' }).surface).toHaveClass(surfaceStyles.large);
     expect(renderPopover({ appearance: 'brand' }).surface).toHaveClass(surfaceStyles.brand);

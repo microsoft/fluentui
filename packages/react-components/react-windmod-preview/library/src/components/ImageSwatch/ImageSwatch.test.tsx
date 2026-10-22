@@ -113,6 +113,19 @@ describe('ImageSwatch', () => {
     expect(getByTestId('b').getAttribute('data-selected')).toBeNull();
   });
 
+  it('preserves the headless disabled stamp as the disabled prop changes', () => {
+    const { getByRole, rerender } = render(<ImageSwatch value="a" src="x.png" disabled />);
+    const swatch = getByRole('radio');
+
+    expect(swatch).toBeDisabled();
+    expect(swatch).toHaveAttribute('data-disabled', '');
+
+    rerender(<ImageSwatch value="a" src="x.png" />);
+
+    expect(swatch).not.toBeDisabled();
+    expect(swatch).not.toHaveAttribute('data-disabled');
+  });
+
   it('passes consumer props through to the root', () => {
     const ref = React.createRef<HTMLButtonElement>();
     const onClick = jest.fn();
