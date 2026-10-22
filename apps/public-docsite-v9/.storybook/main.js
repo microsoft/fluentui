@@ -76,16 +76,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       options: { modules: playgroundModules },
     },
   ],
-  framework: {
-    ...rootMain.framework,
-    options: {
-      ...rootMain.framework.options,
-      builder: {
-        ...rootMain.framework.options.builder,
-        lazyCompilation: false,
-      },
-    },
-  },
   build: {
     previewUrl: process.env.DEPLOY_PATH,
   },
