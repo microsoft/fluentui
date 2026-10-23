@@ -15,6 +15,11 @@
         "kind": "entryPoints",
         "name": "react-headless-components-preview: entire library"
       },
+      "Calendar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./calendar",
+        "name": "react-headless-components-preview: Calendar"
+      },
       "TagPicker.fixture.js": {
         "kind": "entryPoint",
         "entryPoint": "./tag-picker",
