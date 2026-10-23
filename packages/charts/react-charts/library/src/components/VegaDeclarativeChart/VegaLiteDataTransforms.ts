@@ -1,6 +1,7 @@
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { safeEvaluateExpression } from './VegaLiteExpressionEvaluator';
 import { aggregateVegaStatistic, densityVegaRows, loessVegaRows } from './VegaLiteStatistics';
+import { SemanticError, toSemanticError, withLegacyVegaBudgetErrors } from './VegaLiteSemanticError';
 import { extent as dataExtent } from 'd3-array';
 import type { VegaDataRow, VegaSemanticOptions } from './VegaLiteData.types';
 import { readVegaField, readVegaOwnData as own } from './VegaLiteField';
@@ -19,18 +20,6 @@ export { readVegaField } from './VegaLiteField';
 const WORKBUDGET = VEGA_MAX_SEMANTIC_OPERATIONS;
 const workBudget = Symbol('Vega semantic work budget');
 type SemanticContext = VegaSemanticOptions & { [workBudget]?: { remaining: number; copying: number } };
-class SemanticError extends Error {
-  public readonly code: 'WORKBUDGET' | 'UNSUPPORTED' | 'INVALID';
-
-  public constructor(message: string) {
-    super(`Vega semantics: ${message}`);
-    this.code = /limit|work budget/i.test(message)
-      ? 'WORKBUDGET'
-      : /unknown|unsupported|unresolved/i.test(message)
-      ? 'UNSUPPORTED'
-      : 'INVALID';
-  }
-}
 const context = (options?: VegaSemanticOptions): SemanticContext => {
   const current = options as SemanticContext | undefined;
   return current?.[workBudget]
@@ -40,7 +29,7 @@ const context = (options?: VegaSemanticOptions): SemanticContext => {
 const spend = (options: VegaSemanticOptions | undefined, amount: number): void => {
   const budget = (options as SemanticContext | undefined)?.[workBudget];
   if (amount > WORKBUDGET || (budget && (budget.remaining -= amount) < 0)) {
-    throw new SemanticError('work budget limit exceeded');
+    throw new SemanticError('work budget limit exceeded', 'WORKBUDGET');
   }
 };
 const record = (value: unknown): value is VegaDataRow =>
@@ -51,10 +40,10 @@ const put = (row: VegaDataRow, key: string, value: unknown): void => {
 const text = (value: unknown): string | undefined => (typeof value === 'string' ? value : undefined);
 const list = (value: unknown): unknown[] => (Array.isArray(value) ? value : []);
 const fields = (value: unknown): string[] => list(value).filter((v): v is string => typeof v === 'string');
-const fail = (options: VegaSemanticOptions | undefined, message: string): void => {
-  const error = new SemanticError(message.replace(/^Vega semantics: /, ''));
-  if (options?.mode === 'strict' || error.code === 'WORKBUDGET') {
-    throw error;
+const fail = (options: VegaSemanticOptions | undefined, error: unknown, message?: string): void => {
+  const semanticError = toSemanticError(error, message);
+  if (options?.mode === 'strict' || semanticError.code === 'WORKBUDGET') {
+    throw semanticError;
   }
 };
 
@@ -66,7 +55,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions, o
   const charge = (amount: number): void => {
     const budget = (options as SemanticContext | undefined)?.[workBudget];
     if ((work += amount) > VEGA_MAX_DATA_WORK || (budget && (budget.copying -= amount) < 0)) {
-      throw new SemanticError('clone work limit exceeded');
+      throw new SemanticError('clone work limit exceeded', 'WORKBUDGET');
     }
     if (operationWork) {
       spend(options, amount);
@@ -75,7 +64,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions, o
   const visit = (value: unknown, depth: number): unknown => {
     charge(1 + (typeof value === 'string' ? value.length : 0));
     if (typeof value === 'string' && value.length > VEGA_MAX_TEXT_LENGTH) {
-      throw new SemanticError('clone text limit exceeded');
+      throw new SemanticError('clone text limit exceeded', 'WORKBUDGET');
     }
     if (typeof value === 'function' || typeof value === 'symbol') {
       return undefined;
@@ -84,7 +73,7 @@ function clone<T>(input: T, expression = false, options?: VegaSemanticOptions, o
       return value;
     }
     if (depth > 100 || ++nodes > VEGA_MAX_CLONE_NODES) {
-      throw new SemanticError('clone depth/work limit exceeded');
+      throw new SemanticError('clone depth/work limit exceeded', 'WORKBUDGET');
     }
     if (seen.has(value)) {
       return seen.get(value);
@@ -245,7 +234,7 @@ export function aggregateVegaValues(
       return aggregateVegaStatistic(values, name);
     }
     default:
-      fail(options, `unknown aggregate operation ${name}`);
+      fail(options, new SemanticError(`unknown aggregate operation ${name}`, 'UNSUPPORTED'));
       return rows.length;
   }
 }
@@ -322,7 +311,7 @@ function groupRow(group: Group, groupby: string[], options?: VegaSemanticOptions
 
 function expression(expr: string, row: VegaDataRow, options?: VegaSemanticOptions): unknown {
   if (expr.length > 10000) {
-    throw new SemanticError('expression work limit exceeded');
+    throw new SemanticError('expression work limit exceeded', 'WORKBUDGET');
   }
   let depth = 0;
   let quote = '';
@@ -375,18 +364,21 @@ function expression(expr: string, row: VegaDataRow, options?: VegaSemanticOption
           .trimStart()
           .startsWith('(')
       ) {
-        throw new SemanticError(`unsupported function value ${identifier}; built-ins must be called directly`);
+        throw new SemanticError(
+          `unsupported function value ${identifier}; built-ins must be called directly`,
+          'UNSUPPORTED',
+        );
       }
     } else if (c === '(' || c === '[' || c === '?' || c === '!' || c === '+' || c === '-') {
       if (++depth > 100) {
-        throw new SemanticError('expression depth limit exceeded');
+        throw new SemanticError('expression depth limit exceeded', 'WORKBUDGET');
       }
     } else if (c === ')' || c === ']') {
       depth--;
     }
   }
   // Null-prototype expression objects cannot invoke user-supplied coercion hooks.
-  return safeEvaluateExpression(expr, clone(row, true, options));
+  return withLegacyVegaBudgetErrors(() => safeEvaluateExpression(expr, clone(row, true, options)));
 }
 
 /** The safe expression subset plus field/logical predicates. Selection predicates are unsupported. */
@@ -400,7 +392,7 @@ export function evaluateVegaPredicate(predicate: unknown, row: VegaDataRow, opti
     const visit = (p: unknown, depth: number): boolean => {
       spend(options, 1);
       if (depth > 100) {
-        throw new SemanticError('predicate depth limit exceeded');
+        throw new SemanticError('predicate depth limit exceeded', 'WORKBUDGET');
       }
       if (!record(p)) {
         throw new Error('invalid predicate');
@@ -426,7 +418,7 @@ export function evaluateVegaPredicate(predicate: unknown, row: VegaDataRow, opti
             ].includes(key),
         )
       ) {
-        throw new Error('unsupported predicate property');
+        throw new SemanticError('unsupported predicate property', 'UNSUPPORTED');
       }
       if (own(p, 'and') !== undefined) {
         if (!Array.isArray(own(p, 'and'))) {
@@ -449,7 +441,7 @@ export function evaluateVegaPredicate(predicate: unknown, row: VegaDataRow, opti
       }
       const field = text(own(p, 'field'));
       if (field === undefined) {
-        throw new Error('unsupported predicate: expected field');
+        throw new SemanticError('unsupported predicate: expected field', 'UNSUPPORTED');
       }
       let value = readVegaField(row, field);
       if (own(p, 'timeUnit') !== undefined) {
@@ -484,11 +476,11 @@ export function evaluateVegaPredicate(predicate: unknown, row: VegaDataRow, opti
           return valid(value) && (op === 'lt' ? c < 0 : op === 'lte' ? c <= 0 : op === 'gt' ? c > 0 : c >= 0);
         }
       }
-      throw new Error('unsupported predicate operation');
+      throw new SemanticError('unsupported predicate operation', 'UNSUPPORTED');
     };
     return visit(predicate, 0);
   } catch (error) {
-    fail(options, `filter predicate failed: ${error instanceof Error ? error.message : 'invalid expression'}`);
+    fail(options, error, `filter predicate failed: ${error instanceof Error ? error.message : 'invalid expression'}`);
     return true;
   }
 }
@@ -501,10 +493,10 @@ const sameValue = (a: unknown, b: unknown): boolean =>
 function timeUnit(value: unknown, definition: unknown): Date | null {
   let unit = typeof definition === 'string' ? definition : text(own(definition, 'unit'));
   if (!unit) {
-    throw new Error('unsupported timeUnit: explicit unit required');
+    throw new SemanticError('unsupported timeUnit: explicit unit required', 'UNSUPPORTED');
   }
   if (record(definition) && Object.keys(definition).some(key => !['unit', 'step', 'utc', 'binned'].includes(key))) {
-    throw new Error('unsupported timeUnit option');
+    throw new SemanticError('unsupported timeUnit option', 'UNSUPPORTED');
   }
   for (const key of ['utc', 'binned']) {
     if (own(definition, key) !== undefined && typeof own(definition, key) !== 'boolean') {
@@ -529,7 +521,7 @@ function timeUnit(value: unknown, definition: unknown): Date | null {
     (parts.includes('week') && parts.includes('isoweek')) ||
     (parts.includes('dayofyear') && parts.some(p => ['week', 'isoweek', 'day', 'month', 'quarter', 'date'].includes(p)))
   ) {
-    throw new Error(`unsupported timeUnit ${unit}`);
+    throw new SemanticError(`unsupported timeUnit ${unit}`, 'UNSUPPORTED');
   }
   const step = own(definition, 'step') ?? 1;
   if (typeof step !== 'number' || !Number.isSafeInteger(step) || step <= 0) {
@@ -715,7 +707,7 @@ function windowRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
       try {
         aggregateVegaValues([], text(own(measure, 'field')), op, { mode: 'strict' });
       } catch (error) {
-        fail(options, error instanceof Error ? error.message : 'unknown window operation');
+        fail(options, error);
       }
     }
   });
@@ -837,7 +829,7 @@ function windowRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
             try {
               value = aggregateVegaValues(frameRows, field, op, { mode: 'strict' });
             } catch (error) {
-              fail(options, error instanceof Error ? error.message : `unknown window operation ${name}`);
+              fail(options, error);
               value = index + 1;
             }
         }
@@ -856,14 +848,15 @@ function quantileRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Veg
     throw new Error('Vega semantics: invalid quantile step');
   }
   if (own(transform, 'probs') === undefined && 1 / step > 10000) {
-    throw new Error('Vega semantics: quantile work limit exceeded');
+    throw new SemanticError('quantile work limit exceeded', 'WORKBUDGET');
   }
   const probs =
     own(transform, 'probs') === undefined
       ? Array.from({ length: Math.floor(1 / step + 0.5) }, (_, i) => (i + 0.5) * step).filter(p => p < 1)
       : list(own(transform, 'probs'));
   if (probs.length > 10000 || probs.some(p => typeof p !== 'number' || !Number.isFinite(p) || p < 0 || p > 1)) {
-    throw new Error('Vega semantics: invalid quantile probabilities/work limit');
+    // Preserve the historical fatal policy for this combined validation/work guard.
+    throw new SemanticError('invalid quantile probabilities/work limit', 'WORKBUDGET');
   }
   const as = fields(own(transform, 'as'));
   const groupby = fields(own(transform, 'groupby'));
@@ -888,7 +881,7 @@ function quantileRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Veg
 
 function regressionRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSemanticOptions): VegaDataRow[] {
   if (own(transform, 'method') !== undefined && own(transform, 'method') !== 'linear') {
-    throw new Error('Vega semantics: unsupported regression method');
+    throw new SemanticError('unsupported regression method', 'UNSUPPORTED');
   }
   const x = text(own(transform, 'on'));
   const y = text(own(transform, 'regression'));
@@ -1006,7 +999,8 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
       (stop - start) / step < 0 ||
       (stop - start) / step > 10000
     ) {
-      throw new Error('Vega semantics: invalid impute keyvals/work limit');
+      // Preserve the historical fatal policy for this combined validation/work guard.
+      throw new SemanticError('invalid impute keyvals/work limit', 'WORKBUDGET');
     }
     keys = Array.from({ length: Math.ceil((stop - start) / step) }, (_, i) => start + i * step);
   }
@@ -1014,7 +1008,7 @@ function imputeRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaS
   keys = keys.filter((keyValue, i) => keys.findIndex(v => sameValue(v, keyValue)) === i);
   const method = own(transform, 'method') ?? 'value';
   if (!['value', 'mean', 'median', 'min', 'max'].includes(method as string)) {
-    throw new Error('Vega semantics: unsupported impute method');
+    throw new SemanticError('unsupported impute method', 'UNSUPPORTED');
   }
   const result: VegaDataRow[] = [];
   for (const group of groups(rows, groupby)) {
@@ -1125,7 +1119,7 @@ function validateTransform(transform: VegaDataRow, kind: string): void {
       if (
         Object.keys(measure).some(key => !['field', 'op', 'as', ...(kind === 'window' ? ['param'] : [])].includes(key))
       ) {
-        throw new Error(`unsupported ${kind} operation property`);
+        throw new SemanticError(`unsupported ${kind} operation property`, 'UNSUPPORTED');
       }
       if (
         (!fieldless.includes(op) && !text(own(measure, 'field'))) ||
@@ -1137,7 +1131,7 @@ function validateTransform(transform: VegaDataRow, kind: string): void {
         throw new Error(`invalid ${kind} as`);
       }
       if (own(measure, 'param') !== undefined && !parameterized.includes(op)) {
-        throw new Error(`unsupported window ${op} param`);
+        throw new SemanticError(`unsupported window ${op} param`, 'UNSUPPORTED');
       }
     }
     if (own(transform, 'ignorePeers') !== undefined && typeof own(transform, 'ignorePeers') !== 'boolean') {
@@ -1163,7 +1157,7 @@ function binRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSema
   }
   const allowed = ['extent', 'step', 'steps', 'maxbins', 'base', 'divide', 'minstep', 'nice', 'anchor', 'span'];
   if (record(definition) && Object.keys(definition).some(key => !allowed.includes(key))) {
-    throw new Error('unsupported bin option');
+    throw new SemanticError('unsupported bin option', 'UNSUPPORTED');
   }
   const parameter = (key: string, fallback: number, minimum: number, inclusive = false): number => {
     const v = own(definition, key) ?? fallback;
@@ -1209,7 +1203,7 @@ function binRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSema
   let [start, stop] = extent as number[];
   const inferredSpan = stop - start || Math.abs(start) || 1;
   if (own(definition, 'span') === undefined && !Number.isFinite(inferredSpan)) {
-    throw new SemanticError('bin numerical work limit exceeded');
+    throw new SemanticError('bin numerical work limit exceeded', 'WORKBUDGET');
   }
   const span = parameter('span', inferredSpan, 0);
   let step: number;
@@ -1228,13 +1222,13 @@ function binRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSema
       base ** (Math.round(Math.log(span) / Math.log(base)) - Math.ceil(Math.log(maxbins) / Math.log(base))),
     );
     if (!(step > 0) || !Number.isFinite(step)) {
-      throw new SemanticError('bin numerical work limit exceeded');
+      throw new SemanticError('bin numerical work limit exceeded', 'WORKBUDGET');
     }
     while (Math.ceil(span / step) > maxbins) {
       spend(options, 1);
       step *= base;
       if (!Number.isFinite(step)) {
-        throw new SemanticError('bin numerical work limit exceeded');
+        throw new SemanticError('bin numerical work limit exceeded', 'WORKBUDGET');
       }
     }
     for (const divisor of divide) {
@@ -1245,7 +1239,7 @@ function binRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSema
     }
   }
   if (!Number.isFinite(span / step) || span / step > Number.MAX_SAFE_INTEGER) {
-    throw new SemanticError('bin numerical work limit exceeded');
+    throw new SemanticError('bin numerical work limit exceeded', 'WORKBUDGET');
   }
   const precision = Math.log(step) >= 0 ? 0 : Math.floor(-Math.log(step) / Math.log(base)) + 1;
   if (nice !== false) {
@@ -1264,7 +1258,7 @@ function binRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSema
     stop += shift;
   }
   if (!Number.isFinite(start) || !Number.isFinite(stop) || !(stop > start) || start + step === start) {
-    throw new SemanticError('bin numerical work limit exceeded');
+    throw new SemanticError('bin numerical work limit exceeded', 'WORKBUDGET');
   }
   const as = transformAliases(own(transform, 'as'), ['bin0', 'bin1'], true);
   return rows.map(source => {
@@ -1304,7 +1298,7 @@ function flattenRows(rows: VegaDataRow[], transform: VegaDataRow, options?: Vega
     );
     count += size;
     if (count > VEGA_MAX_DATA_ROWS) {
-      throw new SemanticError('flatten row work limit exceeded');
+      throw new SemanticError('flatten row work limit exceeded', 'WORKBUDGET');
     }
     spend(options, selected.length * (1 + size));
     return { source, arrays, size };
@@ -1337,7 +1331,7 @@ function pivotRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSe
     throw new Error('invalid pivot operation');
   }
   if (['values', 'argmin', 'argmax'].includes(op)) {
-    throw new Error('unsupported pivot operation: scalar aggregate required');
+    throw new SemanticError('unsupported pivot operation: scalar aggregate required', 'UNSUPPORTED');
   }
   aggregateVegaValues([], value, op, { ...options, mode: 'strict' });
   const limit = own(transform, 'limit') ?? 0;
@@ -1348,11 +1342,11 @@ function pivotRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSe
   for (const row of rows) {
     const key = readVegaField(row, field);
     if (key && typeof key === 'object') {
-      throw new Error('unsupported pivot key: scalar required');
+      throw new SemanticError('unsupported pivot key: scalar required', 'UNSUPPORTED');
     }
     const name = String(key);
     if (keys.has(name) && !sameValue(keys.get(name), key)) {
-      throw new Error('unsupported pivot column name collision');
+      throw new SemanticError('unsupported pivot column name collision', 'UNSUPPORTED');
     }
     keys.set(name, key);
   }
@@ -1394,7 +1388,7 @@ function stackRows(rows: VegaDataRow[], transform: VegaDataRow, options?: VegaSe
   }
   const offset = own(transform, 'offset') ?? 'zero';
   if (!['zero', 'normalize', 'center'].includes(offset as string)) {
-    throw new Error('unsupported stack offset');
+    throw new SemanticError('unsupported stack offset', 'UNSUPPORTED');
   }
   const groupby = transformFields(own(transform, 'groupby'), 'stack groupby');
   const as = transformAliases(own(transform, 'as'), ['y0', 'y1']);
@@ -1497,7 +1491,7 @@ export function applyVegaTransforms(
   options = context(options);
   spend(options, data.length);
   if (data.length > VEGA_MAX_DATA_ROWS || (transforms?.length ?? 0) > 1000) {
-    throw new SemanticError('transform/row work limit exceeded');
+    throw new SemanticError('transform/row work limit exceeded', 'WORKBUDGET');
   }
   if (transforms !== undefined && !Array.isArray(transforms)) {
     fail(options, 'invalid transform array');
@@ -1573,7 +1567,7 @@ export function applyVegaTransforms(
         allowed[kind] &&
         Object.keys(transform).some(key => !allowed[kind].includes(key))
       ) {
-        throw new Error(`unsupported ${kind} transform option`);
+        throw new SemanticError(`unsupported ${kind} transform option`, 'UNSUPPORTED');
       }
       if (options?.mode === 'strict' && kind) {
         validateTransform(transform, kind);
@@ -1598,7 +1592,7 @@ export function applyVegaTransforms(
           try {
             put(row, as, expression(own(transform, 'calculate') as string, source, options));
           } catch (error) {
-            fail(options, `calculate failed: ${error instanceof Error ? error.message : 'invalid expression'}`);
+            fail(options, error, `calculate failed: ${error instanceof Error ? error.message : 'invalid expression'}`);
           }
           return row;
         });
@@ -1623,7 +1617,10 @@ export function applyVegaTransforms(
         own(transform, 'regression') === undefined &&
         own(transform, 'density') === undefined
       ) {
-        throw new Error('unsupported extent transform: signal/parameter output requires a reactive runtime');
+        throw new SemanticError(
+          'unsupported extent transform: signal/parameter output requires a reactive runtime',
+          'UNSUPPORTED',
+        );
       } else if (own(transform, 'timeUnit') !== undefined) {
         const field = text(own(transform, 'field'));
         const as = text(own(transform, 'as'));
@@ -1670,18 +1667,19 @@ export function applyVegaTransforms(
           groupRow: (group: Group, groupby: string[]) => groupRow(group, groupby, options),
           spend: (amount: number) => spend(options, amount),
         };
-        rows =
+        rows = withLegacyVegaBudgetErrors(() =>
           own(transform, 'loess') !== undefined
             ? loessVegaRows(rows, transform, statisticsContext)
-            : densityVegaRows(rows, transform, statisticsContext);
+            : densityVegaRows(rows, transform, statisticsContext),
+        );
       } else {
-        throw new Error(`unsupported transform ${Object.keys(transform).join(', ')}`);
+        throw new SemanticError(`unsupported transform ${Object.keys(transform).join(', ')}`, 'UNSUPPORTED');
       }
       if (rows.length > VEGA_MAX_DATA_ROWS) {
-        throw new SemanticError('row work limit exceeded');
+        throw new SemanticError('row work limit exceeded', 'WORKBUDGET');
       }
     } catch (error) {
-      fail(options, error instanceof Error ? error.message : 'transform failed');
+      fail(options, error);
     }
   }
   return rows;
@@ -1701,7 +1699,7 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
   ): VegaDataRow => {
     spend(options, 1);
     if (depth > 100) {
-      throw new SemanticError('composition depth limit exceeded');
+      throw new SemanticError('composition depth limit exceeded', 'WORKBUDGET');
     }
     const source = own(node, 'data');
     let rows: VegaDataRow[];
@@ -1714,9 +1712,12 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
       if (!Array.isArray(values)) {
         fail(
           options,
-          `unresolved data ${
-            name ?? (own(source, 'url') !== undefined ? 'url (external loading is disabled)' : 'source')
-          }`,
+          new SemanticError(
+            `unresolved data ${
+              name ?? (own(source, 'url') !== undefined ? 'url (external loading is disabled)' : 'source')
+            }`,
+            'UNSUPPORTED',
+          ),
         );
         rows = [];
       } else {
@@ -1758,7 +1759,7 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
     const collect = (def: unknown, level = 0): void => {
       spend(options, 1);
       if (level > 100) {
-        throw new SemanticError('encoding depth limit exceeded');
+        throw new SemanticError('encoding depth limit exceeded', 'WORKBUDGET');
       }
       if (def && typeof def === 'object') {
         if (visited.has(def)) {
@@ -1813,7 +1814,7 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
           try {
             timeUnit(null, temporal);
           } catch (error) {
-            fail(options, error instanceof Error ? error.message : 'invalid timeUnit');
+            fail(options, error);
           }
         }
         // Serialize only known primitive options, never arbitrary toJSON/coercion hooks.
@@ -1835,7 +1836,7 @@ export function prepareVegaLiteSpec(spec: VegaLiteSpec, options?: VegaSemanticOp
             try {
               put(row, target, temporal === undefined ? clone(value, false, options) : timeUnit(value, temporal));
             } catch (error) {
-              fail(options, error instanceof Error ? error.message : 'invalid timeUnit');
+              fail(options, error);
               put(row, target, null);
             }
             return row;

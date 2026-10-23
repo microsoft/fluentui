@@ -57,16 +57,16 @@ export const VegaLiteChartShell: ForwardRefComponent<ShellProps> = React.forward
     tooltip,
     children,
     className,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
+    'aria-describedby': ariaDescribedBy,
     ...rootProps
   } = props;
+  const svgDescription = Array.from(
+    new Set([...(ariaDescribedBy ?? '').split(/\s+/), `${id}-description`].filter(Boolean)),
+  ).join(' ');
   return (
-    <div
-      {...rootProps}
-      ref={ref}
-      className={mergeClasses(classes.root, className)}
-      role="group"
-      aria-label={rootProps['aria-label'] ?? chartTitle}
-    >
+    <div {...rootProps} ref={ref} className={mergeClasses(classes.root, className)} role="presentation">
       <VegaLiteChartTitle spec={spec} hideTitle={hideTitle} />
       {beforeNavigation}
       <div
@@ -82,8 +82,9 @@ export const VegaLiteChartShell: ForwardRefComponent<ShellProps> = React.forward
           height={height}
           viewBox={`${vegaLiteChartPresentation.viewBox.x} ${vegaLiteChartPresentation.viewBox.y} ${width} ${height}`}
           role="group"
-          aria-labelledby={`${id}-title`}
-          aria-describedby={`${id}-description`}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy ?? (ariaLabel ? undefined : `${id}-title`)}
+          aria-describedby={svgDescription}
         >
           <title id={`${id}-title`}>{chartTitle}</title>
           <desc id={`${id}-description`}>{getVegaLiteChartDescription(spec, subject)}</desc>

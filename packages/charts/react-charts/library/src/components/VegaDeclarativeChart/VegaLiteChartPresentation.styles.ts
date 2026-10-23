@@ -24,9 +24,6 @@ export const useVegaLiteChartPresentationStyles = makeStyles({
     lineHeight: tokens.lineHeightBase400,
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground1,
-    // Composed unit views already supply an authored h3 before the responsive renderer.
-    // Hide only the renderer's heading, not its subtitle or standalone authored titles.
-    '[data-vega-view] &': { display: 'none' },
   },
   subtitle: {
     fontFamily: tokens.fontFamilyBase,

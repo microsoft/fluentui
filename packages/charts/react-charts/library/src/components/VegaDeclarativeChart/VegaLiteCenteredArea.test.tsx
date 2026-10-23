@@ -348,15 +348,99 @@ describe('native centered area renderer', () => {
         })}
       />,
     );
-    expect(container.firstElementChild).toHaveAttribute('aria-label', 'Author label');
+    expect(container.firstElementChild).toHaveAttribute('role', 'presentation');
+    expect(container.firstElementChild).not.toHaveAttribute('aria-label');
     expect(screen.getByRole('heading', { name: 'Stream' })).toBeVisible();
     expect(screen.getByText('Prepared values')).toBeVisible();
     const svg = container.querySelector('svg')!;
+    expect(screen.getAllByRole('group', { name: 'Author label' })).toEqual([svg]);
+    expect(svg).toHaveAttribute('aria-label', 'Author label');
+    expect(svg).not.toHaveAttribute('aria-labelledby');
     const description = svg.querySelector('desc')!;
     expect(svg).toHaveAttribute('aria-describedby', description.id);
     expect(description.textContent).toContain('Stream description');
     expect(description.textContent).toContain('Home');
     expect(description.textContent).toContain('Shift+Tab');
+  });
+
+  it.each([
+    { label: 'Author label', labelledBy: undefined, name: 'Author label' },
+    { label: undefined, labelledBy: 'external-label label-context', name: 'External stream context' },
+    { label: 'Author label', labelledBy: 'external-label label-context', name: 'External stream context' },
+  ])('names only the SVG with authored label precedence: %j', ({ label, labelledBy, name }) => {
+    const ref = React.createRef<HTMLDivElement>();
+    const onFocus = jest.fn();
+    render(
+      <>
+        <span id="external-label">External stream</span>
+        <span id="label-context">context</span>
+        <span id="external-description">Caller stream description</span>
+        <VegaLiteCenteredArea
+          ref={ref}
+          role="group"
+          className="authored"
+          style={{ display: 'grid' }}
+          onFocus={onFocus}
+          aria-label={label}
+          aria-labelledby={labelledBy}
+          aria-describedby="external-description"
+          spec={centeredAreaSpec({ title: 'Stream', description: 'Stream description' })}
+        />
+      </>,
+    );
+    const root = ref.current!;
+    const svg = root.querySelector('svg')!;
+    expect(root).toHaveAttribute('role', 'presentation');
+    expect(screen.queryByRole('group', { name: '' })).toBeNull();
+    for (const attribute of ['aria-label', 'aria-labelledby', 'aria-describedby']) {
+      expect(root).not.toHaveAttribute(attribute);
+    }
+    expect(root).toHaveClass('authored');
+    expect(root).toHaveStyle({ display: 'grid' });
+    expect(screen.getAllByRole('group', { name })).toEqual([svg]);
+    expect(screen.getByRole('group', { name })).toBe(svg);
+    if (label !== undefined) {
+      expect(svg).toHaveAttribute('aria-label', label);
+    } else {
+      expect(svg).not.toHaveAttribute('aria-label');
+    }
+    if (labelledBy !== undefined) {
+      expect(svg).toHaveAttribute('aria-labelledby', labelledBy);
+    } else {
+      expect(svg).not.toHaveAttribute('aria-labelledby');
+    }
+    expect(svg).toHaveAttribute('aria-describedby', `external-description ${svg.id}-description`);
+    expect(
+      screen.getByRole('group', {
+        name,
+        description: `Caller stream description ${svg.querySelector('desc')!.textContent}`,
+      }),
+    ).toBe(svg);
+    fireEvent.focus(root.querySelector('[data-centered-point]')!);
+    expect(onFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('merges description IDREFs once in caller order, including an already supplied generated description', () => {
+    const chart = (description: string) => (
+      <>
+        <span id="first-description">First description</span>
+        <span id="second-description">Second description</span>
+        <VegaLiteCenteredArea aria-describedby={description} spec={centeredAreaSpec({ title: undefined })} />
+      </>
+    );
+    const { container, rerender } = render(chart(' second-description\tfirst-description second-description '));
+    const svg = container.querySelector('svg')!;
+    const descriptionId = svg.querySelector('desc')!.id;
+    expect(svg).toHaveAttribute('aria-describedby', `second-description first-description ${descriptionId}`);
+    rerender(chart(` second-description\tfirst-description second-description ${descriptionId} ${descriptionId} `));
+    expect(svg).toHaveAttribute('aria-describedby', `second-description first-description ${descriptionId}`);
+    expect(
+      screen.getByRole('group', {
+        name: 'Centered area chart',
+        description: `Second description First description ${svg.querySelector('desc')!.textContent}`,
+      }),
+    ).toBe(svg);
+    expect(screen.getAllByRole('group', { name: 'Centered area chart' })).toEqual([svg]);
   });
 
   it('leaves the composed wrapper as the only heading through an explicit presentation prop', () => {

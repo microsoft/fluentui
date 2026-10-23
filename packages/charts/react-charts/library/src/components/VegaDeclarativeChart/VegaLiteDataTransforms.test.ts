@@ -6,6 +6,8 @@ import {
   readVegaField,
 } from './VegaLiteDataTransforms';
 import type { VegaLiteSpec } from './VegaLiteTypes';
+import { SemanticError } from './VegaLiteSemanticError';
+import * as statistics from './VegaLiteStatistics';
 import {
   peerRows,
   statisticsRows,
@@ -21,6 +23,77 @@ import {
 
 const strict = { mode: 'strict' as const };
 const prepare = (spec: unknown) => prepareVegaLiteSpec(spec as VegaLiteSpec, strict);
+
+describe('explicit semantic error codes', () => {
+  it.each(['legacy', 'strict'] as const)('preserves a spent budget instance with non-budget wording in %s', mode => {
+    let failure: unknown;
+    const spy = jest.spyOn(statistics, 'densityVegaRows').mockImplementationOnce((_rows, _transform, ctx) => {
+      try {
+        ctx.spend(Number.MAX_SAFE_INTEGER);
+      } catch (error) {
+        failure = error;
+        (error as Error).message = 'stop';
+        throw error;
+      }
+      return [];
+    });
+    try {
+      let caught: unknown;
+      try {
+        applyVegaTransforms([], [{ density: 'v' }], { mode });
+      } catch (error) {
+        caught = error;
+      }
+      expect(caught).toBe(failure);
+      expect(caught).toBeInstanceOf(SemanticError);
+      expect(caught).toMatchObject({ code: 'WORKBUDGET', message: 'stop' });
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it.each(['legacy', 'strict'] as const)('retains fatal untyped foreign budgets in %s', mode => {
+    for (const run of [
+      () => applyVegaTransforms([{ a: new Array(100001) }], [{ calculate: 'toString(datum.a)', as: 'v' }], { mode }),
+      () => evaluateVegaPredicate('toString(datum.a)', { a: new Array(100001) }, { mode }),
+      () => applyVegaTransforms([], [{ density: 'v', steps: 10001 }], { mode }),
+    ]) {
+      expect(run).toThrow(expect.objectContaining({ code: 'WORKBUDGET' }));
+    }
+  });
+
+  it('does not classify invalid pivot limit values or unknown operation names as budgets', () => {
+    const rows = [{ k: 'a', v: 1 }];
+    const transform = { pivot: 'k', value: 'v', limit: -1 };
+    expect(applyVegaTransforms(rows, [transform])).toEqual(rows);
+    expect(() => applyVegaTransforms(rows, [transform], strict)).toThrow(
+      expect.objectContaining({ code: 'INVALID', message: 'Vega semantics: invalid pivot limit' }),
+    );
+    expect(aggregateVegaValues(rows, 'v', 'limit')).toBe(1);
+    expect(() => aggregateVegaValues(rows, 'v', 'limit', strict)).toThrow(
+      expect.objectContaining({ code: 'UNSUPPORTED', message: 'Vega semantics: unknown aggregate operation limit' }),
+    );
+    expect(applyVegaTransforms(rows, [{ limit: true }])).toEqual(rows);
+    expect(() => applyVegaTransforms(rows, [{ limit: true }], strict)).toThrow(
+      expect.objectContaining({ code: 'UNSUPPORTED', message: 'Vega semantics: unsupported transform limit' }),
+    );
+  });
+
+  it('does not infer a budget from an ordinary runtime error caught by the pipeline', () => {
+    const rows = [{ v: 1 }, { v: 2 }];
+    const spy = jest.spyOn(Math, 'imul').mockImplementation(() => {
+      throw new Error('work limit exceeded');
+    });
+    try {
+      expect(applyVegaTransforms(rows, [{ sample: 1 }])).toEqual(rows);
+      expect(() => applyVegaTransforms(rows, [{ sample: 1 }], strict)).toThrow(
+        expect.objectContaining({ code: 'INVALID', message: 'Vega semantics: work limit exceeded' }),
+      );
+    } finally {
+      spy.mockRestore();
+    }
+  });
+});
 
 describe('bounded full-size semantic preparation', () => {
   it.each(['legacy', 'strict'] as const)('charges repeated text copies cumulatively in %s', mode => {

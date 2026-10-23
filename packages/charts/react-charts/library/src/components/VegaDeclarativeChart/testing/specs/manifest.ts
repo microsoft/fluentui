@@ -20,7 +20,6 @@ export type CorpusEntry = {
   file: string;
   spec: VegaLiteSpec;
   description: string;
-  priority: 'P0' | 'P1' | 'P2';
   /** Required conformance, NOT a claim that today's adapter implements the feature. */
   support: 'required';
   sources: { tag: 'grammar' | 'semantics' | 'authoring'; url: string }[];
@@ -54,7 +53,6 @@ const aggregateSource =
 function entry(
   file: string,
   description: string,
-  priority: CorpusEntry['priority'],
   topic: string,
   expectedTables: CorpusTable[],
   options: Partial<Pick<CorpusEntry, 'publicSvgCount' | 'composed' | 'geometry' | 'tooltipLabels' | 'resource'>> = {},
@@ -67,7 +65,6 @@ function entry(
     file,
     spec,
     description,
-    priority,
     support: 'required',
     sources: [
       { tag: 'grammar', url: corpusGrammar.schema },
@@ -99,7 +96,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'ema-encoding.vl.json',
     'Parameterized EMA encoding aliases and valid/count distinction',
-    'P0',
     'aggregate',
     [
       table(
@@ -116,7 +112,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'ema-transform-bias.vl.json',
     'Unbiased and biased EMA transform outputs with unequal counts',
-    'P0',
     'aggregate',
     [
       table(fields('group', 'ema', 'biased', 'rows', 'valid', 'missing'), [
@@ -130,7 +125,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'median-variance.vl.json',
     'Even/odd medians, sample/population variance and distinct encoding aliases',
-    'P0',
     'aggregate',
     [
       table(
@@ -144,7 +138,7 @@ export const specificationCorpus: CorpusEntry[] = [
     {},
     aggregateSource,
   ),
-  entry('window-peers.vl.json', 'Tied cumulative frames and multiple independent sums', 'P0', 'window', [
+  entry('window-peers.vl.json', 'Tied cumulative frames and multiple independent sums', 'window', [
     table(fields('id', 'amount_sum', 'cost_sum', 'rank', 'dense'), [
       [1, 6, 30, 1, 1],
       [2, 6, 30, 1, 1],
@@ -152,38 +146,25 @@ export const specificationCorpus: CorpusEntry[] = [
       [4, 30, 100, 4, 3],
     ]),
   ]),
-  entry(
-    'window-ignore-peers.vl.json',
-    'Trailing frames ignore peers but rank and lag ignore the frame',
-    'P0',
-    'window',
-    [
-      table(fields('id', 'amount_sum', 'cost_sum', 'rank', 'previous', 'first'), [
-        [1, 2, 10, 1, null, 2],
-        [2, 6, 30, 1, 2, 2],
-        [3, 12, 50, 3, 4, 4],
-        [4, 24, 70, 4, 8, 8],
-      ]),
-    ],
-  ),
-  entry(
-    'window-forward-frame.vl.json',
-    'Forward frames expand both peer endpoints independently of lead',
-    'P0',
-    'window',
-    [
-      table(fields('id', 'amount_sum', 'cost_sum', 'rank', 'next', 'last'), [
-        [1, 6, 30, 1, 4, 4],
-        [2, 14, 60, 1, 8, 8],
-        [3, 24, 70, 3, 16, 16],
-        [4, 16, 40, 4, null, 16],
-      ]),
-    ],
-  ),
+  entry('window-ignore-peers.vl.json', 'Trailing frames ignore peers but rank and lag ignore the frame', 'window', [
+    table(fields('id', 'amount_sum', 'cost_sum', 'rank', 'previous', 'first'), [
+      [1, 2, 10, 1, null, 2],
+      [2, 6, 30, 1, 2, 2],
+      [3, 12, 50, 3, 4, 4],
+      [4, 24, 70, 4, 8, 8],
+    ]),
+  ]),
+  entry('window-forward-frame.vl.json', 'Forward frames expand both peer endpoints independently of lead', 'window', [
+    table(fields('id', 'amount_sum', 'cost_sum', 'rank', 'next', 'last'), [
+      [1, 6, 30, 1, 4, 4],
+      [2, 14, 60, 1, 8, 8],
+      [3, 24, 70, 3, 16, 16],
+      [4, 16, 40, 4, null, 16],
+    ]),
+  ]),
   entry(
     'utcday-encoding.vl.json',
     'Cyclic UTC day reference dates and encoding aggregation',
-    'P0',
     'timeunit',
     [
       table(
@@ -200,7 +181,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'yearmonthdate-transform.vl.json',
     'Leap-day local calendar and offset-sensitive UTC calendar',
-    'P0',
     'timeunit',
     [
       table(
@@ -214,14 +194,14 @@ export const specificationCorpus: CorpusEntry[] = [
     {},
     'https://raw.githubusercontent.com/vega/vega/v6.4.0/packages/vega-time/src/floor.js',
   ),
-  entry('bin-transform.vl.json', 'Exact finite bins, closed maximum extent and grouped frequency', 'P1', 'bin', [
+  entry('bin-transform.vl.json', 'Exact finite bins, closed maximum extent and grouped frequency', 'bin', [
     table(fields('start', 'end', 'frequency'), [
       [-4, 0, 2],
       [0, 4, 2],
       [4, 8, 2],
     ]),
   ]),
-  entry('flatten-parallel.vl.json', 'Renamed flattened arrays and null padding', 'P1', 'flatten', [
+  entry('flatten-parallel.vl.json', 'Renamed flattened arrays and null padding', 'flatten', [
     table(fields('id', 'step', 'value', 'label'), [
       ['A', 1, 2, 'one'],
       ['A', 2, 4, 'two'],
@@ -229,7 +209,7 @@ export const specificationCorpus: CorpusEntry[] = [
       ['B', 1, 8, 'only'],
     ]),
   ]),
-  entry('pivot-escaped-field.vl.json', 'Duplicate pivot sums and literal dotted output field', 'P1', 'pivot', [
+  entry('pivot-escaped-field.vl.json', 'Duplicate pivot sums and literal dotted output field', 'pivot', [
     table(
       [{ field: 'group' }, ...xy],
       [
@@ -238,20 +218,14 @@ export const specificationCorpus: CorpusEntry[] = [
       ],
     ),
   ]),
-  entry(
-    'lookup-inline.vl.json',
-    'Inline nested lookup fields, aliases, default and downstream calculate',
-    'P1',
-    'lookup',
-    [
-      table(fields('id', 'name', 'rate', 'total'), [
-        [1, 'One', 2, 6],
-        [2, 'Two', 5, 10],
-        [3, 0, 0, 0],
-      ]),
-    ],
-  ),
-  entry('normalized-bar-order.vl.json', 'Normalized order must not be replaced by color-domain order', 'P0', 'stack', [
+  entry('lookup-inline.vl.json', 'Inline nested lookup fields, aliases, default and downstream calculate', 'lookup', [
+    table(fields('id', 'name', 'rate', 'total'), [
+      [1, 'One', 2, 6],
+      [2, 'Two', 5, 10],
+      [3, 0, 0, 0],
+    ]),
+  ]),
+  entry('normalized-bar-order.vl.json', 'Normalized order must not be replaced by color-domain order', 'stack', [
     table(fields('category', 'series', 'amount', 'priority'), [
       ['B', 'Second', 6, 1],
       ['B', 'First', 2, 2],
@@ -262,7 +236,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'xoffset-not-color.vl.json',
     'Independent categorical xOffset grouping and diverging baseline',
-    'P2',
     'encoding',
     [
       table(fields('category', 'slot', 'amount', 'tone'), [
@@ -287,7 +260,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'yoffset-named-group.vl.json',
     'Independent horizontal yOffset grouping and top-to-bottom bands',
-    'P2',
     'encoding',
     [
       table(fields('category', 'slot', 'amount', 'tone'), [
@@ -312,7 +284,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'ranged-negative-corners.vl.json',
     'Signed primary versus secondary endpoints and rounded ends',
-    'P2',
     'bar',
     [
       table(fields('category', 'value', 'baseline'), [
@@ -334,7 +305,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'center-bars.vl.json',
     'Maximum-total centering, explicit order and absolute negative contributions',
-    'P2',
     'stack',
     [
       table(fields('category', 'series', 'amount', 'priority'), [
@@ -358,7 +328,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'recursive-concat-dataset.vl.json',
     'Real named dataset in recursive concat with once-only inherited transforms',
-    'P1',
     'concat',
     [
       table(xy, [
@@ -376,7 +345,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'facet-missing-cells.vl.json',
     'Missing facet fields and empty Cartesian cells',
-    'P1',
     'facet',
     [
       { ...table(xy, [[1, 2]]), title: 'Region: (missing) · Quarter: Q1' },
@@ -391,7 +359,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'repeat-matrix.vl.json',
     'Four independently typed repeat bindings',
-    'P1',
     'repeat',
     [
       table(xy, [
@@ -416,7 +383,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'filtered-tooltip-newlines.vl.json',
     'Leaf field predicates, newlines, escaping and explicit tooltip privacy',
-    'P0',
     'filter',
     [
       table(
@@ -438,7 +404,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'tooltip-field-filter.vl.json',
     'Field-bound tooltip filters preserve all plot rows, zero/null values and per-mark ARIA privacy',
-    'P1',
     'tooltip',
     [
       table(
@@ -458,7 +423,6 @@ export const specificationCorpus: CorpusEntry[] = [
   entry(
     'managed-resource.vl.json',
     'Offline host authority, parse and calculate without browser fetch',
-    'P1',
     'data',
     [
       table(xy, [

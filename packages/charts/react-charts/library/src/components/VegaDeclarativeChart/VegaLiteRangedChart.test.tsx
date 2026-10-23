@@ -289,10 +289,14 @@ describe('native SVG integration', () => {
         }}
       />,
     );
-    expect(container.firstElementChild).toHaveAttribute('aria-label', 'Author label');
+    expect(container.firstElementChild).toHaveAttribute('role', 'presentation');
+    expect(container.firstElementChild).not.toHaveAttribute('aria-label');
     expect(screen.getByRole('heading', { name: 'Ranges' })).toBeVisible();
     expect(screen.getByText('Prepared values')).toBeVisible();
     const svg = container.querySelector('svg')!;
+    expect(screen.getAllByRole('group', { name: 'Author label' })).toEqual([svg]);
+    expect(svg).toHaveAttribute('aria-label', 'Author label');
+    expect(svg).not.toHaveAttribute('aria-labelledby');
     const description = svg.querySelector('desc')!;
     expect(svg).toHaveAttribute('aria-describedby', description.id);
     expect(description.textContent).toContain('Range description');
@@ -300,6 +304,86 @@ describe('native SVG integration', () => {
     expect(description.textContent).toContain('Shift+Tab');
     rerender(<VegaLiteRangedChart spec={horizontalRangeSpec} />);
     expect(screen.queryByRole('heading')).toBeNull();
+  });
+
+  it.each([
+    { label: 'Author label', labelledBy: undefined, name: 'Author label' },
+    { label: undefined, labelledBy: 'external-label label-context', name: 'External ranges context' },
+    { label: 'Author label', labelledBy: 'external-label label-context', name: 'External ranges context' },
+  ])('names only the SVG with authored label precedence: %j', ({ label, labelledBy, name }) => {
+    const ref = React.createRef<HTMLDivElement>();
+    const onFocus = jest.fn();
+    render(
+      <>
+        <span id="external-label">External ranges</span>
+        <span id="label-context">context</span>
+        <span id="external-description">Caller range description</span>
+        <VegaLiteRangedChart
+          ref={ref}
+          role="group"
+          className="authored"
+          style={{ display: 'grid' }}
+          onFocus={onFocus}
+          aria-label={label}
+          aria-labelledby={labelledBy}
+          aria-describedby="external-description"
+          spec={{ ...horizontalRangeSpec, title: 'Ranges', description: 'Range description' }}
+        />
+      </>,
+    );
+    const root = ref.current!;
+    const svg = root.querySelector('svg')!;
+    expect(root).toHaveAttribute('role', 'presentation');
+    expect(screen.queryByRole('group', { name: '' })).toBeNull();
+    for (const attribute of ['aria-label', 'aria-labelledby', 'aria-describedby']) {
+      expect(root).not.toHaveAttribute(attribute);
+    }
+    expect(root).toHaveClass('authored');
+    expect(root).toHaveStyle({ display: 'grid' });
+    expect(screen.getAllByRole('group', { name })).toEqual([svg]);
+    expect(within(root).getByRole('group', { name })).toBe(svg);
+    if (label !== undefined) {
+      expect(svg).toHaveAttribute('aria-label', label);
+    } else {
+      expect(svg).not.toHaveAttribute('aria-label');
+    }
+    if (labelledBy !== undefined) {
+      expect(svg).toHaveAttribute('aria-labelledby', labelledBy);
+    } else {
+      expect(svg).not.toHaveAttribute('aria-labelledby');
+    }
+    expect(svg).toHaveAttribute('aria-describedby', `external-description ${svg.id}-description`);
+    expect(
+      screen.getByRole('group', {
+        name,
+        description: `Caller range description ${svg.querySelector('desc')!.textContent}`,
+      }),
+    ).toBe(svg);
+    fireEvent.focus(root.querySelector('[data-ranged-mark]')!);
+    expect(onFocus).toHaveBeenCalledTimes(1);
+  });
+
+  it('merges description IDREFs once in caller order, including an already supplied generated description', () => {
+    const chart = (description: string) => (
+      <>
+        <span id="first-description">First description</span>
+        <span id="second-description">Second description</span>
+        <VegaLiteRangedChart aria-describedby={description} spec={horizontalRangeSpec} />
+      </>
+    );
+    const { container, rerender } = render(chart(' second-description\tfirst-description second-description '));
+    const svg = container.querySelector('svg')!;
+    const descriptionId = svg.querySelector('desc')!.id;
+    expect(svg).toHaveAttribute('aria-describedby', `second-description first-description ${descriptionId}`);
+    rerender(chart(` second-description\tfirst-description second-description ${descriptionId} ${descriptionId} `));
+    expect(svg).toHaveAttribute('aria-describedby', `second-description first-description ${descriptionId}`);
+    expect(
+      screen.getByRole('group', {
+        name: 'Ranged chart',
+        description: `Second description First description ${svg.querySelector('desc')!.textContent}`,
+      }),
+    ).toBe(svg);
+    expect(screen.getAllByRole('group', { name: 'Ranged chart' })).toEqual([svg]);
   });
 
   it('leaves the composed view wrapper as the only heading through an explicit presentation prop', () => {
@@ -603,15 +687,25 @@ describe('native SVG integration', () => {
       </>,
     );
     try {
-      expect(rangedRef.current).toBe(screen.getByRole('group', { name: 'Ranged owner' }));
-      expect(centeredRef.current).toBe(screen.getByRole('group', { name: 'Centered owner' }));
+      expect(rangedRef.current).toHaveAttribute('role', 'presentation');
+      expect(centeredRef.current).toHaveAttribute('role', 'presentation');
       expect(rangedRef.current).toHaveAttribute('id', 'ranged-host');
       expect(centeredRef.current).toHaveAttribute('id', 'centered-host');
       for (const root of [rangedRef.current!, centeredRef.current!]) {
-        expect(root).toHaveAttribute('aria-describedby', 'external-description');
+        expect(root).toHaveAttribute('role', 'presentation');
+        expect(root).not.toHaveAttribute('aria-label');
+        expect(root).not.toHaveAttribute('aria-labelledby');
+        expect(root).not.toHaveAttribute('aria-describedby');
         const svg = root.querySelector('svg')!;
-        expect(svg).toHaveAttribute('aria-labelledby', `${svg.id}-title`);
-        expect(svg).toHaveAttribute('aria-describedby', `${svg.id}-description`);
+        expect(screen.getAllByRole('group', { name: svg.getAttribute('aria-label')! })).toEqual([svg]);
+        expect(svg).not.toHaveAttribute('aria-labelledby');
+        expect(svg).toHaveAttribute('aria-describedby', `external-description ${svg.id}-description`);
+        expect(
+          screen.getByRole('group', {
+            name: svg.getAttribute('aria-label')!,
+            description: `Caller description ${svg.querySelector('desc')!.textContent}`,
+          }),
+        ).toBe(svg);
       }
       const roots =
         order === 'ranged-first'

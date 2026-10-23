@@ -19,7 +19,12 @@ export interface VegaDataParseOptions {
   maxWork?: number;
 }
 
-/** Host-owned I/O. No default resolver, fetch, or other external access is provided. */
+/**
+ * Host-owned I/O. No default resolver, fetch, or other external access is provided.
+ * The signal is aborted when the request is superseded, the component unmounts, or the caller aborts.
+ * Hosts should propagate it to their I/O to stop network work; rejection/stale-result guards in the
+ * loader cannot undo a request or prevent unsafe redirects already followed by the host.
+ */
 export type VegaDataResolver = (request: {
   url: string;
   signal: AbortSignal;
