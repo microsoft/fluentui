@@ -1,0 +1,5 @@
+{
+  "type": "patch",
+  "comment": "fix: Support plain right Alt keytip activation and isolate activation behavior behind its opt-in prop.",
+  "packageName": "@fluentui/react"
+}
