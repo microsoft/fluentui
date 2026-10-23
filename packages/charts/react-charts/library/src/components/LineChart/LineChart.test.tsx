@@ -1186,6 +1186,40 @@ describe('LineChart - mouse events', () => {
   });
 
   it.each([false, true])(
+    'Should not restore focus when only inline handlers change (focusOnReset: %s)',
+    enableFocusOnReset => {
+      const createData = () => ({
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          onLineClick: () => undefined,
+          data: line.data.map(point => ({ ...point, onDataPointClick: () => undefined })),
+        })),
+      });
+      const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={createData()} focusOnReset={focusOnReset} />
+        </>,
+        { container: root! },
+      );
+      act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+      const beforeChart = screen.getByTestId('before-chart');
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={createData()} focusOnReset={focusOnReset} width={700} />
+        </>,
+      );
+
+      expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    },
+  );
+
+  it.each([false, true])(
     'Should restore focus and point callout for path-rendered lines (optimized: %s)',
     optimizeLargeData => {
       const data = {
@@ -1208,6 +1242,13 @@ describe('LineChart - mouse events', () => {
         { container: root! },
       );
       const beforeChart = screen.getByTestId('before-chart');
+      const highlightCircle = container.querySelector<SVGCircleElement>(
+        'circle[id^="staticHighlightCircle"][id$="_1"]',
+      )!;
+      const highlightRect = highlightCircle.getBoundingClientRect();
+      Object.defineProperty(highlightCircle, 'getBoundingClientRect', {
+        value: () => ({ ...highlightRect, x: 0, y: 0 }),
+      });
       act(() => beforeChart.focus());
 
       rerender(
@@ -1226,6 +1267,13 @@ describe('LineChart - mouse events', () => {
         container.querySelector<SVGCircleElement>('circle[id^="staticHighlightCircle"][id$="_1"]')!.getAttribute('cx'),
       ).not.toBe('0');
       act(() => beforeChart.focus());
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+
+      act(() => line.focus());
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      act(() => beforeChart.focus());
 
       rerender(
         <>
@@ -1235,6 +1283,8 @@ describe('LineChart - mouse events', () => {
       );
 
       expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
     },
   );
 

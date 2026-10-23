@@ -239,6 +239,7 @@ export interface GaugeChartProps {
   /**
    * Segment to focus when the segments, colors, or chart value change in content.
    * When not provided, focus returns to the previously focused segment or needle.
+   * Callback-only changes do not restore focus.
    */
   focusOnReset?: { segmentIndex: number };
 

@@ -330,8 +330,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       const { x, y } = clickPosition;
       // Calculate the distance moved
       const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-      // Update the position only if the distance moved is greater than the threshold
-      if (distance > threshold) {
+      // Movement thresholds must not prevent reopening a dismissed callout.
+      if (!isPopoverOpen || distance > threshold) {
         setClickPosition({ x: newX, y: newY });
         setPopoverOpen(true);
       }
@@ -1792,6 +1792,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     function _dismissCallout() {
       _uniqueCallOutID = null;
       setActivePoint('');
+      setNearestCircleToHighlight(null);
+      setClickPosition({ x: 0, y: 0 });
       if (isPopoverOpen) {
         setPopoverOpen(false);
       }

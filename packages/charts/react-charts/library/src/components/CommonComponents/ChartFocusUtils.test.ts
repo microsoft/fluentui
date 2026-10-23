@@ -23,9 +23,21 @@ describe('areChartDataEqual', () => {
     expect(areChartDataEqual([], {})).toBe(false);
   });
 
-  it('preserves callback identity', () => {
+  it('ignores callback identity, additions and removals', () => {
     const callback = () => undefined;
     expect(areChartDataEqual({ onClick: callback }, { onClick: callback })).toBe(true);
-    expect(areChartDataEqual({ onClick: callback }, { onClick: () => undefined })).toBe(false);
+    expect(areChartDataEqual({ onClick: callback }, { onClick: () => undefined })).toBe(true);
+    expect(areChartDataEqual({}, { onClick: callback })).toBe(true);
+    expect(areChartDataEqual({ onClick: callback }, {})).toBe(true);
+    expect(areChartDataEqual({ onClick: callback }, { onClick: 'changed' })).toBe(false);
+    expect(areChartDataEqual({ onClick: 'changed' }, { onClick: callback })).toBe(false);
+  });
+
+  it('still detects nested value changes when callbacks change', () => {
+    const previous = [{ data: [{ x: 1, y: 2, onDataPointClick: () => undefined }], onLineClick: () => undefined }];
+    const equivalent = [{ data: [{ x: 1, y: 2, onDataPointClick: () => undefined }], onLineClick: () => undefined }];
+    const changed = [{ data: [{ x: 1, y: 3, onDataPointClick: () => undefined }], onLineClick: () => undefined }];
+    expect(areChartDataEqual(previous, equivalent)).toBe(true);
+    expect(areChartDataEqual(previous, changed)).toBe(false);
   });
 });

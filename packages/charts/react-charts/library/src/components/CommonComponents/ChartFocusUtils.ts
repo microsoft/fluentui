@@ -25,9 +25,10 @@ export function areChartDataEqual(previous: unknown, current: unknown): boolean 
 
   const previousRecord = previous as Record<string, unknown>;
   const currentRecord = current as Record<string, unknown>;
-  const keys = Object.keys(previousRecord);
+  const keys = Object.keys(previousRecord).filter(key => typeof previousRecord[key] !== 'function');
+  const currentKeys = Object.keys(currentRecord).filter(key => typeof currentRecord[key] !== 'function');
   return (
-    keys.length === Object.keys(currentRecord).length &&
+    keys.length === currentKeys.length &&
     keys.every(
       key =>
         Object.prototype.hasOwnProperty.call(currentRecord, key) &&
