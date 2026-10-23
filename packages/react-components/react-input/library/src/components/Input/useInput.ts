@@ -80,6 +80,7 @@ export const useInputBase_unstable = (props: InputBaseProps, ref: React.Ref<HTML
     input: slot.always(fieldControlProps.input, {
       defaultProps: {
         type: 'text',
+        size: 1,
         ref,
         ...nativeProps.primary,
       },
