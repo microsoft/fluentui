@@ -24,13 +24,13 @@ const options = [
 export const SingleSelect = (): JSXElement => {
   const [selectedOption, setSelectedOption] = React.useState<string | undefined>();
   const selectedOptions = React.useMemo(() => (selectedOption ? [selectedOption] : []), [selectedOption]);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    setSelectedOption(selectedOption === data.value ? undefined : data.value);
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => {
+    setSelectedOption(data.selectedOptions[0]);
   };
 
   return (
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+      <TagPicker selectionMode="single" onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           {selectedOption && (
             <TagPickerGroup aria-label="Selected Employees">
@@ -69,7 +69,7 @@ SingleSelect.parameters = {
   docs: {
     description: {
       story: `
-By default, the \`TagPicker\` allows you to have multiple tags selected . To enable single selection, you can manage the selected options state yourself and pass only one selected option to the \`TagPicker\` component.
+By default, the \`TagPicker\` allows multiple selected tags. Set \`selectionMode="single"\` to replace the selected tag when another option is chosen.
       `,
     },
   },
