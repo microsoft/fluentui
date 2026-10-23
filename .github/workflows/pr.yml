@@ -146,7 +146,7 @@ jobs:
         run: |
           yarn nx affected -t test-rit--17--e2e,test-rit--18--e2e --exclude='react-19-tests-v9,react-charting,react'
 
-      - name: Upload Cypress screenshots if exist
+      - name: Upload E2E failure artifacts if exist
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always() && steps.e2e.outcome == 'failure'
         with:
@@ -207,4 +207,5 @@ jobs:
           path: |
             apps/*/cypress/screenshots/**/*.png
             packages/**/cypress/screenshots/**/*.png
+            apps/vr-tests-react-components/dist/e2e-results/**
           retention-days: 1

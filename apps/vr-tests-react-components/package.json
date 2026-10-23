@@ -5,13 +5,16 @@
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
     "build-storybook": "yarn run -T storybook build -o dist/storybook",
+    "build-storybook-fonts": "FLUENTUI_VRT_FONT_SIZING=true FLUENTUI_ICON_VARIANT=fonts yarn run -T storybook build -o dist/storybook-fonts",
+    "build-storybook-icons-svg": "FLUENTUI_VRT_ICON_SIZING=true FLUENTUI_VRT_FONT_SIZING=false FLUENTUI_ICON_VARIANT=svg yarn run -T storybook build -o dist/storybook-icons-svg",
     "clean": "yarn run -T just-scripts clean",
     "format": "yarn run -T prettier . -w --ignore-path ../../.prettierignore",
     "lint": "yarn run -T just-scripts lint",
     "start": "yarn run -T storybook dev",
     "test": "yarn run -T just-scripts test",
     "type-check": "yarn run -T tsc -p . --noEmit --baseUrl .",
-    "test-vr": "yarn run -T storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
+    "test-vr": "yarn test-vr:storybook --url dist/storybook \"$@\" && yarn test-vr:storybook --url dist/storybook-fonts \"$@\"",
+    "test-vr:storybook": "yarn run -T storywright --browsers chromium --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError --stepsApi parameters"
   },
   "dependencies": {
     "@fluentui/react-accordion": "*",

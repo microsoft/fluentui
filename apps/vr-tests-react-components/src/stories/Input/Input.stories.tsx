@@ -3,10 +3,10 @@ import type { Meta } from '@storybook/react-webpack5';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
 import { Input } from '@fluentui/react-input';
-import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
+import { SearchRegular, DismissRegular, CalendarColor } from '@fluentui/react-icons';
 import { FluentProvider } from '@fluentui/react-provider';
 
-import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL } from '../../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, RTL, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 
 export default {
   title: 'Input Converged',
@@ -41,6 +41,20 @@ export const ContentAfter = () => (
 ContentAfter.storyName = 'contentAfter';
 
 export const ContentAfterRTL = getStoryVariant(ContentAfter, RTL);
+
+export const IconSizes = () => (
+  <>
+    {(['small', 'medium', 'large'] as const).map(size => (
+      <Input key={size} size={size} contentBefore={<SearchRegular />} contentAfter={<DismissRegular />} />
+    ))}
+  </>
+);
+
+export const IconSizesRTL = getStoryVariant(IconSizes, RTL);
+export const IconSizesDarkMode = getStoryVariant(IconSizes, DARK_MODE);
+export const IconSizesHighContrast = getStoryVariant(IconSizes, HIGH_CONTRAST);
+
+export const MixedIconRenderers = () => <Input contentBefore={<CalendarColor />} contentAfter={<SearchRegular />} />;
 
 export const WithAppearanceOverride = () => (
   <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
