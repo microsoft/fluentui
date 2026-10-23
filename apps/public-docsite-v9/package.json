@@ -30,6 +30,7 @@
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-northstar": "*",
+    "@fluentui/react-range-slider-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/react-storybook-addon-playground": "*",

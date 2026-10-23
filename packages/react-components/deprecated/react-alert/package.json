@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-avatar": "^9.11.9",
-    "@fluentui/react-button": "^9.11.2",
+    "@fluentui/react-button": "^9.11.3",
     "@fluentui/react-icons": "^2.0.239",
     "@fluentui/react-jsx-runtime": "^9.4.7",
     "@fluentui/react-tabster": "^9.26.19",
