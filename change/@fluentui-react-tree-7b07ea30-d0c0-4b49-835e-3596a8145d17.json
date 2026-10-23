@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose useTreeBase_unstable and useTreeItemLayoutBase_unstable design-free base hooks",
+  "packageName": "@fluentui/react-tree",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
