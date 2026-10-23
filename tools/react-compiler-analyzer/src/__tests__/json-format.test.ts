@@ -7,35 +7,43 @@ import { runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { toAnalysisDocument, toLintDocument } from '../serializer';
 import type { AnalysisDocument, FunctionAnalysis, LintDocument } from '../types';
+import { captureJson } from './helpers/output';
 
 function allFindings(doc: AnalysisDocument) {
   return doc.findings;
 }
 
-/** Run a command with stdout captured, returning the parsed document plus anything on stderr. */
-async function captureJson<T>(run: () => Promise<number>): Promise<{ doc: T; code: number; stderr: string[] }> {
-  const chunks: string[] = [];
-  const stderr: string[] = [];
-  const originalWrite = process.stdout.write;
-  const originalError = console.error;
+describe('JSON output capture', () => {
+  it('isolates diagnostics when the test console routes errors through stdout', async () => {
+    const reporter = jest.spyOn(console, 'error').mockImplementation((...args: unknown[]) => {
+      process.stdout.write(`Jest diagnostic: ${args.join(' ')}\n`);
+    });
+    try {
+      const result = await captureJson<{ ok: boolean }>(async () => {
+        console.error('compiler diagnostic');
+        process.stdout.write('{"ok":true}\n');
+        return 0;
+      });
+      expect(result).toEqual({ code: 0, doc: { ok: true }, stderr: ['compiler diagnostic'] });
+      expect(reporter).not.toHaveBeenCalled();
+      expect(console.error).toBe(reporter);
+    } finally {
+      reporter.mockRestore();
+    }
+  });
 
-  process.stdout.write = ((chunk: string) => {
-    chunks.push(String(chunk));
-    return true;
-  }) as typeof process.stdout.write;
-  console.error = (...args: unknown[]) => {
-    stderr.push(args.map(String).join(' '));
-  };
-
-  try {
-    const code = await run();
-    const stdout = chunks.join('');
-    return { doc: JSON.parse(stdout) as T, code, stderr };
-  } finally {
-    process.stdout.write = originalWrite;
-    console.error = originalError;
-  }
-}
+  it('restores stdout and the diagnostic sink when the command rejects', async () => {
+    const originalWrite = process.stdout.write;
+    const originalError = console.error;
+    await expect(
+      captureJson(async () => {
+        throw new Error('command failed');
+      }),
+    ).rejects.toThrow('command failed');
+    expect(process.stdout.write).toBe(originalWrite);
+    expect(console.error).toBe(originalError);
+  });
+});
 
 describe('--format json', () => {
   let tempDir: string;
@@ -79,6 +87,72 @@ export function Risky({ label }: { label: string }) {
 `,
       );
     });
+
+    it.each([
+      ['label.tsx', 'Label'],
+      ['useLabel.ts', 'useLabel'],
+    ])('reports compiled functions in %s alongside a declared class field', async (fileName, functionName) => {
+      const filePath = join(__dirname, '__fixtures__', 'declare-fields', fileName);
+      const { doc, code, stderr } = await captureJson<AnalysisDocument>(() =>
+        runAnalyze(argv({ paths: [filePath] }) as never),
+      );
+
+      expect(code).toBe(0);
+      expect(stderr).toEqual([]);
+      expect(doc.summary).toMatchObject({
+        functions: 1,
+        compiled: 1,
+        memoCacheEmitted: 1,
+        errors: 0,
+        unparseableFiles: 0,
+      });
+      expect(doc.functions).toEqual([
+        expect.objectContaining({ function: functionName, status: 'compiled', compilerEvent: 'CompileSuccess' }),
+      ]);
+      expect(doc.unparseable).toEqual([]);
+    });
+
+    it.each(['reader.ts', 'reader.tsx'])(
+      'reports indirect risks through declared class fields in %s',
+      async fileName => {
+        writeFileSync(
+          join(tempDir, 'src', fileName),
+          readFileSync(join(__dirname, '__fixtures__', 'declare-fields', fileName), 'utf-8'),
+        );
+        const filePath = join(tempDir, 'src', 'LabelViaWrapper.tsx');
+        writeFileSync(
+          filePath,
+          "import { readValue } from './reader'; export function LabelViaWrapper() { return <span>{readValue()}</span>; }",
+        );
+
+        const { doc, code, stderr } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze(
+            argv({ paths: [filePath], riskConfig: { detectGetStateReads: true, resolveWrappers: true } }) as never,
+          ),
+        );
+
+        expect(code).toBe(0);
+        expect(stderr).toEqual([expect.stringContaining('1 import(s) resolved'), expect.stringContaining('baseUrl:')]);
+        expect(doc.summary).toMatchObject({
+          functions: 1,
+          compiled: 1,
+          errors: 0,
+          findings: 1,
+          findingsOnCompiled: 1,
+          unparseableFiles: 0,
+        });
+        expect(doc.findings).toEqual([
+          expect.objectContaining({
+            function: 'LabelViaWrapper',
+            ruleId: 'nonreactive-store-read',
+            symbol: 'store.getState',
+            message: expect.stringContaining('reached via `readValue`'),
+            compiled: true,
+          }),
+        ]);
+        expect(doc.unparseable).toEqual([]);
+      },
+    );
 
     it('emits a versioned envelope on stdout', async () => {
       const { doc, code } = await captureJson<AnalysisDocument>(() =>

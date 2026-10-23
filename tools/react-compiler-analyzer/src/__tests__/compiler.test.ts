@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import {
   compileSource,
   extractDetailLoc,
@@ -8,6 +11,62 @@ import {
 } from '../compiler';
 
 describe('compileSource — TypeScript parsing per extension', () => {
+  it.each([
+    ['mutable namespace', 'namespace Values { export let value = 1; }', 'Values.value'],
+    ['import equals require', 'import value = require("./value");', 'value'],
+    ['import equals alias', 'namespace Values { export const value = 1; } import value = Values.value;', 'value'],
+    ['parameter property', 'class Value { constructor(public value: number) {} }', 'new Value(n)'],
+    ['enum', 'enum Values { One = 1 }', 'Values.One'],
+    ['const enum', 'const enum Values { One = 1 }', 'Values.One'],
+    ['auto-accessor', 'class Value { accessor value = 1; }', 'new Value()'],
+    ['ambient declarations', 'declare function read(): number; class Value { declare value: number; }', 'read()'],
+    ['satisfies', 'const value = { value: 1 } satisfies { value: number };', 'value'],
+    [
+      'instantiation expression',
+      'declare function identity<T>(value: T): T; const value = identity<number>;',
+      'value(n)',
+    ],
+  ])('analyzes a real hook alongside %s without lowering', async (_name, declaration, expression) => {
+    const source = `import { useState } from 'react';
+${declaration}
+export function useValue() {
+  const [n] = useState(0);
+  return { value: ${expression}, n };
+}`;
+    const result = await compileSource(source, '/virtual/value.ts', { compilationMode: 'infer' });
+    expect(result.error).toBeUndefined();
+    expect(result.events).toContainEqual(expect.objectContaining({ kind: 'CompileSuccess', fnName: 'useValue' }));
+  });
+
+  it('analyzes an overloaded hook exported with a TypeScript export assignment', async () => {
+    const source = `import { useState } from 'react';
+function useValue(initial: number): { value: number };
+function useValue(): { value: number };
+function useValue(initial = 0) {
+  const [value] = useState(initial);
+  return { value };
+}
+export = useValue;`;
+    const result = await compileSource(source, '/virtual/value.ts', { compilationMode: 'infer' });
+    expect(result.error).toBeUndefined();
+    expect(result.events.filter(event => event.kind === 'CompileSuccess')).toEqual([
+      expect.objectContaining({ fnName: 'useValue' }),
+    ]);
+  });
+
+  it.each([
+    ['label.tsx', 'Label'],
+    ['useLabel.ts', 'useLabel'],
+  ])('compiles %s alongside a declared class field', async (fileName, functionName) => {
+    const filePath = join(__dirname, '__fixtures__', 'declare-fields', fileName);
+    const source = readFileSync(filePath, 'utf-8');
+
+    const { error, events } = await compileSource(source, filePath, { compilationMode: 'infer' });
+
+    expect(error).toBeUndefined();
+    expect(events).toEqual([expect.objectContaining({ kind: 'CompileSuccess', fnName: functionName })]);
+  });
+
   it('parses an angle-bracket type assertion in a .ts file', async () => {
     // Legal TypeScript, but ambiguous with JSX — only parseable when isTSX is off.
     const source = [

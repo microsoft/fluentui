@@ -11,6 +11,7 @@ import {
 } from '../coverage-reporter';
 import { discoverAllFiles } from '../discovery';
 import { compareText } from '../ordering';
+import { toWorkspacePath } from '../path-utils';
 import type { ResolverStats } from '../module-resolver';
 import { toAnalysisDocument, writeDocument } from '../serializer';
 import type { AnnotateMode, FunctionAnalysis, QuoteStyle, RcaConfig, RiskConfig } from '../types';
@@ -20,6 +21,7 @@ type AnalyzeArgv = SharedArgv & {
   annotate: AnnotateMode | undefined;
   quote: QuoteStyle;
   riskConfig?: RiskConfig;
+  'dry-run'?: boolean;
 };
 
 /**
@@ -58,6 +60,9 @@ function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['
 
 /** Command body, separated from the yargs wiring so tests can assert on the exit code. */
 export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
+  if (argv['dry-run'] && !argv.annotate) {
+    throw new CliError('--dry-run requires --annotate');
+  }
   const configuredRisk = argv.riskConfig;
   const riskConfig = configuredRisk ?? {};
 
@@ -140,7 +145,13 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
       // Annotation writes to disk and is independent of how the report is rendered, so it must
       // run before the format branches — otherwise `--format json --annotate` silently does nothing.
       const annotate = argv.annotate
-        ? { mode: argv.annotate, ...(await applyAnnotations(coverageResults, argv.annotate, { quote: argv.quote })) }
+        ? {
+            mode: argv.annotate,
+            ...(await applyAnnotations(coverageResults, argv.annotate, {
+              quote: argv.quote,
+              dryRun: argv['dry-run'],
+            })),
+          }
         : undefined;
 
       if (argv.format === 'json') {
@@ -162,17 +173,36 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
       printCoverageSummary(f, coverageResults, argv.verbose, unparseable.length);
 
       if (annotate) {
-        const touched = annotate.functionsAnnotated + annotate.functionsBailedOut;
+        const counts = annotate.planned ?? annotate;
+        const touched = counts.functionsAnnotated + counts.functionsBailedOut;
         f.blank();
+        if (annotate.dryRun) {
+          f.line('Dry run: no source files were modified.');
+          for (const target of annotate.targets ?? []) {
+            f.line(
+              `${toWorkspacePath(workspaceRoot, target.filePath)}:${target.line} ${
+                target.functionName ?? '(anonymous)'
+              }: insert '${target.directive}'`,
+            );
+          }
+        }
         if (touched > 0) {
           const parts: string[] = [];
-          if (annotate.functionsAnnotated > 0) {
-            parts.push(`annotated ${annotate.functionsAnnotated} function(s) with 'use memo'`);
+          if (counts.functionsAnnotated > 0) {
+            parts.push(
+              `${annotate.dryRun ? 'would annotate' : 'annotated'} ${
+                counts.functionsAnnotated
+              } function(s) with 'use memo'`,
+            );
           }
-          if (annotate.functionsBailedOut > 0) {
-            parts.push(`bailed out ${annotate.functionsBailedOut} risky function(s) with justified 'use no memo'`);
+          if (counts.functionsBailedOut > 0) {
+            parts.push(
+              `${annotate.dryRun ? 'would bail out' : 'bailed out'} ${
+                counts.functionsBailedOut
+              } risky function(s) with justified 'use no memo'`,
+            );
           }
-          f.line(`✓ ${parts.join('; ')} in ${annotate.filesModified} file(s) (mode: ${annotate.mode}).`);
+          f.line(`✓ ${parts.join('; ')} in ${counts.filesModified} file(s) (mode: ${annotate.mode}).`);
         } else {
           f.line('No functions to annotate.');
         }
@@ -194,6 +224,11 @@ export function createAnalyzeCommand(config: RcaConfig): CommandModule<{}, Analy
     describe: 'Analyze React Compiler coverage and migration potential',
     builder: yarg =>
       sharedOptions(yarg, config)
+        .option('dry-run', {
+          type: 'boolean',
+          default: false,
+          describe: 'Preview --annotate insertions without modifying source',
+        })
         .option('annotate', {
           type: 'string' as const,
           describe:
