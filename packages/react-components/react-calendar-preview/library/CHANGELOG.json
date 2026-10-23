@@ -1,0 +1,87 @@
+{
+  "name": "@fluentui/react-calendar-preview",
+  "entries": [
+    {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "0.2.0",
+      "tag": "@fluentui/react-calendar-preview_v0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "ba08dbe0f28150f94ba01cb425888eeff4d2a64e",
+            "comment": "feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components; preserve button currentTarget for picker selection events and support selection from SVG and descendant-focusgroup cell content; clear range hover and pressed state when leaving editable day content; preserve cancelled-click focus, a single eligible tab stop through hidden-panel updates and reveal while excluding individually hidden dates, restricted-date focus with allFocusable, focus after synchronous controlled navigation, and explicitly empty navigation-button content"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "0.1.0",
+      "tag": "@fluentui/react-calendar-preview_v0.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "2f171bad7a4558423ff6bbff1739dc04902fc80b",
+            "comment": "fix: Align Calendar sizing, popup focus, and keyboard selection behavior."
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "45fcaec2be6b9aa277b5ee721fa82412a833ec2a",
+            "comment": "fix: restore class-independent Calendar focus, two-dimensional grid arrows that skip unfocusable cells, and consumer keyboard event ordering and cancellation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-calendar-preview",
+            "commit": "84abdb5fd25a10c627a08465ae82a96e17927270",
+            "comment": "chore: initial release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.2.21"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-motion to v9.16.5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.15.10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    }
+  ]
+}

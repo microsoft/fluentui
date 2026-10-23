@@ -3183,7 +3183,7 @@ function renderGroupedVerticalBarChartProps(
 
   // Group data by x value (name), then by color (series)
   // Null-prototype objects so data-derived keys (e.g. "__proto__") cannot pollute Object.prototype.
-  const groupedData: { [key: string]: { [legend: string]: number } } = Object.create(null);
+  const groupedData: Record<string, Record<string, number>> = Object.create(null);
   const colorIndex = new Map<string, number>();
   let currentColorIndex = 0;
 

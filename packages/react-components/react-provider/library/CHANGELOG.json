@@ -2,6 +2,56 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.22.22",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e4aeb0bcb176702796d2029a4e950cd061e654bd",
+            "comment": "test: pass large subprocess scripts through stdin to avoid Linux E2BIG"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Oct 2026 16:49:00 GMT",
+      "version": "9.22.22",
+      "tag": "@fluentui/react-provider_v9.22.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "paliprandi@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "16fcf57fe487780e42c6326bf56b30061e2caa11",
+            "comment": "fix: block unsafe theme token syntax without a value-format allowlist"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.4.7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.26.19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.27.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Sep 2026 09:04:33 GMT",
       "version": "9.22.21",
       "comments": {

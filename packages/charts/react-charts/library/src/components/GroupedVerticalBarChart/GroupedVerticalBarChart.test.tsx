@@ -1,9 +1,11 @@
-import { screen, fireEvent, render, act } from '@testing-library/react';
+import { screen, fireEvent, render, act, within } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import type { GroupedVerticalBarChartData, GVBarChartSeriesPoint, GroupedVerticalBarChartProps } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
+import { specialChartNames } from '../../utilities/test-data/specialChartNames';
+import { getNextColor } from '../../utilities/colors';
 
 expect.extend(toHaveNoViolations);
 
@@ -918,5 +920,284 @@ describe('GroupedVerticalBarChart custom JSX callout hooks', () => {
     });
     rerender(<GroupedVerticalBarChart dataV2={dataV2} onRenderCalloutPerDataPoint={pointRender} />);
     expect(pointRender.mock.calls.slice(-1)[0][0]).toMatchObject({ ...linePoint, legend: 'Line', data: 18 });
+  });
+});
+
+describe('GroupedVerticalBarChart - category and series names', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([
+    { sharedCategory: '__proto__', lineOnlyCategory: 'constructor' },
+    { sharedCategory: 'constructor', lineOnlyCategory: '__proto__' },
+  ])(
+    'preserves dataV2 bars and lines at $sharedCategory and line-only data at $lineOnlyCategory',
+    ({ sharedCategory, lineOnlyCategory }) => {
+      const { container } = render(
+        <GroupedVerticalBarChart
+          isCalloutForStack
+          dataV2={[
+            { type: 'bar', legend: 'groupSeries', data: [{ x: sharedCategory, y: 10 }] },
+            {
+              type: 'line',
+              legend: 'toString',
+              data: [
+                { x: sharedCategory, y: 20 },
+                { x: lineOnlyCategory, y: 30 },
+              ],
+            },
+          ]}
+        />,
+      );
+
+      const bar = screen.getByRole('option', { name: `${sharedCategory}. groupSeries, 10.` });
+      const sharedDot = screen.getByRole('option', { name: `${sharedCategory}. toString, 20.` });
+      const lineOnlyDot = screen.getByRole('option', { name: `${lineOnlyCategory}. toString, 30.` });
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(1);
+      expect(container.querySelectorAll('circle[role="option"]')).toHaveLength(2);
+      expect(
+        screen.getByRole('listbox', { name: `${lineOnlyCategory}, category 2 of 2, with 0 bars` }),
+      ).toBeInTheDocument();
+
+      [bar, sharedDot].forEach(point => {
+        fireEvent.focus(point);
+        const callout = within(screen.getByRole('group'));
+        expect(callout.getByText(sharedCategory)).toBeInTheDocument();
+        expect(callout.getByText('groupSeries')).toBeInTheDocument();
+        expect(callout.getByText('toString')).toBeInTheDocument();
+        expect(callout.getByText('10')).toBeInTheDocument();
+        expect(callout.getByText('20')).toBeInTheDocument();
+        expect(callout.queryByText('30')).not.toBeInTheDocument();
+        fireEvent.blur(point);
+      });
+
+      fireEvent.focus(lineOnlyDot);
+      const callout = within(screen.getByRole('group'));
+      expect(callout.getByText(lineOnlyCategory)).toBeInTheDocument();
+      expect(callout.getByText('toString')).toBeInTheDocument();
+      expect(callout.getByText('30')).toBeInTheDocument();
+      expect(callout.queryByText('groupSeries')).not.toBeInTheDocument();
+      expect(callout.queryByText('10')).not.toBeInTheDocument();
+      expect(callout.queryByText('20')).not.toBeInTheDocument();
+    },
+  );
+
+  it.each(['Revenue', ...specialChartNames])(
+    'preserves repeated %s bars and sums only their group callout values',
+    legend => {
+      const data: GroupedVerticalBarChartData[] = [
+        {
+          name: 'A',
+          series: [
+            { key: 'first', legend, data: 10 },
+            { key: 'second', legend, data: 15 },
+            { key: 'other', legend: 'Other', data: 7 },
+          ],
+        },
+        { name: 'B', series: [{ key: 'third', legend, data: 40 }] },
+      ];
+      const { container } = render(<GroupedVerticalBarChart data={data} isCalloutForStack />);
+
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(4);
+      expect(screen.getByRole('option', { name: 'A. Other, 7.' })).toBeInTheDocument();
+      expect(screen.getByRole('option', { name: `B. ${legend}, 40.` })).toBeInTheDocument();
+      [10, 15].forEach(value => {
+        const bar = screen.getByRole('option', { name: `A. ${legend}, ${value}.` });
+        fireEvent.focus(bar);
+        const callout = within(screen.getByRole('group'));
+        expect(callout.getByText('A')).toBeInTheDocument();
+        expect(callout.getAllByText(legend)).toHaveLength(1);
+        expect(callout.getByText('25')).toBeInTheDocument();
+        expect(callout.getByText('Other')).toBeInTheDocument();
+        expect(callout.getByText('7')).toBeInTheDocument();
+        [10, 15, 40].forEach(individualValue => {
+          expect(callout.queryByText(String(individualValue))).not.toBeInTheDocument();
+        });
+        fireEvent.blur(bar);
+      });
+      expect(data[0].series.map(point => point.data)).toEqual([10, 15, 7]);
+      expect(data[1].series[0].data).toBe(40);
+    },
+  );
+
+  it.each(['data', 'dataV2'] as const)(
+    'preserves special categories, legends and fallback colors through %s',
+    input => {
+      const names = ['Revenue', ...specialChartNames];
+      const props =
+        input === 'data'
+          ? {
+              data: names.map((name, index) => ({
+                name,
+                series: [{ key: name, legend: name, data: index + 1 }],
+              })),
+            }
+          : {
+              dataV2: names.map((name, index) => ({
+                type: 'bar' as const,
+                legend: name,
+                data: [{ x: name, y: index + 1 }],
+              })),
+            };
+      const { container } = render(<GroupedVerticalBarChart {...props} />);
+
+      expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(names.length);
+      names.forEach((name, index) => {
+        expect(screen.getByRole('option', { name: `${name}. ${name}, ${index + 1}.` })).toHaveAttribute(
+          'fill',
+          getNextColor(index),
+        );
+      });
+    },
+  );
+
+  it.each(['constructor', '__proto__', 'toString'])(
+    'reuses the first fallback color for repeated %s legends',
+    legend => {
+      render(
+        <GroupedVerticalBarChart
+          data={[
+            { name: 'A', series: [{ key: 'first', legend, data: 10 }] },
+            { name: 'B', series: [{ key: 'second', legend, data: 20 }] },
+          ]}
+        />,
+      );
+      expect(screen.getByRole('option', { name: `A. ${legend}, 10.` })).toHaveAttribute('fill', getNextColor(0));
+      expect(screen.getByRole('option', { name: `B. ${legend}, 20.` })).toHaveAttribute('fill', getNextColor(0));
+    },
+  );
+
+  it.each(['constructor', '__proto__', 'toString'])('selects and deselects %s through the chart legend', legend => {
+    render(
+      <GroupedVerticalBarChart
+        data={[
+          {
+            name: 'A',
+            series: [
+              { key: 'special', legend, data: 10 },
+              { key: 'ordinary', legend: 'Revenue', data: 20 },
+            ],
+          },
+        ]}
+      />,
+    );
+    const legendOption = screen.getByRole('option', { name: legend });
+    const otherBar = screen.getByRole('option', { name: 'A. Revenue, 20.' });
+    expect(legendOption).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(legendOption);
+    expect(legendOption).toHaveAttribute('aria-selected', 'true');
+    expect(otherBar).toHaveAttribute('opacity', '0.1');
+    fireEvent.click(legendOption);
+    expect(legendOption).toHaveAttribute('aria-selected', 'false');
+    expect(otherBar).not.toHaveAttribute('opacity', '0.1');
+  });
+});
+
+describe('GroupedVerticalBarChart custom callouts with special names', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it('preserves original repeated bar and group identities at a special category and legend', () => {
+    const data: GroupedVerticalBarChartData[] = [
+      {
+        name: '__proto__',
+        series: [
+          { key: 'first', legend: 'groupSeries', data: 10 },
+          { key: 'second', legend: 'groupSeries', data: 15 },
+        ],
+      },
+    ];
+    const pointRender = jest.fn((point?: GVBarChartSeriesPoint) => <div>point {point?.data}</div>);
+    const stackRender = jest.fn((group?: GroupedVerticalBarChartData) => <div>group {group?.name}</div>);
+    const { container, rerender } = render(
+      <GroupedVerticalBarChart data={data} onRenderCalloutPerDataPoint={pointRender} />,
+    );
+    const bars = container.querySelectorAll('rect[role="option"]');
+    expect(bars).toHaveLength(2);
+    [fireEvent.mouseOver, fireEvent.focus].forEach(show => {
+      bars.forEach((bar, index) => {
+        show(bar);
+        expect(pointRender.mock.calls.slice(-1)[0][0]).toBe(data[0].series[index]);
+        expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent(`point ${data[0].series[index].data}`);
+      });
+    });
+
+    rerender(<GroupedVerticalBarChart data={data} isCalloutForStack onRenderCalloutPerStack={stackRender} />);
+    fireEvent.focus(container.querySelector('rect[role="option"]')!);
+    expect(stackRender.mock.calls.slice(-1)[0][0]).toBe(data[0]);
+    expect(data[0].series.map(point => point.data)).toEqual([10, 15]);
+    expect(data[0].series.every(point => point.color === undefined)).toBe(true);
+  });
+
+  it('converts mixed and line-only special categories with aggregated bars and secondary-line metadata', () => {
+    const firstBar = { x: '__proto__', y: 10, sourceRow: { id: 'first bar' } };
+    const secondBar = { x: '__proto__', y: 15, sourceRow: { id: 'second bar' } };
+    const sharedLine = { x: '__proto__', y: 20, sourceRow: { id: 'shared line' } };
+    const lineOnly = { x: 'constructor', y: 30, sourceRow: { id: 'line only' }, yAxisCalloutData: '30 units' };
+    const stackRender = jest.fn((group?: GroupedVerticalBarChartData) => <div>{group?.series.length} series</div>);
+    const { container } = render(
+      <GroupedVerticalBarChart
+        isCalloutForStack
+        dataV2={[
+          { type: 'bar', key: 'first', legend: 'groupSeries', data: [firstBar] },
+          { type: 'bar', key: 'second', legend: 'groupSeries', data: [secondBar] },
+          { type: 'line', legend: 'toString', useSecondaryYScale: true, data: [sharedLine, lineOnly] },
+        ]}
+        onRenderCalloutPerStack={stackRender}
+      />,
+    );
+    expect(container.querySelectorAll('rect[role="option"]')).toHaveLength(2);
+    const dots = container.querySelectorAll('circle[role="option"]');
+    expect(dots).toHaveLength(2);
+    fireEvent.focus(dots[0]);
+    const sharedGroup = stackRender.mock.calls.slice(-1)[0][0];
+    expect(sharedGroup).toMatchObject({
+      name: '__proto__',
+      series: [
+        { ...firstBar, key: 'first', legend: 'groupSeries', data: 25 },
+        { ...sharedLine, key: 'toString', legend: 'toString', data: 20, useSecondaryYScale: true },
+      ],
+    });
+    expect(sharedGroup?.series).toHaveLength(2);
+    fireEvent.focus(dots[1]);
+    const lineOnlyGroup = stackRender.mock.calls.slice(-1)[0][0];
+    expect(lineOnlyGroup).toMatchObject({
+      name: 'constructor',
+      series: [{ ...lineOnly, key: 'toString', legend: 'toString', data: 30, useSecondaryYScale: true }],
+    });
+    expect(lineOnlyGroup?.series).toHaveLength(1);
+    expect([firstBar.y, secondBar.y, sharedLine.y, lineOnly.y]).toEqual([10, 15, 20, 30]);
+  });
+
+  it('preserves metadata in a converted secondary-line point at a line-only special category', () => {
+    const linePoint = {
+      x: 'constructor',
+      y: 30,
+      sourceRow: { id: 'line row' },
+      xAxisCalloutData: 'line category',
+      yAxisCalloutData: '30 units',
+      onClick: jest.fn(),
+    };
+    const pointRender = jest.fn((point?: GVBarChartSeriesPoint) => <div>line {point?.data}</div>);
+    const { container } = render(
+      <GroupedVerticalBarChart
+        dataV2={[
+          { type: 'bar', legend: 'groupSeries', data: [{ x: '__proto__', y: 10 }] },
+          { type: 'line', legend: 'toString', useSecondaryYScale: true, data: [linePoint] },
+        ]}
+        onRenderCalloutPerDataPoint={pointRender}
+      />,
+    );
+    const dot = container.querySelector('circle[role="option"]')!;
+    expect(Number.isFinite(Number.parseFloat(dot.getAttribute('cx')!))).toBe(true);
+    fireEvent.focus(dot);
+    expect(pointRender.mock.calls.slice(-1)[0][0]).toMatchObject({
+      ...linePoint,
+      key: 'toString',
+      legend: 'toString',
+      data: 30,
+      useSecondaryYScale: true,
+    });
+    expect(container.querySelector('.fui-PopoverSurface')).toHaveTextContent('line 30');
   });
 });

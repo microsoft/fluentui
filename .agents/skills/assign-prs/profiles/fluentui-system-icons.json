@@ -7,24 +7,29 @@
   "settings": { "reviewers": 1, "areaMatch": "hard", "unknownMemberPolicy": "exclude-and-report" },
   "areas": {
     "react-icons": {
-      "label": "React icon packages",
-      "scopes": ["react-icons*"],
-      "paths": ["packages/react-icons*/**", "packages/svg-icons/**", "packages/svg-sprites/**"]
+      "label": "React and SVG icon packages",
+      "scopes": ["react-icons", "react-icons-file-type", "svg-icons", "svg-sprites"],
+      "paths": [
+        "packages/react-icons/**",
+        "packages/react-icons-file-type/**",
+        "packages/svg-icons/**",
+        "packages/svg-sprites/**"
+      ]
     },
     "build": {
-      "label": "Icon tooling",
-      "scopes": ["tooling", "build", "ci"],
-      "paths": ["importer/**", "scripts/**", ".github/**", "package.json", "yarn.lock"]
+      "label": "Build, CI and tooling",
+      "scopes": ["tooling", "build", "ci", "eslint-plugin-react-icons", "webpack"],
+      "paths": ["**"]
     },
     "docs": {
-      "label": "Icon documentation",
-      "scopes": ["docsite", "docs"],
-      "paths": ["packages/docsite/**", "docs/**"]
+      "label": "Icon documentation and demos",
+      "scopes": ["docsite", "docs", "icon-app"],
+      "paths": ["packages/docsite/**", "packages/icon-app/**", "docs/**"]
     },
     "assets": { "label": "Icon assets", "scopes": ["icons", "assets"], "paths": ["assets/**"] },
     "platforms": {
       "label": "Native platform packages",
-      "scopes": ["android", "ios", "flutter"],
+      "scopes": ["react-native", "android", "ios", "flutter"],
       "paths": ["android/**", "ios/**", "flutter/**", "packages/react-native-icons/**"]
     }
   },
@@ -33,10 +38,10 @@
       "login": "Hotell",
       "eligible": true,
       "fallbackEligible": false,
-      "primary": ["react-icons", "build"],
+      "primary": ["react-icons", "build", "docs"],
       "secondary": []
     },
-    { "login": "dmytrokirpa", "eligible": true, "primary": [], "secondary": ["react-icons", "docs"] },
+    { "login": "dmytrokirpa", "eligible": true, "primary": [], "secondary": ["react-icons", "build", "docs"] },
     { "login": "ValentinaKozlova", "eligible": false, "primary": [], "secondary": [] },
     { "login": "mainframev", "eligible": true, "primary": [], "secondary": ["react-icons", "build", "docs"] },
     { "login": "paolo-aliprandi", "eligible": false, "primary": [], "secondary": [] },

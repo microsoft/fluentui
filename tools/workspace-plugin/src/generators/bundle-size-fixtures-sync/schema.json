@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "bundle-size-fixtures-sync",
+  "description": "Keep generated bundle-size fixtures in sync with export maps and base hook exports",
+  "type": "object",
+  "properties": {},
+  "required": []
+}
