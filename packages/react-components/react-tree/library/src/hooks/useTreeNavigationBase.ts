@@ -9,7 +9,7 @@ import type { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useRovingTabIndexBase } from './useRovingTabIndexBase';
 import type { UseFocusedElementChange } from './useRovingTabIndexBase';
-import { treeItemLayoutClassNames } from '../components/TreeItemLayout/useTreeItemLayoutStyles.styles';
+import { queryTreeItemActions } from '../utils/queryTreeItemActions';
 
 /**
  * Plain DOM approximation of Tabster's focus finders, used when no focus management runtime is provided.
@@ -54,14 +54,22 @@ function isFocusableDOM(element: HTMLElement): boolean {
     return false;
   }
 
+  const getComputedStyle = (target: HTMLElement) => target.ownerDocument.defaultView?.getComputedStyle(target);
+
+  // `visibility` is inherited and can be overridden by a descendant, so only the candidate's own computed value matters
+  const visibility = getComputedStyle(element)?.visibility;
+  if (visibility === 'hidden' || visibility === 'collapse') {
+    return false;
+  }
+
   let current: HTMLElement | null = element;
   while (current) {
-    if (current.hidden || current.hasAttribute('inert') || current.getAttribute('aria-hidden') === 'true') {
-      return false;
-    }
-
-    const style = current.ownerDocument.defaultView?.getComputedStyle(current);
-    if (style?.display === 'none' || style?.visibility === 'hidden' || style?.visibility === 'collapse') {
+    if (
+      current.hidden ||
+      current.hasAttribute('inert') ||
+      current.getAttribute('aria-hidden') === 'true' ||
+      getComputedStyle(current)?.display === 'none'
+    ) {
       return false;
     }
 
@@ -115,7 +123,7 @@ export function useTreeNavigationBase(
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
-        const actions = queryActions(data.target);
+        const actions = queryTreeItemActions(data.target);
         if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
           return data.target;
         }
@@ -124,7 +132,7 @@ export function useTreeNavigationBase(
       }
       case treeDataTypes.ArrowRight:
         if (navigationMode === 'treegrid') {
-          const actions = queryActions(data.target);
+          const actions = queryTreeItemActions(data.target);
           if (actions) {
             findFirstFocusable(actions)?.focus();
           }
@@ -168,12 +176,3 @@ function lastChildRecursive(walker: HTMLElementWalker) {
   }
   return lastElement;
 }
-
-/**
- * Finds the actions of a tree item. The styled layout is matched by its static class names, while
- * an unstyled layout is matched by the `toolbar` role its actions slot always renders with.
- */
-const queryActions = (target: HTMLElement) =>
-  target.querySelector<HTMLElement>(
-    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
-  ) ?? target.querySelector<HTMLElement>(':scope > * > [role="toolbar"]');

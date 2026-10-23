@@ -183,6 +183,34 @@ describe('useTreeBase_unstable', () => {
       expect(document.activeElement).toBe(item);
     });
 
+    it('moves focus into an action that overrides a hidden ancestor visibility in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <div style={{ visibility: 'hidden' }}>
+                    <button>Hidden</button>
+                    <button style={{ visibility: 'visible' }}>Edit</button>
+                  </div>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByText('Edit'));
+    });
+
     it('moves focus into a contenteditable action in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">

@@ -12,7 +12,7 @@ import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import type { TreeNavigationMode } from '../components/Tree/Tree.types';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { treeItemLayoutClassNames } from '../TreeItemLayout';
+import { queryTreeItemActions } from '../utils/queryTreeItemActions';
 
 export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree'): {
   navigate: (data: TreeNavigationData_unstable) => void;
@@ -45,7 +45,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
         walkerRef.current.currentElement = data.target;
         return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
-        const actions = queryActions(data.target);
+        const actions = queryTreeItemActions(data.target);
         if (navigationMode === 'treegrid' && actions?.contains(data.target.ownerDocument.activeElement)) {
           return data.target;
         }
@@ -65,7 +65,7 @@ export function useFlatTreeNavigation(navigationMode: TreeNavigationMode = 'tree
       }
       case treeDataTypes.ArrowRight: {
         if (navigationMode === 'treegrid') {
-          const actions = queryActions(data.target);
+          const actions = queryTreeItemActions(data.target);
           if (actions) {
             findFirstFocusable(actions)?.focus();
           }
@@ -135,8 +135,3 @@ function parentElement(parentValue: TreeItemValue | undefined, treeWalker: HTMLE
   }
   return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${parentValue}"]`);
 }
-
-const queryActions = (target: HTMLElement) =>
-  target.querySelector<HTMLElement>(
-    `:scope > .${treeItemLayoutClassNames.root} > .${treeItemLayoutClassNames.actions}`,
-  );
