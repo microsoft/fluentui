@@ -87,6 +87,18 @@ describe('Toggle', () => {
     expect(screen.queryByText('label')).toBeNull();
   });
 
+  it('renders data-is-focusable true by default', () => {
+    const { container } = render(<Toggle label="Label" />);
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
+    expect(button.getAttribute('data-is-focusable')).toEqual('true');
+  });
+
+  it('respects data-is-focusable false when passed', () => {
+    const { container } = render(<Toggle label="Label" data-is-focusable={false} />);
+    const button = getBySelector(container, 'button') as HTMLButtonElement;
+    expect(button.getAttribute('data-is-focusable')).toEqual('false');
+  });
+
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
     const onSubmit = jest.fn();
 
