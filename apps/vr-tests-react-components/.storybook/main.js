@@ -10,10 +10,15 @@ const {
 } = require('@fluentui/scripts-storybook');
 const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.json');
 const fontSizingOnly = process.env.FLUENTUI_VRT_FONT_SIZING === 'true';
+const svgSizingOnly = process.env.FLUENTUI_VRT_ICON_SIZING === 'true';
 
 module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath })],
-  stories: fontSizingOnly ? ['../src/stories/IconSizingFont.stories.tsx'] : ['../src/**/!(IconSizingFont).stories.tsx'],
+  stories: fontSizingOnly
+    ? ['../src/stories/IconSizingFont.stories.tsx']
+    : svgSizingOnly
+    ? ['../src/stories/IconSizing.stories.tsx']
+    : ['../src/**/!(IconSizingFont).stories.tsx'],
   core: {
     disableTelemetry: true,
   },
@@ -34,10 +39,11 @@ module.exports = /** @satisfies {import('@storybook/react-webpack5').StorybookCo
     registerRules({ config, rules: [rules.swcRule, rules.griffelRule] });
     configureReactIcons({ config });
 
-    // Isolate SVG, full-font, and focused font builds so concurrent builds do not write to the same webpack cache.
+    // Isolate full and focused renderer builds so concurrent builds do not write to the same webpack cache.
     if (config.cache && typeof config.cache === 'object' && config.cache.type === 'filesystem') {
       const variant = process.env.FLUENTUI_ICON_VARIANT === 'fonts' ? 'fonts' : 'svg';
-      config.cache.name = `${config.cache.name ?? 'default'}-${fontSizingOnly ? 'font-sizing' : variant}`;
+      const scope = fontSizingOnly ? 'font-sizing' : svgSizingOnly ? 'svg-sizing' : variant;
+      config.cache.name = `${config.cache.name ?? 'default'}-${scope}`;
     }
 
     return config;

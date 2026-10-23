@@ -4,32 +4,59 @@
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["vNext"],
+  "namedInputs": {
+    "storybookSources": ["production", "!{projectRoot}/e2e/**", "!{projectRoot}/playwright.config.ts"]
+  },
   "targets": {
     "build-storybook": {
       "inputs": [
-        "default",
+        "storybookSources",
         "^production",
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" },
-        { "env": "FLUENTUI_VRT_FONT_SIZING" }
+        { "env": "FLUENTUI_VRT_FONT_SIZING" },
+        { "env": "FLUENTUI_VRT_ICON_SIZING" }
       ],
       "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }]
     },
     "build-storybook-fonts": {
-      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "inputs": ["storybookSources", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "outputs": ["{projectRoot}/dist/storybook-fonts"],
       "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }],
+      "cache": true
+    },
+    "build-storybook-icons-svg": {
+      "inputs": ["storybookSources", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "outputs": ["{projectRoot}/dist/storybook-icons-svg"],
+      "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }],
+      "cache": true
+    },
+    "e2e": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-storybook-icons-svg", "build-storybook-fonts"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/.storybook/**",
+        { "externalDependencies": ["@playwright/test", "express"] }
+      ],
+      "outputs": ["{projectRoot}/dist/e2e-results"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "yarn run -T playwright test"
+      },
       "cache": true
     },
     "test-vr": {
       "dependsOn": ["build-storybook", "build-storybook-fonts"],
       "inputs": [
-        "default",
+        "storybookSources",
         "^production",
         "{workspaceRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" },
-        { "env": "FLUENTUI_VRT_FONT_SIZING" }
+        { "env": "FLUENTUI_VRT_FONT_SIZING" },
+        { "env": "FLUENTUI_VRT_ICON_SIZING" }
       ],
       "outputs": ["{projectRoot}/dist/screenshots"]
     }

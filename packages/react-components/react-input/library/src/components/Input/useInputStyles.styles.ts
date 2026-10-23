@@ -306,7 +306,7 @@ const useContentClassName = makeResetStyles({
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
-  '> svg, > i': { fontSize: '20px' },
+  '> svg, > .fui-Icon-font': { fontSize: '20px' },
 });
 
 const useContentStyles = makeStyles({
@@ -315,13 +315,13 @@ const useContentStyles = makeStyles({
   },
   // Ensure resizable icons show up with the proper font size
   small: {
-    '> svg, > i': { fontSize: '16px' },
+    '> svg, > .fui-Icon-font': { fontSize: '16px' },
   },
   medium: {
     // included in useContentClassName
   },
   large: {
-    '> svg, > i': { fontSize: '24px' },
+    '> svg, > .fui-Icon-font': { fontSize: '24px' },
   },
 });
 

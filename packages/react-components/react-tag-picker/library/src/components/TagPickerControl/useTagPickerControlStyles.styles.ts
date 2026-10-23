@@ -197,7 +197,7 @@ const useIconStyles = makeStyles({
     alignSelf: 'flex-start',
     fontSize: tokens.fontSizeBase500,
     // Block display avoids inline baseline space for both icon renderers.
-    '& svg, & i': {
+    '& svg, & .fui-Icon-font': {
       display: 'block',
     },
   },

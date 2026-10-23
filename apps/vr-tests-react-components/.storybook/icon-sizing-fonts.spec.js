@@ -1,4 +1,4 @@
-/** @jest-environment node */
+/** @jest-environment node */ // eslint-disable-line jsdoc/check-tag-names -- Jest environment pragma.
 
 jest.mock('@fluentui/scripts-storybook', () => ({
   configureReactIcons: jest.fn(),
@@ -11,17 +11,20 @@ jest.mock('@fluentui/scripts-storybook', () => ({
 describe('Icon sizing font Storybook', () => {
   const originalScope = process.env.FLUENTUI_VRT_FONT_SIZING;
   const originalVariant = process.env.FLUENTUI_ICON_VARIANT;
+  const originalSvgScope = process.env.FLUENTUI_VRT_ICON_SIZING;
 
   beforeEach(() => {
     jest.resetModules();
     delete process.env.FLUENTUI_VRT_FONT_SIZING;
     delete process.env.FLUENTUI_ICON_VARIANT;
+    delete process.env.FLUENTUI_VRT_ICON_SIZING;
   });
 
   afterEach(() => {
     for (const [name, value] of Object.entries({
       FLUENTUI_VRT_FONT_SIZING: originalScope,
       FLUENTUI_ICON_VARIANT: originalVariant,
+      FLUENTUI_VRT_ICON_SIZING: originalSvgScope,
     })) {
       if (value === undefined) {
         delete process.env[name];
@@ -42,6 +45,15 @@ describe('Icon sizing font Storybook', () => {
     process.env.FLUENTUI_ICON_VARIANT = 'fonts';
 
     expect(loadConfig().stories).toEqual(['../src/stories/IconSizingFont.stories.tsx']);
+  });
+
+  it('includes only the SVG sizing story in the focused E2E build', () => {
+    process.env.FLUENTUI_VRT_ICON_SIZING = 'true';
+    expect(loadConfig().stories).toEqual(['../src/stories/IconSizing.stories.tsx']);
+    expect(loadConfig().webpackFinal({ cache: { type: 'filesystem', name: 'storybook' } }).cache).toEqual({
+      type: 'filesystem',
+      name: 'storybook-svg-sizing',
+    });
   });
 
   it.each([

@@ -85,7 +85,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useIndicatorStyles = makeStyles({
   lowerHalf: {
     right: '50%',
-    '& > svg, & > i': {
+    '& > svg, & > .fui-Icon-font': {
       flex: '0 0 auto',
     },
   },
@@ -105,7 +105,7 @@ const useIndicatorStyles = makeStyles({
     '@media (forced-colors: active)': {
       color: 'Canvas',
       stroke: 'CanvasText',
-      '& > i': {
+      '& > .fui-Icon-font': {
         WebkitTextStrokeColor: 'CanvasText',
         // Match SVG's default stroke width independently of theme border tokens.
         WebkitTextStrokeWidth: '1px',

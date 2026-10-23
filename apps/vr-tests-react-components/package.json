@@ -6,6 +6,7 @@
   "scripts": {
     "build-storybook": "yarn run -T storybook build -o dist/storybook",
     "build-storybook-fonts": "FLUENTUI_VRT_FONT_SIZING=true FLUENTUI_ICON_VARIANT=fonts yarn run -T storybook build -o dist/storybook-fonts",
+    "build-storybook-icons-svg": "FLUENTUI_VRT_ICON_SIZING=true FLUENTUI_VRT_FONT_SIZING=false FLUENTUI_ICON_VARIANT=svg yarn run -T storybook build -o dist/storybook-icons-svg",
     "clean": "yarn run -T just-scripts clean",
     "format": "yarn run -T prettier . -w --ignore-path ../../.prettierignore",
     "lint": "yarn run -T just-scripts lint",

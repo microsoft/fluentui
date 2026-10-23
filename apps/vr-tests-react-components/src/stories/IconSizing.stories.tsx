@@ -4,10 +4,10 @@ import { Input } from '@fluentui/react-input';
 import { SearchBox } from '@fluentui/react-search';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { RatingDisplay } from '@fluentui/react-rating';
-import { FluentProvider } from '@fluentui/react-provider';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { Steps, type StoryParameters } from 'storywright';
 import { getStoryVariant, HIGH_CONTRAST, TestWrapperDecoratorFixedWidth } from '../utilities';
+import { DefaultPresenceIcons, HalfStarExamples, IconSlotExamples } from './IconSizingSlots';
 
 const inputSizes = ['small', 'medium', 'large'] as const;
 const presenceSizes = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as const;
@@ -34,59 +34,16 @@ const Examples = () => (
   </>
 );
 
-// TODO: Design CI enforcement for these manual play checks; StoryWright does not await or gate on their failures.
-const assertFixedIconSizes: NonNullable<StoryObj['play']> = async ({ canvasElement, parameters }) => {
-  const targetDocument = canvasElement.ownerDocument;
-  const targetWindow = targetDocument.defaultView;
-  if (!targetWindow) {
-    throw new Error('Icon sizing assertions require a browser');
-  }
-  await targetDocument.fonts.ready;
-
-  const assertIcons = (selector: string, count: number, size: number) => {
-    const icons = canvasElement.querySelectorAll<SVGElement | HTMLElement>(selector);
-    if (icons.length !== count) {
-      throw new Error(`${selector}: expected ${count} icons, found ${icons.length}`);
-    }
-    for (const icon of Array.from(icons)) {
-      if (parameters.iconRenderer === 'fonts' && icon.localName !== 'i') {
-        throw new Error(`${selector}: expected a font icon, found ${icon.localName}`);
-      }
-      const style = targetWindow.getComputedStyle(icon);
-      const rect = icon.getBoundingClientRect();
-      if (Math.abs(rect.width - size) > 0.1 || Math.abs(rect.height - size) > 0.1) {
-        throw new Error(`${selector}: expected ${size}px icon, received ${rect.width}x${rect.height}px`);
-      }
-      if (icon.localName === 'i') {
-        if (
-          !icon.textContent ||
-          !targetDocument.fonts.check(`${style.fontSize} ${style.fontFamily}`, icon.textContent)
-        ) {
-          throw new Error(`${selector}: font glyph has not loaded`);
-        }
-      }
-    }
-  };
-
-  inputSizes.forEach((size, index) => {
-    const pixels = [16, 20, 24][index];
-    const root = `[data-testid="input-${size}"]`;
-    assertIcons(`${root} .fui-Input:not(.fui-SearchBox) svg, ${root} .fui-Input:not(.fui-SearchBox) i`, 2, pixels);
-    assertIcons(`${root} .fui-SearchBox svg, ${root} .fui-SearchBox i`, 2, pixels);
-  });
-  presenceSizes.forEach((size, index) => {
-    const root = `[data-testid="presence-${size}"]`;
-    assertIcons(`${root} svg, ${root} i`, 1, [6, 10, 12, 16, 20, 28][index]);
-  });
-  ratingSizes.forEach((size, index) => {
-    const root = `[data-testid="rating-${size}"]`;
-    assertIcons(`${root} svg, ${root} i`, 6, [12, 16, 20, 28][index]);
-  });
-};
-
 export default {
   title: 'Icon sizing',
   decorators: [TestWrapperDecoratorFixedWidth],
+  beforeEach: ({ canvasElement }) => {
+    canvasElement.removeAttribute('data-icon-story-ready');
+  },
+  // E2E focus changes must wait until Storybook has finished waiting for initial transitions.
+  afterEach: ({ canvasElement }) => {
+    canvasElement.setAttribute('data-icon-story-ready', 'true');
+  },
   parameters: {
     storyWright: { steps: new Steps().snapshot('fixed icon sizes', { cropTo: '.testWrapper' }).end() },
   } satisfies StoryParameters,
@@ -94,30 +51,60 @@ export default {
 
 export const DefaultTheme: StoryObj = {
   render: () => <Examples />,
-  play: assertFixedIconSizes,
 };
 
-export const OverriddenTokens: StoryObj = {
-  name: 'Overridden tokens',
-  render: () => (
-    <FluentProvider
-      theme={{
-        fontSizeBase400: '40px',
-        fontSizeBase500: '50px',
-        fontSizeBase600: '60px',
-        fontSizeHero700: '70px',
-        fontSizeHero800: '80px',
-        spacingHorizontalSNudge: '18px',
-        strokeWidthThin: '5px',
-      }}
-    >
-      <Examples />
-    </FluentProvider>
-  ),
-  play: assertFixedIconSizes,
+export const DefaultIconSlots: StoryObj = {
+  render: () => <IconSlotExamples kind="default" />,
 };
 
-export const OverriddenTokensHighContrast = {
-  ...getStoryVariant(OverriddenTokens, HIGH_CONTRAST),
-  name: 'Overridden tokens high contrast',
+export const AllPresenceIcons: StoryObj = {
+  render: () => <DefaultPresenceIcons />,
+};
+
+export const HalfStarClipping: StoryObj = {
+  render: () => <HalfStarExamples />,
+};
+
+const customSlotParameters = {
+  storyWright: {
+    steps: new Steps()
+      .snapshot('custom slot content', { cropTo: '.testWrapper' })
+      .click('[data-slot-case="SearchBox.small.contentAfter"] input')
+      .snapshot('small search adornment focused', { cropTo: '[data-slot-case="SearchBox.small.contentAfter"]' })
+      .click('[data-slot-case="SearchBox.medium.contentAfter"] input')
+      .snapshot('medium search adornment focused', { cropTo: '[data-slot-case="SearchBox.medium.contentAfter"]' })
+      .click('[data-slot-case="SearchBox.large.contentAfter"] input')
+      .snapshot('large search adornment focused', { cropTo: '[data-slot-case="SearchBox.large.contentAfter"]' })
+      .end(),
+  },
+} satisfies StoryParameters;
+
+export const CustomIconSlots: StoryObj = {
+  render: () => <IconSlotExamples kind="icon" />,
+  parameters: customSlotParameters,
+};
+
+export const ItalicSlotContent: StoryObj = {
+  render: () => <IconSlotExamples kind="italic" />,
+  parameters: customSlotParameters,
+};
+
+export const MixedSlotContent: StoryObj = {
+  render: () => <IconSlotExamples kind="mixed" />,
+  parameters: customSlotParameters,
+};
+
+export const CustomSvgSlots: StoryObj = {
+  render: () => <IconSlotExamples kind="svg" />,
+  parameters: customSlotParameters,
+};
+
+export const CustomIconSlotsHighContrast = {
+  ...getStoryVariant(CustomIconSlots, HIGH_CONTRAST),
+  name: 'Custom icon slots high contrast',
+};
+
+export const MixedSlotContentHighContrast = {
+  ...getStoryVariant(MixedSlotContent, HIGH_CONTRAST),
+  name: 'Mixed slot content high contrast',
 };

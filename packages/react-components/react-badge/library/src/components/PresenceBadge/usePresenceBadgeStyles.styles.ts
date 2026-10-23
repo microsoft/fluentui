@@ -90,7 +90,7 @@ const useStyles = makeStyles({
       width: `${iconSizes.tiny} !important`,
       height: `${iconSizes.tiny} !important`,
     },
-    '& i': {
+    '& .fui-Icon-font': {
       fontSize: `${iconSizes.tiny} !important`,
     },
   },
@@ -101,7 +101,7 @@ const useStyles = makeStyles({
       width: `${iconSizes.large} !important`,
       height: `${iconSizes.large} !important`,
     },
-    '& i': {
+    '& .fui-Icon-font': {
       fontSize: `${iconSizes.large} !important`,
     },
   },
@@ -112,7 +112,7 @@ const useStyles = makeStyles({
       width: `${iconSizes.extraLarge} !important`,
       height: `${iconSizes.extraLarge} !important`,
     },
-    '& i': {
+    '& .fui-Icon-font': {
       fontSize: `${iconSizes.extraLarge} !important`,
     },
   },

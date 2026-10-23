@@ -12,11 +12,11 @@ export const useAttachmentIconStyles = makeStyles({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    '& svg, & i': {
+    '& svg, & .fui-Icon-font': {
       height: '100%',
       width: '100%',
     },
-    '& i': {
+    '& .fui-Icon-font': {
       fontSize: `${iconSize} !important`,
     },
   },

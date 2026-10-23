@@ -216,7 +216,7 @@ const useIconStyles = makeStyles({
     gridColumnEnd: 'end',
 
     // Block display avoids inline baseline space for both icon renderers.
-    '& svg, & i': {
+    '& svg, & .fui-Icon-font': {
       display: 'block',
     },
   },
