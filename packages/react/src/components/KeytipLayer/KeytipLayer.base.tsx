@@ -89,6 +89,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   private _activationKey?: string;
   private _pendingActivation?: IKeytipTransitionKey;
   private _consumeActivationKeyUp?: string;
+  private _exitingActivationKey?: string;
   private _consecutiveActivationEligible = false;
   private _isComposing = false;
   private _handledKeyDowns = new WeakSet<React.KeyboardEvent<HTMLElement>>();
@@ -414,7 +415,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    */
   private _exitKeytipMode(ev?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>): void {
     if (this.props.keytipActivationBehavior) {
-      // A consumed activation still owns its release, even if input has already exited the mode.
+      // Preserve the exiting gesture until release, even when activation passes through.
       this._resetActivationGesture(false);
     }
     this._keytipTree.currentKeytip = undefined;
@@ -593,6 +594,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._pendingKeyDowns.clear();
     if (resetKeyUp) {
       this._consumeActivationKeyUp = undefined;
+      this._exitingActivationKey = undefined;
     }
   }
 
@@ -616,6 +618,13 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       !this._isModifierHeld(this._consumeActivationKeyUp, ev)
     ) {
       this._consumeActivationKeyUp = undefined;
+    }
+
+    if (
+      this._exitingActivationKey &&
+      ((key === this._exitingActivationKey && !ev.repeat) || !this._isModifierHeld(this._exitingActivationKey, ev))
+    ) {
+      this._exitingActivationKey = undefined;
     }
 
     if (this._pendingActivation && key !== this._pendingActivation.key) {
@@ -648,8 +657,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
           this._consumeActivationKeyUp = key;
           this._consumeKeyEvent(ev);
         }
+        this._exitingActivationKey = key;
         this._exitKeytipMode(ev);
-      } else if (!ev.defaultPrevented) {
+      } else if (!ev.defaultPrevented && !this._exitingActivationKey) {
         this._pendingActivation = transitionKey;
         if (behavior.consumeActivationEvent) {
           this._consumeActivationKeyUp = key;
@@ -661,7 +671,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
     if (!this._keytipTree.currentKeytip && isStart) {
       this._handledKeyDowns.add(ev);
-      if (!ev.defaultPrevented && this._enterKeytipMode(transitionKey, ev)) {
+      if (!this._exitingActivationKey && !ev.defaultPrevented && this._enterKeytipMode(transitionKey, ev)) {
         this._warnIfDuplicateKeytips();
       }
       return;
@@ -693,7 +703,15 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     }
 
     const key = this._normalizeKey(ev.key);
-    this.processTransitionInput({ key, modifierKeys: this._getModifierKey(key, ev) }, ev);
+    const transitionKey = { key, modifierKeys: this._getModifierKey(key, ev) };
+    if (transitionKeysContain(this.props.keytipExitSequences!, transitionKey)) {
+      if (behavior.consumeActivationEvent) {
+        this._consumeKeyEvent(ev);
+      }
+      this._exitKeytipMode(ev);
+      return;
+    }
+    this.processTransitionInput(transitionKey, ev);
     if (this._keyHandled) {
       this._consumeKeyEvent(ev);
       return;
@@ -757,6 +775,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     }
     if (this._consumeActivationKeyUp && !this._isModifierHeld(this._consumeActivationKeyUp, ev)) {
       this._consumeActivationKeyUp = undefined;
+    }
+    if (this._exitingActivationKey === key || !this._isModifierHeld(this._exitingActivationKey, ev)) {
+      this._exitingActivationKey = undefined;
     }
     if (!this._isModifierKey(key)) {
       this._consecutiveActivationEligible = false;

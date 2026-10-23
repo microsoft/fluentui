@@ -10,6 +10,8 @@ With the activation policy, a standalone Alt tap enters keytip mode only on keyu
 
 After releasing Alt, the activation policy processes sequential keytip characters on keydown after application handlers. Held-Alt keytip execution is not supported. Set `unmatchedInputBehavior: 'exitAndPassThrough'` to dismiss keytips for unmatched input, and `consecutiveActivationBehavior: 'exitAndPassThrough'` to let a second consecutive Alt invocation exit and reach the browser. An Alt invocation after sequential input exits but is consumed when `consumeActivationEvent` is enabled.
 
+Once Alt keydown exits keytip mode, configured aliases such as Alt+Period and Alt+Meta cannot reenter during that same Alt gesture. Configured exit chords follow `consumeActivationEvent`, with cancellation decided before `onExitKeytipMode` runs. Return navigation, including Escape at the root, is consumed independently of this setting.
+
 Plain left and right Alt presses use the same activation policy. Right Alt is not excluded based on its physical location; AltGraph, Ctrl+Alt, and composition input remain excluded to preserve international text entry.
 
 All activation-policy behavior is opt-in through `keytipActivationBehavior`, including the additional event listeners, gesture bookkeeping, lifecycle cleanup, and the `enabled` prop. Without the policy, legacy transition and keypress handling remain unchanged. The host can add or remove the policy at runtime; removing it dismisses active keytips and disposes the policy's listeners and gesture state.

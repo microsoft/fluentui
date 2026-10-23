@@ -19,6 +19,7 @@ export interface IKeytipActivationBehavior {
    * only if no other key intervened; chord input itself is not consumed.
    * Also consume successful configured activation chords.
    * Also consume non-consecutive modifier activations that exit keytip mode.
+   * Configured exit chords follow this policy; return navigation is always consumed.
    * Activation is consumed before entry/exit callbacks run, so hosts can safely transfer focus.
    * @defaultvalue false
    */
@@ -33,6 +34,7 @@ export interface IKeytipActivationBehavior {
   /**
    * Pass a second invocation of the same modifier-only activation through when no
    * non-modifier key intervened. Repeated keydown events are not separate invocations.
+   * Once a modifier exits keytip mode, activation aliases cannot reenter until it is released.
    * @defaultvalue 'toggle'
    */
   consecutiveActivationBehavior?: 'toggle' | 'exitAndPassThrough';

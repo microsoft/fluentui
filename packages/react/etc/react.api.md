@@ -6553,6 +6553,13 @@ export type IItemGroupedItem = {
     itemIndex: number;
 };
 
+// @public
+export interface IKeytipActivationBehavior {
+    consecutiveActivationBehavior?: 'toggle' | 'exitAndPassThrough';
+    consumeActivationEvent?: boolean;
+    unmatchedInputBehavior?: 'ignore' | 'exitAndPassThrough';
+}
+
 // @public (undocumented)
 export interface IKeytipConfig {
     // (undocumented)
@@ -6590,7 +6597,6 @@ export interface IKeytipLayerProps extends React_2.ClassAttributes<IKeytipLayer>
     componentRef?: IRefObject<IKeytipLayer>;
     content: string;
     enabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IKeytipActivationBehavior" needs to be exported by the entry point index.d.ts
     keytipActivationBehavior?: IKeytipActivationBehavior;
     keytipExitSequences?: IKeytipTransitionKey[];
     keytipReturnSequences?: IKeytipTransitionKey[];

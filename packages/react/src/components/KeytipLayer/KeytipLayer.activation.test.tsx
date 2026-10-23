@@ -449,6 +449,112 @@ describe('KeytipLayer activation behavior', () => {
     expect(onHome).toHaveBeenCalledTimes(1);
   });
 
+  describe.each([false, true])('with consumeActivationEvent=%s', consumeActivationEvent => {
+    it.each([
+      { key: '.', consecutive: false, releaseModifierFirst: false },
+      { key: '.', consecutive: false, releaseModifierFirst: true },
+      { key: '.', consecutive: true, releaseModifierFirst: false },
+      { key: '.', consecutive: true, releaseModifierFirst: true },
+      { key: 'Meta', consecutive: false, releaseModifierFirst: false },
+      { key: 'Meta', consecutive: false, releaseModifierFirst: true },
+      { key: 'Meta', consecutive: true, releaseModifierFirst: false },
+      { key: 'Meta', consecutive: true, releaseModifierFirst: true },
+    ])(
+      'does not reenter through an alias during the exiting Alt gesture: %j',
+      ({ key, consecutive, releaseModifierFirst }) => {
+        mount({ keytipActivationBehavior: { ...props.keytipActivationBehavior, consumeActivationEvent } });
+        altTap();
+        if (!consecutive) {
+          keyboard('keydown', 'h');
+        }
+
+        expect(altDown().defaultPrevented).toBe(consumeActivationEvent && !consecutive);
+        expectMode(false);
+        expect(keyboard('keydown', key, { altKey: true }).defaultPrevented).toBe(false);
+        expectMode(false);
+        if (releaseModifierFirst) {
+          expect(altUp({ metaKey: key === 'Meta' }).defaultPrevented).toBe(consumeActivationEvent && !consecutive);
+          keyboard('keyup', key);
+        } else {
+          keyboard('keyup', key, { altKey: true });
+          expect(altUp().defaultPrevented).toBe(consumeActivationEvent && !consecutive);
+        }
+        expectMode(false);
+        expect(onEnter).toHaveBeenCalledTimes(1);
+        expect(onExit).toHaveBeenCalledTimes(1);
+
+        altDown();
+        keyboard('keydown', key, { altKey: true });
+        keyboard('keyup', key, { altKey: true });
+        altUp();
+        expectMode(true);
+        expect(onEnter).toHaveBeenCalledTimes(2);
+        expect(onExit).toHaveBeenCalledTimes(1);
+      },
+    );
+
+    it.each(['.', 'Meta'])('recovers configured %s activation after an exiting Alt keyup is lost', key => {
+      mount({ keytipActivationBehavior: { ...props.keytipActivationBehavior, consumeActivationEvent } });
+      altTap();
+      altDown();
+      expectMode(false);
+      keyboard('keydown', 'h');
+      altDown();
+      keyboard('keydown', key, { altKey: true });
+      altUp();
+      expectMode(true);
+      expect(onEnter).toHaveBeenCalledTimes(2);
+      expect(onExit).toHaveBeenCalledTimes(1);
+      expect(onHome).not.toHaveBeenCalled();
+    });
+
+    it.each(['.', 'Meta'])('decides configured %s exit chord cancellation before the callback', key => {
+      let canceledOnExit: boolean | undefined;
+      const onExitChord = jest.fn((event?: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) => {
+        canceledOnExit = event?.defaultPrevented;
+      });
+      mount({
+        keytipStartSequences: [{ key, modifierKeys: [KeyCodes.alt] }],
+        keytipExitSequences: [{ key, modifierKeys: [KeyCodes.alt] }],
+        keytipActivationBehavior: { ...props.keytipActivationBehavior, consumeActivationEvent },
+        onExitKeytipMode: onExitChord,
+      });
+      altDown();
+      keyboard('keydown', key, { altKey: true });
+      keyboard('keyup', key, { altKey: true });
+      altUp();
+      expectMode(true);
+
+      altDown();
+      expectMode(true);
+      const event = keyboard('keydown', key, { altKey: true });
+      expect(event.defaultPrevented).toBe(consumeActivationEvent);
+      expect(canceledOnExit).toBe(consumeActivationEvent);
+      expect(onExitChord).toHaveBeenCalledTimes(1);
+      expect(onExitChord).toHaveBeenCalledWith(event);
+      keyboard('keyup', key, { altKey: true });
+      altUp();
+      expectMode(false);
+      expect(onEnter).toHaveBeenCalledTimes(1);
+    });
+
+    it('still consumes return navigation at child and root levels', () => {
+      const onExitReturn = jest.fn();
+      mount({
+        keytipActivationBehavior: { ...props.keytipActivationBehavior, consumeActivationEvent },
+        onExitKeytipMode: onExitReturn,
+      });
+      altTap();
+      keyboard('keydown', 'h');
+      expect(keyboard('keydown', 'Escape').defaultPrevented).toBe(true);
+      expect(layerRef.current!.getKeytipTree().currentKeytip).toBe(layerRef.current!.getKeytipTree().root);
+      expect(onExitReturn).not.toHaveBeenCalled();
+      expect(keyboard('keydown', 'Escape').defaultPrevented).toBe(true);
+      expect(onExitReturn).toHaveBeenCalledTimes(1);
+      expectMode(false);
+    });
+  });
+
   it('does not execute held-Alt input after an explicit legacy activation chord', () => {
     mount();
     altDown();
