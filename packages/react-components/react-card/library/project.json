@@ -4,5 +4,23 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-card/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "build": {
+      "options": {
+        "assets": [
+          {
+            "input": "packages/react-components/react-card/library/src",
+            "glob": "**/*.module.css",
+            "output": "lib"
+          },
+          {
+            "input": "packages/react-components/react-card/library/src",
+            "glob": "**/*.module.css",
+            "output": "lib-commonjs"
+          }
+        ]
+      }
+    }
+  }
 }

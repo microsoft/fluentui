@@ -3480,6 +3480,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
     es6-weak-map: "npm:^2.0.2"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
@@ -3507,6 +3508,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -3591,6 +3593,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -3681,6 +3684,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -5880,6 +5884,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -15110,6 +15115,13 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: 10c0/2176952b3649293473999a95d7bebfc9dc96410f6cbd3d2595cf12fd401f63a4bf41a7adbfd3ab2ff09ed60cb9870c58c6acdd18b87767366fabfc163700f13b
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839
   languageName: node
   linkType: hard
 

@@ -89,6 +89,28 @@ Alternatively, run Storybook locally with:
 1. `yarn start`
 2. Select `react-button` from the list.
 
+### Experimental CSS Modules
+
+Button, CompoundButton, MenuButton, SplitButton, and ToggleButton have
+`use<Component>Styles.css-module.ts` alternatives beside their original Griffel
+style hooks. The CSS Module hooks compose Button's shared styles and apply
+independent state classes; nested CSS handles state combinations.
+
+The prototype's component imports select the CSS Module hooks for local testing.
+The original Griffel hooks remain available for comparison. CSS Modules use the
+`fluentui` cascade layer and FluentProvider's theme custom properties. They require
+CSS Modules and native CSS nesting support, or an equivalent bundler transform.
+Use headless/CSS-styled icons with their defaults in the same layer:
+
+```css
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+```
+
+The Nx build copies every `*.module.css` file next to its hook in both `lib` and
+`lib-commonjs`. Applications must process these CSS imports and retain CSS side
+effects. Browser-based parity checks are required when changing the cascade;
+JSDOM hook tests only validate the state-to-class mapping.
+
 ### Specification
 
 See [SPEC.md](./src/components/Button/SPEC.md).
