@@ -96,7 +96,17 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
       file: toRelative(item.file, meta.workspaceRoot),
       error: diagnosticMessage(item.file, item.error),
     })),
-    ...(meta.annotate ? { annotate: meta.annotate } : {}),
+    ...(meta.annotate
+      ? {
+          annotate: {
+            mode: meta.annotate.mode,
+            filesModified: meta.annotate.filesModified,
+            functionsAnnotated: meta.annotate.functionsAnnotated,
+            functionsBailedOut: meta.annotate.functionsBailedOut,
+            ...(meta.annotate.dryRun ? { dryRun: true as const, planned: meta.annotate.planned } : {}),
+          },
+        }
+      : {}),
   };
 }
 
@@ -115,6 +125,7 @@ export function toLintDocument(
     compilerEvent: result.compilerEvent,
     function: result.functionName,
     ...(result.reason ? { reason: result.reason } : {}),
+    ...(result.revalidated ? { justified: true as const, revalidated: true as const } : {}),
   }));
 
   return {

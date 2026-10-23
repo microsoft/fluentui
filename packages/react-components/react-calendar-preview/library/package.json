@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-calendar-preview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fluent UI React Calendar components",
   "type": "module",
   "main": "lib-commonjs/index.cjs",
