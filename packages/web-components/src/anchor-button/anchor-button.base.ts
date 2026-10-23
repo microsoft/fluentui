@@ -184,6 +184,20 @@ export class BaseAnchor extends FASTElement {
   }
 
   /**
+   * Handles the anchor auxiliary click event.
+   *
+   * @param e - The event object
+   * @internal
+   */
+  public auxclickHandler(e: PointerEvent): boolean {
+    if (e.button === 1 && this.href) {
+      this.handleNavigation(true);
+    }
+
+    return true;
+  }
+
+  /**
    * Handles keydown events for the anchor.
    *
    * @param e - the keyboard event
