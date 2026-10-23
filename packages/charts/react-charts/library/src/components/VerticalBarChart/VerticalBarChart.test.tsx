@@ -1210,7 +1210,8 @@ describe('VerticalBarChart - focusOnReset', () => {
   it.each([false, true])(
     'Should not restore focus when only inline handlers change (focusOnReset: %s)',
     enableFocusOnReset => {
-      const createData = () => chartPointsVBC.map(point => ({ ...point, onClick: () => undefined }));
+      const createData = (isInteractive = true) =>
+        chartPointsVBC.map(point => ({ ...point, onClick: isInteractive ? () => undefined : undefined }));
       const focusOnReset = enableFocusOnReset ? { barIndex: 1 } : undefined;
       const { container, rerender } = render(
         <>
@@ -1222,14 +1223,16 @@ describe('VerticalBarChart - focusOnReset', () => {
       const beforeChart = screen.getByTestId('before-chart');
       act(() => beforeChart.focus());
 
-      rerender(
-        <>
-          <button data-testid="before-chart">Before chart</button>
-          <VerticalBarChart data={createData()} focusOnReset={focusOnReset} width={700} />
-        </>,
-      );
+      for (const isInteractive of [true, false, true]) {
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <VerticalBarChart data={createData(isInteractive)} focusOnReset={focusOnReset} width={700} />
+          </>,
+        );
 
-      expect(container.ownerDocument.activeElement).toBe(beforeChart);
+        expect(container.ownerDocument.activeElement).toBe(beforeChart);
+      }
     },
   );
 });

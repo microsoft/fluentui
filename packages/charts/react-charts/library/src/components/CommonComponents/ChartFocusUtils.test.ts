@@ -19,6 +19,7 @@ describe('areChartDataEqual', () => {
     expect(areChartDataEqual(undefined, undefined)).toBe(true);
     expect(areChartDataEqual(undefined, null)).toBe(false);
     expect(areChartDataEqual({}, { x: undefined })).toBe(false);
+    expect(areChartDataEqual({ x: undefined }, {})).toBe(false);
     expect(areChartDataEqual({ x: undefined }, { y: undefined })).toBe(false);
     expect(areChartDataEqual([], {})).toBe(false);
   });
@@ -39,5 +40,15 @@ describe('areChartDataEqual', () => {
     const changed = [{ data: [{ x: 1, y: 3, onDataPointClick: () => undefined }], onLineClick: () => undefined }];
     expect(areChartDataEqual(previous, equivalent)).toBe(true);
     expect(areChartDataEqual(previous, changed)).toBe(false);
+  });
+
+  it.each([false, true])('ignores conditional handlers (initially enabled: %s)', initiallyEnabled => {
+    const callback = () => undefined;
+    const previous = { x: 1, y: 2, onClick: initiallyEnabled ? callback : undefined };
+    const current = { x: 1, y: 2, onClick: initiallyEnabled ? undefined : callback };
+    expect(areChartDataEqual(previous, current)).toBe(true);
+    expect(areChartDataEqual([{ data: [previous] }], [{ data: [current] }])).toBe(true);
+    expect(areChartDataEqual(previous, { ...current, y: 3 })).toBe(false);
+    expect(areChartDataEqual(previous, { ...current, onClick: null })).toBe(false);
   });
 });

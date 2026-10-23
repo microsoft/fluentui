@@ -1188,12 +1188,15 @@ describe('LineChart - mouse events', () => {
   it.each([false, true])(
     'Should not restore focus when only inline handlers change (focusOnReset: %s)',
     enableFocusOnReset => {
-      const createData = () => ({
+      const createData = (isInteractive = true) => ({
         ...basicChartPoints,
         lineChartData: basicPoints.map(line => ({
           ...line,
-          onLineClick: () => undefined,
-          data: line.data.map(point => ({ ...point, onDataPointClick: () => undefined })),
+          onLineClick: isInteractive ? () => undefined : undefined,
+          data: line.data.map(point => ({
+            ...point,
+            onDataPointClick: isInteractive ? () => undefined : undefined,
+          })),
         })),
       });
       const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
@@ -1208,14 +1211,16 @@ describe('LineChart - mouse events', () => {
       const beforeChart = screen.getByTestId('before-chart');
       act(() => beforeChart.focus());
 
-      rerender(
-        <>
-          <button data-testid="before-chart">Before chart</button>
-          <LineChart data={createData()} focusOnReset={focusOnReset} width={700} />
-        </>,
-      );
+      for (const isInteractive of [true, false, true]) {
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <LineChart data={createData(isInteractive)} focusOnReset={focusOnReset} width={700} />
+          </>,
+        );
 
-      expect(container.ownerDocument.activeElement).toBe(beforeChart);
+        expect(container.ownerDocument.activeElement).toBe(beforeChart);
+      }
     },
   );
 
