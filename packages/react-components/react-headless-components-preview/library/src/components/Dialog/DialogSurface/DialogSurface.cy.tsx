@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { webLightTheme } from '@fluentui/react-theme';
 
@@ -7,6 +8,13 @@ import type { DialogProps } from '..';
 import { Drawer } from '../../Drawer';
 import { NavDrawer } from '../../Nav/NavDrawer';
 import { Provider } from '../../Provider';
+import { Tooltip } from '../../Tooltip';
+
+const supportsPopoverHint = () => {
+  const probe = document.createElement('div');
+  probe.setAttribute('popover', 'hint');
+  return (probe as HTMLElement & { popover?: string | null }).popover === 'hint';
+};
 
 const surfaceSelector = '#animated-surface';
 const exitDuration = `calc(${webLightTheme.durationUltraSlow} * 20)`;
@@ -340,6 +348,80 @@ describe('DialogSurface exit animations', () => {
       openSurface();
       closeSurface();
       cy.get(surfaceSelector).should('not.exist');
+    });
+  });
+});
+
+describe('DialogSurface Escape', () => {
+  // Without `popover="hint"` the Tooltip is `manual` and the browser doesn't close it on Escape.
+  const itWithHint = supportsPopoverHint() ? it : it.skip;
+
+  const ControlledDialog = ({
+    modalType,
+    children,
+  }: Pick<DialogProps, 'modalType'> & { children: React.ReactNode }) => {
+    const [open, setOpen] = React.useState(true);
+    return (
+      <Dialog open={open} modalType={modalType} onOpenChange={(_, data) => setOpen(data.open)}>
+        <DialogSurface aria-label="Dialog" data-testid="surface">
+          {children}
+        </DialogSurface>
+      </Dialog>
+    );
+  };
+
+  (['non-modal', 'modal'] as const).forEach(modalType => {
+    itWithHint(`closes only a Tooltip open inside a ${modalType} surface`, () => {
+      mountBase(
+        <ControlledDialog modalType={modalType}>
+          <button data-testid="before">Before</button>
+          <Tooltip content="Tip" relationship="description" showDelay={0}>
+            <button>Has tooltip</button>
+          </Tooltip>
+        </ControlledDialog>,
+      );
+
+      cy.get('[data-testid=before]').realClick();
+      cy.realPress('Tab');
+      cy.get('[role=tooltip]').should('match', ':popover-open');
+      cy.realPress('Escape');
+      cy.get('[role=tooltip]').should('not.match', ':popover-open');
+      cy.get('[data-testid=surface]').should('have.attr', 'data-open');
+    });
+  });
+
+  it('closes a non-modal surface on Escape from content portaled out of it', () => {
+    mountBase(
+      <ControlledDialog modalType="non-modal">
+        Content
+        {createPortal(<input data-testid="portaled" aria-label="Portaled" />, document.body)}
+      </ControlledDialog>,
+    );
+
+    cy.get('[data-testid=portaled]').focus();
+    cy.realPress('Escape');
+    cy.get('[data-testid=surface]').should('not.exist');
+  });
+
+  it('reports the browser closing a modal on a repeated Escape the consumer vetoed', () => {
+    const calls: string[] = [];
+    mountBase(
+      <Dialog open onOpenChange={(_, data) => calls.push(`${data.type}:${data.open}`)}>
+        <DialogSurface aria-label="Dialog" data-testid="surface">
+          <button data-testid="inside">Inside</button>
+        </DialogSurface>
+      </Dialog>,
+    );
+
+    cy.get('[data-testid=inside]').focus();
+    cy.realPress('Escape');
+    cy.realPress('Escape');
+    cy.get<HTMLDialogElement>('[data-testid=surface]').should(([surface]) => {
+      expect(calls[0]).to.equal('escapeKeyDown:false');
+      // Chromium closes a modal without `cancel` when Escape repeats without user activation in between.
+      if (!surface.open) {
+        expect(calls).to.include('surfaceToggle:false');
+      }
     });
   });
 });

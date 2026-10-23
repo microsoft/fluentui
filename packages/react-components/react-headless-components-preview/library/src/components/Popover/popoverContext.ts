@@ -19,6 +19,8 @@ const popoverContextDefaultValue: PopoverContextValue = {
   openOnHover: false,
   withArrow: false,
   trapFocus: false,
+  mode: 'auto',
+  onSurfaceKeyDown: () => undefined,
   positioning: {
     targetRef: () => undefined,
     containerRef: () => undefined,

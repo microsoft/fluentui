@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { DialogModalType } from '../dialogContext';
+import type { TopLayerPhase } from '../../../hooks/top-layer';
 
 export type DialogSurfaceSlots = {
   /**
@@ -43,4 +44,8 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
    * consumer CSS controls whether the surface remains visible during its exit.
    */
   shouldRender: boolean;
+  /**
+   * Lifecycle phase from `useLayerPresence`.
+   */
+  phase: TopLayerPhase;
 };

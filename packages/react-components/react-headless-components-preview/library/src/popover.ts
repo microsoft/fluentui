@@ -13,6 +13,7 @@ export {
 } from './components/Popover';
 export type {
   PopoverProps,
+  PopoverMode,
   PopoverState,
   PopoverContextValue,
   OpenPopoverEvents,
