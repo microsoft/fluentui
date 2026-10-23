@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: render the matching v8 variant class names on Button shims instead of always ms-Button--primary",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "171317405+jakesalvesen@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
