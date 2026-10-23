@@ -154,6 +154,16 @@
         "default": "./lib-commonjs/button.cjs"
       }
     },
+    "./calendar": {
+      "import": {
+        "types": "./dist/calendar.d.ts",
+        "default": "./lib/calendar.js"
+      },
+      "require": {
+        "types": "./dist/calendar.d.cts",
+        "default": "./lib-commonjs/calendar.cjs"
+      }
+    },
     "./card": {
       "import": {
         "types": "./dist/card.d.ts",
