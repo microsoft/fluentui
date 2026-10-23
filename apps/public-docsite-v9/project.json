@@ -9,10 +9,17 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build",
+        {
+          "projects": ["storybook-llms-extractor"],
+          "target": "build"
+        }
+      ]
     },
     "storybook": {
       "dependsOn": ["^build"]
@@ -27,6 +34,7 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.storybook/**",
+        "{workspaceRoot}/scripts/storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" }
       ],

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon-playground",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Storybook addon that ships an in-browser TSX playground for Fluent UI React v9 stories",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -11,14 +11,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.9",
+    "@fluentui/react-components": "^9.74.11",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-utilities": "^9.26.7",
+    "@fluentui/react-shared-contexts": "^9.26.4",
+    "@fluentui/react-utilities": "^9.27.0",
     "@swc/helpers": "^0.5.1",
     "lz-string": "^1.5.0",
+    "postcss": "8.5.18",
+    "postcss-value-parser": "^4.2.0",
     "semver": "^6.2.0"
   },
   "peerDependencies": {
+    "@storybook/addon-docs": ">=9.1.17",
     "@storybook/react": ">=9.1.17",
     "@types/react": ">=16.14.0 <20.0.0",
     "react": ">=18.0.0 <20.0.0",

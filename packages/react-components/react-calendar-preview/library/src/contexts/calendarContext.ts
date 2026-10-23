@@ -5,7 +5,7 @@ import { calendarFormatters } from '../utils';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { CalendarFormatters, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../utils';
-import type { CalendarDaySelectData } from '../CalendarDay';
+import type { CalendarDaySelectData } from '../components/CalendarDay/CalendarDay.types';
 
 /**
  * Configuration shared by the Calendar root, every picker below it, and every grid row and cell.

@@ -77,7 +77,7 @@ export type PopoverProps = {
   /**
    * Optional id for the popover surface. When provided, this id is applied to
    * the `PopoverSurface` element and referenced by `PopoverTrigger`
-   * (`aria-details`). If omitted, a generated id is used.
+   * (`aria-details` and `aria-controls`). If omitted, a generated id is used.
    */
   id?: string;
 
@@ -113,6 +113,8 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
     setContextTarget: (target: { x: number; y: number } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    /** Determines whether the surface is present in the DOM. */
+    shouldRenderSurface: boolean;
   };
 
 /**

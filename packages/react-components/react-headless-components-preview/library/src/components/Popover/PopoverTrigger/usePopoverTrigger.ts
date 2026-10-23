@@ -78,6 +78,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
     'aria-expanded': `${open}` as 'true' | 'false',
     'aria-haspopup': 'true' as const,
     'aria-details': open ? surfaceId : undefined,
+    'aria-controls': open ? surfaceId : undefined,
     'data-open': toDataAttributeValue(open),
     ...child?.props,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),

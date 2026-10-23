@@ -16,6 +16,7 @@ import { TabListSlots } from '@fluentui/react-tabs';
 import { TabBaseProps as TabProps } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
+import { useTabListContext_unstable as useTabListContext } from '@fluentui/react-tabs';
 
 export { renderTab }
 
@@ -58,6 +59,8 @@ export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabStat
 
 // @public
 export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+export { useTabListContext }
 
 // @public (undocumented)
 export const useTabListContextValues: (state: TabListState) => TabListContextValues;

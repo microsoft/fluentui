@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(chart-utilities): prevent unbounded allocation from Plotly shapes",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "v-baambati@microsoft.com"
+}
