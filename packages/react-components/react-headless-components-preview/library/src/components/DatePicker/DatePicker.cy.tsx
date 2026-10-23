@@ -65,13 +65,24 @@ describe('DatePicker', () => {
     cy.get('button[aria-haspopup="dialog"]').should('be.focused').and('have.attr', 'aria-expanded', 'false');
   });
 
-  // Grid tab stops depend on focusgroup support, so focus moves directly instead of counting Tab presses.
-  it('closes when focus leaves the calendar and keeps the new focus destination', () => {
+  it('tabs through each grid and control once, then closes when Tab leaves the calendar', () => {
     mount(<Example />);
 
     cy.get('button[aria-haspopup="dialog"]').click();
     cy.get(day('August 12, 2026')).should('be.focused');
-    cy.contains('button', 'After').focus();
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'aria-label', '2026, change year');
+    cy.realPress('Tab');
+    cy.focused()
+      .should('have.attr', 'aria-label')
+      .and('match', /^Previous year/);
+    cy.realPress('Tab');
+    cy.focused()
+      .should('have.attr', 'aria-label')
+      .and('match', /^Next year/);
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'role', 'gridcell').and('have.attr', 'aria-label', 'August 2026');
+    cy.realPress('Tab');
     cy.get('[role="dialog"]').should('not.exist');
     cy.contains('button', 'After').should('be.focused');
   });
