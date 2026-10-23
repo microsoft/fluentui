@@ -1157,6 +1157,87 @@ describe('LineChart - mouse events', () => {
     expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="50. metaData2, 90."]'));
   });
 
+  it.each([false, true])('Should not restore focus for equivalent data (cloned: %s)', cloneData => {
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} />
+      </>,
+      { container: root! },
+    );
+    act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    const data = cloneData
+      ? {
+          ...basicChartPoints,
+          lineChartData: basicPoints.map(line => ({ ...line, data: line.data.map(point => ({ ...point })) })),
+        }
+      : basicChartPoints;
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={data} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} width={700} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+  });
+
+  it.each([false, true])(
+    'Should restore focus and point callout for path-rendered lines (optimized: %s)',
+    optimizeLargeData => {
+      const data = {
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          lineOptions: { curve: optimizeLargeData ? undefined : ('linear' as const), mode: 'lines' as const },
+        })),
+      };
+      const updatedData = {
+        ...data,
+        lineChartData: data.lineChartData.map(line => ({ ...line, color: 'blue' })),
+      };
+      const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+        </>,
+        { container: root! },
+      );
+      const beforeChart = screen.getByTestId('before-chart');
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={updatedData} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+        </>,
+      );
+
+      const line = container.querySelectorAll<SVGPathElement>('path[id^="lineID"]')[1];
+      expect(line).toBeDefined();
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      expect(
+        container.querySelector<SVGCircleElement>('circle[id^="staticHighlightCircle"][id$="_1"]')!.getAttribute('cx'),
+      ).not.toBe('0');
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} />
+        </>,
+      );
+
+      expect(container.ownerDocument.activeElement).toBe(line);
+    },
+  );
+
   it('Should restore the previously focused point when focusOnReset is not provided', () => {
     const updatedData = {
       ...basicChartPoints,

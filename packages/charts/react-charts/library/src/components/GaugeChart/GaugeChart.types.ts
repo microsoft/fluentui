@@ -237,7 +237,7 @@ export interface GaugeChartProps {
   roundCorners?: boolean;
 
   /**
-   * Segment to focus when the segments, colors, or chart value change.
+   * Segment to focus when the segments, colors, or chart value change in content.
    * When not provided, focus returns to the previously focused segment or needle.
    */
   focusOnReset?: { segmentIndex: number };

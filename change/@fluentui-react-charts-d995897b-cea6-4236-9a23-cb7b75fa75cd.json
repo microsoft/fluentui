@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat(react-charts): add configurable focus restoration after data updates",
+  "comment": "feat(react-charts): add configurable focus restoration after data updates, including path-rendered lines, without stealing focus for equivalent data",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

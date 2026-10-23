@@ -21,7 +21,7 @@ import type {
   DataPoint,
 } from '../../index';
 import { CartesianChart, Legends, ChartPopover } from '../../index';
-import { getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
+import { areChartDataEqual, getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -114,7 +114,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const focusBarRefs = React.useRef<Map<number, SVGRectElement>>(new Map());
 
   React.useEffect(() => {
-    const chartChanged = previousFocusDataRef.current !== props.data || previousFocusColorsRef.current !== props.colors;
+    const chartChanged =
+      !areChartDataEqual(previousFocusDataRef.current, props.data) ||
+      !areChartDataEqual(previousFocusColorsRef.current, props.colors);
     previousFocusDataRef.current = props.data;
     previousFocusColorsRef.current = props.colors;
 

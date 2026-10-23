@@ -28,7 +28,7 @@ import type {
   YValueHover,
 } from '../../index';
 import { CartesianChart } from '../../index';
-import { getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
+import { areChartDataEqual, getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -209,6 +209,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const previousFocusDataRef = React.useRef(props.data);
     const lastFocusedPointRef = React.useRef<{ lineIndex: number; pointIndex: number } | undefined>(undefined);
     const focusPointRefs = React.useRef<Map<string, SVGElement>>(new Map());
+    const focusLineRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
     const calloutDataVersionRef = React.useRef(0);
     if (previousCalloutDataRef.current !== props.data) {
       previousCalloutDataRef.current = props.data;
@@ -216,7 +217,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     }
 
     React.useEffect(() => {
-      const dataChanged = previousFocusDataRef.current !== props.data;
+      const dataChanged = !areChartDataEqual(previousFocusDataRef.current, props.data);
       previousFocusDataRef.current = props.data;
 
       if (!dataChanged) {
@@ -228,7 +229,17 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         return;
       }
 
-      focusPointRefs.current.get(`${focusTarget.lineIndex}-${focusTarget.pointIndex}`)?.focus();
+      const point = props.data.lineChartData?.[focusTarget.lineIndex]?.data[focusTarget.pointIndex];
+      if (!point) {
+        return;
+      }
+      const element =
+        focusPointRefs.current.get(`${focusTarget.lineIndex}-${focusTarget.pointIndex}`) ??
+        focusLineRefs.current.get(focusTarget.lineIndex);
+      if (element) {
+        lastFocusedPointRef.current = focusTarget;
+        element.focus();
+      }
     }, [props.data, props.focusOnReset]);
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
@@ -750,6 +761,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               <path
                 id={lineId}
                 key={lineId}
+                ref={element => {
+                  if (element) {
+                    focusLineRefs.current.set(i, element);
+                  } else {
+                    focusLineRefs.current.delete(i);
+                  }
+                }}
                 d={line(lineData)!}
                 fill="transparent"
                 stroke={lineColor}
@@ -759,6 +777,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 onMouseMove={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                 onMouseOver={event => _onMouseOverLargeDataset(i, verticaLineHeight, event, yScale)}
                 onMouseOut={_handleMouseOut}
+                onFocus={event => {
+                  const pointIndex =
+                    lastFocusedPointRef.current?.lineIndex === i ? lastFocusedPointRef.current.pointIndex : 0;
+                  lastFocusedPointRef.current = { lineIndex: i, pointIndex };
+                  _onFocusLargeDataset(i, verticaLineHeight, event, yScale, pointIndex);
+                }}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
                 tabIndex={isLegendSelected ? 0 : undefined}

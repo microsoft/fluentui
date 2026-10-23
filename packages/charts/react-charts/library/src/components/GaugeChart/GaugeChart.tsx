@@ -30,7 +30,7 @@ import type {
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
-import { getChartEventTarget, isFocusLeavingChart } from '../CommonComponents/ChartFocusUtils';
+import { areChartDataEqual, getChartEventTarget, isFocusLeavingChart } from '../CommonComponents/ChartFocusUtils';
 import { useImageExport } from '../../utilities/hooks';
 
 const GAUGE_MARGIN = 16;
@@ -196,7 +196,8 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
 
     React.useEffect(() => {
       const chartChanged =
-        previousFocusSegmentsRef.current !== props.segments || previousFocusChartValueRef.current !== props.chartValue;
+        !areChartDataEqual(previousFocusSegmentsRef.current, props.segments) ||
+        previousFocusChartValueRef.current !== props.chartValue;
       previousFocusSegmentsRef.current = props.segments;
       previousFocusChartValueRef.current = props.chartValue;
 
@@ -224,11 +225,17 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const hadTabIndex = element.hasAttribute('tabindex');
       if (!hadTabIndex) {
         element.setAttribute('tabindex', '-1');
+        element.addEventListener(
+          'blur',
+          () => {
+            if (element.getAttribute('tabindex') === '-1') {
+              element.removeAttribute('tabindex');
+            }
+          },
+          { once: true },
+        );
       }
       element.focus();
-      if (!hadTabIndex) {
-        element.removeAttribute('tabindex');
-      }
     }
 
     const classes = useGaugeChartStyles(props);

@@ -892,14 +892,15 @@ describe('VerticalBarChart - focus events', () => {
     );
     const bar = getById(container, /_VBC_bar/i)[0];
 
-    fireEvent.focus(bar);
+    act(() => bar.focus());
     expect(screen.getByTestId('vertical-bar-callout')).toHaveTextContent(String(chartPointsVBC[0].y));
 
+    act(() => bar.blur());
     const updatedPoints = chartPointsVBC.map((point, index) => (index === 0 ? { ...point, y: 987654 } : point));
     rerender(<VerticalBarChart data={updatedPoints} onRenderCalloutPerDataPoint={renderCallout} />);
-    fireEvent.focus(bar);
 
     await waitFor(() => {
+      expect(container.ownerDocument.activeElement).toBe(bar);
       expect(screen.getByTestId('vertical-bar-callout')).toHaveTextContent('987654');
     });
   });
@@ -1109,7 +1110,7 @@ describe('VerticalBarChart - focusOnReset', () => {
 
   it('Should focus the bar specified by focusOnReset when data or colors change', () => {
     const focusOnReset = { barIndex: 1 };
-    const updatedData = chartPointsVBC.map(point => ({ ...point }));
+    const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
     const initialColors = ['red'];
     const updatedColors = ['blue'];
     const { container, rerender } = render(
@@ -1141,7 +1142,7 @@ describe('VerticalBarChart - focusOnReset', () => {
   });
 
   it('Should restore the previously focused bar when focusOnReset is not provided', () => {
-    const updatedData = chartPointsVBC.map(point => ({ ...point }));
+    const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
@@ -1162,5 +1163,47 @@ describe('VerticalBarChart - focusOnReset', () => {
     );
 
     expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[2]);
+  });
+
+  it.each([false, true])('Should not restore focus for equivalent data (cloned: %s)', cloneData => {
+    const colors = ['red'];
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={chartPointsVBC} colors={colors} focusOnReset={{ barIndex: 1 }} />
+      </>,
+    );
+    act(() => getById(container, /_VBC_bar/i)[1].focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart
+          data={cloneData ? chartPointsVBC.map(point => ({ ...point })) : chartPointsVBC}
+          colors={cloneData ? [...colors] : colors}
+          focusOnReset={{ barIndex: 1 }}
+          width={700}
+        />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+  });
+
+  it('Should restore focus to a remounted bar when its x value changes', () => {
+    const { container, rerender } = render(<VerticalBarChart data={chartPointsVBC} />);
+    const previousBar = getById(container, /_VBC_bar/i)[2];
+    act(() => previousBar.focus());
+    expect(container.ownerDocument.activeElement).toBe(previousBar);
+    const updatedData = chartPointsVBC.map((point, index) => (index === 2 ? { ...point, x: 1000 } : point));
+
+    rerender(<VerticalBarChart data={updatedData} />);
+
+    const updatedBar = getById(container, /_VBC_bar/i)[2];
+    expect(updatedBar).not.toBe(previousBar);
+    expect(previousBar).not.toBeInTheDocument();
+    expect(container.ownerDocument.activeElement).toBe(updatedBar);
   });
 });
