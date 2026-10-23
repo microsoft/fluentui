@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createPortal } from 'react-dom';
 import { RendererProvider, createDOMRenderer } from '@griffel/react';
 import { mount } from '@fluentui/scripts-cypress';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -28,29 +28,36 @@ const GLOBAL_STYLES = [
 ];
 
 /**
+ * Whether the browser running the spec orients a range input with `writing-mode`, from its version rather than the
+ * probe, so every reading below is checked against the engine. Chromium added it in 124: the Cypress 13 Electron used
+ * for the React 17 run (Chromium 118) needs the fallback, and the Cypress 14 Electron used for React 18 and 19 does not.
+ */
+const NATIVE_VERTICAL_RANGE = Number(/Chrome\/(\d+)/.exec(navigator.userAgent)?.[1] ?? 0) >= 124;
+
+/**
  * The probe result is cached per document, so each case measures in a fresh same-origin iframe document.
  */
-function withFrame(css: string, assert: (frameDocument: Document, frame: HTMLIFrameElement) => void, hidden = false) {
-  mount(<iframe title="probe" style={{ width: 400, height: 300, display: hidden ? 'none' : 'block' }} />);
+function withFrame(css: string, assert: (frameDocument: Document) => void) {
+  mount(<iframe title="probe" style={{ width: 400, height: 300 }} />);
 
   cy.get('iframe')
     .should($iframe => {
       expect(($iframe[0] as HTMLIFrameElement).contentDocument?.body, 'iframe document ready').to.exist;
     })
     .then($iframe => {
-      const frame = $iframe[0] as HTMLIFrameElement;
-      const frameDocument = frame.contentDocument!;
+      const frameDocument = ($iframe[0] as HTMLIFrameElement).contentDocument!;
       const style = frameDocument.createElement('style');
       style.textContent = css;
       frameDocument.head.append(style);
-      assert(frameDocument, frame);
+      assert(frameDocument);
     });
 }
 
 /**
- * Makes the capability probe in `win` read like an engine without vertical range support by swapping the axes the
- * probe reports, so the hook has to install the fallback. Only the probe (a range input in a shadow root of its own,
- * under a host that is not a Slider) is affected, so Slider layout is unchanged.
+ * Makes the capability probe in `win` read like an engine without vertical range support by reporting it wider than
+ * tall, so the hook has to install the fallback on any engine. Equal axes (no layout) stay equal, so a hidden document
+ * still reads as undecided. Only the probe (a range input in a shadow root of its own, under a host that is not a
+ * Slider) is affected, so Slider layout is unchanged.
  */
 function simulateLegacyEngine(win: Window) {
   const proto = (win as Window & typeof globalThis).HTMLElement.prototype;
@@ -63,13 +70,15 @@ function simulateLegacyEngine(win: Window) {
   Object.defineProperty(proto, 'offsetWidth', {
     configurable: true,
     get(this: HTMLElement) {
-      return (isProbe(this) ? height : width).get!.call(this);
+      const value = width.get!.call(this);
+      return isProbe(this) ? Math.max(value, height.get!.call(this)) : value;
     },
   });
   Object.defineProperty(proto, 'offsetHeight', {
     configurable: true,
     get(this: HTMLElement) {
-      return (isProbe(this) ? width : height).get!.call(this);
+      const value = height.get!.call(this);
+      return isProbe(this) ? Math.min(value, width.get!.call(this)) : value;
     },
   });
 }
@@ -80,21 +89,52 @@ function legacyRuleIn(root: Document | ShadowRoot): boolean {
   return adopted || root.querySelector(`#${STYLE_ID}`) !== null;
 }
 
+/**
+ * Mounts a same-origin iframe and portals `children` into its document. A portal keeps the spec on the `mount` root,
+ * so it runs on every React version the package supports (`react-dom/client` only exists from React 18).
+ * `beforeRender` runs once, after the frame document exists and before `children` mount.
+ */
+const FramePortal: React.FC<{
+  hidden: boolean;
+  beforeRender: (frame: HTMLIFrameElement) => void;
+  children: (frameDocument: Document) => React.ReactNode;
+}> = ({ hidden, beforeRender, children }) => {
+  const [frameDocument, setFrameDocument] = React.useState<Document | null>(null);
+  const prepared = React.useRef(false);
+  const frameRef = React.useCallback(
+    (frame: HTMLIFrameElement | null) => {
+      if (frame?.contentDocument?.body && !prepared.current) {
+        prepared.current = true;
+        beforeRender(frame);
+        setFrameDocument(frame.contentDocument);
+      }
+    },
+    [beforeRender],
+  );
+
+  return (
+    <>
+      <iframe ref={frameRef} title="probe" style={{ width: 400, height: 300, display: hidden ? 'none' : 'block' }} />
+      {frameDocument && createPortal(children(frameDocument), frameDocument.body)}
+    </>
+  );
+};
+
 describe('legacyVerticalSliderAppearance', () => {
   describe('probe isolation', () => {
     for (const css of ['', ...GLOBAL_STYLES]) {
-      it(`measures native vertical range support with ${css ? `\`${css}\`` : 'no application styles'}`, () => {
+      it(`reads the engine's vertical range support with ${css ? `\`${css}\`` : 'no application styles'}`, () => {
         withFrame(css, frameDocument => {
-          expect(supportsVerticalRangeInput(frameDocument)).to.equal(true);
+          expect(supportsVerticalRangeInput(frameDocument)).to.equal(NATIVE_VERTICAL_RANGE);
 
           const input = frameDocument.body.appendChild(frameDocument.createElement('input'));
           ensureLegacyVerticalSliderInput(input);
-          expect(legacyRuleIn(frameDocument)).to.equal(false);
+          expect(legacyRuleIn(frameDocument)).to.equal(!NATIVE_VERTICAL_RANGE);
         });
       });
     }
 
-    it('does not install the legacy appearance for a vertical Slider under global input and track styles', () => {
+    it('installs the legacy appearance for a vertical Slider under global input and track styles only when the engine needs it', () => {
       mount(
         <FluentProvider theme={webLightTheme}>
           <style>{GLOBAL_STYLES.join('\n')}</style>
@@ -105,14 +145,14 @@ describe('legacyVerticalSliderAppearance', () => {
       );
 
       cy.get('.fui-Slider__input').should('have.attr', 'orient', 'vertical');
-      cy.document().then(doc => {
-        expect(legacyRuleIn(doc)).to.equal(false);
+      cy.document().should(doc => {
+        expect(legacyRuleIn(doc)).to.equal(!NATIVE_VERTICAL_RANGE);
       });
     });
   });
 
   describe('content security policy', () => {
-    it('reads native vertical range support under a nonce-only style-src that blocks style attributes', () => {
+    it("reads the engine's vertical range support under a nonce-only style-src that blocks style attributes", () => {
       const policy = "default-src 'self'; style-src 'nonce-fui-test'";
       mount(
         <iframe
@@ -136,9 +176,9 @@ describe('legacyVerticalSliderAppearance', () => {
           expect(blocked.style.width, 'style attributes are blocked').to.equal('');
           blocked.remove();
 
-          expect(supportsVerticalRangeInput(frameDocument)).to.equal(true);
+          expect(supportsVerticalRangeInput(frameDocument)).to.equal(NATIVE_VERTICAL_RANGE);
           ensureLegacyVerticalSliderInput(frameDocument.body.appendChild(frameDocument.createElement('div')));
-          expect(legacyRuleIn(frameDocument)).to.equal(false);
+          expect(legacyRuleIn(frameDocument)).to.equal(!NATIVE_VERTICAL_RANGE);
         });
     });
   });
@@ -198,40 +238,40 @@ describe('legacyVerticalSliderAppearance', () => {
 
   describe('hidden mount', () => {
     it('installs the fallback once a Slider mounted in a display: none iframe is revealed, without prop changes', () => {
-      withFrame(
-        '',
-        (frameDocument, frame) => {
-          // The only way the rule can appear is the hook retrying after the reveal.
-          simulateLegacyEngine(frame.contentWindow!);
-
-          const container = frameDocument.body.appendChild(frameDocument.createElement('div'));
-          createRoot(container).render(
+      mount(
+        // The only way the rule can appear is the hook retrying after the reveal.
+        <FramePortal hidden beforeRender={frame => simulateLegacyEngine(frame.contentWindow!)}>
+          {frameDocument => (
             <RendererProvider renderer={createDOMRenderer(frameDocument)} targetDocument={frameDocument}>
               <FluentProvider theme={webLightTheme} targetDocument={frameDocument}>
                 <div style={{ height: 200 }}>
                   <Slider vertical defaultValue={50} />
                 </div>
               </FluentProvider>
-            </RendererProvider>,
-          );
-
-          cy.wrap(frameDocument)
-            .should(() => {
-              expect(frameDocument.querySelector('.fui-Slider__input')).to.not.equal(null);
-            })
-            .then(() => {
-              // Hidden: no layout, so nothing is installed on a guess.
-              expect(legacyRuleIn(frameDocument)).to.equal(false);
-              frame.style.display = 'block';
-            });
-
-          // Revealed: the input is laid out, the hook's observer retries, and the fallback is installed once.
-          cy.wrap(frameDocument).should(() => {
-            expect(frameDocument.querySelectorAll(`#${STYLE_ID}`)).to.have.length(1);
-          });
-        },
-        true,
+            </RendererProvider>
+          )}
+        </FramePortal>,
       );
+
+      cy.get('iframe').then($iframe => {
+        const frame = $iframe[0] as HTMLIFrameElement;
+        const frameDocument = frame.contentDocument!;
+
+        cy.wrap(frameDocument)
+          .should(() => {
+            expect(frameDocument.querySelector('.fui-Slider__input')).to.not.equal(null);
+          })
+          .then(() => {
+            // Hidden: no layout, so nothing is installed on a guess.
+            expect(legacyRuleIn(frameDocument)).to.equal(false);
+            frame.style.display = 'block';
+          });
+
+        // Revealed: the input is laid out, the hook's observer retries, and the fallback is installed once.
+        cy.wrap(frameDocument).should(() => {
+          expect(frameDocument.querySelectorAll(`#${STYLE_ID}`)).to.have.length(1);
+        });
+      });
     });
   });
 });
