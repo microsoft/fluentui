@@ -2,6 +2,7 @@ import * as React from 'react';
 import { act, fireEvent, render, waitFor, within } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
 import { isConformant } from '../../testing/isConformant';
+import { Field } from '../Field';
 import { DatePicker } from './DatePicker';
 import type { DatePickerProps } from './DatePicker.types';
 
@@ -447,6 +448,45 @@ describe('DatePicker', () => {
     );
 
     expect(getByRole('button', { name: 'Start date August 12, 2026' })).toBeInTheDocument();
+  });
+
+  it('keeps the displayed date in the trigger name inside a Field', () => {
+    const { getByRole } = render(
+      <Field label="Due date">
+        <DatePicker today={today} defaultValue={today} />
+      </Field>,
+    );
+
+    expect(getByRole('button', { name: 'Due date August 12, 2026' })).toBeInTheDocument();
+  });
+
+  it('keeps reporting close requests that a controlled consumer ignores', () => {
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(<DatePicker aria-label="Due date" today={today} open onOpenChange={onOpenChange} />);
+    const cell = getDayCell(getByRole('dialog'), 'August 12, 2026');
+
+    fireEvent.keyDown(cell, { key: 'Escape' });
+    fireEvent.keyDown(cell, { key: 'Escape' });
+
+    expect(onOpenChange).toHaveBeenCalledTimes(2);
+    expect(getByRole('dialog')).toBeInTheDocument();
+  });
+
+  it('does not let Escape that closes the calendar reach ancestors', () => {
+    const onAncestorKeyDown = jest.fn();
+    const { getByRole } = render(
+      <div onKeyDown={onAncestorKeyDown}>
+        <DatePicker aria-label="Due date" today={today} />
+      </div>,
+    );
+    const trigger = getByRole('button', { name: 'Due date Select a date' });
+    fireEvent.click(trigger);
+
+    fireEvent.keyDown(getDayCell(getByRole('dialog'), 'August 12, 2026'), { key: 'Escape' });
+    fireEvent.click(trigger);
+    fireEvent.keyDown(trigger, { key: 'Escape' });
+
+    expect(onAncestorKeyDown).not.toHaveBeenCalled();
   });
 
   it('renders on the server without the calendar', () => {

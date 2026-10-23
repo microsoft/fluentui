@@ -97,7 +97,9 @@ export const useDatePicker = (
   const { targetDocument } = useFluent();
   const today = React.useMemo(() => todayProp ?? new Date(), [todayProp]);
 
-  const fieldControlProps = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  // A Field label's htmlFor would name the trigger button by the label alone, so the button uses aria-labelledby and
+  // appends the displayed date.
+  const fieldControlProps = useFieldControlProps_unstable(props, { supportsLabelFor: allowTextInput });
   const nativeProps = getPartitionedNativeProps({
     props: fieldControlProps,
     primarySlotTagName: 'input',
@@ -166,23 +168,19 @@ export const useDatePicker = (
   const surfaceRef = React.useRef<HTMLDivElement>(null);
   const dayPickerRef = React.useRef<CalendarDayHandle>(null);
   const monthPickerRef = React.useRef<CalendarMonthHandle>(null);
-  // The latest open state requested during the current event, so blur and dismissal for one action request once.
-  const requestedOpen = React.useRef<boolean | undefined>(undefined);
+  // Set while a request runs, so the blur caused by returning focus to the field does not request a second change.
+  const isRequestingOpen = React.useRef(false);
   const focusOnOpen = React.useRef(false);
   const focusWithinSurface = React.useRef(false);
-
-  React.useEffect(() => {
-    requestedOpen.current = undefined;
-  });
 
   const isWithin = (element: HTMLElement | null, target: EventTarget | null) =>
     !!element && !!target && element.contains(target as Node);
 
   const requestOpen = useEventCallback((event: DatePickerEvent, nextOpen: boolean, reason: OpenChangeReason) => {
-    if ((requestedOpen.current ?? open) === nextOpen || (nextOpen && disabled)) {
+    if (isRequestingOpen.current || open === nextOpen || (nextOpen && disabled)) {
       return;
     }
-    requestedOpen.current = nextOpen;
+    isRequestingOpen.current = true;
 
     if (nextOpen) {
       setDisplayedDate(getInitialDisplayedDate());
@@ -197,6 +195,7 @@ export const useDatePicker = (
       controlRef.current?.focus({ preventScroll: true });
     }
 
+    isRequestingOpen.current = false;
     setOpenState(nextOpen);
     onOpenChange?.(event, { event, type: event.type, open: nextOpen, reason });
   });
@@ -286,7 +285,9 @@ export const useDatePicker = (
         requestOpen(event, true, 'keyboard');
       }
     } else if (event.key === Escape && open) {
+      // Keep the Escape that closes the calendar from also dismissing a surrounding dialog or popover.
       event.preventDefault();
+      event.stopPropagation();
       requestOpen(event, false, 'keyboard');
     } else if (event.key === Enter && allowTextInput) {
       dateState.validate(event);
@@ -413,6 +414,8 @@ export const useDatePicker = (
   });
   const onCalendarDismiss = useEventCallback((event: DatePickerEvent) => {
     if (!isDefaultPrevented(event)) {
+      // Calendar stops propagation; cancelling the key also stops a native dialog or popover ancestor from closing.
+      event.preventDefault();
       requestOpen(event, false, 'escape');
     }
   });
@@ -437,6 +440,7 @@ export const useDatePicker = (
   const onSurfaceKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === Escape && !event.isDefaultPrevented()) {
       event.preventDefault();
+      event.stopPropagation();
       requestOpen(event, false, 'escape');
     }
   });

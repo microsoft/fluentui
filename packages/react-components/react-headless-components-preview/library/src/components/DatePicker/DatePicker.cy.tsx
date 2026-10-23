@@ -115,4 +115,24 @@ describe('DatePicker', () => {
     cy.get('[role="dialog"] [role="grid"]').eq(1).find('[role="gridcell"]').should('have.length', 12);
     cy.get('[role="dialog"] [role="grid"]').eq(1).find('[aria-current="date"]').should('contain.text', '2026');
   });
+
+  it('closes on Escape without dismissing a surrounding modal dialog', () => {
+    const InDialog = () => {
+      const dialogRef = React.useRef<HTMLDialogElement>(null);
+      React.useEffect(() => dialogRef.current?.showModal(), []);
+      return (
+        <dialog ref={dialogRef}>
+          <DatePicker aria-label="Due date" today={today} />
+        </dialog>
+      );
+    };
+    mount(<InDialog />);
+
+    cy.get('button[aria-haspopup="dialog"]').click();
+    cy.get(day('August 12, 2026')).should('be.focused');
+    cy.realPress('Escape');
+    cy.get('[role="dialog"]').should('not.exist');
+    cy.get('dialog').should('have.attr', 'open');
+    cy.get('button[aria-haspopup="dialog"]').should('be.focused');
+  });
 });
