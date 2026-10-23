@@ -237,6 +237,13 @@ export interface GaugeChartProps {
   roundCorners?: boolean;
 
   /**
+   * Segment to focus when the segments, colors, or chart value change in content.
+   * When not provided, focus returns to the previously focused segment or needle.
+   * Callback-only changes do not restore focus.
+   */
+  focusOnReset?: { segmentIndex: number };
+
+  /**
    * Optional callback to access the Chart interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */

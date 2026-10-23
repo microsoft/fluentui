@@ -33,6 +33,7 @@ import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartAnnotationLayer } from './Annotations/ChartAnnotationLayer';
 import type { ChartAnnotationContext } from './Annotations/ChartAnnotationLayer.types';
 import { ChartPopover } from './ChartPopover';
+import { isFocusLeavingChart } from './ChartFocusUtils';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 const HORIZONTAL_MARGIN_FOR_YAXIS_TITLE = 24;
@@ -532,7 +533,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   }
 
   function _onChartBlur(event: React.FocusEvent<HTMLDivElement>): void {
-    if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) {
+    if (isFocusLeavingChart(event)) {
       props.onChartBlur && props.onChartBlur();
     }
   }

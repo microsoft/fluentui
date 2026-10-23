@@ -5,7 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import type { LineChartPoints } from './index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
-
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import {
   getByClass,
   getById,
@@ -972,6 +972,60 @@ describe('LineChart - mouse events', () => {
     expect(html1).not.toBe(html2);
   });
 
+  it('Should render updated callout data when focus is restored after a data change', () => {
+    let calloutMountCount = 0;
+    const CalloutContent = ({ calloutProps }: { calloutProps: any }) => {
+      React.useEffect(() => {
+        calloutMountCount++;
+      }, []);
+      return <pre>{JSON.stringify(calloutProps)}</pre>;
+    };
+    const renderCallout = (props: any) => <CalloutContent calloutProps={props} />;
+    const FocusRestoringLineChart = ({ data }: { data: typeof basicChartPoints }) => {
+      const containerRef = React.useRef<HTMLDivElement>(null);
+      const focusedElementId = React.useRef<string | undefined>(undefined);
+
+      useIsomorphicLayoutEffect(() => {
+        const container = containerRef.current;
+        const element = focusedElementId.current
+          ? container?.ownerDocument.getElementById(focusedElementId.current)
+          : undefined;
+        if (element && container?.contains(element)) {
+          element.focus();
+        }
+      }, [data]);
+
+      return (
+        <div ref={containerRef} onFocusCapture={event => (focusedElementId.current = event.target.id)}>
+          <LineChart data={data} onRenderCalloutPerStack={renderCallout} />
+        </div>
+      );
+    };
+    const updatedChartPoints = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map((line, lineIndex) => ({
+        ...line,
+        data: line.data.map((point, pointIndex) =>
+          lineIndex === 0 && pointIndex === 0 ? { ...point, y: 987654 } : point,
+        ),
+      })),
+    };
+    const { container, rerender } = render(<FocusRestoringLineChart data={basicChartPoints} />, { container: root! });
+    const point = container.querySelector<SVGElement>('[aria-label="20. metaData1, 50."]');
+
+    expect(point).toBeDefined();
+    fireEvent.focus(point!);
+    expect(calloutMountCount).toBe(1);
+    rerender(<FocusRestoringLineChart data={updatedChartPoints} />);
+
+    const updatedPoint = container.querySelector<SVGElement>('[aria-label="20. metaData1, 987654."]');
+    expect(updatedPoint).toBeDefined();
+    expect(updatedPoint).toBe(point);
+    expect(container.ownerDocument.activeElement).toBe(updatedPoint);
+    expect(container.querySelector('pre')).toHaveTextContent('987654');
+    expect(calloutMountCount).toBe(2);
+  });
+
   // @FIXME: this tests is failing with jest 29.7.0
   it('Should render customized callout on mouseover', () => {
     // Render the LineChart with a custom callout renderer using React Testing Library
@@ -1072,5 +1126,198 @@ describe('LineChart - mouse events', () => {
 
     fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
+  });
+
+  it('Should focus the point specified by focusOnReset when data or colors change', () => {
+    const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const userSelectedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(userSelectedPoint).not.toBeNull();
+    fireEvent.focus(userSelectedPoint!);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusOnReset={focusOnReset} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="50. metaData2, 90."]'));
+  });
+
+  it.each([false, true])('Should not restore focus for equivalent data (cloned: %s)', cloneData => {
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} />
+      </>,
+      { container: root! },
+    );
+    act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    const data = cloneData
+      ? {
+          ...basicChartPoints,
+          lineChartData: basicPoints.map(line => ({ ...line, data: line.data.map(point => ({ ...point })) })),
+        }
+      : basicChartPoints;
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={data} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} width={700} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+  });
+
+  it.each([false, true])(
+    'Should not restore focus when only inline handlers change (focusOnReset: %s)',
+    enableFocusOnReset => {
+      const createData = (isInteractive = true) => ({
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          onLineClick: isInteractive ? () => undefined : undefined,
+          data: line.data.map(point => ({
+            ...point,
+            onDataPointClick: isInteractive ? () => undefined : undefined,
+          })),
+        })),
+      });
+      const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={createData()} focusOnReset={focusOnReset} />
+        </>,
+        { container: root! },
+      );
+      act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+      const beforeChart = screen.getByTestId('before-chart');
+      act(() => beforeChart.focus());
+
+      for (const isInteractive of [true, false, true]) {
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <LineChart data={createData(isInteractive)} focusOnReset={focusOnReset} width={700} />
+          </>,
+        );
+
+        expect(container.ownerDocument.activeElement).toBe(beforeChart);
+      }
+    },
+  );
+
+  it.each([false, true])(
+    'Should restore focus and point callout for path-rendered lines (optimized: %s)',
+    optimizeLargeData => {
+      const data = {
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          lineOptions: { curve: optimizeLargeData ? undefined : ('linear' as const), mode: 'lines' as const },
+        })),
+      };
+      const updatedData = {
+        ...data,
+        lineChartData: data.lineChartData.map(line => ({ ...line, color: 'blue' })),
+      };
+      const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+        </>,
+        { container: root! },
+      );
+      const beforeChart = screen.getByTestId('before-chart');
+      const highlightCircle = container.querySelector<SVGCircleElement>(
+        'circle[id^="staticHighlightCircle"][id$="_1"]',
+      )!;
+      const highlightRect = highlightCircle.getBoundingClientRect();
+      Object.defineProperty(highlightCircle, 'getBoundingClientRect', {
+        value: () => ({ ...highlightRect, x: 0, y: 0 }),
+      });
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={updatedData} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+        </>,
+      );
+
+      const line = container.querySelectorAll<SVGPathElement>('path[id^="lineID"]')[1];
+      expect(line).toBeDefined();
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      expect(
+        container.querySelector<SVGCircleElement>('circle[id^="staticHighlightCircle"][id$="_1"]')!.getAttribute('cx'),
+      ).not.toBe('0');
+      act(() => beforeChart.focus());
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+
+      act(() => line.focus());
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} />
+        </>,
+      );
+
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+    },
+  );
+
+  it('Should restore the previously focused point when focusOnReset is not provided', () => {
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const previouslyFocusedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(previouslyFocusedPoint).not.toBeNull();
+    fireEvent.focus(previouslyFocusedPoint!);
+    beforeChart.focus();
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="70. metaData3, 30."]'));
   });
 });

@@ -94,6 +94,17 @@ export interface LineChartProps extends CartesianChartProps {
    * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
+
+  /**
+   * Point to focus when the chart data or colors change in content.
+   * When not provided, focus returns to the previously focused point.
+   * Callback-only changes do not restore focus.
+   * For path-rendered lines without markers, focus moves to the line and its callout shows this point.
+   */
+  focusOnReset?: {
+    lineIndex: number;
+    pointIndex: number;
+  };
 }
 
 /**
