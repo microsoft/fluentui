@@ -31,7 +31,7 @@ A badge is an additional visual descriptor for UI elements. It can be used to de
 
 ### Props
 
-See API at [Badge.types.ts](./src/components/Badge/Badge.types.ts).
+See API at [Badge.types.ts](../src/components/Badge/Badge.types.ts).
 
 ## Structure
 
@@ -83,7 +83,7 @@ A Presence Badge represents someone's availbility or status
 
 #### Props
 
-See API at [PresenceBadge.types.ts](./src/components/PresenceBadge/PresenceBadge.types.ts).
+See API at [PresenceBadge.types.ts](../src/components/PresenceBadge/PresenceBadge.types.ts).
 
 ### Counter Badge
 
@@ -91,4 +91,4 @@ A Counter Badge is a visual indicator for numeric values such as tallies and sco
 
 #### Props
 
-See API at [CounterBadge.types.ts](./src/components/CounterBadge/CounterBadge.types.ts).
+See API at [CounterBadge.types.ts](../src/components/CounterBadge/CounterBadge.types.ts).
