@@ -356,9 +356,9 @@ describe('CalendarDay', () => {
   it('marks the navigated day as the initial entry point', () => {
     const { container } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
 
-    expect(container.querySelector('table')).toHaveAttribute('focusgroup', 'grid rowflow');
-    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 18, 2020');
-    expect(container.querySelector('td[focusgroupstart]')).toHaveAttribute('tabindex', '0');
+    expect(container.querySelector('table')).not.toHaveAttribute('focusgroup');
+    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 18, 2020');
+    expect(container.querySelector('td[tabindex="0"]')).toHaveAttribute('tabindex', '0');
     expect(container.querySelector('table[aria-activedescendant]')).toBeNull();
   });
 
@@ -409,7 +409,7 @@ describe('CalendarDay', () => {
     expect(nextMonthRef.current).toBe(getByTitle('Next month October'));
   });
 
-  it('updates the focusgroup start without stealing focus when the navigated date changes', () => {
+  it('updates the roving tab stop without stealing focus when the navigated date changes', () => {
     const { container, rerender } = render(<CalendarDay navigatedDate={new Date(2020, 8, 18)} />);
     const remembered = container.querySelector<HTMLElement>('td:has(button[aria-label="September 19, 2020"])')!;
     act(() => remembered.focus());
@@ -417,9 +417,9 @@ describe('CalendarDay', () => {
     rerender(<CalendarDay navigatedDate={new Date(2020, 8, 20)} />);
 
     expect(remembered).toHaveFocus();
-    expect(container.querySelectorAll('td[focusgroupstart]')).toHaveLength(1);
-    expect(container.querySelector('td[focusgroupstart] button')).toHaveAttribute('aria-label', 'September 20, 2020');
-    expect(remembered).toHaveAttribute('tabindex', '0');
+    expect(container.querySelectorAll('td[tabindex="0"]')).toHaveLength(1);
+    expect(container.querySelector('td[tabindex="0"] button')).toHaveAttribute('aria-label', 'September 20, 2020');
+    expect(remembered).toHaveAttribute('tabindex', '-1');
   });
 
   it('renders its rows without motion wrappers', () => {
@@ -629,8 +629,7 @@ describe('CalendarDay', () => {
     });
   });
 
-  // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
-  describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
+  describe('keyboard navigation', () => {
     it('provides a single Tab entry point', () => {
       const { getByRole, cells } = renderDay();
       const grid = getByRole('grid');

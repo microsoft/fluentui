@@ -135,4 +135,27 @@ describe('DatePicker', () => {
     cy.get('dialog').should('have.attr', 'open');
     cy.get('button[aria-haspopup="dialog"]').should('be.focused');
   });
+
+  it('moves a single roving tab stop through the day grid with the keyboard', () => {
+    mount(<Example />);
+
+    cy.get('button[aria-haspopup="dialog"]').click();
+    cy.get(day('August 12, 2026')).should('be.focused');
+    cy.get('[role="dialog"] table td[tabindex="0"]').should('have.length', 1);
+    cy.realPress('ArrowRight');
+    cy.get(day('August 13, 2026')).should('be.focused').and('have.attr', 'tabindex', '0');
+    cy.realPress('ArrowDown');
+    cy.get(day('August 20, 2026')).should('be.focused');
+    cy.realPress('End');
+    cy.get(day('August 22, 2026')).should('be.focused');
+    cy.realPress('ArrowDown');
+    cy.realPress('ArrowDown');
+    cy.get(day('September 5, 2026')).should('be.focused');
+    cy.get('[role="dialog"]').should('have.attr', 'aria-label', 'September 2026');
+    cy.realPress('PageDown');
+    cy.get(day('October 5, 2026')).should('be.focused');
+    cy.get('[role="dialog"] table td[tabindex="0"]').should('have.length', 1);
+    cy.realPress('Enter');
+    cy.get('button[aria-haspopup="dialog"]').should('be.focused').and('contain.text', 'October 5, 2026');
+  });
 });

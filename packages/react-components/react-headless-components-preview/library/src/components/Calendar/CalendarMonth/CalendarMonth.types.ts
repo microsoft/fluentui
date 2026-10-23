@@ -57,7 +57,7 @@ export type CalendarMonthCellProps = {
   /**
    * Overrides for the `<div role="gridcell">`.
    */
-  root?: Omit<React.ComponentProps<'div'>, 'children'> & { focusgroupstart?: string };
+  root?: Omit<React.ComponentProps<'div'>, 'children'>;
   /**
    * Overrides for the nested month button. Set `children` to customize the month content.
    */
@@ -69,7 +69,7 @@ export type CalendarMonthRowProps = {
   /**
    * Overrides for the row's `<div>`. Its month cells remain controlled by the renderer.
    */
-  root?: React.ComponentProps<'div'> & { focusgrouprow?: string };
+  root?: React.ComponentProps<'div'>;
 };
 
 /**
@@ -107,7 +107,7 @@ export type CalendarMonthSlots = {
   nextYearButton: NonNullable<Slot<'button'>>;
 
   /**
-   * The grid holding the month rows. Focusgroup provides arrow navigation.
+   * The grid holding the month rows, with a roving tab stop and arrow, Home and End navigation.
    */
   grid: NonNullable<Slot<'div'>>;
 

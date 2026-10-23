@@ -116,12 +116,10 @@ describe('CalendarMonth', () => {
       'aria-label': 'September',
       title: 'Custom month',
       tabIndex: 0,
-      focusgroupstart: '',
     });
     expect(cellProps.button).toMatchObject({ type: 'button', children: month.label, tabIndex: -1 });
     expect(state.getMonthRowProps(row).root).toMatchObject({
       role: 'row',
-      focusgrouprow: '',
       title: 'Custom row',
     });
     expect(getCellProps).toHaveBeenCalledWith(month);
@@ -135,14 +133,14 @@ describe('CalendarMonth', () => {
     disabledTests: ['has-top-level-file-extra', 'consistent-callback-args'],
   });
 
-  it('marks the navigated month as the focusgroup start target', () => {
+  it('marks the navigated month as the roving tab stop', () => {
     const { container } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
     const grid = container.querySelector('[role="grid"]')!;
 
-    expect(grid).toHaveAttribute('focusgroup', 'grid manual');
-    expect(grid.querySelector('[focusgroupstart]')).toHaveAttribute('aria-label', 'September');
-    expect(grid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
-    expect(grid.querySelectorAll('[role="row"][focusgrouprow]')).toHaveLength(3);
+    expect(grid).not.toHaveAttribute('focusgroup');
+    expect(grid.querySelector('[tabindex="0"]')).toHaveAttribute('aria-label', 'September');
+    expect(grid.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
+    expect(grid.querySelectorAll('[role="row"]')).toHaveLength(3);
     expect(grid.childNodes).toHaveLength(3);
   });
 
@@ -175,16 +173,16 @@ describe('CalendarMonth', () => {
     yearRows.forEach(row => expect(row.children).toHaveLength(4));
   });
 
-  it('updates the focusgroup start without stealing focus when the navigated month changes', () => {
+  it('updates the roving tab stop without stealing focus when the navigated month changes', () => {
     const { container, getByRole, rerender } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
     act(() => getByRole('gridcell', { name: 'October' }).focus());
 
     rerender(<CalendarMonth navigatedDate={new Date(2020, 10, 18)} />);
 
     expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
-    expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('focusgroupstart');
-    expect(getByRole('gridcell', { name: 'October' })).not.toHaveAttribute('focusgroupstart');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: 'October' })).not.toHaveAttribute('tabindex', '0');
   });
 
   it('marks an available initial month when the navigated month becomes disabled', () => {
@@ -199,8 +197,8 @@ describe('CalendarMonth', () => {
     rerender(picker(new Date(2020, 10, 1)));
 
     expect(getByRole('gridcell', { name: 'October' }).querySelector('button')).toBeDisabled();
-    expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('focusgroupstart');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('tabindex', '0');
   });
 
   it('swaps in the headless year picker from its header', () => {
@@ -365,11 +363,10 @@ describe('CalendarMonth', () => {
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
-  // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
-  describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
+  describe('keyboard navigation', () => {
     it('has no cell Tab stop when every month is unavailable', () => {
       const { cells } = renderMonth({ minDate: new Date(2021, 0, 1) });
-      expect(cells.every(cell => cell.matches(':disabled'))).toBe(true);
+      expect(cells.every(cell => cell.querySelector('button')!.disabled)).toBe(true);
       expect(cells.filter(cell => cell.tabIndex === 0)).toHaveLength(0);
     });
 
@@ -475,7 +472,7 @@ describe('CalendarMonth', () => {
       });
       const unavailable = cells.find(cell => cell.getAttribute('aria-disabled') === 'true')!;
       expect(unavailable).toBeDefined();
-      expect(unavailable.hasAttribute('disabled')).toBe(!allFocusable);
+      expect(unavailable.querySelector('button')!.disabled).toBe(!allFocusable);
       fireEvent.keyDown(unavailable, { key: 'Enter' });
       fireEvent.click(unavailable);
       expect(onSelect).not.toHaveBeenCalled();
@@ -517,7 +514,7 @@ describe('CalendarMonth', () => {
         type === 'click' ? fireEvent.click(cells[2]) : fireEvent.keyDown(cells[2], { key: 'Enter' });
       container.ownerDocument.body.removeEventListener(type, onBubble);
       expect(onPickerSelect).toHaveBeenCalledTimes(1);
-      expect(targets).toEqual([cells[2]]);
+      expect(targets).toEqual([cells[2].querySelector('button')]);
       expect(defaultAllowed).toBe(false);
       expect(onBubble).not.toHaveBeenCalled();
     });
