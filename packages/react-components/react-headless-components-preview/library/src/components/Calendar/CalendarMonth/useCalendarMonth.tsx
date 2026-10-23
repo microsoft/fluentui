@@ -102,10 +102,14 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     navigate(ev, date, true);
   };
 
+  const showYearPicker = (): void => {
+    focusOnUpdate.current = true;
+    setIsYearPickerVisible(true);
+  };
+
   const onHeaderSelect = useEventCallback((ev: ButtonEvent): void => {
     if (!yearPickerHidden) {
-      focusOnUpdate.current = true;
-      setIsYearPickerVisible(true);
+      showYearPicker();
     } else {
       onUserHeaderSelect?.(ev, { event: ev, type: getCalendarEventType(ev) });
     }
@@ -169,11 +173,17 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
   const focusableMonth =
     months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
     months.find(month => month.isInBounds);
-  const [gridSlot, getCell] = useCalendarPickerGrid(
+  const [gridSlot, getCell, tabStop] = useCalendarPickerGrid(
     grid,
     yearString,
     index => !!months[index]?.isInBounds,
     onSelectMonth,
+    {
+      columns: calendarMonthColumns,
+      allFocusable,
+      defaultTabStop: focusableMonth?.index,
+      resetKey: `${navigatedDate.getTime()}:${calendarMonthColumns}`,
+    },
   );
 
   const focus = (options?: FocusOptions) => {
@@ -184,7 +194,14 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     }
   };
 
-  React.useImperativeHandle(props.imperativeRef, () => ({ focus }));
+  React.useImperativeHandle(props.imperativeRef, () => ({
+    focus,
+    showYearPicker: () => {
+      if (!yearPickerHidden) {
+        showYearPicker();
+      }
+    },
+  }));
 
   React.useEffect(() => {
     if (focusOnUpdate.current) {
@@ -203,7 +220,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
       !month.isInBounds,
       month.isSelected,
       month.isCurrent,
-      month.index === focusableMonth?.index,
+      month.index === tabStop,
     );
     const overrides = props.getCellProps?.(month);
     return {
@@ -218,7 +235,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     };
   };
   const getMonthRowProps: CalendarMonthState['getMonthRowProps'] = row => ({
-    root: mergeProps({ role: 'row', focusgrouprow: '' }, props.getRowProps?.(row).root),
+    root: mergeProps({ role: 'row' }, props.getRowProps?.(row).root),
   });
 
   let yearPickerProps: CalendarYearProps | undefined;

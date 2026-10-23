@@ -111,12 +111,10 @@ describe('CalendarYear', () => {
       role: 'gridcell',
       title: 'Custom year',
       tabIndex: 0,
-      focusgroupstart: '',
     });
     expect(cellProps.button).toMatchObject({ type: 'button', children: year.label, tabIndex: -1 });
     expect(state.getYearRowProps(row).root).toMatchObject({
       role: 'row',
-      focusgrouprow: '',
       title: 'Custom row',
     });
     expect(getCellProps).toHaveBeenCalledWith(year);
@@ -130,26 +128,26 @@ describe('CalendarYear', () => {
     disabledTests: ['has-top-level-file-extra', 'consistent-callback-args'],
   });
 
-  it('marks the navigated year as the focusgroup start target', () => {
+  it('marks the navigated year as the roving tab stop', () => {
     const { container } = render(<CalendarYear />, { value: new Date(2020, 0, 1) });
     const grid = container.querySelector('[role="grid"]')!;
 
-    expect(grid).toHaveAttribute('focusgroup', 'grid manual');
-    expect(grid.querySelector('[focusgroupstart]')).toHaveTextContent('2020');
-    expect(grid.querySelectorAll('[focusgroupstart]')).toHaveLength(1);
-    expect(grid.querySelectorAll('[role="row"][focusgrouprow]')).toHaveLength(3);
+    expect(grid).not.toHaveAttribute('focusgroup');
+    expect(grid.querySelector('[tabindex="0"]')).toHaveTextContent('2020');
+    expect(grid.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
+    expect(grid.querySelectorAll('[role="row"]')).toHaveLength(3);
   });
 
-  it('updates the focusgroup start without stealing focus when the navigated year changes', () => {
+  it('updates the roving tab stop without stealing focus when the navigated year changes', () => {
     const { container, getByRole, rerender } = render(<CalendarYear navigatedYear={2020} />);
     act(() => getByRole('gridcell', { name: '2022' }).focus());
 
     rerender(<CalendarYear navigatedYear={2021} />);
 
     expect(getByRole('gridcell', { name: '2022' })).toHaveFocus();
-    expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: '2021' })).toHaveAttribute('focusgroupstart');
-    expect(getByRole('gridcell', { name: '2022' })).not.toHaveAttribute('focusgroupstart');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: '2021' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: '2022' })).not.toHaveAttribute('tabindex', '0');
   });
 
   it('marks an available initial year when the navigated year becomes disabled', () => {
@@ -164,8 +162,8 @@ describe('CalendarYear', () => {
     rerender(picker(new Date(2023, 0, 1)));
 
     expect(getByRole('button', { name: '2022' })).toBeDisabled();
-    expect(container.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: '2023' })).toHaveAttribute('focusgroupstart');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    expect(getByRole('gridcell', { name: '2023' })).toHaveAttribute('tabindex', '0');
   });
 
   it('renders a range of twelve years', () => {
@@ -210,8 +208,8 @@ describe('CalendarYear', () => {
     });
     expect(getAllByRole('row')).toHaveLength(12 / columns);
     getAllByRole('row').forEach(row => expect(row.children).toHaveLength(columns));
-    expect(getByRole('grid')).toHaveAttribute('focusgroup', 'grid manual');
-    expect(getByRole('gridcell', { name: '2020' })).toHaveAttribute('focusgroupstart');
+    expect(getByRole('grid')).not.toHaveAttribute('focusgroup');
+    expect(getByRole('gridcell', { name: '2020' })).toHaveAttribute('tabindex', '0');
   });
 
   it('exposes factual current and selected year state without styling flags', () => {
@@ -322,11 +320,10 @@ describe('CalendarYear', () => {
     expect(emptyGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
   });
 
-  // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
-  describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
+  describe('keyboard navigation', () => {
     it('has no cell Tab stop when every year is unavailable', () => {
       const { cells } = renderYear({ minDate: new Date(2040, 0, 1) });
-      expect(cells.every(cell => cell.matches(':disabled'))).toBe(true);
+      expect(cells.every(cell => cell.querySelector('button')!.disabled)).toBe(true);
       expect(cells.filter(cell => cell.tabIndex === 0)).toHaveLength(0);
     });
 
@@ -432,7 +429,7 @@ describe('CalendarYear', () => {
       });
       const unavailable = cells.find(cell => cell.getAttribute('aria-disabled') === 'true')!;
       expect(unavailable).toBeDefined();
-      expect(unavailable.hasAttribute('disabled')).toBe(!allFocusable);
+      expect(unavailable.querySelector('button')!.disabled).toBe(!allFocusable);
       fireEvent.keyDown(unavailable, { key: 'Enter' });
       fireEvent.click(unavailable);
       expect(onSelect).not.toHaveBeenCalled();
@@ -460,16 +457,12 @@ describe('CalendarYear', () => {
         expect(onNavigate).not.toHaveBeenCalled();
       },
     );
-    it.each(['click', 'keydown'] as const)('selects SVG-child %s content', type => {
+    // Keyboard activation belongs to the focused gridcell; nested content keeps native key handling.
+    it('selects SVG-child click content', () => {
       const { cells, onSelect } = renderYear({ renderIcon: true });
-      const path = cells[2].querySelector('path')!;
-      if (type === 'click') {
-        fireEvent.click(path);
-      } else {
-        fireEvent.keyDown(path, { key: 'Enter' });
-      }
+      fireEvent.click(cells[2].querySelector('path')!);
       expect(onSelect).toHaveBeenCalledTimes(1);
-      expect(onSelect.mock.calls[0][1]).toMatchObject({ type, year: 2022 });
+      expect(onSelect.mock.calls[0][1]).toMatchObject({ type: 'click', year: 2022 });
     });
     it('allows pointer selection but not keyboard selection inside nested toolbar SVG content', () => {
       const { cells, onSelect } = renderYear({ renderIcon: true });
@@ -494,7 +487,7 @@ describe('CalendarYear', () => {
         type === 'click' ? fireEvent.click(cells[2]) : fireEvent.keyDown(cells[2], { key: 'Enter' });
       container.ownerDocument.body.removeEventListener(type, onBubble);
       expect(onPickerSelect).toHaveBeenCalledTimes(1);
-      expect(targets).toEqual([cells[2]]);
+      expect(targets).toEqual([cells[2].querySelector('button')]);
       expect(defaultAllowed).toBe(false);
       expect(onBubble).not.toHaveBeenCalled();
     });

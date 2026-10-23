@@ -36,8 +36,7 @@ describe('Calendar', () => {
     cy.get('@onSelectDate').should('not.have.been.called');
   });
 
-  // TODO: Enable focusgroup keyboard cases when V2 grid support from microsoft/polyfills#64 is published.
-  describe.skip('focusgroup grid navigation (requires the V2 grid polyfill)', () => {
+  describe('grid navigation', () => {
     it('navigates a day grid with week headers and unavailable dates', () => {
       mount(
         <Calendar
@@ -62,12 +61,11 @@ describe('Calendar', () => {
       cy.get(month('September')).focus().realPress('ArrowUp');
       cy.get(month('May')).should('be.focused').realPress('ArrowUp');
       cy.get(month('May')).should('be.focused');
-      cy.get(month('January')).should('be.disabled');
+      cy.get(month('January')).find('button').should('be.disabled');
     });
   });
 
-  // TODO: Enable the remaining focusgroup V2-dependent cases when the compatible polyfill is published.
-  it.skip('pages from the arrow-focused day and restores focus', () => {
+  it('pages from the arrow-focused day and restores focus', () => {
     mount(<Calendar today={today} defaultValue={today} />);
 
     cy.get(day('September 18, 2020')).focus().realPress('ArrowDown');
@@ -75,7 +73,7 @@ describe('Calendar', () => {
     cy.get(day('October 25, 2020')).should('be.focused');
   });
 
-  it.skip('navigates the month grid in both dimensions', () => {
+  it('navigates the month grid in both dimensions', () => {
     mount(<Calendar today={today} value={today} layout="overlay" />);
 
     cy.get('button[aria-label="September 2020, change month"]').click();
@@ -84,7 +82,7 @@ describe('Calendar', () => {
     cy.get(month('June')).should('be.focused');
   });
 
-  it.skip('opens and navigates the year grid', () => {
+  it('opens and navigates the year grid', () => {
     mount(<Calendar today={today} value={today} />);
 
     cy.get('button[aria-label="2020, change year"]').click();
@@ -93,14 +91,14 @@ describe('Calendar', () => {
     cy.contains('[role="gridcell"]', '2025').should('be.focused');
   });
 
-  it.skip('skips restricted dates in the day grid', () => {
+  it('skips restricted dates in the day grid', () => {
     mount(<Calendar today={today} value={today} restrictedDates={[new Date(2020, 8, 19)]} monthPicker={null} />);
 
     cy.get(day('September 18, 2020')).focus().realPress('ArrowRight');
     cy.get(day('September 20, 2020')).should('be.focused');
   });
 
-  it.skip('does not wrap the month grid at a horizontal row boundary', () => {
+  it('does not wrap the month grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
 
     cy.get(month('April')).focus().realPress('ArrowRight');
@@ -109,7 +107,7 @@ describe('Calendar', () => {
     cy.get(month('August')).should('be.focused');
   });
 
-  it.skip('does not wrap the year grid at a horizontal row boundary', () => {
+  it('does not wrap the year grid at a horizontal row boundary', () => {
     mount(<Calendar today={today} value={today} dayPicker={null} />);
     cy.get('button[aria-label="2020, change year"]').click();
 
@@ -121,7 +119,7 @@ describe('Calendar', () => {
 
   ([3, 4] as const).forEach(columns => {
     (['ltr', 'rtl'] as const).forEach(dir => {
-      it.skip(`uses ${columns} columns for month and year navigation in ${dir}`, () => {
+      it(`uses ${columns} columns for month and year navigation in ${dir}`, () => {
         mount(
           <div dir={dir}>
             <Provider dir={dir}>
@@ -164,7 +162,7 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`honors RTL arrows in the ${picker} grid`, () => {
+    it(`honors RTL arrows in the ${picker} grid`, () => {
       mount(
         <div dir="rtl">
           <Provider dir="rtl">
@@ -194,7 +192,7 @@ describe('Calendar', () => {
       }
     });
 
-    it.skip(`honors capture cancellation without an intermediate focus hop in the ${picker} grid`, () => {
+    it(`honors capture cancellation without an intermediate focus hop in the ${picker} grid`, () => {
       const onFocus = cy.spy().as('onFocus');
       const onKeyDownCapture = cy
         .spy((event: React.KeyboardEvent<HTMLElement>) => event.preventDefault())
@@ -240,7 +238,7 @@ describe('Calendar', () => {
   });
 
   [false, true].forEach(allFocusable => {
-    it.skip(`preserves disabled month coordinates with allFocusable=${allFocusable}`, () => {
+    it(`preserves disabled month coordinates with allFocusable=${allFocusable}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
@@ -263,7 +261,7 @@ describe('Calendar', () => {
       }
     });
 
-    it.skip(`preserves disabled year coordinates with allFocusable=${allFocusable}`, () => {
+    it(`preserves disabled year coordinates with allFocusable=${allFocusable}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
@@ -292,7 +290,7 @@ describe('Calendar', () => {
   });
 
   [false, true].forEach(handlesArrow => {
-    it.skip(`leaves arrows to a nested toolbar with custom navigation=${handlesArrow}`, () => {
+    it(`leaves arrows to a nested toolbar with custom navigation=${handlesArrow}`, () => {
       mount(
         <Calendar
           today={today}
@@ -334,7 +332,7 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`has one Tab entry/exit and remembered reentry in the ${picker} grid`, () => {
+    it(`has one Tab entry/exit and remembered reentry in the ${picker} grid`, () => {
       mount(
         <>
           <Calendar
@@ -385,7 +383,7 @@ describe('Calendar', () => {
   });
 
   (['ltr', 'rtl'] as const).forEach(dir => {
-    it.skip(`changes the displayed month when an arrow reaches an adjacent-month date in ${dir}`, () => {
+    it(`changes the displayed month when an arrow reaches an adjacent-month date in ${dir}`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <div dir={dir}>
@@ -409,7 +407,7 @@ describe('Calendar', () => {
       cy.get('@onSelectDate').should('not.have.been.called');
     });
 
-    it.skip(`pages in both directions across the visible day-grid boundary in ${dir} without selecting`, () => {
+    it(`pages in both directions across the visible day-grid boundary in ${dir} without selecting`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <div dir={dir}>
@@ -433,7 +431,7 @@ describe('Calendar', () => {
   });
 
   (['day', 'month', 'year'] as const).forEach(picker => {
-    it.skip(`uses Home/End to reach eligible boundaries in the ${picker} grid without selecting`, () => {
+    it(`uses Home/End to reach eligible boundaries in the ${picker} grid without selecting`, () => {
       const onSelectDate = cy.spy().as('onSelectDate');
       mount(
         <Calendar
@@ -468,7 +466,7 @@ describe('Calendar', () => {
     });
   });
 
-  it.skip('skips a fully restricted month horizontally without collapsing its coordinate', () => {
+  it('skips a fully restricted month horizontally without collapsing its coordinate', () => {
     mount(
       <Calendar
         today={today}
@@ -477,13 +475,13 @@ describe('Calendar', () => {
         restrictedDates={Array.from({ length: 29 }, (_, index) => new Date(2020, 1, index + 1))}
       />,
     );
-    cy.get(month('February')).should('be.disabled');
+    cy.get(month('February')).find('button').should('be.disabled');
     cy.get(month('January')).focus().realPress('ArrowRight');
     cy.get(month('March')).should('be.focused').realPress('ArrowDown');
     cy.get(month('July')).should('be.focused');
   });
 
-  it.skip('can focus but cannot select a restricted day with allFocusable', () => {
+  it('can focus but cannot select a restricted day with allFocusable', () => {
     const onSelectDate = cy.spy().as('onSelectDate');
     mount(
       <Calendar
@@ -501,7 +499,7 @@ describe('Calendar', () => {
     cy.get('@onSelectDate').should('not.have.been.called');
   });
 
-  it.skip('can focus visible out-of-bounds days without paging beyond the bounds with allFocusable', () => {
+  it('can focus visible out-of-bounds days without paging beyond the bounds with allFocusable', () => {
     const onDisplayedDateChange = cy.spy().as('onDisplayedDateChange');
     const onSelectDate = cy.spy().as('onSelectDate');
     mount(
@@ -522,7 +520,7 @@ describe('Calendar', () => {
     cy.get('@onDisplayedDateChange').should('not.have.been.called');
   });
 
-  it.skip('omits an all-unavailable day grid from the Tab order without trapping focus', () => {
+  it('omits an all-unavailable day grid from the Tab order without trapping focus', () => {
     mount(
       <>
         <Calendar

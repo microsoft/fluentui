@@ -174,18 +174,18 @@ describe('Calendar rendering and public API', () => {
     expect(getAllByRole('grid')).toHaveLength(2);
   });
 
-  it('marks the initial focusgroup target in each grid', () => {
+  it('marks the initial roving tab stop in each grid', () => {
     const { container } = render(<Calendar value={new Date(2020, 8, 18)} />);
 
     const dayGrid = container.querySelector('table[role="grid"]')!;
-    expect(dayGrid).toHaveAttribute('focusgroup', 'grid rowflow');
-    expect(dayGrid.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
+    expect(dayGrid).not.toHaveAttribute('focusgroup');
+    expect(dayGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
 
     const monthGrid = container.querySelector('div[role="grid"]')!;
     expect(monthGrid.querySelectorAll('[role="row"]')).toHaveLength(3);
     monthGrid.querySelectorAll('[role="row"]').forEach(row => expect(row.children).toHaveLength(4));
-    expect(monthGrid).toHaveAttribute('focusgroup', 'grid manual');
-    expect(monthGrid.querySelectorAll('[role="gridcell"][focusgroupstart]')).toHaveLength(1);
+    expect(monthGrid).not.toHaveAttribute('focusgroup');
+    expect(monthGrid.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
   });
 
   it.each([
@@ -210,7 +210,7 @@ describe('Calendar rendering and public API', () => {
     getAllByRole('row').forEach(row => expect(row.children).toHaveLength(yearColumns));
   });
 
-  it('updates the focusgroup start when columns change without stealing external focus', () => {
+  it('updates the roving tab stop when columns change without stealing external focus', () => {
     const calendar = (columns: 3 | 4) => (
       <>
         <Calendar today={today} value={today} dayPicker={null} calendarMonthColumns={columns} />
@@ -224,7 +224,7 @@ describe('Calendar rendering and public API', () => {
     rerender(calendar(4));
 
     expect(getAllByRole('row')).toHaveLength(3);
-    expect(getByRole('gridcell', { name: 'September' })).toHaveAttribute('focusgroupstart');
+    expect(getByRole('gridcell', { name: 'September' })).toHaveAttribute('tabindex', '0');
     expect(getByRole('button', { name: 'Outside' })).toHaveFocus();
   });
 

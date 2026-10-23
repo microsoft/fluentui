@@ -61,9 +61,7 @@ export type CalendarDayCellData = DayInfo & {
 
 // @public
 export type CalendarDayCellProps = {
-    root?: Omit<React_2.ComponentProps<'td'>, 'children'> & {
-        focusgroupstart?: string;
-    };
+    root?: Omit<React_2.ComponentProps<'td'>, 'children'>;
     button?: React_2.ComponentProps<'button'>;
     label?: React_2.ComponentProps<'span'>;
     marker?: React_2.ComponentProps<'span'>;
@@ -113,9 +111,7 @@ export type CalendarDayRowData = {
 
 // @public
 export type CalendarDayRowProps = {
-    root?: Omit<React_2.ComponentProps<'tr'>, 'children'> & {
-        focusgrouprow?: string;
-    };
+    root?: Omit<React_2.ComponentProps<'tr'>, 'children'>;
     weekNumber?: React_2.ComponentProps<'th'>;
 };
 
@@ -219,15 +215,14 @@ export type CalendarMonthCellData = {
 
 // @public
 export type CalendarMonthCellProps = {
-    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
-        focusgroupstart?: string;
-    };
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'>;
     button?: React_2.ComponentProps<'button'>;
 };
 
 // @public
 export type CalendarMonthHandle = {
     focus(options?: FocusOptions): void;
+    showYearPicker(): void;
 };
 
 // @public
@@ -257,9 +252,7 @@ export type CalendarMonthRowData = CalendarGridRow<CalendarMonthCellData>;
 
 // @public
 export type CalendarMonthRowProps = {
-    root?: React_2.ComponentProps<'div'> & {
-        focusgrouprow?: string;
-    };
+    root?: React_2.ComponentProps<'div'>;
 };
 
 // @public
@@ -370,9 +363,7 @@ export type CalendarYearCellData = {
 
 // @public
 export type CalendarYearCellProps = {
-    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
-        focusgroupstart?: string;
-    };
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'>;
     button?: React_2.ComponentProps<'button'>;
 };
 
@@ -421,9 +412,7 @@ export type CalendarYearRowData = CalendarGridRow<CalendarYearCellData>;
 
 // @public
 export type CalendarYearRowProps = {
-    root?: Omit<React_2.ComponentProps<'div'>, 'children'> & {
-        focusgrouprow?: string;
-    };
+    root?: Omit<React_2.ComponentProps<'div'>, 'children'>;
 };
 
 // @public

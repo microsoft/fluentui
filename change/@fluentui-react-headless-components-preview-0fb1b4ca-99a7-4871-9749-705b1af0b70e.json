@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add headless DatePicker; Calendar grids use a roving tab stop with built-in arrow, Home and End navigation instead of focusgroup, and expose aria-current on current month/year cells",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}
