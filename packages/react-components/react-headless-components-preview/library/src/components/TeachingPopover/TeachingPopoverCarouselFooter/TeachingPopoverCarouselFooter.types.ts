@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton.types';
+import type { TeachingPopoverCarouselFooterButton } from '../TeachingPopoverCarouselFooterButton/TeachingPopoverCarouselFooterButton';
 
 export type TeachingPopoverCarouselFooterSlots = {
   /**
@@ -11,15 +11,20 @@ export type TeachingPopoverCarouselFooterSlots = {
    * Previous-page button. Defaults to `TeachingPopoverCarouselFooterButton`
    * with `navType: 'prev'`; consumers provide `altText` and content.
    */
-  previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
+  previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
 
   /**
    * Next/finish-page button. Defaults to `TeachingPopoverCarouselFooterButton`
    * with `navType: 'next'`; consumers provide `altText` and content.
    */
-  next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
+  next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
 };
 
 export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverCarouselFooterSlots>;
 
-export type TeachingPopoverCarouselFooterState = ComponentState<TeachingPopoverCarouselFooterSlots>;
+export type TeachingPopoverCarouselFooterState = ComponentState<TeachingPopoverCarouselFooterSlots> & {
+  /**
+   * Recover focus from a boundary-hidden button to the other focusable footer button.
+   */
+  focusOnBoundary: (source: HTMLElement) => void;
+};

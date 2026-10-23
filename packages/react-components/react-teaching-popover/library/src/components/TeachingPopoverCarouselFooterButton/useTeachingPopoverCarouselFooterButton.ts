@@ -63,6 +63,7 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
   return {
     navType,
     altText,
+    isAtBoundary: isTrailing && activeValue !== null && values.includes(activeValue),
     components: {
       root: 'button',
     },

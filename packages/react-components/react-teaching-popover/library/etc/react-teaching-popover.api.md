@@ -44,7 +44,7 @@ export const renderTeachingPopoverCarouselCard_unstable: (state: TeachingPopover
 export const renderTeachingPopoverCarouselFooter_unstable: (state: TeachingPopoverCarouselFooterState) => JSXElement;
 
 // @public
-export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState) => JSXElement;
+export const renderTeachingPopoverCarouselFooterButton_unstable: (state: TeachingPopoverCarouselFooterButtonState | TeachingPopoverCarouselFooterButtonBaseState) => JSXElement;
 
 // @public
 export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSXElement;
@@ -134,7 +134,9 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
 export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarouselFooterButtonProps;
 
 // @public
-export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;
+export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+    isAtBoundary: boolean;
+};
 
 // @public (undocumented)
 export const teachingPopoverCarouselFooterButtonClassNames: SlotClassNames<TeachingPopoverCarouselFooterButtonSlots>;

@@ -42,4 +42,10 @@ export type TeachingPopoverCarouselFooterButtonBaseProps = TeachingPopoverCarous
  * the popover context before calling it.
  */
 export type TeachingPopoverCarouselFooterButtonBaseState = ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
-  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'>;
+  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+    /**
+     * Whether the committed active page is the first (`prev`) or last (`next`) page.
+     * This does not imply that the button is unavailable: boundary actions can use `altText`.
+     */
+    isAtBoundary: boolean;
+  };
