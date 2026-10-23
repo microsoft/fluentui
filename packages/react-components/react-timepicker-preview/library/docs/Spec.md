@@ -197,12 +197,12 @@ Formatting and the default parser share the resolved hour cycle: the `hourCycle`
 
 The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace (`:` stands for `:` or the separator the runtime locale puts after the hour, for example `.` in `fi-FI`):
 
-| Resolved hour cycle | Accepted input                           | Notes                                                                 |
-| ------------------- | ---------------------------------------- | --------------------------------------------------------------------- |
-| `h23`               | `H:mm`, `HH:mm` with hour `0`–`23`       |                                                                       |
-| `h24`               | `H:mm`, `HH:mm` with hour `1`–`24`       | `24:mm` is hour `0` of the same day, not a rollover to the next day.  |
-| `h12`               | `h:mm AM`, `hh:mm AM` with hour `1`–`12` | Day period is case-insensitive and separated by a single ASCII space. |
-| `h11`               | `h:mm AM`, `hh:mm AM` with hour `0`–`11` | Same as `h12`.                                                        |
+| Resolved hour cycle | Accepted input                           | Notes                                                                                             |
+| ------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `h23`               | `H:mm`, `HH:mm` with hour `0`–`23`       |                                                                                                   |
+| `h24`               | `H:mm`, `HH:mm` with hour `1`–`24`       | `24:mm` is hour `0` of the same day, not a rollover to the next day.                              |
+| `h12`               | `h:mm AM`, `hh:mm AM` with hour `1`–`12` | Day period is case-insensitive and separated by a single space or U+202F (narrow no-break space). |
+| `h11`               | `h:mm AM`, `hh:mm AM` with hour `0`–`11` | Same as `h12`.                                                                                    |
 
 With `showSeconds`, `:ss` is required; without it, seconds are rejected. The same separator set applies between the minutes and the seconds. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
 
