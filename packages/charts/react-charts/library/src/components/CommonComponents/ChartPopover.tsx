@@ -20,18 +20,21 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   HTMLDivElement,
   ChartPopoverProps
 >((props, forwardedRef) => {
-  const virtualElement: PositioningVirtualElement = {
-    getBoundingClientRect: () => ({
-      top: props.clickPosition!.y,
-      left: props.clickPosition!.x,
-      right: props.clickPosition!.x,
-      bottom: props.clickPosition!.y,
-      x: props.clickPosition!.x,
-      y: props.clickPosition!.y,
-      width: 0,
-      height: 0,
-    }),
-  };
+  const { clickPosition } = props;
+  const virtualElement: PositioningVirtualElement | undefined = clickPosition
+    ? {
+        getBoundingClientRect: () => ({
+          top: clickPosition.y,
+          left: clickPosition.x,
+          right: clickPosition.x,
+          bottom: clickPosition.y,
+          x: clickPosition.x,
+          y: clickPosition.y,
+          width: 0,
+          height: 0,
+        }),
+      }
+    : undefined;
   const target =
     typeof props.positioning === 'object' && 'target' in props.positioning
       ? props.positioning.target !== null

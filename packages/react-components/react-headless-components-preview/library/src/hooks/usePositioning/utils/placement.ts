@@ -1,7 +1,6 @@
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
-import { ALIGNMENTS, POSITIONS, POSITION_AREA_MAP } from '../constants';
+import { ALIGNMENTS, POSITIONS } from '../constants';
 
 const ALIGN_ALIASES: Record<string, LogicalAlignment> = {
   top: ALIGNMENTS.start,
@@ -37,8 +36,19 @@ export function getPlacementString(position: Position, align: Alignment): Positi
 }
 
 export function shorthandToPositionArea(shorthand: PositioningShorthandValue): string {
-  const { position = POSITIONS.above, align = ALIGNMENTS.center } = resolvePositioningShorthand(shorthand);
-  return POSITION_AREA_MAP[position][normalizeAlign(align)];
+  const [position, align = ALIGNMENTS.center] = shorthand.split('-');
+  return getPositionArea(position as Position, normalizeAlign(align));
+}
+
+export function getPositionArea(position: Position, align: LogicalAlignment): string {
+  const block = position === POSITIONS.above || position === POSITIONS.below;
+  const area = `${block ? 'block' : 'inline'}-${
+    position === POSITIONS.above || position === POSITIONS.before ? 'start' : 'end'
+  }`;
+
+  return align === ALIGNMENTS.center
+    ? area
+    : `${area} span-${block ? 'inline' : 'block'}-${align === ALIGNMENTS.start ? 'end' : 'start'}`;
 }
 
 export function getCoverSelfAlignment(

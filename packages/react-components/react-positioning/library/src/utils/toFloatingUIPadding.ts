@@ -10,19 +10,15 @@ export function toFloatingUIPadding(
   }
 
   const { start, end, ...verticalPadding } = padding;
-
   const paddingObject: Partial<SideObject> = verticalPadding;
-
   const left = isRtl ? 'end' : 'start';
   const right = isRtl ? 'start' : 'end';
 
-  // assign properties explicitly since undefined values are actually handled by floating UI
-  // TODO create floating UI issue
-  if (padding[left]) {
+  if (padding[left] !== undefined) {
     paddingObject.left = padding[left];
   }
 
-  if (padding[right]) {
+  if (padding[right] !== undefined) {
     paddingObject.right = padding[right];
   }
 

@@ -4,7 +4,7 @@ import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentu
 import * as React from 'react';
 
 import { POSITIONING_END_EVENT } from './constants';
-import { createPositionManager } from './createPositionManager';
+import { createComputedPositionManager } from './createComputedPositionManager';
 import type {
   OnPositioningEndEvent,
   PositioningOptions,
@@ -34,10 +34,10 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
     managerRef.current = null;
 
-    const target = overrideTargetRef.current ?? targetRef.current;
+    const target = overrideTargetRef.current || targetRef.current;
 
     if (enabled && canUseDOM() && target && containerRef.current) {
-      managerRef.current = createPositionManager({
+      managerRef.current = createComputedPositionManager({
         container: containerRef.current,
         target,
         arrow: arrowRef.current,
@@ -71,7 +71,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   );
 
   useIsomorphicLayoutEffect(() => {
-    setOverrideTarget(options.target ?? null);
+    setOverrideTarget(options.target || null);
   }, [options.target, setOverrideTarget]);
 
   useIsomorphicLayoutEffect(() => {

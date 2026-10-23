@@ -32,6 +32,9 @@ export type CreateArrowStylesOptions = {
     borderColor?: GriffelStyle['borderBottomColor'];
 };
 
+// @internal (undocumented)
+export function createPositionManager(options: PositionManagerOptions): PositionManager;
+
 // @public @deprecated
 export function createSlideStyles(mainAxis: number): GriffelStyle;
 
@@ -129,6 +132,38 @@ export type PositioningVirtualElement = {
     };
     contextElement?: Element;
 };
+
+// @internal (undocumented)
+export interface PositionManager {
+    // (undocumented)
+    dispose: () => void;
+    // (undocumented)
+    updatePosition: () => void;
+}
+
+// @internal (undocumented)
+export interface PositionManagerOptions extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'disableUpdateOnResize' | 'fallbackPositions' | 'flipBoundary' | 'matchTargetSize' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'useTransform'> {
+    // (undocumented)
+    arrow: HTMLElement | null;
+    // (undocumented)
+    attributes?: Partial<Record<'placement' | 'hidden' | 'escaped' | 'intersecting', string>>;
+    // (undocumented)
+    container: HTMLElement;
+    // (undocumented)
+    detectPlacement?: (target: TargetElement, container: HTMLElement) => HeadlessPlacement | null;
+    // (undocumented)
+    isRtl?: boolean;
+    // (undocumented)
+    onPlacement?: (placement: HeadlessPlacement) => void;
+    // (undocumented)
+    placement?: PositioningPlacement;
+    // (undocumented)
+    positioningOptions?: PositioningOptions;
+    // (undocumented)
+    strategy: 'absolute' | 'fixed';
+    // (undocumented)
+    target: TargetElement;
+}
 
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;

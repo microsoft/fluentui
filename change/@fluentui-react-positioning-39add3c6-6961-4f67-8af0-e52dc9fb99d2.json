@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Preserve resolved positioning targets, pinned offsets, oversized popup placement, and fixed-position clipping.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "dmytrokirpa@microsoft.com"
+}
