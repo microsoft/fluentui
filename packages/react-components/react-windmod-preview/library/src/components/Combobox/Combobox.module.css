@@ -1,0 +1,203 @@
+@reference '#theme';
+
+/* Root-modifier block order is the cascade: every selector below is :where()-flat, so source order
+   alone arbitrates. Appearance blocks, then .outline-interactive, then .disabled, then the two
+   invalid forms — Griffel's mergeClasses order with the last pair swapped, for the reason stated on
+   .disabled below. The size blocks are nested in .root and therefore precede every appearance
+   block, which Griffel orders the other way; the two sets share no declaration (sizes author
+   height, padding-inline-end and column-gap; appearances author background-color, the border
+   longhands and border-radius), so the reorder cannot change a winner — the same zero-overlap check
+   that licenses this file's layer. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative inline-grid min-w-250 grid-cols-[1fr_auto] items-center justify-between gap-x-horizontal-xxs rounded-medium align-middle;
+
+    /* The bottom focus border, shared with Input, Select and SpinButton. No transition-delay and no
+       timing function: Griffel writes a curve token into transition-delay, which is not a <time>
+       and is dropped at computed-value time, so both sides compute 0s / ease. Reduced motion is
+       suppressed house-wide by the theme, not here. */
+    @variant after {
+      @apply absolute -inset-x-1 -bottom-1 rounded-b-medium border-b-thick border-b-compound-brand-stroke;
+
+      height: max(var(--spacing-thick), var(--radius-medium));
+      clip-path: inset(calc(100% - var(--spacing-thick)) 0 0 0);
+      transform: scaleX(0);
+      transition-property: transform;
+      transition-duration: var(--duration-ultra-fast);
+    }
+
+    @variant size-small {
+      @apply h-24 pe-horizontal-s-nudge;
+    }
+
+    @variant size-medium {
+      @apply h-32 pe-horizontal-m-nudge;
+    }
+
+    @variant size-large {
+      @apply h-40 gap-x-horizontal-s-nudge pe-horizontal-m;
+    }
+
+    @variant focus-within {
+      @apply outline-thick outline-transparent outline-solid;
+
+      @variant after {
+        transform: scaleX(1);
+        transition-property: transform;
+        transition-duration: var(--duration-normal);
+      }
+
+      @variant active {
+        @variant after {
+          @apply border-b-compound-brand-stroke-pressed;
+        }
+      }
+    }
+  }
+
+  /* Every appearance spells its own border: the root authors none, so none is a classless base. */
+  .outline {
+    @apply border-thin border-solid border-neutral-stroke-1 border-b-neutral-stroke-accessible bg-neutral-background-1;
+  }
+
+  .underline {
+    @apply rounded-none border-b-thin border-b-neutral-stroke-accessible bg-transparent-background;
+  }
+
+  .filled-lighter {
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-1;
+  }
+
+  .filled-darker {
+    @apply border-thin border-solid border-transparent-stroke bg-neutral-background-3;
+  }
+
+  /* Griffel ships no underline or filled interactive bucket on Combobox, only on Input; the
+     absence is reproduced rather than repaired. */
+  .outline-interactive {
+    @variant hover {
+      @apply border-neutral-stroke-1-hover border-b-neutral-stroke-accessible-hover;
+    }
+
+    @variant active, focus-within {
+      @apply border-neutral-stroke-1-pressed border-b-neutral-stroke-accessible-pressed;
+    }
+  }
+
+  /* Griffel's Combobox disabled bucket neither unsets the ::after element nor drops the
+     focus-within outline, where its Input does both; the gap is reproduced. It sits BEFORE the two
+     invalid blocks, which is the one place this file departs from Griffel's mergeClasses order:
+     Griffel's invalid buckets carry a `:not(:focus-within)` clause that makes them (0,2,0) and win
+     over the plain (0,1,0) disabled bucket — in forced colors too, since a media query adds no
+     specificity — so a disabled invalid Combobox paints red on both sides. Every windmod selector
+     here is :where()-flat, so only source order can carry that. */
+  .disabled {
+    @apply cursor-not-allowed border-neutral-stroke-disabled bg-transparent-background;
+
+    @variant forced-colors {
+      @apply border-[GrayText];
+    }
+  }
+
+  .invalid {
+    @variant not-focus-within {
+      @apply border-palette-red-border-2;
+    }
+  }
+
+  .invalid-underline {
+    @variant not-focus-within {
+      @apply border-b-palette-red-border-2;
+    }
+  }
+
+  .input {
+    @apply self-stretch border-none bg-transparent-background ps-horizontal-m font-base text-base-300 leading-20/14 font-regular text-neutral-foreground-1;
+
+    @variant focus {
+      @apply outline-none;
+    }
+
+    @variant placeholder {
+      @apply text-neutral-foreground-4;
+    }
+
+    @variant group-size-small/fui-combobox {
+      @apply ps-horizontal-s text-base-200 leading-16/12;
+    }
+
+    @variant group-size-large/fui-combobox {
+      @apply ps-18 text-base-400 leading-11/8;
+    }
+
+    @variant group-disabled/fui-combobox {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+
+      @variant placeholder {
+        @apply text-neutral-foreground-disabled;
+      }
+    }
+  }
+
+  /* One bucket for both icon slots, as Griffel shares it. The ::after extends the hit target over
+     the root's padding-inline-end dead zone, so its end inset tracks that padding per size. */
+  .icon {
+    @apply relative block cursor-pointer text-icon-20 leading-100 text-neutral-stroke-accessible;
+
+    @variant icon {
+      @apply block;
+    }
+
+    @variant after {
+      @apply absolute inset-0;
+    }
+
+    @variant group-size-small/fui-combobox {
+      @apply ms-horizontal-xxs text-icon-16 leading-125;
+
+      @variant after {
+        @apply -end-horizontal-s-nudge;
+      }
+    }
+
+    @variant group-size-medium/fui-combobox {
+      @apply ms-horizontal-xxs;
+
+      @variant after {
+        @apply -end-horizontal-m-nudge;
+      }
+    }
+
+    @variant group-size-large/fui-combobox {
+      @apply ms-horizontal-s-nudge text-icon-24 leading-20/24;
+
+      @variant after {
+        @apply -end-horizontal-m;
+      }
+    }
+
+    @variant group-disabled/fui-combobox {
+      @apply cursor-not-allowed text-neutral-foreground-disabled;
+    }
+  }
+
+  .icon-hidden {
+    @apply hidden;
+  }
+
+  /* The expand icon stays in the accessibility tree while the clear affordance shows, so it is
+     clipped rather than removed. */
+  .icon-visually-hidden {
+    @apply absolute -m-1 h-1 w-1 overflow-hidden;
+
+    clip: rect(0px, 0px, 0px, 0px);
+  }
+}
+
+@layer fui.components.l2 {
+  /* Overrides windmod Listbox's own level-1 rules on the same element. */
+  .listbox {
+    @apply max-h-[80vh] rounded-medium shadow-16;
+  }
+}

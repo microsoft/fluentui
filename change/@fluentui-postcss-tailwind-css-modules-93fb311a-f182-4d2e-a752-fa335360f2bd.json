@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: add a publishable PostCSS plugin that keeps Tailwind group/peer markers global under CSS Modules, with typed CommonJS and ESM entry points for build and Storybook tooling.",
+  "packageName": "@fluentui/postcss-tailwind-css-modules",
+  "email": "array.knight+github@gmail.com"
+}

@@ -1,0 +1,15 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex text-icon-16 leading-125;
+
+    @variant size-small {
+      @apply text-icon-12 leading-20/12;
+    }
+
+    @variant size-large {
+      @apply text-icon-20 leading-100;
+    }
+  }
+}

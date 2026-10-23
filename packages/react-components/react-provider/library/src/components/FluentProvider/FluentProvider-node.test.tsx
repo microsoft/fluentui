@@ -32,10 +32,10 @@ describe('FluentProvider (node)', () => {
     resetIdsForTests();
   });
 
-  it('should render CSS variables as inline style', () => {
+  it('should render CSS variables as inline style', async () => {
     const html = renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
-    expect(parseHTMLString(html)).toMatchInlineSnapshot(`
+    expect(await parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1"
@@ -50,7 +50,7 @@ describe('FluentProvider (node)', () => {
     `);
   });
 
-  it('renders nonce with SSR style element', () => {
+  it('renders nonce with SSR style element', async () => {
     const nonce = 'random';
     const renderer = createDOMRenderer(undefined, {
       styleElementAttributes: { nonce },
@@ -62,7 +62,7 @@ describe('FluentProvider (node)', () => {
       </RendererProvider>,
     );
 
-    expect(parseHTMLString(html)).toMatchInlineSnapshot(`
+    expect(await parseHTMLString(html)).toMatchInlineSnapshot(`
       "<div
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1"
