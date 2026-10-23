@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "anchor-button: pass noopener,noreferrer to window.open for modified-click navigation",
+  "packageName": "@fluentui/web-components",
+  "email": "iyorixy1@gmail.com",
+  "dependentChangeType": "patch"
+}
