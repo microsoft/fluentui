@@ -8,6 +8,8 @@ export const useClasses = makeStyles({
     flexDirection: 'column',
   },
   controls: {
+    display: 'flex',
+    flexWrap: 'wrap',
     alignSelf: 'end',
     backgroundColor: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusMedium,
@@ -28,6 +30,29 @@ export const useClasses = makeStyles({
     gap: '30px 50px',
     placeItems: 'center',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
+  },
+  durationTableContainer: {
+    overflowX: 'auto',
+    backgroundColor: tokens.colorNeutralBackground1,
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopRightRadius: 0,
+  },
+  durationTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase300,
+
+    '& th, & td': {
+      padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+      textAlign: 'left',
+      whiteSpace: 'nowrap',
+      borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    },
+    '& tbody th': {
+      fontWeight: tokens.fontWeightRegular,
+    },
   },
 });
 
@@ -51,14 +76,6 @@ export const useCardClasses = makeStyles({
 
     backgroundColor: tokens.colorBrandBackground,
     clipPath: 'polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%)',
-
-    animationName: {
-      '0%': { transform: 'translateY(calc(var(--container-size) - var(--point-size) / 2))' },
-      '60%, 100%': { transform: 'translateY(calc(var(--point-size) / 2 * -1))' },
-    },
-    animationDuration: '2s',
-    animationIterationCount: 'infinite',
-    animationFillMode: 'forwards',
 
     '@media (forced-colors: active)': {
       backgroundColor: 'LinkText',
@@ -99,6 +116,17 @@ export const useCardClasses = makeStyles({
     height: 'var(--container-size)',
     width: 'var(--container-size)',
   },
+  referenceLine: {
+    stroke: tokens.colorNeutralForeground1,
+    strokeWidth: tokens.strokeWidthThin,
+    opacity: 0.2,
+    vectorEffect: 'non-scaling-stroke',
+
+    '@media (forced-colors: active)': {
+      stroke: 'CanvasText',
+      opacity: 1,
+    },
+  },
   path: {
     fill: 'none',
     stroke: tokens.colorNeutralStrokeAccessible,
@@ -109,19 +137,42 @@ export const useCardClasses = makeStyles({
     },
   },
 
-  duration: {
-    placeSelf: 'center',
+  handle: {
+    stroke: tokens.colorNeutralStrokeAccessible,
+    strokeWidth: tokens.strokeWidthThin,
+    strokeDasharray: '4 3',
 
-    width: '128px',
-    height: '4px',
-    margin: '64px auto',
-    backgroundColor: tokens.colorNeutralForeground3,
-
-    animationName: {
-      from: { transform: 'rotate(0)' },
-      to: { transform: 'rotate(180deg)' },
+    '& line': {
+      vectorEffect: 'non-scaling-stroke',
     },
-    animationIterationCount: 'infinite',
+
+    '@media (forced-colors: active)': {
+      stroke: 'CanvasText',
+    },
+  },
+  controlPoint: {
+    fill: tokens.colorNeutralBackground1,
+    stroke: tokens.colorBrandForeground1,
+    strokeWidth: tokens.strokeWidthThick,
+    vectorEffect: 'non-scaling-stroke',
+
+    '@media (forced-colors: active)': {
+      fill: 'Canvas',
+      stroke: 'LinkText',
+    },
+  },
+  endpoint: {
+    fill: tokens.colorNeutralForeground1,
+
+    '@media (forced-colors: active)': {
+      fill: 'CanvasText',
+    },
+  },
+
+  duration: {
+    width: tokens.strokeWidthThicker,
+    height: '100%',
+    backgroundColor: tokens.colorNeutralForeground3,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
@@ -129,7 +180,9 @@ export const useCardClasses = makeStyles({
   },
 
   view: {
-    gridArea: 'view',
+    '--duration-track-size': '128px',
+    width: 'var(--duration-track-size)',
+    height: tokens.spacingVerticalXXL,
   },
   title: {
     gridArea: 'title',
