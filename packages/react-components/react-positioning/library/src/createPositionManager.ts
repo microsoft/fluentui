@@ -1,7 +1,13 @@
-import { computePosition } from '@floating-ui/dom';
+import { computePosition } from './engine/computePosition';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import { isHTMLElement } from '@fluentui/react-utilities';
-import type { OnPositioningEndEventDetail, PositionManager, PositioningPlacement, TargetElement } from './types';
+import type {
+  OnPositioningEndEventDetail,
+  PositionManager,
+  PositioningOptions,
+  PositioningPlacement,
+  TargetElement,
+} from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { listScrollParents } from './utils/listScrollParents';
 import { POSITIONING_END_EVENT } from './constants';
@@ -28,7 +34,9 @@ interface PositionManagerOptions {
   /**
    * [Floating UI middleware](https://floating-ui.com/docs/middleware)
    */
-  middleware: Middleware[];
+  middleware?: Middleware[];
+  positioningOptions?: PositioningOptions;
+  isRtl?: boolean;
   /**
    * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
    */
@@ -56,16 +64,7 @@ function isLayoutViewportUnavailable(container: HTMLElement): boolean {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
-  const {
-    container,
-    target,
-    arrow,
-    strategy,
-    middleware,
-    placement,
-    useTransform = true,
-    disableUpdateOnResize = false,
-  } = options;
+  const { container, target, arrow, strategy, useTransform = true, disableUpdateOnResize = false } = options;
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
     return {
@@ -121,8 +120,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
       isFirstUpdate = false;
     }
 
-    Object.assign(container.style, { position: strategy });
-    computePosition(target, container, { placement, middleware, strategy })
+    container.style.position = strategy;
+    computePosition(target, container, options)
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
@@ -133,9 +132,10 @@ export function createPositionManager(options: PositionManagerOptions): Position
         const positioningMiddlewareData = isLayoutViewportUnavailable(container)
           ? {
               ...middlewareData,
-              hide: { ...middlewareData.hide, escaped: false, referenceHidden: false },
+              hide: { escaped: false, referenceHidden: false },
             }
           : middlewareData;
+        const { escaped = false, referenceHidden = false } = positioningMiddlewareData.hide || {};
 
         writeArrowUpdates({ arrow, middlewareData: positioningMiddlewareData });
         writeContainerUpdates({
@@ -143,8 +143,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
           middlewareData: positioningMiddlewareData,
           placement: computedPlacement,
           coordinates: { x, y },
-          lowPPI: (targetWindow?.devicePixelRatio || 1) <= 1,
-          strategy,
+          lowPPI: (targetWindow.devicePixelRatio || 1) <= 1,
           useTransform,
         });
 
@@ -155,8 +154,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
               // These are equivalent string unions; the cast avoids leaking @floating-ui/dom
               // types into the public API surface.
               placement: computedPlacement satisfies PositioningPlacement,
-              escaped: positioningMiddlewareData.hide?.escaped ?? false,
-              referenceHidden: positioningMiddlewareData.hide?.referenceHidden ?? false,
+              escaped,
+              referenceHidden,
             },
           }),
         );
@@ -181,10 +180,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const dispose = () => {
     isDestroyed = true;
 
-    if (targetWindow) {
-      targetWindow.removeEventListener('scroll', updatePosition);
-      targetWindow.removeEventListener('resize', updatePosition);
-    }
+    targetWindow.removeEventListener('scroll', updatePosition);
+    targetWindow.removeEventListener('resize', updatePosition);
 
     scrollParents.forEach(scrollParent => {
       scrollParent.removeEventListener('scroll', updatePosition);
@@ -194,10 +191,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
     resizeObserver?.disconnect();
   };
 
-  if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
-    targetWindow.addEventListener('resize', updatePosition);
-  }
+  targetWindow.addEventListener('scroll', updatePosition, { passive: true });
+  targetWindow.addEventListener('resize', updatePosition);
 
   // Update the position on initialization
   updatePosition();

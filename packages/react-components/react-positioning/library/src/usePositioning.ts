@@ -34,7 +34,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
     managerRef.current = null;
 
-    const target = overrideTargetRef.current ?? targetRef.current;
+    const target = overrideTargetRef.current || targetRef.current;
 
     if (enabled && canUseDOM() && target && containerRef.current) {
       managerRef.current = createPositionManager({
@@ -71,7 +71,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   );
 
   useIsomorphicLayoutEffect(() => {
-    setOverrideTarget(options.target ?? null);
+    setOverrideTarget(options.target || null);
   }, [options.target, setOverrideTarget]);
 
   useIsomorphicLayoutEffect(() => {

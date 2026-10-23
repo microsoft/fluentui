@@ -12,7 +12,7 @@ export function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewa
   const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
   Object.assign(arrow.style, {
-    left: arrowX !== null && arrowX !== undefined ? `${arrowX}px` : '',
-    top: arrowY !== null && arrowY !== undefined ? `${arrowY}px` : '',
+    left: typeof arrowX === 'number' ? `${arrowX}px` : '',
+    top: typeof arrowY === 'number' ? `${arrowY}px` : '',
   });
 }

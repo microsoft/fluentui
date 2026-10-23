@@ -1,10 +1,10 @@
-import { computePosition } from '@floating-ui/dom';
+import { computePosition } from './engine/computePosition';
 import type { Placement } from '@floating-ui/dom';
 import { createPositionManager } from './createPositionManager';
 import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';
 
-jest.mock('@floating-ui/dom', () => ({
+jest.mock('./engine/computePosition', () => ({
   computePosition: jest.fn(),
 }));
 

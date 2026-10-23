@@ -1,5 +1,5 @@
 import type { Middleware } from '@floating-ui/dom';
-import { offset as baseOffset } from '@floating-ui/dom';
+import { offset as baseOffset } from '../engine';
 import type { PositioningOptions } from '../types';
 import { getFloatingUIOffset } from '../utils/getFloatingUIOffset';
 
