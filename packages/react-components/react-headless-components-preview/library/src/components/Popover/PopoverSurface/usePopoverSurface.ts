@@ -2,7 +2,7 @@
 
 import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
-import { usePopoverContext } from '../popoverContext';
+import { usePopoverContext, usePopoverFocusCapture } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
@@ -22,6 +22,7 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const focusCapture = usePopoverFocusCapture();
 
   if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
@@ -55,6 +56,11 @@ export const usePopoverSurface = (
   };
 
   const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
+  const onFocusCaptureOriginal = state.root.onFocusCapture;
+  state.root.onFocusCapture = (event: React.FocusEvent<HTMLDialogElement & HTMLDivElement>) => {
+    focusCapture?.(event);
+    onFocusCaptureOriginal?.(event);
+  };
 
   state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {

@@ -1,8 +1,13 @@
 'use client';
 
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type * as React from 'react';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { PopoverContextValue } from './Popover.types';
+
+export type InternalPopoverContextValue = PopoverContextValue & {
+  focusCapture?: React.FocusEventHandler<HTMLElement>;
+};
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue | undefined>(
   undefined,
@@ -33,3 +38,6 @@ export const PopoverProvider = PopoverContext.Provider;
  */
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
   useContextSelector(PopoverContext, (ctx = popoverContextDefaultValue) => selector(ctx));
+
+export const usePopoverFocusCapture = (): React.FocusEventHandler<HTMLElement> | undefined =>
+  useContextSelector(PopoverContext, ctx => (ctx as InternalPopoverContextValue | undefined)?.focusCapture);

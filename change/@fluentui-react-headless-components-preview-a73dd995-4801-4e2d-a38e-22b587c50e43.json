@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: automatically dismiss non-modal Popover when focus leaves its logical boundary",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "paulmardling@microsoft.com"
+}

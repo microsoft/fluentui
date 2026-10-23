@@ -1,6 +1,6 @@
 'use client';
 
-import { setVirtualParent } from '@fluentui/react-utilities';
+import { setVirtualParent, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { toMountNodeProps } from '../../utils/toMountNodeProps';
@@ -27,7 +27,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
     virtualParentRootRef,
   };
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!mountNode) {
       return;
     }

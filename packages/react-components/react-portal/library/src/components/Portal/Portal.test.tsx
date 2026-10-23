@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { getParent } from '@fluentui/react-utilities';
+import { elementContains, getParent, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Portal } from './Portal';
@@ -58,5 +58,32 @@ describe('Portal', () => {
 
     const mountNode = container.querySelector<HTMLSpanElement>('#container');
     expect((getParent(mountNode) as HTMLElement).id).toBe('parent');
+  });
+
+  it('establishes virtual ownership before an ancestor layout effect inspects focused portal content', () => {
+    const mountNode = document.createElement('div');
+    document.body.append(mountNode);
+    const observed = jest.fn();
+    const Example = () => {
+      const parent = React.useRef<HTMLDivElement>(null);
+      useIsomorphicLayoutEffect(() => {
+        observed(elementContains(parent.current, mountNode.querySelector('button')));
+      }, []);
+      return (
+        <div ref={parent}>
+          <Portal mountNode={mountNode}>
+            <button autoFocus>Portal control</button>
+          </Portal>
+        </div>
+      );
+    };
+    try {
+      const { unmount } = render(<Example />);
+      expect(observed).toHaveBeenCalledWith(true);
+      unmount();
+      expect(getParent(mountNode)).toBe(document.body);
+    } finally {
+      mountNode.remove();
+    }
   });
 });
