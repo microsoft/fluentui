@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add a direction-neutral slide atom for motion sequences",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
