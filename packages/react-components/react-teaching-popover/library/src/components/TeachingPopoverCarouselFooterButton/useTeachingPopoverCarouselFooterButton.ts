@@ -12,6 +12,8 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useCarouselContext_unstable } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useButton_unstable } from '@fluentui/react-button';
+import { useARIAButtonProps } from '@fluentui/react-aria';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { useCarouselValues_unstable } from '../TeachingPopoverCarousel/Carousel/useCarouselValues';
 
 /**
@@ -60,21 +62,26 @@ export const useTeachingPopoverCarouselFooterButtonBase_unstable = (
     buttonChild = altText;
   }
 
+  const buttonProps: TeachingPopoverCarouselFooterButtonBaseProps = {
+    ...props,
+    onClick: handleButtonClick,
+    children: buttonChild,
+  };
+  if (buttonProps.as !== 'a') {
+    buttonProps.type ??= 'button';
+  }
+  const normalizedButtonProps = useARIAButtonProps(buttonProps.as, buttonProps);
+
   return {
     navType,
     altText,
     components: {
       root: 'button',
     },
-    root: slot.always(
-      getIntrinsicElementProps('button', {
-        ref,
-        ...props,
-        onClick: handleButtonClick,
-        children: buttonChild,
-      }),
-      { elementType: 'button' },
-    ),
+    root: slot.always<ARIAButtonSlotProps<'a'>>(getIntrinsicElementProps(props.as ?? 'button', normalizedButtonProps), {
+      elementType: 'button',
+      defaultProps: { ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement> },
+    }),
   };
 };
 

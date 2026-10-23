@@ -5,7 +5,10 @@ import type { PopoverContextValue } from '@fluentui/react-popover';
 import { CarouselProvider } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import type { CarouselContextValue } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { createCarouselStore } from '../TeachingPopoverCarousel/Carousel/createCarouselStore';
-import { useTeachingPopoverCarouselFooterButton_unstable } from './useTeachingPopoverCarouselFooterButton';
+import {
+  useTeachingPopoverCarouselFooterButtonBase_unstable,
+  useTeachingPopoverCarouselFooterButton_unstable,
+} from './useTeachingPopoverCarouselFooterButton';
 
 const defaultPopoverContext: PopoverContextValue = {
   open: true,
@@ -39,7 +42,7 @@ function makeWrapper(options: WrapperOptions = {}) {
     ...options.carousel,
   };
   const popoverValue: PopoverContextValue = { ...defaultPopoverContext, ...options.popover };
-  return ({ children }: { children: React.ReactNode }) =>
+  return ({ children }: { children?: React.ReactNode }) =>
     React.createElement(
       PopoverProvider,
       { value: popoverValue },
@@ -54,6 +57,44 @@ function makeMouseEvent(defaultPrevented = false): React.MouseEvent<HTMLButtonEl
 }
 
 describe('useTeachingPopoverCarouselFooterButton_unstable', () => {
+  it.each([useTeachingPopoverCarouselFooterButtonBase_unstable, useTeachingPopoverCarouselFooterButton_unstable])(
+    '%p defaults to a non-submitting button and preserves explicit submit intent',
+    useFooterButton => {
+      const ref = React.createRef<HTMLButtonElement | HTMLAnchorElement>();
+      const { result } = renderHook(() => useFooterButton({ navType: 'next', altText: 'Done', type: undefined }, ref), {
+        wrapper: makeWrapper(),
+      });
+      expect(result.current.root.type).toBe('button');
+      const { result: submitResult } = renderHook(
+        () => useFooterButton({ navType: 'next', altText: 'Done', type: 'submit' }, ref),
+        { wrapper: makeWrapper() },
+      );
+      expect(submitResult.current.root.type).toBe('submit');
+    },
+  );
+
+  it.each([useTeachingPopoverCarouselFooterButtonBase_unstable, useTeachingPopoverCarouselFooterButton_unstable])(
+    '%p suppresses disabled anchor navigation and consumer clicks',
+    useFooterButton => {
+      const selectPageByDirection = jest.fn();
+      const onClick = jest.fn();
+      const ref = React.createRef<HTMLButtonElement | HTMLAnchorElement>();
+      const { result } = renderHook(
+        () =>
+          useFooterButton({ as: 'a', href: '#next', disabled: true, navType: 'next', altText: 'Done', onClick }, ref),
+        { wrapper: makeWrapper({ carousel: { selectPageByDirection } }) },
+      );
+      const event = { ...makeMouseEvent(), preventDefault: jest.fn(), stopPropagation: jest.fn() };
+      result.current.root.onClick?.(event);
+      expect(result.current.root['aria-disabled']).toBe(true);
+      expect('href' in result.current.root ? result.current.root.href : undefined).toBeUndefined();
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+      expect(event.stopPropagation).toHaveBeenCalledTimes(1);
+      expect(selectPageByDirection).not.toHaveBeenCalled();
+      expect(onClick).not.toHaveBeenCalled();
+    },
+  );
+
   it('inherits ButtonState components shape (root: button, icon: span)', () => {
     const ref = React.createRef<HTMLButtonElement | HTMLAnchorElement>();
     const { result } = renderHook(
