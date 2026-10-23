@@ -1,2 +1,8 @@
-changedFiles="$(git diff-tree -r --name-only --no-commit-id $1 $2)"
+# Git passes an all-zero previous HEAD on initial checkout (clone or worktree add).
+case "$1" in
+  ''|*[!0]*) ;;
+  *) exit 0 ;;
+esac
+
+changedFiles="$(git diff-tree -r --name-only --no-commit-id "$1" "$2")"
 node ./scripts/package-manager/src/notify-on-file-changes.js $changedFiles
