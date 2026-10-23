@@ -26,20 +26,31 @@ function disableWebAnimations() {
   /** @type {typeof Element.prototype.animate} */
   Element.prototype.animate = function (keyframes, options) {
     const animation = animate.call(this, keyframes, options);
-    // Chromium can return null here, see https://github.com/microsoft/fluentui/issues/33902
-    const timing = animation?.effect?.getComputedTiming();
 
-    if (!timing) {
-      return animation;
-    }
-
-    if (timing.endTime === Infinity) {
-      animation.pause();
-      animation.currentTime = Number(timing.delay ?? 0) + Number(timing.duration ?? 0) / 2;
-    } else {
-      animation.finish();
-    }
+    // Callers attach finish handlers right after animate() returns (e.g. Toast becomes visible on enter finish),
+    // so settle the animation only once they had a chance to do that.
+    queueMicrotask(() => settleAnimation(animation));
 
     return animation;
   };
+}
+
+/**
+ * @param {Animation | null} animation
+ */
+function settleAnimation(animation) {
+  // Chromium can return null from animate(), see https://github.com/microsoft/fluentui/issues/33902
+  const timing = animation?.effect?.getComputedTiming();
+
+  // An idle animation was cancelled by its owner already, finishing it would apply stale keyframes
+  if (!animation || !timing || animation.playState === 'idle') {
+    return;
+  }
+
+  if (timing.endTime === Infinity) {
+    animation.pause();
+    animation.currentTime = Number(timing.delay ?? 0) + Number(timing.duration ?? 0) / 2;
+  } else {
+    animation.finish();
+  }
 }
