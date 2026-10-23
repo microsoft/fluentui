@@ -172,7 +172,7 @@ describe('getDayGrid', () => {
     expect(days.some(day => day.isSingleSelected)).toBe(false);
   });
 
-  it('clips selected ranges to inclusive bounds and separately flags restricted days', () => {
+  it('clips selected ranges to inclusive bounds and excludes restricted days from selection', () => {
     const days = getDayGrid({
       ...defaultOptions,
       dateRangeType: 'week',
@@ -181,25 +181,18 @@ describe('getDayGrid', () => {
       maxDate: new Date(2020, 8, 18),
       restrictedDates: [new Date(2020, 8, 16, 12)],
     }).flat();
-    expect(days.filter(day => day.isSelected).map(day => day.key)).toEqual([
-      '2020-8-15',
-      '2020-8-16',
-      '2020-8-17',
-      '2020-8-18',
-    ]);
+    expect(days.filter(day => day.isSelected).map(day => day.key)).toEqual(['2020-8-15', '2020-8-17', '2020-8-18']);
     expect(days.filter(day => day.isInBounds).map(day => day.key)).toEqual(['2020-8-15', '2020-8-17', '2020-8-18']);
   });
 
-  it('uses a full week for non-contiguous work-week days', () => {
+  it('selects only the configured non-contiguous work-week days', () => {
     const days = getDayGrid({
       ...defaultOptions,
       dateRangeType: 'workWeek',
       selectedDate: new Date(2020, 8, 18),
       workWeekDays: ['monday', 'wednesday', 'friday'],
     }).flat();
-    expect(days.filter(day => day.isSelected).map(day => day.originalDate!.getDate())).toEqual([
-      13, 14, 15, 16, 17, 18, 19,
-    ]);
+    expect(days.filter(day => day.isSelected).map(day => day.originalDate!.getDate())).toEqual([14, 16, 18]);
   });
 
   it('rejects invalid and unrepresentable grid dates', () => {

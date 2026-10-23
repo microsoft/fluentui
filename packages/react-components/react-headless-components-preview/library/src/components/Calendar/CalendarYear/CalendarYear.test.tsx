@@ -174,6 +174,36 @@ describe('CalendarYear', () => {
     expect(container.querySelectorAll('[role="gridcell"]')).toHaveLength(12);
   });
 
+  it.each(['Enter', ' '])('activates the focused year gridcell with %s', key => {
+    const { cells, onSelect } = renderYear();
+    act(() => cells[1].focus());
+
+    expect(fireEvent.keyDown(cells[1], { key })).toBe(false);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelect.mock.calls[0][1].year).toBe(2021);
+  });
+
+  it('honors grid cancellation when activating a focused year gridcell', () => {
+    const onGridKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
+    const { cells, onSelect, onNavigate } = renderYear({ onGridKeyDown });
+    act(() => cells[0].focus());
+
+    expect(fireEvent.keyDown(cells[0], { key: 'Enter' })).toBe(false);
+    expect(onGridKeyDown).toHaveBeenCalledTimes(1);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
+
+  it('leaves nested year buttons to native keyboard activation', () => {
+    const { cells, onSelect } = renderYear();
+    const button = cells[0].querySelector('button')!;
+
+    fireEvent.keyDown(button, { key: 'Enter' });
+    expect(onSelect).not.toHaveBeenCalled();
+    fireEvent.click(button);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+  });
+
   it.each([3, 4] as const)('uses %s columns for standalone year layout', columns => {
     const { getAllByRole, getByRole } = render(<CalendarYear navigatedYear={2020} />, {
       calendarYearColumns: columns,

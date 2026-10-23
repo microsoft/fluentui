@@ -42,7 +42,10 @@ import type {
 import { toDataAttributeValue } from '../../../utils';
 
 type ButtonEvent = React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLButtonElement>;
-type CalendarDayGridSlotProps = React.ComponentProps<'table'> & { focusgroup?: string };
+type CalendarDayGridSlotProps = React.ComponentProps<'table'> & {
+  focusgroup?: string;
+  'data-fui-calendar-grid'?: string;
+};
 
 const noop = () => undefined;
 
@@ -495,6 +498,7 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
     },
     elementType: 'table',
   }) as CalendarDayGridSlotProps;
+  gridSlot['data-fui-calendar-grid'] = '';
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (ev: React.KeyboardEvent<HTMLElement>) => {
     const eventDay = getEventDay(ev);
     if (!eventDay || ev.isDefaultPrevented()) {

@@ -565,6 +565,26 @@ describe('Calendar interaction sequences', () => {
     expect(onDisplayedDateChange).not.toHaveBeenCalled();
   });
 
+  it.each(['grid', 'toolbar'])('preserves paging keys owned by a nested %s', owner => {
+    const onDisplayedDateChange = jest.fn();
+    const { getByRole } = render(
+      <Calendar
+        defaultValue={today}
+        today={today}
+        onDisplayedDateChange={onDisplayedDateChange}
+        dayPicker={{
+          heading: { children: <div role={owner} tabIndex={0} aria-label={`Nested ${owner}`} /> },
+        }}
+      />,
+    );
+    const nestedWidget = getByRole(owner, { name: `Nested ${owner}` });
+    nestedWidget.focus();
+
+    expect(fireEvent.keyDown(nestedWidget, { key: 'PageDown' })).toBe(true);
+    expect(onDisplayedDateChange).not.toHaveBeenCalled();
+    expect(nestedWidget).toHaveFocus();
+  });
+
   it('does not cancel native Enter activation for custom header buttons', () => {
     const { getByRole } = render(
       <Calendar

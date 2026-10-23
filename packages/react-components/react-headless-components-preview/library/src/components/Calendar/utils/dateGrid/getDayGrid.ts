@@ -12,8 +12,7 @@ import {
 import { DAYS_IN_WEEK, DEFAULT_WORK_WEEK_DAYS } from '../constants';
 import type { DayOfWeek } from '../constants';
 import type { Day, DayGridOptions } from './dateGrid.types';
-import { getBoundedDateRange, isRestrictedDate } from './dateAvailability';
-import { getDateRangeTypeToUse } from './workWeek';
+import { getAvailableDates, isRestrictedDate } from './dateAvailability';
 
 /**
  * Generates a grid of days, given the `options`.
@@ -75,20 +74,13 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     day: date.getDate(),
   };
 
-  // in work week view if the days aren't contiguous we use week view instead
-  const selectedDateRangeType = getDateRangeTypeToUse(dateRangeType, effectiveWorkWeekDays, firstDayOfWeek);
-
   let selectedDates: Date[] = [];
 
   if (selectedDate) {
-    selectedDates = getDateRange(
-      selectedDate,
-      selectedDateRangeType,
-      firstDayOfWeek,
-      effectiveWorkWeekDays,
-      daysToSelectInDayView,
+    selectedDates = getAvailableDates(
+      getDateRange(selectedDate, dateRangeType, firstDayOfWeek, effectiveWorkWeekDays, daysToSelectInDayView),
+      restrictedDateOptions,
     );
-    selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
   }
 
   while (

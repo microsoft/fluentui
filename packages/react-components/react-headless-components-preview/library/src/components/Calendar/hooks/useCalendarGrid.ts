@@ -1,11 +1,15 @@
 'use client';
 
 import * as React from 'react';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { isHTMLElement, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { SlotShorthandValue, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { toDataAttributeValue } from '../../../utils';
 
-type GridSlotProps = ExtractSlotProps<Slot<'div'>> & { focusgroup?: string };
+type GridSlotProps = ExtractSlotProps<Slot<'div'>> & {
+  focusgroup?: string;
+  'data-fui-calendar-grid'?: string;
+};
 type GridCellRootProps = React.ComponentProps<'div'> & {
   focusgroupstart?: string;
   'data-current'?: string;
@@ -31,6 +35,18 @@ const isElement = (target: EventTarget | null): target is Element => {
   const element = target as Element | null;
   const ElementConstructor = element?.ownerDocument?.defaultView?.Element;
   return !!ElementConstructor && element instanceof ElementConstructor;
+};
+
+/** Whether paging keys belong to a nested widget rather than a Calendar-owned grid. */
+export const isCalendarKeyboardEventFromNestedWidget = (target: EventTarget | null, root: HTMLElement): boolean => {
+  if (!isElement(target)) {
+    return false;
+  }
+  const owner = target.closest('[role="grid"], [role="toolbar"]');
+  if (!owner || !root.contains(owner)) {
+    return false;
+  }
+  return owner.getAttribute('role') === 'toolbar' || !owner.hasAttribute('data-fui-calendar-grid');
 };
 
 /** Whether content owns text editing rather than grid keyboard navigation. */
@@ -127,7 +143,12 @@ export function useCalendarPickerGrid(
   };
 
   const gridSlot = slot.always(grid, {
-    defaultProps: { 'aria-label': ariaLabel, role: 'grid', focusgroup: 'grid manual' },
+    defaultProps: {
+      'aria-label': ariaLabel,
+      role: 'grid',
+      focusgroup: 'grid manual',
+      'data-fui-calendar-grid': '',
+    },
     elementType: 'div',
   }) as GridSlotProps;
   gridSlot.ref = useMergedRefs(gridSlot.ref, gridRef);
@@ -135,6 +156,20 @@ export function useCalendarPickerGrid(
     const [cell, index] = getEventIndex(event);
     if (cell && index >= 0 && !event.isDefaultPrevented() && isAvailable(index)) {
       selectCell(event, cell, index);
+    }
+  });
+  gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.isDefaultPrevented() || (event.key !== Enter && event.key !== Space)) {
+      return;
+    }
+    const target = event.target;
+    const [cell, index] = getEventIndex(event);
+    if (!cell || index < 0 || !isAvailable(index) || !isElement(target) || target !== cell) {
+      return;
+    }
+    selectCell(event, cell, index);
+    if (!event.isDefaultPrevented()) {
+      event.preventDefault();
     }
   });
 

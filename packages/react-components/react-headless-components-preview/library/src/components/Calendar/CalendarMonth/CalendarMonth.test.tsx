@@ -334,6 +334,37 @@ describe('CalendarMonth', () => {
     expect(emptyGrid.container.querySelectorAll('[role="gridcell"]')).toHaveLength(0);
   });
 
+  it.each(['Enter', ' '])('activates the focused month gridcell with %s', key => {
+    const { cells, onSelect, onNavigate } = renderMonth();
+    act(() => cells[2].focus());
+
+    expect(fireEvent.keyDown(cells[2], { key })).toBe(false);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelect.mock.calls[0][1].type).toBe('keydown');
+    expect(onNavigate).toHaveBeenCalledTimes(1);
+  });
+
+  it('honors grid cancellation when activating a focused month gridcell', () => {
+    const onGridKeyDown = jest.fn((event: React.KeyboardEvent) => event.preventDefault());
+    const { cells, onSelect, onNavigate } = renderMonth({ onGridKeyDown });
+    act(() => cells[2].focus());
+
+    expect(fireEvent.keyDown(cells[2], { key: 'Enter' })).toBe(false);
+    expect(onGridKeyDown).toHaveBeenCalledTimes(1);
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
+
+  it('leaves nested month buttons to native keyboard activation', () => {
+    const { cells, onSelect } = renderMonth();
+    const button = cells[2].querySelector('button')!;
+
+    fireEvent.keyDown(button, { key: 'Enter' });
+    expect(onSelect).not.toHaveBeenCalled();
+    fireEvent.click(button);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+  });
+
   // TODO: Uncomment focusgroup keyboard tests when V2 grid support is published by the polyfill.
   describe.skip('focusgroup keyboard navigation (requires focusgroup V2 grid support)', () => {
     it('has no cell Tab stop when every month is unavailable', () => {

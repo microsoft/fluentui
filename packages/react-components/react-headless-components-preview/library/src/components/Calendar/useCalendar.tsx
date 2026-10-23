@@ -23,7 +23,7 @@ import {
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { getCalendarNavigationDate } from './utils/calendarNavigation';
-import { isCalendarKeyboardEditable } from './hooks/useCalendarGrid';
+import { isCalendarKeyboardEditable, isCalendarKeyboardEventFromNestedWidget } from './hooks/useCalendarGrid';
 import type { DayOfWeek } from './utils';
 import type {
   CalendarDayHandle,
@@ -328,7 +328,10 @@ export const useCalendar = (props: CalendarProps, ref: React.Ref<HTMLDivElement>
 
       case PageUp:
       case PageDown: {
-        if (isCalendarKeyboardEditable(ev.target)) {
+        if (
+          isCalendarKeyboardEditable(ev.target) ||
+          isCalendarKeyboardEventFromNestedWidget(ev.target, ev.currentTarget)
+        ) {
           break;
         }
         const date = getCalendarNavigationDate(ev.nativeEvent) ?? navigatedDate;
