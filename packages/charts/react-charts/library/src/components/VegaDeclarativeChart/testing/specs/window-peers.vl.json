@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Two independent running sums expand the cumulative frame across tied sort keys.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "id": 1, "key": 1, "amount": 2, "cost": 10 },
+      { "id": 2, "key": 1, "amount": 4, "cost": 20 },
+      { "id": 3, "key": 2, "amount": 8, "cost": 30 },
+      { "id": 4, "key": 3, "amount": 16, "cost": 40 }
+    ]
+  },
+  "transform": [
+    {
+      "window": [
+        { "op": "sum", "field": "amount", "as": "amount_sum" },
+        { "op": "sum", "field": "cost", "as": "cost_sum" },
+        { "op": "rank", "as": "rank" },
+        { "op": "dense_rank", "as": "dense" }
+      ],
+      "sort": [{ "field": "key", "order": "ascending" }],
+      "frame": [null, 0],
+      "ignorePeers": false
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": { "field": "id", "type": "quantitative" },
+    "y": { "field": "amount_sum", "type": "quantitative" },
+    "tooltip": [
+      { "field": "cost_sum", "type": "quantitative" },
+      { "field": "rank", "type": "quantitative" }
+    ]
+  }
+}

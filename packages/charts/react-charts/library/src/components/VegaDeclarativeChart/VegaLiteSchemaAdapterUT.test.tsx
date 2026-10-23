@@ -9,6 +9,7 @@ import {
   getVegaLiteLegendsProps,
   getVegaLiteTitles,
 } from './VegaLiteSchemaAdapter';
+import { validateVegaLiteSpec } from './VegaLiteDiagnostics';
 import type { VegaLiteSpec } from './VegaLiteTypes';
 import { specialChartNames } from '../../utilities/test-data/specialChartNames';
 
@@ -106,7 +107,12 @@ describe('VegaLiteSchemaAdapter', () => {
     it.each(['constructor', 'toString', '__proto__'])('does not fold the inherited %s property', field => {
       const points = transformData(
         [{ x: 1, y: 10 }],
-        [{ fold: ['y', field] }, { calculate: 'isValid(datum.value) ? 1 : 0', as: 'y' }],
+        [
+          { fold: ['y', field] },
+          // Vega fold emits a missing-value tuple; explicitly discard it, never read the prototype.
+          { filter: { field: 'value', valid: true } },
+          { calculate: 'isValid(datum.value) ? 1 : 0', as: 'y' },
+        ],
       );
 
       expect(points).toHaveLength(1);
@@ -126,7 +132,7 @@ describe('VegaLiteSchemaAdapter', () => {
         [{ fold: ['y'] }, { calculate: 'isValid(datum.__proto__) ? datum.__proto__.value : 0', as: 'y' }],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
     });
 
     it('preserves an own __proto__ grouping field during aggregation', () => {
@@ -139,7 +145,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
     });
 
     it('preserves an aggregate output named __proto__ as an own data field', () => {
@@ -151,7 +157,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 2 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 2 })]);
     });
 
     it.each(['count', '__proto__'])('preserves aggregate row coercion with the %s output field', field => {
@@ -188,7 +194,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
     });
 
     it.each(['window', 'joinaggregate', 'density'])('groups missing fields as undefined in %s', kind => {
@@ -198,7 +204,7 @@ describe('VegaLiteSchemaAdapter', () => {
           : kind === 'joinaggregate'
           ? [{ joinaggregate: [{ op: 'count', as: 'y' }], groupby: ['constructor'] }]
           : [
-              { density: 'value', groupby: ['constructor'] },
+              { density: 'value', groupby: ['constructor'], steps: 20 },
               { calculate: 'datum.value', as: 'x' },
               { calculate: 'isValid(datum.constructor) ? -1 : 1', as: 'y' },
             ];
@@ -212,7 +218,9 @@ describe('VegaLiteSchemaAdapter', () => {
 
       if (kind === 'density') {
         expect(points).toHaveLength(21);
-        expect(points.every(point => point.y === 1)).toBe(true);
+        expect(points.map(point => ({ x: point.x, y: point.y }))).toEqual(
+          Array.from({ length: 21 }, (_, index) => ({ x: index / 20, y: 1 })),
+        );
       } else {
         expect(points.map(point => point.y)).toEqual(kind === 'window' ? [1, 2] : [2, 2]);
       }
@@ -228,7 +236,7 @@ describe('VegaLiteSchemaAdapter', () => {
         [...transform, { calculate: 'length(toString(datum)) + datum.__proto__', as: 'y' }],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 16 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 16 })]);
     });
 
     it.each(['window', 'joinaggregate'])('preserves separate groups for own special fields in %s', kind => {
@@ -257,15 +265,23 @@ describe('VegaLiteSchemaAdapter', () => {
 
     it.each(['aggregate', 'window', 'joinaggregate'])('ignores inherited input values in %s', kind => {
       const row: Record<string, unknown> = Object.assign(Object.create({ amount: 42 }), { x: 1 });
+      const prototype = Object.getPrototypeOf(row);
       const transform: VegaLiteSpec['transform'] =
         kind === 'aggregate'
-          ? [{ aggregate: [{ op: 'sum', field: 'amount', as: 'y' }], groupby: ['x'] }]
+          ? [{ aggregate: [{ op: 'sum', field: 'amount', as: 'total' }], groupby: ['x'] }]
           : kind === 'window'
-          ? [{ window: [{ op: 'sum', field: 'amount', as: 'y' }] }]
-          : [{ joinaggregate: [{ op: 'sum', field: 'amount', as: 'y' }] }];
-      const points = transformData([row], transform);
+          ? [{ window: [{ op: 'sum', field: 'amount', as: 'total' }] }]
+          : [{ joinaggregate: [{ op: 'sum', field: 'amount', as: 'total' }] }];
+      // An all-missing Vega sum is undefined, not zero. Project it without losing the row.
+      const points = transformData(
+        [row],
+        [...transform, { calculate: 'isValid(datum.total) ? datum.total : -1', as: 'y' }],
+      );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 0 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: -1 })]);
+      expect(Object.keys(row)).toEqual(['x']);
+      expect(Object.getPrototypeOf(row)).toBe(prototype);
+      expect(prototype.amount).toBe(42);
     });
 
     it('ignores inherited window sort values', () => {
@@ -285,14 +301,16 @@ describe('VegaLiteSchemaAdapter', () => {
           { sample: 1, ['__proto__']: 42 },
         ],
         [
-          { density: 'sample', groupby: ['__proto__'] },
+          { density: 'sample', groupby: ['__proto__'], steps: 20 },
           { calculate: 'datum.value', as: 'x' },
           { calculate: 'datum.__proto__ + length(toString(datum))', as: 'y' },
         ],
       );
 
       expect(points).toHaveLength(21);
-      expect(points.every(point => point.y === 57)).toBe(true);
+      expect(points.map(point => ({ x: point.x, y: point.y }))).toEqual(
+        Array.from({ length: 21 }, (_, index) => ({ x: index / 20, y: 57 })),
+      );
     });
 
     it('preserves an imputed __proto__ field', () => {
@@ -302,25 +320,33 @@ describe('VegaLiteSchemaAdapter', () => {
           { x: 3, ['__proto__']: 30 },
         ],
         [
-          { impute: '__proto__', key: 'x', value: 42 },
+          { impute: '__proto__', key: 'x', keyvals: [2], value: 42 },
           { calculate: 'datum.__proto__ + length(toString(datum))', as: 'y' },
         ],
       );
 
-      expect(points.map(point => point.y)).toEqual([25, 57, 45]);
+      expect(points).toHaveLength(3);
+      expect(points.map(point => ({ x: point.x, y: point.y }))).toEqual([
+        { x: 1, y: 25 },
+        { x: 3, y: 45 },
+        { x: 2, y: 57 },
+      ]);
     });
 
     it('preserves impute overwrite order when the key and field coincide', () => {
       const points = transformData(
         [{ x: 1 }, { x: 3 }],
         [
-          { impute: 'x', key: 'x', value: 2 },
+          { impute: 'x', key: 'x', keyvals: [2], value: 42 },
           { calculate: 'datum.x', as: 'y' },
         ],
       );
 
-      expect(points.map(point => point.x)).toEqual([1, 2, 3]);
-      expect(points.map(point => point.y)).toEqual([1, 2, 3]);
+      expect(points).toHaveLength(3);
+      // Vega appends imputed tuples after source tuples and writes the value after the key.
+      // Different key/value constants make that overwrite order observable.
+      expect(points.map(point => point.x)).toEqual([1, 3, 42]);
+      expect(points.map(point => point.y)).toEqual([1, 3, 42]);
     });
 
     it('preserves __proto__ lookup fields without copying inherited fields', () => {
@@ -339,7 +365,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 57 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 57 })]);
     });
 
     it('matches missing lookup keys as undefined rather than inherited values', () => {
@@ -354,7 +380,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
     });
 
     it('matches missing secondary lookup keys as undefined', () => {
@@ -369,7 +395,7 @@ describe('VegaLiteSchemaAdapter', () => {
         ],
       );
 
-      expect(points[0]).toMatchObject({ x: 1, y: 42 });
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 42 })]);
     });
 
     it.each(['count', 'sum'] as const)('preserves a __proto__ timeUnit aggregate field for %s', aggregate => {
@@ -377,8 +403,8 @@ describe('VegaLiteSchemaAdapter', () => {
         mark: 'bar',
         data: {
           values: [
-            { date: '2026-01-01', ['__proto__']: 20 },
-            { date: '2026-01-02', ['__proto__']: 22 },
+            { date: '2026-01-01T12:00:00', ['__proto__']: 20 },
+            { date: '2026-01-02T12:00:00', ['__proto__']: 22 },
           ],
         },
         encoding: {
@@ -386,9 +412,14 @@ describe('VegaLiteSchemaAdapter', () => {
           y: { field: '__proto__', aggregate, type: 'quantitative' },
         },
       };
+      const original = JSON.parse(JSON.stringify(spec));
       const result = transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }, false);
 
-      expect(result.data).toEqual([expect.objectContaining({ x: 'Jan', y: aggregate === 'count' ? 2 : 42 })]);
+      // A temporal month is a local calendar Date; display labels are not the data coordinate.
+      expect(result.data).toEqual([
+        expect.objectContaining({ x: new Date(2012, 0, 1), y: aggregate === 'count' ? 2 : 42 }),
+      ]);
+      expect(spec).toEqual(original);
     });
 
     it.each(['regression', 'loess', 'quantile'])('ignores inherited values in %s numeric transforms', kind => {
@@ -403,9 +434,17 @@ describe('VegaLiteSchemaAdapter', () => {
           : [{ [kind]: 'y', on: 'x' }];
       const points = transformData([{ x: 1, y: 10 }, { x: 2, y: 20 }, row], transform);
 
-      expect(points.map(point => point.y)).toEqual(
-        kind === 'regression' ? [10, 20] : kind === 'loess' ? [15, 15] : [20],
+      // Vega's two-point LOESS fits each point, unlike the old moving-average approximation.
+      expect(points.map(point => ({ x: point.x, y: point.y }))).toEqual(
+        kind === 'quantile'
+          ? [{ x: 1, y: 20 }]
+          : [
+              { x: 1, y: 10 },
+              { x: 2, y: 20 },
+            ],
       );
+      expect(Object.keys(row)).toEqual(['x']);
+      expect(Object.getPrototypeOf(row).y).toBe(100);
     });
 
     it('preserves ordinary fold, calculate and aggregate results', () => {
@@ -422,6 +461,60 @@ describe('VegaLiteSchemaAdapter', () => {
       );
 
       expect(points).toEqual([expect.objectContaining({ x: 1, y: 13 }), expect.objectContaining({ x: 2, y: 41 })]);
+    });
+
+    it('keeps quantile probabilities numeric and preserves every requested quantile', () => {
+      const points = transformData(
+        [{ y: 5 }, { y: 15 }, { y: 25 }],
+        [
+          { quantile: 'y', probs: [0, 0.5, 1] },
+          { calculate: 'datum.prob', as: 'x' },
+          { calculate: 'datum.value', as: 'y' },
+        ],
+      );
+
+      expect(points).toHaveLength(3);
+      expect(points.map(point => ({ x: point.x, y: point.y }))).toEqual([
+        { x: 0, y: 5 },
+        { x: 0.5, y: 15 },
+        { x: 1, y: 25 },
+      ]);
+    });
+
+    it('does not invent intermediate impute keys without keyvals', () => {
+      const points = transformData(
+        [
+          { x: 1, y: 10 },
+          { x: 3, y: 30 },
+        ],
+        [{ impute: 'y', key: 'x', value: 42 }],
+      );
+
+      expect(points).toEqual([expect.objectContaining({ x: 1, y: 10 }), expect.objectContaining({ x: 3, y: 30 })]);
+    });
+
+    it('does not implicitly aggregate rows sharing a timeUnit coordinate', () => {
+      const spec: VegaLiteSpec = {
+        mark: 'bar',
+        data: {
+          values: [
+            { date: '2026-01-01T12:00:00', value: 20 },
+            { date: '2026-01-02T12:00:00', value: 22 },
+          ],
+        },
+        encoding: {
+          x: { field: 'date', type: 'temporal', timeUnit: 'month' },
+          y: { field: 'value', type: 'quantitative' },
+        },
+      };
+      const original = JSON.parse(JSON.stringify(spec));
+      const result = transformVegaLiteToVerticalBarChartProps(spec, { current: colorMap }, false);
+
+      expect(result.data).toEqual([
+        expect.objectContaining({ x: new Date(2012, 0, 1), y: 20 }),
+        expect.objectContaining({ x: new Date(2012, 0, 1), y: 22 }),
+      ]);
+      expect(spec).toEqual(original);
     });
   });
 
@@ -446,10 +539,17 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.data.lineChartData).toHaveLength(1);
       expect(result.data.lineChartData![0].data).toHaveLength(5);
       expect(result.data.lineChartData![0].legend).toBe('default');
+      expect(result.data.lineChartData![0].data.map(point => ({ x: point.x, y: point.y }))).toEqual([
+        { x: 1, y: 28 },
+        { x: 2, y: 55 },
+        { x: 3, y: 43 },
+        { x: 4, y: 91 },
+        { x: 5, y: 81 },
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should transform line chart with temporal x-axis', () => {
@@ -472,10 +572,17 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.data.lineChartData).toHaveLength(1);
+      expect(result.data.lineChartData![0].data).toHaveLength(4);
       expect(result.data.lineChartData![0].data[0].x).toBeInstanceOf(Date);
       expect(result.yAxisTitle).toBe('Value');
+      expect(result.data.lineChartData![0].data.map(point => ({ x: point.x, y: point.y }))).toEqual([
+        { x: new Date('2024-01-01'), y: 100 },
+        { x: new Date('2024-02-01'), y: 150 },
+        { x: new Date('2024-03-01'), y: 120 },
+        { x: new Date('2024-04-01'), y: 180 },
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should transform multi-series chart with color encoding', () => {
@@ -500,12 +607,24 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.data.lineChartData).toHaveLength(2);
       expect(result.data.lineChartData![0].legend).toBe('A');
       expect(result.data.lineChartData![1].legend).toBe('B');
       expect(result.data.lineChartData![0].data).toHaveLength(3);
       expect(result.data.lineChartData![1].data).toHaveLength(3);
+      expect(result.data.lineChartData!.map(series => series.data.map(point => ({ x: point.x, y: point.y })))).toEqual([
+        [
+          { x: 1, y: 28 },
+          { x: 2, y: 55 },
+          { x: 3, y: 43 },
+        ],
+        [
+          { x: 1, y: 35 },
+          { x: 2, y: 60 },
+          { x: 3, y: 50 },
+        ],
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should transform layered spec with line and point marks', () => {
@@ -537,9 +656,14 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.data.lineChartData).toHaveLength(1);
       expect(result.data.lineChartData![0].data).toHaveLength(3);
+      expect(result.data.lineChartData![0].data.map(point => ({ x: point.x, y: point.y }))).toEqual([
+        { x: 1, y: 28 },
+        { x: 2, y: 55 },
+        { x: 3, y: 43 },
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should extract axis titles and formats', () => {
@@ -570,12 +694,17 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.tickFormat).toBe('.0f');
       expect(result.yAxisTickFormat).toBe('.2f');
       expect(result.yAxisTickCount).toBe(5);
       expect(result.width).toBe(800);
       expect(result.height).toBe(400);
+      expect(result.data.lineChartData).toHaveLength(1);
+      expect(result.data.lineChartData![0].data).toEqual([
+        expect.objectContaining({ x: 1, y: 100 }),
+        expect.objectContaining({ x: 2, y: 200 }),
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should handle interpolation mapping', () => {
@@ -598,9 +727,14 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       // Vega-Lite 'monotone' maps to 'linear' in Fluent Charts (closest approximation)
       expect(result.data.lineChartData![0].lineOptions?.curve).toBe('linear');
+      expect(result.data.lineChartData).toHaveLength(1);
+      expect(result.data.lineChartData![0].data).toEqual([
+        expect.objectContaining({ x: 1, y: 28 }),
+        expect.objectContaining({ x: 2, y: 55 }),
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should handle y-axis domain/range', () => {
@@ -624,9 +758,14 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.yMinValue).toBe(0);
       expect(result.yMaxValue).toBe(200);
+      expect(result.data.lineChartData).toHaveLength(1);
+      expect(result.data.lineChartData![0].data).toEqual([
+        expect.objectContaining({ x: 1, y: 50 }),
+        expect.objectContaining({ x: 2, y: 150 }),
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should hide legend when disabled', () => {
@@ -647,8 +786,13 @@ describe('VegaLiteSchemaAdapter', () => {
 
       const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-      expect(result).toMatchSnapshot();
       expect(result.hideLegend).toBe(true);
+      expect(result.data.lineChartData).toHaveLength(2);
+      expect(result.data.lineChartData!.map(series => ({ legend: series.legend, data: series.data }))).toEqual([
+        { legend: 'A', data: [expect.objectContaining({ x: 1, y: 28 })] },
+        { legend: 'B', data: [expect.objectContaining({ x: 2, y: 55 })] },
+      ]);
+      expect(result).toMatchSnapshot();
     });
 
     test('Should throw error for empty spec', () => {
@@ -930,16 +1074,18 @@ describe('VegaLiteSchemaAdapter', () => {
           },
         };
 
-        // Should auto-correct quantitative to nominal when data contains strings
-        // This matches Plotly behavior - render as categorical chart
+        const original = JSON.parse(JSON.stringify(spec));
+        // Legacy fallback can render categories, but normalization must remain pure.
         const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
 
-        // Should successfully transform (not throw error)
-        expect(result).toBeDefined();
-        expect(result.data).toBeDefined();
-
-        // Type should be auto-corrected to nominal
-        expect(spec.encoding!.x?.type).toBe('nominal');
+        expect(result.data.lineChartData).toHaveLength(1);
+        expect(result.data.lineChartData![0].data.map(point => ({ x: point.x, y: point.y }))).toEqual([
+          { x: 0, y: 28 },
+          { x: 1, y: 55 },
+        ]);
+        expect(result.tickValues).toEqual(['one', 'two']);
+        expect(spec).toEqual(original);
+        expect(spec.encoding!.x?.type).toBe('quantitative');
       });
 
       test('Should throw error for temporal encoding with invalid date strings', () => {
@@ -1129,22 +1275,8 @@ describe('VegaLiteSchemaAdapter', () => {
       });
     });
 
-    // Skipped: These tests expect console.warn calls that are intentionally not emitted
-    // to avoid polluting console output. The unsupported features are documented in comments.
-    describe.skip('Unsupported Features Warnings', () => {
-      let consoleWarnSpy: jest.SpyInstance;
-
-      beforeEach(() => {
-        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {
-          // Mock implementation
-        });
-      });
-
-      afterEach(() => {
-        consoleWarnSpy.mockRestore();
-      });
-
-      test('Should warn about transform pipeline', () => {
+    describe('Semantic Feature Diagnostics', () => {
+      test('Should accept and execute a supported transform pipeline without diagnostics', () => {
         const spec: VegaLiteSpec = {
           mark: 'line',
           data: {
@@ -1160,13 +1292,17 @@ describe('VegaLiteSchemaAdapter', () => {
           },
         };
 
-        transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
-
-        expect(consoleWarnSpy).toHaveBeenCalledWith(expect.stringContaining('Transform pipeline is not yet supported'));
+        const original = JSON.parse(JSON.stringify(spec));
+        expect(validateVegaLiteSpec(spec)).toEqual([]);
+        expect(validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([]);
+        const result = transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
+        expect(result.data.lineChartData).toHaveLength(1);
+        expect(result.data.lineChartData![0].data).toEqual([expect.objectContaining({ x: 2, y: 55 })]);
+        expect(spec).toEqual(original);
       });
 
-      test('Should warn about selections', () => {
-        const spec: any = {
+      test('Should report unsupported selections at their authored path', () => {
+        const spec: VegaLiteSpec = {
           mark: 'line',
           data: {
             values: [
@@ -1183,34 +1319,56 @@ describe('VegaLiteSchemaAdapter', () => {
           },
         };
 
-        transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
-
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-          expect.stringContaining('Interactive selections are not yet supported'),
-        );
+        const original = JSON.parse(JSON.stringify(spec));
+        expect(validateVegaLiteSpec(spec)).toEqual([
+          {
+            code: 'unsupported-property',
+            path: '$.selection',
+            severity: 'warning',
+            message: 'Parameter/selection interactions are not implemented.',
+            remedy: 'Remove this property or implement its semantics before rendering.',
+          },
+        ]);
+        expect(validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([
+          {
+            code: 'unsupported-property',
+            path: '$.selection',
+            severity: 'error',
+            message: 'Parameter/selection interactions are not implemented.',
+            remedy: 'Remove this property or implement its semantics before rendering.',
+          },
+        ]);
+        expect(spec).toEqual(original);
       });
 
-      test('Should warn about repeat and facet', () => {
-        const spec: any = {
+      test('Should accept valid repeat and facet templates instead of warning about supported composition', () => {
+        const unit: VegaLiteSpec = {
           mark: 'line',
+          encoding: {
+            x: { field: 'x', type: 'quantitative' },
+            y: { field: 'y', type: 'quantitative' },
+          },
+        };
+        const spec: VegaLiteSpec = {
           data: {
             values: [
               { x: 1, y: 28 },
               { x: 2, y: 55 },
             ],
           },
-          repeat: ['column1', 'column2'],
-          encoding: {
-            x: { field: 'x', type: 'quantitative' },
-            y: { field: 'y', type: 'quantitative' },
+          repeat: ['x', 'y'],
+          spec: {
+            ...unit,
+            encoding: { ...unit.encoding, y: { field: { repeat: 'repeat' }, type: 'quantitative' } },
           },
         };
-
-        transformVegaLiteToLineChartProps(spec, { current: colorMap }, false);
-
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-          expect.stringContaining('Repeat and facet specifications are not yet supported'),
-        );
+        const original = JSON.parse(JSON.stringify(spec));
+        expect(validateVegaLiteSpec(spec)).toEqual([]);
+        expect(validateVegaLiteSpec(spec, { mode: 'strict' })).toEqual([]);
+        const facet: VegaLiteSpec = { data: spec.data, facet: { field: 'x', type: 'nominal' }, spec: unit };
+        expect(validateVegaLiteSpec(facet)).toEqual([]);
+        expect(validateVegaLiteSpec(facet, { mode: 'strict' })).toEqual([]);
+        expect(spec).toEqual(original);
       });
     });
 

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Pivot sums duplicate keys and exposes a literal dotted column through escaped field syntax.",
+  "width": 640,
+  "height": 400,
+  "data": {
+    "values": [
+      { "group": "A", "side": "north.total", "amount": 1 },
+      { "group": "A", "side": "north.total", "amount": 2 },
+      { "group": "A", "side": "south", "amount": 7 },
+      { "group": "B", "side": "north.total", "amount": 4 },
+      { "group": "B", "side": "south", "amount": 8 }
+    ]
+  },
+  "transform": [{ "pivot": "side", "value": "amount", "groupby": ["group"], "op": "sum" }],
+  "mark": "point",
+  "encoding": {
+    "x": { "field": "north\\.total", "type": "quantitative" },
+    "y": { "field": "south", "type": "quantitative" },
+    "tooltip": [{ "field": "group", "type": "nominal" }]
+  }
+}

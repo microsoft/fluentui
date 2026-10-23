@@ -2949,7 +2949,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
               role="listbox"
             >
               <g
-                aria-label="Company A, ROE. , 15.2."
+                aria-label="company: Company A; ratio: ROE; value: 15.2"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -2972,7 +2972,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company B, ROE. , 12.7."
+                aria-label="company: Company B; ratio: ROE; value: 12.7"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -2995,7 +2995,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company C, ROE. , 18.5."
+                aria-label="company: Company C; ratio: ROE; value: 18.5"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3018,7 +3018,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company A, Debt-to-Equity. , 0.8."
+                aria-label="company: Company A; ratio: Debt-to-Equity; value: 0.8"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3041,7 +3041,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company B, Debt-to-Equity. , 1.3."
+                aria-label="company: Company B; ratio: Debt-to-Equity; value: 1.3"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3064,7 +3064,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company C, Debt-to-Equity. , 0.5."
+                aria-label="company: Company C; ratio: Debt-to-Equity; value: 0.5"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3087,7 +3087,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company A, Quick Ratio. , 1.5."
+                aria-label="company: Company A; ratio: Quick Ratio; value: 1.5"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3110,7 +3110,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company B, Quick Ratio. , 1.2."
+                aria-label="company: Company B; ratio: Quick Ratio; value: 1.2"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3133,7 +3133,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company C, Quick Ratio. , 1.9."
+                aria-label="company: Company C; ratio: Quick Ratio; value: 1.9"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3156,7 +3156,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company A, Current Ratio. , 2.1."
+                aria-label="company: Company A; ratio: Current Ratio; value: 2.1"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3179,7 +3179,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company B, Current Ratio. , 1.8."
+                aria-label="company: Company B; ratio: Current Ratio; value: 1.8"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3202,7 +3202,7 @@ exports[`VegaDeclarativeChart - Financial Ratios Heatmap should render financial
                 </text>
               </g>
               <g
-                aria-label="Company C, Current Ratio. , 2.5."
+                aria-label="company: Company C; ratio: Current Ratio; value: 2.5"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -3997,7 +3997,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               role="listbox"
             >
               <g
-                aria-label="Morning, Houston. , 72."
+                aria-label="city: Houston; time: Morning; Air Quality Index: 72"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4020,7 +4020,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Afternoon, Houston. , 88."
+                aria-label="city: Houston; time: Afternoon; Air Quality Index: 88"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4043,7 +4043,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Evening, Houston. , 75."
+                aria-label="city: Houston; time: Evening; Air Quality Index: 75"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4066,7 +4066,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Morning, Chicago. , 52."
+                aria-label="city: Chicago; time: Morning; Air Quality Index: 52"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4089,7 +4089,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Afternoon, Chicago. , 68."
+                aria-label="city: Chicago; time: Afternoon; Air Quality Index: 68"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4112,7 +4112,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Evening, Chicago. , 61."
+                aria-label="city: Chicago; time: Evening; Air Quality Index: 61"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4135,7 +4135,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Morning, Los Angeles. , 85."
+                aria-label="city: Los Angeles; time: Morning; Air Quality Index: 85"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4158,7 +4158,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Afternoon, Los Angeles. , 95."
+                aria-label="city: Los Angeles; time: Afternoon; Air Quality Index: 95"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4181,7 +4181,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Evening, Los Angeles. , 78."
+                aria-label="city: Los Angeles; time: Evening; Air Quality Index: 78"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4204,7 +4204,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Morning, New York. , 45."
+                aria-label="city: New York; time: Morning; Air Quality Index: 45"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4227,7 +4227,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Afternoon, New York. , 62."
+                aria-label="city: New York; time: Afternoon; Air Quality Index: 62"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4250,7 +4250,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Evening, New York. , 58."
+                aria-label="city: New York; time: Evening; Air Quality Index: 58"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4483,7 +4483,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
               role="listbox"
             >
               <g
-                aria-label="Monday, Period 4. , 85."
+                aria-label="day: Monday; period: Period 4; Attendance %: 85"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4506,7 +4506,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Tuesday, Period 4. , 86."
+                aria-label="day: Tuesday; period: Period 4; Attendance %: 86"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4529,7 +4529,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Wednesday, Period 4. , 88."
+                aria-label="day: Wednesday; period: Period 4; Attendance %: 88"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4552,7 +4552,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Monday, Period 3. , 87."
+                aria-label="day: Monday; period: Period 3; Attendance %: 87"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4575,7 +4575,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Tuesday, Period 3. , 91."
+                aria-label="day: Tuesday; period: Period 3; Attendance %: 91"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4598,7 +4598,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Wednesday, Period 3. , 90."
+                aria-label="day: Wednesday; period: Period 3; Attendance %: 90"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4621,7 +4621,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Monday, Period 2. , 89."
+                aria-label="day: Monday; period: Period 2; Attendance %: 89"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4644,7 +4644,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Tuesday, Period 2. , 88."
+                aria-label="day: Tuesday; period: Period 2; Attendance %: 88"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4667,7 +4667,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Wednesday, Period 2. , 92."
+                aria-label="day: Wednesday; period: Period 2; Attendance %: 92"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4690,7 +4690,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Monday, Period 1. , 92."
+                aria-label="day: Monday; period: Period 1; Attendance %: 92"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4713,7 +4713,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Tuesday, Period 1. , 90."
+                aria-label="day: Tuesday; period: Period 1; Attendance %: 90"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"
@@ -4736,7 +4736,7 @@ exports[`VegaDeclarativeChart - More Heatmap Charts should render heatmap from a
                 </text>
               </g>
               <g
-                aria-label="Wednesday, Period 1. , 94."
+                aria-label="day: Wednesday; period: Period 1; Attendance %: 94"
                 fill-opacity="1"
                 role="option"
                 tabindex="0"

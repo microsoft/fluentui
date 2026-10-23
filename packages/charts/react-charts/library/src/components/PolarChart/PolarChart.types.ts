@@ -7,9 +7,11 @@ import type {
   Chart,
   LinePolarSeries,
   Margins,
+  PolarDataPoint,
   ScatterPolarSeries,
 } from '../../types/DataPoint';
 import type { LegendsProps } from '../Legends/Legends.types';
+import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Configuration options for a polar axis.
@@ -94,6 +96,13 @@ export interface PolarChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /**
+   * Renders custom JSX for the active marker using the original polar data point.
+   * Returning null hides the callout; undefined uses the native default content.
+   * No defaultRender function is supplied.
+   */
+  onRenderCalloutPerDataPoint?: RenderFunction<PolarDataPoint>;
 
   /*
    * Properties for customizing the legend.
