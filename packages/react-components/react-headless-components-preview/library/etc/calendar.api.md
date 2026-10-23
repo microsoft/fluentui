@@ -228,6 +228,7 @@ export type CalendarMonthCellProps = {
 // @public
 export type CalendarMonthHandle = {
     focus(options?: FocusOptions): void;
+    showYearPicker(): void;
 };
 
 // @public

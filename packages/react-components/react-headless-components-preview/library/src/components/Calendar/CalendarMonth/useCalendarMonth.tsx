@@ -102,10 +102,14 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     navigate(ev, date, true);
   };
 
+  const showYearPicker = (): void => {
+    focusOnUpdate.current = true;
+    setIsYearPickerVisible(true);
+  };
+
   const onHeaderSelect = useEventCallback((ev: ButtonEvent): void => {
     if (!yearPickerHidden) {
-      focusOnUpdate.current = true;
-      setIsYearPickerVisible(true);
+      showYearPicker();
     } else {
       onUserHeaderSelect?.(ev, { event: ev, type: getCalendarEventType(ev) });
     }
@@ -184,7 +188,14 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
     }
   };
 
-  React.useImperativeHandle(props.imperativeRef, () => ({ focus }));
+  React.useImperativeHandle(props.imperativeRef, () => ({
+    focus,
+    showYearPicker: () => {
+      if (!yearPickerHidden) {
+        showYearPicker();
+      }
+    },
+  }));
 
   React.useEffect(() => {
     if (focusOnUpdate.current) {

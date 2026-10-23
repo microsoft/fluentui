@@ -208,6 +208,7 @@ export const getCalendarPickerCellProps = (
       role: 'gridcell',
       'aria-disabled': isDisabled,
       'aria-selected': isSelected,
+      'aria-current': isCurrent ? 'date' : undefined,
       tabIndex: allFocusable || !isDisabled ? 0 : -1,
       focusgroupstart: isTabStop ? '' : undefined,
       'data-current': toDataAttributeValue(isCurrent),

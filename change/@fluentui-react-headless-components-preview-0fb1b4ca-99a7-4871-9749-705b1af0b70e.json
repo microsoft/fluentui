@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add headless DatePicker; expose aria-current on current Calendar month/year cells and CalendarMonthHandle.showYearPicker",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

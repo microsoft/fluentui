@@ -12,6 +12,11 @@ export type CalendarMonthHandle = {
    * or to the year picker while it is open.
    */
   focus(options?: FocusOptions): void;
+
+  /**
+   * Replaces the month grid with the year picker and moves focus into it. Does nothing when `yearPickerHidden` is set.
+   */
+  showYearPicker(): void;
 };
 
 /**

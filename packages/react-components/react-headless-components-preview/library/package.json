@@ -214,6 +214,16 @@
         "default": "./lib-commonjs/compound-button.cjs"
       }
     },
+    "./date-picker": {
+      "import": {
+        "types": "./dist/date-picker.d.ts",
+        "default": "./lib/date-picker.js"
+      },
+      "require": {
+        "types": "./dist/date-picker.d.cts",
+        "default": "./lib-commonjs/date-picker.cjs"
+      }
+    },
     "./dialog": {
       "import": {
         "types": "./dist/dialog.d.ts",
