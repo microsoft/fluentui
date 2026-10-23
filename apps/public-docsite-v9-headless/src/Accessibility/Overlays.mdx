@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Accessibility/Overlays" />
+
+# Overlays: Dialog and Popover API
+
+The styled Fluent components render overlays into a portal at the end of `<body>`, stack them with `z-index`, and manage focus in JavaScript. Headless overlays use the platform instead: the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element and the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API). Both put the overlay in the browser's top layer, and the browser takes over part of the focus and dismiss behavior.
+
+## Which mechanism each component uses
+
+| Component                                          | Native mechanism                                                   | Role                                 |
+| -------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------ |
+| Dialog, OverlayDrawer, overlay NavDrawer (`modal`) | `<dialog>` opened with `showModal()`                               | `dialog`, `aria-modal="true"`        |
+| Dialog (`alert`)                                   | `<dialog>` opened with `showModal()`                               | `alertdialog`, `aria-modal="true"`   |
+| Dialog (`non-modal`)                               | `<dialog popover="manual">` opened with `showPopover()`            | `dialog`                             |
+| Popover, TeachingPopover                           | `<dialog popover="auto">`; with `trapFocus`, `showModal()` instead | `group`; `dialog` with `trapFocus`   |
+| Menu                                               | `popover="auto"`                                                   | `menu`                               |
+| Combobox, Dropdown, TagPicker                      | Listbox with `popover="auto"`                                      | `listbox`; `menu` with `multiselect` |
+| InfoLabel                                          | Popover (`popover="auto"`)                                         | `note`                               |
+| Tooltip                                            | `popover="hint"`                                                   | `tooltip`                            |
+| Toaster                                            | One `popover="manual"` container per position                      | `list` of `listitem`s                |
+
+## Differences from the styled Fluent components
+
+| Behavior                            | Headless                                                                                                                                                          | Styled v9                                         |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Where the overlay renders           | In place, right after its trigger in the DOM                                                                                                                      | Portal at the end of `<body>`                     |
+| Stacking                            | Browser top layer                                                                                                                                                 | `z-index`                                         |
+| Hiding the rest of the page (modal) | Browser makes everything outside the `<dialog>` inert                                                                                                             | `aria-hidden` on everything else                  |
+| Tab in a modal                      | Cycles through the dialog, then out to the browser UI                                                                                                             | Wraps inside the dialog (unless `inertTrapFocus`) |
+| Outside click                       | Native light dismiss for `popover="auto"`; backdrop click for modal dialogs                                                                                       | JavaScript click-outside handlers                 |
+| Focus on open, non-modal            | Only an element with `autofocus` gets focus                                                                                                                       | First focusable element                           |
+| Focus on open, modal                | Browser's `showModal()` rules                                                                                                                                     | First focusable element                           |
+| Focus restore                       | Browser (modal) or the component (non-modal, popovers, menus)                                                                                                     | JavaScript focus restore                          |
+| Backdrop                            | `::backdrop` pseudo-element                                                                                                                                       | `backdrop` slot (a `div`)                         |
+| Props not available                 | Popover and Tooltip have no `mountNode` or `inline`. Menu accepts `inline` and `mountNode` but ignores them. Dialog accepts `inertTrapFocus` but it has no effect | —                                                 |
+| TeachingPopover default             | `trapFocus` is `false`                                                                                                                                            | `trapFocus` is `true`                             |
+
+## What the native behavior means for users
+
+### Reading order follows the DOM
+
+The top layer changes what users see, not the accessibility tree or the Tab order. Headless overlays render right after their trigger, so screen readers read the overlay where it belongs, and Tab from a non-modal popover continues to the element after the trigger. The styled components portal to the end of `<body>`, which puts overlays last in reading order.
+
+Anything that hides the trigger's container also hides the overlay. An ancestor with `display: none`, `inert`, `aria-hidden` or `content-visibility: hidden`, or one that unmounts, takes the open overlay with it. Don't put triggers inside regions you hide while the overlay is open.
+
+### Modal dialogs make the page inert
+
+`showModal()` makes everything outside the dialog inert: not focusable, not clickable, and hidden from assistive technology. That includes other top-layer content, such as toasts or a popover opened before the dialog. Toasts stay visible but users can't reach them until the dialog closes.
+
+Give every dialog a name. `DialogTitle` labels the surface through `aria-labelledby`; without a title, pass `aria-label` on `DialogSurface`.
+
+### Tab in modal overlays
+
+Modal Dialog, OverlayDrawer, overlay NavDrawer, and Popover or TeachingPopover with `trapFocus` open a native `<dialog>` with `showModal()`, and Tab order inside it is the browser's. The page behind is inert, so focus never reaches it.
+
+Chrome and Edge move Tab from the last element in the dialog to the browser UI (address bar, tabs), and the next Tab comes back to the first element. Shift+Tab works the same way in reverse. This is not a focus leak: being able to reach the browser UI means a modal is not a keyboard trap ([WCAG 2.1.2](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap)). The styled Dialog behaves the same way with `inertTrapFocus`.
+
+Headless components don't wrap Tab inside the dialog. If your product needs wrapping, add it in your own component.
+
+### Focus on open
+
+- **Modal dialogs** follow the browser's `showModal()` rules: an element with `autofocus` inside the dialog, otherwise the first focusable element. Put `autoFocus` on the element users should start on, for example the safe action in a destructive confirmation.
+- **Non-modal dialogs and popovers** don't move focus unless an element inside has `autofocus`. Focus stays on the trigger, and users Tab into the surface. If the content needs immediate attention, add `autoFocus` to an element in it or use `trapFocus`.
+- **Menus** focus their first enabled item when they open.
+- **Listboxes** keep focus on the combobox input or button; options are announced through `aria-activedescendant`.
+
+### `popover="auto"`: one open at a time
+
+Opening an `auto` popover closes every other open `auto` popover that isn't its DOM ancestor. Opening a Menu closes an open Popover or Listbox elsewhere on the page, and vice versa. Nested overlays (a submenu, a popover inside a popover) stay open, because the inner one is a DOM descendant of the outer one. Opening a modal dialog closes open `auto` and `hint` popovers too.
+
+`popover="manual"` (non-modal Dialog, Toaster) doesn't close anything and isn't closed by others.
+
+### Escape and light dismiss
+
+- Escape and outside clicks close the topmost `auto` popover, whatever has focus. `onOpenChange` reports the close, but for a light dismiss it can't stop it.
+- A Popover with `trapFocus` uses `showModal()`, so Escape fires the dialog's `cancel` event; call `preventDefault()` in `onCancel` to keep it open. It has no outside-click dismiss.
+- Dialog handles Escape itself and reports it through `onOpenChange`, so you can keep it open (for example, to confirm unsaved changes). A click on the backdrop closes `modal` dialogs, but never `alert` dialogs.
+
+### Tooltips use `popover="hint"`
+
+`hint` popovers don't close `auto` popovers, so a tooltip can show over an open menu. Browsers that don't support `hint` treat it as `manual`: the tooltip still shows and hides on hover and focus, but Escape no longer dismisses it ([WCAG 1.4.13](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus)). Check the [browser support matrix](?path=/docs/overview-browser-support--docs).
+
+### Without the Popover API
+
+On browsers without the Popover API, only non-modal Dialog falls back (to `dialog.show()`). Popover, Menu, Tooltip and Listbox surfaces don't open correctly. Load a polyfill if you support those browsers; see [Polyfills & fallbacks](?path=/docs/overview-polyfills-fallbacks--docs#popover-api).
+
+## Styling overlays accessibly
+
+- **Backdrop.** Style `::backdrop` on the `<dialog>` for modal surfaces. A backdrop isn't required for accessibility, but it shows sighted users that the page behind is unavailable.
+- **Forced colors.** Overlays lose their `box-shadow` in forced-colors mode. Give surfaces a visible border, for example `border: 1px solid transparent`, which becomes visible in forced colors.
+- **Motion.** If you animate entry and exit, wrap the animation in `@media (prefers-reduced-motion: no-preference)`. Exit animations need `overlay` and `display` in `transition-behavior: allow-discrete` transitions so the surface stays in the top layer until they finish.
+- **Scroll.** Modal dialogs lock page scroll. Long content inside the dialog needs its own scroll container, reachable at 400% zoom.
+
+## Testing checklist
+
+- Open each overlay with the keyboard. Check where focus lands and that the screen reader announces the role and name.
+- Close it with Escape and with the close button. Focus must return to the trigger.
+- In a modal, Tab through to the end. Focus should leave to the browser UI and come back into the dialog, never reaching the page behind.
+- Open a Menu while a Popover is open, and a Popover inside a Popover, and check which ones stay open.
+- Repeat in forced-colors mode and with reduced motion.

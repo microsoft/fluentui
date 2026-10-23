@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DisabledFocusableExamples, ToggleStateExamples } from './examples/StateExamples';
+
+<Meta title="Overview/Accessibility/Disabled & native controls" />
+
+# Disabled & native controls
+
+Headless components keep ARIA state (`aria-pressed`, `aria-checked`, `aria-disabled`, …) in sync with what the component is doing. Assistive technology only learns about a state if the component owns it. Your styles need to read from that same state, which the components also expose as `data-*` attributes (see [Styling component state](?path=/docs/overview-architecture--docs#styling-component-state)).
+
+## Let the component own the state
+
+If you keep a separate `isPressed` flag in React and only use it to pick a class name, the button looks pressed, but screen readers hear a plain button: there is no `aria-pressed`. Use the component that owns the state, here `ToggleButton`, and style what it sets.
+
+<ToggleStateExamples />
+
+```css
+.toggle[data-checked] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+```
+
+## Disabled and disabled-focusable
+
+The two props tell assistive technology different things:
+
+- **`disabled`** removes the element from the tab order. It sets the native `disabled` attribute, or `aria-disabled` on elements that have no native disabled state. Screen-reader users won't reach it with Tab.
+- **`disabledFocusable`** keeps the element in the tab order. It sets `aria-disabled="true"` but not native `disabled`, so users can still focus it and hear that it is unavailable. Use it when the reason matters, for example a Save button with a tooltip that explains what's missing.
+
+Make both look disabled. A rule on `:disabled` alone misses `disabledFocusable`, which then looks enabled but does nothing.
+
+<DisabledFocusableExamples />
+
+```css
+.button[data-disabled],
+.button[data-disabled-focusable] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+```
+
+- Keep the focus ring on `disabledFocusable` elements. They are in the tab order, so keyboard users have to see where they are.
+- Disabled controls are exempt from WCAG contrast requirements, but users still need to read them. Check that `opacity` doesn't make the text unreadable.
+- In forced-colors mode, use the `GrayText` system color for disabled text.
+
+## Keep native inputs
+
+Checkbox, Switch, RadioGroup and Slider render a real `<input>`. It gives you the role, the checked or value state, keyboard support and form submission. The usual pattern hides it visually and draws a custom indicator next to it:
+
+```css
+.input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.input:checked + .indicator {
+  background: var(--accent);
+}
+.input:focus-visible + .indicator {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+```
+
+- Keep the input in the DOM, covering the indicator with `opacity: 0`, so it still receives clicks and touches.
+- Don't use `display: none` or `visibility: hidden`. Both remove the input from the accessibility tree and the tab order.
+- Don't replace it with a `div`. You would have to rebuild the role, state, keyboard handling and form behavior by hand.
+- The input has focus, so draw the focus ring on the indicator with `:focus-visible + .indicator`.
