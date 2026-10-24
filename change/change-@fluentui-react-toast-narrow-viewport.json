@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-toast): keep the Toaster inside viewports narrower than the toast",
+  "packageName": "@fluentui/react-toast",
+  "email": "jakesalvesen@users.noreply.github.com"
+}
