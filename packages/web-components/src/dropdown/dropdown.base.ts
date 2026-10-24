@@ -3,10 +3,10 @@ import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
-import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { maybeSetAutoFocus } from '../utils/autofocus.js';
@@ -231,6 +231,7 @@ export class BaseDropdown extends FASTElement {
   public listboxChanged(prev: Listbox | undefined, next: Listbox | undefined): void {
     if (prev) {
       Observable.getNotifier(this).unsubscribe(prev);
+      Observable.getNotifier(prev).unsubscribe(this.optionsSubscriber, 'options');
     }
 
     if (next) {
@@ -240,22 +241,12 @@ export class BaseDropdown extends FASTElement {
 
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
+      Observable.getNotifier(next).subscribe(this.optionsSubscriber, 'options');
 
       notifier.notify('multiple');
 
       Updates.enqueue(() => {
-        this.options.forEach(option => {
-          option.disabled = option.disabledAttribute || this.disabled;
-          option.name = this.name;
-        });
-
-        this.enabledOptions
-          .filter(x => x.defaultSelected)
-          .forEach((x, i) => {
-            x.selected = this.multiple || i === 0;
-          });
-
-        this.setValidity();
+        this.syncOptions();
       });
 
       if (AnchorPositioningCSSSupported) {
@@ -266,6 +257,33 @@ export class BaseDropdown extends FASTElement {
         this.listbox.style.setProperty('position-anchor', anchorName);
       }
     }
+  }
+
+  private readonly optionsSubscriber = {
+    handleChange: (source: Listbox, propertyName?: string): void => {
+      if (source === this.listbox && propertyName === 'options') {
+        Updates.enqueue(() => this.syncOptions());
+      }
+    },
+  };
+
+  private syncOptions(): void {
+    if (!this.listbox) {
+      return;
+    }
+
+    this.options.forEach(option => {
+      option.disabled = option.disabledAttribute || this.disabled;
+      option.name = this.name;
+    });
+
+    this.enabledOptions
+      .filter(x => x.defaultSelected)
+      .forEach((x, i) => {
+        x.selected = this.multiple || i === 0;
+      });
+
+    this.setValidity();
   }
 
   /**
@@ -446,7 +464,7 @@ export class BaseDropdown extends FASTElement {
   public get enabledOptions(): DropdownOption[] {
     return (
       this.listbox?.enabledOptions ??
-      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled)
+      getUpgradedCustomElements(Array.from(this.querySelectorAll('*')), isDropdownOption).filter(o => !o.disabled)
     );
   }
 
@@ -512,9 +530,7 @@ export class BaseDropdown extends FASTElement {
    * @public
    */
   public get options(): DropdownOption[] {
-    return (
-      this.listbox?.options ?? Array.from(this.querySelectorAll('*')).filter<DropdownOption>(o => isDropdownOption(o))
-    );
+    return this.listbox?.options ?? getUpgradedCustomElements(Array.from(this.querySelectorAll('*')), isDropdownOption);
   }
 
   /**
@@ -1062,11 +1078,12 @@ export class BaseDropdown extends FASTElement {
    */
   public slotchangeHandler(e: Event): boolean | void {
     const target = e.target as HTMLSlotElement;
+    const assignedElements = target.assignedElements();
+    this.listbox = getUpgradedCustomElements(assignedElements, isListbox)[0];
 
-    waitForConnectedDescendants(this, () => {
-      const listbox = target.assignedElements().find((el): el is Listbox => isListbox(el));
-      if (listbox) {
-        this.listbox = listbox;
+    runAfterPendingDefinitions(assignedElements, isListbox, () => {
+      if (this.isConnected) {
+        this.listbox = getUpgradedCustomElements(target.assignedElements(), isListbox)[0];
       }
     });
   }

@@ -1,0 +1,366 @@
+import { Listbox } from '../../src/listbox/listbox.js';
+import { styles as listboxStyles } from '../../src/listbox/listbox.styles.js';
+import { template as listboxTemplate } from '../../src/listbox/listbox.template.js';
+import { DropdownOption } from '../../src/option/option.js';
+import { Dropdown } from '../../src/dropdown/dropdown.js';
+import { styles as dropdownStyles } from '../../src/dropdown/dropdown.styles.js';
+import { dropdownTemplate } from '../../src/dropdown/dropdown.template.js';
+import { Menu } from '../../src/menu/menu.js';
+import { styles as menuStyles } from '../../src/menu/menu.styles.js';
+import { template as menuTemplate } from '../../src/menu/menu.template.js';
+import { MenuList } from '../../src/menu-list/menu-list.js';
+import { MenuButton } from '../../src/menu-button/menu-button.js';
+import { styles as menuButtonStyles } from '../../src/menu-button/menu-button.styles.js';
+import { template as menuButtonTemplate } from '../../src/menu-button/menu-button.template.js';
+import { styles as menuListStyles } from '../../src/menu-list/menu-list.styles.js';
+import { template as menuListTemplate } from '../../src/menu-list/menu-list.template.js';
+import { styles as optionStyles } from '../../src/option/option.styles.js';
+import { template as optionTemplate } from '../../src/option/option.template.js';
+import { RadioGroup } from '../../src/radio-group/radio-group.js';
+import { styles as radioGroupStyles } from '../../src/radio-group/radio-group.styles.js';
+import { template as radioGroupTemplate } from '../../src/radio-group/radio-group.template.js';
+import { Radio } from '../../src/radio/radio.js';
+import { styles as radioStyles } from '../../src/radio/radio.styles.js';
+import { template as radioTemplate } from '../../src/radio/radio.template.js';
+import { TreeItem } from '../../src/tree-item/tree-item.js';
+import { styles as treeItemStyles } from '../../src/tree-item/tree-item.styles.js';
+import { template as treeItemTemplate } from '../../src/tree-item/tree-item.template.js';
+import { Tree } from '../../src/tree/tree.js';
+import { styles as treeStyles } from '../../src/tree/tree.styles.js';
+import { template as treeTemplate } from '../../src/tree/tree.template.js';
+
+type ListboxUpgradeOrderResult = {
+  firstOptionMultiple: boolean;
+  hasOwnMultiple: boolean;
+  optionsLength: number;
+};
+
+type RadioGroupUpgradeOrderResult = {
+  checkedRadioChecked: boolean;
+  checkedValue: string | null;
+  hasOwnChecked: boolean;
+  hasOwnCheckedBeforeUpgrade: boolean;
+  radiosLength: number;
+  radiosLengthBeforeUpgrade: number;
+};
+
+type TreeUpgradeOrderResult = {
+  childTreeItemsLength: number;
+  currentSelectedLocalName: string | undefined;
+  firstItemSize: string;
+  hasOwnSize: boolean;
+};
+
+type DropdownUpgradeOrderResult = {
+  hasOwnDropdown: boolean;
+  hasOwnDropdownBeforeUpgrade: boolean;
+  listboxConnected: boolean;
+  optionName: string;
+};
+
+type MenuUpgradeOrderResult = {
+  menuListAssignedBeforeUpgrade: boolean;
+  menuListAssignedAfterUpgrade: boolean;
+  triggerAssignedBeforeUpgrade: boolean;
+  triggerAssignedAfterUpgrade: boolean;
+};
+
+const nextFrame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+
+(
+  window as unknown as {
+    runDropdownUpgradeOrderTest(): Promise<DropdownUpgradeOrderResult>;
+  }
+).runDropdownUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const dropdownTagName = `upgrade-${id}-dropdown`;
+  const listboxTagName = `upgrade-${id}-listbox`;
+  const optionTagName = `upgrade-${id}-option`;
+
+  document.body.innerHTML = `
+    <${dropdownTagName} name="fruit">
+      <${listboxTagName}><${optionTagName} value="apple">Apple</${optionTagName}></${listboxTagName}>
+    </${dropdownTagName}>
+  `;
+
+  await Dropdown.define({
+    name: dropdownTagName,
+    registry: customElements,
+    template: dropdownTemplate(),
+    styles: dropdownStyles,
+  });
+
+  const dropdown = document.querySelector<Dropdown>(dropdownTagName);
+  const listbox = document.querySelector<Listbox>(listboxTagName);
+  if (!dropdown || !listbox) {
+    throw new Error('Expected dropdown and listbox to exist.');
+  }
+
+  customElements.upgrade(dropdown);
+  await nextFrame();
+  const hasOwnDropdownBeforeUpgrade = Object.prototype.hasOwnProperty.call(listbox, 'dropdown');
+
+  await Listbox.define({
+    name: listboxTagName,
+    registry: customElements,
+    template: listboxTemplate,
+    styles: listboxStyles,
+  });
+  await DropdownOption.define({
+    name: optionTagName,
+    registry: customElements,
+    template: optionTemplate,
+    styles: optionStyles,
+  });
+  await nextFrame();
+  await nextFrame();
+
+  const option = document.querySelector<DropdownOption>(optionTagName);
+  if (!option) {
+    throw new Error('Expected option to exist.');
+  }
+
+  return {
+    hasOwnDropdown: Object.prototype.hasOwnProperty.call(listbox, 'dropdown'),
+    hasOwnDropdownBeforeUpgrade,
+    listboxConnected: dropdown.listbox === listbox && listbox.dropdown === dropdown,
+    optionName: option.name,
+  };
+};
+
+(
+  window as unknown as {
+    runMenuUpgradeOrderTest(): Promise<MenuUpgradeOrderResult>;
+  }
+).runMenuUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const menuTagName = `upgrade-${id}-menu`;
+  const menuListTagName = `upgrade-${id}-menu-list`;
+  const menuButtonTagName = `upgrade-${id}-menu-button`;
+
+  document.body.innerHTML = `
+    <${menuTagName}>
+      <${menuButtonTagName} slot="trigger">Open</${menuButtonTagName}>
+      <${menuListTagName}>Item</${menuListTagName}>
+    </${menuTagName}>
+  `;
+
+  await Menu.define({
+    name: menuTagName,
+    registry: customElements,
+    template: menuTemplate,
+    styles: menuStyles,
+  });
+
+  const menu = document.querySelector<Menu>(menuTagName);
+  const menuList = document.querySelector<MenuList>(menuListTagName);
+  const menuButton = document.querySelector<MenuButton>(menuButtonTagName);
+  if (!menu || !menuList || !menuButton) {
+    throw new Error('Expected menu, menu list, and menu button to exist.');
+  }
+
+  customElements.upgrade(menu);
+  await nextFrame();
+  const menuListAssignedBeforeUpgrade = (menu as unknown as { _menuList?: HTMLElement })._menuList === menuList;
+  const triggerAssignedBeforeUpgrade = (menu as unknown as { _trigger?: HTMLElement })._trigger === menuButton;
+
+  await MenuList.define({
+    name: menuListTagName,
+    registry: customElements,
+    template: menuListTemplate,
+    styles: menuListStyles,
+  });
+  await MenuButton.define({
+    name: menuButtonTagName,
+    registry: customElements,
+    template: menuButtonTemplate,
+    styles: menuButtonStyles,
+  });
+  await nextFrame();
+  await nextFrame();
+
+  return {
+    menuListAssignedBeforeUpgrade,
+    menuListAssignedAfterUpgrade: (menu as unknown as { _menuList?: HTMLElement })._menuList === menuList,
+    triggerAssignedBeforeUpgrade,
+    triggerAssignedAfterUpgrade: (menu as unknown as { _trigger?: HTMLElement })._trigger === menuButton,
+  };
+};
+
+(
+  window as unknown as {
+    runListboxUpgradeOrderTest(): Promise<ListboxUpgradeOrderResult>;
+  }
+).runListboxUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const listboxTagName = `upgrade-${id}-listbox`;
+  const optionTagName = `upgrade-${id}-option`;
+
+  document.body.innerHTML = `
+    <${listboxTagName}>
+      <${optionTagName}>Apple</${optionTagName}>
+      <${optionTagName}>Banana</${optionTagName}>
+      <${optionTagName}>Orange</${optionTagName}>
+    </${listboxTagName}>
+  `;
+
+  await Listbox.define({
+    name: listboxTagName,
+    registry: customElements,
+    template: listboxTemplate,
+    styles: listboxStyles,
+  });
+
+  const listbox = document.querySelector<Listbox>(listboxTagName);
+  if (!listbox) {
+    throw new Error('Expected listbox to exist.');
+  }
+
+  customElements.upgrade(listbox);
+  listbox.multiple = true;
+
+  await DropdownOption.define({
+    name: optionTagName,
+    registry: customElements,
+    template: optionTemplate,
+    styles: optionStyles,
+  });
+
+  await customElements.whenDefined(listboxTagName);
+  await customElements.whenDefined(optionTagName);
+  await nextFrame();
+  await nextFrame();
+
+  const firstOption = document.querySelector<DropdownOption>(optionTagName);
+  if (!firstOption) {
+    throw new Error('Expected option to exist.');
+  }
+
+  return {
+    firstOptionMultiple: firstOption.multiple,
+    hasOwnMultiple: Object.prototype.hasOwnProperty.call(firstOption, 'multiple'),
+    optionsLength: listbox.options.length,
+  };
+};
+
+(
+  window as unknown as {
+    runRadioGroupUpgradeOrderTest(): Promise<RadioGroupUpgradeOrderResult>;
+  }
+).runRadioGroupUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const radioGroupTagName = `upgrade-${id}-radio-group`;
+  const radioTagName = `upgrade-${id}-radio`;
+  const foreignRadioTagName = `upgrade-${id}-foreign-radio`;
+
+  document.body.innerHTML = `
+    <${radioGroupTagName}>
+      <${radioTagName} value="apple">Apple</${radioTagName}>
+      <${radioTagName} value="banana" checked>Banana</${radioTagName}>
+      <${radioTagName} value="orange">Orange</${radioTagName}>
+      <${foreignRadioTagName}></${foreignRadioTagName}>
+    </${radioGroupTagName}>
+  `;
+
+  customElements.define(foreignRadioTagName, class extends HTMLElement {});
+
+  await RadioGroup.define({
+    name: radioGroupTagName,
+    registry: customElements,
+    template: radioGroupTemplate,
+    styles: radioGroupStyles,
+  });
+
+  const radioGroup = document.querySelector<RadioGroup>(radioGroupTagName);
+  const pendingCheckedRadio = document.querySelector<HTMLElement>(`${radioTagName}[checked]`);
+  if (!radioGroup || !pendingCheckedRadio) {
+    throw new Error('Expected radio group and checked radio to exist.');
+  }
+
+  customElements.upgrade(radioGroup);
+  await nextFrame();
+
+  const radiosLengthBeforeUpgrade = radioGroup.radios?.length ?? 0;
+  const hasOwnCheckedBeforeUpgrade = Object.prototype.hasOwnProperty.call(pendingCheckedRadio, 'checked');
+
+  await Radio.define({
+    name: radioTagName,
+    registry: customElements,
+    template: radioTemplate,
+    styles: radioStyles,
+  });
+
+  await customElements.whenDefined(radioGroupTagName);
+  await customElements.whenDefined(radioTagName);
+  await nextFrame();
+  await nextFrame();
+
+  const checkedRadio = radioGroup.radios.find(radio => radio.value === 'banana');
+  if (!checkedRadio) {
+    throw new Error('Expected checked radio to exist.');
+  }
+
+  return {
+    checkedRadioChecked: checkedRadio.checked,
+    checkedValue: radioGroup.value,
+    hasOwnChecked: radioGroup.radios.some(radio => Object.prototype.hasOwnProperty.call(radio, 'checked')),
+    hasOwnCheckedBeforeUpgrade,
+    radiosLength: radioGroup.radios.length,
+    radiosLengthBeforeUpgrade,
+  };
+};
+
+(
+  window as unknown as {
+    runTreeUpgradeOrderTest(): Promise<TreeUpgradeOrderResult>;
+  }
+).runTreeUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const treeTagName = `upgrade-${id}-tree`;
+  const treeItemTagName = `upgrade-${id}-tree-item`;
+
+  document.body.innerHTML = `
+    <${treeTagName} size="medium">
+      <${treeItemTagName} selected>One</${treeItemTagName}>
+      <${treeItemTagName}>Two</${treeItemTagName}>
+    </${treeTagName}>
+  `;
+
+  await Tree.define({
+    name: treeTagName,
+    registry: customElements,
+    template: treeTemplate,
+    styles: treeStyles,
+  });
+
+  const tree = document.querySelector<Tree>(treeTagName);
+  if (!tree) {
+    throw new Error('Expected tree to exist.');
+  }
+
+  customElements.upgrade(tree);
+
+  await TreeItem.define({
+    name: treeItemTagName,
+    registry: customElements,
+    template: treeItemTemplate,
+    styles: treeItemStyles,
+  });
+
+  await customElements.whenDefined(treeTagName);
+  await customElements.whenDefined(treeItemTagName);
+  await nextFrame();
+  await nextFrame();
+
+  const firstItem = document.querySelector<TreeItem>(treeItemTagName);
+  if (!firstItem) {
+    throw new Error('Expected tree item to exist.');
+  }
+
+  return {
+    childTreeItemsLength: tree.childTreeItems.length,
+    currentSelectedLocalName: tree.currentSelected?.localName,
+    firstItemSize: firstItem.size,
+    hasOwnSize: Object.prototype.hasOwnProperty.call(firstItem, 'size'),
+  };
+};
