@@ -70,7 +70,7 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
 👎 Cons:
 
 - Creating new composed component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
-- Composed component apperance prop wouldn't match our Fluent V9 documentation
+- Composed component appearance prop wouldn't match our Fluent V9 documentation
 - Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
 - Composition approach is currently marked as unstable in v9
 
@@ -94,7 +94,7 @@ export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, r
 
 - Creating new composed component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
 - Wrapper components in React's i.e. bigger React tree
-- Wrapper component apperance wouldn't match our Fluent V9 documentation
+- Wrapper component appearance wouldn't match our Fluent V9 documentation
 - Would work in iframes only within the TMP repository
 - Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
 

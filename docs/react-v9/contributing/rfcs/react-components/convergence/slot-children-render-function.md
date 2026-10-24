@@ -272,7 +272,7 @@ At the moment the merging of the 3 instances of properties is done in 3 differen
 
 Properties will be lost after those steps, mainly `children` will be lost, affecting the render function mechanism.
 
-Merging the properties is a complex scenario that should not be splitted into multiple steps as all properties
+Merging the properties is a complex scenario that should not be split into multiple steps as all properties
 must be considered when merging them, since we got peculiar scenarios involving `children` mostly
 
 ## Detailed Design or Proposal

@@ -52,7 +52,7 @@ Below is a repetition of the OKRs above, but with proposed work mapped to the OK
   - Improve accessibility support and validations in UI builder
   - Consider https://react-spectrum.adobe.com/react-aria/index.html
 - [ ] Deliver Theme provider to consume the same converged primitives in both Office and Teams - Xu [#15749](https://github.com/microsoft/fluentui/issues/15749)
-- [ ] [Epic] Deliver primitives for Card Scenario to Office.com and enable buidling Me control for Teams – Mak [TODO wording]
+- [ ] [Epic] Deliver primitives for Card Scenario to Office.com and enable building Me control for Teams – Mak [TODO wording]
   - Full details here: [Component Refresh + Convergence Schedule](/coming soon)
   - Build:
     - [ ] Card - Mak/Josche
@@ -68,7 +68,7 @@ Below is a repetition of the OKRs above, but with proposed work mapped to the OK
   - Start:
     - [ ] Tooltip/Callout - Josche/Mak
   - [ ] Release a guide covering how to build converged components – David
-    - Start this quarter, gather decisions, and our approachs
+    - Start this quarter, gather decisions, and our approaches
     - Write the guide, publish review, get feedback
   - [ ] Identify next set of converged primitives and roll out plan
     - Build scorecard, publish roadmap, publish this

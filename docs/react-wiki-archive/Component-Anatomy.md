@@ -133,7 +133,7 @@ export const styles = (props: IComponentNameStyleProps): IComponentNameStyles =>
 
 ### ComponentName.tsx
 
-Tying the component to the style is made easy using the `styled` HOC wrapper, whch as input takes the base component and an object of 1 or more style function props.
+Tying the component to the style is made easy using the `styled` HOC wrapper, which as input takes the base component and an object of 1 or more style function props.
 
 ```tsx
 import { styled } from '../../Utilities';
