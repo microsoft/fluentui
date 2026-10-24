@@ -1,4 +1,3 @@
-import { attr } from '@microsoft/fast-element';
 import { BaseRatingDisplay } from './rating-display.base.js';
 import type { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
@@ -8,38 +7,10 @@ import type { RatingDisplayColor, RatingDisplaySize } from './rating-display.opt
  *
  * @tag fluent-rating-display
  *
+ * @presentational {RatingDisplayColor} [color=marigold] - The color of the rating display icons.
+ * @presentational {RatingDisplaySize} [size=medium] - The size of the component.
+ * @presentational {boolean} compact - Renders a single filled icon with a label next to it.
+ *
  * @public
  */
-export class RatingDisplay extends BaseRatingDisplay {
-  /**
-   * The color of the rating display icons.
-   *
-   * @public
-   * @default `marigold`
-   * @remarks
-   * HTML Attribute: `color`
-   */
-  @attr
-  public color?: RatingDisplayColor;
-
-  /**
-   * The size of the component.
-   *
-   * @public
-   * @default 'medium'
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: RatingDisplaySize;
-
-  /**
-   * Renders a single filled icon with a label next to it.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `compact`
-   */
-  @attr({ mode: 'boolean' })
-  public compact: boolean = false;
-}
+export class RatingDisplay extends BaseRatingDisplay {}
