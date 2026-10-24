@@ -1,0 +1,401 @@
+@layer fluentui {
+  .root {
+    align-items: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    text-decoration-line: none;
+    vertical-align: middle;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    font-family: var(--fontFamilyBase);
+    outline-style: none;
+    transition-duration: var(--durationFaster);
+    transition-property: background, border, color;
+    transition-timing-function: var(--curveEasyEase);
+  }
+
+  .root:hover {
+    background-color: var(--colorNeutralBackground1Hover);
+    border-color: var(--colorNeutralStroke1Hover);
+    color: var(--colorNeutralForeground1Hover);
+    cursor: pointer;
+  }
+
+  .root:hover:active,
+  .root:active:focus-visible {
+    background-color: var(--colorNeutralBackground1Pressed);
+    border-color: var(--colorNeutralStroke1Pressed);
+    color: var(--colorNeutralForeground1Pressed);
+    outline-style: none;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  .root[data-fui-focus-visible] {
+    border-color: var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    border-width: var(--strokeWidthThin);
+    outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+    box-shadow: 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset;
+    z-index: 1;
+  }
+
+  .secondary {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  .outline {
+    background-color: var(--colorTransparentBackground);
+  }
+
+  .outline:hover {
+    background-color: var(--colorTransparentBackgroundHover);
+  }
+
+  .outline:hover:active,
+  .outline:active:focus-visible {
+    background-color: var(--colorTransparentBackgroundPressed);
+  }
+
+  .primary {
+    background-color: var(--colorBrandBackground);
+    border-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .primary:hover {
+    background-color: var(--colorBrandBackgroundHover);
+    border-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .primary:hover:active,
+  .primary:active:focus-visible {
+    background-color: var(--colorBrandBackgroundPressed);
+    border-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .subtle {
+    background-color: var(--colorSubtleBackground);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2);
+  }
+
+  .subtle:hover {
+    background-color: var(--colorSubtleBackgroundHover);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2Hover);
+  }
+
+  .subtle:hover:active,
+  .subtle:active:focus-visible {
+    background-color: var(--colorSubtleBackgroundPressed);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  .subtle:hover :global(.fui-Button__icon) {
+    color: var(--colorNeutralForeground2BrandHover);
+  }
+
+  .subtle:hover:active :global(.fui-Button__icon),
+  .subtle:active:focus-visible :global(.fui-Button__icon) {
+    color: var(--colorNeutralForeground2BrandPressed);
+  }
+
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2);
+  }
+
+  .transparent:hover {
+    background-color: var(--colorTransparentBackgroundHover);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2BrandHover);
+  }
+
+  .transparent:hover:active,
+  .transparent:active:focus-visible {
+    background-color: var(--colorTransparentBackgroundPressed);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2BrandPressed);
+  }
+
+  .subtle:hover :global(.fui-Icon-filled),
+  .subtle:hover:active :global(.fui-Icon-filled),
+  .subtle:active:focus-visible :global(.fui-Icon-filled),
+  .transparent:hover :global(.fui-Icon-filled),
+  .transparent:hover:active :global(.fui-Icon-filled),
+  .transparent:active:focus-visible :global(.fui-Icon-filled) {
+    display: inline;
+  }
+
+  .subtle:hover :global(.fui-Icon-regular),
+  .subtle:hover:active :global(.fui-Icon-regular),
+  .subtle:active:focus-visible :global(.fui-Icon-regular),
+  .transparent:hover :global(.fui-Icon-regular),
+  .transparent:hover:active :global(.fui-Icon-regular),
+  .transparent:active:focus-visible :global(.fui-Icon-regular) {
+    display: none;
+  }
+
+  .small {
+    min-width: calc(var(--spacingHorizontalXXXL) * 2);
+    padding: calc(var(--spacingVerticalXS) - var(--strokeWidthThin)) var(--spacingHorizontalS);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+
+    .icon {
+      --fui-Button__icon--spacing: var(--spacingHorizontalXS);
+    }
+
+    &:where(.withIcon) {
+      padding-top: var(--strokeWidthThin);
+      padding-bottom: var(--strokeWidthThin);
+    }
+  }
+
+  .medium {
+    padding: calc(var(--spacingVerticalSNudge) - var(--strokeWidthThin)) var(--spacingHorizontalM);
+    min-width: calc(var(--spacingHorizontalXXXL) * 3);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .large {
+    min-width: calc(var(--spacingHorizontalXXXL) * 3);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalL);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+
+    .icon {
+      font-size: var(--fontSizeBase600);
+      height: var(--fontSizeBase600);
+      width: var(--fontSizeBase600);
+    }
+
+    &:where(.withIcon) {
+      padding-top: calc(var(--spacingVerticalS) - var(--strokeWidthThin));
+      padding-bottom: calc(var(--spacingVerticalS) - var(--strokeWidthThin));
+    }
+  }
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .disabled,
+  .disabled:hover,
+  .disabled:hover:active,
+  .disabled:active:focus-visible {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  .disabled :global(.fui-Button__icon),
+  .disabled:hover :global(.fui-Button__icon),
+  .disabled:hover:active :global(.fui-Button__icon),
+  .disabled:active:focus-visible :global(.fui-Button__icon) {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .disabled:hover :global(.fui-Icon-filled),
+  .disabled:hover:active :global(.fui-Icon-filled),
+  .disabled:active:focus-visible :global(.fui-Icon-filled) {
+    display: none;
+  }
+
+  .disabled:hover :global(.fui-Icon-regular),
+  .disabled:hover:active :global(.fui-Icon-regular),
+  .disabled:active:focus-visible :global(.fui-Icon-regular) {
+    display: inline;
+  }
+
+  .disabled {
+    &:where(.outline, .subtle, .transparent) {
+      &,
+      &:hover,
+      &:hover:active,
+      &:active:focus-visible {
+        background-color: var(--colorTransparentBackground);
+      }
+    }
+
+    &:where(.primary, .subtle, .transparent) {
+      &,
+      &:hover,
+      &:hover:active,
+      &:active:focus-visible {
+        border-color: transparent;
+      }
+    }
+  }
+
+  .primary[data-fui-focus-visible] {
+    border-color: var(--colorStrokeFocus2);
+    box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset,
+      0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+  }
+
+  .primary[data-fui-focus-visible]:hover {
+    border-color: var(--colorStrokeFocus2);
+    box-shadow: var(--shadow2), 0 0 0 var(--strokeWidthThin) var(--colorStrokeFocus2) inset;
+  }
+
+  /* Firefox needs an extra quarter of the default thin stroke at some zoom levels. */
+  @supports (-moz-appearance: button) {
+    .root[data-fui-focus-visible] {
+      box-shadow: 0 0 0 calc(var(--strokeWidthThin) * 1.25) var(--colorStrokeFocus2) inset;
+    }
+
+    .primary[data-fui-focus-visible] {
+      box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) * 1.25) var(--colorStrokeFocus2) inset,
+        0 0 0 var(--strokeWidthThick) var(--colorNeutralForegroundOnBrand) inset;
+    }
+
+    .primary[data-fui-focus-visible]:hover {
+      box-shadow: var(--shadow2), 0 0 0 calc(var(--strokeWidthThin) * 1.25) var(--colorStrokeFocus2) inset;
+    }
+  }
+
+  .small[data-fui-focus-visible] {
+    border-radius: var(--borderRadiusSmall);
+  }
+
+  .large[data-fui-focus-visible] {
+    border-radius: var(--borderRadiusLarge);
+  }
+
+  .circular[data-fui-focus-visible] {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  .square[data-fui-focus-visible] {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .iconOnly {
+    padding: calc(var(--spacingVerticalSNudge) - var(--strokeWidthThin));
+    min-width: var(--spacingHorizontalXXXL);
+    max-width: var(--spacingHorizontalXXXL);
+
+    &:where(.small) {
+      padding: var(--strokeWidthThin);
+      min-width: var(--spacingHorizontalXXL);
+      max-width: var(--spacingHorizontalXXL);
+    }
+
+    &:where(.large) {
+      padding: calc(var(--spacingVerticalS) - var(--strokeWidthThin));
+      min-width: calc(var(--spacingHorizontalXL) * 2);
+      max-width: calc(var(--spacingHorizontalXL) * 2);
+    }
+  }
+
+  .icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    font-size: var(--fontSizeBase500);
+    height: var(--fontSizeBase500);
+    width: var(--fontSizeBase500);
+    --fui-Button__icon--spacing: var(--spacingHorizontalSNudge);
+  }
+
+  .before {
+    margin-inline-end: var(--fui-Button__icon--spacing);
+  }
+
+  .after {
+    margin-inline-start: var(--fui-Button__icon--spacing);
+  }
+
+  @media (forced-colors: active) {
+    .root:focus {
+      border-color: ButtonText;
+    }
+
+    .root:hover,
+    .root:hover:active,
+    .root:active:focus-visible {
+      background-color: HighlightText;
+      border-color: Highlight;
+      color: Highlight;
+      forced-color-adjust: none;
+    }
+
+    .primary {
+      background-color: Highlight;
+      border-color: HighlightText;
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+
+    .primary:hover,
+    .primary:hover:active,
+    .primary:active:focus-visible {
+      background-color: HighlightText;
+      border-color: Highlight;
+      color: Highlight;
+    }
+
+    .subtle:hover,
+    .subtle:hover:active,
+    .subtle:active:focus-visible,
+    .subtle:hover :global(.fui-Button__icon),
+    .subtle:hover:active :global(.fui-Button__icon),
+    .subtle:active:focus-visible :global(.fui-Button__icon) {
+      color: Highlight;
+    }
+
+    .transparent:hover,
+    .transparent:hover:active,
+    .transparent:active:focus-visible {
+      background-color: var(--colorTransparentBackground);
+      color: Highlight;
+    }
+
+    .disabled,
+    .disabled:hover,
+    .disabled:hover:active,
+    .disabled:active:focus-visible {
+      background-color: ButtonFace;
+      border-color: GrayText;
+      color: GrayText;
+    }
+
+    .disabled:focus {
+      border-color: GrayText;
+    }
+
+    .disabled :global(.fui-Button__icon),
+    .disabled:hover :global(.fui-Button__icon),
+    .disabled:hover:active :global(.fui-Button__icon),
+    .disabled:active:focus-visible :global(.fui-Button__icon) {
+      color: GrayText;
+    }
+  }
+}

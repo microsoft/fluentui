@@ -1,0 +1,143 @@
+@layer fluentui {
+  .root {
+    height: auto;
+
+    .icon {
+      font-size: calc(var(--fontSizeBase500) * 2);
+      height: calc(var(--fontSizeBase500) * 2);
+      width: calc(var(--fontSizeBase500) * 2);
+    }
+  }
+
+  .root:where(.outline, .secondary, .subtle, .transparent) .secondaryContent {
+    color: var(--colorNeutralForeground2);
+  }
+
+  .root:hover .secondaryContent {
+    color: var(--colorNeutralForeground2Hover);
+  }
+
+  .root:hover:active .secondaryContent,
+  .root:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  .primary .secondaryContent,
+  .primary:hover .secondaryContent,
+  .primary:hover:active .secondaryContent,
+  .primary:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .transparent:hover .secondaryContent {
+    color: var(--colorNeutralForeground2BrandHover);
+  }
+
+  .transparent:hover:active .secondaryContent,
+  .transparent:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForeground2BrandPressed);
+  }
+
+  .small {
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS) var(--spacingVerticalMNudge);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+
+    .secondaryContent {
+      font-size: var(--fontSizeBase200);
+    }
+  }
+
+  .medium {
+    padding: calc(var(--spacingVerticalL) - var(--strokeWidthThick)) var(--spacingHorizontalM) var(--spacingVerticalL);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+
+    .secondaryContent {
+      font-size: var(--fontSizeBase200);
+    }
+  }
+
+  .large {
+    padding: calc(var(--spacingVerticalXL) - var(--strokeWidthThick)) var(--spacingHorizontalL) var(--spacingVerticalXL);
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+
+    .secondaryContent {
+      font-size: var(--fontSizeBase300);
+    }
+  }
+
+  .disabled .secondaryContent,
+  .disabled:hover .secondaryContent,
+  .disabled:hover:active .secondaryContent,
+  .disabled:active:focus-visible .secondaryContent {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .iconOnly {
+    padding: var(--spacingVerticalSNudge);
+    max-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalXS));
+    min-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalXS));
+
+    &:where(.small) {
+      padding: var(--spacingVerticalXS);
+      max-width: calc(var(--spacingHorizontalXXL) * 2);
+      min-width: calc(var(--spacingHorizontalXXL) * 2);
+    }
+
+    &:where(.large) {
+      padding: var(--spacingVerticalS);
+      max-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalS));
+      min-width: calc(var(--spacingHorizontalXXL) * 2 + var(--spacingHorizontalS));
+    }
+  }
+
+  .before {
+    margin-inline-end: var(--spacingHorizontalM);
+  }
+
+  .after {
+    margin-inline-start: var(--spacingHorizontalM);
+  }
+
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    &:where(:dir(rtl)) {
+      text-align: right;
+    }
+  }
+
+  .secondaryContent {
+    line-height: 100%;
+    font-weight: var(--fontWeightRegular);
+  }
+
+  @media (forced-colors: active) {
+    .root:hover .secondaryContent,
+    .root:hover:active .secondaryContent,
+    .root:active:focus-visible .secondaryContent {
+      color: Highlight;
+    }
+
+    .primary .secondaryContent {
+      color: HighlightText;
+    }
+
+    .subtle:hover .secondaryContent,
+    .subtle:hover:active .secondaryContent,
+    .subtle:active:focus-visible .secondaryContent {
+      color: Canvas;
+    }
+
+    .disabled .secondaryContent,
+    .disabled:hover .secondaryContent,
+    .disabled:hover:active .secondaryContent,
+    .disabled:active:focus-visible .secondaryContent {
+      color: GrayText;
+    }
+  }
+}

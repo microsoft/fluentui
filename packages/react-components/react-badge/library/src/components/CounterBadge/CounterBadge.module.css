@@ -1,0 +1,12 @@
+@layer fluentui {
+  .dot {
+    min-width: auto;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+  }
+
+  .hide {
+    display: none;
+  }
+}

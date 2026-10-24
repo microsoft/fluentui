@@ -1,0 +1,234 @@
+@layer fluentui {
+  .checked {
+    background-color: var(--colorNeutralBackground1Selected);
+    border-color: var(--colorNeutralStroke1);
+    border-width: var(--strokeWidthThin);
+    color: var(--colorNeutralForeground1Selected);
+
+    :global(.fui-Icon-filled) {
+      display: inline;
+    }
+
+    :global(.fui-Icon-regular) {
+      display: none;
+    }
+
+    &:hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      border-color: var(--colorNeutralStroke1Hover);
+      color: var(--colorNeutralForeground1Hover);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorNeutralBackground1Pressed);
+      border-color: var(--colorNeutralStroke1Pressed);
+      color: var(--colorNeutralForeground1Pressed);
+    }
+  }
+
+  .checked:where(.outline) {
+    background-color: var(--colorTransparentBackgroundSelected);
+    border-color: var(--colorNeutralStroke1);
+    border-width: var(--strokeWidthThicker);
+
+    &:hover {
+      background-color: var(--colorTransparentBackgroundHover);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorTransparentBackgroundPressed);
+    }
+
+    &[data-fui-focus-visible]:where(:not(:hover)) {
+      border-color: var(--colorNeutralStroke1);
+    }
+  }
+
+  .checked:where(.primary) {
+    background-color: var(--colorBrandBackgroundSelected);
+    border-color: transparent;
+    color: var(--colorNeutralForegroundOnBrand);
+
+    &:hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+  }
+
+  .checked:where(.subtle) {
+    background-color: var(--colorSubtleBackgroundSelected);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2Selected);
+
+    &:hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2Hover);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorSubtleBackgroundPressed);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2Pressed);
+    }
+  }
+
+  .checked:where(.transparent) {
+    background-color: var(--colorTransparentBackgroundSelected);
+    border-color: transparent;
+    color: var(--colorNeutralForeground2BrandSelected);
+
+    &:hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorTransparentBackgroundPressed);
+      border-color: transparent;
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+  }
+
+  :where(.checked:not(.isAccessible):is(.subtle, .transparent)) .icon {
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+
+  .checked:where(.isAccessible) {
+    &,
+    &:where(.secondary) {
+      background-color: var(--colorBrandBackground);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    &:hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    &:hover:active,
+    &:active:focus-visible {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-color: transparent;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    &:where(.outline) {
+      border-width: var(--strokeWidthThin);
+    }
+
+    &:where(.primary) {
+      outline: var(--strokeWidthThin) solid var(--colorNeutralForegroundOnBrand);
+      outline-offset: calc(var(--strokeWidthThicker) * -1);
+
+      &[data-fui-focus-visible] {
+        outline: var(--strokeWidthThin) solid var(--colorNeutralForegroundOnBrand);
+        outline-offset: calc(var(--strokeWidthThickest) * -1);
+      }
+    }
+
+    @media (forced-colors: none) {
+      &:where(.subtle):hover :global(.fui-ToggleButton__icon) {
+        color: var(--colorNeutralForegroundOnBrand);
+      }
+    }
+  }
+
+  .disabled {
+    &:where(.primary) {
+      &,
+      &:hover,
+      &:hover:active,
+      &:active:focus-visible {
+        border-color: transparent;
+      }
+    }
+
+    &:where(.subtle, .transparent) {
+      background-color: var(--colorTransparentBackground);
+      border-color: transparent;
+
+      &:hover {
+        background-color: var(--colorTransparentBackgroundHover);
+        border-color: transparent;
+      }
+
+      &:hover:active,
+      &:active:focus-visible {
+        background-color: var(--colorTransparentBackgroundPressed);
+        border-color: transparent;
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    .primary {
+      background-color: ButtonFace;
+      border-color: ButtonBorder;
+      color: ButtonText;
+      forced-color-adjust: auto;
+    }
+
+    .disabled:where(.primary) {
+      border-color: GrayText;
+      color: GrayText;
+
+      &:focus {
+        border-color: GrayText;
+      }
+    }
+
+    .checked {
+      background-color: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+
+      &:focus {
+        border: var(--strokeWidthThin) solid HighlightText;
+        outline-color: Highlight;
+      }
+
+      &:hover {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+      }
+
+      &:hover:active,
+      &:active:focus-visible {
+        background-color: HighlightText;
+        border-color: Highlight;
+        color: Highlight;
+      }
+    }
+
+    .icon {
+      forced-color-adjust: auto;
+    }
+
+    :where(.checked:not(.disabled)) .icon {
+      color: inherit;
+      forced-color-adjust: inherit;
+
+      svg {
+        forced-color-adjust: inherit;
+      }
+    }
+  }
+}
