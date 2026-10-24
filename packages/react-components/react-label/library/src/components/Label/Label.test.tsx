@@ -11,7 +11,7 @@ describe('Label', () => {
     testOptions: {
       'has-static-classnames': [
         {
-          props: { required: 'Required Test' },
+          props: { required: 'Required Test', icon: 'Icon Test' },
         },
       ],
     },
