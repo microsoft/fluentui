@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Export DeepPartialV2 type from index.",
+  "packageName": "@fluentui/merge-styles",
+  "email": "sean.larkin1@gmail.com",
+  "dependentChangeType": "patch"
+}
