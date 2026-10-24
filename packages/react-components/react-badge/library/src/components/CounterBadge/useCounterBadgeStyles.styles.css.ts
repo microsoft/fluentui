@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
 import { useBadgeStyles_unstable } from '../Badge/useBadgeStyles.styles.css';
-import * as styles from './CounterBadge.module.css';
+import styles from './CounterBadge.module.css';
 import type { CounterBadgeState } from './CounterBadge.types';
 
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots> = {

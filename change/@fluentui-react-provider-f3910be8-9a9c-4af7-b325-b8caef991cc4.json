@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Add an opt-in layered CSS Modules style hook for FluentProvider.",
+  "packageName": "@fluentui/react-provider",
+  "email": "dmytrokirpa@microsoft.com"
+}

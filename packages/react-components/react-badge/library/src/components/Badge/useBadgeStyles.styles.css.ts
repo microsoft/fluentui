@@ -1,9 +1,7 @@
-'use client';
-
 import * as React from 'react';
 import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as styles from './Badge.module.css';
+import styles from './Badge.module.css';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 
 export const badgeClassNames: SlotClassNames<BadgeSlots> = {
@@ -15,7 +13,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   // CSS class names match prop values exactly — styles[propValue] replaces all lookup maps.
   // Ghost ::after, outline border-color, rounded radius for small/tiny, font-size for small/tiny,
   // icon sizes, and extra-large icon margins are all handled by CSS (compound selectors + descendants).
-  // eslint-disable-next-line react-hooks/immutability
+
   state.root.className = clsx(
     badgeClassNames.root,
     styles.root,
@@ -34,7 +32,6 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
       iconPositionClass = state.iconPosition === 'after' ? styles.iconAfterText : styles.iconBeforeText;
     }
 
-    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(badgeClassNames.icon, styles.icon, iconPositionClass, state.icon.className);
   }
 

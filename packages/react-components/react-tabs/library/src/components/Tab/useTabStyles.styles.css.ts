@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as styles from './Tab.module.css';
+import styles from './Tab.module.css';
 import type { TabSlots, TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
@@ -17,8 +17,6 @@ export const tabReservedSpaceClassNames = {
 };
 
 export const useTabStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const { appearance, disabled, selected, size, vertical } = state;
   const isCircular = appearance === 'subtle-circular' || appearance === 'filled-circular';
 

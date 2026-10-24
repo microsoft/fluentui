@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import * as styles from './Button.module.css';
+import styles from './Button.module.css';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
 export const buttonClassNames: SlotClassNames<ButtonSlots> = {

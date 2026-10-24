@@ -5,7 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles.css';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
-import * as styles from './ToggleButton.module.css';
+import styles from './ToggleButton.module.css';
 
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-ToggleButton',

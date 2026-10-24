@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles.css';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
-import * as styles from './CompoundButton.module.css';
+import styles from './CompoundButton.module.css';
 
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots> = {
   root: 'fui-CompoundButton',

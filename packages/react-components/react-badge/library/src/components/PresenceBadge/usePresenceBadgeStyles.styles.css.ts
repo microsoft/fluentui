@@ -1,9 +1,7 @@
-'use client';
-
 import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
-import * as styles from './PresenceBadge.module.css';
+import styles from './PresenceBadge.module.css';
 import type { PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge.types';
 
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
@@ -17,7 +15,6 @@ const isBusy = (status: PresenceBadgeStatus) =>
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const busy = isBusy(state.status);
 
-  // eslint-disable-next-line react-hooks/immutability
   state.root.className = clsx(
     presenceBadgeClassNames.root,
     styles.root,
@@ -41,7 +38,6 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   );
 
   if (state.icon) {
-    // eslint-disable-next-line react-hooks/immutability
     state.icon.className = clsx(presenceBadgeClassNames.icon, styles.icon, state.icon.className);
   }
 

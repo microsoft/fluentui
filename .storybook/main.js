@@ -59,7 +59,12 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
       config.plugins = config.plugins.filter(value => value && value.constructor.name !== 'ProgressPlugin');
     }
     config.resolve = config.resolve ?? {};
-    config.resolve.extensions = ['.styles.css.js', ...(config.resolve.extensions ?? [])];
+    // Workspace imports resolve to TypeScript source; built packages use explicit .styles.js imports.
+    config.resolve.extensions = ['.css.ts', '.styles.css.js', ...(config.resolve.extensions ?? [])];
+    config.resolve.extensionAlias = {
+      ...config.resolve.extensionAlias,
+      '.styles.js': ['.styles.css.js', '.styles.js'],
+    };
 
     return config;
   },

@@ -1,0 +1,87 @@
+@layer fluentui {
+  .root {
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+    border-radius: var(--borderRadiusMedium);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    filter: drop-shadow(0 0 var(--strokeWidthThick) var(--colorNeutralShadowAmbient))
+      drop-shadow(0 var(--spacingVerticalS) var(--spacingVerticalL) var(--colorNeutralShadowKey));
+  }
+
+  .inline {
+    z-index: 1;
+  }
+
+  .inverted {
+    background-color: var(--colorNeutralBackgroundStatic);
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+
+  .brand {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .small {
+    padding: var(--spacingVerticalM);
+    --fui-positioning-arrow-height: calc(1.414 * var(--spacingVerticalSNudge));
+    --fui-positioning-arrow-offset: calc(-0.707 * var(--spacingVerticalSNudge));
+  }
+
+  .medium {
+    padding: var(--spacingVerticalL);
+    --fui-positioning-arrow-height: calc(1.414 * var(--spacingVerticalS));
+    --fui-positioning-arrow-offset: calc(-0.707 * var(--spacingVerticalS));
+  }
+
+  .large {
+    padding: var(--spacingVerticalXL);
+    --fui-positioning-arrow-height: calc(1.414 * var(--spacingVerticalS));
+    --fui-positioning-arrow-offset: calc(-0.707 * var(--spacingVerticalS));
+  }
+
+  .arrow {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: -1;
+    background-color: inherit;
+    background-clip: content-box;
+    border-bottom-left-radius: var(--borderRadiusSmall);
+    transform: rotate(var(--fui-positioning-arrow-angle));
+    height: var(--fui-positioning-arrow-height);
+    width: var(--fui-positioning-arrow-height);
+
+    &::before {
+      content: '';
+      display: block;
+      background-color: inherit;
+      margin: calc(-1 * var(--strokeWidthThin));
+      width: 100%;
+      height: 100%;
+      border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+      border-bottom-left-radius: var(--borderRadiusSmall);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
+
+    :global([data-popper-placement^='top']) & {
+      bottom: var(--fui-positioning-arrow-offset);
+      --fui-positioning-arrow-angle: -45deg;
+    }
+    :global([data-popper-placement^='right']) & {
+      left: var(--fui-positioning-arrow-offset);
+      --fui-positioning-arrow-angle: 45deg;
+    }
+    :global([data-popper-placement^='bottom']) & {
+      top: var(--fui-positioning-arrow-offset);
+      --fui-positioning-arrow-angle: 135deg;
+    }
+    :global([data-popper-placement^='left']) & {
+      right: var(--fui-positioning-arrow-offset);
+      --fui-positioning-arrow-angle: 225deg;
+    }
+  }
+}

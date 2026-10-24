@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles.css';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
-import * as styles from './MenuButton.module.css';
+import styles from './MenuButton.module.css';
 
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
   root: 'fui-MenuButton',
