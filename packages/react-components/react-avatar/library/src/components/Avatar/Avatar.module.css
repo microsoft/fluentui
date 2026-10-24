@@ -210,6 +210,11 @@
     }
   }
 
+  .size32 {
+    width: 32px;
+    height: 32px;
+  }
+
   /* ---- Square shape: border-radius per size group ---- */
   /* :where() keeps specificity at (0,1,0) — same as a single class */
   .square:where(.size16, .size20, .size24) {

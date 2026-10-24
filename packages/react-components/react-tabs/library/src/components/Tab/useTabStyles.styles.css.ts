@@ -17,8 +17,6 @@ export const tabReservedSpaceClassNames = {
 };
 
 export const useTabStyles_unstable = (state: TabState): TabState => {
-  'use no memo';
-
   const { appearance, disabled, selected, size, vertical } = state;
   const isCircular = appearance === 'subtle-circular' || appearance === 'filled-circular';
 

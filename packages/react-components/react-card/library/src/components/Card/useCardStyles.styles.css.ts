@@ -26,8 +26,12 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   // appearance  → styles.filled / styles['filled-alternative'] / styles.outline / styles.subtle
   // Interactive × selected combinations are compound selectors in CSS — no lookup maps needed.
   const focusedClassName = React.useMemo(() => {
-    if (state.disabled) return '';
-    if (state.selectable) return state.selectFocused ? styles.selectableFocused : '';
+    if (state.disabled) {
+      return '';
+    }
+    if (state.selectable) {
+      return state.selectFocused ? styles.selectableFocused : '';
+    }
     return styles.focused;
   }, [state.disabled, state.selectFocused, state.selectable]);
 

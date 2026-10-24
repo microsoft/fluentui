@@ -1,0 +1,152 @@
+@layer fluentui {
+  .content {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .popoverSurface {
+    max-height: calc(11 * var(--spacingVerticalXL));
+    min-height: calc(4 * var(--spacingVerticalXL));
+    overflow: hidden scroll;
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+    width: calc(11 * var(--spacingHorizontalXL));
+  }
+  .triggerButton {
+    display: inline-flex;
+    position: relative;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+    border-color: var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusCircular);
+    border-style: solid;
+    padding: 0;
+    border-width: var(--fui-AvatarGroupPopover-border);
+
+    @media (forced-colors: active) {
+      border-color: CanvasText;
+    }
+  }
+  .pie {
+    background-color: var(--colorTransparentBackground);
+    border-color: var(--colorTransparentStroke);
+    color: transparent;
+  }
+  .triggerButton[data-fui-focus-visible] {
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-style: none;
+  }
+  .triggerButton:where(:not(.pie)):hover {
+    color: var(--colorNeutralForeground1Hover);
+    background-color: var(--colorNeutralBackground1Hover);
+    border-color: var(--colorNeutralStroke1Hover);
+  }
+  .triggerButton:where(:not(.pie)):active {
+    color: var(--colorNeutralForeground1Pressed);
+    background-color: var(--colorNeutralBackground1Pressed);
+    border-color: var(--colorNeutralStroke1Pressed);
+  }
+  .open:where(:not(.pie)) {
+    color: var(--colorNeutralForeground1Selected);
+    background-color: var(--colorNeutralBackground1Selected);
+    border-color: var(--colorNeutralStroke1Selected);
+  }
+  .count {
+    font-family: var(--fontFamilyBase);
+    font-weight: var(--fontWeightSemibold);
+    font-size: var(--fui-AvatarGroupPopover-countSize);
+    line-height: var(--fui-AvatarGroupPopover-countLine);
+  }
+  .icon {
+    font-size: var(--fui-AvatarGroupPopover-iconSize);
+  }
+
+  .size16,
+  .size20,
+  .size24,
+  .size28,
+  .size32 {
+    --fui-AvatarGroupPopover-border: var(--strokeWidthThin);
+  }
+  .size36,
+  .size40,
+  .size48 {
+    --fui-AvatarGroupPopover-border: var(--strokeWidthThick);
+  }
+  .size56,
+  .size64 {
+    --fui-AvatarGroupPopover-border: var(--strokeWidthThicker);
+  }
+  .size72,
+  .size96,
+  .size120,
+  .size128 {
+    --fui-AvatarGroupPopover-border: var(--strokeWidthThickest);
+  }
+
+  .size16,
+  .size20,
+  .size24 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase100);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase100);
+  }
+  .size28 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase200);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase200);
+  }
+  .size32,
+  .size36,
+  .size40 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase300);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase300);
+  }
+  .size48,
+  .size56 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase400);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase400);
+  }
+  .size64,
+  .size72,
+  .size96 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase500);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase500);
+  }
+  .size120,
+  .size128 {
+    --fui-AvatarGroupPopover-countSize: var(--fontSizeBase600);
+    --fui-AvatarGroupPopover-countLine: var(--lineHeightBase600);
+  }
+
+  .size16 {
+    --fui-AvatarGroupPopover-iconSize: var(--fontSizeBase200);
+  }
+  .size20,
+  .size24 {
+    --fui-AvatarGroupPopover-iconSize: var(--fontSizeBase400);
+  }
+  .size28,
+  .size32,
+  .size36,
+  .size40 {
+    --fui-AvatarGroupPopover-iconSize: var(--fontSizeBase500);
+  }
+  .size48 {
+    --fui-AvatarGroupPopover-iconSize: var(--fontSizeBase600);
+  }
+  .size56 {
+    --fui-AvatarGroupPopover-iconSize: var(--lineHeightBase500);
+  }
+  .size64,
+  .size72 {
+    --fui-AvatarGroupPopover-iconSize: var(--lineHeightBase600);
+  }
+  .size96,
+  .size120,
+  .size128 {
+    --fui-AvatarGroupPopover-iconSize: calc(2 * var(--fontSizeBase600));
+  }
+}
