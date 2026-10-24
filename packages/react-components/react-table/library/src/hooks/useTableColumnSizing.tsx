@@ -63,7 +63,7 @@ function useTableColumnSizingState<TItem>(
   // Creates the keyboard handler for resizing columns
   const { toggleInteractiveMode, getKeyboardResizingProps } = useKeyboardResizing(columnResizeState);
 
-  const { autoFitColumns } = params;
+  const { autoFitColumns, autoFitColumnsStrategy } = params;
 
   const enableKeyboardMode = React.useCallback(
     (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) =>
@@ -98,15 +98,20 @@ function useTableColumnSizingState<TItem>(
         (columnId: TableColumnId) => {
           const col = getColumnById(columnId);
           const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
+          // The last column only absorbs the space left over in the table when the columns are
+          // auto-fitted with the default distribution, which is why resizing it has no effect
+          // there. With the even distribution every column can be resized - except when it is the
+          // only column, because a single auto-fitted column always fills the whole container.
+          const isStretchedByAutoFit =
+            isLastColumn && autoFitColumns && (autoFitColumnsStrategy !== 'even' || columns.length === 1);
 
-          const aside =
-            isLastColumn && autoFitColumns ? null : (
-              <TableResizeHandle
-                onMouseDown={getOnMouseDown(columnId)}
-                onTouchStart={getOnMouseDown(columnId)}
-                {...getKeyboardResizingProps(columnId, col?.width || 0)}
-              />
-            );
+          const aside = isStretchedByAutoFit ? null : (
+            <TableResizeHandle
+              onMouseDown={getOnMouseDown(columnId)}
+              onTouchStart={getOnMouseDown(columnId)}
+              {...getKeyboardResizingProps(columnId, Math.round(col?.width || 0))}
+            />
+          );
 
           return col
             ? {
@@ -115,7 +120,15 @@ function useTableColumnSizingState<TItem>(
               }
             : {};
         },
-        [getColumnById, columns, dragging, getKeyboardResizingProps, getOnMouseDown, autoFitColumns],
+        [
+          getColumnById,
+          columns,
+          dragging,
+          getKeyboardResizingProps,
+          getOnMouseDown,
+          autoFitColumns,
+          autoFitColumnsStrategy,
+        ],
       ),
       getTableCellProps: React.useCallback(
         (columnId: TableColumnId) => {
