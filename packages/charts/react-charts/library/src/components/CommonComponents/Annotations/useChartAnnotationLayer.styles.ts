@@ -17,6 +17,7 @@ export interface ChartAnnotationLayerStyles {
   annotationContentInteractive?: string;
   annotationForeignObjectInteractive?: string;
   connectorGroup?: string;
+  action?: string;
 }
 
 export interface ChartAnnotationLayerStyleProps {
@@ -85,6 +86,7 @@ export const chartAnnotationLayerClassNames: SlotClassNames<ChartAnnotationLayer
   annotationContentInteractive: 'fui-chartAnnotationLayer__annotationContentInteractive',
   annotationForeignObjectInteractive: 'fui-chartAnnotationLayer__annotationForeignObjectInteractive',
   connectorGroup: 'fui-chartAnnotationLayer__connectorGroup',
+  action: 'fui-chartAnnotationLayer__action',
 };
 
 /**
@@ -158,6 +160,17 @@ const useStyles = makeStyles({
   annotationForeignObjectInteractive: {
     pointerEvents: 'auto',
   },
+  action: {
+    appearance: 'none',
+    fontFamily: tokens.fontFamilyBase,
+    margin: '0',
+    cursor: 'pointer',
+    pointerEvents: 'auto',
+    ':focus-visible': {
+      outline: `2px solid ${tokens.colorStrokeFocus2}`,
+      outlineOffset: '2px',
+    },
+  },
   connectorGroup: {
     pointerEvents: 'none',
   },
@@ -176,6 +189,12 @@ export const useChartAnnotationLayerStyles = (props: ChartAnnotationLayerStylePr
       baseStyles.annotation,
       props.styles?.annotation,
     ),
+    annotationNoDefaults: mergeClasses(
+      chartAnnotationLayerClassNames.annotationNoDefaults,
+      baseStyles.annotationNoDefaults,
+      props.styles?.annotationNoDefaults,
+    ),
+    action: mergeClasses(chartAnnotationLayerClassNames.action, baseStyles.action, props.styles?.action),
     connectorLayer: mergeClasses(
       chartAnnotationLayerClassNames.connectorLayer,
       baseStyles.connectorLayer,
