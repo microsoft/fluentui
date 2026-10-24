@@ -235,7 +235,10 @@ export class BaseRadioGroup extends FASTElement {
 
       runAfterPendingDefinitions(radioElements, isRadio, () => {
         if (this.isConnected) {
-          this.radios = getUpgradedCustomElements([...this.querySelectorAll('*')], isRadio);
+          this.radios = getUpgradedCustomElements(
+            radioElements.filter(element => element.isConnected && this.contains(element)),
+            isRadio,
+          );
         }
       });
     });

@@ -706,3 +706,27 @@ test.describe('Dropdown', () => {
     });
   });
 });
+
+test.describe('Dropdown upgrade order', () => {
+  test('should connect a listbox after the listbox upgrades', async ({ fastPage }) => {
+    await fastPage.page.goto('/test/parent-child-upgrade-order.html');
+
+    const result = await fastPage.page.evaluate(async () =>
+      (
+        window as unknown as {
+          runDropdownUpgradeOrderTest(): Promise<{
+            hasOwnDropdown: boolean;
+            hasOwnDropdownBeforeUpgrade: boolean;
+            listboxConnected: boolean;
+            optionName: string;
+          }>;
+        }
+      ).runDropdownUpgradeOrderTest(),
+    );
+
+    expect(result.hasOwnDropdownBeforeUpgrade).toBe(false);
+    expect(result.hasOwnDropdown).toBe(false);
+    expect(result.listboxConnected).toBe(true);
+    expect(result.optionName).toBe('fruit');
+  });
+});

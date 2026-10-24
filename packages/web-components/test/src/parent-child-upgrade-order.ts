@@ -2,6 +2,18 @@ import { Listbox } from '../../src/listbox/listbox.js';
 import { styles as listboxStyles } from '../../src/listbox/listbox.styles.js';
 import { template as listboxTemplate } from '../../src/listbox/listbox.template.js';
 import { DropdownOption } from '../../src/option/option.js';
+import { Dropdown } from '../../src/dropdown/dropdown.js';
+import { styles as dropdownStyles } from '../../src/dropdown/dropdown.styles.js';
+import { dropdownTemplate } from '../../src/dropdown/dropdown.template.js';
+import { Menu } from '../../src/menu/menu.js';
+import { styles as menuStyles } from '../../src/menu/menu.styles.js';
+import { template as menuTemplate } from '../../src/menu/menu.template.js';
+import { MenuList } from '../../src/menu-list/menu-list.js';
+import { MenuButton } from '../../src/menu-button/menu-button.js';
+import { styles as menuButtonStyles } from '../../src/menu-button/menu-button.styles.js';
+import { template as menuButtonTemplate } from '../../src/menu-button/menu-button.template.js';
+import { styles as menuListStyles } from '../../src/menu-list/menu-list.styles.js';
+import { template as menuListTemplate } from '../../src/menu-list/menu-list.template.js';
 import { styles as optionStyles } from '../../src/option/option.styles.js';
 import { template as optionTemplate } from '../../src/option/option.template.js';
 import { RadioGroup } from '../../src/radio-group/radio-group.js';
@@ -39,7 +51,141 @@ type TreeUpgradeOrderResult = {
   hasOwnSize: boolean;
 };
 
+type DropdownUpgradeOrderResult = {
+  hasOwnDropdown: boolean;
+  hasOwnDropdownBeforeUpgrade: boolean;
+  listboxConnected: boolean;
+  optionName: string;
+};
+
+type MenuUpgradeOrderResult = {
+  menuListAssignedBeforeUpgrade: boolean;
+  menuListAssignedAfterUpgrade: boolean;
+  triggerAssignedBeforeUpgrade: boolean;
+  triggerAssignedAfterUpgrade: boolean;
+};
+
 const nextFrame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+
+(
+  window as unknown as {
+    runDropdownUpgradeOrderTest(): Promise<DropdownUpgradeOrderResult>;
+  }
+).runDropdownUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const dropdownTagName = `upgrade-${id}-dropdown`;
+  const listboxTagName = `upgrade-${id}-listbox`;
+  const optionTagName = `upgrade-${id}-option`;
+
+  document.body.innerHTML = `
+    <${dropdownTagName} name="fruit">
+      <${listboxTagName}><${optionTagName} value="apple">Apple</${optionTagName}></${listboxTagName}>
+    </${dropdownTagName}>
+  `;
+
+  await Dropdown.define({
+    name: dropdownTagName,
+    registry: customElements,
+    template: dropdownTemplate(),
+    styles: dropdownStyles,
+  });
+
+  const dropdown = document.querySelector<Dropdown>(dropdownTagName);
+  const listbox = document.querySelector<Listbox>(listboxTagName);
+  if (!dropdown || !listbox) {
+    throw new Error('Expected dropdown and listbox to exist.');
+  }
+
+  customElements.upgrade(dropdown);
+  await nextFrame();
+  const hasOwnDropdownBeforeUpgrade = Object.prototype.hasOwnProperty.call(listbox, 'dropdown');
+
+  await Listbox.define({
+    name: listboxTagName,
+    registry: customElements,
+    template: listboxTemplate,
+    styles: listboxStyles,
+  });
+  await DropdownOption.define({
+    name: optionTagName,
+    registry: customElements,
+    template: optionTemplate,
+    styles: optionStyles,
+  });
+  await nextFrame();
+  await nextFrame();
+
+  const option = document.querySelector<DropdownOption>(optionTagName);
+  if (!option) {
+    throw new Error('Expected option to exist.');
+  }
+
+  return {
+    hasOwnDropdown: Object.prototype.hasOwnProperty.call(listbox, 'dropdown'),
+    hasOwnDropdownBeforeUpgrade,
+    listboxConnected: dropdown.listbox === listbox && listbox.dropdown === dropdown,
+    optionName: option.name,
+  };
+};
+
+(
+  window as unknown as {
+    runMenuUpgradeOrderTest(): Promise<MenuUpgradeOrderResult>;
+  }
+).runMenuUpgradeOrderTest = async () => {
+  const id = Date.now().toString(36);
+  const menuTagName = `upgrade-${id}-menu`;
+  const menuListTagName = `upgrade-${id}-menu-list`;
+  const menuButtonTagName = `upgrade-${id}-menu-button`;
+
+  document.body.innerHTML = `
+    <${menuTagName}>
+      <${menuButtonTagName} slot="trigger">Open</${menuButtonTagName}>
+      <${menuListTagName}>Item</${menuListTagName}>
+    </${menuTagName}>
+  `;
+
+  await Menu.define({
+    name: menuTagName,
+    registry: customElements,
+    template: menuTemplate,
+    styles: menuStyles,
+  });
+
+  const menu = document.querySelector<Menu>(menuTagName);
+  const menuList = document.querySelector<MenuList>(menuListTagName);
+  const menuButton = document.querySelector<MenuButton>(menuButtonTagName);
+  if (!menu || !menuList || !menuButton) {
+    throw new Error('Expected menu, menu list, and menu button to exist.');
+  }
+
+  customElements.upgrade(menu);
+  await nextFrame();
+  const menuListAssignedBeforeUpgrade = (menu as unknown as { _menuList?: HTMLElement })._menuList === menuList;
+  const triggerAssignedBeforeUpgrade = (menu as unknown as { _trigger?: HTMLElement })._trigger === menuButton;
+
+  await MenuList.define({
+    name: menuListTagName,
+    registry: customElements,
+    template: menuListTemplate,
+    styles: menuListStyles,
+  });
+  await MenuButton.define({
+    name: menuButtonTagName,
+    registry: customElements,
+    template: menuButtonTemplate,
+    styles: menuButtonStyles,
+  });
+  await nextFrame();
+  await nextFrame();
+
+  return {
+    menuListAssignedBeforeUpgrade,
+    menuListAssignedAfterUpgrade: (menu as unknown as { _menuList?: HTMLElement })._menuList === menuList,
+    triggerAssignedBeforeUpgrade,
+    triggerAssignedAfterUpgrade: (menu as unknown as { _trigger?: HTMLElement })._trigger === menuButton,
+  };
+};
 
 (
   window as unknown as {
