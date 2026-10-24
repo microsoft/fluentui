@@ -1,7 +1,9 @@
 'use client';
 
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { cardCSSVars } from '../Card/cardCSSVars';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
 /**
@@ -32,13 +34,29 @@ const useStyles = makeStyles({
   },
 });
 
+const useLayoutStyles = makeStyles({
+  full: {
+    [cardCSSVars.cardChildMarginVar]: `calc(-1 * var(${cardCSSVars.cardSizeVar}))`,
+  },
+  contained: {
+    [cardCSSVars.cardChildMarginVar]: '0',
+    borderRadius: tokens.borderRadiusXLarge,
+  },
+});
+
 /**
  * Apply styling to the CardPreview slots based on the state.
  */
 export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPreviewState => {
   const styles = useStyles();
+  const layoutStyles = useLayoutStyles();
   // eslint-disable-next-line react-hooks/immutability
-  state.root.className = mergeClasses(cardPreviewClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    cardPreviewClassNames.root,
+    styles.root,
+    layoutStyles[state.layout],
+    state.root.className,
+  );
 
   if (state.logo) {
     // eslint-disable-next-line react-hooks/immutability

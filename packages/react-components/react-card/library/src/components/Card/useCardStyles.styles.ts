@@ -29,6 +29,7 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
   cardBorderRadiusVar: '--fui-Card--border-radius',
+  cardChildMarginVar: '--fui-Card--child-margin',
 };
 
 const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
@@ -107,21 +108,23 @@ const useCardStyles = makeStyles({
     alignItems: 'center',
 
     // Remove vertical padding to keep CardPreview content flush with Card's borders.
+    // The margin is driven by `cardChildMarginVar` (set by CardPreview's `layout` styles);
+    // the fallback preserves the legacy bleed-to-edge behavior when the var isn't set.
     [`> .${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginTop: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
+      marginBottom: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
-      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginLeft: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the last element.
     // Since this is on horizontal cards, the right padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
-      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginRight: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
 
     // If the last child is a CardHeader or CardFooter, allow it to grow to fill the available space.
@@ -133,26 +136,28 @@ const useCardStyles = makeStyles({
     flexDirection: 'column',
 
     // Remove lateral padding to keep CardPreview content flush with Card's borders.
+    // The margin is driven by `cardChildMarginVar` (set by CardPreview's `layout` styles);
+    // the fallback preserves the legacy bleed-to-edge behavior when the var isn't set.
     [`> .${cardPreviewClassNames.root}`]: {
-      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
-      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginLeft: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
+      marginRight: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
 
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginTop: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
     [`> .${cardClassNames.floatingAction} + .${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginTop: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
 
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on vertical cards, the bottom padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
-      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginBottom: `var(${cardCSSVars.cardChildMarginVar}, calc(var(${cardCSSVars.cardSizeVar}) * -1))`,
     },
   },
 
