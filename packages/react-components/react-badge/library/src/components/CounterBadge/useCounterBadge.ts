@@ -45,7 +45,7 @@ export const useCounterBadgeBase_unstable = (
     dot,
   };
 
-  if ((count !== 0 || showZero) && !dot && !state.root.children) {
+  if ((count !== 0 || showZero) && !dot && !state.root.children && state.root.children !== 0) {
     state.root.children = count > overflowCount ? `${overflowCount}+` : `${count}`;
   }
 
