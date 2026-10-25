@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: replace react-tabster keyboard navigation tracking in Listbox with useKeyboardModality, and sync keyborg from the styled Combobox hook instead of the shared trigger slot",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: track active descendant keyboard navigation with useKeyboardModality instead of react-tabster (keyborg)",
+  "packageName": "@fluentui/react-aria",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

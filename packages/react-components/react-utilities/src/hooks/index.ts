@@ -7,6 +7,7 @@ export { useFirstMount } from './useFirstMount';
 export { useForceUpdate } from './useForceUpdate';
 export { IdPrefixProvider, resetIdsForTests, useId } from './useId';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+export { useKeyboardModality } from './useKeyboardModality';
 export type { RefObjectFunction } from './useMergedRefs';
 export { useMergedRefs } from './useMergedRefs';
 export type { UseOnClickOrScrollOutsideOptions } from './useOnClickOutside';
