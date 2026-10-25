@@ -1,0 +1,126 @@
+.grid {
+  --grid-columns: repeat(3, minmax(0, 1fr));
+
+  inline-size: 100%;
+  max-inline-size: 720px;
+  border: var(--stroke-thin) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+
+/* The selection cell is the first column when rows can be selected */
+.grid[data-selection-mode] {
+  --grid-columns: var(--space-10) repeat(3, minmax(0, 1fr));
+}
+
+.grid [role='row'] {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  align-items: center;
+}
+
+.headerRow {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+}
+
+.row {
+  border-block-end: var(--stroke-thin) solid var(--border);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.row:last-child {
+  border-block-end: none;
+}
+
+.row:not([data-header-row]):hover {
+  background: var(--surface-muted);
+}
+
+/* The selected state is exposed by the row */
+.row[data-selected] {
+  background: var(--accent-soft);
+}
+
+.headerCell,
+.cell,
+.selectionCell {
+  padding: var(--space-3) var(--space-4);
+}
+
+.headerCell {
+  font-weight: var(--font-weight-semibold);
+}
+
+.selectionCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--space-2);
+}
+
+.selectionCell input {
+  accent-color: var(--accent);
+}
+
+.headerCell[data-sortable] {
+  cursor: pointer;
+}
+
+.headerCell[data-sortable]:hover {
+  color: var(--text);
+}
+
+.headerCell[data-sort-direction='ascending'] button::after {
+  content: ' \2191';
+}
+
+.headerCell[data-sort-direction='descending'] button::after {
+  content: ' \2193';
+}
+
+.sortButton {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: inherit;
+}
+
+/* The focused cell or row is the only tab stop of the grid */
+.cell:focus-visible,
+.headerCell:focus-visible,
+.sortButton:focus-visible,
+.row:focus-visible,
+.selectionCell input:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: calc(-1 * var(--stroke-thick));
+}
+
+.row[data-selected] {
+  box-shadow: inset var(--stroke-thick) 0 0 var(--accent);
+}
+
+@media (forced-colors: active) {
+  .row[data-selected] {
+    outline: var(--stroke-thick) solid Highlight;
+    outline-offset: calc(-1 * var(--stroke-thick));
+  }
+
+  .cell:focus-visible,
+  .headerCell:focus-visible,
+  .sortButton:focus-visible,
+  .row:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+}
