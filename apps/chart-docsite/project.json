@@ -2,10 +2,11 @@
   "name": "chart-docsite",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": [],
+  "implicitDependencies": ["react-charts-stories"],
   "tags": ["platform:web", "vNext", "charting"],
   "targets": {
     "build-storybook": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "dependsOn": [
         {
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
@@ -14,6 +15,7 @@
       ]
     },
     "build-storybook:docsite": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
       "dependsOn": [
         {
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
