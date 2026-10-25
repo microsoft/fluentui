@@ -146,10 +146,13 @@ export function getExportSubpathConfigs(options: NormalizedOptions): IConfigFile
     // they act as literal path segments that the subsequent "../" chain traverses through.
     // path.resolve(configDir, "<projectRoot>/../../../../../../...") naturally normalizes to the correct path.
     const configDir = dirname(opts.config);
+    // Normalized to posix separators: path.resolve emits backslashes on Windows, which
+    // would fail the '/index.d.ts' suffix check below and silently skip every subpath
+    // rollup on Windows machines (CI on Linux was unaffected).
     const resolvedPrimaryEntry = resolve(
       configDir,
       primaryMainEntryTemplate.replace(/<unscopedPackageName>/g, unscopedPackageName),
-    );
+    ).replace(/\\/g, '/');
 
     const indexDtsSuffix = '/index.d.ts';
     if (!resolvedPrimaryEntry.endsWith(indexDtsSuffix)) {
