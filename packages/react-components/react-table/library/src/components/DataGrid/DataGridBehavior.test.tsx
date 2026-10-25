@@ -56,10 +56,12 @@ const renderGrid = (props: Partial<DataGridProps> = {}) =>
     </DataGrid>,
   );
 
-const bodyRowNames = (container: HTMLElement) =>
-  Array.from(container.querySelectorAll('[role="rowgroup"]:last-of-type [role="row"]')).map(
+const bodyRowNames = (container: HTMLElement) => {
+  const bodyRowGroup = container.querySelectorAll('[role="rowgroup"]')[1];
+  return Array.from(bodyRowGroup.querySelectorAll('[role="row"]')).map(
     row => row.querySelector('[role="gridcell"]')?.textContent,
   );
+};
 
 describe('DataGrid behavior', () => {
   describe('structure', () => {
@@ -131,7 +133,7 @@ describe('DataGrid behavior', () => {
   });
 
   describe('selection', () => {
-    it('selects rows through the row checkboxes in multiselect mode', () => {
+    it('toggles row selection on click in multiselect mode', () => {
       const onSelectionChange = jest.fn();
       const { getAllByRole } = renderGrid({ selectionMode: 'multiselect', onSelectionChange });
       const rows = getAllByRole('row');
@@ -161,8 +163,8 @@ describe('DataGrid behavior', () => {
     });
 
     it('toggles all rows from the header checkbox, going through the mixed state', () => {
-      const { getAllByRole, getAllByRole: all } = renderGrid({ selectionMode: 'multiselect' });
-      const checkboxes = () => all('checkbox') as HTMLInputElement[];
+      const { getAllByRole } = renderGrid({ selectionMode: 'multiselect' });
+      const checkboxes = () => getAllByRole('checkbox') as HTMLInputElement[];
       const [headerCheckbox] = checkboxes();
 
       expect(headerCheckbox.checked).toBe(false);
@@ -230,7 +232,7 @@ describe('DataGrid behavior', () => {
       expect(row.getAttribute('aria-selected')).toBe('true');
     });
 
-    it('calls the consumer onKeyDown before handling the event', () => {
+    it('calls the consumer onKeyDown', () => {
       const onKeyDown = jest.fn();
       const { getByRole } = renderGrid({ onKeyDown });
 
