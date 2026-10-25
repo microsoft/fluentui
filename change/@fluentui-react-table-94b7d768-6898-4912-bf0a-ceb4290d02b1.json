@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix(react-table): support zero and empty-string IDs in keyboard, mouse and touch column resizing",
+  "packageName": "@fluentui/react-table",
+  "email": "3682072+machineloop@users.noreply.github.com"
+}
