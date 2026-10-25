@@ -1,0 +1,5 @@
+{
+  "type": "patch",
+  "packageName": "@fluentui/react",
+  "comment": "CalendarDayGrid: fixed the week number shown in collapsed single-week views (e.g. WeeklyDayPicker) to be the visible week's number instead of the first week-of-month number."
+}
