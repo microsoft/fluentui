@@ -13,6 +13,7 @@ import {
   useTableColumnSizing_unstable,
   useTableCompositeNavigation,
 } from '../../hooks';
+import { useTableColumnSizingBase } from '../../hooks/useColumnSizingFeature';
 import { CELL_WIDTH } from '../TableSelectionCell';
 import { handleDataGridKeyDown } from '../../utils/dataGridDomNavigation';
 
@@ -66,6 +67,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   const baseState = useDataGridState(
     props,
     ref,
+    useTableColumnSizing_unstable,
     {
       ...(focusMode === 'cell' && gridTabsterAttribute),
       ...(focusMode === 'composite' && compositeTabsterAttribute),
@@ -101,6 +103,7 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
   return useDataGridState(
     props,
     ref,
+    useTableColumnSizingBase,
     {},
     (e, grid) => {
       if (grid) {
@@ -118,13 +121,14 @@ export const useDataGridBase_unstable = (props: DataGridBaseProps, ref: React.Re
 type DataGridKeyDownHandler = (e: React.KeyboardEvent<HTMLTableElement>, grid: HTMLElement | null) => void;
 
 /**
- * Shared implementation of the DataGrid state. The focus handling is provided by the caller: the Tabster based
- * attributes and key handling for the styled DataGrid, plain DOM key handling for the base hook. The capture handler
- * is only provided by the base hook.
+ * Shared implementation of the DataGrid state. The focus handling and the column sizing plugin are provided by the
+ * caller: the Tabster based attributes, key handling and styled resize handles for the styled DataGrid, plain DOM key
+ * handling and unstyled resize handles for the base hook. The capture handler is only provided by the base hook.
  */
 const useDataGridState = (
   props: DataGridBaseProps,
   ref: React.Ref<HTMLElement>,
+  columnSizingPlugin: typeof useTableColumnSizing_unstable,
   focusProps: Record<string, unknown>,
   handleKeyDown: DataGridKeyDownHandler,
   handleKeyDownCapture?: DataGridKeyDownHandler,
@@ -162,7 +166,7 @@ const useDataGridState = (
       onSelectionChange,
       selectionMode: selectionMode ?? 'multiselect',
     }),
-    useTableColumnSizing_unstable({
+    columnSizingPlugin({
       onColumnResize,
       columnSizingOptions,
       // The selection cell is not part of the columns, therefore its width needs to be subtracted

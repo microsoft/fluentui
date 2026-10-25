@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, renderHook } from '@testing-library/react';
+import { act, fireEvent, render, renderHook } from '@testing-library/react';
 import { useDataGridBase_unstable } from './useDataGrid';
 import { useDataGridRowBase_unstable } from '../DataGridRow/useDataGridRow';
 import { useDataGridCellBase_unstable } from '../DataGridCell/useDataGridCell';
@@ -17,6 +17,7 @@ import { useDataGridBody_unstable } from '../DataGridBody/useDataGridBody';
 import { renderDataGridBody_unstable } from '../DataGridBody/renderDataGridBody';
 import type { DataGridBaseProps } from './DataGrid.types';
 import { createTableColumn } from '../../hooks';
+import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 
 jest.mock('../../hooks/useMeasureElement', () => {
   return { useMeasureElement: () => ({ width: 1000, measureElementRef: jest.fn() }) };
@@ -187,6 +188,48 @@ describe('DataGrid built from the base hooks', () => {
   });
 });
 
+describe('DataGrid base column resizing', () => {
+  it('renders unstyled resize handles without Tabster attributes', () => {
+    const { container, getAllByRole } = renderGrid({ resizableColumns: true });
+    const handles = getAllByRole('separator', { hidden: true });
+
+    // The last column has no handle when the columns are auto fitted
+    expect(handles).toHaveLength(1);
+    expect(handles[0].hasAttribute('class')).toBe(false);
+    expect(container.querySelector('[data-tabster]')).toBeNull();
+  });
+
+  it('moves focus back to the header cell when the keyboard resizing mode ends', () => {
+    let enableKeyboardMode: ReturnType<typeof useDataGridContext_unstable<unknown>> | undefined;
+    const KeyboardModeProbe = () => {
+      enableKeyboardMode = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable.enableKeyboardMode);
+      return null;
+    };
+    const { getAllByRole } = render(
+      <DataGrid aria-label="People" resizableColumns>
+        <KeyboardModeProbe />
+        <Header>
+          <Row>{({ columnId }) => <HeaderCell key={columnId}>{columnId}</HeaderCell>}</Row>
+        </Header>
+        <Body />
+      </DataGrid>,
+    );
+    const headers = getAllByRole('columnheader');
+    const fakeEvent = { preventDefault: jest.fn(), nativeEvent: { stopPropagation: jest.fn() } };
+
+    act(() => {
+      (enableKeyboardMode as (columnId: string) => (e: unknown) => void)('name')(fakeEvent);
+    });
+    const handle = getAllByRole('separator')[0];
+    expect(document.activeElement).toBe(handle);
+
+    act(() => {
+      fireEvent.keyDown(handle, { key: 'Escape' });
+    });
+    expect(document.activeElement).toBe(headers[0]);
+  });
+});
+
 describe('DataGrid base keyboard navigation', () => {
   const press = (element: Element, key: string, init: KeyboardEventInit = {}) => {
     fireEvent.keyDown(element, { key, ...init });
@@ -262,6 +305,84 @@ describe('DataGrid base keyboard navigation', () => {
     expect(document.activeElement).toBe(cells[5]);
 
     press(cells[5], 'Home', { ctrlKey: true });
+    expect(document.activeElement).toBe(headers[0]);
+  });
+
+  it('skips rows and cells that are not rendered', () => {
+    const { getAllByRole } = renderGrid();
+    const rows = getAllByRole('row');
+    const cells = getAllByRole('gridcell');
+
+    rows[2].style.display = 'none';
+    cells[1].focus();
+    press(cells[1], 'ArrowDown');
+    expect(document.activeElement).toBe(cells[5]);
+
+    // The hidden last cell is skipped, the current cell is the last rendered one
+    cells[3].style.visibility = 'hidden';
+    cells[2].focus();
+    press(cells[2], 'End');
+    expect(document.activeElement).toBe(cells[2]);
+
+    rows[2].style.display = '';
+    rows[3].style.display = 'none';
+    press(cells[2], 'End', { ctrlKey: true });
+    expect(document.activeElement).toBe(cells[2]);
+  });
+
+  it('does not handle the key when the target does not receive focus', () => {
+    const { getAllByRole } = renderGrid();
+    const cells = getAllByRole('gridcell');
+    cells[5].focus = () => undefined;
+    cells[4].focus = () => undefined;
+
+    cells[3].focus();
+    expect(fireEvent.keyDown(cells[3], { key: 'ArrowDown' })).toBe(true);
+    expect(document.activeElement).toBe(cells[3]);
+  });
+
+  it('leaves the keys of a nested grid to that grid', () => {
+    const { getByText } = render(
+      <DataGrid aria-label="People">
+        <Header>
+          <Row>{({ columnId }) => <HeaderCell key={columnId}>{columnId}</HeaderCell>}</Row>
+        </Header>
+        <Row>
+          {({ columnId }) => (
+            <Cell key={columnId}>
+              {columnId === 'name' && (
+                <div role="grid" aria-label="Nested">
+                  <div role="row">
+                    <div role="gridcell" tabIndex={0}>
+                      nested
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Cell>
+          )}
+        </Row>
+        <Row>{({ columnId }) => <Cell key={columnId}>{String(columnId)}</Cell>}</Row>
+      </DataGrid>,
+    );
+    const nestedCell = getByText('nested');
+
+    nestedCell.focus();
+    expect(fireEvent.keyDown(nestedCell, { key: 'ArrowDown' })).toBe(true);
+    expect(fireEvent.keyDown(nestedCell, { key: 'End', ctrlKey: true })).toBe(true);
+    expect(document.activeElement).toBe(nestedCell);
+  });
+
+  it('moves to the first and last row with Ctrl+Home and Ctrl+End in the row focus mode', () => {
+    const { getAllByRole } = renderGrid({ focusMode: 'row_unstable' });
+    const rows = getAllByRole('row');
+    const headers = getAllByRole('columnheader');
+
+    rows[1].focus();
+    press(rows[1], 'End', { ctrlKey: true });
+    expect(document.activeElement).toBe(rows[3]);
+
+    press(rows[3], 'Home', { ctrlKey: true });
     expect(document.activeElement).toBe(headers[0]);
   });
 
