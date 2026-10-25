@@ -15,14 +15,7 @@
   border: 1px solid var(--colorTransparentStroke);
   border-radius: var(--borderRadiusMedium);
   box-shadow: var(--shadow16);
-  grid-template-columns:
-    10px
-    max-content
-    max-content
-    minmax(0, 1fr)
-    max-content
-    max-content
-    10px;
+  grid-template-columns: 10px max-content max-content minmax(0, 1fr) max-content max-content 10px;
   gap: 2px 0;
   padding: 4px;
 }

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix MenuList icon columns in Firefox",
+  "comment": "fix: MenuList icon columns in Firefox",
   "packageName": "@fluentui/web-components",
   "email": "lhi25wy@163.com"
 }

@@ -69,6 +69,15 @@
   visibility: hidden;
 }
 
+.indicator,
+::slotted([slot='indicator']),
+::slotted([slot='start']),
+::slotted([slot='end']),
+.submenu-glyph,
+::slotted([slot='submenu-glyph']) {
+  margin-inline: var(--spacingHorizontalXXS);
+}
+
 ::slotted([slot='end']) {
   color: var(--colorNeutralForeground3);
   font: var(--fontWeightRegular) var(--fontSizeBase200) / var(--lineHeightBase200) var(--fontFamilyBase);

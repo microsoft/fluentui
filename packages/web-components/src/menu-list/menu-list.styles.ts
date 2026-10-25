@@ -23,14 +23,7 @@ export const styles = css`
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
     box-shadow: ${shadow16};
-    grid-template-columns:
-      10px
-      max-content
-      max-content
-      minmax(0, 1fr)
-      max-content
-      max-content
-      10px;
+    grid-template-columns: 10px max-content max-content minmax(0, 1fr) max-content max-content 10px;
     gap: 2px 0;
     padding: 4px;
   }

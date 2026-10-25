@@ -19,6 +19,7 @@ import {
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
+  spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 
@@ -90,6 +91,15 @@ export const styles = css`
   :host(:not(${checkedState})) .indicator,
   :host(:not(${checkedState})) ::slotted([slot='indicator']) {
     visibility: hidden;
+  }
+
+  .indicator,
+  ::slotted([slot='indicator']),
+  ::slotted([slot='start']),
+  ::slotted([slot='end']),
+  .submenu-glyph,
+  ::slotted([slot='submenu-glyph']) {
+    margin-inline: ${spacingHorizontalXXS};
   }
 
   ::slotted([slot='end']) {

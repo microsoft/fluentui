@@ -40,7 +40,7 @@ test.describe('MenuList', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
-  test('should reserve columns for slotted menu item content', async ({ fastPage }) => {
+  test('should show slotted menu item icons', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await fastPage.setTemplate({
@@ -50,57 +50,45 @@ test.describe('MenuList', () => {
           <span slot="start">Start</span>
           Item
           <span slot="end">End</span>
+          <span slot="submenu-glyph">More</span>
           <${tagName} slot="submenu"><${MenuItemTagName}>Child</${MenuItemTagName}></${tagName}>
         </${MenuItemTagName}>
         <${MenuItemTagName}>Plain item</${MenuItemTagName}>
       `,
     });
 
-    const menu = element.first();
-    const getColumnWidths = () =>
-      menu.evaluate(node => getComputedStyle(node).gridTemplateColumns.split(' ').map(Number.parseFloat));
-    for (const index of [1, 2, 4, 5]) {
-      await expect.poll(async () => (await getColumnWidths())[index]).toBeGreaterThan(0);
+    const item = element.first().locator(MenuItemTagName).first();
+    await expect(item.locator('[slot="indicator"]')).toBeHidden();
+    await item.evaluate(node => ((node as MenuItem).checked = true));
+    for (const slot of ['indicator', 'start', 'end', 'submenu-glyph']) {
+      await expect(item.locator(`[slot="${slot}"]`)).toBeVisible();
     }
-    const contentPositions = await menu.evaluate(
-      (node, itemTag) =>
-        Array.from(node.children)
-          .filter(child => child.localName === itemTag)
-          .map(child => child.shadowRoot?.querySelector('[part="content"]')?.getBoundingClientRect().x),
-      MenuItemTagName,
-    );
-    expect(contentPositions).toHaveLength(2);
-    expect(contentPositions[0]).toEqual(expect.any(Number));
-    expect(contentPositions[1]).toEqual(expect.any(Number));
-    expect(contentPositions[0]).toBe(contentPositions[1]);
   });
 
-  test('should update columns when menu item slots and roles change', async ({ fastPage }) => {
+  test('should update icon visibility when menu item slots and roles change', async ({ fastPage }) => {
     const { element } = fastPage;
     const item = element.locator(MenuItemTagName);
-    const getColumnWidths = () =>
-      element.evaluate(node => getComputedStyle(node).gridTemplateColumns.split(' ').map(Number.parseFloat));
-
     await fastPage.setTemplate({ innerHTML: `<${MenuItemTagName}>Item</${MenuItemTagName}>` });
-    await expect.poll(async () => (await getColumnWidths())[1]).toBe(0);
-    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
+    await expect(item.locator('.indicator')).toBeHidden();
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
 
     await item.evaluate(node => {
       node.setAttribute('role', 'menuitemradio');
+      (node as MenuItem).checked = true;
       const icon = document.createElement('span');
       icon.slot = 'start';
       icon.textContent = 'Start';
       node.append(icon);
     });
-    await expect.poll(async () => (await getColumnWidths())[1]).toBeGreaterThan(0);
-    await expect.poll(async () => (await getColumnWidths())[2]).toBeGreaterThan(0);
+    await expect(item.locator('.indicator')).toBeVisible();
+    await expect(item.locator('[slot="start"]')).toBeVisible();
 
     await item.locator('[slot="start"]').evaluate(node => node.setAttribute('slot', 'end'));
-    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
-    await expect.poll(async () => (await getColumnWidths())[4]).toBeGreaterThan(0);
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
+    await expect(item.locator('[slot="end"]')).toBeVisible();
 
     await item.evaluate(node => node.removeAttribute('role'));
-    await expect.poll(async () => (await getColumnWidths())[1]).toBe(0);
+    await expect(item.locator('.indicator')).toBeHidden();
 
     await element.evaluate(node => {
       const parent = node.parentNode!;
@@ -113,9 +101,9 @@ test.describe('MenuList', () => {
       icon.textContent = 'Start';
       node.append(icon);
     });
-    await expect.poll(async () => (await getColumnWidths())[2]).toBeGreaterThan(0);
+    await expect(item.locator('[slot="start"]')).toBeVisible();
     await item.locator('[slot="start"]').evaluate(node => node.remove());
-    await expect.poll(async () => (await getColumnWidths())[2]).toBe(0);
+    await expect(item.locator('[slot="start"]')).toHaveCount(0);
   });
 
   test('should set `tabindex` of the first focusable menu item to 0', async ({ fastPage }) => {
