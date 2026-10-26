@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { act, fireEvent, render } from '@testing-library/react';
 import { flushSync } from 'react-dom';
-import { Portal } from '@fluentui/react-portal';
 import { Popover } from './Popover';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
-import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
+import { TriggerPortalExample } from '../../testing/PopoverTestFixtures';
 
 describe('Popover frame observation lifecycle', () => {
   beforeEach(() => jest.useFakeTimers());
@@ -46,17 +45,7 @@ describe('Popover frame observation lifecycle', () => {
       const remove = jest.spyOn(root, 'removeEventListener');
       const change = jest.fn();
       const PortalExample = ({ open }: { open: boolean }) => (
-        <Popover open={open} onOpenChange={change}>
-          <PopoverTrigger disableButtonEnhancement>
-            <div tabIndex={0}>
-              Trigger
-              <Portal mountNode={mountNode}>
-                <button autoFocus>Entry</button>
-              </Portal>
-            </div>
-          </PopoverTrigger>
-          <PopoverSurface as="div">Surface</PopoverSurface>
-        </Popover>
+        <TriggerPortalExample open={open} mountNode={mountNode} autoFocus interactive={false} onOpenChange={change} />
       );
       const result = render(<PortalExample open={false} />, { wrapper: React.StrictMode });
       const timeout = jest.spyOn(window, 'setTimeout');
@@ -91,17 +80,7 @@ describe('Popover frame observation lifecycle', () => {
     root.append(mountNode, sibling);
     const change = jest.fn();
     const PortalExample = ({ open }: { open: boolean }) => (
-      <Popover open={open} onOpenChange={change}>
-        <PopoverTrigger disableButtonEnhancement>
-          <div tabIndex={0}>
-            Trigger
-            <Portal mountNode={mountNode}>
-              <button>Entry</button>
-            </Portal>
-          </div>
-        </PopoverTrigger>
-        <PopoverSurface as="div">Surface</PopoverSurface>
-      </Popover>
+      <TriggerPortalExample open={open} mountNode={mountNode} interactive={false} onOpenChange={change} />
     );
     const result = render(
       <>

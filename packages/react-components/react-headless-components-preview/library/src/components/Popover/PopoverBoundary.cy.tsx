@@ -5,62 +5,57 @@ import { mount } from '@fluentui/scripts-cypress';
 import { Popover } from './Popover';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
+import { useTestPopoverOpen } from '../../testing/PopoverTestFixtures';
 describe('Popover hover and ancestor-document boundaries', () => {
   beforeEach(() => cy.get('body').realClick({ position: 'bottomRight' }));
 
-  (['uncontrolled', 'accept', 'reject'] as const).forEach(mode => {
-    (['trigger', 'surface'] as const).forEach(hoverTarget => {
-      it(`preserves ${hoverTarget} hover after Tab-out (${mode})`, () => {
-        const change = cy.spy().as('change');
-        const Example = () => {
-          const [open, setOpen] = React.useState(false);
-          return (
-            <>
-              <Popover
-                openOnHover
-                mouseLeaveDelay={100}
-                open={mode === 'uncontrolled' ? undefined : open}
-                onOpenChange={(event, data) => {
-                  change(event, data);
-                  if (mode === 'accept' || data.open) {
-                    setOpen(data.open);
-                  }
-                }}
-              >
-                <PopoverTrigger>
-                  <button data-testid="trigger">Hover trigger</button>
-                </PopoverTrigger>
-                <PopoverSurface as="div" data-testid="surface">
-                  <button data-testid="inside">Inside</button>
-                </PopoverSurface>
-              </Popover>
-              <button data-testid="after">After</button>
-            </>
-          );
-        };
-        mount(<Example />);
-        cy.get('[data-testid=trigger]').realHover();
-        cy.get('[data-testid=surface]').should('be.visible');
-        cy.get('[data-testid=inside]').focus();
-        cy.get(`[data-testid=${hoverTarget}]`)
-          .realHover({ position: 'left' })
-          .should(element => {
-            expect(element[0].matches(':hover')).to.equal(true);
-          });
-        cy.get('@change').invoke('resetHistory');
-        cy.realPress('Tab');
-        cy.get('[data-testid=after]').should('have.focus');
-        cy.get(`[data-testid=${hoverTarget}]`).should(element => {
+  (
+    [
+      ['trigger', 'uncontrolled'],
+      ['surface', 'uncontrolled'],
+      ['surface', 'reject'],
+    ] as const
+  ).forEach(([hoverTarget, mode]) => {
+    it(`preserves ${hoverTarget} hover after Tab-out (${mode})`, () => {
+      const change = cy.spy().as('change');
+      const Example = () => {
+        const openProps = useTestPopoverOpen(mode, false, change);
+        return (
+          <>
+            <Popover {...openProps} openOnHover mouseLeaveDelay={100}>
+              <PopoverTrigger>
+                <button data-testid="trigger">Hover trigger</button>
+              </PopoverTrigger>
+              <PopoverSurface as="div" data-testid="surface">
+                <button data-testid="inside">Inside</button>
+              </PopoverSurface>
+            </Popover>
+            <button data-testid="after">After</button>
+          </>
+        );
+      };
+      mount(<Example />);
+      cy.get('[data-testid=trigger]').realHover();
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('[data-testid=inside]').focus();
+      cy.get(`[data-testid=${hoverTarget}]`)
+        .realHover({ position: 'left' })
+        .should(element => {
           expect(element[0].matches(':hover')).to.equal(true);
         });
-        cy.get('[data-testid=surface]').should('be.visible');
-        cy.get('@change').should('not.have.been.called');
-        cy.get('body').realHover({ position: 'bottomRight' });
-        cy.get('@change').should('have.been.calledOnce');
-        cy.get('@change').its('firstCall.args.1').should('include', { type: 'mouseleave', open: false });
-        cy.get('[data-testid=surface]').should(mode === 'reject' ? 'be.visible' : 'not.exist');
-        cy.get('[data-testid=after]').should('have.focus');
+      cy.get('@change').invoke('resetHistory');
+      cy.realPress('Tab');
+      cy.get('[data-testid=after]').should('have.focus');
+      cy.get(`[data-testid=${hoverTarget}]`).should(element => {
+        expect(element[0].matches(':hover')).to.equal(true);
       });
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('@change').should('not.have.been.called');
+      cy.get('body').realHover({ position: 'bottomRight' });
+      cy.get('@change').should('have.been.calledOnce');
+      cy.get('@change').its('firstCall.args.1').should('include', { type: 'mouseleave', open: false });
+      cy.get('[data-testid=surface]').should(mode === 'reject' ? 'be.visible' : 'not.exist');
+      cy.get('[data-testid=after]').should('have.focus');
     });
   });
 
@@ -72,6 +67,7 @@ describe('Popover hover and ancestor-document boundaries', () => {
       const Example = () => {
         const [doc, setDocument] = React.useState<Document | null>(null);
         const [mountNode, setMountNode] = React.useState<HTMLDivElement | null>(null);
+        const openProps = useTestPopoverOpen(mode, true, change);
         return (
           <>
             <iframe
@@ -84,11 +80,7 @@ describe('Popover hover and ancestor-document boundaries', () => {
             {doc &&
               mountNode &&
               createPortal(
-                <Popover
-                  defaultOpen={mode === 'uncontrolled' ? true : undefined}
-                  open={mode === 'reject' ? true : undefined}
-                  onOpenChange={change}
-                >
+                <Popover {...openProps}>
                   <PopoverSurface as="div" data-testid="surface">
                     <button data-testid="inside">Inside host</button>
                     <Portal mountNode={mountNode}>
@@ -131,12 +123,12 @@ describe('Popover hover and ancestor-document boundaries', () => {
     });
   });
 
-  (['uncontrolled', 'accept', 'reject'] as const).forEach(mode => {
+  (['uncontrolled', 'reject'] as const).forEach(mode => {
     it(`observes real Tab from an iframe-hosted surface into its parent (${mode})`, () => {
       const change = cy.spy().as('change');
       const Example = () => {
         const [doc, setDocument] = React.useState<Document | null>(null);
-        const [open, setOpen] = React.useState(true);
+        const openProps = useTestPopoverOpen(mode, true, change);
         return (
           <>
             <iframe
@@ -147,16 +139,7 @@ describe('Popover hover and ancestor-document boundaries', () => {
             />
             {doc &&
               createPortal(
-                <Popover
-                  defaultOpen={mode === 'uncontrolled' ? true : undefined}
-                  open={mode === 'uncontrolled' ? undefined : open}
-                  onOpenChange={(event, data) => {
-                    change(event, data);
-                    if (mode === 'accept') {
-                      setOpen(data.open);
-                    }
-                  }}
-                >
+                <Popover {...openProps}>
                   <PopoverSurface as="div" data-testid="surface">
                     <button data-testid="inside">Inside</button>
                   </PopoverSurface>

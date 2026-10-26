@@ -5,6 +5,7 @@ import { mount } from '@fluentui/scripts-cypress';
 import { Popover } from './Popover';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
+import { useTestPopoverOpen } from '../../testing/PopoverTestFixtures';
 
 type RootMode = 'light' | 'open' | 'closed';
 const externalNodes = new Set<HTMLElement>();
@@ -225,19 +226,10 @@ describe('settled Popover focus ownership', () => {
     it(`does not undo native hide during a concurrent content update (${mode})`, () => {
       const change = cy.spy().as('change');
       const Example = () => {
-        const [open, setOpen] = React.useState(true);
+        const openProps = useTestPopoverOpen(mode, true, change);
         const [revealed, setRevealed] = React.useState(false);
         return (
-          <Popover
-            defaultOpen={mode === 'uncontrolled' ? true : undefined}
-            open={mode === 'uncontrolled' ? undefined : open}
-            onOpenChange={(event, data) => {
-              change(event, data);
-              if (mode === 'accept') {
-                setOpen(data.open);
-              }
-            }}
-          >
+          <Popover {...openProps}>
             <PopoverTrigger>
               <button>Trigger</button>
             </PopoverTrigger>

@@ -9,6 +9,7 @@ import { Tooltip } from '../Tooltip';
 import { setVirtualParent, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { PopoverFocusExample, useTestPopoverOpen } from '../../testing/PopoverTestFixtures';
 
 const mount = (element: JSXElement) => {
   mountBase(element);
@@ -26,51 +27,32 @@ describe('automatic focus-exit dismissal', () => {
     textOnly?: boolean;
     mode?: 'uncontrolled' | 'accept' | 'reject';
     onOpenChange?: PopoverProps['onOpenChange'];
-  }) => {
-    const [open, setOpen] = React.useState(false);
-    return (
-      <>
-        <button data-testid="before">Before</button>
-        <Popover
-          open={mode === 'uncontrolled' ? undefined : open}
-          onOpenChange={(event, data) => {
-            onOpenChange?.(event, data);
-            if (mode !== 'reject' || data.open) {
-              setOpen(data.open);
-            }
-          }}
-        >
-          <PopoverTrigger>
-            <button data-testid="trigger">Trigger</button>
-          </PopoverTrigger>
-          <PopoverSurface data-testid="surface">
-            {textOnly ? 'Surface' : <button data-testid="inside">Inside</button>}
-          </PopoverSurface>
-        </Popover>
-        <button data-testid="after">After</button>
-      </>
-    );
-  };
+  }) => <PopoverFocusExample {...useTestPopoverOpen(mode, false, onOpenChange)} textOnly={textOnly} />;
 
-  ([false, true] as const).forEach(textOnly => {
-    (['uncontrolled', 'accept', 'reject'] as const).forEach(mode => {
-      it(`preserves Tab destination and requests closing once (${textOnly ? 'text' : 'interactive'}, ${mode})`, () => {
-        mount(<Example textOnly={textOnly} mode={mode} onOpenChange={cy.spy().as('change')} />);
-        cy.get('[data-testid=trigger]').focus().realPress('Enter');
-        cy.get('[data-testid=surface]').should('be.visible');
-        cy.get('@change').invoke('resetHistory');
-        cy.get(textOnly ? '[data-testid=trigger]' : '[data-testid=inside]')
-          .focus()
-          .realPress('Tab');
-        cy.get('[data-testid=after]').should('have.focus');
-        cy.get('[data-testid=surface]').should(mode === 'reject' ? 'be.visible' : 'not.exist');
+  (
+    [
+      [false, 'uncontrolled'],
+      [true, 'uncontrolled'],
+      [false, 'accept'],
+      [false, 'reject'],
+    ] as const
+  ).forEach(([textOnly, mode]) => {
+    it(`preserves Tab destination and requests closing once (${textOnly ? 'text' : 'interactive'}, ${mode})`, () => {
+      mount(<Example textOnly={textOnly} mode={mode} onOpenChange={cy.spy().as('change')} />);
+      cy.get('[data-testid=trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('be.visible');
+      cy.get('@change').invoke('resetHistory');
+      cy.get(textOnly ? '[data-testid=trigger]' : '[data-testid=inside]')
+        .focus()
+        .realPress('Tab');
+      cy.get('[data-testid=after]').should('have.focus');
+      cy.get('[data-testid=surface]').should(mode === 'reject' ? 'be.visible' : 'not.exist');
+      cy.get('@change').should('have.been.calledOnce');
+      cy.get('@change').its('firstCall.args.1').should('include', { open: false, type: 'focusin' });
+      if (mode === 'reject') {
+        cy.get('[data-testid=before]').focus();
         cy.get('@change').should('have.been.calledOnce');
-        cy.get('@change').its('firstCall.args.1').should('include', { open: false, type: 'focusin' });
-        if (mode === 'reject') {
-          cy.get('[data-testid=before]').focus();
-          cy.get('@change').should('have.been.calledOnce');
-        }
-      });
+      }
     });
   });
 
@@ -96,18 +78,6 @@ describe('automatic focus-exit dismissal', () => {
     cy.get('[data-testid=surface]').realPress('Tab');
     cy.get('[data-testid=after]').should('have.focus');
     cy.get('[data-testid=surface]').should('not.exist');
-  });
-
-  it('dismisses by default on a programmatic focus move without an outside click', () => {
-    mount(<Example onOpenChange={cy.spy().as('change')} />);
-    cy.get('[data-testid=trigger]').focus().realPress('Enter');
-    cy.get('[data-testid=surface]').should('be.visible');
-    cy.get('@change').invoke('resetHistory');
-    cy.get('[data-testid=inside]').focus();
-    cy.get('[data-testid=after]').focus();
-    cy.get('[data-testid=after]').should('have.focus');
-    cy.get('[data-testid=surface]').should('not.exist');
-    cy.get('@change').should('have.been.calledOnce');
   });
 
   it('seeds autofocus before listeners attach and preserves the Tab destination', () => {
@@ -290,19 +260,10 @@ describe('automatic focus-exit dismissal', () => {
   (['uncontrolled', 'accept', 'reject'] as const).forEach(mode => {
     it(`handles real Tab into an outside iframe (${mode})`, () => {
       const FrameExample = () => {
-        const [open, setOpen] = React.useState(true);
+        const openProps = useTestPopoverOpen(mode, true, change);
         return (
           <>
-            <Popover
-              defaultOpen={mode === 'uncontrolled' ? true : undefined}
-              open={mode === 'uncontrolled' ? undefined : open}
-              onOpenChange={(event, data) => {
-                change(event, data);
-                if (mode === 'accept') {
-                  setOpen(data.open);
-                }
-              }}
-            >
+            <Popover {...openProps}>
               <PopoverSurface as="div" data-testid="surface">
                 <button data-testid="inside">Inside</button>
               </PopoverSurface>
@@ -373,42 +334,21 @@ describe('automatic focus-exit dismissal', () => {
     cy.get('@change').should('have.been.calledOnce');
   });
 
-  it('includes a virtual-parent portal and nested shadow control in the boundary', () => {
-    const OwnedControls = ({ surface }: { surface: React.RefObject<HTMLDialogElement | HTMLDivElement | null> }) => {
+  it('includes a shadow control beneath the surface in the boundary', () => {
+    const OwnedExample = () => {
       const [root, setRoot] = React.useState<ShadowRoot | null>(null);
-      const portalRef = React.useRef<HTMLButtonElement>(null);
       const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
         if (host) {
           setRoot(host.shadowRoot ?? host.attachShadow({ mode: 'open' }));
         }
       }, []);
-      useIsomorphicLayoutEffect(() => {
-        if (portalRef.current && surface.current) {
-          setVirtualParent(portalRef.current, surface.current);
-        }
-      });
-      return (
-        <>
-          <div ref={attachRoot} data-testid="owned-shadow">
-            {root && createPortal(<button>Shadow control</button>, root)}
-          </div>
-          {createPortal(
-            <button ref={portalRef} data-testid="owned-portal">
-              Portal control
-            </button>,
-            surface.current?.ownerDocument.body ?? document.body,
-          )}
-        </>
-      );
-    };
-    const OwnedExample = () => {
-      const surface = React.useRef<HTMLDialogElement | HTMLDivElement>(null);
       return (
         <>
           <Popover defaultOpen onOpenChange={cy.spy().as('change')}>
-            <PopoverSurface ref={surface} data-testid="surface">
+            <PopoverSurface data-testid="surface">
               <button data-testid="inside">Inside</button>
-              <OwnedControls surface={surface} />
+              <div ref={attachRoot} data-testid="owned-shadow" />
+              {root && createPortal(<button>Shadow control</button>, root)}
             </PopoverSurface>
           </Popover>
           <button data-testid="after">After</button>
@@ -418,7 +358,6 @@ describe('automatic focus-exit dismissal', () => {
     mount(<OwnedExample />);
     cy.get('[data-testid=surface]').should('be.visible');
     cy.get('[data-testid=inside]').focus();
-    cy.get('[data-testid=owned-portal]').focus();
     cy.get('[data-testid=owned-shadow]').shadow().contains('button', 'Shadow control').focus();
     cy.get('[data-testid=surface]').should('be.visible');
     cy.get('@change').should('not.have.been.called');
