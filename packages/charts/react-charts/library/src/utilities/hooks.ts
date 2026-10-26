@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useEventCallback } from '@fluentui/react-utilities';
 import type { Chart, ImageExportOptions } from '../types/index';
 import type { LegendContainer } from '../Legends';
 import { exportChartsAsImage } from './image-export-utils';
@@ -20,25 +21,23 @@ export const useImageExport = (
   const legendsRef = React.useRef<LegendContainer>(null);
   const isRTL = useRtl();
 
-  React.useImperativeHandle(
-    componentRef,
-    () => {
-      const chartContainer = isChartCartesian ? cartesianChartRef.current?.chartContainer : chartContainerRef.current;
-
-      return {
-        chartContainer: chartContainer ?? null,
-        toImage: (opts?: ImageExportOptions): Promise<string> => {
-          return exportChartsAsImage(
-            [{ container: chartContainer }],
-            hideLegends ? undefined : legendsRef.current?.toSVG,
-            isRTL,
-            opts,
-          );
-        },
-      };
-    },
-    [hideLegends, isChartCartesian, isRTL],
+  const toImage = useEventCallback((opts?: ImageExportOptions): Promise<string> => {
+    const container = isChartCartesian ? cartesianChartRef.current?.chartContainer : chartContainerRef.current;
+    return exportChartsAsImage([{ container }], hideLegends ? undefined : legendsRef.current?.toSVG, isRTL, opts);
+  });
+  const getChartContainer = useEventCallback(
+    () => (isChartCartesian ? cartesianChartRef.current?.chartContainer : chartContainerRef.current) ?? null,
   );
+  const handle = React.useMemo<Chart>(
+    () => ({
+      get chartContainer() {
+        return getChartContainer();
+      },
+      toImage,
+    }),
+    [getChartContainer, toImage],
+  );
+  React.useImperativeHandle(componentRef, () => handle, [handle]);
 
   return {
     cartesianChartRef,
