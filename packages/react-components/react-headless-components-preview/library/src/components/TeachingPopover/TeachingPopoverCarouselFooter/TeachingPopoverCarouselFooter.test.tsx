@@ -157,7 +157,11 @@ describe('TeachingPopoverCarouselFooter focus recovery', () => {
 
   it.each([
     { hidden: true },
-    { inert: true },
+    {
+      ref: (element: HTMLDivElement | null) => {
+        element?.setAttribute('inert', '');
+      },
+    },
     { 'aria-hidden': true as const },
     { style: { display: 'none' } },
     { style: { visibility: 'hidden' as const } },
