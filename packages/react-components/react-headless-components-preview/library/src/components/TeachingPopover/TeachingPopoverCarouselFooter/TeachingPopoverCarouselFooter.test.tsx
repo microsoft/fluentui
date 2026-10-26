@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { TeachingPopoverCarousel } from '../TeachingPopoverCarousel/TeachingPopoverCarousel';
 import type { TeachingPopoverCarouselProps } from '../TeachingPopoverCarousel/TeachingPopoverCarousel.types';
 import { TeachingPopoverCarouselCard } from '../TeachingPopoverCarouselCard/TeachingPopoverCarouselCard';
@@ -128,6 +129,32 @@ describe('TeachingPopoverCarouselFooter focus recovery', () => {
     expect(container.ownerDocument.activeElement).toBe(host);
   });
 
+  it.each(['open', 'closed'] as const)('respects deliberate focus on its own %s shadow host', async mode => {
+    const { container } = render(<div />);
+    const host = container.ownerDocument.createElement('div');
+    host.tabIndex = 0;
+    container.appendChild(host);
+    const shadow = host.attachShadow({ mode });
+    const mountPoint = container.ownerDocument.createElement('div');
+    shadow.appendChild(mountPoint);
+    const Pair = ({ hidePrevious = false }: { hidePrevious?: boolean }) => {
+      useIsomorphicLayoutEffect(() => {
+        if (hidePrevious) {
+          host.focus();
+        }
+      }, [hidePrevious]);
+      return <Example value={hidePrevious ? 'one' : 'two'} previousHidden={hidePrevious} hideEmpty={false} />;
+    };
+    const { getByTestId, rerender, unmount } = render(<Pair />, { container: mountPoint });
+    act(() => getByTestId('previous').focus());
+    const focus = jest.spyOn(getByTestId('next'), 'focus');
+    rerender(<Pair hidePrevious />);
+    expect(container.ownerDocument.activeElement).toBe(host);
+    expect(shadow.activeElement).toBeNull();
+    expect(focus).not.toHaveBeenCalled();
+    unmount();
+  });
+
   it('retains a visible programmatically focused button outside the Tab sequence', async () => {
     const { getByTestId } = render(<Example defaultValue="three" previous={{ tabIndex: -1 }} />);
     const previous = getByTestId('previous');
@@ -216,6 +243,25 @@ describe('TeachingPopoverCarouselFooter focus recovery', () => {
     expect(replacementRef).toHaveBeenLastCalledWith(getByTestId('next'));
     unmount();
     expect(replacementRef).toHaveBeenLastCalledWith(null);
+  });
+
+  it('preserves callback-ref cleanup on replacement and unmount', () => {
+    const firstCleanup = jest.fn();
+    const nextCleanup = jest.fn();
+    const firstRef = jest.fn((element: HTMLButtonElement | null) => (element ? firstCleanup : undefined));
+    const nextRef = jest.fn((element: HTMLButtonElement | null) => (element ? nextCleanup : undefined));
+    const { getByTestId, rerender, unmount } = render(<Example value="two" nextRef={firstRef} />);
+    const next = getByTestId('next');
+    expect(firstRef).toHaveBeenCalledWith(next);
+    rerender(<Example value="two" nextRef={nextRef} />);
+    expect(firstCleanup).toHaveBeenCalledTimes(1);
+    expect(firstRef).not.toHaveBeenCalledWith(null);
+    expect(nextRef).toHaveBeenCalledWith(next);
+    expect(nextCleanup).not.toHaveBeenCalled();
+    unmount();
+    expect(firstCleanup).toHaveBeenCalledTimes(1);
+    expect(nextCleanup).toHaveBeenCalledTimes(1);
+    expect(nextRef).not.toHaveBeenCalledWith(null);
   });
 
   it('clears ownership after a caller hide/show cycle without a focusable destination', async () => {

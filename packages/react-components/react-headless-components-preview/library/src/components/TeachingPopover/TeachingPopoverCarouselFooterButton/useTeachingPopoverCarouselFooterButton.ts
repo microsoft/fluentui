@@ -50,7 +50,7 @@ function getActiveElement(root: HTMLElement, targetDocument: Document | undefine
   while (active) {
     // The root's own ancestry also gives access to closed shadow roots.
     const shadow = active.shadowRoot ?? scopes.find(candidate => candidate.host === active);
-    if (!shadow || (!shadow.activeElement && !scopes.includes(shadow))) {
+    if (!shadow?.activeElement) {
       break;
     }
     active = shadow.activeElement;
@@ -75,7 +75,24 @@ export const useTeachingPopoverCarouselFooterButton = (
     [buttons, props.navType],
   );
 
-  const mergedRef = useMergedRefs(rootRef, state.root.ref, register);
+  const callerRef: React.Ref<HTMLButtonElement | HTMLAnchorElement> | undefined = state.root.ref;
+  const lifecycleRef = React.useMemo(() => {
+    if (typeof callerRef !== 'function') {
+      return callerRef;
+    }
+    let cleanup: void | (() => void);
+    // The merged ref uses null detachment, including on React versions before ref cleanup support.
+    return (element: HTMLButtonElement | HTMLAnchorElement | null): void => {
+      if (element === null && typeof cleanup === 'function') {
+        const detach = cleanup;
+        cleanup = undefined;
+        detach();
+      } else {
+        cleanup = callerRef(element);
+      }
+    };
+  }, [callerRef]);
+  const mergedRef = useMergedRefs(rootRef, lifecycleRef, register);
   const { onFocus: callerOnFocus, onBlur: callerOnBlur } = state.root;
   const onFocus = React.useCallback(
     (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
