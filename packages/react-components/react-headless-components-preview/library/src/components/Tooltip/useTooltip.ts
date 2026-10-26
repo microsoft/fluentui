@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLayerOpenState } from '../../hooks/top-layer';
+import { useLayerEscape, useLayerOpenState } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -100,6 +100,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         setVisible(undefined, { visible: false });
       }
     },
+  });
+
+  // Escape never reaches the content, which doesn't take focus. Only needed where `hint` falls back to `manual`.
+  useLayerEscape(contentRef, {
+    open: visible,
+    listen: 'document',
+    onEscape: () => setVisible(undefined, { visible: false }),
   });
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep Escape to the nested overlay, close Tooltip on Escape without popover=\"hint\", and keep overlays mounted and inert while they animate out",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

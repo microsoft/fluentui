@@ -8,6 +8,8 @@ import type { DialogProps } from '..';
 import { Drawer } from '../../Drawer';
 import { NavDrawer } from '../../Nav/NavDrawer';
 import { Provider } from '../../Provider';
+import { Tooltip } from '../../Tooltip';
+import { supportsPopoverHint } from '../../../testing/supportsPopoverHint';
 
 const surfaceSelector = '#animated-surface';
 const exitDuration = `calc(${webLightTheme.durationUltraSlow} * 20)`;
@@ -346,6 +348,9 @@ describe('DialogSurface exit animations', () => {
 });
 
 describe('DialogSurface Escape', () => {
+  // Without `popover="hint"` the Tooltip is `manual` and the browser doesn't close it on Escape.
+  const itWithHint = supportsPopoverHint(document) ? it : it.skip;
+
   const ControlledDialog = ({
     modalType,
     children,
@@ -359,6 +364,26 @@ describe('DialogSurface Escape', () => {
       </Dialog>
     );
   };
+
+  (['non-modal', 'modal'] as const).forEach(modalType => {
+    itWithHint(`closes only a Tooltip open inside a ${modalType} surface`, () => {
+      mountBase(
+        <ControlledDialog modalType={modalType}>
+          <button data-testid="before">Before</button>
+          <Tooltip content="Tip" relationship="description" showDelay={0}>
+            <button>Has tooltip</button>
+          </Tooltip>
+        </ControlledDialog>,
+      );
+
+      cy.get('[data-testid=before]').realClick();
+      cy.realPress('Tab');
+      cy.get('[role=tooltip]').should('match', ':popover-open');
+      cy.realPress('Escape');
+      cy.get('[role=tooltip]').should('not.match', ':popover-open');
+      cy.get('[data-testid=surface]').should('have.attr', 'data-open');
+    });
+  });
 
   it('closes a non-modal surface on Escape from content portaled out of it', () => {
     mountBase(
