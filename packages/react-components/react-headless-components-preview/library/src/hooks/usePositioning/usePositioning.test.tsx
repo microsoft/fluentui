@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
 import type { PositioningProps, PositioningReturn } from './types';
@@ -15,7 +16,116 @@ function mountHook(options: PositioningProps = {}) {
   return resultRef as unknown as { current: PositioningReturn };
 }
 
+const PositionedSurface = ({
+  options = {},
+  version = 0,
+  attached = true,
+  marker,
+}: {
+  options?: PositioningProps;
+  version?: number;
+  attached?: boolean;
+  marker?: string;
+}) => {
+  const { containerRef } = usePositioning(options);
+  return (
+    <div key={version} ref={attached ? containerRef : undefined} data-testid="surface" data-cover-target={marker} />
+  );
+};
+
 describe('usePositioning', () => {
+  describe('data-cover-target', () => {
+    it.each([undefined, false, true])('reflects coverTarget=%s on attachment', coverTarget => {
+      const result = mountHook({ coverTarget });
+      const node = document.createElement('div');
+      node.setAttribute('data-cover-target', 'consumer');
+
+      act(() => result.current.containerRef(node));
+
+      expect(node.getAttribute('data-cover-target')).toBe(coverTarget ? '' : null);
+    });
+
+    it('updates the same container through false, true, false and omitted options', () => {
+      const { getByTestId, rerender } = render(<PositionedSurface options={{ coverTarget: false }} />);
+      const surface = getByTestId('surface');
+
+      expect(surface).not.toHaveAttribute('data-cover-target');
+      for (const coverTarget of [true, false, true]) {
+        rerender(<PositionedSurface options={{ coverTarget }} />);
+        expect(getByTestId('surface')).toBe(surface);
+        expect(surface.getAttribute('data-cover-target')).toBe(coverTarget ? '' : null);
+      }
+      rerender(<PositionedSurface />);
+      expect(getByTestId('surface')).toBe(surface);
+      expect(surface).not.toHaveAttribute('data-cover-target');
+    });
+
+    it.each([false, true])('owns consumer attribute changes while coverTarget stays %s', coverTarget => {
+      const { getByTestId, rerender } = render(
+        <PositionedSurface options={{ coverTarget }} marker="consumer-initial" />,
+      );
+      const surface = getByTestId('surface');
+      expect(surface.getAttribute('data-cover-target')).toBe(coverTarget ? '' : null);
+
+      rerender(<PositionedSurface options={{ coverTarget }} marker="consumer-updated" />);
+      expect(surface.getAttribute('data-cover-target')).toBe(coverTarget ? '' : null);
+
+      rerender(<PositionedSurface options={{ coverTarget }} />);
+      expect(surface.getAttribute('data-cover-target')).toBe(coverTarget ? '' : null);
+    });
+
+    it('cleans retained nodes on replacement and unmount', () => {
+      const { getByTestId, rerender, unmount } = render(<PositionedSurface options={{ coverTarget: true }} />);
+      const previous = getByTestId('surface');
+      rerender(<PositionedSurface options={{ coverTarget: true }} version={1} />);
+      const current = getByTestId('surface');
+
+      expect(current).not.toBe(previous);
+      expect(previous).not.toHaveAttribute('data-cover-target');
+      expect(current).toHaveAttribute('data-cover-target', '');
+
+      unmount();
+      expect(current).not.toHaveAttribute('data-cover-target');
+    });
+
+    it('removes the marker when the ref detaches from a retained container', () => {
+      const { getByTestId, rerender } = render(<PositionedSurface options={{ coverTarget: true }} />);
+      const surface = getByTestId('surface');
+
+      rerender(<PositionedSurface options={{ coverTarget: true }} attached={false} />);
+      expect(getByTestId('surface')).toBe(surface);
+      expect(surface).not.toHaveAttribute('data-cover-target');
+
+      rerender(<PositionedSurface options={{ coverTarget: true }} />);
+      expect(surface).toHaveAttribute('data-cover-target', '');
+    });
+
+    it('cleans a directly attached container when the hook unmounts', () => {
+      const node = document.createElement('div');
+      const Capture = () => {
+        const { containerRef } = usePositioning({ coverTarget: true });
+        useIsomorphicLayoutEffect(() => containerRef(node), [containerRef]);
+        return null;
+      };
+      const { unmount } = render(<Capture />);
+      expect(node).toHaveAttribute('data-cover-target', '');
+      unmount();
+      expect(node).not.toHaveAttribute('data-cover-target');
+    });
+
+    it('preserves the contract through StrictMode effect replay', () => {
+      const { getByTestId, unmount } = render(
+        <React.StrictMode>
+          <PositionedSurface options={{ coverTarget: true }} />
+        </React.StrictMode>,
+      );
+      const surface = getByTestId('surface');
+      expect(surface).toHaveAttribute('data-cover-target', '');
+      unmount();
+      expect(surface).not.toHaveAttribute('data-cover-target');
+    });
+  });
+
   it('returns targetRef and containerRef callbacks', () => {
     const result = mountHook();
 

@@ -8,6 +8,26 @@ import { PopoverSurface } from './PopoverSurface/PopoverSurface';
 import { usePopover } from './usePopover';
 
 describe('Popover', () => {
+  it('exposes covering state on its positioned surface', () => {
+    const Example = ({ coverTarget }: { coverTarget: boolean }) => (
+      <Popover open positioning={{ coverTarget }}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface data-testid="covering-surface">Content</PopoverSurface>
+      </Popover>
+    );
+    const { getByTestId, rerender, unmount } = render(<Example coverTarget />);
+    const surface = getByTestId('covering-surface');
+    expect(surface).toHaveAttribute('data-cover-target', '');
+    rerender(<Example coverTarget={false} />);
+    expect(getByTestId('covering-surface')).toBe(surface);
+    expect(surface).not.toHaveAttribute('data-cover-target');
+    rerender(<Example coverTarget />);
+    unmount();
+    expect(surface).not.toHaveAttribute('data-cover-target');
+  });
+
   describe('close lifecycle', () => {
     const Example = ({ open, trapFocus = false }: { open: boolean; trapFocus?: boolean }) => (
       <Popover open={open} trapFocus={trapFocus}>

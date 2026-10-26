@@ -41,6 +41,7 @@ describe('TagPicker', () => {
 
     expect(getByRole('combobox')).toBeInTheDocument();
     expect(getByRole('listbox')).toBeInTheDocument();
+    expect(getByRole('listbox')).not.toHaveAttribute('data-cover-target');
     expect(getAllByRole('option')).toHaveLength(3);
   });
 

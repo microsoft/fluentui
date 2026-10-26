@@ -20,6 +20,14 @@ const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
 const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
 
+const setCoverTargetAttribute = (node: HTMLElement, coverTarget: boolean) => {
+  if (coverTarget) {
+    node.setAttribute('data-cover-target', '');
+  } else {
+    node.removeAttribute('data-cover-target');
+  }
+};
+
 /**
  * Reads the current anchor-name property from an element and parses it into an array of names.
  * Handles comma-separated values and trimming.
@@ -56,6 +64,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
+  const attachedContainerRef = React.useRef<HTMLElement | null>(null);
   const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
   const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
 
@@ -68,6 +77,17 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
   const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+
+  // Reconcile every owning commit, including consumer attribute changes with unchanged positioning options.
+  useIsomorphicLayoutEffect(() => {
+    if (attachedContainerRef.current) {
+      setCoverTargetAttribute(attachedContainerRef.current, coverTarget);
+    }
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    return () => attachedContainerRef.current?.removeAttribute('data-cover-target');
+  }, []);
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
@@ -115,12 +135,17 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
+      if (attachedContainerRef.current !== node) {
+        attachedContainerRef.current?.removeAttribute('data-cover-target');
+      }
+      attachedContainerRef.current = node;
       setContainerEl(node);
 
       if (!node) {
         return;
       }
 
+      setCoverTargetAttribute(node, coverTarget);
       node.style.setProperty('position', strategy);
       node.style.setProperty('inset', 'auto');
       node.style.setProperty('margin', '0');
@@ -181,6 +206,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       align,
       mainAxis,
       crossAxis,
+      coverTarget,
       coverAlignment,
       strategy,
       matchTargetSize,

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
 import { MenuTrigger } from './MenuTrigger/MenuTrigger';
@@ -14,8 +15,113 @@ import { MenuDivider } from './MenuDivider/MenuDivider';
 import { MenuGroup } from './MenuGroup/MenuGroup';
 import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
 import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
+import { renderMenu, renderMenuPopover, useMenu, useMenuContextValues, useMenuPopover } from '../../menu';
+import type { MenuProps, MenuPopoverProps } from '../../menu';
+
+const ComposedMenu = (props: MenuProps) => {
+  const state = useMenu(props);
+  return renderMenu(state, useMenuContextValues(state));
+};
+
+const ComposedMenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef((props, ref) =>
+  renderMenuPopover(useMenuPopover(props, ref)),
+);
 
 describe('Menu', () => {
+  describe.each([false, true])('positioning signal with public composition=%s', composed => {
+    const MenuComponent = composed ? ComposedMenu : Menu;
+    const Surface = composed ? ComposedMenuPopover : MenuPopover;
+
+    it('owns the actual surface marker while preserving props, handlers and refs', () => {
+      const ref = React.createRef<HTMLDivElement>();
+      const onKeyDown = jest.fn();
+      const Example = ({ positioning, marker }: { positioning?: MenuProps['positioning']; marker?: string }) => (
+        <MenuComponent open positioning={positioning}>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <Surface
+            ref={ref}
+            data-testid="surface"
+            data-custom="retained"
+            data-cover-target={marker}
+            onKeyDown={onKeyDown}
+          >
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </Surface>
+        </MenuComponent>
+      );
+      const { getByTestId, getByRole, rerender, unmount } = render(
+        <Example positioning={{ coverTarget: true }} marker="consumer" />,
+      );
+      const surface = getByTestId('surface');
+
+      expect(surface).toHaveAttribute('data-cover-target', '');
+      expect(surface).toHaveAttribute('data-custom', 'retained');
+      expect(surface).toHaveAttribute('popover', 'auto');
+      expect(surface).toHaveAttribute('role', 'presentation');
+      expect(ref.current).toBe(surface);
+      expect(getByRole('menu', { name: 'Trigger' })).toBeInTheDocument();
+      expect(getByRole('button', { name: 'Trigger' })).toHaveAttribute('aria-expanded', 'true');
+      fireEvent.keyDown(surface, { key: 'a' });
+      expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+      rerender(<Example positioning={{ coverTarget: true }} marker="updated-consumer" />);
+      expect(surface).toHaveAttribute('data-cover-target', '');
+      rerender(<Example positioning={{ coverTarget: false }} marker="consumer" />);
+      expect(surface).not.toHaveAttribute('data-cover-target');
+      rerender(<Example positioning={{ coverTarget: true }} />);
+      expect(surface).toHaveAttribute('data-cover-target', '');
+      rerender(<Example />);
+      expect(surface).not.toHaveAttribute('data-cover-target');
+      rerender(<Example positioning="above-start" marker="consumer" />);
+      expect(surface).not.toHaveAttribute('data-cover-target');
+      expect(getByTestId('surface')).toBe(surface);
+      expect(ref.current).toBe(surface);
+
+      unmount();
+      expect(ref.current).toBeNull();
+      expect(surface).not.toHaveAttribute('data-cover-target');
+    });
+
+    it('keeps parent and submenu covering states independent', () => {
+      const Example = ({ parentCovers }: { parentCovers: boolean }) => (
+        <MenuComponent open positioning={{ coverTarget: parentCovers }}>
+          <MenuTrigger>
+            <button>Parent</button>
+          </MenuTrigger>
+          <Surface data-testid="parent-surface">
+            <MenuList>
+              <MenuComponent open positioning={{ coverTarget: !parentCovers }}>
+                <MenuTrigger>
+                  <MenuItem>Child</MenuItem>
+                </MenuTrigger>
+                <Surface data-testid="child-surface">
+                  <MenuList>
+                    <MenuItem>Nested item</MenuItem>
+                  </MenuList>
+                </Surface>
+              </MenuComponent>
+            </MenuList>
+          </Surface>
+        </MenuComponent>
+      );
+      const { getByTestId, rerender } = render(<Example parentCovers />);
+      const parent = getByTestId('parent-surface');
+      const child = getByTestId('child-surface');
+
+      expect(parent).toHaveAttribute('data-cover-target', '');
+      expect(child).not.toHaveAttribute('data-cover-target');
+      rerender(<Example parentCovers={false} />);
+      expect(getByTestId('parent-surface')).toBe(parent);
+      expect(getByTestId('child-surface')).toBe(child);
+      expect(parent).not.toHaveAttribute('data-cover-target');
+      expect(child).toHaveAttribute('data-cover-target', '');
+    });
+  });
+
   it('renders trigger and surface children when open', () => {
     const { getByText } = render(
       <Menu defaultOpen>
