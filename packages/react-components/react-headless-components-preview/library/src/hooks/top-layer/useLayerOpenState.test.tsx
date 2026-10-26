@@ -123,45 +123,25 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
     expect(onOpenChange).not.toHaveBeenCalled();
   });
 
-  it('switches between show() and showModal() without the Popover API', () => {
-    const Example = ({ mode }: { mode: 'manual' | 'modal' }) => {
-      const ref = React.useRef<HTMLDialogElement | null>(null);
-      useDialogLayerOpenState(ref, { open: true, mode });
-      const setRef = React.useCallback((element: HTMLDialogElement | null) => {
-        if (element) {
-          let modal = false;
-          const { show, showModal, close } = element;
-          Object.defineProperty(element, 'showPopover', { value: undefined });
-          Object.defineProperty(element, 'hidePopover', { value: undefined });
-          element.show = () => {
-            modal = false;
-            show.call(element);
-          };
-          element.showModal = () => {
-            modal = true;
-            showModal.call(element);
-          };
-          element.close = () => {
-            modal = false;
-            close.call(element);
-          };
-          element.matches = (selector: string) =>
-            selector === ':modal' ? element.open && modal : HTMLElement.prototype.matches.call(element, selector);
-        }
-        ref.current = element;
-      }, []);
-      return <dialog ref={setRef} data-testid="layer" />;
-    };
-    const { getByTestId, rerender } = render(<Example mode="manual" />);
+  it('applies a switch from modal to a popover mode on the next open, and warns', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation();
+    const onOpenChange = jest.fn();
+    const { getByTestId, rerender } = render(<DialogLayer open mode="modal" onOpenChange={onOpenChange} />);
     const layer = getByTestId('layer') as HTMLDialogElement;
-    expect(layer.open && layer.matches(':modal')).toBe(false);
-
-    rerender(<Example mode="modal" />);
-    expect(layer.open && layer.matches(':modal')).toBe(true);
-
-    rerender(<Example mode="manual" />);
     expect(layer.open).toBe(true);
-    expect(layer.matches(':modal')).toBe(false);
+
+    rerender(<DialogLayer open mode="manual" onOpenChange={onOpenChange} />);
+
+    expect(layer.open).toBe(true);
+    expect(isPopoverOpen(layer)).toBe(false);
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('applies on the next open'));
+    expect(onOpenChange).not.toHaveBeenCalled();
+
+    rerender(<DialogLayer open={false} mode="manual" onOpenChange={onOpenChange} />);
+    rerender(<DialogLayer open mode="manual" onOpenChange={onOpenChange} />);
+    expect(layer.open).toBe(false);
+    expect(isPopoverOpen(layer)).toBe(true);
+    warn.mockRestore();
   });
 
   it('calls the lifecycle callbacks in order, once per open and close', async () => {

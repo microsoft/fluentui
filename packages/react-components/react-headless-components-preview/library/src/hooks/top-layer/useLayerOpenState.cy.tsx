@@ -316,25 +316,34 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     });
   });
 
-  it('switches a <dialog> between auto and modal while open, without reporting a close', () => {
+  it('switches to modal while open, and from modal on the next open, without reporting a close', () => {
     const onClose = cy.stub().as('close');
     const Switching = () => {
       const [mode, setMode] = React.useState<'auto' | 'modal'>('auto');
+      const [open, setOpen] = React.useState(true);
       const ref = React.useRef<HTMLDialogElement>(null);
       const { popover } = useDialogLayerOpenState(ref, {
-        open: true,
+        open,
         mode,
         onOpenChange: (_, { type }) => onClose(type),
       });
       return (
-        <dialog id="layer" ref={ref} popover={popover}>
-          <button id="modal" onClick={() => setMode('modal')}>
-            Modal
+        <>
+          <button id="reopen" onClick={() => setOpen(true)}>
+            Reopen
           </button>
-          <button id="auto" onClick={() => setMode('auto')}>
-            Auto
-          </button>
-        </dialog>
+          <dialog id="layer" ref={ref} popover={popover}>
+            <button id="modal" onClick={() => setMode('modal')}>
+              Modal
+            </button>
+            <button id="auto" onClick={() => setMode('auto')}>
+              Auto
+            </button>
+            <button id="close" onClick={() => setOpen(false)}>
+              Close
+            </button>
+          </dialog>
+        </>
       );
     };
     mount(<Switching />);
@@ -343,6 +352,9 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     cy.get('#modal').realClick();
     cy.get('#layer').should('match', ':modal').and('not.match', ':popover-open');
     cy.get('#auto').realClick();
+    cy.get('#layer').should('match', ':modal');
+    cy.get('#close').realClick();
+    cy.get('#reopen').realClick();
     cy.get('#layer').should('match', ':popover-open').and('not.match', ':modal');
     cy.get('@close').should('not.have.been.called');
   });

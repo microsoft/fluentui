@@ -160,28 +160,6 @@ describe('useLayerPresence', () => {
     expect(layer).not.toHaveAttribute('aria-hidden');
   });
 
-  it('unmounts a non-modal <dialog> shown without the Popover API once it closes', async () => {
-    const Example = ({ open }: { open: boolean }) => {
-      const ref = React.useRef<HTMLDialogElement | null>(null);
-      useDialogLayerOpenState(ref, { open, mode: 'manual' });
-      const { shouldRender } = useLayerPresence(ref, { open });
-      const setRef = React.useCallback((element: HTMLDialogElement | null) => {
-        if (element) {
-          Object.defineProperty(element, 'showPopover', { value: undefined });
-          Object.defineProperty(element, 'hidePopover', { value: undefined });
-        }
-        ref.current = element;
-      }, []);
-      return shouldRender ? <dialog ref={setRef} data-testid="layer" /> : null;
-    };
-    const { container, getByTestId, rerender } = render(<Example open />);
-    expect((getByTestId('layer') as HTMLDialogElement).open).toBe(true);
-
-    rerender(<Example open={false} />);
-
-    await waitFor(() => expect(container).toBeEmptyDOMElement());
-  });
-
   it('finishes the exit when the element is replaced before it ends', async () => {
     const phases: string[] = [];
     const KeyedLayer = ({ open, version }: { open: boolean; version: number }) => {

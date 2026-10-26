@@ -14,12 +14,14 @@ Each hook does one job, and a component composes only the ones it needs:
 | Hook                      | Job                                                                                                            |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `useLayerOpenState`       | Open state, kept in sync with the browser through the Popover API. Reports opens and closes the browser makes. |
-| `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` and handles a `<dialog>` without the Popover API.        |
+| `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` for a `<dialog>`.                                        |
 | `useLayerPresence`        | Whether to render the element, its animation `phase`, and keeping it mounted and inert while it animates out.  |
 | `useLayerFocusReturn`     | Returns focus on close where the browser doesn't. Plugs into the open-state hook through its callbacks.        |
 | `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
 No positioning: overlays compose them with `usePositioning`.
+
+The Popover API is required. Without it, or a polyfill, popover layers don't open and the hooks warn in development; a modal `<dialog>` still opens.
 
 The hooks are not exported. Custom overlays should compose `Popover`, `Dialog` and the other components, which bring roles, keyboard handling and focus behaviour; see [Decisions](#decisions).
 
@@ -58,7 +60,7 @@ useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options
 
 ### Why two open-state hooks
 
-`mode` is a runtime value, so a bundler can't drop the dialog code from a hook that checks it. The dialog code (`showModal()`, the `show()` fallback, the `cancel` and `close` handling) lives in `dialogAdapter.ts`, and only `useDialogLayerOpenState` imports it. Components that never open as a dialog (Tooltip, Menu, Toaster, Listbox) use `useLayerOpenState` and don't bundle it; Popover (`trapFocus`) and Dialog (non-modal) use `useDialogLayerOpenState`, which also switches between modes while open.
+`mode` is a runtime value, so a bundler can't drop the dialog code from a hook that checks it. The dialog code (`showModal()`, the `cancel` and `close` handling) lives in `dialogAdapter.ts`, and only `useDialogLayerOpenState` imports it. Components that never open as a dialog (Tooltip, Menu, Toaster, Listbox) use `useLayerOpenState` and don't bundle it; Popover (`trapFocus`) and Dialog use `useDialogLayerOpenState`.
 
 | Bundle (esbuild, minified, production, React and `@fluentui/*` external) | Minified | Gzip   |
 | ------------------------------------------------------------------------ | -------- | ------ |
@@ -142,7 +144,7 @@ Browsers without `popover="hint"` (Safari ≤ 26.5) treat it as `manual`, so a h
 - **Exit styles.** Keep the element displayed and in the top layer while it animates out: `transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes. Target the exit with `:not([data-open])`, and handle `prefers-reduced-motion` in CSS.
 - **Inert while exiting.** While exit animations run, the element gets `inert` and `aria-hidden="true"`. When the exit ends, both go back to the values they had before, unless React changed them meanwhile (e.g. `aria-hidden={!open}` on a reopen).
 - **`popover` attribute changed while open** (e.g. Popover `mode`). The browser hides the element; it is shown again with the new value, and no close is reported.
-- **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `trapFocus`). The element is closed and shown in the new mode, and no close is reported. The hook sets the `popover` attribute itself if it isn't there yet. Without the Popover API, a `<dialog>` switches between `show()` and `showModal()`.
+- **Switching between `modal` and a popover mode while open** (`useDialogLayerOpenState`, e.g. Popover `trapFocus`). To `modal`: the popover is hidden and the element is shown again as a modal. From `modal`: it stays modal until it closes, with a dev warning, and opens in the new mode next time. No close is reported either way.
 - **Element replaced or mounted late.** A new element (changed `key`, or rendered after `open` became true) is shown, with `onShow` as on any other open. An exiting element that is replaced or removed finishes its exit.
 - **Element rendered only while open.** Listeners attach when it appears.
 - **Listeners.** Element listeners only, added once per element and event set. Closed layers that stay mounted (Tooltip, Menu) add no document listeners; `useLayerEscape` with `listen: 'document'` adds one only while open.
@@ -180,10 +182,10 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 });
 ```
 
-| Option   | Type                    | Default    | Description                                                                                                                                                                                     |
-| -------- | ----------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `when`   | `'manual' \| 'always'`  | `'manual'` | `manual`: only where the browser leaves Escape to the page: `popover="manual"`, `hint` where unsupported (it reads back as `manual`), a `<dialog>` shown with `show()`. `always`: every Escape. |
-| `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.                                          |
+| Option   | Type                    | Default    | Description                                                                                                                                                      |
+| -------- | ----------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `when`   | `'manual' \| 'always'`  | `'manual'` | `manual`: only where the browser leaves Escape to the page: `popover="manual"` and `hint` where unsupported (it reads back as `manual`). `always`: every Escape. |
+| `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.           |
 
 - With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`). Because it is a React handler, Escape from content portaled out of the element still counts.
 - With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer.

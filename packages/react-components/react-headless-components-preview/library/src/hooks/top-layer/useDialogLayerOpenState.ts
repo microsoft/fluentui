@@ -6,9 +6,9 @@ import { dialogAdapter } from './dialogAdapter';
 import { useLayerOpenStateWith } from './useLayerOpenState';
 
 /**
- * `useLayerOpenState` for layers that can open as a modal `<dialog>`: also accepts `mode="modal"`, and handles a
- * `<dialog>` element without the Popover API. Use it only where the layer can be a dialog, so other components don't
- * bundle the dialog code.
+ * `useLayerOpenState` for layers that can open as a modal `<dialog>`: also accepts `mode="modal"`. Use it only where the
+ * layer can be a dialog, so other components don't bundle the dialog code. Switching from `modal` to a popover mode
+ * applies on the next open.
  */
 export const useDialogLayerOpenState = (
   ref: React.RefObject<HTMLElement | null>,

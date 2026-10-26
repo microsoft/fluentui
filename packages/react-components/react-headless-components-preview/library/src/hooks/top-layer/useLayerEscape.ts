@@ -2,19 +2,14 @@
 
 import type * as React from 'react';
 import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { isDialogElement, isEscapeForLayer, isModal } from './utils';
+import { isEscapeForLayer } from './utils';
 import type { UseLayerEscapeOptions } from './types';
 
 /**
  * Whether the browser leaves Escape to the page. A `popover="hint"` reads back as `manual` where `hint` is unsupported.
  */
-const needsEscapeHandling = (element: HTMLElement): boolean => {
-  const { popover } = element as HTMLElement & { popover?: string | null };
-  if (popover) {
-    return popover === 'manual';
-  }
-  return isDialogElement(element) && element.open && !isModal(element);
-};
+const needsEscapeHandling = (element: HTMLElement): boolean =>
+  (element as HTMLElement & { popover?: string | null }).popover === 'manual';
 
 /**
  * Closes a top-layer element on Escape where the browser doesn't, or reports every Escape with `when: 'always'`.

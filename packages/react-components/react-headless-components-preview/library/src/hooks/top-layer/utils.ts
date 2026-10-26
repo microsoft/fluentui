@@ -32,7 +32,7 @@ export const isInTopLayer = (element: HTMLElement): boolean =>
   (isDialogElement(element) && element.open) || isPopoverOpen(element);
 
 /**
- * Whether a `<dialog>` is open modally, not through `show()`. Falls back to `open` where `:modal` is unsupported
+ * Whether a `<dialog>` is open modally, not as a popover. Falls back to `open` where `:modal` is unsupported
  * (jsdom).
  */
 export const isModal = (element: HTMLDialogElement): boolean => {
