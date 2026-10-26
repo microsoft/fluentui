@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
-import { useLayerPresence } from './useLayerPresence';
 import type { TopLayerMode, TopLayerOpenChangeType } from './types';
 import { Provider } from '../../components/Provider';
 
@@ -12,19 +11,6 @@ const mount = (element: React.ReactElement) => mountBase(<Provider>{element}</Pr
 // 118), so both close.
 const chromiumVersion = Number(/Chrome\/(\d+)/.exec(navigator.userAgent)?.[1] ?? Infinity);
 const itWithNestedEscape = chromiumVersion >= 120 ? it : it.skip;
-
-const exitStyles = `
-  @keyframes layerExit {
-    from { display: block; opacity: 1; }
-    to { display: none; opacity: 0; }
-  }
-  #layer {
-    transition: overlay 10s allow-discrete;
-  }
-  #layer:not([data-open]) {
-    animation: layerExit 10s linear;
-  }
-`;
 
 type LayerProps = {
   id: string;
@@ -44,9 +30,7 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
     mode,
     onOpenChange: (nextOpen, { type }) => (nextOpen ? onOpen?.() : onClose?.(type)),
   });
-  const { shouldRender, phase } = useLayerPresence(ref, { open, unmountOnClose });
-
-  if (!shouldRender) {
+  if (!open && unmountOnClose !== false) {
     return null;
   }
 
@@ -59,7 +43,6 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
       role={role}
       aria-label={role ? 'Layer' : undefined}
       data-open={open ? '' : undefined}
-      data-phase={phase}
     >
       {children}
     </Element>
@@ -97,7 +80,7 @@ const Example = ({ mode, role, children }: Pick<LayerProps, 'mode' | 'role' | 'c
   );
 };
 
-describe('useDialogLayerOpenState and useLayerPresence', () => {
+describe('useDialogLayerOpenState', () => {
   it('promotes the element into the top layer and reports light dismiss', () => {
     mount(<Example mode="auto" />);
 
@@ -139,52 +122,6 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     cy.realPress('Escape');
     cy.get('#layer').should('not.exist');
     cy.get('#reason').should('have.text', 'escape');
-  });
-
-  it('keeps the element mounted and inert until the exit animation finishes', () => {
-    mount(
-      <>
-        <style>{exitStyles}</style>
-        <Example mode="manual" />
-      </>,
-    );
-
-    cy.get('#open').realClick();
-    cy.get('#inside').realClick();
-    cy.get('#layer').should(([layer]) => {
-      expect(layer).not.to.have.attr('data-open');
-      expect(layer).to.have.attr('data-phase', 'exiting');
-      expect(layer).to.have.attr('inert');
-      expect(layer).to.have.attr('aria-hidden', 'true');
-    });
-    cy.get<HTMLElement>('#layer').then(([layer]) => {
-      layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
-    });
-    cy.get('#layer').should('not.exist');
-  });
-
-  it('clears inert and aria-hidden once the exit ends when the element stays mounted', () => {
-    const StaysMounted = () => {
-      const [open, setOpen] = React.useState(true);
-      return (
-        <>
-          <style>{exitStyles}</style>
-          <button id="close" onClick={() => setOpen(false)}>
-            Close
-          </button>
-          <Layer id="layer" mode="manual" open={open} unmountOnClose={false} />
-        </>
-      );
-    };
-    mount(<StaysMounted />);
-
-    cy.get('#close').realClick();
-    cy.get('#layer').should('have.attr', 'data-phase', 'exiting').and('have.attr', 'inert');
-    cy.get<HTMLElement>('#layer').then(([layer]) => {
-      layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
-    });
-    cy.get('#layer').should('have.attr', 'data-phase', 'closed').and('not.have.attr', 'inert');
-    cy.get('#layer').should('not.have.attr', 'aria-hidden');
   });
 
   it('keeps a nested auto layer from closing its parent', () => {
@@ -282,15 +219,14 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     mount(<Invoker />);
 
     cy.get('#invoker').realClick();
-    cy.get('#layer').should('match', ':popover-open').and('not.have.attr', 'inert');
+    cy.get('#layer').should('match', ':popover-open');
     cy.get('#state').should('have.text', 'open');
     cy.get('#invoker').realClick();
     cy.get('#layer').should('not.match', ':popover-open');
     cy.get('#state').should('have.text', 'closed');
 
-    // Reopen after the element went inert on exit.
     cy.get('#invoker').realClick();
-    cy.get('#layer').should('match', ':popover-open').and('not.have.attr', 'inert');
+    cy.get('#layer').should('match', ':popover-open');
     cy.get('#state').should('have.text', 'open');
   });
 

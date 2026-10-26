@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { act, render, waitFor } from '@testing-library/react';
-import { useLayerPresence } from './useLayerPresence';
 import { useLayerOpenState } from './useLayerOpenState';
 import { useDialogLayerOpenState } from './useDialogLayerOpenState';
 import { isPopoverOpen } from './utils';
@@ -173,7 +172,7 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
     expect(onShow).toHaveBeenCalledTimes(2);
   });
 
-  describe('with useLayerPresence', () => {
+  describe('mounted while open', () => {
     type TestLayerProps = {
       open?: boolean;
       mode?: TopLayerMode;
@@ -199,9 +198,7 @@ describe('useLayerOpenState and useDialogLayerOpenState', () => {
           ? (nextOpen: boolean, data: TopLayerOpenChangeData) => (nextOpen ? onOpen?.(data.event) : onClose?.(data))
           : undefined;
       const { popover } = useDialogLayerOpenState(ref, { open, mode, onOpenChange, onShow });
-      const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
-
-      if (!shouldRender) {
+      if (!open && unmountOnClose !== false) {
         return null;
       }
 
