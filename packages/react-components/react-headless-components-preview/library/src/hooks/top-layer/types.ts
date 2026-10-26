@@ -101,8 +101,7 @@ export type UseLayerEscapeOptions = {
   onEscape: (event: KeyboardEvent | React.KeyboardEvent) => void;
   /**
    * Which Escapes to handle:
-   * - `manual`: only where the browser doesn't close the layer itself: `popover="manual"`, `hint` where unsupported, and
-   *   a `<dialog>` shown with `show()`;
+   * - `manual`: only where the browser doesn't close the layer itself: `popover="manual"`, and `hint` where unsupported;
    * - `always`: every Escape for the layer, e.g. to report it before the browser closes a modal dialog.
    * @default 'manual'
    */
@@ -139,8 +138,8 @@ export type DialogAdapter = {
    */
   usesDialogEvents: (element: HTMLElement, mode: TopLayerMode) => boolean;
   /**
-   * Shows the element where the Popover API doesn't: `modal`, or a `<dialog>` without the Popover API. Returns whether
-   * this call showed it, or `undefined` to leave it to the Popover API.
+   * Shows the element with `showModal()` for `modal`. Returns whether this call showed it, or `undefined` to leave it to
+   * the Popover API.
    */
   show: (element: HTMLElement, mode: TopLayerMode) => boolean | undefined;
   hide: (element: HTMLElement) => void;

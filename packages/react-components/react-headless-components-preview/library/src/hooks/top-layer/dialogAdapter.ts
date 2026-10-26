@@ -1,7 +1,15 @@
 import { isDialogElement, isInTopLayer, isModal, isPopoverOpen, log } from './utils';
-import type { DialogAdapter, PopoverMode } from './types';
+import type { DialogAdapter } from './types';
 
 const cancelEvents = new WeakMap<HTMLElement, Event>();
+
+const isOpenAsModal = (element: HTMLElement): boolean => isDialogElement(element) && element.open && isModal(element);
+
+const warnModeSwitch = () => {
+  if (process.env.NODE_ENV !== 'production') {
+    log('warn', 'switching from `mode="modal"` to a popover mode while open applies on the next open.');
+  }
+};
 
 const showModal = (element: HTMLElement): boolean => {
   if (!isDialogElement(element)) {
@@ -16,48 +24,20 @@ const showModal = (element: HTMLElement): boolean => {
     return false;
   }
 
+  // Switching from a popover mode while open.
   if (isPopoverOpen(element)) {
     element.hidePopover();
-  } else if (element.open) {
-    element.close();
   }
 
   element.showModal();
   return true;
 };
 
-const showNonModal = (element: HTMLDialogElement, mode: PopoverMode): boolean | undefined => {
-  if (typeof element.showPopover !== 'function') {
-    if (element.open && !isModal(element)) {
-      return false;
-    }
-
-    if (element.open) {
-      element.close();
-    }
-
-    element.show();
-    return true;
-  }
-
-  // Switching from `modal` while open. The `popover` attribute can land a render after `mode`, so set it here.
-  if (element.open && !isPopoverOpen(element)) {
-    element.close();
-    if (!element.hasAttribute('popover')) {
-      element.setAttribute('popover', mode);
-    }
-  }
-
-  return undefined;
-};
-
 /**
- * Adds `mode="modal"` and `<dialog>` support to `useLayerOpenState`: `showModal()`, the `show()` fallback without the
- * Popover API, and dialog closes reported through `cancel` and `close`.
+ * Adds `mode="modal"` to `useLayerOpenState`: `showModal()`, and dialog closes reported through `cancel` and `close`.
  */
 export const dialogAdapter: DialogAdapter = {
-  usesDialogEvents: (element, mode) =>
-    mode === 'modal' || (isDialogElement(element) && typeof element.showPopover !== 'function'),
+  usesDialogEvents: (element, mode) => mode === 'modal' || isOpenAsModal(element),
 
   show: (element, mode) => {
     if (!isInTopLayer(element)) {
@@ -68,7 +48,12 @@ export const dialogAdapter: DialogAdapter = {
       return showModal(element);
     }
 
-    return isDialogElement(element) ? showNonModal(element, mode) : undefined;
+    if (isOpenAsModal(element)) {
+      warnModeSwitch();
+      return false;
+    }
+
+    return undefined;
   },
 
   hide: element => {
