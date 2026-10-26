@@ -6,9 +6,11 @@ These examples are intended to document the `positioning` prop used in Fluent UI
 
 Headless `Menu` defaults to `positioning.autoSize: 'height'`. Ordinary menus are constrained to the space available among their permitted placements, and `MenuPopover` supplies `overflow-y: auto`. Keyboard navigation can therefore reveal long-menu items by scrolling inside the surface instead of leaving focus outside the viewport. Styled consumers inherit this behavior through the public hooks and renderers; no consumer-side sizing rule or positioning adapter is required.
 
-The size cap accounts for viewport dimensions, target geometry, offset margins, surface padding and borders. It is refreshed when positioning options, targets, viewport size, or observed element sizes change. Shrinking the available height also reveals a retained focused item by adjusting the surface's scroll position, without scrolling the surrounding page.
+The size cap accounts for viewport dimensions, target geometry, effective CSS zoom, offset margins, surface padding and borders. It is refreshed when positioning options, targets, viewport size, or observed element sizes change, including an absolute surface's containing block. Shrinking the available height also reveals a retained focused item by adjusting the surface's scroll position, without scrolling the surrounding page.
 
 The cap considers the requested placement and permitted fallbacks rather than shrinking immediately to the requested side. This preserves native fallback selection when, for example, a long menu has little room below its trigger but sufficient room above. `pinned` restricts the cap to the requested placement; explicit fallback positions retain their order.
+
+When both axes are constrained, width and height come from the same permitted placement. The first placement that fits the content is preferred; if none fits, the limits preserve the most visible content area, with earlier placements winning ties.
 
 Covering surfaces remain content-sized: their target's center area is not used as a menu-height limit. Each surface receives its own constraint, so covering submenus do not inherit an ordinary parent's maximum.
 

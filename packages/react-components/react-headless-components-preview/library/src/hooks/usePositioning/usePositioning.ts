@@ -13,19 +13,27 @@ import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
-import { AVAILABLE_HEIGHT_PROPERTY, AVAILABLE_WIDTH_PROPERTY, useAvailableSize } from './useAvailableSize';
+import { AVAILABLE_HEIGHT_PROPERTY, AVAILABLE_WIDTH_PROPERTY, updateAvailableSize } from './useAvailableSize';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
 const DEFAULT_FLIP = ['flip-block', 'flip-inline', 'flip-block flip-inline'];
 
 const EMPTY_FALLBACK_POSITIONS: PositioningShorthandValue[] = [];
+const COVER_TARGET_ATTRIBUTE = 'data-cover-target';
 
 const setCoverTargetAttribute = (node: HTMLElement, coverTarget: boolean) => {
   if (coverTarget) {
-    node.setAttribute('data-cover-target', '');
+    node.setAttribute(COVER_TARGET_ATTRIBUTE, '');
   } else {
-    node.removeAttribute('data-cover-target');
+    node.removeAttribute(COVER_TARGET_ATTRIBUTE);
+  }
+};
+
+const clearContainerAttributes = (node: HTMLElement | null) => {
+  node?.removeAttribute(COVER_TARGET_ATTRIBUTE);
+  for (const property of [AVAILABLE_HEIGHT_PROPERTY, AVAILABLE_WIDTH_PROPERTY]) {
+    node?.style.removeProperty(property);
   }
 };
 
@@ -77,31 +85,28 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const { targetDocument } = useFluent();
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
-  const sizingAreas = React.useMemo(() => {
-    if (pinned) {
-      return [positionArea];
-    }
-    if (fallbackAreas.length) {
-      return [positionArea, ...fallbackAreas];
-    }
-    const flippedPosition =
-      position === 'above' ? 'below' : position === 'below' ? 'above' : position === 'before' ? 'after' : 'before';
-    const flippedAlign = align === 'start' ? 'end' : align === 'end' ? 'start' : align;
-    return [
-      positionArea,
-      POSITION_AREA_MAP[flippedPosition][align],
-      POSITION_AREA_MAP[position][flippedAlign],
-      POSITION_AREA_MAP[flippedPosition][flippedAlign],
-    ];
-  }, [pinned, positionArea, fallbackAreas, position, align]);
+  const flippedPosition =
+    position === 'above' ? 'below' : position === 'below' ? 'above' : position === 'before' ? 'after' : 'before';
+  const flippedAlign = align === 'start' ? 'end' : align === 'end' ? 'start' : align;
+  const sizingAreas = pinned
+    ? [positionArea]
+    : fallbackAreas.length
+    ? [positionArea, ...fallbackAreas]
+    : [
+        positionArea,
+        POSITION_AREA_MAP[flippedPosition][align],
+        POSITION_AREA_MAP[position][flippedAlign],
+        POSITION_AREA_MAP[flippedPosition][flippedAlign],
+      ];
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
-  const requestSizeUpdate = useAvailableSize(
-    containerEl,
-    effectiveTarget,
-    targetDocument,
-    coverTarget ? false : autoSize,
-    sizingAreas,
+  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget, () =>
+    updateAvailableSize(
+      attachedContainerRef.current,
+      effectiveTarget,
+      targetDocument,
+      coverTarget ? false : autoSize,
+      sizingAreas,
+    ),
   );
 
   // Reconcile every owning commit, including consumer attribute changes with unchanged positioning options.
@@ -112,7 +117,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   });
 
   useIsomorphicLayoutEffect(() => {
-    return () => attachedContainerRef.current?.removeAttribute('data-cover-target');
+    return () => clearContainerAttributes(attachedContainerRef.current);
   }, []);
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
@@ -121,12 +126,9 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       setTarget: (el: TargetElement | null) => {
         setImperativeTarget(resolveElementRef(el));
       },
-      updatePosition: () => {
-        requestSizeUpdate();
-        requestPlacementUpdate();
-      },
+      updatePosition: requestPlacementUpdate,
     }),
-    [requestPlacementUpdate, requestSizeUpdate],
+    [requestPlacementUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
@@ -165,9 +167,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
       if (attachedContainerRef.current !== node) {
-        attachedContainerRef.current?.removeAttribute('data-cover-target');
-        attachedContainerRef.current?.style.removeProperty(AVAILABLE_HEIGHT_PROPERTY);
-        attachedContainerRef.current?.style.removeProperty(AVAILABLE_WIDTH_PROPERTY);
+        clearContainerAttributes(attachedContainerRef.current);
       }
       attachedContainerRef.current = node;
       setContainerEl(node);

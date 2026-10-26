@@ -1,7 +1,8 @@
 'use client';
 
 import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce } from './utils';
+import * as React from 'react';
+import { computePosition } from './utils';
 
 /**
  * Mirrors the placement that the browser actually resolves for an
@@ -15,15 +16,27 @@ export function usePlacementObserver(
   containerEl: HTMLElement | null,
   targetEl: HTMLElement | null,
   targetDocument: Document | undefined,
-  disabled = false,
+  disabled: boolean,
+  updateSize: () => Element | null,
 ): () => void {
+  const observed = React.useRef<{ observer?: ResizeObserver; parent: Element | null }>({ parent: null });
   const update = useEventCallback(() => {
-    if (!containerEl || !targetEl) {
+    const parent = updateSize();
+    if (!containerEl || !targetEl || disabled) {
       return;
+    }
+    if (parent !== observed.current.parent) {
+      if (observed.current.parent) {
+        observed.current.observer?.unobserve(observed.current.parent);
+      }
+      if (parent) {
+        observed.current.observer?.observe(parent);
+      }
+      observed.current.parent = parent;
     }
 
     const result = computePosition(targetEl, containerEl);
-    if (!result) {
+    if (!result || !containerEl.offsetHeight) {
       return;
     }
 
@@ -33,39 +46,44 @@ export function usePlacementObserver(
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (disabled || !containerEl || !targetEl) {
-      return;
-    }
+    update();
+  });
 
+  useIsomorphicLayoutEffect(() => {
     const win = targetDocument?.defaultView;
-    if (!win) {
+    if (disabled || !containerEl || !targetEl || !win) {
       return;
     }
 
-    const debouncedUpdate = debounce(update);
-
-    const ResizeObserverCtor = win.ResizeObserver;
-    const resizeObserver = ResizeObserverCtor
-      ? new ResizeObserverCtor(entries => {
-          const allLaidOut = entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0);
-          if (allLaidOut) {
-            debouncedUpdate();
-          }
-        })
-      : null;
+    let frame = 0;
+    const scheduleUpdate = () => {
+      win.cancelAnimationFrame(frame);
+      frame = win.requestAnimationFrame(update);
+    };
+    const resizeObserver = win.ResizeObserver ? new win.ResizeObserver(scheduleUpdate) : undefined;
+    observed.current = { observer: resizeObserver, parent: null };
 
     resizeObserver?.observe(containerEl);
     resizeObserver?.observe(targetEl);
 
-    win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
-    win.addEventListener('resize', debouncedUpdate);
-
-    debouncedUpdate();
+    const eventTargets = [win, win.visualViewport];
+    const events = ['resize', 'scroll'];
+    const options = { capture: true, passive: true };
+    const listen = (method: 'addEventListener' | 'removeEventListener') => {
+      for (const eventTarget of eventTargets) {
+        for (const event of events) {
+          eventTarget?.[method](event, scheduleUpdate, options);
+        }
+      }
+    };
+    listen('addEventListener');
+    update();
 
     return () => {
       resizeObserver?.disconnect();
-      win.removeEventListener('scroll', debouncedUpdate, { capture: true });
-      win.removeEventListener('resize', debouncedUpdate);
+      win.cancelAnimationFrame(frame);
+      observed.current = { parent: null };
+      listen('removeEventListener');
     };
   }, [containerEl, targetEl, targetDocument, disabled, update]);
 

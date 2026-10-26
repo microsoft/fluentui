@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { act, render } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import { usePositioning } from './usePositioning';
-import { AVAILABLE_HEIGHT_PROPERTY, AVAILABLE_WIDTH_PROPERTY, positioningSizeStyles } from './useAvailableSize';
+import {
+  AVAILABLE_HEIGHT_PROPERTY,
+  AVAILABLE_WIDTH_PROPERTY,
+  positioningSizeStyles,
+  updateAvailableSize,
+} from './useAvailableSize';
 import type { PositioningProps } from './types';
 
 const Surface = ({
@@ -64,18 +69,100 @@ describe('positioning available size', () => {
     );
   });
 
-  it('updates on viewport resize and target replacement', () => {
+  it('updates on viewport resize and target replacement', async () => {
     const { getByTestId, rerender } = render(
       <Surface options={{ target, position: 'below', autoSize: 'height', pinned: true }} />,
     );
     const surface = getByTestId('surface');
     rect = { ...rect, top: 300, bottom: 320, y: 300 };
     act(() => window.dispatchEvent(new Event('resize')));
-    expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe('280px');
+    await waitFor(() => expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe('280px'));
     const replacement = document.createElement('button');
     replacement.getBoundingClientRect = () => ({ ...rect, bottom: 400 });
     rerender(<Surface options={{ target: replacement, position: 'below', autoSize: 'height', pinned: true }} />);
     expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe('200px');
+  });
+
+  it('normalizes cumulative CSS zoom even without currentCSSZoom support', () => {
+    const parent = document.createElement('div');
+    const surface = document.createElement('div');
+    parent.style.zoom = '2';
+    surface.style.zoom = '1.5';
+    const getComputedStyle = window.getComputedStyle.bind(window);
+    jest.spyOn(window, 'getComputedStyle').mockImplementation(element => {
+      const styles = getComputedStyle(element);
+      Object.defineProperty(styles, 'zoom', { value: (element as HTMLElement).style.zoom || '1' });
+      return styles;
+    });
+    Object.defineProperty(surface, 'currentCSSZoom', { value: undefined });
+    parent.appendChild(surface);
+    document.body.appendChild(parent);
+    try {
+      updateAvailableSize(surface, target, document, 'height', ['block-end']);
+      expect(parseFloat(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY))).toBeCloseTo(80 / 3);
+    } finally {
+      parent.remove();
+    }
+  });
+
+  it.each([
+    [700, 1000, '600px', '390px'],
+    [700, 200, '290px', '800px'],
+    [100, 350, '600px', '390px'],
+  ])('chooses a compatible pair for %sx%s content', (width, height, expectedHeight, expectedWidth) => {
+    rect = { ...rect, top: 290, bottom: 310, left: 390, right: 410 };
+    const surface = document.createElement('div');
+    surface.getBoundingClientRect = () => ({ ...rect, width, height });
+    updateAvailableSize(surface, target, document, true, ['block-end', 'inline-end']);
+    expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe(expectedHeight);
+    expect(surface.style.getPropertyValue(AVAILABLE_WIDTH_PROPERTY)).toBe(expectedWidth);
+  });
+
+  it('rebinds containing-block observation and cancels queued updates on cleanup', () => {
+    const observe = jest.fn();
+    const unobserve = jest.fn();
+    const disconnect = jest.fn();
+    const observer = { observe, unobserve, disconnect };
+    let notify: () => void = jest.fn();
+    jest.spyOn(window, 'ResizeObserver').mockImplementation(callback => {
+      notify = () => callback([], observer);
+      return observer;
+    });
+    let parent = document.createElement('div');
+    jest.spyOn(HTMLElement.prototype, 'offsetParent', 'get').mockImplementation(() => parent);
+    const { rerender, unmount } = render(<Surface options={{ target, autoSize: 'height', strategy: 'absolute' }} />);
+    expect(observe).toHaveBeenCalledWith(parent);
+    const previous = parent;
+    parent = document.createElement('div');
+    rerender(<Surface options={{ target, autoSize: 'height', strategy: 'absolute' }} />);
+    expect(unobserve).toHaveBeenCalledWith(previous);
+    expect(observe).toHaveBeenCalledWith(parent);
+    jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(42);
+    const cancel = jest.spyOn(window, 'cancelAnimationFrame');
+    notify();
+    unmount();
+    expect(disconnect).toHaveBeenCalled();
+    expect(cancel).toHaveBeenCalledWith(42);
+  });
+
+  it('does not reuse a disconnected observer after the target changes', () => {
+    const observers: Array<{ observe: jest.Mock; unobserve: jest.Mock; disconnect: jest.Mock }> = [];
+    jest.spyOn(window, 'ResizeObserver').mockImplementation(() => {
+      const observer = { observe: jest.fn(), unobserve: jest.fn(), disconnect: jest.fn() };
+      observers.push(observer);
+      return observer;
+    });
+    const parent = document.createElement('div');
+    jest.spyOn(HTMLElement.prototype, 'offsetParent', 'get').mockReturnValue(parent);
+    const { rerender } = render(<Surface options={{ target, autoSize: 'height', strategy: 'absolute' }} />);
+    const previous = observers[0];
+    const calls = previous.observe.mock.calls.length;
+    rerender(
+      <Surface options={{ target: document.createElement('button'), autoSize: 'height', strategy: 'absolute' }} />,
+    );
+    expect(previous.disconnect).toHaveBeenCalledTimes(1);
+    expect(previous.observe).toHaveBeenCalledTimes(calls);
+    expect(observers[1].observe).toHaveBeenCalledWith(parent);
   });
 
   it.each([false, undefined] as const)('blocks inherited sizing when autoSize=%s', autoSize => {
@@ -97,7 +184,11 @@ describe('positioning available size', () => {
       const { getByTestId } = render(<Surface options={{ target, autoSize, position: 'below' }} />);
       const surface = getByTestId('surface');
       expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe(
-        autoSize === 'width' || autoSize === 'width-always' ? 'initial' : '500px',
+        autoSize === 'width' || autoSize === 'width-always'
+          ? 'initial'
+          : autoSize === true || autoSize === 'always'
+          ? '80px'
+          : '500px',
       );
       expect(surface.style.getPropertyValue(AVAILABLE_WIDTH_PROPERTY)).toBe(
         autoSize === 'height' || autoSize === 'height-always' ? 'initial' : '800px',

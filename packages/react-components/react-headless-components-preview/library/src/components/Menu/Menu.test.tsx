@@ -17,6 +17,7 @@ import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
 import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 import { renderMenu, renderMenuPopover, useMenu, useMenuContextValues, useMenuPopover } from '../../menu';
 import type { MenuProps, MenuPopoverProps } from '../../menu';
+import { AVAILABLE_HEIGHT_PROPERTY, positioningSizeStyles } from '../../hooks/usePositioning/useAvailableSize';
 
 const ComposedMenu = (props: MenuProps) => {
   const state = useMenu(props);
@@ -54,9 +55,9 @@ describe('Menu', () => {
       const { getByTestId, rerender } = render(<Example />);
       const surface = getByTestId('sized-surface');
       expect(surface.style.overflowY).toBe('auto');
-      expect(surface.style.maxHeight).toBe('var(--fui-positioning-available-height, revert-layer)');
+      expect(surface.style.maxHeight).toBe(positioningSizeStyles.maxHeight);
       rerender(<Example positioning={{ autoSize: false }} style={{ maxHeight: '120px', overflowY: 'visible' }} />);
-      expect(surface.style.getPropertyValue('--fui-positioning-available-height')).toBe('initial');
+      expect(surface.style.getPropertyValue(AVAILABLE_HEIGHT_PROPERTY)).toBe('initial');
       expect(surface.style.maxHeight).toBe('120px');
       expect(surface.style.overflowY).toBe('visible');
     });
