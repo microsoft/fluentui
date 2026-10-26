@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Expose committed TeachingPopover carousel footer boundary state for headless consumers and accept base render state.",
+  "comment": "fix: Expose committed TeachingPopover carousel footer boundary state for headless consumers and accept base render state.",
   "packageName": "@fluentui/react-teaching-popover",
   "email": "paulmardling@microsoft.com"
 }

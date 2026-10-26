@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add explicit carousel footer button boundary hiding with coordinated focus recovery.",
+  "comment": "fix: Add explicit carousel footer button boundary hiding with coordinated focus recovery.",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com"
 }
