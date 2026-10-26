@@ -212,11 +212,26 @@ test('skill requires a chat-visible report and explicit approval before mutation
   assert.match(skill, /Render the candidate table in the chat response/);
   assert.match(skill, /Then use `ask_user`/);
   assert.match(skill, /Unavailable\/declined\/ambiguous approval means \*\*no mutations\*\*/);
-  assert.match(skill, /Repair-only approval never authorizes review\/auto-merge/);
+  assert.match(skill, /Repair-only approval never authorizes review\/auto-merge or closing PRs/);
   assert.ok(
     skill.indexOf('Mandatory visible report and approval checkpoint') < skill.indexOf('## 2. Repair and validate'),
   );
   assert.ok(!skill.includes('Invocation authorizes eligible PR repairs'));
+});
+
+test('skill proposes approved closure for updates fully present on master, not a silent skip', () => {
+  const skill = readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8');
+  assert.match(skill, /Already present on master -> propose "Close PR \(after approval\)", not "Skip; no changes"/);
+  assert.match(skill, /For groups, all members must be superseded/);
+  assert.match(skill, /root lockfile\/transitive remediation/);
+  assert.match(skill, /Only execute closure when the user-approved action is \*\*Close PR\*\*/);
+  assert.match(
+    skill,
+    /If the head or master changed, refresh the supersession proof\/report and obtain approval again/,
+  );
+  assert.match(skill, /gh pr close "\$PR" --repo microsoft\/fluentui/);
+  assert.match(skill, /without deleting the branch/);
+  assert.ok(!skill.includes('Skip drafts/closed/obsolete/excluded'));
 });
 
 test('check classification never equates missing, cancelled, or unfinished checks with passing', () => {

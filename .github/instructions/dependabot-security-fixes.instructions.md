@@ -29,7 +29,7 @@ The npm `open-pull-requests-limit` controls the number of scheduled version-upda
 
 ## Local Dependabot maintenance
 
-Use [`/dependabot-fix`](../../.agents/skills/dependabot-fix/SKILL.md) from a developer machine to inspect open Dependabot PRs. The skill must display a candidate/action report in chat and obtain explicit approval before repairs, pushes, GitHub reviews, or auto-merge. Approval can cover selected PRs/actions only; invocation and `--pr` selection alone do not authorize changes. Use `--dry-run` for inspection only. The default batch excludes majors; explicitly select a major PR with `--pr`.
+Use [`/dependabot-fix`](../../.agents/skills/dependabot-fix/SKILL.md) from a developer machine to inspect open Dependabot PRs. The skill must display a candidate/action report in chat and obtain explicit approval before repairs, pushes, closing superseded PRs, GitHub reviews, or auto-merge. For updates proven fully present on master, propose **Close PR** rather than skip; verify all group members and relevant lockfile/security fixes before closure. Approval can cover selected PRs/actions only; invocation and `--pr` selection alone do not authorize changes. Use `--dry-run` for inspection only. The default batch excludes majors; explicitly select a major PR with `--pr`.
 
 ```text
 Inspect PR state -> show candidates -> user approves PRs/actions -> fix -> validate -> push
