@@ -5,6 +5,24 @@
   "implicitDependencies": [],
   "tags": ["v8"],
   "targets": {
+    "e2e": {
+      "command": "yarn run -T playwright test",
+      "dependsOn": ["bundle", "e2e-type-check"],
+      "inputs": ["default", "^production", { "externalDependencies": ["@playwright/test"] }],
+      "outputs": ["{projectRoot}/test-results"],
+      "options": {
+        "cwd": "apps/public-docsite",
+        "env": {
+          "NODE_OPTIONS": "--no-experimental-strip-types"
+        }
+      }
+    },
+    "e2e-type-check": {
+      "command": "yarn run -T tsc --noEmit -p tsconfig.e2e.json",
+      "options": {
+        "cwd": "apps/public-docsite"
+      }
+    },
     "test": {
       "command": "yarn run -T jest",
       "dependsOn": ["^build"],
@@ -23,7 +41,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "yarn run -T eslint src",
+        "command": "yarn run -T eslint src e2e playwright.config.ts",
         "cwd": "apps/public-docsite"
       }
     },
@@ -34,7 +52,8 @@
       "dependsOn": ["^build"]
     },
     "bundle": {
-      "dependsOn": ["prebundle"]
+      "dependsOn": ["prebundle"],
+      "outputs": ["{projectRoot}/dist"]
     }
   }
 }

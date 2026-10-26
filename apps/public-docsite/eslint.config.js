@@ -5,6 +5,19 @@ const fluentPlugin = require('@fluentui/eslint-plugin');
 module.exports = [
   ...fluentPlugin.configs['flat/react-legacy'],
   {
+    files: ['e2e/**/*.ts', 'playwright.config.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: false,
+        project: './tsconfig.e2e.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
+    rules: {
+      'import/no-extraneous-dependencies': 'off',
+    },
+  },
+  {
     files: ['src/**/*.test.{ts,tsx}'],
     languageOptions: {
       parserOptions: {

@@ -33,7 +33,16 @@ yarn nx run public-docsite:test-type-check
 yarn nx run public-docsite:type-check
 yarn nx run public-docsite:lint
 yarn nx run public-docsite:bundle
+yarn nx run public-docsite:e2e
+yarn nx run public-docsite:e2e-type-check
 ```
+
+The Playwright `e2e` target builds the docsite and serves its actual `dist` output on
+`http://127.0.0.1:4332`, without a development server or mocked breakpoints/CSS.
+It covers native disclosure keyboard interaction, destination loading and focus,
+category state across 767/768/769-pixel layouts, and overflow at 320 by 768 and 320 by 256.
+The existing affected E2E CI job runs this target. Browser checks do not establish actual
+browser zoom, text-only resizing or screen-reader behavior; those still need manual verification.
 
 For manual verification, start the site and open
 `http://localhost:4322/#/controls/ios/button`:
