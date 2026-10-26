@@ -888,7 +888,7 @@ describe('VerticalBarChart - focus events', () => {
     const renderCallout = (props: VerticalBarChartDataPoint) =>
       props ? <div data-testid="vertical-bar-callout">{props.y}</div> : null;
     const { container, rerender } = render(
-      <VerticalBarChart data={chartPointsVBC} onRenderCalloutPerDataPoint={renderCallout} />,
+      <VerticalBarChart data={chartPointsVBC} onRenderCalloutPerDataPoint={renderCallout} focusRestorePolicy="reset" />,
     );
     const bar = getById(container, /_VBC_bar/i)[0];
 
@@ -897,7 +897,9 @@ describe('VerticalBarChart - focus events', () => {
 
     act(() => bar.blur());
     const updatedPoints = chartPointsVBC.map((point, index) => (index === 0 ? { ...point, y: 987654 } : point));
-    rerender(<VerticalBarChart data={updatedPoints} onRenderCalloutPerDataPoint={renderCallout} />);
+    rerender(
+      <VerticalBarChart data={updatedPoints} onRenderCalloutPerDataPoint={renderCallout} focusRestorePolicy="reset" />,
+    );
 
     await waitFor(() => {
       expect(container.ownerDocument.activeElement).toBe(bar);
@@ -1108,12 +1110,68 @@ describe('VerticalBarChart - focusOnReset', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
+  it.each([
+    { initialSelection: [], nextSelection: ['Second'], shouldRestore: false },
+    { initialSelection: ['First'], nextSelection: ['Second'], shouldRestore: false },
+    { initialSelection: ['Second'], nextSelection: ['First'], shouldRestore: true },
+    { initialSelection: ['Second'], nextSelection: undefined, shouldRestore: true },
+  ])(
+    'uses the new controlled legend selection during a data reset ($initialSelection -> $nextSelection)',
+    ({ initialSelection, nextSelection, shouldRestore }) => {
+      for (const enableFocusOnReset of [false, true]) {
+        const focusOnReset = enableFocusOnReset ? { barIndex: 0 } : undefined;
+        const { container, rerender, unmount } = render(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+          </>,
+        );
+        const bar = getById(container, /_VBC_bar/i)[0];
+        act(() => bar.focus());
+        const beforeChart = screen.getByTestId('before-chart');
+        act(() => beforeChart.focus());
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <VerticalBarChart
+              data={chartPointsVBC}
+              legendProps={{ selectedLegends: initialSelection }}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+            />
+          </>,
+        );
+        const onFocus = jest.fn();
+        bar.addEventListener('focus', onFocus);
+        const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
+
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <VerticalBarChart
+              data={updatedData}
+              legendProps={{ selectedLegends: nextSelection }}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+            />
+          </>,
+        );
+
+        expect(container.ownerDocument.activeElement).toBe(shouldRestore ? bar : beforeChart);
+        expect(onFocus).toHaveBeenCalledTimes(shouldRestore ? 1 : 0);
+        expect(bar).toHaveAttribute('opacity', shouldRestore ? '1' : '0.1');
+        expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(shouldRestore ? 1 : 0);
+        unmount();
+      }
+    },
+  );
+
   it.each([false, true])('Should skip an inactive bar (focusOnReset: %s)', enableFocusOnReset => {
     const focusOnReset = enableFocusOnReset ? { barIndex: 1 } : undefined;
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} />
+        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
     );
     const bar = getById(container, /_VBC_bar/i)[1];
@@ -1127,7 +1185,7 @@ describe('VerticalBarChart - focusOnReset', () => {
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} />
+        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
     );
 
@@ -1141,7 +1199,7 @@ describe('VerticalBarChart - focusOnReset', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} />
+        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
     );
     const bar = getById(container, /_VBC_bar/i)[1];
@@ -1153,7 +1211,7 @@ describe('VerticalBarChart - focusOnReset', () => {
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} hideTooltip />
+        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" hideTooltip />
       </>,
     );
 
@@ -1169,26 +1227,41 @@ describe('VerticalBarChart - focusOnReset', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={chartPointsVBC} colors={initialColors} focusOnReset={focusOnReset} />
+        <VerticalBarChart
+          data={chartPointsVBC}
+          colors={initialColors}
+          focusOnReset={focusOnReset}
+          focusRestorePolicy="reset"
+        />
       </>,
     );
     const beforeChart = screen.getByTestId('before-chart');
-    fireEvent.focus(getById(container, /_VBC_bar/i)[2]);
-    beforeChart.focus();
+    act(() => getById(container, /_VBC_bar/i)[2].focus());
+    act(() => beforeChart.focus());
 
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={updatedData} colors={initialColors} focusOnReset={focusOnReset} />
+        <VerticalBarChart
+          data={updatedData}
+          colors={initialColors}
+          focusOnReset={focusOnReset}
+          focusRestorePolicy="reset"
+        />
       </>,
     );
     expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[1]);
 
-    beforeChart.focus();
+    act(() => beforeChart.focus());
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={updatedData} colors={updatedColors} focusOnReset={focusOnReset} />
+        <VerticalBarChart
+          data={updatedData}
+          colors={updatedColors}
+          focusOnReset={focusOnReset}
+          focusRestorePolicy="reset"
+        />
       </>,
     );
     expect(container.ownerDocument.activeElement).toBe(getById(container, /_VBC_bar/i)[1]);
@@ -1199,19 +1272,19 @@ describe('VerticalBarChart - focusOnReset', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={chartPointsVBC} />
+        <VerticalBarChart data={chartPointsVBC} focusRestorePolicy="reset" />
       </>,
     );
     const beforeChart = screen.getByTestId('before-chart');
     const previouslyFocusedBar = getById(container, /_VBC_bar/i)[2];
     expect(previouslyFocusedBar).not.toBeNull();
-    fireEvent.focus(previouslyFocusedBar!);
-    beforeChart.focus();
+    act(() => previouslyFocusedBar!.focus());
+    act(() => beforeChart.focus());
 
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={updatedData} />
+        <VerticalBarChart data={updatedData} focusRestorePolicy="reset" />
       </>,
     );
 
@@ -1223,7 +1296,12 @@ describe('VerticalBarChart - focusOnReset', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <VerticalBarChart data={chartPointsVBC} colors={colors} focusOnReset={{ barIndex: 1 }} />
+        <VerticalBarChart
+          data={chartPointsVBC}
+          colors={colors}
+          focusOnReset={{ barIndex: 1 }}
+          focusRestorePolicy="reset"
+        />
       </>,
     );
     act(() => getById(container, /_VBC_bar/i)[1].focus());
@@ -1237,6 +1315,7 @@ describe('VerticalBarChart - focusOnReset', () => {
           data={cloneData ? chartPointsVBC.map(point => ({ ...point })) : chartPointsVBC}
           colors={cloneData ? [...colors] : colors}
           focusOnReset={{ barIndex: 1 }}
+          focusRestorePolicy="reset"
           width={700}
         />
       </>,
@@ -1269,7 +1348,7 @@ describe('VerticalBarChart - focusOnReset', () => {
       const { container, rerender } = render(
         <>
           <button data-testid="before-chart">Before chart</button>
-          <VerticalBarChart data={createData()} focusOnReset={focusOnReset} />
+          <VerticalBarChart data={createData()} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
         </>,
       );
       act(() => getById(container, /_VBC_bar/i)[1].focus());
@@ -1280,7 +1359,12 @@ describe('VerticalBarChart - focusOnReset', () => {
         rerender(
           <>
             <button data-testid="before-chart">Before chart</button>
-            <VerticalBarChart data={createData(isInteractive)} focusOnReset={focusOnReset} width={700} />
+            <VerticalBarChart
+              data={createData(isInteractive)}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+              width={700}
+            />
           </>,
         );
 

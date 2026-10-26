@@ -1137,20 +1137,20 @@ describe('LineChart - mouse events', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} />
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
       { container: root! },
     );
     const beforeChart = screen.getByTestId('before-chart');
     const userSelectedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
     expect(userSelectedPoint).not.toBeNull();
-    fireEvent.focus(userSelectedPoint!);
-    beforeChart.focus();
+    act(() => userSelectedPoint!.focus());
+    act(() => beforeChart.focus());
 
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={updatedData} focusOnReset={focusOnReset} />
+        <LineChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
     );
 
@@ -1162,7 +1162,7 @@ describe('LineChart - mouse events', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} />
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
       { container: root! },
     );
@@ -1180,7 +1180,7 @@ describe('LineChart - mouse events', () => {
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={updatedData} focusOnReset={focusOnReset} />
+        <LineChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
       </>,
     );
 
@@ -1193,7 +1193,7 @@ describe('LineChart - mouse events', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={basicChartPoints} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} />
+        <LineChart data={basicChartPoints} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} focusRestorePolicy="reset" />
       </>,
       { container: root! },
     );
@@ -1210,7 +1210,7 @@ describe('LineChart - mouse events', () => {
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={data} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} width={700} />
+        <LineChart data={data} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} focusRestorePolicy="reset" width={700} />
       </>,
     );
 
@@ -1235,7 +1235,7 @@ describe('LineChart - mouse events', () => {
       const { container, rerender } = render(
         <>
           <button data-testid="before-chart">Before chart</button>
-          <LineChart data={createData()} focusOnReset={focusOnReset} />
+          <LineChart data={createData()} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
         </>,
         { container: root! },
       );
@@ -1247,7 +1247,12 @@ describe('LineChart - mouse events', () => {
         rerender(
           <>
             <button data-testid="before-chart">Before chart</button>
-            <LineChart data={createData(isInteractive)} focusOnReset={focusOnReset} width={700} />
+            <LineChart
+              data={createData(isInteractive)}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+              width={700}
+            />
           </>,
         );
 
@@ -1274,7 +1279,12 @@ describe('LineChart - mouse events', () => {
       const { container, rerender } = render(
         <>
           <button data-testid="before-chart">Before chart</button>
-          <LineChart data={data} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+          <LineChart
+            data={data}
+            optimizeLargeData={optimizeLargeData}
+            focusOnReset={focusOnReset}
+            focusRestorePolicy="reset"
+          />
         </>,
         { container: root! },
       );
@@ -1291,7 +1301,12 @@ describe('LineChart - mouse events', () => {
       rerender(
         <>
           <button data-testid="before-chart">Before chart</button>
-          <LineChart data={updatedData} optimizeLargeData={optimizeLargeData} focusOnReset={focusOnReset} />
+          <LineChart
+            data={updatedData}
+            optimizeLargeData={optimizeLargeData}
+            focusOnReset={focusOnReset}
+            focusRestorePolicy="reset"
+          />
         </>,
       );
 
@@ -1315,7 +1330,7 @@ describe('LineChart - mouse events', () => {
       rerender(
         <>
           <button data-testid="before-chart">Before chart</button>
-          <LineChart data={data} optimizeLargeData={optimizeLargeData} />
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} focusRestorePolicy="reset" />
         </>,
       );
 
@@ -1333,20 +1348,20 @@ describe('LineChart - mouse events', () => {
     const { container, rerender } = render(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={basicChartPoints} />
+        <LineChart data={basicChartPoints} focusRestorePolicy="reset" />
       </>,
       { container: root! },
     );
     const beforeChart = screen.getByTestId('before-chart');
     const previouslyFocusedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
     expect(previouslyFocusedPoint).not.toBeNull();
-    fireEvent.focus(previouslyFocusedPoint!);
-    beforeChart.focus();
+    act(() => previouslyFocusedPoint!.focus());
+    act(() => beforeChart.focus());
 
     rerender(
       <>
         <button data-testid="before-chart">Before chart</button>
-        <LineChart data={updatedData} />
+        <LineChart data={updatedData} focusRestorePolicy="reset" />
       </>,
     );
 

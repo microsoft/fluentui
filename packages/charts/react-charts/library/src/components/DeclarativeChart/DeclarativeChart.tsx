@@ -55,7 +55,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import type { Chart, ImageExportOptions } from '../../types/index';
+import type { Chart, FocusRestorePolicy, ImageExportOptions } from '../../types/index';
 import { ScatterChart } from '../ScatterChart/index';
 import { FunnelChart } from '../FunnelChart/FunnelChart';
 import { GanttChart } from '../GanttChart/index';
@@ -106,6 +106,14 @@ export interface Schema {
  * {@docCategory DeclarativeChart}
  */
 export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
+  /**
+   * Focus policy for line, vertical bar, and gauge data/color content changes.
+   * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
+   * chart target even from outside; 'none' disables automatic restoration.
+   * Changing the policy alone does not move focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
   /**
    * The schema representing the chart data, layout and configuration
    */
@@ -417,6 +425,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const interactiveCommonProps = {
     legendProps: multiSelectLegendProps,
+    focusRestorePolicy: props.focusRestorePolicy,
   };
 
   function createLegends(legendProps: LegendsProps): JSXElement {

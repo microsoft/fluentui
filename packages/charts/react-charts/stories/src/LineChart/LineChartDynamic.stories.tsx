@@ -56,9 +56,6 @@ export const LineChartDynamic = (): JSXElement => {
   const initialXAxisType: XAxisType = 'number';
   const initialDataSize = 5;
   const colorIndex = React.useRef(0);
-  const chartContainerRef = React.useRef<HTMLDivElement>(null);
-  const lastFocusedChartElementId = React.useRef<string | undefined>(undefined);
-  const focusedChartElementId = React.useRef<string | undefined>(undefined);
   const [colors, setColors] = React.useState(colorPalettes[0]);
   const [dynamicData, setDynamicData] = React.useState<ChartProps>(() =>
     getData(initialDataSize, initialXAxisType, colorPalettes[0]),
@@ -70,54 +67,17 @@ export const LineChartDynamic = (): JSXElement => {
   const [dataSize, setDataSize] = React.useState(initialDataSize);
   const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
 
-  React.useEffect(() => {
-    const container = chartContainerRef.current;
-    const elementId = focusedChartElementId.current;
-    if (!container || !elementId) {
-      return;
-    }
-
-    const targetWindow = container.ownerDocument.defaultView;
-    const restoreFocus = () => {
-      const element = container.ownerDocument.getElementById(elementId);
-      if (element && container.contains(element)) {
-        element.focus();
-      }
-      focusedChartElementId.current = undefined;
-    };
-    const animationFrame = targetWindow?.requestAnimationFrame(restoreFocus);
-    if (animationFrame === undefined) {
-      restoreFocus();
-    }
-
-    return () => {
-      if (animationFrame !== undefined) {
-        targetWindow?.cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [dynamicData]);
-
-  const onChartFocus = (event: React.FocusEvent<HTMLDivElement>) => {
-    lastFocusedChartElementId.current = event.target.id || undefined;
-  };
-
-  const queueFocusRestore = () => {
-    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
-  };
-
   const announceChange = (message: string) => {
     setStatusKey(currentKey => currentKey + 1);
     setStatusMessage(message);
   };
 
   const changeData = () => {
-    queueFocusRestore();
     setDynamicData(getData(dataSize, xAxisType, colors));
     announceChange('Line chart data changed');
   };
 
   const changeColors = () => {
-    queueFocusRestore();
     colorIndex.current = (colorIndex.current + 1) % colorPalettes.length;
     const nextColors = colorPalettes[colorIndex.current];
     setColors(nextColors);
@@ -180,16 +140,17 @@ export const LineChartDynamic = (): JSXElement => {
         </Field>
       </div>
       <Switch
-        label="Enable Default Chart Element Autofocus on Data Change"
+        label="Reset focus to the first chart element on data change"
         checked={enableFocusOnReset}
         onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
       />
-      <div ref={chartContainerRef} style={{ width: `${width}px`, height: '350px' }} onFocusCapture={onChartFocus}>
+      <div style={{ width: `${width}px`, height: '350px' }}>
         <LineChart
           key={xAxisType}
           data={dynamicData}
           width={width}
           height={350}
+          focusRestorePolicy={enableFocusOnReset ? 'reset' : 'preserve'}
           focusOnReset={enableFocusOnReset ? { lineIndex: 0, pointIndex: 0 } : undefined}
           yMinValue={0}
           yMaxValue={100}

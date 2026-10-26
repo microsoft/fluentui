@@ -6,6 +6,7 @@ import type {
   Basestate,
   RefArrayData,
   CustomizedCalloutData,
+  FocusRestorePolicy,
 } from '../../types/index';
 import type { EventAnnotation } from '../../types/EventAnnotation';
 import type {
@@ -96,8 +97,15 @@ export interface LineChartProps extends CartesianChartProps {
   isCalloutForStack?: boolean;
 
   /**
-   * Point to focus when the chart data or colors change in content.
-   * When not provided, focus returns to the previously focused point.
+   * Focus policy for data/color content changes. Defaults to 'preserve', which leaves
+   * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
+   * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
+  /**
+   * Point to focus on a data/color content change when focusRestorePolicy is 'reset'.
+   * When omitted, resets use the previously focused point. 'preserve' always retains that point.
    * Callback-only changes do not restore focus.
    * Targets that are not currently tabbable are skipped, leaving focus unchanged.
    * For path-rendered lines without markers, focus moves to the line and its callout shows this point.

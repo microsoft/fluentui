@@ -31,7 +31,7 @@ import { DonutChart } from '../DonutChart/index';
 import { HeatMapChart } from '../HeatMapChart/index';
 import { PolarChart } from '../PolarChart/index';
 import { useIsDarkTheme, useColorMapping } from './VegaDeclarativeChartHooks';
-import type { Chart } from '../../types/index';
+import type { Chart, FocusRestorePolicy } from '../../types/index';
 
 // Re-export the typed VegaLiteSpec for public API
 export type { VegaLiteSpec } from './VegaLiteTypes';
@@ -78,6 +78,14 @@ export interface VegaSchema {
  * Props for VegaDeclarativeChart component
  */
 export interface VegaDeclarativeChartProps {
+  /**
+   * Focus policy for line and vertical bar data/color content changes.
+   * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
+   * chart target even from outside; 'none' disables automatic restoration.
+   * Changing the policy alone does not move focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
   /**
    * Vega-Lite chart schema
    */
@@ -222,7 +230,11 @@ function renderSingleChart(
   spec: VegaLiteSpec,
   colorMap: React.RefObject<Map<string, string>>,
   isDarkTheme: boolean,
-  interactiveCommonProps: { componentRef: React.RefObject<Chart | null>; legendProps: MultiSelectLegendProps },
+  interactiveCommonProps: {
+    componentRef: React.RefObject<Chart | null>;
+    legendProps: MultiSelectLegendProps;
+    focusRestorePolicy?: FocusRestorePolicy;
+  },
 ): React.ReactElement {
   const chartType = getChartType(spec);
   const chartConfig = vegaChartMap[chartType.type];
@@ -423,6 +435,7 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     const interactiveCommonProps = {
       componentRef: chartRef,
       legendProps: multiSelectLegendProps,
+      focusRestorePolicy: props.focusRestorePolicy,
     };
 
     try {

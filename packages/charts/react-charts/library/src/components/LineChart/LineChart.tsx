@@ -29,6 +29,7 @@ import type {
 } from '../../index';
 import { CartesianChart } from '../../index';
 import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
+import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -210,6 +211,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const lastFocusedPointRef = React.useRef<{ lineIndex: number; pointIndex: number } | undefined>(undefined);
     const focusPointRefs = React.useRef<Map<string, SVGElement>>(new Map());
     const focusLineRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
+    const shouldRestoreFocus = useChartFocusRestore(() => {
+      const target = lastFocusedPointRef.current;
+      return target
+        ? focusPointRefs.current.get(`${target.lineIndex}-${target.pointIndex}`) ??
+            focusLineRefs.current.get(target.lineIndex)
+        : undefined;
+    });
     const calloutDataVersionRef = React.useRef(0);
     if (previousCalloutDataRef.current !== props.data) {
       previousCalloutDataRef.current = props.data;
@@ -219,12 +227,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     React.useEffect(() => {
       const dataChanged = !areChartDataEqual(previousFocusDataRef.current, props.data);
       previousFocusDataRef.current = props.data;
+      const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
 
-      if (!dataChanged) {
+      if (!dataChanged || !restoreFocus) {
         return;
       }
 
-      const focusTarget = props.focusOnReset ?? lastFocusedPointRef.current;
+      const focusTarget =
+        props.focusRestorePolicy === 'reset'
+          ? props.focusOnReset ?? lastFocusedPointRef.current
+          : lastFocusedPointRef.current;
       if (!focusTarget) {
         return;
       }
@@ -240,7 +252,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         lastFocusedPointRef.current = focusTarget;
         element.focus();
       }
-    }, [props.data, props.focusOnReset]);
+    }, [props.data, props.focusOnReset, props.focusRestorePolicy, shouldRestoreFocus]);
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,

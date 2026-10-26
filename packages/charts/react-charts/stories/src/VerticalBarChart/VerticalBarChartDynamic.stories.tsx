@@ -48,22 +48,17 @@ export const VerticalBarDynamic = (): JSXElement => {
     ],
   ];
   const _colorIndex = React.useRef<number>(0);
-  const chartContainerRef = React.useRef<HTMLDivElement>(null);
-  const lastFocusedChartElementId = React.useRef<string | undefined>(undefined);
-  const focusedChartElementId = React.useRef<string | undefined>(undefined);
   let _prevBarWidth = 16;
   const initialXAxisType = 'number';
   const initialDataSize = 5;
 
   let _changeData = (): void => {
-    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
     setDynamicData(_getData(dataSize, xAxisType));
     setStatusKey(statusKey + 1);
     setStatusMessage('Vertical bar chart data changed');
   };
 
   let _changeColors = (): void => {
-    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
     _colorIndex.current = (_colorIndex.current + 1) % _colors.length;
     setColors(_colors[_colorIndex.current]);
     setStatusKey(statusKey + 1);
@@ -153,33 +148,6 @@ export const VerticalBarDynamic = (): JSXElement => {
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
   const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
-
-  React.useEffect(() => {
-    const container = chartContainerRef.current;
-    const elementId = focusedChartElementId.current;
-    if (!container || !elementId) {
-      return;
-    }
-
-    const targetWindow = container.ownerDocument.defaultView;
-    const restoreFocus = () => {
-      const element = container.ownerDocument.getElementById(elementId);
-      if (element && container.contains(element)) {
-        element.focus();
-      }
-      focusedChartElementId.current = undefined;
-    };
-    const animationFrame = targetWindow?.requestAnimationFrame(restoreFocus);
-    if (animationFrame === undefined) {
-      restoreFocus();
-    }
-
-    return () => {
-      if (animationFrame !== undefined) {
-        targetWindow?.cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [colors, dynamicData]);
 
   _changeData = _changeData.bind(this);
   _changeColors = _changeColors.bind(this);
@@ -297,23 +265,18 @@ export const VerticalBarDynamic = (): JSXElement => {
         </Field>
       </div>
       <Switch
-        label="Enable Default Chart Element Autofocus on Data Change"
+        label="Reset focus to the first chart element on data change"
         checked={enableFocusOnReset}
         onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
       />
-      <div
-        ref={chartContainerRef}
-        style={{ width: `${width}px`, height: '350px' }}
-        onFocusCapture={event => {
-          lastFocusedChartElementId.current = event.target.id || undefined;
-        }}
-      >
+      <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart
           // Force rerender when any of the following states change
           key={xAxisType}
           chartTitle="Vertical bar chart dynamic example"
           data={dynamicData}
           colors={colors}
+          focusRestorePolicy={enableFocusOnReset ? 'reset' : 'preserve'}
           focusOnReset={enableFocusOnReset ? { barIndex: 0 } : undefined}
           hideLegend={true}
           yMaxValue={100}

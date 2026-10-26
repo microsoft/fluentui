@@ -37,6 +37,7 @@ import {
   isFocusLeavingChart,
 } from '../CommonComponents/ChartFocusUtils';
 import { useImageExport } from '../../utilities/hooks';
+import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
 
 const GAUGE_MARGIN = 16;
 const LABEL_WIDTH = 36;
@@ -166,9 +167,18 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
     const previousFocusSegmentsRef = React.useRef(props.segments);
     const previousFocusChartValueRef = React.useRef(props.chartValue);
+    const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
     const lastFocusedGaugeElementRef = React.useRef<GaugeFocusTarget | undefined>(undefined);
     const focusSegmentRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
     const focusNeedleRef = React.useRef<SVGPathElement | null>(null);
+    const shouldRestoreFocus = useChartFocusRestore(() => {
+      const target = lastFocusedGaugeElementRef.current;
+      return target
+        ? 'segmentIndex' in target
+          ? focusSegmentRefs.current.get(target.segmentIndex)
+          : focusNeedleRef.current
+        : undefined;
+    });
     const _width = props.width || width;
     const _height = props.height || height;
     const _outerRadius: number = Math.min(
@@ -200,17 +210,29 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     }, [props]);
 
     React.useEffect(() => {
+      if (
+        !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
+        !areArraysEqual(selectedLegends, props.legendProps?.selectedLegends || [])
+      ) {
+        // Keep the data reset pending until the controlled selection is reflected in the DOM.
+        return;
+      }
+      previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
       const chartChanged =
         !areChartDataEqual(previousFocusSegmentsRef.current, props.segments) ||
         previousFocusChartValueRef.current !== props.chartValue;
       previousFocusSegmentsRef.current = props.segments;
       previousFocusChartValueRef.current = props.chartValue;
+      const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
 
-      if (!chartChanged) {
+      if (!chartChanged || !restoreFocus) {
         return;
       }
 
-      const focusTarget = props.focusOnReset ?? lastFocusedGaugeElementRef.current;
+      const focusTarget =
+        props.focusRestorePolicy === 'reset'
+          ? props.focusOnReset ?? lastFocusedGaugeElementRef.current
+          : lastFocusedGaugeElementRef.current;
       if (!focusTarget) {
         return;
       }
@@ -220,7 +242,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       if (isChartElementTabbable(element)) {
         element.focus();
       }
-    }, [props.chartValue, props.focusOnReset, props.segments]);
+    }, [
+      props.chartValue,
+      props.focusOnReset,
+      props.focusRestorePolicy,
+      props.segments,
+      props.legendProps?.selectedLegends,
+      selectedLegends,
+      shouldRestoreFocus,
+    ]);
 
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {

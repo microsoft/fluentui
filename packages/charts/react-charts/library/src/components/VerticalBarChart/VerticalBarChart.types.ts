@@ -5,7 +5,7 @@ import type {
   CartesianChartStyles,
   VerticalBarChartDataPoint,
 } from '../../index';
-import type { LineChartLineOptions } from '../../types/index';
+import type { FocusRestorePolicy, LineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties
@@ -124,11 +124,19 @@ export interface VerticalBarChartProps extends CartesianChartProps {
   mode?: 'default' | 'plotly' | 'histogram';
 
   /**
-   * Bar to focus when the chart data or colors change in content.
-   * When not provided, focus returns to the previously focused bar.
+   * Focus policy for data/color content changes. Defaults to 'preserve', which leaves
+   * deliberate external focus alone. Use 'reset' to return focus from outside the chart,
+   * or 'none' to disable automatic restoration. Changing this prop alone does not move focus.
+   */
+  focusRestorePolicy?: FocusRestorePolicy;
+
+  /**
+   * Bar to focus on a data/color content change when focusRestorePolicy is 'reset'.
+   * When omitted, resets use the previously focused bar. 'preserve' always retains that bar.
    * Callback-only changes do not restore focus.
    * Targets that are not currently tabbable are skipped, leaving focus unchanged.
    * This includes bars with an inactive legend or hideTooltip enabled.
+   * Simultaneous data and controlled legend updates use the updated legend selection.
    */
   focusOnReset?: {
     barIndex: number;

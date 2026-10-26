@@ -42,9 +42,6 @@ const createSegments = (colors: string[]): GaugeChartProps['segments'] => {
 
 export const GaugeChartDynamic = (): JSXElement => {
   const styles = useStyles();
-  const chartContainerRef = React.useRef<HTMLDivElement>(null);
-  const lastFocusedChartElementId = React.useRef<string | undefined>(undefined);
-  const focusedChartElementId = React.useRef<string | undefined>(undefined);
   const colorIndex = React.useRef(0);
   const [segments, setSegments] = React.useState(() => createSegments(colorPalettes[0]));
   const [width, setWidth] = React.useState(400);
@@ -59,51 +56,18 @@ export const GaugeChartDynamic = (): JSXElement => {
   const [statusKey, setStatusKey] = React.useState(0);
   const [statusMessage, setStatusMessage] = React.useState('');
 
-  React.useEffect(() => {
-    const container = chartContainerRef.current;
-    const elementId = focusedChartElementId.current;
-    if (!container || !elementId) {
-      return;
-    }
-
-    const targetWindow = container.ownerDocument.defaultView;
-    const restoreFocus = () => {
-      const element = container.ownerDocument.getElementById(elementId);
-      if (element && container.contains(element)) {
-        element.focus();
-      }
-      focusedChartElementId.current = undefined;
-    };
-    const animationFrame = targetWindow?.requestAnimationFrame(restoreFocus);
-    if (animationFrame === undefined) {
-      restoreFocus();
-    }
-
-    return () => {
-      if (animationFrame !== undefined) {
-        targetWindow?.cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [segments]);
-
-  const queueFocusRestore = () => {
-    focusedChartElementId.current = enableFocusOnReset ? undefined : lastFocusedChartElementId.current;
-  };
-
   const announceChange = (message: string) => {
     setStatusKey(currentKey => currentKey + 1);
     setStatusMessage(message);
   };
 
   const changeData = () => {
-    queueFocusRestore();
     setSegments(createSegments(colorPalettes[colorIndex.current]));
     setChartValue(Math.floor(Math.random() * 101));
     announceChange('Gauge chart data changed');
   };
 
   const changeColors = () => {
-    queueFocusRestore();
     colorIndex.current = (colorIndex.current + 1) % colorPalettes.length;
     const nextColors = colorPalettes[colorIndex.current];
     setSegments(currentSegments =>
@@ -214,24 +178,19 @@ export const GaugeChartDynamic = (): JSXElement => {
         />
         &nbsp;&nbsp;
         <Switch
-          label="Enable Default Chart Element Autofocus on Data Change"
+          label="Reset focus to the first chart element on data change"
           checked={enableFocusOnReset}
           onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
         />
       </div>
-      <div
-        ref={chartContainerRef}
-        style={{ width: `${width}px`, height: `${height}px` }}
-        onFocusCapture={event => {
-          lastFocusedChartElementId.current = event.target.id || undefined;
-        }}
-      >
+      <div style={{ width: `${width}px`, height: `${height}px` }}>
         <GaugeChart
           width={width}
           height={height}
           segments={segments}
           chartTitle="Gauge chart dynamic example"
           chartValue={chartValue}
+          focusRestorePolicy={enableFocusOnReset ? 'reset' : 'preserve'}
           focusOnReset={enableFocusOnReset ? { segmentIndex: 0 } : undefined}
           chartValueFormat={useCustomCallout ? ([value]) => `${value}%` : 'percentage'}
           hideMinMax={hideMinMax}

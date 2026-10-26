@@ -22,6 +22,7 @@ import type {
 } from '../../index';
 import { CartesianChart, Legends, ChartPopover } from '../../index';
 import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
+import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -110,21 +111,37 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
   const previousFocusDataRef = React.useRef(props.data);
   const previousFocusColorsRef = React.useRef(props.colors);
+  const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
   const lastFocusedBarIndexRef = React.useRef<number | undefined>(undefined);
   const focusBarRefs = React.useRef<Map<number, SVGRectElement>>(new Map());
+  const shouldRestoreFocus = useChartFocusRestore(() =>
+    lastFocusedBarIndexRef.current === undefined ? undefined : focusBarRefs.current.get(lastFocusedBarIndexRef.current),
+  );
 
   React.useEffect(() => {
+    if (
+      !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
+      !areArraysEqual(selectedLegends, props.legendProps?.selectedLegends || [])
+    ) {
+      // Keep the data reset pending until the controlled selection is reflected in the DOM.
+      return;
+    }
+    previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
     const chartChanged =
       !areChartDataEqual(previousFocusDataRef.current, props.data) ||
       !areChartDataEqual(previousFocusColorsRef.current, props.colors);
     previousFocusDataRef.current = props.data;
     previousFocusColorsRef.current = props.colors;
+    const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
 
-    if (!chartChanged) {
+    if (!chartChanged || !restoreFocus) {
       return;
     }
 
-    const barIndex = props.focusOnReset?.barIndex ?? lastFocusedBarIndexRef.current;
+    const barIndex =
+      props.focusRestorePolicy === 'reset'
+        ? props.focusOnReset?.barIndex ?? lastFocusedBarIndexRef.current
+        : lastFocusedBarIndexRef.current;
     if (barIndex === undefined) {
       return;
     }
@@ -133,7 +150,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     if (isChartElementTabbable(element)) {
       element.focus();
     }
-  }, [props.colors, props.data, props.focusOnReset]);
+  }, [
+    props.colors,
+    props.data,
+    props.focusOnReset,
+    props.focusRestorePolicy,
+    props.legendProps?.selectedLegends,
+    selectedLegends,
+    shouldRestoreFocus,
+  ]);
 
   React.useEffect(() => {
     if (prevPropsRef.current) {
