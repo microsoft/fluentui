@@ -521,7 +521,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           allChartPoints.push(...singleChartPoint.data);
         });
 
-      const mapOfXvalToListOfDataPoints: IMapXToDataSet = {};
+      const mapOfXvalToListOfDataPoints: IMapXToDataSet = Object.create(null);
       allChartPoints.forEach((dataPoint: ILineChartDataPoint) => {
         const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
         // map of x value to the list of data points which share the same x value .
@@ -637,7 +637,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const dataSet: IAreaChartDataSetPoint[] = [];
 
     // Group data points by x-axis value
-    const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = {};
+    const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = Object.create(null);
     allChartPoints.forEach((dataPoint: ILineChartDataPointWithLegend) => {
       const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
       if (!groupedData[xValue]) {
@@ -1196,7 +1196,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       return false;
     }
     for (const item of lineChartData) {
-      const xValueMap: Record<string, number[]> = {};
+      const xValueMap: Record<string, number[]> = Object.create(null);
       for (const point of item.data) {
         const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
         if (!xValueMap[xValue]) {

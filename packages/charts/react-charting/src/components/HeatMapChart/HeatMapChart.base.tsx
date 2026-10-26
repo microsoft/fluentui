@@ -617,9 +617,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         flattenData.push({ ...point, legend: item.legend });
       });
     });
-    const yPoints: RectanglesGraphData = {};
-    const uniqueYPoints: { [key: string]: '1' } = {};
-    const uniqueXPoints: { [key: string]: '1' } = {};
+    const yPoints: RectanglesGraphData = Object.create(null);
+    const uniqueYPoints: { [key: string]: '1' } = Object.create(null);
+    const uniqueXPoints: { [key: string]: '1' } = Object.create(null);
     flattenData.forEach((item: FlattenData) => {
       const posX = this._getXIndex(item.x);
       const posY = this._getYIndex(item.y);
@@ -872,7 +872,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
     const result: FlattenData[] = [];
 
-    const xValueToPoints: Record<string, FlattenData[]> = {};
+    const xValueToPoints: Record<string, FlattenData[]> = Object.create(null);
     xPoints.forEach(point => {
       const xValue = point.x as string;
       if (!xValueToPoints[xValue]) {
@@ -900,7 +900,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _mapCategoryToValues = (isYAxis = false) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     this.props.data.forEach(item => {
       item.data.forEach(point => {
         const category = (isYAxis ? point.y : point.x) as string;

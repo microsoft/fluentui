@@ -1,4 +1,3 @@
-import { execSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -6,6 +5,8 @@ import { type AllPackageInfo, getAllPackageInfo, workspaceRoot } from '@fluentui
 import { logger, readJsonFile } from '@nx/devkit';
 import type { ChangeType } from 'beachball';
 import yargs from 'yargs';
+
+import { runNpmCommand } from './npm-utils';
 
 /**
  * Deprecates a package by executing an `npm deprecate` command.
@@ -15,14 +16,12 @@ import yargs from 'yargs';
  */
 function deprecatePackage(packageSpec: string, npmToken: string) {
   const projectNpmName = packageSpec.replace('-preview', '');
-
-  const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release - use/migrate to ${projectNpmName}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
+  const args = ['deprecate', packageSpec, `Deprecated in favor of stable release - use/migrate to ${projectNpmName}`];
 
   logger.log(`Deprecating "${packageSpec}" package`);
-  logger.log(command);
 
   try {
-    execSync(command, { stdio: 'inherit' });
+    runNpmCommand({ args, npmToken });
   } catch (e) {
     throw new Error(`Failed to deprecate "${packageSpec}" package`);
   }
@@ -123,20 +122,18 @@ function createPackageChangeFileReader(options: { changeFilesRoot: string }) {
 }
 
 function main() {
-  const argv = yargs
-    .option('changeFilesRoot', {
+  try {
+    const argv = yargs.option('changeFilesRoot', {
       type: 'string',
       description: 'Root folder where change files live (relative to workspace root)',
       default: 'change',
-    })
-    .option('token', {
-      type: 'string',
-      description: 'NPM Token',
-      demandOption: true,
     }).argv;
+    const token = process.env.TOKEN;
+    if (!token) {
+      throw new Error('Please pass an NPM token through the TOKEN environment variable');
+    }
 
-  try {
-    deprecateReactComponentsPreviewPackages({ argv, packages: getAllPackageInfo() });
+    deprecateReactComponentsPreviewPackages({ argv: { ...argv, token }, packages: getAllPackageInfo() });
   } catch (e) {
     logger.error(e);
     logger.error('Failed to deprecate packages');

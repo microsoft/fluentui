@@ -1,9 +1,6 @@
-import type {
-  ToolbarRadioGroupProps as ToolbarRadioGroupBaseProps,
-  ToolbarRadioGroupState as ToolbarRadioGroupBaseState,
-} from '@fluentui/react-toolbar';
+import type { ToolbarRadioGroupState as ToolbarRadioGroupBaseState } from '@fluentui/react-toolbar';
 
-export type ToolbarRadioGroupProps = ToolbarRadioGroupBaseProps;
+export type { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
 
 export type ToolbarRadioGroupState = ToolbarRadioGroupBaseState & {
   /**

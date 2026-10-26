@@ -35,6 +35,14 @@ describe('Tooltip', () => {
       cy.get(tooltipSelector).should('not.be.visible');
     });
 
+    it('should hide when the trigger is clicked', () => {
+      mount(<Example showDelay={0} />);
+      cy.get('button').trigger('pointerover');
+      cy.get(tooltipSelector).should('be.visible');
+      cy.get('button').click({ force: true });
+      cy.get(tooltipSelector).should('not.be.visible');
+    });
+
     it('should remain visible when pointer moves to tooltip content', () => {
       cy.clock();
       mount(<Example showDelay={0} hideDelay={300} />);

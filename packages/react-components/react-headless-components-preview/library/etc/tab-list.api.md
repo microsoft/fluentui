@@ -8,14 +8,15 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderTab_unstable as renderTab } from '@fluentui/react-tabs';
 import { renderTabList_unstable as renderTabList } from '@fluentui/react-tabs';
-import type { TabBaseProps } from '@fluentui/react-tabs';
 import type { TabBaseState } from '@fluentui/react-tabs';
-import type { TabListBaseProps } from '@fluentui/react-tabs';
 import type { TabListBaseState } from '@fluentui/react-tabs';
-import type { TabListContextValues as TabListContextValues_2 } from '@fluentui/react-tabs';
-import type { TabListSlots as TabListSlots_2 } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import { TabListBaseProps as TabListProps } from '@fluentui/react-tabs';
+import { TabListSlots } from '@fluentui/react-tabs';
+import { TabBaseProps as TabProps } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
+import { useTabListContext_unstable as useTabListContext } from '@fluentui/react-tabs';
 
 export { renderTab }
 
@@ -27,31 +28,27 @@ export const Tab: ForwardRefComponent<TabProps>;
 // @public
 export const TabList: ForwardRefComponent<TabListProps>;
 
-// @public
-export type TabListProps = TabListBaseProps;
+export { TabListProps }
 
-// @public
-export type TabListSlots = TabListSlots_2;
+export { TabListSlots }
 
 // @public
 export type TabListState = TabListBaseState & {
     root: {
-        focusgroup?: string;
         'data-orientation'?: 'vertical' | 'horizontal';
     };
 };
 
-// @public (undocumented)
-export type TabProps = TabBaseProps;
+export { TabProps }
 
 export { TabSlots }
 
 // @public (undocumented)
 export type TabState = TabBaseState & {
     root: {
-        focusgroupstart?: string;
         'data-icon-only'?: string;
         'data-selected'?: string;
+        'data-disabled'?: string;
     };
 };
 
@@ -62,6 +59,8 @@ export const useTab: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabStat
 
 // @public
 export const useTabList: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+export { useTabListContext }
 
 // @public (undocumented)
 export const useTabListContextValues: (state: TabListState) => TabListContextValues;

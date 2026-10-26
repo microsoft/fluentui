@@ -1,20 +1,5 @@
-import type {
-  CardHeaderSlots as CardHeaderBaseSlots,
-  CardHeaderBaseProps,
-  CardHeaderBaseState,
+export type {
+  CardHeaderSlots,
+  CardHeaderBaseProps as CardHeaderProps,
+  CardHeaderBaseState as CardHeaderState,
 } from '@fluentui/react-card';
-
-/**
- * CardHeader component slots
- */
-export type CardHeaderSlots = CardHeaderBaseSlots;
-
-/**
- * CardHeader component props
- */
-export type CardHeaderProps = CardHeaderBaseProps;
-
-/**
- * CardHeader component state
- */
-export type CardHeaderState = CardHeaderBaseState;

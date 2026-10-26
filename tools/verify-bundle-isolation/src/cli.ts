@@ -14,7 +14,17 @@ import { parseArgs } from 'node:util';
 import webpack, { type Configuration, type Stats, type WebpackPluginInstance } from 'webpack';
 
 import { BundleIsolationPlugin, type BundleIsolationReport } from './bundle-isolation-plugin';
-import { findFixtures, findWorkspaceRoot, fixtureOutputPath, loadConfig, outputRoot, readJson } from './config';
+import {
+  findFixtures,
+  findWorkspaceRoot,
+  fixtureOutputPath,
+  forbiddenFor,
+  loadConfig,
+  outputRoot,
+  readJson,
+  relativeToWorkspace,
+  selectFixtures,
+} from './config';
 import {
   type FixtureResult,
   type Report,
@@ -37,10 +47,21 @@ export async function cli(): Promise<void> {
   const config = loadConfig(args.configPath, workspaceRoot);
   const packageJson = readJson(join(packageRoot, 'package.json'));
   const fixturesRoot = resolve(packageRoot, config.fixturesRoot);
-  const fixtures = findFixtures(fixturesRoot);
+  const discovered = findFixtures(fixturesRoot);
 
-  if (fixtures.length === 0) {
+  if (discovered.length === 0) {
     console.error(`No bundle-size fixtures found in ${packageJson.name} - nothing to verify.`);
+    process.exit(1);
+  }
+
+  const selection = selectFixtures(discovered, config);
+
+  // An all-orphan configuration would otherwise report a clean run without bundling anything.
+  if (selection.verified.length === 0) {
+    console.error(
+      `None of the ${discovered.length} fixtures in ${packageJson.name} are listed under "fixtures" in ` +
+        `${relativeToWorkspace(args.configPath, workspaceRoot)} - nothing to verify.`,
+    );
     process.exit(1);
   }
 
@@ -49,8 +70,8 @@ export async function cli(): Promise<void> {
   // Fixtures come and go; a stale output directory would otherwise be mistaken for a fresh report.
   rmSync(outputRoot(packageRoot), { recursive: true, force: true });
 
-  const results = await Promise.all(fixtures.map(fixture => verifyFixture(fixture, options)));
-  const report = createReport({ packageName: packageJson.name, results, fixtures, options });
+  const results = await Promise.all(selection.verified.map(fixture => verifyFixture(fixture, options)));
+  const report = createReport({ packageName: packageJson.name, results, selection, options });
   const summaryPath = writeSummary(report);
 
   // One stream for the whole report - splitting it would let the shell interleave the verdict.
@@ -146,12 +167,16 @@ function createWebpackConfig(
     externals: Object.fromEntries(options.config.externals.map(name => [name, name])),
     output: { path: outputPath, filename: 'index.js' },
     performance: { hints: false },
+    // ESM-first (`type: module`) packages emit bare subpath imports (e.g. `use-sync-external-store/shim`)
+    // that lack a file extension; webpack treats their `lib/` as ESM and would enforce fully-specified
+    // imports, so disable that to keep legacy CJS deps resolvable.
+    module: { rules: [{ test: /\.[cm]?js$/, resolve: { fullySpecified: false } }] },
     // Scope hoisting and minification change how code is emitted, not which modules and exports
     // survive tree shaking, so both stay off to keep the module graph 1:1 for attribution.
     optimization: { concatenateModules: false, minimize: false },
     plugins: [
       new BundleIsolationPlugin({
-        forbiddenPackages: options.config.forbiddenPackages,
+        forbiddenPackages: forbiddenFor(fixture, options.config),
         workspaceRoot: options.workspaceRoot,
         packageRoot: options.packageRoot,
         onReport,

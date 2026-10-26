@@ -2,6 +2,48 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "8.17.4",
+      "tag": "@fluentui/utilities_v8.17.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "paulmardling@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "6e90732dd3b1e04d65172773a750d5b77423a650",
+            "comment": "fix: improve phone number initials handling"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.16"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Oct 2026 07:11:32 GMT",
+      "version": "8.17.3",
+      "tag": "@fluentui/utilities_v8.17.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "bdb7bfaf86a92bbdc5519708ba01361001fa5744",
+            "comment": "chore: sort package.json dependencies"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 May 2026 10:02:35 GMT",
       "tag": "@fluentui/utilities_v8.17.2",
       "version": "8.17.2",

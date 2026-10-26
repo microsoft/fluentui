@@ -34,14 +34,13 @@ import { ToastPosition } from '@fluentui/react-toast';
 import { ToastBaseProps as ToastProps } from '@fluentui/react-toast';
 import { ToastSlots } from '@fluentui/react-toast';
 import { ToastStatus } from '@fluentui/react-toast';
+import type { ToastTitleBaseState } from '@fluentui/react-toast';
 import { ToastTitleBaseProps as ToastTitleProps } from '@fluentui/react-toast';
 import { ToastTitleSlots } from '@fluentui/react-toast';
-import { ToastTitleBaseState as ToastTitleState } from '@fluentui/react-toast';
 import { useToastBodyBase_unstable as useToastBody } from '@fluentui/react-toast';
 import { useToastContainerContext } from '@fluentui/react-toast';
 import { useToastController } from '@fluentui/react-toast';
 import { useToastFooter_unstable as useToastFooter } from '@fluentui/react-toast';
-import { useToastTitleBase_unstable as useToastTitle } from '@fluentui/react-toast';
 
 // @public
 export const renderToast: (state: ToastState) => JSXElement;
@@ -152,7 +151,12 @@ export { ToastTitleProps }
 
 export { ToastTitleSlots }
 
-export { ToastTitleState }
+// @public (undocumented)
+export type ToastTitleState = ToastTitleBaseState & {
+    media?: ToastTitleBaseState['media'] & {
+        'data-intent'?: ToastTitleBaseState['intent'];
+    };
+};
 
 // @public
 export const useToast: (props: ToastProps, ref: React_2.Ref<HTMLElement>) => ToastState;
@@ -174,7 +178,8 @@ export const useToaster: (props: ToasterProps) => ToasterState;
 
 export { useToastFooter }
 
-export { useToastTitle }
+// @public
+export const useToastTitle: (props: ToastTitleProps, ref: React_2.Ref<HTMLElement>) => ToastTitleState;
 
 // (No @packageDocumentation comment for this package)
 

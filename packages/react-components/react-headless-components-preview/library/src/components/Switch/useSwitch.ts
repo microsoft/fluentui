@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useSwitchBase_unstable } from '@fluentui/react-switch';
 
 import type { SwitchProps, SwitchState } from './Switch.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Switch component, given its props and ref.
@@ -15,11 +15,13 @@ export const useSwitch = (props: SwitchProps, ref: React.Ref<HTMLInputElement>):
 
   // Set data attributes for disabled, disabledFocusable, and checked states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.input.disabled || state.disabledFocusable);
+  state.root['data-disabled'] = toDataAttributeValue(state.input.disabled || state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-checked'] = stringifyDataAttribute(state.input.checked);
+  state.root['data-checked'] = toDataAttributeValue(state.input.checked);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-label-position'] = state.labelPosition;
 
   return state;
 };

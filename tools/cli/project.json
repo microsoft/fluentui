@@ -1,0 +1,18 @@
+{
+  "name": "cli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/cli/src",
+  "projectType": "library",
+  "tags": ["platform:node", "tools"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist",
+        "main": "tools/cli/src/index.ts",
+        "tsConfig": "tools/cli/tsconfig.lib.json"
+      }
+    }
+  }
+}

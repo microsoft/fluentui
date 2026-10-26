@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
-const env = require('../../config/tests');
+const env = require('../../config/tests.cjs');
 
 const { Timezone } = require('../../scripts/constants');
 

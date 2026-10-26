@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useInteractionTagPrimaryBase_unstable } from '@fluentui/react-tags';
 
 import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for an InteractionTagPrimary component, given its props and ref.
@@ -17,9 +17,9 @@ export const useInteractionTagPrimary = (
   const state: InteractionTagPrimaryState = useInteractionTagPrimaryBase_unstable(props, ref);
 
   /* eslint-disable react-hooks/immutability -- intentional: decorate base state with data-* attrs for styling */
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
-  state.root['data-selected'] = stringifyDataAttribute(state.selected);
-  state.root['data-has-secondary-action'] = stringifyDataAttribute(state.hasSecondaryAction);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
+  state.root['data-selected'] = toDataAttributeValue(state.selected);
+  state.root['data-has-secondary-action'] = toDataAttributeValue(state.hasSecondaryAction);
   /* eslint-enable react-hooks/immutability */
 
   return state;

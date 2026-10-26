@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: avoid headless bundle size regression from #36275",
-  "packageName": "@fluentui/react-combobox",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

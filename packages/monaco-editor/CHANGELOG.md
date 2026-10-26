@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Thu, 01 Aug 2024 07:24:45 GMT and should not be manually modified.
+<!-- This log was last generated on Thu, 01 Oct 2026 07:11:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [1.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.25)
+
+Thu, 01 Oct 2026 07:11:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.3.24..@fluentui/monaco-editor_v1.3.25)
+
+### Patches
+
+- Pin @microsoft/load-themed-styles version to prevent yarn modern duplication ([PR #35747](https://github.com/microsoft/fluentui/pull/35747) by vgenaev@gmail.com)
 
 ## [1.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.24)
 

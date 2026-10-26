@@ -4,6 +4,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # SpinButton Migration
 
+## Overview
+
 Both Fluent UI v8 and v9 provide `SpinButton` controls. The controls are largely similar and this guide provides some examples of how to migrate areas that differ.
 
 ## Examples
@@ -54,12 +56,11 @@ import { useId } from '@fluentui/react-utilities';
 const useLayoutStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '300px',
-
-    '> label': {
-      marginBottom: '5px',
-    },
+    alignItems: 'center',
+    columnGap: '5px',
+  },
+  control: {
+    width: '300px',
   },
 });
 
@@ -97,7 +98,16 @@ const SpinButtonV9BasicExample = () => {
   return (
     <div className={layoutStyles.root}>
       <Label htmlFor={spinButtonId}>SpinButton with Increment/Decrement</Label>
-      <SpinButton id={spinButtonId} value={value} min={0} max={100} onChange={onChange} />
+      <SpinButton
+        className={layoutStyles.control}
+        id={spinButtonId}
+        value={value}
+        min={0}
+        max={100}
+        onChange={onChange}
+        incrementButton={{ 'aria-label': 'Increment' }}
+        decrementButton={{ 'aria-label': 'Decrement' }}
+      />
     </div>
   );
 };
@@ -191,12 +201,11 @@ import { useId } from '@fluentui/react-utilities';
 const useLayoutStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '300px',
-
-    '> label': {
-      marginBottom: '5px',
-    },
+    alignItems: 'center',
+    columnGap: '5px',
+  },
+  control: {
+    width: '300px',
   },
 });
 
@@ -243,6 +252,7 @@ const SpinButtonV9CustomSuffixBasicExample = () => {
     <div className={layoutStyles.root}>
       <Label htmlFor={spinButtonId}>SpinButton with Custom Suffix</Label>
       <SpinButton
+        className={layoutStyles.control}
         id={spinButtonId}
         value={value}
         displayValue={displayValue}
@@ -250,6 +260,8 @@ const SpinButtonV9CustomSuffixBasicExample = () => {
         min={0}
         max={100}
         onChange={onChange}
+        incrementButton={{ 'aria-label': 'Increase value by 2' }}
+        decrementButton={{ 'aria-label': 'Decrease value by 2' }}
       />
     </div>
   );
@@ -260,25 +272,27 @@ const SpinButtonV9CustomSuffixBasicExample = () => {
 
 This table maps v8 `SpinButton` props to the v9 `SpinButton` equivalent.
 
-| v8                    | v9                      | Notes                                                                                                          |
-| --------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------- |
-| \`componentRef\`      | \`ref\`                 | v9 provides access to the underlyig DOM node, not ISpinButton                                                  |
-| \`defaultValue\`      | \`defaultValue\`        | v9 uses \`number\` rather than \`string\` for the type of this prop. Mutually exclusive with \`value\`.        |
-| \`value\`             | \`value\`               | v9 uses \`number\` rather than \`string\` for the type of this prop. Mutually exclusive with \`defaultValue\`. |
-| \`min\`               | \`min\`                 |                                                                                                                |
-| \`max\`               | \`max\`                 |                                                                                                                |
-| \`step\`              | \`step\`                |                                                                                                                |
-| \`precision\`         | \`precision\`           |                                                                                                                |
-| \`onChange\`          | \`onChange\`            | Typescript types have changed                                                                                  |
-| \`onValidate\`        | n/a                     |                                                                                                                |
-| \`onIncrement\`       | \`onChange\`            | See example above                                                                                              |
-| \`onDecrement\`       | \`onChange\`            | See example above                                                                                              |
-| \`label\`             | Use \`Label\` component | Be sure to associate \`Label\` with \`SpinButton\` via \`htmlFor\`                                             |
-| \`labelPosition\`     | Use \`Label\` component |                                                                                                                |
-| \`ariaLabel\`         | \`aria-label\`          |                                                                                                                |
-| \`ariaDescribedBy\`   | \`aria-describedby\`    |                                                                                                                |
-| \`ariaPositionInSet\` | \`aria-posinset\`       | You probably don't need this for \`SpinButton\`                                                                |
-| \`ariaSetSize\`       | \`aria-setsize\`        | You probably don't need this for \`SpinButton\`                                                                |
-| \`ariaValueNow\`      | n/a                     | Set internally by \`SpinButton\`                                                                               |
-| \`ariaValueText\`     | \`aria-valuetext\`      | Set internally by \`SpinButton\` but can be overridden by setting this prop                                    |
-| \`iconProps\`         | Use \`Icon\` component  |                                                                                                                |
+| v8                         | v9                                        | Notes                                                                                                    |
+| -------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `componentRef`             | `ref`                                     | v9 provides access to the underlyig DOM node, not ISpinButton                                            |
+| `defaultValue`             | `defaultValue`                            | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `value`.        |
+| `value`                    | `value`                                   | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `defaultValue`. |
+| `min`                      | `min`                                     |                                                                                                          |
+| `max`                      | `max`                                     |                                                                                                          |
+| `step`                     | `step`                                    |                                                                                                          |
+| `precision`                | `precision`                               |                                                                                                          |
+| `onChange`                 | `onChange`                                | Typescript types have changed                                                                            |
+| `onValidate`               | n/a                                       |                                                                                                          |
+| `onIncrement`              | `onChange`                                | See example above                                                                                        |
+| `onDecrement`              | `onChange`                                | See example above                                                                                        |
+| `label`                    | Use `Label` component                     | Be sure to associate `Label` with `SpinButton` via `htmlFor`                                             |
+| `labelPosition`            | Use `Label` + CSS                         | v8 defaults to `Position.start`; place the label before the control in a row layout                      |
+| `incrementButtonAriaLabel` | `incrementButton={{ 'aria-label': '…' }}` | Set the label through the increment button slot                                                          |
+| `decrementButtonAriaLabel` | `decrementButton={{ 'aria-label': '…' }}` | Set the label through the decrement button slot                                                          |
+| `ariaLabel`                | `aria-label`                              |                                                                                                          |
+| `ariaDescribedBy`          | `aria-describedby`                        |                                                                                                          |
+| `ariaPositionInSet`        | `aria-posinset`                           | You probably don't need this for `SpinButton`                                                            |
+| `ariaSetSize`              | `aria-setsize`                            | You probably don't need this for `SpinButton`                                                            |
+| `ariaValueNow`             | n/a                                       | Set internally by `SpinButton`                                                                           |
+| `ariaValueText`            | `aria-valuetext`                          | Set internally by `SpinButton` but can be overridden by setting this prop                                |
+| `iconProps`                | Use `Icon` component                      |                                                                                                          |

@@ -21,5 +21,10 @@ export type MenuButtonState = MenuButtonBaseState & {
      * Data attribute set when the button renders only an icon.
      */
     'data-icon-only'?: string;
+
+    /**
+     * Data attribute set when the menu is open.
+     */
+    'data-open'?: string;
   };
 };

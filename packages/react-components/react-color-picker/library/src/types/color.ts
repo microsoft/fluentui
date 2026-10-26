@@ -4,3 +4,10 @@ export type HsvColor = {
   v: number;
   a?: number;
 };
+
+export type HslColor = {
+  h: number;
+  s: number;
+  l: number;
+  a?: number;
+};

@@ -140,9 +140,9 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
     [props.hole, outerRadius],
   );
 
-  const legendColorMap = React.useRef<Record<string, string>>({});
+  const legendColorMap = React.useRef<Record<string, string>>(Object.create(null));
   const chartData = React.useMemo(() => {
-    legendColorMap.current = {};
+    legendColorMap.current = Object.create(null);
     let colorIndex = 0;
     const renderingOrder = ['areapolar', 'linepolar', 'scatterpolar'];
 
@@ -171,7 +171,7 @@ export const PolarChartBase: React.FunctionComponent<IPolarChartProps> = React.f
 
   const mapCategoryToValues = React.useCallback(
     (isAngularAxis?: boolean) => {
-      const categoryToValues: Record<string, number[]> = {};
+      const categoryToValues: Record<string, number[]> = Object.create(null);
       chartData.forEach(series => {
         series.data.forEach(point => {
           const category = (isAngularAxis ? point.theta : point.r) as string;

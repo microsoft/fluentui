@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { ColorSliderState, ColorSliderSlots } from './ColorSlider.types';
+import type { ColorSliderBaseState, ColorSliderSlots } from './ColorSlider.types';
 
 /**
  * Render the final JSX of ColorSlider
  */
-export const renderColorSlider_unstable = (state: ColorSliderState): JSXElement => {
+export const renderColorSlider_unstable = (state: ColorSliderBaseState): JSXElement => {
   assertSlots<ColorSliderSlots>(state);
 
   return (

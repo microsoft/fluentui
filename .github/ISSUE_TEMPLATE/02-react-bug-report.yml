@@ -3,7 +3,7 @@ description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug :bug:', 'Needs: Triage :mag:', 'Fluent UI react (v8)']
 projects: ['microsoft/395']
-assignees: ['@microsoft/cxe-red']
+assignees: []
 body:
   - type: markdown
     attributes:

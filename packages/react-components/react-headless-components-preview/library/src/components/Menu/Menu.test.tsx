@@ -13,6 +13,7 @@ import { MenuItemSwitch } from './MenuItemSwitch/MenuItemSwitch';
 import { MenuDivider } from './MenuDivider/MenuDivider';
 import { MenuGroup } from './MenuGroup/MenuGroup';
 import { MenuGroupHeader } from './MenuGroupHeader/MenuGroupHeader';
+import { MenuSplitGroup } from './MenuSplitGroup/MenuSplitGroup';
 
 describe('Menu', () => {
   it('renders trigger and surface children when open', () => {
@@ -195,6 +196,40 @@ describe('Menu', () => {
     expect(getAllByRole('menuitem')).toHaveLength(2);
   });
 
+  it('exposes MenuItem interaction state through data attributes', () => {
+    const { getByText, getByTestId } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem disabled data-testid="disabled-item">
+              Disabled item
+            </MenuItem>
+            <Menu>
+              <MenuTrigger>
+                <MenuItem hasSubmenu data-testid="submenu-item">
+                  Submenu item
+                </MenuItem>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem>Nested item</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByTestId('disabled-item')).toHaveAttribute('data-disabled');
+    expect(getByTestId('submenu-item')).toHaveAttribute('data-has-submenu');
+    userEvent.click(getByText('Submenu item'));
+    expect(getByTestId('submenu-item')).toHaveAttribute('data-submenu-open');
+  });
+
   it('renders MenuDivider with role="presentation" and aria-hidden', () => {
     const { container } = render(
       <Menu defaultOpen>
@@ -272,6 +307,40 @@ describe('Menu', () => {
     expect(container.contains(getByRole('menu'))).toBe(true);
   });
 
+  it('promotes the MenuPopover with popover="auto" by default', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'auto');
+  });
+
+  it('lets a consumer override the popover attribute', () => {
+    const { getByRole } = render(
+      <Menu defaultOpen>
+        <MenuTrigger>
+          <button>Trigger</button>
+        </MenuTrigger>
+        <MenuPopover popover="manual">
+          <MenuList>
+            <MenuItem>Item 1</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    expect(getByRole('menu').parentElement).toHaveAttribute('popover', 'manual');
+  });
+
   // Arrow navigation is handled by Tabster (useArrowNavigationGroup).
   // Tabster's behavior is comprehensively tested in @fluentui/react-tabster.
   // E2E and integration tests should verify arrow navigation works correctly in the browser.
@@ -294,6 +363,7 @@ describe('Menu', () => {
       );
 
       expect(getByRole('menuitemcheckbox')).toBeInTheDocument();
+      expect(getByRole('menuitemcheckbox')).not.toHaveAttribute('data-checked');
     });
 
     it('toggles aria-checked on click via controlled checkedValues', () => {
@@ -338,6 +408,7 @@ describe('Menu', () => {
       );
 
       expect(getByRole('menuitemcheckbox')).toHaveAttribute('aria-checked', 'true');
+      expect(getByRole('menuitemcheckbox')).toHaveAttribute('data-checked');
     });
   });
 
@@ -385,6 +456,7 @@ describe('Menu', () => {
 
       const [name, size] = getAllByRole('menuitemradio');
       expect(name).toHaveAttribute('aria-checked', 'true');
+      expect(name).toHaveAttribute('data-checked');
       expect(size).toHaveAttribute('aria-checked', 'false');
 
       userEvent.click(size);
@@ -404,7 +476,9 @@ describe('Menu', () => {
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
-              <MenuItemLink href="https://example.com">Docs</MenuItemLink>
+              <MenuItemLink href="https://example.com" disabled>
+                Docs
+              </MenuItemLink>
             </MenuList>
           </MenuPopover>
         </Menu>,
@@ -413,13 +487,14 @@ describe('Menu', () => {
       const link = getByRole('menuitem');
       expect(link.tagName).toBe('A');
       expect(link).toHaveAttribute('href', 'https://example.com');
+      expect(link).toHaveAttribute('data-disabled');
     });
   });
 
   describe('MenuItemSwitch', () => {
     it('renders an item with switchIndicator slot', () => {
       const { getByText, container } = render(
-        <Menu defaultOpen>
+        <Menu defaultOpen defaultCheckedValues={{ view: ['grid'] }}>
           <MenuTrigger>
             <button>Trigger</button>
           </MenuTrigger>
@@ -435,6 +510,7 @@ describe('Menu', () => {
 
       expect(getByText('Grid view')).toBeInTheDocument();
       expect(container.querySelector('[data-testid="switch"]')).toBeInTheDocument();
+      expect(getByText('Grid view').closest('[role="menuitemcheckbox"]')).toHaveAttribute('data-checked');
     });
   });
 
@@ -459,6 +535,41 @@ describe('Menu', () => {
       const header = getByText('Document');
       expect(header).toBeInTheDocument();
       expect(header.getAttribute('id')).toBeTruthy();
+    });
+  });
+
+  describe('MenuSplitGroup', () => {
+    // Regression test for https://github.com/microsoft/fluentui/issues/36651 — MenuSplitGroup
+    // rendered without a contexts argument, so `useIsInMenuSplitGroup` could never return true and
+    // descendants kept the icon gutter that a split-group trigger is supposed to drop.
+    it('provides split group context so the trigger half drops the icon gutter', () => {
+      const { getByTestId } = render(
+        <Menu defaultOpen>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList hasIcons>
+              <MenuItem hasSubmenu data-testid="outside-item">
+                Outside
+              </MenuItem>
+              <MenuSplitGroup data-testid="split-group">
+                <MenuItem hasSubmenu data-testid="split-trigger">
+                  Split main
+                </MenuItem>
+                <MenuItem data-testid="split-chevron">Chevron</MenuItem>
+              </MenuSplitGroup>
+            </MenuList>
+          </MenuPopover>
+        </Menu>,
+      );
+
+      expect(getByTestId('split-group')).toHaveAttribute('role', 'group');
+
+      // Outside the split group: default icon gutter + submenu indicator + content = 3 spans.
+      expect(getByTestId('outside-item').querySelectorAll('span')).toHaveLength(3);
+      // Inside the split group the trigger half suppresses the icon gutter: indicator + content.
+      expect(getByTestId('split-trigger').querySelectorAll('span')).toHaveLength(2);
     });
   });
 });

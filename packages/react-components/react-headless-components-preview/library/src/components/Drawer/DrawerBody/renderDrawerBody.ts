@@ -1,6 +1,1 @@
-import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
-
-/**
- * Renders the final JSX of the DrawerBody component, given the state.
- */
-export const renderDrawerBody = renderDrawerBody_unstable;
+export { renderDrawerBody_unstable as renderDrawerBody } from '@fluentui/react-drawer';

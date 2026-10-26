@@ -444,7 +444,7 @@ function generateChangefileTask(
   projectName: string,
   options: { changeType: 'minor' | 'patch'; message: string },
 ) {
-  const cmd = `yarn change --message '${options.message}' --type ${options.changeType} --package ${projectName}`;
+  const cmd = `yarn change --message "${options.message}" --type ${options.changeType} --package ${projectName}`;
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 

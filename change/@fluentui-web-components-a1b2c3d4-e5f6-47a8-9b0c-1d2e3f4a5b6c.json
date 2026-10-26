@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make native disabled state support SSR better",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

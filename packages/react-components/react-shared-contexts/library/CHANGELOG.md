@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 25 Feb 2026 13:32:25 GMT and should not be manually modified.
+<!-- This log was last generated on Tue, 22 Sep 2026 11:25:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.26.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.4)
+
+Tue, 22 Sep 2026 11:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.3..@fluentui/react-shared-contexts_v9.26.4)
+
+### Patches
+
+- chore: mark @types/react peer dependency as optional ([PR #36559](https://github.com/microsoft/fluentui/pull/36559) by martinhochel@microsoft.com)
+
+## [9.26.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.3)
+
+Tue, 11 Aug 2026 17:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.26.2..@fluentui/react-shared-contexts_v9.26.3)
+
+### Patches
+
+- Ship ESM-first (type:module): valid ESM under lib/, CommonJS under lib-commonjs/*.cjs, and drop the `node` export condition - bare-Node `import` resolves ESM, `require` resolves CJS; node-targeted bundlers tree-shake. ([PR #36327](https://github.com/microsoft/fluentui/pull/36327) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.2.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.26.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.26.2)
 

@@ -1,15 +1,7 @@
-import type { ButtonSlots as ButtonBaseSlots } from '../Button/Button.types';
-import type { ToggleButtonBaseProps, ToggleButtonBaseState } from '@fluentui/react-button';
+import type { ToggleButtonBaseState } from '@fluentui/react-button';
 
-/**
- * ToggleButton component slots
- */
-export type ToggleButtonSlots = ButtonBaseSlots;
-
-/**
- * ToggleButton component props
- */
-export type ToggleButtonProps = ToggleButtonBaseProps;
+export type { ButtonSlots as ToggleButtonSlots } from '../Button/Button.types';
+export type { ToggleButtonBaseProps as ToggleButtonProps } from '@fluentui/react-button';
 
 /**
  * ToggleButton component state
@@ -35,5 +27,10 @@ export type ToggleButtonState = ToggleButtonBaseState & {
      * Data attribute set when the button is in a checked (pressed) state.
      */
     'data-checked'?: string;
+
+    /**
+     * Data attribute reflecting the icon position when an icon slot is present.
+     */
+    'data-icon-position'?: ToggleButtonBaseState['iconPosition'];
   };
 };

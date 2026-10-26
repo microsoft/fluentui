@@ -143,7 +143,7 @@ export const PolarChart: React.FunctionComponent<PolarChartProps> = React.forwar
 
     const mapCategoryToValues = React.useCallback(
       (isAngularAxis?: boolean) => {
-        const categoryToValues: Record<string, number[]> = {};
+        const categoryToValues: Record<string, number[]> = Object.create(null);
         chartData.forEach(series => {
           series.data.forEach(point => {
             const category = (isAngularAxis ? point.theta : point.r) as string;

@@ -3,6 +3,7 @@ import type { OverflowAxis, OverflowManager } from '@fluentui/priority-overflow'
 import { createOverflowManager } from '@fluentui/priority-overflow';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
+import { DATA_OVERFLOW_MENU } from './constants';
 import { useOverflowContainer } from './useOverflowContainer';
 
 jest.mock('@fluentui/priority-overflow');
@@ -75,6 +76,21 @@ describe('useOverflowContainer', () => {
     deregister();
     expect(removeItemMock).toHaveBeenCalledTimes(1);
     expect(removeItemMock).toHaveBeenCalledWith(overflowItem.id);
+  });
+
+  it('should mark the overflow menu before registering it with the manager', () => {
+    const addOverflowMenuMock = jest.fn((element: HTMLElement) => {
+      expect(element.hasAttribute(DATA_OVERFLOW_MENU)).toBe(true);
+    });
+    mockOverflowManager({ addOverflowMenu: addOverflowMenuMock });
+    const { result } = renderHook(() =>
+      useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
+    );
+    const menu = document.createElement('button');
+
+    result.current.registerOverflowMenu(menu);
+
+    expect(addOverflowMenuMock).toHaveBeenCalledWith(menu);
   });
 
   it('should call observe with the container element', () => {

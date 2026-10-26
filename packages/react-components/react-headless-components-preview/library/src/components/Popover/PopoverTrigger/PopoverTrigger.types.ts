@@ -6,6 +6,7 @@ import type { PopoverTriggerChildProps as CanonicalPopoverTriggerChildProps } fr
 type HeadlessPopoverTriggerChildExtras = {
   'aria-haspopup'?: 'true';
   'aria-details'?: string;
+  'aria-controls'?: string;
   'data-open'?: string;
 };
 

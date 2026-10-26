@@ -1,7 +1,9 @@
 import type { LegendsProps } from '../Legends/index';
 import type { AccessibilityProps, Chart } from '../../types/index';
 import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import type { YValueHover } from '../CommonComponents/CartesianChart.types';
 import type { TitleStyles } from '../../utilities/Common.styles';
+import type { RenderFunction } from '../../utilities/index';
 
 /**
  * Gauge Chart segment interface.
@@ -43,6 +45,76 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
  * {@docCategory GaugeChart}
  */
 export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
+
+/**
+ * GaugeChart segment data with its calculated range.
+ * {@docCategory GaugeChart}
+ */
+export interface ExtendedSegment extends GaugeChartSegment {
+  /**
+   * Start of the segment range.
+   */
+  start: number;
+
+  /**
+   * End of the segment range.
+   */
+  end: number;
+}
+
+/**
+ * GaugeChart segment data provided to a custom callout renderer.
+ * @deprecated Use `ExtendedSegment` instead.
+ * {@docCategory GaugeChart}
+ */
+export type GaugeChartCalloutSegment = ExtendedSegment;
+
+/**
+ * Data provided to a custom GaugeChart callout renderer.
+ * {@docCategory GaugeChart}
+ */
+export interface GaugeChartCalloutData {
+  /**
+   * Legend of the segment or gauge element that opened the callout.
+   */
+  legend: string;
+
+  /**
+   * Title of the gauge.
+   */
+  chartTitle?: string;
+
+  /**
+   * Current value of the gauge.
+   */
+  chartValue: number;
+
+  /**
+   * Minimum value of the gauge.
+   */
+  minValue: number;
+
+  /**
+   * Maximum value of the gauge.
+   */
+  maxValue: number;
+
+  /**
+   * Formatted current value displayed in the default callout.
+   */
+  chartValueLabel: string;
+
+  /**
+   * Gauge segments with their calculated ranges.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the public type name for compatibility.
+  segments?: GaugeChartCalloutSegment[];
+
+  /**
+   * Segment values displayed in the default callout.
+   */
+  segmentValues: YValueHover[];
+}
 
 /**
  * Gauge Chart properties
@@ -103,6 +175,8 @@ export interface GaugeChartProps {
 
   /**
    * Format of the chart value
+   * A custom formatter applies to the chart value and the current value in the callout.
+   * Use `onRenderCallout` to customize units for segment ranges.
    * @defaultvalue GaugeValueFormat.Percentage
    */
   chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
@@ -138,6 +212,11 @@ export interface GaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ChartPopoverProps>;
+
+  /**
+   * Defines a custom callout renderer. The second argument can be used to render the default callout content.
+   */
+  onRenderCallout?: RenderFunction<GaugeChartCalloutData>;
 
   /**
    * Specifies the variant of GaugeChart to be rendered

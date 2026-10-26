@@ -1,17 +1,13 @@
 import type { PopoverContextValue as BasePopoverContextValue } from '@fluentui/react-popover';
-import type { PopoverProps, PopoverState, PopoverContextValue } from '../Popover/Popover.types';
+import type { PopoverContextValue } from '../Popover/Popover.types';
 
 /**
  * TeachingPopover Props
  */
-export type TeachingPopoverProps = PopoverProps;
-
-/**
- * TeachingPopover State — identical to the headless Popover state. Styling
- * concerns from `@fluentui/react-teaching-popover` (`appearance`, `trapFocus`,
- * `inline`) are intentionally omitted; consumers control presentation.
- */
-export type TeachingPopoverState = PopoverState;
+export type {
+  PopoverProps as TeachingPopoverProps,
+  PopoverState as TeachingPopoverState,
+} from '../Popover/Popover.types';
 
 /**
  * Subset of the `@fluentui/react-popover` `PopoverContextValue` that the

@@ -13,8 +13,8 @@ const hostilePrefix = 'msrc</style><script data-test="inert"></script><style>';
 function expectSafeStyleRule(html: string): void {
   expect(html).not.toContain('</style><script');
   expect(html).not.toContain('<script');
-  expect(html).toContain('\\3C /style\\3E ');
-  expect(html).toContain('\\3C script data-test="inert"\\3E ');
+  expect(html).toContain('\\3C /style>');
+  expect(html).toContain('\\3C script data-test="inert">');
 }
 
 describe('FluentProvider prefix SSR', () => {

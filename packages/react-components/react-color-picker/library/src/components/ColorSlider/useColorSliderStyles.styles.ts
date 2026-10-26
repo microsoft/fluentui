@@ -4,21 +4,13 @@ import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
+import { colorSliderCSSVars } from './ColorSlider.constants';
 
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
   root: 'fui-ColorSlider',
   rail: 'fui-ColorSlider__rail',
   thumb: 'fui-ColorSlider__thumb',
   input: 'fui-ColorSlider__input',
-};
-
-export const colorSliderCSSVars = {
-  sliderDirectionVar: `--fui-Slider--direction`,
-  sliderProgressVar: `--fui-Slider--progress`,
-  thumbColorVar: `--fui-Slider__thumb--color`,
-  railColorVar: `--fui-Slider__rail--color`,
-  thumbSizeVar: `--fui-Slider__thumb--size`,
-  railSizeVar: `--fui-Slider__rail--size`,
 };
 
 const hueBackground = `linear-gradient(${[
@@ -31,6 +23,7 @@ const hueBackground = `linear-gradient(${[
   'yellow',
   'red',
 ].join(',')})`;
+const channelBackground = `linear-gradient(var(${colorSliderCSSVars.sliderDirectionVar}), var(${colorSliderCSSVars.railColorVar}), var(${colorSliderCSSVars.railColorLowVar}))`;
 
 /**
  * Styles for the root slot
@@ -67,10 +60,10 @@ const useChannelStyles = makeStyles({
     backgroundImage: hueBackground,
   },
   saturation: {
-    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
   value: {
-    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
 });
 

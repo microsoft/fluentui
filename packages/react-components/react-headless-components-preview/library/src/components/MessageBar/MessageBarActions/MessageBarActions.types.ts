@@ -1,13 +1,10 @@
-import type {
-  MessageBarActionsSlots as MessageBarActionsBaseSlots,
-  MessageBarActionsProps as MessageBarActionsBaseProps,
-  MessageBarActionsState as MessageBarActionsBaseState,
-  MessageBarActionsContextValues as MessageBarActionsBaseContextValues,
+import type { MessageBarActionsState as MessageBarActionsBaseState } from '@fluentui/react-message-bar';
+
+export type {
+  MessageBarActionsSlots,
+  MessageBarActionsProps,
+  MessageBarActionsContextValues,
 } from '@fluentui/react-message-bar';
-
-export type MessageBarActionsSlots = MessageBarActionsBaseSlots;
-
-export type MessageBarActionsProps = MessageBarActionsBaseProps;
 
 export type MessageBarActionsState = MessageBarActionsBaseState & {
   root: {
@@ -22,5 +19,3 @@ export type MessageBarActionsState = MessageBarActionsBaseState & {
     'data-has-actions'?: string;
   };
 };
-
-export type MessageBarActionsContextValues = MessageBarActionsBaseContextValues;

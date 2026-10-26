@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useMenuButtonBase_unstable } from '@fluentui/react-button';
 
 import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a MenuButton component, given its props and ref.
@@ -18,11 +18,15 @@ export const useMenuButton = (
 
   // Set data attributes for disabled, disabledFocusable, and iconOnly states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled-focusable'] = stringifyDataAttribute(state.disabledFocusable);
+  state.root['data-disabled-focusable'] = toDataAttributeValue(state.disabledFocusable);
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-icon-only'] = stringifyDataAttribute(state.iconOnly);
+  state.root['data-icon-only'] = toDataAttributeValue(state.iconOnly);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-open'] = toDataAttributeValue(
+    state.root['aria-expanded'] === true || state.root['aria-expanded'] === 'true',
+  );
 
   return state;
 };

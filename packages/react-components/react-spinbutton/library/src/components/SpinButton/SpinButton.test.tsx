@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { SpinButton } from './SpinButton';
@@ -76,6 +76,47 @@ describe('SpinButton', () => {
 
     // Spin button input should not change value when readOnly is true
     expect(spinButtonInput.value).toEqual('1');
+  });
+
+  it('does not auto-repeat on a short trackpad tap', () => {
+    jest.useFakeTimers();
+
+    render(<SpinButton defaultValue={0} />);
+
+    const [incrementButton] = screen.getAllByRole('button') as HTMLButtonElement[];
+
+    act(() => {
+      fireEvent.mouseDown(incrementButton);
+      jest.advanceTimersByTime(200);
+    });
+    act(() => {
+      fireEvent.mouseUp(incrementButton);
+    });
+
+    expect(getSpinButtonInput().value).toEqual('1');
+
+    jest.useRealTimers();
+  });
+
+  it('still auto-repeats after a true hold gesture', () => {
+    jest.useFakeTimers();
+
+    render(<SpinButton defaultValue={0} />);
+
+    const [incrementButton] = screen.getAllByRole('button') as HTMLButtonElement[];
+
+    act(() => {
+      fireEvent.mouseDown(incrementButton);
+      jest.advanceTimersByTime(350);
+    });
+
+    expect(getSpinButtonInput().value).toBe('2');
+
+    act(() => {
+      fireEvent.mouseUp(incrementButton);
+    });
+
+    jest.useRealTimers();
   });
 
   describe('displayValue', () => {

@@ -5,30 +5,28 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
-import type { LabelBaseProps } from '@fluentui/react-label';
-import { LabelBaseState } from '@fluentui/react-label';
-import type { LabelSlots as LabelSlots_2 } from '@fluentui/react-label';
+import type { LabelBaseState } from '@fluentui/react-label';
+import { LabelBaseProps as LabelProps } from '@fluentui/react-label';
+import { LabelSlots } from '@fluentui/react-label';
 import type * as React_2 from 'react';
+import { renderLabel_unstable as renderLabel } from '@fluentui/react-label';
 
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
-// @public
-export type LabelProps = LabelBaseProps;
+export { LabelProps }
 
-// @public
-export type LabelSlots = LabelSlots_2;
+export { LabelSlots }
 
 // @public
 export type LabelState = LabelBaseState & {
     root: {
         'data-disabled'?: string;
+        'data-required'?: string;
     };
 };
 
-// @public
-export const renderLabel: (state: LabelBaseState) => JSXElement;
+export { renderLabel }
 
 // @public
 export const useLabel: (props: LabelProps, ref: React_2.Ref<HTMLLabelElement>) => LabelState;

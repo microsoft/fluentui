@@ -137,12 +137,12 @@ export const styles = css`
     .checked-indicator,
     :host(:hover) .checked-indicator,
     :host(:active) .checked-indicator {
-      background-color: ActiveCaption;
+      background-color: CanvasText;
     }
     :host(${checkedState}) .checked-indicator,
     :host(${checkedState}:hover) .checked-indicator,
     :host(${checkedState}:active) .checked-indicator {
-      background-color: ButtonFace;
+      background-color: HighlightText;
     }
     :host(${nativeDisabledState}) .checked-indicator,
     :host(${checkedState}${nativeDisabledState}) .checked-indicator {

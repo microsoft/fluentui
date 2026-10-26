@@ -18,7 +18,7 @@ export const Default = (): React.ReactNode => (
     <MessageBarBody className={styles.body}>
       <MessageBarTitle className={styles.title}>Descriptive title</MessageBarTitle>
       Message providing information to the user with actionable insights.{' '}
-      <Link className={`${linkStyles.link} ${linkStyles.inline}`} href="#" inline>
+      <Link className={`${linkStyles.link} ${linkStyles.inline}`} href="#">
         Learn more
       </Link>
     </MessageBarBody>

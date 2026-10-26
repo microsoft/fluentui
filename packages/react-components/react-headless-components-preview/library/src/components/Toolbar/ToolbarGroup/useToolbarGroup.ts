@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
-import { stringifyDataAttribute } from '../../../utils';
+import { toDataAttributeValue } from '../../../utils';
 
 /**
  * Returns the state for a ToolbarGroup component, given its props and ref.
@@ -15,7 +15,7 @@ export const useToolbarGroup = (props: ToolbarGroupProps, ref: React.Ref<HTMLDiv
 
   // Set data-vertical based on the toolbar context orientation.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-vertical'] = stringifyDataAttribute(state.vertical);
+  state.root['data-vertical'] = toDataAttributeValue(state.vertical);
 
   return state;
 };

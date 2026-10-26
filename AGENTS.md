@@ -23,6 +23,7 @@ from existing code without verifying they match these instructions.
 3. **Never access `window`, `document`, or `navigator` directly.** In v9 components, use `useFluent_unstable()` to get `targetDocument` and `targetDocument.defaultView` instead of `document`/`window`. For non-component code, use `canUseDOM()` from `@fluentui/react-utilities`.
 4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
 5. **Never skip beachball change files** for published package changes. Run `yarn beachball change`.
+6. **Each PR must contain at most one Beachball change file per package.** Consolidate all changes for that package in the PR into that one file.
 
 ## V9 Component Template (the correct pattern)
 
@@ -91,17 +92,20 @@ state.root.className = mergeClasses(
 
 ## Skills (Slash Commands)
 
-| Skill               | Command              | Purpose                                                              |
-| ------------------- | -------------------- | -------------------------------------------------------------------- |
-| `v9-component`      | `/v9-component Name` | Scaffold a new v9 component with all required files                  |
-| `change`            | `/change`            | Create beachball change file from current diff                       |
-| `lint-check`        | `/lint-check [pkg]`  | Run lint, parse errors, and auto-fix common issues                   |
-| `token-lookup`      | `/token-lookup val`  | Find the design token for a hardcoded CSS value                      |
-| `package-info`      | `/package-info pkg`  | Quick lookup: path, deps, owner, tests, structure                    |
-| `visual-test`       | `/visual-test Name`  | Visually verify a component via Storybook + playwright-cli           |
-| `review-pr`         | `/review-pr #123`    | Review a PR with confidence scoring and category checks              |
-| `triage-issues`     | `/triage-issues`     | Walk the Needs-Triage queue and recommend labels/assignee            |
-| `dependabot-rollup` | `/dependabot-rollup` | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs |
+| Skill                | Command                            | Purpose                                                                   |
+| -------------------- | ---------------------------------- | ------------------------------------------------------------------------- |
+| `v9-component`       | `/v9-component Name`               | Scaffold a new v9 component with all required files                       |
+| `headless-component` | `/headless-component Name`         | Author an unstyled v9 primitive with state attributes, tests, and stories |
+| `change`             | `/change`                          | Create beachball change file from current diff                            |
+| `lint-check`         | `/lint-check [pkg]`                | Run lint, parse errors, and auto-fix common issues                        |
+| `token-lookup`       | `/token-lookup val`                | Find the design token for a hardcoded CSS value                           |
+| `package-info`       | `/package-info pkg`                | Quick lookup: path, deps, owner, tests, structure                         |
+| `visual-test`        | `/visual-test Name`                | Visually verify a component via Storybook + playwright-cli                |
+| `review-pr`          | `/review-pr #123`                  | Review a PR with confidence scoring and category checks                   |
+| `triage-issues`      | `/triage-issues`                   | Walk the Needs-Triage queue and recommend labels/assignee                 |
+| `dependabot-rollup`  | `/dependabot-rollup`               | Dry-run and optionally roll up at most 11 Dependabot patch/minor PRs      |
+| `assign-prs`         | `/assign-prs`                      | Assign reviewers to the team review queues by area and current load       |
+| `release-recovery`   | `/release-recovery [pipeline-url]` | Diagnose and repair a release that published to npm but failed to push    |
 
 ## Package Layout
 

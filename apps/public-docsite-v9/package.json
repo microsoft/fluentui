@@ -20,6 +20,7 @@
   "dependencies": {
     "@fluentui/react": "*",
     "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-calendar-preview": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-icons-compat": "*",
@@ -29,8 +30,10 @@
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-northstar": "*",
+    "@fluentui/react-range-slider-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/react-storybook-addon-playground": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@fluentui/recipes": "*",
     "@fluentui/theme-designer": "*",

@@ -5,6 +5,10 @@ const fluentPlugin = require('@fluentui/eslint-plugin');
 module.exports = [
   ...fluentPlugin.configs['flat/react-legacy'],
   {
+    // cypress e2e specs are bundled by cypress at runtime and excluded from the v8 library build
+    ignores: ['**/*.e2e.{ts,tsx}'],
+  },
+  {
     rules: {
       'import/no-webpack-loader-syntax': 'off',
       'no-alert': 'off',

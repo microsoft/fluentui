@@ -1,16 +1,12 @@
-import type { AvatarSlots as AvatarBaseSlots, AvatarBaseProps, AvatarBaseState } from '@fluentui/react-avatar';
+import type { AvatarBaseState } from '@fluentui/react-avatar';
 
-/**
- * Avatar component slots
- */
-export type AvatarSlots = AvatarBaseSlots;
+export type { AvatarBaseProps as AvatarProps, AvatarBaseSlots as AvatarSlots } from '@fluentui/react-avatar';
 
-/**
- * Avatar component props
- */
-export type AvatarProps = AvatarBaseProps;
-
-/**
- * Avatar component state
- */
-export type AvatarState = AvatarBaseState;
+export type AvatarState = AvatarBaseState & {
+  root: {
+    /**
+     * Data attribute set when the avatar is active or inactive.
+     */
+    'data-active'?: string;
+  };
+};

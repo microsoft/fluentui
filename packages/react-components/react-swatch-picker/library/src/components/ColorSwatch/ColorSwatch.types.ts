@@ -33,6 +33,8 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
     value: string;
   };
 
+export type ColorSwatchBaseProps = Omit<ColorSwatchProps, 'size' | 'shape'>;
+
 /**
  * State used in rendering ColorSwatch
  */
@@ -40,3 +42,5 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
   Pick<ColorSwatchProps, 'color' | 'disabled' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
   };
+
+export type ColorSwatchBaseState = Omit<ColorSwatchState, 'size' | 'shape'>;

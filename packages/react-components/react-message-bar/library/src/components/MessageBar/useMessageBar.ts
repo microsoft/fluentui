@@ -27,7 +27,6 @@ export const useMessageBarBase_unstable = (
 
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
-  const motionRef = useMotionForwardedRef();
 
   const actionsRef = React.useRef<HTMLDivElement | null>(null);
   const bodyRef = React.useRef<HTMLDivElement | null>(null);
@@ -50,7 +49,7 @@ export const useMessageBarBase_unstable = (
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, reflowRef, nodeRef, motionRef),
+        ref: useMergedRefs(ref, reflowRef, nodeRef),
         role: 'group',
         'aria-labelledby': titleId,
         ...props,
@@ -86,7 +85,8 @@ export const useMessageBarBase_unstable = (
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
   const { shape = 'rounded', ...baseProps } = props;
 
-  const state = useMessageBarBase_unstable(baseProps, ref);
+  const motionRef = useMotionForwardedRef();
+  const state = useMessageBarBase_unstable(baseProps, useMergedRefs(ref, motionRef));
 
   return {
     ...state,

@@ -1,13 +1,10 @@
-import type {
-  AccordionHeaderSlots as AccordionHeaderBaseSlots,
-  AccordionHeaderBaseProps,
-  AccordionHeaderContextValues as AccordionHeaderBaseContextValues,
-  AccordionHeaderBaseState,
+import type { AccordionHeaderBaseState } from '@fluentui/react-accordion';
+
+export type {
+  AccordionHeaderSlots,
+  AccordionHeaderBaseProps as AccordionHeaderProps,
+  AccordionHeaderContextValues,
 } from '@fluentui/react-accordion';
-
-export type AccordionHeaderSlots = AccordionHeaderBaseSlots;
-
-export type AccordionHeaderProps = AccordionHeaderBaseProps;
 
 export type AccordionHeaderState = AccordionHeaderBaseState & {
   root: {
@@ -27,5 +24,3 @@ export type AccordionHeaderState = AccordionHeaderBaseState & {
     'data-expand-icon-position'?: string;
   };
 };
-
-export type AccordionHeaderContextValues = AccordionHeaderBaseContextValues;

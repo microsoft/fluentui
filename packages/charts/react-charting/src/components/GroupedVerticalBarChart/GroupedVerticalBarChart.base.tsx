@@ -127,7 +127,7 @@ export class GroupedVerticalBarChartBase
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart | null>;
   private _legendsRef: React.RefObject<ILegendContainer | null>;
-  private _legendColorMap: Record<string, [string, string]> = {};
+  private _legendColorMap: Record<string, [string, string]> = Object.create(null);
   private readonly Y_ORIGIN: number = 0;
   private _rectRef: React.RefObject<SVGRectElement | null>;
   private _uniqDotId = getId('gvbc_dot_');
@@ -572,7 +572,7 @@ export class GroupedVerticalBarChartBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
 
-    const linePointsByX: Record<string, IYValueHover[]> = {};
+    const linePointsByX: Record<string, IYValueHover[]> = Object.create(null);
     const visitedX = new Set<string>();
     lineData.forEach(series => {
       series.data.forEach(point => {
@@ -591,8 +591,8 @@ export class GroupedVerticalBarChartBase
 
     barData.forEach((point: IGroupedVerticalBarChartData, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDatasetPointForBars: any = {};
-      const legendToBarPoint: Record<string, IGVBarChartSeriesPoint> = {};
+      const singleDatasetPointForBars: any = Object.create(null);
+      const legendToBarPoint: Record<string, IGVBarChartSeriesPoint> = Object.create(null);
 
       point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
         if (!singleDatasetPointForBars[seriesPoint.legend]) {
@@ -857,7 +857,7 @@ export class GroupedVerticalBarChartBase
       ({ barData, lineData } = this._processDataV2(this.props.dataV2));
     }
 
-    this._legendColorMap = {};
+    this._legendColorMap = Object.create(null);
     let colorIndex = 0;
 
     return {
@@ -939,7 +939,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _mapCategoryToValues = (barData: IGroupedVerticalBarChartData[], lineData: IGVBCLineSeries[]) => {
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues: Record<string, number[]> = Object.create(null);
     barData.forEach(point => {
       if (!categoryToValues[point.name]) {
         categoryToValues[point.name] = [];
@@ -1159,7 +1159,7 @@ export class GroupedVerticalBarChartBase
   };
 
   private _processDataV2 = (dataV2: (IBarSeries<string, number> | ILineSeries<string, number>)[]) => {
-    const barPointsByX: Record<string, IGroupedVerticalBarChartData> = {};
+    const barPointsByX: Record<string, IGroupedVerticalBarChartData> = Object.create(null);
     const lineData: IGVBCLineSeries[] = [];
 
     dataV2.forEach(series => {

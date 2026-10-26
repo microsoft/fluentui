@@ -7,23 +7,27 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderTextarea_unstable as renderTextarea } from '@fluentui/react-textarea';
-import type { TextareaBaseProps } from '@fluentui/react-textarea';
 import type { TextareaBaseState } from '@fluentui/react-textarea';
-import type { TextareaSlots as TextareaSlots_2 } from '@fluentui/react-textarea';
+import { TextareaBaseProps as TextareaProps } from '@fluentui/react-textarea';
+import { TextareaSlots } from '@fluentui/react-textarea';
 
 export { renderTextarea }
 
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
 
-// @public
-export type TextareaProps = TextareaBaseProps;
+export { TextareaProps }
+
+export { TextareaSlots }
 
 // @public
-export type TextareaSlots = TextareaSlots_2;
-
-// @public
-export type TextareaState = TextareaBaseState;
+export type TextareaState = TextareaBaseState & {
+    root: {
+        'data-disabled'?: string;
+        'data-invalid'?: string;
+        'data-resize'?: TextareaBaseState['resize'];
+    };
+};
 
 // @public
 export const useTextarea: (props: TextareaProps, ref: React_2.Ref<HTMLTextAreaElement>) => TextareaState;

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: height for empty vertical divider",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com"
+}

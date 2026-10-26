@@ -1,6 +1,1 @@
-import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
-
-/**
- * Renders the final JSX of the DrawerHeader component, given the state.
- */
-export const renderDrawerHeader = renderDrawerHeader_unstable;
+export { renderDrawerHeader_unstable as renderDrawerHeader } from '@fluentui/react-drawer';

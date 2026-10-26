@@ -4,7 +4,7 @@ import type * as React from 'react';
 import { useLabelBase_unstable } from '@fluentui/react-label';
 
 import type { LabelProps, LabelState } from './Label.types';
-import { stringifyDataAttribute } from '../../utils';
+import { toDataAttributeValue } from '../../utils';
 
 /**
  * Returns the state for a Label component, given its props and ref.
@@ -15,7 +15,9 @@ export const useLabel = (props: LabelProps, ref: React.Ref<HTMLLabelElement>): L
 
   // Set data attribute for disabled state to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
-  state.root['data-disabled'] = stringifyDataAttribute(state.disabled);
+  state.root['data-disabled'] = toDataAttributeValue(state.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-required'] = toDataAttributeValue(Boolean(state.required));
 
   return state;
 };

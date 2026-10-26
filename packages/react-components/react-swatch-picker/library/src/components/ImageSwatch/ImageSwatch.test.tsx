@@ -19,6 +19,7 @@ describe('ImageSwatch', () => {
           class="fui-ImageSwatch"
           role="radio"
           style="background-image: url(\\"path/img.png\\");"
+          type="button"
         />
       </div>
     `);

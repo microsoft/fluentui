@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: separate headless teaching popover title state from bundled icon defaults",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -24,6 +24,7 @@ export type MenuButtonState = MenuButtonBaseState & {
         'data-disabled'?: string;
         'data-disabled-focusable'?: string;
         'data-icon-only'?: string;
+        'data-open'?: string;
     };
 };
 

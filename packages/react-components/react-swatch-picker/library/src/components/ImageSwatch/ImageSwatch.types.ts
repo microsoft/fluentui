@@ -21,6 +21,8 @@ export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> &
     value: string;
   };
 
+export type ImageSwatchBaseProps = Omit<ImageSwatchProps, 'size' | 'shape'>;
+
 /**
  * State used in rendering ImageSwatch
  */
@@ -28,3 +30,5 @@ export type ImageSwatchState = ComponentState<ImageSwatchSlots> &
   Pick<ImageSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
     selected: boolean;
   };
+
+export type ImageSwatchBaseState = Omit<ImageSwatchState, 'size' | 'shape'>;

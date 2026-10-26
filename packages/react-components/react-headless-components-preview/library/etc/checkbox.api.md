@@ -4,9 +4,9 @@
 
 ```ts
 
-import type { CheckboxBaseProps } from '@fluentui/react-checkbox';
 import type { CheckboxBaseState } from '@fluentui/react-checkbox';
-import type { CheckboxSlots as CheckboxSlots_2 } from '@fluentui/react-checkbox';
+import { CheckboxBaseProps as CheckboxProps } from '@fluentui/react-checkbox';
+import { CheckboxSlots } from '@fluentui/react-checkbox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-checkbox';
@@ -14,17 +14,16 @@ import { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-check
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
-// @public
-export type CheckboxProps = CheckboxBaseProps;
+export { CheckboxProps }
 
-// @public (undocumented)
-export type CheckboxSlots = CheckboxSlots_2;
+export { CheckboxSlots }
 
 // @public
 export type CheckboxState = CheckboxBaseState & {
     root: {
         'data-disabled'?: string;
         'data-checked'?: string;
+        'data-label-position'?: CheckboxBaseState['labelPosition'];
     };
 };
 

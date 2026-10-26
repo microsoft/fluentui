@@ -36,6 +36,16 @@ export type ColorAreaProps = Omit<ComponentProps<Partial<ColorAreaSlots>>, 'colo
   };
 
 /**
+ * ColorArea Base Props
+ */
+export type ColorAreaBaseProps = Omit<ColorAreaProps, 'shape'>;
+
+/**
  * State used in rendering ColorArea
  */
 export type ColorAreaState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color' | 'shape'>;
+
+/**
+ * ColorArea Base State
+ */
+export type ColorAreaBaseState = ComponentState<Required<ColorAreaSlots>> & Pick<ColorAreaProps, 'color'>;

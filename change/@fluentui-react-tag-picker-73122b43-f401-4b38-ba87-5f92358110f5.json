@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: omit the default TagPicker expand icon from headless state",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

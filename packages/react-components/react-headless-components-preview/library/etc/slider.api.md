@@ -7,20 +7,18 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderSlider_unstable as renderSlider } from '@fluentui/react-slider';
-import type { SliderBaseProps } from '@fluentui/react-slider';
 import type { SliderBaseState } from '@fluentui/react-slider';
-import type { SliderSlots as SliderSlots_2 } from '@fluentui/react-slider';
+import { SliderBaseProps as SliderProps } from '@fluentui/react-slider';
+import { SliderSlots } from '@fluentui/react-slider';
 
 export { renderSlider }
 
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
 
-// @public
-export type SliderProps = SliderBaseProps;
+export { SliderProps }
 
-// @public
-export type SliderSlots = SliderSlots_2;
+export { SliderSlots }
 
 // @public
 export type SliderState = SliderBaseState & {

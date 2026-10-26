@@ -32,7 +32,13 @@ export type ColorPickerProps = Omit<ComponentProps<Partial<ColorPickerSlots>>, '
   shape?: 'rounded' | 'square';
 };
 
+/** ColorPicker Base Props */
+export type ColorPickerBaseProps = Omit<ColorPickerProps, 'shape'>;
+
 /**
  * State used in rendering ColorPicker
  */
 export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerContextValue;
+
+/** State used in rendering unstyled ColorPicker */
+export type ColorPickerBaseState = Omit<ColorPickerState, 'shape'>;

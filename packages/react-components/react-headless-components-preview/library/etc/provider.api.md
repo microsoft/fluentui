@@ -6,15 +6,18 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
+import { ForwardRefExoticComponent } from 'react';
+import { FragmentProps } from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { RefAttributes } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
 // @public
-export const Provider: React_2.ForwardRefExoticComponent<Omit<ProviderSlots, "root"> & React_2.FragmentProps & Pick<FluentProviderProps, "dir" | "targetDocument"> & React_2.RefAttributes<HTMLDivElement>>;
+export const Provider: ForwardRefExoticComponent<Omit<ProviderSlots, "root"> & FragmentProps & Pick<FluentProviderProps, "dir" | "targetDocument"> & RefAttributes<HTMLDivElement>>;
 
 // @public
 export type ProviderProps = ComponentProps<ProviderSlots> & Pick<FluentProviderProps, 'dir' | 'targetDocument'>;
@@ -31,7 +34,7 @@ export const useProvider: (props: ProviderProps, ref: React_2.Ref<HTMLDivElement
 export { useProviderContext }
 
 // @public (undocumented)
-export const useProviderContextValues: (state: ProviderState) => ProviderContextValues;
+export const useProviderContextValues: (state: ProviderState) => FluentProviderContextValues;
 
 // (No @packageDocumentation comment for this package)
 

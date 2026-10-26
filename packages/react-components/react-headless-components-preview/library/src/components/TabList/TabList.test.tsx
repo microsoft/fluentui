@@ -22,7 +22,7 @@ describe('TabList', () => {
 
     expect(tablist).toBeInTheDocument();
     expect(tablist).toHaveAttribute('data-orientation', 'horizontal');
-    expect(tablist).toHaveAttribute('focusgroup', 'tablist inline wrap no-memory');
+    expect(tablist).toHaveAttribute('focusgroup', 'tablist inline wrap nomemory');
 
     const tabs = getAllByRole('tab');
 
@@ -41,6 +41,6 @@ describe('TabList', () => {
     const tablist = getByRole('tablist');
 
     expect(tablist).toHaveAttribute('data-orientation', 'vertical');
-    expect(tablist).toHaveAttribute('focusgroup', 'tablist block wrap no-memory');
+    expect(tablist).toHaveAttribute('focusgroup', 'tablist block wrap nomemory');
   });
 });

@@ -567,7 +567,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegends(data: LineChartDataWithIndex[]): JSXElement {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
+    const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = Object.create(null);
     data.forEach((point: LineChartDataWithIndex) => {
       if (point.legend) {
         if (!mapLegendToPoints[point.legend]) {
