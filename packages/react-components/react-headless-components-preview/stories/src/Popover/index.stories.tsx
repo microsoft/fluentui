@@ -9,6 +9,7 @@ export { Default } from './PopoverDefault.stories';
 export { WithArrow } from './PopoverWithArrow.stories';
 export { Controlled } from './PopoverControlled.stories';
 export { OpenOnHover } from './PopoverOpenOnHover.stories';
+export { InFrame } from './PopoverInFrame.stories';
 export { OpenOnContext } from './PopoverOpenOnContext.stories';
 export { CustomTrigger } from './PopoverCustomTrigger.stories';
 export { WithoutTrigger } from './PopoverWithoutTrigger.stories';

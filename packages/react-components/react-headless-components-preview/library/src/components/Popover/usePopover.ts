@@ -26,6 +26,9 @@ const getActiveElement = (surface: HTMLElement): Element | null => {
 };
 const isPopoverOpen = (surface: HTMLElement) => surface.matches(':popover-open');
 const hasSurfaceFocus = (surface: HTMLElement) => surface.contains(getActiveElement(surface));
+const getFrameElement = (doc: Document | null) => doc && doc.defaultView?.frameElement;
+const isFrameElement = (element: Element | null) =>
+  !!element && (element.nodeName === 'IFRAME' || element.nodeName === 'WEBVIEW');
 
 const createFocusObserver = () => {
   let content: HTMLElement | null = null;
@@ -33,22 +36,23 @@ const createFocusObserver = () => {
   let setOpen: (event: Event, open: boolean) => void;
   // Null rejects stale captures after disposal; false still permits pre-layout capture.
   let enabled: boolean | null = false;
+  let openOnHover = false;
   let focusWasInside = false;
   const focusObservers = new Map<Node, () => void>();
   const knownShadowRoots = new Map<Element, ShadowRoot>();
   let focusObservations: Map<Node | null, Event> | undefined;
   let framePoll: { doc: Document; id: number } | undefined;
+  let frameDocument: Document | undefined;
   let generation = 0;
   const eventGenerations = new WeakMap<Event, number>();
   const retiredFocusDocuments = new WeakSet<Document>();
 
-  const isFocusInside = (target: Node | null) => {
-    let current = target;
+  const isFocusInside = (current: Node | null | undefined) => {
     while (current) {
       if (elementContains(content, current) || elementContains(trigger, current)) {
         return true;
       }
-      current = current.ownerDocument?.defaultView?.frameElement ?? null;
+      current = getFrameElement(current.ownerDocument);
     }
     return false;
   };
@@ -64,13 +68,11 @@ const createFocusObserver = () => {
     return active;
   };
 
-  const getDocuments = () => [...focusObservers.keys()].filter((root): root is Document => root.nodeType === 9);
   const getFocusedFrame = () => {
-    for (const doc of getDocuments()) {
-      const active = doc.hasFocus() ? getDeepActiveElement(doc) : null;
-      if (active?.nodeName === 'IFRAME' || active?.nodeName === 'WEBVIEW') {
-        return active;
-      }
+    const doc = frameDocument;
+    const active = doc?.hasFocus() ? getDeepActiveElement(doc) : null;
+    if (isFrameElement(active)) {
+      return active;
     }
   };
   const stopFramePoll = () => {
@@ -95,20 +97,32 @@ const createFocusObserver = () => {
     if ([...observations.keys()].some(isFocusInside)) {
       focusWasInside = true;
     }
-    let doc = getDocuments().find(document => document.hasFocus());
+    let doc = surface.ownerDocument;
+    let parentFrame = getFrameElement(doc);
+    while (parentFrame) {
+      doc = parentFrame.ownerDocument;
+      parentFrame = getFrameElement(doc);
+    }
     let destination: Element | undefined;
     let inside = false;
-    while (doc) {
+    frameDocument = undefined;
+    while (doc.hasFocus()) {
       const active = getDeepActiveElement(doc);
       if (!active) {
         break;
+      }
+      if (doc === surface.ownerDocument) {
+        frameDocument = undefined;
+      }
+      if (isFrameElement(active)) {
+        frameDocument = doc;
       }
       inside ||= isFocusInside(active);
       if (active !== doc.body && active !== doc.documentElement) {
         destination = active;
       }
       const child = active.nodeName === 'IFRAME' ? (active as HTMLIFrameElement).contentDocument : null;
-      if (!child?.hasFocus()) {
+      if (!child) {
         break;
       }
       observeRoot(child);
@@ -140,11 +154,8 @@ const createFocusObserver = () => {
       focusWasInside = true;
       return;
     }
-    if (!destination) {
-      return;
-    }
-    const event = observations.get(destination) ?? [...observations.values()].pop();
-    if (focusWasInside && event) {
+    const event = destination && (observations.get(destination) ?? [...observations.values()].pop());
+    if (focusWasInside && event && !(openOnHover && [content, trigger].some(element => element?.matches(':hover')))) {
       focusWasInside = false;
       // Consumer code may synchronously close or unmount; allocate nothing after this callback.
       setOpen(event, false);
@@ -159,7 +170,7 @@ const createFocusObserver = () => {
     return focusObservations;
   }
 
-  function observe(event: Event, target: Node | null) {
+  function record(event: Event, target: Node | null) {
     if (enabled === null || (target && !target.isConnected)) {
       return;
     }
@@ -176,20 +187,17 @@ const createFocusObserver = () => {
     }
   }
 
-  function observeRootChain(target: Node) {
-    let current = target;
-    while (true) {
+  function observeRootChain(current: Node | null | undefined) {
+    while (current) {
       const root = current.getRootNode();
       observeRoot(root);
-      if (root.nodeType !== 11 || !('host' in root)) {
-        break;
+      if (root.nodeType === 11 && 'host' in root) {
+        const shadowRoot = root as ShadowRoot;
+        knownShadowRoots.set(shadowRoot.host, shadowRoot);
+        current = shadowRoot.host;
+      } else {
+        current = getFrameElement(root as Document);
       }
-      const shadowRoot = root as ShadowRoot;
-      knownShadowRoots.set(shadowRoot.host, shadowRoot);
-      current = shadowRoot.host;
-    }
-    if (target.ownerDocument) {
-      observeRoot(target.ownerDocument);
     }
   }
 
@@ -204,23 +212,22 @@ const createFocusObserver = () => {
       return;
     }
     retiredFocusDocuments.delete(ownerDocument);
-    const onFocus = (event: Event) => observe(event, (event.composedPath()[0] ?? event.target) as Node | null);
+    const onFocus = (event: Event) => record(event, (event.composedPath()[0] ?? event.target) as Node | null);
     const doc = root.nodeType === 9 ? (root as Document) : undefined;
     let timeout: number | undefined;
     let disposed = false;
-    const onWindowBlur = (event: Event) => {
+    const onWindowFocusChange = (event: Event) => {
       const currentWindow = doc?.defaultView;
       const epoch = generation;
       if (!disposed && currentWindow) {
         currentWindow.clearTimeout(timeout);
         timeout = currentWindow.setTimeout(() => {
           if (!disposed && generation === epoch) {
-            observe(event, null);
+            record(event, null);
           }
         }, 0);
       }
     };
-    const onWindowFocus = (event: Event) => observe(event, null);
     const onPageHide = (event: Event) => {
       if (doc && !(event as PageTransitionEvent).persisted) {
         retiredFocusDocuments.add(doc);
@@ -235,8 +242,8 @@ const createFocusObserver = () => {
       root[method]('focusin', onFocus, true);
       root[method]('fuiframefocus', onFocus, true);
       const currentWindow = doc?.defaultView;
-      currentWindow?.[method]('blur', onWindowBlur);
-      currentWindow?.[method]('focus', onWindowFocus);
+      currentWindow?.[method]('blur', onWindowFocusChange);
+      currentWindow?.[method]('focus', onWindowFocusChange);
       currentWindow?.[method]('pagehide', onPageHide);
       return currentWindow;
     };
@@ -257,12 +264,13 @@ const createFocusObserver = () => {
   }
 
   return {
-    observe,
-    update(
+    record,
+    sync(
       nextEnabled: boolean,
       nextContent: HTMLElement | null,
       nextTrigger: HTMLElement | null,
       onExit: (event: Event, open: boolean) => void,
+      hover: boolean,
     ) {
       if (content !== nextContent) {
         stopFramePoll();
@@ -271,12 +279,12 @@ const createFocusObserver = () => {
       trigger = nextTrigger;
       setOpen = onExit;
       enabled = nextEnabled;
+      openOnHover = hover;
       if (!enabled) {
         generation++;
         focusWasInside = false;
         focusObservations?.clear();
         focusObservers.forEach(dispose => dispose());
-        focusObservers.clear();
         knownShadowRoots.clear();
         return;
       }
@@ -296,13 +304,12 @@ const createFocusObserver = () => {
       scheduleFocusReconciliation();
     },
 
-    dispose() {
+    stop() {
       enabled = null;
       generation++;
       focusObservations?.clear();
       stopFramePoll();
       focusObservers.forEach(dispose => dispose());
-      focusObservers.clear();
     },
   };
 };
@@ -533,13 +540,13 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const [focusObserver] = React.useState(createFocusObserver);
   const onBoundaryFocusCapture = (event: React.FocusEvent<HTMLElement>) => {
     if (open && !trapFocus) {
-      focusObserver.observe(event.nativeEvent, event.target);
+      focusObserver.record(event.nativeEvent, event.target);
     }
   };
   useIsomorphicLayoutEffect(() =>
-    focusObserver.update(open && !trapFocus, contentRef.current, triggerRef.current, setOpen),
+    focusObserver.sync(open && !trapFocus, contentRef.current, triggerRef.current, setOpen, openOnHover),
   );
-  useIsomorphicLayoutEffect(() => () => focusObserver.dispose(), [focusObserver]);
+  useIsomorphicLayoutEffect(() => () => focusObserver.stop(), [focusObserver]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
