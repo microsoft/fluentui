@@ -12,7 +12,7 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { useDialogLayerOpenState, useLayerFocusReturn } from '../../../hooks/top-layer';
+import { useDialogLayerOpenState, useLayerEscape, useLayerFocusReturn } from '../../../hooks/top-layer';
 import { waitForAnimations } from '../../../hooks/top-layer/utils';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
@@ -79,14 +79,17 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     return () => unlockDocumentScroll(targetDocument);
   }, [open, modalType, targetDocument]);
 
+  // Every Escape is reported, so `onOpenChange` can veto it. Stopped, so parent dialogs stay open.
+  const { onKeyDown: onEscapeKeyDown } = useLayerEscape(dialogRef, {
+    open,
+    when: 'always',
+    onEscape: event =>
+      requestOpenChange({ type: 'escapeKeyDown', open: false, event: event as React.KeyboardEvent<HTMLDialogElement> }),
+  });
+
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
     props.onKeyDown?.(event);
-    if (event.key === 'Escape' && !event.isDefaultPrevented()) {
-      requestOpenChange({ type: 'escapeKeyDown', open: false, event });
-      // Stop propagation to avoid closing parent dialogs simultaneously.
-      event.stopPropagation();
-      return;
-    }
+    onEscapeKeyDown(event);
 
     // When the non-modal surface itself is focused, move Tab to the first
     // focusable descendant explicitly.
