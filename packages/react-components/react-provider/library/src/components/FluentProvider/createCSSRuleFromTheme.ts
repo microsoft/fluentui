@@ -48,7 +48,13 @@ export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | u
 
   if (theme) {
     const cssVarsAsString = (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-      return `${cssVarRule}--${escapeThemeText(cssVar)}: ${escapeThemeText(String(theme[cssVar]))}; `;
+      const tokenValue: unknown = theme[cssVar];
+      // Skip unset values (e.g. `undefined` from a nested provider) so they don't shadow inherited tokens.
+      if (typeof tokenValue !== 'string' && (typeof tokenValue !== 'number' || !Number.isFinite(tokenValue))) {
+        return cssVarRule;
+      }
+
+      return `${cssVarRule}--${escapeThemeText(cssVar)}: ${escapeThemeText(String(tokenValue))}; `;
     }, '');
 
     return `${escapedSelector} { ${cssVarsAsString} }`;

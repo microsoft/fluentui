@@ -90,6 +90,11 @@ describe('createCSSRuleFromTheme', () => {
     expect(createCSSRuleFromTheme('.selector', theme)).toBe('.selector { --customToken: 0;  }');
   });
 
+  it.each([undefined, null, NaN, Infinity, true, {}])('omits %p token values', value => {
+    const theme = { colorBrandBackground: value, colorNeutralBackground1: 'blue' } as unknown as PartialTheme;
+    expect(createCSSRuleFromTheme('.selector', theme)).toBe('.selector { --colorNeutralBackground1: blue;  }');
+  });
+
   it('preserves all exported theme values', () => {
     for (const theme of [webLightTheme, webDarkTheme, teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme]) {
       const result = createCSSRuleFromTheme('.selector', theme);
