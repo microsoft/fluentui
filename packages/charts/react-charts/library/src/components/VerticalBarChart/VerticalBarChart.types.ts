@@ -127,6 +127,8 @@ export interface VerticalBarChartProps extends CartesianChartProps {
    * Bar to focus when the chart data or colors change in content.
    * When not provided, focus returns to the previously focused bar.
    * Callback-only changes do not restore focus.
+   * Targets that are not currently tabbable are skipped, leaving focus unchanged.
+   * This includes bars with an inactive legend or hideTooltip enabled.
    */
   focusOnReset?: {
     barIndex: number;

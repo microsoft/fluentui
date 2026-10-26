@@ -49,6 +49,10 @@ export function getChartEventTarget<T extends Element>(event: React.SyntheticEve
   return event.currentTarget;
 }
 
+export function isChartElementTabbable(element: SVGElement | null | undefined): element is SVGElement {
+  return !!element && element.tabIndex >= 0;
+}
+
 export function isFocusLeavingChart(event: React.FocusEvent<HTMLElement>): boolean {
   return !event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node);
 }

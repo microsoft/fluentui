@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat(react-charts): add configurable focus restoration after data updates, including reopening path-line callouts, without stealing focus for equivalent data or callback-only updates, including conditional handlers",
+  "comment": "feat(react-charts): add configurable focus restoration after data updates, including reopening path-line callouts, without stealing focus for equivalent data or callback-only updates, including conditional handlers. Restoration skips targets that are not currently tabbable.",
   "packageName": "@fluentui/react-charts",
   "email": "v-baambati@microsoft.com"
 }

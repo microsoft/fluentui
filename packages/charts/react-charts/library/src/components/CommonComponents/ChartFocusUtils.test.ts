@@ -1,4 +1,6 @@
-import { areChartDataEqual } from './ChartFocusUtils';
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import { areChartDataEqual, isChartElementTabbable } from './ChartFocusUtils';
 
 describe('areChartDataEqual', () => {
   it('compares nested chart values and colors by content', () => {
@@ -8,6 +10,19 @@ describe('areChartDataEqual', () => {
     expect(areChartDataEqual([{ x: 1, y: 2 }], [{ x: 1, y: 3 }])).toBe(false);
     expect(areChartDataEqual(['red'], ['blue'])).toBe(false);
     expect(areChartDataEqual([1], [1, 2])).toBe(false);
+  });
+
+  describe('isChartElementTabbable', () => {
+    it.each([undefined, -1, 0, 1])('checks the current SVG tabindex (%s)', tabIndex => {
+      const { container } = render(React.createElement('svg', null, React.createElement('path', { tabIndex })));
+      const element = container.querySelector('path');
+      expect(isChartElementTabbable(element)).toBe(tabIndex !== undefined && tabIndex >= 0);
+    });
+
+    it('rejects missing elements', () => {
+      expect(isChartElementTabbable(null)).toBe(false);
+      expect(isChartElementTabbable(undefined)).toBe(false);
+    });
   });
 
   it('compares dates by value', () => {

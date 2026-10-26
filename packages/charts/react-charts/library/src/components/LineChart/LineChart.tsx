@@ -28,7 +28,7 @@ import type {
   YValueHover,
 } from '../../index';
 import { CartesianChart } from '../../index';
-import { areChartDataEqual, getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
+import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import { tokens } from '@fluentui/react-theme';
 import type { IDomainNRange } from '../../utilities/index';
@@ -236,7 +236,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       const element =
         focusPointRefs.current.get(`${focusTarget.lineIndex}-${focusTarget.pointIndex}`) ??
         focusLineRefs.current.get(focusTarget.lineIndex);
-      if (element) {
+      if (isChartElementTabbable(element)) {
         lastFocusedPointRef.current = focusTarget;
         element.focus();
       }

@@ -99,6 +99,7 @@ export interface LineChartProps extends CartesianChartProps {
    * Point to focus when the chart data or colors change in content.
    * When not provided, focus returns to the previously focused point.
    * Callback-only changes do not restore focus.
+   * Targets that are not currently tabbable are skipped, leaving focus unchanged.
    * For path-rendered lines without markers, focus moves to the line and its callout shows this point.
    */
   focusOnReset?: {

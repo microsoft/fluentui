@@ -21,7 +21,7 @@ import type {
   DataPoint,
 } from '../../index';
 import { CartesianChart, Legends, ChartPopover } from '../../index';
-import { areChartDataEqual, getChartEventTarget } from '../CommonComponents/ChartFocusUtils';
+import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -129,7 +129,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       return;
     }
 
-    focusBarRefs.current.get(barIndex)?.focus();
+    const element = focusBarRefs.current.get(barIndex);
+    if (isChartElementTabbable(element)) {
+      element.focus();
+    }
   }, [props.colors, props.data, props.focusOnReset]);
 
   React.useEffect(() => {

@@ -1157,6 +1157,38 @@ describe('LineChart - mouse events', () => {
     expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="50. metaData2, 90."]'));
   });
 
+  it.each([false, true])('Should skip an inactive point (focusOnReset: %s)', enableFocusOnReset => {
+    const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} />
+      </>,
+      { container: root! },
+    );
+    const point = container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!;
+    act(() => point.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    fireEvent.click(screen.getByRole('option', { name: 'metaData1' }));
+    expect(point).not.toHaveAttribute('tabindex');
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicPoints.map(line => ({ ...line, color: 'blue' })),
+    };
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusOnReset={focusOnReset} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(point).not.toHaveAttribute('tabindex');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
   it.each([false, true])('Should not restore focus for equivalent data (cloned: %s)', cloneData => {
     const { container, rerender } = render(
       <>

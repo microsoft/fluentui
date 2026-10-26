@@ -1108,6 +1108,59 @@ describe('VerticalBarChart - focusOnReset', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
+  it.each([false, true])('Should skip an inactive bar (focusOnReset: %s)', enableFocusOnReset => {
+    const focusOnReset = enableFocusOnReset ? { barIndex: 1 } : undefined;
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} />
+      </>,
+    );
+    const bar = getById(container, /_VBC_bar/i)[1];
+    act(() => bar.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    fireEvent.click(screen.getByRole('option', { name: 'First' }));
+    expect(bar).not.toHaveAttribute('tabindex');
+    const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(bar).not.toHaveAttribute('tabindex');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
+  it('Should skip a bar when hideTooltip makes it untabbable', () => {
+    const focusOnReset = { barIndex: 1 };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={chartPointsVBC} focusOnReset={focusOnReset} />
+      </>,
+    );
+    const bar = getById(container, /_VBC_bar/i)[1];
+    act(() => bar.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <VerticalBarChart data={updatedData} focusOnReset={focusOnReset} hideTooltip />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(bar).not.toHaveAttribute('tabindex');
+  });
+
   it('Should focus the bar specified by focusOnReset when data or colors change', () => {
     const focusOnReset = { barIndex: 1 };
     const updatedData = chartPointsVBC.map(point => ({ ...point, y: point.y + 1 }));
