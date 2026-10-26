@@ -167,13 +167,13 @@ type OnChange = EventHandler<TimePickerOnChangeData>;
 
 The event part is a discriminated union, as in TagPicker and Tree, so checking `data.type` narrows `data.event` to the matching React event. `type` says which gesture caused the change; the outcome is read from the payload. <kbd>Enter</kbd> is a `keydown` both for a select and for a commit, so `type` alone does not tell the two apart.
 
-| Change                           | `type`                 | `value`               | `displayValue`     | `errorType` |
-| -------------------------------- | ---------------------- | --------------------- | ------------------ | ----------- |
-| Select (click, <kbd>Enter</kbd>) | `'click'`, `'keydown'` | option time           | option text        | `undefined` |
-| Commit, valid                    | `'keydown'`, `'blur'`  | parsed time           | formatted value    | `undefined` |
-| Commit, failed                   | `'keydown'`, `'blur'`  | see "Commit outcomes" | typed text         | set         |
-| Commit, empty, not `required`    | `'keydown'`, `'blur'`  | `null`                | typed text (empty) | `undefined` |
-| Clear                            | `'click'`              | `null`                | `undefined`        | `undefined` |
+| Change                                                 | `type`                           | `value`               | `displayValue`  | `errorType` |
+| ------------------------------------------------------ | -------------------------------- | --------------------- | --------------- | ----------- |
+| Select (click, <kbd>Enter</kbd>, <kbd>Tab</kbd>, blur) | `'click'`, `'keydown'`, `'blur'` | option time           | option text     | `undefined` |
+| Commit, valid                                          | `'keydown'`, `'blur'`            | parsed time           | formatted value | `undefined` |
+| Commit, failed                                         | `'keydown'`, `'blur'`            | see "Commit outcomes" | typed text      | set         |
+| Commit, empty, not `required`                          | `'keydown'`, `'blur'`            | `null`                | `''`            | `undefined` |
+| Clear                                                  | `'click'`                        | `null`                | `undefined`     | `undefined` |
 
 `errorType` set means a failed commit, `value === null` without `errorType` means the value is now empty, and a `Date` without `errorType` is a new value regardless of whether it came from a select or a commit. An empty value comes either from the clear button (`type: 'click'`) or from committing empty typed text in a non-required freeform TimePicker (`type: 'keydown'` or `'blur'`); consumers that must tell the two apart check `type`.
 
@@ -185,6 +185,8 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 `formatDateToTimeString`, `getDateFromTimeString`, `getDateStartAnchor`, `getDateEndAnchor` and `getTimesBetween` are exported for consumers building custom formatting or parsing.
 
+Their types are exported too: `Hour`, `HourCycle`, `TimeFormatOptions`, `TimeStringValidationResult`, `TimePickerErrorType` and `TimePickerOption` (an option's `date`, `key` and `text`).
+
 #### Option generation
 
 `getTimesBetween(start, end, increment)` returns the dates from `start` (inclusive) to `end` (exclusive) that are `increment` minutes of elapsed time apart. It advances by `increment * 60_000` milliseconds, not by calendar minutes, so the spacing is preserved across daylight saving transitions.
@@ -193,28 +195,23 @@ Same as Combobox: `root`, `input`, `expandIcon`, `clearIcon`, `listbox`.
 
 #### Formatting and parsing
 
-Formatting and the default parser share the resolved hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale (`new Intl.DateTimeFormat(undefined, { hour: 'numeric' }).resolvedOptions().hourCycle`; `hourCycle` is only resolved when the hour is requested). `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
+Formatting and the default parser share one `Intl.DateTimeFormat` for the runtime locale, created by `createTimeFormat({ hourCycle, showSeconds })` and memoized by the TimePicker hook. Its resolved options give the hour cycle: the `hourCycle` prop when set, otherwise the hour cycle of the runtime locale. `formatDateToTimeString` and `getDateFromTimeString` both receive the same `TimeFormatOptions`, so the default formatter and parser always agree on the format.
 
-The default parser (`getDateFromTimeString`) accepts, after trimming leading and trailing whitespace (`:` stands for `:` or the separator the runtime locale puts after the hour, for example `.` in `fi-FI`):
+The default parser (`getDateFromTimeString`) builds its pattern from the formatter's `formatToParts()` output, so it follows the locale's field order, separators, day period text and digits. After trimming leading and trailing whitespace and removing bidi marks it accepts:
 
-| Resolved hour cycle | Accepted input                           | Notes                                                                                             |
-| ------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `h23`               | `H:mm`, `HH:mm` with hour `0`–`23`       |                                                                                                   |
-| `h24`               | `H:mm`, `HH:mm` with hour `1`–`24`       | `24:mm` is hour `0` of the same day, not a rollover to the next day.                              |
-| `h12`               | `h:mm AM`, `hh:mm AM` with hour `1`–`12` | Day period is case-insensitive and separated by a single space or U+202F (narrow no-break space). |
-| `h11`               | `h:mm AM`, `hh:mm AM` with hour `0`–`11` | Same as `h12`.                                                                                    |
+| Part       | Accepted input                                                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hour       | 1 or 2 digits within the resolved hour cycle: `0`–`23` (`h23`), `1`–`24` (`h24`, `24` is hour `0` of the same day), `1`–`12` (`h12`), `0`–`11` (`h11`). |
+| Minutes    | 2 digits, `00`–`59`.                                                                                                                                    |
+| Seconds    | 2 digits, `00`–`59`. Required with `showSeconds`, rejected without it.                                                                                  |
+| Day period | 12-hour cycles only, required. The locale's text (for example `午後`, `م`, `p.m.`) or `AM`/`PM`, case-insensitive, in the locale's position.            |
+| Separators | The locale's literal (for example `:`, `.` in `fi-FI`, `h` in `fr-CA`), or `:`. A space in a literal matches a space, U+00A0 or U+202F.                 |
 
-With `showSeconds`, `:ss` is required; without it, seconds are rejected. The same separator set applies between the minutes and the seconds. Any other separator, digits outside the cycle's range or a missing day period in a 12-hour cycle produce `invalid-input`.
+Digits are ASCII or the locale's numbering system (for example `٠`–`٩` in `ar-EG`). Anything else produces `invalid-input`.
 
-**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options, for locales whose time format uses ASCII digits, one separator between all fields and either no day period or `AM`/`PM` (for example `en-US`, `en-GB`, `de-DE`, `fr-FR`, `ja-JP`, and `fi-FI`, `da-DK` and `id-ID`, which format `10.10`). The default formatter uses the runtime locale's format, while the default parser only accepts the formats in the table above, so the guarantee does **not** hold for:
+**Round trip guarantee**: the output of the default `formatDateToTimeString` parses back to the same clock time through the default `getDateFromTimeString` with the same options in the runtime locale. Tests cover `en-US`, `ja-JP`, `ko-KR`, `ar-EG`, `fa-IR`, `fr-CA`, `es-US` and `fi-FI`, with and without seconds where the format changes.
 
-- locales with a different separator before the seconds, for example `fr-CA` with `showSeconds` (`10 h 10 min 10 s`);
-- locales with localized digits, for example `ar-EG` (`١٠:١٠`), `fa-IR`, `mr-IN`, `bn-BD` and `ne-NP`;
-- 12-hour locales with a localized day period, for example `ko-KR` (`오전 10:10`) and `el-GR` (`10:10 π.μ.`).
-
-`hourCycle="h23"` removes the day period and so fixes the last group only; it does not change the separators or the digits. Locales in the first two groups need a custom `parseTimeStringToDate` that accepts the locale's format, or a custom `formatDateToTimeString` that produces the ASCII format.
-
-A parsed time earlier than the start anchor is placed on the day after the anchor (`startHour={22} endHour={2}` with input `1:00` yields 01:00 on the next day). The day is chosen before the clock fields are applied, so a time that does not exist on the anchor day because of a daylight saving transition is not shifted. When a clock time occurs twice because of a daylight saving transition, the earliest occurrence at or after the start anchor wins, so on a fall-back day the first (daylight saving) instant is chosen even when both are inside the range. Formatting and re-parsing therefore preserve the clock fields, not the instant: a value on the second occurrence of a repeated hour displays the same text and parses back to the first occurrence. A time at or after the end anchor is returned with `errorType: 'out-of-bounds'`.
+A parsed time earlier than the start anchor is placed on the day after the anchor (`startHour={22} endHour={2}` with input `1:00` yields 01:00 on the next day). The day is chosen before the clock fields are applied, so a time that does not exist on the anchor day because of a daylight saving transition keeps its clock fields and is placed on the next day instead (usually `out-of-bounds`). When a clock time occurs twice because of a daylight saving transition, the earliest occurrence at or after the start anchor wins, so on a fall-back day the first (daylight saving) instant is chosen even when both are inside the range. Formatting and re-parsing therefore preserve the clock fields, not the instant: a value on the second occurrence of a repeated hour displays the same text and parses back to the first occurrence. A time at or after the end anchor is returned with `errorType: 'out-of-bounds'`.
 
 ### Hooks
 
@@ -222,7 +219,7 @@ A parsed time earlier than the start anchor is placed on the day after the ancho
 | ------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `useTimePicker_unstable`              | Full styled state: design props, default icons, Tabster integration.                           |
 | `useTimePickerBase_unstable`          | Behavior only (no `appearance`/`size`, icons or Tabster), built on `useComboboxBase_unstable`. |
-| `useTimePickerSelection_unstable`     | Resolves time props into options, the value, the display text and Combobox props.              |
+| `useTimePickerSelection_unstable`     | Resolves time props into options, the display text, `commitValue` and Combobox props.          |
 | `useTimePickerComboboxState_unstable` | Applies commit, clear and Field labelling behavior on top of any Combobox state.               |
 | `useTimePickerStyles_unstable`        | Griffel styles.                                                                                |
 | `useTimePickerContextValues_unstable` | Context values for the listbox.                                                                |
@@ -231,6 +228,12 @@ A parsed time earlier than the start anchor is placed on the day after the ancho
 `useTimePickerSelection_unstable` and `useTimePickerComboboxState_unstable` let `@fluentui/react-headless-components-preview` compose TimePicker with its own Combobox state hook, which does not use `@fluentui/react-positioning`. Their contracts are public:
 
 ```ts
+/** TimePicker specific state, shared by the styled and headless TimePicker. */
+type TimePickerTimeState = Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
+  /** Display text after the last change. A commit happens only when the typed text differs from it. */
+  committedText: string | undefined;
+};
+
 /** Payload of a change, without the event part of `TimePickerOnChangeData`. */
 type TimePickerCommitData = Pick<TimePickerOnChangeData, 'value' | 'displayValue' | 'errorType'>;
 
@@ -258,11 +261,16 @@ function useTimePickerSelection_unstable<TComboboxProps extends TimePickerCombob
 ): TimePickerSelection<TComboboxProps>;
 function useTimePickerComboboxState_unstable<TState extends TimePickerComboboxState>(
   comboboxState: TState,
-  selection: TimePickerSelection<unknown>,
+  selection: Pick<
+    TimePickerSelection<unknown>,
+    'clearIconRef' | 'freeform' | 'parseTimeStringToDate' | 'commitValue' | 'committedText'
+  >,
 ): TState & TimePickerTimeState;
 ```
 
 `value`, `defaultValue` and `onChange` are omitted from the Combobox props because TimePicker redefines them: the value is a `Date | null` rather than the display text, and `onChange` reports a time change. Only the TimePicker definitions apply.
+
+The component types follow the v9 pattern: `TimePickerProps`, `TimePickerSlots`, `TimePickerState`, `TimePickerContextValues` and `timePickerClassNames`, plus `TimePickerBaseProps` and `TimePickerBaseState` for `useTimePickerBase_unstable`, which omit `appearance` and `size`.
 
 ## Structure
 
@@ -308,8 +316,8 @@ See the [compat migration guide](../../../react-timepicker-compat/library/docs/M
 ## Behaviors
 
 - **Opening**: click on the input or chevron, <kbd>Alt</kbd>+<kbd>ArrowDown</kbd>, or typing.
-- **Select**: click an option, or <kbd>Enter</kbd> on the active option. `onChange` fires with the option's time.
-- **Commit**: when the typed text changed since the last commit, <kbd>Enter</kbd> without an active option or focus leaving the TimePicker parses the text and fires `onChange`, including `errorType` when parsing or range validation fails. While the typed text does not prefix-match the active option, the active option is cleared so <kbd>Enter</kbd> commits the typed text.
+- **Select**: click an option, or <kbd>Enter</kbd> or <kbd>Tab</kbd> on the active option (Combobox behavior). Without `freeform`, leaving the input while the typed text fully matches the active option also selects it. `onChange` fires with the option's time. Selecting the option that is already selected is not a change and does not call `onChange`.
+- **Commit**: when the typed text changed since the last commit, <kbd>Enter</kbd> without an active option or focus leaving the TimePicker parses the text and fires `onChange`, including `errorType` when parsing or range validation fails. Text that is empty or only whitespace is an empty commit: it is not parsed, and its display text is `''`. While the typed text does not prefix-match the active option, the active option is cleared so <kbd>Enter</kbd> commits the typed text.
 - **Clear**: the clear button fires `onChange` with `value: null`. It is not validated.
 
 ### Display text
@@ -351,10 +359,11 @@ A commit parses the typed text with `parseTimeStringToDate` and always replaces 
 
 - `required-input` is reported only when `required` is set on the TimePicker or on the wrapping `Field`, as DatePicker does. Otherwise an empty commit reports `value: null` with no error.
 - The clear button bypasses parsing and validation. It fires once with the cleared payload; when focus then leaves the still-empty input, no additional `required-input` is reported.
-- A custom `parseTimeStringToDate` replaces the default parsing **and** the range validation. The TimePicker applies no further checks to its result except the `required` check; `getDateStartAnchor`, `getDateEndAnchor` and `getDateFromTimeString` are exported so a custom parser can reuse the default validation.
+- A custom `parseTimeStringToDate` replaces the default parsing **and** the range validation. It is not called for an empty commit, and the TimePicker applies no further checks to its result; `getDateStartAnchor`, `getDateEndAnchor` and `getDateFromTimeString` are exported so a custom parser can reuse the default validation.
 - The TimePicker has no built-in error messages. Consumers render `errorType` through `Field`'s `validationMessage`.
 
 ## Accessibility
 
 - Follows the ARIA combobox pattern implemented by Combobox (`role="combobox"` input with `aria-activedescendant` pointing into a `role="listbox"` popup).
+- The chevron button is in the tab order, as in Combobox. Moving focus between the input and the chevron does not commit; focus leaving both does.
 - When wrapped in `Field`, the chevron button is labelled by its own label and the field label (`aria-labelledby`) so screen readers announce e.g. "Open, Meeting time".
