@@ -9,14 +9,13 @@ import {
   useMergedRefs,
   elementContains,
   useEventCallback,
-  useIsomorphicLayoutEffect,
+  useId,
 } from '@fluentui/react-utilities';
 
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import { Popover, PopoverSurface } from '../../Popover';
 import type { PopoverProps } from '../../Popover';
 import { toDataAttributeValue } from '../../../utils';
-import { InfoLabelOwnershipContext } from '../infoLabelContext';
 
 /**
  * Create the state required to render InfoButton.
@@ -28,11 +27,19 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   const { popover, info, ...rest } = props;
 
   const rootRef = useMergedRefs(ref);
+  const buttonId = useId('info-button-', rest.id);
+  const popoverSlot = slot.always(popover, {
+    defaultProps: {
+      positioning: 'above-start',
+      withArrow: true,
+    },
+    elementType: Popover as React.ComponentType<Partial<Omit<PopoverProps, 'openOnHover'>>>,
+  });
 
   const state: InfoButtonState = {
     components: {
       root: 'button',
-      popover: Popover as React.FC<Partial<PopoverProps>>,
+      popover: Popover as React.ComponentType<Partial<PopoverProps>>,
       info: PopoverSurface,
     },
 
@@ -41,26 +48,30 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
       getIntrinsicElementProps('button', {
         type: 'button',
         'aria-label': 'information',
+        'aria-haspopup': popoverSlot.trapFocus ? ('dialog' as const) : false,
+        id: popoverSlot.trapFocus ? buttonId : undefined,
         ...rest,
         ref: rootRef,
       }),
       { elementType: 'button' },
     ),
-    popover: slot.always(popover, {
-      defaultProps: {
-        positioning: 'above-start',
-        withArrow: true,
-      },
-      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
-    }),
+    popover: popoverSlot,
     info: slot.always(info, {
       defaultProps: {
-        role: 'note',
+        as: popoverSlot.trapFocus ? 'dialog' : 'div',
+        role: popoverSlot.trapFocus ? 'dialog' : 'note',
         tabIndex: -1,
       },
       elementType: PopoverSurface,
     }),
   };
+
+  if (state.popover.trapFocus) {
+    state.root.id ??= buttonId;
+    if (state.info['aria-label'] === undefined && state.info['aria-labelledby'] === undefined) {
+      state.info['aria-labelledby'] = state.root.id;
+    }
+  }
 
   const [popoverOpen, setPopoverOpen] = useControllableState({
     state: state.popover.open,
@@ -72,14 +83,6 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   state.popover.defaultOpen = undefined;
   state.root['data-open'] = toDataAttributeValue(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
-
-  const reportOwnership = React.useContext(InfoLabelOwnershipContext);
-  const [lifetime] = React.useState(() => ({}));
-  const surfaceId = state.popover.id;
-  useIsomorphicLayoutEffect(() => {
-    reportOwnership?.(lifetime, { open: popoverOpen, surfaceId });
-  }, [reportOwnership, lifetime, popoverOpen, surfaceId]);
-  useIsomorphicLayoutEffect(() => () => reportOwnership?.(lifetime, null), [reportOwnership, lifetime]);
 
   const infoRef = useMergedRefs(state.info.ref);
   state.info.ref = infoRef;

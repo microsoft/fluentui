@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { InfoLabel } from './InfoLabel';
 import { Provider } from '../Provider';
 import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
 import type { InfoLabelProps } from './InfoLabel.types';
 import type { InfoButtonProps } from './InfoButton/InfoButton.types';
+import { InfoButton } from './InfoButton/InfoButton';
 
 const mount = (element: React.ReactElement) => {
   mountBase(<Provider>{element}</Provider>);
@@ -12,9 +14,9 @@ const mount = (element: React.ReactElement) => {
 
 const surfaceSelector = '[role="note"]';
 
-describe('InfoLabel - rendered ownership lifetime', () => {
+describe('InfoLabel - rendered details lifetime', () => {
   (['root', 'infoButton'] as const).forEach(target => {
-    it(`clears ownership after a ${target} renderer replaces its returned element`, () => {
+    it(`clears the details reference after a ${target} renderer replaces its returned element`, () => {
       let replace: () => void;
       const change = cy.spy().as('change');
       const Example = () => {
@@ -42,12 +44,101 @@ describe('InfoLabel - rendered ownership lifetime', () => {
       };
       mount(<Example />);
       cy.get(surfaceSelector).should('exist');
-      cy.get('#ownership').should('have.attr', 'aria-owns');
+      cy.get('#ownership').should('not.have.attr', 'aria-owns');
+      cy.get('#ownership button')
+        .should('have.attr', 'aria-haspopup', 'false')
+        .and('have.attr', 'aria-expanded', 'true');
+      cy.get('#ownership button')
+        .invoke('attr', 'aria-details')
+        .then(id => {
+          cy.get(surfaceSelector).should('have.attr', 'id', id);
+        });
       // Replace without moving focus outside first, which would dismiss the old popup.
       cy.then(() => replace());
       cy.get(surfaceSelector).should('not.exist');
       cy.get('#ownership').should('not.have.attr', 'aria-owns');
+      cy.get('#ownership button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
       cy.get('@change').should('not.have.been.called');
+    });
+  });
+});
+
+describe('InfoLabel - note semantics', () => {
+  it('preserves a named native dialog when focus trapping is explicitly requested', () => {
+    mount(<InfoButton info="Information" popover={{ trapFocus: true, defaultOpen: true }} />);
+    cy.get('button').should('have.attr', 'aria-haspopup', 'dialog');
+    cy.get('button')
+      .invoke('attr', 'id')
+      .then(id => {
+        cy.get('[role="dialog"]')
+          .should('have.prop', 'tagName', 'DIALOG')
+          .and('have.attr', 'aria-labelledby', id)
+          .and('be.visible')
+          .and('have.focus');
+      });
+    cy.realPress('Escape');
+    cy.get('[role="dialog"]').should('not.exist');
+    cy.get('button')
+      .should('have.focus')
+      .and('have.attr', 'aria-expanded', 'false')
+      .and('not.have.attr', 'aria-details');
+  });
+
+  (['inline', 'portaled'] as const).forEach(placement => {
+    it(`supports Enter, Space, and Escape with a valid ${placement} note relationship`, () => {
+      const Example = () => {
+        const [host, setHost] = React.useState<HTMLDivElement | null>(null);
+        type NoteProps = Extract<ExtractSlotProps<InfoButtonProps['info']>, { as: 'div' }>;
+        const renderNote: SlotRenderFunction<NoteProps> = (Component, props) =>
+          host
+            ? createPortal(
+                <Component {...props} as="div">
+                  Information
+                </Component>,
+                host,
+              )
+            : null;
+        const portaledInfo: NoteProps = { as: 'div', children: renderNote };
+        return (
+          <>
+            <div ref={setHost} id="portal-host" />
+            <InfoLabel
+              root={{ id: 'note-wrapper' }}
+              info={placement === 'inline' ? 'Information' : portaledInfo}
+              infoButton={{ className: 'info-button' }}
+            >
+              Label
+            </InfoLabel>
+          </>
+        );
+      };
+      mount(<Example />);
+      cy.get('#note-wrapper').should('not.have.attr', 'aria-owns');
+      cy.get('button.info-button')
+        .should('have.attr', 'aria-haspopup', 'false')
+        .and('have.attr', 'aria-expanded', 'false')
+        .and('not.have.attr', 'aria-details');
+      cy.get('button.info-button').focus().realPress('Enter');
+      cy.get(surfaceSelector).should('be.visible').and('have.focus');
+      cy.get('button.info-button').should('have.attr', 'aria-expanded', 'true');
+      cy.get('button.info-button')
+        .invoke('attr', 'aria-details')
+        .then(id => {
+          cy.get(surfaceSelector).should('have.attr', 'id', id);
+        });
+      if (placement === 'portaled') {
+        cy.get('#portal-host').find(surfaceSelector).should('exist');
+        cy.get('#note-wrapper').find(surfaceSelector).should('not.exist');
+      }
+      cy.get('button.info-button').focus().realPress('Escape');
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('button.info-button').should('have.focus').and('not.have.attr', 'aria-details');
+      cy.get('button.info-button').realPress('Space');
+      cy.get(surfaceSelector).should('be.visible');
+      cy.get('button.info-button').focus().realPress('Space');
+      cy.get(surfaceSelector).should('not.exist');
+      cy.get('button.info-button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
+      cy.get('#note-wrapper').should('not.have.attr', 'aria-owns');
     });
   });
 });

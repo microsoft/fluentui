@@ -44,7 +44,7 @@ describe('InfoLabel', () => {
     expect(infoButton.getAttribute('aria-labelledby')).toBe(`${label.id} ${infoButton.id}`);
   });
 
-  it("applies the popover id to aria-owns on the InfoLabel's wrapper when open", () => {
+  it('uses the trigger details relationship without generating wrapper ownership', () => {
     const { container } = render(
       <InfoLabel className="info-label-wrapper" infoButton={{ popover: { id: 'test-id' } }} info="Test" />,
     );
@@ -52,6 +52,7 @@ describe('InfoLabel', () => {
 
     fireEvent.click(container.getElementsByTagName('button')[0]);
 
-    expect(container.getElementsByClassName('info-label-wrapper')[0].getAttribute('aria-owns')).toBe('test-id');
+    expect(container.getElementsByClassName('info-label-wrapper')[0]).not.toHaveAttribute('aria-owns');
+    expect(container.getElementsByTagName('button')[0]).toHaveAttribute('aria-details', 'test-id');
   });
 });
