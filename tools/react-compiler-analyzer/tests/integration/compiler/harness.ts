@@ -4,25 +4,22 @@ import { join, resolve } from 'node:path';
 import { runInNewContext } from 'node:vm';
 
 import * as babelTypes from '@babel/types';
+import * as babel from '@babel/core';
+import * as swc from '@swc/core';
 import * as ts from 'typescript';
 import type { TransformOptions } from '@babel/core';
 
-import { compileSource, extractDetailReason, extractFullDiagnostic, type CompilerEvent } from '../src/compiler';
-import { riskPlugin } from '../src/risk-plugin';
-import type { RiskFinding } from '../src/types';
+import { compileSource, extractDetailReason, extractFullDiagnostic, type CompilerEvent } from '../../../src/compiler';
+import { riskPlugin } from '../../../src/risk-plugin';
+import type { RiskFinding } from '../../../src/types';
 import type { Fixture } from './fixtures';
 
-// Never resolve the workspace SWC/Jest host through these aliases.
-const babel: typeof import('@babel/core') = require('@babel/core-differential');
-const swc: typeof import('@swc/core') = require('@swc/core-differential');
-const compiler = require.resolve('babel-plugin-react-compiler-differential');
+const compiler = require.resolve('babel-plugin-react-compiler');
 
 export const versions = {
-  babel: require('@babel/core-differential/package.json').version as string,
-  compiler: require('babel-plugin-react-compiler-differential/package.json').version as string,
-  swc: require('@swc/core-differential/package.json').version as string,
-  analyzerBabel: require('@babel/core/package.json').version as string,
-  analyzerCompiler: require('babel-plugin-react-compiler/package.json').version as string,
+  babel: require('@babel/core/package.json').version as string,
+  compiler: require('babel-plugin-react-compiler/package.json').version as string,
+  swc: require('@swc/core/package.json').version as string,
   typescript: ts.version,
 };
 export const nativeBinary = swc.getBinaryMetadata();
@@ -176,7 +173,7 @@ export async function runFixture(fixture: Fixture) {
       ],
     ],
   };
-  // The pinned native API accepts the same compiler settings but does not expose
+  // The native API accepts the same compiler settings but does not expose
   // function-level success/skip telemetry. Transform success is not acceptance.
   const swcOptions = {
     filename,
@@ -241,8 +238,7 @@ export async function runFixture(fixture: Fixture) {
         stubs: ['react.useState', 'react/compiler-runtime.c', 'fixture-gate.isEnabled'],
       },
       differences: [
-        'Native SWC baseline is 1.16.18, not consumer repro 1.16.20: the latter is quarantined by workspace policy.',
-        'RCA is a separate noEmit analysis with its production-resolved Babel/compiler versions.',
+        'RCA is a separate noEmit analysis using the same Babel/compiler dependencies as the emission tests.',
         'Babel preserves TypeScript; native SWC lowers TypeScript. Both preserve JSX.',
         'Native SWC has no per-function acceptance telemetry.',
         'Runtime checks use TypeScript CommonJS/JSX lowering and stub hooks/cache/gate; not application safety.',
@@ -331,7 +327,7 @@ export function summarize(evidence: Evidence) {
 }
 
 export function writeEvidence(evidence: Evidence): string {
-  const directory = resolve(__dirname, '../../../dist/react-compiler-analyzer-differential');
+  const directory = resolve(__dirname, '../../../../../dist/react-compiler-analyzer-integration');
   mkdirSync(directory, { recursive: true });
   const path = join(directory, `${evidence.fixture.id}.json`);
   writeFileSync(path, JSON.stringify(evidence, null, 2));

@@ -110,16 +110,16 @@ jobs:
         run: |
           yarn nx affected -t react-compiler-analyzer--lint --nxBail
 
-      - name: Pinned compiler differential corpus and built CLI smoke (affected)
+      - name: React Compiler Analyzer integration tests (affected)
         run: |
-          yarn nx affected -t test-compiler-differential test-cli --nxBail
+          yarn nx affected -t test-integration --nxBail
 
-      - name: Upload compiler differential failure evidence
+      - name: Upload compiler integration failure evidence
         if: failure()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: react-compiler-analyzer-differential
-          path: dist/react-compiler-analyzer-differential
+          name: react-compiler-analyzer-integration
+          path: dist/react-compiler-analyzer-integration
           if-no-files-found: ignore
 
   react-major-versions-integration:

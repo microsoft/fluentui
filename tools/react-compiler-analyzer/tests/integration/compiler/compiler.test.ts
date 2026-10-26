@@ -9,12 +9,14 @@ import {
   writeEvidence,
 } from './harness';
 
-describe('pinned compiler differential corpus (bounded behavior, not parity)', () => {
-  it('resolves the exact isolated comparison versions', () => {
-    expect(versions).toMatchObject({ babel: '7.29.6', compiler: '1.0.0', swc: '1.16.18' });
+describe('compiler integration (bounded behavior, not parity)', () => {
+  it('uses the workspace compiler dependencies and records resolved versions', () => {
+    expect(versions).toMatchObject({
+      babel: require('@babel/core/package.json').version,
+      compiler: require('babel-plugin-react-compiler/package.json').version,
+      swc: require('@swc/core/package.json').version,
+    });
     expect(nativeBinary.target).toEqual(expect.any(String));
-    expect(require.resolve('@swc/core-differential')).not.toBe(require.resolve('@swc/core'));
-    expect(require.resolve('@babel/core-differential')).not.toBe(require.resolve('@babel/core'));
   });
 
   it('attributes runtime cache bindings to their actual function, never strings or module totals', () => {
@@ -65,7 +67,7 @@ describe('pinned compiler differential corpus (bounded behavior, not parity)', (
           expect(runtime.gateCalls.length > 0).toBe(Boolean(fixture.gated));
           expect(runtime.gateCalls.every(value => value === runtime.enabled)).toBe(true);
           if (fixture.gated && runtime.backend === 'babel') {
-            // Pinned compiler defect: the intended gated facade loses its export.
+            // Known compiler defect: the intended gated facade loses its export.
             // Preserve this measured divergence until an intentional compiler upgrade.
             expect(runtime.exportNames).toEqual(['useSample_unoptimized']);
             expect(runtime.callable).toBe(false);
@@ -92,7 +94,7 @@ describe('pinned compiler differential corpus (bounded behavior, not parity)', (
       // A version upgrade requires reviewing evidence, not asserting strict parity.
       expect(summarize(evidence)).toMatchSnapshot(fixture.id);
     } catch (error) {
-      throw new Error(`${String(error)}\nDifferential evidence: ${artifact}`);
+      throw new Error(`${String(error)}\nCompiler integration evidence: ${artifact}`);
     }
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) computed-member-control: computed-member-control 1`] = `
+exports[`compiler integration (bounded behavior, not parity) computed-member-control: computed-member-control 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -54,7 +54,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) computed-member-mutation-control: computed-member-mutation-control 1`] = `
+exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: computed-member-mutation-control 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -108,7 +108,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) computed-template-key: computed-template-key 1`] = `
+exports[`compiler integration (bounded behavior, not parity) computed-template-key: computed-template-key 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -162,7 +162,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) computed-template-mutation: computed-template-mutation 1`] = `
+exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: computed-template-mutation 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -216,7 +216,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) declare-field: declare-field 1`] = `
+exports[`compiler integration (bounded behavior, not parity) declare-field: declare-field 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -270,7 +270,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) export-assignment: export-assignment 1`] = `
+exports[`compiler integration (bounded behavior, not parity) export-assignment: export-assignment 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -324,7 +324,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) exported-overload: exported-overload 1`] = `
+exports[`compiler integration (bounded behavior, not parity) exported-overload: exported-overload 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -519,7 +519,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) exported-overload-gated: exported-overload-gated 1`] = `
+exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: exported-overload-gated 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -714,7 +714,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) hidden-selector: hidden-selector 1`] = `
+exports[`compiler integration (bounded behavior, not parity) hidden-selector: hidden-selector 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -780,7 +780,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) import-assignment: import-assignment 1`] = `
+exports[`compiler integration (bounded behavior, not parity) import-assignment: import-assignment 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -834,7 +834,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) invalid-hooks: invalid-hooks 1`] = `
+exports[`compiler integration (bounded behavior, not parity) invalid-hooks: invalid-hooks 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -884,7 +884,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) malformed-suppression: malformed-suppression 1`] = `
+exports[`compiler integration (bounded behavior, not parity) malformed-suppression: malformed-suppression 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -948,7 +948,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) misplaced-suppression: misplaced-suppression 1`] = `
+exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: misplaced-suppression 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1010,7 +1010,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) module-opt-out: module-opt-out 1`] = `
+exports[`compiler integration (bounded behavior, not parity) module-opt-out: module-opt-out 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1060,7 +1060,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) namespace: namespace 1`] = `
+exports[`compiler integration (bounded behavior, not parity) namespace: namespace 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1119,7 +1119,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) positive: positive 1`] = `
+exports[`compiler integration (bounded behavior, not parity) positive: positive 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1173,7 +1173,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) recognized-selector-control: recognized-selector-control 1`] = `
+exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: recognized-selector-control 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1237,7 +1237,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) suppressed-invalid-hooks: suppressed-invalid-hooks 1`] = `
+exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: suppressed-invalid-hooks 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1287,7 +1287,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) unknown-rule-suppression: unknown-rule-suppression 1`] = `
+exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: unknown-rule-suppression 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1351,7 +1351,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) unnecessary-suppression: unnecessary-suppression 1`] = `
+exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: unnecessary-suppression 1`] = `
 Object {
   "analyzer": Object {
     "error": null,
@@ -1413,7 +1413,7 @@ Object {
 }
 `;
 
-exports[`pinned compiler differential corpus (bounded behavior, not parity) valid-hooks: valid-hooks 1`] = `
+exports[`compiler integration (bounded behavior, not parity) valid-hooks: valid-hooks 1`] = `
 Object {
   "analyzer": Object {
     "error": null,

@@ -46,10 +46,7 @@ if (leaked.length > 0) {
 }
 
 const cli = await readFile(join(outdir, 'cli.js'), 'utf-8');
-if (
-  Object.keys(metafile.inputs).some(input => /(?:^|\/)differential\//.test(input)) ||
-  /@swc\/core-differential/.test(cli)
-) {
+if (Object.keys(metafile.inputs).some(input => /(?:^|\/)tests\/integration\//.test(input)) || /@swc\/core/.test(cli)) {
   throw new Error('Test-only native SWC comparison code leaked into the production bundle.');
 }
 for (const name of ['babel-plugin-react-compiler']) {

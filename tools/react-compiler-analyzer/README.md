@@ -612,11 +612,11 @@ Validate the analyzer and its test-only compiler baselines through Nx:
 
 ```bash
 yarn nx run react-compiler-analyzer:test --runInBand
-yarn nx run react-compiler-analyzer:test-compiler-differential
-yarn nx run react-compiler-analyzer:test-cli
+yarn nx run react-compiler-analyzer:test-integration
 yarn nx run react-compiler-analyzer:type-check
 ```
 
-The differential target checks known Babel/SWC differences in emitted caching and runtime
-exports. Review changed evidence before updating its baselines. `test-cli` validates the
-packaged command's JSON and dry-run behavior. Neither replaces application behavior tests.
+The integration target builds the CLI, checks compiler behavior using workspace Babel/SWC
+dependencies, and validates the packaged command's JSON and dry-run behavior. Tests live in
+`tests/integration/`. Review changed evidence before updating compiler baselines; these checks
+do not replace application behavior tests.

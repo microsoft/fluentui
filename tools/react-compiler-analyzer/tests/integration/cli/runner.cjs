@@ -3,7 +3,7 @@ const { spawnSync } = require('node:child_process');
 const { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } = require('node:fs');
 const { join, resolve } = require('node:path');
 
-if (process.env.RCA_CLI_SMOKE_PRELOAD === '1') {
+if (process.env.RCA_CLI_TEST_PRELOAD === '1') {
   // The built CLI must work without loading either workspace or comparison SWC.
   const Module = require('node:module');
   const originalLoad = Module._load;
@@ -14,24 +14,24 @@ if (process.env.RCA_CLI_SMOKE_PRELOAD === '1') {
     return originalLoad.call(this, request, ...args);
   };
 } else {
-  runSmoke();
+  runCliChecks();
 }
 
-function runSmoke() {
+function runCliChecks() {
   const Ajv = require('ajv');
-  const root = resolve(__dirname, '..');
+  const root = resolve(__dirname, '../../..');
   const analyzeSchema = JSON.parse(readFileSync(join(root, 'rca.analyze.schema.json'), 'utf8'));
   const lintSchema = JSON.parse(readFileSync(join(root, 'rca.lint.schema.json'), 'utf8'));
   const ajv = new Ajv({ allErrors: true });
   ajv.addSchema(analyzeSchema);
   const validateAnalyze = ajv.getSchema(analyzeSchema.$id);
   const validateLint = ajv.compile(lintSchema);
-  const directory = mkdtempSync(join(__dirname, '.cli-smoke-'));
+  const directory = mkdtempSync(join(__dirname, '.cli-test-'));
   const originals = new Map([
     [
       'Positive.tsx',
       `import { useState } from 'react';
-export function Smoke({ initial }: { initial: number }) {
+export function Example({ initial }: { initial: number }) {
   const [value] = useState(initial);
   return <output>{value + 1}</output>;
 }
@@ -76,7 +76,7 @@ export function Guarded({ initial }: { initial: number }) {
     assert.equal(preview.annotate.targets.length, 1);
     const target = preview.annotate.targets[0];
     assert.ok(target.file.endsWith('Positive.tsx'));
-    assert.equal(target.functionName, 'Smoke');
+    assert.equal(target.functionName, 'Example');
     assert.equal(target.directive, 'use memo');
     assert.equal(target.rationale, 'compiler-accepted-opt-in');
     assert.equal(target.reportedMemoCache, 'positive');
@@ -91,14 +91,14 @@ export function Guarded({ initial }: { initial: number }) {
     assert.equal(lint.directives[0].evidence.emittedOptimization, 'not-measured');
 
     console.log(
-      'Built CLI smoke passed: strict schema-v3 analyze/lint JSON, profile, counters, dry-run, no writes, no SWC.',
+      'CLI integration passed: strict schema-v3 analyze/lint JSON, profile, counters, dry-run, no writes, no SWC.',
     );
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
 
   function invoke(args, validate) {
-    const env = { ...process.env, RCA_CLI_SMOKE_PRELOAD: '1', NO_COLOR: '1' };
+    const env = { ...process.env, RCA_CLI_TEST_PRELOAD: '1', NO_COLOR: '1' };
     delete env.FORCE_COLOR;
     const result = spawnSync(
       process.execPath,

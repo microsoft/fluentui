@@ -20,28 +20,21 @@
         "jestConfig": "tools/react-compiler-analyzer/jest.config.ts"
       }
     },
-    "test-compiler-differential": {
+    "test-integration": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/dist/react-compiler-analyzer-differential"],
+      "dependsOn": ["build"],
+      "outputs": ["{workspaceRoot}/dist/react-compiler-analyzer-integration"],
       "options": {
-        "jestConfig": "tools/react-compiler-analyzer/jest.differential.config.ts",
+        "jestConfig": "tools/react-compiler-analyzer/jest.integration.config.ts",
         "runInBand": true,
         "passWithNoTests": false
-      }
-    },
-    "test-cli": {
-      "executor": "nx:run-commands",
-      "dependsOn": ["build"],
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "node smoke/cli.cjs"
       }
     },
     "type-check": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["tsc -p tsconfig.lib.json --noEmit", "tsc -p tsconfig.differential.json --noEmit"],
+        "commands": ["tsc -p tsconfig.lib.json --noEmit", "tsc -p tsconfig.integration.json --noEmit"],
         "parallel": false
       }
     }
