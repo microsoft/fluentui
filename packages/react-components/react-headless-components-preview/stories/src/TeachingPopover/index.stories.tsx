@@ -4,6 +4,7 @@ import descriptionMd from './TeachingPopoverDescription.md';
 
 export { Default } from './TeachingPopoverDefault.stories';
 export { WithCarousel } from './TeachingPopoverWithCarousel.stories';
+export { WithDisabledNextControl, WithDisabledNextContainer } from './TeachingPopoverBoundaryRecovery.stories';
 
 export default {
   title: 'Components/TeachingPopover',

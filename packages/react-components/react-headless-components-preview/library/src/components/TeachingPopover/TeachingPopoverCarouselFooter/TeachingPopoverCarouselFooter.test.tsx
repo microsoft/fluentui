@@ -10,6 +10,9 @@ import {
   TeachingPopoverCarouselCard,
   TeachingPopoverCarouselFooter,
   TeachingPopoverCarouselFooterButton,
+  useTeachingPopoverCarousel,
+  useTeachingPopoverCarouselContextValues,
+  renderTeachingPopoverCarousel,
   useTeachingPopoverCarouselFooter,
   renderTeachingPopoverCarouselFooter,
   useTeachingPopoverCarouselFooterButton,
@@ -17,10 +20,291 @@ import {
 } from '../index';
 import type { TeachingPopoverCarouselFooterButtonProps } from '../TeachingPopoverCarouselFooterButton';
 import type { TeachingPopoverCarouselFooterProps } from './TeachingPopoverCarouselFooter.types';
+import type { TeachingPopoverCarouselProps } from '../TeachingPopoverCarousel';
 
 const ForwardingButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   const mergedRef = useMergedRefs(ref);
   return <Button {...props} ref={element => mergedRef(element)} data-adapter-root />;
+});
+
+describe('TeachingPopoverCarouselFooter accepted-card recovery', () => {
+  const RecoveryTour = ({
+    value,
+    target = 'first',
+    control = true,
+    pairedDisabled = true,
+    tabIndex,
+    onCardFocus,
+  }: {
+    value: string;
+    target?: string;
+    control?: boolean;
+    pairedDisabled?: boolean;
+    tabIndex?: number;
+    onCardFocus?: React.FocusEventHandler<HTMLDivElement>;
+  }) => (
+    <TeachingPopoverCarousel value={value}>
+      <TeachingPopoverCarouselCard value={target} data-testid="accepted-card" tabIndex={tabIndex} onFocus={onCardFocus}>
+        <button disabled>Disabled</button>
+        <button hidden>Hidden</button>
+        <div aria-hidden="true">
+          <button>Excluded</button>
+        </div>
+        {control && <input aria-label="Accepted action" data-testid="card-control" />}
+      </TeachingPopoverCarouselCard>
+      <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
+      <TeachingPopoverCarouselCard value="last">Last</TeachingPopoverCarouselCard>
+      <TeachingPopoverCarouselFooter
+        previous={{
+          navType: 'prev',
+          children: 'Previous',
+          altText: null,
+          hidden: value === target,
+          ...{ 'data-testid': 'source' },
+        }}
+        next={{
+          navType: 'next',
+          children: 'Next',
+          altText: 'Done',
+          disabled: pairedDisabled,
+          ...{ 'data-testid': 'paired' },
+        }}
+      />
+    </TeachingPopoverCarousel>
+  );
+
+  it('prefers eligible paired navigation over controls in the accepted card', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" pairedDisabled={false} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" pairedDisabled={false} />);
+    await waitFor(() => expect(getByTestId('paired')).toHaveFocus());
+    expect(getByTestId('card-control')).not.toHaveFocus();
+  });
+
+  it('focuses the first eligible control in the accepted card when navigation is unavailable', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" />);
+    await waitFor(() => expect(getByTestId('card-control')).toHaveFocus());
+    expect(getByTestId('paired')).not.toHaveFocus();
+  });
+
+  it.each([undefined, -1, 0])('focuses the card as a last resort and preserves tabindex %p', async tabIndex => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} tabIndex={tabIndex} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} tabIndex={tabIndex} />);
+    await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
+    if (tabIndex === undefined) {
+      expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', '-1');
+      getByTestId('accepted-card').blur();
+      expect(getByTestId('accepted-card')).not.toHaveAttribute('tabindex');
+    } else {
+      expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', String(tabIndex));
+    }
+  });
+
+  it('does not overwrite a consumer tabindex change during container focus', async () => {
+    const onCardFocus: React.FocusEventHandler<HTMLDivElement> = event => {
+      event.currentTarget.tabIndex = 0;
+    };
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} onCardFocus={onCardFocus} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} onCardFocus={onCardFocus} />);
+    await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
+    expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', '0');
+  });
+
+  it('does not redirect when a request is rejected and the committed value stays unchanged', async () => {
+    const { getByTestId } = render(<RecoveryTour value="middle" />);
+    getByTestId('source').focus();
+    fireEvent.click(getByTestId('source'));
+    await flushFocus();
+    expect(getByTestId('source')).toHaveFocus();
+    expect(getByTestId('accepted-card')).not.toHaveFocus();
+  });
+
+  it('waits for acceptance before recovering and honours outside focus during a delay', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" />);
+    getByTestId('source').focus();
+    fireEvent.click(getByTestId('source'));
+    await flushFocus();
+    getByTestId('source').blur();
+    rerender(<RecoveryTour value="first" />);
+    await flushFocus();
+    expect(getByTestId('card-control')).not.toHaveFocus();
+    expect(getByTestId('accepted-card')).not.toHaveFocus();
+  });
+
+  it('matches accepted card values literally rather than interpolating selectors', async () => {
+    const target = 'first [value="quoted"] #one';
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" target={target} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value={target} target={target} />);
+    await waitFor(() => expect(getByTestId('card-control')).toHaveFocus());
+  });
+
+  it('recovers from Next disappearing on the final accepted card', async () => {
+    const Tour = ({ value, disabledPrevious = true }: { value: string; disabledPrevious?: boolean }) => (
+      <TeachingPopoverCarousel value={value}>
+        <TeachingPopoverCarouselCard value="first">First</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="last">
+          <button data-testid="last-action">Last action</button>
+        </TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselFooter
+          previous={{
+            navType: 'prev',
+            children: 'Previous',
+            altText: 'Restart',
+            disabled: disabledPrevious,
+            ...{ 'data-testid': 'previous' },
+          }}
+          next={{
+            navType: 'next',
+            children: 'Next',
+            altText: null,
+            hidden: value === 'last',
+            ...{ 'data-testid': 'next' },
+          }}
+        />
+      </TeachingPopoverCarousel>
+    );
+    const { getByTestId, rerender } = render(<Tour value="middle" disabledPrevious={false} />);
+    getByTestId('next').focus();
+    rerender(<Tour value="last" disabledPrevious={false} />);
+    await waitFor(() => expect(getByTestId('previous')).toHaveFocus());
+    rerender(<Tour value="middle" />);
+    getByTestId('next').focus();
+    rerender(<Tour value="last" />);
+    await waitFor(() => expect(getByTestId('last-action')).toHaveFocus());
+  });
+
+  it('keeps recovery within the owning carousel', async () => {
+    const { getAllByTestId, rerender } = render(
+      <>
+        <RecoveryTour value="middle" />
+        <RecoveryTour value="middle" />
+      </>,
+    );
+    getAllByTestId('source')[1].focus();
+    rerender(
+      <>
+        <RecoveryTour value="middle" />
+        <RecoveryTour value="first" />
+      </>,
+    );
+    await waitFor(() => expect(getAllByTestId('card-control')[0]).toHaveFocus());
+    expect(getAllByTestId('source')[0]).not.toHaveFocus();
+  });
+
+  it('keeps consumer-directed focus when a fallback control redirects focus', async () => {
+    const outsideRef = React.createRef<HTMLButtonElement>();
+    const Tour = ({ value }: { value: string }) => (
+      <>
+        <button ref={outsideRef} data-testid="redirected">
+          Outside
+        </button>
+        <TeachingPopoverCarousel value={value}>
+          <TeachingPopoverCarouselCard value="first">
+            <input onFocus={() => outsideRef.current?.focus()} data-testid="redirect-control" />
+          </TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooter
+            previous={{
+              navType: 'prev',
+              children: 'Previous',
+              altText: null,
+              hidden: value === 'first',
+              ...{ 'data-testid': 'redirect-source' },
+            }}
+            next={{ navType: 'next', children: 'Next', altText: 'Done', disabled: true }}
+          />
+        </TeachingPopoverCarousel>
+      </>
+    );
+    const { getByTestId, rerender } = render(<Tour value="middle" />);
+    getByTestId('redirect-source').focus();
+    rerender(<Tour value="first" />);
+    await waitFor(() => expect(getByTestId('redirected')).toHaveFocus());
+  });
+
+  it('does not later steal focus from a completed card fallback when navigation becomes eligible', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" />);
+    await waitFor(() => expect(getByTestId('card-control')).toHaveFocus());
+    rerender(<RecoveryTour value="first" pairedDisabled={false} />);
+    await flushFocus();
+    expect(getByTestId('card-control')).toHaveFocus();
+  });
+
+  it('can focus eligible descendants when the accepted card uses display:contents', async () => {
+    const Tour = ({ value }: { value: string }) => (
+      <TeachingPopoverCarousel value={value}>
+        <TeachingPopoverCarouselCard value="first" style={{ display: 'contents' }}>
+          <input data-testid="contents-control" />
+        </TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselFooter
+          previous={{
+            navType: 'prev',
+            children: 'Previous',
+            altText: null,
+            hidden: value === 'first',
+            ...{ 'data-testid': 'contents-source' },
+          }}
+          next={{ navType: 'next', children: 'Next', altText: 'Done', disabled: true }}
+        />
+      </TeachingPopoverCarousel>
+    );
+    const { getByTestId, rerender } = render(<Tour value="middle" />);
+    getByTestId('contents-source').focus();
+    rerender(<Tour value="first" />);
+    await waitFor(() => expect(getByTestId('contents-control')).toHaveFocus());
+  });
+
+  it('continues recovering through a replaced carousel root with the same public renderer contract', async () => {
+    const CarouselAdapter: ForwardRefComponent<TeachingPopoverCarouselProps & { generation: number }> =
+      React.forwardRef(({ generation, ...props }, ref) => {
+        const baseState = useTeachingPopoverCarousel(props, ref);
+        const values = useTeachingPopoverCarouselContextValues(baseState);
+        return renderTeachingPopoverCarousel(
+          {
+            ...baseState,
+            components: { root: ReplacingRoot },
+            root: slot.always({ ...baseState.root, generation }, { elementType: ReplacingRoot }),
+          },
+          values,
+        );
+      });
+    const Tour = ({ value, generation }: { value: string; generation: number }) => (
+      <CarouselAdapter value={value} generation={generation}>
+        <TeachingPopoverCarouselCard value="first">
+          <input data-testid="root-card-control" />
+        </TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselFooter
+          previous={{
+            navType: 'prev',
+            children: 'Previous',
+            altText: null,
+            hidden: value === 'first',
+            ...{ 'data-testid': 'root-source' },
+          }}
+          next={{ navType: 'next', children: 'Next', altText: 'Done', disabled: true }}
+        />
+      </CarouselAdapter>
+    );
+    const { getByTestId, rerender } = render(<Tour value="middle" generation={0} />);
+    const original = getByTestId('root-source');
+    original.focus();
+    rerender(<Tour value="middle" generation={1} />);
+    await flushFocus();
+    expect(original).not.toBeInTheDocument();
+    getByTestId('root-source').focus();
+    rerender(<Tour value="first" generation={1} />);
+    await waitFor(() => expect(getByTestId('root-card-control')).toHaveFocus());
+  });
 });
 
 const PresentationButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps> = React.forwardRef(
@@ -87,6 +371,7 @@ type ExampleProps = {
   presentation?: boolean;
   extraNext?: boolean;
   omitPrevious?: boolean;
+  blockFallback?: boolean;
 };
 
 const Example = ({
@@ -99,13 +384,16 @@ const Example = ({
   presentation,
   extraNext,
   omitPrevious,
+  blockFallback,
 }: ExampleProps) => {
   const Footer = presentation ? PresentationFooter : TeachingPopoverCarouselFooter;
   return (
     <>
       <button data-testid="outside">Outside</button>
       <TeachingPopoverCarousel value={value} onValueChange={onValueChange}>
-        <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="one" style={blockFallback ? { display: 'none' } : undefined}>
+          One
+        </TeachingPopoverCarouselCard>
         <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
         <Footer
           previous={
@@ -268,7 +556,7 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
     rerender(<Example value="one" omitNext />);
     await flushFocus();
     expect(queryByTestId('next')).toBeNull();
-    expect(getByTestId('previous')).toHaveFocus();
+    expect(getByTestId('previous').ownerDocument.activeElement).toHaveAttribute('data-carousel-item', 'one');
   });
 
   it('does not transfer to a disconnected Next', async () => {
@@ -391,12 +679,12 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
   });
 
   it('retries when the designated Next becomes available', async () => {
-    const { getByTestId, rerender } = render(<Example next={{ hidden: true }} />);
+    const { getByTestId, rerender } = render(<Example next={{ hidden: true }} blockFallback />);
     getByTestId('previous').focus();
-    rerender(<Example value="one" next={{ hidden: true }} />);
+    rerender(<Example value="one" next={{ hidden: true }} blockFallback />);
     await flushFocus();
     expect(getByTestId('next')).not.toHaveFocus();
-    rerender(<Example value="one" />);
+    rerender(<Example value="one" blockFallback />);
     await waitFor(() => expect(getByTestId('next')).toHaveFocus());
   });
 
@@ -509,9 +797,9 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
   });
 
   it('retries after an imperative tabindex change makes Next eligible', async () => {
-    const { getByTestId, rerender } = render(<Example next={{ tabIndex: -1 }} />);
+    const { getByTestId, rerender } = render(<Example next={{ tabIndex: -1 }} blockFallback />);
     getByTestId('previous').focus();
-    rerender(<Example value="one" next={{ tabIndex: -1 }} />);
+    rerender(<Example value="one" next={{ tabIndex: -1 }} blockFallback />);
     await flushFocus();
     expect(getByTestId('next')).not.toHaveFocus();
     await act(async () => {

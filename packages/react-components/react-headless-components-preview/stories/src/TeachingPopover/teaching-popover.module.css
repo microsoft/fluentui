@@ -146,6 +146,15 @@
   cursor: not-allowed;
 }
 
+.recoveryPrevious:empty {
+  visibility: hidden;
+}
+
+.recoveryCard:focus-visible {
+  outline: var(--stroke-thick) solid var(--accent);
+  outline-offset: var(--space-1);
+}
+
 /* Primary variant — mirrors v9 Button primary appearance. */
 .actionButtonPrimary {
   background: var(--accent);

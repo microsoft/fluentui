@@ -68,6 +68,7 @@ type ExampleProps = {
   omitNext?: boolean;
   extraNext?: boolean;
   visibilityOverride?: boolean;
+  blockFallback?: boolean;
 };
 
 const Example = ({
@@ -79,6 +80,7 @@ const Example = ({
   omitNext,
   extraNext,
   visibilityOverride,
+  blockFallback,
 }: ExampleProps) => {
   const [value, setValue] = React.useState('two');
   const pendingValue = React.useRef('two');
@@ -104,7 +106,9 @@ const Example = ({
             }
           }}
         >
-          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="one" style={blockFallback ? { display: 'none' } : undefined}>
+            One
+          </TeachingPopoverCarouselCard>
           <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
           <Footer
             previous={{
@@ -193,7 +197,12 @@ const OwnershipExample = ({
       ))}
       <div data-testid="ownership-ancestor" className={scenario === 'ancestor' ? 'ownership-blocked' : undefined}>
         <TeachingPopoverCarousel value={value}>
-          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard
+            value="one"
+            style={scenario === 'ancestor' || scenario === 'iframe' ? { display: 'none' } : undefined}
+          >
+            One
+          </TeachingPopoverCarouselCard>
           <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
           <TeachingPopoverCarouselFooter
             previous={
@@ -236,6 +245,175 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
       cy.realPress('Enter');
       cy.get('[data-testid="next"]').should('have.focus').and('have.text', 'Got it');
       cy.get('[data-carousel-active-item="true"]').should('contain.text', 'Two');
+    });
+  });
+
+  const CompleteRecoveryExample = ({
+    direction = 'prev',
+    controls = true,
+    pairedAvailable = false,
+    controlled = 'accept',
+  }: {
+    direction?: 'prev' | 'next';
+    controls?: boolean;
+    pairedAvailable?: boolean;
+    controlled?: 'accept' | 'delay' | 'reject';
+  }) => {
+    const [value, setValue] = React.useState('middle');
+    const pending = React.useRef('middle');
+    return (
+      <>
+        <button data-testid="recovery-outside">Outside</button>
+        <button data-testid="recovery-accept" onClick={() => setValue(pending.current)}>
+          Accept
+        </button>
+        <TeachingPopoverCarousel
+          value={value}
+          onValueChange={(_, data) => {
+            if (data.value === undefined) {
+              throw new Error('Expected a registered card');
+            }
+            pending.current = data.value;
+            if (controlled === 'accept') {
+              setValue(data.value);
+            }
+          }}
+        >
+          {['first', 'middle', 'last'].map(page => (
+            <TeachingPopoverCarouselCard key={page} value={page} data-testid={`recovery-card-${page}`}>
+              {page}
+              <button disabled>Disabled action</button>
+              <button hidden>Hidden action</button>
+              <div aria-hidden="true">
+                <button>Excluded action</button>
+              </div>
+              {controls && <input aria-label={`${page} action`} data-testid={`recovery-action-${page}`} />}
+            </TeachingPopoverCarouselCard>
+          ))}
+          <PresentationFooter
+            previous={{
+              navType: 'prev',
+              children: 'Previous',
+              altText: null,
+              hidden: value === 'first',
+              disabled: direction === 'next' && !pairedAvailable,
+              ...{ 'data-testid': 'recovery-previous' },
+            }}
+            next={{
+              navType: 'next',
+              children: 'Next',
+              altText: null,
+              hidden: value === 'last',
+              disabled: direction === 'prev' && !pairedAvailable,
+              ...{ 'data-testid': 'recovery-next' },
+            }}
+          />
+        </TeachingPopoverCarousel>
+      </>
+    );
+  };
+
+  describe('TeachingPopoverCarouselFooter complete headless recovery', () => {
+    (['prev', 'next'] as const).forEach(direction => {
+      const source = direction === 'prev' ? 'previous' : 'next';
+      const paired = direction === 'prev' ? 'next' : 'previous';
+      const card = direction === 'prev' ? 'first' : 'last';
+
+      it(`prefers paired navigation when ${source} disappears`, () => {
+        mount(<CompleteRecoveryExample direction={direction} pairedAvailable />);
+        cy.get(`[data-testid="recovery-${source}"]`).focus().realPress('Enter');
+        cy.get(`[data-testid="recovery-${paired}"]`).should('have.focus');
+        cy.get(`[data-testid="recovery-action-${card}"]`).should('not.have.focus');
+      });
+
+      it(`recovers to an eligible accepted-card control when ${paired} is disabled`, () => {
+        mount(<CompleteRecoveryExample direction={direction} />);
+        cy.get(`[data-testid="recovery-${source}"]`).focus().realPress('Enter');
+        cy.get(`[data-testid="recovery-${source}"]`).should('not.be.visible');
+        cy.get(`[data-testid="recovery-action-${card}"]`).should('have.focus').and('be.visible');
+        cy.get(`[data-testid="recovery-${paired}"]`).should('not.have.focus');
+      });
+
+      it(`uses the accepted card container as the final ${source} recovery target`, () => {
+        mount(<CompleteRecoveryExample direction={direction} controls={false} />);
+        cy.get(`[data-testid="recovery-${source}"]`).focus().realPress('Enter');
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('have.focus').and('have.attr', 'tabindex', '-1');
+        cy.get('[data-testid="recovery-outside"]').focus();
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('not.have.attr', 'tabindex');
+      });
+    });
+
+    it('does not recover on a rejected controlled request', () => {
+      mount(<CompleteRecoveryExample controlled="reject" />);
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-previous"]').should('have.focus').and('be.visible');
+      cy.get('[data-testid="recovery-action-middle"]').should('not.have.focus');
+    });
+
+    it('waits for accepted card content before recovering focus', () => {
+      mount(<CompleteRecoveryExample controlled="delay" />);
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-previous"]').should('have.focus');
+      cy.get('[data-testid="recovery-accept"]').trigger('click');
+      cy.get('[data-testid="recovery-action-first"]').should('have.focus');
+    });
+
+    it('does not override intentional outside focus before delayed acceptance', () => {
+      mount(<CompleteRecoveryExample controlled="delay" />);
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-outside"]').focus();
+      cy.get('[data-testid="recovery-accept"]').trigger('click');
+      cy.get('[data-testid="recovery-outside"]').should('have.focus');
+      cy.get('[data-testid="recovery-action-first"]').should('not.have.focus');
+    });
+
+    (['open', 'closed'] as const).forEach(mode => {
+      it(`recovers to an accepted-card action inside a ${mode} shadow root`, () => {
+        let shadow: ShadowRoot;
+        const ShadowTour = () => {
+          const hostRef = React.useRef<HTMLDivElement>(null);
+          const [root, setRoot] = React.useState<ShadowRoot | null>(null);
+          useIsomorphicLayoutEffect(() => {
+            if (!shadow) {
+              shadow = hostRef.current!.attachShadow({ mode });
+            }
+            setRoot(shadow);
+          }, []);
+          return (
+            <>
+              <div ref={hostRef} data-testid="recovery-shadow" data-ready={!!root} />
+              {root && createPortal(<CompleteRecoveryExample />, root)}
+            </>
+          );
+        };
+        mount(<ShadowTour />);
+        cy.get('[data-testid="recovery-shadow"][data-ready="true"]').then(() => {
+          cy.wrap(shadow).find('[data-testid="recovery-previous"]').focus().realPress('Enter');
+          cy.wrap(shadow).find('[data-testid="recovery-action-first"]').should('have.focus');
+        });
+      });
+    });
+
+    it('recovers within the owning iframe rather than the parent document', () => {
+      const frameRef = React.createRef<HTMLIFrameElement>();
+      const FrameTour = () => {
+        const [body, setBody] = React.useState<HTMLElement | null>(null);
+        useIsomorphicLayoutEffect(() => {
+          setBody(frameRef.current!.contentDocument!.body);
+        }, []);
+        return (
+          <>
+            <iframe ref={frameRef} title="Accepted card recovery" data-testid="recovery-frame" />
+            {body && createPortal(<CompleteRecoveryExample />, body)}
+          </>
+        );
+      };
+      mount(<FrameTour />);
+      cy.get<HTMLIFrameElement>('[data-testid="recovery-frame"]').then(frame => {
+        const body = frame[0].contentDocument!.body;
+        cy.wrap(body).find('[data-testid="recovery-previous"]').focus().trigger('click');
+        cy.wrap(body).find('[data-testid="recovery-action-first"]').should('have.focus');
+      });
     });
   });
 
@@ -463,7 +641,7 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
   });
 
   it('retries after the designated Next becomes available', () => {
-    mount(<Example next={{ hidden: true }} />);
+    mount(<Example next={{ hidden: true }} blockFallback />);
     cy.get('[data-testid="previous"]').focus().realPress('Enter');
     cy.get('[data-testid="previous"]').should('not.be.visible');
     cy.get('[data-testid="next"]').should('not.have.focus').invoke('removeAttr', 'hidden');
@@ -523,7 +701,7 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
   });
 
   it('retries when tabindex changes without a footer render', () => {
-    mount(<Example next={{ tabIndex: -1 }} />);
+    mount(<Example next={{ tabIndex: -1 }} blockFallback />);
     cy.get('[data-testid="previous"]').focus().realPress('Enter');
     cy.get('[data-testid="previous"]').should('not.be.visible');
     cy.get('[data-testid="next"]').should('not.have.focus').invoke('attr', 'tabindex', '0');

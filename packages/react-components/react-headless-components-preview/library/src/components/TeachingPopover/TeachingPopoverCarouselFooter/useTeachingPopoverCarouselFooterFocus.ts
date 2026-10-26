@@ -4,6 +4,7 @@ import * as React from 'react';
 import { isHTMLElement, useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { RefAttributes } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselFooterState } from './TeachingPopoverCarouselFooter.types';
+import { TeachingPopoverCarouselFocusContext } from '../TeachingPopoverCarousel/teachingPopoverCarouselFocusContext';
 
 const getParent = (element: HTMLElement): HTMLElement | null => {
   if (element.assignedSlot) {
@@ -29,7 +30,7 @@ const isAvailable = (element: HTMLElement): boolean => {
   for (let current: HTMLElement | null = element; current; current = getParent(current)) {
     const style = view.getComputedStyle(current);
     if (
-      current.matches('[hidden], [inert], [aria-disabled="true"]') ||
+      current.matches('[hidden], [inert], [aria-disabled="true"], [aria-hidden="true"]') ||
       style.display === 'none' ||
       (current === element && style.display === 'contents') ||
       (current !== element && style.getPropertyValue('content-visibility') === 'hidden')
@@ -49,6 +50,26 @@ const getActiveElement = (element: HTMLElement): Element | null => {
     : active;
 };
 
+const focusElement = (element: HTMLElement): boolean => {
+  element.focus();
+  return getActiveElement(element) === element;
+};
+
+function* getCardControls(root: HTMLElement): Generator<HTMLElement> {
+  const children = isHTMLElement(root, { constructorName: 'HTMLSlotElement' })
+    ? root.assignedElements({ flatten: true })
+    : root.shadowRoot?.children ?? root.children;
+  for (const child of Array.from(children)) {
+    if (!isHTMLElement(child)) {
+      continue;
+    }
+    if (child.tabIndex >= 0 && isAvailable(child)) {
+      yield child;
+    }
+    yield* getCardControls(child);
+  }
+}
+
 export const useTeachingPopoverCarouselFooterFocus = (
   state: TeachingPopoverCarouselFooterState,
 ): TeachingPopoverCarouselFooterState => {
@@ -56,8 +77,12 @@ export const useTeachingPopoverCarouselFooterFocus = (
   const previousRef = React.useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const nextRef = React.useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const focusOwner = React.useRef<HTMLElement | null>(null);
+  const focusValue = React.useRef<string | null | undefined>(undefined);
+  const carousel = React.useContext(TeachingPopoverCarouselFocusContext);
+  const carouselRoot = carousel?.root;
   const wasUnavailable = React.useRef(false);
   const pending = React.useRef(false);
+  const cardFocusCleanup = React.useRef<(() => void) | undefined>(undefined);
   const subscription = React.useRef<
     | {
         root: HTMLDivElement;
@@ -71,67 +96,130 @@ export const useTeachingPopoverCarouselFooterFocus = (
     | (NonNullable<typeof state.previous> & RefAttributes<HTMLButtonElement & HTMLAnchorElement>)
     | undefined = state.previous;
   const nextSlotProps: typeof state.next & RefAttributes<HTMLButtonElement & HTMLAnchorElement> = state.next;
-  const { altText, onFocus, onBlur } = state.previous ?? {};
+  const { onFocus, onBlur } = state.previous ?? {};
+  const { onFocus: onNextFocus, onBlur: onNextBlur } = state.next;
 
   const cancelOwnership = React.useCallback(() => {
     focusOwner.current = null;
+    focusValue.current = undefined;
     pending.current = false;
     wasUnavailable.current = false;
   }, []);
 
   const reconcileFocus = useEventCallback(() => {
-    const previous = previousRef.current;
-    if (focusOwner.current && focusOwner.current !== previous) {
-      cancelOwnership();
-    }
-    if (!rootRef.current?.isConnected || !previous || previousSlotProps?.navType !== 'prev') {
+    const source = focusOwner.current;
+    const previous = source === previousRef.current;
+    const sourceProps = previous ? previousSlotProps : nextSlotProps;
+    if (
+      !rootRef.current?.isConnected ||
+      !source ||
+      (!previous && source !== nextRef.current) ||
+      sourceProps?.navType !== (previous ? 'prev' : 'next')
+    ) {
       cancelOwnership();
       return;
     }
-    if (!previous.ownerDocument.hasFocus()) {
+    if (!source.ownerDocument.hasFocus()) {
       cancelOwnership();
       return;
     }
 
-    const active = getActiveElement(previous);
-    if (altText !== null) {
+    const active = getActiveElement(source);
+    if (sourceProps.altText !== null) {
       pending.current = false;
       wasUnavailable.current = false;
-      if (active !== previous) {
+      if (active !== source) {
         focusOwner.current = null;
       }
       return;
     }
-    const unavailable = !previous.hasChildNodes() && !isAvailable(previous);
-    if (unavailable && !wasUnavailable.current && focusOwner.current === previous) {
+    const unavailable = !source.hasChildNodes() && !isAvailable(source);
+    const accepted = !carousel || (focusValue.current !== undefined && carousel.value !== focusValue.current);
+    if (unavailable && accepted) {
       pending.current = true;
     }
     if (!unavailable) {
       pending.current = false;
-      if (wasUnavailable.current && active !== previous) {
+      if (wasUnavailable.current && active !== source) {
         focusOwner.current = null;
       }
     }
     wasUnavailable.current = unavailable;
 
-    if (active && active !== previous && active !== previous.ownerDocument.body) {
+    if (active && active !== source && active !== source.ownerDocument.body) {
       focusOwner.current = null;
       pending.current = false;
     }
     if (!pending.current) {
       return;
     }
-    const next = nextRef.current;
-    if (nextSlotProps.navType === 'next' && next && isAvailable(next) && next.tabIndex >= 0) {
-      next.focus();
-      if (getActiveElement(next) === next) {
-        pending.current = false;
-        focusOwner.current = null;
+    const destination = previous ? nextRef.current : previousRef.current;
+    const destinationProps = previous ? nextSlotProps : previousSlotProps;
+    if (
+      destinationProps?.navType === (previous ? 'next' : 'prev') &&
+      destination &&
+      isAvailable(destination) &&
+      destination.tabIndex >= 0 &&
+      focusElement(destination)
+    ) {
+      pending.current = false;
+      wasUnavailable.current = false;
+      return;
+    }
+    if (focusOwner.current !== source) {
+      return;
+    }
+    if (!carousel?.root?.isConnected || carousel.value === null || !accepted) {
+      return;
+    }
+    const card = Array.from(
+      carousel.root.querySelectorAll<HTMLElement>('[data-carousel-item][data-carousel-active-item="true"]'),
+    ).find(candidate => {
+      const parentCard = candidate.parentElement?.closest('[data-carousel-item]');
+      return (
+        candidate.getAttribute('data-carousel-item') === carousel.value &&
+        (!parentCard || !carousel.root!.contains(parentCard))
+      );
+    });
+    if (!card) {
+      return;
+    }
+    for (const control of getCardControls(card)) {
+      if (focusElement(control)) {
+        cancelOwnership();
+        return;
       }
+      if (focusOwner.current !== source) {
+        return;
+      }
+    }
+    if (!isAvailable(card)) {
+      return;
+    }
+    const addedTabIndex = !card.hasAttribute('tabindex');
+    if (addedTabIndex) {
+      cardFocusCleanup.current?.();
+      card.setAttribute('tabindex', '-1');
+      const restoreTabIndex = () => {
+        card.removeEventListener('blur', restoreTabIndex);
+        if (card.getAttribute('tabindex') === '-1') {
+          card.removeAttribute('tabindex');
+        }
+        if (cardFocusCleanup.current === restoreTabIndex) {
+          cardFocusCleanup.current = undefined;
+        }
+      };
+      card.addEventListener('blur', restoreTabIndex);
+      cardFocusCleanup.current = restoreTabIndex;
+    }
+    if (focusElement(card)) {
+      cancelOwnership();
+    } else if (addedTabIndex) {
+      cardFocusCleanup.current?.();
     }
   });
 
-  const observeAvailability = React.useCallback(() => {
+  const observeAvailability = useEventCallback(() => {
     const currentSubscription = subscription.current;
     if (!currentSubscription) {
       return;
@@ -140,9 +228,12 @@ export const useTeachingPopoverCarouselFooterFocus = (
     observer.disconnect();
     observer.observe(root, { childList: true, subtree: true, attributes: true });
     const ancestors = new Set<HTMLElement>();
-    for (const element of [root, previousRef.current, nextRef.current]) {
-      for (let current: HTMLElement | null = element; current; current = getParent(current)) {
-        if (current !== root) {
+    if (carouselRoot) {
+      observer.observe(carouselRoot, { childList: true, subtree: true, attributes: true });
+    }
+    for (const element of [root, previousRef.current, nextRef.current, carouselRoot]) {
+      for (let current: HTMLElement | null | undefined = element; current; current = getParent(current)) {
+        if (current !== root && current !== carouselRoot) {
           ancestors.add(current);
         }
       }
@@ -150,9 +241,10 @@ export const useTeachingPopoverCarouselFooterFocus = (
     for (const ancestor of ancestors) {
       observer.observe(ancestor, { attributes: true, childList: true });
     }
-  }, []);
+  });
 
   const disposeSubscription = React.useCallback(() => {
+    cardFocusCleanup.current?.();
     subscription.current?.dispose();
     subscription.current = undefined;
   }, []);
@@ -166,10 +258,12 @@ export const useTeachingPopoverCarouselFooterFocus = (
       }
       if (subscription.current) {
         disposeSubscription();
-        const previous = previousRef.current;
-        const focusedPrevious = previous && getActiveElement(previous) === previous;
+        const source = [previousRef.current, nextRef.current].find(
+          element => element && getActiveElement(element) === element,
+        );
         cancelOwnership();
-        focusOwner.current = focusedPrevious ? previous : null;
+        focusOwner.current = source ?? null;
+        focusValue.current = source ? carousel?.value : undefined;
       }
       const ownerDocument = root.ownerDocument;
       const view = ownerDocument.defaultView;
@@ -177,9 +271,9 @@ export const useTeachingPopoverCarouselFooterFocus = (
         return;
       }
       const preserveOutsideFocus = () => {
-        const previous = previousRef.current;
-        const active = previous && getActiveElement(previous);
-        if (!previous || (active && active !== previous && active !== ownerDocument.body)) {
+        const source = focusOwner.current;
+        const active = source && getActiveElement(source);
+        if (!source || (active && active !== source && active !== ownerDocument.body)) {
           cancelOwnership();
         }
       };
@@ -200,7 +294,7 @@ export const useTeachingPopoverCarouselFooterFocus = (
         },
       };
     },
-    [cancelOwnership, disposeSubscription, observeAvailability, reconcileFocus],
+    [cancelOwnership, disposeSubscription, observeAvailability, reconcileFocus, carousel?.value],
   );
 
   const registerNext = React.useCallback(
@@ -220,9 +314,30 @@ export const useTeachingPopoverCarouselFooterFocus = (
   const handleFocus = React.useCallback(
     (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
       focusOwner.current = event.currentTarget;
+      focusValue.current = carousel?.value;
       onFocus?.(event);
     },
-    [onFocus],
+    [onFocus, carousel?.value],
+  );
+  const handleNextFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+      focusOwner.current = event.currentTarget;
+      focusValue.current = carousel?.value;
+      onNextFocus?.(event);
+    },
+    [onNextFocus, carousel?.value],
+  );
+  const handleNextBlur = React.useCallback(
+    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+      if (
+        (event.relatedTarget && event.relatedTarget !== event.currentTarget.ownerDocument.body) ||
+        isAvailable(event.currentTarget)
+      ) {
+        cancelOwnership();
+      }
+      onNextBlur?.(event);
+    },
+    [cancelOwnership, onNextBlur],
   );
   const handleBlur = React.useCallback(
     (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -257,7 +372,7 @@ export const useTeachingPopoverCarouselFooterFocus = (
   const previousSlot = previousSlotProps
     ? { ...previousSlotProps, ref: previousMergedRef, onFocus: handleFocus, onBlur: handleBlur }
     : undefined;
-  const nextSlot = { ...nextSlotProps, ref: nextMergedRef };
+  const nextSlot = { ...nextSlotProps, ref: nextMergedRef, onFocus: handleNextFocus, onBlur: handleNextBlur };
   return {
     ...state,
     root: { ...state.root, ref: rootMergedRef },

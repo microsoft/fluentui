@@ -1,11 +1,13 @@
-import { renderTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
+import * as React from 'react';
+import { TeachingPopoverCarouselFocusProvider } from './teachingPopoverCarouselFocusContext';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselContextValues,
   TeachingPopoverCarouselState,
 } from './TeachingPopoverCarousel.types';
 
-export const renderTeachingPopoverCarousel = renderTeachingPopoverCarousel_unstable as (
+export const renderTeachingPopoverCarousel: (
   state: TeachingPopoverCarouselState,
   contextValues: TeachingPopoverCarouselContextValues,
-) => JSXElement;
+) => JSXElement = (state, contextValues) =>
+  React.createElement(TeachingPopoverCarouselFocusProvider, { state, contextValues });
