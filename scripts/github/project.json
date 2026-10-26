@@ -3,5 +3,13 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/github/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools"],
+  "targets": {
+    "test-dependabot-skill": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test .agents/skills/dependabot-fix/scripts/dependabot.test.mjs"
+      }
+    }
+  }
 }

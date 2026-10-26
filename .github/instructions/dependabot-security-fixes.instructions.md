@@ -12,20 +12,31 @@ Dependabot is configured to automatically create pull requests for:
 
 1. **Security updates** - Advisory-driven minor and patch updates grouped by ecosystem
 2. **npm dependencies** - Weekly minor and patch updates grouped for development dependencies; routine production version updates are disabled
-3. **GitHub Actions** - Weekly minor and patch version and security update groups
+3. **GitHub Actions** - One weekly minor/patch group and a separate major group, plus the explicit security group
 
 ## Configuration
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
 - **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories
-- **GitHub Actions**: Weekly minor and patch version updates grouped separately from security updates
+- **GitHub Actions**: Weekly minor/patch updates in `github-actions-minor-patch`, major updates in `github-actions-major`, and advisory-driven updates in the separate `github-actions-security` group
 - **Security updates**: Minor and patch updates are grouped; major remediations are excluded from groups for isolated review
 - **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates
 
 The repository's Advanced Security **Grouped security updates** setting must remain disabled. The explicit groups in `.github/dependabot.yml` provide narrower control over update types, while the repository setting would group as many available security updates as possible.
 
 The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a grouped pull request or change Dependabot's separate security-update pull request limit. Native groups have no dependency-count ceiling; the 11-update ceiling applies only to `/dependabot-rollup`.
+
+## Local Dependabot maintenance
+
+Use [`/dependabot-fix`](../../.agents/skills/dependabot-fix/SKILL.md) from a developer machine to inspect open Dependabot PRs, repair failing ones, push to their existing branches, and approve and enable squash auto-merge after final-head CI passes. Use `--dry-run` for inspection only. The default batch excludes majors; explicitly select a major PR with `--pr`.
+
+```text
+Inspect PR state -> fix locally if needed -> validate -> push
+  -> verify final-head CI -> approve -> enable squash auto-merge
+```
+
+The skill uses existing local Git/GitHub authentication, not a repair workflow or new repository credential. It preserves required checks and code-owner protections and reports blocked PRs rather than bypassing them. Existing individual PRs are not guaranteed to regroup retroactively.
 
 ## Security Vulnerability Resolution
 

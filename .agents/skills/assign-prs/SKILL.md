@@ -11,7 +11,7 @@ allowed-tools: Bash Read Grep Glob
 
 Groom the team review queues by getting a human reviewer onto every PR that needs one. Route by area ownership, balance by current review load, and request only the shortfall. The default operation is read-only. Never request a review until the user explicitly approves the plan.
 
-This skill does one thing. It does not approve, merge, close, or comment on anything — for Dependabot updates use `/dependabot-rollup`, which combines compatible updates into a single reviewable branch.
+This skill does one thing. It does not approve, merge, close, or comment on anything — use `/dependabot-fix` to repair, approve, and enable auto-merge on existing Dependabot PRs, or `/dependabot-rollup` to combine compatible updates into a single reviewable branch.
 
 ## Defaults
 

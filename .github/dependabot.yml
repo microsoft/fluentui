@@ -12,6 +12,11 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+      github-actions-major:
+        patterns:
+          - '*'
+        update-types:
+          - 'major'
       github-actions-security:
         applies-to: security-updates
         patterns:
