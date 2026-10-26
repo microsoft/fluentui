@@ -29,7 +29,8 @@ TypeScript auto-accessors are supported; decorators still require explicit parse
 
 This is Babel analysis, not native Rust/OXC/SWC compiler execution. Valid syntax need not be
 accepted by React Compiler, and Babel outcomes do not prove native candidate, cache, or export
-parity. Verbose human reports identify the installed compiler versions; JSON has no provenance.
+parity. Human reports identify the compiler versions and analysis settings; JSON records them in
+`profile`. Neither includes Git provenance.
 Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
 analysis failure. Actual compiler failures remain errors.
 
