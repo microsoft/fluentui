@@ -12,26 +12,9 @@ Headless components expose resolved interaction and structural state through `da
 
 Existing attributes retain their current names and value semantics. Visual axes such as appearance, size, and shape are intentionally not part of the headless contract.
 
-## TeachingPopover carousel boundary buttons
+## TeachingPopover carousel focus
 
-`TeachingPopoverCarouselFooterButton` keeps boundary actions visible by default, including
-`altText` actions such as **Done** or **Restart**. Empty children, icons, and accessible labels
-are not used to infer whether an action is available.
-
-Set `hideOnBoundary: true` on an individual footer button to hide it at the committed first
-(`navType: 'prev'`) or last (`navType: 'next'`) page, regardless of its content. For example:
-
-```tsx
-<TeachingPopoverCarouselFooter
-  previous={{ navType: 'prev', children: 'Previous', altText: undefined, hideOnBoundary: true }}
-  next={{ navType: 'next', children: 'Next', altText: 'Done' }}
-/>
-```
-
-When a focused button becomes hidden by this policy, the headless footer transfers focus
-to its other button if that button is focusable. Ordinary navigation, mount, rejected
-controlled updates, and navigation initiated while focus is elsewhere do not move focus.
-Standalone buttons hide without choosing a replacement focus target. Custom button
-components must use the headless hook and forward its root ref, focus handlers, and `hidden`
-attribute. Styling wrappers should preserve this behavior rather than infer availability
-from CSS `:empty` or observe child mutations.
+Carousel navigation retains focus on the activated button. If consumer styling or props
+hide that button during a committed update, the footer recovers focus to its other
+navigation button when focusable. Consumers still control visibility; empty content is
+not automatically hidden. Custom buttons must forward the hook's root ref and focus handlers.

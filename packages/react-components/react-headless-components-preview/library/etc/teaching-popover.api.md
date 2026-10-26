@@ -18,7 +18,6 @@ import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
-import { renderTeachingPopoverCarouselFooterButton_unstable as renderTeachingPopoverCarouselFooterButton } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable as renderTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselPageCount_unstable as renderTeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
 import type { Slot } from '@fluentui/react-utilities';
@@ -28,7 +27,7 @@ import { TeachingPopoverBodyState } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselCardProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselCardSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselCardState } from '@fluentui/react-teaching-popover';
-import type { TeachingPopoverCarouselFooterButtonBaseProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterButtonBaseProps as TeachingPopoverCarouselFooterButtonProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselFooterButtonSlots } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverCarouselFooterButtonBaseState as TeachingPopoverCarouselFooterButtonState } from '@fluentui/react-teaching-popover';
 import type { TeachingPopoverCarouselNavButtonBaseState } from '@fluentui/react-teaching-popover';
@@ -79,7 +78,8 @@ export { renderTeachingPopoverCarouselCard }
 // @public (undocumented)
 export const renderTeachingPopoverCarouselFooter: (state: TeachingPopoverCarouselFooterState) => JSXElement;
 
-export { renderTeachingPopoverCarouselFooterButton }
+// @public (undocumented)
+export const renderTeachingPopoverCarouselFooterButton: (state: TeachingPopoverCarouselFooterButtonState) => JSXElement;
 
 export { renderTeachingPopoverCarouselNav }
 
@@ -142,10 +142,7 @@ export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverC
 // @public (undocumented)
 export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPopoverCarouselFooterButtonProps>;
 
-// @public (undocumented)
-export type TeachingPopoverCarouselFooterButtonProps = TeachingPopoverCarouselFooterButtonBaseProps & {
-    hideOnBoundary?: boolean;
-};
+export { TeachingPopoverCarouselFooterButtonProps }
 
 export { TeachingPopoverCarouselFooterButtonSlots }
 
@@ -157,14 +154,12 @@ export type TeachingPopoverCarouselFooterProps = ComponentProps<TeachingPopoverC
 // @public (undocumented)
 export type TeachingPopoverCarouselFooterSlots = {
     root: NonNullable<Slot<'div'>>;
-    previous?: Slot<typeof TeachingPopoverCarouselFooterButton>;
-    next: NonNullable<Slot<typeof TeachingPopoverCarouselFooterButton>>;
+    previous?: Slot<TeachingPopoverCarouselFooterButtonProps>;
+    next: NonNullable<Slot<TeachingPopoverCarouselFooterButtonProps>>;
 };
 
 // @public (undocumented)
-export type TeachingPopoverCarouselFooterState = ComponentState<TeachingPopoverCarouselFooterSlots> & {
-    focusOnBoundary: (source: HTMLElement) => void;
-};
+export type TeachingPopoverCarouselFooterState = ComponentState<TeachingPopoverCarouselFooterSlots>;
 
 // @public (undocumented)
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;

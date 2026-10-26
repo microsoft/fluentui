@@ -5,7 +5,6 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselFooterButtonState,
-  TeachingPopoverCarouselFooterButtonBaseState,
   TeachingPopoverCarouselFooterButtonSlots,
 } from './TeachingPopoverCarouselFooterButton.types';
 
@@ -13,7 +12,7 @@ import type {
  * Render the final JSX of TeachingPopoverCarouselFooterButton
  */
 export const renderTeachingPopoverCarouselFooterButton_unstable = (
-  state: TeachingPopoverCarouselFooterButtonState | TeachingPopoverCarouselFooterButtonBaseState,
+  state: TeachingPopoverCarouselFooterButtonState,
 ): JSXElement => {
   assertSlots<TeachingPopoverCarouselFooterButtonSlots>(state);
 

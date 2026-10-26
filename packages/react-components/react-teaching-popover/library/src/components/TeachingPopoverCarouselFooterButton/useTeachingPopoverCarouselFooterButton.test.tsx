@@ -5,10 +5,7 @@ import type { PopoverContextValue } from '@fluentui/react-popover';
 import { CarouselProvider } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import type { CarouselContextValue } from '../TeachingPopoverCarousel/Carousel/CarouselContext';
 import { createCarouselStore } from '../TeachingPopoverCarousel/Carousel/createCarouselStore';
-import {
-  useTeachingPopoverCarouselFooterButtonBase_unstable,
-  useTeachingPopoverCarouselFooterButton_unstable,
-} from './useTeachingPopoverCarouselFooterButton';
+import { useTeachingPopoverCarouselFooterButton_unstable } from './useTeachingPopoverCarouselFooterButton';
 
 const defaultPopoverContext: PopoverContextValue = {
   open: true,
@@ -55,48 +52,6 @@ function makeMouseEvent(defaultPrevented = false): React.MouseEvent<HTMLButtonEl
     isDefaultPrevented: () => defaultPrevented,
   } as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>;
 }
-
-describe('useTeachingPopoverCarouselFooterButtonBase_unstable boundary state', () => {
-  it('does not report a boundary before pages are registered', () => {
-    const { result } = renderHook(
-      () =>
-        useTeachingPopoverCarouselFooterButtonBase_unstable(
-          { navType: 'next', altText: 'Done', children: 'Next' },
-          React.createRef<HTMLButtonElement>(),
-        ),
-      { wrapper: makeWrapper({ carousel: { value: 'page-1' } }) },
-    );
-    expect(result.current.isAtBoundary).toBe(false);
-  });
-
-  it.each([
-    ['prev', 'page-1', true],
-    ['prev', 'page-2', false],
-    ['prev', 'page-3', false],
-    ['next', 'page-1', false],
-    ['next', 'page-2', false],
-    ['next', 'page-3', true],
-    ['prev', null, false],
-    ['next', null, false],
-  ] as const)('reports navType=%s on committed page %s as boundary=%s', (navType, value, expected) => {
-    const { result } = renderHook(
-      () =>
-        useTeachingPopoverCarouselFooterButtonBase_unstable(
-          { navType, altText: 'Boundary action', children: 'Navigate' },
-          React.createRef<HTMLButtonElement>(),
-        ),
-      {
-        wrapper: makeWrapper({
-          storeValues: ['page-1', 'page-2', 'page-3'],
-          carousel: { value },
-        }),
-      },
-    );
-    expect(result.current.isAtBoundary).toBe(expected);
-    expect(result.current.root.hidden).toBeUndefined();
-    expect(result.current.root.children).toBe(expected ? 'Boundary action' : 'Navigate');
-  });
-});
 
 describe('useTeachingPopoverCarouselFooterButton_unstable', () => {
   it('inherits ButtonState components shape (root: button, icon: span)', () => {

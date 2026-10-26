@@ -6,18 +6,18 @@ import type {
   TeachingPopoverCarouselFooterSlots,
   TeachingPopoverCarouselFooterState,
 } from './TeachingPopoverCarouselFooter.types';
-import { TeachingPopoverCarouselFooterContext } from './TeachingPopoverCarouselFooterContext';
+import { TeachingPopoverCarouselFooterProvider } from './TeachingPopoverCarouselFooterContext';
 
 export const renderTeachingPopoverCarouselFooter = (state: TeachingPopoverCarouselFooterState): JSXElement => {
   assertSlots<TeachingPopoverCarouselFooterSlots>(state);
 
   return (
-    <TeachingPopoverCarouselFooterContext.Provider value={state.focusOnBoundary}>
+    <TeachingPopoverCarouselFooterProvider>
       <state.root>
         {state.previous && <state.previous />}
         {state.root.children}
         <state.next />
       </state.root>
-    </TeachingPopoverCarouselFooterContext.Provider>
+    </TeachingPopoverCarouselFooterProvider>
   );
 };

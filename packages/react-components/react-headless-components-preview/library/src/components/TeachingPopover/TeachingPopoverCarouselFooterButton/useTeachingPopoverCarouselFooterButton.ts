@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { useTeachingPopoverCarouselFooterButtonBase_unstable } from '@fluentui/react-teaching-popover';
-import { slot, useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { TeachingPopoverCarouselFooterContext } from '../TeachingPopoverCarouselFooter/TeachingPopoverCarouselFooterContext';
 import type {
   TeachingPopoverCarouselFooterButtonProps,
@@ -14,42 +15,52 @@ export const useTeachingPopoverCarouselFooterButton = (
   props: TeachingPopoverCarouselFooterButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): TeachingPopoverCarouselFooterButtonState => {
-  const { hideOnBoundary = false, ...buttonProps } = props;
-  const state = useTeachingPopoverCarouselFooterButtonBase_unstable(buttonProps, ref);
+  const state = useTeachingPopoverCarouselFooterButtonBase_unstable(props, ref);
   const rootRef = React.useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const focusedRef = React.useRef(false);
-  const focusOnBoundary = React.useContext(TeachingPopoverCarouselFooterContext);
+  const buttons = React.useContext(TeachingPopoverCarouselFooterContext);
   const { targetDocument } = useFluent_unstable();
-  const hiddenOnBoundary = hideOnBoundary && state.isAtBoundary;
-  const wasHiddenRef = React.useRef(hiddenOnBoundary);
+  const { findAllFocusable } = useFocusFinders();
+  const isFocusable = (element: HTMLElement) => findAllFocusable(element.parentElement).includes(element);
 
-  const mergedRef = useMergedRefs(rootRef, state.root.ref);
+  const register = React.useCallback(
+    (element: HTMLButtonElement | HTMLAnchorElement | null) => {
+      buttons?.register(props.navType, element);
+    },
+    [buttons, props.navType],
+  );
+
+  const mergedRef = useMergedRefs(rootRef, state.root.ref, register);
   const onFocus = useEventCallback((event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     focusedRef.current = true;
     state.root.onFocus?.(event);
   });
   const onBlur = useEventCallback((event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
-    // Browsers can blur a button as soon as its hidden attribute commits.
-    if (!rootRef.current?.hidden) {
+    // Hiding can blur the button before the effect recovers focus.
+    if (rootRef.current && isFocusable(rootRef.current)) {
       focusedRef.current = false;
     }
     state.root.onBlur?.(event);
   });
 
-  useIsomorphicLayoutEffect(() => {
+  // Passive effects run after sibling refs have reattached for this commit.
+  React.useEffect(() => {
     const root = rootRef.current;
+    const ownedFocus = focusedRef.current;
+    focusedRef.current = targetDocument?.activeElement === root;
     if (
-      hiddenOnBoundary &&
-      !wasHiddenRef.current &&
-      focusedRef.current &&
+      ownedFocus &&
       root &&
+      !isFocusable(root) &&
       (targetDocument?.activeElement === root || targetDocument?.activeElement === targetDocument?.body)
     ) {
       focusedRef.current = false;
-      focusOnBoundary?.(root);
+      const destination = buttons?.getButton(props.navType === 'prev' ? 'next' : 'prev');
+      if (destination && isFocusable(destination)) {
+        destination.focus();
+      }
     }
-    wasHiddenRef.current = hiddenOnBoundary;
-  }, [hiddenOnBoundary, focusOnBoundary, targetDocument]);
+  });
 
   return {
     ...state,
@@ -57,7 +68,6 @@ export const useTeachingPopoverCarouselFooterButton = (
       {
         ...state.root,
         ref: mergedRef,
-        hidden: state.root.hidden || hiddenOnBoundary,
         onFocus,
         onBlur,
       },
