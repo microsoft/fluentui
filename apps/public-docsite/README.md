@@ -49,7 +49,9 @@ For manual verification, start the site and open
 6. Reopen it and activate **Avatar**. Confirm the route changes, navigation closes and focus moves to the
    content. Modified-click/new-tab navigation should not close the current page's disclosure or steal its focus.
 7. Repeat at widths immediately below, exactly at, and above 768 CSS pixels. Resize while a navigation
-   link or the disclosure button has focus; focus must remain on a visible control.
+   link or the disclosure button has focus; focus must remain on a visible control. With **Items & Lists**
+   expanded and **Avatar** focused, cross the breakpoint in both directions: the category must stay
+   expanded and **Avatar** must retain focus. Manually collapsed categories must also stay collapsed.
 8. Separately check actual browser zoom at 200% and 400% from a 1280-wide content viewport. A 320 CSS-pixel
    viewport emulates reflow width, not actual browser zoom or text-only resizing. Also check text resizing
    to 200%, visible focus, forced colors, and a supported screen reader/browser combination.

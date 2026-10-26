@@ -2,12 +2,25 @@ import * as React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { SiteNav, ISiteNavProps } from './SiteNav';
 import { Nav } from '../Nav/Nav';
+import { registerIcons, setRTL } from '@fluentui/react';
 
 describe('SiteNav', () => {
   let matches: boolean;
   let changeBreakpoint: () => void;
   let mediaQuery: MediaQueryList;
   const onNavigate = jest.fn();
+  const categoryPages = [
+    {
+      title: 'Basic Inputs',
+      isCategory: true,
+      pages: [{ title: 'Button', url: '#/controls/ios/button' }],
+    },
+    {
+      title: 'Items & Lists',
+      isCategory: true,
+      pages: [{ title: 'Avatar', url: '#/controls/ios/avatar' }],
+    },
+  ];
 
   const renderNavigation = (props: Partial<ISiteNavProps> = {}) => (
     <SiteNav pagePath="#/controls/ios" onNavigate={onNavigate} {...props}>
@@ -32,6 +45,20 @@ describe('SiteNav', () => {
     screen.getByRole('button', { name: 'Section navigation', hidden: true }).getAttribute('aria-controls')!;
 
   beforeEach(() => {
+    window.history.replaceState(null, '', '#/controls/ios/button');
+    setRTL(false);
+    registerIcons({ icons: { ChevronDown: 'v', ChevronRight: '>' } });
+    const consoleError = console.error;
+    jest.spyOn(console, 'error').mockImplementation((message, ...args) => {
+      // Legacy CollapsibleSection slots emit this unrelated React 19 warning.
+      if (
+        String(message).startsWith('Each child in a list should have a unique "key" prop.') &&
+        args.some(arg => String(arg).includes('CollapsibleSection'))
+      ) {
+        return;
+      }
+      consoleError(message, ...args);
+    });
     matches = true;
     changeBreakpoint = () => undefined;
     mediaQuery = {
@@ -51,6 +78,8 @@ describe('SiteNav', () => {
     };
     Object.defineProperty(window, 'matchMedia', { configurable: true, value: jest.fn(() => mediaQuery) });
   });
+
+  afterEach(() => setRTL(false));
 
   it('starts collapsed on mobile with an accessible button controlling the navigation', () => {
     const { container } = render(renderNavigation());
@@ -241,5 +270,66 @@ describe('SiteNav', () => {
     });
     expect(document.activeElement).toBe(screen.getByRole('link', { name: 'Avatar' }));
     expect(screen.getByRole('button', { name: 'Section navigation' }).getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it.each([true, false])(
+    'preserves manually expanded categories and focus across breakpoints starting on mobile=%s',
+    startsOnMobile => {
+      jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1);
+      matches = startsOnMobile;
+      render(
+        renderNavigation({
+          children: isSmallScreen => (
+            <Nav pages={categoryPages} isSmallScreen={isSmallScreen} navigationLabel="Controls section navigation" />
+          ),
+        }),
+      );
+      if (startsOnMobile) {
+        open();
+      }
+      const getCategory = (name: string) => screen.getByRole('button', { name });
+      expect(getCategory('Basic Inputs').getAttribute('aria-expanded')).toBe('true');
+      expect(getCategory('Items & Lists').getAttribute('aria-expanded')).toBe('false');
+      fireEvent.click(getCategory('Basic Inputs'));
+      fireEvent.click(getCategory('Items & Lists'));
+      screen.getByRole('link', { name: 'Avatar' }).focus();
+
+      for (const isMobile of [!startsOnMobile, startsOnMobile]) {
+        act(() => {
+          matches = isMobile;
+          changeBreakpoint();
+        });
+        expect(getCategory('Basic Inputs').getAttribute('aria-expanded')).toBe('false');
+        expect(getCategory('Items & Lists').getAttribute('aria-expanded')).toBe('true');
+        expect(document.activeElement).toBe(screen.getByRole('link', { name: 'Avatar' }));
+        if (isMobile) {
+          expect(screen.getByRole('button', { name: 'Section navigation' }).getAttribute('aria-expanded')).toBe('true');
+        }
+      }
+    },
+  );
+
+  it.each([false, true])('preserves category arrow-key behavior with RTL=%s', rtl => {
+    setRTL(rtl);
+    render(
+      renderNavigation({
+        children: isSmallScreen => <Nav pages={categoryPages} isSmallScreen={isSmallScreen} />,
+      }),
+    );
+    open();
+    const category = screen.getByRole('button', { name: 'Items & Lists' });
+    const collapseKey = rtl ? 'ArrowRight' : 'ArrowLeft';
+    const expandKey = rtl ? 'ArrowLeft' : 'ArrowRight';
+
+    expect(category.getAttribute('aria-expanded')).toBe('false');
+    expect(fireEvent.keyDown(category, { key: expandKey })).toBe(false);
+    expect(category.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('link', { name: 'Avatar' })).not.toBeNull();
+    expect(fireEvent.keyDown(category, { key: expandKey })).toBe(true);
+    expect(category.getAttribute('aria-expanded')).toBe('true');
+    expect(fireEvent.keyDown(category, { key: collapseKey })).toBe(false);
+    expect(category.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('link', { name: 'Avatar' })).toBeNull();
+    expect(fireEvent.keyDown(category, { key: collapseKey })).toBe(true);
   });
 });
