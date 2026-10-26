@@ -357,16 +357,17 @@ describe('Time Utilities', () => {
 
     describe('localized formats', () => {
       it.each`
-        locale     | hourCycle    | showSeconds | expected
-        ${'ja-JP'} | ${'h11'}     | ${false}    | ${'午後2:30'}
-        ${'ja-JP'} | ${'h11'}     | ${true}     | ${'午後2:30:45'}
-        ${'ko-KR'} | ${undefined} | ${false}    | ${['오후 2:30', 'PM 2:30']}
-        ${'ar-EG'} | ${undefined} | ${false}    | ${'٢:٣٠ م'}
-        ${'ar-EG'} | ${undefined} | ${true}     | ${'٢:٣٠:٤٥ م'}
-        ${'fa-IR'} | ${undefined} | ${false}    | ${'۱۴:۳۰'}
-        ${'fr-CA'} | ${undefined} | ${false}    | ${'14 h 30'}
-        ${'fr-CA'} | ${undefined} | ${true}     | ${'14 h 30 min 45 s'}
-        ${'es-US'} | ${undefined} | ${false}    | ${'2:30 p.m.'}
+        locale       | hourCycle    | showSeconds | expected
+        ${'ja-JP'}   | ${'h11'}     | ${false}    | ${'午後2:30'}
+        ${'ja-JP'}   | ${'h11'}     | ${true}     | ${'午後2:30:45'}
+        ${'ko-KR'}   | ${undefined} | ${false}    | ${['오후 2:30', 'PM 2:30']}
+        ${'ar-EG'}   | ${undefined} | ${false}    | ${'٢:٣٠ م'}
+        ${'ar-EG'}   | ${undefined} | ${true}     | ${'٢:٣٠:٤٥ م'}
+        ${'fa-IR'}   | ${undefined} | ${false}    | ${'۱۴:۳۰'}
+        ${'fr-CA'}   | ${undefined} | ${false}    | ${'14 h 30'}
+        ${'fr-CA'}   | ${undefined} | ${true}     | ${'14 h 30 min 45 s'}
+        ${'es-US'}   | ${undefined} | ${false}    | ${'2:30 p.m.'}
+        ${'ff-Adlm'} | ${undefined} | ${true}     | ${'𞥑𞥔:𞥓𞥐:𞥔𞥕'}
       `('round-trips the $locale format', ({ locale, hourCycle, showSeconds, expected }) => {
         mockRuntimeLocale(locale);
         const date = new Date(2023, 10, 25, 14, 30, showSeconds ? 45 : 0);
@@ -391,6 +392,15 @@ describe('Time Utilities', () => {
           hourCycle: locale === 'fr-CA' ? undefined : locale === 'ja-JP' ? 'h11' : 'h12',
         });
         expect([result.date?.getHours(), result.date?.getMinutes()]).toEqual([14, 30]);
+      });
+
+      it('does not require a trailing unit label', () => {
+        mockRuntimeLocale('fr-CA');
+        const parse = (time: string) =>
+          getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { showSeconds: true });
+        expect(parse('14:30:45').date?.getSeconds()).toBe(45);
+        expect(parse('14 h 30 min 45 s').date?.getSeconds()).toBe(45);
+        expect(parse('14:30:45:').errorType).toBe('invalid-input');
       });
     });
 

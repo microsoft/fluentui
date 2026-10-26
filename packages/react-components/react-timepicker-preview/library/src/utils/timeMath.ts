@@ -176,7 +176,7 @@ function createTimeParser(
     text
       .replace(BIDI_MARKS, '')
       .replace(NO_BREAK_SPACES, ' ')
-      .replace(/./g, char => digits.get(char) ?? char);
+      .replace(/./gu, char => digits.get(char) ?? char);
 
   const formatParts = (hours: number) =>
     formatter
@@ -187,8 +187,9 @@ function createTimeParser(
   const pmTexts = [getDayPeriod(pmParts), 'pm'];
   const dayPeriods = [getDayPeriod(formatParts(1)), 'am', ...pmTexts].map(escapeRegExp).join('|');
 
+  const isField = (part: Intl.DateTimeFormatPart) => part.type !== 'literal';
   const pattern = pmParts
-    .map(({ type, value }) => {
+    .map(({ type, value }, index) => {
       switch (type) {
         case 'hour':
           return '(?<hour>\\d{1,2})';
@@ -197,8 +198,14 @@ function createTimeParser(
           return `(?<${type}>\\d{2})`;
         case 'dayPeriod':
           return `(?<dayPeriod>${dayPeriods})`;
-        case 'literal':
-          return value.trim() ? `(?::|${escapeRegExp(value)})` : value;
+        case 'literal': {
+          if (!value.trim()) {
+            return value;
+          }
+          // A literal between fields is a separator; one before the first or after the last field is an optional label
+          const isSeparator = pmParts.slice(0, index).some(isField) && pmParts.slice(index + 1).some(isField);
+          return isSeparator ? `(?::|${escapeRegExp(value)})` : `(?:${escapeRegExp(value)})?`;
+        }
         default:
           return '';
       }
