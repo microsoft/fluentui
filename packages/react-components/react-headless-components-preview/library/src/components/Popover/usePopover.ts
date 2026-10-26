@@ -14,7 +14,7 @@ import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents
 import type { InternalPopoverContextValue } from './popoverContext';
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
-type InternalPopoverState = PopoverState & Pick<InternalPopoverContextValue, 'focusCapture'>;
+type InternalPopoverState = PopoverState & Pick<InternalPopoverContextValue, 'capture'>;
 
 const isDialogElement = (el: Element | null): el is HTMLDialogElement =>
   !!el && typeof (el as HTMLDialogElement).showModal === 'function';
@@ -36,7 +36,8 @@ const createFocusObserver = () => {
   let setOpen: (event: Event, open: boolean) => void;
   // Null rejects stale captures after disposal; false still permits pre-layout capture.
   let enabled: boolean | null = false;
-  let openOnHover = false;
+  let hoveredTarget: Node | null = null;
+  let focusTarget: Node | null = null;
   let focusWasInside = false;
   const focusObservers = new Map<Node, () => void>();
   const knownShadowRoots = new Map<Element, ShadowRoot>();
@@ -59,11 +60,11 @@ const createFocusObserver = () => {
   const getDeepActiveElement = (doc: Document): Element | null => {
     let active = doc.activeElement;
     while (active) {
-      const root = active.shadowRoot ?? knownShadowRoots.get(active);
-      if (!root?.activeElement) {
+      const next = (active.shadowRoot ?? knownShadowRoots.get(active))?.activeElement;
+      if (!next) {
         break;
       }
-      active = root.activeElement;
+      active = next;
     }
     return active;
   };
@@ -155,7 +156,7 @@ const createFocusObserver = () => {
       return;
     }
     const event = destination && (observations.get(destination) ?? [...observations.values()].pop());
-    if (focusWasInside && event && !(openOnHover && [content, trigger].some(element => element?.matches(':hover')))) {
+    if (focusWasInside && event && !(hoveredTarget?.isConnected && isFocusInside(hoveredTarget))) {
       focusWasInside = false;
       // Consumer code may synchronously close or unmount; allocate nothing after this callback.
       setOpen(event, false);
@@ -170,12 +171,17 @@ const createFocusObserver = () => {
     return focusObservations;
   }
 
-  function record(event: Event, target: Node | null) {
+  function record(event: Event, target: Node | null, closed?: boolean) {
     if (enabled === null || (target && !target.isConnected)) {
       return;
     }
-    const previousGeneration = eventGenerations.get(event);
-    if (previousGeneration !== undefined && previousGeneration !== generation) {
+    if (target) {
+      focusTarget = target;
+    }
+    if (closed) {
+      return;
+    }
+    if ((eventGenerations.get(event) ?? generation) !== generation) {
       return;
     }
     eventGenerations.set(event, generation);
@@ -191,7 +197,7 @@ const createFocusObserver = () => {
     while (current) {
       const root = current.getRootNode();
       observeRoot(root);
-      if (root.nodeType === 11 && 'host' in root) {
+      if ('host' in root) {
         const shadowRoot = root as ShadowRoot;
         knownShadowRoots.set(shadowRoot.host, shadowRoot);
         current = shadowRoot.host;
@@ -202,7 +208,8 @@ const createFocusObserver = () => {
   }
 
   function observeRoot(root: Node) {
-    const ownerDocument = root.nodeType === 9 ? (root as Document) : root.ownerDocument;
+    const doc = root.nodeType === 9 ? (root as Document) : undefined;
+    const ownerDocument = root.ownerDocument ?? doc;
     if (
       enabled === null ||
       focusObservers.has(root) ||
@@ -213,7 +220,6 @@ const createFocusObserver = () => {
     }
     retiredFocusDocuments.delete(ownerDocument);
     const onFocus = (event: Event) => record(event, (event.composedPath()[0] ?? event.target) as Node | null);
-    const doc = root.nodeType === 9 ? (root as Document) : undefined;
     let timeout: number | undefined;
     let disposed = false;
     const onWindowFocusChange = (event: Event) => {
@@ -242,9 +248,11 @@ const createFocusObserver = () => {
       root[method]('focusin', onFocus, true);
       root[method]('fuiframefocus', onFocus, true);
       const currentWindow = doc?.defaultView;
-      currentWindow?.[method]('blur', onWindowFocusChange);
-      currentWindow?.[method]('focus', onWindowFocusChange);
-      currentWindow?.[method]('pagehide', onPageHide);
+      if (currentWindow) {
+        currentWindow[method]('blur', onWindowFocusChange);
+        currentWindow[method]('focus', onWindowFocusChange);
+        currentWindow[method]('pagehide', onPageHide);
+      }
       return currentWindow;
     };
     updateListeners('addEventListener');
@@ -263,55 +271,62 @@ const createFocusObserver = () => {
     });
   }
 
-  return {
-    record,
-    sync(
-      nextEnabled: boolean,
-      nextContent: HTMLElement | null,
-      nextTrigger: HTMLElement | null,
-      onExit: (event: Event, open: boolean) => void,
-      hover: boolean,
-    ) {
-      if (content !== nextContent) {
-        stopFramePoll();
-      }
-      content = nextContent;
-      trigger = nextTrigger;
-      setOpen = onExit;
-      enabled = nextEnabled;
-      openOnHover = hover;
-      if (!enabled) {
-        generation++;
-        focusWasInside = false;
-        focusObservations?.clear();
-        focusObservers.forEach(dispose => dispose());
-        knownShadowRoots.clear();
-        return;
-      }
-      // Surviving listeners and learned portal roots stay attached across commits.
-      [content, trigger].forEach(element => {
-        if (element) {
-          observeRootChain(element);
-          if (isFocusInside(getDeepActiveElement(element.ownerDocument))) {
-            focusWasInside = true;
-          }
-        }
-      });
-      knownShadowRoots.forEach(root => {
-        observeRoot(root);
-        observeRoot(root.ownerDocument);
-      });
-      scheduleFocusReconciliation();
-    },
-
-    stop() {
-      enabled = null;
-      generation++;
-      focusObservations?.clear();
+  function hover(target: EventTarget | null) {
+    if (enabled !== null) {
+      hoveredTarget = target && 'nodeType' in target ? (target as Node) : null;
+    }
+  }
+  function sync(
+    nextEnabled: boolean,
+    nextContent: HTMLElement | null,
+    nextTrigger: HTMLElement | null,
+    onExit: (event: Event, open: boolean) => void,
+    allowHover: boolean,
+  ) {
+    if (content !== nextContent) {
       stopFramePoll();
+    }
+    content = nextContent;
+    trigger = nextTrigger;
+    setOpen = onExit;
+    enabled = nextEnabled;
+    if (!allowHover) {
+      hoveredTarget = null;
+    }
+    if (!enabled) {
+      generation++;
+      focusWasInside = false;
+      focusObservations?.clear();
       focusObservers.forEach(dispose => dispose());
-    },
-  };
+      knownShadowRoots.clear();
+      return;
+    }
+    if (focusTarget?.isConnected) {
+      observeRootChain(focusTarget);
+    }
+    // Surviving listeners and learned portal roots stay attached across commits.
+    [content, trigger].forEach(element => {
+      if (element) {
+        observeRootChain(element);
+        if (isFocusInside(getDeepActiveElement(element.ownerDocument))) {
+          focusWasInside = true;
+        }
+      }
+    });
+    knownShadowRoots.forEach(observeRootChain);
+    scheduleFocusReconciliation();
+  }
+
+  function stop() {
+    enabled = null;
+    // Passive focus/root knowledge survives Strict Mode effect replay; subscriptions do not.
+    hoveredTarget = null;
+    generation++;
+    focusObservations?.clear();
+    stopFramePoll();
+    focusObservers.forEach(dispose => dispose());
+  }
+  return [record, hover, sync, stop] as const;
 };
 
 /**
@@ -338,6 +353,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   const pendingNativeClose = React.useRef<HTMLElement | null>(null);
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
+  const [[recordFocus, recordHover, syncObserver, stopObserver]] = React.useState(createFocusObserver);
 
   const onOpenChange = useEventCallback((e: OpenPopoverEvents | Event, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
@@ -357,17 +373,18 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       setContextTarget(undefined);
     }
 
+    const updateOpen = () => {
+      setOpenState(shouldOpen);
+      onOpenChange(e, shouldOpen);
+    };
     if (e.type === 'mouseleave') {
-      setOpenTimeout(() => {
-        setOpenState(shouldOpen);
-        onOpenChange(e, shouldOpen);
-      }, mouseLeaveDelay);
+      recordHover(null);
+      setOpenTimeout(updateOpen, mouseLeaveDelay);
     } else {
       if (shouldOpen && props.open === undefined) {
         setShouldRenderSurface(true);
       }
-      setOpenState(shouldOpen);
-      onOpenChange(e, shouldOpen);
+      updateOpen();
     }
   });
 
@@ -393,10 +410,11 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
     const activeElement = getActiveElement(surface);
+    const inside = surface.contains(activeElement);
     // Initially-open surfaces have no native trigger snapshot; preserve successful native restoration.
     if (
-      (focusWasInsideOnNativeClose.current ?? surface.contains(activeElement)) &&
-      (!activeElement || activeElement === surface.ownerDocument.body || surface.contains(activeElement)) &&
+      (focusWasInsideOnNativeClose.current ?? inside) &&
+      (!activeElement || activeElement === surface.ownerDocument.body || inside) &&
       triggerRef.current?.isConnected
     ) {
       triggerRef.current.focus();
@@ -439,17 +457,18 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       return;
     }
     const trackNativeCloseFocus = (event: Event) => {
-      if (event.type === 'cancel' || (event as ToggleEvent).newState === 'closed') {
+      const nextState = (event as ToggleEvent).newState;
+      if (event.type === 'cancel' || nextState === 'closed') {
         focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
       }
-      if (!trapFocus && open && (event as ToggleEvent).newState === 'closed') {
+      if (!trapFocus && open && nextState === 'closed') {
         pendingNativeClose.current = surface;
         Promise.resolve().then(() => {
           if (pendingNativeClose.current === surface && isPopoverOpen(surface)) {
             pendingNativeClose.current = null;
           }
         });
-      } else if ((event as ToggleEvent).newState === 'open') {
+      } else if (nextState === 'open') {
         pendingNativeClose.current = null;
       }
     };
@@ -516,37 +535,43 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       }
       return;
     }
+    const captureCloseFocus = () => {
+      focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
+    };
     if (trapFocus) {
       if (isDialogElement(surface) && surface.open) {
-        focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
+        captureCloseFocus();
         surface.close();
       } else if (openedSurface.current !== surface) {
-        focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
+        captureCloseFocus();
         finishSurfaceClose();
       }
     } else if (typeof surface.hidePopover === 'function') {
       if (isPopoverOpen(surface)) {
-        focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
+        captureCloseFocus();
         surface.hidePopover();
       } else if (openedSurface.current !== surface) {
         finishSurfaceClose();
       }
     } else {
-      focusWasInsideOnNativeClose.current = hasSurfaceFocus(surface);
+      captureCloseFocus();
       finishSurfaceClose();
     }
   }, [open, trapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
 
-  const [focusObserver] = React.useState(createFocusObserver);
-  const onBoundaryFocusCapture = (event: React.FocusEvent<HTMLElement>) => {
-    if (open && !trapFocus) {
-      focusObserver.record(event.nativeEvent, event.target);
+  const onBoundaryCapture: NonNullable<InternalPopoverContextValue['capture']> = event => {
+    if (!trapFocus) {
+      if (event.type === 'focus') {
+        recordFocus(event.nativeEvent, event.target as Node, !open);
+      } else if (openOnHover) {
+        recordHover(event.target);
+      }
     }
   };
   useIsomorphicLayoutEffect(() =>
-    focusObserver.sync(open && !trapFocus, contentRef.current, triggerRef.current, setOpen, openOnHover),
+    syncObserver(open && !trapFocus, contentRef.current, triggerRef.current, setOpen, openOnHover),
   );
-  useIsomorphicLayoutEffect(() => () => focusObserver.stop(), [focusObserver]);
+  useIsomorphicLayoutEffect(() => stopObserver, [stopObserver]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -591,44 +616,31 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     positioning,
     surfaceId,
     shouldRenderSurface: renderSurface,
-    focusCapture: onBoundaryFocusCapture,
+    capture: onBoundaryCapture,
   };
   return state;
 };
 
 export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
-  const {
-    open,
-    setOpen,
-    toggleOpen,
-    triggerRef,
-    contentRef,
-    arrowRef,
-    openOnHover,
-    openOnContext,
-    withArrow,
-    trapFocus,
-    positioning,
-    surfaceId,
-  } = state;
+  const { positioning } = state;
 
   const popover: InternalPopoverContextValue = {
-    open,
-    setOpen,
-    toggleOpen,
-    triggerRef,
-    contentRef,
-    arrowRef,
-    openOnHover,
-    openOnContext,
-    withArrow,
-    trapFocus,
+    open: state.open,
+    setOpen: state.setOpen,
+    toggleOpen: state.toggleOpen,
+    triggerRef: state.triggerRef,
+    contentRef: state.contentRef,
+    arrowRef: state.arrowRef,
+    openOnHover: state.openOnHover,
+    openOnContext: state.openOnContext,
+    withArrow: state.withArrow,
+    trapFocus: state.trapFocus,
     positioning: {
       targetRef: positioning.targetRef,
       containerRef: positioning.containerRef,
     },
-    surfaceId,
-    focusCapture: (state as InternalPopoverState).focusCapture,
+    surfaceId: state.surfaceId,
+    capture: (state as InternalPopoverState).capture,
   };
   return { popover };
 };

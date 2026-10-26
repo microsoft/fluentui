@@ -1,12 +1,13 @@
 'use client';
 
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import type * as React from 'react';
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { PopoverContextValue } from './Popover.types';
 
 export type InternalPopoverContextValue = PopoverContextValue & {
-  focusCapture?: React.FocusEventHandler<HTMLElement>;
+  capture?: React.EventHandler<React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLElement>>;
 };
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue | undefined>(
@@ -39,5 +40,12 @@ export const PopoverProvider = PopoverContext.Provider;
 export const usePopoverContext = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
   useContextSelector(PopoverContext, (ctx = popoverContextDefaultValue) => selector(ctx));
 
-export const usePopoverFocusCapture = (): React.FocusEventHandler<HTMLElement> | undefined =>
-  useContextSelector(PopoverContext, ctx => (ctx as InternalPopoverContextValue | undefined)?.focusCapture);
+type CaptureProps<T extends HTMLElement> = Pick<React.HTMLAttributes<T>, 'onFocusCapture' | 'onMouseOverCapture'>;
+
+export const usePopoverCaptureProps = <T extends HTMLElement>(props?: CaptureProps<T>): CaptureProps<T> => {
+  const capture = useContextSelector(PopoverContext, ctx => (ctx as InternalPopoverContextValue | undefined)?.capture);
+  return {
+    onFocusCapture: mergeCallbacks<[React.FocusEvent<T>]>(capture, props?.onFocusCapture),
+    onMouseOverCapture: mergeCallbacks<[React.MouseEvent<T>]>(capture, props?.onMouseOverCapture),
+  };
+};

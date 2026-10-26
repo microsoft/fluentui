@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { act, fireEvent, render } from '@testing-library/react';
 import { flushSync } from 'react-dom';
+import { Portal } from '@fluentui/react-portal';
 import { Popover } from './Popover';
 import { PopoverSurface } from './PopoverSurface/PopoverSurface';
+import { PopoverTrigger } from './PopoverTrigger/PopoverTrigger';
 
 describe('Popover frame observation lifecycle', () => {
   beforeEach(() => jest.useFakeTimers());
@@ -31,6 +33,100 @@ describe('Popover frame observation lifecycle', () => {
       <button>Outside</button>
     </>
   );
+
+  (['open', 'closed'] as const).forEach(mode => {
+    it(`learns a pre-open trigger Portal root without installing closed observers (${mode})`, async () => {
+      const host = document.createElement('div');
+      document.body.append(host);
+      const root = host.attachShadow({ mode });
+      const mountNode = document.createElement('div');
+      const sibling = document.createElement('button');
+      root.append(mountNode, sibling);
+      const add = jest.spyOn(root, 'addEventListener');
+      const remove = jest.spyOn(root, 'removeEventListener');
+      const change = jest.fn();
+      const PortalExample = ({ open }: { open: boolean }) => (
+        <Popover open={open} onOpenChange={change}>
+          <PopoverTrigger disableButtonEnhancement>
+            <div tabIndex={0}>
+              Trigger
+              <Portal mountNode={mountNode}>
+                <button autoFocus>Entry</button>
+              </Portal>
+            </div>
+          </PopoverTrigger>
+          <PopoverSurface as="div">Surface</PopoverSurface>
+        </Popover>
+      );
+      const result = render(<PortalExample open={false} />, { wrapper: React.StrictMode });
+      const timeout = jest.spyOn(window, 'setTimeout');
+      const interval = jest.spyOn(window, 'setInterval');
+      try {
+        act(() => mountNode.querySelector<HTMLButtonElement>('button')!.focus());
+        expect(add.mock.calls.filter(call => call[0] === 'fuiframefocus')).toHaveLength(0);
+        expect(timeout).not.toHaveBeenCalled();
+        expect(interval).not.toHaveBeenCalled();
+        result.rerender(<PortalExample open={false} />);
+        result.rerender(<PortalExample open />);
+        expect(add.mock.calls.filter(call => call[0] === 'fuiframefocus')).toHaveLength(1);
+        await settle(() => sibling.focus());
+        expect(change).toHaveBeenCalledTimes(1);
+        expect(change).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+        result.rerender(<PortalExample open={false} />);
+        await settle(() => undefined);
+        expect(remove.mock.calls.filter(call => call[0] === 'fuiframefocus')).toHaveLength(1);
+      } finally {
+        result.unmount();
+        host.remove();
+      }
+    });
+  });
+
+  it('does not arm dismissal from a cached trigger Portal target that is no longer focused', async () => {
+    const host = document.createElement('div');
+    document.body.append(host);
+    const root = host.attachShadow({ mode: 'closed' });
+    const mountNode = document.createElement('div');
+    const sibling = document.createElement('button');
+    root.append(mountNode, sibling);
+    const change = jest.fn();
+    const PortalExample = ({ open }: { open: boolean }) => (
+      <Popover open={open} onOpenChange={change}>
+        <PopoverTrigger disableButtonEnhancement>
+          <div tabIndex={0}>
+            Trigger
+            <Portal mountNode={mountNode}>
+              <button>Entry</button>
+            </Portal>
+          </div>
+        </PopoverTrigger>
+        <PopoverSurface as="div">Surface</PopoverSurface>
+      </Popover>
+    );
+    const result = render(
+      <>
+        <PortalExample open={false} />
+        <button>Outside</button>
+      </>,
+    );
+    try {
+      act(() => {
+        mountNode.querySelector<HTMLButtonElement>('button')!.focus();
+        sibling.focus();
+      });
+      result.rerender(
+        <>
+          <PortalExample open />
+          <button>Outside</button>
+        </>,
+      );
+      await settle(() => result.getByText('Outside').focus());
+      expect(change).not.toHaveBeenCalled();
+    } finally {
+      result.unmount();
+      host.remove();
+    }
+  });
 
   it('polls only during frame focus and stops when ordinary parent focus returns', async () => {
     const interval = jest.spyOn(window, 'setInterval');

@@ -12,7 +12,7 @@ import {
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
-import { usePopoverContext, usePopoverFocusCapture } from '../popoverContext';
+import { usePopoverContext, usePopoverCaptureProps } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
 import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
@@ -22,9 +22,9 @@ import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState
  */
 export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children, disableButtonEnhancement = false } = props;
-  const child = getTriggerChild<PopoverTriggerChildProps & Pick<React.HTMLAttributes<HTMLElement>, 'onFocusCapture'>>(
-    children,
-  );
+  const child = getTriggerChild<
+    PopoverTriggerChildProps & Pick<React.HTMLAttributes<HTMLElement>, 'onFocusCapture' | 'onMouseOverCapture'>
+  >(children);
 
   const open = usePopoverContext(context => context.open);
   const setOpen = usePopoverContext(context => context.setOpen);
@@ -34,7 +34,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
-  const focusCapture = usePopoverFocusCapture();
+  const captureProps = usePopoverCaptureProps(child?.props);
 
   const { targetDocument } = useFluent();
 
@@ -83,10 +83,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
     'aria-details': open ? surfaceId : undefined,
     'data-open': toDataAttributeValue(open),
     ...child?.props,
-    onFocusCapture: (event: React.FocusEvent<HTMLElement>) => {
-      focusCapture?.(event);
-      child?.props.onFocusCapture?.(event);
-    },
+    ...captureProps,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
