@@ -56,15 +56,15 @@ yarn create-component                     # Interactive generator
 Run [`/dependabot-fix`](../../.agents/skills/dependabot-fix/SKILL.md) from your developer machine:
 
 ```text
-Inspect open PRs -> repair failing PRs locally -> validate -> push to existing branches
+Inspect open PRs -> show candidate table -> user approves PRs/actions -> repair -> validate -> push
   -> verify final-head CI -> approve -> enable squash auto-merge
 ```
 
-Use `/dependabot-fix --dry-run` to inspect without changes, or `--pr 123` to select a PR. The default batch handles minor/patch updates; majors require explicit PR selection. The skill uses isolated worktrees and existing authentication, preserves required checks and code-owner protections, and reports blockers. Enabling auto-merge may merge immediately if all requirements are satisfied.
+Use `/dependabot-fix --dry-run` to inspect without changes, or `--pr 123` to select a candidate. Every run must display the candidate PRs and proposed actions in chat and wait for explicit user approval before any mutation. Selection is not approval. The user may approve a subset or repairs only; GitHub review/auto-merge needs its own authorization in the approved scope. The default batch handles minor/patch updates; majors require explicit selection. Enabling auto-merge may merge immediately if all requirements are satisfied.
 
 There are no repair workflows, publisher services, or new credentials to configure. GitHub Actions retains separate routine minor/patch and major groups, with advisory-driven security updates separate.
 
-The skill uses a dependency-free [local Node CLI](../../.agents/skills/dependabot-fix/scripts/dependabot.mjs) for `inspect`, `checkout`, `push`, and explicit `finalize --reviewed` operations. Repairs and final diff review remain agent-driven. Commands emit JSON; exit code `2` means blocked and `1` means an error. `inspect --pr <number> --expect-head <sha> --wait <seconds>` observes CI for a bounded period and refuses a changed head. All commands accept `--dry-run`; no command automatically diagnoses or rewrites code.
+The skill uses a dependency-free [local Node CLI](../../.agents/skills/dependabot-fix/scripts/dependabot.mjs) for `inspect`, `checkout`, `push`, and explicit `finalize --reviewed` operations. Repairs and final diff review remain agent-driven. Commands emit JSON by default; `inspect --format markdown` prints a candidate table for display. Exit code `2` means blocked and `1` means an error. `inspect --pr <number> --expect-head <sha> --wait <seconds>` observes CI for a bounded period and refuses a changed head. All commands accept `--dry-run`; no command automatically diagnoses or rewrites code. Chat approval is enforced by the skill; invoking CLI mutation commands directly remains an explicit user action, not a consent-checking mechanism.
 
 Run fixture-based CLI tests, including real local Git worktrees and a local bare remote, with `yarn nx run scripts-github:test-dependabot-skill`. Tests never push, approve, or merge real GitHub PRs.
 
@@ -75,11 +75,11 @@ The CLI runs from the feature branch; it does not need to exist on `master`. Wit
 ```bash
 CLI="$PWD/.agents/skills/dependabot-fix/scripts/dependabot.mjs"
 node "$CLI" --help
-node "$CLI" inspect --account YOUR_GITHUB_LOGIN
-node "$CLI" inspect --pr PR_NUMBER --account YOUR_GITHUB_LOGIN
+node "$CLI" inspect --account YOUR_GITHUB_LOGIN --format markdown
+node "$CLI" inspect --pr PR_NUMBER --account YOUR_GITHUB_LOGIN --format markdown
 ```
 
-An exit code of `2` means the inspected PR has blockers; read its JSON output. API/authentication errors exit `1`. Inspection never creates worktrees or changes GitHub state.
+An exit code of `2` means the inspected PR has blockers; read its report even on a nonzero exit. Omit `--format markdown` for JSON. API/authentication errors exit `1`. Inspection never creates worktrees or changes GitHub state.
 
 To preview a mutation without executing it, use `checkout`, `push`, or `finalize` with `--dry-run` and the PR's current `--expect-head` SHA (and `--worktree` for `push`). Mutation dry-runs check identity but do not simulate a repair or guarantee CI readiness; use `inspect` and the fixture tests for those checks. Omit `--dry-run` only when intentionally publishing repairs or submitting a review/auto-merge request.
 

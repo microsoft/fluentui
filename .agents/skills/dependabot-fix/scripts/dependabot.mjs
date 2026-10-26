@@ -8,12 +8,13 @@ import { parseArgs } from 'node:util';
 const repository = 'microsoft/fluentui';
 const shaPattern = /^[a-f0-9]{40}$/;
 const help = `Local Dependabot coordination (no automatic repairs).
-  inspect [--pr N ...] [--account LOGIN] [--expect-head SHA --wait SECONDS]
+  inspect [--pr N ...] [--account LOGIN] [--expect-head SHA --wait SECONDS] [--format json|markdown]
   checkout --pr N --expect-head SHA [--account LOGIN]
   push --pr N --expect-head SHA --worktree PATH [--account LOGIN]
   finalize --pr N --expect-head SHA --reviewed [--account LOGIN]
 All commands accept --dry-run. finalize can merge immediately when protections pass.
-Output is JSON. Blocked results exit 2; command errors exit 1.`;
+Output defaults to JSON; inspect --format markdown shows a candidate report.
+Blocked results exit 2; command errors exit 1.`;
 
 export function parseArguments(args) {
   const [command, ...options] = args;
@@ -34,6 +35,7 @@ export function parseArguments(args) {
       wait: { type: 'string' },
       reviewed: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
+      format: { type: 'string' },
     },
   });
   const prs = [...new Set(values.pr || [])].map(value => {
@@ -69,6 +71,9 @@ export function parseArguments(args) {
   if (values.reviewed && command !== 'finalize') {
     throw new Error('--reviewed is only valid for finalize');
   }
+  if (values.format !== undefined && (command !== 'inspect' || !['json', 'markdown'].includes(values.format))) {
+    throw new Error('--format json|markdown is only valid for inspect');
+  }
   if (command === 'finalize' && !values.reviewed && !values['dry-run']) {
     throw new Error('finalize requires --reviewed after reviewing the final diff and validation');
   }
@@ -81,7 +86,52 @@ export function parseArguments(args) {
     wait: Number(values.wait || 0),
     reviewed: values.reviewed,
     dryRun: values['dry-run'],
+    format: values.format || 'json',
   };
+}
+
+export function formatInspection(result) {
+  const cell = value =>
+    String(value ?? 'unknown')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/[\r\n]+/g, ' ')
+      .replace(/[\\|`*_[\]]/g, '\\$&');
+  const lines = [
+    '## Dependabot candidates - awaiting user approval',
+    '',
+    `Account: **${cell(result.account)}** / Repository: **${repository}** / PRs: **${result.pulls.length}**`,
+    '',
+  ];
+  if (!result.pulls.length) {
+    return [...lines, 'No matching open Dependabot PRs. Nothing will be changed.'].join('\n');
+  }
+  lines.push(
+    '| PR | Title | Head | CI | Review / merge | Proposed evaluation |',
+    '| --- | --- | --- | --- | --- | --- |',
+  );
+  for (const pull of result.pulls) {
+    const action =
+      pull.mergeable !== true || pull.reviewDecision === 'CHANGES_REQUESTED'
+        ? 'Report blocker; no changes'
+        : pull.checkState === 'failing'
+        ? 'Inspect failure and evaluate a scoped repair'
+        : pull.checkState === 'passing'
+        ? 'Review diff; no repair indicated'
+        : 'Observe/report checks; no changes';
+    lines.push(
+      `| [#${pull.pr}](https://github.com/${repository}/pull/${pull.pr}) | ${cell(pull.title)} | ${cell(
+        pull.head.slice(0, 7),
+      )} | ${cell(pull.checkState)} | ${cell(pull.reviewDecision)} / ${cell(pull.mergeState)} | ${action} |`,
+    );
+  }
+  return [
+    ...lines,
+    '',
+    'Update risk is not classified yet: review every update member; majors require explicit selection.',
+    'No PRs have been changed. Show this report to the user and get explicit approval of PRs and actions before checkout, repairs, pushes, GitHub reviews, or auto-merge.',
+  ].join('\n');
 }
 
 function execute(command, args, cwd) {
@@ -438,8 +488,9 @@ export function createCli({
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
-    const result = await createCli()(parseArguments(process.argv.slice(2)));
-    console.log(JSON.stringify(result, null, 2));
+    const options = parseArguments(process.argv.slice(2));
+    const result = await createCli()(options);
+    console.log(options.format === 'markdown' ? formatInspection(result) : JSON.stringify(result, null, 2));
     process.exitCode = result.status === 'error' ? 1 : result.status === 'blocked' ? 2 : 0;
   } catch (error) {
     console.error(JSON.stringify({ status: 'error', error: error.message }));

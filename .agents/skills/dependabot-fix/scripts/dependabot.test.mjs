@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { classifyChecks, createCli, parseArguments, remoteMatches } from './dependabot.mjs';
+import { classifyChecks, createCli, formatInspection, parseArguments, remoteMatches } from './dependabot.mjs';
 
 const head = 'a'.repeat(40);
 const base = 'b'.repeat(40);
@@ -137,9 +137,86 @@ test('strict arguments support repeatable PRs and reject unsafe/irrelevant optio
     ['checkout', '--pr', '123'],
     ['push', '--pr', '123', '--expect-head', head],
     ['finalize', '--pr', '123', '--expect-head', head],
+    ['inspect', '--format', 'html'],
+    ['checkout', '--pr', '123', '--expect-head', head, '--format', 'markdown'],
   ]) {
     assert.throws(() => parseArguments(args));
   }
+});
+
+test('inspection output defaults to JSON and accepts explicit Markdown reports', () => {
+  assert.equal(parseArguments(['inspect']).format, 'json');
+  assert.equal(parseArguments(['inspect', '--format=markdown']).format, 'markdown');
+});
+
+test('candidate report lists PRs, inspected heads, CI, proposed evaluation, and pending user approval', async () => {
+  const { run, state } = fixture();
+  const inspected = await createCli({ run })(parseArguments(['inspect', '--format', 'markdown']));
+  const report = formatInspection(inspected);
+  assert.match(report, /awaiting user approval/);
+  assert.match(report, /Account: \*\*maintainer\*\*/);
+  assert.match(report, /PRs: \*\*1\*\*/);
+  assert.match(report, /\[#123\]\(https:\/\/github.com\/microsoft\/fluentui\/pull\/123\)/);
+  assert.match(report, /Dependency update/);
+  assert.match(report, /aaaaaaa/);
+  assert.match(report, /passing/);
+  assert.match(report, /Review diff; no repair indicated/);
+  assert.match(report, /get explicit approval of PRs and actions/);
+  assert.equal(mutations(state.calls).length, 0);
+});
+
+test('blocked candidate reports remain visible and do not present blocked/pending PRs as repair-ready', async () => {
+  const { run } = fixture({ required: [{ name: 'main', bucket: 'fail' }] });
+  const inspected = await createCli({ run })(parseArguments(['inspect']));
+  assert.equal(inspected.status, 'blocked');
+  assert.match(formatInspection(inspected), /Inspect failure and evaluate a scoped repair/);
+  assert.match(
+    formatInspection({ ...inspected, pulls: [{ ...inspected.pulls[0], mergeable: false }] }),
+    /Report blocker; no changes/,
+  );
+  assert.match(
+    formatInspection({ ...inspected, pulls: [{ ...inspected.pulls[0], checkState: 'pending' }] }),
+    /Observe\/report checks; no changes/,
+  );
+});
+
+test('candidate reports escape untrusted titles and do not interpret their markup or table delimiters', () => {
+  const report = formatInspection({
+    account: 'maintainer',
+    pulls: [
+      {
+        pr: 123,
+        head,
+        title: '<script> | [click](bad)\nnext',
+        checkState: 'passing',
+        reviewDecision: 'REVIEW_REQUIRED',
+        mergeState: 'clean',
+        mergeable: true,
+      },
+    ],
+  });
+  assert.ok(report.includes('&lt;script&gt; \\| \\[click\\](bad) next'));
+  assert.ok(!report.includes('<script>'));
+});
+
+test('empty candidate reports explicitly stop without proposing mutations', () => {
+  const report = formatInspection({ account: 'maintainer', pulls: [] });
+  assert.match(report, /PRs: \*\*0\*\*/);
+  assert.match(report, /No matching open Dependabot PRs. Nothing will be changed./);
+  assert.ok(!report.includes('| PR |'));
+});
+
+test('skill requires a chat-visible report and explicit approval before mutation steps', () => {
+  const skill = readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8');
+  assert.match(skill, /Invocation authorizes \*\*read-only discovery only\*\*/);
+  assert.match(skill, /Render the candidate table in the chat response/);
+  assert.match(skill, /Then use `ask_user`/);
+  assert.match(skill, /Unavailable\/declined\/ambiguous approval means \*\*no mutations\*\*/);
+  assert.match(skill, /Repair-only approval never authorizes review\/auto-merge/);
+  assert.ok(
+    skill.indexOf('Mandatory visible report and approval checkpoint') < skill.indexOf('## 2. Repair and validate'),
+  );
+  assert.ok(!skill.includes('Invocation authorizes eligible PR repairs'));
 });
 
 test('check classification never equates missing, cancelled, or unfinished checks with passing', () => {
