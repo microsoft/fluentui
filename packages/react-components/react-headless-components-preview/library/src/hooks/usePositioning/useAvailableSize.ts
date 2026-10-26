@@ -11,6 +11,55 @@ export const positioningSizeStyles = {
   maxWidth: `var(${AVAILABLE_WIDTH_PROPERTY}, revert-layer)`,
 };
 
+function getAvailableSpace(
+  area: string,
+  axis: 'block' | 'inline',
+  start: number,
+  end: number,
+  targetStart: number,
+  targetEnd: number,
+  reverse = false,
+): number {
+  if (area.startsWith(`${axis}-start`)) {
+    return reverse ? end - targetEnd : targetStart - start;
+  }
+  if (area.startsWith(`${axis}-end`)) {
+    return reverse ? targetStart - start : end - targetEnd;
+  }
+  if (area.includes(`span-${axis}-start`)) {
+    return reverse ? end - targetStart : targetEnd - start;
+  }
+  if (area.includes(`span-${axis}-end`)) {
+    return reverse ? targetEnd - start : end - targetStart;
+  }
+  return end - start;
+}
+
+function getBoxSpacing(styles: CSSStyleDeclaration, sides: readonly string[]): [number, number] {
+  let margins = 0;
+  let insets = 0;
+  for (const side of sides) {
+    margins += parseFloat(styles.getPropertyValue(`margin-${side}`)) || 0;
+    if (styles.boxSizing !== 'border-box') {
+      insets +=
+        (parseFloat(styles.getPropertyValue(`padding-${side}`)) || 0) +
+        (parseFloat(styles.getPropertyValue(`border-${side}-width`)) || 0);
+    }
+  }
+  return [margins, insets];
+}
+
+function getMaximumSize(
+  available: number[],
+  crossAvailable: number[],
+  crossSize: number,
+  extent: number,
+  spacing: number,
+): string {
+  const fitting = available.filter((_, index) => crossSize <= crossAvailable[index]);
+  return `${Math.max(0, Math.min(extent, Math.max(...(fitting.length ? fitting : available))) - spacing)}px`;
+}
+
 export function useAvailableSize(
   container: HTMLElement | null,
   target: HTMLElement | null,
@@ -18,10 +67,9 @@ export function useAvailableSize(
   autoSize: PositioningProps['autoSize'],
   areas: readonly string[],
 ): () => void {
-  const heightEnabled =
-    autoSize === true || autoSize === 'always' || autoSize === 'height' || autoSize === 'height-always';
-  const widthEnabled =
-    autoSize === true || autoSize === 'always' || autoSize === 'width' || autoSize === 'width-always';
+  const bothEnabled = autoSize === true || autoSize === 'always';
+  const heightEnabled = bothEnabled || autoSize === 'height' || autoSize === 'height-always';
+  const widthEnabled = bothEnabled || autoSize === 'width' || autoSize === 'width-always';
   const enabled = heightEnabled || widthEnabled;
   const update = useEventCallback(() => {
     const win = targetDocument?.defaultView;
@@ -48,69 +96,34 @@ export function useAvailableSize(
         left = Math.max(left, rect.left + containingBlock.clientLeft);
         right = Math.min(right, rect.left + containingBlock.clientLeft + containingBlock.clientWidth);
       }
-      const margins = (parseFloat(styles.marginTop) || 0) + (parseFloat(styles.marginBottom) || 0);
-      const insets =
-        styles.boxSizing === 'border-box'
-          ? 0
-          : (parseFloat(styles.paddingTop) || 0) +
-            (parseFloat(styles.paddingBottom) || 0) +
-            (parseFloat(styles.borderTopWidth) || 0) +
-            (parseFloat(styles.borderBottomWidth) || 0);
+      const [margins, insets] = getBoxSpacing(styles, ['top', 'bottom']);
       const rtl = styles.direction === 'rtl';
-      const inlineMargins = (parseFloat(styles.marginLeft) || 0) + (parseFloat(styles.marginRight) || 0);
-      const inlineInsets =
-        styles.boxSizing === 'border-box'
-          ? 0
-          : (parseFloat(styles.paddingLeft) || 0) +
-            (parseFloat(styles.paddingRight) || 0) +
-            (parseFloat(styles.borderLeftWidth) || 0) +
-            (parseFloat(styles.borderRightWidth) || 0);
-      const inlineAvailable = areas.map(area => {
-        if (area.startsWith('inline-start')) {
-          return rtl ? right - targetRect.right : targetRect.left - left;
-        }
-        if (area.startsWith('inline-end')) {
-          return rtl ? targetRect.left - left : right - targetRect.right;
-        }
-        if (area.includes('span-inline-start')) {
-          return rtl ? right - targetRect.left : targetRect.right - left;
-        }
-        if (area.includes('span-inline-end')) {
-          return rtl ? targetRect.right - left : right - targetRect.left;
-        }
-        return right - left;
-      });
-      const available = areas.map(area => {
-        if (area.startsWith('block-start')) {
-          return targetRect.top - top;
-        }
-        if (area.startsWith('block-end')) {
-          return bottom - targetRect.bottom;
-        }
-        if (area.includes('span-block-start')) {
-          return targetRect.bottom - top;
-        }
-        if (area.includes('span-block-end')) {
-          return bottom - targetRect.top;
-        }
-        return bottom - top;
-      });
+      const [inlineMargins, inlineInsets] = getBoxSpacing(styles, ['left', 'right']);
+      const surfaceRect = container.getBoundingClientRect();
+      const available = areas.map(area =>
+        getAvailableSpace(area, 'block', top, bottom, targetRect.top, targetRect.bottom),
+      );
+      const inlineAvailable = areas.map(area =>
+        getAvailableSpace(area, 'inline', left, right, targetRect.left, targetRect.right, rtl),
+      );
       // A cap based only on the requested area would shrink the menu before native fallbacks can run.
       if (heightEnabled) {
-        const surfaceWidth = container.getBoundingClientRect().width;
-        const fittingAreas = widthEnabled
-          ? available
-          : available.filter((_, index) => surfaceWidth + inlineMargins <= inlineAvailable[index]);
-        const candidates = fittingAreas.length ? fittingAreas : available;
-        height = `${Math.max(0, Math.min(bottom - top, Math.max(...candidates)) - margins - insets)}px`;
+        height = getMaximumSize(
+          available,
+          inlineAvailable,
+          widthEnabled ? -Infinity : surfaceRect.width + inlineMargins,
+          bottom - top,
+          margins + insets,
+        );
       }
       if (widthEnabled) {
-        const surfaceHeight = container.getBoundingClientRect().height;
-        const fittingAreas = heightEnabled
-          ? inlineAvailable
-          : inlineAvailable.filter((_, index) => surfaceHeight + margins <= available[index]);
-        const candidates = fittingAreas.length ? fittingAreas : inlineAvailable;
-        width = `${Math.max(0, Math.min(right - left, Math.max(...candidates)) - inlineMargins - inlineInsets)}px`;
+        width = getMaximumSize(
+          inlineAvailable,
+          available,
+          heightEnabled ? -Infinity : surfaceRect.height + margins,
+          right - left,
+          inlineMargins + inlineInsets,
+        );
       }
     }
 
@@ -149,21 +162,26 @@ export function useAvailableSize(
     }
 
     const observer = win.ResizeObserver ? new win.ResizeObserver(update) : undefined;
+    const eventTargets = [win, win.visualViewport];
+    const events = ['resize', 'scroll'];
+    const listenerOptions = { capture: true, passive: true };
     if (enabled && target) {
       observer?.observe(target);
       observer?.observe(container);
-      win.addEventListener('resize', update);
-      win.addEventListener('scroll', update, { capture: true, passive: true });
-      win.visualViewport?.addEventListener('resize', update);
-      win.visualViewport?.addEventListener('scroll', update);
+      for (const eventTarget of eventTargets) {
+        for (const event of events) {
+          eventTarget?.addEventListener(event, update, listenerOptions);
+        }
+      }
     }
 
     return () => {
       observer?.disconnect();
-      win.removeEventListener('resize', update);
-      win.removeEventListener('scroll', update, { capture: true });
-      win.visualViewport?.removeEventListener('resize', update);
-      win.visualViewport?.removeEventListener('scroll', update);
+      for (const eventTarget of eventTargets) {
+        for (const event of events) {
+          eventTarget?.removeEventListener(event, update, listenerOptions);
+        }
+      }
       container.style.removeProperty(AVAILABLE_HEIGHT_PROPERTY);
       container.style.removeProperty(AVAILABLE_WIDTH_PROPERTY);
     };

@@ -4,10 +4,18 @@ import { Menu, MenuPopover, MenuList, MenuItem, MenuTrigger } from './';
 import { Tooltip } from '../Tooltip';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { MenuProps } from './Menu.types';
+import { polyfillBodyAndObserve, supportsFocusGroup } from '@microsoft/focusgroup-polyfill';
 
+polyfillBodyAndObserve();
 const mount = (element: JSXElement) => mountBase(element);
 
 describe('Menu', () => {
+  before(() => {
+    if (Cypress.env('nativeFocusgroup')) {
+      expect(supportsFocusGroup(), 'native focusgroup support with no polyfill').to.be.true;
+    }
+  });
+
   describe('covering-state styling contract', () => {
     let originalDir: string | null;
     beforeEach(() => {

@@ -105,6 +105,33 @@ describe('positioning available size', () => {
     },
   );
 
+  it.each([
+    ['ltr', 'before', 200],
+    ['ltr', 'after', 520],
+    ['rtl', 'before', 520],
+    ['rtl', 'after', 200],
+  ] as const)('sizes a pinned %s %s surface along the inline axis', (direction, position, expected) => {
+    const { getByTestId } = render(
+      <Surface options={{ target, autoSize: 'width', position, pinned: true }} style={{ direction }} />,
+    );
+    expect(getByTestId('surface').style.getPropertyValue(AVAILABLE_WIDTH_PROPERTY)).toBe(`${expected}px`);
+  });
+
+  it('removes all viewport listeners when the sizing hook unmounts', () => {
+    const add = jest.spyOn(window, 'addEventListener');
+    const remove = jest.spyOn(window, 'removeEventListener');
+    const { unmount } = render(<Surface options={{ target, autoSize: true }} />);
+    const resize = add.mock.calls.find(
+      ([event, , options]) => event === 'resize' && typeof options === 'object' && options.passive,
+    );
+    const scroll = add.mock.calls.find(([event, listener]) => event === 'scroll' && listener === resize?.[1]);
+    expect(resize).toBeDefined();
+    expect(scroll).toBeDefined();
+    unmount();
+    expect(remove).toHaveBeenCalledWith(...resize!);
+    expect(remove).toHaveBeenCalledWith(...scroll!);
+  });
+
   it('cleans both reserved properties from replaced and unmounted containers', () => {
     const { getByTestId, rerender, unmount } = render(<Surface options={{ target, autoSize: true }} />);
     const previous = getByTestId('surface');
