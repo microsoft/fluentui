@@ -141,9 +141,13 @@ const Example = ({
   );
 };
 
-const OwnershipExample = ({ scenario }: { scenario: 'remove' | 'commit' | 'iframe' | 'content' | 'ancestor' }) => {
+const OwnershipExample = ({
+  scenario,
+}: {
+  scenario: 'remove' | 'replace' | 'commit' | 'iframe' | 'content' | 'ancestor';
+}) => {
   const [step, setStep] = React.useState(0);
-  const value = step === 1 || step === 3 ? 'one' : 'two';
+  const value = scenario === 'replace' ? (step === 2 ? 'one' : 'two') : step === 1 || step === 3 ? 'one' : 'two';
   const previousRef = React.useRef<HTMLButtonElement>(null);
   const outsideRef = React.useRef<HTMLButtonElement>(null);
   const nextRef = React.useCallback(
@@ -179,6 +183,7 @@ const OwnershipExample = ({ scenario }: { scenario: 'remove' | 'commit' | 'ifram
               scenario === 'remove' && step === 1
                 ? null
                 : {
+                    as: scenario === 'replace' && step > 0 ? 'a' : 'button',
                     navType: 'prev',
                     altText: null,
                     children: 'Previous',
@@ -435,6 +440,27 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     cy.get('[data-testid="ownership-step-1"]').trigger('click');
     cy.get('@commitOutsideFocus').should('have.been.calledOnce');
     cy.get('[data-testid="ownership-next"]').should('not.have.focus');
+  });
+
+  it('does not inherit ownership when Previous changes from a button to an anchor', () => {
+    mount(<OwnershipExample scenario="replace" />);
+    cy.get('[data-testid="ownership-previous"]')
+      .focus()
+      .then(previous => {
+        const original = previous[0];
+        cy.get('[data-testid="ownership-step-1"]').trigger('click');
+        cy.get('[data-testid="ownership-previous"]')
+          .should('have.prop', 'tagName', 'A')
+          .and('not.have.focus')
+          .then(replacement => expect(replacement[0]).not.to.equal(original));
+      });
+    cy.get('[data-testid="ownership-step-2"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('not.be.visible');
+    cy.get('[data-testid="ownership-next"]').should('not.have.focus');
+    cy.get('[data-testid="ownership-step-3"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-2"]').trigger('click');
+    cy.get('[data-testid="ownership-next"]').should('have.focus').and('have.text', 'Next');
   });
 
   it('retries when tabindex changes without a footer render', () => {

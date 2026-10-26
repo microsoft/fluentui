@@ -406,6 +406,34 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
     expect(getByTestId('next')).not.toHaveFocus();
   });
 
+  it('does not carry ownership to a different Previous host element', async () => {
+    const { getByTestId, rerender } = render(<Example />);
+    const originalPrevious = getByTestId('previous');
+    originalPrevious.focus();
+    rerender(<Example previous={{ as: 'a' }} />);
+    await flushFocus();
+    const replacementPrevious = getByTestId('previous');
+    expect(originalPrevious).not.toBeInTheDocument();
+    expect(replacementPrevious.tagName).toBe('A');
+    expect(replacementPrevious).not.toHaveFocus();
+    rerender(<Example value="one" previous={{ as: 'a' }} />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+
+    rerender(<Example previous={{ as: 'a' }} />);
+    replacementPrevious.focus();
+    rerender(<Example value="one" previous={{ as: 'a' }} />);
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('does not transfer when Previous is replaced in the same boundary commit', async () => {
+    const { getByTestId, rerender } = render(<Example />);
+    getByTestId('previous').focus();
+    rerender(<Example value="one" previous={{ as: 'a' }} />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+  });
+
   it('preserves outside focus and blur performed by a ref callback during the boundary commit', async () => {
     const previousRef = React.createRef<HTMLButtonElement>();
     const outsideRef = React.createRef<HTMLButtonElement>();
