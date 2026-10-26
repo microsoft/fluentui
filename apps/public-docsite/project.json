@@ -5,6 +5,27 @@
   "implicitDependencies": [],
   "tags": ["v8"],
   "targets": {
+    "test": {
+      "command": "yarn run -T jest",
+      "options": {
+        "cwd": "apps/public-docsite"
+      }
+    },
+    "test-type-check": {
+      "command": "yarn run -T tsc --noEmit --baseUrl . -p tsconfig.spec.json",
+      "options": {
+        "cwd": "apps/public-docsite"
+      },
+      "dependsOn": ["prebundle"]
+    },
+    "format": {},
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "yarn run -T eslint src",
+        "cwd": "apps/public-docsite"
+      }
+    },
     "type-check": {
       "dependsOn": ["prebundle"]
     },
