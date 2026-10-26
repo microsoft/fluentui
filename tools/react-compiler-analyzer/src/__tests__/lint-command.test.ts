@@ -790,8 +790,6 @@ describe('lint command — scan log wrapping', () => {
       "<details>
       <summary>📋 Scan & compile log</summary>
 
-      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
-
       ## Scanning: <TEMP>
          Package: wrap-test-lint-pkg
          Mode: infer
@@ -836,10 +834,11 @@ describe('lint command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Lint ━━
 
+      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
+
       📋 Scan & compile log
       ─────────────────────
-
-      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
 
       Scanning: <TEMP>
       ────────────────
@@ -851,6 +850,8 @@ describe('lint command — scan log wrapping', () => {
       Analyzing: <TEMP>/src/L.tsx
         [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
 
+      Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       wrap-test-lint-pkg
       ──────────────────

@@ -65,6 +65,10 @@ one directive per probe while retaining all others. Accepted outcomes with and w
 directive determine whether it affects acceptance in the selected Babel mode. Probe failures
 remain broken results, not evidence of redundancy. File-level directives are preserved with
 an explicit limitation. Revalidated rows carry `justified: true` and `revalidated: true`.
+Their `evidence` separates before/after outcomes and memo statistics, acceptance changes,
+and reported-statistics changes. Missing events/counters and failed probes are unavailable,
+not evidence of equivalence. Emitted optimization is `not-measured`: even identical counters
+do not establish identical output. The recorded profile qualifies every redundancy conclusion.
 Justified source is protected inside the fixer as well as the CLI. Redundant, broken, and
 conflicting revalidated directives fail lint even alongside `--fix`.
 
@@ -85,22 +89,33 @@ explicit requests rather than persistent configuration.
 
 `analyze --annotate <mode> --dry-run` builds and validates the same edit plan but never invokes
 the writer. It lists proposed targets in human output. JSON keeps actual write counters at zero
-and adds only `dryRun: true` and `planned` counters; normal output shapes are unchanged.
-Planned insertion targets are intentionally omitted from JSON to keep the contract compact.
-Use human output to inspect target locations, rendered relative to the workspace.
+and adds `dryRun: true` and `planned` counters. Both preview and write JSON include `targets`
+with relative paths, directive, preventive/opt-in rationale, reported-statistics classification,
+and risk rules. Zero slots never disqualify a preventive opt-out. Rejected functions remain
+report-only, including those rejected because of a suppression.
 
 ## Memo-cache statistics
 
 Compiler acceptance is not itself an optimization signal. Human summaries separate accepted
-functions with an emitted memo cache, with no emitted cache, and with unavailable statistics.
+functions with positive reported memo slots, zero reported slots, and unavailable statistics.
 Skips and errors complete the partition; package percentages use the package's total function count.
 
-The compact JSON counter `summary.memoCacheEmitted` counts accepted functions whose reported
-`memoStats.memoSlots` is greater than zero. Other compiler counters describe memo blocks, values,
-and pruned work. Unreported counters stay `null`; a real reported zero remains `0`.
+JSON counters `summary.reportedMemoCachePositive`, `reportedMemoCacheZero`, and
+`reportedMemoCacheUnavailable` partition accepted functions using reported `memoStats.memoSlots`.
+Other counters describe reported memo blocks, values, and pruned work. Unreported counters
+stay `null`; a real reported zero remains `0`.
 
-These counters describe emitted compiler behavior, not saved render time. Use application tests and
-profiling to establish whether a migration preserves behavior and improves relevant workflows.
+RCA runs with `noEmit: true`: these counters do not verify emitted caching, nor identify whether a
+particular risky operation was cached. `emittedCaching: "unverified"` makes this boundary explicit.
+Use application tests and profiling to establish safety and performance.
+
+## Suppression-related rejection
+
+Compiler suppression categories (or a narrowly recognized compiler reason) classify
+`rejectionKind: "suppression-related"`. Comment presence alone is not evidence. Raw diagnostic
+reasons/categories and risk findings survive normalization, including mixed-cause rejection.
+The focused human section reports affected functions, those with risks, and the analyzed denominator.
+Another compiler/profile may optimize these functions, but RCA does not annotate them automatically.
 
 ## Manual-memo candidates
 
@@ -140,9 +155,10 @@ canonical terminal reasons and locations without embedding source ASTs, code fra
 event streams, Git provenance, or resolver statistics. This keeps reports suitable for automation
 without retaining large diagnostic payloads.
 
-`analyze` JSON is validated by the shipped `rca.analyze.schema.json`; config validation uses
+Schema v3 `analyze` JSON is validated by the shipped `rca.analyze.schema.json`; `lint` uses
+`rca.lint.schema.json` (register the analyze schema for its shared definitions). Config validation uses
 `rca.config.schema.json`. These contracts are separate from the package's release version.
-The [version migration guide](../MIGRATION.md) records the experimental JSON v1-to-v2 transition.
+The [version migration guide](../MIGRATION.md) describes the required JSON consumer updates.
 
 ## Source map
 

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.spec.json",
+  "include": ["differential/**/*.ts", "jest.differential.config.ts"],
+  "exclude": []
+}

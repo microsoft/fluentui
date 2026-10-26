@@ -465,7 +465,7 @@ describe("applyAnnotations — 'all-safe' mode", () => {
       const results = deriveCoverage(compiled);
       expect(results[0]).toMatchObject({ status: 'compiled', risks: [expect.anything()] });
 
-      expect(await applyAnnotations(results, mode)).toEqual({
+      expect(await applyAnnotations(results, mode)).toMatchObject({
         filesModified: 1,
         functionsAnnotated: 0,
         functionsBailedOut: 1,

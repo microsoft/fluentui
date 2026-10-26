@@ -19,6 +19,7 @@
     "docs",
     "*.md",
     "rca.analyze.schema.json",
+    "rca.lint.schema.json",
     "rca.config.schema.json",
     "skills",
     "dist"
@@ -32,7 +33,10 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@babel/core-differential": "npm:@babel/core@7.29.6",
     "@babel/types": "7.29.0",
-    "@types/yargs": "^17.0.33"
+    "@swc/core-differential": "npm:@swc/core@1.16.18",
+    "@types/yargs": "^17.0.33",
+    "babel-plugin-react-compiler-differential": "npm:babel-plugin-react-compiler@1.0.0"
   }
 }
