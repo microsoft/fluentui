@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 26 Oct 2026 03:43:30 GMT",
+      "version": "1.1.41",
+      "tag": "@fluentui/chart-utilities_v1.1.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-baambati@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "91af7fa0b8a7db0f6c6ea56309255d5a8deba639",
+            "comment": "fix(chart-utilities): prevent unbounded allocation from Plotly shapes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Oct 2026 07:11:32 GMT",
       "version": "1.1.40",
       "tag": "@fluentui/chart-utilities_v1.1.40",
