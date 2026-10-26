@@ -5,41 +5,19 @@ import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-headles
 
 import styles from './popover.module.css';
 
-export const HoverWithPortal = (): React.ReactNode => {
-  const [mountNode, setMountNode] = React.useState<HTMLDivElement | null>(null);
-  return (
-    <>
-      <Popover openOnHover>
-        <PopoverTrigger>
-          <button className={styles.trigger}>Hover to open Portal content</button>
-        </PopoverTrigger>
-        <PopoverSurface className={styles.surface}>
-          <p className={styles.body}>
-            Hover the portalled button, focus it, then press Tab without moving the pointer. Both panels stay visible
-            until the pointer leaves.
-          </p>
-          {mountNode && (
-            <Portal mountNode={mountNode}>
-              <div className={styles.surface}>
-                <button className={styles.trigger}>Portalled hover content</button>
-              </div>
-            </Portal>
-          )}
-        </PopoverSurface>
-      </Popover>
-      <div ref={setMountNode} className={styles.portalTarget} />
-      <button className={styles.trigger}>After portalled hover content</button>
-    </>
-  );
-};
-
 export const TriggerPortal = (): React.ReactNode => {
-  const [target, setTarget] = React.useState<{ root: ShadowRoot; mountNode: HTMLDivElement } | null>(null);
+  const [target, setTarget] = React.useState<{
+    root: ShadowRoot;
+    mountNode: HTMLDivElement;
+    outsideMountNode: Element;
+  } | null>(null);
   const attachRoot = React.useCallback((host: HTMLDivElement | null) => {
     if (host) {
       const root = host.shadowRoot ?? host.attachShadow({ mode: 'open' });
       const mountNode = root.querySelector('div') ?? root.appendChild(host.ownerDocument.createElement('div'));
-      setTarget(previous => (previous?.root === root ? previous : { root, mountNode }));
+      const outsideMountNode =
+        mountNode.nextElementSibling ?? root.appendChild(host.ownerDocument.createElement('div'));
+      setTarget(previous => (previous?.root === root ? previous : { root, mountNode, outsideMountNode }));
     }
   }, []);
   return (
@@ -64,7 +42,7 @@ export const TriggerPortal = (): React.ReactNode => {
         </PopoverSurface>
       </Popover>
       <div ref={attachRoot} />
-      {target && createPortal(<button>Outside shadow sibling</button>, target.root)}
+      {target && createPortal(<button>Outside shadow sibling</button>, target.outsideMountNode)}
     </>
   );
 };
