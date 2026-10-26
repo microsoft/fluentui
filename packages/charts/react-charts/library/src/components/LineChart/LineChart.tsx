@@ -1805,7 +1805,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       _uniqueCallOutID = null;
       setActivePoint('');
       setNearestCircleToHighlight(null);
-      setClickPosition({ x: 0, y: 0 });
       if (isPopoverOpen) {
         setPopoverOpen(false);
       }

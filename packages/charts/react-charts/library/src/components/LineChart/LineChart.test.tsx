@@ -1261,9 +1261,14 @@ describe('LineChart - mouse events', () => {
     },
   );
 
-  it.each([false, true])(
-    'Should restore focus and point callout for path-rendered lines (optimized: %s)',
-    optimizeLargeData => {
+  it.each([
+    { optimizeLargeData: false, x: 0, y: 0 },
+    { optimizeLargeData: true, x: 0, y: 0 },
+    { optimizeLargeData: false, x: 35, y: 45 },
+    { optimizeLargeData: true, x: 35, y: 45 },
+  ])(
+    'Should reopen the path-line callout at the same position (optimized: $optimizeLargeData, x: $x, y: $y)',
+    ({ optimizeLargeData, x, y }) => {
       const data = {
         ...basicChartPoints,
         lineChartData: basicPoints.map(line => ({
@@ -1294,7 +1299,7 @@ describe('LineChart - mouse events', () => {
       )!;
       const highlightRect = highlightCircle.getBoundingClientRect();
       Object.defineProperty(highlightCircle, 'getBoundingClientRect', {
-        value: () => ({ ...highlightRect, x: 0, y: 0 }),
+        value: () => ({ ...highlightRect, x, y }),
       });
       act(() => beforeChart.focus());
 
