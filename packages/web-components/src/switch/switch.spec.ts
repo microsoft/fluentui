@@ -261,6 +261,21 @@ test.describe('Switch', () => {
     await expect(page).toHaveURL(/\?switch=foo/);
   });
 
+  test('should submit the form via the default submit button when Enter is pressed', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate(/* html */ `
+      <form action="foo">
+        <${tagName} name="switch"></${tagName}>
+        <button type="submit" name="submitter" value="default">submit</button>
+      </form>
+    `);
+
+    await element.press('Enter');
+
+    await expect(page).toHaveURL(/foo\?submitter=default$/);
+  });
+
   test('should submit the values of multiple switches when checked', async ({ fastPage, page }) => {
     const switches = page.locator(tagName);
     const element1 = switches.nth(0);
