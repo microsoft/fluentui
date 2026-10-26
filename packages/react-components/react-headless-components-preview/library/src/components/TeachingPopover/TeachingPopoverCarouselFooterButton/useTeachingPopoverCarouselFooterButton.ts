@@ -21,19 +21,26 @@ function isFocusable(element: HTMLElement): boolean {
     return false;
   }
 
+  let child: Node = element;
   for (
     let ancestor: Node | null = element;
     isHTMLElement(ancestor);
     ancestor = ancestor.assignedSlot ?? getParent(ancestor, { skipVirtual: true })
   ) {
+    const style = win.getComputedStyle(ancestor);
     if (
       ancestor.hidden ||
       ancestor.hasAttribute('inert') ||
       ancestor.getAttribute('aria-hidden')?.toLowerCase() === 'true' ||
-      win.getComputedStyle(ancestor).display === 'none'
+      style.display === 'none' ||
+      (ancestor !== element && style.contentVisibility === 'hidden') ||
+      (ancestor.tagName === 'DETAILS' &&
+        !ancestor.hasAttribute('open') &&
+        Array.from(ancestor.children).find(candidate => candidate.tagName === 'SUMMARY') !== child)
     ) {
       return false;
     }
+    child = ancestor;
   }
   return true;
 }

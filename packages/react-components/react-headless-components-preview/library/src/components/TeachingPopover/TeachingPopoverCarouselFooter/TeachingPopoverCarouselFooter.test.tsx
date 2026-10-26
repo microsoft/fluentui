@@ -232,6 +232,81 @@ describe('TeachingPopoverCarouselFooter focus recovery', () => {
     await waitFor(() => expect(getByTestId('next')).toHaveFocus());
   });
 
+  it.each(['content-visibility', 'details'])('recovers when a %s ancestor suppresses Previous', async mechanism => {
+    const Pair = ({ suppressed = false }: { suppressed?: boolean }) => {
+      const previous = (
+        <TeachingPopoverCarouselFooterButton navType="prev" altText="Restart" data-testid="suppressed-previous">
+          Previous
+        </TeachingPopoverCarouselFooterButton>
+      );
+      return (
+        <TeachingPopoverCarousel value={suppressed ? 'one' : 'two'}>
+          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooter next={{ navType: 'next', altText: 'Done', children: 'Next' }}>
+            {mechanism === 'details' ? (
+              <details open={!suppressed}>
+                <summary>Navigation</summary>
+                {previous}
+              </details>
+            ) : (
+              <div style={{ contentVisibility: suppressed ? 'hidden' : 'visible' }}>{previous}</div>
+            )}
+          </TeachingPopoverCarouselFooter>
+        </TeachingPopoverCarousel>
+      );
+    };
+    const { getByTestId, getByRole, rerender } = render(<Pair />);
+    act(() => getByTestId('suppressed-previous').focus());
+    rerender(<Pair suppressed />);
+    await waitFor(() => expect(getByRole('button', { name: 'Next' })).toHaveFocus());
+  });
+
+  it.each([
+    ['hidden contents', false],
+    ['closed details', false],
+    ['first summary', true],
+    ['later summary', false],
+    ['root hidden contents', true],
+  ] as const)('handles a recovery destination in %s', async (location, shouldFocus) => {
+    const Pair = ({ hidePrevious = false }: { hidePrevious?: boolean }) => {
+      const next = (
+        <TeachingPopoverCarouselFooterButton
+          navType="next"
+          altText="Done"
+          data-testid="suppression-next"
+          style={location === 'root hidden contents' ? { contentVisibility: 'hidden' } : undefined}
+        >
+          Next
+        </TeachingPopoverCarouselFooterButton>
+      );
+      return (
+        <TeachingPopoverCarousel value="one">
+          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooterProvider>
+            <TeachingPopoverCarouselFooterButton navType="prev" altText="Previous" hidden={hidePrevious}>
+              Previous
+            </TeachingPopoverCarouselFooterButton>
+            {location === 'closed details' || location === 'first summary' || location === 'later summary' ? (
+              <details>
+                <div>Before the first summary</div>
+                <summary>{location === 'first summary' ? next : 'Navigation'}</summary>
+                {location === 'later summary' ? <summary>{next}</summary> : location === 'closed details' && next}
+              </details>
+            ) : (
+              <div style={location === 'hidden contents' ? { contentVisibility: 'hidden' } : undefined}>{next}</div>
+            )}
+          </TeachingPopoverCarouselFooterProvider>
+        </TeachingPopoverCarousel>
+      );
+    };
+    const { getByRole, getByTestId, rerender } = render(<Pair />);
+    act(() => getByRole('button', { name: 'Previous' }).focus());
+    const focus = jest.spyOn(getByTestId('suppression-next'), 'focus');
+    rerender(<Pair hidePrevious />);
+    expect(focus).toHaveBeenCalledTimes(shouldFocus ? 1 : 0);
+  });
+
   it('recovers after a replaced Next callback ref reattaches', async () => {
     const firstRef = jest.fn();
     const replacementRef = jest.fn();
