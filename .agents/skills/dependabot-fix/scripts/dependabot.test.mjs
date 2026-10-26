@@ -221,10 +221,12 @@ test('skill requires a chat-visible report and explicit approval before mutation
 
 test('skill proposes approved closure for updates fully present on master, not a silent skip', () => {
   const skill = readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8');
-  assert.match(skill, /Already present on master -> propose "Close PR \(after approval\)", not "Skip; no changes"/);
+  assert.match(skill, /Already present on master -> propose "Close superseded PR"/);
+  assert.match(skill, /no GitHub PR review approval is needed/);
   assert.match(skill, /For groups, all members must be superseded/);
   assert.match(skill, /root lockfile\/transitive remediation/);
-  assert.match(skill, /Only execute closure when the user-approved action is \*\*Close PR\*\*/);
+  assert.match(skill, /Only execute closure when the user-confirmed table action is \*\*Close superseded PR\*\*/);
+  assert.match(skill, /do not request a GitHub PR approval or a second closure confirmation/);
   assert.match(
     skill,
     /If the head or master changed, refresh the supersession proof\/report and obtain approval again/,
@@ -232,6 +234,40 @@ test('skill proposes approved closure for updates fully present on master, not a
   assert.match(skill, /gh pr close "\$PR" --repo microsoft\/fluentui/);
   assert.match(skill, /without deleting the branch/);
   assert.ok(!skill.includes('Skip drafts/closed/obsolete/excluded'));
+});
+
+test('skill supplies concrete All/List choices and a structured per-PR radio picker', () => {
+  const skill = readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8');
+  const schemas = [...skill.matchAll(/```json\n([\s\S]*?)\n```/g)].map(match => JSON.parse(match[1]));
+  assert.equal(schemas.length, 2);
+  const decision = schemas[0].properties.action;
+  assert.equal(decision.type, 'string');
+  assert.deepEqual(
+    decision.oneOf.map(option => option.const),
+    ['all', 'list', 'inspect', 'cancel'],
+  );
+  assert.equal(decision.default, 'inspect');
+  const selection = schemas[1].properties.pr_123;
+  assert.equal(selection.type, 'string');
+  assert.deepEqual(
+    selection.oneOf.map(option => option.const),
+    ['run', 'skip'],
+  );
+  assert.equal(selection.default, 'skip');
+  assert.match(selection.title, /microsoft\/fluentui#123.*Close superseded PR/);
+  assert.match(skill, /Generate `pr_<number>` fields from the displayed candidates/);
+  assert.match(skill, /Submit all PR groups in one question/);
+});
+
+test('skill continues the approved queue instead of asking for PR numbers or a redundant confirmation', () => {
+  const skill = readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8');
+  assert.match(skill, /\*\*`all`:\*\* Immediately execute the listed actions for every actionable row/);
+  assert.match(skill, /Do not ask the user to provide PR numbers, reconfirm the same plan, run commands/);
+  assert.match(skill, /Never ask for a comma-separated or free-text PR list/);
+  assert.match(skill, /execute exactly the rows selected `run`/);
+  assert.match(skill, /do not ask for another approval/);
+  assert.match(skill, /If none are selected, report no changes and stop/);
+  assert.match(skill, /must not fall back to an instruction-only\/manual handoff/);
 });
 
 test('check classification never equates missing, cancelled, or unfinished checks with passing', () => {
