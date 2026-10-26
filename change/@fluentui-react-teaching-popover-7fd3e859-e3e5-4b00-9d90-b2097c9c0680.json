@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: normalize carousel footer button type, keyboard, and disabled anchor behavior",
+  "comment": "fix: normalize carousel footer button type, keyboard, and disabled anchor behavior and provide carousel snapshots during server rendering",
   "packageName": "@fluentui/react-teaching-popover",
   "email": "paulmardling@microsoft.com"
 }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { renderToString } from 'react-dom/server';
 import { renderHook } from '@testing-library/react-hooks';
 import { PopoverProvider } from '@fluentui/react-popover';
 import type { PopoverContextValue } from '@fluentui/react-popover';
@@ -57,6 +58,24 @@ function makeMouseEvent(defaultPrevented = false): React.MouseEvent<HTMLButtonEl
 }
 
 describe('useTeachingPopoverCarouselFooterButton_unstable', () => {
+  it('supplies the carousel snapshot when rendering a footer button on the server', () => {
+    const Wrapper = makeWrapper({ storeValues: ['first', 'last'], carousel: { value: 'first' } });
+    const Example = () => {
+      const state = useTeachingPopoverCarouselFooterButtonBase_unstable(
+        { navType: 'next', children: 'Next', altText: 'Done' },
+        React.useRef<HTMLButtonElement>(null),
+      );
+      return <button type="button">{state.root.children}</button>;
+    };
+    expect(
+      renderToString(
+        <Wrapper>
+          <Example />
+        </Wrapper>,
+      ),
+    ).toContain('Next');
+  });
+
   it.each([useTeachingPopoverCarouselFooterButtonBase_unstable, useTeachingPopoverCarouselFooterButton_unstable])(
     '%p defaults to a non-submitting button and preserves explicit submit intent',
     useFooterButton => {

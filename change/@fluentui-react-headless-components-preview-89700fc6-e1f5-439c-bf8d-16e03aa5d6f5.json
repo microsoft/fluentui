@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: recover carousel boundary focus to eligible paired navigation, an accepted-card control, or the card container while preserving intentional focus and existing APIs",
+  "comment": "fix: recover carousel boundary focus to eligible paired navigation, native accepted-card controls, or the card container while preserving consumer tabindex ownership, shadow-tree retries, intentional focus, and existing APIs",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "paulmardling@microsoft.com"
 }

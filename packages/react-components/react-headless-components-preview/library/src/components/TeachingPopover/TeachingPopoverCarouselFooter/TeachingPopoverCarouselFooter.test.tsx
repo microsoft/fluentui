@@ -35,6 +35,7 @@ describe('TeachingPopoverCarouselFooter accepted-card recovery', () => {
     pairedDisabled = true,
     tabIndex,
     onCardFocus,
+    footer = true,
   }: {
     value: string;
     target?: string;
@@ -42,6 +43,7 @@ describe('TeachingPopoverCarouselFooter accepted-card recovery', () => {
     pairedDisabled?: boolean;
     tabIndex?: number;
     onCardFocus?: React.FocusEventHandler<HTMLDivElement>;
+    footer?: boolean;
   }) => (
     <TeachingPopoverCarousel value={value}>
       <TeachingPopoverCarouselCard value={target} data-testid="accepted-card" tabIndex={tabIndex} onFocus={onCardFocus}>
@@ -54,22 +56,24 @@ describe('TeachingPopoverCarouselFooter accepted-card recovery', () => {
       </TeachingPopoverCarouselCard>
       <TeachingPopoverCarouselCard value="middle">Middle</TeachingPopoverCarouselCard>
       <TeachingPopoverCarouselCard value="last">Last</TeachingPopoverCarouselCard>
-      <TeachingPopoverCarouselFooter
-        previous={{
-          navType: 'prev',
-          children: 'Previous',
-          altText: null,
-          hidden: value === target,
-          ...{ 'data-testid': 'source' },
-        }}
-        next={{
-          navType: 'next',
-          children: 'Next',
-          altText: 'Done',
-          disabled: pairedDisabled,
-          ...{ 'data-testid': 'paired' },
-        }}
-      />
+      {footer && (
+        <TeachingPopoverCarouselFooter
+          previous={{
+            navType: 'prev',
+            children: 'Previous',
+            altText: null,
+            hidden: value === target,
+            ...{ 'data-testid': 'source' },
+          }}
+          next={{
+            navType: 'next',
+            children: 'Next',
+            altText: 'Done',
+            disabled: pairedDisabled,
+            ...{ 'data-testid': 'paired' },
+          }}
+        />
+      )}
     </TeachingPopoverCarousel>
   );
 
@@ -112,6 +116,55 @@ describe('TeachingPopoverCarouselFooter accepted-card recovery', () => {
     rerender(<RecoveryTour value="first" control={false} onCardFocus={onCardFocus} />);
     await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
     expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', '0');
+  });
+
+  it.each([-1, 0])('preserves a consumer tabindex of %p adopted during container focus', async tabIndex => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} />);
+    await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
+    rerender(<RecoveryTour value="first" control={false} tabIndex={tabIndex} />);
+    // Blur before MutationObserver delivery to exercise the pending-record path.
+    getByTestId('accepted-card').blur();
+    expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', String(tabIndex));
+    getByTestId('accepted-card').focus();
+    expect(getByTestId('accepted-card')).toHaveFocus();
+  });
+
+  it('preserves a synchronous identical tabindex write from the consumer focus handler', async () => {
+    const onCardFocus: React.FocusEventHandler<HTMLDivElement> = event => {
+      event.currentTarget.tabIndex = -1;
+      event.currentTarget.blur();
+    };
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} onCardFocus={onCardFocus} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} onCardFocus={onCardFocus} />);
+    await flushFocus();
+    expect(getByTestId('accepted-card')).toHaveAttribute('tabindex', '-1');
+    expect(getByTestId('accepted-card')).not.toHaveFocus();
+  });
+
+  it('does not remove a temporary tabindex while the focused card outlives the footer', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} />);
+    await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
+    const card = getByTestId('accepted-card');
+    rerender(<RecoveryTour value="first" control={false} footer={false} />);
+    expect(card).toHaveFocus();
+    expect(card).toHaveAttribute('tabindex', '-1');
+    card.blur();
+    expect(card).not.toHaveAttribute('tabindex');
+  });
+
+  it('cleans up temporary tabindex when the focused card disconnects without a blur event', async () => {
+    const { getByTestId, rerender } = render(<RecoveryTour value="middle" control={false} />);
+    getByTestId('source').focus();
+    rerender(<RecoveryTour value="first" control={false} />);
+    await waitFor(() => expect(getByTestId('accepted-card')).toHaveFocus());
+    const card = getByTestId('accepted-card');
+    rerender(<div />);
+    await waitFor(() => expect(card).not.toHaveAttribute('tabindex'));
   });
 
   it('does not redirect when a request is rejected and the committed value stays unchanged', async () => {

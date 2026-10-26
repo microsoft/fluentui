@@ -55,20 +55,65 @@ const focusElement = (element: HTMLElement): boolean => {
   return getActiveElement(element) === element;
 };
 
-function* getCardControls(root: HTMLElement): Generator<HTMLElement> {
-  const children = isHTMLElement(root, { constructorName: 'HTMLSlotElement' })
-    ? root.assignedElements({ flatten: true })
-    : root.shadowRoot?.children ?? root.children;
+function* getElements(root: HTMLElement): Generator<HTMLElement> {
+  yield root;
+  let children: HTMLCollection | Element[] = root.shadowRoot?.children ?? root.children;
+  if (isHTMLElement(root, { constructorName: 'HTMLSlotElement' })) {
+    const assigned = root.assignedElements({ flatten: true });
+    if (assigned.length) {
+      children = assigned;
+    }
+  }
   for (const child of Array.from(children)) {
-    if (!isHTMLElement(child)) {
-      continue;
+    if (isHTMLElement(child)) {
+      yield* getElements(child);
     }
-    if (child.tabIndex >= 0 && isAvailable(child)) {
-      yield child;
-    }
-    yield* getCardControls(child);
   }
 }
+
+const isTabStop = (element: HTMLElement): boolean =>
+  element.tabIndex >= 0 ||
+  (!element.hasAttribute('tabindex') &&
+    ((element.isContentEditable && !element.parentElement?.isContentEditable) ||
+      element.matches('audio[controls], video[controls]')));
+
+const focusCard = (card: HTMLElement): boolean => {
+  const view = card.ownerDocument.defaultView;
+  if (!view) {
+    return false;
+  }
+  if (card.hasAttribute('tabindex')) {
+    return focusElement(card);
+  }
+  card.setAttribute('tabindex', '-1');
+  let adopted = false;
+  const hasAuthorWrite = (records: MutationRecord[]) =>
+    records.some(record => record.target === card && record.attributeName === 'tabindex');
+  const cleanup = () => {
+    adopted ||= hasAuthorWrite(observer.takeRecords());
+    observer.disconnect();
+    card.removeEventListener('blur', cleanup);
+    if (!adopted && card.getAttribute('tabindex') === '-1') {
+      card.removeAttribute('tabindex');
+    }
+  };
+  const observer = new view.MutationObserver(records => {
+    adopted ||= hasAuthorWrite(records);
+    if (adopted || !card.isConnected) {
+      cleanup();
+    }
+  });
+  // Observe after our write so even an identical consumer write takes ownership.
+  observer.observe(card, { attributes: true, attributeFilter: ['tabindex'] });
+  observer.observe(card.ownerDocument, { childList: true, subtree: true });
+  observer.observe(card.getRootNode(), { childList: true, subtree: true });
+  card.addEventListener('blur', cleanup);
+  const focused = focusElement(card);
+  if (!focused) {
+    cleanup();
+  }
+  return focused;
+};
 
 export const useTeachingPopoverCarouselFooterFocus = (
   state: TeachingPopoverCarouselFooterState,
@@ -82,7 +127,6 @@ export const useTeachingPopoverCarouselFooterFocus = (
   const carouselRoot = carousel?.root;
   const wasUnavailable = React.useRef(false);
   const pending = React.useRef(false);
-  const cardFocusCleanup = React.useRef<(() => void) | undefined>(undefined);
   const subscription = React.useRef<
     | {
         root: HTMLDivElement;
@@ -184,7 +228,10 @@ export const useTeachingPopoverCarouselFooterFocus = (
     if (!card) {
       return;
     }
-    for (const control of getCardControls(card)) {
+    for (const control of getElements(card)) {
+      if (control === card || !isTabStop(control) || !isAvailable(control)) {
+        continue;
+      }
       if (focusElement(control)) {
         cancelOwnership();
         return;
@@ -196,26 +243,8 @@ export const useTeachingPopoverCarouselFooterFocus = (
     if (!isAvailable(card)) {
       return;
     }
-    const addedTabIndex = !card.hasAttribute('tabindex');
-    if (addedTabIndex) {
-      cardFocusCleanup.current?.();
-      card.setAttribute('tabindex', '-1');
-      const restoreTabIndex = () => {
-        card.removeEventListener('blur', restoreTabIndex);
-        if (card.getAttribute('tabindex') === '-1') {
-          card.removeAttribute('tabindex');
-        }
-        if (cardFocusCleanup.current === restoreTabIndex) {
-          cardFocusCleanup.current = undefined;
-        }
-      };
-      card.addEventListener('blur', restoreTabIndex);
-      cardFocusCleanup.current = restoreTabIndex;
-    }
-    if (focusElement(card)) {
+    if (focusCard(card)) {
       cancelOwnership();
-    } else if (addedTabIndex) {
-      cardFocusCleanup.current?.();
     }
   });
 
@@ -226,10 +255,18 @@ export const useTeachingPopoverCarouselFooterFocus = (
     }
     const { root, observer } = currentSubscription;
     observer.disconnect();
-    observer.observe(root, { childList: true, subtree: true, attributes: true });
+    const observeTree = (element: HTMLElement) => {
+      observer.observe(element, { childList: true, subtree: true, attributes: true });
+      for (const descendant of getElements(element)) {
+        if (descendant.shadowRoot) {
+          observer.observe(descendant.shadowRoot, { childList: true, subtree: true, attributes: true });
+        }
+      }
+    };
+    observeTree(root);
     const ancestors = new Set<HTMLElement>();
     if (carouselRoot) {
-      observer.observe(carouselRoot, { childList: true, subtree: true, attributes: true });
+      observeTree(carouselRoot);
     }
     for (const element of [root, previousRef.current, nextRef.current, carouselRoot]) {
       for (let current: HTMLElement | null | undefined = element; current; current = getParent(current)) {
@@ -244,7 +281,6 @@ export const useTeachingPopoverCarouselFooterFocus = (
   });
 
   const disposeSubscription = React.useCallback(() => {
-    cardFocusCleanup.current?.();
     subscription.current?.dispose();
     subscription.current = undefined;
   }, []);
@@ -312,46 +348,31 @@ export const useTeachingPopoverCarouselFooterFocus = (
     [observeAvailability, reconcileFocus],
   );
   const handleFocus = React.useCallback(
-    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+    (
+      event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>,
+      handler?: React.FocusEventHandler<HTMLButtonElement & HTMLAnchorElement>,
+    ) => {
       focusOwner.current = event.currentTarget;
       focusValue.current = carousel?.value;
-      onFocus?.(event);
+      handler?.(event);
     },
-    [onFocus, carousel?.value],
+    [carousel?.value],
   );
-  const handleNextFocus = React.useCallback(
-    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
-      focusOwner.current = event.currentTarget;
-      focusValue.current = carousel?.value;
-      onNextFocus?.(event);
-    },
-    [onNextFocus, carousel?.value],
-  );
-  const handleNextBlur = React.useCallback(
-    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
+  const handleBlur = React.useCallback(
+    (
+      event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>,
+      handler?: React.FocusEventHandler<HTMLButtonElement & HTMLAnchorElement>,
+    ) => {
+      // Hiding can blur to the body; an explicit blur while available cancels.
       if (
         (event.relatedTarget && event.relatedTarget !== event.currentTarget.ownerDocument.body) ||
         isAvailable(event.currentTarget)
       ) {
         cancelOwnership();
       }
-      onNextBlur?.(event);
+      handler?.(event);
     },
-    [cancelOwnership, onNextBlur],
-  );
-  const handleBlur = React.useCallback(
-    (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
-      // Hiding can blur to the body; an explicit blur while available cancels.
-      if (
-        (event.relatedTarget && event.relatedTarget !== event.currentTarget.ownerDocument.body) ||
-        isAvailable(event.currentTarget)
-      ) {
-        focusOwner.current = null;
-        pending.current = false;
-      }
-      onBlur?.(event);
-    },
-    [onBlur],
+    [cancelOwnership],
   );
   const previousMergedRef = useMergedRefs(previousSlotProps?.ref, previousRef);
   const nextMergedRef = useMergedRefs(nextSlotProps.ref, registerNext);
@@ -370,9 +391,19 @@ export const useTeachingPopoverCarouselFooterFocus = (
   useIsomorphicLayoutEffect(() => disposeSubscription, [disposeSubscription]);
 
   const previousSlot = previousSlotProps
-    ? { ...previousSlotProps, ref: previousMergedRef, onFocus: handleFocus, onBlur: handleBlur }
+    ? {
+        ...previousSlotProps,
+        ref: previousMergedRef,
+        onFocus: (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => handleFocus(event, onFocus),
+        onBlur: (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => handleBlur(event, onBlur),
+      }
     : undefined;
-  const nextSlot = { ...nextSlotProps, ref: nextMergedRef, onFocus: handleNextFocus, onBlur: handleNextBlur };
+  const nextSlot = {
+    ...nextSlotProps,
+    ref: nextMergedRef,
+    onFocus: (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => handleFocus(event, onNextFocus),
+    onBlur: (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => handleBlur(event, onNextBlur),
+  };
   return {
     ...state,
     root: { ...state.root, ref: rootMergedRef },

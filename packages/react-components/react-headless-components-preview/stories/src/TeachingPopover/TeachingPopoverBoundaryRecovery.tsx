@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies -- provided by the stories workspace
 import * as React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies -- provided by the stories workspace
 import {
   TeachingPopoverCarousel,
   TeachingPopoverCarouselCard,
@@ -6,7 +8,7 @@ import {
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import styles from './teaching-popover.module.css';
 
-const BoundaryRecovery = ({ withControl }: { withControl: boolean }): React.ReactNode => (
+export const BoundaryRecovery = ({ withControl }: { withControl: boolean }): React.ReactNode => (
   <>
     <p>
       This tour starts on step two with Next disabled. Focus Previous and press Enter. On step one, Previous disappears
@@ -40,6 +42,3 @@ const BoundaryRecovery = ({ withControl }: { withControl: boolean }): React.Reac
     <button type="button">Outside the tour</button>
   </>
 );
-
-export const WithDisabledNextControl = (): React.ReactNode => <BoundaryRecovery withControl />;
-export const WithDisabledNextContainer = (): React.ReactNode => <BoundaryRecovery withControl={false} />;

@@ -253,19 +253,33 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     controls = true,
     pairedAvailable = false,
     controlled = 'accept',
+    content,
+    cardStyle,
+    onCardFocus,
   }: {
     direction?: 'prev' | 'next';
     controls?: boolean;
     pairedAvailable?: boolean;
     controlled?: 'accept' | 'delay' | 'reject';
+    content?: React.ReactNode;
+    cardStyle?: React.CSSProperties;
+    onCardFocus?: React.FocusEventHandler<HTMLDivElement>;
   }) => {
     const [value, setValue] = React.useState('middle');
+    const [footer, setFooter] = React.useState(true);
+    const [cardTabIndex, setCardTabIndex] = React.useState<number>();
     const pending = React.useRef('middle');
     return (
       <>
         <button data-testid="recovery-outside">Outside</button>
         <button data-testid="recovery-accept" onClick={() => setValue(pending.current)}>
           Accept
+        </button>
+        <button data-testid="recovery-remove-footer" onClick={() => setFooter(false)}>
+          Remove footer
+        </button>
+        <button data-testid="recovery-adopt-tabindex" onClick={() => setCardTabIndex(-1)}>
+          Adopt tabindex
         </button>
         <TeachingPopoverCarousel
           value={value}
@@ -280,34 +294,43 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
           }}
         >
           {['first', 'middle', 'last'].map(page => (
-            <TeachingPopoverCarouselCard key={page} value={page} data-testid={`recovery-card-${page}`}>
+            <TeachingPopoverCarouselCard
+              key={page}
+              value={page}
+              data-testid={`recovery-card-${page}`}
+              style={cardStyle}
+              tabIndex={cardTabIndex}
+              onFocus={onCardFocus}
+            >
               {page}
               <button disabled>Disabled action</button>
               <button hidden>Hidden action</button>
               <div aria-hidden="true">
                 <button>Excluded action</button>
               </div>
-              {controls && <input aria-label={`${page} action`} data-testid={`recovery-action-${page}`} />}
+              {content ?? (controls && <input aria-label={`${page} action`} data-testid={`recovery-action-${page}`} />)}
             </TeachingPopoverCarouselCard>
           ))}
-          <PresentationFooter
-            previous={{
-              navType: 'prev',
-              children: 'Previous',
-              altText: null,
-              hidden: value === 'first',
-              disabled: direction === 'next' && !pairedAvailable,
-              ...{ 'data-testid': 'recovery-previous' },
-            }}
-            next={{
-              navType: 'next',
-              children: 'Next',
-              altText: null,
-              hidden: value === 'last',
-              disabled: direction === 'prev' && !pairedAvailable,
-              ...{ 'data-testid': 'recovery-next' },
-            }}
-          />
+          {footer && (
+            <PresentationFooter
+              previous={{
+                navType: 'prev',
+                children: 'Previous',
+                altText: null,
+                hidden: value === 'first',
+                disabled: direction === 'next' && !pairedAvailable,
+                ...{ 'data-testid': 'recovery-previous' },
+              }}
+              next={{
+                navType: 'next',
+                children: 'Next',
+                altText: null,
+                hidden: value === 'last',
+                disabled: direction === 'prev' && !pairedAvailable,
+                ...{ 'data-testid': 'recovery-next' },
+              }}
+            />
+          )}
         </TeachingPopoverCarousel>
       </>
     );
@@ -341,6 +364,151 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
         cy.get('[data-testid="recovery-outside"]').focus();
         cy.get(`[data-testid="recovery-card-${card}"]`).should('not.have.attr', 'tabindex');
       });
+
+      it(`keeps ${card} focused when only the footer unmounts`, () => {
+        mount(<CompleteRecoveryExample direction={direction} controls={false} />);
+        cy.get(`[data-testid="recovery-${source}"]`).focus().realPress('Enter');
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('have.focus');
+        cy.get('[data-testid="recovery-remove-footer"]').trigger('click');
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('have.focus').and('have.attr', 'tabindex', '-1');
+        cy.get('[data-testid="recovery-outside"]').focus();
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('not.have.attr', 'tabindex');
+      });
+
+      it(`preserves a consumer tabindex adopted by the focused ${card} card`, () => {
+        mount(<CompleteRecoveryExample direction={direction} controls={false} />);
+        cy.get(`[data-testid="recovery-${source}"]`).focus().realPress('Enter');
+        cy.get(`[data-testid="recovery-card-${card}"]`).should('have.focus');
+        cy.get('[data-testid="recovery-adopt-tabindex"]').trigger('click');
+        cy.get('[data-testid="recovery-outside"]').focus();
+        cy.get(`[data-testid="recovery-card-${card}"]`)
+          .should('have.attr', 'tabindex', '-1')
+          .focus()
+          .should('have.focus');
+      });
+    });
+
+    ['', 'true', 'TrUe', 'plaintext-only'].forEach(editable => {
+      it(`recovers to the first native ${JSON.stringify(editable)} editing host`, () => {
+        mount(
+          <CompleteRecoveryExample
+            content={
+              <>
+                <div data-testid="recovery-editor" ref={element => element?.setAttribute('contenteditable', editable)}>
+                  Editor <span>Editable descendant</span>
+                </div>
+                <input data-testid="recovery-later" />
+              </>
+            }
+          />,
+        );
+        cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+        cy.get('[data-testid="recovery-editor"]').should('have.focus');
+        cy.realPress('Tab');
+        cy.get('[data-testid="recovery-later"]').should('have.focus');
+      });
+    });
+
+    it('does not override an editor explicitly excluded from sequential navigation', () => {
+      mount(
+        <CompleteRecoveryExample
+          content={
+            <>
+              <div contentEditable tabIndex={-1} data-testid="recovery-editor">
+                Excluded editor
+              </div>
+              <input data-testid="recovery-later" />
+            </>
+          }
+        />,
+      );
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-later"]').should('have.focus');
+    });
+
+    it('cleans up a temporary tabindex after consumer-directed focus leaves synchronously', () => {
+      mount(
+        <CompleteRecoveryExample
+          controls={false}
+          onCardFocus={event => {
+            event.currentTarget.ownerDocument.querySelector<HTMLElement>('[data-testid="recovery-outside"]')?.focus();
+          }}
+        />,
+      );
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-outside"]').should('have.focus');
+      cy.get('[data-testid="recovery-card-first"]').should('not.have.attr', 'tabindex');
+    });
+
+    (['existing', 'inserted', 'nested', 'slotted'] as const).forEach(scenario => {
+      it(`retries recovery after a control becomes available in a ${scenario} open shadow tree`, () => {
+        mount(
+          <CompleteRecoveryExample
+            cardStyle={{ display: 'contents' }}
+            content={
+              <div
+                data-testid="recovery-card-host"
+                ref={element => {
+                  if (element && !element.shadowRoot && scenario !== 'inserted') {
+                    element.attachShadow({ mode: 'open' });
+                    if (scenario === 'nested') {
+                      const nested = element.ownerDocument.createElement('div');
+                      element.shadowRoot!.appendChild(nested);
+                      nested.attachShadow({ mode: 'open' });
+                    } else if (scenario === 'slotted') {
+                      element.shadowRoot!.appendChild(element.ownerDocument.createElement('slot'));
+                    }
+                  }
+                }}
+              />
+            }
+          />,
+        );
+        cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+        cy.get('[data-testid="recovery-card-first"]').should('not.have.focus');
+        cy.get('[data-testid="recovery-card-host"]').then(host => {
+          const element = host[0];
+          let target: HTMLElement | ShadowRoot = element;
+          if (scenario === 'inserted') {
+            const inserted = element.ownerDocument.createElement('div');
+            inserted.attachShadow({ mode: 'open' });
+            element.appendChild(inserted);
+            target = inserted.shadowRoot!;
+          } else if (scenario === 'nested') {
+            target = element.shadowRoot!.firstElementChild!.shadowRoot!;
+          } else if (scenario !== 'slotted') {
+            target = element.shadowRoot!;
+          }
+          const input = element.ownerDocument.createElement('input');
+          input.setAttribute('data-testid', 'recovery-shadow-input');
+          target.appendChild(input);
+          cy.wrap(input).should('have.focus');
+        });
+      });
+    });
+
+    it('does not recover into a shadow tree after deliberate outside focus', () => {
+      mount(
+        <CompleteRecoveryExample
+          cardStyle={{ display: 'contents' }}
+          content={
+            <div
+              data-testid="recovery-card-host"
+              ref={element => {
+                if (element && !element.shadowRoot) {
+                  element.attachShadow({ mode: 'open' });
+                }
+              }}
+            />
+          }
+        />,
+      );
+      cy.get('[data-testid="recovery-previous"]').focus().realPress('Enter');
+      cy.get('[data-testid="recovery-outside"]').focus();
+      cy.get('[data-testid="recovery-card-host"]').then(host => {
+        host[0].shadowRoot!.appendChild(host[0].ownerDocument.createElement('input'));
+      });
+      cy.get('[data-testid="recovery-outside"]').should('have.focus');
     });
 
     it('does not recover on a rejected controlled request', () => {
