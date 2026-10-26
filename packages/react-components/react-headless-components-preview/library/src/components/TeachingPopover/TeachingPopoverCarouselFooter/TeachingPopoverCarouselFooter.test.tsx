@@ -53,6 +53,24 @@ const flushFocus = async () => {
   await act(async () => undefined);
 };
 
+const ReplacingRoot = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'> & { generation: number }>(
+  ({ generation, ...props }, ref) => <div {...props} key={generation} ref={ref} />,
+);
+
+const ReplacingRootFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps & { generation: number }> =
+  React.forwardRef(({ generation, ...props }, ref) => {
+    const baseState = useTeachingPopoverCarouselFooter(props, ref);
+    return renderTeachingPopoverCarouselFooter({
+      ...baseState,
+      components: {
+        root: ReplacingRoot,
+        previous: TeachingPopoverCarouselFooterButton,
+        next: TeachingPopoverCarouselFooterButton,
+      },
+      root: slot.always({ ...baseState.root, generation }, { elementType: ReplacingRoot }),
+    });
+  });
+
 type FooterButtonOverrides = (
   | Partial<Extract<TeachingPopoverCarouselFooterButtonProps, { as?: 'button' }>>
   | (Partial<Extract<TeachingPopoverCarouselFooterButtonProps, { as: 'a' }>> & { as: 'a' })
@@ -68,6 +86,7 @@ type ExampleProps = {
   hidePrevious?: boolean;
   presentation?: boolean;
   extraNext?: boolean;
+  omitPrevious?: boolean;
 };
 
 const Example = ({
@@ -79,6 +98,7 @@ const Example = ({
   hidePrevious = true,
   presentation,
   extraNext,
+  omitPrevious,
 }: ExampleProps) => {
   const Footer = presentation ? PresentationFooter : TeachingPopoverCarouselFooter;
   return (
@@ -88,14 +108,18 @@ const Example = ({
         <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
         <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
         <Footer
-          previous={{
-            navType: 'prev',
-            children: 'Previous',
-            altText: null,
-            hidden: hidePrevious && value === 'one',
-            ...{ 'data-testid': 'previous' },
-            ...previous,
-          }}
+          previous={
+            omitPrevious
+              ? null
+              : {
+                  navType: 'prev',
+                  children: 'Previous',
+                  altText: null,
+                  hidden: hidePrevious && value === 'one',
+                  ...{ 'data-testid': 'previous' },
+                  ...previous,
+                }
+          }
           next={
             omitNext
               ? { navType: 'next', altText: 'Got it', children: () => null }
@@ -367,5 +391,151 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
     expect(onFocus).toHaveBeenCalledTimes(1);
     rerender(<Example value="one" previous={{ autoFocus: true, onFocus }} />);
     await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('discards ownership when Previous is removed and restored without focus', async () => {
+    const { getByTestId, rerender } = render(<Example />);
+    getByTestId('previous').focus();
+    rerender(<Example omitPrevious />);
+    await flushFocus();
+    rerender(<Example />);
+    await flushFocus();
+    expect(getByTestId('previous')).not.toHaveFocus();
+    rerender(<Example value="one" />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+  });
+
+  it('preserves outside focus and blur performed by a ref callback during the boundary commit', async () => {
+    const previousRef = React.createRef<HTMLButtonElement>();
+    const outsideRef = React.createRef<HTMLButtonElement>();
+    const onOutsideFocus = jest.fn();
+    const Tour = ({ value }: { value: string }) => (
+      <>
+        <button ref={outsideRef} onFocus={onOutsideFocus}>
+          Outside
+        </button>
+        <Example
+          value={value}
+          previous={{ ref: previousRef }}
+          next={{
+            ref: element => {
+              if (element && value === 'one') {
+                previousRef.current?.blur();
+                outsideRef.current?.focus();
+                outsideRef.current?.blur();
+              }
+            },
+          }}
+        />
+      </>
+    );
+    const { getByTestId, rerender } = render(<Tour value="two" />);
+    getByTestId('previous').focus();
+    rerender(<Tour value="one" />);
+    await flushFocus();
+    expect(onOutsideFocus).toHaveBeenCalled();
+    expect(getByTestId('next')).not.toHaveFocus();
+  });
+
+  it('retries after an imperative tabindex change makes Next eligible', async () => {
+    const { getByTestId, rerender } = render(<Example next={{ tabIndex: -1 }} />);
+    getByTestId('previous').focus();
+    rerender(<Example value="one" next={{ tabIndex: -1 }} />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+    await act(async () => {
+      getByTestId('next').tabIndex = 0;
+    });
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('retries after an ancestor outside the footer makes Next visible', async () => {
+    const wrapperRef = React.createRef<HTMLDivElement>();
+    const Tour = ({ value }: { value: string }) => (
+      <div ref={wrapperRef} style={{ visibility: 'hidden' }}>
+        <Example value={value} previous={{ style: { visibility: 'visible' } }} />
+      </div>
+    );
+    const { getByTestId, rerender } = render(<Tour value="two" />);
+    getByTestId('previous').focus();
+    rerender(<Tour value="one" />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+    await act(async () => {
+      wrapperRef.current!.style.visibility = 'visible';
+    });
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('preserves a focusable Previous box with its own content-visibility:hidden', async () => {
+    const { getByTestId, rerender } = render(<Example hidePrevious={false} />);
+    getByTestId('previous').focus();
+    rerender(<Example value="one" hidePrevious={false} previous={{ style: { contentVisibility: 'hidden' } }} />);
+    await flushFocus();
+    expect(getByTestId('previous')).toHaveFocus();
+  });
+
+  it('does not transfer into content skipped by an ancestor', async () => {
+    const wrapperRef = React.createRef<HTMLDivElement>();
+    const Tour = ({ value }: { value: string }) => (
+      <div ref={wrapperRef}>
+        <Example value={value} />
+      </div>
+    );
+    const { getByTestId, rerender } = render(<Tour value="two" />);
+    getByTestId('previous').focus();
+    wrapperRef.current!.style.setProperty('content-visibility', 'hidden');
+    rerender(<Tour value="one" />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+  });
+
+  it('cleans up focus subscriptions when the footer unmounts', () => {
+    const { unmount, getByTestId } = render(<Example />);
+    const ownerDocument = getByTestId('previous').ownerDocument;
+    const removeDocumentListener = jest.spyOn(ownerDocument, 'removeEventListener');
+    const removeWindowListener = jest.spyOn(ownerDocument.defaultView!, 'removeEventListener');
+    unmount();
+    expect(removeDocumentListener).toHaveBeenCalledWith('focusin', expect.any(Function), true);
+    expect(removeWindowListener).toHaveBeenCalledWith('blur', expect.any(Function));
+    removeDocumentListener.mockRestore();
+    removeWindowListener.mockRestore();
+  });
+
+  it('rebinds subscriptions and discards stale ownership when the concrete root changes', async () => {
+    const Tour = ({ value, generation }: { value: string; generation: number }) => (
+      <TeachingPopoverCarousel value={value}>
+        <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+        <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
+        <ReplacingRootFooter
+          generation={generation}
+          previous={{
+            navType: 'prev',
+            children: 'Previous',
+            altText: null,
+            hidden: value === 'one',
+            ...{ 'data-testid': 'previous' },
+          }}
+          next={{ navType: 'next', children: 'Next', altText: 'Done', ...{ 'data-testid': 'next' } }}
+        />
+      </TeachingPopoverCarousel>
+    );
+    const { getByTestId, rerender } = render(<Tour value="two" generation={0} />);
+    const originalPrevious = getByTestId('previous');
+    originalPrevious.focus();
+    const removeListener = jest.spyOn(originalPrevious.ownerDocument, 'removeEventListener');
+    rerender(<Tour value="two" generation={1} />);
+    await flushFocus();
+    expect(originalPrevious).not.toBeInTheDocument();
+    expect(removeListener).toHaveBeenCalledWith('focusin', expect.any(Function), true);
+    rerender(<Tour value="one" generation={1} />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+    rerender(<Tour value="two" generation={1} />);
+    getByTestId('previous').focus();
+    rerender(<Tour value="one" generation={1} />);
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+    removeListener.mockRestore();
   });
 });

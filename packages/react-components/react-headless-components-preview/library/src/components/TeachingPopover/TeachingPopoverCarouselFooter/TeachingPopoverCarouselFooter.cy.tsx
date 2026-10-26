@@ -141,6 +141,68 @@ const Example = ({
   );
 };
 
+const OwnershipExample = ({ scenario }: { scenario: 'remove' | 'commit' | 'iframe' | 'content' | 'ancestor' }) => {
+  const [step, setStep] = React.useState(0);
+  const value = step === 1 || step === 3 ? 'one' : 'two';
+  const previousRef = React.useRef<HTMLButtonElement>(null);
+  const outsideRef = React.useRef<HTMLButtonElement>(null);
+  const nextRef = React.useCallback(
+    (element: HTMLButtonElement | HTMLAnchorElement | null) => {
+      if (element && step === 1 && scenario === 'commit') {
+        previousRef.current?.blur();
+        outsideRef.current?.focus();
+        outsideRef.current?.blur();
+      }
+    },
+    [scenario, step],
+  );
+  return (
+    <>
+      <style>{`
+        .ownership-content:empty { content-visibility: hidden; width: 100px; height: 30px; }
+        .ownership-blocked [data-testid="ownership-next"] { display: none; }
+      `}</style>
+      <button ref={outsideRef} data-testid="ownership-outside">
+        Outside
+      </button>
+      {[1, 2, 3].map(nextStep => (
+        <button key={nextStep} data-testid={`ownership-step-${nextStep}`} onClick={() => setStep(nextStep)}>
+          Commit {nextStep}
+        </button>
+      ))}
+      <div data-testid="ownership-ancestor" className={scenario === 'ancestor' ? 'ownership-blocked' : undefined}>
+        <TeachingPopoverCarousel value={value}>
+          <TeachingPopoverCarouselCard value="one">One</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselCard value="two">Two</TeachingPopoverCarouselCard>
+          <TeachingPopoverCarouselFooter
+            previous={
+              scenario === 'remove' && step === 1
+                ? null
+                : {
+                    navType: 'prev',
+                    altText: null,
+                    children: 'Previous',
+                    ...{ ref: previousRef },
+                    hidden: scenario !== 'content' && value === 'one',
+                    className: scenario === 'content' ? 'ownership-content' : undefined,
+                    ...{ 'data-testid': 'ownership-previous' },
+                  }
+            }
+            next={{
+              navType: 'next',
+              altText: 'Done',
+              children: 'Next',
+              ...{ ref: nextRef },
+              hidden: scenario === 'iframe' && step < 3,
+              ...{ 'data-testid': 'ownership-next' },
+            }}
+          />
+        </TeachingPopoverCarousel>
+      </div>
+    </>
+  );
+};
+
 describe('TeachingPopoverCarouselFooter native paired focus', () => {
   ([undefined, 'accept'] as const).forEach(controlled => {
     it(`hands focus from hidden Previous to Next after ${controlled ?? 'uncontrolled'} navigation`, () => {
@@ -349,6 +411,85 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     cy.get('[data-testid="previous"]').focus().realPress('Enter');
     cy.get('[data-testid="outside"]').focus().blur();
     cy.get('[data-testid="next"]').invoke('removeAttr', 'hidden').should('not.have.focus');
+  });
+
+  it('does not carry ownership through removal and restoration of Previous', () => {
+    mount(<OwnershipExample scenario="remove" />);
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-1"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('not.exist');
+    cy.get('[data-testid="ownership-step-2"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('be.visible').and('not.have.focus');
+    cy.get('[data-testid="ownership-step-3"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('not.be.visible');
+    cy.get('[data-testid="ownership-next"]').should('not.have.focus');
+  });
+
+  it('records outside focus and blur during a callback ref commit', () => {
+    mount(<OwnershipExample scenario="commit" />);
+    cy.get('[data-testid="ownership-outside"]').then(outside => {
+      const focused = cy.stub().as('commitOutsideFocus');
+      outside[0].addEventListener('focus', focused);
+    });
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-1"]').trigger('click');
+    cy.get('@commitOutsideFocus').should('have.been.calledOnce');
+    cy.get('[data-testid="ownership-next"]').should('not.have.focus');
+  });
+
+  it('retries when tabindex changes without a footer render', () => {
+    mount(<Example next={{ tabIndex: -1 }} />);
+    cy.get('[data-testid="previous"]').focus().realPress('Enter');
+    cy.get('[data-testid="previous"]').should('not.be.visible');
+    cy.get('[data-testid="next"]').should('not.have.focus').invoke('attr', 'tabindex', '0');
+    cy.get('[data-testid="next"]').should('have.focus');
+  });
+
+  it('retries when a class outside the footer stops hiding Next', () => {
+    mount(<OwnershipExample scenario="ancestor" />);
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-1"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('not.be.visible');
+    cy.get('[data-testid="ownership-next"]').should('not.be.visible').and('not.have.focus');
+    cy.get('[data-testid="ownership-ancestor"]').invoke('removeClass', 'ownership-blocked');
+    cy.get('[data-testid="ownership-next"]').should('be.visible').and('have.focus');
+  });
+
+  it('keeps focus on a visible Previous box whose own contents are skipped', () => {
+    mount(<OwnershipExample scenario="content" />);
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-1"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('be.empty').and('be.visible').and('have.focus');
+    cy.get('[data-testid="ownership-next"]').should('not.have.focus');
+  });
+
+  it('does not steal focus back from the document outside its owning iframe', () => {
+    const IframeExample = () => {
+      const frameRef = React.useRef<HTMLIFrameElement>(null);
+      const [body, setBody] = React.useState<HTMLElement | null>(null);
+      useIsomorphicLayoutEffect(() => {
+        setBody(frameRef.current!.contentDocument!.body);
+      }, []);
+      return (
+        <>
+          <button data-testid="parent-outside">Parent outside</button>
+          <iframe ref={frameRef} title="Footer focus owner" data-testid="owner-frame" />
+          {body && createPortal(<OwnershipExample scenario="iframe" />, body)}
+        </>
+      );
+    };
+    mount(<IframeExample />);
+    cy.get<HTMLIFrameElement>('[data-testid="owner-frame"]').then(frame => {
+      const body = frame[0].contentDocument!.body;
+      cy.wrap(body).find('[data-testid="ownership-previous"]').focus();
+      cy.wrap(body).find('[data-testid="ownership-step-1"]').trigger('click');
+      cy.wrap(body).find('[data-testid="ownership-previous"]').should('not.be.visible');
+      cy.wrap(body).find('[data-testid="ownership-next"]').should('not.be.visible');
+      cy.get('[data-testid="parent-outside"]').focus().should('have.focus');
+      cy.wrap(body).find('[data-testid="ownership-step-3"]').trigger('click');
+      cy.wrap(body).find('[data-testid="ownership-next"]').should('be.visible').and('not.have.focus');
+      cy.get('[data-testid="parent-outside"]').should('have.focus');
+    });
   });
 
   it('hands off inside a shadow root without treating the host as outside focus', () => {

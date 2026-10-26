@@ -6,6 +6,9 @@ import type { RefAttributes } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselFooterState } from './TeachingPopoverCarouselFooter.types';
 
 const getParent = (element: HTMLElement): HTMLElement | null => {
+  if (element.assignedSlot) {
+    return element.assignedSlot;
+  }
   if (element.parentElement) {
     return element.parentElement;
   }
@@ -28,7 +31,7 @@ const isAvailable = (element: HTMLElement): boolean => {
     if (
       current.matches('[hidden], [inert], [aria-disabled="true"]') ||
       style.display === 'none' ||
-      style.getPropertyValue('content-visibility') === 'hidden'
+      (current !== element && style.getPropertyValue('content-visibility') === 'hidden')
     ) {
       return false;
     }
@@ -54,17 +57,35 @@ export const useTeachingPopoverCarouselFooterFocus = (
   const ownsFocus = React.useRef(false);
   const wasUnavailable = React.useRef(false);
   const pending = React.useRef(false);
+  const subscription = React.useRef<
+    | {
+        root: HTMLDivElement;
+        ownerDocument: Document;
+        observer: MutationObserver;
+        dispose: () => void;
+      }
+    | undefined
+  >(undefined);
   const previousSlotProps:
     | (NonNullable<typeof state.previous> & RefAttributes<HTMLButtonElement & HTMLAnchorElement>)
     | undefined = state.previous;
   const nextSlotProps: typeof state.next & RefAttributes<HTMLButtonElement & HTMLAnchorElement> = state.next;
   const { altText, onFocus, onBlur } = state.previous ?? {};
 
+  const cancelOwnership = React.useCallback(() => {
+    ownsFocus.current = false;
+    pending.current = false;
+    wasUnavailable.current = false;
+  }, []);
+
   const reconcileFocus = useEventCallback(() => {
     const previous = previousRef.current;
     if (!rootRef.current?.isConnected || !previous || altText !== null || previousSlotProps?.navType !== 'prev') {
-      pending.current = false;
-      wasUnavailable.current = false;
+      cancelOwnership();
+      return;
+    }
+    if (!previous.ownerDocument.hasFocus()) {
+      cancelOwnership();
       return;
     }
 
@@ -98,16 +119,91 @@ export const useTeachingPopoverCarouselFooterFocus = (
     }
   });
 
+  const observeAvailability = React.useCallback(() => {
+    const currentSubscription = subscription.current;
+    if (!currentSubscription) {
+      return;
+    }
+    const { root, observer } = currentSubscription;
+    observer.disconnect();
+    observer.observe(root, { childList: true, subtree: true, attributes: true });
+    const ancestors = new Set<HTMLElement>();
+    for (const element of [root, previousRef.current, nextRef.current]) {
+      for (let current: HTMLElement | null = element; current; current = getParent(current)) {
+        if (current !== root) {
+          ancestors.add(current);
+        }
+      }
+    }
+    for (const ancestor of ancestors) {
+      observer.observe(ancestor, { attributes: true, childList: true });
+    }
+  }, []);
+
+  const disposeSubscription = React.useCallback(() => {
+    subscription.current?.dispose();
+    subscription.current = undefined;
+  }, []);
+  const registerRoot = React.useCallback(
+    (root: HTMLDivElement | null) => {
+      rootRef.current = root;
+      // Keep listeners during transient ref detachment so commit-time outside
+      // focus is not mistaken for the browser's hidden-control fallback.
+      if (!root || (subscription.current?.root === root && subscription.current.ownerDocument === root.ownerDocument)) {
+        return;
+      }
+      if (subscription.current) {
+        disposeSubscription();
+        const previous = previousRef.current;
+        const focusedPrevious = previous && getActiveElement(previous) === previous;
+        cancelOwnership();
+        ownsFocus.current = !!focusedPrevious;
+      }
+      const ownerDocument = root.ownerDocument;
+      const view = ownerDocument.defaultView;
+      if (!view) {
+        return;
+      }
+      const preserveOutsideFocus = () => {
+        const previous = previousRef.current;
+        const active = previous && getActiveElement(previous);
+        if (!previous || (active && active !== previous && active !== ownerDocument.body)) {
+          cancelOwnership();
+        }
+      };
+      const observer = new view.MutationObserver(() => {
+        observeAvailability();
+        reconcileFocus();
+      });
+      ownerDocument.addEventListener('focusin', preserveOutsideFocus, true);
+      view.addEventListener('blur', cancelOwnership);
+      subscription.current = {
+        root,
+        ownerDocument,
+        observer,
+        dispose: () => {
+          observer.disconnect();
+          ownerDocument.removeEventListener('focusin', preserveOutsideFocus, true);
+          view.removeEventListener('blur', cancelOwnership);
+        },
+      };
+    },
+    [cancelOwnership, disposeSubscription, observeAvailability, reconcileFocus],
+  );
+
   const registerNext = React.useCallback(
     (element: (HTMLButtonElement & HTMLAnchorElement) | null) => {
       nextRef.current = element;
       // Ref callbacks can detach and reattach during a commit. Recheck after all
       // slots have attached rather than consuming a handoff between siblings.
       if (element) {
-        element.ownerDocument.defaultView?.queueMicrotask(reconcileFocus);
+        element.ownerDocument.defaultView?.queueMicrotask(() => {
+          observeAvailability();
+          reconcileFocus();
+        });
       }
     },
-    [reconcileFocus],
+    [observeAvailability, reconcileFocus],
   );
   const handleFocus = React.useCallback(
     (event: React.FocusEvent<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -132,36 +228,19 @@ export const useTeachingPopoverCarouselFooterFocus = (
   );
   const previousMergedRef = useMergedRefs(previousSlotProps?.ref, previousRef);
   const nextMergedRef = useMergedRefs(nextSlotProps.ref, registerNext);
-  const rootMergedRef = useMergedRefs(state.root.ref, rootRef);
+  const rootMergedRef = useMergedRefs(state.root.ref, registerRoot);
 
   useIsomorphicLayoutEffect(() => {
-    const root = rootRef.current;
-    const view = root?.ownerDocument.defaultView;
-    if (!root || !view || altText !== null) {
+    if (!rootRef.current) {
+      disposeSubscription();
+      cancelOwnership();
       return;
     }
-    const preserveOutsideFocus = () => {
-      const previous = previousRef.current;
-      const active = previous && getActiveElement(previous);
-      if (active && active !== previous && active !== root.ownerDocument.body) {
-        ownsFocus.current = false;
-        pending.current = false;
-      }
-    };
-    const observer = new view.MutationObserver(reconcileFocus);
-    observer.observe(root, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['hidden', 'inert', 'disabled', 'aria-disabled', 'style', 'class'],
-    });
-    root.ownerDocument.addEventListener('focusin', preserveOutsideFocus, true);
+    registerRoot(rootRef.current);
+    observeAvailability();
     reconcileFocus();
-    return () => {
-      observer.disconnect();
-      root.ownerDocument.removeEventListener('focusin', preserveOutsideFocus, true);
-    };
   });
+  useIsomorphicLayoutEffect(() => disposeSubscription, [disposeSubscription]);
 
   const previousSlot = previousSlotProps
     ? { ...previousSlotProps, ref: previousMergedRef, onFocus: handleFocus, onBlur: handleBlur }
