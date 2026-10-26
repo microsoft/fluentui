@@ -25,6 +25,130 @@ describe('Menu', () => {
       });
     });
 
+    ([320, 640] as const).forEach(width => {
+      (['ltr', 'rtl'] as const).forEach(dir => {
+        it(`scrolls focused long-menu items internally at ${width}x240 in ${dir}`, () => {
+          cy.viewport(width, 240);
+          cy.document().then(doc => doc.documentElement.setAttribute('dir', dir));
+          mount(
+            <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
+              <Menu positioning={{ offset: { mainAxis: 24, crossAxis: 4 } }}>
+                <MenuTrigger>
+                  <button data-testid="long-trigger">Actions</button>
+                </MenuTrigger>
+                <MenuPopover data-testid="long-surface">
+                  <MenuList>
+                    {Array.from({ length: 40 }, (_, index) => (
+                      <MenuItem key={index} data-testid={`long-item-${index + 1}`}>
+                        Item {index + 1}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </div>,
+          );
+          cy.get('[data-testid=long-trigger]').focus().realPress('Enter');
+          cy.get('[data-testid=long-surface]').should(surface => {
+            const rect = surface[0].getBoundingClientRect();
+            expect(rect.top).to.be.at.least(0);
+            expect(rect.bottom).to.be.at.most(240);
+            expect(surface[0].scrollHeight).to.be.greaterThan(surface[0].clientHeight);
+          });
+          cy.window().then(win => {
+            const pageScroll = win.scrollY;
+            for (let index = 1; index < 40; index++) {
+              cy.realPress('ArrowDown');
+            }
+            cy.get('[data-testid=long-item-40]')
+              .should('have.focus')
+              .then(item => {
+                cy.get('[data-testid=long-surface]').should(surface => {
+                  const itemRect = item[0].getBoundingClientRect();
+                  const surfaceRect = surface[0].getBoundingClientRect();
+                  expect(surface[0].scrollTop).to.be.greaterThan(0);
+                  expect(itemRect.top).to.be.at.least(surfaceRect.top);
+                  expect(itemRect.bottom).to.be.at.most(surfaceRect.bottom);
+                  expect(win.scrollY).to.equal(pageScroll);
+                });
+              });
+          });
+          cy.realPress('Home');
+          cy.get('[data-testid=long-item-1]').should('have.focus');
+          cy.realPress('End');
+          cy.get('[data-testid=long-item-40]').should('have.focus');
+          cy.viewport(width, 180);
+          cy.get('[data-testid=long-item-40]').should(item => {
+            const rect = item[0].getBoundingClientRect();
+            expect(item[0]).to.equal(item[0].ownerDocument.activeElement);
+            expect(rect.top).to.be.at.least(0);
+            expect(rect.bottom).to.be.at.most(180);
+          });
+          cy.realPress('Escape');
+          cy.get('[data-testid=long-trigger]').should('have.focus').realPress('Space');
+          cy.get('[data-testid=long-surface]').should('be.visible');
+        });
+      });
+    });
+
+    it('preserves native fallback to the larger above area for a long menu', () => {
+      cy.viewport(320, 240);
+      mount(
+        <div style={{ position: 'fixed', bottom: '16px' }}>
+          <Menu positioning={{ position: 'below', offset: 8 }}>
+            <MenuTrigger>
+              <button data-testid="fallback-trigger">Actions</button>
+            </MenuTrigger>
+            <MenuPopover data-testid="fallback-surface">
+              <MenuList>
+                {Array.from({ length: 40 }, (_, index) => (
+                  <MenuItem key={index}>Item {index + 1}</MenuItem>
+                ))}
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </div>,
+      );
+      cy.get('[data-testid=fallback-trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=fallback-trigger]').then(trigger => {
+        cy.get('[data-testid=fallback-surface]').should(surface => {
+          const rect = surface[0].getBoundingClientRect();
+          expect(rect.bottom).to.be.at.most(trigger[0].getBoundingClientRect().top);
+          expect(rect.top).to.be.at.least(0);
+          expect(rect.height).to.be.greaterThan(100);
+          expect(surface[0].scrollHeight).to.be.greaterThan(surface[0].clientHeight);
+        });
+      });
+    });
+
+    it('does not size from a fallback that cannot fit the surface width', () => {
+      cy.viewport(320, 240);
+      mount(
+        <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
+          <Menu positioning={{ position: 'below', align: 'center', fallbackPositions: ['after'] }}>
+            <MenuTrigger>
+              <button data-testid="wide-trigger">Actions</button>
+            </MenuTrigger>
+            <MenuPopover data-testid="wide-surface" style={{ width: '240px' }}>
+              <MenuList>
+                {Array.from({ length: 40 }, (_, index) => (
+                  <MenuItem key={index}>Item {index + 1}</MenuItem>
+                ))}
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+        </div>,
+      );
+      cy.get('[data-testid=wide-trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=wide-surface]').should(surface => {
+        const rect = surface[0].getBoundingClientRect();
+        expect(rect.top).to.be.at.least(0);
+        expect(rect.bottom).to.be.at.most(240);
+        expect(rect.height).to.be.greaterThan(50);
+        expect(surface[0].scrollHeight).to.be.greaterThan(surface[0].clientHeight);
+      });
+    });
+
     (['ltr', 'rtl'] as const).forEach(dir => {
       (['above', 'below', 'before', 'after'] as const).forEach(position => {
         it(`preserves ${position} geometry and offsets in ${dir}`, () => {

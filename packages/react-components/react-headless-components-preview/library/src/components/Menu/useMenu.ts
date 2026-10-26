@@ -86,6 +86,7 @@ export const useMenu = (props: MenuProps): MenuState => {
 
   const resolvedPositioning = resolvePositioningShorthand(props.positioning);
   const positioningOptions = {
+    autoSize: 'height',
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: openOnContext ? contextTarget : undefined,

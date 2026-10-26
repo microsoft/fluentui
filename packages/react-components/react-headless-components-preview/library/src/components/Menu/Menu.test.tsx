@@ -32,6 +32,35 @@ describe('Menu', () => {
     const MenuComponent = composed ? ComposedMenu : Menu;
     const Surface = composed ? ComposedMenuPopover : MenuPopover;
 
+    it('provides overridable sizing and scrolling defaults without consumer adapters', () => {
+      const Example = ({
+        style,
+        positioning,
+      }: {
+        style?: React.CSSProperties;
+        positioning?: MenuProps['positioning'];
+      }) => (
+        <MenuComponent open positioning={positioning}>
+          <MenuTrigger>
+            <button>Trigger</button>
+          </MenuTrigger>
+          <Surface data-testid="sized-surface" style={style}>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </Surface>
+        </MenuComponent>
+      );
+      const { getByTestId, rerender } = render(<Example />);
+      const surface = getByTestId('sized-surface');
+      expect(surface.style.overflowY).toBe('auto');
+      expect(surface.style.maxHeight).toBe('var(--fui-positioning-available-height, revert-layer)');
+      rerender(<Example positioning={{ autoSize: false }} style={{ maxHeight: '120px', overflowY: 'visible' }} />);
+      expect(surface.style.getPropertyValue('--fui-positioning-available-height')).toBe('initial');
+      expect(surface.style.maxHeight).toBe('120px');
+      expect(surface.style.overflowY).toBe('visible');
+    });
+
     it('owns the actual surface marker while preserving props, handlers and refs', () => {
       const ref = React.createRef<HTMLDivElement>();
       const onKeyDown = jest.fn();

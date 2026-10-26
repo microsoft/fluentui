@@ -13,6 +13,7 @@ import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
+import { AVAILABLE_HEIGHT_PROPERTY, AVAILABLE_WIDTH_PROPERTY, useAvailableSize } from './useAvailableSize';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
@@ -51,6 +52,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     coverTarget = false,
     strategy = 'fixed',
     matchTargetSize,
+    autoSize,
     positioningRef,
   } = options;
 
@@ -75,8 +77,32 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   const { targetDocument } = useFluent();
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
+  const sizingAreas = React.useMemo(() => {
+    if (pinned) {
+      return [positionArea];
+    }
+    if (fallbackAreas.length) {
+      return [positionArea, ...fallbackAreas];
+    }
+    const flippedPosition =
+      position === 'above' ? 'below' : position === 'below' ? 'above' : position === 'before' ? 'after' : 'before';
+    const flippedAlign = align === 'start' ? 'end' : align === 'end' ? 'start' : align;
+    return [
+      positionArea,
+      POSITION_AREA_MAP[flippedPosition][align],
+      POSITION_AREA_MAP[position][flippedAlign],
+      POSITION_AREA_MAP[flippedPosition][flippedAlign],
+    ];
+  }, [pinned, positionArea, fallbackAreas, position, align]);
 
   const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  const requestSizeUpdate = useAvailableSize(
+    containerEl,
+    effectiveTarget,
+    targetDocument,
+    coverTarget ? false : autoSize,
+    sizingAreas,
+  );
 
   // Reconcile every owning commit, including consumer attribute changes with unchanged positioning options.
   useIsomorphicLayoutEffect(() => {
@@ -95,9 +121,12 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       setTarget: (el: TargetElement | null) => {
         setImperativeTarget(resolveElementRef(el));
       },
-      updatePosition: requestPlacementUpdate,
+      updatePosition: () => {
+        requestSizeUpdate();
+        requestPlacementUpdate();
+      },
     }),
-    [requestPlacementUpdate],
+    [requestPlacementUpdate, requestSizeUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
@@ -137,6 +166,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
     node => {
       if (attachedContainerRef.current !== node) {
         attachedContainerRef.current?.removeAttribute('data-cover-target');
+        attachedContainerRef.current?.style.removeProperty(AVAILABLE_HEIGHT_PROPERTY);
+        attachedContainerRef.current?.style.removeProperty(AVAILABLE_WIDTH_PROPERTY);
       }
       attachedContainerRef.current = node;
       setContainerEl(node);

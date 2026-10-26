@@ -22,6 +22,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
+import { positioningSizeStyles } from '../../hooks/usePositioning/useAvailableSize';
 
 /**
  * Create the state required to render Tooltip.
@@ -74,6 +75,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
   const contentRef = useMergedRefs(state.content.ref, containerRef);
   state.content.ref = contentRef;
+  state.content.style = { ...positioningSizeStyles, ...state.content.style };
 
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 

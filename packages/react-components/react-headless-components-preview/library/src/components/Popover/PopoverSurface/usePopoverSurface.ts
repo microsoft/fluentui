@@ -5,6 +5,7 @@ import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities
 import { usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
+import { positioningSizeStyles } from '../../../hooks/usePositioning/useAvailableSize';
 
 /**
  * Returns the state for a PopoverSurface component.
@@ -41,6 +42,7 @@ export const usePopoverSurface = (
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
         role: trapFocus ? 'dialog' : 'group',
         ...props,
+        style: { ...positioningSizeStyles, ...props.style },
         id: surfaceId,
         'data-popover-surface': '',
         'data-open': toDataAttributeValue(open),

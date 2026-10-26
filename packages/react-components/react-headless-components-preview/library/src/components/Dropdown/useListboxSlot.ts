@@ -16,6 +16,7 @@ import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-
 import type { DropdownState } from './Dropdown.types';
 import { Listbox } from './Listbox';
 import type { ListboxProps } from './Listbox';
+import { positioningSizeStyles } from '../../hooks/usePositioning/useAvailableSize';
 
 export type UseListboxSlotState = Pick<DropdownState, 'multiselect' | 'open' | 'setOpen'>;
 
@@ -96,6 +97,7 @@ export function useListboxSlot(
   const popoverRef = React.useRef<HTMLDivElement>(null);
   const listboxRef = useMergedRefs(listboxSlot?.ref, ref, popoverRef);
   if (listboxSlot) {
+    listboxSlot.style = { ...positioningSizeStyles, ...listboxSlot.style };
     listboxSlot.ref = listboxRef;
     listboxSlot.onMouseDown = onMouseDown;
     listboxSlot.onClick = onClick;
