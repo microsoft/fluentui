@@ -4,6 +4,7 @@ export { usePopover, usePopoverContextValues } from './usePopover';
 export { usePopoverContext } from './popoverContext';
 export type {
   PopoverProps,
+  PopoverMode,
   PopoverState,
   PopoverContextValue,
   OpenPopoverEvents,

@@ -532,6 +532,53 @@ describe('Popover', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'auto');
   });
 
+  it.each(['manual', 'hint'] as const)('sets popover="%s" on surface with mode="%s"', mode => {
+    const { getByRole } = render(
+      <Popover defaultOpen mode={mode}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>Surface</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', mode);
+  });
+
+  it('closes a manual surface on Escape inside it', () => {
+    const onOpenChange = jest.fn();
+    const { getByText } = render(
+      <Popover defaultOpen mode="manual" onOpenChange={onOpenChange}>
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <button>Inside</button>
+        </PopoverSurface>
+      </Popover>,
+    );
+
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+
+    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+  });
+
+  it('ignores mode and warns when trapFocus is true', () => {
+    const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+    const { getByRole } = render(
+      <Popover defaultOpen trapFocus mode="manual">
+        <PopoverTrigger>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface aria-label="Surface">Surface</PopoverSurface>
+      </Popover>,
+    );
+
+    expect(getByRole('dialog', { hidden: true })).not.toHaveAttribute('popover');
+    expect(consoleWarn).toHaveBeenCalledWith(expect.stringContaining('is ignored when `trapFocus` is true'));
+    consoleWarn.mockRestore();
+  });
+
   it('mounts a custom surface only while open', () => {
     const CustomSurface = () => {
       const open = usePopoverContext(context => context.open);

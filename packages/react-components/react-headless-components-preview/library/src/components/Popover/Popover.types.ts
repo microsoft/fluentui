@@ -95,12 +95,30 @@ export type PopoverProps = {
    * @default false
    */
   trapFocus?: boolean;
+
+  /**
+   * How a non-modal surface is dismissed. Mirrors the HTML `popover` attribute:
+   * - `auto`: Escape and clicks outside close it, and opening it closes other `auto` popovers.
+   * - `manual`: clicks outside do not close it; Escape closes it while focus is in the trigger or surface. For
+   *   surfaces that must stay open while the user works elsewhere, e.g. a floating toolbar or a coach mark.
+   * - `hint`: like `auto`, but opening it leaves other popovers open, e.g. a toggletip next to an open menu.
+   *   Browsers without `popover="hint"` get `manual`.
+   *
+   * Ignored when `trapFocus` is true.
+   * @default 'auto'
+   */
+  mode?: PopoverMode;
 };
+
+/**
+ * How a non-modal Popover surface is dismissed.
+ */
+export type PopoverMode = 'auto' | 'manual' | 'hint';
 
 /**
  * Popover State
  */
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus' | 'mode'>> &
   Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -133,6 +151,7 @@ export type PopoverContextValue = Pick<
   | 'withArrow'
   | 'surfaceId'
   | 'trapFocus'
+  | 'mode'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

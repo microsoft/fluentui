@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
+import { useLayerEscape } from '../../../hooks/top-layer';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -22,6 +23,7 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const mode = usePopoverContext(context => context.mode);
 
   if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
@@ -47,14 +49,28 @@ export const usePopoverSurface = (
       },
       {
         defaultProps: {
-          popover: trapFocus ? undefined : 'auto',
+          popover: trapFocus ? undefined : mode,
         },
         elementType: 'dialog',
       },
     ) as PopoverSurfaceState['root'],
   };
 
-  const { onMouseEnter: onMouseEnterOriginal, onMouseLeave: onMouseLeaveOriginal } = state.root;
+  const {
+    onMouseEnter: onMouseEnterOriginal,
+    onMouseLeave: onMouseLeaveOriginal,
+    onKeyDown: onKeyDownOriginal,
+  } = state.root;
+
+  // The browser ignores Escape on `manual` popovers, and on `hint` where unsupported.
+  const { onKeyDown: onEscapeKeyDown } = useLayerEscape(contentRef, {
+    open,
+    onEscape: e => setOpen(e as React.KeyboardEvent<HTMLElement>, false),
+  });
+  state.root.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDialogElement & HTMLDivElement>) => {
+    onKeyDownOriginal?.(e);
+    onEscapeKeyDown(e);
+  });
 
   state.root.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDialogElement & HTMLDivElement>) => {
     if (openOnHover) {

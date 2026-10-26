@@ -4,7 +4,7 @@
 
 Popover is an anchored overlay surface that displays transient content (actions, details, confirmations, rich tooltips) next to a trigger element. It composes a trigger (optional if opened programmatically), a surface (the floating content), and an optional arrow. The surface elevates into the browser's **top layer** via the native HTML Popover API. Placement is computed via the native **CSS Anchor Positioning API** — no JS layout loop.
 
-Popover lets the browser manage dismissal: a non-modal surface is rendered with `popover="auto"`, so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. When `trapFocus` is enabled, the default `<dialog>` surface opens modally with `role="dialog"`.
+Popover lets the browser manage dismissal: a non-modal surface is rendered with `popover="auto"` by default (see `mode` for `manual` and `hint`), so Escape, click-outside, and popover-stack peer-dismissal happen at HTML Popover spec timing and are mirrored back into React via the surface's `toggle` event. Open paths (click, hover, context-menu, controlled `open`) flow through React; close paths defer to the browser. When `trapFocus` is enabled, the default `<dialog>` surface opens modally with `role="dialog"`.
 
 ## Composition
 
@@ -35,6 +35,15 @@ Popover is a compound component. `PopoverTrigger` is optional — a surface with
 | `withArrow`       | `boolean`                                                   | `false`     | Render an arrow element inside the surface. Consumer CSS positions/rotates it using `[data-placement]`.                      |
 | `positioning`     | `PositioningShorthand`                                      | `undefined` | Shorthand (`'below-start'`) or object (`{ position, align, offset, ... }`). See [Positioning](#positioning).                 |
 | `trapFocus`       | `boolean`                                                   | `false`     | Open the popover as a modal via `HTMLDialogElement.showModal()`. See [Focus management](#focus-management).                  |
+| `mode`            | `'auto' \| 'manual' \| 'hint'`                              | `'auto'`    | How a non-modal surface is dismissed. See [Mode](#mode).                                                                     |
+
+#### Mode
+
+- `auto`: Escape and click outside close it, and it closes other `auto` popovers.
+- `manual`: click outside does not close it; Escape closes it while focus is in the trigger or surface. For floating toolbars and coach marks.
+- `hint`: like `auto`, but leaves other popovers open, e.g. toggletips. Falls back to `manual` without `popover="hint"` support.
+
+`mode` is ignored, with a dev warning, when `trapFocus` is true.
 
 ### `PopoverTrigger`
 
@@ -106,7 +115,7 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 // Surface (top layer) — <dialog> by default; may be <div> when trapFocus is false
 <SurfaceElement
   id={surfaceId}
-  popover={trapFocus ? undefined : 'auto'}
+  popover={trapFocus ? undefined : mode}
   role={trapFocus ? 'dialog' : 'group'}
   data-popover-surface=""
   data-placement="below-start"   // requested placement; live-updated by observer
@@ -150,7 +159,7 @@ The role on the surface depends on `trapFocus`:
 
 ### Focus management
 
-The surface's show/hide and exit come from the shared top-layer hooks (`useDialogLayerOpenState`, `useLayerPresence`, `useLayerFocusReturn`); there is no React-side focus trap or focus finder.
+The surface's show/hide and exit come from the shared top-layer hooks (`useDialogLayerOpenState`, `useLayerPresence`, `useLayerFocusReturn`, `useLayerEscape`); there is no React-side focus trap or focus finder. A `manual` surface closes on Escape through `useLayerEscape`.
 
 - **`trapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
 - **`trapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`) and the rest of the page is **inert**.
