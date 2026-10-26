@@ -330,7 +330,7 @@
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-middleware": "7.1.0",
-    "webpack-dev-server": "4.15.2",
+    "webpack-dev-server": "6.1.0",
     "webpack-hot-middleware": "2.26.1",
     "webpack-merge": "5.10.0",
     "yargs": "13.3.2",
