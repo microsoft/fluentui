@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: move headless overlays onto the internal top-layer hooks",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
