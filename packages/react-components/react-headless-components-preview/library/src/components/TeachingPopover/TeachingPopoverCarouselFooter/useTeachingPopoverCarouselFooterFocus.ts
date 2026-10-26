@@ -31,6 +31,7 @@ const isAvailable = (element: HTMLElement): boolean => {
     if (
       current.matches('[hidden], [inert], [aria-disabled="true"]') ||
       style.display === 'none' ||
+      (current === element && style.display === 'contents') ||
       (current !== element && style.getPropertyValue('content-visibility') === 'hidden')
     ) {
       return false;
@@ -83,7 +84,7 @@ export const useTeachingPopoverCarouselFooterFocus = (
     if (focusOwner.current && focusOwner.current !== previous) {
       cancelOwnership();
     }
-    if (!rootRef.current?.isConnected || !previous || altText !== null || previousSlotProps?.navType !== 'prev') {
+    if (!rootRef.current?.isConnected || !previous || previousSlotProps?.navType !== 'prev') {
       cancelOwnership();
       return;
     }
@@ -93,6 +94,14 @@ export const useTeachingPopoverCarouselFooterFocus = (
     }
 
     const active = getActiveElement(previous);
+    if (altText !== null) {
+      pending.current = false;
+      wasUnavailable.current = false;
+      if (active !== previous) {
+        focusOwner.current = null;
+      }
+      return;
+    }
     const unavailable = !previous.hasChildNodes() && !isAvailable(previous);
     if (unavailable && !wasUnavailable.current && focusOwner.current === previous) {
       pending.current = true;

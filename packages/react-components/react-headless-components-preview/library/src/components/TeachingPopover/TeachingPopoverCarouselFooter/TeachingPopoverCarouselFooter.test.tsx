@@ -195,6 +195,47 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
     expect(getByTestId('previous')).toHaveFocus();
   });
 
+  it('retains ownership while alternate text is non-null on the same focused Previous', async () => {
+    const { getByTestId, rerender } = render(<Example previous={{ altText: 'Restart' }} />);
+    const previous = getByTestId('previous');
+    previous.focus();
+    rerender(<Example previous={{ altText: 'Restart' }} />);
+    await flushFocus();
+    expect(getByTestId('previous')).toBe(previous);
+    expect(previous).toHaveFocus();
+    rerender(<Example value="one" />);
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('does not retain ownership with non-null alternate text after explicit blur', async () => {
+    const { getByTestId, rerender } = render(<Example previous={{ altText: 'Restart' }} />);
+    getByTestId('previous').focus();
+    rerender(<Example previous={{ altText: 'Restart' }} />);
+    getByTestId('previous').blur();
+    rerender(<Example value="one" />);
+    await flushFocus();
+    expect(getByTestId('next')).not.toHaveFocus();
+  });
+
+  it.each(['button', 'a'] as const)('recovers focus when display:contents removes the Previous %s box', async as => {
+    const { getByTestId, rerender } = render(<Example previous={{ as }} hidePrevious={false} />);
+    getByTestId('previous').focus();
+    rerender(<Example value="one" previous={{ as, style: { display: 'contents' } }} hidePrevious={false} />);
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
+  it('does not reject Next merely because an ancestor uses display:contents', async () => {
+    const Tour = ({ value }: { value: string }) => (
+      <div style={{ display: 'contents' }}>
+        <Example value={value} />
+      </div>
+    );
+    const { getByTestId, rerender } = render(<Tour value="two" />);
+    getByTestId('previous').focus();
+    rerender(<Tour value="one" />);
+    await waitFor(() => expect(getByTestId('next')).toHaveFocus());
+  });
+
   it('does not treat null altText alone as an instruction to hide or transfer', async () => {
     const { getByTestId, rerender } = render(<Example hidePrevious={false} />);
     getByTestId('previous').focus();
@@ -210,6 +251,7 @@ describe('TeachingPopoverCarouselFooter paired focus', () => {
     { hidden: true },
     { style: { display: 'none' } },
     { style: { visibility: 'hidden' } },
+    { style: { display: 'contents' } },
     { tabIndex: -1 },
     { navType: 'prev' },
   ])('does not transfer to an unavailable Next: %p', async next => {

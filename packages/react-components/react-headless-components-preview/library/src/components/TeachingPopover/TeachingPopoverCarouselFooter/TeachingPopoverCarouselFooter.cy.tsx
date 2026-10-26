@@ -144,10 +144,27 @@ const Example = ({
 const OwnershipExample = ({
   scenario,
 }: {
-  scenario: 'remove' | 'replace' | 'commit' | 'iframe' | 'content' | 'ancestor';
+  scenario:
+    | 'remove'
+    | 'replace'
+    | 'commit'
+    | 'iframe'
+    | 'content'
+    | 'ancestor'
+    | 'alternate'
+    | 'contents-button'
+    | 'contents-anchor';
 }) => {
   const [step, setStep] = React.useState(0);
-  const value = scenario === 'replace' ? (step === 2 ? 'one' : 'two') : step === 1 || step === 3 ? 'one' : 'two';
+  const value =
+    scenario === 'replace' || scenario === 'alternate'
+      ? step === 2
+        ? 'one'
+        : 'two'
+      : step === 1 || step === 3
+      ? 'one'
+      : 'two';
+  const displayContents = scenario === 'contents-button' || scenario === 'contents-anchor';
   const previousRef = React.useRef<HTMLButtonElement>(null);
   const outsideRef = React.useRef<HTMLButtonElement>(null);
   const nextRef = React.useCallback(
@@ -183,12 +200,13 @@ const OwnershipExample = ({
               scenario === 'remove' && step === 1
                 ? null
                 : {
-                    as: scenario === 'replace' && step > 0 ? 'a' : 'button',
+                    as: (scenario === 'replace' && step > 0) || scenario === 'contents-anchor' ? 'a' : 'button',
                     navType: 'prev',
-                    altText: null,
+                    altText: scenario === 'alternate' && step < 2 ? 'Restart' : null,
                     children: 'Previous',
                     ...{ ref: previousRef },
-                    hidden: scenario !== 'content' && value === 'one',
+                    hidden: scenario !== 'content' && !displayContents && value === 'one',
+                    style: displayContents && value === 'one' ? { display: 'contents' } : undefined,
                     className: scenario === 'content' ? 'ownership-content' : undefined,
                     ...{ 'data-testid': 'ownership-previous' },
                   }
@@ -257,6 +275,41 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
     cy.get('[data-testid="previous"]').should('have.focus').and('have.text', 'Restart');
   });
 
+  it('preserves ownership through a same-page rerender before alternate text becomes null', () => {
+    mount(<OwnershipExample scenario="alternate" />);
+    cy.get('[data-testid="ownership-previous"]').focus();
+    cy.get('[data-testid="ownership-step-1"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('have.focus').and('have.text', 'Previous');
+    cy.get('[data-testid="ownership-step-2"]').trigger('click');
+    cy.get('[data-testid="ownership-previous"]').should('be.empty').and('not.be.visible');
+    cy.get('[data-testid="ownership-next"]').should('have.focus').and('have.text', 'Next');
+  });
+
+  (['contents-button', 'contents-anchor'] as const).forEach(scenario => {
+    it(`recovers focus after ${scenario} removes the Previous box`, () => {
+      mount(<OwnershipExample scenario={scenario} />);
+      cy.get('[data-testid="ownership-previous"]').focus();
+      cy.get('[data-testid="ownership-step-1"]').trigger('click');
+      cy.get('[data-testid="ownership-previous"]').should('be.empty').and('have.css', 'display', 'contents');
+      cy.get('[data-testid="ownership-previous"]').should(previous =>
+        expect(previous[0].getClientRects()).to.have.length(0),
+      );
+      cy.get('[data-testid="ownership-next"]').should('have.focus').and('be.visible');
+    });
+  });
+
+  it('allows a visible Next beneath a display:contents ancestor', () => {
+    mount(
+      <div style={{ display: 'contents' }}>
+        <Example />
+      </div>,
+    );
+    cy.get('[data-testid="previous"]').focus().realPress('Enter');
+    cy.get('[data-testid="next"]').should('have.focus').and('be.visible');
+    cy.realPress('Enter');
+    cy.get('[data-testid="next"]').should('have.focus').and('have.text', 'Got it');
+  });
+
   it('does not transfer from an empty but still visible Previous', () => {
     mount(<Example hidePrevious={false} />);
     cy.get('[data-testid="previous"]').focus().realPress('Enter');
@@ -283,7 +336,13 @@ describe('TeachingPopoverCarouselFooter native paired focus', () => {
   });
 
   (
-    [{ disabled: true }, { disabledFocusable: true }, { hidden: true }, { style: { display: 'none' } }] as const
+    [
+      { disabled: true },
+      { disabledFocusable: true },
+      { hidden: true },
+      { style: { display: 'none' } },
+      { style: { display: 'contents' } },
+    ] as const
   ).forEach(next => {
     it(`does not focus an unavailable Next ${JSON.stringify(next)}`, () => {
       mount(<Example next={next} />);
