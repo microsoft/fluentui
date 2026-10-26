@@ -599,6 +599,12 @@ import {
 } from '@fluentui/react-headless-components-preview/teaching-popover';
 import { Textarea, renderTextarea, useTextarea } from '@fluentui/react-headless-components-preview/textarea';
 import {
+  TimePicker,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
+} from '@fluentui/react-headless-components-preview/time-picker';
+import {
   Toast,
   ToastBody,
   ToastContainer,
@@ -1208,6 +1214,10 @@ console.log(
   Textarea,
   renderTextarea,
   useTextarea,
+  TimePicker,
+  renderTimePicker,
+  useTimePicker,
+  useTimePickerContextValues,
   Toast,
   ToastBody,
   ToastContainer,
