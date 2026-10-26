@@ -19,6 +19,8 @@ Each hook does one job, and a component composes only the ones it needs:
 | `useLayerFocusReturn`     | Returns focus on close where the browser doesn't. Plugs into the open-state hook through its callbacks.        |
 | `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
+`useLayerPresence` and `useLayerEscape` land in #37018, together with their first consumers. This spec describes the whole stack.
+
 No positioning: overlays compose them with `usePositioning`.
 
 The Popover API is required. Without it, or a polyfill, popover layers don't open and the hooks warn in development; a modal `<dialog>` still opens.
@@ -75,6 +77,8 @@ useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options
 
 ## `useLayerPresence`
 
+Added in #37018.
+
 ```ts
 useLayerPresence(elementRef: React.RefObject<HTMLElement | null>, options: UseLayerPresenceOptions): UseLayerPresenceReturn;
 ```
@@ -93,29 +97,55 @@ It works whether it is declared before or after the open-state hook: it measures
 
 ### Example
 
-```tsx
-const ref = React.useRef<HTMLDivElement>(null);
-const { popover } = useLayerOpenState(ref, {
-  open,
-  mode: 'auto',
-  onOpenChange: nextOpen => setOpen(nextOpen),
-});
-const { shouldRender } = useLayerPresence(ref, { open });
-const { targetRef, containerRef } = usePositioning({ position: 'below' });
+A filter panel that opens below its button, closes on Escape or a click outside, and stays mounted while its exit animation runs:
 
-<button ref={targetRef} onClick={() => setOpen(!open)} aria-haspopup="menu" aria-expanded={open} />;
-{
-  shouldRender && (
-    <div
-      ref={mergeRefs(ref, containerRef)}
-      id={id}
-      role="menu"
-      aria-label="Actions"
-      popover={popover}
-      data-open={open ? '' : undefined}
-    />
+```tsx
+import * as React from 'react';
+import { useId, useMergedRefs } from '@fluentui/react-utilities';
+import { usePositioning } from '../hooks';
+import { useLayerOpenState, useLayerPresence } from '../hooks/top-layer';
+
+export const FilterPanel = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = React.useState(false);
+  const panelId = useId('filter-panel');
+
+  const layerRef = React.useRef<HTMLDivElement>(null);
+  const { popover } = useLayerOpenState(layerRef, {
+    open,
+    mode: 'auto',
+    // Escape, a click outside, or another `auto` popover opening.
+    onOpenChange: nextOpen => setOpen(nextOpen),
+  });
+  const { shouldRender } = useLayerPresence(layerRef, { open });
+
+  const { targetRef, containerRef } = usePositioning({ position: 'below' });
+  const panelRef = useMergedRefs(layerRef, containerRef);
+
+  return (
+    <>
+      <button
+        ref={targetRef}
+        aria-expanded={open}
+        aria-controls={shouldRender ? panelId : undefined}
+        onClick={() => setOpen(!open)}
+      >
+        Filters
+      </button>
+      {shouldRender && (
+        <div
+          ref={panelRef}
+          id={panelId}
+          role="group"
+          aria-label="Filters"
+          popover={popover}
+          data-open={open ? '' : undefined}
+        >
+          {children}
+        </div>
+      )}
+    </>
   );
-}
+};
 ```
 
 ## Modes
@@ -173,6 +203,8 @@ It returns `onBeforeShow`, `onBeforeHide` and `onHide`, which the open-state hoo
 
 ## `useLayerEscape`
 
+Added in #37018.
+
 ```ts
 const { onKeyDown } = useLayerEscape(elementRef, {
   open,
@@ -202,7 +234,7 @@ Focus on open and Tab order are the browser's:
 
 ## Consumers
 
-Each component composes the hooks it needs.
+Each component composes the hooks it needs. This is the state after #37019; #36910 moves the components onto the open-state and focus-return hooks, #37018 adds `useLayerPresence` and `useLayerEscape`, and #37019 adds Popover `mode`.
 
 - **Popover / TeachingPopover / InfoLabel.** `useDialogLayerOpenState` with `mode: trapFocus ? 'modal' : mode`, `useLayerPresence`, and `useLayerFocusReturn` with `target: triggerRef`. `useLayerEscape` closes a `manual` surface on Escape. `PopoverTrigger` keeps its own Escape handler for focus on the trigger.
 - **Dialog / Drawer.** `useDialogLayerOpenState` with `'modal'`, or `'manual'` when non-modal, and `useLayerPresence`. Browser opens and closes are reported as `surfaceToggle`. `useLayerEscape` with `when: 'always'` reports every Escape as `escapeKeyDown`, skipping Escape from a layer nested inside. As on master, `DialogSurface` blocks the browser closing a modal on Escape so `onOpenChange` can veto, and locks scroll. `useLayerFocusReturn` with `when: 'always'` returns focus to the element focused before a non-modal dialog opened; a modal dialog's `close()` returns it natively.
@@ -213,17 +245,17 @@ Each component composes the hooks it needs.
 
 ## Changes from master
 
-| Area                                                        | Master                                                                       | Now                                                                        |
-| ----------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| Popover exit                                                | unmounted once the browser reported the close                                | also waits for exit animations, like `DialogSurface`                       |
-| Exiting Popover and Dialog                                  | —                                                                            | `inert` and `aria-hidden="true"` while exit animations run                 |
-| Tooltip, Dropdown and Combobox exit                         | unmounted as soon as they closed                                             | wait for exit animations, `inert` while they run                           |
-| Tooltip Escape where `hint` is unsupported                  | ignored                                                                      | closes the tooltip                                                         |
-| Escape in a layer nested in a `DialogSurface`               | the outer dialog closed too, unless the inner handler stopped the event      | only the inner one closes                                                  |
-| Popover `mode`                                              | always `auto`                                                                | `auto`, `manual` or `hint`; a `manual` surface closes on Escape            |
-| Popover kept `open` after a browser dismiss                 | shown again                                                                  | stays closed, with a dev warning; use `mode="manual"` to prevent dismissal |
-| Modal Dialog native close (`<form method="dialog">`)        | closes, not reported, so React state goes out of sync                        | closes, reported as `surfaceToggle`                                        |
-| Native opens (`popovertarget`, `commandfor`, `showModal()`) | non-modal Dialog synced as `surfaceToggle`; Popover unreachable while closed | also modal Dialog, where dialogs fire `toggle` (Chromium 132+)             |
+| PR     | Area                                                        | Master                                                                                                               | Now                                                                        |
+| ------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| #36910 | Popover kept `open` after a browser dismiss                 | shown again                                                                                                          | stays closed, with a dev warning; use `mode="manual"` to prevent dismissal |
+| #36910 | Modal Dialog native close (`<form method="dialog">`)        | closes, not reported, so React state goes out of sync                                                                | closes, reported as `surfaceToggle`                                        |
+| #36910 | Native opens (`popovertarget`, `commandfor`, `showModal()`) | non-modal Dialog synced as `surfaceToggle`; Popover unreachable while closed                                         | also modal Dialog, where dialogs fire `toggle` (Chromium 132+)             |
+| #37018 | Escape in a layer nested in a `DialogSurface`               | the outer dialog closed too, unless a nested handler called `preventDefault()`; popovers the browser closes never do | only the inner one closes                                                  |
+| #37018 | Tooltip Escape where `hint` is unsupported                  | ignored                                                                                                              | closes the tooltip                                                         |
+| #37018 | Popover exit                                                | unmounted once the browser reported the close                                                                        | also waits for exit animations, like `DialogSurface`                       |
+| #37018 | Exiting Popover and Dialog                                  | —                                                                                                                    | `inert` and `aria-hidden="true"` while exit animations run                 |
+| #37018 | Tooltip, Dropdown and Combobox exit                         | unmounted as soon as they closed                                                                                     | wait for exit animations, `inert` while they run                           |
+| #37019 | Popover `mode`                                              | always `auto`                                                                                                        | `auto`, `manual` or `hint`; a `manual` surface closes on Escape            |
 
 ## Stacking and nesting
 
