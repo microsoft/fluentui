@@ -106,6 +106,69 @@ describe('Dialog', () => {
     expect(dialog).not.toHaveAttribute('aria-labelledby');
   });
 
+  it('reports a native modal close, e.g. from a form with method="dialog"', () => {
+    const onOpenChange = jest.fn();
+    const { getByRole } = render(
+      <Dialog open onOpenChange={onOpenChange}>
+        <DialogSurface aria-label="Dialog">Content</DialogSurface>
+      </Dialog>,
+    );
+    const surface = getByRole('dialog', { hidden: true });
+
+    surface.removeAttribute('open');
+    fireEvent(surface, new Event('close'));
+
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ type: 'surfaceToggle', open: false }),
+    );
+  });
+
+  it('reports Escape once as escapeKeyDown and keeps the dialog open for the consumer to decide', () => {
+    const onOpenChange = jest.fn();
+    const { getByRole, getByText } = render(
+      <Dialog open onOpenChange={onOpenChange}>
+        <DialogSurface aria-label="Dialog">
+          <button>Inside</button>
+        </DialogSurface>
+      </Dialog>,
+    );
+    const surface = getByRole('dialog', { hidden: true });
+
+    fireEvent.keyDown(getByText('Inside'), { key: 'Escape' });
+    const cancelEvent = new Event('cancel', { cancelable: true });
+    fireEvent(surface, cancelEvent);
+
+    expect(cancelEvent.defaultPrevented).toBe(true);
+    expect(onOpenChange).toHaveBeenCalledTimes(1);
+    expect(onOpenChange).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ type: 'escapeKeyDown', open: false }),
+    );
+  });
+
+  it('returns focus to the element focused before opening a non-modal dialog, even if focus moved outside', () => {
+    const Example = ({ open }: { open: boolean }) => (
+      <>
+        <button>Trigger</button>
+        <input aria-label="Elsewhere" />
+        <Dialog open={open} modalType="non-modal">
+          <DialogSurface aria-label="Dialog">Content</DialogSurface>
+        </Dialog>
+      </>
+    );
+    const { getByText, getByLabelText, rerender } = render(<Example open={false} />);
+    const trigger = getByText('Trigger');
+    trigger.focus();
+
+    rerender(<Example open />);
+    getByLabelText('Elsewhere').focus();
+    rerender(<Example open={false} />);
+
+    expect(trigger).toHaveFocus();
+  });
+
   it('keeps dialog mounted after close when unmountOnClose is false', () => {
     const result = render(
       <Dialog unmountOnClose={false}>
