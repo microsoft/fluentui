@@ -27,6 +27,7 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
     triggerNativeProps,
     internalState,
     listbox,
+    shouldRenderListbox,
     rootSlot,
   } = useListboxPopupState<DropdownProps, HTMLButtonElement>(props, {
     primarySlotTagName: 'button',
@@ -70,7 +71,8 @@ export const useDropdown = (props: DropdownProps, ref: React.Ref<HTMLButtonEleme
       'data-clearable': toDataAttributeValue(showClearButton),
     },
     button: trigger,
-    listbox: open || hasFocus ? listbox : undefined,
+    listbox: hasFocus || shouldRenderListbox ? listbox : undefined,
+    shouldRenderListbox,
     clearButton: slot.optional(mergedProps.clearButton, {
       defaultProps: {
         'aria-label': 'Clear selection',

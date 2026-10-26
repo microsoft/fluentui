@@ -150,7 +150,7 @@ The role on the surface depends on `inertTrapFocus`:
 
 ### Focus management
 
-The surface's show/hide come from the shared top-layer hooks (`useDialogLayerOpenState` with `returnFocus`); there is no React-side focus trap or focus finder.
+The surface's show/hide and exit come from the shared top-layer hooks (`useDialogLayerOpenState` with `returnFocus`, `useLayerPresence`); there is no React-side focus trap or focus finder.
 
 - **`inertTrapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
 - **`inertTrapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. Because the trap comes from inertness, not from intercepting Tab, Tab from the last focusable element may move focus to the browser UI (address bar, toolbar) before wrapping back into the surface.
@@ -248,13 +248,15 @@ This implementation defers opening until `pointerup`, which avoids opening durin
 
 ### Dismiss paths (browser-driven, then mirrored)
 
-| Source                                  | Mechanism                                                                                                                                                |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Escape                                  | Browser dismisses the topmost open popover per the HTML Popover light-dismiss algorithm.                                                                 |
-| Click outside                           | Browser dismisses any popover whose ancestor chain doesn't contain the click target.                                                                     |
-| Open an unrelated `popover="auto"` peer | Browser dismisses the existing root chain — only one auto-popover root can be open at a time.                                                            |
-| Hover-leave (`openOnHover`)             | React-side: `setOpen(false)` after `mouseLeaveDelay` ms with the pointer outside both trigger and surface. `setOpen(false)` unmounts the surface in JSX. |
-| Programmatic                            | Consumer sets `open={false}`. React unmounts the surface; the browser implicitly closes the popover when the element leaves the DOM.                     |
+| Source                                  | Mechanism                                                                                                                                                                   |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Escape                                  | Browser dismisses the topmost open popover per the HTML Popover light-dismiss algorithm.                                                                                    |
+| Click outside                           | Browser dismisses any popover whose ancestor chain doesn't contain the click target.                                                                                        |
+| Open an unrelated `popover="auto"` peer | Browser dismisses the existing root chain — only one auto-popover root can be open at a time.                                                                               |
+| Hover-leave (`openOnHover`)             | React-side: `setOpen(false)` after `mouseLeaveDelay` ms with the pointer outside both trigger and surface. The surface is hidden, then unmounted after its exit animations. |
+| Programmatic                            | Consumer sets `open={false}`. The surface is hidden with `hidePopover()` / `close()`, then unmounted after its exit animations.                                             |
+
+While the surface exits it loses `data-open` and is `inert` and `aria-hidden`. Exit styles must keep it displayed and in the top layer (`transition: display … allow-discrete, overlay … allow-discrete`, or `display` keyframes).
 
 `usePopover` attaches a `toggle` listener on the surface (re-attached every time the surface mounts) that mirrors browser-driven dismissal:
 
