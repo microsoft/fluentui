@@ -13,6 +13,10 @@ export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode' 
 };
 
 export type ComboboxState = BaseComboboxState & {
+  /**
+   * Whether to render the listbox. Stays true until its exit animations end.
+   */
+  shouldRenderListbox: boolean;
   root: {
     /**
      * Whether the dropdown is currently open.

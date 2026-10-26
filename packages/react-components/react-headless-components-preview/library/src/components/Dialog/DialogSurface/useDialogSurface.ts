@@ -12,13 +12,18 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { useDialogLayerOpenState, useLayerEscape, useLayerFocusReturn } from '../../../hooks/top-layer';
-import { waitForAnimations } from '../../../hooks/top-layer/utils';
+import {
+  useDialogLayerOpenState,
+  useLayerEscape,
+  useLayerFocusReturn,
+  useLayerPresence,
+} from '../../../hooks/top-layer';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
  * Create the state required to render DialogSurface.
- * Show/hide come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for non-modal.
+ * Show/hide and exit come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for
+ * non-modal.
  *
  * @param props - props from this instance of DialogSurface
  * @param ref - reference to root HTMLDialogElement of DialogSurface
@@ -43,22 +48,7 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     ...focusReturn,
   });
 
-  // Keep the element connected for native close and consumer-defined exit animations.
-  const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
-
-  // Ensure the element exists before open side-effects run.
-  if ((open || !unmountOnClose) && !shouldRender) {
-    setShouldRender(true);
-  }
-
-  // Unmount once the closed dialog's exit animations end.
-  useIsomorphicLayoutEffect(() => {
-    const dialog = dialogRef.current;
-    if (open || !unmountOnClose || !dialog) {
-      return;
-    }
-    return waitForAnimations(dialog, () => setShouldRender(false));
-  }, [open, unmountOnClose]);
+  const { shouldRender } = useLayerPresence(dialogRef, { open, unmountOnClose });
 
   // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
   useIsomorphicLayoutEffect(() => {

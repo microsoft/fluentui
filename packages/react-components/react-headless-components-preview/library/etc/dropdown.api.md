@@ -40,6 +40,7 @@ export { DropdownSlots }
 
 // @public (undocumented)
 export type DropdownState = DropdownBaseHookState & {
+    shouldRenderListbox: boolean;
     root: DropdownBaseHookState['root'] & {
         'data-open'?: string;
         'data-disabled'?: string;

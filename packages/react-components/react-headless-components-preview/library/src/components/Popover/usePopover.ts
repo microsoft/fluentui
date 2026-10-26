@@ -1,17 +1,13 @@
 'use client';
 
 import * as React from 'react';
-import {
-  useControllableState,
-  useEventCallback,
-  useId,
-  useIsomorphicLayoutEffect,
-  useTimeout,
-} from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId, useTimeout } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import { useDialogLayerOpenState, useLayerFocusReturn } from '../../hooks/top-layer';
-import { isInTopLayer } from '../../hooks/top-layer/utils';
+import { useDialogLayerOpenState, useLayerFocusReturn, useLayerPresence } from '../../hooks/top-layer';
 import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+
+// A browser close reports its `toggle` or `cancel` event through `setOpen` too.
+type OpenChangeEvent = OpenPopoverEvents | Event | React.SyntheticEvent;
 
 /**
  * Returns the state for a Popover component.
@@ -33,13 +29,13 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const [contextTarget, setContextTarget] = React.useState<{ x: number; y: number } | undefined>(undefined);
 
-  const onOpenChange = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const onOpenChange = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     props.onOpenChange?.(e, { event: e, type: e.type, open: shouldOpen });
   });
 
   const [setOpenTimeout, clearOpenTimeout] = useTimeout();
 
-  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+  const setOpen = useEventCallback((e: OpenChangeEvent, shouldOpen: boolean) => {
     clearOpenTimeout();
 
     if (shouldOpen && e.type === 'contextmenu') {
@@ -78,41 +74,18 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
-  const onNativeOpenChange = useEventCallback((event: Event | React.SyntheticEvent, shouldOpen: boolean) => {
-    setOpenState(shouldOpen);
-    props.onOpenChange?.(event, { event, type: event.type, open: shouldOpen });
-  });
-
   // Back to the trigger when focus was inside as the surface started closing.
   const focusReturn = useLayerFocusReturn(contentRef, { target: triggerRef });
 
   useDialogLayerOpenState(contentRef, {
     open,
     mode: trapFocus ? 'modal' : 'auto',
-    onOpenChange: (nextOpen, { event }) => onNativeOpenChange(event, nextOpen),
+    onOpenChange: (nextOpen, { event }) => setOpen(event, nextOpen),
     ...focusReturn,
   });
 
-  // The surface stays mounted until it has left the top layer.
-  const [surfaceShown, setSurfaceShown] = React.useState(open);
-  if (open && !surfaceShown) {
-    setSurfaceShown(true);
-  }
-  const shouldRenderSurface = open || surfaceShown;
-  const openRef = React.useRef(open);
-
-  useIsomorphicLayoutEffect(() => {
-    openRef.current = open;
-    const surface = contentRef.current;
-    if (open || !surfaceShown || !surface || isInTopLayer(surface)) {
-      return;
-    }
-    queueMicrotask(() => {
-      if (!openRef.current) {
-        setSurfaceShown(false);
-      }
-    });
-  });
+  // The surface stays mounted until the browser closes it and exit animations end.
+  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

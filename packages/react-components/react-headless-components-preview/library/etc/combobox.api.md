@@ -40,6 +40,7 @@ export { ComboboxSlots }
 
 // @public (undocumented)
 export type ComboboxState = BaseComboboxState & {
+    shouldRenderListbox: boolean;
     root: {
         'data-open'?: string;
         'data-disabled'?: string;

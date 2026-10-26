@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLayerEscape, useLayerOpenState } from '../../hooks/top-layer';
+import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -108,6 +108,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     listen: 'document',
     onEscape: () => setVisible(undefined, { visible: false }),
   });
+
+  // Mounted until the exit animations end.
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible });
+  state.shouldRenderTooltip = shouldRender;
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
