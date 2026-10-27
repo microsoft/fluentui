@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-docsite-components
 
-<!-- This log was last generated on Thu, 01 Oct 2026 07:11:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 26 Oct 2026 03:43:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [8.16.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.16.9)
+
+Mon, 26 Oct 2026 03:43:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.16.8..@fluentui/react-docsite-components_v8.16.9)
+
+### Patches
+
+- Fix documentation hash routes and section navigation for encoded anchor separators. ([PR #36941](https://github.com/microsoft/fluentui/pull/36941) by mgodbolt@microsoft.com)
+- Bump @fluentui/react to v8.125.9 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-hooks to v8.10.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.8.13 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/theme to v2.7.4 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [8.16.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.16.8)
 
