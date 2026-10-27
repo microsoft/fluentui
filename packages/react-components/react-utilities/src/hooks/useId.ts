@@ -3,6 +3,19 @@
 import * as React from 'react';
 import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
 
+// Public consumer-build substitution token; keep it unresolved in published packages.
+declare const __FLUENT_USE_ID_BUILD_PREFIX__: string | undefined;
+
+const buildNamespace = typeof __FLUENT_USE_ID_BUILD_PREFIX__ === 'undefined' ? '' : __FLUENT_USE_ID_BUILD_PREFIX__;
+
+if (typeof buildNamespace !== 'string' || (buildNamespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(buildNamespace))) {
+  throw new Error(
+    '@fluentui/react-utilities: __FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match [A-Za-z_][A-Za-z0-9_-]*.',
+  );
+}
+
+const buildPrefix = buildNamespace ? `${buildNamespace}-` : '';
+
 const IdPrefixContext = React.createContext<string | undefined>(undefined);
 
 /**
@@ -25,6 +38,10 @@ export function resetIdsForTests(): void {
 /**
  * Hook to generate a unique ID.
  *
+ * Consumer builds can substitute __FLUENT_USE_ID_BUILD_PREFIX__ with a string literal to namespace generated IDs.
+ * The build namespace is prepended to context and hook prefixes, but never to a provided ID.
+ * Server and client builds must use the same namespace.
+ *
  * @param prefix - Optional prefix for the ID. Defaults to 'fui-'.
  * @param providedId - Optional id provided by a parent component. Defaults to the provided value if present,
  *  without conditioning the hook call
@@ -44,7 +61,7 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const escapedId = React.useMemo(() => generatedId.replace(/:/g, ''), [generatedId]);
 
-    return providedId || `${idPrefix}${prefix}${escapedId}`;
+    return providedId || `${buildPrefix}${idPrefix}${prefix}${escapedId}`;
   }
 
   // Hooks appear to be running conditionally, but they will always run in the same order since it's based on
@@ -56,6 +73,6 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
     }
 
     // eslint-disable-next-line react-hooks/immutability
-    return `${idPrefix}${prefix}${++contextValue.current}`;
+    return `${buildPrefix}${idPrefix}${prefix}${++contextValue.current}`;
   }, [idPrefix, prefix, providedId, contextValue]);
 }

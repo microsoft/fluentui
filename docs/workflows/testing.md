@@ -55,6 +55,19 @@ Every component package has a `testing/isConformant.ts` file that validates:
 - `as` prop (if applicable) works
 - Accessibility basics
 
+## Build-Time ID Namespace Integration
+
+Run `yarn nx run react-provider:test-build-prefix` to build the packages and test the published
+ESM/CommonJS ID namespace contract with esbuild, Webpack, Vite, and Playwright Chromium.
+The tests cover unconfigured builds, independent Fluent/React copies, provider theme isolation,
+SSR/hydration, and style cleanup. Chromium must be installed for the repository's Playwright version.
+
+By default, the tests use the workspace React version. To exercise a prepared React Integration
+Tester installation, set `FLUENT_TEST_REACT_ROOT` to its absolute `node_modules` path, for example
+`$PWD/tmp/rit/react-17/node_modules`. React 17 uses legacy render/hydrate APIs; React 18+ uses
+`createRoot`/`hydrateRoot`. When testing versions in parallel, build once first and pass
+`--excludeTaskDependencies` to the subsequent test runs so they do not rebuild the same output folders.
+
 ## SSR Safety
 
 Components must work in server-side rendering. Never access browser APIs without guards:

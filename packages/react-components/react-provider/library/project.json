@@ -4,5 +4,20 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-provider/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "lint": {
+      "options": {
+        "command": "yarn run -T eslint src testing"
+      }
+    },
+    "test-build-prefix": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "packages/react-components/react-provider/library",
+        "command": "node --test testing/build-prefix.test.cjs"
+      }
+    }
+  }
 }
