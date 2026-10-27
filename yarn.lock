@@ -4958,6 +4958,7 @@ __metadata:
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@griffel/react": "npm:^1.5.32"
     "@swc/helpers": "npm:^0.5.1"
+    clsx: "npm:^2.1.1"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
