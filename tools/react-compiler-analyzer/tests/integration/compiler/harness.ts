@@ -129,7 +129,12 @@ function eventSummary(events: CompilerEvent[]) {
   return events.map(event => ({
     kind: event.kind,
     name: event.fnName ?? null,
-    reason: event.reason ?? null,
+    reason:
+      (event.kind === 'CompileError'
+        ? extractDetailReason(event.detail)
+        : event.kind === 'PipelineError'
+        ? event.data
+        : event.reason) || null,
   }));
 }
 
@@ -307,11 +312,17 @@ export function summarize(evidence: Evidence) {
     analyzer: {
       error: evidence.analyzer.error,
       events: evidence.analyzer.events,
+      diagnostics: evidence.analyzer.diagnostics
+        .filter(({ reason }) => reason.length > 0)
+        .map(({ kind, reason }) => ({ kind, reason })),
       risks: evidence.analyzer.risks,
     },
     babel: {
       error: evidence.babel.error,
       events: eventSummary(evidence.babel.events),
+      diagnostics: evidence.babel.diagnostics
+        .filter(({ reason }) => reason.length > 0)
+        .map(({ kind, reason }) => ({ kind, reason })),
       targetCacheEvidence: targetCacheEvidence(evidence.babel.functions, evidence.fixture.target),
       outputFunctions: evidence.babel.functions,
     },

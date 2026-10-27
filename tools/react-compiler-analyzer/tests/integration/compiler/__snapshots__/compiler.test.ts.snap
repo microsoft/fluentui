@@ -3,6 +3,7 @@
 exports[`compiler integration (bounded behavior, not parity) computed-member-control: computed-member-control 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -14,6 +15,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -57,6 +59,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) computed-member-mutation-control: computed-member-mutation-control 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -68,6 +71,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -111,6 +115,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) computed-template-key: computed-template-key 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -122,6 +127,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -165,6 +171,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) computed-template-mutation: computed-template-mutation 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -176,6 +183,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -219,6 +227,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) declare-field: declare-field 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -230,6 +239,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -273,6 +283,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) export-assignment: export-assignment 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -284,6 +295,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -327,6 +339,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) exported-overload: exported-overload 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -338,6 +351,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -522,6 +536,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) exported-overload-gated: exported-overload-gated 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -533,6 +548,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -717,6 +733,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) hidden-selector: hidden-selector 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -730,6 +747,7 @@ Object {
     ],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -783,6 +801,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) import-assignment: import-assignment 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -794,6 +813,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -837,23 +857,35 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) invalid-hooks: invalid-hooks 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
       },
     ],
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "Hooks must always be called in a consistent order, and may not be called conditionally. See the Rules of Hooks (https://react.dev/warnings/invalid-hook-call-warning) (5:4)",
       },
     ],
     "outputFunctions": Array [
@@ -887,6 +919,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) malformed-suppression: malformed-suppression 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -898,6 +931,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -951,23 +985,35 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) misplaced-suppression: misplaced-suppression 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
       },
     ],
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
       },
     ],
     "outputFunctions": Array [
@@ -1013,6 +1059,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) module-opt-out: module-opt-out 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1024,6 +1071,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1063,6 +1111,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) namespace: namespace 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1074,6 +1123,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1122,6 +1172,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) positive: positive 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1133,6 +1184,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1176,6 +1228,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) recognized-selector-control: recognized-selector-control 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1187,6 +1240,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1240,23 +1294,35 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) suppressed-invalid-hooks: suppressed-invalid-hooks 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
       },
     ],
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/rules-of-hooks\`] (4:4)",
       },
     ],
     "outputFunctions": Array [
@@ -1290,6 +1356,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) unknown-rule-suppression: unknown-rule-suppression 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1301,6 +1368,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1354,23 +1422,35 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) unnecessary-suppression: unnecessary-suppression 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
       },
     ],
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [
+      Object {
+        "kind": "CompileError",
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
+      },
+    ],
     "error": null,
     "events": Array [
       Object {
         "kind": "CompileError",
         "name": null,
-        "reason": null,
+        "reason": "React Compiler has skipped optimizing this component because one or more React ESLint rules were disabled [React Compiler only works when your components follow all the rules of React, disabling them may result in unexpected or incorrect behavior. Found suppression \`eslint-disable-next-line react-hooks/exhaustive-deps\`] (4:2)",
       },
     ],
     "outputFunctions": Array [
@@ -1416,6 +1496,7 @@ Object {
 exports[`compiler integration (bounded behavior, not parity) valid-hooks: valid-hooks 1`] = `
 Object {
   "analyzer": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {
@@ -1427,6 +1508,7 @@ Object {
     "risks": Array [],
   },
   "babel": Object {
+    "diagnostics": Array [],
     "error": null,
     "events": Array [
       Object {

@@ -97,4 +97,45 @@ describe('compiler integration (bounded behavior, not parity)', () => {
       throw new Error(`${String(error)}\nCompiler integration evidence: ${artifact}`);
     }
   });
+
+  it('detects rejection-cause changes even when compiler outcomes and cache evidence are unchanged', async () => {
+    const fixture = fixtures.find(candidate => candidate.id === 'unnecessary-suppression');
+    if (!fixture) {
+      throw new Error('Missing suppression fixture');
+    }
+    const evidence = await runFixture(fixture);
+    const baseline = summarize(evidence);
+    for (const backend of ['analyzer', 'babel'] as const) {
+      expect(baseline[backend].events).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            kind: 'CompileError',
+            reason: expect.stringContaining('React ESLint rules were disabled'),
+          }),
+        ]),
+      );
+      expect(baseline[backend].diagnostics).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            kind: 'CompileError',
+            reason: expect.stringContaining('React ESLint rules were disabled'),
+          }),
+        ]),
+      );
+      const changed = summarize({
+        ...evidence,
+        [backend]: {
+          ...evidence[backend],
+          diagnostics: evidence[backend].diagnostics.map(diagnostic => ({
+            ...diagnostic,
+            reason: diagnostic.kind === 'CompileError' ? 'Unrelated compiler limitation' : diagnostic.reason,
+          })),
+        },
+      });
+      expect(changed[backend].events).toEqual(baseline[backend].events);
+      expect(changed.babel.targetCacheEvidence).toBe(baseline.babel.targetCacheEvidence);
+      expect(changed.swc.targetCacheEvidence).toBe(baseline.swc.targetCacheEvidence);
+      expect(changed[backend]).not.toEqual(baseline[backend]);
+    }
+  });
 });
