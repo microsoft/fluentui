@@ -28,6 +28,7 @@ import { Radio } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
 import { useArrowNavigationGroup, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { registerTreeItemActions } from '../../utils/queryTreeItemActions';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -300,17 +301,18 @@ function useTreeItemLayoutBase(
     setIsActionsVisible(isRelatedTargetFromActions);
   });
 
-  const actionsRefs = useMergedRefs(actionsRef, actionsRefInternal);
-  const actions = isActionsVisible
+  const actionsSlot = isActionsVisible
     ? slot.optional(props.actions, {
         defaultProps: {
           role: 'toolbar',
-          ref: actionsRefs,
           onBlur: handleActionsBlur,
         },
         elementType: 'div',
       })
     : undefined;
+  // The internal refs are merged after slot resolution, so that a consumer provided ref does not override them
+  const actionsRefs = useMergedRefs(actionsSlot?.ref, actionsRef, actionsRefInternal, registerTreeItemActions);
+  const actions = actionsSlot && { ...actionsSlot, ref: actionsRefs };
   if (actions) {
     // .visible .onVisibilityChange are consumed above and should not be propagated to the DOM
     delete actions.visible;
@@ -385,7 +387,8 @@ type DOMKeyboardNavigationTracker = {
  */
 const domKeyboardNavigationTrackers = new WeakMap<Document, DOMKeyboardNavigationTracker>();
 
-const DOM_POINTER_EVENTS = ['pointermove', 'pointerdown', 'mousemove', 'mousedown', 'touchstart'] as const;
+// Only pointer activation switches the modality, so that hovering does not discard keyboard focus
+const DOM_POINTER_EVENTS = ['pointerdown', 'mousedown', 'touchstart'] as const;
 
 function subscribeToDOMKeyboardNavigation(targetDocument: Document): DOMKeyboardNavigationTracker {
   let tracker = domKeyboardNavigationTrackers.get(targetDocument);

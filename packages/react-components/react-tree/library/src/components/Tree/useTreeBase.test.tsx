@@ -211,6 +211,58 @@ describe('useTreeBase_unstable', () => {
       expect(document.activeElement).toBe(screen.getByText('Edit'));
     });
 
+    it('keeps the roving tab index in sync when a consumer stops focus propagation', () => {
+      render(
+        <BaseTree aria-label="Tree">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2" onFocus={event => event.stopPropagation()}>
+            <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      getItem('item 2').focus();
+
+      expect(getItem('item 2').tabIndex).toBe(0);
+      expect(getItem('item 1').tabIndex).toBe(-1);
+    });
+
+    it('finds actions whose role is overridden, and ignores toolbars outside the actions', () => {
+      const actionsRef = React.createRef<HTMLDivElement>();
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{ role: 'group', ref: actionsRef, visible: true, children: <button>Edit</button> }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2">
+            <BaseTreeItemLayout main={{ role: 'toolbar' }}>
+              <button>Main</button>
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Edit' }));
+      expect(actionsRef.current?.getAttribute('role')).toBe('group');
+
+      fireEvent.keyDown(screen.getByRole('button', { name: 'Edit' }), { key: 'ArrowLeft' });
+      expect(document.activeElement).toBe(item);
+
+      const mainItem = getItem('Main');
+      mainItem.focus();
+      fireEvent.keyDown(mainItem, { key: 'ArrowRight' });
+      expect(document.activeElement).toBe(mainItem);
+    });
+
     it('moves focus into a contenteditable action in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">

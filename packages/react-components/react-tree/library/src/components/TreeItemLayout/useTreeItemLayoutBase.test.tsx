@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import type { SelectionMode } from '@fluentui/react-utilities';
 import { Tree } from '../Tree/Tree';
@@ -187,5 +187,31 @@ describe('useTreeItemLayoutBase_unstable', () => {
 
     addEventListener.mockRestore();
     removeEventListener.mockRestore();
+  });
+
+  it('keeps keyboard focused actions visible when the pointer moves out of the item', () => {
+    render(
+      <Tree aria-label="Tree">
+        <TreeItem itemType="leaf" value="1">
+          <BaseTreeItemLayout actions={<button>Edit</button>}>Item 1</BaseTreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+    const item = screen.getByRole('treeitem');
+
+    fireEvent.keyDown(document, { key: 'Tab' });
+    act(() => item.focus());
+    act(() => screen.getByRole('button', { name: 'Edit' }).focus());
+
+    // Pointer movement alone does not switch the modality, only pointer activation does
+    fireEvent.mouseMove(document);
+    fireEvent.mouseOut(item, { relatedTarget: document.body });
+
+    expect(document.activeElement).toBe(screen.getByRole('button', { name: 'Edit' }));
+
+    fireEvent.mouseDown(document);
+    fireEvent.mouseOut(item, { relatedTarget: document.body });
+
+    expect(screen.queryByRole('button', { name: 'Edit' })).toBeNull();
   });
 });

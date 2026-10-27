@@ -40,8 +40,9 @@ export const useDOMFocusedElementChange: UseFocusedElementChange = callback => {
     const listener = (event: FocusEvent) => {
       callbackRef.current(isHTMLElement(event.target) ? event.target : undefined);
     };
-    targetDocument.addEventListener('focusin', listener);
-    return () => targetDocument.removeEventListener('focusin', listener);
+    // Capture phase, so that consumers stopping the propagation of focus events do not desync the roving tab index
+    targetDocument.addEventListener('focusin', listener, true);
+    return () => targetDocument.removeEventListener('focusin', listener, true);
   }, [targetDocument]);
 };
 
