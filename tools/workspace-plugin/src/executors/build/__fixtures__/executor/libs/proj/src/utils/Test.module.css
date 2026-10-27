@@ -1,0 +1,5 @@
+@layer fluentui {
+  .root {
+    color: var(--colorNeutralForeground1);
+  }
+}

@@ -6,22 +6,6 @@
   "tags": ["vNext", "platform:web"],
   "implicitDependencies": [],
   "targets": {
-    "build": {
-      "options": {
-        "assets": [
-          {
-            "input": "packages/react-components/react-button/library/src",
-            "glob": "**/*.module.css",
-            "output": "lib"
-          },
-          {
-            "input": "packages/react-components/react-button/library/src",
-            "glob": "**/*.module.css",
-            "output": "lib-commonjs"
-          }
-        ]
-      }
-    },
     "test": {
       "dependsOn": [{ "projects": "a11y-testing", "target": "build" }]
     }

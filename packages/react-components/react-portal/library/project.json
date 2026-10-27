@@ -4,23 +4,5 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-portal/library/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": [],
-  "targets": {
-    "build": {
-      "options": {
-        "assets": [
-          {
-            "input": "packages/react-components/react-portal/library/src",
-            "glob": "**/*.module.css",
-            "output": "lib"
-          },
-          {
-            "input": "packages/react-components/react-portal/library/src",
-            "glob": "**/*.module.css",
-            "output": "lib-commonjs"
-          }
-        ]
-      }
-    }
-  }
+  "implicitDependencies": []
 }
