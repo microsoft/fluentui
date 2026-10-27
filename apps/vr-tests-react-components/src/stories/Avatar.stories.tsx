@@ -2,10 +2,12 @@ import type { Meta } from '@storybook/react-webpack5';
 import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import type { AvatarProps } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities';
+import { inlinedAvatarImages } from '../assets/avatar';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
@@ -244,7 +246,9 @@ export const BadgeMask = () => (
       backgroundImage: `repeating-conic-gradient(${tokens.colorBrandBackground} 0% 25%, ${tokens.colorBrandBackgroundSelected} 0% 50%)`,
     }}
   >
-    <AvatarList images={examples.image} color="marigold" active="active" badge={{ status: 'available' }} />
+    {/* Inlined images: an image arriving after the first paint re-rasters only part of the active Avatar's compositing
+        layer, which makes the anti-aliasing of the ring nondeterministic */}
+    <AvatarList images={inlinedAvatarImages} color="marigold" active="active" badge={{ status: 'available' }} />
   </div>
 );
 BadgeMask.storyName = 'badgeMask';
