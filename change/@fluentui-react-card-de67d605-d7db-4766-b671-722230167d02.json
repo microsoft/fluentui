@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules styles for the Card component",
+  "packageName": "@fluentui/react-card",
+  "email": "dmytrokirpa@microsoft.com"
+}

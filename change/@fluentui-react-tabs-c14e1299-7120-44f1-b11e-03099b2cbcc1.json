@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules styles for the TabList components",
+  "packageName": "@fluentui/react-tabs",
+  "email": "dmytrokirpa@microsoft.com"
+}
