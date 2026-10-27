@@ -1438,6 +1438,107 @@ describe('LineChart - mouse events', () => {
   });
 });
 
+describe('LineChart - deferred reset and hovered point payload', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const resetCases = ([false, true] as const).flatMap(enablePerfOptimization =>
+    (['points', 'curved', 'optimized'] as const).flatMap(mode =>
+      (['reset', 'preserve', 'none'] as const).map(focusRestorePolicy => ({
+        enablePerfOptimization,
+        mode,
+        focusRestorePolicy,
+      })),
+    ),
+  );
+  it.each(resetCases)(
+    'loads empty data ($mode, optimized mount: $enablePerfOptimization, policy: $focusRestorePolicy)',
+    ({ enablePerfOptimization, mode, focusRestorePolicy }) => {
+      const config = {
+        width: 600,
+        height: 400,
+        enablePerfOptimization,
+        optimizeLargeData: mode === 'optimized',
+        focusRestorePolicy,
+        focusOnReset: { lineIndex: 0, pointIndex: 1 },
+      };
+      const data: LineChartProps['data'] = {
+        lineChartData: [
+          {
+            ...basicPoints[0],
+            lineOptions: mode === 'curved' ? { curve: 'linear', mode: 'lines' } : undefined,
+          },
+        ],
+      };
+      const scene = (data: LineChartProps['data']) => (
+        <>
+          <button data-testid="outside">Outside</button>
+          <LineChart {...config} data={data} />
+        </>
+      );
+      const { container, rerender, getByTestId } = render(scene({ lineChartData: [] }));
+      act(() => getByTestId('outside').focus());
+
+      rerender(scene(data));
+
+      const targetSelector =
+        mode === 'points' ? '[role="option"][aria-label="40. metaData1, 80."]' : 'path[id^="lineID"][tabindex="0"]';
+      const target = container.querySelector<SVGElement>(targetSelector);
+      expect(target).not.toBeNull();
+      expect(container.ownerDocument.activeElement).toBe(
+        focusRestorePolicy === 'reset' ? target : getByTestId('outside'),
+      );
+
+      rerender(scene({ lineChartData: [] }));
+      act(() => getByTestId('outside').focus());
+      rerender(scene(data));
+      expect(container.ownerDocument.activeElement).toBe(
+        focusRestorePolicy === 'reset' ? container.querySelector(targetSelector) : getByTestId('outside'),
+      );
+    },
+  );
+
+  it.each([false, true])('uses the hovered point without changing stack payloads (stack: %s)', isCalloutForStack => {
+    const data: LineChartProps['data'] = {
+      lineChartData: [
+        {
+          legend: 'Repeated',
+          color: 'red',
+          data: [
+            { x: 10, y: 20, yAxisCalloutData: 'First point' },
+            { x: 10, y: 40, yAxisCalloutData: 'Second point' },
+          ],
+        },
+        { legend: 'Repeated', color: 'blue', data: [{ x: 10, y: 60, yAxisCalloutData: 'Other series' }] },
+      ],
+    };
+    const onRenderCalloutPerDataPoint = jest.fn((point?: CustomizedCalloutData) => (
+      <pre data-testid="hovered-callout">{JSON.stringify(point)}</pre>
+    ));
+    const { container, getByTestId } = render(
+      <LineChart
+        data={data}
+        width={600}
+        height={400}
+        isCalloutForStack={isCalloutForStack}
+        onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint}
+      />,
+    );
+
+    for (const y of [20, 40, 60]) {
+      const label = y === 20 ? 'First point' : y === 40 ? 'Second point' : 'Other series';
+      fireEvent.mouseOver(container.querySelector(`[role="option"][aria-label="10. Repeated, ${label}."]`)!);
+      expect(getByTestId('hovered-callout')).toBeInTheDocument();
+      const payload = onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]!;
+      expect(payload.values.map(value => value.y)).toEqual(isCalloutForStack ? [20, 40, 60] : [y]);
+      if (!isCalloutForStack) {
+        expect(payload.values[0].yAxisCalloutData).toBe(label);
+        expect(payload.values[0].color).toBe(y === 60 ? 'blue' : 'red');
+      }
+    }
+  });
+});
+
 describe('LineChart - source coordinates after legend filtering', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);

@@ -205,6 +205,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [refSelected, setRefSelected] = React.useState<Element | null>(null);
+    const [chartElement, setChartElement] = React.useState<SVGGElement | null>(null);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<Record<string, YValueHover[]>>({});
@@ -242,6 +243,14 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       }
       previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
       const dataChanged = !areChartDataEqual(previousFocusDataRef.current, props.data);
+      if (
+        dataChanged &&
+        !_isChartEmpty() &&
+        (!chartElement?.isConnected || typeof _xAxisScale !== 'function' || typeof _yScalePrimary !== 'function')
+      ) {
+        // Optimized mounting creates scales and targets in a later commit; keep this reset pending.
+        return;
+      }
       previousFocusDataRef.current = props.data;
       const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
 
@@ -280,6 +289,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       props.legendProps?.selectedLegends,
       selectedLegendPoints,
       shouldRestoreFocus,
+      chartElement,
     ]);
     const classes = useLineChartStyles(props);
     React.useEffect(() => {
@@ -1970,11 +1980,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       ? (findCalloutPoints(calloutPointsRef.current, calloutPoint.x) as CustomizedCalloutData | undefined)
       : undefined;
     const dataPointCalloutProps =
-      calloutTarget?.isSinglePoint && stackCalloutProps
-        ? {
-            ...stackCalloutProps,
-            values: stackCalloutProps.values.filter(value => value.legend === calloutSeries?.legend),
-          }
+      calloutTarget?.isSinglePoint && calloutSeries && calloutPoint
+        ? (findCalloutPoints(calloutData([{ ...calloutSeries, data: [calloutPoint] }]), calloutPoint.x) as
+            | CustomizedCalloutData
+            | undefined)
         : stackCalloutProps;
     const hoverXValue =
       calloutPoint?.xAxisCalloutData ??
@@ -2055,7 +2064,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           const calloutY = calloutPoint && calloutTarget?.usePointY ? calloutYScale(calloutPoint.y) : 0;
           return (
             <>
-              <g>
+              <g ref={setChartElement}>
                 <line
                   x1={0}
                   y1={0}

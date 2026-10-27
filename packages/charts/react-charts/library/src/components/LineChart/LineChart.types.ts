@@ -41,6 +41,7 @@ export interface LineChartProps extends CartesianChartProps {
   /**
    * Define a custom callout renderer for a data point.
    * Data updates refresh the payload without forcing an open custom callout to remount.
+   * With isCalloutForStack=false, hovering supplies only the hovered point, even when legends or x-values repeat.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
@@ -113,6 +114,7 @@ export interface LineChartProps extends CartesianChartProps {
    * Callback-only changes do not restore focus.
    * Missing, unplottable, and non-tabbable targets are skipped, leaving focus unchanged.
    * Simultaneous data and controlled legend updates use the updated legend selection.
+   * Optimized mounting defers the reset until the chart's scales and elements are ready.
    * For path-rendered lines without markers, focus moves to the line and its callout shows this point.
    */
   focusOnReset?: {
