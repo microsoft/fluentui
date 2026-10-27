@@ -726,6 +726,14 @@ export class BaseDropdown extends FASTElement {
       return;
     }
 
+    if (!this.control) {
+      // The control is inserted by a queued update after connecting, so focus once it lands.
+      Updates.enqueue(() => {
+        this.control?.focus(options);
+      });
+      return;
+    }
+
     this.control.focus(options);
   }
 
