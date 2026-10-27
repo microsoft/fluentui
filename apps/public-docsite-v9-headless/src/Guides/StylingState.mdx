@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Styling state" />
+
+# Styling state
+
+Headless components put every state that affects how they look on the rendered element as a `data-*` attribute. Select those attributes in your CSS instead of tracking the same state yourself and toggling class names.
+
+```tsx
+<ToggleButton className={styles.toggle}>Bold</ToggleButton>
+```
+
+```css
+.toggle[data-checked] {
+  background: var(--accent);
+}
+```
+
+The component sets the attribute in the same render that updates its ARIA state, so the visual state and the ARIA state stay in sync.
+
+## Attribute values
+
+- **Boolean states** are an empty attribute when on and absent when off: `data-checked=""`. Select them with `[data-checked]`, not `[data-checked="true"]`.
+- **Enumerated states** carry their value: `data-orientation="vertical"`, `data-icon-position="after"`. Select them with `[data-orientation='vertical']`.
+- **Mixed states** are a value on a boolean attribute: an indeterminate Checkbox has `data-checked="mixed"`. `[data-checked]` matches it too, so put the mixed rule after the checked rule:
+
+```css
+.checkbox[data-checked] .indicator {
+  /* checkmark */
+}
+.checkbox[data-checked='mixed'] .indicator {
+  /* dash */
+}
+```
+
+## Common attributes
+
+| Attribute                                                     | Set on                                                                                                                                                                    | Means                                                |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `data-disabled`                                               | Most interactive components                                                                                                                                               | Disabled and removed from the tab order              |
+| `data-disabled-focusable`                                     | Button, ToggleButton, CompoundButton, MenuButton, Link, Switch, Toolbar buttons                                                                                           | Disabled, still focusable                            |
+| `data-checked`                                                | Checkbox, Switch, ToggleButton, menu checkbox/radio/switch items, Toolbar toggles                                                                                         | Checked or pressed                                   |
+| `data-selected`                                               | Tab, Option, Tag, ListItem, NavItem, swatches, Card                                                                                                                       | Selected                                             |
+| `data-open`                                                   | PopoverTrigger and PopoverSurface, MenuTrigger and MenuButton, Tooltip content, DialogSurface, Drawer, InfoButton, Combobox and Dropdown root, AccordionItem/Header/Panel | Open or expanded                                     |
+| `data-invalid`                                                | Input, Textarea, Select, SpinButton, Combobox, Dropdown, TagPicker                                                                                                        | Value failed validation (`aria-invalid` is also set) |
+| `data-readonly`                                               | SpinButton                                                                                                                                                                | Read-only                                            |
+| `data-orientation`                                            | TabList, Divider, color sliders                                                                                                                                           | `horizontal` or `vertical`                           |
+| `data-placeholder`                                            | Combobox, Dropdown                                                                                                                                                        | Showing placeholder text, no value                   |
+| `data-activedescendant`, `data-activedescendant-focusvisible` | Options in Combobox, Dropdown, TagPicker                                                                                                                                  | Active option, and active while keyboard-navigating  |
+
+Each component page lists the full set of attributes for that component.
+
+## Why `data-*` and not ARIA or pseudo-classes
+
+ARIA attributes and pseudo-classes are valid selectors, but they don't map one-to-one to visual state:
+
+- **Disabled** is native `disabled` on a `<button>`, `aria-disabled` on other elements, and `aria-disabled` without `disabled` for `disabledFocusable`. `:disabled` matches only the first. `[data-disabled]` and `[data-disabled-focusable]` cover all of them.
+- **Checked** is `aria-checked` on a switch role, `aria-pressed` on a toggle button and the native `:checked` state on an input. `[data-checked]` is the same everywhere.
+- **Open** has no ARIA equivalent on most surfaces. `[data-open]` marks the open state; which element carries it depends on the component (see the table above). Dialog triggers and Tooltip triggers don't get it.
+
+## Patterns
+
+Style a child from its parent's state:
+
+```css
+.header[data-open] .chevron {
+  transform: rotate(90deg);
+}
+```
+
+Combine states:
+
+```css
+.option[data-selected][data-activedescendant-focusvisible] {
+  outline: 2px solid var(--focus-ring);
+}
+```
+
+With Tailwind, use the `data-*` variants:
+
+```tsx
+<ToggleButton className="bg-neutral-100 data-[checked]:bg-blue-600 data-[checked]:text-white data-[disabled]:opacity-40">
+  Bold
+</ToggleButton>
+```
+
+## Accessibility
+
+Attributes only describe the state. The component still has to own it, and some states need more than a color change. See [Disabled & native controls](?path=/docs/overview-accessibility-disabled-native-controls--docs) and [Focus indicator](?path=/docs/overview-accessibility-focus-indicator--docs).

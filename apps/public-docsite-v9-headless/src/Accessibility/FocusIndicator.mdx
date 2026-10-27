@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FocusRingExamples } from './examples/FocusExamples';
+
+<Meta title="Overview/Accessibility/Focus indicator" />
+
+# Focus indicator
+
+Keyboard users need to see where focus is ([WCAG 2.4.7](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible)). Headless components move focus correctly, but they draw nothing. The browser default outline is all your users get until you style one, and a CSS reset that removes it leaves them with nothing.
+
+## Use `:focus-visible`
+
+Style `:focus-visible`, not `:focus`. Browsers apply `:focus-visible` when focus comes from the keyboard (or when an element such as a text input always needs a ring), and skip it for mouse clicks on buttons. You don't need a JavaScript keyboard-detection helper; the styled Fluent components use one (`useKeyboardNavAttribute`), headless components do not.
+
+```css
+.button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+```
+
+<FocusRingExamples />
+
+Never write `outline: none` without putting another indicator in its place.
+
+## Make it visible enough
+
+- **Contrast.** The ring needs at least 3:1 against the colors next to it ([WCAG 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast)). A two-tone ring (an inner gap in the background color plus an outer ring) works on any background.
+- **Size.** At least 2 CSS px thick around the whole element ([WCAG 2.4.13](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance)).
+- **Not obscured.** Sticky headers, footers and overlays must not cover the focused element ([WCAG 2.4.11](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum)). `scroll-padding` on the scroll container helps.
+- **Not clipped.** `overflow: hidden` on a parent cuts off an outer ring. Use a negative `outline-offset` or add padding to the parent.
+
+## Forced colors
+
+In forced-colors mode (Windows High Contrast and similar) the browser drops `box-shadow` and replaces colors with the user's system palette. A ring drawn with `box-shadow` alone disappears. Keep a transparent outline next to it: it is invisible normally and turns into a visible system-colored ring in forced colors.
+
+```css
+.button:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus-ring);
+}
+```
+
+If you need to adjust colors in forced colors, use system color keywords instead of your tokens:
+
+```css
+@media (forced-colors: active) {
+  .button:focus-visible {
+    outline-color: Highlight;
+  }
+  .button[data-disabled] {
+    color: GrayText;
+  }
+}
+```
+
+## Composite widgets
+
+Some components keep DOM focus on one element and point at the active item with `aria-activedescendant` (Combobox, Dropdown, TagPicker). The active option never receives `:focus-visible`. Style it from the attributes the component sets instead: `data-activedescendant` is on the active option, and `data-activedescendant-focusvisible` is added while the user navigates with the keyboard.
+
+```css
+.option[data-activedescendant-focusvisible] {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
+}
+```
+
+Components that move real focus between items (Menu, TabList, Toolbar, RadioGroup) get `:focus-visible` on each item, so the regular rule works.
+
+## Disabled but focusable
+
+`disabledFocusable` keeps an element in the tab order so screen-reader users can find it and hear why it is unavailable. Keep its focus ring. See [Disabled & native controls](?path=/docs/overview-accessibility-disabled-native-controls--docs#disabled-and-disabled-focusable).
+
+## Checklist
+
+- Every focusable element has a `:focus-visible` style.
+- The ring has 3:1 contrast and is at least 2 px thick.
+- The ring is still visible with `forced-colors: active`.
+- Nothing clips or covers the focused element.
+- Disabled-focusable elements keep their ring.
