@@ -32,6 +32,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
+  const trapFocus = usePopoverContext(context => context.trapFocus);
 
   const { targetDocument } = useFluent();
 
@@ -76,7 +77,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
 
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
-    'aria-haspopup': 'true' as const,
+    'aria-haspopup': trapFocus ? ('dialog' as const) : undefined,
     'aria-details': open ? surfaceId : undefined,
     'data-open': toDataAttributeValue(open),
     ...child?.props,

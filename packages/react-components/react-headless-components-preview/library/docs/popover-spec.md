@@ -97,7 +97,7 @@ There is no separate `onDismiss`. The `open: false` dispatches go through `onOpe
 // Trigger
 <button
   aria-expanded={open ? 'true' : 'false'}
-  aria-haspopup="true"
+  aria-haspopup={trapFocus ? 'dialog' : undefined}
   aria-details={open ? surfaceId : undefined}
   data-open={open || undefined}
   // click / keydown / context / hover handlers merged onto the cloned child
@@ -127,7 +127,7 @@ Instead, the relationship is wired **explicitly** and uniformly:
 - `usePopover` generates a stable id via `useId('fui-popover-surface-')` and stores it on context as `surfaceId`.
 - `usePopoverSurface` writes `id={surfaceId}` on the surface root **before** spreading `props`, so consumer-supplied `id` still wins (consumers who override `id` opt out of the implicit wiring).
 - `usePopoverTrigger` writes `aria-details={surfaceId}` on the cloned trigger **only while `open` is true**, since the surface only mounts while open (`renderPopover.tsx`). When closed, `aria-details` is omitted to avoid pointing at a non-existent element.
-- `aria-expanded` is set on every render to reflect `open` (already in place), and `aria-haspopup="true"` is always on.
+- `aria-expanded` reflects `open` on every render. `aria-haspopup="dialog"` is set when `trapFocus` is enabled; otherwise it is omitted because the default non-modal surface has `role="group"`. Consumer-supplied trigger attributes take precedence.
 
 This matches the behavioural guarantees consumers would get from `popovertarget` (for the ARIA-relationship piece).
 

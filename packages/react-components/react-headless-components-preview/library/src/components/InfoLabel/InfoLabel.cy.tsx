@@ -64,10 +64,8 @@ describe('InfoLabel - note semantics', () => {
       };
       mount(<Example />);
       cy.get('#note-wrapper').should('not.have.attr', 'aria-owns');
-      cy.get('button.info-button')
-        .should('have.attr', 'aria-haspopup', 'false')
-        .and('have.attr', 'aria-expanded', 'false')
-        .and('not.have.attr', 'aria-details');
+      cy.get('button.info-button').should('not.have.attr', 'aria-haspopup');
+      cy.get('button.info-button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
       cy.get('button.info-button').focus().realPress('Enter');
       cy.get(surfaceSelector).should('be.visible').and('have.focus');
       cy.get('button.info-button').should('have.attr', 'aria-expanded', 'true');

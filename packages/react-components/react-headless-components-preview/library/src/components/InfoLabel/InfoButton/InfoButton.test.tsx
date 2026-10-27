@@ -34,7 +34,7 @@ describe('InfoButton', () => {
     const change = jest.fn();
     const { getByRole, queryByRole } = render(<InfoButton info="Information" popover={{ onOpenChange: change }} />);
     const trigger = getByRole('button', { name: 'information' });
-    expect(trigger).toHaveAttribute('aria-haspopup', 'false');
+    expect(trigger).not.toHaveAttribute('aria-haspopup');
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
     expect(trigger).not.toHaveAttribute('aria-details');
     fireEvent.click(trigger);
@@ -99,5 +99,17 @@ describe('InfoButton', () => {
       />,
     );
     expect(getByRole('dialog', { name: 'Additional details', hidden: true })).toBeInTheDocument();
+  });
+
+  it('consumes defaultOpen without passing conflicting state props to Popover', () => {
+    const error = jest.spyOn(console, 'error');
+    try {
+      const { getByRole } = render(<InfoButton info="Information" popover={{ defaultOpen: true }} />);
+      expect(getByRole('button')).toHaveAttribute('aria-expanded', 'true');
+      expect(getByRole('note', { hidden: true })).toBeInTheDocument();
+      expect(error).not.toHaveBeenCalled();
+    } finally {
+      error.mockRestore();
+    }
   });
 });

@@ -48,7 +48,6 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
       getIntrinsicElementProps('button', {
         type: 'button',
         'aria-label': 'information',
-        'aria-haspopup': popoverSlot.trapFocus ? ('dialog' as const) : false,
         ...rest,
         ref: rootRef,
       }),
@@ -79,6 +78,7 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
   });
 
   state.popover.open = popoverOpen;
+  // InfoButton consumes defaultOpen; the nested Popover receives only the resolved open state.
   state.popover.defaultOpen = undefined;
   state.root['data-open'] = toDataAttributeValue(popoverOpen);
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (_e, data) => setPopoverOpen(data.open));
