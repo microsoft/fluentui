@@ -15,7 +15,7 @@ Each hook does one job, and a component composes only the ones it needs:
 | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `useLayerOpenState`       | Open state, kept in sync with the browser through the Popover API. Reports opens and closes the browser makes. |
 | `useDialogLayerOpenState` | `useLayerOpenState` that also accepts `mode: 'modal'` for a `<dialog>`.                                        |
-| `useLayerPresence`        | Whether to render the element, its animation `phase`, and keeping it mounted and inert while it animates out.  |
+| `useLayerPresence`        | Whether to render the element, keeping it mounted and inert while it animates out.                             |
 | `useLayerFocusReturn`     | Returns focus on close where the browser doesn't. Plugs into the open-state hook through its callbacks.        |
 | `useLayerEscape`          | Closes the element on Escape where the browser doesn't, or reports every Escape so the consumer can veto it.   |
 
@@ -34,16 +34,16 @@ useLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options: UseL
 useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options: UseLayerOpenStateOptions<TopLayerMode>): UseLayerOpenStateReturn;
 ```
 
-| Option         | Type                                                               | Default | Description                                                                                                     |
-| -------------- | ------------------------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------- |
-| `open`         | `boolean`                                                          | —       | Controlled. `undefined` keeps the state inside the hook.                                                        |
-| `defaultOpen`  | `boolean`                                                          | `false` | Initial state when uncontrolled.                                                                                |
-| `mode`         | `'auto' \| 'hint' \| 'manual'`, plus `'modal'` for the dialog hook | —       | See [Modes](#modes). `modal` needs a `<dialog>`.                                                                |
-| `onOpenChange` | `(open: boolean, data: TopLayerOpenChangeData) => void`            | —       | The browser opened or closed the element. Never called for changes made through `open` or `setOpen`.            |
-| `onBeforeShow` | `(element: HTMLElement) => void`                                   | —       | Called before the hook shows the element, once per open and per new element.                                    |
-| `onShow`       | `(element: HTMLElement) => void`                                   | —       | Called after the element is shown, once per show of each element, e.g. to set up content that needs it visible. |
-| `onBeforeHide` | `(element: HTMLElement) => void`                                   | —       | Called once per close as it starts: before the hook hides it, or on the browser's `beforetoggle` or `cancel`.   |
-| `onHide`       | `(element: HTMLElement) => void`                                   | —       | Called once per close after the element left the top layer, whether React or the browser closed it.             |
+| Option         | Type                                                               | Default | Description                                                                                                                                         |
+| -------------- | ------------------------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `open`         | `boolean`                                                          | —       | Controlled. `undefined` keeps the state inside the hook.                                                                                            |
+| `defaultOpen`  | `boolean`                                                          | `false` | Initial state when uncontrolled.                                                                                                                    |
+| `mode`         | `'auto' \| 'hint' \| 'manual'`, plus `'modal'` for the dialog hook | —       | See [Modes](#modes). `modal` needs a `<dialog>`.                                                                                                    |
+| `onOpenChange` | `(open: boolean, data: TopLayerOpenChangeData) => void`            | —       | The browser opened or closed the element. Never called for changes made through `open` or `setOpen`.                                                |
+| `onBeforeShow` | `(element: HTMLElement) => void`                                   | —       | Called before the element is shown, once per open and per new element. For a browser open, on its `beforetoggle`, before `[autofocus]` takes focus. |
+| `onShow`       | `(element: HTMLElement) => void`                                   | —       | Called after the element is shown, once per show of each element, e.g. to set up content that needs it visible.                                     |
+| `onBeforeHide` | `(element: HTMLElement) => void`                                   | —       | Called once per close as it starts: before the hook hides it, or on the browser's `beforetoggle` or `cancel`.                                       |
+| `onHide`       | `(element: HTMLElement) => void`                                   | —       | Called once per close after the element left the top layer, whether React or the browser closed it.                                                 |
 
 | Return    | Type                                        | Description                                                 |
 | --------- | ------------------------------------------- | ----------------------------------------------------------- |
@@ -66,12 +66,12 @@ useDialogLayerOpenState(elementRef: React.RefObject<HTMLElement | null>, options
 
 | Bundle (esbuild, minified, production, React and `@fluentui/*` external) | Minified | Gzip   |
 | ------------------------------------------------------------------------ | -------- | ------ |
-| `useLayerOpenState`                                                      | 2477 B   | 1167 B |
-| `useDialogLayerOpenState`                                                | 3229 B   | 1405 B |
-| `useLayerPresence`                                                       | 2036 B   | 1072 B |
-| `useLayerOpenState` + `useLayerPresence`                                 | 4338 B   | 1934 B |
-| `useDialogLayerOpenState` + `useLayerPresence`                           | 5100 B   | 2163 B |
-| `useDialogLayerOpenState` + `useLayerPresence` + `useLayerFocusReturn`   | 5918 B   | 2473 B |
+| `useLayerOpenState`                                                      | 2602 B   | 1198 B |
+| `useDialogLayerOpenState`                                                | 3164 B   | 1400 B |
+| `useLayerPresence`                                                       | 1888 B   | 1001 B |
+| `useLayerOpenState` + `useLayerPresence`                                 | 4317 B   | 1906 B |
+| `useDialogLayerOpenState` + `useLayerPresence`                           | 4891 B   | 2096 B |
+| `useDialogLayerOpenState` + `useLayerPresence` + `useLayerFocusReturn`   | 5827 B   | 2437 B |
 
 `useLayerPresence` has no dialog variant: its only dialog code is a check for `dialog.open` and the `close` event, about 50 B gzip.
 
@@ -88,12 +88,11 @@ useLayerPresence(elementRef: React.RefObject<HTMLElement | null>, options: UseLa
 | `open`           | `boolean` | —       | The open state, usually from the open-state hook.         |
 | `unmountOnClose` | `boolean` | `true`  | Unmount after the element closes and exit animations end. |
 
-| Return         | Type                                            | Description                                                                                                             |
-| -------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `shouldRender` | `boolean`                                       | Whether to render the element. Stays true while it exits.                                                               |
-| `phase`        | `'closed' \| 'entering' \| 'open' \| 'exiting'` | `entering` only while enter animations run; `exiting` until the element has left the top layer and exit animations end. |
+| Return         | Type      | Description                                               |
+| -------------- | --------- | --------------------------------------------------------- |
+| `shouldRender` | `boolean` | Whether to render the element. Stays true while it exits. |
 
-It works whether it is declared before or after the open-state hook: it measures animations in a microtask after the commit, once the element has been shown or hidden.
+It works whether it is declared before or after the open-state hook. It measures exit animations in a microtask after the commit, once the element has been hidden. On a reopen during the exit it clears `inert` in an insertion effect, before any layout effect shows the element, so focus can move into it. React 17 has no insertion effects; there, declare it before the open-state hook, as the components do.
 
 ### Example
 
@@ -194,7 +193,7 @@ It returns `onBeforeShow`, `onBeforeHide` and `onHide`, which the open-state hoo
 
 | Option   | Type                             | Default    | Description                                                                                                                                         |
 | -------- | -------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `target` | `RefObject<HTMLElement \| null>` | —          | Where focus goes on close. Without it, the element focused before the layer was shown.                                                              |
+| `target` | `RefObject<HTMLElement \| null>` | —          | Where focus goes on close. Without it, the element focused before the layer was shown, followed into open shadow roots.                             |
 | `when`   | `'inside' \| 'always' \| false`  | `'inside'` | `inside`: focus was inside as the close started and is now on `<body>` or still inside. `always`: whenever the target is connected. `false`: never. |
 
 - Focus inside is read as the close starts: before the hook hides the element, on `beforetoggle`, or on `cancel`. For a modal `<dialog>` in browsers without `beforetoggle` on dialogs, focus leaving the closed dialog counts as inside.
@@ -219,8 +218,8 @@ const { onKeyDown } = useLayerEscape(elementRef, {
 | `when`   | `'manual' \| 'always'`  | `'manual'` | `manual`: only where the browser leaves Escape to the page: `popover="manual"` and `hint` where unsupported (it reads back as `manual`). `always`: every Escape. |
 | `listen` | `'layer' \| 'document'` | `'layer'`  | `layer`: merge the returned `onKeyDown` into the element. `document`: a capture listener on the document while open, for layers that never hold focus.           |
 
-- With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`). Because it is a React handler, Escape from content portaled out of the element still counts.
-- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer.
+- With `listen: 'layer'`, Escape from a popover or dialog nested inside the element is left to that layer (`isEscapeForLayer`, which reads the event's composed path, so a layer inside a shadow root counts). Because it is a React handler, Escape from content portaled out of the element still counts.
+- With `listen: 'document'`, the listener runs before any other handler, so the layer closes first, as Escape closes the topmost layer. With several such layers open, only the newest handles it. The listener doesn't need the element, so one that mounts after `open` turned true is covered.
 - Escape already prevented is ignored. A handled Escape is reported first, so `onEscape` can check `isDefaultPrevented()` for a veto, then prevented and stopped: outer layers' handlers and the browser leave it alone.
 
 ## Not covered yet
