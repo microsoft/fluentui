@@ -78,6 +78,8 @@ export const useLayerOpenStateWith = (
   const openRef = React.useRef(false);
   const shownElement = React.useRef<HTMLElement | null>(null);
   const shownPopoverMode = React.useRef<string | null>(null);
+  // An element the browser started opening, already passed to `onBeforeShow`.
+  const nativeShowElement = React.useRef<HTMLElement | null>(null);
   const warnedNativeOpen = React.useRef(false);
   const devCloseCheckPending = React.useRef(false);
   // Where the element is between show and hide, so each hide callback runs once per close.
@@ -121,6 +123,11 @@ export const useLayerOpenStateWith = (
       notifyBeforeHide(element);
     } else {
       shownPopoverMode.current = element.getAttribute('popover');
+      // A browser open: call `onBeforeShow` now, before `[autofocus]` takes focus, not once React accepts the open.
+      if (!openRef.current && nativeShowElement.current !== element) {
+        nativeShowElement.current = element;
+        options.onBeforeShow?.(element);
+      }
     }
   };
 
@@ -213,6 +220,7 @@ export const useLayerOpenStateWith = (
     openRef.current = open;
 
     if (!open) {
+      nativeShowElement.current = null;
       if (!element) {
         return;
       }
@@ -241,9 +249,10 @@ export const useLayerOpenStateWith = (
       return;
     }
 
-    if (fresh) {
+    if (fresh && nativeShowElement.current !== element) {
       options.onBeforeShow?.(element);
     }
+    nativeShowElement.current = null;
 
     const shown = dialog?.show(element, mode) ?? showPopover(element);
 

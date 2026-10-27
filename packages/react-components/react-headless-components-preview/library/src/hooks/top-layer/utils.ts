@@ -14,6 +14,17 @@ export const getActiveElement = (element: Element): Element | null => {
   return shadowActiveElement ?? element.ownerDocument.activeElement;
 };
 
+/**
+ * The focused element, followed into open shadow roots: the control itself rather than its shadow host.
+ */
+export const getDeepActiveElement = (targetDocument: Document): Element | null => {
+  let activeElement = targetDocument.activeElement;
+  while (activeElement?.shadowRoot?.activeElement) {
+    activeElement = activeElement.shadowRoot.activeElement;
+  }
+  return activeElement;
+};
+
 export const isDialogElement = (element: Element | null | undefined): element is HTMLDialogElement =>
   !!element && typeof (element as HTMLDialogElement).showModal === 'function';
 

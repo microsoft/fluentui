@@ -114,4 +114,45 @@ describe('useLayerFocusReturn', () => {
 
     expect(getByText('Target')).toHaveFocus();
   });
+
+  it('returns focus to the element focused before a browser open, not to the [autofocus] element inside', () => {
+    const NativeOpen = () => {
+      const [open, setOpen] = React.useState(false);
+      return <Example open={open} onOpenChange={setOpen} />;
+    };
+    const { getByText, getByTestId } = render(<NativeOpen />);
+    const layer = getByTestId('layer') as HTMLDialogElement;
+    getByText('Trigger').focus();
+
+    // A `popovertarget` invoker: the browser shows the layer and focuses its `[autofocus]` element before `toggle`.
+    act(() => {
+      layer.dispatchEvent(Object.assign(new Event('beforetoggle'), { newState: 'open' }));
+      layer.showPopover();
+      getByText('Inside').focus();
+      layer.dispatchEvent(Object.assign(new Event('toggle'), { newState: 'open' }));
+    });
+    act(() => {
+      layer.hidePopover();
+      getByText('Inside').blur();
+      layer.dispatchEvent(Object.assign(new Event('toggle'), { newState: 'closed' }));
+    });
+
+    expect(getByText('Trigger')).toHaveFocus();
+  });
+
+  it('returns focus to a control inside another shadow root, not to its host', () => {
+    const host = document.createElement('div');
+    document.body.append(host);
+    const shadowTrigger = document.createElement('button');
+    host.attachShadow({ mode: 'open' }).append(shadowTrigger);
+
+    const { getByText, rerender } = render(<Example open={false} />);
+    shadowTrigger.focus();
+    rerender(<Example open />);
+    getByText('Inside').focus();
+    rerender(<Example open={false} />);
+
+    expect(host.shadowRoot!.activeElement).toBe(shadowTrigger);
+    host.remove();
+  });
 });
