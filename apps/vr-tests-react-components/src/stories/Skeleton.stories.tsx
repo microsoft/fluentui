@@ -8,7 +8,8 @@ import { getStoryVariant, TestWrapperDecoratorFixedWidth, HIGH_CONTRAST, DARK_MO
 
 const useStyles = makeStyles({
   paused: {
-    '& *': {
+    // SkeletonItem animates its ::after pseudo-element, which `& *` alone does not match
+    '& *, & *::after': {
       animationPlayState: 'paused !important',
       animationDelay: '-1s !important',
     },
