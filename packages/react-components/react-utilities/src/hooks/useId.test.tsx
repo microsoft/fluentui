@@ -138,17 +138,29 @@ describe.each([false, true])('useId build namespace (native IDs enabled: %s)', n
   });
 
   it.each(['1app', 'app.name', 'app space', 'app:root', 'app\n', 1, null, false])(
-    'rejects invalid namespace %j outside production',
+    'logs invalid namespace %j outside production without throwing',
     value => {
-      expect(() => loadNamespace(value)).toThrow('__FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match');
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+      try {
+        expect(() => loadNamespace(value)).not.toThrow();
+        expect(errorSpy).toHaveBeenCalledTimes(1);
+        expect(errorSpy).toHaveBeenCalledWith(
+          expect.stringContaining('__FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match'),
+        );
+      } finally {
+        errorSpy.mockRestore();
+      }
     },
   );
 
   it('omits runtime namespace validation in production', () => {
     const nodeEnv = jest.replaceProperty(process.env, 'NODE_ENV', 'production');
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
     try {
       expect(() => loadNamespace('invalid namespace')).not.toThrow();
+      expect(errorSpy).not.toHaveBeenCalled();
     } finally {
+      errorSpy.mockRestore();
       nodeEnv.restore();
     }
   });

@@ -10,7 +10,8 @@ const buildNamespace = typeof __FLUENT_USE_ID_BUILD_PREFIX__ === 'undefined' ? '
 
 if (process.env.NODE_ENV !== 'production') {
   if (typeof buildNamespace !== 'string' || (buildNamespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(buildNamespace))) {
-    throw new Error(
+    // eslint-disable-next-line no-console
+    console.error(
       '@fluentui/react-utilities: __FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match [A-Za-z_][A-Za-z0-9_-]*.',
     );
   }
