@@ -7,7 +7,6 @@ export type {
   TopLayerMode,
   TopLayerOpenChangeData,
   TopLayerOpenChangeType,
-  TopLayerPhase,
   UseLayerOpenStateOptions,
   UseDialogLayerOpenStateOptions,
   UseLayerPresenceOptions,

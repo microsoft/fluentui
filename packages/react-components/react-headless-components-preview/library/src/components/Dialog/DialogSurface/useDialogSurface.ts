@@ -32,6 +32,8 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
   const isNonModal = modalType === 'non-modal';
 
+  const { shouldRender } = useLayerPresence(dialogRef, { open, unmountOnClose });
+
   // A browser open or close (`popovertarget`, `commandfor`, `<form method="dialog">`) is reported as `surfaceToggle`.
   useDialogLayerOpenState(dialogRef, {
     open,
@@ -40,8 +42,6 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
     returnFocus: { when: isNonModal ? 'always' : false },
   });
-
-  const { shouldRender } = useLayerPresence(dialogRef, { open, unmountOnClose });
 
   // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
   useIsomorphicLayoutEffect(() => {

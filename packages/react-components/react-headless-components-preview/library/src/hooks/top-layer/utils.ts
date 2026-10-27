@@ -54,12 +54,17 @@ export const isModal = (element: HTMLDialogElement): boolean => {
   }
 };
 
+const isLayerElement = (node: EventTarget): boolean => !!(node as Element).matches?.('[popover], dialog');
+
 /**
- * Whether Escape pressed on `target` is for `layer`: not when it comes from a popover or dialog nested inside it.
- * Content portaled out of `layer` still counts.
+ * Whether the Escape `event` is for `layer`: not when it comes from a popover or dialog nested inside it, including one
+ * inside a shadow root. Content portaled out of `layer` still counts. Call it while the event is dispatched.
  */
-export const isEscapeForLayer = (layer: Element, target: Element): boolean => {
-  const targetLayer = target.closest('[popover], dialog');
+export const isEscapeForLayer = (layer: Element, event: Event): boolean => {
+  const path = event.composedPath();
+  const targetLayer = path.length
+    ? path.find(isLayerElement)
+    : (event.target as Element | null)?.closest?.('[popover], dialog');
   return !targetLayer || targetLayer === layer;
 };
 

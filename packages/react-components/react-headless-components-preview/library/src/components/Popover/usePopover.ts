@@ -83,6 +83,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   }
   const modal = inertTrapFocus || modalWhileOpen;
 
+  // The surface stays mounted until the browser closes it and exit animations end.
+  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
+
   useDialogLayerOpenState(contentRef, {
     open,
     mode: modal ? 'modal' : 'auto',
@@ -90,9 +93,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     // Back to the trigger when focus was inside as the surface started closing.
     returnFocus: { target: triggerRef },
   });
-
-  // The surface stays mounted until the browser closes it and exit animations end.
-  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 

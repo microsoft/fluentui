@@ -122,6 +122,9 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
   const triggerRef = React.useRef<TTrigger>(null);
 
   const listboxRef = React.useRef<HTMLDivElement>(null);
+  // Rendered until the exit animations end.
+  const { shouldRender: shouldRenderListbox } = useLayerPresence(listboxRef, { open });
+
   const listbox = useListboxSlot(
     props.listbox,
     useMergedRefs(comboboxPopupRef, activeDescendantListboxRef, listboxRef),
@@ -133,9 +136,6 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
       },
     },
   );
-
-  // Rendered until the exit animations end.
-  const { shouldRender: shouldRenderListbox } = useLayerPresence(listboxRef, { open });
 
   const rootSlot = slot.always(props.root ?? undefined, {
     defaultProps: {
