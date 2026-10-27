@@ -77,14 +77,6 @@ jobs:
         run: |
           FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging verify-bundle-isolation attw --nxBail
 
-      - name: Upload compiler integration failure evidence
-        if: failure()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
-        with:
-          name: react-compiler-analyzer-integration
-          path: dist/react-compiler-analyzer-integration
-          if-no-files-found: ignore
-
       - name: 'Check for unstaged changes'
         run: |
           git status --porcelain
