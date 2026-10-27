@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Add CSS Modules alternatives for Text presets",
+  "packageName": "@fluentui/react-text",
+  "email": "dmytrokirpa@microsoft.com"
+}
