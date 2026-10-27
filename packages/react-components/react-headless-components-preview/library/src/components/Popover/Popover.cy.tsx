@@ -335,6 +335,36 @@ describe('Popover', () => {
     });
   });
 
+  describe('Focus on open', () => {
+    it('browser focuses a text-only surface on open', () => {
+      mount(
+        <Popover>
+          <PopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">Text only</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('[data-testid=trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=surface]').should('have.focus');
+    });
+
+    it('browser focuses the first focusable element inside the surface on open', () => {
+      mount(
+        <Popover>
+          <PopoverTrigger>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="inner">Inner</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+      cy.get('[data-testid=trigger]').focus().realPress('Enter');
+      cy.get('[data-testid=inner]').should('have.focus');
+    });
+  });
+
   describe('Focus restoration', () => {
     it('should restore focus to trigger on close', () => {
       mount(

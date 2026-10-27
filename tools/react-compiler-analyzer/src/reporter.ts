@@ -47,7 +47,9 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
     if (activeNoMemo.length > 0) {
       f.foldableSection(
         {
-          title: 'Active (needs `// justified:` comment)',
+          title: activeNoMemo.some(r => r.revalidated)
+            ? 'Active opt-outs (unjustified: add justification; justified: report-only)'
+            : 'Active (needs `// justified:` comment)',
           status: 'warning',
           count: activeNoMemo.length,
           level: 3,
@@ -95,7 +97,9 @@ export function printReport(f: Formatter, results: DirectiveAnalysis[], workspac
     if (redundant.length > 0) {
       f.foldableSection(
         {
-          title: 'Redundant (removable)',
+          title: redundant.some(r => r.revalidated)
+            ? 'Redundant (unjustified: removable; justified: manual review)'
+            : 'Redundant (removable)',
           status: 'warning',
           count: redundant.length,
           level: 3,
@@ -170,9 +174,21 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   f.heading(2, 'Summary');
   f.blank();
   f.line(`- **Total directives:** ${total}`);
-  f.line(`- **Redundant** (removable): ${redundant}`);
+  const protectedResults = results.some(r => r.revalidated);
+  const protectedRedundant = results.some(r => r.revalidated && r.status === 'redundant');
+  f.line(
+    `- **Redundant** (${
+      protectedRedundant ? 'unjustified: removable; justified: manual review' : 'removable'
+    }): ${redundant}`,
+  );
   if (activeNoMemo > 0) {
-    f.line(`- **Active** \`'use no memo'\` (needs \`// justified:\` comment): ${activeNoMemo}`);
+    f.line(
+      `- **Active** \`'use no memo'\` (${
+        results.some(r => r.revalidated && r.status === 'active' && r.directiveType === 'use-no-memo')
+          ? 'unjustified: add justification; justified: report-only'
+          : 'needs `// justified:` comment'
+      }): ${activeNoMemo}`,
+    );
   }
   if (activeMemo > 0) {
     f.line(`- **Active** \`'use memo'\` (compilable): ${activeMemo}`);
@@ -188,11 +204,28 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   f.blank();
 
   // Actionable messaging based on directive types
-  const redundantNoMemo = results.filter(r => r.status === 'redundant' && r.directiveType === 'use-no-memo').length;
+  const redundantNoMemo = results.filter(
+    r => !r.justified && r.status === 'redundant' && r.directiveType === 'use-no-memo',
+  ).length;
+  const actionableActiveNoMemo = results.filter(
+    r => !r.justified && r.status === 'active' && r.directiveType === 'use-no-memo',
+  ).length;
+  if (protectedResults) {
+    f.line('> Revalidated justified directives are report-only and will not be changed by `--fix`.');
+    f.blank();
+  }
+  if (protectedRedundant) {
+    f.line(
+      '> Review redundant justified directives against the applicable build before manually removing or updating them; `--fix` leaves them untouched.',
+    );
+    f.blank();
+  }
 
-  if (redundantNoMemo > 0 && activeNoMemo > 0) {
+  if (redundantNoMemo > 0 && actionableActiveNoMemo > 0) {
     f.line(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) can be safely removed.`);
-    f.line(`> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`);
+    f.line(
+      `> **${actionableActiveNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
+    );
     f.line('>');
     f.line('> Run with `--fix` to auto-remove redundant directives and annotate active ones.');
     f.blank();
@@ -200,8 +233,10 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
     f.line(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) found.`);
     f.line('> Run with `--fix` to auto-remove them.');
     f.blank();
-  } else if (activeNoMemo > 0) {
-    f.line(`> **${activeNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`);
+  } else if (actionableActiveNoMemo > 0) {
+    f.line(
+      `> **${actionableActiveNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
+    );
     f.line('> Run with `--fix` to annotate them.');
     f.blank();
   } else if (broken === 0 && conflicting === 0 && redundant === 0) {

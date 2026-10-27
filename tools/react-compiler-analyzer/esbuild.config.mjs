@@ -13,7 +13,7 @@ const outdir = join(projectRoot, 'dist');
  * and bundling yargs makes esbuild pick its `import` condition, whose `cliui/index.mjs` swaps
  * `wrap-ansi` for a char-slicing fallback that mangles `--help`.
  */
-const external = ['@babel/core', '@babel/preset-typescript', 'ajv', 'babel-plugin-react-compiler', 'enquirer', 'yargs'];
+const external = ['@babel/core', 'ajv', 'babel-plugin-react-compiler', 'enquirer', 'yargs'];
 
 await rm(outdir, { recursive: true, force: true });
 
@@ -46,7 +46,7 @@ if (leaked.length > 0) {
 }
 
 const cli = await readFile(join(outdir, 'cli.js'), 'utf-8');
-for (const name of ['babel-plugin-react-compiler', '@babel/preset-typescript']) {
+for (const name of ['babel-plugin-react-compiler']) {
   if (!cli.includes(`require.resolve("${name}")`)) {
     throw new Error(`\`require.resolve("${name}")\` did not survive bundling — the CLI will fail at runtime.`);
   }

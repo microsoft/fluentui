@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-components): export existing Menu base hooks and composition types",
+  "packageName": "@fluentui/react-components",
+  "email": "paulmardling@microsoft.com"
+}

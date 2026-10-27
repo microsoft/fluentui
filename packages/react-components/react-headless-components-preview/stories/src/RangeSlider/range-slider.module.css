@@ -1,0 +1,137 @@
+/*
+ * RangeSlider positions its thumbs with two CSS variables it sets on the root:
+ * --fui-RangeSlider--start-progress and --fui-RangeSlider--end-progress (percentages along the rail).
+ */
+
+.slider {
+  --thumb-size: var(--space-5);
+  --rail-size: var(--space-1);
+
+  position: relative;
+  inline-size: 100%;
+  max-inline-size: calc(var(--space-16) * 5);
+  block-size: var(--space-8);
+  display: flex;
+  align-items: center;
+  /* The root handles pointer input, so the browser must not scroll or select text while dragging */
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.slider[data-disabled] {
+  cursor: default;
+}
+
+.rail {
+  position: relative;
+  inline-size: 100%;
+  block-size: var(--rail-size);
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+}
+
+/* Selected range between the start and end values */
+.rail::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--fui-RangeSlider--start-progress, 0%);
+  inline-size: calc(var(--fui-RangeSlider--end-progress, 100%) - var(--fui-RangeSlider--start-progress, 0%));
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.slider[data-disabled] .rail::after {
+  background: var(--border-strong);
+}
+
+.thumb {
+  position: absolute;
+  inline-size: var(--thumb-size);
+  block-size: var(--thumb-size);
+  margin-inline-start: calc(var(--thumb-size) / -2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev);
+  border: var(--stroke-thick) solid var(--accent);
+  box-shadow: var(--shadow-2);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.startThumb {
+  inset-inline-start: var(--fui-RangeSlider--start-progress, 0%);
+}
+
+.endThumb {
+  inset-inline-start: var(--fui-RangeSlider--end-progress, 100%);
+}
+
+/* When the thumbs overlap, the active thumb is drawn on top */
+.thumb[data-active] {
+  z-index: 1;
+}
+
+.thumb[data-disabled] {
+  border-color: var(--border-strong);
+  box-shadow: none;
+}
+
+.thumb:has(.input:focus-visible) {
+  outline: var(--stroke-thick) solid var(--accent-strong);
+  outline-offset: var(--stroke-thick);
+}
+
+/* The native input handles keyboard, screen readers and forms; the root handles pointer input */
+.input {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  color: var(--text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .rail {
+    background: CanvasText;
+  }
+
+  .rail::after,
+  .thumb {
+    background: Highlight;
+    border-color: Highlight;
+  }
+
+  .slider[data-disabled] .rail::after,
+  .thumb[data-disabled] {
+    background: GrayText;
+    border-color: GrayText;
+  }
+
+  .thumb:has(.input:focus-visible) {
+    outline-color: CanvasText;
+  }
+}

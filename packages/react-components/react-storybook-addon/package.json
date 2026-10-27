@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@fluentui/react-aria": "^9.17.16",
-    "@fluentui/react-button": "^9.11.2",
+    "@fluentui/react-button": "^9.11.3",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-label": "^9.4.6",
     "@fluentui/react-link": "^9.8.6",

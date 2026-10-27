@@ -53,6 +53,8 @@ export interface DirectiveAnalysis {
   reason?: string;
   fullReason?: string;
   directiveType: DirectiveType;
+  justified?: true;
+  revalidated?: true;
 }
 
 export interface FixResult {
@@ -162,10 +164,16 @@ export interface FunctionAnalysis {
 export type AnnotateMode = 'manual-memo' | 'all' | 'all-safe' | 'bailout-only';
 export type QuoteStyle = 'single' | 'double';
 
-export interface AnnotateResult {
+export interface AnnotateCounts {
   filesModified: number;
   functionsAnnotated: number;
   functionsBailedOut: number;
+}
+
+export interface AnnotateResult extends AnnotateCounts {
+  dryRun?: true;
+  planned?: AnnotateCounts;
+  targets?: { filePath: string; line: number; functionName: string | null; directive: string }[];
 }
 
 export interface CompileFilesOptions {
@@ -296,7 +304,7 @@ export interface AnalysisDocument extends DocumentEnvelope {
   functions: JsonFunction[];
   findings: JsonFinding[];
   unparseable: { file: string; error: string }[];
-  annotate?: AnnotateResult & { mode: AnnotateMode };
+  annotate?: Omit<AnnotateResult, 'targets'> & { mode: AnnotateMode };
 }
 
 export interface JsonDirective {
@@ -309,6 +317,8 @@ export interface JsonDirective {
   compilerEvent: DirectiveAnalysis['compilerEvent'];
   function: string | null;
   reason?: string;
+  justified?: true;
+  revalidated?: true;
 }
 
 export interface LintDocument extends DocumentEnvelope {

@@ -77,7 +77,7 @@ export type PopoverProps = {
   /**
    * Optional id for the popover surface. When provided, this id is applied to
    * the `PopoverSurface` element and referenced by `PopoverTrigger`
-   * (`aria-details`). If omitted, a generated id is used.
+   * (`aria-details` and `aria-controls`). If omitted, a generated id is used.
    */
   id?: string;
 
