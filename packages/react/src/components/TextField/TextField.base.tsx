@@ -7,7 +7,6 @@ import {
   DelayedRender,
   getId,
   getNativeProps,
-  getWindow,
   initializeComponentRef,
   inputProperties,
   isControlled,
@@ -680,16 +679,10 @@ let __browserNeedsRevealButton: boolean | undefined;
 
 function _browserNeedsRevealButton() {
   if (typeof __browserNeedsRevealButton !== 'boolean') {
-    const win = getWindow();
-
-    if (win?.navigator) {
-      // Edge, Chromium Edge
-      const isEdge = /Edg/.test(win.navigator.userAgent || '');
-
-      __browserNeedsRevealButton = !(isIE11() || isEdge);
-    } else {
-      __browserNeedsRevealButton = true;
-    }
+    // Only IE 11 keeps its unhideable native reveal button. Edge's native ::-ms-reveal is
+    // suppressed via the field styles so the themable, keyboard-accessible custom button can
+    // be shown instead (otherwise both would render).
+    __browserNeedsRevealButton = !isIE11();
   }
   return __browserNeedsRevealButton;
 }
