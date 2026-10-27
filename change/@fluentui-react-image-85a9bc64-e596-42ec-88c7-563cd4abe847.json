@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules styles for Label and Image",
+  "packageName": "@fluentui/react-image",
+  "email": "dmytrokirpa@microsoft.com"
+}
