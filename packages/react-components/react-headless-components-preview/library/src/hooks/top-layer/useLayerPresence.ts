@@ -4,24 +4,19 @@ import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { isInTopLayer, isPopoverOpen, waitForAnimations } from './utils';
 import { setInert } from './setInert';
-import type { TopLayerPhase, UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
-
-const getPhase = (open: boolean, entering: boolean, exiting: boolean): TopLayerPhase => {
-  if (open) {
-    return entering ? 'entering' : 'open';
-  }
-
-  return exiting ? 'exiting' : 'closed';
-};
+import type { UseLayerPresenceOptions, UseLayerPresenceReturn } from './types';
 
 type Exit = { element: HTMLElement | null; cancel: () => void };
 
 const NO_EXIT: Exit = { element: null, cancel: () => undefined };
 
+// Runs before all layout effects. React 17 has no insertion effects; there the layout effect order applies.
+const useBeforeLayoutEffect = React.useInsertionEffect ?? useIsomorphicLayoutEffect;
+
 /**
- * Whether to render an element, and its animation phase. Keeps a closing element mounted and inert until it has left
- * the top layer and its exit animations end. Doesn't depend on `useLayerOpenState` running first: it measures
- * animations after the commit, once the element has been shown or hidden.
+ * Whether to render an element. Keeps a closing element mounted and inert until it has left the top layer and its exit
+ * animations end. Doesn't depend on `useLayerOpenState` running first: it measures animations after the commit, once
+ * the element has been hidden.
  */
 export const useLayerPresence = (
   ref: React.RefObject<HTMLElement | null>,
@@ -36,7 +31,6 @@ export const useLayerPresence = (
     setPrevOpen(open);
     setExitPending(!open);
   }
-  const [entering, setEntering] = React.useState(false);
 
   const openRef = React.useRef(false);
   const exit = React.useRef<Exit>(NO_EXIT);
@@ -47,6 +41,14 @@ export const useLayerPresence = (
     setInert(element, false);
     setExitPending(false);
   };
+
+  // A reopen during the exit: clear `inert` before the open-state hook shows the element, wherever it is declared, so
+  // focus can move into it.
+  useBeforeLayoutEffect(() => {
+    if (open && exit.current.element) {
+      setInert(exit.current.element, false);
+    }
+  }, [open]);
 
   // An exiting element that was replaced or removed won't finish its exit.
   useIsomorphicLayoutEffect(() => {
@@ -72,39 +74,7 @@ export const useLayerPresence = (
       if (exit.current.element) {
         endExit(exit.current.element);
       }
-
-      if (!element) {
-        return;
-      }
-
-      let settled = false;
-      let cancelEnter = () => undefined as void;
-      let cancelled = false;
-
-      queueMicrotask(() => {
-        if (cancelled) {
-          return;
-        }
-        let synchronous = true;
-        cancelEnter = waitForAnimations(element, () => {
-          settled = true;
-          if (!synchronous) {
-            setEntering(false);
-          }
-        });
-        synchronous = false;
-        if (!settled) {
-          setEntering(true);
-        }
-      });
-
-      return () => {
-        cancelled = true;
-        cancelEnter();
-        if (!settled) {
-          setEntering(false);
-        }
-      };
+      return;
     }
 
     if (!wasOpen) {
@@ -165,8 +135,5 @@ export const useLayerPresence = (
     });
   }, [ref, open]);
 
-  return {
-    shouldRender: open || exitPending || !unmountOnClose,
-    phase: getPhase(open, entering, exitPending),
-  };
+  return { shouldRender: open || exitPending || !unmountOnClose };
 };

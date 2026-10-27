@@ -11,22 +11,19 @@ type LayerProps = {
   open: boolean;
   unmountOnClose?: boolean;
   presenceFirst?: boolean;
-  onPhase?: (phase: string) => void;
 };
 
-const OpenStateThenPresence = ({ open, unmountOnClose, onPhase }: LayerProps) => {
+const OpenStateThenPresence = ({ open, unmountOnClose }: LayerProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const { popover } = useLayerOpenState(ref, { open, mode: 'auto' });
-  const { shouldRender, phase } = useLayerPresence(ref, { open, unmountOnClose });
-  onPhase?.(phase);
+  const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
   return shouldRender ? <div ref={ref} popover={popover} data-testid="layer" /> : null;
 };
 
-const PresenceThenOpenState = ({ open, unmountOnClose, onPhase }: LayerProps) => {
+const PresenceThenOpenState = ({ open, unmountOnClose }: LayerProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { shouldRender, phase } = useLayerPresence(ref, { open, unmountOnClose });
+  const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
   const { popover } = useLayerOpenState(ref, { open, mode: 'auto' });
-  onPhase?.(phase);
   return shouldRender ? <div ref={ref} popover={popover} data-testid="layer" /> : null;
 };
 
@@ -57,52 +54,53 @@ describe.each([
   });
 
   it('keeps the element mounted with unmountOnClose: false', async () => {
-    const onPhase = jest.fn();
-    const { getByTestId, rerender } = render(<Layer open unmountOnClose={false} onPhase={onPhase} />);
-    rerender(<Layer open={false} unmountOnClose={false} onPhase={onPhase} />);
+    const { getByTestId, rerender } = render(<Layer open unmountOnClose={false} />);
+    const layer = getByTestId('layer');
+    rerender(<Layer open={false} unmountOnClose={false} />);
 
-    await waitFor(() => expect(onPhase).toHaveBeenLastCalledWith('closed'));
-    expect(getByTestId('layer')).toBeInTheDocument();
+    await waitFor(() => expect(isPopoverOpen(layer)).toBe(false));
+    await act(() => Promise.resolve());
+    expect(layer).toBeInTheDocument();
+    expect(layer).not.toHaveAttribute('inert');
   });
 
-  it('stays exiting and inert until exit animations end', async () => {
-    const onPhase = jest.fn();
-    const { getByTestId, queryByTestId, rerender } = render(<Layer open onPhase={onPhase} />);
+  // React 17 has no insertion effects, so there presence has to be declared before the open-state hook.
+  const itWithInsertionEffect = 'useInsertionEffect' in React || Layer === PresenceThenOpenState ? it : it.skip;
+
+  itWithInsertionEffect('is no longer inert when a reopen during the exit shows the element', async () => {
+    const { getByTestId, rerender } = render(<Layer open />);
+    const layer = getByTestId('layer');
+    mockAnimation(layer);
+    rerender(<Layer open={false} />);
+    await waitFor(() => expect(layer).toHaveAttribute('inert'));
+
+    let inertWhenShown: boolean | undefined;
+    const showPopover = layer.showPopover.bind(layer);
+    Object.defineProperty(layer, 'showPopover', {
+      configurable: true,
+      value: () => {
+        inertWhenShown = layer.hasAttribute('inert');
+        showPopover();
+      },
+    });
+    rerender(<Layer open />);
+
+    expect(inertWhenShown).toBe(false);
+    expect(isPopoverOpen(layer)).toBe(true);
+  });
+
+  it('stays mounted and inert until exit animations end', async () => {
+    const { getByTestId, queryByTestId, rerender } = render(<Layer open />);
     const layer = getByTestId('layer');
     const finish = mockAnimation(layer);
 
-    rerender(<Layer open={false} onPhase={onPhase} />);
+    rerender(<Layer open={false} />);
     await waitFor(() => expect(layer.getAttribute('inert')).toBe(''));
-    expect(onPhase).toHaveBeenLastCalledWith('exiting');
     expect(layer.getAttribute('aria-hidden')).toBe('true');
 
     await finish();
     await waitFor(() => expect(queryByTestId('layer')).toBeNull());
     expect(layer.hasAttribute('inert')).toBe(false);
-  });
-
-  it('is entering while enter animations run', async () => {
-    const onPhase = jest.fn();
-    let finishEnter: () => Promise<void> | void = () => undefined;
-    const Animated = () => {
-      const ref = React.useRef<HTMLDivElement | null>(null);
-      const setRef = React.useCallback((element: HTMLDivElement | null) => {
-        ref.current = element;
-        if (element) {
-          finishEnter = mockAnimation(element);
-        }
-      }, []);
-      const { popover } = useLayerOpenState(ref, { open: true, mode: 'auto' });
-      const { phase } = useLayerPresence(ref, { open: true });
-      onPhase(phase);
-      return <div ref={setRef} popover={popover} />;
-    };
-
-    render(<Animated />);
-    await waitFor(() => expect(onPhase).toHaveBeenLastCalledWith('entering'));
-
-    await finishEnter();
-    await waitFor(() => expect(onPhase).toHaveBeenLastCalledWith('open'));
   });
 });
 
@@ -112,14 +110,12 @@ describe('useLayerPresence', () => {
     mode?: TopLayerMode;
     unmountOnClose?: boolean;
     ariaHidden?: 'true' | 'false';
-    onPhase?: (phase: string) => void;
   };
 
-  const TestLayer = ({ open = false, mode = 'auto', unmountOnClose, ariaHidden, onPhase }: TestLayerProps) => {
+  const TestLayer = ({ open = false, mode = 'auto', unmountOnClose, ariaHidden }: TestLayerProps) => {
     const ref = React.useRef<HTMLDivElement & HTMLDialogElement>(null);
     const { popover } = useDialogLayerOpenState(ref, { open, mode });
-    const { shouldRender, phase } = useLayerPresence(ref, { open, unmountOnClose });
-    onPhase?.(phase);
+    const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
 
     if (!shouldRender) {
       return null;
@@ -134,23 +130,13 @@ describe('useLayerPresence', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('goes straight to the open phase when nothing animates', () => {
-    const phases: string[] = [];
-    render(<TestLayer open onPhase={phase => phases.push(phase)} />);
-
-    expect(phases).toEqual(['open']);
-  });
-
   it('keeps the element mounted with unmountOnClose: false, without inert once the exit ends', async () => {
-    const phases: string[] = [];
-    const onPhase = (phase: string) => phases.push(phase);
-    const { getByTestId, rerender } = render(<TestLayer open unmountOnClose={false} onPhase={onPhase} />);
-    rerender(<TestLayer open={false} unmountOnClose={false} onPhase={onPhase} />);
+    const { getByTestId, rerender } = render(<TestLayer open unmountOnClose={false} />);
+    rerender(<TestLayer open={false} unmountOnClose={false} />);
     const layer = getByTestId('layer');
 
     expect(isPopoverOpen(layer)).toBe(false);
     await waitFor(() => {
-      expect(phases[phases.length - 1]).toBe('closed');
       expect(layer).not.toHaveAttribute('inert');
       expect(layer).not.toHaveAttribute('aria-hidden');
     });
@@ -161,12 +147,10 @@ describe('useLayerPresence', () => {
   });
 
   it('finishes the exit when the element is replaced before it ends', async () => {
-    const phases: string[] = [];
     const KeyedLayer = ({ open, version }: { open: boolean; version: number }) => {
       const ref = React.useRef<HTMLDivElement>(null);
       const { popover } = useLayerOpenState(ref, { open, mode: 'auto' });
-      const { shouldRender, phase } = useLayerPresence(ref, { open });
-      phases.push(phase);
+      const { shouldRender } = useLayerPresence(ref, { open });
       return shouldRender ? <div key={version} ref={ref} popover={popover} data-testid="layer" /> : null;
     };
     const { queryByTestId, rerender } = render(<KeyedLayer open version={0} />);
@@ -176,7 +160,6 @@ describe('useLayerPresence', () => {
     rerender(<KeyedLayer open={false} version={1} />);
 
     await waitFor(() => expect(queryByTestId('layer')).toBeNull());
-    expect(phases[phases.length - 1]).toBe('closed');
   });
 
   it('finishes the exit when the mode changes before the close event arrives', async () => {
@@ -207,28 +190,23 @@ describe('useLayerPresence', () => {
   });
 
   it("keeps the consumer's own aria-hidden after the exit", async () => {
-    const phases: string[] = [];
-    const onPhase = (phase: string) => phases.push(phase);
-    const { getByTestId, rerender } = render(<TestLayer open mode="manual" unmountOnClose={false} onPhase={onPhase} />);
+    const { getByTestId, rerender } = render(<TestLayer open mode="manual" unmountOnClose={false} />);
     const layer = getByTestId('layer');
     layer.setAttribute('aria-hidden', 'true');
     const finish = mockAnimation(layer);
 
-    rerender(<TestLayer open={false} mode="manual" unmountOnClose={false} onPhase={onPhase} />);
+    rerender(<TestLayer open={false} mode="manual" unmountOnClose={false} />);
     await waitFor(() => expect(layer).toHaveAttribute('inert'));
     await finish();
 
     await waitFor(() => {
-      expect(phases[phases.length - 1]).toBe('closed');
       expect(layer).not.toHaveAttribute('inert');
     });
     expect(layer).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('restores the consumer aria-hidden="false" after the exit, so a reopened layer is not hidden', async () => {
-    const phases: string[] = [];
-    const onPhase = (phase: string) => phases.push(phase);
-    const props = { mode: 'manual' as const, unmountOnClose: false, ariaHidden: 'false' as const, onPhase };
+    const props = { mode: 'manual' as const, unmountOnClose: false, ariaHidden: 'false' as const };
     const { getByTestId, rerender } = render(<TestLayer open {...props} />);
     const layer = getByTestId('layer');
     const finish = mockAnimation(layer);
@@ -237,7 +215,6 @@ describe('useLayerPresence', () => {
     await waitFor(() => expect(layer).toHaveAttribute('aria-hidden', 'true'));
     await finish();
     await waitFor(() => {
-      expect(phases[phases.length - 1]).toBe('closed');
       expect(layer).toHaveAttribute('aria-hidden', 'false');
     });
 

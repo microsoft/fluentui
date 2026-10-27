@@ -90,6 +90,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
+  // Mounted until the exit animations end.
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible });
+  state.shouldRenderTooltip = shouldRender;
+
   // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
   // never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
@@ -108,10 +112,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     listen: 'document',
     onEscape: () => setVisible(undefined, { visible: false }),
   });
-
-  // Mounted until the exit animations end.
-  const { shouldRender } = useLayerPresence(contentRef, { open: visible });
-  state.shouldRenderTooltip = shouldRender;
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.

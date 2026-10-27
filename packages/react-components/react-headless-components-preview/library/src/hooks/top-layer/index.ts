@@ -8,7 +8,6 @@ export type {
   TopLayerMode,
   TopLayerOpenChangeData,
   TopLayerOpenChangeType,
-  TopLayerPhase,
   UseLayerOpenStateOptions,
   UseLayerOpenStateReturn,
   UseLayerPresenceOptions,

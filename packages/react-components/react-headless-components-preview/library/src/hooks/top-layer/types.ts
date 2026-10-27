@@ -12,11 +12,6 @@ export type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 export type TopLayerMode = 'auto' | 'hint' | 'manual' | 'modal';
 
 /**
- * `entering` only while enter animations run. `exiting` until the element has left the top layer and exit animations end.
- */
-export type TopLayerPhase = 'closed' | 'entering' | 'open' | 'exiting';
-
-/**
  * What opened or closed the element.
  * - `escape`: a modal dialog closed by Escape, or another close request such as the Android back button.
  * - `light-dismiss`: any popover close: Escape, a click outside, another `auto` popover or a modal opening, a
@@ -163,8 +158,4 @@ export type UseLayerPresenceReturn = {
    * Whether to render the element. Stays true until the exit finishes.
    */
   shouldRender: boolean;
-  /**
-   * See `TopLayerPhase`.
-   */
-  phase: TopLayerPhase;
 };

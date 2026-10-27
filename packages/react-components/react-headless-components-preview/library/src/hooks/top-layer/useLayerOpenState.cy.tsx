@@ -44,7 +44,7 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
     mode,
     onOpenChange: (nextOpen, { type }) => (nextOpen ? onOpen?.() : onClose?.(type)),
   });
-  const { shouldRender, phase } = useLayerPresence(ref, { open, unmountOnClose });
+  const { shouldRender } = useLayerPresence(ref, { open, unmountOnClose });
 
   if (!shouldRender) {
     return null;
@@ -59,7 +59,6 @@ const Layer = ({ id, open, mode = 'auto', role, onClose, onOpen, unmountOnClose,
       role={role}
       aria-label={role ? 'Layer' : undefined}
       data-open={open ? '' : undefined}
-      data-phase={phase}
     >
       {children}
     </Element>
@@ -153,7 +152,6 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     cy.get('#inside').realClick();
     cy.get('#layer').should(([layer]) => {
       expect(layer).not.to.have.attr('data-open');
-      expect(layer).to.have.attr('data-phase', 'exiting');
       expect(layer).to.have.attr('inert');
       expect(layer).to.have.attr('aria-hidden', 'true');
     });
@@ -179,11 +177,11 @@ describe('useDialogLayerOpenState and useLayerPresence', () => {
     mount(<StaysMounted />);
 
     cy.get('#close').realClick();
-    cy.get('#layer').should('have.attr', 'data-phase', 'exiting').and('have.attr', 'inert');
+    cy.get('#layer').should('have.attr', 'inert');
     cy.get<HTMLElement>('#layer').then(([layer]) => {
       layer.getAnimations({ subtree: true }).forEach(animation => animation.finish());
     });
-    cy.get('#layer').should('have.attr', 'data-phase', 'closed').and('not.have.attr', 'inert');
+    cy.get('#layer').should('not.have.attr', 'inert');
     cy.get('#layer').should('not.have.attr', 'aria-hidden');
   });
 

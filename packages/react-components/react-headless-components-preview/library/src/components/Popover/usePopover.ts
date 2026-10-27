@@ -74,6 +74,9 @@ export const usePopover = (props: PopoverProps): PopoverState => {
 
   const positioning = usePositioning(resolvePositioningShorthand(props.positioning));
 
+  // The surface stays mounted until the browser closes it and exit animations end.
+  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
+
   // Back to the trigger when focus was inside as the surface started closing.
   const focusReturn = useLayerFocusReturn(contentRef, { target: triggerRef });
 
@@ -83,9 +86,6 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     onOpenChange: (nextOpen, { event }) => setOpen(event, nextOpen),
     ...focusReturn,
   });
-
-  // The surface stays mounted until the browser closes it and exit animations end.
-  const { shouldRender: shouldRenderSurface } = useLayerPresence(contentRef, { open });
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
