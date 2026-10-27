@@ -139,6 +139,33 @@ describe('useTreeBase_unstable', () => {
       expect(getItem('item 1').tabIndex).toBe(-1);
     });
 
+    it('keeps the roving tab index in sync with focus inside a shadow root', () => {
+      const host = document.createElement('div');
+      document.body.appendChild(host);
+      const container = document.createElement('div');
+      host.attachShadow({ mode: 'open' }).appendChild(container);
+      const { unmount } = render(
+        <BaseTree aria-label="Tree">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf" value="2">
+            <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+        { container },
+      );
+      const [item1, item2] = Array.from(container.querySelectorAll<HTMLElement>('[role="treeitem"]'));
+
+      item2.focus();
+
+      expect(item2.tabIndex).toBe(0);
+      expect(item1.tabIndex).toBe(-1);
+
+      unmount();
+      host.remove();
+    });
+
     it('moves focus into the actions and back in treegrid mode', () => {
       render(
         <BaseTree aria-label="Tree" navigationMode="treegrid">
@@ -284,6 +311,34 @@ describe('useTreeBase_unstable', () => {
       fireEvent.keyDown(item, { key: 'ArrowRight' });
 
       expect(document.activeElement).toBe(screen.getByTestId('editor'));
+    });
+
+    it('moves focus into the summary of a details action in treegrid mode', () => {
+      render(
+        <BaseTree aria-label="Tree" navigationMode="treegrid">
+          <TreeItem itemType="leaf" value="1">
+            <BaseTreeItemLayout
+              actions={{
+                visible: true,
+                children: (
+                  <details>
+                    <summary>Options</summary>
+                    <summary>Not a summary</summary>
+                  </details>
+                ),
+              }}
+            >
+              item 1
+            </BaseTreeItemLayout>
+          </TreeItem>
+        </BaseTree>,
+      );
+
+      const item = getItem('item 1');
+      item.focus();
+      fireEvent.keyDown(item, { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(screen.getByText('Options'));
     });
   });
 });

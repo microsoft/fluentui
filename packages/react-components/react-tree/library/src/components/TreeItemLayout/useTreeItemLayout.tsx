@@ -198,7 +198,12 @@ function useTreeItemLayoutBase(
     elementType: 'input',
   });
   const selectorRef = useMergedRefs(selectorSlot?.ref, selectionRef, selectorInputRef);
-  const selector = selectorSlot && { ...selectorSlot, ref: selectorRef };
+  // Clicking a native checkbox clears `indeterminate`, which no commit restores if the change is rejected
+  const handleSelectorChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    selectorSlot?.onChange?.(event);
+    event.currentTarget.indeterminate = checked === 'mixed';
+  });
+  const selector = selectorSlot && { ...selectorSlot, ref: selectorRef, onChange: handleSelectorChange };
   const mainSlot = slot.always(main, {
     defaultProps: { id: selector ? mainContentId : undefined },
     elementType: 'div',

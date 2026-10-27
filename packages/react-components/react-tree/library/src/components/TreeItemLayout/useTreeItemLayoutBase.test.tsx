@@ -124,6 +124,35 @@ describe('useTreeItemLayoutBase_unstable', () => {
     expect(checkbox.hasAttribute('aria-checked')).toBe(false);
   });
 
+  it('restores the indeterminate state when a selection change is rejected', () => {
+    const onChange = jest.fn();
+    const onCheckedChange = jest.fn();
+    render(
+      <Tree
+        aria-label="Tree"
+        selectionMode="multiselect"
+        checkedItems={[['item', 'mixed']]}
+        onCheckedChange={onCheckedChange}
+      >
+        <TreeItem itemType="leaf" value="item">
+          <BaseTreeItemLayout selector={{ onChange }}>Item</BaseTreeItemLayout>
+        </TreeItem>
+      </Tree>,
+    );
+    const checkbox = screen.getByRole('checkbox', { name: 'Item' }) as HTMLInputElement;
+
+    fireEvent.click(checkbox);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onCheckedChange).toHaveBeenCalledTimes(1);
+    expect(checkbox.indeterminate).toBe(true);
+
+    fireEvent.keyDown(screen.getByRole('treeitem'), { key: ' ' });
+
+    expect(onCheckedChange).toHaveBeenCalledTimes(2);
+    expect(checkbox.indeterminate).toBe(true);
+  });
+
   it('applies the indeterminate state when a selector is mounted after the layout', () => {
     const ControlledTreeItemLayout = ({ showSelector }: { showSelector: boolean }) => (
       <Tree aria-label="Tree" selectionMode="multiselect" checkedItems={[['item', 'mixed']]}>
