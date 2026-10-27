@@ -83,7 +83,9 @@ server.listen(3000, 'localhost');
 
 ### Build-time ID namespaces
 
-When multiple independently built applications share a document, configure a distinct
+Configure independent React 18+ roots with matching server/client `identifierPrefix` values first.
+When all roots are correctly configured, an additional build namespace is not required for this issue.
+If root configuration cannot be guaranteed across independently built applications, configure a distinct
 [build-time ID namespace](?path=/docs/concepts-developer-advanced-configuration--docs#build-time-id-namespace)
 for each Fluent module copy. The Advanced Configuration guide contains complete Webpack, Vite,
 and esbuild recipes, including validation and dependency transformation.
@@ -118,9 +120,13 @@ also use React's `identifierPrefix`, pass the same root-specific value to server
 
 ```jsx
 // Server
+import { renderToString } from 'react-dom/server';
+
 const html = renderToString(<App />, { identifierPrefix: 'calendar-instance-a-' });
 
 // Client
+import { hydrateRoot } from 'react-dom/client';
+
 hydrateRoot(container, <App />, { identifierPrefix: 'calendar-instance-a-' });
 ```
 
@@ -129,3 +135,8 @@ a request-local `SSRProvider` for matching counters and must render the same tre
 hydration. A namespace does not repair counter-order or concurrent-rendering limitations.
 Multiple instances of one artifact or apps sharing a Fluent singleton still need per-instance
 root/provider prefixes.
+
+See the [interactive provider demonstration](?path=/story/components-fluentprovider--id-namespace)
+for the client-side collision. The corresponding Cypress scenarios also exercise real SSR output and
+completed hydration on React 17, React 18, and the workspace version; Storybook itself does not need
+a separate installation for each React version.

@@ -11,8 +11,35 @@
         "command": "yarn run -T eslint src testing"
       }
     },
+    "e2e": {
+      "dependsOn": ["build", { "projects": ["scripts-cypress"], "target": "build" }],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/cypress.config.ts",
+        "{projectRoot}/src/**/*.cy.tsx",
+        "{projectRoot}/testing/**/*"
+      ]
+    },
+    "test-rit--17--prepare": {
+      "dependsOn": ["build", { "projects": ["scripts-cypress"], "target": "build" }]
+    },
+    "test-rit--18--prepare": {
+      "dependsOn": ["build", { "projects": ["scripts-cypress"], "target": "build" }]
+    },
+    "prepare-id-namespace-demo": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "dependsOn": ["build"],
+      "options": {
+        "cwd": "packages/react-components/react-provider/library",
+        "command": "node testing/build-prefix-fixtures.cjs"
+      },
+      "outputs": ["{projectRoot}/dist/id-namespace-demo"]
+    },
     "test-build-prefix": {
       "executor": "nx:run-commands",
+      "inputs": ["default", "^production", "{projectRoot}/testing/**/*"],
       "dependsOn": ["build"],
       "options": {
         "cwd": "packages/react-components/react-provider/library",

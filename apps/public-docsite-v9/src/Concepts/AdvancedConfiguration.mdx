@@ -116,7 +116,10 @@ Having multiple applications using `FluentProvider` on a single web page can cau
 
 ### React 18 and later
 
-It's possible to handle id prefixing natively with React 18 using the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters) API by configuring `identifierPrefix` on it:
+**Configure roots first.** Give every independently rendered root a document-wide unique
+[`identifierPrefix`](https://react.dev/reference/react-dom/client/createRoot#parameters).
+When all roots are configured correctly, a build namespace is not needed to prevent these
+Fluent-generated ID collisions. Root prefixing also protects direct React `useId` calls outside Fluent.
 
 ```jsx
 import * as React from 'react';
@@ -129,11 +132,20 @@ const root = createRoot(document.getElementById('root'), {
 root.render(<App />);
 ```
 
+Multiple roots sharing one ReactDOM client runtime normally share its client ID counter; a second
+root alone is not proof of a collision. Independent ReactDOM runtimes and separately rendered SSR
+roots are important collision boundaries. Do not rely on a particular counter implementation for
+cross-application isolation.
+Use simple, distinct root prefixes. Fluent removes colons from React-generated IDs, so prefixes
+that differ only by colons are not distinct Fluent namespaces.
+
 ### Provider prefixes (all supported React versions)
 
 `IdPrefixProvider` works with all supported React versions, including React 18 and later. Wrap it around
 `FluentProvider` so it also prefixes the provider's own theme class and style-tag ID. Use a distinct value
 for each independently rendered application instance.
+An outer application's provider does not propagate context into a separately created React root;
+wrap each root separately.
 
 ```jsx
 import { IdPrefixProvider, FluentProvider } from '@fluentui/react-components';
@@ -150,6 +162,9 @@ function MyApp() {
 
 ### Build-time ID namespace
 
+Use this **additional safeguard** when you cannot reliably configure every root in independently
+built applications. It does not replace per-instance root/provider configuration.
+
 Independently built applications can share a document with a host that cannot configure their React
 roots. To namespace Fluent-generated IDs without adding a wrapper, configure your bundler to replace
 `__FLUENT_USE_ID_BUILD_PREFIX__` with a string literal in Fluent's JavaScript.
@@ -160,6 +175,20 @@ Fluent does not read it automatically.
 The namespace affects both component IDs and `FluentProvider` theme classes/style-tag IDs.
 Collisions in provider IDs can otherwise cause theme cross-talk, style reuse, or one application's
 unmount removing another application's styles.
+
+#### Interactive reproduction
+
+Open the [FluentProvider ID namespace demonstration](?path=/story/components-fluentprovider--id-namespace).
+Each panel contains two independent React/Fluent bundles in the same document, with no root or provider
+prefix. Only the protected panel has distinct build namespaces.
+
+Use **Update embedded theme** and **Unmount embedded app**, then inspect the host's computed color,
+font-size, and stroke-width tokens. **Reset scenario** reloads the document and its independent runtimes.
+The whole scenario uses one iframe to protect Storybook itself; the two apps inside that iframe
+are deliberately not isolated from each other.
+
+The controls do not change a build constant at runtime: the two panels load separately built artifacts.
+The unconfigured case is a demonstration of an unsafe setup, not supported configuration.
 
 #### Contract
 
