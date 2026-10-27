@@ -43,7 +43,7 @@ import {
   setCalendarNavigationDate,
 } from '../utils/calendarNavigation';
 import { useCalendarContext } from '../calendarContext';
-import type { DayGridOptions } from '../utils';
+import type { DayGridOptions, RestrictedDatesOptions } from '../utils';
 import type {
   CalendarDayProps,
   CalendarDayState,
@@ -84,6 +84,30 @@ const getDirectionalTargetDate = (date: Date, initialOffset: number, direction: 
     }
 
     if (matchesCivilDate(candidate, civilDate) && compareDatePart(candidate, date) * direction > 0) {
+      return candidate;
+    }
+  }
+};
+
+/**
+ * Finds the nearest available date on the same weekday as `date`, stepping a week at a time and skipping dates that
+ * do not exist in the local timezone. The search stops at the minimum or maximum date.
+ */
+const findAvailableWeekdayDate = (date: Date, direction: 1 | -1, options: RestrictedDatesOptions): Date | undefined => {
+  const origin = { year: date.getFullYear(), month: date.getMonth(), day: date.getDate() };
+  const bound = direction === 1 ? options.maxDate : options.minDate;
+  for (let offset = DAYS_IN_WEEK * direction; ; offset += DAYS_IN_WEEK * direction) {
+    const civilDate = addCivilDays(origin, offset);
+    if (!Number.isFinite(civilDate.year)) {
+      return undefined;
+    }
+
+    const candidate = createDate(civilDate.year, civilDate.month, civilDate.day);
+    if (!Number.isFinite(candidate.getTime()) || (bound && compareDatePart(candidate, bound) * direction > 0)) {
+      return undefined;
+    }
+
+    if (matchesCivilDate(candidate, civilDate) && !isRestrictedDate(candidate, options)) {
       return candidate;
     }
   }
@@ -441,34 +465,20 @@ export const useCalendarDay = (props: CalendarDayProps, ref: React.Ref<HTMLDivEl
       return;
     }
 
-    let targetDate: Date | undefined;
-    let direction: 1 | -1 = 1; // by default search forward
+    const searchOptions = { ...restrictedDatesOptions, restrictedDates: allFocusable ? undefined : restrictedDates };
+    let nextDate: Date | undefined;
 
-    if (ev.key === ArrowUp) {
-      direction = -1;
-      targetDate = getDirectionalTargetDate(date, -7, direction);
-    } else if (ev.key === ArrowDown) {
-      targetDate = getDirectionalTargetDate(date, 7, direction);
+    if (ev.key === ArrowUp || ev.key === ArrowDown) {
+      // Vertical movement keeps the weekday, so unavailable days in the column are skipped a week at a time.
+      nextDate = findAvailableWeekdayDate(date, ev.key === ArrowUp ? -1 : 1, searchOptions);
     } else if (ev.key === ArrowLeft || ev.key === ArrowRight) {
-      const isForward = (ev.key === ArrowRight) !== (dir === 'rtl');
-      direction = isForward ? 1 : -1;
-      targetDate = getDirectionalTargetDate(date, direction, direction);
+      const direction = (ev.key === ArrowRight) !== (dir === 'rtl') ? 1 : -1;
+      // Called only when no visible day in this direction can take focus, so a visible target is unavailable.
+      const targetDate = getDirectionalTargetDate(date, direction, direction);
+      nextDate = targetDate && findAvailableDate({ initialDate: date, targetDate, direction, ...searchOptions });
     } else {
       return;
     }
-
-    // Called only when no visible day in this direction can take focus, so a visible target is unavailable.
-    if (!targetDate) {
-      return;
-    }
-
-    const nextDate = findAvailableDate({
-      initialDate: date,
-      targetDate,
-      direction,
-      ...restrictedDatesOptions,
-      restrictedDates: allFocusable ? undefined : restrictedDates,
-    });
 
     if (nextDate) {
       ev.preventDefault();

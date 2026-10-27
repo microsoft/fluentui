@@ -539,6 +539,33 @@ describe('CalendarDay', () => {
       expect(onNavigate).not.toHaveBeenCalled();
     });
 
+    it.each([
+      ['ArrowDown', 'September 19, 2020', [new Date(2020, 8, 26), new Date(2020, 9, 3)], new Date(2020, 9, 10)],
+      ['ArrowUp', 'September 12, 2020', [new Date(2020, 8, 5)], new Date(2020, 7, 29)],
+    ] as const)(
+      'keeps the weekday when %s passes restricted days in the column',
+      (key, label, restrictedDates, expected) => {
+        const { getByRole, onNavigate } = renderDay({ restrictedDates: [...restrictedDates] });
+        const cell = getByRole('button', { name: label }).closest<HTMLElement>('[role="gridcell"]')!;
+        act(() => cell.focus());
+        expect(fireEvent.keyDown(cell, { key })).toBe(false);
+        expect(onNavigate).toHaveBeenCalledTimes(1);
+        expect(onNavigate.mock.calls[0][1].date).toEqual(expected);
+      },
+    );
+
+    it('does not move vertically past a minimum date', () => {
+      const { getByRole, onNavigate } = renderDay({
+        minDate: new Date(2020, 8, 1),
+        restrictedDates: [new Date(2020, 8, 5)],
+      });
+      const cell = getByRole('button', { name: 'September 12, 2020' }).closest<HTMLElement>('[role="gridcell"]')!;
+      act(() => cell.focus());
+      expect(fireEvent.keyDown(cell, { key: 'ArrowUp' })).toBe(false);
+      expect(cell).toHaveFocus();
+      expect(onNavigate).not.toHaveBeenCalled();
+    });
+
     it('keeps a restricted navigated date enrolled in an allFocusable single-week grid', () => {
       const { getByRole, onSelect, onNavigate } = renderDay({
         allFocusable: true,

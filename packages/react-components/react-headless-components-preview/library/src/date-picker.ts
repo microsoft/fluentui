@@ -6,10 +6,14 @@ export {
   useDatePicker,
 } from './components/DatePicker/index';
 export type {
+  DatePickerBaseProps,
+  DatePickerButtonProps,
   DatePickerCalendarProps,
+  DatePickerComponent,
   DatePickerDateChangeData,
   DatePickerErrorMessageData,
   DatePickerErrorType,
+  DatePickerInputProps,
   DatePickerOpenChangeData,
   DatePickerProps,
   DatePickerSlots,

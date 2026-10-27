@@ -4,7 +4,8 @@ import { renderToString } from 'react-dom/server';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field';
 import { DatePicker } from './DatePicker';
-import type { DatePickerProps } from './DatePicker.types';
+import { createLocalDate } from './datePickerFormatting';
+import type { DatePickerInputProps, DatePickerProps } from './DatePicker.types';
 
 const today = new Date(2026, 7, 12);
 const sameDay = (a: Date | null | undefined, b: Date) =>
@@ -14,7 +15,7 @@ const getDayCell = (dialog: HTMLElement, name: string) =>
   within(dialog).getByRole('button', { name }).closest('[role="gridcell"]') as HTMLElement;
 
 const renderDatePicker = (props: Partial<DatePickerProps> = {}) => {
-  const result = render(<DatePicker aria-label="Due date" today={today} {...props} />);
+  const result = render(<DatePicker aria-label="Due date" today={today} {...(props as DatePickerProps)} />);
   const getDialog = () => result.getByRole('dialog');
   return { ...result, getDialog };
 };
@@ -252,6 +253,42 @@ describe('DatePicker', () => {
       expect(getDialog()).toBeInTheDocument();
     });
 
+    it('moves focus to the year-range grid each time the day calendar heading is activated', async () => {
+      const { getByRole, getDialog } = renderDatePicker();
+      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      const heading = within(getDialog()).getByRole('button', { name: 'August 2026, change year' });
+
+      fireEvent.click(heading);
+      const yearGrid = within(getDialog()).getAllByRole('grid')[1];
+      await waitFor(() => expect(yearGrid).toContainElement(document.activeElement as HTMLElement));
+
+      act(() => heading.focus());
+      fireEvent.click(heading);
+      expect(yearGrid).toContainElement(document.activeElement as HTMLElement);
+    });
+
+    it('opens the year-range grid from the day calendar heading in the overlay layout', async () => {
+      const { getByRole, getDialog } = renderDatePicker({ calendar: { layout: 'overlay' } });
+      fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
+      expect(within(getDialog()).getAllByRole('grid')).toHaveLength(1);
+
+      fireEvent.click(within(getDialog()).getByRole('button', { name: 'August 2026, change year' }));
+
+      await waitFor(() => expect(within(getDialog()).getByRole('gridcell', { name: /2026/ })).toBeInTheDocument());
+      const yearGrid = within(getDialog()).getByRole('grid');
+      expect(within(yearGrid).getAllByRole('gridcell')).toHaveLength(12);
+      await waitFor(() => expect(yearGrid).toContainElement(document.activeElement as HTMLElement));
+    });
+
+    it('names month cells with years below 100', () => {
+      const { getByRole, getDialog } = renderDatePicker({ defaultValue: createLocalDate(42, 2, 3) });
+      fireEvent.click(getByRole('button', { name: /^Due date March 3, 42/ }));
+      const monthGrid = within(getDialog()).getAllByRole('grid')[1];
+
+      expect(within(monthGrid).getByRole('gridcell', { name: 'March 42' })).toHaveAttribute('aria-selected', 'true');
+      expect(within(monthGrid).queryByRole('gridcell', { name: /1942/ })).not.toBeInTheDocument();
+    });
+
     it('keeps the calendar open while navigating months with the header buttons', () => {
       const { getByRole, getDialog } = renderDatePicker();
       fireEvent.click(getByRole('button', { name: 'Due date Select a date' }));
@@ -274,7 +311,7 @@ describe('DatePicker', () => {
   });
 
   describe('editable field', () => {
-    const renderEditable = (props: Partial<DatePickerProps> = {}) => {
+    const renderEditable = (props: Partial<DatePickerInputProps> = {}) => {
       const result = renderDatePicker({ allowTextInput: true, ...props });
       return { ...result, input: result.getByRole('textbox', { name: 'Due date' }) as HTMLInputElement };
     };
@@ -437,6 +474,76 @@ describe('DatePicker', () => {
     rerender(<DatePicker aria-label="Due date" today={today} value={new Date(2026, 0, 6)} open={false} />);
     expect(queryByRole('dialog')).not.toBeInTheDocument();
     expect(getByRole('button', { name: 'Due date January 6, 2026' })).toBeInTheDocument();
+  });
+
+  it('focuses the calendar when initially open', async () => {
+    const { getByRole } = render(
+      <DatePicker aria-label="Due date" today={today} defaultValue={new Date(2025, 2, 3)} defaultOpen />,
+    );
+
+    await waitFor(() => expect(getDayCell(getByRole('dialog'), 'March 3, 2025')).toHaveFocus());
+  });
+
+  it('shows the current value and focuses the calendar when controlled open changes', async () => {
+    const { getByRole, queryByRole, rerender } = render(
+      <DatePicker aria-label="Due date" today={today} value={new Date(2026, 0, 5)} open />,
+    );
+    expect(getByRole('dialog')).toHaveAttribute('aria-label', 'January 2026');
+
+    rerender(<DatePicker aria-label="Due date" today={today} value={new Date(2026, 2, 3)} open={false} />);
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+    rerender(<DatePicker aria-label="Due date" today={today} value={new Date(2026, 2, 3)} open />);
+
+    expect(getByRole('dialog')).toHaveAttribute('aria-label', 'March 2026');
+    await waitFor(() => expect(getDayCell(getByRole('dialog'), 'March 3, 2026')).toHaveFocus());
+  });
+
+  describe('field control typing', () => {
+    it('forwards the ref and native events to the button trigger or the text input', () => {
+      const buttonRef = React.createRef<HTMLButtonElement>();
+      const inputRef = React.createRef<HTMLInputElement>();
+      const onClick = jest.fn((event: React.MouseEvent<HTMLButtonElement>) => event.currentTarget.form);
+      const onKeyDown = jest.fn((event: React.KeyboardEvent<HTMLInputElement>) => event.currentTarget.select());
+      const { getByRole } = render(
+        <>
+          <DatePicker aria-label="Start date" today={today} ref={buttonRef} onClick={onClick} />
+          <DatePicker aria-label="Due date" today={today} allowTextInput ref={inputRef} onKeyDown={onKeyDown} />
+        </>,
+      );
+
+      expect(buttonRef.current).toBe(getByRole('button', { name: 'Start date Select a date' }));
+      expect(inputRef.current).toBe(getByRole('textbox', { name: 'Due date' }));
+    });
+
+    it('types the ref and native events by allowTextInput', () => {
+      const buttonRef = React.createRef<HTMLButtonElement>();
+      const inputRef = React.createRef<HTMLInputElement>();
+      const allowTextInput = inputRef.current !== null;
+      const elements = [
+        // @ts-expect-error the non-editable field control is a button
+        <DatePicker key="button" aria-label="Due date" ref={inputRef} />,
+        // @ts-expect-error the editable field control is an input
+        <DatePicker key="input" aria-label="Due date" allowTextInput ref={buttonRef} />,
+        // @ts-expect-error button events have no input methods
+        <DatePicker key="event" aria-label="Due date" onKeyDown={event => event.currentTarget.select()} />,
+        <DatePicker key="dynamic" aria-label="Due date" allowTextInput={allowTextInput} />,
+      ];
+
+      expect(elements).toHaveLength(4);
+    });
+
+    it('accepts DatePickerProps in wrapper components', () => {
+      const Wrapper = (props: DatePickerProps) => <DatePicker today={today} {...props} />;
+      const { getByRole } = render(
+        <>
+          <Wrapper aria-label="Start date" />
+          <Wrapper aria-label="Due date" allowTextInput />
+        </>,
+      );
+
+      expect(getByRole('button', { name: 'Start date Select a date' })).toBeInTheDocument();
+      expect(getByRole('textbox', { name: 'Due date' })).toBeInTheDocument();
+    });
   });
 
   it('uses a surrounding label through aria-labelledby and keeps the value in the name', () => {

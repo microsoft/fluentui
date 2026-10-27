@@ -24,8 +24,9 @@ import {
   getMonthEnd,
   getMonthStart,
   isRestrictedDate,
+  setMonth,
 } from '../Calendar/utils';
-import type { CalendarProps } from '../Calendar/Calendar.types';
+import type { CalendarProps, CalendarViewChangeData } from '../Calendar/Calendar.types';
 import type { CalendarDayHandle, CalendarDayProps } from '../Calendar/CalendarDay/CalendarDay.types';
 import type { CalendarMonthHandle, CalendarMonthProps } from '../Calendar/CalendarMonth/CalendarMonth.types';
 import type { CalendarFormatters } from '../Calendar/utils';
@@ -163,6 +164,15 @@ export const useDatePicker = (
   });
   const open = openState && !disabled;
 
+  // Every opening shows the initial date, including defaultOpen and controlled `open` changes.
+  const [wasOpen, setWasOpen] = React.useState(open);
+  if (open !== wasOpen) {
+    setWasOpen(open);
+    if (open) {
+      setDisplayedDate(getInitialDisplayedDate());
+    }
+  }
+
   const rootRef = React.useRef<HTMLDivElement>(null);
   const controlRef = React.useRef<HTMLInputElement & HTMLButtonElement>(null);
   const surfaceRef = React.useRef<HTMLDivElement>(null);
@@ -170,8 +180,10 @@ export const useDatePicker = (
   const monthPickerRef = React.useRef<CalendarMonthHandle>(null);
   // Set while a request runs, so the blur caused by returning focus to the field does not request a second change.
   const isRequestingOpen = React.useRef(false);
-  const focusOnOpen = React.useRef(false);
+  const wasOpenOnLastEffect = React.useRef(false);
   const focusWithinSurface = React.useRef(false);
+  // In the overlay layout the day heading first switches to the month view, which then opens the year-range grid.
+  const showYearPickerOnMount = React.useRef(false);
 
   const isWithin = (element: HTMLElement | null, target: EventTarget | null) =>
     !!element && !!target && element.contains(target as Node);
@@ -182,10 +194,8 @@ export const useDatePicker = (
     }
     isRequestingOpen.current = true;
 
-    if (nextOpen) {
-      setDisplayedDate(getInitialDisplayedDate());
-      focusOnOpen.current = true;
-    } else if (
+    if (
+      !nextOpen &&
       reason !== 'focusOut' &&
       reason !== 'outsideClick' &&
       isWithin(surfaceRef.current, targetDocument?.activeElement ?? null)
@@ -201,9 +211,11 @@ export const useDatePicker = (
   });
 
   React.useEffect(() => {
+    const opened = open && !wasOpenOnLastEffect.current;
+    wasOpenOnLastEffect.current = open;
     if (open) {
-      if (focusOnOpen.current) {
-        focusOnOpen.current = false;
+      // Focus moves into the calendar on every opening, including defaultOpen and controlled `open` changes.
+      if (opened) {
         if (dayPickerRef.current) {
           dayPickerRef.current.focus({ preventScroll: true });
         } else if (monthPickerRef.current) {
@@ -215,6 +227,7 @@ export const useDatePicker = (
       return;
     }
 
+    showYearPickerOnMount.current = false;
     // A controlled close can unmount the surface while it holds focus; never leave focus on the body.
     if (focusWithinSurface.current) {
       focusWithinSurface.current = false;
@@ -305,7 +318,11 @@ export const useDatePicker = (
 
   const input = allowTextInput
     ? slot.always(props.input, {
-        defaultProps: { ...nativeProps.primary, autoComplete: 'off', type: 'text' },
+        defaultProps: {
+          ...(nativeProps.primary as Omit<React.ComponentProps<'input'>, 'children'>),
+          autoComplete: 'off',
+          type: 'text',
+        },
         elementType: 'input',
       })
     : undefined;
@@ -403,6 +420,15 @@ export const useDatePicker = (
   }
 
   const onDayPickerHeaderSelect = useEventCallback(() => monthPickerRef.current?.showYearPicker());
+  const onMonthPickerHandle = React.useCallback((handle: CalendarMonthHandle | null) => {
+    if (handle && showYearPickerOnMount.current) {
+      showYearPickerOnMount.current = false;
+      handle.showYearPicker();
+    }
+  }, []);
+  const onCalendarViewChange = useEventCallback((_event: DatePickerEvent, data: CalendarViewChangeData) => {
+    showYearPickerOnMount.current = data.view === 'month';
+  });
   const onDisplayedDateChange = useEventCallback((_event: DatePickerEvent, data: { displayedDate: Date }) => {
     setDisplayedDate(data.displayedDate);
   });
@@ -466,11 +492,13 @@ export const useDatePicker = (
   const monthPickerProps: CalendarMonthProps | null | undefined =
     calendarProps.monthPicker === null ? null : slot.resolveShorthand(calendarProps.monthPicker);
   const mergedDayPickerRef = useMergedRefs(dayPickerProps?.imperativeRef, dayPickerRef);
-  const mergedMonthPickerRef = useMergedRefs(monthPickerProps?.imperativeRef, monthPickerRef);
+  const mergedMonthPickerRef = useMergedRefs(monthPickerProps?.imperativeRef, monthPickerRef, onMonthPickerHandle);
+  // The overlay layout mounts one picker at a time, so the day heading keeps Calendar's switch to the month view.
+  const isOverlay = calendarProps.layout === 'overlay' && dayPickerProps !== null && monthPickerProps !== null;
 
   if (dayPickerProps !== null) {
     calendar.dayPicker = {
-      onHeaderSelect: monthPickerProps === null ? undefined : onDayPickerHeaderSelect,
+      ...(monthPickerProps === null || isOverlay ? undefined : { onHeaderSelect: onDayPickerHeaderSelect }),
       ...dayPickerProps,
       imperativeRef: mergedDayPickerRef,
     };
@@ -482,7 +510,7 @@ export const useDatePicker = (
       imperativeRef: mergedMonthPickerRef,
       getCellProps: month => {
         const overrides = getMonthCellProps?.(month);
-        const date = new Date(displayedDate.getFullYear(), month.index, 1);
+        const date = setMonth(displayedDate, month.index);
         // Name months with their year, such as "August 2026", rather than an abbreviation.
         return {
           ...overrides,
@@ -501,6 +529,7 @@ export const useDatePicker = (
   calendar.onDisplayedDateChange = mergeCallbacks(calendar.onDisplayedDateChange, onDisplayedDateChange);
   calendar.onSelectDate = mergeCallbacks(calendar.onSelectDate, onCalendarSelectDate);
   calendar.onDismiss = mergeCallbacks(calendar.onDismiss, onCalendarDismiss);
+  calendar.onViewChange = mergeCallbacks(calendar.onViewChange, onCalendarViewChange);
 
   // Popup surface
 

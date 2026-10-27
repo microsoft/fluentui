@@ -1,5 +1,12 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  EventData,
+  EventHandler,
+  RefAttributes,
+  Slot,
+} from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '../../hooks/usePositioning';
 import type { Calendar, CalendarProps } from '../Calendar';
 
@@ -137,13 +144,23 @@ export type DatePickerCalendarProps = Omit<
 >;
 
 /**
- * Props for the DatePicker component. Native props are applied to the field control: the `<input>` when
- * `allowTextInput` is set, otherwise the `<button>`.
+ * Native props that DatePicker owns or that do not apply to its field control.
  */
-export type DatePickerProps = Omit<
-  ComponentProps<Partial<DatePickerSlots>, 'input'>,
-  'calendar' | 'value' | 'defaultValue' | 'onChange' | 'type' | 'readOnly' | 'placeholder' | 'children' | 'required'
-> & {
+type DatePickerOmittedNativeProps =
+  | 'calendar'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'type'
+  | 'readOnly'
+  | 'placeholder'
+  | 'children'
+  | 'required';
+
+/**
+ * Props shared by both DatePicker field controls.
+ */
+export type DatePickerBaseProps = {
   /**
    * Calendar configuration. Selection, boundaries and today are owned by DatePicker.
    */
@@ -174,12 +191,6 @@ export type DatePickerProps = Omit<
    * @default 'Select a date'
    */
   placeholder?: string;
-
-  /**
-   * Renders an editable text input instead of a non-editable trigger.
-   * @default false
-   */
-  allowTextInput?: boolean;
 
   /**
    * Sets `aria-required` on the field control. A surrounding Field owns the visual required affordance.
@@ -250,10 +261,63 @@ export type DatePickerProps = Omit<
 };
 
 /**
+ * Props for a DatePicker with a non-editable field. Native props and the forwarded ref target the `<button>` trigger.
+ */
+export type DatePickerButtonProps = Omit<
+  ComponentProps<Partial<DatePickerSlots>, 'trigger'>,
+  DatePickerOmittedNativeProps
+> &
+  DatePickerBaseProps & {
+    /**
+     * Renders an editable text input instead of a non-editable trigger.
+     * @default false
+     */
+    allowTextInput?: false;
+  };
+
+/**
+ * Props for a DatePicker that accepts typed dates. Native props and the forwarded ref target the `<input>`.
+ */
+export type DatePickerInputProps = Omit<
+  ComponentProps<Partial<DatePickerSlots>, 'input'>,
+  DatePickerOmittedNativeProps
+> &
+  DatePickerBaseProps & {
+    /**
+     * Renders an editable text input instead of a non-editable trigger.
+     */
+    allowTextInput: true;
+  };
+
+/**
+ * Props for the DatePicker component, discriminated by `allowTextInput`. Native props and the forwarded ref are applied
+ * to the field control: the `<input>` when `allowTextInput` is set, otherwise the `<button>`.
+ */
+export type DatePickerProps = DatePickerButtonProps | DatePickerInputProps;
+
+/**
+ * The DatePicker component type. Like `ForwardRefComponent`, but the forwarded ref follows `allowTextInput`: it is the
+ * `<input>` when `allowTextInput` is set, otherwise the `<button>` trigger.
+ */
+export type DatePickerComponent = React.NamedExoticComponent<
+  (DatePickerButtonProps & RefAttributes<HTMLButtonElement>) | (DatePickerInputProps & RefAttributes<HTMLInputElement>)
+>;
+
+/**
  * State used to render the DatePicker component.
  */
 export type DatePickerState = ComponentState<DatePickerSlots> &
-  Required<Pick<DatePickerProps, 'allowTextInput' | 'disabled' | 'open' | 'required'>> & {
+  Required<Pick<DatePickerBaseProps, 'open' | 'required'>> & {
+    /**
+     * Whether the field accepts typed dates.
+     */
+    allowTextInput: boolean;
+
+    /**
+     * Whether the date picker is disabled.
+     */
+    disabled: boolean;
+
     /**
      * The committed date.
      */

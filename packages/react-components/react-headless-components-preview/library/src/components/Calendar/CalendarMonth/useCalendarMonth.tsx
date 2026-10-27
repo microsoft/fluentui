@@ -103,6 +103,11 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
   };
 
   const showYearPicker = (): void => {
+    if (isYearPickerVisible && yearPickerRef.current) {
+      // Showing the visible picker again does not render, so the update effect would not move focus.
+      yearPickerRef.current.focus();
+      return;
+    }
     focusOnUpdate.current = true;
     setIsYearPickerVisible(true);
   };

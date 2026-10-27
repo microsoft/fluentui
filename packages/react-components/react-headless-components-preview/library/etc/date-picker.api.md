@@ -14,13 +14,44 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
-export const DatePicker: ForwardRefComponent<DatePickerProps>;
+export const DatePicker: DatePickerComponent;
+
+// @public
+export type DatePickerBaseProps = {
+    calendar?: NonNullable<Slot<DatePickerCalendarProps>>;
+    value?: Date | null;
+    defaultValue?: Date | null;
+    onDateChange?: EventHandler<DatePickerDateChangeData>;
+    onValidationResult?: EventHandler<DatePickerValidationResultData>;
+    placeholder?: string;
+    required?: boolean;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: EventHandler<DatePickerOpenChangeData>;
+    showGoToToday?: boolean;
+    today?: Date;
+    minDate?: Date;
+    maxDate?: Date;
+    formatDate?: (date: Date) => string;
+    parseDate?: (text: string) => Date | null;
+    formatErrorMessage?: (data: DatePickerErrorMessageData) => string;
+    positioning?: PositioningShorthand;
+};
+
+// @public
+export type DatePickerButtonProps = Omit<ComponentProps<Partial<DatePickerSlots>, 'trigger'>, DatePickerOmittedNativeProps> & DatePickerBaseProps & {
+    allowTextInput?: false;
+};
 
 // @public
 export type DatePickerCalendarProps = Omit<CalendarProps, 'value' | 'defaultValue' | 'today' | 'minDate' | 'maxDate' | 'displayedDate' | 'defaultDisplayedDate'>;
+
+// @public
+export type DatePickerComponent = React_2.NamedExoticComponent<(DatePickerButtonProps & RefAttributes<HTMLButtonElement>) | (DatePickerInputProps & RefAttributes<HTMLInputElement>)>;
 
 // @public
 export type DatePickerDateChangeData = EventData<string, React_2.SyntheticEvent | Event> & {
@@ -40,33 +71,18 @@ export type DatePickerErrorMessageData = {
 export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public
+export type DatePickerInputProps = Omit<ComponentProps<Partial<DatePickerSlots>, 'input'>, DatePickerOmittedNativeProps> & DatePickerBaseProps & {
+    allowTextInput: true;
+};
+
+// @public
 export type DatePickerOpenChangeData = EventData<string, React_2.SyntheticEvent | Event> & {
     open: boolean;
     reason: 'trigger' | 'icon' | 'keyboard' | 'selection' | 'escape' | 'focusOut' | 'outsideClick';
 };
 
 // @public
-export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>, 'input'>, 'calendar' | 'value' | 'defaultValue' | 'onChange' | 'type' | 'readOnly' | 'placeholder' | 'children' | 'required'> & {
-    calendar?: NonNullable<Slot<DatePickerCalendarProps>>;
-    value?: Date | null;
-    defaultValue?: Date | null;
-    onDateChange?: EventHandler<DatePickerDateChangeData>;
-    onValidationResult?: EventHandler<DatePickerValidationResultData>;
-    placeholder?: string;
-    allowTextInput?: boolean;
-    required?: boolean;
-    open?: boolean;
-    defaultOpen?: boolean;
-    onOpenChange?: EventHandler<DatePickerOpenChangeData>;
-    showGoToToday?: boolean;
-    today?: Date;
-    minDate?: Date;
-    maxDate?: Date;
-    formatDate?: (date: Date) => string;
-    parseDate?: (text: string) => Date | null;
-    formatErrorMessage?: (data: DatePickerErrorMessageData) => string;
-    positioning?: PositioningShorthand;
-};
+export type DatePickerProps = DatePickerButtonProps | DatePickerInputProps;
 
 // @public
 export type DatePickerSlots = {
@@ -81,7 +97,9 @@ export type DatePickerSlots = {
 };
 
 // @public
-export type DatePickerState = ComponentState<DatePickerSlots> & Required<Pick<DatePickerProps, 'allowTextInput' | 'disabled' | 'open' | 'required'>> & {
+export type DatePickerState = ComponentState<DatePickerSlots> & Required<Pick<DatePickerBaseProps, 'open' | 'required'>> & {
+    allowTextInput: boolean;
+    disabled: boolean;
     value: Date | null;
     error: DatePickerErrorType | undefined;
     root: {

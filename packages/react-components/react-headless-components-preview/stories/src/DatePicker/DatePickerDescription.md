@@ -8,14 +8,16 @@ and state attributes.
 ### Composition
 
 - **Field**: a native `<button>` that shows the formatted date or `placeholder`, or a native `<input type="text">`
-  when `allowTextInput` is set. Native props, including `id` and ARIA props, and the forwarded ref target this control;
+  when `allowTextInput` is set. Native props, including `id` and ARIA props, and the forwarded ref target this control,
+  so their types follow `allowTextInput`: `HTMLButtonElement` by default and `HTMLInputElement` with `allowTextInput`.
   `className` and `style` go to the `root` wrapper.
 - **Icon**: decorative inside the button. With `allowTextInput`, it toggles the calendar on click without adding a
   tab stop.
 - **Popup surface**: a `role="dialog"` named by the visible month and year. It is shown in the top layer with
   `popover="manual"` and anchored below the field, flipping above when there is no room. It does not trap focus.
 - **Calendar**: configure it with the `calendar` slot. DatePicker owns its selection, `today`, `minDate`, `maxDate` and
-  displayed month, and defaults to three-column month and year grids. The day heading opens the year-range grid.
+  displayed month, and defaults to three-column month and year grids. The day heading opens the year-range grid; with
+  `layout: 'overlay'` it first switches to the month view.
   `showGoToToday` alone controls the Go-to-today button.
 - **Error message**: a polite live region after the field, referenced by `aria-describedby` while a typed date is
   rejected. Set `errorMessage={null}` to show errors through a Field instead.
@@ -30,8 +32,9 @@ popup holds grids, not a listbox.
 
 ### Behavior
 
-- Opening moves focus to the selected day, otherwise today, otherwise the first available day of the shown month, and
-  falls back to Next month when no visible day is available.
+- Every opening, including `defaultOpen` and a controlled `open` change, shows and focuses the selected day, otherwise
+  today, otherwise the first available day of the shown month, and falls back to Next month when no visible day is
+  available.
 - Selecting a day commits it, closes the calendar and returns focus to the field. Month and year cells only change the
   view.
 - Escape closes without changing the value and returns focus to the field. Tab out and outside clicks close and keep

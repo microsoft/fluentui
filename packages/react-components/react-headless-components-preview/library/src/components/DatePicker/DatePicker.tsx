@@ -1,9 +1,8 @@
 'use client';
 
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDatePicker } from './useDatePicker';
 import { renderDatePicker } from './renderDatePicker';
-import type { DatePickerProps } from './DatePicker.types';
+import type { DatePickerComponent } from './DatePicker.types';
 import { composeComponent } from '../../utils/composeComponent';
 
 /**
@@ -12,7 +11,7 @@ import { composeComponent } from '../../utils/composeComponent';
  *
  * The field needs an accessible name from a Field label, `aria-labelledby` or `aria-label`.
  */
-export const DatePicker: ForwardRefComponent<DatePickerProps> = /*#__PURE__*/ composeComponent(
+export const DatePicker: DatePickerComponent = /*#__PURE__*/ composeComponent(
   'DatePicker',
   useDatePicker,
   renderDatePicker,

@@ -13,7 +13,7 @@ const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${lab
 const Example = (props: Partial<DatePickerProps>) => (
   <>
     <button>Before</button>
-    <DatePicker aria-label="Due date" today={today} icon={{ children: 'icon' }} {...props} />
+    <DatePicker aria-label="Due date" today={today} icon={{ children: 'icon' }} {...(props as DatePickerProps)} />
     <button>After</button>
   </>
 );
