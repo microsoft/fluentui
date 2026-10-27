@@ -19,11 +19,14 @@ const Scenario: ForwardRefComponent<{ baseUrl: string; name: string }> = React.f
   const src = `${baseUrl}/${name}/index.html`;
   const origin = targetDocument ? new URL(src, targetDocument.baseURI).origin : undefined;
 
-  const command = React.useCallback((action: 'unmount' | 'updateTheme' | 'getState', app?: 'host' | 'embedded') => {
-    if (origin && frame.current?.contentWindow) {
-      frame.current.contentWindow.postMessage({ type: 'id-namespace-command', action, name: app }, origin);
-    }
-  }, [origin]);
+  const command = React.useCallback(
+    (action: 'unmount' | 'updateTheme' | 'getState', app?: 'host' | 'embedded') => {
+      if (origin && frame.current?.contentWindow) {
+        frame.current.contentWindow.postMessage({ type: 'id-namespace-command', action, name: app }, origin);
+      }
+    },
+    [origin],
+  );
 
   useIsomorphicLayoutEffect(() => {
     const view = targetDocument?.defaultView;
