@@ -49,7 +49,6 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
         type: 'button',
         'aria-label': 'information',
         'aria-haspopup': popoverSlot.trapFocus ? ('dialog' as const) : false,
-        id: popoverSlot.trapFocus ? buttonId : undefined,
         ...rest,
         ref: rootRef,
       }),

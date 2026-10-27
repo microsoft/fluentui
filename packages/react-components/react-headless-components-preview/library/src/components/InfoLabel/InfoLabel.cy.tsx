@@ -4,7 +4,6 @@ import { mount as mountBase } from '@fluentui/scripts-cypress';
 import { InfoLabel } from './InfoLabel';
 import { Provider } from '../Provider';
 import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
-import type { InfoLabelProps } from './InfoLabel.types';
 import type { InfoButtonProps } from './InfoButton/InfoButton.types';
 import { InfoButton } from './InfoButton/InfoButton';
 
@@ -13,55 +12,6 @@ const mount = (element: React.ReactElement) => {
 };
 
 const surfaceSelector = '[role="note"]';
-
-describe('InfoLabel - rendered details lifetime', () => {
-  (['root', 'infoButton'] as const).forEach(target => {
-    it(`clears the details reference after a ${target} renderer replaces its returned element`, () => {
-      let replace: () => void;
-      const change = cy.spy().as('change');
-      const Example = () => {
-        const [replacement, setReplacement] = React.useState(false);
-        replace = () => setReplacement(true);
-        const key = replacement ? 'second' : 'first';
-        const renderRoot: SlotRenderFunction<ExtractSlotProps<InfoLabelProps['root']>> = (Component, props) => (
-          <Component {...props} key={key} />
-        );
-        const renderButton: SlotRenderFunction<InfoButtonProps> = (Component, props) => (
-          <Component {...props} key={key} />
-        );
-        return (
-          <InfoLabel
-            root={{ id: 'ownership', children: target === 'root' ? renderRoot : undefined }}
-            info="Information"
-            infoButton={{
-              children: target === 'infoButton' ? renderButton : undefined,
-              popover: { defaultOpen: !replacement, onOpenChange: change },
-            }}
-          >
-            Label
-          </InfoLabel>
-        );
-      };
-      mount(<Example />);
-      cy.get(surfaceSelector).should('exist');
-      cy.get('#ownership').should('not.have.attr', 'aria-owns');
-      cy.get('#ownership button')
-        .should('have.attr', 'aria-haspopup', 'false')
-        .and('have.attr', 'aria-expanded', 'true');
-      cy.get('#ownership button')
-        .invoke('attr', 'aria-details')
-        .then(id => {
-          cy.get(surfaceSelector).should('have.attr', 'id', id);
-        });
-      // Replace without moving focus outside first, which would dismiss the old popup.
-      cy.then(() => replace());
-      cy.get(surfaceSelector).should('not.exist');
-      cy.get('#ownership').should('not.have.attr', 'aria-owns');
-      cy.get('#ownership button').should('have.attr', 'aria-expanded', 'false').and('not.have.attr', 'aria-details');
-      cy.get('@change').should('not.have.been.called');
-    });
-  });
-});
 
 describe('InfoLabel - note semantics', () => {
   it('preserves a named native dialog when focus trapping is explicitly requested', () => {

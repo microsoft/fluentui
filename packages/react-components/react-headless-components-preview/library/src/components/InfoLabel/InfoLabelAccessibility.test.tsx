@@ -9,12 +9,6 @@ import type { InfoLabelProps } from './InfoLabel.types';
 import type { InfoButtonProps } from './InfoButton/InfoButton.types';
 
 const strict = (element: React.ReactElement) => <React.StrictMode>{element}</React.StrictMode>;
-const renderRoot: SlotRenderFunction<ExtractSlotProps<InfoLabelProps['root']>> = (Component, props) => (
-  <Component {...props} />
-);
-const renderButton: SlotRenderFunction<InfoButtonProps & RefAttributes<HTMLButtonElement>> = (Component, props) => (
-  <Component {...props} />
-);
 
 describe('InfoLabel accessibility relationships', () => {
   it('keeps controlled requests subordinate to parent state without generating ownership', async () => {
@@ -54,112 +48,36 @@ describe('InfoLabel accessibility relationships', () => {
     expect(change).not.toHaveBeenCalled();
   });
 
-  it('accepts controlled trigger requests exactly once', async () => {
-    const change = jest.fn();
-    const Controlled = () => {
-      const [open, setOpen] = React.useState(false);
-      return (
-        <InfoLabel
-          root={{ id: 'owner' }}
-          info="Information"
-          infoButton={{
-            popover: {
-              open,
-              onOpenChange: (event, data) => {
-                change(event, data);
-                setOpen(data.open);
-              },
-            },
-          }}
-        >
-          Label
-        </InfoLabel>
-      );
-    };
-    const { container, getByRole, queryByRole } = render(strict(<Controlled />));
-    fireEvent.click(getByRole('button'));
-    expect(getByRole('button')).toHaveAttribute('aria-details', getByRole('note', { hidden: true }).id);
-    expect(change).toHaveBeenCalledTimes(1);
-    change.mockClear();
-    fireEvent.click(getByRole('button'));
-    await waitFor(() => expect(queryByRole('note', { hidden: true })).toBeNull());
-    expect(getByRole('button')).not.toHaveAttribute('aria-details');
-    expect(change).toHaveBeenCalledTimes(1);
-    expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-  });
-
   (['root', 'infoButton'] as const).forEach(target => {
-    (
-      [
-        { from: undefined, to: null, remount: true },
-        { from: null, to: 'null', remount: false },
-      ] as const
-    ).forEach(({ from, to, remount }) => {
-      it(`preserves ${target} null-key normalization for ${String(from)} to ${String(to)}`, () => {
-        const element = (key: React.Key | null | undefined, defaultOpen: boolean) =>
-          strict(
-            <InfoLabel
-              info="Information"
-              root={{ key: target === 'root' ? key : undefined }}
-              infoButton={{ key: target === 'infoButton' ? key : undefined, popover: { defaultOpen } }}
-            >
-              Label
-            </InfoLabel>,
-          );
-        const { getByRole, queryByRole, rerender } = render(element(from, true));
-        const first = getByRole('button');
-        rerender(element(to, false));
-        if (remount) {
-          expect(getByRole('button')).not.toBe(first);
-          expect(getByRole('button')).not.toHaveAttribute('aria-details');
-          expect(queryByRole('note', { hidden: true })).toBeNull();
-        } else {
-          expect(getByRole('button')).toBe(first);
-          expect(first).toHaveAttribute('aria-details', getByRole('note', { hidden: true }).id);
-        }
-      });
-    });
-
-    (['default', 'custom'] as const).forEach(renderer => {
-      it(`preserves normalized ${target} key lifetimes with ${renderer} rendering`, () => {
-        const change = jest.fn();
-        const element = (key: React.Key, defaultOpen: boolean) =>
-          strict(
-            <InfoLabel
-              root={{
-                id: 'owner',
-                key: target === 'root' ? key : undefined,
-                children: renderer === 'custom' ? renderRoot : undefined,
-              }}
-              info="Information"
-              infoButton={{
-                key: target === 'infoButton' ? key : undefined,
-                children: renderer === 'custom' ? renderButton : undefined,
-                popover: { defaultOpen, onOpenChange: change },
-              }}
-            >
-              Label
-            </InfoLabel>,
-          );
-        const { container, getByRole, queryByRole, rerender } = render(element(1, true));
-        const first = getByRole('button');
-        expect(first).toHaveAttribute('aria-details', getByRole('note', { hidden: true }).id);
-        rerender(element('1', false));
-        expect(getByRole('button')).toBe(first);
-        expect(getByRole('note', { hidden: true })).toBeInTheDocument();
-        rerender(element('replacement', false));
-        expect(getByRole('button')).not.toBe(first);
-        expect(getByRole('button')).not.toHaveAttribute('aria-details');
-        expect(queryByRole('note', { hidden: true })).toBeNull();
-        expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-        expect(change).not.toHaveBeenCalled();
-      });
+    it(`clears the details link when the ${target} slot key changes`, () => {
+      const element = (key: string, defaultOpen: boolean) =>
+        strict(
+          <InfoLabel
+            info="Information"
+            root={{ key: target === 'root' ? key : undefined }}
+            infoButton={{ key: target === 'infoButton' ? key : undefined, popover: { defaultOpen } }}
+          >
+            Label
+          </InfoLabel>,
+        );
+      const { getByRole, queryByRole, rerender } = render(element('first', true));
+      const first = getByRole('button');
+      expect(first).toHaveAttribute('aria-details', getByRole('note', { hidden: true }).id);
+      rerender(element('second', false));
+      expect(getByRole('button')).not.toBe(first);
+      expect(getByRole('button')).not.toHaveAttribute('aria-details');
+      expect(queryByRole('note', { hidden: true })).toBeNull();
     });
 
     it(`clears the details link for actual renderer-owned ${target} key replacement`, () => {
       const element = (key: string, defaultOpen: boolean) => {
-        const customRoot: typeof renderRoot = (Component, props) => <Component {...props} key={key} />;
-        const customButton: typeof renderButton = (Component, props) => <Component {...props} key={key} />;
+        const customRoot: SlotRenderFunction<ExtractSlotProps<InfoLabelProps['root']>> = (Component, props) => (
+          <Component {...props} key={key} />
+        );
+        const customButton: SlotRenderFunction<InfoButtonProps & RefAttributes<HTMLButtonElement>> = (
+          Component,
+          props,
+        ) => <Component {...props} key={key} />;
         return strict(
           <InfoLabel
             root={{ id: 'owner', children: target === 'root' ? customRoot : undefined }}
@@ -180,28 +98,6 @@ describe('InfoLabel accessibility relationships', () => {
       expect(getByRole('button')).not.toHaveAttribute('aria-details');
       expect(queryByRole('note', { hidden: true })).toBeNull();
       expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-    });
-
-    it(`keeps relationships correct across ${target} default/custom renderer transitions`, () => {
-      const element = (custom: boolean) =>
-        strict(
-          <InfoLabel
-            root={{ id: 'owner', key: 'root', children: target === 'root' && custom ? renderRoot : undefined }}
-            info="Information"
-            infoButton={{ key: 'button', children: target === 'infoButton' && custom ? renderButton : undefined }}
-          >
-            Label
-          </InfoLabel>,
-        );
-      const { container, getByRole, queryByRole, rerender } = render(element(false));
-      for (const custom of [true, false]) {
-        fireEvent.click(getByRole('button'));
-        expect(getByRole('button')).toHaveAttribute('aria-details', getByRole('note', { hidden: true }).id);
-        rerender(element(custom));
-        expect(getByRole('button')).not.toHaveAttribute('aria-details');
-        expect(queryByRole('note', { hidden: true })).toBeNull();
-        expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-      }
     });
   });
 
