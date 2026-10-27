@@ -104,6 +104,15 @@ export function formatInspection(result) {
     `Account: **${cell(result.account)}** / Repository: **${repository}** / PRs: **${result.pulls.length}**`,
     '',
   ];
+  if (result.coverage) {
+    const coverage = result.coverage;
+    lines.push(
+      `Coverage (${cell(coverage.scope)}): ${coverage.discovered} discovered / ${coverage.reported} reported / ${
+        coverage.inspected
+      } inspected / ${coverage.excluded} excluded / ${coverage.errors} errors.`,
+      '',
+    );
+  }
   if (!result.pulls.length) {
     return [...lines, 'No matching open Dependabot PRs. Nothing will be changed.'].join('\n');
   }
@@ -112,17 +121,20 @@ export function formatInspection(result) {
     '| --- | --- | --- | --- | --- | --- |',
   );
   for (const pull of result.pulls) {
-    const action =
-      pull.mergeable !== true || pull.reviewDecision === 'CHANGES_REQUESTED'
-        ? 'Report blocker; no changes'
-        : pull.checkState === 'failing'
-        ? 'Inspect failure and evaluate a scoped repair'
-        : pull.checkState === 'passing'
-        ? 'Review diff; no repair indicated'
-        : 'Observe/report checks; no changes';
+    const action = pull.inspectionError
+      ? `Inspection failed: ${cell(pull.inspectionError)}; no changes`
+      : pull.exclusionReasons?.length
+      ? `Excluded: ${cell(pull.exclusionReasons.join(', '))}; no changes`
+      : pull.mergeable !== true || pull.reviewDecision === 'CHANGES_REQUESTED'
+      ? 'Report blocker; no changes'
+      : pull.checkState === 'failing'
+      ? 'Inspect failure and evaluate a scoped repair'
+      : pull.checkState === 'passing'
+      ? 'Review diff; no repair indicated'
+      : 'Observe/report checks; no changes';
     lines.push(
       `| [#${pull.pr}](https://github.com/${repository}/pull/${pull.pr}) | ${cell(pull.title)} | ${cell(
-        pull.head.slice(0, 7),
+        pull.head?.slice(0, 7),
       )} | ${cell(pull.checkState)} | ${cell(pull.reviewDecision)} / ${cell(pull.mergeState)} | ${action} |`,
     );
   }
@@ -186,18 +198,19 @@ export function createCli({
   const api = (endpoint, args = []) => JSON.parse(gh(['api', endpoint, ...args]));
   const pages = endpoint => api(endpoint, ['--paginate', '--slurp']).flat();
   const pr = number => api(`repos/${repository}/pulls/${number}`);
+  function exclusions(pull) {
+    const reasons = [];
+    if (pull.state !== 'open') reasons.push('not-open');
+    if (pull.draft) reasons.push('draft');
+    if (pull.user?.login !== 'dependabot[bot]') reasons.push('not-dependabot');
+    if (pull.head?.repo?.full_name !== repository) reasons.push('fork-or-missing-head-repository');
+    if (pull.base?.repo?.full_name !== repository || pull.base?.ref !== 'master') reasons.push('unsupported-base');
+    if (!shaPattern.test(pull.head?.sha) || !pull.head?.ref?.startsWith('dependabot/'))
+      reasons.push('unsupported-head');
+    return reasons;
+  }
   function identity(pull, expectedHead) {
-    if (
-      pull.state !== 'open' ||
-      pull.draft ||
-      pull.user?.login !== 'dependabot[bot]' ||
-      pull.head?.repo?.full_name !== repository ||
-      pull.base?.repo?.full_name !== repository ||
-      pull.base.ref !== 'master' ||
-      !shaPattern.test(pull.head.sha) ||
-      !pull.head.ref.startsWith('dependabot/') ||
-      (expectedHead && pull.head.sha !== expectedHead)
-    ) {
+    if (exclusions(pull).length || (expectedHead && pull.head.sha !== expectedHead)) {
       throw new Error(`PR #${pull.number}: untrusted identity, closed/draft PR, or changed head`);
     }
     git(['check-ref-format', `refs/heads/${pull.head.ref}`]);
@@ -253,8 +266,23 @@ export function createCli({
     }
     return data;
   }
-  function snapshot(number, expectedHead) {
+  function snapshot(number, expectedHead, reportExcluded = false) {
     const pull = pr(number);
+    if (reportExcluded && exclusions(pull).length && !expectedHead) {
+      return {
+        pr: number,
+        title: pull.title,
+        url: pull.html_url,
+        head: pull.head?.sha,
+        base: pull.base?.sha,
+        baseRef: pull.base?.ref,
+        branch: pull.head?.ref,
+        draft: pull.draft,
+        checkState: 'not-evaluated',
+        eligibility: 'excluded',
+        exclusionReasons: exclusions(pull),
+      };
+    }
     identity(pull, expectedHead);
     const all = checks(number, false);
     const required = checks(number, true);
@@ -279,6 +307,7 @@ export function createCli({
       title: pull.title,
       head: pull.head.sha,
       base: pull.base.sha,
+      baseRef: pull.base.ref,
       branch: pull.head.ref,
       checkState: missing.length ? 'missing' : classifyChecks(required, all),
       missingChecks: missing,
@@ -293,6 +322,8 @@ export function createCli({
   }
   function blocked(snapshot) {
     const reasons = [];
+    if (snapshot.inspectionError) reasons.push('inspection-error');
+    if (snapshot.exclusionReasons?.length) reasons.push(...snapshot.exclusionReasons);
     if (snapshot.checkState !== 'passing') {
       reasons.push(`checks:${snapshot.checkState}`);
     }
@@ -329,18 +360,32 @@ export function createCli({
     }
     const user = account(options.account, options.command !== 'inspect' && !options.dryRun);
     if (options.command === 'inspect') {
-      const numbers = options.prs.length
-        ? options.prs
-        : pages(`repos/${repository}/pulls?state=open&base=master&per_page=100`)
-            .filter(
-              pull =>
-                pull.user?.login === 'dependabot[bot]' && !pull.draft && pull.head?.repo?.full_name === repository,
-            )
-            .map(pull => pull.number);
+      const discovered = options.prs.length
+        ? options.prs.map(number => ({ number }))
+        : pages(`repos/${repository}/pulls?state=open&per_page=100`).filter(
+            pull => pull.user?.login === 'dependabot[bot]',
+          );
+      const candidates = [...new Map(discovered.map(pull => [pull.number, pull])).values()];
       const deadline = now() + options.wait * 1000;
       let pulls;
       do {
-        pulls = numbers.map(number => snapshot(number, options.expectedHead));
+        pulls = candidates.map(candidate => {
+          try {
+            return snapshot(candidate.number, options.expectedHead, true);
+          } catch (error) {
+            // Explicit head-bound operations must still fail immediately on a stale head.
+            if (options.expectedHead) throw error;
+            return {
+              pr: candidate.number,
+              title: candidate.title,
+              url: candidate.html_url,
+              head: candidate.head?.sha,
+              checkState: 'inspection-error',
+              inspectionError: error.message,
+              eligibility: 'blocked',
+            };
+          }
+        });
         if (
           !options.wait ||
           pulls.every(pull => pull.checkState !== 'pending' && pull.checkState !== 'missing') ||
@@ -350,7 +395,19 @@ export function createCli({
         }
         await sleep(Math.min(10000, Math.max(0, deadline - now())));
       } while (true);
-      return { status: pulls.some(pull => blocked(pull).length) ? 'blocked' : 'ok', account: user, pulls };
+      return {
+        status: pulls.some(pull => blocked(pull).length) ? 'blocked' : 'ok',
+        account: user,
+        coverage: {
+          scope: options.prs.length ? 'selected-prs' : 'all-open-dependabot-prs',
+          discovered: candidates.length,
+          reported: pulls.length,
+          inspected: pulls.filter(pull => !pull.inspectionError && !pull.exclusionReasons?.length).length,
+          excluded: pulls.filter(pull => pull.exclusionReasons?.length).length,
+          errors: pulls.filter(pull => pull.inspectionError).length,
+        },
+        pulls,
+      };
     }
     const number = options.prs[0];
     let pull = pr(number);

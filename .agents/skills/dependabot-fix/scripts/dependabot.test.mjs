@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
+import { createRequire } from 'node:module';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { classifyChecks, createCli, formatInspection, parseArguments, remoteMatches } from './dependabot.mjs';
@@ -90,7 +91,8 @@ function fixture(overrides = {}) {
     }
     if (endpoint.includes('/pulls?')) {
       assert.ok(args.includes('--paginate'));
-      return result([[state.pull], []]);
+      assert.ok(!endpoint.includes('base='));
+      return result(state.discoveredPages || [[state.pull], []]);
     }
     if (endpoint.includes('/reviews?')) {
       return result([state.reviews]);
@@ -102,7 +104,11 @@ function fixture(overrides = {}) {
       state.reviews.push({ state: 'APPROVED', commit_id: state.pull.head.sha, user: { login: state.account } });
       return result(state.reviews.at(-1));
     }
-    if (endpoint === 'repos/microsoft/fluentui/pulls/123') {
+    if (/repos\/microsoft\/fluentui\/pulls\/\d+$/.test(endpoint)) {
+      if (state.failedPr === Number(endpoint.split('/').at(-1))) {
+        return { status: 1, stdout: '', stderr: 'HTTP 403: inspection denied' };
+      }
+      if (state.pulls) return result(state.pulls[Number(endpoint.split('/').at(-1))]);
       if (state.readPull) {
         state.readPull(state);
       }
@@ -319,7 +325,10 @@ test('inspect distinguishes no checks from authentication/transport failures', a
   const absent = fixture({ noCheckMessage: true });
   assert.equal((await createCli({ run: absent.run })(parseArguments(['inspect']))).pulls[0].checkState, 'missing');
   const denied = fixture({ checkError: true });
-  await assert.rejects(createCli({ run: denied.run })(parseArguments(['inspect'])), /403/);
+  const output = await createCli({ run: denied.run })(parseArguments(['inspect']));
+  assert.equal(output.status, 'blocked');
+  assert.match(output.pulls[0].inspectionError, /403/);
+  assert.equal(output.coverage.errors, 1);
 });
 
 test('bounded observation exits pending without mutation when the deadline expires', async () => {
@@ -345,7 +354,115 @@ test('head movement during inspection is an error rather than a passing stale sn
       if (++reads === 2) state.pull.head.sha = 'c'.repeat(40);
     },
   });
-  await assert.rejects(createCli({ run })(parseArguments(['inspect', '--pr', '123'])), /changed head/);
+  await assert.rejects(
+    createCli({ run })(parseArguments(['inspect', '--pr', '123', '--expect-head', head])),
+    /changed head/,
+  );
+});
+
+test('discovery reports every bot PR across pages, including exclusions and inspection failures', async () => {
+  const sample = fixture().state.pull;
+  const copy = number => ({ ...structuredClone(sample), number });
+  const normal = copy(123);
+  const draft = { ...copy(124), draft: true };
+  const otherBase = copy(125);
+  otherBase.base.ref = 'maintenance';
+  const fork = copy(126);
+  fork.head.repo.full_name = 'someone/fluentui';
+  const error = copy(127);
+  const laterPage = copy(128);
+  const otherAuthor = copy(129);
+  otherAuthor.user.login = 'human';
+  const { run, state } = fixture({
+    discoveredPages: [
+      [normal, draft, otherAuthor],
+      [otherBase, fork],
+      [error, laterPage, normal],
+    ],
+    pulls: Object.fromEntries([normal, draft, otherBase, fork, error, laterPage].map(pull => [pull.number, pull])),
+    failedPr: 127,
+  });
+  const output = await createCli({ run })(parseArguments(['inspect']));
+  assert.deepEqual(
+    output.pulls.map(pull => pull.pr),
+    [123, 124, 125, 126, 127, 128],
+  );
+  assert.deepEqual(output.coverage, {
+    scope: 'all-open-dependabot-prs',
+    discovered: 6,
+    reported: 6,
+    inspected: 2,
+    excluded: 3,
+    errors: 1,
+  });
+  assert.deepEqual(output.pulls[1].exclusionReasons, ['draft']);
+  assert.deepEqual(output.pulls[2].exclusionReasons, ['unsupported-base']);
+  assert.deepEqual(output.pulls[3].exclusionReasons, ['fork-or-missing-head-repository']);
+  assert.match(output.pulls[4].inspectionError, /403/);
+  const report = formatInspection(output);
+  assert.match(report, /6 discovered \/ 6 reported/);
+  for (const number of [123, 124, 125, 126, 127, 128]) assert.ok(report.includes(`[#${number}]`));
+  assert.match(report, /Excluded: draft/);
+  assert.match(report, /Inspection failed:/);
+  assert.equal(mutations(state.calls).length, 0);
+});
+
+test('explicit PR selection is labeled as a subset, never as full queue coverage', async () => {
+  const { run } = fixture();
+  const output = await createCli({ run })(parseArguments(['inspect', '--pr', '123']));
+  assert.equal(output.coverage.scope, 'selected-prs');
+  assert.equal(output.coverage.reported, 1);
+});
+
+test('Dependabot configuration keeps Nx manual-only and every non-major npm update in a group', () => {
+  // Use the YAML parser already supplied by Nx, without adding a dependency.
+  const yaml = createRequire(import.meta.resolve('nx/package.json'))('yaml');
+  const config = yaml.parse(readFileSync(new URL('../../../../.github/dependabot.yml', import.meta.url), 'utf8'));
+  const npm = config.updates.find(update => update['package-ecosystem'] === 'npm');
+  const ignored = name =>
+    npm.ignore.some(rule => {
+      const pattern = new RegExp(
+        `^${rule['dependency-name'].replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*')}$`,
+      );
+      return pattern.test(name) && !rule['update-types'] && !rule.versions;
+    });
+  for (const name of [
+    'nx',
+    '@nx/devkit',
+    '@nx/workspace',
+    '@nrwl/cli',
+    '@nrwl/workspace',
+    'nx-cloud',
+    '@nx-cloud/client',
+  ]) {
+    assert.equal(ignored(name), true, `${name} must be ignored for all update types`);
+  }
+  const groupFor = (name, stream, level) =>
+    Object.entries(npm.groups).find(
+      ([, group]) =>
+        (group['applies-to'] || 'version-updates') === stream &&
+        group['update-types'].includes(level) &&
+        group.patterns.some(pattern => new RegExp(`^${pattern.replace(/\*/g, '.*')}$`).test(name)),
+    )?.[0];
+  for (const name of ['vite', 'undici', 'fast-uri', '@vitest/mocker', 'webpack-dev-middleware', 'storybook']) {
+    assert.equal(ignored(name), false);
+    for (const level of ['minor', 'patch']) {
+      assert.equal(groupFor(name, 'security-updates', level), 'security-tooling');
+      assert.equal(groupFor(name, 'version-updates', level), 'development-dependencies');
+    }
+    assert.equal(groupFor(name, 'security-updates', 'major'), undefined);
+  }
+  assert.equal(groupFor('some-other-package', 'security-updates', 'patch'), 'security-dependencies');
+  assert.equal(
+    npm.allow.find(rule => rule['dependency-type'] === 'production')['update-types'][0],
+    'version-update:semver-major',
+  );
+  assert.deepEqual(
+    config.updates.find(update => update['package-ecosystem'] === 'github-actions').groups['github-actions-major'][
+      'update-types'
+    ],
+    ['major'],
+  );
 });
 
 test('dry-run finalize does not approve, merge, or write files', async () => {

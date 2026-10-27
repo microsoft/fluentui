@@ -45,6 +45,12 @@ updates:
         update-types:
           - 'version-update:semver-major'
     ignore:
+      # Nx migrations require an explicit maintainer decision, including security fixes.
+      - dependency-name: 'nx'
+      - dependency-name: '@nx/*'
+      - dependency-name: '@nrwl/*'
+      - dependency-name: 'nx-cloud'
+      - dependency-name: '@nx-cloud/*'
       # Ignore major version bumps for scheduled npm version updates
       - dependency-name: '*'
         update-types: ['version-update:semver-major']
@@ -53,6 +59,23 @@ updates:
         dependency-type: 'development'
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      # Keep frequently updated tooling/runtime fixes out of the larger transitive batch.
+      security-tooling:
+        applies-to: security-updates
+        patterns:
+          - 'vite'
+          - '@vitejs/*'
+          - 'vitest'
+          - '@vitest/*'
+          - 'undici'
+          - 'fast-uri'
+          - 'storybook'
+          - '@storybook/*'
+          - 'webpack'
+          - 'webpack-*'
         update-types:
           - 'minor'
           - 'patch'

@@ -16,7 +16,9 @@ Use the dependency-free [local CLI](./scripts/dependabot.mjs) for coordination; 
 - Target `microsoft/fluentui`, base `master`. Parse `$ARGUMENTS`; reject unsupported options.
 - Invocation authorizes **read-only discovery only**. Neither invocation, `--pr` selection, nor autopilot is approval to mutate. Explicit user approval is required after showing the candidate report; enabling auto-merge can merge immediately.
 - `--dry-run` means inspection only: never edit, create worktrees, push, close PRs, approve, or merge.
-- Batch scope is minor/patch only. Inspect **every update member** from the full diff and current master versions; majors require explicit user `--pr` selection. Unknown versions are blockers, not presumed patches.
+- Discovery/reporting scope is **all open Dependabot PRs**, across all pages, base branches, ages, draft states, and update types. Mutation eligibility is separate: the default repair batch is minor/patch only, and majors require explicit user `--pr` selection. Report excluded/manual-only PRs too; never omit them from discovery.
+- Nx-family npm updates (`nx`, `@nx/*`, `@nrwl/*`, `nx-cloud`, `@nx-cloud/*`) are manual-only, including security updates. Include existing Nx PRs in the report with "Manual Nx migration - no automatic repair/review/merge"; explicit maintainer selection and compatibility review are required before proposing any action.
+- Inspect **every update member** from the full diff and current master versions. Unknown versions are blockers, not presumed patches.
 - The CLI deliberately reports `eligibility: review-update-members`; passing checks are not a semantic risk classification. Never infer eligibility solely from titles.
 - Use existing local authentication; pass `--account` on every command to pin the inspected account. Never switch identity or provision credentials silently.
 
@@ -29,11 +31,13 @@ node "$CLI" inspect --format markdown
 node "$CLI" inspect --pr 123 --account LOGIN --format markdown
 ```
 
-The CLI paginates discovery, validates identity, and reports heads, CI, links, and review/merge state. JSON remains the default for automation; `--format markdown` provides a displayable candidate table. Exit codes: `0` success/dry-run, `2` blocked, `1` error. Read and show the output even on exit `2`. Inspection never mutates PRs.
+The CLI paginates the entire open PR list and filters only by the actual Dependabot author; it does not prefilter the base, draft, or head repository. It reports heads, CI, links, exclusions, individual inspection errors, and coverage counts. JSON remains the default; `--format markdown` provides a displayable candidate table. Exit codes: `0` success/dry-run, `2` blocked (including per-PR inspection errors), `1` discovery/command error. Read and show output even on exit `2`. A failed PR inspection must not hide later PRs.
+
+Before asking for approval, reconcile coverage: **discovered = reported = inspected + excluded + errors**. Evaluate every reported row and show all rows, including older PRs and excluded majors/Nx updates. If output is too large, read it in bounded sections and render numbered table sections; do not silently truncate or take the first few PRs. With explicit `--pr`, label the report "selected PRs", never "all open PRs". If PRs open/close during a scan, report the snapshot and refresh discovery before claiming complete live coverage.
 
 ### Mandatory visible report and approval checkpoint
 
-**Render the candidate table in the chat response. Tool output alone, an artifact link, or a summary without PRs is not sufficient.** Include the account, PR links/titles, inspected heads, CI, eligibility/exclusion reasons, and proposed actions for each PR. Include blocked/excluded PRs instead of silently dropping them. If none match, say so and stop. On discovery errors, show the error and stop; never continue with an unseen candidate set.
+**Render the candidate table in the chat response. Tool output alone, an artifact link, or a summary without PRs is not sufficient.** Include the account, coverage totals, PR links/titles, inspected heads, CI, eligibility/exclusion reasons, and proposed actions for each PR. Include blocked/excluded/error PRs instead of silently dropping them. If none match, say so and stop. On top-level discovery errors, show the error and stop; per-PR errors block that PR only, remain visible, and do not prevent analyzing the rest.
 
 Use read-only diffs/logs to establish the proposed scope before asking for confirmation. Each actionable row must name the concrete action chain, not merely "evaluate" or "manual intervention": for example "Repair lockfile -> validate -> push -> GitHub review + auto-merge", "GitHub review + auto-merge; no repair", or **"Close superseded PR"**. List genuine blockers separately. Warn that auto-merge can merge immediately; passing CI alone is not sufficient review.
 

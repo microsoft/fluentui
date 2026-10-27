@@ -18,14 +18,19 @@ Dependabot is configured to automatically create pull requests for:
 
 The Dependabot configuration is defined in `.github/dependabot.yml`:
 
-- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories
+- **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories. Nx-family packages are manual-only.
 - **GitHub Actions**: Weekly minor/patch updates in `github-actions-minor-patch`, major updates in `github-actions-major`, and advisory-driven updates in the separate `github-actions-security` group
-- **Security updates**: Minor and patch updates are grouped; major remediations are excluded from groups for isolated review
+- **Security updates**: Minor and patch tooling/runtime updates (`vite`, `@vitejs/*`, `vitest`, `@vitest/*`, `undici`, `fast-uri`, `storybook`, `@storybook/*`, `webpack`, `webpack-*`) match `security-tooling` first; other minor/patch fixes match `security-dependencies`. Major remediations stay isolated.
+- **Nx family**: `nx`, `@nx/*`, `@nrwl/*`, `nx-cloud`, and `@nx-cloud/*` are ignored for all automated version and security updates. Maintainers must run coordinated migrations and handle their security alerts manually; alerts are not disabled. To re-enable Dependabot for them, a maintainer must explicitly change the ignore policy.
 - **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates
 
 The repository's Advanced Security **Grouped security updates** setting must remain disabled. The explicit groups in `.github/dependabot.yml` provide narrower control over update types, while the repository setting would group as many available security updates as possible.
 
 The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a grouped pull request or change Dependabot's separate security-update pull request limit. Native groups have no dependency-count ceiling; the 11-update ceiling applies only to `/dependabot-rollup`.
+
+The tooling security group is deliberately placed before the catch-all security group, so Vite/Undici/fast-uri fixes do not depend on the larger transitive batch. Do not add a routine production-update group: that would broaden the existing update policy. Grouped processing can still fail upstream and produce individual fallback PRs; investigate the Dependabot update log rather than assuming a patch singleton lacked a matching group. The October 26 updater run [40366154628](https://github.com/microsoft/fluentui/actions/runs/40366154628) matched these dependencies to `security-dependencies`, then reported Yarn `NoChangeError` failures during grouped processing and created individual PRs.
+
+After merging configuration changes, verify the next native Dependabot run uses the Nx ignores and new security group. Existing PRs are not guaranteed to regroup automatically. Do not close an individual advisory fix merely because a group is expected: first verify incorporation or supersession and obtain skill confirmation.
 
 ## Local Dependabot maintenance
 
@@ -37,6 +42,8 @@ Inspect PR state -> show candidates -> user approves PRs/actions -> fix -> valid
 ```
 
 The skill uses existing local Git/GitHub authentication, not a repair workflow or new repository credential. It preserves required checks and code-owner protections and reports blocked PRs rather than bypassing them. Existing individual PRs are not guaranteed to regroup retroactively.
+
+Discovery must cover **every open Dependabot PR** before mutation filtering, including majors, Nx updates, older PRs, drafts, and other base branches. Show coverage totals and a row for each inspected/excluded/error PR. A per-PR lookup failure must not stop or truncate the rest of the report.
 
 ## Security Vulnerability Resolution
 
