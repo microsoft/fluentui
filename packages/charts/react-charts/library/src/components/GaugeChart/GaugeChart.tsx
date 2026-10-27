@@ -162,7 +162,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [calloutLegend, setCalloutLegend] = React.useState('');
-    const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const [refSelected, setRefSelected] = React.useState<HTMLElement | null>(null);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
     const previousFocusSegmentsRef = React.useRef(props.segments);
@@ -171,13 +170,13 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const lastFocusedGaugeElementRef = React.useRef<GaugeFocusTarget | undefined>(undefined);
     const focusSegmentRefs = React.useRef<Map<number, SVGPathElement>>(new Map());
     const focusNeedleRef = React.useRef<SVGPathElement | null>(null);
-    const shouldRestoreFocus = useChartFocusRestore(() => {
+    const shouldRestoreFocus = useChartFocusRestore(element => {
       const target = lastFocusedGaugeElementRef.current;
-      return target
-        ? 'segmentIndex' in target
-          ? focusSegmentRefs.current.get(target.segmentIndex)
-          : focusNeedleRef.current
-        : undefined;
+      return (
+        !!target &&
+        element ===
+          ('segmentIndex' in target ? focusSegmentRefs.current.get(target.segmentIndex) : focusNeedleRef.current)
+      );
     });
     const _width = props.width || width;
     const _height = props.height || height;
@@ -475,23 +474,11 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
       const targetElement = getChartEventTarget(event) as unknown as HTMLElement;
       _calloutAnchor = legend;
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      const hoverYValues: YValue[] = _segments
-        .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
-        .map(segment => {
-          const yValue: YValue = {
-            legend: segment.legend,
-            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
-            color: segment.color,
-          };
-          return yValue;
-        });
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
       setRefSelected(targetElement);
       setCalloutLegend(legend);
-      setHoverYValues(hoverYValues);
       if (isFocusEvent) {
         setFocusedElement(legend);
       }
@@ -501,7 +488,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       _calloutAnchor = '';
       setPopoverOpen(false);
       setCalloutLegend('');
-      setHoverYValues([]);
       if (isBlurEvent) {
         setFocusedElement('');
       }
@@ -678,6 +664,15 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${_segments.length} segments. `;
     }
     const { arcs } = _processProps();
+    const hoverYValues: YValue[] = isPopoverOpen
+      ? _segments
+          .filter(segment => _noLegendHighlighted() || _legendHighlighted(segment.legend))
+          .map(segment => ({
+            legend: segment.legend,
+            y: getGaugeChartSegmentLabel(segment, _minValue, _maxValue, props.variant, props.chartValueFormat),
+            color: segment.color,
+          }))
+      : [];
     const arrowAttributes = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
     return (
       <div

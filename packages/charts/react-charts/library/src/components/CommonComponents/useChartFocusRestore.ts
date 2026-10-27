@@ -2,19 +2,34 @@
 
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { FocusRestorePolicy } from '../../types/index';
 
 /**
  * Tracks focus ownership only; semantic destinations and focus execution belong to each chart.
  */
 export function useChartFocusRestore(
-  getFocusedTarget: () => Element | null | undefined,
+  isChartTarget: (element: Element) => boolean,
 ): (policy?: FocusRestorePolicy) => boolean {
   const { targetDocument } = useFluent();
-  const lastFocusedElement = React.useRef<Element | null>(null);
-  const ownedFocus = React.useRef(false);
-  const getChartTarget = useEventCallback(getFocusedTarget);
+  const pendingFocusLoss = React.useRef<Element | null>(null);
+  const focusVersion = React.useRef(0);
+  const activeElementBeforeUpdate = targetDocument?.activeElement;
+  const ownedElementBeforeUpdate =
+    activeElementBeforeUpdate && isChartTarget(activeElementBeforeUpdate) ? activeElementBeforeUpdate : null;
+  const focusVersionBeforeUpdate = focusVersion.current;
+
+  useIsomorphicLayoutEffect(() => {
+    // Snapshot ownership before React mutates the DOM: native focusout can precede detachment.
+    if (
+      ownedElementBeforeUpdate &&
+      !ownedElementBeforeUpdate.isConnected &&
+      targetDocument?.activeElement === targetDocument?.body &&
+      focusVersion.current === focusVersionBeforeUpdate
+    ) {
+      pendingFocusLoss.current = ownedElementBeforeUpdate;
+    }
+  });
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -22,38 +37,23 @@ export function useChartFocusRestore(
     }
 
     const onFocusIn = () => {
-      const element = targetDocument.activeElement;
-      lastFocusedElement.current = element;
-      ownedFocus.current = !!element && element === getChartTarget();
+      focusVersion.current++;
+      pendingFocusLoss.current = null;
     };
-    const onFocusOut = () => {
-      // Explicit blur relinquishes ownership. Removing a focused node does not emit focusout.
-      if (lastFocusedElement.current?.isConnected) {
-        ownedFocus.current = false;
-      }
-    };
-    onFocusIn();
     targetDocument.addEventListener('focusin', onFocusIn);
-    targetDocument.addEventListener('focusout', onFocusOut);
     return () => {
       targetDocument.removeEventListener('focusin', onFocusIn);
-      targetDocument.removeEventListener('focusout', onFocusOut);
     };
-  }, [getChartTarget, targetDocument]);
+  }, [targetDocument]);
 
-  return useEventCallback((policy: FocusRestorePolicy = 'preserve'): boolean => {
+  // Run the chart's eligibility effect on every commit so a loss cannot survive an unrelated update.
+  return (policy: FocusRestorePolicy = 'preserve'): boolean => {
     const activeElement = targetDocument?.activeElement;
-    const ownsCurrentFocus = !!activeElement && activeElement === getChartTarget();
+    const ownsCurrentFocus = !!activeElement && isChartTarget(activeElement);
     const lostFocusOnUpdate =
-      ownedFocus.current &&
-      !!lastFocusedElement.current &&
-      !lastFocusedElement.current.isConnected &&
-      activeElement === targetDocument?.body;
+      !!pendingFocusLoss.current && !pendingFocusLoss.current.isConnected && activeElement === targetDocument?.body;
 
-    // A detached element is eligible only for the current update, not a later background update.
-    if (lostFocusOnUpdate) {
-      ownedFocus.current = false;
-    }
+    pendingFocusLoss.current = null;
     return policy === 'reset' || (policy === 'preserve' && (ownsCurrentFocus || lostFocusOnUpdate));
-  });
+  };
 }

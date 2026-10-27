@@ -114,8 +114,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
   const lastFocusedBarIndexRef = React.useRef<number | undefined>(undefined);
   const focusBarRefs = React.useRef<Map<number, SVGRectElement>>(new Map());
-  const shouldRestoreFocus = useChartFocusRestore(() =>
-    lastFocusedBarIndexRef.current === undefined ? undefined : focusBarRefs.current.get(lastFocusedBarIndexRef.current),
+  const shouldRestoreFocus = useChartFocusRestore(
+    element =>
+      lastFocusedBarIndexRef.current !== undefined &&
+      element === focusBarRefs.current.get(lastFocusedBarIndexRef.current),
   );
 
   React.useEffect(() => {
@@ -133,6 +135,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     previousFocusDataRef.current = props.data;
     previousFocusColorsRef.current = props.colors;
     const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
+
+    const focusedBarIndex = lastFocusedBarIndexRef.current;
+    const focusedBar = focusedBarIndex !== undefined ? focusBarRefs.current.get(focusedBarIndex) : undefined;
+    const focusedPoint = focusedBarIndex !== undefined ? props.data?.[focusedBarIndex] : undefined;
+    if (
+      chartChanged &&
+      focusedBarIndex !== undefined &&
+      focusedBar &&
+      focusedPoint &&
+      focusedBar === focusedBar.ownerDocument.activeElement
+    ) {
+      _showBarCallout(focusedBar, focusedPoint, focusedBarIndex, _createColors()(focusedPoint.y));
+    }
 
     if (!chartChanged || !restoreFocus) {
       return;
@@ -562,10 +577,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     refArrayIndexNumber: number,
     color: string,
   ): void {
+    _showBarCallout(getChartEventTarget(event), point, refArrayIndexNumber, color);
+  }
+
+  function _showBarCallout(
+    element: SVGRectElement,
+    point: VerticalBarChartDataPoint,
+    refArrayIndexNumber: number,
+    color: string,
+  ): void {
     let x = 0;
     let y = 0;
 
-    const targetRect = getChartEventTarget(event).getBoundingClientRect();
+    const targetRect = element.getBoundingClientRect();
     x = targetRect.left + targetRect.width / 2;
     y = targetRect.top + targetRect.height / 2;
     updatePosition(x, y);

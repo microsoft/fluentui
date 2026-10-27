@@ -1373,3 +1373,30 @@ describe('VerticalBarChart - focusOnReset', () => {
     },
   );
 });
+
+describe('VerticalBarChart - retained focus callout freshness', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it.each(['preserve', 'none'] as const)('refreshes a mounted focused bar callout (policy: %s)', policy => {
+    const scene = (value: number) => (
+      <VerticalBarChart
+        focusRestorePolicy={policy}
+        data={[
+          { x: 1, y: value, legend: 'First', color: 'red' },
+          { x: 2, y: 20, legend: 'Second', color: 'blue' },
+        ]}
+        onRenderCalloutPerDataPoint={point => <pre data-testid="fresh-bar-callout">{JSON.stringify(point)}</pre>}
+      />
+    );
+    const { container, rerender, getByTestId } = render(scene(10));
+    const bar = container.querySelector<SVGRectElement>('rect[role="option"]')!;
+    act(() => bar.focus());
+    expect(getByTestId('fresh-bar-callout')).toHaveTextContent('"y":10');
+
+    rerender(scene(15));
+
+    expect(container.ownerDocument.activeElement).toBe(bar);
+    expect(getByTestId('fresh-bar-callout')).toHaveTextContent('"y":15');
+  });
+});

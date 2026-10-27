@@ -282,17 +282,35 @@ describe.each(charts)('$name focus policy', ({ selector, renderChart, hasLegend 
 });
 
 describe('chart focus ownership lifecycle', () => {
-  const TestChart = ({ version, restore = true }: { version: number; restore?: boolean }) => {
+  const TestChart = ({
+    version,
+    restore = true,
+    blurOnDetach = false,
+    policy,
+  }: {
+    version: number;
+    restore?: boolean;
+    blurOnDetach?: boolean;
+    policy?: FocusRestorePolicy;
+  }) => {
     const target = React.useRef<HTMLButtonElement>(null);
-    const shouldRestoreFocus = useChartFocusRestore(() => target.current);
+    const shouldRestoreFocus = useChartFocusRestore(element => element === target.current);
     React.useEffect(() => {
-      const shouldRestore = shouldRestoreFocus();
+      const shouldRestore = shouldRestoreFocus(policy);
       if (restore && shouldRestore) {
         target.current?.focus();
       }
-    }, [version, restore, shouldRestoreFocus]);
+    }, [version, restore, policy, shouldRestoreFocus]);
     return (
-      <button key={version} ref={target}>
+      <button
+        key={version}
+        ref={element => {
+          if (!element && blurOnDetach && target.current?.isConnected) {
+            target.current.blur();
+          }
+          target.current = element;
+        }}
+      >
         Chart target
       </button>
     );
@@ -306,6 +324,25 @@ describe('chart focus ownership lifecycle', () => {
     expect(previousTarget.isConnected).toBe(false);
     expect(previousTarget.ownerDocument.activeElement).toBe(getByRole('button'));
   });
+
+  it.each([undefined, 'preserve', 'reset', 'none'] as const)(
+    'handles native-style blur before detachment (policy: %s)',
+    policy => {
+      const { getByRole, rerender } = render(<TestChart version={0} blurOnDetach policy={policy} />);
+      const previousTarget = getByRole('button');
+      const connectedOnFocusOut: boolean[] = [];
+      previousTarget.addEventListener('focusout', () => connectedOnFocusOut.push(previousTarget.isConnected));
+      act(() => previousTarget.focus());
+
+      rerender(<TestChart version={1} blurOnDetach policy={policy} />);
+
+      expect(connectedOnFocusOut).toEqual([true]);
+      expect(previousTarget.isConnected).toBe(false);
+      expect(previousTarget.ownerDocument.activeElement).toBe(
+        policy === 'none' ? previousTarget.ownerDocument.body : getByRole('button'),
+      );
+    },
+  );
 
   it('does not recover a target deliberately blurred before remounting', () => {
     const { getByRole, rerender } = render(<TestChart version={0} />);

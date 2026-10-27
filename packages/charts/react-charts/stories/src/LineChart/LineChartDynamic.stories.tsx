@@ -172,6 +172,11 @@ export const LineChartDynamic = (): JSXElement => {
 
 LineChartDynamic.parameters = {
   docs: {
-    description: {},
+    description: {
+      story:
+        'Data updates preserve chart-owned focus by default and leave external controls focused. ' +
+        'Enable the switch to explicitly reset focus to source series 0, point 0. ' +
+        'Indices refer to the current input before legend filtering; missing, inactive, or unplottable targets are skipped.',
+    },
   },
 };

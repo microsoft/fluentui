@@ -39,12 +39,14 @@ export interface LineChartProps extends CartesianChartProps {
   eventAnnotationProps?: EventsAnnotationProps;
 
   /**
-   * Define a custom callout renderer for a data point
+   * Define a custom callout renderer for a data point.
+   * Data updates refresh the payload without forcing an open custom callout to remount.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
-   * Define a custom callout renderer for a stack; default is to render per data point
+   * Define a custom callout renderer for a stack; default is to render per data point.
+   * Data updates refresh the payload without forcing an open custom callout to remount.
    */
   onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
 
@@ -106,8 +108,11 @@ export interface LineChartProps extends CartesianChartProps {
   /**
    * Point to focus on a data/color content change when focusRestorePolicy is 'reset'.
    * When omitted, resets use the previously focused point. 'preserve' always retains that point.
+   * Indices are zero-based positions in the current data.lineChartData and its series' data array,
+   * before legend filtering. Reordering data changes which series or point occupies a position.
    * Callback-only changes do not restore focus.
-   * Targets that are not currently tabbable are skipped, leaving focus unchanged.
+   * Missing, unplottable, and non-tabbable targets are skipped, leaving focus unchanged.
+   * Simultaneous data and controlled legend updates use the updated legend selection.
    * For path-rendered lines without markers, focus moves to the line and its callout shows this point.
    */
   focusOnReset?: {

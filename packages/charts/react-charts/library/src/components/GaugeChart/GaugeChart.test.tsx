@@ -1071,3 +1071,30 @@ describe('GaugeChart - focusOnReset', () => {
     expect(needle).not.toHaveAttribute('tabindex');
   });
 });
+
+describe('GaugeChart - retained focus callout freshness', () => {
+  it.each(['preserve', 'none'] as const)('refreshes a mounted focused segment callout (policy: %s)', policy => {
+    const scene = (updated: boolean) => (
+      <GaugeChart
+        focusRestorePolicy={policy}
+        segments={[
+          { size: updated ? 25 : 50, color: updated ? 'blue' : 'red', legend: 'First' },
+          { size: updated ? 75 : 50, color: 'green', legend: 'Second' },
+        ]}
+        chartValue={30}
+        variant="multiple-segments"
+        onRenderCallout={data => <pre data-testid="fresh-gauge-callout">{JSON.stringify(data?.segmentValues)}</pre>}
+      />
+    );
+    const { container, rerender, getByTestId } = render(scene(false));
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]')!;
+    act(() => segment.focus());
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('red');
+
+    rerender(scene(true));
+
+    expect(container.ownerDocument.activeElement).toBe(segment);
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('blue');
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('25');
+  });
+});
