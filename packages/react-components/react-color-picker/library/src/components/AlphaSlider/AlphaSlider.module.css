@@ -1,0 +1,28 @@
+@layer fluentui {
+  .rail {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    background-image: linear-gradient(
+        var(--fui-AlphaSlider--direction),
+        transparent,
+        var(--fui-AlphaSlider__rail--color)
+      ),
+      url(https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png);
+  }
+  .thumb {
+    background-color: var(--colorNeutralBackground1);
+    &::before {
+      background-color: var(--fui-AlphaSlider__thumb--color);
+    }
+  }
+  :where(.horizontal) > .thumb {
+    transform: translateX(-50%);
+    &:dir(rtl) {
+      transform: translateX(50%);
+    }
+    inset-inline-start: var(--fui-AlphaSlider--progress);
+  }
+  :where(.vertical) > .thumb {
+    transform: translateY(50%);
+    bottom: var(--fui-AlphaSlider--progress);
+  }
+}

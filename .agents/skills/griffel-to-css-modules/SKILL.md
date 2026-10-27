@@ -315,3 +315,20 @@ Report which components/helpers remain partial, which selectors were exercised,
 and which browser/SSR/VRT checks were not run. Expand to more components only
 after the current migration's gaps are explicit; never claim all-v9 readiness
 from the initial ports alone.
+
+### Shared positioning arrows
+
+CSS alternatives import the class map from
+`@fluentui/react-positioning/arrow.module.css` (the opt-in, layered `Arrow.module.css`
+asset), then combine its `arrow` class with their local arrow class. This avoids
+copying placement/pseudo-element rules between Tooltip and Popover and leaves
+the default positioning entry point free of stylesheet imports. Configure the
+same CSS Modules loader for this package asset as for component modules.
+
+Consumers set `--fui-positioning-arrow-height` to `1.414 * arrowHeight` and
+`--fui-positioning-arrow-offset` to `-0.707 * arrowHeight`, matching
+`createArrowHeightStyles` exactly. Optional `--fui-positioning-arrow-border-width`,
+`--fui-positioning-arrow-border-style`, and `--fui-positioning-arrow-border-color`
+match `createArrowStyles` options. Placement selectors and rotation stay physical
+in RTL. The Griffel helpers and their signatures remain unchanged; this CSS-only
+contract is an alternative, not a replacement returning Griffel style objects.

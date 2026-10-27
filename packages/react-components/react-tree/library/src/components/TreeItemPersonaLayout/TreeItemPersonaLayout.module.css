@@ -1,0 +1,149 @@
+@layer fluentui {
+  .root {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas:
+      'expandIcon media main        aside'
+      'expandIcon media description aside';
+    align-items: center;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+
+    /* Preserve the original reset: hover takes precedence while active. */
+    &:active {
+      color: var(--colorNeutralForeground2Pressed);
+      background-color: var(--colorSubtleBackgroundPressed);
+      & :global(.fui-TreeItemPersonaLayout__expandIcon) {
+        color: var(--colorNeutralForeground3Pressed);
+      }
+    }
+    &:hover {
+      color: var(--colorNeutralForeground2Hover);
+      background-color: var(--colorSubtleBackgroundHover);
+      & :global(.fui-TreeItemPersonaLayout__expandIcon) {
+        color: var(--colorNeutralForeground3Hover);
+      }
+    }
+  }
+
+  .leaf {
+    padding-inline-start: calc(var(--fluent-TreeItem--level, 1) * var(--spacingHorizontalXXL));
+  }
+
+  .branch {
+    padding-inline-start: calc((var(--fluent-TreeItem--level, 1) - 1) * var(--spacingHorizontalXXL));
+  }
+
+  .medium {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .small {
+    min-height: var(--spacingHorizontalXXL);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .subtle {
+  }
+
+  .subtle-alpha {
+    &:hover {
+      background-color: var(--colorSubtleBackgroundLightAlphaHover);
+    }
+    &:active {
+      background-color: var(--colorSubtleBackgroundLightAlphaPressed);
+    }
+  }
+
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+    &:hover {
+      background-color: var(--colorTransparentBackgroundHover);
+    }
+    &:active {
+      background-color: var(--colorTransparentBackgroundPressed);
+    }
+  }
+
+  .media {
+    display: flex;
+    align-items: center;
+    width: var(--spacingHorizontalXXXL);
+    height: var(--spacingHorizontalXXXL);
+    grid-area: media;
+    padding-top: 0;
+    padding-inline-end: var(--spacingHorizontalXS);
+    padding-bottom: 0;
+    padding-inline-start: var(--spacingHorizontalXXS);
+  }
+
+  .main {
+    grid-area: main;
+    padding-top: var(--spacingVerticalMNudge);
+    padding-inline-end: var(--spacingHorizontalXS);
+    padding-bottom: var(--spacingVerticalMNudge);
+    padding-inline-start: var(--spacingHorizontalS);
+  }
+
+  .description {
+    grid-area: description;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    padding-top: 0;
+    padding-inline-end: var(--spacingHorizontalXS);
+    padding-bottom: var(--spacingVerticalMNudge);
+    padding-inline-start: var(--spacingHorizontalS);
+  }
+
+  .actions {
+    display: flex;
+    margin-inline-start: auto;
+    position: relative;
+    z-index: 1;
+    grid-area: aside;
+    padding: 0 var(--spacingHorizontalS);
+  }
+
+  .aside {
+    display: flex;
+    margin-inline-start: auto;
+    align-items: center;
+    z-index: 0;
+    grid-area: aside;
+    padding: 0 var(--spacingHorizontalM);
+    gap: var(--spacingHorizontalXS);
+  }
+
+  .expandIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--spacingHorizontalXXL);
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground3);
+    grid-area: expandIcon;
+    flex: 0 0 auto;
+    padding: var(--spacingVerticalXS) 0;
+  }
+
+  .selector {
+  }
+
+  :where(.withDescription) > .main {
+    padding-top: var(--spacingVerticalMNudge);
+    padding-inline-end: var(--spacingHorizontalXS);
+    padding-bottom: 0;
+    padding-inline-start: var(--spacingHorizontalS);
+  }
+}

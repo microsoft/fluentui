@@ -1,0 +1,14 @@
+import { clsx } from 'clsx';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { AccordionItemSlots, AccordionItemState } from './AccordionItem.types';
+import './AccordionItem.module.css';
+
+export const accordionItemClassNames: SlotClassNames<AccordionItemSlots> = {
+  root: 'fui-AccordionItem',
+};
+
+export const useAccordionItemStyles_unstable = (state: AccordionItemState): AccordionItemState => {
+  state.root.className = clsx(accordionItemClassNames.root, state.root.className);
+
+  return state;
+};

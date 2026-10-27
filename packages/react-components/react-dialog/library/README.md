@@ -43,3 +43,15 @@ export const DialogExample = () => {
   );
 };
 ```
+
+## Opt-in CSS Modules styles
+
+DialogActions, DialogBody, DialogContent, DialogSurface, and DialogTitle (including its internal action helper) have alternatives.
+
+The default components continue to use Griffel. An opt-in bundler resolver can replace
+`use<Component>Styles.styles.js` with `use<Component>Styles.styles.css.js`
+(and the corresponding `.ts` source modules). Keep the emitted CSS assets and process
+their CSS Modules imports; all rules are in `@layer fluentui`. Apply the same selection
+to client and server bundles. Within-package composed alternatives import their CSS
+base hook explicitly. These alternatives do not make composed external components
+Griffel-free. Browser, forced-colors, SSR, and full VRT parity require separate validation.

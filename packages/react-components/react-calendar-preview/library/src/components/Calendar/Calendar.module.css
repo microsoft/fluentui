@@ -1,0 +1,90 @@
+@layer fluentui {
+  .normalize {
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .root {
+    display: flex;
+    width: calc(calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS))) + 2 * var(--spacingHorizontalM));
+  }
+
+  .root:where(:not(.isMonthPickerVisible)) {
+    flex-direction: column;
+  }
+  .root:where(.isDayPickerVisible.isMonthPickerVisible) {
+    width: calc(14 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + 4 * var(--spacingHorizontalM));
+  }
+  .root:where(.isDayPickerVisible.showWeekNumbers) {
+    width: calc(
+      7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin) + 2 * var(--spacingHorizontalM)
+    );
+  }
+  .root:where(.isDayPickerVisible.isMonthPickerVisible.showWeekNumbers) {
+    width: calc(
+      14 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin) + 4 * var(--spacingHorizontalM)
+    );
+  }
+
+  .divider {
+    border-inline-end: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+    top: 0;
+  }
+
+  .monthPickerWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .goTodayButton {
+    align-self: flex-end;
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    bottom: 0;
+    box-sizing: content-box;
+    color: var(--colorNeutralForeground1);
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    height: calc(var(--spacingVerticalXXXL) - 2 * var(--strokeWidthThin));
+    min-width: auto;
+    line-height: calc(var(--spacingVerticalXXXL) - 2 * var(--strokeWidthThin));
+    margin-inline-end: var(--spacingHorizontalL);
+    margin-block-start: calc(var(--spacingVerticalXXS) + var(--strokeWidthThin));
+    overflow: visible;
+    padding: 0 var(--spacingHorizontalXS);
+    &:hover {
+      background-color: var(--colorTransparentBackground);
+      color: var(--colorBrandForeground1);
+      cursor: pointer;
+      @media (forced-colors: active) {
+        & {
+          outline: var(--strokeWidthThin);
+          border-radius: var(--borderRadiusSmall);
+        }
+      }
+    }
+    &:hover:active {
+      color: var(--colorBrandForeground2);
+    }
+    &:disabled,
+    &[aria-disabled='true'] {
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+    }
+  }
+
+  .liveRegion {
+    border: none;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+}

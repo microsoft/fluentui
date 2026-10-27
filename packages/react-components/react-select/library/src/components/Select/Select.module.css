@@ -1,0 +1,232 @@
+@layer fluentui {
+  .root::after {
+    background-image: linear-gradient(
+      0deg,
+      var(--colorCompoundBrandStroke) 0%,
+      var(--colorCompoundBrandStroke) 50%,
+      transparent 50%,
+      transparent 100%
+    );
+    border-radius: 0 0 var(--borderRadiusMedium) var(--borderRadiusMedium);
+    box-sizing: border-box;
+    content: '';
+    height: var(--borderRadiusMedium);
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--durationUltraFast);
+    transition-delay: var(--curveAccelerateMid);
+  }
+
+  .root:focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-delay: var(--curveDecelerateMid);
+  }
+
+  .root {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    font-family: var(--fontFamilyBase);
+    position: relative;
+  }
+
+  .select:focus {
+    outline-width: var(--strokeWidthThick);
+    outline-style: solid;
+    outline-color: transparent;
+  }
+
+  .select {
+    appearance: none;
+    border: var(--strokeWidthThin) solid transparent;
+    border-radius: var(--borderRadiusMedium);
+    box-shadow: none;
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+    flex-grow: 1;
+    max-width: 100%;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  :where(.small) > .select {
+    height: var(--spacingHorizontalXXL);
+    padding-inline-start: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+    padding-inline-end: calc(
+      var(--spacingHorizontalSNudge) + var(--spacingHorizontalL) + var(--spacingHorizontalXXS) +
+        var(--spacingHorizontalXXS)
+    );
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :where(.medium) > .select {
+    height: var(--spacingHorizontalXXXL);
+    padding-inline-start: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+    padding-inline-end: calc(
+      var(--spacingHorizontalMNudge) + var(--spacingHorizontalXL) + var(--spacingHorizontalXXS) +
+        var(--spacingHorizontalXXS)
+    );
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.large) > .select {
+    height: calc(var(--spacingHorizontalXS) * 10);
+    padding-inline-start: calc(var(--spacingHorizontalM) + var(--spacingHorizontalSNudge));
+    padding-inline-end: calc(
+      var(--spacingHorizontalM) + var(--spacingHorizontalXXL) + var(--spacingHorizontalSNudge) +
+        var(--spacingHorizontalSNudge)
+    );
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :where(.outline) > .select {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  :where(.underline) > .select option {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  :where(.underline) > .select {
+    background-color: var(--colorTransparentBackground);
+    border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: 0;
+  }
+
+  :where(.filled-lighter) > .select {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  :where(.filled-darker) > .select {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  :where(.outline:not(.disabled)) > .select:hover {
+    border-top-color: var(--colorNeutralStroke1Hover);
+    border-inline-end-color: var(--colorNeutralStroke1Hover);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-inline-start-color: var(--colorNeutralStroke1Hover);
+  }
+
+  :where(.outline:not(.disabled)) > .select:active {
+    border-top-color: var(--colorNeutralStroke1Pressed);
+    border-inline-end-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-inline-start-color: var(--colorNeutralStroke1Pressed);
+  }
+
+  :where(.invalid:not(.disabled):not(.underline)) > .select:not(:focus-within),
+  :where(.invalid:not(.disabled):not(.underline)) > .select:hover:not(:focus-within) {
+    border-top-color: var(--colorPaletteRedBorder2);
+    border-inline-end-color: var(--colorPaletteRedBorder2);
+    border-bottom-color: var(--colorPaletteRedBorder2);
+    border-inline-start-color: var(--colorPaletteRedBorder2);
+  }
+
+  :where(.invalid.underline:not(.disabled)) > .select:not(:focus-within),
+  :where(.invalid.underline:not(.disabled)) > .select:hover:not(:focus-within) {
+    border-bottom-color: var(--colorPaletteRedBorder2);
+  }
+
+  :where(.disabled) > .select {
+    background-color: var(--colorTransparentBackground);
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  :where(.disabled.underline) > .select {
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorTransparentStrokeDisabled);
+  }
+
+  .icon svg {
+    display: block;
+  }
+
+  .icon {
+    box-sizing: border-box;
+    color: var(--colorNeutralStrokeAccessible);
+    display: block;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  :where(.disabled) > .icon {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.small) > .icon {
+    font-size: var(--fontSizeBase400);
+    height: var(--spacingHorizontalL);
+    inset-inline-end: var(--spacingHorizontalSNudge);
+    width: var(--spacingHorizontalL);
+  }
+
+  :where(.medium) > .icon {
+    font-size: var(--fontSizeBase500);
+    height: var(--spacingHorizontalXL);
+    inset-inline-end: var(--spacingHorizontalMNudge);
+    width: var(--spacingHorizontalXL);
+  }
+
+  :where(.large) > .icon {
+    font-size: var(--fontSizeBase600);
+    height: var(--spacingHorizontalXXL);
+    inset-inline-end: var(--spacingHorizontalM);
+    width: var(--spacingHorizontalXXL);
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:focus-within::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(.disabled) > .select {
+      border-top-color: GrayText;
+      border-inline-end-color: GrayText;
+      border-bottom-color: GrayText;
+      border-inline-start-color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(.disabled) > .icon {
+      color: GrayText;
+    }
+  }
+}

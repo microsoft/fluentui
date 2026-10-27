@@ -1,0 +1,12 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+  }
+  .small {
+    column-gap: var(--spacingHorizontalXXS);
+  }
+  .medium {
+    column-gap: var(--spacingHorizontalXS);
+  }
+}

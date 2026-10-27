@@ -1,0 +1,214 @@
+@layer fluentui {
+  .root:focus {
+    outline-style: none;
+  }
+
+  .root:focus-visible {
+    outline-style: none;
+  }
+
+  .root[data-fui-focus-within]:focus-within::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    top: calc(var(--strokeWidthThick) * -1);
+    inset-inline-end: calc(var(--strokeWidthThick) * -1);
+    bottom: calc(var(--strokeWidthThick) * -1);
+    inset-inline-start: calc(var(--strokeWidthThick) * -1);
+  }
+
+  .root[data-fui-focus-within]:focus-within {
+    border-top-color: transparent;
+    border-inline-end-color: transparent;
+    border-bottom-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  .root {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .below {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input:enabled ~ :global(.fui-Radio__label) {
+    cursor: pointer;
+  }
+
+  .input:enabled {
+    cursor: pointer;
+  }
+
+  .input:enabled:not(:checked) ~ :global(.fui-Radio__label) {
+    color: var(--colorNeutralForeground3);
+  }
+
+  .input:enabled:not(:checked) ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  .input:enabled:not(:checked):hover ~ :global(.fui-Radio__label) {
+    color: var(--colorNeutralForeground2);
+  }
+
+  .input:enabled:not(:checked):hover ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  .input:enabled:not(:checked):hover:active ~ :global(.fui-Radio__label) {
+    color: var(--colorNeutralForeground1);
+  }
+
+  .input:enabled:not(:checked):hover:active ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  .input:enabled:checked ~ :global(.fui-Radio__label) {
+    color: var(--colorNeutralForeground1);
+  }
+
+  .input:enabled:checked ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorCompoundBrandStroke);
+    color: var(--colorCompoundBrandForeground1);
+  }
+
+  .input:enabled:checked:hover ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorCompoundBrandStrokeHover);
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+
+  .input:enabled:checked:hover:active ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorCompoundBrandStrokePressed);
+    color: var(--colorCompoundBrandForeground1Pressed);
+  }
+
+  .input:disabled ~ :global(.fui-Radio__label) {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: default;
+  }
+
+  .input:disabled ~ :global(.fui-Radio__indicator) {
+    border-color: var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .input {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: calc(var(--spacingHorizontalL) + 2 * var(--spacingHorizontalS));
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    opacity: 0;
+  }
+
+  :where(.below) > .input {
+    width: 100%;
+    height: calc(var(--spacingHorizontalL) + 2 * var(--spacingVerticalS));
+  }
+
+  .input:where(.defaultIndicator):checked ~ :global(.fui-Radio__indicator)::after {
+    content: '';
+  }
+
+  .input:where(.customIndicator):not(:checked) ~ :global(.fui-Radio__indicator) > * {
+    opacity: 0;
+  }
+
+  .indicator::after {
+    position: absolute;
+    width: var(--spacingHorizontalL);
+    height: var(--spacingHorizontalL);
+    border-radius: var(--borderRadiusCircular);
+    transform: scale(0.625);
+    background-color: currentColor;
+  }
+
+  .indicator {
+    position: relative;
+    width: var(--spacingHorizontalL);
+    height: var(--spacingHorizontalL);
+    font-size: var(--fontSizeBase200);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: var(--strokeWidthThin) solid;
+    border-radius: var(--borderRadiusCircular);
+    margin: var(--spacingVerticalS) var(--spacingHorizontalS);
+    fill: currentColor;
+    pointer-events: none;
+  }
+
+  .label {
+    align-self: center;
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+  }
+
+  :where(.after) > .label {
+    padding-inline-start: var(--spacingHorizontalXS);
+    margin-top: calc((var(--spacingHorizontalL) - var(--lineHeightBase300)) / 2);
+    margin-bottom: calc((var(--spacingHorizontalL) - var(--lineHeightBase300)) / 2);
+  }
+
+  :where(.below) > .label {
+    padding-top: var(--spacingVerticalXS);
+    text-align: center;
+  }
+
+  @media (forced-colors: active) {
+    .root[data-fui-focus-within]:focus-within::after {
+      border-top-color: Highlight;
+      border-inline-end-color: Highlight;
+      border-bottom-color: Highlight;
+      border-inline-start-color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:not(:checked) ~ :global(.fui-Radio__indicator) {
+      border-color: ButtonBorder;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:checked ~ :global(.fui-Radio__indicator)::after {
+      background-color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:checked ~ :global(.fui-Radio__indicator) {
+      border-color: Highlight;
+      color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:disabled ~ :global(.fui-Radio__label) {
+      color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:disabled ~ :global(.fui-Radio__indicator)::after {
+      background-color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:disabled ~ :global(.fui-Radio__indicator) {
+      border-color: GrayText;
+      color: GrayText;
+    }
+  }
+}

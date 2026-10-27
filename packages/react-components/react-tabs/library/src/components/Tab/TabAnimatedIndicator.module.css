@@ -1,0 +1,27 @@
+@layer fluentui {
+  .base {
+    overflow: visible;
+  }
+  .animated::after {
+    transition-property: transform;
+    transition-duration: var(--durationSlow);
+    transition-timing-function: var(--curveDecelerateMax);
+  }
+  .horizontal::after {
+    transform-origin: left;
+    transform: translateX(var(--fui-Tab__indicator--offset)) scaleX(var(--fui-Tab__indicator--scale));
+  }
+  :global([dir='rtl']) .horizontal::after {
+    transform-origin: right;
+  }
+  .vertical::after {
+    transform-origin: top;
+    transform: translateY(var(--fui-Tab__indicator--offset)) scaleY(var(--fui-Tab__indicator--scale));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animated::after {
+      transition-property: none;
+      transition-duration: 0.01ms;
+    }
+  }
+}

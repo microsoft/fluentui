@@ -1,0 +1,38 @@
+@layer fluentui {
+  .grid {
+    display: grid;
+    justify-content: space-evenly;
+  }
+
+  .onlyRows {
+    grid-auto-flow: column;
+  }
+
+  .rows1 {
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  .rows2 {
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .rows3 {
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .columns1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .columns2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .columns3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .columnsDefault {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

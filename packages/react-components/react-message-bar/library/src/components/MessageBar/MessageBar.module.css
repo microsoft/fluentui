@@ -1,0 +1,70 @@
+@layer fluentui {
+  .root {
+    white-space: nowrap;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'icon body secondaryActions actions';
+    padding-inline-start: var(--spacingHorizontalM);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusMedium);
+    align-items: center;
+    min-height: calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalXS));
+    box-sizing: border-box;
+    background-color: var(--colorNeutralBackground3);
+  }
+  .icon {
+    grid-area: icon;
+    font-size: var(--fontSizeBase500);
+    margin-inline-end: var(--spacingHorizontalS);
+    color: var(--colorNeutralForeground3);
+    display: flex;
+    align-items: center;
+  }
+  .bottomReflowSpacer {
+    margin-bottom: var(--spacingVerticalS);
+    grid-area: secondaryActions;
+  }
+  .multiline {
+    white-space: normal;
+    align-items: start;
+    padding-top: var(--spacingVerticalMNudge);
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'icon body actions'
+      'secondaryActions secondaryActions secondaryActions';
+  }
+  .square {
+    border-radius: 0;
+  }
+  .error {
+    background-color: var(--colorStatusDangerBackground1);
+    border-top-color: var(--colorStatusDangerBorder1);
+    border-right-color: var(--colorStatusDangerBorder1);
+    border-bottom-color: var(--colorStatusDangerBorder1);
+    border-left-color: var(--colorStatusDangerBorder1);
+  }
+  .warning {
+    background-color: var(--colorStatusWarningBackground1);
+    border-top-color: var(--colorStatusWarningBorder1);
+    border-right-color: var(--colorStatusWarningBorder1);
+    border-bottom-color: var(--colorStatusWarningBorder1);
+    border-left-color: var(--colorStatusWarningBorder1);
+  }
+  .success {
+    background-color: var(--colorStatusSuccessBackground1);
+    border-top-color: var(--colorStatusSuccessBorder1);
+    border-right-color: var(--colorStatusSuccessBorder1);
+    border-bottom-color: var(--colorStatusSuccessBorder1);
+    border-left-color: var(--colorStatusSuccessBorder1);
+  }
+  :where(.error) > .icon {
+    color: var(--colorStatusDangerForeground1);
+  }
+  :where(.warning) > .icon {
+    color: var(--colorStatusWarningForeground3);
+  }
+  :where(.success) > .icon {
+    color: var(--colorStatusSuccessForeground1);
+  }
+}

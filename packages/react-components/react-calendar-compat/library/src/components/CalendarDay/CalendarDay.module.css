@@ -1,0 +1,116 @@
+@layer fluentui {
+  .normalize {
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .root {
+    box-sizing: content-box;
+    padding: var(--spacingHorizontalM);
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  .rootShowWeekNumbers {
+    width: calc(
+      7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin)
+    );
+  }
+
+  .header {
+    display: inline-flex;
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(2 * var(--spacingHorizontalXL) + var(--spacingHorizontalXS));
+    position: relative;
+    width: 100%;
+  }
+
+  .monthAndYear {
+    align-items: center;
+    background-color: var(--colorTransparentBackground);
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    display: inline-block;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: hidden;
+    padding-block: 0;
+    padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .monthAndYearHeaderIsClickable {
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+  }
+
+  .monthComponents {
+    align-self: flex-end;
+    display: inline-flex;
+  }
+
+  .headerIconButton {
+    background-color: var(--colorTransparentBackground);
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+    display: block;
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+    }
+  }
+
+  .disabledStyle {
+    &,
+    &:disabled,
+    & button {
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+      @media (forced-colors: active) {
+        & {
+          color: GrayText;
+        }
+      }
+    }
+  }
+}

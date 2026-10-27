@@ -1,0 +1,59 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 8px;
+    width: 8px;
+    background-color: var(--colorBrandBackground);
+  }
+
+  .unselected {
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    outline: var(--strokeWidthThin) solid transparent;
+    background-color: color-mix(in srgb, var(--colorBrandBackground) 30%, transparent);
+  }
+
+  .selected {
+    outline: var(--strokeWidthThin) solid transparent;
+    width: 16px;
+    border: none;
+    border-radius: 4px;
+    padding: 0;
+  }
+
+  .unselected[data-fui-focus-visible],
+  .selected[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    border-color: transparent;
+  }
+
+  .selected {
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
+  }
+
+  .brand.selected {
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brand.unselected {
+    background-color: color-mix(in srgb, var(--colorNeutralForegroundOnBrand) 30%, transparent);
+  }
+
+  @supports not (color: color-mix(in lch, white, black)) {
+    .unselected {
+      opacity: 0.3;
+      background-color: var(--colorBrandBackground);
+    }
+
+    .brand.unselected {
+      opacity: 0.3;
+      background-color: var(--colorBrandBackground);
+    }
+  }
+}

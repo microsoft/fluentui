@@ -1,0 +1,8 @@
+@layer fluentui {
+  .root {
+    padding: var(--spacingVerticalL) var(--spacingVerticalL);
+    border-radius: var(--borderRadiusXLarge);
+    min-width: 320px;
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,136 @@
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+
+@layer fluentui {
+  .root {
+    align-items: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    text-decoration-line: none;
+    vertical-align: middle;
+    position: relative;
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+    border-radius: var(--borderRadiusMedium);
+    margin: 0;
+    padding: var(--spacingVerticalXS) var(--spacingHorizontalXS);
+    & :global(.fui-Icon-filled) {
+      display: none;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: inline-flex;
+    }
+
+    &:hover {
+      background-color: var(--colorTransparentBackgroundHover);
+      color: var(--colorNeutralForeground2BrandHover);
+      cursor: pointer;
+      & :global(.fui-Icon-filled) {
+        display: inline-flex;
+      }
+
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+
+    &:hover:active {
+      background-color: var(--colorTransparentBackgroundPressed);
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+  }
+
+  .root {
+    @media (forced-colors: active) {
+      color: CanvasText;
+      &:hover,
+      &:hover:active {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: Canvas;
+      }
+    }
+  }
+
+  .root:where(.open) {
+    background-color: var(--colorTransparentBackgroundSelected);
+    color: var(--colorNeutralForeground2BrandSelected);
+    & :global(.fui-Icon-filled) {
+      display: inline-flex;
+    }
+
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+
+    @media (forced-colors: active) {
+      background-color: Highlight;
+      color: Canvas;
+    }
+  }
+
+  .root:where(.large) {
+    padding: var(--spacingVerticalXXS) var(--spacingVerticalXXS);
+  }
+
+  .root {
+    &:focus {
+      outline-style: none;
+    }
+
+    &:focus-visible {
+      outline-style: none;
+    }
+
+    &[data-fui-focus-visible] {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(var(--strokeWidthThick) * -1);
+        inset-inline-end: calc(var(--strokeWidthThick) * -1);
+        bottom: calc(var(--strokeWidthThick) * -1);
+        inset-inline-start: calc(var(--strokeWidthThick) * -1);
+      }
+
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+  }
+
+  .info {
+    max-width: calc(var(--spacingHorizontalXXXL) * 8 + var(--spacingHorizontalS));
+  }
+
+  .info:where(.small, .medium) {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .info:where(.large) {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}

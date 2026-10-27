@@ -1,0 +1,10 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    overflow-anchor: none;
+  }
+
+  .elevated {
+    gap: var(--spacingHorizontalXXL);
+  }
+}

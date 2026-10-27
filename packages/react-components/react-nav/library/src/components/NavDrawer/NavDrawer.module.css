@@ -1,0 +1,9 @@
+@layer fluentui {
+  .root {
+    background-color: var(--colorNeutralBackground4);
+    align-items: unset;
+  }
+  .defaultWidth {
+    width: calc(8 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalXS));
+  }
+}

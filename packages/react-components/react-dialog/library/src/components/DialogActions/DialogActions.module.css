@@ -1,0 +1,47 @@
+@layer fluentui {
+  .root {
+    gap: var(--spacingHorizontalS);
+    height: fit-content;
+    box-sizing: border-box;
+    display: flex;
+    grid-row-start: 3;
+    grid-row-end: 3;
+  }
+
+  .start {
+    justify-self: start;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    @media screen and (max-width: 480px) {
+      grid-column-end: 4;
+      grid-row-start: 3;
+      grid-row-end: auto;
+    }
+  }
+
+  .end {
+    justify-self: end;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    @media screen and (max-width: 480px) {
+      grid-column-start: 1;
+      grid-row-start: 4;
+      grid-row-end: auto;
+    }
+  }
+
+  .fluid:where(.start) {
+    grid-column-end: 4;
+  }
+
+  .fluid:where(.end) {
+    grid-column-start: 1;
+  }
+  /* Griffel emits media rules after the position rules. */
+  @media screen and (max-width: 480px) {
+    .root {
+      flex-direction: column;
+      justify-self: stretch;
+    }
+  }
+}

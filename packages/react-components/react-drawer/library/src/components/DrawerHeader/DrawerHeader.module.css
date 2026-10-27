@@ -1,0 +1,36 @@
+@layer fluentui {
+  .root {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--spacingVerticalXXL) var(--spacingHorizontalXXL) var(--spacingVerticalS);
+    gap: var(--spacingHorizontalS);
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+  }
+
+  .root:where(:not(.none)) {
+    &::after {
+      height: var(--strokeWidthThin);
+      position: absolute;
+      inset-inline-end: 0;
+      inset-inline-start: 0;
+      opacity: 0;
+      background-color: var(--colorNeutralStroke1);
+      transition-duration: var(--durationNormal);
+      transition-property: opacity;
+      transition-timing-function: var(--curveEasyEase);
+      content: '';
+      bottom: 0;
+    }
+  }
+
+  .root:where(.middle, .bottom) {
+    &::after {
+      opacity: 1;
+    }
+  }
+}

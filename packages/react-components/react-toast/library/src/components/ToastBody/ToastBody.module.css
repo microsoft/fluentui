@@ -1,0 +1,24 @@
+@layer fluentui {
+  .root {
+    grid-column: 2 / 3;
+    padding-top: var(--spacingVerticalSNudge);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+    font-weight: var(--fontWeightRegular);
+    color: var(--colorNeutralForeground1);
+    word-break: break-word;
+  }
+
+  .subtitle {
+    padding-top: var(--spacingVerticalXS);
+    grid-column: 2 / 3;
+    font-size: var(--fontSizeBase200);
+    line-height: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    color: var(--colorNeutralForeground2);
+  }
+
+  .inverted {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+}

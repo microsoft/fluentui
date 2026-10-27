@@ -1,0 +1,45 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .vertical {
+    flex-direction: column;
+  }
+
+  .horizontal {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .buttonVertical {
+    width: auto;
+    border-radius: 4px;
+  }
+
+  .buttonHorizontal {
+    min-width: 96px;
+    border-radius: 4px;
+  }
+
+  .brandSecondary {
+    border-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrimary {
+    color: var(--colorBrandForeground1);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrimary:hover {
+    color: var(--colorCompoundBrandForeground1Hover);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrimary:hover:active {
+    color: var(--colorCompoundBrandForeground1Pressed);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+}

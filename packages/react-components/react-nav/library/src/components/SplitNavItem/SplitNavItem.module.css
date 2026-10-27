@@ -1,0 +1,52 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    gap: unset;
+    align-items: stretch;
+    padding: unset;
+    text-align: unset;
+    background-color: var(--colorNeutralBackground4);
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background;
+  }
+  .root:hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+  .root:hover :global(.fui-SplitNavItem__actionButton),
+  .root:hover :global(.fui-SplitNavItem__toggleButton),
+  .root:hover :global(.fui-SplitNavItem__menuButton),
+  .root:focus-within :global(.fui-SplitNavItem__actionButton),
+  .root:focus-within :global(.fui-SplitNavItem__toggleButton),
+  .root:focus-within :global(.fui-SplitNavItem__menuButton) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .root:active {
+    background-color: var(--colorNeutralBackground4Pressed);
+  }
+  .navItem {
+    display: flex;
+    text-transform: none;
+    align-self: stretch;
+    text-align: start;
+    position: relative;
+    justify-content: start;
+    gap: var(--spacingVerticalL);
+    background-color: transparent;
+  }
+  .secondary {
+    min-width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    padding-inline-end: var(--spacingHorizontalM);
+    padding-inline-start: calc(var(--spacingHorizontalXS) + var(--strokeWidthThin));
+    padding-block-start: calc(var(--spacingVerticalXS) + var(--strokeWidthThin));
+    align-items: start;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--durationFast) var(--curveEasyEase);
+    will-change: opacity;
+  }
+  :where(.medium) > .secondary {
+    padding-block-start: calc(var(--spacingVerticalS) + var(--strokeWidthThin));
+  }
+}

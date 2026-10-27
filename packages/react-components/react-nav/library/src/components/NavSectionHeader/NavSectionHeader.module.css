@@ -1,0 +1,10 @@
+@layer fluentui {
+  .root {
+    margin-inline-start: var(--spacingHorizontalMNudge);
+    margin-block: var(--spacingVerticalS);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+  }
+}

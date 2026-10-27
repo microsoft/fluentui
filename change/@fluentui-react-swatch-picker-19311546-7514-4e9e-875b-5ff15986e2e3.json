@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules style alternatives for swatch-picker",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

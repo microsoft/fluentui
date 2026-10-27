@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules style alternatives for field components",
+  "packageName": "@fluentui/react-field",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

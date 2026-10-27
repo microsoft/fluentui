@@ -60,3 +60,15 @@ See the [Spec.md](./docs/Spec.md) file for background information on the design/
 ## API
 
 For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/components-drawer--default).
+
+## Opt-in CSS Modules styles
+
+Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, InlineDrawer, OverlayDrawer, and OverlayDrawerSurface have alternatives, together with the shared Drawer base helpers. DrawerHeaderTitle still composes the cross-package DialogTitle Griffel hook and is not ported.
+
+The default components continue to use Griffel. An opt-in bundler resolver can replace
+`use<Component>Styles.styles.js` with `use<Component>Styles.styles.css.js`
+(and the corresponding `.ts` source modules). Keep the emitted CSS assets and process
+their CSS Modules imports; all rules are in `@layer fluentui`. Apply the same selection
+to client and server bundles. Within-package composed alternatives import their CSS
+base hook explicitly. These alternatives do not make composed external components
+Griffel-free. Browser, forced-colors, SSR, and full VRT parity require separate validation.

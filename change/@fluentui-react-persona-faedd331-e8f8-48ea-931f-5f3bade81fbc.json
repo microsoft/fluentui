@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules style alternatives for persona components",
+  "packageName": "@fluentui/react-persona",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

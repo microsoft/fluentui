@@ -1,0 +1,40 @@
+@layer fluentui {
+  .root {
+    background-color: var(--colorTransparentBackground);
+    border: var(--strokeWidthThin) dashed var(--colorNeutralForeground4);
+  }
+  .extra-small {
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+  }
+  .small {
+    width: var(--spacingHorizontalXXL);
+    height: var(--spacingHorizontalXXL);
+  }
+  .medium {
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+  }
+  .large {
+    width: var(--spacingHorizontalXXXL);
+    height: var(--spacingHorizontalXXXL);
+  }
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusCircular);
+    }
+  }
+  .square {
+    border-radius: var(--borderRadiusNone);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusNone);
+    }
+  }
+}

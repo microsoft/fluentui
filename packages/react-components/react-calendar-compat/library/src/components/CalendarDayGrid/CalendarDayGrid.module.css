@@ -1,0 +1,328 @@
+@layer fluentui {
+  .wrapper {
+    padding-bottom: var(--spacingHorizontalMNudge);
+  }
+
+  .table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    margin-top: var(--spacingHorizontalXS);
+    padding-bottom: var(--spacingHorizontalMNudge);
+    position: relative;
+    table-layout: fixed;
+    text-align: center;
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  .tableShowWeekNumbers {
+    width: calc(
+      7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin)
+    );
+  }
+
+  .dayCell {
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    margin: 0;
+    padding: var(--spacingHorizontalXXS);
+    position: relative;
+    @media (forced-colors: active) {
+      & {
+        background-color: Window;
+        color: WindowText;
+      }
+    }
+    &:global(.fui-CalendarDayGrid__hoverStyle) {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      @media (forced-colors: active) {
+        & {
+          outline: var(--strokeWidthThin) solid Highlight;
+          z-index: 3;
+          & :global(.fui-CalendarDayGrid__dayTodayMarker) {
+            background-color: Highlight;
+          }
+        }
+      }
+    }
+    &:global(.fui-CalendarDayGrid__pressedStyle) {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+          color: Highlight;
+        }
+      }
+    }
+  }
+
+  .dayCellFocusIndicator {
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-top-color: transparent;
+      border-inline-end-color: transparent;
+      border-bottom-color: transparent;
+      border-inline-start-color: transparent;
+      @media (forced-colors: active) {
+        & {
+          &::after {
+            border-top-color: Highlight;
+            border-inline-end-color: Highlight;
+            border-bottom-color: Highlight;
+            border-inline-start-color: Highlight;
+          }
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(var(--strokeWidthThick) * -1);
+        inset-inline-end: calc(var(--strokeWidthThick) * -1);
+        bottom: calc(var(--strokeWidthThick) * -1);
+        inset-inline-start: calc(var(--strokeWidthThick) * -1);
+      }
+    }
+  }
+
+  .daySelected {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+    @media (forced-colors: active) {
+      & {
+        background-color: Highlight;
+        border-top-color: Highlight;
+        border-inline-end-color: Highlight;
+        border-bottom-color: Highlight;
+        border-inline-start-color: Highlight;
+        color: HighlightText;
+        forced-color-adjust: none;
+      }
+    }
+    &:hover,
+    &:global(.fui-CalendarDayGrid__hoverStyle),
+    &:global(.fui-CalendarDayGrid__pressedStyle) {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          color: HighlightText;
+        }
+      }
+    }
+    & > :global(.fui-CalendarDayGrid__dayMarker) {
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+  }
+
+  .daySingleSelected {
+    color: var(--colorNeutralForeground1Static);
+    & > :global(.fui-CalendarDayGrid__dayMarker) {
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+    & > :global(.fui-CalendarDayGrid__dayButton) {
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      border-radius: var(--borderRadiusMedium);
+      border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+          color: HighlightText;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .weekRow {
+    position: relative;
+    &:focus-within {
+      z-index: 1;
+    }
+  }
+
+  .weekDayLabelCell {
+    user-select: none;
+  }
+
+  .weekNumberCell {
+    background-color: var(--colorTransparentBackground);
+    border-inline-end: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground4);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    margin: 0;
+    padding: 0;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+  }
+
+  .dayOutsideBounds {
+    &,
+    &:disabled,
+    & button,
+    &:global(.fui-CalendarDayGrid__hoverStyle),
+    &:global(.fui-CalendarDayGrid__pressedStyle) {
+      background-color: var(--colorTransparentBackground);
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+    }
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+      }
+    }
+  }
+
+  .dayOutsideNavigatedMonthLightenDaysOutsideNavigatedMonth {
+    color: var(--colorNeutralForeground4);
+    font-weight: var(--fontWeightRegular);
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+      }
+    }
+  }
+
+  .dayButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: var(--fontSizeBase200);
+    font-weight: inherit;
+    height: var(--spacingHorizontalXXL);
+    line-height: var(--spacingHorizontalXXL);
+    overflow: visible;
+    padding: 0;
+    width: var(--spacingHorizontalXXL);
+    &:is(span) {
+      height: inherit;
+      line-height: inherit;
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      border-radius: var(--borderRadiusMedium);
+    }
+    &:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+    }
+  }
+
+  .dayIsToday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorNeutralForegroundOnBrand);
+    font-weight: var(--fontWeightSemibold);
+    & > :global(.fui-CalendarDayGrid__dayMarker) {
+      background-color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+  }
+
+  .dayTodayMarker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorBrandBackground);
+    border-radius: 100%;
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+    line-height: var(--spacingHorizontalXL);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        border-top-color: WindowText;
+        border-inline-end-color: WindowText;
+        border-bottom-color: WindowText;
+        border-inline-start-color: WindowText;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  .firstTransitionWeek {
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .lastTransitionWeek {
+    margin-top: calc(-1 * calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .dayMarker {
+    background-color: var(--colorBrandForeground2);
+    border-radius: 100%;
+    bottom: var(--strokeWidthThin);
+    height: var(--spacingHorizontalXS);
+    inset-inline-start: 0;
+    margin: auto;
+    position: absolute;
+    inset-inline-end: 0;
+    width: var(--spacingHorizontalXS);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  .cornerBorderAndRadiusCorners {
+    &:global(.fui-CalendarDayGrid__topRightCornerDate) {
+      border-start-end-radius: var(--borderRadiusMedium);
+    }
+    &:global(.fui-CalendarDayGrid__topLeftCornerDate) {
+      border-start-start-radius: var(--borderRadiusMedium);
+    }
+    &:global(.fui-CalendarDayGrid__bottomRightCornerDate) {
+      border-end-end-radius: var(--borderRadiusMedium);
+    }
+    &:global(.fui-CalendarDayGrid__bottomLeftCornerDate) {
+      border-end-start-radius: var(--borderRadiusMedium);
+    }
+  }
+}

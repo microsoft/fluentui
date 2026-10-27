@@ -1,0 +1,8 @@
+@layer fluentui {
+  .root {
+    display: block;
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: 1;
+  }
+}

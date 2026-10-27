@@ -1,0 +1,14 @@
+@layer fluentui {
+  .root {
+    background-color: inherit;
+    position: absolute;
+    inset-inline-end: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    margin-inline-start: auto;
+  }
+  .visible {
+    opacity: 1;
+  }
+}

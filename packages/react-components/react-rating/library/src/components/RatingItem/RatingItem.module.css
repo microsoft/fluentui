@@ -1,0 +1,121 @@
+@layer fluentui {
+  .root {
+    position: relative;
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-within]:focus-within {
+      border-top-color: transparent;
+      border-inline-end-color: transparent;
+      border-bottom-color: transparent;
+      border-inline-start-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--spacingHorizontalXXS) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(var(--spacingHorizontalXXS) * -1);
+        inset-inline-end: calc(var(--spacingHorizontalXXS) * -1);
+        bottom: calc(var(--spacingHorizontalXXS) * -1);
+        inset-inline-start: calc(var(--spacingHorizontalXXS) * -1);
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+        }
+      }
+    }
+  }
+  .small {
+    font-size: var(--fontSizeBase200);
+    width: var(--fontSizeBase200);
+    height: var(--fontSizeBase200);
+  }
+  .medium {
+    font-size: var(--fontSizeBase400);
+    width: var(--spacingHorizontalL);
+    height: var(--spacingHorizontalL);
+  }
+  .large {
+    font-size: var(--fontSizeBase500);
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+  }
+  .extra-large {
+    font-size: var(--fontSizeHero700);
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+  }
+  .input {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+  }
+  .halfValueInput {
+    inset-inline-end: 50%;
+  }
+  :where(.half) > .fullValueInput {
+    inset-inline-start: 50%;
+  }
+  .indicator {
+    display: flex;
+    overflow: hidden;
+    color: var(--colorNeutralForeground1);
+    fill: currentColor;
+    pointer-events: none;
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+  }
+  :where(.halfIcon) > .selectedIcon {
+    inset-inline-end: 50%;
+    & > svg {
+      flex: 0 0 auto;
+    }
+  }
+  :where(.halfIcon) > .unselectedIcon {
+    inset-inline-start: 50%;
+    margin-inline-start: -50%;
+  }
+  :where(.brand) > .indicator {
+    color: var(--colorBrandForeground1);
+  }
+  :where(.marigold) > .indicator {
+    color: var(--colorPaletteMarigoldBorderActive);
+  }
+  :where(.filled) > .unselectedIcon {
+    color: var(--colorNeutralBackground6);
+    stroke: var(--colorTransparentStroke);
+    @media (forced-colors: active) {
+      color: Canvas;
+      stroke: CanvasText;
+    }
+  }
+  :where(.filled.brand) > .unselectedIcon {
+    @media (forced-colors: none) {
+      color: var(--colorBrandBackground2);
+    }
+  }
+  :where(.filled.marigold) > .unselectedIcon {
+    @media (forced-colors: none) {
+      color: var(--colorPaletteMarigoldBackground2);
+    }
+  }
+}

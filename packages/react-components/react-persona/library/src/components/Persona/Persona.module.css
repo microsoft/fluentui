@@ -1,0 +1,176 @@
+@layer fluentui {
+  .root {
+    display: inline-grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: column;
+    justify-items: start;
+    grid-template-columns: max-content [middle] auto;
+  }
+
+  .root:where(:not(.below).alignment-center) {
+    grid-template-rows: 1fr [primary] max-content [secondary] max-content [tertiary] max-content [quaternary] max-content 1fr;
+  }
+
+  .root:where(.before) {
+    justify-items: end;
+    grid-template-columns: auto [middle] max-content;
+  }
+
+  .root:where(.below) {
+    grid-auto-flow: unset;
+    justify-items: center;
+    grid-template-columns: unset;
+  }
+
+  :where(:not(.below)) > .avatar,
+  :where(:not(.below)) > .presence {
+    grid-row-start: span 5;
+  }
+
+  :where(:not(.below).alignment-center) > .avatar,
+  :where(:not(.below).alignment-center) > .presence {
+    grid-row-start: span 6;
+  }
+
+  :where(.alignment-start) > .avatar,
+  :where(.alignment-start) > .presence {
+    align-self: start;
+  }
+
+  :where(.alignment-center) > .avatar,
+  :where(.alignment-center) > .presence {
+    align-self: center;
+  }
+
+  :where(.after.presenceOnly.alignment-start:not(.extra-large, .huge)) > .presence {
+    align-self: center;
+    grid-row-start: unset;
+    grid-column-end: middle;
+  }
+
+  :where(.before.presenceOnly.alignment-start:not(.extra-large, .huge)) > .presence {
+    align-self: center;
+    grid-row-start: unset;
+    grid-column-start: middle;
+  }
+
+  .secondaryText {
+    margin-top: calc(0px - var(--spacingVerticalXXS));
+  }
+
+  :where(:not(.below).alignment-center) > .primaryText {
+    grid-row-start: primary;
+  }
+
+  :where(:not(.below).alignment-center) > .secondaryText {
+    grid-row-start: secondary;
+  }
+
+  :where(:not(.below).alignment-center) > .tertiaryText {
+    grid-row-start: tertiary;
+  }
+
+  :where(:not(.below).alignment-center) > .quaternaryText {
+    grid-row-start: quaternary;
+  }
+
+  .root:where(.extra-small) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+  }
+
+  .root:where(.small) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+  }
+
+  .root:where(.medium) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalS);
+  }
+
+  .root:where(.large) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+  }
+
+  .root:where(.extra-large) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalMNudge);
+  }
+
+  .root:where(.huge) {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalM);
+  }
+
+  :where(.after) > .avatar,
+  :where(.after) > .presence {
+    margin-inline-end: var(--fui-Persona__avatar--spacing);
+  }
+
+  :where(.below) > .avatar,
+  :where(.below) > .presence {
+    margin-bottom: var(--fui-Persona__avatar--spacing);
+  }
+
+  :where(.before) > .avatar,
+  :where(.before) > .presence {
+    margin-inline-start: var(--fui-Persona__avatar--spacing);
+  }
+
+  :where(.small) > .presence {
+    --fui-Persona__avatar--spacing: var(--spacingHorizontalSNudge);
+  }
+
+  .primaryText {
+    display: block;
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .secondaryText,
+  .tertiaryText,
+  .quaternaryText {
+    display: block;
+    color: var(--colorNeutralForeground2);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :where(.before.presenceOnly.alignment-start:not(.extra-large, .huge)) > .primaryText,
+  :where(.before.presenceOnly.alignment-start:not(.extra-large, .huge)) > .secondaryText,
+  :where(.before.presenceOnly.alignment-start:not(.extra-large, .huge)) > .tertiaryText,
+  :where(.before.presenceOnly.alignment-start:not(.extra-large, .huge)) > .quaternaryText {
+    grid-column-end: middle;
+  }
+
+  :where(.after.presenceOnly.alignment-start:not(.extra-large, .huge)) > .primaryText,
+  :where(.after.presenceOnly.alignment-start:not(.extra-large, .huge)) > .secondaryText,
+  :where(.after.presenceOnly.alignment-start:not(.extra-large, .huge)) > .tertiaryText,
+  :where(.after.presenceOnly.alignment-start:not(.extra-large, .huge)) > .quaternaryText {
+    grid-column-start: middle;
+  }
+
+  :where(.huge:not(.presenceOnly)) > .secondaryText,
+  :where(.huge:not(.presenceOnly)) > .tertiaryText,
+  :where(.huge:not(.presenceOnly)) > .quaternaryText {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.extra-small.presenceOnly.singleLine) > .primaryText {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :where(.extra-large, .huge) > .primaryText {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+}

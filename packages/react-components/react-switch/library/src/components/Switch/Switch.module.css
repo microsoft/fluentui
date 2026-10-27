@@ -1,0 +1,290 @@
+@layer fluentui {
+  .root:focus {
+    outline-style: none;
+  }
+
+  .root:focus-visible {
+    outline-style: none;
+  }
+
+  .root[data-fui-focus-within]:focus-within::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    top: calc(var(--strokeWidthThick) * -1);
+    inset-inline-end: calc(var(--strokeWidthThick) * -1);
+    bottom: calc(var(--strokeWidthThick) * -1);
+    inset-inline-start: calc(var(--strokeWidthThick) * -1);
+  }
+
+  .root[data-fui-focus-within]:focus-within {
+    border-top-color: transparent;
+    border-inline-end-color: transparent;
+    border-bottom-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  .root {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: inline-flex;
+    position: relative;
+  }
+
+  .above {
+    flex-direction: column;
+  }
+
+  .indicator > * {
+    transition-duration: var(--durationNormal);
+    transition-timing-function: var(--curveEasyEase);
+    transition-property: transform;
+  }
+
+  .indicator {
+    border-radius: var(--borderRadiusCircular);
+    border: var(--strokeWidthThin) solid;
+    line-height: 0;
+    box-sizing: border-box;
+    fill: currentColor;
+    flex-shrink: 0;
+    font-size: calc(var(--spacingHorizontalXS) * 4.5);
+    height: var(--spacingHorizontalXL);
+    margin: var(--spacingVerticalS) var(--spacingHorizontalS);
+    pointer-events: none;
+    transition-duration: var(--durationNormal);
+    transition-timing-function: var(--curveEasyEase);
+    transition-property: background, border, color;
+    width: calc(var(--spacingHorizontalXS) * 10);
+  }
+
+  :where(.withLabel.above) > .indicator {
+    margin-top: 0;
+  }
+
+  :where(.small) > .indicator {
+    font-size: var(--fontSizeBase300);
+    height: var(--spacingHorizontalL);
+    width: var(--spacingHorizontalXXXL);
+  }
+
+  .input:checked ~ :global(.fui-Switch__indicator) > * {
+    transform: translateX(var(--spacingHorizontalXL));
+  }
+
+  .input:checked ~ :global(.fui-Switch__indicator) > *:where(:dir(rtl)) {
+    transform: translateX(calc(var(--spacingHorizontalXL) * -1));
+  }
+
+  .input:disabled ~ :global(.fui-Switch__indicator),
+  .input[aria-disabled='true'] ~ :global(.fui-Switch__indicator) {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .input:disabled ~ :global(.fui-Switch__label),
+  .input[aria-disabled='true'] ~ :global(.fui-Switch__label) {
+    cursor: default;
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .input:disabled,
+  .input[aria-disabled='true'] {
+    cursor: default;
+  }
+
+  .input:enabled:not(:checked):not([aria-disabled='true']) ~ :global(.fui-Switch__indicator) {
+    color: var(--colorNeutralStrokeAccessible);
+    border-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  .input:enabled:not(:checked):not([aria-disabled='true']) ~ :global(.fui-Switch__label) {
+    color: var(--colorNeutralForeground1);
+  }
+
+  .input:enabled:not(:checked):not([aria-disabled='true']):hover ~ :global(.fui-Switch__indicator) {
+    color: var(--colorNeutralStrokeAccessibleHover);
+    border-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  .input:enabled:not(:checked):not([aria-disabled='true']):hover:active ~ :global(.fui-Switch__indicator) {
+    color: var(--colorNeutralStrokeAccessiblePressed);
+    border-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  .input:enabled:checked:not([aria-disabled='true']) ~ :global(.fui-Switch__indicator) {
+    background-color: var(--colorCompoundBrandBackground);
+    color: var(--colorNeutralForegroundInverted);
+    border-color: var(--colorTransparentStroke);
+  }
+
+  .input:enabled:checked:not([aria-disabled='true']):hover ~ :global(.fui-Switch__indicator) {
+    background-color: var(--colorCompoundBrandBackgroundHover);
+    border-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  .input:enabled:checked:not([aria-disabled='true']):hover:active ~ :global(.fui-Switch__indicator) {
+    background-color: var(--colorCompoundBrandBackgroundPressed);
+    border-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  .input:disabled:not(:checked) ~ :global(.fui-Switch__indicator),
+  .input[aria-disabled='true']:not(:checked) ~ :global(.fui-Switch__indicator) {
+    border-color: var(--colorNeutralStrokeDisabled);
+  }
+
+  .input:disabled:checked ~ :global(.fui-Switch__indicator),
+  .input[aria-disabled='true']:checked ~ :global(.fui-Switch__indicator) {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border-color: var(--colorTransparentStrokeDisabled);
+  }
+
+  .input {
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    width: calc(calc(var(--spacingHorizontalXS) * 10) + 2 * var(--spacingHorizontalS));
+  }
+
+  :where(.withLabel.before) > .input {
+    inset-inline-end: 0;
+    top: 0;
+  }
+
+  :where(.withLabel.after) > .input {
+    inset-inline-start: 0;
+    top: 0;
+  }
+
+  :where(.withLabel.above) > .input {
+    bottom: 0;
+    height: calc(var(--spacingHorizontalXL) + var(--spacingVerticalS));
+    width: 100%;
+  }
+
+  :where(.small) > .input:checked ~ :global(.fui-Switch__indicator) > * {
+    transform: translateX(var(--spacingHorizontalL));
+  }
+
+  :where(.small) > .input:checked ~ :global(.fui-Switch__indicator) > *:where(:dir(rtl)) {
+    transform: translateX(calc(var(--spacingHorizontalL) * -1));
+  }
+
+  :where(.small) > .input {
+    width: calc(var(--spacingHorizontalXXXL) + 2 * var(--spacingHorizontalS));
+  }
+
+  .label {
+    cursor: pointer;
+    margin-bottom: calc((var(--spacingHorizontalXL) - var(--lineHeightBase300)) / 2);
+    margin-top: calc((var(--spacingHorizontalXL) - var(--lineHeightBase300)) / 2);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+  }
+
+  :where(.small) > .label {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+    margin-bottom: calc((var(--spacingHorizontalL) - var(--lineHeightBase200)) / 2);
+    margin-top: calc((var(--spacingHorizontalL) - var(--lineHeightBase200)) / 2);
+  }
+
+  :where(.above) > .label {
+    padding-top: var(--spacingVerticalXS);
+    padding-bottom: var(--spacingVerticalXS);
+    width: 100%;
+  }
+
+  :where(.after) > .label {
+    padding-inline-start: var(--spacingHorizontalXS);
+  }
+
+  :where(.before) > .label {
+    padding-inline-end: var(--spacingHorizontalXS);
+  }
+
+  @media (forced-colors: active) {
+    .root[data-fui-focus-within]:focus-within::after {
+      border-top-color: Highlight;
+      border-inline-end-color: Highlight;
+      border-bottom-color: Highlight;
+      border-inline-start-color: Highlight;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .indicator {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .indicator > i {
+      forced-color-adjust: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .indicator {
+      color: CanvasText;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .indicator > * {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:disabled ~ :global(.fui-Switch__indicator),
+    .input[aria-disabled='true'] ~ :global(.fui-Switch__indicator) {
+      color: GrayText;
+      border-color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:disabled ~ :global(.fui-Switch__label),
+    .input[aria-disabled='true'] ~ :global(.fui-Switch__label) {
+      color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:hover {
+      color: CanvasText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:hover:active {
+      color: CanvasText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:checked:not([aria-disabled='true']):hover ~ :global(.fui-Switch__indicator) {
+      background-color: Highlight;
+      color: Canvas;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:checked:not([aria-disabled='true']):hover:active ~ :global(.fui-Switch__indicator) {
+      background-color: Highlight;
+      color: Canvas;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .input:enabled:checked:not([aria-disabled='true']) ~ :global(.fui-Switch__indicator) {
+      background-color: Highlight;
+      color: Canvas;
+    }
+  }
+}

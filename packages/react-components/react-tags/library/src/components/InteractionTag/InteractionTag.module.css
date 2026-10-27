@@ -1,0 +1,23 @@
+@layer fluentui {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: fit-content;
+  }
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+  .medium {
+    height: var(--spacingHorizontalXXXL);
+  }
+  .small {
+    height: var(--spacingHorizontalXXL);
+  }
+  .extra-small {
+    height: var(--spacingHorizontalXL);
+  }
+}

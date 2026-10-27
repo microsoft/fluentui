@@ -1,0 +1,24 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    align-items: center;
+    padding: var(--spacingHorizontalXS) var(--spacingHorizontalS);
+  }
+
+  .vertical {
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .small:where(:not(.vertical)) {
+    padding: 0px var(--spacingHorizontalXS);
+  }
+
+  .medium:where(:not(.vertical)) {
+    padding: var(--spacingHorizontalXS) var(--spacingHorizontalS);
+  }
+
+  .large:where(:not(.vertical)) {
+    padding: var(--spacingHorizontalXS) var(--spacingHorizontalXL);
+  }
+}

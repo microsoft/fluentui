@@ -1,0 +1,25 @@
+@layer fluentui {
+  .root {
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    list-style-type: none;
+    &[data-fui-focus-visible] {
+      outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+  .interactive {
+    display: flex;
+    cursor: pointer;
+  }
+  .disabled {
+    cursor: default;
+  }
+  .checkmark {
+    align-self: center;
+    & :global(.fui-Checkbox__indicator) {
+      margin: var(--spacingHorizontalXS);
+    }
+  }
+}

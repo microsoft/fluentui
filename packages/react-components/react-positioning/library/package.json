@@ -5,7 +5,9 @@
   "main": "lib-commonjs/index.cjs",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -19,6 +21,7 @@
     "@fluentui/react-utilities": "^9.27.0",
     "@griffel/react": "^1.5.32",
     "@swc/helpers": "^0.5.1",
+    "clsx": "^2.1.1",
     "use-sync-external-store": "^1.4.0"
   },
   "peerDependencies": {
@@ -46,7 +49,8 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./arrow.module.css": "./lib/Arrow.module.css"
   },
   "files": [
     "*.md",
