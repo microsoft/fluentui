@@ -8,7 +8,7 @@ import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities';
 
-const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
+const imageRoot = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
 /** Sample names and images for use in Avatar examples */
 const nameAndImage = [
