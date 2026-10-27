@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Add CSS Modules alternative for Toast Timer",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com"
+}

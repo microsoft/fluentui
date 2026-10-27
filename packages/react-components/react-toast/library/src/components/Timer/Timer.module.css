@@ -1,0 +1,15 @@
+@layer fluentui {
+  @keyframes baseAnimation {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  .baseAnimation {
+    animation-name: baseAnimation;
+  }
+}
