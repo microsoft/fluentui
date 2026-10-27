@@ -444,15 +444,29 @@ test('Dependabot configuration keeps Nx manual-only and every non-major npm upda
         group['update-types'].includes(level) &&
         group.patterns.some(pattern => new RegExp(`^${pattern.replace(/\*/g, '.*')}$`).test(name)),
     )?.[0];
-  for (const name of ['vite', 'undici', 'fast-uri', '@vitest/mocker', 'webpack-dev-middleware', 'storybook']) {
+  for (const name of [
+    'vite',
+    'undici',
+    'fast-uri',
+    '@vitest/mocker',
+    'webpack-dev-middleware',
+    'storybook',
+    'arbitrary-future-tooling',
+    '@new-scope/transitive',
+  ]) {
     assert.equal(ignored(name), false);
     for (const level of ['minor', 'patch']) {
-      assert.equal(groupFor(name, 'security-updates', level), 'security-tooling');
+      assert.equal(groupFor(name, 'security-updates', level), 'security-dependencies');
       assert.equal(groupFor(name, 'version-updates', level), 'development-dependencies');
     }
     assert.equal(groupFor(name, 'security-updates', 'major'), undefined);
   }
   assert.equal(groupFor('some-other-package', 'security-updates', 'patch'), 'security-dependencies');
+  assert.deepEqual(
+    Object.keys(npm.groups).filter(name => npm.groups[name]['applies-to'] === 'security-updates'),
+    ['security-dependencies'],
+  );
+  assert.deepEqual(npm.groups['security-dependencies'].patterns, ['*']);
   assert.equal(
     npm.allow.find(rule => rule['dependency-type'] === 'production')['update-types'][0],
     'version-update:semver-major',

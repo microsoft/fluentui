@@ -62,23 +62,6 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
-      # Keep frequently updated tooling/runtime fixes out of the larger transitive batch.
-      security-tooling:
-        applies-to: security-updates
-        patterns:
-          - 'vite'
-          - '@vitejs/*'
-          - 'vitest'
-          - '@vitest/*'
-          - 'undici'
-          - 'fast-uri'
-          - 'storybook'
-          - '@storybook/*'
-          - 'webpack'
-          - 'webpack-*'
-        update-types:
-          - 'minor'
-          - 'patch'
       security-dependencies:
         applies-to: security-updates
         patterns:

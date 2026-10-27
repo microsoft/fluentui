@@ -20,7 +20,7 @@ The Dependabot configuration is defined in `.github/dependabot.yml`:
 
 - **npm dependencies**: Weekly minor and patch version updates grouped for development dependencies; production dependencies are updated only for security advisories. Nx-family packages are manual-only.
 - **GitHub Actions**: Weekly minor/patch updates in `github-actions-minor-patch`, major updates in `github-actions-major`, and advisory-driven updates in the separate `github-actions-security` group
-- **Security updates**: Minor and patch tooling/runtime updates (`vite`, `@vitejs/*`, `vitest`, `@vitest/*`, `undici`, `fast-uri`, `storybook`, `@storybook/*`, `webpack`, `webpack-*`) match `security-tooling` first; other minor/patch fixes match `security-dependencies`. Major remediations stay isolated.
+- **Security updates**: The wildcard `security-dependencies` group covers all allowed minor/patch npm security fixes, including tooling and transitive dependencies. No package-name list is required. Major remediations stay isolated.
 - **Nx family**: `nx`, `@nx/*`, `@nrwl/*`, `nx-cloud`, and `@nx-cloud/*` are ignored for all automated version and security updates. Maintainers must run coordinated migrations and handle their security alerts manually; alerts are not disabled. To re-enable Dependabot for them, a maintainer must explicitly change the ignore policy.
 - **Manual rollups**: Maintainers can use `/dependabot-rollup` as a fallback to combine at most 11 eligible non-major updates
 
@@ -28,9 +28,9 @@ The repository's Advanced Security **Grouped security updates** setting must rem
 
 The npm `open-pull-requests-limit` controls the number of scheduled version-update pull requests. It does not limit the number of dependencies in a grouped pull request or change Dependabot's separate security-update pull request limit. Native groups have no dependency-count ceiling; the 11-update ceiling applies only to `/dependabot-rollup`.
 
-The tooling security group is deliberately placed before the catch-all security group, so Vite/Undici/fast-uri fixes do not depend on the larger transitive batch. Do not add a routine production-update group: that would broaden the existing update policy. Grouped processing can still fail upstream and produce individual fallback PRs; investigate the Dependabot update log rather than assuming a patch singleton lacked a matching group. The October 26 updater run [40366154628](https://github.com/microsoft/fluentui/actions/runs/40366154628) matched these dependencies to `security-dependencies`, then reported Yarn `NoChangeError` failures during grouped processing and created individual PRs.
+Grouping selects candidates; it does not guarantee that Dependabot can generate every update in the combined workspace. In the October 26 updater run [40366154628](https://github.com/microsoft/fluentui/actions/runs/40366154628), Vite, fast-uri, and Undici matched `security-dependencies`. The grouped job produced an eight-update PR, but logged `Security update failed for ...` for those packages, then retried them individually and created singleton PRs. A separate `NoChangeError` affected shell-quote. These logs establish a grouped-update generation/validation failure, not a missing YAML match or a proven common Yarn root cause. Investigate/reproduce the updater failure rather than adding package-specific groups or promising a config-only fix. Do not add a routine production-update group: that would broaden the existing update policy.
 
-After merging configuration changes, verify the next native Dependabot run uses the Nx ignores and new security group. Existing PRs are not guaranteed to regroup automatically. Do not close an individual advisory fix merely because a group is expected: first verify incorporation or supersession and obtain skill confirmation.
+After merging configuration changes, verify the next native Dependabot run uses the Nx ignores and wildcard security group. Existing PRs are not guaranteed to regroup automatically. Do not close an individual advisory fix merely because a group is expected: first verify incorporation or supersession and obtain skill confirmation.
 
 ## Local Dependabot maintenance
 
