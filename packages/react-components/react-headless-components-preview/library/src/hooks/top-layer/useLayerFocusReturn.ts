@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { getActiveElement, isDialogElement } from './utils';
+import { getActiveElement, getDeepActiveElement, isDialogElement } from './utils';
 import { useElementListeners } from './useElementListeners';
 import type { LayerLifecycleCallbacks, UseLayerFocusReturnOptions } from './types';
 
@@ -23,7 +23,8 @@ export const useLayerFocusReturn = (
   const focusWasInside = React.useRef<boolean | null>(null);
 
   const onBeforeShow = useEventCallback((element: HTMLElement) => {
-    previouslyFocused.current = getActiveElement(element) as HTMLElement | null;
+    // The focused control itself, even when it is in another shadow root than the element.
+    previouslyFocused.current = getDeepActiveElement(element.ownerDocument) as HTMLElement | null;
     focusWasInside.current = null;
   });
 
