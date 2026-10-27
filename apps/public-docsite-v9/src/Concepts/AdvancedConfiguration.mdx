@@ -165,7 +165,8 @@ unmount removing another application's styles.
 
 - An absent token or empty string preserves existing generated IDs.
 - A non-empty namespace must match `[A-Za-z_][A-Za-z0-9_-]*`. Validate it in your build config;
-  Fluent also throws when an invalid substituted value is evaluated. Values are not silently sanitized.
+  development builds also throw when an invalid substituted value is evaluated. Production bundles
+  omit this runtime validation, so build-config validation is required. Values are not silently sanitized.
 - The namespace is resolved once when the Fluent module loads. It is not a runtime setting.
 - Generated IDs compose as `namespace + "-" + provider prefix + hook prefix + generated suffix`.
   The provider prefix can be empty, but cannot remove the build namespace.

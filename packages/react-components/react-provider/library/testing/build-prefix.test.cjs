@@ -5,7 +5,7 @@ const { mkdtempSync, readFileSync, rmSync, writeFileSync } = require('node:fs');
 const { tmpdir } = require('node:os');
 const { join, resolve } = require('node:path');
 const { after, before, test } = require('node:test');
-const { buildSync } = require('esbuild');
+const { buildSync, transformSync } = require('esbuild');
 const { chromium } = require('playwright');
 const webpack = require('webpack');
 
@@ -146,6 +146,18 @@ test('published ESM and CommonJS preserve the token and compose identically', ()
     readFileSync(join(utilitiesRoot, 'dist/index.d.ts'), 'utf8'),
     /declare (?:const|let|var) __FLUENT_USE_ID_BUILD_PREFIX__/,
   );
+});
+
+test('production bundles omit namespace validation and its diagnostic', () => {
+  for (const [index, path] of hookPaths.entries()) {
+    for (const namespace of [undefined, 'app-a']) {
+      const output = bundle(hookEntry(path), `production${index}`, namespace);
+      const { code } = transformSync(readFileSync(output, 'utf8'), { minify: true });
+
+      assert.doesNotMatch(code, /__FLUENT_USE_ID_BUILD_PREFIX__ must be/);
+      assert.equal(code.includes('[A-Za-z_][A-Za-z0-9_-]*'), false);
+    }
+  }
 });
 
 test('unconfigured and empty browser builds preserve the existing prefix without process', async () => {

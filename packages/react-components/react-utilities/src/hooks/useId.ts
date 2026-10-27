@@ -8,10 +8,12 @@ declare const __FLUENT_USE_ID_BUILD_PREFIX__: string | undefined;
 
 const buildNamespace = typeof __FLUENT_USE_ID_BUILD_PREFIX__ === 'undefined' ? '' : __FLUENT_USE_ID_BUILD_PREFIX__;
 
-if (typeof buildNamespace !== 'string' || (buildNamespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(buildNamespace))) {
-  throw new Error(
-    '@fluentui/react-utilities: __FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match [A-Za-z_][A-Za-z0-9_-]*.',
-  );
+if (process.env.NODE_ENV !== 'production') {
+  if (typeof buildNamespace !== 'string' || (buildNamespace && !/^[A-Za-z_][A-Za-z0-9_-]*$/.test(buildNamespace))) {
+    throw new Error(
+      '@fluentui/react-utilities: __FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match [A-Za-z_][A-Za-z0-9_-]*.',
+    );
+  }
 }
 
 const buildPrefix = buildNamespace ? `${buildNamespace}-` : '';

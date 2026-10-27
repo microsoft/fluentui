@@ -138,9 +138,18 @@ describe.each([false, true])('useId build namespace (native IDs enabled: %s)', n
   });
 
   it.each(['1app', 'app.name', 'app space', 'app:root', 'app\n', 1, null, false])(
-    'rejects invalid namespace %j explicitly',
+    'rejects invalid namespace %j outside production',
     value => {
       expect(() => loadNamespace(value)).toThrow('__FLUENT_USE_ID_BUILD_PREFIX__ must be an empty string or match');
     },
   );
+
+  it('omits runtime namespace validation in production', () => {
+    const nodeEnv = jest.replaceProperty(process.env, 'NODE_ENV', 'production');
+    try {
+      expect(() => loadNamespace('invalid namespace')).not.toThrow();
+    } finally {
+      nodeEnv.restore();
+    }
+  });
 });
