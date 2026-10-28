@@ -9,7 +9,7 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
@@ -286,7 +286,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   };
 };
 
-export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+export const usePopoverContextValues = (state: PopoverState): PopoverContextValues => {
   const {
     open,
     setOpen,

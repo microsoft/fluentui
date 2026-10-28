@@ -36,6 +36,9 @@ export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 export { CounterBadgeProps }
 
 // @public
+export type CounterBadgeSlots = BadgeSlots;
+
+// @public
 export type CounterBadgeState = CounterBadgeBaseState & {
     root: {
         'data-count': string;
@@ -49,6 +52,9 @@ export type CounterBadgeState = CounterBadgeBaseState & {
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 
 export { PresenceBadgeProps }
+
+// @public
+export type PresenceBadgeSlots = BadgeSlots;
 
 // @public
 export type PresenceBadgeState = PresenceBadgeBaseState & {

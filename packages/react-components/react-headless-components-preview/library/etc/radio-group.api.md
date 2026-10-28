@@ -9,6 +9,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { ForwardRefExoticComponent } from 'react';
 import type { RadioBaseState } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
 import { RadioGroupBaseProps as RadioGroupProps } from '@fluentui/react-radio';
 import { RadioGroupSlots } from '@fluentui/react-radio';
@@ -21,6 +22,7 @@ import { RefAttributes } from '@fluentui/react-utilities';
 import { renderRadio_unstable as renderRadio } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable as renderRadioGroup } from '@fluentui/react-radio';
 import { useRadioGroupBase_unstable as useRadioGroup } from '@fluentui/react-radio';
+import { useRadioGroupContext_unstable as useRadioGroupContext } from '@fluentui/react-radio';
 
 // @public
 export const Radio: ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots>, "input">, "onChange" | "size"> & {
@@ -32,6 +34,10 @@ onChange?: (ev: ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
 
 export { RadioGroupProps }
 
@@ -59,6 +65,8 @@ export { renderRadioGroup }
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
 export { useRadioGroup }
+
+export { useRadioGroupContext }
 
 // @public (undocumented)
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;

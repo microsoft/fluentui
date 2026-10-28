@@ -42,6 +42,11 @@ export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggl
 };
 
 // @public
+export type PopoverContextValues = {
+    popover: PopoverContextValue;
+};
+
+// @public
 export type PopoverProps = {
     children: [JSXElement, JSXElement] | JSXElement;
     open?: boolean;
@@ -114,9 +119,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover: (state: PopoverState, contextValues: {
-    popover: PopoverContextValue;
-}) => React_2.ReactElement;
+export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => React_2.ReactElement;
 
 // @public (undocumented)
 export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
@@ -131,9 +134,7 @@ export const usePopover: (props: PopoverProps) => PopoverState;
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public (undocumented)
-export const usePopoverContextValues: (state: PopoverState) => {
-    popover: PopoverContextValue;
-};
+export const usePopoverContextValues: (state: PopoverState) => PopoverContextValues;
 
 // @public
 export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;

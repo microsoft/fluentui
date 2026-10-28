@@ -4,6 +4,8 @@
 
 ```ts
 
+import type { ButtonSlots } from '@fluentui/react-button';
+import type { DividerSlots } from '@fluentui/react-divider';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type * as React_2 from 'react';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
@@ -11,9 +13,11 @@ import { renderToolbar_unstable as renderToolbar } from '@fluentui/react-toolbar
 import { renderButton_unstable as renderToolbarButton } from '@fluentui/react-button';
 import { renderDivider_unstable as renderToolbarDivider } from '@fluentui/react-divider';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import type { Slot } from '@fluentui/react-utilities';
 import type { ToolbarBaseState } from '@fluentui/react-toolbar';
 import type { ToolbarButtonBaseState } from '@fluentui/react-toolbar';
 import { ToolbarButtonBaseProps as ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
 import { ToolbarContextValues } from '@fluentui/react-toolbar';
 import type { ToolbarDividerBaseState } from '@fluentui/react-toolbar';
 import { ToolbarDividerBaseProps as ToolbarDividerProps } from '@fluentui/react-toolbar';
@@ -50,6 +54,9 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 export { ToolbarButtonProps }
 
 // @public (undocumented)
+export type ToolbarButtonSlots = ButtonSlots;
+
+// @public (undocumented)
 export type ToolbarButtonState = ToolbarButtonBaseState & {
     root: {
         'data-vertical'?: string;
@@ -59,12 +66,17 @@ export type ToolbarButtonState = ToolbarButtonBaseState & {
     };
 };
 
+export { ToolbarContextValue }
+
 export { ToolbarContextValues }
 
 // @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
 
 export { ToolbarDividerProps }
+
+// @public (undocumented)
+export type ToolbarDividerSlots = DividerSlots;
 
 // @public (undocumented)
 export type ToolbarDividerState = ToolbarDividerBaseState & {
@@ -77,6 +89,11 @@ export type ToolbarDividerState = ToolbarDividerBaseState & {
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
 
 export { ToolbarGroupProps }
+
+// @public (undocumented)
+export type ToolbarGroupSlots = {
+    root: Slot<'div'>;
+};
 
 // @public (undocumented)
 export type ToolbarGroupState = ToolbarGroupState_2 & {
@@ -93,6 +110,9 @@ export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 export { ToolbarRadioButtonProps }
 
 // @public (undocumented)
+export type ToolbarRadioButtonSlots = ButtonSlots;
+
+// @public (undocumented)
 export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
     root: {
         'data-disabled'?: string;
@@ -106,6 +126,11 @@ export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
 
 export { ToolbarRadioGroupProps }
+
+// @public (undocumented)
+export type ToolbarRadioGroupSlots = {
+    root: Slot<'div'>;
+};
 
 // @public (undocumented)
 export type ToolbarRadioGroupState = ToolbarRadioGroupState_2 & {
@@ -128,6 +153,9 @@ export type ToolbarState = ToolbarBaseState & {
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
 export { ToolbarToggleButtonProps }
+
+// @public (undocumented)
+export type ToolbarToggleButtonSlots = ButtonSlots;
 
 // @public (undocumented)
 export type ToolbarToggleButtonState = ToolbarToggleButtonBaseState & {

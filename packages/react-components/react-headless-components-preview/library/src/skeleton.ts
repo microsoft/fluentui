@@ -5,6 +5,7 @@ export {
   Skeleton,
   renderSkeleton,
   useSkeleton,
+  useSkeletonContext,
   useSkeletonContextValues,
 } from './components/Skeleton/index';
 export type {
@@ -14,4 +15,6 @@ export type {
   SkeletonSlots,
   SkeletonProps,
   SkeletonState,
+  SkeletonContextValue,
+  SkeletonContextValues,
 } from './components/Skeleton/index';
