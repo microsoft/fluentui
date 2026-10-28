@@ -1620,6 +1620,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         | undefined;
 
       const pointToHighlightUpdated =
+        !calloutTarget?.isPath ||
+        calloutTarget.lineIndex !== linenumber ||
+        calloutTarget.pointIndex !== pointIndex ||
         nearestCircleToHighlight === null ||
         (nearestCircleToHighlight !== null &&
           pointToHighlight !== null &&

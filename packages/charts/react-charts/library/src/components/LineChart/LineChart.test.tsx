@@ -1539,6 +1539,92 @@ describe('LineChart - deferred reset and hovered point payload', () => {
   });
 });
 
+describe('LineChart - overlapping path focus', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([false, true])('refreshes duplicate-coordinate point identity (optimized: %s)', optimizeLargeData => {
+    const { container } = render(
+      <LineChart
+        data={{
+          lineChartData: [
+            {
+              legend: 'First',
+              color: 'red',
+              data: [
+                { x: 1, y: 10, xAxisCalloutData: 'First point' },
+                { x: 1, y: 10, xAxisCalloutData: 'Second point' },
+              ],
+              lineOptions: { curve: 'linear', mode: 'lines+markers' },
+            },
+          ],
+        }}
+        width={600}
+        height={400}
+        optimizeLargeData={optimizeLargeData}
+        isCalloutForStack={false}
+      />,
+    );
+    const markers = container.querySelectorAll<SVGCircleElement>('circle[role="option"][tabindex="0"]');
+    expect(markers).toHaveLength(2);
+    for (const index of [0, 1, 0]) {
+      act(() => markers[index].focus());
+      expect(container.ownerDocument.activeElement).toBe(markers[index]);
+      expect(getByClass(container, /calloutContentX/i)[0]).toHaveTextContent(
+        index === 0 ? 'First point' : 'Second point',
+      );
+    }
+  });
+
+  it.each([
+    { optimizeLargeData: false, overlapping: false },
+    { optimizeLargeData: false, overlapping: true },
+    { optimizeLargeData: true, overlapping: false },
+    { optimizeLargeData: true, overlapping: true },
+  ])(
+    'refreshes the selected series without dismissing (optimized: $optimizeLargeData, overlap: $overlapping)',
+    ({ optimizeLargeData, overlapping }) => {
+      const legends = ['First', 'Second', 'Third'];
+      const colors = ['red', 'green', 'blue'];
+      const { container } = render(
+        <LineChart
+          data={{
+            lineChartData: legends.map((legend, index) => ({
+              legend,
+              color: colors[index],
+              data: [
+                { x: 1, y: overlapping ? 10 : 10 + index },
+                { x: 2, y: 20 },
+              ],
+              lineOptions: { curve: 'linear', mode: 'lines' },
+            })),
+          }}
+          width={600}
+          height={400}
+          optimizeLargeData={optimizeLargeData}
+          isCalloutForStack={false}
+        />,
+      );
+
+      for (const index of [2, 1, 0, 2]) {
+        const path = container.querySelector<SVGPathElement>(
+          `g[role="listbox"][aria-label^="${legends[index]}"] path[id^="lineID"][tabindex="0"]`,
+        )!;
+        expect(path).not.toBeNull();
+        act(() => path.focus());
+
+        expect(container.ownerDocument.activeElement).toBe(path);
+        const callout = getByClass(container, /calloutContentRoot/i);
+        expect(callout).toHaveLength(1);
+        expect(callout[0]).toHaveTextContent(legends[index]);
+        const value = getByClass(container, /calloutContentY/i)[0];
+        expect(value).toHaveTextContent(String(overlapping ? 10 : 10 + index));
+        expect(value.style.color).toBe(colors[index]);
+      }
+    },
+  );
+});
+
 describe('LineChart - source coordinates after legend filtering', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
