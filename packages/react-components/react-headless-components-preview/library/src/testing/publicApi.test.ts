@@ -125,7 +125,12 @@ const entryPointFiles = fs
   .readdirSync(srcRoot)
   .filter(fileName => fileName.endsWith('.ts') && fileName !== 'index.ts' && !/\.(test|spec)\.ts$/.test(fileName));
 
-const program = createProgram(['index.ts', ...entryPointFiles].map(fileName => path.join(srcRoot, fileName)));
+const typeOnlyExportsFixture = path.join(__dirname, '__fixtures__', 'typeOnlyExports.ts');
+
+const program = createProgram([
+  ...['index.ts', ...entryPointFiles].map(fileName => path.join(srcRoot, fileName)),
+  typeOnlyExportsFixture,
+]);
 const checker = program.getTypeChecker();
 
 const entryPoints: EntryPoint[] = entryPointFiles.map(fileName => ({
@@ -137,7 +142,9 @@ const entryPoints: EntryPoint[] = entryPointFiles.map(fileName => ({
 // by `useButtonContext` exported from `/button`.
 const packageExports = entryPoints.flatMap(entryPoint => [...entryPoint.exports]);
 const packageHooks = packageExports.filter(([name, symbol]) => isValue(symbol) && /^use[A-Z]/.test(name));
-const packageTypeSymbols = new Set(packageExports.filter(([, symbol]) => !isValue(symbol)).map(([, symbol]) => symbol));
+const packageTypeSymbols = new Set(
+  packageExports.filter(([, symbol]) => !isValue(symbol) && !isTypeOnlyValueExport(symbol)).map(([, symbol]) => symbol),
+);
 const packageTypes = [...packageTypeSymbols].map(symbol => checker.getDeclaredTypeOfSymbol(symbol));
 
 describe('public API', () => {
@@ -150,6 +157,13 @@ describe('public API', () => {
 
   it('does not export anything from the root entry point', () => {
     expect([...getModuleExports(path.join(srcRoot, 'index.ts')).keys()]).toEqual([]);
+  });
+
+  it('does not accept type-only re-exports of runtime values', () => {
+    const violations = analyzeEntryPoint({ name: 'fixture', exports: getModuleExports(typeOnlyExportsFixture) });
+
+    expect(violations.buildingBlocks).toContain('useDialog');
+    expect(violations.disallowedExports).toEqual(['useDialog']);
   });
 
   it('only lists existing entry points in ADDITIONAL_EXPORTS and KNOWN_VIOLATIONS', () => {
@@ -217,7 +231,13 @@ function analyzeEntryPoint({ name, exports }: EntryPoint): Record<Rule, string[]
     }
 
     required.forEach(requiredName => buildingBlocks.add(requiredName));
-    missingBuildingBlocks.push(...required.filter(requiredName => !exports.has(requiredName)));
+    missingBuildingBlocks.push(
+      ...required.filter(requiredName => {
+        const symbol = exports.get(requiredName);
+        // Hooks and render functions are called at runtime, so they need to be value exports.
+        return !symbol || (/^(use|render)[A-Z]/.test(requiredName) && !isValue(symbol));
+      }),
+    );
 
     const composition = getComposition(exports.get(component)!);
     for (const part of composition.parts) {
@@ -329,7 +349,9 @@ function analyzeEntryPoint({ name, exports }: EntryPoint): Record<Rule, string[]
     /_unstable$/i.test(exportName) ||
     /^use\w*Styles$/.test(exportName) ||
     /ClassNames?$/.test(exportName) ||
-    isReactContext(symbol);
+    isReactContext(symbol) ||
+    // `export type { useX }` compiles away, so consumers would get `undefined` at runtime.
+    isTypeOnlyValueExport(symbol);
 
   return {
     buildingBlocks: missingBuildingBlocks,
@@ -363,7 +385,35 @@ function getModuleExports(fileName: string): Map<string, ts.Symbol> {
     throw new Error(`${fileName} is not a module`);
   }
 
-  return new Map(checker.getExportsOfModule(moduleSymbol).map(symbol => [symbol.name, resolveAlias(symbol)]));
+  // Type-only re-exports of runtime values are kept as unresolved aliases, so they never count as values.
+  return new Map(
+    checker
+      .getExportsOfModule(moduleSymbol)
+      .map(symbol => [symbol.name, isTypeOnlyValueExport(symbol) ? symbol : resolveAlias(symbol)]),
+  );
+}
+
+/**
+ * Whether a runtime value (e.g. a hook) is exported only as a type, anywhere along its re-export chain.
+ */
+function isTypeOnlyValueExport(symbol: ts.Symbol): boolean {
+  const target = resolveAlias(symbol);
+
+  if (target === symbol || !isValue(target) || hasFlag(target.flags, ts.SymbolFlags.Type)) {
+    return false;
+  }
+
+  for (
+    let alias: ts.Symbol | undefined = symbol;
+    alias && hasFlag(alias.flags, ts.SymbolFlags.Alias);
+    alias = checker.getImmediateAliasedSymbol(alias)
+  ) {
+    if ((alias.declarations ?? []).some(declaration => ts.isTypeOnlyImportOrExportDeclaration(declaration))) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function hasFlag(flags: number, flag: number): boolean {
