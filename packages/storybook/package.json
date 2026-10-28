@@ -18,10 +18,10 @@
     "lint": "yarn run -T just-scripts lint"
   },
   "dependencies": {
-    "@fluentui/azure-themes": "^8.6.151",
-    "@fluentui/react": "^8.125.8",
-    "@fluentui/theme": "^2.7.3",
-    "@fluentui/theme-samples": "^8.7.227",
+    "@fluentui/azure-themes": "^8.6.152",
+    "@fluentui/react": "^8.125.9",
+    "@fluentui/theme": "^2.7.4",
+    "@fluentui/theme-samples": "^8.7.228",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
