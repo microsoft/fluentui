@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules style alternative for SearchBox",
+  "packageName": "@fluentui/react-search",
+  "email": "dmytrokirpa@microsoft.com"
+}

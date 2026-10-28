@@ -1,0 +1,113 @@
+@layer fluentui {
+  .root {
+    min-width: unset;
+    text-wrap: nowrap;
+  }
+
+  .root.small {
+    height: 24px;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    padding: var(--spacingHorizontalSNudge);
+  }
+
+  .root.medium {
+    height: 32px;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    padding: var(--spacingHorizontalSNudge);
+  }
+
+  .root.large {
+    height: 40px;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase400);
+    padding: var(--spacingHorizontalS);
+  }
+
+  .current:hover {
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+    cursor: auto;
+  }
+
+  .current:hover:active {
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+    cursor: auto;
+  }
+
+  .current:disabled {
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground2);
+    cursor: auto;
+  }
+
+  .current:hover :global(.fui-Button__icon),
+  .current:hover:active :global(.fui-Button__icon),
+  .current:disabled :global(.fui-Button__icon) {
+    color: unset;
+  }
+
+  .current:hover :global(.fui-Icon-filled),
+  .current:hover:active :global(.fui-Icon-filled),
+  .current:disabled :global(.fui-Icon-filled) {
+    display: none;
+  }
+
+  .current:hover :global(.fui-Icon-regular),
+  .current:hover:active :global(.fui-Icon-regular),
+  .current:disabled :global(.fui-Icon-regular) {
+    display: inline;
+  }
+
+  .root.current.small {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .root.current.medium {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .root.current.large {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .icon {
+    font-size: var(--fui-Breadcrumb--icon-size);
+    height: var(--fui-Breadcrumb--icon-size);
+    line-height: var(--fui-Breadcrumb--icon-line-height);
+    width: var(--fui-Breadcrumb--icon-size);
+    margin-inline-end: var(--spacingHorizontalXS);
+  }
+
+  .icon.small {
+    --fui-Breadcrumb--icon-size: 12px;
+    --fui-Breadcrumb--icon-line-height: var(--lineHeightBase200);
+  }
+
+  .icon.medium {
+    --fui-Breadcrumb--icon-size: 16px;
+    --fui-Breadcrumb--icon-line-height: var(--lineHeightBase400);
+  }
+
+  .icon.large {
+    --fui-Breadcrumb--icon-size: 20px;
+    --fui-Breadcrumb--icon-line-height: var(--lineHeightBase600);
+  }
+}

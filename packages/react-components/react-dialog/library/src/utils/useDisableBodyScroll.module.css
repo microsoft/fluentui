@@ -1,0 +1,11 @@
+@layer fluentui {
+  .htmlNoScroll {
+    overflow-y: hidden;
+    overflow-y: clip;
+    scrollbar-gutter: stable;
+  }
+
+  .bodyNoScroll {
+    overflow-y: hidden;
+  }
+}

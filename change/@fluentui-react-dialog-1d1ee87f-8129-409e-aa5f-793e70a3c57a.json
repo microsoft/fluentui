@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: add CSS Modules style alternatives for dialog components",
+  "comment": "feat: add CSS Modules style alternatives for dialog components and body-scroll locking",
   "packageName": "@fluentui/react-dialog",
   "email": "dmytrokirpa@microsoft.com"
 }

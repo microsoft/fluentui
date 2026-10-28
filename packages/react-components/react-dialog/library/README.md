@@ -46,7 +46,7 @@ export const DialogExample = () => {
 
 ## Opt-in CSS Modules styles
 
-DialogActions, DialogBody, DialogContent, DialogSurface, and DialogTitle (including its internal action helper) have alternatives.
+DialogActions, DialogBody, DialogContent, DialogSurface, DialogTitle (including its internal action helper), and the body-scroll lock utility have alternatives.
 
 The default components continue to use Griffel. An opt-in bundler resolver can replace
 `use<Component>Styles.styles.js` with `use<Component>Styles.styles.css.js`

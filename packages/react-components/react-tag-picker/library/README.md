@@ -70,12 +70,18 @@ export const Example = () => {
 ## Opt-in CSS Modules styles
 
 CSS Modules alternatives are available for TagPickerButton, TagPickerControl,
-TagPickerInput, and TagPickerList. Griffel remains the default. Opt in with a
+TagPickerInput, TagPickerList, TagPickerGroup, TagPickerOption, and
+TagPickerOptionGroup. Griffel remains the default. Opt in with a
 bundler replacement of those `use*Styles.styles` modules by their
 `use*Styles.styles.css` alternatives, handling both source imports and built
 `.styles.js` → `.styles.css.js` imports. The bundler must process CSS Modules and
 retain CSS assets in the `fluentui` layer.
 
-TagPickerGroup, TagPickerOption, and TagPickerOptionGroup still compose style hooks
-from other packages and are not included in this alternative. Selecting the four
-standalone hooks does not make the entire TagPicker composition Griffel-free.
+TagPickerGroup, TagPickerOption, and TagPickerOptionGroup keep calling the public
+TagGroup, Option, and OptionGroup style hooks from `@fluentui/react-tags` and
+`@fluentui/react-combobox`. The resolver must also swap those packages' style
+modules, including public re-exports, rather than only local TagPicker imports.
+Base imports precede derived stylesheets so derived rules win equal-specificity
+conflicts. TagPickerOptionGroup adds only stable slot classes and needs no own
+stylesheet. Missing base replacements retain Griffel; selecting these alternatives
+alone does not make the composition Griffel-free or establish mixed-mode parity.

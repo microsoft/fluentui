@@ -1,0 +1,6 @@
+@layer fluentui {
+  .listbox {
+    /* Preserve the original viewport/fixed-height cap, including portaled listboxes. */
+    max-height: min(80vh, 416px);
+  }
+}

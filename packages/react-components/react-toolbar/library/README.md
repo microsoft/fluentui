@@ -8,7 +8,7 @@ These are not production-ready components and **should never be used in product*
 
 ## Opt-in CSS Modules styles
 
-Toolbar and ToolbarGroup have alternatives. ToolbarButton, ToolbarDivider, ToolbarRadioButton, and ToolbarToggleButton still compose cross-package style hooks and are not ported.
+Toolbar, ToolbarGroup, ToolbarButton, ToolbarDivider, ToolbarRadioButton, and ToolbarToggleButton have alternatives. The composed controls continue calling the public Button, ToggleButton, or Divider style hooks; select those packages’ CSS Modules alternatives with the same resolver so each public hook is replaced wholesale.
 
 The default components continue to use Griffel. An opt-in bundler resolver can replace
 `use<Component>Styles.styles.js` with `use<Component>Styles.styles.css.js`

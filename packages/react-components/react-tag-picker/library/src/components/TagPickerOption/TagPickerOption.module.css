@@ -1,0 +1,24 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    align-items: center;
+  }
+
+  .root:where(.withSecondaryContent) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .secondaryContent {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .media {
+    grid-row-start: span 2;
+  }
+}

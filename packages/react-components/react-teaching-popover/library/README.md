@@ -26,6 +26,33 @@ For more complicated features, we recommend using the TeachingPopoverCarousel, t
 </TeachingPopover>
 ```
 
+## Opt-in CSS Modules composition
+
+The `.styles.css` alternatives retain public cross-package style hooks, just like
+Nav and Carousel: TeachingPopoverSurface calls `usePopoverSurfaceStyles_unstable`
+from `@fluentui/react-popover`, and TeachingPopoverCarouselFooterButton calls
+`useButtonStyles_unstable` from `@fluentui/react-button`. Do not replace these with
+private deep imports or duplicate their base rules.
+
+Opt-in resolver swaps must cover those base packages, including public re-exports,
+as well as TeachingPopover, for both source `.styles` and built
+`.styles.js` → `.styles.css.js` imports. Base modules are imported before derived
+stylesheets. CSS Modules must be processed and CSS assets retained in the
+`fluentui` layer. Swapping only TeachingPopover intentionally leaves Griffel base
+hooks in the graph; unlayered Griffel rules can override layered CSS, so that
+hybrid is not guaranteed to match the fully selected CSS implementation.
+
+Surface preserves its local-class-before-base-hook call order and returns the
+base hook's result, including arrow styling. With both alternatives selected, its
+later stylesheet supplies padding, radius, minimum width, and box sizing while
+Popover supplies appearance, typography, and positioning-arrow styles.
+FooterButton calls Button first, merges its returned state, and then adds its
+local root and brand navigation classes with caller classes last. Button still
+supplies sizing, icon, disabled, focus, and interaction styles. Class-list order
+does not determine CSS precedence: its brand hover/active colors and inherited
+forced-colors/focus rules need browser cascade verification before claiming
+parity. Hook tests verify composition, not computed-style or VRT parity.
+
 ## Sample Code - Carousel
 
 ```jsx

@@ -63,7 +63,7 @@ For information about the components, please refer to the [API documentation](ht
 
 ## Opt-in CSS Modules styles
 
-Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, InlineDrawer, OverlayDrawer, and OverlayDrawerSurface have alternatives, together with the shared Drawer base helpers. DrawerHeaderTitle still composes the cross-package DialogTitle Griffel hook and is not ported.
+Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerHeaderNavigation, DrawerHeaderTitle, InlineDrawer, OverlayDrawer, and OverlayDrawerSurface have alternatives, together with the shared Drawer base helpers. DrawerHeaderTitle continues to call the public DialogTitle style hook; select its CSS Modules alternative through the same bundler resolver so the composed hook is replaced wholesale.
 
 The default components continue to use Griffel. An opt-in bundler resolver can replace
 `use<Component>Styles.styles.js` with `use<Component>Styles.styles.css.js`
