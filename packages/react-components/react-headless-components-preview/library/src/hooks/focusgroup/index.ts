@@ -1,10 +1,3 @@
-export { useArrowNavigationGroup, useUncontrolledFocus, getArrowNavigationGroupValue } from './useArrowNavigationGroup';
-export type {
-  ArrowNavigationGroupAttributes,
-  FocusgroupAttribute,
-  FocusgroupBehavior,
-  UseArrowNavigationGroupOptions,
-} from './useArrowNavigationGroup';
 export { useFocusableGroup } from './useFocusableGroup';
 export type { FocusableGroupAttributes, UseFocusableGroupOptions } from './useFocusableGroup';
 export { useModalAttributes } from './useModalAttributes';

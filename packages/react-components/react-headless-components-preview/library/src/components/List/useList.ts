@@ -12,7 +12,6 @@ import { isSlot, SLOT_ELEMENT_TYPE_SYMBOL, useEventCallback, useMergedRefs } fro
 import type { ListContextValues, ListProps, ListState } from './List.types';
 import { getListFocusableElements, useCompositeListNavigation } from './listNavigation';
 import { toDataAttributeValue } from '../../utils';
-import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 
 export { useListContext_unstable as useListContext } from '@fluentui/react-list';
 
@@ -26,7 +25,6 @@ export const useList = (
 ): ListState => {
   const baseState = useListBase_unstable(props, ref);
   const rootRef = React.useRef<HTMLDivElement | HTMLUListElement | HTMLOListElement>(null);
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
   const mergedRef = useMergedRefs(baseState.root.ref, rootRef);
   const onCompositeFocus = useCompositeListNavigation(baseState.navigationMode, rootRef);
   const onFocusCapture: React.FocusEventHandler<HTMLElement> | undefined = baseState.root.onFocusCapture;
@@ -63,7 +61,7 @@ export const useList = (
       'data-list': '',
       'data-navigation-mode': baseState.navigationMode,
       'data-selectable': toDataAttributeValue(!!baseState.selection),
-      ...(baseState.navigationMode === 'items' && arrowNavigationAttributes),
+      ...(baseState.navigationMode === 'items' && { focusgroup: 'toolbar block' }),
       // Composite navigation owns the tab stop and key handling; a focusgroup would compete with it.
       ...(baseState.navigationMode === 'composite' && {
         focusgroup: undefined,

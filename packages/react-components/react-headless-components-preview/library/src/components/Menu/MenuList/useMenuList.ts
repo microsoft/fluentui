@@ -3,7 +3,6 @@
 import type * as React from 'react';
 import { useMenuListBase_unstable } from '@fluentui/react-menu';
 import type { MenuListProps, MenuListState } from './MenuList.types';
-import { useArrowNavigationGroup } from '../../../hooks/focusgroup';
 
 /**
  * Returns the state for a MenuList.
@@ -14,13 +13,8 @@ import { useArrowNavigationGroup } from '../../../hooks/focusgroup';
 export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const baseState: MenuListState = useMenuListBase_unstable(props, ref);
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'vertical',
-    circular: true,
-    behavior: 'menu',
-  });
-
-  Object.assign(baseState.root, arrowNavigationAttributes);
+  // eslint-disable-next-line react-hooks/immutability -- attribute is mutated to opt into the focusgroup polyfill.
+  baseState.root.focusgroup = 'menu block wrap';
 
   return baseState;
 };

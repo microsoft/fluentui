@@ -7,7 +7,6 @@ import type {
   TeachingPopoverCarouselNavProps,
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav.types';
-import { useArrowNavigationGroup } from '../../../hooks/focusgroup';
 
 /**
  * Returns the state for a TeachingPopoverCarouselNav component, given its props and ref.
@@ -18,14 +17,8 @@ export const useTeachingPopoverCarouselNav = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselNavState => {
   const state: TeachingPopoverCarouselNavState = useTeachingPopoverCarouselNavBase_unstable(props, ref);
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-    circular: false,
-    memorizeCurrent: false,
-    behavior: 'tablist',
-  });
-
-  Object.assign(state.root, arrowNavigationAttributes);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.focusgroup = 'tablist inline nowrap nomemory';
 
   return state;
 };

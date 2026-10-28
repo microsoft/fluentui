@@ -7,39 +7,10 @@ import { Provider } from '../../components/Provider';
 import { Breadcrumb, BreadcrumbButton, BreadcrumbItem } from '../../components/Breadcrumb';
 import { Card } from '../../components/Card';
 import { Tooltip } from '../../components/Tooltip';
-import { useArrowNavigationGroup } from './useArrowNavigationGroup';
 
 polyfillBodyAndObserve();
 
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
-
-describe('useArrowNavigationGroup', () => {
-  const Group = () => {
-    const attributes = useArrowNavigationGroup({ axis: 'horizontal', circular: true });
-    return (
-      <div {...attributes}>
-        <button>One</button>
-        <button>Two</button>
-        <button>Three</button>
-      </div>
-    );
-  };
-
-  it('navigates with arrow keys', () => {
-    mount(
-      <>
-        <Group />
-        <button>After</button>
-      </>,
-    );
-
-    cy.contains('One').should('have.attr', 'tabindex', '0').focus().realPress('ArrowRight');
-    cy.contains('Two').should('be.focused').realPress('ArrowLeft');
-    cy.contains('One').should('be.focused').realPress('ArrowLeft');
-    cy.contains('Three').should('be.focused').realPress('Tab');
-    cy.contains('After').should('be.focused');
-  });
-});
 
 describe('Breadcrumb focusMode', () => {
   it('navigates with arrow keys when focusMode is "arrow"', () => {

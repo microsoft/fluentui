@@ -5,7 +5,6 @@ import { useToolbarBase_unstable, useToolbarContextValues_unstable } from '@flue
 
 import type { ToolbarProps, ToolbarState, ToolbarContextValues } from './Toolbar.types';
 import { toDataAttributeValue } from '../../utils';
-import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 
 /**
  * Returns the state for a Toolbar component, given its props and ref.
@@ -14,12 +13,8 @@ import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: state.vertical ? 'vertical' : 'horizontal',
-    circular: true,
-  });
-
-  Object.assign(state.root, arrowNavigationAttributes);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.focusgroup = `toolbar ${state.vertical ? 'block' : 'inline'} wrap`;
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = toDataAttributeValue(state.vertical);
 

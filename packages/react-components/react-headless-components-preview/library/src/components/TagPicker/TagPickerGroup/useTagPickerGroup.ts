@@ -9,7 +9,6 @@ import { ArrowRight } from '@fluentui/keyboard-keys';
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
 import { toDataAttributeValue } from '../../../utils';
 import { isLastFocusableTag } from '../../../utils/tagFocusUtils';
-import { useArrowNavigationGroup } from '../../../hooks/focusgroup';
 
 /**
  * Returns the state for a headless TagPickerGroup.
@@ -22,10 +21,6 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-    circular: true,
-  });
   const state: Omit<TagPickerGroupState, 'hasSelectedOptions'> = useTagGroupBase_unstable(
     {
       disabled,
@@ -59,7 +54,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
   );
 
   /* eslint-disable react-hooks/immutability -- swap Tabster arrow-nav for the native focusgroup + surface disabled as data-* */
-  Object.assign(state.root, arrowNavigationAttributes);
+  state.root.focusgroup = 'toolbar inline wrap';
   state.root['data-disabled'] = toDataAttributeValue(disabled);
   /* eslint-enable react-hooks/immutability */
 

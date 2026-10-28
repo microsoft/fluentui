@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { fireEvent, render, renderHook } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 
-import {
-  getArrowNavigationGroupValue,
-  useFocusableGroup,
-  useIsNavigatingWithKeyboard,
-  useModalAttributes,
-} from './index';
+import { useFocusableGroup, useIsNavigatingWithKeyboard, useModalAttributes } from './index';
 import type { UseFocusableGroupOptions } from './index';
 
 // jsdom has no layout, so every element would be considered invisible by the focus finders.
@@ -19,18 +15,6 @@ afterAll(() => {
 });
 
 const pressTab = (shiftKey = false) => fireEvent.keyDown(document.activeElement!, { key: 'Tab', shiftKey });
-
-describe('getArrowNavigationGroupValue', () => {
-  it.each([
-    [{}, 'toolbar block'],
-    [{ axis: 'horizontal', circular: true }, 'toolbar inline wrap'],
-    [{ axis: 'both' }, 'toolbar inline block'],
-    // tablist wraps by default, so a non-circular group has to opt out
-    [{ memorizeCurrent: false, behavior: 'tablist' }, 'tablist block nowrap nomemory'],
-  ] as const)('maps %o to "%s"', (options, expected) => {
-    expect(getArrowNavigationGroupValue(options)).toBe(expected);
-  });
-});
 
 describe('useModalAttributes', () => {
   const Modal = ({ trapFocus = true, legacyTrapFocus = true }) => {
