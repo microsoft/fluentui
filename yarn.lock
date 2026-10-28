@@ -1796,11 +1796,9 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.22.6, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.2, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.3, @babel/runtime@npm:^7.9.2":
-  version: 7.25.0
-  resolution: "@babel/runtime@npm:7.25.0"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10c0/bd3faf246170826cef2071a94d7b47b49d532351360ecd17722d03f6713fd93a3eb3dbd9518faa778d5e8ccad7392a7a604e56bd37aaad3f3aa68d619ccd983d
+  version: 7.29.7
+  resolution: "@babel/runtime@npm:7.29.7"
+  checksum: 10c0/ca11572f7146b21e0bde6a9ed4bb6a89eafbee5f0944c7eb54d0d8a2dac962c33638a1d611e14faa71dfbb92b4b5f9236232208568a6b7d5c6f3f39ddb91771e
   languageName: node
   linkType: hard
 
@@ -2794,7 +2792,7 @@ __metadata:
     fs-extra: "npm:^8.1.0"
     globals: "npm:13.24.0"
     jju: "npm:^1.4.0"
-    minimatch: "npm:^3.1.4"
+    minimatch: "npm:^3.1.5"
     typescript-eslint: "npm:^8.46.2"
   peerDependencies:
     eslint: ^9.0.0
@@ -3998,7 +3996,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.74.11, @fluentui/react-components@workspace:packages/react-components/react-components":
+"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.75.0, @fluentui/react-components@workspace:packages/react-components/react-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
@@ -4025,7 +4023,7 @@ __metadata:
     "@fluentui/react-label": "npm:^9.4.6"
     "@fluentui/react-link": "npm:^9.8.6"
     "@fluentui/react-list": "npm:^9.7.0"
-    "@fluentui/react-menu": "npm:^9.25.7"
+    "@fluentui/react-menu": "npm:^9.25.8"
     "@fluentui/react-message-bar": "npm:^9.7.9"
     "@fluentui/react-motion": "npm:^9.16.5"
     "@fluentui/react-nav": "npm:^9.4.9"
@@ -4035,7 +4033,7 @@ __metadata:
     "@fluentui/react-portal": "npm:^9.8.17"
     "@fluentui/react-positioning": "npm:^9.23.4"
     "@fluentui/react-progress": "npm:^9.5.7"
-    "@fluentui/react-provider": "npm:^9.22.22"
+    "@fluentui/react-provider": "npm:^9.22.23"
     "@fluentui/react-radio": "npm:^9.6.7"
     "@fluentui/react-rating": "npm:^9.4.7"
     "@fluentui/react-search": "npm:^9.4.8"
@@ -4474,7 +4472,7 @@ __metadata:
     "@fluentui/react-label": "npm:^9.4.6"
     "@fluentui/react-link": "npm:^9.8.6"
     "@fluentui/react-list": "npm:^9.7.0"
-    "@fluentui/react-menu": "npm:^9.25.7"
+    "@fluentui/react-menu": "npm:^9.25.8"
     "@fluentui/react-message-bar": "npm:^9.7.9"
     "@fluentui/react-nav": "npm:^9.4.9"
     "@fluentui/react-overflow": "npm:^9.9.5"
@@ -4482,7 +4480,7 @@ __metadata:
     "@fluentui/react-popover": "npm:^9.14.10"
     "@fluentui/react-positioning": "npm:^9.23.4"
     "@fluentui/react-progress": "npm:^9.5.7"
-    "@fluentui/react-provider": "npm:^9.22.22"
+    "@fluentui/react-provider": "npm:^9.22.23"
     "@fluentui/react-radio": "npm:^9.6.7"
     "@fluentui/react-range-slider-preview": "npm:^0.1.0"
     "@fluentui/react-rating": "npm:^9.4.7"
@@ -4880,7 +4878,7 @@ __metadata:
     "@fluentui/keyboard-keys": "npm:^9.0.9"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.7"
-    "@fluentui/react-menu": "npm:^9.25.7"
+    "@fluentui/react-menu": "npm:^9.25.8"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-table": "npm:^9.19.23"
     "@fluentui/react-tabster": "npm:^9.26.19"
@@ -4903,7 +4901,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-menu@npm:*, @fluentui/react-menu@npm:^9.25.7, @fluentui/react-menu@workspace:packages/react-components/react-menu/library":
+"@fluentui/react-menu@npm:*, @fluentui/react-menu@npm:^9.25.8, @fluentui/react-menu@workspace:packages/react-components/react-menu/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-menu@workspace:packages/react-components/react-menu/library"
   dependencies:
@@ -4972,7 +4970,7 @@ __metadata:
   resolution: "@fluentui/react-migration-v0-v9@workspace:packages/react-components/react-migration-v0-v9/library"
   dependencies:
     "@fluentui/react-aria": "npm:^9.17.16"
-    "@fluentui/react-components": "npm:^9.74.11"
+    "@fluentui/react-components": "npm:^9.75.0"
     "@fluentui/react-context-selector": "npm:^9.2.21"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.4.7"
@@ -5005,7 +5003,7 @@ __metadata:
     "@ctrl/tinycolor": "npm:^3.3.4"
     "@fluentui/fluent2-theme": "npm:^8.107.156"
     "@fluentui/react": "npm:^8.125.9"
-    "@fluentui/react-components": "npm:^9.74.11"
+    "@fluentui/react-components": "npm:^9.75.0"
     "@fluentui/react-hooks": "npm:^8.10.4"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@griffel/react": "npm:^1.5.32"
@@ -5305,7 +5303,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.19"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@fluentui/react-components": ^9.74.11
+    "@fluentui/react-components": ^9.75.0
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
   peerDependenciesMeta:
@@ -5410,7 +5408,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.22, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
+"@fluentui/react-provider@npm:*, @fluentui/react-provider@npm:^9.22.23, @fluentui/react-provider@workspace:packages/react-components/react-provider/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-provider@workspace:packages/react-components/react-provider/library"
   dependencies:
@@ -5715,7 +5713,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/react-storybook-addon-playground@workspace:packages/react-components/react-storybook-addon-playground"
   dependencies:
-    "@fluentui/react-components": "npm:^9.74.11"
+    "@fluentui/react-components": "npm:^9.75.0"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-utilities": "npm:^9.27.0"
@@ -5748,8 +5746,8 @@ __metadata:
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-label": "npm:^9.4.6"
     "@fluentui/react-link": "npm:^9.8.6"
-    "@fluentui/react-menu": "npm:^9.25.7"
-    "@fluentui/react-provider": "npm:^9.22.22"
+    "@fluentui/react-menu": "npm:^9.25.8"
+    "@fluentui/react-provider": "npm:^9.22.23"
     "@fluentui/react-shared-contexts": "npm:^9.26.4"
     "@fluentui/react-spinner": "npm:^9.8.7"
     "@fluentui/react-switch": "npm:^9.7.7"
@@ -6365,7 +6363,7 @@ __metadata:
   resolution: "@fluentui/recipes@workspace:packages/react-components/recipes"
   dependencies:
     "@fluentui/react-icons": "npm:^2.0.245"
-    "@fluentui/react-provider": "npm:^9.22.22"
+    "@fluentui/react-provider": "npm:^9.22.23"
     "@fluentui/react-text": "npm:^9.6.21"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@fluentui/react-utilities": "npm:^9.27.0"
@@ -6687,7 +6685,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/theme-designer@workspace:packages/react-components/theme-designer"
   dependencies:
-    "@fluentui/react-components": "npm:^9.74.11"
+    "@fluentui/react-components": "npm:^9.75.0"
     "@fluentui/react-context-selector": "npm:^9.2.21"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.4.0"
@@ -6827,7 +6825,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/visual-regression-utilities@workspace:tools/visual-regression-utilities"
   dependencies:
-    "@fluentui/react-provider": "npm:^9.22.22"
+    "@fluentui/react-provider": "npm:^9.22.23"
     "@fluentui/react-theme": "npm:^9.2.2"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -13896,12 +13894,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"baseline-browser-mapping@npm:^2.10.12":
-  version: 2.10.32
-  resolution: "baseline-browser-mapping@npm:2.10.32"
+"baseline-browser-mapping@npm:^2.11.26":
+  version: 2.11.33
+  resolution: "baseline-browser-mapping@npm:2.11.33"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 10c0/408c93245bdf1e92ab0f891ebf9283ec60dbabfaac81bdc9a20d371565a2a496b0fb8028f7d628c3f66f90ee142670a81575cf1cbd5229f7b4b0d350db911085
+  checksum: 10c0/41ccaadfbae9d8df112b8771631465e7f04def4a319502f99d59ad04879ab2a35d609baf27a9feb523f8eee1728d7a9fd71125a13eca5bf06bcb240212c33d5e
   languageName: node
   linkType: hard
 
@@ -14137,12 +14135,12 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.11
-  resolution: "brace-expansion@npm:1.1.11"
+  version: 1.1.21
+  resolution: "brace-expansion@npm:1.1.21"
   dependencies:
     balanced-match: "npm:^1.0.0"
     concat-map: "npm:0.0.1"
-  checksum: 10c0/695a56cd058096a7cb71fb09d9d6a7070113c7be516699ed361317aca2ec169f618e28b8af352e02ab4233fb54eb0168460a40dc320bab0034b36ab59aaad668
+  checksum: 10c0/8f0a68a720f9cb28c2ecaea5cdaf15fafd686d6b6e4e722a81c9d4bd2f68c1fd0619731cac05875d842221eaf4d97d564d329a12eb3c4c22137502fb3c65be8b
   languageName: node
   linkType: hard
 
@@ -14181,17 +14179,17 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.16.1, browserslist@npm:^4.24.0, browserslist@npm:^4.24.2, browserslist@npm:^4.28.1":
-  version: 4.28.2
-  resolution: "browserslist@npm:4.28.2"
+  version: 4.29.3
+  resolution: "browserslist@npm:4.29.3"
   dependencies:
-    baseline-browser-mapping: "npm:^2.10.12"
-    caniuse-lite: "npm:^1.0.30001782"
-    electron-to-chromium: "npm:^1.5.328"
-    node-releases: "npm:^2.0.36"
-    update-browserslist-db: "npm:^1.2.3"
+    baseline-browser-mapping: "npm:^2.11.26"
+    caniuse-lite: "npm:^1.0.30001813"
+    electron-to-chromium: "npm:^1.5.439"
+    node-releases: "npm:^2.0.57"
+    update-browserslist-db: "npm:^1.3.3"
   bin:
     browserslist: cli.js
-  checksum: 10c0/c0228b6330f785b7fa59d2d360124ec6d9322f96ed9f3ee1f873e33ecc9503a6f0ffc3b71191a28c4ff6e930b753b30043da1c33844a9548f3018d491f09ce60
+  checksum: 10c0/6e1a1fcae77369260e936fe63e7994105f04c6b7aea4f2139fdf3ecccfcb1eb24d4522c2828c6ed48ef71206a33f4346e11cf714c5aac0f7496cead06bb66bac
   languageName: node
   linkType: hard
 
@@ -14220,7 +14218,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer-equal-constant-time@npm:1.0.1":
+"buffer-equal-constant-time@npm:^1.0.1":
   version: 1.0.1
   resolution: "buffer-equal-constant-time@npm:1.0.1"
   checksum: 10c0/fb2294e64d23c573d0dd1f1e7a466c3e978fe94a4e0f8183937912ca374619773bef8e2aceb854129d2efecbbc515bbd0cc78d2734a3e3031edb0888531bbc8e
@@ -14466,10 +14464,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001173, caniuse-lite@npm:^1.0.30001687, caniuse-lite@npm:^1.0.30001782":
-  version: 1.0.30001793
-  resolution: "caniuse-lite@npm:1.0.30001793"
-  checksum: 10c0/bee8f8b55d1ccdb2076b7355c06fd01916952eadd76b828e4d5fb9ac62d17ec7db0e2b7c326b923478b93526ad1ff74f189cf40c06de0e4a5edbc677009b97fe
+"caniuse-lite@npm:^1.0.30001173, caniuse-lite@npm:^1.0.30001687, caniuse-lite@npm:^1.0.30001813":
+  version: 1.0.30001819
+  resolution: "caniuse-lite@npm:1.0.30001819"
+  checksum: 10c0/6842319cdb9c8ac950ef0910fc3cc7dac3320b96b150de83ac65162c6b4906d2721ca830943a9e5a833c265b186aa0c417402ddd4157108bbf5474d6fabdc843
   languageName: node
   linkType: hard
 
@@ -17108,10 +17106,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.5.328":
-  version: 1.5.361
-  resolution: "electron-to-chromium@npm:1.5.361"
-  checksum: 10c0/5e6e9c0c12ab82366eddf575c8b9114d5af710abad3b592141c56cfa0169471f3633dcc793420c303fad68dff21c8fb724b43cde7e66be947983fa3d6d5a7359
+"electron-to-chromium@npm:^1.5.439":
+  version: 1.5.464
+  resolution: "electron-to-chromium@npm:1.5.464"
+  checksum: 10c0/65e6244c3b109942497ec6f7e8294258e74a7b410c804339fec39ecb2921926423e08f8f3a2a7979008c1a196a4c57145c1e76abe40ba374f60028fab23baa10
   languageName: node
   linkType: hard
 
@@ -23076,24 +23074,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jwa@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "jwa@npm:1.4.1"
+"jwa@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "jwa@npm:1.4.2"
   dependencies:
-    buffer-equal-constant-time: "npm:1.0.1"
+    buffer-equal-constant-time: "npm:^1.0.1"
     ecdsa-sig-formatter: "npm:1.0.11"
     safe-buffer: "npm:^5.0.1"
-  checksum: 10c0/5c533540bf38702e73cf14765805a94027c66a0aa8b16bc3e89d8d905e61a4ce2791e87e21be97d1293a5ee9d4f3e5e47737e671768265ca4f25706db551d5e9
+  checksum: 10c0/210a544a42ca22203e8fc538835205155ba3af6a027753109f9258bdead33086bac3c25295af48ac1981f87f9c5f941bc8f70303670f54ea7dcaafb53993d92c
   languageName: node
   linkType: hard
 
 "jws@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "jws@npm:3.2.2"
+  version: 3.2.3
+  resolution: "jws@npm:3.2.3"
   dependencies:
-    jwa: "npm:^1.4.1"
+    jwa: "npm:^1.4.2"
     safe-buffer: "npm:^5.0.1"
-  checksum: 10c0/e770704533d92df358adad7d1261fdecad4d7b66fa153ba80d047e03ca0f1f73007ce5ed3fbc04d2eba09ba6e7e6e645f351e08e5ab51614df1b0aa4f384dfff
+  checksum: 10c0/9fdf9d6783b1892ef413ef373cd351eacc847ba01deec6fbfea96830e93241863ccbee66f3b749fc2310c59b6db2209d3f4b52931c0c259b52b17de20715917f
   languageName: node
   linkType: hard
 
@@ -25196,12 +25194,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.0.2, minimatch@npm:^3.0.4, minimatch@npm:^3.1.2, minimatch@npm:^3.1.4":
-  version: 3.1.4
-  resolution: "minimatch@npm:3.1.4"
+"minimatch@npm:^3.0.2, minimatch@npm:^3.0.4, minimatch@npm:^3.1.2, minimatch@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "minimatch@npm:3.1.5"
   dependencies:
     brace-expansion: "npm:^1.1.7"
-  checksum: 10c0/868aab7e5f52570107eb283f021383be111cfeee0817a615f2a9ffe61fdc8fb86d535b9bf169fb8882261e7cb9da22b4d7b6f8b3402037f63558bab173f82212
+  checksum: 10c0/2ecbdc0d33f07bddb0315a8b5afbcb761307a8778b48f0b312418ccbced99f104a2d17d8aca7573433c70e8ccd1c56823a441897a45e384ea76ef401a26ace70
   languageName: node
   linkType: hard
 
@@ -25866,10 +25864,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.36":
-  version: 2.0.46
-  resolution: "node-releases@npm:2.0.46"
-  checksum: 10c0/04632591f97f15848adfb12b21fa013a6c19809afcf5db65fe88c95a36271c3f423e21110fd319ad5a9c5029ffe65eb81f3e4857e6af19622bc888d92a04ad22
+"node-releases@npm:^2.0.57":
+  version: 2.0.60
+  resolution: "node-releases@npm:2.0.60"
+  checksum: 10c0/f0c7b37cf83405291c0de87e15b5cef4af167248f8cc91b7c1c2281338c0e7e9aebfb77e0153ba335bb4c6ec5b1563431cfba93e8c83292760856012d93cb93e
   languageName: node
   linkType: hard
 
@@ -27178,9 +27176,9 @@ __metadata:
   linkType: hard
 
 "picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.2, picomatch@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "picomatch@npm:2.3.1"
-  checksum: 10c0/26c02b8d06f03206fc2ab8d16f19960f2ff9e81a658f831ecb656d8f17d9edc799e8364b1f4a7873e89d9702dff96204be0fa26fe4181f6843f040f819dac4be
+  version: 2.3.2
+  resolution: "picomatch@npm:2.3.2"
+  checksum: 10c0/a554d1709e59be97d1acb9eaedbbc700a5c03dbd4579807baed95100b00420bc729335440ef15004ae2378984e2487a7c1cebd743cfdb72b6fa9ab69223c0d61
   languageName: node
   linkType: hard
 
@@ -27476,12 +27474,12 @@ __metadata:
   linkType: hard
 
 "postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4":
-  version: 6.0.13
-  resolution: "postcss-selector-parser@npm:6.0.13"
+  version: 6.1.5
+  resolution: "postcss-selector-parser@npm:6.1.5"
   dependencies:
     cssesc: "npm:^3.0.0"
     util-deprecate: "npm:^1.0.2"
-  checksum: 10c0/51f099b27f7c7198ea1826470ef0adfa58b3bd3f59b390fda123baa0134880a5fa9720137b6009c4c1373357b144f700b0edac73335d0067422063129371444e
+  checksum: 10c0/1b328959d68b90a680979cfb99501fe3781f2da61e56748a912c9a9c8c20f9644a0bd510ac820d74d94ed0990bce747aea75cc5b17b966ea3a70c7c1932d31fd
   languageName: node
   linkType: hard
 
@@ -28364,13 +28362,6 @@ __metadata:
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 10c0/12b069dc774001fbb0014f6a28f11c09ebfe3c0d984d88c9bced77fdb6fedbacbca434d24da9ae9371bfbf23f754869307fb51a4c98a8b8b18e5ef748677ca24
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "regenerator-runtime@npm:0.14.0"
-  checksum: 10c0/e25f062c1a183f81c99681691a342760e65c55e8d3a4d4fe347ebe72433b123754b942b70b622959894e11f8a9131dc549bd3c9a5234677db06a4af42add8d12
   languageName: node
   linkType: hard
 
@@ -32467,9 +32458,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"update-browserslist-db@npm:^1.2.3":
-  version: 1.2.3
-  resolution: "update-browserslist-db@npm:1.2.3"
+"update-browserslist-db@npm:^1.3.3":
+  version: 1.3.4
+  resolution: "update-browserslist-db@npm:1.3.4"
   dependencies:
     escalade: "npm:^3.2.0"
     picocolors: "npm:^1.1.1"
@@ -32477,7 +32468,7 @@ __metadata:
     browserslist: ">= 4.21.0"
   bin:
     update-browserslist-db: cli.js
-  checksum: 10c0/13a00355ea822388f68af57410ce3255941d5fb9b7c49342c4709a07c9f230bbef7f7499ae0ca7e0de532e79a82cc0c4edbd125f1a323a1845bf914efddf8bec
+  checksum: 10c0/5c0769472715b57371208c3146cc07a4f0917c1d18cc34f60325bc4234f4a28f332e50b99f675999ff311315231ff19beb22a815dfe04ccc1e798e1d389514d7
   languageName: node
   linkType: hard
 
