@@ -120,9 +120,6 @@ export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 export { MenuItemCheckboxProps }
 
 // @public (undocumented)
-export type MenuItemCheckboxSlots = MenuItemSlots;
-
-// @public (undocumented)
 export type MenuItemCheckboxState = MenuItemCheckboxState_2 & {
     root: {
         'data-disabled'?: string;
@@ -149,9 +146,6 @@ export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
 export { MenuItemRadioProps }
 
 // @public (undocumented)
-export type MenuItemRadioSlots = MenuItemSlots;
-
-// @public (undocumented)
 export type MenuItemRadioState = MenuItemRadioBaseState & {
     root: {
         'data-disabled'?: string;
@@ -161,6 +155,8 @@ export type MenuItemRadioState = MenuItemRadioBaseState & {
     };
 };
 
+export { MenuItemSlots as MenuItemCheckboxSlots }
+export { MenuItemSlots as MenuItemRadioSlots }
 export { MenuItemSlots }
 
 // @public (undocumented)

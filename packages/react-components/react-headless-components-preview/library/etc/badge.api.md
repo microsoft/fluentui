@@ -22,6 +22,8 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 export { BadgeProps }
 
 export { BadgeSlots }
+export { BadgeSlots as CounterBadgeSlots }
+export { BadgeSlots as PresenceBadgeSlots }
 
 // @public
 export type BadgeState = BadgeBaseState & {
@@ -34,9 +36,6 @@ export type BadgeState = BadgeBaseState & {
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
 export { CounterBadgeProps }
-
-// @public
-export type CounterBadgeSlots = BadgeSlots;
 
 // @public
 export type CounterBadgeState = CounterBadgeBaseState & {
@@ -52,9 +51,6 @@ export type CounterBadgeState = CounterBadgeBaseState & {
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 
 export { PresenceBadgeProps }
-
-// @public
-export type PresenceBadgeSlots = BadgeSlots;
 
 // @public
 export type PresenceBadgeState = PresenceBadgeBaseState & {
