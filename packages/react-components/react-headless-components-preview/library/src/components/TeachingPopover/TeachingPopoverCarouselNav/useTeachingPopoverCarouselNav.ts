@@ -1,7 +1,6 @@
 'use client';
 
 import type * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { useTeachingPopoverCarouselNavBase_unstable } from '@fluentui/react-teaching-popover';
 
 import type {
@@ -19,7 +18,7 @@ export const useTeachingPopoverCarouselNav = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselNavState => {
   const state: TeachingPopoverCarouselNavState = useTeachingPopoverCarouselNavBase_unstable(props, ref);
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+  const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'horizontal',
     circular: false,
     memorizeCurrent: false,
@@ -27,9 +26,6 @@ export const useTeachingPopoverCarouselNav = (
   });
 
   Object.assign(state.root, arrowNavigationAttributes);
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.ref = useMergedRefs(state.root.ref, focusgroupRef);
 
   return state;
 };

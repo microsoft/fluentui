@@ -26,8 +26,8 @@ export const useList = (
 ): ListState => {
   const baseState = useListBase_unstable(props, ref);
   const rootRef = React.useRef<HTMLDivElement | HTMLUListElement | HTMLOListElement>(null);
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({ axis: 'vertical' });
-  const mergedRef = useMergedRefs(baseState.root.ref, rootRef, focusgroupRef);
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const mergedRef = useMergedRefs(baseState.root.ref, rootRef);
   const onCompositeFocus = useCompositeListNavigation(baseState.navigationMode, rootRef);
   const onFocusCapture: React.FocusEventHandler<HTMLElement> | undefined = baseState.root.onFocusCapture;
   const handleFocusCapture: React.FocusEventHandler<HTMLElement> = useEventCallback(event => {

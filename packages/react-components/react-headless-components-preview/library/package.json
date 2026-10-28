@@ -71,7 +71,6 @@
     "@fluentui/react-toolbar": "^9.8.7",
     "@fluentui/react-tooltip": "^9.10.8",
     "@fluentui/react-utilities": "^9.27.0",
-    "@microsoft/focusgroup-polyfill": "^1.5.0",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

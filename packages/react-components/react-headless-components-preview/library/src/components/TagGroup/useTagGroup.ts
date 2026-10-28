@@ -1,7 +1,6 @@
 'use client';
 
 import type * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { useTagGroupBase_unstable } from '@fluentui/react-tags';
 
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
@@ -14,7 +13,7 @@ import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const state: TagGroupState = useTagGroupBase_unstable(props, ref);
 
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+  const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'horizontal',
     circular: true,
   });
@@ -24,9 +23,6 @@ export const useTagGroup = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>
   state.root['data-disabled'] = toDataAttributeValue(state.disabled);
   state.root['data-dismissible'] = toDataAttributeValue(state.dismissible);
   /* eslint-enable react-hooks/immutability */
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.ref = useMergedRefs(state.root.ref, focusgroupRef);
 
   return state;
 };

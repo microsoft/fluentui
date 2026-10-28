@@ -1,7 +1,6 @@
 'use client';
 
 import type * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { useBreadcrumbBase_unstable, useBreadcrumbContextValues_unstable } from '@fluentui/react-breadcrumb';
 
 import type { BreadcrumbProps, BreadcrumbState, BreadcrumbContextValues } from './Breadcrumb.types';
@@ -13,7 +12,7 @@ import { useArrowNavigationGroup } from '../../hooks/focusgroup';
  */
 export const useBreadcrumb = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
   const state: BreadcrumbState = useBreadcrumbBase_unstable(props, ref);
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+  const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'horizontal',
     circular: true,
     memorizeCurrent: true,
@@ -22,9 +21,6 @@ export const useBreadcrumb = (props: BreadcrumbProps, ref: React.Ref<HTMLElement
   if (props.focusMode === 'arrow' && state.root.focusgroup === undefined) {
     Object.assign(state.root, arrowNavigationAttributes);
   }
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.ref = useMergedRefs(state.root.ref, focusgroupRef);
 
   return state;
 };

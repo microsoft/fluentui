@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mount as mountBase } from '@fluentui/scripts-cypress';
+import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { Provider } from '../../components/Provider';
@@ -8,7 +9,8 @@ import { Card } from '../../components/Card';
 import { Tooltip } from '../../components/Tooltip';
 import { useArrowNavigationGroup } from './useArrowNavigationGroup';
 
-// This spec intentionally does not install the focusgroup polyfill: components must load it themselves.
+polyfillBodyAndObserve();
+
 const mount = (element: JSXElement) => mountBase(<Provider>{element}</Provider>);
 
 describe('useArrowNavigationGroup', () => {
@@ -23,7 +25,7 @@ describe('useArrowNavigationGroup', () => {
     );
   };
 
-  it('navigates with arrow keys without an application level polyfill', () => {
+  it('navigates with arrow keys', () => {
     mount(
       <>
         <Group />

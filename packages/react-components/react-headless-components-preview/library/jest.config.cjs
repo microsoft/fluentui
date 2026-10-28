@@ -27,10 +27,7 @@ module.exports = {
   preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
-    // @microsoft/focusgroup-polyfill ships ES modules only
-    '^.+\\.mjs$': ['@swc/jest', swcJestConfig],
   },
-  transformIgnorePatterns: ['/node_modules/(?!@microsoft/focusgroup-polyfill/)'],
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.cjs'],
 };

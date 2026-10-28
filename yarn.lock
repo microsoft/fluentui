@@ -4503,7 +4503,6 @@ __metadata:
     "@fluentui/react-tooltip": "npm:^9.10.8"
     "@fluentui/react-utilities": "npm:^9.27.0"
     "@fluentui/scripts-cypress": "npm:*"
-    "@microsoft/focusgroup-polyfill": "npm:^1.5.0"
     "@oddbird/popover-polyfill": "npm:^0.6.1"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
@@ -8026,7 +8025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@microsoft/focusgroup-polyfill@npm:1.5.0, @microsoft/focusgroup-polyfill@npm:^1.5.0":
+"@microsoft/focusgroup-polyfill@npm:1.5.0":
   version: 1.5.0
   resolution: "@microsoft/focusgroup-polyfill@npm:1.5.0"
   checksum: 10c0/a7b6b0a22799efac3e151f1eaa43dc6e896aebfcaea1e8fde751b8019af519bd7eb0674fbc19e8ce9d72fcc91dd5ddc9a862858d8c7cf3a691a7d21a61326c50

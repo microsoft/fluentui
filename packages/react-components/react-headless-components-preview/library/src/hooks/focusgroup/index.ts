@@ -18,4 +18,3 @@ export {
   useOnKeyboardNavigationChange,
   useSetKeyboardNavigation,
 } from './useKeyboardNavigation';
-export { useFocusgroupPolyfill, supportsFocusgroup } from './focusgroupPolyfill';

@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useFocusgroupPolyfill } from './focusgroupPolyfill';
 
 /**
  * `focusgroup` behavior tokens. The behavior also implies the minimum ARIA role of the owner and its items
@@ -68,8 +67,7 @@ export const getArrowNavigationGroupValue = (options: UseArrowNavigationGroupOpt
  * Returns the DOM attributes that enable arrow key navigation between the focusable descendants of an element,
  * using the HTML `focusgroup` attribute. Only one item of the group is in the Tab order.
  *
- * In browsers without native `focusgroup` support the returned `ref` applies `@microsoft/focusgroup-polyfill` to
- * the element, so merge it with the element's own ref.
+ * Browsers without native `focusgroup` support need `@microsoft/focusgroup-polyfill` installed by the application.
  *
  * To make a specific item the group's entry point, set the `focusgroupstart` attribute on it.
  *
@@ -77,12 +75,11 @@ export const getArrowNavigationGroupValue = (options: UseArrowNavigationGroupOpt
  */
 export const useArrowNavigationGroup = (
   options: UseArrowNavigationGroupOptions = {},
-): ArrowNavigationGroupAttributes & { ref: React.RefCallback<HTMLElement> } => {
+): ArrowNavigationGroupAttributes => {
   const { axis, circular, memorizeCurrent, behavior } = options;
   const focusgroup = getArrowNavigationGroupValue({ axis, circular, memorizeCurrent, behavior });
-  const ref = useFocusgroupPolyfill(focusgroup);
 
-  return React.useMemo(() => ({ focusgroup, ref }), [focusgroup, ref]);
+  return React.useMemo(() => ({ focusgroup }), [focusgroup]);
 };
 
 /**

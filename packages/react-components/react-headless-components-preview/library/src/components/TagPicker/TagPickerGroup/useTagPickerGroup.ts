@@ -22,7 +22,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
 
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+  const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'horizontal',
     circular: true,
   });
@@ -55,7 +55,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
         }
       }),
     },
-    useMergedRefs(ref, tagPickerGroupRef, focusgroupRef),
+    useMergedRefs(ref, tagPickerGroupRef),
   );
 
   /* eslint-disable react-hooks/immutability -- swap Tabster arrow-nav for the native focusgroup + surface disabled as data-* */

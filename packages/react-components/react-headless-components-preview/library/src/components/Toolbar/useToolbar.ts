@@ -1,7 +1,6 @@
 'use client';
 
 import type * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { useToolbarBase_unstable, useToolbarContextValues_unstable } from '@fluentui/react-toolbar';
 
 import type { ToolbarProps, ToolbarState, ToolbarContextValues } from './Toolbar.types';
@@ -15,7 +14,7 @@ import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
   const state: ToolbarState = useToolbarBase_unstable(props, ref);
 
-  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+  const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: state.vertical ? 'vertical' : 'horizontal',
     circular: true,
   });
@@ -23,9 +22,6 @@ export const useToolbar = (props: ToolbarProps, ref: React.Ref<HTMLElement>): To
   Object.assign(state.root, arrowNavigationAttributes);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-vertical'] = toDataAttributeValue(state.vertical);
-
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.ref = useMergedRefs(state.root.ref, focusgroupRef);
 
   return state;
 };

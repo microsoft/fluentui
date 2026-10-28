@@ -15,9 +15,6 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
-import { useFocusgroupPolyfill } from '../../../hooks/focusgroup';
-
-const TOASTER_FOCUSGROUP = 'toolbar block itemcontrols';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
   typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('selector(:popover-open)');
@@ -92,7 +89,6 @@ export const useToaster = (props: ToasterProps): ToasterState => {
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
     const popoverRef = React.useRef<HTMLDivElement>(null);
-    const focusgroupRef = useFocusgroupPolyfill(TOASTER_FOCUSGROUP);
     const positionHasToasts = toastsToRender.has(toastPosition);
 
     // Each rendered position container is its own native popover. We open it on
@@ -115,7 +111,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
 
     return slot.optional<ExtractSlotProps<Slot<'div'>>>(positionHasToasts ? {} : null, {
       defaultProps: {
-        ref: useMergedRefs(toasterRef, popoverRef, focusgroupRef),
+        ref: useMergedRefs(toasterRef, popoverRef),
         children: toastsToRender.get(toastPosition)?.map(toast => (
           <ToastContainer
             {...toast}
@@ -128,7 +124,7 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
-        focusgroup: TOASTER_FOCUSGROUP,
+        focusgroup: 'toolbar block itemcontrols',
         onKeyDown,
         popover: 'manual' as const,
         'data-toaster-position': toastPosition,

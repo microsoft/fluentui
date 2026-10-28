@@ -1,10 +1,8 @@
 'use client';
 
 import type * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
 import { useSwatchPickerBase_unstable } from '@fluentui/react-swatch-picker';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
-import { useFocusgroupPolyfill } from '../../hooks/focusgroup';
 
 export {
   useSwatchPickerContextValues,
@@ -25,10 +23,6 @@ export const useSwatchPicker = (props: SwatchPickerProps, ref: React.Ref<HTMLDiv
     // eslint-disable-next-line react-hooks/immutability
     baseState.root.focusgroup = baseState.selectedValue ? `${behavior} nomemory` : behavior;
   }
-
-  const focusgroupRef = useFocusgroupPolyfill(baseState.root.focusgroup);
-  // eslint-disable-next-line react-hooks/immutability
-  baseState.root.ref = useMergedRefs(baseState.root.ref, focusgroupRef);
 
   return baseState;
 };
