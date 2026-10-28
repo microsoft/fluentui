@@ -1,14 +1,33 @@
 'use client';
 
-import { useBreadcrumbContextValues_unstable } from '@fluentui/react-breadcrumb';
+import type * as React from 'react';
+import { useMergedRefs } from '@fluentui/react-utilities';
+import { useBreadcrumbBase_unstable, useBreadcrumbContextValues_unstable } from '@fluentui/react-breadcrumb';
 
-import type { BreadcrumbState, BreadcrumbContextValues } from './Breadcrumb.types';
+import type { BreadcrumbProps, BreadcrumbState, BreadcrumbContextValues } from './Breadcrumb.types';
+import { useArrowNavigationGroup } from '../../hooks/focusgroup';
 
 /**
  * Returns the state for a Breadcrumb component, given its props and ref.
  * The returned state can be modified with hooks before being passed to `renderBreadcrumb`.
  */
-export { useBreadcrumbBase_unstable as useBreadcrumb } from '@fluentui/react-breadcrumb';
+export const useBreadcrumb = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
+  const state: BreadcrumbState = useBreadcrumbBase_unstable(props, ref);
+  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+    axis: 'horizontal',
+    circular: true,
+    memorizeCurrent: true,
+  });
+
+  if (props.focusMode === 'arrow' && state.root.focusgroup === undefined) {
+    Object.assign(state.root, arrowNavigationAttributes);
+  }
+
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.ref = useMergedRefs(state.root.ref, focusgroupRef);
+
+  return state;
+};
 
 /**
  * Returns the context values provided by the nearest Breadcrumb, enabling child components to

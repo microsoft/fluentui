@@ -23,7 +23,6 @@ import { renderBreadcrumb_unstable as renderBreadcrumb } from '@fluentui/react-b
 import { renderBreadcrumbButton_unstable as renderBreadcrumbButton } from '@fluentui/react-breadcrumb';
 import { renderBreadcrumbDivider_unstable as renderBreadcrumbDivider } from '@fluentui/react-breadcrumb';
 import { renderBreadcrumbItem_unstable as renderBreadcrumbItem } from '@fluentui/react-breadcrumb';
-import { useBreadcrumbBase_unstable as useBreadcrumb } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbContext_unstable as useBreadcrumbContext } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbDividerBase_unstable as useBreadcrumbDivider } from '@fluentui/react-breadcrumb';
 import { useBreadcrumbItemBase_unstable as useBreadcrumbItem } from '@fluentui/react-breadcrumb';
@@ -79,7 +78,8 @@ export { renderBreadcrumbDivider }
 
 export { renderBreadcrumbItem }
 
-export { useBreadcrumb }
+// @public
+export const useBreadcrumb: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
 
 // @public
 export const useBreadcrumbButton: (props: BreadcrumbButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => BreadcrumbButtonState;

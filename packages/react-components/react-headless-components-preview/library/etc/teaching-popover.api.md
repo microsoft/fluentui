@@ -57,7 +57,6 @@ import { useTeachingPopoverCarouselBase_unstable as useTeachingPopoverCarousel }
 import { useTeachingPopoverCarouselCard_unstable as useTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import type { useTeachingPopoverCarouselContextValues_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselFooterButtonBase_unstable as useTeachingPopoverCarouselFooterButton } from '@fluentui/react-teaching-popover';
-import { useTeachingPopoverCarouselNavBase_unstable as useTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverCarouselPageCount_unstable as useTeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverFooterBase_unstable as useTeachingPopoverFooter } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverHeaderBase_unstable as useTeachingPopoverHeader } from '@fluentui/react-teaching-popover';
@@ -237,10 +236,11 @@ export type TeachingPopoverProps = {
     withArrow?: boolean;
     id?: string;
     trapFocus?: boolean;
+    inertTrapFocus?: boolean;
 };
 
 // @public
-export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus' | 'inertTrapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
@@ -325,7 +325,8 @@ export const useTeachingPopoverCarouselFooter: (props: TeachingPopoverCarouselFo
 
 export { useTeachingPopoverCarouselFooterButton }
 
-export { useTeachingPopoverCarouselNav }
+// @public
+export const useTeachingPopoverCarouselNav: (props: TeachingPopoverCarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavState;
 
 // @public (undocumented)
 export const useTeachingPopoverCarouselNavButton: (props: TeachingPopoverCarouselNavButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => TeachingPopoverCarouselNavButtonState;

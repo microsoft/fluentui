@@ -16,6 +16,9 @@ export const useTeachingPopoverCarouselNavButton = (
 
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-selected'] = toDataAttributeValue(state.isSelected);
+  // The selected page is the carousel nav's entry point for keyboard users.
+  // eslint-disable-next-line react-hooks/immutability
+  state.root.focusgroupstart = toDataAttributeValue(state.isSelected);
 
   return state;
 };

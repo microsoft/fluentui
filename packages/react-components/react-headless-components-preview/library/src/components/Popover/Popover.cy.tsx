@@ -690,6 +690,43 @@ describe('Popover', () => {
       cy.focused().should('have.attr', 'data-testid', 'third');
     });
 
+    it('cycles Tab and Shift+Tab inside the surface', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="first">First</button>
+            <button data-testid="last">Last</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.focused().should('have.attr', 'data-testid', 'first');
+      cy.realPress(['Shift', 'Tab']);
+      cy.focused().should('have.attr', 'data-testid', 'last');
+      cy.realPress('Tab');
+      cy.focused().should('have.attr', 'data-testid', 'first');
+    });
+
+    it('does not cycle focus with inertTrapFocus', () => {
+      mount(
+        <Popover trapFocus inertTrapFocus>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="first">First</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get('[data-testid=surface]').should('not.have.attr', 'data-fui-focus-trap');
+    });
+
     it('honors the autofocus HTML attribute on a child', () => {
       const setAutofocus = (el: HTMLInputElement | null) => el?.setAttribute('autofocus', '');
 

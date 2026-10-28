@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useMergedRefs, slot, useEventCallback } from '@fluentui/react-utilities';
 import { usePopoverContext } from '../popoverContext';
 import { toDataAttributeValue } from '../../../utils';
+import { useModalAttributes } from '../../../hooks/focusgroup';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
 
 /**
@@ -22,6 +23,8 @@ export const usePopoverSurface = (
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
   const trapFocus = usePopoverContext(context => context.trapFocus);
+  const inertTrapFocus = usePopoverContext(context => context.inertTrapFocus);
+  const { modalAttributes } = useModalAttributes({ trapFocus, legacyTrapFocus: !inertTrapFocus });
 
   if (process.env.NODE_ENV !== 'production' && trapFocus && props.as === 'div') {
     // eslint-disable-next-line no-console
@@ -40,6 +43,7 @@ export const usePopoverSurface = (
       {
         ref: useMergedRefs(ref, contentRef, positioningCtx.containerRef),
         role: trapFocus ? 'dialog' : 'group',
+        ...modalAttributes,
         ...props,
         id: surfaceId,
         'data-popover-surface': '',

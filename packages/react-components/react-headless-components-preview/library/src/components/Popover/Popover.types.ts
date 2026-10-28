@@ -95,12 +95,21 @@ export type PopoverProps = {
    * @default false
    */
   trapFocus?: boolean;
+
+  /**
+   * Must be used with `trapFocus`. Enables standard behavior according to the HTML dialog spec where the focus
+   * trap only makes outside elements inert, letting Tab move from the surface to the browser UI and back.
+   * By default, Tab and Shift+Tab cycle inside a focus-trapping surface.
+   *
+   * @default false
+   */
+  inertTrapFocus?: boolean;
 };
 
 /**
  * Popover State
  */
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus' | 'inertTrapFocus'>> &
   Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -133,6 +142,7 @@ export type PopoverContextValue = Pick<
   | 'withArrow'
   | 'surfaceId'
   | 'trapFocus'
+  | 'inertTrapFocus'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;

@@ -35,6 +35,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     mouseLeaveDelay = 500,
     withArrow = false,
     trapFocus = false,
+    inertTrapFocus = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -277,6 +278,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnContext,
     withArrow,
     trapFocus,
+    inertTrapFocus,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
@@ -298,6 +300,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnContext,
     withArrow,
     trapFocus,
+    inertTrapFocus,
     positioning,
     surfaceId,
   } = state;
@@ -314,6 +317,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnContext,
       withArrow,
       trapFocus,
+      inertTrapFocus,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

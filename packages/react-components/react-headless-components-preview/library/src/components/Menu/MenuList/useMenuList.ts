@@ -1,8 +1,10 @@
 'use client';
 
 import type * as React from 'react';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMenuListBase_unstable } from '@fluentui/react-menu';
 import type { MenuListProps, MenuListState } from './MenuList.types';
+import { useArrowNavigationGroup } from '../../../hooks/focusgroup';
 
 /**
  * Returns the state for a MenuList.
@@ -13,8 +15,16 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
 export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
   const baseState: MenuListState = useMenuListBase_unstable(props, ref);
 
-  // eslint-disable-next-line react-hooks/immutability -- attribute is mutated to opt into the focusgroup polyfill.
-  baseState.root.focusgroup = 'menu block wrap';
+  const { ref: focusgroupRef, ...arrowNavigationAttributes } = useArrowNavigationGroup({
+    axis: 'vertical',
+    circular: true,
+    behavior: 'menu',
+  });
+
+  Object.assign(baseState.root, arrowNavigationAttributes);
+
+  // eslint-disable-next-line react-hooks/immutability
+  baseState.root.ref = useMergedRefs(baseState.root.ref, focusgroupRef);
 
   return baseState;
 };

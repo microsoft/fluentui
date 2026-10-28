@@ -4,6 +4,7 @@ import type * as React from 'react';
 import { useToastBase_unstable } from '@fluentui/react-toast';
 
 import type { ToastProps, ToastState } from './Toast.types';
+import { useUncontrolledFocus } from '../../hooks/focusgroup';
 
 /**
  * The `useToast` hook processes the props sent to `Toast` and returns state and slot props.
@@ -13,8 +14,8 @@ export const useToast = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastS
 
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-intent'] = state.intent;
-  // eslint-disable-next-line react-hooks/immutability
-  state.root.focusgroup = 'none';
+
+  Object.assign(state.root, useUncontrolledFocus());
 
   return state;
 };
