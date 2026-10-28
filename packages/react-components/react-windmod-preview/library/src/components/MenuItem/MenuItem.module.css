@@ -18,12 +18,12 @@
       @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;
     }
 
-    @variant hover-active {
-      @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
-    }
-
     @variant submenu-open {
       @apply bg-neutral-background-1-hover text-neutral-foreground-2-hover;
+    }
+
+    @variant hover-active {
+      @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
     }
 
     @variant focus, focus-visible {
@@ -54,12 +54,14 @@
     /* Griffel emits every forced-colors rule into its media bucket, which its sheet writes after
        every other bucket. Source order is the only equivalent, so this block trails the rest. */
     @variant forced-colors {
-      @variant hover {
-        @apply border-[Highlight] bg-[Canvas] text-[Highlight];
+      @variant hover, submenu-open {
+        @apply bg-[Highlight] text-[HighlightText] forced-color-adjust-none;
       }
 
-      @variant submenu-open {
-        @apply bg-[Canvas] text-[Highlight];
+      /* Griffel's :hover:active reset outranks its forced-colors :hover and submenu class.
+         Preserve the measured pressed tokens while keeping automatic adjustment disabled. */
+      @variant hover-active {
+        @apply bg-neutral-background-1-pressed text-neutral-foreground-2-pressed;
       }
 
       @variant focus-visible {
@@ -70,6 +72,10 @@
 
       @variant disabled {
         @apply text-[GrayText];
+
+        @variant hover {
+          @apply forced-color-adjust-auto;
+        }
 
         @variant hover, hover-active, focus {
           @apply bg-[Canvas] text-[GrayText];
@@ -86,6 +92,18 @@
 
     @variant group-checked/fui-menu-item {
       @apply visible;
+    }
+
+    @variant forced-colors {
+      @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
+        @apply text-[HighlightText];
+      }
+
+      @variant group-disabled/fui-menu-item {
+        @variant group-hover/fui-menu-item {
+          @apply text-[GrayText];
+        }
+      }
     }
   }
 
@@ -117,6 +135,10 @@
     }
 
     @variant forced-colors {
+      @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
+        @apply text-[HighlightText];
+      }
+
       @variant group-disabled/fui-menu-item {
         @apply text-[GrayText];
 
@@ -161,6 +183,10 @@
     }
 
     @variant forced-colors {
+      @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
+        @apply text-[HighlightText];
+      }
+
       @variant group-disabled/fui-menu-item {
         @apply text-[GrayText];
 
@@ -178,12 +204,12 @@
       @apply text-neutral-foreground-3-hover;
     }
 
-    @variant group-hover-active/fui-menu-item {
-      @apply text-neutral-foreground-3-pressed;
-    }
-
     @variant group-submenu-open/fui-menu-item {
       @apply text-neutral-foreground-3-hover;
+    }
+
+    @variant group-hover-active/fui-menu-item {
+      @apply text-neutral-foreground-3-pressed;
     }
 
     @variant group-disabled/fui-menu-item {
@@ -191,6 +217,15 @@
     }
 
     @variant forced-colors {
+      @variant group-hover/fui-menu-item, group-submenu-open/fui-menu-item {
+        @apply text-[HighlightText];
+      }
+
+      /* The row's :hover:active descendant rule also outranks its forced-colors hover. */
+      @variant group-hover-active/fui-menu-item {
+        @apply text-neutral-foreground-3-pressed;
+      }
+
       @variant group-disabled/fui-menu-item {
         @apply text-[GrayText];
       }

@@ -17,10 +17,10 @@ monosize fixtures in the same folder are left alone.
     "bundleSizeFixtures": {
       "AllComponents.fixture.js": {
         "kind": "entryPoints",
-        "name": "react-headless-components-preview: entire library"
-      }
-    }
-  }
+        "name": "react-headless-components-preview: entire library",
+      },
+    },
+  },
 }
 ```
 
@@ -41,10 +41,10 @@ Use the canonical export key (including `./`), not a source path or package-qual
       "TagPicker.fixture.js": {
         "kind": "entryPoint",
         "entryPoint": "./tag-picker",
-        "name": "@fluentui/react-headless-components-preview/tag-picker"
-      }
-    }
-  }
+        "name": "@fluentui/react-headless-components-preview/tag-picker",
+      },
+    },
+  },
 }
 ```
 
