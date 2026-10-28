@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: match backslash-separated preset paths so the addon finds its registration on Windows",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}
