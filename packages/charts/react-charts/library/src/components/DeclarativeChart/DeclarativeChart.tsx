@@ -111,6 +111,7 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
    * chart target even from outside; 'none' disables automatic restoration.
    * Changing the policy alone does not move focus.
+   * Simultaneous schema data and legend-selection updates use the incoming selection before restoring focus.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 
@@ -401,21 +402,18 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 
   const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
+  const [previousChartSchema, setPreviousChartSchema] = React.useState(props.chartSchema);
+  if (previousChartSchema !== props.chartSchema) {
+    // Reconcile before children commit so fresh data never arrives with the previous schema's selection.
+    setPreviousChartSchema(props.chartSchema);
+    setActiveLegends(selectedLegends);
+  }
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
       props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
     }
   };
-
-  React.useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { plotlySchema } = sanitizeJson(props.chartSchema);
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { selectedLegends } = plotlySchema;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setActiveLegends(selectedLegends ?? []);
-  }, [props.chartSchema]);
 
   const multiSelectLegendProps = {
     canSelectMultipleLegends: true,

@@ -83,6 +83,7 @@ export interface VegaDeclarativeChartProps {
    * Defaults to 'preserve' (chart-owned focus only). 'reset' returns to the remembered
    * chart target even from outside; 'none' disables automatic restoration.
    * Changing the policy alone does not move focus.
+   * Simultaneous schema data and legend-selection updates use the incoming selection before restoring focus.
    */
   focusRestorePolicy?: FocusRestorePolicy;
 
@@ -414,6 +415,12 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
     const chartRef = React.useRef<Chart>(null);
 
     const [activeLegends, setActiveLegends] = React.useState<string[]>(selectedLegends);
+    const [previousSelectedLegends, setPreviousSelectedLegends] = React.useState(props.chartSchema.selectedLegends);
+    if (previousSelectedLegends !== props.chartSchema.selectedLegends) {
+      // Reconcile before children commit so fresh data never arrives with the previous schema's selection.
+      setPreviousSelectedLegends(props.chartSchema.selectedLegends);
+      setActiveLegends(selectedLegends);
+    }
 
     const onActiveLegendsChange = (keys: string[]) => {
       setActiveLegends(keys);
@@ -421,10 +428,6 @@ export const VegaDeclarativeChart = React.forwardRef<HTMLDivElement, VegaDeclara
         props.onSchemaChange({ vegaLiteSpec, selectedLegends: keys });
       }
     };
-
-    React.useEffect(() => {
-      setActiveLegends(props.chartSchema.selectedLegends ?? []);
-    }, [props.chartSchema.selectedLegends]);
 
     const multiSelectLegendProps = {
       canSelectMultipleLegends: true,

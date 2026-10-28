@@ -14,6 +14,7 @@ const charts: {
     color: string,
     policy?: FocusRestorePolicy,
     configureResetTarget?: boolean,
+    selectedLegends?: string[],
   ) => React.ReactElement;
 }[] = [
   {
@@ -79,11 +80,18 @@ const charts: {
         : type === 'bar'
         ? 'rect[role="option"]'
         : 'path[role="option"]',
-    renderChart: (value: number, color: string, policy?: FocusRestorePolicy) => (
+    renderChart: (
+      value: number,
+      color: string,
+      policy?: FocusRestorePolicy,
+      _configureResetTarget?: boolean,
+      selectedLegends?: string[],
+    ) => (
       <DeclarativeChart
         focusRestorePolicy={policy}
         chartSchema={{
           plotlySchema: {
+            selectedLegends,
             data:
               type === 'gauge'
                 ? [
@@ -120,10 +128,17 @@ const charts: {
     name: `Vega ${type}`,
     hasLegend: type !== 'bar',
     selector: type === 'line' ? '[id^="circle"][tabindex="0"]' : 'rect[role="option"]',
-    renderChart: (value: number, color: string, policy?: FocusRestorePolicy) => (
+    renderChart: (
+      value: number,
+      color: string,
+      policy?: FocusRestorePolicy,
+      _configureResetTarget?: boolean,
+      selectedLegends?: string[],
+    ) => (
       <VegaDeclarativeChart
         focusRestorePolicy={policy}
         chartSchema={{
+          selectedLegends,
           vegaLiteSpec: {
             data: {
               values: [
@@ -278,6 +293,52 @@ describe.each(charts)('$name focus policy', ({ selector, renderChart, hasLegend 
       rerender(scene(15, 'blue'));
       expect(container.ownerDocument.activeElement).toBe(legend);
     });
+  }
+
+  if (!supportsResetTarget && hasLegend) {
+    const selectionCases = [
+      { initial: ['First'], next: ['Second'], shouldRestore: false },
+      { initial: ['Second'], next: ['First'], shouldRestore: true },
+      { initial: ['Second'], next: [], shouldRestore: true },
+      { initial: undefined, next: ['Second'], shouldRestore: false },
+    ].flatMap(selection => [false, true].map(together => ({ ...selection, together })));
+
+    it.each(selectionCases)(
+      'uses incoming schema selection $initial -> $next (combined update: $together)',
+      ({ initial, next, shouldRestore, together }) => {
+        const focusEvents: Element[] = [];
+        const renderScene = (value: number, selectedLegends?: string[]) => (
+          <div onFocusCapture={event => focusEvents.push(event.target)}>
+            <button data-testid="outside">Outside</button>
+            {renderChart(value, 'red', 'reset', undefined, selectedLegends)}
+          </div>
+        );
+        const { container, rerender, getByTestId } = render(renderScene(10));
+        const findFirst = () =>
+          Array.from(container.querySelectorAll<SVGElement>(selector)).find(element =>
+            (
+              element.getAttribute('aria-label') ?? element.closest('[role="listbox"]')?.getAttribute('aria-label')
+            )?.includes('First'),
+          );
+        const first = findFirst();
+        expect(first).toBeDefined();
+        act(() => first!.focus());
+        act(() => getByTestId('outside').focus());
+        rerender(renderScene(10, initial));
+        expect(container.ownerDocument.activeElement).toBe(getByTestId('outside'));
+        focusEvents.length = 0;
+
+        if (!together) {
+          rerender(renderScene(10, next));
+          expect(container.ownerDocument.activeElement).toBe(getByTestId('outside'));
+          expect(focusEvents).toHaveLength(0);
+        }
+        rerender(renderScene(15, next));
+
+        expect(container.ownerDocument.activeElement).toBe(shouldRestore ? findFirst() : getByTestId('outside'));
+        expect(focusEvents).toHaveLength(shouldRestore ? 1 : 0);
+      },
+    );
   }
 });
 
