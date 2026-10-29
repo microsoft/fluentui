@@ -10,7 +10,7 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useDialogContext } from '../dialogContext';
-import { useModalAttributes } from '../../../hooks/focusgroup';
+import { useModalAttributes } from '../../../hooks/focus';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';

@@ -20,7 +20,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLastInputType } from '../../hooks/focusgroup/useKeyboardNavigation';
+import { useLastInputType } from '../../hooks/focus/useKeyboardNavigation';
 
 /**
  * Create the state required to render Tooltip.

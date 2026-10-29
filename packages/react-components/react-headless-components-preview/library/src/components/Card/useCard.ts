@@ -7,8 +7,8 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
 import { toDataAttributeValue } from '../../utils/toDataAttributeValue';
-import { useFocusableGroup, useFocusFinders } from '../../hooks/focusgroup';
-import type { UseFocusableGroupOptions } from '../../hooks/focusgroup';
+import { useFocusableGroup, useFocusFinders } from '../../hooks/focus';
+import type { UseFocusableGroupOptions } from '../../hooks/focus';
 
 const focusMap: Record<NonNullable<CardProps['focusMode']>, UseFocusableGroupOptions['tabBehavior'] | undefined> = {
   off: undefined,
