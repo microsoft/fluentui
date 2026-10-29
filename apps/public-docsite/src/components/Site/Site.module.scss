@@ -32,6 +32,10 @@
 }
 
 .siteNavToggle {
+  &:not([hidden]) + div {
+    padding-top: $contentPadding-sm;
+  }
+
   button {
     max-width: 100%;
     height: auto;

@@ -132,6 +132,27 @@ test('focus moves from the disappearing trigger into the desktop sidebar', async
   }
 });
 
+for (const width of [320, 767]) {
+  test(`expanded navigation separates the disclosure and platform controls at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 768 });
+    await openNavigation(page);
+    const toggle = page.getByRole('button', { name: 'Section navigation', exact: true });
+    const controlledId = await toggle.getAttribute('aria-controls');
+    const platformLink = page.locator(`[id="${controlledId}"]`).getByRole('link', { name: 'React', exact: true });
+    await expect(platformLink).toBeVisible();
+    await expect
+      .poll(async () => {
+        const toggleBounds = await toggle.boundingBox();
+        const platformBounds = await platformLink.boundingBox();
+        if (!toggleBounds || !platformBounds) {
+          throw new Error('Navigation controls must be visible to measure their vertical spacing.');
+        }
+        return platformBounds.y - (toggleBounds.y + toggleBounds.height);
+      })
+      .toBeGreaterThanOrEqual(16);
+  });
+}
+
 for (const height of [768, 256]) {
   test(`navigation reflows without horizontal scrolling at 320 x ${height}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height });
