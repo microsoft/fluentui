@@ -44,7 +44,7 @@ describe('PopoverTrigger', () => {
     expect(getByText('Trigger')).not.toHaveAttribute('aria-haspopup');
   });
 
-  it('applies aria-haspopup="dialog" when focus trapping is enabled', () => {
+  it('applies aria-haspopup="dialog" when inert focus trapping is enabled', () => {
     const { getByText } = render(
       <Popover inertTrapFocus>
         <PopoverTrigger>

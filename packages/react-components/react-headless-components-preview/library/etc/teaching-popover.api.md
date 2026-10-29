@@ -212,6 +212,11 @@ export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterPro
 
 export { TeachingPopoverFooterProps }
 
+// @public (undocumented)
+export type TeachingPopoverFooterSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
 export { TeachingPopoverFooterState }
 
 // @public (undocumented)
