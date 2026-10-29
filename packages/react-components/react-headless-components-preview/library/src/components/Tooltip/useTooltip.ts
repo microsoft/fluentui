@@ -21,7 +21,7 @@ import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-ta
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLayerOpenState } from '../../hooks/top-layer';
+import { useLayerEscape, useLayerOpenState, useLayerPresence } from '../../hooks/top-layer';
 
 /**
  * Create the state required to render Tooltip.
@@ -90,6 +90,10 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
 
+  // Mounted until the exit animations end.
+  const { shouldRender } = useLayerPresence(contentRef, { open: visible });
+  state.shouldRenderTooltip = shouldRender;
+
   // Stays mounted so `aria-labelledby` / `aria-describedby` resolve. Without `hint` support it acts as `manual`, so it
   // never closes an open `auto` popover.
   useLayerOpenState(contentRef, {
@@ -100,6 +104,13 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
         setVisible(undefined, { visible: false });
       }
     },
+  });
+
+  // Escape never reaches the content, which doesn't take focus. Only needed where `hint` falls back to `manual`.
+  useLayerEscape(contentRef, {
+    open: visible,
+    listen: 'document',
+    onEscape: () => setVisible(undefined, { visible: false }),
   });
 
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.

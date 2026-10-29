@@ -91,6 +91,27 @@ export type UseLayerFocusReturnOptions = {
   when?: 'inside' | 'always' | false;
 };
 
+export type UseLayerEscapeOptions = {
+  open: boolean;
+  onEscape: (event: KeyboardEvent | React.KeyboardEvent) => void;
+  /**
+   * Which Escapes to handle:
+   * - `manual`: only where the browser doesn't close the layer itself: `popover="manual"`, and `hint` where unsupported;
+   * - `always`: every Escape for the layer, e.g. to report it before the browser closes a modal dialog.
+   * @default 'manual'
+   */
+  when?: 'manual' | 'always';
+  /**
+   * Where Escape is caught:
+   * - `layer`: merge the returned `onKeyDown` into the element. Escape from a popover or dialog nested inside it is
+   *   left alone; content portaled out of it still counts;
+   * - `document`: a capture listener on the document while open, for layers that never hold focus, like a tooltip.
+   *   It closes the layer before any other one, as Escape closes the topmost layer.
+   * @default 'layer'
+   */
+  listen?: 'layer' | 'document';
+};
+
 export type UseLayerOpenStateReturn = {
   open: boolean;
   /**
@@ -121,4 +142,20 @@ export type DialogAdapter = {
    * Handles `cancel` and `close`; calls `onClose` when the dialog closed.
    */
   handleEvent: (event: Event, onClose: (type: TopLayerOpenChangeType) => void) => void;
+};
+
+export type UseLayerPresenceOptions = {
+  open: boolean;
+  /**
+   * Unmount after the element closes and its exit animations end.
+   * @default true
+   */
+  unmountOnClose?: boolean;
+};
+
+export type UseLayerPresenceReturn = {
+  /**
+   * Whether to render the element. Stays true until the exit finishes.
+   */
+  shouldRender: boolean;
 };

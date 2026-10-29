@@ -15,6 +15,7 @@ import {
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import type { Listbox } from './Listbox';
 import { useListboxSlot } from './useListboxSlot';
+import { useLayerPresence } from '../../hooks/top-layer';
 
 type TriggerElement = HTMLButtonElement | HTMLInputElement;
 
@@ -70,6 +71,8 @@ export type UseListboxPopupStateReturn<TProps extends ListboxPopupBaseProps, TTr
   triggerNativeProps: Omit<TProps, 'children'>;
   internalState: ComboboxBaseState;
   listbox: ListboxSlot;
+  /** Whether to render the listbox. Stays true until its exit animations end. */
+  shouldRenderListbox: boolean;
   rootSlot: RootSlot;
 };
 
@@ -118,13 +121,21 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
 
   const triggerRef = React.useRef<TTrigger>(null);
 
-  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
-    state: internalState,
-    triggerRef,
-    defaultProps: {
-      children: props.children,
+  const listboxRef = React.useRef<HTMLDivElement>(null);
+  // Rendered until the exit animations end.
+  const { shouldRender: shouldRenderListbox } = useLayerPresence(listboxRef, { open });
+
+  const listbox = useListboxSlot(
+    props.listbox,
+    useMergedRefs(comboboxPopupRef, activeDescendantListboxRef, listboxRef),
+    {
+      state: internalState,
+      triggerRef,
+      defaultProps: {
+        children: props.children,
+      },
     },
-  });
+  );
 
   const rootSlot = slot.always(props.root ?? undefined, {
     defaultProps: {
@@ -158,6 +169,7 @@ export function useListboxPopupState<TProps extends ListboxPopupBaseProps, TTrig
     triggerNativeProps: triggerNativeProps as unknown as Omit<TProps, 'children'>,
     internalState,
     listbox,
+    shouldRenderListbox,
     rootSlot,
   };
 }

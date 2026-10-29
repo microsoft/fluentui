@@ -13,6 +13,10 @@ export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNo
 };
 
 export type DropdownState = DropdownBaseHookState & {
+  /**
+   * Whether to render the listbox. Stays true until its exit animations end.
+   */
+  shouldRenderListbox: boolean;
   root: DropdownBaseHookState['root'] & {
     /**
      * Whether the dropdown is currently open.

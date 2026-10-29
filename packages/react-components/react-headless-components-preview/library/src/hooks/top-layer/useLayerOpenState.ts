@@ -47,7 +47,7 @@ const showPopover = (element: HTMLElement): boolean => {
 
 /**
  * Open state of a top-layer element, kept in sync with the browser: shows and hides the element with the Popover API,
- * and reports opens and closes the browser makes.
+ * and reports opens and closes the browser makes. Compose with `useLayerPresence` for mounting and exit animations.
  * For `mode="modal"`, use `useDialogLayerOpenState`.
  */
 export const useLayerOpenState = (

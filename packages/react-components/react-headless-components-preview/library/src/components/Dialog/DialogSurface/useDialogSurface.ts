@@ -12,13 +12,18 @@ import {
 import { useDialogContext } from '../dialogContext';
 import { toDataAttributeValue } from '../../../utils';
 import { lockDocumentScroll, unlockDocumentScroll } from '../utils/scroll';
-import { useDialogLayerOpenState, useLayerFocusReturn } from '../../../hooks/top-layer';
-import { waitForAnimations } from '../../../hooks/top-layer/utils';
+import {
+  useDialogLayerOpenState,
+  useLayerEscape,
+  useLayerFocusReturn,
+  useLayerPresence,
+} from '../../../hooks/top-layer';
 import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
  * Create the state required to render DialogSurface.
- * Show/hide come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for non-modal.
+ * Show/hide and exit come from the top-layer hooks: `showModal()` for modal and alert, `popover="manual"` for
+ * non-modal.
  *
  * @param props - props from this instance of DialogSurface
  * @param ref - reference to root HTMLDialogElement of DialogSurface
@@ -32,6 +37,8 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
 
   const isNonModal = modalType === 'non-modal';
 
+  const { shouldRender } = useLayerPresence(dialogRef, { open, unmountOnClose });
+
   // Non-modal: back to the element focused before opening. A modal dialog's `close()` returns focus itself.
   const focusReturn = useLayerFocusReturn(dialogRef, { when: isNonModal ? 'always' : false });
 
@@ -42,23 +49,6 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     onOpenChange: (nextOpen, { event }) => requestOpenChange({ type: 'surfaceToggle', open: nextOpen, event }),
     ...focusReturn,
   });
-
-  // Keep the element connected for native close and consumer-defined exit animations.
-  const [shouldRender, setShouldRender] = React.useState(open || !unmountOnClose);
-
-  // Ensure the element exists before open side-effects run.
-  if ((open || !unmountOnClose) && !shouldRender) {
-    setShouldRender(true);
-  }
-
-  // Unmount once the closed dialog's exit animations end.
-  useIsomorphicLayoutEffect(() => {
-    const dialog = dialogRef.current;
-    if (open || !unmountOnClose || !dialog) {
-      return;
-    }
-    return waitForAnimations(dialog, () => setShouldRender(false));
-  }, [open, unmountOnClose]);
 
   // Let React own the close state: block the browser closing a modal on Escape, so `onOpenChange` can veto it.
   useIsomorphicLayoutEffect(() => {
@@ -79,14 +69,17 @@ export const useDialogSurface = (props: DialogSurfaceProps, ref: React.Ref<HTMLD
     return () => unlockDocumentScroll(targetDocument);
   }, [open, modalType, targetDocument]);
 
+  // Every Escape is reported, so `onOpenChange` can veto it. Stopped, so parent dialogs stay open.
+  const { onKeyDown: onEscapeKeyDown } = useLayerEscape(dialogRef, {
+    open,
+    when: 'always',
+    onEscape: event =>
+      requestOpenChange({ type: 'escapeKeyDown', open: false, event: event as React.KeyboardEvent<HTMLDialogElement> }),
+  });
+
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDialogElement>) => {
     props.onKeyDown?.(event);
-    if (event.key === 'Escape' && !event.isDefaultPrevented()) {
-      requestOpenChange({ type: 'escapeKeyDown', open: false, event });
-      // Stop propagation to avoid closing parent dialogs simultaneously.
-      event.stopPropagation();
-      return;
-    }
+    onEscapeKeyDown(event);
 
     // When the non-modal surface itself is focused, move Tab to the first
     // focusable descendant explicitly.
