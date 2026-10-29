@@ -2,7 +2,7 @@ export { parseFloatingUIPlacement } from './parseFloatingUIPlacement';
 export { getBoundary } from './getBoundary';
 export type { Fiber, HookType } from './getReactFiberFromNode';
 export { getReactFiberFromNode } from './getReactFiberFromNode';
-export { getParentNode, getScrollParent, hasScrollParent } from './getScrollParent';
+export { getParentNode, getScrollParent } from './getScrollParent';
 export { mergeArrowOffset } from './mergeArrowOffset';
 export { toFloatingUIPadding } from './toFloatingUIPadding';
 export { toFloatingUIPlacement } from './toFloatingUIPlacement';

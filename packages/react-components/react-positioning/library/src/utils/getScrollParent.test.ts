@@ -1,4 +1,4 @@
-import { getParentNode, getStyleComputedProperty, getScrollParent, hasScrollParent } from './getScrollParent';
+import { getParentNode, getStyleComputedProperty, getScrollParent } from './getScrollParent';
 
 describe('getParentNode', () => {
   it('returns the node itself if it is HTML', () => {
@@ -116,15 +116,5 @@ describe('getScrollParent', () => {
     } as Partial<CSSStyleDeclaration> as CSSStyleDeclaration);
 
     expect(getScrollParent(childEl)).toBe(scrollableEl);
-  });
-});
-
-describe('hasScrollParent', () => {
-  it('returns false when node is null', () => {
-    expect(hasScrollParent(null)).toBe(false);
-  });
-
-  it('returns false when scroll parent is document.body', () => {
-    expect(hasScrollParent(document.body)).toBe(false);
   });
 });
