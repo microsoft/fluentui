@@ -170,6 +170,9 @@ PresenceBadge sizes and half-filled Rating/RatingDisplay icons. Font glyphs need
 equivalent to scaling an SVG. SVG `stroke` also does not outline a font glyph.
 The high-contrast story selects a theme; also emulate `forced-colors: active` in
 the browser's rendering tools to exercise the forced-colors media queries.
+StoryWright does not emulate forced colors: its high-contrast snapshots do not
+cover RatingItem's forced-color text-stroke rule. That rule is enforced by the
+SVG/font Playwright forced-color tests, not by a forced-color VRT baseline.
 
 Browser assertions fail the `e2e` command. The half-star pixel comparisons verify
 painted clipping and fill direction relative to live full/empty references, but

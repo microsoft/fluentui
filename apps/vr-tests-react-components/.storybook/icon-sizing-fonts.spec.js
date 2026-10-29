@@ -56,6 +56,16 @@ describe('Icon sizing font Storybook', () => {
     });
   });
 
+  it('prioritizes the focused font build when both scope flags are set', () => {
+    process.env.FLUENTUI_VRT_FONT_SIZING = 'true';
+    process.env.FLUENTUI_VRT_ICON_SIZING = 'true';
+    expect(loadConfig().stories).toEqual(['../src/stories/IconSizingFont.stories.tsx']);
+    expect(loadConfig().webpackFinal({ cache: { type: 'filesystem' } }).cache).toEqual({
+      type: 'filesystem',
+      name: 'default-font-sizing',
+    });
+  });
+
   it.each([
     [undefined, undefined, 'storybook-svg'],
     [undefined, 'fonts', 'storybook-fonts'],
