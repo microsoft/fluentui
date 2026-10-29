@@ -96,6 +96,22 @@ describe('export-maps-sync generator', () => {
     expect(result.outOfSyncMessage).toContain('react-tooltip');
   });
 
+  it('retains a CSS asset export and is in sync after canonicalizing its order', async () => {
+    const project = setupProject({
+      name: 'react-positioning',
+      packageJson: {
+        exports: {
+          './package.json': './package.json',
+          './arrow.module.css': './lib/Arrow.module.css',
+        },
+      },
+    });
+
+    await generator(tree);
+    expect(project.readPackageJson().exports!['./arrow.module.css']).toBe('./lib/Arrow.module.css');
+    expect((await generator(tree)).outOfSyncMessage).toBeUndefined();
+  });
+
   it('is a no-op on the second run', async () => {
     const project = setupProject({
       name: 'react-headless',

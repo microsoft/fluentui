@@ -29,3 +29,8 @@ in addition to these automatic CSS assets. CSS follows `moduleOutput` (including
 AMD or custom output directories) even when `outputPathRoot` differs from the
 project root. Keep custom module directories in the target's declared outputs
 for Nx caching.
+
+The `export-maps-sync` generator preserves explicitly declared CSS subpaths
+(for example, `"./arrow.module.css": "./lib/Arrow.module.css"`), ordered before
+`./package.json`. These stylesheet assets do not need JavaScript entry points or
+declaration rollups.

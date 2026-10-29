@@ -49,8 +49,8 @@
         "default": "./lib-commonjs/index.cjs"
       }
     },
-    "./package.json": "./package.json",
-    "./arrow.module.css": "./lib/Arrow.module.css"
+    "./arrow.module.css": "./lib/Arrow.module.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "*.md",
