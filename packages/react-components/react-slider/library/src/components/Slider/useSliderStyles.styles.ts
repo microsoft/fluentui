@@ -260,7 +260,9 @@ const useInputStyles = makeStyles({
     // Chromium reports the deprecated `-webkit-appearance: slider-vertical` value while parsing the CSS, even inside an
     // `@supports not (...)` branch that never matches.
     writingMode: 'vertical-lr',
-    direction: 'rtl',
+    // Keep values increasing upwards in RTL too; Griffel would flip this to ltr.
+    // The cast is needed because the Direction type has no room for the @noflip comment.
+    direction: 'rtl /* @noflip */' as 'rtl',
   },
 });
 
