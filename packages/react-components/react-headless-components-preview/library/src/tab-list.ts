@@ -16,4 +16,6 @@ export type {
   TabListSlots,
   TabListProps,
   TabListState,
+  TabListContextValue,
+  TabListContextValues,
 } from './components/TabList/index';

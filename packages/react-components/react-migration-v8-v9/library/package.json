@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "@ctrl/tinycolor": "^3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.156",
-    "@fluentui/react": "^8.125.9",
+    "@fluentui/fluent2-theme": "^8.107.157",
+    "@fluentui/react": "^8.125.10",
     "@fluentui/react-components": "^9.75.0",
     "@fluentui/react-hooks": "^8.10.4",
     "@fluentui/react-icons": "^2.0.245",

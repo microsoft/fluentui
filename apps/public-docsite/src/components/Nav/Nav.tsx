@@ -90,7 +90,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       <div className={styles.navWrapper}>
         {searchablePageTitle && pages.length > 1 && this._renderSearchBox(searchablePageTitle)}
         <FocusZone>
-          <nav className={styles.nav} role="navigation">
+          <nav className={styles.nav} role="navigation" aria-label={searchablePageTitle || 'Pages'}>
             {sortState === 'alphabetized' && searchablePageTitle
               ? this._renderSortedLinks(pages)
               : this._renderLinkList(pages, false)}
