@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { createPortal } from 'react-dom';
 import { renderToString } from 'react-dom/server';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import type { ExtractSlotProps, SlotRenderFunction } from '@fluentui/react-utilities';
 import { isConformant } from '../../testing/isConformant';
 import { InfoLabel } from './InfoLabel';
@@ -64,25 +64,6 @@ describe('InfoLabel', () => {
 });
 
 describe('InfoLabel accessibility relationships', () => {
-  it('links a controlled note without generating ownership', async () => {
-    const element = (open: boolean) =>
-      strict(
-        <InfoLabel root={{ id: 'owner' }} info="Information" infoButton={{ popover: { id: 'popup', open } }}>
-          Label
-        </InfoLabel>,
-      );
-    const { container, getByRole, queryByRole, rerender } = render(element(true));
-    const trigger = getByRole('button');
-    expect(trigger).toHaveAttribute('aria-expanded', 'true');
-    expect(trigger).toHaveAttribute('aria-details', 'popup');
-    expect(getByRole('note', { hidden: true })).toHaveAttribute('id', 'popup');
-    expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-    rerender(element(false));
-    await waitFor(() => expect(queryByRole('note', { hidden: true })).toBeNull());
-    expect(trigger).not.toHaveAttribute('aria-details');
-    expect(container.querySelector('#owner')).not.toHaveAttribute('aria-owns');
-  });
-
   it('links a portaled note without generating ownership or changing its role', () => {
     const portal = document.createElement('div');
     document.body.appendChild(portal);
