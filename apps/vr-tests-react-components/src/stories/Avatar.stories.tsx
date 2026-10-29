@@ -1,13 +1,14 @@
-import type { Meta } from '@storybook/react-webpack5';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 import * as React from 'react';
 import { Steps } from 'storywright';
 import type { StoryParameters } from 'storywright';
-import { Avatar, AvatarProps } from '@fluentui/react-avatar';
+import type { AvatarProps } from '@fluentui/react-avatar';
+import { Avatar } from '@fluentui/react-avatar';
 import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities';
 
-const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
+const imageRoot = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
 /** Sample names and images for use in Avatar examples */
 const nameAndImage = [
@@ -237,17 +238,34 @@ export const SizeInactiveBadge = () => (
 );
 SizeInactiveBadge.storyName = 'size+inactive+badge';
 
-export const BadgeMask = () => (
+/** Fetches an image and returns it as a data URI */
+const toDataUri = async (src: string): Promise<string> => {
+  const blob = await fetch(src).then(response => response.blob());
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+};
+
+export const BadgeMask: StoryFn = (_args, { loaded }) => (
   <div
     style={{
       backgroundSize: '32px 32px',
       backgroundImage: `repeating-conic-gradient(${tokens.colorBrandBackground} 0% 25%, ${tokens.colorBrandBackgroundSelected} 0% 50%)`,
     }}
   >
-    <AvatarList images={examples.image} color="marigold" active="active" badge={{ status: 'available' }} />
+    <AvatarList images={loaded.images} color="marigold" active="active" badge={{ status: 'available' }} />
   </div>
 );
 BadgeMask.storyName = 'badgeMask';
+// Images are passed as data URIs, which Chromium loads before the first paint. An image arriving after it re-rasters
+// only part of the active Avatar's compositing layer, which makes the anti-aliasing of the ring nondeterministic.
+BadgeMask.loaders = [
+  async () => ({ images: await Promise.all(examples.image.slice(0, examples.size.length).map(toDataUri)) }),
+];
 
 export const BadgeMaskRTL = getStoryVariant(BadgeMask, RTL);
 

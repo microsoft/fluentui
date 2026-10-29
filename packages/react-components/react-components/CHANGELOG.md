@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.0)
+
+Tue, 27 Oct 2026 16:42:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.11..@fluentui/react-components_v9.75.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat(react-components): export existing Menu base hooks and composition types ([PR #36978](https://github.com/microsoft/fluentui/pull/36978) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode ([PR #36974](https://github.com/microsoft/fluentui/pull/36974) by vgenaev@gmail.com)
+- `@fluentui/react-provider`
+  - fix: escape theme style delimiters instead of omitting valid nested theme values ([PR #36985](https://github.com/microsoft/fluentui/pull/36985) by vgenaev@gmail.com)
 
 ## [9.74.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.11)
 

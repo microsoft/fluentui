@@ -5,6 +5,15 @@
   "implicitDependencies": [],
   "tags": ["v8"],
   "targets": {
+    "e2e": {
+      "dependsOn": ["bundle", "type-check"],
+      "inputs": ["default", "^production", { "externalDependencies": ["@playwright/test"] }],
+      "outputs": ["{projectRoot}/test-results"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "format": {},
     "type-check": {
       "dependsOn": ["prebundle"]
     },
@@ -12,7 +21,8 @@
       "dependsOn": ["^build"]
     },
     "bundle": {
-      "dependsOn": ["prebundle"]
+      "dependsOn": ["prebundle"],
+      "outputs": ["{projectRoot}/dist"]
     }
   }
 }
