@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: apply only the latest started position computation so that an older one cannot overwrite a newer position",
+  "packageName": "@fluentui/react-positioning",
+  "email": "141153077+andreivms@users.noreply.github.com"
+}
