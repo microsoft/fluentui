@@ -118,7 +118,7 @@ describe('TeachingPopover', () => {
     expect(getByRole('group', { hidden: true }).querySelector('[data-arrow]')).toBeNull();
   });
 
-  it('does not enable trapFocus by default (surface is role="group", not "dialog")', () => {
+  it('does not enable inertTrapFocus by default (surface is role="group", not "dialog")', () => {
     const { getByRole, queryByRole } = render(
       <TeachingPopover defaultOpen>
         <TeachingPopoverTrigger>
@@ -132,9 +132,9 @@ describe('TeachingPopover', () => {
     expect(queryByRole('dialog', { hidden: true })).not.toBeInTheDocument();
   });
 
-  it('forwards trapFocus to the surface when explicitly set', () => {
+  it('forwards inertTrapFocus to the surface when explicitly set', () => {
     const { getByRole } = render(
-      <TeachingPopover defaultOpen trapFocus>
+      <TeachingPopover defaultOpen inertTrapFocus>
         <TeachingPopoverTrigger>
           <button>Trigger</button>
         </TeachingPopoverTrigger>
