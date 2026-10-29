@@ -144,3 +144,10 @@ export type PopoverContextValue = Pick<
     containerRef: React.RefCallback<HTMLElement>;
   };
 };
+
+/**
+ * Context values provided by Popover to its children.
+ */
+export type PopoverContextValues = {
+  popover: PopoverContextValue;
+};

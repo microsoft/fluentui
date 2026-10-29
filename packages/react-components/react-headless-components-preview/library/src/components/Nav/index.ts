@@ -48,7 +48,7 @@ export type { NavSectionHeaderProps, NavSectionHeaderSlots, NavSectionHeaderStat
 export { renderNavSectionHeader, useNavSectionHeader } from './NavSectionHeader';
 
 export { NavDrawer } from './NavDrawer';
-export type { NavDrawerProps, NavDrawerState } from './NavDrawer';
+export type { NavDrawerProps, NavDrawerSlots, NavDrawerState } from './NavDrawer';
 export { renderNavDrawer, useNavDrawer } from './NavDrawer';
 
 export { NavDrawerBody } from './NavDrawerBody';
