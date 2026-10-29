@@ -56,15 +56,15 @@ export const useInfoButton = (props: InfoButtonProps, ref: React.Ref<HTMLButtonE
     popover: popoverSlot,
     info: slot.always(info, {
       defaultProps: {
-        as: popoverSlot.inertTrapFocus ? 'dialog' : 'div',
-        role: popoverSlot.inertTrapFocus ? 'dialog' : 'note',
+        as: popoverSlot.trapFocus ? 'dialog' : 'div',
+        role: popoverSlot.trapFocus ? 'dialog' : 'note',
         tabIndex: -1,
       },
       elementType: PopoverSurface,
     }),
   };
 
-  if (state.popover.inertTrapFocus) {
+  if (state.popover.trapFocus) {
     state.root.id ??= buttonId;
     if (state.info['aria-label'] === undefined && state.info['aria-labelledby'] === undefined) {
       state.info['aria-labelledby'] = state.root.id;

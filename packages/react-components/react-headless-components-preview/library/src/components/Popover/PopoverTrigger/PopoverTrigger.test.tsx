@@ -44,9 +44,9 @@ describe('PopoverTrigger', () => {
     expect(getByText('Trigger')).not.toHaveAttribute('aria-haspopup');
   });
 
-  it('applies aria-haspopup="dialog" when inert focus trapping is enabled', () => {
+  it('applies aria-haspopup="dialog" when focus trapping is enabled', () => {
     const { getByText } = render(
-      <Popover inertTrapFocus>
+      <Popover trapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -57,9 +57,9 @@ describe('PopoverTrigger', () => {
     expect(getByText('Trigger')).toHaveAttribute('aria-haspopup', 'dialog');
   });
 
-  it.each([false, true])('preserves a consumer popup role when inertTrapFocus is %s', inertTrapFocus => {
+  it.each([false, true])('preserves a consumer popup role when trapFocus is %s', trapFocus => {
     const { getByText } = render(
-      <Popover inertTrapFocus={inertTrapFocus}>
+      <Popover trapFocus={trapFocus}>
         <PopoverTrigger>
           <button aria-haspopup="menu">Trigger</button>
         </PopoverTrigger>
@@ -72,7 +72,7 @@ describe('PopoverTrigger', () => {
 
   it('preserves an explicit false aria-haspopup on a modal trigger', () => {
     const { getByText } = render(
-      <Popover inertTrapFocus>
+      <Popover trapFocus>
         <PopoverTrigger>
           <button aria-haspopup={false}>Trigger</button>
         </PopoverTrigger>

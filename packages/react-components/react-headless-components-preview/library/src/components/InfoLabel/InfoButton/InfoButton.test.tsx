@@ -82,9 +82,7 @@ describe('InfoButton', () => {
   });
 
   it('preserves explicit focus-trapping behavior with matching dialog semantics', () => {
-    const { getByRole } = render(
-      <InfoButton info="Information" popover={{ inertTrapFocus: true, defaultOpen: true }} />,
-    );
+    const { getByRole } = render(<InfoButton info="Information" popover={{ trapFocus: true, defaultOpen: true }} />);
     expect(getByRole('button', { name: 'information' })).toHaveAttribute('aria-haspopup', 'dialog');
     const dialog = getByRole('dialog', { hidden: true });
     expect(dialog.tagName).toBe('DIALOG');
@@ -97,7 +95,7 @@ describe('InfoButton', () => {
     const { getByRole } = render(
       <InfoButton
         info={{ 'aria-label': 'Additional details', children: 'Information' }}
-        popover={{ inertTrapFocus: true, defaultOpen: true }}
+        popover={{ trapFocus: true, defaultOpen: true }}
       />,
     );
     expect(getByRole('dialog', { name: 'Additional details', hidden: true })).toBeInTheDocument();
