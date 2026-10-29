@@ -38,14 +38,14 @@ import styles from '../compare.module.css';
 const pages = ['1', '2', '3'];
 
 /**
- * Pinned-open windmod carousel next to its Griffel-suite twin. trapFocus is pinned off on both
+ * Pinned-open windmod carousel next to its Griffel-suite twin. Focus trapping is pinned off on both
  * sides, and the windmod surface takes the manual hint mode because both are open at once. The
  * reference takes the two trailing-step strings on the footer; windmod takes each on its own slot.
  */
 export const GriffelComparison = (): React.ReactNode => (
   <div className={styles.spacer}>
     <FluentProvider>
-      <TeachingPopover open trapFocus={false}>
+      <TeachingPopover open inertTrapFocus={false}>
         <TeachingPopoverTrigger>
           <Button>Windmod</Button>
         </TeachingPopoverTrigger>

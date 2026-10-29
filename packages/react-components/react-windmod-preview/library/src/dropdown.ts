@@ -8,3 +8,11 @@ export {
   useDropdown,
   useDropdownContextValues,
 } from '@fluentui/react-headless-components-preview/dropdown';
+
+export { useListboxContext, useActiveDescendantContext } from '@fluentui/react-headless-components-preview/dropdown';
+
+export type {
+  DropdownContextValues,
+  ListboxContextValue,
+  ActiveDescendantContextValue,
+} from '@fluentui/react-headless-components-preview/dropdown';

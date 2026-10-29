@@ -29,6 +29,7 @@ export const TeachingPopoverGriffel = (): React.ReactNode => (
       TeachingPopoverFooter={TeachingPopoverFooter as never}
       Button={Button}
       surfaceProps={surfaceProps}
+      focusProps={{ trapFocus: false }}
     />
   </FluentProvider>
 );

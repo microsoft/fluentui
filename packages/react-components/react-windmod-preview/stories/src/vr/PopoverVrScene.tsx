@@ -41,7 +41,7 @@ type Cell = {
 
 /**
  * Four bands, fourteen cells, laid out as a 4 × 4 grid with a blank tail on the last two rows.
- * `trapFocus` cannot appear here: showModal() paints a viewport-wide ::backdrop that would cover
+ * `inertTrapFocus` cannot appear here: showModal() paints a viewport-wide ::backdrop that would cover
  * every other cell.
  */
 const bands: Cell[][] = [

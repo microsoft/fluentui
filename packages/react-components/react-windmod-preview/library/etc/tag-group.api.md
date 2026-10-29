@@ -6,11 +6,13 @@
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { TagGroupContextValue } from '@fluentui/react-headless-components-preview/tag-group';
 import { TagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupProps as TagGroupProps_2 } from '@fluentui/react-headless-components-preview/tag-group';
 import { TagGroupSlots } from '@fluentui/react-headless-components-preview/tag-group';
 import type { TagGroupState as TagGroupState_2 } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { useTagGroupContext } from '@fluentui/react-headless-components-preview/tag-group';
 import { useTagGroupContextValues } from '@fluentui/react-headless-components-preview/tag-group';
 
 export { renderTagGroup }
@@ -25,6 +27,8 @@ export type TagGroupAppearance = TagAppearance;
 export const tagGroupClassNames: {
     root: string;
 };
+
+export { TagGroupContextValue }
 
 export { TagGroupContextValues }
 
@@ -43,6 +47,8 @@ export { TagGroupSlots }
 export type TagGroupState = TagGroupState_2 & Required<Pick<TagGroupProps, 'appearance' | 'size'>>;
 
 export { useTagGroup }
+
+export { useTagGroupContext }
 
 export { useTagGroupContextValues }
 

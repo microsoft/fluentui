@@ -162,9 +162,9 @@ describe('PopoverSurface', () => {
     expect(renderSurface({}, { popover: 'manual' }).surface.getAttribute('popover')).toBe('manual');
   });
 
-  it('takes its role from trapFocus', () => {
+  it('takes its role from inertTrapFocus', () => {
     expect(renderSurface().surface.getAttribute('role')).toBe('group');
-    expect(renderSurface({ trapFocus: true }).surface.getAttribute('role')).toBe('dialog');
+    expect(renderSurface({ inertTrapFocus: true }).surface.getAttribute('role')).toBe('dialog');
   });
 
   it('renders the arrow only with withArrow, and reaches it without a class', () => {

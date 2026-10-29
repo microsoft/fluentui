@@ -12,3 +12,7 @@ export {
   useRatingContextValues,
   useRatingItem,
 } from '@fluentui/react-headless-components-preview/rating';
+
+export { useRatingItemContextValue } from '@fluentui/react-headless-components-preview/rating';
+
+export type { RatingContextValues, RatingItemContextValue } from '@fluentui/react-headless-components-preview/rating';

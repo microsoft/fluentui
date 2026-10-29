@@ -30,3 +30,5 @@ export {
   useCounterBadge,
   usePresenceBadge,
 } from '@fluentui/react-headless-components-preview/badge';
+
+export type { CounterBadgeSlots, PresenceBadgeSlots } from '@fluentui/react-headless-components-preview/badge';

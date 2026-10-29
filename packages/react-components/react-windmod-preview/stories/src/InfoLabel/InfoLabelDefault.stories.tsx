@@ -9,6 +9,12 @@ export const Default = (): React.ReactNode => (
     <div className={styles.stack}>
       <InfoLabel info="An InfoButton opens a popover holding this text.">Label with info</InfoLabel>
       <InfoLabel>Label without info</InfoLabel>
+      <InfoLabel
+        info="This information opens in a native modal dialog. Escape returns focus to its button."
+        infoButton={{ popover: { inertTrapFocus: true } }}
+      >
+        Label with modal info
+      </InfoLabel>
     </div>
   </FluentProvider>
 );

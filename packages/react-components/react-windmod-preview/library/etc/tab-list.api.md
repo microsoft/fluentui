@@ -9,6 +9,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderTab } from '@fluentui/react-headless-components-preview/tab-list';
 import { renderTabList } from '@fluentui/react-headless-components-preview/tab-list';
 import type { Slot } from '@fluentui/react-utilities';
+import { TabListContextValue } from '@fluentui/react-headless-components-preview/tab-list';
+import { TabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
 import type { TabListProps as TabListProps_2 } from '@fluentui/react-headless-components-preview/tab-list';
 import { TabListSlots } from '@fluentui/react-headless-components-preview/tab-list';
 import type { TabListState as TabListState_2 } from '@fluentui/react-headless-components-preview/tab-list';
@@ -43,6 +45,10 @@ export const TabList: ForwardRefComponent<TabListProps>;
 export const tabListClassNames: {
     root: string;
 };
+
+export { TabListContextValue }
+
+export { TabListContextValues }
 
 // @public
 export type TabListProps = TabListProps_2 & {

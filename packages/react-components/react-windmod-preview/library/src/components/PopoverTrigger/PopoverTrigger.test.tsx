@@ -50,11 +50,11 @@ describe('PopoverTrigger', () => {
     expect(trigger).toHaveClass('fui-popover-trigger');
   });
 
-  it('leaves the headless aria wiring intact', () => {
+  it('exposes nonmodal details without announcing a menu popup', () => {
     const { trigger } = renderTrigger();
 
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
-    expect(trigger.getAttribute('aria-haspopup')).toBe('true');
+    expect(trigger).not.toHaveAttribute('aria-haspopup');
     expect(trigger.getAttribute('aria-details')).toMatch(/^fui-popover-surface-/);
     expect(trigger.getAttribute('data-open')).toBe('');
   });

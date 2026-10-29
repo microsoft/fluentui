@@ -26,13 +26,13 @@ import {
 import styles from '../compare.module.css';
 
 /**
- * Pinned-open windmod teaching popover next to its Griffel-suite twin. trapFocus is pinned off on
+ * Pinned-open windmod teaching popover next to its Griffel-suite twin. Focus trapping is pinned off on
  * both sides: Griffel defaults it on, and two focus traps in one page fight each other.
  */
 export const GriffelComparison = (): React.ReactNode => (
   <div className={styles.spacer}>
     <FluentProvider>
-      <TeachingPopover open trapFocus={false}>
+      <TeachingPopover open inertTrapFocus={false}>
         <TeachingPopoverTrigger>
           <Button>Windmod</Button>
         </TeachingPopoverTrigger>

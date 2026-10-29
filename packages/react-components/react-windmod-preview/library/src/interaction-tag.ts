@@ -43,3 +43,7 @@ export {
   useInteractionTagPrimaryContextValues,
   useInteractionTagSecondary,
 } from '@fluentui/react-headless-components-preview/interaction-tag';
+
+export { useInteractionTagContext } from '@fluentui/react-headless-components-preview/interaction-tag';
+
+export type { InteractionTagContextValue } from '@fluentui/react-headless-components-preview/interaction-tag';

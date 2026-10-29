@@ -88,3 +88,5 @@ export {
   useNavSubItem,
   useNavSubItemGroup,
 } from '@fluentui/react-headless-components-preview/nav';
+
+export type { NavDrawerSlots } from '@fluentui/react-headless-components-preview/nav';

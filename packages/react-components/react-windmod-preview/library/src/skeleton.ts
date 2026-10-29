@@ -20,3 +20,7 @@ export {
   useSkeletonContextValues,
   useSkeletonItem,
 } from '@fluentui/react-headless-components-preview/skeleton';
+
+export { useSkeletonContext } from '@fluentui/react-headless-components-preview/skeleton';
+
+export type { SkeletonContextValue, SkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';

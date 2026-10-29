@@ -30,3 +30,12 @@ export {
   useOption,
   useOptionGroup,
 } from '@fluentui/react-headless-components-preview/combobox';
+
+export { useListboxContext, useActiveDescendantContext } from '@fluentui/react-headless-components-preview/combobox';
+
+export type {
+  UseComboboxFilterConfig,
+  ComboboxContextValues,
+  ListboxContextValue,
+  ActiveDescendantContextValue,
+} from '@fluentui/react-headless-components-preview/combobox';

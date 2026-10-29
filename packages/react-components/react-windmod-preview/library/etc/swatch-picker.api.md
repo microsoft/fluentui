@@ -19,6 +19,8 @@ import { renderEmptySwatch } from '@fluentui/react-headless-components-preview/s
 import { renderImageSwatch } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderSwatchPicker } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { renderSwatchPickerRow } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { SwatchPickerContextValue } from '@fluentui/react-headless-components-preview/swatch-picker';
+import { SwatchPickerContextValues } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { SwatchPickerProps as SwatchPickerProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import type { SwatchPickerRowProps as SwatchPickerRowProps_2 } from '@fluentui/react-headless-components-preview/swatch-picker';
 import { SwatchPickerRowSlots } from '@fluentui/react-headless-components-preview/swatch-picker';
@@ -107,6 +109,10 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 export const swatchPickerClassNames: {
     root: string;
 };
+
+export { SwatchPickerContextValue }
+
+export { SwatchPickerContextValues }
 
 // @public
 export type SwatchPickerProps = SwatchPickerProps_2 & {

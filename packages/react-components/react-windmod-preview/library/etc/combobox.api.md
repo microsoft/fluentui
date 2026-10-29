@@ -4,10 +4,13 @@
 
 ```ts
 
+import { ActiveDescendantContextValue } from '@fluentui/react-headless-components-preview/combobox';
+import { ComboboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import type { ComboboxProps as ComboboxProps_2 } from '@fluentui/react-headless-components-preview/combobox';
 import { ComboboxSlots } from '@fluentui/react-headless-components-preview/combobox';
 import type { ComboboxState as ComboboxState_2 } from '@fluentui/react-headless-components-preview/combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ListboxContextValue } from '@fluentui/react-headless-components-preview/combobox';
 import { ListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import { ListboxProps } from '@fluentui/react-headless-components-preview/combobox';
 import { ListboxSlots } from '@fluentui/react-headless-components-preview/combobox';
@@ -22,13 +25,18 @@ import { renderCombobox } from '@fluentui/react-headless-components-preview/comb
 import { renderListbox } from '@fluentui/react-headless-components-preview/combobox';
 import { renderOption } from '@fluentui/react-headless-components-preview/combobox';
 import { renderOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
+import { useActiveDescendantContext } from '@fluentui/react-headless-components-preview/combobox';
 import { useCombobox } from '@fluentui/react-headless-components-preview/combobox';
 import { useComboboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import { useComboboxFilter } from '@fluentui/react-headless-components-preview/combobox';
+import { UseComboboxFilterConfig } from '@fluentui/react-headless-components-preview/combobox';
 import { useListbox } from '@fluentui/react-headless-components-preview/combobox';
+import { useListboxContext } from '@fluentui/react-headless-components-preview/combobox';
 import { useListboxContextValues } from '@fluentui/react-headless-components-preview/combobox';
 import { useOption } from '@fluentui/react-headless-components-preview/combobox';
 import { useOptionGroup } from '@fluentui/react-headless-components-preview/combobox';
+
+export { ActiveDescendantContextValue }
 
 // @public
 export const Combobox: ForwardRefComponent<ComboboxProps>;
@@ -40,6 +48,8 @@ export type ComboboxAppearance = 'outline' | 'underline' | 'filled-darker' | 'fi
 export const comboboxClassNames: {
     root: string;
 };
+
+export { ComboboxContextValues }
 
 // @public
 export type ComboboxProps = ComboboxProps_2 & {
@@ -62,6 +72,8 @@ export const Listbox: ForwardRefComponent<ListboxProps>;
 export const listboxClassNames: {
     root: string;
 };
+
+export { ListboxContextValue }
 
 export { ListboxContextValues }
 
@@ -108,16 +120,22 @@ export { renderOption }
 
 export { renderOptionGroup }
 
+export { useActiveDescendantContext }
+
 export { useCombobox }
 
 export { useComboboxContextValues }
 
 export { useComboboxFilter }
 
+export { UseComboboxFilterConfig }
+
 // @public
 export const useComboboxStyles: (state: ComboboxState) => ComboboxState;
 
 export { useListbox }
+
+export { useListboxContext }
 
 export { useListboxContextValues }
 

@@ -50,3 +50,13 @@ export {
   useToolbarRadioGroup,
   useToolbarToggleButton,
 } from '@fluentui/react-headless-components-preview/toolbar';
+
+export type {
+  ToolbarContextValue,
+  ToolbarButtonSlots,
+  ToolbarDividerSlots,
+  ToolbarGroupSlots,
+  ToolbarRadioGroupSlots,
+  ToolbarRadioButtonSlots,
+  ToolbarToggleButtonSlots,
+} from '@fluentui/react-headless-components-preview/toolbar';

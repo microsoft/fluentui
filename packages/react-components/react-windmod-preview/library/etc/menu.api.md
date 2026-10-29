@@ -11,6 +11,7 @@ import { MenuContextValues } from '@fluentui/react-headless-components-preview/m
 import { MenuDividerProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuDividerSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuDividerState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuGroupContextValue } from '@fluentui/react-headless-components-preview/menu';
 import { MenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { MenuGroupHeaderProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuGroupHeaderSlots } from '@fluentui/react-headless-components-preview/menu';
@@ -19,18 +20,22 @@ import { MenuGroupProps } from '@fluentui/react-headless-components-preview/menu
 import { MenuGroupSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuGroupState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemCheckboxProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemCheckboxSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemCheckboxState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemLinkProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemLinkSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemLinkState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemRadioProps } from '@fluentui/react-headless-components-preview/menu';
+import { MenuItemRadioSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemRadioState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemState } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSwitchProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSwitchSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuItemSwitchState } from '@fluentui/react-headless-components-preview/menu';
+import { MenuListContextValue } from '@fluentui/react-headless-components-preview/menu';
+import { MenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListProps } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListSlots } from '@fluentui/react-headless-components-preview/menu';
 import { MenuListState } from '@fluentui/react-headless-components-preview/menu';
@@ -66,6 +71,7 @@ import { useMenuContext } from '@fluentui/react-headless-components-preview/menu
 import { useMenuContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuDivider } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuGroup } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuGroupContext } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuGroupContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuGroupHeader } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItem } from '@fluentui/react-headless-components-preview/menu';
@@ -74,6 +80,7 @@ import { useMenuItemLink } from '@fluentui/react-headless-components-preview/men
 import { useMenuItemRadio } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuItemSwitch } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuList } from '@fluentui/react-headless-components-preview/menu';
+import { useMenuListContext } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuListContextValues } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuPopover } from '@fluentui/react-headless-components-preview/menu';
 import { useMenuSplitGroup } from '@fluentui/react-headless-components-preview/menu';
@@ -111,6 +118,8 @@ export const menuGroupClassNames: {
     root: string;
 };
 
+export { MenuGroupContextValue }
+
 export { MenuGroupContextValues }
 
 // @public
@@ -145,6 +154,8 @@ export const menuItemCheckboxClassNames: {
 };
 
 export { MenuItemCheckboxProps }
+
+export { MenuItemCheckboxSlots }
 
 export { MenuItemCheckboxState }
 
@@ -185,6 +196,8 @@ export const menuItemRadioClassNames: {
 
 export { MenuItemRadioProps }
 
+export { MenuItemRadioSlots }
+
 export { MenuItemRadioState }
 
 export { MenuItemSlots }
@@ -212,6 +225,10 @@ export const MenuList: ForwardRefComponent<MenuListProps>;
 export const menuListClassNames: {
     root: string;
 };
+
+export { MenuListContextValue }
+
+export { MenuListContextValues }
 
 export { MenuListProps }
 
@@ -308,6 +325,8 @@ export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState
 
 export { useMenuGroup }
 
+export { useMenuGroupContext }
+
 export { useMenuGroupContextValues }
 
 export { useMenuGroupHeader }
@@ -347,6 +366,8 @@ export { useMenuItemSwitch }
 export const useMenuItemSwitchStyles: (state: MenuItemSwitchState) => MenuItemSwitchState;
 
 export { useMenuList }
+
+export { useMenuListContext }
 
 export { useMenuListContextValues }
 

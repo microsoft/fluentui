@@ -4,6 +4,7 @@ import * as React from 'react';
 type TeachingPopoverLike = React.ComponentType<{
   open?: boolean;
   trapFocus?: boolean;
+  inertTrapFocus?: boolean;
   positioning?: string;
   children: React.ReactNode;
 }>;
@@ -66,6 +67,7 @@ export const TeachingPopoverPlacementsVrScene = ({
   TeachingPopoverHeader,
   Button,
   surfaceProps,
+  focusProps = { inertTrapFocus: false },
 }: {
   TeachingPopover: TeachingPopoverLike;
   TeachingPopoverTrigger: TriggerLike;
@@ -73,6 +75,7 @@ export const TeachingPopoverPlacementsVrScene = ({
   TeachingPopoverHeader: HeaderLike;
   Button: ButtonLike;
   surfaceProps: { popover?: string };
+  focusProps?: { trapFocus?: boolean; inertTrapFocus?: boolean };
 }): React.ReactNode => (
   <>
     {/* Suppressed on BOTH sides — see TeachingPopoverVrScene for why it is unqualified. */}
@@ -96,10 +99,10 @@ export const TeachingPopoverPlacementsVrScene = ({
     >
       {rows.map((row, rowIndex) =>
         row.map(({ positioning, column, inline }) => (
-          // trapFocus is pinned off on BOTH sides: Griffel's TeachingPopover defaults it ON, which
+          // Focus trapping is pinned off on BOTH sides: Griffel's TeachingPopover defaults it ON, which
           // paints nothing but would run eight focus traps against each other in one page.
           <div key={positioning} style={{ gridColumn: column, gridRow: rowIndex + 1 }}>
-            <TeachingPopover open trapFocus={false} positioning={positioning}>
+            <TeachingPopover open {...focusProps} positioning={positioning}>
               <TeachingPopoverTrigger>
                 <Button style={{ width: inline ? INLINE_TRIGGER_WIDTH : BLOCK_TRIGGER_WIDTH }}>{positioning}</Button>
               </TeachingPopoverTrigger>

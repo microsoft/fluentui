@@ -9,6 +9,7 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { OnOpenChangeData } from '@fluentui/react-headless-components-preview/popover';
 import { OpenPopoverEvents } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverContextValue } from '@fluentui/react-headless-components-preview/popover';
+import { PopoverContextValues } from '@fluentui/react-headless-components-preview/popover';
 import type { PopoverProps as PopoverProps_2 } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverState } from '@fluentui/react-headless-components-preview/popover';
 import { PopoverSurfaceProps } from '@fluentui/react-headless-components-preview/popover';
@@ -40,6 +41,8 @@ export const Popover: {
 export type PopoverAppearance = 'brand' | 'inverted';
 
 export { PopoverContextValue }
+
+export { PopoverContextValues }
 
 // @public
 export type PopoverProps = PopoverProps_2 & {

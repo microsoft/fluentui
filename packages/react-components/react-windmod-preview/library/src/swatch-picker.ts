@@ -35,3 +35,8 @@ export {
   useSwatchPickerContextValues,
   useSwatchPickerRow,
 } from '@fluentui/react-headless-components-preview/swatch-picker';
+
+export type {
+  SwatchPickerContextValue,
+  SwatchPickerContextValues,
+} from '@fluentui/react-headless-components-preview/swatch-picker';

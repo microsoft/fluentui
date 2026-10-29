@@ -60,7 +60,7 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef
       // element type is widened exactly as the headless hook widens its own.
       popover: slot.always<Partial<PopoverProps>>(
         { size: popoverSizeMap[size], ...state.popover },
-        { elementType: Popover as React.FC<Partial<PopoverProps>> },
+        { elementType: Popover as React.ComponentType<Partial<PopoverProps>> },
       ),
       info: slot.always({ ...state.info }, { elementType: PopoverSurface }),
       // The headless surface ships no glyph. Consumer children always win.

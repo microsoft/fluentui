@@ -12,3 +12,10 @@ export {
   useRadioGroup,
   useRadioGroupContextValues,
 } from '@fluentui/react-headless-components-preview/radio-group';
+
+export { useRadioGroupContextValue } from '@fluentui/react-headless-components-preview/radio-group';
+
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+} from '@fluentui/react-headless-components-preview/radio-group';

@@ -39,6 +39,7 @@ import { renderDialogBody } from '@fluentui/react-headless-components-preview/di
 import { renderDialogHeader } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDialogSurface } from '@fluentui/react-headless-components-preview/dialog';
 import { renderDialogTitle } from '@fluentui/react-headless-components-preview/dialog';
+import { renderDialogTrigger } from '@fluentui/react-headless-components-preview/dialog';
 import { useDialog } from '@fluentui/react-headless-components-preview/dialog';
 import { useDialogActions } from '@fluentui/react-headless-components-preview/dialog';
 import { useDialogBody } from '@fluentui/react-headless-components-preview/dialog';
@@ -180,6 +181,8 @@ export { renderDialogHeader }
 export { renderDialogSurface }
 
 export { renderDialogTitle }
+
+export { renderDialogTrigger }
 
 export { useDialog }
 

@@ -14,3 +14,7 @@ export {
   useTagGroup,
   useTagGroupContextValues,
 } from '@fluentui/react-headless-components-preview/tag-group';
+
+export { useTagGroupContext } from '@fluentui/react-headless-components-preview/tag-group';
+
+export type { TagGroupContextValue } from '@fluentui/react-headless-components-preview/tag-group';

@@ -51,6 +51,7 @@ export const windmodParts = {
 };
 
 export const griffelParts = {
+  focusProps: { trapFocus: false },
   TeachingPopover: GriffelTeachingPopover as never,
   TeachingPopoverTrigger: GriffelTeachingPopoverTrigger as never,
   TeachingPopoverSurface: GriffelTeachingPopoverSurface as never,

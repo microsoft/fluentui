@@ -43,6 +43,30 @@ const parts = (baseElement: HTMLElement) => {
 };
 
 describe('InfoButton', () => {
+  it('retains the named native modal through the styled surface substitution', () => {
+    const { getByRole } = render(<InfoButton info="Details" popover={{ inertTrapFocus: true, defaultOpen: true }} />);
+    const dialog = getByRole('dialog', { name: 'information', hidden: true });
+    expect(dialog.tagName).toBe('DIALOG');
+    expect(dialog).toHaveClass('fui-popover-surface');
+    expect(dialog).toHaveAttribute('open');
+    expect(dialog).toHaveFocus();
+    expect(getByRole('button', { name: 'information' })).toHaveAttribute('aria-haspopup', 'dialog');
+  });
+
+  it('preserves consumer relationships and an explicit modal name', () => {
+    const { getByRole } = render(
+      <InfoButton
+        aria-details="consumer-details"
+        aria-controls="consumer-controls"
+        info={{ 'aria-label': 'Account details', children: 'Details' }}
+        popover={{ inertTrapFocus: true, defaultOpen: true }}
+      />,
+    );
+    expect(getByRole('dialog', { name: 'Account details', hidden: true })).toHaveClass('fui-popover-surface');
+    expect(getByRole('button')).toHaveAttribute('aria-details', 'consumer-details');
+    expect(getByRole('button')).toHaveAttribute('aria-controls', 'consumer-controls');
+  });
+
   beforeEach(() => {
     hookCalls.length = 0;
   });

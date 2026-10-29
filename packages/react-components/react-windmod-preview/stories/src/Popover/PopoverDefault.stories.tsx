@@ -26,12 +26,12 @@ export const Default = (): React.ReactNode => (
         </PopoverTrigger>
         <PopoverSurface>Brand appearance, large</PopoverSurface>
       </Popover>
-      <Popover withArrow trapFocus>
+      <Popover withArrow inertTrapFocus>
         <PopoverTrigger>
           <Button>Click me (modal)</Button>
         </PopoverTrigger>
         <PopoverSurface>
-          Focus is trapped here — Escape closes.
+          The rest of the page is inert. Focus can reach browser UI; Escape closes.
           <Button>Focusable</Button>
         </PopoverSurface>
       </Popover>

@@ -30,3 +30,16 @@ export {
   useAccordionItemContextValues,
   useAccordionPanel,
 } from '@fluentui/react-headless-components-preview/accordion';
+
+export {
+  useAccordionHeaderContext,
+  useAccordionItemContext,
+} from '@fluentui/react-headless-components-preview/accordion';
+
+export type {
+  AccordionContextValue,
+  AccordionHeaderContextValue,
+  AccordionHeaderContextValues,
+  AccordionItemContextValue,
+  AccordionItemContextValues,
+} from '@fluentui/react-headless-components-preview/accordion';

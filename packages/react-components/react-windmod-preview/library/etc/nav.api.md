@@ -31,6 +31,7 @@ import { NavDrawerFooterState } from '@fluentui/react-headless-components-previe
 import { NavDrawerHeaderProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavDrawerHeaderSlots } from '@fluentui/react-headless-components-preview/nav';
 import { NavDrawerHeaderState } from '@fluentui/react-headless-components-preview/nav';
+import { NavDrawerSlots } from '@fluentui/react-headless-components-preview/nav';
 import type { NavDrawerState as NavDrawerState_2 } from '@fluentui/react-headless-components-preview/nav';
 import { NavItemProps } from '@fluentui/react-headless-components-preview/nav';
 import { NavItemSlots } from '@fluentui/react-headless-components-preview/nav';
@@ -202,6 +203,8 @@ export { NavDrawerHeaderState }
 
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
+
+export { NavDrawerSlots }
 
 // @public
 export type NavDrawerState = NavDrawerState_2 & {

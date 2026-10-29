@@ -5,6 +5,8 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { RadioGroupContextValue } from '@fluentui/react-headless-components-preview/radio-group';
+import { RadioGroupContextValues } from '@fluentui/react-headless-components-preview/radio-group';
 import type { RadioGroupProps as RadioGroupProps_2 } from '@fluentui/react-headless-components-preview/radio-group';
 import { RadioGroupSlots } from '@fluentui/react-headless-components-preview/radio-group';
 import type { RadioGroupState as RadioGroupState_2 } from '@fluentui/react-headless-components-preview/radio-group';
@@ -15,6 +17,7 @@ import { renderRadio } from '@fluentui/react-headless-components-preview/radio-g
 import { renderRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadio } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroup } from '@fluentui/react-headless-components-preview/radio-group';
+import { useRadioGroupContextValue } from '@fluentui/react-headless-components-preview/radio-group';
 import { useRadioGroupContextValues } from '@fluentui/react-headless-components-preview/radio-group';
 
 // @public
@@ -32,6 +35,10 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 export const radioGroupClassNames: {
     root: string;
 };
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
 
 // @public
 export type RadioGroupLayout = 'vertical' | 'horizontal' | 'horizontal-stacked';
@@ -59,6 +66,8 @@ export { renderRadioGroup }
 export { useRadio }
 
 export { useRadioGroup }
+
+export { useRadioGroupContextValue }
 
 export { useRadioGroupContextValues }
 

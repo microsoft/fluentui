@@ -5,6 +5,7 @@ type TeachingPopoverLike = React.ComponentType<{
   open?: boolean;
   appearance?: string;
   trapFocus?: boolean;
+  inertTrapFocus?: boolean;
   positioning?: string;
   children: React.ReactNode;
 }>;
@@ -71,6 +72,7 @@ export const TeachingPopoverVrScene = ({
   TeachingPopoverFooter,
   Button,
   surfaceProps,
+  focusProps = { inertTrapFocus: false },
 }: {
   TeachingPopover: TeachingPopoverLike;
   TeachingPopoverTrigger: TriggerLike;
@@ -81,6 +83,7 @@ export const TeachingPopoverVrScene = ({
   TeachingPopoverFooter: FooterLike;
   Button: ButtonLike;
   surfaceProps: { popover?: string };
+  focusProps?: { trapFocus?: boolean; inertTrapFocus?: boolean };
 }): React.ReactNode => (
   <>
     {/* The last surface to open holds focus — here on its dismiss button, not the surface itself —
@@ -108,9 +111,9 @@ export const TeachingPopoverVrScene = ({
       {cells.map(({ label, media, footerLayout, ...look }) => (
         // Only DEFINED look props are spread — Griffel applies its own defaults by object spread,
         // so an explicit `undefined` overwrites the default (see PopoverVrScene).
-        // trapFocus is pinned off on BOTH sides: Griffel's TeachingPopover defaults it ON, which
+        // Focus trapping is pinned off on BOTH sides: Griffel's TeachingPopover defaults it ON, which
         // paints nothing but would run four focus traps against each other in one page.
-        <TeachingPopover key={label} open trapFocus={false} positioning="below" {...look}>
+        <TeachingPopover key={label} open {...focusProps} positioning="below" {...look}>
           <TeachingPopoverTrigger>
             <Button style={{ width: TRIGGER_WIDTH }}>{label}</Button>
           </TeachingPopoverTrigger>

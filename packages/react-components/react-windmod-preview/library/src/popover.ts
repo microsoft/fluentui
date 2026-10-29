@@ -26,3 +26,5 @@ export {
   usePopoverSurface,
   usePopoverTrigger,
 } from '@fluentui/react-headless-components-preview/popover';
+
+export type { PopoverContextValues } from '@fluentui/react-headless-components-preview/popover';

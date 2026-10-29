@@ -21,7 +21,7 @@ const getActiveElement = (surface: HTMLElement): Element | null => {
   const ShadowRootConstructor = surface.ownerDocument.defaultView?.ShadowRoot;
   // Keep focus retargeted to this root: Node.contains does not cross shadow boundaries.
   return ShadowRootConstructor && root instanceof ShadowRootConstructor
-    ? root.activeElement ?? surface.ownerDocument.activeElement
+    ? (root.activeElement ?? surface.ownerDocument.activeElement)
     : surface.ownerDocument.activeElement;
 };
 

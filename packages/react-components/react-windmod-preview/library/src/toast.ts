@@ -53,3 +53,5 @@ export type {
   ToastStatus,
   ToasterId,
 } from '@fluentui/react-headless-components-preview/toast';
+
+export type { ToasterSlots, ToastContainerContextValues } from '@fluentui/react-headless-components-preview/toast';

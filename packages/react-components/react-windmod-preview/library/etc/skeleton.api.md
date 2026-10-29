@@ -7,6 +7,8 @@
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
 import { renderSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
+import { SkeletonContextValue } from '@fluentui/react-headless-components-preview/skeleton';
+import { SkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonItemProps as SkeletonItemProps_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { SkeletonItemSlots } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonItemState as SkeletonItemState_2 } from '@fluentui/react-headless-components-preview/skeleton';
@@ -14,6 +16,7 @@ import type { SkeletonProps as SkeletonProps_2 } from '@fluentui/react-headless-
 import { SkeletonSlots } from '@fluentui/react-headless-components-preview/skeleton';
 import type { SkeletonState as SkeletonState_2 } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeleton } from '@fluentui/react-headless-components-preview/skeleton';
+import { useSkeletonContext } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonContextValues } from '@fluentui/react-headless-components-preview/skeleton';
 import { useSkeletonItem } from '@fluentui/react-headless-components-preview/skeleton';
 
@@ -34,6 +37,10 @@ export type SkeletonAppearance = 'opaque' | 'translucent';
 export const skeletonClassNames: {
     root: string;
 };
+
+export { SkeletonContextValue }
+
+export { SkeletonContextValues }
 
 // @public
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
@@ -74,6 +81,8 @@ export { SkeletonSlots }
 export type SkeletonState = SkeletonState_2 & Required<Pick<SkeletonProps, 'animation' | 'appearance'>> & Pick<SkeletonProps, 'shape' | 'size'>;
 
 export { useSkeleton }
+
+export { useSkeletonContext }
 
 export { useSkeletonContextValues }
 

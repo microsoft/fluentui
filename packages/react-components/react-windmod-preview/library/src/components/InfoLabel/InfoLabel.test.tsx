@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
 import { Field } from '../Field';
@@ -38,6 +38,33 @@ const parts = (container: HTMLElement) => {
 };
 
 describe('InfoLabel', () => {
+  it('keeps the styled note connected without wrapper ownership across open and close', async () => {
+    const { container, getByRole, queryByRole } = render(
+      <React.StrictMode>
+        <InfoLabel info="Additional information">Account</InfoLabel>
+      </React.StrictMode>,
+    );
+    const trigger = getByRole('button', { name: 'Account information' });
+    const root = parts(container).root;
+
+    expect(trigger).not.toHaveAttribute('aria-haspopup');
+    expect(trigger).not.toHaveAttribute('aria-details');
+    fireEvent.click(trigger);
+    const note = getByRole('note', { hidden: true });
+    expect(note.tagName).toBe('DIV');
+    expect(note).toHaveClass('fui-popover-surface');
+    expect(note).toHaveFocus();
+    expect(trigger).toHaveAttribute('aria-details', note.id);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    expect(root).not.toHaveAttribute('aria-owns');
+
+    fireEvent.click(trigger);
+    await waitFor(() => expect(queryByRole('note', { hidden: true })).toBeNull());
+    expect(trigger).not.toHaveAttribute('aria-details');
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(root).not.toHaveAttribute('aria-owns');
+  });
+
   isConformant({
     Component: InfoLabel,
     displayName: 'InfoLabel',

@@ -53,3 +53,5 @@ export {
   useDialogTitle,
   useDialogTrigger,
 } from '@fluentui/react-headless-components-preview/dialog';
+
+export { renderDialogTrigger } from '@fluentui/react-headless-components-preview/dialog';

@@ -10,3 +10,5 @@ export {
   useFieldContextValues,
   useFieldControlProps,
 } from '@fluentui/react-headless-components-preview/field';
+
+export type { FieldContextValue, FieldContextValues } from '@fluentui/react-headless-components-preview/field';

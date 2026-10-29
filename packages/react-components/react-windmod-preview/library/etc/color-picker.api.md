@@ -11,6 +11,7 @@ import type { ColorAreaProps as ColorAreaProps_2 } from '@fluentui/react-headles
 import { ColorAreaSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorAreaState as ColorAreaState_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { ColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
+import { ColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorPickerProps as ColorPickerProps_2 } from '@fluentui/react-headless-components-preview/color-picker';
 import { ColorPickerSlots } from '@fluentui/react-headless-components-preview/color-picker';
 import type { ColorPickerState as ColorPickerState_2 } from '@fluentui/react-headless-components-preview/color-picker';
@@ -74,6 +75,8 @@ export const colorPickerClassNames: {
 };
 
 export { ColorPickerContextValue }
+
+export { ColorPickerContextValues }
 
 // @public
 export type ColorPickerProps = ColorPickerProps_2 & {

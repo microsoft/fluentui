@@ -13,3 +13,5 @@ export {
   useRatingDisplay,
   useRatingDisplayContextValues,
 } from '@fluentui/react-headless-components-preview/rating-display';
+
+export type { RatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';

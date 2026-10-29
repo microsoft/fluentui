@@ -4,10 +4,15 @@
 
 ```ts
 
+import { AccordionContextValue } from '@fluentui/react-headless-components-preview/accordion';
 import { AccordionContextValues } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionHeaderContextValue } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionHeaderContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionHeaderProps as AccordionHeaderProps_2 } from '@fluentui/react-headless-components-preview/accordion';
 import { AccordionHeaderSlots } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionHeaderState as AccordionHeaderState_2 } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionItemContextValue } from '@fluentui/react-headless-components-preview/accordion';
+import { AccordionItemContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionItemProps as AccordionItemProps_2 } from '@fluentui/react-headless-components-preview/accordion';
 import { AccordionItemSlots } from '@fluentui/react-headless-components-preview/accordion';
 import type { AccordionItemState as AccordionItemState_2 } from '@fluentui/react-headless-components-preview/accordion';
@@ -26,8 +31,10 @@ import { useAccordion } from '@fluentui/react-headless-components-preview/accord
 import { useAccordionContext } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionHeader } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionHeaderContext } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionHeaderContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionItem } from '@fluentui/react-headless-components-preview/accordion';
+import { useAccordionItemContext } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionItemContextValues } from '@fluentui/react-headless-components-preview/accordion';
 import { useAccordionPanel } from '@fluentui/react-headless-components-preview/accordion';
 
@@ -39,6 +46,8 @@ export const accordionClassNames: {
     root: string;
 };
 
+export { AccordionContextValue }
+
 export { AccordionContextValues }
 
 // @public
@@ -48,6 +57,10 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
 export const accordionHeaderClassNames: {
     root: string;
 };
+
+export { AccordionHeaderContextValue }
+
+export { AccordionHeaderContextValues }
 
 // @public
 export type AccordionHeaderProps = AccordionHeaderProps_2 & {
@@ -70,6 +83,10 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 export const accordionItemClassNames: {
     root: string;
 };
+
+export { AccordionItemContextValue }
+
+export { AccordionItemContextValues }
 
 // @public
 export type AccordionItemProps = AccordionItemProps_2;
@@ -119,12 +136,16 @@ export { useAccordionContextValues }
 
 export { useAccordionHeader }
 
+export { useAccordionHeaderContext }
+
 export { useAccordionHeaderContextValues }
 
 // @public
 export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
 
 export { useAccordionItem }
+
+export { useAccordionItemContext }
 
 export { useAccordionItemContextValues }
 

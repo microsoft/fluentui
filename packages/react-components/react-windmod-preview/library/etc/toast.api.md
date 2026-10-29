@@ -19,11 +19,13 @@ import { ToastChangeData } from '@fluentui/react-headless-components-preview/toa
 import { ToastChangeHandler } from '@fluentui/react-headless-components-preview/toast';
 import { ToastContainer } from '@fluentui/react-headless-components-preview/toast';
 import { ToastContainerContextValue } from '@fluentui/react-headless-components-preview/toast';
+import { ToastContainerContextValues } from '@fluentui/react-headless-components-preview/toast';
 import { ToastContainerProps } from '@fluentui/react-headless-components-preview/toast';
 import { ToastContainerSlots } from '@fluentui/react-headless-components-preview/toast';
 import { ToastContainerState } from '@fluentui/react-headless-components-preview/toast';
 import { ToasterId } from '@fluentui/react-headless-components-preview/toast';
 import { ToasterProps } from '@fluentui/react-headless-components-preview/toast';
+import { ToasterSlots } from '@fluentui/react-headless-components-preview/toast';
 import { ToasterState } from '@fluentui/react-headless-components-preview/toast';
 import { ToastFooterProps } from '@fluentui/react-headless-components-preview/toast';
 import { ToastFooterSlots } from '@fluentui/react-headless-components-preview/toast';
@@ -95,6 +97,8 @@ export { ToastContainer }
 
 export { ToastContainerContextValue }
 
+export { ToastContainerContextValues }
+
 export { ToastContainerProps }
 
 export { ToastContainerSlots }
@@ -112,6 +116,8 @@ export const toasterClassNames: {
 export { ToasterId }
 
 export { ToasterProps }
+
+export { ToasterSlots }
 
 export { ToasterState }
 

@@ -5,6 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { RatingDisplayContextValues } from '@fluentui/react-headless-components-preview/rating-display';
 import type { RatingDisplayProps as RatingDisplayProps_2 } from '@fluentui/react-headless-components-preview/rating-display';
 import { RatingDisplaySlots } from '@fluentui/react-headless-components-preview/rating-display';
 import type { RatingDisplayState as RatingDisplayState_2 } from '@fluentui/react-headless-components-preview/rating-display';
@@ -22,6 +23,8 @@ export const ratingDisplayClassNames: {
 
 // @public
 export type RatingDisplayColor = 'brand' | 'marigold' | 'neutral';
+
+export { RatingDisplayContextValues }
 
 // @public
 export type RatingDisplayProps = RatingDisplayProps_2 & {

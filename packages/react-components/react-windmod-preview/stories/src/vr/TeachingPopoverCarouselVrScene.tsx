@@ -5,6 +5,7 @@ type TeachingPopoverLike = React.ComponentType<{
   open?: boolean;
   appearance?: string;
   trapFocus?: boolean;
+  inertTrapFocus?: boolean;
   positioning?: string;
   children: React.ReactNode;
 }>;
@@ -108,6 +109,7 @@ export const TeachingPopoverCarouselVrScene = ({
   TeachingPopoverCarouselNavButton,
   TeachingPopoverCarouselPageCount,
   surfaceProps,
+  focusProps = { inertTrapFocus: false },
   footerProps,
   cells = neutralCells,
   appearance,
@@ -125,6 +127,7 @@ export const TeachingPopoverCarouselVrScene = ({
   TeachingPopoverCarouselNavButton: NavButtonLike;
   TeachingPopoverCarouselPageCount: PageCountLike;
   surfaceProps: { popover?: string };
+  focusProps?: { trapFocus?: boolean; inertTrapFocus?: boolean };
   // The reference's footer requires two text props the headless surface dropped, and takes its two
   // buttons as string shorthands where windmod takes the text on each slot. One bag per side.
   footerProps: Record<string, unknown>;
@@ -155,7 +158,7 @@ export const TeachingPopoverCarouselVrScene = ({
       }}
     >
       {cells.map(({ label, value, layout }, index) => (
-        <TeachingPopover key={label} open trapFocus={false} positioning="below" {...(appearance ? { appearance } : {})}>
+        <TeachingPopover key={label} open {...focusProps} positioning="below" {...(appearance ? { appearance } : {})}>
           <TeachingPopoverTrigger>
             <button style={TRIGGER_STYLE}>{index + 1}</button>
           </TeachingPopoverTrigger>

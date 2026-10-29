@@ -5,6 +5,7 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { InteractionTagContextValue } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { InteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { InteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
 import type { InteractionTagPrimaryProps as InteractionTagPrimaryProps_2 } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -20,6 +21,7 @@ import { renderInteractionTag } from '@fluentui/react-headless-components-previe
 import { renderInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { renderInteractionTagSecondary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTag } from '@fluentui/react-headless-components-preview/interaction-tag';
+import { useInteractionTagContext } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagPrimary } from '@fluentui/react-headless-components-preview/interaction-tag';
 import { useInteractionTagPrimaryContextValues } from '@fluentui/react-headless-components-preview/interaction-tag';
@@ -35,6 +37,8 @@ export type InteractionTagAppearance = TagAppearance;
 export const interactionTagClassNames: {
     root: string;
 };
+
+export { InteractionTagContextValue }
 
 export { InteractionTagContextValues }
 
@@ -107,6 +111,8 @@ export { renderInteractionTagPrimary }
 export { renderInteractionTagSecondary }
 
 export { useInteractionTag }
+
+export { useInteractionTagContext }
 
 export { useInteractionTagContextValues }
 

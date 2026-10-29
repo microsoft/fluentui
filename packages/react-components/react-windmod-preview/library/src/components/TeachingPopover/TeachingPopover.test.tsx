@@ -72,7 +72,7 @@ describe('TeachingPopover', () => {
 
   it('closes the native surface before unmounting and restores trigger focus', async () => {
     const { getByText, surface } = renderPopover(
-      { trapFocus: true },
+      { inertTrapFocus: true },
       <TeachingPopoverHeader>Help</TeachingPopoverHeader>,
     );
     const close = jest.spyOn(surface as HTMLDialogElement, 'close');
@@ -154,12 +154,12 @@ describe('TeachingPopover', () => {
 
   it('passes everything else through to the headless hook untouched', () => {
     const onOpenChange = jest.fn();
-    renderPopover({ onOpenChange, openOnHover: true, trapFocus: true, mouseLeaveDelay: 42, id: 'given' });
+    renderPopover({ onOpenChange, openOnHover: true, inertTrapFocus: true, mouseLeaveDelay: 42, id: 'given' });
 
     expect(handedOver()).toMatchObject({
       onOpenChange,
       openOnHover: true,
-      trapFocus: true,
+      inertTrapFocus: true,
       mouseLeaveDelay: 42,
       id: 'given',
     });

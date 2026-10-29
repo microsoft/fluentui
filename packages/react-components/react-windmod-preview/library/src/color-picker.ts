@@ -24,3 +24,5 @@ export {
   useColorSlider,
 } from '@fluentui/react-headless-components-preview/color-picker';
 export type { ColorPickerContextValue } from '@fluentui/react-headless-components-preview/color-picker';
+
+export type { ColorPickerContextValues } from '@fluentui/react-headless-components-preview/color-picker';

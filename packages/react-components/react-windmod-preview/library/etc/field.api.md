@@ -4,6 +4,8 @@
 
 ```ts
 
+import { FieldContextValue } from '@fluentui/react-headless-components-preview/field';
+import { FieldContextValues } from '@fluentui/react-headless-components-preview/field';
 import type { FieldProps as FieldProps_2 } from '@fluentui/react-headless-components-preview/field';
 import { FieldSlots } from '@fluentui/react-headless-components-preview/field';
 import type { FieldState as FieldState_2 } from '@fluentui/react-headless-components-preview/field';
@@ -21,6 +23,10 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: {
     root: string;
 };
+
+export { FieldContextValue }
+
+export { FieldContextValues }
 
 // @public
 export type FieldOrientation = 'vertical' | 'horizontal';

@@ -83,3 +83,13 @@ export {
   useMenuSplitGroup,
   useMenuTrigger,
 } from '@fluentui/react-headless-components-preview/menu';
+
+export { useMenuListContext, useMenuGroupContext } from '@fluentui/react-headless-components-preview/menu';
+
+export type {
+  MenuListContextValue,
+  MenuListContextValues,
+  MenuItemCheckboxSlots,
+  MenuItemRadioSlots,
+  MenuGroupContextValue,
+} from '@fluentui/react-headless-components-preview/menu';

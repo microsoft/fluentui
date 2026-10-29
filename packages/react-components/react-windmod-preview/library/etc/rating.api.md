@@ -5,6 +5,8 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { RatingContextValues } from '@fluentui/react-headless-components-preview/rating';
+import { RatingItemContextValue } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingItemProps as RatingItemProps_2 } from '@fluentui/react-headless-components-preview/rating';
 import { RatingItemSlots } from '@fluentui/react-headless-components-preview/rating';
 import type { RatingItemState as RatingItemState_2 } from '@fluentui/react-headless-components-preview/rating';
@@ -16,6 +18,7 @@ import { renderRatingItem } from '@fluentui/react-headless-components-preview/ra
 import { useRating } from '@fluentui/react-headless-components-preview/rating';
 import { useRatingContextValues } from '@fluentui/react-headless-components-preview/rating';
 import { useRatingItem } from '@fluentui/react-headless-components-preview/rating';
+import { useRatingItemContextValue } from '@fluentui/react-headless-components-preview/rating';
 
 // @public
 export const Rating: ForwardRefComponent<RatingProps>;
@@ -28,6 +31,8 @@ export const ratingClassNames: {
 // @public
 export type RatingColor = 'brand' | 'marigold' | 'neutral';
 
+export { RatingContextValues }
+
 // @public
 export const RatingItem: ForwardRefComponent<RatingItemProps>;
 
@@ -35,6 +40,8 @@ export const RatingItem: ForwardRefComponent<RatingItemProps>;
 export const ratingItemClassNames: {
     root: string;
 };
+
+export { RatingItemContextValue }
 
 // @public
 export type RatingItemProps = RatingItemProps_2 & {
@@ -70,6 +77,8 @@ export { useRating }
 export { useRatingContextValues }
 
 export { useRatingItem }
+
+export { useRatingItemContextValue }
 
 // @public
 export const useRatingItemStyles: (state: RatingItemState) => RatingItemState;

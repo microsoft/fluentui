@@ -807,10 +807,10 @@ libraries, so only a non-nullish value diverges.
 
 #### 32. The overflow popover no longer traps focus by default
 
-Griffel's `AvatarGroupPopover` set `trapFocus: true`. The headless surface forwards `trapFocus` but leaves
+Griffel's `AvatarGroupPopover` set `trapFocus: true`. The headless surface forwards `inertTrapFocus` but leaves
 it unset, and windmod does not add a default, because turning it on switches the native `<dialog>` from
-`popover="auto"` to `showModal()` and makes the rest of the page inert. Pass `trapFocus` explicitly to
-restore the old behaviour.
+`popover="auto"` to `showModal()` and makes the rest of the page inert. Pass `inertTrapFocus` explicitly to opt into native modal focus trapping. This makes the page inert;
+it does not reproduce Griffel's non-inert `trapFocus` mode, and focus can still move to browser UI.
 
 #### 33. `AvatarGroupItem` no longer reads the provider direction
 
@@ -833,7 +833,7 @@ These four apply to every component built on `PopoverSurface` — `Popover`, `To
 
 #### 35. A focus-trapping surface carries no `aria-modal`
 
-Griffel sets `aria-modal` when `trapFocus` is on. The headless surface is a native `<dialog>` opened with
+Griffel sets `aria-modal` when `trapFocus` is on. The headless surface uses `inertTrapFocus` to open a native `<dialog>` with
 `showModal()`, and `dialog:modal` already conveys modality to assistive technology, so no attribute is
 written. An assertion pinning `aria-modal` needs updating; the announced modality is unchanged.
 
@@ -896,10 +896,11 @@ Two behaviours come from the headless hook, not from the styled layer:
 - **The popover closes when focus leaves to nothing** — a window blur, or a click on the page background.
   Griffel keeps it open in that case.
 
-The trigger's ARIA is also richer: it carries `aria-haspopup="true"` always and `aria-details` pointing at
-the surface while open, where Griffel carries neither and relies on tabster's focus restorer. Nothing is
-lost — the `aria-labelledby` pairing of the label and the button is identical on both — but a snapshot test
-pinning the button's attributes needs updating.
+The nonmodal surface is a `note`, with `aria-details` on the trigger while open and no generated
+`aria-haspopup` or wrapper `aria-owns`. Opting into `inertTrapFocus` uses a named native dialog and
+`aria-haspopup="dialog"`. Consumer-provided ARIA relationships and names are preserved. Griffel relies on
+tabster's focus restorer; the label/button `aria-labelledby` pairing is shared, but tests pinning the
+trigger's attributes need updating.
 
 #### 42. `<InfoButton children={null}>` renders the default glyph
 
@@ -917,7 +918,8 @@ has buttons/carousel". The headless component does not, so the surface is a ligh
 `popover="auto"` rather than a modal dialog, and its role is `group` rather than `dialog`. Nothing moves
 visually — the trap adds `aria-modal` and a tabster configuration and paints nothing.
 
-Pass `trapFocus` explicitly to restore the old default.
+Pass `inertTrapFocus` explicitly to opt into native modal focus trapping. The rest of the page becomes
+inert, and focus can move to browser UI; there is no equivalent of Griffel's non-inert `trapFocus` mode.
 
 #### 44. `TeachingPopoverFooter`'s buttons are slots again, and only one of them closes
 

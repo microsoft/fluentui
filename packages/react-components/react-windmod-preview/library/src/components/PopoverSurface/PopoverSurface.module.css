@@ -1,6 +1,6 @@
 @reference '#theme';
 
-/* The root is a native <dialog>: popover="auto" when non-modal, showModal() under trapFocus.
+/* The root is a native <dialog>: popover="auto" when non-modal, showModal() under inertTrapFocus.
    Placement rides data-placement on this element. The arrow is rendered without a className, so
    it is reached by descendant selector and keys placement off the root's named group.
    The arrow's geometry, its per-axis rules and the filter-shadow token gap are documented once in

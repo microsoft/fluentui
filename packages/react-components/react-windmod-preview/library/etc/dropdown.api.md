@@ -4,13 +4,20 @@
 
 ```ts
 
+import { ActiveDescendantContextValue } from '@fluentui/react-headless-components-preview/dropdown';
+import { DropdownContextValues } from '@fluentui/react-headless-components-preview/dropdown';
 import type { DropdownProps as DropdownProps_2 } from '@fluentui/react-headless-components-preview/dropdown';
 import { DropdownSlots } from '@fluentui/react-headless-components-preview/dropdown';
 import type { DropdownState as DropdownState_2 } from '@fluentui/react-headless-components-preview/dropdown';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ListboxContextValue } from '@fluentui/react-headless-components-preview/dropdown';
 import { renderDropdown } from '@fluentui/react-headless-components-preview/dropdown';
+import { useActiveDescendantContext } from '@fluentui/react-headless-components-preview/dropdown';
 import { useDropdown } from '@fluentui/react-headless-components-preview/dropdown';
 import { useDropdownContextValues } from '@fluentui/react-headless-components-preview/dropdown';
+import { useListboxContext } from '@fluentui/react-headless-components-preview/dropdown';
+
+export { ActiveDescendantContextValue }
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -22,6 +29,8 @@ export type DropdownAppearance = 'outline' | 'underline' | 'filled-darker' | 'fi
 export const dropdownClassNames: {
     root: string;
 };
+
+export { DropdownContextValues }
 
 // @public
 export type DropdownProps = DropdownProps_2 & {
@@ -37,7 +46,11 @@ export { DropdownSlots }
 // @public
 export type DropdownState = DropdownState_2 & Required<Pick<DropdownProps, 'appearance' | 'size'>>;
 
+export { ListboxContextValue }
+
 export { renderDropdown }
+
+export { useActiveDescendantContext }
 
 export { useDropdown }
 
@@ -45,6 +58,8 @@ export { useDropdownContextValues }
 
 // @public
 export const useDropdownStyles: (state: DropdownState) => DropdownState;
+
+export { useListboxContext }
 
 // (No @packageDocumentation comment for this package)
 

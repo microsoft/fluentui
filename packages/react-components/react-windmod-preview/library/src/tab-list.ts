@@ -13,3 +13,5 @@ export {
   useTabListContext,
   useTabListContextValues,
 } from '@fluentui/react-headless-components-preview/tab-list';
+
+export type { TabListContextValue, TabListContextValues } from '@fluentui/react-headless-components-preview/tab-list';
