@@ -15,7 +15,7 @@ const surfaceSelector = '[role="note"]';
 
 describe('InfoLabel - note semantics', () => {
   it('preserves a named native dialog when focus trapping is explicitly requested', () => {
-    mount(<InfoButton info="Information" popover={{ trapFocus: true, defaultOpen: true }} />);
+    mount(<InfoButton info="Information" popover={{ inertTrapFocus: true, defaultOpen: true }} />);
     cy.get('button').should('have.attr', 'aria-haspopup', 'dialog');
     cy.get('button')
       .invoke('attr', 'id')
