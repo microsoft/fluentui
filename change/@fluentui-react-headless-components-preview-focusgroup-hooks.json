@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: match v9 focus behavior: Tab cycling focus trap in Dialog, Drawer and Popover (opt out with inertTrapFocus), Card focusMode, Breadcrumb arrow navigation, NavDrawerBody and TeachingPopoverCarouselNav arrow navigation; drop the react-tabster dependency",
+  "comment": "feat: match v9 focus behavior: Tab cycling focus trap in Dialog and Drawer (opt out with inertTrapFocus), Card focusMode, Breadcrumb arrow navigation, NavDrawerBody and TeachingPopoverCarouselNav arrow navigation; drop the react-tabster dependency",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "kirpadv@gmail.com",
   "dependentChangeType": "patch"
