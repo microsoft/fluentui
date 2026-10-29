@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { act, fireEvent, render, waitFor, within } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
 import { isConformant } from '../../testing/isConformant';
@@ -103,6 +104,41 @@ describe('DatePicker', () => {
       expect(onDateChange.mock.calls[0][1]).toMatchObject({ reason: 'calendar' });
       expect(sameDay(onDateChange.mock.calls[0][1].value, new Date(2026, 7, 24))).toBe(true);
       expect(onOpenChange.mock.calls.map(call => call[1].reason)).toEqual(['trigger', 'selection']);
+    });
+
+    it('returns focus to the trigger when a calendar in a shadow root closes', async () => {
+      const host = document.createElement('div');
+      const shadowRoot = host.attachShadow({ mode: 'open' });
+      document.body.appendChild(host);
+      const onOpenChange = jest.fn();
+      const { unmount } = render(
+        createPortal(
+          <DatePicker
+            aria-label="Due date"
+            today={today}
+            value={new Date(2026, 7, 12)}
+            open
+            onOpenChange={onOpenChange}
+          />,
+          shadowRoot,
+        ),
+      );
+
+      try {
+        const dialog = shadowRoot.querySelector<HTMLElement>('[role="dialog"]')!;
+        const selectedDate = dialog.querySelector<HTMLButtonElement>('button[aria-label="August 24, 2026"]')!;
+        const trigger = shadowRoot.querySelector<HTMLButtonElement>('button[aria-haspopup="dialog"]')!;
+        const focusedDate = getDayCell(dialog, 'August 12, 2026');
+        await waitFor(() => expect(shadowRoot.activeElement).toBe(focusedDate));
+
+        fireEvent.click(selectedDate);
+
+        expect(shadowRoot.activeElement).toBe(trigger);
+        expect(onOpenChange.mock.calls[0][1]).toMatchObject({ open: false, reason: 'selection' });
+      } finally {
+        unmount();
+        host.remove();
+      }
     });
 
     it('selects with Enter on the focused day', async () => {
@@ -423,6 +459,36 @@ describe('DatePicker', () => {
       expect(getByText('Enter an available date between August 1, 2026 and August 31, 2026.')).toBeInTheDocument();
       expect(input.value).toBe('');
       expect(onDateChange).not.toHaveBeenCalled();
+    });
+
+    it('rejects unchanged text when the committed date becomes unavailable', () => {
+      const onDateChange = jest.fn();
+      const onValidationResult = jest.fn();
+      const { input, rerender, getByText } = renderEditable({
+        defaultValue: today,
+        onDateChange,
+        onValidationResult,
+      });
+
+      rerender(
+        <DatePicker
+          aria-label="Due date"
+          today={today}
+          allowTextInput
+          defaultValue={today}
+          minDate={new Date(2026, 7, 20)}
+          onDateChange={onDateChange}
+          onValidationResult={onValidationResult}
+        />,
+      );
+      fireEvent.change(input, { target: { value: 'pending' } });
+      fireEvent.change(input, { target: { value: 'August 12, 2026' } });
+      fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(getByText('Enter an available date on or after August 20, 2026.')).toBeInTheDocument();
+      expect(input).toHaveAttribute('aria-invalid', 'true');
+      expect(onDateChange).not.toHaveBeenCalled();
+      expect(onValidationResult.mock.calls[0][1]).toMatchObject({ error: 'out-of-bounds' });
     });
 
     it('clears the error after an accepted date or a calendar selection', () => {

@@ -12,15 +12,18 @@ const month = (label: string) => `[role="gridcell"][aria-label="${label}"]`;
 
 const BoundsChangingCalendar = () => {
   const [minDate, setMinDate] = React.useState(new Date(2020, 0, 1));
+  const [maxDate, setMaxDate] = React.useState<Date>();
   return (
     <div
       onKeyDown={event => {
         if (event.key.toLowerCase() === 'b') {
           setMinDate(new Date(2020, 6, 1));
+        } else if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2020, 6, 31));
         }
       }}
     >
-      <Calendar today={today} value={today} dayPicker={null} minDate={minDate} />
+      <Calendar today={today} value={today} dayPicker={null} minDate={minDate} maxDate={maxDate} />
     </div>
   );
 };
@@ -88,6 +91,18 @@ describe('Calendar', () => {
         .and('have.attr', 'aria-disabled', 'true')
         .and('have.attr', 'tabindex', '0');
       cy.realPress('ArrowDown');
+      cy.get(month('July')).should('be.focused');
+    });
+
+    it('moves Home and End to an available month when bounds change', () => {
+      mount(<BoundsChangingCalendar />);
+
+      cy.get(month('March')).focus().realPress('b');
+      cy.realPress('Home');
+      cy.get(month('July')).should('be.focused');
+
+      cy.get(month('September')).focus().realPress('e');
+      cy.realPress('End');
       cy.get(month('July')).should('be.focused');
     });
   });

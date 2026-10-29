@@ -136,9 +136,9 @@ export const getCalendarGridTargetIndex = (
   if (key === Home || key === End) {
     const rowStart = wrapRows ? index - (index % columns) : 0;
     const rowEnd = wrapRows ? Math.min(rowStart + columns, count) - 1 : count - 1;
-    // Home and End reach the first or last eligible cell, searching back toward the current cell.
-    const [from, to, step] = key === Home ? [rowStart, index, 1] : [rowEnd, index, -1];
-    for (let candidate = from; candidate !== to; candidate += step) {
+    // Home and End reach the first or last eligible cell in the grid (or row for the day grid).
+    const [from, to, step] = key === Home ? [rowStart, rowEnd, 1] : [rowEnd, rowStart, -1];
+    for (let candidate = from; candidate !== to + step; candidate += step) {
       if (isEligible(candidate)) {
         return candidate;
       }

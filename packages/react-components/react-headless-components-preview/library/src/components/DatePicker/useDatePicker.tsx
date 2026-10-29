@@ -197,12 +197,7 @@ export const useDatePicker = (
     }
     isRequestingOpen.current = true;
 
-    if (
-      !nextOpen &&
-      reason !== 'focusOut' &&
-      reason !== 'outsideClick' &&
-      isWithin(surfaceRef.current, targetDocument?.activeElement ?? null)
-    ) {
+    if (!nextOpen && reason !== 'focusOut' && reason !== 'outsideClick' && focusWithinSurface.current) {
       // Selection and Escape return focus to the field before the surface unmounts, so it never drops to the body.
       focusWithinSurface.current = false;
       controlRef.current?.focus({ preventScroll: true });
@@ -231,13 +226,10 @@ export const useDatePicker = (
     }
 
     showYearPickerOnMount.current = false;
-    // A controlled close can unmount the surface while it holds focus; never leave focus on the body.
+    // A controlled close may remove the focused surface without a blur; restore focus from the surface tracker.
     if (focusWithinSurface.current) {
       focusWithinSurface.current = false;
-      const activeElement = targetDocument?.activeElement;
-      if (!activeElement || activeElement === targetDocument?.body) {
-        controlRef.current?.focus({ preventScroll: true });
-      }
+      controlRef.current?.focus({ preventScroll: true });
     }
   }, [open, targetDocument]);
 

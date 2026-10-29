@@ -93,7 +93,7 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
     // A custom formatter may produce text its parser cannot round-trip.
     if (committedValue && text === formattedValue) {
       resetText();
-      report(event, undefined);
+      report(event, isDateUnavailable(committedValue) ? 'out-of-bounds' : undefined);
       return;
     }
 

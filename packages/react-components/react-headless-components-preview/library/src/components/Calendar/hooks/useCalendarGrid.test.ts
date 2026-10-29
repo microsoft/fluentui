@@ -60,4 +60,17 @@ describe('calendar grid helpers', () => {
     expect(getCalendarGridTargetIndex('Home', 'ltr', 10, 42, 7, () => true, true)).toBe(7);
     expect(getCalendarGridTargetIndex('End', 'ltr', 10, 42, 7, index => index !== 13, true)).toBe(12);
   });
+
+  it('finds an eligible Home or End target when the current picker cell becomes unavailable', () => {
+    const isAfterJuly = (index: number) => index >= 6;
+    const isBeforeAugust = (index: number) => index <= 6;
+
+    expect(getCalendarGridTargetIndex('Home', 'ltr', 2, 12, 3, isAfterJuly)).toBe(6);
+    expect(getCalendarGridTargetIndex('End', 'ltr', 8, 12, 3, isBeforeAugust)).toBe(6);
+  });
+
+  it('searches the whole week for Home and End when the focused day is unavailable', () => {
+    expect(getCalendarGridTargetIndex('Home', 'ltr', 10, 42, 7, index => index > 10, true)).toBe(11);
+    expect(getCalendarGridTargetIndex('End', 'ltr', 10, 42, 7, index => index < 10, true)).toBe(9);
+  });
 });
