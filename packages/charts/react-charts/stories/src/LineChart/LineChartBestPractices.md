@@ -41,6 +41,8 @@ Line chart provides a bunch of props to enable custom accessibility messages. Us
 
 #### Axis localization
 
+Date axes and callouts use UTC by default, so the same date is displayed regardless of the user's time zone. Set `useUTC={false}` to use the user's local time instead.
+
 The chart axes support 2 ways of localization.
 
 1. JavaScript provided inbuilt localization for numeric and date axis. Specify the culture and `dateLocalizeOptions` for date axis to define target localization. Refer the [Javascript localization guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for usage.

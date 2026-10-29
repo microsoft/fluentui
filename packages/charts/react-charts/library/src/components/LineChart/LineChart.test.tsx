@@ -2,6 +2,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import type { LineChartPoints } from './index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
@@ -1072,5 +1073,38 @@ describe('LineChart - mouse events', () => {
 
     fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
+  });
+});
+
+describe('Line chart UTC defaults', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([undefined, true, false, 'utc'])('formats date axes and callouts with useUTC=%s', useUTC => {
+    const date = datePoints[0].data[0].x as Date;
+    const asUTC = useUTC !== false;
+    const expectedDate = formatDateToLocaleString(date, undefined, asUTC);
+    const month = asUTC ? date.getUTCMonth() : date.getMonth();
+    const day = asUTC ? date.getUTCDate() : date.getDate();
+    const expectedTick = `${String(month + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}`;
+    const { container } = render(
+      <LineChart data={dateChartPoints} useUTC={useUTC} tickValues={[date]} tickFormat="%m/%d" />,
+    );
+
+    expect(getById(container, /xAxisGElement/)[0].textContent).toContain(expectedTick);
+    const point = screen.getByLabelText(`${expectedDate}. First, 30.`);
+    fireEvent.mouseOver(point);
+    expect(screen.getByText(expectedDate)).toBeInTheDocument();
+  });
+
+  describe.each([false, true])('with isCalloutForStack=%s', isCalloutForStack => {
+    it.each([undefined, true, false, 'utc'])('formats keyboard callouts with useUTC=%s', useUTC => {
+      const date = datePoints[0].data[0].x as Date;
+      const expectedDate = formatDateToLocaleString(date, undefined, useUTC !== false);
+      render(<LineChart data={dateChartPoints} useUTC={useUTC} isCalloutForStack={isCalloutForStack} />);
+
+      fireEvent.focus(screen.getByLabelText(`${expectedDate}. First, 30.`));
+      expect(screen.getByText(expectedDate)).toBeInTheDocument();
+    });
   });
 });
