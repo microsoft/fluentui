@@ -6,7 +6,6 @@ import type { JSXElement } from '@fluentui/react-utilities';
 import { Provider } from '../../components/Provider';
 import { Breadcrumb, BreadcrumbButton, BreadcrumbItem } from '../../components/Breadcrumb';
 import { Card } from '../../components/Card';
-import { Tooltip } from '../../components/Tooltip';
 
 polyfillBodyAndObserve();
 
@@ -72,27 +71,5 @@ describe('Card focusMode', () => {
     cy.contains('Inner first').should('be.focused').realPress('Tab');
     cy.contains('Inner last').should('be.focused').realPress('Tab');
     cy.contains('After').should('be.focused');
-  });
-});
-
-describe('Tooltip', () => {
-  it('does not show when focus moves to the trigger programmatically after a pointer interaction', () => {
-    mount(
-      <>
-        <button data-testid="other">Other</button>
-        <Tooltip content="Tooltip content" relationship="description">
-          <button data-testid="trigger">Trigger</button>
-        </Tooltip>
-      </>,
-    );
-
-    cy.get('[data-testid=other]').realClick();
-    cy.get('[data-testid=trigger]').then($trigger => $trigger[0].focus());
-    cy.get('[role=tooltip]').should('not.be.visible');
-    cy.get('[data-testid=trigger]').then($trigger => $trigger[0].blur());
-
-    cy.get('[data-testid=other]').focus().realPress('Tab');
-    cy.get('[data-testid=trigger]').should('be.focused');
-    cy.get('[role=tooltip]').should('be.visible');
   });
 });

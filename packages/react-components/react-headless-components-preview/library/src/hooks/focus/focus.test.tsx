@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useFocusableGroup, useIsNavigatingWithKeyboard, useModalAttributes } from './index';
+import { useFocusableGroup, useModalAttributes } from './index';
 import type { UseFocusableGroupOptions } from './index';
 
 // jsdom has no layout, so every element would be considered invisible by the focus finders.
@@ -71,13 +71,10 @@ describe('useFocusableGroup', () => {
   };
 
   it('returns the group attributes', () => {
-    const { result } = renderHook(() =>
-      useFocusableGroup({ tabBehavior: 'limited', ignoreDefaultKeydown: { Escape: true } }),
-    );
+    const { result } = renderHook(() => useFocusableGroup({ tabBehavior: 'limited' }));
 
     expect(result.current).toEqual({
       'data-fui-focusable-group': 'limited',
-      'data-fui-focusable-group-ignore': 'Escape',
     });
   });
 
@@ -109,26 +106,5 @@ describe('useFocusableGroup', () => {
 
     pressTab(true);
     expect(getByText('Last')).toHaveFocus();
-  });
-
-  it('respects ignored keys', () => {
-    const { getByText } = render(<Group tabBehavior="limited" ignoreDefaultKeydown={{ Escape: true }} />);
-
-    getByText('First').focus();
-    fireEvent.keyDown(getByText('First'), { key: 'Escape' });
-    expect(getByText('First')).toHaveFocus();
-  });
-});
-
-describe('useIsNavigatingWithKeyboard', () => {
-  it('tracks keyboard and pointer interaction', () => {
-    const { result } = renderHook(() => useIsNavigatingWithKeyboard());
-    expect(result.current()).toBe(false);
-
-    fireEvent.keyDown(document.body, { key: 'Tab' });
-    expect(result.current()).toBe(true);
-
-    fireEvent.mouseDown(document.body, { buttons: 1, clientX: 10, clientY: 10 });
-    expect(result.current()).toBe(false);
   });
 });

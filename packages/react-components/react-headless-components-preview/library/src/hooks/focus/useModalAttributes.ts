@@ -26,23 +26,15 @@ export type ModalAttributes = {
 /**
  * Returns the DOM attributes that trap keyboard focus inside a modal surface.
  *
- * `triggerAttributes` is kept for API parity with `@fluentui/react-tabster`: native dialogs and popovers
- * restore focus to the previously focused element on close, so the trigger needs no attributes.
- *
  * @param options - Options to configure the focus trap
  */
-export const useModalAttributes = (
-  options: UseModalAttributesOptions = {},
-): { modalAttributes: ModalAttributes; triggerAttributes: Record<string, never> } => {
+export const useModalAttributes = (options: UseModalAttributesOptions = {}): { modalAttributes: ModalAttributes } => {
   const { trapFocus = false, legacyTrapFocus = false } = options;
   const cycleFocus = trapFocus && legacyTrapFocus;
   useFocusManager();
 
   return React.useMemo(
-    () => ({
-      modalAttributes: cycleFocus ? { [FOCUS_TRAP_ATTRIBUTE]: '' as const } : {},
-      triggerAttributes: {},
-    }),
+    () => ({ modalAttributes: cycleFocus ? { [FOCUS_TRAP_ATTRIBUTE]: '' as const } : {} }),
     [cycleFocus],
   );
 };

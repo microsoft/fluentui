@@ -35,11 +35,6 @@ export const isPreceding = (reference: Node, other: Node): boolean =>
   // eslint-disable-next-line no-bitwise
   !!(reference.compareDocumentPosition(other) & DOCUMENT_POSITION_PRECEDING);
 
-/**
- * A predicate used to narrow down the elements returned by the focus finders.
- */
-export type FocusableAcceptCondition = (element: HTMLElement) => boolean;
-
 const isVisible = (element: HTMLElement): boolean => {
   if (typeof element.checkVisibility === 'function') {
     return element.checkVisibility({ visibilityProperty: true, contentVisibilityAuto: true } as CheckVisibilityOptions);
@@ -69,69 +64,15 @@ export const isFocusable = (element: Element): element is HTMLElement => {
  */
 export const isTabbable = (element: Element): element is HTMLElement => isFocusable(element) && element.tabIndex >= 0;
 
-const collect = (
-  container: HTMLElement,
-  predicate: (element: HTMLElement) => boolean,
-  acceptCondition?: FocusableAcceptCondition,
-): HTMLElement[] => {
-  const result: HTMLElement[] = [];
-  container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR).forEach(element => {
-    if (predicate(element) && (!acceptCondition || acceptCondition(element))) {
-      result.push(element);
-    }
-  });
-
-  return result;
-};
+const collect = (container: HTMLElement, predicate: (element: HTMLElement) => boolean): HTMLElement[] =>
+  Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(predicate);
 
 /**
  * Returns all focusable descendants of `container` in DOM order.
  */
-export const findAllFocusable = (container: HTMLElement, acceptCondition?: FocusableAcceptCondition): HTMLElement[] =>
-  collect(container, isFocusable, acceptCondition);
+export const findAllFocusable = (container: HTMLElement): HTMLElement[] => collect(container, isFocusable);
 
 /**
  * Returns all tabbable descendants of `container` in DOM order.
  */
-export const findAllTabbable = (container: HTMLElement, acceptCondition?: FocusableAcceptCondition): HTMLElement[] =>
-  collect(container, isTabbable, acceptCondition);
-
-/**
- * Returns the first focusable descendant of `container`.
- */
-export const findFirstFocusable = (container: HTMLElement): HTMLElement | null =>
-  findAllFocusable(container)[0] ?? null;
-
-/**
- * Returns the last focusable descendant of `container`.
- */
-export const findLastFocusable = (container: HTMLElement): HTMLElement | null => {
-  const focusable = findAllFocusable(container);
-  return focusable[focusable.length - 1] ?? null;
-};
-
-/**
- * Returns the focusable element that follows `current` in DOM order, searching within `options.container`
- * (defaults to the owner document's body).
- */
-export const findNextFocusable = (
-  current: HTMLElement,
-  options: { container?: HTMLElement } = {},
-): HTMLElement | null => {
-  const container = options.container ?? current.ownerDocument.body;
-  return findAllFocusable(container).find(element => isFollowing(current, element)) ?? null;
-};
-
-/**
- * Returns the focusable element that precedes `current` in DOM order, searching within `options.container`
- * (defaults to the owner document's body).
- */
-export const findPrevFocusable = (
-  current: HTMLElement,
-  options: { container?: HTMLElement } = {},
-): HTMLElement | null => {
-  const container = options.container ?? current.ownerDocument.body;
-  const preceding = findAllFocusable(container).filter(element => isPreceding(current, element));
-
-  return preceding[preceding.length - 1] ?? null;
-};
+export const findAllTabbable = (container: HTMLElement): HTMLElement[] => collect(container, isTabbable);

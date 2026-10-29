@@ -7,7 +7,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 
 import type { CardContextValue, CardProps, CardState } from './Card.types';
 import { toDataAttributeValue } from '../../utils/toDataAttributeValue';
-import { useFocusableGroup, useFocusFinders } from '../../hooks/focus';
+import { findAllFocusable, useFocusableGroup } from '../../hooks/focus';
 import type { UseFocusableGroupOptions } from '../../hooks/focus';
 
 const focusMap: Record<NonNullable<CardProps['focusMode']>, UseFocusableGroupOptions['tabBehavior'] | undefined> = {
@@ -43,14 +43,10 @@ export const useCard = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardS
   const mergedRef = useMergedRefs(cardRef, ref);
 
   // Interacting with an inner focusable element must not toggle the card's selection.
-  const { findAllFocusable } = useFocusFinders();
-  const shouldRestrictTriggerAction = React.useCallback(
-    (event: CardOnSelectionChangeEvent) => {
-      const target = event.target as HTMLElement;
-      return findAllFocusable(cardRef.current).some(element => element.contains(target));
-    },
-    [findAllFocusable],
-  );
+  const shouldRestrictTriggerAction = React.useCallback((event: CardOnSelectionChangeEvent) => {
+    const target = event.target as HTMLElement;
+    return !!cardRef.current && findAllFocusable(cardRef.current).some(element => element.contains(target));
+  }, []);
 
   const focusMode = focusModeProp ?? (isInteractive(props) ? 'no-tab' : 'off');
   const focusableGroupAttributes = useFocusableGroup({ tabBehavior: focusMap[focusMode] });

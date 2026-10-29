@@ -16,11 +16,12 @@ import {
   useTimeout,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
 import { toDataAttributeValue } from '../../utils';
-import { useLastInputType } from '../../hooks/focus/useKeyboardNavigation';
 
 /**
  * Create the state required to render Tooltip.
@@ -151,35 +152,27 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay],
   );
 
-  const getLastInputType = useLastInputType();
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
 
-  // Callback ref that attaches native listeners which detect programmatic focus. They run before React's
-  // onFocus handler because React listens at the root.
-  const [focusOriginCallbackRef] = React.useState(() => {
-    let pressed = false;
-    const onPointerDown = () => {
-      pressed = true;
-    };
-    const onFocus = () => {
-      // Skip showing the tooltip if focus moved programmatically right after the user pressed the pointer
-      // somewhere else. For example, we don't want to show the tooltip when a dialog is closed with the mouse
-      // and focus is restored to the trigger button.
+  // Callback ref that attaches a keyborg:focusin event listener.
+  const [keyborgListenerCallbackRef] = React.useState(() => {
+    const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
+      // Skip showing the tooltip if focus moved programmatically.
+      // For example, we don't want to show the tooltip when a dialog is closed
+      // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
-      if (!pressed && getLastInputType() === 'pointer') {
+      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard()) {
         ignoreNextFocusEventRef.current = true;
       }
-      pressed = false;
-    };
+    }) as EventListener;
 
-    // Save the current element to remove the listeners when the ref changes
+    // Save the current element to remove the listener when the ref changes
     let current: Element | null = null;
 
-    // Callback ref that attaches the listeners to the element
+    // Callback ref that attaches the listener to the element
     return (element: Element | null) => {
-      current?.removeEventListener('pointerdown', onPointerDown);
-      current?.removeEventListener('focus', onFocus);
-      element?.addEventListener('pointerdown', onPointerDown);
-      element?.addEventListener('focus', onFocus);
+      current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
       current = element;
     };
   });
@@ -269,7 +262,7 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     ...child?.props,
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
-      focusOriginCallbackRef,
+      keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),
