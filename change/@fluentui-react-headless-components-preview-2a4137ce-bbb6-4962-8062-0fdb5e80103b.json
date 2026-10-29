@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "chore: generate Calendar, TagPicker and TeachingPopover bundle-size fixtures through Nx sync",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "martinhochel@microsoft.com"
+}

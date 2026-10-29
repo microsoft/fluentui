@@ -53,7 +53,11 @@ export type {
 } from './TeachingPopoverTitle';
 
 export { TeachingPopoverFooter, useTeachingPopoverFooter, renderTeachingPopoverFooter } from './TeachingPopoverFooter';
-export type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter';
+export type {
+  TeachingPopoverFooterProps,
+  TeachingPopoverFooterSlots,
+  TeachingPopoverFooterState,
+} from './TeachingPopoverFooter';
 
 export {
   TeachingPopoverCarousel,
