@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.74.11",
+    "@fluentui/react-components": "^9.75.0",
     "@fluentui/react-context-selector": "^9.2.21",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.4.0",
