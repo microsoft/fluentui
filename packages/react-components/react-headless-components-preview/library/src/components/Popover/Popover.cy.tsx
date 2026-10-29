@@ -8,6 +8,7 @@ import type { PopoverProps } from './Popover.types';
 import { Tooltip } from '../Tooltip';
 import type { JSXElement } from '@fluentui/react-utilities';
 import type { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { supportsPopoverHint } from '../../testing/supportsPopoverHint';
 
 const mount = (element: JSXElement) => {
   mountBase(element);
@@ -779,6 +780,144 @@ describe('Popover', () => {
       cy.get('[data-testid=outside]').should('have.text', 'Outside (0)');
       cy.get(trapSurfaceSelector).should('be.visible');
     });
+  });
+});
+
+describe('mode', () => {
+  it('keeps a manual surface open on click outside and closes it on Escape', () => {
+    mount(
+      <Popover mode="manual">
+        <PopoverTrigger disableButtonEnhancement>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <button data-testid="inside">Inside</button>
+        </PopoverSurface>
+      </Popover>,
+    );
+
+    cy.get(popoverTriggerSelector).realClick();
+    cy.get(popoverContentSelector).should('be.visible');
+    cy.get('body').realClick({ position: 'bottomRight' });
+    cy.get(popoverContentSelector).should('be.visible');
+
+    cy.get('[data-testid=inside]').focus();
+    cy.realPress('Escape');
+    cy.get(popoverContentSelector).should('not.exist');
+  });
+
+  it('closes only a popover nested in a manual surface on Escape', () => {
+    mount(
+      <Popover mode="manual" defaultOpen>
+        <PopoverTrigger disableButtonEnhancement>
+          <button>Outer trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface data-testid="outer">
+          <Popover defaultOpen>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Inner trigger</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="inner">
+              <button data-testid="inner-button">Inner</button>
+            </PopoverSurface>
+          </Popover>
+        </PopoverSurface>
+      </Popover>,
+    );
+
+    cy.get('[data-testid=inner-button]').focus();
+    cy.realPress('Escape');
+    cy.get('[data-testid=inner]').should('not.exist');
+    cy.get('[data-testid=outer]').should('be.visible');
+  });
+
+  it('stays open without reporting a close when mode changes while open', () => {
+    const onOpenChange = cy.stub().as('onOpenChange');
+    const Example = () => {
+      const [mode, setMode] = React.useState<'manual' | 'auto'>('manual');
+      return (
+        <Popover mode={mode} defaultOpen onOpenChange={onOpenChange}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface data-testid="surface">
+            <button data-testid="switch" onClick={() => setMode('auto')}>
+              Switch
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=switch]').realClick();
+    cy.get('[data-testid=surface]').should('have.attr', 'popover', 'auto').and('match', ':popover-open');
+    cy.get('@onOpenChange').should('not.have.been.called');
+  });
+
+  (
+    [
+      { mode: 'hint', title: 'keeps an open auto popover when a hint popover opens', menuOpen: true },
+      { mode: 'auto', title: 'closes an open auto popover when an auto popover opens', menuOpen: false },
+    ] as const
+  ).forEach(({ mode, title, menuOpen }) => {
+    it(title, () => {
+      mount(
+        <>
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="menu-trigger">Menu</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="menu">Menu</PopoverSurface>
+          </Popover>
+          <Popover mode={mode}>
+            <PopoverTrigger disableButtonEnhancement>
+              <button data-testid="tip-trigger">Info</button>
+            </PopoverTrigger>
+            <PopoverSurface data-testid="tip">Tip</PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get('[data-testid=menu-trigger]').realClick();
+      cy.get('[data-testid=menu]').should('be.visible');
+      // Keyboard, so the menu is not light-dismissed by a click.
+      cy.get('[data-testid=tip-trigger]').focus();
+      cy.realPress('Enter');
+      cy.get('[data-testid=tip]').should('match', ':popover-open');
+      // The surfaces can overlap, so check the top layer rather than visibility.
+      if (menuOpen) {
+        cy.get('[data-testid=menu]').should('match', ':popover-open');
+      } else {
+        cy.get('[data-testid=menu]').should('not.exist');
+      }
+    });
+  });
+
+  // Without `popover="hint"` the Tooltip is `manual` and the browser doesn't close it on Escape.
+  const itWithHint = supportsPopoverHint(document) ? it : it.skip;
+
+  itWithHint('closes only a Tooltip open inside a manual surface on Escape', () => {
+    mount(
+      <Popover defaultOpen mode="manual">
+        <PopoverTrigger disableButtonEnhancement>
+          <button>Trigger</button>
+        </PopoverTrigger>
+        <PopoverSurface aria-label="Surface" data-testid="surface">
+          <button data-testid="before">Before</button>
+          <Tooltip content="Tip" relationship="description" showDelay={0}>
+            <button>Has tooltip</button>
+          </Tooltip>
+        </PopoverSurface>
+      </Popover>,
+    );
+
+    cy.get('[data-testid=before]').realClick();
+    cy.realPress('Tab');
+    cy.get('[role=tooltip]').should('match', ':popover-open');
+    cy.realPress('Escape');
+    cy.get('[role=tooltip]').should('not.match', ':popover-open');
+    cy.get('[data-testid=surface]').should('match', ':popover-open');
   });
 });
 

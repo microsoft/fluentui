@@ -237,10 +237,11 @@ export type TeachingPopoverProps = {
     withArrow?: boolean;
     id?: string;
     trapFocus?: boolean;
+    mode?: PopoverMode;
 };
 
 // @public
-export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+export type TeachingPopoverState = Required<Pick<TeachingPopoverProps, 'open' | 'trapFocus' | 'mode'>> & Pick<TeachingPopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
