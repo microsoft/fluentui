@@ -153,6 +153,32 @@ for (const width of [320, 767]) {
   });
 }
 
+for (const width of [320, 767, 1280]) {
+  test(`platform labels and icons have room at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 768 });
+    if (width < 768) {
+      await openNavigation(page);
+    }
+    const controlledId = await page
+      .getByRole('button', { name: 'Section navigation', exact: true, includeHidden: true })
+      .getAttribute('aria-controls');
+    const platforms = page.locator(`[id="${controlledId}"]`);
+    for (const name of ['React', 'Windows', 'iOS', 'Android', 'macOS', 'Cross-platform']) {
+      const link = platforms.getByRole('link', { name, exact: true });
+      await expect(link).toBeVisible();
+      const bounds = await link.boundingBox();
+      const label = await link.locator('.ms-Button-label').boundingBox();
+      const icon = await link.locator('.ms-Button-icon').boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(label).not.toBeNull();
+      expect(icon).not.toBeNull();
+      expect(icon!.x - (label!.x + label!.width)).toBeGreaterThanOrEqual(8);
+      expect(label!.x).toBeGreaterThanOrEqual(bounds!.x);
+      expect(icon!.x + icon!.width).toBeLessThanOrEqual(bounds!.x + bounds!.width);
+    }
+  });
+}
+
 for (const height of [768, 256]) {
   test(`navigation reflows without horizontal scrolling at 320 x ${height}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height });
