@@ -30,7 +30,7 @@ const OverflowMenu = ({ ids }: { ids: string[] }): React.ReactElement | null => 
   }
 
   return (
-    <Menu>
+    <Menu positioning={{ autoSize: 'height' }}>
       <MenuTrigger>
         <button ref={ref} type="button" className={styles.menu} aria-label={`${overflowCount} more items`}>
           +{overflowCount}

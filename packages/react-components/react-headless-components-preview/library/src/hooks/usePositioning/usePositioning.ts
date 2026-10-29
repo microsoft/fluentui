@@ -1,8 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useId, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { usePositioning as useV9Positioning } from '@fluentui/react-positioning';
 import type {
   PositioningImperativeRef,
   PositioningShorthandValue,
@@ -13,6 +14,7 @@ import { POSITIONS, ALIGNMENTS, POSITION_AREA_MAP } from './constants';
 import { getPlacementString, normalizeAlign } from './utils/placement';
 import { applyOffset, getCoverSelfAlignment, resolveElementRef, resolveOffset, shorthandToPositionArea } from './utils';
 import { usePlacementObserver } from './usePlacementObserver';
+import { preservePositioningStyles } from './utils/preservePositioningStyles';
 
 export type TargetElement = HTMLElement | PositioningVirtualElement;
 
@@ -34,6 +36,7 @@ const readAnchorNames = (element: HTMLElement): string[] => {
 
 export function usePositioning(options: PositioningProps): PositioningReturn {
   const {
+    autoSize,
     pinned,
     target: customTarget = null,
     align: alignInput = ALIGNMENTS.center,
@@ -47,6 +50,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   } = options;
 
   const align = normalizeAlign(alignInput);
+  const isAutoSizing = Boolean(autoSize);
 
   const { mainAxis, crossAxis } = resolveOffset(offset);
   const coverAlignment = React.useMemo(
@@ -56,32 +60,67 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const [triggerEl, setTriggerEl] = React.useState<HTMLElement | null>(null);
   const [containerEl, setContainerEl] = React.useState<HTMLElement | null>(null);
-  const [imperativeTarget, setImperativeTarget] = React.useState<HTMLElement | null>(null);
-  const effectiveTarget = imperativeTarget ?? resolveElementRef(customTarget) ?? triggerEl;
+  const [imperativeTarget, setImperativeTarget] = React.useState<TargetElement | null>(null);
+  const effectiveTarget = resolveElementRef(imperativeTarget ?? customTarget) ?? triggerEl;
+  const floatingImperativeRef = React.useRef<PositioningImperativeRef>(null);
 
   const anchorName = `--${useId('popover-anchor-')}`;
   const positionArea = POSITION_AREA_MAP[position][align];
   const placement = getPlacementString(position, align);
 
-  const { targetDocument } = useFluent();
+  const { targetDocument, dir } = useFluent();
 
   const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
 
-  const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
+  const requestPlacementUpdate = usePlacementObserver(
+    containerEl,
+    effectiveTarget,
+    targetDocument,
+    coverTarget || isAutoSizing,
+  );
+
+  // Reuse v9's measurement/flip/size ordering only for opt-in autosizing.
+  const floatingPositioning = useV9Positioning({
+    ...options,
+    enabled: isAutoSizing,
+    position,
+    align: alignInput,
+    strategy,
+    target: imperativeTarget ?? customTarget,
+    positioningRef: floatingImperativeRef,
+    onPositioningEnd: event => {
+      const physicalPlacement = event.detail.placement;
+      const resolvedPosition = physicalPlacement.startsWith('top')
+        ? POSITIONS.above
+        : physicalPlacement.startsWith('bottom')
+        ? POSITIONS.below
+        : physicalPlacement.startsWith(dir === 'rtl' ? 'right' : 'left')
+        ? POSITIONS.before
+        : POSITIONS.after;
+      const resolvedAlignment = physicalPlacement.endsWith('-start')
+        ? ALIGNMENTS.start
+        : physicalPlacement.endsWith('-end')
+        ? ALIGNMENTS.end
+        : ALIGNMENTS.center;
+      containerEl?.setAttribute('data-placement', getPlacementString(resolvedPosition, resolvedAlignment));
+    },
+  });
+  const floatingTargetRef = useMergedRefs<HTMLElement>(floatingPositioning.targetRef);
+  const floatingContainerRef = useMergedRefs<HTMLElement>(floatingPositioning.containerRef);
 
   React.useImperativeHandle<PositioningImperativeRef, PositioningImperativeRef>(
     positioningRef,
     () => ({
       setTarget: (el: TargetElement | null) => {
-        setImperativeTarget(resolveElementRef(el));
+        setImperativeTarget(el);
       },
-      updatePosition: requestPlacementUpdate,
+      updatePosition: () => (isAutoSizing ? floatingImperativeRef.current?.updatePosition() : requestPlacementUpdate()),
     }),
-    [requestPlacementUpdate],
+    [isAutoSizing, requestPlacementUpdate],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    if (!effectiveTarget || isAutoSizing) {
       return;
     }
 
@@ -107,22 +146,38 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
+  }, [effectiveTarget, anchorName, isAutoSizing]);
 
-  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(node => {
-    setTriggerEl(node);
-  }, []);
+  const targetRef: React.RefCallback<HTMLElement> = React.useCallback(
+    node => {
+      setTriggerEl(node);
+      floatingTargetRef(node);
+    },
+    [floatingTargetRef],
+  );
 
+  const restoreStyles = React.useRef<(() => void) | undefined>(undefined);
   const containerRef: React.RefCallback<HTMLElement> = React.useCallback(
     node => {
+      floatingContainerRef(null);
+      restoreStyles.current?.();
+      restoreStyles.current = undefined;
       setContainerEl(node);
 
       if (!node) {
         return;
       }
 
-      node.style.setProperty('position', strategy);
+      restoreStyles.current = preservePositioningStyles(node);
       node.style.setProperty('inset', 'auto');
+      node.setAttribute('data-placement', placement);
+
+      if (autoSize) {
+        floatingContainerRef(node);
+        return;
+      }
+
+      node.style.setProperty('position', strategy);
       node.style.setProperty('margin', '0');
 
       applyOffset(node, position, mainAxis, crossAxis);
@@ -184,6 +239,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
       coverAlignment,
       strategy,
       matchTargetSize,
+      autoSize,
+      floatingContainerRef,
     ],
   );
 

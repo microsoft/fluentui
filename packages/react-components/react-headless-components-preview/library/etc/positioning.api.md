@@ -28,7 +28,7 @@ export { Position }
 export { PositioningImperativeRef }
 
 // @public (undocumented)
-export type PositioningProps = Pick<PositioningProps_2, 'align' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
+export type PositioningProps = Pick<PositioningProps_2, 'align' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'matchTargetSize' | 'offset' | 'pinned' | 'position' | 'positioningRef' | 'strategy' | 'target'>;
 
 // @public (undocumented)
 export type PositioningReturn = {

@@ -29,7 +29,10 @@ Default.argTypes = {
     control: 'boolean',
   },
   fallbackPositions: { control: { disable: true } },
-  autoSize: { control: { disable: true } },
+  autoSize: {
+    control: 'select',
+    options: [false, true, 'height', 'width', 'always', 'height-always', 'width-always'],
+  },
 };
 
 Default.args = {
