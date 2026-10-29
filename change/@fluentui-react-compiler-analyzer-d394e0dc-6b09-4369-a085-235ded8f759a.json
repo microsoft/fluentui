@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Clarify compiler evidence and preventive annotation rationale, identify suppression-related rejection, and report profile-specific revalidation. JSON consumers must migrate to schema v3: reported-statistics counters replace memoCacheEmitted.",
+  "comment": "fix: clarify compiler evidence and preventive annotation rationale, identify suppression-related rejection, and report profile-specific revalidation. JSON consumers must migrate to schema v3: reported-statistics counters replace memoCacheEmitted.",
   "packageName": "@fluentui/react-compiler-analyzer",
   "email": "martinhochel@microsoft.com"
 }
