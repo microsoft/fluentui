@@ -54,11 +54,12 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
   const formattedValue = committedValue ? formatDate(committedValue) : '';
 
   const [draft, setDraft] = React.useState({ text: formattedValue, dirty: false, formattedValue });
+  const [error, setError] = React.useState<DatePickerErrorType | undefined>(undefined);
   // External value or formatter changes replace pending text.
   if (draft.formattedValue !== formattedValue) {
     setDraft({ text: formattedValue, dirty: false, formattedValue });
+    setError(undefined);
   }
-  const [error, setError] = React.useState<DatePickerErrorType | undefined>(undefined);
 
   const resetText = (text = formattedValue) => setDraft({ text, dirty: false, formattedValue: text });
 

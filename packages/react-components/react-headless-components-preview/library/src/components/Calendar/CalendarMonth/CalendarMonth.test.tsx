@@ -185,7 +185,7 @@ describe('CalendarMonth', () => {
     expect(getByRole('gridcell', { name: 'October' })).not.toHaveAttribute('tabindex', '0');
   });
 
-  it('marks an available initial month when the navigated month becomes disabled', () => {
+  it('keeps focus and the tab stop on a month that becomes disabled', () => {
     const picker = (minDate?: Date) => (
       <CalendarProvider value={{ ...calendarContextDefaultValue, minDate }}>
         <CalendarMonth navigatedDate={new Date(2020, 8, 18)} />
@@ -198,7 +198,8 @@ describe('CalendarMonth', () => {
 
     expect(getByRole('gridcell', { name: 'October' }).querySelector('button')).toBeDisabled();
     expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
+    expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('tabindex', '0');
   });
 
   it('swaps in the headless year picker from its header', () => {

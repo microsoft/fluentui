@@ -10,6 +10,21 @@ const today = new Date(2020, 8, 18);
 const day = (label: string) => `td[role="gridcell"]:has(button[aria-label="${label}"])`;
 const month = (label: string) => `[role="gridcell"][aria-label="${label}"]`;
 
+const BoundsChangingCalendar = () => {
+  const [minDate, setMinDate] = React.useState(new Date(2020, 0, 1));
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'b') {
+          setMinDate(new Date(2020, 6, 1));
+        }
+      }}
+    >
+      <Calendar today={today} value={today} dayPicker={null} minDate={minDate} />
+    </div>
+  );
+};
+
 describe('Calendar', () => {
   it('returns to today with six weeks and three month columns without changing selection', () => {
     const onSelectDate = cy.spy().as('onSelectDate');
@@ -62,6 +77,18 @@ describe('Calendar', () => {
       cy.get(month('May')).should('be.focused').realPress('ArrowUp');
       cy.get(month('May')).should('be.focused');
       cy.get(month('January')).find('button').should('be.disabled');
+    });
+
+    it('keeps focus on a month cell when changing bounds makes it unavailable', () => {
+      mount(<BoundsChangingCalendar />);
+
+      cy.get(month('March')).focus().realPress('b');
+      cy.get(month('March'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '0');
+      cy.realPress('ArrowDown');
+      cy.get(month('September')).should('be.focused');
     });
   });
 

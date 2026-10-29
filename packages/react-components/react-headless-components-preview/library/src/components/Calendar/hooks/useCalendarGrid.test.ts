@@ -23,11 +23,12 @@ describe('calendar grid helpers', () => {
     expect(getCalendarPickerCellProps(allFocusable, false, false, false, false).root.tabIndex).toBe(-1);
   });
 
-  it('keeps unavailable picker cells out of the tab order unless allFocusable is enabled', () => {
+  it('keeps unavailable picker cells out of the tab order unless focused or allFocusable is enabled', () => {
     expect(getCalendarPickerCellProps(false, true, false, false, true)).toMatchObject({
-      root: { tabIndex: undefined, 'aria-disabled': true },
+      root: { tabIndex: 0, 'aria-disabled': true },
       button: { disabled: true },
     });
+    expect(getCalendarPickerCellProps(false, true, false, false, false).root.tabIndex).toBeUndefined();
     expect(getCalendarPickerCellProps(true, true, false, false, true)).toMatchObject({
       root: { tabIndex: 0, 'aria-disabled': true },
       button: { disabled: false },

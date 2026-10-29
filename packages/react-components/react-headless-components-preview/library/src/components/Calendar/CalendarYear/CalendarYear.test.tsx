@@ -150,7 +150,7 @@ describe('CalendarYear', () => {
     expect(getByRole('gridcell', { name: '2022' })).not.toHaveAttribute('tabindex', '0');
   });
 
-  it('marks an available initial year when the navigated year becomes disabled', () => {
+  it('keeps focus and the tab stop on a year that becomes disabled', () => {
     const picker = (minDate?: Date) => (
       <CalendarProvider value={{ ...calendarContextDefaultValue, minDate }}>
         <CalendarYear navigatedYear={2020} />
@@ -163,7 +163,8 @@ describe('CalendarYear', () => {
 
     expect(getByRole('button', { name: '2022' })).toBeDisabled();
     expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: '2023' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: '2022' })).toHaveFocus();
+    expect(getByRole('gridcell', { name: '2022' })).toHaveAttribute('tabindex', '0');
   });
 
   it('renders a range of twelve years', () => {

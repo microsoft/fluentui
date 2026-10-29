@@ -203,7 +203,7 @@ export function useCalendarPickerGrid(
   // The focused cell keeps the tab stop until the grid shows different cells.
   const [activeCell, setActiveCell] = React.useState<{ index: number; resetKey: string } | undefined>(undefined);
   const tabStop =
-    activeCell && activeCell.resetKey === resetKey && isEligible(activeCell.index)
+    activeCell && activeCell.resetKey === resetKey && activeCell.index >= 0 && activeCell.index < PICKER_CELL_COUNT
       ? activeCell.index
       : defaultTabStop !== undefined && isEligible(defaultTabStop)
       ? defaultTabStop
@@ -324,8 +324,8 @@ export const getCalendarPickerCellProps = (
       'aria-disabled': isDisabled,
       'aria-selected': isSelected,
       'aria-current': isCurrent ? 'date' : undefined,
-      // One roving tab stop; unavailable cells stay out of focus unless allFocusable is set.
-      tabIndex: allFocusable || !isDisabled ? (isTabStop ? 0 : -1) : undefined,
+      // Keep the active cell focusable if it becomes unavailable while focused.
+      tabIndex: isTabStop ? 0 : allFocusable || !isDisabled ? -1 : undefined,
       'data-current': toDataAttributeValue(isCurrent),
       'data-selected': toDataAttributeValue(isSelected),
       'data-outside-bounds': toDataAttributeValue(isDisabled),

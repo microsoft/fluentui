@@ -27,8 +27,10 @@ and state attributes.
 Name the field with a Field label, `aria-labelledby` or `aria-label`. The button's name combines that label with the
 displayed date or placeholder. The field exposes `aria-haspopup="dialog"` and `aria-controls` while open; the button
 and the editable mode's icon expose `aria-expanded`. Text inputs do not support `aria-expanded`, and buttons do not
-support `aria-required`, so those states are omitted on those elements. The field is never a combobox because its
-popup holds grids, not a listbox.
+support `aria-required`, so those states are omitted on those elements. Set `aria-describedby` and `aria-invalid` on
+DatePicker or its `input`/`trigger` slot; description IDs are combined with the validation message ID, and a
+validation error sets `aria-invalid="true"`. The field is never a combobox because its popup holds grids, not a
+listbox.
 
 ### Behavior
 

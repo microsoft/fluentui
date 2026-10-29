@@ -106,7 +106,10 @@ export const useDatePicker = (
     primarySlotTagName: 'input',
     excludedPropNames: ['defaultValue', 'disabled', 'placeholder', 'required', 'value'],
   });
-  const required = !!(props.required || fieldControlProps['aria-required']);
+  const required =
+    props.required === true ||
+    fieldControlProps['aria-required'] === true ||
+    fieldControlProps['aria-required'] === 'true';
   const controlId = useId('datepicker-', fieldControlProps.id);
 
   const calendarProps: DatePickerCalendarProps = slot.resolveShorthand(props.calendar) ?? {};
@@ -327,7 +330,11 @@ export const useDatePicker = (
       })
     : undefined;
   if (input) {
+    const inputDescribedBy = input['aria-describedby'];
+    const inputInvalid = input['aria-invalid'];
     Object.assign(input, controlAriaProps);
+    input['aria-describedby'] = [describedBy, inputDescribedBy].filter(Boolean).join(' ') || undefined;
+    input['aria-invalid'] = error ? true : inputInvalid ?? fieldControlProps['aria-invalid'];
     // aria-expanded is not supported on text inputs, and the popup is not a listbox, so the field is not a combobox.
     // The calendar icon exposes the expanded state instead.
     delete input['aria-expanded'];
@@ -366,7 +373,11 @@ export const useDatePicker = (
   }
 
   if (trigger) {
+    const triggerDescribedBy = trigger['aria-describedby'];
+    const triggerInvalid = trigger['aria-invalid'];
     Object.assign(trigger, controlAriaProps);
+    trigger['aria-describedby'] = [describedBy, triggerDescribedBy].filter(Boolean).join(' ') || undefined;
+    trigger['aria-invalid'] = error ? true : triggerInvalid ?? fieldControlProps['aria-invalid'];
     // aria-required is not supported on buttons; a surrounding Field conveys that a date is required.
     delete trigger['aria-required'];
     // The accessible name combines the field's purpose with the displayed date or placeholder.

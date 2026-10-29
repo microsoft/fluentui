@@ -392,6 +392,20 @@ describe('DatePicker', () => {
       expect(input).toHaveAttribute('aria-invalid', 'true');
     });
 
+    it('clears a stale validation error when a controlled value is replaced', () => {
+      const { input, rerender, getByText } = renderEditable({ value: new Date(2026, 7, 12) });
+
+      fireEvent.change(input, { target: { value: 'not a date' } });
+      fireEvent.keyDown(input, { key: 'Enter' });
+      expect(getByText(/Enter a date such as/)).toBeInTheDocument();
+
+      rerender(<DatePicker aria-label="Due date" today={today} allowTextInput value={new Date(2026, 7, 20)} />);
+
+      expect(input).toHaveValue('August 20, 2026');
+      expect(input).not.toHaveAttribute('aria-invalid');
+      expect(input).not.toHaveAttribute('aria-describedby');
+    });
+
     it('rejects impossible and out-of-range dates', () => {
       const onDateChange = jest.fn();
       const { input, getByText } = renderEditable({
@@ -443,6 +457,26 @@ describe('DatePicker', () => {
       expect(input).not.toHaveAttribute('aria-invalid');
     });
 
+    it.each([false, 'false'] as const)('treats aria-required=%s as optional', ariaRequired => {
+      const { input, queryByText } = renderEditable({ 'aria-required': ariaRequired });
+
+      fireEvent.change(input, { target: { value: '' } });
+      fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(input).not.toHaveAttribute('aria-invalid');
+      expect(queryByText('Enter a date.')).not.toBeInTheDocument();
+    });
+
+    it('combines ARIA descriptions and invalid state from the input slot', () => {
+      const { input } = renderEditable({
+        'aria-describedby': 'field-help',
+        input: { 'aria-describedby': 'input-help', 'aria-invalid': true },
+      });
+
+      expect(input).toHaveAttribute('aria-describedby', 'field-help input-help');
+      expect(input).toHaveAttribute('aria-invalid', 'true');
+    });
+
     it('does not validate pending text when focus moves into the calendar', async () => {
       const onValidationResult = jest.fn();
       const { input, getByRole } = renderEditable({ onValidationResult });
@@ -474,6 +508,21 @@ describe('DatePicker', () => {
     rerender(<DatePicker aria-label="Due date" today={today} value={new Date(2026, 0, 6)} open={false} />);
     expect(queryByRole('dialog')).not.toBeInTheDocument();
     expect(getByRole('button', { name: 'Due date January 6, 2026' })).toBeInTheDocument();
+  });
+
+  it('allows the Calendar consumer to cancel closing with Enter', () => {
+    const { getByRole } = renderDatePicker({
+      open: true,
+      calendar: {
+        dayPicker: { closeButton: { children: 'Close calendar' } },
+        onDismiss: event => event.preventDefault(),
+      },
+    });
+    const closeButton = getByRole('button', { name: 'Close' });
+
+    fireEvent.keyDown(closeButton, { key: 'Enter' });
+
+    expect(getByRole('dialog')).toBeInTheDocument();
   });
 
   it('focuses the calendar when initially open', async () => {
@@ -565,6 +614,20 @@ describe('DatePicker', () => {
     );
 
     expect(getByRole('button', { name: 'Due date August 12, 2026' })).toBeInTheDocument();
+  });
+
+  it('combines ARIA descriptions and invalid state from the trigger slot', () => {
+    const { getByRole } = render(
+      <DatePicker
+        aria-label="Due date"
+        aria-describedby="field-help"
+        trigger={{ 'aria-describedby': 'trigger-help', 'aria-invalid': true }}
+      />,
+    );
+    const trigger = getByRole('button', { name: 'Due date Select a date' });
+
+    expect(trigger).toHaveAttribute('aria-describedby', 'field-help trigger-help');
+    expect(trigger).toHaveAttribute('aria-invalid', 'true');
   });
 
   it('keeps reporting close requests that a controlled consumer ignores', () => {

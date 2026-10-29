@@ -65,6 +65,17 @@ describe('DatePicker', () => {
     cy.get('button[aria-haspopup="dialog"]').should('be.focused').and('have.attr', 'aria-expanded', 'false');
   });
 
+  (['Enter', 'Space'] as const).forEach(key => {
+    it(`closes from the Calendar close button with ${key}`, () => {
+      mount(<Example calendar={{ dayPicker: { closeButton: { children: 'Close calendar' } } }} />);
+
+      cy.get('button[aria-haspopup="dialog"]').click();
+      cy.contains('button', 'Close calendar').focus().realPress(key);
+      cy.get('[role="dialog"]').should('not.exist');
+      cy.get('button[aria-haspopup="dialog"]').should('be.focused');
+    });
+  });
+
   it('tabs through each grid and control once, then closes when Tab leaves the calendar', () => {
     mount(<Example />);
 

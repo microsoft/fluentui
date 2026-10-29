@@ -107,7 +107,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
       columns: calendarYearColumns,
       allFocusable,
       defaultTabStop: focusYear >= fromYear && focusYear <= toYear ? focusYear - fromYear : undefined,
-      resetKey: `${fromYear}:${focusYear}:${calendarYearColumns}`,
+      resetKey: `${fromYear}:${calendarYearColumns}`,
     },
   );
   const getYearCellProps: CalendarYearState['getYearCellProps'] = year => {
