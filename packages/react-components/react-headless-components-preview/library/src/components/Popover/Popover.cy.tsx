@@ -575,6 +575,27 @@ describe('Popover', () => {
   describe('Focus trap', () => {
     const trapSurfaceSelector = 'dialog';
 
+    it('lets the browser close the modal on Escape and reports a close event', () => {
+      const types: string[] = [];
+      mount(
+        <Popover trapFocus onOpenChange={(_, data) => types.push(`${data.type}:${data.open}`)}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button data-testid="trigger">Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button data-testid="inside">Inside</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('[data-testid=trigger]').realClick();
+      cy.get('[data-testid=inside]').should('be.focused');
+      cy.realPress('Escape');
+      cy.get(trapSurfaceSelector).should('not.exist');
+      cy.get('[data-testid=trigger]').should('be.focused');
+      cy.then(() => expect(types).to.deep.equal(['click:true', 'close:false']));
+    });
+
     it('keeps the surface open when native Escape cancellation is prevented', () => {
       const onOpenChange = cy.stub().as('onOpenChange');
       mount(
@@ -943,4 +964,32 @@ describe('positioning observer', () => {
       });
     });
   }
+});
+
+describe('trapFocus changes while open', () => {
+  it('switches to modal while open and stays modal until the next open, keeping focus inside', () => {
+    const Example = () => {
+      const [trapFocus, setTrapFocus] = React.useState(false);
+      return (
+        <Popover open trapFocus={trapFocus}>
+          <PopoverTrigger disableButtonEnhancement>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface aria-label="Surface" data-testid="surface">
+            <button data-testid="switch" onClick={() => setTrapFocus(value => !value)}>
+              Switch
+            </button>
+          </PopoverSurface>
+        </Popover>
+      );
+    };
+    mount(<Example />);
+
+    cy.get('[data-testid=surface]').should('match', ':popover-open');
+    cy.get('[data-testid=switch]').realClick();
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=switch]').should('be.focused').realClick();
+    cy.get('[data-testid=surface]').should('match', ':modal');
+    cy.get('[data-testid=switch]').should('be.focused');
+  });
 });

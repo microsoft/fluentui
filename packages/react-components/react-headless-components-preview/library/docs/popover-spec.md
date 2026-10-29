@@ -150,10 +150,11 @@ The role on the surface depends on `trapFocus`:
 
 ### Focus management
 
-Focus management is delegated to the platform; the component adds no React-side focus trap, focus finder, or restoration logic.
+The surface's show/hide come from the shared top-layer hooks (`useDialogLayerOpenState`, `useLayerFocusReturn`); there is no React-side focus trap or focus finder.
 
 - **`trapFocus={false}` (default).** No autofocus on open unless a child element has the HTML `autofocus` attribute (in which case the popover-side focusing steps focus it per the popover spec). No focus trap — Tab follows the document's normal tab order. Light dismiss is browser-managed.
-- **`trapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`), the rest of the page is **inert**, and Tab cycles inside the surface. On close, `dialog.close()` restores focus to whatever element was focused when `showModal()` ran — typically the trigger.
+- **`trapFocus={true}`.** The browser opens the surface via `dialog.showModal()` and runs the modal `<dialog>` focusing steps: focus moves to the first sequentially-focusable descendant (or to a child carrying `autofocus`) and the rest of the page is **inert**.
+- **Restore.** The browser restores focus on close. When focus was inside the surface as it started closing and is now lost to `<body>` or still inside it, focus moves to the trigger. Focus the user moved elsewhere is left alone.
 
 #### Specifying initial focus
 
@@ -161,7 +162,7 @@ Consumers control which child receives initial focus via the standard React `aut
 
 #### Cancel handling (modal Esc)
 
-When `trapFocus={true}`, Escape fires the native `cancel` event on the dialog. `usePopover` listens for `cancel`, calls `event.preventDefault()` (so the browser doesn't close the dialog before React re-renders), and routes through `setOpen(false)`. The subsequent close — driven by `open` flipping to `false` — runs `dialog.close()`, which performs the spec-mandated focus restoration to the trigger. This keeps controlled consumers authoritative without losing the platform's restore behavior.
+When `trapFocus={true}`, Escape fires the native `cancel` event and the browser closes the dialog, restoring focus to the trigger. The surface reports the native `close` event, so `onOpenChange` fires with `type: 'close'` and `open: false`.
 
 ### Labeling
 
