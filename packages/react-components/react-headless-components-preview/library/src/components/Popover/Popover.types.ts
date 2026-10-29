@@ -82,10 +82,15 @@ export type PopoverProps = {
   id?: string;
 
   /**
-   * When true, opens the popover as a modal via `HTMLDialogElement.showModal()`.
-   * Focus is trapped inside the surface, the rest of the page is inert, and
-   * focus is restored to the trigger when the popover closes — all spec-mandated
-   * by the native dialog element.
+   * When true, opens the popover as a modal via `HTMLDialogElement.showModal()`
+   * and traps focus the way the HTML dialog spec defines it: the rest of the page
+   * is inert, Tab cycles through the surface and may leave it only to the browser
+   * UI (address bar, toolbar), and focus is restored to the trigger when the
+   * popover closes.
+   *
+   * Matches `inertTrapFocus` on the v9 Popover and the headless Dialog. There is
+   * no equivalent of the v9 `trapFocus` without `inertTrapFocus`, which keeps
+   * focus out of the browser UI and does not make the page inert.
    *
    * When false (default), the popover is non-modal: opens via `showPopover()`,
    * the browser handles light dismiss (Escape, click-outside, popover-stack
@@ -94,13 +99,13 @@ export type PopoverProps = {
    *
    * @default false
    */
-  trapFocus?: boolean;
+  inertTrapFocus?: boolean;
 };
 
 /**
  * Popover State
  */
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> &
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'>> &
   Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -132,7 +137,7 @@ export type PopoverContextValue = Pick<
   | 'openOnContext'
   | 'withArrow'
   | 'surfaceId'
-  | 'trapFocus'
+  | 'inertTrapFocus'
 > & {
   positioning: {
     targetRef: React.RefCallback<HTMLElement>;
