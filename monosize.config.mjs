@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import webpackBundler from 'monosize-bundler-webpack';
 import gitStorage from 'monosize-storage-git';
-import { configureReactIcons } from '@fluentui/scripts-storybook';
+// import { configureReactIcons } from '@fluentui/scripts-storybook';
 
 /**
  * Single source of truth for the bundle-size report artifact name and path.
@@ -44,23 +44,22 @@ const config = {
     config.module.rules = config.module.rules ?? [];
     config.module.rules.push({ test: /\.[cm]?js$/, resolve: { fullySpecified: false } });
 
-    configureReactIcons({ config, headless: true });
-
-    // Enable CSS support
-    config.experiments = config.experiments ?? {};
-    config.experiments.css = true;
-    config.module.parser = config.module.parser ?? {};
-    config.module.parser.css = {
-      ...config.module.parser.css,
-      namedExports: false,
-    };
-
-    // Prefer CSS Module hooks for explicit .styles.js imports, falling back to Griffel.
-    config.resolve = config.resolve ?? {};
-    config.resolve.extensionAlias = {
-      ...config.resolve.extensionAlias,
-      '.styles.js': ['.styles.css.js', '.styles.js'],
-    };
+    // Temporarily disabled while the CSS Modules alternatives roll out.
+    // configureReactIcons({ config, headless: true });
+    //
+    // config.experiments = config.experiments ?? {};
+    // config.experiments.css = true;
+    // config.module.parser = config.module.parser ?? {};
+    // config.module.parser.css = {
+    //   ...config.module.parser.css,
+    //   namedExports: false,
+    // };
+    //
+    // config.resolve = config.resolve ?? {};
+    // config.resolve.extensionAlias = {
+    //   ...config.resolve.extensionAlias,
+    //   '.styles.js': ['.styles.css.js', '.styles.js'],
+    // };
 
     return config;
   }),
@@ -71,7 +70,7 @@ const config = {
       return json.name.replace('@fluentui/', '');
     },
   },
-  assetTypes: ['js', 'css'],
+  // assetTypes: ['js', 'css'],
 };
 
 export default config;
