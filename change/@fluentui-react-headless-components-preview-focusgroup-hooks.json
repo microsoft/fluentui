@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: match v9 focus behavior: Tab cycling focus trap in Dialog and Drawer (opt out with inertTrapFocus), Card focusMode, Breadcrumb arrow navigation, NavDrawerBody and TeachingPopoverCarouselNav arrow navigation",
+  "comment": "feat: match v9 focus behavior: Tab cycling focus trap in Dialog and Drawer (opt out with inertTrapFocus), Card focusMode, Breadcrumb arrow navigation, NavDrawerBody and TeachingPopoverCarouselNav arrow navigation, MenuSplitGroup inline arrow keys, TagGroup focus after dismiss, Toast keyboard navigation (Tab into and within a toast, wrapping ArrowUp/ArrowDown between toasts); TagPicker skips disabled or hidden tags when moving focus from the input",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "kirpadv@gmail.com",
   "dependentChangeType": "patch"

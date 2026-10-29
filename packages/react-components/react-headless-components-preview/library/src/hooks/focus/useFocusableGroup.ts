@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { FOCUSABLE_GROUP_ATTRIBUTE, useFocusManager } from './focusManager';
+import { FOCUSABLE_GROUP_ATTRIBUTE, FOCUSABLE_GROUP_IGNORE_ATTRIBUTE, useFocusManager } from './focusManager';
 
 export interface UseFocusableGroupOptions {
   /**
@@ -17,10 +17,16 @@ export interface UseFocusableGroupOptions {
    * @default unlimited
    */
   tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
+
+  /**
+   * Keys the group must not handle, e.g. to keep Escape for dismissing a toast.
+   */
+  ignoreDefaultKeydown?: Partial<Record<'Tab' | 'Enter' | 'Escape', boolean>>;
 }
 
 export type FocusableGroupAttributes = {
   [FOCUSABLE_GROUP_ATTRIBUTE]: NonNullable<UseFocusableGroupOptions['tabBehavior']>;
+  [FOCUSABLE_GROUP_IGNORE_ATTRIBUTE]?: string;
 };
 
 /**
@@ -30,8 +36,18 @@ export type FocusableGroupAttributes = {
  * @param options - Options to configure keyboard navigation
  */
 export const useFocusableGroup = (options: UseFocusableGroupOptions = {}): FocusableGroupAttributes => {
-  const { tabBehavior = 'unlimited' } = options;
+  const { tabBehavior = 'unlimited', ignoreDefaultKeydown } = options;
   useFocusManager();
 
-  return React.useMemo(() => ({ [FOCUSABLE_GROUP_ATTRIBUTE]: tabBehavior }), [tabBehavior]);
+  const ignoredKeys = ignoreDefaultKeydown
+    ? (['Tab', 'Enter', 'Escape'] as const).filter(key => ignoreDefaultKeydown[key]).join(' ')
+    : '';
+
+  return React.useMemo(
+    () => ({
+      [FOCUSABLE_GROUP_ATTRIBUTE]: tabBehavior,
+      ...(ignoredKeys && { [FOCUSABLE_GROUP_IGNORE_ATTRIBUTE]: ignoredKeys }),
+    }),
+    [tabBehavior, ignoredKeys],
+  );
 };

@@ -15,6 +15,11 @@ export const FOCUS_TRAP_ATTRIBUTE = 'data-fui-focus-trap';
  */
 export const FOCUSABLE_GROUP_ATTRIBUTE = 'data-fui-focusable-group';
 
+/**
+ * Space separated list of keys (`Tab`, `Enter`, `Escape`) the focusable group must not handle.
+ */
+export const FOCUSABLE_GROUP_IGNORE_ATTRIBUTE = 'data-fui-focusable-group-ignore';
+
 const TRAP_SELECTOR = `[${FOCUS_TRAP_ATTRIBUTE}]`;
 const GROUP_SELECTOR = `[${FOCUSABLE_GROUP_ATTRIBUTE}]`;
 // Popovers and dialogs rendered inline own their keyboard handling, even inside a trap or a group.
@@ -26,6 +31,9 @@ const isLimitedGroup = (group: HTMLElement): boolean =>
 
 const isTrappedGroup = (group: HTMLElement): boolean =>
   group.getAttribute(FOCUSABLE_GROUP_ATTRIBUTE) === 'limited-trap-focus';
+
+const ignoresKey = (group: HTMLElement, key: string): boolean =>
+  (group.getAttribute(FOCUSABLE_GROUP_IGNORE_ATTRIBUTE) ?? '').split(' ').includes(key);
 
 /**
  * Returns the closest ancestor (or self) matching `selector`, unless an inline popover or dialog sits between
@@ -107,6 +115,10 @@ const handleTab = (event: KeyboardEvent, activeElement: HTMLElement): void => {
     return;
   }
 
+  if (group && ignoresKey(group, 'Tab')) {
+    return;
+  }
+
   // The innermost entered trapped group wins over a trap container.
   let trappedGroup: HTMLElement | null = null;
   for (let current = group; current; current = current.parentElement?.closest<HTMLElement>(GROUP_SELECTOR) ?? null) {
@@ -145,7 +157,7 @@ const handleTab = (event: KeyboardEvent, activeElement: HTMLElement): void => {
 };
 
 const handleEnter = (event: KeyboardEvent, activeElement: HTMLElement): void => {
-  if (!activeElement.hasAttribute(FOCUSABLE_GROUP_ATTRIBUTE)) {
+  if (!activeElement.hasAttribute(FOCUSABLE_GROUP_ATTRIBUTE) || ignoresKey(activeElement, 'Enter')) {
     return;
   }
 
@@ -161,7 +173,7 @@ const handleEnter = (event: KeyboardEvent, activeElement: HTMLElement): void => 
 
 const handleEscape = (event: KeyboardEvent, activeElement: HTMLElement): void => {
   const group = closestInLayer(activeElement, GROUP_SELECTOR);
-  if (!group || group === activeElement) {
+  if (!group || group === activeElement || ignoresKey(group, 'Escape')) {
     return;
   }
 

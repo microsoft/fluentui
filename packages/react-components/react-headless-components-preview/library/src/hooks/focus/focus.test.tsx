@@ -5,15 +5,6 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useFocusableGroup, useModalAttributes } from './index';
 import type { UseFocusableGroupOptions } from './index';
 
-// jsdom has no layout, so every element would be considered invisible by the focus finders.
-beforeAll(() => {
-  Object.defineProperty(HTMLElement.prototype, 'checkVisibility', { configurable: true, value: () => true });
-});
-
-afterAll(() => {
-  delete (HTMLElement.prototype as Partial<HTMLElement>).checkVisibility;
-});
-
 const pressTab = (shiftKey = false) => fireEvent.keyDown(document.activeElement!, { key: 'Tab', shiftKey });
 
 describe('useModalAttributes', () => {
@@ -71,10 +62,13 @@ describe('useFocusableGroup', () => {
   };
 
   it('returns the group attributes', () => {
-    const { result } = renderHook(() => useFocusableGroup({ tabBehavior: 'limited' }));
+    const { result } = renderHook(() =>
+      useFocusableGroup({ tabBehavior: 'limited', ignoreDefaultKeydown: { Escape: true } }),
+    );
 
     expect(result.current).toEqual({
       'data-fui-focusable-group': 'limited',
+      'data-fui-focusable-group-ignore': 'Escape',
     });
   });
 
@@ -106,5 +100,13 @@ describe('useFocusableGroup', () => {
 
     pressTab(true);
     expect(getByText('Last')).toHaveFocus();
+  });
+
+  it('respects ignored keys', () => {
+    const { getByText } = render(<Group tabBehavior="limited" ignoreDefaultKeydown={{ Escape: true }} />);
+
+    getByText('First').focus();
+    fireEvent.keyDown(getByText('First'), { key: 'Escape' });
+    expect(getByText('First')).toHaveFocus();
   });
 });

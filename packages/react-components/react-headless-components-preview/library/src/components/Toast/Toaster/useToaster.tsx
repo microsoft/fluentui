@@ -7,13 +7,14 @@ import type { ToasterProps, ToasterState } from './Toaster.types';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import {
   getIntrinsicElementProps,
+  isHTMLElement,
   slot,
   useEventCallback,
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { Escape } from '@fluentui/keyboard-keys';
+import { ArrowDown, ArrowUp, Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
 
 const SUPPORTS_POPOVER_OPEN_SELECTOR =
@@ -83,6 +84,9 @@ export const useToaster = (props: ToasterProps): ToasterState => {
       e.preventDefault();
       closeAllToasts();
     }
+    if (e.key === ArrowDown || e.key === ArrowUp) {
+      focusAdjacentToast(e);
+    }
     onKeyDownProp?.(e);
   });
 
@@ -124,7 +128,6 @@ export const useToaster = (props: ToasterProps): ToasterState => {
             {toast.content as React.ReactNode}
           </ToastContainer>
         )),
-        focusgroup: 'toolbar block itemcontrols',
         onKeyDown,
         popover: 'manual' as const,
         'data-toaster-position': toastPosition,
@@ -165,4 +168,29 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     announce: announceProp ?? announce,
     renderAriaLive: !announceProp,
   };
+};
+
+/**
+ * Moves focus to the next (ArrowDown) or previous (ArrowUp) toast of the stack, wrapping at both ends, like the
+ * styled Toaster. Works from the toasts and from the controls inside them.
+ */
+const focusAdjacentToast = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const stack = e.currentTarget;
+  const target = e.target;
+  if (!isHTMLElement(target) || target.closest('dialog, [popover]') !== stack) {
+    // Inline popovers and dialogs inside a toast own their arrow keys.
+    return;
+  }
+
+  const toasts = Array.from(stack.children).filter((child): child is HTMLElement => isHTMLElement(child));
+  if (toasts.length === 0) {
+    return;
+  }
+
+  const current = toasts.findIndex(toast => toast.contains(target));
+  const next =
+    e.key === ArrowDown
+      ? toasts[(current + 1) % toasts.length]
+      : toasts[current === -1 ? toasts.length - 1 : (current - 1 + toasts.length) % toasts.length];
+  next.focus();
 };
