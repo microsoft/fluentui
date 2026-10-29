@@ -88,7 +88,7 @@ describe('Calendar', () => {
         .and('have.attr', 'aria-disabled', 'true')
         .and('have.attr', 'tabindex', '0');
       cy.realPress('ArrowDown');
-      cy.get(month('September')).should('be.focused');
+      cy.get(month('July')).should('be.focused');
     });
   });
 
