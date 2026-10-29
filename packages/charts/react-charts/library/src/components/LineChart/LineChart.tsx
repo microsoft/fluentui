@@ -863,9 +863,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           }
 
           const selectedPathPoint =
-            calloutTarget?.isPath && calloutTarget.lineIndex === i
-              ? _points[i].data[calloutTarget.pointIndex]
-              : undefined;
+            calloutTarget?.lineIndex === i ? _points[i].data[calloutTarget.pointIndex] : undefined;
           // Always add the highlight circle for large dataset hover
           pointsForLine.push(
             <circle
@@ -2019,7 +2017,19 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       isPopoverOpen: isPopoverOpen && !!stackCalloutProps,
       clickPosition,
       positioning: {
-        target: refSelected ? { getBoundingClientRect: () => refSelected.getBoundingClientRect() } : null,
+        target: refSelected
+          ? {
+              getBoundingClientRect: () => {
+                const marker =
+                  calloutTarget &&
+                  (focusPointRefs.current.get(`${calloutTarget.lineIndex}-${calloutTarget.pointIndex}`) ??
+                    chartElement?.querySelector<SVGCircleElement>(
+                      `[id="${_staticHighlightCircle}_${calloutTarget.lineIndex}"]`,
+                    ));
+                return (marker ?? refSelected).getBoundingClientRect();
+              },
+            }
+          : null,
       },
       isCalloutForStack: props.isCalloutForStack,
       culture: props.culture,

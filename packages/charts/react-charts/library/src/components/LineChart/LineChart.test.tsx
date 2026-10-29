@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import type { LineChartPoints, LineChartProps } from './index';
@@ -1860,4 +1860,90 @@ describe('LineChart - source coordinates after legend filtering', () => {
     expect(container.ownerDocument.activeElement).toBe(marker);
     expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
   });
+});
+
+describe('LineChart - callout positioning across marker replacements', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([
+    { curved: false, policy: 'preserve' as const },
+    { curved: true, policy: 'preserve' as const },
+    { curved: false, policy: 'none' as const },
+    { curved: true, policy: 'none' as const },
+  ])(
+    'uses the current marker while its input keeps focus (curved: $curved, policy: $policy)',
+    async ({ curved, policy }) => {
+      const layoutRect = window.Element.prototype.getBoundingClientRect();
+      const markerRect = {
+        ...layoutRect,
+        x: 400,
+        y: 450,
+        left: 400,
+        top: 450,
+        right: 410,
+        bottom: 460,
+        width: 10,
+        height: 10,
+      };
+      const positionReads: Element[] = [];
+      window.Element.prototype.getBoundingClientRect = jest.fn(function (this: Element) {
+        if (this.getAttribute('aria-label')?.includes('. metaData1,')) {
+          positionReads.push(this);
+          return this.isConnected
+            ? markerRect
+            : { ...markerRect, x: 0, y: 0, left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0 };
+        }
+        return layoutRect;
+      });
+
+      let mountCount = 0;
+      const Content = ({ data }: { data?: CustomizedCalloutData }) => {
+        const [note, setNote] = React.useState('');
+        React.useEffect(() => {
+          mountCount++;
+        }, []);
+        return (
+          <>
+            <input aria-label="Callout note" value={note} onChange={event => setNote(event.target.value)} />
+            <pre data-testid="callout-data">{JSON.stringify(data)}</pre>
+          </>
+        );
+      };
+      const renderContent = (data?: CustomizedCalloutData) => <Content data={data} />;
+      const scene = (isCurved: boolean, y: number) => (
+        <LineChart
+          data={{
+            ...basicChartPoints,
+            lineChartData: basicPoints.map((line, index) => ({
+              ...line,
+              lineOptions: isCurved ? { curve: 'linear', mode: 'lines+markers' } : undefined,
+              data: line.data.map((point, pointIndex) => (index === 0 && pointIndex === 0 ? { ...point, y } : point)),
+            })),
+          }}
+          focusRestorePolicy={policy}
+          onRenderCalloutPerStack={renderContent}
+        />
+      );
+      const { container, rerender } = render(scene(curved, 50));
+      const oldMarker = screen.getByLabelText('20. metaData1, 50.');
+      act(() => oldMarker.focus());
+      const input = screen.getByRole('textbox', { name: 'Callout note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep my note' } });
+
+      positionReads.length = 0;
+      rerender(scene(!curved, 55));
+
+      const marker = screen.getByLabelText('20. metaData1, 55.');
+      expect(marker.tagName.toLowerCase()).toBe(curved ? 'path' : 'circle');
+      expect(oldMarker.isConnected).toBe(false);
+      await waitFor(() => expect(positionReads[positionReads.length - 1]).toBe(marker));
+      expect(screen.getByTestId('callout-data')).toHaveTextContent('"y":55');
+      expect(screen.getByRole('textbox', { name: 'Callout note' })).toBe(input);
+      expect(input).toHaveValue('Keep my note');
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(mountCount).toBe(1);
+    },
+  );
 });
