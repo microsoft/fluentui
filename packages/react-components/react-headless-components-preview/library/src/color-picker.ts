@@ -6,6 +6,7 @@ export type {
   ColorAreaSlots,
   ColorAreaState,
   ColorPickerContextValue,
+  ColorPickerContextValues,
   ColorPickerProps,
   ColorPickerSlots,
   ColorPickerState,

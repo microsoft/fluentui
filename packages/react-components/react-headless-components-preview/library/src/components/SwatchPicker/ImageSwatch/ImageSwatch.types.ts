@@ -8,5 +8,9 @@ export type ImageSwatchState = ImageSwatchBaseState & {
      * Whether ImageSwatch is selected
      */
     'data-selected'?: string;
+    /**
+     * Whether ImageSwatch is disabled
+     */
+    'data-disabled'?: string;
   };
 };

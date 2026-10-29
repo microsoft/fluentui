@@ -7,35 +7,43 @@ import { runLint } from '../commands/lint';
 import { DEFAULT_EXCLUDE } from '../commands/shared';
 import { toAnalysisDocument, toLintDocument } from '../serializer';
 import type { AnalysisDocument, FunctionAnalysis, LintDocument } from '../types';
+import { captureJson } from './helpers/output';
 
 function allFindings(doc: AnalysisDocument) {
   return doc.findings;
 }
 
-/** Run a command with stdout captured, returning the parsed document plus anything on stderr. */
-async function captureJson<T>(run: () => Promise<number>): Promise<{ doc: T; code: number; stderr: string[] }> {
-  const chunks: string[] = [];
-  const stderr: string[] = [];
-  const originalWrite = process.stdout.write;
-  const originalError = console.error;
+describe('JSON output capture', () => {
+  it('isolates diagnostics when the test console routes errors through stdout', async () => {
+    const reporter = jest.spyOn(console, 'error').mockImplementation((...args: unknown[]) => {
+      process.stdout.write(`Jest diagnostic: ${args.join(' ')}\n`);
+    });
+    try {
+      const result = await captureJson<{ ok: boolean }>(async () => {
+        console.error('compiler diagnostic');
+        process.stdout.write('{"ok":true}\n');
+        return 0;
+      });
+      expect(result).toEqual({ code: 0, doc: { ok: true }, stderr: ['compiler diagnostic'] });
+      expect(reporter).not.toHaveBeenCalled();
+      expect(console.error).toBe(reporter);
+    } finally {
+      reporter.mockRestore();
+    }
+  });
 
-  process.stdout.write = ((chunk: string) => {
-    chunks.push(String(chunk));
-    return true;
-  }) as typeof process.stdout.write;
-  console.error = (...args: unknown[]) => {
-    stderr.push(args.map(String).join(' '));
-  };
-
-  try {
-    const code = await run();
-    const stdout = chunks.join('');
-    return { doc: JSON.parse(stdout) as T, code, stderr };
-  } finally {
-    process.stdout.write = originalWrite;
-    console.error = originalError;
-  }
-}
+  it('restores stdout and the diagnostic sink when the command rejects', async () => {
+    const originalWrite = process.stdout.write;
+    const originalError = console.error;
+    await expect(
+      captureJson(async () => {
+        throw new Error('command failed');
+      }),
+    ).rejects.toThrow('command failed');
+    expect(process.stdout.write).toBe(originalWrite);
+    expect(console.error).toBe(originalError);
+  });
+});
 
 describe('--format json', () => {
   let tempDir: string;

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compiler-analyzer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI for assessing React Compiler coverage, directives, and migration risks in TypeScript source files.",
   "type": "commonjs",
   "main": "./dist/index.js",
@@ -26,7 +26,6 @@
   "bin": "./bin/react-compiler-analyzer.js",
   "dependencies": {
     "@babel/core": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
     "ajv": "^8.13.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "enquirer": "^2.3.6",

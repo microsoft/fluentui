@@ -14,15 +14,24 @@ scan paths -> discover TypeScript files -> attribute package -> compile files
                                       summaries and formatted reports
 ```
 
-The analyzer uses Babel with the TypeScript preset and `babel-plugin-react-compiler`, configured
+The analyzer uses Babel with TypeScript parser syntax and `babel-plugin-react-compiler`, configured
 with `noEmit: true` and a custom logger. Workers process files concurrently and consume compact
 results as they finish rather than retaining every source file or AST.
 
-The TypeScript preset erases `declare` class fields, so classes with type-only declarations do not
-prevent analysis of function components or hooks in the same module. This does not add React
-Compiler support for class components. JSX parsing is enabled only for `.tsx`; `.ts` files retain
-support for angle-bracket type assertions. Compilation and wrapper resolution share one Babel
-configuration factory for the per-file TypeScript preset and additional parser plugins.
+The analyzer does not erase or lower TypeScript. React Compiler consumes TypeScript-bearing ASTs;
+its compilation runs from `Program.enter`. Removing the unnecessary TypeScript transform prevents
+its namespace and CommonJS-emission limitations from failing otherwise parseable modules.
+`noEmit: true` and Babel's `code: false` alone would not disable those transform visitors.
+Ambient fields remain parsed without adding React Compiler support for class components.
+JSX is enabled by default only for `.tsx`; `.ts` files retain angle-bracket assertions.
+Compilation, directive probes, and wrapper resolution share one parser configuration factory.
+TypeScript auto-accessors are supported; decorators still require explicit parser plugins.
+
+This is Babel analysis, not native Rust/OXC/SWC compiler execution. Valid syntax need not be
+accepted by React Compiler, and Babel outcomes do not prove native candidate, cache, or export
+parity. Verbose human reports identify the installed compiler versions; JSON has no provenance.
+Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
+analysis failure. Actual compiler failures remain errors.
 
 Directories apply exclusion globs; explicit files bypass them. Results are deduplicated by absolute
 path and attributed to the nearest package where possible. Files without an attributable package
@@ -51,6 +60,21 @@ To decide whether `'use no memo'` is active or redundant, directive lint needs t
 compiler would do without the opt-out. It runs a second probe that neutralizes the directive in
 place while preserving parser settings, line/column locations, and source offsets.
 
+`lint --revalidate-justified` explicitly rechecks justified opt-ins and opt-outs, neutralizing
+one directive per probe while retaining all others. Accepted outcomes with and without the
+directive determine whether it affects acceptance in the selected Babel mode. Probe failures
+remain broken results, not evidence of redundancy. File-level directives are preserved with
+an explicit limitation. Revalidated rows carry `justified: true` and `revalidated: true`.
+Justified source is protected inside the fixer as well as the CLI. Redundant, broken, and
+conflicting revalidated directives fail lint even alongside `--fix`.
+
+Revalidation can add one whole-file compilation per justified function directive, performed
+sequentially within that file. This is additional work beyond the initial pass and ordinary opt-out probes, so files
+with many justified directives can take longer. File-level and conflicting directives are not probed.
+If the initial pass has unattributed compiler errors, lint reports the file as not analyzed before
+evaluating either ordinary or justified directives. New unattributed errors in a probe remain failed
+revalidation evidence rather than being ignored.
+
 Coverage analysis uses the selected discovery mode. Directive health uses the mode assumed for the
 build. The same function can therefore be relevant to an infer-mode assessment but redundant as an
 opt-out in an annotation-mode build.
@@ -58,6 +82,12 @@ opt-out in an annotation-mode build.
 Fixing and annotating are separate operations. `lint --fix` edits directive health issues;
 `analyze --annotate` writes opt-ins or risk-driven opt-outs for accepted functions. Both operate on
 explicit requests rather than persistent configuration.
+
+`analyze --annotate <mode> --dry-run` builds and validates the same edit plan but never invokes
+the writer. It lists proposed targets in human output. JSON keeps actual write counters at zero
+and adds only `dryRun: true` and `planned` counters; normal output shapes are unchanged.
+Planned insertion targets are intentionally omitted from JSON to keep the contract compact.
+Use human output to inspect target locations, rendered relative to the workspace.
 
 ## Memo-cache statistics
 
