@@ -22,6 +22,8 @@ export const Badge: ForwardRefComponent<BadgeProps>;
 export { BadgeProps }
 
 export { BadgeSlots }
+export { BadgeSlots as CounterBadgeSlots }
+export { BadgeSlots as PresenceBadgeSlots }
 
 // @public
 export type BadgeState = BadgeBaseState & {

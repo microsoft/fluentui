@@ -16,7 +16,7 @@ export type { ToastFooterProps, ToastFooterSlots, ToastFooterState } from './Toa
 
 // ─── Toaster DX (state-machine-driven) ───────────────────────────────────────
 export { Toaster, renderToaster, useToaster } from './Toaster';
-export type { ToasterProps, ToasterState } from './Toaster';
+export type { ToasterProps, ToasterSlots, ToasterState } from './Toaster';
 
 export {
   ToastContainer,
@@ -29,6 +29,7 @@ export type {
   ToastContainerSlots,
   ToastContainerState,
   ToastContainerContextValue,
+  ToastContainerContextValues,
 } from './ToastContainer';
 
 // ─── Re-exported from @fluentui/react-toast for import convenience ────────────

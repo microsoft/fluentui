@@ -91,7 +91,13 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<
     ];
   }, [onDismissCoachmark, isCoachmarkVisible]);
 
-  return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
+  return (
+    <CommandBar
+      overflowButtonProps={overflowButtonProps}
+      items={items}
+      ariaLabel="CommandBar example with individually customized buttons"
+    />
+  );
 };
 
 export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent = () => {
