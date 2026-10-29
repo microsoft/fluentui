@@ -9,7 +9,7 @@ import {
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { usePositioning, resolvePositioningShorthand } from '../../hooks';
-import type { PopoverProps, PopoverState, PopoverContextValue, OpenPopoverEvents } from './Popover.types';
+import type { PopoverProps, PopoverState, PopoverContextValues, OpenPopoverEvents } from './Popover.types';
 
 type ToggleEvent = Event & { newState?: 'open' | 'closed' };
 
@@ -34,7 +34,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnContext = false,
     mouseLeaveDelay = 500,
     withArrow = false,
-    trapFocus = false,
+    inertTrapFocus = false,
   } = props;
 
   const [open, setOpenState] = useControllableState({
@@ -161,7 +161,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       }
     };
 
-    if (trapFocus) {
+    if (inertTrapFocus) {
       if (!isDialogElement(surface)) {
         return;
       }
@@ -204,7 +204,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
         setShouldRenderSurface(true);
       }
       focusWasInsideOnNativeClose.current = null;
-      if (trapFocus) {
+      if (inertTrapFocus) {
         if (isDialogElement(surface) && !surface.open) {
           surface.showModal();
         }
@@ -219,7 +219,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       }
       return;
     }
-    if (trapFocus) {
+    if (inertTrapFocus) {
       if (isDialogElement(surface) && surface.open) {
         focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
         surface.close();
@@ -238,7 +238,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
       focusWasInsideOnNativeClose.current = surface.contains(getActiveElement(surface));
       finishSurfaceClose();
     }
-  }, [open, trapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
+  }, [open, inertTrapFocus, shouldRenderSurface, props.children, contentRef, finishSurfaceClose]);
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -276,7 +276,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    inertTrapFocus,
     onOpenChange: props.onOpenChange,
     contextTarget,
     setContextTarget,
@@ -286,7 +286,7 @@ export const usePopover = (props: PopoverProps): PopoverState => {
   };
 };
 
-export const usePopoverContextValues = (state: PopoverState): { popover: PopoverContextValue } => {
+export const usePopoverContextValues = (state: PopoverState): PopoverContextValues => {
   const {
     open,
     setOpen,
@@ -297,7 +297,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
     openOnHover,
     openOnContext,
     withArrow,
-    trapFocus,
+    inertTrapFocus,
     positioning,
     surfaceId,
   } = state;
@@ -313,7 +313,7 @@ export const usePopoverContextValues = (state: PopoverState): { popover: Popover
       openOnHover,
       openOnContext,
       withArrow,
-      trapFocus,
+      inertTrapFocus,
       positioning: {
         targetRef: positioning.targetRef,
         containerRef: positioning.containerRef,

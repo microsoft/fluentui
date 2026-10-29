@@ -96,7 +96,7 @@ export class Nav extends React.Component<IDocsiteNavProps, INavState> {
     }
 
     const links = (
-      <nav className={styles.nav} aria-label={navigationLabel}>
+      <nav className={styles.nav} aria-label={navigationLabel || searchablePageTitle || 'Pages'}>
         {sortState === 'alphabetized' && searchablePageTitle
           ? this._renderSortedLinks(pages)
           : this._renderLinkList(pages, false)}
