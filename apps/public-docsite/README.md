@@ -20,3 +20,25 @@ yarn nx run public-docsite:start
 `yarn nx run public-docsite:start` will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 Run `yarn nx run public-docsite:e2e` to build the docsite and test responsive navigation with Playwright.
+
+## Code quality
+
+Run these commands from the repository root:
+
+```sh
+yarn nx run public-docsite:lint
+yarn nx run public-docsite:format
+yarn nx run public-docsite:format:check
+```
+
+Lint builds the docsite through `prebundle` first so import checks do not depend on task scheduling.
+Formatting commands are package scripts; CI also checks formatting with the workspace-wide `nx format:check`.
+The legacy `code-style` command runs Just's formatter and lint task, not the package's ESLint command above.
+
+Import the app's own JSON through relative source paths, not `@fluentui/public-docsite/lib/*` or other generated output.
+`yarn nx run public-docsite:test:lint` checks that the original typed palette requires and ordinary self-imports are
+rejected even without generated files. The public-docsite lint regression workflow runs these checks and application
+lint both without app output and after `prebundle`, bypassing Nx cache.
+
+When local lint fails but CI passes, resolve the discrepancy before merging. In particular, validate lint-suppression
+removals against both clean and built app output.

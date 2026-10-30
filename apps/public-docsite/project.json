@@ -13,7 +13,12 @@
     "test": {
       "dependsOn": ["^build"]
     },
-    "format": {},
+    "test:lint": {
+      "dependsOn": [{ "target": "build", "projects": ["eslint-plugin-react-components"] }]
+    },
+    "lint": {
+      "dependsOn": ["prebundle"]
+    },
     "type-check": {
       "dependsOn": ["prebundle"]
     },
