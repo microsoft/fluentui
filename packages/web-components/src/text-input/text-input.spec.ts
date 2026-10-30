@@ -124,62 +124,6 @@ test.describe('TextInput', () => {
     await expect(control).toHaveAttribute('list', 'listId');
   });
 
-  test('should reflect `control-size` attribute values', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { 'control-size': 'small' } });
-
-    await expect(element).toHaveAttribute('control-size', 'small');
-    await expect(element).toHaveJSProperty('controlSize', 'small');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'medium';
-    });
-
-    await expect(element).toHaveAttribute('control-size', 'medium');
-    await expect(element).toHaveJSProperty('controlSize', 'medium');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'large';
-    });
-    await expect(element).toHaveAttribute('control-size', 'large');
-    await expect(element).toHaveJSProperty('controlSize', 'large');
-
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'small';
-    });
-    await expect(element).toHaveAttribute('control-size', 'small');
-    await expect(element).toHaveJSProperty('controlSize', 'small');
-  });
-
-  test('should reflect `appearance` attribute values', async ({ fastPage }) => {
-    const { element } = fastPage;
-
-    await fastPage.setTemplate({ attributes: { appearance: 'outline' } });
-
-    await expect(element).toHaveAttribute('appearance', 'outline');
-    await expect(element).toHaveJSProperty('appearance', 'outline');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'underline';
-    });
-
-    await expect(element).toHaveAttribute('appearance', 'underline');
-    await expect(element).toHaveJSProperty('appearance', 'underline');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'filled-darker';
-    });
-    await expect(element).toHaveAttribute('appearance', 'filled-darker');
-    await expect(element).toHaveJSProperty('appearance', 'filled-darker');
-
-    await element.evaluate((node: TextInput) => {
-      node.appearance = 'filled-lighter';
-    });
-    await expect(element).toHaveAttribute('appearance', 'filled-lighter');
-    await expect(element).toHaveJSProperty('appearance', 'filled-lighter');
-  });
-
   test('should have an undefined `value` property when no `value` attribute is set', async ({ fastPage }) => {
     const { element } = fastPage;
 

@@ -121,7 +121,7 @@ export const SmallSize: Story = {
 
 export const LargeSize: Story = {
   args: {
-    size: 'small',
+    size: 'large',
   },
 };
 

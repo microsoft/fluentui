@@ -1,9 +1,8 @@
-import { attr } from '@microsoft/fast-element';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
 import { StartEnd, type StartEndOptions } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { BaseAccordionItem } from './accordion-item.base.js';
-import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
+import type { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
  * Accordion Item configuration options
@@ -21,39 +20,13 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
  *
  * @tag fluent-accordion-item
  *
+ * @presentational {AccordionItemSize | undefined} size - Defines accordion header font size.
+ * @presentational {AccordionItemMarkerPosition | undefined} marker-position - Sets expand and collapsed icon position.
+ * @presentational {boolean} block - Sets the width of the focus state.
+ *
  * @public
  */
-export class AccordionItem extends BaseAccordionItem {
-  /**
-   * Defines accordion header font size.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   */
-  @attr
-  public size?: AccordionItemSize;
-
-  /**
-   * Sets expand and collapsed icon position.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: marker-position
-   */
-  @attr({ attribute: 'marker-position' })
-  public markerPosition?: AccordionItemMarkerPosition;
-
-  /**
-   * Sets the width of the focus state.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: block
-   */
-  @attr({ mode: 'boolean' })
-  public block: boolean = false;
-}
+export class AccordionItem extends BaseAccordionItem {}
 
 /**
  * Mark internal because exporting class and interface of the same name
