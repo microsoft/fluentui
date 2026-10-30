@@ -693,6 +693,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     this.elementInternals.ariaValueNow = this.value;
+    this.setFormValue(this.value);
   }
 
   /**

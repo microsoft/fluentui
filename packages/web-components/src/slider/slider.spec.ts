@@ -478,6 +478,72 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
   });
 
+  test.describe('FormData', () => {
+    for (const { label, attribute, expected, afterReset } of [
+      { label: 'attribute', attribute: 'value="7"', expected: '7', afterReset: '7' },
+      { label: 'zero', attribute: 'value="0"', expected: '0', afterReset: '0' },
+      { label: 'midpoint', attribute: '', expected: '5', afterReset: '5' },
+      { label: 'out-of-range', attribute: 'value="20"', expected: '5', afterReset: '10' },
+    ]) {
+      test(`should submit the initial ${label} value before interaction and after reset`, async ({
+        fastPage,
+        page,
+      }) => {
+        const { element } = fastPage;
+        const form = page.locator('form');
+
+        await fastPage.setTemplate(/* html */ `
+          <form>
+            <${tagName} name="level" min="0" max="10" ${attribute}></${tagName}>
+          </form>
+        `);
+
+        const getFormValue = () => form.evaluate(node => new FormData(node as HTMLFormElement).get('level'));
+        await expect(element).toHaveJSProperty('value', expected);
+        await expect.poll(getFormValue).toBe(expected);
+
+        await element.evaluate((node: Slider) => (node.value = '9'));
+        await expect.poll(getFormValue).toBe('9');
+        await form.evaluate(node => (node as HTMLFormElement).reset());
+        await expect.poll(getFormValue).toBe(afterReset);
+      });
+    }
+
+    test('should submit pre-connection property changes without extra change events on reconnection', async ({
+      fastPage,
+      page,
+    }) => {
+      const { element } = fastPage;
+      await fastPage.setTemplate('');
+      await page.evaluate(tagName => {
+        const form = document.createElement('form');
+        const slider = document.createElement(tagName) as Slider;
+        slider.setAttribute('name', 'level');
+        slider.value = '3';
+        slider.dataset.changes = '0';
+        slider.addEventListener('change', () => {
+          slider.dataset.changes = String(Number(slider.dataset.changes) + 1);
+        });
+        form.appendChild(slider);
+        document.body.appendChild(form);
+      }, tagName);
+
+      const getFormValue = () => element.evaluate(node => new FormData(node.closest('form')!).get('level'));
+      await expect.poll(getFormValue).toBe('3');
+      await expect(element).toHaveAttribute('data-changes', '0');
+
+      await element.evaluate((node: Slider) => {
+        const form = node.closest('form')!;
+        node.remove();
+        node.value = '6';
+        form.appendChild(node);
+      });
+      await expect.poll(getFormValue).toBe('6');
+      await expect(element).toHaveJSProperty('value', '6');
+      await expect(element).toHaveAttribute('data-changes', '0');
+    });
+  });
+
   test('should update the `stepMultiplier` when the `step` attribute has been updated', async ({ fastPage, page }) => {
     const { element } = fastPage;
 
