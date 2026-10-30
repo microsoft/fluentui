@@ -21,5 +21,5 @@ const PositioningConfigurationContext = React.createContext<PositioningConfigura
 export const PositioningConfigurationProvider = PositioningConfigurationContext.Provider;
 
 export const usePositioningConfiguration = (): PositioningConfigurationFn => {
-  return React.useContext(PositioningConfigurationContext) ?? DEFAULT_CONFIGURATION;
+  return React.useContext(PositioningConfigurationContext) || DEFAULT_CONFIGURATION;
 };
