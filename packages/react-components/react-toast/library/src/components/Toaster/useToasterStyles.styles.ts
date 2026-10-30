@@ -15,6 +15,8 @@ export const toasterClassNames: SlotClassNames<ToasterSlots> = {
 const useRootBaseClassName = makeResetStyles({
   position: 'fixed',
   width: '292px',
+  // Keep the default offset on both sides on viewports narrower than the toast, so it cannot run past the edge.
+  maxWidth: 'calc(100vw - 40px)',
   pointerEvents: 'none',
 });
 
