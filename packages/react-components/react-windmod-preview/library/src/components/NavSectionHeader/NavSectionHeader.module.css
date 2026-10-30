@@ -1,0 +1,7 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply my-8 ms-10 font-base text-base-200 leading-16/12 font-semibold;
+  }
+}

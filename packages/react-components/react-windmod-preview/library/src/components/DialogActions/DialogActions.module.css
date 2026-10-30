@@ -1,0 +1,42 @@
+@reference '#theme';
+
+/* Row 3 of the surface grid. Below the breakpoint the actions stretch across their track instead
+   of aligning to an edge, so each position block restates justify-self there — Griffel reaches the
+   same computed value through its atomic bucket order, which single-layer source order cannot
+   reproduce without inverting the blocks. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply row-start-3 row-end-3 flex h-fit gap-8;
+
+    @media screen and (max-width: 480px) {
+      @apply flex-col;
+    }
+  }
+
+  .position-start {
+    @apply col-start-1 col-end-2 justify-self-start;
+
+    @media screen and (max-width: 480px) {
+      @apply col-end-4 row-start-3 row-end-auto justify-self-stretch;
+    }
+  }
+
+  .position-end {
+    @apply col-start-2 col-end-4 justify-self-end;
+
+    @media screen and (max-width: 480px) {
+      @apply col-start-1 row-start-4 row-end-auto justify-self-stretch;
+    }
+  }
+
+  .fluid {
+    @variant position-start {
+      @apply col-end-4;
+    }
+
+    @variant position-end {
+      @apply col-start-1;
+    }
+  }
+}

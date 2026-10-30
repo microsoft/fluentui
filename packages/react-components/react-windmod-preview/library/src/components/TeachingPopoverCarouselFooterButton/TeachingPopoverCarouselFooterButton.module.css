@@ -1,0 +1,59 @@
+@reference '#theme';
+
+/* Layer l2 over windmod Button's l1. Every declaration here wins by layer order, so the two brand
+   classes are authored to the reference's MEASURED rendering rather than to its source: in the
+   reference the same declarations are merged into the Button's own class list and lose the
+   per-property contest to it in several states. The four state blocks below are exhaustive for that
+   reason — a resting declaration alone would also paint in the states the reference hands back to
+   the Button. Both classes are gated on an enabled control, because the reference's disabled bucket
+   claims background, colour and border-colour outright.
+
+   `:hover:active` and `:active:focus-visible` are written as plain selectors rather than through the
+   `hover-active` variant: the variant is the union of the two, and they carry different values here. */
+
+@layer fui.components.l2 {
+  .brand-next {
+    @variant enabled-control {
+      @apply border-transparent-background bg-neutral-foreground-on-brand text-brand-foreground-1;
+
+      @variant hover {
+        @apply border-neutral-stroke-1-hover bg-neutral-foreground-on-brand text-compound-brand-foreground-1-hover;
+      }
+
+      &:active:focus-visible {
+        @apply border-neutral-stroke-1-pressed bg-neutral-background-1-pressed text-neutral-foreground-1-pressed;
+      }
+
+      &:hover:active {
+        @apply border-neutral-stroke-1-pressed bg-neutral-foreground-on-brand text-compound-brand-foreground-1-pressed;
+      }
+    }
+  }
+
+  .brand-previous {
+    @variant enabled-control {
+      @apply border-neutral-foreground-on-brand bg-transparent-background text-neutral-foreground-on-brand;
+
+      @variant hover {
+        @apply border-neutral-foreground-on-brand bg-transparent-background-hover text-neutral-foreground-on-brand;
+      }
+
+      &:active:focus-visible {
+        @apply border-neutral-stroke-1-pressed bg-transparent-background-pressed text-neutral-foreground-1-pressed;
+      }
+
+      /* The reference has no stable answer for this one cell. Two of its atomic rules paint
+         background-color here at equal specificity and survive mergeClasses because their selector
+         keys differ, so document insertion order decides, and the order depends on which component
+         the page rendered first: on a bare probe grid the carousel's own rule is inserted last and
+         paints colorBrandBackgroundPressed; in a real TeachingPopover the Button's outline rule is
+         inserted last and paints colorTransparentBackgroundPressed. This authors the composed
+         arrangement — the only one a consumer of this component can actually render. It is the only
+         cell of the row that differs between the two; border-colour and colour agree in all four
+         states, and brandNext's own border contest is decided by specificity, not order. */
+      &:hover:active {
+        @apply border-neutral-foreground-on-brand bg-transparent-background-pressed text-neutral-foreground-on-brand;
+      }
+    }
+  }
+}

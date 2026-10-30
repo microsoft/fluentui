@@ -1,0 +1,65 @@
+@reference '#theme';
+
+/* The flush margins are Card's, not CardPreview's: Griffel writes them as `> .fui-CardPreview`
+   rules on the Card root. Reaching them through the card's group variants keeps every declaration on
+   the element it paints, at the cost of matching any descendant rather than a direct child.
+   `--fui-card-size` is declared by Card.module.css. */
+
+@layer fui.components.l1 {
+  .root {
+    @apply relative;
+
+    /* The media is consumer children with no slot to carry a class, so the fill is reachable only as
+       an exclusion. Excluding the logo — the one child that IS a slot — keeps the two `size`
+       declarations from meeting, so nothing here depends on block order to settle them. */
+    & > :not(.logo) {
+      @apply block size-full;
+    }
+
+    @variant group-horizontal/fui-card {
+      @apply -my-(--fui-card-size);
+
+      @variant first-of-type {
+        @apply -ms-(--fui-card-size);
+      }
+
+      @variant last-of-type {
+        @apply -me-(--fui-card-size);
+      }
+    }
+
+    @variant group-vertical/fui-card {
+      @apply -mx-(--fui-card-size);
+
+      @variant first-of-type {
+        @apply -mt-(--fui-card-size);
+      }
+
+      /* A preview behind the floating action still sits flush with the card's top edge:
+         the action is the first painted child, so :first-of-type misses the preview. */
+      @variant after-floating-action {
+        @apply -mt-(--fui-card-size);
+      }
+
+      @variant last-of-type {
+        @apply -mb-(--fui-card-size);
+      }
+    }
+
+    @variant forced-colors {
+      @variant group-selected/fui-card {
+        @apply forced-color-adjust-auto;
+      }
+
+      @variant group-interactive/fui-card {
+        @variant group-hover/fui-card, group-active/fui-card {
+          @apply forced-color-adjust-auto;
+        }
+      }
+    }
+  }
+
+  .logo {
+    @apply absolute start-12 bottom-12 size-32;
+  }
+}

@@ -1,0 +1,43 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply font-base text-neutral-foreground-1;
+
+    @variant size-small {
+      @apply text-base-200 leading-16/12;
+    }
+
+    @variant size-medium {
+      @apply text-base-300 leading-20/14;
+    }
+
+    @variant size-large {
+      @apply text-base-400 leading-11/8 font-semibold;
+    }
+
+    @variant disabled {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  .required {
+    @apply ps-horizontal-xs text-palette-red-foreground-3;
+
+    @variant group-disabled/fui-label {
+      @apply text-neutral-foreground-disabled;
+
+      @variant forced-colors {
+        @apply text-[GrayText];
+      }
+    }
+  }
+
+  .semibold {
+    @apply font-semibold;
+  }
+}

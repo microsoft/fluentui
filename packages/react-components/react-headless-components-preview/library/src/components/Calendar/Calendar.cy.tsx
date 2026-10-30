@@ -209,8 +209,8 @@ describe('Calendar', () => {
             picker === 'day'
               ? null
               : picker === 'month'
-              ? { grid: { onKeyDownCapture } }
-              : { yearPicker: { grid: { onKeyDownCapture } } }
+                ? { grid: { onKeyDownCapture } }
+                : { yearPicker: { grid: { onKeyDownCapture } } }
           }
         />,
       );

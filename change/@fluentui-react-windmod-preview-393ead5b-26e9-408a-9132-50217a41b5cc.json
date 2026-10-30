@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat: release the Windmod preview styling package using headless ^0.3.2, with DropdownSlots and tab/navigation context exports, published icon class selectors, expanded NavCategoryItem styling and channel-aware ColorSlider gradients; preserve selected ToggleButton and Toolbar icon contrast in forced colors; add styled List and ListItem with native selection input composition and keyboard navigation; verify inherited ImageSwatch disabled state and Popover surface association; align MenuItem forced-colors hover/open slot contrast and pressed-state precedence with the canonical styles; adopt inertTrapFocus and additional headless composition exports, and verify InfoLabel announcement semantics.",
+  "packageName": "@fluentui/react-windmod-preview",
+  "email": "array.knight+github@gmail.com"
+}

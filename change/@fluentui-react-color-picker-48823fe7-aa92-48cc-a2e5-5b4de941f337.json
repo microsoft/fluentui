@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use nullish coalescing in adjustChannel so a channel whose value is 0 no longer falls through to the hue action",
+  "packageName": "@fluentui/react-color-picker",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

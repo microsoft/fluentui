@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose Button, Link, Avatar and AvatarGroup styling contexts; preserve consumer popover attributes on PopoverSurface, MenuPopover and Listbox; apply Tooltip arrow classes; stabilize MenuSplitGroup context; and reserve the document scrollbar gutter while modal dialogs lock scrolling; normalize source paths in public API conformance checks on Windows.",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add react-tailwind-theme-preview, the Fluent design tokens and themes as a Tailwind v4 CSS layer; add selectable and navigable state variants.",
+  "packageName": "@fluentui/react-tailwind-theme-preview",
+  "email": "array.knight@gmail.com",
+  "dependentChangeType": "patch"
+}

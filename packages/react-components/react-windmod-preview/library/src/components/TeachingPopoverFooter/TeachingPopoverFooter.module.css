@@ -1,0 +1,45 @@
+@reference '#theme';
+
+@layer fui.components.l1 {
+  .root {
+    @apply flex gap-8 pt-12;
+  }
+
+  .horizontal {
+    @apply flex-row justify-end;
+  }
+
+  .vertical {
+    @apply flex-col;
+  }
+}
+
+/* The button classes land on a windmod Button, whose own rules are l1, so they sit at l2 and win
+   by layer order. The layout buckets re-assert the Button's own resting minimum width and radius:
+   Griffel authors them, and a consumer who reshapes the Button must still get them here. */
+
+@layer fui.components.l2 {
+  .button-horizontal {
+    @apply min-w-96 rounded-medium;
+  }
+
+  .button-vertical {
+    @apply w-auto rounded-medium;
+  }
+
+  .brand-primary {
+    @apply bg-neutral-foreground-on-brand text-brand-foreground-1;
+
+    @variant hover {
+      @apply text-compound-brand-foreground-1-hover;
+    }
+
+    @variant hover-active {
+      @apply text-compound-brand-foreground-1-pressed;
+    }
+  }
+
+  .brand-secondary {
+    @apply border-neutral-foreground-on-brand;
+  }
+}
