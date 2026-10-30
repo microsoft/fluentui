@@ -1,19 +1,14 @@
-import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import type { Alignment, Position, PositioningShorthandValue } from '@fluentui/react-positioning';
 import type { LogicalAlignment } from '../types';
-import { ALIGNMENTS, POSITIONS, POSITION_AREA_MAP } from '../constants';
-
-const ALIGN_ALIASES: Record<string, LogicalAlignment> = {
-  top: ALIGNMENTS.start,
-  bottom: ALIGNMENTS.end,
-};
+import { ABOVE, AFTER, BEFORE, BELOW, CENTER, END, START } from '../constants';
+import { resolvePositioningShorthand } from '../resolvePositioningShorthand';
 
 export function normalizeAlign(raw: string): LogicalAlignment {
-  if (raw === ALIGNMENTS.start || raw === ALIGNMENTS.center || raw === ALIGNMENTS.end) {
+  if (raw === START || raw === CENTER || raw === END) {
     return raw;
   }
 
-  return ALIGN_ALIASES[raw] ?? ALIGNMENTS.center;
+  return raw === 'top' ? START : raw === 'bottom' ? END : CENTER;
 }
 
 /**
@@ -25,37 +20,25 @@ export function normalizeAlign(raw: string): LogicalAlignment {
 export function getPlacementString(position: Position, align: Alignment): PositioningShorthandValue {
   const logical = normalizeAlign(align);
 
-  if (logical === ALIGNMENTS.center) {
+  if (logical === CENTER) {
     return position;
   }
 
-  if (position === POSITIONS.before || position === POSITIONS.after) {
-    return `${position}-${logical === ALIGNMENTS.start ? 'top' : 'bottom'}`;
+  if (position === BEFORE || position === AFTER) {
+    return `${position}-${logical === START ? 'top' : 'bottom'}`;
   }
 
   return `${position}-${logical}`;
 }
 
 export function shorthandToPositionArea(shorthand: PositioningShorthandValue): string {
-  const { position = POSITIONS.above, align = ALIGNMENTS.center } = resolvePositioningShorthand(shorthand);
-  return POSITION_AREA_MAP[position][normalizeAlign(align)];
+  const { position = ABOVE, align = CENTER } = resolvePositioningShorthand(shorthand);
+  return getPositionArea(position, normalizeAlign(align));
 }
 
-export function getCoverSelfAlignment(
-  position: Position,
-  align: LogicalAlignment,
-): { alignSelf: string; justifySelf: string } {
-  if (position === POSITIONS.above) {
-    return { alignSelf: ALIGNMENTS.end, justifySelf: align };
-  }
+export function getPositionArea(position: Position, align: LogicalAlignment): string {
+  const block = position === ABOVE || position === BELOW;
+  const area = `${block ? 'block' : 'inline'}-${position === ABOVE || position === BEFORE ? 'start' : 'end'}`;
 
-  if (position === POSITIONS.below) {
-    return { alignSelf: ALIGNMENTS.start, justifySelf: align };
-  }
-
-  if (position === POSITIONS.before) {
-    return { alignSelf: align, justifySelf: ALIGNMENTS.end };
-  }
-
-  return { alignSelf: align, justifySelf: ALIGNMENTS.start };
+  return align === CENTER ? area : `${area} span-${block ? 'inline' : 'block'}-${align === START ? 'end' : 'start'}`;
 }

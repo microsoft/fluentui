@@ -1,46 +1,35 @@
 import type { Position, PositioningProps } from '@fluentui/react-positioning';
-import { POSITIONS } from '../constants';
+import { ABOVE, BELOW } from '../constants';
+
+type ResolvedOffset = [mainAxis: number, crossAxis: number];
 
 export function applyOffset(node: HTMLElement, position: Position, mainAxis: number, crossAxis: number): void {
-  const isBlockMain = position === POSITIONS.above || position === POSITIONS.below;
+  const isBlockMain = position === ABOVE || position === BELOW;
 
-  if (mainAxis) {
-    const main = `${mainAxis}px`;
-    if (isBlockMain) {
-      node.style.marginBlockStart = main;
-      node.style.marginBlockEnd = main;
-    } else {
-      node.style.marginInlineStart = main;
-      node.style.marginInlineEnd = main;
-    }
-  }
+  const setMargin = (axis: 'block' | 'inline', value: number) => {
+    const margin = `${value}px`;
+    node.style.setProperty(`margin-${axis}-start`, margin);
+    node.style.setProperty(`margin-${axis}-end`, margin);
+  };
 
-  if (crossAxis) {
-    const cross = `${crossAxis}px`;
-    if (isBlockMain) {
-      node.style.marginInlineStart = cross;
-      node.style.marginInlineEnd = cross;
-    } else {
-      node.style.marginBlockStart = cross;
-      node.style.marginBlockEnd = cross;
-    }
-  }
+  mainAxis && setMargin(isBlockMain ? 'block' : 'inline', mainAxis);
+  crossAxis && setMargin(isBlockMain ? 'inline' : 'block', crossAxis);
 }
 
 /**
- * Normalises the `offset` prop into explicit `{ mainAxis, crossAxis }`. The
- * function form (`OffsetFunction`) is not supported under CSS anchor
- * positioning — rect information is not available ahead of layout — and
- * resolves to a zero offset.
+ * Normalises the `offset` prop into explicit `[mainAxis, crossAxis]`. The
+ * function form (`OffsetFunction`) can't be expressed with CSS anchor
+ * positioning, it's handled by `@fluentui/react-positioning` and resolves to a
+ * zero offset here.
  */
-export function resolveOffset(offset: PositioningProps['offset']): { mainAxis: number; crossAxis: number } {
+export function resolveOffset(offset: PositioningProps['offset']): ResolvedOffset {
   if (typeof offset === 'number') {
-    return { mainAxis: offset, crossAxis: 0 };
+    return [offset, 0];
   }
 
   if (offset && typeof offset === 'object') {
-    return { mainAxis: offset.mainAxis ?? 0, crossAxis: offset.crossAxis ?? 0 };
+    return [offset.mainAxis ?? 0, offset.crossAxis ?? 0];
   }
 
-  return { mainAxis: 0, crossAxis: 0 };
+  return [0, 0];
 }

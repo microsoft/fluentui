@@ -1,62 +1,63 @@
 'use client';
 
-import { useIsomorphicLayoutEffect, useEventCallback } from '@fluentui/react-utilities';
-import { computePosition, debounce } from './utils';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import type { UsePositioningOptions } from './types';
+import { applyVisibility, debounce, updatePlacementAttribute } from './utils';
+
+type PlacementObserverOptions = Pick<
+  UsePositioningOptions,
+  'coverTarget' | 'disableUpdateOnResize' | 'onPositioningEnd'
+>;
 
 /**
- * Mirrors the placement that the browser actually resolves for an
- * anchored element into its `data-placement` attribute. Useful when CSS
- * `position-try-fallbacks` flips the surface after a layout shift, scroll,
- * or content reflow — consumers can style the surface (arrows, animations)
- * via `[data-placement^="above"]` and friends and stay in sync.
+ * Used with CSS anchor positioning. Mirrors the placement that the browser actually resolves for an anchored element
+ * into its `data-placement` attribute, useful when `position-try-fallbacks` flips the container after a layout shift,
+ * scroll, or content reflow. Also sets the hidden and escaped attributes and calls `onPositioningEnd`.
  *
+ * Pass `null` elements to stop observing.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
   targetEl: HTMLElement | null,
-  targetDocument: Document | undefined,
-  disabled = false,
+  options: PlacementObserverOptions,
 ): () => void {
+  const { coverTarget, disableUpdateOnResize, onPositioningEnd } = options;
+
   const update = useEventCallback(() => {
-    if (!containerEl || !targetEl) {
+    const win = containerEl?.ownerDocument.defaultView;
+
+    if (!containerEl || !targetEl || !win) {
       return;
     }
 
-    const result = computePosition(targetEl, containerEl);
-    if (!result) {
-      return;
-    }
+    // The placement can't be detected when the container covers the target
+    const placement = coverTarget ? null : updatePlacementAttribute(targetEl, containerEl);
+    const rtl = win.getComputedStyle(containerEl).direction === 'rtl';
 
-    if (containerEl.getAttribute('data-placement') !== result.placement) {
-      containerEl.setAttribute('data-placement', result.placement);
-    }
+    applyVisibility(containerEl, targetEl, placement, rtl, onPositioningEnd);
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (disabled || !containerEl || !targetEl) {
-      return;
-    }
+    const win = containerEl?.ownerDocument.defaultView;
 
-    const win = targetDocument?.defaultView;
-    if (!win) {
+    if (!containerEl || !targetEl || !win) {
       return;
     }
 
     const debouncedUpdate = debounce(update);
-
-    const ResizeObserverCtor = win.ResizeObserver;
-    const resizeObserver = ResizeObserverCtor
-      ? new ResizeObserverCtor(entries => {
-          const allLaidOut = entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0);
-          if (allLaidOut) {
-            debouncedUpdate();
-          }
-        })
-      : null;
+    const resizeObserver =
+      disableUpdateOnResize || !win.ResizeObserver
+        ? null
+        : new win.ResizeObserver(entries => {
+            // `display: none` is very likely being used to hide the element, users update it imperatively
+            if (entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0)) {
+              debouncedUpdate();
+            }
+          });
 
     resizeObserver?.observe(containerEl);
     resizeObserver?.observe(targetEl);
-
+    // `scroll` doesn't bubble, capturing it covers every scrollable ancestor
     win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
     win.addEventListener('resize', debouncedUpdate);
 
@@ -67,7 +68,7 @@ export function usePlacementObserver(
       win.removeEventListener('scroll', debouncedUpdate, { capture: true });
       win.removeEventListener('resize', debouncedUpdate);
     };
-  }, [containerEl, targetEl, targetDocument, disabled, update]);
+  }, [containerEl, targetEl, disableUpdateOnResize, update]);
 
   return update;
 }
