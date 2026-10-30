@@ -44,6 +44,16 @@ export const useDOMFocusedElementChange: UseFocusedElementChange = callback => {
     };
     // Capture phase, so that consumers stopping the propagation of focus events do not desync the roving tab index
     targetDocument.addEventListener('focusin', listener, true);
+
+    // Focus may have moved before the listener was attached, e.g. from a parent layout effect
+    let activeElement = targetDocument.activeElement;
+    while (activeElement?.shadowRoot?.activeElement) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
+    if (isHTMLElement(activeElement)) {
+      callbackRef.current(activeElement);
+    }
+
     return () => targetDocument.removeEventListener('focusin', listener, true);
   }, [targetDocument]);
 };

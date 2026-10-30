@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeBase_unstable } from './useTree';
 import { useTreeContextValues_unstable } from './useTreeContextValues';
@@ -136,6 +137,30 @@ describe('useTreeBase_unstable', () => {
       getItem('item 3').focus();
 
       expect(getItem('item 3').tabIndex).toBe(0);
+      expect(getItem('item 1').tabIndex).toBe(-1);
+    });
+
+    it('keeps the roving tab index in sync with focus moved before the tree subscribes to focus changes', () => {
+      const FocusOnMount = () => {
+        const itemRef = React.useRef<HTMLDivElement>(null);
+        useIsomorphicLayoutEffect(() => {
+          itemRef.current?.focus();
+        }, []);
+        return (
+          <BaseTree aria-label="Tree">
+            <TreeItem itemType="leaf" value="1">
+              <BaseTreeItemLayout>item 1</BaseTreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf" value="2" ref={itemRef}>
+              <BaseTreeItemLayout>item 2</BaseTreeItemLayout>
+            </TreeItem>
+          </BaseTree>
+        );
+      };
+      render(<FocusOnMount />);
+
+      expect(document.activeElement).toBe(getItem('item 2'));
+      expect(getItem('item 2').tabIndex).toBe(0);
       expect(getItem('item 1').tabIndex).toBe(-1);
     });
 
