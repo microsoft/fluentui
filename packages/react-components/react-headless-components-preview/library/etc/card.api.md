@@ -4,7 +4,6 @@
 
 ```ts
 
-import type { CardBaseProps } from '@fluentui/react-card';
 import type { CardBaseState } from '@fluentui/react-card';
 import { CardContextValue } from '@fluentui/react-card';
 import { CardFooterBaseProps as CardFooterProps } from '@fluentui/react-card';
@@ -17,9 +16,10 @@ import { CardOnSelectionChangeEvent } from '@fluentui/react-card';
 import { CardPreviewBaseProps as CardPreviewProps } from '@fluentui/react-card';
 import { CardPreviewSlots } from '@fluentui/react-card';
 import { CardPreviewBaseState as CardPreviewState } from '@fluentui/react-card';
+import { CardBaseProps as CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderCard_unstable as renderCard } from '@fluentui/react-card';
 import { renderCardFooter_unstable as renderCardFooter } from '@fluentui/react-card';
 import { renderCardHeader_unstable as renderCardHeader } from '@fluentui/react-card';
@@ -63,8 +63,7 @@ export { CardPreviewSlots }
 
 export { CardPreviewState }
 
-// @public
-export type CardProps = Omit<CardBaseProps, 'focusMode'>;
+export { CardProps }
 
 export { CardSlots }
 

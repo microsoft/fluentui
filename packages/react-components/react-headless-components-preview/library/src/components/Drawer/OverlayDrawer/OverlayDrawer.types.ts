@@ -19,7 +19,7 @@ type OverlayDrawerInternalSlots = OverlayDrawerSlots & {
 
 export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
   Pick<OverlayDrawerBaseProps, 'position'> &
-  Pick<DialogProps, 'open' | 'modalType' | 'onOpenChange' | 'unmountOnClose'>;
+  Pick<DialogProps, 'open' | 'modalType' | 'onOpenChange' | 'unmountOnClose' | 'inertTrapFocus'>;
 
 export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> &
   Required<Pick<OverlayDrawerProps, 'open' | 'position' | 'unmountOnClose' | 'modalType'>> &

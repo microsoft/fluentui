@@ -16,6 +16,7 @@ export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLD
     unmountOnClose = true,
     modalType = 'modal',
     onOpenChange,
+    inertTrapFocus,
     ...rootProps
   } = props;
 
@@ -38,6 +39,7 @@ export const useOverlayDrawer = (props: OverlayDrawerProps, ref: React.Ref<HTMLD
       onOpenChange,
       modalType,
       unmountOnClose,
+      inertTrapFocus,
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps

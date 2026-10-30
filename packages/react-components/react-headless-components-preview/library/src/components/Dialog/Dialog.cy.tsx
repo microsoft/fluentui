@@ -238,13 +238,13 @@ describe('Dialog', () => {
 
       // Focus trap tests apply to modal/alert only — non-modal is intentionally not trapped.
       if (modalType !== 'non-modal') {
-        // TODO: re-enable skipped test after introducing focus trap implementation
-        it.skip('should focus trap by default', () => {
+        it('should focus trap by default', () => {
           mount(<BasicDialog modalType={modalType} />);
           cy.get(dialogTriggerOpenSelector).realClick();
           cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
           cy.get(dialogPrimaryButtonSelector).should('be.focused').realPress('Tab');
-          cy.get(dialogTriggerCloseSelector).should('be.focused');
+          cy.get(dialogTriggerCloseSelector).should('be.focused').realPress(['Shift', 'Tab']);
+          cy.get(dialogPrimaryButtonSelector).should('be.focused');
         });
 
         it.skip('should keep focus trapped when inertTrapFocus=true', () => {

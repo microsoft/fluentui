@@ -76,6 +76,21 @@ describe('focusLastTag', () => {
   });
 });
 
+describe('disabled tags', () => {
+  it('skips a disabled last tag', () => {
+    const enabled = makeButton();
+    const disabled = makeButton();
+    disabled.disabled = true;
+    const focusSpy = jest.spyOn(enabled, 'focus');
+    const container = makeContainer(enabled, disabled);
+
+    focusLastTag(container);
+
+    expect(focusSpy).toHaveBeenCalledTimes(1);
+    expect(isLastFocusableTag(container, enabled)).toBe(true);
+  });
+});
+
 // ---------------------------------------------------------------------------
 // isLastFocusableTag
 // ---------------------------------------------------------------------------

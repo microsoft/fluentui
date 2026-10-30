@@ -352,6 +352,78 @@ describe('Toast (headless)', () => {
     cy.get(TOAST_CONTAINER).eq(1).should('be.focused');
   });
 
+  it('should wrap arrow navigation and move from toast content to the adjacent toast', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToasts = () => {
+        for (const index of [0, 1, 2]) {
+          dispatchToast(
+            <Toast>
+              <ToastTitle>
+                <button id={`toast-button-${index}`}>toast {index}</button>
+              </ToastTitle>
+            </Toast>,
+            { timeout: -1, root: { id: `toast-${index}` } },
+          );
+        }
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToasts}>
+            Make toast
+          </button>
+          <Toaster />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get(TOAST_CONTAINER).should('have.length', 3);
+    cy.get('#toast-2').focus().realPress('ArrowDown');
+    cy.get('#toast-0').should('be.focused').realPress('ArrowUp');
+    cy.get('#toast-2').should('be.focused');
+    cy.get('#toast-button-1').focus().realPress('ArrowUp');
+    cy.get('#toast-0').should('be.focused');
+  });
+
+  it('should move focus into the toast with Tab and keep it there', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>
+              <button id="toast-button-1">first</button>
+              <button id="toast-button-2">second</button>
+            </ToastTitle>
+          </Toast>,
+          { timeout: -1, root: { id: 'toast' } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster />
+          <button id="after">After</button>
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make').click();
+    cy.get('#toast').focus().realPress('Tab');
+    cy.get('#toast-button-1').should('be.focused').realPress('Tab');
+    cy.get('#toast-button-2').should('be.focused').realPress('Tab');
+    cy.get('#toast-button-1').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#toast').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get('#toast-button-2').should('be.focused');
+  });
+
   it('should follow lifecycle', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
