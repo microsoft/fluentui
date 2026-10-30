@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for tag-picker, including composed group and option hooks",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "dmytrokirpa@microsoft.com"
+}

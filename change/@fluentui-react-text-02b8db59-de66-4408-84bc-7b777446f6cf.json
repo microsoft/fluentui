@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Add opt-in layered CSS Modules alternatives for Text and typography presets",
+  "packageName": "@fluentui/react-text",
+  "email": "dmytrokirpa@microsoft.com"
+}

@@ -71,3 +71,11 @@ For information about the components, please refer to the [API documentation](ht
 ## Migration
 
 For migration information, have a look at the [migration guide](./MIGRATION.md).
+
+## Opt-in CSS Modules styles
+
+Card headers and footers have layered CSS Modules alternatives beside their Griffel style hooks.
+Resolve the relevant `.styles.js` imports to `.styles.css.js` (and source `.styles`
+imports to `.styles.css.ts`) only in an explicitly opted-in bundler configuration.
+Keep CSS assets and process the headless icon stylesheet in the `fluentui` layer.
+The default component imports and Griffel implementations are unchanged.

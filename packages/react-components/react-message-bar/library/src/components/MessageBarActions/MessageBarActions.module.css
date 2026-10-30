@@ -1,0 +1,22 @@
+@layer fluentui {
+  .root {
+    grid-area: secondaryActions;
+    display: flex;
+    column-gap: var(--spacingHorizontalM);
+    padding-inline-end: var(--spacingHorizontalM);
+  }
+  .containerAction {
+    grid-area: actions;
+    padding-inline-end: var(--spacingHorizontalM);
+  }
+  .multiline {
+    justify-content: end;
+    margin-top: var(--spacingVerticalMNudge);
+    margin-bottom: var(--spacingVerticalS);
+    margin-inline-end: 0px;
+    padding-inline-end: var(--spacingVerticalM);
+  }
+  .noActions {
+    display: none;
+  }
+}

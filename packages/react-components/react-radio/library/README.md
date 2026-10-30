@@ -44,3 +44,11 @@ Alternatively, run Storybook locally with:
 ### Specification
 
 See [Spec.md](./Spec.md).
+
+## Opt-in CSS Modules styles
+
+CSS Modules alternatives are available for `Radio`, `RadioGroup`. The default exports and component imports continue to use Griffel.
+
+To opt in, configure your bundler to replace each `use<Component>Styles.styles.js` module with its adjacent `use<Component>Styles.styles.css.js` alternative (or `.styles.ts` with `.styles.css.ts` for source builds). Apply the replacement consistently to client and server bundles. The CSS loader must provide a default class-name map and retain the adjacent `.module.css` asset, including CSS from dependencies. All component rules are in `@layer fluentui` and use the theme custom properties supplied by `FluentProvider`.
+
+For composed labels, also select the CSS Modules alternative for `@fluentui/react-label`. Mixing its default unlayered Griffel styles with these layered alternatives can override label typography.

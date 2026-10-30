@@ -1,0 +1,32 @@
+@layer fluentui {
+  .root {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--spacingHorizontalL);
+    margin: 0 calc(-1 * var(--spacingHorizontalS));
+    cursor: col-resize;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: var(--durationNormal);
+    z-index: 1;
+  }
+  .root:focus {
+    opacity: 1;
+    outline-style: none;
+  }
+  .root:hover {
+    opacity: 1;
+  }
+  .root::after {
+    content: ' ';
+    display: block;
+    width: var(--strokeWidthThin);
+    position: absolute;
+    inset-inline-start: 50%;
+    top: 0;
+    bottom: 0;
+    background-color: var(--colorNeutralStroke1);
+  }
+}

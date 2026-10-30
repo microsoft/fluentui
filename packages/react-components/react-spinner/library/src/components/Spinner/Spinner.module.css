@@ -1,0 +1,327 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    gap: var(--spacingHorizontalS);
+    overflow: hidden;
+    min-width: min-content;
+  }
+
+  .above,
+  .below {
+    flex-direction: column;
+  }
+
+  .spinner {
+    position: relative;
+    flex-shrink: 0;
+    mask-image: radial-gradient(
+      closest-side,
+      transparent calc(100% - var(--fui-Spinner--strokeWidth) - var(--strokeWidthThin)),
+      var(--colorNeutralForegroundStaticInverted) calc(100% - var(--fui-Spinner--strokeWidth))
+        calc(100% - var(--strokeWidthThin)),
+      transparent 100%
+    );
+    background-color: var(--colorBrandStroke2Contrast);
+    color: var(--colorBrandStroke1);
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: animation1;
+  }
+
+  .spinner:where(:dir(rtl)) {
+    animation-name: animation1RTL;
+  }
+
+  .spinnerTail::before,
+  .spinnerTail::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: inherit;
+    background-image: conic-gradient(currentcolor 135deg, transparent 135deg);
+  }
+
+  .spinnerTail::before {
+    animation-name: animation3;
+  }
+
+  .spinnerTail:where(:dir(rtl))::before {
+    animation-name: animation3RTL;
+  }
+
+  .spinnerTail::after {
+    animation-name: animation4;
+  }
+
+  .spinnerTail:where(:dir(rtl))::after {
+    animation-name: animation4RTL;
+  }
+
+  .spinnerTail {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    mask-image: conic-gradient(transparent 105deg, var(--colorNeutralForegroundStaticInverted) 105deg);
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: var(--curveEasyEase);
+    animation-name: animation2;
+  }
+
+  .spinnerTail:where(:dir(rtl)) {
+    animation-name: animation2RTL;
+  }
+
+  :where(.inverted) > .spinner {
+    background-color: var(--colorNeutralStrokeAlpha2);
+    color: var(--colorNeutralStrokeOnBrand2);
+  }
+
+  .rtlTail::before,
+  .rtlTail::after {
+    background-image: conic-gradient(transparent 225deg, currentcolor 225deg);
+  }
+
+  .rtlTail {
+    mask-image: conic-gradient(var(--colorNeutralForegroundStaticInverted) 255deg, transparent 255deg);
+  }
+
+  :where(.extra-tiny) > .spinner {
+    height: var(--spacingHorizontalL);
+    width: var(--spacingHorizontalL);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+  }
+
+  :where(.extra-tiny) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.tiny) > .spinner {
+    height: var(--spacingHorizontalXL);
+    width: var(--spacingHorizontalXL);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+  }
+
+  :where(.tiny) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.extra-small) > .spinner {
+    height: var(--spacingHorizontalXXL);
+    width: var(--spacingHorizontalXXL);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+  }
+
+  :where(.extra-small) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.small) > .spinner {
+    height: calc(var(--spacingHorizontalXS) * 7);
+    width: calc(var(--spacingHorizontalXS) * 7);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThick);
+  }
+
+  :where(.small) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.medium) > .spinner {
+    height: var(--spacingHorizontalXXXL);
+    width: var(--spacingHorizontalXXXL);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+  }
+
+  :where(.medium) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :where(.large) > .spinner {
+    height: calc(var(--spacingHorizontalXS) * 9);
+    width: calc(var(--spacingHorizontalXS) * 9);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+  }
+
+  :where(.large) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :where(.extra-large) > .spinner {
+    height: calc(var(--spacingHorizontalXS) * 10);
+    width: calc(var(--spacingHorizontalXS) * 10);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThicker);
+  }
+
+  :where(.extra-large) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :where(.huge) > .spinner {
+    height: calc(var(--spacingHorizontalXS) * 11);
+    width: calc(var(--spacingHorizontalXS) * 11);
+    --fui-Spinner--strokeWidth: var(--strokeWidthThickest);
+  }
+
+  :where(.huge) > .label {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase500);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase500);
+  }
+
+  :where(.inverted) > .label {
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+
+  @media screen and (forced-colors: active) {
+    .spinner {
+      background-color: HighlightText;
+      color: Highlight;
+      forced-color-adjust: none;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation-duration: 1.8s;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .spinnerTail::before,
+    .spinnerTail::after {
+      content: none;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .spinnerTail {
+      animation-iteration-count: 0;
+      background-image: conic-gradient(transparent 120deg, currentcolor 360deg);
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .rtlTail {
+      background-image: conic-gradient(currentcolor 0deg, transparent 240deg);
+    }
+  }
+
+  @keyframes animation1 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes animation1RTL {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes animation2 {
+    0% {
+      transform: rotate(-135deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(225deg);
+    }
+  }
+
+  @keyframes animation2RTL {
+    0% {
+      transform: rotate(135deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-225deg);
+    }
+  }
+
+  @keyframes animation3 {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(105deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes animation3RTL {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-105deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes animation4 {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(225deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes animation4RTL {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-225deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}

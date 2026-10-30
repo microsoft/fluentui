@@ -1,0 +1,126 @@
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+
+@layer fluentui {
+  .root {
+    display: flex;
+    text-transform: none;
+    position: relative;
+    justify-content: start;
+    align-items: flex-start;
+    text-align: start;
+    gap: var(--spacingVerticalL);
+    padding: var(--spacingVerticalMNudge) var(--spacingHorizontalS) var(--spacingVerticalMNudge)
+      var(--spacingHorizontalMNudge);
+    background-color: var(--colorNeutralBackground4);
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground2);
+    text-decoration-line: none;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition-duration: var(--durationFaster);
+    transition-timing-function: var(--curveLinear);
+    transition-property: background;
+    width: 100%;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+  .root:hover {
+    background-color: var(--colorNeutralBackground4Hover);
+  }
+  .root:focus-visible {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    outline-offset: calc(-1 * var(--strokeWidthThick));
+  }
+  .small {
+    padding: var(--spacingVerticalXS) var(--spacingHorizontalS) var(--spacingVerticalXS) var(--spacingHorizontalMNudge);
+  }
+  .contentSelected {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase300);
+  }
+  .indicator::after {
+    position: absolute;
+    animation-duration: var(--durationFaster);
+    animation-fill-mode: both;
+    animation-timing-function: var(--curveLinear);
+    animation-name: indicator;
+    margin-inline-start: calc(-1 * var(--spacingHorizontalL));
+    background-color: var(--colorCompoundBrandForeground1);
+    height: var(--spacingVerticalXL);
+    width: var(--spacingHorizontalXS);
+    border-radius: var(--borderRadiusCircular);
+    content: '';
+  }
+  @media (forced-colors: active) {
+    .indicator::after {
+      outline: solid var(--strokeWidthThick) var(--colorTransparentStroke);
+      outline-offset: calc(-1 * var(--strokeWidthThick));
+    }
+  }
+  .icon {
+    display: grid;
+    grid-template-areas: 'overlay-area';
+    min-height: var(--spacingVerticalXL);
+    min-width: var(--spacingHorizontalXL);
+    align-items: top;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .icon :global(.fui-Icon-filled) {
+    grid-area: overlay-area;
+    color: transparent;
+    display: none;
+  }
+  .icon :global(.fui-Icon-regular) {
+    grid-area: overlay-area;
+    display: inline;
+  }
+  :where(.selected) > .icon :global(.fui-Icon-filled),
+  .icon:where(.selected) :global(.fui-Icon-filled) {
+    animation-duration: var(--durationFaster);
+    animation-fill-mode: both;
+    animation-timing-function: var(--curveLinear);
+    display: inline;
+    animation-name: filledIcon;
+  }
+  :where(.selected) > .icon :global(.fui-Icon-regular),
+  .icon:where(.selected) :global(.fui-Icon-regular) {
+    animation-duration: var(--durationFaster);
+    animation-fill-mode: both;
+    animation-timing-function: var(--curveLinear);
+    animation-name: regularIcon;
+  }
+  @keyframes indicator {
+    from {
+      background: transparent;
+    }
+    to {
+      background: var(--colorCompoundBrandForeground1);
+    }
+  }
+  @keyframes filledIcon {
+    from {
+      opacity: 0;
+      color: transparent;
+    }
+    to {
+      opacity: 1;
+      color: var(--colorNeutralForeground2BrandSelected);
+    }
+  }
+  @keyframes regularIcon {
+    from {
+      opacity: 1;
+      color: var(--colorNeutralForeground2);
+    }
+    to {
+      opacity: 0;
+      color: transparent;
+    }
+  }
+}

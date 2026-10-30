@@ -1,0 +1,9 @@
+@layer fluentui {
+  .root {
+    padding: 0 var(--spacingHorizontalXS) 0 var(--spacingHorizontalMNudge);
+    align-items: unset;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacingVerticalXXS);
+  }
+}

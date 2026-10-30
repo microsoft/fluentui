@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "Add CSS Modules alternative for MenuDivider",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com"
+}

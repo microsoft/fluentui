@@ -1,0 +1,115 @@
+@layer fluentui {
+  .base100 {
+    font-size: var(--fontSizeBase100);
+    line-height: var(--lineHeightBase100);
+  }
+
+  .base200 {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .base300 {
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .base400 {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .base500 {
+    font-size: var(--fontSizeBase500);
+    line-height: var(--lineHeightBase500);
+  }
+
+  .base600 {
+    font-size: var(--fontSizeBase600);
+    line-height: var(--lineHeightBase600);
+  }
+
+  .hero700 {
+    font-size: var(--fontSizeHero700);
+    line-height: var(--lineHeightHero700);
+  }
+
+  .light {
+    font-weight: 200;
+  }
+
+  .semilight {
+    font-weight: 300;
+  }
+
+  .regular {
+    font-weight: 400;
+  }
+
+  .medium {
+    font-weight: 500;
+  }
+
+  .semibold {
+    font-weight: 600;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  .mention {
+    color: var(--colorBrandForegroundLink);
+  }
+
+  .mentionMe {
+    color: var(--colorPalettePumpkinBorderActive);
+    font-weight: 700;
+  }
+
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .error {
+    color: var(--colorPaletteRedForeground3);
+  }
+
+  .important {
+    color: var(--colorPaletteDarkOrangeForeground3);
+    font-weight: 700;
+  }
+
+  .success {
+    color: var(--colorPaletteGreenForeground3);
+  }
+
+  .temporary {
+    font-style: italic;
+  }
+
+  .timestamp {
+    color: var(--colorNeutralForeground3);
+  }
+
+  .nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+  }
+
+  .alignCenter {
+    text-align: center;
+  }
+
+  .alignEnd {
+    text-align: end;
+  }
+
+  .alignJustify {
+    text-align: justify;
+  }
+}

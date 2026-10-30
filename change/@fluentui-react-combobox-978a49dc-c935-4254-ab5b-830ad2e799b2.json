@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for combobox",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com"
+}

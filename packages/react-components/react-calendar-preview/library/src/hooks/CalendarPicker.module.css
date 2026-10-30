@@ -1,0 +1,87 @@
+@layer fluentui {
+  .normalize {
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .root {
+    box-sizing: content-box;
+    overflow: hidden;
+    padding: var(--spacingVerticalM) var(--spacingHorizontalM);
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .heading {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: inherit;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    overflow: visible;
+    padding-block: 0;
+    padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+    text-align: start;
+  }
+
+  .hasHeaderClickCallback {
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+  }
+
+  .navigation {
+    align-items: center;
+    display: flex;
+  }
+
+  .navigationButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    display: block;
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    min-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    min-width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+    }
+  }
+
+  .grid {
+    margin-top: var(--spacingVerticalXS);
+  }
+}

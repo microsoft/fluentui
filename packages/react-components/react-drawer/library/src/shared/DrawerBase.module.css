@@ -1,0 +1,54 @@
+@layer fluentui {
+  .root {
+    overflow: hidden;
+    width: var(--fui-Drawer--size);
+    max-width: 100vw;
+    height: auto;
+    max-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+  }
+
+  .start {
+    border-inline-end: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    inset-inline-start: 0;
+    inset-inline-end: auto;
+  }
+
+  .end {
+    border-inline-start: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+  }
+
+  .bottom {
+    bottom: 0;
+    top: auto;
+  }
+
+  .small {
+    --fui-Drawer--size: 320px;
+  }
+
+  .medium {
+    --fui-Drawer--size: 592px;
+  }
+
+  .large {
+    --fui-Drawer--size: 940px;
+  }
+
+  .full {
+    --fui-Drawer--size: 100vw;
+  }
+
+  .full:where(.bottom),
+  .bottom-full {
+    --fui-Drawer--size: 100%;
+  }
+}

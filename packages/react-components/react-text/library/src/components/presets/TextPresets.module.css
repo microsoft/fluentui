@@ -1,0 +1,85 @@
+@layer fluentui {
+  :is(
+      .body1,
+      .body1Strong,
+      .body1Stronger,
+      .body2,
+      .caption1,
+      .caption1Strong,
+      .caption1Stronger,
+      .caption2,
+      .caption2Strong,
+      .subtitle1,
+      .subtitle2,
+      .subtitle2Stronger,
+      .title1,
+      .title2,
+      .title3,
+      .largeTitle,
+      .display
+    ) {
+    font-family: var(--fontFamilyBase);
+  }
+
+  :is(.body1, .body1Strong, .body1Stronger) {
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :is(.body2, .subtitle2, .subtitle2Stronger) {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :is(.caption1, .caption1Strong, .caption1Stronger) {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :is(.caption2, .caption2Strong) {
+    font-size: var(--fontSizeBase100);
+    line-height: var(--lineHeightBase100);
+  }
+
+  .subtitle1 {
+    font-size: var(--fontSizeBase500);
+    line-height: var(--lineHeightBase500);
+  }
+
+  .title3 {
+    font-size: var(--fontSizeBase600);
+    line-height: var(--lineHeightBase600);
+  }
+
+  .title2 {
+    font-size: var(--fontSizeHero700);
+    line-height: var(--lineHeightHero700);
+  }
+
+  .title1 {
+    font-size: var(--fontSizeHero800);
+    line-height: var(--lineHeightHero800);
+  }
+
+  .largeTitle {
+    font-size: var(--fontSizeHero900);
+    line-height: var(--lineHeightHero900);
+  }
+
+  .display {
+    font-size: var(--fontSizeHero1000);
+    line-height: var(--lineHeightHero1000);
+  }
+
+  :is(.body1, .body2, .caption1, .caption2) {
+    font-weight: var(--fontWeightRegular);
+  }
+
+  :is(.body1Strong, .caption1Strong, .subtitle1, .subtitle2, .title1, .title2, .title3, .largeTitle, .display) {
+    font-weight: var(--fontWeightSemibold);
+  }
+
+  :is(.body1Stronger, .caption1Stronger, .subtitle2Stronger) {
+    font-weight: var(--fontWeightBold);
+  }
+}

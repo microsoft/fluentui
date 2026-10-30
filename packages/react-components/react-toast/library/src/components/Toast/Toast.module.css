@@ -1,0 +1,20 @@
+@layer fluentui {
+  .root {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: var(--spacingVerticalM) var(--spacingHorizontalM);
+    border-radius: var(--borderRadiusMedium);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    box-shadow: var(--shadow8);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+    font-weight: var(--fontWeightSemibold);
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  .inverted {
+    color: var(--colorNeutralForegroundInverted2);
+    background-color: var(--colorNeutralBackgroundInverted);
+  }
+}

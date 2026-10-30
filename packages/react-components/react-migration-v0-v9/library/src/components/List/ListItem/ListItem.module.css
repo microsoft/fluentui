@@ -1,0 +1,40 @@
+@layer fluentui {
+  .root {
+    padding: 0 10px;
+    margin: 0;
+    text-indent: 0;
+    list-style-type: none;
+  }
+
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  .clickable:hover {
+    background-color: var(--colorNeutralBackground1Hover);
+  }
+
+  .selected {
+    background-color: var(--colorNeutralBackground1Selected);
+  }
+
+  .contentWrapper {
+    font-size: var(--fontSizeBase200);
+  }
+
+  /* The content should go all the way to the end if the content media is not present */
+  .contentWrapperWithoutMedia {
+    grid-column-end: 4;
+  }
+
+  .truncate {
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+  }
+}

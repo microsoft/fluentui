@@ -1,0 +1,31 @@
+@layer fluentui {
+  .root {
+    position: relative;
+    padding: 0 var(--spacingHorizontalS);
+  }
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+  .table {
+    display: table-cell;
+    vertical-align: middle;
+    height: var(--fui-TableCell--height);
+  }
+  .flex {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    flex: 1 1 0px;
+    min-height: var(--fui-TableCell--height);
+  }
+  .medium {
+    --fui-TableCell--height: calc(var(--spacingVerticalXXXL) + var(--spacingVerticalM));
+  }
+  .small {
+    --fui-TableCell--height: calc(var(--spacingVerticalXXXL) + var(--spacingVerticalXXS));
+  }
+  .extra-small {
+    --fui-TableCell--height: var(--spacingVerticalXXL);
+  }
+}

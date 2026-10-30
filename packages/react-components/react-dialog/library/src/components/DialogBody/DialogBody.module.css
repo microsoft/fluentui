@@ -1,0 +1,19 @@
+@layer fluentui {
+  .root {
+    overflow: unset;
+    gap: var(--spacingHorizontalS);
+    display: grid;
+    max-height: calc(100vh - 2 * var(--spacingHorizontalXXL));
+    max-height: calc(100dvh - 2 * var(--spacingHorizontalXXL));
+    box-sizing: border-box;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr auto;
+    @media screen and (max-width: 480px) {
+      max-width: 100vw;
+      grid-template-rows: auto 1fr auto;
+    }
+    @media screen and (max-height: 359px) {
+      max-height: unset;
+    }
+  }
+}

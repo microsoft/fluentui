@@ -1,0 +1,315 @@
+@layer fluentui {
+  .root {
+    position: relative;
+    display: inline-grid;
+    touch-action: none;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .horizontal:focus {
+    outline-style: none;
+  }
+
+  .horizontal:focus-visible {
+    outline-style: none;
+  }
+
+  .horizontal[data-fui-focus-within]:focus-within::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    top: calc(0px - var(--strokeWidthThick) - calc(var(--strokeWidthThick) * -1));
+    inset-inline-end: calc(0px - var(--strokeWidthThick) - calc(var(--spacingHorizontalXS) * -1));
+    bottom: calc(0px - var(--strokeWidthThick) - calc(var(--strokeWidthThick) * -1));
+    inset-inline-start: calc(0px - var(--strokeWidthThick) - calc(var(--spacingHorizontalXS) * -1));
+  }
+
+  .horizontal[data-fui-focus-within]:focus-within {
+    border-top-color: transparent;
+    border-inline-end-color: transparent;
+    border-bottom-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  .vertical:focus {
+    outline-style: none;
+  }
+
+  .vertical:focus-visible {
+    outline-style: none;
+  }
+
+  .vertical[data-fui-focus-within]:focus-within::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    top: calc(0px - var(--strokeWidthThick) - calc(var(--strokeWidthThick) * -1));
+    inset-inline-end: calc(0px - var(--strokeWidthThick) - var(--spacingHorizontalXS));
+    bottom: calc(0px - var(--strokeWidthThick) - calc(var(--strokeWidthThick) * -1));
+    inset-inline-start: calc(0px - var(--strokeWidthThick) - var(--spacingHorizontalXS));
+  }
+
+  .vertical[data-fui-focus-within]:focus-within {
+    border-top-color: transparent;
+    border-inline-end-color: transparent;
+    border-bottom-color: transparent;
+    border-inline-start-color: transparent;
+  }
+
+  .small {
+    --fui-Slider__thumb--size: var(--spacingHorizontalL);
+    --fui-Slider__inner-thumb--radius: calc(var(--spacingHorizontalXS) * 1.25);
+    --fui-Slider__rail--size: var(--strokeWidthThick);
+    min-height: var(--spacingHorizontalXXL);
+  }
+
+  .medium {
+    --fui-Slider__thumb--size: var(--spacingHorizontalXL);
+    --fui-Slider__inner-thumb--radius: var(--spacingHorizontalSNudge);
+    --fui-Slider__rail--size: var(--spacingHorizontalXS);
+    min-height: var(--spacingHorizontalXXXL);
+  }
+
+  .horizontal {
+    min-width: calc(var(--spacingHorizontalXS) * 30);
+    grid-template-rows: 1fr var(--fui-Slider__thumb--size) 1fr;
+    grid-template-columns: 1fr calc(100% - var(--fui-Slider__thumb--size)) 1fr;
+  }
+
+  .vertical {
+    min-height: calc(var(--spacingHorizontalXS) * 30);
+    grid-template-rows: 1fr calc(100% - var(--fui-Slider__thumb--size)) 1fr;
+    grid-template-columns: 1fr var(--fui-Slider__thumb--size) 1fr;
+  }
+
+  .enabled:hover {
+    --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundHover);
+    --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundHover);
+  }
+
+  .enabled:active {
+    --fui-Slider__thumb--color: var(--colorCompoundBrandBackgroundPressed);
+    --fui-Slider__progress--color: var(--colorCompoundBrandBackgroundPressed);
+  }
+
+  .enabled {
+    --fui-Slider__rail--color: var(--colorNeutralStrokeAccessible);
+    --fui-Slider__progress--color: var(--colorCompoundBrandBackground);
+    --fui-Slider__thumb--color: var(--colorCompoundBrandBackground);
+  }
+
+  .disabled {
+    --fui-Slider__thumb--color: var(--colorNeutralForegroundDisabled);
+    --fui-Slider__rail--color: var(--colorNeutralBackgroundDisabled);
+    --fui-Slider__progress--color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .rail::before {
+    content: '';
+    position: absolute;
+    background-image: repeating-linear-gradient(
+      var(--fui-Slider--direction),
+      transparent 0%,
+      transparent calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+      var(--colorNeutralBackground1) calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+      var(--colorNeutralBackground1) var(--fui-Slider--steps-percent)
+    );
+  }
+
+  .rail {
+    border-radius: var(--borderRadiusXLarge);
+    pointer-events: none;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: relative;
+    forced-color-adjust: none;
+    background-image: linear-gradient(
+      var(--fui-Slider--direction),
+      var(--fui-Slider__progress--color) 0%,
+      var(--fui-Slider__progress--color) var(--fui-Slider--progress),
+      var(--fui-Slider__rail--color) var(--fui-Slider--progress)
+    );
+    outline-width: var(--strokeWidthThin);
+    outline-style: solid;
+    outline-color: var(--colorTransparentStroke);
+  }
+
+  :where(.horizontal) > .rail::before {
+    inset-inline-start: calc(var(--strokeWidthThin) * -1);
+    inset-inline-end: calc(var(--strokeWidthThin) * -1);
+    height: var(--fui-Slider__rail--size);
+  }
+
+  :where(.horizontal) > .rail {
+    width: 100%;
+    height: var(--fui-Slider__rail--size);
+  }
+
+  :where(.vertical) > .rail::before {
+    width: var(--fui-Slider__rail--size);
+    top: calc(var(--strokeWidthThin) * -1);
+    bottom: calc(var(--strokeWidthThin) * -1);
+  }
+
+  :where(.vertical) > .rail {
+    width: var(--fui-Slider__rail--size);
+    height: 100%;
+  }
+
+  .thumb::before {
+    position: absolute;
+    top: 0px;
+    inset-inline-start: 0px;
+    bottom: 0px;
+    inset-inline-end: 0px;
+    border-radius: var(--borderRadiusCircular);
+    box-sizing: border-box;
+    content: '';
+    border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralStroke1);
+  }
+
+  .thumb {
+    --fui-Slider__thumb--position: clamp(
+      var(--fui-Slider__inner-thumb--radius),
+      var(--fui-Slider--progress),
+      calc(100% - var(--fui-Slider__inner-thumb--radius))
+    );
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: absolute;
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+    pointer-events: none;
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    box-shadow: 0 0 0 calc(var(--fui-Slider__thumb--size) * 0.2) var(--colorNeutralBackground1) inset;
+    background-color: var(--fui-Slider__thumb--color);
+  }
+
+  :where(.horizontal) > .thumb {
+    transform: translateX(-50%);
+    inset-inline-start: var(--fui-Slider__thumb--position);
+  }
+
+  :where(.horizontal) > .thumb:where(:dir(rtl)) {
+    transform: translateX(50%);
+  }
+
+  :where(.vertical) > .thumb {
+    transform: translateY(50%);
+    bottom: var(--fui-Slider__thumb--position);
+  }
+
+  :where(.disabled) > .thumb::before {
+    border: calc(var(--fui-Slider__thumb--size) * 0.05) solid var(--colorNeutralForegroundDisabled);
+  }
+
+  .input {
+    cursor: pointer;
+    opacity: 0;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    padding: 0;
+    margin: 0;
+  }
+
+  :where(.horizontal) > .input {
+    height: var(--fui-Slider__thumb--size);
+    width: 100%;
+  }
+
+  :where(.vertical) > .input {
+    height: 100%;
+    width: var(--fui-Slider__thumb--size);
+  }
+
+  :where(.disabled) > .input {
+    cursor: default;
+  }
+
+  @media (forced-colors: active) {
+    .horizontal[data-fui-focus-within]:focus-within::after {
+      border-top-color: Highlight;
+      border-inline-end-color: Highlight;
+      border-bottom-color: Highlight;
+      border-inline-start-color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .vertical[data-fui-focus-within]:focus-within::after {
+      border-top-color: Highlight;
+      border-inline-end-color: Highlight;
+      border-bottom-color: Highlight;
+      border-inline-start-color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .enabled:hover {
+      --fui-Slider__thumb--color: Highlight;
+      --fui-Slider__progress--color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .enabled {
+      --fui-Slider__rail--color: CanvasText;
+      --fui-Slider__thumb--color: Highlight;
+      --fui-Slider__progress--color: Highlight;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .disabled {
+      --fui-Slider__rail--color: GrayText;
+      --fui-Slider__thumb--color: GrayText;
+      --fui-Slider__progress--color: GrayText;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .rail::before {
+      background-image: repeating-linear-gradient(
+        var(--fui-Slider--direction),
+        transparent 0%,
+        transparent calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+        HighlightText calc(var(--fui-Slider--steps-percent) - var(--strokeWidthThin)),
+        HighlightText var(--fui-Slider--steps-percent)
+      );
+    }
+  }
+
+  @supports (writing-mode: sideways-lr) {
+    :where(.vertical) > .input {
+      writing-mode: vertical-lr;
+      direction: rtl;
+    }
+  }
+
+  @supports (writing-mode: sideways-lr) {
+    :where(.vertical) > .input:where(:dir(rtl)) {
+      direction: ltr;
+    }
+  }
+
+  @supports not (writing-mode: sideways-lr) {
+    :where(.vertical) > .input {
+      -webkit-appearance: slider-vertical;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@layer fluentui {
+  .base {
+    border-color: var(--colorNeutralStroke1);
+    border-radius: var(--borderRadiusNone);
+    box-sizing: border-box;
+    display: inline-block;
+  }
+
+  .bordered {
+    border-style: solid;
+    border-width: var(--strokeWidthThin);
+  }
+
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+  }
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .shadow {
+    box-shadow: var(--shadow4);
+  }
+
+  .center {
+    object-fit: none;
+    object-position: center;
+  }
+
+  .contain {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .cover {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .none {
+    object-fit: none;
+    object-position: left top;
+  }
+
+  .fitFill {
+    height: 100%;
+    width: 100%;
+  }
+
+  .block {
+    width: 100%;
+  }
+}

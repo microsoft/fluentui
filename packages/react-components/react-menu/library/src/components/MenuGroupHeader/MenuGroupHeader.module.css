@@ -1,0 +1,12 @@
+@layer fluentui {
+  .root {
+    font-size: var(--fontSizeBase200);
+    color: var(--colorNeutralForeground3);
+    padding-inline-start: var(--spacingHorizontalS);
+    padding-inline-end: var(--spacingHorizontalS);
+    font-weight: var(--fontWeightSemibold);
+    height: var(--spacingHorizontalXXXL);
+    display: flex;
+    align-items: center;
+  }
+}

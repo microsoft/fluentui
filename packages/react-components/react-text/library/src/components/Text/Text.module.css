@@ -1,0 +1,119 @@
+@layer fluentui {
+  .root {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+    font-weight: var(--fontWeightRegular);
+    text-align: start;
+    display: inline;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .truncate {
+    text-overflow: ellipsis;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .underline {
+    text-decoration-line: underline;
+  }
+
+  .strikethrough {
+    text-decoration-line: line-through;
+  }
+
+  .underline:where(.strikethrough) {
+    text-decoration-line: line-through underline;
+  }
+
+  .size100 {
+    font-size: var(--fontSizeBase100);
+    line-height: var(--lineHeightBase100);
+  }
+
+  .size200 {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .size400 {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .size500 {
+    font-size: var(--fontSizeBase500);
+    line-height: var(--lineHeightBase500);
+  }
+
+  .size600 {
+    font-size: var(--fontSizeBase600);
+    line-height: var(--lineHeightBase600);
+  }
+
+  .size700 {
+    font-size: var(--fontSizeHero700);
+    line-height: var(--lineHeightHero700);
+  }
+
+  .size800 {
+    font-size: var(--fontSizeHero800);
+    line-height: var(--lineHeightHero800);
+  }
+
+  .size900 {
+    font-size: var(--fontSizeHero900);
+    line-height: var(--lineHeightHero900);
+  }
+
+  .size1000 {
+    font-size: var(--fontSizeHero1000);
+    line-height: var(--lineHeightHero1000);
+  }
+
+  .monospace {
+    font-family: var(--fontFamilyMonospace);
+  }
+
+  .numeric {
+    font-family: var(--fontFamilyNumeric);
+  }
+
+  .medium {
+    font-weight: var(--fontWeightMedium);
+  }
+
+  .semibold {
+    font-weight: var(--fontWeightSemibold);
+  }
+
+  .bold {
+    font-weight: var(--fontWeightBold);
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .end {
+    text-align: end;
+  }
+
+  .justify {
+    text-align: justify;
+  }
+}

@@ -1,0 +1,433 @@
+@layer fluentui {
+  .normalize {
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .root {
+    box-sizing: content-box;
+    padding: var(--spacingVerticalM) var(--spacingHorizontalM);
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  .root:where(.showWeekNumbers) {
+    width: calc(
+      7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin)
+    );
+  }
+
+  .header {
+    display: inline-flex;
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(2 * var(--spacingHorizontalXL) + var(--spacingHorizontalXS));
+    position: relative;
+    width: 100%;
+  }
+
+  .grid {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    margin-top: var(--spacingVerticalXS);
+    padding-bottom: var(--spacingVerticalMNudge);
+    position: relative;
+    table-layout: fixed;
+    text-align: center;
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  :where(.root.showWeekNumbers) > .grid {
+    width: calc(
+      7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)) + var(--spacingHorizontalXXXL) - 2 *
+        var(--strokeWidthThin)
+    );
+  }
+
+  .monthAndYear {
+    align-items: center;
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    display: inline-block;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: hidden;
+    padding-block: 0;
+    padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .monthAndYearHeaderIsClickable {
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+  }
+
+  .monthComponents {
+    align-self: flex-end;
+    display: inline-flex;
+  }
+
+  .headerIconButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+    display: block;
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+    }
+  }
+
+  .disabledStyle {
+    &,
+    &:disabled,
+    & button {
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+      @media (forced-colors: active) {
+        & {
+          color: GrayText;
+        }
+      }
+    }
+  }
+
+  .weekRow {
+    position: relative;
+    &:focus-within {
+      z-index: 1;
+    }
+  }
+
+  .weekNumberCell {
+    background-color: var(--colorTransparentBackground);
+    border-inline-end: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground4);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    margin: 0;
+    padding: 0;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+  }
+
+  .transition-first {
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .transition-last {
+    margin-top: calc(-1 * calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  .cellBase {
+    color: var(--colorNeutralForeground1);
+    cursor: pointer;
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    margin: 0;
+    padding: var(--spacingHorizontalXXS);
+    position: relative;
+    @media (forced-colors: active) {
+      & {
+        background-color: Window;
+        color: WindowText;
+      }
+    }
+    &[data-range-hovered] {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      @media (forced-colors: active) {
+        & {
+          outline: var(--strokeWidthThin) solid Highlight;
+          z-index: 3;
+          &[data-today] :global(.fui-CalendarDayGridCell__dayLabel) {
+            background-color: Highlight;
+          }
+        }
+      }
+    }
+    &[data-range-pressed] {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+          color: Highlight;
+        }
+      }
+    }
+  }
+
+  .cellBaseFocusIndicator {
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-top-color: transparent;
+      border-inline-end-color: transparent;
+      border-bottom-color: transparent;
+      border-inline-start-color: transparent;
+      @media (forced-colors: active) {
+        & {
+          &::after {
+            border-top-color: Highlight;
+            border-inline-end-color: Highlight;
+            border-bottom-color: Highlight;
+            border-inline-start-color: Highlight;
+          }
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(var(--strokeWidthThick) * -1);
+        inset-inline-end: calc(var(--strokeWidthThick) * -1);
+        bottom: calc(var(--strokeWidthThick) * -1);
+        inset-inline-start: calc(var(--strokeWidthThick) * -1);
+      }
+    }
+  }
+
+  .selected {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+    @media (forced-colors: active) {
+      & {
+        background-color: Highlight;
+        border-top-color: Highlight;
+        border-inline-end-color: Highlight;
+        border-bottom-color: Highlight;
+        border-inline-start-color: Highlight;
+        color: HighlightText;
+        forced-color-adjust: none;
+      }
+    }
+    &:hover,
+    &[data-range-hovered],
+    &[data-range-pressed] {
+      color: var(--colorNeutralForeground1Static);
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          color: HighlightText;
+        }
+      }
+    }
+    & > :global(.fui-CalendarDayGridCell__marker) {
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+  }
+
+  .singleSelected {
+    color: var(--colorNeutralForeground1Static);
+    & > :global(.fui-CalendarDayGridCell__marker) {
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+    & > :global(.fui-CalendarDayGridCell__button) {
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      border-radius: var(--borderRadiusMedium);
+      border: var(--strokeWidthThin) solid var(--colorBrandStroke1);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+          color: HighlightText;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .outsideBounds {
+    &,
+    &:disabled,
+    & button,
+    &[data-range-hovered],
+    &[data-range-pressed] {
+      background-color: var(--colorTransparentBackground);
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+    }
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+      }
+    }
+  }
+
+  .outsideNavigatedMonthLightenDaysOutsideNavigatedMonth {
+    color: var(--colorNeutralForeground4);
+    font-weight: var(--fontWeightRegular);
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+      }
+    }
+  }
+
+  .button {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: var(--fontSizeBase200);
+    font-weight: inherit;
+    height: var(--spacingHorizontalXXL);
+    line-height: var(--spacingHorizontalXXL);
+    overflow: visible;
+    padding: 0;
+    width: var(--spacingHorizontalXXL);
+    &:is(span) {
+      height: inherit;
+      line-height: inherit;
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      border-radius: var(--borderRadiusMedium);
+    }
+    &:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+    }
+  }
+
+  .today {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorNeutralForegroundOnBrand);
+    font-weight: var(--fontWeightSemibold);
+    & > :global(.fui-CalendarDayGridCell__marker) {
+      background-color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+        }
+      }
+    }
+  }
+
+  .todayMarker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorBrandBackground);
+    border-radius: 100%;
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+    line-height: var(--spacingHorizontalXL);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        border-top-color: WindowText;
+        border-inline-end-color: WindowText;
+        border-bottom-color: WindowText;
+        border-inline-start-color: WindowText;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  .marker {
+    background-color: var(--colorBrandForeground2);
+    border-radius: 100%;
+    bottom: var(--strokeWidthThin);
+    height: var(--spacingVerticalXS);
+    inset-inline-start: 0;
+    margin: auto;
+    position: absolute;
+    inset-inline-end: 0;
+    width: var(--spacingHorizontalXS);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+
+  .cornerBorderAndRadiusCorners {
+    &[data-corner-top-right] {
+      border-start-end-radius: var(--borderRadiusMedium);
+    }
+    &[data-corner-top-left] {
+      border-start-start-radius: var(--borderRadiusMedium);
+    }
+    &[data-corner-bottom-right] {
+      border-end-end-radius: var(--borderRadiusMedium);
+    }
+    &[data-corner-bottom-left] {
+      border-end-start-radius: var(--borderRadiusMedium);
+    }
+  }
+
+  .weekdayCell {
+    user-select: none;
+  }
+}

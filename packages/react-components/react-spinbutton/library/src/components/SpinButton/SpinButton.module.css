@@ -1,0 +1,373 @@
+@layer fluentui {
+  .medium {
+  }
+  .root::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    pointer-events: none;
+    z-index: 10;
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .root::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    inset-inline-end: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    z-index: 20;
+    height: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+    border-end-start-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+    border-bottom: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    clip-path: inset(calc(100% - var(--strokeWidthThick)) 0 0 0);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--durationUltraFast);
+    transition-delay: var(--curveAccelerateMid);
+  }
+
+  .root:focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-delay: var(--curveDecelerateMid);
+  }
+
+  .root:focus-within:active::after {
+    border-bottom-color: var(--colorCompoundBrandStrokePressed);
+  }
+
+  .root:focus-within {
+    outline: var(--strokeWidthThick) solid transparent;
+  }
+
+  .root {
+    display: inline-grid;
+    grid-template-columns: 1fr var(--spacingHorizontalXXL);
+    grid-template-rows: 1fr 1fr;
+    column-gap: var(--spacingHorizontalXS);
+    row-gap: 0;
+    position: relative;
+    isolation: isolate;
+    vertical-align: middle;
+    background-color: var(--colorNeutralBackground1);
+    min-height: var(--spacingHorizontalXXXL);
+    padding: 0 0 0 var(--spacingHorizontalMNudge);
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .root:where(:dir(rtl)) {
+    padding: 0 var(--spacingHorizontalMNudge) 0 0;
+  }
+
+  .small {
+    min-height: var(--spacingHorizontalXXL);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    padding-inline-start: var(--spacingHorizontalS);
+  }
+
+  .underline::before {
+    border-top-width: 0;
+    border-inline-end-width: 0;
+    border-bottom-width: var(--strokeWidthThin);
+    border-inline-start-width: 0;
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .filled::before {
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  .root:where(.outline:not(.disabled)):hover::before {
+    border-top-color: var(--colorNeutralStroke1Hover);
+    border-inline-end-color: var(--colorNeutralStroke1Hover);
+    border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+    border-inline-start-color: var(--colorNeutralStroke1Hover);
+  }
+
+  .root:where(.outline:not(.disabled)):active::before,
+  .root:where(.outline:not(.disabled)):focus-within::before {
+    border-top-color: var(--colorNeutralStroke1Pressed);
+    border-inline-end-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+    border-inline-start-color: var(--colorNeutralStroke1Pressed);
+  }
+
+  .root:where(.underline:not(.disabled)):hover::before {
+    border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  .root:where(.underline:not(.disabled)):active::before,
+  .root:where(.underline:not(.disabled)):focus-within::before {
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  .root:where(.underline:not(.disabled))::after {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .root:where(.filled:not(.disabled)):hover::before,
+  .root:where(.filled:not(.disabled)):focus-within::before {
+    border-top-color: var(--colorTransparentStrokeInteractive);
+    border-inline-end-color: var(--colorTransparentStrokeInteractive);
+    border-bottom-color: var(--colorTransparentStrokeInteractive);
+    border-inline-start-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  .invalid:where(:not(.disabled)):not(:focus-within)::before,
+  .invalid:where(:not(.disabled)):hover:not(:focus-within)::before {
+    border-top-color: var(--colorPaletteRedBorder2);
+    border-inline-end-color: var(--colorPaletteRedBorder2);
+    border-bottom-color: var(--colorPaletteRedBorder2);
+    border-inline-start-color: var(--colorPaletteRedBorder2);
+  }
+
+  .disabled::before {
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+  }
+
+  .input::placeholder {
+    color: var(--colorNeutralForeground4);
+    opacity: 1;
+  }
+
+  .input {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    outline-style: none;
+    border: 0;
+    padding: 0;
+    color: var(--colorNeutralForeground1);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    width: 100%;
+  }
+
+  :where(.disabled) > .input::placeholder {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.disabled) > .input {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+  }
+
+  .incrementButton:active,
+  .decrementButton:active {
+    outline-style: none;
+  }
+
+  .incrementButton:enabled:hover,
+  .decrementButton:enabled:hover {
+    cursor: pointer;
+    color: var(--colorNeutralForeground3Hover);
+    background-color: var(--colorSubtleBackgroundHover);
+  }
+
+  .incrementButton:enabled:active,
+  .decrementButton:enabled:active {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+
+  .incrementButton:enabled:global(.fui-SpinButton__button_active),
+  .decrementButton:enabled:global(.fui-SpinButton__button_active) {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+
+  .incrementButton:disabled,
+  .decrementButton:disabled {
+    cursor: not-allowed;
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .incrementButton,
+  .decrementButton {
+    display: inline-flex;
+    width: var(--spacingHorizontalXXL);
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    position: absolute;
+    outline-style: none;
+    height: var(--spacingHorizontalL);
+    background-color: transparent;
+    color: var(--colorNeutralForeground3);
+    grid-column-start: 2;
+    border-radius: 0;
+    padding: 0 calc(var(--spacingHorizontalXS) * 1.25) 0 calc(var(--spacingHorizontalXS) * 1.25);
+  }
+
+  .incrementButton {
+    grid-row-start: 1;
+    border-start-end-radius: var(--borderRadiusMedium);
+    padding-top: var(--spacingHorizontalXS);
+    padding-bottom: var(--strokeWidthThin);
+  }
+
+  .decrementButton {
+    grid-row-start: 2;
+    border-end-end-radius: var(--borderRadiusMedium);
+    padding-top: var(--strokeWidthThin);
+    padding-bottom: var(--spacingHorizontalXS);
+  }
+
+  :where(.small) > .incrementButton {
+    padding: var(--strokeWidthThicker) var(--spacingHorizontalSNudge) 0px var(--spacingHorizontalXS);
+    height: var(--spacingHorizontalM);
+  }
+
+  :where(.small) > .incrementButton:where(:dir(rtl)) {
+    padding: var(--strokeWidthThicker) var(--spacingHorizontalXS) 0px var(--spacingHorizontalSNudge);
+  }
+
+  :where(.small) > .decrementButton {
+    padding: 0px var(--spacingHorizontalSNudge) var(--strokeWidthThicker) var(--spacingHorizontalXS);
+    height: var(--spacingHorizontalM);
+  }
+
+  :where(.small) > .decrementButton:where(:dir(rtl)) {
+    padding: 0px var(--spacingHorizontalXS) var(--strokeWidthThicker) var(--spacingHorizontalSNudge);
+  }
+
+  :where(.underline) > .incrementButton:enabled:hover,
+  :where(.underline) > .decrementButton:enabled:hover {
+    color: var(--colorNeutralForeground3Hover);
+    background-color: var(--colorSubtleBackgroundHover);
+  }
+
+  :where(.underline) > .incrementButton:enabled:active,
+  :where(.underline) > .decrementButton:enabled:active {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+
+  :where(.underline) > .incrementButton:enabled:global(.fui-SpinButton__button_active),
+  :where(.underline) > .decrementButton:enabled:global(.fui-SpinButton__button_active) {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+
+  :where(.underline) > .incrementButton:disabled,
+  :where(.underline) > .decrementButton:disabled {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.underline) > .incrementButton,
+  :where(.underline) > .decrementButton {
+    background-color: transparent;
+    color: var(--colorNeutralForeground3);
+  }
+
+  :where(.filled-darker) > .incrementButton:enabled:hover,
+  :where(.filled-darker) > .decrementButton:enabled:hover {
+    color: var(--colorNeutralForeground3Hover);
+    background-color: var(--colorNeutralBackground3Hover);
+  }
+
+  :where(.filled-darker) > .incrementButton:enabled:active,
+  :where(.filled-darker) > .decrementButton:enabled:active {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorNeutralBackground3Pressed);
+  }
+
+  :where(.filled-darker) > .incrementButton:enabled:global(.fui-SpinButton__button_active),
+  :where(.filled-darker) > .decrementButton:enabled:global(.fui-SpinButton__button_active) {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorNeutralBackground3Pressed);
+  }
+
+  :where(.filled-darker) > .incrementButton:disabled,
+  :where(.filled-darker) > .decrementButton:disabled {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.filled-darker) > .incrementButton,
+  :where(.filled-darker) > .decrementButton {
+    background-color: transparent;
+    color: var(--colorNeutralForeground3);
+  }
+
+  :where(.filled-lighter) > .incrementButton:enabled:hover,
+  :where(.filled-lighter) > .decrementButton:enabled:hover {
+    color: var(--colorNeutralForeground3Hover);
+    background-color: var(--colorNeutralBackground1Hover);
+  }
+
+  :where(.filled-lighter) > .incrementButton:enabled:active,
+  :where(.filled-lighter) > .incrementButton:enabled:global(.fui-SpinButton__button_active),
+  :where(.filled-lighter) > .decrementButton:enabled:active,
+  :where(.filled-lighter) > .decrementButton:enabled:global(.fui-SpinButton__button_active) {
+    color: var(--colorNeutralForeground3Pressed);
+    background-color: var(--colorNeutralBackground1Pressed);
+  }
+
+  :where(.filled-lighter) > .incrementButton:disabled,
+  :where(.filled-lighter) > .decrementButton:disabled {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.filled-lighter) > .incrementButton,
+  :where(.filled-lighter) > .decrementButton {
+    background-color: transparent;
+    color: var(--colorNeutralForeground3);
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:focus-within::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .disabled::before {
+      border-top-color: GrayText;
+      border-inline-end-color: GrayText;
+      border-bottom-color: GrayText;
+      border-inline-start-color: GrayText;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@layer fluentui {
+  .root {
+    text-align: center;
+    white-space: nowrap;
+    padding: 0;
+  }
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+  .table {
+    display: table-cell;
+    width: calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalM));
+  }
+  .flex {
+    display: flex;
+    flex: 1 1 0px;
+    min-width: calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalM));
+    max-width: calc(var(--spacingHorizontalXXXL) + var(--spacingHorizontalM));
+    justify-content: center;
+  }
+  .radioIndicator {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  .subtle {
+    opacity: 0;
+  }
+  .subtle[data-fui-focus-within]:focus-within {
+    opacity: 1;
+  }
+  .hidden {
+    opacity: 0;
+  }
+}

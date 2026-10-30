@@ -1,0 +1,152 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .root > * {
+    text-overflow: ellipsis;
+  }
+
+  .root > *:not(:global(.ms-StackItem)) {
+    flex-shrink: 1;
+  }
+
+  .horizontal {
+    flex-direction: row;
+  }
+
+  .verticalFill {
+    height: 100%;
+  }
+
+  .reversedVertical {
+    flex-direction: column-reverse;
+  }
+
+  .reversedHorizontal {
+    flex-direction: row-reverse;
+  }
+
+  .disableShrink > *:not(:global(.ms-StackItem)) {
+    flex-shrink: 0;
+  }
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    max-width: 100vw;
+  }
+
+  .inner > *:not(:global(.ms-StackItem)) {
+    flex-shrink: 1;
+  }
+
+  .innerWidth {
+    width: 100%;
+  }
+
+  .growInherit {
+    flex-grow: inherit;
+  }
+
+  .growInitial {
+    flex-grow: initial;
+  }
+
+  .growRevert {
+    flex-grow: revert;
+  }
+
+  .growUnset {
+    flex-grow: unset;
+  }
+
+  .grow1 {
+    flex-grow: 1;
+  }
+
+  .grow2 {
+    flex-grow: 2;
+  }
+
+  .grow3 {
+    flex-grow: 3;
+  }
+
+  .alignItemsBaseline {
+    align-items: baseline;
+  }
+
+  .alignItemsCenter {
+    align-items: center;
+  }
+
+  .alignItemsStart {
+    align-items: flex-start;
+  }
+
+  .alignItemsEnd {
+    align-items: flex-end;
+  }
+
+  .alignItemsStretch {
+    align-items: stretch;
+  }
+
+  .alignItemsSpaceBetween {
+    align-items: space-between;
+  }
+
+  .alignItemsSpaceAround {
+    align-items: space-around;
+  }
+
+  .alignItemsSpaceEvenly {
+    align-items: space-evenly;
+  }
+
+  .justifyContentBaseline {
+    justify-content: baseline;
+  }
+
+  .justifyContentCenter {
+    justify-content: center;
+  }
+
+  .justifyContentStart {
+    justify-content: flex-start;
+  }
+
+  .justifyContentEnd {
+    justify-content: flex-end;
+  }
+
+  .justifyContentStretch {
+    justify-content: stretch;
+  }
+
+  .justifyContentSpaceBetween {
+    justify-content: space-between;
+  }
+
+  .justifyContentSpaceAround {
+    justify-content: space-around;
+  }
+
+  .justifyContentSpaceEvenly {
+    justify-content: space-evenly;
+  }
+}

@@ -18,6 +18,19 @@ import { TimePicker } from '@fluentui/react-timepicker-compat';
 <TimePicker />
 ```
 
+## Opt-in CSS Modules styles
+
+Replace `useTimePickerStyles.styles` with `useTimePickerStyles.styles.css` in the
+bundler resolver, handling both source imports and built
+`.styles.js` → `.styles.css.js` imports. Griffel remains the default.
+The alternative keeps calling the public `useComboboxStyles_unstable` hook from
+`@fluentui/react-combobox`; replace that package's style modules and public
+re-exports as well. Base imports precede the local stylesheet so TimePicker's
+listbox height cap wins the equal-specificity Combobox rule, including when
+portaled. Process CSS Modules and retain assets in the `fluentui` layer.
+Without the base replacement this remains a hybrid with Griffel, not a
+Griffel-free composition or a guarantee of mixed-mode styling parity.
+
 # Compat component
 
 ## What makes a compat component?

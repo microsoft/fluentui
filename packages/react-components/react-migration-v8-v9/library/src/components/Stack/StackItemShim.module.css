@@ -1,0 +1,138 @@
+@layer fluentui {
+  .root {
+    height: auto;
+    width: auto;
+  }
+
+  .disableShrink {
+    flex-shrink: 0;
+  }
+
+  .verticalFill {
+    height: 100%;
+  }
+
+  .alignSelfAuto {
+    align-self: auto;
+  }
+
+  .alignSelfBaseline {
+    align-self: baseline;
+  }
+
+  .alignSelfCenter {
+    align-self: center;
+  }
+
+  .alignSelfStart {
+    align-self: flex-start;
+  }
+
+  .alignSelfEnd {
+    align-self: flex-end;
+  }
+
+  .alignSelfStretch {
+    align-self: stretch;
+  }
+
+  .growInherit {
+    flex-grow: inherit;
+  }
+
+  .growInitial {
+    flex-grow: initial;
+  }
+
+  .growRevert {
+    flex-grow: revert;
+  }
+
+  .growUnset {
+    flex-grow: unset;
+  }
+
+  .grow1 {
+    flex-grow: 1;
+  }
+
+  .grow2 {
+    flex-grow: 2;
+  }
+
+  .grow3 {
+    flex-grow: 3;
+  }
+
+  .shrinkInherit {
+    flex-shrink: inherit;
+  }
+
+  .shrinkInitial {
+    flex-shrink: initial;
+  }
+
+  .shrinkRevert {
+    flex-shrink: revert;
+  }
+
+  .shrinkUnset {
+    flex-shrink: unset;
+  }
+
+  .shrink0 {
+    flex-shrink: 0;
+  }
+
+  .shrink1 {
+    flex-shrink: 1;
+  }
+
+  .shrink2 {
+    flex-shrink: 2;
+  }
+
+  .orderInherit {
+    order: inherit;
+  }
+
+  .orderInitial {
+    order: initial;
+  }
+
+  .orderUnset {
+    order: unset;
+  }
+
+  .orderRevert {
+    order: revert;
+  }
+
+  .orderMinus3 {
+    order: -3;
+  }
+
+  .orderMinus2 {
+    order: -2;
+  }
+
+  .orderMinus1 {
+    order: -1;
+  }
+
+  .order0 {
+    order: 0;
+  }
+
+  .order1 {
+    order: 1;
+  }
+
+  .order2 {
+    order: 2;
+  }
+
+  .order3 {
+    order: 3;
+  }
+}

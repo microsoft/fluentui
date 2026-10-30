@@ -1,0 +1,166 @@
+@layer fluentui {
+  .root {
+    border-radius: var(--borderRadiusMedium);
+    padding-inline-end: calc(var(--spacingHorizontalM) + var(--fui-TagPickerControl-aside-width, 0px));
+    padding-inline-start: var(--spacingHorizontalM);
+    align-items: center;
+    column-gap: var(--spacingHorizontalXXS);
+    box-sizing: border-box;
+    display: flex;
+    min-width: 250px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .root:focus-within {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: transparent;
+  }
+  .root::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    inset-inline-start: -1px;
+    bottom: -1px;
+    inset-inline-end: -1px;
+    height: max(2px, var(--borderRadiusMedium));
+    border-bottom-left-radius: var(--borderRadiusMedium);
+    border-bottom-right-radius: var(--borderRadiusMedium);
+    border-bottom: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    clip-path: inset(calc(100% - 2px) 0 0 0);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--durationUltraFast);
+    transition-delay: var(--curveAccelerateMid);
+  }
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+  .root:focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-delay: var(--curveDecelerateMid);
+  }
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:focus-within::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+  .root:focus-within:active::after {
+    border-bottom-color: var(--colorCompoundBrandStrokePressed);
+  }
+  .medium {
+    min-height: 32px;
+  }
+  .large {
+    min-height: 40px;
+  }
+  .extra-large {
+    min-height: 44px;
+  }
+  .outline {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+  .outline:where(:not(.disabled)):hover {
+    border-color: var(--colorNeutralStroke1Hover);
+    border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+  .outline:where(:not(.disabled)):active {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+  .outline:where(:not(.disabled)):focus-within {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+  .underline {
+    background-color: var(--colorTransparentBackground);
+    border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: 0;
+  }
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+  .invalid:where(:not(.underline)):not(:focus-within),
+  .invalid:where(:not(.underline)):hover:not(:focus-within) {
+    border-color: var(--colorPaletteRedBorder2);
+  }
+  .invalid:where(.underline):not(:focus-within),
+  .invalid:where(.underline):hover:not(:focus-within) {
+    border-bottom-color: var(--colorPaletteRedBorder2);
+  }
+  .disabled {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+    border-color: var(--colorNeutralStrokeDisabled);
+  }
+  @media (forced-colors: active) {
+    .disabled {
+      border-color: GrayText;
+    }
+  }
+  .aside {
+    display: flex;
+    position: absolute;
+    top: 0;
+    inset-inline-end: var(--spacingHorizontalM);
+    height: 100%;
+    cursor: text;
+  }
+  :where(.medium) > .aside {
+    min-height: 32px;
+  }
+  :where(.large) > .aside {
+    min-height: 40px;
+  }
+  :where(.extra-large) > .aside {
+    min-height: 44px;
+  }
+  .icon {
+    box-sizing: border-box;
+    color: var(--colorNeutralStrokeAccessible);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    font-size: var(--fontSizeBase500);
+  }
+  .icon svg {
+    display: block;
+  }
+  :where(.medium) > .aside > .icon {
+    font-size: var(--fontSizeBase400);
+    margin-inline-start: var(--spacingHorizontalXXS);
+    min-height: 32px;
+  }
+  :where(.large) > .aside > .icon {
+    font-size: var(--fontSizeBase500);
+    margin-inline-start: var(--spacingHorizontalXXS);
+    min-height: 40px;
+  }
+  :where(.extra-large) > .aside > .icon {
+    font-size: var(--fontSizeBase600);
+    margin-inline-start: var(--spacingHorizontalSNudge);
+    min-height: 44px;
+  }
+  :where(.disabled) > .aside > .icon {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+  .secondaryAction {
+    display: flex;
+  }
+}

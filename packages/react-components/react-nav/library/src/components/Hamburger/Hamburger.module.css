@@ -1,0 +1,17 @@
+@layer fluentui {
+  .root {
+    text-decoration-line: none;
+    border: none;
+  }
+  @media (forced-colors: none) {
+    .root {
+      background-color: var(--colorNeutralBackground4);
+    }
+    .root:hover {
+      background-color: var(--colorNeutralBackground4Hover);
+    }
+    .root:active {
+      background-color: var(--colorNeutralBackground4Pressed);
+    }
+  }
+}

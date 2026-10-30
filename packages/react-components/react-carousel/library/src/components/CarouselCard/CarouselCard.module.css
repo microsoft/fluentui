@@ -1,0 +1,19 @@
+@layer fluentui {
+  .root {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .autoSize {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .elevated {
+    border-radius: var(--borderRadiusXLarge);
+    box-shadow: var(--shadow16);
+    overflow: hidden;
+  }
+}

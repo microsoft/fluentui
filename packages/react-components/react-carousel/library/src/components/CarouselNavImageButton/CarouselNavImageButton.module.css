@@ -1,0 +1,30 @@
+@layer fluentui {
+  .root {
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0 var(--spacingHorizontalXS);
+    border-top-color: var(--colorTransparentStroke);
+    border-inline-end-color: var(--colorTransparentStroke);
+    border-bottom-color: var(--colorTransparentStroke);
+    border-inline-start-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusSmall);
+    width: calc(2 * var(--spacingHorizontalXL));
+    height: calc(2 * var(--spacingHorizontalXL));
+    overflow: hidden;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .image {
+    width: calc(2 * var(--spacingHorizontalXL));
+    height: calc(2 * var(--spacingHorizontalXL));
+    border-radius: var(--borderRadiusSmall);
+  }
+
+  .root:where(.selected),
+  :where(.root.selected) > .image {
+    width: calc(2 * var(--spacingHorizontalXXL));
+    height: calc(2 * var(--spacingHorizontalXXL));
+  }
+}

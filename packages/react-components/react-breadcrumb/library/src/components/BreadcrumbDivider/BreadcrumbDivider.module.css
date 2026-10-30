@@ -1,0 +1,14 @@
+@layer fluentui {
+  .root {
+    display: flex;
+  }
+  .small {
+    font-size: var(--fontSizeBase200);
+  }
+  .medium {
+    font-size: var(--fontSizeBase400);
+  }
+  .large {
+    font-size: var(--fontSizeBase500);
+  }
+}

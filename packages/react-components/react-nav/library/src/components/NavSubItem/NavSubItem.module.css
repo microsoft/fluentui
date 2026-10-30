@@ -1,0 +1,10 @@
+@layer fluentui {
+  .root {
+    padding-inline-start: calc(
+      var(--spacingHorizontalXXXL) + var(--spacingHorizontalMNudge) + var(--spacingHorizontalXS)
+    );
+  }
+  .root:where(.selected)::after {
+    margin-inline-start: calc(-1 * (var(--spacingHorizontalXXXL) + var(--spacingHorizontalXL)));
+  }
+}

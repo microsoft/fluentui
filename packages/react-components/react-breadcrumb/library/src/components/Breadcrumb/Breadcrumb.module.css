@@ -1,0 +1,9 @@
+@layer fluentui {
+  .list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+}

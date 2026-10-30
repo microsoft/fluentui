@@ -1,0 +1,15 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--spacingHorizontalXS);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    border-color: transparent;
+  }
+}

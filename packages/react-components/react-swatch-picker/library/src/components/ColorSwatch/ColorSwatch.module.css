@@ -1,0 +1,169 @@
+@layer fluentui {
+  .root {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: var(--strokeWidthThin) solid var(--fui-SwatchPicker--borderColor, var(--colorTransparentStroke));
+    background: var(--fui-SwatchPicker--color);
+    overflow: hidden;
+    padding: 0;
+    &:hover {
+      cursor: pointer;
+      border: none;
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorBrandStroke1),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+    &:hover:active {
+      border: none;
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 var(--strokeWidthThickest) var(--colorStrokeFocus1);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+    &[data-fui-focus-visible] {
+      border: none;
+      outline: none;
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorStrokeFocus2),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+  }
+  .extra-small {
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+    &:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThin) var(--colorBrandStroke1),
+        inset 0 0 0 var(--strokeWidthThick) var(--colorStrokeFocus1);
+    }
+    &:hover:active {
+      border: none;
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+  }
+  .small {
+    width: var(--spacingHorizontalXXL);
+    height: var(--spacingHorizontalXXL);
+    &:hover:active {
+      border: none;
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+  }
+  .medium {
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+  }
+  .large {
+    width: var(--spacingHorizontalXXXL);
+    height: var(--spacingHorizontalXXXL);
+  }
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusMedium);
+    }
+  }
+  .circular {
+    border-radius: var(--borderRadiusCircular);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusCircular);
+    }
+  }
+  .square {
+    border-radius: var(--borderRadiusNone);
+    &[data-fui-focus-visible] {
+      border-radius: var(--borderRadiusNone);
+    }
+  }
+  .selected {
+    border: none;
+    box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorBrandStroke1),
+      inset 0 0 0 calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin)) var(--colorStrokeFocus1);
+    &[data-fui-focus-visible] {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus2),
+        inset 0 0 0 calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin)) var(--colorStrokeFocus1);
+    }
+    &:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThickest) var(--colorCompoundBrandStrokeHover),
+        inset 0 0 0 var(--spacingHorizontalSNudge) var(--colorStrokeFocus1);
+    }
+    &:hover:active {
+      box-shadow: inset 0 0 0 var(--strokeWidthThickest) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 calc(var(--spacingHorizontalS) - var(--strokeWidthThin)) var(--colorStrokeFocus1);
+    }
+    @media (forced-colors: active) {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorBrandStroke2Pressed),
+        inset 0 0 0 calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin)) var(--colorStrokeFocus1);
+    }
+  }
+  .selected:where(.small, .extra-small) {
+    @media (forced-colors: none) {
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorBrandStroke1),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+    &:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorCompoundBrandStrokeHover),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+    &:hover:active {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorCompoundBrandStrokePressed),
+        inset 0 0 0 var(--strokeWidthThickest) var(--colorStrokeFocus1);
+    }
+  }
+  .disabled {
+    &:hover {
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    @media (forced-colors: active) {
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+  .icon {
+    position: absolute;
+    display: flex;
+    align-self: center;
+  }
+  .disabledIcon {
+    color: var(--colorNeutralForegroundInverted);
+    filter: drop-shadow(
+      0 var(--strokeWidthThin) var(--strokeWidthThin) rgb(from var(--colorNeutralShadowKey) r g b / 1)
+    );
+  }
+  :where(.extra-small) > .icon {
+    font-size: var(--fontSizeBase400);
+  }
+  :where(.small) > .icon {
+    font-size: var(--fontSizeBase400);
+  }
+  :where(.medium) > .icon {
+    font-size: var(--fontSizeBase500);
+  }
+  :where(.large) > .icon {
+    font-size: var(--spacingHorizontalXXL);
+  }
+  @media (forced-colors: active) {
+    .root {
+      forced-color-adjust: none;
+    }
+    .root:hover {
+      box-shadow: inset 0 0 0 var(--strokeWidthThick) var(--colorBrandStroke2Hover),
+        inset 0 0 0 var(--strokeWidthThicker) var(--colorStrokeFocus1);
+    }
+    .root:hover:active {
+      box-shadow: inset 0 0 0 var(--strokeWidthThicker) var(--colorBrandStroke2Pressed),
+        inset 0 0 0 var(--strokeWidthThickest) var(--colorStrokeFocus1);
+    }
+    .disabled:hover {
+      box-shadow: none;
+    }
+  }
+}
