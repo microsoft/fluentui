@@ -61,8 +61,14 @@ export function isConformant<TProps = {}>(testInfo: HeadlessIsConformantOptions<
             .flatMap(statement => [...statement.declarationList.declarations])
             .find(candidate => candidate.name.getText(sourceFile) === displayName);
           const initializer = declaration?.initializer;
-          const helper =
-            initializer && ts.isCallExpression(initializer) ? initializer.expression.getText(sourceFile) : undefined;
+          const call = initializer && ts.isCallExpression(initializer) ? initializer : undefined;
+          const composedCall =
+            call?.expression.getText(sourceFile) === 'React.memo' &&
+            call.arguments[0] &&
+            ts.isCallExpression(call.arguments[0])
+              ? call.arguments[0]
+              : call;
+          const helper = composedCall?.expression.getText(sourceFile);
 
           expect(helper).toMatch(/^composeComponent(?:WithoutRef)?$/);
         });

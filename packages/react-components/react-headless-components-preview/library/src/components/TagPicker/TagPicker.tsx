@@ -1,6 +1,5 @@
 'use client';
 
-import type * as React from 'react';
 import { useTagPickerContextValues } from '@fluentui/react-tag-picker';
 
 import { useTagPicker } from './useTagPicker';
@@ -11,9 +10,7 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
 /**
  * Headless TagPicker component.
  */
-export const TagPicker: React.FC<TagPickerProps> = /*#__PURE__*/ composeComponentWithoutRef(
-  'TagPicker',
-  useTagPicker,
-  useTagPickerContextValues,
-  renderTagPicker,
-);
+export const TagPicker: {
+  (props: TagPickerProps): ReturnType<typeof renderTagPicker>;
+  displayName: string;
+} = /*#__PURE__*/ composeComponentWithoutRef('TagPicker', useTagPicker, useTagPickerContextValues, renderTagPicker);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import type { JSXElement } from '@fluentui/react-utilities';
 
 import { composeComponent, composeComponentWithoutRef } from './composeComponent';
 
@@ -35,12 +36,14 @@ describe('composeComponent', () => {
       const Test = composeComponentWithoutRef('Test', useTestWithoutRef, state => (
         <div {...state.root}>{state.label}</div>
       ));
+      const returnsJSXElement: (props: TestProps) => JSXElement = Test;
       const acceptsRef: 'ref' extends keyof React.ComponentProps<typeof Test> ? true : false = false;
 
       const { container } = render(<Test label="hello" className="foo" />);
 
       expect(container.textContent).toBe('hello');
       expect(container.firstElementChild).toHaveClass('foo');
+      expect(returnsJSXElement).toBe(Test);
       expect(typeof Test).toBe('function');
       expect(Test.displayName).toBe('Test');
       expect(acceptsRef).toBe(false);

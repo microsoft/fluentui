@@ -16,15 +16,15 @@ export type ContextValuesHook<State, ContextValues> = (state: State) => ContextV
 /**
  * Function rendering a component from its state.
  */
-export type RenderFn<State> = (state: State) => JSXElement | null;
+export type RenderFn<State, Result extends JSXElement | null = JSXElement | null> = (state: State) => Result;
 
 /**
  * Function rendering a component from its state and the context values returned by its `ContextValuesHook`.
  */
-export type RenderWithContextValuesFn<State, ContextValues> = (
+export type RenderWithContextValuesFn<State, ContextValues, Result extends JSXElement | null = JSXElement | null> = (
   state: State,
   contextValues: ContextValues,
-) => JSXElement | null;
+) => Result;
 
 type ComposeComponentFnArgs<State, ContextValues, UseState> =
   | [useState: UseState, render: RenderFn<State>]
@@ -37,6 +37,11 @@ type ComposeComponentFnArgs<State, ContextValues, UseState> =
 type ComposeComponentReturn<Props, RefType> = React.ForwardRefExoticComponent<
   React.PropsWithoutRef<Props> & RefAttributes<RefType>
 >;
+
+type ComposeComponentWithoutRefReturn<Props, Result extends JSXElement | null> = {
+  (props: Props): Result;
+  displayName: string;
+};
 
 /**
  * Composes a headless component from its state hook and render function, optionally deriving context values
@@ -103,22 +108,31 @@ export function composeComponent<Props, State, RefType, ContextValues>(
  *
  * @internal
  */
-export function composeComponentWithoutRef<Props, State>(
+export function composeComponentWithoutRef<Props, State, Result extends JSXElement | null>(
   displayName: string,
   useState: (props: Props) => State,
-  render: RenderFn<State>,
-): React.FC<Props>;
-export function composeComponentWithoutRef<Props, State, ContextValues>(
+  render: RenderFn<State, Result>,
+): {
+  (props: Props): Result;
+  displayName: string;
+};
+export function composeComponentWithoutRef<Props, State, ContextValues, Result extends JSXElement | null>(
   displayName: string,
   useState: (props: Props) => State,
   useGetContextValues: ContextValuesHook<State, ContextValues>,
-  render: RenderWithContextValuesFn<State, ContextValues>,
-): React.FC<Props>;
+  render: RenderWithContextValuesFn<State, ContextValues, Result>,
+): {
+  (props: Props): Result;
+  displayName: string;
+};
 export function composeComponentWithoutRef<Props, State, ContextValues>(
   displayName: string,
   ...args: ComposeComponentFnArgs<State, ContextValues, (props: Props) => State>
-): React.FC<Props> {
-  const Component = createRender<Props, State, never, ContextValues>(...args) as React.FC<Props>;
+): ComposeComponentWithoutRefReturn<Props, JSXElement | null> {
+  const Component = createRender<Props, State, never, ContextValues>(...args) as ComposeComponentWithoutRefReturn<
+    Props,
+    JSXElement | null
+  >;
 
   Component.displayName = displayName;
 

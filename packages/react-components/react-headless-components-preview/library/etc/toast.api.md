@@ -105,7 +105,10 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<Toa
 };
 
 // @public
-export const Toaster: React_2.FC<ToasterProps>;
+export const Toaster: {
+    (props: ToasterProps): JSXElement;
+    displayName: string;
+};
 
 export { ToasterId }
 

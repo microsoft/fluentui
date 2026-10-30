@@ -1,6 +1,6 @@
 'use client';
 
-import type * as React from 'react';
+import * as React from 'react';
 import { useDialog } from './useDialog';
 import { useDialogContextValues } from './useDialogContextValues';
 import { renderDialog } from './renderDialog';
@@ -15,9 +15,6 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
  * This component uses the native HTML `<dialog>` element (via `DialogSurface`) for
  * built-in focus trapping, backdrop, and accessibility semantics.
  */
-export const Dialog: React.FC<DialogProps> = /*#__PURE__*/ composeComponentWithoutRef(
-  'Dialog',
-  useDialog,
-  useDialogContextValues,
-  renderDialog,
+export const Dialog: React.FC<DialogProps> = /*#__PURE__*/ React.memo(
+  /*#__PURE__*/ composeComponentWithoutRef('Dialog', useDialog, useDialogContextValues, renderDialog),
 );

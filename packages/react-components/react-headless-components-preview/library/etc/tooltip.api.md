@@ -21,7 +21,10 @@ export { OnVisibleChangeData }
 export const renderTooltip: (state: TooltipState) => JSXElement;
 
 // @public
-export const Tooltip: React_2.FC<TooltipProps>;
+export const Tooltip: {
+    (props: TooltipProps): JSXElement;
+    displayName: string;
+};
 
 // @public
 export type TooltipProps = Omit<TooltipBaseProps, 'children' | 'mountNode' | 'positioning'> & TriggerProps<TooltipTriggerProps> & {
