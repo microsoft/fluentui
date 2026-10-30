@@ -1,9 +1,10 @@
 'use client';
 
-import type { JSXElement } from '@fluentui/react-utilities';
+import type * as React from 'react';
 import type { ToasterProps } from './Toaster.types';
 import { useToaster } from './useToaster';
 import { renderToaster } from './renderToaster';
+import { composeComponentWithoutRef } from '../../../utils/composeComponent';
 
 /**
  * Toaster — subscribes to the event-driven toast state machine and renders
@@ -12,9 +13,8 @@ import { renderToaster } from './renderToaster';
  *
  * Pair with useToastController from @fluentui/react-toast to dispatch and dismiss toasts imperatively.
  */
-export const Toaster = (props: ToasterProps): JSXElement => {
-  const state = useToaster(props);
-  return renderToaster(state);
-};
-
-Toaster.displayName = 'Toaster';
+export const Toaster: React.FC<ToasterProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Toaster',
+  useToaster,
+  renderToaster,
+);

@@ -1,10 +1,11 @@
 'use client';
 
-import type { JSXElement } from '@fluentui/react-utilities';
+import type * as React from 'react';
 import type { TeachingPopoverProps } from './TeachingPopover.types';
 import { useTeachingPopover } from './useTeachingPopover';
 import { useTeachingPopoverContextValues } from './useTeachingPopoverContextValues';
 import { renderTeachingPopover } from './renderTeachingPopover';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
 
 /**
  * Headless TeachingPopover component.
@@ -13,11 +14,9 @@ import { renderTeachingPopover } from './renderTeachingPopover';
  * `PopoverContext` so sub-components built on `useTeachingPopover*Base_unstable`
  * hooks from `@fluentui/react-teaching-popover` resolve their context reads.
  */
-export const TeachingPopover = (props: TeachingPopoverProps): JSXElement => {
-  const state = useTeachingPopover(props);
-  const contextValues = useTeachingPopoverContextValues(state);
-
-  return renderTeachingPopover(state, contextValues);
-};
-
-TeachingPopover.displayName = 'TeachingPopover';
+export const TeachingPopover: React.FC<TeachingPopoverProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'TeachingPopover',
+  useTeachingPopover,
+  useTeachingPopoverContextValues,
+  renderTeachingPopover,
+);

@@ -12,6 +12,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Toolbar: ForwardRefComponent<ToolbarProps> = /*#__PURE__*/ composeComponent(
   'Toolbar',
   useToolbar,
-  renderToolbar,
   useToolbarContextValues,
+  renderToolbar,
 );

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: align headless component composition with overloaded helpers and avoid forwarding unused refs",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "dmytrokirpa@microsoft.com"
+}

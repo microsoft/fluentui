@@ -14,6 +14,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const Listbox: ForwardRefComponent<ListboxProps> = /*#__PURE__*/ composeComponent(
   'Listbox',
   useListbox,
-  renderListbox,
   useListboxContextValues,
+  renderListbox,
 );

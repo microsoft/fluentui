@@ -28,10 +28,7 @@ export type OnOpenChangeData = EventData<string, React_2.SyntheticEvent | Event>
 export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
-export const Popover: {
-    (props: PopoverProps): JSXElement;
-    displayName: string;
-};
+export const Popover: React_2.FC<PopoverProps>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'inertTrapFocus'> & {

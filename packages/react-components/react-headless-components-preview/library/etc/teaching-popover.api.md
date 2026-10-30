@@ -105,10 +105,7 @@ export const renderTeachingPopoverTitle: (state: TeachingPopoverTitleState) => J
 export const renderTeachingPopoverTrigger: (state: TeachingPopoverTriggerState) => JSXElement | null;
 
 // @public
-export const TeachingPopover: {
-    (props: TeachingPopoverProps): JSXElement;
-    displayName: string;
-};
+export const TeachingPopover: React_2.FC<TeachingPopoverProps>;
 
 // @public
 export type TeachingPopoverBaseBridgedContextValue = Pick<PopoverContextValue_2, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow'>;

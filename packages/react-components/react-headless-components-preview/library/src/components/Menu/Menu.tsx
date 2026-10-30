@@ -5,15 +5,14 @@ import { useMenu } from './useMenu';
 import { useMenuContextValues } from './useMenuContextValues';
 import { renderMenu } from './renderMenu';
 import type { MenuProps } from './Menu.types';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
 
 /**
  * Headless Menu component.
  */
-export const Menu: React.FC<MenuProps> = props => {
-  const state = useMenu(props);
-  const contextValues = useMenuContextValues(state);
-
-  return renderMenu(state, contextValues);
-};
-
-Menu.displayName = 'Menu';
+export const Menu: React.FC<MenuProps> = /*#__PURE__*/ composeComponentWithoutRef(
+  'Menu',
+  useMenu,
+  useMenuContextValues,
+  renderMenu,
+);
