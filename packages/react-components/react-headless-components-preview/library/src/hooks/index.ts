@@ -16,7 +16,6 @@ export type {
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningVirtualElement,
-  SetVirtualMouseTarget,
   UsePositioningOptions,
 } from './usePositioning';
 export { POSITIONS, ALIGNMENTS, getPlacementString, resolvePositioningShorthand } from './usePositioning';

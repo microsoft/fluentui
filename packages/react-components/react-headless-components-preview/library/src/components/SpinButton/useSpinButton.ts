@@ -13,9 +13,11 @@ import { toDataAttributeValue } from '../../utils';
 export const useSpinButton = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
   const state: SpinButtonState = useSpinButtonBase_unstable(props, ref);
 
-  // Set data attributes for disabled, spin direction, and bound states to simplify styling.
+  // Set data attributes for disabled, read-only, spin direction, and bound states to simplify styling.
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-disabled'] = toDataAttributeValue(state.input.disabled);
+  // eslint-disable-next-line react-hooks/immutability
+  state.root['data-readonly'] = toDataAttributeValue(state.input.readOnly);
   // eslint-disable-next-line react-hooks/immutability
   state.root['data-spin-state'] = state.spinState !== 'rest' ? state.spinState : undefined;
   // eslint-disable-next-line react-hooks/immutability

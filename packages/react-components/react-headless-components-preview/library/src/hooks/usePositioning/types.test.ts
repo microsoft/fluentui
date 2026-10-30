@@ -19,6 +19,5 @@ describe('positioning types', () => {
     assertEqual<Headless.PositioningBoundary, Canonical.PositioningBoundary>(true);
     assertEqual<Headless.PositioningImperativeRef, Canonical.PositioningImperativeRef>(true);
     assertEqual<Headless.PositioningVirtualElement, Canonical.PositioningVirtualElement>(true);
-    assertEqual<Headless.SetVirtualMouseTarget, Canonical.SetVirtualMouseTarget>(true);
   });
 });

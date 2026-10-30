@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add RangeSlider",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

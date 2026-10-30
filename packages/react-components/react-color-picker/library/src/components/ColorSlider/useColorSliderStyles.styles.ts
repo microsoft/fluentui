@@ -23,6 +23,7 @@ const hueBackground = `linear-gradient(${[
   'yellow',
   'red',
 ].join(',')})`;
+const channelBackground = `linear-gradient(var(${colorSliderCSSVars.sliderDirectionVar}), var(${colorSliderCSSVars.railColorVar}), var(${colorSliderCSSVars.railColorLowVar}))`;
 
 /**
  * Styles for the root slot
@@ -59,10 +60,10 @@ const useChannelStyles = makeStyles({
     backgroundImage: hueBackground,
   },
   saturation: {
-    backgroundImage: `linear-gradient(to right, #808080, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
   value: {
-    backgroundImage: `linear-gradient(to right, #000, var(${colorSliderCSSVars.railColorVar}))`,
+    backgroundImage: channelBackground,
   },
 });
 

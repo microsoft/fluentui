@@ -15,7 +15,6 @@ export type {
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningVirtualElement,
-  SetVirtualMouseTarget,
   UsePositioningOptions,
 } from './hooks/usePositioning';
 export {

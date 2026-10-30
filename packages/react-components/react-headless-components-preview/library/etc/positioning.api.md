@@ -20,7 +20,6 @@ import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import type * as React_2 from 'react';
-import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 
 export { Alignment }
 
@@ -79,8 +78,6 @@ export const POSITIONS: {
 
 // @public (undocumented)
 export const resolvePositioningShorthand: ResolvePositioningShorthand;
-
-export { SetVirtualMouseTarget }
 
 // @public
 export function usePositioning(options: UsePositioningOptions): PositioningReturn;

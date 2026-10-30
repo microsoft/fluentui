@@ -27,6 +27,7 @@ describe('ColorArea', () => {
               value="100"
             />
             <input
+              aria-orientation="vertical"
               class="fui-ColorArea__inputY"
               id="sliderY-_r_f_"
               tabindex="-1"

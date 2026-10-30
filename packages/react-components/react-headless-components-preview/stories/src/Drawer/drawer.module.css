@@ -1,6 +1,6 @@
 /*
   Overlay variant: position fixed to the right edge, slides in via translateX
-  on the [open] attribute. Uses a `::backdrop` (per the native `<dialog>`
+  on the [data-open] attribute. Uses a `::backdrop` (per the native `<dialog>`
   Drawer renders into) for the dim layer.
 */
 .drawerOverlay {
@@ -23,22 +23,81 @@
   padding: 0;
   box-shadow: var(--shadow-4);
   transform: translateX(100%);
-  transition: transform 200ms ease-in-out;
+  transition: overlay var(--duration-medium) allow-discrete;
 }
 
-.drawerOverlay[open] {
+.drawerOverlay[data-open] {
   display: flex;
   transform: translateX(0);
+  animation: drawerEnter var(--duration-medium) var(--ease-standard);
 }
 
-@starting-style {
-  .drawerOverlay[open] {
-    transform: translateX(100%);
-  }
+.drawerOverlay:not([data-open]) {
+  animation: drawerExit var(--duration-medium) var(--ease-standard);
 }
 
 .drawerOverlay::backdrop {
   background: rgba(0, 0, 0, 0.4);
+  transition: overlay var(--duration-medium) allow-discrete;
+}
+
+.drawerOverlay[data-open]::backdrop {
+  animation: drawerBackdropEnter var(--duration-medium) var(--ease-standard);
+}
+
+.drawerOverlay:not([data-open])::backdrop {
+  animation: drawerBackdropExit var(--duration-medium) var(--ease-standard);
+}
+
+@keyframes drawerEnter {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawerExit {
+  from {
+    display: flex;
+    transform: translateX(0);
+  }
+  to {
+    display: none;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes drawerBackdropEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawerBackdropExit {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawerOverlay[data-open],
+  .drawerOverlay:not([data-open]),
+  .drawerOverlay::backdrop,
+  .drawerOverlay[data-open]::backdrop,
+  .drawerOverlay:not([data-open])::backdrop {
+    animation: none;
+    transition: none;
+  }
 }
 
 /*

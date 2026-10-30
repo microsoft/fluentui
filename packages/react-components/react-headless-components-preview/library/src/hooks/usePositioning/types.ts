@@ -17,7 +17,6 @@ export type {
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningVirtualElement,
-  SetVirtualMouseTarget,
 } from '@fluentui/react-positioning';
 
 export type LogicalAlignment = 'start' | 'center' | 'end';

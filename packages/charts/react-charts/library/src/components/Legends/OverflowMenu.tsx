@@ -4,37 +4,39 @@ import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItemCheckbox } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
-import { useOverflowMenu } from '@fluentui/react-overflow';
+import { useOverflowMenu, useOverflowVisibility } from '@fluentui/react-overflow';
 
 export const OverflowMenu: React.FC<{
   itemIds: string[];
   title: string;
   items: JSXElement[];
 }> = ({ itemIds, title, items }) => {
-  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
-  let displayLabel = title;
-  displayLabel = title === '' ? `+${overflowCount} items` : `+${overflowCount} ${title}`;
+  const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+  const { itemVisibility } = useOverflowVisibility();
 
   if (!isOverflowing) {
     return null;
   }
-  const remainingItemsCount = itemIds.length - overflowCount;
   const checkedLegends: string[] = [];
   const menuList = [];
-  for (let i = remainingItemsCount; i < itemIds.length; i++) {
-    const buttonElement = items[i];
-    const value = `${buttonElement.props['data-title'] ?? i}`;
+  for (let index = 0; index < items.length; index++) {
+    const itemId = itemIds[index];
+    if (itemVisibility[itemId] !== false) {
+      continue;
+    }
+    const buttonElement = items[index];
+    const value = `${buttonElement.props['data-title'] ?? index}`;
     if (buttonElement.props['data-selected']) {
       checkedLegends.push(value);
     }
     menuList.push(
       <MenuItemCheckbox
-        key={i}
+        key={itemId}
         name="legends"
         value={value}
         // Full-list position so counts match the listbox.
         aria-setsize={itemIds.length}
-        aria-posinset={i + 1}
+        aria-posinset={index + 1}
         // Hide the checkmark so the row matches the listbox legend; selection is conveyed via aria-checked.
         checkmark={null}
         onClick={e => buttonElement.props.onClick?.(e)}
@@ -54,6 +56,8 @@ export const OverflowMenu: React.FC<{
       </MenuItemCheckbox>,
     );
   }
+  const displayLabel = title === '' ? `+${menuList.length} items` : `+${menuList.length} ${title}`;
+
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>

@@ -40,6 +40,10 @@ The addon can be configured at two levels:
 
 Preset options configure how the addon transforms story source code at build time via `@fluentui/babel-preset-storybook-full-source`.
 
+The transform also emits `parameters.fullSourceIsRunnable`. When it is `false`, the extracted source is incomplete:
+Docs can still show the source and **Open in new tab** can still open the original story, but sandbox export is hidden.
+`fullSourceUnsupportedImports` contains diagnostic specifiers, including for older transforms that omit the boolean.
+
 ```js
 // .storybook/main.ts
 
@@ -73,11 +77,13 @@ const config: StorybookConfig = {
 };
 ```
 
-| Option                      | Type                                            | Description                                                                         |
-| --------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `importMappings`            | `Record<string, { replace: string }>`           | Maps internal package imports to their public re-export package in generated source |
-| `webpackRule`               | `webpack.RuleSetRule`                           | Override the default webpack rule for the story babel loader                        |
-| `babelLoaderOptionsUpdater` | `(options: TransformOptions) => typeof options` | Transform babel-loader options before they are applied                              |
+| Option                      | Type                                            | Description                                                                                        |
+| --------------------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `importMappings`            | `Record<string, { replace: string }>`           | Maps internal package imports to their public re-export package in generated source                |
+| `storyGranularity`          | `'file' \| 'story'`                             | Extract the whole file for the last story (default), or self-contained source per story            |
+| `cssModules`                | `boolean \| { tokensFilePath?: string }`        | Preserve CSS module imports and attach their editable source; optionally include a tokens CSS file |
+| `webpackRule`               | `webpack.RuleSetRule`                           | Override the default webpack rule for the story babel loader                                       |
+| `babelLoaderOptionsUpdater` | `(options: TransformOptions) => typeof options` | Transform babel-loader options before they are applied                                             |
 
 ### Styles
 

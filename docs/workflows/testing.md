@@ -41,6 +41,10 @@ yarn nx run <project>:test -u
 
 Review the snapshot diff to verify the change is correct before committing.
 
+### Motion Preferences in Browser Tests
+
+When asserting animation lifecycles, explicitly emulate `prefers-reduced-motion: no-preference` rather than relying on the runner's operating-system setting. Emulate `reduce` for reduced-motion cases and clear media emulation in `afterEach` so settings do not leak between tests.
+
 ## Conformance Tests
 
 Every component package has a `testing/isConformant.ts` file that validates:

@@ -4,9 +4,12 @@
 
 ```ts
 
+import { ChangeEvent } from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefExoticComponent } from 'react';
 import type { RadioBaseState } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
 import { RadioGroupBaseProps as RadioGroupProps } from '@fluentui/react-radio';
 import { RadioGroupSlots } from '@fluentui/react-radio';
@@ -14,21 +17,27 @@ import { RadioGroupBaseState as RadioGroupState } from '@fluentui/react-radio';
 import { RadioOnChangeData } from '@fluentui/react-radio';
 import { RadioBaseProps as RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
+import { RefAttributes } from '@fluentui/react-utilities';
 import { renderRadio_unstable as renderRadio } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable as renderRadioGroup } from '@fluentui/react-radio';
 import { useRadioGroupBase_unstable as useRadioGroup } from '@fluentui/react-radio';
+import { useRadioGroupContextValue_unstable as useRadioGroupContextValue } from '@fluentui/react-radio';
 
 // @public
-export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots>, "input">, "onChange" | "size"> & {
-    value?: string;
-    labelPosition?: "after" | "below";
-    disabled?: boolean;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
-} & React_2.RefAttributes<HTMLInputElement>>;
+export const Radio: ForwardRefExoticComponent<Omit<ComponentProps<Partial<RadioSlots>, "input">, "onChange" | "size"> & {
+value?: string;
+labelPosition?: "after" | "below";
+disabled?: boolean;
+onChange?: (ev: ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+} & RefAttributes<HTMLInputElement>>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
 
 export { RadioGroupProps }
 
@@ -56,6 +65,8 @@ export { renderRadioGroup }
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
 export { useRadioGroup }
+
+export { useRadioGroupContextValue }
 
 // @public (undocumented)
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;

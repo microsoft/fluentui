@@ -110,8 +110,8 @@ packages/react-conformance @microsoft/fluentui-react-build
 packages/web-components @microsoft/fui-wc
 
 #### Apps
-apps/public-docsite @microsoft/fluentui-v8-website
-apps/public-docsite-resources @microsoft/fluentui-v8-website
+apps/public-docsite @microsoft/fluentui-v8-website @microsoft/cxe-prg
+apps/public-docsite-resources @microsoft/fluentui-v8-website @microsoft/cxe-prg
 apps/perf-test @microsoft/fluentui-react-build
 apps/perf-test-react-components @microsoft/fluentui-react-build
 apps/ts-minbar-test-react @microsoft/fluentui-react-build
@@ -146,8 +146,8 @@ packages/foundation-legacy @microsoft/cxe-prg
 # packages/jest-serializer-merge-styles
 
 packages/merge-styles @microsoft/cxe-prg
-packages/monaco-editor @microsoft/fluentui-v8-website
-packages/public-docsite-setup @microsoft/fluentui-v8-website
+packages/monaco-editor @microsoft/fluentui-v8-website @microsoft/cxe-prg
+packages/public-docsite-setup @microsoft/fluentui-v8-website @microsoft/cxe-prg
 packages/react-components/priority-overflow @microsoft/teams-prg
 packages/react-components/react-aria @microsoft/teams-prg
 packages/react-components/react-aria/library @microsoft/teams-prg
@@ -156,17 +156,17 @@ packages/react-cards @microsoft/cxe-prg
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-prg
-packages/react-docsite-components @microsoft/fluentui-v8-website
+packages/react-docsite-components @microsoft/fluentui-v8-website @microsoft/cxe-prg
 packages/react-examples @microsoft/cxe-prg
 packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-prg
 packages/react-hooks @microsoft/cxe-prg
 packages/react-icons-mdl2 @microsoft/cxe-prg
 packages/react-icons-mdl2-branded @microsoft/cxe-prg
-packages/react-monaco-editor @microsoft/fluentui-v8-website
-packages/react-components/react-positioning @microsoft/teams-prg
-packages/react-components/react-positioning/library @microsoft/teams-prg
-packages/react-components/react-positioning/stories @microsoft/teams-prg
+packages/react-monaco-editor @microsoft/fluentui-v8-website @microsoft/cxe-prg
+packages/react-components/react-positioning @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-positioning/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-overflow @microsoft/teams-prg
 packages/react-components/react-overflow/library @microsoft/teams-prg
 packages/react-components/react-overflow/stories @microsoft/teams-prg
@@ -262,16 +262,16 @@ packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-prg
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
-packages/react-components/react-table/library @microsoft/teams-prg
-packages/react-components/react-table/stories @microsoft/teams-prg
+packages/react-components/react-table/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-table/stories @microsoft/teams-prg @microsoft/cxe-prg
 packages/react-components/react-progress/library @microsoft/cxe-prg
 packages/react-components/react-progress/stories @microsoft/cxe-prg
 packages/react-components/react-persona/library @microsoft/cxe-prg
 packages/react-components/react-persona/stories @microsoft/cxe-prg
-packages/react-components/react-tree/library @microsoft/teams-prg
-packages/react-components/react-tree/stories @microsoft/teams-prg
-packages/react-components/react-virtualizer/library @microsoft/xc-uxe
-packages/react-components/react-virtualizer/stories @microsoft/xc-uxe
+packages/react-components/react-tree/library @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-tree/stories @microsoft/teams-prg @microsoft/cxe-prg
+packages/react-components/react-virtualizer/library @microsoft/xc-uxe @microsoft/cxe-prg
+packages/react-components/react-virtualizer/stories @microsoft/xc-uxe @microsoft/cxe-prg
 packages/react-components/react-skeleton/library @microsoft/cxe-prg
 packages/react-components/react-skeleton/stories @microsoft/cxe-prg
 packages/tokens @microsoft/teams-prg
@@ -312,8 +312,8 @@ packages/react-components/react-list/library @microsoft/teams-prg
 packages/react-components/react-list/stories @microsoft/teams-prg
 packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework
 packages/react-components/react-motion/stories @microsoft/teams-prg @microsoft/fluent-motion-framework
-packages/react-components/react-teaching-popover/library @microsoft/xc-uxe
-packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe
+packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @microsoft/cxe-prg
+packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @microsoft/cxe-prg
 packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
 packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg
 packages/react-components/react-icons-compat/library @microsoft/cxe-prg
@@ -337,6 +337,12 @@ packages/react-components/react-headless-components-preview/library @microsoft/c
 packages/react-components/react-headless-components-preview/stories @microsoft/cxe-prg
 packages/react-components/react-calendar-preview/library @microsoft/cxe-prg
 packages/react-components/react-calendar-preview/stories @microsoft/cxe-prg
+packages/react-components/react-timepicker-preview/library @microsoft/cxe-prg
+packages/react-components/react-timepicker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-datepicker-preview/library @microsoft/cxe-prg
+packages/react-components/react-datepicker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-range-slider-preview/library @microsoft/cxe-prg
+packages/react-components/react-range-slider-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 # Deprecated v9 packages - exposed as part of `/unstable` api

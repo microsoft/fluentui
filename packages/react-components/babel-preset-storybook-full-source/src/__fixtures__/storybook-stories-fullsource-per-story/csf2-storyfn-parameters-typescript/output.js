@@ -10,4 +10,5 @@ Default.parameters = {
     },
   },
 };
+Default.parameters.fullSourceIsRunnable = true;
 Default.parameters.fullSource = 'export const Default = () => <div>Example</div>;\n';
