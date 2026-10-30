@@ -16,7 +16,7 @@
     "unparseable"
   ],
   "properties": {
-    "schemaVersion": { "const": 3 },
+    "schemaVersion": { "const": 4 },
     "tool": { "const": "react-compiler-analyzer" },
     "command": { "const": "lint" },
     "mode": { "enum": ["infer", "annotation", "all"] },

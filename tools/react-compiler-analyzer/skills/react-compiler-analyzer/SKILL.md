@@ -18,13 +18,12 @@ package version.
    did not already choose a mode, ask whether RCA should use `infer` or `annotation`; make `infer`
    the recommended default. Directives can be used in either mode and do not prove that the build
    uses `annotation`.
-4. Inspect the repository before adding parser plugins, risk rules, wrapper resolution, or path
-   aliases. Configure only behavior supported by code or build configuration evidence. When
-   wrapper resolution is enabled, include aliases for first-party TypeScript dependencies exposed
-   by the applicable tsconfig's `compilerOptions.paths` or project-reference graph.
-5. Validate the resulting config with an analysis run. Treat unresolved wrapper imports, missing
-   first-party dependency aliases, or aliases that never match as incomplete configuration, not as
-   a clean risk result.
+4. Inspect the repository before enabling risk rules or opting into custom resolver conditions or
+   entry fields. Configure only behavior supported by source and package metadata. Wrapper
+   resolution reads each importer's tsconfig and package metadata automatically; do not copy aliases
+   into RCA config.
+5. Validate the resulting config with an analysis run. Treat unresolved first-party imports or
+   package boundaries as incomplete risk coverage, not as a clean risk result.
 
 ## Analysis workflow
 
@@ -33,7 +32,7 @@ package version.
 2. Run `analyze` with an explicit `--format json` for machine-readable results.
 3. Use the JSON summary and function records to distinguish:
    - compiler acceptance;
-   - accepted functions with positive, zero, or unavailable reported memo statistics;
+   - accepted functions with positive, zero, or unavailable Oxc `memoSlots` statistics;
    - actual emitted caching, which normal analysis does not verify;
    - suppression-related rejection and any risks retained on those functions;
    - manual memo migration candidates.
@@ -49,6 +48,8 @@ package version.
 - Never interpret compiler acceptance or memo-slot counts as a performance-value ranking.
 - Never infer actual emitted caches or caching of a particular risky operation from analysis-only
   counters. Zero slots do not disqualify preventive bailouts; positive slots do not prove unsafe caching.
+- Treat the exact-pinned Oxc React Compiler port as the analyzed backend. Babel and native SWC
+  comparisons are test-only evidence and do not establish consumer-build parity.
 - Treat redundancy as profile-specific. Justified guards remain protected with `--fix`;
   un-justified cleanup retains its existing behavior and needs consumer-build review.
 - Do not enable `all` compilation mode. Use `infer` by default. If source directives are already

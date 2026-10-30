@@ -61,7 +61,7 @@ function makeFunctionAnalysis(overrides: Partial<FunctionAnalysis>): FunctionAna
     functionName: 'MyComponent',
     status: 'compiled',
     compilerEvent: 'CompileSuccess',
-    memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+    memoStats: { memoSlots: 2 },
     bodyInsertionLine: 6,
     ...overrides,
   };
@@ -90,7 +90,7 @@ describe('printMigrationCandidates', () => {
         functionName: 'MyComponent',
         status: 'compiled',
         compilerEvent: 'CompileSuccess',
-        memoStats: { memoSlots: 3, memoBlocks: 1, memoValues: 2, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 3 },
         manualMemo: { useMemo: 2, useCallback: 1, reactMemo: false, reactMemoHasComparator: false },
         bodyInsertionLine: 6,
       },
@@ -102,7 +102,7 @@ describe('printMigrationCandidates', () => {
         functionName: 'OtherComponent',
         status: 'compiled',
         compilerEvent: 'CompileSuccess',
-        memoStats: { memoSlots: 1, memoBlocks: 0, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 1 },
         manualMemo: { useMemo: 0, useCallback: 0, reactMemo: true, reactMemoHasComparator: false },
         bodyInsertionLine: 11,
       },
@@ -133,7 +133,7 @@ describe('printMigrationCandidates', () => {
         functionName: 'SafeComponent',
         status: 'compiled',
         compilerEvent: 'CompileSuccess',
-        memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 2 },
         manualMemo: { useMemo: 1, useCallback: 0, reactMemo: false, reactMemoHasComparator: false },
         bodyInsertionLine: 6,
       },
@@ -145,7 +145,7 @@ describe('printMigrationCandidates', () => {
         functionName: 'ComparatorComponent',
         status: 'compiled',
         compilerEvent: 'CompileSuccess',
-        memoStats: { memoSlots: 1, memoBlocks: 0, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 1 },
         manualMemo: { useMemo: 0, useCallback: 0, reactMemo: true, reactMemoHasComparator: true },
         bodyInsertionLine: 9,
       },
@@ -199,7 +199,7 @@ describe('printMigrationCandidates', () => {
         functionName: 'MyComponent',
         status: 'compiled',
         compilerEvent: 'CompileSuccess',
-        memoStats: { memoSlots: 1, memoBlocks: 0, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 1 },
       },
     ];
 
@@ -292,12 +292,12 @@ describe('multi-path coverage reporting', () => {
     const results: FunctionAnalysis[] = [
       makeFunctionAnalysis({
         functionName: 'Cached',
-        memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 2 },
       }),
       makeFunctionAnalysis({
         functionName: 'Pruned',
         line: 10,
-        memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+        memoStats: { memoSlots: 0 },
       }),
       makeFunctionAnalysis({
         functionName: 'Unreported',
@@ -316,9 +316,9 @@ describe('multi-path coverage reporting', () => {
     expect(output).toContain('| Compiler accepted (zero reported memo slots) | 1 | 33.3% |');
     expect(output).toContain('| Compiler accepted (memo statistics unavailable) | 1 | 33.3% |');
     expect(output).toContain('| Manual Memo Migration Candidates | 0 | 0.0% of accepted |');
-    expect(output).toContain('| src/Component.tsx:5 | Cached | 2 | 1 | 1 |');
-    expect(output).toContain('| src/Component.tsx:10 | Pruned | 0 | 0 | 0 |');
-    expect(output).toContain('| src/Component.tsx:15 | Unreported | unknown | unknown | unknown |');
+    expect(output).toContain('| src/Component.tsx:5 | Cached | 2 |');
+    expect(output).toContain('| src/Component.tsx:10 | Pruned | 0 |');
+    expect(output).toContain('| src/Component.tsx:15 | Unreported | unknown |');
   });
 
   it('uses muted HTML styling for accepted functions without emitted memo caches', () => {
@@ -328,7 +328,7 @@ describe('multi-path coverage reporting', () => {
       [
         makeFunctionAnalysis({
           functionName: 'Pruned',
-          memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+          memoStats: { memoSlots: 0 },
         }),
       ],
       '/workspace',
@@ -384,11 +384,11 @@ describe('multi-path coverage reporting', () => {
     const results: FunctionAnalysis[] = [
       makeFunctionAnalysis({
         functionName: 'Cached',
-        memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+        memoStats: { memoSlots: 2 },
       }),
       makeFunctionAnalysis({
         functionName: 'Pruned',
-        memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+        memoStats: { memoSlots: 0 },
       }),
       makeFunctionAnalysis({
         functionName: 'Unreported',
@@ -653,7 +653,7 @@ describe('printUnparseableFiles', () => {
     expect(output).toContain('Not Analyzed');
     expect(output).toContain('src/Legacy.tsx');
     expect(output).toContain("Support for 'decorators' isn't enabled (9:1)");
-    // The absolute path Babel prefixes onto the message is noise in a table cell.
+    // An absolute source path prefix is noise in a table cell.
     expect(output).not.toContain('/workspace/src/Legacy.tsx:');
   });
 

@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "Migrate analyzer, lint, and wrapper resolution to Oxc with schema v4 evidence and source-safe diagnostics.",
+  "packageName": "@fluentui/react-compiler-analyzer",
+  "email": "martinhochel@microsoft.com"
+}

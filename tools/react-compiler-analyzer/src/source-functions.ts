@@ -1,8 +1,12 @@
-import type { NodePath, PluginObj } from '@babel/core';
-import type { CallExpression, Directive, Function as BabelFunction, Node, Program } from '@babel/types';
+import type { Node, Program } from 'oxc-parser';
 
 import { compareRiskFindings, compareSpans, compareText } from './ordering';
 import { toWorkspacePath } from './path-utils';
+import { AstParents, walkAst } from './ast/traverse';
+import { SourceLocations } from './ast/loc';
+import { parseSource } from './ast/parse';
+import type { ParsedSource } from './ast/parse';
+import { isReactWrapper, ScopeResolver } from './ast/scope';
 import type {
   DirectiveOccurrence,
   DirectiveType,
@@ -16,10 +20,6 @@ import type {
   SourceSpan,
 } from './types';
 
-interface SourceFunctionPluginOptions {
-  index: SourceFunctionIndex;
-}
-
 type RawLocation = {
   start: { line: number; column: number };
   end?: { line: number; column: number };
@@ -27,43 +27,13 @@ type RawLocation = {
 
 const JUSTIFIED_RE = /(?:^|;)\s*justified\s*:/;
 
-/** Resolve a React API call through its import binding, including renamed imports. */
-export function getReactCallName(path: NodePath<CallExpression>): string | null {
-  const callee = path.node.callee;
-  if (callee.type === 'Identifier') {
-    const binding = path.scope.getBinding(callee.name);
-    if (
-      binding?.path.isImportSpecifier() &&
-      binding.path.parentPath.isImportDeclaration() &&
-      binding.path.parentPath.node.source.value === 'react'
-    ) {
-      const imported = binding.path.node.imported;
-      return imported.type === 'Identifier' ? imported.name : imported.value;
-    }
-  } else if (
-    callee.type === 'MemberExpression' &&
-    !callee.computed &&
-    callee.object.type === 'Identifier' &&
-    callee.property.type === 'Identifier'
-  ) {
-    const binding = path.scope.getBinding(callee.object.name);
-    if (
-      (binding?.path.isImportDefaultSpecifier() || binding?.path.isImportNamespaceSpecifier()) &&
-      binding.path.parentPath.isImportDeclaration() &&
-      binding.path.parentPath.node.source.value === 'react'
-    ) {
-      return callee.property.name;
-    }
-  }
-  return null;
+function isFunction(node: Node): boolean {
+  return (
+    node.type === 'FunctionDeclaration' || node.type === 'FunctionExpression' || node.type === 'ArrowFunctionExpression'
+  );
 }
 
-function isReactWrapper(path: NodePath<CallExpression>): boolean {
-  const name = getReactCallName(path);
-  return name === 'memo' || name === 'forwardRef';
-}
-
-function syntaxOf(node: BabelFunction): SourceFunctionSyntax | null {
+function syntaxOf(node: Node): SourceFunctionSyntax | null {
   if (node.type === 'FunctionDeclaration') {
     return 'declaration';
   }
@@ -76,35 +46,50 @@ function syntaxOf(node: BabelFunction): SourceFunctionSyntax | null {
   return null;
 }
 
-function identifierName(path: NodePath<BabelFunction>): string | null {
-  const node = path.node;
-  if ((node.type === 'FunctionDeclaration' || node.type === 'FunctionExpression') && node.id) {
-    return node.id.name;
+function identifierName(node: Node, parents: AstParents, scopes: ScopeResolver): string | null {
+  if (
+    (node.type === 'FunctionDeclaration' || node.type === 'FunctionExpression') &&
+    (node as Node & { id: Node | null }).id
+  ) {
+    const id = (node as Node & { id: Node }).id;
+    return (id as Node & { name: string }).name;
   }
 
-  let parent = path.parentPath;
-  if (parent?.isVariableDeclarator() && parent.node.init === node && parent.node.id.type === 'Identifier') {
-    return parent.node.id.name;
-  }
-  let value: Node = node;
-  while (parent?.isCallExpression() && parent.node.arguments[0] === value) {
-    const declarator = parent.parentPath;
-    if (declarator?.isVariableDeclarator() && declarator.node.id.type === 'Identifier') {
-      return declarator.node.id.name;
+  const parent = parents.get(node);
+  if (parent?.type === 'VariableDeclarator' && (parent as Node & { init: Node | null }).init === node) {
+    const id = (parent as Node & { id: Node }).id;
+    if (id.type === 'Identifier') {
+      return (id as Node & { name: string }).name;
     }
-    if (!isReactWrapper(parent)) {
+  }
+
+  let value = node;
+  let current = parent;
+  while (current?.type === 'CallExpression' && (current as Node & { arguments: Node[] }).arguments[0] === value) {
+    const declarator = parents.get(current);
+    if (declarator?.type === 'VariableDeclarator') {
+      const id = (declarator as Node & { id: Node }).id;
+      if (id.type === 'Identifier') {
+        return (id as Node & { name: string }).name;
+      }
+    }
+    if (!isReactWrapper(current, scopes)) {
       break;
     }
-    value = parent.node;
-    parent = parent.parentPath;
+    value = current;
+    current = parents.get(current);
   }
 
   return null;
 }
 
-function isInlineReactWrapper(path: NodePath<BabelFunction>): boolean {
-  const call = path.parentPath;
-  return Boolean(call?.isCallExpression() && call.node.arguments[0] === path.node && isReactWrapper(call));
+function isInlineReactWrapper(node: Node, parents: AstParents, scopes: ScopeResolver): boolean {
+  const parent = parents.get(node);
+  return (
+    parent?.type === 'CallExpression' &&
+    (parent as Node & { arguments: Node[] }).arguments[0] === node &&
+    isReactWrapper(parent, scopes)
+  );
 }
 
 function classify(name: string | null, inlineWrapper: boolean): SourceFunctionKind {
@@ -118,9 +103,9 @@ function classify(name: string | null, inlineWrapper: boolean): SourceFunctionKi
 }
 
 /**
- * Snapshot-local inventory of every function parsed in one source file.
- *
- * All producers resolve through this index instead of maintaining their own line/column aliases.
+ * Canonical inventory of functions parsed in one source file. Function IDs and spans always
+ * refer to the untransformed UTF-16 source, so compiler diagnostics can be mapped without
+ * relying on generated names or traversal order.
  */
 export class SourceFunctionIndex {
   private readonly functionsById = new Map<string, SourceFunction>();
@@ -128,29 +113,43 @@ export class SourceFunctionIndex {
   private readonly functionsByBodyOffsets = new Map<string, SourceFunction>();
   private readonly functionsByDeclarationStart = new Map<number, SourceFunction>();
   private readonly functionsByBodyStart = new Map<number, SourceFunction>();
-  private readonly lineStarts: number[];
+  private readonly locations: SourceLocations;
   private readonly relativeFile: string;
   private readonly allDirectives: DirectiveOccurrence[] = [];
+  private parsed: ParsedSource | null = null;
+  private scopes: ScopeResolver | null = null;
   private orderedFunctions: SourceFunction[] | null = null;
 
   public constructor(public readonly source: string, public readonly entry: FileEntry, workspaceRoot: string) {
     this.relativeFile = toWorkspacePath(workspaceRoot, entry.filePath);
-    this.lineStarts = [0];
-    for (let offset = 0; offset < source.length; offset++) {
-      const code = source.charCodeAt(offset);
-      if (code === 13 && source.charCodeAt(offset + 1) === 10) {
-        offset++;
-      }
-      if (code === 10 || code === 13 || code === 0x2028 || code === 0x2029) {
-        this.lineStarts.push(offset + 1);
-      }
-    }
+    this.locations = new SourceLocations(source);
   }
 
-  public addFunction(path: NodePath<BabelFunction>): SourceFunction | null {
-    const syntax = syntaxOf(path.node);
-    const declarationSpan = this.spanFromNode(path.node);
-    const bodySpan = this.spanFromNode(path.node.body);
+  public addProgram(parsed: ParsedSource, scopes = new ScopeResolver(parsed.program)): void {
+    this.parsed = parsed;
+    this.scopes = scopes;
+    this.addFileDirectives(parsed.program);
+    walkAst(
+      parsed.program,
+      {
+        enter: node => {
+          if (isFunction(node)) {
+            this.addFunction(node);
+          }
+        },
+      },
+      parsed.parents,
+    );
+  }
+
+  public addFunction(node: Node): SourceFunction | null {
+    if (!isFunction(node) || !this.parsed || !this.scopes) {
+      return null;
+    }
+    const syntax = syntaxOf(node);
+    const declarationSpan = this.spanFromNode(node);
+    const body = (node as Node & { body: Node }).body;
+    const bodySpan = this.spanFromNode(body);
     if (!syntax || !declarationSpan || !bodySpan) {
       return null;
     }
@@ -161,17 +160,17 @@ export class SourceFunctionIndex {
       return existing;
     }
 
-    const name = identifierName(path);
+    const name = identifierName(node, this.parsed.parents, this.scopes);
     const id = `${this.relativeFile}#${declarationSpan.start.offset}-${declarationSpan.end.offset}`;
     const bodyInsertionOffset =
-      path.node.body.type === 'BlockStatement' ? Math.min(bodySpan.start.offset + 1, bodySpan.end.offset) : null;
+      body.type === 'BlockStatement' ? Math.min(bodySpan.start.offset + 1, bodySpan.end.offset) : null;
     const fn: SourceFunction = {
       id,
       filePath: this.entry.filePath,
       packageName: this.entry.packageName,
       packageRoot: this.entry.packageRoot ?? null,
       name,
-      kind: classify(name, isInlineReactWrapper(path)),
+      kind: classify(name, isInlineReactWrapper(node, this.parsed.parents, this.scopes)),
       syntax,
       declarationSpan,
       bodySpan,
@@ -180,8 +179,8 @@ export class SourceFunctionIndex {
       directives: [],
     };
 
-    if (path.node.body.type === 'BlockStatement') {
-      fn.directives.push(...this._directiveOccurrences(path.node.body.directives ?? [], id));
+    if (body.type === 'BlockStatement') {
+      fn.directives.push(...this._directiveOccurrences((body as Node & { body: Node[] }).body, id));
     }
     this.functionsById.set(id, fn);
     this.functionsByOffsets.set(offsetsKey, fn);
@@ -193,7 +192,7 @@ export class SourceFunctionIndex {
   }
 
   public addFileDirectives(program: Program): void {
-    this._directiveOccurrences(program.directives ?? [], null);
+    this._directiveOccurrences(program.body, null);
   }
 
   public values(): SourceFunction[] {
@@ -215,9 +214,6 @@ export class SourceFunctionIndex {
   }
 
   public findByNode(node: Node): SourceFunction | null {
-    if (typeof node.start !== 'number' || typeof node.end !== 'number') {
-      return null;
-    }
     return this.functionsByOffsets.get(this._offsetsKey(node.start, node.end)) ?? null;
   }
 
@@ -227,7 +223,7 @@ export class SourceFunctionIndex {
   }
 
   public resolveStart(line: number, column: number): SourceFunction | null {
-    const offset = this._offsetAt(line, column);
+    const offset = this.locations.offsetAt(line, column);
     return this.functionsByDeclarationStart.get(offset) ?? this.functionsByBodyStart.get(offset) ?? null;
   }
 
@@ -248,7 +244,6 @@ export class SourceFunctionIndex {
     if (bodyStart) {
       return bodyStart;
     }
-
     let enclosing: SourceFunction | null = null;
     for (const fn of this.values()) {
       if (
@@ -262,6 +257,23 @@ export class SourceFunctionIndex {
       }
     }
     return enclosing;
+  }
+
+  public enclosingFunctions(span: SourceSpan): SourceFunction[] {
+    return this.values()
+      .filter(
+        fn => fn.declarationSpan.start.offset <= span.start.offset && fn.declarationSpan.end.offset >= span.end.offset,
+      )
+      .sort(
+        (a, b) =>
+          a.declarationSpan.end.offset -
+          a.declarationSpan.start.offset -
+          (b.declarationSpan.end.offset - b.declarationSpan.start.offset),
+      );
+  }
+
+  public resolveEnclosingFunction(span: SourceSpan, eligibleFunctionIds: ReadonlySet<string>): SourceFunction | null {
+    return this.enclosingFunctions(span).find(fn => eligibleFunctionIds.has(fn.id)) ?? null;
   }
 
   public spanFromLocation(location: RawLocation | null | undefined): SourceSpan | null {
@@ -280,12 +292,12 @@ export class SourceFunctionIndex {
   }
 
   public spanFromNode(node: Node): SourceSpan | null {
-    if (!node.loc || typeof node.start !== 'number' || typeof node.end !== 'number') {
+    if (typeof node.start !== 'number' || typeof node.end !== 'number') {
       return null;
     }
     return {
-      start: { line: node.loc.start.line, column: node.loc.start.column, offset: node.start },
-      end: { line: node.loc.end.line, column: node.loc.end.column, offset: node.end },
+      start: this.locations.positionAt(node.start),
+      end: this.locations.positionAt(node.end),
     };
   }
 
@@ -328,28 +340,28 @@ export class SourceFunctionIndex {
     }
   }
 
-  private _directiveOccurrences(directives: Directive[], functionId: string | null): DirectiveOccurrence[] {
+  private _directiveOccurrences(statements: Node[], functionId: string | null): DirectiveOccurrence[] {
     const occurrences: DirectiveOccurrence[] = [];
-    for (const directive of directives) {
+    for (const statement of statements) {
+      const directiveStatement = statement as Node & { directive?: string };
+      const directive = directiveStatement.directive;
       const directiveType: DirectiveType | null =
-        directive.value.value === 'use memo'
-          ? 'use-memo'
-          : directive.value.value === 'use no memo'
-          ? 'use-no-memo'
-          : null;
-      const span = this.spanFromNode(directive);
-      if (!directiveType || !span) {
+        directive === 'use memo' ? 'use-memo' : directive === 'use no memo' ? 'use-no-memo' : null;
+      if (!directiveType) {
+        continue;
+      }
+      const span = this.spanFromNode(statement);
+      if (!span) {
         continue;
       }
       const lineText = this.source.split(/\r\n|[\r\n\u2028\u2029]/)[span.start.line - 1] ?? '';
-      const comment = directive.trailingComments?.find(
+      const comment = this.parsed?.comments.find(
         candidate =>
-          candidate.loc?.start.line === span.end.line &&
-          typeof candidate.start === 'number' &&
+          candidate.start >= span.end.offset &&
+          this.locations.positionAt(candidate.start).line === span.end.line &&
           this.source.slice(span.end.offset, candidate.start).trim() === '',
       );
-      const commentText = comment?.value;
-      const justified = commentText ? JUSTIFIED_RE.test(commentText) : false;
+      const justified = Boolean(comment && JUSTIFIED_RE.test(comment.value));
       const occurrence: DirectiveOccurrence = {
         id: `${this.relativeFile}#directive-${span.start.offset}-${span.end.offset}`,
         directiveType,
@@ -359,7 +371,7 @@ export class SourceFunctionIndex {
         column: span.start.column,
         lineText,
         justified,
-        ...(justified ? { justification: commentText!.trim() } : {}),
+        ...(justified ? { justification: comment!.value.trim() } : {}),
       };
       occurrences.push(occurrence);
       this.allDirectives.push(occurrence);
@@ -368,12 +380,7 @@ export class SourceFunctionIndex {
   }
 
   private _positionAt(line: number, column: number): SourcePosition {
-    return { line, column, offset: this._offsetAt(line, column) };
-  }
-
-  private _offsetAt(line: number, column: number): number {
-    const lineOffset = this.lineStarts[Math.max(0, line - 1)] ?? this.source.length;
-    return Math.min(this.source.length, Math.max(0, lineOffset + column));
+    return this.locations.positionAt(this.locations.offsetAt(line, column));
   }
 
   private _offsetsKey(start: number, end: number): string {
@@ -385,19 +392,15 @@ export class SourceFunctionIndex {
   }
 }
 
-/** Populate a {@link SourceFunctionIndex} during the same Babel pass as the compiler. */
-export function sourceFunctionPlugin(): PluginObj {
-  return {
-    name: 'react-compiler-source-function-index',
-    visitor: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      Program(path, state) {
-        (state.opts as unknown as SourceFunctionPluginOptions).index.addFileDirectives(path.node);
-      },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      Function(path, state) {
-        (state.opts as unknown as SourceFunctionPluginOptions).index.addFunction(path as NodePath<BabelFunction>);
-      },
-    },
-  };
+export function populateSourceFunctions(source: string, filePath: string, index: SourceFunctionIndex): void;
+export function populateSourceFunctions(parsed: ParsedSource, index: SourceFunctionIndex): void;
+export function populateSourceFunctions(
+  sourceOrParsed: string | ParsedSource,
+  filePathOrIndex: string | SourceFunctionIndex,
+  maybeIndex?: SourceFunctionIndex,
+): void {
+  const parsed =
+    typeof sourceOrParsed === 'string' ? parseSource(sourceOrParsed, filePathOrIndex as string) : sourceOrParsed;
+  const index = typeof sourceOrParsed === 'string' ? maybeIndex! : (filePathOrIndex as SourceFunctionIndex);
+  index.addProgram(parsed);
 }

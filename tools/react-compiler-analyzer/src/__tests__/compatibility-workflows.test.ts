@@ -1,10 +1,9 @@
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 import Ajv from 'ajv';
 
-import { revalidateJustifiedDirectives } from '../analyzer';
+import { analyzeNoMemoDirectives, revalidateJustifiedDirectives } from '../analyzer';
 import * as compiler from '../compiler';
 import { compileFile } from '../compiler';
 import { runAnalyze } from '../commands/analyze';
@@ -31,13 +30,14 @@ describe('syntax compatibility and opt-in workflows', () => {
   let filePath: string;
 
   beforeEach(() => {
-    root = mkdtempSync(join(tmpdir(), 'rca-compatibility-'));
+    root = mkdtempSync(join(__dirname, '../../.rca-compatibility-'));
     filePath = join(root, 'value.ts');
   });
 
   afterEach(() => {
     jest.restoreAllMocks();
-    jest.dontMock('babel-plugin-react-compiler/package.json');
+    jest.dontMock('oxc-transform-react/package.json');
+    jest.dontMock('oxc-parser/package.json');
     jest.resetModules();
     rmSync(root, { recursive: true, force: true });
   });
@@ -51,7 +51,6 @@ describe('syntax compatibility and opt-in workflows', () => {
       mode: 'infer' as const,
       format: 'json' as const,
       'strict-paths': false,
-      'parser-plugin': [],
       annotate: undefined,
       quote: 'single' as const,
       fix: false,
@@ -340,23 +339,32 @@ export function useValue(initial = 0) {
     expect(readFileSync(filePath, 'utf-8')).toBe(original);
   });
 
-  it('honors explicit parser overrides and falls back to first-pass parser settings', async () => {
-    writeFileSync(
-      filePath,
-      'declare const decorate: ClassDecorator;\n@decorate class Legacy {}\n' +
-        source("'use no memo'; // justified: retain"),
-    );
-    const firstPass = await compileFile({ filePath, packageName: null }, 'infer', false, {}, undefined, [
-      'decorators-legacy',
-    ]);
-    expect(firstPass.error).toBeUndefined();
-    const overridden = await revalidateJustifiedDirectives(firstPass, 'infer', { parserPlugins: [] });
-    expect(overridden[0].status).toBe('broken');
-    const fallback = await revalidateJustifiedDirectives(firstPass, 'infer');
-    expect(fallback[0].status).toBe('active');
-    const explicit = await revalidateJustifiedDirectives(firstPass, 'infer', { parserPlugins: ['decorators-legacy'] });
-    expect(explicit[0].status).toBe('active');
-  });
+  it.each<CompilationMode>(['infer', 'annotation', 'all'])(
+    'uses native grammar and the same %s settings for both probe kinds',
+    async mode => {
+      writeFileSync(
+        filePath,
+        'declare const decorate: ClassDecorator;\n@decorate class Legacy {}\n' +
+          'const cast = <number>1;\n' +
+          source("'use no memo'; // justified: retain") +
+          "\nexport function useOrdinary() { 'use no memo'; const [value] = useState(cast); return value; }",
+      );
+      const firstPass = await compileFile({ filePath, packageName: null }, mode, false);
+      expect(firstPass.error).toBeUndefined();
+      jest.mocked(compiler.compileSource).mockClear();
+      const ordinary = await analyzeNoMemoDirectives(firstPass, mode);
+      const justified = await revalidateJustifiedDirectives(firstPass, mode);
+      expect(ordinary[0].status).toBe(mode === 'annotation' ? 'redundant' : 'active');
+      expect(justified[0].status).toBe(mode === 'annotation' ? 'redundant' : 'active');
+      expect(compiler.compileSource).toHaveBeenCalledTimes(2);
+      for (const [input, name, options] of jest.mocked(compiler.compileSource).mock.calls) {
+        expect(name).toBe(filePath);
+        expect(input).toContain('@decorate class Legacy');
+        expect(input).toContain('<number>1');
+        expect(options).toEqual({ compilationMode: mode });
+      }
+    },
+  );
 
   it.each([
     [
@@ -386,19 +394,19 @@ export function useValue(initial = 0) {
     ['invalid version', () => ({ version: 0 })],
   ])('warns for %s metadata without failing analysis', async (_label, metadata) => {
     writeFileSync(filePath, source());
-    jest.doMock('babel-plugin-react-compiler/package.json', metadata);
+    jest.doMock('oxc-transform-react/package.json', metadata);
     const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     const lines: string[] = [];
     jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
     expect(await runAnalyze({ ...argv(), format: 'cli', verbose: true })).toBe(0);
     expect(warning).toHaveBeenCalledWith(expect.stringContaining('Warning:'));
-    expect(lines.join('\n')).toContain('React Compiler unavailable;');
+    expect(lines.join('\n')).toContain('Backend: Oxc unavailable;');
     expect(lines.join('\n')).toContain('Compiler accepted');
   });
 
   it('does not hide actual compiler failures when informational metadata is invalid', async () => {
     writeFileSync(filePath, source());
-    jest.doMock('babel-plugin-react-compiler/package.json', () => ({}));
+    jest.doMock('oxc-transform-react/package.json', () => ({}));
     jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     jest.spyOn(console, 'log').mockImplementation(() => undefined);
     const firstPass = await compiled();
@@ -411,8 +419,8 @@ export function useValue(initial = 0) {
 
   it('includes resolved compiler metadata in verbose JSON without contaminating stdout', async () => {
     writeFileSync(filePath, source());
-    const metadata = jest.fn(() => ({ version: '1.0.0' }));
-    jest.doMock('babel-plugin-react-compiler/package.json', metadata);
+    const metadata = jest.fn(() => ({ version: '0.156.0' }));
+    jest.doMock('oxc-transform-react/package.json', metadata);
     const {
       code,
       doc: document,
@@ -421,7 +429,7 @@ export function useValue(initial = 0) {
     expect(code).toBe(0);
     expect(document).not.toHaveProperty('compiler');
     expect(metadata).toHaveBeenCalled();
-    expect(document.profile.compilerVersion).toBe('1.0.0');
+    expect(document.profile.compilerVersion).toBe('0.156.0');
     expect(stderr.join('\n')).toContain('Analyzing:');
   });
 
@@ -447,8 +455,8 @@ export function useValue(initial = 0) {
     jest.spyOn(console, 'log').mockImplementation((...args: unknown[]) => lines.push(args.join(' ')));
     await runAnalyze({ ...argv(), format, verbose: true });
     const output = lines.join('\n');
-    expect(output.match(/Backend: Babel /g)).toHaveLength(1);
-    expect(output).toMatch(/React Compiler \d/);
+    expect(output.match(/Backend: Oxc /g)).toHaveLength(1);
+    expect(output).toMatch(/parser \d/);
     expect(output).toContain('Syntax-only TypeScript parsing');
     lines.length = 0;
     await runAnalyze({ ...argv(), format, verbose: false });

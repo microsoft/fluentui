@@ -1,7 +1,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
-import { transformSync } from '@babel/core';
+import { testRoot as tmpdir } from './helpers/test-root';
+import { transformSync } from 'oxc-transform-react';
 
 import { analyzeNoMemoDirectives, deriveMemoDirectiveStatuses } from '../analyzer';
 import { compileFile, compileFiles } from '../compiler';
@@ -123,13 +123,10 @@ export function MyComponent({ label }: { label: string }) {
     expect(readFileSync(componentFile, 'utf-8')).toBe(source);
 
     const transform = (input: string) =>
-      transformSync(input, {
-        filename: componentFile,
-        babelrc: false,
-        configFile: false,
-        parserOpts: { plugins: ['jsx'] },
-        plugins: [[require.resolve('babel-plugin-react-compiler'), { compilationMode: 'infer' }]],
-      })!.code!;
+      transformSync(componentFile, input, {
+        jsx: 'preserve',
+        reactCompiler: { compilationMode: 'infer', target: '19', panicThreshold: 'none' },
+      }).code!;
     expect(transform(source)).not.toContain('react/compiler-runtime');
     expect(transform(source.replace("'use no memo';", ''))).toContain('react/compiler-runtime');
   });
@@ -834,7 +831,7 @@ describe('lint command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Lint ━━
 
-      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Backend: Oxc <VERSION>; parser <VERSION>; mode=infer; jsx=preserve; outputMode=client; noEmit=false (in-memory only); panicThreshold=none; target=19; suppression rules=compiler-default; synthetic gating=__rca_gate__/__rcaGate.
       Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
 
       📋 Scan & compile log
@@ -850,7 +847,7 @@ describe('lint command — scan log wrapping', () => {
       Analyzing: <TEMP>/src/L.tsx
         [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
 
-      Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       wrap-test-lint-pkg

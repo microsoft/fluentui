@@ -1,6 +1,6 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync } from 'fs';
 import { join } from 'path';
-import { tmpdir } from 'os';
+import { testRoot as tmpdir } from './helpers/test-root';
 
 import { compileFile, compileFiles } from '../compiler';
 import * as compiler from '../compiler';
@@ -9,9 +9,10 @@ import { CliError, DEFAULT_EXCLUDE } from '../commands/shared';
 import { deriveCoverage } from '../coverage-analyzer';
 import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
-import type { FileEntry, FunctionAnalysis } from '../types';
+import { createResolverStats } from '../module-resolver';
+import type { AnalysisDocument, FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
+import { captureJson, normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -19,6 +20,50 @@ jest.mock('../compiler', () => {
 });
 
 const analyzeCommand = createAnalyzeCommand({});
+
+describe('visible resolver limitations', () => {
+  it.each(['tsconfig-fallback', 'unsupported-target', 'error'] as const)(
+    'reports %s outside verbose mode without contaminating JSON',
+    async kind => {
+      const pkg = createTempPackage('resolver-reporting');
+      writeComponent(pkg, 'Example.tsx', COMPILABLE_COMPONENT);
+      const stats = createResolverStats();
+      stats.diagnostics.push({
+        kind,
+        specifier: '@app/store',
+        fromFile: join(pkg.srcDir, 'Example.tsx'),
+        message: 'explicit resolver limitation',
+      });
+      const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+      jest.mocked(compiler.compileFilesStreaming).mockImplementationOnce(async (_files, options) => {
+        options.onResolverStats?.(stats);
+      });
+      try {
+        const { code, doc } = await captureJson<AnalysisDocument>(() =>
+          runAnalyze({
+            paths: [pkg.srcDir],
+            verbose: false,
+            mode: 'infer',
+            concurrency: 1,
+            exclude: [],
+            format: 'json',
+            'strict-paths': true,
+            annotate: undefined,
+            quote: 'single',
+            riskConfig: { detectGetStateReads: true },
+          }),
+        );
+        expect(code).toBe(0);
+        expect(doc.schemaVersion).toBe(4);
+        expect(warning).toHaveBeenCalledWith(
+          expect.stringContaining(`wrapper resolution ${kind}: explicit resolver limitation`),
+        );
+      } finally {
+        warning.mockRestore();
+      }
+    },
+  );
+});
 
 async function analyzeForCoverage(entry: FileEntry): Promise<FunctionAnalysis[]> {
   const compiled = await compileFile(entry, 'infer', false);
@@ -215,7 +260,6 @@ describe('analyze command — file-level failures', () => {
       mode: 'infer',
       format: 'json',
       'strict-paths': false,
-      'parser-plugin': [],
       annotate: undefined,
       quote: 'single',
       ...overrides,
@@ -272,7 +316,7 @@ describe('analyze command — file-level failures', () => {
       expect(await runAnalyze(argv())).toBe(1);
       const doc = JSON.parse(output.join(''));
       expect(doc.summary.unparseableFiles).toBe(1);
-      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringContaining('Unexpected') }]);
+      expect(doc.unparseable).toEqual([{ file: expect.any(String), error: expect.stringMatching(/\S/) }]);
       expect(doc.functions).toEqual([]);
     } finally {
       write.mockRestore();
@@ -689,7 +733,7 @@ describe('analyze command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Analysis ━━
 
-      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Backend: Oxc <VERSION>; parser <VERSION>; mode=infer; jsx=preserve; outputMode=client; noEmit=false (in-memory only); panicThreshold=none; target=19; suppression rules=compiler-default; synthetic gating=__rca_gate__/__rcaGate.
       Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
 
       📋 Scan & compile log
@@ -721,9 +765,9 @@ describe('analyze command — scan log wrapping', () => {
 
       ▸ Compiler accepted (positive reported memo slots) (1)
 
-      Location     Function  Memo Slots  Memo Blocks  Memo Values
-      ───────────  ────────  ──────────  ───────────  ───────────
-      src/A.tsx:1  A         1           1            1
+      Location     Function  Memo Slots
+      ───────────  ────────  ──────────
+      src/A.tsx:1  A         1
 
       Summary
       ───────

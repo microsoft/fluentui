@@ -1,11 +1,9 @@
-import { version as babelVersion } from '@babel/core';
-
 import type { AnalysisProfile, CompilationMode } from './types';
 
-function reactCompilerVersion(): string {
+function packageVersion(packageName: 'oxc-transform-react' | 'oxc-parser'): string {
   let compilerPackage: unknown;
   try {
-    compilerPackage = require('babel-plugin-react-compiler/package.json');
+    compilerPackage = require(`${packageName}/package.json`);
   } catch (error) {
     if (
       !(error instanceof SyntaxError) &&
@@ -26,7 +24,7 @@ function reactCompilerVersion(): string {
     ) {
       throw error;
     }
-    console.warn(`Warning: cannot read Babel React Compiler version metadata: ${error.message}`);
+    console.warn(`Warning: cannot read ${packageName} version metadata: ${error.message}`);
     return 'unavailable';
   }
   if (
@@ -36,22 +34,26 @@ function reactCompilerVersion(): string {
     typeof compilerPackage.version !== 'string' ||
     compilerPackage.version.length === 0
   ) {
-    console.warn('Warning: Babel React Compiler version metadata has no valid version.');
+    console.warn(`Warning: ${packageName} version metadata has no valid version.`);
     return 'unavailable';
   }
   return compilerPackage.version;
 }
 
-export function createAnalysisProfile(mode: CompilationMode, parserPlugins: string[] = []): AnalysisProfile {
+export function createAnalysisProfile(mode: CompilationMode): AnalysisProfile {
   return {
-    backend: 'babel',
-    babelVersion,
-    compilerVersion: reactCompilerVersion(),
+    backend: 'oxc',
+    compilerVersion: packageVersion('oxc-transform-react'),
+    parserVersion: packageVersion('oxc-parser'),
     mode,
-    parserPlugins: [...parserPlugins],
-    noEmit: true,
+    jsx: 'preserve',
+    outputMode: 'client',
+    sourcemap: true,
+    noEmit: false,
     panicThreshold: 'none',
-    target: 'compiler-default',
+    reportDiagnostics: true,
+    target: '19',
     suppressionRules: 'compiler-default',
+    gating: { source: '__rca_gate__', importSpecifierName: '__rcaGate' },
   };
 }

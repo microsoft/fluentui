@@ -6,7 +6,6 @@ import { compareCompilerEvidence } from './revalidation-evidence';
 import type { CompilationMode, DirectiveAnalysis, DirectiveOccurrence, FunctionAnalysis } from './types';
 
 export interface DirectiveAnalysisOptions {
-  parserPlugins?: string[];
   revalidateJustified?: boolean;
 }
 
@@ -118,7 +117,7 @@ export function deriveMemoDirectiveStatuses(
         toDirectiveAnalysis(result, directive, {
           status: 'broken',
           compilerEvent: 'none',
-          reason: `babel parse error:\n${result.error.stack ?? result.error.message}`,
+          reason: `source analysis failed:\n${result.error.stack ?? result.error.message}`,
         }),
       );
       continue;
@@ -165,7 +164,7 @@ function neutralizeNoMemo(source: string, directives: DirectiveOccurrence[]): st
 
 /**
  * Probe `'use no memo'` directives by neutralizing them in place. Source offsets, CRLF line
- * endings, parser plugins, and every other compiler setting remain identical to the first pass.
+ * endings and every other compiler setting remain identical to the first pass.
  */
 export async function analyzeNoMemoDirectives(
   result: FileCompilationResult,
@@ -195,10 +194,27 @@ export async function analyzeNoMemoDirectives(
     return preserved;
   }
 
+  const firstPass = normalizeCompilerEvents(result.events, result.source, result.sourceFunctions);
+  const firstPassFailure =
+    result.error?.message ||
+    firstPass.unattributedErrors.map(item => item.reason).join('; ') ||
+    result.events.find(item => item.kind === 'PipelineError')?.data ||
+    (result.events.some(item => item.kind === 'PipelineError') ? 'compiler pipeline failed' : undefined);
+  if (firstPassFailure) {
+    return [
+      ...preserved,
+      ...directives.map(directive =>
+        toDirectiveAnalysis(result, directive, {
+          status: 'broken',
+          compilerEvent: 'PipelineError',
+          reason: `original analysis unavailable: ${firstPassFailure}`,
+        }),
+      ),
+    ];
+  }
   const modifiedSource = neutralizeNoMemo(result.source, directives);
   const { events, error } = await compileSource(modifiedSource, result.filePath, {
     compilationMode,
-    parserPlugins: options.parserPlugins ?? result.parserPlugins,
   });
 
   if (verbose && !error) {
@@ -227,6 +243,21 @@ export async function analyzeNoMemoDirectives(
   const normalized = normalizeCompilerEvents(events, modifiedSource, result.sourceFunctions, {
     sourceHash: result.sourceHash,
   });
+  const pipelineFailure = events.find(item => item.kind === 'PipelineError');
+  if (normalized.unattributedErrors.length > 0 || pipelineFailure) {
+    const reason =
+      normalized.unattributedErrors.map(item => `${item.kind}: ${item.reason}`).join('; ') || pipelineFailure?.data;
+    return [
+      ...preserved,
+      ...directives.map(directive =>
+        toDirectiveAnalysis(result, directive, {
+          status: 'broken',
+          compilerEvent: 'PipelineError',
+          reason: `opt-out probe unavailable: ${reason || 'compiler pipeline failed'}`,
+        }),
+      ),
+    ];
+  }
   const analyses = new Map(normalized.analyses.map(analysis => [analysis.sourceFunctionId!, analysis]));
 
   return [
@@ -260,11 +291,12 @@ export async function analyzeNoMemoDirectives(
 export async function revalidateJustifiedDirectives(
   result: FileCompilationResult,
   compilationMode: CompilationMode,
-  options: DirectiveAnalysisOptions = {},
+  _options: DirectiveAnalysisOptions = {},
 ): Promise<DirectiveAnalysis[]> {
   const directives = result.sourceFunctions.directives();
   const conflicts = conflictIds(directives, true);
-  const original = analysisByFunction(result);
+  const firstPass = normalizeCompilerEvents(result.events, result.source, result.sourceFunctions);
+  const original = new Map(firstPass.analyses.map(analysis => [analysis.sourceFunctionId!, analysis]));
   const output: DirectiveAnalysis[] = [];
   for (const directive of directives.filter(item => item.justified)) {
     const initial = directive.functionId ? original.get(directive.functionId) : undefined;
@@ -293,13 +325,20 @@ export async function revalidateJustifiedDirectives(
     }
     if (
       result.error ||
+      firstPass.unattributedErrors.length > 0 ||
+      result.events.some(item => item.kind === 'PipelineError') ||
       initial?.compilerEvent === 'PipelineError' ||
       (directive.directiveType === 'use-memo' && initial?.status !== 'compiled')
     ) {
       report({
         status: 'broken',
         compilerEvent: compilerEventOf(initial),
-        reason: result.error?.message ?? initial?.reason ?? 'original opt-in has no successful compiler outcome',
+        reason:
+          result.error?.message ||
+          firstPass.unattributedErrors.map(item => item.reason).join('; ') ||
+          result.events.find(item => item.kind === 'PipelineError')?.data ||
+          initial?.reason ||
+          'original directive has no successful compiler outcome',
       });
       continue;
     }
@@ -312,17 +351,23 @@ export async function revalidateJustifiedDirectives(
     const source = result.source.slice(0, start.offset) + neutral + result.source.slice(end.offset);
     const probe = await compileSource(source, result.filePath, {
       compilationMode,
-      parserPlugins: options.parserPlugins ?? result.parserPlugins,
     });
     const normalized = normalizeCompilerEvents(probe.events, source, result.sourceFunctions);
     const analysis = normalized.analyses.find(item => item.sourceFunctionId === directive.functionId);
-    if (probe.error || normalized.unattributedErrors.length > 0 || analysis?.compilerEvent === 'PipelineError') {
+    if (
+      probe.error ||
+      normalized.unattributedErrors.length > 0 ||
+      probe.events.some(item => item.kind === 'PipelineError')
+    ) {
       report({
         status: 'broken',
         compilerEvent: compilerEventOf(analysis),
         reason: `directive revalidation unavailable: ${
           probe.error?.message ??
-          (normalized.unattributedErrors.map(item => item.reason).join('; ') || analysis?.reason)
+          (normalized.unattributedErrors.map(item => item.reason).join('; ') ||
+            probe.events.find(item => item.kind === 'PipelineError')?.data ||
+            analysis?.reason ||
+            'compiler pipeline failed')
         }`,
       });
       continue;
@@ -334,7 +379,7 @@ export async function revalidateJustifiedDirectives(
       status: active ? 'active' : 'redundant',
       compilerEvent: compilerEventOf(analysis),
       evidence,
-      reason: `Babel acceptance ${evidence.acceptanceEffect}; reported statistics ${evidence.statisticsEffect} in ${compilationMode} mode; emitted optimization not measured. No observed effect is profile-specific, not universal redundancy; justified directive is report-only.`,
+      reason: `Oxc acceptance ${evidence.acceptanceEffect}; reported statistics ${evidence.statisticsEffect} in ${compilationMode} mode; emitted optimization not measured. No observed effect is profile-specific, not universal redundancy; justified directive is report-only.`,
     });
   }
   return output;

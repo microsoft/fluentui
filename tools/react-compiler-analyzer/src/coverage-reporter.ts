@@ -189,15 +189,9 @@ function printFunctionTable(
       const relPath = toWorkspacePath(workspaceRoot, r.filePath);
       const fn = r.functionName ?? '(anonymous)';
       const stats = r.memoStats;
-      return [
-        `${relPath}:${r.line}`,
-        fn,
-        stats?.memoSlots ?? 'unknown',
-        stats?.memoBlocks ?? 'unknown',
-        stats?.memoValues ?? 'unknown',
-      ];
+      return [`${relPath}:${r.line}`, fn, stats?.memoSlots ?? 'unknown'];
     });
-    f.table(['Location', 'Function', 'Memo Slots', 'Memo Blocks', 'Memo Values'], rows);
+    f.table(['Location', 'Function', 'Memo Slots'], rows);
   } else {
     const rows = results.map(r => {
       const relPath = toWorkspacePath(workspaceRoot, r.filePath);
@@ -515,13 +509,13 @@ export function printUnparseableFiles(f: Formatter, files: UnparseableFile[], wo
   f.foldableSection({ title: 'Not Analyzed', status: 'warning', count: files.length }, () => {
     f.line(
       'These files could not be parsed, so they contributed **no functions** to the counts above. ' +
-        'This is a limitation of the analyzed Babel parsing profile, not proof that another build cannot process them.',
+        'This is a limitation of the analyzed Oxc parsing profile, not proof that another build cannot process them.',
     );
     f.blank();
 
     const rows: Cell[][] = files.map(u => [
       toWorkspacePath(workspaceRoot, u.file),
-      // Babel prefixes the absolute path onto the message; the location suffix is the useful part.
+      // Remove a source path prefix when supplied by the backend.
       u.error.split('\n')[0].replace(/^.*?:\s*/, ''),
     ]);
 
@@ -567,7 +561,7 @@ export function printRuntimeRisks(f: Formatter, results: FunctionAnalysis[], wor
     printRiskTable(f, pending, workspaceRoot, {
       title: 'Risky but Not Compiled',
       intro:
-        'These functions contain configured risk patterns but Babel errored or skipped them. ' +
+        'These functions contain configured risk patterns but Oxc errored or skipped them. ' +
         'The findings remain relevant: another compiler/profile may optimize them. ' +
         'Actual emitted caching and application safety are unverified.',
       subject: 'non-compiled function(s)',

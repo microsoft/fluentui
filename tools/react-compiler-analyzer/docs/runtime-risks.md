@@ -109,36 +109,81 @@ function Widget() {
 }
 ```
 
-Enable `resolveWrappers` to follow first-party wrapper calls and re-export barrels. The finding is
-reported at the call site, with a `reached via` chain identifying the helpers traversed.
+Wrapper resolution is enabled by default only when at least one leaf risk rule is configured.
+Set `resolveWrappers: false` to restrict detection to scanned source. The finding is reported at the
+call site, with a `reached via` chain identifying the helpers traversed.
 
 ```json
 {
   "analyze": {
     "risks": {
-      "detectGetStateReads": true,
-      "resolveWrappers": true,
-      "pathAliases": {
-        "baseUrl": "./src",
-        "paths": { "@app/*": ["app/*"] }
-      }
+      "detectGetStateReads": true
     }
   }
 }
 ```
 
 Resolution is demand-driven and memoized: files are parsed only when a call path reaches them.
-`useXxx`-named callees are skipped; their definitions can be analyzed separately. Resolution does
-not build a TypeScript `Program` and does not read tsconfig aliases automatically.
+`useXxx`-named callees are skipped; their definitions can be analyzed separately. The Oxc resolver
+uses the nearest tsconfig for each importer, including `extends` and `paths`; there is no manually
+maintained `pathAliases` config and no TypeScript `Program`. Resolution follows first-party
+realpath targets outside `node_modules`, including ESM package exports and workspace symlinks.
 
-### Path aliases
+The default conditional-export activation set is `import`, `node`, and `default`. It does not
+activate `source`, `types`, or `require` implicitly. Opt into a source condition explicitly:
 
-`baseUrl` is resolved relative to the selected RCA config, not the working directory. Copy the
-applicable aliases from your project's tsconfig into `pathAliases` when needed.
+```json
+{
+  "analyze": {
+    "risks": {
+      "detectGetStateReads": true,
+      "resolver": {
+        "additionalConditionNames": ["source"]
+      }
+    }
+  }
+}
+```
 
-Captured wildcard segments are substituted wherever `*` occurs in the target. For example,
-`"@app/*": ["packages/*/src/index.tsx"]` maps `@app/button` to
-`packages/button/src/index.tsx` relative to `baseUrl`.
+For example, given:
+
+```json
+{
+  "exports": {
+    "./typography": {
+      "source": "./src/typography.ts",
+      "types": "./lib/typography.d.ts",
+      "default": "./lib/typography.js"
+    }
+  }
+}
+```
+
+the default resolver follows the ESM/default implementation. With `source` opted in, it may follow
+the source implementation instead. Additional conditions activate matching branches but do not
+reorder package `exports` keys; package key order determines the first matching branch. The chosen
+source may differ from the consumer's build and is not build-output parity.
+
+`resolver.mainFields` is an optional ordered replacement for the default `["module", "main"]`
+fields, used only when an applicable `exports` or `imports` map does not select a target:
+
+```json
+{
+  "analyze": {
+    "risks": {
+      "detectGetStateReads": true,
+      "resolver": {
+        "mainFields": ["source", "module", "main"]
+      }
+    }
+  }
+}
+```
+
+Package export restrictions take precedence; custom fields do not bypass unexported subpaths.
+Only string implementation targets are followed. Declaration targets (`.d.ts`, `.d.mts`, `.d.cts`),
+CommonJS modules, and implementations under `node_modules` remain boundaries. The resolver does
+not redirect missing `dist` output to source.
 
 ### Check resolution diagnostics
 
@@ -146,17 +191,14 @@ A misconfigured alias may resolve nothing without failing the command. Inspect s
 when using JSON output:
 
 ```text
-Wrapper resolution: 812 import(s) resolved, 5140 stopped at the package boundary, 12 unresolvable.
-  baseUrl: /abs/repo/src
-  aliases: 2/3 matched at least one import
-    @app/                        802
-    @shared/                      10
-    @legacy/                       0
+Wrapper resolution: 812 first-party import(s) resolved, 5140 package boundaries, 12 unresolved.
+  tsconfigs used: 3
+  first-party files followed: 27
 ```
 
-Zero matched imports are not proof that an alias is unused or that the code is risk-free.
-Nonexistent alias target directories are reported at config load. If no alias matches while bare
-imports were seen, the run warns that those imports are outside the risk report's resolved scope.
+Unresolved first-party specifiers are reported even in JSON mode because they may hide risks.
+Verbose diagnostics include the active condition names, ordered main fields, and actual resolved
+targets. An unresolved import or package boundary is not evidence that the code is risk-free.
 
 ## Read findings in context
 

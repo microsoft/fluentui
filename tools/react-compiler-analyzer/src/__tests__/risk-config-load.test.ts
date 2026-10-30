@@ -3,7 +3,8 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
 import { runAnalyze } from '../commands/analyze';
-import { createModuleResolver, createResolverStats, compilePathAliases, findDeadAliases } from '../module-resolver';
+import { createModuleResolver, createResolverStats } from '../module-resolver';
+import { createWorkspace } from './workspace-helpers';
 
 describe('--annotate under --mode annotation', () => {
   const WRAPPERS = join(__dirname, '__fixtures__', 'risk', 'wrappers');
@@ -91,107 +92,83 @@ describe('wrapper resolution reporting', () => {
   }
 
   it('reports how many imports resolved, so a clean report can be trusted', async () => {
-    await runAnalyze(argv({ detectGetStateReads: true, resolveWrappers: true }) as never);
+    await runAnalyze({ ...argv({ detectGetStateReads: true, resolveWrappers: true }), verbose: true } as never);
 
     const output = captured.join('\n');
-    expect(output).toMatch(/Wrapper resolution: \d+ import\(s\) resolved/);
-    expect(output).toContain('stopped at the package boundary');
-    expect(output).toContain('baseUrl: (none configured)');
+    expect(output).toMatch(/Wrapper resolution: \d+ first-party import\(s\) resolved/);
+    expect(output).toContain('package boundaries');
+    expect(output).toContain('conditions: import, node, default');
+    expect(output).toContain('mainFields: module, main');
   });
 
-  it('lists per-alias hit counts so an alias that never matched is obvious', async () => {
-    const dir = mkdtempSync(join(tmpdir(), 'wrap-alias-'));
-    mkdirSync(join(dir, 'live'), { recursive: true });
-    mkdirSync(join(dir, 'idle'), { recursive: true });
-    await runAnalyze(
-      argv({
+  it('reports the active explicit resolution policy without implying consumer build parity', async () => {
+    await runAnalyze({
+      ...argv({
         detectGetStateReads: true,
         resolveWrappers: true,
-        pathAliases: { baseUrl: dir, paths: { '@live/*': ['live/*'], '@idle/*': ['idle/*'] } },
-      }) as never,
-    );
+        resolver: { additionalConditionNames: ['source'], mainFields: ['source', 'module', 'main'] },
+      }),
+      verbose: true,
+    } as never);
 
     const output = captured.join('\n');
-    expect(output).toContain('aliases: 0/2 matched at least one import');
-    expect(output).toContain('never matched');
+    expect(output).toContain('conditions: import, node, default, source');
+    expect(output).toContain('mainFields: source, module, main');
   });
 
   it('omits the line entirely when wrapper resolution is off', async () => {
-    await runAnalyze(argv({ detectGetStateReads: true }) as never);
+    await runAnalyze({ ...argv({ detectGetStateReads: true, resolveWrappers: false }), verbose: true } as never);
 
     expect(captured.some(l => l.includes('Wrapper resolution:'))).toBe(false);
   });
 });
 
 describe('resolver stats', () => {
-  let tempDir: string;
+  let workspace: ReturnType<typeof createWorkspace>;
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'resolver-stats-'));
-    mkdirSync(join(tempDir, 'src'), { recursive: true });
-    writeFileSync(join(tempDir, 'src', 'store.ts'), 'export const a = 1;\n');
+    workspace = createWorkspace();
   });
+  afterEach(() => workspace.cleanup());
 
   it('counts resolved, package-boundary and unresolvable specifiers separately', () => {
     const stats = createResolverStats();
-    const resolve = createModuleResolver({
-      aliases: compilePathAliases({ '@app/*': ['*'] }, join(tempDir, 'src')),
-      stats,
-    });
-    const from = join(tempDir, 'src', 'component.tsx');
+    const resolve = createModuleResolver({ stats });
+    const from = workspace.file('packages/app/src/index.tsx');
 
-    expect(resolve('./store', from)).not.toBeNull();
-    expect(resolve('@app/store', from)).not.toBeNull();
-    expect(resolve('react', from)).toBeNull();
+    expect(resolve('./relative', from)).not.toBeNull();
+    expect(resolve('@ws/store', from)).not.toBeNull();
+    expect(resolve('third-party-store', from)).toBeNull();
     expect(resolve('./nope', from)).toBeNull();
 
-    expect(stats).toEqual({
-      resolved: 2,
-      unresolvedBare: 1,
-      unresolvedRelative: 1,
-      aliasHits: new Map([['@app/', 1]]),
-    });
+    expect(stats.resolved).toBe(2);
+    expect(stats.packageBoundaries).toBe(1);
+    expect(stats.unresolved).toEqual(new Map([['./nope', 1]]));
+    expect(stats.tsconfigsUsed).toEqual(new Set([workspace.file('packages/app/tsconfig.json')]));
   });
 
-  it('reports zero resolved bare specifiers when aliases are missing', () => {
+  it('records unresolved imports instead of implying a clean analysis', () => {
     const stats = createResolverStats();
     const resolve = createModuleResolver({ stats });
-    resolve('@app/store', join(tempDir, 'src', 'component.tsx'));
+    resolve('@missing/store', workspace.file('packages/app/src/index.tsx'));
 
-    // This is the shape of a "clean report that means nothing".
     expect(stats.resolved).toBe(0);
-    expect(stats.unresolvedBare).toBe(1);
+    expect(stats.unresolved.get('@missing/store')).toBe(1);
+    expect(stats.diagnostics).toContainEqual(
+      expect.objectContaining({ kind: 'unresolved', specifier: '@missing/store' }),
+    );
   });
 
-  it('seeds every configured alias so one that never matches shows as 0', () => {
+  it('records the actual condition and entry-field policy even before resolving', () => {
     const stats = createResolverStats();
     createModuleResolver({
-      aliases: compilePathAliases({ '@app/*': ['*'], '@never/*': ['nope/*'] }, join(tempDir, 'src')),
+      additionalConditionNames: ['source'],
+      mainFields: ['source', 'main'],
       stats,
     });
 
-    expect(stats.aliasHits.get('@app/')).toBe(0);
-    expect(stats.aliasHits.get('@never/')).toBe(0);
-  });
-});
-
-describe('findDeadAliases', () => {
-  let tempDir: string;
-
-  beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'dead-alias-'));
-    mkdirSync(join(tempDir, 'real'), { recursive: true });
-  });
-
-  it('flags aliases whose every target directory is absent', () => {
-    const aliases = compilePathAliases({ '@real/*': ['real/*'], '@ghost/*': ['ghost/*'] }, tempDir);
-
-    expect(findDeadAliases(aliases).map(a => a.prefix)).toEqual(['@ghost/']);
-  });
-
-  it('keeps an alias when at least one target exists', () => {
-    const aliases = compilePathAliases({ '@mixed/*': ['ghost/*', 'real/*'] }, tempDir);
-
-    expect(findDeadAliases(aliases)).toHaveLength(0);
+    expect(stats.conditionNames).toEqual(['import', 'node', 'default', 'source']);
+    expect(stats.mainFields).toEqual(['source', 'main']);
+    expect(stats.aliasHits.size).toBe(0);
   });
 });

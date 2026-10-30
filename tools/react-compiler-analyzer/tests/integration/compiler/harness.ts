@@ -8,9 +8,11 @@ import * as babel from '@babel/core';
 import * as swc from '@swc/core';
 import * as ts from 'typescript';
 import type { TransformOptions } from '@babel/core';
+import { __napiBindingTarget, transformSync as transformOxcSync } from 'oxc-transform-react';
+import type { OxcError, TransformOptions as OxcTransformOptions } from 'oxc-transform-react';
 
 import { compileSource, extractDetailReason, extractFullDiagnostic, type CompilerEvent } from '../../../src/compiler';
-import { riskPlugin } from '../../../src/risk-plugin';
+import { analyzeSource } from '../../../src/ast/analyze';
 import type { RiskFinding } from '../../../src/types';
 import type { Fixture } from './fixtures';
 
@@ -18,11 +20,27 @@ const compiler = require.resolve('babel-plugin-react-compiler');
 
 export const versions = {
   babel: require('@babel/core/package.json').version as string,
-  compiler: require('babel-plugin-react-compiler/package.json').version as string,
+  babelCompiler: require('babel-plugin-react-compiler/package.json').version as string,
+  oxcCompiler: require('oxc-transform-react/package.json').version as string,
+  oxcParser: require('oxc-parser/package.json').version as string,
   swc: require('@swc/core/package.json').version as string,
   typescript: ts.version,
 };
 export const nativeBinary = swc.getBinaryMetadata();
+export const oxcBindingTarget = __napiBindingTarget;
+
+interface BabelTelemetryEvent {
+  kind: string;
+  fnName?: string;
+  fnLoc?: unknown;
+  loc?: unknown;
+  reason?: unknown;
+  detail?: unknown;
+  data?: unknown;
+  memoSlots?: unknown;
+  memoBlocks?: unknown;
+  memoValues?: unknown;
+}
 
 interface FunctionEvidence {
   name: string | null;
@@ -138,6 +156,42 @@ function eventSummary(events: CompilerEvent[]) {
   }));
 }
 
+function adaptBabelTelemetry(value: unknown): BabelTelemetryEvent {
+  if (!value || typeof value !== 'object') {
+    return { kind: 'Unknown' };
+  }
+  const event = value as Record<string, unknown>;
+  return {
+    kind: typeof event['kind'] === 'string' ? event['kind'] : 'Unknown',
+    fnName: typeof event['fnName'] === 'string' ? event['fnName'] : undefined,
+    fnLoc: event['fnLoc'],
+    loc: event['loc'],
+    reason: event['reason'],
+    detail: event['detail'],
+    data: event['data'],
+    memoSlots: event['memoSlots'],
+    memoBlocks: event['memoBlocks'],
+    memoValues: event['memoValues'],
+  };
+}
+
+function babelEventSummary(events: BabelTelemetryEvent[]) {
+  return events.map(event => ({
+    kind: event.kind,
+    name: event.fnName ?? null,
+    reason:
+      (event.kind === 'CompileError'
+        ? extractDetailReason(event.detail)
+        : event.kind === 'PipelineError'
+        ? typeof event.data === 'string'
+          ? event.data
+          : null
+        : typeof event.reason === 'string'
+        ? event.reason
+        : null) || null,
+  }));
+}
+
 function inspectSafely(code: string, transformError: string | null) {
   if (transformError) {
     return { functions: null, inspectionError: null };
@@ -158,7 +212,16 @@ export async function runFixture(fixture: Fixture) {
     noEmit: false,
     ...(fixture.gated ? { gating: { source: 'fixture-gate', importSpecifierName: 'isEnabled' } } : {}),
   };
-  const events: CompilerEvent[] = [];
+  const oxcCompilerOptions = {
+    compilationMode: 'infer' as const,
+    target: '19' as const,
+    panicThreshold: 'none' as const,
+    noEmit: false,
+    outputMode: 'client' as const,
+    reportDiagnostics: true,
+    ...(fixture.gated ? { gating: { source: '__rca_gate__', importSpecifierName: '__rcaGate' } } : {}),
+  };
+  const babelEvents: BabelTelemetryEvent[] = [];
   const babelOptions: TransformOptions = {
     filename,
     babelrc: false,
@@ -172,7 +235,7 @@ export async function runFixture(fixture: Fixture) {
         {
           ...compilerOptions,
           logger: {
-            logEvent: (_filename: string | null, event: CompilerEvent) => events.push(event),
+            logEvent: (_filename: string | null, event: unknown) => babelEvents.push(adaptBabelTelemetry(event)),
           },
         },
       ],
@@ -189,6 +252,13 @@ export async function runFixture(fixture: Fixture) {
       parser: { syntax: 'typescript' as const, tsx: true },
       transform: { react: { runtime: 'preserve' as const }, reactCompiler: compilerOptions },
     },
+  };
+  const oxcOptions: OxcTransformOptions = {
+    lang: 'tsx',
+    sourceType: 'module',
+    sourcemap: true,
+    jsx: 'preserve',
+    reactCompiler: oxcCompilerOptions,
   };
   let babelCode = '';
   let babelError: string | null = null;
@@ -207,22 +277,50 @@ export async function runFixture(fixture: Fixture) {
   } catch (error) {
     swcError = String(error);
   }
+  let oxcCode = '';
+  let oxcError: string | null = null;
+  let oxcFatal = false;
+  let oxcDiagnostics: OxcError[] = [];
+  let oxcMap: unknown = null;
+  try {
+    const result = transformOxcSync(filename, fixture.source, oxcOptions);
+    oxcCode = result.code;
+    oxcFatal = result.fatal;
+    oxcDiagnostics = result.errors;
+    oxcMap = result.map ?? null;
+  } catch (error) {
+    oxcError = String(error);
+  }
   const analyzer = await compileSource(fixture.source, filename, { compilationMode: 'infer' });
   const risks = new Map<string, RiskFinding[]>();
-  await babel.transformAsync(fixture.source, {
-    filename,
-    babelrc: false,
-    configFile: false,
-    code: false,
-    parserOpts: { plugins: ['typescript', 'jsx'] },
-    plugins: [[riskPlugin, { selectorHookProperties: ['use'], results: risks }]],
-  });
+  const workspaceRoot = resolve(__dirname, '../../../../../');
+  const sourceAnalysis = analyzeSource(
+    fixture.source,
+    { filePath: resolve(workspaceRoot, filename), packageName: null },
+    workspaceRoot,
+    { selectorHookProperties: ['use'] },
+  );
+  for (const [key, findings] of sourceAnalysis.risks) {
+    risks.set(key, findings);
+  }
   const babelInspection = inspectSafely(babelCode, babelError);
   const swcInspection = inspectSafely(swcCode, swcError);
+  const oxcInspection = inspectSafely(oxcCode, oxcError ?? (oxcFatal ? 'fatal' : null));
   const runtime = fixture.id.startsWith('exported-overload')
     ? [
         ...[false, true].map(enabled => ({ backend: 'babel', enabled, ...evaluateOverload(babelCode, enabled) })),
         ...[false, true].map(enabled => ({ backend: 'swc', enabled, ...evaluateOverload(swcCode, enabled) })),
+        ...[false, true].map(enabled => ({
+          backend: 'oxc',
+          enabled,
+          ...evaluateOverload(oxcCode, enabled, '__rca_gate__'),
+        })),
+      ]
+    : fixture.id.startsWith('outlined-closure')
+    ? [
+        { backend: 'babel', ...evaluateOutlinedClosure(babelCode) },
+        { backend: 'swc', ...evaluateOutlinedClosure(swcCode) },
+        { backend: 'oxc', ...evaluateOutlinedClosure(oxcCode) },
       ]
     : [];
   return {
@@ -233,19 +331,30 @@ export async function runFixture(fixture: Fixture) {
       node: process.version,
       platform: `${process.platform}/${process.arch}`,
       nativeBinary,
+      oxcBindingTarget,
       babelOptions,
       swcOptions,
-      analyzerOptions: { filename, compilationMode: 'infer', noEmit: true },
+      oxcOptions,
+      analyzerOptions: { filename, ...oxcCompilerOptions, sourcemap: true },
       runtimeOptions: {
         module: 'CommonJS',
         target: 'ES2020',
         jsx: 'React',
-        stubs: ['react.useState', 'react/compiler-runtime.c', 'fixture-gate.isEnabled'],
+        stubs: [
+          'react.useState',
+          'react.createElement',
+          'react/compiler-runtime.c',
+          'fixture-gate.isEnabled',
+          '__rca_gate__.__rcaGate',
+          'canUseDOM',
+        ],
       },
       differences: [
-        'RCA is a separate noEmit analysis using the same Babel/compiler dependencies as the emission tests.',
+        'Analyzer Oxc acceptance telemetry is separate from the direct Oxc emitted-output observation.',
+        'Babel is a test-only behavioral oracle; native SWC remains a separate emission oracle.',
         'Babel preserves TypeScript; native SWC lowers TypeScript. Both preserve JSX.',
         'Native SWC has no per-function acceptance telemetry.',
+        'Oxc transform output and sourcemap are inspected independently with the test-only Babel AST/scope inspector.',
         'Runtime checks use TypeScript CommonJS/JSX lowering and stub hooks/cache/gate; not application safety.',
       ],
     },
@@ -262,7 +371,7 @@ export async function runFixture(fixture: Fixture) {
     babel: {
       code: babelCode,
       error: babelError,
-      events: events.map(event => ({
+      events: babelEvents.map(event => ({
         kind: event.kind,
         fnName: event.fnName,
         fnLoc: event.fnLoc,
@@ -274,12 +383,26 @@ export async function runFixture(fixture: Fixture) {
         memoBlocks: event.memoBlocks,
         memoValues: event.memoValues,
       })),
-      diagnostics: events.map(event => ({
+      diagnostics: babelEvents.map(event => ({
         kind: event.kind,
         reason: extractDetailReason(event.detail),
         diagnostic: extractFullDiagnostic(event.detail, fixture.source),
       })),
       ...babelInspection,
+    },
+    oxcEmission: {
+      code: oxcCode,
+      error: oxcError,
+      fatal: oxcFatal,
+      map: oxcMap,
+      diagnostics: oxcDiagnostics.map(diagnostic => ({
+        severity: diagnostic.severity,
+        message: diagnostic.message,
+        labels: diagnostic.labels,
+        helpMessage: diagnostic.helpMessage,
+        codeframe: diagnostic.codeframe,
+      })),
+      ...oxcInspection,
     },
     swc: {
       code: swcCode,
@@ -309,17 +432,9 @@ export function summarize(evidence: Evidence) {
   return {
     hookValidity: evidence.fixture.hookValidity,
     suppression: evidence.fixture.suppression,
-    analyzer: {
-      error: evidence.analyzer.error,
-      events: evidence.analyzer.events,
-      diagnostics: evidence.analyzer.diagnostics
-        .filter(({ reason }) => reason.length > 0)
-        .map(({ kind, reason }) => ({ kind, reason })),
-      risks: evidence.analyzer.risks,
-    },
     babel: {
       error: evidence.babel.error,
-      events: eventSummary(evidence.babel.events),
+      events: babelEventSummary(evidence.babel.events),
       diagnostics: evidence.babel.diagnostics
         .filter(({ reason }) => reason.length > 0)
         .map(({ kind, reason }) => ({ kind, reason })),
@@ -333,7 +448,29 @@ export function summarize(evidence: Evidence) {
       targetCacheEvidence: targetCacheEvidence(evidence.swc.functions, evidence.fixture.target),
       outputFunctions: evidence.swc.functions,
     },
-    runtime: evidence.runtime,
+    runtime: evidence.runtime.filter(result => result.backend !== 'oxc'),
+  };
+}
+
+export function summarizeOxcAnalyzer(evidence: Evidence) {
+  return {
+    error: evidence.analyzer.error,
+    events: evidence.analyzer.events,
+    diagnostics: evidence.analyzer.diagnostics
+      .filter(({ reason }) => reason.length > 0)
+      .map(({ kind, reason }) => ({ kind, reason })),
+    risks: evidence.analyzer.risks,
+  };
+}
+
+export function summarizeOxcEmission(evidence: Evidence) {
+  return {
+    error: evidence.oxcEmission.error,
+    fatal: evidence.oxcEmission.fatal,
+    diagnostics: evidence.oxcEmission.diagnostics.map(({ severity, message }) => ({ severity, message })),
+    targetCacheEvidence: targetCacheEvidence(evidence.oxcEmission.functions, evidence.fixture.target),
+    outputFunctions: evidence.oxcEmission.functions,
+    runtime: evidence.runtime.filter(result => result.backend === 'oxc'),
   };
 }
 
@@ -345,7 +482,7 @@ export function writeEvidence(evidence: Evidence): string {
   return path;
 }
 
-export function evaluateOverload(code: string, enabled: boolean) {
+export function evaluateOverload(code: string, enabled: boolean, gateModule = 'fixture-gate') {
   const gateCalls: boolean[] = [];
   const cacheCalls: number[] = [];
   const lowered = ts.transpileModule(code, {
@@ -378,13 +515,12 @@ export function evaluateOverload(code: string, enabled: boolean) {
               },
             };
           }
-          if (name === 'fixture-gate') {
-            return {
-              isEnabled: () => {
-                gateCalls.push(enabled);
-                return enabled;
-              },
+          if (name === gateModule) {
+            const isEnabled = () => {
+              gateCalls.push(enabled);
+              return enabled;
             };
+            return { isEnabled, __rcaGate: isEnabled };
           }
           throw new Error(`Unexpected runtime import: ${name}`);
         },
@@ -404,4 +540,50 @@ export function evaluateOverload(code: string, enabled: boolean) {
     error = String(caught);
   }
   return { exportNames, callable, results, implementations, gateCalls, cacheCalls, error };
+}
+
+export function evaluateOutlinedClosure(code: string) {
+  const exports: Record<string, unknown> = {};
+  let error: string | null = null;
+  let returnedElement: string | null = null;
+  try {
+    const lowered = ts.transpileModule(code, {
+      compilerOptions: {
+        module: ts.ModuleKind.CommonJS,
+        target: ts.ScriptTarget.ES2020,
+        jsx: ts.JsxEmit.React,
+      },
+    }).outputText;
+    runInNewContext(
+      lowered,
+      {
+        exports,
+        canUseDOM: () => true,
+        require: (name: string) => {
+          if (name === 'react') {
+            return {
+              useState: (initial: unknown) => [typeof initial === 'function' ? (initial as () => unknown)() : initial],
+              createElement: (type: string) => ({ type }),
+            };
+          }
+          if (name === 'react/compiler-runtime' || name === 'react-compiler-runtime') {
+            return {
+              c: (slots: number) => Array(slots).fill(Symbol.for('react.memo_cache_sentinel')),
+            };
+          }
+          throw new Error(`Unexpected runtime import: ${name}`);
+        },
+      },
+      { timeout: 1000 },
+    );
+    const createLazy = exports['createLazy'] as (factory: () => Promise<unknown>) => () => unknown;
+    if (typeof createLazy !== 'function') {
+      throw new Error('Expected createLazy export');
+    }
+    const render = createLazy(() => Promise.resolve('fixture'))();
+    returnedElement = render && typeof render === 'object' && 'type' in render ? String(render.type) : null;
+  } catch (caught) {
+    error = String(caught);
+  }
+  return { error, returnedElement };
 }

@@ -6,31 +6,39 @@
 
 ```text
 scan paths -> discover TypeScript files -> attribute package -> compile files
-                                                           |
-                                 source-function index + compiler events
+                               |
+                 Oxc parser + in-memory client transform
+                               |
+               source-function index + reconstructed events
                                                            |
                                    canonical function/directive results
                                                            |
                                       summaries and formatted reports
 ```
 
-The analyzer uses Babel with TypeScript parser syntax and `babel-plugin-react-compiler`, configured
-with `noEmit: true` and a custom logger. Workers process files concurrently and consume compact
-results as they finish rather than retaining every source file or AST.
+The production analyzer parses with `oxc-parser` and runs the exact-pinned
+`oxc-transform-react` React Compiler port. The client transform runs in memory with JSX preserved,
+source maps enabled, explicit target and diagnostic settings, and a synthetic feature gate used to
+identify accepted function implementations. It does not write the generated JavaScript or source
+maps to the scanned repository. Workers process files concurrently and consume compact results as
+they finish rather than retaining every source file or AST.
 
-The analyzer does not erase or lower TypeScript. React Compiler consumes TypeScript-bearing ASTs;
-its compilation runs from `Program.enter`. Removing the unnecessary TypeScript transform prevents
-its namespace and CommonJS-emission limitations from failing otherwise parseable modules.
-`noEmit: true` and Babel's `code: false` alone would not disable those transform visitors.
-Ambient fields remain parsed without adding React Compiler support for class components.
-JSX is enabled by default only for `.tsx`; `.ts` files retain angle-bracket assertions.
-Compilation, directive probes, and wrapper resolution share one parser configuration factory.
-TypeScript auto-accessors are supported; decorators still require explicit parser plugins.
+The backend maps each generated gate's original-function branch back to a source function using
+verified source-map provenance. Only unique mappings produce compiler success events; ambiguous or
+missing mappings fail closed instead of guessing by function name or ordinal. The in-memory gate is
+an analysis device, not a consumer-build integration.
 
-This is Babel analysis, not native Rust/OXC/SWC compiler execution. Valid syntax need not be
-accepted by React Compiler, and Babel outcomes do not prove native candidate, cache, or export
-parity. Human reports identify the compiler versions and analysis settings; JSON records them in
-`profile`. Neither includes Git provenance.
+JSX is preserved and enabled by extension (`.tsx`); `.ts` retains angle-bracket assertions.
+TypeScript auto-accessors, decorators, import attributes, and explicit resource management use
+Oxc's native parser support. Flow and unsupported proposal syntax cannot be added through Babel
+parser plugins; those files are reported as unparseable. Parsing a file does not establish React
+Compiler acceptance.
+
+Oxc outcomes are specific to this experimental compiler port and need not match Babel, SWC, or a
+consumer build. The bounded measured divergences and syntax gaps are documented in the
+[migration guide](../MIGRATION.md#compiler-differences-that-cannot-be-ported). Human reports
+identify compiler and parser versions; JSON records the full backend profile. Neither includes Git
+provenance.
 Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
 analysis failure. Actual compiler failures remain errors.
 
@@ -63,7 +71,7 @@ place while preserving parser settings, line/column locations, and source offset
 
 `lint --revalidate-justified` explicitly rechecks justified opt-ins and opt-outs, neutralizing
 one directive per probe while retaining all others. Accepted outcomes with and without the
-directive determine whether it affects acceptance in the selected Babel mode. Probe failures
+directive determine whether it affects acceptance in the selected Oxc mode. Probe failures
 remain broken results, not evidence of redundancy. File-level directives are preserved with
 an explicit limitation. Revalidated rows carry `justified: true` and `revalidated: true`.
 Their `evidence` separates before/after outcomes and memo statistics, acceptance changes,
@@ -95,6 +103,22 @@ with relative paths, directive, preventive/opt-in rationale, reported-statistics
 and risk rules. Zero slots never disqualify a preventive opt-out. Rejected functions remain
 report-only, including those rejected because of a suppression.
 
+## Wrapper resolution
+
+Cross-file risk analysis is demand-driven and only runs when at least one leaf risk rule is
+configured. `resolveWrappers` defaults to `true` in that case; explicit `false` limits detection
+to scanned source. The Oxc resolver uses the nearest tsconfig for each importer, follows first-party
+realpath targets outside `node_modules`, and understands ESM `.ts`, `.tsx`, `.mts`, `.js`, and
+`.mjs` implementations. It does not redirect an unbuilt `dist` target to source, follow CommonJS
+or declaration files, or model TypeScript types.
+
+The default conditional-export activation set is `import`, `node`, and `default`. Additional
+conditions such as `source` are opt-in and do not reorder the keys in a package's `exports` map.
+`resolver.mainFields` is an explicit ordered replacement for the `module`, `main` defaults and only
+applies when package exports do not select a target. A source condition or custom field may resolve
+to a different implementation from the consumer build; verbose resolver output records both policy
+and resolved file. Unresolved first-party imports are reported because they leave risk scope unknown.
+
 ## Memo-cache statistics
 
 Compiler acceptance is not itself an optimization signal. Human summaries separate accepted
@@ -102,13 +126,21 @@ functions with positive reported memo slots, zero reported slots, and unavailabl
 Skips and errors complete the partition; package percentages use the package's total function count.
 
 JSON counters `summary.reportedMemoCachePositive`, `reportedMemoCacheZero`, and
-`reportedMemoCacheUnavailable` partition accepted functions using reported `memoStats.memoSlots`.
-Other counters describe reported memo blocks, values, and pruned work. Unreported counters
-stay `null`; a real reported zero remains `0`.
+`reportedMemoCacheUnavailable` partition accepted functions using `memoStats.memoSlots`. Oxc does
+not expose Babel's memo-block/value/pruned-work counters; schema v4 removes them rather than
+inventing replacements. `memoSlots` is reconstructed from `_c(N)` allocations in the generated
+compiled branch, including accepted functions with zero slots.
 
-RCA runs with `noEmit: true`: these counters do not verify emitted caching, nor identify whether a
-particular risky operation was cached. `emittedCaching: "unverified"` makes this boundary explicit.
-Use application tests and profiling to establish safety and performance.
+The profile's `noEmit: false` describes the in-memory transform that supplies this evidence; RCA
+does not write generated source files. These counters do not verify the consumer build's emitted
+caching, identify whether a particular risky operation was cached, or measure performance.
+`emittedCaching: "unverified"` makes this boundary explicit. Use application tests and profiling to
+establish behavior and performance.
+
+Oxc `Warning` and `Advice` diagnostics are reported visibly to stderr and in the human scan log.
+They do not alone count as compiler rejection or fail lint; acceptance still requires a uniquely
+attributed synthetic gate. Fatal or unknown-severity diagnostics, an unmappable error, or
+inconsistent error-plus-success evidence fails closed.
 
 ## Suppression-related rejection
 

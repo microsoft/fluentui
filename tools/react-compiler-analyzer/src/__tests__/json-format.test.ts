@@ -1,6 +1,6 @@
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { tmpdir } from 'node:os';
+import { testRoot as tmpdir } from './helpers/test-root';
 
 import { runAnalyze } from '../commands/analyze';
 import { runLint } from '../commands/lint';
@@ -63,7 +63,6 @@ describe('--format json', () => {
       mode: 'infer' as const,
       format: 'json' as const,
       'strict-paths': false,
-      'parser-plugin': [],
       annotate: undefined,
       riskConfig: undefined,
       fix: false,
@@ -132,7 +131,7 @@ export function Risky({ label }: { label: string }) {
         );
 
         expect(code).toBe(0);
-        expect(stderr).toEqual([expect.stringContaining('1 import(s) resolved'), expect.stringContaining('baseUrl:')]);
+        expect(stderr).toEqual([]);
         expect(doc.summary).toMatchObject({
           functions: 1,
           compiled: 1,
@@ -160,7 +159,7 @@ export function Risky({ label }: { label: string }) {
       );
 
       expect(code).toBe(0);
-      expect(doc.schemaVersion).toBe(3);
+      expect(doc.schemaVersion).toBe(4);
       expect(doc.tool).toBe('react-compiler-analyzer');
       expect(doc.command).toBe('analyze');
       expect(doc.mode).toBe('infer');
@@ -242,13 +241,10 @@ export function Guarded() {
           join(tempDir, 'src', 'Bail.tsx'),
           `declare function getAppStore(): { currentId: string };
 
-export function Bail() {
+export function Bail({ value }: { value: { count: number } }) {
   const id = getAppStore().currentId;
-  try {
-    return <div>{id}</div>;
-  } finally {
-    console.log('x');
-  }
+  value.count++;
+  return <div>{id}</div>;
 }
 `,
         );
@@ -260,6 +256,25 @@ export function Bail() {
         expect(bail).toBeDefined();
         expect(bail).toMatchObject({ compiled: false });
         expect(bail?.suppressed).toBeUndefined();
+      });
+
+      it('shows nonfatal Oxc advice without inventing rejection or acceptance evidence', async () => {
+        writeFileSync(
+          join(tempDir, 'src', 'Advice.tsx'),
+          `export function Advice() {
+  try { return <div />; } finally { console.log('cleanup'); }
+}`,
+        );
+        const warning = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+        try {
+          const { doc, code } = await captureJson<AnalysisDocument>(() => runAnalyze(argv() as never));
+          expect(code).toBe(0);
+          expect(warning).toHaveBeenCalledWith(expect.stringContaining('Oxc Advice:'));
+          expect(doc.functions.some(fn => fn.file.includes('Advice.tsx'))).toBe(false);
+          expect(doc.unparseable).toEqual([]);
+        } finally {
+          warning.mockRestore();
+        }
       });
 
       /**
@@ -509,12 +524,12 @@ describe('serializers', () => {
         {
           ...base,
           functionName: 'Cached',
-          memoStats: { memoSlots: 2, memoBlocks: 1, memoValues: 1, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+          memoStats: { memoSlots: 2 },
         },
         {
           ...base,
           functionName: 'Pruned',
-          memoStats: { memoSlots: 0, memoBlocks: 0, memoValues: 0, prunedMemoBlocks: 1, prunedMemoValues: 1 },
+          memoStats: { memoSlots: 0 },
         },
         {
           ...base,
@@ -526,7 +541,7 @@ describe('serializers', () => {
           functionName: 'ErroredWithStats',
           status: 'error',
           compilerEvent: 'CompileError',
-          memoStats: { memoSlots: 3, memoBlocks: 1, memoValues: 2, prunedMemoBlocks: 0, prunedMemoValues: 0 },
+          memoStats: { memoSlots: 3 },
         },
       ],
       { mode: 'infer', workspaceRoot: '/ws' },

@@ -33,10 +33,6 @@ export interface NormalizedCompilerEvents {
 function nullableMemoStats(event: CompilerEvent): NullableMemoStats {
   return {
     memoSlots: event.memoSlots ?? null,
-    memoBlocks: event.memoBlocks ?? null,
-    memoValues: event.memoValues ?? null,
-    prunedMemoBlocks: event.prunedMemoBlocks ?? null,
-    prunedMemoValues: event.prunedMemoValues ?? null,
   };
 }
 

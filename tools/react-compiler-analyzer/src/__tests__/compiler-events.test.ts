@@ -1,5 +1,5 @@
 import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { testRoot as tmpdir } from './helpers/test-root';
 import { join } from 'node:path';
 
 import { compileFile, type CompilerEvent } from '../compiler';
@@ -18,7 +18,6 @@ describe('normalizeCompilerEvents', () => {
       false,
       {},
       undefined,
-      [],
       root,
     );
     const fn = compiled.sourceFunctions.values()[0];
@@ -68,7 +67,7 @@ describe('normalizeCompilerEvents', () => {
     ]);
     expect(result.analyses[0]).toMatchObject({
       status: 'compiled',
-      memoStats: { memoSlots: 0, memoBlocks: null },
+      memoStats: { memoSlots: 0 },
     });
   });
 
@@ -135,10 +134,6 @@ describe('normalizeCompilerEvents', () => {
     const { fnLoc, normalize } = await setup();
     expect(normalize([{ kind: 'CompileSuccess', fnLoc }]).analyses[0].memoStats).toEqual({
       memoSlots: null,
-      memoBlocks: null,
-      memoValues: null,
-      prunedMemoBlocks: null,
-      prunedMemoValues: null,
     });
     expect(normalize([{ kind: 'CompileSuccess', fnLoc, memoSlots: 0 }]).analyses[0].memoStats?.memoSlots).toBe(0);
   });
@@ -177,7 +172,6 @@ describe('normalizeCompilerEvents', () => {
       false,
       {},
       undefined,
-      [],
       root,
     );
     const result = normalizeCompilerEvents(

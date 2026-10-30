@@ -23,10 +23,6 @@ describe('analyze JSON schema', () => {
         compilerEvent: 'CompileSuccess',
         memoStats: {
           memoSlots: 0,
-          memoBlocks: null,
-          memoValues: 1,
-          prunedMemoBlocks: null,
-          prunedMemoValues: 0,
         },
         manualMemo: {
           useMemo: 1,

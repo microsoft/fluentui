@@ -106,7 +106,7 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       ## @test/pkg
@@ -127,7 +127,7 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       ## @test/pkg
@@ -151,7 +151,7 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       ## @test/pkg
@@ -175,7 +175,7 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport([], '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       No directives found."
@@ -195,7 +195,7 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       ## @test/pkg
@@ -377,7 +377,7 @@ describe('printSummary', () => {
       - **Active** \`'use no memo'\` (needs \`// justified:\` comment): 1
       - **Skipped** (already justified): 0
 
-      > **1** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.
+      > **1** redundant \`'use no memo'\` directive(s) are removable under this Oxc profile, not proven universally unnecessary.
       > **1** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.
       >
       > Run with \`--fix\` to auto-remove redundant directives and annotate active ones.
@@ -441,7 +441,7 @@ describe('multi-path reporting', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      "Redundant means no observed effect under this Oxc profile, not universally unnecessary. Emitted optimization is not measured.
       Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       ## @scope/pkg-alpha
@@ -498,7 +498,7 @@ describe('multi-path reporting', () => {
       - **Active** \`'use no memo'\` (needs \`// justified:\` comment): 2
       - **Skipped** (already justified): 0
 
-      > **1** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.
+      > **1** redundant \`'use no memo'\` directive(s) are removable under this Oxc profile, not proven universally unnecessary.
       > **2** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.
       >
       > Run with \`--fix\` to auto-remove redundant directives and annotate active ones.

@@ -18,7 +18,6 @@ import type {
 interface DocumentMeta {
   mode: CompilationMode;
   workspaceRoot: string;
-  parserPlugins?: string[];
 }
 
 interface AnalysisDocumentMeta extends DocumentMeta {
@@ -58,7 +57,9 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
       : {}),
     ...(result.errorLine !== undefined ? { errorLine: result.errorLine } : {}),
     ...(result.errorColumn !== undefined ? { errorColumn: result.errorColumn } : {}),
-    ...(result.memoStats !== undefined ? { memoStats: result.memoStats } : {}),
+    ...(result.memoStats !== undefined
+      ? { memoStats: result.memoStats ? { memoSlots: result.memoStats.memoSlots } : null }
+      : {}),
     ...(result.manualMemo
       ? {
           manualMemo: {
@@ -88,11 +89,11 @@ export function toAnalysisDocument(results: FunctionAnalysis[], meta: AnalysisDo
   );
 
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     tool: 'react-compiler-analyzer',
     command: 'analyze',
     mode: meta.mode,
-    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
+    profile: createAnalysisProfile(meta.mode),
     emittedCaching: 'unverified',
     summary: {
       functions: functions.length,
@@ -161,11 +162,11 @@ export function toLintDocument(
   }));
 
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     tool: 'react-compiler-analyzer',
     command: 'lint',
     mode: meta.mode,
-    profile: createAnalysisProfile(meta.mode, meta.parserPlugins),
+    profile: createAnalysisProfile(meta.mode),
     emittedCaching: 'unverified',
     summary: {
       directives: directives.length,

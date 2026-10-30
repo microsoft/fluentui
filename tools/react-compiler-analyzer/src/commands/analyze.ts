@@ -32,29 +32,33 @@ type AnalyzeArgv = SharedArgv & {
  * from "nothing resolved, so nothing could be found". `withReportOutput` redirects `console.log`
  * to stderr for json and into the buffer for html, so it survives every format.
  */
-function reportWrapperResolution(stats: ResolverStats, pathAliases: RiskConfig['pathAliases']): void {
-  console.log(
-    `Wrapper resolution: ${stats.resolved} import(s) resolved, ` +
-      `${stats.unresolvedBare} stopped at the package boundary, ` +
-      `${stats.unresolvedRelative} unresolvable.`,
-  );
-  console.log(`  baseUrl: ${pathAliases?.baseUrl ?? '(none configured)'}`);
-
-  const hits = [...stats.aliasHits.entries()];
-  if (hits.length > 0) {
-    const used = hits.filter(([, n]) => n > 0).length;
-    console.log(`  aliases: ${used}/${hits.length} matched at least one import`);
-    for (const [prefix, n] of hits.sort((a, b) => b[1] - a[1] || compareText(a[0], b[0]))) {
-      console.log(`    ${prefix.padEnd(24)} ${String(n).padStart(6)}${n === 0 ? '   ← never matched' : ''}`);
+function reportWrapperResolution(stats: ResolverStats, verbose: boolean): void {
+  if (verbose) {
+    console.log(
+      `Wrapper resolution: ${stats.resolved} first-party import(s) resolved, ` +
+        `${stats.packageBoundaries} package boundaries, ${stats.unsupportedTargets} unsupported targets; ` +
+        `${stats.tsconfigsUsed.size} tsconfig(s) used.`,
+    );
+    console.log(`  conditions: ${stats.conditionNames.join(', ')}`);
+    console.log(`  mainFields: ${stats.mainFields.join(', ')}`);
+    for (const diagnostic of stats.diagnostics) {
+      console.log(`  ${JSON.stringify(diagnostic)}`);
     }
   }
-
-  if (stats.unresolvedBare > 0 && hits.every(([, n]) => n === 0)) {
+  for (const diagnostic of stats.diagnostics) {
+    if (['tsconfig-fallback', 'unsupported-target', 'error'].includes(diagnostic.kind)) {
+      console.warn(`Warning: wrapper resolution ${diagnostic.kind}: ${diagnostic.message}`);
+    }
+  }
+  if (stats.unresolved.size > 0) {
     console.warn(
-      `Warning: wrapper resolution matched no aliases, so all ${stats.unresolvedBare} bare import(s) ` +
-        'stopped at the package boundary. Cross-package wrappers were not followed and any clean ' +
-        'risk report below says nothing about them. Check pathAliases.baseUrl and paths.',
+      'Warning: unresolved first-party imports can hide runtime risks. Check the importing project’s tsconfig paths and package exports/imports.',
     );
+    for (const [specifier, count] of [...stats.unresolved]
+      .sort((a, b) => b[1] - a[1] || compareText(a[0], b[0]))
+      .slice(0, 10)) {
+      console.warn(`  ${specifier}: ${count}`);
+    }
   }
 }
 
@@ -94,10 +98,9 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
           compilationMode: argv.mode,
           workspaceRoot: process.cwd(),
           riskConfig,
-          parserPlugins: argv['parser-plugin'],
           onResolverStats: stats => {
             if (stats) {
-              reportWrapperResolution(stats, riskConfig.pathAliases);
+              reportWrapperResolution(stats, argv.verbose);
             }
           },
         },
@@ -158,7 +161,6 @@ export async function runAnalyze(argv: AnalyzeArgv): Promise<number> {
         writeDocument(
           toAnalysisDocument(coverageResults, {
             mode: argv.mode,
-            parserPlugins: argv['parser-plugin'],
             workspaceRoot,
             unparseable,
             annotate,
