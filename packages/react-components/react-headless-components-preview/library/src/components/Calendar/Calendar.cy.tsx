@@ -28,6 +28,22 @@ const BoundsChangingCalendar = () => {
   );
 };
 
+const MaxBoundChangingCalendar = () => {
+  const [maxDate, setMaxDate] = React.useState<Date>();
+  const july = new Date(2020, 6, 15);
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2020, 6, 31));
+        }
+      }}
+    >
+      <Calendar today={july} value={july} dayPicker={null} maxDate={maxDate} />
+    </div>
+  );
+};
+
 describe('Calendar', () => {
   it('returns to today with six weeks and three month columns without changing selection', () => {
     const onSelectDate = cy.spy().as('onSelectDate');
@@ -103,7 +119,7 @@ describe('Calendar', () => {
     });
 
     it('moves End to an available month when the maximum bound changes', () => {
-      mount(<BoundsChangingCalendar />);
+      mount(<MaxBoundChangingCalendar />);
 
       cy.get(month('September')).focus().should('be.focused').realPress('e');
       cy.get(month('September'))
