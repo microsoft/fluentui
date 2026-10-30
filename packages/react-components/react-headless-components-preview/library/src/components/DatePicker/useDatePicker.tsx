@@ -204,6 +204,17 @@ export const useDatePicker = (
   const isWithin = (element: HTMLElement | null, target: EventTarget | null) =>
     !!element && !!target && element.contains(target as Node);
 
+  // Focuses the day picker, otherwise the month picker of a month-only calendar, otherwise the surface.
+  const focusCalendar = useEventCallback(() => {
+    if (dayPickerRef.current) {
+      dayPickerRef.current.focus({ preventScroll: true });
+    } else if (monthPickerRef.current) {
+      monthPickerRef.current.focus({ preventScroll: true });
+    } else {
+      surfaceRef.current?.focus({ preventScroll: true });
+    }
+  });
+
   const requestOpen = useEventCallback((event: DatePickerEvent, nextOpen: boolean, reason: OpenChangeReason) => {
     if (isRequestingOpen.current || open === nextOpen || (nextOpen && disabled)) {
       return;
@@ -230,13 +241,7 @@ export const useDatePicker = (
     if (open) {
       // Focus moves into the calendar on every opening, including defaultOpen and controlled `open` changes.
       if (opened) {
-        if (dayPickerRef.current) {
-          dayPickerRef.current.focus({ preventScroll: true });
-        } else if (monthPickerRef.current) {
-          monthPickerRef.current.focus({ preventScroll: true });
-        } else {
-          surfaceRef.current?.focus({ preventScroll: true });
-        }
+        focusCalendar();
       }
       return;
     }
@@ -258,7 +263,7 @@ export const useDatePicker = (
       focusWithinSurface.current = false;
       controlRef.current?.focus({ preventScroll: true });
     }
-  }, [open, targetDocument]);
+  }, [focusCalendar, open, targetDocument]);
 
   const onOutsidePointerDown = useEventCallback((event: PointerEvent) => {
     const path = event.composedPath();
@@ -315,7 +320,7 @@ export const useDatePicker = (
     if (event.key === ArrowDown && event.altKey) {
       event.preventDefault();
       if (open) {
-        dayPickerRef.current?.focus();
+        focusCalendar();
       } else {
         requestOpen(event, true, 'keyboard');
       }

@@ -718,6 +718,18 @@ describe('DatePicker', () => {
     expect(getByRole('dialog')).toBeInTheDocument();
   });
 
+  it('moves focus into a month-only calendar with Alt + Arrow Down while open', async () => {
+    const { getByRole } = render(
+      <DatePicker aria-label="Due date" today={today} calendar={{ dayPicker: null }} defaultOpen />,
+    );
+    const trigger = getByRole('button', { name: 'Due date Select a date' });
+    act(() => trigger.focus());
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown', altKey: true });
+
+    await waitFor(() => expect(getByRole('dialog')).toContainElement(document.activeElement as HTMLElement));
+  });
+
   it('focuses the calendar when initially open', async () => {
     const { getByRole } = render(
       <DatePicker aria-label="Due date" today={today} defaultValue={new Date(2025, 2, 3)} defaultOpen />,
