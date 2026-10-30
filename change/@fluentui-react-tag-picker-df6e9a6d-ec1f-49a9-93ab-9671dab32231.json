@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: keep the measured aside width instead of cancelling its update after mount",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

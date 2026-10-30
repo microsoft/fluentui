@@ -12,9 +12,11 @@ Once your repo is set up, run the following to start a local copy of the website
 
 ```
 yarn
-yarn nx run public-docsite:build
+yarn nx run public-docsite:prebundle
 
 yarn nx run public-docsite:start
 ```
 
 `yarn nx run public-docsite:start` will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
+
+Run `yarn nx run public-docsite:e2e` to build the docsite and test responsive navigation with Playwright.

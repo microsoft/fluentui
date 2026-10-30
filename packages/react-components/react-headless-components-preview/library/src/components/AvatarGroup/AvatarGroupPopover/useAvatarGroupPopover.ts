@@ -27,7 +27,7 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
     mouseLeaveDelay,
     positioning,
     withArrow,
-    trapFocus,
+    inertTrapFocus,
   } = props;
 
   const baseState = useAvatarGroupPopoverBase_unstable(props as unknown as AvatarGroupPopoverBaseProps);
@@ -79,7 +79,7 @@ export const useAvatarGroupPopover = (props: AvatarGroupPopoverProps): AvatarGro
       mouseLeaveDelay,
       positioning,
       withArrow,
-      trapFocus,
+      inertTrapFocus,
     },
   };
 };
