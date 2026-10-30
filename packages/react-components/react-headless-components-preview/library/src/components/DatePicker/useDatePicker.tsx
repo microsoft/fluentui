@@ -324,7 +324,7 @@ export const useDatePicker = (
       event.preventDefault();
       event.stopPropagation();
       requestOpen(event, false, 'keyboard');
-    } else if (event.key === Enter && allowTextInput) {
+    } else if (event.key === Enter && allowTextInput && !event.nativeEvent.isComposing) {
       dateState.validate(event);
     }
   });

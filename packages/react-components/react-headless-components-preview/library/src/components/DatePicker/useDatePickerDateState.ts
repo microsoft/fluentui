@@ -53,15 +53,26 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
   const committedValue = isValidDate(value) ? value : null;
   const formattedValue = committedValue ? formatDate(committedValue) : '';
 
-  const [draft, setDraft] = React.useState({ text: formattedValue, dirty: false, formattedValue });
+  const [draft, setDraft] = React.useState({
+    text: formattedValue,
+    dirty: false,
+    formattedValue,
+    sourceValue: committedValue?.getTime() ?? null,
+  });
   const [error, setError] = React.useState<DatePickerErrorType | undefined>(undefined);
   // External value or formatter changes replace pending text.
-  if (draft.formattedValue !== formattedValue) {
-    setDraft({ text: formattedValue, dirty: false, formattedValue });
+  if (draft.formattedValue !== formattedValue || draft.sourceValue !== (committedValue?.getTime() ?? null)) {
+    setDraft({
+      text: formattedValue,
+      dirty: false,
+      formattedValue,
+      sourceValue: committedValue?.getTime() ?? null,
+    });
     setError(undefined);
   }
 
-  const resetText = (text = formattedValue) => setDraft({ text, dirty: false, formattedValue: text });
+  const resetText = (text = formattedValue, sourceValue = committedValue?.getTime() ?? null) =>
+    setDraft({ text, dirty: false, formattedValue: text, sourceValue });
 
   const report = (event: DatePickerEvent, nextError: DatePickerErrorType | undefined) => {
     setError(nextError);
@@ -70,7 +81,7 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
 
   const commit = (event: DatePickerEvent, date: Date | null, reason: DatePickerDateChangeData['reason']) => {
     setValue(date);
-    resetText(date ? formatDate(date) : '');
+    resetText(date ? formatDate(date) : '', date?.getTime() ?? null);
     onDateChange?.(event, { event, type: event.type, value: date, reason });
   };
 
@@ -125,7 +136,7 @@ export const useDatePickerDateState = (options: DatePickerDateStateOptions): Dat
 
   const setText = useEventCallback((text: string) => {
     if (allowTextInput && !disabled) {
-      setDraft({ text, dirty: true, formattedValue });
+      setDraft({ text, dirty: true, formattedValue, sourceValue: committedValue?.getTime() ?? null });
     }
   });
 

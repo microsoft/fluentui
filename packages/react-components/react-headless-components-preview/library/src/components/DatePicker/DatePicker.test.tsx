@@ -439,6 +439,25 @@ describe('DatePicker', () => {
       expect(input.value).toBe('August 20, 2026');
     });
 
+    it('does not validate Enter while an input method editor is composing', () => {
+      const onDateChange = jest.fn();
+      const onValidationResult = jest.fn();
+      const { input } = renderEditable({ onDateChange, onValidationResult });
+
+      fireEvent.change(input, { target: { value: 'not a date' } });
+      fireEvent.keyDown(input, { key: 'Enter', isComposing: true });
+
+      expect(input).toHaveValue('not a date');
+      expect(onDateChange).not.toHaveBeenCalled();
+      expect(onValidationResult).not.toHaveBeenCalled();
+
+      fireEvent.keyDown(input, { key: 'Enter' });
+      expect(onValidationResult).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ error: 'invalid-input' }),
+      );
+    });
+
     it('validates on blur out of the date picker', () => {
       const onDateChange = jest.fn();
       const { input } = renderEditable({ onDateChange });
@@ -487,6 +506,43 @@ describe('DatePicker', () => {
       expect(input).toHaveValue('August 20, 2026');
       expect(input).not.toHaveAttribute('aria-invalid');
       expect(input).not.toHaveAttribute('aria-describedby');
+    });
+
+    it('resets pending text and errors when a yearless formatter gets a new source date', () => {
+      const formatDate = (date: Date) =>
+        new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(date);
+      const parseDate = (text: string) => (text === 'August 13' ? new Date(2026, 7, 13) : null);
+      const onDateChange = jest.fn();
+      const initialValue = new Date(2026, 7, 12);
+      const nextYearValue = new Date(2027, 7, 12);
+      const { input, rerender, getByText } = renderEditable({
+        value: initialValue,
+        formatDate,
+        parseDate,
+        onDateChange,
+      });
+
+      fireEvent.change(input, { target: { value: 'not a date' } });
+      fireEvent.keyDown(input, { key: 'Enter' });
+      expect(getByText(/Enter a date such as/)).toBeInTheDocument();
+
+      fireEvent.change(input, { target: { value: 'August 13' } });
+      rerender(
+        <DatePicker
+          aria-label="Due date"
+          today={today}
+          allowTextInput
+          value={nextYearValue}
+          formatDate={formatDate}
+          parseDate={parseDate}
+          onDateChange={onDateChange}
+        />,
+      );
+
+      expect(input).toHaveValue('August 12');
+      expect(input).not.toHaveAttribute('aria-invalid');
+      fireEvent.blur(input, { relatedTarget: document.body });
+      expect(onDateChange).not.toHaveBeenCalled();
     });
 
     it('rejects impossible and out-of-range dates', () => {

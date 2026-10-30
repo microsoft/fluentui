@@ -405,6 +405,18 @@ describe('CalendarMonth', () => {
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
+  it('moves focus from a clicked month button to its gridcell for keyboard navigation', () => {
+    const { cells } = renderMonth();
+    const button = cells[2].querySelector('button')!;
+    act(() => button.focus());
+
+    fireEvent.click(button);
+
+    expect(cells[2]).toHaveFocus();
+    fireEvent.keyDown(cells[2], { key: 'ArrowRight' });
+    expect(cells[3]).toHaveFocus();
+  });
+
   describe('keyboard navigation', () => {
     it('has no cell Tab stop when every month is unavailable', () => {
       const { cells } = renderMonth({ minDate: new Date(2021, 0, 1) });

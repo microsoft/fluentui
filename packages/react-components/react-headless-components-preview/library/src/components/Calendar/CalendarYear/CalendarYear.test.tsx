@@ -203,6 +203,18 @@ describe('CalendarYear', () => {
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
+  it('moves focus from a clicked year button to its gridcell for keyboard navigation', () => {
+    const { cells } = renderYear();
+    const button = cells[2].querySelector('button')!;
+    act(() => button.focus());
+
+    fireEvent.click(button);
+
+    expect(cells[2]).toHaveFocus();
+    fireEvent.keyDown(cells[2], { key: 'ArrowRight' });
+    expect(cells[3]).toHaveFocus();
+  });
+
   it.each([3, 4] as const)('uses %s columns for standalone year layout', columns => {
     const { getAllByRole, getByRole } = render(<CalendarYear navigatedYear={2020} />, {
       calendarYearColumns: columns,

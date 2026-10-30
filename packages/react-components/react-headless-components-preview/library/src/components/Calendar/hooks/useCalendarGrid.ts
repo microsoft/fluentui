@@ -254,6 +254,7 @@ export function useCalendarPickerGrid(
   gridSlot.onClick = mergeCallbacks(gridSlot.onClick, (event: React.MouseEvent<HTMLElement>) => {
     const [cell, index] = getEventIndex(event);
     if (cell && index >= 0 && !event.isDefaultPrevented() && isAvailable(index)) {
+      cell.focus();
       selectCell(event, cell, index);
     }
   });
