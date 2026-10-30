@@ -29,14 +29,56 @@ it drops that fixture's recorded history.
 
 ## Fixture kinds
 
+### `entryPoint`
+
+Named imports every runtime value, including defaults, from exactly one public non-root export subpath.
+Use the canonical export key (including `./`), not a source path or package-qualified import:
+
+```jsonc
+{
+  "metadata": {
+    "bundleSizeFixtures": {
+      "TagPicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tag-picker",
+        "name": "@fluentui/react-headless-components-preview/tag-picker"
+      }
+    }
+  }
+}
+```
+
+The selection is resolved from source and `metadata.exportMap`, independently of generated
+`package.json#exports`. Nested entry points such as `./unstable/calendar` are supported, including
+sources with an `index.ts` or `index.tsx` basename. Only the selected subpath is directly imported;
+its transitive dependencies remain part of the measured bundle.
+
+Export collection and rendering use the same helpers as `entryPoints`: type-only exports are omitted,
+runtime names are sorted, defaults receive local aliases, and subpaths without values retain a bare
+import. `yarn nx sync` updates the fixture when exports change; `yarn nx sync:check` detects drift.
+
+Missing or invalid selections, root selections, patterns, unreadable entry sources, and unresolved
+star re-exports fail with a diagnostic identifying the project and fixture. Unknown selections list
+the valid non-root keys. A failing fixture is not replaced with partial output. The existing warning
+behavior for unresolved re-exports in other fixture kinds is unchanged.
+
+To migrate a handwritten fixture, declare its existing filename and preserve its exact `name`, then
+run `yarn nx sync`. Named imports may change the measured size compared with a namespace import;
+re-measure without renaming the baseline or changing budgets. Undeclared fixtures remain untouched.
+
 ### `entryPoints`
 
-Namespace imports every non-root export subpath of the project itself. Resolved from
+Named imports every value export, including defaults, of every non-root export subpath of the project itself. Resolved from
 `metadata.exportMap` (see [export-maps-sync](../export-maps-sync/README.md)) rather than from
 `package.json#exports`, so a drifted export map cannot hide behind a matching drifted fixture.
 
 The root entry is deliberately excluded — importing it would pull in the whole library and defeat the
 point of per subpath isolation.
+
+Named imports avoid retaining export names as string properties in the measured bundle. Duplicate
+export names are aliased, and subpaths without value exports retain a bare import so they must still
+resolve. Default exports are imported with generated local aliases, and are not collected through
+`export *` re-exports.
 
 ### `baseHooks`
 

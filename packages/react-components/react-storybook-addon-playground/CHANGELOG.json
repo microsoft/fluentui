@@ -2,6 +2,35 @@
   "name": "@fluentui/react-storybook-addon-playground",
   "entries": [
     {
+      "date": "Tue, 20 Oct 2026 13:39:53 GMT",
+      "version": "0.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Oct 2026 14:21:29 GMT",
+      "version": "0.1.1",
+      "tag": "@fluentui/react-storybook-addon-playground_v0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-playground",
+            "commit": "8539acdf8491bc3c7d732c93f7fd98084bfdf00f",
+            "comment": "Improve Storybook Docs actions and Playground declaration resolution, including workspace/PnP packages, export precedence, active conditions and adjacent versioned declarations. Validate build-scoped manifests and JavaScript responses, authorize script fetches through allowedScriptFiles, and support opt-in ordered CSS/font inlining while preserving the opaque sandbox and native Storybook loading."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Oct 2026 05:35:58 GMT",
       "version": "0.1.0",
       "tag": "@fluentui/react-storybook-addon-playground_v0.1.0",

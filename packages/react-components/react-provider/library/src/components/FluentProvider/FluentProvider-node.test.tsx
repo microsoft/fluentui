@@ -78,35 +78,22 @@ describe('FluentProvider (node)', () => {
   });
 
   it.each([
-    '"unfinished',
-    'red /* unfinished',
-    'calc(1px',
     'red\\',
     'red;}</style><script>bad</script>',
-    '<url(/*)',
     '<url(a{)',
     '>url(a{)',
     ';url(a{)',
     '"</style><script>text</script>"',
-    'calc(var(--custom-size) * 2)',
-    'url(a"b)c"d)',
-    'custom((nested))',
-  ])('omits unsupported theme values in server-rendered style output for %j', value => {
-    const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    try {
-      const html = renderToStaticMarkup(
-        <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
-      );
+  ])('escapes delimiters in server-rendered style output for %j', value => {
+    const html = renderToStaticMarkup(
+      <FluentProvider theme={{ fontFamilyBase: value, colorBrandBackground: 'blue' }} />,
+    );
 
-      expect(html.match(/<style\b/g)).toHaveLength(1);
-      expect(html.match(/<\/style>/g)).toHaveLength(1);
-      expect(html).not.toContain('<script>');
-      expect(html).not.toContain('--fontFamilyBase:');
-      expect(html).toContain('--colorBrandBackground: blue;');
-      expect(logWarnSpy).toHaveBeenCalled();
-    } finally {
-      logWarnSpy.mockRestore();
-    }
+    expect(html.match(/<style\b/g)).toHaveLength(1);
+    expect(html.match(/<\/style>/g)).toHaveLength(1);
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('--fontFamilyBase:');
+    expect(html).toContain('--colorBrandBackground: blue;');
   });
 
   it.each([
@@ -116,6 +103,11 @@ describe('FluentProvider (node)', () => {
     'unsupportedrgb(0,0,0)',
     'custom-function(anything / else: value)',
     'url(images/icon.svg)',
+    'calc(var(--custom-size) * 2)',
+    'custom((nested))',
+    'oklch(from var(--custom-color) l c h / 0.5)',
+    'var(--custom-font, "Segoe UI")',
+    'url("image.png")',
   ])('preserves values without a function-name allowlist during SSR for %j', value => {
     const logWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     try {

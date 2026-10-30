@@ -785,6 +785,13 @@ export interface GroupedVerticalBarChartData {
   stackCallOutAccessibilityData?: AccessibilityProps;
 }
 
+/**
+ * Legacy grouped-chart dataset entry, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped bar series data, use GVBarChartSeriesPoint.
+ * It is not a drop-in replacement for this legacy dictionary shape.
+ */
 export interface GVDataPoint {
   /**
    * This interface used for - While forming datapoints from given prop "data" in code
@@ -793,11 +800,19 @@ export interface GVDataPoint {
   [key: string]: number | string;
 }
 
+/**
+ * Legacy grouped-chart dataset dictionary, retained with its original index signature for existing consumers.
+ * The chart no longer uses this type internally. Existing imports and values remain valid.
+ *
+ * @deprecated For new grouped chart input, use GroupedVerticalBarChartData.
+ * It is not a drop-in replacement for this legacy dictionary shape.
+ */
 export interface GVSingleDataPoint {
   /**
    * While forming datapoints from given prop "data" in code.
    * These datapoints are used for to draw graph easily.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- Preserve the legacy public type until removal.
   [key: string]: GVDataPoint;
 }
 

@@ -14,6 +14,21 @@
       "AllComponents.fixture.js": {
         "kind": "entryPoints",
         "name": "react-headless-components-preview: entire library"
+      },
+      "Calendar.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./calendar",
+        "name": "react-headless-components-preview: Calendar"
+      },
+      "TagPicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./tag-picker",
+        "name": "@fluentui/react-headless-components-preview/tag-picker"
+      },
+      "TeachingPopover.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./teaching-popover",
+        "name": "@fluentui/react-headless-components-preview/teaching-popover"
       }
     }
   },

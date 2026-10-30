@@ -34,11 +34,16 @@ export const Popover: {
 };
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'trapFocus'> & {
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'setOpen' | 'toggleOpen' | 'triggerRef' | 'contentRef' | 'arrowRef' | 'openOnHover' | 'openOnContext' | 'withArrow' | 'surfaceId' | 'inertTrapFocus'> & {
     positioning: {
         targetRef: React_2.RefCallback<HTMLElement>;
         containerRef: React_2.RefCallback<HTMLElement>;
     };
+};
+
+// @public
+export type PopoverContextValues = {
+    popover: PopoverContextValue;
 };
 
 // @public
@@ -53,11 +58,11 @@ export type PopoverProps = {
     positioning?: PositioningShorthand;
     withArrow?: boolean;
     id?: string;
-    trapFocus?: boolean;
+    inertTrapFocus?: boolean;
 };
 
 // @public
-export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
+export type PopoverState = Required<Pick<PopoverProps, 'open' | 'inertTrapFocus'>> & Pick<PopoverProps, 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'withArrow'> & {
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.RefObject<HTMLElement | null>;
@@ -75,6 +80,7 @@ export type PopoverState = Required<Pick<PopoverProps, 'open' | 'trapFocus'>> & 
     } | undefined) => void;
     positioning: PositioningReturn;
     surfaceId: string;
+    shouldRenderSurface: boolean;
 };
 
 // @public
@@ -113,9 +119,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover: (state: PopoverState, contextValues: {
-    popover: PopoverContextValue;
-}) => React_2.ReactElement;
+export const renderPopover: (state: PopoverState, contextValues: PopoverContextValues) => React_2.ReactElement;
 
 // @public (undocumented)
 export const renderPopoverSurface: (state: PopoverSurfaceState) => JSXElement;
@@ -130,9 +134,7 @@ export const usePopover: (props: PopoverProps) => PopoverState;
 export const usePopoverContext: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
 // @public (undocumented)
-export const usePopoverContextValues: (state: PopoverState) => {
-    popover: PopoverContextValue;
-};
+export const usePopoverContextValues: (state: PopoverState) => PopoverContextValues;
 
 // @public
 export const usePopoverSurface: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDialogElement | HTMLDivElement>) => PopoverSurfaceState;

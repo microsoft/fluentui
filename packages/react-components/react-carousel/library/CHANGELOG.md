@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-carousel
 
-<!-- This log was last generated on Wed, 23 Sep 2026 09:04:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 22 Oct 2026 11:25:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.9.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.9.16)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.9.15..@fluentui/react-carousel_v9.9.16)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.11.3 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+
+## [9.9.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.9.15)
+
+Mon, 19 Oct 2026 16:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.9.14..@fluentui/react-carousel_v9.9.15)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.17.16 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-button to v9.11.2 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.21 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tabster to v9.26.19 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-tooltip to v9.10.8 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
+- Bump @fluentui/react-utilities to v9.27.0 ([commit](https://github.com/microsoft/fluentui/commit/undefined) by beachball)
 
 ## [9.9.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.9.14)
 

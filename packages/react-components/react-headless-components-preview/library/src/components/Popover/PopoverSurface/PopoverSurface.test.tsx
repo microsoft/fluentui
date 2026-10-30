@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { Popover } from '../Popover';
 import { PopoverTrigger } from '../PopoverTrigger/PopoverTrigger';
 import { PopoverSurface } from './PopoverSurface';
@@ -33,7 +33,7 @@ describe('PopoverSurface', () => {
 
   it('renders a dialog when focus trapping is enabled', () => {
     const { getByRole } = render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -61,7 +61,7 @@ describe('PopoverSurface', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 
     render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -71,7 +71,7 @@ describe('PopoverSurface', () => {
 
     expect(consoleWarn).toHaveBeenCalledWith(
       '@fluentui/react-headless-components-preview [PopoverSurface]: ' +
-        '`as="div"` is incompatible with `Popover trapFocus`. ' +
+        '`as="div"` is incompatible with `Popover inertTrapFocus`. ' +
         'Use the default `dialog` element when focus trapping is enabled.',
     );
 
@@ -82,7 +82,7 @@ describe('PopoverSurface', () => {
     const consoleWarn = jest.spyOn(console, 'warn').mockImplementation();
 
     render(
-      <Popover defaultOpen trapFocus>
+      <Popover defaultOpen inertTrapFocus>
         <PopoverTrigger>
           <button>Trigger</button>
         </PopoverTrigger>
@@ -134,7 +134,7 @@ describe('PopoverSurface', () => {
     expect(getByRole('group', { hidden: true })).toHaveAttribute('popover', 'manual');
   });
 
-  it('mirrors a browser-driven `toggle` event into onOpenChange', () => {
+  it('mirrors a browser-driven `toggle` event into onOpenChange', async () => {
     const onOpenChange = jest.fn();
 
     const { getByRole } = render(
@@ -147,11 +147,11 @@ describe('PopoverSurface', () => {
     );
 
     const surface = getByRole('group', { hidden: true });
-    const toggleEvent = new Event('toggle');
-    (toggleEvent as unknown as { newState: string }).newState = 'closed';
-    fireEvent(surface, toggleEvent);
+    surface.hidePopover();
 
-    expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+    await waitFor(() =>
+      expect(onOpenChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false })),
+    );
   });
 
   it('renders arrow when withArrow is set', () => {

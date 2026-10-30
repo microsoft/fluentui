@@ -68,19 +68,24 @@ describe('bundle-size-fixtures-sync generator', () => {
       });
     }
 
-    it('namespace imports every subpath and logs them', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};', 'src/color-picker.ts': 'export {};' });
+    it('named imports every value export of every subpath and logs them', async () => {
+      const project = setupEntryPointsProject({
+        'src/badge.ts': [
+          `export { Badge, renderBadge, useBadge } from './components/Badge/index';`,
+          `export type { BadgeProps, BadgeState } from './components/Badge/index';`,
+        ].join('\n'),
+        'src/color-picker.ts': `export const ColorPicker = () => null;\nexport function useColorPicker() {}`,
+      });
 
       await generator(tree);
 
       expect(project.readFixture('AllComponents.fixture.js')).toMatchInlineSnapshot(`
-        "import * as Badge from '@proj/react-headless/badge';
-        import * as ColorPicker from '@proj/react-headless/color-picker';
+        "// Named imports only - a namespace import keeps every export name as a string property in the minified output,
+        // which no consumer ships, and inflates the measured size.
+        import { Badge, renderBadge, useBadge } from '@proj/react-headless/badge';
+        import { ColorPicker, useColorPicker } from '@proj/react-headless/color-picker';
 
-        console.log({
-          Badge,
-          ColorPicker,
-        });
+        console.log(Badge, renderBadge, useBadge, ColorPicker, useColorPicker);
 
         export default {
           name: 'react-headless: entire library',
@@ -91,38 +96,75 @@ describe('bundle-size-fixtures-sync generator', () => {
 
     it.each([
       {
-        subpaths: ['menu-button', 'menuButton'],
-        namespaces: ['MenuButton', 'MenuButton2'],
+        scenario: 'ordinary duplicate names',
+        sourceFiles: {
+          'src/combobox.ts': `export { Combobox, Option } from './components/Combobox/index';`,
+          'src/dropdown.ts': `export { Dropdown, Option } from './components/Dropdown/index';`,
+        },
+        expectedImport: "import {\n  Dropdown,\n  Option as Dropdown_Option,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Combobox, Option, Dropdown, Dropdown_Option);',
       },
       {
-        subpaths: ['menu-button', 'menuButton', 'menuButton2'],
-        namespaces: ['MenuButton', 'MenuButton3', 'MenuButton2'],
+        scenario: 'an alias that collides with another exported name',
+        sourceFiles: {
+          'src/combobox.ts': `export const Option = 1;`,
+          'src/dropdown.ts': `export const Option = 1;\nexport const Dropdown_Option = 1;`,
+        },
+        expectedImport:
+          "import {\n  Dropdown_Option,\n  Option as Dropdown_Option2,\n} from '@proj/react-headless/dropdown';",
+        expectedLog: 'console.log(Option, Dropdown_Option, Dropdown_Option2);',
       },
-    ])('allocates unique namespace bindings for $subpaths', async ({ subpaths, namespaces }) => {
-      const project = setupEntryPointsProject(
-        Object.fromEntries(subpaths.map(subpath => [`src/${subpath}.ts`, 'export {};'])),
-      );
+    ])('aliases duplicate exports for $scenario', async ({ sourceFiles, expectedImport, expectedLog }) => {
+      const project = setupEntryPointsProject(sourceFiles);
 
       await generator(tree);
 
       const fixture = project.readFixture('AllComponents.fixture.js')!;
-      const sourceFile = ts.createSourceFile('fixture.js', fixture, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
-      const fixtureImports = sourceFile.statements.filter(ts.isImportDeclaration);
-      const bindings = fixtureImports.map(statement => (statement.importClause!.namedBindings as ts.NamespaceImport).name.text);
-      const modules = fixtureImports.map(statement => (statement.moduleSpecifier as ts.StringLiteral).text);
-      const logged = sourceFile.statements.find(ts.isExpressionStatement)!.expression as ts.CallExpression;
-      const loggedBindings = (logged.arguments[0] as ts.ObjectLiteralExpression).properties.map(
-        property => (property as ts.ShorthandPropertyAssignment).name.text,
-      );
+      expect(fixture).toContain(expectedImport);
+      expect(fixture).toContain(expectedLog);
+    });
 
-      expect(bindings).toEqual(namespaces);
-      expect(new Set(bindings).size).toBe(subpaths.length);
-      expect(modules).toEqual(subpaths.map(subpath => `@proj/react-headless/${subpath}`));
-      expect(loggedBindings).toEqual(bindings);
+    it('imports default function, expression, and re-export values using valid bindings', async () => {
+      const project = setupEntryPointsProject({
+        'src/default-function.ts': `export default function Widget() {}`,
+        'src/default-expression.ts': `export default () => null;`,
+        'src/default-reexport.ts': `export { default } from './widget';`,
+        'src/default-star.ts': `export * from './widget';`,
+        'src/widget.ts': `export default function InternalWidget() {}`,
+      });
+
+      await generator(tree);
+
+      const fixture = project.readFixture('AllComponents.fixture.js')!;
+      expect(fixture).toContain('default as DefaultExpression_default');
+      expect(fixture).toContain('default as DefaultFunction_default');
+      expect(fixture).toContain('default as DefaultReexport_default');
+      expect(fixture).not.toContain('DefaultStar_default');
+      expect(fixture).toContain('console.log(');
+      expect(fixture).not.toContain('console.log(default');
+      expect(
+        ts.transpileModule(fixture, {
+          fileName: 'fixture.js',
+          compilerOptions: { allowJs: true, module: ts.ModuleKind.ESNext },
+          reportDiagnostics: true,
+        }).diagnostics,
+      ).toEqual([]);
+    });
+
+    it('keeps a bare import for a subpath without value exports, so it still has to resolve', async () => {
+      const project = setupEntryPointsProject({
+        'src/badge.ts': `export { Badge } from './components/Badge/index';`,
+        'src/types.ts': `export type { BadgeProps } from './components/Badge/index';`,
+      });
+
+      await generator(tree);
+
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("import '@proj/react-headless/types';");
     });
 
     it('omits the root entry, which would defeat per subpath isolation', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};' });
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
+      tree.write('packages/react-headless/src/index.ts', `export * from './badge';`);
 
       await generator(tree);
 
@@ -130,16 +172,259 @@ describe('bundle-size-fixtures-sync generator', () => {
     });
 
     it('picks up a newly added subpath', async () => {
-      const project = setupEntryPointsProject({ 'src/badge.ts': 'export {};' });
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
       await generator(tree);
 
-      tree.write('packages/react-headless/src/tooltip.ts', 'export {};');
+      tree.write('packages/react-headless/src/tooltip.ts', `export const Tooltip = () => null;`);
       const result = await generator(tree);
 
       expect(result.outOfSyncMessage).toContain('AllComponents.fixture.js');
-      expect(project.readFixture('AllComponents.fixture.js')).toContain(
-        "import * as Tooltip from '@proj/react-headless/tooltip';",
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("} from '@proj/react-headless/tooltip';");
+    });
+
+    it('picks up a newly added export of an existing subpath', async () => {
+      const project = setupEntryPointsProject({ 'src/badge.ts': `export const Badge = () => null;` });
+      await generator(tree);
+
+      tree.write(
+        'packages/react-headless/src/badge.ts',
+        `export const Badge = () => null;\nexport const useBadge = () => null;`,
       );
+      const result = await generator(tree);
+
+      expect(result.outOfSyncMessage).toContain('AllComponents.fixture.js');
+      expect(project.readFixture('AllComponents.fixture.js')).toContain('useBadge');
+    });
+  });
+
+  describe('entryPoint fixture', () => {
+    function setupSingleEntryPointProject(options?: {
+      entryPoint?: unknown;
+      sourceFiles?: Record<string, string>;
+      aggregate?: boolean;
+    }) {
+      return setupProject({
+        name: 'react-headless',
+        projectConfig: {
+          metadata: {
+            exportMap: { root: true, subpathEntryPoints: ['src/**/*.ts', 'src/**/*.tsx'] },
+            bundleSizeFixtures: {
+              'Calendar.fixture.js': {
+                kind: 'entryPoint',
+                entryPoint: options && 'entryPoint' in options ? options.entryPoint : './calendar',
+                name: 'react-headless: Calendar',
+              },
+              ...(options?.aggregate
+                ? {
+                    'AllComponents.fixture.js': { kind: 'entryPoints', name: 'react-headless: entire library' },
+                  }
+                : {}),
+            },
+          },
+        },
+        sourceFiles: options?.sourceFiles ?? {
+          'src/calendar.ts': `export const Calendar = () => null;`,
+          'src/badge.ts': `export const Badge = () => null;`,
+        },
+      });
+    }
+
+    it('generates one subpath alongside the aggregate and leaves handwritten fixtures alone', async () => {
+      const project = setupSingleEntryPointProject({ aggregate: true });
+      const handwritten = "console.log('handwritten');\n";
+      tree.write(`${project.root}/bundle-size/Manual.fixture.js`, handwritten);
+
+      const result = await generator(tree);
+
+      expect(project.readFixture('Calendar.fixture.js')).toMatchInlineSnapshot(`
+        "// Named imports only - a namespace import keeps every export name as a string property in the minified output,
+        // which no consumer ships, and inflates the measured size.
+        import { Calendar } from '@proj/react-headless/calendar';
+
+        console.log(Calendar);
+
+        export default {
+          name: 'react-headless: Calendar',
+        };
+        "
+      `);
+      expect(project.readFixture('Calendar.fixture.js')).not.toContain('/badge');
+      expect(project.readFixture('Calendar.fixture.js')).not.toContain("from '@proj/react-headless';");
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("from '@proj/react-headless/calendar'");
+      expect(project.readFixture('AllComponents.fixture.js')).toContain("from '@proj/react-headless/badge'");
+      expect(project.readFixture('Manual.fixture.js')).toBe(handwritten);
+      expect(result.outOfSyncMessage).toContain('Calendar.fixture.js');
+    });
+
+    it('collects sorted runtime exports through barrels, excluding types and star-exported defaults', async () => {
+      const project = setupSingleEntryPointProject({
+        sourceFiles: {
+          'src/calendar.ts': [
+            `export * from './components/calendar';`,
+            `export { default } from './components/default';`,
+            `export type { CalendarProps } from './components/calendar';`,
+          ].join('\n'),
+          'src/components/calendar.ts': [
+            `export const useCalendar = () => null;`,
+            `export const Calendar = () => null;`,
+            `export type CalendarProps = {};`,
+            `export default function UnexportedDefault() {}`,
+          ].join('\n'),
+          'src/components/default.ts': `export default function CalendarDefault() {}`,
+        },
+      });
+
+      await generator(tree);
+
+      const fixture = project.readFixture('Calendar.fixture.js')!;
+      expect(fixture).toContain("import {\n  Calendar,\n  default as Calendar_default,\n  useCalendar,\n}");
+      expect(fixture).toContain('console.log(Calendar, Calendar_default, useCalendar)');
+      expect(fixture).not.toContain('CalendarProps');
+      expect(fixture).not.toContain('UnexportedDefault');
+    });
+
+    it.each([
+      { source: 'src/unstable/calendar/index.ts', entryPoint: './unstable/calendar' },
+      { source: 'src/calendar.tsx', entryPoint: './calendar' },
+      { source: 'src/unstable/calendar/index.tsx', entryPoint: './unstable/calendar' },
+    ])('resolves $entryPoint from $source', async ({ source, entryPoint }) => {
+      const project = setupSingleEntryPointProject({
+        entryPoint,
+        sourceFiles: { [source]: 'export const Calendar = () => null;' },
+      });
+
+      await generator(tree);
+
+      expect(project.readFixture('Calendar.fixture.js')).toContain(
+        `from '@proj/react-headless/${entryPoint.slice(2)}'`,
+      );
+      expect(project.readFixture('Calendar.fixture.js')).not.toContain('/index');
+    });
+
+    it.each(['export default function Calendar() {}', 'export default () => null;'])(
+      'imports a direct default value from %s',
+      async source => {
+        const project = setupSingleEntryPointProject({ sourceFiles: { 'src/calendar.ts': source } });
+
+        await generator(tree);
+
+        expect(project.readFixture('Calendar.fixture.js')).toContain('import { default as Calendar_default }');
+        expect(project.readFixture('Calendar.fixture.js')).toContain('console.log(Calendar_default)');
+      },
+    );
+
+    it('retains a bare import for a type-only entry point', async () => {
+      const project = setupSingleEntryPointProject({
+        sourceFiles: { 'src/calendar.ts': 'export type CalendarProps = {};' },
+      });
+
+      await generator(tree);
+
+      expect(project.readFixture('Calendar.fixture.js')).toContain("import '@proj/react-headless/calendar';");
+      expect(project.readFixture('Calendar.fixture.js')).not.toContain('CalendarProps');
+      expect(project.readFixture('Calendar.fixture.js')).toContain("name: 'react-headless: Calendar'");
+    });
+
+    it('tracks added and removed runtime exports, but not changes to sibling subpaths', async () => {
+      const project = setupSingleEntryPointProject();
+      await generator(tree);
+      expect((await generator(tree)).outOfSyncMessage).toBeUndefined();
+
+      tree.write(`${project.root}/src/calendar.ts`, 'export const NewCalendar = () => null;');
+      const updated = await generator(tree);
+      expect(updated.outOfSyncMessage).toContain('Calendar.fixture.js');
+      expect(project.readFixture('Calendar.fixture.js')).toContain('import { NewCalendar }');
+      expect(project.readFixture('Calendar.fixture.js')).not.toContain('import { Calendar }');
+
+      const contents = project.readFixture('Calendar.fixture.js');
+      tree.write(`${project.root}/src/badge.ts`, 'export const NewBadge = () => null;');
+      expect((await generator(tree)).outOfSyncMessage).toBeUndefined();
+      expect(project.readFixture('Calendar.fixture.js')).toBe(contents);
+    });
+
+    it('ignores a stale generated package export map', async () => {
+      const project = setupSingleEntryPointProject();
+      writeJson(tree, `${project.root}/package.json`, {
+        name: '@proj/react-headless',
+        exports: { '.': './lib/index.js', './badge': './lib/badge.js' },
+      });
+
+      await generator(tree);
+
+      expect(project.readFixture('Calendar.fixture.js')).toContain("from '@proj/react-headless/calendar'");
+    });
+
+    it.each([
+      undefined,
+      null,
+      42,
+      '',
+      '.',
+      './',
+      'calendar',
+      '@proj/react-headless/calendar',
+      'src/calendar.ts',
+      './*',
+      './cal?ndar',
+      './[calendar]',
+      './{calendar,badge}',
+      './unstable\\calendar',
+      './unstable//calendar',
+      './unstable/../calendar',
+      '././calendar',
+      './calendar/',
+    ])('rejects an invalid selector %p without replacing the fixture', async entryPoint => {
+      const project = setupSingleEntryPointProject({ entryPoint });
+      tree.write(`${project.root}/bundle-size/Calendar.fixture.js`, 'existing fixture');
+
+      await expect(generator(tree)).rejects.toThrow(
+        /project "react-headless", fixture "Calendar.fixture.js", entryPoint .*canonical non-root export key/,
+      );
+      expect(project.readFixture('Calendar.fixture.js')).toBe('existing fixture');
+    });
+
+    it('lists valid public keys for an unknown selection', async () => {
+      setupSingleEntryPointProject({ entryPoint: './missing' });
+
+      await expect(generator(tree)).rejects.toThrow(
+        'entryPoint "./missing": No declared public entry point matches. Valid non-root keys: ./badge, ./calendar.',
+      );
+    });
+
+    it('reports when no non-root keys are declared', async () => {
+      setupSingleEntryPointProject({ sourceFiles: {} });
+
+      await expect(generator(tree)).rejects.toThrow('Valid non-root keys: (none).');
+    });
+
+    it('rejects an unreadable selected source without replacing the fixture', async () => {
+      const project = setupSingleEntryPointProject();
+      tree.write(`${project.root}/bundle-size/Calendar.fixture.js`, 'existing fixture');
+      const read = tree.read.bind(tree);
+      jest.spyOn(tree, 'read').mockImplementation((path, encoding) => {
+        if (path === `${project.root}/src/calendar.ts`) {
+          return null;
+        }
+        return read(path, encoding);
+      });
+
+      await expect(generator(tree)).rejects.toThrow(
+        'entryPoint "./calendar": Cannot read the source for "packages/react-headless/src/calendar"',
+      );
+      expect(project.readFixture('Calendar.fixture.js')).toBe('existing fixture');
+    });
+
+    it('rejects unresolved star re-exports without replacing the fixture', async () => {
+      const project = setupSingleEntryPointProject({
+        sourceFiles: { 'src/calendar.ts': `export * from './missing';` },
+      });
+      tree.write(`${project.root}/bundle-size/Calendar.fixture.js`, 'existing fixture');
+
+      await expect(generator(tree)).rejects.toThrow(
+        'project "react-headless", fixture "Calendar.fixture.js", entryPoint "./calendar": Cannot resolve star re-exports:\n' +
+          '  - packages/react-headless/src/calendar.ts -> ./missing',
+      );
+      expect(project.readFixture('Calendar.fixture.js')).toBe('existing fixture');
     });
   });
 
@@ -269,7 +554,7 @@ describe('bundle-size-fixtures-sync generator', () => {
     });
   });
 
-  it.each(['entryPoints', 'baseHooks'] as const)(
+  it.each(['entryPoints', 'entryPoint', 'baseHooks'] as const)(
     'emits valid JavaScript preserving the exact %s fixture name',
     async kind => {
       const name = `headless: user's "components" \\ path\nnext line`;
@@ -277,9 +562,11 @@ describe('bundle-size-fixtures-sync generator', () => {
         name: 'react-headless',
         projectConfig: {
           metadata: {
-            bundleSizeFixtures: { 'Special.fixture.js': { kind, name } },
+            exportMap: { root: true, subpathEntryPoints: ['src/*.ts'] },
+            bundleSizeFixtures: { 'Special.fixture.js': { kind, name, entryPoint: './badge' } },
           },
         },
+        sourceFiles: { 'src/badge.ts': 'export const Badge = () => null;' },
       });
 
       await generator(tree);
