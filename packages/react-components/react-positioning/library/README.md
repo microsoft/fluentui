@@ -83,7 +83,7 @@ clipping, viewport-propagated body overflow, and top-layer popovers and modal di
 These cases compare against Floating UI where supported. Individual transform properties predate
 support in the pinned oracle, so those cases instead assert physical target/surface alignment.
 
-## Engine parity and size gates
+## Engine parity and performance validation
 
 The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
 best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
@@ -91,15 +91,19 @@ Positioning callbacks and imperative refs do not recreate the manager on callbac
 
 ```sh
 yarn nx run react-positioning:bundle-size --skip-nx-cache
-yarn nx run react-positioning:test-bundle-size
 yarn nx run react-positioning:test-raster
 yarn nx run react-positioning:benchmark
+yarn nx run react-positioning:test-webkit
 ```
 
-The bundle gate runs the repository's monosize/webpack measurement for the existing
-`bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`, and rejects an actual
-minified output larger than **12,000 bytes**. This is an absolute, uncompressed limit; gzip
-is reported separately. Gate tests cover the inclusive limit and invalid or stale measurements.
+Bundle size uses the repository's standard monosize/webpack reporting for the existing
+`bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`. The custom absolute-size
+gate is deferred; the standard bundle-size report and fixtures remain in place.
+
+The WebKit target runs five focused real-browser checks for filtered ancestors and nested
+top-layer surfaces. Filter cases preserve the pinned Floating UI WebKit exception; nested
+top-layer cases assert physical layout, including containment by the top-layer ancestor itself.
+It requires the workspace's Playwright WebKit browser installation.
 
 The package is compiled to ES2019, so the engine avoids optional chaining and nullish coalescing
 in hot paths (they are lowered to verbose helpers), prefers expression-bodied helpers, and keeps

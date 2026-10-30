@@ -41,6 +41,66 @@ describe('positioning engine browser regressions', () => {
   });
   afterEach(() => root.remove());
 
+  for (const kind of ['popover', 'dialog', 'containedPopover']) {
+    it(`stops containing-block and clipping traversal beyond a ${kind} ancestor`, () => {
+      cy.document().then(async doc => {
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const outer = element(
+          doc,
+          'div',
+          {
+            position: 'absolute',
+            left: '50px',
+            top: '60px',
+            width: '100px',
+            height: '100px',
+            transform: 'translate(40px, 30px)',
+            overflow: 'hidden',
+          },
+          root,
+        );
+        const topLayer = element(
+          doc,
+          kind === 'dialog' ? 'dialog' : 'div',
+          {
+            position: 'fixed',
+            left: '100px',
+            top: '100px',
+            width: '200px',
+            height: '200px',
+            margin: '0',
+            padding: '0',
+            border: '0',
+            ...(kind === 'containedPopover' && { transform: 'translate(20px, 30px)', overflow: 'hidden' }),
+          },
+          outer,
+        );
+        if (kind === 'dialog') {
+          (topLayer as HTMLDialogElement).showModal();
+        } else {
+          topLayer.popover = 'manual';
+          topLayer.showPopover();
+        }
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, topLayer);
+        const actual = await computePosition(target, floating, {
+          strategy: 'fixed',
+          positioningOptions: { pinned: true },
+        });
+        Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
+        const bounds = floating.getBoundingClientRect();
+        expect(bounds.x, 'physical x').to.equal(kind === 'containedPopover' ? 200 : 330);
+        expect(bounds.y, 'physical y').to.equal(280);
+        expect(actual.referenceHidden, 'reference visibility').to.equal(false);
+        expect(actual.escaped, 'surface visibility').to.equal(false);
+      });
+    });
+  }
+
   for (const disableTether of [true, 'all'] as const) {
     it(`preserves the cross-axis limiter for disabled tether ${disableTether}`, () => {
       cy.document().then(async doc => {

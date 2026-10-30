@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Replace the positioning runtime with a standalone parity engine and enforce a 12,000-byte minified budget.",
+  "comment": "Replace the positioning runtime with a standalone parity engine, browser regression coverage, and an isolated comparative benchmark.",
   "packageName": "@fluentui/react-positioning",
   "email": "dmytrokirpa@microsoft.com"
 }

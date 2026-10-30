@@ -25,18 +25,28 @@ export const intersect = (a: Rect, b: Rect): Rect => {
   return rect(x, y, Math.min(a.x + a.width, b.x + b.width) - x, Math.min(a.y + a.height, b.y + b.height) - y);
 };
 
-export const isContainingBlock = (style: CSSStyleDeclaration, strategy: 'absolute' | 'fixed'): boolean =>
-  (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
-  ('transform translate scale rotate perspective filter backdropFilter'.split(' ') as 'filter'[]).some(property =>
-    isSet(style[property]),
-  ) ||
-  /auto|hidden/.test(style.contentVisibility) ||
-  (!!style.containerType && style.containerType !== 'normal') ||
-  /transform|perspective|filter/.test(style.willChange) ||
-  /paint|layout|strict|content/.test(style.contain);
+export const isContainingBlock = (
+  element: Element,
+  style: CSSStyleDeclaration,
+  strategy: 'absolute' | 'fixed',
+): boolean => {
+  const isWebKit = element.ownerDocument.defaultView?.CSS?.supports('-webkit-backdrop-filter', 'none');
+  return (
+    (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
+    (['transform', 'translate', 'scale', 'rotate', 'perspective'] as const).some(property => isSet(style[property])) ||
+    (!isWebKit && (isSet(style.filter) || isSet(style.backdropFilter))) ||
+    /auto|hidden/.test(style.contentVisibility) ||
+    (!!style.containerType && style.containerType !== 'normal') ||
+    /transform|perspective|filter/.test(style.willChange) ||
+    /paint|layout|strict|content/.test(style.contain)
+  );
+};
 
 /** The parent element, through slot assignments and shadow roots but not virtual parents */
 export const getPhysicalParent = (element: Element): Element | null => {
+  if (isTopLayer(element)) {
+    return null;
+  }
   let parent: Node | null = element.assignedSlot || element.parentNode;
   if (parent && parent.nodeType === 11) {
     parent = (parent as ShadowRoot).host;
@@ -46,12 +56,10 @@ export const getPhysicalParent = (element: Element): Element | null => {
 
 /** Open popovers and modal dialogs escape the clipping and containing blocks of their ancestors */
 const isTopLayer = (element: Element): boolean => {
-  try {
-    // `:is()` ignores unsupported pseudo-classes, older environments (e.g. jsdom) throw
-    return element.matches(':is(:popover-open, :modal)');
-  } catch {
-    return false;
-  }
+  const css = element.ownerDocument.defaultView?.CSS;
+  return [':popover-open', ':modal'].some(
+    selector => css?.supports?.(`selector(${selector})`) && element.matches(selector),
+  );
 };
 
 /**
@@ -83,7 +91,7 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
 
   findAncestor(element, (node, style) => {
     // Positioned descendants escape overflow between themselves and their containing block.
-    if (strategy && isContainingBlock(style, strategy as 'absolute' | 'fixed')) {
+    if (strategy && isContainingBlock(node, style, strategy as 'absolute' | 'fixed')) {
       strategy = '';
     }
     // The overflow of the body propagates to the viewport, which is always part of the clipping rect
@@ -189,7 +197,7 @@ export const getOffsetParent = (element: HTMLElement): HTMLElement | null => {
     : // The element that forms the containing block, `null` is the viewport or the initial containing block
       (findAncestor(
         element,
-        (node, style) => isHTMLElement(node) && isContainingBlock(style, strategy),
+        (node, style) => isHTMLElement(node) && isContainingBlock(node, style, strategy),
       ) as HTMLElement | null);
 };
 
