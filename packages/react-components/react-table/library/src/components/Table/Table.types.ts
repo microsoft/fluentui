@@ -37,6 +37,16 @@ export type TableContextValues = {
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 /**
+ * Table props accepted by `useTableBase_unstable`, without design props.
+ */
+export type TableBaseProps = ComponentProps<TableSlots> & Partial<Omit<TableContextValue, 'size'>>;
+
+/**
+ * State returned by `useTableBase_unstable`.
+ */
+export type TableBaseState = ComponentState<TableSlots> & Omit<TableContextValue, 'size'>;
+
+/**
  * State used in rendering Table
  */
 export type TableState = ComponentState<TableSlots> &

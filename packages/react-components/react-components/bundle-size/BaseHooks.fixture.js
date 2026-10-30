@@ -93,6 +93,19 @@ import {
   useSwatchPickerRowBase_unstable,
 } from '@fluentui/react-swatch-picker';
 import { useSwitchBase_unstable } from '@fluentui/react-switch';
+import {
+  useDataGridBase_unstable,
+  useDataGridCellBase_unstable,
+  useDataGridHeaderCellBase_unstable,
+  useDataGridRowBase_unstable,
+  useDataGridSelectionCellBase_unstable,
+  useTableBase_unstable,
+  useTableCellBase_unstable,
+  useTableCellLayoutBase_unstable,
+  useTableHeaderCellBase_unstable,
+  useTableRowBase_unstable,
+  useTableSelectionCellBase_unstable,
+} from '@fluentui/react-table';
 import { useTabBase_unstable, useTabListBase_unstable } from '@fluentui/react-tabs';
 import {
   useTagPickerBase_unstable,
@@ -205,6 +218,17 @@ console.log(
   useSwatchPickerBase_unstable,
   useSwatchPickerRowBase_unstable,
   useSwitchBase_unstable,
+  useDataGridBase_unstable,
+  useDataGridCellBase_unstable,
+  useDataGridHeaderCellBase_unstable,
+  useDataGridRowBase_unstable,
+  useDataGridSelectionCellBase_unstable,
+  useTableBase_unstable,
+  useTableCellBase_unstable,
+  useTableCellLayoutBase_unstable,
+  useTableHeaderCellBase_unstable,
+  useTableRowBase_unstable,
+  useTableSelectionCellBase_unstable,
   useTabBase_unstable,
   useTabListBase_unstable,
   useTagPickerBase_unstable,

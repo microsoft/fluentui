@@ -3,24 +3,31 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
-import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContextValues } from './TableCellLayout.types';
+import type {
+  TableCellLayoutBaseState,
+  TableCellLayoutSlots,
+  TableCellLayoutContextValues,
+} from './TableCellLayout.types';
 
 /**
  * Render the final JSX of TableCellLayout
  */
 export const renderTableCellLayout_unstable = (
-  state: TableCellLayoutState,
-  contextValues: TableCellLayoutContextValues,
+  state: TableCellLayoutBaseState,
+  contextValues?: TableCellLayoutContextValues,
 ): JSXElement => {
   assertSlots<TableCellLayoutSlots>(state);
 
   return (
     <state.root>
-      {state.media && (
-        <AvatarContextProvider value={contextValues.avatar}>
+      {state.media &&
+        (contextValues ? (
+          <AvatarContextProvider value={contextValues.avatar}>
+            <state.media />
+          </AvatarContextProvider>
+        ) : (
           <state.media />
-        </AvatarContextProvider>
-      )}
+        ))}
 
       {state.content && (
         <state.content>
