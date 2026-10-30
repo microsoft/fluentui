@@ -19,6 +19,7 @@
     "docs",
     "*.md",
     "rca.analyze.schema.json",
+    "rca.lint.schema.json",
     "rca.config.schema.json",
     "skills",
     "dist"

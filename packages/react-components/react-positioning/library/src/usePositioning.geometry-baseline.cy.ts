@@ -1,0 +1,286 @@
+// Captured from unchanged Floating UI baseline f626209351609e43bc98eb8cc1296273faa679b7,
+// Cypress 14.4.1 / Electron 130, viewport 800 x 600. Do not regenerate for an engine replacement.
+type Overrides = Partial<{
+  width: number;
+  height: number;
+  position: string;
+  transform: string;
+  left: string;
+  top: string;
+  maxWidth: string;
+  maxHeight: string;
+  arrowLeft: string;
+  arrowTop: string;
+  flags: string;
+  matchTargetSize: string;
+  overflowX: string;
+  overflowY: string;
+}>;
+
+type GeometrySnapshot = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  placement: string | null;
+  position: string;
+  transform: string;
+  left: string;
+  top: string;
+  maxWidth: string;
+  maxHeight: string;
+  arrowLeft: string;
+  arrowTop: string;
+  flags: string;
+  matchTargetSize: string;
+  overflowX: string;
+  overflowY: string;
+};
+
+// This only expands literal expected values; it never calls the engine or reads actual geometry.
+function at(x: number, y: number, placement = 'bottom', values: Overrides = {}) {
+  return {
+    x,
+    y,
+    width: values.width ?? 120,
+    height: values.height ?? 60,
+    placement,
+    position: values.position ?? 'absolute',
+    transform: values.transform ?? `translate(${x}px, ${y}px)`,
+    left: values.left ?? '0px',
+    top: values.top ?? '0px',
+    maxWidth: values.maxWidth ?? '',
+    maxHeight: values.maxHeight ?? '',
+    arrowLeft: values.arrowLeft ?? '',
+    arrowTop: values.arrowTop ?? '',
+    flags: values.flags ?? '',
+    matchTargetSize: values.matchTargetSize ?? '',
+    overflowX: values.overflowX ?? '',
+    overflowY: values.overflowY ?? '',
+  };
+}
+
+export const geometryBaseline: Record<string, GeometrySnapshot> = {
+  'ltr-above-top': at(280, 180, 'top'),
+  'ltr-above-bottom': at(280, 180, 'top'),
+  'ltr-above-start': at(300, 180, 'top-start'),
+  'ltr-above-end': at(260, 180, 'top-end'),
+  'ltr-above-center': at(280, 180, 'top'),
+  'ltr-below-top': at(280, 280),
+  'ltr-below-bottom': at(280, 280),
+  'ltr-below-start': at(300, 280, 'bottom-start'),
+  'ltr-below-end': at(260, 280, 'bottom-end'),
+  'ltr-below-center': at(280, 280),
+  'ltr-before-top': at(180, 240, 'left-start'),
+  'ltr-before-bottom': at(180, 220, 'left-end'),
+  'ltr-before-start': at(180, 230, 'left'),
+  'ltr-before-end': at(180, 230, 'left'),
+  'ltr-before-center': at(180, 230, 'left'),
+  'ltr-after-top': at(380, 240, 'right-start'),
+  'ltr-after-bottom': at(380, 220, 'right-end'),
+  'ltr-after-start': at(380, 230, 'right'),
+  'ltr-after-end': at(380, 230, 'right'),
+  'ltr-after-center': at(380, 230, 'right'),
+  'rtl-above-top': at(280, 180, 'top'),
+  'rtl-above-bottom': at(280, 180, 'top'),
+  'rtl-above-start': at(260, 180, 'top-start'),
+  'rtl-above-end': at(300, 180, 'top-end'),
+  'rtl-above-center': at(280, 180, 'top'),
+  'rtl-below-top': at(280, 280),
+  'rtl-below-bottom': at(280, 280),
+  'rtl-below-start': at(260, 280, 'bottom-start'),
+  'rtl-below-end': at(300, 280, 'bottom-end'),
+  'rtl-below-center': at(280, 280),
+  'rtl-before-top': at(380, 240, 'right-start'),
+  'rtl-before-bottom': at(380, 220, 'right-end'),
+  'rtl-before-start': at(380, 230, 'right'),
+  'rtl-before-end': at(380, 230, 'right'),
+  'rtl-before-center': at(380, 230, 'right'),
+  'rtl-after-top': at(180, 240, 'left-start'),
+  'rtl-after-bottom': at(180, 220, 'left-end'),
+  'rtl-after-start': at(180, 230, 'left'),
+  'rtl-after-end': at(180, 230, 'left'),
+  'rtl-after-center': at(180, 230, 'left'),
+  defaults: at(280, 280),
+  'flip-bottom-edge': at(280, 500, 'top'),
+  'flip-top-edge': at(300, 40, 'bottom-start'),
+  'flip-left-edge': at(80, 240, 'right-start'),
+  'flip-right-edge': at(620, 220, 'left-end'),
+  'flip-alignment': at(680, 280, 'bottom-end'),
+  'pinned-bottom': at(280, 600, 'bottom', { flags: 'data-popper-escaped' }),
+  'pinned-still-shifts': at(680, 280, 'bottom-start'),
+  'fallback-first-fit': at(300, 500, 'top-start'),
+  'fallback-reversed': at(180, 540, 'left-end'),
+  'fallback-best-fit': at(150, 320, 'bottom', { width: 500, height: 400, flags: 'data-popper-is-intersecting' }),
+  'fallback-rtl': at(260, 500, 'top-start'),
+  'shift-left': at(0, 280),
+  'shift-right': at(680, 280),
+  'tether-default': at(280, 690, 'bottom', { flags: 'data-popper-escaped,data-popper-reference-hidden' }),
+  'tether-disabled': at(280, 690, 'bottom', { flags: 'data-popper-escaped,data-popper-reference-hidden' }),
+  'tether-disabled-all': at(280, 540, 'bottom', { flags: 'data-popper-reference-hidden' }),
+  'shift-to-cover': at(280, 540),
+  'shift-to-cover-limit': at(280, 590, 'bottom', { flags: 'data-popper-reference-hidden,data-popper-is-intersecting' }),
+  'offset-zero': at(280, 280),
+  'offset-positive': at(280, 293),
+  'offset-negative': at(280, 191, 'top'),
+  'offset-object': at(317, 289, 'bottom-start'),
+  'offset-object-rtl': at(243, 289, 'bottom-start'),
+  'offset-horizontal': at(171, 213, 'left'),
+  'offset-function': at(277, 167, 'top-end'),
+  'offset-function-number': at(280, 290),
+  'offset-flipped': at(280, 488, 'top'),
+  'arrow-centered': at(280, 280, 'bottom', { arrowLeft: '55px' }),
+  'arrow-start': at(300, 290, 'bottom-start', { arrowLeft: '35px' }),
+  'arrow-horizontal': at(380, 240, 'right-start', { arrowTop: '15px' }),
+  'arrow-padding': at(277, 280, 'bottom-start', { arrowLeft: '20px' }),
+  'arrow-shift': at(680, 280, 'bottom', { arrowLeft: '110px' }),
+  'arrow-flip': at(280, 500, 'top', { arrowLeft: '55px' }),
+  'boundary-rect': at(380, 310, 'top'),
+  'boundary-element': at(380, 310, 'top'),
+  'boundary-array': at(330, 310, 'top'),
+  'boundary-flip-only': at(450, 310, 'top'),
+  'boundary-overflow-only': at(380, 410),
+  'boundary-window': at(680, 500, 'top'),
+  'boundary-scroll-parent': at(320, 220, 'top', { transform: 'translate(280px, 190px)' }),
+  'boundary-clipping': at(320, 220, 'top', { transform: 'translate(280px, 190px)' }),
+  'padding-number': at(664, 280),
+  'padding-logical-ltr': at(653, 280),
+  'padding-logical-rtl': at(669, 280),
+  'padding-partial': at(23, 280),
+  'match-width': at(280, 280, 'bottom', { matchTargetSize: '80px' }),
+  'match-intrinsic-width': at(300, 280, 'bottom', { width: 80, matchTargetSize: '80px' }),
+  'match-width-horizontal': at(380, 230, 'right', { matchTargetSize: '80px' }),
+  'cover-above': at(280, 220, 'top'),
+  'cover-below': at(280, 240),
+  'cover-before': at(260, 230, 'left'),
+  'cover-after': at(300, 230, 'right'),
+  'auto-size-true': at(12, 280, 'bottom', {
+    width: 776,
+    height: 308,
+    maxWidth: '776px',
+    maxHeight: '308px',
+    overflowX: 'auto',
+    overflowY: 'auto',
+  }),
+  'auto-size-height': at(12, 280, 'bottom', { width: 900, height: 308, maxHeight: '308px', overflowY: 'auto' }),
+  'auto-size-width': at(12, 280, 'bottom', {
+    width: 776,
+    height: 700,
+    maxWidth: '776px',
+    overflowX: 'auto',
+    flags: 'data-popper-is-intersecting',
+  }),
+  'auto-size-always': at(12, 280, 'bottom', {
+    width: 776,
+    height: 308,
+    maxWidth: '776px',
+    maxHeight: '308px',
+    overflowX: 'auto',
+    overflowY: 'auto',
+  }),
+  'auto-size-height-always': at(12, 280, 'bottom', { width: 900, height: 308, maxHeight: '308px', overflowY: 'auto' }),
+  'auto-size-width-always': at(12, 280, 'bottom', {
+    width: 776,
+    height: 700,
+    maxWidth: '776px',
+    overflowX: 'auto',
+    flags: 'data-popper-is-intersecting',
+  }),
+  'auto-size-false': at(12, 280, 'bottom', { width: 900, height: 700, flags: 'data-popper-is-intersecting' }),
+  'auto-size-boundary': at(100, 100, 'top', {
+    width: 400,
+    height: 140,
+    maxWidth: '400px',
+    maxHeight: '140px',
+    overflowX: 'auto',
+    overflowY: 'auto',
+  }),
+  'auto-size-match': at(300, 280, 'bottom', {
+    width: 80,
+    maxWidth: '800px',
+    maxHeight: '320px',
+    matchTargetSize: '80px',
+  }),
+  // Baseline behavior: explicitly passing either strategy currently resolves to fixed.
+  'strategy-absolute': at(280, 280, 'bottom', { position: 'fixed' }),
+  'strategy-fixed': at(280, 280, 'bottom', { position: 'fixed' }),
+  'strategy-deprecated-fixed': at(280, 280, 'bottom', { position: 'fixed' }),
+  'no-transform-absolute': at(280, 280, 'bottom', { position: 'fixed', transform: '', left: '280px', top: '280px' }),
+  'no-transform-fixed': at(280, 280, 'bottom', { position: 'fixed', transform: '', left: '280px', top: '280px' }),
+  'no-transform-fixed-rtl': at(260, 280, 'bottom-start', {
+    position: 'fixed',
+    transform: '',
+    left: '260px',
+    top: '280px',
+  }),
+  'fractional-dpr-1-transform-true': at(280, 281, 'bottom', { width: 120.25, height: 60.25 }),
+  'fractional-dpr-1-transform-false': at(280, 281, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: '',
+    left: '280px',
+    top: '281px',
+  }),
+  'fractional-dpr-1.25-transform-true': at(280, 280.79998779296875, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: 'translate3d(280px, 280.8px, 0px)',
+  }),
+  'fractional-dpr-1.25-transform-false': at(280, 280.796875, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: '',
+    left: '280px',
+    top: '280.8px',
+  }),
+  'fractional-dpr-1.5-transform-true': at(280.6666564941406, 280.6666564941406, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: 'translate3d(280.667px, 280.667px, 0px)',
+  }),
+  'fractional-dpr-1.5-transform-false': at(280.6640625, 280.6640625, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: '',
+    left: '280.667px',
+    top: '280.667px',
+  }),
+  'fractional-dpr-2-transform-true': at(280.5, 281, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: 'translate3d(280.5px, 281px, 0px)',
+  }),
+  'fractional-dpr-2-transform-false': at(280.5, 281, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: '',
+    left: '280.5px',
+    top: '281px',
+  }),
+  'fractional-dpr-3-transform-true': at(280.3333435058594, 280.6666564941406, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: 'translate3d(280.333px, 280.667px, 0px)',
+  }),
+  'fractional-dpr-3-transform-false': at(280.328125, 280.6640625, 'bottom', {
+    width: 120.25,
+    height: 60.25,
+    transform: '',
+    left: '280.333px',
+    top: '280.667px',
+  }),
+  'nested-scroll': at(320, 210, 'top', { transform: 'translate(280px, 180px)' }),
+  'scaled-containing-block': at(390, 380, 'bottom', { width: 150, height: 75, transform: 'translate(280px, 280px)' }),
+  'transformed-containing-block': at(345, 325, 'bottom', { transform: 'translate(280px, 280px)' }),
+  'fixed-transformed-containing-block': at(345, 325, 'bottom', {
+    position: 'fixed',
+    transform: 'translate(280px, 280px)',
+  }),
+  'virtual-target': at(280, 280),
+  'virtual-zero-size': at(240, 240),
+  'hidden-target': at(320, 470, 'top', {
+    transform: 'translate(280px, 440px)',
+    flags: 'data-popper-escaped,data-popper-reference-hidden',
+  }),
+  'partially-clipped': at(320, 350, 'bottom', { transform: 'translate(280px, 320px)', flags: 'data-popper-escaped' }),
+};
