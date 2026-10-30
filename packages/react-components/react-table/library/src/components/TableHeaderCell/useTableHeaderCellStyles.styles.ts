@@ -75,6 +75,8 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
+    // Follow the cell's own justification, so a right aligned column aligns its header too.
+    justifyContent: 'inherit',
     gap: tokens.spacingHorizontalXS,
     minHeight: '32px',
     flex: '1 1 0px',
