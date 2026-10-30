@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { JSXElement } from '@fluentui/react-utilities';
 
-type UseComboboxFilterConfig = {
+export type UseComboboxFilterConfig = {
   /**
    * The current query string used to filter the options.
    */
