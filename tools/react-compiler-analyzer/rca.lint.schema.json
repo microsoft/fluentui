@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/microsoft/fluentui/master/tools/react-compiler-analyzer/rca.lint.schema.json",
+  "title": "React Compiler Analyzer lint output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "tool",
+    "command",
+    "mode",
+    "profile",
+    "emittedCaching",
+    "summary",
+    "directives",
+    "unparseable"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 3 },
+    "tool": { "const": "react-compiler-analyzer" },
+    "command": { "const": "lint" },
+    "mode": { "enum": ["infer", "annotation", "all"] },
+    "profile": { "$ref": "rca.analyze.schema.json#/definitions/profile" },
+    "emittedCaching": { "const": "unverified" },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directives", "active", "redundant", "broken", "conflicting", "skipped", "unparseableFiles"],
+      "properties": {
+        "directives": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "active": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "redundant": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "broken": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "conflicting": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "skipped": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+        "unparseableFiles": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" }
+      }
+    },
+    "unparseable": { "type": "array", "items": { "$ref": "rca.analyze.schema.json#/definitions/unparseable" } },
+    "directives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["file", "package", "line", "column", "directive", "status", "compilerEvent", "function"],
+        "dependencies": { "justified": ["revalidated"], "revalidated": ["justified", "evidence"] },
+        "properties": {
+          "file": { "type": "string", "minLength": 1 },
+          "package": { "$ref": "rca.analyze.schema.json#/definitions/nullableString" },
+          "line": { "type": "integer", "minimum": 1 },
+          "column": { "$ref": "rca.analyze.schema.json#/definitions/nonNegativeInteger" },
+          "directive": { "enum": ["use-memo", "use-no-memo"] },
+          "status": { "enum": ["redundant", "active", "skipped", "broken", "conflicting"] },
+          "compilerEvent": { "enum": ["CompileError", "CompileSuccess", "PipelineError", "none", "skipped"] },
+          "function": { "$ref": "rca.analyze.schema.json#/definitions/nullableString" },
+          "reason": { "type": "string" },
+          "justified": { "const": true },
+          "revalidated": { "const": true },
+          "evidence": { "$ref": "#/definitions/evidence" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "memoStats"],
+      "properties": {
+        "outcome": { "enum": ["compiled", "skipped", "error", "unavailable"] },
+        "memoStats": { "anyOf": [{ "$ref": "rca.analyze.schema.json#/definitions/memoStats" }, { "type": "null" }] }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before", "after", "acceptanceEffect", "statisticsEffect", "emittedOptimization"],
+      "properties": {
+        "before": { "$ref": "#/definitions/snapshot" },
+        "after": { "$ref": "#/definitions/snapshot" },
+        "acceptanceEffect": { "enum": ["changed", "unchanged", "unavailable"] },
+        "statisticsEffect": { "enum": ["changed", "unchanged", "unavailable"] },
+        "emittedOptimization": { "const": "not-measured" }
+      }
+    }
+  }
+}

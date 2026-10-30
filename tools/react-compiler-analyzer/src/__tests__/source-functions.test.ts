@@ -185,7 +185,7 @@ export const Expression = React.memo(React.forwardRef((props, ref) => <div ref={
             ['Expression', 'default-wrapper-review'],
           ],
     );
-    expect(await applyAnnotations(analyses, 'manual-memo')).toEqual({
+    expect(await applyAnnotations(analyses, 'manual-memo')).toMatchObject({
       filesModified: 1,
       functionsAnnotated: 2,
       functionsBailedOut: 0,

@@ -13,6 +13,12 @@ function isPreservedFileOptOut(result: DirectiveAnalysis): boolean {
  * Print a report of all directive analyses, grouped by package and status.
  */
 export function printReport(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: string, verbose: boolean): void {
+  f.line(
+    'Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.',
+  );
+  f.line(
+    'Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.',
+  );
   if (results.length === 0) {
     f.blank();
     f.line('No directives found.');
@@ -137,6 +143,25 @@ function printTable(f: Formatter, results: DirectiveAnalysis[], workspaceRoot: s
 
   f.table(['Location', 'Function', 'Compiler Event', 'Reason'], rows);
   f.blank();
+  for (const result of results.filter(item => item.evidence)) {
+    const evidence = result.evidence!;
+    f.line(`${toWorkspacePath(workspaceRoot, result.filePath)}:${result.line} — revalidation (report-only)`);
+    f.table(
+      ['Evidence', 'With directive', 'Without directive'],
+      [
+        ['Compiler outcome', evidence.before.outcome, evidence.after.outcome],
+        [
+          'Reported memo slots',
+          evidence.before.memoStats?.memoSlots ?? 'unavailable',
+          evidence.after.memoStats?.memoSlots ?? 'unavailable',
+        ],
+      ],
+    );
+    f.line(
+      `Acceptance: ${evidence.acceptanceEffect}; reported statistics: ${evidence.statisticsEffect}; emitted optimization: ${evidence.emittedOptimization}.`,
+    );
+    f.blank();
+  }
 
   if (verbose) {
     // Print the full code-framed diagnostics as details blocks below the table for readability
@@ -222,7 +247,9 @@ export function printSummary(f: Formatter, results: DirectiveAnalysis[]): void {
   }
 
   if (redundantNoMemo > 0 && actionableActiveNoMemo > 0) {
-    f.line(`> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) can be safely removed.`);
+    f.line(
+      `> **${redundantNoMemo}** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.`,
+    );
     f.line(
       `> **${actionableActiveNoMemo}** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.`,
     );
