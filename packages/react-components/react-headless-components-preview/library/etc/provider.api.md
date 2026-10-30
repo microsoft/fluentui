@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentProviderProps } from '@fluentui/react-provider';
 import { JSXElement } from '@fluentui/react-utilities';
 import { FluentProviderContextValues as ProviderContextValues } from '@fluentui/react-provider';
-import * as React_2 from 'react';
+import type * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useProviderContext } from '@fluentui/react-shared-contexts';
 
@@ -36,7 +36,7 @@ export type ProviderState = ComponentState<ProviderSlots> & Pick<FluentProviderP
 export const renderProvider: (state: ProviderState, contextValues: ProviderContextValues) => JSXElement;
 
 // @public (undocumented)
-export const useProvider: (props: ProviderProps, ref?: React_2.Ref<HTMLDivElement>) => ProviderState;
+export const useProvider: (props: ProviderProps) => ProviderState;
 
 export { useProviderContext }
 

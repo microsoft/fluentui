@@ -6,7 +6,7 @@ import { slot } from '@fluentui/react-utilities';
 
 import type { ProviderProps, ProviderState } from './Provider.types';
 
-export const useProvider = (props: ProviderProps, ref?: React.Ref<HTMLDivElement>): ProviderState => {
+export const useProvider = (props: ProviderProps): ProviderState => {
   const parentContext = useFluent();
   const { children, dir, targetDocument } = props;
 

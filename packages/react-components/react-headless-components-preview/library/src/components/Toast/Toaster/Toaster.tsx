@@ -1,6 +1,5 @@
 'use client';
 
-import type { ToasterProps } from './Toaster.types';
 import { useToaster } from './useToaster';
 import { renderToaster } from './renderToaster';
 import { composeComponentWithoutRef } from '../../../utils/composeComponent';
@@ -12,7 +11,4 @@ import { composeComponentWithoutRef } from '../../../utils/composeComponent';
  *
  * Pair with useToastController from @fluentui/react-toast to dispatch and dismiss toasts imperatively.
  */
-export const Toaster: {
-  (props: ToasterProps): ReturnType<typeof renderToaster>;
-  displayName: string;
-} = /*#__PURE__*/ composeComponentWithoutRef('Toaster', useToaster, renderToaster);
+export const Toaster = /*#__PURE__*/ composeComponentWithoutRef('Toaster', useToaster, renderToaster);

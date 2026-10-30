@@ -11,11 +11,13 @@ import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import type { PopoverContextValue as PopoverContextValue_2 } from '@fluentui/react-popover';
 import type { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import type { PositioningProps as PositioningProps_2 } from '@fluentui/react-positioning';
 import type { PositioningShorthandValue } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import { renderTeachingPopoverBody_unstable as renderTeachingPopoverBody } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselCard_unstable as renderTeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarouselNav_unstable as renderTeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
@@ -106,7 +108,7 @@ export const renderTeachingPopoverTrigger: (state: TeachingPopoverTriggerState) 
 
 // @public
 export const TeachingPopover: {
-    (props: TeachingPopoverProps): ReturnType<typeof renderTeachingPopover>;
+    (props: TeachingPopoverProps): ReactElement<unknown, string | JSXElementConstructor<any>>;
     displayName: string;
 };
 

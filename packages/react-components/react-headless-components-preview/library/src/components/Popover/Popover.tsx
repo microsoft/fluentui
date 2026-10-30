@@ -1,6 +1,5 @@
 'use client';
 
-import type { PopoverProps } from './Popover.types';
 import { usePopover, usePopoverContextValues } from './usePopover';
 import { renderPopover } from './renderPopover';
 import { composeComponentWithoutRef } from '../../utils/composeComponent';
@@ -14,7 +13,9 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
  * controlled `open` prop) flow through React; close paths defer to the
  * browser, with `toggle` events mirrored back into state.
  */
-export const Popover: {
-  (props: PopoverProps): ReturnType<typeof renderPopover>;
-  displayName: string;
-} = /*#__PURE__*/ composeComponentWithoutRef('Popover', usePopover, usePopoverContextValues, renderPopover);
+export const Popover = /*#__PURE__*/ composeComponentWithoutRef(
+  'Popover',
+  usePopover,
+  usePopoverContextValues,
+  renderPopover,
+);
