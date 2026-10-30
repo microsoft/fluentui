@@ -1,4 +1,5 @@
 import type { RenderFunction } from '../../utilities/index';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type {
   ChartProps,
   LineChartPoints,
@@ -6,6 +7,7 @@ import type {
   Basestate,
   RefArrayData,
   CustomizedCalloutData,
+  ScatterChartDataPoint,
 } from '../../types/index';
 import type {
   CartesianChartProps,
@@ -32,14 +34,25 @@ export interface ScatterChartProps extends CartesianChartProps {
   styles?: ScatterChartStyles;
 
   /**
-   * Define a custom callout renderer for a data point
+   * Render a custom callout with all values at the hovered or focused x coordinate.
+   * Returning null falls back to the default content, preserving the legacy behavior.
    */
   onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
 
   /**
-   * Define a custom callout renderer for a stack; default is to render per data point
+   * Render a custom callout for all points at the hovered or focused x coordinate.
+   * Takes precedence over onRenderCalloutPerDataPoint when both are supplied.
+   * Returning null falls back to the default content without invoking
+   * onRenderCalloutPerDataPoint.
    */
   onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+
+  /**
+   * Render a custom callout for the original hovered or focused data point.
+   * Takes precedence over the legacy all-values renderers. Returning null hides
+   * the callout; returning undefined falls back to the default content.
+   */
+  onRenderCalloutPerPoint?: (point?: ScatterChartDataPoint) => JSXElement | null | undefined;
 
   /**
    * Callback for getting callout description message
