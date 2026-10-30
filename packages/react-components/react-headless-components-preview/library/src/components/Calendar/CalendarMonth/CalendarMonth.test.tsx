@@ -173,7 +173,7 @@ describe('CalendarMonth', () => {
     yearRows.forEach(row => expect(row.children).toHaveLength(4));
   });
 
-  it('updates the roving tab stop without stealing focus when the navigated month changes', () => {
+  it('preserves the roving tab stop without stealing focus when the navigated month changes', () => {
     const { container, getByRole, rerender } = render(<CalendarMonth navigatedDate={new Date(2020, 8, 18)} />);
     act(() => getByRole('gridcell', { name: 'October' }).focus());
 
@@ -181,8 +181,8 @@ describe('CalendarMonth', () => {
 
     expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
     expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
-    expect(getByRole('gridcell', { name: 'November' })).toHaveAttribute('tabindex', '0');
-    expect(getByRole('gridcell', { name: 'October' })).not.toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('tabindex', '0');
+    expect(getByRole('gridcell', { name: 'November' })).not.toHaveAttribute('tabindex', '0');
   });
 
   it('keeps focus and the tab stop on a month that becomes disabled', () => {
@@ -200,6 +200,26 @@ describe('CalendarMonth', () => {
     expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
     expect(getByRole('gridcell', { name: 'October' })).toHaveFocus();
     expect(getByRole('gridcell', { name: 'October' })).toHaveAttribute('tabindex', '0');
+  });
+
+  it('keeps the active month focused when a maximum bound clamps the navigated month', () => {
+    const picker = (maxDate?: Date, navigatedDate = new Date(2020, 8, 18)) => (
+      <CalendarProvider value={{ ...calendarContextDefaultValue, maxDate }}>
+        <CalendarMonth navigatedDate={navigatedDate} />
+      </CalendarProvider>
+    );
+    const { container, getByRole, rerender } = testingRender(picker());
+    const september = getByRole('gridcell', { name: 'September' });
+    act(() => september.focus());
+
+    rerender(picker(new Date(2020, 6, 31), new Date(2020, 6, 31)));
+
+    expect(september).toHaveFocus();
+    expect(september).toHaveAttribute('aria-disabled', 'true');
+    expect(september).toHaveAttribute('tabindex', '0');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    fireEvent.keyDown(september, { key: 'End' });
+    expect(getByRole('gridcell', { name: 'July' })).toHaveFocus();
   });
 
   it('swaps in the headless year picker from its header', () => {

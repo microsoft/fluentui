@@ -46,6 +46,19 @@ type OpenChangeReason = DatePickerOpenChangeData['reason'];
 const isDefaultPrevented = (event: DatePickerEvent): boolean =>
   'nativeEvent' in event ? event.isDefaultPrevented() : event.defaultPrevented;
 
+const getActiveElement = (element: HTMLElement): Element | null => {
+  const root = element.getRootNode();
+  const ShadowRootConstructor = element.ownerDocument.defaultView?.ShadowRoot;
+  return ShadowRootConstructor && root instanceof ShadowRootConstructor
+    ? root.activeElement ?? element.ownerDocument.activeElement
+    : element.ownerDocument.activeElement;
+};
+
+const mergeAriaDescribedBy = (...values: (string | undefined)[]): string | undefined => {
+  const ids = new Set(values.flatMap(value => value?.trim().split(/\s+/).filter(Boolean) ?? []));
+  return ids.size ? [...ids].join(' ') : undefined;
+};
+
 const defaultFormatErrorMessage = ({ error, minDate, maxDate, formatDate }: DatePickerErrorMessageData): string => {
   if (error === 'required-input') {
     return 'Enter a date.';
@@ -198,9 +211,12 @@ export const useDatePicker = (
     isRequestingOpen.current = true;
 
     if (!nextOpen && reason !== 'focusOut' && reason !== 'outsideClick' && focusWithinSurface.current) {
-      // Selection and Escape return focus to the field before the surface unmounts, so it never drops to the body.
+      const surfaceHasFocus = surfaceRef.current && isWithin(surfaceRef.current, getActiveElement(surfaceRef.current));
       focusWithinSurface.current = false;
-      controlRef.current?.focus({ preventScroll: true });
+      if (surfaceHasFocus) {
+        // Selection and Escape return focus to the field before the surface unmounts.
+        controlRef.current?.focus({ preventScroll: true });
+      }
     }
 
     isRequestingOpen.current = false;
@@ -227,7 +243,18 @@ export const useDatePicker = (
 
     showYearPickerOnMount.current = false;
     // A controlled close may remove the focused surface without a blur; restore focus from the surface tracker.
-    if (focusWithinSurface.current) {
+    const root = rootRef.current;
+    const activeElement = root ? getActiveElement(root) : targetDocument?.activeElement;
+    const shadowRoot = root?.getRootNode();
+    const ShadowRootConstructor = root?.ownerDocument.defaultView?.ShadowRoot;
+    const focusWasLost =
+      !activeElement ||
+      activeElement === targetDocument?.body ||
+      (!!ShadowRootConstructor && shadowRoot instanceof ShadowRootConstructor && activeElement === shadowRoot.host);
+    if (
+      focusWithinSurface.current &&
+      (focusWasLost || (surfaceRef.current && isWithin(surfaceRef.current, activeElement)))
+    ) {
       focusWithinSurface.current = false;
       controlRef.current?.focus({ preventScroll: true });
     }
@@ -325,7 +352,7 @@ export const useDatePicker = (
     const inputDescribedBy = input['aria-describedby'];
     const inputInvalid = input['aria-invalid'];
     Object.assign(input, controlAriaProps);
-    input['aria-describedby'] = [describedBy, inputDescribedBy].filter(Boolean).join(' ') || undefined;
+    input['aria-describedby'] = mergeAriaDescribedBy(describedBy, inputDescribedBy);
     input['aria-invalid'] = error ? true : inputInvalid ?? fieldControlProps['aria-invalid'];
     // aria-expanded is not supported on text inputs, and the popup is not a listbox, so the field is not a combobox.
     // The calendar icon exposes the expanded state instead.
@@ -368,7 +395,7 @@ export const useDatePicker = (
     const triggerDescribedBy = trigger['aria-describedby'];
     const triggerInvalid = trigger['aria-invalid'];
     Object.assign(trigger, controlAriaProps);
-    trigger['aria-describedby'] = [describedBy, triggerDescribedBy].filter(Boolean).join(' ') || undefined;
+    trigger['aria-describedby'] = mergeAriaDescribedBy(describedBy, triggerDescribedBy);
     trigger['aria-invalid'] = error ? true : triggerInvalid ?? fieldControlProps['aria-invalid'];
     // aria-required is not supported on buttons; a surrounding Field conveys that a date is required.
     delete trigger['aria-required'];

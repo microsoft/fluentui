@@ -174,7 +174,7 @@ export const getCalendarGridTargetIndex = (
 /**
  * Adds a roving tab stop, arrow, Home and End navigation, and delegated activation to the month and year grids.
  * Only the tab-stop cell has `tabIndex={0}`. Moving focus updates the tab stop without selecting or navigating, and the
- * last focused cell stays the tab stop until `resetKey` changes, such as when the navigated date or columns change.
+ * last focused cell stays the tab stop until `resetKey` changes, such as when the grid's cells or columns change.
  *
  * @param grid - the consumer `grid` slot props
  * @param ariaLabel - the accessible name of the grid

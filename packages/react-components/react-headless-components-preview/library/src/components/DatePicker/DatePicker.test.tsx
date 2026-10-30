@@ -576,6 +576,30 @@ describe('DatePicker', () => {
     expect(getByRole('button', { name: 'Due date January 6, 2026' })).toBeInTheDocument();
   });
 
+  it('does not steal focus from another control mounted during a controlled close', async () => {
+    const ControlledDatePicker = () => {
+      const [open, setOpen] = React.useState(true);
+      return (
+        <>
+          <DatePicker
+            aria-label="Due date"
+            today={today}
+            open={open}
+            onOpenChange={(_event, data) => setOpen(data.open)}
+          />
+          {!open && <input autoFocus aria-label="Next field" />}
+        </>
+      );
+    };
+    const { getByRole } = render(<ControlledDatePicker />);
+    const dialog = getByRole('dialog');
+    await waitFor(() => expect(getDayCell(dialog, 'August 12, 2026')).toHaveFocus());
+
+    fireEvent.click(within(dialog).getByRole('button', { name: 'August 24, 2026' }));
+
+    await waitFor(() => expect(getByRole('textbox', { name: 'Next field' })).toHaveFocus());
+  });
+
   it('allows the Calendar consumer to cancel closing with Enter', () => {
     const { getByRole } = renderDatePicker({
       open: true,
@@ -680,6 +704,21 @@ describe('DatePicker', () => {
     );
 
     expect(getByRole('button', { name: 'Due date August 12, 2026' })).toBeInTheDocument();
+  });
+
+  it.each([false, true])('does not duplicate a Field hint description (allowTextInput=%s)', allowTextInput => {
+    const { getByRole, getByText } = render(
+      <Field label="Due date" hint="Pick a delivery date">
+        <DatePicker today={today} allowTextInput={allowTextInput} />
+      </Field>,
+    );
+    const control = allowTextInput
+      ? getByRole('textbox', { name: 'Due date' })
+      : getByRole('button', { name: 'Due date Select a date' });
+    const hint = getByText('Pick a delivery date');
+    const describedBy = control.getAttribute('aria-describedby')?.split(/\s+/) ?? [];
+
+    expect(describedBy).toEqual([hint.id]);
   });
 
   it('combines ARIA descriptions and invalid state from the trigger slot', () => {

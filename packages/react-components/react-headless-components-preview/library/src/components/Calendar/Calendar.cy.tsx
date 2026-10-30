@@ -30,7 +30,6 @@ const BoundsChangingCalendar = () => {
 
 const MaxBoundChangingCalendar = () => {
   const [maxDate, setMaxDate] = React.useState<Date>();
-  const july = new Date(2020, 6, 15);
   return (
     <div
       onKeyDown={event => {
@@ -39,7 +38,7 @@ const MaxBoundChangingCalendar = () => {
         }
       }}
     >
-      <Calendar today={july} value={july} dayPicker={null} maxDate={maxDate} />
+      <Calendar today={today} value={today} dayPicker={null} maxDate={maxDate} />
     </div>
   );
 };

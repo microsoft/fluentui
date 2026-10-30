@@ -187,7 +187,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
       columns: calendarMonthColumns,
       allFocusable,
       defaultTabStop: focusableMonth?.index,
-      resetKey: `${navigatedDate.getTime()}:${calendarMonthColumns}`,
+      resetKey: `${navigatedDate.getFullYear()}:${calendarMonthColumns}`,
     },
   );
 
