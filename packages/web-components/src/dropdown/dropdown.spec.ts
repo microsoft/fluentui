@@ -38,6 +38,22 @@ test.describe('Dropdown', () => {
     expect(hasError).toBe(false);
   });
 
+  test('should focus the control when `focus()` is called before the control is inserted', async ({
+    page,
+    fastPage,
+  }) => {
+    await fastPage.setTemplate();
+
+    await page.evaluate(tagName => {
+      const dropdown = document.createElement(tagName) as Dropdown;
+      dropdown.id = 'early-focus';
+      document.body.append(dropdown);
+      dropdown.focus();
+    }, tagName);
+
+    await expect(page.locator('#early-focus [slot="control"]')).toBeFocused();
+  });
+
   test('should render a dropdown', async ({ fastPage }) => {
     const { element } = fastPage;
 

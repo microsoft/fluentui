@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(dropdown): defer focus() until the control is inserted instead of throwing",
+  "packageName": "@fluentui/web-components",
+  "email": "jonas@floden.co",
+  "dependentChangeType": "patch"
+}
