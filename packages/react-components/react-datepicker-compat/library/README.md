@@ -40,3 +40,15 @@ We will take a similar approach as v0 where we will follow this pattern:
 
 - `breaking change (major)`: Since this is a compat component, we will allow breaking changes if absolutely necessary. To accommodate for this, we will denote those changes as a minor version in semver, i.e. `0.(change will be reflected here).x`.
 - `minor and patch`: These changes will be reflected in the patch version in semver as `0.x.(change will be reflected here)`.
+
+## Opt-in CSS Modules styles
+
+The DatePicker style hook has an opt-in CSS Modules alternative. Griffel remains
+the default. Configure a CSS Modules-capable bundler to replace
+`useDatePickerStyles.styles` with `useDatePickerStyles.styles.css`, including
+`.styles.js` → `.styles.css.js` for built imports, and retain the layered CSS
+assets. The alternative preserves caller classes and styles the popup surface
+independently so portaled and inline popups both work.
+
+This alternative covers DatePicker's own slots only. Its composed Input and
+Calendar components retain their existing style selection.

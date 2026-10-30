@@ -1,0 +1,7 @@
+@layer fluentui {
+  .root {
+    flex-shrink: 0;
+    transform: translateZ(0);
+    overflow: hidden;
+  }
+}

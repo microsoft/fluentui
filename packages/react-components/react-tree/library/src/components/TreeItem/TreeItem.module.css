@@ -1,0 +1,65 @@
+@layer fluentui {
+  .root {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+    padding-inline-end: var(--spacingHorizontalNone);
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] > :global(.fui-TreeItemLayout),
+    &[data-fui-focus-visible] > :global(.fui-TreeItemPersonaLayout) {
+      border-radius: var(--borderRadiusMedium);
+      outline-color: var(--colorStrokeFocus2);
+      outline-width: 2px;
+      outline-style: solid;
+    }
+  }
+
+  .level1 {
+    --fluent-TreeItem--level: 1;
+  }
+
+  .level2 {
+    --fluent-TreeItem--level: 2;
+  }
+
+  .level3 {
+    --fluent-TreeItem--level: 3;
+  }
+
+  .level4 {
+    --fluent-TreeItem--level: 4;
+  }
+
+  .level5 {
+    --fluent-TreeItem--level: 5;
+  }
+
+  .level6 {
+    --fluent-TreeItem--level: 6;
+  }
+
+  .level7 {
+    --fluent-TreeItem--level: 7;
+  }
+
+  .level8 {
+    --fluent-TreeItem--level: 8;
+  }
+
+  .level9 {
+    --fluent-TreeItem--level: 9;
+  }
+
+  .level10 {
+    --fluent-TreeItem--level: 10;
+  }
+}

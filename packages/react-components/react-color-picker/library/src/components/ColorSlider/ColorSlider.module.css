@@ -1,0 +1,140 @@
+/* Hue stops and HSV black/white endpoints describe the color space, not a theme palette. */
+@layer fluentui {
+  .root {
+    position: relative;
+    display: inline-grid;
+    touch-action: none;
+    align-items: center;
+    justify-items: center;
+    --fui-Slider__thumb--size: var(--spacingHorizontalXL);
+    --fui-Slider__rail--size: var(--spacingHorizontalXL);
+    min-height: var(--spacingHorizontalXXXL);
+  }
+  .horizontal {
+    min-width: calc(var(--spacingHorizontalXXXL) * 6 + var(--spacingHorizontalS));
+    grid-template-rows: 1fr var(--fui-Slider__thumb--size) 1fr;
+    grid-template-columns: 1fr 100% 1fr;
+  }
+  .vertical {
+    min-height: calc(var(--spacingHorizontalXXXL) * 8 + var(--spacingHorizontalXXL));
+    grid-template-rows: 1fr 100% 1fr;
+    grid-template-columns: 1fr var(--fui-Slider__thumb--size) 1fr;
+  }
+  .rail {
+    pointer-events: none;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: relative;
+    forced-color-adjust: none;
+    outline-width: var(--strokeWidthThin);
+    outline-style: solid;
+    outline-color: var(--colorTransparentStroke);
+    &::before {
+      content: '';
+      position: absolute;
+    }
+  }
+  .thumb {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    position: absolute;
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+    pointer-events: none;
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    border: var(--strokeWidthThin) solid var(--colorNeutralForeground4);
+    box-shadow: var(--shadow4);
+    background-color: var(--fui-Slider__thumb--color);
+    &::before {
+      position: absolute;
+      inset: 0px;
+      border-radius: var(--borderRadiusCircular);
+      box-sizing: border-box;
+      content: '';
+      border: var(--strokeWidthThick) solid var(--colorNeutralBackground1);
+    }
+  }
+  .input {
+    cursor: pointer;
+    opacity: 0;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    padding: 0;
+    margin: 0;
+    &:focus-visible ~ :global(.fui-ColorSlider__thumb) {
+      border: var(--spacingHorizontalXXS) solid var(--colorStrokeFocus2);
+      outline: var(--strokeWidthThick) solid var(--colorTransparentStroke);
+      border-radius: var(--borderRadiusCircular);
+    }
+  }
+  :where(.horizontal) > .rail {
+    width: 100%;
+    height: var(--fui-Slider__rail--size);
+    &::before {
+      inset-inline-start: calc(var(--strokeWidthThin) * -1);
+      inset-inline-end: calc(var(--strokeWidthThin) * -1);
+      height: var(--fui-Slider__rail--size);
+    }
+  }
+  :where(.horizontal) > .thumb {
+    transform: translateX(-50%);
+    &:dir(rtl) {
+      transform: translateX(50%);
+    }
+    inset-inline-start: var(--fui-Slider--progress);
+  }
+  :where(.horizontal) > .input {
+    height: var(--fui-Slider__thumb--size);
+    width: 100%;
+  }
+  :where(.vertical) > .rail {
+    width: var(--fui-Slider__rail--size);
+    height: 100%;
+    &::before {
+      width: var(--fui-Slider__rail--size);
+      top: calc(var(--strokeWidthThin) * -1);
+      bottom: var(--strokeWidthThin);
+    }
+  }
+  :where(.vertical) > .thumb {
+    transform: translateY(50%);
+    bottom: var(--fui-Slider--progress);
+  }
+  :where(.vertical) > .input {
+    height: 100%;
+    width: var(--fui-Slider__thumb--size);
+    writing-mode: vertical-lr;
+    direction: rtl;
+  }
+  :where(.hue) > .rail {
+    background-image: linear-gradient(var(--fui-Slider--direction), red, fuchsia, blue, aqua, lime, yellow, red);
+  }
+  :where(.saturation) > .rail {
+    background-image: linear-gradient(
+      var(--fui-Slider--direction),
+      var(--fui-Slider__rail--color),
+      var(--fui-Slider__rail--color-low)
+    );
+  }
+  :where(.value) > .rail {
+    background-image: linear-gradient(
+      var(--fui-Slider--direction),
+      var(--fui-Slider__rail--color),
+      var(--fui-Slider__rail--color-low)
+    );
+  }
+  :where(.rounded) > .rail {
+    border-radius: var(--borderRadiusMedium);
+  }
+  :where(.square) > .rail {
+    border-radius: var(--borderRadiusNone);
+  }
+}

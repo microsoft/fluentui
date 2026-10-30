@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add opt-in CSS Modules style alternatives for positioning",
+  "packageName": "@fluentui/react-positioning",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

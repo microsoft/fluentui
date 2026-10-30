@@ -1,0 +1,12 @@
+@layer fluentui {
+  .checkmark {
+    width: var(--spacingHorizontalL);
+    height: var(--spacingHorizontalL);
+    visibility: hidden;
+    flex-shrink: 0;
+  }
+  .checkmark:where(.checked) {
+    visibility: visible;
+    flex-shrink: 0;
+  }
+}

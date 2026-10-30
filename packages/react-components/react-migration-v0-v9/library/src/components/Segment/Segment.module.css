@@ -1,0 +1,10 @@
+@layer fluentui {
+  .segment {
+    padding: 1em;
+    border-width: 2px 0 0;
+    border-color: transparent;
+    border-style: solid;
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: 0 1px 1px 1px var(--colorNeutralShadowKey);
+  }
+}

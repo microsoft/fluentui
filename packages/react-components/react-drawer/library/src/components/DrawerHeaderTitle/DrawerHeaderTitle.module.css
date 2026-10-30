@@ -1,0 +1,12 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: var(--spacingHorizontalS);
+  }
+
+  .action {
+    margin-inline-end: calc(var(--spacingHorizontalS) * -1);
+  }
+}

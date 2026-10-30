@@ -1,0 +1,56 @@
+@layer fluentui {
+  .root {
+    --fui-CardHeader--gap: var(--spacingHorizontalM);
+    align-items: center;
+  }
+  .image {
+    display: inline-flex;
+    margin-inline-end: var(--fui-CardHeader--gap);
+  }
+  .header {
+    display: flex;
+  }
+  .description {
+    display: flex;
+  }
+  .action {
+    margin-inline-start: var(--fui-CardHeader--gap);
+    @media (forced-colors: active) {
+      & :global(.fui-Button),
+      & :global(.fui-Link) {
+        border-top-color: currentColor;
+        border-right-color: currentColor;
+        border-bottom-color: currentColor;
+        border-left-color: currentColor;
+        color: currentColor;
+        outline-color: currentColor;
+      }
+    }
+  }
+  .grid {
+    display: grid;
+    grid-auto-columns: min-content 1fr min-content;
+  }
+  :where(.grid) > .image {
+    grid-column-start: 1;
+    grid-row-start: span 2;
+  }
+  :where(.grid) > .header {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+  :where(.grid) > .description {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  :where(.grid) > .action {
+    grid-column-start: 3;
+    grid-row-start: span 2;
+  }
+  .flex {
+    display: flex;
+  }
+  :where(.flex) > .header {
+    flex-grow: 1;
+  }
+}

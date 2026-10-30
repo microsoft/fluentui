@@ -1,0 +1,27 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .horizontal {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .vertical {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  :where(.subtle-circular, .filled-circular) {
+    gap: var(--spacingHorizontalS);
+
+    &.small {
+      gap: var(--spacingHorizontalSNudge);
+    }
+  }
+}

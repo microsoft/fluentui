@@ -1,0 +1,39 @@
+@layer fluentui {
+  .root {
+    min-width: 96px;
+  }
+
+  .brandNext {
+    color: var(--colorBrandForeground1);
+    background-color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorTransparentBackground);
+  }
+
+  .brandNext:hover {
+    color: var(--colorCompoundBrandForeground1Hover);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandNext:hover:active {
+    color: var(--colorCompoundBrandForeground1Pressed);
+    background-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrevious {
+    color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackground);
+    border-color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  .brandPrevious:hover {
+    color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackgroundHover);
+  }
+
+  .brandPrevious:hover:active {
+    color: var(--colorNeutralForegroundOnBrand);
+    border-color: var(--colorNeutralForegroundOnBrand);
+    background-color: var(--colorBrandBackgroundPressed);
+  }
+}

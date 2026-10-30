@@ -1,0 +1,143 @@
+@layer fluentui {
+  .root {
+    display: inline-flex;
+    position: relative;
+  }
+
+  .pie {
+    clip-path: circle(50%);
+    background-color: var(--colorTransparentStroke);
+    @media (forced-colors: active) {
+      background-color: CanvasText;
+    }
+  }
+
+  /* Shared dimensions and layout metrics for group items and the overflow trigger. */
+  .size16 {
+    --fui-AvatarGroup-size: var(--spacingHorizontalL);
+  }
+  .size20 {
+    --fui-AvatarGroup-size: var(--spacingHorizontalXL);
+  }
+  .size24 {
+    --fui-AvatarGroup-size: var(--spacingHorizontalXXL);
+  }
+  .size28 {
+    --fui-AvatarGroup-size: calc(7 * var(--spacingHorizontalXS));
+  }
+  .size32 {
+    --fui-AvatarGroup-size: var(--spacingHorizontalXXXL);
+  }
+  .size36 {
+    --fui-AvatarGroup-size: calc(9 * var(--spacingHorizontalXS));
+  }
+  .size40 {
+    --fui-AvatarGroup-size: calc(10 * var(--spacingHorizontalXS));
+  }
+  .size48 {
+    --fui-AvatarGroup-size: calc(12 * var(--spacingHorizontalXS));
+  }
+  .size56 {
+    --fui-AvatarGroup-size: calc(14 * var(--spacingHorizontalXS));
+  }
+  .size64 {
+    --fui-AvatarGroup-size: calc(16 * var(--spacingHorizontalXS));
+  }
+  .size72 {
+    --fui-AvatarGroup-size: calc(18 * var(--spacingHorizontalXS));
+  }
+  .size96 {
+    --fui-AvatarGroup-size: calc(24 * var(--spacingHorizontalXS));
+  }
+  .size120 {
+    --fui-AvatarGroup-size: calc(30 * var(--spacingHorizontalXS));
+  }
+  .size128 {
+    --fui-AvatarGroup-size: calc(32 * var(--spacingHorizontalXS));
+  }
+
+  .size16,
+  .size20,
+  .size24,
+  .size28,
+  .size32,
+  .size36,
+  .size40,
+  .size48,
+  .size56,
+  .size64,
+  .size72,
+  .size96,
+  .size120,
+  .size128 {
+    width: var(--fui-AvatarGroup-size);
+    height: var(--fui-AvatarGroup-size);
+  }
+
+  .size16,
+  .size20,
+  .size24,
+  .size28,
+  .size32,
+  .size36,
+  .size40,
+  .size48 {
+    --fui-AvatarGroup-divider: var(--strokeWidthThick);
+  }
+  .size56,
+  .size64 {
+    --fui-AvatarGroup-divider: var(--strokeWidthThicker);
+  }
+  .size72,
+  .size96,
+  .size120,
+  .size128 {
+    --fui-AvatarGroup-divider: var(--strokeWidthThickest);
+  }
+
+  .size16,
+  .size20 {
+    --fui-AvatarGroup-stackSpacing: var(--spacingHorizontalXXS);
+  }
+  .size24,
+  .size28,
+  .size32,
+  .size36,
+  .size40 {
+    --fui-AvatarGroup-stackSpacing: var(--spacingHorizontalXS);
+  }
+  .size48,
+  .size56,
+  .size64,
+  .size72 {
+    --fui-AvatarGroup-stackSpacing: var(--spacingHorizontalS);
+  }
+  .size96,
+  .size120,
+  .size128 {
+    --fui-AvatarGroup-stackSpacing: var(--spacingHorizontalL);
+  }
+
+  .size16 {
+    --fui-AvatarGroup-spreadSpacing: var(--spacingHorizontalS);
+  }
+  .size20,
+  .size24,
+  .size28 {
+    --fui-AvatarGroup-spreadSpacing: var(--spacingHorizontalMNudge);
+  }
+  .size32,
+  .size36,
+  .size40,
+  .size48,
+  .size56 {
+    --fui-AvatarGroup-spreadSpacing: var(--spacingHorizontalL);
+  }
+  .size64,
+  .size72,
+  .size96,
+  .size120,
+  .size128 {
+    --fui-AvatarGroup-spreadSpacing: var(--spacingHorizontalXL);
+  }
+}

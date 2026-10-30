@@ -1,0 +1,59 @@
+@layer fluentui {
+  .root {
+    font-weight: var(--fontWeightRegular);
+    padding: 0 var(--spacingHorizontalS);
+    position: relative;
+  }
+  .root[data-fui-focus-within]:focus-within {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+  .sortable:hover {
+    color: var(--colorNeutralForeground1Hover);
+    background-color: var(--colorSubtleBackgroundHover);
+  }
+  .sortable:active {
+    color: var(--colorNeutralForeground1Pressed);
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+  .table {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .flex {
+    display: flex;
+    flex: 1 1 0px;
+    min-width: 0;
+  }
+  .button {
+    resize: horizontal;
+    box-sizing: content-box;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    border: none;
+    text-align: unset;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    align-items: center;
+    gap: var(--spacingHorizontalXS);
+    min-height: var(--spacingVerticalXXXL);
+    flex: 1 1 0px;
+    outline-style: none;
+  }
+  :where(.sortable) > .button {
+    cursor: pointer;
+  }
+  .sortIcon {
+    display: flex;
+    align-items: center;
+    padding-top: var(--spacingVerticalXXS);
+  }
+}

@@ -1,0 +1,22 @@
+@layer fluentui {
+  .root {
+    margin-inline-start: calc(-1 * var(--spacingHorizontalSNudge));
+    margin-inline-end: 0;
+    width: revert;
+    align-items: center;
+    gap: var(--spacingHorizontalMNudge);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS) var(--spacingVerticalS) var(--spacingHorizontalMNudge);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+  .small {
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS) var(--spacingVerticalS)
+      calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+    gap: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+  }
+  .absentIconRootAdjustment {
+    padding-inline-start: var(--spacingHorizontalL);
+  }
+}

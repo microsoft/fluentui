@@ -1,0 +1,76 @@
+@layer fluentui {
+  .root {
+    color: var(--colorNeutralForeground1);
+    box-sizing: border-box;
+  }
+  .root[data-fui-focus-within]:focus-within :global(.fui-TableSelectionCell),
+  .root[data-fui-focus-within]:focus-within :global(.fui-TableCellActions) {
+    opacity: 1;
+  }
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+  }
+  .interactive:hover {
+    background-color: var(--colorSubtleBackgroundHover);
+    color: var(--colorNeutralForeground1Hover);
+  }
+  .interactive:hover :global(.fui-TableCellActions),
+  .interactive:hover :global(.fui-TableSelectionCell) {
+    opacity: 1;
+  }
+  .interactive:active {
+    background-color: var(--colorSubtleBackgroundPressed);
+    color: var(--colorNeutralForeground1Pressed);
+  }
+  .interactive:active :global(.fui-TableCellActions),
+  .interactive:active :global(.fui-TableSelectionCell) {
+    opacity: 1;
+  }
+  .medium,
+  .small {
+    border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  }
+  .extra-small {
+    font-size: var(--fontSizeBase200);
+  }
+  .table {
+    display: table-row;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  .brand {
+    background-color: var(--colorBrandBackground2);
+    border-color: var(--colorTransparentStrokeInteractive);
+  }
+  .brand:active {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorNeutralForeground1);
+  }
+  .neutral {
+    background-color: var(--colorSubtleBackgroundSelected);
+    color: var(--colorNeutralForeground1Hover);
+    border-color: var(--colorNeutralStrokeOnBrand);
+  }
+  .neutral:active {
+    background-color: var(--colorSubtleBackgroundSelected);
+  }
+  @media (forced-colors: active) {
+    .interactive:hover {
+      color: Highlight;
+      border-color: Highlight;
+    }
+    .brand,
+    .neutral {
+      border: var(--strokeWidthThick) solid transparent;
+      border-radius: var(--borderRadiusMedium);
+      box-sizing: border-box;
+    }
+    .brand:focus-visible,
+    .neutral:focus-visible {
+      outline-offset: calc(-2 * var(--strokeWidthThick));
+    }
+  }
+}

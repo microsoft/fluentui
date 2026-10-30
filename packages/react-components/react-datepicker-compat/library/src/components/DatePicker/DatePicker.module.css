@@ -1,0 +1,32 @@
+@layer fluentui {
+  .root {
+    position: relative;
+    cursor: pointer;
+  }
+  .root input {
+    cursor: pointer;
+  }
+  .disabled {
+    cursor: default;
+  }
+  .disabled input {
+    cursor: default;
+  }
+  .inline {
+    z-index: 1;
+  }
+  .popupSurface {
+    background-color: var(--colorNeutralBackground1);
+    box-shadow: var(--shadow16);
+    border-radius: var(--borderRadiusMedium);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--colorTransparentStroke);
+    display: inline-flex;
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}

@@ -1,0 +1,587 @@
+@layer fluentui {
+  /* ---- Root base (32px default, circular) ---- */
+  .root {
+    display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+    vertical-align: middle;
+    border-radius: var(--borderRadiusCircular);
+    font-family: var(--fontFamilyBase);
+    font-weight: var(--fontWeightSemibold);
+    /* Default text size (sizes 32–40): caption1Strong base is fontSizeBase300 */
+    font-size: var(--fontSizeBase300);
+    width: 32px;
+    height: 32px;
+    /* Default icon size for sizes 28–40 */
+    & :global(.fui-Avatar__icon) {
+      font-size: 20px;
+    }
+  }
+
+  /* ::before = ring, ::after = shadow. Hidden by default (no content). */
+  .root::before,
+  .root::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    margin: calc(-2 * var(--fui-Avatar-ringWidth, 0px));
+    border-radius: inherit;
+    transition-property: margin, opacity;
+    transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+    transition-duration: var(--durationUltraSlow), var(--durationSlower);
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::before,
+    .root::after {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  .root::before {
+    border-style: solid;
+    border-width: var(--fui-Avatar-ringWidth, 0px);
+  }
+
+  /* ---- Image slot ---- */
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    vertical-align: top;
+  }
+
+  /* ---- Icon and initials slots share the same base layout ---- */
+  .iconInitials {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    border-radius: inherit;
+  }
+
+  /* ---- Badge slot (bottom-right corner) ---- */
+  .badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Root modifier when badge is present */
+  .badgeAlign {
+    --fui-Avatar-badgeAlign: right;
+  }
+  [dir='rtl'] .badgeAlign {
+    --fui-Avatar-badgeAlign: left;
+  }
+
+  /* Badge cutout mask */
+  .badgeCutout {
+    mask-image: radial-gradient(
+      circle at bottom var(--fui-Avatar-badgeRadius) var(--fui-Avatar-badgeAlign, right) var(--fui-Avatar-badgeRadius),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+  }
+
+  /* Ring ::before cutout when badge is also present */
+  .ringBadgeCutout::before {
+    mask-image: radial-gradient(
+      circle at bottom calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth, 0px))
+        var(--fui-Avatar-badgeAlign, right) calc(var(--fui-Avatar-badgeRadius) + 2 * var(--fui-Avatar-ringWidth, 0px)),
+      transparent calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) - 0.25px),
+      white calc(var(--fui-Avatar-badgeRadius) + var(--fui-Avatar-badgeGap) + 0.25px)
+    );
+  }
+
+  /* ---- Sizes with embedded font-size and icon-size ---- */
+  /* Each size class sets width/height, and overrides font-size + icon font-size where they
+     differ from the .root defaults (fontSizeBase300, icon 20px). */
+
+  .size16 {
+    width: 16px;
+    height: 16px;
+    font-size: var(--fontSizeBase100);
+    & :global(.fui-Avatar__icon) {
+      font-size: 12px;
+    }
+  }
+  .size20 {
+    width: 20px;
+    height: 20px;
+    font-size: var(--fontSizeBase100);
+    & :global(.fui-Avatar__icon) {
+      font-size: 16px;
+    }
+  }
+  .size24 {
+    width: 24px;
+    height: 24px;
+    font-size: var(--fontSizeBase100);
+    & :global(.fui-Avatar__icon) {
+      font-size: 16px;
+    }
+  }
+  .size28 {
+    width: 28px;
+    height: 28px;
+    font-size: var(--fontSizeBase200);
+    /* icon stays 20px (inherited from .root default) */
+  }
+  /* size32: .root default (no class applied) */
+  .size36 {
+    width: 36px;
+    height: 36px; /* font/icon: .root defaults */
+  }
+  .size40 {
+    width: 40px;
+    height: 40px; /* font/icon: .root defaults */
+  }
+  .size48 {
+    width: 48px;
+    height: 48px;
+    font-size: var(--fontSizeBase400);
+    & :global(.fui-Avatar__icon) {
+      font-size: 24px;
+    }
+  }
+  .size56 {
+    width: 56px;
+    height: 56px;
+    font-size: var(--fontSizeBase400);
+    & :global(.fui-Avatar__icon) {
+      font-size: 28px;
+    }
+  }
+  .size64 {
+    width: 64px;
+    height: 64px;
+    font-size: var(--fontSizeBase500);
+    & :global(.fui-Avatar__icon) {
+      font-size: 32px;
+    }
+  }
+  .size72 {
+    width: 72px;
+    height: 72px;
+    font-size: var(--fontSizeBase500);
+    & :global(.fui-Avatar__icon) {
+      font-size: 32px;
+    }
+  }
+  .size96 {
+    width: 96px;
+    height: 96px;
+    font-size: var(--fontSizeBase500);
+    & :global(.fui-Avatar__icon) {
+      font-size: 48px;
+    }
+  }
+  .size120 {
+    width: 120px;
+    height: 120px;
+    font-size: var(--fontSizeBase600);
+    & :global(.fui-Avatar__icon) {
+      font-size: 48px;
+    }
+  }
+  .size128 {
+    width: 128px;
+    height: 128px;
+    font-size: var(--fontSizeBase600);
+    & :global(.fui-Avatar__icon) {
+      font-size: 48px;
+    }
+  }
+
+  .size32 {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ---- Square shape: border-radius per size group ---- */
+  /* :where() keeps specificity at (0,1,0) — same as a single class */
+  .square:where(.size16, .size20, .size24) {
+    border-radius: var(--borderRadiusSmall);
+  }
+  .square:where(.size28, .size32, .size36, .size40, .size48) {
+    border-radius: var(--borderRadiusMedium);
+  }
+  .square:where(.size56, .size64, .size72) {
+    border-radius: var(--borderRadiusLarge);
+  }
+  .square:where(.size96, .size120, .size128) {
+    border-radius: var(--borderRadiusXLarge);
+  }
+  /* size32 has no class, so we need to handle it: .square without a size class = size32 */
+  .square:not(
+      :is(
+          .size16,
+          .size20,
+          .size24,
+          .size28,
+          .size36,
+          .size40,
+          .size48,
+          .size56,
+          .size64,
+          .size72,
+          .size96,
+          .size120,
+          .size128
+        )
+    ) {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  /* ---- Badge size: CSS vars for mask calculations ---- */
+  .tiny {
+    --fui-Avatar-badgeRadius: 3px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+  .extra-small {
+    --fui-Avatar-badgeRadius: 5px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+  .small {
+    --fui-Avatar-badgeRadius: 6px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+  .medium {
+    --fui-Avatar-badgeRadius: 8px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThin);
+  }
+  .large {
+    --fui-Avatar-badgeRadius: 10px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+  }
+  .extra-large {
+    --fui-Avatar-badgeRadius: 14px;
+    --fui-Avatar-badgeGap: var(--strokeWidthThick);
+  }
+
+  /* ---- Ring (::before): activate + thickness from size ---- */
+  .ring::before {
+    content: '';
+  }
+
+  /* Ring thickness: controlled by --fui-Avatar-ringWidth, selected by size group */
+  .ring:where(.size16, .size20, .size24, .size28, .size36, .size40, .size48),
+  .ring:not(
+      :is(.size16, .size20, .size24, .size28, .size36, .size40, .size56, .size64, .size72, .size96, .size120, .size128)
+    ) {
+    --fui-Avatar-ringWidth: var(--strokeWidthThick); /* sizes ≤ 48 */
+  }
+  .ring:where(.size56, .size64) {
+    --fui-Avatar-ringWidth: var(--strokeWidthThicker);
+  }
+  .ring:where(.size72, .size96, .size120, .size128) {
+    --fui-Avatar-ringWidth: var(--strokeWidthThickest);
+  }
+
+  /* Ring border colors (one per palette color) */
+  .ring:where(.neutral, .brand)::before {
+    border-color: var(--colorBrandStroke1);
+  }
+  .ring:where(.dark-red)::before {
+    border-color: var(--colorPaletteDarkRedBorderActive);
+  }
+  .ring:where(.cranberry)::before {
+    border-color: var(--colorPaletteCranberryBorderActive);
+  }
+  .ring:where(.red)::before {
+    border-color: var(--colorPaletteRedBorderActive);
+  }
+  .ring:where(.pumpkin)::before {
+    border-color: var(--colorPalettePumpkinBorderActive);
+  }
+  .ring:where(.peach)::before {
+    border-color: var(--colorPalettePeachBorderActive);
+  }
+  .ring:where(.marigold)::before {
+    border-color: var(--colorPaletteMarigoldBorderActive);
+  }
+  .ring:where(.gold)::before {
+    border-color: var(--colorPaletteGoldBorderActive);
+  }
+  .ring:where(.brass)::before {
+    border-color: var(--colorPaletteBrassBorderActive);
+  }
+  .ring:where(.brown)::before {
+    border-color: var(--colorPaletteBrownBorderActive);
+  }
+  .ring:where(.forest)::before {
+    border-color: var(--colorPaletteForestBorderActive);
+  }
+  .ring:where(.seafoam)::before {
+    border-color: var(--colorPaletteSeafoamBorderActive);
+  }
+  .ring:where(.dark-green)::before {
+    border-color: var(--colorPaletteDarkGreenBorderActive);
+  }
+  .ring:where(.light-teal)::before {
+    border-color: var(--colorPaletteLightTealBorderActive);
+  }
+  .ring:where(.teal)::before {
+    border-color: var(--colorPaletteTealBorderActive);
+  }
+  .ring:where(.steel)::before {
+    border-color: var(--colorPaletteSteelBorderActive);
+  }
+  .ring:where(.blue)::before {
+    border-color: var(--colorPaletteBlueBorderActive);
+  }
+  .ring:where(.royal-blue)::before {
+    border-color: var(--colorPaletteRoyalBlueBorderActive);
+  }
+  .ring:where(.cornflower)::before {
+    border-color: var(--colorPaletteCornflowerBorderActive);
+  }
+  .ring:where(.navy)::before {
+    border-color: var(--colorPaletteNavyBorderActive);
+  }
+  .ring:where(.lavender)::before {
+    border-color: var(--colorPaletteLavenderBorderActive);
+  }
+  .ring:where(.purple)::before {
+    border-color: var(--colorPalettePurpleBorderActive);
+  }
+  .ring:where(.grape)::before {
+    border-color: var(--colorPaletteGrapeBorderActive);
+  }
+  .ring:where(.lilac)::before {
+    border-color: var(--colorPaletteLilacBorderActive);
+  }
+  .ring:where(.pink)::before {
+    border-color: var(--colorPalettePinkBorderActive);
+  }
+  .ring:where(.magenta)::before {
+    border-color: var(--colorPaletteMagentaBorderActive);
+  }
+  .ring:where(.plum)::before {
+    border-color: var(--colorPalettePlumBorderActive);
+  }
+  .ring:where(.beige)::before {
+    border-color: var(--colorPaletteBeigeBorderActive);
+  }
+  .ring:where(.mink)::before {
+    border-color: var(--colorPaletteMinkBorderActive);
+  }
+  .ring:where(.platinum)::before {
+    border-color: var(--colorPalettePlatinumBorderActive);
+  }
+  .ring:where(.anchor)::before {
+    border-color: var(--colorPaletteAnchorBorderActive);
+  }
+
+  /* ---- Shadow (::after): activate + depth from size ---- */
+  .shadow::after {
+    content: '';
+  }
+
+  .shadow:where(.size16, .size20, .size24, .size28)::after {
+    box-shadow: var(--shadow4);
+  }
+  .shadow:where(.size36, .size40, .size48)::after {
+    box-shadow: var(--shadow8);
+  }
+  .shadow:where(.size56, .size64)::after {
+    box-shadow: var(--shadow16);
+  }
+  .shadow:where(.size72, .size96, .size120, .size128)::after {
+    box-shadow: var(--shadow28);
+  }
+  /* size32 (no class): shadow8 range (29–48) */
+  .shadow:not(
+      :is(
+          .size16,
+          .size20,
+          .size24,
+          .size28,
+          .size36,
+          .size40,
+          .size48,
+          .size56,
+          .size64,
+          .size72,
+          .size96,
+          .size120,
+          .size128
+        )
+    )::after {
+    box-shadow: var(--shadow8);
+  }
+
+  /* ---- Active / inactive transition ---- */
+  .activeOrInactive {
+    transform: perspective(1px);
+    transition-property: transform, opacity;
+    transition-duration: var(--durationUltraSlow), var(--durationFaster);
+    transition-timing-function: var(--curveEasyEaseMax), var(--curveLinear);
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .activeOrInactive {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  .inactive {
+    opacity: 0.8;
+    transform: scale(0.875);
+    transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+  }
+
+  .inactive::before,
+  .inactive::after {
+    margin: 0;
+    opacity: 0;
+    transition-timing-function: var(--curveDecelerateMin), var(--curveLinear);
+  }
+
+  /* Keep root color qualifiers specificity-neutral and target only its own slots. */
+  :where(.neutral) > .iconInitials {
+    color: var(--colorNeutralForeground3);
+    background-color: var(--colorNeutralBackground6);
+  }
+  :where(.brand) > .iconInitials {
+    color: var(--colorNeutralForegroundStaticInverted);
+    background-color: var(--colorBrandBackgroundStatic);
+  }
+  :where(.dark-red) > .iconInitials {
+    color: var(--colorPaletteDarkRedForeground2);
+    background-color: var(--colorPaletteDarkRedBackground2);
+  }
+  :where(.cranberry) > .iconInitials {
+    color: var(--colorPaletteCranberryForeground2);
+    background-color: var(--colorPaletteCranberryBackground2);
+  }
+  :where(.red) > .iconInitials {
+    color: var(--colorPaletteRedForeground2);
+    background-color: var(--colorPaletteRedBackground2);
+  }
+  :where(.pumpkin) > .iconInitials {
+    color: var(--colorPalettePumpkinForeground2);
+    background-color: var(--colorPalettePumpkinBackground2);
+  }
+  :where(.peach) > .iconInitials {
+    color: var(--colorPalettePeachForeground2);
+    background-color: var(--colorPalettePeachBackground2);
+  }
+  :where(.marigold) > .iconInitials {
+    color: var(--colorPaletteMarigoldForeground2);
+    background-color: var(--colorPaletteMarigoldBackground2);
+  }
+  :where(.gold) > .iconInitials {
+    color: var(--colorPaletteGoldForeground2);
+    background-color: var(--colorPaletteGoldBackground2);
+  }
+  :where(.brass) > .iconInitials {
+    color: var(--colorPaletteBrassForeground2);
+    background-color: var(--colorPaletteBrassBackground2);
+  }
+  :where(.brown) > .iconInitials {
+    color: var(--colorPaletteBrownForeground2);
+    background-color: var(--colorPaletteBrownBackground2);
+  }
+  :where(.forest) > .iconInitials {
+    color: var(--colorPaletteForestForeground2);
+    background-color: var(--colorPaletteForestBackground2);
+  }
+  :where(.seafoam) > .iconInitials {
+    color: var(--colorPaletteSeafoamForeground2);
+    background-color: var(--colorPaletteSeafoamBackground2);
+  }
+  :where(.dark-green) > .iconInitials {
+    color: var(--colorPaletteDarkGreenForeground2);
+    background-color: var(--colorPaletteDarkGreenBackground2);
+  }
+  :where(.light-teal) > .iconInitials {
+    color: var(--colorPaletteLightTealForeground2);
+    background-color: var(--colorPaletteLightTealBackground2);
+  }
+  :where(.teal) > .iconInitials {
+    color: var(--colorPaletteTealForeground2);
+    background-color: var(--colorPaletteTealBackground2);
+  }
+  :where(.steel) > .iconInitials {
+    color: var(--colorPaletteSteelForeground2);
+    background-color: var(--colorPaletteSteelBackground2);
+  }
+  :where(.blue) > .iconInitials {
+    color: var(--colorPaletteBlueForeground2);
+    background-color: var(--colorPaletteBlueBackground2);
+  }
+  :where(.royal-blue) > .iconInitials {
+    color: var(--colorPaletteRoyalBlueForeground2);
+    background-color: var(--colorPaletteRoyalBlueBackground2);
+  }
+  :where(.cornflower) > .iconInitials {
+    color: var(--colorPaletteCornflowerForeground2);
+    background-color: var(--colorPaletteCornflowerBackground2);
+  }
+  :where(.navy) > .iconInitials {
+    color: var(--colorPaletteNavyForeground2);
+    background-color: var(--colorPaletteNavyBackground2);
+  }
+  :where(.lavender) > .iconInitials {
+    color: var(--colorPaletteLavenderForeground2);
+    background-color: var(--colorPaletteLavenderBackground2);
+  }
+  :where(.purple) > .iconInitials {
+    color: var(--colorPalettePurpleForeground2);
+    background-color: var(--colorPalettePurpleBackground2);
+  }
+  :where(.grape) > .iconInitials {
+    color: var(--colorPaletteGrapeForeground2);
+    background-color: var(--colorPaletteGrapeBackground2);
+  }
+  :where(.lilac) > .iconInitials {
+    color: var(--colorPaletteLilacForeground2);
+    background-color: var(--colorPaletteLilacBackground2);
+  }
+  :where(.pink) > .iconInitials {
+    color: var(--colorPalettePinkForeground2);
+    background-color: var(--colorPalettePinkBackground2);
+  }
+  :where(.magenta) > .iconInitials {
+    color: var(--colorPaletteMagentaForeground2);
+    background-color: var(--colorPaletteMagentaBackground2);
+  }
+  :where(.plum) > .iconInitials {
+    color: var(--colorPalettePlumForeground2);
+    background-color: var(--colorPalettePlumBackground2);
+  }
+  :where(.beige) > .iconInitials {
+    color: var(--colorPaletteBeigeForeground2);
+    background-color: var(--colorPaletteBeigeBackground2);
+  }
+  :where(.mink) > .iconInitials {
+    color: var(--colorPaletteMinkForeground2);
+    background-color: var(--colorPaletteMinkBackground2);
+  }
+  :where(.platinum) > .iconInitials {
+    color: var(--colorPalettePlatinumForeground2);
+    background-color: var(--colorPalettePlatinumBackground2);
+  }
+  :where(.anchor) > .iconInitials {
+    color: var(--colorPaletteAnchorForeground2);
+    background-color: var(--colorPaletteAnchorBackground2);
+  }
+}

@@ -1,0 +1,9 @@
+@layer fluentui {
+  .root {
+    width: 100%;
+  }
+  .expandIcon {
+    margin-inline-start: auto;
+    height: var(--spacingVerticalXL);
+  }
+}

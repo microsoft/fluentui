@@ -1,0 +1,102 @@
+@layer fluentui {
+  .flex {
+    display: flex;
+  }
+
+  .inline {
+    display: inline-flex;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .alignItemsFlexStart {
+    align-items: flex-start;
+  }
+
+  .alignItemsCenter {
+    align-items: center;
+  }
+
+  .alignItemsFlexEnd {
+    align-items: flex-end;
+  }
+
+  .alignItemsStretch {
+    align-items: stretch;
+  }
+
+  .justifyContentFlexStart {
+    justify-content: flex-start;
+  }
+
+  .justifyContentCenter {
+    justify-content: center;
+  }
+
+  .justifyContentFlexEnd {
+    justify-content: flex-end;
+  }
+
+  .justifyContentStretch {
+    justify-content: stretch;
+  }
+
+  .justifyContentSpaceAround {
+    justify-content: space-around;
+  }
+
+  .justifyContentSpaceBetween {
+    justify-content: space-between;
+  }
+
+  .justifyContentSpaceEvenly {
+    justify-content: space-evenly;
+  }
+
+  .wrap {
+    flex-wrap: wrap;
+  }
+
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gapForColumnFlexSmall {
+    row-gap: 10px;
+  }
+
+  .gapForColumnFlexSmaller {
+    row-gap: 8px;
+  }
+
+  .gapForColumnFlexMedium {
+    row-gap: 15px;
+  }
+
+  .gapForColumnFlexLarge {
+    row-gap: 30px;
+  }
+
+  .gapForRowFlexSmall {
+    column-gap: 10px;
+  }
+
+  .gapForRowFlexSmaller {
+    column-gap: 8px;
+  }
+
+  .gapForRowFlexMedium {
+    column-gap: 15px;
+  }
+
+  .gapForRowFlexLarge {
+    column-gap: 30px;
+  }
+
+  .paddingMedium {
+    padding: 10px;
+  }
+}

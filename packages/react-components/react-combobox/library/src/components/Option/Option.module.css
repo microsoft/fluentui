@@ -1,0 +1,92 @@
+@layer fluentui {
+  .root {
+    align-items: center;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    column-gap: var(--spacingHorizontalXS);
+    cursor: pointer;
+    display: flex;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+    padding: var(--spacingVerticalSNudge) var(--spacingHorizontalS);
+    position: relative;
+  }
+  .root:where(:not(.disabled)):hover {
+    background-color: var(--colorNeutralBackground1Hover);
+    color: var(--colorNeutralForeground1Hover);
+  }
+  .root:where(:not(.disabled)):hover :global(.fui-Option__checkIcon) {
+    border-color: var(--colorNeutralForeground1Hover);
+  }
+  .root:where(:not(.disabled)):active {
+    background-color: var(--colorNeutralBackground1Pressed);
+    color: var(--colorNeutralForeground1Pressed);
+  }
+  .root:where(:not(.disabled)):active :global(.fui-Option__checkIcon) {
+    border-color: var(--colorNeutralForeground1Hover);
+  }
+  .root[data-activedescendant-focusvisible]::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: 2px solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    top: -2px;
+    bottom: -2px;
+    inset-inline-start: -2px;
+    inset-inline-end: -2px;
+  }
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: default;
+  }
+  @media (forced-colors: active) {
+    .disabled {
+      color: GrayText;
+    }
+  }
+  .checkIcon {
+    flex-shrink: 0;
+    font-size: var(--fontSizeBase400);
+    margin-inline-start: calc(var(--spacingHorizontalXXS) * -1);
+    margin-inline-end: var(--spacingHorizontalXXS);
+    visibility: hidden;
+  }
+  .checkIcon svg {
+    display: block;
+  }
+  :where(.selected) > .checkIcon {
+    visibility: visible;
+  }
+  :where(.multiselect) > .checkIcon {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: var(--borderRadiusSmall);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: currentColor;
+    font-size: var(--fontSizeBase200);
+    height: 16px;
+    width: 16px;
+    visibility: visible;
+  }
+  :where(.selected.multiselect) > .checkIcon {
+    background-color: var(--colorCompoundBrandBackground);
+    color: var(--colorNeutralForegroundInverted);
+    border-color: var(--colorCompoundBrandBackground);
+  }
+  :where(.disabled) > .checkIcon {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+  @media (forced-colors: active) {
+    :where(.disabled) > .checkIcon {
+      color: GrayText;
+    }
+  }
+  :where(.disabled.multiselect) > .checkIcon {
+    border-color: var(--colorNeutralForegroundDisabled);
+  }
+}

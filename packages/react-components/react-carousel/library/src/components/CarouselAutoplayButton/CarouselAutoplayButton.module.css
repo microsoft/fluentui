@@ -1,0 +1,17 @@
+@layer fluentui {
+  .root {
+    margin-block: auto;
+    pointer-events: all;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @media (forced-colors: none) {
+    .root {
+      color: var(--colorNeutralForeground2);
+      background-color: var(--colorNeutralBackgroundAlpha);
+      border-color: var(--colorTransparentStroke);
+    }
+  }
+}

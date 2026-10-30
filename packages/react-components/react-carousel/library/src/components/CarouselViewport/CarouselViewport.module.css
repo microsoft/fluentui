@@ -1,0 +1,6 @@
+@layer fluentui {
+  .root {
+    max-width: 100%;
+    width: auto;
+  }
+}

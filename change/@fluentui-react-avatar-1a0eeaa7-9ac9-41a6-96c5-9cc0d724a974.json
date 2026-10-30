@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules styles for Avatar and opt-in alternatives for AvatarGroup, AvatarGroupItem, and AvatarGroupPopover",
+  "packageName": "@fluentui/react-avatar",
+  "email": "dmytrokirpa@microsoft.com"
+}

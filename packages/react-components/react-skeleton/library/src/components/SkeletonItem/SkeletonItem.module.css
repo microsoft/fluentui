@@ -1,0 +1,224 @@
+@layer fluentui {
+  .root::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .root {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .wave::after {
+    animation-name: animation1;
+    background-image: linear-gradient(
+      to right,
+      var(--colorNeutralStencil1) 0%,
+      var(--colorNeutralStencil2) 50%,
+      var(--colorNeutralStencil1) 100%
+    );
+    transform: translate(-100%);
+  }
+
+  .wave:where(:dir(rtl))::after {
+    animation-name: animation1RTL;
+    background-image: linear-gradient(
+      to left,
+      var(--colorNeutralStencil1) 0%,
+      var(--colorNeutralStencil2) 50%,
+      var(--colorNeutralStencil1) 100%
+    );
+    transform: translate(100%);
+  }
+
+  .wave {
+    background-color: var(--colorNeutralStencil1);
+  }
+
+  .pulse::after {
+    animation-name: animation2;
+    animation-duration: 1s;
+    background-color: var(--colorNeutralStencil1);
+  }
+
+  .translucent::after {
+    background-image: linear-gradient(to right, transparent 0%, var(--colorNeutralStencil1Alpha) 50%, transparent 100%);
+  }
+
+  .translucent:where(:dir(rtl))::after {
+    background-image: linear-gradient(to left, transparent 0%, var(--colorNeutralStencil1Alpha) 50%, transparent 100%);
+  }
+
+  .translucent {
+    background-color: var(--colorNeutralStencil1Alpha);
+  }
+
+  .pulse:where(.translucent)::after {
+    background-color: var(--colorNeutralStencil1Alpha);
+  }
+
+  .pulse:where(.translucent) {
+    /* Griffel drops the translucent root color for this combination. */
+    background-color: transparent;
+  }
+
+  .rectangle {
+    width: 100%;
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .size8 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalS);
+    height: var(--spacingHorizontalS);
+  }
+
+  .size12 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalM);
+    height: var(--spacingHorizontalM);
+  }
+
+  .size14 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 3.5);
+    height: calc(var(--spacingHorizontalXS) * 3.5);
+  }
+
+  .size16 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalL);
+    height: var(--spacingHorizontalL);
+  }
+
+  .size20 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+  }
+
+  .size22 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 5.5);
+    height: calc(var(--spacingHorizontalXS) * 5.5);
+  }
+
+  .size24 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalXXL);
+    height: var(--spacingHorizontalXXL);
+  }
+
+  .size28 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 7);
+    height: calc(var(--spacingHorizontalXS) * 7);
+  }
+
+  .size32 {
+    --fui-SkeletonItem--size: var(--spacingHorizontalXXXL);
+    height: var(--spacingHorizontalXXXL);
+  }
+
+  .size36 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 9);
+    height: calc(var(--spacingHorizontalXS) * 9);
+  }
+
+  .size40 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 10);
+    height: calc(var(--spacingHorizontalXS) * 10);
+  }
+
+  .size48 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 12);
+    height: calc(var(--spacingHorizontalXS) * 12);
+  }
+
+  .size52 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 13);
+    height: calc(var(--spacingHorizontalXS) * 13);
+  }
+
+  .size56 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 14);
+    height: calc(var(--spacingHorizontalXS) * 14);
+  }
+
+  .size64 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 16);
+    height: calc(var(--spacingHorizontalXS) * 16);
+  }
+
+  .size72 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 18);
+    height: calc(var(--spacingHorizontalXS) * 18);
+  }
+
+  .size92 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 23);
+    height: calc(var(--spacingHorizontalXS) * 23);
+  }
+
+  .size96 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 24);
+    height: calc(var(--spacingHorizontalXS) * 24);
+  }
+
+  .size120 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 30);
+    height: calc(var(--spacingHorizontalXS) * 30);
+  }
+
+  .size128 {
+    --fui-SkeletonItem--size: calc(var(--spacingHorizontalXS) * 32);
+    height: calc(var(--spacingHorizontalXS) * 32);
+  }
+
+  .square,
+  .circle {
+    width: var(--fui-SkeletonItem--size);
+  }
+
+  .circle {
+    border-radius: 50%;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    .wave::after {
+      background-color: WindowText;
+    }
+  }
+
+  @keyframes animation1 {
+    to {
+      transform: translate(100%);
+    }
+  }
+
+  @keyframes animation1RTL {
+    to {
+      transform: translate(-100%);
+    }
+  }
+
+  @keyframes animation2 {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

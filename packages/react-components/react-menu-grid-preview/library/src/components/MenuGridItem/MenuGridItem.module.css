@@ -1,0 +1,16 @@
+@layer fluentui {
+  .content {
+    flex-grow: 1;
+    height: 100%;
+    min-width: 0;
+  }
+  .icon {
+    height: 100%;
+  }
+  .firstSubAction {
+    height: 100%;
+  }
+  .secondSubAction {
+    height: 100%;
+  }
+}

@@ -1,0 +1,89 @@
+@layer fluentui {
+  .root {
+    display: block;
+    background-color: var(--colorNeutralBackground6);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+
+  .medium {
+    height: var(--strokeWidthThick);
+  }
+
+  .large {
+    height: var(--spacingHorizontalXS);
+  }
+
+  .bar {
+    border-radius: inherit;
+    height: 100%;
+  }
+
+  .bar {
+    background-color: var(--colorCompoundBrandBackground);
+  }
+
+  .indeterminate {
+    max-width: 33%;
+    position: relative;
+    background-image: linear-gradient(
+      to right,
+      var(--colorNeutralBackground6) 0%,
+      var(--colorTransparentBackground) 50%,
+      var(--colorNeutralBackground6) 100%
+    );
+  }
+
+  .indeterminate:where(:dir(rtl)) {
+    background-image: linear-gradient(
+      to left,
+      var(--colorNeutralBackground6) 0%,
+      var(--colorTransparentBackground) 50%,
+      var(--colorNeutralBackground6) 100%
+    );
+  }
+
+  .nonZeroDeterminate {
+    transition-property: width;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+  }
+
+  .error {
+    background-color: var(--colorPaletteRedBackground3);
+  }
+
+  .warning {
+    background-color: var(--colorPaletteDarkOrangeBackground3);
+  }
+
+  .success {
+    background-color: var(--colorPaletteGreenBackground3);
+  }
+
+  @media screen and (forced-colors: active) {
+    .root {
+      background-color: CanvasText;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    .bar {
+      background-color: Highlight;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .indeterminate {
+      max-width: 100%;
+    }
+  }
+}

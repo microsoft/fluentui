@@ -1,0 +1,21 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacingHorizontalM);
+  }
+  .action {
+    margin-inline-start: auto;
+    @media (forced-colors: active) {
+      & :global(.fui-Button),
+      & :global(.fui-Link) {
+        border-top-color: currentColor;
+        border-right-color: currentColor;
+        border-bottom-color: currentColor;
+        border-left-color: currentColor;
+        color: currentColor;
+        outline-color: currentColor;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@layer fluentui {
+  .root {
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+  }
+
+  .required {
+    color: var(--colorPaletteRedForeground3);
+    padding-inline-start: var(--spacingHorizontalXS);
+  }
+
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+
+    @media (forced-colors: active) {
+      color: GrayText;
+    }
+  }
+
+  .small {
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+  }
+
+  .medium {
+    font-size: var(--fontSizeBase300);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .large {
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .semibold {
+    font-weight: var(--fontWeightSemibold);
+  }
+}

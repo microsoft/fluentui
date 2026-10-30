@@ -1,0 +1,65 @@
+@layer fluentui {
+  .root {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    min-height: 48px;
+  }
+
+  .contentMedia {
+    align-self: start;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 12px;
+    line-height: 1.3333;
+  }
+
+  .contentWrapper {
+    align-self: start;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-inline-end: 8px;
+    font-size: 12px;
+    line-height: 1.3333;
+  }
+
+  .header {
+    align-self: end;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 14px;
+    margin-inline-end: 8px;
+  }
+
+  .headerMedia {
+    align-self: end;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 12px;
+    line-height: 1.3333;
+  }
+
+  .startMedia {
+    align-self: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin-inline-end: 8px;
+  }
+
+  .endMedia {
+    align-self: center;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+}

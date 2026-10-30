@@ -1,0 +1,210 @@
+@layer fluentui {
+  .root {
+    display: inline-flex;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0 0 var(--strokeWidthThick) 0;
+    margin: 0;
+    border-radius: var(--borderRadiusMedium);
+    vertical-align: top;
+  }
+
+  .disabled {
+    background-color: var(--colorTransparentBackground);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStrokeDisabled);
+  }
+
+  .filled:where(:not(.disabled)):hover,
+  .filled:where(:not(.disabled)):focus-within {
+    border-top-color: var(--colorTransparentStrokeInteractive);
+    border-inline-end-color: var(--colorTransparentStrokeInteractive);
+    border-bottom-color: var(--colorTransparentStrokeInteractive);
+    border-inline-start-color: var(--colorTransparentStrokeInteractive);
+  }
+
+  .filled:where(:not(.disabled)) {
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+
+  .filled-darker:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground3);
+  }
+
+  .filled-lighter:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground1);
+  }
+
+  .filled-darker-shadow:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground3);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStrokeInteractive);
+    box-shadow: var(--shadow2);
+  }
+
+  .filled-lighter-shadow:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStrokeInteractive);
+    box-shadow: var(--shadow2);
+  }
+
+  .outline:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+
+  .root:where(:not(.disabled))::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    inset-inline-start: calc(var(--strokeWidthThin) * -1);
+    bottom: calc(var(--strokeWidthThin) * -1);
+    inset-inline-end: calc(var(--strokeWidthThin) * -1);
+    height: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+    border-end-start-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+    border-bottom: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    clip-path: inset(calc(100% - var(--strokeWidthThick)) 0 0 0);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--durationUltraFast);
+    transition-delay: var(--curveAccelerateMid);
+  }
+
+  .root:where(:not(.disabled)):focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-delay: var(--curveDecelerateMid);
+  }
+
+  .root:where(:not(.disabled)):focus-within:active::after {
+    border-bottom-color: var(--colorCompoundBrandStrokePressed);
+  }
+
+  .root:where(:not(.disabled)):focus-within {
+    outline-width: var(--strokeWidthThick);
+    outline-style: solid;
+    outline-color: transparent;
+  }
+
+  .outline:where(:not(.disabled)):focus-within {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorCompoundBrandStroke);
+  }
+
+  .outline:where(:not(.disabled)):hover {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1Hover);
+    border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+
+  .outline:where(:not(.disabled)):active {
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+
+  .invalid:where(:not(.disabled)):not(:focus-within),
+  .invalid:where(:not(.disabled)):hover:not(:focus-within) {
+    border-top-color: var(--colorPaletteRedBorder2);
+    border-inline-end-color: var(--colorPaletteRedBorder2);
+    border-bottom-color: var(--colorPaletteRedBorder2);
+    border-inline-start-color: var(--colorPaletteRedBorder2);
+  }
+
+  .textarea::placeholder {
+    color: var(--colorNeutralForeground4);
+    opacity: 1;
+  }
+
+  .textarea {
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+    margin: 0;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground1);
+    flex-grow: 1;
+    font-family: var(--fontFamilyBase);
+    height: 100%;
+    outline-style: none;
+  }
+
+  :where(.small) > .textarea {
+    min-height: calc(var(--spacingHorizontalXS) * 10);
+    padding: var(--spacingVerticalXS) calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+    max-height: calc(var(--spacingHorizontalXS) * 50);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :where(.medium) > .textarea {
+    min-height: calc(var(--spacingHorizontalXS) * 13);
+    padding: var(--spacingVerticalSNudge) calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS));
+    max-height: calc(var(--spacingHorizontalXS) * 65);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  :where(.large) > .textarea {
+    min-height: calc(var(--spacingHorizontalXS) * 16);
+    padding: var(--spacingVerticalS) calc(var(--spacingHorizontalM) + var(--spacingHorizontalXXS));
+    max-height: calc(var(--spacingHorizontalXS) * 80);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase400);
+  }
+
+  :where(.none) > .textarea {
+    resize: none;
+  }
+
+  :where(.both) > .textarea {
+    resize: both;
+  }
+
+  :where(.horizontal) > .textarea {
+    resize: horizontal;
+  }
+
+  :where(.vertical) > .textarea {
+    resize: vertical;
+  }
+
+  :where(.disabled) > .textarea::placeholder {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  :where(.disabled) > .textarea {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .disabled {
+      border-top-color: GrayText;
+      border-inline-end-color: GrayText;
+      border-bottom-color: GrayText;
+      border-inline-start-color: GrayText;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:where(:not(.disabled))::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:where(:not(.disabled)):focus-within::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+}

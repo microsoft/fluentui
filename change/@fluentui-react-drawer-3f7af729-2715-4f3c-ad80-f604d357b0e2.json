@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for drawer components",
+  "packageName": "@fluentui/react-drawer",
+  "email": "dmytrokirpa@microsoft.com"
+}
