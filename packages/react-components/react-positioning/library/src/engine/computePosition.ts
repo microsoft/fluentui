@@ -79,7 +79,11 @@ export async function computePosition(
   const referenceElement =
     'nodeType' in target ? target : target.contextElement || container.ownerDocument.documentElement;
   const clip = (element: Element, boundary?: PositioningBoundary) =>
-    getClippingRect(element, getBoundary(container, boundary) || 'clippingAncestors');
+    getClippingRect(
+      element,
+      getBoundary(container, boundary) || 'clippingAncestors',
+      container.ownerDocument.defaultView!,
+    );
   const flipClip = clip(flipBoundary ? referenceElement : container, flipBoundary || undefined);
   const shiftClip = clip(overflowBoundary ? referenceElement : container, overflowBoundary || undefined);
   const visibilityClip = clip(referenceElement);

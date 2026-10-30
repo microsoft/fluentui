@@ -1,23 +1,17 @@
-import { isContainingBlock } from './containingBlock';
-
-export interface PlacementRect {
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-}
+import { getPhysicalParent, isContainingBlock } from './containingBlock';
+import type { Rect } from '@floating-ui/dom';
 
 const OVERFLOW = /auto|scroll|overlay|hidden|clip/;
 
-export const intersect = (a: PlacementRect, b: PlacementRect): PlacementRect => {
-  const left = Math.max(a.left, b.left);
-  const top = Math.max(a.top, b.top);
+export const intersect = (a: Rect, b: Rect): Rect => {
+  const x = Math.max(a.x, b.x);
+  const y = Math.max(a.y, b.y);
 
   return {
-    left,
-    top,
-    width: Math.min(a.left + a.width, b.left + b.width) - left,
-    height: Math.min(a.top + a.height, b.top + b.height) - top,
+    x,
+    y,
+    width: Math.min(a.x + a.width, b.x + b.width) - x,
+    height: Math.min(a.y + a.height, b.y + b.height) - y,
   };
 };
 
@@ -30,7 +24,7 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
   let strategy: 'absolute' | 'fixed' | undefined =
     position === 'fixed' || position === 'absolute' ? position : undefined;
 
-  for (let node = element.parentElement; win && node && node !== root; node = node.parentElement) {
+  for (let node = getPhysicalParent(element); win && node && node !== root; node = getPhysicalParent(node)) {
     const style = win.getComputedStyle(node);
     const { overflow, overflowX, overflowY } = style;
 
@@ -38,10 +32,15 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
     if (strategy && isContainingBlock(style, strategy)) {
       strategy = undefined;
     }
-    if (!strategy && OVERFLOW.test(overflow + overflowX + overflowY)) {
+    if (
+      !strategy &&
+      style.display !== 'inline' &&
+      style.display !== 'contents' &&
+      OVERFLOW.test(overflow + overflowX + overflowY)
+    ) {
       ancestors.push(node);
     }
-    if (style.position === 'fixed' || style.position === 'absolute') {
+    if (!strategy && (style.position === 'fixed' || style.position === 'absolute')) {
       strategy = style.position;
     }
   }

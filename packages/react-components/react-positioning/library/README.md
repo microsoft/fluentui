@@ -71,9 +71,15 @@ on the state-updating callback makes an update loop fail without hanging the bro
 
 These are geometry contracts, not screenshot rasterization baselines or a claim of every
 possible combination. Font rasterization, browser zoom, native high-DPI capture, cross-browser
-layout differences, iframe/shadow-root targets, and visual-viewport/mobile behavior are not
+layout differences and visual-viewport/mobile behavior are not
 covered. The explicit `strategy: 'absolute'` case deliberately records the existing baseline's
 `fixed` result; changing that behavior requires a separate intentional compatibility decision.
+
+`src/usePositioning.regressions.cy.tsx` adds focused real-browser checks for individual CSS
+transforms, shadow-host containing blocks and clipping, boxless overflow ancestors, fixed
+surfaces inside absolute wrappers, and bordered/padded/scaled same-origin iframe references.
+These cases compare against Floating UI where supported. Individual transform properties predate
+support in the pinned oracle, so those cases instead assert physical target/surface alignment.
 
 ## Engine parity and size gates
 
@@ -105,11 +111,15 @@ option combinations, fonts, browsers, iframe/shadow-root targets, or mobile visu
 The performance target mounts 24 concurrent positioning instances per engine in the same Electron
 browser and compares against the unchanged Floating UI implementation from upstream lower PR
 `fca219991ed9e907b01274bd89ac1431e51c573a`.
-It warms up both engines, randomizes workload order, randomizes which engine runs first for
-imperative updates, and records paired initialization, imperative, window-scroll, and window-resize
+It mounts only one engine at a time, warms up both engines, randomizes workload order, and randomizes
+which engine runs first in every pair, including initialization. The inactive engine is unmounted
+and its listeners are disposed before timing, so global events cannot contaminate the other
+engine's samples. It records paired initialization, imperative, window-scroll, and window-resize
 completion times. The mix includes flips/fallbacks, explicit boundaries, arrows, offsets, and
 autosizing. It measures completion through the actual `usePositioning` end-event path; setup is
 excluded from update timings, while initialization intentionally includes mount-to-all-positioned.
+Older reports from the simultaneous-engine harness are not valid evidence for comparative ratios;
+use reports with `metadata.activeEngineCount: 1`.
 
 The target reports per-workload median, p95, p10/p90, coefficient of variation, and paired
 replacement/oracle ratios. It enforces complete, finite, nonzero samples but intentionally has no

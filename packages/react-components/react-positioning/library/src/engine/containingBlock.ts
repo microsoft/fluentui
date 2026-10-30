@@ -7,13 +7,22 @@ export function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolut
   return (
     (strategy === 'absolute' && !!style.position && style.position !== 'static') ||
     isSet(style.transform) ||
+    isSet(style.translate) ||
+    isSet(style.scale) ||
+    isSet(style.rotate) ||
     isSet(style.perspective) ||
     isSet(style.filter) ||
     isSet(style.backdropFilter) ||
+    /auto|hidden/.test(style.contentVisibility) ||
     (!!style.containerType && style.containerType !== 'normal') ||
     FORMS_CONTAINING_BLOCK.test(style.willChange) ||
     /paint|layout|strict|content/.test(style.contain)
   );
+}
+
+export function getPhysicalParent(element: Element): HTMLElement | null {
+  const parent = getParent(element, { skipVirtual: true });
+  return isHTMLElement(parent) ? parent : null;
 }
 
 /**
@@ -23,10 +32,11 @@ export function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolut
 export function getContainingBlock(container: HTMLElement, strategy: 'absolute' | 'fixed'): HTMLElement | null {
   const win = container.ownerDocument.defaultView!;
   const root = container.ownerDocument.documentElement;
-  for (let node = container.parentElement; node && node !== root; node = node.parentElement) {
+  for (let node = getPhysicalParent(container); node && node !== root; node = getPhysicalParent(node)) {
     if (isContainingBlock(win.getComputedStyle(node), strategy)) {
       return node;
     }
   }
   return null;
 }
+import { getParent, isHTMLElement } from '@fluentui/react-utilities';

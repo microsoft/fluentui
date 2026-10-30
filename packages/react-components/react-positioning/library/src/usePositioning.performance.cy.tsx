@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flushSync } from 'react-dom';
 import { mount } from '@fluentui/scripts-cypress';
 import type { PositioningImperativeRef, PositioningOptions } from './types';
 import { usePositioning as useReplacement } from './usePositioning';
@@ -55,7 +56,8 @@ class PositioningBenchmarkTracker {
     return this.browserWindow.document;
   }
 
-  public begin(engine: Engine, workload: Workload, round: number, startedAt = this.now()): Promise<SampleResult> {
+  public begin(engine: Engine, workload: Workload, round: number, retain = true): Promise<SampleResult> {
+    const startedAt = this.now();
     return new Promise((resolve, reject) => {
       const timeout = this.browserWindow!.setTimeout(() => reject(new Error(`${engine} ${workload} timed out`)), 10000);
       this.active.set(engine, {
@@ -68,7 +70,9 @@ class PositioningBenchmarkTracker {
         latencies: [],
         resolve: result => {
           this.browserWindow!.clearTimeout(timeout);
-          this.results[engine][workload].push(result);
+          if (retain) {
+            this.results[engine][workload].push(result);
+          }
           resolve(result);
         },
       });
@@ -187,29 +191,28 @@ function PositionedItem({ engine, index, generation, tracker, refs }: Positioned
 function BenchmarkHarness({
   tracker,
   refs,
+  controls,
 }: {
   tracker: PositioningBenchmarkTracker;
   refs: Record<Engine, React.RefObject<Array<PositioningImperativeRef | null> | null>>;
+  controls: { show: (engine: Engine | null, generation: number) => void };
 }) {
-  const [generation, setGeneration] = React.useState(0);
+  const [active, setActive] = React.useState<{ engine: Engine; generation: number } | null>(null);
+  controls.show = (engine, generation) => flushSync(() => setActive(engine ? { engine, generation } : null));
   return (
-    <>
-      <div data-benchmark-root>
-        {engines.flatMap(engine =>
-          Array.from({ length: instanceCount }, (_, index) => (
-            <PositionedItem
-              key={`${engine}-${index}-${generation}`}
-              engine={engine}
-              index={index}
-              generation={generation}
-              tracker={tracker}
-              refs={refs[engine]}
-            />
-          )),
-        )}
-      </div>
-      <button data-benchmark-remount onClick={() => setGeneration(value => value + 1)} />
-    </>
+    <div data-benchmark-root>
+      {active &&
+        Array.from({ length: instanceCount }, (_, index) => (
+          <PositionedItem
+            key={`${active.engine}-${index}-${active.generation}`}
+            engine={active.engine}
+            index={index}
+            generation={active.generation}
+            tracker={tracker}
+            refs={refs[active.engine]}
+          />
+        ))}
+    </div>
   );
 }
 
@@ -260,124 +263,116 @@ describe('usePositioning end-to-end performance benchmark', () => {
     refs.oracle.current = [];
     refs.replacement.current = [];
     const random = randomGenerator(Number(Cypress.env('positioningBenchSeed')) || 36870);
-    let initial: Promise<SampleResult[]> | undefined;
+    const controls = {
+      show: (_engine: Engine | null, _generation: number) => {
+        throw new Error('Benchmark harness is not mounted');
+      },
+    };
     let benchmarkReport: object | undefined;
     cy.window().then(browserWindow => {
       tracker.setWindow(browserWindow);
-      const initialStarted = tracker.now();
-      initial = Promise.all(engines.map(engine => tracker.begin(engine, 'initialize-24', 0, initialStarted)));
     });
-    mount(<BenchmarkHarness tracker={tracker} refs={refs} />);
-    cy.get('[data-bench-floating]').should('have.length', instanceCount * engines.length);
-    cy.then(() => {
-      if (!initial) {
-        throw new Error('Initialization timing was not started');
+    mount(<BenchmarkHarness tracker={tracker} refs={refs} controls={controls} />);
+    cy.get('[data-benchmark-root]').should('exist');
+    cy.then({ timeout: 180000 }, async () => {
+      const initialize = async (engine: Engine, round: number, retain: boolean) => {
+        controls.show(null, round);
+        await tracker.settleFrame();
+        const wait = tracker.begin(engine, 'initialize-24', round, retain);
+        controls.show(engine, round);
+        await wait;
+        expect(tracker.document.querySelectorAll('[data-bench-floating]')).to.have.length(instanceCount);
+        const other = engine === 'oracle' ? 'replacement' : 'oracle';
+        expect(tracker.document.querySelectorAll(`[data-bench-target^="${other}-"]`)).to.have.length(0);
+        await tracker.settleFrame();
+      };
+      for (let round = 0; round < initializationWarmups + measuredInitializations; round++) {
+        for (const engine of shuffle([...engines], random)) {
+          await initialize(engine, round, round >= initializationWarmups);
+        }
       }
-      return initial;
-    })
-      .then(() => tracker.settleFrame())
-      .then(async () => {
-        for (let round = 1; round <= initializationWarmups + measuredInitializations; round++) {
-          const waits = engines.map(engine => tracker.begin(engine, 'initialize-24', round));
-          document.querySelector<HTMLButtonElement>('[data-benchmark-remount]')!.click();
-          await Promise.all(waits);
-          await tracker.settleFrame();
-        }
 
-        const measuredStart = initializationWarmups + 1;
-        for (const engine of engines) {
-          tracker.results[engine]['initialize-24'] = tracker.results[engine]['initialize-24'].slice(measuredStart);
-        }
-
-        const runOperation = async (operation: Operation, round: number) => {
-          for (const engine of engines) {
-            for (let index = 0; index < instanceCount; index++) {
-              const target = tracker.document.querySelector<HTMLElement>(`[data-bench-target="${engine}-${index}"]`);
-              const point = targetPosition(index, round);
-              target!.style.left = `${point.left}px`;
-              target!.style.top = `${point.top}px`;
-            }
+      const runOperation = async (operation: Operation, round: number, retain: boolean) => {
+        for (const engine of shuffle([...engines], random)) {
+          await initialize(engine, round, false);
+          for (let index = 0; index < instanceCount; index++) {
+            const target = tracker.document.querySelector<HTMLElement>(`[data-bench-target="${engine}-${index}"]`);
+            const point = targetPosition(index, round + 1);
+            target!.style.left = `${point.left}px`;
+            target!.style.top = `${point.top}px`;
           }
-
+          const wait = tracker.begin(engine, operation, round, retain);
           if (operation === 'imperative') {
-            const order = shuffle([...engines], random);
-            for (const engine of order) {
-              const wait = tracker.begin(engine, operation, round);
-              refs[engine].current!.forEach(ref => ref?.updatePosition());
-              await wait;
-            }
+            refs[engine].current!.forEach(ref => ref?.updatePosition());
           } else {
-            const waits = engines.map(engine => tracker.begin(engine, operation, round));
             tracker.dispatch(operation);
-            await Promise.all(waits);
           }
+          await wait;
           await tracker.settleFrame();
-        };
+        }
+      };
 
-        const operations: Operation[] = ['imperative', 'scroll', 'resize'];
-        for (let round = 0; round < warmupRounds; round++) {
-          for (const operation of shuffle(operations, random)) {
-            await runOperation(operation, round);
-          }
+      const operations: Operation[] = ['imperative', 'scroll', 'resize'];
+      for (let round = 0; round < warmupRounds; round++) {
+        for (const operation of shuffle(operations, random)) {
+          await runOperation(operation, round, false);
         }
-        for (let round = 0; round < measuredRounds; round++) {
-          for (const operation of shuffle(operations, random)) {
-            await runOperation(operation, round + warmupRounds);
-          }
+      }
+      for (let round = 0; round < measuredRounds; round++) {
+        for (const operation of shuffle(operations, random)) {
+          await runOperation(operation, round + warmupRounds, true);
         }
+      }
 
-        for (const engine of engines) {
-          for (const operation of operations) {
-            tracker.results[engine][operation] = tracker.results[engine][operation].slice(warmupRounds);
-          }
-        }
-        benchmarkReport = {
-          seed: Number(Cypress.env('positioningBenchSeed')) || 36870,
-          generatedAt: new Date().toISOString(),
-          metadata: {
-            userAgent: tracker.document.defaultView!.navigator.userAgent,
-            hardwareConcurrency: tracker.document.defaultView!.navigator.hardwareConcurrency,
-            devicePixelRatio: tracker.document.defaultView!.devicePixelRatio,
-            viewport: {
-              width: tracker.document.defaultView!.innerWidth,
-              height: tracker.document.defaultView!.innerHeight,
-            },
+      controls.show(null, 0);
+      benchmarkReport = {
+        seed: Number(Cypress.env('positioningBenchSeed')) || 36870,
+        generatedAt: new Date().toISOString(),
+        metadata: {
+          activeEngineCount: 1,
+          userAgent: tracker.document.defaultView!.navigator.userAgent,
+          hardwareConcurrency: tracker.document.defaultView!.navigator.hardwareConcurrency,
+          devicePixelRatio: tracker.document.defaultView!.devicePixelRatio,
+          viewport: {
+            width: tracker.document.defaultView!.innerWidth,
+            height: tracker.document.defaultView!.innerHeight,
           },
-          baseline: String(Cypress.env('positioningBenchBaseline')),
-          workloads: Object.fromEntries(
-            (['initialize-24', ...operations] as Workload[]).map(workload => {
-              const oracle = tracker.results.oracle[workload];
-              const replacement = tracker.results.replacement[workload];
-              if (oracle.length !== replacement.length || !oracle.length) {
-                throw new Error(`${workload}: paired samples are missing or mismatched`);
-              }
-              const oracleBatch = oracle.map(sample => sample.batchMs);
-              const replacementBatch = replacement.map(sample => sample.batchMs);
-              const pairedRatios = replacementBatch.map((value, index) => value / oracleBatch[index]);
-              return [
-                workload,
-                {
-                  oracle: {
-                    batch: summarize(oracleBatch),
-                    perInstance: summarize(oracle.flatMap(sample => sample.instanceMs)),
-                  },
-                  replacement: {
-                    batch: summarize(replacementBatch),
-                    perInstance: summarize(replacement.flatMap(sample => sample.instanceMs)),
-                  },
-                  pairedReplacementOverOracle: summarize(pairedRatios),
-                  samples: {
-                    oracle: oracleBatch,
-                    replacement,
-                    replacementOverOracle: pairedRatios,
-                  },
+        },
+        baseline: String(Cypress.env('positioningBenchBaseline')),
+        workloads: Object.fromEntries(
+          (['initialize-24', ...operations] as Workload[]).map(workload => {
+            const oracle = tracker.results.oracle[workload];
+            const replacement = tracker.results.replacement[workload];
+            if (oracle.length !== replacement.length || !oracle.length) {
+              throw new Error(`${workload}: paired samples are missing or mismatched`);
+            }
+            const oracleBatch = oracle.map(sample => sample.batchMs);
+            const replacementBatch = replacement.map(sample => sample.batchMs);
+            const pairedRatios = replacementBatch.map((value, index) => value / oracleBatch[index]);
+            return [
+              workload,
+              {
+                oracle: {
+                  batch: summarize(oracleBatch),
+                  perInstance: summarize(oracle.flatMap(sample => sample.instanceMs)),
                 },
-              ];
-            }),
-          ),
-        };
-        return benchmarkReport;
-      });
+                replacement: {
+                  batch: summarize(replacementBatch),
+                  perInstance: summarize(replacement.flatMap(sample => sample.instanceMs)),
+                },
+                pairedReplacementOverOracle: summarize(pairedRatios),
+                samples: {
+                  oracle,
+                  replacement,
+                  replacementOverOracle: pairedRatios,
+                },
+              },
+            ];
+          }),
+        ),
+      };
+      return benchmarkReport;
+    });
     cy.then(() => {
       if (!benchmarkReport) {
         throw new Error('Performance benchmark report was not generated');

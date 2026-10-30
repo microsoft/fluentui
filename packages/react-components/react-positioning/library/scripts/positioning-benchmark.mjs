@@ -20,6 +20,7 @@ const oracleSource = await mkdtemp(path.join(project, 'src/positioning-oracle-')
 
 function assertSamples(report) {
   assert.equal(report.baseline, baseline, 'The comparison must use the pinned Floating UI implementation');
+  assert.equal(report.metadata.activeEngineCount, 1, 'Only one engine may be mounted during a sample');
   for (const [name, expectedCount] of [
     ['initialize-24', 8],
     ['imperative', 24],
@@ -32,10 +33,20 @@ function assertSamples(report) {
       const samples = workload.samples[engine];
       assert.equal(samples.length, expectedCount, `${name}/${engine}: expected every measured sample`);
       for (const sample of samples) {
-        const duration = typeof sample === 'number' ? sample : sample.batchMs;
+        const duration = sample.batchMs;
         assert(Number.isFinite(duration) && duration > 0, `${name}/${engine}: invalid timing sample ${duration}`);
+        assert.equal(sample.instanceMs.length, 24, `${name}/${engine}: every instance must finish`);
+        assert(
+          sample.instanceMs.every(value => Number.isFinite(value) && value > 0),
+          `${name}/${engine}: invalid instance timing`,
+        );
       }
     }
+    assert.deepEqual(
+      workload.samples.oracle.map(sample => sample.round),
+      workload.samples.replacement.map(sample => sample.round),
+      `${name}: mismatched paired rounds`,
+    );
     assert.equal(workload.samples.replacementOverOracle.length, expectedCount, `${name}: paired ratios missing`);
     assert(
       workload.samples.replacementOverOracle.every(value => Number.isFinite(value) && value > 0),
@@ -84,6 +95,7 @@ try {
     initializationWarmups: 2,
     measuredInitializations: 8,
     concurrentInstancesPerEngine: 24,
+    activeEngineCount: 1,
     timing: 'Browser performance.now(); batch completion requires all 24 positioning-end callbacks',
   };
   await writeFile(output, `${JSON.stringify(report, null, 2)}\n`);

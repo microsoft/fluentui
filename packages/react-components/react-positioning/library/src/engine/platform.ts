@@ -32,6 +32,39 @@ export function getScale(element: HTMLElement): { x: number; y: number } {
   return { x: x && Number.isFinite(x) ? x : 1, y: y && Number.isFinite(y) ? y : 1 };
 }
 
+function getWindowSpace(win: Window) {
+  let x = 0;
+  let y = 0;
+  let scaleX = 1;
+  let scaleY = 1;
+  while (isHTMLElement(win.frameElement)) {
+    const frame = win.frameElement;
+    const rect = frame.getBoundingClientRect();
+    const scale = getScale(frame);
+    const css = style(frame);
+    x = rect.left + (frame.clientLeft + (parseFloat(css.paddingLeft) || 0) + x) * scale.x;
+    y = rect.top + (frame.clientTop + (parseFloat(css.paddingTop) || 0) + y) * scale.y;
+    scaleX *= scale.x;
+    scaleY *= scale.y;
+    win = frame.ownerDocument.defaultView!;
+  }
+  return { x, y, scaleX, scaleY };
+}
+
+function convertWindowRect(rect: Rect, from: Window, to: Window): Rect {
+  if (from === to) {
+    return rect;
+  }
+  const source = getWindowSpace(from);
+  const target = getWindowSpace(to);
+  return {
+    x: (source.x + rect.x * source.scaleX - target.x) / target.scaleX,
+    y: (source.y + rect.y * source.scaleY - target.y) / target.scaleY,
+    width: (rect.width * source.scaleX) / target.scaleX,
+    height: (rect.height * source.scaleY) / target.scaleY,
+  };
+}
+
 export function getOffsetParent(element: HTMLElement): HTMLElement | null {
   const strategy = style(element).position === 'fixed' ? 'fixed' : 'absolute';
   let parent = strategy === 'fixed' ? null : element.offsetParent;
@@ -75,11 +108,17 @@ export function getElementRects({
   strategy,
 }: Parameters<Platform['getElementRects']>[0]): ElementRects {
   const space = getCoordinateSpace(floating, strategy);
-  const rect = reference.getBoundingClientRect();
+  const referenceWindow = ('ownerDocument' in reference ? reference : reference.contextElement)?.ownerDocument
+    .defaultView;
+  const rect = convertWindowRect(
+    reference.getBoundingClientRect(),
+    referenceWindow || floating.ownerDocument.defaultView!,
+    floating.ownerDocument.defaultView!,
+  );
   return {
     reference: {
-      x: (rect.left - space.x) / space.scale.x,
-      y: (rect.top - space.y) / space.scale.y,
+      x: (rect.x - space.x) / space.scale.x,
+      y: (rect.y - space.y) / space.scale.y,
       width: rect.width / space.scale.x,
       height: rect.height / space.scale.y,
     },
@@ -87,13 +126,17 @@ export function getElementRects({
   };
 }
 
-export function getClippingRect(element: Element, boundary: Boundary): Rect {
+export function getClippingRect(
+  element: Element,
+  boundary: Boundary,
+  floatingWindow = element.ownerDocument.defaultView!,
+): Rect {
   const root = element.ownerDocument.documentElement;
   const win = element.ownerDocument.defaultView!;
   const viewport = win.visualViewport;
   let clip = viewport
-    ? { left: viewport.offsetLeft, top: viewport.offsetTop, width: viewport.width, height: viewport.height }
-    : { left: 0, top: 0, width: root.clientWidth, height: root.clientHeight };
+    ? { x: viewport.offsetLeft, y: viewport.offsetTop, width: viewport.width, height: viewport.height }
+    : { x: 0, y: 0, width: root.clientWidth, height: root.clientHeight };
   const boundaries =
     boundary === 'clippingAncestors' ? getScrollAncestors(element) : Array.isArray(boundary) ? boundary : [boundary];
   for (const item of boundaries) {
@@ -101,16 +144,25 @@ export function getClippingRect(element: Element, boundary: Boundary): Rect {
       const node = item as HTMLElement;
       const rect = node.getBoundingClientRect();
       const scale = getScale(node);
-      clip = intersect(clip, {
-        left: rect.left + node.clientLeft * scale.x,
-        top: rect.top + node.clientTop * scale.y,
-        width: node.clientWidth * scale.x,
-        height: node.clientHeight * scale.y,
-      });
+      const bounds = convertWindowRect(
+        {
+          x: rect.left + node.clientLeft * scale.x,
+          y: rect.top + node.clientTop * scale.y,
+          width: node.clientWidth * scale.x,
+          height: node.clientHeight * scale.y,
+        },
+        node.ownerDocument.defaultView!,
+        win,
+      );
+      clip = intersect(clip, bounds);
     } else if (typeof item === 'object') {
       const rect: Rect = item;
-      clip = intersect(clip, { left: rect.x, top: rect.y, width: rect.width, height: rect.height });
+      clip = intersect(clip, rect);
     }
   }
-  return { x: clip.left, y: clip.top, width: clip.width, height: clip.height };
+  const result = convertWindowRect(clip, win, floatingWindow);
+  const frame = win.frameElement;
+  return boundary === 'clippingAncestors' && win !== floatingWindow && isHTMLElement(frame)
+    ? intersect(result, getClippingRect(frame, boundary, floatingWindow))
+    : result;
 }
