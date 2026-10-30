@@ -50,9 +50,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color5),
           legend: '2024',
           xAxisCalloutData: '2024/04/30',
-          yAxisCalloutData: '44%',
+          yAxisCalloutData: '42%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 3 of 4 2022, x value 2024/04/30, y value 44%',
+            ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 3 of 4 2022, x value 2024/04/30, y value 42%',
           },
         },
         {
@@ -61,9 +61,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color6),
           legend: '2021',
           xAxisCalloutData: '2021/04/30',
-          yAxisCalloutData: '44%',
+          yAxisCalloutData: '39%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 4 of 4 2021, x value 2021/04/30, y value 44%',
+            ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 4 of 4 2021, x value 2021/04/30, y value 39%',
           },
         },
       ],
@@ -99,9 +99,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color5),
           legend: '2024',
           xAxisCalloutData: '2024/05/30',
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '7%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 3 of 4 2024, x value 2024/05/30, y value 3%',
+            ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 3 of 4 2024, x value 2024/05/30, y value 7%',
           },
         },
         {
@@ -110,9 +110,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color6),
           legend: '2021',
           xAxisCalloutData: '2021/05/30',
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '20%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 4 of 4 2021, x value 2021/05/30, y value 3%',
+            ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 4 of 4 2021, x value 2021/05/30, y value 20%',
           },
         },
       ],
@@ -149,9 +149,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color5),
           legend: '2024',
           xAxisCalloutData: '2024/06/30',
-          yAxisCalloutData: '50%',
+          yAxisCalloutData: '47%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 3 of 4 2024, x value 2024/06/30, y value 50%',
+            ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 3 of 4 2024, x value 2024/06/30, y value 47%',
           },
         },
         {
@@ -160,9 +160,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color6),
           legend: '2021',
           xAxisCalloutData: '2021/06/30',
-          yAxisCalloutData: '50%',
+          yAxisCalloutData: '16%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 4 of 4 2021, x value 2021/06/30, y value 50%',
+            ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 4 of 4 2021, x value 2021/06/30, y value 16%',
           },
         },
       ],
@@ -198,9 +198,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color5),
           legend: '2024',
           xAxisCalloutData: '2024/07/30',
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '4%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 3 of 4 2024, x value 2024/07/30, y value 3%',
+            ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 3 of 4 2024, x value 2024/07/30, y value 4%',
           },
         },
         {
@@ -209,9 +209,9 @@ export const GroupedVerticalBarDefault = (): JSXElement => {
           color: getColorFromToken(DataVizPalette.color6),
           legend: '2021',
           xAxisCalloutData: '2021/07/30',
-          yAxisCalloutData: '3%',
+          yAxisCalloutData: '25%',
           callOutAccessibilityData: {
-            ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 4 of 4 2021, x value 2021/07/30, y value 3%',
+            ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 4 of 4 2021, x value 2021/07/30, y value 25%',
           },
         },
       ],
