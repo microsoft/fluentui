@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: initial release",
-  "packageName": "@fluentui/react-range-slider-preview",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

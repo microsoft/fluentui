@@ -1,8 +1,16 @@
 # Change Log - @fluentui/react-provider
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.22.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.23)
+
+Tue, 27 Oct 2026 16:42:57 GMT
+
+### Patches
+
+- fix: escape theme style delimiters instead of omitting valid nested theme values ([PR #36985](https://github.com/microsoft/fluentui/pull/36985) by vgenaev@gmail.com)
 
 ## [9.22.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.22.22)
 

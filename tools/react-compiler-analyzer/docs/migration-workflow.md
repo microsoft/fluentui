@@ -92,6 +92,25 @@ Run lint using the build's mode:
 react-compiler-analyzer lint ./src --mode annotation
 ```
 
+To revisit historical justification comments, run:
+
+```bash
+react-compiler-analyzer lint ./src --mode annotation --revalidate-justified
+```
+
+Both memo directive kinds are probed individually against Babel in the selected mode. Justified
+directives remain untouched even with `--fix`; redundant, broken, or conflicting findings fail
+lint for manual review. This does not prove a guard is removable in a native or different consumer
+build, or validate its rationale. File-level directives remain preserved.
+Each justified function directive can add a sequential whole-file compilation; expect additional
+runtime for files with many justified directives.
+
+Preview new annotations without changing files:
+
+```bash
+react-compiler-analyzer analyze ./src --mode infer --annotate all-safe --dry-run
+```
+
 Review `--fix` diffs rather than applying them blindly. A justified directive is deliberately
 retained, and parse/compiler failures cannot be repaired by directive edits. After migration,
 continue to run your application's tests and measure behavior and performance.

@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import { useDialogTrigger } from './useDialogTrigger';
+import { renderDialogTrigger } from './renderDialogTrigger';
 import type { DialogTriggerProps } from './DialogTrigger.types';
 
 /**
@@ -14,7 +15,7 @@ import type { DialogTriggerProps } from './DialogTrigger.types';
  */
 export const DialogTrigger: React.FC<DialogTriggerProps> = props => {
   const state = useDialogTrigger(props);
-  return state.children;
+  return renderDialogTrigger(state);
 };
 
 DialogTrigger.displayName = 'DialogTrigger';

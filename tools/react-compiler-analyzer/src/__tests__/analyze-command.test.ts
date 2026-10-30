@@ -11,7 +11,7 @@ import { applyAnnotations } from '../coverage-fixer';
 import { discoverAllFiles, dedupeFileEntries, findPackageName } from '../discovery';
 import type { FileEntry, FunctionAnalysis } from '../types';
 import { createTempPackage, writeComponent, COMPILABLE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput } from './helpers/output';
+import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -636,12 +636,14 @@ describe('analyze command — scan log wrapping', () => {
     // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
     const wrapper = captured
       .slice(openIdx, closeIdx + 1)
-      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .map(line => normalizeCompilerVersions(line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>')))
       .join('\n');
 
     expect(wrapper).toMatchInlineSnapshot(`
       "<details>
       <summary>📋 Scan & compile log</summary>
+
+      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
 
       ## Scanning: <TEMP>
          Package: wrap-test-pkg
@@ -691,6 +693,8 @@ describe('analyze command — scan log wrapping', () => {
 
       📋 Scan & compile log
       ─────────────────────
+
+      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
 
       Scanning: <TEMP>
       ────────────────

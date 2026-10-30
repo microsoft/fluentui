@@ -20,7 +20,7 @@ export type AvatarGroupPopoverPopoverProps = Pick<
   | 'mouseLeaveDelay'
   | 'positioning'
   | 'withArrow'
-  | 'trapFocus'
+  | 'inertTrapFocus'
 >;
 
 export type AvatarGroupPopoverSlots = {
