@@ -1,8 +1,6 @@
 import { clsx } from 'clsx';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuGroupSlots, MenuGroupState } from './MenuGroup.types';
-import './MenuGroup.module.css';
-
 export const menuGroupClassNames: SlotClassNames<MenuGroupSlots> = {
   root: 'fui-MenuGroup',
 };

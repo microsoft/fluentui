@@ -3,8 +3,6 @@ import { useMenuGroupStyles_unstable } from './useMenuGroupStyles.styles.css';
 
 type State = Parameters<typeof useMenuGroupStyles_unstable>[0];
 
-jest.mock('./MenuGroup.module.css', () => ({}));
-
 const createState = (overrides: Partial<State> = {}): State =>
   ({
     components: { root: 'div' },

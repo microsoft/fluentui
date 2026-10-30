@@ -3,8 +3,6 @@ import { useMenuItemRadioStyles_unstable } from './useMenuItemRadioStyles.styles
 
 type State = Parameters<typeof useMenuItemRadioStyles_unstable>[0];
 
-jest.mock('./MenuItemRadio.module.css', () => ({}));
-
 jest.mock('../../selectable/Checkmark.module.css', () => ({
   checked: 'css-checked',
   checkmark: 'css-checkmark',

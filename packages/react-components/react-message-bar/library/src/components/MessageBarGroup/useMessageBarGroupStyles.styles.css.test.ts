@@ -3,8 +3,6 @@ import { useMessageBarGroupStyles_unstable } from './useMessageBarGroupStyles.st
 
 type State = Parameters<typeof useMessageBarGroupStyles_unstable>[0];
 
-jest.mock('./MessageBarGroup.module.css', () => ({}));
-
 const createState = (overrides: Partial<State> = {}): State =>
   ({
     components: { root: 'div' },

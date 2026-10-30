@@ -2,8 +2,6 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useAccordionItem_unstable } from './useAccordionItem';
 import { useAccordionItemStyles_unstable as applyStyles } from './useAccordionItemStyles.styles.css';
 
-jest.mock('./AccordionItem.module.css', () => ({}));
-
 describe('useAccordionItemStyles_unstable (CSS Modules)', () => {
   it('uses the default state without changing the state identity', () => {
     const { result } = renderHook(() => useAccordionItem_unstable({ value: 'item' }, null));

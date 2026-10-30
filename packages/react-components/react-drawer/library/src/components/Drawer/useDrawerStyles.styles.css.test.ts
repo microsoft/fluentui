@@ -2,10 +2,6 @@ import { renderHook } from '@testing-library/react-hooks';
 import type { DrawerState } from './Drawer.types';
 import { useDrawerStyles_unstable } from './useDrawerStyles.styles.css';
 
-jest.mock('./Drawer.module.css', () => ({
-  root: 'css-root',
-}));
-
 describe('useDrawerStyles_unstable (CSS Modules)', () => {
   it('preserves caller classes and returns the original state', () => {
     const state = { root: { className: 'caller' } } as DrawerState;

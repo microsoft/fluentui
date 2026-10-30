@@ -6,7 +6,6 @@ import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuItemSlots } from '../index';
 import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import './MenuItemCheckbox.module.css';
 
 export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>> = {
   root: 'fui-MenuItemCheckbox',

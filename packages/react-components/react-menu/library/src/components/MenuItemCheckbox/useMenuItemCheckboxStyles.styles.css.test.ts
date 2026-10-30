@@ -3,8 +3,6 @@ import { useMenuItemCheckboxStyles_unstable } from './useMenuItemCheckboxStyles.
 
 type State = Parameters<typeof useMenuItemCheckboxStyles_unstable>[0];
 
-jest.mock('./MenuItemCheckbox.module.css', () => ({}));
-
 jest.mock('../../selectable/Checkmark.module.css', () => ({
   checked: 'css-checked',
   checkmark: 'css-checkmark',

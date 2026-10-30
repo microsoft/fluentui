@@ -6,7 +6,6 @@ import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles.styles
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuItemSlots } from '../index';
 import type { MenuItemRadioState } from './MenuItemRadio.types';
-import './MenuItemRadio.module.css';
 
 export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>> = {
   root: 'fui-MenuItemRadio',
