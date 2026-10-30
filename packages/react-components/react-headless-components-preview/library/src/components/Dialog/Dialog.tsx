@@ -18,3 +18,5 @@ import { composeComponentWithoutRef } from '../../utils/composeComponent';
 export const Dialog: React.FC<DialogProps> = /*#__PURE__*/ React.memo(
   /*#__PURE__*/ composeComponentWithoutRef('Dialog', useDialog, useDialogContextValues, renderDialog),
 );
+
+Dialog.displayName = 'Dialog';
