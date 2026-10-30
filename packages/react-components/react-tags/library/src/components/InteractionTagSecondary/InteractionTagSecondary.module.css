@@ -1,0 +1,194 @@
+@layer fluentui {
+  .root {
+    color: inherit;
+    font-family: inherit;
+    padding: 0px;
+    border-style: none;
+    appearance: button;
+    text-align: unset;
+    background-color: transparent;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    &[data-fui-focus-visible] {
+      outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+    }
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    border-inline-start-color: var(--colorNeutralStroke1);
+    border-start-start-radius: var(--borderRadiusNone);
+    border-end-start-radius: var(--borderRadiusNone);
+  }
+  .filled:where(:not(.disabled)) {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+    border-top-width: 0;
+    border-bottom-width: 0;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--colorNeutralBackground3Hover);
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+    &:active {
+      background-color: var(--colorNeutralBackground3Pressed);
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+    @media (forced-colors: active) {
+      border-top-width: var(--strokeWidthThin);
+      border-bottom-width: var(--strokeWidthThin);
+      &:hover {
+        background-color: HighlightText;
+      }
+      &:active {
+        background-color: HighlightText;
+      }
+    }
+  }
+  .outline:where(:not(.disabled)) {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+    border-top-color: var(--colorNeutralStroke1);
+    border-inline-end-color: var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStroke1);
+    border-inline-start-color: var(--colorNeutralStroke1);
+    &:hover {
+      cursor: pointer;
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground2BrandHover);
+    }
+    &:active {
+      background-color: var(--colorSubtleBackgroundPressed);
+      color: var(--colorNeutralForeground2BrandPressed);
+    }
+    @media (forced-colors: active) {
+      &:hover {
+        background-color: HighlightText;
+      }
+      &:active {
+        background-color: HighlightText;
+      }
+    }
+  }
+  .brand:where(:not(.disabled)) {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+    border-inline-start-color: var(--colorBrandStroke2);
+    border-top-width: 0;
+    border-bottom-width: 0;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--colorBrandBackground2Hover);
+      color: var(--colorCompoundBrandForeground1Hover);
+    }
+    &:active {
+      background-color: var(--colorBrandBackground2Pressed);
+      color: var(--colorCompoundBrandForeground1Pressed);
+    }
+    @media (forced-colors: active) {
+      border-top-width: var(--strokeWidthThin);
+      border-bottom-width: var(--strokeWidthThin);
+      &:hover {
+        background-color: HighlightText;
+      }
+      &:active {
+        background-color: HighlightText;
+      }
+    }
+  }
+  .selected:where(:not(.disabled)) {
+    background: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+    border-top-color: var(--colorBrandStroke1);
+    border-inline-end-color: var(--colorBrandStroke1);
+    border-bottom-color: var(--colorBrandStroke1);
+    border-inline-start-color: var(--colorNeutralStrokeOnBrand2);
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundHover);
+      color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+    }
+    &:active {
+      background-color: var(--colorBrandBackgroundPressed);
+      color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        background-color: Highlight;
+        color: HighlightText;
+      }
+    }
+  }
+  .rounded {
+    border-start-end-radius: var(--borderRadiusMedium);
+    border-end-end-radius: var(--borderRadiusMedium);
+  }
+  .circular {
+    border-start-end-radius: var(--borderRadiusCircular);
+    border-end-end-radius: var(--borderRadiusCircular);
+  }
+  .medium {
+    font-size: var(--fontSizeBase500);
+    padding-inline-start: calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin));
+    padding-inline-end: calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin));
+  }
+  .small {
+    font-size: var(--fontSizeBase400);
+    padding-inline-start: calc(var(--spacingHorizontalXS) - var(--strokeWidthThin));
+    padding-inline-end: calc(var(--spacingHorizontalXS) - var(--strokeWidthThin));
+  }
+  .extra-small {
+    font-size: var(--fontSizeBase200);
+    padding-inline-start: calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin));
+    padding-inline-end: calc(var(--spacingHorizontalSNudge) - var(--strokeWidthThin));
+    position: relative;
+    @media (forced-colors: none) {
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        /* Extend the 20px control to the fixed 24px accessible pointer target. */
+        height: 2px;
+        inset-inline-start: 0;
+        width: 100%;
+      }
+      &:before {
+        bottom: 100%;
+      }
+      &:after {
+        top: 100%;
+      }
+    }
+  }
+  .disabled:where(.filled) {
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+  .disabled:where(.outline) {
+    cursor: not-allowed;
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+    border-top-color: var(--colorNeutralStrokeDisabled);
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+    border-bottom-color: var(--colorNeutralStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+  .disabled:where(.brand) {
+    cursor: not-allowed;
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+    border-top-color: var(--colorTransparentStrokeDisabled);
+    border-inline-end-color: var(--colorTransparentStrokeDisabled);
+    border-bottom-color: var(--colorTransparentStrokeDisabled);
+    border-inline-start-color: var(--colorNeutralStrokeDisabled);
+  }
+}

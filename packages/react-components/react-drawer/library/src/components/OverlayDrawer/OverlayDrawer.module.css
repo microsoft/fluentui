@@ -1,0 +1,40 @@
+@layer fluentui {
+  .root {
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: 2px solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        inset: -2px;
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-color: Highlight;
+        }
+      }
+    }
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+
+  .bottom {
+    top: auto;
+    height: var(--fui-Drawer--size);
+    width: 100vw;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+}

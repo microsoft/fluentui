@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for calendar-compat, preserving picker spacing and layout in RTL",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

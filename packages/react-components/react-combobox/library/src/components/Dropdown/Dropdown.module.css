@@ -1,0 +1,237 @@
+@layer fluentui {
+  .root {
+    border-radius: var(--borderRadiusMedium);
+    box-sizing: border-box;
+    display: inline-flex;
+    min-width: 250px;
+    position: relative;
+    vertical-align: middle;
+  }
+  .root:focus-within {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: transparent;
+  }
+  .root::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    inset-inline-start: -1px;
+    bottom: -1px;
+    inset-inline-end: -1px;
+    height: max(var(--strokeWidthThick), var(--borderRadiusMedium));
+    border-bottom-left-radius: var(--borderRadiusMedium);
+    border-bottom-right-radius: var(--borderRadiusMedium);
+    border-bottom: var(--strokeWidthThick) solid var(--colorCompoundBrandStroke);
+    clip-path: inset(calc(100% - 2px) 0 0 0);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: var(--durationUltraFast);
+    transition-delay: var(--curveAccelerateMid);
+  }
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+  .root:focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: var(--durationNormal);
+    transition-delay: var(--curveDecelerateMid);
+  }
+  @media screen and (prefers-reduced-motion: reduce) {
+    .root:focus-within::after {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
+  .root:focus-within:active::after {
+    border-bottom-color: var(--colorCompoundBrandStrokePressed);
+  }
+  @supports selector(:has(*)) {
+    .root:has(:global(.fui-Dropdown__clearButton):focus)::after {
+      border-bottom-color: initial;
+      transform: scaleX(0);
+    }
+  }
+  .listbox {
+    box-sizing: border-box;
+    box-shadow: var(--shadow16);
+    border-radius: var(--borderRadiusMedium);
+    max-height: 80vh;
+  }
+  .collapsed {
+    display: none;
+  }
+  .inline {
+    z-index: 1;
+  }
+  .button {
+    align-items: center;
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    box-sizing: border-box;
+    color: var(--colorNeutralForeground1);
+    column-gap: var(--spacingHorizontalXXS);
+    cursor: pointer;
+    display: grid;
+    font-family: var(--fontFamilyBase);
+    grid-template-columns: [content] 1fr [icon] auto [end];
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+  }
+  .button:where(:dir(rtl)) {
+    text-align: right;
+  }
+  .button:focus {
+    outline-style: none;
+  }
+  :where(.placeholder) > .button {
+    color: var(--colorNeutralForeground4);
+  }
+  :where(.small) > .button {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    padding-block: calc(var(--spacingVerticalXS) - var(--strokeWidthThin));
+    padding-inline: calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS)) var(--spacingHorizontalSNudge);
+  }
+  :where(.medium) > .button {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    padding-block: calc(var(--spacingVerticalSNudge) - var(--strokeWidthThin));
+    padding-inline: calc(var(--spacingHorizontalMNudge) + var(--spacingHorizontalXXS)) var(--spacingHorizontalMNudge);
+  }
+  :where(.large) > .button {
+    column-gap: var(--spacingHorizontalSNudge);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase400);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase400);
+    padding-block: calc(var(--spacingVerticalS) - var(--strokeWidthThin));
+    padding-inline: calc(var(--spacingHorizontalM) + var(--spacingHorizontalSNudge)) var(--spacingHorizontalM);
+  }
+  .outline {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    border-bottom-color: var(--colorNeutralStrokeAccessible);
+  }
+  .outline:where(:not(.disabled)):focus-within {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+  .outline:where(:not(.disabled)):hover {
+    border-color: var(--colorNeutralStroke1Hover);
+    border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
+  }
+  .outline:where(:not(.disabled)):active {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
+  .underline {
+    background-color: var(--colorTransparentBackground);
+    border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+    border-radius: 0;
+  }
+  .filled-lighter {
+    background-color: var(--colorNeutralBackground1);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+  .filled-darker {
+    background-color: var(--colorNeutralBackground3);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+  }
+  .invalid:where(:not(.underline)):not(:focus-within),
+  .invalid:where(:not(.underline)):hover:not(:focus-within) {
+    border-color: var(--colorPaletteRedBorder2);
+  }
+  .invalid:where(.underline):not(:focus-within),
+  .invalid:where(.underline):hover:not(:focus-within) {
+    border-bottom-color: var(--colorPaletteRedBorder2);
+  }
+  .disabled {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+    border-color: var(--colorNeutralStrokeDisabled);
+  }
+  @media (forced-colors: active) {
+    .disabled {
+      border-color: GrayText;
+    }
+  }
+  :where(.disabled) > .button {
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+  }
+  .clearButton {
+    align-self: center;
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    cursor: pointer;
+    height: fit-content;
+    margin: 0;
+    margin-inline-end: var(--spacingHorizontalMNudge);
+    padding: 0;
+    position: relative;
+  }
+  .icon {
+    box-sizing: border-box;
+    color: var(--colorNeutralStrokeAccessible);
+    display: block;
+    font-size: var(--fontSizeBase500);
+    grid-column-start: icon;
+    grid-column-end: end;
+  }
+  .icon svg {
+    display: block;
+  }
+  :where(.small) > .button > .icon,
+  :where(.small) > .clearButton {
+    font-size: var(--fontSizeBase400);
+    margin-inline-start: var(--spacingHorizontalXXS);
+  }
+  :where(.medium) > .button > .icon,
+  :where(.medium) > .clearButton {
+    font-size: var(--fontSizeBase500);
+    margin-inline-start: var(--spacingHorizontalXXS);
+  }
+  :where(.large) > .button > .icon,
+  :where(.large) > .clearButton {
+    font-size: var(--fontSizeBase600);
+    margin-inline-start: var(--spacingHorizontalSNudge);
+  }
+  :where(.disabled) > .button > .icon,
+  :where(.disabled) > .clearButton {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+  .clearButton:focus,
+  .clearButton:focus-visible {
+    outline-style: none;
+  }
+  .clearButton[data-fui-focus-visible] {
+    border-color: transparent;
+  }
+  .clearButton[data-fui-focus-visible]::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border: 2px solid var(--colorStrokeFocus2);
+    border-radius: var(--borderRadiusMedium);
+    inset: calc(2px * -1);
+  }
+  @media (forced-colors: active) {
+    .clearButton[data-fui-focus-visible]::after {
+      border-color: Highlight;
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}

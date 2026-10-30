@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for datepicker-compat",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "dmytrokirpa@microsoft.com"
+}

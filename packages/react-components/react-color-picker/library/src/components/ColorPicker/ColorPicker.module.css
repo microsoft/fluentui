@@ -1,0 +1,7 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacingVerticalXS);
+  }
+}

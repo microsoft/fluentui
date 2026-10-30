@@ -1,0 +1,250 @@
+@layer fluentui {
+  .root {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    position: relative;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+    text-align: center;
+    &::before {
+      box-sizing: border-box;
+      display: flex;
+      flex-grow: 1;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      display: flex;
+      flex-grow: 1;
+    }
+  }
+
+  .root:where(.start) {
+    &::after {
+      content: '';
+    }
+  }
+
+  .root:where(.center) {
+    &::before {
+      content: '';
+    }
+
+    &::after {
+      content: '';
+    }
+  }
+
+  .root:where(.end) {
+    &::before {
+      content: '';
+    }
+  }
+
+  .root:where(.brand) {
+    color: var(--colorBrandForeground1);
+    &::before {
+      border-top-color: var(--colorBrandStroke1);
+      border-right-color: var(--colorBrandStroke1);
+      border-bottom-color: var(--colorBrandStroke1);
+      border-left-color: var(--colorBrandStroke1);
+    }
+
+    &::after {
+      border-top-color: var(--colorBrandStroke1);
+      border-right-color: var(--colorBrandStroke1);
+      border-bottom-color: var(--colorBrandStroke1);
+      border-left-color: var(--colorBrandStroke1);
+    }
+  }
+
+  .root:where(.default) {
+    color: var(--colorNeutralForeground2);
+    &::before {
+      border-top-color: var(--colorNeutralStroke2);
+      border-right-color: var(--colorNeutralStroke2);
+      border-bottom-color: var(--colorNeutralStroke2);
+      border-left-color: var(--colorNeutralStroke2);
+    }
+
+    &::after {
+      border-top-color: var(--colorNeutralStroke2);
+      border-right-color: var(--colorNeutralStroke2);
+      border-bottom-color: var(--colorNeutralStroke2);
+      border-left-color: var(--colorNeutralStroke2);
+    }
+  }
+
+  .root:where(.subtle) {
+    color: var(--colorNeutralForeground3);
+    &::before {
+      border-top-color: var(--colorNeutralStroke3);
+      border-right-color: var(--colorNeutralStroke3);
+      border-bottom-color: var(--colorNeutralStroke3);
+      border-left-color: var(--colorNeutralStroke3);
+    }
+
+    &::after {
+      border-top-color: var(--colorNeutralStroke3);
+      border-right-color: var(--colorNeutralStroke3);
+      border-bottom-color: var(--colorNeutralStroke3);
+      border-left-color: var(--colorNeutralStroke3);
+    }
+  }
+
+  .root:where(.strong) {
+    color: var(--colorNeutralForeground1);
+    &::before {
+      border-top-color: var(--colorNeutralStroke1);
+      border-right-color: var(--colorNeutralStroke1);
+      border-bottom-color: var(--colorNeutralStroke1);
+      border-left-color: var(--colorNeutralStroke1);
+    }
+
+    &::after {
+      border-top-color: var(--colorNeutralStroke1);
+      border-right-color: var(--colorNeutralStroke1);
+      border-bottom-color: var(--colorNeutralStroke1);
+      border-left-color: var(--colorNeutralStroke1);
+    }
+  }
+
+  .root:where(.horizontal) {
+    width: 100%;
+    &::before {
+      border-top-style: solid;
+      border-top-width: var(--strokeWidthThin);
+      min-width: var(--spacingHorizontalS);
+    }
+
+    &::after {
+      border-top-style: solid;
+      border-top-width: var(--strokeWidthThin);
+      min-width: var(--spacingHorizontalS);
+    }
+  }
+
+  .root:where(.horizontal.inset) {
+    padding-inline-start: var(--spacingHorizontalM);
+    padding-inline-end: var(--spacingHorizontalM);
+  }
+
+  .root:where(.horizontal.start) {
+    text-align: left;
+    &:dir(rtl) {
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      margin-inline-end: var(--spacingHorizontalM);
+      max-width: var(--spacingHorizontalS);
+    }
+
+    &::after {
+      margin-inline-start: var(--spacingHorizontalM);
+    }
+  }
+
+  .root:where(.horizontal.center) {
+    text-align: center;
+    &::before {
+      margin-inline-end: var(--spacingHorizontalM);
+    }
+
+    &::after {
+      margin-inline-start: var(--spacingHorizontalM);
+    }
+  }
+
+  .root:where(.horizontal.end) {
+    text-align: right;
+    &:dir(rtl) {
+      text-align: left;
+    }
+    &::before {
+      margin-inline-end: var(--spacingHorizontalM);
+    }
+
+    &::after {
+      content: '';
+      margin-inline-start: var(--spacingHorizontalM);
+      max-width: var(--spacingHorizontalS);
+    }
+  }
+
+  .root:where(.vertical) {
+    flex-direction: column;
+    min-height: var(--spacingHorizontalXL);
+    &::before {
+      border-inline-end-style: solid;
+      border-inline-end-width: var(--strokeWidthThin);
+      min-height: var(--spacingHorizontalS);
+    }
+
+    &::after {
+      border-inline-end-style: solid;
+      border-inline-end-width: var(--strokeWidthThin);
+      min-height: var(--spacingHorizontalS);
+    }
+  }
+
+  .root:where(.vertical.inset) {
+    margin-top: var(--spacingHorizontalM);
+    margin-bottom: var(--spacingHorizontalM);
+  }
+
+  .root:where(.vertical.start) {
+    &::before {
+      content: '';
+      margin-bottom: var(--spacingHorizontalM);
+      max-height: var(--spacingHorizontalS);
+    }
+
+    &::after {
+      margin-top: var(--spacingHorizontalM);
+    }
+  }
+
+  .root:where(.vertical.center) {
+    &::before {
+      margin-bottom: var(--spacingHorizontalM);
+    }
+
+    &::after {
+      margin-top: var(--spacingHorizontalM);
+    }
+  }
+
+  .root:where(.vertical.end) {
+    &::before {
+      margin-bottom: var(--spacingHorizontalM);
+    }
+
+    &::after {
+      content: '';
+      margin-top: var(--spacingHorizontalM);
+      max-height: var(--spacingHorizontalS);
+    }
+  }
+
+  .root:where(.vertical.withChildren) {
+    min-height: calc(var(--spacingVerticalXXXL) * 2 + var(--spacingVerticalXL));
+  }
+
+  .root:where(:not(.withChildren)) {
+    &::before {
+      margin-bottom: 0;
+      margin-inline-end: 0;
+    }
+
+    &::after {
+      margin-inline-start: 0;
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@layer fluentui {
+  .root {
+    height: 32px;
+    width: 32px;
+    margin-inline-end: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .root svg {
+    height: 100%;
+    width: 100%;
+  }
+}

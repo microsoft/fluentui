@@ -1,0 +1,70 @@
+@layer fluentui {
+  .root {
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: 2px solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        inset: -2px;
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-color: Highlight;
+        }
+      }
+    }
+    inset: 0;
+    padding: var(--spacingHorizontalXXL);
+    margin: auto;
+    border-style: none;
+    overflow: unset;
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusXLarge);
+    display: block;
+    user-select: unset;
+    visibility: unset;
+    position: fixed;
+    height: fit-content;
+    max-width: 600px;
+    max-height: 100vh;
+    max-height: 100dvh;
+    box-sizing: border-box;
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    box-shadow: var(--shadow64);
+    @media screen and (max-width: 480px) {
+      max-width: 100vw;
+    }
+    @media screen and (max-height: 359px) {
+      overflow-y: auto;
+      padding-inline-end: calc(var(--spacingHorizontalXXL) - var(--spacingHorizontalXS));
+      border-inline-end-width: var(--spacingHorizontalXS);
+      border-top-width: var(--spacingHorizontalXS);
+      border-bottom-width: var(--spacingHorizontalXS);
+    }
+  }
+
+  .backdrop {
+    inset: 0px;
+    background-color: var(--colorBackgroundOverlay);
+    position: fixed;
+  }
+
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+  }
+
+  .hidden {
+    pointer-events: none;
+  }
+}

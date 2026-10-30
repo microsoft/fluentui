@@ -1,0 +1,124 @@
+@layer fluentui {
+  .root {
+    background-color: transparent;
+    box-sizing: border-box;
+    color: var(--colorBrandForegroundLink);
+    cursor: pointer;
+    display: inline;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    margin: 0;
+    padding: 0;
+    overflow: inherit;
+    text-align: left;
+    &:dir(rtl) {
+      text-align: right;
+    }
+    text-decoration-line: none;
+    text-decoration-thickness: var(--strokeWidthThin);
+    text-overflow: inherit;
+    user-select: text;
+    &:focus-visible {
+      outline-style: none;
+    }
+
+    &:hover {
+      text-decoration-line: underline;
+      color: var(--colorBrandForegroundLinkHover);
+    }
+
+    &:active {
+      text-decoration-line: underline;
+      color: var(--colorBrandForegroundLinkPressed);
+    }
+  }
+
+  .root:where(.button) {
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+  }
+
+  .root:where(.href) {
+    font-size: inherit;
+  }
+
+  .root:where(.subtle) {
+    color: var(--colorNeutralForeground2Link);
+    &:hover {
+      text-decoration-line: underline;
+      color: var(--colorNeutralForeground2LinkHover);
+    }
+
+    &:active {
+      text-decoration-line: underline;
+      color: var(--colorNeutralForeground2LinkPressed);
+    }
+  }
+
+  .root:where(.inverted) {
+    color: var(--colorBrandForegroundInverted);
+    &:hover {
+      color: var(--colorBrandForegroundInverted);
+    }
+
+    &:active {
+      color: var(--colorBrandForegroundInverted);
+    }
+  }
+
+  .root:where(.brand) {
+    color: var(--colorNeutralForegroundInvertedLink);
+    &:hover {
+      color: var(--colorNeutralForegroundInvertedLinkHover);
+    }
+
+    &:active {
+      color: var(--colorNeutralForegroundInvertedLinkPressed);
+    }
+  }
+
+  .root:where(.inline) {
+    text-decoration-line: underline;
+  }
+
+  .root:where(.disabled) {
+    text-decoration-line: none;
+    color: var(--colorNeutralForegroundDisabled);
+    cursor: not-allowed;
+    &:hover {
+      text-decoration-line: none;
+      color: var(--colorNeutralForegroundDisabled);
+    }
+
+    &:active {
+      text-decoration-line: none;
+      color: var(--colorNeutralForegroundDisabled);
+    }
+
+    @media (forced-colors: active) {
+      color: GrayText;
+      &:hover {
+        color: GrayText;
+      }
+
+      &:active {
+        color: GrayText;
+      }
+    }
+  }
+
+  .root {
+    &[data-fui-focus-visible] {
+      text-decoration-color: var(--colorStrokeFocus2);
+      text-decoration-line: underline;
+      text-decoration-style: double;
+      outline-style: none;
+    }
+    &:where(.disabled)[data-fui-focus-visible] {
+      text-decoration-line: none;
+    }
+  }
+}

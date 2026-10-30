@@ -1,0 +1,69 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    grid-column-end: 3;
+    color: var(--colorNeutralForeground1);
+    word-break: break-word;
+  }
+
+  .media {
+    display: flex;
+    padding-top: var(--spacingVerticalXXS);
+    grid-column-end: 2;
+    padding-inline-end: var(--spacingHorizontalS);
+    font-size: var(--fontSizeBase400);
+    color: var(--colorNeutralForeground1);
+  }
+
+  .action {
+    display: flex;
+    align-items: start;
+    padding-inline-start: var(--spacingHorizontalM);
+    grid-column-end: -1;
+    color: var(--colorBrandForeground1);
+  }
+
+  .root:where(.inverted) {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+
+  .action:where(.inverted) {
+    color: var(--colorBrandForegroundInverted);
+  }
+
+  .media:where(.inverted) {
+    color: var(--colorNeutralForegroundInverted);
+  }
+
+  .success {
+    color: var(--colorStatusSuccessForeground1);
+  }
+
+  .error {
+    color: var(--colorStatusDangerForeground1);
+  }
+
+  .warning {
+    color: var(--colorStatusWarningForeground1);
+  }
+
+  .info {
+    color: var(--colorNeutralForeground2);
+  }
+
+  .success:where(.inverted) {
+    color: var(--colorStatusSuccessForegroundInverted);
+  }
+
+  .error:where(.inverted) {
+    color: var(--colorStatusDangerForegroundInverted);
+  }
+
+  .warning:where(.inverted) {
+    color: var(--colorStatusWarningForegroundInverted);
+  }
+
+  .info:where(.inverted) {
+    color: var(--colorNeutralForegroundInverted2);
+  }
+}

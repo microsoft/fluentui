@@ -1,0 +1,5 @@
+@layer fluentui {
+  .root {
+    margin: 0 var(--spacingHorizontalM);
+  }
+}

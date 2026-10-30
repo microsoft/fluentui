@@ -1,0 +1,18 @@
+@layer fluentui {
+  .label {
+    vertical-align: top;
+    cursor: inherit;
+    color: inherit;
+  }
+
+  .infoButton {
+    vertical-align: top;
+    margin-top: calc(0px - var(--spacingVerticalXXS));
+    margin-bottom: calc(0px - var(--spacingVerticalXXS));
+  }
+
+  :where(.large) > .infoButton {
+    margin-top: calc(var(--spacingVerticalXXS) / -2);
+    margin-bottom: calc(var(--spacingVerticalXXS) / -2);
+  }
+}

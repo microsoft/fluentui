@@ -80,6 +80,14 @@ function toOutputPath(sourcePathFromSrc: string): string | null {
 export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): PackageJson['exports'] {
   const style = json.style ? normalizeEntryPointPath(json.style) : null;
   const exports: NonNullable<PackageJson['exports']> = {};
+  const cssExports = Object.fromEntries(
+    Object.entries(json.exports ?? {})
+      .filter(
+        ([key, target]) =>
+          key.startsWith('./') && key.endsWith('.css') && typeof target === 'string' && target.endsWith('.css'),
+      )
+      .sort(([a], [b]) => a.localeCompare(b)),
+  );
 
   // Opt-in: a package becomes ESM-first by declaring `"type": "module"` in its package.json.
   if (json.type === 'module') {
@@ -94,6 +102,7 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
       };
     }
 
+    Object.assign(exports, cssExports);
     exports['./package.json'] = './package.json';
 
     return exports;
@@ -114,6 +123,7 @@ export function buildExportMap(json: PackageJson, entryPoints: EntryPoint[]): Pa
     };
   }
 
+  Object.assign(exports, cssExports);
   exports['./package.json'] = './package.json';
 
   return exports;

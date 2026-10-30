@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: add CSS Modules style alternatives for combobox, preserving Combobox and Dropdown hover and focus precedence",
+  "packageName": "@fluentui/react-combobox",
+  "email": "dmytrokirpa@microsoft.com"
+}

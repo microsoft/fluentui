@@ -1,0 +1,12 @@
+@layer fluentui {
+  .root {
+    overflow-x: hidden;
+    overflow-anchor: none;
+    position: relative;
+  }
+
+  .elevated {
+    margin: var(--spacingVerticalL);
+    padding: var(--spacingVerticalL);
+  }
+}

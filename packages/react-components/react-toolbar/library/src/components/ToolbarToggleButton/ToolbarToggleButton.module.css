@@ -1,0 +1,10 @@
+@layer fluentui {
+  .checked {
+    background-color: var(--colorSubtleBackgroundSelected);
+    color: var(--colorNeutralForeground2Selected);
+  }
+
+  .checkedIcon {
+    color: var(--colorNeutralForeground2BrandSelected);
+  }
+}

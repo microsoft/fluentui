@@ -1,0 +1,335 @@
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+
+@layer fluentui {
+  .root {
+    border-radius: var(--borderRadiusMedium);
+    position: relative;
+    color: var(--colorNeutralForeground2);
+    background-color: var(--colorNeutralBackground1);
+    padding-inline-end: var(--spacingVerticalSNudge);
+    padding-inline-start: var(--spacingVerticalSNudge);
+    padding-top: var(--spacingVerticalSNudge);
+    padding-bottom: var(--spacingVerticalSNudge);
+    box-sizing: border-box;
+    max-width: calc(9 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalXXS));
+    min-height: var(--spacingHorizontalXXXL);
+    flex-shrink: 0;
+    display: flex;
+    align-items: start;
+    font-size: var(--fontSizeBase300);
+    cursor: pointer;
+    gap: var(--spacingHorizontalXS);
+    &:hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      color: var(--colorNeutralForeground2Hover);
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+      & :global(.fui-MenuItem__icon) {
+        color: var(--colorNeutralForeground2BrandSelected);
+      }
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForeground3Hover);
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorNeutralBackground1Pressed);
+      color: var(--colorNeutralForeground2Pressed);
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForeground3Pressed);
+      }
+    }
+    user-select: none;
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-top-color: var(--colorTransparentBackground);
+      border-right-color: var(--colorTransparentBackground);
+      border-bottom-color: var(--colorTransparentBackground);
+      border-left-color: var(--colorTransparentBackground);
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(-1 * var(--strokeWidthThick));
+        right: calc(-1 * var(--strokeWidthThick));
+        bottom: calc(-1 * var(--strokeWidthThick));
+        left: calc(-1 * var(--strokeWidthThick));
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+    @media (forced-colors: active) {
+      &:hover {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: HighlightText;
+        & :global(.fui-MenuItem__icon),
+        & :global(.fui-MenuItem__checkmark),
+        & :global(.fui-MenuItem__subText),
+        & :global(.fui-MenuItem__secondaryContent) {
+          color: HighlightText;
+        }
+      }
+      &:focus {
+        outline-style: none;
+      }
+      &:focus-visible {
+        outline-style: none;
+      }
+      &[data-fui-focus-visible] {
+        border-top-color: var(--colorTransparentBackground);
+        border-right-color: var(--colorTransparentBackground);
+        border-bottom-color: var(--colorTransparentBackground);
+        border-left-color: var(--colorTransparentBackground);
+        &::after {
+          content: '';
+          position: absolute;
+          pointer-events: none;
+          z-index: 1;
+          border: var(--strokeWidthThick) solid Highlight;
+          border-radius: var(--borderRadiusMedium);
+          top: calc(-1 * var(--strokeWidthThick));
+          right: calc(-1 * var(--strokeWidthThick));
+          bottom: calc(-1 * var(--strokeWidthThick));
+          left: calc(-1 * var(--strokeWidthThick));
+        }
+        @media (forced-colors: active) {
+          &::after {
+            border-top-color: Highlight;
+            border-right-color: Highlight;
+            border-bottom-color: Highlight;
+            border-left-color: Highlight;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    padding-inline-start: var(--spacingHorizontalXXS);
+    padding-inline-end: var(--spacingHorizontalXXS);
+    background-color: var(--colorTransparentBackground);
+    flex-grow: 1;
+  }
+  .secondaryContent {
+    padding-inline-start: var(--spacingHorizontalXXS);
+    padding-inline-end: var(--spacingHorizontalXXS);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    color: var(--colorNeutralForeground3);
+    &:hover {
+      color: var(--colorNeutralForeground3Hover);
+    }
+    &:focus {
+      color: var(--colorNeutralForeground3Hover);
+    }
+  }
+  .icon {
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+    font-size: var(--fontSizeBase500);
+    line-height: 0;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .submenuIndicator {
+    width: var(--spacingHorizontalXL);
+    height: var(--spacingHorizontalXL);
+    font-size: var(--fontSizeBase500);
+    line-height: 0;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+  }
+  .subText {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase100);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase100);
+    color: var(--colorNeutralForeground3);
+  }
+  .checkmark {
+    margin-top: var(--spacingHorizontalXXS);
+  }
+  .submenuOpen {
+    background-color: var(--colorNeutralBackground1Hover);
+    color: var(--colorNeutralForeground2Hover);
+    & :global(.fui-Icon-filled) {
+      display: inline;
+    }
+    & :global(.fui-Icon-regular) {
+      display: none;
+    }
+    & :global(.fui-MenuItem__icon) {
+      color: var(--colorNeutralForeground2BrandSelected);
+    }
+    & :global(.fui-MenuItem__subText) {
+      color: var(--colorNeutralForeground3Hover);
+    }
+    @media (forced-colors: active) {
+      forced-color-adjust: none;
+      background-color: Highlight;
+      color: HighlightText;
+      & :global(.fui-MenuItem__icon),
+      & :global(.fui-MenuItem__checkmark),
+      & :global(.fui-MenuItem__subText),
+      & :global(.fui-MenuItem__secondaryContent) {
+        color: HighlightText;
+      }
+    }
+  }
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+    &:hover {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackground1);
+      cursor: not-allowed;
+      & :global(.fui-Icon-filled) {
+        display: none;
+      }
+      & :global(.fui-Icon-regular) {
+        display: inline;
+      }
+      & :global(.fui-MenuItem__icon) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+    &:hover:active {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackground1);
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+    &:focus {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+    @media (forced-colors: active) {
+      color: GrayText;
+      &:hover {
+        forced-color-adjust: auto;
+        color: GrayText;
+        background-color: Canvas;
+        & :global(.fui-MenuItem__icon) {
+          color: GrayText;
+          background-color: Canvas;
+        }
+        & :global(.fui-MenuItem__icon),
+        & :global(.fui-MenuItem__checkmark),
+        & :global(.fui-MenuItem__subText),
+        & :global(.fui-MenuItem__secondaryContent) {
+          color: GrayText;
+        }
+      }
+      &:hover:active {
+        color: GrayText;
+        background-color: Canvas;
+        & :global(.fui-MenuItem__subText) {
+          color: GrayText;
+        }
+      }
+      &:focus {
+        color: GrayText;
+        background-color: Canvas;
+      }
+    }
+  }
+  :where(.disabled) > :where(.content) > .subText {
+    color: var(--colorNeutralForegroundDisabled);
+    @media (forced-colors: active) {
+      color: GrayText;
+    }
+  }
+  :where(.multiline) > .content {
+    display: flex;
+    flex-direction: column;
+  }
+  :where(.multiline) > .secondaryContent {
+    align-self: center;
+  }
+  :where(.multiline) > .submenuIndicator {
+    align-self: center;
+  }
+  :where(.disabled) > .secondaryContent {
+    color: var(--colorNeutralForegroundDisabled);
+    &:hover {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackground1);
+      cursor: not-allowed;
+      & :global(.fui-Icon-filled) {
+        display: none;
+      }
+      & :global(.fui-Icon-regular) {
+        display: inline;
+      }
+      & :global(.fui-MenuItem__icon) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+    &:hover:active {
+      color: var(--colorNeutralForegroundDisabled);
+      background-color: var(--colorNeutralBackground1);
+      & :global(.fui-MenuItem__subText) {
+        color: var(--colorNeutralForegroundDisabled);
+      }
+    }
+    &:focus {
+      color: var(--colorNeutralForegroundDisabled);
+    }
+    @media (forced-colors: active) {
+      color: GrayText;
+      &:hover {
+        forced-color-adjust: auto;
+        color: GrayText;
+        background-color: Canvas;
+        & :global(.fui-MenuItem__icon) {
+          color: GrayText;
+          background-color: Canvas;
+        }
+        & :global(.fui-MenuItem__icon),
+        & :global(.fui-MenuItem__checkmark),
+        & :global(.fui-MenuItem__subText),
+        & :global(.fui-MenuItem__secondaryContent) {
+          color: GrayText;
+        }
+      }
+      &:hover:active {
+        color: GrayText;
+        background-color: Canvas;
+        & :global(.fui-MenuItem__subText) {
+          color: GrayText;
+        }
+      }
+      &:focus {
+        color: GrayText;
+        background-color: Canvas;
+      }
+    }
+  }
+}

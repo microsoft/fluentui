@@ -1,0 +1,18 @@
+@layer fluentui {
+  .root {
+    padding: var(--spacingHorizontalNone) var(--spacingVerticalNone);
+    display: flex;
+  }
+  .row {
+    flex-direction: row;
+  }
+  .grid {
+    flex-direction: column;
+  }
+  .small {
+    gap: var(--spacingHorizontalXXS);
+  }
+  .medium {
+    gap: var(--spacingHorizontalXS);
+  }
+}

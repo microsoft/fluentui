@@ -1,0 +1,101 @@
+/* Hue stops and HSV black/white endpoints describe the color space, not a theme palette. */
+@layer fluentui {
+  .root {
+    position: relative;
+    border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+    background: linear-gradient(to bottom, transparent, #000), linear-gradient(to right, #fff, transparent),
+      var(--fui-Area--main-color);
+    forced-color-adjust: none;
+    display: inline-grid;
+    touch-action: none;
+    align-items: start;
+    justify-items: start;
+    --fui-Slider__thumb--size: var(--spacingHorizontalXL);
+    min-width: calc(var(--spacingHorizontalXXXL) * 9 + var(--spacingHorizontalM));
+    min-height: calc(var(--spacingHorizontalXXXL) * 9 + var(--spacingHorizontalM));
+    box-sizing: border-box;
+    margin-bottom: var(--spacingVerticalSNudge);
+  }
+  .thumb {
+    position: absolute;
+    width: var(--fui-Slider__thumb--size);
+    height: var(--fui-Slider__thumb--size);
+    pointer-events: none;
+    outline-style: none;
+    forced-color-adjust: none;
+    border-radius: var(--borderRadiusCircular);
+    border: var(--strokeWidthThin) solid var(--colorNeutralForeground4);
+    box-shadow: var(--shadow4);
+    background-color: var(--fui-Area__thumb--color);
+    transform: translate(-50%, 50%);
+    &:dir(rtl) {
+      transform: translate(50%, 50%);
+    }
+    inset-inline-start: var(--fui-AreaX--progress);
+    bottom: var(--fui-AreaY--progress);
+    &::before {
+      position: absolute;
+      inset: 0px;
+      border-radius: var(--borderRadiusCircular);
+      box-sizing: border-box;
+      content: '';
+      border: var(--strokeWidthThick) solid var(--colorNeutralBackground1);
+    }
+  }
+  .thumb {
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-within]:focus-within {
+      border-top-color: transparent;
+      border-inline-end-color: transparent;
+      border-bottom-color: transparent;
+      border-inline-start-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusCircular);
+        top: calc(var(--strokeWidthThick) * -1);
+        inset-inline-end: calc(var(--strokeWidthThick) * -1);
+        bottom: calc(var(--strokeWidthThick) * -1);
+        inset-inline-start: calc(var(--strokeWidthThick) * -1);
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-inline-end-color: Highlight;
+          border-bottom-color: Highlight;
+          border-inline-start-color: Highlight;
+        }
+      }
+    }
+  }
+  .input {
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    inset-inline-start: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+  .root:dir(rtl) {
+    background: linear-gradient(to bottom, transparent, #000), linear-gradient(to left, #fff, transparent),
+      var(--fui-Area--main-color);
+  }
+}

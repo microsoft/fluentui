@@ -1,0 +1,75 @@
+@layer fluentui {
+  .expanded {
+    :global(.fui-Icon-filled) {
+      display: inline;
+    }
+
+    :global(.fui-Icon-regular) {
+      display: none;
+    }
+
+    &:where(.outline) {
+      border-width: var(--strokeWidthThicker);
+    }
+
+    &:where(.subtle) {
+      background-color: var(--colorSubtleBackgroundSelected);
+    }
+
+    @media (forced-colors: none) {
+      &:where(.outline) {
+        border-color: var(--colorNeutralStroke1Selected);
+        color: var(--colorNeutralForeground1Selected);
+      }
+
+      &:where(.primary) {
+        background-color: var(--colorBrandBackgroundSelected);
+      }
+
+      &:where(.secondary) {
+        background-color: var(--colorNeutralBackground1Selected);
+        border-color: var(--colorNeutralStroke1Selected);
+        color: var(--colorNeutralForeground1Selected);
+      }
+
+      &:where(.subtle) {
+        color: var(--colorNeutralForeground2Selected);
+      }
+
+      &:where(.transparent) {
+        background-color: var(--colorTransparentBackgroundSelected);
+        color: var(--colorNeutralForeground2BrandSelected);
+      }
+    }
+  }
+
+  .root .menuIcon {
+    line-height: 0;
+    margin-inline-start: var(--spacingHorizontalXS);
+  }
+
+  .iconOnly .menuIcon {
+    margin-inline-start: 0;
+  }
+
+  .small .menuIcon,
+  .medium .menuIcon {
+    font-size: var(--fontSizeBase200);
+    height: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+    width: var(--fontSizeBase200);
+  }
+
+  .large .menuIcon {
+    font-size: var(--fontSizeBase400);
+    height: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+    width: var(--fontSizeBase400);
+  }
+
+  @media (forced-colors: active) {
+    :where(.expanded):where(.outline, .secondary, .subtle, .transparent) .icon:hover {
+      color: Highlight;
+    }
+  }
+}

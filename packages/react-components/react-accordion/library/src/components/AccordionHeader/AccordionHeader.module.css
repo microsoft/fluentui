@@ -1,0 +1,150 @@
+@layer fluentui {
+  .button {
+    box-sizing: content-box;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button;
+    text-align: unset;
+  }
+
+  .root {
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorTransparentBackground);
+    margin: 0;
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .root:where(.disabled) {
+    background-image: none;
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  .root:where(.inline) {
+    display: inline-block;
+  }
+
+  .button {
+    position: relative;
+    width: 100%;
+    border-top-width: 0;
+    border-inline-end-width: 0;
+    border-bottom-width: 0;
+    border-inline-start-width: 0;
+    padding-block: 0;
+    padding-inline-start: var(--spacingHorizontalMNudge);
+    padding-inline-end: var(--spacingHorizontalM);
+    min-height: calc(var(--spacingVerticalXXL) + var(--spacingVerticalXL));
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    box-sizing: border-box;
+  }
+
+  :where(.small) > .button {
+    min-height: var(--spacingVerticalXXXL);
+    font-size: var(--fontSizeBase200);
+  }
+
+  :where(.large) > .button {
+    line-height: var(--lineHeightBase400);
+    font-size: var(--fontSizeBase400);
+  }
+
+  :where(.extra-large) > .button {
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+
+  :where(.inline) > .button {
+    display: inline-flex;
+  }
+
+  :where(.end:not(.withIcon)) > .button {
+    padding-inline-start: var(--spacingHorizontalM);
+  }
+
+  :where(.end) > .button {
+    padding-inline-end: var(--spacingHorizontalMNudge);
+  }
+
+  :where(.disabled) > .button {
+    cursor: not-allowed;
+  }
+
+  .expandIcon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+
+  :where(.start) > :where(.button) > .expandIcon {
+    padding-inline-end: var(--spacingHorizontalS);
+  }
+
+  :where(.end) > :where(.button) > .expandIcon {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    display: flex;
+    justify-content: flex-end;
+    padding-inline-start: var(--spacingHorizontalS);
+  }
+
+  .icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline-end: var(--spacingHorizontalS);
+    line-height: var(--lineHeightBase500);
+    font-size: var(--fontSizeBase500);
+  }
+
+  .button {
+    &:focus {
+      outline-style: none;
+    }
+
+    &:focus-visible {
+      outline-style: none;
+    }
+
+    &[data-fui-focus-visible] {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(var(--strokeWidthThick) * -1);
+        inset-inline-end: calc(var(--strokeWidthThick) * -1);
+        bottom: calc(var(--strokeWidthThick) * -1);
+        inset-inline-start: calc(var(--strokeWidthThick) * -1);
+      }
+
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+  }
+}

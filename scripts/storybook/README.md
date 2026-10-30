@@ -11,6 +11,8 @@ Utils for storybook.
 Configures atomic Fluent icon imports in a Storybook webpack configuration.
 SVG remains the default; `FLUENTUI_ICON_VARIANT=fonts` enables font icons,
 font subsetting, and the required styles. Pass `headless: true` for headless icons.
+Headless defaults are imported into `@layer fluentui`, allowing layered component
+styles to override icon visibility and sizing.
 
 ```js
 const { configureReactIcons } = require('@fluentui/scripts-storybook');

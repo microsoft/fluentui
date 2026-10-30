@@ -1,0 +1,15 @@
+@layer fluentui {
+  .root {
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground1);
+    text-align: left;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  .root:where(.rtl) {
+    text-align: right;
+  }
+}

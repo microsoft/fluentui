@@ -1,0 +1,24 @@
+@layer fluentui {
+  .root {
+    &[data-multiline] {
+      & > :global(.fui-MenuItem):nth-of-type(2) {
+        align-self: center;
+      }
+    }
+    display: flex;
+    & > :global(.fui-MenuItem):nth-of-type(1) {
+      flex: 1;
+    }
+    & > :global(.fui-MenuItem):nth-of-type(2) {
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+      padding-inline-start: 0;
+      &::before {
+        content: '';
+        width: var(--strokeWidthThin);
+        height: var(--spacingHorizontalXL);
+        background-color: var(--colorNeutralStroke1);
+      }
+    }
+  }
+}

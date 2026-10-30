@@ -1,0 +1,290 @@
+@layer fluentui {
+  /* ---- Root base (20px medium, circular, caption1Strong) ---- */
+  .root {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightSemibold);
+    line-height: var(--lineHeightBase200);
+    height: 20px;
+    min-width: 20px;
+    padding: 0 calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    border-radius: var(--borderRadiusCircular);
+    border-color: var(--colorTransparentStroke);
+  }
+
+  /* Border via ::after so it never affects layout */
+  .root::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-color: inherit;
+    border-width: var(--strokeWidthThin);
+    border-radius: inherit;
+  }
+
+  /* ---- Sizes: class name = prop value ---- */
+  .tiny {
+    width: 6px;
+    height: 6px;
+    font-size: 4px;
+    line-height: 4px;
+    min-width: unset;
+    padding: unset;
+  }
+  .extra-small {
+    width: 10px;
+    height: 10px;
+    font-size: 6px;
+    line-height: 6px;
+    min-width: unset;
+    padding: unset;
+  }
+  .small {
+    min-width: 16px;
+    height: 16px;
+    padding: 0 calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+  }
+  /* medium: .root default */
+  .large {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+  }
+  .extra-large {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 calc(var(--spacingHorizontalSNudge) + var(--spacingHorizontalXXS));
+  }
+
+  /* caption2Strong font for small-to-tiny */
+  .tiny,
+  .extra-small,
+  .small {
+    font-size: var(--fontSizeBase100);
+    line-height: var(--lineHeightBase100);
+  }
+
+  /* ---- Shapes: class name = prop value ---- */
+  .square {
+    border-radius: var(--borderRadiusNone);
+  }
+  /* circular: .root default */
+
+  .rounded {
+    border-radius: var(--borderRadiusMedium);
+  }
+  .rounded:where(.tiny, .extra-small, .small) {
+    border-radius: var(--borderRadiusSmall);
+  }
+
+  /* ---- Icon slot ---- */
+  .icon {
+    display: flex;
+    line-height: 1;
+    margin: 0 calc(-1 * var(--spacingHorizontalXXS));
+    font-size: 12px;
+  }
+
+  /* Icon size via descendant from root size class */
+  .tiny :global(.fui-Badge__icon) {
+    font-size: 6px;
+  }
+  .extra-small :global(.fui-Badge__icon) {
+    font-size: 10px;
+  }
+  /* .small, .medium: 12px from .icon */
+  .large :global(.fui-Badge__icon) {
+    font-size: 16px;
+  }
+  .extra-large :global(.fui-Badge__icon) {
+    font-size: 20px;
+  }
+
+  /* Icon position gap between icon and adjacent text */
+  .iconBeforeText {
+    margin-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+  }
+  .iconAfterText {
+    margin-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+  }
+
+  /* Extra-large gets wider gaps — compound CSS, no hook conditional */
+  .extra-large .iconBeforeText {
+    margin-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+  }
+  .extra-large .iconAfterText {
+    margin-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+  }
+
+  /* ---- Appearance × color classes: names use hyphens to match `${appearance}-${color}` ---- */
+  /* Hook uses styles[`${appearance}-${color}`] — no lookup map needed. */
+
+  /* filled */
+  .filled-brand {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filled-danger {
+    background-color: var(--colorPaletteRedBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filled-important {
+    background-color: var(--colorNeutralForeground1);
+    color: var(--colorNeutralBackground1);
+  }
+  .filled-informative {
+    background-color: var(--colorNeutralBackground5);
+    color: var(--colorNeutralForeground3);
+  }
+  .filled-severe {
+    background-color: var(--colorPaletteDarkOrangeBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filled-subtle {
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+  }
+  .filled-success {
+    background-color: var(--colorPaletteGreenBackground3);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filled-warning {
+    background-color: var(--colorPaletteYellowBackground3);
+    color: var(--colorNeutralForeground1Static);
+  }
+
+  /* ghost: ::after hidden in CSS */
+  .ghost-brand {
+    color: var(--colorBrandForeground1);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-danger {
+    color: var(--colorPaletteRedForeground3);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-important {
+    color: var(--colorNeutralForeground1);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-informative {
+    color: var(--colorNeutralForeground3);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-severe {
+    color: var(--colorPaletteDarkOrangeForeground3);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-subtle {
+    color: var(--colorNeutralForegroundStaticInverted);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-success {
+    color: var(--colorPaletteGreenForeground3);
+    &::after {
+      display: none;
+    }
+  }
+  .ghost-warning {
+    color: var(--colorPaletteYellowForeground2);
+    &::after {
+      display: none;
+    }
+  }
+
+  /* outline: border-color embedded per class */
+  .outline-brand {
+    color: var(--colorBrandForeground1);
+    border-color: currentColor;
+  }
+  .outline-danger {
+    color: var(--colorPaletteRedForeground3);
+    border-color: var(--colorPaletteRedBorder2);
+  }
+  .outline-important {
+    color: var(--colorNeutralForeground3);
+    border-color: var(--colorNeutralStrokeAccessible);
+  }
+  .outline-informative {
+    color: var(--colorNeutralForeground3);
+    border-color: var(--colorNeutralStroke2);
+  }
+  .outline-severe {
+    color: var(--colorPaletteDarkOrangeForeground3);
+    border-color: currentColor;
+  }
+  .outline-subtle {
+    color: var(--colorNeutralForegroundStaticInverted);
+    border-color: currentColor;
+  }
+  .outline-success {
+    color: var(--colorPaletteGreenForeground3);
+    border-color: var(--colorPaletteGreenBorder2);
+  }
+  .outline-warning {
+    color: var(--colorPaletteYellowForeground2);
+    border-color: currentColor;
+  }
+
+  /* tint */
+  .tint-brand {
+    background-color: var(--colorBrandBackground2);
+    color: var(--colorBrandForeground2);
+    border-color: var(--colorBrandStroke2);
+  }
+  .tint-danger {
+    background-color: var(--colorPaletteRedBackground1);
+    color: var(--colorPaletteRedForeground1);
+    border-color: var(--colorPaletteRedBorder1);
+  }
+  .tint-important {
+    background-color: var(--colorNeutralForeground3);
+    color: var(--colorNeutralBackground1);
+    border-color: var(--colorTransparentStroke);
+  }
+  .tint-informative {
+    background-color: var(--colorNeutralBackground4);
+    color: var(--colorNeutralForeground3);
+    border-color: var(--colorNeutralStroke2);
+  }
+  .tint-severe {
+    background-color: var(--colorPaletteDarkOrangeBackground1);
+    color: var(--colorPaletteDarkOrangeForeground1);
+    border-color: var(--colorPaletteDarkOrangeBorder1);
+  }
+  .tint-subtle {
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground3);
+    border-color: var(--colorNeutralStroke2);
+  }
+  .tint-success {
+    background-color: var(--colorPaletteGreenBackground1);
+    color: var(--colorPaletteGreenForeground1);
+    border-color: var(--colorPaletteGreenBorder1);
+  }
+  .tint-warning {
+    background-color: var(--colorPaletteYellowBackground1);
+    color: var(--colorPaletteYellowForeground1);
+    border-color: var(--colorPaletteYellowBorder1);
+  }
+}

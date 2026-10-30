@@ -1,0 +1,35 @@
+@layer fluentui {
+  .content {
+    display: none;
+    box-sizing: border-box;
+    max-width: calc(var(--spacingHorizontalXXXL) * 7 + var(--spacingHorizontalL));
+    cursor: default;
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    line-height: var(--lineHeightBase200);
+    overflow-wrap: break-word;
+    border-radius: var(--borderRadiusMedium);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    padding: var(--spacingHorizontalXS) calc(var(--spacingHorizontalM) - var(--strokeWidthThin))
+      var(--spacingHorizontalSNudge) calc(var(--spacingHorizontalM) - var(--strokeWidthThin));
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    filter: drop-shadow(0 0 var(--spacingHorizontalXXS) var(--colorNeutralShadowAmbient))
+      drop-shadow(0 var(--spacingHorizontalXS) var(--spacingHorizontalS) var(--colorNeutralShadowKey));
+  }
+  .visible {
+    display: block;
+  }
+  .hidden {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .inverted {
+    background-color: var(--colorNeutralBackgroundStatic);
+    color: var(--colorNeutralForegroundStaticInverted);
+  }
+  .arrow {
+    --fui-positioning-arrow-height: calc(var(--spacingVerticalSNudge) * 1.414);
+    --fui-positioning-arrow-offset: calc(var(--spacingVerticalSNudge) * -0.707);
+  }
+}

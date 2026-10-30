@@ -1,0 +1,218 @@
+@layer fluentui {
+  .normalize {
+    box-shadow: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .root {
+    box-sizing: content-box;
+    overflow: hidden;
+    padding: var(--spacingHorizontalM);
+    width: calc(7 * (var(--spacingHorizontalXXL) + var(--spacingHorizontalXS)));
+  }
+
+  .headerContainer {
+    display: flex;
+  }
+
+  .currentItemButton {
+    background-color: var(--colorTransparentBackground);
+    border-top-style: none;
+    border-inline-end-style: none;
+    border-bottom-style: none;
+    border-inline-start-style: none;
+    border-radius: var(--borderRadiusMedium);
+    color: inherit;
+    flex-grow: 1;
+    font-family: inherit;
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightSemibold);
+    overflow: visible;
+    padding-block: 0;
+    padding-inline: var(--spacingHorizontalMNudge) var(--spacingHorizontalXS);
+    text-align: start;
+  }
+
+  .currentItemButtonHasHeaderClickCallback {
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+  }
+
+  .navigationButtonsContainer {
+    align-items: center;
+    display: flex;
+  }
+
+  .navigationButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground1);
+    display: block;
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    line-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    min-height: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    min-width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: calc(var(--spacingHorizontalXXL) + var(--spacingHorizontalXS));
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorBrandForegroundOnLightHover);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      color: var(--colorBrandForegroundOnLightPressed);
+    }
+  }
+
+  .gridContainer {
+    margin-top: var(--spacingHorizontalXS);
+  }
+
+  .buttonRow {
+    margin-bottom: var(--spacingHorizontalL);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .itemButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(2 * var(--spacingHorizontalXL));
+    line-height: calc(2 * var(--spacingHorizontalXL));
+    min-height: calc(2 * var(--spacingHorizontalXL));
+    min-width: calc(2 * var(--spacingHorizontalXL));
+    margin-block: 0;
+    margin-inline: 0 var(--spacingHorizontalM);
+    overflow: visible;
+    padding: 0;
+    width: calc(2 * var(--spacingHorizontalXL));
+    &:nth-child(4n + 4) {
+      margin-inline-end: 0;
+    }
+    &:nth-child(n + 9) {
+      margin-bottom: 0;
+    }
+    & div {
+      font-weight: var(--fontWeightRegular);
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorNeutralForeground1Static);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          color: WindowText;
+          forced-color-adjust: none;
+          outline: var(--strokeWidthThin) solid Highlight;
+        }
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          color: Highlight;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .currentHighlightCurrent {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+    font-weight: var(--fontWeightSemibold);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+    &:hover,
+    &:hover:active {
+      background-color: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        & {
+          background-color: WindowText;
+          color: Window;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .selectedHighlightSelected {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+    font-weight: var(--fontWeightSemibold);
+    @media (forced-colors: active) {
+      & {
+        background-color: Highlight;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+    & div {
+      font-weight: var(--fontWeightSemibold);
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      color: var(--colorNeutralForeground1Static);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          color: Window;
+          forced-color-adjust: none;
+        }
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+    }
+  }
+
+  .disabled {
+    &,
+    &:disabled,
+    & button {
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+    }
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+}

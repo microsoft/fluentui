@@ -1,0 +1,117 @@
+@layer fluentui {
+  .root {
+    cursor: pointer;
+    pointer-events: all;
+    width: var(--spacingHorizontalS);
+    height: var(--spacingVerticalS);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalS);
+    box-sizing: content-box;
+    background-color: var(--colorTransparentBackground);
+    border-top-width: 0;
+    border-inline-end-width: 0;
+    border-bottom-width: 0;
+    border-inline-start-width: 0;
+    &::after {
+      content: '';
+      display: block;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: none;
+      height: var(--spacingVerticalS);
+      width: var(--spacingHorizontalS);
+      background-color: var(--colorNeutralForeground1);
+      color: var(--colorNeutralForeground1);
+      @media (forced-colors: active) {
+        & {
+          forced-color-adjust: none;
+          /* Keep the inverted marker visible when forced colors suppress its normal fill. */
+          background-color: var(--colorNeutralForegroundStaticInverted);
+          mix-blend-mode: difference;
+        }
+      }
+    }
+  }
+
+  .root:where(:not(.selected)) {
+    outline: var(--strokeWidthThin) solid transparent;
+    &[data-fui-focus-visible] {
+      border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      margin: calc(-1 * var(--strokeWidthThick));
+      border-radius: var(--borderRadiusMedium);
+    }
+    &::after {
+      opacity: 0.6;
+    }
+    &:hover {
+      &::after {
+        opacity: 0.75;
+      }
+    }
+    &:active {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .root:where(.selected) {
+    width: var(--spacingHorizontalL);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalXS);
+    outline: var(--strokeWidthThin) solid transparent;
+    &[data-fui-focus-visible] {
+      border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      margin: calc(-1 * var(--strokeWidthThick));
+      border-radius: var(--borderRadiusMedium);
+    }
+    &::after {
+      width: var(--spacingHorizontalL);
+      border-radius: var(--borderRadiusMedium);
+    }
+    &:hover {
+      &::after {
+        opacity: 0.75;
+      }
+    }
+    &:active {
+      &::after {
+        opacity: 0.65;
+      }
+    }
+  }
+
+  .root:where(.brand) {
+    &::after {
+      background-color: var(--colorCompoundBrandBackground);
+      opacity: 1;
+    }
+    &:hover {
+      &::after {
+        background-color: var(--colorCompoundBrandBackgroundHover);
+        opacity: 1;
+      }
+    }
+    &:active {
+      &::after {
+        background-color: var(--colorCompoundBrandBackgroundPressed);
+        opacity: 1;
+      }
+    }
+  }
+
+  .root:where(.brand:not(.selected)) {
+    &::after {
+      opacity: 0.6;
+      background-color: var(--colorNeutralForeground1);
+    }
+    &:hover {
+      &::after {
+        opacity: 0.75;
+      }
+    }
+    &:active {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

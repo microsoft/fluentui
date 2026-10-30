@@ -1,0 +1,19 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .centered {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .rightAligned {
+    gap: 8px;
+  }
+
+  .rightAligned :first-child {
+    margin-inline-end: auto;
+  }
+}

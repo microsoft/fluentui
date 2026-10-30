@@ -1,0 +1,12 @@
+@layer fluentui {
+  .root {
+    box-sizing: border-box;
+    margin-top: var(--spacingVerticalL);
+    pointer-events: all;
+    border-radius: var(--borderRadiusMedium);
+  }
+
+  .root[data-fui-focus-visible] {
+    outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+  }
+}

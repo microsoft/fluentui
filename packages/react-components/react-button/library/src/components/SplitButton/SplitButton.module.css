@@ -1,0 +1,73 @@
+@layer fluentui {
+  .root:where(.outline, .primary, .secondary, .subtle, .transparent) {
+    display: inline-flex;
+    justify-content: stretch;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .root .primaryActionButton,
+  .primaryActionButton[data-fui-focus-visible] {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  .root .menuButton,
+  .menuButton[data-fui-focus-visible] {
+    /* Keep the shared edge borderless even when an unlayered custom style hook sets all border widths. */
+    border-inline-start-width: 0 !important;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  .root .menuButton {
+    /* WCAG's minimum adjacent pointer target is 24 CSS pixels, independent of theme spacing. */
+    min-width: 24px;
+  }
+
+  .primary .primaryActionButton,
+  .primary:hover .primaryActionButton,
+  .primary:hover:active .primaryActionButton,
+  .primary:active:focus-visible .primaryActionButton {
+    border-inline-end-color: var(--colorNeutralStrokeOnBrand);
+  }
+
+  .root:where(.subtle, .transparent) .primaryActionButton {
+    border-inline-end-color: var(--colorTransparentBackground);
+  }
+
+  .root:where(.subtle, .transparent):hover .primaryActionButton {
+    border-inline-end-color: var(--colorTransparentBackgroundHover);
+  }
+
+  .root:where(.subtle, .transparent):hover:active .primaryActionButton,
+  .root:where(.subtle, .transparent):active:focus-visible .primaryActionButton {
+    border-inline-end-color: var(--colorTransparentBackgroundPressed);
+  }
+
+  .disabled .primaryActionButton,
+  .disabled:hover .primaryActionButton,
+  .disabled:hover:active .primaryActionButton,
+  .disabled:active:focus-visible .primaryActionButton {
+    border-inline-end-color: var(--colorNeutralStrokeDisabled);
+  }
+
+  @media (forced-colors: active) {
+    .primary .primaryActionButton {
+      border-inline-end-color: HighlightText;
+    }
+
+    .primary:hover .primaryActionButton,
+    .primary:hover:active .primaryActionButton,
+    .primary:active:focus-visible .primaryActionButton {
+      border-inline-end-color: Highlight;
+    }
+
+    .disabled .primaryActionButton,
+    .disabled:hover .primaryActionButton,
+    .disabled:hover:active .primaryActionButton,
+    .disabled:active:focus-visible .primaryActionButton {
+      border-inline-end-color: GrayText;
+    }
+  }
+}

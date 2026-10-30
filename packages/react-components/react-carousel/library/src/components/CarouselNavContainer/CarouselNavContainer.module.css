@@ -1,0 +1,74 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .root:where(.inline, .inline-wide) {
+    margin-top: var(--spacingVerticalM);
+  }
+
+  .root:where(.overlay, .overlay-wide, .overlay-expanded) {
+    position: absolute;
+    bottom: var(--spacingVerticalM);
+    box-sizing: border-box;
+  }
+
+  :where(.root.inline-wide, .root.overlay-wide) > .next {
+    margin-inline-start: auto;
+  }
+
+  :where(.root.inline-wide, .root.overlay-wide) > .prev {
+    margin-inline-end: auto;
+  }
+
+  :where(.root.overlay-wide) > .next {
+    margin-inline-end: var(--spacingHorizontalM);
+  }
+
+  :where(.root.overlay-wide:not(.hasAutoplay)) > .prev {
+    margin-inline-start: var(--spacingHorizontalM);
+  }
+
+  :where(.root.overlay-wide) > .autoplay {
+    margin-inline-start: var(--spacingHorizontalM);
+  }
+
+  .root:where(.overlay-expanded) {
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: center;
+    bottom: 0;
+
+    & > div {
+      position: relative;
+      bottom: var(--spacingVerticalL);
+      margin-bottom: 0;
+    }
+  }
+
+  :where(.root.overlay-expanded) > .next {
+    position: absolute;
+    inset-inline-end: var(--spacingHorizontalM);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :where(.root.overlay-expanded) > .prev {
+    position: absolute;
+    inset-inline-start: var(--spacingHorizontalM);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :where(.root.overlay-expanded) > .autoplay {
+    position: absolute;
+    bottom: calc(-1 * var(--spacingHorizontalXS));
+    inset-inline-start: var(--spacingHorizontalM);
+    margin-bottom: var(--spacingVerticalM);
+  }
+}

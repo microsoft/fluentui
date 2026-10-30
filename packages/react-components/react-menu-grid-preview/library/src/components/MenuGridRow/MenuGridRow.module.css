@@ -1,0 +1,106 @@
+@import url('@fluentui/react-icons/headless/styles.css') layer(fluentui);
+
+@layer fluentui {
+  .root {
+    border-radius: var(--borderRadiusMedium);
+    position: relative;
+    color: var(--colorNeutralForeground2);
+    background-color: var(--colorNeutralBackground1);
+    padding: var(--spacingVerticalXS) var(--spacingVerticalSNudge);
+    box-sizing: border-box;
+    max-width: calc(9 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalXXS));
+    min-height: var(--spacingHorizontalXXXL);
+    flex-shrink: 0;
+    display: flex;
+    align-items: start;
+    font-size: var(--fontSizeBase300);
+    cursor: pointer;
+    gap: var(--spacingHorizontalXS);
+    user-select: none;
+    &:focus {
+      outline-style: none;
+    }
+    &:focus-visible {
+      outline-style: none;
+    }
+    &[data-fui-focus-visible] {
+      border-top-color: var(--colorTransparentBackground);
+      border-right-color: var(--colorTransparentBackground);
+      border-bottom-color: var(--colorTransparentBackground);
+      border-left-color: var(--colorTransparentBackground);
+      &::after {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        border: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+        border-radius: var(--borderRadiusMedium);
+        top: calc(-1 * var(--strokeWidthThick));
+        right: calc(-1 * var(--strokeWidthThick));
+        bottom: calc(-1 * var(--strokeWidthThick));
+        left: calc(-1 * var(--strokeWidthThick));
+      }
+      @media (forced-colors: active) {
+        &::after {
+          border-top-color: Highlight;
+          border-right-color: Highlight;
+          border-bottom-color: Highlight;
+          border-left-color: Highlight;
+        }
+      }
+    }
+    &:hover {
+      background-color: var(--colorNeutralBackground1Hover);
+      color: var(--colorNeutralForeground2Hover);
+      & :global(.fui-Icon-filled) {
+        display: inline;
+      }
+      & :global(.fui-Icon-regular) {
+        display: none;
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorNeutralBackground1Pressed);
+      color: var(--colorNeutralForeground2Pressed);
+    }
+    @media (forced-colors: active) {
+      &:hover {
+        background-color: Canvas;
+        border-color: Highlight;
+        color: Highlight;
+      }
+      &:focus {
+        outline-style: none;
+      }
+      &:focus-visible {
+        outline-style: none;
+      }
+      &[data-fui-focus-visible] {
+        border-top-color: var(--colorTransparentBackground);
+        border-right-color: var(--colorTransparentBackground);
+        border-bottom-color: var(--colorTransparentBackground);
+        border-left-color: var(--colorTransparentBackground);
+        &::after {
+          content: '';
+          position: absolute;
+          pointer-events: none;
+          z-index: 1;
+          border: var(--strokeWidthThick) solid Highlight;
+          border-radius: var(--borderRadiusMedium);
+          top: calc(-1 * var(--strokeWidthThick));
+          right: calc(-1 * var(--strokeWidthThick));
+          bottom: calc(-1 * var(--strokeWidthThick));
+          left: calc(-1 * var(--strokeWidthThick));
+        }
+        @media (forced-colors: active) {
+          &::after {
+            border-top-color: Highlight;
+            border-right-color: Highlight;
+            border-bottom-color: Highlight;
+            border-left-color: Highlight;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@layer fluentui {
+  .root {
+    display: grid;
+  }
+
+  .root:where(.horizontal) {
+    grid-template-columns: 33% 1fr;
+    grid-template-rows: auto auto auto 1fr;
+  }
+
+  .root:where(.horizontal:not(.withLabel)) {
+    padding-inline-start: 33%;
+    grid-template-columns: 1fr;
+  }
+
+  .label {
+    max-width: max-content;
+    max-height: max-content;
+  }
+
+  :where(.vertical) > .label {
+    padding-top: var(--spacingVerticalXXS);
+    padding-bottom: var(--spacingVerticalXXS);
+    margin-bottom: var(--spacingVerticalXXS);
+  }
+
+  :where(.vertical.large) > .label {
+    padding-top: calc(var(--spacingVerticalXXS) / 2);
+    padding-bottom: calc(var(--spacingVerticalXXS) / 2);
+    margin-bottom: var(--spacingVerticalXS);
+  }
+
+  :where(.horizontal) > .label {
+    padding-top: var(--spacingVerticalSNudge);
+    padding-bottom: var(--spacingVerticalSNudge);
+    margin-inline-end: var(--spacingHorizontalM);
+    grid-row-start: 1;
+    grid-row-end: -1;
+  }
+
+  :where(.horizontal.small) > .label {
+    padding-top: var(--spacingVerticalXS);
+    padding-bottom: var(--spacingVerticalXS);
+  }
+
+  :where(.horizontal.large) > .label {
+    padding-top: calc(var(--spacingVerticalS) + var(--spacingVerticalXXS) / 2);
+    padding-bottom: calc(var(--spacingVerticalS) + var(--spacingVerticalXXS) / 2);
+  }
+
+  .validationMessage,
+  .hint {
+    margin-top: var(--spacingVerticalXXS);
+    color: var(--colorNeutralForeground3);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase200);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase200);
+  }
+
+  :where(.error) > .validationMessage {
+    color: var(--colorPaletteRedForeground1);
+  }
+
+  :where(.withIcon) > .validationMessage {
+    padding-inline-start: calc(var(--spacingHorizontalM) + var(--spacingHorizontalXS));
+  }
+
+  .validationMessageIcon {
+    display: inline-block;
+    font-size: var(--fontSizeBase200);
+    margin-inline-start: calc(calc(0px - var(--spacingHorizontalM)) - var(--spacingHorizontalXS));
+    margin-inline-end: var(--spacingHorizontalXS);
+    line-height: 0;
+    vertical-align: calc(var(--spacingVerticalXXS) / -2);
+  }
+
+  :where(.error) > :where(.validationMessage) > .validationMessageIcon {
+    color: var(--colorPaletteRedForeground1);
+  }
+
+  :where(.warning) > :where(.validationMessage) > .validationMessageIcon {
+    color: var(--colorPaletteDarkOrangeForeground1);
+  }
+
+  :where(.success) > :where(.validationMessage) > .validationMessageIcon {
+    color: var(--colorPaletteGreenForeground1);
+  }
+}

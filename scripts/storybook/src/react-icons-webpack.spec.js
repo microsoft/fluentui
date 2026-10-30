@@ -54,4 +54,31 @@ describe('Storybook React icon configuration', () => {
     }
     expect(await config.entry()).toEqual([require.resolve('./react-icons-font.css'), './preview.js']);
   });
+
+  it.each(['svg', 'fonts'])('layers headless %s defaults below component overrides', async variant => {
+    process.env.FLUENTUI_ICON_VARIANT = variant;
+    const config = configureReactIcons({ config: { entry: './preview.js' }, headless: true });
+
+    expect(config.module?.rules).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          use: [
+            expect.objectContaining({
+              options: { iconVariant: variant, fallbackVariant: 'svg', headless: true },
+            }),
+          ],
+        }),
+      ]),
+    );
+    if (typeof config.entry !== 'function') {
+      throw new Error('Headless styles must be prepended through an entry function');
+    }
+    expect(await config.entry()).toEqual([
+      require.resolve('./react-icons-headless.css'),
+      ...(variant === 'fonts'
+        ? [require.resolve('./react-icons-headless-fonts.css'), require.resolve('./react-icons-font.css')]
+        : []),
+      './preview.js',
+    ]);
+  });
 });

@@ -1,0 +1,20 @@
+@layer fluentui {
+  .root {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    &[data-fui-focus-visible] {
+      outline: var(--strokeWidthThick) solid var(--colorStrokeFocus2);
+      border-radius: var(--borderRadiusMedium);
+      border-top-color: transparent;
+      border-inline-end-color: transparent;
+      border-bottom-color: transparent;
+      border-inline-start-color: transparent;
+    }
+    border-radius: var(--borderRadiusXLarge);
+    margin: auto var(--spacingHorizontalS);
+    background-color: var(--colorNeutralBackgroundAlpha);
+  }
+}

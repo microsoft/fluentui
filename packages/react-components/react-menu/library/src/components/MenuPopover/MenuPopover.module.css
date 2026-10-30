@@ -1,0 +1,19 @@
+@layer fluentui {
+  .root {
+    border-radius: var(--borderRadiusMedium);
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+    box-sizing: border-box;
+    min-width: calc(4 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalMNudge));
+    max-width: calc(9 * var(--spacingHorizontalXXXL) + var(--spacingHorizontalM));
+    overflow-x: hidden;
+    width: max-content;
+    box-shadow: var(--shadow16);
+    padding: var(--spacingHorizontalXS);
+    border: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+}

@@ -1,0 +1,32 @@
+@layer fluentui {
+  .root {
+    position: relative;
+  }
+
+  .bottom {
+    width: 100%;
+    height: var(--fui-Drawer--size);
+  }
+
+  .separator:where(.start) {
+    border-inline-end: var(--strokeWidthThin) solid var(--colorNeutralBackground3);
+  }
+
+  .separator:where(.end) {
+    border-inline-start: var(--strokeWidthThin) solid var(--colorNeutralBackground3);
+  }
+
+  .separator:where(.bottom) {
+    border-top: var(--strokeWidthThin) solid var(--colorNeutralBackground3);
+  }
+
+  .exit:where(.start, .end) {
+    width: 0;
+    border: none;
+  }
+
+  .exit:where(.bottom) {
+    height: 0;
+    border: none;
+  }
+}

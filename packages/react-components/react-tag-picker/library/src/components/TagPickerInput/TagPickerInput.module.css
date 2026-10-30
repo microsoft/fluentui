@@ -1,0 +1,53 @@
+@layer fluentui {
+  .root {
+    background-color: var(--colorTransparentBackground);
+    color: var(--colorNeutralForeground1);
+    font-family: var(--fontFamilyBase);
+    box-sizing: border-box;
+    border: none;
+    min-width: 24px;
+    max-width: 100%;
+    width: var(--fluent-TagPickerInput__width, 0);
+    flex-grow: 1;
+  }
+  .root:focus {
+    outline-style: none;
+  }
+  .root::placeholder {
+    color: var(--colorNeutralForeground4);
+    opacity: 1;
+  }
+  .root::after {
+    visibility: hidden;
+    white-space: pre-wrap;
+  }
+  .medium {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    padding: var(--spacingVerticalSNudge) 0 var(--spacingVerticalSNudge) 0;
+  }
+  .large {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    padding: var(--spacingVerticalMNudge) 0 var(--spacingVerticalMNudge) 0;
+  }
+  .extra-large {
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+    padding: var(--spacingVerticalM) 0 var(--spacingVerticalM) 0;
+  }
+  .disabled {
+    color: var(--colorNeutralForegroundDisabled);
+    background-color: var(--colorTransparentBackground);
+    cursor: not-allowed;
+  }
+  .disabled::placeholder {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+}

@@ -1,0 +1,118 @@
+@layer fluentui {
+  .buttonRow {
+    column-gap: var(--spacingHorizontalM);
+    display: flex;
+    margin-bottom: var(--spacingVerticalL);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .itemButton {
+    background-color: var(--colorTransparentBackground);
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    color: var(--colorNeutralForeground3);
+    font-family: inherit;
+    font-size: var(--fontSizeBase200);
+    height: calc(2 * var(--spacingHorizontalXL));
+    line-height: calc(2 * var(--spacingHorizontalXL));
+    min-height: calc(2 * var(--spacingHorizontalXL));
+    min-width: calc(2 * var(--spacingHorizontalXL));
+    overflow: visible;
+    padding: 0;
+    width: calc(2 * var(--spacingHorizontalXL));
+    font-weight: var(--fontWeightRegular);
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedHover);
+      color: var(--colorNeutralForeground1Static);
+      cursor: pointer;
+      outline: var(--strokeWidthThin) solid var(--colorTransparentStroke);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          color: WindowText;
+          forced-color-adjust: none;
+          outline: var(--strokeWidthThin) solid Highlight;
+        }
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+      @media (forced-colors: active) {
+        & {
+          background-color: Window;
+          color: Highlight;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .highlightCurrent {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+    font-weight: var(--fontWeightSemibold);
+    @media (forced-colors: active) {
+      & {
+        background-color: WindowText;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+    &:hover,
+    &:hover:active {
+      background-color: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      @media (forced-colors: active) {
+        & {
+          background-color: WindowText;
+          color: Window;
+          forced-color-adjust: none;
+        }
+      }
+    }
+  }
+
+  .highlightSelected {
+    background-color: var(--colorBrandBackgroundInvertedSelected);
+    color: var(--colorNeutralForeground1Static);
+    font-weight: var(--fontWeightSemibold);
+    @media (forced-colors: active) {
+      & {
+        background-color: Highlight;
+        color: Window;
+        forced-color-adjust: none;
+      }
+    }
+    &:hover {
+      background-color: var(--colorBrandBackgroundInvertedSelected);
+      color: var(--colorNeutralForeground1Static);
+      @media (forced-colors: active) {
+        & {
+          background-color: Highlight;
+          color: Window;
+          forced-color-adjust: none;
+        }
+      }
+    }
+    &:hover:active {
+      background-color: var(--colorBrandBackgroundInvertedPressed);
+    }
+  }
+
+  .disabled {
+    &,
+    &:disabled,
+    & button {
+      color: var(--colorNeutralForegroundDisabled);
+      pointer-events: none;
+    }
+    @media (forced-colors: active) {
+      & {
+        color: GrayText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+}

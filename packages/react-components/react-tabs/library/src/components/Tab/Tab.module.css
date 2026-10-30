@@ -1,0 +1,475 @@
+@layer fluentui {
+  /* ---- Root: grid wrapper that holds content + pseudo-element indicators ---- */
+  .root {
+    align-items: center;
+    display: grid;
+    flex-shrink: 0;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    outline-style: none;
+    position: relative;
+  }
+
+  /* ---- Button: interactive button layered on the root grid ---- */
+  .button {
+    align-items: center;
+    border: none;
+    border-radius: var(--borderRadiusMedium);
+    cursor: pointer;
+    display: grid;
+    flex-shrink: 0;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    font-family: var(--fontFamilyBase);
+    line-height: var(--lineHeightBase300);
+    outline-style: none;
+    position: relative;
+    overflow: hidden;
+    text-transform: none;
+  }
+
+  /* ---- Orientation (also carries default "medium" padding) ---- */
+  .horizontal {
+    justify-content: center;
+    column-gap: var(--spacingHorizontalSNudge);
+    padding: var(--spacingVerticalM) var(--spacingHorizontalMNudge);
+  }
+  .vertical {
+    justify-content: start;
+    column-gap: var(--spacingHorizontalSNudge);
+    padding: var(--spacingVerticalSNudge) var(--spacingHorizontalMNudge);
+  }
+
+  /* ---- Size × orientation: padding overrides for small/large ---- */
+  /* medium is the default, covered by .horizontal/.vertical above */
+  .small.horizontal {
+    column-gap: var(--spacingHorizontalXXS);
+    padding: var(--spacingVerticalSNudge) var(--spacingHorizontalSNudge);
+  }
+  .small.vertical {
+    column-gap: var(--spacingHorizontalXXS);
+    padding: var(--spacingVerticalXXS) var(--spacingHorizontalSNudge);
+  }
+  .large.horizontal {
+    column-gap: var(--spacingHorizontalSNudge);
+    padding: var(--spacingVerticalL) var(--spacingHorizontalMNudge);
+  }
+  .large.vertical {
+    column-gap: var(--spacingHorizontalSNudge);
+    padding: var(--spacingVerticalS) var(--spacingHorizontalMNudge);
+  }
+
+  /* ---- Appearance: transparent ---- */
+  .transparent {
+    background-color: var(--colorTransparentBackground);
+  }
+  .transparent:enabled:hover {
+    background-color: var(--colorTransparentBackgroundHover);
+  }
+  .transparent:enabled:active {
+    background-color: var(--colorTransparentBackgroundPressed);
+  }
+
+  .transparent :global(.fui-Tab__icon),
+  .transparent :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2);
+  }
+  .transparent:enabled:hover :global(.fui-Tab__icon),
+  .transparent:enabled:hover :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2Hover);
+  }
+  .transparent:enabled:active :global(.fui-Tab__icon),
+  .transparent:enabled:active :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  /* ---- Appearance: subtle ---- */
+  .subtle {
+    background-color: var(--colorSubtleBackground);
+  }
+  .subtle:enabled:hover {
+    background-color: var(--colorSubtleBackgroundHover);
+  }
+  .subtle:enabled:active {
+    background-color: var(--colorSubtleBackgroundPressed);
+  }
+
+  .subtle :global(.fui-Tab__icon),
+  .subtle :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2);
+  }
+  .subtle:enabled:hover :global(.fui-Tab__icon),
+  .subtle:enabled:hover :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2Hover);
+  }
+  .subtle:enabled:active :global(.fui-Tab__icon),
+  .subtle:enabled:active :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  /* ---- Selected state colors (non-circular only — guarded below by .circularBase reset) ---- */
+  .selected :global(.fui-Tab__icon) {
+    color: var(--colorCompoundBrandForeground1);
+  }
+  .selected:enabled:hover :global(.fui-Tab__icon) {
+    color: var(--colorCompoundBrandForeground1Hover);
+  }
+  .selected:enabled:active :global(.fui-Tab__icon) {
+    color: var(--colorCompoundBrandForeground1Pressed);
+  }
+
+  .selected :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground1);
+  }
+  .selected:enabled:hover :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground1Hover);
+  }
+  .selected:enabled:active :global(.fui-Tab__content) {
+    color: var(--colorNeutralForeground1Pressed);
+  }
+
+  /* ---- Disabled ---- */
+  .disabled {
+    cursor: not-allowed;
+    background-color: var(--colorTransparentBackground);
+  }
+  .disabled :global(.fui-Tab__icon),
+  .disabled :global(.fui-Tab__content) {
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* ---- Focus indicator ---- */
+  .focusBase[data-fui-focus-visible] {
+    border-color: transparent;
+    outline-width: var(--strokeWidthThick);
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: var(--shadow4), 0 0 0 var(--strokeWidthThick) var(--colorStrokeFocus2);
+    z-index: 1;
+  }
+
+  .focusCircular[data-fui-focus-visible] {
+    border-color: transparent;
+    outline-width: var(--strokeWidthThick);
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: var(--shadow4), 0 0 0 var(--strokeWidthThick) var(--colorStrokeFocus2),
+      0 0 0 var(--strokeWidthThin) var(--colorNeutralStrokeOnBrand) inset;
+    z-index: 1;
+  }
+
+  /* ---- Pending indicator (::before) ---- */
+  .pendingBase:hover::before,
+  .pendingBase:active::before {
+    background-color: var(--colorNeutralStroke1Hover);
+    border-radius: var(--borderRadiusCircular);
+    content: '';
+    position: absolute;
+  }
+  .pendingBase:active::before {
+    background-color: var(--colorNeutralStroke1Pressed);
+  }
+
+  @media (forced-colors: active) {
+    .pendingBase:hover::before,
+    .pendingBase:active::before {
+      background-color: Highlight;
+    }
+  }
+
+  .pendingDisabled:hover::before,
+  .pendingDisabled:active::before {
+    background-color: var(--colorTransparentStroke);
+  }
+
+  @media (forced-colors: active) {
+    .pendingDisabled:hover::before,
+    .pendingDisabled:active::before {
+      background-color: transparent;
+    }
+  }
+
+  /* ---- Active indicator (::after) ---- */
+  .activeBase::after {
+    background-color: var(--colorTransparentStroke);
+    border-radius: var(--borderRadiusCircular);
+    content: '';
+    position: absolute;
+  }
+  .activeSelected::after {
+    background-color: var(--colorCompoundBrandStroke);
+  }
+  .activeSelected:enabled:hover::after {
+    background-color: var(--colorCompoundBrandStrokeHover);
+  }
+  .activeSelected:enabled:active::after {
+    background-color: var(--colorCompoundBrandStrokePressed);
+  }
+
+  @media (forced-colors: active) {
+    .activeSelected::after,
+    .activeSelected:enabled:hover::after,
+    .activeSelected:enabled:active::after {
+      background-color: ButtonText;
+    }
+  }
+
+  .activeDisabled::after {
+    background-color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* ---- Indicator positions: compound size × orientation selectors ---- */
+  /* Pending (::before) and active (::after) share the same geometry — handled together. */
+
+  /* Medium + horizontal (default via .horizontal baseline; small/large override below) */
+  .horizontal.pendingBase::before,
+  .horizontal.activeBase::after {
+    bottom: 0;
+    height: var(--strokeWidthThicker);
+    left: var(--spacingHorizontalM);
+    right: var(--spacingHorizontalM);
+  }
+  /* Medium + vertical */
+  .vertical.pendingBase::before,
+  .vertical.activeBase::after {
+    bottom: var(--spacingVerticalS);
+    inset-inline-start: 0;
+    top: var(--spacingVerticalS);
+    width: var(--strokeWidthThicker);
+  }
+  /* Small + horizontal */
+  .small.horizontal.pendingBase::before,
+  .small.horizontal.activeBase::after {
+    bottom: 0;
+    height: var(--strokeWidthThick);
+    left: var(--spacingHorizontalSNudge);
+    right: var(--spacingHorizontalSNudge);
+  }
+  /* Small + vertical */
+  .small.vertical.pendingBase::before,
+  .small.vertical.activeBase::after {
+    bottom: var(--spacingVerticalXS);
+    inset-inline-start: 0;
+    top: var(--spacingVerticalXS);
+    width: var(--strokeWidthThicker);
+  }
+  /* Large + horizontal: same geometry as medium, no override needed */
+  /* Large + vertical */
+  .large.vertical.pendingBase::before,
+  .large.vertical.activeBase::after {
+    bottom: var(--spacingVerticalMNudge);
+    inset-inline-start: 0;
+    top: var(--spacingVerticalMNudge);
+    width: var(--strokeWidthThicker);
+  }
+
+  /* ---- Circular appearance base ---- */
+  .circularBase {
+    border-radius: var(--borderRadiusCircular);
+    border: solid var(--strokeWidthThin) var(--colorTransparentStroke);
+  }
+
+  /* Reset selected icon/content colors inherited from non-circular .selected rules */
+  .circularBase :global(.fui-Tab__icon),
+  .circularBase :global(.fui-Tab__content) {
+    color: inherit;
+  }
+
+  /* Circular size padding: compound with .small/.large on the same button element */
+  .circularBase {
+    padding-block: calc(var(--spacingVerticalSNudge) - var(--strokeWidthThin));
+  }
+  .circularBase.small {
+    padding-block: calc(var(--spacingVerticalXXS) - var(--strokeWidthThin));
+  }
+  .circularBase.large {
+    padding-block: calc(var(--spacingVerticalS) - var(--strokeWidthThin));
+  }
+
+  /* ---- Subtle-circular appearance ---- */
+  .subtleCircular {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForeground2);
+  }
+  .subtleCircular:enabled:hover {
+    background-color: var(--colorSubtleBackgroundHover);
+    border: solid var(--strokeWidthThin) var(--colorNeutralStroke1Hover);
+    color: var(--colorNeutralForeground2Hover);
+  }
+  .subtleCircular:enabled:active {
+    background-color: var(--colorSubtleBackgroundPressed);
+    border: solid var(--strokeWidthThin) var(--colorNeutralStroke1Pressed);
+    color: var(--colorNeutralForeground2Pressed);
+  }
+  @media (forced-colors: active) {
+    .subtleCircular {
+      border: solid var(--strokeWidthThin) Canvas;
+    }
+  }
+
+  /* selected, disabled: compound — CSS handles combinations, hook applies orthogonal classes */
+  .subtleCircular.selected {
+    background-color: var(--colorBrandBackground2);
+    border: solid var(--strokeWidthThin) var(--colorCompoundBrandStroke);
+    color: var(--colorBrandForeground2);
+  }
+  .subtleCircular.selected:enabled:hover {
+    background-color: var(--colorBrandBackground2Hover);
+    border: solid var(--strokeWidthThin) var(--colorCompoundBrandStrokeHover);
+    color: var(--colorBrandForeground2Hover);
+  }
+  .subtleCircular.selected:enabled:active {
+    background-color: var(--colorBrandBackground2Pressed);
+    border: solid var(--strokeWidthThin) var(--colorCompoundBrandStrokePressed);
+    color: var(--colorBrandForeground2Pressed);
+  }
+  @media (forced-colors: active) {
+    .subtleCircular.selected {
+      border: solid var(--strokeWidthThin) Highlight;
+    }
+  }
+
+  .subtleCircular.disabled {
+    background-color: var(--colorSubtleBackground);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+  .subtleCircular.selected.disabled {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border: solid var(--strokeWidthThin) var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* ---- Filled-circular appearance ---- */
+  .filledCircular {
+    background-color: var(--colorNeutralBackground3);
+    color: var(--colorNeutralForeground2);
+  }
+  .filledCircular:enabled:hover {
+    background-color: var(--colorNeutralBackground3Hover);
+    color: var(--colorNeutralForeground2Hover);
+  }
+  .filledCircular:enabled:active {
+    background-color: var(--colorNeutralBackground3Pressed);
+    color: var(--colorNeutralForeground2Pressed);
+  }
+
+  @media (forced-colors: active) {
+    .filledCircular:enabled:hover {
+      background-color: Highlight;
+      forced-color-adjust: none;
+    }
+    .filledCircular:enabled:hover :global(.fui-Tab__content),
+    .filledCircular:enabled:hover :global(.fui-Icon-filled),
+    .filledCircular:enabled:hover :global(.fui-Icon-regular) {
+      color: HighlightText;
+    }
+  }
+
+  .filledCircular.selected {
+    background-color: var(--colorBrandBackground);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filledCircular.selected:enabled:hover {
+    background-color: var(--colorBrandBackgroundHover);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+  .filledCircular.selected:enabled:active {
+    background-color: var(--colorBrandBackgroundPressed);
+    color: var(--colorNeutralForegroundOnBrand);
+  }
+
+  @media (forced-colors: active) {
+    .filledCircular.selected:enabled {
+      background-color: ButtonText;
+    }
+    .filledCircular.selected:enabled :global(.fui-Tab__content) {
+      color: ButtonFace;
+      forced-color-adjust: none;
+    }
+    .filledCircular.selected:enabled :global(.fui-Tab__icon) {
+      color: ButtonFace;
+    }
+  }
+
+  .filledCircular.disabled {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+  .filledCircular.selected.disabled {
+    background-color: var(--colorNeutralBackgroundDisabled);
+    border: solid var(--strokeWidthThin) var(--colorNeutralStrokeDisabled);
+    color: var(--colorNeutralForegroundDisabled);
+  }
+
+  /* ---- Icon slot ---- */
+  .icon {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+
+  .icon :global(.fui-Icon-filled) {
+    display: none;
+  }
+  .icon :global(.fui-Icon-regular) {
+    display: inline;
+  }
+
+  /* Large tab: bigger icon via descendant selector from the button's .large class */
+  .large :global(.fui-Tab__icon) {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+
+  /* Selected state: swap to filled icon variant */
+  .selected :global(.fui-Tab__icon) :global(.fui-Icon-filled) {
+    display: inline;
+  }
+  .selected :global(.fui-Tab__icon) :global(.fui-Icon-regular) {
+    display: none;
+  }
+
+  /* ---- Content slot ---- */
+  .content {
+    overflow: hidden;
+    padding: 0 var(--spacingHorizontalXXS);
+    font-family: var(--fontFamilyBase);
+    font-size: var(--fontSizeBase300);
+    font-weight: var(--fontWeightRegular);
+    line-height: var(--lineHeightBase300);
+  }
+
+  /* Selected: semibold (body1Strong). Applies to all tabs including circular. */
+  .selected :global(.fui-Tab__content) {
+    font-weight: var(--fontWeightSemibold);
+  }
+
+  /* Large: bigger font (body2 / subtitle2) via descendant from button's .large class */
+  .large .content {
+    font-size: var(--fontSizeBase400);
+    line-height: var(--lineHeightBase400);
+  }
+
+  .contentNoIconBefore {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  .contentIconBefore {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  .contentPlaceholder {
+    visibility: hidden;
+    font-weight: var(--fontWeightSemibold);
+  }
+}

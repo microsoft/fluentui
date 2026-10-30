@@ -1,0 +1,94 @@
+@layer fluentui {
+  /* ---- Root base ---- */
+  .root {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--borderRadiusCircular);
+    background-color: var(--colorNeutralBackground1);
+    /*
+     * The background bleeds around SVG edges due to antialiasing. Padding + backgroundClip
+     * creates an inset that hides the bleed. The icon uses margin: -1px to compensate.
+     * (tiny bypasses this — its border is too thin to benefit.)
+     */
+    padding: 1px;
+    background-clip: content-box;
+  }
+
+  /* ---- Icon slot base ---- */
+  .icon {
+    display: flex;
+    margin: -1px;
+  }
+
+  /* ---- Status colors (applied to root, SVG inherits via currentColor) ---- */
+  .statusBusy {
+    color: var(--colorPaletteRedBackground3);
+  }
+  .statusAway {
+    color: var(--colorPaletteMarigoldBackground3);
+  }
+  .statusAvailable {
+    color: var(--colorPaletteLightGreenForeground3);
+  }
+  .statusOffline {
+    color: var(--colorNeutralForeground3);
+  }
+  .statusUnknown {
+    color: var(--colorNeutralForeground3);
+  }
+
+  /* ---- Out-of-office overlay color ---- */
+  .outOfOffice {
+    color: var(--colorNeutralBackground1);
+  }
+  .statusOutOfOffice {
+    color: var(--colorPaletteBerryForeground3);
+  }
+  .outOfOfficeAvailable {
+    color: var(--colorPaletteLightGreenForeground3);
+  }
+  .outOfOfficeBusy {
+    color: var(--colorPaletteRedBackground3);
+  }
+  .outOfOfficeUnknown {
+    color: var(--colorNeutralForeground3);
+  }
+
+  /*
+   * Presence icons come in fixed SVG sizes. These classes force the wrapper and SVG
+   * to the correct dimensions for sizes that don't have dedicated icon assets.
+   */
+  .tiny {
+    aspect-ratio: 1;
+    width: 6px;
+    /* tiny icons have a border < 1px — backgroundClip fix doesn't apply */
+    background-clip: unset;
+  }
+
+  .tiny svg {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  .large {
+    aspect-ratio: 1;
+    width: 20px;
+  }
+
+  .large svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .extraLarge {
+    aspect-ratio: 1;
+    width: 28px;
+  }
+
+  .extraLarge svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
