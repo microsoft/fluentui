@@ -2,6 +2,7 @@ import type { AccordionBaseState } from '@fluentui/react-accordion';
 
 export type {
   AccordionSlots,
+  AccordionContextValue,
   AccordionContextValues,
   AccordionBaseProps as AccordionProps,
 } from '@fluentui/react-accordion';

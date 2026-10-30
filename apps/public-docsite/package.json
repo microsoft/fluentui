@@ -14,12 +14,14 @@
   "scripts": {
     "prebundle": "yarn run -T just-scripts build",
     "bundle": "yarn run -T just-scripts bundle",
-    "lint": "yarn run -T just-scripts lint",
+    "lint": "yarn run -T eslint src e2e playwright.config.ts",
+    "test": "yarn run -T jest",
+    "e2e": "yarn run -T cross-env NODE_OPTIONS=--no-experimental-strip-types playwright test",
     "just": "yarn run -T just-scripts",
     "clean": "yarn run -T just-scripts clean",
     "code-style": "yarn run -T just-scripts code-style",
     "start": "yarn run -T just-scripts dev",
-    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl ."
+    "type-check": "yarn run -T tsc -p . --noEmit --baseUrl . && yarn run -T tsc -p tsconfig.spec.json --noEmit --baseUrl . && yarn run -T tsc -p tsconfig.e2e.json --noEmit"
   },
   "license": "MIT",
   "devDependencies": {

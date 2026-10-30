@@ -14,15 +14,25 @@ scan paths -> discover TypeScript files -> attribute package -> compile files
                                       summaries and formatted reports
 ```
 
-The analyzer uses Babel with the TypeScript preset and `babel-plugin-react-compiler`, configured
+The analyzer uses Babel with TypeScript parser syntax and `babel-plugin-react-compiler`, configured
 with `noEmit: true` and a custom logger. Workers process files concurrently and consume compact
 results as they finish rather than retaining every source file or AST.
 
-The TypeScript preset erases `declare` class fields, so classes with type-only declarations do not
-prevent analysis of function components or hooks in the same module. This does not add React
-Compiler support for class components. JSX parsing is enabled only for `.tsx`; `.ts` files retain
-support for angle-bracket type assertions. Compilation and wrapper resolution share one Babel
-configuration factory for the per-file TypeScript preset and additional parser plugins.
+The analyzer does not erase or lower TypeScript. React Compiler consumes TypeScript-bearing ASTs;
+its compilation runs from `Program.enter`. Removing the unnecessary TypeScript transform prevents
+its namespace and CommonJS-emission limitations from failing otherwise parseable modules.
+`noEmit: true` and Babel's `code: false` alone would not disable those transform visitors.
+Ambient fields remain parsed without adding React Compiler support for class components.
+JSX is enabled by default only for `.tsx`; `.ts` files retain angle-bracket assertions.
+Compilation, directive probes, and wrapper resolution share one parser configuration factory.
+TypeScript auto-accessors are supported; decorators still require explicit parser plugins.
+
+This is Babel analysis, not native Rust/OXC/SWC compiler execution. Valid syntax need not be
+accepted by React Compiler, and Babel outcomes do not prove native candidate, cache, or export
+parity. Human reports identify the compiler versions and analysis settings; JSON records them in
+`profile`. Neither includes Git provenance.
+Unavailable compiler version metadata produces a warning and an `unavailable` label, not an
+analysis failure. Actual compiler failures remain errors.
 
 Directories apply exclusion globs; explicit files bypass them. Results are deduplicated by absolute
 path and attributed to the nearest package where possible. Files without an attributable package
@@ -51,6 +61,25 @@ To decide whether `'use no memo'` is active or redundant, directive lint needs t
 compiler would do without the opt-out. It runs a second probe that neutralizes the directive in
 place while preserving parser settings, line/column locations, and source offsets.
 
+`lint --revalidate-justified` explicitly rechecks justified opt-ins and opt-outs, neutralizing
+one directive per probe while retaining all others. Accepted outcomes with and without the
+directive determine whether it affects acceptance in the selected Babel mode. Probe failures
+remain broken results, not evidence of redundancy. File-level directives are preserved with
+an explicit limitation. Revalidated rows carry `justified: true` and `revalidated: true`.
+Their `evidence` separates before/after outcomes and memo statistics, acceptance changes,
+and reported-statistics changes. Missing events/counters and failed probes are unavailable,
+not evidence of equivalence. Emitted optimization is `not-measured`: even identical counters
+do not establish identical output. The recorded profile qualifies every redundancy conclusion.
+Justified source is protected inside the fixer as well as the CLI. Redundant, broken, and
+conflicting revalidated directives fail lint even alongside `--fix`.
+
+Revalidation can add one whole-file compilation per justified function directive, performed
+sequentially within that file. This is additional work beyond the initial pass and ordinary opt-out probes, so files
+with many justified directives can take longer. File-level and conflicting directives are not probed.
+If the initial pass has unattributed compiler errors, lint reports the file as not analyzed before
+evaluating either ordinary or justified directives. New unattributed errors in a probe remain failed
+revalidation evidence rather than being ignored.
+
 Coverage analysis uses the selected discovery mode. Directive health uses the mode assumed for the
 build. The same function can therefore be relevant to an infer-mode assessment but redundant as an
 opt-out in an annotation-mode build.
@@ -59,18 +88,35 @@ Fixing and annotating are separate operations. `lint --fix` edits directive heal
 `analyze --annotate` writes opt-ins or risk-driven opt-outs for accepted functions. Both operate on
 explicit requests rather than persistent configuration.
 
+`analyze --annotate <mode> --dry-run` builds and validates the same edit plan but never invokes
+the writer. It lists proposed targets in human output. JSON keeps actual write counters at zero
+and adds `dryRun: true` and `planned` counters. Both preview and write JSON include `targets`
+with relative paths, directive, preventive/opt-in rationale, reported-statistics classification,
+and risk rules. Zero slots never disqualify a preventive opt-out. Rejected functions remain
+report-only, including those rejected because of a suppression.
+
 ## Memo-cache statistics
 
 Compiler acceptance is not itself an optimization signal. Human summaries separate accepted
-functions with an emitted memo cache, with no emitted cache, and with unavailable statistics.
+functions with positive reported memo slots, zero reported slots, and unavailable statistics.
 Skips and errors complete the partition; package percentages use the package's total function count.
 
-The compact JSON counter `summary.memoCacheEmitted` counts accepted functions whose reported
-`memoStats.memoSlots` is greater than zero. Other compiler counters describe memo blocks, values,
-and pruned work. Unreported counters stay `null`; a real reported zero remains `0`.
+JSON counters `summary.reportedMemoCachePositive`, `reportedMemoCacheZero`, and
+`reportedMemoCacheUnavailable` partition accepted functions using reported `memoStats.memoSlots`.
+Other counters describe reported memo blocks, values, and pruned work. Unreported counters
+stay `null`; a real reported zero remains `0`.
 
-These counters describe emitted compiler behavior, not saved render time. Use application tests and
-profiling to establish whether a migration preserves behavior and improves relevant workflows.
+RCA runs with `noEmit: true`: these counters do not verify emitted caching, nor identify whether a
+particular risky operation was cached. `emittedCaching: "unverified"` makes this boundary explicit.
+Use application tests and profiling to establish safety and performance.
+
+## Suppression-related rejection
+
+Compiler suppression categories (or a narrowly recognized compiler reason) classify
+`rejectionKind: "suppression-related"`. Comment presence alone is not evidence. Raw diagnostic
+reasons/categories and risk findings survive normalization, including mixed-cause rejection.
+The focused human section reports affected functions, those with risks, and the analyzed denominator.
+Another compiler/profile may optimize these functions, but RCA does not annotate them automatically.
 
 ## Manual-memo candidates
 
@@ -110,9 +156,10 @@ canonical terminal reasons and locations without embedding source ASTs, code fra
 event streams, Git provenance, or resolver statistics. This keeps reports suitable for automation
 without retaining large diagnostic payloads.
 
-`analyze` JSON is validated by the shipped `rca.analyze.schema.json`; config validation uses
+Schema v3 `analyze` JSON is validated by the shipped `rca.analyze.schema.json`; `lint` uses
+`rca.lint.schema.json` (register the analyze schema for its shared definitions). Config validation uses
 `rca.config.schema.json`. These contracts are separate from the package's release version.
-The [version migration guide](../MIGRATION.md) records the experimental JSON v1-to-v2 transition.
+The [version migration guide](../MIGRATION.md) describes the required JSON consumer updates.
 
 ## Source map
 

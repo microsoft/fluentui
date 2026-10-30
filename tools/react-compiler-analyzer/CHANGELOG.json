@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compiler-analyzer",
   "entries": [
     {
+      "date": "Thu, 22 Oct 2026 15:40:41 GMT",
+      "version": "0.0.3",
+      "tag": "@fluentui/react-compiler-analyzer_v0.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-compiler-analyzer",
+            "commit": "20ea3d5db8fd922cf3f616271aaecdf9ec2cd72c",
+            "comment": "Support syntax-only TypeScript analysis, protected directive revalidation, and annotation previews."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Oct 2026 13:39:53 GMT",
       "version": "0.0.2",
       "tag": "@fluentui/react-compiler-analyzer_v0.0.2",

@@ -12,7 +12,7 @@ import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput } from './helpers/output';
+import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -783,7 +783,7 @@ describe('lint command — scan log wrapping', () => {
     // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
     const wrapper = captured
       .slice(openIdx, closeIdx + 1)
-      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .map(line => normalizeCompilerVersions(line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>')))
       .join('\n');
 
     expect(wrapper).toMatchInlineSnapshot(`
@@ -834,6 +834,9 @@ describe('lint command — scan log wrapping', () => {
     expect(output).toMatchInlineSnapshot(`
       "━━ React Compiler Lint ━━
 
+      Backend: Babel <VERSION>; React Compiler <VERSION>; mode=infer; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=(none extra).
+      Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.
+
       📋 Scan & compile log
       ─────────────────────
 
@@ -847,6 +850,8 @@ describe('lint command — scan log wrapping', () => {
       Analyzing: <TEMP>/src/L.tsx
         [CompileSuccess] <TEMP>/src/L.tsx fn@1:7 L
 
+      Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
 
       wrap-test-lint-pkg
       ──────────────────

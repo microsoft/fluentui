@@ -12,9 +12,8 @@ still do what you intended.
 
 This is a command-line tool, not a React runtime dependency. There is no public JavaScript API.
 Compiler acceptance is not a guarantee of runtime safety or a prediction of performance gains.
-
-This README documents the prepared `0.0.1` release, which is not yet published. For differences
-from published experimental builds, see the [version migration guide](MIGRATION.md).
+Outcomes come from Babel's React Compiler plugin, not the native Rust/OXC/SWC compiler. Parsing
+the same syntax does not establish equal eligibility, bailouts, emitted caches, or runtime exports.
 
 ## Quick start
 
@@ -24,8 +23,7 @@ Requires Node.js 22.14.0 or newer within 22.x, or Node.js 24.x. Install the publ
 npm install --save-dev @fluentui/react-compiler-analyzer
 ```
 
-Until `0.0.1` is published, this installs a published experimental version. To try the prepared
-version in this repository, see [local development](#local-development).
+To run the CLI from this repository, see [local development](#local-development).
 
 Create a config without installing agent tooling, then inspect your source:
 
@@ -49,7 +47,13 @@ Neither scan command modifies source unless you explicitly pass `analyze --annot
 - [Shared options](#shared-options): paths, compilation modes, exclusions, parser settings, and formats.
 - [Configuration](#configuration): stable defaults and optional risk rules.
 - [JSON output](#--format-json): machine-readable fields and schemas.
+- [Upgrading](#upgrading): compatibility notes and migration instructions.
 - [Documentation contents](docs/README.md): migration workflows, runtime risks, and implementation details.
+
+## Upgrading
+
+See the [version migration guide](MIGRATION.md) for release-specific changes, compatibility
+considerations, and upgrade instructions.
 
 ## Configuration
 
@@ -131,8 +135,6 @@ persistent configuration: use `--annotate` and `--fix` explicitly on each run.
 | `analyze.risks.pathAliases.baseUrl`    | `string`   | Required with `pathAliases`; relative to the config file.                          |
 | `analyze.risks.pathAliases.paths`      | `object`   | Required with `baseUrl`; alias patterns map to nonempty arrays of target patterns. |
 
-If you previously used `--risk-config`, see the [experimental-to-0.0.1 migration](MIGRATION.md).
-
 ### Optional agent integration
 
 The npm package ships the canonical skill at `skills/react-compiler-analyzer`. By default, `init`
@@ -196,14 +198,22 @@ even if no directive status could be derived. `--fix` does not modify these file
 
 #### Options and fixes
 
-| Flag    | Type      | Default | Description                                                                |
-| ------- | --------- | ------- | -------------------------------------------------------------------------- |
-| `--fix` | `boolean` | `false` | Remove redundant opt-outs, justify active opt-outs, and resolve conflicts. |
+| Flag                     | Type      | Default | Description                                                                                       |
+| ------------------------ | --------- | ------- | ------------------------------------------------------------------------------------------------- |
+| `--fix`                  | `boolean` | `false` | Remove redundant opt-outs, justify active opt-outs, and resolve conflicts.                        |
+| `--revalidate-justified` | `boolean` | `false` | Recheck both kinds of justified function directive against Babel; never fix justified directives. |
 
 All shared options apply. `--fix` removes redundant `'use no memo'` directives, adds
 `// justified: <reason>` to active ones, and resolves conflicts by keeping `'use memo'`.
 It does not repair broken opt-ins, remove file-level opt-outs, or change directives whose probes
 fail. JSON output describes the post-fix statuses and failures.
+
+By default, directives with a `// justified:` comment are skipped. Use `--revalidate-justified`
+to recheck both directive kinds in the selected compiler mode. Redundant, broken, or conflicting
+results fail lint, but justified directives and their comments remain untouched even with `--fix`.
+File-level directives remain preserved. Results describe Babel acceptance, not runtime safety or
+removability in another build. See [directive probing](docs/how-it-works.md#directive-probing)
+for implementation details.
 
 | Directive and scenario                          | `infer`       | `annotation`  |
 | ----------------------------------------------- | ------------- | ------------- |
@@ -220,6 +230,7 @@ react-compiler-analyzer lint ./src --mode annotation
 react-compiler-analyzer lint packages/button/src packages/menu/src --mode infer
 react-compiler-analyzer lint ./src/Widget.tsx --verbose
 react-compiler-analyzer lint ./src --fix
+react-compiler-analyzer lint ./src --revalidate-justified
 ```
 
 An empty risk report does not prove an opt-out is safe to remove. Review `suppressed: true` findings
@@ -232,8 +243,9 @@ with the same risk config used when adding the opt-out. See the
 react-compiler-analyzer analyze <paths..> [options]
 ```
 
-Reports accepted, skipped, and errored functions. Accepted functions are separated by emitted memo
-caches, no emitted cache, or unavailable statistics. Acceptance alone is not an optimization signal.
+Reports accepted, skipped, and errored functions. Accepted functions are separated by positive,
+zero, or unavailable reported memo-slot statistics. Actual emitted caching is unverified:
+normal analysis uses `noEmit: true`. Acceptance alone is not an optimization signal.
 The default report shows package and aggregate summaries; `--verbose` adds per-function results,
 candidate review details, risk findings, parse failures, and full code-framed diagnostics.
 
@@ -241,12 +253,16 @@ Completed scans exit 0 even with attributed per-function compiler errors or advi
 failures produce a report but exit 1. Unattributed compiler errors and non-parse transform errors
 abort with code 1 before a JSON document or annotation writes are produced.
 
-| Flag         | Type     | Default  | Description                                               |
-| ------------ | -------- | -------- | --------------------------------------------------------- |
-| `--annotate` | `string` | Not set  | Write directives using a mode below.                      |
-| `--quote`    | `string` | `single` | Quote style for written directives: `single` or `double`. |
+| Flag         | Type      | Default  | Description                                                                      |
+| ------------ | --------- | -------- | -------------------------------------------------------------------------------- |
+| `--annotate` | `string`  | Not set  | Write directives using a mode below.                                             |
+| `--quote`    | `string`  | `single` | Quote style for written directives: `single` or `double`.                        |
+| `--dry-run`  | `boolean` | `false`  | Preview `--annotate` insertions without modifying source; requires `--annotate`. |
 
 All shared options apply.
+
+Use `analyze --annotate <mode> --dry-run` to list proposed insertion targets and counts without
+modifying source. Ordinary `analyze` is already read-only. Dry-run is not a persistent config setting.
 
 | Annotation mode | Writes `'use memo'` on                                                      | Writes `'use no memo'` on                 |
 | --------------- | --------------------------------------------------------------------------- | ----------------------------------------- |
@@ -315,8 +331,12 @@ explicit CLI options take precedence over the config.
 
 ### Parser settings
 
-The analyzer parses with `typescript` + `jsx`. If your build's loader enables more, pass the same
-plugins here so the analyzed scope matches the compiled scope:
+JSX is enabled by default only for `.tsx`. The analyzer also accepts `.ts` angle-bracket
+assertions and TypeScript auto-accessors. Parsing a file does not guarantee React Compiler
+acceptance. See [how it works](docs/how-it-works.md#processing-pipeline) for pipeline details.
+
+Decorators require explicit configuration. If your build's loader enables extra syntax,
+pass the matching parser plugins:
 
 ```bash
 react-compiler-analyzer analyze ./src --parser-plugin decorators-legacy
@@ -324,6 +344,9 @@ react-compiler-analyzer analyze ./src --parser-plugin decorators-legacy
 
 Unknown names are rejected. Babel ignores unrecognized parser plugins silently, so a typo would
 otherwise produce a run that looks successful and analyzed nothing extra.
+
+Verbose human reports identify the resolved Babel and Babel React Compiler versions once.
+Compiler identity is not added to JSON output.
 
 ### Missing paths
 
@@ -377,22 +400,39 @@ scraping text. When a report is produced, **stdout carries only the document** â
 per-file diagnostics are redirected to stderr â€” so it pipes straight into a parser. A parse error
 is still represented in the document but exits 1; a fatal compiler/transform error emits no JSON:
 
-`summary.memoCacheEmitted` is the direct machine-readable equivalent of the human
-**Compiler accepted (memo cache emitted)** metric. It counts only canonical `compiled` function
-rows whose reported `memoStats.memoSlots` is greater than zero.
+Schema v3 (introduced in `0.0.4`) replaces `summary.memoCacheEmitted` with `reportedMemoCachePositive`,
+`reportedMemoCacheZero`, and `reportedMemoCacheUnavailable`. These partition accepted functions
+by reported memo slots, not emitted code. Positive counters do not prove that a risky operation
+was cached; zero counters do not invalidate a preventive bailout.
+JSON consumers upgrading from `0.0.3` must follow the [migration guide](MIGRATION.md#003-to-004).
+
+Both commands record `profile` (resolved Babel/compiler versions, mode, extra parser plugins,
+`noEmit`, panic threshold, and inherited target/suppression defaults) and
+`emittedCaching: "unverified"`. Suppression-related rejection is identified by
+`functions[].rejectionKind: "suppression-related"`, with retained diagnostics and risk findings.
+Another compiler/profile may optimize these functions; RCA does not automatically annotate them.
 
 | Collection               | Fields and meaning                                                                                                                                                                                                                                               |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `functions[]`            | `file`, `package` (string or `null`), `line`, `column`, `function`, `status` (`compiled`, `skipped`, `error`), and `compilerEvent`. Optional `reason`, `errorLine`, and `errorColumn` identify the terminal diagnostic separately from the function declaration. |
 | `functions[].memoStats`  | Optional `memoSlots`, `memoBlocks`, `memoValues`, `prunedMemoBlocks`, and `prunedMemoValues` counters; an unreported counter is `null`, not `0`.                                                                                                                 |
 | `functions[].manualMemo` | Optional `useMemo`, `useCallback`, and `reactMemo` counts, plus `reactMemoHasComparator` boolean.                                                                                                                                                                |
-| `findings[]`             | `file`, `package`, `line`, `column`, `function`, `ruleId`, `severity` (`high` or `medium`), `symbol`, `message`, and `compiled`. Optional `suppressed` is `true` for risks held back by an opt-out and omitted otherwise.                                        |
+| `findings[]`             | `file`, `package`, `line`, `column`, `function`, `ruleId`, `severity`, `symbol`, `message`, and `compiled`. Optional `suppressed: true` marks an opted-out function, not proof that its guard is load-bearing.                                                   |
 | `unparseable[]`          | `file` and `error` for each file the parser rejected.                                                                                                                                                                                                            |
 | `annotate`               | Present after annotation: `mode`, `filesModified`, `functionsAnnotated`, and `functionsBailedOut`.                                                                                                                                                               |
 
-The envelope is `schemaVersion`, `tool`, `command`, `mode`, `summary`, `functions`, `findings`,
+With `--annotate <mode> --dry-run`, actual annotation counters remain
+zero. The `annotate` object additionally contains `dryRun: true` and `planned`, whose
+`filesModified`, `functionsAnnotated`, and `functionsBailedOut` counters describe proposed changes.
+No planned counters are emitted for ordinary analysis or actual writes. Both preview and write
+JSON contain `annotate.targets`: relative file, line, function name, directive, rationale
+(`preventive-risk-opt-out` or `compiler-accepted-opt-in`), `reportedMemoCache`,
+`emittedCaching: "unverified"`, and configured `riskRules`. Preview and write use the same planner.
+
+The envelope is `schemaVersion`, `tool`, `command`, `mode`, `profile`, `emittedCaching`, `summary`, `functions`, `findings`,
 `unparseable`, and optional `annotate`. Summary counters are `functions`, `compiled`,
-`memoCacheEmitted`, `skipped`, `errors`, `findings`, `findingsOnCompiled`, `findingsSuppressed`,
+`reportedMemoCachePositive`, `reportedMemoCacheZero`, `reportedMemoCacheUnavailable`,
+`suppressionRejected`, `suppressionRejectedWithRisks`, `skipped`, `errors`, `findings`, `findingsOnCompiled`, `findingsSuppressed`,
 and `unparseableFiles`; `findingsOnCompiled` excludes suppressed findings.
 
 ```bash
@@ -402,14 +442,30 @@ react-compiler-analyzer analyze ./src --format json \
 
 ```jsonc
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tool": "react-compiler-analyzer",
   "command": "analyze",
   "mode": "infer",
+  "profile": {
+    "backend": "babel",
+    "babelVersion": "<resolved Babel version>",
+    "compilerVersion": "<resolved compiler version>",
+    "mode": "infer",
+    "parserPlugins": [],
+    "noEmit": true,
+    "panicThreshold": "none",
+    "target": "compiler-default",
+    "suppressionRules": "compiler-default"
+  },
+  "emittedCaching": "unverified",
   "summary": {
     "functions": 1,
     "compiled": 1,
-    "memoCacheEmitted": 1,
+    "reportedMemoCachePositive": 1,
+    "reportedMemoCacheZero": 0,
+    "reportedMemoCacheUnavailable": 0,
+    "suppressionRejected": 0,
+    "suppressionRejectedWithRisks": 0,
     "skipped": 0,
     "errors": 0,
     "findings": 1,
@@ -454,7 +510,7 @@ react-compiler-analyzer analyze ./src --format json \
 ```
 
 - Findings use `compiled` to distinguish risks on compiler-accepted functions from latent risks on
-  failed/skipped functions. `suppressed: true` marks risks held back by `'use no memo'`; the key is
+  failed/skipped functions. `suppressed: true` marks risks in functions with `'use no memo'`; the key is
   omitted for other findings.
 - Memo counters preserve compiler absence as `null`; a reported zero remains `0`.
 - `unparseable` lists files the parser rejected outright. They contribute nothing to the other
@@ -466,19 +522,30 @@ react-compiler-analyzer analyze ./src --format json \
   `summary.unparseableFiles`, and an `unparseable` array) and keeps its usual exit code.
   `lint --format json --fix` reports the post-fix directive statuses and failures.
 - Full code-framed compiler diagnostics remain available in human reports with `--verbose`; JSON
-  stays compact and includes the terminal reason and location only.
+  stays compact and includes terminal reason/location plus diagnostic reasons and categories.
 - `--annotate` still writes directives to disk under `--format json` when processing completes
   without a fatal compiler/transform error; the outcome is reported in an `annotate` key
-  (`{ mode, filesModified, functionsAnnotated, functionsBailedOut }`).
+  (`{ mode, filesModified, functionsAnnotated, functionsBailedOut, targets }`).
 - [`rca.analyze.schema.json`](rca.analyze.schema.json) validates the compact `analyze` document.
-  It is a package artifact only and adds nothing to the emitted payload or analyzer hot path. See
-  [MIGRATION.md](MIGRATION.md) for the v1-to-v2 field and behavior changes.
 
-For `lint`, the envelope is `schemaVersion`, `tool`, `command: "lint"`, `mode`, `summary`,
+For `lint`, the envelope is `schemaVersion`, `tool`, `command: "lint"`, `mode`, `profile`, `emittedCaching`, `summary`,
 `directives`, and `unparseable`. Each directive row has `file`, `package` (possibly `null`), `line`,
 `column`, `directive` (`use-memo` or `use-no-memo`), `status`, `compilerEvent`, `function`, and
 optional `reason`. Summary counters are `directives`, `active`, `redundant`, `broken`,
 `conflicting`, `skipped`, and `unparseableFiles`. Unparseable entries contain `file` and `error`.
+Explicitly revalidated justified directives additionally include `justified: true` and
+`revalidated: true`, plus `evidence` with before/after outcomes and statistics, acceptance/statistics
+effects, and `emittedOptimization: "not-measured"`. No observed effect is profile-specific,
+not universal redundancy or a refutation of preventive justification. Justified directives
+remain protected with `--fix`; un-justified removal policy and exit codes are unchanged.
+The shipped [`rca.lint.schema.json`](rca.lint.schema.json) references shared analyze definitions.
+
+To enumerate suppression exceptions:
+
+```bash
+react-compiler-analyzer analyze ./src --format json \
+  | jq '.functions[] | select(.rejectionKind == "suppression-related") | {file, line, function, diagnostics}'
+```
 
 Terminal colors honor `NO_COLOR` and `FORCE_COLOR`; Markdown is plain and HTML embeds its styles.
 HTML package navigation remains available even for packages without detailed sections. For
@@ -527,7 +594,7 @@ Each write-up carries a minimal reproduction and the exact versions it was verif
 - [Migration workflow](docs/migration-workflow.md): assess candidates, choose annotations, and review opt-outs.
 - [Runtime-risk detection](docs/runtime-risks.md): configure patterns, wrappers, and aliases.
 - [How it works](docs/how-it-works.md): compiler probes, canonical outcomes, memo counters, and report interpretation.
-- [Version migration guide](MIGRATION.md): upgrade from experimental builds to the prepared `0.0.1` release.
+- [Version migration guide](MIGRATION.md): release-specific changes and upgrade instructions.
 
 ## Local development
 
@@ -538,6 +605,18 @@ yarn nx run react-compiler-analyzer:build
 yarn run -T react-compiler-analyzer analyze ./packages/react-components/react-button/library/src --verbose
 ```
 
-The root dependency resolves to the workspace package rather than a published experimental build.
-Generated Nx analyzer targets build it automatically. The package version remains `0.0.0` until
-release tooling applies the patch changes for the planned `0.0.1` release.
+The root dependency resolves to the workspace package rather than the published package.
+Generated Nx analyzer targets build it automatically.
+
+Validate the analyzer and its test-only compiler baselines through Nx:
+
+```bash
+yarn nx run react-compiler-analyzer:test --runInBand
+yarn nx run react-compiler-analyzer:test-integration
+yarn nx run react-compiler-analyzer:type-check
+```
+
+The integration target builds the CLI, checks compiler behavior using workspace Babel/SWC
+dependencies, and validates the packaged command's JSON and dry-run behavior. Tests live in
+`tests/integration/`. Review changed evidence before updating compiler baselines; these checks
+do not replace application behavior tests.

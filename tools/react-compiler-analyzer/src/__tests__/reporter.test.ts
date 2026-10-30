@@ -38,6 +38,45 @@ function makeResult(overrides: Partial<DirectiveAnalysis>): DirectiveAnalysis {
 }
 
 describe('printReport', () => {
+  it('distinguishes fixable and protected findings in mixed sections and summary guidance', () => {
+    const results = [
+      makeResult({ status: 'redundant', directiveType: 'use-no-memo', functionName: 'Plain' }),
+      makeResult({
+        status: 'redundant',
+        directiveType: 'use-no-memo',
+        functionName: 'Protected',
+        justified: true,
+        revalidated: true,
+      }),
+      makeResult({ status: 'active', directiveType: 'use-no-memo', functionName: 'ActivePlain' }),
+      makeResult({
+        status: 'active',
+        directiveType: 'use-no-memo',
+        functionName: 'ActiveProtected',
+        justified: true,
+        revalidated: true,
+      }),
+    ];
+    const report = captureConsole(() => printReport(results, '/workspace', false));
+    expect(report).toContain('Redundant (unjustified: removable; justified: manual review) (2)');
+    expect(report).toContain('Active opt-outs (unjustified: add justification; justified: report-only) (2)');
+    const summary = captureConsole(() => printSummary(results));
+    expect(summary).toContain('Redundant** (unjustified: removable; justified: manual review): 2');
+    expect(summary).toContain('against the applicable build before manually removing or updating');
+    expect(summary).toContain("**1** redundant `'use no memo'`");
+    expect(summary).toContain("**1** active `'use no memo'`");
+  });
+
+  it('does not relabel an ordinary section because another status has protected results', () => {
+    const results = [
+      makeResult({ status: 'redundant', directiveType: 'use-no-memo' }),
+      makeResult({ status: 'active', directiveType: 'use-memo', justified: true, revalidated: true }),
+    ];
+    const summary = captureConsole(() => printSummary(results));
+    expect(summary).toContain('Redundant** (removable): 1');
+    expect(summary).not.toContain('Redundant** (unjustified:');
+  });
+
   it('labels probe failures and preserved file-level opt-outs accurately', () => {
     const results = [
       makeResult({ directiveType: 'use-no-memo', status: 'broken', compilerEvent: 'none', reason: 'probe failed' }),
@@ -67,7 +106,9 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       ## @test/pkg
 
       ### Active (compilable) (1)
@@ -86,7 +127,9 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       ## @test/pkg
 
       ### Active (needs \`// justified:\` comment) (1)
@@ -108,7 +151,9 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       ## @test/pkg
 
       ### Active (needs \`// justified:\` comment) (1)
@@ -130,7 +175,9 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport([], '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       No directives found."
     `);
   });
@@ -148,7 +195,9 @@ describe('printReport', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       ## @test/pkg
 
       ### Redundant (removable) (1)
@@ -328,7 +377,7 @@ describe('printSummary', () => {
       - **Active** \`'use no memo'\` (needs \`// justified:\` comment): 1
       - **Skipped** (already justified): 0
 
-      > **1** redundant \`'use no memo'\` directive(s) can be safely removed.
+      > **1** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.
       > **1** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.
       >
       > Run with \`--fix\` to auto-remove redundant directives and annotate active ones.
@@ -392,7 +441,9 @@ describe('multi-path reporting', () => {
     const output = captureConsole(() => printReport(results, '/workspace', false));
 
     expect(output).toMatchInlineSnapshot(`
-      "
+      "Redundant means no observed effect under this Babel profile, not universally unnecessary. Emitted optimization is not measured.
+      Existing --fix policy can remove unjustified redundant guards; another compiler/profile may still benefit from them. Justified guards remain protected.
+
       ## @scope/pkg-alpha
 
       ### Active (needs \`// justified:\` comment) (1)
@@ -447,7 +498,7 @@ describe('multi-path reporting', () => {
       - **Active** \`'use no memo'\` (needs \`// justified:\` comment): 2
       - **Skipped** (already justified): 0
 
-      > **1** redundant \`'use no memo'\` directive(s) can be safely removed.
+      > **1** redundant \`'use no memo'\` directive(s) are removable under this Babel profile, not proven universally unnecessary.
       > **2** active \`'use no memo'\` directive(s) need a \`// justified: <reason>\` comment.
       >
       > Run with \`--fix\` to auto-remove redundant directives and annotate active ones.

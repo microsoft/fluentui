@@ -2,6 +2,7 @@ import { existsSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { Argv } from 'yargs';
+import { createAnalysisProfile } from '../analysis-profile';
 
 import { createFormatter, escapeHtml, renderHtmlDocument, type Formatter, type ReportMeta } from '../formatter';
 import { dedupeFileEntries, findPackageName } from '../discovery';
@@ -372,6 +373,20 @@ export async function runReport(argv: SharedArgv, spec: ReportSpec): Promise<num
     argv.format,
     spec.title,
     async f => {
+      if (argv.format !== 'json') {
+        const profile = createAnalysisProfile(argv.mode, argv['parser-plugin']);
+        f.line(
+          `Backend: Babel ${profile.babelVersion}; React Compiler ${profile.compilerVersion}; mode=${
+            profile.mode
+          }; noEmit=true; panicThreshold=none; target and suppression rules=compiler-default; parser plugins=${
+            profile.parserPlugins.join(', ') || '(none extra)'
+          }.`,
+        );
+        f.line(
+          'Syntax-only TypeScript parsing (not native compiler parity). Actual emitted caching is unverified; statistics do not identify which operations were cached.',
+        );
+        f.blank();
+      }
       openScanLog(f, 'Scan & compile log');
 
       const collected: FileEntry[] = [];
