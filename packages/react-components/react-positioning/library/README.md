@@ -71,7 +71,7 @@ on the state-updating callback makes an update loop fail without hanging the bro
 
 These are geometry contracts, not screenshot rasterization baselines or a claim of every
 possible combination. Font rasterization, browser zoom, native high-DPI capture, cross-browser
-layout differences and visual-viewport/mobile behavior are not
+layout differences and native visual-viewport/mobile behavior are not
 covered. The explicit `strategy: 'absolute'` case deliberately records the existing baseline's
 `fixed` result; changing that behavior requires a separate intentional compatibility decision.
 
@@ -101,10 +101,13 @@ Bundle size uses the repository's standard monosize/webpack reporting for the ex
 `bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`. The custom absolute-size
 gate is deferred; the standard bundle-size report and fixtures remain in place.
 
-The WebKit target runs five focused real-browser checks for filtered ancestors and nested
+The WebKit target runs focused real-browser checks for filtered ancestors and nested
 top-layer surfaces. Filter cases preserve the pinned Floating UI WebKit exception; nested
 top-layer cases assert physical layout, including containment by the top-layer ancestor itself.
 It requires the workspace's Playwright WebKit browser installation.
+It also compares fixed/absolute positioning, containing blocks, and rectangular boundaries
+against Floating UI with controlled visual-viewport offsets. Element geometry remains real;
+the viewport metrics are emulated, so these checks do not replace native pinch-zoom/pan testing.
 
 The package is compiled to ES2019, so the engine avoids optional chaining and nullish coalescing
 in hot paths (they are lowered to verbose helpers), prefers expression-bodied helpers, and keeps

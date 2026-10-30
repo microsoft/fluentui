@@ -78,7 +78,7 @@ export async function computePosition(
   const rtl = getStyle(container).direction === 'rtl';
   const referenceElement = 'nodeType' in target ? target : target.contextElement || getRoot(container);
   const clip = (element: Element, boundary?: PositioningBoundary) =>
-    getClippingRect(element, getBoundary(container, boundary) || 'clippingAncestors', getWindow(container));
+    getClippingRect(element, getBoundary(container, boundary) || 'clippingAncestors', getWindow(container), strategy);
   // Without explicit boundaries flipping and shifting share the clipping ancestors of the container
   let containerClip: Rect | undefined;
   const boundaryClip = (boundary?: PositioningBoundary | null) =>
@@ -127,7 +127,7 @@ export async function computePosition(
   const measure = () => {
     space = getCoordinateSpace(container, strategy);
     const { width, height } = getDimensions(container);
-    return { reference: getReferenceRect(target, container, space), floating: { x: 0, y: 0, width, height } };
+    return { reference: getReferenceRect(target, container, space, strategy), floating: { x: 0, y: 0, width, height } };
   };
   let rects = measure();
   // Overflow is always measured in the initial coordinate space

@@ -127,3 +127,62 @@ for (const scenario of ['filter', 'backdropFilter', 'popover', 'dialog', 'contai
     }
   });
 }
+
+for (const scenario of ['fixed', 'absolute', 'containingBlock', 'rectBoundary']) {
+  test(`WebKit visual-viewport math matches the oracle for ${scenario}`, async () => {
+    const page = await browser.newPage({ viewport: { width: 800, height: 600 } });
+    try {
+      await page.setContent('<!doctype html><body style="margin:0"></body>');
+      await page.addScriptTag({ content: source });
+      const result = await page.evaluate(async scenario => {
+        const { computePosition, oracle, shift, hide } = globalThis.positioningTest;
+        // Emulate viewport metrics, not element geometry or engine output. This is not a native pinch gesture.
+        for (const [name, value] of Object.entries({ offsetLeft: 30, offsetTop: 50, width: 400, height: 300 })) {
+          Object.defineProperty(visualViewport, name, { configurable: true, value });
+        }
+        const create = (style, parent = document.body) => {
+          const node = document.createElement('div');
+          Object.assign(node.style, style);
+          parent.append(node);
+          return node;
+        };
+        const target = create({
+          position: 'fixed',
+          left: '350px',
+          top: '240px',
+          width: '80px',
+          height: '40px',
+        });
+        const parent =
+          scenario === 'containingBlock'
+            ? create({ position: 'absolute', left: '100px', top: '100px', transform: 'translate(20px, 30px)' })
+            : document.body;
+        const strategy = scenario === 'absolute' ? 'absolute' : 'fixed';
+        const floating = create({ position: strategy, width: '120px', height: '60px' }, parent);
+        const boundary =
+          scenario === 'rectBoundary' ? { x: 100, y: 120, width: 250, height: 200 } : 'clippingAncestors';
+        const expected = await oracle(target, floating, {
+          strategy,
+          placement: 'bottom',
+          middleware: [shift({ boundary }), hide(), hide({ strategy: 'escaped' })],
+        });
+        const actual = await computePosition(target, floating, {
+          strategy,
+          positioningOptions: { pinned: true, ...(scenario === 'rectBoundary' && { overflowBoundary: boundary }) },
+        });
+        return {
+          actual: { x: actual.x, y: actual.y, referenceHidden: actual.referenceHidden, escaped: actual.escaped },
+          expected: {
+            x: expected.x,
+            y: expected.y,
+            referenceHidden: expected.middlewareData.hide.referenceHidden,
+            escaped: expected.middlewareData.hide.escaped,
+          },
+        };
+      }, scenario);
+      assert.deepEqual(result.actual, result.expected);
+    } finally {
+      await page.close();
+    }
+  });
+}

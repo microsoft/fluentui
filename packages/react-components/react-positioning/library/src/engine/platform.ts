@@ -16,6 +16,14 @@ export const px = (value: number | undefined): string => (value === undefined ? 
 // Properties that are not supported are empty strings (i.e. in jsdom)
 const isSet = (value: string | undefined): boolean => !!value && value !== 'none';
 
+const isWebKit = (element: Element): boolean =>
+  !!element.ownerDocument.defaultView?.CSS?.supports?.('-webkit-backdrop-filter', 'none');
+
+const getVisualOffsets = (element: Element): Scale => {
+  const viewport = getWindow(element).visualViewport;
+  return isWebKit(element) && viewport ? { x: viewport.offsetLeft, y: viewport.offsetTop } : { x: 0, y: 0 };
+};
+
 const rect = (x: number, y: number, width: number, height: number): Rect => ({ x, y, width, height });
 
 export const intersect = (a: Rect, b: Rect): Rect => {
@@ -33,11 +41,10 @@ export const isContainingBlock = (
   if (style.display === 'contents') {
     return false;
   }
-  const isWebKit = element.ownerDocument.defaultView?.CSS?.supports?.('-webkit-backdrop-filter', 'none');
   return (
     (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
     (['transform', 'translate', 'scale', 'rotate', 'perspective'] as const).some(property => isSet(style[property])) ||
-    (!isWebKit && (isSet(style.filter) || isSet(style.backdropFilter))) ||
+    ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
     /auto|hidden/.test(style.contentVisibility) ||
     (!!style.containerType && style.containerType !== 'normal') ||
     /transform|perspective|filter/.test(style.willChange) ||
@@ -224,40 +231,60 @@ export const getReferenceRect = (
   reference: Element | { getBoundingClientRect(): DOMRect | Rect; contextElement?: Element },
   floating: HTMLElement,
   space: CoordinateSpace,
+  strategy: Strategy,
 ): Rect => {
   const context = 'ownerDocument' in reference ? reference : reference.contextElement;
   const floatingWindow = getWindow(floating);
-  const bounds = convertWindowRect(
-    reference.getBoundingClientRect(),
-    (context && getWindow(context)) || floatingWindow,
-    floatingWindow,
-  );
+  const referenceWindow = (context && getWindow(context)) || floatingWindow;
+  const bounds = convertWindowRect(reference.getBoundingClientRect(), referenceWindow, floatingWindow);
+  const visual =
+    strategy === 'fixed' && referenceWindow === floatingWindow && !getOffsetParent(floating)
+      ? getVisualOffsets(context || floating)
+      : { x: 0, y: 0 };
   const { x, y, scale } = space;
-  return rect((bounds.x - x) / scale.x, (bounds.y - y) / scale.y, bounds.width / scale.x, bounds.height / scale.y);
+  return rect(
+    (bounds.x + visual.x - x) / scale.x,
+    (bounds.y + visual.y - y) / scale.y,
+    bounds.width / scale.x,
+    bounds.height / scale.y,
+  );
 };
 
 /** The visible area of the element within the boundary, in viewport pixels of `floatingWindow` */
-export const getClippingRect = (element: Element, boundary: Boundary, floatingWindow = getWindow(element)): Rect => {
+export const getClippingRect = (
+  element: Element,
+  boundary: Boundary,
+  floatingWindow = getWindow(element),
+  strategy: Strategy = 'absolute',
+): Rect => {
   const win = getWindow(element);
   const root = getRoot(element);
   const viewport = win.visualViewport;
+  const useViewportOffsets = !isWebKit(element) || strategy === 'fixed';
   const clippingAncestors = boundary === 'clippingAncestors';
   let clip = viewport
-    ? rect(viewport.offsetLeft, viewport.offsetTop, viewport.width, viewport.height)
+    ? rect(
+        useViewportOffsets ? viewport.offsetLeft : 0,
+        useViewportOffsets ? viewport.offsetTop : 0,
+        viewport.width,
+        viewport.height,
+      )
     : rect(0, 0, root.clientWidth, root.clientHeight);
   for (const item of clippingAncestors ? getScrollAncestors(element) : ([] as unknown[]).concat(boundary)) {
     if (item && typeof item === 'object') {
+      const visual = getVisualOffsets(element);
+      const boundaryRect = item as Rect;
       clip = intersect(
         clip,
         'nodeType' in item
           ? convertWindowRect(getClientRect(item as HTMLElement), getWindow(item as Node), win)
-          : (item as Rect),
+          : rect(boundaryRect.x - visual.x, boundaryRect.y - visual.y, boundaryRect.width, boundaryRect.height),
       );
     }
   }
   const result = convertWindowRect(clip, win, floatingWindow);
   const frame = win.frameElement;
   return clippingAncestors && win !== floatingWindow && isHTMLElement(frame)
-    ? intersect(result, getClippingRect(frame, boundary, floatingWindow))
+    ? intersect(result, getClippingRect(frame, boundary, floatingWindow, strategy))
     : result;
 };
