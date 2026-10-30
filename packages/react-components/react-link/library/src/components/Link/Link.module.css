@@ -117,5 +117,8 @@
       text-decoration-style: double;
       outline-style: none;
     }
+    &:where(.disabled)[data-fui-focus-visible] {
+      text-decoration-line: none;
+    }
   }
 }

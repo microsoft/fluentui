@@ -59,7 +59,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
   if (state.image) {
     // eslint-disable-next-line react-hooks/immutability
-    state.image.className = clsx(avatarClassNames.image, styles.image, state.image.className);
+    state.image.className = clsx(
+      avatarClassNames.image,
+      styles.image,
+      hasBadge && styles.badgeCutout,
+      state.image.className,
+    );
   }
 
   if (state.initials) {

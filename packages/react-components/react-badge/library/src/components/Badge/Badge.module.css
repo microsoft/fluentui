@@ -111,18 +111,18 @@
 
   /* Icon position gap between icon and adjacent text */
   .iconBeforeText {
-    margin-right: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+    margin-inline-end: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
   }
   .iconAfterText {
-    margin-left: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
+    margin-inline-start: calc(var(--spacingHorizontalXXS) + var(--spacingHorizontalXXS));
   }
 
   /* Extra-large gets wider gaps — compound CSS, no hook conditional */
   .extra-large .iconBeforeText {
-    margin-right: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    margin-inline-end: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
   }
   .extra-large .iconAfterText {
-    margin-left: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
+    margin-inline-start: calc(var(--spacingHorizontalXS) + var(--spacingHorizontalXXS));
   }
 
   /* ---- Appearance × color classes: names use hyphens to match `${appearance}-${color}` ---- */

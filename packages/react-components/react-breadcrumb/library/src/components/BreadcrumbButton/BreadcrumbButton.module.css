@@ -88,7 +88,7 @@
     line-height: var(--lineHeightBase400);
   }
 
-  .icon {
+  .root .icon {
     font-size: var(--fui-Breadcrumb--icon-size);
     height: var(--fui-Breadcrumb--icon-size);
     line-height: var(--fui-Breadcrumb--icon-line-height);

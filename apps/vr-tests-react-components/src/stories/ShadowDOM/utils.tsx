@@ -1,13 +1,42 @@
+'use client';
+
 import { createShadowDOMRenderer } from '@griffel/shadow-dom';
 import { RendererProvider } from '@griffel/react';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
-import { createProxy, Root } from 'react-shadow';
+import { createProxy, type Root } from 'react-shadow';
 import * as React from 'react';
 const ShadowRootProvider: React.FC<{
   children: React.ReactNode;
   root: ShadowRoot;
 }> = ({ children, root }) => {
   const renderer = React.useMemo(() => createShadowDOMRenderer(root), [root]);
+
+  React.useEffect(() => {
+    const targetDocument = root.ownerDocument;
+    const targetWindow = targetDocument.defaultView;
+    if (!targetWindow) {
+      return;
+    }
+
+    // Static CSS, unlike Griffel's renderer, must be explicitly installed inside each shadow root.
+    const styleElement = targetDocument.createElement('style');
+    root.prepend(styleElement);
+    const updateStyles = () => {
+      styleElement.textContent = Array.from(targetDocument.head.querySelectorAll('style'))
+        .map(style => style.textContent ?? '')
+        .filter(css => css.includes('@layer fluentui'))
+        .join('\n');
+    };
+    updateStyles();
+
+    const observer = new targetWindow.MutationObserver(updateStyles);
+    observer.observe(targetDocument.head, { childList: true, subtree: true, characterData: true });
+
+    return () => {
+      observer.disconnect();
+      styleElement.remove();
+    };
+  }, [root]);
 
   return (
     <RendererProvider renderer={renderer}>

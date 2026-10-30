@@ -80,14 +80,14 @@
   .badge {
     position: absolute;
     bottom: 0;
-    right: 0;
+    inset-inline-end: 0;
   }
 
   /* Root modifier when badge is present */
   .badgeAlign {
     --fui-Avatar-badgeAlign: right;
   }
-  [dir='rtl'] .badgeAlign {
+  .badgeAlign:dir(rtl) {
     --fui-Avatar-badgeAlign: left;
   }
 

@@ -35,9 +35,6 @@
   .statusOffline {
     color: var(--colorNeutralForeground3);
   }
-  .statusOutOfOffice {
-    color: var(--colorPaletteBerryForeground3);
-  }
   .statusUnknown {
     color: var(--colorNeutralForeground3);
   }
@@ -45,6 +42,9 @@
   /* ---- Out-of-office overlay color ---- */
   .outOfOffice {
     color: var(--colorNeutralBackground1);
+  }
+  .statusOutOfOffice {
+    color: var(--colorPaletteBerryForeground3);
   }
   .outOfOfficeAvailable {
     color: var(--colorPaletteLightGreenForeground3);

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: add opt-in CSS Modules style alternative for SearchBox",
+  "comment": "feat: add opt-in CSS Modules style alternative for SearchBox, preserving the small dismiss icon size",
   "packageName": "@fluentui/react-search",
   "email": "dmytrokirpa@microsoft.com"
 }

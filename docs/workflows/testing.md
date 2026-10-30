@@ -19,6 +19,21 @@ where available, falls back to Griffel hooks otherwise, and uses headless Fluent
 
 This target captures screenshots only; a successful run does not assert visual parity against a baseline.
 
+CSS Modules styles do not cross shadow boundaries. The Shadow DOM fixtures explicitly install
+the layered static styles inside each shadow root, alongside the shadow-specific Griffel renderer.
+Consumers using CSS Modules in a shadow root must likewise install their static styles there.
+
+For an opt-in browser regression check, serve identical Storybook builds using Griffel and CSS Modules
+on separate URLs, then run:
+
+```bash
+NX_TASK_TARGET_PROJECT=vr-tests-react-components yarn nx exec -- node scripts/check-v9-css-modules.js http://localhost:6006 http://localhost:6007
+```
+
+This compares computed styles for the migrated RTL, badge, typography, icon, custom-hook, and shadow-root
+fixtures. It is not part of the default VRT target and does not replace screenshot comparisons.
+Both builds use the same local avatar image in place of the external image CDN for deterministic, offline checks.
+
 ## Writing Unit Tests
 
 Tests live adjacent to the component they test:

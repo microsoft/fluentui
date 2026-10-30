@@ -235,7 +235,7 @@
   .vertical.pendingBase::before,
   .vertical.activeBase::after {
     bottom: var(--spacingVerticalS);
-    left: 0;
+    inset-inline-start: 0;
     top: var(--spacingVerticalS);
     width: var(--strokeWidthThicker);
   }
@@ -251,7 +251,7 @@
   .small.vertical.pendingBase::before,
   .small.vertical.activeBase::after {
     bottom: var(--spacingVerticalXS);
-    left: 0;
+    inset-inline-start: 0;
     top: var(--spacingVerticalXS);
     width: var(--strokeWidthThicker);
   }
@@ -260,7 +260,7 @@
   .large.vertical.pendingBase::before,
   .large.vertical.activeBase::after {
     bottom: var(--spacingVerticalMNudge);
-    left: 0;
+    inset-inline-start: 0;
     top: var(--spacingVerticalMNudge);
     width: var(--strokeWidthThicker);
   }
@@ -454,7 +454,7 @@
   }
 
   /* Large: bigger font (body2 / subtitle2) via descendant from button's .large class */
-  .large :global(.fui-Tab__content) {
+  .large .content {
     font-size: var(--fontSizeBase400);
     line-height: var(--lineHeightBase400);
   }
@@ -470,5 +470,6 @@
 
   .contentPlaceholder {
     visibility: hidden;
+    font-weight: var(--fontWeightSemibold);
   }
 }

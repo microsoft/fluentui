@@ -75,7 +75,18 @@
     font-weight: var(--fontWeightRegular);
   }
 
-  :is(.body1Strong, .caption1Strong, .subtitle1, .subtitle2, .title1, .title2, .title3, .largeTitle, .display) {
+  :is(
+      .body1Strong,
+      .caption1Strong,
+      .caption2Strong,
+      .subtitle1,
+      .subtitle2,
+      .title1,
+      .title2,
+      .title3,
+      .largeTitle,
+      .display
+    ) {
     font-weight: var(--fontWeightSemibold);
   }
 

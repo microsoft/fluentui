@@ -58,7 +58,7 @@
   }
 
   .dismiss.small > svg {
-    font-size: var(--fontSizeBase300);
+    font-size: var(--fontSizeBase400);
   }
 
   .dismiss.large > svg {
