@@ -13,9 +13,18 @@ export interface ComputePositionReturn {
   placement: PositioningShorthandValue;
 }
 
+/** An element, or a virtual element */
+export interface Measurable {
+  getBoundingClientRect(): { top: number; right: number; bottom: number; left: number };
+}
+
+/**
+ * Detects the placement of the floating element from the rects. The result is physical: `before` is on the left of the
+ * reference, and `start` is the left (or top) edge.
+ */
 export function computePosition(
-  reference: HTMLElement,
-  floating: HTMLElement,
+  reference: Measurable,
+  floating: Measurable,
   config?: ComputePositionConfig,
 ): ComputePositionReturn | null {
   const tolerance = config?.tolerance ?? 2;
@@ -46,4 +55,15 @@ export function computePosition(
   const placement = getPlacementString(position, align);
 
   return { position, align, placement };
+}
+
+/** Mirrors the placement of the floating element into its `data-placement` attribute */
+export function updatePlacementAttribute(reference: Measurable, floating: HTMLElement): ComputePositionReturn | null {
+  const result = computePosition(reference, floating);
+
+  if (result && floating.getAttribute('data-placement') !== result.placement) {
+    floating.setAttribute('data-placement', result.placement);
+  }
+
+  return result;
 }

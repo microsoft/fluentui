@@ -1,8 +1,16 @@
 import * as React from 'react';
 import { act, render } from '@testing-library/react';
+import { usePositioning as useFloatingPositioning } from '@fluentui/react-positioning';
 import { usePositioning } from './usePositioning';
 import { getPlacementString } from './utils/placement';
 import type { PositioningReturn, UsePositioningOptions } from './types';
+
+jest.mock('@fluentui/react-positioning', () => {
+  const actual = jest.requireActual('@fluentui/react-positioning');
+  return { ...actual, usePositioning: jest.fn(actual.usePositioning) };
+});
+
+const useFloatingPositioningMock = useFloatingPositioning as jest.Mock;
 
 // jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
 beforeAll(() => {
@@ -240,39 +248,36 @@ describe('usePositioning', () => {
     });
   });
 });
+const lastFloatingOptions = (): UsePositioningOptions => {
+  const { calls } = useFloatingPositioningMock.mock;
+  return calls[calls.length - 1][0];
+};
+
+// Floating UI computes the position asynchronously
+const flushPositioning = () =>
+  act(async () => {
+    await new Promise<void>(resolve => {
+      setTimeout(resolve);
+    });
+  });
+
+const mockRect = (
+  element: { getBoundingClientRect: () => unknown },
+  rect: { left: number; top: number; width: number; height: number },
+) => {
+  element.getBoundingClientRect = () =>
+    ({ ...rect, x: rect.left, y: rect.top, right: rect.left + rect.width, bottom: rect.top + rect.height } as DOMRect);
+};
 
 describe('usePositioning without CSS anchor positioning', () => {
-  let supports: jest.Mock;
-
   beforeAll(() => {
     // `anchor-name` and `position-area` are not supported
-    supports = jest.fn(() => false);
-    Object.defineProperty(globalThis, 'CSS', { value: { supports }, configurable: true, writable: true });
+    Object.defineProperty(globalThis, 'CSS', { value: { supports: () => false }, configurable: true, writable: true });
   });
 
   afterAll(() => {
     Reflect.deleteProperty(globalThis, 'CSS');
   });
-
-  const mockLayout = (
-    target: HTMLElement,
-    container: HTMLElement,
-    anchor: { left: number; top: number; width: number; height: number },
-    size: { width: number; height: number },
-  ) => {
-    target.getBoundingClientRect = () =>
-      ({
-        ...anchor,
-        x: anchor.left,
-        y: anchor.top,
-        right: anchor.left + anchor.width,
-        bottom: anchor.top + anchor.height,
-      } as DOMRect);
-    Object.defineProperty(container, 'offsetWidth', { value: size.width, configurable: true });
-    Object.defineProperty(container, 'offsetHeight', { value: size.height, configurable: true });
-    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000, configurable: true });
-    Object.defineProperty(document.documentElement, 'clientHeight', { value: 700, configurable: true });
-  };
 
   it('does not write anchor positioning styles', () => {
     const result = mountHook({ position: 'below', align: 'start' });
@@ -288,81 +293,70 @@ describe('usePositioning without CSS anchor positioning', () => {
     expect(container.style.getPropertyValue('position-anchor')).toBe('');
     expect(container.style.getPropertyValue('position-area')).toBe('');
     expect(container.style.getPropertyValue('position-try-fallbacks')).toBe('');
-    expect(container).toHaveStyle({ position: 'fixed', margin: '0px' });
-  });
-
-  it('positions the container next to the target', () => {
-    const result = mountHook({ position: 'below', align: 'start', offset: 8 });
-    const target = document.createElement('div');
-    const container = document.createElement('div');
-    document.body.append(target, container);
-    mockLayout(target, container, { left: 450, top: 300, width: 100, height: 40 }, { width: 200, height: 100 });
-
-    act(() => {
-      result.current.targetRef(target);
-      result.current.containerRef(container);
-    });
-
-    expect(container).toHaveStyle({ position: 'fixed', left: '450px', top: '348px' });
     expect(container).toHaveAttribute('data-placement', 'below-start');
   });
 
-  it('flips when there is no room and mirrors the resolved placement in data-placement', () => {
-    const result = mountHook({ position: 'above', align: 'center' });
+  it('positions with usePositioning() from @fluentui/react-positioning', async () => {
+    const onPositioningEnd = jest.fn();
+    const result = mountHook({ position: 'below', align: 'start', offset: 8, onPositioningEnd });
     const target = document.createElement('div');
     const container = document.createElement('div');
     document.body.append(target, container);
-    mockLayout(target, container, { left: 450, top: 60, width: 100, height: 40 }, { width: 200, height: 100 });
 
     act(() => {
       result.current.targetRef(target);
       result.current.containerRef(container);
     });
+    expect(lastFloatingOptions()).toMatchObject({ position: 'below', align: 'start', offset: 8, enabled: true });
 
-    expect(container).toHaveStyle({ left: '400px', top: '100px' });
-    expect(container).toHaveAttribute('data-placement', 'below');
+    await flushPositioning();
+
+    expect(container).toHaveStyle({ position: 'fixed' });
+    expect(container).toHaveAttribute('data-popper-placement', 'bottom-start');
+    expect(onPositioningEnd).toHaveBeenCalledWith(
+      expect.objectContaining({ detail: expect.objectContaining({ placement: 'bottom-start' }) }),
+    );
+
+    target.remove();
+    container.remove();
   });
 
-  it('matches the width of the target', () => {
-    const result = mountHook({ position: 'below', align: 'start', matchTargetSize: 'width' });
+  it('mirrors the placement in data-placement after the container is positioned', async () => {
+    const result = mountHook({ position: 'above' });
     const target = document.createElement('div');
     const container = document.createElement('div');
     document.body.append(target, container);
-    mockLayout(target, container, { left: 450, top: 300, width: 120, height: 40 }, { width: 120, height: 100 });
+    mockRect(target, { left: 450, top: 60, width: 100, height: 40 });
+    // The container flipped below the target
+    mockRect(container, { left: 400, top: 100, width: 200, height: 100 });
 
     act(() => {
       result.current.targetRef(target);
       result.current.containerRef(container);
     });
+    await flushPositioning();
 
-    expect(container).toHaveStyle({ width: '120px' });
+    expect(container).toHaveAttribute('data-placement', 'below');
+
+    target.remove();
+    container.remove();
   });
 
   it('updates the position with updatePosition()', () => {
     const positioningRef = React.createRef<{ updatePosition: () => void }>();
-    const result = mountHook({
-      position: 'below',
-      positioningRef: positioningRef as unknown as UsePositioningOptions['positioningRef'],
-    });
-    const target = document.createElement('div');
-    const container = document.createElement('div');
-    document.body.append(target, container);
-    mockLayout(target, container, { left: 450, top: 300, width: 100, height: 40 }, { width: 100, height: 100 });
+    mountHook({ positioningRef: positioningRef as unknown as UsePositioningOptions['positioningRef'] });
+    const floatingPositioningRef = lastFloatingOptions().positioningRef as React.RefObject<{
+      updatePosition: () => void;
+    }>;
+    const updatePosition = jest.spyOn(floatingPositioningRef.current!, 'updatePosition');
 
-    act(() => {
-      result.current.targetRef(target);
-      result.current.containerRef(container);
-    });
-    expect(container).toHaveStyle({ top: '340px' });
+    positioningRef.current?.updatePosition();
 
-    mockLayout(target, container, { left: 450, top: 200, width: 100, height: 40 }, { width: 100, height: 100 });
-    act(() => positioningRef.current?.updatePosition());
-
-    expect(container).toHaveStyle({ top: '240px' });
+    expect(updatePosition).toHaveBeenCalledTimes(1);
   });
 });
 
-describe('usePositioning with options that need plugins', () => {
+describe('usePositioning with options that need JavaScript', () => {
   beforeAll(() => {
     Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
   });
@@ -371,113 +365,168 @@ describe('usePositioning with options that need plugins', () => {
     Reflect.deleteProperty(globalThis, 'CSS');
   });
 
-  const mountWithPlugins = (options: UsePositioningOptions) => {
-    const resultRef = React.createRef<{ current: PositioningReturn }>();
-    const Capture = () => {
-      const result = usePositioning(options);
-      (resultRef as unknown as { current: PositioningReturn }).current = result;
-      return null;
-    };
-    render(<Capture />);
-    return resultRef as unknown as { current: PositioningReturn };
-  };
+  const mountWithTargets = (options: UsePositioningOptions) => {
+    const result = mountHook(options);
+    const target = document.createElement('div');
+    const container = document.createElement('div');
 
-  const mockLayout = (target: { getBoundingClientRect: () => unknown }, container: HTMLElement) => {
-    target.getBoundingClientRect = () => ({ left: 450, top: 300, width: 100, height: 40 });
-    Object.defineProperty(container, 'offsetWidth', { value: 200, configurable: true });
-    Object.defineProperty(container, 'offsetHeight', { value: 100, configurable: true });
-    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000, configurable: true });
-    Object.defineProperty(document.documentElement, 'clientHeight', { value: 700, configurable: true });
+    act(() => {
+      result.current.targetRef(target);
+      result.current.containerRef(container);
+    });
+
+    return { result, target, container };
   };
 
   it('returns an arrowRef', () => {
-    const result = mountWithPlugins({});
+    const result = mountHook({});
 
     expect(typeof result.current.arrowRef).toBe('function');
   });
 
-  it('keeps using CSS for options that CSS can handle', () => {
-    const result = mountWithPlugins({ position: 'below', arrowPadding: 8, autoSize: true, offset: 4 });
-    const container = document.createElement('div');
-
-    act(() => {
-      result.current.containerRef(container);
+  it('uses CSS for options that CSS can handle', () => {
+    const { target, container } = mountWithTargets({
+      position: 'below',
+      offset: 4,
+      arrowPadding: 8,
+      matchTargetSize: 'width',
+      fallbackPositions: ['above'],
+      autoSize: false,
     });
 
+    expect(lastFloatingOptions()).toMatchObject({ enabled: false });
+    expect(target.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
     expect(container).toHaveStyle({ positionArea: 'block-end' });
-    expect(container.style.getPropertyValue('left')).toBe('');
   });
 
   it.each([
-    ['a function offset', { offset: () => 4 }, 344],
-    ['a flip boundary', { flipBoundary: 'window' as const }, 340],
-    ['an overflow boundary', { overflowBoundary: 'window' as const }, 340],
-    ['an overflow padding', { overflowBoundaryPadding: 8 }, 340],
-  ])('positions in JavaScript with %s', (_name, extra, top) => {
-    const result = mountWithPlugins({ position: 'below', align: 'start', ...extra });
-    const target = document.createElement('div');
-    const container = document.createElement('div');
-    document.body.append(target, container);
-    mockLayout(target, container);
+    ['autoSize', { autoSize: true }],
+    ['autoSize: "height"', { autoSize: 'height' as const }],
+    ['a function offset', { offset: () => 4 }],
+    ['a flip boundary', { flipBoundary: 'window' as const }],
+    ['an overflow boundary', { overflowBoundary: 'scrollParent' as const }],
+    ['an overflow padding', { overflowBoundaryPadding: 8 }],
+    ['shiftToCoverTarget', { shiftToCoverTarget: true }],
+  ])('positions in JavaScript with %s', (_name, extra) => {
+    const { target, container } = mountWithTargets({ position: 'below', align: 'start', ...extra });
 
-    act(() => {
-      result.current.targetRef(target);
-      result.current.containerRef(container);
-    });
-
-    expect(container.style.getPropertyValue('position-area')).toBe('');
+    expect(lastFloatingOptions()).toMatchObject({ ...extra, enabled: true });
     expect(target.style.getPropertyValue('anchor-name')).toBe('');
-    expect(container).toHaveStyle({ left: '450px', top: `${top}px` });
-    expect(container).toHaveAttribute('data-placement', 'below-start');
+    expect(container.style.getPropertyValue('position-anchor')).toBe('');
+    expect(container.style.getPropertyValue('position-area')).toBe('');
   });
 
-  it('positions next to a virtual element', () => {
-    const virtualElement = {
-      getBoundingClientRect: () =>
-        ({ left: 450, top: 300, width: 0, height: 0, x: 450, y: 300, right: 450, bottom: 300 } as DOMRect),
-    };
-    const result = mountWithPlugins({ position: 'below', align: 'start', target: virtualElement });
-    const container = document.createElement('div');
-    document.body.append(container);
-    mockLayout({ getBoundingClientRect: () => undefined }, container);
+  it.each([
+    ['above', 'start', 'start'],
+    ['below', 'top', 'start'],
+    ['before', 'start', 'top'],
+    ['after', 'end', 'bottom'],
+    ['after', 'bottom', 'bottom'],
+    ['before', 'center', 'center'],
+  ] as const)('passes %s-%s to @fluentui/react-positioning as %s', (position, align, expected) => {
+    mountWithTargets({ position, align, autoSize: true });
+
+    expect(lastFloatingOptions()).toMatchObject({ position, align: expected, strategy: 'fixed' });
+  });
+
+  it('positions in JavaScript when there is an arrow', () => {
+    const { result, target, container } = mountWithTargets({ position: 'below' });
+    expect(container).toHaveStyle({ positionArea: 'block-end' });
 
     act(() => {
-      result.current.containerRef(container);
+      result.current.arrowRef(document.createElement('div'));
     });
 
-    // CSS can't anchor to a virtual element
+    expect(lastFloatingOptions()).toMatchObject({ enabled: true });
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
     expect(container.style.getPropertyValue('position-area')).toBe('');
-    expect(container).toHaveStyle({ left: '450px', top: '300px' });
+    expect(container.style.getPropertyValue('margin-block-start')).toBe('');
   });
 
-  it('calls onPositioningEnd after the container is positioned', () => {
+  it('positions next to a virtual element in JavaScript', () => {
+    const virtualElement = { getBoundingClientRect: () => ({ left: 450, top: 300, width: 0, height: 0 } as DOMRect) };
+    const { container } = mountWithTargets({ position: 'below', target: virtualElement });
+
+    expect(lastFloatingOptions()).toMatchObject({ target: virtualElement, enabled: true });
+    expect(container.style.getPropertyValue('position-area')).toBe('');
+  });
+
+  it('positions next to a virtual element set with setTarget() in JavaScript, and goes back to CSS', async () => {
+    const positioningRef = React.createRef<{ setTarget: (target: unknown) => void }>();
+    const { target, container } = mountWithTargets({
+      position: 'below',
+      positioningRef: positioningRef as unknown as UsePositioningOptions['positioningRef'],
+    });
+    document.body.append(target, container);
+    const virtualElement = { getBoundingClientRect: () => ({ left: 450, top: 300, width: 0, height: 0 } as DOMRect) };
+
+    act(() => {
+      positioningRef.current?.setTarget(virtualElement);
+    });
+    await flushPositioning();
+
+    expect(lastFloatingOptions()).toMatchObject({ target: virtualElement, enabled: true });
+    expect(container).toHaveAttribute('data-popper-placement');
+    expect(container.style.getPropertyValue('transform')).not.toBe('');
+
+    act(() => {
+      positioningRef.current?.setTarget(null);
+    });
+
+    // The styles of @fluentui/react-positioning are removed
+    expect(lastFloatingOptions()).toMatchObject({ target: null, enabled: false });
+    expect(container).not.toHaveAttribute('data-popper-placement');
+    expect(container.style.getPropertyValue('transform')).toBe('');
+    expect(container).toHaveStyle({ position: 'fixed', inset: 'auto', positionArea: 'block-end' });
+    expect(target.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+
+    target.remove();
+    container.remove();
+  });
+
+  it('calls onPositioningEnd with the placement that the browser picked', async () => {
     const onPositioningEnd = jest.fn();
-    const result = mountWithPlugins({ position: 'below', align: 'start', flipBoundary: 'window', onPositioningEnd });
+    const result = mountHook({ position: 'below', align: 'start', onPositioningEnd });
     const target = document.createElement('div');
     const container = document.createElement('div');
     document.body.append(target, container);
-    mockLayout(target, container);
+    Object.defineProperty(document.documentElement, 'clientWidth', { value: 1000, configurable: true });
+    Object.defineProperty(document.documentElement, 'clientHeight', { value: 700, configurable: true });
+    mockRect(target, { left: 450, top: 300, width: 100, height: 40 });
+    mockRect(container, { left: 450, top: 340, width: 200, height: 100 });
 
     act(() => {
       result.current.targetRef(target);
       result.current.containerRef(container);
     });
+    await act(async () => {
+      await Promise.resolve();
+    });
 
+    expect(lastFloatingOptions()).toMatchObject({ enabled: false });
     expect(onPositioningEnd).toHaveBeenCalledWith(
-      expect.objectContaining({ detail: expect.objectContaining({ placement: 'bottom-start' }) }),
+      expect.objectContaining({
+        detail: { placement: 'bottom-start', escaped: false, referenceHidden: false },
+      }),
     );
+
+    target.remove();
+    container.remove();
   });
 
   it('does not position when it is disabled', () => {
-    const result = mountWithPlugins({ position: 'below', enabled: false });
-    const container = document.createElement('div');
+    const { target, container } = mountWithTargets({ position: 'below', enabled: false });
 
-    act(() => {
-      result.current.containerRef(container);
-    });
-
+    expect(lastFloatingOptions()).toMatchObject({ enabled: false });
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
     expect(container.style.getPropertyValue('position-area')).toBe('');
     expect(container.style.getPropertyValue('position')).toBe('');
+  });
+
+  it('does not position when it is disabled and needs JavaScript', () => {
+    mountWithTargets({ position: 'below', autoSize: true, enabled: false });
+
+    expect(lastFloatingOptions()).toMatchObject({ enabled: false });
   });
 });
 

@@ -17,10 +17,10 @@ export function applyOffset(node: HTMLElement, position: Position, mainAxis: num
 }
 
 /**
- * Normalises the `offset` prop into explicit `{ mainAxis, crossAxis }`. The
- * function form (`OffsetFunction`) is not supported under CSS anchor
- * positioning — rect information is not available ahead of layout — and
- * resolves to a zero offset.
+ * Normalises the `offset` prop into explicit `[mainAxis, crossAxis]`. The
+ * function form (`OffsetFunction`) can't be expressed with CSS anchor
+ * positioning, it's handled by `@fluentui/react-positioning` and resolves to a
+ * zero offset here.
  */
 export function resolveOffset(offset: PositioningProps['offset']): ResolvedOffset {
   if (typeof offset === 'number') {

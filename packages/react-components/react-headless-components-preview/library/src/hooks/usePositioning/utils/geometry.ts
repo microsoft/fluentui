@@ -1,14 +1,19 @@
-import type { FallbackRect } from '../fallback/computeFallbackPosition';
+export interface Rect {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
 
 const OVERFLOW = /auto|scroll|overlay|hidden|clip/;
 
-export const getViewportRect = (element: Element): FallbackRect => {
+export const getViewportRect = (element: Element): Rect => {
   const { clientWidth, clientHeight } = element.ownerDocument.documentElement;
   return { left: 0, top: 0, width: clientWidth, height: clientHeight };
 };
 
 /** The area inside the borders of an element, in the viewport */
-export const getPaddingBox = (element: HTMLElement): FallbackRect => {
+export const getPaddingBox = (element: HTMLElement): Rect => {
   const { left, top } = element.getBoundingClientRect();
   return {
     left: left + element.clientLeft,
@@ -18,7 +23,7 @@ export const getPaddingBox = (element: HTMLElement): FallbackRect => {
   };
 };
 
-export const intersect = (a: FallbackRect, b: FallbackRect): FallbackRect => {
+export const intersect = (a: Rect, b: Rect): Rect => {
   const left = Math.max(a.left, b.left);
   const top = Math.max(a.top, b.top);
 
@@ -48,7 +53,7 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
 };
 
 /** The visible area of an element: the viewport clipped by every scrollable ancestor */
-export const getClippingRect = (element: Element): FallbackRect =>
+export const getClippingRect = (element: Element): Rect =>
   getScrollAncestors(element).reduce(
     (rect, ancestor) => intersect(rect, getPaddingBox(ancestor)),
     getViewportRect(element),
