@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "perf: unsubscribe context selector listeners without shifting the listeners array",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "141153077+andreivms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
