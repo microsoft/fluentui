@@ -1,4 +1,5 @@
-import { getPhysicalParent, isContainingBlock } from './containingBlock';
+import { getPhysicalParent, isContainingBlock, isTopLayer } from './containingBlock';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import type { Rect } from '@floating-ui/dom';
 
 const OVERFLOW = /auto|scroll|overlay|hidden|clip/;
@@ -17,6 +18,9 @@ export const intersect = (a: Rect, b: Rect): Rect => {
 
 /** The ancestors that can clip the element, the closest first */
 export const getScrollAncestors = (element: Element): HTMLElement[] => {
+  if (isTopLayer(element)) {
+    return [];
+  }
   const win = element.ownerDocument.defaultView;
   const root = element.ownerDocument.documentElement;
   const ancestors: HTMLElement[] = [];
@@ -34,6 +38,8 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
     }
     if (
       !strategy &&
+      node !== element.ownerDocument.body &&
+      isHTMLElement(node) &&
       style.display !== 'inline' &&
       style.display !== 'contents' &&
       OVERFLOW.test(overflow + overflowX + overflowY)

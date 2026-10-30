@@ -1,6 +1,7 @@
-import { computePosition as computeOracle, hide, shift } from '@floating-ui/dom';
+import { computePosition as computeOracle, hide, shift, offset, limitShift } from '@floating-ui/dom';
 import { computePosition } from './engine/computePosition';
 import { getClippingRect } from './engine/platform';
+import type { TargetElement } from './types';
 
 // These dimensions are geometry inputs, not product styling.
 function element(doc: Document, tag: string, css: Partial<CSSStyleDeclaration>, parent: Node): HTMLElement {
@@ -10,7 +11,7 @@ function element(doc: Document, tag: string, css: Partial<CSSStyleDeclaration>, 
   return node;
 }
 
-async function expectParity(target: HTMLElement, floating: HTMLElement) {
+async function expectParity(target: TargetElement, floating: HTMLElement) {
   const expected = await computeOracle(target, floating, {
     placement: 'bottom',
     strategy: 'fixed',
@@ -41,6 +42,166 @@ describe('positioning engine browser regressions', () => {
     });
   });
   afterEach(() => root.remove());
+
+  for (const disableTether of [true, 'all'] as const) {
+    it(`preserves the cross-axis limiter for disabled tether ${disableTether}`, () => {
+      cy.document().then(async doc => {
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '300px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+        const expected = await computeOracle(target, floating, {
+          placement: 'bottom',
+          strategy: 'fixed',
+          middleware: [
+            offset(-200),
+            shift({
+              crossAxis: disableTether === 'all',
+              limiter: limitShift({ crossAxis: disableTether !== 'all', mainAxis: false }),
+            }),
+          ],
+        });
+        const actual = await computePosition(target, floating, {
+          strategy: 'fixed',
+          positioningOptions: {
+            pinned: true,
+            offset: -200,
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            unstable_disableTether: disableTether,
+          },
+        });
+        expect(actual.y).to.equal(disableTether === 'all' ? 80 : 180);
+        expect(actual.x).to.equal(expected.x);
+        expect(actual.y).to.equal(expected.y);
+      });
+    });
+  }
+
+  it('finds containing blocks and clipping wrappers through an assigned slot', () => {
+    cy.document().then(async doc => {
+      const host = element(doc, 'div', {}, root);
+      const wrapper = element(
+        doc,
+        'div',
+        {
+          position: 'relative',
+          left: '100px',
+          top: '100px',
+          width: '100px',
+          height: '100px',
+          overflow: 'hidden',
+          transform: 'translate(20px, 30px)',
+        },
+        host.attachShadow({ mode: 'open' }),
+      );
+      element(doc, 'slot', {}, wrapper);
+      const target = element(doc, 'div', { position: 'relative', top: '150px', width: '80px', height: '40px' }, host);
+      const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
+      expect(target.assignedSlot).not.to.equal(null);
+      await expectParity(target, floating);
+      const result = await computePosition(target, floating, {
+        strategy: 'fixed',
+        positioningOptions: { pinned: true },
+      });
+      expect(result.middlewareData.hide?.referenceHidden).to.equal(true);
+    });
+  });
+
+  for (const tag of ['g', 'path']) {
+    it(`traverses SVG ${tag} parents when clipping a virtual reference`, () => {
+      cy.document().then(async doc => {
+        const host = element(doc, 'div', { width: '100px', height: '100px', overflow: 'hidden' }, root);
+        const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const group = doc.createElementNS('http://www.w3.org/2000/svg', 'g');
+        const path = doc.createElementNS('http://www.w3.org/2000/svg', 'path');
+        host.appendChild(svg);
+        svg.appendChild(group);
+        group.appendChild(path);
+        const target = {
+          contextElement: tag === 'g' ? group : path,
+          getBoundingClientRect: () => new doc.defaultView!.DOMRect(200, 200, 40, 20),
+        };
+        const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
+        await expectParity(target, floating);
+        const result = await computePosition(target, floating, {
+          strategy: 'fixed',
+          positioningOptions: { pinned: true },
+        });
+        expect(result.middlewareData.hide?.referenceHidden).to.equal(true);
+      });
+    });
+  }
+
+  it('uses viewport clipping for overflow propagated from body', () => {
+    cy.document().then(async doc => {
+      const previous = doc.body.style.cssText;
+      try {
+        Object.assign(doc.body.style, { height: '100px', overflow: 'hidden' });
+        const target = element(
+          doc,
+          'div',
+          { position: 'relative', top: '150px', width: '80px', height: '40px' },
+          doc.body,
+        );
+        try {
+          const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, root);
+          await expectParity(target, floating);
+          const result = await computePosition(target, floating, {
+            strategy: 'fixed',
+            positioningOptions: { pinned: true },
+          });
+          expect(result.middlewareData.hide?.referenceHidden).to.equal(false);
+        } finally {
+          target.remove();
+        }
+      } finally {
+        doc.body.style.cssText = previous;
+      }
+    });
+  });
+
+  for (const kind of ['popover', 'dialog']) {
+    it(`uses viewport coordinates and clipping for a top-layer ${kind}`, () => {
+      cy.document().then(async doc => {
+        const host = element(
+          doc,
+          'div',
+          {
+            position: 'absolute',
+            left: '50px',
+            top: '60px',
+            width: '100px',
+            height: '100px',
+            overflow: 'hidden',
+            transform: 'translate(40px, 30px)',
+          },
+          root,
+        );
+        const target = element(
+          doc,
+          'div',
+          { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+          root,
+        );
+        const floating = element(
+          doc,
+          kind === 'dialog' ? 'dialog' : 'div',
+          { position: 'fixed', width: '120px', height: '60px', margin: '0', padding: '0', border: '0' },
+          host,
+        );
+        if (floating instanceof doc.defaultView!.HTMLDialogElement) {
+          floating.showModal();
+        } else {
+          floating.popover = 'manual';
+          floating.showPopover();
+        }
+        await expectParity(target, floating);
+      });
+    });
+  }
 
   for (const property of ['translate', 'scale', 'rotate'] as const) {
     it(`recognizes the individual ${property} containing block`, () => {

@@ -203,15 +203,15 @@ export async function computePosition(
         coords[cross],
         coords[cross] - values[cross === 'x' ? 'right' : 'bottom'],
       );
-      if (disableTether !== 'all') {
-        const length = cross === 'x' ? 'width' : 'height';
-        const origin = side === 'top' || side === 'left';
-        coords[cross] = clamp(
-          r[cross] - f[length] + (origin ? delta[cross] : 0),
-          coords[cross],
-          r[cross] + r[length] + (origin ? 0 : delta[cross]),
-        );
-      }
+    }
+    if (disableTether !== 'all' && (shiftCross || disableTether)) {
+      const length = cross === 'x' ? 'width' : 'height';
+      const origin = side === 'top' || side === 'left';
+      coords[cross] = clamp(
+        r[cross] - f[length] + (origin ? delta[cross] : 0),
+        coords[cross],
+        r[cross] + r[length] + (origin ? 0 : delta[cross]),
+      );
     }
     if (autoSize.length) {
       const available = overflow({ ...f, ...coords }, shiftClip, padding);

@@ -1,3 +1,5 @@
+import { getParent, isHTMLElement } from '@fluentui/react-utilities';
+
 const FORMS_CONTAINING_BLOCK = /transform|perspective|filter/;
 
 // Properties that are not supported are empty strings (i.e. in jsdom)
@@ -20,9 +22,16 @@ export function isContainingBlock(style: CSSStyleDeclaration, strategy: 'absolut
   );
 }
 
-export function getPhysicalParent(element: Element): HTMLElement | null {
-  const parent = getParent(element, { skipVirtual: true });
-  return isHTMLElement(parent) ? parent : null;
+export function getPhysicalParent(element: Element): Element | null {
+  const parent = element.assignedSlot || getParent(element, { skipVirtual: true });
+  return parent?.nodeType === 1 ? (parent as Element) : null;
+}
+
+export function isTopLayer(element: Element): boolean {
+  const css = element.ownerDocument.defaultView?.CSS;
+  return [':popover-open', ':modal'].some(
+    selector => css?.supports(`selector(${selector})`) && element.matches(selector),
+  );
 }
 
 /**
@@ -33,10 +42,9 @@ export function getContainingBlock(container: HTMLElement, strategy: 'absolute' 
   const win = container.ownerDocument.defaultView!;
   const root = container.ownerDocument.documentElement;
   for (let node = getPhysicalParent(container); node && node !== root; node = getPhysicalParent(node)) {
-    if (isContainingBlock(win.getComputedStyle(node), strategy)) {
+    if (isHTMLElement(node) && isContainingBlock(win.getComputedStyle(node), strategy)) {
       return node;
     }
   }
   return null;
 }
-import { getParent, isHTMLElement } from '@fluentui/react-utilities';

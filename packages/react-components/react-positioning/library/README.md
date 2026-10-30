@@ -78,6 +78,8 @@ covered. The explicit `strategy: 'absolute'` case deliberately records the exist
 `src/usePositioning.regressions.cy.tsx` adds focused real-browser checks for individual CSS
 transforms, shadow-host containing blocks and clipping, boxless overflow ancestors, fixed
 surfaces inside absolute wrappers, and bordered/padded/scaled same-origin iframe references.
+It also covers boolean/all disabled-tether limiting, assigned-slot ancestry, SVG virtual-reference
+clipping, viewport-propagated body overflow, and top-layer popovers and modal dialogs.
 These cases compare against Floating UI where supported. Individual transform properties predate
 support in the pinned oracle, so those cases instead assert physical target/surface alignment.
 

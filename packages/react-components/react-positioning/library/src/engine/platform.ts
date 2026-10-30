@@ -1,6 +1,6 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
 import type { Boundary, ElementRects, Platform, Rect, Strategy } from '@floating-ui/dom';
-import { getContainingBlock } from './containingBlock';
+import { getContainingBlock, isTopLayer } from './containingBlock';
 import { getScrollAncestors, intersect } from './geometry';
 
 const style = (element: Element) => element.ownerDocument.defaultView!.getComputedStyle(element);
@@ -66,6 +66,9 @@ function convertWindowRect(rect: Rect, from: Window, to: Window): Rect {
 }
 
 export function getOffsetParent(element: HTMLElement): HTMLElement | null {
+  if (isTopLayer(element)) {
+    return null;
+  }
   const strategy = style(element).position === 'fixed' ? 'fixed' : 'absolute';
   let parent = strategy === 'fixed' ? null : element.offsetParent;
   while (isHTMLElement(parent) && /^(TABLE|TD|TH)$/.test(parent.tagName) && style(parent).position === 'static') {
