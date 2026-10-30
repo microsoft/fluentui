@@ -1,13 +1,11 @@
 // @ts-check
 
 function getIconBuildScope() {
-  if (process.env.FLUENTUI_VRT_FONT_SIZING === 'true') {
-    return 'font-sizing';
-  }
+  const variant = process.env.FLUENTUI_ICON_VARIANT === 'fonts' ? 'fonts' : 'svg';
   if (process.env.FLUENTUI_VRT_ICON_SIZING === 'true') {
-    return 'svg-sizing';
+    return variant === 'fonts' ? 'font-sizing' : 'svg-sizing';
   }
-  return process.env.FLUENTUI_ICON_VARIANT === 'fonts' ? 'fonts' : 'svg';
+  return variant;
 }
 
 function getIconStoryPatterns() {

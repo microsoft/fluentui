@@ -15,7 +15,6 @@
         "{workspaceRoot}/.storybook/**",
         "{projectRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" },
-        { "env": "FLUENTUI_VRT_FONT_SIZING" },
         { "env": "FLUENTUI_VRT_ICON_SIZING" }
       ],
       "dependsOn": [{ "projects": ["react-storybook-addon"], "target": "build" }]
@@ -55,7 +54,6 @@
         "^production",
         "{workspaceRoot}/.storybook/**",
         { "env": "FLUENTUI_ICON_VARIANT" },
-        { "env": "FLUENTUI_VRT_FONT_SIZING" },
         { "env": "FLUENTUI_VRT_ICON_SIZING" }
       ],
       "outputs": ["{projectRoot}/dist/screenshots"]
