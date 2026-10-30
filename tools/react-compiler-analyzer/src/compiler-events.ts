@@ -1,5 +1,6 @@
 import {
   extractDetailLoc,
+  extractDetailCategory,
   extractDetailReason,
   extractFullDiagnostic,
   resolveSkipReason,
@@ -75,6 +76,7 @@ function occurrenceFor(
     ...(reason ? { reason } : {}),
     ...(fullReason ? { fullReason } : {}),
     ...(event.kind === 'CompileSuccess' ? { memoStats: nullableMemoStats(event) } : {}),
+    ...(extractDetailCategory(event.detail) ? { category: extractDetailCategory(event.detail) } : {}),
   };
 }
 
@@ -87,6 +89,7 @@ function occurrenceKey(occurrence: CompilerOccurrence): string {
     occurrence.reason ?? null,
     occurrence.fullReason ?? null,
     occurrence.memoStats ?? null,
+    occurrence.category ?? null,
   ]);
 }
 
@@ -124,6 +127,7 @@ function diagnosticsFor(events: CompilerOccurrence[]): CompilerDiagnostic[] {
       kind: event.kind,
       span: event.diagnosticSpan,
       reason: event.reason ?? '',
+      ...(event.category ? { category: event.category } : {}),
       ...(event.fullReason ? { fullReason: event.fullReason } : {}),
     }));
 }
@@ -186,6 +190,9 @@ export function normalizeCompilerEvents(
       status,
       compilerEvent: terminalEvent,
       ...(status === 'error' ? { diagnostics } : {}),
+      ...(status === 'error' && diagnostics.some(diagnostic => diagnostic.category === 'Suppression')
+        ? { rejectionKind: 'suppression-related' as const }
+        : {}),
       ...(reason ? { reason } : {}),
       ...(status === 'error' && lastDiagnostic?.fullReason ? { fullReason: lastDiagnostic.fullReason } : {}),
       ...(status === 'error' && firstDiagnosticPosition

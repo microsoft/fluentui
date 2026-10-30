@@ -1,12 +1,12 @@
-import type { FunctionAnalysis } from './types';
+import type { FunctionAnalysis, ReportedMemoCache } from './types';
 
-export type MemoCacheOutcome = 'emitted' | 'not-emitted' | 'unknown';
+export type MemoCacheOutcome = ReportedMemoCache;
 
-/** Classify retained compiler caching without treating compiler acceptance as memoization. */
+/** Classify analysis-only statistics, not actual emitted cache behavior. */
 export function memoCacheOutcome(result: Pick<FunctionAnalysis, 'memoStats'>): MemoCacheOutcome {
   const memoSlots = result.memoStats?.memoSlots;
   if (memoSlots === null || memoSlots === undefined) {
-    return 'unknown';
+    return 'unavailable';
   }
-  return memoSlots > 0 ? 'emitted' : 'not-emitted';
+  return memoSlots > 0 ? 'positive' : 'zero';
 }
