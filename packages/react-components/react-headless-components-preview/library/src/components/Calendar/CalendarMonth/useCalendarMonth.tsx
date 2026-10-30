@@ -178,7 +178,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
   const focusableMonth =
     months.find(month => month.isNavigated && (month.isInBounds || allFocusable)) ??
     months.find(month => month.isInBounds);
-  const [gridSlot, getCell, tabStop] = useCalendarPickerGrid(
+  const [gridSlot, getCell, tabStop, activeCellIndex] = useCalendarPickerGrid(
     grid,
     yearString,
     index => !!months[index]?.isInBounds,
@@ -226,6 +226,7 @@ export const useCalendarMonth = (props: CalendarMonthProps, ref: React.Ref<HTMLD
       month.isSelected,
       month.isCurrent,
       month.index === tabStop,
+      month.index === activeCellIndex,
     );
     const overrides = props.getCellProps?.(month);
     return {

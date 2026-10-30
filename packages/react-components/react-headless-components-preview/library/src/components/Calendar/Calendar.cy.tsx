@@ -43,6 +43,22 @@ const MaxBoundChangingCalendar = () => {
   );
 };
 
+const CrossYearMaxBoundChangingCalendar = () => {
+  const [maxDate, setMaxDate] = React.useState<Date>();
+  const crossYearToday = new Date(2026, 8, 18);
+  return (
+    <div
+      onKeyDown={event => {
+        if (event.key.toLowerCase() === 'e') {
+          setMaxDate(new Date(2025, 6, 31));
+        }
+      }}
+    >
+      <Calendar today={crossYearToday} value={crossYearToday} dayPicker={null} maxDate={maxDate} />
+    </div>
+  );
+};
+
 describe('Calendar', () => {
   it('returns to today with six weeks and three month columns without changing selection', () => {
     const onSelectDate = cy.spy().as('onSelectDate');
@@ -125,6 +141,18 @@ describe('Calendar', () => {
         .should('be.focused')
         .and('have.attr', 'aria-disabled', 'true')
         .and('have.attr', 'tabindex', '0');
+      cy.realPress('End');
+      cy.get(month('July')).should('be.focused');
+    });
+
+    it('keeps focus on an unavailable month when the maximum bound clamps the year', () => {
+      mount(<CrossYearMaxBoundChangingCalendar />);
+
+      cy.get(month('September')).focus().should('be.focused').realPress('e');
+      cy.get(month('September'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '-1');
       cy.realPress('End');
       cy.get(month('July')).should('be.focused');
     });

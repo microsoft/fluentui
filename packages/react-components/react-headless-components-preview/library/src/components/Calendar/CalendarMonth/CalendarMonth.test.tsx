@@ -222,6 +222,27 @@ describe('CalendarMonth', () => {
     expect(getByRole('gridcell', { name: 'July' })).toHaveFocus();
   });
 
+  it('keeps the active month focusable when a maximum bound clamps the navigated year', () => {
+    const picker = (maxDate?: Date, navigatedDate = new Date(2026, 8, 18)) => (
+      <CalendarProvider value={{ ...calendarContextDefaultValue, maxDate }}>
+        <CalendarMonth navigatedDate={navigatedDate} />
+      </CalendarProvider>
+    );
+    const { container, getByRole, rerender } = testingRender(picker());
+    const september = getByRole('gridcell', { name: 'September' });
+    act(() => september.focus());
+
+    rerender(picker(new Date(2025, 6, 31), new Date(2025, 6, 31)));
+
+    expect(september).toHaveFocus();
+    expect(september).toHaveAttribute('aria-disabled', 'true');
+    expect(september).toHaveAttribute('tabindex', '-1');
+    expect(getByRole('gridcell', { name: 'July' })).toHaveAttribute('tabindex', '0');
+    expect(container.querySelectorAll('[role="gridcell"][tabindex="0"]')).toHaveLength(1);
+    fireEvent.keyDown(september, { key: 'End' });
+    expect(getByRole('gridcell', { name: 'July' })).toHaveFocus();
+  });
+
   it('swaps in the headless year picker from its header', () => {
     const selectedDate = new Date(2020, 8, 18);
     const { container } = render(<CalendarMonth navigatedDate={selectedDate} />, { value: selectedDate });

@@ -98,7 +98,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
   const yearRows = getCalendarPickerRows(yearCells, calendarYearColumns);
   const range = { fromYear, toYear };
   const rangeLabel = `${formatYear(fromYear)} - ${formatYear(toYear)}`;
-  const [gridSlot, getCell, tabStop] = useCalendarPickerGrid(
+  const [gridSlot, getCell, tabStop, activeCellIndex] = useCalendarPickerGrid(
     grid,
     rangeLabel,
     index => !isYearDisabled(fromYear + index),
@@ -117,6 +117,7 @@ export const useCalendarYear = (props: CalendarYearProps, ref: React.Ref<HTMLDiv
       year.isSelected,
       year.isCurrent,
       year.year - fromYear === tabStop,
+      year.year - fromYear === activeCellIndex,
     );
     const overrides = props.getCellProps?.(year);
     return {

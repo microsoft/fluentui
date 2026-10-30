@@ -16,20 +16,21 @@ describe('calendar grid helpers', () => {
   });
 
   it.each([false, true])('makes only the tab-stop cell tabbable with allFocusable=%s', allFocusable => {
-    expect(getCalendarPickerCellProps(allFocusable, false, true, false, true)).toMatchObject({
+    expect(getCalendarPickerCellProps(allFocusable, false, true, false, true, true)).toMatchObject({
       root: { role: 'gridcell', tabIndex: 0, 'aria-selected': true },
       button: { type: 'button', tabIndex: -1 },
     });
-    expect(getCalendarPickerCellProps(allFocusable, false, false, false, false).root.tabIndex).toBe(-1);
+    expect(getCalendarPickerCellProps(allFocusable, false, false, false, false, false).root.tabIndex).toBe(-1);
   });
 
   it('keeps unavailable picker cells out of the tab order unless focused or allFocusable is enabled', () => {
-    expect(getCalendarPickerCellProps(false, true, false, false, true)).toMatchObject({
+    expect(getCalendarPickerCellProps(false, true, false, false, true, true)).toMatchObject({
       root: { tabIndex: 0, 'aria-disabled': true },
       button: { disabled: true },
     });
-    expect(getCalendarPickerCellProps(false, true, false, false, false).root.tabIndex).toBeUndefined();
-    expect(getCalendarPickerCellProps(true, true, false, false, true)).toMatchObject({
+    expect(getCalendarPickerCellProps(false, true, false, false, false, false).root.tabIndex).toBeUndefined();
+    expect(getCalendarPickerCellProps(false, true, false, false, false, true).root.tabIndex).toBe(-1);
+    expect(getCalendarPickerCellProps(true, true, false, false, true, true)).toMatchObject({
       root: { tabIndex: 0, 'aria-disabled': true },
       button: { disabled: false },
     });

@@ -193,7 +193,7 @@ export function useCalendarPickerGrid(
     index: number,
   ) => void,
   options: { columns: number; allFocusable: boolean; defaultTabStop: number | undefined; resetKey: string },
-): [GridSlotProps, (index: number) => HTMLElement | undefined, number | undefined] {
+): [GridSlotProps, (index: number) => HTMLElement | undefined, number | undefined, number | undefined] {
   const { columns, allFocusable, defaultTabStop, resetKey } = options;
   const { dir } = useFluent();
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -288,7 +288,7 @@ export function useCalendarPickerGrid(
   });
   gridSlot.onKeyDown = mergeCallbacks(gridSlot.onKeyDown, onGridKeyDown);
 
-  return [gridSlot, getCell, tabStop];
+  return [gridSlot, getCell, tabStop, activeCell?.index];
 }
 
 /**
@@ -317,6 +317,7 @@ export const getCalendarPickerCellProps = (
   isSelected: boolean,
   isCurrent: boolean,
   isTabStop: boolean,
+  isActive: boolean,
 ): GridCellProps => {
   return {
     root: {
@@ -324,8 +325,8 @@ export const getCalendarPickerCellProps = (
       'aria-disabled': isDisabled,
       'aria-selected': isSelected,
       'aria-current': isCurrent ? 'date' : undefined,
-      // Keep the active cell focusable if it becomes unavailable while focused.
-      tabIndex: isTabStop ? 0 : allFocusable || !isDisabled ? -1 : undefined,
+      // Keep the last focused cell programmatically focusable if the grid changes while it is focused.
+      tabIndex: isTabStop ? 0 : allFocusable || !isDisabled || isActive ? -1 : undefined,
       'data-current': toDataAttributeValue(isCurrent),
       'data-selected': toDataAttributeValue(isSelected),
       'data-outside-bounds': toDataAttributeValue(isDisabled),
