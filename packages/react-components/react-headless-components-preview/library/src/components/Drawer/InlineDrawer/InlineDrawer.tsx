@@ -13,6 +13,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = /*#__PURE__*/ composeComponent(
   'InlineDrawer',
   useInlineDrawer,
-  renderInlineDrawer,
   useDrawerContextValue,
+  renderInlineDrawer,
 );

@@ -451,7 +451,8 @@ function isContextProvider(symbol: ts.Symbol): boolean {
     // Context selector providers are typed as `React.FC<React.ProviderProps<Value>>`.
     type.getCallSignatures().some(signature => {
       const [props] = signature.parameters;
-      return props !== undefined && getTypeName(checker.getTypeOfSymbol(props)) === 'ProviderProps';
+      const propsType = props && checker.getTypeOfSymbol(props);
+      return propsType !== undefined && getTypeName(propsType) === 'ProviderProps' && !!propsType.getProperty('value');
     })
   );
 }
@@ -471,8 +472,8 @@ function isComponent(exportName: string, symbol: ts.Symbol): boolean {
 }
 
 /**
- * Finds the functions a component defined in this package is composed of: the arguments of `composeComponent`, or
- * the package hooks and render functions called by the component.
+ * Finds the functions a component defined in this package is composed of: the arguments of either compose helper,
+ * or the package hooks and render functions called by the component.
  */
 function getComposition(component: ts.Symbol): { parts: ts.Symbol[]; contextValuesHooks: ts.Symbol[] } {
   const declaration = component.valueDeclaration;
@@ -496,9 +497,10 @@ function getComposition(component: ts.Symbol): { parts: ts.Symbol[]; contextValu
     if (ts.isCallExpression(node)) {
       const callee = getSymbol(node.expression);
 
-      if (callee?.name === 'composeComponent') {
-        const [, useState, render, useContextValues] = node.arguments.map(getSymbol);
-        parts.push(...[useState, render, useContextValues].filter((part): part is ts.Symbol => part !== undefined));
+      if (callee?.name === 'composeComponent' || callee?.name === 'composeComponentWithoutRef') {
+        const composition = node.arguments.slice(1).map(getSymbol);
+        parts.push(...composition.filter((part): part is ts.Symbol => part !== undefined));
+        const useContextValues = node.arguments.length === 4 ? composition[1] : undefined;
         if (useContextValues) {
           contextValuesHooks.push(useContextValues);
         }

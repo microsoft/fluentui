@@ -13,6 +13,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = /*#__PURE__*/ composeComponent(
   'NavCategoryItem',
   useNavCategoryItem,
-  renderNavCategoryItem,
   useNavCategoryItemContextValues,
+  renderNavCategoryItem,
 );

@@ -13,6 +13,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const Calendar: ForwardRefComponent<CalendarProps> = /*#__PURE__*/ composeComponent(
   'Calendar',
   useCalendar,
-  renderCalendar,
   useCalendarContextValues,
+  renderCalendar,
 );

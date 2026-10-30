@@ -5,6 +5,7 @@ import { useDialog } from './useDialog';
 import { useDialogContextValues } from './useDialogContextValues';
 import { renderDialog } from './renderDialog';
 import type { DialogProps } from './Dialog.types';
+import { composeComponentWithoutRef } from '../../utils/composeComponent';
 
 /**
  * The `Dialog` root component serves as an interface for all Dialog behaviors.
@@ -14,10 +15,8 @@ import type { DialogProps } from './Dialog.types';
  * This component uses the native HTML `<dialog>` element (via `DialogSurface`) for
  * built-in focus trapping, backdrop, and accessibility semantics.
  */
-export const Dialog: React.FC<DialogProps> = React.memo(props => {
-  const state = useDialog(props);
-  const contextValues = useDialogContextValues(state);
-  return renderDialog(state, contextValues);
-});
+export const Dialog: React.FC<DialogProps> = /*#__PURE__*/ React.memo(
+  /*#__PURE__*/ composeComponentWithoutRef('Dialog', useDialog, useDialogContextValues, renderDialog),
+);
 
 Dialog.displayName = 'Dialog';

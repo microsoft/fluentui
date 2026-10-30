@@ -15,6 +15,6 @@ import { composeComponent } from '../../../utils/composeComponent';
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps> = /*#__PURE__*/ composeComponent(
   'TagPickerGroup',
   useTagPickerGroup,
-  renderTagPickerGroup,
   useTagPickerGroupContextValues,
+  renderTagPickerGroup,
 );

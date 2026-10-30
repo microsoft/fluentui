@@ -16,27 +16,44 @@ export type ContextValuesHook<State, ContextValues> = (state: State) => ContextV
 /**
  * Function rendering a component from its state.
  */
-export type RenderFn<State> = (state: State) => JSXElement | null;
+export type RenderFn<State, Result extends JSXElement | null = JSXElement | null> = (state: State) => Result;
 
 /**
  * Function rendering a component from its state and the context values returned by its `ContextValuesHook`.
  */
-export type RenderWithContextValuesFn<State, ContextValues> = (
+export type RenderWithContextValuesFn<State, ContextValues, Result extends JSXElement | null = JSXElement | null> = (
   state: State,
   contextValues: ContextValues,
-) => JSXElement | null;
+) => Result;
+
+type ComposeComponentFnArgs<State, ContextValues, UseState> =
+  | [useState: UseState, render: RenderFn<State>]
+  | [
+      useState: UseState,
+      useGetContextValues: ContextValuesHook<State, ContextValues>,
+      render: RenderWithContextValuesFn<State, ContextValues>,
+    ];
+
+type ForwardRefComponent<Props, RefType> = React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<Props> & RefAttributes<RefType>
+>;
+
+type Component<Props, Result extends JSXElement | null> = {
+  (props: Props): Result;
+  displayName: string;
+};
 
 /**
- * Composes a headless component from its state hook and render function, with an optional hook that maps the state
- * to context values.
+ * Composes a headless component from its state hook and render function, optionally deriving context values
+ * before rendering.
  *
  * Every headless component has the same shape: `state = useX(props, ref)`,
  * `contextValues = useXContextValues(state)` and `renderX(state, contextValues)`. Sharing the `forwardRef` wrapper
  * keeps that boilerplate out of each component, which adds up across the whole library.
  *
- * The component function is picked once, when the component is composed, from whether `useGetContextValues` is
- * provided. A component therefore always calls the same hooks in the same order, and never checks for an optional
- * hook while rendering.
+ * Supports `useState, render` and `useState, useGetContextValues, render` after the display name.
+ * The component function is picked once, when the component is composed, based on the number of arguments.
+ * A component therefore always calls the same hooks in the same order.
  *
  * Arguments are positional on purpose: an options object would repeat its property names in every component, and
  * minifiers don't mangle property names.
@@ -45,8 +62,8 @@ export type RenderWithContextValuesFn<State, ContextValues> = (
  * export const Foo: ForwardRefComponent<FooProps> = composeComponent(
  *   'Foo',
  *   useFoo,
- *   renderFoo,
  *   useFooContextValues,
+ *   renderFoo,
  * );
  * ```
  *
@@ -57,7 +74,6 @@ export type RenderWithContextValuesFn<State, ContextValues> = (
  * @param useState - state hook of the component
  * @param render - render function of the component. It receives the context values as the second argument when
  * `useGetContextValues` is provided.
- * @param useGetContextValues - optional hook mapping the state to the context values passed to `render`
  *
  * @internal
  */
@@ -65,27 +81,72 @@ export function composeComponent<Props, State, RefType>(
   displayName: string,
   useState: StateHook<Props, State, RefType>,
   render: RenderFn<State>,
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>>;
+): ForwardRefComponent<Props, RefType>;
 export function composeComponent<Props, State, RefType, ContextValues>(
   displayName: string,
   useState: StateHook<Props, State, RefType>,
-  render: RenderWithContextValuesFn<State, ContextValues>,
   useGetContextValues: ContextValuesHook<State, ContextValues>,
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>>;
+  render: RenderWithContextValuesFn<State, ContextValues>,
+): ForwardRefComponent<Props, RefType>;
 export function composeComponent<Props, State, RefType, ContextValues>(
   displayName: string,
-  useState: StateHook<Props, State, RefType>,
-  render: RenderFn<State> | RenderWithContextValuesFn<State, ContextValues>,
-  useGetContextValues?: ContextValuesHook<State, ContextValues>,
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & RefAttributes<RefType>> {
-  const Component = useGetContextValues
-    ? React.forwardRef<RefType, Props>((props, ref) => {
-        const state = useState(props as Props, ref);
-        return (render as RenderWithContextValuesFn<State, ContextValues>)(state, useGetContextValues(state));
-      })
-    : React.forwardRef<RefType, Props>((props, ref) => (render as RenderFn<State>)(useState(props as Props, ref)));
+  ...args: ComposeComponentFnArgs<State, ContextValues, StateHook<React.PropsWithoutRef<Props>, State, RefType>>
+): ForwardRefComponent<Props, RefType> {
+  const Component = React.forwardRef<RefType, Props>(createRender(...args));
 
   Component.displayName = displayName;
 
   return Component;
+}
+
+/**
+ * Composes a plain function component using the same pipelines as {@link composeComponent}, without a
+ * `forwardRef` wrapper. The state hook accepts props only, and the result does not add a ref prop.
+ *
+ * Pass the display name and state hook, then an optional context hook, with the renderer last.
+ * Annotate calls as pure for tree-shaking.
+ *
+ * @internal
+ */
+export function composeComponentWithoutRef<Props, State, Result extends JSXElement | null>(
+  displayName: string,
+  useState: (props: Props) => State,
+  render: RenderFn<State, Result>,
+): Component<Props, Result>;
+export function composeComponentWithoutRef<Props, State, ContextValues, Result extends JSXElement | null>(
+  displayName: string,
+  useState: (props: Props) => State,
+  useGetContextValues: ContextValuesHook<State, ContextValues>,
+  render: RenderWithContextValuesFn<State, ContextValues, Result>,
+): Component<Props, Result>;
+export function composeComponentWithoutRef<Props, State, ContextValues>(
+  displayName: string,
+  ...args: ComposeComponentFnArgs<State, ContextValues, (props: Props) => State>
+): Component<Props, JSXElement | null> {
+  const Component = createRender<Props, State, never, ContextValues>(...args) as Component<Props, JSXElement | null>;
+
+  Component.displayName = displayName;
+
+  return Component;
+}
+
+/**
+ * Creates a render function for a composed component based on the provided hooks and renderer.
+ * Handles state, optional context values, and render functions.
+ */
+function createRender<Props, State, RefType, ContextValues>(
+  ...args: ComposeComponentFnArgs<State, ContextValues, StateHook<Props, State, RefType>>
+): (props: Props, ref: React.Ref<RefType>) => JSXElement | null {
+  if (args.length === 2) {
+    const [useState, render] = args;
+
+    return (...params) => render(useState(...params));
+  } else {
+    const [useState, useGetContextValues, render] = args;
+
+    return (...params) => {
+      const state = useState(...params);
+      return render(state, useGetContextValues(state));
+    };
+  }
 }

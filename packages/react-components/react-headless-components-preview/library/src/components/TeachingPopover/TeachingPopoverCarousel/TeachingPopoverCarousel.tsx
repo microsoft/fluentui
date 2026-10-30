@@ -10,6 +10,6 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
   /*#__PURE__*/ composeComponent(
     'TeachingPopoverCarousel',
     useTeachingPopoverCarousel,
-    renderTeachingPopoverCarousel,
     useTeachingPopoverCarouselContextValues,
+    renderTeachingPopoverCarousel,
   );

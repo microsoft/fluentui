@@ -15,6 +15,6 @@ import { composeComponent } from '../../utils/composeComponent';
 export const TagGroup: ForwardRefComponent<TagGroupProps> = /*#__PURE__*/ composeComponent(
   'TagGroup',
   useTagGroup,
-  renderTagGroup,
   useTagGroupContextValues,
+  renderTagGroup,
 );
