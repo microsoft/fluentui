@@ -255,17 +255,14 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${sliderThumbSizeVar})`,
-    // Workaround to check if the browser supports `writing-mode: vertical-lr` for inputs and input[type=range] specifically.
-    // We check if the `writing-mode: sideways-lr` is supported as it's newer feature and it means
-    // that vertical controls should also support `writing-mode: vertical-lr`.
-    '@supports (writing-mode: sideways-lr)': {
-      writingMode: 'vertical-lr',
-      direction: 'rtl',
-    },
-    // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
-    '@supports not (writing-mode: sideways-lr)': {
-      WebkitAppearance: 'slider-vertical',
-    },
+    // Vertically oriented form controls support `writing-mode` since Chrome 124, Firefox 120 and Safari 17.4. Older
+    // engines keep the legacy look through `legacyVerticalSliderAppearance.ts`, which cannot be a stylesheet rule here:
+    // Chromium reports the deprecated `-webkit-appearance: slider-vertical` value while parsing the CSS, even inside an
+    // `@supports not (...)` branch that never matches.
+    writingMode: 'vertical-lr',
+    // Keep values increasing upwards in RTL too; Griffel would flip this to ltr.
+    // The cast is needed because the Direction type has no room for the @noflip comment.
+    direction: 'rtl /* @noflip */' as 'rtl',
   },
 });
 

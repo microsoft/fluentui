@@ -201,4 +201,28 @@ describe('Slider', () => {
     expect(slider.getAttribute('aria-describedby')).toEqual(message.id);
     expect(slider.getAttribute('aria-invalid')).toEqual('true');
   });
+
+  // The legacy vertical fallback must not wrap the input ref: a merged ref drops React 19 ref cleanup functions.
+  it.each([false, true])('passes the input ref through with its cleanup semantics (vertical: %s)', vertical => {
+    const cleanup = jest.fn();
+    const ref = jest.fn((element: HTMLInputElement | null) => (element ? cleanup : undefined));
+
+    const { unmount } = render(<Slider ref={ref} vertical={vertical} />);
+    const input = screen.getByRole('slider');
+
+    expect(ref).toHaveBeenCalledTimes(1);
+    expect(ref).toHaveBeenCalledWith(input);
+
+    unmount();
+
+    if (Number(React.version.split('.')[0]) >= 19) {
+      // React 19 calls the returned cleanup instead of calling the ref again with null.
+      expect(cleanup).toHaveBeenCalledTimes(1);
+      expect(ref).toHaveBeenCalledTimes(1);
+    } else {
+      // Earlier React ignores the return value and detaches by calling the ref with null.
+      expect(cleanup).not.toHaveBeenCalled();
+      expect(ref).toHaveBeenLastCalledWith(null);
+    }
+  });
 });
