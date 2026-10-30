@@ -17,30 +17,50 @@ type Overrides = Partial<{
   overflowY: string;
 }>;
 
+type GeometrySnapshot = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  placement: string | null;
+  position: string;
+  transform: string;
+  left: string;
+  top: string;
+  maxWidth: string;
+  maxHeight: string;
+  arrowLeft: string;
+  arrowTop: string;
+  flags: string;
+  matchTargetSize: string;
+  overflowX: string;
+  overflowY: string;
+};
+
 // This only expands literal expected values; it never calls the engine or reads actual geometry.
 function at(x: number, y: number, placement = 'bottom', values: Overrides = {}) {
-  return [
+  return {
     x,
     y,
-    values.width ?? 120,
-    values.height ?? 60,
+    width: values.width ?? 120,
+    height: values.height ?? 60,
     placement,
-    values.position ?? 'absolute',
-    values.transform ?? `translate(${x}px, ${y}px)`,
-    values.left ?? '0px',
-    values.top ?? '0px',
-    values.maxWidth ?? '',
-    values.maxHeight ?? '',
-    values.arrowLeft ?? '',
-    values.arrowTop ?? '',
-    values.flags ?? '',
-    values.matchTargetSize ?? '',
-    values.overflowX ?? '',
-    values.overflowY ?? '',
-  ];
+    position: values.position ?? 'absolute',
+    transform: values.transform ?? `translate(${x}px, ${y}px)`,
+    left: values.left ?? '0px',
+    top: values.top ?? '0px',
+    maxWidth: values.maxWidth ?? '',
+    maxHeight: values.maxHeight ?? '',
+    arrowLeft: values.arrowLeft ?? '',
+    arrowTop: values.arrowTop ?? '',
+    flags: values.flags ?? '',
+    matchTargetSize: values.matchTargetSize ?? '',
+    overflowX: values.overflowX ?? '',
+    overflowY: values.overflowY ?? '',
+  };
 }
 
-export const geometryBaseline: Record<string, (string | number | null)[]> = {
+export const geometryBaseline: Record<string, GeometrySnapshot> = {
   'ltr-above-top': at(280, 180, 'top'),
   'ltr-above-bottom': at(280, 180, 'top'),
   'ltr-above-start': at(300, 180, 'top-start'),

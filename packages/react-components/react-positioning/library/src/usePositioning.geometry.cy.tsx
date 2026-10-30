@@ -77,6 +77,7 @@ scenarios.push(
   { name: 'shift-left', target: { x: -40 } },
   { name: 'shift-right', target: { x: 780 } },
   { name: 'tether-default', target: { y: 650 }, options: { pinned: true } },
+  // The boolean form adds cross-axis limiting; this centered placement already overlaps the target.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   { name: 'tether-disabled', target: { y: 650 }, options: { pinned: true, unstable_disableTether: true } },
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -277,10 +278,10 @@ const Fixture = ({ scenario, controls }: { scenario: Scenario; controls: Control
               data-layout-reference=""
               style={{
                 position: 'absolute',
-                left: String(layoutBaseline[7]),
-                top: String(layoutBaseline[8]),
-                width: `${layoutBaseline[2]}px`,
-                height: `${layoutBaseline[3]}px`,
+                left: layoutBaseline.left,
+                top: layoutBaseline.top,
+                width: `${layoutBaseline.width}px`,
+                height: `${layoutBaseline.height}px`,
                 visibility: 'hidden',
                 pointerEvents: 'none',
               }}
@@ -347,34 +348,39 @@ function mountScenario(scenario: Scenario) {
   return controls;
 }
 
+function rectGeometry(element: HTMLElement) {
+  const { x, y, width, height } = element.getBoundingClientRect();
+  return { x, y, width, height };
+}
+
 function geometry(element: HTMLElement) {
   const rect = element.getBoundingClientRect();
   const arrow = element.querySelector<HTMLElement>('[data-arrow]');
-  return [
-    rect.x,
-    rect.y,
-    rect.width,
-    rect.height,
-    element.getAttribute('data-popper-placement'),
-    element.style.position,
-    element.style.transform,
-    element.style.left,
-    element.style.top,
-    element.style.maxWidth,
-    element.style.maxHeight,
-    arrow?.style.left ?? '',
-    arrow?.style.top ?? '',
-    ['data-popper-escaped', 'data-popper-reference-hidden', 'data-popper-is-intersecting']
+  return {
+    x: rect.x,
+    y: rect.y,
+    width: rect.width,
+    height: rect.height,
+    placement: element.getAttribute('data-popper-placement'),
+    position: element.style.position,
+    transform: element.style.transform,
+    left: element.style.left,
+    top: element.style.top,
+    maxWidth: element.style.maxWidth,
+    maxHeight: element.style.maxHeight,
+    arrowLeft: arrow?.style.left ?? '',
+    arrowTop: arrow?.style.top ?? '',
+    flags: ['data-popper-escaped', 'data-popper-reference-hidden', 'data-popper-is-intersecting']
       .filter(attribute => element.hasAttribute(attribute))
       .join(','),
-    element.style.getPropertyValue('--fui-match-target-size'),
-    element.style.overflowX,
-    element.style.overflowY,
-  ];
+    matchTargetSize: element.style.getPropertyValue('--fui-match-target-size'),
+    overflowX: element.style.overflowX,
+    overflowY: element.style.overflowY,
+  };
 }
 
 function expectGeometry(element: HTMLElement, scenario: Scenario) {
-  const expected = [...geometryBaseline[scenario.name]];
+  const expected = { ...geometryBaseline[scenario.name] };
   if (scenario.dpr !== undefined && scenario.options?.useTransform === false) {
     const reference = element.parentElement?.querySelector<HTMLElement>('[data-layout-reference]');
     if (!reference) {
@@ -382,8 +388,8 @@ function expectGeometry(element: HTMLElement, scenario: Scenario) {
     }
     // Native layout quantization varies by host; the reference uses only committed CSS literals.
     const rect = reference.getBoundingClientRect();
-    expected[0] = rect.x;
-    expected[1] = rect.y;
+    expected.x = rect.x;
+    expected.y = rect.y;
   }
   expect(geometry(element)).to.deep.equal(expected);
 }
@@ -432,11 +438,11 @@ describe('usePositioning browser geometry contracts', () => {
         cy.get('[data-floating]').then($floating => {
           const element = $floating[0];
           expectGeometry(element, scenario);
-          const rect = geometry(element).slice(0, 4);
+          const rect = rectGeometry(element);
           for (const property of ['left', 'top'] as const) {
             const original = element.style[property];
             element.style[property] = `${parseFloat(original) - 0.001}px`;
-            expect(geometry(element).slice(0, 4), 'sub-layout-step drift has the same rectangle').to.deep.equal(rect);
+            expect(rectGeometry(element), 'sub-layout-step drift has the same rectangle').to.deep.equal(rect);
             expect(() => expectGeometry(element, scenario), `reject changed ${property}`).to.throw();
             element.style[property] = original;
           }
@@ -453,8 +459,7 @@ describe('usePositioning browser geometry contracts', () => {
 
   function expectRect(x: number, y: number, width = 120, height = 60) {
     cy.get('[data-floating]').should($floating => {
-      const rect = $floating[0].getBoundingClientRect();
-      expect([rect.x, rect.y, rect.width, rect.height]).to.deep.equal([x, y, width, height]);
+      expect(rectGeometry($floating[0])).to.deep.equal({ x, y, width, height });
     });
   }
 
