@@ -84,15 +84,15 @@
     border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
     border-bottom-color: var(--colorNeutralStrokeAccessible);
   }
+  .outline:where(:not(.disabled)):focus-within {
+    border-color: var(--colorNeutralStroke1Pressed);
+    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
+  }
   .outline:where(:not(.disabled)):hover {
     border-color: var(--colorNeutralStroke1Hover);
     border-bottom-color: var(--colorNeutralStrokeAccessibleHover);
   }
   .outline:where(:not(.disabled)):active {
-    border-color: var(--colorNeutralStroke1Pressed);
-    border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
-  }
-  .outline:where(:not(.disabled)):focus-within {
     border-color: var(--colorNeutralStroke1Pressed);
     border-bottom-color: var(--colorNeutralStrokeAccessiblePressed);
   }

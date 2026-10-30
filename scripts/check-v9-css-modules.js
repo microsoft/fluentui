@@ -23,6 +23,77 @@ const fixtures = [
   ['shadow-dom--portal', '.fui-Button', ['display', 'font-size', 'height']],
 ];
 
+async function checkComboboxFocus(browser, urls) {
+  const stories = [
+    'appearance-outline-default',
+    'appearance-underline',
+    'appearance-filled-darker',
+    'appearance-filled-lighter',
+    'invalid-outline',
+    'disabled',
+    'size-small',
+    'size-large',
+  ];
+  for (const reducedMotion of ['no-preference', 'reduce']) {
+    for (const story of stories) {
+      const samples = [];
+      for (const baseUrl of urls) {
+        const page = await browser.newPage({ reducedMotion });
+        const errors = [];
+        page.on('pageerror', error => errors.push(error.message));
+        try {
+          await page.goto(`${baseUrl.replace(/\/$/, '')}/iframe.html?id=combobox-converged--${story}&viewMode=story`);
+          const input = page.locator('.fui-Combobox input');
+          await input.waitFor();
+          await page.evaluate(() => document.fonts.ready);
+          const states = {};
+          const sample = async name => {
+            states[name] = await page.locator('.fui-Combobox').evaluate(element => {
+              const properties = [
+                'border-top-color',
+                'border-right-color',
+                'border-bottom-color',
+                'border-left-color',
+                'border-width',
+                'transform',
+                'transition-property',
+                'transition-duration',
+                'transition-delay',
+                'transition-timing-function',
+              ];
+              return ['', '::after'].map(pseudo => {
+                const style = getComputedStyle(element, pseudo || null);
+                return Object.fromEntries(properties.map(property => [property, style.getPropertyValue(property)]));
+              });
+            });
+          };
+          await sample('default');
+          await input.hover();
+          await sample('hover');
+          if (await input.isEnabled()) {
+            await input.focus();
+            await page.waitForTimeout(250);
+            await sample('hovered-focus-250ms');
+            await page.waitForTimeout(750);
+            await sample('hovered-focus-1000ms');
+            await page.mouse.down();
+            await sample('active-focus');
+            await page.mouse.up();
+            await page.mouse.move(0, 0);
+            await sample('focus-without-hover');
+          }
+          samples.push(states);
+          assert.deepEqual(errors, [], `Combobox ${story}: browser errors`);
+        } finally {
+          await page.close();
+        }
+      }
+      assert.deepEqual(samples[1], samples[0], `Combobox ${story}, reduced motion: ${reducedMotion}`);
+      process.stdout.write(`PASS Combobox ${story}: focus states, reduced motion: ${reducedMotion}\n`);
+    }
+  }
+}
+
 async function main() {
   const [baselineUrl, cssModulesUrl] = process.argv.slice(2);
   assert(
@@ -31,6 +102,7 @@ async function main() {
   );
   const browser = await chromium.launch();
   try {
+    await checkComboboxFocus(browser, [baselineUrl, cssModulesUrl]);
     for (const [story, selector, properties] of fixtures) {
       const samples = [];
       for (const baseUrl of [baselineUrl, cssModulesUrl]) {

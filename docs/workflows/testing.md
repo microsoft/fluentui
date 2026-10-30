@@ -32,6 +32,8 @@ NX_TASK_TARGET_PROJECT=vr-tests-react-components yarn nx exec -- node scripts/ch
 
 This compares computed styles for the migrated RTL, badge, typography, icon, custom-hook, and shadow-root
 fixtures. It is not part of the default VRT target and does not replace screenshot comparisons.
+Combobox checks also exercise overlapping hover, focus, and active states with normal and reduced motion,
+comparing border colors and focus-indicator transitions after 250ms and 1000ms without disabling animations.
 Both builds use the same local avatar image in place of the external image CDN for deterministic, offline checks.
 
 ## Writing Unit Tests
