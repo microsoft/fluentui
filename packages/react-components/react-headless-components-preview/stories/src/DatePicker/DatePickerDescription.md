@@ -11,8 +11,9 @@ and state attributes.
   when `allowTextInput` is set. Native props, including `id` and ARIA props, and the forwarded ref target this control,
   so their types follow `allowTextInput`: `HTMLButtonElement` by default and `HTMLInputElement` with `allowTextInput`.
   `className` and `style` go to the `root` wrapper.
-- **Icon**: decorative inside the button. With `allowTextInput`, it toggles the calendar on click without adding a
-  tab stop.
+- **Icon**: decorative inside the button. With `allowTextInput`, it is a `role="button"` that toggles the calendar on
+  click, Enter or Space. It has `tabindex="-1"`, so assistive technology can focus and operate it without adding a
+  tab stop; keyboard users open the calendar from the input with Alt + Arrow Down.
 - **Popup surface**: a `role="dialog"` named by the visible month and year. It is shown in the top layer with
   `popover="manual"` and anchored below the field, flipping above when there is no room. It does not trap focus.
 - **Calendar**: configure it with the `calendar` slot. DatePicker owns its selection, `today`, `minDate`, `maxDate` and

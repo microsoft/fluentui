@@ -1,5 +1,6 @@
 import { DatePicker } from '@fluentui/react-headless-components-preview/date-picker';
 import descriptionMd from './DatePickerDescription.md';
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
 import './date-picker.module.css';
 
 export { Default } from './DatePickerDefault.stories';
@@ -13,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('DatePicker')].join('\n'),
       },
     },
   },

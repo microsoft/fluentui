@@ -373,10 +373,57 @@ describe('DatePicker', () => {
 
       const icon = getByTestId('icon');
       expect(icon).toHaveAttribute('role', 'button');
-      expect(icon).not.toHaveAttribute('tabindex');
+      // Focusable for assistive technology, but not a tab stop.
+      expect(icon).toHaveAttribute('tabindex', '-1');
       fireEvent.click(icon);
       expect(queryByRole('dialog')).toBeInTheDocument();
       expect(icon).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it.each(['Enter', ' '])('toggles the calendar from the focused icon with "%s"', key => {
+      const onOpenChange = jest.fn();
+      const { getByTestId, queryByRole } = renderEditable({
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        onOpenChange,
+      });
+      const icon = getByTestId('icon');
+
+      icon.focus();
+      expect(icon).toHaveFocus();
+      expect(fireEvent.keyDown(icon, { key })).toBe(false);
+      expect(queryByRole('dialog')).toBeInTheDocument();
+      expect(onOpenChange).toHaveBeenLastCalledWith(
+        expect.anything(),
+        expect.objectContaining({ open: true, reason: 'icon' }),
+      );
+    });
+
+    it('does not open from the icon keyboard while disabled', () => {
+      const { getByTestId, queryByRole } = renderEditable({
+        disabled: true,
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+      });
+
+      fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    it('validates pending text when focus leaves the date picker from the icon', () => {
+      const onValidationResult = jest.fn();
+      const { input, getByTestId } = renderEditable({
+        icon: { 'data-testid': 'icon' } as React.ComponentProps<'span'>,
+        onValidationResult,
+      });
+
+      fireEvent.change(input, { target: { value: 'not a date' } });
+      fireEvent.blur(input, { relatedTarget: getByTestId('icon') });
+      expect(onValidationResult).not.toHaveBeenCalled();
+
+      fireEvent.blur(getByTestId('icon'), { relatedTarget: document.body });
+      expect(onValidationResult).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ error: 'invalid-input' }),
+      );
     });
 
     it.each(['2026-08-20', 'Aug 20, 2026', 'August 20 2026', '8/20/2026'])('commits "%s" on Enter', text => {

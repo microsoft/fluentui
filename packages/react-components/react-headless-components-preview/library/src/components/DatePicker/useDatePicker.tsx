@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
+import { ArrowDown, Enter, Escape, Space } from '@fluentui/keyboard-keys';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -422,8 +422,10 @@ export const useDatePicker = (
   const icon = slot.optional(props.icon, { renderByDefault: true, elementType: 'span' });
   if (icon) {
     if (allowTextInput) {
-      // A pointer affordance only: keyboard users open the calendar with Alt + Arrow Down from the input.
+      // Not a tab stop: keyboard users open the calendar with Alt + Arrow Down from the input. It is still focusable
+      // and activatable with Enter or Space, so assistive technology that focuses the button can operate it.
       icon.role ??= 'button';
+      icon.tabIndex ??= -1;
       icon['aria-label'] ??= 'Choose date';
       icon['aria-controls'] = open ? surfaceId : undefined;
       icon['aria-disabled'] = disabled || undefined;
@@ -437,6 +439,15 @@ export const useDatePicker = (
           requestOpen(event, !open, 'icon');
         }
       });
+      icon.onKeyDown = mergeCallbacks(icon.onKeyDown, event => {
+        if (event.isDefaultPrevented() || disabled || (event.key !== Enter && event.key !== Space)) {
+          return;
+        }
+        // Space would otherwise scroll the page.
+        event.preventDefault();
+        requestOpen(event, !open, 'icon');
+      });
+      icon.onBlur = mergeCallbacks(icon.onBlur, onControlBlur);
     } else {
       icon['aria-hidden'] = true;
     }

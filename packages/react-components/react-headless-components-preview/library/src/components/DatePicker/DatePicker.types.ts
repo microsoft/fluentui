@@ -36,8 +36,8 @@ export type DatePickerSlots = {
   displayValue: NonNullable<Slot<'span'>>;
 
   /**
-   * The trailing calendar icon. It is decorative inside the trigger. With `allowTextInput`, it is a pointer affordance
-   * that toggles the calendar on click without adding a tab stop. Provide the icon as its children.
+   * The trailing calendar icon. It is decorative inside the trigger. With `allowTextInput`, it is a button that toggles
+   * the calendar on click, Enter or Space without adding a tab stop. Provide the icon as its children.
    */
   icon?: Slot<'span'>;
 
