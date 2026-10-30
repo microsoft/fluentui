@@ -179,6 +179,11 @@ export type NavDrawerHeaderState = DrawerHeaderState & {
 // @public
 export type NavDrawerProps = DrawerProps & NavProps;
 
+// @public (undocumented)
+export type NavDrawerSlots = {
+    root: Slot<typeof Drawer>;
+};
+
 // @public
 export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextValue, 'tabbable'> & {
     root: {
