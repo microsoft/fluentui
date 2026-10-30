@@ -3100,7 +3100,7 @@ __metadata:
     schema-utils: "npm:3.1.1"
     semver: "npm:^6.2.0"
     source-map-loader: "npm:4.0.0"
-    storybook: "npm:9.1.17"
+    storybook: "npm:9.1.21"
     storywright: "patch:storywright@npm%3A0.0.27-storybook7.14#~/.yarn/patches/storywright-npm-0.0.27-storybook7.14-bfcc4eb382.patch"
     strip-ansi: "npm:6.0.0"
     style-loader: "npm:2.0.0"
@@ -30189,9 +30189,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:9.1.17":
-  version: 9.1.17
-  resolution: "storybook@npm:9.1.17"
+"storybook@npm:9.1.21":
+  version: 9.1.21
+  resolution: "storybook@npm:9.1.21"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -30212,7 +30212,7 @@ __metadata:
       optional: true
   bin:
     storybook: ./bin/index.cjs
-  checksum: 10c0/8590eaff08714565f19658b16676005960cada649fd0809171d8e8917f38592c52a795a68662c92abb90aae9d5794f0e60f08a2523d9d2524f7f826af0ddd66e
+  checksum: 10c0/aa898fae4dea384233c09efed12ce60e76fe49edc8721f4cd9a377c7d25437e19bce0d34cbecf2f152dfdb50989f63fb5bee03047b1b33cf9c4a0545cabc9a8f
   languageName: node
   linkType: hard
 
