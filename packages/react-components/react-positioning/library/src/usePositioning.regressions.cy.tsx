@@ -41,6 +41,36 @@ describe('positioning engine browser regressions', () => {
   });
   afterEach(() => root.remove());
 
+  it('ignores positioned display: contents ancestors in a scrolled document', () => {
+    cy.document().then(async doc => {
+      const win = doc.defaultView!;
+      const originalScroll = win.scrollY;
+      Object.assign(root.style, { position: 'static', height: '1600px' });
+      const target = element(
+        doc,
+        'div',
+        { position: 'fixed', left: '350px', top: '240px', width: '80px', height: '40px' },
+        root,
+      );
+      const wrapper = element(doc, 'div', { display: 'contents', position: 'relative' }, root);
+      const floating = element(doc, 'div', { position: 'absolute', width: '120px', height: '60px' }, wrapper);
+      try {
+        win.scrollTo(0, 200);
+        expect(win.scrollY, 'document scroll').to.equal(200);
+        const actual = await computePosition(target, floating, {
+          strategy: 'absolute',
+          positioningOptions: { pinned: true },
+        });
+        Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
+        const bounds = floating.getBoundingClientRect();
+        expect(bounds.x, 'physical x').to.equal(330);
+        expect(bounds.y, 'physical y').to.equal(280);
+      } finally {
+        win.scrollTo(0, originalScroll);
+      }
+    });
+  });
+
   for (const kind of ['popover', 'dialog', 'containedPopover']) {
     it(`stops containing-block and clipping traversal beyond a ${kind} ancestor`, () => {
       cy.document().then(async doc => {

@@ -30,6 +30,9 @@ export const isContainingBlock = (
   style: CSSStyleDeclaration,
   strategy: 'absolute' | 'fixed',
 ): boolean => {
+  if (style.display === 'contents') {
+    return false;
+  }
   const isWebKit = element.ownerDocument.defaultView?.CSS?.supports('-webkit-backdrop-filter', 'none');
   return (
     (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
