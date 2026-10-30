@@ -3,6 +3,47 @@
 Use this guide when upgrading between package versions. Entries are ordered by target version,
 newest first; dates within an entry identify changes made during its development, not release dates.
 
+## 0.0.3 to 0.0.4
+
+| Upgrade            | Release date | Guide updated |
+| ------------------ | ------------ | ------------- |
+| `0.0.3` to `0.0.4` | Unreleased   | 2026-10-26    |
+
+`0.0.4` changes the JSON output contract from schema version 2 to 3. **This is a breaking
+change for JSON consumers**, despite the package's patch-version increment. CLI flags,
+configuration, annotation eligibility, directive statuses, and exit-code rules are unchanged.
+Justified directives remain protected from `--fix`.
+
+### Required changes for JSON consumers
+
+1. Accept `schemaVersion: 3` and update strict validators to the shipped
+   [analyze schema](rca.analyze.schema.json) and [lint schema](rca.lint.schema.json).
+   Register the analyze schema when validating lint; it supplies shared definitions.
+2. Replace `summary.memoCacheEmitted` with `summary.reportedMemoCachePositive` when counting
+   accepted functions with positive reported memo slots. The new `reportedMemoCacheZero` and
+   `reportedMemoCacheUnavailable` counters complete the partition. These are analysis statistics,
+   **not proof of emitted caching** or of a particular operation being cached.
+3. Allow the new `profile` and `emittedCaching` envelope fields, optional function diagnostics
+   and suppression classification, annotation `targets`, and revalidation `evidence`.
+   Refer to the schemas for their complete shapes.
+
+If you only use the CLI interactively, no command changes are required. Human report labels
+and generated bailout justifications now distinguish reported statistics from preventive
+recommendations; update any scripts that scrape those labels.
+
+### New review information
+
+- Suppression-related compiler rejections retain risk findings and can be enumerated using
+  `functions[].rejectionKind`. They remain excluded from automatic annotation.
+- Annotation previews and writes include target rationale. Zero reported slots do not
+  disqualify a preventive bailout.
+- Justified revalidation reports before/after acceptance and statistics under the recorded
+  profile. No observed effect does not establish universal redundancy; emitted optimization
+  remains unmeasured.
+
+Existing removal behavior for unjustified guards is unchanged. Review guard changes against
+your build and run application behavior tests before accepting them.
+
 ## 0.0.2 to 0.0.3
 
 | Upgrade            | Release date | Guide updated |
