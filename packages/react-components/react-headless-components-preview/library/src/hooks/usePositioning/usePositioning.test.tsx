@@ -12,9 +12,17 @@ jest.mock('@fluentui/react-positioning', () => {
 
 const useFloatingPositioningMock = useFloatingPositioning as jest.Mock;
 
-// jsdom doesn't implement `CSS.supports()`, these tests cover the CSS anchor positioning path
+// jsdom doesn't implement `CSS.supports()`. Only anchor positioning is supported, other features (e.g. selectors that
+// `@fluentui/react-positioning` checks) are not.
+const supportsAnchorPositioning = (condition: string) => condition.includes('anchor-name');
+
+// These tests cover the CSS anchor positioning path
 beforeAll(() => {
-  Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
+  Object.defineProperty(globalThis, 'CSS', {
+    value: { supports: supportsAnchorPositioning },
+    configurable: true,
+    writable: true,
+  });
 });
 
 afterAll(() => {
@@ -358,7 +366,11 @@ describe('usePositioning without CSS anchor positioning', () => {
 
 describe('usePositioning with options that need JavaScript', () => {
   beforeAll(() => {
-    Object.defineProperty(globalThis, 'CSS', { value: { supports: () => true }, configurable: true, writable: true });
+    Object.defineProperty(globalThis, 'CSS', {
+      value: { supports: supportsAnchorPositioning },
+      configurable: true,
+      writable: true,
+    });
   });
 
   afterAll(() => {

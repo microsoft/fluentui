@@ -177,7 +177,8 @@ describe('usePositioning', () => {
   it('positions in JavaScript when there is an arrow', () => {
     return cy
       .wrap(render({ options: { position: 'below' }, arrow: true }, false), { timeout: 10000 })
-      .should((result: Result) => {
+      .should(subject => {
+        const result = subject as Result;
         expect(result.anchorName).to.equal('');
         // Below the target, centered
         expect(result.rect).to.deep.equal({ left: 400, top: 340, width: 200, height: 100 });
@@ -192,7 +193,8 @@ describe('usePositioning', () => {
       .wrap(render({ options: { position: 'below', autoSize: true, pinned: true }, height: 500 }, false), {
         timeout: 10000,
       })
-      .should((result: Result) => {
+      .should(subject => {
+        const result = subject as Result;
         expect(result.anchorName).to.equal('');
         expect(result.maxHeight).to.equal('360px');
         expect(result.rect.top).to.equal(340);
