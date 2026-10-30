@@ -1,0 +1,6 @@
+{
+  "type": "none",
+  "comment": "test(react-provider): verify build-time ID namespaces across bundlers and React versions",
+  "packageName": "@fluentui/react-provider",
+  "email": "martinhochel@microsoft.com"
+}

@@ -55,6 +55,34 @@ Every component package has a `testing/isConformant.ts` file that validates:
 - `as` prop (if applicable) works
 - Accessibility basics
 
+## Build-Time ID Namespace Integration
+
+Run `yarn nx run react-provider:test-build-prefix` to build the packages and test the published
+ESM/CommonJS ID namespace contract with esbuild, Webpack, and Vite. These are Node-only publication
+and production-code-elimination checks; no Playwright browser is launched.
+
+Run `yarn nx run react-provider:e2e --spec=src/components/FluentProvider/FluentProviderIdNamespace.cy.tsx`
+for browser coverage. Cypress mounts the shared demonstration harness, not the two app roots.
+Each scenario puts two independently bundled React/Fluent applications in one iframe document.
+The harness uses source- and origin-checked messages, so Cypress can drive the shared controls
+without disabling browser security or directly accessing the iframe's globals.
+It covers the unconfigured collision, full theme tokens, both lifecycle orders, theme updates,
+SSR/hydration, and browser execution of Webpack/Vite output without a process shim.
+
+Use `react-provider:test-rit--17--e2e` and `react-provider:test-rit--18--e2e` for the same Cypress
+spec on the existing RIT matrix, after installing that version's RIT dependencies as documented by
+the tool. The fixture builder reads the RIT webpack React alias so both independent app bundles use
+that version too. Tests assert each inner runtime's version and independence; testing a React 17
+wrapper around React 19 fixture apps would not count. React 17 uses legacy render/hydrate APIs.
+Build shared package outputs before parallel version runs to avoid concurrent output cleanup.
+
+`react-provider:prepare-id-namespace-demo` builds the same fixtures for the public FluentProvider
+Storybook story. Local package Storybook (`react-provider-stories:storybook`, or `:start`) prepares
+and serves the assets. The published site is compiled by `public-docsite-v9:build-storybook`;
+component story packages do not compile a separate site through their inherited no-op build target.
+Generated files live under ignored build output directories, not committed bundles. The public
+Storybook uses workspace React; the Cypress RIT matrix verifies the shared scenarios on 17/18.
+
 ## SSR Safety
 
 Components must work in server-side rendering. Never access browser APIs without guards:

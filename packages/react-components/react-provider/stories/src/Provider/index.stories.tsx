@@ -9,6 +9,7 @@ export { Dir } from './FluentProviderDir.stories';
 export { ApplyStylesToPortals } from './FluentProviderApplyStylesToPortals.stories';
 export { Nested } from './FluentProviderNested.stories';
 export { Frame } from './FluentProviderFrame.stories';
+export { IdNamespace } from './FluentProviderIdNamespace.stories';
 
 export default {
   title: 'Components/FluentProvider',

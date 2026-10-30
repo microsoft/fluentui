@@ -66,7 +66,13 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     // decide which stories to include/exclude in docs mode.
     '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ],
-  staticDirs: ['../public'],
+  staticDirs: [
+    '../public',
+    {
+      from: path.resolve(__dirname, '../../../packages/react-components/react-provider/library/dist/id-namespace-demo'),
+      to: '/id-namespace-demo',
+    },
+  ],
   addons: [
     ...rootMain.addons,
     /** {@link file://./../../../packages/react-components/react-storybook-addon-playground/package.json} */
