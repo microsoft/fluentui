@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import type { LineChartPoints } from './index';
+import type { LineChartPoints, LineChartProps } from './index';
 import { LineChart } from './index';
 import '@testing-library/jest-dom';
-
+import type { CustomizedCalloutData } from '../../types/index';
 import {
   getByClass,
   getById,
@@ -972,6 +972,90 @@ describe('LineChart - mouse events', () => {
     expect(html1).not.toBe(html2);
   });
 
+  it.each([
+    { policy: 'preserve' as const, perStack: true },
+    { policy: 'none' as const, perStack: true },
+    { policy: 'preserve' as const, perStack: false },
+    { policy: 'none' as const, perStack: false },
+  ])(
+    'Should refresh a stateful callout without remounting (policy: $policy, stack: $perStack)',
+    ({ policy, perStack }) => {
+      let calloutMountCount = 0;
+      const CalloutContent = ({ calloutProps }: { calloutProps?: CustomizedCalloutData }) => {
+        const [value, setValue] = React.useState('');
+        React.useEffect(() => {
+          calloutMountCount++;
+        }, []);
+        return (
+          <>
+            <input aria-label="Callout note" value={value} onChange={event => setValue(event.target.value)} />
+            <pre>{JSON.stringify(calloutProps)}</pre>
+          </>
+        );
+      };
+      const renderCallout = (calloutProps?: CustomizedCalloutData) => <CalloutContent calloutProps={calloutProps} />;
+      const scene = (data: typeof basicChartPoints) => (
+        <LineChart
+          data={data}
+          focusRestorePolicy={policy}
+          onRenderCalloutPerStack={perStack ? renderCallout : undefined}
+          onRenderCalloutPerDataPoint={perStack ? undefined : renderCallout}
+        />
+      );
+      const { container, rerender } = render(scene(basicChartPoints), { container: root! });
+      const point = container.querySelector<SVGElement>('[aria-label="20. metaData1, 50."]');
+      expect(point).not.toBeNull();
+      act(() => point!.focus());
+      const input = screen.getByRole('textbox', { name: 'Callout note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Retain my note' } });
+      expect(calloutMountCount).toBe(1);
+
+      for (const callbacks of [false, true]) {
+        rerender(
+          scene({
+            ...basicChartPoints,
+            lineChartData: basicPoints.map(line => ({
+              ...line,
+              onLineClick: callbacks ? () => undefined : undefined,
+              data: line.data.map(dataPoint => ({
+                ...dataPoint,
+                onDataPointClick: callbacks ? () => undefined : undefined,
+              })),
+            })),
+          }),
+        );
+        expect(screen.getByRole('textbox', { name: 'Callout note' })).toBe(input);
+        expect(input).toHaveValue('Retain my note');
+        expect(container.ownerDocument.activeElement).toBe(input);
+        expect(calloutMountCount).toBe(1);
+      }
+
+      const previousPath = point!.getAttribute('d');
+      rerender(
+        scene({
+          ...basicChartPoints,
+          lineChartData: basicPoints.map((line, lineIndex) => ({
+            ...line,
+            color: 'blue',
+            data: line.data.map((dataPoint, pointIndex) =>
+              lineIndex === 0 && pointIndex === 0 ? { ...dataPoint, x: 22, y: 987654 } : dataPoint,
+            ),
+          })),
+        }),
+      );
+
+      expect(container.querySelector('[aria-label="22. metaData1, 987654."]')).toBe(point);
+      expect(point!.getAttribute('d')).not.toBe(previousPath);
+      expect(container.querySelector('pre')).toHaveTextContent('987654');
+      expect(container.querySelector('pre')).toHaveTextContent('blue');
+      expect(screen.getByRole('textbox', { name: 'Callout note' })).toBe(input);
+      expect(input).toHaveValue('Retain my note');
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(calloutMountCount).toBe(1);
+    },
+  );
+
   // @FIXME: this tests is failing with jest 29.7.0
   it('Should render customized callout on mouseover', () => {
     // Render the LineChart with a custom callout renderer using React Testing Library
@@ -1073,4 +1157,793 @@ describe('LineChart - mouse events', () => {
     fireEvent.blur(dataPoint!, { relatedTarget: calloutAction });
     expect(screen.getByTestId('callout-action')).toBeInTheDocument();
   });
+
+  it('Should focus the point specified by focusOnReset when data or colors change', () => {
+    const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const userSelectedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(userSelectedPoint).not.toBeNull();
+    act(() => userSelectedPoint!.focus());
+    act(() => beforeChart.focus());
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="50. metaData2, 90."]'));
+  });
+
+  it.each([false, true])('Should skip an inactive point (focusOnReset: %s)', enableFocusOnReset => {
+    const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+      { container: root! },
+    );
+    const point = container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!;
+    act(() => point.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    fireEvent.click(screen.getByRole('option', { name: 'metaData1' }));
+    expect(point).not.toHaveAttribute('tabindex');
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicPoints.map(line => ({ ...line, color: 'blue' })),
+    };
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(point).not.toHaveAttribute('tabindex');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
+  it.each([false, true])('Should not restore focus for equivalent data (cloned: %s)', cloneData => {
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} focusRestorePolicy="reset" />
+      </>,
+      { container: root! },
+    );
+    act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    const data = cloneData
+      ? {
+          ...basicChartPoints,
+          lineChartData: basicPoints.map(line => ({ ...line, data: line.data.map(point => ({ ...point })) })),
+        }
+      : basicChartPoints;
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={data} focusOnReset={{ lineIndex: 1, pointIndex: 1 }} focusRestorePolicy="reset" width={700} />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+  });
+
+  it.each([false, true])(
+    'Should not restore focus when only inline handlers change (focusOnReset: %s)',
+    enableFocusOnReset => {
+      const createData = (isInteractive = true) => ({
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          onLineClick: isInteractive ? () => undefined : undefined,
+          data: line.data.map(point => ({
+            ...point,
+            onDataPointClick: isInteractive ? () => undefined : undefined,
+          })),
+        })),
+      });
+      const focusOnReset = enableFocusOnReset ? { lineIndex: 1, pointIndex: 1 } : undefined;
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={createData()} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+        </>,
+        { container: root! },
+      );
+      act(() => container.querySelector<SVGElement>('[aria-label="50. metaData2, 90."]')!.focus());
+      const beforeChart = screen.getByTestId('before-chart');
+      act(() => beforeChart.focus());
+
+      for (const isInteractive of [true, false, true]) {
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <LineChart
+              data={createData(isInteractive)}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+              width={700}
+            />
+          </>,
+        );
+
+        expect(container.ownerDocument.activeElement).toBe(beforeChart);
+      }
+    },
+  );
+
+  it.each([
+    { optimizeLargeData: false, x: 0, y: 0 },
+    { optimizeLargeData: true, x: 0, y: 0 },
+    { optimizeLargeData: false, x: 35, y: 45 },
+    { optimizeLargeData: true, x: 35, y: 45 },
+  ])(
+    'Should reopen the path-line callout at the same position (optimized: $optimizeLargeData, x: $x, y: $y)',
+    ({ optimizeLargeData, x, y }) => {
+      const data = {
+        ...basicChartPoints,
+        lineChartData: basicPoints.map(line => ({
+          ...line,
+          lineOptions: { curve: optimizeLargeData ? undefined : ('linear' as const), mode: 'lines' as const },
+        })),
+      };
+      const updatedData = {
+        ...data,
+        lineChartData: data.lineChartData.map(line => ({ ...line, color: 'blue' })),
+      };
+      const focusOnReset = { lineIndex: 1, pointIndex: 1 };
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart
+            data={data}
+            optimizeLargeData={optimizeLargeData}
+            focusOnReset={focusOnReset}
+            focusRestorePolicy="reset"
+          />
+        </>,
+        { container: root! },
+      );
+      const beforeChart = screen.getByTestId('before-chart');
+      const highlightCircle = container.querySelector<SVGCircleElement>(
+        'circle[id^="staticHighlightCircle"][id$="_1"]',
+      )!;
+      const highlightRect = highlightCircle.getBoundingClientRect();
+      Object.defineProperty(highlightCircle, 'getBoundingClientRect', {
+        value: () => ({ ...highlightRect, x, y }),
+      });
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart
+            data={updatedData}
+            optimizeLargeData={optimizeLargeData}
+            focusOnReset={focusOnReset}
+            focusRestorePolicy="reset"
+          />
+        </>,
+      );
+
+      const line = container.querySelectorAll<SVGPathElement>('path[id^="lineID"]')[1];
+      expect(line).toBeDefined();
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      expect(
+        container.querySelector<SVGCircleElement>('circle[id^="staticHighlightCircle"][id$="_1"]')!.getAttribute('cx'),
+      ).not.toBe('0');
+      act(() => beforeChart.focus());
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+
+      act(() => line.focus());
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+      act(() => beforeChart.focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <LineChart data={data} optimizeLargeData={optimizeLargeData} focusRestorePolicy="reset" />
+        </>,
+      );
+
+      expect(container.ownerDocument.activeElement).toBe(line);
+      expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      expect(getByClass(container, /calloutContentRoot/i)[0]).toHaveTextContent('90');
+    },
+  );
+
+  it.each([false, true])(
+    'Should preserve a focused path when markers coexist and the path is removed (optimized: %s)',
+    optimizeLargeData => {
+      const scene = (markersOnly: boolean) => (
+        <LineChart
+          data={{
+            ...basicChartPoints,
+            lineChartData: basicPoints.map(line => ({
+              ...line,
+              lineOptions: {
+                curve: 'linear',
+                mode: markersOnly ? 'markers' : 'lines+markers',
+              },
+            })),
+          }}
+          optimizeLargeData={optimizeLargeData}
+        />
+      );
+      const { container, rerender } = render(scene(false), { container: root! });
+      const path = container.querySelector<SVGPathElement>('path[id^="lineID"][tabindex="0"]')!;
+      expect(path).not.toBeNull();
+      expect(container.querySelector('circle[role="option"][tabindex="0"]')).not.toBeNull();
+      act(() => path.focus());
+      expect(container.ownerDocument.activeElement).toBe(path);
+
+      rerender(scene(true));
+
+      expect(path.isConnected).toBe(false);
+      const marker = container.querySelector<SVGElement>('circle[role="option"][tabindex="0"]')!;
+      expect(marker).not.toBeNull();
+      expect(container.ownerDocument.activeElement).toBe(marker);
+    },
+  );
+
+  it('Should restore the previously focused point when focusOnReset is not provided', () => {
+    const updatedData = {
+      ...basicChartPoints,
+      lineChartData: basicChartPoints.lineChartData.map(line => ({ ...line, color: 'blue' })),
+    };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={basicChartPoints} focusRestorePolicy="reset" />
+      </>,
+      { container: root! },
+    );
+    const beforeChart = screen.getByTestId('before-chart');
+    const previouslyFocusedPoint = container.querySelector<SVGElement>('[aria-label="70. metaData3, 30."]');
+    expect(previouslyFocusedPoint).not.toBeNull();
+    act(() => previouslyFocusedPoint!.focus());
+    act(() => beforeChart.focus());
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <LineChart data={updatedData} focusRestorePolicy="reset" />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(container.querySelector('[aria-label="70. metaData3, 30."]'));
+  });
+});
+
+describe('LineChart - deferred reset and hovered point payload', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const resetCases = ([false, true] as const).flatMap(enablePerfOptimization =>
+    (['points', 'curved', 'optimized'] as const).flatMap(mode =>
+      (['reset', 'preserve', 'none'] as const).map(focusRestorePolicy => ({
+        enablePerfOptimization,
+        mode,
+        focusRestorePolicy,
+      })),
+    ),
+  );
+  it.each(resetCases)(
+    'loads empty data ($mode, optimized mount: $enablePerfOptimization, policy: $focusRestorePolicy)',
+    ({ enablePerfOptimization, mode, focusRestorePolicy }) => {
+      const config = {
+        width: 600,
+        height: 400,
+        enablePerfOptimization,
+        optimizeLargeData: mode === 'optimized',
+        focusRestorePolicy,
+        focusOnReset: { lineIndex: 0, pointIndex: 1 },
+      };
+      const data: LineChartProps['data'] = {
+        lineChartData: [
+          {
+            ...basicPoints[0],
+            lineOptions: mode === 'curved' ? { curve: 'linear', mode: 'lines' } : undefined,
+          },
+        ],
+      };
+      const scene = (data: LineChartProps['data']) => (
+        <>
+          <button data-testid="outside">Outside</button>
+          <LineChart {...config} data={data} />
+        </>
+      );
+      const { container, rerender, getByTestId } = render(scene({ lineChartData: [] }));
+      act(() => getByTestId('outside').focus());
+
+      rerender(scene(data));
+
+      const targetSelector =
+        mode === 'points' ? '[role="option"][aria-label="40. metaData1, 80."]' : 'path[id^="lineID"][tabindex="0"]';
+      const target = container.querySelector<SVGElement>(targetSelector);
+      expect(target).not.toBeNull();
+      expect(container.ownerDocument.activeElement).toBe(
+        focusRestorePolicy === 'reset' ? target : getByTestId('outside'),
+      );
+
+      rerender(scene({ lineChartData: [] }));
+      act(() => getByTestId('outside').focus());
+      rerender(scene(data));
+      expect(container.ownerDocument.activeElement).toBe(
+        focusRestorePolicy === 'reset' ? container.querySelector(targetSelector) : getByTestId('outside'),
+      );
+    },
+  );
+
+  it.each([false, true])('uses the hovered point without changing stack payloads (stack: %s)', isCalloutForStack => {
+    const data: LineChartProps['data'] = {
+      lineChartData: [
+        {
+          legend: 'Repeated',
+          color: 'red',
+          data: [
+            { x: 10, y: 20, yAxisCalloutData: 'First point' },
+            { x: 10, y: 40, yAxisCalloutData: 'Second point' },
+          ],
+        },
+        { legend: 'Repeated', color: 'blue', data: [{ x: 10, y: 60, yAxisCalloutData: 'Other series' }] },
+      ],
+    };
+    const onRenderCalloutPerDataPoint = jest.fn((point?: CustomizedCalloutData) => (
+      <pre data-testid="hovered-callout">{JSON.stringify(point)}</pre>
+    ));
+    const { container, getByTestId } = render(
+      <LineChart
+        data={data}
+        width={600}
+        height={400}
+        isCalloutForStack={isCalloutForStack}
+        onRenderCalloutPerDataPoint={onRenderCalloutPerDataPoint}
+      />,
+    );
+
+    for (const y of [20, 40, 60]) {
+      const label = y === 20 ? 'First point' : y === 40 ? 'Second point' : 'Other series';
+      fireEvent.mouseOver(container.querySelector(`[role="option"][aria-label="10. Repeated, ${label}."]`)!);
+      expect(getByTestId('hovered-callout')).toBeInTheDocument();
+      const payload = onRenderCalloutPerDataPoint.mock.calls.slice(-1)[0][0]!;
+      expect(payload.values.map(value => value.y)).toEqual(isCalloutForStack ? [20, 40, 60] : [y]);
+      if (!isCalloutForStack) {
+        expect(payload.values[0].yAxisCalloutData).toBe(label);
+        expect(payload.values[0].color).toBe(y === 60 ? 'blue' : 'red');
+      }
+    }
+  });
+});
+
+describe('LineChart - overlapping path focus', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([false, true])('refreshes duplicate-coordinate point identity (optimized: %s)', optimizeLargeData => {
+    const { container } = render(
+      <LineChart
+        data={{
+          lineChartData: [
+            {
+              legend: 'First',
+              color: 'red',
+              data: [
+                { x: 1, y: 10, xAxisCalloutData: 'First point' },
+                { x: 1, y: 10, xAxisCalloutData: 'Second point' },
+              ],
+              lineOptions: { curve: 'linear', mode: 'lines+markers' },
+            },
+          ],
+        }}
+        width={600}
+        height={400}
+        optimizeLargeData={optimizeLargeData}
+        isCalloutForStack={false}
+      />,
+    );
+    const markers = container.querySelectorAll<SVGCircleElement>('circle[role="option"][tabindex="0"]');
+    expect(markers).toHaveLength(2);
+    for (const index of [0, 1, 0]) {
+      act(() => markers[index].focus());
+      expect(container.ownerDocument.activeElement).toBe(markers[index]);
+      expect(getByClass(container, /calloutContentX/i)[0]).toHaveTextContent(
+        index === 0 ? 'First point' : 'Second point',
+      );
+    }
+  });
+
+  it.each([
+    { optimizeLargeData: false, overlapping: false },
+    { optimizeLargeData: false, overlapping: true },
+    { optimizeLargeData: true, overlapping: false },
+    { optimizeLargeData: true, overlapping: true },
+  ])(
+    'refreshes the selected series without dismissing (optimized: $optimizeLargeData, overlap: $overlapping)',
+    ({ optimizeLargeData, overlapping }) => {
+      const legends = ['First', 'Second', 'Third'];
+      const colors = ['red', 'green', 'blue'];
+      const { container } = render(
+        <LineChart
+          data={{
+            lineChartData: legends.map((legend, index) => ({
+              legend,
+              color: colors[index],
+              data: [
+                { x: 1, y: overlapping ? 10 : 10 + index },
+                { x: 2, y: 20 },
+              ],
+              lineOptions: { curve: 'linear', mode: 'lines' },
+            })),
+          }}
+          width={600}
+          height={400}
+          optimizeLargeData={optimizeLargeData}
+          isCalloutForStack={false}
+        />,
+      );
+
+      for (const index of [2, 1, 0, 2]) {
+        const path = container.querySelector<SVGPathElement>(
+          `g[role="listbox"][aria-label^="${legends[index]}"] path[id^="lineID"][tabindex="0"]`,
+        )!;
+        expect(path).not.toBeNull();
+        act(() => path.focus());
+
+        expect(container.ownerDocument.activeElement).toBe(path);
+        const callout = getByClass(container, /calloutContentRoot/i);
+        expect(callout).toHaveLength(1);
+        expect(callout[0]).toHaveTextContent(legends[index]);
+        const value = getByClass(container, /calloutContentY/i)[0];
+        expect(value).toHaveTextContent(String(overlapping ? 10 : 10 + index));
+        expect(value.style.color).toBe(colors[index]);
+      }
+    },
+  );
+});
+
+describe('LineChart - source coordinates after legend filtering', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  const renderModes = ['single', 'points', 'curved', 'optimized'] as const;
+  type RenderMode = (typeof renderModes)[number];
+  const createData = (mode: RenderMode, revision = 0): LineChartProps['data'] => ({
+    lineChartData: ['A', 'B', 'C'].map((legend, index) => ({
+      legend,
+      color: revision ? 'purple' : ['red', 'green', 'blue'][index],
+      data: Array.from({ length: mode === 'single' ? 1 : 2 }, (_, pointIndex) => ({
+        x: index * 10 + pointIndex + 1,
+        y: index * 100 + pointIndex + revision + 1,
+      })),
+      lineOptions: {
+        curve: mode === 'curved' ? 'linear' : undefined,
+        mode: mode === 'points' || mode === 'single' ? 'lines+markers' : 'lines',
+      },
+    })),
+  });
+  const scene = (mode: RenderMode, data: LineChartProps['data'], props: Partial<LineChartProps> = {}) => (
+    <>
+      <button data-testid="outside">Outside</button>
+      <LineChart
+        data={data}
+        width={600}
+        height={400}
+        yMinValue={0}
+        yMaxValue={400}
+        optimizeLargeData={mode === 'optimized'}
+        allowMultipleShapesForPoints={mode === 'points'}
+        legendProps={{ canSelectMultipleLegends: true, selectedLegends: ['B'] }}
+        onRenderCalloutPerStack={dataPoint => <pre data-testid="selected-callout">{JSON.stringify(dataPoint)}</pre>}
+        {...props}
+      />
+    </>
+  );
+  const getTarget = (container: HTMLElement, mode: RenderMode, legend = 'B') =>
+    container.querySelector<SVGElement>(
+      mode === 'curved' || mode === 'optimized'
+        ? 'path[id^="lineID"][tabindex="0"]'
+        : `[role="option"][aria-label*=". ${legend},"][tabindex="0"]`,
+    )!;
+
+  describe.each(renderModes)('%s', mode => {
+    it.each([0, 1, 2])('resolves source series index %s without redirecting inactive targets', lineIndex => {
+      const config = {
+        focusRestorePolicy: 'reset' as const,
+        focusOnReset: { lineIndex, pointIndex: 0 },
+      };
+      const { container, rerender, getByTestId } = render(scene(mode, createData(mode), config));
+      act(() => getByTestId('outside').focus());
+
+      rerender(scene(mode, createData(mode, 10), config));
+
+      expect(container.ownerDocument.activeElement).toBe(
+        lineIndex === 1 ? getTarget(container, mode) : getByTestId('outside'),
+      );
+      if (lineIndex === 1) {
+        expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
+        expect(getByTestId('selected-callout')).toHaveTextContent('"y":111');
+      }
+    });
+
+    it.each([
+      { policy: 'preserve' as const, perStack: true },
+      { policy: 'none' as const, perStack: true },
+      { policy: 'preserve' as const, perStack: false },
+      { policy: 'none' as const, perStack: false },
+    ])('refreshes selected custom content without remounting ($policy, stack: $perStack)', ({ policy, perStack }) => {
+      let mountCount = 0;
+      const Content = ({ data }: { data?: CustomizedCalloutData }) => {
+        const [note, setNote] = React.useState('');
+        React.useEffect(() => {
+          mountCount++;
+        }, []);
+        return (
+          <>
+            <input aria-label="Selected callout note" value={note} onChange={event => setNote(event.target.value)} />
+            <pre data-testid="selected-callout">{JSON.stringify(data)}</pre>
+          </>
+        );
+      };
+      const renderContent = (data?: CustomizedCalloutData) => <Content data={data} />;
+      const config = {
+        focusRestorePolicy: policy,
+        onRenderCalloutPerStack: perStack ? renderContent : undefined,
+        onRenderCalloutPerDataPoint: perStack ? undefined : renderContent,
+      };
+      const { container, rerender, getByRole, getByTestId } = render(scene(mode, createData(mode), config));
+      const target = getTarget(container, mode);
+      expect(target).not.toBeNull();
+      act(() => target.focus());
+      expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
+      const input = getByRole('textbox', { name: 'Selected callout note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep my note' } });
+
+      rerender(scene(mode, createData(mode), config));
+      const callbacks = createData(mode);
+      callbacks.lineChartData = callbacks.lineChartData!.map(line => ({
+        ...line,
+        onLineClick: () => undefined,
+      }));
+      rerender(scene(mode, callbacks, config));
+      rerender(scene(mode, createData(mode, 10), config));
+
+      expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
+      expect(getByTestId('selected-callout')).toHaveTextContent('"y":111');
+      expect(getByTestId('selected-callout')).toHaveTextContent('purple');
+      expect(getByRole('textbox', { name: 'Selected callout note' })).toBe(input);
+      expect(input).toHaveValue('Keep my note');
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(mountCount).toBe(1);
+      if (mode === 'single' || mode === 'points') {
+        expect(getTarget(container, mode)).toHaveAttribute('aria-label', '11. B, 111.');
+      }
+    });
+  });
+
+  it('keeps source coordinates when legends are clicked in a different order', () => {
+    const config = {
+      focusRestorePolicy: 'reset' as const,
+      focusOnReset: { lineIndex: 2, pointIndex: 0 },
+      legendProps: { canSelectMultipleLegends: true },
+    };
+    const { container, rerender, getByTestId, getByRole } = render(scene('points', createData('points'), config));
+    fireEvent.click(getByRole('option', { name: 'C' }));
+    fireEvent.click(getByRole('option', { name: 'A' }));
+    act(() => getByTestId('outside').focus());
+
+    rerender(scene('points', createData('points', 10), config));
+
+    expect(container.ownerDocument.activeElement).toBe(getTarget(container, 'points', 'C'));
+    expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"C"');
+    expect(getByTestId('selected-callout')).toHaveTextContent('"y":211');
+  });
+
+  it('treats a reordered series index as a position in the current input', () => {
+    const config = { focusRestorePolicy: 'reset' as const, focusOnReset: { lineIndex: 1, pointIndex: 0 } };
+    const { container, rerender, getByTestId } = render(scene('points', createData('points'), config));
+    act(() => getByTestId('outside').focus());
+    const reordered = createData('points', 10);
+    reordered.lineChartData = [reordered.lineChartData![2], reordered.lineChartData![0], reordered.lineChartData![1]];
+
+    rerender(scene('points', reordered, config));
+    expect(container.ownerDocument.activeElement).toBe(getByTestId('outside'));
+    rerender(
+      scene('points', createData('points', 20), {
+        ...config,
+        focusOnReset: { lineIndex: 1, pointIndex: 0 },
+      }),
+    );
+    expect(container.ownerDocument.activeElement).toBe(getTarget(container, 'points'));
+  });
+
+  it.each([
+    { lineIndex: 3, pointIndex: 0 },
+    { lineIndex: 1, pointIndex: 2 },
+  ])('skips missing source coordinates $lineIndex/$pointIndex', focusOnReset => {
+    const config = { focusRestorePolicy: 'reset' as const, focusOnReset };
+    const { container, rerender, getByTestId } = render(scene('points', createData('points'), config));
+    act(() => getByTestId('outside').focus());
+    rerender(scene('points', createData('points', 10), config));
+    expect(container.ownerDocument.activeElement).toBe(getByTestId('outside'));
+  });
+
+  it.each([
+    { selection: ['C'], lineIndex: 2, shouldRestore: true },
+    { selection: ['C'], lineIndex: 1, shouldRestore: false },
+    { selection: [], lineIndex: 1, shouldRestore: true },
+  ])('uses the updated controlled selection for source index $lineIndex', ({ selection, lineIndex, shouldRestore }) => {
+    const config = { focusRestorePolicy: 'reset' as const, focusOnReset: { lineIndex, pointIndex: 0 } };
+    const { container, rerender, getByTestId } = render(scene('points', createData('points'), config));
+    act(() => getByTestId('outside').focus());
+
+    rerender(
+      scene('points', createData('points', 10), {
+        ...config,
+        legendProps: { canSelectMultipleLegends: true, selectedLegends: selection },
+      }),
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(
+      shouldRestore ? getTarget(container, 'points', lineIndex === 2 ? 'C' : 'B') : getByTestId('outside'),
+    );
+    expect(container.querySelector('[aria-label="21. C, 211."]')).not.toBeNull();
+    expect(container.querySelector('[aria-label="11. B, 111."]') !== null).toBe(selection.length === 0);
+  });
+
+  it('skips an unplottable point rather than focusing its line-path fallback', () => {
+    const data = createData('curved');
+    data.lineChartData![1].data[0].y = Number.NaN;
+    const config = { focusRestorePolicy: 'reset' as const, focusOnReset: { lineIndex: 1, pointIndex: 0 } };
+    const { container, rerender, getByTestId } = render(scene('curved', data, config));
+    act(() => getByTestId('outside').focus());
+
+    rerender(
+      scene(
+        'curved',
+        { ...data, lineChartData: data.lineChartData!.map(line => ({ ...line, color: 'purple' })) },
+        config,
+      ),
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(getByTestId('outside'));
+  });
+
+  it.each(['curved', 'optimized'] as const)('preserves selected %s path focus when switching to markers', mode => {
+    const data = createData(mode);
+    data.lineChartData = data.lineChartData!.map(line => ({
+      ...line,
+      lineOptions: { ...line.lineOptions, mode: 'lines+markers' },
+    }));
+    const { container, rerender, getByTestId } = render(scene(mode, data));
+    const path = getTarget(container, mode);
+    act(() => path.focus());
+    expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
+
+    rerender(
+      scene(mode, {
+        ...data,
+        lineChartData: data.lineChartData!.map(line => ({
+          ...line,
+          lineOptions: { ...line.lineOptions, mode: 'markers' },
+        })),
+      }),
+    );
+
+    expect(path.isConnected).toBe(false);
+    const marker = container.querySelector('[aria-label="11. B, 101."]');
+    expect(marker).not.toBeNull();
+    expect(container.ownerDocument.activeElement).toBe(marker);
+    expect(getByTestId('selected-callout')).toHaveTextContent('"legend":"B"');
+  });
+});
+
+describe('LineChart - callout positioning across marker replacements', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  it.each([
+    { curved: false, policy: 'preserve' as const },
+    { curved: true, policy: 'preserve' as const },
+    { curved: false, policy: 'none' as const },
+    { curved: true, policy: 'none' as const },
+  ])(
+    'uses the current marker while its input keeps focus (curved: $curved, policy: $policy)',
+    async ({ curved, policy }) => {
+      const layoutRect = window.Element.prototype.getBoundingClientRect();
+      const markerRect = {
+        ...layoutRect,
+        x: 400,
+        y: 450,
+        left: 400,
+        top: 450,
+        right: 410,
+        bottom: 460,
+        width: 10,
+        height: 10,
+      };
+      const positionReads: Element[] = [];
+      window.Element.prototype.getBoundingClientRect = jest.fn(function (this: Element) {
+        if (this.getAttribute('aria-label')?.includes('. metaData1,')) {
+          positionReads.push(this);
+          return this.isConnected
+            ? markerRect
+            : { ...markerRect, x: 0, y: 0, left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0 };
+        }
+        return layoutRect;
+      });
+
+      let mountCount = 0;
+      const Content = ({ data }: { data?: CustomizedCalloutData }) => {
+        const [note, setNote] = React.useState('');
+        React.useEffect(() => {
+          mountCount++;
+        }, []);
+        return (
+          <>
+            <input aria-label="Callout note" value={note} onChange={event => setNote(event.target.value)} />
+            <pre data-testid="callout-data">{JSON.stringify(data)}</pre>
+          </>
+        );
+      };
+      const renderContent = (data?: CustomizedCalloutData) => <Content data={data} />;
+      const scene = (isCurved: boolean, y: number) => (
+        <LineChart
+          data={{
+            ...basicChartPoints,
+            lineChartData: basicPoints.map((line, index) => ({
+              ...line,
+              lineOptions: isCurved ? { curve: 'linear', mode: 'lines+markers' } : undefined,
+              data: line.data.map((point, pointIndex) => (index === 0 && pointIndex === 0 ? { ...point, y } : point)),
+            })),
+          }}
+          focusRestorePolicy={policy}
+          onRenderCalloutPerStack={renderContent}
+        />
+      );
+      const { container, rerender } = render(scene(curved, 50));
+      const oldMarker = screen.getByLabelText('20. metaData1, 50.');
+      act(() => oldMarker.focus());
+      const input = screen.getByRole('textbox', { name: 'Callout note' });
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: 'Keep my note' } });
+
+      positionReads.length = 0;
+      rerender(scene(!curved, 55));
+
+      const marker = screen.getByLabelText('20. metaData1, 55.');
+      expect(marker.tagName.toLowerCase()).toBe(curved ? 'path' : 'circle');
+      expect(oldMarker.isConnected).toBe(false);
+      await waitFor(() => expect(positionReads[positionReads.length - 1]).toBe(marker));
+      expect(screen.getByTestId('callout-data')).toHaveTextContent('"y":55');
+      expect(screen.getByRole('textbox', { name: 'Callout note' })).toBe(input);
+      expect(input).toHaveValue('Keep my note');
+      expect(container.ownerDocument.activeElement).toBe(input);
+      expect(mountCount).toBe(1);
+    },
+  );
 });

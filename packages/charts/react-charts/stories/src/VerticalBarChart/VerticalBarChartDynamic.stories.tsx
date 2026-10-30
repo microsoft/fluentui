@@ -10,7 +10,7 @@ import type {
 import type { VerticalBarChartDataPoint } from '@fluentui/react-charts';
 import { VerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Button } from '@fluentui/react-components';
-import { Checkbox, Field, Radio, RadioGroup, Input } from '@fluentui/react-components';
+import { Checkbox, Field, Radio, RadioGroup, Input, Switch } from '@fluentui/react-components';
 
 export const VerticalBarDynamic = (): JSXElement => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -114,29 +114,22 @@ export const VerticalBarDynamic = (): JSXElement => {
     const dataSize = Number(e.target.value);
     setDataSize(dataSize);
     setDynamicData(_getData(dataSize, xAxisType));
-    setDynamicData(_getData(dataSize, xAxisType));
   };
 
   const _getData = (dataSize: number, xAxisType: string) => {
-    const data: VerticalBarChartDataPoint[] = [];
-    if (xAxisType === 'string') {
-      for (let i = 0; i < dataSize; i++) {
-        data.push({ x: `Label ${i + 1}`, y: _randomY() });
+    const date = new Date('2020-01-01');
+    return Array.from({ length: dataSize }, (_, index): VerticalBarChartDataPoint => {
+      const value = index + 1;
+      if (xAxisType === 'string') {
+        return { x: `Label ${value}`, y: _randomY() };
       }
-    } else {
-      const xPoints = new Set<number>();
-      const date = new Date('2020-01-01');
-      while (xPoints.size !== dataSize) {
-        const x = Math.floor(Math.random() * 75) + 1;
-        if (!xPoints.has(x)) {
-          xPoints.add(x);
-          const newDate = new Date(date);
-          newDate.setDate(date.getDate() + x);
-          data.push({ x: xAxisType === 'date' ? newDate : x, y: _randomY() });
-        }
+      if (xAxisType === 'date') {
+        const newDate = new Date(date);
+        newDate.setDate(date.getDate() + value);
+        return { x: newDate, y: _randomY() };
       }
-    }
-    return data;
+      return { x: value, y: _randomY() };
+    });
   };
 
   const [dynamicData, setDynamicData] = React.useState<VerticalBarChartDataPoint[]>(
@@ -154,6 +147,7 @@ export const VerticalBarDynamic = (): JSXElement => {
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
+  const [enableFocusOnReset, setEnableFocusOnReset] = React.useState(false);
 
   _changeData = _changeData.bind(this);
   _changeColors = _changeColors.bind(this);
@@ -270,6 +264,11 @@ export const VerticalBarDynamic = (): JSXElement => {
           </RadioGroup>
         </Field>
       </div>
+      <Switch
+        label="Reset focus to the first chart element on data change"
+        checked={enableFocusOnReset}
+        onChange={event => setEnableFocusOnReset(event.currentTarget.checked)}
+      />
       <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart
           // Force rerender when any of the following states change
@@ -277,6 +276,8 @@ export const VerticalBarDynamic = (): JSXElement => {
           chartTitle="Vertical bar chart dynamic example"
           data={dynamicData}
           colors={colors}
+          focusRestorePolicy={enableFocusOnReset ? 'reset' : 'preserve'}
+          focusOnReset={enableFocusOnReset ? { barIndex: 0 } : undefined}
           hideLegend={true}
           yMaxValue={100}
           width={width}

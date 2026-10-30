@@ -702,7 +702,6 @@ describe('Gauge Chart - Callout', () => {
         <GaugeChart segments={segments} chartValue={50} />
       </>,
     );
-    const getElementById = jest.spyOn(document, 'getElementById');
     const segmentPaths = container.querySelectorAll<SVGPathElement>('path[role="option"]');
     const needlePaths = container.querySelectorAll<SVGPathElement>('path[id$="-needle"]');
     const firstGaugeSegment = segmentPaths[0];
@@ -712,10 +711,70 @@ describe('Gauge Chart - Callout', () => {
     expect(needlePaths).toHaveLength(2);
     expect(firstGaugeSegment.id).not.toBe(secondGaugeSegment.id);
     expect(needlePaths[0].id).not.toBe(needlePaths[1].id);
-    fireEvent.focus(secondGaugeSegment);
+    act(() => secondGaugeSegment.focus());
 
-    expect(getElementById).toHaveBeenCalledWith(secondGaugeSegment.id);
-    getElementById.mockRestore();
+    expect(screen.getByText('Current value is 50%')).toBeInTheDocument();
+    act(() => firstGaugeSegment.focus());
+
+    expect(container.ownerDocument.activeElement).toBe(firstGaugeSegment);
+    expect(screen.getByText('Current value is 25%')).toBeInTheDocument();
+    expect(screen.queryByText('Current value is 50%')).not.toBeInTheDocument();
+  });
+
+  it('should refresh the focused segment callout after the data changes', () => {
+    const renderCallout = (calloutData?: GaugeChartCalloutData) => (
+      <div data-testid="gauge-callout">
+        {calloutData?.chartValue}: {calloutData?.segments?.[0].end}
+      </div>
+    );
+    const { container, rerender } = render(
+      <GaugeChart segments={segments} chartValue={25} onRenderCallout={renderCallout} focusRestorePolicy="reset" />,
+    );
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]');
+
+    expect(segment).not.toBeNull();
+    act(() => segment!.focus());
+    expect(screen.getByTestId('gauge-callout')).toHaveTextContent('25: 33');
+
+    act(() => segment!.blur());
+    const updatedSegments = [{ ...segments[0], size: 40 }, ...segments.slice(1)];
+    rerender(
+      <GaugeChart
+        segments={updatedSegments}
+        chartValue={30}
+        onRenderCallout={renderCallout}
+        focusRestorePolicy="reset"
+      />,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(segment);
+    expect(screen.getByTestId('gauge-callout')).toHaveTextContent('30: 40');
+  });
+
+  it('should keep the callout open when focus moves within the chart', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    const segmentPaths = container.querySelectorAll<SVGPathElement>('path[role="option"]');
+
+    fireEvent.focus(segmentPaths[0]);
+    fireEvent.blur(segmentPaths[0], { relatedTarget: segmentPaths[1] });
+
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+  });
+
+  it('should clear the focused segment and callout when focus moves to a legend', () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]');
+    const legend = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button')[0];
+
+    expect(segment).not.toBeNull();
+    fireEvent.focus(segment!);
+    expect(segment).toHaveAttribute('stroke-width', '2');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+
+    fireEvent.blur(segment!, { relatedTarget: legend });
+
+    expect(segment).toHaveAttribute('stroke-width', '0');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
   });
 
   it('should show a callout when the needle is focused and hide it when blurred', () => {
@@ -789,5 +848,253 @@ describe('Gauge Chart - Callout', () => {
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
     fireEvent.mouseLeave(segmentslist[0]!);
     expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+});
+
+describe('GaugeChart - focusOnReset', () => {
+  it.each([
+    { initialSelection: [], nextSelection: ['High Risk'], shouldRestore: false },
+    { initialSelection: ['Low Risk'], nextSelection: ['High Risk'], shouldRestore: false },
+    { initialSelection: ['High Risk'], nextSelection: ['Low Risk'], shouldRestore: true },
+    { initialSelection: ['High Risk'], nextSelection: undefined, shouldRestore: true },
+  ])(
+    'uses the new controlled legend selection during a data reset ($initialSelection -> $nextSelection)',
+    ({ initialSelection, nextSelection, shouldRestore }) => {
+      for (const enableFocusOnReset of [false, true]) {
+        const focusOnReset = enableFocusOnReset ? { segmentIndex: 0 } : undefined;
+        const { container, rerender, unmount } = render(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <GaugeChart segments={segments} chartValue={25} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+          </>,
+        );
+        const segment = container.querySelector<SVGPathElement>('path[role="option"]')!;
+        act(() => segment.focus());
+        const beforeChart = screen.getByTestId('before-chart');
+        act(() => beforeChart.focus());
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <GaugeChart
+              segments={segments}
+              chartValue={25}
+              legendProps={{ selectedLegends: initialSelection }}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+            />
+          </>,
+        );
+        const onFocus = jest.fn();
+        segment.addEventListener('focus', onFocus);
+
+        rerender(
+          <>
+            <button data-testid="before-chart">Before chart</button>
+            <GaugeChart
+              segments={segments}
+              chartValue={30}
+              legendProps={{ selectedLegends: nextSelection }}
+              focusOnReset={focusOnReset}
+              focusRestorePolicy="reset"
+            />
+          </>,
+        );
+
+        expect(container.ownerDocument.activeElement).toBe(shouldRestore ? segment : beforeChart);
+        expect(onFocus).toHaveBeenCalledTimes(shouldRestore ? 1 : 0);
+        expect(segment).toHaveAttribute('opacity', shouldRestore ? '1' : '0.1');
+        expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(shouldRestore ? 1 : 0);
+        unmount();
+      }
+    },
+  );
+
+  it.each([false, true])('should not restore focus for equivalent segments (cloned: %s)', cloneData => {
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={25} focusOnReset={{ segmentIndex: 1 }} focusRestorePolicy="reset" />
+      </>,
+    );
+    act(() => container.querySelector<SVGPathElement>('path[role="option"]')!.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart
+          segments={cloneData ? segments.map(segment => ({ ...segment })) : segments}
+          chartValue={25}
+          focusOnReset={{ segmentIndex: 1 }}
+          focusRestorePolicy="reset"
+          width={700}
+        />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+  });
+
+  it.each([false, true])('should skip an inactive segment (focusOnReset: %s)', enableFocusOnReset => {
+    const focusOnReset = enableFocusOnReset ? { segmentIndex: 0 } : undefined;
+    const legendProps = { selectedLegends: ['High Risk'] };
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={25} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+    );
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]')!;
+    act(() => segment.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart
+          segments={segments}
+          chartValue={25}
+          legendProps={legendProps}
+          focusOnReset={focusOnReset}
+          focusRestorePolicy="reset"
+        />
+      </>,
+    );
+    expect(segment).not.toHaveAttribute('tabindex');
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart
+          segments={segments}
+          chartValue={30}
+          legendProps={legendProps}
+          focusOnReset={focusOnReset}
+          focusRestorePolicy="reset"
+        />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(segment).not.toHaveAttribute('tabindex');
+    expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(0);
+  });
+
+  it('should focus the specified segment when gauge data changes', () => {
+    const focusOnReset = { segmentIndex: 1 };
+    const updatedSegments = segments.map(segment => ({ ...segment }));
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={25} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+    );
+    const userSelectedElement = container.querySelector<SVGPathElement>('path[role="option"]');
+    expect(userSelectedElement).not.toBeNull();
+    act(() => userSelectedElement!.focus());
+    act(() => screen.getByTestId('before-chart').focus());
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={updatedSegments} chartValue={30} focusOnReset={focusOnReset} focusRestorePolicy="reset" />
+      </>,
+    );
+
+    const expectedTarget = container.querySelectorAll<SVGPathElement>('path[role="option"]')[1];
+    expect(container.ownerDocument.activeElement).toBe(expectedTarget);
+  });
+
+  it.each(['segment', 'needle'] as const)(
+    'should restore the previously focused tabbable %s when focusOnReset is not provided',
+    targetType => {
+      const updatedSegments = segments.map(segment => ({ ...segment }));
+      const { container, rerender } = render(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <GaugeChart segments={segments} chartValue={25} focusRestorePolicy="reset" />
+        </>,
+      );
+      const previouslyFocusedElement =
+        targetType === 'segment'
+          ? container.querySelectorAll<SVGPathElement>('path[role="option"]')[2]
+          : container.querySelector<SVGPathElement>('path[id$="-needle"]');
+      expect(previouslyFocusedElement).not.toBeNull();
+      if (targetType === 'needle') {
+        previouslyFocusedElement!.setAttribute('tabindex', '0');
+      }
+      act(() => previouslyFocusedElement!.focus());
+      act(() => screen.getByTestId('before-chart').focus());
+
+      rerender(
+        <>
+          <button data-testid="before-chart">Before chart</button>
+          <GaugeChart segments={updatedSegments} chartValue={30} focusRestorePolicy="reset" />
+        </>,
+      );
+
+      const expectedTarget =
+        targetType === 'segment'
+          ? container.querySelectorAll<SVGPathElement>('path[role="option"]')[2]
+          : container.querySelector<SVGPathElement>('path[id$="-needle"]');
+      expect(container.ownerDocument.activeElement).toBe(expectedTarget);
+      if (targetType === 'needle') {
+        expect(expectedTarget).toHaveAttribute('tabindex', '0');
+        expect(getByClass(container, /calloutContentRoot/i)).toHaveLength(1);
+      }
+    },
+  );
+
+  it('should skip the previously focused needle when it is no longer tabbable', () => {
+    const { container, rerender } = render(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={25} focusRestorePolicy="reset" />
+      </>,
+    );
+    const needle = container.querySelector<SVGPathElement>('path[id$="-needle"]')!;
+    needle.setAttribute('tabindex', '0');
+    act(() => needle.focus());
+    const beforeChart = screen.getByTestId('before-chart');
+    act(() => beforeChart.focus());
+    needle.removeAttribute('tabindex');
+
+    rerender(
+      <>
+        <button data-testid="before-chart">Before chart</button>
+        <GaugeChart segments={segments} chartValue={30} focusRestorePolicy="reset" />
+      </>,
+    );
+
+    expect(container.ownerDocument.activeElement).toBe(beforeChart);
+    expect(needle).not.toHaveAttribute('tabindex');
+  });
+});
+
+describe('GaugeChart - retained focus callout freshness', () => {
+  it.each(['preserve', 'none'] as const)('refreshes a mounted focused segment callout (policy: %s)', policy => {
+    const scene = (updated: boolean) => (
+      <GaugeChart
+        focusRestorePolicy={policy}
+        segments={[
+          { size: updated ? 25 : 50, color: updated ? 'blue' : 'red', legend: 'First' },
+          { size: updated ? 75 : 50, color: 'green', legend: 'Second' },
+        ]}
+        chartValue={30}
+        variant="multiple-segments"
+        onRenderCallout={data => <pre data-testid="fresh-gauge-callout">{JSON.stringify(data?.segmentValues)}</pre>}
+      />
+    );
+    const { container, rerender, getByTestId } = render(scene(false));
+    const segment = container.querySelector<SVGPathElement>('path[role="option"]')!;
+    act(() => segment.focus());
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('red');
+
+    rerender(scene(true));
+
+    expect(container.ownerDocument.activeElement).toBe(segment);
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('blue');
+    expect(getByTestId('fresh-gauge-callout')).toHaveTextContent('25');
   });
 });

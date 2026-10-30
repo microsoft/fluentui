@@ -21,6 +21,8 @@ import type {
   DataPoint,
 } from '../../index';
 import { CartesianChart, Legends, ChartPopover } from '../../index';
+import { areChartDataEqual, getChartEventTarget, isChartElementTabbable } from '../CommonComponents/ChartFocusUtils';
+import { useChartFocusRestore } from '../CommonComponents/useChartFocusRestore';
 import type { IAxisData, NumericAxis, IDomainNRange } from '../../utilities/index';
 import {
   ChartTypes,
@@ -107,6 +109,71 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
+  const previousFocusDataRef = React.useRef(props.data);
+  const previousFocusColorsRef = React.useRef(props.colors);
+  const previousFocusSelectedLegendsRef = React.useRef(props.legendProps?.selectedLegends);
+  const lastFocusedBarIndexRef = React.useRef<number | undefined>(undefined);
+  const focusBarRefs = React.useRef<Map<number, SVGRectElement>>(new Map());
+  const shouldRestoreFocus = useChartFocusRestore(
+    element =>
+      lastFocusedBarIndexRef.current !== undefined &&
+      element === focusBarRefs.current.get(lastFocusedBarIndexRef.current),
+  );
+
+  React.useEffect(() => {
+    if (
+      !areArraysEqual(previousFocusSelectedLegendsRef.current, props.legendProps?.selectedLegends) &&
+      !areArraysEqual(selectedLegends, props.legendProps?.selectedLegends || [])
+    ) {
+      // Keep the data reset pending until the controlled selection is reflected in the DOM.
+      return;
+    }
+    previousFocusSelectedLegendsRef.current = props.legendProps?.selectedLegends;
+    const chartChanged =
+      !areChartDataEqual(previousFocusDataRef.current, props.data) ||
+      !areChartDataEqual(previousFocusColorsRef.current, props.colors);
+    previousFocusDataRef.current = props.data;
+    previousFocusColorsRef.current = props.colors;
+    const restoreFocus = shouldRestoreFocus(props.focusRestorePolicy);
+
+    const focusedBarIndex = lastFocusedBarIndexRef.current;
+    const focusedBar = focusedBarIndex !== undefined ? focusBarRefs.current.get(focusedBarIndex) : undefined;
+    const focusedPoint = focusedBarIndex !== undefined ? props.data?.[focusedBarIndex] : undefined;
+    if (
+      chartChanged &&
+      focusedBarIndex !== undefined &&
+      focusedBar &&
+      focusedPoint &&
+      focusedBar === focusedBar.ownerDocument.activeElement
+    ) {
+      _showBarCallout(focusedBar, focusedPoint, focusedBarIndex, _createColors()(focusedPoint.y));
+    }
+
+    if (!chartChanged || !restoreFocus) {
+      return;
+    }
+
+    const barIndex =
+      props.focusRestorePolicy === 'reset'
+        ? props.focusOnReset?.barIndex ?? lastFocusedBarIndexRef.current
+        : lastFocusedBarIndexRef.current;
+    if (barIndex === undefined) {
+      return;
+    }
+
+    const element = focusBarRefs.current.get(barIndex);
+    if (isChartElementTabbable(element)) {
+      element.focus();
+    }
+  }, [
+    props.colors,
+    props.data,
+    props.focusOnReset,
+    props.focusRestorePolicy,
+    props.legendProps?.selectedLegends,
+    selectedLegends,
+    shouldRestoreFocus,
+  ]);
 
   React.useEffect(() => {
     if (prevPropsRef.current) {
@@ -254,7 +321,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
               circleRef.refElement = e;
             }}
             onFocus={event => _lineFocus(event, item.point, circleRef)}
-            onBlur={_handleChartMouseLeave}
             tabIndex={_legendHighlighted(lineLegendText!) ? 0 : undefined}
           />
         );
@@ -511,10 +577,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     refArrayIndexNumber: number,
     color: string,
   ): void {
+    _showBarCallout(getChartEventTarget(event), point, refArrayIndexNumber, color);
+  }
+
+  function _showBarCallout(
+    element: SVGRectElement,
+    point: VerticalBarChartDataPoint,
+    refArrayIndexNumber: number,
+    color: string,
+  ): void {
     let x = 0;
     let y = 0;
 
-    const targetRect = (event.target as SVGRectElement).getBoundingClientRect();
+    const targetRect = element.getBoundingClientRect();
     x = targetRect.left + targetRect.width / 2;
     y = targetRect.top + targetRect.height / 2;
     updatePosition(x, y);
@@ -670,13 +745,17 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
+              _setFocusBarRef(e, index);
             }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => {
+              lastFocusedBarIndexRef.current = index;
+              _onBarFocus(event, point, index, colorScale(point.y));
+            }}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
@@ -736,12 +815,16 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             role="option"
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
+              _setFocusBarRef(e, index);
             }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => {
+              lastFocusedBarIndexRef.current = index;
+              _onBarFocus(event, point, index, colorScale(point.y));
+            }}
             fill={point.color ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
@@ -793,13 +876,17 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               _refCallback(e, point.legend!);
+              _setFocusBarRef(e, index);
             }}
             onClick={point.onClick}
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="option"
             onMouseLeave={_onBarLeave}
-            onFocus={event => _onBarFocus(event, point, index, colorScale(point.y))}
+            onFocus={event => {
+              lastFocusedBarIndexRef.current = index;
+              _onBarFocus(event, point, index, colorScale(point.y));
+            }}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={!props.hideTooltip && shouldHighlight ? 0 : undefined}
@@ -815,6 +902,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _onLegendHover(legendTitle: string): void {
     setActiveLegend(legendTitle);
+  }
+
+  function _setFocusBarRef(element: SVGRectElement | null, index: number): void {
+    if (element) {
+      focusBarRefs.current.set(index, element);
+    } else {
+      focusBarRefs.current.delete(index);
+    }
   }
 
   function _onLegendLeave(): void {
