@@ -1,6 +1,7 @@
 import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import type { Radio } from '../radio/radio.js';
 import { isRadio } from '../radio/radio.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
@@ -228,7 +229,18 @@ export class BaseRadioGroup extends FASTElement {
    */
   slottedRadiosChanged(prev: Radio[] | undefined, next: Radio[]): void {
     Updates.enqueue(() => {
-      this.radios = [...this.querySelectorAll('*')].filter((x): x is Radio => isRadio(x));
+      const radioElements = [...this.querySelectorAll('*')].filter((element): element is Radio => isRadio(element));
+
+      this.radios = getUpgradedCustomElements(radioElements, isRadio);
+
+      runAfterPendingDefinitions(radioElements, isRadio, () => {
+        if (this.isConnected) {
+          this.radios = getUpgradedCustomElements(
+            radioElements.filter(element => element.isConnected && this.contains(element)),
+            isRadio,
+          );
+        }
+      });
     });
   }
 

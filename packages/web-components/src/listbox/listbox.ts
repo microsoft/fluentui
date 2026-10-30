@@ -2,6 +2,7 @@ import { FASTElement, observable, Updates } from '@microsoft/fast-element';
 import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
 import { toggleState } from '../utils/element-internals.js';
 import { waitForConnectedDescendants } from '../utils/request-idle-callback.js';
 import { uniqueId } from '../utils/unique-id.js';
@@ -57,7 +58,7 @@ export class Listbox extends FASTElement {
     this.elementInternals.ariaMultiSelectable = next ? 'true' : 'false';
     toggleState(this.elementInternals, 'multiple', next);
     Updates.enqueue(() => {
-      this.options.forEach(x => {
+      this.options?.forEach(x => {
         x.multiple = !!next;
       });
     });
@@ -83,6 +84,7 @@ export class Listbox extends FASTElement {
     next?.forEach((option, index) => {
       option.elementInternals.ariaPosInSet = `${index + 1}`;
       option.elementInternals.ariaSetSize = `${next.length}`;
+      option.multiple = !!this.multiple;
     });
   }
 
@@ -136,8 +138,7 @@ export class Listbox extends FASTElement {
   public get enabledOptions(): DropdownOption[] {
     return (
       this.options?.filter(x => !x.disabled) ??
-      Array.from(this.querySelectorAll('*')).filter((o): o is DropdownOption => isDropdownOption(o) && !o.disabled) ??
-      []
+      getUpgradedCustomElements(Array.from(this.querySelectorAll('*')), isDropdownOption).filter(o => !o.disabled)
     );
   }
 
@@ -242,13 +243,16 @@ export class Listbox extends FASTElement {
    * @public
    */
   public slotchangeHandler(e?: Event): void {
-    waitForConnectedDescendants(this, () => {
-      if (this.defaultSlot) {
-        const options = this.defaultSlot
-          .assignedElements()
-          .filter<DropdownOption>((option): option is DropdownOption => isDropdownOption(option));
+    if (!this.defaultSlot) {
+      return;
+    }
 
-        this.options = options;
+    const assignedElements = this.defaultSlot.assignedElements();
+    this.options = getUpgradedCustomElements(assignedElements, isDropdownOption);
+
+    runAfterPendingDefinitions(assignedElements, isDropdownOption, () => {
+      if (this.isConnected) {
+        this.slotchangeHandler();
       }
     });
   }

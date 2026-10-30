@@ -1,6 +1,7 @@
-import { attr, css, type ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { maybeSetAutoFocus } from '../utils/autofocus.js';
+import { getUpgradedCustomElements, runAfterPendingDefinitions } from '../utils/custom-elements.js';
+import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
 /**
@@ -199,6 +200,14 @@ export class BaseTreeItem extends FASTElement {
 
   /** @internal */
   public handleItemSlotChange() {
-    this.childTreeItems = this.itemSlot.assignedElements().filter(el => isTreeItem(el));
+    const assignedElements = this.itemSlot.assignedElements();
+
+    this.childTreeItems = getUpgradedCustomElements(assignedElements, isTreeItem);
+
+    runAfterPendingDefinitions(assignedElements, isTreeItem, () => {
+      if (this.isConnected) {
+        this.handleItemSlotChange();
+      }
+    });
   }
 }

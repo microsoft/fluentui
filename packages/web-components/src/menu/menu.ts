@@ -1,6 +1,10 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { MenuItem } from '../menu-item/menu-item.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
+import { isUpgradedCustomElement, runAfterPendingDefinitions } from '../utils/custom-elements.js';
+
+const isMenuList = (element: Element): element is HTMLElement => element.localName.endsWith('-menu-list');
+const isMenuTrigger = (element: Element): element is HTMLElement => element.localName.endsWith('-menu-button');
 
 /**
  * A Menu component that provides a customizable menu element.
@@ -97,12 +101,23 @@ export class Menu extends FASTElement {
    */
   slottedMenuListChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void {
     this._menuListAbortController?.abort();
+    this._menuList = undefined;
 
     if (!next?.length) {
       return;
     }
 
-    this._menuList = next[0];
+    const menuList = next[0];
+    if (isMenuList(menuList) && !isUpgradedCustomElement(menuList)) {
+      runAfterPendingDefinitions([menuList], isMenuList, () => {
+        if (this.isConnected && this.slottedMenuList[0] === menuList) {
+          this.slottedMenuListChanged(undefined, this.slottedMenuList);
+        }
+      });
+      return;
+    }
+
+    this._menuList = menuList;
     this._menuList.popover = this.openOnContext ? 'manual' : '';
     this.addMenuListListeners();
   }
@@ -124,9 +139,19 @@ export class Menu extends FASTElement {
    */
   public slottedTriggersChanged(prev: HTMLElement[] | undefined, next: HTMLElement[] | undefined): void {
     this._triggerAbortController?.abort();
+    this._trigger = undefined;
 
     if (next?.length) {
       const trigger = next[0];
+      if (isMenuTrigger(trigger) && !isUpgradedCustomElement(trigger)) {
+        runAfterPendingDefinitions([trigger], isMenuTrigger, () => {
+          if (this.isConnected && this.slottedTriggers[0] === trigger) {
+            this.slottedTriggersChanged(undefined, this.slottedTriggers);
+          }
+        });
+        return;
+      }
+
       this._trigger = trigger;
 
       if (this._trigger?.isConnected) {
