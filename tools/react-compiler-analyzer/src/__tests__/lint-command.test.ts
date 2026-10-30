@@ -12,7 +12,7 @@ import { discoverFilesWithDirectives, findPackageName } from '../discovery';
 import { applyFixes } from '../fixer';
 import type { CompilationMode, DirectiveAnalysis, FileEntry } from '../types';
 import { createTempPackage, writeComponent, DIRECTIVE_COMPONENT, type TempPackage } from './helpers/multi-path-setup';
-import { normalizeCliOutput } from './helpers/output';
+import { normalizeCliOutput, normalizeCompilerVersions } from './helpers/output';
 
 jest.mock('../compiler', () => {
   const actual = jest.requireActual<typeof import('../compiler')>('../compiler');
@@ -783,12 +783,14 @@ describe('lint command — scan log wrapping', () => {
     // snapshot the wrapper block with tempDir + cwd normalized so it stays stable across runs
     const wrapper = captured
       .slice(openIdx, closeIdx + 1)
-      .map(line => line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>'))
+      .map(line => normalizeCompilerVersions(line.split(tempDir).join('<TEMP>').split(process.cwd()).join('<CWD>')))
       .join('\n');
 
     expect(wrapper).toMatchInlineSnapshot(`
       "<details>
       <summary>📋 Scan & compile log</summary>
+
+      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
 
       ## Scanning: <TEMP>
          Package: wrap-test-lint-pkg
@@ -836,6 +838,8 @@ describe('lint command — scan log wrapping', () => {
 
       📋 Scan & compile log
       ─────────────────────
+
+      Backend: Babel <VERSION>; React Compiler <VERSION>; syntax-only TypeScript parsing (not native compiler parity).
 
       Scanning: <TEMP>
       ────────────────

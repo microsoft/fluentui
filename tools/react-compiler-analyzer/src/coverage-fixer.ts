@@ -26,6 +26,7 @@ function bailoutDirective(indent: string, risks: RiskFinding[], quote: QuoteStyl
 
 export interface AnnotateOptions {
   quote?: QuoteStyle;
+  dryRun?: boolean;
 }
 
 function hasRisks(result: FunctionAnalysis): boolean {
@@ -62,11 +63,11 @@ function lineOffset(source: string, line: number): number {
  * Apply annotations once per canonical function, after preflighting every source hash.
  * Writes are ordered by file and descending insertion offset, so offsets never drift.
  */
-export async function applyAnnotations(
+async function planAnnotations(
   results: FunctionAnalysis[],
   mode: AnnotateMode,
   options: AnnotateOptions = {},
-): Promise<AnnotateResult> {
+): Promise<{ result: AnnotateResult; files: Map<string, string>; targets: NonNullable<AnnotateResult['targets']> }> {
   const quote = options.quote ?? 'single';
   const byIdentity = new Map<string, FunctionAnalysis>();
   for (const result of results) {
@@ -85,7 +86,11 @@ export async function applyAnnotations(
   }
   const candidates = [...byIdentity.values()];
   if (candidates.length === 0) {
-    return { filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 };
+    return {
+      result: { filesModified: 0, functionsAnnotated: 0, functionsBailedOut: 0 },
+      files: new Map(),
+      targets: [],
+    };
   }
 
   const byFile = new Map<string, FunctionAnalysis[]>();
@@ -108,8 +113,11 @@ export async function applyAnnotations(
   let filesModified = 0;
   let functionsAnnotated = 0;
   let functionsBailedOut = 0;
+  const files = new Map<string, string>();
+  const targets: NonNullable<AnnotateResult['targets']> = [];
   for (const [filePath, fileCandidates] of [...byFile.entries()].sort(([a], [b]) => compareText(a, b))) {
     let source = sourceByFile.get(filePath)!;
+    sourceByFile.delete(filePath);
     const eol = source.includes('\r\n') ? '\r\n' : '\n';
     const sorted = [...fileCandidates].sort(
       (a, b) =>
@@ -128,6 +136,12 @@ export async function applyAnnotations(
           ? source.slice(offset).match(/^([ \t]*)/)?.[1] ?? '  '
           : indentationAt(source, offset);
       const isBailout = (mode === 'all-safe' || mode === 'bailout-only') && hasRisks(candidate);
+      targets.push({
+        filePath,
+        line: candidate.line,
+        functionName: candidate.functionName,
+        directive: isBailout ? 'use no memo' : 'use memo',
+      });
       const directive = isBailout
         ? bailoutDirective(indent, candidate.risks!, quote)
         : `${indent}${quoted('use memo', quote)};`;
@@ -140,9 +154,32 @@ export async function applyAnnotations(
         functionsAnnotated++;
       }
     }
-    await writeFile(filePath, source, 'utf-8');
+    files.set(filePath, source);
     filesModified++;
   }
 
-  return { filesModified, functionsAnnotated, functionsBailedOut };
+  targets.sort((a, b) => compareText(a.filePath, b.filePath) || a.line - b.line);
+  return { result: { filesModified, functionsAnnotated, functionsBailedOut }, files, targets };
+}
+
+export async function applyAnnotations(
+  results: FunctionAnalysis[],
+  mode: AnnotateMode,
+  options: AnnotateOptions = {},
+): Promise<AnnotateResult> {
+  const plan = await planAnnotations(results, mode, options);
+  if (options.dryRun) {
+    return {
+      filesModified: 0,
+      functionsAnnotated: 0,
+      functionsBailedOut: 0,
+      dryRun: true,
+      planned: plan.result,
+      targets: plan.targets,
+    };
+  }
+  for (const [filePath, source] of plan.files) {
+    await writeFile(filePath, source, 'utf-8');
+  }
+  return plan.result;
 }

@@ -32,6 +32,7 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
   const openOnContext = usePopoverContext(context => context.openOnContext);
   const positioningCtx = usePopoverContext(context => context.positioning);
   const surfaceId = usePopoverContext(context => context.surfaceId);
+  const inertTrapFocus = usePopoverContext(context => context.inertTrapFocus);
 
   const { targetDocument } = useFluent();
 
@@ -76,8 +77,9 @@ export const usePopoverTrigger = (props: PopoverTriggerProps): PopoverTriggerSta
 
   const triggerChildProps = {
     'aria-expanded': `${open}` as 'true' | 'false',
-    'aria-haspopup': 'true' as const,
+    'aria-haspopup': inertTrapFocus ? ('dialog' as const) : undefined,
     'aria-details': open ? surfaceId : undefined,
+    'aria-controls': open ? surfaceId : undefined,
     'data-open': toDataAttributeValue(open),
     ...child?.props,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),

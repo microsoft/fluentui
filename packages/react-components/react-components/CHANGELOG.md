@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-components
 
-<!-- This log was last generated on Mon, 19 Oct 2026 16:49:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 27 Oct 2026 16:42:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## [9.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.75.0)
+
+Tue, 27 Oct 2026 16:42:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.11..@fluentui/react-components_v9.75.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat(react-components): export existing Menu base hooks and composition types ([PR #36978](https://github.com/microsoft/fluentui/pull/36978) by paulmardling@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode ([PR #36974](https://github.com/microsoft/fluentui/pull/36974) by vgenaev@gmail.com)
+- `@fluentui/react-provider`
+  - fix: escape theme style delimiters instead of omitting valid nested theme values ([PR #36985](https://github.com/microsoft/fluentui/pull/36985) by vgenaev@gmail.com)
+
+## [9.74.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.11)
+
+Thu, 22 Oct 2026 11:25:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.74.10..@fluentui/react-components_v9.74.11)
+
+### Minor changes
+
+- `@fluentui/react-calendar-preview`
+  - feat: render Calendar grid rows and cells from picker state with grid-owned keyboard navigation and a roving tab stop; add CalendarDay renderDay and remove the row and cell components; preserve button currentTarget for picker selection events and support selection from SVG and descendant-focusgroup cell content; clear range hover and pressed state when leaving editable day content; preserve cancelled-click focus, a single eligible tab stop through hidden-panel updates and reveal while excluding individually hidden dates, restricted-date focus with allFocusable, focus after synchronous controlled navigation, and explicitly empty navigation-button content ([PR #36948](https://github.com/microsoft/fluentui/pull/36948) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-range-slider-preview`
+  - chore: initial release ([PR #36949](https://github.com/microsoft/fluentui/pull/36949) by vgenaev@gmail.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: preserve selected toggle button icon contrast in forced-colors mode, including toolbar radio and toggle buttons ([PR #36935](https://github.com/microsoft/fluentui/pull/36935) by paulmardling@microsoft.com)
+- `@fluentui/react-color-picker`
+  - fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
+- `@fluentui/react-slider`
+  - fix: use getPercentInRange from react-utilities ([PR #36890](https://github.com/microsoft/fluentui/pull/36890) by vgenaev@gmail.com)
 
 ## [9.74.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.74.10)
 

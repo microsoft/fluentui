@@ -4,8 +4,9 @@ import type { TriggerProps } from '@fluentui/react-utilities';
 import type { PopoverTriggerChildProps as CanonicalPopoverTriggerChildProps } from '@fluentui/react-popover';
 
 type HeadlessPopoverTriggerChildExtras = {
-  'aria-haspopup'?: 'true';
+  'aria-haspopup'?: React.AriaAttributes['aria-haspopup'];
   'aria-details'?: string;
+  'aria-controls'?: string;
   'data-open'?: string;
 };
 

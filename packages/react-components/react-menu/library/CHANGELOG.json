@@ -2,6 +2,35 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Tue, 27 Oct 2026 16:42:57 GMT",
+      "version": "9.25.8",
+      "tag": "@fluentui/react-menu_v9.25.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "744cfdae7f460f164bfa3aa0295ef0d826102af5",
+            "comment": "fix: use Highlight/HighlightText for MenuItem hover and open-submenu states in forced colors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Oct 2026 11:25:58 GMT",
+      "version": "9.25.7",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "89baef7e2f319a0e880f27533799b1335b2d709c",
+            "comment": "release recovery: versions already published to npm by failed pipeline 384306"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Oct 2026 16:49:01 GMT",
       "version": "9.25.7",
       "tag": "@fluentui/react-menu_v9.25.7",
