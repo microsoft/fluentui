@@ -232,7 +232,7 @@ A very basic example to demonstrate how formatting will work in practice.
 
 ## API
 
-[See the types](./components/SpinButton/SpinButton.types.ts)
+[See the types](../src/components/SpinButton/SpinButton.types.ts)
 
 ## Structure
 
