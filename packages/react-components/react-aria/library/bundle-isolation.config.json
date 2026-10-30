@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../tools/verify-bundle-isolation/schema.json",
+  "fixturesRoot": "./bundle-size",
+  "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
+  "forbiddenPackages": ["tabster", "keyborg", "@fluentui/react-tabster"],
+  "fixtures": {
+    "ActiveDescendant.fixture.js": {},
+    "Button.fixture.js": {},
+    "LiveAnnouncer.fixture.js": {}
+  }
+}

@@ -5,6 +5,7 @@ import {
   applyTriggerPropsToChildren,
   getReactElementRef,
   getTriggerChild,
+  isFocusVisible,
   mergeCallbacks,
   slot,
   useControllableState,
@@ -12,12 +13,11 @@ import {
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
+  useKeyboardModality,
   useMergedRefs,
   useTimeout,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
-import { KEYBORG_FOCUSIN, useIsNavigatingWithKeyboard } from '@fluentui/react-tabster';
 
 import type { OnVisibleChangeData, TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { resolvePositioningShorthand, usePositioning } from '../../positioning';
@@ -133,14 +133,24 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
   // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
   const ignoreNextFocusEventRef = React.useRef(false);
+  const getKeyboardModality = useKeyboardModality();
 
   // Listener for onPointerEnter and onFocus on the trigger element
   const onEnterTrigger = React.useCallback(
     // eslint-disable-next-line react-hooks/preserve-manual-memoization
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
-      if (ev.type === 'focus' && ignoreNextFocusEventRef.current) {
+      if (ev.type === 'focus') {
+        const ignoreFocus = ignoreNextFocusEventRef.current;
         ignoreNextFocusEventRef.current = false;
-        return;
+
+        // Skip showing the tooltip if focus did not come from keyboard navigation. For example, we don't
+        // want to show the tooltip when a dialog is closed with the mouse and focus is restored to the trigger.
+        // Text inputs match `:focus-visible` even after a mouse click, so the tracked modality takes precedence.
+        // See https://github.com/microsoft/fluentui/issues/27576
+        const isKeyboardFocus = getKeyboardModality() ?? isFocusVisible(ev.target as Element) ?? true;
+        if (ignoreFocus || !isKeyboardFocus) {
+          return;
+        }
       }
 
       setDelayTimeout(() => {
@@ -149,33 +159,8 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
-    [setDelayTimeout, setVisible, state.showDelay],
+    [getKeyboardModality, setDelayTimeout, setVisible, state.showDelay],
   );
-
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
-
-  // Callback ref that attaches a keyborg:focusin event listener.
-  const [keyborgListenerCallbackRef] = React.useState(() => {
-    const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
-      // Skip showing the tooltip if focus moved programmatically.
-      // For example, we don't want to show the tooltip when a dialog is closed
-      // and Tabster programmatically restores focus to the trigger button.
-      // See https://github.com/microsoft/fluentui/issues/27576
-      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard()) {
-        ignoreNextFocusEventRef.current = true;
-      }
-    }) as EventListener;
-
-    // Save the current element to remove the listener when the ref changes
-    let current: Element | null = null;
-
-    // Callback ref that attaches the listener to the element
-    return (element: Element | null) => {
-      current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
-      element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
-      current = element;
-    };
-  });
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
@@ -262,7 +247,6 @@ export const useTooltip = (props: TooltipProps): TooltipState => {
     ...child?.props,
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
-      keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),

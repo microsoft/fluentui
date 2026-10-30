@@ -20,7 +20,7 @@ import { ArrowLeft, Backspace, Enter, Space } from '@fluentui/keyboard-keys';
 import { useInputTriggerSlot } from '@fluentui/react-combobox';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { tagPickerInputCSSRules } from '../../utils/tokens';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useSetKeyboardNavigation } from '@fluentui/react-tabster';
 import { useTabsterEscapeIgnore } from '../../utils/useTabsterEscapeIgnore';
 
 /**
@@ -148,8 +148,11 @@ export const useTagPickerInput_unstable = (
 ): TagPickerInputState => {
   const tagPickerGroupRef = useTagPickerContext_unstable(ctx => ctx.tagPickerGroupRef);
   const { findLastFocusable } = useFocusFinders();
+  const setKeyboardNavigation = useSetKeyboardNavigation();
 
   const onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    // keyborg ignores keys pressed in text inputs, mark keyboard navigation explicitly to keep its global state in sync
+    setKeyboardNavigation(true);
     props.onKeyDown?.(event);
     if (
       (event.key === ArrowLeft || event.key === Backspace) &&
