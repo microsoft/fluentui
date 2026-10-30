@@ -33,7 +33,7 @@ export const isContainingBlock = (
   if (style.display === 'contents') {
     return false;
   }
-  const isWebKit = element.ownerDocument.defaultView?.CSS?.supports('-webkit-backdrop-filter', 'none');
+  const isWebKit = element.ownerDocument.defaultView?.CSS?.supports?.('-webkit-backdrop-filter', 'none');
   return (
     (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
     (['transform', 'translate', 'scale', 'rotate', 'perspective'] as const).some(property => isSet(style[property])) ||
