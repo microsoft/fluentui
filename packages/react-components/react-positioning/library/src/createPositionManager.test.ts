@@ -1,7 +1,7 @@
 import { computePosition } from './engine/computePosition';
 import type { Placement } from '@floating-ui/dom';
 import { createPositionManager } from './createPositionManager';
-import { DATA_POSITIONING_ESCAPED, DATA_POSITIONING_HIDDEN, POSITIONING_END_EVENT } from './constants';
+import { POSITIONING_END_EVENT } from './constants';
 import type { OnPositioningEndEvent } from './types';
 
 jest.mock('./engine/computePosition', () => ({
@@ -76,7 +76,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement,
-      positioningOptions: { disableUpdateOnResize: true },
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -110,7 +110,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'top',
-      positioningOptions: { disableUpdateOnResize: true },
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
@@ -157,45 +157,13 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      positioningOptions: { disableUpdateOnResize: true },
+      options: { disableUpdateOnResize: true },
     });
 
     await flushMicrotasks();
 
     const event: OnPositioningEndEvent = listener.mock.calls[0][0];
     expect(event.detail).toEqual({ placement: 'bottom', escaped: true, referenceHidden: true });
-  });
-
-  it('does not report hide flags when the layout viewport is unavailable', async () => {
-    computePositionMock.mockResolvedValue({
-      x: 0,
-      y: 0,
-      placement: 'bottom',
-      ...mockVisibility,
-      escaped: true,
-      referenceHidden: true,
-    });
-
-    const { container, target } = createTestElements();
-    const listener = jest.fn();
-    container.addEventListener(POSITIONING_END_EVENT, listener);
-
-    createPositionManager({
-      container,
-      target,
-      arrow: null,
-      strategy: 'absolute',
-      middleware: [],
-      placement: 'bottom',
-      positioningOptions: { disableUpdateOnResize: true },
-    });
-
-    await flushMicrotasks();
-
-    const event: OnPositioningEndEvent = listener.mock.calls[0][0];
-    expect(event.detail).toEqual({ placement: 'bottom', escaped: false, referenceHidden: false });
-    expect(container.hasAttribute(DATA_POSITIONING_ESCAPED)).toBe(false);
-    expect(container.hasAttribute(DATA_POSITIONING_HIDDEN)).toBe(false);
   });
 
   it('does not dispatch event after dispose', async () => {
@@ -220,7 +188,7 @@ describe('createPositionManager', () => {
       strategy: 'absolute',
       middleware: [],
       placement: 'bottom',
-      positioningOptions: { disableUpdateOnResize: true },
+      options: { disableUpdateOnResize: true },
     });
 
     // Let debounce microtask fire so computePosition is called

@@ -2,7 +2,7 @@ import { isHTMLElement } from '@fluentui/react-utilities';
 import type { Boundary, Rect, Strategy } from '@floating-ui/dom';
 
 type Scale = { x: number; y: number };
-type CoordinateSpace = Scale & { scale: Scale };
+type CoordinateSpace = Scale & { scale: Scale; parent?: HTMLElement | null };
 
 // Expression-bodied helpers and plain property access keep the ES2019 output compact.
 
@@ -16,15 +16,23 @@ export const px = (value: number | undefined): string => (value === undefined ? 
 // Properties that are not supported are empty strings (i.e. in jsdom)
 const isSet = (value: string | undefined): boolean => !!value && value !== 'none';
 
-const isWebKit = (element: Element): boolean =>
-  !!element.ownerDocument.defaultView?.CSS?.supports?.('-webkit-backdrop-filter', 'none');
+/** Uses `CSS.supports()` of the element's window, which is unavailable in some environments (e.g. jsdom) */
+const isWebKit = (element: Element): boolean => {
+  const css = (getWindow(element) as Window & typeof globalThis).CSS;
+  return !!css && !!css.supports && css.supports('-webkit-backdrop-filter', 'none');
+};
+
+/** Shared and never mutated */
+export const NO_OFFSET: Scale = { x: 0, y: 0 };
 
 const getVisualOffsets = (element: Element): Scale => {
   const viewport = getWindow(element).visualViewport;
-  return isWebKit(element) && viewport ? { x: viewport.offsetLeft, y: viewport.offsetTop } : { x: 0, y: 0 };
+  return isWebKit(element) && viewport ? { x: viewport.offsetLeft, y: viewport.offsetTop } : NO_OFFSET;
 };
 
-const rect = (x: number, y: number, width: number, height: number): Rect => ({ x, y, width, height });
+const getBounds = (target: { getBoundingClientRect(): DOMRect | Rect }) => target.getBoundingClientRect() as DOMRect;
+
+export const rect = (x: number, y: number, width: number, height: number): Rect => ({ x, y, width, height });
 
 export const intersect = (a: Rect, b: Rect): Rect => {
   const x = Math.max(a.x, b.x);
@@ -37,20 +45,16 @@ export const isContainingBlock = (
   element: Element,
   style: CSSStyleDeclaration,
   strategy: 'absolute' | 'fixed',
-): boolean => {
-  if (style.display === 'contents') {
-    return false;
-  }
-  return (
-    (strategy === 'absolute' && isSet(style.position) && style.position !== 'static') ||
-    (['transform', 'translate', 'scale', 'rotate', 'perspective'] as const).some(property => isSet(style[property])) ||
+): boolean =>
+  // Boxless elements can't form containing blocks, and WebKit ignores filters
+  style.display !== 'contents' &&
+  ((strategy === 'absolute' && !/^(static)?$/.test(style.position)) ||
+    ('transform translate scale rotate perspective'.split(' ') as 'scale'[]).some(property => isSet(style[property])) ||
     ((isSet(style.filter) || isSet(style.backdropFilter)) && !isWebKit(element)) ||
     /auto|hidden/.test(style.contentVisibility) ||
     (!!style.containerType && style.containerType !== 'normal') ||
     /transform|perspective|filter/.test(style.willChange) ||
-    /paint|layout|strict|content/.test(style.contain)
-  );
-};
+    /paint|layout|strict|content/.test(style.contain));
 
 /** The parent element, through slot assignments and shadow roots but not virtual parents */
 export const getPhysicalParent = (element: Element): Element | null => {
@@ -66,10 +70,13 @@ export const getPhysicalParent = (element: Element): Element | null => {
 
 /** Open popovers and modal dialogs escape the clipping and containing blocks of their ancestors */
 const isTopLayer = (element: Element): boolean => {
-  const css = element.ownerDocument.defaultView?.CSS;
-  return [':popover-open', ':modal'].some(
-    selector => css?.supports?.(`selector(${selector})`) && element.matches(selector),
-  );
+  try {
+    // A single forgiving `:is()` match per ancestor: unsupported pseudo-classes never match, and environments
+    // without `:is()` (e.g. jsdom) throw
+    return element.matches(':is(:popover-open, :modal)');
+  } catch {
+    return false;
+  }
 };
 
 /**
@@ -95,9 +102,6 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
   const isPositioned = (position: string) => position === 'fixed' || position === 'absolute';
   const { position } = getStyle(element);
   let strategy = isPositioned(position) ? position : '';
-  if (isTopLayer(element)) {
-    return ancestors;
-  }
 
   findAncestor(element, (node, style) => {
     // Positioned descendants escape overflow between themselves and their containing block.
@@ -109,8 +113,7 @@ export const getScrollAncestors = (element: Element): HTMLElement[] => {
       !strategy &&
       node !== element.ownerDocument.body &&
       isHTMLElement(node) &&
-      style.display !== 'inline' &&
-      style.display !== 'contents' &&
+      !/^(inline|contents)$/.test(style.display) &&
       /auto|scroll|overlay|hidden|clip/.test(style.overflow + style.overflowX + style.overflowY)
     ) {
       ancestors.push(node);
@@ -131,11 +134,15 @@ export const getDimensions = (element: Element): { width: number; height: number
   const rounded =
     isHTMLElement(element) &&
     (Math.round(width) !== element.offsetWidth || Math.round(height) !== element.offsetHeight);
-  return rounded ? { width: element.offsetWidth, height: element.offsetHeight, rounded } : { width, height, rounded };
+  return {
+    width: rounded ? (element as HTMLElement).offsetWidth : width,
+    height: rounded ? (element as HTMLElement).offsetHeight : height,
+    rounded,
+  };
 };
 
 export const getScale = (element: HTMLElement): Scale => {
-  const bounds = element.getBoundingClientRect();
+  const bounds = getBounds(element);
   const { width, height, rounded } = getDimensions(element);
   // Zero, infinite and NaN scales (e.g. of hidden elements) fall back to 1
   const finite = (value: number) => (value && Number.isFinite(value) ? value : 1);
@@ -147,7 +154,7 @@ export const getScale = (element: HTMLElement): Scale => {
 
 /** The viewport rect of the element's padding box, in CSS pixels of its own window */
 const getClientRect = (element: HTMLElement): Rect & { scale: Scale } => {
-  const bounds = element.getBoundingClientRect();
+  const bounds = getBounds(element);
   const scale = getScale(element);
   return {
     ...rect(
@@ -164,7 +171,7 @@ const getClientRect = (element: HTMLElement): Rect & { scale: Scale } => {
 const getWindowSpace = (win: Window): CoordinateSpace => {
   const space = { x: 0, y: 0, scale: { x: 1, y: 1 } };
   for (let frame = win.frameElement; isHTMLElement(frame); frame = getWindow(frame).frameElement) {
-    const bounds = frame.getBoundingClientRect();
+    const bounds = getBounds(frame);
     const scale = getScale(frame);
     const css = getStyle(frame);
     space.x = bounds.left + (frame.clientLeft + (parseFloat(css.paddingLeft) || 0) + space.x) * scale.x;
@@ -216,9 +223,9 @@ export const getCoordinateSpace = (element: HTMLElement, strategy: Strategy): Co
   const parent = getOffsetParent(element);
   if (parent) {
     const { x, y, scale } = getClientRect(parent);
-    return { scale, x: x - parent.scrollLeft * scale.x, y: y - parent.scrollTop * scale.y };
+    return { parent, scale, x: x - parent.scrollLeft * scale.x, y: y - parent.scrollTop * scale.y };
   }
-  const bounds = getRoot(element).getBoundingClientRect();
+  const bounds = getBounds(getRoot(element));
   return {
     scale: { x: 1, y: 1 },
     x: strategy === 'fixed' ? 0 : bounds.left,
@@ -226,21 +233,24 @@ export const getCoordinateSpace = (element: HTMLElement, strategy: Strategy): Co
   };
 };
 
-/** The reference rect in the floating element's coordinate space */
+/**
+ * The reference rect in the floating element's coordinate space, `context` is the reference element or the element
+ * that a virtual reference is relative to (the floating element's root element by default).
+ */
 export const getReferenceRect = (
-  reference: Element | { getBoundingClientRect(): DOMRect | Rect; contextElement?: Element },
+  reference: { getBoundingClientRect(): DOMRect | Rect },
+  context: Element,
   floating: HTMLElement,
   space: CoordinateSpace,
   strategy: Strategy,
 ): Rect => {
-  const context = 'ownerDocument' in reference ? reference : reference.contextElement;
   const floatingWindow = getWindow(floating);
-  const referenceWindow = (context && getWindow(context)) || floatingWindow;
-  const bounds = convertWindowRect(reference.getBoundingClientRect(), referenceWindow, floatingWindow);
+  const referenceWindow = getWindow(context);
+  const bounds = convertWindowRect(getBounds(reference), referenceWindow, floatingWindow);
   const visual =
-    strategy === 'fixed' && referenceWindow === floatingWindow && !getOffsetParent(floating)
-      ? getVisualOffsets(context || floating)
-      : { x: 0, y: 0 };
+    strategy === 'fixed' && referenceWindow === floatingWindow && !space.parent
+      ? getVisualOffsets(floating)
+      : NO_OFFSET;
   const { x, y, scale } = space;
   return rect(
     (bounds.x + visual.x - x) / scale.x,
@@ -260,25 +270,21 @@ export const getClippingRect = (
   const win = getWindow(element);
   const root = getRoot(element);
   const viewport = win.visualViewport;
-  const useViewportOffsets = !isWebKit(element) || strategy === 'fixed';
+  // WebKit lays out absolute elements relative to the layout viewport, rect boundaries are in its coordinates too
+  const visual = getVisualOffsets(element);
+  const layout = strategy === 'fixed' ? NO_OFFSET : visual;
   const clippingAncestors = boundary === 'clippingAncestors';
   let clip = viewport
-    ? rect(
-        useViewportOffsets ? viewport.offsetLeft : 0,
-        useViewportOffsets ? viewport.offsetTop : 0,
-        viewport.width,
-        viewport.height,
-      )
+    ? rect(viewport.offsetLeft - layout.x, viewport.offsetTop - layout.y, viewport.width, viewport.height)
     : rect(0, 0, root.clientWidth, root.clientHeight);
   for (const item of clippingAncestors ? getScrollAncestors(element) : ([] as unknown[]).concat(boundary)) {
     if (item && typeof item === 'object') {
-      const visual = getVisualOffsets(element);
-      const boundaryRect = item as Rect;
+      const { x, y, width, height } = item as Rect;
       clip = intersect(
         clip,
         'nodeType' in item
           ? convertWindowRect(getClientRect(item as HTMLElement), getWindow(item as Node), win)
-          : rect(boundaryRect.x - visual.x, boundaryRect.y - visual.y, boundaryRect.width, boundaryRect.height),
+          : rect(x - visual.x, y - visual.y, width, height),
       );
     }
   }

@@ -94,7 +94,7 @@ for (const scenario of ['filter', 'backdropFilter', 'popover', 'dialog', 'contai
         });
         const actual = await computePosition(target, floating, {
           strategy: 'fixed',
-          positioningOptions: { pinned: true },
+          options: { pinned: true },
         });
         Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
         const rect = floating.getBoundingClientRect();
@@ -168,7 +168,7 @@ for (const scenario of ['fixed', 'absolute', 'containingBlock', 'rectBoundary'])
         });
         const actual = await computePosition(target, floating, {
           strategy,
-          positioningOptions: { pinned: true, ...(scenario === 'rectBoundary' && { overflowBoundary: boundary }) },
+          options: { pinned: true, ...(scenario === 'rectBoundary' && { overflowBoundary: boundary }) },
         });
         return {
           actual: { x: actual.x, y: actual.y, referenceHidden: actual.referenceHidden, escaped: actual.escaped },

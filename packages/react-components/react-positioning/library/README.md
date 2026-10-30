@@ -84,7 +84,7 @@ descendants, and positioned `display: contents` ancestors in scrolled documents.
 These cases compare against Floating UI where supported. Individual transform properties predate
 support in the pinned oracle, so those cases instead assert physical target/surface alignment.
 
-## Engine parity and performance validation
+## Engine parity, size and performance validation
 
 The engine measures in containing-block CSS pixels and resolves matching, offsets, covering,
 best-fit flipping, shifting/tethering, available-size constraints, arrows, and visibility in order.
@@ -92,14 +92,16 @@ Positioning callbacks and imperative refs do not recreate the manager on callbac
 
 ```sh
 yarn nx run react-positioning:bundle-size --skip-nx-cache
+yarn nx run react-positioning:test-bundle-size
 yarn nx run react-positioning:test-raster
 yarn nx run react-positioning:benchmark
 yarn nx run react-positioning:test-webkit
 ```
 
-Bundle size uses the repository's standard monosize/webpack reporting for the existing
-`bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`. The custom absolute-size
-gate is deferred; the standard bundle-size report and fixtures remain in place.
+The bundle gate runs the repository's monosize/webpack measurement for the existing
+`bundle-size/usePopper.fixture.js` entry, labeled `usePositioning`, and rejects an actual
+minified output larger than **12,000 bytes**. This is an absolute, uncompressed limit; gzip
+is reported separately. Gate tests cover the inclusive limit and invalid or stale measurements.
 
 The WebKit target runs focused real-browser checks for filtered ancestors and nested
 top-layer surfaces. Filter cases preserve the pinned Floating UI WebKit exception; nested

@@ -42,7 +42,8 @@ interface PositionManagerOptions {
    * [Floating UI middleware](https://floating-ui.com/docs/middleware)
    */
   middleware?: Middleware[];
-  positioningOptions?: PositioningOptions;
+  /** Positioning options resolved by the configuration context */
+  options?: PositioningOptions;
   isRtl?: boolean;
   /**
    * [Floating UI placement](https://floating-ui.com/docs/computePosition#placement)
@@ -54,11 +55,11 @@ interface PositionManagerOptions {
  * @internal
  * @returns manager that handles positioning out of the react lifecycle
  */
-export function createPositionManager(options: PositionManagerOptions): PositionManager {
+export function createPositionManager(managerOptions: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
-  const { container, target, arrow, strategy, positioningOptions = {} } = options;
+  const { container, target, arrow, strategy, options = {} } = managerOptions;
   // Modifies whether the container is positioned using transform
-  const { useTransform = true, disableUpdateOnResize } = positioningOptions;
+  const { useTransform = true, disableUpdateOnResize } = options;
   const targetWindow = getWindow(container) as (Window & typeof globalThis) | null;
   // Containers of documents without a window (e.g. `DOMParser`) can't be positioned
   if (!targetWindow) {
@@ -109,18 +110,13 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     container.style.position = strategy;
-    computePosition(target, container, options)
-      .then(({ x, y, placement, arrow: arrowCoordinates, intersecting, ...visibility }) => {
+    computePosition(target, container, managerOptions)
+      .then(({ x, y, placement, arrow: arrowCoordinates, intersecting, escaped, referenceHidden }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
         if (isDestroyed) {
           return;
         }
-
-        const { clientWidth, clientHeight } = targetWindow.document.documentElement;
-        // Visibility can't be determined without a layout viewport
-        const { escaped, referenceHidden } =
-          clientWidth || clientHeight ? visibility : { escaped: false, referenceHidden: false };
 
         if (arrow && arrowCoordinates) {
           Object.assign(arrow.style, { left: px(arrowCoordinates.x), top: px(arrowCoordinates.y) });

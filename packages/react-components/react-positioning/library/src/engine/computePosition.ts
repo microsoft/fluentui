@@ -1,6 +1,7 @@
 import type { Placement, Rect, Side, SideObject, Strategy } from '@floating-ui/dom';
 import type { Alignment, Position, PositioningBoundary, PositioningOptions, TargetElement } from '../types';
-import { fromFloatingUIPlacement, getBoundary, toFloatingUIPlacement } from '../utils';
+import { getBoundary, toFloatingUIPlacement } from '../utils';
+import { toPositioningValues } from '../utils/fromFloatingUIPlacement';
 import { getAutoSizeDimensions } from '../utils/normalizeAutoSize';
 import {
   getClippingRect,
@@ -11,13 +12,15 @@ import {
   getRoot,
   getStyle,
   getWindow,
+  NO_OFFSET,
   px,
+  rect,
 } from './platform';
 
 type Options = {
   placement?: Placement;
   strategy: Strategy;
-  positioningOptions?: PositioningOptions;
+  options?: PositioningOptions;
   isRtl?: boolean;
   arrow?: HTMLElement | null;
 };
@@ -27,9 +30,9 @@ export type ComputePositionResult = Coords & {
   placement: Placement;
   /** Arrow offset along the alignment axis, `undefined` without an arrow */
   arrow?: Partial<Coords>;
-  /** The floating element is outside of the clipping boundary of the target */
+  /** The floating element is outside of the clipping boundary of the target, `false` without a layout viewport */
   escaped: boolean;
-  /** The target is outside of its clipping boundary */
+  /** The target is outside of its clipping boundary, `false` without a layout viewport */
   referenceHidden: boolean;
   /** The floating element crosses the top or bottom clipping edge */
   intersecting: boolean;
@@ -52,7 +55,7 @@ const shiftOverflow = (coords: Coords, axis: Axis, overflow: SideObject) =>
 export async function computePosition(
   target: TargetElement,
   container: HTMLElement,
-  { placement: initial = 'bottom', strategy, positioningOptions: options = {}, isRtl = false, arrow }: Options,
+  { placement: initial = 'bottom', strategy, options = {}, isRtl = false, arrow }: Options,
 ): Promise<ComputePositionResult> {
   const {
     autoSize: rawAutoSize,
@@ -69,11 +72,13 @@ export async function computePosition(
     unstable_disableTether: disableTether,
   } = options;
   const css = container.style;
+  // An empty value removes the property
+  const setStyle = (property: string, value = '') => css.setProperty(property, value);
   const autoSize = getAutoSizeDimensions(rawAutoSize);
   for (const dimension of autoSize) {
-    css.removeProperty('box-sizing');
-    css.removeProperty(`max-${dimension}`);
-    css.removeProperty(dimension);
+    setStyle('box-sizing');
+    setStyle(`max-${dimension}`);
+    setStyle(dimension);
   }
   const rtl = getStyle(container).direction === 'rtl';
   const referenceElement = 'nodeType' in target ? target : target.contextElement || getRoot(container);
@@ -95,16 +100,16 @@ export async function computePosition(
           rawPadding.bottom || 0,
           rawPadding[isRtl ? 'end' : 'start'] || 0,
         );
-  /** How far the rect (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
-  const overflow = (rect: Rect, bounds: Rect, inset = sides(0, 0, 0, 0)) => {
+  /** How far the box (in container coordinates) overflows the bounds (in viewport coordinates) on each side */
+  const overflow = (box: Rect, bounds: Rect, inset = sides(0, 0, 0, 0)) => {
     const result = { ...inset };
     for (const axis of ['x', 'y'] as const) {
       const length = lengthOf(axis);
       const axisScale = scale[axis];
       const origin = initialSpace[axis];
-      result[startOf(axis)] = (bounds[axis] - (rect[axis] * axisScale + origin) + inset[startOf(axis)]) / axisScale;
+      result[startOf(axis)] = (bounds[axis] - (box[axis] * axisScale + origin) + inset[startOf(axis)]) / axisScale;
       result[endOf(axis)] =
-        ((rect[axis] + rect[length]) * axisScale + origin - bounds[axis] - bounds[length] + inset[endOf(axis)]) /
+        ((box[axis] + box[length]) * axisScale + origin - bounds[axis] - bounds[length] + inset[endOf(axis)]) /
         axisScale;
     }
     return result;
@@ -124,10 +129,11 @@ export async function computePosition(
       ) as Placement[]);
   const attempts: [placement: Placement, overflows: number[]][] = [];
   let space: ReturnType<typeof getCoordinateSpace>;
-  const measure = () => {
+  /** The reference and floating rects in the container's coordinate space */
+  const measure = (): [Rect, Rect] => {
     space = getCoordinateSpace(container, strategy);
     const { width, height } = getDimensions(container);
-    return { reference: getReferenceRect(target, container, space, strategy), floating: { x: 0, y: 0, width, height } };
+    return [getReferenceRect(target, referenceElement, container, space, strategy), rect(0, 0, width, height)];
   };
   let rects = measure();
   // Overflow is always measured in the initial coordinate space
@@ -140,10 +146,10 @@ export async function computePosition(
   let preserveCoordinates = false;
   let arrowData: Partial<Coords> | undefined;
   let coords!: Coords;
-  let delta: Coords = { x: 0, y: 0 };
+  let delta: Coords = NO_OFFSET;
 
   for (let attempt = 0; attempt <= 50; attempt++) {
-    const { reference: r, floating: f } = rects;
+    const [r, f] = rects;
     const [side, align] = placement.split('-') as [Side, string?];
     const isVertical = side === 'top' || side === 'bottom';
     const isStart = side === 'top' || side === 'left';
@@ -164,7 +170,7 @@ export async function computePosition(
     preserveCoordinates = false;
     if (matchTargetSize && r.width !== f.width && !matchAttempt) {
       const property = '--fui-match-target-size';
-      css.setProperty(property, px(r.width));
+      setStyle(property, px(r.width));
       if (!css.width) {
         css.width = `var(${property})`;
       }
@@ -176,13 +182,14 @@ export async function computePosition(
     if (offset) {
       const raw =
         typeof offset === 'function'
-          ? offset({ positionedRect: f, targetRect: r, ...fromFloatingUIPlacement(placement) })
+          ? offset({ positionedRect: f, targetRect: r, ...toPositioningValues(side, align) })
           : offset;
       const value = typeof raw === 'number' ? { mainAxis: raw } : raw;
       if (!arrowAdjusted) {
-        delta = { x: 0, y: 0 };
-        delta[cross] = (value.mainAxis || 0) * (isStart ? -1 : 1);
-        delta[main] = (value.crossAxis || 0) * (rtl && isVertical ? -1 : 1);
+        delta = {
+          [cross]: (value.mainAxis || 0) * (isStart ? -1 : 1),
+          [main]: (value.crossAxis || 0) * (rtl && isVertical ? -1 : 1),
+        } as Coords;
         coords.x += delta.x;
         coords.y += delta.y;
       }
@@ -237,13 +244,13 @@ export async function computePosition(
         const max = f[dimension] - available[startOf(axis)] - available[endOf(axis)];
         // Shifting on an axis makes the whole boundary available, otherwise the side facing away from the target
         const size = axis === main || shiftCross ? max : Math.min(f[dimension] - available[side], max);
-        css.setProperty('box-sizing', 'border-box');
-        css.setProperty(`max-${dimension}`, px(size));
+        setStyle('box-sizing', 'border-box');
+        setStyle(`max-${dimension}`, px(size));
         if (f[dimension] > size) {
-          css.setProperty(dimension, px(size));
+          setStyle(dimension, px(size));
           const property = `overflow-${axis}`;
           if (!css.getPropertyValue(property)) {
-            css.setProperty(property, 'auto');
+            setStyle(property, 'auto');
           }
         }
       }
@@ -272,10 +279,12 @@ export async function computePosition(
     }
     break;
   }
-  const { reference, floating } = rects;
+  const [reference, floating] = rects;
   const floatingOverflow = overflow({ ...floating, ...coords }, visibilityClip);
-  const isHidden = (values: SideObject, rect: Rect) =>
-    SIDES.some((side, index) => values[side] >= rect[index % 2 ? 'width' : 'height']);
+  const { clientWidth, clientHeight } = getRoot(container);
+  // Visibility can't be determined without a layout viewport (e.g. in jsdom)
+  const isHidden = (values: SideObject, box: Rect) =>
+    !!(clientWidth || clientHeight) && SIDES.some((side, index) => values[side] >= box[index % 2 ? 'width' : 'height']);
   return {
     ...coords,
     placement,

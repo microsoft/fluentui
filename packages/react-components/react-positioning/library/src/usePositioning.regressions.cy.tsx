@@ -20,7 +20,7 @@ async function expectParity(target: TargetElement, floating: HTMLElement) {
   const actual = await computePosition(target, floating, {
     placement: 'bottom',
     strategy: 'fixed',
-    positioningOptions: { pinned: true },
+    options: { pinned: true },
   });
   if (!expected.middlewareData.hide) {
     throw new Error('Both engines must report visibility');
@@ -59,7 +59,7 @@ describe('positioning engine browser regressions', () => {
         expect(win.scrollY, 'document scroll').to.equal(200);
         const actual = await computePosition(target, floating, {
           strategy: 'absolute',
-          positioningOptions: { pinned: true },
+          options: { pinned: true },
         });
         Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
         const bounds = floating.getBoundingClientRect();
@@ -119,7 +119,7 @@ describe('positioning engine browser regressions', () => {
         const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, topLayer);
         const actual = await computePosition(target, floating, {
           strategy: 'fixed',
-          positioningOptions: { pinned: true },
+          options: { pinned: true },
         });
         Object.assign(floating.style, { left: `${actual.x}px`, top: `${actual.y}px` });
         const bounds = floating.getBoundingClientRect();
@@ -154,7 +154,7 @@ describe('positioning engine browser regressions', () => {
         });
         const actual = await computePosition(target, floating, {
           strategy: 'fixed',
-          positioningOptions: {
+          options: {
             pinned: true,
             offset: -200,
             // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -192,7 +192,7 @@ describe('positioning engine browser regressions', () => {
       await expectParity(target, floating);
       const result = await computePosition(target, floating, {
         strategy: 'fixed',
-        positioningOptions: { pinned: true },
+        options: { pinned: true },
       });
       expect(result.referenceHidden).to.equal(true);
     });
@@ -216,7 +216,7 @@ describe('positioning engine browser regressions', () => {
         await expectParity(target, floating);
         const result = await computePosition(target, floating, {
           strategy: 'fixed',
-          positioningOptions: { pinned: true },
+          options: { pinned: true },
         });
         expect(result.referenceHidden).to.equal(true);
       });
@@ -239,7 +239,7 @@ describe('positioning engine browser regressions', () => {
           await expectParity(target, floating);
           const result = await computePosition(target, floating, {
             strategy: 'fixed',
-            positioningOptions: { pinned: true },
+            options: { pinned: true },
           });
           expect(result.referenceHidden).to.equal(false);
         } finally {
@@ -318,7 +318,7 @@ describe('positioning engine browser regressions', () => {
         // The pinned Floating UI version predates individual transform properties.
         const result = await computePosition(target, floating, {
           strategy: 'fixed',
-          positioningOptions: { pinned: true },
+          options: { pinned: true },
         });
         floating.style.left = `${result.x}px`;
         floating.style.top = `${result.y}px`;
@@ -373,7 +373,7 @@ describe('positioning engine browser regressions', () => {
       const floating = element(doc, 'div', { position: 'fixed', width: '120px', height: '60px' }, host);
       const result = await computePosition(target, floating, {
         strategy: 'fixed',
-        positioningOptions: { pinned: true },
+        options: { pinned: true },
       });
       floating.style.left = `${result.x}px`;
       floating.style.top = `${result.y}px`;
@@ -404,7 +404,7 @@ describe('positioning engine browser regressions', () => {
       const floating = element(doc, 'div', { position: 'fixed', width: '60px', height: '30px' }, root);
       const result = await computePosition(target, floating, {
         strategy: 'fixed',
-        positioningOptions: { pinned: true },
+        options: { pinned: true },
       });
       expect(result.referenceHidden, 'reference outside parent clipping host').to.equal(true);
     });

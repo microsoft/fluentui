@@ -138,8 +138,12 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
   );
   const containerRef = useCallbackRef<HTMLElement>(null, (container, previousContainer) => {
     // Cast because CustomEvent<OnPositioningEndEventDetail> is not assignable to EventListener
-    previousContainer?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
-    container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+    if (previousContainer) {
+      previousContainer.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+    }
+    if (container) {
+      container.addEventListener(POSITIONING_END_EVENT, onPositioningEnd as EventListener);
+    }
     elementsRef.current.container = container;
     updatePositionManager();
   });

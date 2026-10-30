@@ -22,7 +22,8 @@ export function usePositioningOptions(options: PositioningOptions): (
   arrow: HTMLElement | null,
 ) => {
   placement: PositioningPlacement | undefined;
-  positioningOptions: PositioningOptions;
+  /** The positioning options resolved by the configuration context */
+  options: PositioningOptions;
   strategy: 'absolute' | 'fixed';
   isRtl: boolean;
 } {
@@ -40,7 +41,7 @@ export function usePositioningOptions(options: PositioningOptions): (
       });
       return {
         placement: toFloatingUIPlacement(resolved.align, resolved.position, isRtl),
-        positioningOptions: resolved,
+        options: resolved,
         isRtl,
         // Preserve the baseline precedence: an explicit absolute strategy also resolves to fixed.
         strategy: resolved.strategy || positionFixed ? ('fixed' as const) : ('absolute' as const),
