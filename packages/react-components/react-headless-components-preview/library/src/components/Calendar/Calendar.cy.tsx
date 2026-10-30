@@ -94,14 +94,22 @@ describe('Calendar', () => {
       cy.get(month('July')).should('be.focused');
     });
 
-    it('moves Home and End to an available month when bounds change', () => {
+    it('moves Home to an available month when the minimum bound changes', () => {
       mount(<BoundsChangingCalendar />);
 
       cy.get(month('March')).focus().realPress('b');
       cy.realPress('Home');
       cy.get(month('July')).should('be.focused');
+    });
 
-      cy.get(month('September')).focus().realPress('e');
+    it('moves End to an available month when the maximum bound changes', () => {
+      mount(<BoundsChangingCalendar />);
+
+      cy.get(month('September')).focus().should('be.focused').realPress('e');
+      cy.get(month('September'))
+        .should('be.focused')
+        .and('have.attr', 'aria-disabled', 'true')
+        .and('have.attr', 'tabindex', '0');
       cy.realPress('End');
       cy.get(month('July')).should('be.focused');
     });
