@@ -106,7 +106,7 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<Toa
 
 // @public
 export const Toaster: {
-    (props: ToasterProps): JSXElement;
+    (props: ToasterProps): ReturnType<typeof renderToaster>;
     displayName: string;
 };
 

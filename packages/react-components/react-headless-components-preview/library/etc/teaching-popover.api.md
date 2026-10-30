@@ -106,7 +106,7 @@ export const renderTeachingPopoverTrigger: (state: TeachingPopoverTriggerState) 
 
 // @public
 export const TeachingPopover: {
-    (props: TeachingPopoverProps): JSXElement;
+    (props: TeachingPopoverProps): ReturnType<typeof renderTeachingPopover>;
     displayName: string;
 };
 

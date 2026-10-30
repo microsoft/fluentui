@@ -22,7 +22,7 @@ export const renderTooltip: (state: TooltipState) => JSXElement;
 
 // @public
 export const Tooltip: {
-    (props: TooltipProps): JSXElement;
+    (props: TooltipProps): ReturnType<typeof renderTooltip>;
     displayName: string;
 };
 

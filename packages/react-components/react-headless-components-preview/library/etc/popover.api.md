@@ -29,7 +29,7 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 
 // @public
 export const Popover: {
-    (props: PopoverProps): JSXElement;
+    (props: PopoverProps): ReturnType<typeof renderPopover>;
     displayName: string;
 };
 

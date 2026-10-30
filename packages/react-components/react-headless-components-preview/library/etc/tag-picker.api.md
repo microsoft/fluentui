@@ -69,7 +69,7 @@ export { renderTagPickerOptionGroup }
 
 // @public
 export const TagPicker: {
-    (props: TagPickerProps): JSXElement;
+    (props: TagPickerProps): ReturnType<typeof renderTagPicker>;
     displayName: string;
 };
 
